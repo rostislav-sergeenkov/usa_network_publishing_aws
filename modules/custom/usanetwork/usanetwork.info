@@ -1,0 +1,4 @@
+name = usanetwork 
+description = Basic functionality for the USA Network site.
+package = Publisher
+core = 7.x

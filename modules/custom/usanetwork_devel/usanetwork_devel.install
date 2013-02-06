@@ -30,7 +30,6 @@ function usanetwork_devel_dev_modules() {
   $modules = array(
     'devel',
     'devel_generate',
-    'nodequeue_generate',
     'coder',
     'context_ui',
     'diff',

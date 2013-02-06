@@ -1,0 +1,5 @@
+name = USA Network Devel
+description = This module is for enabling development modules, and any other code or update hooks for development convenience, that should not go to the production site.
+core = 7.x
+package = USA Network Development
+project = usanetwork_devel

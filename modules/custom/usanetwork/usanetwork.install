@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork.
+ *
+ * @ingroup USA Network
+ */
+ 
+ /**
+ *  Implements hook_install().
+ */
+function usanetwork_install() {
+  // remove things we do not want for usanetwork
+  usanetwork_uninstall_modules();
+  // Set the theme
+  usanetwork_set_theme();
+}
+
+/**
+ * Uninstall modules.
+ *
+ * Uninstall modules that are not necessary for this site.
+ */
+function usanetwork_uninstall_modules() {
+  $modules = array(
+    'overlay',
+    'shortcut',
+    'contextual',
+  );
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+
+  $ret = t('The following modules were uninstalled: @modules', array('@modules' => join(', ', $modules)));
+  $ret .= "\n";
+  drupal_set_message($ret);
+  return $ret;
+}
+
+/**
+ * Set the theme.
+ *
+ * Manually set the new theme.
+ */
+function usanetwork_set_theme() {
+  $theme = 'aurora_usa';
+
+  // Enable the aurora_usanetwork theme and set it as the site default.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $theme)
+    ->execute();
+
+  variable_set('theme_default', $theme);
+
+  // unset some blocks so we can manage in context
+  $values = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+
+  $ret = t('The theme was set to: @theme', array('@theme' => $theme));
+  drupal_set_message($ret);
+  return $ret;
+}

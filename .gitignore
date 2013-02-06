@@ -1,0 +1,15 @@
+files
+files_private
+private
+
+#Ignore OS generated files
+.DS_Store
+desktop.ini
+Thumbs.db
+._*
+.Trashes
+
+#Ignore SASS/Compass cache files
+#Ignore sass cache folders
+.sass-cache
+.livereload

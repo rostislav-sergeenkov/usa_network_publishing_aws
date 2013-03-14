@@ -49,8 +49,13 @@ function usanetwork_core_enable_modules() {
   $modules = array(
     // contrib
     'flexslider',
+    'panels',
+    'views_slideshow',
     'menu_block',
-    
+    'print',
+    'linkit',
+    // USA custom
+    'usanetwork_mods',
   );
 
   module_enable($modules);

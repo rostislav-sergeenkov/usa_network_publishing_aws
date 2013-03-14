@@ -20,6 +20,10 @@
   font-family: $font-headline;
 }
 
+%bold {
+  font-family: $headline-bold;
+}
+
 %allcaps {
   @extend %caps;
   text-transform: uppercase;

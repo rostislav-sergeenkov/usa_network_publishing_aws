@@ -4,59 +4,75 @@
   @extend %headers;
   font-weight: normal;
   text-rendering: optimizeLegibility;
+  letter-spacing: .05em;
+  margin: .5em 0;
 }
 
 %h1 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 1));
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 1));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
-  @else {
-    font-size: nth($header-sizes, 1);
-  }
+  text-transform: uppercase;
 }
 
 %h2 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 2));
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 2));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
-  @else {
-    font-size: nth($header-sizes, 2);
-  }
+  text-transform: uppercase;
 }
 
 %h3 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 3));
-  }
-  @else {
-    font-size: nth($header-sizes, 3);
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 3));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
 }
 
 %h4 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 4));
-  }
-  @else {
-    font-size: nth($header-sizes, 4);
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 4));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
 }
 
 %h5 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 5));
-  }
-  @else {
-    font-size: nth($header-sizes, 5);
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 5));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
 }
 
 %h6 {
-  @if $adjust-font-size-to == true {
-    @include adjust-font-size-to(nth($header-sizes, 6));
-  }
-  @else {
-    font-size: nth($header-sizes, 6);
+  @if $set-header-sizes == true {
+    @if $adjust-font-size-to == true {
+      @include adjust-font-size-to(nth($header-sizes, 6));
+    }
+    @else {
+      font-size: nth($header-sizes, 1);
+    }
   }
 }
 

@@ -59,6 +59,7 @@ a {
   @if $link-transitions != false {
     @include link-transitions($link-transitions);
   }
+  text-decoration: none;
 }
 
 em {

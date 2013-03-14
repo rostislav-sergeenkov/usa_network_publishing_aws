@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_alter feature.
+ */
+
+include_once 'usanetwork_alter.features.inc';

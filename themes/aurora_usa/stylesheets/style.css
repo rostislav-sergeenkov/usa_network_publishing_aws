@@ -314,36 +314,37 @@ html {
 
 body {
   font-family: Georgia, serif;
-  color: black;
-  background: white;
+  color: white;
+  background: #1f1f1f;
 }
 
 ::-moz-selection {
   color: white;
-  background: #bada55;
+  background: #0ab6e8;
   text-shadow: none;
 }
 
 ::selection {
   color: white;
-  background: #bada55;
+  background: #0ab6e8;
   text-shadow: none;
 }
 
 a {
-  color: #bada55;
+  color: #0ab6e8;
+  text-decoration: none;
 }
 a:visited {
-  color: #bada55;
+  color: #0ab6e8;
 }
 a:focus {
-  color: #bada55;
+  color: #0ab6e8;
 }
 a:hover {
-  color: #7555da;
+  color: white;
 }
 a:active {
-  color: #7555da;
+  color: white;
 }
 
 p {
@@ -375,54 +376,26 @@ li ul {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   text-rendering: optimizeLegibility;
+  letter-spacing: .05em;
+  margin: .5em 0;
 }
 
 h1 {
-  font-size: 2.625em;
-  line-height: 1.14286em;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2.4375em;
-  line-height: 1.23077em;
-}
-
-h3 {
-  font-size: 1.9375em;
-  line-height: 1.54839em;
-}
-
-h4 {
-  font-size: 1.625em;
-  line-height: 1.84615em;
-}
-
-h5 {
-  font-size: 1.5625em;
-  line-height: 1.92em;
-}
-
-h6 {
-  font-size: 1.25em;
-  line-height: 1.2em;
+  text-transform: uppercase;
 }
 
 img {
   height: auto;
   vertical-align: text-bottom;
 }
-img.left {
-  float: left;
-  margin: 12px 25px 12px 0;
-}
-img.right {
-  float: right;
-  margin: 12px 0 12px 25px;
-}
 
 small {
-  font-size: 0.8125em;
-  line-height: 1.84615em;
+  font-size: 0.625em;
+  line-height: 2.4em;
 }
 
 q {
@@ -459,77 +432,4 @@ mark {
   background: red;
   background-color: rgba(255, 255, 0, 0.5);
   text-shadow: none;
-}
-
-@media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    text-shadow: none !important;
-    filter: none !important;
-    -ms-filter: none !important;
-  }
-
-  body {
-    font-family: Georgia, serif !important;
-    font-size: 12pt !important;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia, serif !important;
-  }
-
-  a {
-    text-decoration: underline;
-    border-bottom: none !important;
-  }
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  .ir a:after {
-    content: "";
-  }
-
-  a[href^="javascript:"]:after, a[href^="#"]:after {
-    content: "";
-  }
-
-  pre, blockquote {
-    border: 1px solid #999999;
-    page-break-inside: avoid;
-  }
-
-  thead {
-    display: table-header-group;
-  }
-
-  tr {
-    page-break-inside: avoid;
-  }
-
-  img {
-    page-break-inside: avoid;
-    max-width: 100% !important;
-  }
-
-  @page {
-    margin: 0.5cm;
-}
-
-  p, h2, h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2, h3 {
-    page-break-after: avoid;
-  }
 }

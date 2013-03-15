@@ -70,13 +70,13 @@ function usanetwork_ds_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_cover_item',
-        1 => 'title',
+        0 => 'title',
+        1 => 'field_cover_item',
       ),
     ),
     'fields' => array(
-      'field_cover_item' => 'ds_content',
       'title' => 'ds_content',
+      'field_cover_item' => 'ds_content',
     ),
     'classes' => array(),
   );
@@ -100,6 +100,16 @@ function usanetwork_ds_ds_view_modes_info() {
     'file' => 'file',
   );
   $export['block_cover_title'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'gallery_full';
+  $ds_view_mode->label = 'gallery_full';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+    'file' => 'file',
+  );
+  $export['gallery_full'] = $ds_view_mode;
 
   return $export;
 }

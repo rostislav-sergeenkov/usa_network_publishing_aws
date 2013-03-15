@@ -50,3 +50,4 @@ settings[aurora_modernizr_debug] = 0
 
 ; Experimental Options
 settings['aurora_custom_js_handling'] = 0
+settings['aurora_footer_js'] = 0

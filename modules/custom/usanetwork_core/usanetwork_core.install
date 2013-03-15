@@ -56,6 +56,8 @@ function usanetwork_core_enable_modules() {
     'linkit',
     // USA custom
     'usanetwork_mods',
+    'usanetwork_imagestyles',
+    'usanetwork_ds',
   );
 
   module_enable($modules);

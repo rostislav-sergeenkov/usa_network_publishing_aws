@@ -622,7 +622,7 @@ function usanetwork_mods_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '12',
         ),
         'default' => array(
           'label' => 'above',
@@ -702,7 +702,7 @@ function usanetwork_mods_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '13',
         ),
         'default' => array(
           'label' => 'above',
@@ -969,7 +969,7 @@ function usanetwork_mods_field_default_fields() {
         'module' => 'field_collection',
         'settings' => array(),
         'type' => 'field_collection_embed',
-        'weight' => '25',
+        'weight' => '6',
       ),
     ),
   );

@@ -59,8 +59,8 @@ function usanetwork_views_views_default_views() {
     'media_gallery' => 'media_gallery',
   );
 
-  /* Display: Page - show galleries */
-  $handler = $view->new_display('page', 'Page - show galleries', 'page');
+  /* Display: Page - all galleries */
+  $handler = $view->new_display('page', 'Page - all galleries', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -77,8 +77,8 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['path'] = 'usa-gallery';
 
-  /* Display: Block - show gallery */
-  $handler = $view->new_display('block', 'Block - show gallery', 'block');
+  /* Display: Block - nid gallery */
+  $handler = $view->new_display('block', 'Block - nid gallery', 'block');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;

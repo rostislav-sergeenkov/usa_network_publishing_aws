@@ -6,7 +6,7 @@
  *
  * @ingroup USA Network
  */
-
+ 
  /**
  *  Implements hook_install().
  */
@@ -48,17 +48,22 @@ function usanetwork_core_uninstall_modules() {
 function usanetwork_core_enable_modules() {
   $modules = array(
     // contrib
-    'flexslider',
+    'modernizr',
     'panels',
     'views_slideshow',
+    'views_slideshow_cycle',
+    'flexslider',
+    'flexslider_views',
     'menu_block',
     'print',
     'linkit',
-    'modernizr',
+    'borealis',
+    'borealis_ri',
     // USA custom
     'usanetwork_mods',
     'usanetwork_imagestyles',
     'usanetwork_ds',
+    'usanetwork_views',
   );
 
   module_enable($modules);

@@ -48,6 +48,7 @@ function usanetwork_core_uninstall_modules() {
 function usanetwork_core_enable_modules() {
   $modules = array(
     // contrib
+    'modernizr',
     'panels',
     'views_slideshow',
     'views_slideshow_cycle',

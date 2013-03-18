@@ -52,7 +52,8 @@
 // --------------------------------------------------------------------------------------
 // ✔ YOUR CUSTOM LAYOUT AND DESIGN SASS
 // THIS IS WHERE MOST CUSTOM WORK WILL GO
-@import "your-design-here/design";
+@import "design/modules/mega-nav";
+@import "design/design";
 // --------------------------------------------------------------------------------------
 
 // ✔ 8. ENABLE PRINT STYLES

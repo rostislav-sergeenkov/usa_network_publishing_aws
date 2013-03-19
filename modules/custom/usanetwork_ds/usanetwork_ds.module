@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_ds feature.
- */
-
-include_once 'usanetwork_ds.features.inc';

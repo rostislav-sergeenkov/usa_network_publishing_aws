@@ -60,10 +60,13 @@ function usanetwork_core_enable_modules() {
     'borealis',
     'borealis_ri',
     // USA custom
-    'usanetwork_mods',
+    //'usanetwork_mods',
+    'usanetwork_linkit',
     'usanetwork_imagestyles',
-    'usanetwork_ds',
+    //'usanetwork_ds',
     'usanetwork_views',
+    'pub_media_overrides',
+    'pub_tv_overrides',
   );
 
   module_enable($modules);

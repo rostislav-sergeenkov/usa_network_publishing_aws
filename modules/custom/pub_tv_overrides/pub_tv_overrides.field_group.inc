@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_mods.field_group.inc
+ * pub_tv_overrides.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function usanetwork_mods_field_group_info() {
+function pub_tv_overrides_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();

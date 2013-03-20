@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_mods.linkit_profiles.inc
+ * usanetwork_linkit.linkit_profiles.inc
  */
 
 /**
  * Implements hook_default_linkit_profiles().
  */
-function usanetwork_mods_default_linkit_profiles() {
+function usanetwork_linkit_default_linkit_profiles() {
   $export = array();
 
   $linkit_profile = new LinkitProfile();

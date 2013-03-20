@@ -110,4 +110,6 @@ if (isset($_SERVER['argv'][0]) && strrpos($_SERVER['argv'][0], 'drush.php') !== 
  * Setting a reasonable minimum php memory limit.
  */
 ini_set('memory_limit', '256M');
+
+// default profile
 $conf['install_profile'] = 'ent';

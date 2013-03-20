@@ -18,9 +18,9 @@ function usanetwork_mods_strongarm() {
     'character_profile' => 'character_profile',
     'media_gallery' => 'media_gallery',
     'person' => 'person',
-    'tv_episode' => 0,
-    'tv_season' => 0,
-    'tv_show' => 0,
+    'tv_episode' => 'tv_episode',
+    'tv_season' => 'tv_season',
+    'tv_show' => 'tv_show',
   );
   $export['pub_relationships_movie_content'] = $strongarm;
 

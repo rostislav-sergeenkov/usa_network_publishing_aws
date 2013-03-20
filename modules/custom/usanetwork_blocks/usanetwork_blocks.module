@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * USA blocks - custom blocks that are not generated with views or stored elsewhere
+ */
+
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_blocks_block_info() {
+  $blocks = array();
+  $blocks['fpo_ad_rectangle'] = array(
+    'info' => t('FPO: rectangle ad block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['fpo_ad_skyscraper'] = array(
+    'info' => t('FPO: skyscraper ad block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['fpo_ad_leaderboard'] = array(
+    'info' => t('FPO: leaderboard ad block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['fpo_ad_pusher'] = array(
+    'info' => t('FPO: pushdown 970x90 ad block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['fpo_block'] = array(
+    'info' => t('FPO: generic block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_blocks_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'fpo_ad_rectangle':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_fpo_ad_rectangle();
+      break;
+    case 'fpo_ad_skyscraper':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_fpo_ad_skyscraper();
+      break;
+    case 'fpo_ad_leaderboard':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_fpo_ad_leaderboard();
+      break;
+    case 'fpo_ad_pusher':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_fpo_ad_pusher();
+      break;
+    case 'fpo_block':
+      $block['subject'] = t('Generic block');
+      $block['content'] = usanetwork_blocks_fpo_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Block callback for the FPO rectangle ad block
+ */
+function usanetwork_blocks_fpo_ad_rectangle() {
+  $render = array();
+
+  $render['fpo_ad']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="ad" style="width: 300px; height: 250px; text-align: center; background: #ddd;">',
+    '#markup' => t('300x250 ad unit'),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the FPO rectangle ad block
+ */
+function usanetwork_blocks_fpo_ad_skyscraper() {
+  $render = array();
+
+  $render['fpo_ad']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="ad" style="width: 160px; height: 600px; text-align: center; background: #ddd;">',
+    '#markup' => t('160x600 ad unit'),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
+}
+
+
+/**
+ * Block callback for the FPO rectangle ad block
+ */
+function usanetwork_blocks_fpo_ad_leaderboard() {
+  $render = array();
+
+  $render['fpo_ad']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="ad" style="width: 728px; height: 90px; text-align: center; background: #ddd;">',
+    '#markup' => t('728x90 ad unit'),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the FPO slider or super 970 x 90 ad block
+ */
+function usanetwork_blocks_fpo_ad_pusher() {
+  $render = array();
+
+  $render['fpo_ad']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="ad" style="width: 970px; height: 90px; text-align: center; background: #ddd;">',
+    '#markup' => t('728x90 ad unit'),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the FPO generic block
+ */
+function usanetwork_blocks_fpo_block() {
+  $render = array();
+
+  $render['fpo_block']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="body">',
+    '#markup' => t('I am a generic placement only block. See me be that. :)'),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
+}

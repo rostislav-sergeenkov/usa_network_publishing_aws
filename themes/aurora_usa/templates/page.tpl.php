@@ -88,10 +88,10 @@
     <!-- END .dropdown-list -->
     <!-- <span id="show-menu-toggle" class="slide-menu-toggle" data-active-class="show-menu-active">Open Show Menu</span> -->
 
-    <div class="breadcrumb">
+    <!-- <div class="breadcrumb">
       <span>Show Title</span>
       <span>Photos</span>
-    </div>
+    </div> -->
 
     <form action="" id="header-search" data-module-type="HeaderSearch">
       <label for="searchNow" class="open-search">Open Search Box</label>
@@ -109,8 +109,8 @@
       <input type="reset">Reset Search Box</fieldset>
   </form>
 
-  <a class="show-share">share/send</a>
-  <span class="show-time">Tuesdays 10/9c</span>
+  <!-- <a class="show-share">share/send</a> -->
+  <!-- <span class="show-time">Tuesdays 10/9c</span> -->
   </div>
   <!-- /TOP TITLE AND TOOLS BAR -->
 

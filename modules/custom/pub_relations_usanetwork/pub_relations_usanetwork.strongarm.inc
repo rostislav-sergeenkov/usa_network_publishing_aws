@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_mods.strongarm.inc
+ * pub_relations_usanetwork.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function usanetwork_mods_strongarm() {
+function pub_relations_usanetwork_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

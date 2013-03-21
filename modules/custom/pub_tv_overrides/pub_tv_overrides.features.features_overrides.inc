@@ -11,9 +11,8 @@ function pub_tv_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
-  // Exported overrides for: variable
-  $overrides["variable.field_bundle_settings_node__tv_show.value|extra_fields|form|metatags|weight"] = '3';
-  $overrides["variable.field_bundle_settings_node__tv_show.value|extra_fields|form|path|weight"] = '4';
+  // Exported overrides for: field
+  $overrides["field.node-tv_show-field_tv_external_links.node-tv_show-field_tv_external_links"]["DELETED"] = TRUE;
 
  return $overrides;
 }

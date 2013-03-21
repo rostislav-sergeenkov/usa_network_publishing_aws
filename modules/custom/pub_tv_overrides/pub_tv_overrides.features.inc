@@ -13,13 +13,3 @@ function pub_tv_overrides_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
-
-/**
- * Implements hook_strongarm_alter().
- */
-function pub_tv_overrides_strongarm_alter(&$data) {
-  if (isset($data['field_bundle_settings_node__tv_show'])) {
-    $data['field_bundle_settings_node__tv_show']->value['extra_fields']['form']['metatags']['weight'] = '3'; /* WAS: '5' */
-    $data['field_bundle_settings_node__tv_show']->value['extra_fields']['form']['path']['weight'] = '4'; /* WAS: '6' */
-  }
-}

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork mods feature.
- */
-
-include_once 'usanetwork_mods.features.inc';

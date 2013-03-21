@@ -50,6 +50,7 @@ function usanetwork_core_enable_modules() {
     // contrib
     'modernizr',
     'panels',
+    'features_override',
     'views_slideshow',
     'views_slideshow_cycle',
     'flexslider',
@@ -61,13 +62,12 @@ function usanetwork_core_enable_modules() {
     'borealis_ri',
     // USA custom
     'usanetwork_blocks',
-    'usanetwork_mods',
     'usanetwork_linkit',
     'usanetwork_imagestyles',
-    //'usanetwork_ds',
     'usanetwork_views',
-    'pub_media_overrides',
+    // pub ent overrides
     'pub_tv_overrides',
+    'pub_relations_usanetwork',
   );
 
   module_enable($modules);

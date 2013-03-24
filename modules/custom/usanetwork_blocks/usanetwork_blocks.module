@@ -31,6 +31,14 @@ function usanetwork_blocks_block_info() {
     'info' => t('FPO: generic block'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_meganav'] = array(
+    'info' => t('USA: mega nav'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_social_footer'] = array(
+    'info' => t('USA: social footer'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
   return $blocks;
 }
 
@@ -61,8 +69,37 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = t('Generic block');
       $block['content'] = usanetwork_blocks_fpo_block();
       break;
+    case 'usa_meganav':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_meganav();
+      break;
+    case 'usa_social_footer':
+      $block['subject'] = t('Follow Us:');
+      $block['content'] = usanetwork_blocks_usa_social_footer();
+      break;
   }
   return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_blocks_theme($existing, $type, $theme, $path) {
+  // @TODO: add variables, make these real theme functions
+  return array(
+   'usa_meganav' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-meganav',
+    ),
+   'usa_social_footer' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-social-footer',
+    ),
+  );
 }
 
 /**
@@ -145,3 +182,32 @@ function usanetwork_blocks_fpo_block() {
 
   return $render;
 }
+
+/**
+ * Block callback for the usa_meganav block
+ */
+function usanetwork_blocks_usa_meganav() {
+  $render = array();
+
+  $render['meganav'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_meganav', array()),
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the usa_social_footer block
+ */
+function usanetwork_blocks_usa_social_footer() {
+  $render = array();
+
+  $render['socialfeet'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_social_footer', array()),
+  );
+
+  return $render;
+}
+

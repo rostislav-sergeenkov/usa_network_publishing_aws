@@ -74,6 +74,9 @@
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
         </h1>
       <?php endif; ?>
+
+      <?php print render($page['header']); ?>
+
       </div>
     </header>
 
@@ -115,9 +118,6 @@
   <!-- /TOP TITLE AND TOOLS BAR -->
 
   <!-- MAIN CONTENT -->
-  <header>
-    <?php print render($page['header']); ?>
-  </header>
   <div id="main" role="main" class="clearfix">
   <?php if ($page['main_prefix']) :?>
     <?php print render($page['main_prefix']); ?>

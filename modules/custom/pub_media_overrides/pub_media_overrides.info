@@ -1,0 +1,13 @@
+name = pub_media_overrides
+description = customizations and extending of pub_media for USA
+core = 7.x
+package = USA Network
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = pub_media
+features[ctools][] = ds:ds:1
+features[ds_field_settings][] = node|media_gallery|block_cover_title
+features[ds_layout_settings][] = node|media_gallery|block_cover_title
+features[features_api][] = api:1
+features[features_override_items][] = variable.field_bundle_settings_node__media_gallery

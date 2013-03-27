@@ -59,9 +59,10 @@ function aurora_usa_preprocess_html(&$vars) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function aurora_usa_preprocess_page(&$vars) {
-
+  drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+  drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
 }
 
 /**

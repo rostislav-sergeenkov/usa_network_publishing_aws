@@ -102,15 +102,34 @@ $font-cap: $font-sans;
 // uncomment and customize with your own fonts
 // place fonts in your fonts directory
 ////////////////////////////
-// @include font-face(
-//   myfont,
-//   font-files(
-//     'myfont-bold-webfont.woff',
-//     'myfont-bold-webfont.ttf',
-//     'myfont-bold-webfont.svg'),
-//   'myfont-bold-webfont.eot',
-//   'bold',
-//   'normal');
+@include font-face(
+  usanetwork,
+  font-files(
+    'usanetwork.woff',
+    'usanetwork.ttf',
+    'usanetwork.svg'),
+  'usanetwork.eot',
+  'normal',
+  'normal');
+
+
+%usanetwork-font {
+  font-family: 'usanetwork';
+    speak: none;
+  /* Enable Ligatures */
+  -webkit-font-feature-settings:"liga","dlig";-moz-font-feature-settings:"liga=1, dlig=1";-moz-font-feature-settings:"liga","dlig";-ms-font-feature-settings:"liga","dlig";-o-font-feature-settings:"liga","dlig";
+  font-feature-settings:"liga","dlig";
+  text-rendering:optimizeLegibility;
+    font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+// %usanetwork-font:before {
+//   content: "\75\73\61";
+// }
 
 // Encode custom fonts in the compiled css (data uri)
 $inline-fonts: false;

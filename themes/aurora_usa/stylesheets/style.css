@@ -1160,3 +1160,6 @@ html[xmlns] .slides {
     right: 0;
   }
 }
+[class*="iib"] {
+  background-color: #2d2d2d;
+}

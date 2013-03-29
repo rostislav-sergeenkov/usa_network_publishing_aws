@@ -1,0 +1,11 @@
+name = usanetwork strongarm
+description = Feature to export all variables of usa network
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_strongarm
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = usanetwork_on_now_schedule

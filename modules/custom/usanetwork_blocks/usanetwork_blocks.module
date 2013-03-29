@@ -31,6 +31,10 @@ function usanetwork_blocks_block_info() {
     'info' => t('FPO: generic block'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_on_now_block'] = array(
+    'info' => t('USA: on now block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
   return $blocks;
 }
 
@@ -60,6 +64,10 @@ function usanetwork_blocks_block_view($delta) {
     case 'fpo_block':
       $block['subject'] = t('Generic block');
       $block['content'] = usanetwork_blocks_fpo_block();
+      break;
+    case 'usa_on_now_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_on_now_block();
       break;
   }
   return $block;
@@ -141,6 +149,20 @@ function usanetwork_blocks_fpo_block() {
     '#prefix' => '<div class="body">',
     '#markup' => t('I am a generic placement only block. See me be that. :)'),
     '#suffix' => '</div>',
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the On Now block
+ */
+function usanetwork_blocks_on_now_block() {
+  $render = array();
+
+  $render['on_now_block']['body'] = array(
+    '#type' => 'markup',
+    '#markup' => t('On Now Placeholder'),
   );
 
   return $render;

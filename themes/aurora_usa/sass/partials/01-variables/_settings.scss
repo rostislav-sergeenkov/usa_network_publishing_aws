@@ -26,12 +26,12 @@ $base-line-height: $base-font-size * 1.5;
 
 // Dimensions
 // basic values, independant of any css framework
-// $kit-baseline: $base-line-height;
-// $kit-baseline-half: $kit-baseline * 0.5;
-// $kit-baseline-neg: $kit-baseline * -1;
-// $kit-gutter: ms(2);
-// $kit-gutter-half: $kit-gutter * 0.5;
-// $kit-gutter-neg: $kit-gutter * -1;
+$kit-baseline: $base-line-height;
+$kit-baseline-half: $kit-baseline * 0.5;
+$kit-baseline-neg: $kit-baseline * -1;
+$kit-gutter: ms(2);
+$kit-gutter-half: $kit-gutter * 0.5;
+$kit-gutter-neg: $kit-gutter * -1;
 
 
 // use the Compass baseline system

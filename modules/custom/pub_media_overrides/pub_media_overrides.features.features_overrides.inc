@@ -14,59 +14,42 @@ function pub_media_overrides_features_override_default_overrides() {
   // Exported overrides for: field
   $overrides["field.node-media_gallery-body.field_instance|display|block_cover_title"] = array(
     'label' => 'hidden',
-    'module' => 'text',
     'settings' => array(),
-    'type' => 'text_default',
-    'weight' => '1',
+    'type' => 'hidden',
+    'weight' => '8',
   );
   $overrides["field.node-media_gallery-field_categories.field_instance|display|block_cover_title"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '2',
+    'weight' => '9',
   );
   $overrides["field.node-media_gallery-field_collection.field_instance|display|block_cover_title"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '6',
+    'weight' => '11',
   );
   $overrides["field.node-media_gallery-field_content_tags.field_instance|display|block_cover_title"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '4',
+    'weight' => '10',
   );
   $overrides["field.node-media_gallery-field_cover_item.field_instance|display|block_cover_title"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => '5',
+    'label' => 'hidden',
+    'module' => 'file_entity',
+    'settings' => array(
+      'file_view_mode' => 'block_cover_title',
+    ),
+    'type' => 'file_rendered',
+    'weight' => '0',
   );
   $overrides["field.node-media_gallery-field_media_items.field_instance|display|block_cover_title"] = array(
     'label' => 'hidden',
-    'module' => 'file',
     'settings' => array(),
-    'type' => 'file_default',
-    'weight' => '0',
-  );
-  $overrides["field.node-media_gallery-field_pub_relation_movie.field_instance|display|block_cover_title"] = array(
-    'label' => 'above',
-    'module' => 'field_collection',
-    'settings' => array(
-      'view_mode' => 'full',
-    ),
-    'type' => 'field_collection_fields',
-    'weight' => '7',
-  );
-  $overrides["field.node-media_gallery-field_pub_relation_tv_shows.field_instance|display|block_cover_title"] = array(
-    'label' => 'above',
-    'module' => 'field_collection',
-    'settings' => array(
-      'view_mode' => 'full',
-    ),
-    'type' => 'field_collection_fields',
-    'weight' => '8',
+    'type' => 'hidden',
+    'weight' => '5',
   );
 
   // Exported overrides for: variable

@@ -21,10 +21,9 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
   if (isset($data['node-media_gallery-body'])) {
     $data['node-media_gallery-body']['field_instance']['display']['block_cover_title'] = array(
       'label' => 'hidden',
-      'module' => 'text',
       'settings' => array(),
-      'type' => 'text_default',
-      'weight' => '1',
+      'type' => 'hidden',
+      'weight' => '8',
     ); /* WAS: '' */
   }
   if (isset($data['node-media_gallery-field_categories'])) {
@@ -32,7 +31,7 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
-      'weight' => '2',
+      'weight' => '9',
     ); /* WAS: '' */
   }
   if (isset($data['node-media_gallery-field_collection'])) {
@@ -40,7 +39,7 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
-      'weight' => '6',
+      'weight' => '11',
     ); /* WAS: '' */
   }
   if (isset($data['node-media_gallery-field_content_tags'])) {
@@ -48,46 +47,26 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
-      'weight' => '4',
+      'weight' => '10',
     ); /* WAS: '' */
   }
   if (isset($data['node-media_gallery-field_cover_item'])) {
     $data['node-media_gallery-field_cover_item']['field_instance']['display']['block_cover_title'] = array(
-      'label' => 'above',
-      'settings' => array(),
-      'type' => 'hidden',
-      'weight' => '5',
+      'label' => 'hidden',
+      'module' => 'file_entity',
+      'settings' => array(
+        'file_view_mode' => 'block_cover_title',
+      ),
+      'type' => 'file_rendered',
+      'weight' => '0',
     ); /* WAS: '' */
   }
   if (isset($data['node-media_gallery-field_media_items'])) {
     $data['node-media_gallery-field_media_items']['field_instance']['display']['block_cover_title'] = array(
       'label' => 'hidden',
-      'module' => 'file',
       'settings' => array(),
-      'type' => 'file_default',
-      'weight' => '0',
-    ); /* WAS: '' */
-  }
-  if (isset($data['node-media_gallery-field_pub_relation_movie'])) {
-    $data['node-media_gallery-field_pub_relation_movie']['field_instance']['display']['block_cover_title'] = array(
-      'label' => 'above',
-      'module' => 'field_collection',
-      'settings' => array(
-        'view_mode' => 'full',
-      ),
-      'type' => 'field_collection_fields',
-      'weight' => '7',
-    ); /* WAS: '' */
-  }
-  if (isset($data['node-media_gallery-field_pub_relation_tv_shows'])) {
-    $data['node-media_gallery-field_pub_relation_tv_shows']['field_instance']['display']['block_cover_title'] = array(
-      'label' => 'above',
-      'module' => 'field_collection',
-      'settings' => array(
-        'view_mode' => 'full',
-      ),
-      'type' => 'field_collection_fields',
-      'weight' => '8',
+      'type' => 'hidden',
+      'weight' => '5',
     ); /* WAS: '' */
   }
 }

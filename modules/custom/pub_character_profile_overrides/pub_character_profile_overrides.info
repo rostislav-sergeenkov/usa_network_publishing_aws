@@ -1,0 +1,13 @@
+name = pub_character_profile_overrides
+description = customizations and extending of pub_character_profile for USA
+core = 7.x
+package = USA Network
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = comment_default_mode_character_profile
+features[variable][] = comment_default_per_page_character_profile
+features[variable][] = comment_form_location_character_profile
+features[variable][] = comment_preview_character_profile
+features[variable][] = comment_subject_field_character_profile

@@ -10,6 +10,7 @@ dependencies[] = features
 dependencies[] = field_group
 dependencies[] = pub_media
 features[ctools][] = ds:ds:1
+features[ctools][] = field_group:field_group:1
 features[ds_field_settings][] = node|media_gallery|block_cover_title
 features[ds_layout_settings][] = node|media_gallery|block_cover_title
 features[features_api][] = api:1

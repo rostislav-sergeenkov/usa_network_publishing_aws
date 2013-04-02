@@ -110,7 +110,7 @@ function pub_media_overrides_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '11',
+        'weight' => '8',
       ),
     ),
   );

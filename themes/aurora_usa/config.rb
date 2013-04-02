@@ -1,5 +1,6 @@
 # Require any additional compass plugins here.
 require 'aurora'
+require 'survivalkit'
 
 # Set this to the root of your project when deployed:
 http_path = "/sites/all/themes/aurora_usa"
@@ -51,3 +52,6 @@ output_style = (environment == :development) ? :expanded : :compressed
 # Pass options to sass. For development, we turn on the FireSass-compatible
 # debug_info if the debug config variable above is true.
 sass_options = (environment == :development && debug == true) ? {:debug_info => true} : {}
+
+# Add support for repeating gradients
+Compass::BrowserSupport.add_support("repeating-linear-gradient", "webkit", "moz", "ms")

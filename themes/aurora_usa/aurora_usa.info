@@ -30,10 +30,10 @@ settings[aurora_typekit_id] = 0
 
 ; JavaScript Options
 settings[aurora_footer_js] = 1
-settings[aurora_libraries_head] = 0
+settings[aurora_libraries_head] = 1
 
 ; Toggle Display
-settings[toggle_logo] = 1
+settings[toggle_logo] = 0
 settings[toggle_name] = 1
 settings[toggle_slogan] = 0
 settings[toggle_node_user_picture] = 0
@@ -50,3 +50,4 @@ settings[aurora_modernizr_debug] = 0
 
 ; Experimental Options
 settings['aurora_custom_js_handling'] = 0
+settings['aurora_footer_js'] = 0

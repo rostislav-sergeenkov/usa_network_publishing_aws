@@ -1,0 +1,183 @@
+// Import branding fonts
+@font-face {
+    font-family: "Proxima N W01 Thin Reg";
+    src:
+    url("../fonts/37994fca-b67e-41db-94b3-44077c62810a.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Thin Reg";
+    src:
+    url("../fonts/da176885-bee9-49f7-88f0-d7ad9229ddd7.woff") format("woff"),
+    url("../fonts/1861a7b7-09a5-4efd-b681-5214784ded39.ttf") format("truetype"),
+    url("../fonts/610147b3-ad15-4b4b-a0fb-25244238ab3d.svg#610147b3-ad15-4b4b-a0fb-25244238ab3d") format("svg");
+}
+@font-face {
+    font-family: "Proxima N W01 Light";
+    src:
+    url("../fonts/93cc6d34-798e-42c8-87d2-fd6391801b63.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Light";
+    src:
+    url("../fonts/2fa30669-9bbd-4ced-912f-db94a367ed6c.woff") format("woff"),
+    url("../fonts/c12b3ebb-3771-483f-a84a-ac63d615c28e.ttf") format("truetype"),
+    url("../fonts/2a961063-ea56-4a4b-8cea-bdae32edb0e2.svg#2a961063-ea56-4a4b-8cea-bdae32edb0e2") format("svg");
+}
+@font-face {
+    font-family: "Proxima N W01 Reg";
+    src:
+    url("../fonts/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Reg";
+    src:
+    url("../fonts/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff") format("woff"),
+    url("../fonts/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf") format("truetype"),
+    url("../fonts/ab9cd062-380f-4b53-b1a7-c0bec7402235.svg#ab9cd062-380f-4b53-b1a7-c0bec7402235") format("svg");
+}
+@font-face {
+    font-family: "Proxima N W01 Smbd";
+    src:
+    url("../fonts/87e4b4fc-cdf1-450a-8bed-dd818cba908d.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Smbd";
+    src:
+    url("../fonts/70ae52ec-d89b-4c6a-9402-854ebe423c54.woff") format("woff"),
+    url("../fonts/6a35571c-ea14-4dac-9ae1-0e7af0abeec8.ttf") format("truetype"),
+    url("../fonts/ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c.svg#ac2bdafc-d4a8-49d0-8a10-4e2f16bf7e3c") format("svg");
+}
+@font-face {
+    font-family: "Proxima N W01 Bold";
+    src:
+    url("../fonts/fbc6b03a-b3a1-427c-a884-053deca3a53c.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Bold";
+    src:
+    url("../fonts/d999c07b-a049-4eb5-b8a6-4f36ae25e67e.woff") format("woff"),
+    url("../fonts/4d4a75f5-d32a-4a09-8665-133afd39cc37.ttf") format("truetype"),
+    url("../fonts/8152bc4e-d700-4c78-b6be-326893e6f53f.svg#8152bc4e-d700-4c78-b6be-326893e6f53f") format("svg");
+}
+@font-face {
+    font-family: "Proxima N W01 Xbold";
+    src:
+    url("../fonts/9fbce143-f5db-4c0b-9159-b1e666079f67.eot?iefix") format("eot");
+}
+@font-face {
+    font-family: "Proxima N W01 Xbold";
+    src:
+    url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"),
+    url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"),
+    url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
+}
+
+// Font variables
+$headline-bold      : "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+$headline-semi      : "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+$headline-reg       : "Proxima N W01 Reg", Arial, sans-serif;
+$headline-lt        : "Proxima N W01 Light", Arial, sans-serif;
+$headline-thn       : "Proxima N W01 Thin Reg", Arial, sans-serif;
+
+
+// Default font stacks
+$font-sans: $headline-lt;
+$font-serifs: Georgia, serif;
+$font-mono: Consolas, Menlo, "Courier New", monospace, monospace;
+
+// General font variables
+$font-body: $headline-lt;
+$font-headline: $headline-bold;
+$font-logo: $headline-bold;
+
+// Special use font variables
+// ampersands
+$font-amp: $font-serifs;
+// caps
+$font-cap: $font-sans;
+
+
+////////////////////////////
+// CUSTOM FONTS
+// uncomment and customize with your own fonts
+// place fonts in your fonts directory
+////////////////////////////
+@include font-face(
+  usanetwork,
+  font-files(
+    'usanetwork.woff',
+    'usanetwork.ttf',
+    'usanetwork.svg'),
+  'usanetwork.eot',
+  'normal',
+  'normal');
+
+
+%usanetwork-font {
+  font-family: 'usanetwork';
+    speak: none;
+  /* Enable Ligatures */
+  -webkit-font-feature-settings:"liga","dlig";-moz-font-feature-settings:"liga=1, dlig=1";-moz-font-feature-settings:"liga","dlig";-ms-font-feature-settings:"liga","dlig";-o-font-feature-settings:"liga","dlig";
+  font-feature-settings:"liga","dlig";
+  text-rendering:optimizeLegibility;
+    font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+// %usanetwork-font:before {
+//   content: "\75\73\61";
+// }
+
+// Encode custom fonts in the compiled css (data uri)
+$inline-fonts: false;
+
+////////////////////////////
+// FONT-AWESOME
+// uncomment to include
+// http://fortawesome.github.com/Font-Awesome/
+////////////////////////////
+// @import 'survivalkit/fonts/font-awesome';
+// @include font-awesome-font-face;
+
+////////////////////////////
+// SYMBOLSET - STANDARD
+// uncomment to include
+// http://symbolset.com/
+// NOTE: mixin only includes sass/css
+// purchase the font and place in your fonts directory
+////////////////////////////
+// @import 'survivalkit/fonts/ss-standard';
+// @include ss-standard-font-face;
+// @include ss-standard-classes;
+
+////////////////////////////
+// SYMBOLSET - SOCIAL
+// uncomment to include
+// http://symbolset.com/
+// NOTE: mixin only includes sass/css
+// purchase the font and place in your fonts directory
+////////////////////////////
+// @import 'survivalkit/fonts/ss-social';
+// @include ss-social-font-face;
+// @include ss-social-classes;
+
+////////////////////////////
+// League Gothic
+// uncomment to include
+// http://www.theleagueofmoveabletype.com/league-gothic
+////////////////////////////
+// @import 'survivalkit/fonts/league-gothic';
+// @include league-gothic-font-face;
+
+////////////////////////////
+// OSTRICH SANS
+// uncomment to include
+// http://www.theleagueofmoveabletype.com/ostrich-sans
+////////////////////////////
+// @import 'survivalkit/fonts/ostrich-sans';
+// @include ostrich-sans-font-face;
+// @include ostrich-dashed-font-face;
+// @include ostrich-rounded-font-face;

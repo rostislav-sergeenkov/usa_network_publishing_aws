@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the pub_media_overrides feature.
+ */
+
+include_once 'pub_media_overrides.features.inc';

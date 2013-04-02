@@ -1,0 +1,13 @@
+name = pub_person_overrides
+description = customizations and extending of pub_person for USA
+core = 7.x
+package = USA Network
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = pub_person
+features[features_api][] = api:1
+features[features_override_items][] = field_group.group_additional_information|node|person|form
+features[features_overrides][] = field_group.group_additional_information|node|person|form.data|children|3
+features[field][] = node-person-field_character
+features[field_group][] = group_additional_information|node|person|form

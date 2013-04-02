@@ -5,10 +5,11 @@
  */
 
 /**
- * Implements hook_field_group_info_alter().
+ * Implements hook_ctools_plugin_api().
  */
-function pub_person_overrides_field_group_info_alter(&$data) {
-  if (isset($data['group_additional_information|node|person|form'])) {
-    $data['group_additional_information|node|person|form']->data['children']['3'] = 'field_character'; /* WAS: '' */
+function pub_person_overrides_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
   }
 }

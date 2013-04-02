@@ -17,12 +17,3 @@ function pub_character_profile_overrides_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
-
-/**
- * Implements hook_field_group_info_alter().
- */
-function pub_character_profile_overrides_field_group_info_alter(&$data) {
-  if (isset($data['group_characters_information|node|character_profile|form'])) {
-    $data['group_characters_information|node|character_profile|form']->data['children']['7'] = 'field_usa_character_thumb'; /* WAS: '' */
-  }
-}

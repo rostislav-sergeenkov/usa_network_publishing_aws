@@ -76,6 +76,8 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
  */
 function pub_media_overrides_strongarm_alter(&$data) {
   if (isset($data['field_bundle_settings_node__media_gallery'])) {
+    $data['field_bundle_settings_node__media_gallery']->value['extra_fields']['form']['metatags']['weight'] = '3'; /* WAS: '2' */
+    $data['field_bundle_settings_node__media_gallery']->value['extra_fields']['form']['path']['weight'] = '4'; /* WAS: '3' */
     $data['field_bundle_settings_node__media_gallery']->value['view_modes']['block_cover_title'] = array(
       'custom_settings' => TRUE,
     ); /* WAS: '' */

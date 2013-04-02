@@ -1,0 +1,4 @@
+name = usanetwork_social
+description = USA Network social pages
+package = USA Network
+core = 7.x

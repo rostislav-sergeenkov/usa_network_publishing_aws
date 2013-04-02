@@ -161,7 +161,6 @@ function usanetwork_blocks_on_now_block() {
   $render = array();
   
   drupal_add_js(drupal_get_path('module', 'usanetwork_blocks') . '/js/jstz-1.0.4.min.js');
-  //drupal_add_js(drupal_get_path('module', 'usanetwork_blocks') . '/js/date.js');
 
   $on_now_url = variable_get('usanetwork_on_now_schedule', '');
   $tv_url = variable_get('usanetwork_tv_schedule', '');
@@ -171,24 +170,42 @@ function usanetwork_blocks_on_now_block() {
 
   $on_now_schedule = file_get_contents($on_now_url);
   $tv_schedule = file_get_contents($tv_url);
-  $vars = 'var tv_schedule = ' . $tv_schedule . ';';
+  $tv_schedule = drupal_json_decode($tv_schedule);
+
+  $tv_schedule_prev_day = file_get_contents($tv_url . '?sdate=' . date('m/d/Y', time() - 60 * 60 * 24));
+  $tv_schedule_prev_day = drupal_json_decode($tv_schedule_prev_day);
+
+  $full_tv_schedule = array('data' => array());
+  $start_search = false;
+  foreach ($tv_schedule_prev_day['data'] as $key => $val) {
+    if (strpos($key, 'PM') !== FALSE) {
+      $start_search = true;
+    }
+    if ($start_search && strpos($key, 'AM') !== FALSE) {
+      $full_tv_schedule['data'][$key] = $val;
+    } 
+  }
+  foreach ($tv_schedule['data'] as $key => $val) {
+    $full_tv_schedule['data'][$key] = $val;
+  } 
+
+  $vars = 'var tv_schedule = ' . drupal_json_encode($full_tv_schedule) . ';';
 
   $orginal_tz = date_default_timezone_get();
   date_default_timezone_set('America/New_York');
   $et_time = floatval(date('U'));
-  date_default_timezone_set($orginal_tz);
 
-  $tv_schedule = drupal_json_decode($tv_schedule);
-  $last_dt = array_keys($tv_schedule['data']);
+  $last_dt = array_keys($full_tv_schedule['data']);
   $last_dt = $last_dt[0];
-  foreach ($tv_schedule['data'] as $dt => $show) {
+  foreach ($full_tv_schedule['data'] as $dt => $show) {
     $show_dt = strtotime(date('Y-m-d ').$dt);
     if ($et_time < $show_dt) {
-      $show_name = $tv_schedule['data'][$last_dt]['show'] .' - '. $tv_schedule['data'][$last_dt]['episode'];
+      $show_name = $full_tv_schedule['data'][$last_dt]['show'] .' - '. $full_tv_schedule['data'][$last_dt]['episode'];
       break;
     }
     $last_dt = $dt;
   }
+  date_default_timezone_set($orginal_tz);
 
   $show_name = strtoupper($show_name);
   $vars .= 'var on_now_default_show = "' . $show_name . '";';

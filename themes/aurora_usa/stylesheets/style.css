@@ -1,3 +1,17 @@
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: "\0020";
+  display: table;
+  clear: both;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
 img, table {
   max-width: 100%;
 }
@@ -552,6 +566,97 @@ mark {
   background: red;
   background-color: rgba(255, 255, 0, 0.5);
   text-shadow: none;
+}
+
+.clearfix {
+  /* for IE 6/7 */
+  *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
+  /* non-JS fallback */
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+  clear: both;
+}
+
+#main-menu {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* for IE 6/7 */
+  *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
+  /* non-JS fallback */
+  *zoom: 1;
+}
+#main-menu:before, #main-menu:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+#main-menu:after {
+  clear: both;
+}
+#main-menu li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+#main-menu li:first-child, #main-menu li.first {
+  padding-left: 0;
+}
+#main-menu li:last-child {
+  padding-right: 0;
+}
+#main-menu li.last {
+  padding-right: 0;
+}
+
+.messages, .status, .warning, .error {
+  border: 1px solid #878785;
+  padding: 12px 0.5em;
+  color: white;
+}
+.messages p:last-child, .status p:last-child, .warning p:last-child, .error p:last-child {
+  margin-bottom: 0;
+}
+
+.status {
+  border-color: green;
+  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0, 128, 0, 0.25) 35px, rgba(0, 128, 0, 0.25) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0, 128, 0, 0.25) 35px, rgba(0, 128, 0, 0.25) 70px);
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0, 128, 0, 0.25) 35px, rgba(0, 128, 0, 0.25) 70px);
+}
+
+.warning {
+  border-color: #f8981d;
+  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+}
+
+.error {
+  border-color: red;
+  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255, 0, 0, 0.25) 35px, rgba(255, 0, 0, 0.25) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255, 0, 0, 0.25) 35px, rgba(255, 0, 0, 0.25) 70px);
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255, 0, 0, 0.25) 35px, rgba(255, 0, 0, 0.25) 70px);
+}
+
+.node-unpublished {
+  background-color: #000000;
+  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
 }
 
 #mega-nav {

@@ -1,1 +1,140 @@
 <?php
+
+/**
+ * Helper function. Creates the menu items.
+ * invoked on install
+ */
+function usanetwork_core_create_menu_items() {
+
+  $menus = array();
+  $menu_links = array();
+  $menu_links_child_items = array();
+
+  // Create a custom menu, if Menu module is enabled.
+  if (!module_exists('menu')) {
+    return FALSE;
+  }
+
+  $menus['menu_usa_footer_top'] = array(
+    'menu_name' => 'usa-footer-top',
+    'title' => st('usa footer top'),
+    'description' => st('primary footer menu.'),
+  );
+
+  $menus['menu_usa_footer_bottom'] = array(
+    'menu_name' => 'usa-footer-bottom',
+    'title' => st('usa footer bottom'),
+    'description' => st('secondary footer menu.'),
+  );
+
+  foreach ($menus as $key => $menu) {
+    if (!menu_load($menu['menu_name'])) {
+      menu_save($menu);
+    }
+  }
+
+  // Create the top-level links for the menu_usa_footer_top menu.
+  $menu_links['social'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('social'),
+    'options' => array('attributes' => array('title' => st('social'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 0,
+    'expanded' => '1',
+  );
+  $menu_links['mobile'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('mobile'),
+    'options' => array('attributes' => array('title' => st('mobile'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 1,
+    'expanded' => '1',
+  );
+  $menu_links['usa_store'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('usa store'),
+    'options' => array('attributes' => array('title' => st('usa store'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 2,
+    'expanded' => '1',
+  );
+
+  // Create the top-level links for the menu_usa_footer_bottom menu.
+  $menu_links['ipr'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Independent Programming Report'),
+    'options' => array('attributes' => array('title' => st('Independent Programming Report'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 0,
+    'expanded' => '1',
+  );
+  $menu_links['closed_captioning'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Closed Captioning'),
+    'options' => array('attributes' => array('title' => st('Closed Captioning'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 1,
+    'expanded' => '1',
+  );
+  $menu_links['terms_of_service'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Terms of Service'),
+    'options' => array('attributes' => array('title' => st('Terms of Service'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 2,
+    'expanded' => '1',
+  );
+  $menu_links['privacy_policy'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Privacy Policy'),
+    'options' => array('attributes' => array('title' => st('Privacy Policy'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 3,
+    'expanded' => '1',
+  );
+  $menu_links['ad_choices'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Ad Choices'),
+    'options' => array('attributes' => array('title' => st('Ad Choices'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 4,
+    'expanded' => '1',
+  );
+  $menu_links['help'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Help'),
+    'options' => array('attributes' => array('title' => st('Help'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 5,
+    'expanded' => '1',
+  );
+
+
+  // Save top level menu links
+  foreach ($menu_links as $key => &$menu_link) {
+    $mlid = menu_link_save($menu_link);
+  }
+
+  // Add items that require a plid below.
+  // if we need to add child links this is how we do it
+  /*
+  $menu_links_child_items = array(
+    'games' => array(
+      'link_path' => 'games-child',
+      'link_title' => st('games child link'),
+      'options' => array('attributes' => array('title' => st('games-child'))),
+      'menu_name' => 'sprout-header',
+      'hidden' => '0',
+      'expanded' => '0',
+      'weight' => '0',
+      'plid' => $menu_links['more_link']['mlid'],
+    ),
+  );
+  */
+  // save the menu links
+  foreach ($menu_links_child_items as $key => $menu_link) {
+    $mlid = menu_link_save($menu_link);
+    $menu_links_child_items[$key]['mlid'] = $mlid;
+  }
+
+}

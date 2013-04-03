@@ -74,13 +74,50 @@
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
         </h1>
       <?php endif; ?>
-    </div>
-  </header>
+
+      <?php print render($page['header']); ?>
+
+      </div>
+    </header>
+
+
+
+
+  <div id="wrapper" class="slide-out" data-module-type="SlideOut" data-toggle-selector=".slide-menu-toggle">
+
+    <!-- TOP TITLE AND TOOLS BAR -->
+    <div id="utilities" >
+
+    <!-- END .dropdown-list -->
+    <!-- <span id="show-menu-toggle" class="slide-menu-toggle" data-active-class="show-menu-active">Open Show Menu</span> -->
+
+    <!-- <div class="breadcrumb">
+      <span>Show Title</span>
+      <span>Photos</span>
+    </div> -->
+
+    <form action="" id="header-search" data-module-type="HeaderSearch">
+      <label for="searchNow" class="open-search">Open Search Box</label>
+      <fieldset>
+        <!-- <label for="searchNow">Search</label>
+      -->
+      <!--
+          <div class="search-wrap">
+      -->
+      <input type="search" id="searchNow" name="searchNow" placeholder="Search Now">
+      <!-- </div>
+      -->
+      <!-- <input type="submit" value="Go" id="searchSubmitButton" />
+      -->
+      <input type="reset">Reset Search Box</fieldset>
+  </form>
+
+  <!-- <a class="show-share">share/send</a> -->
+  <!-- <span class="show-time">Tuesdays 10/9c</span> -->
+  </div>
+  <!-- /TOP TITLE AND TOOLS BAR -->
 
   <!-- MAIN CONTENT -->
-  <header>
-    <?php print render($page['header']); ?>
-  </header>
   <div id="main" role="main" class="clearfix">
   <?php if ($page['main_prefix']) :?>
     <?php print render($page['main_prefix']); ?>
@@ -119,8 +156,13 @@
   </div><!-- #main -->
   <!-- /MAIN CONTENT -->
 
+
+
+
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo">
     <?php print render($page['footer']); ?>
   </footer>
   <!-- /FOOTER -->
+
+  <!-- </div>--></div>

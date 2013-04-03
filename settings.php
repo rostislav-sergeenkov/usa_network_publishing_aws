@@ -113,5 +113,3 @@ ini_set('memory_limit', '256M');
 
 // default profile
 $conf['install_profile'] = 'ent';
-
-$conf['install_profile'] = 'ent';

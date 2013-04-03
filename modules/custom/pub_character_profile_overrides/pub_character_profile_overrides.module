@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the pub_character_profile_overrides feature.
+ */
+
+include_once 'pub_character_profile_overrides.features.inc';

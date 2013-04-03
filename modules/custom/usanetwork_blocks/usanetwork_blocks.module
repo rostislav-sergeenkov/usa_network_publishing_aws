@@ -245,7 +245,7 @@ function usanetwork_blocks_on_now_block() {
       if (empty($last_dt)) {
         $last_dt = $dt;
       }
-      $show_name = $full_tv_schedule['data'][$last_dt]['show'] .' - '. $full_tv_schedule['data'][$last_dt]['episode'];
+      $show_name = $full_tv_schedule['data'][$last_dt]['show'] .': '. $full_tv_schedule['data'][$last_dt]['episode'];
       break;
     }
     $last_dt = $dt;

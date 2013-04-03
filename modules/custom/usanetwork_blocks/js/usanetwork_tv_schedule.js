@@ -18,7 +18,7 @@ Drupal.behaviors.usanetwork_tv_schedule = {
           if (last_show == '') {
             last_show = show;
           }
-          on_now_show = tv_schedule['data'][last_show]['show'] + ' - ' + tv_schedule['data'][last_show]['episode'];
+          on_now_show = tv_schedule['data'][last_show]['show'] + ': ' + tv_schedule['data'][last_show]['episode'];
           break;
         }
         last_show = show;

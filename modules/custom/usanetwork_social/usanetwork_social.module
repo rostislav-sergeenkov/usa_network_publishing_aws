@@ -14,7 +14,7 @@ function usanetwork_social_menu() {
     'file' =>  'usanetwork_social.admin.inc',
     'weight' => -10,
   );
- 
+
   return $items;
 }
 
@@ -27,13 +27,60 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
   if ($form['type']['#value'] == 'tv_show') {
 
     // set the sitewide values as default values for each show
+    // eql template
     if (!isset($form['field_twitter_eql_template'][$lang][0]['value']['#default_value']) ||
       empty($form['field_twitter_eql_template'][$lang][0]['value']['#default_value'])) {
       $form['field_twitter_eql_template'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_echo_query_template', '');
     }
+    // childrenof
     if (!isset($form['field_twitter_childrenof'][$lang][0]['value']['#default_value']) ||
       empty($form['field_twitter_childrenof'][$lang][0]['value']['#default_value'])) {
       $form['field_twitter_childrenof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_twitter_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_feed', '');
+    }
+    // state
+    if (!isset($form['field_twitter_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_state', '');
+    }
+    // source
+    if (!isset($form['field_twitter_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_source', '');
+    }
+    // markers
+    if (!isset($form['field_twitter_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_markers', '');
+    }
+    // tags
+    if (!isset($form['field_twitter_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_twitter_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_twitter_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_twitter_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_children', '');
     }
   }
 }

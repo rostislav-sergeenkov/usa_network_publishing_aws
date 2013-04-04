@@ -22,18 +22,13 @@ function usanetwork_social_settings_form() {
     '#title' => t('Echo Query Template'),
     '#default_value' => variable_get('usanetwork_social_twitter_echo_query_template', ''),
     '#description' => t('The tokenized Echo query string. Values in the string will be replaced with the following Tokens.'),
+    '#maxlength' => 512,
   );
   $form['twitter']['usanetwork_social_twitter_childrenof'] = array(
     '#type' => 'textfield',
     '#title' => t('CHILDRENOF'),
     '#default_value' => variable_get('usanetwork_social_twitter_childrenof', ''),
     '#description' => t('CHILDRENOF Token'),
-  );
-  $form['twitter']['usanetwork_social_twitter_show'] = array(
-    '#type' => 'textfield',
-    '#title' => t('SHOW (for Echo queries)'),
-    '#default_value' => variable_get('usanetwork_social_twitter_show', ''),
-    '#description' => t('SHOW Token'),
   );
   $form['twitter']['usanetwork_social_twitter_feed'] = array(
     '#type' => 'textfield',
@@ -88,6 +83,7 @@ function usanetwork_social_settings_form() {
     '#title' => t('CHILDREN'),
     '#default_value' => variable_get('usanetwork_social_twitter_children', ''),
     '#description' => t('CHILDREN Token'),
+    '#maxlength' => 512,
   );
 
 

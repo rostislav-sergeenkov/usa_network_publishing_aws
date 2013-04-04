@@ -259,9 +259,12 @@ function usanetwork_blocks_on_now_block() {
   drupal_add_js($vars, array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_blocks') . '/js/usanetwork_tv_schedule.js');
 
+  // Handles the JS disabled browser scenario
+  $markup = '&nbsp;<noscript>' . $show_name . '</noscript>';
+
   $render['on_now_block']['body'] = array(
     '#type' => 'markup',
-    '#markup' => '&nbsp;',
+    '#markup' => $markup,
   );
 
   return $render;

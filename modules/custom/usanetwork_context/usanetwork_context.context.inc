@@ -13,6 +13,39 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usanetwork_homepage';
+  $context->description = 'The content in this context will appear on the site front page.';
+  $context->tag = 'homepage';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_blocks-usa_on_now_block' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_on_now_block',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('The content in this context will appear on the site front page.');
+  t('homepage');
+  $export['usanetwork_homepage'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usanetwork_sitewide';
   $context->description = '';
   $context->tag = 'sitewide';

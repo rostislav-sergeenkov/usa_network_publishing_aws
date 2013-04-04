@@ -18,4 +18,22 @@ function usanetwork_social_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
+  $lang = LANGUAGE_NONE;
 
+  if ($form['type']['#value'] == 'tv_show') {
+
+    // set the sitewide values as default values for each show
+    if (!isset($form['field_twitter_eql_template'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_eql_template'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_eql_template'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_echo_query_template', '');
+    }
+    if (!isset($form['field_twitter_childrenof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_childrenof'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_childrenof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_childrenof', '');
+    }
+  }
+}

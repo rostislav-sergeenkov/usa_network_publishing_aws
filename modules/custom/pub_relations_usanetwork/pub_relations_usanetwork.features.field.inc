@@ -450,6 +450,15 @@ function pub_relations_usanetwork_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'cover' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '7',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'field_collection',
@@ -457,7 +466,7 @@ function pub_relations_usanetwork_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_fields',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'above',
@@ -518,6 +527,15 @@ function pub_relations_usanetwork_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'cover' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '8',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'field_collection',
@@ -525,7 +543,7 @@ function pub_relations_usanetwork_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_fields',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'full' => array(
           'label' => 'above',
@@ -748,6 +766,15 @@ function pub_relations_usanetwork_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cover' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '16',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'field_collection',

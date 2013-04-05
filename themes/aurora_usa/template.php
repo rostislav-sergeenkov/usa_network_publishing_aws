@@ -155,9 +155,35 @@ function aurora_usa_preprocess_comment(&$vars, $hook) {
  * @param $vars
  *   An array of variables to pass to the theme template.
  */
-/* -- Delete this line if you want to use this function
 function aurora_usa_preprocess_views_view(&$vars) {
-  $view = $vars['view'];
+  // $view = $vars['view'];
+  if (isset($vars['view']->name)) {
+    $views_preprocess_function = 'aurora_usa_preprocess_views_view_fields__' . $vars['view']->name . '__' . $vars['view']->current_display;
+    if (function_exists($views_preprocess_function)) {
+     $views_preprocess_function($vars);
+    }
+  }
+}
+function aurora_usa_views_pre_render(&$view) {
+  $views_prerender_function = 'aurora_usa_views_pre_render_' . $view->name . '__' . $view->current_display;
+  if (function_exists($views_prerender_function)) {
+   $views_prerender_function($view);
+  }
+}
+function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
+  $current_season = false;
+  $new_results = array();
+  foreach ($view->result as $result) {
+    $result_season = $result->node_field_data_field_season_nid;
+    if ($current_season != $result_season) {
+      $current_season = $result_season;
+      $new_results[] = $result;
+    }
+  }
+  $view->result = $new_results;
+}
+function aurora_usa_preprocess_views_view_fields__usa_episodes__panel_pane_3 (&$vars) {
+  // my specific preprocess code
 }
 // */
 

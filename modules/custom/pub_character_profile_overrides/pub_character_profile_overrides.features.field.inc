@@ -46,12 +46,27 @@ function pub_character_profile_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'block_cover_title',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 15,
+          'weight' => '15',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -64,7 +79,7 @@ function pub_character_profile_overrides_field_default_fields() {
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_character_thumb',
       'label' => 'Character Profile Thumbnail',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',

@@ -13,4 +13,5 @@ features[features_api][] = api:1
 features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_handlers][] = node_view_panel_context_2
 features[page_manager_handlers][] = node_view_panel_context_3
+features[page_manager_handlers][] = node_view_panel_context_4
 features[variable][] = page_manager_node_view_disabled

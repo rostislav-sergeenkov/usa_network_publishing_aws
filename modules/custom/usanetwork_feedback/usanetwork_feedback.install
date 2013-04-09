@@ -539,4 +539,11 @@ Other|Other (Not Listed)',
         'settings' => 'a:6:{s:5:"error";a:5:{s:6:"prefix";s:0:"";s:6:"suffix";s:0:"";s:21:"scrollto_errormessage";i:1;s:12:"scroll_speed";s:4:"1000";s:13:"error_element";s:5:"label";}s:15:"error_placement";a:3:{s:23:"error_placement_default";s:1:"4";s:15:"jquery_selector";s:0:"";s:21:"custom_error_function";s:0:"";}s:33:"validate_options_override_default";i:0;s:22:"error_override_default";i:1;s:32:"error_placement_override_default";i:1;s:31:"include_hidden_override_default";i:0;}')
       )
       ->execute();
+
+    db_update('url_alias')
+      ->fields(array(
+        'alias' => 'feedback',
+      ))
+      ->condition('alias', 'content/e-mail', '=')
+      ->execute();
 }

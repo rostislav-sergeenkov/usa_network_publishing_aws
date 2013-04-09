@@ -1,0 +1,10 @@
+name = Usanetwork Feedback
+description = Usanetwork Feedback Form
+package = custom module
+version = VERSION
+core = 7.x
+dependencies[] = captcha
+dependencies[] = recaptcha
+dependencies[] = usanetwork_webform
+dependencies[] = usanetwork_core
+scripts[] = js/feedback.js

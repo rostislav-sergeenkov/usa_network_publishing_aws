@@ -44,6 +44,38 @@ function usanetwork_feedback_install() {
 
   $node = node_load($entity->nid);
 
+  $node->webform['nid'] = $entity->nid;
+  $node->webform['confirmation'] = '';
+  $node->webform['confirmation_format'] = 'wysiwyg_basic';
+  $node->webform['redirect_url'] = '<confirmation>';
+  $node->webform['status'] = '1';
+  $node->webform['roles'] = array(
+    0 => '1',
+    1 => '2',
+    2 => '3',
+    3 => '4',
+    4 => '5',
+    5 => '6',
+    6 => '7',
+  );
+
+  $node->webform['emails'] = array(
+    1 => array(
+      'nid' => $entity->nid,
+      'eid' => '1',
+      'email' => 'support@usanetwork.com',
+      'subject' => 'Feedback',
+      'from_name' => 'default',
+      'from_address' => '2',
+      'template' => 'default',
+      'excluded_components' => array(
+        0 => '6',
+      ),
+      'html' => '0',
+      'attachments' => '0',
+    ),
+  );
+
   $node->webform['components'] = array(
       1 => array(
         'nid' => $entity->nid,

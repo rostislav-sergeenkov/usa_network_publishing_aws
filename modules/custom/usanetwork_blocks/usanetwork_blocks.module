@@ -228,7 +228,9 @@ function usanetwork_blocks_on_now_block() {
   }
   // get the tv schedule from 6:00 AM till end of the day
   foreach ($tv_schedule['data'] as $key => $val) {
-    $full_tv_schedule['data'][$key] = $val;
+    if (!isset($full_tv_schedule['data'][$key])) {
+      $full_tv_schedule['data'][$key] = $val;
+    }
   } 
 
   // expose the tv schedule as JS variable to determine the on on show based on the user timezone and for other modules to consume it

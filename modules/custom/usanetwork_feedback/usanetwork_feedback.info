@@ -7,4 +7,3 @@ dependencies[] = captcha
 dependencies[] = recaptcha
 dependencies[] = usanetwork_webform
 dependencies[] = usanetwork_core
-scripts[] = js/feedback.js

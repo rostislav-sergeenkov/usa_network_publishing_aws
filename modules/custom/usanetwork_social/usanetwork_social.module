@@ -122,6 +122,7 @@ function usanetwork_social_social_twitter($node) {
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/stream.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-intents.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/inlinemedia.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
 
  
   if (!isset($node->nid)) {
@@ -143,14 +144,24 @@ function usanetwork_social_social_twitter($node) {
   
   $tokens = array();
 
-  if (isset($node->field_twitter_childrenof[$lang][0]['value'])) {
-    $tokens['[CHILDRENOF]'] = $node->field_twitter_childrenof[$lang][0]['value'];
-  }
-  if (isset($node->field_twitter_show[$lang][0]['value'])) {
-    $tokens['[SHOW]'] = $node->field_twitter_show[$lang][0]['value'];
-  }
-
-  $output .= $eql;
+  $tokens['[CHILDRENOF]'] = isset($node->field_twitter_childrenof[$lang][0]['value']) ? $node->field_twitter_childrenof[$lang][0]['value'] : '';
+  $tokens['[SHOW]'] = isset($node->field_twitter_show[$lang][0]['value']) ? $node->field_twitter_show[$lang][0]['value'] : '';
+  $tokens['[FEED]'] = isset($node->field_twitter_feed[$lang][0]['value']) ? $node->field_twitter_feed[$lang][0]['value'] : '';
+  $tokens['[STATE]'] = isset($node->field_twitter_state[$lang][0]['value']) ? $node->field_twitter_state[$lang][0]['value'] : '';
+  $tokens['[SOURCE]'] = isset($node->field_twitter_source[$lang][0]['value']) ? $node->field_twitter_source[$lang][0]['value'] : '';
+  $tokens['[MARKERS]'] = isset($node->field_twitter_markers[$lang][0]['value']) ? $node->field_twitter_markers[$lang][0]['value'] : '';
+  $tokens['[TAGS]'] = isset($node->field_twitter_tags[$lang][0]['value']) ? $node->field_twitter_tags[$lang][0]['value'] : '';
+  $tokens['[SORTORDER]'] = isset($node->field_twitter_sortorder[$lang][0]['value']) ? $node->field_twitter_sortorder[$lang][0]['value'] : '';
+  $tokens['[SAFEHTML]'] = isset($node->field_twitter_safehtml[$lang][0]['value']) ? $node->field_twitter_safehtml[$lang][0]['value'] : '';
+  $tokens['[ITEMSPERPAGE]'] = isset($node->field_twitter_itemsperpage[$lang][0]['value']) ? $node->field_twitter_itemsperpage[$lang][0]['value'] : '';
+  $tokens['[CHILDREN]'] = isset($node->field_twitter_children[$lang][0]['value']) ? $node->field_twitter_children[$lang][0]['value'] : '';
+  
+  $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
+  $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
  
+  $output .= '<div id="echoAppKey" style="display: none;">' . $echoAppKey . '</div>';
+  $output .= '<div id="echoQuery" style="display: none;">' . $eql . '</div>';
+  $output .= '<div id="echo-stream">&nbsp;</div>';
+
   return $output;
 }

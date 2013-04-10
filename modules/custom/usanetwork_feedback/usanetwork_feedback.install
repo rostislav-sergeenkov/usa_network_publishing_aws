@@ -548,6 +548,9 @@ Other|Other (Not Listed)',
       ->execute();
 }
 
+/**
+ * Adding validation using Webform validation(both client and server side validation)
+ **/
 function usanetwork_feedback_update_7101() {
   module_enable(array('webform_validation'));
   $nid = db_select("node", "n")

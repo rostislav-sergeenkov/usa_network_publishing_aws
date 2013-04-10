@@ -184,8 +184,11 @@ function usanetwork_social_twitter($node) {
   $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
   $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
  
-  $output .= '<div id="echoAppKey" style="display: none;">' . $echoAppKey . '</div>';
-  $output .= '<div id="echoQuery" style="display: none;">' . $eql . '</div>';
+  
+  $vars = 'var echoAppKey = "' . $echoAppKey . '";';
+  $vars .= 'var twitterEQL = "' . $eql . '"';
+  drupal_add_js($vars, array('type' => 'inline'));
+
   $output .= '<div id="echo-stream">&nbsp;</div>';
 
   return $output;

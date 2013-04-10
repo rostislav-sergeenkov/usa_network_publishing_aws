@@ -11,7 +11,7 @@ function usanetwork_social_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_social_settings_form'),
     'access arguments' => array('administer usanetwork'),
-    'file' =>  'usanetwork_social.admin.inc',
+    'file' => 'usanetwork_social.admin.inc',
     'weight' => -10,
   );
 
@@ -26,9 +26,26 @@ function usanetwork_social_menu() {
   // tv show twitter page
   $items['node/%node/social/twitter'] = array(
     'title' => t('Twitter'),
-    'page callback' => 'usanetwork_social_social_twitter',
+    'page callback' => 'usanetwork_social_twitter',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+  // tv show facebook page
+  $items['node/%node/social/facebook'] = array(
+    'title' => t('Facebook'),
+    'page callback' => 'usanetwork_social_facebook',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_LOCAL_TASK,
+  );
+  // tv show chat with fans page
+  $items['node/%node/social/chat-with-fans'] = array(
+    'title' => t('Chat with Fans'),
+    'page callback' => 'usanetwork_social_chat_with_fans',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_LOCAL_TASK,
   );
   return $items;
 }
@@ -101,12 +118,13 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Menu callback of social twitter page
+ * Menu callback of social landing page
  */
 function usanetwork_social_landing_page($node) {
   $tabs = array();
   $tabs[] = l(t('Twitter'), 'node/' . $node->nid . '/social/twitter');
   $tabs[] = l(t('Facebook'), 'node/' . $node->nid . '/social/facebook');
+  $tabs[] = l(t('Chat with Fans'), 'node/' . $node->nid . '/social/chat-with-fans');
   
   return theme('item_list', array('items' => $tabs));
 }
@@ -114,7 +132,7 @@ function usanetwork_social_landing_page($node) {
 /**
  * Menu callback of social twitter page
  */
-function usanetwork_social_social_twitter($node) {
+function usanetwork_social_twitter($node) {
   $output = '';
   $lang = LANGUAGE_NONE;
 
@@ -164,4 +182,18 @@ function usanetwork_social_social_twitter($node) {
   $output .= '<div id="echo-stream">&nbsp;</div>';
 
   return $output;
+}
+
+/**
+ * Menu callback of social facebook page
+ */
+function usanetwork_social_facebook($node) {
+  return t('Facebook Feed: Placeholder');
+}
+
+/**
+ * Menu callback of social chat with fans page
+ */
+function usanetwork_social_chat_with_fans($node) {
+  return t('Chat with Fans Feed: Placeholder');
 }

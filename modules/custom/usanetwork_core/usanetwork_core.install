@@ -67,6 +67,7 @@ function usanetwork_core_enable_modules() {
     'linkit',
     'borealis',
     'borealis_ri',
+    'jquery_update',
     // USA custom
     'usanetwork',
     'usanetwork_ds',

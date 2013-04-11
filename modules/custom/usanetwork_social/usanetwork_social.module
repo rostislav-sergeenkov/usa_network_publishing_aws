@@ -36,7 +36,7 @@ function usanetwork_social_menu() {
     'page callback' => 'usanetwork_social_twitter',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
-    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'type' => MENU_LOCAL_TASK,
   );
   // tv show facebook page
   $items['node/%node/social/facebook'] = array(
@@ -128,12 +128,7 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
  * Menu callback of social landing page
  */
 function usanetwork_social_landing_page($node) {
-  $tabs = array();
-  $tabs[] = l(t('Twitter'), 'node/' . $node->nid . '/social/twitter');
-  $tabs[] = l(t('Facebook'), 'node/' . $node->nid . '/social/facebook');
-  $tabs[] = l(t('Chat with Fans'), 'node/' . $node->nid . '/social/chat-with-fans');
-  
-  return theme('item_list', array('items' => $tabs));
+  return t('Social Landing Page: Placeholder');
 }
 
 /**

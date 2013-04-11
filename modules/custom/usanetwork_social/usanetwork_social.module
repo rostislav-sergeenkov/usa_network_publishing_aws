@@ -138,7 +138,7 @@ function usanetwork_social_twitter($node) {
   $output = '';
   $lang = LANGUAGE_NONE;
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery-pack.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/stream.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-intents.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/inlinemedia.js');

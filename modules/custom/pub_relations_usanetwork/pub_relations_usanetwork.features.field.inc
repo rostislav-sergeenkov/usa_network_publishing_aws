@@ -10,76 +10,6 @@
 function pub_relations_usanetwork_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_pub_relation_movie-field_pub_relation_movie_ref'.
-  $fields['field_collection_item-field_pub_relation_movie-field_pub_relation_movie_ref'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pub_relation_movie_ref',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'movie' => 'movie',
-          ),
-        ),
-        'target_type' => 'node',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_pub_relation_movie',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_pub_relation_movie_ref',
-      'label' => 'Movie',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'field_collection_item-field_pub_relation_tv_shows-field_episode'.
   $fields['field_collection_item-field_pub_relation_tv_shows-field_episode'] = array(
     'field_config' => array(
@@ -392,73 +322,9 @@ function pub_relations_usanetwork_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tv_episode-field_pub_relation_movie'.
-  $fields['node-tv_episode-field_pub_relation_movie'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pub_relation_movie',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'field_collection',
-      'settings' => array(
-        'hide_blank_items' => TRUE,
-        'path' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'field_collection',
-    ),
-    'field_instance' => array(
-      'bundle' => 'tv_episode',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'field_collection',
-          'settings' => array(
-            'view_mode' => 'full',
-          ),
-          'type' => 'field_collection_fields',
-          'weight' => 16,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_pub_relation_movie',
-      'label' => 'Movies',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'field_collection',
-        'settings' => array(),
-        'type' => 'field_collection_embed',
-        'weight' => 59,
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Episode');
-  t('Movie');
-  t('Movies');
   t('Season');
   t('Show');
   t('TV Shows');

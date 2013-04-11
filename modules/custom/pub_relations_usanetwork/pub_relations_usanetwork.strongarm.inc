@@ -15,10 +15,10 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_movie_content';
   $strongarm->value = array(
-    'tv_episode' => 'tv_episode',
     'character_profile' => 0,
     'media_gallery' => 0,
     'person' => 0,
+    'tv_episode' => 0,
     'tv_season' => 0,
     'tv_show' => 0,
   );

@@ -20,7 +20,7 @@ function usanetwork_static_page_ctools_plugin_api() {
 function usanetwork_static_page_node_info() {
   $items = array(
     'usanetwork_static_page' => array(
-      'name' => t('USANetwork Static Page'),
+      'name' => t('Static Page'),
       'base' => 'node_content',
       'description' => t('Create simple, primarily text-based pages, such as Privacy Policy, Terms of Use, About, etc.'),
       'has_title' => '1',

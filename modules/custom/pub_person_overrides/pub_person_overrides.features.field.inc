@@ -64,7 +64,7 @@ function pub_person_overrides_field_default_fields() {
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_character_thumb',
       'label' => 'Person Profile Thumbnail',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',

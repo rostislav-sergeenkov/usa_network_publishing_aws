@@ -15,12 +15,12 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_movie_content';
   $strongarm->value = array(
-    'character_profile' => 'character_profile',
-    'media_gallery' => 'media_gallery',
-    'person' => 'person',
-    'tv_episode' => 'tv_episode',
-    'tv_season' => 'tv_season',
-    'tv_show' => 'tv_show',
+    'character_profile' => 0,
+    'media_gallery' => 0,
+    'person' => 0,
+    'tv_episode' => 0,
+    'tv_season' => 0,
+    'tv_show' => 0,
   );
   $export['pub_relationships_movie_content'] = $strongarm;
 
@@ -28,7 +28,7 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_tv_content_type_character_profile';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['pub_relationships_tv_content_type_character_profile'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -56,7 +56,7 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_tv_content_type_movie';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['pub_relationships_tv_content_type_movie'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -70,7 +70,7 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_tv_content_type_person';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['pub_relationships_tv_content_type_person'] = $strongarm;
 
   $strongarm = new stdClass();

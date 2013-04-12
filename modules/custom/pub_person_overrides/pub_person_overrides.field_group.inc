@@ -23,7 +23,9 @@ function pub_person_overrides_field_group_info() {
     'label' => 'USA custom',
     'weight' => '2',
     'children' => array(
-      0 => 'field_character',
+      0 => 'field_usa_character_thumb',
+      1 => 'field_usa_link_facebook',
+      2 => 'field_usa_link_twitter',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

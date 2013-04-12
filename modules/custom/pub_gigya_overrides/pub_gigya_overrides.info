@@ -1,0 +1,8 @@
+name = pub_gigya_overrides
+description = Overrides of Pub Gigya feature for USA
+core = 7.x
+package = USA Network
+dependencies[] = pub_gigya
+features[features_api][] = api:1
+features[features_override_items][] = variable.gigya_comments_enabled
+features[features_overrides][] = variable.gigya_comments_enabled.value

@@ -41,7 +41,6 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
     ); /* WAS: '' */
   }
   if (isset($data['node-tv_episode-field_episode_credit'])) {
-    $data['node-tv_episode-field_episode_credit']['field_config']['settings']['hide_blank_items'] = 1; /* WAS: TRUE */
     $data['node-tv_episode-field_episode_credit']['field_instance']['display']['default']['weight'] = '13'; /* WAS: 13 */
     $data['node-tv_episode-field_episode_credit']['field_instance']['display']['full'] = array(
       'label' => 'above',

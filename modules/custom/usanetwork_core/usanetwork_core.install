@@ -81,6 +81,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_strongarm',
     'usanetwork_social',
     'usanetwork_static_page',
+    'usanetwork_pathauto',
     // pub ent overrides
     'pub_files_overrides',
     'pub_relations_usanetwork',

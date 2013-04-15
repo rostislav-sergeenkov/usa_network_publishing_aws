@@ -11,6 +11,16 @@ function usanetwork_field_formatters_field_formatter_info() {
     'field types' => array('text_long'), //This will only be available to long text fields
     'description' => t('This formatter should be used for outputting raw html markup inserted in a long text/plain text field.'),
   );
+  $custom_formatters['custom_css'] = array(
+    'label' => t('custom_css'),
+    'field types' => array('text_long'), //This will only be available to long text fields
+    'description' => t('This formatter should be used for outputting custom css inserted in a long text/plain text field.'),
+  );
+  $custom_formatters['custom_js'] = array(
+    'label' => t('custom_js'),
+    'field types' => array('text_long'), //This will only be available to long text fields
+    'description' => t('This formatter should be used for outputting custom js inserted in a long text/plain text field.'),
+  );
 
   return $custom_formatters;
 }
@@ -43,6 +53,24 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
         );
       }
       break;
+    // css field data
+    case 'custom_css':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme'  => 'custom_css',
+          '#data'   => $item['value'],
+        );
+      }
+      break;
+    // js field data
+    case 'custom_js':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme'  => 'custom_js',
+          '#data'   => $item['value'],
+        );
+      }
+      break;
   }
 
   return $element;
@@ -56,6 +84,14 @@ function usanetwork_field_formatters_theme() {
   
   $items['raw_formatter'] = array(
     'template'  => 'templates/raw-formatter',
+    'variables' => array('data' => ''),
+  );
+  $items['custom_css'] = array(
+    'template'  => 'templates/custom_css',
+    'variables' => array('data' => ''),
+  );
+  $items['custom_js'] = array(
+    'template'  => 'templates/custom_js',
     'variables' => array('data' => ''),
   );
 

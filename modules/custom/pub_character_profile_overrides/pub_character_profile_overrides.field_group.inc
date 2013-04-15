@@ -24,6 +24,8 @@ function pub_character_profile_overrides_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_usa_character_thumb',
+      1 => 'field_person',
+      2 => 'field_show',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

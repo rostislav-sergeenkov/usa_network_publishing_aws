@@ -68,6 +68,7 @@ function usanetwork_core_enable_modules() {
     'borealis',
     'borealis_ri',
     'jquery_update',
+    'views_bulk_operations',
     // USA custom
     'usanetwork',
     'usanetwork_ds',

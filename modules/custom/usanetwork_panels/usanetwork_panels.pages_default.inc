@@ -538,11 +538,23 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-11';
     $pane->panel = 'center';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_4';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_character_cover_photo';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'file_rendered',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'file_view_mode' => 'full',
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -557,7 +569,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-12';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_3';
+    $pane->subtype = 'usa_people-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -575,7 +587,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-13';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_1';
+    $pane->subtype = 'usa_people-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -589,6 +601,24 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-13'] = $pane;
     $display->panels['center'][3] = 'new-13';
+    $pane = new stdClass();
+    $pane->pid = 'new-14';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'usa_people-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-14'] = $pane;
+    $display->panels['center'][4] = 'new-14';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

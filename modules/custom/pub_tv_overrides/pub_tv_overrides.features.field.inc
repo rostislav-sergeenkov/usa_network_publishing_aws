@@ -178,65 +178,6 @@ function pub_tv_overrides_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-tv_show-field_episode_credit'.
-  $fields['node-tv_show-field_episode_credit'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_episode_credit',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'field_collection',
-      'settings' => array(
-        'hide_blank_items' => 1,
-        'path' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'field_collection',
-    ),
-    'field_instance' => array(
-      'bundle' => 'tv_show',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'field_collection',
-          'settings' => array(
-            'view_mode' => 'full',
-          ),
-          'type' => 'field_collection_fields',
-          'weight' => 31,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'fences_wrapper' => 'no_wrapper',
-      'field_name' => 'field_episode_credit',
-      'label' => 'Characters and Crew',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'field_collection',
-        'settings' => array(),
-        'type' => 'field_collection_embed',
-        'weight' => '26',
-      ),
-    ),
-  );
-
   // Exported field: 'node-tv_show-field_show_links'.
   $fields['node-tv_show-field_show_links'] = array(
     'field_config' => array(
@@ -298,7 +239,6 @@ function pub_tv_overrides_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Characters and Crew');
   t('Main_link');
   t('child_link');
   t('show_links');

@@ -26,7 +26,6 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '3',
   );
-  $overrides["field.node-tv_episode-field_episode_credit.field_config|settings|hide_blank_items"] = 1;
   $overrides["field.node-tv_episode-field_episode_credit.field_instance|display|default|weight"] = '13';
   $overrides["field.node-tv_episode-field_episode_credit.field_instance|display|full"] = array(
     'label' => 'above',

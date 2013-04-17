@@ -1,0 +1,13 @@
+name = usanetwork_pathauto
+description = exported pathauto rules
+core = 7.x
+package = USA Network
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = pathauto
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = pathauto_node_character_profile_pattern
+features[variable][] = pathauto_node_person_pattern
+features[variable][] = pathauto_node_tv_show_pattern

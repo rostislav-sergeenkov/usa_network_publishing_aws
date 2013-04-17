@@ -26,6 +26,8 @@ function pub_person_overrides_field_group_info() {
       0 => 'field_usa_character_thumb',
       1 => 'field_usa_link_facebook',
       2 => 'field_usa_link_twitter',
+      3 => 'field_show',
+      4 => 'field_role',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

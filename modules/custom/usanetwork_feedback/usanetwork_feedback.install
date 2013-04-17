@@ -14,7 +14,7 @@ function usanetwork_feedback_install() {
   global $user;
   $node = array(
     'uid' => '1',
-    'title' => 'E-MAIL',
+    'title' => 'Feedback',
     'log' => '',
     'status' => '1',
     'comment' => '1',
@@ -544,37 +544,63 @@ Other|Other (Not Listed)',
       ->fields(array(
         'alias' => 'feedback',
       ))
-      ->condition('alias', 'content/e-mail', '=')
+      ->condition('alias', 'content/feedback', '=')
       ->execute();
+
+    module_enable(array('webform_validation'));
+    $ruleid = db_insert('webform_validation_rule')
+        ->fields(array('rulename' => 'Minimum age range',
+          'validator' => 'specific_value',
+          'nid' => $entity->nid,
+          'data' => '13-17,18-24,25-34,35-49,50-54,55+',
+          'error_message' => 'Sorry, you must be 13 years or older to use this e-mail form.',
+          'negate' => 0
+          )
+        )
+        ->execute();
+
+    db_insert('webform_validation_rule_components')
+        ->fields(array('ruleid' => $ruleid,
+          'cid' => '5',
+          )
+        )
+        ->execute();
 }
 
-/**
- * Adding validation using Webform validation(both client and server side validation)
- **/
-function usanetwork_feedback_update_7101() {
-  module_enable(array('webform_validation'));
+function usanetwork_feedback_uninstall() {
   $nid = db_select("node", "n")
       ->fields("n", array("nid"))
-      ->condition("title", "E-MAIL", '=')
+      ->condition("title", "Feedback", '=')
       ->condition("type", "webform", '=')
       ->orderBy('nid', 'desc')
       ->execute()
       ->fetchField();
-  $ruleid = db_insert('webform_validation_rule')
-      ->fields(array('rulename' => 'Minimum age range',
-        'validator' => 'specific_value',
-        'nid' => $nid,
-        'data' => '13-17,18-24,25-34,35-49,50-54,55+',
-        'error_message' => 'Sorry, you must be 13 years or older to use this e-mail form.',
-        'negate' => 0
-        )
-      )
-      ->execute();
 
-  db_insert('webform_validation_rule_components')
-      ->fields(array('ruleid' => $ruleid,
-        'cid' => '5',
-        )
-      )
-      ->execute();
+  db_delete('node')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('captcha_points')
+    ->condition('form_id', 'webform_client_form_' . $nid)
+    ->execute();
+
+  db_delete('clientside_validation_settings')
+    ->condition('form_id', $nid)
+    ->execute();
+
+  db_delete('webform_component')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_emails')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_roles')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_validation_rule')
+    ->condition('nid', $nid)
+    ->execute();
 }

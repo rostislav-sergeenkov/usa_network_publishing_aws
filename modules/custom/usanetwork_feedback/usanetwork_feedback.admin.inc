@@ -8,7 +8,7 @@ function usanetwork_feedback_settings_form() {
   $query->innerjoin('webform_emails', 'email', 'email.nid = n.nid');
   $query->fields("n", array("nid"));
   $query->fields("email", array("eid"));
-  $query->condition("title", "E-MAIL", '=');
+  $query->condition("title", "Feedback", '=');
   $query->condition("type", "webform", '=');
   $query->orderBy('nid', 'desc');
   $query->range(0,1);

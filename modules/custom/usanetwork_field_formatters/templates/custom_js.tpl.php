@@ -1,1 +1,0 @@
-<?php drupal_add_js($data, array('type' => 'inline','scope' => 'header', 'preprocess' => FALSE));?>

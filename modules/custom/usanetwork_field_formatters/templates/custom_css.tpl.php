@@ -1,1 +1,0 @@
-<?php drupal_add_css($data,array('type' => 'inline', 'preprocess' => FALSE));?>

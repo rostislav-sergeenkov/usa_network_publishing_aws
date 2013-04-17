@@ -58,7 +58,7 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
           '#theme'  => 'custom_css',
-          '#data'   => $item['value'],
+          '#data'   => drupal_add_css($item['value'],array('type' => 'inline', 'preprocess' => FALSE)),
         );
       }
       break;
@@ -66,8 +66,7 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
     case 'custom_js':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
-          '#theme'  => 'custom_js',
-          '#data'   => $item['value'],
+        '#data' => drupal_add_js($item['value'], array('type' => 'inline','scope' => 'header', 'preprocess' => FALSE)),
         );
       }
       break;
@@ -86,14 +85,5 @@ function usanetwork_field_formatters_theme() {
     'template'  => 'templates/raw-formatter',
     'variables' => array('data' => ''),
   );
-  $items['custom_css'] = array(
-    'template'  => 'templates/custom_css',
-    'variables' => array('data' => ''),
-  );
-  $items['custom_js'] = array(
-    'template'  => 'templates/custom_js',
-    'variables' => array('data' => ''),
-  );
-
   return $items;
 }

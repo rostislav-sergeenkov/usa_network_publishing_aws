@@ -63,9 +63,18 @@ function uusanetwork_tv_schedule_schedule_page() {
     $rating = (array) $item->Rating;
     $cur_date = (array) $item->ScheduleDate;
 
+    $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+    $nid = usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
+    if (empty($nid)) {
+      $show = $program[0];
+    } else {
+      $path = drupal_get_path_alias('node/'.$nid);
+      $show = l($program[0], $path);
+    }
+
     $rows[] = array(
       preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
-      $program[0],
+      $show,
       $episode[0],
       $rating[0],
     );
@@ -81,4 +90,27 @@ function uusanetwork_tv_schedule_schedule_page() {
   $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
 
   return $output;
+}
+
+/**
+ * Get node id given the title and type
+ */
+function usanetwork_tv_schedule_get_nid_by_title($title, $type) {
+  $nid = 0;
+  $query = new EntityFieldQuery();
+  
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $type)
+    ->propertyCondition('title', $title)
+    ->propertyCondition('status', 1)
+    ->range(0, 1);
+  
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+  }
+ 
+  return $nid;
 }

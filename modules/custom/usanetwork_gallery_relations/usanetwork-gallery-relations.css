@@ -1,0 +1,22 @@
+
+.field-name-field-pub-relation-tv-shows .field-widget-options-select,
+#show-wrapper,
+#season-wrapper,
+#episode-wrapper {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  width: 30%;
+}
+#show-wrapper {
+  clear: left;
+}
+#episode-wrapper {
+  clear: right;
+}
+
+
+.field-name-field-pub-relation-tv-shows .ajax-progress.throbber {
+  /** This float is annoying **/
+  float: none;
+}

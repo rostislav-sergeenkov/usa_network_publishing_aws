@@ -13,8 +13,16 @@
 function usanetwork_core_install() {
   // remove things we do not want for usanetwork
   usanetwork_core_uninstall_modules();
+
+  // Deploy taxonomy vocabularies.
+  usanetwork_core_deploy_taxonomy();
+
+  // Deploy taxonomy terms.
+  usanetwork_core_deploy_terms();
+
   // enable our custom modules
   usanetwork_core_enable_modules();
+
   // Set the theme
   usanetwork_core_set_theme();
 
@@ -88,6 +96,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_feedback',
     'usanetwork_addanother',
     'usanetwork_tv_schedule',
+    'usanetwork_aspot',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

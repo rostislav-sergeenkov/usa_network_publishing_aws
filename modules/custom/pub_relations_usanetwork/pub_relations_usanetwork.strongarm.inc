@@ -18,6 +18,7 @@ function pub_relations_usanetwork_strongarm() {
     'character_profile' => 0,
     'media_gallery' => 0,
     'person' => 0,
+    'usanetwork_static_page' => 0,
     'tv_episode' => 0,
     'tv_season' => 0,
     'tv_show' => 0,
@@ -42,7 +43,7 @@ function pub_relations_usanetwork_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pub_relationships_tv_content_type_media_gallery';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['pub_relationships_tv_content_type_media_gallery'] = $strongarm;
 
   $strongarm = new stdClass();

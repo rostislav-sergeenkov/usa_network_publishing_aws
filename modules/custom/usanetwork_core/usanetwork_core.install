@@ -87,6 +87,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_pathauto',
     'usanetwork_feedback',
     'usanetwork_addanother',
+    'usanetwork_tv_schedule',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

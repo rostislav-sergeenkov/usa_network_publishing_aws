@@ -129,9 +129,26 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("field" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function aurora_usa_preprocess_field(&$vars, $hook) {
+  if($vars['element']['#object']->type == 'media_gallery') {
+    $vars['items'] = append_cover_to_media($vars);
+  }
+}
 
+function append_cover_to_media($vars) {
+  $node = $vars['element']['#object'];
+  array_unshift($vars['items'], $vars['items'][0]);
+  $cover = $node->field_cover_item['und'][0];
+  $vars['items'][0]['file']['#path'] = $cover['uri'];
+  $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
+  $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
+  $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'];
+  $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
+  $new_caption = '<div class="caption-title">' . $node->title . '</div><div class="caption-body">' . $node->body['und'][0]['safe_value'] . '</div>';
+  $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;
+  $vars['items'][0]['field_caption']['#items'][0]['safe_value'] = $new_caption;
+  $vars['items'][0]['field_caption'][0]['#markup'] = $new_caption;
+  return $vars['items'];
 }
 // */
 

@@ -1131,7 +1131,6 @@ html[xmlns] .slides {
 }
 
 .flex-viewport {
-  max-height: 500px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   transition: all 1s ease;

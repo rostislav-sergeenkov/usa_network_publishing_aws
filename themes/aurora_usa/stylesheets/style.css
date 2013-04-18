@@ -1268,3 +1268,7 @@ html[xmlns] .slides {
 [class*="iib"] {
   background-color: #2d2d2d;
 }
+
+.field-name-field-usa-catchall-fixed-width {
+  display: none;
+}

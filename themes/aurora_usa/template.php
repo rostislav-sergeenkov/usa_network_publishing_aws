@@ -129,11 +129,22 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("field" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function aurora_usa_preprocess_field(&$vars, $hook) {
-
+  if($vars['element']['#field_name'] == 'field_usa_catchall_fixed_width') {
+  //echo '<pre>'; print_r($vars['element']); exit;
+    if ($vars['element']['#object']->field_usa_catchall_fixedwidth[LANGUAGE_NONE][0]['value'] == 1) {
+      drupal_add_css('body { width: ' . $vars['element']['#items'][0]['value'] . 'px; margin: 0 auto!important; }', 
+        array(
+        'group' => CSS_THEME,
+        'type' => 'inline',
+        'media' => 'screen',
+        'preprocess' => FALSE,
+        )
+      );
+    }
+    $vars['element']['#formatter'] = 'hidden';
+  }
 }
-// */
 
 /**
  * Override or insert variables into the comment template.

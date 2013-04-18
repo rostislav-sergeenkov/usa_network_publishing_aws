@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_catchall feature.
+ */
+
+include_once 'usanetwork_catchall.features.inc';

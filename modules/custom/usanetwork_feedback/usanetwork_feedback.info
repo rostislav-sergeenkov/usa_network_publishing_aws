@@ -1,6 +1,6 @@
 name = Usanetwork Feedback
 description = Usanetwork Feedback Form
-package = custom module
+package = USA Network
 version = VERSION
 core = 7.x
 dependencies[] = captcha

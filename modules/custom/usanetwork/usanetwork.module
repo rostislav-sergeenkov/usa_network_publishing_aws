@@ -20,7 +20,6 @@ function usanetwork_menu() {
   $items['admin/usanetwork'] = array(
     'title' => t('USA Network'),
     'description' => t('Administer USA Network specific settings and content.'),
-    'position' => 'right',
     'page callback' => 'system_admin_menu_block_page',
     'access arguments' => array('access administration pages'),
     'position' => 'left',
@@ -35,7 +34,6 @@ function usanetwork_menu() {
     'page arguments' => array('usanetwork_settings_form'),
     'access arguments' => array('administer usanetwork'),
     'file' =>  'usanetwork.admin.inc',
-    'weight' => -10,
   );
  
   return $items;

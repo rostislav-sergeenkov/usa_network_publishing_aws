@@ -1,0 +1,10 @@
+/* tv schedule page styles */
+
+tr.odd, tr.even {
+  background: none !important;
+}
+
+.prev-day, .next-day {
+  padding-left: 10px;
+  padding-right: 10px;
+}

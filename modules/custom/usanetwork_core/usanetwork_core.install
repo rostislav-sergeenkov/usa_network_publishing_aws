@@ -13,8 +13,16 @@
 function usanetwork_core_install() {
   // remove things we do not want for usanetwork
   usanetwork_core_uninstall_modules();
+
+  // Deploy taxonomy vocabularies.
+  usanetwork_core_deploy_taxonomy();
+
+  // Deploy taxonomy terms.
+  usanetwork_core_deploy_terms();
+
   // enable our custom modules
   usanetwork_core_enable_modules();
+
   // Set the theme
   usanetwork_core_set_theme();
 
@@ -69,6 +77,8 @@ function usanetwork_core_enable_modules() {
     'borealis_ri',
     'jquery_update',
     'views_bulk_operations',
+    'views_load_more',
+    'addanother',
     // USA custom
     'usanetwork',
     'usanetwork_ds',
@@ -81,9 +91,14 @@ function usanetwork_core_enable_modules() {
     'usanetwork_panels',
     'usanetwork_strongarm',
     'usanetwork_social',
+    'usanetwork_static_page',
+    'usanetwork_pathauto',
+    'usanetwork_feedback',
+    'usanetwork_addanother',
+    'usanetwork_tv_schedule',
+    'usanetwork_aspot',
     // pub ent overrides
     'pub_files_overrides',
-    'pub_relations_usanetwork',
     'pub_tv_overrides',
     'pub_media_overrides',
     'pub_character_profile_overrides',

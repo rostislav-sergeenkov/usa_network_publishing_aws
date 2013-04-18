@@ -36,12 +36,24 @@ function uusanetwork_tv_schedule_schedule_page() {
     drupal_not_found();
   }
 
+  // switch to ET timezone to perform calculations and then switch back to original timezone
+  $orginal_tz = date_default_timezone_get();
+  date_default_timezone_set('America/New_York');
+  $et_time = floatval(date('U'));
+
   $sdate = date('Y_m_d');
   if (isset($_GET['sdate']) && !empty($_GET['sdate'])) {
     $sdate = $_GET['sdate'];
+    $et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
   }
 
+  // replace the tokens in the XML URL
   $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
+
+  $result = drupal_http_request($xml_feed);
+  if ($result->headers['content-type'] != 'application/xml') {
+    drupal_not_found();
+  }
 
   $tvs = simplexml_load_file($xml_feed);
 
@@ -56,12 +68,32 @@ function uusanetwork_tv_schedule_schedule_page() {
     t('RATING'),
   );
   $rows = array();
+  $first = true;
   foreach ($tvs->Schedules->Schedule->ScheduleItem as $item) {
+    $classes = array();
+    
     $start_time = (array) $item->StartTime;
     $program = (array) $item->ProgramName;
     $episode = (array) $item->TitleName;
     $rating = (array) $item->Rating;
     $cur_date = (array) $item->ScheduleDate;
+    $cal_date = (array) $item->CalendarScheduleDate;
+    $day_part = (array) $item->Daypart;
+
+    // convert to timestamp to determine on-air / off-air
+    $show_time = strtotime($cal_date[0] .' '. $start_time[0]);
+
+    // add styles to show hide the row based on on air value
+    $classes[] = ($et_time >= $show_time) ? 'off-air' : 'on-air';
+
+    // add classes like primetime to style differently
+    $classes[] = strtolower($day_part[0]); 
+
+    if ($first && $classes[0] == 'on-air') {
+      $cnt = count($rows);
+      $rows[$cnt-1]['class'][0] = 'on-air';
+      $first = false;
+    }
 
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
@@ -72,22 +104,29 @@ function uusanetwork_tv_schedule_schedule_page() {
       $show = l($program[0], $path);
     }
 
-    $rows[] = array(
+    $row = array(
       preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
       $show,
       $episode[0],
       $rating[0],
     );
+    $rows[] = array('data' => $row, 'class' => $classes);
+    
   }
 
   $cpath = current_path();
   $ctime = strtotime($cur_date[0]);
   
+  $output .= '<div class="schedule-header">';
   $output .= l('<', $cpath, array('attributes' => array('class' => array('prev-day')), 'query' => array('sdate' => date('Y_m_d', $ctime-86400))));
-  $output .= date('l M d, Y', $ctime);
+  $output .= '<span class="schedule-date">' . date('l M d, Y', $ctime) . '</span>';
   $output .= l('>', $cpath, array('attributes' => array('class' => array('next-day')), 'query' => array('sdate' => date('Y_m_d', $ctime+86400))));
+  $output .= '</div>';
   
   $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
+
+  // switch back to original server time zone
+  date_default_timezone_set($orginal_tz);
 
   return $output;
 }

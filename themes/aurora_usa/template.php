@@ -135,6 +135,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
   }
 }
 
+// append the cover image, node title, and node body to the media gallery item list
 function append_cover_to_media($vars) {
   $node = $vars['element']['#object'];
   array_unshift($vars['items'], $vars['items'][0]);

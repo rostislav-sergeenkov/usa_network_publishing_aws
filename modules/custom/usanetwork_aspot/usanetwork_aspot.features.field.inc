@@ -10,6 +10,80 @@
 function usanetwork_aspot_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-usanetwork_aspot-field_call_to_action_type'.
+  $fields['node-usanetwork_aspot-field_call_to_action_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_call_to_action_type',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'cta_type',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usanetwork_aspot',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'If the display requires a Call to Action icon please select the type here.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_call_to_action_type',
+      'label' => 'Call to Action Type',
+      'required' => 0,
+      'settings' => array(
+        'exclude_cv' => FALSE,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'node-usanetwork_aspot-field_show'.
   $fields['node-usanetwork_aspot-field_show'] = array(
     'field_config' => array(
@@ -58,7 +132,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If this is related to a show please select that from the list.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -80,7 +154,7 @@ function usanetwork_aspot_field_default_fields() {
       'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_show',
-      'label' => 'Relationship to a Show node',
+      'label' => 'Show',
       'required' => 0,
       'settings' => array(
         'exclude_cv' => FALSE,
@@ -88,14 +162,10 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => 60,
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '6',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '1',
       ),
     ),
   );
@@ -198,7 +268,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -237,7 +307,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Enter  either a full external url or use the \'search\' button to browse links to local pages.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -254,9 +324,10 @@ function usanetwork_aspot_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_aspot_link',
-      'label' => 'Link (eg to Show Landing page)',
+      'label' => 'Link',
       'required' => 1,
       'settings' => array(
         'attributes' => array(
@@ -289,7 +360,7 @@ function usanetwork_aspot_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '7',
+        'weight' => '2',
       ),
     ),
   );
@@ -392,7 +463,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -495,7 +566,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -533,7 +604,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'example: Show name',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -553,7 +624,7 @@ function usanetwork_aspot_field_default_fields() {
       'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_aspot_txt1',
-      'label' => 'Title text line 1 (eg Show name)',
+      'label' => 'Title text line 1',
       'required' => 0,
       'settings' => array(
         'exclude_cv' => FALSE,
@@ -574,7 +645,7 @@ function usanetwork_aspot_field_default_fields() {
           'soft_length_minimum' => '',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '5',
       ),
     ),
   );
@@ -612,7 +683,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'example (tune-in time): TONIGHT 10/9C',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -632,7 +703,7 @@ function usanetwork_aspot_field_default_fields() {
       'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_aspot_txt2',
-      'label' => 'Text line 2 (Tune-in time)',
+      'label' => 'Text line 2',
       'required' => 0,
       'settings' => array(
         'exclude_cv' => FALSE,
@@ -653,7 +724,7 @@ function usanetwork_aspot_field_default_fields() {
           'soft_length_minimum' => '',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '6',
       ),
     ),
   );
@@ -691,7 +762,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'example: episode name',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -711,7 +782,7 @@ function usanetwork_aspot_field_default_fields() {
       'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_usa_aspot_txt3',
-      'label' => 'Text line 3 (eg Episode name)',
+      'label' => 'Text line 3',
       'required' => 0,
       'settings' => array(
         'exclude_cv' => FALSE,
@@ -732,21 +803,28 @@ function usanetwork_aspot_field_default_fields() {
           'soft_length_minimum' => '',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '7',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Call to Action Type');
   t('Desktop Image');
-  t('Link (eg to Show Landing page)');
+  t('Enter  either a full external url or use the \'search\' button to browse links to local pages.');
+  t('If the display requires a Call to Action icon please select the type here.');
+  t('If this is related to a show please select that from the list.');
+  t('Link');
   t('Mobile Image');
-  t('Relationship to a Show node');
+  t('Show');
   t('Tablet Image');
-  t('Text line 2 (Tune-in time)');
-  t('Text line 3 (eg Episode name)');
-  t('Title text line 1 (eg Show name)');
+  t('Text line 2');
+  t('Text line 3');
+  t('Title text line 1');
+  t('example (tune-in time): TONIGHT 10/9C');
+  t('example: Show name');
+  t('example: episode name');
 
   return $fields;
 }

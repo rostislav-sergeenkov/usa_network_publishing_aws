@@ -96,13 +96,13 @@ function usanetwork_aspot_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '2',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -146,7 +146,7 @@ function usanetwork_aspot_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_usanetwork_aspot';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_usanetwork_aspot'] = $strongarm;
 
   return $export;

@@ -24,7 +24,7 @@ function usanetwork_aspot_node_info() {
       'base' => 'node_content',
       'description' => t('Big, high-res image of USA\'s most important content on the homepage and on the landing pages for each show.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Administrative Title'),
       'help' => '',
     ),
   );

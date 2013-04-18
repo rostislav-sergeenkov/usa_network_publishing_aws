@@ -40,3 +40,12 @@ function usanetwork_menu() {
  
   return $items;
 }
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function usanetwork_form_alter(&$form, &$form_state, $form_id) {
+  if ('usanetwork_aspot_node_form' == $form_id) {
+    unset($form['title']);
+  }
+}

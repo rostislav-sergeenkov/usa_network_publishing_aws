@@ -69,6 +69,7 @@ function usanetwork_core_enable_modules() {
     'borealis_ri',
     'jquery_update',
     'views_bulk_operations',
+    'views_load_more',
     // USA custom
     'usanetwork',
     'usanetwork_ds',
@@ -83,6 +84,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_social',
     'usanetwork_static_page',
     'usanetwork_pathauto',
+    'usanetwork_feedback',
     // pub ent overrides
     'pub_files_overrides',
     'pub_relations_usanetwork',

@@ -268,7 +268,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '2',
+        'weight' => '5',
       ),
     ),
   );
@@ -463,7 +463,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '4',
+        'weight' => '7',
       ),
     ),
   );
@@ -566,7 +566,7 @@ function usanetwork_aspot_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '3',
+        'weight' => '6',
       ),
     ),
   );

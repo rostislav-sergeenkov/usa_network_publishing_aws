@@ -23,10 +23,10 @@ function usanetwork_aspot_field_group_info() {
     'label' => 'A-spot text rows',
     'weight' => '4',
     'children' => array(
-      0 => 'field_usa_aspot_txt1',
-      1 => 'field_usa_aspot_txt2',
-      2 => 'field_usa_aspot_txt3',
-      3 => 'field_call_to_action_type',
+      0 => 'field_call_to_action_type',
+      1 => 'field_usa_aspot_txt1',
+      2 => 'field_usa_aspot_txt2',
+      3 => 'field_usa_aspot_txt3',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

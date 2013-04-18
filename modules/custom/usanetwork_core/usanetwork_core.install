@@ -70,6 +70,7 @@ function usanetwork_core_enable_modules() {
     'jquery_update',
     'views_bulk_operations',
     'views_load_more',
+    'addanother',
     // USA custom
     'usanetwork',
     'usanetwork_ds',
@@ -85,6 +86,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_static_page',
     'usanetwork_pathauto',
     'usanetwork_feedback',
+    'usanetwork_addanother',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

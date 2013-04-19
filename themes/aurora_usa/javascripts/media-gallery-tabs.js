@@ -21,7 +21,10 @@
       $('#tab-1').show();
       // clicking a tab will set classes to hide all gallery panes,
       // and show one associated with that tab
+      $('.tab a[href="#tab-1"]').addClass('selected');
       $('.tab a').click(function() {
+        $('.tab a').removeClass('selected');
+        $(this).addClass('selected');
         $('.gallery-tab-group').hide().filter(this.hash).show();
         return false;
       });

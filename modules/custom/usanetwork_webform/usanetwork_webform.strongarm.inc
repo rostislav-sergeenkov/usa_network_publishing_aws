@@ -49,7 +49,7 @@ function usanetwork_webform_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_description';
-  $strongarm->value = 'This question is for testing whether you are a human visitor and to prevent automated spam submissions.';
+  $strongarm->value = 'This question is for testing whether you are a human visitor and to prevent automated spam submissions. <span title="This field is required." class="form-required">*</span>';
   $export['captcha_description'] = $strongarm;
 
   $strongarm = new stdClass();

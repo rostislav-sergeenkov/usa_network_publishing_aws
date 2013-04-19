@@ -48,6 +48,5 @@ $options = array(
     ),
   'html' => TRUE,
   );
-// dsm($options);
 print l($link_content, $link_path, $options);
 ?>

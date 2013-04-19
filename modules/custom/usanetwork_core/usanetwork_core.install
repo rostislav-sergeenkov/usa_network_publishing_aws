@@ -97,6 +97,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_addanother',
     'usanetwork_tv_schedule',
     'usanetwork_aspot',
+    'usanetwork_flag',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

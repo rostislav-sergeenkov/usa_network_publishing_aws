@@ -1,0 +1,11 @@
+name = Usanetwork Flag
+description = Adding flag to the content
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_flag
+dependencies[] = flag
+dependencies[] = flag
+dependencies[] = flag_actions
+features[features_api][] = api:1
+features[flag][] = new

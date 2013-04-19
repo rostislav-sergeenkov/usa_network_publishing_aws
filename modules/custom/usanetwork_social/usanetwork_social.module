@@ -26,7 +26,8 @@ function usanetwork_social_menu() {
     'title' => t('Social'),
     'page callback' => 'usanetwork_social_landing_page',
     'page arguments' => array(1),
-    'access arguments' => array('access content'),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
   // tv show twitter page
@@ -34,7 +35,8 @@ function usanetwork_social_menu() {
     'title' => t('Twitter'),
     'page callback' => 'usanetwork_social_twitter',
     'page arguments' => array(1),
-    'access arguments' => array('access content'),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
   // tv show facebook page
@@ -42,7 +44,8 @@ function usanetwork_social_menu() {
     'title' => t('Facebook'),
     'page callback' => 'usanetwork_social_facebook',
     'page arguments' => array(1),
-    'access arguments' => array('access content'),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
   // tv show chat with fans page
@@ -50,10 +53,18 @@ function usanetwork_social_menu() {
     'title' => t('Chat with Fans'),
     'page callback' => 'usanetwork_social_chat_with_fans',
     'page arguments' => array(1),
-    'access arguments' => array('access content'),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
   return $items;
+}
+
+/**
+ * Social menu access callback to restrict only tv_show nodes 
+ */
+function usanetwork_social_menu_access($node) {
+  return $node->type == 'tv_show' && user_access('access content');
 }
 
 /**

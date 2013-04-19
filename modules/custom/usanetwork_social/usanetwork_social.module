@@ -19,7 +19,6 @@ function usanetwork_social_menu() {
     'page arguments' => array('usanetwork_social_settings_form'),
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_social.admin.inc',
-    'weight' => -10,
   );
 
   // tv show social page

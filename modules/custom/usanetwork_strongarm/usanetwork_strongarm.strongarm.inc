@@ -52,5 +52,12 @@ function usanetwork_strongarm_strongarm() {
   $strongarm->value = 'http://www.usanetwork.com/schedules/chatter_sched.php';
   $export['usanetwork_tv_schedule'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_tv_schedule_xml_feed';
+  $strongarm->value = 'http://www.usanetwork.com/compassfeeds/USA_Network_YYYY_MM_DD.xml';
+  $export['usanetwork_tv_schedule_xml_feed'] = $strongarm;
+
   return $export;
 }

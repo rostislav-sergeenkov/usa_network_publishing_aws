@@ -5,3 +5,14 @@
  */
 
 include_once 'pub_tv_overrides.features.inc';
+
+/**
+  * Implements hook_form_FORM_ID_alter
+  */
+function pub_tv_overrides_form_tv_episode_node_form_alter(&$form, &$form_state) {
+  // we want to hide the cast and crew field collection
+  // because usa does not use character nodes
+  if (isset($form['field_episode_credit'])) {
+    $form['field_episode_credit']['#access'] = FALSE;
+  }
+}

@@ -11,6 +11,16 @@ function usanetwork_field_formatters_field_formatter_info() {
     'field types' => array('text_long'), //This will only be available to long text fields
     'description' => t('This formatter should be used for outputting raw html markup inserted in a long text/plain text field.'),
   );
+  $custom_formatters['custom_css'] = array(
+    'label' => t('custom_css'),
+    'field types' => array('text_long'), //This will only be available to long text fields
+    'description' => t('This formatter should be used for outputting custom css inserted in a long text/plain text field.'),
+  );
+  $custom_formatters['custom_js'] = array(
+    'label' => t('custom_js'),
+    'field types' => array('text_long'), //This will only be available to long text fields
+    'description' => t('This formatter should be used for outputting custom js inserted in a long text/plain text field.'),
+  );
 
   return $custom_formatters;
 }
@@ -43,6 +53,23 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
         );
       }
       break;
+    // css field data
+    case 'custom_css':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme'  => 'custom_css',
+          '#data'   => drupal_add_css($item['value'],array('type' => 'inline', 'preprocess' => FALSE)),
+        );
+      }
+      break;
+    // js field data
+    case 'custom_js':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+        '#data' => drupal_add_js($item['value'], array('type' => 'inline','scope' => 'header', 'preprocess' => FALSE)),
+        );
+      }
+      break;
   }
 
   return $element;
@@ -58,6 +85,5 @@ function usanetwork_field_formatters_theme() {
     'template'  => 'templates/raw-formatter',
     'variables' => array('data' => ''),
   );
-
   return $items;
 }

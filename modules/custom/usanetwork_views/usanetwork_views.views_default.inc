@@ -595,6 +595,12 @@ function usanetwork_views_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_cover_item']['field_api_classes'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Episode (field_episode) */
   $handler->display->display_options['arguments']['field_episode_target_id']['id'] = 'field_episode_target_id';
@@ -835,7 +841,7 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['filters']['field_episode_target_id']['table'] = 'field_data_field_episode';
   $handler->display->display_options['filters']['field_episode_target_id']['field'] = 'field_episode_target_id';
   $handler->display->display_options['filters']['field_episode_target_id']['operator'] = 'empty';
-  /* Filter criterion: Field: Related Character (field_character) */
+  /* Filter criterion: Field: Character (field_character) */
   $handler->display->display_options['filters']['field_character_target_id']['id'] = 'field_character_target_id';
   $handler->display->display_options['filters']['field_character_target_id']['table'] = 'field_data_field_character';
   $handler->display->display_options['filters']['field_character_target_id']['field'] = 'field_character_target_id';
@@ -922,7 +928,7 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Related Character (field_character) */
+  /* Contextual filter: Field: Character (field_character) */
   $handler->display->display_options['arguments']['field_character_target_id']['id'] = 'field_character_target_id';
   $handler->display->display_options['arguments']['field_character_target_id']['table'] = 'field_data_field_character';
   $handler->display->display_options['arguments']['field_character_target_id']['field'] = 'field_character_target_id';

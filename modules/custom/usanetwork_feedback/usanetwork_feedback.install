@@ -45,9 +45,9 @@ function usanetwork_feedback_install() {
   $node = node_load($entity->nid);
 
   $node->webform['nid'] = $entity->nid;
-  $node->webform['confirmation'] = '';
+  $node->webform['confirmation'] = '<p>Thank you, your submission has been received.</p>';
   $node->webform['confirmation_format'] = 'wysiwyg_basic';
-  $node->webform['redirect_url'] = '<confirmation>';
+  $node->webform['redirect_url'] = '<none>';
   $node->webform['status'] = '1';
   $node->webform['roles'] = array(
     0 => '1',

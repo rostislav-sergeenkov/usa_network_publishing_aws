@@ -135,7 +135,6 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
 function aurora_usa_preprocess_field(&$vars, $hook) {
   if(($vars['element']['#object']->type == 'media_gallery')
     && ($vars['element']['#field_name'] == 'field_media_items')) {
-    dsm($vars);
     $vars['items'] = append_cover_to_media($vars);
   }
 }

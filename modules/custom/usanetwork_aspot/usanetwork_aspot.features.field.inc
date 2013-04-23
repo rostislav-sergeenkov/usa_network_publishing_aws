@@ -808,13 +808,94 @@ function usanetwork_aspot_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-usanetwork_aspot-field_usa_aspot_txt4'.
+  $fields['node-usanetwork_aspot-field_usa_aspot_txt4'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_aspot_txt4',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usanetwork_aspot',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_usa_aspot_txt4',
+      'label' => 'Call to Action Text',
+      'required' => 0,
+      'settings' => array(
+        'exclude_cv' => FALSE,
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '9',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Call to Action Text');
   t('Call to Action Type');
   t('Desktop Image');
   t('Enter  either a full external url or use the \'search\' button to browse links to local pages.');
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
+  t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
   t('Link');
   t('Mobile Image');
   t('Show');

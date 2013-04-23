@@ -98,6 +98,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_schedule',
     'usanetwork_aspot',
     'usanetwork_flag',
+    'usanetwork_borealis',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

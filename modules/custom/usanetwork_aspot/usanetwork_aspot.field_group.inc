@@ -27,6 +27,7 @@ function usanetwork_aspot_field_group_info() {
       1 => 'field_usa_aspot_txt1',
       2 => 'field_usa_aspot_txt2',
       3 => 'field_usa_aspot_txt3',
+      4 => 'field_usa_aspot_txt4',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

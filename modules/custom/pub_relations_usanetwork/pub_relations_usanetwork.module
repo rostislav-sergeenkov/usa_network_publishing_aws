@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the pub_relations_usanetwork feature.
- */
-
-include_once 'pub_relations_usanetwork.features.inc';

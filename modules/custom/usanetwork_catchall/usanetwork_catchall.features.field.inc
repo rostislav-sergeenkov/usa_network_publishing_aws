@@ -73,7 +73,7 @@ function usanetwork_catchall_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -149,7 +149,7 @@ function usanetwork_catchall_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -225,7 +225,7 @@ function usanetwork_catchall_field_default_fields() {
           'module' => 'usanetwork_field_formatters',
           'settings' => array(),
           'type' => 'raw_formatter',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -395,7 +395,7 @@ function usanetwork_catchall_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',

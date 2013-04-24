@@ -82,7 +82,7 @@ function usanetwork_catchall_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_catchall_page';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'status',
   );
   $export['node_options_catchall_page'] = $strongarm;
 
@@ -97,7 +97,7 @@ function usanetwork_catchall_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_catchall_page';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_catchall_page'] = $strongarm;
 
   return $export;

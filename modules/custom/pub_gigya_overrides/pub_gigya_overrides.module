@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the pub_gigya_overrides feature.
+ */
+
+include_once 'pub_gigya_overrides.features.inc';

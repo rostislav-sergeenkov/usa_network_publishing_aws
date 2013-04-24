@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * .module file
+ */
+
+/**
+* Implementation of hook_menu().
+*/
+function usanetwork_feedback_menu() {
+  // admin pages
+  $items['admin/usanetwork/feedback-settings'] = array(
+    'title' => t('Feedback Form Settings'),
+    'description' => t('Feedback form email template and recaptcha settings.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_feedback_settings_form'),
+    'access arguments' => array('administer content'),
+    'file' => 'usanetwork_feedback.admin.inc',
+  );
+
+  return $items;
+}

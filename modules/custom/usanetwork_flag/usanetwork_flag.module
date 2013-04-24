@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Usanetwork Flag feature.
+ */
+
+include_once 'usanetwork_flag.features.inc';

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_aspot feature.
+ */
+
+include_once 'usanetwork_aspot.features.inc';

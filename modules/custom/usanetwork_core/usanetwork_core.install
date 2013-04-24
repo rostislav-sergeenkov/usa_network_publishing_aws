@@ -1,0 +1,167 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork core needs.
+ *
+ * @ingroup USA Network
+ */
+
+ /**
+ *  Implements hook_install().
+ */
+function usanetwork_core_install() {
+  // remove things we do not want for usanetwork
+  usanetwork_core_uninstall_modules();
+
+  // Deploy taxonomy vocabularies.
+  usanetwork_core_deploy_taxonomy();
+
+  // Deploy taxonomy terms.
+  usanetwork_core_deploy_terms();
+
+  // enable our custom modules
+  usanetwork_core_enable_modules();
+
+  // Set the theme
+  usanetwork_core_set_theme();
+
+  // Create menu entries.
+  // node_menu() defines menu items based on node types so it needs to come
+  // after node types are rebuilt.
+  menu_rebuild();
+  usanetwork_core_create_menu_items();
+
+}
+
+/**
+ * Uninstall modules.
+ *
+ * Uninstall modules that are not necessary for this site.
+ */
+function usanetwork_core_uninstall_modules() {
+  $modules = array(
+    'overlay',
+    'shortcut',
+    'contextual',
+  );
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+
+  $ret = t('The following modules were uninstalled: @modules', array('@modules' => join(', ', $modules)));
+  $ret .= "\n";
+  drupal_set_message($ret);
+  return $ret;
+}
+
+/**
+ * Enable modules.
+ *
+ * Enable modules for this site.
+ */
+function usanetwork_core_enable_modules() {
+  $modules = array(
+    // contrib
+    'modernizr',
+    'panels',
+    'features_override',
+    'views_slideshow',
+    'views_slideshow_cycle',
+    'flexslider',
+    'flexslider_views',
+    'menu_block',
+    'print',
+    'linkit',
+    'borealis',
+    'borealis_ri',
+    'jquery_update',
+    'views_bulk_operations',
+    'views_load_more',
+    'addanother',
+    // USA custom
+    'usanetwork',
+    'usanetwork_ds',
+    'usanetwork_blocks',
+    'usanetwork_linkit',
+    'usanetwork_imagestyles',
+    'usanetwork_views',
+    'usanetwork_context',
+    'usanetwork_files',
+    'usanetwork_panels',
+    'usanetwork_strongarm',
+    'usanetwork_social',
+    'usanetwork_static_page',
+    'usanetwork_pathauto',
+    'usanetwork_feedback',
+    'usanetwork_addanother',
+    'usanetwork_tv_schedule',
+    'usanetwork_aspot',
+    'usanetwork_flag',
+    'usanetwork_borealis',
+    // pub ent overrides
+    'pub_files_overrides',
+    'pub_tv_overrides',
+    'pub_media_overrides',
+    'pub_character_profile_overrides',
+    'pub_person_overrides',
+    'pub_gigya_overrides',
+  );
+
+  module_enable($modules);
+
+  $ret = t('The following modules were enabled: @modules', array('@modules' => join(', ', $modules)));
+  $ret .= "\n";
+  drupal_set_message($ret);
+  return $ret;
+}
+/**
+ * Set the theme.
+ *
+ * Manually set the new theme.
+ */
+function usanetwork_core_set_theme() {
+  $theme = 'aurora_usa';
+
+  // Enable the aurora_usanetwork theme and set it as the site default.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $theme)
+    ->execute();
+
+  variable_set('theme_default', $theme);
+
+  // unset some blocks so we can manage in context
+  $values = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+
+  $ret = t('The theme was set to: @theme', array('@theme' => $theme));
+  drupal_set_message($ret);
+  return $ret;
+}

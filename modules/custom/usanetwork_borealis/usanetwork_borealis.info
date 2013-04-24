@@ -1,0 +1,12 @@
+name = usanetwork_borealis
+core = 7.x
+package = USA Network
+dependencies[] = borealis
+dependencies[] = borealis_ri
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = borealis_responsive_builds
+features[variable][] = borealis_ri_children
+features[variable][] = borealis_ri_parents

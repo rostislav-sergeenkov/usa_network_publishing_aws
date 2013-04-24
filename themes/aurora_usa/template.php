@@ -63,7 +63,8 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
-  if ($vars['node']->type == "media_gallery") {
+  $node = menu_get_object();
+  if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
 }

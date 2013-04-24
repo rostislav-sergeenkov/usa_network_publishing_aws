@@ -7,9 +7,14 @@
 
   CKEDITOR.plugins.add( 'linkit', {
 
-    requires : [ 'fakeobjects', 'link' ],
+    requires : [ 'link' ],
 
     init: function( editor ) {
+
+      // Get the major CKeditor verison.
+      // We do not care about minor versions.
+      var version = parseInt(CKEDITOR.version);
+
       // Add Button.
       editor.ui.addButton( 'linkit', {
         label: 'Linkit',
@@ -62,36 +67,64 @@
         }
       });
 
-      // Add it to the rightclick menu
-      if (editor.addMenuGroup) {
-        editor.addMenuGroup("Linkit", 100);
-      }
-
+      // If the "menu" plugin is loaded, register the menu items.
       if (editor.addMenuItems) {
+        // Use the default link menu group weight and subtract one.
+        var defaultMenuGroup = editor._.menuGroups.link;
+        editor.addMenuGroup("Linkit", defaultMenuGroup - 1);
+
         editor.addMenuItems({
           linkit: {
             label: 'Linkit',
             command: 'linkit',
             icon: this.path + 'linkit.png',
-            group : 'Linkit',
-            order : 0
+            group: 'Linkit',
+            order: 0
           }
         });
+
+        // Remove the default link option.
+        editor.removeMenuItem('link');
       }
 
+      // If the "contextmenu" plugin is loaded, register the listeners.
       if (editor.contextMenu) {
         editor.contextMenu.addListener(function(element, selection) {
           if (!element || element.isReadOnly() || (selection.getSelectedText().length < 1 && !element.is('a'))) {
             return null;
           }
-          return { linkit: CKEDITOR.TRISTATE_ON };
+
+          return {linkit: CKEDITOR.TRISTATE_OFF};
         });
       }
+
+      // Add a shortcut. Only CKeditor version 4 has this function.
+      if (version >= 4) {
+        editor.setKeystroke( CKEDITOR.CTRL + 76 /*L*/, 'linkit' );
+      }
+
+      // Add event listener.
+      editor.on( 'doubleclick', function( evt ) {
+        // Delete the default link dialog.
+        delete evt.data.dialog;
+
+        var element = CKEDITOR.plugins.link.getSelectedLink( editor ) || evt.data.element;
+        if ( !element.isReadOnly() ) {
+          if ( element.is( 'a' ) ) {
+            editor.getSelection().selectElement( element );
+            if (version >= 4) {
+              editor.commands.linkit.exec();
+            }
+            else if(version == 3) {
+              editor._.commands.linkit.exec();
+            }
+          }
+        }
+      });
 
       // Register an extra fucntion, this will be used in the modal.
       editor._.linkitFnNum = CKEDITOR.tools.addFunction( insertLink, editor );
     }
-
   });
 
   /**
@@ -106,14 +139,14 @@
 
     if (!Drupal.settings.linkit.currentInstance.selectedElement) {
       // We have not selected any link element so lets create a new one.
-      var ranges = selection.getRanges( true );
-      if (ranges.length == 1 && ranges[0].collapsed) {
+      var range = selection.getRanges(1)[0];
+      if (range.collapsed) {
         var content = (Drupal.settings.linkit.currentInstance.linkContent) ? Drupal.settings.linkit.currentInstance.linkContent : data.path;
-        var text = new CKEDITOR.dom.text(content, editor.document);
-        ranges[0].insertNode(text);
-        ranges[0].selectNodeContents(text);
-        selection.selectRanges(ranges);
+        var text = new CKEDITOR.dom.text(content , editor.document );
+        range.insertNode(text);
+        range.selectNodeContents(text);
       }
+
       // Delete all attributes that are empty.
       data.attributes.href = data.path;
       for (name in data.attributes) {
@@ -122,7 +155,8 @@
       // Apply style.
       var style = new CKEDITOR.style({element : 'a', attributes : data.attributes});
       style.type = CKEDITOR.STYLE_INLINE;
-      style.apply(editor.document);
+      style.applyToRange(range);
+      range.select();
     }
     else {
       var element = Drupal.settings.linkit.currentInstance.selectedElement;

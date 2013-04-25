@@ -21,7 +21,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spots',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_usa_hp_arefs',
     ),
@@ -49,8 +49,10 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'B-spots',
-    'weight' => '4',
-    'children' => array(),
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_usa_hp_brefs',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'label' => 'B-spots',
@@ -75,9 +77,9 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'C-spots',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
-      0 => 'metatags',
+      0 => 'field_usa_hp_crefs',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

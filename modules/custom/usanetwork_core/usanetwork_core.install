@@ -99,6 +99,8 @@ function usanetwork_core_enable_modules() {
     'usanetwork_aspot',
     'usanetwork_flag',
     'usanetwork_borealis',
+    'usanetwork_promo',
+    'usanetwork_home',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

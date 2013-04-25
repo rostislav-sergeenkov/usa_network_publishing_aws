@@ -24,7 +24,7 @@ function usanetwork_home_ctools_plugin_api() {
 function usanetwork_home_node_info() {
   $items = array(
     'usa_homepage' => array(
-      'name' => t('USA Homepage'),
+      'name' => t('Homepage'),
       'base' => 'node_content',
       'description' => t('Monday through Sunday homepages'),
       'has_title' => '1',

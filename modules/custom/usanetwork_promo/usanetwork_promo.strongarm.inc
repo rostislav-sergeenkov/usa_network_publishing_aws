@@ -19,13 +19,13 @@ function usanetwork_promo_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

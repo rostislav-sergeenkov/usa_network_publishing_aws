@@ -21,7 +21,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spots',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_usa_hp_arefs',
     ),
@@ -31,7 +31,7 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'No more than 3 to 5 A-spots are recommended for this region',
+        'description' => 'No more than 3 A-spots are recommended for this region',
       ),
       'formatter' => 'closed',
     ),
@@ -49,15 +49,18 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'B-spots',
-    'weight' => '4',
-    'children' => array(),
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_usa_hp_brefs',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'label' => 'B-spots',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 5 promos recommended for this region',
+        'description' => 'A maximum of 3 promos recommended for this region.<br /><br />
+On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
       ),
       'formatter' => 'closed',
     ),
@@ -75,9 +78,9 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'C-spots',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
-      0 => 'metatags',
+      0 => 'field_usa_hp_crefs',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -85,7 +88,8 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 5 promos recommended for this region',
+        'description' => 'A maximum of 3 promos recommended for this region.<br /><br />
+On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
       ),
       'formatter' => 'closed',
     ),

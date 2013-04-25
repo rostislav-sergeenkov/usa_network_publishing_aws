@@ -45,7 +45,7 @@ function pub_media_overrides_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
-            'character_profile' => 'character_profile',
+            'person' => 'person',
           ),
         ),
         'target_type' => 'node',
@@ -94,11 +94,13 @@ function pub_media_overrides_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_character',
-      'label' => 'Related Character',
+      'label' => 'Related Person',
       'required' => 0,
       'settings' => array(
+        'exclude_cv' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -204,6 +206,7 @@ function pub_media_overrides_field_default_fields() {
       'label' => 'Episode',
       'required' => 0,
       'settings' => array(
+        'exclude_cv' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -308,6 +311,7 @@ function pub_media_overrides_field_default_fields() {
       'label' => 'Season',
       'required' => 0,
       'settings' => array(
+        'exclude_cv' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -410,6 +414,7 @@ function pub_media_overrides_field_default_fields() {
       'label' => 'Show',
       'required' => 0,
       'settings' => array(
+        'exclude_cv' => FALSE,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -425,7 +430,7 @@ function pub_media_overrides_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Episode');
-  t('Related Character');
+  t('Related Person');
   t('Season');
   t('Show');
 

@@ -1,0 +1,569 @@
+<?php
+
+/**
+ * USANetwork Lyris module.
+ *
+ * For all USANetwork Integration with Sparklist/Lyris.
+ *
+ */
+
+function usanetwork_lyris_menu() {
+  $items['admin/usanetwork/lyris-settings'] = array(
+    'title' => t('USA Network'),
+    'description' => t('Administer USA Network lyris config.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_lyris_settings_form'),
+    'access arguments' => array('administer content'),
+    'file' => 'usanetwork_lyris.admin.inc',
+  );
+  return $items;
+}
+
+function usanetwork_lyris_block_info() {
+  $blocks['newsletter_subscription'] = array(
+    'info' => t('Newsletter Signup'),
+    'cache' => DRUPAL_CACHE_PER_USER,
+    'status' => TRUE,
+    'region' => 'sidebar_second',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'show/*'
+  );
+
+  return $blocks;
+}
+
+function usanetwork_lyris_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'newsletter_subscription':
+      $block['subject'] = t('Newsletter Signup');
+      $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription');
+      break;
+  }
+  return $block;
+}
+
+
+function usanetwork_lyris_theme() {
+  $themes = array(
+    'newsletter_subscription' => array(
+      'variables' => array(),
+    ),
+  );
+  return $themes;
+}
+
+function usanetwork_lyris_newsletter_subscription($form, $form_state) {
+  $form['newsletter'] = array(
+    '#type' => 'textfield',
+    '#title' => t('E-Mail'),
+    '#size' => 26,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Sign Up'),
+  );
+  return $form;
+}
+
+/**
+ * To load the required configurations.
+ *
+ * @return Lyris Object
+ */
+function usanetwork_lyris_load_lyris() {
+  //suppress all the error from Sparklist
+  error_reporting(0);
+  $sparklist_endpoint = variable_get('sparklist_endpoint', 'http://studios.sparklist.com:82/?wsdl');
+  $sparklist_listname = variable_get('sparklist_listname', '');
+  $sparklist_username = variable_get('sparklist_username', '');
+  $sparklist_password = variable_get('sparklist_password', '');
+  define('ENDPOINT', $sparklist_endpoint);
+  define('LIST_NAME', $sparklist_listname);
+
+  $proxy = array(
+    'proxy_host' => variable_get('usanetwork_lyris_proxyhost', ''),
+    'proxy_port' => variable_get('usanetwork_lyris_proxyport', '')
+  );
+
+  $lyris = new lyris(ENDPOINT, $proxy['proxy_host'], $proxy['proxy_port']);
+  $lyris->login($sparklist_username, $sparklist_password);
+
+  return $lyris;
+}
+
+/**
+ * To send emails to segments.
+ *
+ * @param Array $segment_ids list of segment ids
+ * @param Array $param       list of input parameters
+ *
+ * @return Array of message ids
+ */
+function usanetwork_lyris_send_mailing($segment_ids, $param) {
+
+  $lyris = usanetwork_lyris_load_lyris();
+
+  //To send email to a segment.
+  //  $param['EnableRecency'];
+  //  $param['IsHtmlSectionEncoded'];
+  //  $param['Subject'] = "Test DL Email Sparklist : ".$param['Subject'];
+  //  $param['Campaign'];
+  //  $param['HtmlSectionEncoding'];
+  //  $param['HtmlMessage'];
+  //  $param['To'];
+  //  $param['RecencyWhich'];
+  //  $param['ResendAfterDays'];
+  //  $param['SampleSize'];
+  //  $param['CharSetID'];
+  //  $param['ReplyTo'];
+  //  $param['IsTextSectionEncoded'];
+  //  $param['TextSectionEncoding'];
+  //$param['Title'] = "Test Email Sparklist : Title";
+  //$param['TextMessage'] = "Test Email Sparklist : Body";
+  //  $param['TrackOpens'];
+  //  $param['RecencyNumberOfMailings'];
+  //  $param['RecencyDays'];
+  //  $param['BypassModeration'];
+  //  $param['Attachments'];
+  //  $param['DontAttemptAfterDate'];
+  //  $param['RewriteDateWhenSent'];
+  //  $param['From'];
+  //  $param['AdditionalHeaders'];
+  $param['ListName'] = LIST_NAME;
+  //  $param['DetectHtml'];
+
+  foreach ($segment_ids as $key => $segment_id) {
+    $message_ids[] = $lyris->SendMailing($segment_id, $param);
+  }
+
+  return $message_ids;
+}
+
+/**
+ * To send scheduled emails to segments.
+ *
+ * @param Array    $segment_ids list of segment ids
+ * @param Array    $param       list of input parameters
+ * @param Datetime $scheduled   Datetime for the mail to be scheduled
+ *
+ * @return Array of message ids
+ */
+function usanetwork_lyris_send_scheduled_mailing($segment_ids, $param, $scheduled) {
+
+  $lyris = usanetwork_lyris_load_lyris();
+
+  //To send email to a segment.
+  //$param['Subject'] = "Test DL Scheduled Email Sparklist : Subject";
+  $param['ListName'] = LIST_NAME;
+
+  foreach ($segment_ids as $key => $segment_id) {
+    $message_ids[] = $lyris->SendMailing($segment_id, $param, $scheduled);
+  }
+
+  return $message_ids;
+}
+/**
+ * To create segments.
+ *
+ * @param String $distribution_nid id of the distribution list(taxonomy term id)
+ * @param Array  $query_ids        list of options selected
+ * @param String $node_title       node title
+ *
+ * @return segment id
+ */
+function usanetwork_lyris_create_segment($distribution_nid, $query_ids, $node_title) {
+
+  $lyris = usanetwork_lyris_load_lyris();
+  $segment_name = usanetwork_lyris_get_segment_name($distribution_nid, $node_title);
+  //Create a segment
+  //$param['SegmentID'];
+  $param['SegmentName'] = $segment_name;
+  $param['Description'] = $node_title;
+  $param['SegmentType'] = 'normal';
+  $param['ListName'] = LIST_NAME;
+  $param['NumTestRecords'] = 100;
+  //$param['ClauseAdd'];
+  /*
+  $param['ClauseWhere'] = "--Text field 'members_.Source' contains '||" . $distribution_nid
+    . "||' \nLOWER(members_.Source) LIKE '%||" . $distribution_nid . "||%'";
+  */
+  $param['ClauseWhere'] = usanetwork_lyris_get_segment_query($query_ids);
+  //$param['ClauseAfterSelect'];
+  //$param['ClauseFrom'];
+  //$param['ClauseOrderBy'];
+  //$param['ClauseSelect'];
+  $param['AddWhereList'] = TRUE;
+  $param['AddWhereMemberType'] = TRUE;
+  $param['AddWhereSubType'] = TRUE;
+
+  $segment_id = $lyris->CreateSegment($param);
+  return $segment_id;
+}
+
+/**
+ * To get segment name.
+ *
+ * @param String $term_id    term id
+ * @param String $node_title node title
+ *
+ * @return segment name
+ */
+
+function usanetwork_lyris_get_segment_name($term_id, $node_title) {
+  $node_title = str_replace(' ', '_', trim(strtolower($node_title)));
+  $segment_name = 'segment_' . $term_id.'_'.$node_title;
+  return $segment_name;
+}
+/**
+ * To generate the query for the segment creation.
+ *
+ * @param Array $query_ids list of options selected(taxonomy term id)
+ *
+ * @return query string
+ */
+function usanetwork_lyris_get_segment_query($query_ids) {
+  $final_query = "";
+  //sample template of the query
+  $sample_str = "--Text field 'members_.Source' contains '||~||' \nLOWER(members_.Source) LIKE '%||~||%'";
+  foreach ($query_ids as $key => $id) {
+    $query_str = str_replace("~", $id, $sample_str);
+    if ($final_query == "") {
+      $final_query = $query_str;
+    }
+    else {
+      $final_query .= " \nOR \n" . $query_str;
+    }
+  }
+  return $final_query;
+}
+
+/**
+ * To select segments.
+ *
+ * @param String $segment_name Segment name
+ *
+ * @return SegmentStruct
+ */
+function usanetwork_lyris_select_segments($segment_name) {
+
+  $lyris = usanetwork_lyris_load_lyris();
+
+  //Select a segment
+  $segments = $lyris->SelectSegments($segment_name, LIST_NAME);
+  return $segments;
+}
+
+/**
+ * User Configurations.
+ *
+ * @return void
+ */
+function usanetwork_lyris_member_action() {
+
+  $lyris = usanetwork_lyris_load_lyris();
+
+  $user = Array(
+    'EmailAddr_' => 'pradeep.venugopal@nbcuni.com',
+    'first_name' => 'Pradeep',
+    'last_name' => 'Venugopal',
+  );
+  /*
+  //Check if email already exists on the list.
+  $check = $lyris->GetMemberStruct($user['EmailAddr_'], LIST_NAME);
+  $msg = "";
+  if ($check) {
+    echo "User ".$user['EmailAddr_']." Present<pre>";
+    print_r($check);print('</pre>');
+  }
+  else {
+    echo "User ".$user['EmailAddr_']." Not Present";
+  }*/
+}
+
+/**
+ * To create a user in Sparklist
+ *
+ * @param Object $user User object
+ *
+ * @return array
+ */
+function usanetwork_lyris_create_single_member($user) {
+
+  $lyris = usanetwork_lyris_load_lyris();
+
+  //create a member
+  $member = $lyris->CreateSingleMember(
+    $user['email'], $user['first_name'] .' '. $user['last_name'], LIST_NAME);
+
+  if ($member) {
+    //show the user a confirmation
+    if ($lyris->UpdateMemberStatus($user['email'], LIST_NAME, 'normal')) {
+      $lyris->UpdateMemberDemographics($user['email'], LIST_NAME, Array(
+        'Source' => $user['source']
+      ));
+    }
+  }
+  return $member;
+}
+/**
+ * To update user in Sparklist
+ *
+ * @param Object $user User object
+ *
+ * @return array
+ */
+function usanetwork_lyris_update_single_member($user, $originalMail) {
+  $lyris = usanetwork_lyris_load_lyris();
+  if($lyris->GetMemberStruct($user['email'], LIST_NAME, FALSE) == FALSE) {
+    $user['email'] = $originalMail;
+    return usanetwork_lyris_create_single_member($user);
+  }
+  if ($originalMail != $user['email'] ) {
+    $lyris->UpdateMemberEmail($originalMail, LIST_NAME, $user['email']);
+  }
+  $lyris->UpdateMemberDemographics($user['email'], LIST_NAME, Array(
+        'Source' => $user['source'],
+        'First_Name' => $user['first_name'],
+        'Last_Name' => $user['last_name']
+  ));
+  $lyris->UpdateMemberStatus($user['email'], LIST_NAME, $user['status']);
+
+}
+/**
+ * Implementation of hook_node_update().
+ *
+ * @param Object $node node object
+ *
+ * @return void
+ */
+function usanetwork_lyris_node_update($node) {
+  if ($node->type == "simplenews") {
+    if ($node->status == 1) {
+      usanetwork_lyris_send_mail($node);
+    }
+  }
+}
+/**
+ * Implementation of hook_node_insert().
+ *
+ * @param Object $node node object
+ *
+ * @return void
+ */
+function usanetwork_lyris_node_insert($node) {
+  if ($node->type == "distribution_list_mapping") {
+    $segment_query_value = array();
+    foreach ($node->field_department_area[LANGUAGE_NONE] as  $da) {
+      $segment_query_value[] = $da['tid'];
+    }
+    foreach ($node->field_call_letters[LANGUAGE_NONE] as  $cl) {
+      $segment_query_value[] = $cl['tid'];
+    }
+    foreach ($node->field_email_list[LANGUAGE_NONE] as  $el) {
+      $segment_query_value[] = $el['tid'];
+    }
+
+    // Get the vocabulary ID.
+    $vid = db_query("SELECT vid FROM {taxonomy_vocabulary}
+      WHERE machine_name = 'newsletter' AND module = 'simplenews'",
+      array('target' => 'slave'))->fetchField();
+
+    $term_create = taxonomy_term_save((object) array(
+      'name' => $node->title,
+      'vid' => $vid,
+    ));
+
+    if ($term_create) {
+      // Get the parent term's ID.
+      $term_id = db_query("SELECT tid FROM {taxonomy_term_data}
+        WHERE vid = :vid AND name = :name LIMIT 1",
+        array(':vid' => $vid, ':name' => $node->title), array('target' => 'slave'))
+        ->fetchField();
+
+      //to create Newsletter category
+      $category_create = simplenews_category_save((object)array(
+        'tid' => $term_id,
+        'name' => $node->title,
+        'weigh' => 0,
+        'new_account' => 'none',
+        'opt_inout' => 'double',
+        'block' => 1,
+        'format' => 'html',
+        'priority' => 3,
+        'receipt' => 0,
+        'from_name' => 'NBCU Affiliate Marketing',
+        'email_subject' => '[[simplenews-category:name]] [node:title]',
+        'from_address' => 'support@nbcaffiliatemarketing.com',
+        'hyperlinks' => 1,
+       ));
+
+      //create a segment in sparklist with the nid as the key
+      $segment_id = usanetwork_lyris_create_segment($term_id, $segment_query_value, $node->title);
+    }
+  }
+  elseif ($node->type == "simplenews") {
+    if ($node->status == 1) {
+      usanetwork_lyris_send_mail($node);
+    }
+  }
+}
+
+function usanetwork_lyris_send_mail($node) {
+  $input['Subject'] = $node->title;
+  $input['HtmlMessage'] = isset($node->body[LANGUAGE_NONE][0]['value'])
+    ? $node->body[LANGUAGE_NONE][0]['value'] : "";
+  //get all the segments of the list.
+  $segments_list = usanetwork_lyris_select_segments('');
+  if (isset($segments_list)) {
+    //loop i=on the segments to get the segmentID for ending the email.
+    foreach ($segments_list as $segment) {
+      $segments_data[$segment['SegmentName']] = $segment['SegmentID'];
+    }
+    if (isset($node->field_simplenews_term[LANGUAGE_NONE])) {
+      foreach ($node->field_simplenews_term[LANGUAGE_NONE] as $segment) {
+        $tid = $segment['tid'];
+        $term = taxonomy_term_load($tid);
+        $segment_name = usanetwork_lyris_get_segment_name($tid, $term->name);
+        if (array_key_exists($segment_name, $segments_data)) {
+          $segment_ids[] = $segments_data[$segment_name];
+        }
+      }
+    }
+    if (count($segment_ids) > 0) {
+      $return_ids = usanetwork_lyris_send_mailing($segment_ids, $input);
+    }
+  }
+  /*
+  db_query('UPDATE {node} n set n.status = 0  WHERE n.nid = :nid', array(':nid' => $node->nid));
+  db_query('UPDATE {node_revision} nr set nr.status = 0  WHERE nr.nid = :nid', array(':nid' => $node->nid)); */
+}
+
+
+/**
+ * Implementation of hook_user_insert
+ *
+ * @param Array  &$edit    The array of form values submitted by the user
+ * @param Array  $account  User object
+ * @param String $category Active category of user
+ *
+ * @return void
+ */
+function usanetwork_lyris_user_insert(&$edit, $account, $category) {
+  $user = usanetwork_lyris_get_user($account);
+  $member = usanetwork_lyris_create_single_member($user);
+}
+/**
+ * Implementation of hook_user_update
+ *
+ * @param Array  &$edit    The array of form values submitted by the user
+ * @param Array  $account  User object
+ * @param String $category Active category of user
+ *
+ * @return void
+ */
+function usanetwork_lyris_user_update(&$edit, $account, $category) {
+  $changedMail = $account->mail;
+  $originalMail = $account->original->mail;
+  $user = usanetwork_lyris_get_user($account);
+  $member = usanetwork_lyris_update_single_member($user, $originalMail);
+}
+/**
+ * function to get user details for sparklist
+ *
+ * @param Array  $account  User object
+ *
+ * @return Array $user
+ */
+function usanetwork_lyris_get_user($account) {
+  $user_select_value = array();
+  if (isset($account->field_department_area[LANGUAGE_NONE])) {
+    foreach ($account->field_department_area[LANGUAGE_NONE] as  $da) {
+      $user_select_value[$da['tid']] = $da['tid'];
+    }
+  }
+  if (isset($account->field_call_letters[LANGUAGE_NONE])) {
+    foreach ($account->field_call_letters[LANGUAGE_NONE] as  $cl) {
+      $user_select_value[$cl['tid']] = $cl['tid'];
+    }
+  }
+  if (isset($account->field_email_list[LANGUAGE_NONE])) {
+    foreach ($account->field_email_list[LANGUAGE_NONE] as  $el) {
+      $user_select_value[$el['tid']] = $el['tid'];
+    }
+  }
+  if ($account->field_primary_promo[LANGUAGE_NONE][0]['value'] == '1') {
+    $promo_title = variable_get('title', 'Promotion');
+    $promotion_dl = db_query("SELECT nid FROM {node}
+      WHERE type = 'distribution_list_mapping' AND title = :title", array(':title' => $promo_title),
+      array('target' => 'slave'))->fetchField();
+    if (isset($promotion_dl) && !empty($promotion_dl)) {
+      $promotion_cl_query = db_query("SELECT field_call_letters_tid FROM {field_data_field_call_letters}
+        WHERE bundle = 'distribution_list_mapping' AND entity_id = :promotion_dl", array(':promotion_dl' => $promotion_dl),
+        array('target' => 'slave'))->fetchAll();
+
+      $promotion_da_query = db_query("SELECT field_department_area_tid FROM {field_data_field_department_area}
+        WHERE bundle = 'distribution_list_mapping' AND entity_id = :promotion_dl", array(':promotion_dl' => $promotion_dl),
+        array('target' => 'slave'))->fetchAll();
+
+      $promotion_el_query = db_query("SELECT field_email_list_tid FROM {field_data_field_email_list}
+        WHERE bundle = 'distribution_list_mapping' AND entity_id = :promotion_dl", array(':promotion_dl' => $promotion_dl),
+        array('target' => 'slave'))->fetchAll();
+
+      foreach ($promotion_cl_query as $val) {
+        $user_select_value[$val->field_call_letters_tid] = $val->field_call_letters_tid;
+      }
+
+      foreach ($promotion_da_query as $val) {
+        $user_select_value[$val->field_department_area_tid] = $val->field_department_area_tid;
+      }
+
+      foreach ($promotion_el_query as $val) {
+        $user_select_value[$val->field_email_list_tid] = $val->field_email_list_tid;
+      }
+    }
+  }
+
+  $user['status'] = $account->status == 1 ? 'normal' : 'unsub';
+  $user['email'] = $account->mail;
+  $user['first_name'] = isset($account->field_first_name[LANGUAGE_NONE][0]['value']) ? $account->field_first_name[LANGUAGE_NONE][0]['value'] : '';
+  $user['last_name'] = isset($account->field_last_name[LANGUAGE_NONE][0]['value']) ? $account->field_last_name[LANGUAGE_NONE][0]['value'] : '';
+
+  $source_string = "||";
+  foreach ($user_select_value as $key => $value) {
+    $source_string .= $value . "||";
+  }
+
+  $user['source'] = $source_string;
+  return $user;
+}
+
+function usanetwork_lyris_delete_single_member($user) {
+  $lyris = usanetwork_lyris_load_lyris();
+  $lyris->DeleteMember($user['email'], LIST_NAME);
+}
+
+function usanetwork_lyris_update_userstatus($user, $status) {
+  $lyris = usanetwork_lyris_load_lyris();
+  $lyris->UpdateMemberStatus($user['email'], LIST_NAME, $status);
+}
+
+function usanetwork_lyris_user_delete($account) {
+  $user = usanetwork_lyris_get_user($account);
+  usanetwork_lyris_delete_single_member($user);
+}
+
+function usanetwork_lyris_user_cancel($edit, $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block';
+    case 'user_cancel_block_unpublish';
+      $user = usanetwork_lyris_get_user($account);
+      usanetwork_lyris_update_userstatus($user, 'unsub');
+      break;
+    case 'user_cancel_reassign';
+      $user = usanetwork_lyris_get_user($account);
+      usanetwork_lyris_delete_single_member($user);
+      break;
+  }
+}

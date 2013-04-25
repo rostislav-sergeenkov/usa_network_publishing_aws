@@ -1,5 +1,5 @@
 name = USANetwork Promo
-description = Enter information for B-spots, C-spots, etc. Do not use for A-spots.
+description = promotional content for placement on home and show pages
 core = 7.x
 package = USA Network
 php = 5.2.4

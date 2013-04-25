@@ -24,9 +24,9 @@ function usanetwork_promo_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_promo_text_line_1',
-      1 => 'field_promo_text_line_2',
-      2 => 'field_call_to_action_type',
-      3 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_call_to_action_text',
+      2 => 'field_promo_text_line_2',
+      3 => 'field_call_to_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -53,8 +53,8 @@ function usanetwork_promo_field_group_info() {
     'label' => 'Promo Media',
     'weight' => '3',
     'children' => array(
-      0 => 'field_promo_regular_image',
-      1 => 'field_promo_wide_image',
+      0 => 'field_promo_wide_image',
+      1 => 'field_promo_regular_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

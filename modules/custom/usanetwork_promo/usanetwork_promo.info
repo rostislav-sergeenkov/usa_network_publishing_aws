@@ -28,6 +28,7 @@ features[field][] = node-usanetwork_promo-field_promo_text_line_1
 features[field][] = node-usanetwork_promo-field_promo_text_line_2
 features[field][] = node-usanetwork_promo-field_promo_wide_image
 features[field][] = node-usanetwork_promo-field_show
+features[field_group][] = group_promo_basic|node|usanetwork_promo|form
 features[field_group][] = group_promo_text_rows|node|usanetwork_promo|form
 features[field_group][] = group_usa_media|node|usanetwork_promo|form
 features[node][] = usanetwork_promo

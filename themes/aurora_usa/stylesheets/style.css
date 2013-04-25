@@ -1267,7 +1267,3 @@ html[xmlns] .slides {
 [class*="iib"] {
   background-color: #2d2d2d;
 }
-
-select.error {
-  color: #000000;
-}

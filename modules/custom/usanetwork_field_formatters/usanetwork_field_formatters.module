@@ -94,3 +94,33 @@ function usanetwork_field_formatters_theme() {
   );
   return $items;
 }
+
+/**
+ * Implements hook_element_info_alter().
+ *
+ * Adds our wrapper function to the processing of media fields on forms.
+ */
+function usanetwork_field_formatters_element_info_alter(&$type) {
+  if (isset($type['media'])) {
+    $type['media']['#process'][] = 'usanetwork_field_formatters_element_process';
+  }
+}
+
+/**
+ * #process callback for the media form element.
+ *
+ * Display files added to Catchall-Page node forms as links to the public URI of
+ * the file next to the image thumbnail
+ */
+function usanetwork_field_formatters_element_process(&$element, &$form_state, $form) {
+  if (isset($element['#file']) && strpos($form['#id'], 'catchall-page-node-form') === 0) {
+    $fid = isset($element['#value']['fid']) ? $element['#value']['fid'] : 0;
+    $file = $fid ? file_load($fid) : FALSE;
+    if (isset($file->uri)) {
+      $element['filename']['#markup'] = '<div style="float: left">' . t('Uploaded File URL: ') . file_create_url($file->uri) . '</div>';
+      $element['filename']['#weight'] = 101;
+    }
+  }
+
+  return $element;
+}

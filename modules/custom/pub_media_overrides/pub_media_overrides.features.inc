@@ -89,7 +89,7 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'weight' => '0',
     ); /* WAS: '' */
     $data['node-media_gallery-field_cover_item']['field_instance']['display']['block_cover_title_lg'] = array(
-      'label' => 'above',
+      'label' => 'hidden',
       'module' => 'file_entity',
       'settings' => array(
         'file_view_mode' => 'block_cover_title_lg',

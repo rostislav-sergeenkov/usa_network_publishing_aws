@@ -40,8 +40,8 @@ function pub_tv_overrides_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_usa_custom_show_tab|node|tv_show|form';
-  $field_group->group_name = 'group_usa_custom_show_tab';
+  $field_group->identifier = 'group_usa_custom_tab|node|tv_show|form';
+  $field_group->group_name = 'group_usa_custom_tab';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
@@ -50,9 +50,9 @@ function pub_tv_overrides_field_group_info() {
     'label' => 'USA Custom',
     'weight' => '4',
     'children' => array(
-      0 => 'field_a_spot_reference',
-      1 => 'field_promo',
-      2 => 'field_add_now',
+      0 => 'field_usa_tv_a_spot',
+      1 => 'field_usa_tv_promo',
+      2 => 'field_usa_tv_on_now',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -64,7 +64,7 @@ function pub_tv_overrides_field_group_info() {
       ),
     ),
   );
-  $export['group_usa_custom_show_tab|node|tv_show|form'] = $field_group;
+  $export['group_usa_custom_tab|node|tv_show|form'] = $field_group;
 
   return $export;
 }

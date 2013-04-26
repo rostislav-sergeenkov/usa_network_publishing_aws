@@ -86,15 +86,15 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Character (field_character) */
-  $handler->display->display_options['arguments']['field_character_target_id']['id'] = 'field_character_target_id';
-  $handler->display->display_options['arguments']['field_character_target_id']['table'] = 'field_data_field_character';
-  $handler->display->display_options['arguments']['field_character_target_id']['field'] = 'field_character_target_id';
-  $handler->display->display_options['arguments']['field_character_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_character_target_id']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['field_character_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_character_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_character_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Field: Person (field_person) */
+  $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
+  $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
+  $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';
+  $handler->display->display_options['arguments']['field_person_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_person_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_person_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_person_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_person_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

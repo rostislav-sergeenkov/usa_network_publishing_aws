@@ -76,7 +76,7 @@ class lyris {
     }
   }
 
-  function CreateSingleMember ($email,$name,$list) {
+  function CreateSingleMember ($email, $name, $list) {
     $this->_lastErr = NULL;
     $r = $this->_client->call('CreateSingleMember',Array('EmailAddress' => $email, 'FullName' => $name, 'ListName' => $list));
     if ($this->_client->fault) {
@@ -329,7 +329,7 @@ class lyris {
     return($r);
   }
 
-  function GetMemberStruct ($search,$list, $cache = TRUE) {
+  function GetMemberStruct ($search, $list, $cache = TRUE) {
     $this->_lastErr = NULL;
 
     if ($cache && array_key_exists("GMS_$search"."_$list",$this->_cache)) {

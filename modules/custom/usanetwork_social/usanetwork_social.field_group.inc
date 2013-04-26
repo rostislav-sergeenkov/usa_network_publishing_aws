@@ -13,6 +13,34 @@ function usanetwork_social_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_newsletter|node|tv_show|form';
+  $field_group->group_name = 'group_newsletter';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Newsletter Settings',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_usa_lyris_listid',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Newsletter Settings',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_newsletter|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_social_information|node|tv_show|form';
   $field_group->group_name = 'group_social_information';
   $field_group->entity_type = 'node';
@@ -24,6 +52,7 @@ function usanetwork_social_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'group_twitter_settings',
+      1 => 'group_newsletter',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -58,11 +87,11 @@ function usanetwork_social_field_group_info() {
       5 => 'field_twitter_itemsperpage',
       6 => 'field_twitter_markers',
       7 => 'field_twitter_safehtml',
-      8 => 'field_twitter_sortorder',
-      9 => 'field_twitter_source',
-      10 => 'field_twitter_state',
-      11 => 'field_twitter_tags',
-      12 => 'field_twitter_show',
+      8 => 'field_twitter_show',
+      9 => 'field_twitter_sortorder',
+      10 => 'field_twitter_source',
+      11 => 'field_twitter_state',
+      12 => 'field_twitter_tags',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

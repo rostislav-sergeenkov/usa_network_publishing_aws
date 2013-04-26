@@ -17,7 +17,7 @@ function usanetwork_lyris_settings_form() {
     '#default_value' => variable_get('usanetwork_lyris_username', ''),
   );
   $form['lyris']['usanetwork_lyris_password'] = array(
-    '#type' => 'textfield',
+    '#type' => 'password',
     '#title' => t('lyris admin password'),
     '#default_value' => variable_get('usanetwork_lyris_password', ''),
   );
@@ -26,12 +26,6 @@ function usanetwork_lyris_settings_form() {
     '#title' => t('WSDL'),
     '#default_value' => variable_get('usanetwork_lyris_endpoint', ''),
     '#description' => t('End point WSDL'),
-  );
-  $form['lyris']['usanetwork_lyris_listname'] = array(
-    '#type' => 'textfield',
-    '#title' => t('List'),
-    '#default_value' => variable_get('usanetwork_lyris_listname', ''),
-    '#description' => t('Lyris List Name'),
   );
   $form['lyris']['usanetwork_lyris_proxyhost'] = array(
     '#type' => 'textfield',

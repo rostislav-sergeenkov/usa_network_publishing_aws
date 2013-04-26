@@ -58,6 +58,9 @@ function pub_media_overrides_features_override_default_overrides() {
   $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|block_cover_title"] = array(
     'custom_settings' => TRUE,
   );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|block_cover_title_lg"] = array(
+    'custom_settings' => TRUE,
+  );
 
  return $overrides;
 }

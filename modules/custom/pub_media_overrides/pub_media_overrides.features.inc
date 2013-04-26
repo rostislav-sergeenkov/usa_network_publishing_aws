@@ -85,5 +85,8 @@ function pub_media_overrides_strongarm_alter(&$data) {
     $data['field_bundle_settings_node__media_gallery']->value['view_modes']['block_cover_title'] = array(
       'custom_settings' => TRUE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_node__media_gallery']->value['view_modes']['block_cover_title_lg'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
   }
 }

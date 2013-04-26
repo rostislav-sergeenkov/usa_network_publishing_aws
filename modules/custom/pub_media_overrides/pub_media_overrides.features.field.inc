@@ -14,7 +14,7 @@ function pub_media_overrides_field_default_fields() {
   $fields['node-media_gallery-field_character'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_character',
@@ -45,7 +45,7 @@ function pub_media_overrides_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
-            'person' => 'person',
+            'character_profile' => 'character_profile',
           ),
         ),
         'target_type' => 'node',
@@ -71,6 +71,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'block_cover_title_lg' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -78,7 +84,7 @@ function pub_media_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'full' => array(
           'label' => 'above',
@@ -178,6 +184,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'block_cover_title_lg' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -185,7 +197,7 @@ function pub_media_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 12,
+          'weight' => '12',
         ),
         'full' => array(
           'label' => 'above',
@@ -253,6 +265,7 @@ function pub_media_overrides_field_default_fields() {
           'sort' => array(
             'direction' => 'ASC',
             'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'field',
           ),
           'target_bundles' => array(
@@ -283,6 +296,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'block_cover_title_lg' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -290,7 +309,7 @@ function pub_media_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 11,
+          'weight' => '11',
         ),
         'full' => array(
           'label' => 'above',
@@ -386,6 +405,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'block_cover_title_lg' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -393,7 +418,7 @@ function pub_media_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 10,
+          'weight' => '10',
         ),
         'full' => array(
           'label' => 'above',

@@ -30,6 +30,7 @@ features[field][] = node-usanetwork_aspot-field_usa_aspot_txt1
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt2
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt3
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt4
+features[field_group][] = group_aspot_basic|node|usanetwork_aspot|form
 features[field_group][] = group_usa_aspot_fields|node|usanetwork_aspot|form
 features[field_group][] = group_usa_media|node|usanetwork_aspot|form
 features[node][] = usanetwork_aspot

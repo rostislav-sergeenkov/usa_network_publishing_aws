@@ -54,9 +54,9 @@ function pub_person_overrides_field_group_info() {
     'label' => 'USA custom',
     'weight' => '2',
     'children' => array(
-      0 => 'field_role',
+      0 => 'field_usa_character_thumb',
       1 => 'field_show',
-      2 => 'field_usa_character_thumb',
+      2 => 'field_role',
       3 => 'field_usa_actor_name',
       4 => 'group_social',
     ),

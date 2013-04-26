@@ -23,7 +23,7 @@
  */
  // hide the output if the role selected was Character
  if ($output == 'Character') {
-   unset($output);
+   $output = '';
  }
 
 ?>

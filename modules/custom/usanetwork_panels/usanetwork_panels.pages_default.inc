@@ -402,16 +402,16 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-7';
     $pane->panel = 'center';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'usa_gallery-panel_pane_2';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => array(
-        0 => 'argument_entity_id:node_1',
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
+      'admin_title' => 'fpo ad',
+      'title' => '',
+      'body' => '<img src="http://dummyimage.com/300x250/cccccc/666666" class="fpo-fake-ad" alt="fake ad" />',
+      'format' => 'wysiwyg_mini',
+      'substitute' => 1,
     );
     $pane->cache = array();
     $pane->style = array(
@@ -426,18 +426,16 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-8';
     $pane->panel = 'center';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'usa_gallery-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => '',
-      'title' => '',
-      'body' => '<h2>About %node_season:title</h2>
-
-%node_season:body',
-      'format' => 'ds_code',
-      'substitute' => 1,
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -459,9 +457,9 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->configuration = array(
       'admin_title' => '',
       'title' => '',
-      'body' => '<h2>About %node_show:title</h2>
+      'body' => '<h2>About %node_season:title</h2>
 
-%node_show:body',
+%node_season:body',
       'format' => 'ds_code',
       'substitute' => 1,
     );
@@ -477,6 +475,32 @@ function usanetwork_panels_default_page_manager_handlers() {
     $display->panels['center'][3] = 'new-9';
     $pane = new stdClass();
     $pane->pid = 'new-10';
+    $pane->panel = 'center';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '<h2>About %node_show:title</h2>
+
+%node_show:body',
+      'format' => 'ds_code',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-10'] = $pane;
+    $display->panels['center'][4] = 'new-10';
+    $pane = new stdClass();
+    $pane->pid = 'new-11';
     $pane->panel = 'menus';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_episodes-panel_pane_3';
@@ -495,10 +519,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['menus'][0] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['menus'][0] = 'new-11';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-12';
     $pane->panel = 'menus';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_episodes-panel_pane_1';
@@ -520,8 +544,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['menus'][1] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['menus'][1] = 'new-12';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -575,7 +599,7 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-13';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_character_cover_photo';
@@ -602,8 +626,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['center'][0] = 'new-12';
+    $display->content['new-13'] = $pane;
+    $display->panels['center'][0] = 'new-13';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -657,7 +681,7 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-14';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_people-panel_pane_2';
@@ -672,10 +696,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['center'][0] = 'new-13';
+    $display->content['new-14'] = $pane;
+    $display->panels['center'][0] = 'new-14';
     $pane = new stdClass();
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-15';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_people-panel_pane_3';
@@ -690,10 +714,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['center'][1] = 'new-14';
+    $display->content['new-15'] = $pane;
+    $display->panels['center'][1] = 'new-15';
     $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-16';
     $pane->panel = 'center';
     $pane->type = 'node_body';
     $pane->subtype = 'node_body';
@@ -712,10 +736,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-15'] = $pane;
-    $display->panels['center'][2] = 'new-15';
+    $display->content['new-16'] = $pane;
+    $display->panels['center'][2] = 'new-16';
     $pane = new stdClass();
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-17';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_person_cover_photo';
@@ -742,10 +766,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-16'] = $pane;
-    $display->panels['center'][3] = 'new-16';
+    $display->content['new-17'] = $pane;
+    $display->panels['center'][3] = 'new-17';
     $pane = new stdClass();
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-18';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_people-panel_pane_1';
@@ -760,8 +784,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-17'] = $pane;
-    $display->panels['center'][4] = 'new-17';
+    $display->content['new-18'] = $pane;
+    $display->panels['center'][4] = 'new-18';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

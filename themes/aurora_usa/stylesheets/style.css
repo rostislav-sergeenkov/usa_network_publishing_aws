@@ -568,19 +568,53 @@ mark {
   text-shadow: none;
 }
 
-.clearfix {
-  /* for IE 6/7 */
-  *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
-  /* non-JS fallback */
-  *zoom: 1;
+@media (min-width: 615px) {
+  .panel-twocol-nested-right-twocol .panel-one {
+    display: inline;
+    float: left;
+    width: 235px;
+    padding-right: 15px;
+  }
 }
-.clearfix:before, .clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  overflow: hidden;
+@media (min-width: 615px) {
+  .panel-twocol-nested-right-twocol .panel-wrapper {
+    overflow: hidden;
+    *zoom: 1;
+    margin-left: 250px;
+    padding-left: 5%;
+  }
 }
-.clearfix:after {
+@media (min-width: 881px) {
+  .panel-twocol-nested-right-twocol .panel-wrapper .inner-wrapper {
+    font-size: 0;
+    margin-right: 315px;
+  }
+  .panel-twocol-nested-right-twocol .panel-wrapper .panel-three {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    font-size: 16px;
+    width: 100%;
+    vertical-align: top;
+  }
+  .panel-twocol-nested-right-twocol .panel-wrapper .panel-four {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-right: -315px;
+    vertical-align: top;
+    width: 300px;
+  }
+}
+.panel-twocol-nested-right-twocol .panel-five {
   clear: both;
 }
 
@@ -588,19 +622,8 @@ mark {
   margin: 0;
   padding: 0;
   border: 0;
-  /* for IE 6/7 */
-  *zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
-  /* non-JS fallback */
-  *zoom: 1;
-}
-#main-menu:before, #main-menu:after {
-  content: ".";
-  display: block;
-  height: 0;
   overflow: hidden;
-}
-#main-menu:after {
-  clear: both;
+  *zoom: 1;
 }
 #main-menu li {
   list-style-image: none;

@@ -23,7 +23,14 @@ function pub_files_overrides_strongarm_alter(&$data) {
       'weight' => '0',
       'visible' => TRUE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['block_cover_title_lg'] = array(
+      'weight' => '0',
+      'visible' => TRUE,
+    ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['block_cover_title'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['view_modes']['block_cover_title_lg'] = array(
       'custom_settings' => TRUE,
     ); /* WAS: '' */
   }

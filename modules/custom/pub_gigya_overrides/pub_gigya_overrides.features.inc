@@ -25,6 +25,6 @@ function pub_gigya_overrides_strongarm_alter(&$data) {
     $data['gigya_network_list']->value = 'Facebook, Twitter, Tumblr, Pinterest'; /* WAS: 'Facebook, Twitter' */
   }
   if (isset($data['gigya_share_buttons'])) {
-    $data['gigya_share_buttons']->value = 'twitter-tweet, facebook-send, pinterest-pinit, Tumblr'; /* WAS: 'twitter-tweet, facebook-like' */
+    $data['gigya_share_buttons']->value = 'Tumblr, pinterest-pinit, twitter-tweet, facebook-send'; /* WAS: 'twitter-tweet, facebook-like' */
   }
 }

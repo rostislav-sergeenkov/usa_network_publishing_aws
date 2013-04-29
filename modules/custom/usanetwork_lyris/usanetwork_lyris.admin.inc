@@ -17,7 +17,7 @@ function usanetwork_lyris_settings_form() {
     '#default_value' => variable_get('usanetwork_lyris_username', ''),
   );
   $form['lyris']['usanetwork_lyris_password'] = array(
-    '#type' => 'password',
+    '#type' => 'textfield',
     '#title' => t('lyris admin password'),
     '#default_value' => variable_get('usanetwork_lyris_password', ''),
   );

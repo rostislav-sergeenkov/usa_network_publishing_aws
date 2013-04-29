@@ -2,6 +2,13 @@
 
 /**
  * @file
+ * Code for the usanetwork_blocks feature.
+ */
+
+include_once 'usanetwork_blocks.features.inc';
+
+/**
+ * @file
  * USA blocks - custom blocks that are not generated with views or stored elsewhere
  */
 

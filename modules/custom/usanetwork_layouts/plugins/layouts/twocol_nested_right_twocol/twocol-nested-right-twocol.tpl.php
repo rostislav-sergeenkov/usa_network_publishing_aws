@@ -6,11 +6,13 @@
     <div class="panel-panel panel-two">
       <?php print $content['two']; ?>
     </div>
-    <div class="panel-panel panel-three">
-      <?php print $content['three']; ?>
-    </div>
-    <div class="panel-panel panel-four">
-      <?php print $content['four']; ?>
+    <div class="inner-wrapper">
+      <div class="panel-panel panel-three">
+        <?php print $content['three']; ?>
+      </div>
+      <div class="panel-panel panel-four">
+        <?php print $content['four']; ?>
+      </div>
     </div>
   </div>
   <div class="panel panel panel-five">

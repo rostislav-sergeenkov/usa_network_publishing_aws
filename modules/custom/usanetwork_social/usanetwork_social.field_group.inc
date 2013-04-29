@@ -21,7 +21,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Chat with Fans Settings',
-    'weight' => '27',
+    'weight' => '29',
     'children' => array(
       0 => 'field_chat_children',
       1 => 'field_chat_childrenof',
@@ -42,12 +42,13 @@ function usanetwork_social_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Chat with Fans Settings',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_chat_settings|node|tv_show|form'] = $field_group;
@@ -82,7 +83,7 @@ function usanetwork_social_field_group_info() {
       14 => 'field_show_chat_page',
       15 => 'field_show_chat_post_comment',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
@@ -92,6 +93,34 @@ function usanetwork_social_field_group_info() {
     ),
   );
   $export['group_chat|node|tv_show|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_newsletter|node|tv_show|form';
+  $field_group->group_name = 'group_newsletter';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Newsletter Settings',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_usa_lyris_listid',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Newsletter Settings',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_newsletter|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -106,8 +135,9 @@ function usanetwork_social_field_group_info() {
     'label' => 'Social Information',
     'weight' => '3',
     'children' => array(
-      0 => 'group_chat_settings',
-      1 => 'group_twitter_settings',
+      0 => 'group_newsletter',
+      1 => 'group_chat_settings',
+      2 => 'group_twitter_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -132,7 +162,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Twitter Settings',
-    'weight' => '28',
+    'weight' => '30',
     'children' => array(
       0 => 'field_show_twitter_page',
       1 => 'field_twitter_children',
@@ -150,12 +180,13 @@ function usanetwork_social_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Twitter Settings',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_twitter_settings|node|tv_show|form'] = $field_group;
@@ -187,7 +218,7 @@ function usanetwork_social_field_group_info() {
       11 => 'field_twitter_state',
       12 => 'field_twitter_tags',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(

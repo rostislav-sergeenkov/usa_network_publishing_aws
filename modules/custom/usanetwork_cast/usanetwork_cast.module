@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_cast feature.
+ */
+
+include_once 'usanetwork_cast.features.inc';

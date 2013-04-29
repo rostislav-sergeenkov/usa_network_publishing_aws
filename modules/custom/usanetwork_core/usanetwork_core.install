@@ -101,6 +101,8 @@ function usanetwork_core_enable_modules() {
     'usanetwork_borealis',
     'usanetwork_promo',
     'usanetwork_home',
+    'usanetwork_cast',
+    'usanetwork_catchall',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -117,6 +119,7 @@ function usanetwork_core_enable_modules() {
   drupal_set_message($ret);
   return $ret;
 }
+
 /**
  * Set the theme.
  *

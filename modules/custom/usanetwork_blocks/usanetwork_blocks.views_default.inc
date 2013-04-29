@@ -92,8 +92,7 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = '';
   $handler->display->display_options['fields']['timestamp']['exclude'] = TRUE;
   $handler->display->display_options['fields']['timestamp']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['timestamp']['alter']['text'] = 'flag-new';
-  $handler->display->display_options['fields']['timestamp']['element_type'] = '0';
+  $handler->display->display_options['fields']['timestamp']['alter']['text'] = '<span class="flagged">New!</span> ';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'short';
@@ -103,10 +102,10 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] ';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[timestamp][title]';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['alt'] = '[title] ';
-  $handler->display->display_options['fields']['title']['alter']['link_class'] = 'mega-sub-nav-link [timestamp]';
+  $handler->display->display_options['fields']['title']['alter']['link_class'] = 'mega-sub-nav-link';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = '0';

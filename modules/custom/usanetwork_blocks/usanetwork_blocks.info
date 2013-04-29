@@ -2,6 +2,7 @@ name = usanetwork blocks
 description = custom blocks for USA Network
 core = 7.x
 package = USA Network
+php = 5.2.4
 project = USA Network
 dependencies[] = ctools
 dependencies[] = draggableviews

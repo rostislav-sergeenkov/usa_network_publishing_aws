@@ -1017,6 +1017,85 @@ function usanetwork_social_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-tv_show-field_usa_lyris_listid'.
+  $fields['node-tv_show-field_usa_lyris_listid'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_lyris_listid',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '50',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 31,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_usa_lyris_listid',
+      'label' => 'Lyris List ID',
+      'required' => 0,
+      'settings' => array(
+        'exclude_cv' => FALSE,
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '25',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('CHILDREN');
@@ -1025,6 +1104,7 @@ function usanetwork_social_field_default_fields() {
   t('Echo Query Template');
   t('FEED');
   t('ITEMSPERPAGE');
+  t('Lyris List ID');
   t('MARKERS');
   t('SAFEHTML');
   t('SHOW');

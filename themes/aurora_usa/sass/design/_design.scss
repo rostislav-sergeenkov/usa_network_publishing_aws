@@ -34,3 +34,18 @@
 //     display: none;
 //   }
 // }
+
+// TEMP MAIN NAV STYLES
+#mega-nav {
+  padding-left: 2em;
+  .mega-menu-items {
+    display: inline;
+    * {
+      display: inline;
+    }
+  }
+  .flagged {
+    color: $orange;
+    text-transform: uppercase;
+  }
+}

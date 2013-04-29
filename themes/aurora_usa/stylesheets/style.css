@@ -1267,3 +1267,17 @@ html[xmlns] .slides {
 [class*="iib"] {
   background-color: #2d2d2d;
 }
+
+#mega-nav {
+  padding-left: 2em;
+}
+#mega-nav .mega-menu-items {
+  display: inline;
+}
+#mega-nav .mega-menu-items * {
+  display: inline;
+}
+#mega-nav .flagged {
+  color: #f8981d;
+  text-transform: uppercase;
+}

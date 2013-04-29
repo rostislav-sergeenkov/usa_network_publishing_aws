@@ -1,0 +1,12 @@
+name = usanetwork_personordering
+description = usanetwork_personordering
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_personordering
+dependencies[] = draggableviews
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = usanetwork_person_ordering
+features_exclude[dependencies][ctools] = ctools

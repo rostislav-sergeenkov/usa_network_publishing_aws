@@ -69,6 +69,11 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state) {
     '#type' => 'textfield',
     '#title' => t('E-Mail'),
     '#size' => 26,
+    '#required' => TRUE,
+    '#rules' => array(
+      'email',
+      'length[10, 100]',
+    ),
   );
   $form['newsletter']['show_ref_lyris_id'] = array(
     '#type' => 'hidden',
@@ -82,12 +87,17 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state) {
       'wrapper' => 'newsletter_lyris_ajax_wrapper',
       'method' => 'replace',
       'effect' => 'fade',
+      'validate_first' => TRUE,
     ),
   );
   return $form;
 }
 
 function newsletter_lyris_ajax_callback($form, $form_state) {
+  if ($form_state['values']['email'] == '') {
+    $form['newsletter']['#markup'] = t('Please enter the valid E-Mail Address');
+    return $form['newsletter'];
+  }
   $user['email'] = $form_state['values']['email'];
   $user['list'] = $form_state['values']['show_ref_lyris_id'];
   $result = usanetwork_lyris_assign_user_to_list($user);

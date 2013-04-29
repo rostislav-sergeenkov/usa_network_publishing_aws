@@ -39,10 +39,10 @@
 #mega-nav {
   padding-left: 2em;
   .mega-menu-items {
-    display: inline;
-    * {
-      display: inline;
-    }
+    display: block;
+    float: left;
+    margin: 0 18px;
+    text-align: left;
   }
   .flagged {
     color: $orange;

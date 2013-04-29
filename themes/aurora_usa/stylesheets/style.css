@@ -1272,10 +1272,10 @@ html[xmlns] .slides {
   padding-left: 2em;
 }
 #mega-nav .mega-menu-items {
-  display: inline;
-}
-#mega-nav .mega-menu-items * {
-  display: inline;
+  display: block;
+  float: left;
+  margin: 0 18px;
+  text-align: left;
 }
 #mega-nav .flagged {
   color: #f8981d;

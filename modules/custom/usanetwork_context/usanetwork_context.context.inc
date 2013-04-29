@@ -29,6 +29,12 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_blocks-usa_tv_show_menu' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_tv_show_menu',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
         'usanetwork_lyris-newsletter_subscription' => array(
           'module' => 'usanetwork_lyris',
           'delta' => 'newsletter_subscription',

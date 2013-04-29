@@ -317,7 +317,14 @@ function usanetwork_blocks_tv_show_menu() {
   $lang = LANGUAGE_NONE;
   $links = array();
 
-  $node = node_load($arg[1]);
+  if (isset($arg[1])) {
+    $node = node_load($arg[1]);
+  }
+
+  // return empty block if the node id is empty
+  if (!isset($node->nid) || empty($node->nid)) {
+    return '';
+  }
 
   // Get the field collection items.
   $fc_fields = field_get_items('node', $node, 'field_show_links');

@@ -391,13 +391,14 @@ function pub_person_overrides_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_link_facebook',
       'label' => 'Facebook page',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
-          'class' => 'person-fb',
+          'class' => 'person-fb usasocial-fb',
           'configurable_title' => 0,
           'rel' => '',
           'target' => 'default',
@@ -478,13 +479,13 @@ function pub_person_overrides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_link_pinterest',
       'label' => 'Pinterest page',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
-          'class' => '',
+          'class' => 'person-pinterest usasocial-pinterest',
           'configurable_title' => 0,
           'rel' => '',
           'target' => 'default',
@@ -565,13 +566,13 @@ function pub_person_overrides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_link_tumblr',
       'label' => 'Tumblr Page',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
-          'class' => '',
+          'class' => 'person-tumblr usasocial-tumblr',
           'configurable_title' => 0,
           'rel' => '',
           'target' => 'default',
@@ -651,13 +652,14 @@ function pub_person_overrides_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_link_twitter',
       'label' => 'Twitter page',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
-          'class' => 'person-twitter',
+          'class' => 'person-twitter usasocial-twitter',
           'configurable_title' => 0,
           'rel' => '',
           'target' => 'default',

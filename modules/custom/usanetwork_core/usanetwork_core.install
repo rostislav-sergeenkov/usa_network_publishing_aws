@@ -102,6 +102,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_promo',
     'usanetwork_home',
     'usanetwork_cast',
+    'usanetwork_catchall',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

@@ -45,7 +45,7 @@
 
       // Set validation for ajax forms
       for (var ajax_el in Drupal.settings.ajax) {
-        if (typeof Drupal.ajax[ajax_el] !== 'undefined' || Drupal.ajax[ajax_el].validate_first) {
+        if (typeof Drupal.ajax[ajax_el] !== 'undefined' && Drupal.ajax[ajax_el].validate_first) {
           var origBeforeSubmit = Drupal.ajax[ajax_el].options.beforeSubmit;
           Drupal.ajax[ajax_el].options.beforeSubmit = function (form_values, element, options) {
             var ret = origBeforeSubmit(form_values, element, options);

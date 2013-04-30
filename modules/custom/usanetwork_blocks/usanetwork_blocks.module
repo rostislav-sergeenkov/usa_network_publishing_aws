@@ -50,6 +50,10 @@ function usanetwork_blocks_block_info() {
     'info' => t('USA: on now block'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_tv_show_menu'] = array(
+    'info' => t('USA: TV Show Menu'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
 
   return $blocks;
 }
@@ -92,6 +96,10 @@ function usanetwork_blocks_block_view($delta) {
     case 'usa_on_now_block':
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_on_now_block();
+      break;
+    case 'usa_tv_show_menu':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_tv_show_menu();
       break;
   }
   return $block;
@@ -306,3 +314,57 @@ function usanetwork_blocks_usa_social_footer() {
 
   return $render;
 }
+
+
+/**
+ * Block for displaying TV show menu
+ */
+function usanetwork_blocks_tv_show_menu() {
+  $arg = arg();
+  $lang = LANGUAGE_NONE;
+  $links = array();
+  $output = '';
+
+  if (isset($arg[1])) {
+    $node = node_load($arg[1]);
+  }
+
+  // return empty block if the node id is empty
+  if (!isset($node->nid) || empty($node->nid)) {
+    return '';
+  }
+
+  // Get the field collection items.
+  $fc_fields = field_get_items('node', $node, 'field_show_links');
+  
+  // Extract the field collection item ids
+  $ids = array();
+  foreach ($fc_fields as $fc_field) {
+    $ids[] = $fc_field['value'];
+  }
+  
+  // Load up the field collection items
+  $items = field_collection_item_load_multiple($ids);
+  
+  // Loop through the items and extract field values
+  foreach ($items as $item) {
+    $mlinks = array();
+    $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
+    foreach ($link_fields as $link) {
+      $mlinks['data'] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+    }
+
+    $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
+    foreach ($link_fields as $link) {
+      $mlinks['children'][] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+    }
+    $links[] = $mlinks;
+  }
+
+  if (!empty($links)) {
+    $output .= '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
+    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
+  }
+  return $output;
+}
+

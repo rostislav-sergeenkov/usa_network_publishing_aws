@@ -6,6 +6,7 @@ php = 5.2.4
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = menu
+dependencies[] = pub_tv_overrides
 dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_lyris
 dependencies[] = usanetwork_social

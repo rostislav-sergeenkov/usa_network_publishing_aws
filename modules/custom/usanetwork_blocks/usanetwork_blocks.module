@@ -316,6 +316,7 @@ function usanetwork_blocks_tv_show_menu() {
   $arg = arg();
   $lang = LANGUAGE_NONE;
   $links = array();
+  $output = '';
 
   if (isset($arg[1])) {
     $node = node_load($arg[1]);
@@ -353,9 +354,10 @@ function usanetwork_blocks_tv_show_menu() {
     $links[] = $mlinks;
   }
 
-  $output = '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
-  $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
-  
+  if (!empty($links)) {
+    $output .= '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
+    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
+  }
   return $output;
 }
 

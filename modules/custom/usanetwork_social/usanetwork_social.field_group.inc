@@ -21,7 +21,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Chat with Fans Settings',
-    'weight' => '29',
+    'weight' => '48',
     'children' => array(
       0 => 'field_chat_children',
       1 => 'field_chat_childrenof',
@@ -105,7 +105,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Newsletter Settings',
-    'weight' => '28',
+    'weight' => '47',
     'children' => array(
       0 => 'field_usa_lyris_listid',
     ),
@@ -135,9 +135,10 @@ function usanetwork_social_field_group_info() {
     'label' => 'Social Information',
     'weight' => '3',
     'children' => array(
-      0 => 'group_newsletter',
+      0 => 'field_social_logo',
       1 => 'group_chat_settings',
-      2 => 'group_twitter_settings',
+      2 => 'group_newsletter',
+      3 => 'group_twitter_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -162,7 +163,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Twitter Settings',
-    'weight' => '30',
+    'weight' => '49',
     'children' => array(
       0 => 'field_show_twitter_page',
       1 => 'field_twitter_children',

@@ -65,6 +65,19 @@ $show-baseline: false;
 // do something more targeted in production, ok?
 $animate-all-the-things: false;
 
+// Z-Index
+// making utility higher than wall only when using slide out panel/menu
+$ziUtilities    : 102;
+$ziWall         : 101;
+$ziMegaNav      : 100;
+$ziFilterOpen   : 95;
+
+
+
+
+
+
+
 ////////////////////////////
 // COMPASS DEFAULTS
 ////////////////////////////

@@ -73,6 +73,8 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'ds';
@@ -114,9 +116,13 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: person social */
   $handler = $view->new_display('panel_pane', 'person social', 'panel_pane_2');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'share-icons';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -128,42 +134,10 @@ function usanetwork_cast_views_default_views() {
   );
   $handler->display->display_options['row_options']['separator'] = ' ';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Facebook page */
-  $handler->display->display_options['fields']['field_usa_link_facebook']['id'] = 'field_usa_link_facebook';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['table'] = 'field_data_field_usa_link_facebook';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['field'] = 'field_usa_link_facebook';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['label'] = '';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_facebook']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_facebook']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_usa_link_facebook']['field_api_classes'] = TRUE;
-  /* Field: Content: Twitter page */
-  $handler->display->display_options['fields']['field_usa_link_twitter']['id'] = 'field_usa_link_twitter';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['table'] = 'field_data_field_usa_link_twitter';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['field'] = 'field_usa_link_twitter';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['label'] = '';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_twitter']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_twitter']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_usa_link_twitter']['field_api_classes'] = TRUE;
-  /* Field: Content: Pinterest page */
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['id'] = 'field_usa_link_pinterest';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['table'] = 'field_data_field_usa_link_pinterest';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['field'] = 'field_usa_link_pinterest';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['label'] = '';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_usa_link_pinterest']['field_api_classes'] = TRUE;
   /* Field: Content: Tumblr Page */
   $handler->display->display_options['fields']['field_usa_link_tumblr']['id'] = 'field_usa_link_tumblr';
   $handler->display->display_options['fields']['field_usa_link_tumblr']['table'] = 'field_data_field_usa_link_tumblr';
@@ -175,6 +149,39 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_link_tumblr']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_usa_link_tumblr']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_usa_link_tumblr']['field_api_classes'] = TRUE;
+  /* Field: Content: Pinterest page */
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['id'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['table'] = 'field_data_field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['field'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['field_api_classes'] = TRUE;
+  /* Field: Content: Twitter page */
+  $handler->display->display_options['fields']['field_usa_link_twitter']['id'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['table'] = 'field_data_field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['field'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['field_api_classes'] = TRUE;
+  /* Field: Content: Facebook page */
+  $handler->display->display_options['fields']['field_usa_link_facebook']['id'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['table'] = 'field_data_field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['field'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -212,10 +219,13 @@ function usanetwork_cast_views_default_views() {
   $handler = $view->new_display('panel_pane', 'role or actor', 'panel_pane_3');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Role */

@@ -230,11 +230,11 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
           $class .=  $classes;
         }
 
-        $pre = '<' . $field->element_type;
         if ($class) {
+          $pre = '<' . $field->element_type;
           $pre .= ' class="' . $class . '"';
+          $field_output = $pre . '>' . $field_output . '</' . $field->element_type . '>';
         }
-        $field_output = $pre . '>' . $field_output . '</' . $field->element_type . '>';
 
         // Protect yourself somewhat for backward compatibility. This will prevent
         // old templates from producing invalid HTML when no element type is selected.

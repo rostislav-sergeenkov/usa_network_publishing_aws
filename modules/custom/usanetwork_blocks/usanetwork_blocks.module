@@ -353,8 +353,6 @@ function usanetwork_blocks_tv_show_menu() {
     $links[] = $mlinks;
   }
 
-  drupal_add_css(drupal_get_path('module', 'usanetwork_blocks') . '/css/usanetwork_blocks.css');
-
   $output = '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
   $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
   

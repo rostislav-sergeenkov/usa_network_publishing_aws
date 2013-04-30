@@ -13,41 +13,6 @@ function usanetwork_strongarm_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'jpanelmenu_direction';
-  $strongarm->value = 'left';
-  $export['jpanelmenu_direction'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'jpanelmenu_open_position';
-  $strongarm->value = '250px';
-  $export['jpanelmenu_open_position'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'jpanelmenu_target';
-  $strongarm->value = '#tv-show-menu';
-  $export['jpanelmenu_target'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'jpanelmenu_trigger';
-  $strongarm->value = '.tv-show-menu-trigger';
-  $export['jpanelmenu_trigger'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'jpanelmenu__active_tab';
-  $strongarm->value = 'edit-jpanelmenu-optional';
-  $export['jpanelmenu__active_tab'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'jquery_update_compression_type';
   $strongarm->value = 'min';
   $export['jquery_update_compression_type'] = $strongarm;

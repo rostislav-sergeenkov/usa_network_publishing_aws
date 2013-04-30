@@ -1,0 +1,12 @@
+name = usanetwork_episodes
+core = 7.x
+package = USA Network
+dependencies[] = page_manager
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[page_manager_handlers][] = node_view_panel_context_3
+features[views_view][] = usa_episodes
+features_exclude[dependencies][ctools] = ctools

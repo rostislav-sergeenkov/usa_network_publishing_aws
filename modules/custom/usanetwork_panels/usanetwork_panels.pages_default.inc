@@ -621,7 +621,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'flexible';
+  $display->layout = 'section';
   $display->layout_settings = array(
     'items' => array(
       'canvas' => array(
@@ -629,16 +629,16 @@ function usanetwork_panels_default_page_manager_handlers() {
         'contains' => 'column',
         'children' => array(
           0 => 'main',
-          1 => 1,
         ),
         'parent' => NULL,
       ),
       'main' => array(
         'type' => 'column',
-        'width' => 50,
+        'width' => 100,
         'width_type' => '%',
         'children' => array(
           0 => 'main-row',
+          1 => 1,
         ),
         'parent' => 'canvas',
       ),
@@ -658,30 +658,20 @@ function usanetwork_panels_default_page_manager_handlers() {
         'parent' => 'main-row',
       ),
       1 => array(
-        'type' => 'column',
-        'width' => 50,
-        'width_type' => '%',
-        'parent' => 'canvas',
-        'children' => array(
-          0 => 2,
-        ),
-        'class' => '',
-      ),
-      2 => array(
         'type' => 'row',
         'contains' => 'region',
         'children' => array(
-          0 => 'right',
+          0 => 'image',
         ),
-        'parent' => '1',
+        'parent' => 'main',
         'class' => '',
       ),
-      'right' => array(
+      'image' => array(
         'type' => 'region',
-        'title' => 'Right',
+        'title' => 'Image',
         'width' => 100,
         'width_type' => '%',
-        'parent' => '2',
+        'parent' => '1',
         'class' => '',
       ),
     ),
@@ -691,6 +681,7 @@ function usanetwork_panels_default_page_manager_handlers() {
       'default' => NULL,
       'center' => NULL,
       'right' => NULL,
+      'image' => NULL,
     ),
   );
   $display->cache = array();
@@ -779,7 +770,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $display->panels['center'][3] = 'new-17';
     $pane = new stdClass();
     $pane->pid = 'new-18';
-    $pane->panel = 'right';
+    $pane->panel = 'image';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_person_cover_photo';
     $pane->shown = TRUE;
@@ -810,7 +801,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-18'] = $pane;
-    $display->panels['right'][0] = 'new-18';
+    $display->panels['image'][0] = 'new-18';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

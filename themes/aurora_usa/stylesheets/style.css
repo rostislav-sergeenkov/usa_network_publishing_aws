@@ -152,6 +152,98 @@ strong, dfn, b {
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
+.filter-dropdown {
+  background: #3d3d3d;
+  cursor: pointer;
+  margin-bottom: 15px;
+  padding: 7px 9px 6px;
+  position: relative;
+  z-index: 50;
+}
+.filter-dropdown:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: white transparent transparent transparent;
+  margin-top: -3px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+}
+.filter-dropdown a {
+  color: white;
+  display: inline-block;
+  width: 100%;
+}
+.filter-dropdown a:visited {
+  color: white;
+}
+.filter-dropdown a:focus {
+  color: white;
+}
+.filter-dropdown a:hover {
+  color: white;
+}
+.filter-dropdown a:active {
+  color: white;
+}
+.filter-dropdown .menu-label, .filter-dropdown .views-row {
+  display: block;
+  height: auto;
+}
+.filter-dropdown .filter-menu {
+  background: #3d3d3d;
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  width: 100%;
+}
+.filter-dropdown .menu-item {
+  margin: 0;
+  border-color: #575757;
+  border-style: solid;
+  border-width: 1px 0 0;
+}
+.filter-dropdown .menu-item:hover {
+  background: #444;
+}
+.filter-dropdown.open {
+  z-index: 95;
+}
+.filter-dropdown.open:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: #878785 transparent transparent transparent;
+}
+.filter-dropdown.open .menu-label {
+  color: #878785;
+}
+.filter-dropdown.open .filter-menu {
+  display: block;
+}
+
+.view-usa-episodes.view-display-id-panel_pane_3, .view-id-usa_episodes.view-display-id-panel_pane_1 {
+  font-family: Proxima N W01 Reg;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 20px;
+}
+.view-usa-episodes.view-display-id-panel_pane_3 .menu-label, .view-id-usa_episodes.view-display-id-panel_pane_1 .menu-label {
+  padding: 5px 5px 5px 5px;
+}
+.view-usa-episodes.view-display-id-panel_pane_3 a, .view-id-usa_episodes.view-display-id-panel_pane_1 a {
+  padding: 15px 14px 13px;
+}
+.view-usa-episodes.view-display-id-panel_pane_3:before, .view-id-usa_episodes.view-display-id-panel_pane_1:before {
+  right: 14px;
+}
+
 article,
 aside,
 details,
@@ -689,6 +781,11 @@ mark {
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
 }
 
+#main {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 #mega-nav {
   position: fixed;
   z-index: 100;
@@ -1086,6 +1183,98 @@ mark {
   }
 }
 
+@media (min-width: 615px) {
+  .view-id-usa_episodes.view-display-id-panel_pane_1 {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  .view-id-usa_episodes.view-display-id-panel_pane_1 .menu-label {
+    display: none;
+  }
+  .view-id-usa_episodes.view-display-id-panel_pane_1 a {
+    display: block;
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 1px 0 0;
+    color: #878785;
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active {
+    background: #1f1f1f;
+    border-width: 1px 0 1px 1px;
+    color: white;
+    margin-bottom: -1px;
+    margin-right: -16px;
+    padding-right: 30px;
+    position: relative;
+  }
+  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:hover {
+    color: white;
+  }
+  .view-id-usa_episodes.view-display-id-panel_pane_1 a.active:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 5px;
+    border-color: transparent transparent transparent white;
+    content: "";
+    margin-top: -5px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+  }
+}
+
+@media (min-width: 615px) {
+  .panel-twocol-nested-right-twocol .panel-one {
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    margin-right: -1px;
+    padding-right: 15px;
+    width: 251px;
+  }
+}
+
+@media (min-width: 615px) {
+  .panel-twocol-nested-right-twocol .panel-wrapper {
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    margin-left: 250px;
+    padding-left: 5%;
+  }
+  .panel-twocol-nested-right-twocol .panel-wrapper h1 {
+    font-size: 37px;
+    margin-bottom: 18px;
+  }
+  .panel-twocol-nested-right-twocol .panel-wrapper h2 {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+}
+
+[class*="iib"] {
+  background-color: #2d2d2d;
+}
+
+#mega-nav {
+  padding-left: 2em;
+}
+#mega-nav .mega-menu-items {
+  display: block;
+  float: left;
+  margin: 0 18px;
+  text-align: left;
+}
+#mega-nav .flagged {
+  color: #f8981d;
+  text-transform: uppercase;
+}
+
 /*
  * jQuery FlexSlider v2.0
  * http://www.woothemes.com/flexslider/
@@ -1293,21 +1482,4 @@ html[xmlns] .slides {
     opacity: 1;
     right: 0;
   }
-}
-[class*="iib"] {
-  background-color: #2d2d2d;
-}
-
-#mega-nav {
-  padding-left: 2em;
-}
-#mega-nav .mega-menu-items {
-  display: block;
-  float: left;
-  margin: 0 18px;
-  text-align: left;
-}
-#mega-nav .flagged {
-  color: #f8981d;
-  text-transform: uppercase;
 }

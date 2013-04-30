@@ -213,10 +213,12 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
     if ($vars['view']->current_display == 'panel_pane_3') {
       foreach ($vars['fields'] as $id => $field) {
         $field_output = $view->style_plugin->get_field($view->row_index, $id);
+
         $node = menu_get_object();
-        $node = ($node->nid > 0) ? $node : false;
+        $ep_from_field = node_load($field->raw);
+        $language = $node->language;
         $class = '';
-        if ($field->raw == $node->nid) {
+        if ($node->field_season[$language][0]['target_id'] == $ep_from_field->field_season[$language][0]['target_id']) {
           $class .= ' active ';
         }
         if ($field->handler->options['element_default_classes']) {

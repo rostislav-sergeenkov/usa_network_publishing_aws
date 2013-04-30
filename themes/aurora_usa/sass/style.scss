@@ -53,12 +53,13 @@
 // --------------------------------------------------------------------------------------
 // ✔ YOUR CUSTOM LAYOUT AND DESIGN SASS
 // THIS IS WHERE MOST CUSTOM WORK WILL GO
-@import "design/flexslider";
+@import "design/modules/sitewide";
 @import "design/modules/mega-nav";
 @import "design/modules/utilities";
 @import "design/modules/header-search";
 @import "design/modules/episode";
 @import "design/design";
+@import "design/flexslider";
 // --------------------------------------------------------------------------------------
 
 // ✔ 8. ENABLE PRINT STYLES

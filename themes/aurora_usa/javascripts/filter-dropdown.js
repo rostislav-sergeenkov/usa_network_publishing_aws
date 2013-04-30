@@ -18,6 +18,18 @@
         });
       });
 
+      dropdown_class_toggle();
+      $(window).resize(function(){
+        dropdown_class_toggle();
+      });
+      function dropdown_class_toggle() {
+        $drop_elements = $(".view-id-usa_episodes.view-display-id-panel_pane_1");
+        if ($drop_elements.css("font-size") != "20px" ){
+          $drop_elements.removeClass("filter-dropdown");
+        } else {
+          $drop_elements.addClass("filter-dropdown");
+        }
+      }
 
     },
   };

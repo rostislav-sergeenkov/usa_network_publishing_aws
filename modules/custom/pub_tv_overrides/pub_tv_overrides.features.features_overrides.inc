@@ -71,8 +71,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '4',
   );
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|exclude_cv"] = 0;
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|fences_wrapper"] = 'div';
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|required"] = 1;
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|settings|default_value"] = 'blank';
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|settings|default_value2"] = 'same';
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
-  $overrides["field.node-tv_episode-field_season.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_season.field_instance|display|default|weight"] = '7';
   $overrides["field.node-tv_episode-field_season.field_instance|display|full"] = array(
     'label' => 'above',

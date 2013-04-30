@@ -250,10 +250,6 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
     }
   }
 }
-// function aurora_usa_preprocess_views_view_fields__usa_episodes__panel_pane_3 (&$vars) {
-//   dpm($vars);
-// }
-// */
 
 
 /**

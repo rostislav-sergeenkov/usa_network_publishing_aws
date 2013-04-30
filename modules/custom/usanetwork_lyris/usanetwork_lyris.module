@@ -77,7 +77,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state) {
   );
   $form['newsletter']['show_ref_lyris_id'] = array(
     '#type' => 'hidden',
-    '#value' => $node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'],
+    '#value' => isset($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']) ? $node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'] : '',
   );
   $form['newsletter']['submit'] = array(
     '#type' => 'submit',

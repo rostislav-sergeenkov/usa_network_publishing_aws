@@ -1750,6 +1750,109 @@ function usanetwork_social_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-tv_show-field_social_logo'.
+  $fields['node-tv_show-field_social_logo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_social_logo',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 34,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_social_logo',
+      'label' => 'Social Logo',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'exclude_cv' => FALSE,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'focus' => 0,
+        'focus_lock_ratio' => 0,
+        'focus_min_size' => '',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'private' => 'private',
+            'public' => 'public',
+            'theplatform' => 0,
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'document' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'browser_plugins' => array(
+            'media_internet' => 0,
+            'pub_theplatform' => 0,
+            'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
+            'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
+            'upload' => 'upload',
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '46',
+      ),
+    ),
+  );
+
   // Exported field: 'node-tv_show-field_twitter_children'.
   $fields['node-tv_show-field_twitter_children'] = array(
     'field_config' => array(
@@ -3050,7 +3153,7 @@ function usanetwork_social_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '31',
+          'weight' => 31,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3084,7 +3187,7 @@ function usanetwork_social_field_default_fields() {
           'soft_length_minimum' => '',
         ),
         'type' => 'text_textfield',
-        'weight' => '25',
+        'weight' => '47',
       ),
     ),
   );
@@ -3110,6 +3213,7 @@ function usanetwork_social_field_default_fields() {
   t('Show Chat with Fans Page');
   t('Show Chat with Fans Post Comment');
   t('Show Twitter Page');
+  t('Social Logo');
   t('TAGS');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
 

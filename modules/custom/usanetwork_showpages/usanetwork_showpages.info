@@ -1,0 +1,12 @@
+name = usanetwork_showpages
+description = custom show pages for USA Network
+core = 7.x
+package = USA Network
+php = 5.2.4
+project = USA Network
+dependencies[] = ctools
+dependencies[] = draggableviews
+dependencies[] = views
+dependencies[] = subpathauto
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1

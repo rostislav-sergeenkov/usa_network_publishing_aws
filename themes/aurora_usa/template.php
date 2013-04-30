@@ -206,9 +206,50 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
   }
   $view->result = $new_results;
 }
-function aurora_usa_preprocess_views_view_fields__usa_episodes__panel_pane_3 (&$vars) {
-  // my specific preprocess code
+function aurora_usa_preprocess_views_view_fields(&$vars) {
+  $view = $vars['view'];
+  if($view->name == 'usa_episodes') {
+    if ($vars['view']->current_display == 'panel_pane_3') {
+      foreach ($vars['fields'] as $id => $field) {
+        $field_output = $view->style_plugin->get_field($view->row_index, $id);
+        $node = menu_get_object();
+        $node = ($node->nid > 0) ? $node : false;
+        $class = '';
+        if ($field->raw == $node->nid) {
+          $class .= ' active ';
+        }
+        if ($field->handler->options['element_default_classes']) {
+          $class = 'field-content';
+        }
+
+        if ($classes = $field->handler->element_classes($view->row_index)) {
+          if ($class) {
+            $class .= ' ';
+          }
+          $class .=  $classes;
+        }
+
+        $pre = '<' . $field->element_type;
+        if ($class) {
+          $pre .= ' class="' . $class . '"';
+        }
+        $field_output = $pre . '>' . $field_output . '</' . $field->element_type . '>';
+
+        // Protect yourself somewhat for backward compatibility. This will prevent
+        // old templates from producing invalid HTML when no element type is selected.
+        if (empty($field->element_type)) {
+          $field->element_type = 'span';
+        }
+
+        $vars['fields'][$id]->content = $field_output;
+        break; // this will stop the loop after the first field
+      }
+    }
+  }
 }
+// function aurora_usa_preprocess_views_view_fields__usa_episodes__panel_pane_3 (&$vars) {
+//   dpm($vars);
+// }
 // */
 
 

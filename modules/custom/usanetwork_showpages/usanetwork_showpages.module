@@ -125,8 +125,6 @@ function usanetwork_showpages_episodes($node) {
   }
   // or go back to the show node
   drupal_goto('node/' . $show);
-
-  return $render;
 }
 
 /**

@@ -101,11 +101,32 @@ function usanetwork_showpages_episodes($node) {
   $render = array();
   $lang = LANGUAGE_NONE;
 
-  // if there is no NID get out of there
+  // if there is no show NID get out of there
   if (!isset($node->nid)) {
     return;
   }
-  drupal_goto('node/');
+  $show = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_episode'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show);
+  $query->fieldCondition('field_original_air_date', 'value', 'NULL', '!=');
+  $query->fieldOrderBy('field_original_air_date', 'value', 'DESC');
+  $query->range(0, 1);
+  // execute the query
+  $result = $query->execute();
+  // load the latest episode
+  // then go to that page
+  if (!empty($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+    drupal_goto('node/' . $nid);
+  }
+  // or go back to the show node
+  drupal_goto('node/' . $show);
+
+  return $render;
 }
 
 /**

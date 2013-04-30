@@ -20,16 +20,6 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'draggableviews',
   );
 
-  // Exported permission: create character_profile content.
-  $permissions['create character_profile content'] = array(
-    'name' => 'create character_profile content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create media_gallery content.
   $permissions['create media_gallery content'] = array(
     'name' => 'create media_gallery content',
@@ -121,16 +111,6 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own character_profile content.
-  $permissions['delete own character_profile content'] = array(
-    'name' => 'delete own character_profile content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own media_gallery content.
   $permissions['delete own media_gallery content'] = array(
     'name' => 'delete own media_gallery content',
@@ -217,16 +197,6 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own usanetwork_static_page content'] = array(
     'name' => 'delete own usanetwork_static_page content',
     'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own character_profile content.
-  $permissions['edit own character_profile content'] = array(
-    'name' => 'edit own character_profile content',
-    'roles' => array(
-      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',

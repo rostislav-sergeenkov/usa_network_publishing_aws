@@ -104,6 +104,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_cast',
     'usanetwork_catchall',
     'usanetwork_user_permissions',
+    'usanetwork_episodes',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

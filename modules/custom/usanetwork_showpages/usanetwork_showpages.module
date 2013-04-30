@@ -1,0 +1,164 @@
+<?php
+
+/**
+ * @file
+ * Code for the usanetwork_showpages feature.
+ * this manages the landing or section pages per show
+ */
+
+include_once 'usanetwork_showpages.features.inc';
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_showpages_menu() {
+  // tv show photos landing page
+  $items['node/%node/photos'] = array(
+    'title' => t('Photos'),
+    'page callback' => 'usanetwork_showpages_photos',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show episodes landing page
+  $items['node/%node/episodes'] = array(
+    'title' => t('Episodes'),
+    'page callback' => 'usanetwork_showpages_episodes',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show cast landing page
+  $items['node/%node/cast'] = array(
+    'title' => t('Cast'),
+    'page callback' => 'usanetwork_showpages_cast',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show videos landing page
+  $items['node/%node/videos'] = array(
+    'title' => t('Videos'),
+    'page callback' => 'usanetwork_showpages_videos',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Shpw pages menu access callback to restrict only tv_show nodes 
+ */
+function usanetwork_showpages_menu_access($node) {
+  return $node->type == 'tv_show' && user_access('access content');
+}
+
+/**
+ * Menu callback of show photos page
+ * load the panel page for the most recently posted gallery
+ * associated with a show
+ */
+function usanetwork_showpages_photos($node) {
+  $render = array();
+
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  $show = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('media_gallery'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show);
+  $query->propertyOrderBy('created', 'DESC');
+  $query->range(0, 1);
+  // execute the query
+  $result = $query->execute();
+  // load the related gallery
+  // then go to that page
+  if (!empty($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+    drupal_goto('node/' . $nid);
+  }
+  else {
+    return;
+  }
+}
+
+/**
+ * Menu callback of show episodes page
+ * load the panel page for the most recently aired episode
+ * associated with a show
+ */
+function usanetwork_showpages_episodes($node) {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  drupal_goto('node/');
+}
+
+/**
+ * Menu callback of show cast page
+ * load the panel page for the first member listed in the draggable cast view
+ * associated with a show
+ */
+function usanetwork_showpages_cast($node) {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  drupal_goto('node/');
+}
+
+/**
+ * Menu callback of show videos page
+ * load the video and blocks
+ * associated with a show
+ */
+function usanetwork_showpages_videos($node) {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  drupal_set_title($title = $node->title . ' Videos');
+
+  $render['videos']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="show-videos">',
+    '#markup' => t('I am show videos. See me be that. :)'),
+    '#suffix' => '</div>',
+  );
+ 
+  return $render;
+}
+
+function usanetwork_showpages_preprocess_html(&$vars) {
+  
+  $node = menu_get_object();
+  if ($node && $node->type == "tv_show") {
+    switch (arg(2)) {
+      case 'videos':
+        $headtitle = t("@show Videos", array('@show' => $node->title));
+        $vars['title'] = $headtitle;
+        break;
+    }
+  }
+
+}

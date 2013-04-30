@@ -103,6 +103,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_home',
     'usanetwork_cast',
     'usanetwork_catchall',
+    'usanetwork_user_permissions',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

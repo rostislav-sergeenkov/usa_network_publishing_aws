@@ -336,7 +336,10 @@ function usanetwork_blocks_tv_show_menu() {
 
   // Get the field collection items.
   $fc_fields = field_get_items('node', $node, 'field_show_links');
-  
+  if (empty($fc_fields)) {
+    return '';
+  }
+
   // Extract the field collection item ids
   $ids = array();
   foreach ($fc_fields as $fc_field) {
@@ -345,7 +348,10 @@ function usanetwork_blocks_tv_show_menu() {
   
   // Load up the field collection items
   $items = field_collection_item_load_multiple($ids);
-  
+  if (empty($items)) {
+    return '';
+  }
+
   // Loop through the items and extract field values
   foreach ($items as $item) {
     $mlinks = array();

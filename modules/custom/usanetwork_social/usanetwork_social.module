@@ -329,30 +329,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
-/* DV: Internal js files created from Echo, for example
-// I'm not sure whether we need to use these or whether we can
-// call the originals.
-// Because of that, I'm leaving the internal files here for now.
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery-pack.js');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/stream.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/inlinemedia.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/backplane.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/auth.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/metadata-tweaks-plugin.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/submit.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/counter.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/form-auth.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/community-flag.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/like.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/reply.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/whirlpools.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/submit-text-counter.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
-*/
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-pack.js', 'external');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.ui.js');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
   drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/backplane.js', 'external');
@@ -368,8 +345,8 @@ function usanetwork_social_chat_with_fans($node) {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/submit-text-counter.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
 
-  // DV: Note the following css that I've included! Where should this go?
-  $output .= '<style>#fancybox-wrap { -moz-box-sizing: content-box; }</style>'; // fixes the chat with fans login overlay size/formatting
+  // @TODO: need some theming for the post comment login module (see below as a start)
+  //  $output .= '<style>#fancybox-wrap { -moz-box-sizing: content-box; }</style>'; // fixes the chat with fans login overlay size/formatting
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
   $output .= '<div id="chat-submit-form">&nbsp;</div>';

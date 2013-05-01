@@ -59,13 +59,14 @@
     margin-left: 250px;
     padding-left: 5%;
 
-    h1 {
-      font-size: 37px;
-      margin-bottom: 18px;
-    }
-    h2 {
-      font-size: 24px;
-      margin-bottom: 28px;
-    }
+  }
+}
+.view-id-usa_gallery.view-display-id-panel_pane_2{
+  position: relative;
+  h2 {
+    @extend %meta;
+  }
+  .field-name-field-caption {
+    @extend %visuallyhidden;
   }
 }

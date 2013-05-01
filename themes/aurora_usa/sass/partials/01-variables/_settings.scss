@@ -39,8 +39,8 @@ $establish-baseline: true;
 
 // Headers
 // create a list of header sizes, H1 - H6
-$set-header-sizes: false;
-$header-sizes: 1em 1em 1em 1em 1em 1em;
+$set-header-sizes: true;
+$header-sizes: 37px 24px 20px 16px 1em 1em;
 // Use Compass's adjust-font-size-to function
 $adjust-font-size-to: false;
 // fancy apersands - for .amp within headers

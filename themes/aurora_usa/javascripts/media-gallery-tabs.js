@@ -1,4 +1,4 @@
-// FLEXSLIDER FOR MEDIA GALLERIES
+// MEDIA GALLERY TABS
 (function ($) {
   Drupal.behaviors.mediaGalleryTabs = {
     attach: function (context, settings) {

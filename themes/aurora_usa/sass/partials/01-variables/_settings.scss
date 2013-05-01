@@ -39,8 +39,8 @@ $establish-baseline: true;
 
 // Headers
 // create a list of header sizes, H1 - H6
-$set-header-sizes: false;
-$header-sizes: 1em 1em 1em 1em 1em 1em;
+$set-header-sizes: true;
+$header-sizes: 37px 24px 20px 16px 1em 1em;
 // Use Compass's adjust-font-size-to function
 $adjust-font-size-to: false;
 // fancy apersands - for .amp within headers
@@ -64,6 +64,22 @@ $show-baseline: false;
 // useful for previewing css changes.
 // do something more targeted in production, ok?
 $animate-all-the-things: false;
+
+// Z-Index
+// making utility higher than wall only when using slide out panel/menu
+$ziUtilities    : 102;
+$ziWall         : 101;
+$ziMegaNav      : 100;
+$ziFilterOpen   : 95;
+
+
+// Breakpoint variables
+$bp-episode-side-menu: 615px;
+$bp-episode-split-content: 881px;
+$episode-side-menu-width: 235px;
+
+
+
 
 ////////////////////////////
 // COMPASS DEFAULTS

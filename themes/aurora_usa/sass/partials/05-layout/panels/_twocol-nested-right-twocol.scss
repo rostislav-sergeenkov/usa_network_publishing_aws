@@ -1,20 +1,16 @@
-$bp-episode-side-menu: 615px;
-$bp-episode-split-content: 881px;
-$menu-width: 235px;
-
 .panel-twocol-nested-right-twocol {
   // [class^="panel-"] { @include debug-outline(); }
   .panel-one {
     @include breakpoint($bp-episode-side-menu) {
       @include float(left);
-      width: $menu-width;
+      width: $episode-side-menu-width;
       padding-right: $gutter-width;
     }
   }
   .panel-wrapper {
     @include breakpoint($bp-episode-side-menu) {
       @include clearfix;
-      margin-left: $menu-width + $gutter-width;
+      margin-left: $episode-side-menu-width + $gutter-width;
       padding-left: 5%;
     }
   }

@@ -242,7 +242,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_actor_name']['label'] = 'played by ';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_type'] = '0';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = 'h2';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */

@@ -321,9 +321,12 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -343,6 +346,7 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['fields']['field_cover_item']['alter']['text'] = '[field_cover_item]';
   $handler->display->display_options['fields']['field_cover_item']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_cover_item']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_cover_item']['alter']['prefix'] = '<h2>Episode Gallery</h2>';
   $handler->display->display_options['fields']['field_cover_item']['element_type'] = '0';
   $handler->display->display_options['fields']['field_cover_item']['element_label_type'] = '0';
   $handler->display->display_options['fields']['field_cover_item']['element_label_colon'] = FALSE;

@@ -1,6 +1,8 @@
 // DEFAULT COLORS
+$black-dark         : #161616;
 $black              : #1f1f1f;
 $nav-black          : rgba(black,.9);
+$black-trans        : rgba(black,.8);
 $gray-light         : #878785;
 $gray-med           : #3d3d3d;
 $gray-dark          : #2d2d2d;
@@ -17,7 +19,7 @@ $orange             : #f8981d;
 $base-color: $black;
 $text-color: $white;
 $alt-color: $blue;
-$background-color: $black;
+$background-color: $black-dark;
 $border-color: $gray-light;
 
 

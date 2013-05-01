@@ -1,0 +1,92 @@
+.view-usa-episodes.view-display-id-panel_pane_3 {
+  @extend %big-filter-dropdown;
+}
+.view-id-usa_episodes.view-display-id-panel_pane_1 {
+  @extend %big-filter-dropdown;
+  @include breakpoint($bp-episode-side-menu) {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    .menu-label {
+      display: none;
+    }
+    a {
+      display: block;
+      border-color: $gray-med;
+      border-style: solid;
+      border-width: 1px 0 0;
+      color: $gray-light;
+      font-size: 16px;
+      padding: 6px 14px;
+      &.active {
+        background: $black-dark;
+        border-width: 1px 0 1px 1px;
+        color: $white;
+        margin-bottom: -1px;
+        margin-right: -16px;
+        padding-right: 30px;
+        position: relative;
+        &:hover {
+          color: $white;
+        }
+        &:after {
+          @include cssTriangle(5px, $white, left);
+          content: "";
+          margin-top: -5px;
+          position: absolute;
+          right: 20px;
+          top: 50%;
+        }
+      }
+    }
+  }
+}
+.panel-twocol-nested-right-twocol .panel-one {
+  @include breakpoint($bp-episode-side-menu) {
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    margin-right: -1px;
+    padding-right: 15px;
+    width: 251px;
+  }
+}
+.panel-twocol-nested-right-twocol .panel-two {
+  margin-bottom: 30px;
+}
+.panel-twocol-nested-right-twocol .panel-wrapper {
+  @include breakpoint($bp-episode-side-menu) {
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    margin-left: 250px;
+    padding-left: 5%;
+
+  }
+}
+.panel-twocol-nested-right-twocol .panel-three {
+  padding-bottom: 1.5em;
+}
+.panel-twocol-nested-right-twocol .panel-four {
+  .pane-2 {
+    margin-bottom: 15px;
+  }
+}
+.view-id-usa_gallery.view-display-id-panel_pane_2{
+  position: relative;
+  h2 {
+    @extend %meta;
+  }
+  .field-name-field-caption {
+    @extend %visuallyhidden;
+  }
+}
+.panel-twocol-nested-right-twocol .panel-five {
+  @extend %un-margin;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: $black;
+  border-color: $gray-dark;
+  border-style: solid;
+  border-width: 1px 0 0;
+}

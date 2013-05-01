@@ -36,6 +36,7 @@ function usanetwork_borealis_strongarm() {
     3 => 'promoted_content',
     4 => 'large',
     5 => 'medium',
+    6 => 'episode_wide',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -209,6 +210,31 @@ function usanetwork_borealis_strongarm() {
       'name' => 'medium',
       'module' => 'image',
       'storage' => 4,
+    ),
+    'episode_wide' => array(
+      'isid' => '1',
+      'name' => 'episode_wide',
+      'module' => 'usanetwork_episodes',
+      'storage' => 2,
+      'effects' => array(
+        2 => array(
+          'label' => 'Focus Scale And Crop',
+          'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
+          'effect callback' => 'imagefield_focus_scale_and_crop_effect',
+          'form callback' => 'imagefield_focus_scale_and_crop_form',
+          'summary theme' => 'imagefield_focus_scale_and_crop_summary',
+          'module' => 'imagefield_focus',
+          'name' => 'imagefield_focus_scale_and_crop',
+          'data' => array(
+            'width' => '1230',
+            'height' => '360',
+            'strength' => 'high',
+          ),
+          'ieid' => '2',
+          'isid' => '1',
+          'weight' => '2',
+        ),
+      ),
     ),
   );
   $export['borealis_ri_parents'] = $strongarm;

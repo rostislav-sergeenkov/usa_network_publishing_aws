@@ -63,6 +63,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
+  drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   $node = menu_get_object();
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
@@ -206,10 +207,49 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
   }
   $view->result = $new_results;
 }
-function aurora_usa_preprocess_views_view_fields__usa_episodes__panel_pane_3 (&$vars) {
-  // my specific preprocess code
+function aurora_usa_preprocess_views_view_fields(&$vars) {
+  $view = $vars['view'];
+  if($view->name == 'usa_episodes') {
+    if ($vars['view']->current_display == 'panel_pane_3') {
+      foreach ($vars['fields'] as $id => $field) {
+        $field_output = $view->style_plugin->get_field($view->row_index, $id);
+
+        $node = menu_get_object();
+        $ep_from_field = node_load($field->raw);
+        $language = $node->language;
+        $class = '';
+        if ($node->field_season[$language][0]['target_id'] == $ep_from_field->field_season[$language][0]['target_id']) {
+          $class .= ' active ';
+        }
+        if ($field->handler->options['element_default_classes']) {
+          $class = 'field-content';
+        }
+
+        if ($classes = $field->handler->element_classes($view->row_index)) {
+          if ($class) {
+            $class .= ' ';
+          }
+          $class .=  $classes;
+        }
+
+        if ($class) {
+          $pre = '<' . $field->element_type;
+          $pre .= ' class="' . $class . '"';
+          $field_output = $pre . '>' . $field_output . '</' . $field->element_type . '>';
+        }
+
+        // Protect yourself somewhat for backward compatibility. This will prevent
+        // old templates from producing invalid HTML when no element type is selected.
+        if (empty($field->element_type)) {
+          $field->element_type = 'span';
+        }
+
+        $vars['fields'][$id]->content = $field_output;
+        break; // this will stop the loop after the first field
+      }
+    }
+  }
 }
-// */
 
 
 /**

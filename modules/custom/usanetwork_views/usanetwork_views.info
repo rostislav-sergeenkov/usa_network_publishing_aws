@@ -10,6 +10,5 @@ dependencies[] = views_load_more
 dependencies[] = views_slideshow
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
-features[views_view][] = usa_episodes
 features[views_view][] = usa_gallery
 features[views_view][] = usanetwork_content

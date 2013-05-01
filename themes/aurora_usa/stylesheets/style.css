@@ -1310,6 +1310,10 @@ mark {
   }
 }
 
+.panel-twocol-nested-right-twocol .panel-two {
+  margin-bottom: 30px;
+}
+
 @media (min-width: 615px) {
   .panel-twocol-nested-right-twocol .panel-wrapper {
     border-color: #3d3d3d;
@@ -1318,6 +1322,14 @@ mark {
     margin-left: 250px;
     padding-left: 5%;
   }
+}
+
+.panel-twocol-nested-right-twocol .panel-three {
+  padding-bottom: 1.5em;
+}
+
+.panel-twocol-nested-right-twocol .panel-four .pane-2 {
+  margin-bottom: 15px;
 }
 
 .view-id-usa_gallery.view-display-id-panel_pane_2 {

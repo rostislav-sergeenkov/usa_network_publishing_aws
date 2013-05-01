@@ -51,6 +51,9 @@
     width: 251px;
   }
 }
+.panel-twocol-nested-right-twocol .panel-two {
+  margin-bottom: 30px;
+}
 .panel-twocol-nested-right-twocol .panel-wrapper {
   @include breakpoint($bp-episode-side-menu) {
     border-color: #3d3d3d;
@@ -59,6 +62,14 @@
     margin-left: 250px;
     padding-left: 5%;
 
+  }
+}
+.panel-twocol-nested-right-twocol .panel-three {
+  padding-bottom: 1.5em;
+}
+.panel-twocol-nested-right-twocol .panel-four {
+  .pane-2 {
+    margin-bottom: 15px;
   }
 }
 .view-id-usa_gallery.view-display-id-panel_pane_2{

@@ -70,3 +70,12 @@
     @extend %visuallyhidden;
   }
 }
+.panel-twocol-nested-right-twocol .panel-five {
+  @extend %un-margin;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: $black;
+  border-color: $gray-dark;
+  border-style: solid;
+  border-width: 1px 0 0;
+}

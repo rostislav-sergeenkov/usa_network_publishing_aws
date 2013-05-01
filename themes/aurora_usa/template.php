@@ -135,9 +135,11 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  *   The name of the template being rendered ("field" in this case.)
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
-  if(($vars['element']['#object']->type == 'media_gallery')
-    && ($vars['element']['#field_name'] == 'field_media_items')) {
-    $vars['items'] = append_cover_to_media($vars);
+  if(isset($vars['element']['#object']->type)) {
+    if(($vars['element']['#object']->type == 'media_gallery')
+      && ($vars['element']['#field_name'] == 'field_media_items')) {
+      $vars['items'] = append_cover_to_media($vars);
+    }
   }
 }
 

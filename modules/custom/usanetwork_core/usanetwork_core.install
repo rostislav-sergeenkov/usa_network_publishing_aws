@@ -79,6 +79,7 @@ function usanetwork_core_enable_modules() {
     'views_bulk_operations',
     'views_load_more',
     'addanother',
+    'styleguide',
     // USA custom
     'usanetwork',
     'usanetwork_ds',

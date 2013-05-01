@@ -1363,6 +1363,11 @@ mark {
   text-transform: uppercase;
 }
 
+.carousel-item {
+  width: 221px;
+  heigth: 184px;
+}
+
 /*
  * jQuery FlexSlider v2.0
  * http://www.woothemes.com/flexslider/

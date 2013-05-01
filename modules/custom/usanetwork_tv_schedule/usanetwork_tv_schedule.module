@@ -24,6 +24,114 @@ function usanetwork_tv_schedule_menu() {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function usanetwork_tv_schedule_block_info() {
+  $blocks = array();
+  $blocks['usa_on_now_block'] = array(
+    'info' => t('USA: on now block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_tv_schedule_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_on_now_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_tv_schedule_on_now_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Block callback for the On Now block
+ */
+function usanetwork_tv_schedule_on_now_block() {
+  $render = array();
+  
+  // JS to determine the current timezone from the user browser
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
+
+  $tv_url = variable_get('usanetwork_tv_schedule', '');
+  // return empty block if the tv schedule url is empty
+  if (empty($tv_url)) {
+    return ''; 
+  }
+
+  // fetch today's schedule
+  $tv_schedule = file_get_contents($tv_url);
+  $tv_schedule = drupal_json_decode($tv_schedule);
+
+  // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
+  $tv_schedule_prev_day = file_get_contents($tv_url . '?sdate=' . date('m/d/Y', time() - 60 * 60 * 24));
+  $tv_schedule_prev_day = drupal_json_decode($tv_schedule_prev_day);
+
+  $full_tv_schedule = array('data' => array());
+  $start_search = false;
+  // get the tv schedule from 00:00 AM till 5:59 AM
+  foreach ($tv_schedule_prev_day['data'] as $key => $val) {
+    if (strpos($key, 'PM') !== FALSE) {
+      $start_search = true;
+    }
+    if ($start_search && strpos($key, 'AM') !== FALSE) {
+      $full_tv_schedule['data'][$key] = $val;
+    } 
+  }
+  // get the tv schedule from 6:00 AM till end of the day
+  foreach ($tv_schedule['data'] as $key => $val) {
+    if (!isset($full_tv_schedule['data'][$key])) {
+      $full_tv_schedule['data'][$key] = $val;
+    }
+  } 
+
+  // expose the tv schedule as JS variable to determine the on on show based on the user timezone and for other modules to consume it
+  $vars = 'var tv_schedule = ' . drupal_json_encode($full_tv_schedule) . ';';
+
+  // switch to ET timezone to perform calculations and then switch back to original timezone
+  $orginal_tz = date_default_timezone_get();
+  date_default_timezone_set('America/New_York');
+  $et_time = floatval(date('U'));
+
+  foreach ($full_tv_schedule['data'] as $dt => $show) {
+    $show_dt = strtotime(date('Y-m-d ').$dt);
+    if ($et_time < $show_dt) {
+      if (empty($last_dt)) {
+        $last_dt = $dt;
+      }
+      $show_name = $full_tv_schedule['data'][$last_dt]['show'] .': '. $full_tv_schedule['data'][$last_dt]['episode'];
+      break;
+    }
+    $last_dt = $dt;
+  }
+  date_default_timezone_set($orginal_tz);
+
+  // expose default et show for rest of the world
+  $show_name = strtoupper($show_name);
+  $vars .= 'var on_now_default_show = "' . $show_name . '";';
+
+  drupal_add_js($vars, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');
+
+  // Handles the JS disabled browser scenario
+  $markup = '&nbsp;<noscript>' . $show_name . '</noscript>';
+
+  $render['on_now_block']['body'] = array(
+    '#type' => 'markup',
+    '#markup' => $markup,
+  );
+
+  return $render;
+}
+
+/**
  * TV schedule page menu callback
  */
 function uusanetwork_tv_schedule_schedule_page() {

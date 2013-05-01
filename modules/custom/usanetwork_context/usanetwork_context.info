@@ -10,6 +10,7 @@ dependencies[] = pub_tv_overrides
 dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_lyris
 dependencies[] = usanetwork_social
+dependencies[] = usanetwork_tv_schedule
 features[context][] = show_page
 features[context][] = usanetwork_homepage
 features[context][] = usanetwork_sitewide

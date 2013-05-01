@@ -331,7 +331,7 @@ function usanetwork_episodes_default_page_manager_handlers() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-        'file_view_mode' => 'full',
+        'file_view_mode' => 'cover_image',
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,

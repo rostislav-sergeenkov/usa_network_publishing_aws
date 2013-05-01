@@ -599,7 +599,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => '',
+    'body_classes_to_add' => 'person-page',
     'css_id' => 'profile-content',
     'css' => '',
     'contexts' => array(),
@@ -692,7 +692,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-14';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_2';
+    $pane->subtype = 'usa_people-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -711,7 +711,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-15';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_3';
+    $pane->subtype = 'usa_people-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -791,7 +791,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
-      'style' => 'block',
+      'style' => 'naked',
     );
     $pane->css = array(
       'css_id' => '',

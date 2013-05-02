@@ -1,7 +1,7 @@
-.clearfix {
+.clearfix, .panel-twocol-nested-right-twocol .panel-five {
   zoom: 1;
 }
-.clearfix:after {
+.clearfix:after, .panel-twocol-nested-right-twocol .panel-five:after {
   content: "\0020";
   display: table;
   clear: both;
@@ -12,7 +12,7 @@
   visibility: hidden;
 }
 
-.view-id-usa_gallery.view-display-id-panel_pane_2 .field-name-field-caption {
+.title-overlay .field-name-field-caption {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -23,7 +23,7 @@
   width: 1px;
 }
 
-.view-id-usa_gallery.view-display-id-panel_pane_2 .focusable.field-name-field-caption {
+.title-overlay .focusable.field-name-field-caption {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -33,7 +33,7 @@
   position: absolute;
   width: 1px;
 }
-.view-id-usa_gallery.view-display-id-panel_pane_2 .focusable.field-name-field-caption:active, .view-id-usa_gallery.view-display-id-panel_pane_2 .focusable.field-name-field-caption:focus {
+.title-overlay .focusable.field-name-field-caption:active, .title-overlay .focusable.field-name-field-caption:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -189,7 +189,10 @@ strong, dfn, b {
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.view-id-usa_gallery.view-display-id-panel_pane_2 h2 {
+.title-overlay {
+  position: relative;
+}
+.title-overlay h2 {
   background: rgba(0, 0, 0, 0.8);
   bottom: 0;
   color: white;
@@ -650,7 +653,7 @@ li ul {
   list-style-type: circle;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, .smaller-header h2, h4, h5, h6 {
   font-weight: normal;
   text-rendering: optimizeLegibility;
   letter-spacing: .05em;
@@ -660,16 +663,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 37px;
   margin-bottom: 18px;
-  text-transform: uppercase;
 }
 
 h2 {
   font-size: 24px;
   margin-bottom: 28px;
-  text-transform: uppercase;
 }
 
-h3 {
+h3, .smaller-header h2 {
   font-size: 20px;
 }
 
@@ -731,7 +732,7 @@ mark {
   text-shadow: none;
 }
 
-@media (min-width: 615px) {
+@media (min-width: 769px) {
   .panel-twocol-nested-right-twocol .panel-one {
     display: inline;
     float: left;
@@ -739,7 +740,7 @@ mark {
     padding-right: 15px;
   }
 }
-@media (min-width: 615px) {
+@media (min-width: 769px) {
   .panel-twocol-nested-right-twocol .panel-wrapper {
     overflow: hidden;
     *zoom: 1;
@@ -1254,7 +1255,7 @@ mark {
   }
 }
 
-@media (min-width: 615px) {
+@media (min-width: 769px) {
   .view-id-usa_episodes.view-display-id-panel_pane_1 {
     font-size: 16px;
     line-height: 1.5;
@@ -1299,7 +1300,7 @@ mark {
   }
 }
 
-@media (min-width: 615px) {
+@media (min-width: 769px) {
   .panel-twocol-nested-right-twocol .panel-one {
     border-color: #3d3d3d;
     border-style: solid;
@@ -1313,8 +1314,11 @@ mark {
 .panel-twocol-nested-right-twocol .panel-two {
   margin-bottom: 30px;
 }
+.panel-twocol-nested-right-twocol .panel-two .pane-node-title h1 {
+  font-size: 27px;
+}
 
-@media (min-width: 615px) {
+@media (min-width: 769px) {
   .panel-twocol-nested-right-twocol .panel-wrapper {
     border-color: #3d3d3d;
     border-style: solid;
@@ -1331,9 +1335,15 @@ mark {
 .panel-twocol-nested-right-twocol .panel-four .pane-2 {
   margin-bottom: 15px;
 }
-
-.view-id-usa_gallery.view-display-id-panel_pane_2 {
-  position: relative;
+@media (min-width: 660px) and (max-width: 769px) {
+  .panel-twocol-nested-right-twocol .panel-four {
+    width: 630px;
+  }
+  .panel-twocol-nested-right-twocol .panel-four .pane-2, .panel-twocol-nested-right-twocol .panel-four .pane-usa-gallery-panel-pane-2 {
+    display: inline;
+    float: right;
+    margin-right: 15px;
+  }
 }
 
 .panel-twocol-nested-right-twocol .panel-five {
@@ -1343,6 +1353,20 @@ mark {
   border-color: #2d2d2d;
   border-style: solid;
   border-width: 1px 0 0;
+  margin-top: 30px;
+}
+.panel-twocol-nested-right-twocol .panel-five .pane-1 {
+  display: inline;
+  float: left;
+  margin-left: -250px;
+  padding-left: 250px;
+  width: 100%;
+}
+.panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 {
+  display: inline;
+  float: right;
+  max-width: 221px;
+  margin-left: 1em;
 }
 
 [class*="iib"] {

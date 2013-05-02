@@ -124,11 +124,8 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
   if (isset($data['node-tv_episode-field_tv_cover_media'])) {
     $data['node-tv_episode-field_tv_cover_media']['field_instance']['display']['full'] = array(
       'label' => 'hidden',
-      'module' => 'file_entity',
-      'settings' => array(
-        'file_view_mode' => 'default',
-      ),
-      'type' => 'file_rendered',
+      'settings' => array(),
+      'type' => 'hidden',
       'weight' => '0',
     ); /* WAS: '' */
     $data['node-tv_episode-field_tv_cover_media']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */

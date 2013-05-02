@@ -261,7 +261,16 @@ function usanetwork_panels_default_page_manager_handlers() {
     'css_id' => 'profile-content',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'related show node',
+        'keyword' => 'node_2',
+        'name' => 'entity_from_field:field_show-node-node',
+        'delta' => 0,
+        'context' => 'argument_entity_id:node_1',
+        'id' => 1,
+      ),
+    ),
     'access' => array(
       'plugins' => array(
         0 => array(
@@ -295,8 +304,9 @@ function usanetwork_panels_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 'main-row',
-          1 => 1,
+          0 => 2,
+          1 => 'main-row',
+          2 => 1,
         ),
         'parent' => 'canvas',
       ),
@@ -332,6 +342,23 @@ function usanetwork_panels_default_page_manager_handlers() {
         'parent' => '1',
         'class' => '',
       ),
+      2 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'top',
+        ),
+        'parent' => 'main',
+        'class' => 'region-top',
+      ),
+      'top' => array(
+        'type' => 'region',
+        'title' => 'top',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '2',
+        'class' => 'region-top',
+      ),
     ),
   );
   $display->panel_settings = array(
@@ -340,6 +367,7 @@ function usanetwork_panels_default_page_manager_handlers() {
       'center' => NULL,
       'right' => NULL,
       'image' => NULL,
+      'top' => NULL,
     ),
   );
   $display->cache = array();
@@ -460,6 +488,42 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-10'] = $pane;
     $display->panels['image'][0] = 'new-10';
+    $pane = new stdClass();
+    $pane->pid = 'new-11';
+    $pane->panel = 'top';
+    $pane->type = 'views';
+    $pane->subtype = 'usa_cast';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_1',
+      'context' => array(
+        0 => 'relationship_entity_from_field:field_show-node-node_1.nid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][0] = 'new-11';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

@@ -111,7 +111,6 @@ function usanetwork_core_enable_modules() {
     'pub_files_overrides',
     'pub_tv_overrides',
     'pub_media_overrides',
-    'pub_character_profile_overrides',
     'pub_person_overrides',
     'pub_gigya_overrides',
   );

@@ -71,7 +71,7 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '4',
   );
-  $overrides["field.node-tv_episode-field_original_air_date.field_instance|exclude_cv"] = 0;
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|exclude_cv"] = 1;
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|fences_wrapper"] = 'div';
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|required"] = 1;
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|settings|default_value"] = 'blank';
@@ -85,9 +85,6 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -110,6 +107,11 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '6',
   );
   $overrides["field.node-tv_episode-field_tv_episode_type.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_season-field_original_air_date.field_instance|exclude_cv"] = 1;
+  $overrides["field.node-tv_season-field_original_air_date.field_instance|fences_wrapper"] = 'div';
+  $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|default_value"] = 'blank';
+  $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|default_value2"] = 'same';
+  $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;

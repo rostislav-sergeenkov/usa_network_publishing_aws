@@ -32,11 +32,10 @@ function usanetwork_borealis_strongarm() {
   $strongarm->value = array(
     0 => 'flexslider_full',
     1 => 'gallery_full_photo',
-    2 => 'gallery_block_cover',
-    3 => 'promoted_content',
-    4 => 'large',
-    5 => 'medium',
-    6 => 'episode_wide',
+    2 => 'promoted_content',
+    3 => 'large',
+    4 => 'medium',
+    5 => 'episode_wide',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -85,43 +84,6 @@ function usanetwork_borealis_strongarm() {
             'upscale' => 0,
           ),
           'weight' => '1',
-        ),
-      ),
-      'module' => 'usanetwork_imagestyles',
-      'storage' => 4,
-    ),
-    'gallery_block_cover' => array(
-      'name' => 'gallery_block_cover',
-      'effects' => array(
-        1 => array(
-          'label' => 'Focus Scale And Crop',
-          'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-          'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-          'form callback' => 'imagefield_focus_scale_and_crop_form',
-          'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-          'module' => 'imagefield_focus',
-          'name' => 'imagefield_focus_scale_and_crop',
-          'data' => array(
-            'width' => '221',
-            'height' => '126',
-            'strength' => 'high',
-          ),
-          'weight' => '1',
-        ),
-        2 => array(
-          'label' => 'Scale and crop',
-          'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-          'effect callback' => 'image_scale_and_crop_effect',
-          'dimensions callback' => 'image_resize_dimensions',
-          'form callback' => 'image_resize_form',
-          'summary theme' => 'image_resize_summary',
-          'module' => 'image',
-          'name' => 'image_scale_and_crop',
-          'data' => array(
-            'width' => '221',
-            'height' => '126',
-          ),
-          'weight' => '2',
         ),
       ),
       'module' => 'usanetwork_imagestyles',

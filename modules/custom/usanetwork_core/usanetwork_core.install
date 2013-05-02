@@ -88,7 +88,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_imagestyles',
     'usanetwork_views',
     'usanetwork_context',
-    'usanetwork_files',
     'usanetwork_panels',
     'usanetwork_strongarm',
     'usanetwork_social',
@@ -107,11 +106,11 @@ function usanetwork_core_enable_modules() {
     'usanetwork_user_permissions',
     'usanetwork_episodes',
     'usanetwork_layouts',
+    'usanetwork_showpages',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
     'pub_media_overrides',
-    'pub_character_profile_overrides',
     'pub_person_overrides',
     'pub_gigya_overrides',
   );

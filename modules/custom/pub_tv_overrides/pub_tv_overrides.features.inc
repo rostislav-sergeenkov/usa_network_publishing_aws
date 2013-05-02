@@ -92,7 +92,7 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'type' => 'hidden',
       'weight' => '4',
     ); /* WAS: '' */
-    $data['node-tv_episode-field_original_air_date']['field_instance']['exclude_cv'] = 0; /* WAS: '' */
+    $data['node-tv_episode-field_original_air_date']['field_instance']['exclude_cv'] = 1; /* WAS: '' */
     $data['node-tv_episode-field_original_air_date']['field_instance']['fences_wrapper'] = 'div'; /* WAS: '' */
     $data['node-tv_episode-field_original_air_date']['field_instance']['required'] = 1; /* WAS: 0 */
     $data['node-tv_episode-field_original_air_date']['field_instance']['settings']['default_value'] = 'blank'; /* WAS: '' */
@@ -117,9 +117,6 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'weight' => '8',
     ); /* WAS: '' */
     $data['node-tv_episode-field_show']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['direction']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['field']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['property']);
   }
   if (isset($data['node-tv_episode-field_tv_cover_media'])) {
     $data['node-tv_episode-field_tv_cover_media']['field_instance']['display']['full'] = array(
@@ -139,6 +136,13 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'weight' => '6',
     ); /* WAS: '' */
     $data['node-tv_episode-field_tv_episode_type']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
+  }
+  if (isset($data['node-tv_season-field_original_air_date'])) {
+    $data['node-tv_season-field_original_air_date']['field_instance']['exclude_cv'] = 1; /* WAS: '' */
+    $data['node-tv_season-field_original_air_date']['field_instance']['fences_wrapper'] = 'div'; /* WAS: '' */
+    $data['node-tv_season-field_original_air_date']['field_instance']['settings']['default_value'] = 'blank'; /* WAS: '' */
+    $data['node-tv_season-field_original_air_date']['field_instance']['settings']['default_value2'] = 'same'; /* WAS: '' */
+    $data['node-tv_season-field_original_air_date']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
   }
 }
 

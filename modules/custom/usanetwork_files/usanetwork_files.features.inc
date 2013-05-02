@@ -13,3 +13,18 @@ function usanetwork_files_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_strongarm_alter().
+ */
+function usanetwork_files_strongarm_alter(&$data) {
+  if (isset($data['field_bundle_settings_file__image'])) {
+    $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['thumb_tiny'] = array(
+      'weight' => '0',
+      'visible' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['view_modes']['thumb_tiny'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+  }
+}

@@ -1,0 +1,101 @@
+$bp_person-medium-width: 768px;
+$bp_person-gall_width: 704px;
+
+
+
+.person-page  {
+	h1 {
+		text-transform:none;
+		font-size:24px;
+		padding-left:45px;
+		@include breakpoint($bp_person-medium-width) { 
+			font-size:26px;
+			
+		}
+	}
+}
+
+/* ? */
+.usasocial-fb:before {
+	@extend %usanetwork-font;
+	content: "facebook";
+}
+ 
+
+
+#profile-content {
+	width:auto;
+	position:relative;
+	overflow:hidden;
+	@include breakpoint($bp_person-medium-width) { 
+	padding:0 45px; 
+	}	
+	h2 {
+		text-transform: none;
+		font-size:14px;
+		margin:0 30px 0 0;
+		@include breakpoint($bp_person-medium-width) { 
+			font-size:16px;
+		}	
+	}
+	aside {
+		position:relative;
+		z-index:2;
+		.field-name-body {
+			clear:both;
+		}
+		&:last-child {
+			display:none;
+			position: absolute;
+		    top: 0;
+		    width: 100%;
+		    z-index: 1;	
+			@include breakpoint($bp_person-medium-width) { 
+				display:block;
+				
+			}
+			img {
+				max-width:55%;
+				position:absolute;
+				right:-50px;
+			}
+		  
+		}
+		&:first-child {
+			> div:first-child {
+				float:left;
+			}
+			.share-icons {
+				float:left;
+				padding-bottom:15px;
+			}
+			@include breakpoint($bp_person-medium-width) {
+				width:52%;
+			}
+		  
+		}
+	}
+	.node-media-gallery {
+		width:300px;
+		position:relative;
+		border: 2px solid $gray-dark;
+		margin:0 auto;
+		@include breakpoint($bp_person-gall_width) { 
+			height:252px;
+			margin:0 15px 0 0;
+		}
+		h2 {
+			font-size:20px;
+		}
+		.field-name-title {
+			/*@extend %meta;*/
+			position:absolute;
+			left:0;
+			bottom:0;
+			padding:12px 15px 9px;
+			width:100%;
+			letter-spacing:0.05em;
+			background:$black-trans;
+		}
+	}
+}

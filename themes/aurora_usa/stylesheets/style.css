@@ -12,7 +12,7 @@
   visibility: hidden;
 }
 
-.title-overlay .field-name-field-caption {
+.title-overlay .field-name-field-caption, #profile-content .node-media-gallery .field-name-title .field-name-field-caption {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -23,7 +23,7 @@
   width: 1px;
 }
 
-.title-overlay .focusable.field-name-field-caption {
+.title-overlay .focusable.field-name-field-caption, #profile-content .node-media-gallery .field-name-title .focusable.field-name-field-caption {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -33,7 +33,7 @@
   position: absolute;
   width: 1px;
 }
-.title-overlay .focusable.field-name-field-caption:active, .title-overlay .focusable.field-name-field-caption:focus {
+.title-overlay .focusable.field-name-field-caption:active, #profile-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:active, .title-overlay .focusable.field-name-field-caption:focus, #profile-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -122,7 +122,7 @@ strong, dfn, b {
   font-style: "normal";
 }
 
-#mega-nav #site-name {
+#mega-nav #site-name, .share-icons a {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -189,10 +189,10 @@ strong, dfn, b {
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.title-overlay {
+.title-overlay, #profile-content .node-media-gallery .field-name-title {
   position: relative;
 }
-.title-overlay h2 {
+.title-overlay h2, #profile-content .node-media-gallery .field-name-title h2 {
   background: rgba(0, 0, 0, 0.8);
   bottom: 0;
   color: white;
@@ -1599,4 +1599,108 @@ html[xmlns] .slides {
     opacity: 1;
     right: 0;
   }
+}
+.person-page h1 {
+  text-transform: none;
+  font-size: 24px;
+}
+@media (min-width: 768px) {
+  .person-page h1 {
+    padding-left: 45px;
+    font-size: 26px;
+  }
+}
+
+.share-icons a {
+  color: #000;
+  background-color: #878785;
+  font-size: 1.5em;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  padding: 4px 3px 3px;
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  margin-left: 5px;
+}
+.share-icons a:hover {
+  background-color: #fff;
+}
+.share-icons a.usasocial-fb {
+  padding-left: 8px;
+}
+
+#profile-content {
+  width: auto;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  #profile-content {
+    padding: 0 45px;
+  }
+}
+#profile-content h4 {
+  text-transform: none;
+  font-size: 14px;
+  margin: 5px 30px 5px 0;
+}
+@media (min-width: 768px) {
+  #profile-content h4 {
+    font-size: 18px;
+  }
+}
+#profile-content aside {
+  position: relative;
+  z-index: 2;
+}
+#profile-content aside .field-name-body {
+  clear: both;
+}
+#profile-content aside:last-child {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  #profile-content aside:last-child {
+    display: block;
+  }
+}
+#profile-content aside:last-child img {
+  max-width: 55%;
+  position: absolute;
+  right: -50px;
+}
+#profile-content aside:first-child > div:first-child {
+  float: left;
+}
+#profile-content aside:first-child .share-icons {
+  float: left;
+  padding-bottom: 15px;
+}
+@media (min-width: 768px) {
+  #profile-content aside:first-child {
+    width: 52%;
+  }
+}
+#profile-content .node-media-gallery {
+  width: 300px;
+  position: relative;
+  border: 2px solid #2d2d2d;
+  margin: 0 auto;
+}
+@media (min-width: 704px) {
+  #profile-content .node-media-gallery {
+    height: 252px;
+    margin: 0 15px 0 0;
+  }
+}
+#profile-content .node-media-gallery h2 {
+  font-size: 20px;
 }

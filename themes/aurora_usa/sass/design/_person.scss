@@ -17,7 +17,7 @@ $bp_person-gall_width: 704px;
 
 .share-icons a {
 	color:#000;
-	background-color:#878785;
+	background-color:$gray-light;
 	@extend %usanetwork-font;
 	font-size:1.5em;
 	@include border-radius(50%);

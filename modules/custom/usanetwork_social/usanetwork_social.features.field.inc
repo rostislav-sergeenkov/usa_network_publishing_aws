@@ -1848,7 +1848,7 @@ function usanetwork_social_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '46',
+        'weight' => '59',
       ),
     ),
   );
@@ -3113,6 +3113,354 @@ function usanetwork_social_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-tv_show-field_usa_link_facebook'.
+  $fields['node-tv_show-field_usa_link_facebook'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_link_facebook',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 45,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'no_wrapper',
+      'field_name' => 'field_usa_link_facebook',
+      'label' => 'Facebook page',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => 'show-fb usasocial-fb',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'exclude_cv' => FALSE,
+        'rel_remove' => 'default',
+        'title' => 'value',
+        'title_maxlength' => '128',
+        'title_value' => 'facebook',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'urlwidget',
+        'weight' => '63',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_link_pinterest'.
+  $fields['node-tv_show-field_usa_link_pinterest'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_link_pinterest',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 46,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'no_wrapper',
+      'field_name' => 'field_usa_link_pinterest',
+      'label' => 'Pinterest page',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => 'show-pinterest usasocial-pinterest',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'exclude_cv' => FALSE,
+        'rel_remove' => 'default',
+        'title' => 'value',
+        'title_maxlength' => '128',
+        'title_value' => 'pinterest',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'urlwidget',
+        'weight' => '61',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_link_tumblr'.
+  $fields['node-tv_show-field_usa_link_tumblr'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_link_tumblr',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 47,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'no_wrapper',
+      'field_name' => 'field_usa_link_tumblr',
+      'label' => 'Tumblr Page',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => 'show-tumblr usasocial-tumblr',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'exclude_cv' => FALSE,
+        'rel_remove' => 'default',
+        'title' => 'value',
+        'title_maxlength' => '128',
+        'title_value' => 'tumblr',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'urlwidget',
+        'weight' => '60',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_link_twitter'.
+  $fields['node-tv_show-field_usa_link_twitter'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_link_twitter',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 44,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'exclude_cv' => 0,
+      'fences_wrapper' => 'no_wrapper',
+      'field_name' => 'field_usa_link_twitter',
+      'label' => 'Twitter page',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => 'show-twitter usasocial-twitter',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'exclude_cv' => FALSE,
+        'rel_remove' => 'default',
+        'title' => 'value',
+        'title_maxlength' => '128',
+        'title_value' => 'twitter',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'urlwidget',
+        'weight' => '62',
+      ),
+    ),
+  );
+
   // Exported field: 'node-tv_show-field_usa_lyris_listid'.
   $fields['node-tv_show-field_usa_lyris_listid'] = array(
     'field_config' => array(
@@ -3199,10 +3547,12 @@ function usanetwork_social_field_default_fields() {
   t('EQL Token');
   t('Echo Query Template');
   t('FEED');
+  t('Facebook page');
   t('IDENTITYMANAGERURL');
   t('ITEMSPERPAGE');
   t('Lyris List ID');
   t('MARKERS');
+  t('Pinterest page');
   t('SAFEHTML');
   t('SHOW');
   t('SORTORDER');
@@ -3216,6 +3566,8 @@ function usanetwork_social_field_default_fields() {
   t('Social Logo');
   t('TAGS');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
+  t('Tumblr Page');
+  t('Twitter page');
 
   return $fields;
 }

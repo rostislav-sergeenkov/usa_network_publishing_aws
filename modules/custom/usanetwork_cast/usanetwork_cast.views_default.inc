@@ -435,6 +435,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
   $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = '0';
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_wrapper_type'] = '0';
@@ -444,7 +445,6 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_character_thumb']['settings'] = array(
     'file_view_mode' => 'thumb_tiny',
   );
-  $handler->display->display_options['fields']['field_usa_character_thumb']['field_api_classes'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -468,7 +468,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_actor_name']['field'] = 'field_usa_actor_name';
   $handler->display->display_options['fields']['field_usa_actor_name']['label'] = '';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = 'em';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_usa_actor_name']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_usa_actor_name']['field_api_classes'] = TRUE;
@@ -787,7 +787,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_social_logo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_social_logo']['settings'] = array(
     'image_style' => 'thumb_tiny',
-    'image_link' => '',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_social_logo']['field_api_classes'] = TRUE;
   /* Field: Content: Title */
@@ -797,12 +797,62 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Tumblr Page */
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['id'] = 'field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['table'] = 'field_data_field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['field'] = 'field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['click_sort_column'] = 'url';
+  /* Field: Content: Pinterest page */
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['id'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['table'] = 'field_data_field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['field'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['click_sort_column'] = 'url';
+  /* Field: Content: Twitter page */
+  $handler->display->display_options['fields']['field_usa_link_twitter']['id'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['table'] = 'field_data_field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['field'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['click_sort_column'] = 'url';
+  /* Field: Content: Facebook page */
+  $handler->display->display_options['fields']['field_usa_link_facebook']['id'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['table'] = 'field_data_field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['field'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['click_sort_column'] = 'url';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

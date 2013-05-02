@@ -2,3 +2,6 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+.smaller-header h2 {
+  @extend %h3;
+}

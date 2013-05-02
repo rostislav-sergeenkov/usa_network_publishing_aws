@@ -53,6 +53,11 @@
 }
 .panel-twocol-nested-right-twocol .panel-two {
   margin-bottom: 30px;
+  .pane-node-title {
+    h1 {
+      font-size: 27px;
+    }
+  }
 }
 .panel-twocol-nested-right-twocol .panel-wrapper {
   @include breakpoint($bp-episode-side-menu) {
@@ -71,14 +76,12 @@
   .pane-2 {
     margin-bottom: 15px;
   }
-}
-.view-id-usa_gallery.view-display-id-panel_pane_2{
-  position: relative;
-  h2 {
-    @extend %meta;
-  }
-  .field-name-field-caption {
-    @extend %visuallyhidden;
+  @include breakpoint($bp-episode-ads-side-by-side) {
+    width: 630px;
+    .pane-2, .pane-usa-gallery-panel-pane-2 {
+      @include float(right);
+      margin-right: 15px;
+    }
   }
 }
 .panel-twocol-nested-right-twocol .panel-five {
@@ -89,4 +92,17 @@
   border-color: $gray-dark;
   border-style: solid;
   border-width: 1px 0 0;
+  margin-top: 30px;
+  @extend .clearfix;
+  .pane-1 {
+    @include float(left);
+    margin-left: -250px;
+    padding-left: 250px;
+    width: 100%;
+  }
+  .pane-usa-cast-panel-pane-1 {
+    @include float(right);
+    max-width: 221px;
+    margin-left: 1em;
+  }
 }

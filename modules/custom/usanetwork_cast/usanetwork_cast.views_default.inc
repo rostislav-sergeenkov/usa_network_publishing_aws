@@ -89,6 +89,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  /* Sort criterion: Draggableviews: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
   /* Contextual filter: Content: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
@@ -349,7 +354,6 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: show social: people list */
   $handler = $view->new_display('block', 'show social: people list', 'block_2');
@@ -536,7 +540,66 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: show cast button */
+  $handler = $view->new_display('panel_pane', 'show cast button', 'panel_pane_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Person Profile Thumbnail */
+  $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = '%1/cast';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['prefix'] = '<h2>Cast &amp; Crew</h2>';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_class'] = 'title-overlay';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['settings'] = array(
+    'file_view_mode' => 'cast_gallery',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Draggableviews: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_1';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['pane_title'] = 'Show Cast Button';
+  $handler->display->display_options['argument_input'] = array(
+    'field_show_target_id' => array(
+      'type' => 'context',
+      'context' => 'entity:node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Show (field_show)',
+    ),
+  );
   $export['usa_cast'] = $view;
 
   $view = new view();

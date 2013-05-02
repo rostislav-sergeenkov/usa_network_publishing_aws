@@ -140,7 +140,25 @@ function usanetwork_showpages_cast($node) {
   if (!isset($node->nid)) {
     return;
   }
-  drupal_goto('node/');
+  $show = $node->nid;
+
+  // grab the first element from the draggable view
+  $view = views_get_view('usa_cast');
+  $view->set_display('panel_pane_1');
+  $view->pre_execute();
+  $view->execute();
+  if (!empty($view->result)) {
+    $cast_nid = $view->result[0]->nid;
+  }
+  $view->destroy();
+
+  // then go to that page
+  if (isset($cast_nid)) {
+    drupal_goto('node/' . $cast_nid);
+  }
+  
+  // or go back to the show node
+  drupal_goto('node/' . $show);
 }
 
 /**

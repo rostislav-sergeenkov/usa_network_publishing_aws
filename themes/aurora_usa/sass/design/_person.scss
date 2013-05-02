@@ -1,14 +1,15 @@
 $bp_person-medium-width: 768px;
 $bp_person-gall_width: 704px;
+$bp_person-share_icon_width: 300px;
 
 
 
 .person-page  {
 	h1 {
 		text-transform:none;
-		font-size:24px;
-		padding-left:45px;
+		font-size:24px;		
 		@include breakpoint($bp_person-medium-width) { 
+			padding-left:45px;
 			font-size:26px;
 			
 		}
@@ -27,7 +28,7 @@ $bp_person-gall_width: 704px;
     display:inline-block;
     margin-left:5px;
     &:hover {
-    	background-color:#fff;
+      background-color:#fff;
     }
     &.usasocial-fb {
     	padding-left:8px;
@@ -43,12 +44,12 @@ $bp_person-gall_width: 704px;
 	@include breakpoint($bp_person-medium-width) { 
 	padding:0 45px; 
 	}	
-	h2 {
+	h4 {
 		text-transform: none;
 		font-size:14px;
-		margin:5px 30px 0 0;
+		margin:5px 30px 5px 0;
 		@include breakpoint($bp_person-medium-width) { 
-			font-size:16px;
+			font-size:18px;
 		}	
 	}
 	aside {
@@ -101,14 +102,8 @@ $bp_person-gall_width: 704px;
 			font-size:20px;
 		}
 		.field-name-title {
-			/*@extend %meta;*/
-			position:absolute;
-			left:0;
-			bottom:0;
-			padding:12px 15px 9px;
-			width:100%;
-			letter-spacing:0.05em;
-			background:$black-trans;
+			@extend .title-overlay;
+			
 		}
 	}
 }

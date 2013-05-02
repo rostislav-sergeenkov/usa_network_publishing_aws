@@ -1,0 +1,11 @@
+name = usanetwork_ads
+description = dart settings etc
+core = 7.x
+package = USA Network
+dependencies[] = ctools
+dependencies[] = dart
+features[ctools][] = dart:dart_tag_default:1
+features[dart_tags][] = ad300x250
+features[dart_tags][] = ad300x250_iframe
+features[dart_tags][] = usa_ad_728x90
+features[features_api][] = api:1

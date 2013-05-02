@@ -39,7 +39,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Person Profile Thumbnail */
+  /* Field: Content: Character Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -254,7 +254,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Person Profile Thumbnail */
+  /* Field: Content: Character Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -466,7 +466,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Person Profile Thumbnail */
+  /* Field: Content: Character Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -825,7 +825,9 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['label'] = '';
+  $handler->display->display_options['fields']['field_role']['element_type'] = 'h4';
   $handler->display->display_options['fields']['field_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_role']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_role']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Actor Full Name */
   $handler->display->display_options['fields']['field_usa_actor_name']['id'] = 'field_usa_actor_name';
@@ -834,7 +836,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_actor_name']['label'] = 'played by ';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_type'] = '0';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = 'h2';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = 'h4';
   $handler->display->display_options['fields']['field_usa_actor_name']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */

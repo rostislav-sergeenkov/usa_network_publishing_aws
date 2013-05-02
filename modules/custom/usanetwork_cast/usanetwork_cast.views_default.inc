@@ -562,9 +562,13 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
-  $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = 'Cast & Crew';
-  $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_type'] = 'div';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = '%1/cast';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['prefix'] = '<h2>Cast &amp; Crew</h2>';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_class'] = 'title-overlay';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_type'] = '0';
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_default_classes'] = FALSE;

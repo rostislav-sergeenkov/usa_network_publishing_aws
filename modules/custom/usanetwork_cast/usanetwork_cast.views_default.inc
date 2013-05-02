@@ -39,7 +39,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -119,6 +119,15 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show cast carousel */
   $handler = $view->new_display('block', 'show cast carousel', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -244,9 +253,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['label'] = '';
+  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -254,7 +265,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -357,6 +368,103 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show social: people list */
   $handler = $view->new_display('block', 'show social: people list', 'block_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Person Profile Thumbnail */
+  $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['settings'] = array(
+    'file_view_mode' => 'thumb_tiny',
+  );
+  $handler->display->display_options['fields']['field_usa_character_thumb']['field_api_classes'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Field: Role */
+  $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
+  $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
+  $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
+  $handler->display->display_options['fields']['field_role']['label'] = '';
+  $handler->display->display_options['fields']['field_role']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_role']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_role']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_role']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_role']['field_api_classes'] = TRUE;
+  /* Field: Content: Actor Full Name */
+  $handler->display->display_options['fields']['field_usa_actor_name']['id'] = 'field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['table'] = 'field_data_field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['field'] = 'field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_actor_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_usa_actor_name']['field_api_classes'] = TRUE;
+  /* Field: Content: Tumblr Page */
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['id'] = 'field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['table'] = 'field_data_field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['field'] = 'field_usa_link_tumblr';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_tumblr']['field_api_classes'] = TRUE;
+  /* Field: Content: Pinterest page */
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['id'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['table'] = 'field_data_field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['field'] = 'field_usa_link_pinterest';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_pinterest']['field_api_classes'] = TRUE;
+  /* Field: Content: Twitter page */
+  $handler->display->display_options['fields']['field_usa_link_twitter']['id'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['table'] = 'field_data_field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['field'] = 'field_usa_link_twitter';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_twitter']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_twitter']['field_api_classes'] = TRUE;
+  /* Field: Content: Facebook page */
+  $handler->display->display_options['fields']['field_usa_link_facebook']['id'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['table'] = 'field_data_field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['field'] = 'field_usa_link_facebook';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_link_facebook']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_usa_link_facebook']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -456,9 +564,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['label'] = '';
+  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -466,7 +576,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -527,7 +637,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_2';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
@@ -599,6 +709,72 @@ function usanetwork_cast_views_default_views() {
       'fixed' => '',
       'label' => 'Content: Show (field_show)',
     ),
+  );
+
+  /* Display: show social show attachment */
+  $handler = $view->new_display('attachment', 'show social show attachment', 'attachment_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Social Logo */
+  $handler->display->display_options['fields']['field_social_logo']['id'] = 'field_social_logo';
+  $handler->display->display_options['fields']['field_social_logo']['table'] = 'field_data_field_social_logo';
+  $handler->display->display_options['fields']['field_social_logo']['field'] = 'field_social_logo';
+  $handler->display->display_options['fields']['field_social_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_social_logo']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_social_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_social_logo']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_social_logo']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_social_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_social_logo']['settings'] = array(
+    'image_style' => 'thumb_tiny',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_social_logo']['field_api_classes'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tv_show' => 'tv_show',
+  );
+  $handler->display->display_options['displays'] = array(
+    'block_2' => 'block_2',
+    'default' => 0,
+    'block_1' => 0,
+    'page_1' => 0,
+    'page_2' => 0,
+    'panel_pane_1' => 0,
   );
   $export['usa_cast'] = $view;
 

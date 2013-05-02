@@ -9,4 +9,5 @@ features[ctools][] = ds:ds:1
 features[ds_view_modes][] = block_cover_title
 features[ds_view_modes][] = block_cover_title_lg
 features[ds_view_modes][] = person_cover_image
+features[ds_view_modes][] = thumb_tiny
 features[features_api][] = api:1

@@ -39,7 +39,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -119,6 +119,15 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show cast carousel */
   $handler = $view->new_display('block', 'show cast carousel', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -244,9 +253,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['label'] = '';
+  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -254,7 +265,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -456,9 +467,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['label'] = '';
+  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -466,7 +479,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Character Profile Thumbnail */
+  /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
@@ -527,7 +540,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_2';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';

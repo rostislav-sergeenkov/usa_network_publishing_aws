@@ -440,7 +440,7 @@ function usanetwork_panels_default_page_manager_handlers() {
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-        'file_view_mode' => 'default',
+        'file_view_mode' => 'person_cover_image',
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,

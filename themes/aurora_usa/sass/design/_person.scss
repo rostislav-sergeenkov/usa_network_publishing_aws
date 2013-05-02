@@ -15,12 +15,25 @@ $bp_person-gall_width: 704px;
 	}
 }
 
-/* ? */
-.usasocial-fb:before {
+.share-icons a {
+	color:#000;
+	background-color:#878785;
 	@extend %usanetwork-font;
-	content: "facebook";
+	font-size:1.5em;
+	@include border-radius(50%);
+    padding: 4px 3px 3px;
+    height: 32px;
+    width: 32px;
+    display:inline-block;
+    margin-left:5px;
+    &:hover {
+    	background-color:#fff;
+    }
+    &.usasocial-fb {
+    	padding-left:8px;
+    }
 }
- 
+
 
 
 #profile-content {
@@ -33,7 +46,7 @@ $bp_person-gall_width: 704px;
 	h2 {
 		text-transform: none;
 		font-size:14px;
-		margin:0 30px 0 0;
+		margin:5px 30px 0 0;
 		@include breakpoint($bp_person-medium-width) { 
 			font-size:16px;
 		}	

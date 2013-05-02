@@ -128,6 +128,58 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Person Profile Thumbnail */
+  $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_character_thumb']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['settings'] = array(
+    'file_view_mode' => 'block_cover_title',
+  );
+  $handler->display->display_options['fields']['field_usa_character_thumb']['field_api_classes'] = TRUE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Field: Role */
+  $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
+  $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
+  $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
+  $handler->display->display_options['fields']['field_role']['label'] = '';
+  $handler->display->display_options['fields']['field_role']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_role']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_role']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_role']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Actor Full Name */
+  $handler->display->display_options['fields']['field_usa_actor_name']['id'] = 'field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['table'] = 'field_data_field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['field'] = 'field_usa_actor_name';
+  $handler->display->display_options['fields']['field_usa_actor_name']['label'] = '';
+  $handler->display->display_options['fields']['field_usa_actor_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_usa_actor_name']['alter']['text'] = 'played by [field_usa_actor_name]';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_usa_actor_name']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_usa_actor_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_usa_actor_name']['field_api_classes'] = TRUE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -410,7 +462,6 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_role']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_role']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_role']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_role']['field_api_classes'] = TRUE;
   /* Field: Content: Actor Full Name */
   $handler->display->display_options['fields']['field_usa_actor_name']['id'] = 'field_usa_actor_name';
   $handler->display->display_options['fields']['field_usa_actor_name']['table'] = 'field_data_field_usa_actor_name';

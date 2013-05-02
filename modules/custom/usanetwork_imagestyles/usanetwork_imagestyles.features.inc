@@ -51,7 +51,7 @@ function usanetwork_imagestyles_image_default_styles() {
   $styles['gallery_block_cover'] = array(
     'name' => 'gallery_block_cover',
     'effects' => array(
-      1 => array(
+      6 => array(
         'label' => 'Focus Scale And Crop',
         'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
         'effect callback' => 'imagefield_focus_scale_and_crop_effect',
@@ -61,12 +61,12 @@ function usanetwork_imagestyles_image_default_styles() {
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
           'width' => '221',
-          'height' => '126',
+          'height' => '184',
           'strength' => 'high',
         ),
         'weight' => '1',
       ),
-      2 => array(
+      7 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -77,7 +77,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => '221',
-          'height' => '126',
+          'height' => '184',
         ),
         'weight' => '2',
       ),

@@ -209,6 +209,19 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
   }
   $view->result = $new_results;
 }
+
+function aurora_usa_preprocess_panels_pane(&$vars) {
+
+  if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
+    $vars['pane_prefix'] = '<div class="person-content-wrapper"><aside id="person-content" class="panel-pane">';
+  }
+
+  if($vars['pane']->panel == 'person_image') {
+    $vars['pane_prefix'] = '</aside><aside id="person-image" class="panel-pane">';
+    $vars['pane_suffix'] = '</aside></div>';
+  }  
+}
+
 function aurora_usa_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   if($view->name == 'usa_episodes') {

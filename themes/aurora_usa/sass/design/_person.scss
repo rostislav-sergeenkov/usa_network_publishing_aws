@@ -4,18 +4,6 @@ $bp_person-share_icon_width: 300px;
 
 
 
-.person-page  {
-	h1 {
-		text-transform:none;
-		font-size:24px;		
-		@include breakpoint($bp_person-medium-width) { 
-			padding-left:45px;
-			font-size:26px;
-			
-		}
-	}
-}
-
 .share-icons a {
 	color:#000;
 	background-color:$gray-light;
@@ -41,8 +29,12 @@ $bp_person-share_icon_width: 300px;
 	width:auto;
 	max-width: 1245px;
 	position:relative;
-	@include breakpoint($bp_person-medium-width) { 
-		padding:0 45px; 
+	h1 {
+		text-transform:none;
+		font-size:24px;    
+		@include breakpoint($bp_person-medium-width) { 
+			font-size:26px;    
+		}
 	}	
 	h4 {
 		text-transform: none;
@@ -51,6 +43,12 @@ $bp_person-share_icon_width: 300px;
 		@include breakpoint($bp_person-medium-width) { 
 			font-size:18px;
 		}	
+	}
+	.person-content-wrapper {
+	    position:relative;
+		@include breakpoint($bp_person-medium-width) { 
+			padding:0 45px; 
+		}  
 	}
 	aside {
 		position:relative;
@@ -67,7 +65,7 @@ $bp_person-share_icon_width: 300px;
 			}
 
 		}
-		&:last-child {
+		&#person-image {
 			display:none;
 			position: absolute;
 		    top: 0;
@@ -84,11 +82,9 @@ $bp_person-share_icon_width: 300px;
 			}
 		  
 		}
-		&:first-child {
-			> div:first-child {
-				float:left;
-			}
-			.share-icons {
+		&#person-content {
+		 	.pane-page-title + .pane-views-panes,
+		 	.pane-page-title + .pane-views-panes + .pane-views-panes {
 				float:left;
 			}
 			@include breakpoint($bp_person-medium-width) {

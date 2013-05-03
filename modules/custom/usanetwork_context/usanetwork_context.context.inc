@@ -63,8 +63,8 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_blocks-usa_on_now_block' => array(
-          'module' => 'usanetwork_blocks',
+        'usanetwork_tv_schedule-usa_on_now_block' => array(
+          'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_block',
           'region' => 'main_prefix',
           'weight' => '-10',

@@ -10,7 +10,7 @@
           animation: "slide",
           useCSS: true,
           touch: true,
-          smoothHeight: true
+          smoothHeight: false
         });
     },
   };

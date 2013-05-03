@@ -98,7 +98,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
-  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
@@ -119,8 +119,9 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show cast carousel */
   $handler = $view->new_display('block', 'show cast carousel', 'block_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -223,6 +224,7 @@ function usanetwork_cast_views_default_views() {
   $handler = $view->new_display('page', 'admin cast carousel sorting page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'USA Shows: cast carousel sorting';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -420,6 +422,15 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show social: people list */
   $handler = $view->new_display('block', 'show social: people list', 'block_2');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -522,17 +533,36 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_2';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_arguments'] = 'none';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Show (field_show) */
+  $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_show_target_id']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_show_target_id']['title'] = 'Follow %1';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_show_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_show_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
+    'tv_show' => 'tv_show',
+  );
 
   /* Display: admin show social: people list sorting page */
   $handler = $view->new_display('page', 'admin show social: people list sorting page', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'USA Shows: show social page people sorting';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -704,6 +734,7 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show cast button */
   $handler = $view->new_display('panel_pane', 'show cast button', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -764,9 +795,18 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show social show attachment */
   $handler = $view->new_display('attachment', 'show social show attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -957,7 +997,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Person (field_person) */
+  /* Contextual filter: Field: Related Person (field_person) */
   $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';
@@ -1086,6 +1126,7 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: role or actor */
   $handler = $view->new_display('panel_pane', 'role or actor', 'panel_pane_3');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;

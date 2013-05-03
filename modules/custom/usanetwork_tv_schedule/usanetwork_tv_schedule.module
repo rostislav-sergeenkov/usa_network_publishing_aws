@@ -61,6 +61,11 @@ function usanetwork_tv_schedule_on_now_block() {
   // JS to determine the current timezone from the user browser
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
 
+  // switch to ET timezone to perform calculations and then switch back to original timezone
+  $orginal_tz = date_default_timezone_get();
+  date_default_timezone_set('America/New_York');
+  $et_time = floatval(date('U'));
+
   $today = date('Y-m-d');
 
   // fetch today's schedule
@@ -71,13 +76,10 @@ function usanetwork_tv_schedule_on_now_block() {
 
   // return empty block if the tv schedule is empty
   if (empty($tv_schedule) || empty($tv_schedule_prev_day)) {
+    // switch back to original server time zone
+    date_default_timezone_set($orginal_tz);
     return ''; 
   }
-
-  // switch to ET timezone to perform calculations and then switch back to original timezone
-  $orginal_tz = date_default_timezone_get();
-  date_default_timezone_set('America/New_York');
-  $et_time = floatval(date('U'));
 
   $full_tv_schedule = array();
   // get the tv schedule from 00:00 AM till 5:59 AM

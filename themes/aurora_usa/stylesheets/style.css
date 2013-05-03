@@ -1600,17 +1600,6 @@ html[xmlns] .slides {
     right: 0;
   }
 }
-.person-page h1 {
-  text-transform: none;
-  font-size: 24px;
-}
-@media (min-width: 768px) {
-  .person-page h1 {
-    padding-left: 45px;
-    font-size: 26px;
-  }
-}
-
 .share-icons a {
   color: #000;
   background-color: #878785;
@@ -1635,12 +1624,16 @@ html[xmlns] .slides {
 
 #profile-content {
   width: auto;
+  max-width: 1245px;
   position: relative;
-  overflow: hidden;
+}
+#profile-content h1 {
+  text-transform: none;
+  font-size: 24px;
 }
 @media (min-width: 768px) {
-  #profile-content {
-    padding: 0 45px;
+  #profile-content h1 {
+    font-size: 26px;
   }
 }
 #profile-content h4 {
@@ -1653,6 +1646,14 @@ html[xmlns] .slides {
     font-size: 18px;
   }
 }
+#profile-content .person-content-wrapper {
+  position: relative;
+}
+@media (min-width: 768px) {
+  #profile-content .person-content-wrapper {
+    padding: 0 45px;
+  }
+}
 #profile-content aside {
   position: relative;
   z-index: 2;
@@ -1660,7 +1661,15 @@ html[xmlns] .slides {
 #profile-content aside .field-name-body {
   clear: both;
 }
-#profile-content aside:last-child {
+#profile-content aside .field-name-body:before {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+#profile-content aside#person-image {
   display: none;
   position: absolute;
   top: 0;
@@ -1668,24 +1677,21 @@ html[xmlns] .slides {
   z-index: 1;
 }
 @media (min-width: 768px) {
-  #profile-content aside:last-child {
+  #profile-content aside#person-image {
     display: block;
   }
 }
-#profile-content aside:last-child img {
+#profile-content aside#person-image img {
   max-width: 55%;
   position: absolute;
   right: -50px;
 }
-#profile-content aside:first-child > div:first-child {
+#profile-content aside#person-content .pane-page-title + .pane-views-panes,
+#profile-content aside#person-content .pane-page-title + .pane-views-panes + .pane-views-panes {
   float: left;
-}
-#profile-content aside:first-child .share-icons {
-  float: left;
-  padding-bottom: 15px;
 }
 @media (min-width: 768px) {
-  #profile-content aside:first-child {
+  #profile-content aside#person-content {
     width: 52%;
   }
 }
@@ -1703,4 +1709,7 @@ html[xmlns] .slides {
 }
 #profile-content .node-media-gallery h2 {
   font-size: 20px;
+}
+#profile-content .node-media-gallery .field-name-title h2 {
+  margin-bottom: 2px;
 }

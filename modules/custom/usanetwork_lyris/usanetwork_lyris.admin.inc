@@ -13,28 +13,26 @@ function usanetwork_lyris_settings_form() {
   );
   $form['lyris']['usanetwork_lyris_username'] = array(
     '#type' => 'textfield',
-    '#title' => t('lyris admin username'),
+    '#title' => t('Lyris Username'),
     '#default_value' => variable_get('usanetwork_lyris_username', ''),
   );
   $form['lyris']['usanetwork_lyris_password'] = array(
-    '#type' => 'textfield',
-    '#title' => t('lyris admin password'),
-    '#default_value' => variable_get('usanetwork_lyris_password', ''),
+    '#type' => 'password',
+    '#title' => t('Lyris Password'),
   );
   $form['lyris']['usanetwork_lyris_endpoint'] = array(
     '#type' => 'textfield',
-    '#title' => t('WSDL'),
+    '#title' => t('Lyris WSDL End Point'),
     '#default_value' => variable_get('usanetwork_lyris_endpoint', ''),
-    '#description' => t('End point WSDL'),
   );
   $form['lyris']['usanetwork_lyris_proxyhost'] = array(
     '#type' => 'textfield',
-    '#title' => t('Proxy Host'),
+    '#title' => t('Lyris Proxy Host'),
     '#default_value' => variable_get('usanetwork_lyris_proxyhost', ''),
   );
   $form['lyris']['usanetwork_lyris_proxyport'] = array(
     '#type' => 'textfield',
-    '#title' => t('Proxy port'),
+    '#title' => t('Lyris Proxy Port'),
     '#default_value' => variable_get('usanetwork_lyris_proxyport', ''),
   );
   

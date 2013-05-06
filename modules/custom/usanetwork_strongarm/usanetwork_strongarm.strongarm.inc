@@ -48,6 +48,41 @@ function usanetwork_strongarm_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_endpoint';
+  $strongarm->value = 'http://usa.sparklist.com:82/?wsdl';
+  $export['usanetwork_lyris_endpoint'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_password';
+  $strongarm->value = 'trix4kids';
+  $export['usanetwork_lyris_password'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_proxyhost';
+  $strongarm->value = 'usushproxy01.udh.unistudios.com';
+  $export['usanetwork_lyris_proxyhost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_proxyport';
+  $strongarm->value = '';
+  $export['usanetwork_lyris_proxyport'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_username';
+  $strongarm->value = 'websupport@nbcuni.com';
+  $export['usanetwork_lyris_username'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_tv_schedule_xml_feed';
   $strongarm->value = 'http://www.usanetwork.com/compassfeeds/USA_Network_YYYY_MM_DD.xml';
   $export['usanetwork_tv_schedule_xml_feed'] = $strongarm;

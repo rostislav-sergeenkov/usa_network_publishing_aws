@@ -24,10 +24,12 @@ $bp_person-share_icon_width: 300px;
 }
 
 
+body.person-page {
+	overflow-x:hidden;
+}
 
 #profile-content {
 	width:auto;
-	max-width: 1245px;
 	position:relative;
 	h1 {
 		text-transform:none;
@@ -45,9 +47,11 @@ $bp_person-share_icon_width: 300px;
 		}	
 	}
 	.person-content-wrapper {
+		max-width: 1245px;
 	    position:relative;
+	    margin:0 auto;
 		@include breakpoint($bp_person-medium-width) { 
-			padding:0 45px; 
+			padding:0 30px; 
 		}  
 	}
 	aside {
@@ -71,14 +75,24 @@ $bp_person-share_icon_width: 300px;
 		    top: 0;
 		    width: 100%;
 		    z-index: 1;	
+
 			@include breakpoint($bp_person-medium-width) { 
 				display:block;
 				
 			}
 			img {
+
 				max-width:55%;
 				position:absolute;
 				right:-50px;
+				&:after {
+					content: "\0020";
+					display: block;
+					height: 0;
+					clear: both;
+					overflow: hidden;
+					visibility: hidden;
+				}
 			}
 		  
 		}
@@ -88,7 +102,7 @@ $bp_person-share_icon_width: 300px;
 				float:left;
 			}
 			@include breakpoint($bp_person-medium-width) {
-				width:52%;
+				width:51%;
 			}
 		  
 		}
@@ -114,4 +128,78 @@ $bp_person-share_icon_width: 300px;
 			
 		}
 	}
+
+	.pane-usa-cast {
+		background-color:$black;
+
+		.view-usa-cast {
+			.flex-viewport {
+				margin-left: -2px;
+				margin-right: -2px;
+				overflow: visible !important;
+				padding: 2px;
+				max-height:2000px;
+			}
+			background: none repeat scroll 0 0 transparent;
+		    border: medium none;
+		    box-shadow: none;
+		    margin: 0 auto;
+		    max-width: 1245px;
+		    overflow: hidden;
+		    position: relative;
+			  @include breakpoint($bp_person-medium-width) { 
+				 padding-left:22px;
+			 	 padding-right:22px;
+			}
+			ul, li {
+				margin:0;
+				padding:0;
+			}
+			li.carousel-item {
+				text-align:center;
+				&.active img {
+					border-color:#fff;
+				}
+				.field-name-field-usa-character-thumb {
+					display:inline-block;
+				}
+			}
+
+			&:after, &:before {
+				content: "";
+				display: block;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				width: 40px;
+			}
+			&:before {
+				@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));		
+				left: -20px;
+				z-index: 3;
+			}
+			&:after {
+				@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));
+				right: 0;
+				z-index: 2;
+			}
+			img {
+				max-width:none;
+				border: 2px solid $gray-dark;
+				display: block;
+				margin: -2px;
+			}
+			.flex-direction-nav a {
+				height: 57px;
+				opacity: 1.0;
+				width: 30px;
+				right:0;
+				@extend %usanetwork-font;
+				&.flex-prev {
+					left:0;
+				}
+			}
+
+		}
+	}	
 }

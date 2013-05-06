@@ -310,7 +310,7 @@ function usanetwork_social_global_trending() {
 function usanetwork_social_global_chat_with_fans() {
 	$showInfo = array();
 	$shows = _usanetwork_social_show_nids();
-	if (is_array($shows)) {
+	if (is_array($shows) && !empty($shows)) {
 		$nodes = node_load_multiple($shows);
 		foreach ($nodes as $node) {
 			$showChatPage = isset($node->field_show_chat_page['und'][0]['value']) ? $node->field_show_chat_page['und'][0]['value'] : 0;
@@ -341,7 +341,10 @@ function usanetwork_social_global_chat_with_fans() {
 		$queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
 		$queryStr = $query.'?'.$queryParams;
 
-		drupal_add_js('var echoQuery="'.$query.'"; var echoQueryParams = "'.$queryParams.'"; var showArray = {'.$showArrayVar.'};', array('type' => 'inline'));
+		$vars = 'var echoQuery="'.$query.'"; ';
+		$vars .= 'var echoQueryParams = "'.$queryParams.'"; ';
+		$vars .= 'var showArray = {'.$showArrayVar.'}; ';
+		drupal_add_js($vars, array('type' => 'inline'));
 		drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/global-chat-with-fans.js');
 	}
 	else

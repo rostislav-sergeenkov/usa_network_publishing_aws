@@ -192,8 +192,9 @@ function aurora_usa_preprocess_views_view(&$vars) {
 
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
 
-      // dpm(drupal_get_path('theme', 'aurora_usa'));
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/flexslider-carousel.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
+      
     }
   }
 

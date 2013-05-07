@@ -28,6 +28,7 @@ body.person-page {
 	overflow-x:hidden;
 }
 
+
 #profile-content {
 	width:auto;
 	position:relative;
@@ -129,9 +130,11 @@ body.person-page {
 		}
 	}
 
+	/* have to clean up */
 	.pane-usa-cast {
 		background-color:$black;
 
+		
 		.view-usa-cast {
 			.flex-viewport {
 				margin-left: -2px;
@@ -140,8 +143,8 @@ body.person-page {
 				padding: 2px;
 				max-height:2000px;
 			}
-			background: none repeat scroll 0 0 transparent;
-		    border: medium none;
+			background: none;
+		    border: none;
 		    box-shadow: none;
 		    margin: 0 auto;
 		    max-width: 1245px;
@@ -154,11 +157,17 @@ body.person-page {
 			ul, li {
 				margin:0;
 				padding:0;
+				
+			}
+			li {
+				float:left;
+				width:236px;
+				height:250px;
 			}
 			li.carousel-item {
 				text-align:center;
 				&.active img {
-					border-color:#fff;
+					border-color:#ff0000;
 				}
 				.field-name-field-usa-character-thumb {
 					display:inline-block;
@@ -174,9 +183,11 @@ body.person-page {
 				width: 40px;
 			}
 			&:before {
-				@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));		
-				left: -20px;
-				z-index: 3;
+				 @include breakpoint($bp_person-medium-width) { 
+					@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));		
+					left: -20px;
+					z-index: 3;
+				}
 			}
 			&:after {
 				@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));
@@ -189,17 +200,16 @@ body.person-page {
 				display: block;
 				margin: -2px;
 			}
-			.flex-direction-nav a {
-				height: 57px;
-				opacity: 1.0;
-				width: 30px;
-				right:0;
-				@extend %usanetwork-font;
-				&.flex-prev {
-					left:0;
-				}
+			.btns {
+				cursor:pointer;
 			}
 
 		}
 	}	
+}
+
+/* find where to move this to */
+.view-mode-block_cover_title_lg,
+.view-mode-block_cover_title {
+	overflow:hidden;
 }

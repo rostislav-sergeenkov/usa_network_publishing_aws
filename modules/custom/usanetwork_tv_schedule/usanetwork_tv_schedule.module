@@ -94,7 +94,11 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
       if (empty($nid)) {
-        $tv_show = $tv_show .': '. $episode[0];
+        if (strtoupper($tv_show) == 'USA MOVIE') {
+          $tv_show = l($tv_show .': '. $episode[0], 'movies');
+        } else {
+          $tv_show = $tv_show .': '. $episode[0];
+        }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
         $tv_show = l($tv_show .': '. $episode[0], $path);
@@ -122,7 +126,11 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
       if (empty($nid)) {
-        $tv_show = $tv_show .': '. $episode[0];
+        if (strtoupper($tv_show) == 'USA MOVIE') {
+          $tv_show = l($tv_show .': '. $episode[0], 'movies');
+        } else {
+          $tv_show = $tv_show .': '. $episode[0];
+        }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
         $tv_show = l($tv_show .': '. $episode[0], $path);
@@ -227,7 +235,11 @@ function usanetwork_tv_schedule_schedule_page() {
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
     if (empty($nid)) {
-      $show = $program[0];
+      if (strtoupper($show) == 'USA MOVIE') {
+        $show = l($program[0], 'movies');
+      } else {
+        $show = $program[0];
+      }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
       $show = l($program[0], $path);

@@ -4,7 +4,6 @@
  * @file
  * Display Suite 1 column template.
  */
- dpm($node_url);
 ?>
 <div class="ds-1col <?php print $classes;?> clearfix <?php print $ds_content_classes;?>">
 

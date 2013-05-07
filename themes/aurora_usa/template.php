@@ -207,12 +207,9 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if (function_exists($views_preprocess_function)) {
      $views_preprocess_function($vars);
     }
-
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
-
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
-      
     }
   }
 
@@ -291,30 +288,25 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
       }
     }
   }
-}
-
-function aurora_usa_preprocess_views_view_list(&$vars) {
-  $view = $vars['view'];
-
   switch($view->name) {
-    case 'usa_cast' : 
-  
-      if($vars['view']->current_display == 'block_1') {
-        //get node id for page
-        $nid = arg(1);
+      case 'usa_cast' :
 
-        //loop thru carousel results 
-        foreach($view->result as $delta => $item) {
-          //if carousel node id == node id for page add class
+        if($vars['view']->current_display == 'block_1') {
+          //get node id for page
+          $nid = arg(1);
 
-          if($item->nid == $nid) {
-            $vars['classes_array'][$delta] .= ' active';
+          //loop thru carousel results
+          foreach($view->result as $delta => $item) {
+            //if carousel node id == node id for page add class
+
+            if($item->nid == $nid) {
+              $vars['classes_array'][$delta] .= ' active';
+            }
           }
         }
-      }    
-      break;
+        break;
     }
-}  
+}
 
 /**
  * Override or insert css on the site.

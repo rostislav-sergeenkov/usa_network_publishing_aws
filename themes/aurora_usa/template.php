@@ -273,40 +273,28 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
       }
     }
   }
-
-   switch($view->name) {
-      case 'usa_cast' : 
-     
-      $nid = arg(1);
-      if($vars['row']->nid == $nid) {
-           
-           //$vars['test'] = 'test';
-          
-      }  
-      break;
-    }  
 }
 
 function aurora_usa_preprocess_views_view_list(&$vars) {
-
   $view = $vars['view'];
 
-   switch($view->name) {
-      case 'usa_cast' : 
+  switch($view->name) {
+    case 'usa_cast' : 
   
-        if($vars['view']->current_display == 'block_1') {
-          //get node id for page
-          $nid = arg(1);
+      if($vars['view']->current_display == 'block_1') {
+        //get node id for page
+        $nid = arg(1);
 
-          //loop thru carousel results 
-          foreach($view->result as $delta => $item) {
-            //if carousel node id == node id for page add class
-            if($item->nid == $nid) {
-                $vars['classes_array'][$delta] .= ' active';
-            }
+        //loop thru carousel results 
+        foreach($view->result as $delta => $item) {
+          //if carousel node id == node id for page add class
+
+          if($item->nid == $nid) {
+            $vars['classes_array'][$delta] .= ' active';
           }
-        }    
-        break;
+        }
+      }    
+      break;
     }
 }  
 

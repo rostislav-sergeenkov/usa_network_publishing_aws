@@ -99,8 +99,8 @@ function outputGlobalChatWithFans(showData)
 	var html = "";
 	for (var show in showData) {
 		var showName = showArray[show][0];
-		var showNodeId = showArray[show][1];
-		html += "<a href=\"/"+showNodeId+"/social/chat-with-fans\">"+
+		var showUrlPath = showArray[show][1];
+		html += "<a href=\"/"+showUrlPath+"/social/chat-with-fans\">"+
 			"<h1>"+showName+"</h1>"+
 			"<div>"+
 				"<img src=\""+showData[show]["avatar"]+"\">"+

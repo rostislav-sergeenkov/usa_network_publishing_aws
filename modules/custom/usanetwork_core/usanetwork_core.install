@@ -32,6 +32,9 @@ function usanetwork_core_install() {
   menu_rebuild();
   usanetwork_core_create_menu_items();
 
+  // Set the homepage
+  variable_set('site_frontpage', 'home');
+
 }
 
 /**

@@ -5,3 +5,64 @@
  */
 
 include_once 'usanetwork_home.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_home_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_landing',
+    'access arguments' => array('access content'),
+    //'menu_name' => 'sprout-subhead',
+    //'weight' => 0,
+  );
+
+  return $items;
+}
+
+function usanetwork_home_landing($day = '') {
+  $render = array();
+  if (empty($day)) {
+    $day = strtolower(date('l'));
+  }
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as teasers
+  // @todo - load fields or make a view mode for this
+  if (!empty($homepage['node'])) {
+
+    $render['#attached'] = array(
+      'library' => array(
+        array('system', 'drupal.ajax'),
+      ),
+    );
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content available.');
+  }
+  return $render;
+}
+
+/**
+ * To fetch homepage node by title
+ */
+function usanetwork_home_get_homepage($types, $title) {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', $types);
+  $query->propertyCondition('status', 1);
+  $query->propertyCondition('title', $title, '=');
+
+  // execute the query
+  $homepage = $query->execute();
+  return $homepage;
+}

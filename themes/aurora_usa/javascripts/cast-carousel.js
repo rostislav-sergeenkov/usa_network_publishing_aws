@@ -15,7 +15,8 @@
 
         $(".view-usa-cast ul").addClass('slides').carouFredSel({
           auto: false,
-          //circular: false,
+          circular: false,
+          infinite: false,
           items       : {
             visible: 5,
             start       : parseInt(moveTo),

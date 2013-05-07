@@ -44,24 +44,24 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '9',
   );
   $overrides["field.node-tv_episode-field_episode_number.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|module"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_advanced"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_buttons"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_container_id"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_desc"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_image_behavior"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_image_url"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_layout"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_link_back"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_override_default"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_short_url"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_showcounts"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|settings|gigya_sharebar_title"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|default|type"] = 'hidden';
   $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|full"] = array(
     'label' => 'hidden',
-    'module' => 'gigya',
-    'settings' => array(
-      'gigya_sharebar_advanced' => array(),
-      'gigya_sharebar_buttons' => 'twitter-tweet, facebook-like',
-      'gigya_sharebar_container_id' => 'gigya-share',
-      'gigya_sharebar_desc' => '[node:summary]',
-      'gigya_sharebar_image_behavior' => 'first',
-      'gigya_sharebar_image_url' => '',
-      'gigya_sharebar_layout' => 'horizontal',
-      'gigya_sharebar_link_back' => '[node:url:absolute]',
-      'gigya_sharebar_override_default' => FALSE,
-      'gigya_sharebar_short_url' => 0,
-      'gigya_sharebar_showcounts' => 'right',
-      'gigya_sharebar_title' => '[node:title]',
-    ),
-    'type' => 'gigya_sharebar_formatter_default',
+    'settings' => array(),
+    'type' => 'hidden',
     'weight' => '2',
   );
   $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|settings|exclude_cv"] = FALSE;
@@ -85,6 +85,9 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -114,6 +117,12 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
 
   // Exported overrides for: variable
+  $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title_lg"] = array(
+    'custom_settings' => FALSE,
+  );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;
 
  return $overrides;

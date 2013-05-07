@@ -2,11 +2,13 @@
   position: relative;
   h2 {
     @extend %h2;
+    font-size: 20px;
+  }
+  .meta, h2 {
     background: $black-trans;
     bottom: 0;
     color: $white;
     display: block;
-    font-size: 20px;
     left: 0;
     position: absolute;
     width: 100%;

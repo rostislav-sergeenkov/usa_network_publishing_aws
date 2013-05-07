@@ -162,10 +162,10 @@ body.person-page {
 			li {
 				float:left;
 				width:236px;
-				height:300px;
+				height:250px;
 			}
 			li.carousel-item {
-//				text-align:center;
+				text-align:center;
 				&.active img {
 					border-color:#ff0000;
 				}
@@ -200,19 +200,8 @@ body.person-page {
 				display: block;
 				margin: -2px;
 			}
-			.jcarousel-next, 
-			.jcarousel-prev {
+			.btns {
 				cursor:pointer;
-			}
-			.flex-direction-nav a {
-				height: 57px;
-				opacity: 1.0;
-				width: 30px;
-				right:0;
-				@extend %usanetwork-font;
-				&.flex-prev {
-					left:0;
-				}
 			}
 
 		}

@@ -268,13 +268,17 @@ function usanetwork_blocks_tv_show_menu() {
   foreach ($items as $item) {
     $mlinks = array();
     $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
-    foreach ($link_fields as $link) {
-      $mlinks['data'] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+    if (!empty($link_fields)) {
+      foreach ($link_fields as $link) {
+        $mlinks['data'] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+      }
     }
 
     $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
-    foreach ($link_fields as $link) {
-      $mlinks['children'][] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+    if (!empty($link_fields)) {
+      foreach ($link_fields as $link) {
+        $mlinks['children'][] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+      }
     }
     $links[] = $mlinks;
   }

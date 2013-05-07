@@ -99,8 +99,8 @@ function outputGlobalChatWithFans(showData)
 	var html = "";
 	for (var show in showData) {
 		var showName = showArray[show][0];
-		var showNodeId = showArray[show][1];
-		html += "<a href=\"/node/"+showNodeId+"/social/chat-with-fans\">"+
+		var showUrlPath = showArray[show][1];
+		html += "<a href=\"/"+showUrlPath+"/social/chat-with-fans\">"+
 			"<h1>"+showName+"</h1>"+
 			"<div>"+
 				"<img src=\""+showData[show]["avatar"]+"\">"+
@@ -110,10 +110,11 @@ function outputGlobalChatWithFans(showData)
 			"</div>"+
 		"</a>\n";
     }
-    jQuery("#showList").html(html);
+    showListElem.innerHTML = html;
 }
 
 var showData = {};
+var showListElem = document.getElementById('showList');
 /**
  * getGlobalChatWithFansData -- uses ajax
  * to get the results of the Echo mux query.
@@ -131,7 +132,7 @@ function getGlobalChatWithFansData()
 			 if (Object.keys(showData).length > 0) {
 				 outputGlobalChatWithFans(showData);
 			} else {
-				jQuery("#showList").html("No shows found. Please come back again soon.");
+				showListElem.innerHTML = "No shows found. Please come back again soon.";
 			}
 		}
 	});

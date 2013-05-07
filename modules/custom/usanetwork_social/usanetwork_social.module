@@ -314,8 +314,15 @@ function usanetwork_social_global_chat_with_fans() {
 		$nodes = node_load_multiple($shows);
 		foreach ($nodes as $node) {
 			$showChatPage = isset($node->field_show_chat_page['und'][0]['value']) ? $node->field_show_chat_page['und'][0]['value'] : 0;
-			if ($showChatPage) {
-				$showInfo[] = array('title' => $node->title, 'showTokenName' => $node->field_chat_show['und'][0]['value'], 'showNodeId' => $node->nid);
+			$showTokenName = isset($node->field_chat_show['und'][0]['value']) ? $node->field_chat_show['und'][0]['value'] : 0;
+			$showAlias = drupal_get_path_alias('node/'.$node->nid);
+			$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+			if ($showChatPage && $showTokenName) {
+				$showInfo[] = array(
+					'title' => $node->title,
+					'showTokenName' => $showTokenName,
+					'showUrl' => $showUrl
+				);
 			}
 		}
 	}
@@ -333,7 +340,7 @@ function usanetwork_social_global_chat_with_fans() {
 		$queryParams = '';
 		foreach ($showInfo as $array)
 		{
-			$showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showNodeId'].'"], ';
+			$showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showUrl'].'"], ';
 			$queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
 		}
 		$showArrayVar = substr($showArrayVar, 0, -1);

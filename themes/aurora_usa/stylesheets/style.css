@@ -1389,7 +1389,7 @@ mark {
 
 .carousel-item {
   width: 221px;
-  heigth: 184px;
+  height: 184px;
 }
 
 /*
@@ -1622,10 +1622,14 @@ html[xmlns] .slides {
   padding-left: 8px;
 }
 
+body.person-page {
+  overflow-x: hidden;
+}
+
 #profile-content {
   width: auto;
-  max-width: 1245px;
   position: relative;
+  /* have to clean up */
 }
 #profile-content h1 {
   text-transform: none;
@@ -1647,11 +1651,13 @@ html[xmlns] .slides {
   }
 }
 #profile-content .person-content-wrapper {
+  max-width: 1245px;
   position: relative;
+  margin: 0 auto;
 }
 @media (min-width: 768px) {
   #profile-content .person-content-wrapper {
-    padding: 0 45px;
+    padding: 0 30px;
   }
 }
 #profile-content aside {
@@ -1686,13 +1692,21 @@ html[xmlns] .slides {
   position: absolute;
   right: -50px;
 }
+#profile-content aside#person-image img:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
 #profile-content aside#person-content .pane-page-title + .pane-views-panes,
 #profile-content aside#person-content .pane-page-title + .pane-views-panes + .pane-views-panes {
   float: left;
 }
 @media (min-width: 768px) {
   #profile-content aside#person-content {
-    width: 52%;
+    width: 51%;
   }
 }
 #profile-content .node-media-gallery {
@@ -1712,4 +1726,90 @@ html[xmlns] .slides {
 }
 #profile-content .node-media-gallery .field-name-title h2 {
   margin-bottom: 2px;
+}
+#profile-content .pane-usa-cast {
+  background-color: #1f1f1f;
+}
+#profile-content .pane-usa-cast .view-usa-cast {
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+  max-width: 1245px;
+  overflow: hidden;
+  position: relative;
+}
+#profile-content .pane-usa-cast .view-usa-cast .flex-viewport {
+  margin-left: -2px;
+  margin-right: -2px;
+  overflow: visible !important;
+  padding: 2px;
+  max-height: 2000px;
+}
+@media (min-width: 768px) {
+  #profile-content .pane-usa-cast .view-usa-cast {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+#profile-content .pane-usa-cast .view-usa-cast ul, #profile-content .pane-usa-cast .view-usa-cast li {
+  margin: 0;
+  padding: 0;
+}
+#profile-content .pane-usa-cast .view-usa-cast li {
+  float: left;
+  width: 236px;
+  height: 250px;
+}
+#profile-content .pane-usa-cast .view-usa-cast li.carousel-item {
+  text-align: center;
+}
+#profile-content .pane-usa-cast .view-usa-cast li.carousel-item.active img {
+  border-color: #ff0000;
+}
+#profile-content .pane-usa-cast .view-usa-cast li.carousel-item .field-name-field-usa-character-thumb {
+  display: inline-block;
+}
+#profile-content .pane-usa-cast .view-usa-cast:after, #profile-content .pane-usa-cast .view-usa-cast:before {
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 40px;
+}
+@media (min-width: 768px) {
+  #profile-content .pane-usa-cast .view-usa-cast:before {
+    background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+    background: -webkit-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    left: -20px;
+    z-index: 3;
+  }
+}
+#profile-content .pane-usa-cast .view-usa-cast:after {
+  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  right: 0;
+  z-index: 2;
+}
+#profile-content .pane-usa-cast .view-usa-cast img {
+  max-width: none;
+  border: 2px solid #2d2d2d;
+  display: block;
+  margin: -2px;
+}
+#profile-content .pane-usa-cast .view-usa-cast .btns {
+  cursor: pointer;
+}
+
+/* find where to move this to */
+.view-mode-block_cover_title_lg,
+.view-mode-block_cover_title {
+  overflow: hidden;
 }

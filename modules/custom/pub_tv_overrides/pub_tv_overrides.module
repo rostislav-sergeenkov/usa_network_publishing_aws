@@ -16,3 +16,15 @@ function pub_tv_overrides_form_tv_episode_node_form_alter(&$form, &$form_state) 
     $form['field_episode_credit']['#access'] = FALSE;
   }
 }
+
+/**
+  * Implements hook_form_FORM_ID_alter
+  */
+function pub_tv_overrides_form_tv_show_node_form_alter(&$form, &$form_state) {
+  // we want to hide the cast and crew field collection
+  // because usa does not use character nodes
+  if (isset($form['field_tv_external_links'])) {
+    $form['field_tv_external_links']['#access'] = FALSE;
+  }
+}
+

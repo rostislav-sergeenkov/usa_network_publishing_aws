@@ -99,7 +99,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => '',
+        'class' => 'gallery-grids',
       ),
       2 => array(
         'type' => 'row',
@@ -156,7 +156,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -181,7 +181,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 1;
@@ -206,7 +206,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 2;

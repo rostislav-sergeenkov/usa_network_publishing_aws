@@ -102,16 +102,17 @@ $font-cap: $font-sans;
 // uncomment and customize with your own fonts
 // place fonts in your fonts directory
 ////////////////////////////
-@include font-face(
-  usanetwork,
-  font-files(
-    'usanetwork.woff',
-    'usanetwork.ttf',
-    'usanetwork.svg'),
-  'usanetwork.eot',
-  'normal',
-  'normal');
+// @include font-face(
+//   usanetwork,
+//   font-files(
+//     'usanetwork.woff',
+//     'usanetwork.ttf',
+//     'usanetwork.svg'),
+//   'usanetwork.eot',
+//   'normal',
+//   'normal');
 
+@import "usanetwork-font";
 
 %usanetwork-font {
   font-family: 'usanetwork';

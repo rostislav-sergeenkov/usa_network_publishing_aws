@@ -14,6 +14,11 @@ $bp-image-size-matrix-12: (min-width 1275px) (min-height 1000px);
 $bp-nav-nudge-1: 487px;
 $bp-nav-nudge-2: 723px;
 $bp-nav-nudge-3: 959px;
+// small grid breakpoints
+$bp-grid-small-2-squish: max-width 524px;
+$bp-grid-small-2: 525px;
+$bp-grid-small-3: 772px;
+$bp-grid-small-4: 1020px;
 
 .image-style-gallery_full_photo {
   max-width: 1024px;
@@ -128,6 +133,9 @@ $bp-nav-nudge-3: 959px;
       @include float-right;
     }
   }
+  .panels-section-row:nth-of-type(1) {
+    padding-bottom: 30px;
+  }
   .panels-section-row:nth-of-type(2) {
     @extend %un-margin;
     @extend %mid-gray-top-border;
@@ -157,9 +165,14 @@ $bp-nav-nudge-3: 959px;
     margin-top: 0;
   }
   .gallery-tabs {
-    @include breakpoint(722px) {
+    background-color: $gray-med;
+    @include breakpoint($bp-grid-small-3) {
       background-color: transparent;
       margin-bottom: 30px;
+      padding: 0 7px;
+      &:before {
+        display: none;
+      }
       .menu-label {
         display: none;
       }
@@ -185,8 +198,77 @@ $bp-nav-nudge-3: 959px;
   }
 }
 
-.media-gallery {
-  .gallery-link {
-    @extend .title-overlay;
+
+
+
+
+.grid-container-small {
+  @include breakpoint($bp-grid-small-2) {
+    width: 477px;
+    margin: 0 auto 30px;
+  }
+  @include breakpoint($bp-grid-small-3) {
+    width: 714px;
+  }
+  @include breakpoint($bp-grid-small-4) {
+    width: 953px;
   }
 }
+
+.grid-container-small {
+  .asset-thumb {
+    @extend .title-overlay;
+    max-width: 221px;
+    border: 2px solid $gray-dark;
+    &.active {
+      border-color: $white;
+    }
+    .meta {
+      padding: 6px 10px 5px;
+      @include breakpoint($bp-grid-small-2-squish) {
+        font-size: 12px;
+      }
+    }
+    .season-episode {
+      font-size: 14px;
+      @include breakpoint($bp-grid-small-2-squish) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.grid-container-small {
+  .asset-thumb {
+    display: inline-block;
+    zoom: 1;
+    verticle-align: top;
+    @include breakpoint($bp-grid-small-2-squish) {
+      margin: 0 2% 4% 0;
+      width: 46%;
+    }
+    @include breakpoint($bp-grid-small-2) {
+      margin: 0 15px 15px 0;
+      width: 221px;
+    }
+    @include breakpoint($bp-grid-small-2) {
+      margin: 0 7px 15px 7px;
+    }
+  }
+}
+
+
+.pager-load-more {
+  font-size: 14px;
+  li {
+    padding-left: 0 !important;
+  }
+  a {
+    color: $gray-med;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+

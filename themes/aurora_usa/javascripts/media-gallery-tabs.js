@@ -3,7 +3,7 @@
   Drupal.behaviors.mediaGalleryTabs = {
     attach: function (context, settings) {
       $tabCount = 0;
-      $tabs = $('<div class="gallery-tabs"><ul></ul></div>');
+      $tabs = $('<div class="gallery-tabs grid-container-small"><ul></ul></div>');
       $tabs_ul = $tabs.find('ul');
       $('.gallery-tab-group').once('gallery-tabs', function() {
         // grab all the gallery pane title headings
@@ -27,6 +27,7 @@
         $('.tab a').removeClass('selected');
         $(this).addClass('selected');
         $('.gallery-tab-group').hide().filter(this.hash).show();
+        $('.filter-dropdown').removeClass('open');
         return false;
       });
 

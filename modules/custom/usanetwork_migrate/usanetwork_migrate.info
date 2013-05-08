@@ -5,6 +5,7 @@ package = USA Network
 dependencies[] = "migrate"
 dependencies[] = "migrate_ui"
 dependencies[] = "migrate_extras"
+dependencies[] = "date_migrate"
 
 # files that contain the Migrate classes
 files[] = usanetwork_migrate.migrate.inc

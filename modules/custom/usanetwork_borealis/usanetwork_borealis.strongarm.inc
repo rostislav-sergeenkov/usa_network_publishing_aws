@@ -31,10 +31,9 @@ function usanetwork_borealis_strongarm() {
   $strongarm->name = 'borealis_ri_children';
   $strongarm->value = array(
     0 => 'flexslider_full',
-    1 => 'gallery_full_photo',
-    2 => 'promoted_content',
-    3 => 'large',
-    4 => 'episode_wide',
+    1 => 'promoted_content',
+    2 => 'large',
+    3 => 'episode_wide',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -63,29 +62,6 @@ function usanetwork_borealis_strongarm() {
       ),
       'name' => 'flexslider_full',
       'module' => 'flexslider',
-      'storage' => 4,
-    ),
-    'gallery_full_photo' => array(
-      'name' => 'gallery_full_photo',
-      'effects' => array(
-        3 => array(
-          'label' => 'Scale',
-          'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-          'effect callback' => 'image_scale_effect',
-          'dimensions callback' => 'image_scale_dimensions',
-          'form callback' => 'image_scale_form',
-          'summary theme' => 'image_scale_summary',
-          'module' => 'image',
-          'name' => 'image_scale',
-          'data' => array(
-            'width' => '',
-            'height' => '600',
-            'upscale' => 0,
-          ),
-          'weight' => '1',
-        ),
-      ),
-      'module' => 'usanetwork_imagestyles',
       'storage' => 4,
     ),
     'promoted_content' => array(

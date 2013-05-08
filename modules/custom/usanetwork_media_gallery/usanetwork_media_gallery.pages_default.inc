@@ -99,7 +99,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => '',
+        'class' => 'gallery-grids',
       ),
       2 => array(
         'type' => 'row',
@@ -156,7 +156,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 0;
@@ -181,7 +181,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 1;
@@ -206,7 +206,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array(
       'css_id' => '',
-      'css_class' => 'gallery-tab-group',
+      'css_class' => 'gallery-tab-group grid-container-small',
     );
     $pane->extras = array();
     $pane->position = 2;
@@ -243,6 +243,35 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-4'] = $pane;
     $display->panels['first'][0] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
+    $pane->panel = 'first';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 0,
+      'markup' => 'h1',
+      'id' => '',
+      'class' => '',
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'slide-meta',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['first'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

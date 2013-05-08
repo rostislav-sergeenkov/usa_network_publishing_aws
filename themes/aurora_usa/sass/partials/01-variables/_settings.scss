@@ -74,11 +74,34 @@ $ziFilterOpen   : 95;
 
 
 // Breakpoint variables
+// small grid breakpoints
+$bp-grid-small-2-squish: max-width 524px;
+$bp-grid-small-2: 525px;
+$bp-grid-small-3: 772px;
+$bp-grid-small-4: 1020px;
 $bp-episode-side-menu: 769px;
 $bp-episode-split-content: 881px;
 $bp-episode-ads-side-by-side: 660px $bp-episode-side-menu;
 $episode-side-menu-width: 235px;
-
+$bp-gallery-wider: 723px;
+$bp-image-size-matrix-1 : (min-width 1023px) (max-height 599px) ;
+$bp-image-size-matrix-2 : (min-width 1023px) (min-height 600px) ;
+$bp-image-size-matrix-3 : (min-width 1023px) (min-height 700px) ;
+$bp-image-size-matrix-4 : (min-width 1023px) (min-height 800px) ;
+$bp-image-size-matrix-5 : (min-width 1023px) (min-height 900px);
+$bp-image-size-matrix-6 : (min-width 1023px) (min-height 1000px);
+$bp-image-size-matrix-7 : (min-width 1275px) (max-height 599px) ;
+$bp-image-size-matrix-8 : (min-width 1275px) (min-height 600px) ;
+$bp-image-size-matrix-9 : (min-width 1275px) (min-height 700px) ;
+$bp-image-size-matrix-10: (min-width 1275px) (min-height 800px) ;
+$bp-image-size-matrix-11: (min-width 1275px) (min-height 900px) ;
+$bp-image-size-matrix-12: (min-width 1275px) (min-height 1000px);
+$bp-nav-nudge-1: 487px;
+$bp-nav-nudge-2: 723px;
+$bp-nav-nudge-3: 959px;
+$bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
+$bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
+$bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
 
 ////////////////////////////

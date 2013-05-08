@@ -13,6 +13,19 @@ function usa_debug(msg)
 }
 
 /**
+ * getKeys
+ * returns a list of index keys for an object
+ */
+function getKeys(obj)
+{
+   var keys = [];
+   for(var key in obj){
+      keys.push(key);
+   }
+   return keys;
+}
+
+/**
  * ago -- takes a time in the form yyyy-mm-ddThh:mm:ssZ
  * and converts it to something like '# timeperiod ago', such as '3 days ago'
  */
@@ -109,12 +122,11 @@ function outputGlobalChatWithFans(showData)
 				"<div class=\"postdate\">"+showData[show]["timeStr"]+"</div>"+
 			"</div>"+
 		"</a>\n";
-    }
-    showListElem.innerHTML = html;
+  }
+	jQuery('#showList').html(html);
 }
 
 var showData = {};
-var showListElem = document.getElementById('showList');
 /**
  * getGlobalChatWithFansData -- uses ajax
  * to get the results of the Echo mux query.
@@ -128,11 +140,12 @@ function getGlobalChatWithFansData()
 		dataType: "jsonp",
 		data: echoQueryParams,
 		success: function(data){
-			 showData = processGlobalChatWithFansData(data);
-			 if (Object.keys(showData).length > 0) {
-				 outputGlobalChatWithFans(showData);
+			showData = processGlobalChatWithFansData(data);
+			var showDataKeys = getKeys(showData);
+			if (showDataKeys.length > 0) {
+				outputGlobalChatWithFans(showData);
 			} else {
-				showListElem.innerHTML = "No shows found. Please come back again soon.";
+				jQuery('#showList').html("No shows found. Please come back again soon.");
 			}
 		}
 	});

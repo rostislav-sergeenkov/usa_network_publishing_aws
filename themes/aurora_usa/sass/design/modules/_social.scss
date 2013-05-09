@@ -1,9 +1,5 @@
 /**/
 
-$bp_social-large-width: 900px;
-$bp_social_small-width: 330px;
-
-
 
 .page-node-social {
 	#main {
@@ -11,11 +7,11 @@ $bp_social_small-width: 330px;
 		margin-left:auto;
 		margin-right:auto;
 		width:300px;
-		@include breakpoint($bp_social-small-width) { 
+		@include breakpoint($bp-social_small-width) { 
 			width:auto;
         	clear:both;
 		}
-		@include breakpoint($bp_social-large-width) { 
+		@include breakpoint($bp-social-large-width) { 
 			width:auto;
 			padding-right:330px;
 			text-align:right;
@@ -82,7 +78,7 @@ $bp_social_small-width: 330px;
 	.sidebar {
 		background:#414141;
 		clear:both;
-		@include breakpoint($bp_social-large-width) { 
+		@include breakpoint($bp-social-large-width) { 
 			float:left;
 		    margin-left: 15px;
 		    margin-top:133px;

@@ -310,7 +310,7 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
         }
         break;
     }
-}  
+}
 
 /**
  * Override or insert css on the site.

@@ -147,6 +147,10 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
     $data['node-tv_season-field_original_air_date']['field_instance']['settings']['default_value2'] = 'same'; /* WAS: '' */
     $data['node-tv_season-field_original_air_date']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
   }
+  if (isset($data['node-tv_show-field_logo'])) {
+    $data['node-tv_show-field_logo']['field_instance']['description'] = 'Used in show carousels.'; /* WAS: '' */
+    $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
+  }
 }
 
 /**

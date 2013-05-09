@@ -207,6 +207,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'field_collection',
@@ -291,6 +297,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '33',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -298,7 +310,7 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 31,
+          'weight' => '31',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -366,6 +378,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '37',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'image',
@@ -374,7 +392,7 @@ function pub_tv_overrides_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 33,
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -483,6 +501,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'A maximum of 6 promos recommended for this region.',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '35',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -490,7 +514,7 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 32,
+          'weight' => '32',
         ),
         'teaser' => array(
           'label' => 'above',

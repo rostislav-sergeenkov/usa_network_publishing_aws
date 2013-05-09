@@ -92,11 +92,14 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
-/* -- Delete this line if you want to use this function
+
 function aurora_usa_preprocess_block(&$vars, $hook) {
 
+  if($vars['block']->bid == 'views-usa_cast-block_2') {
+    $vars['classes_array'][] = drupal_html_class('social-follow-block');
+  }
 }
-// */
+
 
 /**
  * Override or insert variables into the entity template.
@@ -143,6 +146,24 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       // append_count_to_caption($vars);
     }
   }
+ 
+  switch ($vars['element']['#field_name']) {
+      case 'field_role':
+          if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
+            switch ($vars['element']['#view_mode']) {
+              case 'cast_carousel':
+                  // modify role field text
+                  $vars['items'][0]['#markup'] = 'played by';
+                break;
+              case 'follow_social':
+                  //remove role field
+                  unset($vars['items'][0]);
+                break;
+            }
+          }   
+
+      break;
+  }  
 }
 
 // append the cover image, node title, and node body to the media gallery item list
@@ -210,6 +231,11 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
+    }
+
+    if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
     }
   }
 

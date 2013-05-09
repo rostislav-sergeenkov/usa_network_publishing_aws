@@ -46,6 +46,7 @@
 @import "partials/05-layout/grids-singularitygs";
 // @import "partials/05-layout/grids-susy";
 @import "partials/05-layout/panels/all";
+@import "partials/05-layout/layouts/all";
 
 // ✔ 6. STYLE COMMON UI PATTERNS / DRUPAL UI PATTERNS
 @import "partials/06-ui-patterns/drupal-patterns";
@@ -58,9 +59,11 @@
 @import "design/modules/utilities";
 @import "design/modules/header-search";
 @import "design/modules/episode";
+@import "design/modules/image-gallery";
 @import "design/design";
 @import "design/flexslider";
 @import "design/person";
+@import "design/modules/social";
 // --------------------------------------------------------------------------------------
 
 // ✔ 8. ENABLE PRINT STYLES

@@ -32,6 +32,9 @@ function usanetwork_core_install() {
   menu_rebuild();
   usanetwork_core_create_menu_items();
 
+  // Set the homepage
+  variable_set('site_frontpage', 'home');
+
 }
 
 /**
@@ -107,6 +110,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_episodes',
     'usanetwork_layouts',
     'usanetwork_showpages',
+    'usanetwork_media_gallery',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

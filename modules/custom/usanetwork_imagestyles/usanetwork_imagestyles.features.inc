@@ -101,7 +101,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'height' => '767',
           'strength' => 'low',
         ),
-        'weight' => '2',
+        'weight' => '-9',
       ),
       14 => array(
         'label' => 'Scale and crop',
@@ -116,7 +116,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => '1024',
           'height' => '767',
         ),
-        'weight' => '2',
+        'weight' => '-8',
       ),
     ),
   );

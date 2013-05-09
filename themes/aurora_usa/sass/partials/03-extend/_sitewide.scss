@@ -4,3 +4,16 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.pager-load-more {
+  font-size: 14px;
+  li {
+    padding-left: 0 !important;
+  }
+  a {
+    color: $gray-med;
+    &:hover {
+      color: white;
+    }
+  }
+}

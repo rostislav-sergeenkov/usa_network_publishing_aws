@@ -187,6 +187,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_1';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_arguments'] = 'none';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
@@ -380,7 +381,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
@@ -749,14 +750,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['relationships']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['relationships']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['relationships']['field_show_target_id']['label'] = 'show';
+  $handler->display->display_options['relationships']['field_show_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_show_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Person Profile Thumbnail */
   $handler->display->display_options['fields']['field_usa_character_thumb']['id'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['table'] = 'field_data_field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['field'] = 'field_usa_character_thumb';
   $handler->display->display_options['fields']['field_usa_character_thumb']['label'] = '';
   $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = '%1/cast';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['path'] = '[path]/cast';
+  $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_usa_character_thumb']['alter']['prefix'] = '<h2>Cast &amp; Crew</h2>';
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_usa_character_thumb']['element_class'] = 'title-overlay';
@@ -997,7 +1014,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Related Person (field_person) */
+  /* Contextual filter: Field: Person (field_person) */
   $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';

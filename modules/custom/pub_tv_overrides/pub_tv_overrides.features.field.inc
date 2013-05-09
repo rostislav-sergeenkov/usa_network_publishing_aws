@@ -222,6 +222,21 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'field_collection_fields',
           'weight' => '16',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '27',
+        ),
+        'social_follow' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '16',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -312,6 +327,21 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '31',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '37',
+        ),
+        'social_follow' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '31',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -385,6 +415,22 @@ function pub_tv_overrides_field_default_fields() {
           'weight' => '37',
         ),
         'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '33',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '42',
+        ),
+        'social_follow' => array(
           'label' => 'above',
           'module' => 'image',
           'settings' => array(
@@ -508,6 +554,21 @@ function pub_tv_overrides_field_default_fields() {
           'weight' => '35',
         ),
         'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '32',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '41',
+        ),
+        'social_follow' => array(
           'label' => 'above',
           'module' => 'entityreference',
           'settings' => array(

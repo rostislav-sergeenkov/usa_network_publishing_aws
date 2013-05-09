@@ -166,4 +166,18 @@ function pub_tv_overrides_strongarm_alter(&$data) {
     ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_episode']->value['view_modes']['full']['custom_settings'] = TRUE; /* WAS: FALSE */
   }
+  if (isset($data['field_bundle_settings_node__tv_show'])) {
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title_lg'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['follow_social'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['social_follow'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+  }
 }

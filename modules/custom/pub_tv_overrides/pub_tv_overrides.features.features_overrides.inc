@@ -126,6 +126,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title_lg"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|follow_social"] = array(
+    'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|social_follow"] = array(
+    'custom_settings' => TRUE,
+  );
 
  return $overrides;
 }

@@ -6,14 +6,14 @@
     attach: function (context, settings) {
 
     
-       $( ".view-usa-cast li" ).each(function( index ) {
+       $( ".view-usa-shows li" ).each(function( index ) {
           $(this).attr('data-flexindex',index);
         });
-        var moveTo = $('.view-usa-cast li.active').attr('data-flexindex');
+        var moveTo = $('.view-usa-shows li.active').attr('data-flexindex');
 
-        $('<div class="prev btns">Prev</div><div class="next btns">Next</div>').appendTo('.view-usa-cast .view-content');
+        $('<div class="prev btns">Prev</div><div class="next btns">Next</div>').appendTo('.view-usa-shows .view-content');
 
-        $(".view-usa-cast ul").addClass('slides').carouFredSel({
+        $(".view-usa-shows ul").addClass('slides').carouFredSel({
           auto: false,
           circular: false,
           infinite: false,
@@ -29,7 +29,7 @@
             },
           }, {  
           wrapper     : {
-              classname       : "cast-carousel carousel"
+              classname       : "show-carousel carousel"
             },
         });
 

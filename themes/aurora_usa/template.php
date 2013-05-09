@@ -288,7 +288,11 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
       }
     }
   }
-  switch($view->name) {
+}
+
+function aurora_usa_preprocess_views_view_list(&$vars) {
+   $view = $vars['view'];
+   switch($view->name) {
       case 'usa_cast' :
 
         if($vars['view']->current_display == 'block_1') {
@@ -306,7 +310,7 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
         }
         break;
     }
-}
+}  
 
 /**
  * Override or insert css on the site.

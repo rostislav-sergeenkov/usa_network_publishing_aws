@@ -104,6 +104,9 @@ Drupal.behaviors.chat_with_fans_page = {
 					"name": "Like"
 				},
 				{
+					"name": "CommunityFlag"
+				},
+				{
 					"name": "Reply",
 					"enabled": true,
 					"nestedPlugins": [{
@@ -113,16 +116,11 @@ Drupal.behaviors.chat_with_fans_page = {
 					}]
 				},
 				{
-					"name": "CommunityFlag"
-				},
-/*				{
 					"name": "SourceIconTweaks",
 					"icons": {
-						"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif", \
-						"twitter.com": "http://cdn.echoenabled.com/images/favicons/twitter.png",
-						"yap-tv": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
+						"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
 					}
-				}, */
+				},
 				{
 					"name": "InlineMedia"
 				}

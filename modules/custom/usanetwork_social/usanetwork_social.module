@@ -347,6 +347,13 @@ function usanetwork_social_chat_with_fans($node) {
 
   // @TODO: need some theming for the post comment login module (see below as a start)
   //  $output .= '<style>#fancybox-wrap { -moz-box-sizing: content-box; }</style>'; // fixes the chat with fans login overlay size/formatting
+  /* Other css that will help fix echo issues
+  $output .= '<style>
+.echo-submit-markersContainer,
+.echo-submit-tagsContainer {
+	display: none !important;
+}
+</style>'; */
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
   $output .= '<div id="chat-submit-form">&nbsp;</div>';

@@ -18,19 +18,13 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       'guid' => t('Guid'),
       'title' => t('Title'),
       'description' => t('Description'),
-      #'author' => t('Author'),  // Doesn't appear to ever be populated.
       'dcterms:valid' => t('Sunrise/Sunset Dates'),
       'media:category' => t('Video Categories'),
-      #'media:keywords' => t('Keywords'),  // Not used. Confirmed.
       'media:rating' => t('MPAA Rating'),
-      #'media:restriction' => t('Country Code View Permissions'),
       'media:content' => t('Actual Video Data'),
-      #'media:thumbnail' => t('Thumbnails of various sizes.'),
       'pubDate' => t('Published/Air Date'),
       'plmedia:defaultThumbnailUrl' => t('Default Thumbnail Image'),
-      #'pl1:entitlement' => t('Some Permission?'),
       'pl1:episodeNumber' => t('Episode #'),
-      #'pl1:externalAdvertiserId' => t('Advertiser ID'),
       'pl1:seasonNumber' => t('Season #'),
       'pl1:fullEpisode' => t('Full Episode'),
     );
@@ -83,7 +77,6 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     // Categories and Show handled in the prepare() method.
     $this->addFieldMapping('field_rating', 'media:rating')->xpath('media:rating');
     // Restrictions handled by player.
-    $this->addFieldMapping('field_video_release_url', 'media:content')->xpath('media:content/@url');
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
@@ -137,8 +130,8 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
   public function complete($entity, stdClass $row) {
 
     // Save state_flow_schedule data.
-    // TODO:  state_flow_schedule having form problems.  Debug / chat with ericduran.
-    #state_flow_schedule_schedule($entity->nid, $entity->vid, $selected_date);
+    $date_data = drupal_json_decode($row->{'dcterms:valid'});
+    state_flow_schedule_schedule($entity->nid, $entity->vid, $date_data['from']);
   }
 }
 
@@ -158,26 +151,18 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->description = t('Migrate videos from the thePlatform MPX XML feed.');
 
     $fields = array(
-      'pl:id' => t('Player ID'),  // Not there.
+      'pl:id' => t('Player ID'),  // Not always set for MPX.
       'guid' => t('Guid'),
       'title' => t('Title'),
       'description' => t('Description'),
-      #'author' => t('Author'),  // Doesn't appear to ever be populated.
       'dcterms:valid' => t('Sunrise/Sunset Dates'),
       'media:category' => t('Video Categories'),
-      #'media:keywords' => t('Keywords'),  // Not used. Confirmed.
       'media:rating' => t('MPAA Rating'),
-      #'media:restriction' => t('Country Code View Permissions'),
-      // TODO: This is not the same as TVE.  Multiple media:content items under media:group.
-      'media:content' => t('Actual Video Data'),
-      #'media:thumbnail' => t('Thumbnails of various sizes.'),
       'pubDate' => t('Published/Air Date'),
       'plmedia:defaultThumbnailUrl' => t('Default Thumbnail Image'),
-      #'pl1:entitlement' => t('Some Permission?'),
-      'pl1:episodeNumber' => t('Episode #'),  // Not there.
-      #'pl1:externalAdvertiserId' => t('Advertiser ID'),
-      'pl1:seasonNumber' => t('Season #'),  // Not there.
-      'pl1:fullEpisode' => t('Full Episode'),  // Not there.
+      'pl1:episodeNumber' => t('Episode #'),  // Not always set for MPX.
+      'pl1:seasonNumber' => t('Season #'),  // Not always set for MPX.
+      'pl1:fullEpisode' => t('Full Episode'),  // Not always set for MPX.
     );
 
     /*
@@ -228,7 +213,6 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Categories and Show handled in prepare() method.
     $this->addFieldMapping('field_rating', 'media:rating')->xpath('media:rating');
     // Restrictions handled by player.
-    $this->addFieldMapping('field_video_release_url', 'media:content')->xpath('media:content/@url');
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
@@ -282,8 +266,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
   public function complete($entity, stdClass $row) {
 
     // Save state_flow_schedule data.
-    // TODO:  state_flow_schedule having form problems.  Debug / chat with ericduran.
-    #state_flow_schedule_schedule($entity->nid, $entity->vid, $selected_date);
+    $date_data = drupal_json_decode($row->{'dcterms:valid'});
+    state_flow_schedule_schedule($entity->nid, $entity->vid, $date_data['from']);
   }
 }
 

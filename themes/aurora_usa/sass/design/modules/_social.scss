@@ -7,7 +7,7 @@
 		margin-left:auto;
 		margin-right:auto;
 		width:300px;
-		@include breakpoint($bp-social_small-width) { 
+		@include breakpoint($bp-social-small-width) { 
 			width:auto;
         	clear:both;
 		}

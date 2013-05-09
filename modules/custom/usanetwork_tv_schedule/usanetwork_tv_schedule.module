@@ -93,15 +93,17 @@ function usanetwork_tv_schedule_on_now_block() {
 
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
+
+      $tv_show = '<span id="on-now-show-name" class="on-now-show-name">' . $tv_show .
+        '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span>';
+
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {
-          $tv_show = l($tv_show .': '. $episode[0], 'movies');
-        } else {
-          $tv_show = $tv_show .': '. $episode[0];
+          $tv_show = l($tv_show, 'movies', array('html' => true));
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
-        $tv_show = l($tv_show .': '. $episode[0], $path);
+        $tv_show = l($tv_show, $path, array('html' => true));
       } 
 
       $full_tv_schedule[] = array(
@@ -125,15 +127,17 @@ function usanetwork_tv_schedule_on_now_block() {
 
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
+
+      $tv_show = '<span id="on-now-show-name" class="on-now-show-name">' . $tv_show .
+        '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span>';
+
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {
-          $tv_show = l($tv_show .': '. $episode[0], 'movies');
-        } else {
-          $tv_show = $tv_show .': '. $episode[0];
+          $tv_show = l($tv_show, 'movies', array('html' => true));
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
-        $tv_show = l($tv_show .': '. $episode[0], $path);
+        $tv_show = l($tv_show, $path, array('html' => true));
       } 
 
       $full_tv_schedule[] = array(
@@ -205,10 +209,10 @@ function usanetwork_tv_schedule_schedule_page() {
   }
    
   $header = array(
-    t('TIME (ET)'),
-    t('PROGRAM'),
-    t('EPISODE'),
-    t('RATING'),
+    array('data' => t('TIME (ET)'), 'class' => array('show-time')),
+    array('data' => t('PROGRAM'), 'class' => array('program')),
+    array('data' => t('EPISODE'), 'class' => array('episode')),
+    array('data' =>  t('RATING'), 'class' => array('rating')),
   );
   $rows = array();
   foreach ($tv_schedule as $item) {
@@ -246,10 +250,10 @@ function usanetwork_tv_schedule_schedule_page() {
     }
 
     $row = array(
-      preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
-      $show,
-      $episode[0],
-      $rating[0],
+      array('data' => preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]), 'class' => array('show-time')),
+      array('data' => $show, 'class' => array('program')),
+      array('data' => $episode[0], 'class' => array('episode')),
+      array('data' => $rating[0], 'class' => array('rating')),
     );
     $rows[] = array('data' => $row, 'class' => $classes);
     

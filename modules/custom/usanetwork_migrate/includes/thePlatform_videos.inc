@@ -48,7 +48,12 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     //*/
 
     $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC');
-    $items_url .= '?range=1-5';
+
+    // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
+    $is_cron = FALSE;
+    if ($is_cron) {
+      $items_url .= '?range=1-5';
+    }
 
     $item_xpath = '/rss/channel/item';  // relative to document
     $item_ID_xpath = 'guid';  // relative to item_xpath
@@ -131,7 +136,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
     // Save state_flow_schedule data.
     $date_data = drupal_json_decode($row->{'dcterms:valid'});
-    state_flow_schedule_schedule($entity->nid, $entity->vid, $date_data['from']);
+    #state_flow_schedule_schedule($entity->nid, $entity->vid, $date_data['from']);
   }
 }
 
@@ -184,7 +189,16 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     //*/
 
     $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
-    $items_url .= '?range=1-5';
+
+    // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
+    $is_cron = FALSE;
+    if ($is_cron) {
+      $items_url .= '?range=1-5';
+    }
+
+
+      $items_url .= '?range=1-150';
+
 
     $item_xpath = '/rss/channel/item';  // relative to document
     $item_ID_xpath = 'guid';  // relative to item_xpath

@@ -11,4 +11,4 @@
   	<?php if ($social && $social != "&nbsp;"): ?>
     	<div class="icons-social icons-inline"><?php print ($social); ?></div>
   	<?php endif; ?>
- </div> 
+</div> 

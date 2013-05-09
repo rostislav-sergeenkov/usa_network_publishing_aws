@@ -20,6 +20,8 @@ function usanetwork_social_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_social.admin.inc',
   );
+
+  // GLOBAL SOCIAL PAGES
   // global social page
   $items['social'] = array(
     'title' => t('Global Social'),
@@ -69,6 +71,8 @@ function usanetwork_social_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => 4
   );
+
+  // SHOW - LEVEL SOCIAL PAGES
   // tv show social page
   $items['node/%node/social'] = array(
     'title' => t('Social'),
@@ -78,10 +82,10 @@ function usanetwork_social_menu() {
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
-  // tv show latest page
-  $items['node/%node/social/latest'] = array(
-    'title' => t('Latest'),
-    'page callback' => 'usanetwork_social_latest',
+  // tv show trending page
+  $items['node/%node/social/trending'] = array(
+    'title' => t('Trending'),
+    'page callback' => 'usanetwork_social_trending',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
@@ -142,9 +146,8 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
   $lang = LANGUAGE_NONE;
 
   if ($form['type']['#value'] == 'tv_show') {
-
-    // TWITTER
     // set the sitewide values as default values for each show
+    // TWITTER
     // eql template
     if (!isset($form['field_twitter_eql_template'][$lang][0]['value']['#default_value']) ||
       empty($form['field_twitter_eql_template'][$lang][0]['value']['#default_value'])) {
@@ -268,6 +271,17 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       empty($form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'])) {
       $form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_identitymanagerurl', '');
     }
+
+		// TRENDING
+    // identityManagerUrl
+    if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_trend_base_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_trend_base_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_base_url', '');
+    }
+    if (!isset($form['field_trend_url_params'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_trend_url_params'][$lang][0]['value']['#default_value'])) {
+      $form['field_trend_url_params'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_url_params', '');
+    }
   }
 }
 
@@ -301,7 +315,17 @@ function usanetwork_social_global_landing_page() {
  * Menu callback of social global trending page
  */
 function usanetwork_social_global_trending() {
-  return t('Global Social Trending Page: Placeholder');
+	$output = '';
+
+	$showTrending = 1; // change to 0 to turn this off
+	$baseUrl = 'https://www.rebelmouse.com';
+	$basePath = 'USANetwork';
+	$urlParams = 'embedded=1&flexible=1&scrollbar_theme=light-2&referrer=http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'&skip=also-on-rm'; // 'embedded=1&flexible=0&scrollbar_theme=light-2&referrer=http%3A%2F%2Ftest.usa.empathylab.com%2Fsocial-global-rebelmouse.html';
+	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
+
+	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
+
+	return $output;
 }
 
 /**
@@ -533,9 +557,25 @@ function usanetwork_social_chat_with_fans($node) {
 }
 
 /**
- * Menu callback of tv show social latest page
+ * Menu callback of tv show social trending page
  */
-function usanetwork_social_latest($node) {
-  return t('TV Show Latest: Placeholder');
+function usanetwork_social_trending($node) {
+	$output = '';
+
+	$title = $node->title;
+	$showTrending = !empty($node->field_show_trending['und'][0]['value']) ? $node->field_show_trending['und'][0]['value'] : 0;
+	$baseUrl = !empty($node->field_trend_base_url['und'][0]['value']) ? $node->field_trend_base_url['und'][0]['value'] : null;
+	$showPath = !empty($node->field_trend_show_path['und'][0]['value']) ? $node->field_trend_show_path['und'][0]['value'] : null;
+	$urlParams = !empty($node->field_trend_url_params['und'][0]['value']) ? $node->field_trend_url_params['und'][0]['value'] . '&referrer=http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] : null;
+
+	if (!$showTrending || !$baseUrl || !$showPath || !$urlParams) {
+		drupal_goto('social/trending');
+	}
+
+	$query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
+
+	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
+
+	return $output;
 }
 

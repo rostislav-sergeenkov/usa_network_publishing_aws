@@ -66,8 +66,6 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       }
     }
 
-    on_now_show = on_now_show.toUpperCase();
-
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 
   }
 }

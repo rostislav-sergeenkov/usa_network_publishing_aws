@@ -3,7 +3,6 @@ description = Overrides of Pub Television feature
 core = 7.x
 package = USA Network
 php = 5.2.4
-dependencies[] = clientside_validation
 dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features

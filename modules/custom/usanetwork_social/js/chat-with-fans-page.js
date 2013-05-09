@@ -1,3 +1,24 @@
+(function($) {
+	var plugin = Echo.createPlugin({
+        "name": "SourceIconTweaks",
+        "applications": ["Stream"],
+        "init": function(plugin, application) {
+			plugin.extendRenderer("Item", "sourceIcon", function() {
+				var item = this;
+				var source = item.data.source.name;
+				if (source) {
+					var icon = plugin.config.get(item, "icons." + source);
+					if (icon) {
+						item.data.source.icon = icon;
+					}
+				}
+				item.parentRenderer("sourceIcon", arguments);
+			});
+        }
+	});
+})(jQuery);
+
+
 (function ($) {
 Drupal.behaviors.chat_with_fans_page = {
   attach: function(context){
@@ -118,7 +139,8 @@ Drupal.behaviors.chat_with_fans_page = {
 				{
 					"name": "SourceIconTweaks",
 					"icons": {
-						"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
+						"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif",
+						"yap-tv": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
 					}
 				},
 				{

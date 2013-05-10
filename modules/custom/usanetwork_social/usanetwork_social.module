@@ -504,6 +504,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatSubmitTargetURL = "' . $submitTargetUrl . '"; ';
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
+  $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'";';
   drupal_add_js($vars, array('type' => 'inline'));
 
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-pack.js', 'external');
@@ -524,6 +525,13 @@ function usanetwork_social_chat_with_fans($node) {
 
   // @TODO: need some theming for the post comment login module (see below as a start)
   //  $output .= '<style>#fancybox-wrap { -moz-box-sizing: content-box; }</style>'; // fixes the chat with fans login overlay size/formatting
+  /* Other css that will help fix echo issues
+  $output .= '<style>
+.echo-submit-markersContainer,
+.echo-submit-tagsContainer {
+	display: none !important;
+}
+</style>'; */
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
   $output .= '<div id="chat-submit-form">&nbsp;</div>';

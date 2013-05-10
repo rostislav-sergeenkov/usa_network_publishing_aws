@@ -17,12 +17,14 @@ window.onload = function() {
 			'icon-search' : '&#x73;&#x65;&#x61;&#x72;&#x63;&#x68;',
 			'icon-tumblr' : '&#x74;&#x75;&#x6d;&#x62;&#x6c;&#x72;',
 			'icon-twitter' : '&#x74;&#x77;&#x69;&#x74;&#x74;&#x65;&#x72;',
-			'icon-usa' : '&#x75;&#x73;&#x61;',
+			'icon-usa' : '&#x263a;',
 			'icon-x1' : '&#x63;&#x6c;&#x6f;&#x73;&#x65;',
-			'icon-arrow2' : '&#x6e;&#x65;&#x78;&#x74;',
 			'icon-arrow1-left' : '&#x2190;',
-			'icon-arrow2-left' : '&#x70;&#x72;&#x65;&#x76;',
-			'icon-arrow3-left' : '&#x2192;'
+			'icon-arrow2-left' : '&#x50;&#x72;&#x65;&#x76;&#x69;&#x6f;&#x75;&#x73;',
+			'icon-arrow3-left' : '&#x2192;',
+			'icon-arrow2' : '&#x4e;&#x65;&#x78;&#x74;',
+			'icon-usa-2' : '&#x55;&#x53;&#x41;',
+			'icon-usa-3' : '&#x55;&#x53;&#x41;&#x4e;&#x65;&#x74;&#x77;&#x6f;&#x72;&#x6b;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

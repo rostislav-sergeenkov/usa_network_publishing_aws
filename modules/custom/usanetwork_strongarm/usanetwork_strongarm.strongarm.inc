@@ -48,6 +48,13 @@ function usanetwork_strongarm_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_footer_message';
+  $strongarm->value = '&copy;YYYY NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal';
+  $export['usanetwork_footer_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_lyris_endpoint';
   $strongarm->value = 'http://usa.sparklist.com:82/?wsdl';
   $export['usanetwork_lyris_endpoint'] = $strongarm;

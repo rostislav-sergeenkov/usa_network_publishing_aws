@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_borealis.features.inc
+ * usanetwork_taxonomy.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function usanetwork_borealis_ctools_plugin_api() {
+function usanetwork_taxonomy_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");

@@ -101,7 +101,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_schedule',
     'usanetwork_aspot',
     'usanetwork_flag',
-    'usanetwork_borealis',
     'usanetwork_promo',
     'usanetwork_home',
     'usanetwork_cast',

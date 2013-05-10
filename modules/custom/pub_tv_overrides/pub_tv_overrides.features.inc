@@ -9,6 +9,10 @@
  */
 function pub_tv_overrides_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -117,9 +121,6 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'weight' => '8',
     ); /* WAS: '' */
     $data['node-tv_episode-field_show']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['direction']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['field']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['property']);
   }
   if (isset($data['node-tv_episode-field_tv_cover_media'])) {
     $data['node-tv_episode-field_tv_cover_media']['field_instance']['display']['full'] = array(
@@ -151,6 +152,50 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
     $data['node-tv_show-field_logo']['field_instance']['description'] = 'Used in show carousels.'; /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
   }
+  if (isset($data['node-tv_show-field_social_logo'])) {
+    $data['node-tv_show-field_social_logo']['field_instance']['display']['follow_social'] = array(
+      'label' => 'hidden',
+      'module' => 'image',
+      'settings' => array(
+        'image_link' => 'content',
+        'image_style' => 'thumb_tiny',
+      ),
+      'type' => 'image',
+      'weight' => '0',
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_facebook'])) {
+    $data['node-tv_show-field_usa_link_facebook']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_pinterest'])) {
+    $data['node-tv_show-field_usa_link_pinterest']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_tumblr'])) {
+    $data['node-tv_show-field_usa_link_tumblr']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_twitter'])) {
+    $data['node-tv_show-field_usa_link_twitter']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
 }
 
 /**
@@ -165,5 +210,19 @@ function pub_tv_overrides_strongarm_alter(&$data) {
       'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_episode']->value['view_modes']['full']['custom_settings'] = TRUE; /* WAS: FALSE */
+  }
+  if (isset($data['field_bundle_settings_node__tv_show'])) {
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title_lg'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['follow_social'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['social_follow'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
   }
 }

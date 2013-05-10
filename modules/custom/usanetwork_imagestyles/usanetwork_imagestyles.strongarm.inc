@@ -1,14 +1,21 @@
 <?php
 /**
  * @file
- * usanetwork_borealis.strongarm.inc
+ * usanetwork_imagestyles.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function usanetwork_borealis_strongarm() {
+function usanetwork_imagestyles_strongarm() {
   $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_image_wrap';
+  $strongarm->value = 1;
+  $export['borealis_image_wrap'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -36,6 +43,34 @@ function usanetwork_borealis_strongarm() {
     3 => 'episode_wide',
   );
   $export['borealis_ri_children'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_hidpi';
+  $strongarm->value = '1.75';
+  $export['borealis_ri_hidpi'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_image_wrap';
+  $strongarm->value = 1;
+  $export['borealis_ri_image_wrap'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_lazyload';
+  $strongarm->value = '1';
+  $export['borealis_ri_lazyload'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'borealis_ri_min_size';
+  $strongarm->value = '250';
+  $export['borealis_ri_min_size'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

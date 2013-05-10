@@ -104,5 +104,11 @@
     @include float(right);
     max-width: 221px;
     margin-left: 1em;
+    .ie8 & {
+      float: none;
+      img {
+        width: 221px;
+      }
+    }
   }
 }

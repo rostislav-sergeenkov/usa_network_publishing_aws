@@ -65,6 +65,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '28',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -169,6 +175,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '19',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -275,6 +287,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '18',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -380,6 +398,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '20',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -484,6 +508,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '24',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -591,6 +621,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '27',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -695,6 +731,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '23',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -801,6 +843,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '26',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -905,6 +953,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '30',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -1011,6 +1065,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '25',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1115,6 +1175,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '22',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -1221,6 +1287,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '21',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1325,6 +1397,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '24',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -1432,6 +1510,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '24',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1538,6 +1622,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'list_default',
           'weight' => '31',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'list',
@@ -1623,6 +1713,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'hidden',
           'weight' => '11',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1707,6 +1803,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '29',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -1795,6 +1897,16 @@ function usanetwork_social_field_default_fields() {
           'type' => 'image',
           'weight' => 34,
         ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'thumb_tiny',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1853,6 +1965,182 @@ function usanetwork_social_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-tv_show-field_trend_base_url'.
+  $fields['node-tv_show-field_trend_base_url'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trend_base_url',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => array(
+        0 => array(
+          'value' => 'https://www.rebelmouse.com',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Ex: https://www.rebelmouse.com',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 50,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_trend_base_url',
+      'label' => 'Base URL',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '255',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_trend_url_params'.
+  $fields['node-tv_show-field_trend_url_params'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trend_url_params',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => array(
+        0 => array(
+          'value' => 'embedded=1&flexible=1&scrollbar_theme=light-2',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Ex: embedded=1&flexible=1&scrollbar_theme=light-2',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 51,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_trend_url_params',
+      'label' => 'URL Params',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '255',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '14',
+      ),
+    ),
+  );
+
   // Exported field: 'node-tv_show-field_twitter_children'.
   $fields['node-tv_show-field_twitter_children'] = array(
     'field_config' => array(
@@ -1907,6 +2195,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '28',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -2013,6 +2307,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '19',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2117,6 +2417,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '18',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -2223,6 +2529,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '20',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2327,6 +2639,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '27',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -2433,6 +2751,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '23',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2537,6 +2861,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '26',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -2643,6 +2973,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '30',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2747,6 +3083,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '25',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -2853,6 +3195,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '22',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2957,6 +3305,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '21',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'full' => array(
           'label' => 'above',
@@ -3063,6 +3417,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '24',
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'full' => array(
           'label' => 'above',
           'module' => 'text',
@@ -3156,6 +3516,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'link_default',
           'weight' => 45,
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3242,6 +3608,12 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => 46,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3330,6 +3702,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'link_default',
           'weight' => 47,
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3417,6 +3795,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'link_default',
           'weight' => 44,
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3503,6 +3887,12 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => 31,
         ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3542,10 +3932,13 @@ function usanetwork_social_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Base URL');
   t('CHILDREN');
   t('CHILDRENOF');
   t('EQL Token');
   t('Echo Query Template');
+  t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2');
+  t('Ex: https://www.rebelmouse.com');
   t('FEED');
   t('Facebook page');
   t('IDENTITYMANAGERURL');
@@ -3568,6 +3961,7 @@ function usanetwork_social_field_default_fields() {
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
   t('Tumblr Page');
   t('Twitter page');
+  t('URL Params');
 
   return $fields;
 }

@@ -273,11 +273,12 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
     }
 
 		// TRENDING
-    // identityManagerUrl
+    // baseUrl
     if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
       empty($form['field_trend_base_url'][$lang][0]['value']['#default_value'])) {
       $form['field_trend_base_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_base_url', '');
     }
+    // urlParams
     if (!isset($form['field_trend_url_params'][$lang][0]['value']['#default_value']) ||
       empty($form['field_trend_url_params'][$lang][0]['value']['#default_value'])) {
       $form['field_trend_url_params'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_url_params', '');

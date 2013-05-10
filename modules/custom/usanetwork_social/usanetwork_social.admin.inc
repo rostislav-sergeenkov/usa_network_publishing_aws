@@ -5,12 +5,33 @@
  */
 function usanetwork_social_settings_form() {
 
+	// TRENDING
+  $form['trend'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Trending Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['trend']['usanetwork_social_trend_base_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE URL'),
+    '#default_value' => variable_get('usanetwork_social_trend_base_url', ''),
+    '#description' => t('Base url'),
+  );
+
+  $form['trend']['usanetwork_social_trend_url_params'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL PARAMS'),
+    '#default_value' => variable_get('usanetwork_social_trend_url_params', ''),
+    '#description' => t('URL params'),
+  );
+
   // CHAT WITH FANS
   $form['chat'] = array(
     '#type' => 'fieldset',
     '#title' => t('Chat with Fans Settings'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
   );
   $form['chat']['usanetwork_social_chat_echo_app_key'] = array(
     '#type' => 'textfield',
@@ -107,7 +128,7 @@ function usanetwork_social_settings_form() {
     '#type' => 'fieldset',
     '#title' => t('Twitter Settings'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
   );
   $form['twitter']['usanetwork_social_twitter_echo_app_key'] = array(
     '#type' => 'textfield',

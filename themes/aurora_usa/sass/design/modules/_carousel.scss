@@ -1,15 +1,15 @@
 .carousel {
 	ul {
-		margin:0;
-		padding:0;
+		margin: 0;
+		padding: 0;
 	}
 	li.carousel-item {
-		float:left;
+		float: left;
 		width: 236px;
 		height: 188px;
 		text-align: center;
-		padding:0;
-		margin:0;
+		padding: 0;
+		margin: 0;
 		&.active {
 			img {
 				border-color: $white;
@@ -23,7 +23,7 @@
 			    position: absolute;
 			    top: 23px;
 			    width: 0;
-			}	
+			}
 		}
 	}
 	.carousel-item-wrapper {
@@ -35,7 +35,7 @@
 		    z-index: 1;
 		}
 		img {
-			max-width:none;
+			max-width: none;
 			border: 2px solid $gray-dark;
 			display: block;
 		}
@@ -47,7 +47,7 @@
 		    width: 100%;
 		    z-index: 2;
 		}
-		
+
 	}
 	.item-content {
 		font-weight: normal;
@@ -58,7 +58,7 @@
 	    width: 217px;
 	    z-index: 10;
 	    height: 61px;
-	    padding: 8px 18px 8px;	    
+	    padding: 8px 18px 8px;
 	    background: rgba(0, 0, 0, 0.8);
 	    h4 {
 	    	font-family: "Proxima N W01 Smbd";
@@ -72,7 +72,7 @@
 	    		display: block;
 	    	}
 	    }
-	} 
+	}
 	.btns {
 		cursor: pointer;
 		position: absolute;
@@ -84,4 +84,4 @@
 			right: 0;
 		}
 	}
-}  
+}

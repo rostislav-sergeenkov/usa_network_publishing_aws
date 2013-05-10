@@ -96,5 +96,34 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   );
   $export['group_hp_cspots|node|usa_homepage|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_promos|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_promos';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Featured',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_hp_promos',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Featured',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => 'A maximum of 4 promos recommended for this region.<br /><br />
+If more than 4 are added a carousel will be triggered on page load so content can be scrolled through.',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_hp_promos|node|usa_homepage|form'] = $field_group;
+
   return $export;
 }

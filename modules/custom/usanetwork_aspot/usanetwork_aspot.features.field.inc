@@ -55,7 +55,14 @@ function usanetwork_aspot_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 8,
+          'weight' => '8',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'ds',
+          'settings' => array(),
+          'type' => 'taxonomy_usa_term_icon',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -143,6 +150,12 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'entityreference_label',
           'weight' => '3',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -215,6 +228,16 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'image',
           'weight' => '0',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -231,8 +254,7 @@ function usanetwork_aspot_field_default_fields() {
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'aspot',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
@@ -316,6 +338,12 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'link_default',
           'weight' => '7',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -325,7 +353,7 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_link',
       'label' => 'Link',
       'required' => 1,
@@ -341,7 +369,6 @@ function usanetwork_aspot_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 1,
@@ -410,6 +437,16 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'image',
           'weight' => '2',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '2',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -419,14 +456,13 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_mobile',
       'label' => 'Mobile Image',
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
@@ -513,6 +549,16 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'image',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -522,14 +568,13 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_tablet',
       'label' => 'Tablet Image',
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
@@ -608,6 +653,13 @@ function usanetwork_aspot_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -692,6 +744,13 @@ function usanetwork_aspot_field_default_fields() {
           'type' => 'text_default',
           'weight' => '5',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '5',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -766,6 +825,13 @@ function usanetwork_aspot_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '6',
+        ),
+        'full' => array(
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -848,7 +914,14 @@ function usanetwork_aspot_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '9',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',

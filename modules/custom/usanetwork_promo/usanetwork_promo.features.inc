@@ -9,6 +9,10 @@
  */
 function usanetwork_promo_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -26,7 +30,7 @@ function usanetwork_promo_node_info() {
     'usanetwork_promo' => array(
       'name' => t('Promo'),
       'base' => 'node_content',
-      'description' => t('Enter information for B-spots, C-spots, etc. Do not use for A-spots.'),
+      'description' => t('Used on homepage B-spots and C-spots, also in evergreen and show promo carousels.'),
       'has_title' => '1',
       'title_label' => t('Administrative Title'),
       'help' => '',

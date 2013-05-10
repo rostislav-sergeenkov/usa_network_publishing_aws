@@ -27,4 +27,5 @@
       <div class="aspot-cta row-4 media"><?php print $cta; ?></div>
     <?php endif; ?>
   </div>
+  
 </div>

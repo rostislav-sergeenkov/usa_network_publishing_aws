@@ -147,6 +147,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     }
   }
  
+
   switch ($vars['element']['#field_name']) {
       case 'field_role':
           if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
@@ -160,9 +161,36 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
                   unset($vars['items'][0]);
                 break;
             }
-          }   
+          }  
+        break;    
+      case 'field_usa_character_thumb':
+        // making thumb clickable
+        if (isset($vars['element']['#view_mode']))  {
 
-      break;
+          switch($vars['element']['#view_mode']) {
+            case 'follow_social' :
+              $node = $vars['element']['#object'];
+              $url = drupal_lookup_path('alias',"node/".$node->nid);
+              $thumb = $vars['items'][0];
+              $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
+              break;
+
+            case 'cast_carousel':
+              // $node = $vars['element']['#object'];
+              // $url = drupal_lookup_path('alias',"node/".$node->nid);
+              // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
+              // $thumb = $vars['items'][0];
+              // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
+              // //dpm($vars);
+              break; 
+
+
+          }
+        }  
+
+
+
+        break;  
   }  
 }
 

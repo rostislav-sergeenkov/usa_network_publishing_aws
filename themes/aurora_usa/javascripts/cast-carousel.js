@@ -11,12 +11,12 @@
         });
         var moveTo = $('.view-usa-cast li.active').attr('data-flexindex');
 
-        $('<div class="prev btns">Prev</div><div class="next btns">Next</div>').appendTo('.view-usa-cast .view-content');
-
+        $('<div class="carousel"><div class="prev btns">Prev</div><div class="next btns">Next</div></div>').appendTo('.view-usa-cast .view-content');
+        
         $(".view-usa-cast ul").addClass('slides').carouFredSel({
           auto: false,
           circular: false,
-          infinite: false,
+          //infinite: false,
           items       : {
             visible: 5,
             start       : parseInt(moveTo),

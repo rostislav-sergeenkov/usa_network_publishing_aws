@@ -226,7 +226,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '27',
+          'weight' => '50',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -331,7 +331,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '37',
+          'weight' => '51',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -428,7 +428,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '42',
+          'weight' => '53',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -566,7 +566,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '41',
+          'weight' => '52',
         ),
         'social_follow' => array(
           'label' => 'above',

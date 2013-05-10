@@ -28,8 +28,8 @@ function pub_tv_overrides_ds_layout_settings_info() {
         0 => 'title',
       ),
       'social' => array(
-        0 => 'field_usa_link_twitter',
-        1 => 'field_usa_link_facebook',
+        0 => 'field_usa_link_facebook',
+        1 => 'field_usa_link_twitter',
         2 => 'field_usa_link_pinterest',
         3 => 'field_usa_link_tumblr',
       ),
@@ -37,8 +37,8 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'fields' => array(
       'field_social_logo' => 'media',
       'title' => 'title',
-      'field_usa_link_twitter' => 'social',
       'field_usa_link_facebook' => 'social',
+      'field_usa_link_twitter' => 'social',
       'field_usa_link_pinterest' => 'social',
       'field_usa_link_tumblr' => 'social',
     ),

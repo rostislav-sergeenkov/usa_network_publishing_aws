@@ -139,8 +139,8 @@ Drupal.behaviors.chat_with_fans_page = {
 				{
 					"name": "SourceIconTweaks",
 					"icons": {
-						"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif",
-						"yap-tv": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
+						"usanetwork": chatterSourceIcon,
+						"yap-tv": chatterSourceIcon
 					}
 				},
 				{

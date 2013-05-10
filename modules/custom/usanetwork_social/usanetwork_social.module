@@ -327,6 +327,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatSubmitTargetURL = "' . $submitTargetUrl . '"; ';
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
+  $vars .= 'var chatterSourceIcon = "http://'.$_SERVER['HTTP_HOST'].'/'.drupal_get_path('module', 'usanetwork_social').'/images/chatter_icon_red_16x16.gif";';
   drupal_add_js($vars, array('type' => 'inline'));
 
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-pack.js', 'external');

@@ -7,7 +7,8 @@ function ds_home_promo() {
       'media_normal' => t('Regular Image'),
       'text_1' => t('Text line 1'),
       'text_2' => t('Text line 2'),
-      'cta' => t('CTA')
+      'cta' => t('CTA'),
+      'link' => t('link')
     ),
     'css' => false,
     'image' => false

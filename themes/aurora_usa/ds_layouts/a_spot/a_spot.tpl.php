@@ -1,5 +1,7 @@
 <div class="<?php print $classes;?> aspot">
-  
+  <?php if ($link): ?>
+    <a href="<?php print $link; ?>" class="aspot-link">
+  <?php endif; ?>
   <div class="aspot-media">
     <?php if ($media_desktop): ?>
       <div class="media-desktop"><?php print $media_desktop; ?></div>
@@ -27,5 +29,8 @@
       <div class="aspot-cta row-4 media"><?php print $cta; ?></div>
     <?php endif; ?>
   </div>
-  
+  <?php if ($link): ?>
+    </a>
+  <?php endif; ?>
+
 </div>

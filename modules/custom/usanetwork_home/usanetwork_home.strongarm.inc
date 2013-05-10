@@ -29,17 +29,60 @@ function usanetwork_home_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__usa_homepage';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => TRUE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'admin_reference_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promoted_content' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

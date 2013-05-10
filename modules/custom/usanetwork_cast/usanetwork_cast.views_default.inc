@@ -125,9 +125,13 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'cast_carousel';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'draggableviews_structure|weight';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'cast_carousel';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
@@ -423,14 +427,19 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show social: people list */
   $handler = $view->new_display('block', 'show social: people list', 'block_2');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'follow_social';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'draggableviews_structure|weight';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'follow_social';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
@@ -812,6 +821,7 @@ function usanetwork_cast_views_default_views() {
 
   /* Display: show social show attachment */
   $handler = $view->new_display('attachment', 'show social show attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -820,9 +830,14 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'follow_social';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|title';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'follow_social';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */

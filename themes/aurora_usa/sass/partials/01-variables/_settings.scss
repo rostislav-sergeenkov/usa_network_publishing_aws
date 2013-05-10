@@ -75,11 +75,12 @@ $ziFilterOpen   : 95;
 
 // Breakpoint variables
 // small grid breakpoints
+$breakpoint-no-query-fallbacks: true;
 $bp-grid-small-2-squish: max-width 524px;
 $bp-grid-small-2: 525px;
 $bp-grid-small-3: 772px;
 $bp-grid-small-4: 1020px;
-$bp-episode-side-menu: 769px;
+$bp-episode-side-menu: 769px, 'no-query' '.no-mediaqueries';
 $bp-episode-split-content: 881px;
 $bp-episode-ads-side-by-side: 660px $bp-episode-side-menu;
 $episode-side-menu-width: 235px;
@@ -102,6 +103,16 @@ $bp-nav-nudge-3: 959px;
 $bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
 $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
+
+/* person page breakpoints */
+$bp-person-medium-width: 768px;
+$bp-person-gall-width: 704px;
+//$bp-person-share-icon-width: 300px;
+
+
+/* social page breakpoints */
+$bp-social-large-width: 900px;
+$bp-social-small-width: 330px;
 
 
 ////////////////////////////

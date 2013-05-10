@@ -117,13 +117,13 @@ function usanetwork_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '15',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -140,13 +140,13 @@ function usanetwork_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '15',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -234,6 +234,34 @@ function usanetwork_video_strongarm() {
   $strongarm->name = 'representative_image_field_node_usa_video';
   $strongarm->value = 0;
   $export['representative_image_field_node_usa_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_theplatform_mpx_feed_url';
+  $strongarm->value = 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_';
+  $export['usanetwork_theplatform_mpx_feed_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_theplatform_mpx_player_url';
+  $strongarm->value = '';
+  $export['usanetwork_theplatform_mpx_player_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_theplatform_tve_feed_url';
+  $strongarm->value = 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC';
+  $export['usanetwork_theplatform_tve_feed_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_theplatform_tve_player_url';
+  $strongarm->value = '';
+  $export['usanetwork_theplatform_tve_player_url'] = $strongarm;
 
   return $export;
 }

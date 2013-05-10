@@ -39,6 +39,9 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'text_3' => array(
         0 => 'field_usa_aspot_txt3',
       ),
+      'link' => array(
+        0 => 'field_usa_aspot_link',
+      ),
       'cta' => array(
         0 => 'field_call_to_action_type',
         1 => 'field_usa_aspot_txt4',
@@ -51,6 +54,7 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'field_usa_aspot_txt1' => 'text_1',
       'field_usa_aspot_txt2' => 'text_2',
       'field_usa_aspot_txt3' => 'text_3',
+      'field_usa_aspot_link' => 'link',
       'field_call_to_action_type' => 'cta',
       'field_usa_aspot_txt4' => 'cta',
     ),

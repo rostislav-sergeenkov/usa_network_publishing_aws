@@ -244,7 +244,7 @@ function usanetwork_promo_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',

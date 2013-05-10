@@ -43,3 +43,4 @@ features[variable][] = menu_parent_usanetwork_aspot
 features[variable][] = node_options_usanetwork_aspot
 features[variable][] = node_preview_usanetwork_aspot
 features[variable][] = node_submitted_usanetwork_aspot
+features[variable][] = representative_image_field_node_usanetwork_aspot

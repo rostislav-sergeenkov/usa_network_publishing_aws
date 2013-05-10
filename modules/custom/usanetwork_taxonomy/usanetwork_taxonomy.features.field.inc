@@ -95,7 +95,7 @@ function usanetwork_taxonomy_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '41',
+        'weight' => '1',
       ),
     ),
   );

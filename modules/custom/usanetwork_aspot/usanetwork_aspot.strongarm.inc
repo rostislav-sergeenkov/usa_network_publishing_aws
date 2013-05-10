@@ -115,5 +115,12 @@ function usanetwork_aspot_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_usanetwork_aspot'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'representative_image_field_node_usanetwork_aspot';
+  $strongarm->value = 'field_usa_aspot_desktop';
+  $export['representative_image_field_node_usanetwork_aspot'] = $strongarm;
+
   return $export;
 }

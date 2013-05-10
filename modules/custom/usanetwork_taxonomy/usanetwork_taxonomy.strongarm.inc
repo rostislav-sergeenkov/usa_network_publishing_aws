@@ -30,7 +30,20 @@ function usanetwork_taxonomy_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'metatags' => array(
+          'weight' => '4',
+        ),
+        'path' => array(
+          'weight' => '3',
+        ),
+        'name' => array(
+          'weight' => '0',
+        ),
+        'description' => array(
+          'weight' => '2',
+        ),
+      ),
       'display' => array(
         'description' => array(
           'default' => array(

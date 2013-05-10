@@ -117,7 +117,7 @@ function usanetwork_promo_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'representative_image_field_node_usanetwork_promo';
-  $strongarm->value = 0;
+  $strongarm->value = 'field_promo_regular_image';
   $export['representative_image_field_node_usanetwork_promo'] = $strongarm;
 
   return $export;

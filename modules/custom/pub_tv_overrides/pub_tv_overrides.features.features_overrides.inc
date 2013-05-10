@@ -11,6 +11,11 @@ function pub_tv_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
+  // Exported overrides for: ds_layout_settings
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|1"] = 'field_usa_link_pinterest';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|2"] = 'field_usa_link_tumblr';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|3"] = 'field_usa_link_twitter';
+
   // Exported overrides for: field
   $overrides["field.node-tv_episode-body.field_instance|display|full"] = array(
     'label' => 'hidden',
@@ -85,6 +90,9 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -114,40 +122,6 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_show-field_logo.field_instance|description"] = 'Used in show carousels.';
   $overrides["field.node-tv_show-field_logo.field_instance|fences_wrapper"] = 'figure';
-  $overrides["field.node-tv_show-field_social_logo.field_instance|display|follow_social"] = array(
-    'label' => 'hidden',
-    'module' => 'image',
-    'settings' => array(
-      'image_link' => 'content',
-      'image_style' => 'thumb_tiny',
-    ),
-    'type' => 'image',
-    'weight' => '0',
-  );
-  $overrides["field.node-tv_show-field_usa_link_facebook.field_instance|display|follow_social"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 0,
-  );
-  $overrides["field.node-tv_show-field_usa_link_pinterest.field_instance|display|follow_social"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 0,
-  );
-  $overrides["field.node-tv_show-field_usa_link_tumblr.field_instance|display|follow_social"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 0,
-  );
-  $overrides["field.node-tv_show-field_usa_link_twitter.field_instance|display|follow_social"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 0,
-  );
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title"] = array(

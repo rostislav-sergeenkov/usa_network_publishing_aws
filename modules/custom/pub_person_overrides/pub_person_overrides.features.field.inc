@@ -50,12 +50,26 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'hidden',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '2',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 22,
+          'weight' => '22',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -133,6 +147,12 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '27',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -140,7 +160,13 @@ function pub_person_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 21,
+          'weight' => '21',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -204,12 +230,26 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'If you have selected \'Character\' as this person\'s role please enter the full name of the actor who plays the character in this field.',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 23,
+          'weight' => '23',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -284,12 +324,30 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'block_cover_title',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 18,
+          'weight' => '18',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'thumb_tiny',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -378,12 +436,25 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 19,
+          'weight' => '19',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -465,12 +536,25 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '28',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 24,
+          'weight' => '24',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -552,12 +636,25 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 25,
+          'weight' => '25',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -639,12 +736,25 @@ function pub_person_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cast_carousel' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 20,
+          'weight' => '20',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',

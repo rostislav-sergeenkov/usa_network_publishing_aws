@@ -145,6 +145,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'usanetwork_blocks-usa_detect_ieversion' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_detect_ieversion',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'menu-usa-footer-top' => array(
           'module' => 'menu',
           'delta' => 'usa-footer-top',
@@ -162,6 +168,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa-footer-bottom',
           'region' => 'footer',
           'weight' => '-16',
+        ),
+        'usanetwork_blocks-usa_footer_message' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_message',
+          'region' => 'footer',
+          'weight' => '-10',
         ),
       ),
     ),

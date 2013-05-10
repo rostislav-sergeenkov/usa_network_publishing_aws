@@ -85,9 +85,6 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -117,6 +114,40 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_show-field_logo.field_instance|description"] = 'Used in show carousels.';
   $overrides["field.node-tv_show-field_logo.field_instance|fences_wrapper"] = 'figure';
+  $overrides["field.node-tv_show-field_social_logo.field_instance|display|follow_social"] = array(
+    'label' => 'hidden',
+    'module' => 'image',
+    'settings' => array(
+      'image_link' => 'content',
+      'image_style' => 'thumb_tiny',
+    ),
+    'type' => 'image',
+    'weight' => '0',
+  );
+  $overrides["field.node-tv_show-field_usa_link_facebook.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_pinterest.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_tumblr.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_twitter.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title"] = array(
@@ -126,6 +157,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title_lg"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|follow_social"] = array(
+    'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|social_follow"] = array(
+    'custom_settings' => TRUE,
+  );
 
  return $overrides;
 }

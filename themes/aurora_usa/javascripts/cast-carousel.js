@@ -29,7 +29,7 @@
             },
           }, {  
           wrapper     : {
-              classname       : "cast-carousel"
+              classname       : "cast-carousel carousel"
             },
         });
 

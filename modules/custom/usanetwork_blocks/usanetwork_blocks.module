@@ -50,6 +50,14 @@ function usanetwork_blocks_block_info() {
     'info' => t('USA: TV Show Menu'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_footer_message'] = array(
+    'info' => t('USA: Footer message'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_detect_ieversion'] = array(
+    'info' => t('USA: Detect ie version'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
 
   return $blocks;
 }
@@ -93,6 +101,17 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_tv_show_menu();
       break;
+    case 'usa_footer_message':
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_footer_message();
+      break;
+    case 'usa_detect_ieversion':
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
+      drupal_add_js(drupal_get_path("module", "usanetwork_blocks")."/theme/js/usanetwork_block.js");
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_detect_ieversion();
+      break;
   }
   return $block;
 }
@@ -114,6 +133,12 @@ function usanetwork_blocks_theme($existing, $type, $theme, $path) {
         ),
       'path' => $path . '/theme',
       'template' => 'usa-social-footer',
+    ),
+   'usa_detect_ieversion' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-detect-ieversion',
     ),
   );
 }
@@ -290,3 +315,29 @@ function usanetwork_blocks_tv_show_menu() {
   return $output;
 }
 
+/**
+ * Block for Displaying Footer Message
+ */
+function usanetwork_blocks_usa_footer_message() {
+  $render = array();
+  $render['usa_footer']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id ="footer-message">'. str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message")),
+    '#suffix' => '</div>',
+  );
+  return $render;
+}
+
+/**
+ * Block callback for the usa_detect_ieversion
+ */
+function usanetwork_blocks_usa_detect_ieversion() {
+  $render = array();
+
+  $render['ieversion_detection'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_detect_ieversion', array()),
+  );
+
+  return $render;
+}

@@ -1,9 +1,0 @@
-name = usanetwork files
-description = files settings for usa
-core = 7.x
-package = USA Network
-php = 5.2.4
-dependencies[] = ctools
-dependencies[] = file_entity
-features[ctools][] = file_entity:file_default_displays:1
-features[features_api][] = api:1

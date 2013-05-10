@@ -53,7 +53,17 @@ function usanetwork_taxonomy_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'usa_term_icon' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'taxonomy_term',
@@ -85,7 +95,7 @@ function usanetwork_taxonomy_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '41',
+        'weight' => '1',
       ),
     ),
   );

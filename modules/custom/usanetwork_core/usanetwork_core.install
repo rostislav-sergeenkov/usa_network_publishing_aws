@@ -32,6 +32,9 @@ function usanetwork_core_install() {
   menu_rebuild();
   usanetwork_core_create_menu_items();
 
+  // Set the homepage
+  variable_set('site_frontpage', 'home');
+
 }
 
 /**
@@ -79,6 +82,7 @@ function usanetwork_core_enable_modules() {
     'views_bulk_operations',
     'views_load_more',
     'addanother',
+    'styleguide',
     // USA custom
     'usanetwork',
     'usanetwork_ds',
@@ -87,7 +91,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_imagestyles',
     'usanetwork_views',
     'usanetwork_context',
-    'usanetwork_files',
     'usanetwork_panels',
     'usanetwork_strongarm',
     'usanetwork_social',
@@ -98,16 +101,19 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_schedule',
     'usanetwork_aspot',
     'usanetwork_flag',
-    'usanetwork_borealis',
     'usanetwork_promo',
     'usanetwork_home',
     'usanetwork_cast',
     'usanetwork_catchall',
+    'usanetwork_user_permissions',
+    'usanetwork_episodes',
+    'usanetwork_layouts',
+    'usanetwork_showpages',
+    'usanetwork_media_gallery',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
     'pub_media_overrides',
-    'pub_character_profile_overrides',
     'pub_person_overrides',
     'pub_gigya_overrides',
   );

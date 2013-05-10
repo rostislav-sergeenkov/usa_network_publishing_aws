@@ -16,7 +16,7 @@ function usanetwork_tv_schedule_menu() {
 
   $items['schedule'] = array(
     'title' => t('Schedule'),
-    'page callback' => 'uusanetwork_tv_schedule_schedule_page',
+    'page callback' => 'usanetwork_tv_schedule_schedule_page',
     'access arguments' => array('access content'),
   );
  
@@ -24,17 +24,170 @@ function usanetwork_tv_schedule_menu() {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function usanetwork_tv_schedule_block_info() {
+  $blocks = array();
+  $blocks['usa_on_now_block'] = array(
+    'info' => t('USA: on now block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_tv_schedule_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_on_now_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_tv_schedule_on_now_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Block callback for the On Now block
+ */
+function usanetwork_tv_schedule_on_now_block() {
+  $show_name = '';
+  $render = array();
+  
+  // JS to determine the current timezone from the user browser
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
+
+  // switch to ET timezone to perform calculations and then switch back to original timezone
+  $orginal_tz = date_default_timezone_get();
+  date_default_timezone_set('America/New_York');
+  $et_time = floatval(date('U'));
+
+  $today = date('Y-m-d');
+
+  // fetch today's schedule
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d'));
+
+  // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
+  $tv_schedule_prev_day = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d', time() - 60 * 60 * 24));
+
+  // return empty block if the tv schedule is empty
+  if (empty($tv_schedule) || empty($tv_schedule_prev_day)) {
+    // switch back to original server time zone
+    date_default_timezone_set($orginal_tz);
+    return ''; 
+  }
+
+  $full_tv_schedule = array();
+  // get the tv schedule from 00:00 AM till 5:59 AM
+  foreach ($tv_schedule_prev_day as $item) {
+    $cal_date = (array) $item->CalendarScheduleDate;
+
+    if ($cal_date[0] == $today) {
+      $end_time = (array) $item->EndTime;
+      $program = (array) $item->ProgramName;
+      $episode = (array) $item->TitleName;
+
+      $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+      $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
+
+      $tv_show = '<span id="on-now-show-name" class="on-now-show-name">' . $tv_show .
+        '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span>';
+
+      if (empty($nid)) {
+        if (strtoupper($tv_show) == 'USA MOVIE') {
+          $tv_show = l($tv_show, 'movies', array('html' => true));
+        }
+      } else {
+        $path = drupal_get_path_alias('node/'.$nid);
+        $tv_show = l($tv_show, $path, array('html' => true));
+      } 
+
+      $full_tv_schedule[] = array(
+        'date' => $cal_date[0],
+        'time' => $end_time[0],
+        'ts' => strtotime($cal_date[0] .' '. $end_time[0]),
+        'show_name' => $program[0],
+        'episode_name' => $episode[0],
+        'link' => $tv_show,
+      );
+    }
+  }
+  // get the tv schedule from 6:00 AM till end of the day
+  foreach ($tv_schedule as $item) {
+    $cal_date = (array) $item->CalendarScheduleDate;
+
+    if ($cal_date[0] == $today) {
+      $end_time = (array) $item->EndTime;
+      $program = (array) $item->ProgramName;
+      $episode = (array) $item->TitleName;
+
+      $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+      $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
+
+      $tv_show = '<span id="on-now-show-name" class="on-now-show-name">' . $tv_show .
+        '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span>';
+
+      if (empty($nid)) {
+        if (strtoupper($tv_show) == 'USA MOVIE') {
+          $tv_show = l($tv_show, 'movies', array('html' => true));
+        }
+      } else {
+        $path = drupal_get_path_alias('node/'.$nid);
+        $tv_show = l($tv_show, $path, array('html' => true));
+      } 
+
+      $full_tv_schedule[] = array(
+        'date' => $cal_date[0],
+        'time' => $end_time[0],
+        'ts' => strtotime($cal_date[0] .' '. $end_time[0]),
+        'show_name' => $program[0],
+        'episode_name' => $episode[0],
+        'link' => $tv_show,
+      );
+    }
+  }
+
+  // expose the tv schedule as JS variable to determine the on on show based on the user timezone and for other modules to consume it
+  $vars = 'var tv_schedule = ' . drupal_json_encode($full_tv_schedule) . ';';
+
+  foreach ($full_tv_schedule as $show) {
+    if ($et_time < $show['ts']) {
+      $show_name = $show['link'];
+      break;
+    }
+    $show_name = $show['link'];
+  }
+
+  // expose default et show for rest of the world
+  $vars .= "var on_now_default_show = '" . $show_name . "';";
+
+  drupal_add_js($vars, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');
+
+  // Handles the JS disabled browser scenario
+  $markup = '<noscript>' . $show_name . '</noscript>';
+
+  $render['on_now_block']['body'] = array(
+    '#type' => 'markup',
+    '#markup' => $markup,
+  );
+
+  // switch back to original server time zone
+  date_default_timezone_set($orginal_tz);
+
+  return $render;
+}
+
+/**
  * TV schedule page menu callback
  */
-function uusanetwork_tv_schedule_schedule_page() {
+function usanetwork_tv_schedule_schedule_page() {
   $output = '';
   drupal_add_css(drupal_get_path('module', 'usanetwork_tv_schedule') . '/css/usanetwork_tv_schedule.css');
-
-  $xml_feed = variable_get('usanetwork_tv_schedule_xml_feed', '');
-  
-  if (empty($xml_feed)) {
-    drupal_not_found();
-  }
 
   // switch to ET timezone to perform calculations and then switch back to original timezone
   $orginal_tz = date_default_timezone_get();
@@ -47,32 +200,26 @@ function uusanetwork_tv_schedule_schedule_page() {
     $et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
   }
 
-  // replace the tokens in the XML URL
-  $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($sdate);
 
-  $result = drupal_http_request($xml_feed);
-  if ($result->headers['content-type'] != 'application/xml') {
-    drupal_not_found();
-  }
-
-  $tvs = simplexml_load_file($xml_feed);
-
-  if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
+  if (empty($tv_schedule)) {
+    // switch back to original server time zone
+    date_default_timezone_set($orginal_tz);
     drupal_not_found();
   }
    
   $header = array(
-    t('TIME (ET)'),
-    t('PROGRAM'),
-    t('EPISODE'),
-    t('RATING'),
+    array('data' => t('TIME (ET)'), 'class' => array('show-time')),
+    array('data' => t('PROGRAM'), 'class' => array('program')),
+    array('data' => t('EPISODE'), 'class' => array('episode')),
+    array('data' =>  t('RATING'), 'class' => array('rating')),
   );
   $rows = array();
-  $first = true;
-  foreach ($tvs->Schedules->Schedule->ScheduleItem as $item) {
+  foreach ($tv_schedule as $item) {
     $classes = array();
     
     $start_time = (array) $item->StartTime;
+    $end_time = (array) $item->EndTime;
     $program = (array) $item->ProgramName;
     $episode = (array) $item->TitleName;
     $rating = (array) $item->Rating;
@@ -81,7 +228,7 @@ function uusanetwork_tv_schedule_schedule_page() {
     $day_part = (array) $item->Daypart;
 
     // convert to timestamp to determine on-air / off-air
-    $show_time = strtotime($cal_date[0] .' '. $start_time[0]);
+    $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
 
     // add styles to show hide the row based on on air value
     $classes[] = ($et_time >= $show_time) ? 'off-air' : 'on-air';
@@ -89,26 +236,24 @@ function uusanetwork_tv_schedule_schedule_page() {
     // add classes like primetime to style differently
     $classes[] = strtolower($day_part[0]); 
 
-    if ($first && $classes[0] == 'on-air') {
-      $cnt = count($rows);
-      $rows[$cnt-1]['class'][0] = 'on-air';
-      $first = false;
-    }
-
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
-    $nid = usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
+    $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
     if (empty($nid)) {
-      $show = $program[0];
+      if (strtoupper($show) == 'USA MOVIE') {
+        $show = l($program[0], 'movies');
+      } else {
+        $show = $program[0];
+      }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
       $show = l($program[0], $path);
     }
 
     $row = array(
-      preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]),
-      $show,
-      $episode[0],
-      $rating[0],
+      array('data' => preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]), 'class' => array('show-time')),
+      array('data' => $show, 'class' => array('program')),
+      array('data' => $episode[0], 'class' => array('episode')),
+      array('data' => $rating[0], 'class' => array('rating')),
     );
     $rows[] = array('data' => $row, 'class' => $classes);
     
@@ -132,9 +277,36 @@ function uusanetwork_tv_schedule_schedule_page() {
 }
 
 /**
+ * Fetch TV schedule from compass xml feed
+ */
+function usanetwork_tv_schedule_fetch_schedule($sdate='') {
+  $xml_feed = variable_get('usanetwork_tv_schedule_xml_feed', '');
+  
+  if (empty($xml_feed) || empty($sdate)) {
+    return NULL;
+  }
+
+  // replace the tokens in the Compass XML URL
+  $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
+
+  $result = drupal_http_request($xml_feed);
+  if ($result->headers['content-type'] != 'application/xml') {
+    return NULL;
+  }
+
+  $tvs = simplexml_load_file($xml_feed);
+
+  if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
+    return NULL;
+  } else {
+    return $tvs->Schedules->Schedule->ScheduleItem;
+  }
+}
+
+/**
  * Get node id given the title and type
  */
-function usanetwork_tv_schedule_get_nid_by_title($title, $type) {
+function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
   $nid = 0;
   $query = new EntityFieldQuery();
   

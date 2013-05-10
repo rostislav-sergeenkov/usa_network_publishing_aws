@@ -20,6 +20,55 @@ function usanetwork_social_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_social.admin.inc',
   );
+  // global social page
+  $items['social'] = array(
+    'title' => t('Global Social'),
+    'page callback' => 'usanetwork_social_global_landing_page',
+    'page arguments' => array(0),
+    'access callback' => 'usanetwork_social_global_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // global trending page
+  $items['social/trending'] = array(
+    'title' => t('Trending'),
+    'page callback' => 'usanetwork_social_global_trending',
+    'page arguments' => array(0),
+    'access callback' => 'usanetwork_social_global_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1
+  );
+  // global chat with fans page
+  $items['social/chat-with-fans'] = array(
+    'title' => t('Chat with Fans'),
+    'page callback' => 'usanetwork_social_global_chat_with_fans',
+    'page arguments' => array(0),
+    'access callback' => 'usanetwork_social_global_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2
+  );
+  // global twitter page
+  $items['social/twitter'] = array(
+    'title' => t('Twitter'),
+    'page callback' => 'usanetwork_social_global_twitter',
+    'page arguments' => array(0),
+    'access callback' => 'usanetwork_social_global_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3
+  );
+  // global sync page
+  $items['social/sync'] = array(
+    'title' => t('Sync'),
+    'page callback' => 'usanetwork_social_global_sync',
+    'page arguments' => array(0),
+    'access callback' => 'usanetwork_social_global_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 4
+  );
   // tv show social page
   $items['node/%node/social'] = array(
     'title' => t('Social'),
@@ -29,6 +78,16 @@ function usanetwork_social_menu() {
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
+  // tv show latest page
+  $items['node/%node/social/latest'] = array(
+    'title' => t('Latest'),
+    'page callback' => 'usanetwork_social_latest',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1
+  );
   // tv show chat with fans page
   $items['node/%node/social/chat-with-fans'] = array(
     'title' => t('Chat with Fans'),
@@ -37,6 +96,7 @@ function usanetwork_social_menu() {
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
+    'weight' => 2
   );
   // tv show twitter page
   $items['node/%node/social/twitter'] = array(
@@ -46,17 +106,26 @@ function usanetwork_social_menu() {
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
+    'weight' => 3
   );
-  // tv show facebook page
-  $items['node/%node/social/facebook'] = array(
-    'title' => t('Facebook'),
-    'page callback' => 'usanetwork_social_facebook',
+  // tv show sync page
+  $items['node/%node/social/sync'] = array(
+    'title' => t('Sync'),
+    'page callback' => 'usanetwork_social_sync',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
+    'weight' => 4
   );
   return $items;
+}
+
+/**
+ * Global social menu access callback
+ */
+function usanetwork_social_global_menu_access($node) {
+  return user_access('access content');
 }
 
 /**
@@ -203,14 +272,118 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Menu callback of social landing page
+ * Local function for getting all published TV shows sorted alphabetically
+ */
+function _usanetwork_social_show_nids() {
+  $show_nids = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_show'));
+  $query->propertyCondition('status', 1);
+  $query->propertyOrderBy('title', 'ASC');
+  $query->range(0, 100);
+  // execute the query
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $show_nids = array_keys($result['node']);
+  }
+  return $show_nids;
+}
+
+/**
+ * Menu callback of social global landing page
+ */
+function usanetwork_social_global_landing_page() {
+  return t('Global Social Landing Page: Placeholder');
+}
+
+/**
+ * Menu callback of social global trending page
+ */
+function usanetwork_social_global_trending() {
+  return t('Global Social Trending Page: Placeholder');
+}
+
+/**
+ * Menu callback for social global chat with fans page
+ */
+function usanetwork_social_global_chat_with_fans() {
+	$showInfo = array();
+	$shows = _usanetwork_social_show_nids();
+	if (is_array($shows) && !empty($shows)) {
+		$nodes = node_load_multiple($shows);
+		foreach ($nodes as $node) {
+			$showChatPage = isset($node->field_show_chat_page['und'][0]['value']) ? $node->field_show_chat_page['und'][0]['value'] : 0;
+			$showTokenName = isset($node->field_chat_show['und'][0]['value']) ? $node->field_chat_show['und'][0]['value'] : 0;
+			$showAlias = drupal_get_path_alias('node/'.$node->nid);
+			$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+			if ($showChatPage && $showTokenName) {
+				$showInfo[] = array(
+					'title' => $node->title,
+					'showTokenName' => $showTokenName,
+					'showUrl' => $showUrl
+				);
+			}
+		}
+	}
+
+	$output = '
+		<div id="globalChatWithFans">
+			<div>Join the Conversation: </div>
+			<div id="showList"></div>
+		</div>
+		';
+
+	if (count($showInfo) > 0) {
+		$showArrayVar = '';
+		$query = 'http://api.echoenabled.com/v2/mux';
+		$queryParams = '';
+		foreach ($showInfo as $array)
+		{
+			$showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showUrl'].'"], ';
+			$queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
+		}
+		$showArrayVar = substr($showArrayVar, 0, -1);
+		$queryParams = urlencode(substr($queryParams, 0, -1));
+		$queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
+		$queryStr = $query.'?'.$queryParams;
+
+		$vars = 'var echoQuery="'.$query.'"; ';
+		$vars .= 'var echoQueryParams = "'.$queryParams.'"; ';
+		$vars .= 'var showArray = {'.$showArrayVar.'}; ';
+		drupal_add_js($vars, array('type' => 'inline'));
+		drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/global-chat-with-fans.js');
+	}
+	else
+	{
+		$output = str_replace('<div id="showList"></div>', '<div id="showList">No shows found. Please come back again soon.</div>', $output);
+	}
+	return $output;
+}
+
+/**
+ * Menu callback of social global twitter page
+ */
+function usanetwork_social_global_twitter() {
+  return t('Global Social Twitter Page: Placeholder');
+}
+
+/**
+ * Menu callback of social global sync page
+ */
+function usanetwork_social_global_sync() {
+  return t('Global Social Sync Page: Placeholder');
+}
+
+/**
+ * Menu callback of tv show social landing page
  */
 function usanetwork_social_landing_page($node) {
   return t('Social Landing Page: Placeholder');
 }
 
 /**
- * Menu callback of social twitter page
+ * Menu callback of tv show social twitter page
  */
 function usanetwork_social_twitter($node) {
   $output = '';
@@ -268,14 +441,15 @@ function usanetwork_social_twitter($node) {
 }
 
 /**
- * Menu callback of social facebook page
+ * Menu callback of tv show social sync page
  */
-function usanetwork_social_facebook($node) {
-  return t('Facebook Feed: Placeholder');
+function usanetwork_social_sync($node) {
+  return t('TV Show Sync: Placeholder');
 }
 
+
 /**
- * Menu callback of social chat with fans page
+ * Menu callback of tv show social chat with fans page
  */
 function usanetwork_social_chat_with_fans($node) {
   $output = '';
@@ -297,10 +471,13 @@ function usanetwork_social_chat_with_fans($node) {
   $identityManagerUrl = isset($node->field_chat_identitymanagerurl[$lang][0]['value']) ? $node->field_chat_identitymanagerurl[$lang][0]['value'] : '';
   $identityManagerUrl = empty($identityManagerUrl) ? variable_get('usanetwork_social_chat_identitymanagerurl', '') : $identityManagerUrl;
 
+	$showAlias = drupal_get_path_alias('node/'.$node->nid);
+	$showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
 
   // if EQL is empty or show Chat with Fans checkbox is not checked, show social landing page
   if (empty($eql) || $showChatWithFansPage != 1) {
-    drupal_goto('node/'.$node->nid.'/social');
+    //drupal_goto('node/'.$node->nid.'/social');
+    drupal_goto($showBaseUrl.'/social');
   }
 
   $tokens = array();
@@ -361,5 +538,12 @@ function usanetwork_social_chat_with_fans($node) {
   $output .= '<div id="chat-echo-stream">&nbsp;</div>';
 
   return $output;
-
 }
+
+/**
+ * Menu callback of tv show social latest page
+ */
+function usanetwork_social_latest($node) {
+  return t('TV Show Latest: Placeholder');
+}
+

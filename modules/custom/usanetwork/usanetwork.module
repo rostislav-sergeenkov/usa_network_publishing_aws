@@ -35,6 +35,34 @@ function usanetwork_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' =>  'usanetwork.admin.inc',
   );
+  $items['admin/usanetwork/shows'] = array(
+    'title' => t('Administer USA Shows'),
+    'description' => t('Administer USA Network show specific items.'),
+    'access arguments' => array('administer usanetwork'),
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
  
   return $items;
+}
+
+/**
+ * helper function to return an array of show nids
+ */
+ function _usanetwork_show_nids() {
+  $show_nids = array();
+  $show = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_show'));
+  $query->propertyCondition('status', 1);
+  $query->propertyOrderBy('title', 'ASC');
+  $query->range(0, 100);
+  // execute the query
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $show_nids = array_keys($result['node']);
+  }
+  return $show_nids;
 }

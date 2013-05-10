@@ -55,6 +55,7 @@ function pub_tv_overrides_field_default_fields() {
         ),
       ),
       'entity_type' => 'field_collection_item',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_child_link',
       'label' => 'child_link',
@@ -81,7 +82,7 @@ function pub_tv_overrides_field_default_fields() {
         'title' => 'optional',
         'title_maxlength' => '128',
         'title_value' => '',
-        'url' => 0,
+        'url' => 'optional',
         'user_register_form' => FALSE,
         'validate_url' => 1,
       ),
@@ -140,6 +141,7 @@ function pub_tv_overrides_field_default_fields() {
         ),
       ),
       'entity_type' => 'field_collection_item',
+      'exclude_cv' => 0,
       'fences_wrapper' => 'div',
       'field_name' => 'field_main_link',
       'label' => 'Main_link',
@@ -166,7 +168,7 @@ function pub_tv_overrides_field_default_fields() {
         'title' => 'optional',
         'title_maxlength' => '128',
         'title_value' => '',
-        'url' => 0,
+        'url' => 'optional',
         'user_register_form' => FALSE,
         'validate_url' => 1,
       ),
@@ -205,7 +207,28 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'default' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '16',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '50',
+        ),
+        'social_follow' => array(
           'label' => 'above',
           'module' => 'field_collection',
           'settings' => array(
@@ -289,6 +312,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '33',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -296,7 +325,22 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 31,
+          'weight' => '31',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '51',
+        ),
+        'social_follow' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '31',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -364,6 +408,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '37',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'image',
@@ -372,7 +422,23 @@ function pub_tv_overrides_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 33,
+          'weight' => '33',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '53',
+        ),
+        'social_follow' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -481,6 +547,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'A maximum of 6 promos recommended for this region.',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '35',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -488,7 +560,22 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 32,
+          'weight' => '32',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '52',
+        ),
+        'social_follow' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '32',
         ),
         'teaser' => array(
           'label' => 'above',

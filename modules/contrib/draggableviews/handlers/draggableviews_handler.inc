@@ -6,7 +6,7 @@
  */
 
 /**
- * Parent class for all handlers.
+ * Parent class for all sort handlers.
  */
 class draggableviews_handler {
 

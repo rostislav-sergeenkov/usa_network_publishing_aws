@@ -15,20 +15,26 @@ function usanetwork_context_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'show_page';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'shows';
   $context->conditions = array(
     'node' => array(
       'values' => array(
         'tv_show' => 'tv_show',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_blocks-usa_tv_show_menu' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_tv_show_menu',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
         'usanetwork_lyris-newsletter_subscription' => array(
           'module' => 'usanetwork_lyris',
           'delta' => 'newsletter_subscription',
@@ -39,7 +45,50 @@ function usanetwork_context_context_default_contexts() {
     ),
   );
   $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
   $export['show_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_social_page';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/social' => 'node/*/social',
+        'node/*/social/*' => 'node/*/social/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-usa_shows-block_1' => array(
+          'module' => 'views',
+          'delta' => 'usa_shows-block_1',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
+        'views-usa_cast-block_2' => array(
+          'module' => 'views',
+          'delta' => 'usa_cast-block_2',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_social_page'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -57,8 +106,8 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_blocks-usa_on_now_block' => array(
-          'module' => 'usanetwork_blocks',
+        'usanetwork_tv_schedule-usa_on_now_block' => array(
+          'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_block',
           'region' => 'main_prefix',
           'weight' => '-10',
@@ -96,6 +145,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'usanetwork_blocks-usa_detect_ieversion' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_detect_ieversion',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'menu-usa-footer-top' => array(
           'module' => 'menu',
           'delta' => 'usa-footer-top',
@@ -113,6 +168,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa-footer-bottom',
           'region' => 'footer',
           'weight' => '-16',
+        ),
+        'usanetwork_blocks-usa_footer_message' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_message',
+          'region' => 'footer',
+          'weight' => '-10',
         ),
       ),
     ),

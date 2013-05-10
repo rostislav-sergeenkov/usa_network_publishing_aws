@@ -5,3 +5,124 @@
  */
 
 include_once 'usanetwork_home.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_home_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_landing',
+    'access arguments' => array('access content'),
+  );
+  $items['home/home_admin/%'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_admin_landing',
+    'access arguments' => array('administer content'),
+    'page arguments' => array(2),
+  );
+
+  return $items;
+}
+
+/**
+ * Callback for the USA homepage
+ */
+function usanetwork_home_landing($day = '') {
+  $render = array();
+  if (empty($day)) {
+    $day = strtolower(date('l'));
+  }
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as teasers
+  // @todo - load fields or make a view mode for this
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content available.');
+  }
+  return $render;
+}
+
+/**
+ * Callback for the USA homepage - admin preview pages
+ */
+function usanetwork_home_admin_landing($day = '') {
+  $render = array();
+  if (arg(2)) {
+    $day = strtolower(arg(2));
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as teasers
+  // @todo - load fields or make a view mode for this
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content added for @day.', array('@day' => $day));
+  }
+  return $render;
+}
+
+/**
+ * To fetch homepage node by title
+ */
+function usanetwork_home_get_homepage($types, $title) {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', $types);
+  $query->propertyCondition('status', 1);
+  $query->propertyCondition('title', $title, '=');
+
+  // execute the query
+  $homepage = $query->execute();
+  return $homepage;
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function usanetwork_home_node_validate($node, $form, &$form_state) {
+  if ($node->type == 'usa_homepage') {
+    $nodeid = '';
+    $home_day = '';
+    $this_home_day = field_get_items('node', $node, 'field_usa_hp_daylist');
+    if (!empty($node->nid)) {
+      //editing content
+      $nodeid = $node->nid;
+    }
+    if (!empty($this_home_day['0']['value'])) {
+      $home_day = $this_home_day['0']['value'];
+    }
+    $query = db_select('field_data_field_usa_hp_daylist', 'day', array('target' => 'slave'));
+    $query->leftjoin('node', 'n', 'n.nid = day.entity_id AND n.type = \'usa_homepage\'');
+    $query->fields('day', array('field_usa_hp_daylist_value'));
+    $query->condition('day.bundle', 'usa_homepage', '=');
+    $query->condition('day.field_usa_hp_daylist_value', $home_day, '=');
+    //check for all other homepage nodes(on editing content) excluding the current content
+    $query->condition('day.entity_id', $nodeid, '<>');
+    //check for showing only published contents
+    $query->condition('n.status', '1', '=');
+
+    $num_of_results = $query->execute()->rowCount();
+    if($num_of_results != 0) {
+      form_set_error('', t('There is already a published homepage present for ' . ucfirst($home_day)));
+    }
+  }
+}
+

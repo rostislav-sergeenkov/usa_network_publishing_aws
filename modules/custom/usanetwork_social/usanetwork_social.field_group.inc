@@ -21,7 +21,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Chat with Fans Settings',
-    'weight' => '29',
+    'weight' => '61',
     'children' => array(
       0 => 'field_chat_children',
       1 => 'field_chat_childrenof',
@@ -105,7 +105,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Newsletter Settings',
-    'weight' => '28',
+    'weight' => '60',
     'children' => array(
       0 => 'field_usa_lyris_listid',
     ),
@@ -135,9 +135,10 @@ function usanetwork_social_field_group_info() {
     'label' => 'Social Information',
     'weight' => '3',
     'children' => array(
-      0 => 'group_newsletter',
-      1 => 'group_chat_settings',
+      0 => 'group_chat_settings',
+      1 => 'group_newsletter',
       2 => 'group_twitter_settings',
+      3 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -162,7 +163,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Twitter Settings',
-    'weight' => '30',
+    'weight' => '62',
     'children' => array(
       0 => 'field_show_twitter_page',
       1 => 'field_twitter_children',
@@ -228,6 +229,38 @@ function usanetwork_social_field_group_info() {
     ),
   );
   $export['group_twitter|node|tv_show|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_show_follow|node|tv_show|form';
+  $field_group->group_name = 'group_usa_show_follow';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Follow block',
+    'weight' => '58',
+    'children' => array(
+      0 => 'field_social_logo',
+      1 => 'field_usa_link_twitter',
+      2 => 'field_usa_link_facebook',
+      3 => 'field_usa_link_pinterest',
+      4 => 'field_usa_link_tumblr',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Follow block',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
 
   return $export;
 }

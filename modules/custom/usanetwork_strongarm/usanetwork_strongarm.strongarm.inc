@@ -41,16 +41,51 @@ function usanetwork_strongarm_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'usanetwork_on_now_schedule';
-  $strongarm->value = 'http://www.usanetwork.com/app/json/xmltojson.php?xmlPath=/schedule.xml&jsVar=usa_homeSchedule';
-  $export['usanetwork_on_now_schedule'] = $strongarm;
+  $strongarm->name = 'subpathauto_depth';
+  $strongarm->value = '2';
+  $export['subpathauto_depth'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'usanetwork_tv_schedule';
-  $strongarm->value = 'http://www.usanetwork.com/schedules/chatter_sched.php';
-  $export['usanetwork_tv_schedule'] = $strongarm;
+  $strongarm->name = 'usanetwork_footer_message';
+  $strongarm->value = '&copy;YYYY NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal';
+  $export['usanetwork_footer_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_endpoint';
+  $strongarm->value = 'http://usa.sparklist.com:82/?wsdl';
+  $export['usanetwork_lyris_endpoint'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_password';
+  $strongarm->value = 'trix4kids';
+  $export['usanetwork_lyris_password'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_proxyhost';
+  $strongarm->value = 'usushproxy01.udh.unistudios.com';
+  $export['usanetwork_lyris_proxyhost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_proxyport';
+  $strongarm->value = '';
+  $export['usanetwork_lyris_proxyport'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_lyris_username';
+  $strongarm->value = 'websupport@nbcuni.com';
+  $export['usanetwork_lyris_username'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

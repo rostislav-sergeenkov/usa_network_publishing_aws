@@ -216,7 +216,7 @@ function usanetwork_aspot_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_aspot',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Largest retina image minimum 2508w x 1428h',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -254,14 +254,14 @@ function usanetwork_aspot_field_default_fields() {
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'file_directory' => 'aspot',
+        'file_directory' => 'aspot_desktop',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '',
+        'min_resolution' => '2508x1428',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -426,7 +426,7 @@ function usanetwork_aspot_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_aspot',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -464,14 +464,14 @@ function usanetwork_aspot_field_default_fields() {
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'file_directory' => '',
+        'file_directory' => 'aspot_mobile',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '',
+        'min_resolution' => '600x500',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -538,7 +538,7 @@ function usanetwork_aspot_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_aspot',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Medium rectangular version - minimum 1245w x 709w. Desktop image can be replicated here if preferred.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -576,14 +576,14 @@ function usanetwork_aspot_field_default_fields() {
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'file_directory' => '',
+        'file_directory' => 'aspot_tablet',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '',
+        'min_resolution' => '1245x709',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -970,8 +970,11 @@ function usanetwork_aspot_field_default_fields() {
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
+  t('Largest retina image minimum 2508w x 1428h');
   t('Link');
+  t('Medium rectangular version - minimum 1245w x 709w. Desktop image can be replicated here if preferred.');
   t('Mobile Image');
+  t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Show');
   t('Tablet Image');
   t('Text line 2');

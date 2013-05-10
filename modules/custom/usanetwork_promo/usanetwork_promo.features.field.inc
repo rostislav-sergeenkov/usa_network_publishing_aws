@@ -331,7 +331,7 @@ function usanetwork_promo_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_promo',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Minimum 600w x 500h - scales automatically for mobile.',
       'display' => array(
         'carousel_promo' => array(
           'label' => 'hidden',
@@ -375,22 +375,21 @@ function usanetwork_promo_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_promo_regular_image',
       'label' => 'Regular Image',
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'promo_regular',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '',
+        'min_resolution' => '600x500',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -645,7 +644,7 @@ function usanetwork_promo_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_promo',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Minimum 1230w x 500h',
       'display' => array(
         'carousel_promo' => array(
           'label' => 'above',
@@ -685,22 +684,21 @@ function usanetwork_promo_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_promo_wide_image',
       'label' => 'Wide Image',
       'required' => 1,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
-        'file_directory' => '',
+        'file_directory' => 'promo_wide',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
         'focus_lock_ratio' => 0,
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '',
+        'min_resolution' => '1230x500',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -841,6 +839,8 @@ function usanetwork_promo_field_default_fields() {
   t('Call to Action Type');
   t('If this is related to a show, please select the show from the list.');
   t('Link');
+  t('Minimum 1230w x 500h');
+  t('Minimum 600w x 500h - scales automatically for mobile.');
   t('Regular Image');
   t('Show');
   t('Text Line 1');

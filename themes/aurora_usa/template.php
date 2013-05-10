@@ -181,7 +181,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
               // $thumb = $vars['items'][0];
               // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
-              // //dpm($vars);
               break; 
 
 

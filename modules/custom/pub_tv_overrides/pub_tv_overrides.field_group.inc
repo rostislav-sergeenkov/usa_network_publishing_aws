@@ -51,8 +51,9 @@ function pub_tv_overrides_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_usa_tv_a_spot',
-      1 => 'field_usa_tv_promo',
-      2 => 'field_usa_tv_on_now',
+      1 => 'field_usa_tv_on_now',
+      2 => 'field_usa_tv_promo',
+      3 => 'field_display_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

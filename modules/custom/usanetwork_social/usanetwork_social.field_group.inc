@@ -21,7 +21,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Chat with Fans Settings',
-    'weight' => '61',
+    'weight' => '45',
     'children' => array(
       0 => 'field_chat_children',
       1 => 'field_chat_childrenof',
@@ -105,7 +105,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Newsletter Settings',
-    'weight' => '60',
+    'weight' => '43',
     'children' => array(
       0 => 'field_usa_lyris_listid',
     ),
@@ -133,12 +133,13 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social Information',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'group_chat_settings',
       1 => 'group_newsletter',
-      2 => 'group_twitter_settings',
-      3 => 'group_usa_show_follow',
+      2 => 'group_trend',
+      3 => 'group_twitter_settings',
+      4 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -155,6 +156,37 @@ function usanetwork_social_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_trend|node|tv_show|form';
+  $field_group->group_name = 'group_trend';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Trending Settings',
+    'weight' => '44',
+    'children' => array(
+      0 => 'field_trend_base_url',
+      1 => 'field_trend_url_params',
+      2 => 'field_show_trending',
+      3 => 'field_trend_show_path',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Trending Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_trend|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_twitter_settings|node|tv_show|form';
   $field_group->group_name = 'group_twitter_settings';
   $field_group->entity_type = 'node';
@@ -163,7 +195,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Twitter Settings',
-    'weight' => '62',
+    'weight' => '46',
     'children' => array(
       0 => 'field_show_twitter_page',
       1 => 'field_twitter_children',
@@ -241,13 +273,13 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Follow block',
-    'weight' => '58',
+    'weight' => '42',
     'children' => array(
       0 => 'field_social_logo',
-      1 => 'field_usa_link_twitter',
-      2 => 'field_usa_link_facebook',
-      3 => 'field_usa_link_pinterest',
-      4 => 'field_usa_link_tumblr',
+      1 => 'field_usa_link_facebook',
+      2 => 'field_usa_link_pinterest',
+      3 => 'field_usa_link_tumblr',
+      4 => 'field_usa_link_twitter',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

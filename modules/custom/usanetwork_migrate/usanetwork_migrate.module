@@ -143,6 +143,67 @@ function _usanetwork_migrate_attach_video_tv_show_reference(&$entity, $term_hier
 }
 
 
+/**
+ * Implements hook_cron().
+ */
+function usanetwork_migrate_cron() {
+
+  $results = usanetwork_migrate_get_scheduled_nodes();
+  $queue = DrupalQueue::get('usanetwork_migrate');
+
+  foreach ($results as $result) {
+    $queue->createItem($result);
+  }
+}
+
+/*
+ * Implements hook_cron_queue_info().
+ */
+function usanetwork_migrate_cron_queue_info() {
+
+  $queues['usanetwork_migrate'] = array(
+    'worker callback' => 'usanetwork_migrate_process_item',
+    'time' => 60,
+  );
+
+  return $queues;
+}
+
+/**
+ * Process scheduled nodes to fire unpublish state flow event.
+ *
+ * @param object $data
+ */
+function usanetwork_migrate_process_item($data) {
+
+  global $user;
+
+  $user = user_load(1);
+  $node = node_load($data->nid, $data->vid);
+
+  drupal_set_message('Attempting to unpublish nid:' . $node->nid . ', vid:' . $node->vid);
+
+  $state_flow = state_flow_load_state_machine($node, TRUE);
+  $state_flow->fire_event('unpublish', $user->uid, 'Unpublished on cron.');
+}
+
+/**
+ * Return all nodes scheduled to be published
+ *
+ * @param int $nid
+ * @param int $vid
+ * @param int $date
+ * @return object
+ */
+function usanetwork_migrate_get_scheduled_nodes() {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->fieldCondition('field_publish_date', 'value2', REQUEST_TIME, '<=');
+  $query_result = $query->execute();
+
+  return isset($query_result['node']) ? $query_result['node'] : array();
+}
 
 
 

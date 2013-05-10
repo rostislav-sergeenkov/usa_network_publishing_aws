@@ -24,7 +24,7 @@ function usanetwork_cast_default_page_manager_handlers() {
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => 'person-page',
-    'css_id' => 'profile-content',
+    'css_id' => 'person-content',
     'css' => '',
     'contexts' => array(),
     'relationships' => array(
@@ -84,6 +84,7 @@ function usanetwork_cast_default_page_manager_handlers() {
           2 => 4,
         ),
         'parent' => 'canvas',
+        'class' => '',
       ),
       2 => array(
         'type' => 'row',
@@ -313,7 +314,10 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => 'cast-carousel',
+      'css_class' => 'carousel',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

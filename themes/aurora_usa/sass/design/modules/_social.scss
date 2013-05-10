@@ -1,175 +1,222 @@
-/**/
 
+
+.icons-social a {
+	color:#000;
+	background-color:$gray-light;
+	@extend %usanetwork-font;
+	font-size:1.5em;
+	@include border-radius(50%);
+	padding: 4px 3px 3px;
+	height: 32px;
+	width: 32px;
+	display:inline-block;
+	margin-left:5px;
+	&:hover {
+		background-color:#fff;
+	}
+	&.usasocial-fb {
+  	padding-left:8px;
+	}
+}
 
 .page-node-social {
 	#main {
-		max-width:1290px;
-		margin-left:auto;
-		margin-right:auto;
+		max-width: 1290px;
+		margin-left: auto;
+		margin-right: auto;
 		width:300px;
-		@include breakpoint($bp-social-small-width) { 
-			width:auto;
-        	clear:both;
+		@include breakpoint($bp-social-small-width) {
+			width: auto;
+    	clear: both;
 		}
-		@include breakpoint($bp-social-large-width) { 
-			width:auto;
-			padding-right:330px;
-//			text-align:right;
+		@include breakpoint($bp-social-large-width) {
+			width: auto;
+			padding-right: 330px;
 		}
 	}
 	.tabs {
-		padding: 15px 15px 0;
+		@include breakpoint($bp-social-mid-width) {
+			padding: 15px 15px 0;
+		}
 		.secondary {
-			border-bottom:0;
-			padding:10px 0 0 0;
-			margin:0;
+			border-bottom: 0;
+			padding: 10px 0 0 0;
+			margin: 0;
 			overflow:hidden;
+			@include breakpoint($bp-social-large-width) {
+				display: inline-block;
+			}
 			li {
-			    border:0;
-			    padding:0;
-			    font-family: "Proxima N W01 Smbd";
-			    font-size:1.125em;
-			    line-height:1em;
-			    border-bottom:0;
-			    &:first-child a {
-			    	margin:0;
+				border: 0;
+				padding: 0;
+				font-family: "Proxima N W01 Smbd";
+				font-size: 1.125em;
+				line-height: 1em;
+				border-bottom: 0;
+				display: block;
+				@include breakpoint($bp-social-mid-width) {
+					display: inline;
+				}
+				a {
+					&.person-twitter,
+					&.usasocial-twitter 	{
+			  		@extend %usanetwork-font; /*test */
 			    }
-			    &.twitter 	{
-			    	@extend %usanetwork-font;
-			    }
-				&.active {	
-					a{
-						background:#121212;
-						color: #0AB6E8;
-						border:0;
+				}
+				&:first-child a {
+			  	margin: 0;
+			  	border-top: 0;
+				}
+				&.active {
+					a {
+						color: $white;
+						border-bottom: 0;
+						@include breakpoint($bp-social-mid-width) {
+							background: #121212;
+							color: #0AB6E8;
+							border: 0;
+						}
 					}
 				}
 			}
 			a {
-				background-color: #474747;
-			    height: 36px;
-			    line-height: 1;
-			    margin: 0 0 0 15px;
-			    padding: 10px 15px 0;
-			    text-transform:uppercase;
-		    	color: #818181;
-		    	display:block;
-		    	float:left;
-		    	&:hover {
-		    		color:#818181;
-		    	}	
+				background-color: #393939;
+				height: 36px;
+				line-height: 1;
+				padding: 10px 15px 0;
+				text-transform: uppercase;
+				color: #818181;
+				display: block;
+				float: left;
+				width: 100%;
+				border-top: 1px solid #575757;
+				font-weight: normal;
+				text-transform: none;
+				&:hover {
+					background-color: #444;
+				}
+		  	@include breakpoint($bp-social-mid-width) {
+		    	background-color: #474747;
+					width: auto;
+					margin: 0 0 0 15px;
+					border-top: 0;
+					text-transform: uppercase;
+					&:hover {
+			  		color: #818181;
+			    }
+				}
 			}
 		}
 	}
-
 	.region-content {
-		padding:15px;
+		padding: 15px;
 	}
 	li {
-		list-style:none;
+		list-style: none;
 	}
 	#content {
-		width:100%;
-		text-align:left;
-		vertical-align:top;
-		float:left;
+		width: 100%;
+		text-align: left;
+		vertical-align: top;
+		float: left;
 	}
-	
 	.sidebar {
-		background:#414141;
-		clear:both;
-		@include breakpoint($bp-social-large-width) { 
-			float:left;
-		    margin-left: 15px;
-		    margin-top:133px;
-		    margin-right: -315px;
-		    text-align: left;
-		    vertical-align: top;
-		    width: 300px;
-		    margin-bottom:15px;
-		    clear:none;
+		background: #414141;
+		clear: both;
+		@include breakpoint($bp-social-large-width) {
+			float: left;
+			margin-left: 15px;
+			margin-top: 133px;
+			margin-right: -315px;
+			text-align: left;
+			vertical-align: top;
+			width: 300px;
+			margin-bottom: 15px;
+			clear: none;
 		}
 	}
 }
 
 .social-follow-block {
-
-		h2 {
-			color:#9e9e9e;
-			text-transform:uppercase;
-			font-family:"Proxima N W01 Reg";
-			font-size:1.125em;
-			padding:16px 12px 11px;
-			line-height:1em;
-			margin:0;
+	h2 {
+		color: #9e9e9e;
+		text-transform: uppercase;
+		font-family: "Proxima N W01 Reg";
+		font-size: 1.125em;
+		padding: 16px 12px 11px;
+		line-height: 1em;
+		margin: 0;
+	}
+	ul {
+		margin: 0;
+	}
+	ul li {
+		font-size: 0;
+		overflow: hidden;
+		padding: 10px 0 10px 54px;
+		margin: 0;
+		border-top: 1px solid #4B4B4B;
+		figure {
+			display: inline-block;
+			margin-left: -42px;
+			vertical-align: middle;
+			width: 42px;
+			height: 42px;
 		}
-		ul {
-			margin:0;
-		}
-		ul li {
-			
-		    overflow: hidden;
-		    padding: 10px 0 10px 54px;
-			margin:0;
-			border-top: 1px solid #4B4B4B;
-			figure {
-				display: inline-block;
-			    margin-left: -42px;
-			    vertical-align: middle;
-			    width: 42px;
+	}
+	.item-content {
+		display: inline-block;
+		margin-right: -145px;
+		overflow: hidden;
+		padding-right: 145px;
+		text-align: right;
+		vertical-align: middle;
+		width: 100%;
+  	.title {
+			line-height: 1em;
+			font-size: 14px;
+			font-family: "Proxima N W01 Thin Reg";
+			display: inline-block;
+			text-align: left;
+			vertical-align: middle;
+			width: 100%;
+			> div {
+				margin: 4px 0 0 11px;
 			}
-			.item-content {
-				display: inline-block;
-//			    font-size: 0;
-			    margin-right: -145px;
-			    overflow: hidden;
-			    padding-right: 145px;
-			    text-align: right;
-			    vertical-align: middle;
-			    width: 100%;
-			    .title {
-			    	font-family:"Proxima N W01 Thin Reg";
-			    	display: inline-block;
-				    text-align: left;
-				    vertical-align: middle;
-				    width: 100%;
-				    margin:4px 0 0 11px;
-				    h4 {
-				    	
-				    	font-family:"Proxima N W01 Reg";
-					}
-					.field-name-field-role,
-					.field-name-field-usa-actor-name {
-						font-style: italic;
-						color:#d0d0d0;
-						font-weight:normal;
-					}
-			    }
-			    a {
-				   	color:$white;
+			h4 {
+				font-size:14px;
+				font-family:"Proxima N W01 Reg";
+			}
+			.field-name-field-role,
+			.field-name-field-usa-actor-name {
+				font-style: italic;
+				color: #d0d0d0;
+				font-weight: normal;
+			}
+    }
+		a {
+			color:$white;
+		}
+		.icons-social {
+			font-size: 14px;
+			display: inline-block;
+			margin-right: -130px;
+			overflow: hidden;
+			vertical-align: middle;
+			width: 130px;
+			a {
+				@extend %usanetwork-font;
+				background-color: transparent;
+				color: #818181;
+				float: right;
+				margin-left: 8px;
+				width: 21px;
+				height: 21px;
+				padding:0;
+				&:hover {
+					color: #0AB6E8;
 				}
-				/* need to update class name */
-			    .share-icons {
-			    	display: inline-block;
-				    margin-right: -130px;
-				    overflow: hidden;
-				    vertical-align: middle;
-				    width: 130px;
-				    a {
-				    	background-color:transparent;
-				    	color:#818181;
-					    float: right;
-					    margin-left: 8px;
-					    width:21px;
-					    height:21px;
-					    font-size: 1.5em;
-					    display:inline;
-					    @include border-radius(0%);
-					    &:hover {
-					    	color:#0AB6E8;
-					    }
-				    }
-			    }
-			}
-		}
+	    }
+    }
+	}
 }

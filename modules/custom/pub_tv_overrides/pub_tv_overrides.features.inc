@@ -121,9 +121,6 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'weight' => '8',
     ); /* WAS: '' */
     $data['node-tv_episode-field_show']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['direction']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['field']);
-    unset($data['node-tv_episode-field_show']['field_config']['settings']['handler_settings']['sort']['property']);
   }
   if (isset($data['node-tv_episode-field_tv_cover_media'])) {
     $data['node-tv_episode-field_tv_cover_media']['field_instance']['display']['full'] = array(
@@ -165,6 +162,38 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       ),
       'type' => 'image',
       'weight' => '0',
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_facebook'])) {
+    $data['node-tv_show-field_usa_link_facebook']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_pinterest'])) {
+    $data['node-tv_show-field_usa_link_pinterest']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_tumblr'])) {
+    $data['node-tv_show-field_usa_link_tumblr']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_usa_link_twitter'])) {
+    $data['node-tv_show-field_usa_link_twitter']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
     ); /* WAS: '' */
   }
 }

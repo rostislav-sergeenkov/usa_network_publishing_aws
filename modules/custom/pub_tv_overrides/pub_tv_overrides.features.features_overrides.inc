@@ -85,9 +85,6 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -126,6 +123,30 @@ function pub_tv_overrides_features_override_default_overrides() {
     ),
     'type' => 'image',
     'weight' => '0',
+  );
+  $overrides["field.node-tv_show-field_usa_link_facebook.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_pinterest.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_tumblr.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_usa_link_twitter.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
   );
 
   // Exported overrides for: variable

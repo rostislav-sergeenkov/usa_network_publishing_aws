@@ -68,6 +68,15 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
+  // add ios touch icon
+  $ios_icon = array(
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon',
+      'href' => $theme_path . '/images/ios-home.png',
+    ),
+  );
+  drupal_add_html_head($ios_icon, 'google_font_cardo');
 }
 
 /**
@@ -146,7 +155,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       // append_count_to_caption($vars);
     }
   }
- 
+
   switch ($vars['element']['#field_name']) {
       case 'field_role':
           if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
@@ -160,10 +169,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
                   unset($vars['items'][0]);
                 break;
             }
-          }   
+          }
 
       break;
-  }  
+  }
 }
 
 // append the cover image, node title, and node body to the media gallery item list

@@ -13,6 +13,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_catchall_page_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_catchall_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
   $strongarm->value = '[node:field_show]/cast/[node:title]';
   $export['pathauto_node_person_pattern'] = $strongarm;
@@ -37,6 +44,48 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->name = 'pathauto_node_tv_show_pattern';
   $strongarm->value = '[node:title]';
   $export['pathauto_node_tv_show_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usanetwork_aspot_pattern';
+  $strongarm->value = 'aspot/[node:title]';
+  $export['pathauto_node_usanetwork_aspot_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usanetwork_promo_pattern';
+  $strongarm->value = 'promo/[node:title]';
+  $export['pathauto_node_usanetwork_promo_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usanetwork_static_page_pattern';
+  $strongarm->value = 'page/[node:title]';
+  $export['pathauto_node_usanetwork_static_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usa_homepage_pattern';
+  $strongarm->value = 'homepage/[node:title]';
+  $export['pathauto_node_usa_homepage_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usa_tve_video_pattern';
+  $strongarm->value = '[node:field_show]/videos/[node:title]';
+  $export['pathauto_node_usa_tve_video_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_usa_video_pattern';
+  $strongarm->value = '[node:field_show]/videos/[node:title]';
+  $export['pathauto_node_usa_video_pattern'] = $strongarm;
 
   return $export;
 }

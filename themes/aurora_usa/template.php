@@ -103,7 +103,6 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-
   if($vars['block']->bid == 'views-usa_cast-block_2') {
     $vars['classes_array'][] = drupal_html_class('social-follow-block');
   }
@@ -157,20 +156,40 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
   }
 
   switch ($vars['element']['#field_name']) {
-      case 'field_role':
-          if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
-            switch ($vars['element']['#view_mode']) {
-              case 'cast_carousel':
-                  // modify role field text
-                  $vars['items'][0]['#markup'] = 'played by';
-                break;
-              case 'follow_social':
-                  //remove role field
-                  unset($vars['items'][0]);
-                break;
-            }
-          }
+    case 'field_role':
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
+        switch ($vars['element']['#view_mode']) {
+          case 'cast_carousel':
+            // modify role field text
+            $vars['items'][0]['#markup'] = t('played by');
+            break;
+          case 'follow_social':
+            //remove role field
+            unset($vars['items'][0]);
+            break;
+        }
+      }
+    break;    
+    case 'field_usa_character_thumb':
+      // making thumb clickable
+      if (isset($vars['element']['#view_mode']))  {
+        switch($vars['element']['#view_mode']) {
+          case 'follow_social' :
+            $node = $vars['element']['#object'];
+            $url = drupal_lookup_path('alias', "node/" . $node->nid);
+            $thumb = $vars['items'][0];
+            $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
+            break;
 
+          case 'cast_carousel':
+            // $node = $vars['element']['#object'];
+            // $url = drupal_lookup_path('alias',"node/".$node->nid);
+            // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
+            // $thumb = $vars['items'][0];
+            // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
+            break; 
+          }
+        }
       break;
   }
 }
@@ -250,12 +269,20 @@ function aurora_usa_preprocess_views_view(&$vars) {
 
 
 }
+
+/**
+ * Implements hook_views_pre_render().
+ */
 function aurora_usa_views_pre_render(&$view) {
   $views_prerender_function = 'aurora_usa_views_pre_render_' . $view->name . '__' . $view->current_display;
   if (function_exists($views_prerender_function)) {
    $views_prerender_function($view);
   }
 }
+
+/**
+ * Implements hook_views_pre_render().
+ */
 function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
   $current_season = false;
   $new_results = array();
@@ -269,6 +296,9 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
   $view->result = $new_results;
 }
 
+/**
+ * Implements template_preprocess_panels_pane().
+ */
 function aurora_usa_preprocess_panels_pane(&$vars) {
 
   if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
@@ -281,13 +311,15 @@ function aurora_usa_preprocess_panels_pane(&$vars) {
   }
 }
 
+/**
+ * Implements template_preprocess_views_view_fields().
+ */
 function aurora_usa_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
   if($view->name == 'usa_episodes') {
     if ($vars['view']->current_display == 'panel_pane_3') {
       foreach ($vars['fields'] as $id => $field) {
         $field_output = $view->style_plugin->get_field($view->row_index, $id);
-
         $node = menu_get_object();
         $ep_from_field = node_load($field->raw);
         $language = $node->language;
@@ -325,26 +357,26 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
   }
 }
 
+/**
+ * Implements template_preprocess_views_view_list().
+ */
 function aurora_usa_preprocess_views_view_list(&$vars) {
    $view = $vars['view'];
    switch($view->name) {
       case 'usa_cast' :
-
-        if($vars['view']->current_display == 'block_1') {
+        if ($vars['view']->current_display == 'block_1') {
           //get node id for page
           $nid = arg(1);
-
           //loop thru carousel results
           foreach($view->result as $delta => $item) {
             //if carousel node id == node id for page add class
-
             if($item->nid == $nid) {
               $vars['classes_array'][$delta] .= ' active';
             }
           }
         }
         break;
-    }
+  }
 }
 
 /**

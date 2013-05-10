@@ -76,7 +76,7 @@ function aurora_usa_preprocess_page(&$vars) {
       'href' => $theme_path . '/images/ios-home.png',
     ),
   );
-  drupal_add_html_head($ios_icon, 'google_font_cardo');
+  drupal_add_html_head($ios_icon, 'apple_touch_icon');
 }
 
 /**

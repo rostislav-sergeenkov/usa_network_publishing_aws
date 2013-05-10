@@ -143,7 +143,6 @@ function usanetwork_core_set_theme() {
     ->execute();
 
   variable_set('theme_default', $theme);
-  variable_set('favicon_path', 'sites/usanetwork/themes/aurora_usa/images/favicon.ico');
 
   // unset some blocks so we can manage in context
   $values = array(

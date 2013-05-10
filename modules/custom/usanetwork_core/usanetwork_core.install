@@ -71,8 +71,6 @@ function usanetwork_core_enable_modules() {
     'features_override',
     'views_slideshow',
     'views_slideshow_cycle',
-    'flexslider',
-    'flexslider_views',
     'menu_block',
     'print',
     'linkit',

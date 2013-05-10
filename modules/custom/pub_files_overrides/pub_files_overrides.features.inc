@@ -27,6 +27,14 @@ function pub_files_overrides_strongarm_alter(&$data) {
       'weight' => '0',
       'visible' => TRUE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['cover_image'] = array(
+      'weight' => '0',
+      'visible' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['media_gallery'] = array(
+      'weight' => '0',
+      'visible' => TRUE,
+    ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['person_cover_image'] = array(
       'weight' => '0',
       'visible' => TRUE,
@@ -41,8 +49,14 @@ function pub_files_overrides_strongarm_alter(&$data) {
     $data['field_bundle_settings_file__image']->value['view_modes']['block_cover_title_lg'] = array(
       'custom_settings' => TRUE,
     ); /* WAS: '' */
-    $data['field_bundle_settings_file__image']->value['view_modes']['cover_image'] = array(
+    $data['field_bundle_settings_file__image']->value['view_modes']['cast_gallery'] = array(
       'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['view_modes']['cover_image'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['view_modes']['media_gallery'] = array(
+      'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['person_cover_image'] = array(
       'custom_settings' => TRUE,

@@ -151,7 +151,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '27',
         ),
         'default' => array(
           'label' => 'above',
@@ -440,7 +440,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '25',
         ),
         'default' => array(
           'label' => 'above',
@@ -540,7 +540,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '28',
         ),
         'default' => array(
           'label' => 'above',
@@ -640,7 +640,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '29',
         ),
         'default' => array(
           'label' => 'above',
@@ -740,7 +740,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '26',
         ),
         'default' => array(
           'label' => 'above',

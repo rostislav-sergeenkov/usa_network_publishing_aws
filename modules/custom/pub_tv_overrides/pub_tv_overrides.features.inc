@@ -155,6 +155,18 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
     $data['node-tv_show-field_logo']['field_instance']['description'] = 'Used in show carousels.'; /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
   }
+  if (isset($data['node-tv_show-field_social_logo'])) {
+    $data['node-tv_show-field_social_logo']['field_instance']['display']['follow_social'] = array(
+      'label' => 'hidden',
+      'module' => 'image',
+      'settings' => array(
+        'image_link' => 'content',
+        'image_style' => 'thumb_tiny',
+      ),
+      'type' => 'image',
+      'weight' => '0',
+    ); /* WAS: '' */
+  }
 }
 
 /**

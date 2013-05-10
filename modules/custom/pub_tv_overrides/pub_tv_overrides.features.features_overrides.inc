@@ -117,6 +117,16 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_show-field_logo.field_instance|description"] = 'Used in show carousels.';
   $overrides["field.node-tv_show-field_logo.field_instance|fences_wrapper"] = 'figure';
+  $overrides["field.node-tv_show-field_social_logo.field_instance|display|follow_social"] = array(
+    'label' => 'hidden',
+    'module' => 'image',
+    'settings' => array(
+      'image_link' => 'content',
+      'image_style' => 'thumb_tiny',
+    ),
+    'type' => 'image',
+    'weight' => '0',
+  );
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title"] = array(

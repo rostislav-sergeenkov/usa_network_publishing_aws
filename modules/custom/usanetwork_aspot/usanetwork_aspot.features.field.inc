@@ -339,9 +339,10 @@ function usanetwork_aspot_field_default_fields() {
           'weight' => '7',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'link_plain',
           'weight' => '7',
         ),
         'teaser' => array(

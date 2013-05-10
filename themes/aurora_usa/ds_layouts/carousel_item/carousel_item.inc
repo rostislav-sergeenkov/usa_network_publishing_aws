@@ -5,7 +5,8 @@ function ds_carousel_item() {
     'regions' => array(
       'media' => t('Media'),
       'title' => t('Title'),
-      'caption' => t('Caption')
+      'caption' => t('Caption'),
+      'link' => t('link')
     ),
     'css' => false,
     'image' => false

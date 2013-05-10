@@ -30,11 +30,15 @@ function usanetwork_promo_ds_layout_settings_info() {
       'caption' => array(
         0 => 'field_promo_text_line_2',
       ),
+      'link' => array(
+        0 => 'field_promo_link',
+      ),
     ),
     'fields' => array(
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',
+      'field_promo_link' => 'link',
     ),
     'classes' => array(),
   );
@@ -67,6 +71,9 @@ function usanetwork_promo_ds_layout_settings_info() {
         0 => 'field_call_to_action_type',
         1 => 'field_promo_call_to_action_text',
       ),
+      'link' => array(
+        0 => 'field_promo_link',
+      ),
     ),
     'fields' => array(
       'field_promo_wide_image' => 'media_wide',
@@ -75,6 +82,7 @@ function usanetwork_promo_ds_layout_settings_info() {
       'field_promo_text_line_2' => 'text_2',
       'field_call_to_action_type' => 'cta',
       'field_promo_call_to_action_text' => 'cta',
+      'field_promo_link' => 'link',
     ),
     'classes' => array(),
   );

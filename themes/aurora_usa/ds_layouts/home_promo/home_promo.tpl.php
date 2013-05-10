@@ -1,5 +1,7 @@
 <div class="<?php print $classes;?> home-promo">
-  
+  <?php if ($link): ?>
+    <a href="<?php print $link; ?>" class="promo-link">
+  <?php endif; ?>
   <div class="promo-media">
     <?php if ($media_wide): ?>
       <div class="media-wide"><?php print $media_wide; ?></div>
@@ -21,5 +23,8 @@
       <div class="promo-cta row-4 media"><?php print $cta; ?></div>
     <?php endif; ?>
   </div>
+  <?php if ($link): ?>
+    </a>
+  <?php endif; ?>
   
 </div>

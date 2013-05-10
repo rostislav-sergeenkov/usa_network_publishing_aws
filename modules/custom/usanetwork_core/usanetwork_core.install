@@ -71,8 +71,6 @@ function usanetwork_core_enable_modules() {
     'features_override',
     'views_slideshow',
     'views_slideshow_cycle',
-    'flexslider',
-    'flexslider_views',
     'menu_block',
     'print',
     'linkit',
@@ -113,6 +111,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_migrate',
     'usanetwork_video',
     'usanetwork_theme_settings',
+    'usanetwork_ads',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

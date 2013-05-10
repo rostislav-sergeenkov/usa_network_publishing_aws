@@ -1,5 +1,5 @@
 <div class="carousel-item-wrapper">
-	<?php $url = drupal_lookup_path('alias',"node/".$variables['node']->nid);?>
+	<?php $url = drupal_lookup_path('alias',"node/" . $variables['node']->nid);?>
 	<?php if($url) : ?>
 		<a class="overlay" href="/<?php print $url; ?>"></a>
 	<?php endif; ?>

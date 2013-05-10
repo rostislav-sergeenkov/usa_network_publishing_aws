@@ -5,14 +5,14 @@
   Drupal.behaviors.flex_carousel = {
     attach: function (context, settings) {
 
-    
+
        $( ".view-usa-cast li" ).each(function( index ) {
           $(this).attr('data-flexindex',index);
         });
         var moveTo = $('.view-usa-cast li.active').attr('data-flexindex');
 
-        $('<div class="carousel"><div class="prev btns">Prev</div><div class="next btns">Next</div></div>').appendTo('.view-usa-cast .view-content');
-        
+        $('<div class="carousel"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.view-usa-cast .view-content');
+
         $(".view-usa-cast ul").addClass('slides').carouFredSel({
           auto: false,
           circular: false,
@@ -27,7 +27,7 @@
               onTouch     : true,
               onMouse     : true
             },
-          }, {  
+          }, {
           wrapper     : {
               classname       : "cast-carousel carousel"
             },

@@ -110,6 +110,8 @@ function usanetwork_core_enable_modules() {
     'usanetwork_layouts',
     'usanetwork_showpages',
     'usanetwork_media_gallery',
+    'usanetwork_migrate',
+    'usanetwork_video',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

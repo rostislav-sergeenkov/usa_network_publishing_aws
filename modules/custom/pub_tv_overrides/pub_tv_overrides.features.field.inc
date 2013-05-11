@@ -218,17 +218,17 @@ function pub_tv_overrides_field_default_fields() {
       'description' => 'Limited to 20 characters or less. This displays in the show header.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 48,
+          'weight' => '48',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

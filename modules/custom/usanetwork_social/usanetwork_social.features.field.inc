@@ -513,7 +513,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1971,7 +1971,17 @@ function usanetwork_social_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 34,
+          'weight' => '34',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'thumb_tiny',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'hidden',
@@ -3670,11 +3680,18 @@ function usanetwork_social_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 45,
+          'weight' => '45',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'above',
@@ -3763,11 +3780,18 @@ function usanetwork_social_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 46,
+          'weight' => '46',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'above',
@@ -3856,11 +3880,18 @@ function usanetwork_social_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 47,
+          'weight' => '47',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'above',
@@ -3949,11 +3980,18 @@ function usanetwork_social_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 44,
+          'weight' => '44',
+        ),
+        'follow_social' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'above',
@@ -4045,7 +4083,13 @@ function usanetwork_social_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 31,
+          'weight' => '31',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
         ),
         'follow_social' => array(
           'label' => 'above',

@@ -90,6 +90,9 @@ function pub_media_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '0',
   );
+  $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_schemes|theplatform"] = 0;
+  $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_types|video"] = 0;
+  $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|browser_plugins|pub_theplatform"] = 0;
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__media_gallery.value|extra_fields|form|metatags|weight"] = '3';

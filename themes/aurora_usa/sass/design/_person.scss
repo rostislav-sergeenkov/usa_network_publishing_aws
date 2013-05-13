@@ -1,7 +1,10 @@
 
+$bp-person-small-width: 330px;
+$bp-person-mid-two-width: 390px;
 
 body.person-page {
 	overflow-x: hidden;
+	font-family: "Proxima N W01 Reg";
 	#main {
 		padding: 0;
 	}
@@ -20,6 +23,7 @@ body.person-page {
 		}
 	}
 	h4 {
+		font-family: "Proxima N W01 Reg";
 		text-transform: none;
 		font-size: 14px;
 		margin: 5px 30px 5px 0;
@@ -28,12 +32,15 @@ body.person-page {
 		}
 	}
 	.person-content-wrapper {
-		max-width: 1245px;
+		max-width: 1319px;
+		width:300px;
 		position: relative;
 		margin: 0 auto;
 		padding: 26px 0 30px;
-		@include breakpoint(330px) {
+		@include breakpoint($bp-person-mid-two-width) {
 			padding: 40px 45px 60px;
+			max-width: 1335px;
+			width: auto;
 		}
 	}
 	aside {
@@ -115,10 +122,11 @@ body.person-page {
 		border: none;
 		box-shadow: none;
 		margin: 0 auto;
-		max-width: 1245px;
+		max-width: 1319px;
 		overflow: hidden;
 		position: relative;
-		@include breakpoint($bp-person-medium-width) {
+		padding: 0 30px;
+		@include breakpoint($bp-person-small-width) {
 			padding-left: 37px;
 			padding-right: 37px;
 		}
@@ -137,18 +145,16 @@ body.person-page {
 			height: 100%;
 			position: absolute;
 			top: 0;
-			width: 40px;
+			width: 50px;
 		}
 		&:before {
-			@include breakpoint($bp-person-medium-width) {
-				@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));
-				left: -20px;
-				z-index: 3;
-			}
+			@include background(linear-gradient(left center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));
+			left: 5px;
+			z-index: 3;
 		}
 		&:after {
 			@include background(linear-gradient(right center, #1F1F1F 0%, #1F1F1F 60%, rgba(31, 31, 31, 0) 100%));
-			right: 0;
+			right: 5px;
 			z-index: 2;
 		}
 	}

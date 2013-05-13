@@ -251,7 +251,7 @@ you can use the generic selector below, but it's slower:
   content: "\55\53\41\4e\65\74\77\6f\72\6b";
 }
 
-#site-name, .flex-direction-nav a, .icons-social a, .page-node-social .tabs .secondary li a.person-twitter, .page-node-social .tabs .secondary li a.usasocial-twitter, .social-follow-block .item-content .icons-social a, .carousel .btns {
+#site-name, .flex-direction-nav a, .icons-social a, .social-follow-block .item-content .icons-social a, .carousel .btns {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -2145,6 +2145,7 @@ html[xmlns] .slides {
 }
 body.person-page {
   overflow-x: hidden;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
 }
 body.person-page #main {
   padding: 0;
@@ -2165,6 +2166,7 @@ body.person-page #main {
   }
 }
 #person-content h4 {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   text-transform: none;
   font-size: 14px;
   margin: 5px 30px 5px 0;
@@ -2175,14 +2177,17 @@ body.person-page #main {
   }
 }
 #person-content .person-content-wrapper {
-  max-width: 1245px;
+  max-width: 1319px;
+  width: 300px;
   position: relative;
   margin: 0 auto;
   padding: 26px 0 30px;
 }
-@media (min-width: 330px) {
+@media (min-width: 390px) {
   #person-content .person-content-wrapper {
     padding: 40px 45px 60px;
+    max-width: 1335px;
+    width: auto;
   }
 }
 #person-content aside {
@@ -2265,11 +2270,12 @@ body.person-page #main {
   border: none;
   box-shadow: none;
   margin: 0 auto;
-  max-width: 1245px;
+  max-width: 1319px;
   overflow: hidden;
   position: relative;
+  padding: 0 30px;
 }
-@media (min-width: 768px) {
+@media (min-width: 330px) {
   #cast-carousel .view {
     padding-left: 37px;
     padding-right: 37px;
@@ -2288,18 +2294,16 @@ body.person-page #main {
   height: 100%;
   position: absolute;
   top: 0;
-  width: 40px;
+  width: 50px;
 }
-@media (min-width: 768px) {
-  #cast-carousel .view:before {
-    background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
-    background: -webkit-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
-    background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
-    background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
-    background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
-    left: -20px;
-    z-index: 3;
-  }
+#cast-carousel .view:before {
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+  left: 5px;
+  z-index: 3;
 }
 #cast-carousel .view:after {
   background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
@@ -2307,7 +2311,7 @@ body.person-page #main {
   background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
   background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
   background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
-  right: 0;
+  right: 5px;
   z-index: 2;
 }
 
@@ -2333,125 +2337,136 @@ body.person-page #main {
   margin-left: 5px;
 }
 .icons-social a:hover {
-  background-color: #fff;
+  background-color: white;
 }
 .icons-social a.usasocial-fb {
   padding-left: 8px;
 }
 
-.page-node-social #main {
+.usa-social #main {
   max-width: 1290px;
   margin-left: auto;
   margin-right: auto;
   width: 300px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 @media (min-width: 330px) {
-  .page-node-social #main {
+  .usa-social #main {
     width: auto;
     clear: both;
   }
 }
 @media (min-width: 900px) {
-  .page-node-social #main {
+  .usa-social #main {
     width: auto;
     padding-right: 330px;
+    padding-left: 15px;
   }
 }
+.usa-social .menu-label {
+  font-size: 20px;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  color: white;
+  padding: 7px 9px 6px;
+  text-transform: lowercase;
+}
 @media (min-width: 704px) {
-  .page-node-social .tabs {
+  .usa-social .tabs {
     padding: 15px 15px 0;
   }
 }
-.page-node-social .tabs .secondary {
+.usa-social .tabs .secondary {
   border-bottom: 0;
-  padding: 10px 0 0 0;
+  padding: 0;
   margin: 0;
   overflow: hidden;
 }
 @media (min-width: 900px) {
-  .page-node-social .tabs .secondary {
+  .usa-social .tabs .secondary {
     display: inline-block;
+    padding: 10px 0 0;
   }
 }
-.page-node-social .tabs .secondary li {
+.usa-social .tabs .secondary.filter-menu a {
+  font-size: 20px;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  color: white;
+  padding: 15px 14px 13px;
+  height: auto;
+}
+.usa-social .tabs .secondary li {
   border: 0;
   padding: 0;
-  font-family: "Proxima N W01 Smbd";
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 1.125em;
   line-height: 1em;
   border-bottom: 0;
   display: block;
 }
 @media (min-width: 704px) {
-  .page-node-social .tabs .secondary li {
+  .usa-social .tabs .secondary li {
     display: inline;
   }
 }
-.page-node-social .tabs .secondary li a.person-twitter, .page-node-social .tabs .secondary li a.usasocial-twitter {
-  /*test */
-}
-.page-node-social .tabs .secondary li:first-child a {
+.usa-social .tabs .secondary li:first-child a {
   margin: 0;
-  border-top: 0;
 }
-.page-node-social .tabs .secondary li.active a {
+.usa-social .tabs .secondary li.active a {
   color: white;
   border-bottom: 0;
 }
 @media (min-width: 704px) {
-  .page-node-social .tabs .secondary li.active a {
+  .usa-social .tabs .secondary li.active a {
     background: #121212;
-    color: #0AB6E8;
+    color: #0ab6e8;
     border: 0;
   }
 }
-.page-node-social .tabs .secondary a {
+.usa-social .tabs .secondary a {
   background-color: #393939;
   height: 36px;
   line-height: 1;
   padding: 10px 15px 0;
   text-transform: uppercase;
-  color: #818181;
+  color: #878785;
   display: block;
   float: left;
   width: 100%;
   border-top: 1px solid #575757;
   font-weight: normal;
-  text-transform: none;
+  text-transform: lowercase;
 }
-.page-node-social .tabs .secondary a:hover {
+.usa-social .tabs .secondary a:hover {
   background-color: #444;
 }
 @media (min-width: 704px) {
-  .page-node-social .tabs .secondary a {
+  .usa-social .tabs .secondary a {
     background-color: #474747;
     width: auto;
     margin: 0 0 0 15px;
     border-top: 0;
     text-transform: uppercase;
   }
-  .page-node-social .tabs .secondary a:hover {
-    color: #818181;
+  .usa-social .tabs .secondary a:hover {
+    color: #878785;
   }
 }
-.page-node-social .region-content {
-  padding: 15px;
-}
-.page-node-social li {
+.usa-social li {
   list-style: none;
 }
-.page-node-social #content {
+.usa-social #content {
   width: 100%;
   text-align: left;
   vertical-align: top;
   float: left;
 }
-.page-node-social .sidebar {
+.usa-social .sidebar {
   background: #414141;
   clear: both;
 }
 @media (min-width: 900px) {
-  .page-node-social .sidebar {
+  .usa-social .sidebar {
     float: left;
     margin-left: 15px;
     margin-top: 133px;
@@ -2467,7 +2482,7 @@ body.person-page #main {
 .social-follow-block h2 {
   color: #9e9e9e;
   text-transform: uppercase;
-  font-family: "Proxima N W01 Reg";
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 1.125em;
   padding: 16px 12px 11px;
   line-height: 1em;
@@ -2502,7 +2517,7 @@ body.person-page #main {
 .social-follow-block .item-content .title {
   line-height: 1em;
   font-size: 14px;
-  font-family: "Proxima N W01 Thin Reg";
+  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
   display: inline-block;
   text-align: left;
   vertical-align: middle;
@@ -2513,7 +2528,7 @@ body.person-page #main {
 }
 .social-follow-block .item-content .title h4 {
   font-size: 14px;
-  font-family: "Proxima N W01 Reg";
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
 }
 .social-follow-block .item-content .title .field-name-field-role,
 .social-follow-block .item-content .title .field-name-field-usa-actor-name {
@@ -2534,7 +2549,7 @@ body.person-page #main {
 }
 .social-follow-block .item-content .icons-social a {
   background-color: transparent;
-  color: #818181;
+  color: #878785;
   float: right;
   margin-left: 8px;
   width: 21px;
@@ -2542,9 +2557,186 @@ body.person-page #main {
   padding: 0;
 }
 .social-follow-block .item-content .icons-social a:hover {
-  color: #0AB6E8;
+  color: #0ab6e8;
 }
 
+/* chat with fans */
+.echo-item-content {
+  background: #414141;
+  margin-bottom: 16px;
+}
+.echo-item-content .echo-item-container {
+  padding: 40px 15px 42px;
+  position: relative;
+}
+.echo-item-content .echo-item-childrenMarker {
+  display: none !important;
+}
+.echo-item-content .echo-item-avatar-wrapper {
+  display: inline;
+  float: left;
+  width: 48px;
+  margin: 0;
+}
+.echo-item-content .echo-item-wrapper {
+  margin-left: 63px;
+  float: none;
+  width: auto;
+}
+.echo-item-content .echo-item-subwrapper {
+  margin-left: 0;
+}
+.echo-item-content .echo-user-list-container img {
+  display: none;
+}
+.echo-item-content .echo-item-body {
+  padding: 0;
+}
+.echo-item-content .echo-linkColor,
+.echo-item-content .echo-item-text {
+  color: white;
+  font-size: 16px;
+  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+@media (min-width: 500px) {
+  .echo-item-content .echo-linkColor,
+  .echo-item-content .echo-item-text {
+    font-size: 21px;
+  }
+}
+.echo-item-content .echo-linkColor p,
+.echo-item-content .echo-item-text p {
+  margin: 0 0 10px;
+}
+.echo-item-content .echo-item-footer,
+.echo-item-content .echo-item-likes {
+  color: #a3a3a3;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 13px;
+  background: none;
+  padding: 0;
+}
+.echo-item-content .echo-item-footer .echo-item-from a,
+.echo-item-content .echo-item-likes .echo-item-from a {
+  color: #a3a3a3;
+}
+.echo-item-content .echo-item-footer img,
+.echo-item-content .echo-item-likes img {
+  display: none !important;
+}
+.echo-item-content .echo-item-controls {
+  float: none;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+.echo-item-content .echo-item-control-delim,
+.echo-item-content .echo-item-control-Flag,
+.echo-item-content .echo-item-control-Like {
+  display: none;
+}
+.echo-item-content .echo-item-control-Reply {
+  background-color: #2d2d2d;
+  bottom: 8px;
+  color: #0ab6e8;
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+  padding: 8px 12px 3px;
+  text-transform: uppercase;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  letter-spacing: normal;
+}
+.echo-item-content .echo-item-data {
+  padding-bottom: 10px;
+}
+.echo-item-content .echo-item-replyForm {
+  margin: 0;
+}
+.echo-item-content .echo-item-children .echo-item-container,
+.echo-item-content .echo-item-children .echo-item-content {
+  background-color: #383838;
+  margin: 0;
+}
+.echo-item-content .echo-item-children .echo-item-container .echo-item-container-child,
+.echo-item-content .echo-item-children .echo-item-content .echo-item-container-child {
+  padding: 15px;
+}
+.echo-item-content .echo-item-children .echo-item-container .echo-item-text,
+.echo-item-content .echo-item-children .echo-item-content .echo-item-text {
+  font-size: 15px;
+  color: #a3a3a3;
+  line-height: 1.5em;
+}
+.echo-item-content .echo-item-children .echo-item-content {
+  border-bottom: 1px solid #313131;
+}
+
+.echo-stream-state-picture {
+  display: none;
+}
+
+.echo-stream-state-message {
+  display: none;
+}
+
+#chat-submit-form {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+#chat-submit-form .echo-submit-counterLabel {
+  display: none;
+}
+#chat-submit-form .echo-submit-container {
+  width: 100%;
+}
+#chat-submit-form .echo-submit-content {
+  padding: 0;
+  border: 0;
+}
+#chat-submit-form .echo-submit-body {
+  width: 100%;
+  margin-right: -130px;
+  float: left;
+}
+#chat-submit-form .echo-submit-body textarea {
+  height: 77px;
+  padding: 5px;
+}
+#chat-submit-form .echo-submit-controls {
+  width: 130px;
+  float: left;
+  height: 77px;
+  margin: 0;
+}
+#chat-submit-form .echo-button button {
+  background-color: #2d2d2d;
+  height: 77px;
+  width: 130px;
+  font-size: 24px;
+  color: #0ab6e8;
+  text-transform: uppercase;
+  border: 0;
+  margin: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+#fancybox-wrap {
+  width: 460px !important;
+  height: 300px !important;
+}
+
+.carousel {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 .carousel ul {
   margin: 0;
   padding: 0;
@@ -2557,7 +2749,12 @@ body.person-page #main {
   padding: 0;
   margin: 0;
 }
-.carousel li.carousel-item.active img {
+@media (min-width: 704px) {
+  .carousel li.carousel-item {
+    width: 240px;
+  }
+}
+.carousel li.carousel-item.active figure {
   border-color: white;
 }
 .carousel li.carousel-item.active .arrow-left {
@@ -2574,6 +2771,7 @@ body.person-page #main {
   position: relative;
 }
 .carousel .carousel-item-wrapper figure {
+  border: 2px solid #2d2d2d;
   left: 8px;
   position: absolute;
   top: 0;
@@ -2581,7 +2779,6 @@ body.person-page #main {
 }
 .carousel .carousel-item-wrapper img {
   max-width: none;
-  border: 2px solid #2d2d2d;
   display: block;
 }
 .carousel .carousel-item-wrapper a.overlay {
@@ -2590,22 +2787,22 @@ body.person-page #main {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 99;
 }
 .carousel .item-content {
   font-weight: normal;
   color: white;
   left: 10px;
   position: absolute;
-  top: 122px;
-  width: 217px;
+  top: 125px;
+  width: 221px;
   z-index: 10;
   height: 61px;
   padding: 8px 18px 8px;
   background: rgba(0, 0, 0, 0.8);
 }
 .carousel .item-content h4 {
-  font-family: "Proxima N W01 Smbd";
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 .carousel .item-content a {
   color: white;
@@ -2621,16 +2818,21 @@ body.person-page #main {
   font-size: 2.35em;
   cursor: pointer;
   position: absolute;
-  left: 0;
+  left: 5px;
   top: 39%;
-  z-index: 9999;
+  z-index: 99;
 }
 .carousel .btns:hover {
-  color: #7f7f7f;
+  color: #878785;
 }
 .carousel .btns.next {
   left: auto;
-  right: 0;
+  right: 5px;
+}
+
+#cast-carousel .item-list {
+  height: 188px;
+  overflow: hidden;
 }
 
 .ie8 img {

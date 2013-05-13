@@ -1,7 +1,7 @@
 
-
 #block-usanetwork-tv-schedule-usa-on-now-block {
-  height: 100%;
+//  height: 100%;
+  height: 45px;
   padding-left: 12px;
   position: relative;
   font-family: $headline-bold;
@@ -9,6 +9,7 @@
   float: left;
   @include breakpoint($bp-on-now) {
     padding-left: 15px;
+    height: 62px;
   }
   span {
     vertical-align: middle;

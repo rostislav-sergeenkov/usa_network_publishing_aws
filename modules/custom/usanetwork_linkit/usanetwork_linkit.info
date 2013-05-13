@@ -8,3 +8,4 @@ dependencies[] = linkit
 features[ctools][] = linkit:linkit_profiles:1
 features[features_api][] = api:1
 features[linkit_profiles][] = usanetwork_fields
+features[linkit_profiles][] = wysiwyg_link_it

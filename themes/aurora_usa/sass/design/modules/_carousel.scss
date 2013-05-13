@@ -1,4 +1,6 @@
 .carousel {
+	margin-left: auto !important;
+	margin-right: auto !important;
 	ul {
 		margin: 0;
 		padding: 0;
@@ -10,8 +12,11 @@
 		text-align: center;
 		padding: 0;
 		margin: 0;
+		@include breakpoint($bp-social-mid-width) {
+			width: 240px;
+		}
 		&.active {
-			img {
+			figure {
 				border-color: $white;
 			}
 			.arrow-left {
@@ -29,6 +34,7 @@
 	.carousel-item-wrapper {
 		position: relative;
 		figure {
+			border: 2px solid $gray-dark;
 			left: 8px;
 			position: absolute;
 			top: 0;
@@ -36,7 +42,6 @@
 		}
 		img {
 			max-width: none;
-			border: 2px solid $gray-dark;
 			display: block;
 		}
 		a.overlay {
@@ -45,7 +50,7 @@
 			position: absolute;
 			top: 0;
 			width: 100%;
-			z-index: 2;
+			z-index: 99;
 		}
 
 	}
@@ -54,14 +59,14 @@
 		color: $white;
 		left: 10px;
 		position: absolute;
-		top: 122px;
-		width: 217px;
+		top: 125px;
+		width: 221px;
 		z-index: 10;
 		height: 61px;
 		padding: 8px 18px 8px;
-		background: rgba(0, 0, 0, 0.8);
+		background: $black-trans;
 		h4 {
-			font-family: "Proxima N W01 Smbd";
+			font-family: $headline-semi;
 		}
 		a {
 			color: $white;
@@ -79,15 +84,22 @@
 		font-size: 2.35em;
 		cursor: pointer;
 		position: absolute;
-		left: 0;
+		left: 5px;
 		top: 39%;
-		z-index: 9999;
+		z-index: 99;
 		&:hover {
-			color:#7f7f7f;
+			color: $gray-light;
 		}
 		&.next {
 			left: auto;
-			right: 0;
+			right: 5px;
 		}
+	}
+}
+
+#cast-carousel {
+	.item-list {
+		height: 188px;
+		overflow: hidden;
 	}
 }

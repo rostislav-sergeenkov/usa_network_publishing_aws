@@ -68,11 +68,14 @@
 ?>
 
   <header role="banner" id="page-header">
+    <h1 id="site-name">
+      <?php print $site_name; ?>
+    </h1>
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <?php if ($site_name): ?>
-        <h1 id="site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-        </h1>
+        <div id="logo">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
+        </div>
       <?php endif; ?>
 
       <?php print render($page['header']); ?>

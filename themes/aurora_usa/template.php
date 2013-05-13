@@ -46,9 +46,12 @@ function aurora_usa_modernizr_load_alter(&$load) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function aurora_usa_preprocess_html(&$vars) {
 
+function aurora_usa_preprocess_html(&$vars) {
+  // adding usa-social body class to global and show pages
+  if(arg(2) == 'social' || arg(0) == 'social') {
+    $vars['classes_array'][] = drupal_html_class('usa-social');
+  }
 }
 
 /**
@@ -62,6 +65,7 @@ function aurora_usa_preprocess_html(&$vars) {
 function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   $node = menu_get_object();
   if ($node && $node->type == "media_gallery") {
@@ -169,7 +173,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
         }
       }
-    break;    
+    break;
     case 'field_usa_character_thumb':
       // making thumb clickable
       if (isset($vars['element']['#view_mode']))  {
@@ -187,7 +191,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
             // $thumb = $vars['items'][0];
             // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
-            break; 
+            break;
           }
         }
       break;

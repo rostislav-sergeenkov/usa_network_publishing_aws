@@ -94,8 +94,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
-      $tv_show = '<span id="on-now">onnow</span><div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show .
-        '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span></div>';
+      $tv_show = '<span id="on-now">onnow</span><div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode[0] . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {

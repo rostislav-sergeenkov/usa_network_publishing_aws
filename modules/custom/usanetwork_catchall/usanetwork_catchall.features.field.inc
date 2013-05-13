@@ -382,7 +382,8 @@ function usanetwork_catchall_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'catchall_page',
       'deleted' => '0',
-      'description' => 'local and remote image and video files are allowed for this set of fields',
+      'description' => 'Local and remote image and video files are allowed for this set of fields: Custom CSS, JS, raw HTML.
+File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -412,9 +413,8 @@ function usanetwork_catchall_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'description_field' => 0,
-        'exclude_cv' => FALSE,
         'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
+        'file_extensions' => 'png gif jpg jpeg otf mp3 htf pdf',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -428,8 +428,8 @@ function usanetwork_catchall_field_default_fields() {
             'theplatform' => 0,
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'document' => 0,
+            'audio' => 'audio',
+            'document' => 'document',
             'image' => 'image',
             'video' => 'video',
           ),
@@ -540,8 +540,9 @@ function usanetwork_catchall_field_default_fields() {
   t('Custom JS');
   t('If this page is associated with a show please select from the list above.');
   t('If this page is intended as fixed-width please check the box above.');
+  t('Local and remote image and video files are allowed for this set of fields: Custom CSS, JS, raw HTML.
+File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.');
   t('Show');
-  t('local and remote image and video files are allowed for this set of fields');
   t('set fixed width?');
 
   return $fields;

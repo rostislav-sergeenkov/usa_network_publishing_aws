@@ -23,13 +23,11 @@ function usanetwork_feedback_menu() {
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implementation of hook_form_FORM_ID_alter().
  */
-function usanetwork_feedback_form_alter(&$form, &$form_state, $form_id) {
+function usanetwork_feedback_form_webform_client_form_1_alter(&$form, &$form_state, $form_id) {
 
-  if ($form_id == 'webform_client_form_1') {
-    $form['#submit'][] = 'usanetwork_feedback_newsletter_lyris_signup';
-  }
+  $form['#submit'][] = 'usanetwork_feedback_newsletter_lyris_signup';
 }
 
 /**

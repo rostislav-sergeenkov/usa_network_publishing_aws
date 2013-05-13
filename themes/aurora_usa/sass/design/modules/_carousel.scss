@@ -1,0 +1,105 @@
+.carousel {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	li.carousel-item {
+		float: left;
+		width: 236px;
+		height: 188px;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+		@include breakpoint($bp-social-mid-width) {
+			width: 240px;
+		}
+		&.active {
+			figure {
+				border-color: $white;
+			}
+			.arrow-left {
+				border-bottom: 8px solid transparent;
+				border-left: 8px solid $white;
+				border-top: 8px solid transparent;
+				height: 0;
+				left: 0;
+				position: absolute;
+				top: 23px;
+				width: 0;
+			}
+		}
+	}
+	.carousel-item-wrapper {
+		position: relative;
+		figure {
+			border: 2px solid $gray-dark;
+			left: 8px;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+		}
+		img {
+			max-width: none;
+			display: block;
+		}
+		a.overlay {
+			height: 188px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 99;
+		}
+
+	}
+	.item-content {
+		font-weight: normal;
+		color: $white;
+		left: 10px;
+		position: absolute;
+		top: 125px;
+		width: 221px;
+		z-index: 10;
+		height: 61px;
+		padding: 8px 18px 8px;
+		background: $black-trans;
+		h4 {
+			font-family: $headline-semi;
+		}
+		a {
+			color: $white;
+		}
+		> div {
+			display: inline;
+			&:first-child {
+				display: block;
+			}
+		}
+	}
+	.btns {
+		@extend %usanetwork-font;
+		color: #636363;
+		font-size: 2.35em;
+		cursor: pointer;
+		position: absolute;
+		left: 5px;
+		top: 39%;
+		z-index: 99;
+		&:hover {
+			color: $gray-light;
+		}
+		&.next {
+			left: auto;
+			right: 5px;
+		}
+	}
+}
+
+#cast-carousel {
+	.item-list {
+		height: 188px;
+		overflow: hidden;
+	}
+}

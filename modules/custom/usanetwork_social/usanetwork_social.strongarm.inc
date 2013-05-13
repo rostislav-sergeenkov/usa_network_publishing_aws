@@ -111,6 +111,20 @@ function usanetwork_social_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_base_url';
+  $strongarm->value = 'https://www.rebelmouse.com';
+  $export['usanetwork_social_trend_base_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_url_params';
+  $strongarm->value = 'embedded=1&flexible=1&scrollbar_theme=light-2';
+  $export['usanetwork_social_trend_url_params'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_twitter_children';
   $strongarm->value = 'children:2 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:2';
   $export['usanetwork_social_twitter_children'] = $strongarm;

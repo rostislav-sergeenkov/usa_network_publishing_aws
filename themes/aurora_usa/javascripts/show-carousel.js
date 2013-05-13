@@ -5,7 +5,7 @@
   Drupal.behaviors.flex_carousel = {
     attach: function (context, settings) {
 
-    
+
        $( ".view-usa-shows li" ).each(function( index ) {
           $(this).attr('data-flexindex',index);
         });
@@ -16,7 +16,7 @@
         $(".view-usa-shows ul").addClass('slides').carouFredSel({
           auto: false,
           circular: false,
-          infinite: false,
+          //infinite: false,
           items       : {
             visible: 5,
             start       : parseInt(moveTo),
@@ -27,14 +27,11 @@
               onTouch     : true,
               onMouse     : true
             },
-          }, {  
+          }, {
           wrapper     : {
               classname       : "show-carousel carousel"
             },
         });
-
-        //console.log(moveTo);
-
 
     },
 

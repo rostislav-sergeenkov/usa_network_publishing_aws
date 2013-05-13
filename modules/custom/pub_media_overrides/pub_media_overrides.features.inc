@@ -111,6 +111,9 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'type' => 'hidden',
       'weight' => '0',
     ); /* WAS: '' */
+    $data['node-media_gallery-field_media_items']['field_instance']['widget']['settings']['allowed_schemes']['theplatform'] = 0; /* WAS: 'theplatform' */
+    $data['node-media_gallery-field_media_items']['field_instance']['widget']['settings']['allowed_types']['video'] = 0; /* WAS: 'video' */
+    $data['node-media_gallery-field_media_items']['field_instance']['widget']['settings']['browser_plugins']['pub_theplatform'] = 0; /* WAS: 'pub_theplatform' */
   }
 }
 

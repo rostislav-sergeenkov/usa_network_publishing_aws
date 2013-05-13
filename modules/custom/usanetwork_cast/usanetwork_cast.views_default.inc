@@ -1058,7 +1058,7 @@ function usanetwork_cast_views_default_views() {
   /* Display: person social */
   $handler = $view->new_display('panel_pane', 'person social', 'panel_pane_2');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'share-icons';
+  $handler->display->display_options['css_class'] = 'icons-social icons-inline';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';

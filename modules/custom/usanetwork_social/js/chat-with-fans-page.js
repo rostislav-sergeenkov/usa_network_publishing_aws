@@ -1,3 +1,24 @@
+(function($) {
+	var plugin = Echo.createPlugin({
+        "name": "SourceIconTweaks",
+        "applications": ["Stream"],
+        "init": function(plugin, application) {
+			plugin.extendRenderer("Item", "sourceIcon", function() {
+				var item = this;
+				var source = item.data.source.name;
+				if (source) {
+					var icon = plugin.config.get(item, "icons." + source);
+					if (icon) {
+						item.data.source.icon = icon;
+					}
+				}
+				item.parentRenderer("sourceIcon", arguments);
+			});
+        }
+	});
+})(jQuery);
+
+
 (function ($) {
 Drupal.behaviors.chat_with_fans_page = {
   attach: function(context){
@@ -56,29 +77,6 @@ Drupal.behaviors.chat_with_fans_page = {
 				});
 			}
 
-			var EchoSubmit;
-			function usa_buildSubmitForm(marker)
-			{
-				EchoSubmit = new Echo.Submit({
-					"target": document.getElementById("chat-submit-form"),
-					"appkey": echoAppKey,
-					"targetURL": chatSubmitTargetURL,
-					"adminMode": true,
-					"plugins": [
-					{
-						"name": "FormAuth",
-						"identityManagerLogin": identityManager,
-						"submitPermissions": "forceLogin"
-					},
-					{
-						"name": "SubmitTextCounter",
-						"limit": 1000,
-						"label": "You have typed {typed} chars, {left} chars left"
-					}
-					]
-				});
-			}
-
 			var EchoRiverClient;
 			function initEchoRiverClient()
 			{
@@ -104,6 +102,9 @@ Drupal.behaviors.chat_with_fans_page = {
 							"name": "Like"
 						},
 						{
+							"name": "CommunityFlag"
+						},
+						{
 							"name": "Reply",
 							"enabled": true,
 							"nestedPlugins": [{
@@ -113,19 +114,38 @@ Drupal.behaviors.chat_with_fans_page = {
 							}]
 						},
 						{
-							"name": "CommunityFlag"
-						},
-		/*				{
 							"name": "SourceIconTweaks",
 							"icons": {
-								"usanetwork": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif", \
-								"twitter.com": "http://cdn.echoenabled.com/images/favicons/twitter.png",
-								"yap-tv": "http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif"
+								"usanetwork": chatterSourceIcon,
+								"yap-tv": chatterSourceIcon
 							}
-						}, */
+						},
 						{
 							"name": "InlineMedia"
 						}
+					]
+				});
+			}
+
+			var EchoSubmit;
+			function usa_buildSubmitForm(marker)
+			{
+				EchoSubmit = new Echo.Submit({
+					"target": document.getElementById("chat-submit-form"),
+					"appkey": echoAppKey,
+					"targetURL": chatSubmitTargetURL,
+					"adminMode": true,
+					"plugins": [
+					{
+						"name": "FormAuth",
+						"identityManagerLogin": identityManager,
+						"submitPermissions": "forceLogin"
+					},
+					{
+						"name": "SubmitTextCounter",
+						"limit": 1000,
+						"label": "You have typed {typed} chars, {left} chars left"
+					}
 					]
 				});
 			}

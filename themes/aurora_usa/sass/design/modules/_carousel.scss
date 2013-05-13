@@ -64,9 +64,9 @@
 		z-index: 10;
 		height: 61px;
 		padding: 8px 18px 8px;
-		background: rgba(0, 0, 0, 0.8);
+		background: $black-trans;
 		h4 {
-			font-family: "Proxima N W01 Smbd";
+			font-family: $headline-semi;
 		}
 		a {
 			color: $white;
@@ -88,7 +88,7 @@
 		top: 39%;
 		z-index: 99;
 		&:hover {
-			color:#7f7f7f;
+			color: $gray-light;
 		}
 		&.next {
 			left: auto;
@@ -98,8 +98,6 @@
 }
 
 #cast-carousel {
-//	height: 248px;
-//	overflow: hidden;
 	.item-list {
 		height: 188px;
 		overflow: hidden;

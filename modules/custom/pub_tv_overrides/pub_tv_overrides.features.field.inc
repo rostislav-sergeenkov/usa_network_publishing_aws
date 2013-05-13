@@ -452,7 +452,95 @@ function pub_tv_overrides_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '66',
+        'weight' => '67',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_tv_featured_videos'.
+  $fields['node-tv_show-field_usa_tv_featured_videos'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_tv_featured_videos',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'usa_tve_video' => 'usa_tve_video',
+            'usa_video' => 'usa_video',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A maximum of 5 videos recommended for this field to be displayed in the show landing page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 48,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_usa_tv_featured_videos',
+      'label' => 'Featured Videos',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '69',
       ),
     ),
   );
@@ -577,7 +665,7 @@ function pub_tv_overrides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '65',
+        'weight' => '66',
       ),
     ),
   );
@@ -687,7 +775,84 @@ function pub_tv_overrides_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '67',
+        'weight' => '68',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_tv_tune_in_date'.
+  $fields['node-tv_show-field_usa_tv_tune_in_date'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_tv_tune_in_date',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 49,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_usa_tv_tune_in_date',
+      'label' => 'Tune-in Display Date',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '65',
       ),
     ),
   );
@@ -696,12 +861,16 @@ function pub_tv_overrides_field_default_fields() {
   // Included for use with string extractors like potx.
   t('"On Now" Image');
   t('A Spot');
+  t('A maximum of 5 videos recommended for this field to be displayed in the show landing page.');
   t('Carousel featuring promos on the show landing page. A maximum of 6 promos recommended for this region.');
   t('Display Title');
+  t('Featured Videos');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Main_link');
   t('Recommend a maximum of 3 a-spots per show. This is the large a-spot display at the top of the show homepage.');
   t('The Latest');
+  t('This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)');
+  t('Tune-in Display Date');
   t('child_link');
   t('show_links');
 

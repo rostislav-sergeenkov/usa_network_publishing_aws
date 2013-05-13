@@ -82,7 +82,9 @@ function _usanetwork_migrate_add_video_term_by_hierarchy(&$entity, $term_hierarc
   }
 
   // Now add the final term in the hierarchy to the node.
-  $entity->field_usa_video_terms[ LANGUAGE_NONE ][]['target_id'] = $parent_tid;
+  if ($parent_tid) {
+    $entity->field_usa_video_terms[ LANGUAGE_NONE ][]['target_id'] = $parent_tid;
+  }
 }
 
 
@@ -148,12 +150,15 @@ function _usanetwork_migrate_attach_video_tv_show_reference(&$entity, $term_hier
  */
 function usanetwork_migrate_cron() {
 
+  // Process nodes scheduled to be unpublished in field_publish_date.
   $results = usanetwork_migrate_get_scheduled_nodes();
   $queue = DrupalQueue::get('usanetwork_migrate');
 
   foreach ($results as $result) {
     $queue->createItem($result);
   }
+
+  // Run migration to update content.
 }
 
 /*

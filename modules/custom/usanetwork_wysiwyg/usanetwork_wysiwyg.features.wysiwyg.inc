@@ -100,6 +100,9 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
         'media' => array(
           'media' => 1,
         ),
+        'linkit' => array(
+          'linkit' => 1,
+        ),
         'drupal' => array(
           'media' => 1,
         ),

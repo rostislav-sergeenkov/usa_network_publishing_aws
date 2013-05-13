@@ -35,6 +35,32 @@ function usanetwork_core_install() {
   // Set the homepage
   variable_set('site_frontpage', 'home');
 
+  // get the new filter format into the db
+  $wysiwyg_full_html = array(
+    'format' => 'wysiwyg_full_html',
+    'name' => 'WYSIWYG Full Html',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $wysiwyg_full_html = (object) $wysiwyg_full_html;
+  filter_format_save($wysiwyg_full_html);
+
+  // Let's add this new filter to our user roles.
+  $existing_roles = user_roles();
+  $rids = array_flip($existing_roles);
+  user_role_grant_permissions($rids['administrator'], array('use text format wysiwyg_full_html'));
+  user_role_grant_permissions($rids['editor'], array('use text format wysiwyg_full_html'));
 }
 
 /**
@@ -112,6 +138,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_video',
     'usanetwork_theme_settings',
     'usanetwork_ads',
+    'usanetwork_wysiwyg',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',

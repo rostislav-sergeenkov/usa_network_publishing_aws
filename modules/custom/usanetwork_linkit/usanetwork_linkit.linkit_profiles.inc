@@ -182,6 +182,7 @@ function usanetwork_linkit_default_linkit_profiles() {
     'text_formats' => array(
       'wysiwyg_basic' => 'wysiwyg_basic',
       'wysiwyg_mini' => 0,
+      'wysiwyg_full_html' => 0,
       'plain_text' => 0,
       'ds_code' => 0,
     ),
@@ -253,6 +254,7 @@ function usanetwork_linkit_default_linkit_profiles() {
       'bundles' => array(
         'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
+        'movie' => 'movie',
         'person' => 'person',
         'usanetwork_static_page' => 'usanetwork_static_page',
         'tv_episode' => 'tv_episode',
@@ -264,7 +266,6 @@ function usanetwork_linkit_default_linkit_profiles() {
         'usanetwork_aspot' => 0,
         'character_profile' => 0,
         'usa_homepage' => 0,
-        'movie' => 0,
         'usanetwork_promo' => 0,
       ),
       'group_by_bundle' => 1,

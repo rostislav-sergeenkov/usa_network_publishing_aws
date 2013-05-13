@@ -74,7 +74,7 @@
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <?php if ($site_name): ?>
         <div id="logo">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">USA</a>
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
         </div>
       <?php endif; ?>
 

@@ -1,14 +1,13 @@
 
+
 #block-usanetwork-tv-schedule-usa-on-now-block {
-  background-color: #000;
-  height: 45px;
+  height: 100%;
   padding-left: 12px;
-  border-bottom: 1px solid #2E2E2E;
   position: relative;
   font-family: $headline-bold;
   text-transform: none;
+  float: left;
   @include breakpoint($bp-on-now) {
-    height: 62px;
     padding-left: 15px;
   }
   span {
@@ -66,10 +65,11 @@
 
 #on-now-show-episode {
   display: inline;
-  float: left;
+//  float: left;
   @include breakpoint($bp-on-now) {
     white-space: nowrap;
     height: 100%;
+//    float: none;
   }
   &:before {
     content: "";
@@ -82,6 +82,7 @@
     }
   }
 }
+
 
 
 span#on-now-episode {

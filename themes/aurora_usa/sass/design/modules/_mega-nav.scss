@@ -9,6 +9,7 @@
   background-color: $nav-black;
   @include box-shadow(rgba(0,0,0,.7) 0 -31px 63px);
 }
-#site-name {
+#logo {
+  font-size: nth($header-sizes, 1);
   @extend %usanetwork-font;
 }

@@ -12,7 +12,7 @@
   visibility: hidden;
 }
 
-.title-overlay .field-name-field-caption, .grid-container-small .asset-thumb .field-name-field-caption, #person-content .node-media-gallery .field-name-title .field-name-field-caption {
+.title-overlay .field-name-field-caption, .grid-container-small .asset-thumb .field-name-field-caption, #person-content .node-media-gallery .field-name-title .field-name-field-caption, #site-name {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -23,7 +23,7 @@
   width: 1px;
 }
 
-.title-overlay .focusable.field-name-field-caption, .grid-container-small .asset-thumb .focusable.field-name-field-caption, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption {
+.title-overlay .focusable.field-name-field-caption, .grid-container-small .asset-thumb .focusable.field-name-field-caption, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption, .focusable#site-name {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -33,7 +33,7 @@
   position: absolute;
   width: 1px;
 }
-.title-overlay .focusable.field-name-field-caption:active, .grid-container-small .asset-thumb .focusable.field-name-field-caption:active, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:active, .title-overlay .focusable.field-name-field-caption:focus, .grid-container-small .asset-thumb .focusable.field-name-field-caption:focus, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:focus {
+.title-overlay .focusable.field-name-field-caption:active, .grid-container-small .asset-thumb .focusable.field-name-field-caption:active, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:active, .focusable#site-name:active, .title-overlay .focusable.field-name-field-caption:focus, .grid-container-small .asset-thumb .focusable.field-name-field-caption:focus, #person-content .node-media-gallery .field-name-title .focusable.field-name-field-caption:focus, .focusable#site-name:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -251,7 +251,7 @@ you can use the generic selector below, but it's slower:
   content: "\55\53\41\4e\65\74\77\6f\72\6b";
 }
 
-#site-name, .flex-direction-nav a, .icons-social a, .social-follow-block .item-content .icons-social a, .carousel .btns {
+#logo, .flex-direction-nav a, .icons-social a, .social-follow-block .item-content .icons-social a, .carousel .btns {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -1104,6 +1104,10 @@ mark {
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 -31px 63px;
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 0 -31px 63px;
   box-shadow: rgba(0, 0, 0, 0.7) 0 -31px 63px;
+}
+
+#logo {
+  font-size: 37px;
 }
 
 #utilities {

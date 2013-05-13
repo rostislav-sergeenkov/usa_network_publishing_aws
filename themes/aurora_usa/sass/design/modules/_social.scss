@@ -1,5 +1,4 @@
 
-
 .icons-social a {
 	color:#000;
 	background-color:$gray-light;
@@ -19,12 +18,14 @@
 	}
 }
 
-.page-node-social {
+.usa-social {
 	#main {
 		max-width: 1290px;
 		margin-left: auto;
 		margin-right: auto;
 		width:300px;
+    padding-left: 40px;
+    padding-right: 40px;
 		@include breakpoint($bp-social-small-width) {
 			width: auto;
     	clear: both;
@@ -32,7 +33,15 @@
 		@include breakpoint($bp-social-large-width) {
 			width: auto;
 			padding-right: 330px;
+      padding-left: 15px;
 		}
+	}
+	.menu-label {
+		font-size: 20px;
+		font-family: "Proxima N W01 Reg";
+		color: $white;
+		padding: 7px 9px 6px;
+		text-transform: lowercase;
 	}
 	.tabs {
 		@include breakpoint($bp-social-mid-width) {
@@ -40,11 +49,19 @@
 		}
 		.secondary {
 			border-bottom: 0;
-			padding: 10px 0 0 0;
+			padding: 0;
 			margin: 0;
 			overflow:hidden;
 			@include breakpoint($bp-social-large-width) {
 				display: inline-block;
+				padding: 10px 0 0;
+			}
+			&.filter-menu a {
+				font-size: 20px;
+				font-family: "Proxima N W01 Reg";
+				color: $white;
+				padding: 15px 14px 13px;
+				height: auto;
 			}
 			li {
 				border: 0;
@@ -57,15 +74,8 @@
 				@include breakpoint($bp-social-mid-width) {
 					display: inline;
 				}
-				a {
-					&.person-twitter,
-					&.usasocial-twitter 	{
-			  		@extend %usanetwork-font; /*test */
-			    }
-				}
 				&:first-child a {
 			  	margin: 0;
-			  	border-top: 0;
 				}
 				&.active {
 					a {
@@ -91,7 +101,7 @@
 				width: 100%;
 				border-top: 1px solid #575757;
 				font-weight: normal;
-				text-transform: none;
+				text-transform: lowercase;
 				&:hover {
 					background-color: #444;
 				}
@@ -107,9 +117,6 @@
 				}
 			}
 		}
-	}
-	.region-content {
-		padding: 15px;
 	}
 	li {
 		list-style: none;
@@ -219,4 +226,169 @@
 	    }
     }
 	}
+}
+
+
+
+/* chat with fans */
+
+
+.echo-item-content {
+  background: #414141;
+  margin-bottom: 16px;
+    .echo-item-container {
+      padding: 40px 15px 42px;
+      position: relative;
+    }
+    .echo-item-childrenMarker {
+    	display: none !important;
+    }
+    .echo-item-avatar-wrapper {
+      display: inline;
+      float: left;
+      width: 48px;
+      margin: 0;
+    }
+    .echo-item-wrapper {
+      margin-left: 63px;
+      float: none;
+      width: auto;
+    }
+    .echo-item-subwrapper {
+      margin-left: 0;
+    }
+    .echo-user-list-container img {
+    	display: none;
+    }
+    .echo-item-body  {
+    	padding: 0;
+    }
+    .echo-linkColor,
+    .echo-item-text {
+    	color: $white;
+    	font-size: 16px;
+    	font-family: "Proxima N W01 Light";
+    	font-weight: normal;
+    	letter-spacing: 0.05em;
+    	line-height: 1.2;
+      @include breakpoint($bp-social-echo) {
+        font-size: 21px;
+      }
+    	p {
+    		margin: 0 0 10px;
+    	}
+    }
+    .echo-item-footer,
+    .echo-item-likes {
+    	color: #A3A3A3;
+    	font-family: "Proxima N W01 Reg";
+    	font-size: 13px;
+    	background: none;
+    	padding: 0;
+    	.echo-item-from a {
+    		color: #A3A3A3;
+    	}
+    	img {
+    		display: none !important;
+    	}
+    }
+    .echo-item-controls {
+    	float: none;
+    	position: absolute;
+    	right: 8px;
+    	bottom: 8px;
+    }
+		.echo-item-control-delim,
+    .echo-item-control-Flag,
+    .echo-item-control-Like {
+    	display: none;
+    }
+    .echo-item-control-Reply {
+    	background-color: #303030;
+	    bottom: 8px;
+	    color: #0AB6E8;
+	    display: block;
+	    font-size: 18px;
+	    line-height: 1;
+	    padding: 8px 12px 3px;
+	    text-transform: uppercase;
+	    font-family: "Proxima N W01 Reg";
+	    letter-spacing: normal;
+    }
+    .echo-item-data {
+      padding-bottom: 10px;
+    }
+    .echo-item-replyForm {
+    	margin: 0;
+    }
+    .echo-item-children .echo-item-container,
+    .echo-item-children .echo-item-content {
+    		background-color: #383838;
+    		margin: 0;
+        .echo-item-container-child {
+          padding: 15px;
+        }
+    		.echo-item-text {
+    			font-size: 15px;
+    			color: #A3A3A3;
+          line-height: 1.5em;
+    		}
+    }
+    .echo-item-children .echo-item-content {
+    	border-bottom: 1px solid #313131;
+    }
+}
+
+.echo-stream-state-picture {
+  display: none;
+}
+
+.echo-stream-state-message {
+  display: none;
+}
+
+#chat-submit-form {
+  overflow: hidden;
+  margin-bottom: 15px;
+  .echo-submit-counterLabel {
+    display: none;
+  }
+  .echo-submit-container  {
+    width: 100%;
+  }
+  .echo-submit-content {
+    padding: 0;
+    border: 0;
+  }
+  .echo-submit-body {
+    width: 100%;
+    margin-right: -130px;
+    float:left;
+    textarea {
+      height: 77px;
+      padding: 5px;
+    }
+  }
+  .echo-submit-controls {
+    width: 130px;
+    float:left;
+    height: 77px;
+    margin: 0;
+  }
+  .echo-button button {
+    background-color: #303030;
+    height: 77px;
+    width: 130px;
+    font-size: 24px;
+    color: #0AB6E8;
+    text-transform: uppercase;
+    border: 0;
+    margin: 0;
+    @include border-radius(0);
+  }
+}
+
+#fancybox-wrap {
+  width: 460px !important;
+  height: 300px !important;
 }

@@ -164,7 +164,6 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     );
     state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
   }
-  }
 }
 
 /* -------------------------------------------------------------------------- */

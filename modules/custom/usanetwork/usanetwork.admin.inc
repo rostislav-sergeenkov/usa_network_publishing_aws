@@ -48,7 +48,21 @@ function usanetwork_settings_form() {
     '#type' => 'textfield',
     '#title' => t('Footer Message'),
     '#description' => t('YYYY will be replaced by current year'),
-    '#default_value' => variable_get('usanetwork_footer_message', 'NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal'),
+    '#default_value' => variable_get('usanetwork_footer_message', '&copy;YYYY NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal'),
+  );
+
+  /* more menu settings */
+  $form['more_menu'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('More Menu Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['more_menu']['usanetwork_more_menu_links'] = array(
+    '#type' => 'textarea',
+    '#title' => t('More Menu Raw HTML'),
+    '#description' => t('The HTML to include in the "more" link on the primary navigation (Eg. ul, li tags)'),
+    '#default_value' => variable_get('usanetwork_more_menu_links', ''),
   );
 
   return system_settings_form($form);

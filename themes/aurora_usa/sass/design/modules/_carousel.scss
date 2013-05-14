@@ -12,9 +12,6 @@
 		text-align: center;
 		padding: 0;
 		margin: 0;
-		@include breakpoint($bp-social-mid-width) {
-			width: 240px;
-		}
 		&.active {
 			figure {
 				border-color: $white;
@@ -39,12 +36,13 @@
 			position: absolute;
 			top: 0;
 			z-index: 1;
+
 		}
 		img {
 			max-width: none;
 			display: block;
 		}
-		a.overlay {
+		a.item-overlay {
 			height: 188px;
 			left: 0;
 			position: absolute;

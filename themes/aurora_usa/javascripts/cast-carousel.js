@@ -6,10 +6,10 @@
     attach: function (context, settings) {
 
 
-       $( ".view-usa-cast li" ).each(function( index ) {
+       $( "#cast-carousel li" ).each(function( index ) {
           $(this).attr('data-flexindex',index);
         });
-        var moveTo = $('.view-usa-cast li.active').attr('data-flexindex');
+        var moveTo = $('#cast-carousel li.active').attr('data-flexindex');
 
         $('<div id="carousel-btns" class="carousel"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.view-usa-cast .view-content');
 

@@ -159,6 +159,18 @@ function usanetwork_migrate_cron() {
   }
 
   // Run migration to update content.
+  global $usanetwork_migrate_is_cron;
+
+  $usanetwork_migrate_is_cron = TRUE;
+  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+
+  foreach ($machine_names as $machine_name) {
+    $migration = Migration::getInstance($machine_name);
+    // Prepare to Update the contents/data
+    $migration->prepareUpdate();
+    // Trigger the migration
+    $result = $migration->processImport();
+  }
 }
 
 /*

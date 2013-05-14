@@ -217,6 +217,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'Limited to 20 characters or less. This displays in the show header.',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '54',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -228,7 +234,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => '27',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -295,7 +301,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '31',
         ),
         'default' => array(
           'label' => 'above',
@@ -310,7 +316,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '50',
+          'weight' => '57',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -400,7 +406,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '33',
+          'weight' => '39',
         ),
         'default' => array(
           'label' => 'above',
@@ -415,7 +421,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '51',
+          'weight' => '58',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -507,6 +513,12 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'A maximum of 5 videos recommended for this field to be displayed in the show landing page.',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '55',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -514,7 +526,13 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 48,
+          'weight' => '48',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -584,7 +602,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '37',
+          'weight' => '45',
         ),
         'default' => array(
           'label' => 'above',
@@ -600,7 +618,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '53',
+          'weight' => '60',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -723,7 +741,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '35',
+          'weight' => '43',
         ),
         'default' => array(
           'label' => 'above',
@@ -738,7 +756,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '52',
+          'weight' => '59',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -815,12 +833,24 @@ function pub_tv_overrides_field_default_fields() {
       'deleted' => '0',
       'description' => 'This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)',
       'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '56',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 49,
+          'weight' => '49',
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '30',
         ),
         'teaser' => array(
           'label' => 'above',

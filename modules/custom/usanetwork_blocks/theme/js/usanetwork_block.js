@@ -15,16 +15,7 @@
 		jQuery(".lackOfFeaturesModal-close-modal").click(function()
 		{
 			document.getElementById('lackOfFeaturesModal').style.display = 'none';
-		});
-		jQuery('#lackOfFeaturesModal').hover(function(){ 
-			mouse_is_inside=true; 
-			}, function(){ 
-			mouse_is_inside=false; 
-		});
-
-		jQuery("body").mouseup(function(){ 
-			if(! mouse_is_inside) 
-				jQuery('#lackOfFeaturesModal').hide();
+      document.getElementById('lackOfFeaturesModal-main').style.display = 'none';
 		});
 		jQuery("#lackOfFeaturesModal-bullet-list1").click(function(){ 
 			window.open('http://www.mozilla.org', '_blank');

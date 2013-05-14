@@ -258,7 +258,7 @@ function usanetwork_promo_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_promo_link',
       'label' => 'Link',
       'required' => 1,
@@ -274,7 +274,6 @@ function usanetwork_promo_field_default_fields() {
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 1,

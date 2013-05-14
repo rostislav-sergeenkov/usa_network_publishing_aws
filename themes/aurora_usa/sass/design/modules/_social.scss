@@ -1,6 +1,6 @@
 
 .icons-social a {
-	color: #000;
+	color: $black-dark;
 	background-color: $gray-light;
 	@extend %usanetwork-font;
 	font-size: 1.5em;
@@ -14,7 +14,7 @@
 		background-color: $white;
 	}
 	&.usasocial-fb {
-  	padding-left:8px;
+		padding-left:8px;
 	}
 }
 
@@ -24,16 +24,16 @@
 		margin-left: auto;
 		margin-right: auto;
 		width:300px;
-    padding-left: 40px;
-    padding-right: 40px;
+		padding-left: 40px;
+		padding-right: 40px;
 		@include breakpoint($bp-social-small-width) {
 			width: auto;
-    	clear: both;
+			clear: both;
 		}
 		@include breakpoint($bp-social-large-width) {
 			width: auto;
 			padding-right: 330px;
-      padding-left: 15px;
+			padding-left: 15px;
 		}
 	}
 	.menu-label {
@@ -75,7 +75,7 @@
 					display: inline;
 				}
 				&:first-child a {
-			  	margin: 0;
+					margin: 0;
 				}
 				&.active {
 					a {
@@ -105,15 +105,15 @@
 				&:hover {
 					background-color: #444;
 				}
-		  	@include breakpoint($bp-social-mid-width) {
-		    	background-color: #474747;
+				@include breakpoint($bp-social-mid-width) {
+					background-color: #474747;
 					width: auto;
 					margin: 0 0 0 15px;
 					border-top: 0;
 					text-transform: uppercase;
 					&:hover {
-			  		color: $gray-light;
-			    }
+						color: $gray-light;
+					}
 				}
 			}
 		}
@@ -127,26 +127,24 @@
 		vertical-align: top;
 		float: left;
 	}
-	.sidebar {
-		background: $gray-med-dark;
-		clear: both;
-		@include breakpoint($bp-social-large-width) {
-			float: left;
-			margin-left: 15px;
-			margin-top: 133px;
-			margin-right: -315px;
-			text-align: left;
-			vertical-align: top;
-			width: 300px;
-			margin-bottom: 15px;
-			clear: none;
-		}
-	}
 }
 
 .social-follow-block {
+	background-color: $gray-med-dark;
+	clear: both;
+	@include breakpoint($bp-social-large-width) {
+		float: left;
+		margin-left: 15px;
+		margin-top: 133px;
+		margin-right: -315px;
+		text-align: left;
+		vertical-align: top;
+		width: 300px;
+		margin-bottom: 15px;
+		clear: none;
+	}
 	h2 {
-		color: #9e9e9e;
+		color: $gray-extra-light;
 		text-transform: uppercase;
 		font-family: $headline-reg;
 		font-size: 1.125em;
@@ -162,7 +160,7 @@
 		overflow: hidden;
 		padding: 10px 0 10px 54px;
 		margin: 0;
-		border-top: 1px solid #4B4B4B;
+		border-top: 1px solid $gray-ultra-med;
 		figure {
 			display: inline-block;
 			margin-left: -42px;
@@ -179,7 +177,7 @@
 		text-align: right;
 		vertical-align: middle;
 		width: 100%;
-  	.title {
+		.title {
 			line-height: 1em;
 			font-size: 14px;
 			font-family: $headline-thn;
@@ -191,16 +189,16 @@
 				margin: 4px 0 0 11px;
 			}
 			h4 {
-			  font-size: 14px;
+				font-size: 14px;
 				font-family: $headline-reg;
 			}
 			.field-name-field-role,
 			.field-name-field-usa-actor-name {
 				font-style: italic;
-				color: #d0d0d0;
+				color: $off-white;
 				font-weight: normal;
 			}
-    }
+		}
 		a {
 			color:$white;
 		}
@@ -216,15 +214,29 @@
 				background-color: transparent;
 				color: $gray-light;
 				float: right;
-				margin-left: 8px;
-				width: 21px;
+				margin-left: 7px;
+				width: 19px;
 				height: 21px;
 				padding:0;
+				font-size: 1.4em;
 				&:hover {
 					color: $blue;
 				}
-	    }
-    }
+			}
+			.usasocial-pinterest {
+					background-color: $gray-light;
+					color: $gray-med-dark;
+					padding-top: 3px;
+					width: 21px;
+					&:hover {
+						background-color: $blue;
+						color: $gray-med-dark;
+					}
+			}
+			.usasocial-fb {
+				margin-left:3px;
+			}
+		}
 	}
 }
 
@@ -234,161 +246,161 @@
 
 
 .echo-item-content {
-  background: $gray-med-dark;
-  margin-bottom: 16px;
-    .echo-item-container {
-      padding: 40px 15px 42px;
-      position: relative;
-    }
-    .echo-item-childrenMarker {
-    	display: none !important;
-    }
-    .echo-item-avatar-wrapper {
-      display: inline;
-      float: left;
-      width: 48px;
-      margin: 0;
-    }
-    .echo-item-wrapper {
-      margin-left: 63px;
-      float: none;
-      width: auto;
-    }
-    .echo-item-subwrapper {
-      margin-left: 0;
-    }
-    .echo-user-list-container img {
-    	display: none;
-    }
-    .echo-item-body  {
-    	padding: 0;
-    }
-    .echo-linkColor,
-    .echo-item-text {
-    	color: $white;
-    	font-size: 16px;
-    	font-family: $headline-lt;
-    	font-weight: normal;
-    	letter-spacing: 0.05em;
-    	line-height: 1.2;
-      @include breakpoint($bp-social-echo) {
-        font-size: 21px;
-      }
-    	p {
-    		margin: 0 0 10px;
-    	}
-    }
-    .echo-item-footer,
-    .echo-item-likes {
-    	color: $gray-extra-light;
-    	font-family: $headline-reg;
-    	font-size: 13px;
-    	background: none;
-    	padding: 0;
-    	.echo-item-from a {
-    		color: $gray-extra-light;
-    	}
-    	img {
-    		display: none !important;
-    	}
-    }
-    .echo-item-controls {
-    	float: none;
-    	position: absolute;
-    	right: 8px;
-    	bottom: 8px;
-    }
+	background: $gray-med-dark;
+	margin-bottom: 16px;
+		.echo-item-container {
+			padding: 40px 15px 42px;
+			position: relative;
+		}
+		.echo-item-childrenMarker {
+			display: none !important;
+		}
+		.echo-item-avatar-wrapper {
+			display: inline;
+			float: left;
+			width: 48px;
+			margin: 0;
+		}
+		.echo-item-wrapper {
+			margin-left: 63px;
+			float: none;
+			width: auto;
+		}
+		.echo-item-subwrapper {
+			margin-left: 0;
+		}
+		.echo-user-list-container img {
+			display: none;
+		}
+		.echo-item-body  {
+			padding: 0;
+		}
+		.echo-linkColor,
+		.echo-item-text {
+			color: $white;
+			font-size: 16px;
+			font-family: $headline-lt;
+			font-weight: normal;
+			letter-spacing: 0.05em;
+			line-height: 1.2;
+			@include breakpoint($bp-social-echo) {
+				font-size: 21px;
+			}
+			p {
+				margin: 0 0 10px;
+			}
+		}
+		.echo-item-footer,
+		.echo-item-likes {
+			color: $gray-extra-light;
+			font-family: $headline-reg;
+			font-size: 13px;
+			background: none;
+			padding: 0;
+			.echo-item-from a {
+				color: $gray-extra-light;
+			}
+			img {
+				display: none !important;
+			}
+		}
+		.echo-item-controls {
+			float: none;
+			position: absolute;
+			right: 8px;
+			bottom: 8px;
+		}
 		.echo-item-control-delim,
-    .echo-item-control-Flag,
-    .echo-item-control-Like {
-    	display: none;
-    }
-    .echo-item-control-Reply {
-    	background-color: $gray-dark;
-	    bottom: 8px;
-	    color: $blue;
-	    display: block;
-	    font-size: 18px;
-	    line-height: 1;
-	    padding: 8px 12px 3px;
-	    text-transform: uppercase;
-	    font-family: $headline-reg;
-	    letter-spacing: normal;
-    }
-    .echo-item-data {
-      padding-bottom: 10px;
-    }
-    .echo-item-replyForm {
-    	margin: 0;
-    }
-    .echo-item-children .echo-item-container,
-    .echo-item-children .echo-item-content {
-    		background-color: #383838;
-    		margin: 0;
-        .echo-item-container-child {
-          padding: 15px;
-        }
-    		.echo-item-text {
-    			font-size: 15px;
-    			color: $gray-extra-light;
-          line-height: 1.5em;
-    		}
-    }
-    .echo-item-children .echo-item-content {
-    	border-bottom: 1px solid #313131;
-    }
+		.echo-item-control-Flag,
+		.echo-item-control-Like {
+			display: none;
+		}
+		.echo-item-control-Reply {
+			background-color: $gray-dark;
+			bottom: 8px;
+			color: $blue;
+			display: block;
+			font-size: 18px;
+			line-height: 1;
+			padding: 8px 12px 3px;
+			text-transform: uppercase;
+			font-family: $headline-reg;
+			letter-spacing: normal;
+		}
+		.echo-item-data {
+			padding-bottom: 10px;
+		}
+		.echo-item-replyForm {
+			margin: 0;
+		}
+		.echo-item-children .echo-item-container,
+		.echo-item-children .echo-item-content {
+				background-color: #383838;
+				margin: 0;
+				.echo-item-container-child {
+					padding: 15px;
+				}
+				.echo-item-text {
+					font-size: 15px;
+					color: $gray-extra-light;
+					line-height: 1.5em;
+				}
+		}
+		.echo-item-children .echo-item-content {
+			border-bottom: 1px solid #313131;
+		}
 }
 
 .echo-stream-state-picture {
-  display: none;
+	display: none;
 }
 
 .echo-stream-state-message {
-  display: none;
+	display: none;
 }
 
 #chat-submit-form {
-  overflow: hidden;
-  margin-bottom: 15px;
-  .echo-submit-counterLabel {
-    display: none;
-  }
-  .echo-submit-container  {
-    width: 100%;
-  }
-  .echo-submit-content {
-    padding: 0;
-    border: 0;
-  }
-  .echo-submit-body {
-    width: 100%;
-    margin-right: -130px;
-    float:left;
-    textarea {
-      height: 77px;
-      padding: 5px;
-    }
-  }
-  .echo-submit-controls {
-    width: 130px;
-    float:left;
-    height: 77px;
-    margin: 0;
-  }
-  .echo-button button {
-    background-color: $gray-dark;
-    height: 77px;
-    width: 130px;
-    font-size: 24px;
-    color: $blue;
-    text-transform: uppercase;
-    border: 0;
-    margin: 0;
-    @include border-radius(0);
-  }
+	overflow: hidden;
+	margin-bottom: 15px;
+	.echo-submit-counterLabel {
+		display: none;
+	}
+	.echo-submit-container  {
+		width: 100%;
+	}
+	.echo-submit-content {
+		padding: 0;
+		border: 0;
+	}
+	.echo-submit-body {
+		width: 100%;
+		margin-right: -130px;
+		float:left;
+		textarea {
+			height: 77px;
+			padding: 5px;
+		}
+	}
+	.echo-submit-controls {
+		width: 130px;
+		float:left;
+		height: 77px;
+		margin: 0;
+	}
+	.echo-button button {
+		background-color: $gray-dark;
+		height: 77px;
+		width: 130px;
+		font-size: 24px;
+		color: $blue;
+		text-transform: uppercase;
+		border: 0;
+		margin: 0;
+		@include border-radius(0);
+	}
 }
 
 #fancybox-wrap {
-  width: 460px !important;
-  height: 300px !important;
+	width: 460px !important;
+	height: 300px !important;
 }

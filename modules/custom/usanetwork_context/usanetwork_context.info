@@ -13,6 +13,7 @@ dependencies[] = usanetwork_social
 dependencies[] = usanetwork_tv_schedule
 features[context][] = show_page
 features[context][] = show_social_page
+features[context][] = usa_social_pages
 features[context][] = usanetwork_homepage
 features[context][] = usanetwork_sitewide
 features[ctools][] = context:context:3

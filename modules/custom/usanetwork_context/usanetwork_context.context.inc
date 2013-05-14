@@ -93,6 +93,46 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usa_social_pages';
+  $context->description = 'context for all global social pages';
+  $context->tag = 'social';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'social' => 'social',
+        'social/*' => 'social/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-usa_shows-block_1' => array(
+          'module' => 'views',
+          'delta' => 'usa_shows-block_1',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
+        'views-usa_shows-block_2' => array(
+          'module' => 'views',
+          'delta' => 'usa_shows-block_2',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('context for all global social pages');
+  t('social');
+  $export['usa_social_pages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usanetwork_homepage';
   $context->description = 'The content in this context will appear on the site front page.';
   $context->tag = 'homepage';

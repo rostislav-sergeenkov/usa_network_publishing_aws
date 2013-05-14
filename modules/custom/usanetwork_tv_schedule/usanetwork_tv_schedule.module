@@ -288,7 +288,7 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
 
   $result = drupal_http_request($xml_feed);
-  if ($result->headers['content-type'] != 'application/xml') {
+  if (!isset($result->headers['content-type']) || $result->headers['content-type'] != 'application/xml') {
     return NULL;
   }
 

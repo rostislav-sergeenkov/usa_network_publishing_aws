@@ -26,6 +26,28 @@ function usanetwork_social_settings_form() {
     '#description' => t('URL params'),
   );
 
+	// SYNC
+  $form['sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sync Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['sync']['usanetwork_social_sync_desktop_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DESKTOP URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_desktop_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+  );
+
+  $form['sync']['usanetwork_social_sync_phone_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PHONE URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_phone_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
+  );
+
   // CHAT WITH FANS
   $form['chat'] = array(
     '#type' => 'fieldset',

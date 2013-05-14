@@ -13,7 +13,6 @@ Drupal.behaviors.sync_page = {
 			{
 				if (jQuery('#sync').html().length > 0)
 				{
-//if (typeof console != 'undefined') console.log('fn: refreshIframe('+source+')');
 					var iframe = document.getElementById('syncIframe');
 					iframe.src = source;
 				}
@@ -25,7 +24,6 @@ Drupal.behaviors.sync_page = {
 
 			var displaySyncIframe = function()
 			{
-//console.log('fn: displaySyncIframe()\nelemWidth: '+elemWidth+'\nelemHeight: '+elemHeight);
 				// Check to make sure sniff.js has loaded
 				if (typeof phone != 'undefined')
 				{

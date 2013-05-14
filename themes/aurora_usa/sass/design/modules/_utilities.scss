@@ -3,6 +3,13 @@
   background-color: $nav-black;
   position: relative;
   z-index: 11;
+  padding-top: 7px;
+  border-bottom: 1px solid #2E2E2E;
+  overflow: hidden;
+  @include breakpoint($bp-on-now) {
+    padding-top: 0;
+    height: 62px;
+  }
 
   > .dropdown-list {
     // background: sprite($ico-sprites, list-dropdown-blue, 7px, 12px);

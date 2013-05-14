@@ -30,4 +30,5 @@
 </div>
 <div class="mega-menu-items">
   <?php print l('More', '', array('attributes' => array('class' => array('mega-nav-link', 'more')))); ?>
+  <?php print variable_get('usanetwork_more_menu_links', ''); ?>
 </div>

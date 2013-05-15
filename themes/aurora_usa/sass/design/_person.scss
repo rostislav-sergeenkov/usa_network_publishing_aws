@@ -111,55 +111,6 @@ body.person-page {
 	}
 }
 
-#cast-carousel {
-	background-color: $black;
-	border: 1px solid #2E2E2E;
-	border-left: 0;
-	border-right: 0;
-	padding: 30px 0;
-	.view {
-		background: none;
-		border: none;
-		box-shadow: none;
-		margin: 0 auto;
-		max-width: 1319px;
-		overflow: hidden;
-		position: relative;
-		padding: 0 30px;
-		@include breakpoint($bp-person-small-width) {
-			padding-left: 37px;
-			padding-right: 37px;
-		}
-		.carousel {
-			h4 {
-				font-size: 16px;
-				margin: 0;
-			}
-			.item-content > div {
-				font-size: 14px;
-			}
-		}
-		&:after, &:before {
-			content: "";
-			display: block;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			width: 50px;
-		}
-		&:before {
-			@include background(linear-gradient(left center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
-			left: 5px;
-			z-index: 3;
-		}
-		&:after {
-			@include background(linear-gradient(right center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
-			right: 5px;
-			z-index: 2;
-		}
-	}
-}
-
 
 
 /* find where to move this to */

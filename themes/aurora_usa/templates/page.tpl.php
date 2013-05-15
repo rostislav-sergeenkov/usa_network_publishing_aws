@@ -88,7 +88,7 @@
 </header>
 
 <!-- TOP TITLE AND TOOLS BAR -->
-<div id="utilities">
+<div id="utilities" class="clearfix">
   <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
   <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
   <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>

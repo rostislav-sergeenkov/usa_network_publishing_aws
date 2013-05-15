@@ -11,10 +11,14 @@ function pub_tv_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
+  // Exported overrides for: ds_field_settings
+  $overrides["ds_field_settings.node|tv_show|follow_social.settings|title|weight"] = '1';
+
   // Exported overrides for: ds_layout_settings
-  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|1"] = 'field_usa_link_pinterest';
-  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|2"] = 'field_usa_link_tumblr';
-  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|3"] = 'field_usa_link_twitter';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|0"] = 'field_usa_link_facebook';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|1"] = 'field_usa_link_twitter';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|2"] = 'field_usa_link_pinterest';
+  $overrides["ds_layout_settings.node|tv_show|follow_social.settings|regions|social|3"] = 'field_usa_link_tumblr';
 
   // Exported overrides for: field
   $overrides["field.node-tv_episode-body.field_instance|display|full"] = array(
@@ -132,13 +136,22 @@ function pub_tv_overrides_features_override_default_overrides() {
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title"] = array(
-    'custom_settings' => FALSE,
+    'custom_settings' => TRUE,
   );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title_lg"] = array(
     'custom_settings' => FALSE,
   );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|carousel_promo"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|cast_carousel"] = array(
+    'custom_settings' => FALSE,
+  );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|follow_social"] = array(
     'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|home_promo"] = array(
+    'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|social_follow"] = array(
     'custom_settings' => TRUE,

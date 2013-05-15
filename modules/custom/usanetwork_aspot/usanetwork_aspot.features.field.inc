@@ -216,7 +216,7 @@ function usanetwork_aspot_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'usanetwork_aspot',
       'deleted' => '0',
-      'description' => 'Largest retina image minimum 2508w x 1428h',
+      'description' => 'Largest retina image minimum 2490w x 1418h, scales for tablet devices',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -261,7 +261,7 @@ function usanetwork_aspot_field_default_fields() {
         'focus_min_size' => '',
         'max_filesize' => '',
         'max_resolution' => '',
-        'min_resolution' => '2508x1428',
+        'min_resolution' => '2490x1418',
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -501,118 +501,6 @@ function usanetwork_aspot_field_default_fields() {
         ),
         'type' => 'media_generic',
         'weight' => '7',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-usanetwork_aspot-field_usa_aspot_tablet'.
-  $fields['node-usanetwork_aspot-field_usa_aspot_tablet'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_usa_aspot_tablet',
-      'foreign keys' => array(
-        'fid' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'image',
-      'settings' => array(
-        'default_image' => 0,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '0',
-      'type' => 'image',
-    ),
-    'field_instance' => array(
-      'bundle' => 'usanetwork_aspot',
-      'deleted' => '0',
-      'description' => 'Medium rectangular version - minimum 1245w x 709w. Desktop image can be replicated here if preferred.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
-          'weight' => '1',
-        ),
-        'full' => array(
-          'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'exclude_cv' => 0,
-      'fences_wrapper' => 'no_wrapper',
-      'field_name' => 'field_usa_aspot_tablet',
-      'label' => 'Tablet Image',
-      'required' => 1,
-      'settings' => array(
-        'alt_field' => 0,
-        'default_image' => 0,
-        'file_directory' => 'aspot_tablet',
-        'file_extensions' => 'png gif jpg jpeg',
-        'focus' => 0,
-        'focus_lock_ratio' => 0,
-        'focus_min_size' => '',
-        'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '1245x709',
-        'title_field' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'media',
-        'settings' => array(
-          'allowed_schemes' => array(
-            'private' => 'private',
-            'public' => 'public',
-            'theplatform' => 0,
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'document' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'browser_plugins' => array(
-            'media_internet' => 0,
-            'pub_theplatform' => 0,
-            'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
-            'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
-            'upload' => 'upload',
-          ),
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'media_generic',
-        'weight' => '6',
       ),
     ),
   );
@@ -970,13 +858,11 @@ function usanetwork_aspot_field_default_fields() {
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
-  t('Largest retina image minimum 2508w x 1428h');
+  t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
   t('Link');
-  t('Medium rectangular version - minimum 1245w x 709w. Desktop image can be replicated here if preferred.');
   t('Mobile Image');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Show');
-  t('Tablet Image');
   t('Text line 2');
   t('Text line 3');
   t('Title text line 1');

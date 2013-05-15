@@ -65,12 +65,11 @@
 }
 
 #on-now-show-episode {
+  color: $gray-light;
   display: inline;
-//  float: left;
   @include breakpoint($bp-on-now) {
     white-space: nowrap;
     height: 100%;
-//    float: none;
   }
   &:before {
     content: "";

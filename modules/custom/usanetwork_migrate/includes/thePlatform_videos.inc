@@ -50,9 +50,16 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC');
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
-    $is_cron = FALSE;
-    if ($is_cron) {
-      $items_url .= '?range=1-5';
+    global $usanetwork_migrate_is_cron;
+
+    if ($usanetwork_migrate_is_cron) {
+      // Append query parameters to only retrieve video data updated within the
+      // last 24 hours.
+      $updated_date = date('c', strtotime('-24 hours'));
+      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
+    }
+    else {
+      $items_url .= '?range=1-500';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document
@@ -103,20 +110,26 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
   public function prepareRow($row) {
 
     // Process date field data.
-    $date_data = (string)array_shift($row->xml->xpath('dcterms:valid'));
-    $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
-    $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
-
-    $final_date_data = array(
-      'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
-      'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
-    );
-
-    $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
+    $dc_terms = $row->xml->xpath('dcterms:valid');
+    if (is_array($dc_terms)) {
+      $date_data = (string)array_shift($dc_terms);
+      $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
+      $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
+      // Format the dates for the date field.
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
+        'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
+      );
+      // Encode in JSON for the date field.
+      $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
+    }
 
     // Convert pl1:fullEpisode value.
-    $full_episode_value = (string)array_shift($row->xml->xpath('pl1:fullEpisode'));
-    $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    $full_episode = $row->xml->xpath('pl1:fullEpisode');
+    if (is_array($full_episode)) {
+      $full_episode_value = (string)array_shift($full_episode);
+      $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    }
   }
 
   public function prepare($entity, stdClass $row) {
@@ -163,6 +176,19 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       'vid' => $entity->vid,
     );
     state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+  }
+
+  public function postRollback() {
+
+    // Clear out old stateflow schedule records and queue items.  Will break
+    // re-import if left in there.
+    db_query("DELETE FROM state_flow_schedule, node
+        USING state_flow_schedule
+        LEFT JOIN node ON node.nid = state_flow_schedule.nid
+        WHERE node.nid IS NULL");
+
+    $queue = DrupalQueue::get('state_flow_schedule');
+    $queue->deleteQueue();
   }
 }
 
@@ -217,14 +243,19 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
-    $is_cron = FALSE;
-    if ($is_cron) {
-      $items_url .= '?range=1-5';
+    global $usanetwork_migrate_is_cron;
+
+    if ($usanetwork_migrate_is_cron) {
+      // Append query parameters to only retrieve video data updated within the
+      // last 24 hours.
+      $updated_date = date('c', strtotime('-24 hours'));
+      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
     }
-
-
-      $items_url .= '?range=1-150';
-
+    else {
+      // As of 5/14/13 there were 4329 MPX videos.  Setting range to grab them all,
+      // plus any that have been added since.
+      $items_url .= '?range=1-6000';
+    }
 
     $item_xpath = '/rss/channel/item';  // relative to document
     $item_ID_xpath = 'guid';  // relative to item_xpath
@@ -274,20 +305,26 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
   public function prepareRow($row) {
 
     // Process date field data.
-    $date_data = (string)array_shift($row->xml->xpath('dcterms:valid'));
-    $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
-    $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
-
-    $final_date_data = array(
-      'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
-      'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
-    );
-
-    $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
+    $dc_terms = $row->xml->xpath('dcterms:valid');
+    if (is_array($dc_terms)) {
+      $date_data = (string)array_shift($dc_terms);
+      $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
+      $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
+      // Format the dates for the date field.
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
+        'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
+      );
+      // Encode in JSON for the date field.
+      $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
+    }
 
     // Convert pl1:fullEpisode value.
-    $full_episode_value = (string)array_shift($row->xml->xpath('pl1:fullEpisode'));
-    $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    $full_episode = $row->xml->xpath('pl1:fullEpisode');
+    if (is_array($full_episode)) {
+      $full_episode_value = (string)array_shift($full_episode);
+      $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    }
   }
 
   public function prepare($entity, stdClass $row) {
@@ -334,6 +371,19 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       'vid' => $entity->vid,
     );
     state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+  }
+
+  public function postRollback() {
+
+    // Clear out old stateflow schedule records and queue items.  Will break
+    // re-import if left in there.
+    db_query("DELETE FROM state_flow_schedule, node
+        USING state_flow_schedule
+        LEFT JOIN node ON node.nid = state_flow_schedule.nid
+        WHERE node.nid IS NULL");
+
+    $queue = DrupalQueue::get('state_flow_schedule');
+    $queue->deleteQueue();
   }
 }
 

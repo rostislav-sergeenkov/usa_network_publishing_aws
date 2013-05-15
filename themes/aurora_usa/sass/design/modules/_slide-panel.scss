@@ -30,7 +30,7 @@
 #jPanelMenu-menu {
   // using position right instead of translate here because it creates a flash when animated
   // @include translate(-100%, 0);
-  background: #2d2d2d;
+  background-color: #3d3d3d;
   // height: 100%;
   // right: 100%;
   // overflow: hidden;
@@ -47,6 +47,12 @@
     //   -webkit-backface-visibility: hidden;
     // }
   // }
+  a {
+    color: #cccccc;
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
 
   .menu-title {
     background: $nav-black;

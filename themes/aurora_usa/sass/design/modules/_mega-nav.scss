@@ -162,6 +162,11 @@ $logo-height-med-2: 32px;
   }
   #jPanelMenu-menu & {
     display: block;
+    margin: 0;
+    a {
+      background-color: #2f2f2f;
+      border-color: #3d3d3d;
+    }
   }
 }
 .mega-nav-link {

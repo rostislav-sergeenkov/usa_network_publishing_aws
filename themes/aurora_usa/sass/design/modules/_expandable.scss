@@ -1,0 +1,70 @@
+.expandable {
+  > h1 {
+    cursor: pointer;
+    > a {
+      color: #fff;
+    }
+  }
+  > div {
+    display: none;
+  }
+  &.active {
+    > div {
+      display: block;
+    }
+  }
+}
+.expandable-menu {
+  border-color: #2d2d2d;
+  border-style: solid;
+  border-width: 0 0 1px;
+  > h1 {
+    background: #3d3d3d;
+    color: #CCCCCC;
+    display: block;
+    font-size: 17px;
+    font-family: Proxima N W01 Smbd;
+    margin: 0;
+    padding: 11px 12px 8px;
+    position: relative;
+    text-transform: uppercase;
+    &:after {
+      @include cssTriangle(5px, #0ab6e8, top);
+      margin-top: -3px;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+    }
+    &:hover {
+      color: #fff;
+
+      &:after {
+        @include cssTriangle(5px, #fff, top);
+      }
+    }
+  }
+  > div {
+    background: #2d2d2d;
+  }
+  a {
+    border-color: #1f1f1f;
+    border-style: solid;
+    border-width: 0 0 1px;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    padding: 12px 24px 8px;
+
+  }
+  &.active {
+    > h1 {
+      color: #fff;
+
+      &:after {
+        @include cssTriangle(5px, #fff, bottom);
+        margin-top: -9px;
+      }
+    }
+  }
+}
+

@@ -18,6 +18,15 @@ $logo-height-med-2: 32px;
   background-color: $nav-black;
   border-top: 1px solid #444;
   text-align: center;
+  @include transition-property(left);
+  @include transition-duration(150ms);
+  @include transition-timing-function(ease-in-out);
+  // &:hover {
+  //   left: 258px;
+  // }
+  [data-menu-position="open"] & {
+    left: 258px;
+  }
   @include box-shadow(rgba(0,0,0,.7) 0 -31px 63px);
   @include breakpoint($menuSwitchBreakpoint) {
     border-top: none;
@@ -145,6 +154,9 @@ $logo-height-med-2: 32px;
   }
   &:first-child {
     margin: 0 12px;
+  }
+  #jPanelMenu-menu & {
+    display: block;
   }
 }
 .mega-nav-link {

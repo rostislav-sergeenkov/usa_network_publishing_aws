@@ -1,0 +1,253 @@
+
+// $slideOutDuration: 0.3s;
+
+// #container {
+//   // -webkit-backface-visibility: hidden;
+// }
+
+// #wrapper {
+//   // position: relative;
+//   // -webkit-backface-visibility: hidden;
+// }
+
+// #wrapper,
+// #mega-nav {
+//   @include transition-duration($slideOutDuration);
+//   @include transition-timing-function(linear);
+//   @include transition-property(transform);
+//   @include transition-delay(0s);
+//   @include translate3d(0, 0, 0);
+
+// }
+
+// #left-panel {
+//   background: #3d3d3d;
+
+
+// }
+
+
+#jPanelMenu-menu {
+  // using position right instead of translate here because it creates a flash when animated
+  // @include translate(-100%, 0);
+  background: #2d2d2d;
+  // height: 100%;
+  // right: 100%;
+  // overflow: hidden;
+  // position: absolute;
+  // top: 0;
+  // width: 258px;
+  // > div {
+    // -webkit-overflow-scrolling: touch;
+    // display: none;
+    // height: 100%;
+    // overflow: auto;
+
+    // > * {
+    //   -webkit-backface-visibility: hidden;
+    // }
+  // }
+
+  .menu-title {
+    background: $nav-black;
+    color: $blue;
+    font-family: $headline-reg;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    padding: 10px 12px 8px;
+    text-transform: lowercase;
+  }
+  .expandable-menu {
+    > h1 {
+      font-family: $headline-reg;
+      font-size: 18px;
+      line-height: 1;
+      padding: 10px 12px 8px;
+      text-transform: lowercase;
+      &:after {
+        @include cssTriangle(5px, lighten(#ccc, 10%), left);
+        margin-top: -5px;
+        margin-right: -3px;
+      }
+    }
+    a {
+      font-size: 15px;
+      padding: 8px 20px 6px;
+    }
+    &.active {
+      > h1:after {
+        @include cssTriangle(5px, $blue, top);
+        margin-top: -3px;
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include breakpoint($bp-3-col) {
+    width: 362px;
+  }
+}
+
+.slide-panel-active {
+  overflow: hidden;
+  height: 100%;
+
+  body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  #wrapper,
+  #container {
+    height: 100%;
+  }
+  #wrapper,
+  #mega-nav {
+    @include translate3d(258px, 0, 0);
+    @include breakpoint($bp-3-col) {
+      @include translate3d(362px, 0, 0);
+    }
+  }
+  #mega-nav {
+
+
+    // create a black semi-transparent overlay on top of the mega nav because the
+    // Wall doesn't cover it
+    &:after {
+      @include background(rgba(#000, 0.8));
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  &.mega-menu-active {
+    #mega-nav {
+      .mobi-menu-icon {
+        border-color: #fff;
+        z-index: 2;
+
+        &:before,
+        &:after {
+          border-color: #fff;
+        }
+      }
+
+      &:after {
+        z-index: 1;
+      }
+    }
+  }
+  &.show-menu-active {
+    #utilities {
+      #show-menu-toggle {
+        // background: sprite($ico-sprites, list-dropdown-white, 4px, 12px);
+
+        // @include breakpoint(640px) {
+        //   background: sprite($ico-sprites, list-dropdown-white, 10px, 20px);
+        // }
+      }
+    }
+  }
+
+  &.on-now-active,
+  &.show-menu-active {
+    #utilities {
+      z-index: $ziUtilities;
+
+      #on-now-toggle,
+      #show-menu-toggle, {
+        position: relative;
+        z-index: 1;
+      }
+
+      &:after {
+        @include background(rgba(#000, 0.8));
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+}// END .slide-panel-active
+
+.on-now-active {
+  #on-now {
+    display: block;
+  }
+}
+.mega-menu-active {
+  #mega-menu {
+    display: block;
+  }
+}
+.show-menu-active {
+  #show-menu {
+    display: block;
+  }
+}
+
+.slide-panel-link {
+  background: #3d3d3d;
+  border-color: #2d2d2d;
+  border-style: solid;
+  border-width: 0 0 1px;
+  color: #CCCCCC;
+  display: block;
+  font-size: 18px;
+  font-family: $headline-reg;
+  margin: 0;
+  padding: 10px 12px 8px;
+  line-height: 1;
+  position: relative;
+  text-transform: lowercase;
+
+  &:focus,
+  &:hover {
+    color: #fff;
+  }
+}
+
+#mega-menu {
+  .expandable-menu,
+  .slide-panel-link {
+    border-color: $gray-med;
+  }
+  .slide-panel-link,
+  .expandable-menu > h1 {
+    background: darken($gray-med, 5%);
+  }
+  .expandable-menu a {
+    background: darken($gray-med, 10%);
+    border-color: darken($gray-med, 5%);
+    color: lighten(#ccc, 10%);
+  }
+}
+
+#show-menu {
+  .expandable-menu,
+  .slide-panel-link {
+    border-color: darken($gray-med, 5%);
+  }
+  .slide-panel-link,
+  .expandable-menu > h1 {
+    background: $gray-med;
+    color: lighten(#ccc, 10%);
+  }
+  .expandable-menu a {
+    background: darken($gray-med, 5%);
+    border-color: darken($gray-med, 10%);
+    color: #fff;
+  }
+}
+
+

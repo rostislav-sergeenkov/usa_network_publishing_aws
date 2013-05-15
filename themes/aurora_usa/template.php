@@ -81,6 +81,11 @@ function aurora_usa_preprocess_page(&$vars) {
     ),
   );
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
+
+  if(arg(2) == 'social' || arg(0) == 'social') {
+    $vars['page']['main_prefix']['#suffix'] = '<div class="social-main">';
+    $vars['page']['sidebar_first']['#suffix'] = '</div>';
+  }
 }
 
 /**
@@ -107,8 +112,15 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-  if($vars['block']->bid == 'views-usa_cast-block_2') {
-    $vars['classes_array'][] = drupal_html_class('social-follow-block');
+  switch($vars['block']->bid) {
+    case 'views-usa_shows-block_1':
+      if(arg(2) == 'social' || arg(0) == 'social') {
+        $vars['classes_array'][] = drupal_html_class('carousel');
+      }
+      break;
+    case 'views-usa_cast-block_2':
+      $vars['classes_array'][] = drupal_html_class('social-follow-block');
+      break;
   }
 }
 
@@ -365,21 +377,22 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
  * Implements template_preprocess_views_view_list().
  */
 function aurora_usa_preprocess_views_view_list(&$vars) {
-   $view = $vars['view'];
-   switch($view->name) {
-      case 'usa_cast' :
-        if ($vars['view']->current_display == 'block_1') {
-          //get node id for page
-          $nid = arg(1);
-          //loop thru carousel results
-          foreach($view->result as $delta => $item) {
-            //if carousel node id == node id for page add class
-            if($item->nid == $nid) {
-              $vars['classes_array'][$delta] .= ' active';
-            }
+ $view = $vars['view'];
+ switch($view->name) {
+    case 'usa_cast' :
+    case 'usa_shows' :
+      if ($vars['view']->current_display == 'block_1') {
+        //get node id for page
+        $nid = arg(1);
+        //loop thru carousel results
+        foreach($view->result as $delta => $item) {
+          //if carousel node id == node id for page add class
+          if($item->nid == $nid) {
+            $vars['classes_array'][$delta] .= ' active';
           }
         }
-        break;
+      }
+      break;
   }
 }
 

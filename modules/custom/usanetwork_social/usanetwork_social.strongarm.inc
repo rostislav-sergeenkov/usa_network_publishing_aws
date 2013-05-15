@@ -118,6 +118,20 @@ function usanetwork_social_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_sync_global_desktop_url';
+  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
+  $export['usanetwork_social_sync_global_desktop_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_sync_global_phone_url';
+  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+  $export['usanetwork_social_sync_global_phone_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_phone_url';
   $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
   $export['usanetwork_social_sync_phone_url'] = $strongarm;
@@ -125,9 +139,44 @@ function usanetwork_social_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_sync_show_global';
+  $strongarm->value = 1;
+  $export['usanetwork_social_sync_show_global'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_trend_base_url';
   $strongarm->value = 'https://www.rebelmouse.com';
   $export['usanetwork_social_trend_base_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_global_base_path';
+  $strongarm->value = 'USANetwork';
+  $export['usanetwork_social_trend_global_base_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_global_base_url';
+  $strongarm->value = 'https://www.rebelmouse.com';
+  $export['usanetwork_social_trend_global_base_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_global_url_params';
+  $strongarm->value = 'embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm';
+  $export['usanetwork_social_trend_global_url_params'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_trend_show_global';
+  $strongarm->value = 1;
+  $export['usanetwork_social_trend_show_global'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

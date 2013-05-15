@@ -330,11 +330,12 @@ function usanetwork_social_global_landing_page() {
 function usanetwork_social_global_trending() {
 	$output = '';
 
-	$showTrending = 1; // change to 0 to turn this off
-	$baseUrl = 'https://www.rebelmouse.com';
-	$basePath = 'USANetwork';
+	$showTrending = variable_get('usanetwork_social_trend_show_global');
+	$baseUrl = variable_get('usanetwork_social_trend_global_base_url');
+	$basePath = variable_get('usanetwork_social_trend_global_base_path');
 	$currentUrl = $GLOBALS['base_url'].'/'.request_path();
-	$urlParams = 'embedded=1&flexible=1&scrollbar_theme=light-2&referrer=http://'.$currentUrl.'&skip=also-on-rm';
+	$urlParams = variable_get('usanetwork_social_trend_global_url_params').'&referrer=http://'.$currentUrl;
+
 	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
 	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
@@ -412,8 +413,9 @@ function usanetwork_social_global_twitter() {
  * Menu callback of social global sync page
  */
 function usanetwork_social_global_sync() {
-	$desktopUrl = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
-	$phoneUrl = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+	$showSync = variable_get('usanetwork_social_sync_show_global');
+	$desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+	$phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
 	$vars = 'var desktopUrl = "'.$desktopUrl.'";';
 	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';

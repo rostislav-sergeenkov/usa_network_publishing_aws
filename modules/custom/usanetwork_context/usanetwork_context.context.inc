@@ -13,6 +13,40 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'schedule_page';
+  $context->description = 'the tv schedule page context';
+  $context->tag = 'schedule';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'schedule' => 'schedule',
+        'schedule/*' => 'schedule/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_schedule-usa_on_now_block' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_on_now_block',
+          'region' => 'head_general',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('schedule');
+  t('the tv schedule page context');
+  $export['schedule_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'show_page';
   $context->description = '';
   $context->tag = 'shows';
@@ -149,7 +183,7 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_tv_schedule-usa_on_now_block' => array(
           'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_block',
-          'region' => 'main_prefix',
+          'region' => 'head_general',
           'weight' => '-10',
         ),
       ),

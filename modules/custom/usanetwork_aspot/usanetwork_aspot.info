@@ -28,7 +28,6 @@ features[field][] = node-usanetwork_aspot-field_show
 features[field][] = node-usanetwork_aspot-field_usa_aspot_desktop
 features[field][] = node-usanetwork_aspot-field_usa_aspot_link
 features[field][] = node-usanetwork_aspot-field_usa_aspot_mobile
-features[field][] = node-usanetwork_aspot-field_usa_aspot_tablet
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt1
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt2
 features[field][] = node-usanetwork_aspot-field_usa_aspot_txt3

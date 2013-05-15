@@ -55,10 +55,16 @@
  * Regions:
  * - $page['help']: Dynamic help text, mostly for admin pages.
  * - $page['highlighted']: Items for the highlighted content region.
+ * - $page['header']: Items for the header region.
+ * - $page['head_show']: Show Header region
+ * - $page['head_general']: General Header region.
+ * - $page['search']: Search Block region.
+ * - $page['leaderboard']: Leaderboard Ad region.
+ * - $page['main_prefix']: Main Region Prefix region.
  * - $page['content']: The main content of the current page.
+ * - $page['main_suffix']: Main Region Suffix region.
  * - $page['sidebar_first']: Items for the first sidebar.
  * - $page['sidebar_second']: Items for the second sidebar.
- * - $page['header']: Items for the header region.
  * - $page['footer']: Items for the footer region.
  *
  * @see template_preprocess()
@@ -67,65 +73,38 @@
  */
 ?>
 
-  <header role="banner" id="page-header">
-    <h1 id="site-name">
-      <?php print $site_name; ?>
-    </h1>
-    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-      <?php if ($site_name): ?>
-        <div id="logo">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
-        </div>
-      <?php endif; ?>
-
-      <?php print render($page['header']); ?>
-
+<header role="banner" id="page-header">
+  <h1 id="site-name">
+    <?php print $site_name; ?>
+  </h1>
+  <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
+    <?php if ($site_name): ?>
+      <div id="logo">
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
       </div>
-    </header>
-
-
-
-
-  <div id="wrapper" class="slide-out" data-module-type="SlideOut" data-toggle-selector=".slide-menu-toggle">
-
-    <!-- TOP TITLE AND TOOLS BAR -->
-    <div id="utilities" >
-
-    <!-- END .dropdown-list -->
-    <!-- <span id="show-menu-toggle" class="slide-menu-toggle" data-active-class="show-menu-active">Open Show Menu</span> -->
-
-    <!-- <div class="breadcrumb">
-      <span>Show Title</span>
-      <span>Photos</span>
-    </div> -->
-
-    <form action="" id="header-search" data-module-type="HeaderSearch">
-      <label for="searchNow" class="open-search">Open Search Box</label>
-      <fieldset>
-        <!-- <label for="searchNow">Search</label>
-      -->
-      <!--
-          <div class="search-wrap">
-      -->
-      <input type="search" id="searchNow" name="searchNow" placeholder="Search Now">
-      <!-- </div>
-      -->
-      <!-- <input type="submit" value="Go" id="searchSubmitButton" />
-      -->
-      <input type="reset">Reset Search Box</fieldset>
-  </form>
-
-  <!-- <a class="show-share">share/send</a> -->
-  <!-- <span class="show-time">Tuesdays 10/9c</span> -->
+    <?php endif; ?>
+    <?php print render($page['header']); ?>
   </div>
-  <!-- /TOP TITLE AND TOOLS BAR -->
+</header>
 
-  <!-- MAIN CONTENT -->
-  <div id="main" role="main" class="clearfix">
+<!-- TOP TITLE AND TOOLS BAR -->
+<div id="utilities">
+  <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
+  <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
+  <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
+</div>
+<!-- /TOP TITLE AND TOOLS BAR -->
+
+<!-- leaderboard ad -->
+  <?php if ($page['leaderboard']): ?><div id="head-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+<!-- /leaderboard -->
+
+<!-- MAIN CONTENT -->
+<div id="main" role="main" class="clearfix">
   <?php if ($page['main_prefix']) :?>
     <?php print render($page['main_prefix']); ?>
   <?php endif; ?>
-  <?php print $breadcrumb; ?>
+  <?php //print $breadcrumb; ?>
   <?php if ($messages): ?>
     <div id="messages" role="alertdialog"><?php print $messages; ?></div>
   <?php endif; ?>
@@ -156,16 +135,14 @@
   <?php if ($page['main_suffix']) :?>
     <?php print render($page['main_suffix']); ?>
   <?php endif; ?>
-  </div><!-- #main -->
-  <!-- /MAIN CONTENT -->
+</div><!-- #main -->
+<!-- /MAIN CONTENT -->
 
 
 
 
-  <!-- FOOTER -->
-  <footer id="footer" role="contentinfo">
-    <?php print render($page['footer']); ?>
-  </footer>
-  <!-- /FOOTER -->
-
-  <!-- </div>--></div>
+<!-- FOOTER -->
+<footer id="footer" role="contentinfo">
+  <?php print render($page['footer']); ?>
+</footer>
+<!-- /FOOTER -->

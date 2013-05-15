@@ -21,7 +21,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Chat with Fans Settings',
-    'weight' => '45',
+    'weight' => '46',
     'children' => array(
       0 => 'field_chat_children',
       1 => 'field_chat_childrenof',
@@ -140,6 +140,7 @@ function usanetwork_social_field_group_info() {
       2 => 'group_trend',
       3 => 'group_twitter_settings',
       4 => 'group_usa_show_follow',
+      5 => 'group_sync_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -152,6 +153,36 @@ function usanetwork_social_field_group_info() {
     ),
   );
   $export['group_social_information|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sync_settings|node|tv_show|form';
+  $field_group->group_name = 'group_sync_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Sync Settings',
+    'weight' => '45',
+    'children' => array(
+      0 => 'field_sync_desktop_url',
+      1 => 'field_sync_phone_url',
+      2 => 'field_show_sync',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Sync Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_sync_settings|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -195,7 +226,7 @@ function usanetwork_social_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Twitter Settings',
-    'weight' => '46',
+    'weight' => '47',
     'children' => array(
       0 => 'field_show_twitter_page',
       1 => 'field_twitter_children',

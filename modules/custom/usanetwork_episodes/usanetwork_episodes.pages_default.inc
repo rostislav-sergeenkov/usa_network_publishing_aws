@@ -196,16 +196,13 @@ function usanetwork_episodes_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'four';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
+    $pane->type = 'block';
+    $pane->subtype = 'dart-dart-tag-300x250_scr';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'fpo ad',
-      'title' => '',
-      'body' => '<img src="http://dummyimage.com/300x250/cccccc/666666" class="fpo-fake-ad" alt="fake ad" />',
-      'format' => 'wysiwyg_mini',
-      'substitute' => 1,
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(

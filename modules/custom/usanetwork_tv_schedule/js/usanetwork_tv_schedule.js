@@ -38,6 +38,10 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       case 'America/Denver':
         show_time = show_time + 0;
       break;       
+      // Arizona TZ: use the MT rule: ET+2
+      case 'America/Phoenix':
+        show_time = show_time - 3600;
+      break;       
       // PT
       case 'America/Los_Angeles':
         show_time = show_time - 10800;

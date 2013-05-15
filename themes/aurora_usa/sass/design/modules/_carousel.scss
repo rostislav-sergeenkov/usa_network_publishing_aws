@@ -61,6 +61,7 @@
 		height: 61px;
 		padding: 8px 18px 8px;
 		background: $black-trans;
+		overflow: hidden;
 		h4 {
 			font-family: $headline-semi;
 		}
@@ -69,6 +70,8 @@
 		}
 		> div {
 			display: inline;
+			overflow: hidden;
+			white-space: nowrap;
 			&:first-child {
 				display: block;
 			}
@@ -140,7 +143,6 @@
 		h4 {
 			font-size: 16px;
 			margin: 0;
-			line-height: 1em;
 		}
 		.item-content > div {
 			font-size: 14px;

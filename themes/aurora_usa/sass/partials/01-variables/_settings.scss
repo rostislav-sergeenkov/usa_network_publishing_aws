@@ -68,8 +68,8 @@ $animate-all-the-things: false;
 // Z-Index
 // making utility higher than wall only when using slide out panel/menu
 $ziUtilities    : 102;
-$ziWall         : 101;
-$ziMegaNav      : 100;
+$ziWall         : 100;
+$ziMegaNav      : 101;
 $ziFilterOpen   : 95;
 
 
@@ -203,7 +203,7 @@ $bp-on-now: 640px;
 
 // TRANSITION
 // $default-transition-property: all;
-// $default-transition-duration: 1s;
+$default-transition-duration: 0.2s;
 // $default-transition-function: false;
 // $default-transition-delay: false;
 // $transitionable-prefixed-values: transform, transform-origin;

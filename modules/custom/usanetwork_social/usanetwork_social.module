@@ -147,6 +147,7 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
 
   if ($form['type']['#value'] == 'tv_show') {
     // set the sitewide values as default values for each show
+
     // TWITTER
     // eql template
     if (!isset($form['field_twitter_eql_template'][$lang][0]['value']['#default_value']) ||
@@ -205,7 +206,6 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
     }
 
     // CHAT WITH FANS
-    // set the sitewide values as default values for each show
     // eql template
     if (!isset($form['field_chat_eql_template'][$lang][0]['value']['#default_value']) ||
       empty($form['field_chat_eql_template'][$lang][0]['value']['#default_value'])) {
@@ -283,6 +283,18 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       empty($form['field_trend_url_params'][$lang][0]['value']['#default_value'])) {
       $form['field_trend_url_params'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_url_params', '');
     }
+
+		// SYNC
+    // desktopUrl
+    if (!isset($form['field_sync_desktop_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_sync_desktop_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_sync_desktop_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_sync_desktop_url', '');
+    }
+    // phoneUrl
+    if (!isset($form['field_sync_phone_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_sync_phone_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_sync_phone_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_sync_phone_url', '');
+    }
   }
 }
 
@@ -318,11 +330,12 @@ function usanetwork_social_global_landing_page() {
 function usanetwork_social_global_trending() {
 	$output = '';
 
-	$showTrending = 1; // change to 0 to turn this off
-	$baseUrl = 'https://www.rebelmouse.com';
-	$basePath = 'USANetwork';
+	$showTrending = variable_get('usanetwork_social_trend_show_global');
+	$baseUrl = variable_get('usanetwork_social_trend_global_base_url');
+	$basePath = variable_get('usanetwork_social_trend_global_base_path');
 	$currentUrl = $GLOBALS['base_url'].'/'.request_path();
-	$urlParams = 'embedded=1&flexible=1&scrollbar_theme=light-2&referrer=http://'.$currentUrl.'&skip=also-on-rm';
+	$urlParams = variable_get('usanetwork_social_trend_global_url_params').'&referrer=http://'.$currentUrl;
+
 	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
 	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
@@ -334,13 +347,15 @@ function usanetwork_social_global_trending() {
  * Menu callback for social global chat with fans page
  */
 function usanetwork_social_global_chat_with_fans() {
+  $lang = LANGUAGE_NONE;
 	$showInfo = array();
 	$shows = _usanetwork_social_show_nids();
+
 	if (is_array($shows) && !empty($shows)) {
 		$nodes = node_load_multiple($shows);
 		foreach ($nodes as $node) {
-			$showChatPage = isset($node->field_show_chat_page['und'][0]['value']) ? $node->field_show_chat_page['und'][0]['value'] : 0;
-			$showTokenName = isset($node->field_chat_show['und'][0]['value']) ? $node->field_chat_show['und'][0]['value'] : 0;
+			$showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+			$showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : 0;
 			$showAlias = drupal_get_path_alias('node/'.$node->nid);
 			$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
 			if ($showChatPage && $showTokenName) {
@@ -398,7 +413,20 @@ function usanetwork_social_global_twitter() {
  * Menu callback of social global sync page
  */
 function usanetwork_social_global_sync() {
-  return t('Global Social Sync Page: Placeholder');
+	$showSync = variable_get('usanetwork_social_sync_show_global');
+	$desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+	$phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
+
+	$vars = 'var desktopUrl = "'.$desktopUrl.'";';
+	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+	$vars .= 'var iframeHtml = "<iframe id=\"syncIframe\" src=\"[SOURCE]\" width=\"100%\" frameborder=\"0\" scrolling=\"auto\"></iframe>";';
+	drupal_add_js($vars, array('type' => 'inline'));
+	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sniff.js');
+	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+
+	$output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+
+	return $output;
 }
 
 /**
@@ -415,19 +443,13 @@ function usanetwork_social_twitter($node) {
   $output = '';
   $lang = LANGUAGE_NONE;
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
-  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
-
-
   if (!isset($node->nid)) {
     drupal_not_found();
   }
 
   // check if the show twitter page flag is enabled
-  if (!isset($node->field_show_twitter_page[$lang][0]['value']) || empty($node->field_show_twitter_page[$lang][0]['value'])) {
+  $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
+  if (!$showTwitter) {
     drupal_goto('node/'.$node->nid.'/social');
   }
 
@@ -461,6 +483,12 @@ function usanetwork_social_twitter($node) {
   $vars .= 'var twitterEQL = "' . $eql . '"';
   drupal_add_js($vars, array('type' => 'inline'));
 
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
+  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
+
   $output .= '<div id="echo-stream">&nbsp;</div>';
 
   return $output;
@@ -470,7 +498,30 @@ function usanetwork_social_twitter($node) {
  * Menu callback of tv show social sync page
  */
 function usanetwork_social_sync($node) {
-  return t('TV Show Sync: Placeholder');
+  $lang = LANGUAGE_NONE;
+
+  $showSync = isset($node->field_show_sync[$lang][0]['value']) ? $node->field_show_sync[$lang][0]['value'] : 0;
+  $desktopUrl = !empty($node->field_sync_desktop_url[$lang][0]['value']) ? $node->field_sync_desktop_url[$lang][0]['value'] : 0;
+  $phoneUrl = !empty($node->field_sync_phone_url[$lang][0]['value']) ? $node->field_sync_phone_url[$lang][0]['value'] : 0;
+
+	if (!$showSync || !$desktopUrl || !$phoneUrl)
+	{
+    drupal_goto('social/sync');
+	}
+
+	$vars = 'var desktopUrl = "'.$desktopUrl.'";';
+	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+	$vars .= 'var iframeHtml = "<iframe id=\"syncIframe\" src=\"[SOURCE]\" width=\"100%\" frameborder=\"0\" scrolling=\"auto\"></iframe>";';
+	drupal_add_js($vars, array('type' => 'inline'));
+
+	// @TODO: sniff.js is a temporary measure for determining device type
+	// When it's ready, remove sniff.js and incorporate whatever device detection is implemented on the site
+	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sniff.js');
+	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+
+	$output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+
+	return $output;
 }
 
 
@@ -571,13 +622,14 @@ function usanetwork_social_chat_with_fans($node) {
  */
 function usanetwork_social_trending($node) {
 	$output = '';
+  $lang = LANGUAGE_NONE;
 
 	$title = $node->title;
-	$showTrending = !empty($node->field_show_trending['und'][0]['value']) ? $node->field_show_trending['und'][0]['value'] : 0;
-	$baseUrl = !empty($node->field_trend_base_url['und'][0]['value']) ? $node->field_trend_base_url['und'][0]['value'] : null;
-	$showPath = !empty($node->field_trend_show_path['und'][0]['value']) ? $node->field_trend_show_path['und'][0]['value'] : null;
+	$showTrending = !empty($node->field_show_trending[$lang][0]['value']) ? $node->field_show_trending[$lang][0]['value'] : 0;
+	$baseUrl = !empty($node->field_trend_base_url[$lang][0]['value']) ? $node->field_trend_base_url[$lang][0]['value'] : null;
+	$showPath = !empty($node->field_trend_show_path[$lang][0]['value']) ? $node->field_trend_show_path[$lang][0]['value'] : null;
 	$currentUrl = $GLOBALS['base_url'].'/'.request_path();
-	$urlParams = !empty($node->field_trend_url_params['und'][0]['value']) ? $node->field_trend_url_params['und'][0]['value'] . '&referrer='.$currentUrl : null;
+	$urlParams = !empty($node->field_trend_url_params[$lang][0]['value']) ? $node->field_trend_url_params[$lang][0]['value'] . '&referrer='.$currentUrl : null;
 
 	if (!$showTrending || !$baseUrl || !$showPath || !$urlParams) {
 		drupal_goto('social/trending');

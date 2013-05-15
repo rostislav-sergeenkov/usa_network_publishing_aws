@@ -23,13 +23,23 @@ function pub_tv_overrides_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_ds_field_settings_info_alter().
+ */
+function pub_tv_overrides_ds_field_settings_info_alter(&$data) {
+  if (isset($data['node|tv_show|follow_social'])) {
+    $data['node|tv_show|follow_social']->settings['title']['weight'] = '1'; /* WAS: '0' */
+  }
+}
+
+/**
  * Implements hook_ds_layout_settings_info_alter().
  */
 function pub_tv_overrides_ds_layout_settings_info_alter(&$data) {
   if (isset($data['node|tv_show|follow_social'])) {
-    $data['node|tv_show|follow_social']->settings['regions']['social']['1'] = 'field_usa_link_pinterest'; /* WAS: 'field_usa_link_twitter' */
-    $data['node|tv_show|follow_social']->settings['regions']['social']['2'] = 'field_usa_link_tumblr'; /* WAS: 'field_usa_link_pinterest' */
-    $data['node|tv_show|follow_social']->settings['regions']['social']['3'] = 'field_usa_link_twitter'; /* WAS: 'field_usa_link_tumblr' */
+    $data['node|tv_show|follow_social']->settings['regions']['social']['0'] = 'field_usa_link_facebook'; /* WAS: 'field_usa_link_pinterest' */
+    $data['node|tv_show|follow_social']->settings['regions']['social']['1'] = 'field_usa_link_twitter'; /* WAS: 'field_usa_link_facebook' */
+    $data['node|tv_show|follow_social']->settings['regions']['social']['2'] = 'field_usa_link_pinterest'; /* WAS: 'field_usa_link_tumblr' */
+    $data['node|tv_show|follow_social']->settings['regions']['social']['3'] = 'field_usa_link_tumblr'; /* WAS: 'field_usa_link_twitter' */
   }
 }
 
@@ -183,13 +193,22 @@ function pub_tv_overrides_strongarm_alter(&$data) {
   }
   if (isset($data['field_bundle_settings_node__tv_show'])) {
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title'] = array(
-      'custom_settings' => FALSE,
+      'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['block_cover_title_lg'] = array(
       'custom_settings' => FALSE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['carousel_promo'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['cast_carousel'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['follow_social'] = array(
       'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['home_promo'] = array(
+      'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['social_follow'] = array(
       'custom_settings' => TRUE,

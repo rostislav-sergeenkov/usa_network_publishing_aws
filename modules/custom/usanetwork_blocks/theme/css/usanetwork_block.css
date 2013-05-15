@@ -84,7 +84,7 @@ css for Ie browser version detection
 	padding-right:0px;
 	border:solid black 1px;
 	padding-bottom:40px;
-	background-image:url('../images/BG.png');background-repeat:repeat 0px 0px;
+	background-image:url('../images/browserdetectbg.png');background-repeat:repeat 0px 0px;
 }
 #lackOfFeaturesModal h2{
   color: #4F4F4F;

@@ -286,6 +286,27 @@ function usanetwork_cast_default_page_manager_handlers() {
     $display->panels['person_main'][4] = 'new-6';
     $pane = new stdClass();
     $pane->pid = 'new-7';
+    $pane->panel = 'person_main';
+    $pane->type = 'block';
+    $pane->subtype = 'dart-dart-tag-300x250_scr';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['person_main'][5] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
     $pane->panel = 'top';
     $pane->type = 'views';
     $pane->subtype = 'usa_cast';
@@ -321,8 +342,8 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['top'][0] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['top'][0] = 'new-8';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

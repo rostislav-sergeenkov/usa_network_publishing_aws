@@ -13,11 +13,22 @@ function usanetwork_ads_default_dart_tag() {
   $tag = new stdClass();
   $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
   $tag->api_version = 1;
+  $tag->machinename = '300x250_iframe_reloadable';
+  $tag->name = '300x250 iframe reloadable';
+  $tag->pos = '7';
+  $tag->sz = '300x250';
+  $tag->block = 1;
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
+  $export['300x250_iframe_reloadable'] = $tag;
+
+  $tag = new stdClass();
+  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
+  $tag->api_version = 1;
   $tag->machinename = '300x250_script';
   $tag->name = '300x250 script';
   $tag->pos = '7';
   $tag->sz = '300x250';
-  $tag->block = 0;
+  $tag->block = 1;
   $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
   $export['300x250_script'] = $tag;
 
@@ -28,9 +39,20 @@ function usanetwork_ads_default_dart_tag() {
   $tag->name = '300x250 script video shortform';
   $tag->pos = '7';
   $tag->sz = '300x250';
-  $tag->block = 0;
+  $tag->block = 1;
   $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
   $export['300x250_script_video_shortform'] = $tag;
+
+  $tag = new stdClass();
+  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
+  $tag->api_version = 1;
+  $tag->machinename = '728x90_970x66_iframe_reloadable';
+  $tag->name = '728x90,970x66 iframe reloadable';
+  $tag->pos = '1';
+  $tag->sz = '728x90,970x66';
+  $tag->block = 1;
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
+  $export['728x90_970x66_iframe_reloadable'] = $tag;
 
   $tag = new stdClass();
   $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
@@ -39,20 +61,20 @@ function usanetwork_ads_default_dart_tag() {
   $tag->name = '728x90,970x66 script';
   $tag->pos = '1';
   $tag->sz = '728x90,970x66';
-  $tag->block = 0;
+  $tag->block = 1;
   $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
   $export['728x90_970x66_script'] = $tag;
 
   $tag = new stdClass();
   $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
   $tag->api_version = 1;
-  $tag->machinename = '728x90_script';
+  $tag->machinename = '728x90_iframe_reloadable';
   $tag->name = '728x90 iframe reloadable';
   $tag->pos = '1';
   $tag->sz = '728x90';
-  $tag->block = 0;
+  $tag->block = 1;
   $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
-  $export['728x90_script'] = $tag;
+  $export['728x90_iframe_reloadable'] = $tag;
 
   $tag = new stdClass();
   $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
@@ -61,42 +83,9 @@ function usanetwork_ads_default_dart_tag() {
   $tag->name = '728x90 video';
   $tag->pos = '1';
   $tag->sz = '728x90';
-  $tag->block = 0;
+  $tag->block = 1;
   $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
   $export['728x90_video'] = $tag;
-
-  $tag = new stdClass();
-  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
-  $tag->api_version = 1;
-  $tag->machinename = 'clone_of_300x250_script';
-  $tag->name = '300x250 iframe reloadable';
-  $tag->pos = '7';
-  $tag->sz = '300x250';
-  $tag->block = 0;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
-  $export['clone_of_300x250_script'] = $tag;
-
-  $tag = new stdClass();
-  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
-  $tag->api_version = 1;
-  $tag->machinename = 'clone_of_728x90_970x66_script';
-  $tag->name = '728x90,970x66 iframe reloadable';
-  $tag->pos = '1';
-  $tag->sz = '728x90,970x66';
-  $tag->block = 0;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
-  $export['clone_of_728x90_970x66_script'] = $tag;
-
-  $tag = new stdClass();
-  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
-  $tag->api_version = 1;
-  $tag->machinename = 'rails_test_728x90_970x66_script';
-  $tag->name = 'RAILS TEST - Home 728x90,970x66 script';
-  $tag->pos = '1';
-  $tag->sz = '728x90,970x66';
-  $tag->block = 0;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:17:"home_responsetest";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:2:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:4:"home";s:4:"eval";i:0;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:12:"responsetest";s:4:"eval";i:0;}}}';
-  $export['rails_test_728x90_970x66_script'] = $tag;
 
   return $export;
 }

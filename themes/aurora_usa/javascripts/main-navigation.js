@@ -11,11 +11,18 @@
           menu: '#block-usanetwork-blocks-usa-meganav',
           trigger: '#main-menu-toggle',
           openPosition: '258px',
+          duration: '300',
           afterOn: function() {
-            // console.log();
             $('#jPanelMenu-menu')
               .prepend('<h1 class="menu-title">Main Menu</h1>')
               .find('a').removeClass('mega-nav-link').addClass('slide-panel-link');
+          },
+          beforeOpen: function() {
+            $('.jPanelMenu-panel')
+              .append('<div id="wall" data-module-type="Wall"></div>');
+          },
+          beforeClose: function() {
+            $('#wall').remove();
           },
           excludedPanelContent: '#environment-indicator'
       });

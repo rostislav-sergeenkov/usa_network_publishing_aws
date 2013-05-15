@@ -16,14 +16,36 @@ function usanetwork_social_settings_form() {
     '#type' => 'textfield',
     '#title' => t('BASE URL'),
     '#default_value' => variable_get('usanetwork_social_trend_base_url', ''),
-    '#description' => t('Base url'),
+    '#description' => t('Ex: https://www.rebelmouse.com'),
   );
 
   $form['trend']['usanetwork_social_trend_url_params'] = array(
     '#type' => 'textfield',
     '#title' => t('URL PARAMS'),
     '#default_value' => variable_get('usanetwork_social_trend_url_params', ''),
-    '#description' => t('URL params'),
+    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2'),
+  );
+
+	// SYNC
+  $form['sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sync Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['sync']['usanetwork_social_sync_desktop_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DESKTOP URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_desktop_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+  );
+
+  $form['sync']['usanetwork_social_sync_phone_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PHONE URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_phone_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
   );
 
   // CHAT WITH FANS
@@ -203,6 +225,71 @@ function usanetwork_social_settings_form() {
     '#default_value' => variable_get('usanetwork_social_twitter_children', ''),
     '#description' => t('CHILDREN Token'),
     '#maxlength' => 512,
+  );
+
+	// GLOBAL TRENDING
+  $form['global_trend'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global Trending Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['global_trend']['usanetwork_social_trend_show_global'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('SHOW GLOBAL TRENDING'),
+    '#default_value' => variable_get('usanetwork_social_trend_show_global', ''),
+    '#description' => t('Check to turn global trending on'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_base_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE URL'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_base_url', ''),
+    '#description' => t('Ex: https://www.rebelmouse.com'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_base_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE PATH'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_base_path', ''),
+    '#description' => t('Ex: USANetwork'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_url_params'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL PARAMS'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_url_params', ''),
+    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm'),
+  );
+
+	// GLOBAL SYNC
+  $form['global_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global Sync Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['global_sync']['usanetwork_social_sync_show_global'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('SHOW GLOBAL SYNC'),
+    '#default_value' => variable_get('usanetwork_social_sync_show_global', ''),
+    '#description' => t('Check to turn global chat with fans on'),
+  );
+
+  $form['global_sync']['usanetwork_social_sync_global_desktop_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DESKTOP URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_global_desktop_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+  );
+
+  $form['global_sync']['usanetwork_social_sync_global_phone_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PHONE URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_global_phone_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
   );
 
   return system_settings_form($form);

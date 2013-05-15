@@ -24,7 +24,8 @@ window.onload = function() {
 			'icon-usa-2' : '&#x55;&#x53;&#x41;',
 			'icon-usa-3' : '&#x55;&#x53;&#x41;&#x4e;&#x65;&#x74;&#x77;&#x6f;&#x72;&#x6b;',
 			'icon-tumblr' : '&#x74;&#x75;&#x6d;&#x62;&#x6c;&#x72;',
-			'icon-pin' : '&#x70;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x65;&#x73;&#x74;'
+			'icon-pin' : '&#x70;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x65;&#x73;&#x74;',
+			'icon-arrow-separator' : '&#x276d;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

@@ -104,7 +104,7 @@
   <?php if ($page['main_prefix']) :?>
     <?php print render($page['main_prefix']); ?>
   <?php endif; ?>
-  <?php print $breadcrumb; ?>
+  <?php //print $breadcrumb; ?>
   <?php if ($messages): ?>
     <div id="messages" role="alertdialog"><?php print $messages; ?></div>
   <?php endif; ?>

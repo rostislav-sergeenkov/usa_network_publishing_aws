@@ -1,108 +1,6 @@
 .carousel {
 	margin-left: auto !important;
 	margin-right: auto !important;
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-	li.carousel-item {
-		float: left;
-		width: 236px;
-		height: 188px;
-		text-align: center;
-		padding: 0;
-		margin: 0;
-		&.active {
-			figure {
-				border-color: $white;
-			}
-			.item-content {
-				&:after {
-					@include cssTriangle(8px, $white, left);
-					position: absolute;
-					left:0;
-					bottom: 23px;
-				}
-			}
-		}
-	}
-	.carousel-item-wrapper {
-		position: relative;
-		figure {
-			border: 2px solid $gray-dark;
-			left: 8px;
-			position: absolute;
-			top: 0;
-			z-index: 1;
-
-		}
-		img {
-			max-width: none;
-			display: block;
-		}
-		a.item-overlay {
-			height: 188px;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-			z-index: 99;
-		}
-
-	}
-	.item-content {
-		font-weight: normal;
-		color: $white;
-		left: 10px;
-		position: absolute;
-		top: 125px;
-		width: 221px;
-		z-index: 10;
-		height: 61px;
-		padding: 8px 18px 8px;
-		background: $black-trans;
-		overflow: hidden;
-		h4 {
-			font-family: $headline-semi;
-		}
-		a {
-			color: $white;
-		}
-		> div {
-			display: inline;
-			overflow: hidden;
-			white-space: nowrap;
-			&:first-child {
-				display: block;
-			}
-		}
-	}
-	.btns {
-		@extend %usanetwork-font;
-		color: $gray-darker-light;
-		font-size: 2.35em;
-		cursor: pointer;
-		position: absolute;
-		left: 5px;
-		top: 39%;
-		z-index: 99;
-		&:hover {
-			color: $gray-light;
-		}
-		&.next {
-			left: auto;
-			right: 5px;
-		}
-	}
-}
-
-
-#cast-carousel {
-	background-color: $black;
-	border: 1px solid $gray-dark;
-	border-left: 0;
-	border-right: 0;
-	padding: 30px 0;
 	.item-list {
 		height: 188px;
 		overflow: hidden;
@@ -139,6 +37,109 @@
 			z-index: 2;
 		}
 	}
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	li.carousel-item {
+		float: left;
+		width: 236px;
+		height: 188px;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+		&.active {
+			figure {
+				border-color: $white;
+			}
+			.item-content {
+				&:after {
+					@include cssTriangle(8px, $white, left);
+					position: absolute;
+					left:0;
+					bottom: 23px;
+				}
+			}
+		}
+		figure {
+			border: 2px solid $gray-dark;
+			left: 8px;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+
+		}
+		img {
+			max-width: none;
+			display: block;
+		}
+		a.article-link {
+			height: 188px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 99;
+		}
+	}
+	.carousel-item-wrapper {
+		position: relative;
+	}
+	.item-content {
+		font-weight: normal;
+		color: $white;
+		left: 10px;
+		position: absolute;
+		top: 125px;
+		width: 221px;
+		z-index: 10;
+		height: 61px;
+		padding: 8px 18px 8px;
+		background: $black-trans;
+		overflow: hidden;
+		h4 {
+			font-family: $headline-semi;
+		}
+		a {
+			color: $white;
+		}
+		> div {
+			display: inline;
+			overflow: hidden;
+			white-space: nowrap;
+			&:first-child {
+				display: block;
+			}
+		}
+	}
+}
+
+.carousel-btns .btns {
+	@extend %usanetwork-font;
+	color: $gray-darker-light;
+	font-size: 2.35em;
+	cursor: pointer;
+	position: absolute;
+	left: 5px;
+	top: 39%;
+	z-index: 99;
+	&:hover {
+		color: $gray-light;
+	}
+	&.next {
+		left: auto;
+		right: 5px;
+	}
+}
+
+/* cast carousel */
+
+#cast-carousel {
+	background-color: $black;
+	border: 1px solid $gray-dark;
+	border-left: 0;
+	border-right: 0;
+	padding: 30px 0;
 	.carousel {
 		h4 {
 			font-size: 16px;
@@ -146,6 +147,51 @@
 		}
 		.item-content > div {
 			font-size: 14px;
+		}
+	}
+}
+
+
+/* show carousel */
+
+#block-views-usa-shows-block-1 {
+	background-color: $black;
+	border: 1px solid $gray-dark;
+	border-left: 0;
+	border-right: 0;
+	padding: 30px 0;
+	.view-mode-block_cover_title {
+		position: relative;
+	}
+	.item-list {
+		height: 188px;
+		overflow: hidden;
+	}
+	.field-name-title {
+		font-weight: normal;
+		color: $white;
+		left: 10px;
+		position: absolute;
+		top: 125px;
+		width: 221px;
+		z-index: 10;
+		height: 61px;
+		padding: 20px 18px 10px;
+		background: $black-trans;
+		overflow: hidden;
+		white-space: nowrap;
+		h4 {
+			font-size: 16px;
+			margin: 0;
+			font-family: $headline-semi;
+			&:before {
+				content: "";
+		    display: inline-block;
+		    height: 100%;
+		    margin-left: -2px;
+		    width: 1px;
+		    vertical-align: middle;
+			}
 		}
 	}
 }

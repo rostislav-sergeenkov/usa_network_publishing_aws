@@ -1,7 +1,7 @@
 <div class="<?php print $classes;?> carousel-item-wrapper">
 	<?php $url = drupal_lookup_path('alias',"node/" . $variables['node']->nid);?>
 	<?php if($url) : ?>
-		<a class="item-overlay" href="/<?php print $url; ?>">
+		<a class="article-link" href="/<?php print $url; ?>">
 	<?php endif; ?>
 			<figure class="item-image">
 				<?php if ($media): print $media; endif; ?>

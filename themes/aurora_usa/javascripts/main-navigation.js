@@ -51,8 +51,7 @@
           },
           beforeClose: function() {
             $('#wall').remove();
-          },
-          excludedPanelContent: '#environment-indicator'
+          }
       });
       jPM.on();
       $('.panel-menu-items.active').removeClass('active');

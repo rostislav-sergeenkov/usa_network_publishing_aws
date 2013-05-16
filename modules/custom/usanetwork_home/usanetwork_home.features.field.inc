@@ -269,7 +269,7 @@ function usanetwork_home_field_default_fields() {
           'module' => 'entityreference',
           'settings' => array(
             'links' => 0,
-            'view_mode' => 'home_promo',
+            'view_mode' => 'home_promo_bspot',
           ),
           'type' => 'entityreference_entity_view',
           'weight' => '2',

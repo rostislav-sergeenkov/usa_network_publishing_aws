@@ -6,7 +6,7 @@
           $(this).attr('data-flexindex', index);
         });
         var moveTo = $('.view-usa-shows.view-display-id-block_1 li.active').attr('data-flexindex');
-        $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.view-usa-shows .view-content');
+        $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.view-usa-shows.view-display-id-block_1 .view-content');
         function create_show_carousel() {
           $(".view-usa-shows.view-display-id-block_1 ul").addClass('slides').carouFredSel({
             auto: false,

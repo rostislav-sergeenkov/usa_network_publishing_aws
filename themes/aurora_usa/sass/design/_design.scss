@@ -50,8 +50,7 @@
   }
 }
 
-.carousel-item {
-  width: 221px;
-  height: 184px;
+.view-mode-block_cover_title_lg .field-item-title,
+.view-mode-block_cover_title .field-item-title {
+  overflow: hidden;
 }
-

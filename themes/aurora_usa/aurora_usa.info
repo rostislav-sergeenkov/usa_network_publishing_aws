@@ -24,7 +24,7 @@ regions[footer]         = Footer
 ; THEME OPTIONS
 
 ; Chrome Frame Options
-settings[aurora_enable_chrome_frame] = 1
+settings[aurora_enable_chrome_frame] = 0
 settings[aurora_min_ie_support] = 10
 
 ; Miscelaneous Options
@@ -33,7 +33,7 @@ settings[aurora_html_tags] = 1
 settings[aurora_typekit_id] = 0
 
 ; JavaScript Options
-settings[aurora_footer_js] = 1
+settings[aurora_footer_js] = 0
 settings[aurora_libraries_head] = 1
 
 ; Toggle Display
@@ -54,4 +54,4 @@ settings[aurora_modernizr_debug] = 0
 
 ; Experimental Options
 settings['aurora_custom_js_handling'] = 0
-settings['aurora_footer_js'] = 0
+;settings['aurora_footer_js'] = 0

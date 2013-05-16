@@ -24,6 +24,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_layout_settings][] = node|usanetwork_promo|carousel_promo
 features[ds_layout_settings][] = node|usanetwork_promo|home_promo
+features[ds_layout_settings][] = node|usanetwork_promo|home_promo_bspot
 features[features_api][] = api:1
 features[field][] = node-usanetwork_promo-field_call_to_action_type
 features[field][] = node-usanetwork_promo-field_promo_call_to_action_text

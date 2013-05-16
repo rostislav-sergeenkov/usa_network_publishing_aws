@@ -64,31 +64,31 @@
     padding: 10px 12px 8px;
     text-transform: lowercase;
   }
-  .expandable-menu {
-    > h1 {
-      font-family: $headline-reg;
-      font-size: 18px;
-      line-height: 1;
-      padding: 10px 12px 8px;
-      text-transform: lowercase;
-      &:after {
-        @include cssTriangle(5px, lighten(#ccc, 10%), left);
-        margin-top: -5px;
-        margin-right: -3px;
-      }
-    }
-    a {
-      font-size: 15px;
-      padding: 8px 20px 6px;
-    }
-    &.active {
-      > h1:after {
-        @include cssTriangle(5px, $blue, top);
-        margin-top: -3px;
-        margin-right: 0;
-      }
-    }
-  }
+  // .expandable-menu {
+    // > h1 {
+    //   font-family: $headline-reg;
+    //   font-size: 18px;
+    //   line-height: 1;
+    //   padding: 10px 12px 8px;
+    //   text-transform: lowercase;
+    //   &:after {
+    //     @include cssTriangle(5px, lighten(#ccc, 10%), left);
+    //     margin-top: -5px;
+    //     margin-right: -3px;
+    //   }
+    // }
+    // a {
+    //   font-size: 15px;
+    //   padding: 8px 20px 6px;
+    // }
+    // &.active {
+    //   > h1:after {
+    //     @include cssTriangle(5px, $blue, top);
+    //     margin-top: -3px;
+    //     margin-right: 0;
+    //   }
+    // }
+  // }
 
   @include breakpoint($bp-3-col) {
     width: 362px;

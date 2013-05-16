@@ -380,6 +380,39 @@ $logo-height-med-2: 32px;
   }
 }
 
+.panel-sub-nav-container {
+  display: none;
+  .active & {
+    display: block;
+  }
+
+
+}
+.panel-sub-nav {
+  padding: 0;
+  background: #242424;
+  ul {
+    @include no-bullets;
+    margin-bottom: 0;
+    li {
+      margin-bottom: 0;
+    }
+  }
+  .more-title {
+    display: none;
+  }
+}
+#jPanelMenu-menu {
+  .panel-sub-nav {
+    .slide-panel-link {
+      background-color: transparent;
+      font-size: 15px;
+      line-height: 22px;
+      padding: 8px 20px 6px;
+    }
+  }
+}
+
 #wall {
   background-color: $black-trans;
   height: 100%;

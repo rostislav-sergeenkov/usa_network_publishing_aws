@@ -13,9 +13,31 @@
           openPosition: '258px',
           duration: '300',
           afterOn: function() {
-            $('#jPanelMenu-menu')
+            $jPanelMenu_menu = $('#jPanelMenu-menu');
+            $jPanelMenu_menu
               .prepend('<h1 class="menu-title">Main Menu</h1>')
-              .find('a').removeClass('mega-nav-link').addClass('slide-panel-link');
+              .find('a').removeClass('mega-nav-link').addClass('slide-panel-link').end()
+              .find('.mega-sub-nav-container')
+                .removeClass('mega-sub-nav-container')
+                .addClass('panel-sub-nav-container')
+                .end()
+              .find('.mega-sub-nav')
+                .removeClass('mega-sub-nav')
+                .addClass('panel-sub-nav')
+                .end();
+            // set up subsection expanders
+            $jPanelMenu_menu
+              .find('.panel-sub-nav-container')
+                .siblings('a')
+                  .css('cursor', 'default')
+                  .click(function() {
+                    $(this).parent().toggleClass('active');
+                    return false;
+                  })
+                  .end()
+                .parent()
+                  .addClass('expandable')
+                  .addClass('expandable-menu');
           },
           beforeOpen: function() {
             $('.jPanelMenu-panel')
@@ -27,7 +49,6 @@
           excludedPanelContent: '#environment-indicator'
       });
       jPM.on();
-
 
       off_canvas_auto_close();
       $(window).resize(function(){

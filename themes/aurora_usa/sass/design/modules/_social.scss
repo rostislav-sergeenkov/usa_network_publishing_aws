@@ -46,8 +46,14 @@ body.usa-social {
     font-size: 20px;
     font-family: $headline-reg;
     color: $white;
-    padding: 15px 14px 13px;
+    padding: 15px 14px 13px 20px;
     text-transform: lowercase;
+    font-weight: normal;
+  }
+  &.open {
+    .menu-label {
+      color: #878785;
+    }
   }
   ul {
     margin: 0;
@@ -68,7 +74,7 @@ body.usa-social {
   }
   a {
     line-height: 1;
-    padding: 20px 30px 16px;
+    padding: 20px 20px 16px;
     text-transform: lowercase;
     display: block;
     float: left;
@@ -108,6 +114,8 @@ body.usa-social {
       }
     }
     @include breakpoint($bp-social-mid-width) {
+      padding-left: 30px;
+      padding-right: 30px;
       width: auto;
       border-top: 0;
       color: $white;

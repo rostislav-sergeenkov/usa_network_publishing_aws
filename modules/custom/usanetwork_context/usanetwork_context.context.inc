@@ -108,6 +108,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_prefix',
           'weight' => '-10',
         ),
+        'usanetwork_social-usa_show_social_tab_nav' => array(
+          'module' => 'usanetwork_social',
+          'delta' => 'usa_show_social_tab_nav',
+          'region' => 'main_prefix',
+          'weight' => '-9',
+        ),
         'views-usa_cast-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_cast-block_2',
@@ -285,6 +291,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa_shows-block_1',
           'region' => 'main_prefix',
           'weight' => '-10',
+        ),
+        'usanetwork_social-usa_show_social_tab_nav' => array(
+          'module' => 'usanetwork_social',
+          'delta' => 'usa_show_social_tab_nav',
+          'region' => 'main_prefix',
+          'weight' => '-9',
         ),
         'views-usa_shows-block_2' => array(
           'module' => 'views',

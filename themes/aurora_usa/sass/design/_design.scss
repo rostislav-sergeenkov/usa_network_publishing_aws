@@ -6,22 +6,22 @@
 // TEMPORARILY HIDE ADMIN STUFFS
 // AND OTHER STUFFS THAT ARE
 // IN THE WAY FOR NOW
-#admin-menu {
-  display: none;
-}
-html body.admin-menu {
-  margin-top: auto !important;
-}
+// #admin-menu {
+//   display: none;
+// }
+// html body.admin-menu {
+//   margin-top: auto !important;
+// }
 [class*="iib"] {
   // display: none;
   background-color: $gray-dark;
 }
-#environment-indicator {
-  display: none;
-}
-body.environment-indicator-adjust.environment-indicator-left {
-  margin-left: auto !important;
-}
+// #environment-indicator {
+//   display: none;
+// }
+// body.environment-indicator-adjust.environment-indicator-left {
+//   margin-left: auto !important;
+// }
 
 // #show-menu-panel {
 //   display: none;

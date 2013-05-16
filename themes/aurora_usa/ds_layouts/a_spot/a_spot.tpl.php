@@ -293,23 +293,23 @@ drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill
 ?>
 
 <div class="<?php print $classes;?> aspot">
-<?php if ($link || $link !== '&nbsp;'): ?>
+<?php if ($link && $link !== '&nbsp;'): ?>
   <a href="<?php print $link; ?>" class="aspot-link">
 <?php endif; ?>
 
   <div class="meta-wrap">
     <div class="meta">
-    <?php if ($text_1 || $text_1 !== '&nbsp;'): ?>
+    <?php if ($text_1 && $text_1 !== '&nbsp;'): ?>
       <h1 class="show-title"><?php print $text_1; ?></h1>
     <?php endif; ?>
-    <?php if ($text_2 || $text_2 !== '&nbsp;'): ?>
+    <?php if ($text_2 && $text_2 !== '&nbsp;'): ?>
       <h2 class="show-time"><?php print ($text_2); ?></h2>
     <?php endif; ?>
-    <?php if ($text_3 || $text_3 !== '&nbsp;'): ?>
+    <?php if ($text_3 && $text_3 !== '&nbsp;'): ?>
       <h3 class="episode-title"><?php print ($text_3); ?></h3>
     <?php endif; ?>
     </div>
-    <?php if ($cta || $cta !== '&nbsp;'): ?>
+    <?php if ($cta && $cta !== '&nbsp;'): ?>
     <div class="cta"><?php print $cta; ?></div>
     <?php endif; ?>
   </div>

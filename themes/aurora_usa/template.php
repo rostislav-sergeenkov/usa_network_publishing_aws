@@ -81,11 +81,6 @@ function aurora_usa_preprocess_page(&$vars) {
     ),
   );
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
-
-  if(arg(2) == 'social' || arg(0) == 'social') {
-    $vars['page']['main_prefix']['#suffix'] = '<div class="social-main">';
-    $vars['page']['sidebar_first']['#suffix'] = '</div>';
-  }
 }
 
 /**
@@ -119,6 +114,7 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
       }
       break;
     case 'views-usa_cast-block_2':
+    case 'views-usa_shows-block_2':
       $vars['classes_array'][] = drupal_html_class('social-follow-block');
       break;
   }

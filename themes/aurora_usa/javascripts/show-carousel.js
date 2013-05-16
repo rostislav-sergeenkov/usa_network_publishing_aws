@@ -1,6 +1,6 @@
 // using fred carousel
 (function ($) {
-  Drupal.behaviors.flex_carousel = {
+  Drupal.behaviors.show_carousel = {
     attach: function (context, settings) {
        $( ".view-usa-shows.view-display-id-block_1 li" ).each(function( index ) {
           $(this).attr('data-flexindex', index);

@@ -2,6 +2,12 @@ body.usa-social {
   overflow-x: hidden;
 }
 
+.usa-social.page-social-sync .region-content {
+  padding: 0;
+  background-color: transparent;
+}
+
+
 .icons-social a {
   color: $black-dark;
   background-color: $gray-light;
@@ -28,10 +34,11 @@ body.usa-social {
   margin: 0 auto;
   width: 100%;
   z-index: 5;
+  margin-bottom: 30px;
   @include breakpoint($bp-social-mid-width) {
     background-color: $gray-dark;
     border: 1px solid $gray-med-dark;;
-    height: 58px;
+    height: 60px;
     max-width: 1275px;
     z-index: 6;
   }
@@ -39,7 +46,7 @@ body.usa-social {
     font-size: 20px;
     font-family: $headline-reg;
     color: $white;
-    padding: 15px 14px 13px;
+    padding: 15px 14px;
     height: auto;
   }
  .menu-label {
@@ -74,7 +81,7 @@ body.usa-social {
   }
   a {
     line-height: 1;
-    padding: 20px 20px 16px;
+    padding: 20px 20px 18px;
     text-transform: lowercase;
     display: block;
     float: left;
@@ -96,7 +103,7 @@ body.usa-social {
             @include cssTriangle(12px, $gray-med, top);
             position: absolute;
             left: 50%;
-            top: 57px;
+            top: 59px;
             margin-left: -12px;
           }
         }
@@ -109,7 +116,7 @@ body.usa-social {
         @include cssTriangle(12px, $gray-med, top);
         position: absolute;
         left: 50%;
-        top: 57px;
+        top: 59px;
         margin-left: -12px;
       }
     }
@@ -130,25 +137,34 @@ body.usa-social {
   }
 }
 
+
 .usa-social {
   #main {
-//    max-width: 1275px;
-//    margin-left: auto;
-//    margin-right: auto;
-//    padding: 0;
-//    max-width: 1245px;
-//    margin-left: auto;
-//    margin-right: auto;
-//    padding-left: 40px;
-//    padding-right: 40px;
-//    @include breakpoint($bp-social-small-width) {
-//      width: auto;
-//      clear: both;
+    max-width: 1275px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    @include breakpoint($bp-social-small-width) {
+      width: auto;
+      clear: both;
 //      padding: 0;
-//    }
+    }
+  }
+  #page-title {
+    display: none;
+  }
+
+  .region-content {
+    background-color: $white;
+    padding: 30px 42px;
   }
 
   .tabs {
+    display: none; /* need to ask vino about this */
     .secondary {
       display: none;
     }
@@ -166,11 +182,13 @@ body.usa-social {
   .sidebar {
     clear: both;
     width: 100%;
+    margin-top: 30px;
     @include breakpoint($bp-social-large-width) {
       float: left;
       clear: none;
       width: 300px;
       margin-left: 15px;
+      margin-top: 0;
     }
   }
 }
@@ -291,61 +309,73 @@ body.usa-social {
 /* chat with fans */
 
 #chat-echo-stream {
-  .echo-item-content {
-    background: $gray-med-dark;
-    margin-bottom: 16px;
-  }
-  .echo-item-container {
-    padding: 40px 15px 42px;
-  }
-  .echo-linkColor,
-  .echo-item-text {
-    color: $white;
-  }
-  .echo-item-control-Reply {
-    background-color: $gray-dark;
-    bottom: 8px;
-    color: $blue;
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    padding: 8px 12px 3px;
-    text-transform: uppercase;
-    font-family: $headline-reg;
-    letter-spacing: normal;
-  }
-  .echo-item-children .echo-item-container,
-  .echo-item-children .echo-item-content {
-      background-color: $gray-med;
+  .echo-item-footer {
+    .echo-item-date {
+      display: block;
+    }
   }
 }
 
 
  /* echo stream */
 
-.echo-stream-body > .echo-item-content {
-  margin-bottom: 2px;
+.echo-stream-header {
+  float: right;
+  margin: 0;
+}
+.echo-stream-body {
+  clear: both;
+}
+.echo-submit-controls {
+  margin-top: 0;
+}
+
+.echo-stream-more {
+  color: $gray-darker-light;
 }
 .echo-item-content {
-  background: $off-white;
+  background: $white;
+  color: $gray-med;
   position: relative;
+  margin-bottom: 2px;
+  padding: 8px 0;
+  .echo-item-text {
+    color: $gray-darker-light;
+  }
+  .echo-item-children {
+    padding-left: 77px;
+    padding-right: 77px;
+  }
   .echo-item-authorName {
+    color: $gray-med;
     font-family: $headline-semi;
     font-size: 17px;
     font-weight: normal;
     letter-spacing: 0.05em;
+    a {
+      color: $gray-med;
+    }
+  }
+  .echo-item-tweetUserName a {
+    color: $gray-med;
+    font-family: $headline-semi;
+    font-size: 12px;
+  }
+  .echo-item-tweetDate a {
+    color: $gray-med;
+    &:hover {
+      color: $gray-med;
+    }
+  }
+  .echo-item-container-root {
+    padding: 0;
   }
   .echo-item-expandChildren {
-    position: absolute;
-    right: 0;
-    top: 0;
+    margin-left: 77px;
+    margin-right: 77px;
   }
   .echo-item-container {
-    padding: 15px 15px 10px;
     position: relative;
-  }
-  .echo-item-childrenMarker {
-    display: none !important;
   }
   .echo-item-avatar-wrapper {
     display: inline;
@@ -361,22 +391,17 @@ body.usa-social {
   .echo-item-subwrapper {
     margin-left: 0;
   }
-  .echo-user-list-container img {
-    display: none;
-  }
   .echo-item-body  {
     padding: 0;
   }
   .echo-item-data {
-    color: $gray-med-dark;
-    font-size: 16px;
-    font-family: $headline-lt;
+    color: $gray-darker-light;
+    font-size: 12px;
+    font-family: $headline-reg;
     font-weight: normal;
     letter-spacing: 0.05em;
     line-height: 1.2;
-    @include breakpoint($bp-social-echo) {
-      font-size: 21px;
-    }
+    padding-top: 4px;
     p {
       margin: 0 0 10px;
     }
@@ -385,72 +410,82 @@ body.usa-social {
   .echo-item-likes {
     color: $gray-extra-light;
     font-family: $headline-reg;
-    font-size: 13px;
+    font-size: 12px;
     background: none;
     padding: 0;
     .echo-item-from a {
       color: $gray-extra-light;
     }
-    img {
-      display: none !important;
+  }
+  .echo-item-likes {
+    padding-top: 3px;
+  }
+  .echo-item-footer {
+    line-height: 1.5em;
+    margin-top: 0;
+    .echo-item-date {
+      display: none;
     }
-  }
-  .echo-item-controls {
-    float: none;
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-  }
-  .echo-item-control-delim,
-  .echo-item-control-Flag,
-  .echo-item-control-Like {
-    display: none;
   }
   .echo-item-data {
     padding-bottom: 10px;
   }
   .echo-item-replyForm {
-    margin: 0;
+    margin: 0 77px;
   }
   .echo-item-children .echo-item-container,
   .echo-item-children .echo-item-content {
-      margin: 0;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0;
       .echo-item-container-child {
         padding: 15px;
       }
       .echo-item-text {
-        font-size: 15px;
         color: $gray-extra-light;
-        line-height: 1.5em;
       }
   }
-  .echo-item-children .echo-item-content {
-    border-bottom: 1px solid $gray-dark;
+  .echo-item-children .echo-item-wrapper {
+    margin-left: 50px;
   }
-  .echo-item-via,
-  .echo-item-from,
-  .echo-item-tweetDate {
+  .echo-item-footer .echo-item-from {
+  .echo-secondaryColor {
+     color: $gray-dark;
+    }
+  }
+  .echo-item-controls a {
+    color: $gray-dark;
+  }
+  .echo-item-via {
     display: none;
   }
-  .echo-item-date {
-    display: block !important;
-  }
 }
 
-.echo-stream-state-picture {
-  display: none;
-}
 
-.echo-stream-state-message {
-  display: none;
-}
 
 #chat-submit-form {
   clear: both;
   overflow: hidden;
   margin-bottom: 15px;
+  .echo-submit-header span {
+    color: $gray-light;
+  }
+  .echo-auth-logged {
+    .echo-auth-avatar,
+    .echo-auth-name {
+      display: none;
+    }
+  }
+  .echo-auth-logout,
+  .echo-auth-login {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: $gray-dark;
+    float: right;
+  }
   .echo-submit-counterLabel {
-    display: none;
+    color: $gray-extra-light;
+    padding-top: 4px;
   }
   .echo-submit-container  {
     width: 100%;
@@ -460,30 +495,14 @@ body.usa-social {
     border: 0;
   }
   .echo-submit-body {
-    width: 100%;
-    margin-right: -130px;
-    float:left;
+     width: 100%;
     textarea {
+      color: $gray-extra-light;
+      @include border-radius(5px);
+      border: 1px solid $gray-darker-light;
       height: 77px;
       padding: 5px;
     }
-  }
-  .echo-submit-controls {
-    width: 130px;
-    float:left;
-    height: 77px;
-    margin: 0;
-  }
-  .echo-button button {
-    background-color: $gray-dark;
-    height: 77px;
-    width: 130px;
-    font-size: 24px;
-    color: $blue;
-    text-transform: uppercase;
-    border: 0;
-    margin: 0;
-    @include border-radius(0);
   }
 }
 

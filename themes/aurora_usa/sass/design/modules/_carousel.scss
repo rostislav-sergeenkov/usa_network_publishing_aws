@@ -8,8 +8,8 @@
 }
 
 .carousel {
-	margin-left: auto !important;
-	margin-right: auto !important;
+//	margin-left: auto !important;
+//	margin-right: auto !important;
 	.item-list {
 		height: 188px;
 		overflow: hidden;
@@ -38,12 +38,12 @@
 		&:before {
 			@include background(linear-gradient(left center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
 			left: 5px;
-			z-index: 3;
+			z-index: 95;
 		}
 		&:after {
 			@include background(linear-gradient(right center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
 			right: 5px;
-			z-index: 2;
+			z-index: 95;
 		}
 	}
 	ul {
@@ -84,7 +84,7 @@
 			position: absolute;
 			top: 0;
 			width: 100%;
-			z-index: 99;
+			z-index: 90;
 		}
 	}
 	.carousel-item-wrapper {
@@ -127,7 +127,7 @@
 	position: absolute;
 	left: 5px;
 	top: 39%;
-	z-index: 99;
+	z-index: 96;
 	&:hover {
 		color: $gray-light;
 	}
@@ -198,3 +198,4 @@
 		}
 	}
 }
+

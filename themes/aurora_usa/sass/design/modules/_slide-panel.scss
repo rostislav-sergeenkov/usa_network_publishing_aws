@@ -1,0 +1,42 @@
+#jPanelMenu-menu {
+  background-color: $gray-med;
+  a {
+    color: $beige;
+    &:hover {
+      color: $white;
+    }
+  }
+  .menu-title {
+    background: $nav-black;
+    color: $blue;
+    font-family: $headline-reg;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    padding: 10px 12px 8px;
+    text-transform: lowercase;
+  }
+  @include breakpoint($bp-3-col) {
+    width: 362px;
+  }
+}
+
+.slide-panel-link {
+  background: $gray-med;
+  border-color: $gray-dark;
+  border-style: solid;
+  border-width: 0 0 1px;
+  color: $beige;
+  display: block;
+  font-size: 18px;
+  font-family: $headline-reg;
+  margin: 0;
+  padding: 10px 12px 8px;
+  line-height: 1;
+  position: relative;
+  text-transform: lowercase;
+  &:focus,
+  &:hover {
+    color: $white;
+  }
+}

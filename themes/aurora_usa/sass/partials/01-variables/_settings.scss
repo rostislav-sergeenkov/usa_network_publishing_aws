@@ -68,14 +68,15 @@ $animate-all-the-things: false;
 // Z-Index
 // making utility higher than wall only when using slide out panel/menu
 $ziUtilities    : 102;
-$ziWall         : 101;
-$ziMegaNav      : 100;
+$ziWall         : 100;
+$ziMegaNav      : 101;
 $ziFilterOpen   : 95;
 
 
 // Breakpoint variables
 // small grid breakpoints
 $breakpoint-no-query-fallbacks: true;
+$bp-menu-switch: 768px;
 $bp-grid-small-2-squish: max-width 524px;
 $bp-grid-small-2: 525px;
 $bp-grid-small-3: 772px;
@@ -203,7 +204,7 @@ $bp-on-now: 640px;
 
 // TRANSITION
 // $default-transition-property: all;
-// $default-transition-duration: 1s;
+$default-transition-duration: 0.2s;
 // $default-transition-function: false;
 // $default-transition-delay: false;
 // $transitionable-prefixed-values: transform, transform-origin;

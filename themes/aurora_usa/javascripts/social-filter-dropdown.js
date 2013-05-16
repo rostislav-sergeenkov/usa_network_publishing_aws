@@ -3,14 +3,12 @@
   Drupal.behaviors.social_filterDropdown = {
 
     attach: function (context, settings) {
-      //$('.usa-social .secondary').wrap('<div class="social-tabs" />');
       $filter_menus = $('#block-usanetwork-social-usa-show-social-tab-nav');
       $filter_menus.each(function(index, value){
         $filter_menu = $(this);
         $filter_menu.addClass('filter-dropdown')
         // grab active item and copy it as a lable
         // create a div classed 'filter-menu' to contain the options
-        //$(this).find('active');
         $active_item = $(this).find('.active');
         $menu_label = '<div class="menu-label">' + $active_item.text() + '</div>';
         $(this).find('.item-list').addClass('filter-menu').before($menu_label);
@@ -32,12 +30,10 @@
           $menu.hide();
           console.log('no');
           $drop_elements.removeClass('filter-dropdown');
-          //$drop_elements.removeClass('filter-menu');
         } else {
           $menu.show();
           console.log('yes');
           $drop_elements.addClass('filter-dropdown');
-          //$drop_elements.addClass('filter-menu');
         }
       }
     },

@@ -57,6 +57,7 @@ function usanetwork_aspot_field_group_info() {
       2 => 'field_usa_aspot_txt2',
       3 => 'field_usa_aspot_txt3',
       4 => 'field_usa_aspot_txt4',
+      5 => 'field_usa_text_color',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -85,7 +86,6 @@ function usanetwork_aspot_field_group_info() {
     'children' => array(
       0 => 'field_usa_aspot_desktop',
       1 => 'field_usa_aspot_mobile',
-      2 => 'field_usa_aspot_tablet',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

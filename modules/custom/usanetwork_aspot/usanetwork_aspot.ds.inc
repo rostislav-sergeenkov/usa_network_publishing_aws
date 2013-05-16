@@ -21,11 +21,11 @@ function usanetwork_aspot_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'hex' => array(
+        0 => 'field_usa_text_color',
+      ),
       'media_desktop' => array(
         0 => 'field_usa_aspot_desktop',
-      ),
-      'media_tablet' => array(
-        0 => 'field_usa_aspot_tablet',
       ),
       'media_mobile' => array(
         0 => 'field_usa_aspot_mobile',
@@ -48,8 +48,8 @@ function usanetwork_aspot_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
+      'field_usa_text_color' => 'hex',
       'field_usa_aspot_desktop' => 'media_desktop',
-      'field_usa_aspot_tablet' => 'media_tablet',
       'field_usa_aspot_mobile' => 'media_mobile',
       'field_usa_aspot_txt1' => 'text_1',
       'field_usa_aspot_txt2' => 'text_2',

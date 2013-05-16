@@ -59,6 +59,110 @@ function usanetwork_showpages_menu_access($node) {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function usanetwork_showpages_block_info() {
+  $blocks = array();
+  $blocks['show_banner'] = array(
+    'info' => t('Show banner: title, section, tune-in date'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_showpages_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'show_banner':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_showpages_showbanner();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_showpages_theme($existing, $type, $theme, $path) {
+  return array(
+   'show_banner' => array(
+      'variables' => array(
+        'show_name' => NULL,
+        'show_section' => NULL,
+        'show_tunein' => NULL
+        ),
+      'path' => $path . '/theme',
+      'template' => 'show-banner',
+    ),
+  );
+}
+
+/**
+ * Block callback for show banner
+ */
+function usanetwork_showpages_showbanner() {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+  // for our logic, this will be the show nid
+  $show = '';
+  // these are for the theme function
+  $show_name = '';
+  $show_section = '';
+  $show_tunein = '';
+
+  // see if we are on a node page
+  if ($node = menu_get_object()) {
+    $field_name = "field_show";
+    // see if we are on a show node
+    if ($node->type == 'tv_show') {
+      $show = $node->nid;
+      $show_title = $node->field_display_title[$lang][0]['safe_value'] ? $node->field_display_title[$lang][0]['safe_value'] : $node->title;
+      $show_tunein = $node->field_usa_tv_tune_in_date[$lang][0]['safe_value'] ? $node->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $show_url = 'node/' . $node->nid;
+      $show_name = l($show_title, $show_url);
+      // see if we are in a show social subsection
+      if (arg(2) == 'social') {
+        $show_section = t('Social');
+      }
+    }
+    // looks for nodes with a value in field_show
+    if (!empty($node->$field_name)) {
+      $show_nid = field_get_items('node', $node, $field_name);
+      $show_nid = $show_nid[0]['target_id'];
+      $show = node_load($show_nid);
+      $show_title = $show->field_display_title[$lang][0]['safe_value'] ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
+      $show_tunein = $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $show_url = 'node/' . $show->nid;
+      $show_name = l($show_title, $show_url);
+      switch ($node->type) {
+        case 'person':
+          $show_section = t('Characters & Crew');
+          break;
+        case 'tv_episode':
+          $show_section = t('Episode Guide');
+          break;
+        case 'media_gallery':
+          $show_section = t('Photos');
+          break;
+        case 'usa_video':
+        case 'usa_tve_video':
+          $show_section = t('Videos');
+          break;
+      }
+    }
+    // render the theme function
+    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein));
+  }
+
+  return $render;
+}
+
+/**
  * Menu callback of show photos page
  * load the panel page for the most recently posted gallery
  * associated with a show

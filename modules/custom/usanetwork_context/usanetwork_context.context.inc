@@ -47,6 +47,49 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'show_banner';
+  $context->description = 'applies to all show related pages';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'tv_episode' => 'tv_episode',
+        'tv_show' => 'tv_show',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/social' => 'node/*/social',
+        'node/*/social/*' => 'node/*/social/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_showpages-show_banner' => array(
+          'module' => 'usanetwork_showpages',
+          'delta' => 'show_banner',
+          'region' => 'head_show',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('applies to all show related pages');
+  t('shows');
+  $export['show_banner'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'show_page';
   $context->description = '';
   $context->tag = 'shows';

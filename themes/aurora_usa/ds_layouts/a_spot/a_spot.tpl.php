@@ -1,28 +1,34 @@
 <?php 
 /*
- * adding custom css here
+ * warning: hideos temporary things ahead
+ * @TODO: a proper implementation of the css and js
  */
-$hexcolor = $hex ? $hex : '#ffffff';
+if ($hex == '&nbsp;') {
+  $hex = '000';
+}
+$hexcolor = $hex ? '#' . $hex : '#ffffff';
 
 /*
+ * adding custom css here
+ */
+$css = '
+.aspot {
+  position: relative;
+  display: block;
+}
+.aspot a,
+.aspot a:hover,
+.aspot a:visited {
+  color: '. $hexcolor .';
+}
 .aspot a .meta-wrap {
   position: absolute;
   z-index: 1;
   top: 110px;
   left: 0;
   padding-left: 15px;
-  color: #fff;
+  color: '. $hexcolor .';
   text-align: left;
-}
-.aspot a .meta-wrap.dark {
-  color: #333;
-}
-.aspot a .meta-wrap.dark .show-title:after {
-  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #333333), color-stop(100%, rgba(51, 51, 51, 0)));
-  background-image: -webkit-linear-gradient(left, #333333, rgba(51, 51, 51, 0));
-  background-image: -moz-linear-gradient(left, #333333, rgba(51, 51, 51, 0));
-  background-image: -o-linear-gradient(left, #333333, rgba(51, 51, 51, 0));
-  background-image: linear-gradient(left, #333333, rgba(51, 51, 51, 0));
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot a .meta-wrap {
@@ -81,11 +87,11 @@ $hexcolor = $hex ? $hex : '#ffffff';
   right: 0;
   width: 100%;
   height: 2px;
-  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
-  background-image: linear-gradient(left, #ffffff, rgba(255, 255, 255, 0));
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, '. $hexcolor .'), color-stop(100%, transparent));
+  background-image: -webkit-linear-gradient(left, '. $hexcolor .', transparent);
+  background-image: -moz-linear-gradient(left, '. $hexcolor .', transparent);
+  background-image: -o-linear-gradient(left, '. $hexcolor .', transparent);
+  background-image: linear-gradient(left, '. $hexcolor .', transparent);
 }
 .aspot a .meta .show-time {
   margin-bottom: 2px;
@@ -279,38 +285,45 @@ $hexcolor = $hex ? $hex : '#ffffff';
     margin-bottom: 68px;
   }
 }
-*/
+';
+// ugly is ugly but ugly is working for the moment
+drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
+drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+
 ?>
 
 <div class="<?php print $classes;?> aspot">
-  <?php if ($link): ?>
-    <a href="<?php print $link; ?>" class="aspot-link">
-  <?php endif; ?>
-  <div class="aspot-media">
-    <?php if ($media_desktop): ?>
-      <div class="media-desktop"><?php print $media_desktop; ?></div>
+<?php if ($link || $link !== '&nbsp;'): ?>
+  <a href="<?php print $link; ?>" class="aspot-link">
+<?php endif; ?>
+
+  <div class="meta-wrap">
+    <div class="meta">
+    <?php if ($text_1 || $text_1 !== '&nbsp;'): ?>
+      <h1 class="show-title"><?php print $text_1; ?></h1>
     <?php endif; ?>
+    <?php if ($text_2 || $text_2 !== '&nbsp;'): ?>
+      <h2 class="show-time"><?php print ($text_2); ?></h2>
+    <?php endif; ?>
+    <?php if ($text_3 || $text_3 !== '&nbsp;'): ?>
+      <h3 class="episode-title"><?php print ($text_3); ?></h3>
+    <?php endif; ?>
+    </div>
+    <?php if ($cta || $cta !== '&nbsp;'): ?>
+    <div class="cta"><?php print $cta; ?></div>
+    <?php endif; ?>
+  </div>
+
+  <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?>
       <div class="media-mobile"><?php print $media_mobile; ?></div>
     <?php endif; ?>
+    <?php if ($media_desktop): ?>
+      <div class="media-desktop"><?php print $media_desktop; ?></div>
+    <?php endif; ?>
   </div>
   
-  <div class="aspot-metadata">
-    <?php if ($text_1): ?>
-      <h2 class="row-1"><?php print $text_1; ?></h2>
-    <?php endif; ?>
-    <?php if ($text_2): ?>
-      <div class="row-2"><?php print ($text_2); ?></div>
-    <?php endif; ?>
-    <?php if ($text_3): ?>
-      <div class="row-2"><?php print ($text_3); ?></div>
-    <?php endif; ?>
-
-    <?php if ($cta): ?>
-      <div class="aspot-cta row-4 media"><?php print $cta; ?></div>
-    <?php endif; ?>
-  </div>
-  <?php if ($link): ?>
-    </a>
-  <?php endif; ?>
+<?php if ($link || $link !== '&nbsp;'): ?>
+  </a>
+<?php endif; ?>
 </div>

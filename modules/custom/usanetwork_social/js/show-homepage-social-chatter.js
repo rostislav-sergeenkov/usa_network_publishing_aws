@@ -65,11 +65,12 @@ function ago(time)
 function outputShowComment(showData)
 {
 	// set defaults
-	var html = "";
+//	var html = "";
 	var commentPresent = 0;
 	var showUrlLink = (showUrl != '') ? "<a href=\"/"+showUrl+"/social/chat-with-fans\">" : '';
 	var showUrlLinkEnd = (showUrl != '') ? "</a>" : '';
 	var replyHtml = "<div class=\"reply\"><span>Reply</span></div>";
+	var html = showUrlLink;
 
 	// if data was returned, create html comment and comment reply, if there is one
 	if (showData != null && typeof showData == 'object' && showData.length > 0)
@@ -79,27 +80,27 @@ function outputShowComment(showData)
 			// for comment, index == 0
 			if (index == 0)
 			{
-				html += showUrlLink + "<div id=\"showComment\">"+
+				html += "<div id=\"showComment\">"+
 					"<img src=\""+showData[0]["avatar"]+"\">"+
 					"<div class=\"comment\">"+showData[0]["comment"]+"</div>"+
 					"<div class=\"postdate\">"+showData[0]["timeStr"]+"</div>"+
 					"<div class=\"separator\">-</div>"+
 					"<div class=\"author\">"+showData[0]["actor"]+"</div>"+
-				"</div>" + replyHtml + showUrlLinkEnd;
+				"</div>" + replyHtml;
 				commentPresent = 1;
 			}
 
 			// for a reply to the comment, index == 1
 			if (index == 1)
 			{
-				html+= showUrlLink + "<div id=\"showCommentReply\">"+
+				html+= "<div id=\"showCommentReply\">"+
 					"<div id=\"latestReply\">Latest Reply</div>"+
 					"<img src=\""+showData[1]["avatar"]+"\">"+
 					"<div class=\"comment\">"+showData[1]["comment"]+"</div>"+
 					"<div class=\"postdate\">"+showData[1]["timeStr"]+" - </div>"+
 					"<div class=\"separator\">-</div>"+
 					"<div class=\"author\">"+showData[1]["actor"]+"</div>"+
-				"</div>" + replyHtml + showUrlLinkEnd;
+				"</div>" + replyHtml;
 			}
 		}
   }
@@ -107,8 +108,9 @@ function outputShowComment(showData)
 	// if no comment was found
   if (!commentPresent)
   {
-  	html += showUrlLink + "<div id=\"showComment\">Add a comment to join the conversation!</div>" + showUrlLinkEnd;
+  	html += "<div id=\"showComment\">Add a comment to join the conversation!</div>";
   }
+	html += showUrlLinkEnd;
 
 	jQuery('#socialChatter #showComments').html(html);
 }

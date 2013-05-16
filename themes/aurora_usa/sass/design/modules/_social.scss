@@ -23,24 +23,20 @@ body.usa-social {
 
 .usa-social {
   #main {
-    padding: 0;
-  }
-  .social-main {
-    max-width: 1290px;
+    max-width: 1245px;
     margin-left: auto;
     margin-right: auto;
-    width:300px;
-    padding-left: 40px;
-    padding-right: 40px;
-    @include breakpoint($bp-social-small-width) {
-      width: auto;
-      clear: both;
-    }
-    @include breakpoint($bp-social-large-width) {
-      width: auto;
-      padding-right: 330px;
-      padding-left: 15px;
-    }
+//    padding: 0;
+//    max-width: 1245px;
+//    margin-left: auto;
+//    margin-right: auto;
+//    padding-left: 40px;
+//    padding-right: 40px;
+//    @include breakpoint($bp-social-small-width) {
+//      width: auto;
+//      clear: both;
+//      padding: 0;
+//    }
   }
   .menu-label {
     font-size: 20px;
@@ -49,6 +45,7 @@ body.usa-social {
     padding: 7px 9px 6px;
     text-transform: lowercase;
   }
+  /*
   .tabs {
     .secondary {
       background-color: $gray-med;
@@ -145,29 +142,33 @@ body.usa-social {
   }
   li {
     list-style: none;
-  }
+  }*/
   #content {
-    width: 100%;
     text-align: left;
     vertical-align: top;
-    float: left;
+    float: none;
+    width: 100%;
+    padding-right: 0;
+    @include breakpoint($bp-social-large-width) {
+      float: left;
+      margin-right: -315px;
+      padding-right: 330px;
+    }
+
+  }
+  .sidebar {
+    clear: both;
+    width: 100%;
+    @include breakpoint($bp-social-large-width) {
+      float: left;
+      clear: none;
+      width: 300px;
+    }
   }
 }
 
 .social-follow-block {
-  clear: both;
   background-color: $gray-med-dark;
-  @include breakpoint($bp-social-large-width) {
-    float: left;
-    margin-left: 15px;
-    margin-top: 133px;
-    margin-right: -315px;
-    text-align: left;
-    vertical-align: top;
-    width: 300px;
-    margin-bottom: 15px;
-    clear: none;
-  }
   h2 {
     color: $gray-extra-light;
     text-transform: uppercase;

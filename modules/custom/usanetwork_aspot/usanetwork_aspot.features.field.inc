@@ -73,7 +73,7 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_call_to_action_type',
       'label' => 'Call to Action Type',
       'required' => 0,
@@ -123,6 +123,9 @@ function usanetwork_aspot_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -551,7 +554,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -563,12 +566,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt1',
       'label' => 'Title text line 1',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -584,6 +586,7 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
         'weight' => '11',
@@ -637,7 +640,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -649,12 +652,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt2',
       'label' => 'Text line 2',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -670,6 +672,7 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
         'weight' => '12',
@@ -723,7 +726,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -735,12 +738,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt3',
       'label' => 'Text line 3',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -756,6 +758,7 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
         'weight' => '13',
@@ -809,7 +812,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -821,12 +824,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt4',
       'label' => 'Call to Action Text',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -842,6 +844,7 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
         'weight' => '15',

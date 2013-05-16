@@ -33,7 +33,7 @@ function usanetwork_social_menu() {
   );
   // global trending page
   $items['social/trending'] = array(
-    'title' => t('Trending'),
+    'title' => t('trending'),
     'page callback' => 'usanetwork_social_global_trending',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -43,7 +43,7 @@ function usanetwork_social_menu() {
   );
   // global chat with fans page
   $items['social/chat-with-fans'] = array(
-    'title' => t('Chat with Fans'),
+    'title' => t('chat with fans'),
     'page callback' => 'usanetwork_social_global_chat_with_fans',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -52,8 +52,8 @@ function usanetwork_social_menu() {
     'weight' => 2
   );
   // global twitter page
-  $items['social/twitter'] = array(
-    'title' => t('Twitter'),
+  $items['social/tweets'] = array(
+    'title' => t('tweets'),
     'page callback' => 'usanetwork_social_global_twitter',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -63,7 +63,7 @@ function usanetwork_social_menu() {
   );
   // global sync page
   $items['social/sync'] = array(
-    'title' => t('Sync'),
+    'title' => t('usa sync'),
     'page callback' => 'usanetwork_social_global_sync',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -80,21 +80,22 @@ function usanetwork_social_menu() {
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_CALLBACK,
+    'weight' => 1
   );
   // tv show trending page
-  $items['node/%node/social/trending'] = array(
-    'title' => t('Trending'),
+  $items['node/%node/social/latest'] = array(
+    'title' => t('latest'),
     'page callback' => 'usanetwork_social_trending',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
     'access arguments' => array(1),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 1
   );
   // tv show chat with fans page
   $items['node/%node/social/chat-with-fans'] = array(
-    'title' => t('Chat with Fans'),
+    'title' => t('chat with fans'),
     'page callback' => 'usanetwork_social_chat_with_fans',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
@@ -103,8 +104,8 @@ function usanetwork_social_menu() {
     'weight' => 2
   );
   // tv show twitter page
-  $items['node/%node/social/twitter'] = array(
-    'title' => t('Twitter'),
+  $items['node/%node/social/tweets'] = array(
+    'title' => t('tweets'),
     'page callback' => 'usanetwork_social_twitter',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
@@ -114,7 +115,7 @@ function usanetwork_social_menu() {
   );
   // tv show sync page
   $items['node/%node/social/sync'] = array(
-    'title' => t('Sync'),
+    'title' => t('usa sync'),
     'page callback' => 'usanetwork_social_sync',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
@@ -123,6 +124,88 @@ function usanetwork_social_menu() {
     'weight' => 4
   );
   return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_social_block_info() {
+  $blocks = array();
+  $blocks['usa_show_social_tab_nav'] = array(
+    'info' => t('USA: show social tab navigation'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_show_landing_social'] = array(
+    'info' => t('USA: show landing social'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_social_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_show_social_tab_nav':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_social_show_tab_nav();
+      break;
+    case 'usa_show_landing_social':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_social_show_landing();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Generate show social page tab navigation
+ */
+function usanetwork_social_show_tab_nav() {
+  $output = '';
+  if (arg(0) == 'social') {
+    $links = menu_local_tasks(0);
+  } else {
+    $links = menu_local_tasks(0);
+  }
+  $items = array();
+
+  foreach ($links['tabs']['output'] as $link) {
+    $alias = drupal_get_path_alias(str_replace('%', arg(1), $link['#link']['path']));
+    $items[] = l($link['#link']['title'], $alias);
+  }
+  
+  if (!empty($items)) {
+    $output = theme('item_list', array('items' => $items));
+  }
+
+  return $output;
+}
+
+
+/**
+ * Generate the show landing social block 
+ */
+function usanetwork_social_show_landing() {
+  $output = '';
+  $arg = arg();
+ 
+  if (isset($arg[1])) {
+    $node = node_load($arg[1]);
+  }
+
+  // return empty block if its not a node page
+  if (!isset($node->nid)) {
+    return $output;
+  }
+
+  $output = 'Join the conversation: placeholder';
+
+  return $output;
 }
 
 /**
@@ -321,7 +404,7 @@ function _usanetwork_social_show_nids() {
  * Menu callback of social global landing page
  */
 function usanetwork_social_global_landing_page() {
-  return t('Global Social Landing Page: Placeholder');
+  drupal_goto('social/trending');
 }
 
 /**
@@ -433,7 +516,7 @@ function usanetwork_social_global_sync() {
  * Menu callback of tv show social landing page
  */
 function usanetwork_social_landing_page($node) {
-  return t('Social Landing Page: Placeholder');
+  drupal_goto(drupal_get_path_alias('node/'.arg(1).'/social/latest'));
 }
 
 /**

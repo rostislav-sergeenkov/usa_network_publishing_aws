@@ -64,7 +64,9 @@ function aurora_usa_preprocess_html(&$vars) {
  */
 function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   $node = menu_get_object();
@@ -107,8 +109,16 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-  if($vars['block']->bid == 'views-usa_cast-block_2') {
-    $vars['classes_array'][] = drupal_html_class('social-follow-block');
+  switch($vars['block']->bid) {
+    case 'views-usa_shows-block_1':
+      if(arg(2) == 'social' || arg(0) == 'social') {
+        $vars['classes_array'][] = drupal_html_class('carousel');
+      }
+      break;
+    case 'views-usa_cast-block_2':
+    case 'views-usa_shows-block_2':
+      $vars['classes_array'][] = drupal_html_class('social-follow-block');
+      break;
   }
 }
 
@@ -365,21 +375,22 @@ function aurora_usa_preprocess_views_view_fields(&$vars) {
  * Implements template_preprocess_views_view_list().
  */
 function aurora_usa_preprocess_views_view_list(&$vars) {
-   $view = $vars['view'];
-   switch($view->name) {
-      case 'usa_cast' :
-        if ($vars['view']->current_display == 'block_1') {
-          //get node id for page
-          $nid = arg(1);
-          //loop thru carousel results
-          foreach($view->result as $delta => $item) {
-            //if carousel node id == node id for page add class
-            if($item->nid == $nid) {
-              $vars['classes_array'][$delta] .= ' active';
-            }
+ $view = $vars['view'];
+ switch($view->name) {
+    case 'usa_cast' :
+    case 'usa_shows' :
+      if ($vars['view']->current_display == 'block_1') {
+        //get node id for page
+        $nid = arg(1);
+        //loop thru carousel results
+        foreach($view->result as $delta => $item) {
+          //if carousel node id == node id for page add class
+          if($item->nid == $nid) {
+            $vars['classes_array'][$delta] .= ' active';
           }
         }
-        break;
+      }
+      break;
   }
 }
 

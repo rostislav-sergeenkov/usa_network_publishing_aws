@@ -16,12 +16,6 @@
   // display: none;
   background-color: $gray-dark;
 }
-// #environment-indicator {
-//   display: none;
-// }
-// body.environment-indicator-adjust.environment-indicator-left {
-//   margin-left: auto !important;
-// }
 
 // #show-menu-panel {
 //   display: none;
@@ -34,24 +28,3 @@
 //     display: none;
 //   }
 // }
-
-// TEMP MAIN NAV STYLES
-#mega-nav {
-  padding-left: 2em;
-  .mega-menu-items {
-    display: block;
-    float: left;
-    margin: 0 18px;
-    text-align: left;
-  }
-  .flagged {
-    color: $orange;
-    text-transform: uppercase;
-  }
-}
-
-.carousel-item {
-  width: 221px;
-  height: 184px;
-}
-

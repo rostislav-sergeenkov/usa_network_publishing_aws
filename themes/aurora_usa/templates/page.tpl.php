@@ -78,17 +78,19 @@
     <?php print $site_name; ?>
   </h1>
   <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-    <?php if ($site_name): ?>
-      <div id="logo">
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
-      </div>
-    <?php endif; ?>
-    <?php print render($page['header']); ?>
+    <div class="primary-nav">
+      <?php if ($site_name): ?>
+        <div id="logo">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
+        </div>
+      <?php endif; ?>
+      <?php print render($page['header']); ?>
+    </div>
   </div>
 </header>
 
 <!-- TOP TITLE AND TOOLS BAR -->
-<div id="utilities">
+<div id="utilities" class="clearfix">
   <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
   <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
   <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>

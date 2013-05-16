@@ -60,6 +60,7 @@
       off_canvas_auto_close();
       $(window).resize(function(){
         off_canvas_auto_close();
+        jPanel_resize();
       });
       function off_canvas_auto_close() {
         if ($('#main-menu-toggle').css("display") != "block" ){
@@ -74,6 +75,9 @@
             $('.panel-menu-items.active').removeClass('active');
           }
         }
+      }
+      function jPanel_resize() {
+        $('.jPanelMenu-panel').css('min-height', $(window).height());
       }
 
       // WIDE NAVIGATION
@@ -93,6 +97,10 @@
                   if ($('#wall').length == 0) {
                     $('body')
                       .append('<div id="wall" data-module-type="Wall"></div>');
+                    $('#wall').click(function() {
+                      $('.mega-menu-items.active').not($(this).parent()).removeClass('active');
+                      $('#wall').remove(); 
+                    });
                   }
                 }
                 return false;

@@ -2,7 +2,7 @@
 (function ($) {
   Drupal.behaviors.Homecarousel = {
     attach: function (context, settings) {
-      $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.pane-node-field-hp-promos .pane-content');
+      $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('.usa-home-featured');
       function create_home_carousel() {
         $(".field-name-field-hp-promos").addClass('slides').carouFredSel({
           auto: false,

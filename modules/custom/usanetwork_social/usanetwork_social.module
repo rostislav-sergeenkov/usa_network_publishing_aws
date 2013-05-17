@@ -216,7 +216,11 @@ function usanetwork_social_show_landing() {
   }
 
 	$query = 'http://api.echoenabled.com/v2/mux';
+/* @TODO: Remove this commented section if they do not want
+// to show a reply to the comment. Initial comps, showed a reply.
 	$queryParams = urlencode('{"id":"search_'.$showTokenName.'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$showTokenName.'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:1 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:1"}');
+*/
+	$queryParams = urlencode('{"id":"search_'.$showTokenName.'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$showTokenName.'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"}');
 
 	$queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
 	$queryStr = $query.'?'.$queryParams;
@@ -228,9 +232,9 @@ function usanetwork_social_show_landing() {
 	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
 
 	$output .= '
-		<div id="socialChatter">
-			<div>Join the Conversation: </div>
-			<div id="showComments"></div>
+		<div id="usanetwork_social_show_homepage_chatter">
+			<div id="usanetwork_social_chatter_title">chatter</div>
+			<div id="usanetwork_social_chatter_body"></div>
 		</div>
 		';
 

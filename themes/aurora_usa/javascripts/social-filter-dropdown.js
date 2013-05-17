@@ -28,11 +28,9 @@
         $menu = $('#block-usanetwork-social-usa-show-social-tab-nav .menu-label');
         if ($drop_elements.css("z-index") == "6" ){
           $menu.hide();
-          console.log('no');
           $drop_elements.removeClass('filter-dropdown');
         } else {
           $menu.show();
-          console.log('yes');
           $drop_elements.addClass('filter-dropdown');
         }
       }

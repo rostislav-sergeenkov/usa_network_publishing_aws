@@ -2,7 +2,7 @@
 // using fred carousel
 (function ($) {
 
-  Drupal.behaviors.flex_carousel = {
+  Drupal.behaviors.cast_carousel = {
     attach: function (context, settings) {
 
 

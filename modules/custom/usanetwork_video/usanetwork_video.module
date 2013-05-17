@@ -73,10 +73,11 @@ function usanetwork_video_global_show_nav() {
       // Get all the unique tv shows nodes
       if (!in_array($video->field_show[$lang][0]['target_id'], $nids)) {
         $nids[] = $video->field_show[$lang][0]['target_id'];
-        $title = _usanetwork_video_get_node_title($video->field_show[$lang][0]['target_id']);
+        $show = array_values(entity_load('node', array($video->field_show[$lang][0]['target_id'])));
 
         // Add all the published tv show nodes
-        if (!empty($title)) {
+        if (isset($show[0]) && !empty($show[0])) {
+          $title = $show[0]->field_display_title[$lang][0]['value'];
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           $items[] = l($title, $path);
         }
@@ -85,18 +86,6 @@ function usanetwork_video_global_show_nav() {
   }
 
   return theme('item_list', array('items' => $items));
-}
-
-/**
- * Returns the node title of the given node id
- */
-function _usanetwork_video_get_node_title($nid) {
-  return db_select('node', 'n')
-    ->fields('n', array('title'))
-    ->condition('nid', $nid,'=')
-    ->condition('status', 0,'>')
-    ->execute()
-    ->fetchField();
 }
 
 /**

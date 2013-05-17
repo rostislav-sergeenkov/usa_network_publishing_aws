@@ -138,6 +138,8 @@ $logo-height-med-2: 32px;
   height: $primary-nav-height-dt - 32px;
   line-height: $primary-nav-height-dt - 32px;
   margin: 0;
+  position: relative;
+  z-index: 2;
   &:hover,
   &:focus {
     color: $white;
@@ -176,12 +178,21 @@ $logo-height-med-2: 32px;
   width: 100%;
   overflow: hidden;
   position: absolute;
+  z-index: 1;
 }
 .mega-sub-nav {
   ul {
     @include no-bullets;
     @include column-count(3);
-    @include column-gap(2em)
+    @include column-gap(2em);
+    .ie9 & {
+      li {
+        float: left;
+        width: 30%;
+        margin-right: 1em;
+        overflow: hidden;
+      }
+    }
   }
   a {
     color: $white;

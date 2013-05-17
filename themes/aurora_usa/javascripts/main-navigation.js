@@ -52,8 +52,6 @@
       jPM.on();
 
       // WIDE NAVIGATION
-      // @todo looks like there's a problem with the z-order of the menu trays
-      // on IE9 that makes it impossible to interact with the parent items
       $('.slide-container')
         .find('.mega-sub-nav-container')
         .siblings('a')
@@ -81,8 +79,6 @@
       $(window).resize(function(){
         if ($('#main-menu-toggle').is(':hidden') && jPM.isOpen()) {
           jPM.close();
-          // @todo is this needed?
-          // $('.mega-menu-items.active-item').removeClass('active-item');
         }
         $('.jPanelMenu-panel').css('min-height', $(window).height());
       });

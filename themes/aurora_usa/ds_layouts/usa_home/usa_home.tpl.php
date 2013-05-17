@@ -7,7 +7,7 @@
   <div class="tiles" data-module-type="SliderTiles">
     <div class="tiles-inner">
     <?php if ($aspot): ?>
-      <div id="main-slider" class="usa-home-aspot flexslider aspot"><?php print $aspot; ?></div>
+      <div id="main-slider" class="usa-home-aspot flexslider a-spot"><?php print $aspot; ?></div>
     <?php endif; ?>
     <?php if ($ad): ?>
       <div class="usa-home-ad ad"><?php print $ad; ?></div>

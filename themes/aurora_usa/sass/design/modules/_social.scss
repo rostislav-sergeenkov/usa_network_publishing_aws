@@ -515,6 +515,31 @@ body.usa-social {
   }
 }
 
+/* global chat with fans pgs */
+#showList {
+  background-color: $white;
+  padding: 30px 42px;
+  color: $gray-extra-light;
+  font-family: $headline-reg;
+  font-size: 12px;
+  a {
+    color: $gray-extra-light;
+    &:hover {
+      color: $gray-extra-light;
+    }
+  }
+  img {
+    /* nn this */
+  }
+  h1 {
+    color: $gray-extra-light;
+    font-size: 30px;
+    font-family: $headline-semi;
+    text-transform: lowercase;
+
+  }
+}
+
 
 #fancybox-wrap {
   width: 460px !important;

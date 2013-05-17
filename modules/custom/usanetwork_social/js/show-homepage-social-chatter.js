@@ -12,7 +12,7 @@
 	Drupal.behaviors.chat_with_fans_page = {
 		attach: function(context){
 
-			var usa_debug_flag = true; // set to false to turn off all console logging
+			var usa_debug_flag = false; // set to false to turn off all console logging
 			var usa_debug = function(msg)
 			{
 				if (typeof console != 'undefined' && usa_debug_flag) {

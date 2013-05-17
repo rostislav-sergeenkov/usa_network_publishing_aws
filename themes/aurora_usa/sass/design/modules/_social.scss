@@ -433,6 +433,9 @@ body.usa-social {
   }
 }
 
+input.echo-submit-text {
+  padding: 3px;
+}
 
 .echo-item-children .echo-item-content {
   padding: 0;
@@ -440,8 +443,10 @@ body.usa-social {
 
 .echo-item-replyForm {
   margin: 0 77px;
+  .echo-submit-controls {
+    margin-top: 5px;
+  }
 }
-
 
 .echo-item-content {
   color: $gray-extra-light;
@@ -489,22 +494,28 @@ body.usa-social {
   overflow: hidden;
   background-color: $white;
   padding: 30px 42px 0;
-  .echo-submit-header span {
-    color: $gray-light;
-  }
   .echo-auth-logged {
     .echo-auth-avatar,
     .echo-auth-name {
       display: none;
     }
   }
-  .echo-auth-logout,
-  .echo-auth-login {
-    text-transform: uppercase;
+  .echo-auth-login,
+  .echo-auth-logout, {
     font-size: 15px;
-    color: $gray-dark;
-    float: right;
   }
+}
+
+.echo-submit-header span {
+  color: $gray-light;
+}
+
+.echo-auth-logout,
+.echo-auth-login {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: $gray-dark;
+  float: right;
 }
 
 .echo-submit-counterLabel {

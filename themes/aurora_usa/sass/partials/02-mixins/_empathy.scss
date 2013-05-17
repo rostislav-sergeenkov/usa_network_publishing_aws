@@ -102,8 +102,8 @@
 /* CUSTOM BRANDING MIXINS */
 @mixin sansTitle-mobi {
   color: $gray-light;
-  font-family: $headline-bold;
-  text-transform: uppercase;
+  font-family: $headline-semi;
+  text-transform: lowercase;
   font-size: 27px;
   letter-spacing: .05em;
   margin: .5em 0;
@@ -144,4 +144,38 @@
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
     cursor: url(https://mail.google.com/mail/images/2/closedhand.cur) 8 8, move;
+}
+
+
+@mixin retinaBg ($spriteName) {
+    background: sprite($ico-sprites, $spriteName, 0, 0) no-repeat;
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            // background: sprite($ico2x-sprites, $spriteName, 0, 0) no-repeat;
+            background: transparent image-url("sprite/ico2x/#{$spriteName}.png") no-repeat;
+            background-size: 100%;
+    }
+
+}
+
+
+/*
+ * Retina helper mixins for Compass
+ * http://www.joelambert.co.uk
+ *
+ * Copyright 2012, Joe Lambert.
+ * Free to use under the MIT license.
+ * http://joelambert.mit-license.org/
+ */
+
+@mixin background-image-retina($spriteName, $x: 0, $y: 0) {
+  // background-image: image-url($image);
+  background: sprite($ico-sprites, $spriteName, $x, $y) no-repeat;
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2)
+    {
+      @include background-size(image-width("sprite/ico/#{$spriteName}.png") auto);
+      background-image: image-url("ico2x/#{$spriteName}.png");
+      background-position: $x $y;
+    }
 }

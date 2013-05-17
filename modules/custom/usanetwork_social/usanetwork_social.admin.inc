@@ -5,11 +5,152 @@
  */
 function usanetwork_social_settings_form() {
 
+	// TRENDING
+  $form['trend'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Trending Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['trend']['usanetwork_social_trend_base_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE URL'),
+    '#default_value' => variable_get('usanetwork_social_trend_base_url', ''),
+    '#description' => t('Ex: https://www.rebelmouse.com'),
+  );
+
+  $form['trend']['usanetwork_social_trend_url_params'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL PARAMS'),
+    '#default_value' => variable_get('usanetwork_social_trend_url_params', ''),
+    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2'),
+  );
+
+	// SYNC
+  $form['sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sync Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['sync']['usanetwork_social_sync_desktop_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DESKTOP URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_desktop_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+  );
+
+  $form['sync']['usanetwork_social_sync_phone_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PHONE URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_phone_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
+  );
+
+  // CHAT WITH FANS
+  $form['chat'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Chat with Fans Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['chat']['usanetwork_social_chat_echo_app_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Echo App Key'),
+    '#default_value' => variable_get('usanetwork_social_chat_echo_app_key', ''),
+    '#description' => t(''),
+  );
+  $form['chat']['usanetwork_social_chat_echo_query_template'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Echo Query Template'),
+    '#default_value' => variable_get('usanetwork_social_chat_echo_query_template', ''),
+    '#description' => t('The tokenized Echo query string. Values in the string will be replaced with the following Tokens.'),
+    '#maxlength' => 512,
+  );
+  $form['chat']['usanetwork_social_chat_childrenof'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CHILDRENOF'),
+    '#default_value' => variable_get('usanetwork_social_chat_childrenof', ''),
+    '#description' => t('CHILDRENOF Token'),
+  );
+  $form['chat']['usanetwork_social_chat_feed'] = array(
+    '#type' => 'textfield',
+    '#title' => t('FEED'),
+    '#default_value' => variable_get('usanetwork_social_chat_feed', ''),
+    '#description' => t('FEED Token'),
+  );
+  $form['chat']['usanetwork_social_chat_state'] = array(
+    '#type' => 'textfield',
+    '#title' => t('STATE'),
+    '#default_value' => variable_get('usanetwork_social_chat_state', ''),
+    '#description' => t('STATE Token'),
+  );
+  $form['chat']['usanetwork_social_chat_source'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SOURCE'),
+    '#default_value' => variable_get('usanetwork_social_chat_source', ''),
+    '#description' => t('SOURCE Token'),
+  );
+  $form['chat']['usanetwork_social_chat_markers'] = array(
+    '#type' => 'textfield',
+    '#title' => t('MARKERS'),
+    '#default_value' => variable_get('usanetwork_social_chat_markers', ''),
+    '#description' => t('MARKERS Token'),
+  );
+  $form['chat']['usanetwork_social_chat_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TAGS'),
+    '#default_value' => variable_get('usanetwork_social_chat_tags', ''),
+    '#description' => t('TAGS Token'),
+  );
+  $form['chat']['usanetwork_social_chat_sortorder'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SORTORDER'),
+    '#default_value' => variable_get('usanetwork_social_chat_sortorder', ''),
+    '#description' => t('SORTORDER Token'),
+  );
+  $form['chat']['usanetwork_social_chat_safehtml'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SAFEHTML'),
+    '#default_value' => variable_get('usanetwork_social_chat_safehtml', ''),
+    '#description' => t('SAFEHTML Token'),
+  );
+  $form['chat']['usanetwork_social_chat_itemsperpage'] = array(
+    '#type' => 'textfield',
+    '#title' => t('ITEMSPERPAGE'),
+    '#default_value' => variable_get('usanetwork_social_chat_itemsperpage', ''),
+    '#description' => t('ITEMSPERPAGE Token'),
+  );
+  $form['chat']['usanetwork_social_chat_children'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CHILDREN'),
+    '#default_value' => variable_get('usanetwork_social_chat_children', ''),
+    '#description' => t('CHILDREN Token'),
+    '#maxlength' => 512,
+  );
+  $form['chat']['usanetwork_social_chat_submittargeturl'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SUBMITTARGETURL'),
+    '#default_value' => variable_get('usanetwork_social_chat_submittargeturl', ''),
+    '#description' => t('SUBMITTARGETURL Template'),
+    '#maxlength' => 512,
+  );
+  $form['chat']['usanetwork_social_chat_identitymanagerurl'] = array(
+    '#type' => 'textfield',
+    '#title' => t('IDENTITYMANAGERURL'),
+    '#default_value' => variable_get('usanetwork_social_chat_identitymanagerurl', ''),
+    '#description' => t('IDENTITYMANAGERURL'),
+    '#maxlength' => 512,
+  );
+
+
+  // TWITTER
   $form['twitter'] = array(
     '#type' => 'fieldset',
     '#title' => t('Twitter Settings'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
   );
   $form['twitter']['usanetwork_social_twitter_echo_app_key'] = array(
     '#type' => 'textfield',
@@ -86,6 +227,70 @@ function usanetwork_social_settings_form() {
     '#maxlength' => 512,
   );
 
+	// GLOBAL TRENDING
+  $form['global_trend'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global Trending Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['global_trend']['usanetwork_social_trend_show_global'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('SHOW GLOBAL TRENDING'),
+    '#default_value' => variable_get('usanetwork_social_trend_show_global', ''),
+    '#description' => t('Check to turn global trending on'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_base_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE URL'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_base_url', ''),
+    '#description' => t('Ex: https://www.rebelmouse.com'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_base_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('BASE PATH'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_base_path', ''),
+    '#description' => t('Ex: USANetwork'),
+  );
+
+  $form['global_trend']['usanetwork_social_trend_global_url_params'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL PARAMS'),
+    '#default_value' => variable_get('usanetwork_social_trend_global_url_params', ''),
+    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm'),
+  );
+
+	// GLOBAL SYNC
+  $form['global_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global Sync Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['global_sync']['usanetwork_social_sync_show_global'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('SHOW GLOBAL SYNC'),
+    '#default_value' => variable_get('usanetwork_social_sync_show_global', ''),
+    '#description' => t('Check to turn global chat with fans on'),
+  );
+
+  $form['global_sync']['usanetwork_social_sync_global_desktop_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DESKTOP URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_global_desktop_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+  );
+
+  $form['global_sync']['usanetwork_social_sync_global_phone_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PHONE URL'),
+    '#default_value' => variable_get('usanetwork_social_sync_global_phone_url', ''),
+    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
+  );
 
   return system_settings_form($form);
 }

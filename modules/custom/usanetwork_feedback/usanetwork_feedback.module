@@ -19,4 +19,29 @@ function usanetwork_feedback_menu() {
   );
 
   return $items;
+
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function usanetwork_feedback_form_webform_client_form_1_alter(&$form, &$form_state, $form_id) {
+
+  $form['#submit'][] = 'usanetwork_feedback_newsletter_lyris_signup';
+}
+
+/**
+ * Assign user to sparlist if user has checked the newsletter signup checkbox.
+ */
+function usanetwork_feedback_newsletter_lyris_signup(&$form, &$form_state) {
+
+  if (!empty($form_state['values']['submitted_tree']['receive_info'])) {
+    $user['email'] = $form_state['values']['submitted_tree']['email_address'];
+    $user['list'] = 'usa_all';
+    $result = usanetwork_lyris_assign_user_to_list($user);
+
+    if (!$result) {
+      watchdog('usanetwork_feedback', 'Failed to add '. $user['email'] . ' to "usa_all" lyris ID');
+    }
+  }
 }

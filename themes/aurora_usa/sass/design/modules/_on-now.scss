@@ -1,0 +1,102 @@
+
+#block-usanetwork-tv-schedule-usa-on-now-block {
+//  height: 100%;
+  height: 45px;
+  padding-left: 12px;
+  position: relative;
+  font-family: $headline-bold;
+  text-transform: none;
+  float: left;
+  @include breakpoint($bp-on-now) {
+    padding-left: 15px;
+    height: 62px;
+  }
+  span {
+    vertical-align: middle;
+  }
+  .content {
+    white-space: white-space;
+    height: 100%;
+    display: inline;
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      margin-left: -2px;
+      width: 1px;
+      @include breakpoint($bp-on-now) {
+        vertical-align: middle;
+      }
+    }
+  }
+  a {
+    color: $gray-light;
+  }
+  #on-now {
+    @extend %usanetwork-font;
+    color: $white;
+    padding: 2px 10px 0 0;
+    font-size: 23px;
+    display: inline;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    @include breakpoint($bp-on-now) {
+      padding-top: 16px;
+      padding-right: 15px;
+      font-size: 28px;
+      height: 100%;
+    }
+  }
+  #on-now-show-name {
+    font-size: 16px;
+    line-height: 1em;
+    float: left;
+    letter-spacing: 0.03em;
+    @include breakpoint($bp-on-now) {
+      vertical-align: middle;
+      display: inline;
+      font-size: 27px;
+      float: none;
+    }
+  }
+}
+
+#on-now-show-episode {
+  color: $gray-light;
+  display: inline;
+  @include breakpoint($bp-on-now) {
+    white-space: nowrap;
+    height: 100%;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    margin-left: -2px;
+    width: 1px;
+    @include breakpoint($bp-on-now) {
+      vertical-align: middle;
+    }
+  }
+}
+
+
+
+span#on-now-episode {
+  font-size: 14px;
+  font-family: $headline-lt;
+  letter-spacing: 0.03em;
+  float: left;
+  color: $gray-light;
+  display: inline;
+  line-height: 1em;
+  @include breakpoint($bp-on-now) {
+    font-size: 23px;
+    display: inline;
+    float: none;
+    height: 100%;
+  }
+}

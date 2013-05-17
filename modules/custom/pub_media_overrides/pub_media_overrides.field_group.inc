@@ -23,9 +23,9 @@ function pub_media_overrides_field_group_info() {
     'label' => 'Show relationships',
     'weight' => '15',
     'children' => array(
-      0 => 'field_show',
+      0 => 'field_episode',
       1 => 'field_season',
-      2 => 'field_episode',
+      2 => 'field_show',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -53,7 +53,7 @@ function pub_media_overrides_field_group_info() {
     'label' => 'USA custom',
     'weight' => '2',
     'children' => array(
-      0 => 'field_character',
+      0 => 'field_person',
       1 => 'group_show_rels',
     ),
     'format_type' => 'tab',

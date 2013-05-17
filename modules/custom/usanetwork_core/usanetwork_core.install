@@ -32,6 +32,35 @@ function usanetwork_core_install() {
   menu_rebuild();
   usanetwork_core_create_menu_items();
 
+  // Set the homepage
+  variable_set('site_frontpage', 'home');
+
+  // get the new filter format into the db
+  $wysiwyg_full_html = array(
+    'format' => 'wysiwyg_full_html',
+    'name' => 'WYSIWYG Full Html',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $wysiwyg_full_html = (object) $wysiwyg_full_html;
+  filter_format_save($wysiwyg_full_html);
+
+  // Let's add this new filter to our user roles.
+  $existing_roles = user_roles();
+  $rids = array_flip($existing_roles);
+  user_role_grant_permissions($rids['administrator'], array('use text format wysiwyg_full_html'));
+  user_role_grant_permissions($rids['editor'], array('use text format wysiwyg_full_html'));
 }
 
 /**
@@ -68,8 +97,6 @@ function usanetwork_core_enable_modules() {
     'features_override',
     'views_slideshow',
     'views_slideshow_cycle',
-    'flexslider',
-    'flexslider_views',
     'menu_block',
     'print',
     'linkit',
@@ -79,6 +106,9 @@ function usanetwork_core_enable_modules() {
     'views_bulk_operations',
     'views_load_more',
     'addanother',
+    'styleguide',
+    // custom contrib
+    'context_entity_field',
     // USA custom
     'usanetwork',
     'usanetwork_ds',
@@ -87,7 +117,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_imagestyles',
     'usanetwork_views',
     'usanetwork_context',
-    'usanetwork_files',
     'usanetwork_panels',
     'usanetwork_strongarm',
     'usanetwork_social',
@@ -98,12 +127,24 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_schedule',
     'usanetwork_aspot',
     'usanetwork_flag',
-    'usanetwork_borealis',
+    'usanetwork_promo',
+    'usanetwork_home',
+    'usanetwork_cast',
+    'usanetwork_catchall',
+    'usanetwork_user_permissions',
+    'usanetwork_episodes',
+    'usanetwork_layouts',
+    'usanetwork_showpages',
+    'usanetwork_media_gallery',
+    'usanetwork_migrate',
+    'usanetwork_video',
+    'usanetwork_theme_settings',
+    'usanetwork_ads',
+    'usanetwork_wysiwyg',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
     'pub_media_overrides',
-    'pub_character_profile_overrides',
     'pub_person_overrides',
     'pub_gigya_overrides',
   );
@@ -115,6 +156,7 @@ function usanetwork_core_enable_modules() {
   drupal_set_message($ret);
   return $ret;
 }
+
 /**
  * Set the theme.
  *

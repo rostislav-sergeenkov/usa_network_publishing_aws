@@ -13,6 +13,8 @@ function pub_gigya_overrides_features_override_default_overrides() {
 
   // Exported overrides for: variable
   $overrides["variable.gigya_comments_enabled.value"] = 0;
+  $overrides["variable.gigya_network_list.value"] = 'Facebook, Twitter, Tumblr, Pinterest';
+  $overrides["variable.gigya_share_buttons.value"] = 'Tumblr, pinterest-pinit, twitter-tweet, facebook-send';
 
  return $overrides;
 }

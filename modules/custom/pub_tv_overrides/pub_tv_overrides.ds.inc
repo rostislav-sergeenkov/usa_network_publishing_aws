@@ -1,0 +1,123 @@
+<?php
+/**
+ * @file
+ * pub_tv_overrides.ds.inc
+ */
+
+/**
+ * Implements hook_ds_field_settings_info().
+ */
+function pub_tv_overrides_ds_field_settings_info() {
+  $export = array();
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tv_show|block_cover_title';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tv_show';
+  $ds_fieldsetting->view_mode = 'block_cover_title';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h4',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|tv_show|block_cover_title'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tv_show|follow_social';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tv_show';
+  $ds_fieldsetting->view_mode = 'follow_social';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h4',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|tv_show|follow_social'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_layout_settings_info().
+ */
+function pub_tv_overrides_ds_layout_settings_info() {
+  $export = array();
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tv_show|block_cover_title';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tv_show';
+  $ds_layout->view_mode = 'block_cover_title';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_logo',
+        1 => 'title',
+      ),
+    ),
+    'fields' => array(
+      'field_logo' => 'ds_content',
+      'title' => 'ds_content',
+    ),
+    'classes' => array(),
+  );
+  $export['node|tv_show|block_cover_title'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tv_show|follow_social';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tv_show';
+  $ds_layout->view_mode = 'follow_social';
+  $ds_layout->layout = 'social_follow';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 1,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_social_logo',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+      'social' => array(
+        0 => 'field_usa_link_facebook',
+        1 => 'field_usa_link_twitter',
+        2 => 'field_usa_link_pinterest',
+        3 => 'field_usa_link_tumblr',
+      ),
+    ),
+    'fields' => array(
+      'field_social_logo' => 'media',
+      'title' => 'title',
+      'field_usa_link_facebook' => 'social',
+      'field_usa_link_twitter' => 'social',
+      'field_usa_link_pinterest' => 'social',
+      'field_usa_link_tumblr' => 'social',
+    ),
+    'classes' => array(),
+  );
+  $export['node|tv_show|follow_social'] = $ds_layout;
+
+  return $export;
+}

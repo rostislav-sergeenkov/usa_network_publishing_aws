@@ -2,6 +2,13 @@
 
 /**
  * @file
+ * Code for the usanetwork_blocks feature.
+ */
+
+include_once 'usanetwork_blocks.features.inc';
+
+/**
+ * @file
  * USA blocks - custom blocks that are not generated with views or stored elsewhere
  */
 
@@ -39,8 +46,16 @@ function usanetwork_blocks_block_info() {
     'info' => t('USA: social footer'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
-  $blocks['usa_on_now_block'] = array(
-    'info' => t('USA: on now block'),
+  $blocks['usa_tv_show_menu'] = array(
+    'info' => t('USA: TV Show Menu'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_footer_message'] = array(
+    'info' => t('USA: Footer message'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_detect_ieversion'] = array(
+    'info' => t('USA: Detect ie version'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
 
@@ -82,9 +97,20 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = t('Follow Us:');
       $block['content'] = usanetwork_blocks_usa_social_footer();
       break;
-    case 'usa_on_now_block':
+    case 'usa_tv_show_menu':
       $block['subject'] = '';
-      $block['content'] = usanetwork_blocks_on_now_block();
+      $block['content'] = usanetwork_blocks_tv_show_menu();
+      break;
+    case 'usa_footer_message':
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_footer_message();
+      break;
+    case 'usa_detect_ieversion':
+      drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
+      drupal_add_js(drupal_get_path("module", "usanetwork_blocks")."/theme/js/usanetwork_block.js");
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_detect_ieversion();
       break;
   }
   return $block;
@@ -107,6 +133,12 @@ function usanetwork_blocks_theme($existing, $type, $theme, $path) {
         ),
       'path' => $path . '/theme',
       'template' => 'usa-social-footer',
+    ),
+   'usa_detect_ieversion' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-detect-ieversion',
     ),
   );
 }
@@ -193,86 +225,6 @@ function usanetwork_blocks_fpo_block() {
 }
 
 /**
- * Block callback for the On Now block
- */
-function usanetwork_blocks_on_now_block() {
-  $render = array();
-  
-  // JS to determine the current timezone from the user browser
-  drupal_add_js(drupal_get_path('module', 'usanetwork_blocks') . '/js/jstz-1.0.4.min.js');
-
-  $tv_url = variable_get('usanetwork_tv_schedule', '');
-  // return empty block if the tv schedule url is empty
-  if (empty($tv_url)) {
-    return ''; 
-  }
-
-  // fetch today's schedule
-  $tv_schedule = file_get_contents($tv_url);
-  $tv_schedule = drupal_json_decode($tv_schedule);
-
-  // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
-  $tv_schedule_prev_day = file_get_contents($tv_url . '?sdate=' . date('m/d/Y', time() - 60 * 60 * 24));
-  $tv_schedule_prev_day = drupal_json_decode($tv_schedule_prev_day);
-
-  $full_tv_schedule = array('data' => array());
-  $start_search = false;
-  // get the tv schedule from 00:00 AM till 5:59 AM
-  foreach ($tv_schedule_prev_day['data'] as $key => $val) {
-    if (strpos($key, 'PM') !== FALSE) {
-      $start_search = true;
-    }
-    if ($start_search && strpos($key, 'AM') !== FALSE) {
-      $full_tv_schedule['data'][$key] = $val;
-    } 
-  }
-  // get the tv schedule from 6:00 AM till end of the day
-  foreach ($tv_schedule['data'] as $key => $val) {
-    if (!isset($full_tv_schedule['data'][$key])) {
-      $full_tv_schedule['data'][$key] = $val;
-    }
-  } 
-
-  // expose the tv schedule as JS variable to determine the on on show based on the user timezone and for other modules to consume it
-  $vars = 'var tv_schedule = ' . drupal_json_encode($full_tv_schedule) . ';';
-
-  // switch to ET timezone to perform calculations and then switch back to original timezone
-  $orginal_tz = date_default_timezone_get();
-  date_default_timezone_set('America/New_York');
-  $et_time = floatval(date('U'));
-
-  foreach ($full_tv_schedule['data'] as $dt => $show) {
-    $show_dt = strtotime(date('Y-m-d ').$dt);
-    if ($et_time < $show_dt) {
-      if (empty($last_dt)) {
-        $last_dt = $dt;
-      }
-      $show_name = $full_tv_schedule['data'][$last_dt]['show'] .': '. $full_tv_schedule['data'][$last_dt]['episode'];
-      break;
-    }
-    $last_dt = $dt;
-  }
-  date_default_timezone_set($orginal_tz);
-
-  // expose default et show for rest of the world
-  $show_name = strtoupper($show_name);
-  $vars .= 'var on_now_default_show = "' . $show_name . '";';
-
-  drupal_add_js($vars, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_blocks') . '/js/usanetwork_tv_schedule.js');
-
-  // Handles the JS disabled browser scenario
-  $markup = '&nbsp;<noscript>' . $show_name . '</noscript>';
-
-  $render['on_now_block']['body'] = array(
-    '#type' => 'markup',
-    '#markup' => $markup,
-  );
-
-  return $render;
-}
-
-/**
  * Block callback for the usa_meganav block
  */
 function usanetwork_blocks_usa_meganav() {
@@ -295,6 +247,96 @@ function usanetwork_blocks_usa_social_footer() {
   $render['socialfeet'] = array(
     '#type' => 'markup',
     '#markup' => theme('usa_social_footer', array()),
+  );
+
+  return $render;
+}
+
+
+/**
+ * Block for displaying TV show menu
+ */
+function usanetwork_blocks_tv_show_menu() {
+  $arg = arg();
+  $lang = LANGUAGE_NONE;
+  $links = array();
+  $output = '';
+
+  if (isset($arg[1])) {
+    $node = node_load($arg[1]);
+  }
+
+  // return empty block if the node id is empty
+  if (!isset($node->nid) || empty($node->nid)) {
+    return '';
+  }
+
+  // Get the field collection items.
+  $fc_fields = field_get_items('node', $node, 'field_show_links');
+  if (empty($fc_fields)) {
+    return '';
+  }
+
+  // Extract the field collection item ids
+  $ids = array();
+  foreach ($fc_fields as $fc_field) {
+    $ids[] = $fc_field['value'];
+  }
+  
+  // Load up the field collection items
+  $items = field_collection_item_load_multiple($ids);
+  if (empty($items)) {
+    return '';
+  }
+
+  // Loop through the items and extract field values
+  foreach ($items as $item) {
+    $mlinks = array();
+    $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
+    if (!empty($link_fields)) {
+      foreach ($link_fields as $link) {
+        $mlinks['data'] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+      }
+    }
+
+    $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
+    if (!empty($link_fields)) {
+      foreach ($link_fields as $link) {
+        $mlinks['children'][] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+      }
+    }
+    $links[] = $mlinks;
+  }
+
+  if (!empty($links)) {
+    $output .= '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
+    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
+  }
+  return $output;
+}
+
+/**
+ * Block for Displaying Footer Message
+ */
+function usanetwork_blocks_usa_footer_message() {
+  $render = array();
+  $render['usa_footer']['body'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id ="footer-message">'. str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message")),
+    '#suffix' => '</div>',
+  );
+  return $render;
+}
+
+/**
+ * Block callback for the usa_detect_ieversion
+ */
+function usanetwork_blocks_usa_detect_ieversion() {
+  $render = array();
+
+  $render['ieversion_detection'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_detect_ieversion', array()),
   );
 
   return $render;

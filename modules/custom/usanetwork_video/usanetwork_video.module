@@ -1,0 +1,97 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_video feature.
+ */
+
+include_once 'usanetwork_video.features.inc';
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_video_menu() {
+  // global videos page
+  $items['videos'] = array(
+    'title' => t('Videos'),
+    'page callback' => 'usanetwork_video_global_videos_page',
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_video_block_info() {
+  $blocks = array();
+  $blocks['usa_global_video_show_nav'] = array(
+    'info' => t('USA: globla video show navigation'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_video_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_global_video_show_nav':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_video_global_show_nav();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Generates the global video show navigation
+ */
+function usanetwork_video_global_show_nav() {
+  $items = array(t('all shows'));
+  $lang = LANGUAGE_NONE;
+  $query = new EntityFieldQuery();
+
+  // Fetch all the video node associated with any show
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $videos = entity_load('node', array_keys($result['node']));
+
+    $nids = array();
+    foreach ($videos as $video) {
+      // Get all the unique tv shows nodes
+      if (!in_array($video->field_show[$lang][0]['target_id'], $nids)) {
+        $nids[] = $video->field_show[$lang][0]['target_id'];
+        $show = array_values(entity_load('node', array($video->field_show[$lang][0]['target_id'])));
+
+        // Add all the published tv show nodes
+        if (isset($show[0]) && !empty($show[0])) {
+          $title = $show[0]->field_display_title[$lang][0]['value'];
+          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
+          $items[] = l($title, $path);
+        }
+      }
+    }
+  }
+
+  return theme('item_list', array('items' => $items));
+}
+
+/**
+ * Renders the global video page
+ */
+function usanetwork_video_global_videos_page() {
+  //TODO: re-write this code to determine the correct video node and redirect to that url
+  return t('Global Videos Page: Placeholder in the usanetwork_videos module');
+}

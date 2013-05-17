@@ -1,0 +1,36 @@
+.expandable {
+  > div {
+    display: none;
+  }
+  &.active-item {
+    > div {
+      display: block;
+    }
+  }
+}
+.expandable-menu {
+  > a {
+    &:after {
+      @include cssTriangle(5px, $white, left);
+      margin-top: -3px;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+    }
+    &:hover {
+      &:after {
+        @include cssTriangle(5px, $white, left);
+      }
+    }
+  }
+  &.active-item {
+    > a {
+      &:after {
+        @include cssTriangle(5px, $blue, top);
+      }
+    }
+  }
+  > div {
+    background: $gray-dark;
+  }
+}

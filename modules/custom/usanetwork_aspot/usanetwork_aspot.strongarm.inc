@@ -20,7 +20,7 @@ function usanetwork_aspot_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -43,17 +43,32 @@ function usanetwork_aspot_strongarm() {
       'block_cover_title' => array(
         'custom_settings' => FALSE,
       ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '7',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '6',
         ),
       ),
       'display' => array(),
@@ -99,6 +114,13 @@ function usanetwork_aspot_strongarm() {
   $strongarm->name = 'node_submitted_usanetwork_aspot';
   $strongarm->value = 0;
   $export['node_submitted_usanetwork_aspot'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'representative_image_field_node_usanetwork_aspot';
+  $strongarm->value = 'field_usa_aspot_desktop';
+  $export['representative_image_field_node_usanetwork_aspot'] = $strongarm;
 
   return $export;
 }

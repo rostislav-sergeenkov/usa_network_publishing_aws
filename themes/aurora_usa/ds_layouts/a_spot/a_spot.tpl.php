@@ -4,7 +4,7 @@
  * @TODO: a proper implementation of the css and js
  */
 if ($hex == '&nbsp;') {
-  $hex = '000';
+  $hex = 'fff';
 }
 $hexcolor = $hex ? '#' . $hex : '#ffffff';
 

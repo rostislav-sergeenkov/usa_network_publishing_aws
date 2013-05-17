@@ -94,7 +94,7 @@ body.usa-social {
             @include cssTriangle(12px, $gray-med, top);
             position: absolute;
             left: 50%;
-            top: 59px;
+            top: 58px;
             margin-left: -12px;
           }
         }
@@ -527,6 +527,10 @@ body.usa-social {
     height: 77px;
     padding: 5px;
   }
+}
+
+.echo-submit-forcedLogin .echo-submit-controls {
+  display: none;
 }
 
 /* global chat with fans pgs */

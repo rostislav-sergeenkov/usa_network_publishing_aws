@@ -75,6 +75,7 @@ function aurora_usa_preprocess_page(&$vars) {
   $node = menu_get_object();
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
+    drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   // add ios touch icon
   $ios_icon = array(

@@ -298,12 +298,21 @@ body.usa-social {
   }
   .view-display-id-attachment_1 {
     .view-header {
-      border-top: 1px solid #4B4B4B;
-      font-family: Proxima N W01 Reg,Arial,sans-serif;
+      position: relative;
+      border-top: 1px solid $gray-ultra-med;
+      font-family: $headline-reg;
       font-size: 20px;
       padding: 20px 15px 20px 20px;
       text-transform: uppercase;
       cursor: pointer;
+      &:after {
+        @extend %usanetwork-font;
+        content: "Next";
+        font-size: 0.55em;
+        left: 230px;
+        position: absolute;
+        top: 24px;
+      }
     }
     .view-content {
       display: none;

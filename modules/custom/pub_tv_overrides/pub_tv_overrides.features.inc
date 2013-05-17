@@ -23,27 +23,6 @@ function pub_tv_overrides_ctools_plugin_api() {
 }
 
 /**
- * Implements hook_ds_field_settings_info_alter().
- */
-function pub_tv_overrides_ds_field_settings_info_alter(&$data) {
-  if (isset($data['node|tv_show|follow_social'])) {
-    $data['node|tv_show|follow_social']->settings['title']['weight'] = '1'; /* WAS: '0' */
-  }
-}
-
-/**
- * Implements hook_ds_layout_settings_info_alter().
- */
-function pub_tv_overrides_ds_layout_settings_info_alter(&$data) {
-  if (isset($data['node|tv_show|follow_social'])) {
-    $data['node|tv_show|follow_social']->settings['regions']['social']['0'] = 'field_usa_link_facebook'; /* WAS: 'field_usa_link_pinterest' */
-    $data['node|tv_show|follow_social']->settings['regions']['social']['1'] = 'field_usa_link_twitter'; /* WAS: 'field_usa_link_facebook' */
-    $data['node|tv_show|follow_social']->settings['regions']['social']['2'] = 'field_usa_link_pinterest'; /* WAS: 'field_usa_link_tumblr' */
-    $data['node|tv_show|follow_social']->settings['regions']['social']['3'] = 'field_usa_link_tumblr'; /* WAS: 'field_usa_link_twitter' */
-  }
-}
-
-/**
  * Implements hook_field_default_fields_alter().
  */
 function pub_tv_overrides_field_default_fields_alter(&$data) {
@@ -174,6 +153,22 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
   }
   if (isset($data['node-tv_show-field_logo'])) {
     $data['node-tv_show-field_logo']['field_instance']['description'] = 'Used in show carousels.'; /* WAS: '' */
+    $data['node-tv_show-field_logo']['field_instance']['display']['block_cover_title'] = array(
+      'label' => 'hidden',
+      'module' => 'image',
+      'settings' => array(
+        'image_link' => '',
+        'image_style' => 'gallery_block_cover',
+      ),
+      'type' => 'image',
+      'weight' => '0',
+    ); /* WAS: '' */
+    $data['node-tv_show-field_logo']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => '38',
+    ); /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
   }
 }

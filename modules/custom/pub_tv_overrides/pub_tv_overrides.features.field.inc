@@ -234,7 +234,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '27',
+          'weight' => '57',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -316,7 +316,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '57',
+          'weight' => '60',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -421,7 +421,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '58',
+          'weight' => '61',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -532,7 +532,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '29',
+          'weight' => '58',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -618,7 +618,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '60',
+          'weight' => '63',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -756,7 +756,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '59',
+          'weight' => '62',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -850,7 +850,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '30',
+          'weight' => '59',
         ),
         'teaser' => array(
           'label' => 'above',

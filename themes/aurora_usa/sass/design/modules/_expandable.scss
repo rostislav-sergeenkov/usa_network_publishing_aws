@@ -2,7 +2,7 @@
   > div {
     display: none;
   }
-  &.active {
+  &.active-item {
     > div {
       display: block;
     }
@@ -23,7 +23,7 @@
       }
     }
   }
-  &.active {
+  &.active-item {
     > a {
       &:after {
         @include cssTriangle(5px, $blue, top);

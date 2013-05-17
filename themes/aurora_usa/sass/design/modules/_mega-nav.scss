@@ -108,7 +108,7 @@ $logo-height-med-2: 32px;
   @include breakpoint($bp-menu-switch) {
     @include inline-block;
   }
-  &.active {
+  &.active-item {
     .mega-nav-link {
       color: $white;
     }
@@ -202,7 +202,7 @@ $logo-height-med-2: 32px;
 
 .panel-sub-nav-container {
   display: none;
-  .active & {
+  .active-item & {
     display: block;
   }
 
@@ -306,7 +306,7 @@ $logo-height-med-2: 32px;
 //           z-index: 1;
 //         }
 //       }
-//       &.active {
+//       &.active-item {
 //         h1 {
 //           background: $gray-med;
 //           &:after {

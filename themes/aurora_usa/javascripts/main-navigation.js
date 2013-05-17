@@ -2,21 +2,18 @@
 (function ($) {
   Drupal.behaviors.mainNavigation = {
     attach: function (context, settings) {
-      $primary_nav = $('.primary-nav');
 
       // TOUCH NAVIGATION
-      // create a touch menu button
-      $touch_btn = '<div id="main-menu-toggle" class="mobi-menu-icon slide-menu-toggle" data-module-type="SlideOut" data-active-layer="mega-menu"></div>'
-      $primary_nav.prepend($touch_btn);
+      $('.primary-nav').prepend('<div id="main-menu-toggle" class="mobi-menu-icon slide-menu-toggle" data-module-type="SlideOut" data-active-layer="mega-menu"></div>');
 
+      // NARROW NAVIGATION
       var jPM = $.jPanelMenu({
           menu: '#block-usanetwork-blocks-usa-meganav',
           trigger: '#main-menu-toggle',
           openPosition: '258px',
           duration: '300',
           afterOn: function() {
-            $jPanelMenu_menu = $('#jPanelMenu-menu');
-            $jPanelMenu_menu
+            $('#jPanelMenu-menu')
               .prepend('<h1 class="menu-title">Main Menu</h1>')
               .find('a')
                 .removeClass('mega-nav-link')
@@ -29,20 +26,19 @@
               .find('.mega-sub-nav')
                 .removeClass('mega-sub-nav')
                 .addClass('panel-sub-nav')
-                .end();
-            // set up subsection expanders
-            $jPanelMenu_menu
+                .end()
               .find('.panel-sub-nav-container')
                 .siblings('a')
                   .css('cursor', 'default')
                   .click(function() {
-                    $(this).parent().toggleClass('active');
+                    $(this).parent().toggleClass('active-item');
                     return false;
                   })
                   .end()
                 .parent()
                   .addClass('expandable')
                   .addClass('expandable-menu');
+            $('.jPanelMenu-panel').css('min-height', $(window).height());
           },
           beforeOpen: function() {
             $('#wall').remove();
@@ -54,58 +50,42 @@
           }
       });
       jPM.on();
-      $('.panel-menu-items.active').removeClass('active');
-
-      off_canvas_auto_close();
-      $(window).resize(function(){
-        off_canvas_auto_close();
-        jPanel_resize();
-      });
-      function off_canvas_auto_close() {
-        if ($('#main-menu-toggle').css("display") != "block" ){
-          jPM.close();
-          if ($('.jPanelMenu-panel')) {
-            jPM.off();
-            $('.mega-menu-items.active').removeClass('active');
-          }
-        } else {
-          if ($('.jPanelMenu-panel').length == 0) {
-            jPM.on();
-            $('.panel-menu-items.active').removeClass('active');
-          }
-        }
-      }
-      function jPanel_resize() {
-        $('.jPanelMenu-panel').css('min-height', $(window).height());
-      }
 
       // WIDE NAVIGATION
-      $('.mega-menu-items.active').removeClass('active');
-      mega_nav_panels();
-      function mega_nav_panels() {
-        $('.slide-container')
-          .find('.mega-sub-nav-container')
-            .siblings('a')
-              .css('cursor', 'default')
-              .click(function() {
-                $('.mega-menu-items.active').not($(this).parent()).removeClass('active');
-                $(this).parent().toggleClass('active');
-                if ($('.mega-menu-items.active').length == 0) {
-                  $('#wall').remove(); 
-                } else {
-                  if ($('#wall').length == 0) {
-                    $('body')
-                      .append('<div id="wall" data-module-type="Wall"></div>');
-                    $('#wall').click(function() {
-                      $('.mega-menu-items.active').not($(this).parent()).removeClass('active');
-                      $('#wall').remove(); 
-                    });
-                  }
-                }
-                return false;
-              })
-              .end()
-      }
+      // @todo looks like there's a problem with the z-order of the menu trays
+      // on IE9 that makes it impossible to interact with the parent items
+      $('.slide-container')
+        .find('.mega-sub-nav-container')
+        .siblings('a')
+          .css('cursor', 'default')
+          .click(function() {
+            var Self = $(this).parent();
+            console.log(Self);
+            var Wall = document.getElementById('wall');
+            $('.mega-menu-items.active-item').not(Self).removeClass('active-item');
+            Self.toggleClass('active-item');
+            if (Self.hasClass('active-item') && Wall === null) {
+              Wall = $('<div id="wall" data-module-type="Wall"></div>')
+                .click(function() {
+                  $('.mega-menu-items.active-item').removeClass('active-item');
+                  $(this).remove();
+                })
+              $('.jPanelMenu-panel').append(Wall);
+            } else {
+              $(Wall).remove();
+            }
+            return false;
+          });
+
+      // RESPONSIVE BEHAVIOR
+      $(window).resize(function(){
+        if ($('#main-menu-toggle').is(':hidden') && jPM.isOpen()) {
+          jPM.close();
+          // @todo is this needed?
+          // $('.mega-menu-items.active-item').removeClass('active-item');
+        }
+        $('.jPanelMenu-panel').css('min-height', $(window).height());
+      });
     },
   };
 

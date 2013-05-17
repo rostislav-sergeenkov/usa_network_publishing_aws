@@ -80,7 +80,7 @@
   <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
     <div class="primary-nav">
       <?php if ($site_name): ?>
-        <div id="logo">
+        <div id="logo" class="icon-usa">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
         </div>
       <?php endif; ?>

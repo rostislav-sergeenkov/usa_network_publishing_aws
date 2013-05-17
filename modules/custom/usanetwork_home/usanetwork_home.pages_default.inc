@@ -45,7 +45,7 @@ function usanetwork_home_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'section';
+  $display->layout = 'usa_homepage';
   $display->layout_settings = array(
     'items' => array(
       'canvas' => array(
@@ -107,6 +107,12 @@ function usanetwork_home_default_page_manager_handlers() {
       'default' => NULL,
       'center' => NULL,
       'bottom' => NULL,
+      'two' => NULL,
+      'three' => NULL,
+      'one' => NULL,
+    ),
+    'one' => array(
+      'style' => '-1',
     ),
   );
   $display->cache = array();
@@ -115,38 +121,7 @@ function usanetwork_home_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'bottom';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_hp_promos';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'entityreference_entity_view',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(
-        'view_mode' => 'carousel_promo',
-        'links' => 0,
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => 'Featured',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['bottom'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'center';
+    $pane->panel = 'one';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_usa_hp_arefs';
     $pane->shown = TRUE;
@@ -169,15 +144,52 @@ function usanetwork_home_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => 'main-slider',
+      'css_class' => 'flexslider aspot',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['one'][0] = 'new-1';
+    $pane = new stdClass();
+    $pane->pid = 'new-2';
+    $pane->panel = 'three';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_hp_promos';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'title',
+      'formatter' => 'entityreference_entity_view',
+      'delta_limit' => '0',
+      'delta_offset' => '0',
+      'delta_reversed' => 0,
+      'formatter_settings' => array(
+        'view_mode' => 'carousel_promo',
+        'links' => 0,
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => 'Featured',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'item-list',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-2'] = $pane;
-    $display->panels['center'][0] = 'new-2';
+    $display->panels['three'][0] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
-    $pane->panel = 'center';
+    $pane->panel = 'two';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_usa_hp_brefs';
     $pane->shown = TRUE;
@@ -200,15 +212,18 @@ function usanetwork_home_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'flexslider secondary-slider b-spot',
+    );
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['center'][1] = 'new-3';
+    $display->panels['two'][0] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'center';
+    $pane->panel = 'two';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_usa_hp_crefs';
     $pane->shown = TRUE;
@@ -231,15 +246,18 @@ function usanetwork_home_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'flexslider secondary-slider c-spot',
+    );
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['center'][2] = 'new-4';
+    $display->panels['two'][1] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
-    $pane->panel = 'center';
+    $pane->panel = 'two';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_blocks-fpo_ad_rectangle';
     $pane->shown = TRUE;
@@ -254,12 +272,12 @@ function usanetwork_home_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 2;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['center'][3] = 'new-5';
+    $display->panels['two'][2] = 'new-5';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_4'] = $handler;
 

@@ -100,14 +100,14 @@ body.usa-social {
         }
     }
     &:hover {
-      background-color: $gray-med-dark;
+      background-color: $gray-med;
     }
     &:hover:after {
       @include breakpoint($bp-social-mid-width) {
         @include cssTriangle(12px, $gray-med, top);
         position: absolute;
         left: 50%;
-        top: 59px;
+        top: 58px;
         margin-left: -12px;
       }
     }
@@ -283,7 +283,7 @@ body.usa-social {
       margin-left:3px;
     }
   }
-  .view-display-id-attachment_1 {
+  .attachment-after .view-usa-shows.view-display-id-attachment_1 {
     .view-header {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
@@ -393,6 +393,9 @@ body.usa-social {
   letter-spacing: 0.05em;
   a {
     color: $gray-med;
+    &:hover {
+      color: $gray-med;
+    }
   }
 }
 
@@ -415,6 +418,10 @@ body.usa-social {
   }
 }
 
+.echo-TwitterIntents-plugin .echo-item-footer {
+  margin-top: 0;
+}
+
 .echo-item-controls .echo-item-control,
 .echo-item-controls a {
   color: $gray-dark;
@@ -425,7 +432,7 @@ body.usa-social {
 
 .echo-item-children {
   padding-left: 77px;
-  padding-right: 77px;
+//  padding-right: 77px;
   .echo-item-container {
     margin-right: 0;
     margin-left: 0;
@@ -445,7 +452,7 @@ input.echo-submit-text {
 }
 
 .echo-item-replyForm {
-  margin: 0 77px;
+  margin: 0 0 0 77px;
   .echo-submit-controls {
     margin-top: 5px;
   }
@@ -459,9 +466,9 @@ input.echo-submit-text {
   position: relative;
   margin-bottom: 2px;
   padding: 8px 0;
-  a:hover {
-    color: $gray-extra-light;
-  }
+//  a:hover {
+//    color: $gray-extra-light;
+//  }
   .echo-item-avatar-wrapper {
     display: inline;
     float: left;
@@ -487,7 +494,7 @@ input.echo-submit-text {
   }
   .echo-item-expandChildren {
     margin-left: 77px;
-    margin-right: 77px;
+    margin-right: 0;
   }
 
 }

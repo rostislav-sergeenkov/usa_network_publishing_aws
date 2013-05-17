@@ -69,10 +69,12 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
+  if(arg(0) == 'social') {
+    drupal_add_js($theme_path . '/javascripts/follow-social.js');
+  }
   $node = menu_get_object();
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
-    drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   // add ios touch icon
   $ios_icon = array(

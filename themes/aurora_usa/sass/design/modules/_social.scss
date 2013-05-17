@@ -190,7 +190,7 @@ body.usa-social {
     color: $gray-extra-light;
     text-transform: uppercase;
     font-family: $headline-reg;
-    font-size: 1.125em;
+    font-size: 18px;
     padding: 16px 12px 11px;
     line-height: 1em;
     margin: 0;
@@ -231,9 +231,11 @@ body.usa-social {
       > div {
         margin: 4px 0 0 11px;
       }
-      h4 {
+      h2, h4 {
         font-size: 14px;
         font-family: $headline-reg;
+        color: $white;
+        text-transform: none;
       }
       .field-name-field-role,
       .field-name-field-usa-actor-name {

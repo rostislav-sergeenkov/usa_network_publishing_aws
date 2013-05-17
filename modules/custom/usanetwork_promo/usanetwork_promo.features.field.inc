@@ -263,10 +263,10 @@ function usanetwork_promo_field_default_fields() {
           'weight' => '11',
         ),
         'home_promo_bspot' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'link_default',
+          'type' => 'link_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -818,6 +818,9 @@ function usanetwork_promo_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(

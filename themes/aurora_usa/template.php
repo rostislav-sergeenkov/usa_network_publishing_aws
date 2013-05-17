@@ -160,9 +160,8 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  *   The name of the template being rendered ("field" in this case.)
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
-  if(isset($vars['element']['#object']->type)) {
-    if(($vars['element']['#object']->type == 'media_gallery')
-      && ($vars['element']['#field_name'] == 'field_media_items')) {
+  if (isset($vars['element']['#object']->type)) {
+    if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#field_name'] == 'field_media_items')) {
       append_cover_to_media($vars);
       // REMOVED in favor of node titles
       // append_count_to_caption($vars);
@@ -170,6 +169,20 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
   }
 
   switch ($vars['element']['#field_name']) {
+    // homepage aspots
+    case 'field_usa_hp_arefs':
+    case 'field_usa_hp_brefs':
+    case 'field_usa_hp_crefs':
+      $vars['classes_array'][] = drupal_html_class('slides');
+    break;
+    case 'field_hp_promos':
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
+      foreach ($vars['items'] as $delta => $item) {
+        $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
+      }
+    break;
+
     case 'field_role':
       if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
         switch ($vars['element']['#view_mode']) {
@@ -417,3 +430,36 @@ function aurora_usa_js_alter(&$js) {
 
 }
 // */
+
+/**
+ * Override of theme_field(); 
+ * see theme_field() for available variables
+ * aspot mobile image
+ */
+function aurora_usa_field__field_usa_aspot_desktop($vars) {
+  $output = '';
+  $filepath = $vars['items'][0]['#item']['uri'];
+  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 960px)"></div>';
+  $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<noscript>';
+  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
+  $output .= '</noscript>';
+
+  return $output;
+}
+
+/**
+ * Override of theme_field(); 
+ * see theme_field() for available variables
+ * aspot mobile image
+ */
+function aurora_usa_field__field_usa_aspot_mobile($vars) {
+  $output = '';
+  $filepath = $vars['items'][0]['#item']['uri'];
+  $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
+  $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '"  data-media="(min-device-pixel-ratio: 2.0)"></div>';
+
+  return $output;
+}

@@ -72,7 +72,7 @@ function aurora_usa_preprocess_page(&$vars) {
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(
-      'src' => $theme_path . '/javascripts/icomoon-lte-ie7.js',
+      'src' => $theme_path . '/javascripts/icomoon-gte-ie7.js',
     ),
     '#prefix' => '<!--[if lte IE 9]>',
     '#suffix' => '</script><![endif]-->',

@@ -107,6 +107,8 @@ function usanetwork_core_enable_modules() {
     'views_load_more',
     'addanother',
     'styleguide',
+    // custom contrib
+    'context_entity_field',
     // USA custom
     'usanetwork',
     'usanetwork_ds',

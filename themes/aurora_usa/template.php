@@ -83,6 +83,10 @@ function aurora_usa_preprocess_page(&$vars) {
     ),
   );
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
+
+  if(arg(2) == 'social' || arg(0) == 'social') {
+     drupal_set_title('');
+  }
 }
 
 /**

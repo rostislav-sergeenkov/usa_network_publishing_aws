@@ -41,6 +41,11 @@ function pub_tv_overrides_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h4',
+        'class' => '',
+      ),
     ),
   );
   $export['node|tv_show|follow_social'] = $ds_fieldsetting;

@@ -131,7 +131,7 @@ body.usa-social {
 
 .usa-social {
   #main {
-    max-width: 1245px;
+    max-width: 1275px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 40px;
@@ -139,6 +139,7 @@ body.usa-social {
     @include breakpoint($bp-social-small-width) {
       width: auto;
       clear: both;
+      padding: 0;
     }
   }
   .tabs {
@@ -445,6 +446,9 @@ input.echo-submit-text {
   margin: 0 77px;
   .echo-submit-controls {
     margin-top: 5px;
+  }
+  .echo-submit-header span {
+    font-size: 12px;
   }
 }
 

@@ -51,6 +51,15 @@ function usanetwork_context_context_default_contexts() {
   $context->description = 'applies to all show related pages';
   $context->tag = 'shows';
   $context->conditions = array(
+    'entity_field' => array(
+      'values' => array(
+        'entity_type' => 'a:9:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;}',
+        'field_name' => 'field_show',
+        'field_value' => '0',
+        'field_empty' => 0,
+        'field_not_empty' => 1,
+      ),
+    ),
     'node' => array(
       'values' => array(
         'tv_episode' => 'tv_episode',

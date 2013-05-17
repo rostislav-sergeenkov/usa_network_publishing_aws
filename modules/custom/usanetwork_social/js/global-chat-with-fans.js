@@ -9,7 +9,7 @@
 			 * For more info on mux, see http://wiki.aboutecho.com/w/page/32433803/API-method-mux
 			 * By Donna Vaughan, May 2, 2013
 			 */
-			var usa_debug_flag = true; // set to false to turn off all console logging
+			var usa_debug_flag = false; // set to true to turn on console logging
 			function usa_debug(msg)
 			{
 				if (typeof console != 'undefined' && usa_debug_flag) {

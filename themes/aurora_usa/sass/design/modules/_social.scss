@@ -2,12 +2,6 @@ body.usa-social {
   overflow-x: hidden;
 }
 
-.usa-social.page-social-sync .region-content {
-  padding: 0;
-  background-color: transparent;
-}
-
-
 .icons-social a {
   color: $black-dark;
   background-color: $gray-light;
@@ -152,11 +146,6 @@ body.usa-social {
       clear: both;
     }
   }
-  .region-content {
-    background-color: $white;
-    padding: 30px 42px;
-  }
-
   .tabs {
     display: none; /* need to ask vino about this */
     .secondary {
@@ -325,11 +314,19 @@ body.usa-social {
 /* chat with fans */
 
 #chat-echo-stream {
+  background-color: $white;
+  padding: 0 42px 30px;
   .echo-item-footer {
     .echo-item-date {
       display: block;
     }
   }
+}
+
+
+#echo-stream {
+  background-color: $white;
+  padding: 30px 42px;
 }
 
 
@@ -482,7 +479,8 @@ body.usa-social {
 #chat-submit-form {
   clear: both;
   overflow: hidden;
-  margin-bottom: 15px;
+  background-color: $white;
+  padding: 30px 42px 0;
   .echo-submit-header span {
     color: $gray-light;
   }

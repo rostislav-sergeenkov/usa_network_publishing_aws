@@ -69,6 +69,15 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
+  $icomoon_ie_fix = array(
+    '#tag' => 'script',
+    '#attributes' => array(
+      'src' => $theme_path . '/javascripts/icomoon-gte-ie7.js',
+    ),
+    '#prefix' => '<!--[if lte IE 9]>',
+    '#suffix' => '</script><![endif]-->',
+  );
+  drupal_add_html_head($icomoon_ie_fix, 'icomoon_ie_fix');
   if(arg(0) == 'social') {
     drupal_add_js($theme_path . '/javascripts/follow-social.js');
   }
@@ -435,7 +444,7 @@ function aurora_usa_js_alter(&$js) {
 // */
 
 /**
- * Override of theme_field(); 
+ * Override of theme_field();
  * see theme_field() for available variables
  * aspot mobile image
  */
@@ -454,7 +463,7 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
 }
 
 /**
- * Override of theme_field(); 
+ * Override of theme_field();
  * see theme_field() for available variables
  * aspot mobile image
  */

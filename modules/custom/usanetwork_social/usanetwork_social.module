@@ -20,7 +20,6 @@ function usanetwork_social_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_social.admin.inc',
   );
-
   // GLOBAL SOCIAL PAGES
   // global social page
   $items['social'] = array(
@@ -178,7 +177,7 @@ function usanetwork_social_show_tab_nav() {
     $alias = drupal_get_path_alias(str_replace('%', arg(1), $link['#link']['path']));
     $items[] = l($link['#link']['title'], $alias);
   }
-  
+
   if (!empty($items)) {
     $output = theme('item_list', array('items' => $items));
   }
@@ -188,24 +187,58 @@ function usanetwork_social_show_tab_nav() {
 
 
 /**
- * Generate the show landing social block 
+ * Generate the show landing social block
  */
 function usanetwork_social_show_landing() {
+  $lang = LANGUAGE_NONE;
   $output = '';
   $arg = arg();
- 
+
   if (isset($arg[1])) {
     $node = node_load($arg[1]);
   }
 
+	if (isset($node->nid))
+	{
+		$showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+		$showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
+		$showAlias = drupal_get_path_alias('node/'.$node->nid);
+		$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+	}
+
   // return empty block if its not a node page
-  if (!isset($node->nid)) {
+  // or if chat with fans is not turned on for this show
+  // or if a show token has not been set for this show
+  if (!isset($node->nid)
+		|| !$showChatPage
+		|| !$showTokenName) {
     return $output;
   }
 
-  $output = 'Join the conversation: placeholder';
+	$query = 'http://api.echoenabled.com/v2/mux';
+/* @TODO: Remove this commented section if they do not want
+// to show a reply to the comment. Initial comps, showed a reply.
+	$queryParams = urlencode('{"id":"search_'.$showTokenName.'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$showTokenName.'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:1 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:1"}');
+*/
+	$queryParams = urlencode('{"id":"search_'.$showTokenName.'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$showTokenName.'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"}');
 
-  return $output;
+	$queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
+	$queryStr = $query.'?'.$queryParams;
+
+	$vars = 'var echoQuery="'.$query.'"; ';
+	$vars .= 'var echoQueryParams = "'.$queryParams.'"; ';
+	$vars .= 'var showUrl = "'.$showUrl.'";';
+	drupal_add_js($vars, array('type' => 'inline'));
+	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
+
+	$output .= '
+		<div id="usanetwork_social_show_homepage_chatter">
+			<div id="usanetwork_social_chatter_title">chatter</div>
+			<div id="usanetwork_social_chatter_body"></div>
+		</div>
+		';
+
+	return $output;
 }
 
 /**
@@ -421,7 +454,7 @@ function usanetwork_social_global_trending() {
 
 	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
+	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }
@@ -720,7 +753,7 @@ function usanetwork_social_trending($node) {
 
 	$query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500px" frameborder="0"></iframe></div>';
+	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }

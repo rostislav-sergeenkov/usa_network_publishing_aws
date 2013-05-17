@@ -185,6 +185,39 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usa_global_videos';
+  $context->description = '';
+  $context->tag = 'global videos page';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'videos' => 'videos',
+        'videos/*' => 'videos/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_video-usa_global_video_show_nav' => array(
+          'module' => 'usanetwork_video',
+          'delta' => 'usa_global_video_show_nav',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('global videos page');
+  $export['usa_global_videos'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usa_leader_reloadable';
   $context->description = 'reloadable iframe leaderboard';
   $context->tag = 'ads';

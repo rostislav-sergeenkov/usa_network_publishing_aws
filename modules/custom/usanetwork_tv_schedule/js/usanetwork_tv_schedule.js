@@ -60,7 +60,7 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       break;
     }
 
-    if (on_now_show == '') {
+    if (on_now_show == '' && tv_schedule != '') {
       for (var i=0; i<tv_schedule.length; i++) {
         if (show_time < tv_schedule[i]['ts']) {
           on_now_show = tv_schedule[i]['link'];
@@ -68,6 +68,8 @@ Drupal.behaviors.usanetwork_tv_schedule = {
         }
         on_now_show = tv_schedule[i]['link'];
       }
+    } else if (tv_schedule == '') {
+      on_now_show = on_now_default_show;
     }
 
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 

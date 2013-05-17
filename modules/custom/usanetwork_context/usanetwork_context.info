@@ -23,6 +23,7 @@ features[context][] = schedule_page
 features[context][] = show_banner
 features[context][] = show_page
 features[context][] = show_social_page
+features[context][] = usa_global_videos
 features[context][] = usa_leader_reloadable
 features[context][] = usa_leader_standard
 features[context][] = usa_leader_video

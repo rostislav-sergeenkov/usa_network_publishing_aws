@@ -11,5 +11,3 @@ function ds_social_follow() {
     'image' => false
   );
 }
-
-?>

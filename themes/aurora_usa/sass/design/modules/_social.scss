@@ -296,6 +296,19 @@ body.usa-social {
       margin-left:3px;
     }
   }
+  .view-display-id-attachment_1 {
+    .view-header {
+      border-top: 1px solid #4B4B4B;
+      font-family: Proxima N W01 Reg,Arial,sans-serif;
+      font-size: 20px;
+      padding: 20px 15px 20px 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .view-content {
+      display: none;
+    }
+  }
 }
 
 

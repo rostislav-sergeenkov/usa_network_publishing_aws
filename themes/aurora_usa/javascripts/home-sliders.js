@@ -17,7 +17,8 @@
             var flexslider = $(element).data('flexslider');
             // Setting the animation direction of the secondary slider to be the 
             // same as the primary slider.
-            // but ONLY if we have more than one liabilities// else the main slider breaks
+            // but ONLY if we have more than one list item
+            // else the main slider breaks
             if ($(this).find('li').length > 1) {
               flexslider.direction = slider.direction;
               flexslider.flexAnimate(target, true);

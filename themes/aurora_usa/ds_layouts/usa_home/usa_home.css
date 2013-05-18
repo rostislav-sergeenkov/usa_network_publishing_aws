@@ -5,6 +5,12 @@
 }
 .featured-carousel {
 }
+
+.tiles {
+  margin: 0 auto 40px;
+  padding-top: 15px;
+}
+
 .tiles .tiles-inner {
   margin-right: 0;
   overflow: hidden;
@@ -49,6 +55,22 @@
   .tiles .a-spot {
     height: 506px;
     width: 1245px;
+  }
+  .tiles .aspot .show-title,
+  .tiles .aspot .show-time {
+    font-size: 44px;
+  }
+  .tiles .aspot .episode-title {
+    font-size: 22px;
+  }
+  .tiles .aspot a .cta {
+    padding-left: 70px;
+    font-size: 18px;
+    line-height: 60px;
+  }
+  .tiles .aspot .cta:before {
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -207,3 +229,5 @@
     padding-top: 0;
   }
 }
+
+

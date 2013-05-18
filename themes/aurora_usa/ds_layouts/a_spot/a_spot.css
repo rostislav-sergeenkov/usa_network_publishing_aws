@@ -16,7 +16,7 @@
   padding-left: 15px;
   text-align: left;
 }
-.aspot a .meta .show-title:after {
+.aspot .show-title:after {
   content: "";
   z-index: 1;
   display: block;
@@ -52,54 +52,54 @@
 .aspot a .meta {
   margin-bottom: 10px;
 }
-.aspot a .meta .show-title,
-.aspot a .meta .show-time,
-.aspot a .meta .episode-title,
-.aspot a .meta .cta {
+.aspot .show-title,
+.aspot .show-time,
+.aspot .episode-title,
+.aspot .cta {
   margin: 0;
   line-height: 1;
 }
-.aspot a .meta .show-title,
-.aspot a .meta .show-time {
+.aspot .show-title,
+.aspot .show-time {
   font-size: 24px;
 }
-.aspot a .meta .show-title,
-.aspot a .meta .show-time,
-.aspot a .meta .cta {
+.aspot .show-title,
+.aspot .show-time,
+.aspot .cta {
   text-transform: uppercase;
 }
-.aspot a .meta .show-time,
-.aspot a .meta .episode-title,
-.aspot a .meta .cta {
+.aspot .show-time,
+.aspot .episode-title,
+.aspot .cta {
   font-family: Proxima N W01 Thin Reg;
   font-weight: normal;
   letter-spacing: 0.05em;
 }
-.aspot a .meta .show-title {
+.aspot .show-title {
   position: relative;
   margin-bottom: 5px;
 }
-.aspot a .meta .show-time {
+.aspot .show-time {
   margin-bottom: 2px;
 }
-.aspot a .meta .episode-title {
+.aspot .episode-title {
   font-size: 12px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot a .meta {
     margin-bottom: 15px;
   }
-  .aspot a .meta .show-title,
-  .aspot a .meta .show-time {
+  .aspot .show-title,
+  .aspot .show-time {
     font-size: 34px;
   }
-  .aspot a .meta .show-title {
+  .aspot .show-title {
     margin-bottom: 5px;
   }
-  .aspot a .meta .show-time {
+  .aspot .show-time {
     margin-bottom: 5px;
   }
-  .aspot a .meta .episode-title {
+  .aspot .episode-title {
     font-size: 18px;
   }
 }
@@ -107,17 +107,17 @@
   .aspot a .meta {
     margin-bottom: 22px;
   }
-  .aspot a .meta .show-title,
-  .aspot a .meta .show-time {
+  .aspot .show-title,
+  .aspot .show-time {
     font-size: 44px;
   }
-  .aspot a .meta .show-title {
+  .aspot .show-title {
     margin-bottom: 10px;
   }
-  .aspot a .meta .show-time {
+  .aspot .show-time {
     margin-bottom: 8px;
   }
-  .aspot a .meta .episode-title {
+  .aspot .episode-title {
     font-size: 22px;
   }
 }
@@ -125,17 +125,17 @@
   .aspot a .meta {
     margin-bottom: 27px;
   }
-  .aspot a .meta .show-title {
+  .aspot .show-title {
     font-size: 54px;
   }
-  .aspot a .meta .show-title {
+  .aspot .show-title {
     margin-bottom: 16px;
   }
-  .aspot a .meta .show-time {
+  .aspot .show-time {
     margin-bottom: 8px;
     font-size: 60px;
   }
-  .aspot a .meta .episode-title {
+  .aspot .episode-title {
     font-size: 32px;
   }
 }
@@ -209,24 +209,24 @@
     height: 80px;
   }
 }
-.aspot .suits a .meta .show-time {
+.aspot .suits .show-time {
   margin-bottom: 0;
   font-size: 27px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .aspot .suits a .meta .show-time {
+  .aspot .suits .show-time {
     margin-bottom: 3px;
     font-size: 37px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .suits a .meta .show-time {
+  .aspot .suits .show-time {
     margin-bottom: 4px;
     font-size: 50px;
   }
 }
 @media (min-width: 1275px) {
-  .aspot .suits a .meta .show-time {
+  .aspot .suits .show-time {
     margin-bottom: 2px;
     font-size: 67px;
   }

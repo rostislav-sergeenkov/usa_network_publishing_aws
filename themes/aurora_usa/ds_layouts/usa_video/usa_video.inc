@@ -13,7 +13,7 @@ function ds_usa_video() {
       'body' => t('body'),
       'ad' => t('ad')
     ),
-    'css' => false,
+    'css' => true,
     'image' => false
   );
 }

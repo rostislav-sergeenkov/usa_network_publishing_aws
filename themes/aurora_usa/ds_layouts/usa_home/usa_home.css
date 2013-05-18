@@ -23,7 +23,7 @@
 .tiles .a-spot a, .tiles .b-spot a, .tiles .c-spot a {
   display: block;
 }
-/*
+
 .tiles .a-spot {
   display: block;
   float: none;
@@ -51,7 +51,7 @@
     width: 1245px;
   }
 }
-*/
+
 
 .tiles .ad {
   height: 50px;

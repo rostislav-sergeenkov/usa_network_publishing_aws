@@ -63,6 +63,7 @@ function aurora_usa_preprocess_html(&$vars) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function aurora_usa_preprocess_page(&$vars) {
+  global $base_path, $base_url;
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   $theme_path = drupal_get_path('theme', 'aurora_usa');

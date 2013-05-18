@@ -13,7 +13,7 @@
         before: function(slider) {
           var target = slider.animatingTo,
             currentSlide = slider.currentSlide;
-            $secondaryslider.each(function (index, element) {
+          $secondaryslider.each(function (index, element) {
             var flexslider = $(element).data('flexslider');
             // Setting the animation direction of the secondary slider to be the 
             // same as the primary slider.

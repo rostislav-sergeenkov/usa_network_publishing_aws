@@ -8,8 +8,8 @@
 }
 
 .carousel {
-//	margin-left: auto !important;
-//	margin-right: auto !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 	.item-list {
 		height: 188px;
 		overflow: hidden;
@@ -22,10 +22,11 @@
 		max-width: 1319px;
 		overflow: hidden;
 		position: relative;
-		padding: 0 30px;
+		padding: 0 15px;
+		padding: 0;
 		@include breakpoint($bp-person-small-width) {
-			padding-left: 37px;
-			padding-right: 37px;
+//			padding-left: 37px;
+//			padding-right: 37px;
 		}
 		&:after, &:before {
 			content: "";
@@ -34,16 +35,15 @@
 			position: absolute;
 			top: 0;
 			width: 50px;
+			z-index: 95;
 		}
 		&:before {
 			@include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
-			left: 5px;
-			z-index: 95;
+			left: 0px;
 		}
 		&:after {
 			@include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
-			right: 5px;
-			z-index: 95;
+			right: 0px;
 		}
 	}
 	ul {
@@ -133,7 +133,7 @@
 	}
 	&.next {
 		left: auto;
-		right: 5px;
+		right: 0;
 	}
 }
 
@@ -160,7 +160,7 @@
 /* show carousel */
 
 #block-views-usa-shows-block-1 {
-	margin-bottom: 24px;
+	margin-bottom: 30px;
 	.view-mode-block_cover_title {
 		position: relative;
 	}

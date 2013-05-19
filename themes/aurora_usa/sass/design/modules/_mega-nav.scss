@@ -254,108 +254,13 @@ $logo-height-med-2: 32px;
   z-index: $ziWall;
 }
 
-// .secondary-nav {
-//   // .non-persistent-c {
-//   //   display: none;
-//   // }
-//   @include breakpoint($bp-menu-switch) {
-//     display: block;
-//     background-color: $gray-dark;
-//     border-top: 1px solid $gray-med-dark;
-//     height: $primary-nav-height-dt - 15px;
-//     padding-left: 128px;
-//     position: relative;
-//     white-space: nowrap;
-//     .non-persistent-c {
-//       display: block;
-//     }
-//     .slide-panel-link {
-//       @include inline-block;
-//       background: none;
-//       border: none;
-//       color: #fff;
-//       line-height: 50px;
-//       padding: 0 19px;
-//       vertical-align: middle;
-//       font-family: $headline-lt;
-//       font-size: 19px;
-//       text-transform: lowercase;
-//       &::selection,
-//       &::-moz-selection {
-//         background: transparent;
-//       }
-//     }
-//     .expandable-menu {
-//       @include inline-block;
-//       border: none;
+//////////////
+// SHOW NAV
+//////////////
 
-//       h1 {
-//         background: none;
-//         line-height: 50px;
-//         padding: 0 19px;
-//         font-family: $headline-lt;
-//         font-size: 19px;
-//         text-transform: lowercase;
-//         color: #fff;
-//         &::selection,
-//         &::-moz-selection {
-//           background: transparent;
-//         }
-
-//         &:after {
-//           content: none;
-//           display: none;
-//           border: none;
-//           // @include use-sprite('subnav-arrow');
-//           // height: image-height(sprite-file($ico-sprites, subnav-arrow));
-//           // width: image-width(sprite-file($ico-sprites, subnav-arrow));
-//           margin-top: 0;
-//           right: auto;
-//           left: 50%;
-//           // margin-left: -(image-width(sprite-file($ico-sprites, subnav-arrow)) / 2);
-//           // top: -(image-height(sprite-file($ico-sprites, subnav-arrow)) - 2px);
-//           z-index: 1;
-//         }
-//       }
-//       &.active-item {
-//         h1 {
-//           background: $gray-med;
-//           &:after {
-//             content: "";
-//             display: block;
-//           }
-//         }
-//       }
-
-//       a {
-//         border: none;
-//         padding: 0;
-//         white-space: nowrap;
-//         float: left;
-//         width: 200px;
-//         line-height: 1.714285714;
-//         font-size: 14px;
-//         color: #b5b5b5;
-//         margin-right: 4px;
-//         &:hover, &:focus {
-//           color: lighten(#b5b5b5, 15%);
-//         }
-//         &:nth-child(3n+1) {
-//           clear: left;
-//         }
-//       }
-
-//       > div {
-//         @include box-shadow(rgba(0,0,0,.7) 0 -20px 40px);
-//         background: #343434;
-//         border-top: 1px solid #444;
-//         left: 0;
-//         padding: 10px 20px 10px 150px;
-//         position: absolute;
-//         bottom: 100%;
-//         width: 100%;
-//         margin-bottom: 1px;
-//       }
-//     }
-//   }
-// }
+#block-usanetwork-blocks-usa-tv-show-menu {
+  outline: 1px solid red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

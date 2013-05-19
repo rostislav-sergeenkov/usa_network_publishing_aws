@@ -22,25 +22,12 @@ body.usa-social {
 }
 
 #block-usanetwork-social-usa-show-social-tab-nav {
-  background-color: $gray-med;
-  border-bottom: 0;
-  padding: 0;
-  margin: 0 auto;
-  width: 100%;
-  z-index: 5;
-  margin-bottom: 30px;
-  @include breakpoint($bp-social-mid-width) {
-    background-color: $gray-dark;
-    border: 1px solid $gray-med-dark;;
-    height: 60px;
-    max-width: 1275px;
-    z-index: 6;
-  }
- .menu-label {
+  @extend %secondary-menu;
+  .menu-label {
     font-size: 20px;
     font-family: $headline-reg;
     color: $white;
-    padding: 15px 14px 13px 20px;
+    padding: 8px 5px 7px 11px;
     text-transform: lowercase;
     font-weight: normal;
   }
@@ -54,14 +41,6 @@ body.usa-social {
   }
   li {
     margin: 0;
-    border: 0;
-    padding: 0;
-    font-family: $headline-thn;
-    font-size: 20px;
-    line-height: 1em;
-    border-bottom: 0;
-    display: block;
-    letter-spacing: 0.05em;
     &:first-child a {
       margin: 0;
     }
@@ -74,11 +53,10 @@ body.usa-social {
     line-height: 1;
     padding: 20px 20px 18px;
     text-transform: lowercase;
-    display: block;
     float: left;
+    letter-spacing: 0.05em;
     height: 100%;
     width: 100%;
-    font-weight: normal;
     text-transform: lowercase;
     position: relative;
     border-top: 1px solid $gray-light;
@@ -100,7 +78,10 @@ body.usa-social {
         }
     }
     &:hover {
-      background-color: $gray-med;
+      background-color: $gray-ultra-med;
+      @include breakpoint($bp-social-mid-width) {
+        background-color: $gray-med;
+      }
     }
     &:hover:after {
       @include breakpoint($bp-social-mid-width) {
@@ -116,7 +97,6 @@ body.usa-social {
       padding-right: 30px;
       width: auto;
       border-top: 0;
-      color: $white;
       border-left: 1px solid $gray-dark;
       border-right: 1px solid $gray-dark;
       &:hover {
@@ -131,12 +111,17 @@ body.usa-social {
 
 .usa-social {
   #main {
-    max-width: 1275px;
+    max-width: 1245px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 30px;
     @include breakpoint($bp-social-small-width) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    @include breakpoint($bp-social-xtra-large-width) {
       width: auto;
       clear: both;
       padding: 0;
@@ -178,7 +163,6 @@ body.usa-social {
       float: left;
       margin-right: -315px;
       padding-right: 315px;
-      max-width: 1275px;
     }
   }
 }
@@ -186,6 +170,7 @@ body.usa-social {
 
 .social-follow-block {
   background-color: $gray-med-dark;
+  //@include background(linear-gradient(top bottom, $gray-dark 0%, $gray-med-dark 100%));
   h2 {
     color: $gray-extra-light;
     text-transform: uppercase;
@@ -313,11 +298,10 @@ body.usa-social {
 
 #chat-echo-stream {
   background-color: $white;
-  padding: 0 42px 30px;
-  .echo-item-footer {
-    .echo-item-date {
-      display: block;
-    }
+  padding: 0 12px 30px;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
   }
 }
 
@@ -325,7 +309,16 @@ body.usa-social {
 
 #echo-stream {
   background-color: $white;
-  padding: 30px 42px;
+  padding: 30px 12px;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+  .echo-item-footer {
+    .echo-item-date {
+      display: none;
+    }
+  }
 }
 
  /* echo stream */
@@ -350,9 +343,17 @@ body.usa-social {
 }
 
 .echo-item-wrapper {
+  margin-left: 0;
+  float: none;
+  width: auto;
+  clear: both;
+  @include breakpoint($bp-social-small-width) {
+    clear: none;
+    margin-left: 58px;
+  }
+  @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
-    float: none;
-    width: auto;
+  }
 }
 
 .echo-item-subwrapper {
@@ -384,13 +385,14 @@ body.usa-social {
   display: none;
 }
 
-
 .echo-item-authorName {
   color: $gray-med;
   font-family: $headline-semi;
   font-size: 17px;
   font-weight: normal;
   letter-spacing: 0.05em;
+  line-height: 19px;
+  word-break: break-all;
   a {
     color: $gray-med;
     &:hover {
@@ -405,17 +407,15 @@ body.usa-social {
   font-size: 12px;
   background: none;
   padding: 0;
-  .echo-item-from a {
-    color: $gray-extra-light;
+  .echo-item-from a,
+  .echo-item-from span {
+    color: $gray-dark;
   }
   .echo-secondaryColor {
    color: $gray-dark;
   }
   line-height: 1.5em;
   margin-top: 0;
-  .echo-item-date {
-    display: none;
-  }
 }
 
 .echo-TwitterIntents-plugin .echo-item-footer {
@@ -431,8 +431,10 @@ body.usa-social {
 }
 
 .echo-item-children {
-  padding-left: 77px;
-//  padding-right: 77px;
+  padding-left: 20px;
+  @include breakpoint($bp-social-echo) {
+    padding-left: 77px;
+  }
   .echo-item-container {
     margin-right: 0;
     margin-left: 0;
@@ -441,18 +443,26 @@ body.usa-social {
   .echo-item-subwrapper {
     margin: 0;
   }
+  .echo-item-content {
+    padding: 0;
+  }
+  .echo-item-wrapper {
+    margin-left: 30px;
+    @include breakpoint($bp-social-mid-width) {
+      margin-left: 45px;
+    }
+  }
 }
 
 input.echo-submit-text {
   padding: 3px;
 }
 
-.echo-item-children .echo-item-content {
-  padding: 0;
-}
-
 .echo-item-replyForm {
-  margin: 0 0 0 77px;
+  margin: 0 0 0 20px;
+  @include breakpoint($bp-social-echo) {
+    margin-left: 77px;
+  }
   .echo-submit-controls {
     margin-top: 5px;
   }
@@ -461,27 +471,39 @@ input.echo-submit-text {
   }
 }
 
+.echo-submit-forcedLoginUserInfoMessage {
+  padding-right: 30px;
+}
+
 .echo-item-content {
   color: $gray-extra-light;
   position: relative;
   margin-bottom: 2px;
-  padding: 8px 0;
-//  a:hover {
-//    color: $gray-extra-light;
-//  }
+  padding: 8px 0 12px;
+  @include breakpoint($bp-social-small-width) {
+    padding-bottom: 8px;
+  }
   .echo-item-avatar-wrapper {
     display: inline;
     float: left;
-    width: 48px;
-    margin: 0;
+    margin-bottom: 10px;
+    @include breakpoint($bp-social-echo) {
+      margin-bottom: 0;
+    }
   }
-  .echo-item-children .echo-item-wrapper {
-    margin-left: 50px;
-  }
-  .echo-item-tweetUserName a {
+
+  .echo-item-tweetUserName {
+    display: block;
+    clear: both;
+    @include breakpoint($bp-social-echo) {
+      display: inline;
+      clear: none;
+    }
+    a {
     color: $gray-med;
     font-family: $headline-semi;
     font-size: 12px;
+    }
   }
   .echo-item-tweetDate a {
     color: $gray-med;
@@ -493,10 +515,12 @@ input.echo-submit-text {
     padding: 0;
   }
   .echo-item-expandChildren {
-    margin-left: 77px;
     margin-right: 0;
+    margin-left: 20px;
+    @include breakpoint($bp-social-echo) {
+      margin-left: 77px;
+    }
   }
-
 }
 
 
@@ -506,7 +530,11 @@ input.echo-submit-text {
   clear: both;
   overflow: hidden;
   background-color: $white;
-  padding: 30px 42px 0;
+  padding: 30px 12px 0;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
   .echo-auth-logged {
     .echo-auth-avatar,
     .echo-auth-name {
@@ -553,17 +581,31 @@ input.echo-submit-text {
   }
 }
 
+.echo-submit-markersContainer,
+.echo-submit-tagsContainer {
+  display: none !important;
+}
+
 .echo-submit-forcedLogin .echo-submit-controls {
   display: none;
 }
 
 /* global chat with fans pgs */
+
+#globalChatWithFans > div:first-child {
+  display: none;
+}
+
 #showList {
   background-color: $white;
-  padding: 30px 42px;
+  padding: 10px 12px 40px;
   color: $gray-extra-light;
   font-family: $headline-reg;
   font-size: 12px;
+  @include breakpoint($bp-social-mid-width) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
   a {
     color: $gray-extra-light;
     &:hover {
@@ -572,17 +614,69 @@ input.echo-submit-text {
   }
   img {
   }
-  h1 {
-    color: $gray-extra-light;
+  h3 {
+    color: $gray-sky;
     font-size: 30px;
-    font-family: $headline-semi;
+    font-family: $headline-reg;
     text-transform: lowercase;
+    margin-bottom: 5px;
 
+  }
+  .go-chat {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background-color: $gray-sky;
+    color: $white;
+    padding: 2px 18px 1px 6px;
+    font-size: 14px;
+    @include breakpoint($bp-social-echo) {
+      top: 11px;
+      font-size: 20px;
+      padding: 6px 22px 5px 8px;
+    }
+    @include breakpoint($bp-social-xtra-large-width) {
+      top: 27px;
+      font-size: 24px;
+    }
+    &:after {
+      @include cssTriangle(5px, $white, left);
+      position: absolute;
+      right: 2px;
+      top: 9px;
+      @include breakpoint($bp-social-echo) {
+         @include cssTriangle(6px, $white, left);
+         top: 11px;
+      }
+    }
+  }
+  .echo-item-from,
+  .echo-item-sourceIcon,
+  .echo-item-date {
+    float: left;
+  }
+  .echo-item-sourceIcon {
+    margin-right: 3px;
+  }
+  .echo-item-footer {
+    @extend %clearfix;
   }
 }
 
+.usanetwork_social_global_show {
+  position: relative;
+  border-bottom: 1px solid $gray-sky;
+  @extend %clearfix;
+  cursor: pointer;
+  padding-bottom: 6px;
+}
 
+/* signin popup */
 #fancybox-wrap {
-  width: 460px !important;
+  left: 0 !important;
   height: 300px !important;
+  width: 460px !important;
+  @include breakpoint($bp-social-small-width) {
+    left: 25% !important;
+  }
 }

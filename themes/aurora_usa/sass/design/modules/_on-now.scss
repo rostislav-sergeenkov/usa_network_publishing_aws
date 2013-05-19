@@ -19,11 +19,11 @@
     height: 100%;
     display: inline;
     &:before {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      margin-left: -2px;
-      width: 1px;
+//      content: "";
+//      display: inline-block;
+//      height: 100%;
+//      margin-left: -2px;
+//      width: 1px;
       @include breakpoint($bp-on-now) {
         vertical-align: middle;
       }
@@ -71,7 +71,7 @@
     white-space: nowrap;
     height: 100%;
   }
-  &:before {
+  &:after {
     content: "";
     display: inline-block;
     height: 100%;

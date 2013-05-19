@@ -1,0 +1,160 @@
+
+
+#block-usanetwork-video-usa-global-video-show-nav {
+  @extend %secondary-menu;
+  &.open {
+    .menu-label {
+      color: $gray-light;
+    }
+  }
+  ul {
+    margin: 0;
+  }
+  .item-list > ul {
+    > li {
+      margin-bottom: 15px;
+      @include breakpoint($bp-social-mid-width) {
+        margin-bottom: 0;
+      }
+      a {
+      }
+      &.first {
+        border-right: $gray-med;
+        > a {
+          width: 100%;
+          border-left: 0;
+          border-right: 1px solid $gray-med-dark;
+          @include breakpoint($bp-social-mid-width) {
+            width: 245px;
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+        @include breakpoint($bp-social-mid-width) {
+          > a:hover {
+            border: 0;
+            border-right: 1px solid $gray-med-dark;
+          }
+          > a:after,
+          > a:hover:after {
+            position: absolute;
+            right: 21px;
+            top: 28px;
+            left: auto;
+            @include cssTriangle(5px, $white, top);
+          }
+          > a:before {
+            position: absolute;
+            right: 20px;
+            left: auto;
+            top: 16px;
+            @include cssTriangle(5px, $white, bottom);
+          }
+        }
+      }
+    }
+  }
+  li {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: $headline-thn;
+    font-size: 20px;
+    line-height: 1em;
+    border-bottom: 0;
+    display: block;
+    letter-spacing: 0.05em;
+    position: relative;
+    width: auto;
+    @include breakpoint($bp-social-mid-width) {
+      > ul {
+        min-width: 246px;
+        position: absolute;
+        top: 58px;
+        border: 1px solid $gray-med-dark;
+        border-top: 0;
+        background-color: $gray-dark;
+        max-height: 300px;
+        overflow-y: auto;
+        width: auto;
+        left: -1px;
+        white-space: nowrap;
+        > li {
+          > a {
+            padding-top: 10px;
+            padding-bottom: 8px;
+            font-size: 14px;
+            float: none;
+            border-top: 1px solid $gray-med;
+            &:hover:after {
+              @include cssTriangle(0, $gray-med, top);
+            }
+          }
+        }
+      }
+    }
+  }
+  a {
+    font-size: 20px;
+    font-family: $headline-reg;
+    color: $white;
+    height: auto;
+    line-height: 1;
+    padding: 20px 20px 18px;
+    text-transform: lowercase;
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-weight: normal;
+    text-transform: lowercase;
+    position: relative;
+    border-top: 1px solid $gray-light;
+    &.active {
+        color: $white;
+        border-bottom: 0;
+        @include breakpoint($bp-social-mid-width) {
+          background-color: $gray-med;
+          color: $gray-extra-light;
+          border-left: 1px solid $gray-med-dark;
+          border-right: 1px solid $gray-med-dark;
+          &:after {
+            @include cssTriangle(12px, $gray-med, top);
+            position: absolute;
+            left: 50%;
+            top: 58px;
+            margin-left: -12px;
+          }
+        }
+    }
+    &:hover {
+      background-color: $gray-med;
+    }
+    &:hover:after {
+      @include breakpoint($bp-social-mid-width) {
+        @include cssTriangle(12px, $gray-med, top);
+        position: absolute;
+        left: 50%;
+        top: 58px;
+        margin-left: -12px;
+      }
+    }
+    @include breakpoint($bp-social-mid-width) {
+      padding-left: 30px;
+      padding-right: 30px;
+      float: left;
+      width: auto;
+      border-top: 0;
+      color: $white;
+      border-left: 1px solid $gray-dark;
+      border-right: 1px solid $gray-dark;
+      &:hover {
+        color: $gray-extra-light;
+        border-left: 1px solid $gray-med-dark;
+        border-right: 1px solid $gray-med-dark;
+      }
+    }
+  }
+
+
+}

@@ -18,6 +18,9 @@ $logo-height-med-2: 32px;
   @include transition-property(left);
   @include transition-duration(300ms);
   @include transition-timing-function(ease-in-out);
+  a {
+    @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
+  }
   [data-menu-position="open"] & {
     left: 258px;
     .primary-nav {
@@ -254,108 +257,151 @@ $logo-height-med-2: 32px;
   z-index: $ziWall;
 }
 
-// .secondary-nav {
-//   // .non-persistent-c {
-//   //   display: none;
-//   // }
-//   @include breakpoint($bp-menu-switch) {
-//     display: block;
-//     background-color: $gray-dark;
-//     border-top: 1px solid $gray-med-dark;
-//     height: $primary-nav-height-dt - 15px;
-//     padding-left: 128px;
-//     position: relative;
-//     white-space: nowrap;
-//     .non-persistent-c {
-//       display: block;
-//     }
-//     .slide-panel-link {
-//       @include inline-block;
-//       background: none;
-//       border: none;
-//       color: #fff;
-//       line-height: 50px;
-//       padding: 0 19px;
-//       vertical-align: middle;
-//       font-family: $headline-lt;
-//       font-size: 19px;
-//       text-transform: lowercase;
-//       &::selection,
-//       &::-moz-selection {
-//         background: transparent;
-//       }
-//     }
-//     .expandable-menu {
-//       @include inline-block;
-//       border: none;
+//////////////
+// SHOW NAV
+//////////////
+#mega-nav {
+  .block {
+    display: inline-block;
+  }
+}
+#block-usanetwork-blocks-usa-tv-show-menu {
+  display: inline-block;
+  font-family: $headline-reg;
+  text-transform: lowercase;
+  font-size: 19px;
+  height: $primary-nav-height-dt - 32px;
+  line-height: $primary-nav-height-dt - 32px;
+  > div {
+    display: inline-block;
+  }
+}
+.tv-show-menu-trigger {
+  color: $blue;
+  margin-right: 8px;
+  padding: 0 1em 0 0.5em;
+  border-right: 1px solid $gray-med;
+  position: relative;
+  &:after {
+    position: absolute;
+    content: $space;
+    @include cssTriangle(14px, $nav-black, bottom);
+    border-top: none;
+    top: -28px;
+    left: 50%;
+    @include transform3d(translateX(-50%));
+    z-index: 105;
+    @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+  }
+}
+#tv-show-menu {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 100%;
+  background-color: $gray-dark;
+  border-top: 1px solid $gray-ultra-med;
+  height: 50px;
+  padding-left: 110px;
+  white-space: nowrap;
+  a {
+    @include link-colors($white, $white, $white, $white, $white);
+    font-size: 22px;
+    line-height: 50px;
+    padding: 0 23px;
+    display: inline-block;
+  }
+  li {
+    margin: 0;
+    display: block;
+  }
+  ul {
+    &, li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+    }
+  }
+  li {
+    .item-list {
+      display: none;
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      width: 100%;
+      padding: 0.5em 50px 1em 110px;
+      background-color: rgba($gray-dark, 0.95);
+      border-top: 1px solid $gray-darker-light;
+      border-bottom: 1px solid $gray-ultra-med;
+      ul {
+        display: block;
+        @include column-count(4);
+        @include column-gap(2em);
+        .ie9 & {
+          li {
+            float: left;
+            width: 25%;
+            margin-right: 1em;
+            overflow: hidden;
+          }
+        }
+      }
+      li {
+        display: block;
+      }
+      a {
+        @include link-colors($gray-darker-light, $gray-darker-light, $gray-darker-light, $gray-darker-light, $gray-darker-light);
+        font-size: 16px;
+        line-height: 16px;
+        display: inline;
+      }
+    }
+    &:hover {
+      > a {
+        position: relative;
+        background-color: $gray-med-dark;
+        &:after {
+          position: absolute;
+          content: $space;
+          @include cssTriangle(14px, $gray-med-dark, bottom);
+          border-top: none;
+          top: -14px;
+          left: 50%;
+          @include transform3d(translateX(-50%));
+          @include filter(drop-shadow($gray-darker-light 0 -1px 0));
+          z-index: 105;
+        }
+      }
+      li {
+        a {
+          background-color: transparent;
+          &:after {
+            display: none;
+          }
+        }
+      }
+      > .item-list {
+        display: block;
+      }
+    }
+  }
+}
 
-//       h1 {
-//         background: none;
-//         line-height: 50px;
-//         padding: 0 19px;
-//         font-family: $headline-lt;
-//         font-size: 19px;
-//         text-transform: lowercase;
-//         color: #fff;
-//         &::selection,
-//         &::-moz-selection {
-//           background: transparent;
-//         }
 
-//         &:after {
-//           content: none;
-//           display: none;
-//           border: none;
-//           // @include use-sprite('subnav-arrow');
-//           // height: image-height(sprite-file($ico-sprites, subnav-arrow));
-//           // width: image-width(sprite-file($ico-sprites, subnav-arrow));
-//           margin-top: 0;
-//           right: auto;
-//           left: 50%;
-//           // margin-left: -(image-width(sprite-file($ico-sprites, subnav-arrow)) / 2);
-//           // top: -(image-height(sprite-file($ico-sprites, subnav-arrow)) - 2px);
-//           z-index: 1;
-//         }
-//       }
-//       &.active-item {
-//         h1 {
-//           background: $gray-med;
-//           &:after {
-//             content: "";
-//             display: block;
-//           }
-//         }
-//       }
 
-//       a {
-//         border: none;
-//         padding: 0;
-//         white-space: nowrap;
-//         float: left;
-//         width: 200px;
-//         line-height: 1.714285714;
-//         font-size: 14px;
-//         color: #b5b5b5;
-//         margin-right: 4px;
-//         &:hover, &:focus {
-//           color: lighten(#b5b5b5, 15%);
-//         }
-//         &:nth-child(3n+1) {
-//           clear: left;
-//         }
-//       }
 
-//       > div {
-//         @include box-shadow(rgba(0,0,0,.7) 0 -20px 40px);
-//         background: #343434;
-//         border-top: 1px solid #444;
-//         left: 0;
-//         padding: 10px 20px 10px 150px;
-//         position: absolute;
-//         bottom: 100%;
-//         width: 100%;
-//         margin-bottom: 1px;
-//       }
-//     }
-//   }
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

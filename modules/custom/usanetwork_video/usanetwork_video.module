@@ -53,8 +53,14 @@ function usanetwork_video_block_view($delta) {
  * Generates the global video show navigation
  */
 function usanetwork_video_global_show_nav() {
-  $items = array(t('all shows'));
+  $items = array();
+  $items[] = array('data' => t('all shows'));
   $lang = LANGUAGE_NONE;
+
+  //TODO: replace the target URL with the correct url after video views creation
+  $items[] = l(t('full episodes'), 'videos/full-episodes'); 
+  $items[] = l(t('whats hot'), 'videos/whats-hot'); 
+
   $query = new EntityFieldQuery();
 
   // Fetch all the video node associated with any show
@@ -79,7 +85,7 @@ function usanetwork_video_global_show_nav() {
         if (isset($show[0]) && !empty($show[0])) {
           $title = $show[0]->field_display_title[$lang][0]['value'];
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
-          $items[] = l($title, $path);
+          $items[0]['children'][] = l($title, $path);
         }
       }
     }

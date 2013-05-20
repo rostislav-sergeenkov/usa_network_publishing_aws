@@ -53,7 +53,7 @@ $border-links: false;
 $link-transitions: false;
 
 // Forms
-$kit-form-defaults: false;
+$kit-form-defaults: true;
 
 // Grid Variables
 // note: set grid system-specific variables in the grid section (06)
@@ -106,9 +106,12 @@ $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
 /* person page breakpoints */
+$bp-person-small-width: 330px;
+$bp-person-mid-two-width: 390px;
 $bp-person-medium-width: 768px;
 $bp-person-gall-width: 704px;
 //$bp-person-share-icon-width: 300px;
+
 
 
 /* social page breakpoints */

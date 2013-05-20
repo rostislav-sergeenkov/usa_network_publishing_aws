@@ -63,16 +63,17 @@ function aurora_usa_preprocess_html(&$vars) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function aurora_usa_preprocess_page(&$vars) {
+  global $base_path, $base_url;
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
-  $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(
-      'src' => $theme_path . '/javascripts/icomoon-gte-ie7.js',
+      'src' => $base_url .'/'. $theme_path . '/javascripts/icomoon-gte-ie7.js',
     ),
     '#prefix' => '<!--[if lte IE 9]>',
     '#suffix' => '</script><![endif]-->',
@@ -121,16 +122,18 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-  switch($vars['block']->bid) {
-    case 'views-usa_shows-block_1':
-      if(arg(2) == 'social' || arg(0) == 'social') {
-        $vars['classes_array'][] = drupal_html_class('carousel');
-      }
-      break;
-    case 'views-usa_cast-block_2':
-    case 'views-usa_shows-block_2':
-      $vars['classes_array'][] = drupal_html_class('social-follow-block');
-      break;
+  if (isset($vars['block']->bid)) {
+    switch($vars['block']->bid) {
+      case 'views-usa_shows-block_1':
+        if(arg(2) == 'social' || arg(0) == 'social') {
+          $vars['classes_array'][] = drupal_html_class('carousel');
+        }
+        break;
+      case 'views-usa_cast-block_2':
+      case 'views-usa_shows-block_2':
+        $vars['classes_array'][] = drupal_html_class('social-follow-block');
+        break;
+    }
   }
 }
 

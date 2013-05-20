@@ -49,6 +49,8 @@
             $('#wall').remove();
           }
       });
+      // Remove dart tag JS so it does not get re-executed and overwrite the page.
+      $('.dart-tag script').remove();
       jPM.on();
 
       // WIDE NAVIGATION

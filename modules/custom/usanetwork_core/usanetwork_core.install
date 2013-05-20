@@ -207,3 +207,11 @@ function usanetwork_core_set_theme() {
   drupal_set_message($ret);
   return $ret;
 }
+
+/**
+ * Enable context_entity_field module
+ */
+function usanetwork_core_update_7100() {
+  $modules = array('context_entity_field');
+  module_enable($modules);
+}

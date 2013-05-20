@@ -6,3 +6,14 @@
     overflow: hidden;
     padding-top: 30px;
 }
+
+
+%secondary-menu {
+  @include breakpoint($bp-social-mid-width) {
+    background-color: $gray-dark;
+    border: 1px solid $gray-med-dark;
+    height: 60px;
+    z-index: 6;
+    margin-bottom: 30px;
+  }
+}

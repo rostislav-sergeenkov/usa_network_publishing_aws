@@ -118,8 +118,8 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_blocks-usa_tv_show_menu' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_tv_show_menu',
-          'region' => 'main_prefix',
-          'weight' => '-10',
+          'region' => 'header',
+          'weight' => '-30',
         ),
         'usanetwork_lyris-newsletter_subscription' => array(
           'module' => 'usanetwork_lyris',
@@ -453,7 +453,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '30',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

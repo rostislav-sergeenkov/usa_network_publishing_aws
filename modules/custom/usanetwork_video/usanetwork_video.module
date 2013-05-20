@@ -101,3 +101,42 @@ function usanetwork_video_global_videos_page() {
   //TODO: re-write this code to determine the correct video node and redirect to that url
   return t('Global Videos Page: Placeholder in the usanetwork_videos module');
 }
+
+
+/**
+ * Helper function that will load file IDs from a video node item's GUID.
+ * we stole this method from pub_theplatform
+ * altered to dynamically pass guid and feed url
+ * we pass these values via our ds layout which lives in the theme 
+ * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
+ *
+ * @TODO: have someone smarter than suzi look at this :)
+ *
+ */
+function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
+  require_once('usanetwork_video_theplatform.api.inc');
+
+  $api = new usaPlatformAPIRequest($feed_url);
+
+  //  Load the file info for the item we're trying to view, and cur us down to the media$content items.
+  $file_info = $api->addField('media:content')->setID($guid)->execute();
+  
+  //  Handle error conditions, we may have nothing come back.
+  if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
+    return False;
+  $file_info = $file_info[0]->{'media$content'};
+
+  //  Run through everything and grab the first video in the feed.
+  foreach($file_info as $file) {
+    // our feed does not have this
+    //if(in_array('Video', $file->{'plfile$assetTypes'}))
+    //  break;
+  }
+
+  //  Extract the file id from the URL
+  list($file_id) = explode('?', $file->{'plfile$url'}); //  The part before the ?
+  $file_id = explode('/', $file_id);  //  Get the parts of the url.
+  $file_id = array_pop($file_id); //  And just last part of the URL's path.
+
+  return $file_id;
+}

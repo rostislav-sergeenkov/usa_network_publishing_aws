@@ -70,6 +70,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
+  drupal_add_js($theme_path . '/javascripts/video-dropdowns.js');
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(
@@ -132,7 +133,11 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
     case 'views-usa_shows-block_2':
       $vars['classes_array'][] = drupal_html_class('social-follow-block');
       break;
-  }
+    case 'usanetwork_video-usa_global_video_show_nav':
+    case 'usanetwork_social-usa_show_social_tab_nav':
+      $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
+      break;
+    }
 }
 
 

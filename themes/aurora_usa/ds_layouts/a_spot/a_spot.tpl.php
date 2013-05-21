@@ -32,7 +32,6 @@ $css = '
 ';
 // ugly is ugly but ugly is working for the moment
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
-drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
 
 ?>
 
@@ -59,12 +58,8 @@ drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill
   </div>
 
   <div data-picture data-alt="" data-class="tile-img">
-    <?php if ($media_mobile): ?>
-      <div class="media-mobile"><?php print $media_mobile; ?></div>
-    <?php endif; ?>
-    <?php if ($media_desktop): ?>
-      <div class="media-desktop"><?php print $media_desktop; ?></div>
-    <?php endif; ?>
+    <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
+    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
   </div>
   
 <?php if ($link || $link !== '&nbsp;'): ?>

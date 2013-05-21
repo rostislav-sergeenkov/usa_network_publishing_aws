@@ -6,7 +6,7 @@
   <div class="asset-img"><?php print $media; ?></div>
   <?php endif; ?>
   
-  <div class="title-overlay">
+  <div class="title-overlay meta">
     <?php if ($title && $title != "&nbsp;"): ?>
       <div class="title"><?php print $title; ?></div>
     <?php endif; ?>

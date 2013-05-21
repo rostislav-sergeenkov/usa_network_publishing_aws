@@ -175,7 +175,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-#logo, .flex-direction-nav a, .icons-social a, .social-follow-block .icons-social a, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-header:after, .carousel-btns .btns, #block-usanetwork-tv-schedule-usa-on-now-block #on-now {
+#logo, .flex-direction-nav a, .icons-social a, .social-follow-block .icons-social a, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer:after, .carousel-btns .btns, #block-usanetwork-tv-schedule-usa-on-now-block #on-now {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -3226,7 +3226,7 @@ body.usa-social {
 .social-follow-block .icons-social .usasocial-fb {
   margin-left: 3px;
 }
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-header {
+.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer {
   position: relative;
   border-top: 1px solid #4b4b4b;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
@@ -3235,7 +3235,7 @@ body.usa-social {
   text-transform: uppercase;
   cursor: pointer;
 }
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-header:after {
+.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer:after {
   content: "Next";
   font-size: 0.55em;
   left: 230px;
@@ -3685,6 +3685,9 @@ input.echo-submit-text {
   height: 188px;
   overflow: hidden;
 }
+.carousel h4 {
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+}
 .carousel .view {
   background: none;
   border: none;
@@ -3766,6 +3769,7 @@ input.echo-submit-text {
   position: relative;
 }
 .carousel .item-content {
+  letter-spacing: .05em;
   font-weight: normal;
   color: white;
   left: 10px;
@@ -3777,9 +3781,6 @@ input.echo-submit-text {
   padding: 8px 18px 8px;
   background: rgba(0, 0, 0, 0.8);
   overflow: hidden;
-}
-.carousel .item-content h4 {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 .carousel .item-content a {
   color: white;
@@ -3819,6 +3820,7 @@ input.echo-submit-text {
   padding: 30px 0;
 }
 #cast-carousel .carousel h4 {
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0;
 }
@@ -3852,7 +3854,6 @@ input.echo-submit-text {
   white-space: nowrap;
   font-size: 16px;
   margin: 0;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 #block-views-usa-shows-block-1 li.active h4:after {
   content: "";

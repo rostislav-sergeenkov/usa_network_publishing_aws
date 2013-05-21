@@ -125,6 +125,7 @@ Drupal.behaviors.chat_with_fans_page = {
 						}
 					]
 				});
+//				$('#chat-echo-stream .echo-item-content .echo-item-data .echo-item-controls .echo-item-control.echo-item-control-Reply.echo-clickable').css('color','red !important').html('Comment');
 			}
 
 			var EchoSubmit;

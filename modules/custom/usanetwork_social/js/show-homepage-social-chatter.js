@@ -9,15 +9,32 @@
  * http://api.echoenabled.com/v2/mux?appkey=prod.usanetwork&requests=[{%22id%22:%22search1%22,%22method%22:%22search%22,%22q%22:%22%28childrenof:http://chatter.usanetwork.com/psych/public/comments%20-state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged%20-user.state:ModeratorBanned%29%20sortOrder:reverseChronological%20safeHTML:true%20itemsPerPage:1%20children:1%22}]&callback=jsonp12345
  */
 (function ($) {
-	Drupal.behaviors.chat_with_fans_page = {
+	Drupal.behaviors.show_homepage_social_chatter = {
 		attach: function(context){
 
-			var usa_debug_flag = false; // set to false to turn off all console logging
+			var usa_debug_flag = false; // set to false to turn off all debugging alerts or console logging
 			var usa_debug = function(msg)
 			{
-				if (typeof console != 'undefined' && usa_debug_flag) {
-					console.log(msg);
+				if (usa_debug_flag)
+				{
+					if (typeof console != 'undefined') {
+						console.log(msg);
+					}
+					else
+					{
+						alert(msg);
+					}
 				}
+			}
+
+			/**
+			 * parseDateStr
+			 * re-converts UTC time to UTC time
+			 * because of a problem with IE8
+			 */
+			function parseDate(str) {
+				var v = str.split(/[-T:]/g);
+				return Date.UTC(v[0],(v[1]-1),v[2],v[3],v[4],v[5].replace('Z', ''),'000');
 			}
 
 			/**
@@ -29,8 +46,9 @@
 				var periods = ["second", "minute", "hour", "day", "week", "month", "year", "decade"];
 				var lengths = [60,60,24,7,4.35,12,10];
 
-				var now = new Date(); // time();
-				var jsTime = new Date(time);
+				var now = new Date();
+//				var parsedTime = parseDate(time);
+				var jsTime = new Date(parseDate(time));
 				var difference = (now - jsTime)/1000;
 
 				for (var j = 0; difference >= lengths[j] && j < (lengths.length-1); j++) {
@@ -44,7 +62,10 @@
 					periods[j] += "s";
 				}
 
-				return difference + " " + periods[j] + " ago";
+				var agoStr = difference + ' ' + periods[j] + ' ago';
+				if (agoStr == '1 day ago') agoStr = 'Yesterday';
+
+				return agoStr;
 			}
 
 			/**

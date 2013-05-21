@@ -202,12 +202,13 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'follow_social';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'See Full Directory';
-  $handler->display->display_options['header']['area']['format'] = 'wysiwyg_basic';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = 'See Full Directory';
+  $handler->display->display_options['footer']['area']['format'] = 'wysiwyg_basic';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';

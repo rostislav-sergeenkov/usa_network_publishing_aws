@@ -22,6 +22,9 @@ body.usa-social {
 }
 
 #block-usanetwork-social-usa-show-social-tab-nav {
+  &.open .menu-label {
+    color: $gray-extra-light;
+  }
   .menu-label {
     font-family: $headline-reg;
     color: $white;

@@ -47,7 +47,6 @@
 				var lengths = [60,60,24,7,4.35,12,10];
 
 				var now = new Date();
-//				var parsedTime = parseDate(time);
 				var jsTime = new Date(parseDate(time));
 				var difference = (now - jsTime)/1000;
 

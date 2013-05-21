@@ -2982,6 +2982,9 @@ body.usa-social {
   padding-left: 8px;
 }
 
+#block-usanetwork-social-usa-show-social-tab-nav.open .menu-label {
+  color: #a3a3a3;
+}
 #block-usanetwork-social-usa-show-social-tab-nav .menu-label {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: white;

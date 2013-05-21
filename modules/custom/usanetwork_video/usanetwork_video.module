@@ -16,7 +16,7 @@ function usanetwork_video_menu() {
     'page callback' => 'usanetwork_video_global_videos_page',
     'access arguments' => array('access content'),
   );
-  
+
   return $items;
 }
 
@@ -58,8 +58,8 @@ function usanetwork_video_global_show_nav() {
   $lang = LANGUAGE_NONE;
 
   //TODO: replace the target URL with the correct url after video views creation
-  $items[] = l(t('full episodes'), 'videos/full-episodes'); 
-  $items[] = l(t('whats hot'), 'videos/whats-hot'); 
+  $items[] = l(t('full episodes'), 'videos/full-episodes');
+  $items[] = l(t('whats hot'), 'videos/whats-hot');
 
   $query = new EntityFieldQuery();
 

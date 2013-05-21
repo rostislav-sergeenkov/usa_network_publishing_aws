@@ -134,8 +134,9 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function prepare($entity, stdClass $row) {
 
-    // Initially save all video nodes set to unpublished.
-    $entity->status = 0;
+    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
+    // field is missing.
+    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -150,32 +151,35 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    module_load_include('inc', 'state_flow', 'state_flow.pages');
+    if (isset($row->{'dcterms:valid'})) {
 
-    global $user;
+      module_load_include('inc', 'state_flow', 'state_flow.pages');
 
-    $user = user_load(1);
+      global $user;
 
-    $state_flow_form = array();
-    $state_flow_form_state = array();
-    $state_flow_form_state['values'] = array(
-      'node_revision' => $entity,
-      'state_flow' => state_flow_load_state_machine($entity),
-      'event' => 'schedule',
-      'event_comment' => t('Scheduling publication date via migration script.'),
-    );
-    state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+      $user = user_load(1);
 
-    $state_flow_schedule_form = array();
-    $state_flow_schedule_form_state = array();
-    $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-    $state_flow_schedule_form_state['values'] = array(
-      'selected-date' => $video_date_data['from'],
-      'event-name' => 'schedule',
-      'nid' => $entity->nid,
-      'vid' => $entity->vid,
-    );
-    state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      $state_flow_form = array();
+      $state_flow_form_state = array();
+      $state_flow_form_state['values'] = array(
+        'node_revision' => $entity,
+        'state_flow' => state_flow_load_state_machine($entity),
+        'event' => 'schedule',
+        'event_comment' => t('Scheduling publication date via migration script.'),
+      );
+      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+
+      $state_flow_schedule_form = array();
+      $state_flow_schedule_form_state = array();
+      $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
+      $state_flow_schedule_form_state['values'] = array(
+        'selected-date' => $video_date_data['from'],
+        'event-name' => 'schedule',
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+      );
+      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+    }
   }
 
   public function postRollback() {
@@ -329,8 +333,9 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public function prepare($entity, stdClass $row) {
 
-    // Initially save all video nodes set to unpublished.
-    $entity->status = 0;
+    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
+    // field is missing.
+    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -345,32 +350,35 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    module_load_include('inc', 'state_flow', 'state_flow.pages');
+    if (isset($row->{'dcterms:valid'})) {
 
-    global $user;
+      module_load_include('inc', 'state_flow', 'state_flow.pages');
 
-    $user = user_load(1);
+      global $user;
 
-    $state_flow_form = array();
-    $state_flow_form_state = array();
-    $state_flow_form_state['values'] = array(
-      'node_revision' => $entity,
-      'state_flow' => state_flow_load_state_machine($entity),
-      'event' => 'schedule',
-      'event_comment' => t('Scheduling publication date via migration script.'),
-    );
-    state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+      $user = user_load(1);
 
-    $state_flow_schedule_form = array();
-    $state_flow_schedule_form_state = array();
-    $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-    $state_flow_schedule_form_state['values'] = array(
-      'selected-date' => $video_date_data['from'],
-      'event-name' => 'schedule',
-      'nid' => $entity->nid,
-      'vid' => $entity->vid,
-    );
-    state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      $state_flow_form = array();
+      $state_flow_form_state = array();
+      $state_flow_form_state['values'] = array(
+        'node_revision' => $entity,
+        'state_flow' => state_flow_load_state_machine($entity),
+        'event' => 'schedule',
+        'event_comment' => t('Scheduling publication date via migration script.'),
+      );
+      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+
+      $state_flow_schedule_form = array();
+      $state_flow_schedule_form_state = array();
+      $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
+      $state_flow_schedule_form_state['values'] = array(
+        'selected-date' => $video_date_data['from'],
+        'event-name' => 'schedule',
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+      );
+      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+    }
   }
 
   public function postRollback() {

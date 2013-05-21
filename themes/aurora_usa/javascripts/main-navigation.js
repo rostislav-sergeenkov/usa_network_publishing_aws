@@ -38,6 +38,15 @@
                 .parent()
                   .addClass('expandable')
                   .addClass('expandable-menu');
+            $show_menu = $('#block-usanetwork-blocks-usa-tv-show-menu').clone();
+            if ($show_menu.length > 0) {
+              $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
+              $show_links = $show_menu.find('#tv-show-menu');
+              $new_show_menu = $('<h1 class="menu-title"></h1>').html($show_trigger);
+              $new_show_menu.append($show_links);
+              // @todo - assemble the rest of the links from $show_menu
+              $('#jPanelMenu-menu').prepend($new_show_menu);
+            }
             $('.jPanelMenu-panel').css('min-height', $(window).height());
           },
           beforeOpen: function() {

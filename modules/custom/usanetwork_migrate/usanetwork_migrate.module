@@ -150,6 +150,10 @@ function _usanetwork_migrate_attach_video_tv_show_reference(&$entity, $term_hier
  */
 function usanetwork_migrate_cron() {
 
+  if (!variable_get('usanetwork_migrate_run_cron', FALSE)) {
+    return;
+  }
+
   // Process nodes scheduled to be unpublished in field_publish_date.
   $results = usanetwork_migrate_get_scheduled_nodes();
   $queue = DrupalQueue::get('usanetwork_migrate');

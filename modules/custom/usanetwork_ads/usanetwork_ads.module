@@ -117,6 +117,7 @@ function _usanetwork_ads_get_node_dart_settings($node) {
   $node_dart_settings = array(
     'sect' => NULL,
     'sub' => NULL,
+    'sub2' => NULL,
   );
 
   $dart_ad_settings = variable_get('usanetwork_ads_dart_settings', array());
@@ -132,10 +133,13 @@ function _usanetwork_ads_get_node_dart_settings($node) {
     }
   }
 
-  $current_menu_item = menu_get_item();
   $current_menu_object = menu_get_object();
 
   // Set "sub" value.
+  if ($current_menu_item['path'] == 'node/%' && is_object($current_menu_object) &&
+      isset($current_menu_object->nid) && $node->nid == $current_menu_object->nid) {
+    $node_dart_settings['sub'] = 'home';
+  }
   if ($node->type == 'usa_video' || $node->type == 'usa_tve_video') {
     $node_dart_settings['sub'] = 'video';
   }
@@ -148,11 +152,36 @@ function _usanetwork_ads_get_node_dart_settings($node) {
   else if ($node->type == 'person') {
     $node_dart_settings['sub'] = 'bios';
   }
+  else {
+    $social_menu_paths = array(
+      'node/%node/social',
+      'node/%node/social/latest',
+      'node/%node/social/chat-with-fans',
+      'node/%node/social/tweets',
+    );
+    if (in_array($current_menu_item['path'], $social_menu_paths)) {
+      $node_dart_settings['sub'] = 'social';
+    }
+    else if ($current_menu_item['path'] == 'node/%node/social/sync') {
+      $node_dart_settings['sub'] = 'sync';
+    }
 
-  // TODO: Check nid against catchall nodes and set "sub" accordingly. (e.g. games)
-  // TODO: Check menu path against custom paths and set "sub" accordingly. (e.g. social, sync)
 
-  // TODO: Check menu path against custom paths and set "sub2" accordingly. (e.g. buzz, chatter, twitter)
+    // TODO: Check nid against catchall nodes and set "sub" accordingly. (e.g. games)
+
+
+  }
+
+  // Set "sub2" value.
+  if ($current_menu_item['path'] == 'node/%node/social/latest') {
+    $node_dart_settings['sub2'] = 'buzz';
+  }
+  else if ($current_menu_item['path'] == 'node/%node/social/chat-with-fans') {
+    $node_dart_settings['sub2'] = 'chatter';
+  }
+  else if ($current_menu_item['path'] == 'node/%node/social/tweets') {
+    $node_dart_settings['sub2'] = 'twitter';
+  }
 
   return $node_dart_settings;
 }
@@ -172,12 +201,29 @@ function usanetwork_ads_preprocess_page(&$variables) {
   else if (isset($variables['node'])) {
     $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($variables['node']);
   }
+  else {
+    $current_menu_item = menu_get_item();
+    $social_menu_paths = array(
+      'social',
+      'social/trending',
+      'social/chat-with-fans',
+      'social/tweets',
+    );
+    if (in_array($current_menu_item['path'], $social_menu_paths)) {
+      $usa_dart_js_settings['USA']['DART']['values']['sub'] = 'social';
+    }
+    else if ($current_menu_item['path'] == 'social/sync') {
+      $usa_dart_js_settings['USA']['DART']['values']['sub'] = 'sync';
+    }
+  }
 
   // Ensure JS settings values.
   $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sect']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sect'] : 'other';
   $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sub'] : '';
+  $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2']) ?
+      $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
 
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');

@@ -708,12 +708,8 @@ function usanetwork_promo_field_default_fields() {
         ),
         'home_promo' => array(
           'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'home_promo_bspot' => array(

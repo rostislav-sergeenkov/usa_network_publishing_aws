@@ -5,3 +5,138 @@
  */
 
 include_once 'usanetwork_video.features.inc';
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_video_menu() {
+  // global videos page
+  $items['videos'] = array(
+    'title' => t('Videos'),
+    'page callback' => 'usanetwork_video_global_videos_page',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_video_block_info() {
+  $blocks = array();
+  $blocks['usa_global_video_show_nav'] = array(
+    'info' => t('USA: globla video show navigation'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_video_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_global_video_show_nav':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_video_global_show_nav();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Generates the global video show navigation
+ */
+function usanetwork_video_global_show_nav() {
+  $items = array();
+  $items[] = array('data' => t('all shows'));
+  $lang = LANGUAGE_NONE;
+
+  //TODO: replace the target URL with the correct url after video views creation
+  $items[] = l(t('full episodes'), 'videos/full-episodes');
+  $items[] = l(t('whats hot'), 'videos/whats-hot');
+
+  $query = new EntityFieldQuery();
+
+  // Fetch all the video node associated with any show
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $videos = entity_load('node', array_keys($result['node']));
+
+    $nids = array();
+    foreach ($videos as $video) {
+      // Get all the unique tv shows nodes
+      if (!in_array($video->field_show[$lang][0]['target_id'], $nids)) {
+        $nids[] = $video->field_show[$lang][0]['target_id'];
+        $show = array_values(entity_load('node', array($video->field_show[$lang][0]['target_id'])));
+
+        // Add all the published tv show nodes
+        if (isset($show[0]) && !empty($show[0])) {
+          $title = $show[0]->field_display_title[$lang][0]['value'];
+          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
+          $items[0]['children'][] = l($title, $path);
+        }
+      }
+    }
+  }
+
+  return theme('item_list', array('items' => $items));
+}
+
+/**
+ * Renders the global video page
+ */
+function usanetwork_video_global_videos_page() {
+  //TODO: re-write this code to determine the correct video node and redirect to that url
+  return t('Global Videos Page: Placeholder in the usanetwork_videos module');
+}
+
+
+/**
+ * Helper function that will load file IDs from a video node item's GUID.
+ * we stole this method from pub_theplatform
+ * altered to dynamically pass guid and feed url
+ * we pass these values via our ds layout which lives in the theme 
+ * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
+ *
+ * @TODO: have someone smarter than suzi look at this :)
+ *
+ */
+function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
+  require_once('usanetwork_video_theplatform.api.inc');
+
+  $api = new usaPlatformAPIRequest($feed_url);
+
+  //  Load the file info for the item we're trying to view, and cur us down to the media$content items.
+  $file_info = $api->addField('media:content')->setID($guid)->execute();
+  
+  //  Handle error conditions, we may have nothing come back.
+  if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
+    return False;
+  $file_info = $file_info[0]->{'media$content'};
+
+  //  Run through everything and grab the first video in the feed.
+  foreach($file_info as $file) {
+    // our feed does not have this
+    //if(in_array('Video', $file->{'plfile$assetTypes'}))
+    //  break;
+  }
+
+  //  Extract the file id from the URL
+  list($file_id) = explode('?', $file->{'plfile$url'}); //  The part before the ?
+  $file_id = explode('/', $file_id);  //  Get the parts of the url.
+  $file_id = array_pop($file_id); //  And just last part of the URL's path.
+
+  return $file_id;
+}

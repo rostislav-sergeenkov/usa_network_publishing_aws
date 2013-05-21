@@ -8,11 +8,14 @@
 }
 
 .carousel {
-//	margin-left: auto !important;
-//	margin-right: auto !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 	.item-list {
 		height: 188px;
 		overflow: hidden;
+	}
+	h4 {
+		font-family: $headline-semi;
 	}
 	.view {
 		background: none;
@@ -22,10 +25,11 @@
 		max-width: 1319px;
 		overflow: hidden;
 		position: relative;
-		padding: 0 30px;
+		padding: 0 15px;
+		padding: 0;
 		@include breakpoint($bp-person-small-width) {
-			padding-left: 37px;
-			padding-right: 37px;
+//			padding-left: 37px;
+//			padding-right: 37px;
 		}
 		&:after, &:before {
 			content: "";
@@ -34,16 +38,15 @@
 			position: absolute;
 			top: 0;
 			width: 50px;
+			z-index: 95;
 		}
 		&:before {
-			@include background(linear-gradient(left center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
-			left: 5px;
-			z-index: 95;
+			@include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
+			left: 0px;
 		}
 		&:after {
-			@include background(linear-gradient(right center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
-			right: 5px;
-			z-index: 95;
+			@include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
+			right: 0px;
 		}
 	}
 	ul {
@@ -91,6 +94,7 @@
 		position: relative;
 	}
 	.item-content {
+		letter-spacing: .05em;
 		font-weight: normal;
 		color: $white;
 		left: 10px;
@@ -102,9 +106,6 @@
 		padding: 8px 18px 8px;
 		background: $black-trans;
 		overflow: hidden;
-		h4 {
-			font-family: $headline-semi;
-		}
 		a {
 			color: $white;
 		}
@@ -133,7 +134,7 @@
 	}
 	&.next {
 		left: auto;
-		right: 5px;
+		right: 0;
 	}
 }
 
@@ -147,6 +148,7 @@
 	padding: 30px 0;
 	.carousel {
 		h4 {
+			font-family: $headline-semi;
 			font-size: 16px;
 			margin: 0;
 		}
@@ -160,10 +162,7 @@
 /* show carousel */
 
 #block-views-usa-shows-block-1 {
-	background-color: $black;
-	border: 1px solid $gray-dark;
-	border-left: 0;
-	border-right: 0;
+	margin-bottom: 30px;
 	.view-mode-block_cover_title {
 		position: relative;
 	}
@@ -186,7 +185,6 @@
 		white-space: nowrap;
 		font-size: 16px;
 		margin: 0;
-		font-family: $headline-semi;
 	}
 	li.active h4 {
 		&:after {

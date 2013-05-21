@@ -113,17 +113,63 @@ function usanetwork_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__usa_tve_video';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => TRUE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'admin_reference_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promoted_content' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
@@ -136,17 +182,63 @@ function usanetwork_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__usa_video';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => TRUE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'admin_reference_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promoted_content' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
@@ -246,7 +338,7 @@ function usanetwork_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_theplatform_mpx_player_url';
-  $strongarm->value = '';
+  $strongarm->value = 'http://player.theplatform.com/p/OyMl-B/f_h1HWlNhYtQ';
   $export['usanetwork_theplatform_mpx_player_url'] = $strongarm;
 
   $strongarm = new stdClass();

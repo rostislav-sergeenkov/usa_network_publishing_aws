@@ -522,7 +522,42 @@ function usanetwork_social_global_chat_with_fans() {
  * Menu callback of social global twitter page
  */
 function usanetwork_social_global_twitter() {
-  return t('Global Social Twitter Page: Placeholder');
+  $output = '';
+
+  $tokens = array();
+
+  $tokens['[CHILDRENOF]'] = variable_get('usanetwork_social_twitter_childrenof', '');
+  $tokens['[FEED]'] = variable_get('usanetwork_social_twitter_feed', '');
+  $tokens['[STATE]'] = variable_get('usanetwork_social_twitter_state', '');
+  $tokens['[SOURCE]'] = variable_get('usanetwork_social_twitter_source', '');
+  $tokens['[MARKERS]'] = variable_get('usanetwork_social_twitter_markers', '');
+  $tokens['[TAGS]'] = variable_get('usanetwork_social_twitter_tags', '');
+  $tokens['[SORTORDER]'] = variable_get('usanetwork_social_twitter_sortorder', '');
+  $tokens['[SAFEHTML]'] = variable_get('usanetwork_social_twitter_safehtml', '');
+  $tokens['[ITEMSPERPAGE]'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
+  $tokens['[CHILDREN]'] = variable_get('usanetwork_social_twitter_children', '');
+
+  $tokens['[PATH]'] = variable_get('usanetwork_social_global_twitter_path', '');
+
+  // eql template
+  $eql_template = variable_get('usanetwork_social_global_twitter_echo_query_template', '');
+
+  $eql = str_replace(array_keys($tokens), array_values($tokens), $eql_template);
+  $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
+
+  $vars = 'var echoAppKey = "' . $echoAppKey . '";';
+  $vars .= 'var twitterEQL = "' . $eql . '"';
+  drupal_add_js($vars, array('type' => 'inline'));
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
+  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
+
+  $output .= '<div id="echo-stream">&nbsp;</div>';
+
+  return $output;
 }
 
 /**

@@ -28,7 +28,7 @@
 			 * getKeys
 			 * returns a list of index keys for an object
 			 */
-			function getKeys(obj)
+			var getKeys = function(obj)
 			{
 				 var keys = [];
 				 for(var key in obj){
@@ -82,7 +82,7 @@
 			 * processes it, creating and returning an array
 			 * called showData.
 			 */
-			function processGlobalChatWithFansData(data)
+			var processGlobalChatWithFansData = function(data)
 			{
 				if (typeof data == "object")
 				{
@@ -131,21 +131,47 @@
 			 * and inserts it into html that is then
 			 * inserted into div#showList
 			 */
-			function outputGlobalChatWithFans(showData)
+			var outputGlobalChatWithFans = function(showData)
 			{
-				var html = "";
+				var html = '';
 				for (var show in showData) {
 					var showName = showArray[show][0];
 					var showUrlPath = showArray[show][1];
-					html += "<a href=\"/"+showUrlPath+"/social/chat-with-fans\">"+
-						"<h1>"+showName+"</h1>"+
-						"<div>"+
-							"<img src=\""+showData[show]["avatar"]+"\">"+
-							"<div class=\"comment\">"+showData[show]["comment"]+"</div>"+
-							"<div class=\"author\">By "+showData[show]["actor"]+"</div>"+
-							"<div class=\"postdate\">"+showData[show]["timeStr"]+"</div>"+
-						"</div>"+
-					"</a>\n";
+					var avatar = (typeof showData[show]["avatar"] != 'undefined' && showData[show]["avatar"] != '') ? showData[show]["avatar"] : 'http://cdn.echoenabled.com/images/avatar-default.png';
+
+					html += '<div class="usanetwork_social_global_show" onclick="javascript:window.location.href=\'/'+showUrlPath+'/social/chat-with-fans\'">'+
+							'<div class="usanetwork_social_global_comment">'+
+								'<h3>'+showName.toLowerCase()+'</h3>'+
+								'<div class="echo-item-content">'+
+									'<div class="echo-item-avatar-wrapper">'+
+										'<div class="echo-item-avatar">'+
+											'<img src="'+avatar+'" width="48" />'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-item-wrapper echo-item-wrapper-root">'+
+										'<div class="echo-item-subwrapper">'+
+											'<div class="echo-item-frame">'+
+												'<div class="author echo-item-authorName echo-linkColor">'+showData[show]["actor"]+'</div>'+
+												'<div class="echo-clear"></div>'+
+												'<div class="comment echo-item-data">'+
+													'<div class="echo-item-body">'+
+														'<span class="echo-item-text">'+showData[show]["comment"]+'</span>'+
+													'</div>'+
+												'</div>'+
+												'<div class="echo-item-footer">'+
+													'<img class="echo-item-sourceIcon echo-clickable" style="display: block" src="http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif" />'+
+													'<div class="echo-item-date">'+showData[show]["timeStr"]+'</div>'+
+													'<div class="echo-item-from">&nbsp;from&nbsp;usanetwork</div>'+
+													'<div class="echo-clear"></div>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-clear"></div>'+
+								'</div>'+
+							'</div>'+
+							'<div class="go-chat">go chat</div>'+
+						'</div>'+"\n";
 				}
 				jQuery('#showList').html(html);
 			}
@@ -157,7 +183,7 @@
 			 * If successful, it processes the data
 			 * and inserts it into div#showList.
 			 */
-			function getGlobalChatWithFansData()
+			var getGlobalChatWithFansData = function()
 			{
 				jQuery.ajax({
 					url: echoQuery,
@@ -177,6 +203,7 @@
 
 			// Begin processing the Echo mux query
 			getGlobalChatWithFansData();
+
 
 
 		}

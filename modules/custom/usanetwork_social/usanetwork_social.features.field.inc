@@ -56,7 +56,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -75,7 +75,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -173,7 +173,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -192,7 +192,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -290,7 +290,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -309,7 +309,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -407,7 +407,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -426,7 +426,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -524,7 +524,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -543,7 +543,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -642,7 +642,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -661,7 +661,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -759,7 +759,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -778,7 +778,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -876,7 +876,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -895,7 +895,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -993,7 +993,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1012,7 +1012,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1110,7 +1110,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1129,7 +1129,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1227,7 +1227,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1246,7 +1246,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1344,7 +1344,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1363,7 +1363,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1461,7 +1461,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1480,7 +1480,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1579,7 +1579,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1598,7 +1598,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1697,7 +1697,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1716,7 +1716,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -1801,7 +1801,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -1813,7 +1813,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1884,20 +1884,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 56,
+          'weight' => '56',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1966,20 +1966,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 52,
+          'weight' => '52',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2055,7 +2055,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -2074,7 +2074,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -2157,7 +2157,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -2167,7 +2167,7 @@ function usanetwork_social_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 34,
+          'weight' => '34',
         ),
         'follow_social' => array(
           'label' => 'hidden',
@@ -2280,20 +2280,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 54,
+          'weight' => '54',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2374,20 +2374,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 55,
+          'weight' => '55',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2468,20 +2468,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 50,
+          'weight' => '50',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2558,20 +2558,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 53,
+          'weight' => '53',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2652,20 +2652,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 51,
+          'weight' => '51',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2749,7 +2749,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -2768,7 +2768,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -2866,7 +2866,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -2885,7 +2885,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -2983,7 +2983,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3002,7 +3002,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3100,7 +3100,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3119,7 +3119,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3217,7 +3217,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3236,7 +3236,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3334,7 +3334,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3353,7 +3353,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3451,7 +3451,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3470,7 +3470,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3568,7 +3568,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3587,7 +3587,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3685,7 +3685,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3704,7 +3704,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3802,7 +3802,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3821,7 +3821,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -3919,7 +3919,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -3938,7 +3938,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -4036,7 +4036,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -4055,7 +4055,7 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'above',
@@ -4147,20 +4147,21 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 45,
+          'weight' => '45',
         ),
         'follow_social' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4246,20 +4247,21 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 46,
+          'weight' => '46',
         ),
         'follow_social' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4345,20 +4347,21 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 47,
+          'weight' => '47',
         ),
         'follow_social' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4444,20 +4447,21 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 44,
+          'weight' => '44',
         ),
         'follow_social' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'link_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4542,20 +4546,20 @@ function usanetwork_social_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 31,
+          'weight' => '31',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

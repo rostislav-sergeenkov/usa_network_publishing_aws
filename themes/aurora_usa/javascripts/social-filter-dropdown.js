@@ -24,15 +24,13 @@
         social_dropdown_class_toggle();
       });
       function social_dropdown_class_toggle() {
-        $drop_elements = $('#block-usanetwork-social-usa-show-social-tab-nav');
+        $drop_elements = $('#block-usanetwork-social-usa-show-social-tab-nav.usa-secondary-menu');
         $menu = $('#block-usanetwork-social-usa-show-social-tab-nav .menu-label');
-        if ($drop_elements.css("z-index") == "6" ){
+        if ($drop_elements.css("font-size") == "20px" ){
           $menu.hide();
-          console.log('no');
           $drop_elements.removeClass('filter-dropdown');
         } else {
           $menu.show();
-          console.log('yes');
           $drop_elements.addClass('filter-dropdown');
         }
       }

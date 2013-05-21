@@ -50,7 +50,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -64,13 +71,12 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'figcaption',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'body',
       'label' => 'Body',
       'required' => 0,
       'settings' => array(
         'display_summary' => 1,
-        'exclude_cv' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -86,86 +92,6 @@ function usanetwork_video_field_default_fields() {
         ),
         'type' => 'text_textarea_with_summary',
         'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-usa_tve_video-field_air_date'.
-  $fields['node-usa_tve_video-field_air_date'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_air_date',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'usa_tve_video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 9,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
-      'field_name' => 'field_air_date',
-      'label' => 'Air Date',
-      'required' => 0,
-      'settings' => array(
-        'exclude_cv' => FALSE,
-        'linkit' => array(
-          'button_text' => 'Search',
-          'enable' => 0,
-          'profile' => '',
-        ),
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-          'soft_length_limit' => '',
-          'soft_length_minimum' => '',
-          'soft_length_style_select' => 0,
-        ),
-        'type' => 'text_textfield',
-        'weight' => '9',
       ),
     ),
   );
@@ -210,7 +136,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => '6',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -221,12 +154,11 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_episode_number',
       'label' => 'Episode #',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -291,7 +223,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 13,
+          'weight' => '13',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -317,7 +255,7 @@ function usanetwork_video_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '10',
       ),
     ),
   );
@@ -368,7 +306,13 @@ function usanetwork_video_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => 12,
+          'weight' => '12',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -403,7 +347,7 @@ function usanetwork_video_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -448,7 +392,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 10,
+          'weight' => '10',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -483,7 +433,7 @@ function usanetwork_video_field_default_fields() {
           'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '9',
       ),
     ),
   );
@@ -528,7 +478,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 7,
+          'weight' => '7',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -539,12 +496,11 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_season_id',
       'label' => 'Season #',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -600,6 +556,9 @@ function usanetwork_video_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -625,7 +584,16 @@ function usanetwork_video_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 1,
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -712,7 +680,13 @@ function usanetwork_video_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 11,
+          'weight' => '11',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -745,6 +719,165 @@ function usanetwork_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-usa_tve_video-field_video_air_date'.
+  $fields['node-usa_tve_video-field_video_air_date'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_air_date',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 'hour',
+          'minute' => 'minute',
+          'month' => 'month',
+          'second' => 'second',
+          'year' => 'year',
+        ),
+        'timezone_db' => 'UTC',
+        'todate' => '',
+        'tz_handling' => 'utc',
+      ),
+      'translatable' => '0',
+      'type' => 'datestamp',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usa_tve_video',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => 14,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_video_air_date',
+      'label' => 'Air Date',
+      'required' => 0,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'same',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => 15,
+          'input_format' => 'm/d/Y - H:i:s',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'text_parts' => array(),
+          'year_range' => '-3:+3',
+        ),
+        'type' => 'date_text',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-usa_tve_video-field_video_duration'.
+  $fields['node-usa_tve_video-field_video_duration'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_duration',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usa_tve_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 15,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_video_duration',
+      'label' => 'Duration',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
         'weight' => '12',
       ),
     ),
@@ -790,7 +923,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -870,7 +1010,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -950,7 +1096,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 4,
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1033,7 +1185,13 @@ function usanetwork_video_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 5,
+          'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1044,14 +1202,13 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'figure',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_video_thumbnail',
       'label' => 'video_thumbnail',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
@@ -1116,7 +1273,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1130,13 +1294,12 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'figcaption',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'body',
       'label' => 'Body',
       'required' => 0,
       'settings' => array(
         'display_summary' => 1,
-        'exclude_cv' => FALSE,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1152,86 +1315,6 @@ function usanetwork_video_field_default_fields() {
         ),
         'type' => 'text_textarea_with_summary',
         'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-usa_video-field_air_date'.
-  $fields['node-usa_video-field_air_date'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_air_date',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'usa_video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 8,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
-      'field_name' => 'field_air_date',
-      'label' => 'Air Date',
-      'required' => 0,
-      'settings' => array(
-        'exclude_cv' => FALSE,
-        'linkit' => array(
-          'button_text' => 'Search',
-          'enable' => 0,
-          'profile' => '',
-        ),
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-          'soft_length_limit' => '',
-          'soft_length_minimum' => '',
-          'soft_length_style_select' => 0,
-        ),
-        'type' => 'text_textfield',
-        'weight' => '9',
       ),
     ),
   );
@@ -1276,7 +1359,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => '6',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1287,12 +1377,11 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_episode_number',
       'label' => 'Episode #',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -1357,7 +1446,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 12,
+          'weight' => '12',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1383,7 +1478,7 @@ function usanetwork_video_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '10',
       ),
     ),
   );
@@ -1434,7 +1529,13 @@ function usanetwork_video_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => 11,
+          'weight' => '11',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1469,7 +1570,7 @@ function usanetwork_video_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -1514,7 +1615,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '9',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1549,7 +1656,7 @@ function usanetwork_video_field_default_fields() {
           'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '9',
       ),
     ),
   );
@@ -1594,7 +1701,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 7,
+          'weight' => '7',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1605,12 +1719,11 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_season_id',
       'label' => 'Season #',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -1666,6 +1779,9 @@ function usanetwork_video_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -1691,7 +1807,16 @@ function usanetwork_video_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 1,
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1778,7 +1903,13 @@ function usanetwork_video_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 10,
+          'weight' => '10',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1811,6 +1942,165 @@ function usanetwork_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-usa_video-field_video_air_date'.
+  $fields['node-usa_video-field_video_air_date'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_air_date',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 'hour',
+          'minute' => 'minute',
+          'month' => 'month',
+          'second' => 'second',
+          'year' => 'year',
+        ),
+        'timezone_db' => 'UTC',
+        'todate' => '',
+        'tz_handling' => 'utc',
+      ),
+      'translatable' => '0',
+      'type' => 'datestamp',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usa_video',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => 13,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_video_air_date',
+      'label' => 'Air Date',
+      'required' => 0,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'same',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => 15,
+          'input_format' => 'm/d/Y - H:i:s',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'text_parts' => array(),
+          'year_range' => '-3:+3',
+        ),
+        'type' => 'date_text',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-usa_video-field_video_duration'.
+  $fields['node-usa_video-field_video_duration'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_video_duration',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usa_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Duration of the video in seconds.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 14,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_video_duration',
+      'label' => 'Duration',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
         'weight' => '12',
       ),
     ),
@@ -1856,7 +2146,14 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 4,
+          'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1936,7 +2233,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2016,7 +2319,13 @@ function usanetwork_video_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2099,7 +2408,13 @@ function usanetwork_video_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 5,
+          'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2110,14 +2425,13 @@ function usanetwork_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'figure',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_video_thumbnail',
       'label' => 'video_thumbnail',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'exclude_cv' => FALSE,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
         'focus' => 0,
@@ -2146,6 +2460,8 @@ function usanetwork_video_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Air Date');
   t('Body');
+  t('Duration');
+  t('Duration of the video in seconds.');
   t('Episode #');
   t('Full Episode');
   t('Publish Date');

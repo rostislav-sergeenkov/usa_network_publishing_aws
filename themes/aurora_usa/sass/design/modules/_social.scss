@@ -22,67 +22,29 @@ body.usa-social {
 }
 
 #block-usanetwork-social-usa-show-social-tab-nav {
-  background-color: $gray-med;
-  border-bottom: 0;
-  padding: 0;
-  margin: 0 auto;
-  width: 100%;
-  z-index: 5;
-  @include breakpoint($bp-social-mid-width) {
-    background-color: $gray-dark;
-    border: 1px solid $gray-med-dark;;
-    height: 58px;
-    max-width: 1275px;
-    z-index: 6;
+  &.open .menu-label {
+    color: $gray-extra-light;
   }
-  &.filter-menu a {
-    font-size: 20px;
+  .menu-label {
     font-family: $headline-reg;
     color: $white;
-    padding: 15px 14px 13px;
-    height: auto;
-  }
- .menu-label {
-    font-size: 20px;
-    font-family: $headline-reg;
-    color: $white;
-    padding: 15px 14px 13px 20px;
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-  &.open {
-    .menu-label {
-      color: #878785;
-    }
+    padding: 8px 5px 7px 11px;
   }
   ul {
     margin: 0;
   }
   li {
     margin: 0;
-    border: 0;
-    padding: 0;
-    font-family: $headline-thn;
-    font-size: 20px;
-    line-height: 1em;
-    border-bottom: 0;
-    display: block;
-    letter-spacing: 0.05em;
     &:first-child a {
       margin: 0;
     }
+    &.first a {
+      @include breakpoint($bp-social-mid-width) {
+        font-family: $headline-thn;
+      }
+    }
   }
   a {
-    line-height: 1;
-    padding: 20px 20px 16px;
-    text-transform: lowercase;
-    display: block;
-    float: left;
-    height: 100%;
-    width: 100%;
-    font-weight: normal;
-    text-transform: lowercase;
-    position: relative;
     border-top: 1px solid $gray-light;
     &.active {
         color: $white;
@@ -96,20 +58,23 @@ body.usa-social {
             @include cssTriangle(12px, $gray-med, top);
             position: absolute;
             left: 50%;
-            top: 57px;
+            top: 58px;
             margin-left: -12px;
           }
         }
     }
     &:hover {
-      background-color: $gray-med-dark;
+      background-color: $gray-ultra-med;
+      @include breakpoint($bp-social-mid-width) {
+        background-color: $gray-med;
+      }
     }
     &:hover:after {
       @include breakpoint($bp-social-mid-width) {
         @include cssTriangle(12px, $gray-med, top);
         position: absolute;
         left: 50%;
-        top: 57px;
+        top: 58px;
         margin-left: -12px;
       }
     }
@@ -118,7 +83,6 @@ body.usa-social {
       padding-right: 30px;
       width: auto;
       border-top: 0;
-      color: $white;
       border-left: 1px solid $gray-dark;
       border-right: 1px solid $gray-dark;
       &:hover {
@@ -130,25 +94,27 @@ body.usa-social {
   }
 }
 
+
 .usa-social {
   #main {
-//    max-width: 1275px;
-//    margin-left: auto;
-//    margin-right: auto;
-//    padding: 0;
-//    max-width: 1245px;
-//    margin-left: auto;
-//    margin-right: auto;
-//    padding-left: 40px;
-//    padding-right: 40px;
-//    @include breakpoint($bp-social-small-width) {
-//      width: auto;
-//      clear: both;
-//      padding: 0;
-//    }
+    max-width: 1245px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 30px;
+    @include breakpoint($bp-social-small-width) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    @include breakpoint($bp-social-xtra-large-width) {
+      width: auto;
+      clear: both;
+      padding: 0;
+    }
   }
-
   .tabs {
+    display: none; /* need to ask vino about this */
     .secondary {
       display: none;
     }
@@ -166,11 +132,13 @@ body.usa-social {
   .sidebar {
     clear: both;
     width: 100%;
+    margin-top: 30px;
     @include breakpoint($bp-social-large-width) {
       float: left;
       clear: none;
       width: 300px;
       margin-left: 15px;
+      margin-top: 0;
     }
   }
 }
@@ -181,7 +149,6 @@ body.usa-social {
       float: left;
       margin-right: -315px;
       padding-right: 315px;
-      max-width: 1275px;
     }
   }
 }
@@ -189,11 +156,12 @@ body.usa-social {
 
 .social-follow-block {
   background-color: $gray-med-dark;
+  //@include background(linear-gradient(top bottom, $gray-dark 0%, $gray-med-dark 100%));
   h2 {
     color: $gray-extra-light;
     text-transform: uppercase;
     font-family: $headline-reg;
-    font-size: 1.125em;
+    font-size: 18px;
     padding: 16px 12px 11px;
     line-height: 1em;
     margin: 0;
@@ -234,9 +202,11 @@ body.usa-social {
       > div {
         margin: 4px 0 0 11px;
       }
-      h4 {
+      h2, h4 {
         font-size: 14px;
         font-family: $headline-reg;
+        color: $white;
+        text-transform: none;
       }
       .field-name-field-role,
       .field-name-field-usa-actor-name {
@@ -284,6 +254,28 @@ body.usa-social {
       margin-left:3px;
     }
   }
+  .attachment-after .view-usa-shows.view-display-id-attachment_1 {
+    .view-footer {
+      position: relative;
+      border-top: 1px solid $gray-ultra-med;
+      font-family: $headline-reg;
+      font-size: 20px;
+      padding: 20px 15px 20px 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+      &:after {
+        @extend %usanetwork-font;
+        content: "Next";
+        font-size: 0.55em;
+        left: 230px;
+        position: absolute;
+        top: 24px;
+      }
+    }
+    .view-content {
+      display: none;
+    }
+  }
 }
 
 
@@ -291,203 +283,386 @@ body.usa-social {
 /* chat with fans */
 
 #chat-echo-stream {
-  .echo-item-content {
-    background: $gray-med-dark;
-    margin-bottom: 16px;
-  }
-  .echo-item-container {
-    padding: 40px 15px 42px;
-  }
-  .echo-linkColor,
-  .echo-item-text {
-    color: $white;
-  }
-  .echo-item-control-Reply {
-    background-color: $gray-dark;
-    bottom: 8px;
-    color: $blue;
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    padding: 8px 12px 3px;
-    text-transform: uppercase;
-    font-family: $headline-reg;
-    letter-spacing: normal;
-  }
-  .echo-item-children .echo-item-container,
-  .echo-item-children .echo-item-content {
-      background-color: $gray-med;
+  background-color: $white;
+  padding: 0 12px 30px;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
   }
 }
 
+/* twitter */
+
+#echo-stream {
+  background-color: $white;
+  padding: 30px 12px;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+  .echo-item-footer {
+    .echo-item-date {
+      display: none;
+    }
+  }
+}
 
  /* echo stream */
 
-.echo-stream-body > .echo-item-content {
-  margin-bottom: 2px;
+.echo-stream-header {
+  float: right;
+  margin: 0;
 }
-.echo-item-content {
-  background: $off-white;
+.echo-stream-body {
+  clear: both;
+}
+.echo-submit-controls {
+  margin-top: 0;
+}
+
+.echo-stream-more {
+  color: $gray-darker-light;
+}
+
+.echo-item-container {
   position: relative;
-  .echo-item-authorName {
-    font-family: $headline-semi;
-    font-size: 17px;
-    font-weight: normal;
-    letter-spacing: 0.05em;
+}
+
+.echo-item-wrapper {
+  margin-left: 0;
+  float: none;
+  width: auto;
+  clear: both;
+  @include breakpoint($bp-social-small-width) {
+    clear: none;
+    margin-left: 58px;
   }
-  .echo-item-expandChildren {
-    position: absolute;
-    right: 0;
-    top: 0;
+  @include breakpoint($bp-social-mid-width) {
+    margin-left: 63px;
+  }
+}
+
+.echo-item-subwrapper {
+  margin-left: 0;
+}
+
+.echo-item-data {
+  padding-bottom: 6px;
+  font-size: 12px;
+  font-family: $headline-reg;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  padding-top: 4px;
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.echo-item-body {
+  color: inherit;
+  padding: 0;
+}
+
+.echo-item-likes {
+  padding-top: 2px;
+}
+
+.echo-item-via {
+  display: none;
+}
+
+.echo-item-authorName {
+  color: $gray-med;
+  font-family: $headline-semi;
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 19px;
+  word-break: break-all;
+  a {
+    color: $gray-med;
+    &:hover {
+      color: $gray-med;
+    }
+  }
+}
+
+.echo-item-footer {
+  color: $gray-extra-light;
+  font-family: $headline-reg;
+  font-size: 12px;
+  background: none;
+  padding: 0;
+  .echo-item-from a,
+  .echo-item-from span {
+    color: $gray-dark;
+  }
+  .echo-secondaryColor {
+   color: $gray-dark;
+  }
+  line-height: 1.5em;
+  margin-top: 0;
+}
+
+.echo-TwitterIntents-plugin .echo-item-footer {
+  margin-top: 0;
+}
+
+.echo-item-controls .echo-item-control,
+.echo-item-controls a {
+  color: $gray-dark;
+  &:hover {
+    color: $gray-dark;
+  }
+}
+
+.echo-item-children {
+  padding-left: 20px;
+  @include breakpoint($bp-social-echo) {
+    padding-left: 77px;
   }
   .echo-item-container {
-    padding: 15px 15px 10px;
-    position: relative;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 15px;
   }
-  .echo-item-childrenMarker {
-    display: none !important;
+  .echo-item-subwrapper {
+    margin: 0;
+  }
+  .echo-item-content {
+    padding: 0;
+  }
+  .echo-item-wrapper {
+    margin-left: 30px;
+    @include breakpoint($bp-social-mid-width) {
+      margin-left: 45px;
+    }
+  }
+}
+
+input.echo-submit-text {
+  padding: 3px;
+}
+
+.echo-item-replyForm {
+  margin: 0 0 0 20px;
+  @include breakpoint($bp-social-echo) {
+    margin-left: 77px;
+  }
+  .echo-submit-controls {
+    margin-top: 5px;
+  }
+  .echo-submit-header span {
+    font-size: 12px;
+  }
+}
+
+.echo-submit-forcedLoginUserInfoMessage {
+  padding-right: 30px;
+}
+
+.echo-item-content {
+  color: $gray-extra-light;
+  position: relative;
+  margin-bottom: 2px;
+  padding: 8px 0 12px;
+  @include breakpoint($bp-social-small-width) {
+    padding-bottom: 8px;
   }
   .echo-item-avatar-wrapper {
     display: inline;
     float: left;
-    width: 48px;
-    margin: 0;
-  }
-  .echo-item-wrapper {
-    margin-left: 63px;
-    float: none;
-    width: auto;
-  }
-  .echo-item-subwrapper {
-    margin-left: 0;
-  }
-  .echo-user-list-container img {
-    display: none;
-  }
-  .echo-item-body  {
-    padding: 0;
-  }
-  .echo-item-data {
-    color: $gray-med-dark;
-    font-size: 16px;
-    font-family: $headline-lt;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
+    margin-bottom: 10px;
     @include breakpoint($bp-social-echo) {
-      font-size: 21px;
-    }
-    p {
-      margin: 0 0 10px;
+      margin-bottom: 0;
     }
   }
-  .echo-item-footer,
-  .echo-item-likes {
-    color: $gray-extra-light;
-    font-family: $headline-reg;
-    font-size: 13px;
-    background: none;
+
+  .echo-item-tweetUserName {
+    display: block;
+    clear: both;
+    @include breakpoint($bp-social-echo) {
+      display: inline;
+      clear: none;
+    }
+    a {
+    color: $gray-med;
+    font-family: $headline-semi;
+    font-size: 12px;
+    }
+  }
+  .echo-item-tweetDate a {
+    color: $gray-med;
+    &:hover {
+      color: $gray-med;
+    }
+  }
+  .echo-item-container-root {
     padding: 0;
-    .echo-item-from a {
-      color: $gray-extra-light;
+  }
+  .echo-item-expandChildren {
+    margin-right: 0;
+    margin-left: 20px;
+    @include breakpoint($bp-social-echo) {
+      margin-left: 77px;
     }
-    img {
-      display: none !important;
-    }
-  }
-  .echo-item-controls {
-    float: none;
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-  }
-  .echo-item-control-delim,
-  .echo-item-control-Flag,
-  .echo-item-control-Like {
-    display: none;
-  }
-  .echo-item-data {
-    padding-bottom: 10px;
-  }
-  .echo-item-replyForm {
-    margin: 0;
-  }
-  .echo-item-children .echo-item-container,
-  .echo-item-children .echo-item-content {
-      margin: 0;
-      .echo-item-container-child {
-        padding: 15px;
-      }
-      .echo-item-text {
-        font-size: 15px;
-        color: $gray-extra-light;
-        line-height: 1.5em;
-      }
-  }
-  .echo-item-children .echo-item-content {
-    border-bottom: 1px solid $gray-dark;
-  }
-  .echo-item-via,
-  .echo-item-from,
-  .echo-item-tweetDate {
-    display: none;
-  }
-  .echo-item-date {
-    display: block !important;
   }
 }
 
-.echo-stream-state-picture {
-  display: none;
-}
 
-.echo-stream-state-message {
-  display: none;
-}
+/* chat with fans form */
 
 #chat-submit-form {
   clear: both;
   overflow: hidden;
-  margin-bottom: 15px;
-  .echo-submit-counterLabel {
-    display: none;
+  background-color: $white;
+  padding: 30px 12px 0;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 42px;
+    padding-right: 42px;
   }
-  .echo-submit-container  {
-    width: 100%;
-  }
-  .echo-submit-content {
-    padding: 0;
-    border: 0;
-  }
-  .echo-submit-body {
-    width: 100%;
-    margin-right: -130px;
-    float:left;
-    textarea {
-      height: 77px;
-      padding: 5px;
+  .echo-auth-logged {
+    .echo-auth-avatar,
+    .echo-auth-name {
+      display: none;
     }
   }
-  .echo-submit-controls {
-    width: 130px;
-    float:left;
-    height: 77px;
-    margin: 0;
-  }
-  .echo-button button {
-    background-color: $gray-dark;
-    height: 77px;
-    width: 130px;
-    font-size: 24px;
-    color: $blue;
-    text-transform: uppercase;
-    border: 0;
-    margin: 0;
-    @include border-radius(0);
+  .echo-auth-login,
+  .echo-auth-logout, {
+    font-size: 15px;
   }
 }
 
+.echo-submit-header span {
+  color: $gray-light;
+}
+
+.echo-auth-logout,
+.echo-auth-login {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: $gray-dark;
+  float: right;
+}
+
+.echo-submit-counterLabel {
+  color: $gray-extra-light;
+  padding-top: 4px;
+}
+.echo-submit-container  {
+  width: 100%;
+}
+.echo-submit-content {
+  padding: 0;
+  border: 0;
+}
+.echo-submit-body {
+   width: 100%;
+  textarea {
+    color: $gray-extra-light;
+    @include border-radius(5px);
+    border: 1px solid $gray-darker-light;
+    height: 77px;
+    padding: 5px;
+  }
+}
+
+.echo-submit-markersContainer,
+.echo-submit-tagsContainer {
+  display: none !important;
+}
+
+.echo-submit-forcedLogin .echo-submit-controls {
+  display: none;
+}
+
+/* global chat with fans pgs */
+
+#globalChatWithFans > div:first-child {
+  display: none;
+}
+
+#showList {
+  background-color: $white;
+  padding: 10px 12px 40px;
+  color: $gray-extra-light;
+  font-family: $headline-reg;
+  font-size: 12px;
+  @include breakpoint($bp-social-mid-width) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  a {
+    color: $gray-extra-light;
+    &:hover {
+      color: $gray-extra-light;
+    }
+  }
+  img {
+  }
+  h3 {
+    color: $gray-sky;
+    font-size: 30px;
+    font-family: $headline-reg;
+    text-transform: lowercase;
+    margin-bottom: 5px;
+
+  }
+  .go-chat {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background-color: $gray-sky;
+    color: $white;
+    padding: 2px 18px 1px 6px;
+    font-size: 14px;
+    @include breakpoint($bp-social-echo) {
+      top: 11px;
+      font-size: 20px;
+      padding: 6px 22px 5px 8px;
+    }
+    @include breakpoint($bp-social-xtra-large-width) {
+      top: 27px;
+      font-size: 24px;
+    }
+    &:after {
+      @include cssTriangle(5px, $white, left);
+      position: absolute;
+      right: 2px;
+      top: 9px;
+      @include breakpoint($bp-social-echo) {
+         @include cssTriangle(6px, $white, left);
+         top: 11px;
+      }
+    }
+  }
+  .echo-item-from,
+  .echo-item-sourceIcon,
+  .echo-item-date {
+    float: left;
+  }
+  .echo-item-sourceIcon {
+    margin-right: 3px;
+  }
+  .echo-item-footer {
+    @extend %clearfix;
+  }
+}
+
+.usanetwork_social_global_show {
+  position: relative;
+  border-bottom: 1px solid $gray-sky;
+  @extend %clearfix;
+  cursor: pointer;
+  padding-bottom: 6px;
+}
+
+/* signin popup */
 #fancybox-wrap {
-  width: 460px !important;
+  left: 0 !important;
   height: 300px !important;
+  width: 460px !important;
+  @include breakpoint($bp-social-small-width) {
+    left: 25% !important;
+  }
 }

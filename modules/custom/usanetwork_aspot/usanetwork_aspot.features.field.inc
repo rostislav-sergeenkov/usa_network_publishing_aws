@@ -73,7 +73,7 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_call_to_action_type',
       'label' => 'Call to Action Type',
       'required' => 0,
@@ -86,7 +86,7 @@ function usanetwork_aspot_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '14',
       ),
     ),
   );
@@ -123,6 +123,9 @@ function usanetwork_aspot_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -329,7 +332,7 @@ function usanetwork_aspot_field_default_fields() {
       'bundle' => 'usanetwork_aspot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter  either a full external url or use the \'search\' button to browse links to local pages.',
+      'description' => 'Enter either a full external url or use the \'search\' button to browse links to local pages. If there is NO call to action it is recommended this link back to the show landing page.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -551,7 +554,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -563,12 +566,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt1',
       'label' => 'Title text line 1',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -584,9 +586,10 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '11',
       ),
     ),
   );
@@ -637,7 +640,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -649,12 +652,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt2',
       'label' => 'Text line 2',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -670,9 +672,10 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '12',
       ),
     ),
   );
@@ -723,7 +726,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -735,12 +738,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt3',
       'label' => 'Text line 3',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -756,9 +758,10 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '13',
       ),
     ),
   );
@@ -809,7 +812,7 @@ function usanetwork_aspot_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -821,12 +824,11 @@ function usanetwork_aspot_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'no_wrapper',
       'field_name' => 'field_usa_aspot_txt4',
       'label' => 'Call to Action Text',
       'required' => 0,
       'settings' => array(
-        'exclude_cv' => FALSE,
         'linkit' => array(
           'button_text' => 'Search',
           'enable' => 0,
@@ -842,9 +844,99 @@ function usanetwork_aspot_field_default_fields() {
           'size' => '60',
           'soft_length_limit' => '',
           'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-usanetwork_aspot-field_usa_text_color'.
+  $fields['node-usanetwork_aspot-field_usa_text_color'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_text_color',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '6',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'usanetwork_aspot',
+      'default_value' => array(
+        0 => array(
+          'value' => 'ffffff',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 10,
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'no_wrapper',
+      'field_name' => 'field_usa_text_color',
+      'label' => 'Text color hex value',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '7',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '10',
       ),
     ),
   );
@@ -854,7 +946,8 @@ function usanetwork_aspot_field_default_fields() {
   t('Call to Action Text');
   t('Call to Action Type');
   t('Desktop Image');
-  t('Enter  either a full external url or use the \'search\' button to browse links to local pages.');
+  t('Enter either a full external url or use the \'search\' button to browse links to local pages. If there is NO call to action it is recommended this link back to the show landing page.');
+  t('Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333');
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
@@ -863,6 +956,7 @@ function usanetwork_aspot_field_default_fields() {
   t('Mobile Image');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Show');
+  t('Text color hex value');
   t('Text line 2');
   t('Text line 3');
   t('Title text line 1');

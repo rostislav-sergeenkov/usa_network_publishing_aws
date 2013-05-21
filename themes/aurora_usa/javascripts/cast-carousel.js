@@ -2,7 +2,7 @@
 // using fred carousel
 (function ($) {
 
-  Drupal.behaviors.flex_carousel = {
+  Drupal.behaviors.cast_carousel = {
     attach: function (context, settings) {
 
 
@@ -10,7 +10,7 @@
           $(this).attr('data-flexindex',index);
         });
         var moveTo = $('#cast-carousel li.active').attr('data-flexindex');
-        $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo('#cast-carousel .view-content');
+        $('<div class="carousel-btns"><div class="prev btns icon-arrow2-left">Previous</div><div class="next btns icon-arrow2">Next</div></div>').appendTo('#cast-carousel .view-content');
         function create_cast_carousel() {
           $(".view-usa-cast ul").addClass('slides').carouFredSel({
             auto: false,
@@ -37,6 +37,10 @@
               },
           });
         }
+
+        window.onload = function() {
+           create_cast_carousel();
+        };
 
         $(window).resize(function(){
           create_cast_carousel();

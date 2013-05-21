@@ -63,12 +63,26 @@ function aurora_usa_preprocess_html(&$vars) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function aurora_usa_preprocess_page(&$vars) {
+  global $base_path, $base_url;
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
-  $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
+  drupal_add_js($theme_path . '/javascripts/video-dropdowns.js');
+  $icomoon_ie_fix = array(
+    '#tag' => 'script',
+    '#attributes' => array(
+      'src' => $base_url .'/'. $theme_path . '/javascripts/icomoon-gte-ie7.js',
+    ),
+    '#prefix' => '<!--[if lte IE 9]>',
+    '#suffix' => '</script><![endif]-->',
+  );
+  drupal_add_html_head($icomoon_ie_fix, 'icomoon_ie_fix');
+  if(arg(0) == 'social') {
+    drupal_add_js($theme_path . '/javascripts/follow-social.js');
+  }
   $node = menu_get_object();
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
@@ -109,16 +123,22 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-  switch($vars['block']->bid) {
-    case 'views-usa_shows-block_1':
-      if(arg(2) == 'social' || arg(0) == 'social') {
-        $vars['classes_array'][] = drupal_html_class('carousel');
-      }
-      break;
-    case 'views-usa_cast-block_2':
-    case 'views-usa_shows-block_2':
-      $vars['classes_array'][] = drupal_html_class('social-follow-block');
-      break;
+  if (isset($vars['block']->bid)) {
+    switch($vars['block']->bid) {
+      case 'views-usa_shows-block_1':
+        if(arg(2) == 'social' || arg(0) == 'social') {
+          $vars['classes_array'][] = drupal_html_class('carousel');
+        }
+        break;
+      case 'views-usa_cast-block_2':
+      case 'views-usa_shows-block_2':
+        $vars['classes_array'][] = drupal_html_class('social-follow-block');
+        break;
+      case 'usanetwork_video-usa_global_video_show_nav':
+      case 'usanetwork_social-usa_show_social_tab_nav':
+        $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
+        break;
+    }
   }
 }
 
@@ -160,9 +180,8 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  *   The name of the template being rendered ("field" in this case.)
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
-  if(isset($vars['element']['#object']->type)) {
-    if(($vars['element']['#object']->type == 'media_gallery')
-      && ($vars['element']['#field_name'] == 'field_media_items')) {
+  if (isset($vars['element']['#object']->type)) {
+    if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#field_name'] == 'field_media_items')) {
       append_cover_to_media($vars);
       // REMOVED in favor of node titles
       // append_count_to_caption($vars);
@@ -170,6 +189,20 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
   }
 
   switch ($vars['element']['#field_name']) {
+    // homepage aspots
+    case 'field_usa_hp_arefs':
+    case 'field_usa_hp_brefs':
+    case 'field_usa_hp_crefs':
+      $vars['classes_array'][] = drupal_html_class('slides');
+    break;
+    case 'field_hp_promos':
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
+      foreach ($vars['items'] as $delta => $item) {
+        $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
+      }
+    break;
+
     case 'field_role':
       if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Character') {
         switch ($vars['element']['#view_mode']) {
@@ -417,3 +450,101 @@ function aurora_usa_js_alter(&$js) {
 
 }
 // */
+
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ * aspot mobile image
+ */
+function aurora_usa_field__field_usa_aspot_desktop($vars) {
+  // polyfill
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+  $output = '';
+  $filepath = $vars['items'][0]['#item']['uri'];
+  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 960px)"></div>';
+  $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<noscript>';
+  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
+  $output .= '</noscript>';
+
+  return $output;
+}
+
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ * aspot mobile image
+ */
+function aurora_usa_field__field_usa_aspot_mobile($vars) {
+  // polyfill
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+  $output = '';
+  $filepath = $vars['items'][0]['#item']['uri'];
+  $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
+  $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '" data-media="(min-device-pixel-ratio: 2.0)"></div>';
+
+  return $output;
+}
+
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ * promo bspot wide image
+ */
+function aurora_usa_field__field_promo_wide_image($vars) {
+  // custom for certain view modes only
+  // c-spot wide image not displayed 
+  if ($vars['element']['#view_mode'] == 'home_promo') {
+    $output = '';
+  }
+  // b-spot
+  if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
+    // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+    $output = '';
+    $filepath = $vars['items'][0]['#item']['uri'];
+
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px) and (min-device-pixel-ratio: 2.0)"></div>';
+
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1275px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1275px) and (min-device-pixel-ratio: 2.0)"></div>';
+
+  }
+}
+
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ * promo bspot and cspot narrow image
+ */
+function aurora_usa_field__field_promo_regular_image($vars) {
+  // custom for certain view modes only
+  // b-spot these are mobile fallbacks
+  if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
+  // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+    $output = '';
+    $filepath = $vars['items'][0]['#item']['uri'];
+    $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
+    $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '"  data-media="(min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<noscript>';
+    $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
+    $output .= '</noscript>';
+  }
+  // c-spot
+  if ($vars['element']['#view_mode'] == 'home_promo') {
+    // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+    $output = '';
+    $filepath = $vars['items'][0]['#item']['uri'];
+    $output .= '<div data-src="' . image_style_url('300x250', $filepath) . '"></div>';
+    $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '"  data-media="(min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<noscript>';
+    $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
+    $output .= '</noscript>';
+  }
+}
+

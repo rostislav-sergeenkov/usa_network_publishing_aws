@@ -85,6 +85,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'head_show',
           'weight' => '-10',
         ),
+        'usanetwork_blocks-usa_tv_show_menu' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_tv_show_menu',
+          'region' => 'main_prefix',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -118,8 +124,8 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_blocks-usa_tv_show_menu' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_tv_show_menu',
-          'region' => 'main_prefix',
-          'weight' => '-10',
+          'region' => 'header',
+          'weight' => '-30',
         ),
         'usanetwork_lyris-newsletter_subscription' => array(
           'module' => 'usanetwork_lyris',
@@ -181,6 +187,39 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('shows');
   $export['show_social_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_global_videos';
+  $context->description = '';
+  $context->tag = 'global videos page';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'videos' => 'videos',
+        'videos/*' => 'videos/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_video-usa_global_video_show_nav' => array(
+          'module' => 'usanetwork_video',
+          'delta' => 'usa_global_video_show_nav',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('global videos page');
+  $export['usa_global_videos'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -420,7 +459,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '30',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

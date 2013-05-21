@@ -123,21 +123,23 @@ function aurora_usa_preprocess_region(&$vars, $hook) {
  */
 
 function aurora_usa_preprocess_block(&$vars, $hook) {
-  switch($vars['block']->bid) {
-    case 'views-usa_shows-block_1':
-      if(arg(2) == 'social' || arg(0) == 'social') {
-        $vars['classes_array'][] = drupal_html_class('carousel');
-      }
-      break;
-    case 'views-usa_cast-block_2':
-    case 'views-usa_shows-block_2':
-      $vars['classes_array'][] = drupal_html_class('social-follow-block');
-      break;
-    case 'usanetwork_video-usa_global_video_show_nav':
-    case 'usanetwork_social-usa_show_social_tab_nav':
-      $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
-      break;
+  if (isset($vars['block']->bid)) {
+    switch($vars['block']->bid) {
+      case 'views-usa_shows-block_1':
+        if(arg(2) == 'social' || arg(0) == 'social') {
+          $vars['classes_array'][] = drupal_html_class('carousel');
+        }
+        break;
+      case 'views-usa_cast-block_2':
+      case 'views-usa_shows-block_2':
+        $vars['classes_array'][] = drupal_html_class('social-follow-block');
+        break;
+      case 'usanetwork_video-usa_global_video_show_nav':
+      case 'usanetwork_social-usa_show_social_tab_nav':
+        $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
+        break;
     }
+  }
 }
 
 

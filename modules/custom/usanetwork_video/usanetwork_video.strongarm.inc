@@ -163,13 +163,13 @@ function usanetwork_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
@@ -232,13 +232,13 @@ function usanetwork_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
       ),
       'display' => array(),

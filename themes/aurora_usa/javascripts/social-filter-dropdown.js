@@ -24,14 +24,16 @@
         social_dropdown_class_toggle();
       });
       function social_dropdown_class_toggle() {
-        $drop_elements = $('#block-usanetwork-social-usa-show-social-tab-nav');
+        $drop_elements = $('#block-usanetwork-social-usa-show-social-tab-nav.usa-secondary-menu');
         $menu = $('#block-usanetwork-social-usa-show-social-tab-nav .menu-label');
-        if ($drop_elements.css("z-index") == "6" ){
+        if ($drop_elements.css("font-size") == "20px" ){
           $menu.hide();
           $drop_elements.removeClass('filter-dropdown');
+          console.log("6");
         } else {
           $menu.show();
           $drop_elements.addClass('filter-dropdown');
+          console.log("5");
         }
       }
     },

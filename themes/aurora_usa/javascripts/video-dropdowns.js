@@ -6,8 +6,8 @@
 
     // all shows menu toggle
 
-    $('#block-usanetwork-video-usa-global-video-show-nav li.first a').click(function() {
-        $('#block-usanetwork-video-usa-global-video-show-nav li.first .item-list').toggle();
+    $('#block-usanetwork-video-usa-global-video-show-nav li.first').click(function() {
+        $(this).find('.item-list').toggle();
     });
 
       $filter_menus = $('#block-usanetwork-video-usa-global-video-show-nav .content > .item-list > ul > li.first');

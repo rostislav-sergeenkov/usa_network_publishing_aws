@@ -85,7 +85,7 @@ function usanetwork_showpages_views_default_views() {
   /* Display: global social follow */
   $handler = $view->new_display('block', 'global social follow', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Follow Hottest';
+  $handler->display->display_options['title'] = 'follow usa shows';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
@@ -207,7 +207,7 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = 'See Full Directory';
+  $handler->display->display_options['footer']['area']['content'] = 'expand to view all';
   $handler->display->display_options['footer']['area']['format'] = 'wysiwyg_basic';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */

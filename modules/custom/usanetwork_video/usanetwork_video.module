@@ -54,7 +54,7 @@ function usanetwork_video_block_view($delta) {
  */
 function usanetwork_video_global_show_nav() {
   $items = array();
-  $items[] = array('data' => t('<a>all shows</a>'));
+  $items[] = array('data' => t('all shows'));
   $lang = LANGUAGE_NONE;
 
   //TODO: replace the target URL with the correct url after video views creation

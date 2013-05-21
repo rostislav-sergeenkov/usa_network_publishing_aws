@@ -29,11 +29,9 @@
         if ($drop_elements.css("font-size") == "20px" ){
           $menu.hide();
           $drop_elements.removeClass('filter-dropdown');
-          console.log("6");
         } else {
           $menu.show();
           $drop_elements.addClass('filter-dropdown');
-          console.log("5");
         }
       }
     },

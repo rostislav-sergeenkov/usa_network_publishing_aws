@@ -75,6 +75,7 @@ function _usanetwork_ads_dart_settings_form() {
     '#tree' => TRUE,
   );
 
+  // TV Show based ad settings.
   $form['usanetwork_ads_dart_settings']['node']['tv_show'] = array(
     '#type' => 'fieldset',
     '#title' => t('TV Show Settings'),
@@ -133,6 +134,7 @@ function _usanetwork_ads_get_node_dart_settings($node) {
     }
   }
 
+  $current_menu_item = menu_get_item();
   $current_menu_object = menu_get_object();
 
   // Set "sub" value.

@@ -20,13 +20,13 @@
   </div>
 </div>
 <div class="mega-menu-items">
-  <?php print l('Videos', '', array('attributes' => array('class' => array('mega-nav-link', 'videos')))); ?>
+  <?php print l('Full Episodes', 'videos', array('attributes' => array('class' => array('mega-nav-link', 'videos')))); ?>
 </div>
 <div class="mega-menu-items">
-  <?php print l('Social', '', array('attributes' => array('class' => array('mega-nav-link', 'social')))); ?>
+  <?php print l('Social', 'social', array('attributes' => array('class' => array('mega-nav-link', 'social')))); ?>
 </div>
 <div class="mega-menu-items">
-  <?php print l('Schedule', '', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
+  <?php print l('Schedule', 'schedule', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
 </div>
 <div class="mega-menu-items">
   <?php print l('More', '', array('attributes' => array('class' => array('mega-nav-link', 'more')))); ?>

@@ -53,7 +53,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'entity_field' => array(
       'values' => array(
-        'entity_type' => 'a:9:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;}',
+        'entity_type' => 'a:11:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;}',
         'field_name' => 'field_show',
         'field_value' => '0',
         'field_empty' => 0,
@@ -62,6 +62,7 @@ function usanetwork_context_context_default_contexts() {
     ),
     'node' => array(
       'values' => array(
+        'media_gallery' => 'media_gallery',
         'tv_episode' => 'tv_episode',
         'tv_show' => 'tv_show',
       ),
@@ -73,6 +74,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'node/*/social' => 'node/*/social',
         'node/*/social/*' => 'node/*/social/*',
+        'node/*/games' => 'node/*/games',
+        'node/*/games/*' => 'node/*/games/*',
       ),
     ),
   );
@@ -172,11 +175,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_prefix',
           'weight' => '-9',
         ),
+        'dart-dart-tag-300x250_ifr_reload' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-300x250_ifr_reload',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-usa_cast-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_cast-block_2',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -241,6 +250,7 @@ function usanetwork_context_context_default_contexts() {
         'games' => 'games',
         'games/*' => 'games/*',
         '*/games/*' => '*/games/*',
+        '*/*/games/*' => '*/*/games/*',
         'social' => 'social',
         'social/*' => 'social/*',
         '*/social/*' => '*/social/*',
@@ -389,11 +399,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_prefix',
           'weight' => '-9',
         ),
+        'dart-dart-tag-300x250_ifr_reload' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-300x250_ifr_reload',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'views-usa_shows-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_shows-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

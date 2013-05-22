@@ -129,6 +129,9 @@ function usanetwork_showpages_showbanner() {
       if (arg(2) == 'social') {
         $show_section = t('Social');
       }
+      if (arg(2) == 'games') {
+        $show_section = t('Games');
+      }
     }
     // looks for nodes with a value in field_show
     if (!empty($node->$field_name)) {

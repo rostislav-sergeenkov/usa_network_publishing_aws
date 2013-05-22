@@ -22,7 +22,7 @@
 					}
 					else
 					{
-						alert(msg);
+						//alert(msg);
 					}
 				}
 			}

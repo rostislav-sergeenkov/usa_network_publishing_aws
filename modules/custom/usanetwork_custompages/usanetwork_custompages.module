@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_custompages_menu() {
+  // games page
+  $items['node/%node/games'] = array(
+    'title' => t('Games'),
+    'page callback' => 'usanetwork_custompages_games',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+  );
+ 
+  return $items;
+}
+
+/**
+ * Games custom page callback
+ */
+function usanetwork_custompages_games($node) {
+  $output = '';
+  $arg = arg();
+  $show_path = drupal_get_path_alias('node/'.$node->nid);
+
+  // redirect to show page if its a invalid url
+  if (!isset($arg[3]) || empty($arg[3])) {
+    drupal_goto($show_path);
+  }
+
+  switch($show_path) {
+    case 'burn-notice':
+    case 'psych':
+      switch ($arg[3]) {
+        case 'seeitlikeaspy':
+          $output = usanetwork_custompages_games_seeitlikeaspy($node);
+        break;
+        case 'jetski':
+          $output = usanetwork_custompages_games_jetski($node);
+        break;
+      }
+    break;
+  }
+
+  // redirect to show page if its a invalid url
+  if (empty($output)) {
+    drupal_goto($show_path);
+  }
+
+  return $output;
+}
+
+/**
+ * Burn notice - See It Like A Spy game callback
+ */
+function usanetwork_custompages_games_seeitlikeaspy($node) {
+  drupal_set_title(t('See It Like A Spy'));
+  $output = 'PASTE THE SEE IT LIKE A SPY GAME HTML HERE';
+
+  return $output;
+}
+
+/**
+ * Burn notice - JetSki Getaway game callback
+ */
+
+function usanetwork_custompages_games_jetski($node) {
+  drupal_set_title(t('JetSki Getaway'));
+  $src = 'http://www.usanetwork.com/series/burnnotice/games/jetski/game.html';
+  //TODO: Siva, please replace the iframe with the actual flash embed code
+  $output = '<iframe src="'.$src.'" width="924" height="740" id="game" name="game" scrolling="no" frameborder="0" allowtransparency="yes"></iframe>';
+  
+  return $output;
+}

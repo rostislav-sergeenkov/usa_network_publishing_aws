@@ -215,3 +215,12 @@ function usanetwork_core_update_7100() {
   $modules = array('context_entity_field');
   module_enable($modules);
 }
+
+/**
+ * Enable usanetwork_custompages module
+ */
+function usanetwork_core_update_7101() {
+  $modules = array('usanetwork_custompages');
+  module_enable($modules);
+}
+

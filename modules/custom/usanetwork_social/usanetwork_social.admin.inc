@@ -227,7 +227,28 @@ function usanetwork_social_settings_form() {
     '#maxlength' => 512,
   );
 
-	// GLOBAL TRENDING
+  // GLOBAL TWITTER
+  $form['global_twitter'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global Twitter Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['global_twitter']['usanetwork_social_global_twitter_echo_query_template'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Echo Query Template'),
+    '#default_value' => variable_get('usanetwork_social_global_twitter_echo_query_template', ''),
+    '#description' => t('The tokenized Echo query string. Values in the string will be replaced with the following Tokens.'),
+    '#maxlength' => 512,
+  );
+  $form['global_twitter']['usanetwork_social_global_twitter_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('PATH'),
+    '#default_value' => variable_get('usanetwork_social_global_twitter_path', ''),
+    '#description' => t('PATH Token'),
+  );
+
+  // GLOBAL TRENDING
   $form['global_trend'] = array(
     '#type' => 'fieldset',
     '#title' => t('Global Trending Settings'),

@@ -27,6 +27,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       'pl1:episodeNumber' => t('Episode #'),
       'pl1:seasonNumber' => t('Season #'),
       'pl1:fullEpisode' => t('Full Episode'),
+      'duration' => t('Video Duration'),
     );
 
     /*
@@ -34,7 +35,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
      * If there is no directory for content type files will be moved to Drupal default files directory
     */
     // TODO:  Determine/confirm this directory.
-    $this->imgDestDir = "public://video/";
+    $this->imgDestDir = "public://video";
 
     $options = array();
 
@@ -92,10 +93,11 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
-    $this->addFieldMapping('field_air_date', 'pubDate')->xpath('pubDate');
+    $this->addFieldMapping('field_video_air_date', 'pubDate');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_episode_number', 'pl1:episodeNumber')->xpath('pl1:episodeNumber');
     $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
+    $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -109,7 +111,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function prepareRow($row) {
 
-    // Process date field data.
+    // Process publishing date field data.
     $dc_terms = $row->xml->xpath('dcterms:valid');
     if (is_array($dc_terms)) {
       $date_data = (string)array_shift($dc_terms);
@@ -129,6 +131,17 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     if (is_array($full_episode)) {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    }
+
+    // Process air date field data.
+    $air_date = $row->xml->xpath('pubDate');
+    if (is_array($air_date)) {
+      $date_data = (string)array_shift($dc_terms);
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
+        #'to' => '',
+      );
+      $row->pubDate = drupal_json_encode($final_date_data);
     }
   }
 
@@ -224,6 +237,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       'pl1:episodeNumber' => t('Episode #'),  // Not always set for MPX.
       'pl1:seasonNumber' => t('Season #'),  // Not always set for MPX.
       'pl1:fullEpisode' => t('Full Episode'),  // Not always set for MPX.
+      'duration' => t('Video Duration'),
     );
 
     /*
@@ -231,7 +245,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
      * If there is no directory for content type files will be moved to Drupal default files directory
     */
     // TODO:  Determine/confirm this directory.
-    $this->imgDestDir = "public://video/";
+    $this->imgDestDir = "public://video";
 
     $options = array();
 
@@ -291,10 +305,11 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
-    $this->addFieldMapping('field_air_date', 'pubDate')->xpath('pubDate');
+    $this->addFieldMapping('field_video_air_date', 'pubDate');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_episode_number', 'pl1:episodeNumber')->xpath('pl1:episodeNumber');
     $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
+    $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -328,6 +343,17 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     if (is_array($full_episode)) {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    }
+
+    // Process air date field data.
+    $air_date = $row->xml->xpath('pubDate');
+    if (is_array($air_date)) {
+      $date_data = (string)array_shift($dc_terms);
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
+        #'to' => '',
+      );
+      $row->pubDate = drupal_json_encode($final_date_data);
     }
   }
 

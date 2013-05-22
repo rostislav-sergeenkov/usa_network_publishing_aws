@@ -537,12 +537,10 @@ function usanetwork_social_global_twitter() {
   $tokens['[ITEMSPERPAGE]'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
   $tokens['[CHILDREN]'] = variable_get('usanetwork_social_twitter_children', '');
 
-  // eql template
-  $eql_template = variable_get('usanetwork_social_twitter_echo_query_template', '');
+  $tokens['[PATH]'] = variable_get('usanetwork_social_global_twitter_path', '');
 
-  // empty these tokens for global twitter feed to work
-  $tokens['[FEED]'] = '';
-  $tokens['[SHOW]'] = '';
+  // eql template
+  $eql_template = variable_get('usanetwork_social_global_twitter_echo_query_template', '');
 
   $eql = str_replace(array_keys($tokens), array_values($tokens), $eql_template);
   $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
@@ -560,7 +558,6 @@ function usanetwork_social_global_twitter() {
   $output .= '<div id="echo-stream">&nbsp;</div>';
 
   return $output;
-  return t('Global Social Twitter Page: Placeholder');
 }
 
 /**

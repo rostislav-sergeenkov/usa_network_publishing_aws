@@ -5,3 +5,228 @@
  */
 
 include_once 'usanetwork_ads.features.inc';
+
+
+/**
+ * Implements hook_permission().
+ */
+function usanetwork_ads_permission() {
+
+  $permissions = array();
+  $permissions['administer usanetwork dart settings'] = array(
+    'title' => t('Administer USA Network DART Ad Settings'),
+    'description' => '',
+  );
+
+  return $permissions;
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_ads_menu() {
+
+  $items = array();
+  $items['admin/usanetwork-ads/dart-settings'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => t('USA Network DART Ad Settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_usanetwork_ads_dart_settings_form'),
+    'access arguments' => array('administer usanetwork dart settings'),
+  );
+
+  return $items;
+}
+
+/**
+ * Helper that returns TV Show nodes.
+ */
+function _usanetwork_ads_get_tv_show_nodes() {
+
+  $tv_show_nodes_query = new EntityFieldQuery();
+  $tv_show_nodes_query->entityCondition('entity_type', 'node');
+  $tv_show_nodes_query->entityCondition('bundle', 'tv_show');
+  $tv_show_nodes_query->propertyCondition('status', 1);
+  $tv_show_nodes_query->propertyOrderBy('title', 'ASC');
+  $tv_show_nodes_result = $tv_show_nodes_query->execute();
+
+  $tv_show_nodes = array();
+
+  if (isset($tv_show_nodes_result['node'])) {
+    foreach ($tv_show_nodes_result['node'] as $result) {
+      $tv_show_nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+    }
+  }
+
+  return $tv_show_nodes;
+}
+
+
+/**
+ * Form definition / page callback for ad settings admin page.
+ */
+function _usanetwork_ads_dart_settings_form() {
+
+  $form = array();
+  $default_settings = variable_get('usanetwork_ads_dart_settings', array());
+
+  $form['usanetwork_ads_dart_settings'] = array(
+    '#tree' => TRUE,
+  );
+
+  // TV Show based ad settings.
+  $form['usanetwork_ads_dart_settings']['node']['tv_show'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('TV Show Settings'),
+  );
+  if ($tv_show_nodes = _usanetwork_ads_get_tv_show_nodes()) {
+    foreach ($tv_show_nodes as $node) {
+      $form['usanetwork_ads_dart_settings']['node']['tv_show'][ $node->nid ]['sect'] = array(
+        '#type' => 'textfield',
+        '#title' => t('@tv_show_title "sect" Value', array('@tv_show_title' => $node->title)),
+        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sect']) ?
+            $default_settings['node']['tv_show'][ $node->nid ]['sect'] : '',
+      );
+    }
+  }
+  else {
+    $form['usanetwork_ads_dart_settings']['node']['tv_show']['no_results']['#markup'] = t('There are no TV shows available.');
+  }
+
+  return system_settings_form($form);
+}
+
+
+/**
+ * Implements hook_admin_paths().
+ */
+function usanetwork_ads_admin_paths() {
+
+  $paths = array();
+  $paths['admin/usanetwork-ads/dart-settings'] = TRUE;
+
+  return $paths;
+}
+
+
+/**
+ * Helper that returns DART ad settings for a given node.
+ */
+function _usanetwork_ads_get_node_dart_settings($node) {
+
+  $node_dart_settings = array(
+    'sect' => NULL,
+    'sub' => NULL,
+    'sub2' => NULL,
+  );
+
+  $dart_ad_settings = variable_get('usanetwork_ads_dart_settings', array());
+
+  // Set "sect" value by TV Show.
+  if ($node->type == 'tv_show' && isset($dart_ad_settings['node']['tv_show'][ $node->nid ]['sect'])) {
+    $node_dart_settings['sect'] = $dart_ad_settings['node']['tv_show'][ $node->nid ]['sect'];
+  }
+  else if (isset($node->field_show)) {
+    $field_show_items = field_get_items('node', $node, 'field_show');
+    if (!empty($field_show_items[0]['target_id'])) {
+      $node_dart_settings['sect'] = $dart_ad_settings['node']['tv_show'][ $field_show_items[0]['target_id'] ]['sect'];
+    }
+  }
+
+  $current_menu_item = menu_get_item();
+  $current_menu_object = menu_get_object();
+
+  // Set "sub" value.
+  if ($current_menu_item['path'] == 'node/%' && is_object($current_menu_object) &&
+      isset($current_menu_object->nid) && $node->nid == $current_menu_object->nid) {
+    $node_dart_settings['sub'] = 'home';
+  }
+  if ($node->type == 'usa_video' || $node->type == 'usa_tve_video') {
+    $node_dart_settings['sub'] = 'video';
+  }
+  else if ($node->type == 'media_gallery') {
+    $node_dart_settings['sub'] = 'photos';
+  }
+  else if ($node->type == 'tv_episode') {
+    $node_dart_settings['sub'] = 'episodes';
+  }
+  else if ($node->type == 'person') {
+    $node_dart_settings['sub'] = 'bios';
+  }
+  else {
+    $social_menu_paths = array(
+      'node/%node/social',
+      'node/%node/social/latest',
+      'node/%node/social/chat-with-fans',
+      'node/%node/social/tweets',
+    );
+    if (in_array($current_menu_item['path'], $social_menu_paths)) {
+      $node_dart_settings['sub'] = 'social';
+    }
+    else if ($current_menu_item['path'] == 'node/%node/social/sync') {
+      $node_dart_settings['sub'] = 'sync';
+    }
+
+
+    // TODO: Check nid against catchall nodes and set "sub" accordingly. (e.g. games)
+
+
+  }
+
+  // Set "sub2" value.
+  if ($current_menu_item['path'] == 'node/%node/social/latest') {
+    $node_dart_settings['sub2'] = 'buzz';
+  }
+  else if ($current_menu_item['path'] == 'node/%node/social/chat-with-fans') {
+    $node_dart_settings['sub2'] = 'chatter';
+  }
+  else if ($current_menu_item['path'] == 'node/%node/social/tweets') {
+    $node_dart_settings['sub2'] = 'twitter';
+  }
+
+  return $node_dart_settings;
+}
+
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function usanetwork_ads_preprocess_page(&$variables) {
+
+  // Define DART ad settings via Drupal JS settings.
+  $usa_dart_js_settings = array();
+
+  if (drupal_is_front_page()) {
+    $usa_dart_js_settings['USA']['DART']['values']['sect'] = 'home';
+  }
+  else if (isset($variables['node'])) {
+    $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($variables['node']);
+  }
+  else {
+    $current_menu_item = menu_get_item();
+    $social_menu_paths = array(
+      'social',
+      'social/trending',
+      'social/chat-with-fans',
+      'social/tweets',
+    );
+    if (in_array($current_menu_item['path'], $social_menu_paths)) {
+      $usa_dart_js_settings['USA']['DART']['values']['sub'] = 'social';
+    }
+    else if ($current_menu_item['path'] == 'social/sync') {
+      $usa_dart_js_settings['USA']['DART']['values']['sub'] = 'sync';
+    }
+  }
+
+  // Ensure JS settings values.
+  $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sect']) ?
+      $usa_dart_js_settings['USA']['DART']['values']['sect'] : 'other';
+  $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub']) ?
+      $usa_dart_js_settings['USA']['DART']['values']['sub'] : '';
+  $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2']) ?
+      $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
+
+  // Set the JS settings for ads.
+  drupal_add_js($usa_dart_js_settings, 'setting');
+}

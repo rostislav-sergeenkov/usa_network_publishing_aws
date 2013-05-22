@@ -73,6 +73,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'node/*/social' => 'node/*/social',
         'node/*/social/*' => 'node/*/social/*',
+        'node/*/games' => 'node/*/games',
+        'node/*/games/*' => 'node/*/games/*',
       ),
     ),
   );

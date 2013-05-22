@@ -16,9 +16,6 @@
           //useCSS: true,
           //touch: true,
           //smoothHeight: false
-        before: function(slider) {
-          var target = slider.animatingTo,
-            currentSlide = slider.currentSlide;
         });
     },
   };

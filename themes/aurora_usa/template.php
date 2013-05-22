@@ -88,6 +88,9 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
+  if ($node && $node->type == "tv_show" && !arg(2)) {
+    drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
+  }
   // add ios touch icon
   $ios_icon = array(
     '#tag' => 'link',

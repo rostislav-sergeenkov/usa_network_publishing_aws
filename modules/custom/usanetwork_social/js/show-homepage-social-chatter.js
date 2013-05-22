@@ -79,9 +79,7 @@
 				var commentPresent = 0;
 				var showUrlLink = (showUrl != '') ? '<a href="'+showUrl+'/social/chat-with-fans">' : '';
 				var showUrlLinkEnd = (showUrl != '') ? '</a>' : '';
-				var commentHtml = '<span class="usanetwork_social_comment_link">Comment</span>';
 				var joinHtml = '<div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>';
-				var separatorHtml = '<span class="usanetwork_social_separator">-</span>';
 				var html = showUrlLink;
 
 				// if data was returned, create html comment and comment reply, if there is one
@@ -92,23 +90,41 @@
 						// for comment, index == 0
 						if (index == 0)
 						{
-							html += '<div id="usanetwork_social_show_comment">'+
-								'<img src="'+showData[0]["avatar"]+'">'+
-								'<div>'+showData[0]["comment"]+'</div>'+
-							'</div>'+
-							'<div id="usanetwork_social_data">'+
-								'<span class="usanetwork_social_post_date usanetwork_social_data">'+showData[0]["timeStr"]+'</span>'+
-								'<span class="usanetwork_social_from usanetwork_social_data"> from usanetwork</span>'+
-								separatorHtml+
-								'<span class="usanetwork_social_author usanetwork_social_data">'+showData[0]["actor"]+'</span>'+
-								separatorHtml+
-								commentHtml +
-							'</div>';
+							html += '<div class="usanetwork_social_show_comment">'+
+								'<div class="echo-item-content">'+
+									'<div class="echo-item-avatar-wrapper">'+
+										'<div class="echo-item-avatar">'+
+											'<img src="'+showData[0]["avatar"]+'" width="48" />'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-item-wrapper echo-item-wrapper-root">'+
+										'<div class="echo-item-subwrapper">'+
+											'<div class="echo-item-frame">'+
+												'<div class="author echo-item-authorName echo-linkColor">'+showData[0]["actor"]+'</div>'+
+												'<div class="echo-clear"></div>'+
+												'<div class="comment echo-item-data">'+
+													'<div class="echo-item-body">'+
+														'<span class="echo-item-text">'+showData[0]["comment"]+'</span>'+
+													'</div>'+
+												'</div>'+
+												'<div class="echo-item-footer">'+
+													'<img class="echo-item-sourceIcon echo-clickable" style="display: block" src="http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif" />'+
+													'<div class="echo-item-date">'+showData[0]["timeStr"]+'</div>'+
+													'<div class="echo-item-from">&nbsp;from&nbsp;usanetwork</div>'+
+													'<div class="echo-clear"></div>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-clear"></div>'+
+								'</div>'+
+							'</div>'+"\n";
+
 							commentPresent = 1;
 						}
 
-			/* @TODO: Remove this commented section if they do not want
-			// to show a reply to the comment. Initial comps, showed a reply.
+						/* @TODO: Remove this commented section if they do not want
+						// to show a reply to the comment. Initial comps, showed a reply.
 						// for a reply to the comment, index == 1
 						if (index == 1)
 						{
@@ -120,7 +136,8 @@
 								"<div class=\"separator\">-</div>"+
 								"<div class=\"author\">"+showData[1]["actor"]+"</div>"+
 							"</div>" + commentHtml;
-						} */
+						}
+						*/
 					}
 				}
 

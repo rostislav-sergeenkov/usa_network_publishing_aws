@@ -79,16 +79,16 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_blocks-usa_tv_show_menu' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_tv_show_menu',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_showpages-show_banner' => array(
           'module' => 'usanetwork_showpages',
           'delta' => 'show_banner',
           'region' => 'head_show',
-          'weight' => '-10',
-        ),
-        'usanetwork_blocks-usa_tv_show_menu' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_tv_show_menu',
-          'region' => 'main_prefix',
           'weight' => '-10',
         ),
       ),
@@ -125,7 +125,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_tv_show_menu',
           'region' => 'header',
-          'weight' => '-30',
+          'weight' => '-10',
         ),
         'usanetwork_lyris-newsletter_subscription' => array(
           'module' => 'usanetwork_lyris',
@@ -459,7 +459,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '30',
+          'weight' => '0',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

@@ -1,0 +1,148 @@
+
+
+.node-type-tv-show {
+  #main {
+    margin: 0 auto;
+    padding: 0;
+    width: 300px;
+    @include breakpoint($bp-show-mid-width) {
+      width: 615px;
+    }
+    @include breakpoint($bp-show-large-width) {
+      width: 930px;
+    }
+    @include breakpoint($bp-show-very-large-width) {
+      width: 1245px;
+    }
+  }
+  h2.pane-title {
+
+  }
+}
+
+.node-type-tv-show {
+  .panel-row {
+    clear: both;
+    margin-bottom: 30px;
+    .dart-tag {
+      float: right;
+    }
+  }
+}
+
+.social-panel {
+  &.inner-wrapper  {
+    .panel-col1 {
+      @extend %two-to-one-col-social-content-no-sidebar;
+    }
+    .panel-col2 {
+      @extend %two-to-one-col-social-sidebar;
+    }
+  }
+  &.panel-two-cols .panel-col1 {
+    @extend %two-to-one-col-social-content-sidebar;
+  }
+}
+
+
+.pane-expandable {
+  height: 315px;
+  overflow: hidden;
+  @include breakpoint($bp-show-mid-width) {
+    margin-right: -15px;
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: $headline-semi;
+    text-transform: uppercase;
+  }
+}
+
+.pane-node-field-usa-tv-promo {
+  .pane-content {
+    > div {
+      float: left;
+      width: 304px;
+      height: 254px;
+      margin: 0 0 15px;
+      @include breakpoint($bp-show-mid-width) {
+        margin-right: 11px;
+      }
+    }
+  }
+}
+
+.pane-usanetwork-social-usa-show-landing-social {
+  clear: both;
+}
+
+#usanetwork_social_chatter_title {
+  border-bottom: 1px solid $gray-med;
+  color: $white;
+  font-family: $headline-lt;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 0;
+  padding: 10px 15px 7px;
+  text-transform: lowercase;
+}
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: $gray-dark;
+}
+
+.usanetwork_social_show_comment {
+  border-bottom: 1px solid $gray-med;
+  border-top: 1px solid $black-dark;
+  padding: 20px 15px;
+  .echo-item-content {
+    color: $white;
+  }
+  .echo-item-data {
+    font-size: 21px;
+    font-family: $headline-lt;
+  }
+  .echo-item-authorName {
+    color: $black-dark;
+    font-size: 26px;
+    padding-bottom: 8px;
+  }
+  .echo-item-footer {
+    font-size: 13px;
+    img {
+      display: none !important;
+    }
+  }
+  .echo-item-date,
+  .echo-item-from {
+    float: left;
+  }
+}
+
+#usanetwork_social_join {
+  clear: both;
+  text-align: center;
+  padding: 10px 0 7px;
+  border-top: 1px solid $black-dark;
+  position: relative;
+  .usanetwork_social_join_msg {
+    color: $white;
+    font-family: $headline-lt;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    padding-left: 20px;
+    position: relative;
+    text-transform: lowercase;
+    &:before {
+      @include cssTriangle(6px, $white, left);
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+  }
+}

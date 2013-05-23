@@ -79,14 +79,15 @@ function usanetwork_ads_menu() {
   return $items;
 }
 
+
 /**
- * Helper that returns TV Show nodes.
+ * Helper that returns nodes of a given type.
  */
-function _usanetwork_ads_get_tv_show_nodes() {
+function _usanetwork_ads_get_nodes($node_type) {
 
   $tv_show_nodes_query = new EntityFieldQuery();
   $tv_show_nodes_query->entityCondition('entity_type', 'node');
-  $tv_show_nodes_query->entityCondition('bundle', 'tv_show');
+  $tv_show_nodes_query->entityCondition('bundle', $node_type);
   $tv_show_nodes_query->propertyCondition('status', 1);
   $tv_show_nodes_query->propertyOrderBy('title', 'ASC');
   $tv_show_nodes_result = $tv_show_nodes_query->execute();
@@ -102,51 +103,6 @@ function _usanetwork_ads_get_tv_show_nodes() {
   return $tv_show_nodes;
 }
 
-/**
- * Helper that returns Catchall Page nodes.
- */
-function _usanetwork_ads_get_catchall_page_nodes() {
-
-  $catchall_page_nodes_query = new EntityFieldQuery();
-  $catchall_page_nodes_query->entityCondition('entity_type', 'node');
-  $catchall_page_nodes_query->entityCondition('bundle', 'catchall_page');
-  $catchall_page_nodes_query->propertyCondition('status', 1);
-  $catchall_page_nodes_query->propertyOrderBy('title', 'ASC');
-  $catchall_page_nodes_result = $catchall_page_nodes_query->execute();
-
-  $catchall_page_nodes = array();
-
-  if (isset($catchall_page_nodes_result['node'])) {
-    foreach ($catchall_page_nodes_result['node'] as $result) {
-      $catchall_page_nodes[ $result->nid ] = node_load($result->nid, $result->vid);
-    }
-  }
-
-  return $catchall_page_nodes;
-}
-
-/**
- * Helper that returns Static Page nodes.
- */
-function _usanetwork_ads_get_usanetwork_static_page_nodes() {
-
-  $usanetwork_static_page_nodes_query = new EntityFieldQuery();
-  $usanetwork_static_page_nodes_query->entityCondition('entity_type', 'node');
-  $usanetwork_static_page_nodes_query->entityCondition('bundle', 'usanetwork_static_page');
-  $usanetwork_static_page_nodes_query->propertyCondition('status', 1);
-  $usanetwork_static_page_nodes_query->propertyOrderBy('title', 'ASC');
-  $usanetwork_static_page_nodes_result = $usanetwork_static_page_nodes_query->execute();
-
-  $usanetwork_static_page_nodes = array();
-
-  if (isset($usanetwork_static_page_nodes_result['node'])) {
-    foreach ($usanetwork_static_page_nodes_result['node'] as $result) {
-      $usanetwork_static_page_nodes[ $result->nid ] = node_load($result->nid, $result->vid);
-    }
-  }
-
-  return $usanetwork_static_page_nodes;
-}
 
 /**
  * Helper for adding omniture settings form elements.
@@ -308,7 +264,7 @@ function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$f
   );
 
   // Add a set of dart form elements per tv_show node.
-  if ($tv_show_nodes = _usanetwork_ads_get_tv_show_nodes()) {
+  if ($tv_show_nodes = _usanetwork_ads_get_nodes('tv_show')) {
     foreach ($tv_show_nodes as $node) {
       $parent_element['node']['tv_show'][ $node->nid ] = array(
         '#type' => 'fieldset',
@@ -368,7 +324,7 @@ function _usanetwork_ads_catchall_page_site_metric_form_elements(&$parent_elemen
   );
 
   // Add a set of dart form elements per catchall_page node.
-  if ($catchall_page_nodes = _usanetwork_ads_get_catchall_page_nodes()) {
+  if ($catchall_page_nodes = _usanetwork_ads_get_nodes('catchall_page')) {
     foreach ($catchall_page_nodes as $node) {
       $parent_element['node']['catchall_page'][ $node->nid ] = array(
         '#type' => 'fieldset',
@@ -425,7 +381,7 @@ function _usanetwork_ads_usanetwork_static_page_site_metric_form_elements(&$pare
   );
 
   // Add a set of dart form elements per usanetwork_static_page node.
-  if ($usanetwork_static_page_nodes = _usanetwork_ads_get_usanetwork_static_page_nodes()) {
+  if ($usanetwork_static_page_nodes = _usanetwork_ads_get_nodes('usanetwork_static_page')) {
     foreach ($usanetwork_static_page_nodes as $node) {
       $parent_element['node']['usanetwork_static_page'][ $node->nid ] = array(
         '#type' => 'fieldset',
@@ -612,8 +568,8 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
   // Catchall Page node based settings.
   _usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // TODO: Static Page node based dart settings.
-
+  // Static Page node based dart settings.
+  _usanetwork_ads_usanetwork_static_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
   // Content type based settings.
   _usanetwork_ads_content_type_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);

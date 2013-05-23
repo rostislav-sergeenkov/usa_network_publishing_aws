@@ -4163,12 +4163,6 @@ span#on-now-episode {
     width: 1245px;
   }
 }
-.node-type-tv-show h2.pane-title {
-  font-size: 26px;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
 
 .pane-expandable {
   height: 315px;
@@ -4178,6 +4172,12 @@ span#on-now-episode {
   .pane-expandable {
     margin-right: -15px;
   }
+}
+.pane-expandable h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 .pane-node-field-usa-tv-promo .pane-content > div {

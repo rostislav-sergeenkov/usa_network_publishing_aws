@@ -648,6 +648,11 @@ function _usanetwork_ads_get_node_dart_settings($node) {
     if ($tv_show_nid) {
       $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect']) ?
           $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect'] : '';
+      // Default tv_show node settings.
+      $node_dart_settings['sub'] = isset($site_metric_settings['node']['tv_show']['default']['sub']) ?
+          $site_metric_settings['node']['tv_show']['default']['sub'] : '';
+      $node_dart_settings['sub2'] = isset($site_metric_settings['node']['tv_show']['default']['sub2']) ?
+          $site_metric_settings['node']['tv_show']['default']['sub2'] : '';
     }
   }
 

@@ -161,6 +161,39 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
 
 
 /**
+ * Helper that adds "sect", "sub" and "sub2" form elements.
+ */
+function _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, &$base_element, &$default_settings) {
+
+  $base_element = array(
+    '#type' => 'fieldset',
+    '#title' => $fieldset_title,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $base_element['sect'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"sect" value'),
+    '#default_value' => isset($default_settings['sect']) ?
+        $default_settings['sect'] : '',
+    '#description' => t('Setting a "sect" value here will over-ride value set for any associated TV Show.'),
+  );
+  $base_element['sub'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"sub" value'),
+    '#default_value' => isset($default_settings['sub']) ?
+        $default_settings['sub'] : '',
+  );
+  $base_element['sub2'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"sub2" value'),
+    '#default_value' => isset($default_settings['sub2']) ?
+        $default_settings['sub2'] : '',
+  );
+}
+
+
+/**
  * Helper that returns the ad/tracking settings form elements for the homepage.
  */
 function _usanetwork_ads_adobe_tagloader_site_metric_form_elements(&$parent_element, &$form_state) {
@@ -200,32 +233,11 @@ function _usanetwork_ads_adobe_tagloader_site_metric_form_elements(&$parent_elem
  */
 function _usanetwork_ads_homepage_site_metric_form_elements(&$parent_element, &$form_state) {
 
-  $default_settings = $form_state['storage']['default_settings'];
+  $parent_element['home'] = array();
 
-  $parent_element['home'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Homepage Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-  $parent_element['home']['sect'] = array(
-    '#type' => 'textfield',
-    '#title' => t('"sect" value'),
-    '#default_value' => isset($default_settings['home']['sect']) ?
-        $default_settings['home']['sub'] : '',
-  );
-  $parent_element['home']['sub'] = array(
-    '#type' => 'textfield',
-    '#title' => t('"sub" value'),
-    '#default_value' => isset($default_settings['home']['sub']) ?
-        $default_settings['home']['sub'] : '',
-  );
-  $parent_element['home']['sub2'] = array(
-    '#type' => 'textfield',
-    '#title' => t('"sub2" value'),
-    '#default_value' => isset($default_settings['home']['sub2']) ?
-        $default_settings['home']['sub2'] : '',
-  );
+  $default_settings = isset($form_state['storage']['default_settings']['home']) ?
+      $form_state['storage']['default_settings']['home'] : array();
+  _usanetwork_ads_dart_site_metric_form_elements(t('Homepage Settings'), $parent_element['home'], $default_settings);
 
   // Omniture unlimited value form.
   $form_state['storage']['default_settings']['home']['omniture'] = isset($form_state['storage']['default_settings']['home']['omniture']) ?
@@ -278,21 +290,6 @@ function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$f
         '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sect']) ?
             $default_settings['node']['tv_show'][ $node->nid ]['sect'] : '',
       );
-      /*
-        TODO? Per show landing page "sub" and "sub2" over-rides?
-      $parent_element['node']['tv_show'][ $node->nid ]['sub'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Landing page "sub" value'),
-        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sub']) ?
-            $default_settings['node']['tv_show'][ $node->nid ]['sub'] : '',
-      );
-      $parent_element['node']['tv_show'][ $node->nid ]['sub2'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Landing page "sub2" value'),
-        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sub2']) ?
-            $default_settings['node']['tv_show'][ $node->nid ]['sub2'] : '',
-      );
-      //*/
       // Omniture unlimited value form.
       $id = 'tv-show-' . $node->nid;
       $display_id = htmlspecialchars_decode(check_plain($node->title));
@@ -326,30 +323,13 @@ function _usanetwork_ads_catchall_page_site_metric_form_elements(&$parent_elemen
   // Add a set of dart form elements per catchall_page node.
   if ($catchall_page_nodes = _usanetwork_ads_get_nodes('catchall_page')) {
     foreach ($catchall_page_nodes as $node) {
-      $parent_element['node']['catchall_page'][ $node->nid ] = array(
-        '#type' => 'fieldset',
-        '#title' => t('Catchall Page:  %catchall_page_title', array('%catchall_page_title' => $node->title)),
-        '#collapsible' => TRUE,
-        '#collapsed' => TRUE,
-      );
-      $parent_element['node']['catchall_page'][ $node->nid ]['sect'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sect" Value'),
-        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sect']) ?
-            $default_settings['node']['catchall_page'][ $node->nid ]['sect'] : '',
-      );
-      $parent_element['node']['catchall_page'][ $node->nid ]['sub'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sub" value'),
-        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sub']) ?
-            $default_settings['node']['catchall_page'][ $node->nid ]['sub'] : '',
-      );
-      $parent_element['node']['catchall_page'][ $node->nid ]['sub2'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sub2" value'),
-        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sub2']) ?
-            $default_settings['node']['catchall_page'][ $node->nid ]['sub2'] : '',
-      );
+      // Set the base form element for this node.
+      $parent_element['node']['catchall_page'][ $node->nid ] = array();
+      // Add DART form elements.
+      $fieldset_title = t('Catchall Page:  %catchall_page_title', array('%catchall_page_title' => $node->title));
+      $default_settings = isset($form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]) ?
+          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ] : array();
+      _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node']['catchall_page'][ $node->nid ], $default_settings);
       // Omniture unlimited value form.
       $id = 'catchall-page-' . $node->nid;
       $display_id = htmlspecialchars_decode(check_plain($node->title));
@@ -383,30 +363,13 @@ function _usanetwork_ads_usanetwork_static_page_site_metric_form_elements(&$pare
   // Add a set of dart form elements per usanetwork_static_page node.
   if ($usanetwork_static_page_nodes = _usanetwork_ads_get_nodes('usanetwork_static_page')) {
     foreach ($usanetwork_static_page_nodes as $node) {
-      $parent_element['node']['usanetwork_static_page'][ $node->nid ] = array(
-        '#type' => 'fieldset',
-        '#title' => t('Static Page:  %usanetwork_static_page_title', array('%usanetwork_static_page_title' => $node->title)),
-        '#collapsible' => TRUE,
-        '#collapsed' => TRUE,
-      );
-      $parent_element['node']['usanetwork_static_page'][ $node->nid ]['sect'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sect" Value'),
-        '#default_value' => isset($default_settings['node']['usanetwork_static_page'][ $node->nid ]['sect']) ?
-            $default_settings['node']['usanetwork_static_page'][ $node->nid ]['sect'] : '',
-      );
-      $parent_element['node']['usanetwork_static_page'][ $node->nid ]['sub'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sub" value'),
-        '#default_value' => isset($default_settings['node']['usanetwork_static_page'][ $node->nid ]['sub']) ?
-            $default_settings['node']['usanetwork_static_page'][ $node->nid ]['sub'] : '',
-      );
-      $parent_element['node']['usanetwork_static_page'][ $node->nid ]['sub2'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sub2" value'),
-        '#default_value' => isset($default_settings['node']['usanetwork_static_page'][ $node->nid ]['sub2']) ?
-            $default_settings['node']['usanetwork_static_page'][ $node->nid ]['sub2'] : '',
-      );
+      // Set the base form element for this node.
+      $parent_element['node']['usanetwork_static_page'][ $node->nid ] = array();
+      // Add DART form elements.
+      $fieldset_title = t('Static Page:  %usanetwork_static_page_title', array('%usanetwork_static_page_title' => $node->title));
+      $default_settings = isset($form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]) ?
+          $form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ] : array();
+      _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node']['usanetwork_static_page'][ $node->nid ], $default_settings);
       // Omniture unlimited value form.
       $id = 'usanetwork-static-page-' . $node->nid;
       $display_id = htmlspecialchars_decode(check_plain($node->title));
@@ -447,31 +410,13 @@ function _usanetwork_ads_content_type_site_metric_form_elements(&$parent_element
   );
 
   foreach ($content_node_types as $node_type => $title) {
-    $parent_element['node_type'][ $node_type ] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Type:  %type', array('%type' => $title)),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
-    $parent_element['node_type'][ $node_type ]['sect'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sect" value'),
-      '#default_value' => isset($default_settings['node_type'][ $node_type ]['sect']) ?
-          $default_settings['node_type'][ $node_type ]['sect'] : '',
-      '#description' => t('Setting a "sect" value here will over-ride the value set for the associated TV Show.'),
-    );
-    $parent_element['node_type'][ $node_type ]['sub'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sub" value'),
-      '#default_value' => isset($default_settings['node_type'][ $node_type ]['sub']) ?
-          $default_settings['node_type'][ $node_type ]['sub'] : '',
-    );
-    $parent_element['node_type'][ $node_type ]['sub2'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sub2" value'),
-      '#default_value' => isset($default_settings['node_type'][ $node_type ]['sub2']) ?
-          $default_settings['node_type'][ $node_type ]['sub2'] : '',
-    );
+    // Set the base form element for this node type.
+    $parent_element['node_type'][ $node_type ] = array();
+    // Add DART form elements.
+    $fieldset_title = t('Type:  %type', array('%type' => $title));
+    $default_settings = isset($form_state['storage']['default_settings']['node_type'][ $node_type ]) ?
+        $form_state['storage']['default_settings']['node_type'][ $node_type ] : array();
+    _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node_type'][ $node_type ], $default_settings);
     // Omniture unlimited value form.
     $id = 'node-type-' . $node_type;
     $display_id = t('@type', array('@type' => $title));
@@ -498,36 +443,13 @@ function _usanetwork_ads_custom_path_site_metric_form_elements(&$parent_element,
   );
 
   foreach (_usanetwork_ads_get_usanetwork_menu_paths() as $path => $clean_path) {
-    $parent_element['path'][ $path ] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Path:  %path', array('%path' => $clean_path)),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
-    $parent_element['path'][ $path ]['sect'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sect" value'),
-      '#default_value' => isset($default_settings['path'][ $path ]['sect']) ?
-          $default_settings['path'][ $path ]['sect'] : '',
-    );
-    // Tell user that setting a "sect" value for "node/*" paths will over-ride
-    // the sect value set per TV Show.
-    if (strpos($path, 'node/') === 0) {
-      $parent_element['path'][ $path ]['sect']['#description'] =
-          t('Setting a "sect" value here will over-ride the value set for the associated TV Show.');
-    }
-    $parent_element['path'][ $path ]['sub'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sub" value'),
-      '#default_value' => isset($default_settings['path'][ $path ]['sub']) ?
-          $default_settings['path'][ $path ]['sub'] : '',
-    );
-    $parent_element['path'][ $path ]['sub2'] = array(
-      '#type' => 'textfield',
-      '#title' => t('"sub2" value'),
-      '#default_value' => isset($default_settings['path'][ $path ]['sub2']) ?
-          $default_settings['path'][ $path ]['sub2'] : '',
-    );
+    // Set the base form element for this path.
+    $parent_element['path'][ $path ] = array();
+    // Add DART form elements.
+    $fieldset_title = t('Path:  %path', array('%path' => $clean_path));
+    $default_settings = isset($form_state['storage']['default_settings']['path'][ $path ]) ?
+        $form_state['storage']['default_settings']['path'][ $path ] : array();
+    _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['path'][ $path ], $default_settings);
     // Omniture unlimited value form.
     $id_clean_path = preg_replace('|[^a-zA-Z0-9]+|', '-', $path);
     $id = 'custom-path-' . strtolower($id_clean_path);
@@ -648,11 +570,6 @@ function _usanetwork_ads_get_node_dart_settings($node) {
     if ($tv_show_nid) {
       $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect']) ?
           $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect'] : '';
-      // Default tv_show node settings.
-      $node_dart_settings['sub'] = isset($site_metric_settings['node']['tv_show']['default']['sub']) ?
-          $site_metric_settings['node']['tv_show']['default']['sub'] : '';
-      $node_dart_settings['sub2'] = isset($site_metric_settings['node']['tv_show']['default']['sub2']) ?
-          $site_metric_settings['node']['tv_show']['default']['sub2'] : '';
     }
   }
 

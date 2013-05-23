@@ -25,8 +25,12 @@ function usanetwork_video_menu() {
  */
 function usanetwork_video_block_info() {
   $blocks = array();
-  $blocks['usa_global_video_show_nav'] = array(
-    'info' => t('USA: globla video show navigation'),
+  $blocks['usa_global_video_nav'] = array(
+    'info' => t('USA: global video navigation'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_show_video_nav'] = array(
+    'info' => t('USA: show video navigation'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
 
@@ -40,9 +44,13 @@ function usanetwork_video_block_view($delta) {
   $block = array();
   //The $delta parameter tells us which block is being requested.
   switch ($delta) {
-    case 'usa_global_video_show_nav':
+    case 'usa_global_video_nav':
       $block['subject'] = '';
-      $block['content'] = usanetwork_video_global_show_nav();
+      $block['content'] = usanetwork_video_global_nav();
+      break;
+    case 'usa_show_video_nav':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_video_show_nav();
       break;
   }
 
@@ -50,16 +58,15 @@ function usanetwork_video_block_view($delta) {
 }
 
 /**
- * Generates the global video show navigation
+ * Generates the global video navigation
  */
-function usanetwork_video_global_show_nav() {
-  $items = array();
-  $items[] = array('data' => t('all shows'));
+function usanetwork_video_global_nav() {
+  $items[] = array('data' => '<span>all shows</span>', 'class' => array('all-shows'));
   $lang = LANGUAGE_NONE;
 
   //TODO: replace the target URL with the correct url after video views creation
-  $items[] = l(t('full episodes'), 'videos/full-episodes');
-  $items[] = l(t('whats hot'), 'videos/whats-hot');
+  $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+  $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
 
   $query = new EntityFieldQuery();
 
@@ -83,11 +90,84 @@ function usanetwork_video_global_show_nav() {
 
         // Add all the published tv show nodes
         if (isset($show[0]) && !empty($show[0])) {
-          $title = $show[0]->field_display_title[$lang][0]['value'];
+          $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
-          $items[0]['children'][] = l($title, $path);
+          $items[0]['children'][] = l($title, $path, array('html' => true));
         }
       }
+    }
+  }
+
+  return theme('item_list', array('items' => $items));
+}
+
+/**
+ * Generates the show video navigation
+ */
+function usanetwork_video_show_nav() {
+  $items = array();
+  $arg = arg();
+  $cpath = current_path();
+  $node = node_load($arg[1]);
+  $lang = LANGUAGE_NONE;
+
+  // return empty block if the url is invalid
+  if (!isset($arg[1]) || empty($arg[1])) {
+    return '';
+  }
+  $query = new EntityFieldQuery();
+
+  // Fetch all the video node associated with any show
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $videos = entity_load('node', array_keys($result['node']));
+
+    $nids = array();
+    foreach ($videos as $video) {
+      // Get all the unique tv shows nodes
+      if (!in_array($video->field_show[$lang][0]['target_id'], $nids)) {
+        $nids[] = $video->field_show[$lang][0]['target_id'];
+        $show = array_values(entity_load('node', array($video->field_show[$lang][0]['target_id'])));
+
+        // Add all the published tv show nodes
+        if (isset($show[0]) && !empty($show[0])) {
+          $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
+          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
+          if ($node->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
+            $items[0]['data'] = $title;
+            $items[0]['class'] = array(str_replace(' ', '-', strtolower($title)));
+
+            $items[0]['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
+          } else  {
+            $items[0]['children'][] = l($title, $path, array('html' => true));
+          }
+        }
+      }
+    }
+  }
+
+  //TODO: replace the target URL with the correct url after video views creation
+  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+
+  if (isset($node->field_usa_video_terms[$lang][0]['target_id']) || !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
+    $term = taxonomy_term_load($node->field_usa_video_terms[$lang][0]['target_id']);
+    $terms = taxonomy_get_children($term->tid, $term->vid);
+    $i=2;
+    foreach ($terms as $term1) {
+      $class = str_replace(' ', '-', strtolower($term1->name));
+      $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
+      $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
+      foreach ($terms1 as $term2) {
+        $class = str_replace(' ', '-', strtolower($term2->name));
+        $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+      }
+      $i++;
     }
   }
 

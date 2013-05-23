@@ -85,9 +85,6 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
-  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -142,6 +139,9 @@ function pub_tv_overrides_features_override_default_overrides() {
     'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|full|custom_settings"] = TRUE;
+  $overrides["variable.field_bundle_settings_node__tv_show.value|extra_fields|form|flag"] = array(
+    'weight' => '10',
+  );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|block_cover_title"] = array(
     'custom_settings' => TRUE,
   );

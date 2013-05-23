@@ -5,6 +5,35 @@
  */
 
 /**
+ * Implements hook_ds_field_settings_info().
+ */
+function usanetwork_promo_ds_field_settings_info() {
+  $export = array();
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|usanetwork_promo|promo_teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'usanetwork_promo';
+  $ds_fieldsetting->view_mode = 'promo_teaser';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h3',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|usanetwork_promo|promo_teaser'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function usanetwork_promo_ds_layout_settings_info() {
@@ -127,6 +156,42 @@ function usanetwork_promo_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|usanetwork_promo|home_promo_bspot'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usanetwork_promo|promo_teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usanetwork_promo';
+  $ds_layout->view_mode = 'promo_teaser';
+  $ds_layout->layout = 'promo_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 1,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'title' => array(
+        0 => 'title',
+      ),
+      'media' => array(
+        0 => 'field_promo_regular_image',
+      ),
+      'caption' => array(
+        0 => 'field_promo_text_line_1',
+        1 => 'field_promo_text_line_2',
+      ),
+      'link' => array(
+        0 => 'field_promo_link',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'title',
+      'field_promo_regular_image' => 'media',
+      'field_promo_text_line_1' => 'caption',
+      'field_promo_text_line_2' => 'caption',
+      'field_promo_link' => 'link',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usanetwork_promo|promo_teaser'] = $ds_layout;
 
   return $export;
 }

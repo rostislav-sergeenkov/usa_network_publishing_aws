@@ -16,7 +16,7 @@ fonts_dir = "fonts"
 relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
-line_comments = false
+#line_comments = false
 
 # Assuming this theme is in sites/*/themes/THEMENAME, you can add the partials
 # included with a module by uncommenting and modifying one of the lines below:
@@ -35,8 +35,8 @@ environment = :development
 #environment = :production
 
 # In development, we can turn on the debug_info to use with FireSass or Chrome Web Inspector.
-debug = false
-#debug = true
+#debug = false
+debug = true
 
 ##
 ## You probably don't need to edit anything below this.

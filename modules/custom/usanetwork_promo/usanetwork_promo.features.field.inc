@@ -77,6 +77,12 @@ function usanetwork_promo_field_default_fields() {
           'type' => 'taxonomy_usa_term_icon',
           'weight' => '4',
         ),
+        'promo_teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'teaser' => array(
           'label' => 'above',
           'module' => 'taxonomy',
@@ -166,6 +172,12 @@ function usanetwork_promo_field_default_fields() {
           'settings' => array(),
           'type' => 'text_plain',
           'weight' => '5',
+        ),
+        'promo_teaser' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -268,6 +280,13 @@ function usanetwork_promo_field_default_fields() {
           'settings' => array(),
           'type' => 'link_plain',
           'weight' => '6',
+        ),
+        'promo_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_plain',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -393,6 +412,16 @@ function usanetwork_promo_field_default_fields() {
           'type' => 'image',
           'weight' => '1',
         ),
+        'promo_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '300x250',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'above',
           'module' => 'file_entity',
@@ -516,6 +545,13 @@ function usanetwork_promo_field_default_fields() {
           'type' => 'text_default',
           'weight' => '2',
         ),
+        'promo_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
         'teaser' => array(
           'label' => 'above',
           'module' => 'text',
@@ -611,6 +647,13 @@ function usanetwork_promo_field_default_fields() {
           'weight' => '3',
         ),
         'home_promo_bspot' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'promo_teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -721,6 +764,12 @@ function usanetwork_promo_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
+        ),
+        'promo_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -861,6 +910,12 @@ function usanetwork_promo_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '12',
+        ),
+        'promo_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',

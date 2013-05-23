@@ -19,21 +19,28 @@
     font-size: 26px;
     font-family: $headline-semi;
     text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}
+
+.pane-expandable {
+  height: 315px;
+  overflow: hidden;
+  @include breakpoint($bp-show-mid-width) {
+    margin-right: -15px;
   }
 }
 
 .pane-node-field-usa-tv-promo {
   .pane-content {
-    height: 315px;
-    overflow: hidden;
-    @include breakpoint($bp-show-mid-width) {
-      margin-right: -15px;
-    }
     > div {
       float: left;
       width: 304px;
       height: 254px;
-      margin-right: 11px;
+      margin: 0 0 15px;
+      @include breakpoint($bp-show-mid-width) {
+        margin-right: 11px;
+      }
     }
   }
 }

@@ -30,7 +30,6 @@ function usanetwork_custompages_games($node) {
 
   switch($show_path) {
     case 'burn-notice':
-    case 'psych':
       switch ($arg[3]) {
         case 'seeitlikeaspy':
           $output = usanetwork_custompages_games_seeitlikeaspy($node);
@@ -39,6 +38,8 @@ function usanetwork_custompages_games($node) {
           $output = usanetwork_custompages_games_jetski($node);
         break;
       }
+    break;
+    case 'psych':
     break;
   }
 

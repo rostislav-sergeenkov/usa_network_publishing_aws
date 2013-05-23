@@ -202,7 +202,7 @@ function usanetwork_context_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'usa_global_videos';
   $context->description = '';
-  $context->tag = 'global videos page';
+  $context->tag = 'videos page';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -214,11 +214,11 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_video-usa_global_video_show_nav' => array(
+        'usanetwork_video-usa_global_video_nav' => array(
           'module' => 'usanetwork_video',
-          'delta' => 'usa_global_video_show_nav',
+          'delta' => 'usa_global_video_nav',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '9',
         ),
       ),
     ),
@@ -227,7 +227,7 @@ function usanetwork_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('global videos page');
+  t('videos page');
   $export['usa_global_videos'] = $context;
 
   $context = new stdClass();
@@ -369,6 +369,42 @@ function usanetwork_context_context_default_contexts() {
   t('ads');
   t('video specific leaderboards');
   $export['usa_leader_video'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_show_videos';
+  $context->description = '';
+  $context->tag = 'videos page';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'usa_tve_video' => 'usa_tve_video',
+        'usa_video' => 'usa_video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_video-usa_show_video_nav' => array(
+          'module' => 'usanetwork_video',
+          'delta' => 'usa_show_video_nav',
+          'region' => 'content',
+          'weight' => '9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('videos page');
+  $export['usa_show_videos'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

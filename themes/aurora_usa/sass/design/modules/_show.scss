@@ -32,14 +32,14 @@
 
 .social-panel {
   &.inner-wrapper  {
-    .chatter-content {
+    .panel-col1 {
       @extend %two-to-one-col-social-content-no-sidebar;
     }
-    .sidebar {
+    .panel-col2 {
       @extend %two-to-one-col-social-sidebar;
     }
   }
-  &.one-sidebar .chatter-content {
+  &.panel-two-cols .panel-col1 {
     @extend %two-to-one-col-social-content-sidebar;
   }
 }

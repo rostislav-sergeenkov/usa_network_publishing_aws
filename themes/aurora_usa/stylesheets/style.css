@@ -259,7 +259,7 @@ you can use the generic selector below, but it's slower:
   border: 2px solid #2d2d2d;
 }
 
-.usa-social #content, .social-panel.inner-wrapper .chatter-content {
+.usa-social #content, .social-panel.inner-wrapper .panel-col1 {
   text-align: left;
   vertical-align: top;
   float: none;
@@ -268,20 +268,20 @@ you can use the generic selector below, but it's slower:
 }
 
 @media (min-width: 900px) {
-  .usa-social.one-sidebar #content, .social-panel.one-sidebar .chatter-content {
+  .usa-social.one-sidebar #content, .social-panel.panel-two-cols .panel-col1 {
     float: left;
     margin-right: -315px;
     padding-right: 315px;
   }
 }
 
-.usa-social .sidebar, .social-panel.inner-wrapper .sidebar {
+.usa-social .sidebar, .social-panel.inner-wrapper .panel-col2 {
   clear: both;
   width: 100%;
   margin-top: 30px;
 }
 @media (min-width: 900px) {
-  .usa-social .sidebar, .social-panel.inner-wrapper .sidebar {
+  .usa-social .sidebar, .social-panel.inner-wrapper .panel-col2 {
     float: left;
     clear: none;
     width: 300px;

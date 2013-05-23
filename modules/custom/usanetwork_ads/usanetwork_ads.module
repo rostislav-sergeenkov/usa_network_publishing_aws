@@ -184,6 +184,40 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
 /**
  * Helper that returns the ad/tracking settings form elements for the homepage.
  */
+function _usanetwork_ads_adobe_tagloader_site_metric_form_elements(&$parent_element, &$form_state) {
+
+  $default_settings = $form_state['storage']['default_settings'];
+
+  $parent_element['adobe_tagloader'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Adobe TagLoader Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $parent_element['adobe_tagloader']['tag_container_dc'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"tagContainerDC" value'),
+    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_dc']) ?
+        $default_settings['adobe_tagloader']['tag_container_dc'] : '',
+  );
+  $parent_element['adobe_tagloader']['tag_container_namespace'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"tagContainerNamespace" value'),
+    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_namespace']) ?
+        $default_settings['adobe_tagloader']['tag_container_namespace'] : '',
+  );
+  $parent_element['adobe_tagloader']['tag_container_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('"tagContainerName" value'),
+    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_name']) ?
+        $default_settings['adobe_tagloader']['tag_container_name'] : '',
+  );
+}
+
+
+/**
+ * Helper that returns the ad/tracking settings form elements for the homepage.
+ */
 function _usanetwork_ads_homepage_site_metric_form_elements(&$parent_element, &$form_state) {
 
   $default_settings = $form_state['storage']['default_settings'];
@@ -485,19 +519,25 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
     '#tree' => TRUE,
   );
 
-  // Homepage ad settings.
+  // Adobe tag loader settings.
+  _usanetwork_ads_adobe_tagloader_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
+
+  // Homepage settings.
   _usanetwork_ads_homepage_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // TV Show node/node-reference based ad settings.
+  // TV Show node/node-reference based settings.
   _usanetwork_ads_tv_show_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
   // Catchall Page node based settings.
   _usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // Content type based ad settings.
+  // TODO: Static Page node based dart settings.
+
+
+  // Content type based settings.
   _usanetwork_ads_content_type_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // Path based ad settings.
+  // Path based settings.
   _usanetwork_ads_custom_path_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
 
@@ -641,13 +681,22 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $site_metric_settings['path'][ $current_menu_item_path ]['sub2'] : $usa_dart_js_settings['USA']['DART']['values']['sub2'];
   }
 
-  // Ensure JS settings values.
+  // Ensure DART JS settings values.
   $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sect']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sect'] : 'other';
   $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sub'] : '';
   $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
+
+  // Add Adobe TagLoader variables and script.
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_dc']) ?
+      $site_metric_settings['adobe_tagloader']['tag_container_dc'] : '';
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerNamespace'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_namespace']) ?
+      $site_metric_settings['adobe_tagloader']['tag_container_namespace'] : '';
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_name']) ?
+      $site_metric_settings['adobe_tagloader']['tag_container_name'] : '';
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetork_ads.s_code.js');
 
 
   // Set the JS settings for ads.

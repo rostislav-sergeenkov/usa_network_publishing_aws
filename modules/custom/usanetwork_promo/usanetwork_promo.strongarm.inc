@@ -61,6 +61,9 @@ function usanetwork_promo_strongarm() {
       'home_promo_bspot' => array(
         'custom_settings' => TRUE,
       ),
+      'promo_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

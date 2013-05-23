@@ -31,3 +31,35 @@
     @extend %visuallyhidden;
   }
 }
+
+.caption-overlay {
+  position: relative;
+  display: block;
+  .caption-fields-wrapper {
+    height: 67px;
+    background: $black-trans;
+    bottom: 0;
+    color: $white;
+    display: block;
+    left: 0;
+    position: absolute;
+    width: 300px;
+    white-space: nowrap;
+    padding: 18px 15px 9px;
+    margin: 0 2px 2px;
+    overflow: hidden;
+    h3 {
+      margin: 0;
+      line-height: .95em;
+    }
+    .caption {
+      font-family: $headline-reg;
+      font-size: 15px;
+      line-height: 1.266666em;
+      > div {
+        display: inline;
+        padding-right: 5px;
+      }
+    }
+  }
+}

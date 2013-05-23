@@ -197,6 +197,7 @@ you can use the generic selector below, but it's slower:
 /* person page breakpoints */
 /* social page breakpoints */
 /* on now */
+/* show landing page */
 /*------------------------------------*\
     $MIXINS
 \*------------------------------------*/
@@ -254,6 +255,10 @@ you can use the generic selector below, but it's slower:
   color: white;
 }
 
+.view-mode-promo_teaser .asset-img {
+  border: 2px solid #2d2d2d;
+}
+
 .media-gallery .panels-section-row:nth-of-type(2) {
   background: #1f1f1f;
   border-color: #2d2d2d;
@@ -307,6 +312,38 @@ strong, dfn, b {
   background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
   background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
   background-image: linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
+}
+
+.caption-overlay {
+  position: relative;
+  display: block;
+}
+.caption-overlay .caption-fields-wrapper {
+  height: 67px;
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  color: white;
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 300px;
+  white-space: nowrap;
+  padding: 18px 15px 9px;
+  margin: 0 2px 2px;
+  overflow: hidden;
+}
+.caption-overlay .caption-fields-wrapper h3 {
+  margin: 0;
+  line-height: .95em;
+}
+.caption-overlay .caption-fields-wrapper .caption {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.266666em;
+}
+.caption-overlay .caption-fields-wrapper .caption > div {
+  display: inline;
+  padding-right: 5px;
 }
 
 .filter-dropdown {
@@ -4104,4 +4141,132 @@ span#on-now-episode {
     display: block;
     width: auto;
   }
+}
+
+.node-type-tv-show #main {
+  margin: 0 auto;
+  padding: 0;
+  width: 300px;
+}
+@media (min-width: 645px) {
+  .node-type-tv-show #main {
+    width: 615px;
+  }
+}
+@media (min-width: 960px) {
+  .node-type-tv-show #main {
+    width: 930px;
+  }
+}
+@media (min-width: 1275px) {
+  .node-type-tv-show #main {
+    width: 1245px;
+  }
+}
+.node-type-tv-show h2.pane-title {
+  font-size: 26px;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.pane-expandable {
+  height: 315px;
+  overflow: hidden;
+}
+@media (min-width: 645px) {
+  .pane-expandable {
+    margin-right: -15px;
+  }
+}
+
+.pane-node-field-usa-tv-promo .pane-content > div {
+  float: left;
+  width: 304px;
+  height: 254px;
+  margin: 0 0 15px;
+}
+@media (min-width: 645px) {
+  .pane-node-field-usa-tv-promo .pane-content > div {
+    margin-right: 11px;
+  }
+}
+
+.pane-usanetwork-social-usa-show-landing-social {
+  clear: both;
+}
+
+#usanetwork_social_chatter_title {
+  border-bottom: 1px solid #3d3d3d;
+  color: white;
+  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 0;
+  padding: 10px 15px 7px;
+  text-transform: lowercase;
+}
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: #2d2d2d;
+}
+
+.usanetwork_social_show_comment {
+  border-bottom: 1px solid #3d3d3d;
+  border-top: 1px solid #161616;
+  padding: 20px 15px;
+}
+.usanetwork_social_show_comment .echo-item-content {
+  color: white;
+}
+.usanetwork_social_show_comment .echo-item-data {
+  font-size: 21px;
+  font-family: "Proxima N W01 Light", Arial, sans-serif;
+}
+.usanetwork_social_show_comment .echo-item-authorName {
+  color: #161616;
+  font-size: 26px;
+  padding-bottom: 8px;
+}
+.usanetwork_social_show_comment .echo-item-footer {
+  font-size: 13px;
+}
+.usanetwork_social_show_comment .echo-item-footer img {
+  display: none !important;
+}
+.usanetwork_social_show_comment .echo-item-date,
+.usanetwork_social_show_comment .echo-item-from {
+  float: left;
+}
+
+#usanetwork_social_join {
+  clear: both;
+  text-align: center;
+  padding: 10px 0 7px;
+  border-top: 1px solid #161616;
+  position: relative;
+}
+#usanetwork_social_join .usanetwork_social_join_msg {
+  color: white;
+  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding-left: 20px;
+  position: relative;
+  text-transform: lowercase;
+}
+#usanetwork_social_join .usanetwork_social_join_msg:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 6px;
+  border-color: transparent transparent transparent white;
+  position: absolute;
+  left: 0;
+  top: 5px;
 }

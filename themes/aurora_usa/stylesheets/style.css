@@ -326,10 +326,10 @@ strong, dfn, b {
   display: block;
   left: 0;
   position: absolute;
-  width: 100%;
+  width: 300px;
   white-space: nowrap;
   padding: 18px 15px 9px;
-  margin: 0;
+  margin: 0 2px 2px;
   overflow: hidden;
 }
 .caption-overlay .caption-fields-wrapper h3 {
@@ -4167,22 +4167,29 @@ span#on-now-episode {
   font-size: 26px;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
-.pane-node-field-usa-tv-promo .pane-content {
+.pane-expandable {
   height: 315px;
   overflow: hidden;
 }
 @media (min-width: 645px) {
-  .pane-node-field-usa-tv-promo .pane-content {
+  .pane-expandable {
     margin-right: -15px;
   }
 }
+
 .pane-node-field-usa-tv-promo .pane-content > div {
   float: left;
   width: 304px;
   height: 254px;
-  margin-right: 11px;
+  margin: 0 0 15px;
+}
+@media (min-width: 645px) {
+  .pane-node-field-usa-tv-promo .pane-content > div {
+    margin-right: 11px;
+  }
 }
 
 .pane-usanetwork-social-usa-show-landing-social {

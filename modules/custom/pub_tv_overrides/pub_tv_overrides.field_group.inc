@@ -57,6 +57,7 @@ function pub_tv_overrides_field_group_info() {
       3 => 'field_usa_tv_on_now',
       4 => 'field_usa_tv_promo',
       5 => 'field_usa_tv_tune_in_date',
+      6 => 'field_usa_tv_promo_vids',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -148,7 +148,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
+      'label' => 'hidden',
       'formatter' => 'entityreference_entity_view',
       'delta_limit' => '0',
       'delta_offset' => '0',
@@ -158,7 +158,7 @@ function usanetwork_panels_default_page_manager_handlers() {
         'links' => 0,
       ),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => 'The Latest',
     );
     $pane->cache = array();
@@ -254,31 +254,28 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->pid = 'new-6';
     $pane->panel = 'two';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_usa_tv_featured_videos';
+    $pane->subtype = 'node:field_usa_tv_promo_vids';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
+      'label' => 'hidden',
       'formatter' => 'entityreference_entity_view',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,
       'formatter_settings' => array(
-        'view_mode' => 'teaser',
+        'view_mode' => 'promo_teaser',
         'links' => 0,
       ),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => 'Videos',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'pane-expandable',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

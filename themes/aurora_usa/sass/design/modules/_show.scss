@@ -16,18 +16,22 @@
     }
   }
   h2.pane-title {
-    font-size: 26px;
-    font-family: $headline-semi;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+
   }
 }
+
 
 .pane-expandable {
   height: 315px;
   overflow: hidden;
   @include breakpoint($bp-show-mid-width) {
     margin-right: -15px;
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: $headline-semi;
+    text-transform: uppercase;
   }
 }
 

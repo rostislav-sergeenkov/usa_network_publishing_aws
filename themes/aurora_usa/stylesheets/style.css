@@ -259,6 +259,37 @@ you can use the generic selector below, but it's slower:
   border: 2px solid #2d2d2d;
 }
 
+.usa-social #content, .social-panel.inner-wrapper .chatter-content {
+  text-align: left;
+  vertical-align: top;
+  float: none;
+  width: 100%;
+  padding-right: 0;
+}
+
+@media (min-width: 900px) {
+  .usa-social.one-sidebar #content, .social-panel.one-sidebar .chatter-content {
+    float: left;
+    margin-right: -315px;
+    padding-right: 315px;
+  }
+}
+
+.usa-social .sidebar, .social-panel.inner-wrapper .sidebar {
+  clear: both;
+  width: 100%;
+  margin-top: 30px;
+}
+@media (min-width: 900px) {
+  .usa-social .sidebar, .social-panel.inner-wrapper .sidebar {
+    float: left;
+    clear: none;
+    width: 300px;
+    margin-left: 15px;
+    margin-top: 0;
+  }
+}
+
 .media-gallery .panels-section-row:nth-of-type(2) {
   background: #1f1f1f;
   border-color: #2d2d2d;
@@ -3137,35 +3168,6 @@ body.usa-social {
 .usa-social li {
   list-style: none;
 }
-.usa-social #content {
-  text-align: left;
-  vertical-align: top;
-  float: none;
-  width: 100%;
-  padding-right: 0;
-}
-.usa-social .sidebar {
-  clear: both;
-  width: 100%;
-  margin-top: 30px;
-}
-@media (min-width: 900px) {
-  .usa-social .sidebar {
-    float: left;
-    clear: none;
-    width: 300px;
-    margin-left: 15px;
-    margin-top: 0;
-  }
-}
-
-@media (min-width: 900px) {
-  .usa-social.one-sidebar #content {
-    float: left;
-    margin-right: -315px;
-    padding-right: 315px;
-  }
-}
 
 .social-follow-block {
   background-color: #414141;
@@ -4162,6 +4164,14 @@ span#on-now-episode {
   .node-type-tv-show #main {
     width: 1245px;
   }
+}
+
+.node-type-tv-show .panel-row {
+  clear: both;
+  margin-bottom: 30px;
+}
+.node-type-tv-show .panel-row .dart-tag {
+  float: right;
 }
 
 .pane-expandable {

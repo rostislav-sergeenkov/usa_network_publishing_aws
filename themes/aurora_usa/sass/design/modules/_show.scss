@@ -20,6 +20,30 @@
   }
 }
 
+.node-type-tv-show {
+  .panel-row {
+    clear: both;
+    margin-bottom: 30px;
+    .dart-tag {
+      float: right;
+    }
+  }
+}
+
+.social-panel {
+  &.inner-wrapper  {
+    .chatter-content {
+      @extend %two-to-one-col-social-content-no-sidebar;
+    }
+    .sidebar {
+      @extend %two-to-one-col-social-sidebar;
+    }
+  }
+  &.one-sidebar .chatter-content {
+    @extend %two-to-one-col-social-content-sidebar;
+  }
+}
+
 
 .pane-expandable {
   height: 315px;

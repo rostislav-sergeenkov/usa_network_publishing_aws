@@ -68,9 +68,9 @@ function usanetwork_ads_permission() {
 function usanetwork_ads_menu() {
 
   $items = array();
-  $items['admin/usanetwork-ads/dart-settings'] = array(
+  $items['admin/usanetwork/ads/site-metric-settings'] = array(
     #'type' => MENU_CALLBACK,
-    'title' => t('USA Network DART Ad Settings'),
+    'title' => t('USA Network Site Metric Settings'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_usanetwork_ads_site_metric_settings_form'),
     'access arguments' => array('administer usanetwork dart settings'),
@@ -209,31 +209,32 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
  */
 function _usanetwork_ads_adobe_tagloader_site_metric_form_elements(&$parent_element, &$form_state) {
 
-  $default_settings = $form_state['storage']['default_settings'];
+  $default_settings = variable_get('usanetwork_ads_adobe_tagloader_settings', array());
 
-  $parent_element['adobe_tagloader'] = array(
+  $parent_element['usanetwork_ads_adobe_tagloader_settings'] = array(
     '#type' => 'fieldset',
+    '#tree' => TRUE,
     '#title' => t('Adobe TagLoader Settings'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
-  $parent_element['adobe_tagloader']['tag_container_dc'] = array(
+  $parent_element['usanetwork_ads_adobe_tagloader_settings']['tag_container_dc'] = array(
     '#type' => 'textfield',
     '#title' => t('"tagContainerDC" value'),
-    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_dc']) ?
-        $default_settings['adobe_tagloader']['tag_container_dc'] : '',
+    '#default_value' => isset($default_settings['tag_container_dc']) ?
+        $default_settings['tag_container_dc'] : '',
   );
-  $parent_element['adobe_tagloader']['tag_container_namespace'] = array(
+  $parent_element['usanetwork_ads_adobe_tagloader_settings']['tag_container_namespace'] = array(
     '#type' => 'textfield',
     '#title' => t('"tagContainerNamespace" value'),
-    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_namespace']) ?
-        $default_settings['adobe_tagloader']['tag_container_namespace'] : '',
+    '#default_value' => isset($default_settings['tag_container_namespace']) ?
+        $default_settings['tag_container_namespace'] : '',
   );
-  $parent_element['adobe_tagloader']['tag_container_name'] = array(
+  $parent_element['usanetwork_ads_adobe_tagloader_settings']['tag_container_name'] = array(
     '#type' => 'textfield',
     '#title' => t('"tagContainerName" value'),
-    '#default_value' => isset($default_settings['adobe_tagloader']['tag_container_name']) ?
-        $default_settings['adobe_tagloader']['tag_container_name'] : '',
+    '#default_value' => isset($default_settings['tag_container_name']) ?
+        $default_settings['tag_container_name'] : '',
   );
 }
 
@@ -594,13 +595,13 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
       $form_state['storage']['default_settings'] : $default_settings;
   $form_state['new_form'] = isset($form_state['new_form']) ? FALSE : TRUE;
 
-  // Set the base of the form.
+  // Adobe tag loader settings.
+  _usanetwork_ads_adobe_tagloader_site_metric_form_elements($form, $form_state);
+
+  // Set the base form element for the dart and omniture settings.
   $form['usanetwork_ads_site_metric_settings'] = array(
     '#tree' => TRUE,
   );
-
-  // Adobe tag loader settings.
-  _usanetwork_ads_adobe_tagloader_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
   // Homepage settings.
   _usanetwork_ads_homepage_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
@@ -779,12 +780,13 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
 
   // Add Adobe TagLoader variables and script.
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_dc']) ?
-      $site_metric_settings['adobe_tagloader']['tag_container_dc'] : '';
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerNamespace'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_namespace']) ?
-      $site_metric_settings['adobe_tagloader']['tag_container_namespace'] : '';
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($site_metric_settings['adobe_tagloader']['tag_container_name']) ?
-      $site_metric_settings['adobe_tagloader']['tag_container_name'] : '';
+  $adobe_tagloader_settings = variable_get('usanetwork_ads_adobe_tagloader_settings', array());
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($adobe_tagloader_settings['tag_container_dc']) ?
+      $adobe_tagloader_settings['tag_container_dc'] : '';
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerNamespace'] = !empty($adobe_tagloader_settings['tag_container_namespace']) ?
+      $adobe_tagloader_settings['tag_container_namespace'] : '';
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($adobe_tagloader_settings['tag_container_name']) ?
+      $adobe_tagloader_settings['tag_container_name'] : '';
   drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetork_ads.s_code.js');
 
 

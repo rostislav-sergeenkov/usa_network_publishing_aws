@@ -136,7 +136,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     // Process air date field data.
     $air_date = $row->xml->xpath('pubDate');
     if (is_array($air_date)) {
-      $date_data = (string)array_shift($dc_terms);
+      $date_data = (string)array_shift($air_date);
       $final_date_data = array(
         'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
         #'to' => '',
@@ -348,7 +348,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Process air date field data.
     $air_date = $row->xml->xpath('pubDate');
     if (is_array($air_date)) {
-      $date_data = (string)array_shift($dc_terms);
+      $date_data = (string)array_shift($air_date);
       $final_date_data = array(
         'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
         #'to' => '',

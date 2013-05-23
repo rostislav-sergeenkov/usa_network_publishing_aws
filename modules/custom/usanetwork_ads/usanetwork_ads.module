@@ -103,6 +103,29 @@ function _usanetwork_ads_get_tv_show_nodes() {
 }
 
 /**
+ * Helper that returns Catchall Page nodes.
+ */
+function _usanetwork_ads_get_catchall_page_nodes() {
+
+  $catchall_page_nodes_query = new EntityFieldQuery();
+  $catchall_page_nodes_query->entityCondition('entity_type', 'node');
+  $catchall_page_nodes_query->entityCondition('bundle', 'catchall_page');
+  $catchall_page_nodes_query->propertyCondition('status', 1);
+  $catchall_page_nodes_query->propertyOrderBy('title', 'ASC');
+  $catchall_page_nodes_result = $catchall_page_nodes_query->execute();
+
+  $catchall_page_nodes = array();
+
+  if (isset($catchall_page_nodes_result['node'])) {
+    foreach ($catchall_page_nodes_result['node'] as $result) {
+      $catchall_page_nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+    }
+  }
+
+  return $catchall_page_nodes;
+}
+
+/**
  * Helper for adding omniture settings form elements.
  */
 function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$parent_element, &$existing_values, $clean_empty_values = FALSE) {
@@ -243,13 +266,13 @@ function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$f
       );
       /*
         TODO? Per show landing page "sub" and "sub2" over-rides?
-      $form['usanetwork_ads_site_metric_settings']['node']['tv_show'][ $node->nid ]['sub'] = array(
+      $parent_element['node']['tv_show'][ $node->nid ]['sub'] = array(
         '#type' => 'textfield',
         '#title' => t('Landing page "sub" value'),
         '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sub']) ?
             $default_settings['node']['tv_show'][ $node->nid ]['sub'] : '',
       );
-      $form['usanetwork_ads_site_metric_settings']['node']['tv_show'][ $node->nid ]['sub2'] = array(
+      $parent_element['node']['tv_show'][ $node->nid ]['sub2'] = array(
         '#type' => 'textfield',
         '#title' => t('Landing page "sub2" value'),
         '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sub2']) ?
@@ -268,6 +291,63 @@ function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$f
   // If no tv_show nodes are found, let the user know.
   else {
     $parent_element['node']['tv_show']['no_results']['#markup'] = t('There are no TV shows available.');
+  }
+}
+
+
+/**
+ * Helper that returns the ad/tracking settings form elements for catchall_page nodes.
+ */
+function _usanetwork_ads_catchall_page_site_metric_form_elements(&$parent_element, &$form_state) {
+
+  $default_settings = $form_state['storage']['default_settings'];
+
+  $parent_element['node']['catchall_page'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Catchall Page Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  // Add a set of dart form elements per catchall_page node.
+  if ($catchall_page_nodes = _usanetwork_ads_get_catchall_page_nodes()) {
+    foreach ($catchall_page_nodes as $node) {
+      $parent_element['node']['catchall_page'][ $node->nid ] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Catchall Page:  %catchall_page_title', array('%catchall_page_title' => $node->title)),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+      );
+      $parent_element['node']['catchall_page'][ $node->nid ]['sect'] = array(
+        '#type' => 'textfield',
+        '#title' => t('"sect" Value'),
+        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sect']) ?
+            $default_settings['node']['catchall_page'][ $node->nid ]['sect'] : '',
+      );
+      $parent_element['node']['catchall_page'][ $node->nid ]['sub'] = array(
+        '#type' => 'textfield',
+        '#title' => t('"sub" value'),
+        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sub']) ?
+            $default_settings['node']['catchall_page'][ $node->nid ]['sub'] : '',
+      );
+      $parent_element['node']['catchall_page'][ $node->nid ]['sub2'] = array(
+        '#type' => 'textfield',
+        '#title' => t('"sub2" value'),
+        '#default_value' => isset($default_settings['node']['catchall_page'][ $node->nid ]['sub2']) ?
+            $default_settings['node']['catchall_page'][ $node->nid ]['sub2'] : '',
+      );
+      // Omniture unlimited value form.
+      $id = 'tv-show-' . $node->nid;
+      $display_id = htmlspecialchars_decode(check_plain($node->title));
+      $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'] = isset($form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture']) ?
+          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'] : array();
+      _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['node']['catchall_page'][ $node->nid ],
+          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'], $form_state['new_form']);
+    }
+  }
+  // If no catchall_page nodes are found, let the user know.
+  else {
+    $parent_element['node']['catchall_page']['no_results']['#markup'] = t('There are no Catchall Pages available.');
   }
 }
 
@@ -408,8 +488,11 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
   // Homepage ad settings.
   _usanetwork_ads_homepage_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // TV Show based ad settings.
+  // TV Show node/node-reference based ad settings.
   _usanetwork_ads_tv_show_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
+
+  // Catchall Page node based settings.
+  _usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
   // Content type based ad settings.
   _usanetwork_ads_content_type_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
@@ -491,7 +574,15 @@ function _usanetwork_ads_get_node_dart_settings($node) {
     }
   }
 
-  // TODO: Set values for catchall nodes.
+  // Over-ride values for catchall_page nodes.
+  if ($node->type == 'catchall_page') {
+    $node_dart_settings['sect'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sect']) ?
+      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sect'] : $node_dart_settings['sect'];
+    $node_dart_settings['sub'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sub']) ?
+      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sub'] : $node_dart_settings['sub'];
+    $node_dart_settings['sub2'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sub2']) ?
+      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sub2'] : $node_dart_settings['sub2'];
+  }
 
   // Over-ride values by content type.
   $node_dart_settings['sect'] = !empty($site_metric_settings['node_type'][ $node->type ]['sect']) ?
@@ -612,9 +703,16 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
 
   $node_omniture_variables = _usanetwork_ads_get_omniture_variables($node_omniture_settings);
 
+  // Variable over-ride values for catchall_page nodes.
+  if ($node->type == 'catchall_page') {
+    $catchall_page_omniture_settings = isset($site_metric_settings['node']['catchall_page'][ $node->nid ]['omniture']) ?
+        $site_metric_settings['node']['catchall_page'][ $node->nid ]['omniture'] : array();
+    $catchall_page_omniture_variables = _usanetwork_ads_get_omniture_variables($catchall_page_omniture_settings);
+    $node_omniture_variables = $catchall_page_omniture_variables + $node_omniture_variables;
+  }
+
   // Variable over-rides by content type.
-  $node_type_omniture_settings =
-      isset($site_metric_settings['node_type'][ $node->type ]['omniture']) && is_array($site_metric_settings['node_type'][ $node->type ]['omniture']) ?
+  $node_type_omniture_settings = isset($site_metric_settings['node_type'][ $node->type ]['omniture']) ?
       $site_metric_settings['node_type'][ $node->type ]['omniture'] : array();
   $node_type_omniture_variables = _usanetwork_ads_get_omniture_variables($node_type_omniture_settings);
   $node_omniture_variables = $node_type_omniture_variables + $node_omniture_variables;

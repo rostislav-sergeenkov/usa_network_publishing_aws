@@ -37,6 +37,24 @@ $logo-height-med-2: 32px;
     border-top: none;
     height: auto;
     text-align: left;
+     a {
+      @include link-colors($link-normal, $link-hover, $link-normal, $link-normal, $link-normal);
+    }
+    .mega-sub-nav {
+      a {
+        @include link-colors($white, $blue, $white, $white, $white);
+      }
+    }
+    .mega-nav-close {
+      display: block;
+      float: right;
+      cursor: pointer;
+      color: $gray-light;
+      font-size: 32px;
+      font-family: $font-mono;
+      margin-right: 22px;
+      @include scale(1.25,1);
+    }
   }
 }
 .primary-nav {
@@ -62,7 +80,7 @@ $logo-height-med-2: 32px;
     border-right: 1px solid $gray-med;
   }
   a {
-    color: $white;
+    @include link-colors($white, $white, $white, $white, $white);
   }
 }
 .menu-title {
@@ -137,9 +155,9 @@ $logo-height-med-2: 32px;
   @include sansTitle-mobi;
   color: $blue;
   display: block;
-  font-size: 19px;
-  height: $primary-nav-height-dt - 32px;
-  line-height: $primary-nav-height-dt - 32px;
+  font-size: 22px;
+  height: $primary-nav-height-dt - 33px;
+  line-height: $primary-nav-height-dt - 33px;
   margin: 0;
   position: relative;
   z-index: 2;
@@ -151,11 +169,6 @@ $logo-height-med-2: 32px;
   &::-moz-selection {
     background: transparent;
   }
-}
-
-#mega-nav-close {
-  @include float-right;
-  cursor: pointer;
 }
 
 .mega-sub-nav {
@@ -202,6 +215,7 @@ $logo-height-med-2: 32px;
   }
   .more-title {
     @extend %h2;
+    font-family: $headline-semi;
     color: $gray-extra-light;
     text-transform: uppercase;
   }
@@ -213,6 +227,12 @@ $logo-height-med-2: 32px;
   }
 }
 
+.ie9 .mega-sub-nav {
+  display: none;
+}
+.ie9 .active-item .mega-sub-nav {
+  display: block;
+}
 
 .panel-sub-nav-container {
   display: none;
@@ -257,6 +277,11 @@ $logo-height-med-2: 32px;
   z-index: $ziWall;
 }
 
+.mega-nav-close {
+  display: none;
+}
+
+
 //////////////
 // SHOW NAV
 //////////////
@@ -270,8 +295,8 @@ $logo-height-med-2: 32px;
   font-family: $headline-reg;
   text-transform: lowercase;
   font-size: 19px;
-  height: $primary-nav-height-dt - 32px;
-  line-height: $primary-nav-height-dt - 32px;
+  height: $primary-nav-height-dt - 33px;
+  line-height: $primary-nav-height-dt - 33px;
   > div {
     display: inline-block;
   }
@@ -387,21 +412,3 @@ $logo-height-med-2: 32px;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

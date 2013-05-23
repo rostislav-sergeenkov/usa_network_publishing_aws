@@ -69,7 +69,7 @@
           .css('cursor', 'default')
           .click(function() {
             var Self = $(this).parent();
-            console.log(Self);
+            //console.log(Self);
             var Wall = document.getElementById('wall');
             $('.mega-menu-items.active-item').not(Self).removeClass('active-item');
             Self.toggleClass('active-item');
@@ -85,6 +85,25 @@
             }
             return false;
           });
+      // close button
+      $('.mega-nav-close').click(function() {
+        var Self = $(this).parent();
+        //console.log(Self);
+        var Wall = document.getElementById('wall');
+        $('.mega-menu-items.active-item').not(Self).removeClass('active-item');
+        Self.toggleClass('active-item');
+        if (Self.hasClass('active-item') && Wall === null) {
+          Wall = $('<div id="wall" data-module-type="Wall"></div>')
+            .click(function() {
+              $('.mega-menu-items.active-item').removeClass('active-item');
+              $(this).remove();
+            })
+          $('.jPanelMenu-panel').append(Wall);
+        } else {
+          $(Wall).remove();
+        }
+        return false;
+      });
 
       // RESPONSIVE BEHAVIOR
       $(window).resize(function(){

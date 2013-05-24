@@ -1,53 +1,7 @@
 
+.page-videos {
+  #main {
 
-#block-usanetwork-video-usa-global-video-nav {
-    li .item-list  {
-      > ul {
-        margin: 0;
-        > li {
-          font-family: $headline-thn;
-          margin: 0;
-          margin: 0;
-          border: 0;
-          padding: 0;
-          line-height: 1em;
-          letter-spacing: 0.05em;
-        > a {
-          padding: 15px 20px 13px;
-          float: none;
-          border-top: 1px solid $gray-light;
-          &:hover {
-            background-color: $gray-ultra-med;
-          }
-          @include breakpoint($bp-social-mid-width) {
-            font-size: 14px;
-            border-top: 1px solid $gray-med-dark;
-            padding-top: 10px;
-            padding-bottom: 8px;
-          }
-          &:hover:after {
-            @include cssTriangle(0, $gray-med, top);
-          }
-        }
-      }
-      max-height: 300px;
-      overflow-y: auto;
-      @include breakpoint($bp-social-mid-width) {
-        min-width: 246px;
-        position: absolute;
-        top: 58px;
-        border: 1px solid $gray-med-dark;
-        border-top: 0;
-        background-color: $gray-dark;
-        width: auto;
-        left: -2px;
-        white-space: nowrap;
-         > li {
-          border-bottom: 0;
-          display: block;
-          width: auto;
-        }
-      }
-    }
   }
+
 }

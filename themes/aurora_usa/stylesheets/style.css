@@ -210,6 +210,7 @@ you can use the generic selector below, but it's slower:
 /* social page breakpoints */
 /* on now */
 /* show landing page */
+/* show landing page */
 /*------------------------------------*\
     $MIXINS
 \*------------------------------------*/
@@ -648,11 +649,79 @@ strong, dfn, b {
 .usa-secondary-menu .content > .item-list > ul > li.first {
   border-right: #3d3d3d;
 }
-/* line 106, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 107, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul {
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+/* line 111, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li {
+  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  margin: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  line-height: 1em;
+  letter-spacing: 0.05em;
+}
+/* line 119, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li.first a {
+  border-top: 0;
+}
+/* line 122, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li > a {
+  padding: 15px 20px 13px;
+  float: none;
+  border-top: 1px solid #878785;
+}
+/* line 126, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li > a:hover {
+  background-color: #4b4b4b;
+}
+@media (min-width: 723px) {
+  /* line 122, ../sass/partials/03-extend/_secondary-menu.scss */
+  .usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li > a {
+    font-size: 14px;
+    border-top: 1px solid #414141;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+}
+/* line 135, ../sass/partials/03-extend/_secondary-menu.scss */
+.usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li > a:hover:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 0;
+  border-color: #3d3d3d transparent transparent transparent;
+}
+@media (min-width: 723px) {
+  /* line 107, ../sass/partials/03-extend/_secondary-menu.scss */
+  .usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul {
+    min-width: 246px;
+    position: absolute;
+    top: 59px;
+    border: 1px solid #414141;
+    border-top: 0;
+    background-color: #2d2d2d;
+    width: auto;
+    left: -1px;
+    white-space: nowrap;
+  }
+  /* line 150, ../sass/partials/03-extend/_secondary-menu.scss */
+  .usa-secondary-menu .content > .item-list > ul > li.first .item-list > ul > li {
+    border-bottom: 0;
+    display: block;
+    width: auto;
+  }
+}
+/* line 160, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu .content > .item-list > ul > li.first.open a {
   color: #a3a3a3;
 }
-/* line 110, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 164, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu .content > .item-list > ul > li.first > a {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   cursor: pointer;
@@ -661,28 +730,28 @@ strong, dfn, b {
   border-right: 1px solid #414141;
 }
 @media (min-width: 723px) {
-  /* line 110, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 164, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu .content > .item-list > ul > li.first > a {
     width: auto;
   }
 }
-/* line 121, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 175, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu .content > .item-list > ul > li.first .item-list {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   display: none;
 }
-/* line 124, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 178, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu .content > .item-list > ul > li.first .item-list a {
   color: white;
 }
 @media (min-width: 723px) {
-  /* line 124, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 178, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu .content > .item-list > ul > li.first .item-list a {
     padding-top: 10px;
     padding-bottom: 8px;
   }
 }
-/* line 135, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 189, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu a {
   height: auto;
   padding: 15px 20px 13px;
@@ -692,7 +761,7 @@ strong, dfn, b {
   position: relative;
 }
 @media (min-width: 723px) {
-  /* line 135, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 189, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a {
     padding: 20px 30px 18px;
     padding-left: 30px;
@@ -703,27 +772,27 @@ strong, dfn, b {
     border-left: 1px solid #2d2d2d;
     border-right: 1px solid #2d2d2d;
   }
-  /* line 151, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 205, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a:hover {
     color: #a3a3a3;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
 }
-/* line 157, ../sass/partials/03-extend/_secondary-menu.scss */
+/* line 211, ../sass/partials/03-extend/_secondary-menu.scss */
 .usa-secondary-menu a.active {
   color: white;
   border-bottom: 0;
 }
 @media (min-width: 723px) {
-  /* line 157, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 211, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a.active {
     background-color: #3d3d3d;
     color: #a3a3a3;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
-  /* line 165, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 219, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a.active:after {
     content: "";
     display: block;
@@ -738,13 +807,13 @@ strong, dfn, b {
   }
 }
 @media (min-width: 723px) {
-  /* line 174, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 228, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a:hover {
     background-color: #3d3d3d;
   }
 }
 @media (min-width: 723px) {
-  /* line 179, ../sass/partials/03-extend/_secondary-menu.scss */
+  /* line 233, ../sass/partials/03-extend/_secondary-menu.scss */
   .usa-secondary-menu a:hover:after {
     content: "";
     display: block;
@@ -3920,71 +3989,6 @@ span#on-now-episode {
   }
 }
 
-/* line 5, ../sass/design/modules/_video.scss */
-#block-usanetwork-video-usa-global-video-nav li .item-list > ul {
-  margin: 0;
-  max-height: 300px;
-  overflow-y: auto;
-}
-/* line 7, ../sass/design/modules/_video.scss */
-#block-usanetwork-video-usa-global-video-nav li .item-list > ul > li {
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
-  margin: 0;
-  margin: 0;
-  border: 0;
-  padding: 0;
-  line-height: 1em;
-  letter-spacing: 0.05em;
-}
-/* line 15, ../sass/design/modules/_video.scss */
-#block-usanetwork-video-usa-global-video-nav li .item-list > ul > li > a {
-  padding: 15px 20px 13px;
-  float: none;
-  border-top: 1px solid #878785;
-}
-/* line 19, ../sass/design/modules/_video.scss */
-#block-usanetwork-video-usa-global-video-nav li .item-list > ul > li > a:hover {
-  background-color: #4b4b4b;
-}
-@media (min-width: 723px) {
-  /* line 15, ../sass/design/modules/_video.scss */
-  #block-usanetwork-video-usa-global-video-nav li .item-list > ul > li > a {
-    font-size: 14px;
-    border-top: 1px solid #414141;
-    padding-top: 10px;
-    padding-bottom: 8px;
-  }
-}
-/* line 28, ../sass/design/modules/_video.scss */
-#block-usanetwork-video-usa-global-video-nav li .item-list > ul > li > a:hover:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 0;
-  border-color: #3d3d3d transparent transparent transparent;
-}
-@media (min-width: 723px) {
-  /* line 5, ../sass/design/modules/_video.scss */
-  #block-usanetwork-video-usa-global-video-nav li .item-list > ul {
-    min-width: 246px;
-    position: absolute;
-    top: 58px;
-    border: 1px solid #414141;
-    border-top: 0;
-    background-color: #2d2d2d;
-    width: auto;
-    left: -2px;
-    white-space: nowrap;
-  }
-  /* line 45, ../sass/design/modules/_video.scss */
-  #block-usanetwork-video-usa-global-video-nav li .item-list > ul > li {
-    border-bottom: 0;
-    display: block;
-    width: auto;
-  }
-}
-
 /* line 4, ../sass/design/modules/_show.scss */
 .usa-tv-show #main {
   margin: 0 auto;
@@ -3997,7 +4001,7 @@ span#on-now-episode {
     width: 615px;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 959px) {
   /* line 4, ../sass/design/modules/_show.scss */
   .usa-tv-show #main {
     width: 930px;
@@ -4071,7 +4075,7 @@ span#on-now-episode {
     margin-right: 304px;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 959px) {
   /* line 72, ../sass/design/modules/_show.scss */
   .video-promo-ads-panel .panel-col1 .field li:first-child {
     margin-right: 11px;
@@ -4198,6 +4202,52 @@ span#on-now-episode {
 /* line 176, ../sass/design/modules/_show.scss */
 .expandable-container.disabled .expandable-toggle-wrap {
   display: none;
+}
+
+/* line 182, ../sass/design/modules/_show.scss */
+#block-usanetwork-video-usa-show-video-nav .content > .item-list > ul > li > a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* see where to move/ consolidate with suzi's styles */
+/* line 191, ../sass/design/modules/_show.scss */
+.usa-tv-show .flexslider {
+  height: 250px;
+  width: 300px;
+}
+@media (min-width: 645px) {
+  /* line 191, ../sass/design/modules/_show.scss */
+  .usa-tv-show .flexslider {
+    height: 350px;
+    width: 615px;
+  }
+}
+@media (min-width: 959px) {
+  /* line 191, ../sass/design/modules/_show.scss */
+  .usa-tv-show .flexslider {
+    width: 930px;
+    height: 378px;
+  }
+}
+/* line 203, ../sass/design/modules/_show.scss */
+.usa-tv-show .flex-viewport {
+  height: 100%;
+}
+
+/* line 210, ../sass/design/modules/_show.scss */
+.a-spot.flexslider .flex-direction-nav a {
+  position: absolute;
+  top: 46%;
+}
+/* line 215, ../sass/design/modules/_show.scss */
+.a-spot.flexslider .flex-next {
+  right: 5px;
+  left: auto;
+}
+/* line 219, ../sass/design/modules/_show.scss */
+.a-spot.flexslider .flex-prev {
+  left: 5px;
 }
 
 /* line 1, ../sass/design/modules/_social.scss */

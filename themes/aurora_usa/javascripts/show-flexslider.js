@@ -6,7 +6,7 @@
       $slideshow_selector = $('#show-aspot ul');
       $slideshow_selector
         .addClass('slides')
-        .wrap('<div class="flexslider"></div>')
+        .wrap('<div class="flexslider a-spot"></div>')
         .parent()
         .flexslider({
           slideshow: false,

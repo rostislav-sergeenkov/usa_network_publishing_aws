@@ -53,27 +53,6 @@
 }
 
 
-.expandable-container {
-  .pane-content {
-    overflow: hidden;
-    @include breakpoint($bp-show-mid-width) {
-      margin-right: -15px;
-    }
-    > ul {
-      > li {
-        float: left;
-        width: 304px;
-        height: 254px;
-        margin: 0 0 15px;
-        @include breakpoint($bp-show-mid-width) {
-          margin-right: 11px;
-        }
-      }
-    }
-  }
-}
-
-
 .video-promo-ads-panel {
   position: relative;
   .panel-col2  {
@@ -113,6 +92,23 @@
 .expandable-container {
   clear: both;
   margin: 0 0 15px;
+  .pane-content {
+    overflow: hidden;
+    @include breakpoint($bp-show-mid-width) {
+      margin-right: -15px;
+    }
+    > ul {
+      > li {
+        float: left;
+        width: 304px;
+        height: 254px;
+        margin: 0 0 15px;
+        @include breakpoint($bp-show-mid-width) {
+          margin-right: 11px;
+        }
+      }
+    }
+  }
   .expandable-toggle-wrap {
     clear: both;
     margin: 0 auto;
@@ -159,11 +155,6 @@
   .less {
     display: none;
   }
-
-  .grid-view {
-    margin-bottom: 0;
-  }
-
   &.expanded {
   .more {
     display: none;

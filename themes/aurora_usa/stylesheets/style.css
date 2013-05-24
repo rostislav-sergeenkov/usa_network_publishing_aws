@@ -4080,58 +4080,58 @@ span#on-now-episode {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\000034}}
-.node-type-tv-show #main {
+.usa-tv-show #main {
   margin: 0 auto;
   padding: 0;
   width: 304px;
 }
 @media (min-width: 645px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\000034}}
-  .node-type-tv-show #main {
+  .usa-tv-show #main {
     width: 615px;
   }
 }
 @media (min-width: 960px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\000034}}
-  .node-type-tv-show #main {
+  .usa-tv-show #main {
     width: 930px;
   }
 }
 @media (min-width: 1275px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\000034}}
-  .node-type-tv-show #main {
+  .usa-tv-show #main {
     width: 1245px;
   }
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000324}}
-.node-type-tv-show ul {
+.usa-tv-show ul {
   margin: 0;
   padding: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000327}}
-.node-type-tv-show ul li {
+.usa-tv-show ul li {
   list-style: none;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000331}}
-.node-type-tv-show .panel-row {
+.usa-tv-show .panel-row {
   clear: both;
   margin-bottom: 26px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000334}}
-.node-type-tv-show .panel-row .dart-tag {
+.usa-tv-show .panel-row .dart-tag {
   border: 2px solid #2d2d2d;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000338}}
-.node-type-tv-show .panel-col1 {
+.usa-tv-show .panel-col1 {
   float: left;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000341}}
-.node-type-tv-show .panel-col2 {
+.usa-tv-show .panel-col2 {
   float: right;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000344}}
-.node-type-tv-show h2 {
+.usa-tv-show h2 {
   margin-bottom: 21px;
   font-size: 18px;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -4139,7 +4139,7 @@ span#on-now-episode {
 }
 @media (min-width: 645px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/usa\/docroot\/sites\/usanetwork\/themes\/aurora_usa\/sass\/design\/modules\/_show\.scss}line{font-family:\0000344}}
-  .node-type-tv-show h2 {
+  .usa-tv-show h2 {
     font-size: 26px;
   }
 }

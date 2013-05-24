@@ -3,11 +3,11 @@
 (function ($) {
   Drupal.behaviors.showAspot = {
     attach: function (context, settings) {
-      $slideshow_selector = $('#show-aspot');
+      $slideshow_selector = $('#show-aspot ul');
       $slideshow_selector
-        //.addClass('slides')
+        .addClass('slides')
         .wrap('<div class="flexslider"></div>')
-        //.parent()
+        .parent()
         .flexslider({
           slideshow: false,
           animation: 'slide',

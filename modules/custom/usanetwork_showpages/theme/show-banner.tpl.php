@@ -17,7 +17,7 @@
       <?php print $show_name; ?>
     <?php endif; ?>
     <?php if ($show_section): ?>
-      <span class="separator">❭</span><span class="show-section"><?php print $show_section; ?></span>
+      <span class="separator"></span><span class="show-section"><?php print $show_section; ?></span>
     <?php endif; ?>
   </nav>
 

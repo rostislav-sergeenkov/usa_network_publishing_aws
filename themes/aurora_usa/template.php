@@ -108,11 +108,14 @@ function aurora_usa_preprocess_page(&$vars) {
   // it may help to know which regions are loading
   $util_regions = array();
   $vars['util_classes'] = '';
+  // also unset page title when the show banner loads
   if (!empty($vars['page']['head_show'])) {
     $util_regions[] = 'utilities-head-show';
+    $vars['title'] = '';
   }
   if (!empty($vars['page']['head_general'])) {
     $util_regions[] = 'utilities-head-general';
+    $vars['title'] = '';
   }
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';
@@ -162,7 +165,8 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
         break;
-      case 'usanetwork_video-usa_global_video_show_nav':
+      case 'usanetwork_video-usa_global_video_nav':
+      case 'usanetwork_video-usa_show_video_nav':
       case 'usanetwork_social-usa_show_social_tab_nav':
         $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
         break;

@@ -13,7 +13,7 @@
     <?php print $content['one']; ?>
     </div>
     <div class="inner-wrapper panel-row video-ads-panel expandable-container">
-      <div class="expandable-content" style="height: 315px">
+      <div class="expandable-content">
         <div class="panel-panel panel-two panel-col1">
           <?php print $content['two']; ?>
         </div>

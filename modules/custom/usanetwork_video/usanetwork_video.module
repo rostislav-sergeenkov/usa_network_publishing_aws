@@ -141,7 +141,7 @@ function usanetwork_video_show_nav() {
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           if ($node->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
             $items[0]['data'] = $title;
-            $items[0]['class'] = array(str_replace(' ', '-', strtolower($title)));
+            $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
 
             $items[0]['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
           } else  {

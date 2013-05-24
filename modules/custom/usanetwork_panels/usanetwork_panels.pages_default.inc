@@ -23,7 +23,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     'no_blocks' => 1,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => '',
+    'body_classes_to_add' => 'usa-tv-show',
     'css_id' => '',
     'css' => '',
     'contexts' => array(),

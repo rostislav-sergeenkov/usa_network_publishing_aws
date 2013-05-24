@@ -14,7 +14,7 @@ function usanetwork_ads_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_js_file_location';
-  $strongarm->value = '/profiles/all/modules/custom/pub_analytics/js/s_code.js';
+  $strongarm->value = '';
   $export['sitecatalyst_js_file_location'] = $strongarm;
 
   $strongarm = new stdClass();

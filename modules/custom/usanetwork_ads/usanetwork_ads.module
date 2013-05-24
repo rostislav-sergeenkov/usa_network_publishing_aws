@@ -766,6 +766,16 @@ function usanetwork_ads_preprocess_page(&$variables) {
 
 
 /**
+ * Implements form_sitecatalyst_admin_settings_alter().
+ */
+function usanetwork_ads_form_sitecatalyst_admin_settings_alter(&$form, &$form_state) {
+
+  $form['general']['sitecatalyst_js_file_location']['#description'] =
+      t('USANETWORK NOTE: A custom version of this file exists in the usanetwork_ads directory, and is included in that module\'s preprocess_page() hook implementation.');
+}
+
+
+/**
  * Helper tha returns omniture variables given an array of omniture settings.
  */
 function _usanetwork_ads_get_omniture_variables($omniture_settings) {

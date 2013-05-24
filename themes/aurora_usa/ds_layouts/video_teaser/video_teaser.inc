@@ -5,8 +5,7 @@ function ds_video_teaser() {
     'regions' => array(
       'media' => t('Media'),
       'title' => t('Title'),
-      'caption' => t('Caption'),
-      'link' => t('link')
+      'caption' => t('Caption')
     ),
     'css' => false,
     'image' => false

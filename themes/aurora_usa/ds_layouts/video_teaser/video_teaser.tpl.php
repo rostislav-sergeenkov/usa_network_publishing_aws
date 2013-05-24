@@ -1,7 +1,10 @@
+<?php 
+  $url = drupal_lookup_path('alias',"node/" . $variables['node']->nid);
+?>
 <div class="<?php print $classes;?>">
-  <?php if ($link): ?>
-    <a href="<?php print $link; ?>" class="item-link">
-  <?php endif; ?>
+	<?php if($url) : ?>
+		<a class="item-link" href="/<?php print $url; ?>">
+	<?php endif; ?>
   <?php if ($media): ?>
   <div class="asset-img"><?php print $media; ?></div>
   <?php endif; ?>
@@ -15,7 +18,7 @@
     <?php endif; ?>
     </div>
   </div>
-  <?php if ($link): ?>
+  <?php if ($url): ?>
     </a>
   <?php endif; ?>
 </div>

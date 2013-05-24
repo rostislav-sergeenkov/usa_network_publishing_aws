@@ -89,6 +89,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
+    drupal_add_js($theme_path . '/javascripts/show-toggle.js');
     drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
   }
   // add ios touch icon
@@ -99,7 +100,31 @@ function aurora_usa_preprocess_page(&$vars) {
       'href' => $theme_path . '/images/ios-home.png',
     ),
   );
+  
+  // touch icon
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
+
+  // custom classes for our utilities wrapper
+  // it may help to know which regions are loading
+  $util_regions = array();
+  $vars['util_classes'] = '';
+  if (!empty($vars['page']['head_show'])) {
+    $util_regions[] = 'utilities-head-show';
+  }
+  if (!empty($vars['page']['head_general'])) {
+    $util_regions[] = 'utilities-head-general';
+  }
+  if (!empty($vars['page']['search'])) {
+    $util_regions[] = 'utilities-search';
+  }
+  if (!empty($vars['page']['search'])) {
+    $util_regions[] = 'utilities-search';
+  }
+  if (!empty($vars['page']['sponsored'])) {
+    $util_regions[] = 'utilities-sponsored';
+  }
+  $vars['util_classes'] = implode(' ', $util_regions);
+  
 }
 
 /**
@@ -498,7 +523,7 @@ function aurora_usa_field__field_usa_aspot_mobile($vars) {
  */
 function aurora_usa_field__field_promo_wide_image($vars) {
   // custom for certain view modes only
-  // c-spot wide image not displayed 
+  // c-spot wide image not displayed
   if ($vars['element']['#view_mode'] == 'home_promo') {
     $output = '';
   }

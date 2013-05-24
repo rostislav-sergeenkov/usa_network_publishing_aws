@@ -148,6 +148,26 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
     $data['node-tv_season-field_original_air_date']['field_instance']['settings']['default_value2'] = 'same'; /* WAS: '' */
     $data['node-tv_season-field_original_air_date']['field_instance']['settings']['exclude_cv'] = FALSE; /* WAS: '' */
   }
+  if (isset($data['node-tv_show-field_banner'])) {
+    $data['node-tv_show-field_banner']['field_instance']['description'] = 'This field is not used by USA'; /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['display']['block_cover_title'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['fences_wrapper'] = 'div'; /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['required'] = 0; /* WAS: 1 */
+    $data['node-tv_show-field_banner']['field_instance']['widget']['settings']['allowed_types']['document'] = 0; /* WAS: '' */
+    unset($data['node-tv_show-field_banner']['field_instance']['widget']['settings']['allowed_types']['default']);
+    unset($data['node-tv_show-field_banner']['field_instance']['widget']['settings']['browser_plugins']['library']);
+  }
   if (isset($data['node-tv_show-field_logo'])) {
     $data['node-tv_show-field_logo']['field_instance']['description'] = 'Used in show carousels.'; /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['display']['block_cover_title'] = array(
@@ -167,6 +187,22 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'weight' => '38',
     ); /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
+  }
+  if (isset($data['node-tv_show-field_tv_cover_media'])) {
+    $data['node-tv_show-field_tv_cover_media']['field_instance']['description'] = 'This field is not used by USA'; /* WAS: '' */
+    $data['node-tv_show-field_tv_cover_media']['field_instance']['display']['block_cover_title'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_tv_cover_media']['field_instance']['display']['follow_social'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_tv_cover_media']['field_instance']['required'] = 0; /* WAS: 1 */
   }
 }
 

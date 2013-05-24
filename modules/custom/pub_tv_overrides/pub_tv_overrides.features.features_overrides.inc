@@ -112,6 +112,24 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|default_value"] = 'blank';
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|default_value2"] = 'same';
   $overrides["field.node-tv_season-field_original_air_date.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_show-field_banner.field_instance|description"] = 'This field is not used by USA';
+  $overrides["field.node-tv_show-field_banner.field_instance|display|block_cover_title"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_banner.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_banner.field_instance|fences_wrapper"] = 'div';
+  $overrides["field.node-tv_show-field_banner.field_instance|required"] = 0;
+  $overrides["field.node-tv_show-field_banner.field_instance|widget|settings|allowed_types|default"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_show-field_banner.field_instance|widget|settings|allowed_types|document"] = 0;
+  $overrides["field.node-tv_show-field_banner.field_instance|widget|settings|browser_plugins|library"]["DELETED"] = TRUE;
   $overrides["field.node-tv_show-field_logo.field_instance|description"] = 'Used in show carousels.';
   $overrides["field.node-tv_show-field_logo.field_instance|display|block_cover_title"] = array(
     'label' => 'hidden',
@@ -130,6 +148,20 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '38',
   );
   $overrides["field.node-tv_show-field_logo.field_instance|fences_wrapper"] = 'figure';
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|description"] = 'This field is not used by USA';
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|display|block_cover_title"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|display|follow_social"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|required"] = 0;
 
   // Exported overrides for: variable
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|block_cover_title"] = array(

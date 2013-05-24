@@ -199,6 +199,10 @@
       width: 930px;
       height: 378px;
     }
+    @include breakpoint($bp-aspot-very-large-width) {
+      height: 506px;
+      width: 1245px;
+    }
   }
   .flex-viewport {
     height: 100%;
@@ -212,11 +216,19 @@
       top: 46%;
     }
   }
-  .flex-next {
-    right: 5px;
-    left: auto;
-  }
+  .flex-next,
   .flex-prev {
-    left: 5px;
+    display: none;
+  }
+  &:hover {
+    .flex-next {
+      display: block;
+      right: 5px;
+      left: auto;
+    }
+    .flex-prev {
+      display: block;
+      left: 5px;
+    }
   }
 }

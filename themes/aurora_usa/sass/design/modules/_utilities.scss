@@ -7,6 +7,7 @@
   border-bottom: 1px solid $gray-dark;
   overflow: hidden;
   position: relative;
+  font-family: $headline-reg;
 
   @include breakpoint($bp-on-now) {
     padding-top: 0;
@@ -16,35 +17,40 @@
   .breadcrumb {
     @include float-left;
     color: $gray-light;
-    font-family: $headline-semi;
     font-size: 0;
-    margin: 5px 0 0 3px;
+    margin: 5px 0 0 0;
     overflow: hidden;
     text-transform: uppercase;
     > a {
+      @include inline-block;
+      font-family: $headline-semi;
       font-size: 19px;
-      line-height: 38px;
+      line-height: 40px;
       @include link-colors($gray-light, $white, $gray-light);
+      vertical-align: middle;
     }
     .separator {
-      font-family: $font-mono;
-      font-weight: normal;
-      height: 32px;
-      margin: 0px 6px 1px 5px;
+      @include inline-block;
+      //background: sprite($icons-sprites, 'line-arrow-gray');
+      background:  url('../images/icons-sprite.png') 0 0;
+      height: 36px;
+      margin: -4px 6px 0 5px;
       width: 11px;
       vertical-align: middle;
     }
     .show-section {
+      @include inline-block;
       color: $white;
-      font-family: $headline-reg;
       text-transform: none;
+      font-size: 19px;
+      line-height: 40px;
     }
 
   }
   .show-time {
     @include float-right;
     color: $gray-light;
-    // display: none;
+    display: none;
     font-size: 22px;
     margin: 17px 35px 0;
     text-transform: uppercase;
@@ -53,44 +59,32 @@
   @include breakpoint(0px 400px) {
     .breadcrumb {
       margin-top: 4px;
-      //> span,
-      > a {
+      > a,
+      .show-section {
         font-size: 16px;
       }
     }
   }
-  @include breakpoint(0px 639px) {
-    .show-name {
-      font-size: 16px;
-      margin-top: 7px;
-    }
-  }
+
 
   @include breakpoint(640px) {
     height: 62px;
     padding-left: 15px;
-
     .breadcrumb {
       margin-top: 7px;
-
-      //> span,
       > a {
         font-size: 30px;
         line-height: 52px;
-
-        .separator {
-          font-size: 36px;
-          height: 36px;
-          margin-right: 13px;
-          margin-left: 8px;
-          margin-bottom: 3px;
-          width: 20px;
-        }
       }
-    }
-    .show-name {
-      font-size: 27px;
-      vertical-align: middle;
+      .separator {
+        margin: -5px 13px 0 8px;
+        width: 20px;
+        line-height: 52px;
+      }
+      .show-section {
+        font-size: 30px;
+        line-height: 52px;
+      }
     }
 
   }

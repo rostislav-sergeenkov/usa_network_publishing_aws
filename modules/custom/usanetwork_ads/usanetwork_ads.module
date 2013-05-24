@@ -8,6 +8,25 @@ include_once 'usanetwork_ads.features.inc';
 
 
 /**
+ * Helper that returns the tv_show node nid associated with a given node.
+ */
+function _usanetwork_ads_get_node_tv_show($node) {
+
+  $tv_show_nid = NULL;
+
+  if ($node->type == 'tv_show') {
+    $tv_show_nid = $node->nid;
+  }
+  else if (isset($node->field_show)) {
+    $field_show_items = field_get_items('node', $node, 'field_show');
+    $tv_show_nid = $field_show_items[0]['target_id'];
+  }
+
+  return $tv_show_nid;
+}
+
+
+/**
  * Helper that converts menu item router paths to a more easily understood form.
  */
 function _usanetwork_ads_clean_menu_item_path($path) {
@@ -284,6 +303,14 @@ function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$f
         '#collapsible' => TRUE,
         '#collapsed' => TRUE,
       );
+      // "Is Sponsored" checkbox.
+      $parent_element['node']['tv_show'][ $node->nid ]['is_sponsored'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Is Sponsored'),
+        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['is_sponsored']) ?
+            $default_settings['node']['tv_show'][ $node->nid ]['is_sponsored'] : FALSE,
+      );
+      // Dart "sect" value.
       $parent_element['node']['tv_show'][ $node->nid ]['sect'] = array(
         '#type' => 'textfield',
         '#title' => t('"sect" Value'),
@@ -433,8 +460,6 @@ function _usanetwork_ads_content_type_site_metric_form_elements(&$parent_element
  */
 function _usanetwork_ads_custom_path_site_metric_form_elements(&$parent_element, &$form_state) {
 
-  $default_settings = $form_state['storage']['default_settings'];
-
   $parent_element['path'] = array(
     '#type' => 'fieldset',
     '#title' => t('Path Settings'),
@@ -450,6 +475,14 @@ function _usanetwork_ads_custom_path_site_metric_form_elements(&$parent_element,
     $default_settings = isset($form_state['storage']['default_settings']['path'][ $path ]) ?
         $form_state['storage']['default_settings']['path'][ $path ] : array();
     _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['path'][ $path ], $default_settings);
+    // "Is Sponsored" checkbox.
+    $parent_element['path'][ $path ]['is_sponsored'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Is Sponsored'),
+      '#default_value' => isset($form_state['storage']['default_settings']['path'][ $path ]['is_sponsored']) ?
+          $form_state['storage']['default_settings']['path'][ $path ]['is_sponsored'] : FALSE,
+      '#weight' => -10,
+    );
     // Omniture unlimited value form.
     $id_clean_path = preg_replace('|[^a-zA-Z0-9]+|', '-', $path);
     $id = 'custom-path-' . strtolower($id_clean_path);
@@ -553,24 +586,20 @@ function _usanetwork_ads_get_node_dart_settings($node) {
 
   $node_dart_settings = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
   $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
   // Set "sect" value by TV Show.
+  if ($tv_show_nid) {
+    $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect']) ?
+        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect'] : '';
+  }
+
+  // Default "sub" and "sub2" values for tv_show node pages.
   if ($node->type == 'tv_show') {
-    $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $node->nid ]['sect']) ?
-        $site_metric_settings['node']['tv_show'][ $node->nid ]['sect'] : '';
-    // Default "sub" and "sub2" values for tv_show node pages.
     $node_dart_settings['sub'] = isset($site_metric_settings['node']['tv_show']['default']['sub']) ?
         $site_metric_settings['node']['tv_show']['default']['sub'] : '';
     $node_dart_settings['sub2'] = isset($site_metric_settings['node']['tv_show']['default']['sub2']) ?
         $site_metric_settings['node']['tv_show']['default']['sub2'] : '';
-  }
-  else if (isset($node->field_show)) {
-    $field_show_items = field_get_items('node', $node, 'field_show');
-    $tv_show_nid = $field_show_items[0]['target_id'];
-    if ($tv_show_nid) {
-      $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect']) ?
-          $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect'] : '';
-    }
   }
 
   // Over-ride values for catchall_page nodes.
@@ -602,6 +631,66 @@ function _usanetwork_ads_get_node_dart_settings($node) {
 
 
   return $node_dart_settings;
+}
+
+
+/**
+ * Helper that determines if a node is sponsored.
+ */
+function _usanetwork_ads_is_node_sponsored($node) {
+
+  $node_is_sponsored = FALSE;
+  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
+
+  if ($tv_show_nid) {
+    $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+    $node_is_sponsored = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['is_sponsored']) ?
+        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['is_sponsored'] : FALSE;
+  }
+
+  return (bool)$node_is_sponsored;
+}
+
+
+/**
+ * Helper that determines if a node is sponsored.
+ */
+function _usanetwork_ads_is_path_sponsored($path) {
+
+  $current_menu_item = menu_get_item();
+  $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+
+  $path_is_sponsored = isset($site_metric_settings['path'][ $current_menu_item['path'] ]['is_sponsored']) ?
+      $site_metric_settings['path'][ $current_menu_item['path'] ]['is_sponsored'] : FALSE;
+
+  return (bool)$path_is_sponsored;
+}
+
+
+/**
+ * Helper that returns whether or not a page is sponsored given a page variables array.
+ */
+function _usanetwork_ads_is_page_sponsored($page_variables = array()) {
+
+  $page_is_sponsored = FALSE;
+  $current_menu_item = menu_get_item();
+  $current_menu_item_path = $current_menu_item['path'];
+  $current_menu_object = menu_get_object();
+
+  // Node page based settings.
+  if (isset($page_variables['node']) && is_object($page_variables['node']) && isset($page_variables['node']->nid)) {
+    $page_is_sponsored = _usanetwork_ads_is_node_sponsored($page_variables['node']);
+  }
+  else if ($current_menu_item_path == 'node/%' &&
+      is_object($current_menu_object) && isset($current_menu_object->nid)) {
+    $page_is_sponsored = _usanetwork_ads_is_node_sponsored($current_menu_object);
+  }
+  // Path based settings.
+  else {
+    $page_is_sponsored = _usanetwork_ads_is_path_sponsored($current_menu_item_path);
+  }
+
+  return (bool)$page_is_sponsored;
 }
 
 
@@ -657,6 +746,9 @@ function usanetwork_ads_preprocess_page(&$variables) {
   $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2']) ?
       $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
 
+  // Set "is_sponsored" variable.
+  $usa_dart_js_settings['USA']['DART']['is_sponsored'] = _usanetwork_ads_is_page_sponsored($variables);
+
   // Add Adobe TagLoader variables and script.
   $adobe_tagloader_settings = variable_get('usanetwork_ads_adobe_tagloader_settings', array());
   $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($adobe_tagloader_settings['tag_container_dc']) ?
@@ -671,6 +763,7 @@ function usanetwork_ads_preprocess_page(&$variables) {
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');
 }
+
 
 /**
  * Helper tha returns omniture variables given an array of omniture settings.
@@ -702,21 +795,12 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
 
   $node_omniture_settings = array();
   $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
-  // Set "sect" value by TV Show.
-  if ($node->type == 'tv_show') {
+  if ($tv_show_nid) {
     $node_omniture_settings =
-        isset($site_metric_settings['node']['tv_show'][ $node->nid ]['omniture']) && is_array($site_metric_settings['node']['tv_show'][ $node->nid ]['omniture']) ?
-        $site_metric_settings['node']['tv_show'][ $node->nid ]['omniture'] : array();
-  }
-  else if (isset($node->field_show)) {
-    $field_show_items = field_get_items('node', $node, 'field_show');
-    $tv_show_nid = $field_show_items[0]['target_id'];
-    if ($tv_show_nid) {
-      $node_omniture_settings =
-          isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) && is_array($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) ?
-          $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture'] : array();
-    }
+        isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) && is_array($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) ?
+        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture'] : array();
   }
 
   $node_omniture_variables = _usanetwork_ads_get_omniture_variables($node_omniture_settings);

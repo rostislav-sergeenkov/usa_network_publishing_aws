@@ -6,11 +6,11 @@
 
     // all shows menu toggle
 
-    $('#block-usanetwork-video-usa-global-video-show-nav li.first').click(function() {
+    $('#block-usanetwork-video-usa-global-video-nav li.all-shows').click(function() {
         $(this).find('.item-list').toggle();
     });
 
-      $filter_menus = $('#block-usanetwork-video-usa-global-video-show-nav .content > .item-list > ul > li.first');
+      $filter_menus = $('#block-usanetwork-video-usa-global-video-nav .all-shows');
       $filter_menus.each(function(index, value){
         $filter_menu = $(this);
         $filter_menu.addClass('filter-dropdown')
@@ -32,8 +32,8 @@
         social_dropdown_class_toggle();
       });
       function social_dropdown_class_toggle() {
-        $change_element = $('#block-usanetwork-video-usa-global-video-show-nav.usa-secondary-menu');
-        $drop_elements = $('#block-usanetwork-video-usa-global-video-show-nav .content > .item-list > ul > li.first');
+        $change_element = $('#block-usanetwork-video-usa-global-video-nav.usa-secondary-menu');
+        $drop_elements = $('#block-usanetwork-video-usa-global-video-nav li.all-shows');
         //$menu = $('#block-usanetwork-video-usa-global-video-show-nav .menu-label');
         if ($drop_elements.css("font-size") == "20px" ){
           //$menu.hide();

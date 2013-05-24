@@ -115,6 +115,7 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if (!empty($vars['page']['head_general'])) {
     $util_regions[] = 'utilities-head-general';
+    $vars['title'] = '';
   }
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';

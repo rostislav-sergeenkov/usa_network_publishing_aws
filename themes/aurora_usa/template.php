@@ -108,11 +108,14 @@ function aurora_usa_preprocess_page(&$vars) {
   // it may help to know which regions are loading
   $util_regions = array();
   $vars['util_classes'] = '';
+  // also unset page title when the show banner loads
   if (!empty($vars['page']['head_show'])) {
     $util_regions[] = 'utilities-head-show';
+    $vars['title'] = '';
   }
   if (!empty($vars['page']['head_general'])) {
     $util_regions[] = 'utilities-head-general';
+    $vars['title'] = '';
   }
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';

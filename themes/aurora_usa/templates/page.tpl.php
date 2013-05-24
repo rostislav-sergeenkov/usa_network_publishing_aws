@@ -92,6 +92,9 @@
 
 <!-- TOP TITLE AND TOOLS BAR -->
 <div id="utilities" class="clearfix <?php print $util_classes; ?>">
+  <?php print render($title_prefix); ?>
+  <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+  <?php print render($title_suffix); ?>
   <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
   <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
   <?php if ($page['sponsored']): ?><div id="head-sponsored"><?php print render($page['sponsored']); ?></div><?php endif; ?>
@@ -115,9 +118,6 @@
   <div id="content" role="article" class="column">
     <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
     <a id="main-content"></a>
-    <?php print render($title_prefix); ?>
-    <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-    <?php print render($title_suffix); ?>
     <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
     <?php print render($page['help']); ?>
     <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>

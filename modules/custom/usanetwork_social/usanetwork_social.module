@@ -32,7 +32,7 @@ function usanetwork_social_menu() {
   );
   // global trending page
   $items['social/trending'] = array(
-    'title' => t('trending'),
+    'title' => t('social buzz'),
     'page callback' => 'usanetwork_social_global_trending',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -42,7 +42,7 @@ function usanetwork_social_menu() {
   );
   // global chat with fans page
   $items['social/chat-with-fans'] = array(
-    'title' => t('chat with fans'),
+    'title' => t('chatter'),
     'page callback' => 'usanetwork_social_global_chat_with_fans',
     'page arguments' => array(0),
     'access callback' => 'usanetwork_social_global_menu_access',
@@ -94,7 +94,7 @@ function usanetwork_social_menu() {
   );
   // tv show chat with fans page
   $items['node/%node/social/chat-with-fans'] = array(
-    'title' => t('chat with fans'),
+    'title' => t('chatter'),
     'page callback' => 'usanetwork_social_chat_with_fans',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
@@ -445,7 +445,7 @@ function usanetwork_social_global_landing_page() {
  */
 function usanetwork_social_global_trending() {
 	$output = '';
-
+  drupal_set_title('Social Dashboard');
 	$showTrending = variable_get('usanetwork_social_trend_show_global');
 	$baseUrl = variable_get('usanetwork_social_trend_global_base_url');
 	$basePath = variable_get('usanetwork_social_trend_global_base_path');
@@ -466,6 +466,7 @@ function usanetwork_social_global_chat_with_fans() {
   $lang = LANGUAGE_NONE;
 	$showInfo = array();
 	$shows = _usanetwork_social_show_nids();
+  drupal_set_title('Social Dashboard');
 
 	if (is_array($shows) && !empty($shows)) {
 		$nodes = node_load_multiple($shows);
@@ -523,6 +524,7 @@ function usanetwork_social_global_chat_with_fans() {
  */
 function usanetwork_social_global_twitter() {
   $output = '';
+  drupal_set_title('Social Dashboard');
 
   $tokens = array();
 
@@ -564,6 +566,7 @@ function usanetwork_social_global_twitter() {
  * Menu callback of social global sync page
  */
 function usanetwork_social_global_sync() {
+  drupal_set_title('Social Dashboard');
 	$showSync = variable_get('usanetwork_social_sync_show_global');
 	$desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
 	$phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
@@ -791,5 +794,56 @@ function usanetwork_social_trending($node) {
 	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
+}
+
+
+/**
+  * Implements hook_preprocess_html()
+  */
+function usanetwork_social_preprocess_html(&$vars) {
+  $head_title = NULL;
+  $node = menu_get_object();
+  // global social
+  switch ($_GET['q']) {
+    case 'social':
+    case 'social/trending':
+      $head_title = t('Social Dashboard - Social Buzz | USA Network');
+      break;
+    case 'social/chat-with-fans':
+      $head_title = t('Social Dashboard - Chatter | USA Network');
+      break;
+    case 'social/tweets':
+      $head_title = t('Social Dashboard - Tweets | USA Network');
+      break;
+    case 'social/sync':
+      $head_title = t('Social Dashboard - USA Sync | USA Network');
+      break;
+
+    default:
+      break;
+  }
+  // show node social pages
+  if ($node && $node->type == "tv_show" && arg(3)) {
+    switch (arg(3)) {
+      case 'latest':
+        $head_title = t("@showname Social Dashboard: Latest | USA Network", array('@showname' => $node->title));
+        break;
+      case 'chat-with-fans':
+        $head_title = t("@showname Social Dashboard: Chatter | USA Network", array('@showname' => $node->title));
+        break;
+      case 'tweets':
+        $head_title = t("@showname Social Dashboard: Tweets | USA Network", array('@showname' => $node->title));
+        break;
+      case 'sync':
+        $head_title = t("@showname Social Dashboard: USA sync | USA Network", array('@showname' => $node->title));
+        break;
+      default:
+        break;
+    }
+  }
+  // If there are things print the things
+  if (!empty($head_title)) {
+    $vars['head_title'] = $head_title;
+  }
 }
 

@@ -8,6 +8,14 @@
   overflow: hidden;
   position: relative;
   font-family: $headline-reg;
+  
+  h1#page-title {
+    font-family: $headline-reg;
+    font-size: 19px;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    line-height: 40px;
+  }
 
   @include breakpoint($bp-on-now) {
     padding-top: 0;
@@ -69,6 +77,12 @@
   @include breakpoint(640px) {
     height: 62px;
     padding-left: 15px;
+    h1#page-title {
+      font-size: 30px;
+      line-height: 52px;
+      margin-top: 7px;
+      line-height: 52px;
+    }
     .breadcrumb {
       margin-top: 7px;
       > a {

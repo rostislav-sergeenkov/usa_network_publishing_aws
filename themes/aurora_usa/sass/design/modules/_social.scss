@@ -648,3 +648,95 @@ input.echo-submit-text {
     left: 25% !important;
   }
 }
+
+
+/* show landing page social */
+
+
+.social-panel {
+  &.inner-wrapper  {
+    .panel-col1 {
+      @extend %two-to-one-col-social-content-no-sidebar;
+    }
+    .panel-col2 {
+      @extend %two-to-one-col-social-sidebar;
+    }
+  }
+  &.panel-two-cols .panel-col1 {
+    @extend %two-to-one-col-social-content-sidebar;
+  }
+}
+
+#usanetwork_social_chatter_title {
+  border-bottom: 1px solid $gray-med;
+  color: $white;
+  font-family: $headline-lt;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 0;
+  padding: 10px 15px 7px;
+  text-transform: lowercase;
+}
+
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: $gray-dark;
+}
+
+.usanetwork_social_show_comment {
+  border-bottom: 1px solid $gray-med;
+  border-top: 1px solid $black-dark;
+  padding: 20px 15px;
+  .echo-item-content {
+    color: $white;
+  }
+  .echo-item-data {
+    font-size: 16px;
+    font-family: $headline-lt;
+    @include breakpoint($bp-social-echo) {
+      font-size: 21px;
+    }
+  }
+  .echo-item-authorName {
+    color: $black-dark;
+    font-size: 26px;
+    padding-bottom: 8px;
+  }
+  .echo-item-footer {
+    font-size: 13px;
+    img {
+      display: none !important;
+    }
+  }
+  .echo-item-date,
+  .echo-item-from {
+    float: left;
+  }
+}
+
+#usanetwork_social_join {
+  clear: both;
+  text-align: center;
+  padding: 10px 0 7px;
+  border-top: 1px solid $black-dark;
+  position: relative;
+  .usanetwork_social_join_msg {
+    color: $white;
+    font-family: $headline-lt;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    padding-left: 20px;
+    position: relative;
+    text-transform: lowercase;
+    &:before {
+      @include cssTriangle(6px, $white, left);
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+  }
+}

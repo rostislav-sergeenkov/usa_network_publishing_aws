@@ -9,7 +9,8 @@
     <div class="panel-panel panel-one panel-row first-row a-spot-panel">
     <?php print $content['one']; ?>
     </div>
-    <div class="inner-wrapper panel-row video-ads-panel expandable-container">
+    <div class="inner-wrapper panel-row video-promo-ads-panel expandable-container">
+      <?php print '<h2 class="pane-title">' . t('Videos') . '</h2>'; ?>
       <div class="expandable-content">
         <div class="panel-panel panel-two panel-col1">
           <?php print $content['two']; ?>
@@ -26,6 +27,7 @@
         </div>
     </div>
     <div class="panel-panel panel-four panel-row promo-panel expandable-container">
+      <?php print '<h2 class="pane-title">' . t('The Latest') . '</h2>'; ?>
       <div class="expandable-content">
           <?php print $content['four']; ?>
       </div>

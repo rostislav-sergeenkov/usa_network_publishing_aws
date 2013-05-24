@@ -4,7 +4,7 @@
   #main {
     margin: 0 auto;
     padding: 0;
-    width: 300px;
+    width: 304px;
     @include breakpoint($bp-show-mid-width) {
       width: 615px;
     }
@@ -28,6 +28,18 @@
       float: right;
     }
   }
+  .panel-col1 {
+    float: left;
+  }
+  .panel-col2 {
+    float: right;
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: $headline-semi;
+    text-transform: uppercase;
+  }
 }
 
 .social-panel {
@@ -44,20 +56,6 @@
   }
 }
 
-
-.pane-expandable {
-  height: 315px;
-  overflow: hidden;
-  @include breakpoint($bp-show-mid-width) {
-    margin-right: -15px;
-  }
-  h2 {
-    margin-bottom: 20px;
-    font-size: 26px;
-    font-family: $headline-semi;
-    text-transform: uppercase;
-  }
-}
 
 .pane-node-field-usa-tv-promo {
   .pane-content {
@@ -146,3 +144,101 @@
     }
   }
 }
+
+.expandable-content .pane-content {
+  overflow: hidden;
+  @include breakpoint($bp-show-mid-width) {
+    margin-right: -15px;
+  }
+}
+
+
+.expandable-container {
+    clear: both;
+    margin: 0 0 15px;
+
+    .expandable-content {
+//        @include transition-duration(0.2s);
+//        @include transition-timing-function(linear);
+//        @include transition-property(height);
+//        @include transition-delay(0s);
+    }
+
+    .expandable-toggle-wrap {
+        clear: both;
+        margin: 0 auto;
+        padding: 14px 0;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+
+        &:before,
+        &:after {
+            border-color: #444;
+            border-style: solid;
+            border-width: 0 0 1px;
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 50%;
+        }
+        &:before {
+            left: -30px;
+        }
+        &:after {
+            right: -30px;
+        }
+    }
+
+    .expandable-toggle {
+        color: #444;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        margin: 0 auto;
+        position: relative;
+
+        &:after {
+            @include cssTriangle(18px, #444, 'top');
+            border-width: 12px 18px 18px;
+            top: 18px;
+            content: "";
+            left: 50%;
+            margin-left: -18px;
+            position: absolute;
+        }
+    }
+
+    .less {
+        display: none;
+    }
+
+    .grid-view {
+        margin-bottom: 0;
+    }
+
+    &.expanded {
+
+        .more {
+            display: none;
+        }
+        .less {
+            display: block;
+        }
+        .expandable-toggle {
+            &:after {
+                @include cssTriangle(18px, #444, 'bottom');
+                border-width: 18px 18px 12px;
+                bottom: 18px;
+                top: auto;
+            }
+        }
+    }
+
+    &.disabled {
+        .expandable-toggle-wrap {
+            display: none;
+        }
+    }
+
+}// END .expandable-container

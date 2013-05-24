@@ -53,6 +53,10 @@
 				{
 					club = 'whitecollarsociety';
 				}
+				else if (urlPath.indexOf('royalpains') != -1)
+				{
+					club = 'royalrewards';
+				}
 			}
 			usa_club_domain = clubDomainPrefix + club+'.usanetwork.com';
 

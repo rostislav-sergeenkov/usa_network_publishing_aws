@@ -100,7 +100,31 @@ function aurora_usa_preprocess_page(&$vars) {
       'href' => $theme_path . '/images/ios-home.png',
     ),
   );
+  
+  // touch icon
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
+
+  // custom classes for our utilities wrapper
+  // it may help to know which regions are loading
+  $util_regions = array();
+  $vars['util_classes'] = '';
+  if (!empty($vars['page']['head_show'])) {
+    $util_regions[] = 'utilities-head-show';
+  }
+  if (!empty($vars['page']['head_general'])) {
+    $util_regions[] = 'utilities-head-general';
+  }
+  if (!empty($vars['page']['search'])) {
+    $util_regions[] = 'utilities-search';
+  }
+  if (!empty($vars['page']['search'])) {
+    $util_regions[] = 'utilities-search';
+  }
+  if (!empty($vars['page']['sponsored'])) {
+    $util_regions[] = 'utilities-sponsored';
+  }
+  $vars['util_classes'] = implode(' ', $util_regions);
+  
 }
 
 /**

@@ -27,6 +27,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       'pl1:episodeNumber' => t('Episode #'),
       'pl1:seasonNumber' => t('Season #'),
       'pl1:fullEpisode' => t('Full Episode'),
+      'duration' => t('Video Duration'),
     );
 
     /*
@@ -34,7 +35,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
      * If there is no directory for content type files will be moved to Drupal default files directory
     */
     // TODO:  Determine/confirm this directory.
-    $this->imgDestDir = "public://video/";
+    $this->imgDestDir = "public://video";
 
     $options = array();
 
@@ -92,10 +93,11 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
-    $this->addFieldMapping('field_air_date', 'pubDate')->xpath('pubDate');
+    $this->addFieldMapping('field_video_air_date', 'pubDate');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_episode_number', 'pl1:episodeNumber')->xpath('pl1:episodeNumber');
     $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
+    $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -109,7 +111,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function prepareRow($row) {
 
-    // Process date field data.
+    // Process publishing date field data.
     $dc_terms = $row->xml->xpath('dcterms:valid');
     if (is_array($dc_terms)) {
       $date_data = (string)array_shift($dc_terms);
@@ -130,12 +132,24 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
     }
+
+    // Process air date field data.
+    $air_date = $row->xml->xpath('pubDate');
+    if (is_array($air_date)) {
+      $date_data = (string)array_shift($air_date);
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
+        #'to' => '',
+      );
+      $row->pubDate = drupal_json_encode($final_date_data);
+    }
   }
 
   public function prepare($entity, stdClass $row) {
 
-    // Initially save all video nodes set to unpublished.
-    $entity->status = 0;
+    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
+    // field is missing.
+    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -150,32 +164,35 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    module_load_include('inc', 'state_flow', 'state_flow.pages');
+    if (isset($row->{'dcterms:valid'})) {
 
-    global $user;
+      module_load_include('inc', 'state_flow', 'state_flow.pages');
 
-    $user = user_load(1);
+      global $user;
 
-    $state_flow_form = array();
-    $state_flow_form_state = array();
-    $state_flow_form_state['values'] = array(
-      'node_revision' => $entity,
-      'state_flow' => state_flow_load_state_machine($entity),
-      'event' => 'schedule',
-      'event_comment' => t('Scheduling publication date via migration script.'),
-    );
-    state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+      $user = user_load(1);
 
-    $state_flow_schedule_form = array();
-    $state_flow_schedule_form_state = array();
-    $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-    $state_flow_schedule_form_state['values'] = array(
-      'selected-date' => $video_date_data['from'],
-      'event-name' => 'schedule',
-      'nid' => $entity->nid,
-      'vid' => $entity->vid,
-    );
-    state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      $state_flow_form = array();
+      $state_flow_form_state = array();
+      $state_flow_form_state['values'] = array(
+        'node_revision' => $entity,
+        'state_flow' => state_flow_load_state_machine($entity),
+        'event' => 'schedule',
+        'event_comment' => t('Scheduling publication date via migration script.'),
+      );
+      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+
+      $state_flow_schedule_form = array();
+      $state_flow_schedule_form_state = array();
+      $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
+      $state_flow_schedule_form_state['values'] = array(
+        'selected-date' => $video_date_data['from'],
+        'event-name' => 'schedule',
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+      );
+      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+    }
   }
 
   public function postRollback() {
@@ -220,6 +237,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       'pl1:episodeNumber' => t('Episode #'),  // Not always set for MPX.
       'pl1:seasonNumber' => t('Season #'),  // Not always set for MPX.
       'pl1:fullEpisode' => t('Full Episode'),  // Not always set for MPX.
+      'duration' => t('Video Duration'),
     );
 
     /*
@@ -227,7 +245,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
      * If there is no directory for content type files will be moved to Drupal default files directory
     */
     // TODO:  Determine/confirm this directory.
-    $this->imgDestDir = "public://video/";
+    $this->imgDestDir = "public://video";
 
     $options = array();
 
@@ -287,10 +305,11 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_video_thumbnail', 'plmedia:defaultThumbnailUrl')->xpath('plmedia:defaultThumbnailUrl');
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
-    $this->addFieldMapping('field_air_date', 'pubDate')->xpath('pubDate');
+    $this->addFieldMapping('field_video_air_date', 'pubDate');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_episode_number', 'pl1:episodeNumber')->xpath('pl1:episodeNumber');
     $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
+    $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -325,12 +344,24 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
     }
+
+    // Process air date field data.
+    $air_date = $row->xml->xpath('pubDate');
+    if (is_array($air_date)) {
+      $date_data = (string)array_shift($air_date);
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
+        #'to' => '',
+      );
+      $row->pubDate = drupal_json_encode($final_date_data);
+    }
   }
 
   public function prepare($entity, stdClass $row) {
 
-    // Initially save all video nodes set to unpublished.
-    $entity->status = 0;
+    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
+    // field is missing.
+    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -345,32 +376,35 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    module_load_include('inc', 'state_flow', 'state_flow.pages');
+    if (isset($row->{'dcterms:valid'})) {
 
-    global $user;
+      module_load_include('inc', 'state_flow', 'state_flow.pages');
 
-    $user = user_load(1);
+      global $user;
 
-    $state_flow_form = array();
-    $state_flow_form_state = array();
-    $state_flow_form_state['values'] = array(
-      'node_revision' => $entity,
-      'state_flow' => state_flow_load_state_machine($entity),
-      'event' => 'schedule',
-      'event_comment' => t('Scheduling publication date via migration script.'),
-    );
-    state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+      $user = user_load(1);
 
-    $state_flow_schedule_form = array();
-    $state_flow_schedule_form_state = array();
-    $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-    $state_flow_schedule_form_state['values'] = array(
-      'selected-date' => $video_date_data['from'],
-      'event-name' => 'schedule',
-      'nid' => $entity->nid,
-      'vid' => $entity->vid,
-    );
-    state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      $state_flow_form = array();
+      $state_flow_form_state = array();
+      $state_flow_form_state['values'] = array(
+        'node_revision' => $entity,
+        'state_flow' => state_flow_load_state_machine($entity),
+        'event' => 'schedule',
+        'event_comment' => t('Scheduling publication date via migration script.'),
+      );
+      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+
+      $state_flow_schedule_form = array();
+      $state_flow_schedule_form_state = array();
+      $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
+      $state_flow_schedule_form_state['values'] = array(
+        'selected-date' => $video_date_data['from'],
+        'event-name' => 'schedule',
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+      );
+      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+    }
   }
 
   public function postRollback() {

@@ -27,12 +27,13 @@ function pub_tv_overrides_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Show Menu',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => 'It is recommended that PARENT (main link) items be text only with no url added',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_show_menu|node|tv_show|form'] = $field_group;
@@ -50,12 +51,13 @@ function pub_tv_overrides_field_group_info() {
     'label' => 'USA Custom',
     'weight' => '4',
     'children' => array(
-      0 => 'field_usa_tv_a_spot',
-      1 => 'field_usa_tv_on_now',
-      2 => 'field_usa_tv_promo',
-      3 => 'field_usa_tv_featured_videos',
-      4 => 'field_usa_tv_tune_in_date',
-      5 => 'field_display_title',
+      0 => 'field_display_title',
+      1 => 'field_usa_tv_a_spot',
+      2 => 'field_usa_tv_featured_videos',
+      3 => 'field_usa_tv_on_now',
+      4 => 'field_usa_tv_promo',
+      5 => 'field_usa_tv_tune_in_date',
+      6 => 'field_usa_tv_promo_vids',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

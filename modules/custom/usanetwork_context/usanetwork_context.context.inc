@@ -53,7 +53,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'entity_field' => array(
       'values' => array(
-        'entity_type' => 'a:9:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;}',
+        'entity_type' => 'a:11:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;}',
         'field_name' => 'field_show',
         'field_value' => '0',
         'field_empty' => 0,
@@ -62,6 +62,7 @@ function usanetwork_context_context_default_contexts() {
     ),
     'node' => array(
       'values' => array(
+        'media_gallery' => 'media_gallery',
         'tv_episode' => 'tv_episode',
         'tv_show' => 'tv_show',
       ),
@@ -73,12 +74,20 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'node/*/social' => 'node/*/social',
         'node/*/social/*' => 'node/*/social/*',
+        'node/*/games' => 'node/*/games',
+        'node/*/games/*' => 'node/*/games/*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_blocks-usa_tv_show_menu' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_tv_show_menu',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_showpages-show_banner' => array(
           'module' => 'usanetwork_showpages',
           'delta' => 'show_banner',
@@ -118,7 +127,7 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_blocks-usa_tv_show_menu' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_tv_show_menu',
-          'region' => 'main_prefix',
+          'region' => 'header',
           'weight' => '-10',
         ),
         'usanetwork_lyris-newsletter_subscription' => array(
@@ -166,11 +175,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_prefix',
           'weight' => '-9',
         ),
+        'dart-dart-tag-300x250_ifr_reload' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-300x250_ifr_reload',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-usa_cast-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_cast-block_2',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -187,7 +202,7 @@ function usanetwork_context_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'usa_global_videos';
   $context->description = '';
-  $context->tag = 'global videos page';
+  $context->tag = 'videos page';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -199,11 +214,11 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_video-usa_global_video_show_nav' => array(
+        'usanetwork_video-usa_global_video_nav' => array(
           'module' => 'usanetwork_video',
-          'delta' => 'usa_global_video_show_nav',
+          'delta' => 'usa_global_video_nav',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '9',
         ),
       ),
     ),
@@ -212,7 +227,7 @@ function usanetwork_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('global videos page');
+  t('videos page');
   $export['usa_global_videos'] = $context;
 
   $context = new stdClass();
@@ -235,6 +250,7 @@ function usanetwork_context_context_default_contexts() {
         'games' => 'games',
         'games/*' => 'games/*',
         '*/games/*' => '*/games/*',
+        '*/*/games/*' => '*/*/games/*',
         'social' => 'social',
         'social/*' => 'social/*',
         '*/social/*' => '*/social/*',
@@ -357,6 +373,42 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usa_show_videos';
+  $context->description = '';
+  $context->tag = 'videos page';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'usa_tve_video' => 'usa_tve_video',
+        'usa_video' => 'usa_video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_video-usa_show_video_nav' => array(
+          'module' => 'usanetwork_video',
+          'delta' => 'usa_show_video_nav',
+          'region' => 'content',
+          'weight' => '9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('videos page');
+  $export['usa_show_videos'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usa_social_pages';
   $context->description = 'context for all global social pages';
   $context->tag = 'social';
@@ -383,11 +435,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_prefix',
           'weight' => '-9',
         ),
+        'dart-dart-tag-300x250_ifr_reload' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-300x250_ifr_reload',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'views-usa_shows-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_shows-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -453,7 +511,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

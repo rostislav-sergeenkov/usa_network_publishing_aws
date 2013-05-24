@@ -270,6 +270,10 @@ function usanetwork_blocks_tv_show_menu() {
   if (!isset($node->nid) || empty($node->nid)) {
     return '';
   }
+  
+  if ($node->type != 'tv_show' && isset($node->field_show[$lang][0]['entity'])) {
+    $node = $node->field_show[$lang][0]['entity'];
+  }
 
   // Get the field collection items.
   $fc_fields = field_get_items('node', $node, 'field_show_links');

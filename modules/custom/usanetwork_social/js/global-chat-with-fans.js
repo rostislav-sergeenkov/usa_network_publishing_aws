@@ -1,19 +1,26 @@
+/**
+ * Javascript code for global chat with fans
+ * Uses Echo's mux API method for 'multiplex' requests
+ * For more info on mux, see http://wiki.aboutecho.com/w/page/32433803/API-method-mux
+ * By Donna Vaughan, May 2, 2013
+ */
 (function ($) {
-	Drupal.behaviors.chat_with_fans_page = {
+	Drupal.behaviors.global_chat_with_fans_page = {
 		attach: function(context){
 
 
-			/**
-			 * Javascript code for global chat with fans
-			 * Uses Echo's mux API method for 'multiplex' requests
-			 * For more info on mux, see http://wiki.aboutecho.com/w/page/32433803/API-method-mux
-			 * By Donna Vaughan, May 2, 2013
-			 */
-			var usa_debug_flag = false; // set to true to turn on console logging
-			function usa_debug(msg)
+			var usa_debug_flag = false; // set to false to turn off all console logging
+			var usa_debug = function(msg)
 			{
-				if (typeof console != 'undefined' && usa_debug_flag) {
-					console.log(msg);
+				if (usa_debug_flag)
+				{
+					if (typeof console != 'undefined') {
+						console.log(msg);
+					}
+					else
+					{
+						//alert(msg);
+					}
 				}
 			}
 
@@ -31,6 +38,16 @@
 			}
 
 			/**
+			 * parseDateStr
+			 * re-converts UTC time to UTC time
+			 * because of a problem with IE8
+			 */
+			function parseDate(str) {
+				var v = str.split(/[-T:]/g);
+				return Date.UTC(v[0],(v[1]-1),v[2],v[3],v[4],v[5].replace('Z', ''),'000');
+			}
+
+			/**
 			 * ago -- takes a time in the form yyyy-mm-ddThh:mm:ssZ
 			 * and converts it to something like '# timeperiod ago', such as '3 days ago'
 			 */
@@ -39,8 +56,8 @@
 				var periods = ["second", "minute", "hour", "day", "week", "month", "year", "decade"];
 				var lengths = [60,60,24,7,4.35,12,10];
 
-				var now = new Date(); // time();
-				var jsTime = new Date(time);
+				var now = new Date();
+				var jsTime = new Date(parseDate(time));
 				var difference = (now - jsTime)/1000;
 
 				for (var j = 0; difference >= lengths[j] && j < (lengths.length-1); j++) {
@@ -53,8 +70,10 @@
 				{
 					periods[j] += "s";
 				}
+				var agoStr = difference + ' ' + periods[j] + ' ago';
+				if (agoStr == '1 day ago') agoStr = 'Yesterday';
 
-				return difference + " " + periods[j] + " ago";
+				return agoStr;
 			}
 
 			/**
@@ -84,7 +103,7 @@
 						{
 							var vars = new Array();
 							vars["showToken"] = searchKey.replace("search_", "");
-							vars["avatar"] = entries["actor"]["avatar"];
+							vars["avatar"] = (typeof entries["actor"]["avatar"] != 'undefined' && entries["actor"]["avatar"] != '') ? entries["actor"]["avatar"] : "http://cdn.echoenabled.com/images/avatar-default.png";
 							vars["actor"] = entries["actor"]["title"];
 							vars["comment"] = entries["object"]["content"];
 							vars["timeStr"] = ago(entries["postedTime"]);
@@ -184,6 +203,8 @@
 
 			// Begin processing the Echo mux query
 			getGlobalChatWithFansData();
+
+
 
 		}
 	}

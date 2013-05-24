@@ -11,6 +11,7 @@ regions[header]         = Header
 regions[head_show]      = Show Header
 regions[head_general]   = General Header
 regions[search]         = Search Block
+regions[sponsored]      = Sponsored Block
 regions[leaderboard]    = Leaderboard Ad
 regions[main_prefix]    = Main Region Prefix
 regions[highlighted]    = Highlighted

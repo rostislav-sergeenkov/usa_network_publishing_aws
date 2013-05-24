@@ -14,6 +14,9 @@
 		height: 188px;
 		overflow: hidden;
 	}
+	h4 {
+		font-family: $headline-semi;
+	}
 	.view {
 		background: none;
 		border: none;
@@ -91,6 +94,7 @@
 		position: relative;
 	}
 	.item-content {
+		letter-spacing: .05em;
 		font-weight: normal;
 		color: $white;
 		left: 10px;
@@ -102,9 +106,6 @@
 		padding: 8px 18px 8px;
 		background: $black-trans;
 		overflow: hidden;
-		h4 {
-			font-family: $headline-semi;
-		}
 		a {
 			color: $white;
 		}
@@ -147,6 +148,7 @@
 	padding: 30px 0;
 	.carousel {
 		h4 {
+			font-family: $headline-semi;
 			font-size: 16px;
 			margin: 0;
 		}
@@ -183,7 +185,6 @@
 		white-space: nowrap;
 		font-size: 16px;
 		margin: 0;
-		font-family: $headline-semi;
 	}
 	li.active h4 {
 		&:after {

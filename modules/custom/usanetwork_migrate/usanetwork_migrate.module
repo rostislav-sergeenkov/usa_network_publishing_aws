@@ -150,6 +150,10 @@ function _usanetwork_migrate_attach_video_tv_show_reference(&$entity, $term_hier
  */
 function usanetwork_migrate_cron() {
 
+  if (!variable_get('usanetwork_migrate_run_cron', TRUE)) {
+    return;
+  }
+
   // Process nodes scheduled to be unpublished in field_publish_date.
   $results = usanetwork_migrate_get_scheduled_nodes();
   $queue = DrupalQueue::get('usanetwork_migrate');
@@ -162,7 +166,8 @@ function usanetwork_migrate_cron() {
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
-  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+  #$machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+  $machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
     $migration = Migration::getInstance($machine_name);

@@ -9,15 +9,32 @@
  * http://api.echoenabled.com/v2/mux?appkey=prod.usanetwork&requests=[{%22id%22:%22search1%22,%22method%22:%22search%22,%22q%22:%22%28childrenof:http://chatter.usanetwork.com/psych/public/comments%20-state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged%20-user.state:ModeratorBanned%29%20sortOrder:reverseChronological%20safeHTML:true%20itemsPerPage:1%20children:1%22}]&callback=jsonp12345
  */
 (function ($) {
-	Drupal.behaviors.chat_with_fans_page = {
+	Drupal.behaviors.show_homepage_social_chatter = {
 		attach: function(context){
 
-			var usa_debug_flag = false; // set to false to turn off all console logging
+			var usa_debug_flag = false; // set to false to turn off all debugging alerts or console logging
 			var usa_debug = function(msg)
 			{
-				if (typeof console != 'undefined' && usa_debug_flag) {
-					console.log(msg);
+				if (usa_debug_flag)
+				{
+					if (typeof console != 'undefined') {
+						console.log(msg);
+					}
+					else
+					{
+						//alert(msg);
+					}
 				}
+			}
+
+			/**
+			 * parseDateStr
+			 * re-converts UTC time to UTC time
+			 * because of a problem with IE8
+			 */
+			function parseDate(str) {
+				var v = str.split(/[-T:]/g);
+				return Date.UTC(v[0],(v[1]-1),v[2],v[3],v[4],v[5].replace('Z', ''),'000');
 			}
 
 			/**
@@ -29,8 +46,8 @@
 				var periods = ["second", "minute", "hour", "day", "week", "month", "year", "decade"];
 				var lengths = [60,60,24,7,4.35,12,10];
 
-				var now = new Date(); // time();
-				var jsTime = new Date(time);
+				var now = new Date();
+				var jsTime = new Date(parseDate(time));
 				var difference = (now - jsTime)/1000;
 
 				for (var j = 0; difference >= lengths[j] && j < (lengths.length-1); j++) {
@@ -44,7 +61,10 @@
 					periods[j] += "s";
 				}
 
-				return difference + " " + periods[j] + " ago";
+				var agoStr = difference + ' ' + periods[j] + ' ago';
+				if (agoStr == '1 day ago') agoStr = 'Yesterday';
+
+				return agoStr;
 			}
 
 			/**
@@ -59,9 +79,7 @@
 				var commentPresent = 0;
 				var showUrlLink = (showUrl != '') ? '<a href="'+showUrl+'/social/chat-with-fans">' : '';
 				var showUrlLinkEnd = (showUrl != '') ? '</a>' : '';
-				var commentHtml = '<span class="usanetwork_social_comment_link">Comment</span>';
 				var joinHtml = '<div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>';
-				var separatorHtml = '<span class="usanetwork_social_separator">-</span>';
 				var html = showUrlLink;
 
 				// if data was returned, create html comment and comment reply, if there is one
@@ -72,23 +90,41 @@
 						// for comment, index == 0
 						if (index == 0)
 						{
-							html += '<div id="usanetwork_social_show_comment">'+
-								'<img src="'+showData[0]["avatar"]+'">'+
-								'<div>'+showData[0]["comment"]+'</div>'+
-							'</div>'+
-							'<div id="usanetwork_social_data">'+
-								'<span class="usanetwork_social_post_date usanetwork_social_data">'+showData[0]["timeStr"]+'</span>'+
-								'<span class="usanetwork_social_from usanetwork_social_data"> from usanetwork</span>'+
-								separatorHtml+
-								'<span class="usanetwork_social_author usanetwork_social_data">'+showData[0]["actor"]+'</span>'+
-								separatorHtml+
-								commentHtml +
-							'</div>';
+							html += '<div class="usanetwork_social_show_comment">'+
+								'<div class="echo-item-content">'+
+									'<div class="echo-item-avatar-wrapper">'+
+										'<div class="echo-item-avatar">'+
+											'<img src="'+showData[0]["avatar"]+'" width="48" />'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-item-wrapper echo-item-wrapper-root">'+
+										'<div class="echo-item-subwrapper">'+
+											'<div class="echo-item-frame">'+
+												'<div class="author echo-item-authorName echo-linkColor">'+showData[0]["actor"]+'</div>'+
+												'<div class="echo-clear"></div>'+
+												'<div class="comment echo-item-data">'+
+													'<div class="echo-item-body">'+
+														'<span class="echo-item-text">'+showData[0]["comment"]+'</span>'+
+													'</div>'+
+												'</div>'+
+												'<div class="echo-item-footer">'+
+													'<img class="echo-item-sourceIcon echo-clickable" style="display: block" src="http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif" />'+
+													'<div class="echo-item-date">'+showData[0]["timeStr"]+'</div>'+
+													'<div class="echo-item-from">&nbsp;from&nbsp;usanetwork</div>'+
+													'<div class="echo-clear"></div>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="echo-clear"></div>'+
+								'</div>'+
+							'</div>'+"\n";
+
 							commentPresent = 1;
 						}
 
-			/* @TODO: Remove this commented section if they do not want
-			// to show a reply to the comment. Initial comps, showed a reply.
+						/* @TODO: Remove this commented section if they do not want
+						// to show a reply to the comment. Initial comps, showed a reply.
 						// for a reply to the comment, index == 1
 						if (index == 1)
 						{
@@ -100,7 +136,8 @@
 								"<div class=\"separator\">-</div>"+
 								"<div class=\"author\">"+showData[1]["actor"]+"</div>"+
 							"</div>" + commentHtml;
-						} */
+						}
+						*/
 					}
 				}
 

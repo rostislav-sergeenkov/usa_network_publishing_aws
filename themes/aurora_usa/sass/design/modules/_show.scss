@@ -1,0 +1,222 @@
+
+
+.usa-tv-show {
+  #main {
+    margin: 0 auto;
+    padding: 0;
+    width: 304px;
+    @include breakpoint($bp-show-mid-width) {
+      width: 615px;
+    }
+    @include breakpoint($bp-show-large-width) {
+      width: 930px;
+    }
+    @include breakpoint($bp-show-very-large-width) {
+      width: 1245px;
+    }
+  }
+  h2.pane-title {
+
+  }
+}
+
+.usa-tv-show {
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+    }
+  }
+  .panel-row {
+    clear: both;
+    margin-bottom: 26px;
+    .dart-tag {
+      border: 2px solid $gray-dark;
+    }
+  }
+  .panel-col1 {
+    float: left;
+  }
+  .panel-col2 {
+    float: right;
+  }
+  h2 {
+    margin-bottom: 21px;
+    font-size: 18px;
+    font-family: $headline-semi;
+    text-transform: uppercase;
+    @include breakpoint($bp-show-mid-width) {
+      font-size: 26px;
+    }
+  }
+}
+
+
+.video-promo-ads-panel {
+  position: relative;
+  .panel-col2  {
+    position: static;
+    @include breakpoint($bp-show-mid-width) {
+      position: absolute;
+      right: 11px;
+    }
+  }
+  .panel-col1 .field {
+    @include breakpoint($bp-show-mid-width) {
+      li:first-child {
+        margin-right: 304px;
+      }
+    }
+    @include breakpoint($bp-show-large-width) {
+      li:first-child {
+        margin-right: 11px;
+      }
+      li:first-child + li {
+        margin-right: 304px;
+      }
+    }
+    @include breakpoint($bp-show-very-large-width) {
+      li:first-child + li {
+        margin-right: 11px;
+      }
+      li:first-child + li + li {
+        margin-right: 304px;
+      }
+    }
+  }
+}
+
+
+
+.expandable-container {
+  clear: both;
+  margin: 0 0 15px;
+  .pane-content {
+    overflow: hidden;
+    @include breakpoint($bp-show-mid-width) {
+      margin-right: -15px;
+    }
+    > ul {
+      > li {
+        float: left;
+        width: 304px;
+        height: 254px;
+        margin: 0 0 15px;
+        @include breakpoint($bp-show-mid-width) {
+          margin-right: 11px;
+        }
+      }
+    }
+  }
+  .expandable-toggle-wrap {
+    clear: both;
+    margin: 0 auto;
+    padding: 14px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    &:before,
+    &:after {
+      border-color: #444;
+      border-style: solid;
+      border-width: 0 0 1px;
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 50%;
+    }
+    &:before {
+      left: -30px;
+    }
+    &:after {
+      right: -30px;
+    }
+  }
+
+  .expandable-toggle {
+    color: #444;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin: 0 auto;
+    position: relative;
+    &:after {
+      @include cssTriangle(18px, #444, 'top');
+      border-width: 12px 18px 18px;
+      top: 18px;
+      content: "";
+      left: 50%;
+      margin-left: -18px;
+      position: absolute;
+    }
+  }
+
+  .less {
+    display: none;
+  }
+  &.expanded {
+  .more {
+    display: none;
+  }
+  .less {
+    display: block;
+  }
+  .expandable-toggle {
+    &:after {
+      @include cssTriangle(18px, #444, 'bottom');
+        border-width: 18px 18px 12px;
+        bottom: 18px;
+        top: auto;
+      }
+    }
+  }
+
+  &.disabled {
+    .expandable-toggle-wrap {
+      display: none;
+    }
+  }
+}
+
+#block-usanetwork-video-usa-show-video-nav .content > .item-list > ul > li > a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+
+/* see where to move/ consolidate with suzi's styles */
+.usa-tv-show {
+  .flexslider {
+    height: 250px;
+    width: 300px;
+    @include breakpoint($bp-aspot-mid-width) {
+      height: 350px;
+      width: 615px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      width: 930px;
+      height: 378px;
+    }
+  }
+  .flex-viewport {
+    height: 100%;
+  }
+}
+
+.a-spot.flexslider {
+  .flex-direction-nav {
+    a {
+      position: absolute;
+      top: 46%;
+    }
+  }
+  .flex-next {
+    right: 5px;
+    left: auto;
+  }
+  .flex-prev {
+    left: 5px;
+  }
+}

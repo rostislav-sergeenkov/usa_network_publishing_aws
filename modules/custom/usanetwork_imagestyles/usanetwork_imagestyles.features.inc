@@ -86,6 +86,28 @@ function usanetwork_imagestyles_image_default_styles() {
     ),
   );
 
+  // Exported image style: 221x124_video.
+  $styles['221x124_video'] = array(
+    'name' => '221x124_video',
+    'effects' => array(
+      2 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '221',
+          'height' => '124',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported image style: 2490x1418.
   $styles['2490x1418'] = array(
     'name' => '2490x1418',
@@ -104,6 +126,28 @@ function usanetwork_imagestyles_image_default_styles() {
           'height' => '1418',
         ),
         'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported image style: 300x169_video.
+  $styles['300x169_video'] = array(
+    'name' => '300x169_video',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '300',
+          'height' => '169',
+        ),
+        'weight' => '1',
       ),
     ),
   );

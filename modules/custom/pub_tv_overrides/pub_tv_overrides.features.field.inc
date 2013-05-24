@@ -285,7 +285,7 @@ function pub_tv_overrides_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
-        'hide_blank_items' => TRUE,
+        'hide_blank_items' => 1,
         'path' => '',
       ),
       'translatable' => '0',
@@ -441,7 +441,7 @@ function pub_tv_overrides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'no_wrapper',
+      'fences_wrapper' => 'ul',
       'field_name' => 'field_usa_tv_a_spot',
       'label' => 'A Spot',
       'required' => 0,
@@ -459,106 +459,6 @@ function pub_tv_overrides_field_default_fields() {
         ),
         'type' => 'entityreference_autocomplete',
         'weight' => '67',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-tv_show-field_usa_tv_featured_videos'.
-  $fields['node-tv_show-field_usa_tv_featured_videos'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_usa_tv_featured_videos',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'usa_tve_video' => 'usa_tve_video',
-            'usa_video' => 'usa_video',
-          ),
-        ),
-        'target_type' => 'node',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'tv_show',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'A maximum of 5 videos recommended for this field to be displayed in the show landing page.',
-      'display' => array(
-        'block_cover_title' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '55',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => '48',
-        ),
-        'follow_social' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '58',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'fences_wrapper' => 'div',
-      'field_name' => 'field_usa_tv_featured_videos',
-      'label' => 'Featured Videos',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '69',
       ),
     ),
   );
@@ -776,7 +676,7 @@ function pub_tv_overrides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'exclude_cv' => 0,
-      'fences_wrapper' => 'div',
+      'fences_wrapper' => 'ul',
       'field_name' => 'field_usa_tv_promo',
       'label' => 'The Latest',
       'required' => 0,
@@ -794,6 +694,105 @@ function pub_tv_overrides_field_default_fields() {
         ),
         'type' => 'entityreference_autocomplete',
         'weight' => '68',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_usa_tv_promo_vids'.
+  $fields['node-tv_show-field_usa_tv_promo_vids'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_usa_tv_promo_vids',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'usanetwork_promo' => 'usanetwork_promo',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A maximum of 5 promos recommended for this field to be displayed in the show landing page.',
+      'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 57,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'ul',
+      'field_name' => 'field_usa_tv_promo_vids',
+      'label' => 'Featured Video Promos',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '70',
       ),
     ),
   );
@@ -891,10 +890,10 @@ function pub_tv_overrides_field_default_fields() {
   // Included for use with string extractors like potx.
   t('"On Now" Image');
   t('A Spot');
-  t('A maximum of 5 videos recommended for this field to be displayed in the show landing page.');
+  t('A maximum of 5 promos recommended for this field to be displayed in the show landing page.');
   t('Carousel featuring promos on the show landing page. A maximum of 6 promos recommended for this region.');
   t('Display Title');
-  t('Featured Videos');
+  t('Featured Video Promos');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Main_link');
   t('Recommend a maximum of 3 a-spots per show. This is the large a-spot display at the top of the show homepage.');

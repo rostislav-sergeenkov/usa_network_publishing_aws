@@ -27,6 +27,7 @@ features[context][] = usa_global_videos
 features[context][] = usa_leader_reloadable
 features[context][] = usa_leader_standard
 features[context][] = usa_leader_video
+features[context][] = usa_show_videos
 features[context][] = usa_social_pages
 features[context][] = usanetwork_homepage
 features[context][] = usanetwork_sitewide

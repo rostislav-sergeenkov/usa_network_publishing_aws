@@ -89,6 +89,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
+    drupal_add_js($theme_path . '/javascripts/show-toggle.js');
     drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
   }
   // add ios touch icon
@@ -522,7 +523,7 @@ function aurora_usa_field__field_usa_aspot_mobile($vars) {
  */
 function aurora_usa_field__field_promo_wide_image($vars) {
   // custom for certain view modes only
-  // c-spot wide image not displayed 
+  // c-spot wide image not displayed
   if ($vars['element']['#view_mode'] == 'home_promo') {
     $output = '';
   }

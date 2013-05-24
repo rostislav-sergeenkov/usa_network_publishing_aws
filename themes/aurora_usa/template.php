@@ -138,8 +138,7 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
         break;
-      case 'usanetwork_video-usa_global_video_nav':
-      case 'usanetwork_video-usa_show_video_nav':
+      case 'usanetwork_video-usa_global_video_show_nav':
       case 'usanetwork_social-usa_show_social_tab_nav':
         $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
         break;

@@ -1,11 +1,8 @@
 <?php
   $class = '';
-  if($content['six'])  {
+  if ($content['six']) {
     $class = 'panel-two-cols';
-  } else {
-    $class = '';
   }
-
 ?>
 <div class="panel-display panel-onecol-stacked clearfix">
   <div class="panel-wrapper">

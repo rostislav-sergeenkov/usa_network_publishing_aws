@@ -122,6 +122,7 @@ function usanetwork_showpages_showbanner() {
     if ($node->type == 'tv_show') {
       $show = $node->nid;
       $show_title = isset($node->field_display_title[$lang][0]['safe_value']) ? $node->field_display_title[$lang][0]['safe_value'] : $node->title;
+      $show_title = decode_entities($show_title);
       $show_tunein = isset($node->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $node->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
       $show_url = 'node/' . $node->nid;
       $show_name = l($show_title, $show_url);
@@ -139,6 +140,7 @@ function usanetwork_showpages_showbanner() {
       $show_nid = $show_nid[0]['target_id'];
       $show = node_load($show_nid);
       $show_title = isset($show->field_display_title[$lang][0]['safe_value']) ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
+      $show_title = decode_entities($show_title);
       $show_tunein = isset($show->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
       $show_url = 'node/' . $show->nid;
       $show_name = l($show_title, $show_url);

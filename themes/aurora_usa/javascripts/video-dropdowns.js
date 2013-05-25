@@ -6,11 +6,11 @@
 
     // all shows menu toggle
 
-    $('#block-usanetwork-video-usa-global-video-nav li.all-shows').click(function() {
+    $('.usa-secondary-menu > .content > .item-list > ul > li.first').click(function() {
         $(this).find('.item-list').toggle();
     });
 
-      $filter_menus = $('#block-usanetwork-video-usa-global-video-nav .all-shows');
+      $filter_menus = $('#block-usanetwork-video-usa-global-video-nav .all-shows.first');
       $filter_menus.each(function(index, value){
         $filter_menu = $(this);
         $filter_menu.addClass('filter-dropdown')
@@ -27,20 +27,17 @@
         });
       });
 
-      social_dropdown_class_toggle();
+      video_dropdown_class_toggle();
       $(window).resize(function(){
-        social_dropdown_class_toggle();
+        video_dropdown_class_toggle();
       });
-      function social_dropdown_class_toggle() {
+      function video_dropdown_class_toggle() {
         $change_element = $('#block-usanetwork-video-usa-global-video-nav.usa-secondary-menu');
         $drop_elements = $('#block-usanetwork-video-usa-global-video-nav li.all-shows');
-        //$menu = $('#block-usanetwork-video-usa-global-video-show-nav .menu-label');
         if ($drop_elements.css("font-size") == "20px" ){
-          //$menu.hide();
           $drop_elements.find('ul').removeClass('filter-menu');
           $drop_elements.removeClass('filter-dropdown');
         } else {
-          //$menu.show();
           $drop_elements.find('ul').addClass('filter-menu');
           $drop_elements.addClass('filter-dropdown');
         }

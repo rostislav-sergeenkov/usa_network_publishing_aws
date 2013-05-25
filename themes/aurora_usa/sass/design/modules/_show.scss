@@ -178,3 +178,57 @@
     }
   }
 }
+
+#block-usanetwork-video-usa-show-video-nav .content > .item-list > ul > li > a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+
+/* see where to move/ consolidate with suzi's styles */
+.usa-tv-show {
+  .flexslider {
+    height: 250px;
+    width: 300px;
+    @include breakpoint($bp-aspot-mid-width) {
+      height: 350px;
+      width: 615px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      width: 930px;
+      height: 378px;
+    }
+    @include breakpoint($bp-aspot-very-large-width) {
+      height: 506px;
+      width: 1245px;
+    }
+  }
+  .flex-viewport {
+    height: 100%;
+  }
+}
+
+.a-spot.flexslider {
+  .flex-direction-nav {
+    a {
+      position: absolute;
+      top: 46%;
+    }
+  }
+  .flex-next,
+  .flex-prev {
+    display: none;
+  }
+  &:hover {
+    .flex-next {
+      display: block;
+      right: 5px;
+      left: auto;
+    }
+    .flex-prev {
+      display: block;
+      left: 5px;
+    }
+  }
+}

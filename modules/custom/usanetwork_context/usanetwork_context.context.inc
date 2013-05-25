@@ -390,11 +390,17 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'usanetwork_video-usa_show_video_nav' => array(
           'module' => 'usanetwork_video',
           'delta' => 'usa_show_video_nav',
           'region' => 'content',
-          'weight' => '9',
+          'weight' => '-9',
         ),
       ),
     ),

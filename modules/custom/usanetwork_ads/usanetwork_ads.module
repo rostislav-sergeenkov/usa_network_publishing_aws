@@ -757,7 +757,7 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $adobe_tagloader_settings['tag_container_namespace'] : '';
   $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($adobe_tagloader_settings['tag_container_name']) ?
       $adobe_tagloader_settings['tag_container_name'] : '';
-  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js', array('type' => 'inline', 'scope' => 'footer', 'preprocess' => FALSE));
 
 
   // Set the JS settings for ads.

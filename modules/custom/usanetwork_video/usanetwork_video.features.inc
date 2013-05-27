@@ -19,6 +19,13 @@ function usanetwork_video_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function usanetwork_video_views_api() {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function usanetwork_video_node_info() {
@@ -40,5 +47,39 @@ function usanetwork_video_node_info() {
       'help' => '',
     ),
   );
+  return $items;
+}
+
+/**
+ * Implements hook_default_queues_type().
+ */
+function usanetwork_video_default_queues_type() {
+  $items = array();
+  $items['video_queue'] = entity_import('queues_type', '{
+    "label" : "Video Queue",
+    "type" : "video_queue",
+    "target" : "node",
+    "settings" : { "entityreference_field" : {
+        "cardinality" : "-1",
+        "target_bundles" : {
+          "usa_video" : "usa_video",
+          "usa_tve_video" : "usa_tve_video",
+          "usanetwork_aspot" : 0,
+          "catchall_page" : 0,
+          "character_profile" : 0,
+          "usa_homepage" : 0,
+          "media_gallery" : 0,
+          "movie" : 0,
+          "person" : 0,
+          "usanetwork_promo" : 0,
+          "usanetwork_static_page" : 0,
+          "tv_episode" : 0,
+          "tv_season" : 0,
+          "tv_show" : 0,
+          "webform" : 0
+        }
+      }
+    }
+  }');
   return $items;
 }

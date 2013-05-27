@@ -33,6 +33,10 @@ function usanetwork_video_block_info() {
     'info' => t('USA: show video navigation'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_video_views'] = array(
+    'info' => t('USA: video views'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
 
   return $blocks;
 }
@@ -51,6 +55,10 @@ function usanetwork_video_block_view($delta) {
     case 'usa_show_video_nav':
       $block['subject'] = '';
       $block['content'] = usanetwork_video_show_nav();
+      break;
+    case 'usa_video_views':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_video_views();
       break;
   }
 
@@ -98,7 +106,6 @@ function usanetwork_video_global_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  //TODO: replace the target URL with the correct url after video views creation
   $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
   $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
 
@@ -160,30 +167,36 @@ function usanetwork_video_show_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  //TODO: replace the target URL with the correct url after video views creation
   $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
 
   if (isset($node->field_usa_video_terms[$lang][0]['target_id']) || !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
-    $term = taxonomy_term_load($node->field_usa_video_terms[$lang][0]['target_id']);
+    foreach ($node->field_usa_video_terms[$lang] as $tids) {
+      $parent = array_values(taxonomy_get_parents($tids['target_id']));
+      if (isset($parent[0]) && $parent[0]->name == 'Series') { 
+        $term = taxonomy_term_load($tids['target_id']);
+        break;
+      }
+    }
+
     $terms = taxonomy_get_children($term->tid, $term->vid);
     $i=1;
     foreach ($terms as $term1) {
       $class = str_replace(' ', '-', strtolower($term1->name));
       $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
       if ($i == 3) {
-        $items[$i] = array('data' => t('more'), 'class' => array('more'));
+        $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
       } 
       if ($i >= 3) {
-        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
+        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => array($class));
         foreach ($terms1 as $term2) {
           $class = str_replace(' ', '-', strtolower($term2->name));
-          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => array($class));
         }
       } else {
-        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
+        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => array($class));
         foreach ($terms1 as $term2) {
           $class = str_replace(' ', '-', strtolower($term2->name));
-          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => array($class));
         }
       }
       $i++;
@@ -191,6 +204,59 @@ function usanetwork_video_show_nav() {
   }
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));
+  return $output;
+}
+
+/**
+ * renders the correct video view based upon the argument
+ */
+function usanetwork_video_views() {
+  $arg = arg();
+  $output = '';
+  $lang = LANGUAGE_NONE;
+  $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
+   
+  if (!empty($tid)) {
+    $output = views_embed_view('usa_video', 'category_videos', $tid);
+  } else if ($arg[0] == 'videos') {
+    if (!isset($arg[1]) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
+      $output = views_embed_view('usa_video', 'global_full_episode');
+    } else if ($arg[1] == 'whats-hot') {
+      $output = views_embed_view('whats_hot', 'whats_hot');
+    }
+  } else if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
+    $node = node_load($arg[1]);
+
+    // video node with a show association
+    if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
+      $show_nid = $node->field_show[$lang][0]['target_id'];
+      $full_episode = isset($node->field_full_episode[$lang][0]['value']) ? $node->field_full_episode[$lang][0]['value'] : 0; 
+      if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
+        $output = views_embed_view('usa_video', 'show_full_episode', $show_nid);
+      } else {
+        foreach ($node->field_usa_video_terms[$lang] as $tids) {
+          $parent = array_values(taxonomy_get_parents($tids['target_id']));
+          if (isset($parent[0]) && $parent[0]->name != 'Series') { 
+            $term = taxonomy_term_load($tids['target_id']);
+            break;
+          }
+        }
+        if (isset($term->tid) && !empty($term->tid)) {
+          $output = views_embed_view('usa_video', 'category_videos', $term->tid);
+        }
+        if (isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
+          $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
+        }
+      } 
+    } else if (isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
+      $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
+    }
+  }
+
+  //TODO: change the whats hot logic with queues api
+  if (empty($output)) {
+    $output = views_embed_view('whats_hot', 'whats_hot');
+  }
   return $output;
 }
 

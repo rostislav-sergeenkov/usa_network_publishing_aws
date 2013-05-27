@@ -420,7 +420,7 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
 function aurora_usa_preprocess_panels_pane(&$vars) {
 
   if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
-    $vars['pane_prefix'] = '<div class="person-content-wrapper"><aside id="person-content" class="panel-pane">';
+    $vars['pane_prefix'] = '<div class="person-content-wrapper clearfix"><aside id="person-content" class="panel-pane">';
   }
 
   if($vars['pane']->panel == 'person_image') {

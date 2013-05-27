@@ -249,8 +249,8 @@ function usanetwork_video_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => '',
-          1 => '',
+          0 => '0',
+          1 => '1',
         ),
         'allowed_values_function' => '',
       ),
@@ -1852,8 +1852,8 @@ function usanetwork_video_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => '',
-          1 => '',
+          0 => '0',
+          1 => '1',
         ),
         'allowed_values_function' => '',
       ),
@@ -3216,6 +3216,90 @@ function usanetwork_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'queues-video_queue-field_qt_node'.
+  $fields['queues-video_queue-field_qt_node'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'queues',
+      ),
+      'field_name' => 'field_qt_node',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'usa_tve_video' => 'usa_tve_video',
+            'usa_video' => 'usa_video',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video_queue',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'queues',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_qt_node',
+      'label' => 'Queue items',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Air Date');
@@ -3225,6 +3309,7 @@ function usanetwork_video_field_default_fields() {
   t('Episode #');
   t('Full Episode');
   t('Publish Date');
+  t('Queue items');
   t('Rating');
   t('Season #');
   t('Show');

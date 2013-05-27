@@ -224,3 +224,11 @@ function usanetwork_core_update_7101() {
   module_enable($modules);
 }
 
+/**
+ * Enable queues module
+ */
+function usanetwork_core_update_7102() {
+  $modules = array('queues');
+  module_enable($modules);
+}
+

@@ -239,8 +239,6 @@ $logo-height-med-2: 32px;
   .active-item & {
     display: block;
   }
-
-
 }
 .panel-sub-nav {
   padding: 0;
@@ -304,9 +302,11 @@ $logo-height-med-2: 32px;
 .tv-show-menu-trigger {
   color: $blue;
   margin-right: 8px;
+  font-size: 22px;
   padding: 0 1em 0 0.5em;
   border-right: 1px solid $gray-med;
   position: relative;
+  font-family: $headline-semi;
   &:after {
     position: absolute;
     content: $space;
@@ -320,73 +320,87 @@ $logo-height-med-2: 32px;
   }
 }
 #tv-show-menu {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  width: 100%;
-  background-color: $gray-dark;
-  border-top: 1px solid $gray-ultra-med;
-  height: 50px;
-  padding-left: 110px;
-  white-space: nowrap;
-  a {
-    @include link-colors($white, $white, $white, $white, $white);
-    font-size: 22px;
-    line-height: 50px;
-    padding: 0 23px;
-    display: inline-block;
-  }
   li {
     margin: 0;
     display: block;
   }
-  ul {
-    &, li {
-      margin: 0;
-      padding: 0;
-      display: inline-block;
-    }
+  a {
+    display: block;
+    background-color: $gray-dark;
+    border-color: $gray-med;
   }
-  li {
-    .item-list {
-      display: none;
-      position: absolute;
-      left: 0;
-      bottom: 100%;
-      width: 100%;
-      padding: 0.5em 50px 1em 110px;
-      background-color: rgba($gray-dark, 0.95);
-      border-top: 1px solid $gray-darker-light;
-      border-bottom: 1px solid $gray-ultra-med;
-      ul {
-        display: block;
-        @include column-count(4);
-        @include column-gap(2em);
-        .ie9 & {
-          li {
-            float: left;
-            width: 25%;
-            margin-right: 1em;
-            overflow: hidden;
+  @include breakpoint($bp-menu-switch) {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    background-color: $gray-dark;
+    border-top: 1px solid $gray-ultra-med;
+    height: 50px;
+    padding-left: 110px;
+    white-space: nowrap;
+    a {
+      @include link-colors($white, $white, $white, $white, $white);
+      font-size: 22px;
+      line-height: 50px;
+      padding: 0 23px;
+      display: inline-block;
+      background: none;
+      border: none;
+    }
+    ul {
+      &, li {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+      }
+    }
+    li {
+      .item-list {
+        display: none;
+        position: absolute;
+        left: 0;
+        bottom: 100%;
+        width: 100%;
+        padding: 1em 50px 1em 110px;
+        background-color: rgba($gray-dark, 0.95);
+        border-top: 1px solid $gray-darker-light;
+        border-bottom: 1px solid $gray-ultra-med;
+        ul {
+          display: block;
+          @include column-count(4);
+          @include column-gap(2em);
+          .ie9 & {
+            li {
+              float: left;
+              width: 25%;
+              margin-right: 1em;
+              overflow: hidden;
+            }
           }
         }
+        li {
+          display: block;
+          font-size: 16px;
+          line-height: 16px;
+          color: $gray-darker-light;
+        }
+        a {
+          @include link-colors($gray-dark-light, $gray-light, $gray-dark-light, $gray-dark-light, $gray-dark-light);
+          font-size: 16px;
+          line-height: 16px;
+          display: inline;
+        }
       }
-      li {
-        display: block;
-      }
-      a {
-        @include link-colors($gray-darker-light, $gray-darker-light, $gray-darker-light, $gray-darker-light, $gray-darker-light);
-        font-size: 16px;
-        line-height: 16px;
-        display: inline;
-      }
-    }
-    &:hover {
+      &:hover {
       > a {
         position: relative;
         background-color: $gray-med-dark;
-        &:after {
+        }
+      }
+      &.parent-item:hover {
+        > a:after {
           position: absolute;
           content: $space;
           @include cssTriangle(14px, $gray-med-dark, bottom);
@@ -397,17 +411,17 @@ $logo-height-med-2: 32px;
           @include filter(drop-shadow($gray-darker-light 0 -1px 0));
           z-index: 105;
         }
-      }
-      li {
-        a {
-          background-color: transparent;
-          &:after {
-            display: none;
+        li {
+          a {
+            background-color: transparent;
+            &:after {
+              display: none;
+            }
           }
         }
-      }
-      > .item-list {
-        display: block;
+        > .item-list {
+          display: block;
+        }
       }
     }
   }

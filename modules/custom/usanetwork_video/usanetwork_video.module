@@ -61,12 +61,10 @@ function usanetwork_video_block_view($delta) {
  * Generates the global video navigation
  */
 function usanetwork_video_global_nav() {
+  $output = '';
+  $items = array();
   $items[] = array('data' => '<span>all shows</span>', 'class' => array('all-shows'));
   $lang = LANGUAGE_NONE;
-
-  //TODO: replace the target URL with the correct url after video views creation
-  $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
-  $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
 
   $query = new EntityFieldQuery();
 
@@ -97,14 +95,22 @@ function usanetwork_video_global_nav() {
       }
     }
   }
+  $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
+  $items = array();
 
-  return theme('item_list', array('items' => $items));
+  //TODO: replace the target URL with the correct url after video views creation
+  $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+  $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
+
+  $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));
+  return $output;
 }
 
 /**
  * Generates the show video navigation
  */
 function usanetwork_video_show_nav() {
+  $output = '';
   $items = array();
   $arg = arg();
   $cpath = current_path();
@@ -151,6 +157,8 @@ function usanetwork_video_show_nav() {
       }
     }
   }
+  $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
+  $items = array();
 
   //TODO: replace the target URL with the correct url after video views creation
   $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
@@ -158,20 +166,32 @@ function usanetwork_video_show_nav() {
   if (isset($node->field_usa_video_terms[$lang][0]['target_id']) || !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
     $term = taxonomy_term_load($node->field_usa_video_terms[$lang][0]['target_id']);
     $terms = taxonomy_get_children($term->tid, $term->vid);
-    $i=2;
+    $i=1;
     foreach ($terms as $term1) {
       $class = str_replace(' ', '-', strtolower($term1->name));
-      $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
       $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
-      foreach ($terms1 as $term2) {
-        $class = str_replace(' ', '-', strtolower($term2->name));
-        $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+      if ($i == 3) {
+        $items[$i] = array('data' => t('more'), 'class' => array('more'));
+      } 
+      if ($i >= 3) {
+        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
+        foreach ($terms1 as $term2) {
+          $class = str_replace(' ', '-', strtolower($term2->name));
+          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+        }
+      } else {
+        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath.'/'.$term1->tid, array('html' => true)), 'class' => array($class));
+        foreach ($terms1 as $term2) {
+          $class = str_replace(' ', '-', strtolower($term2->name));
+          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath.'/'.$term2->tid, array('html' => true)), 'class' => array($class));
+        }
       }
       $i++;
     }
   }
 
-  return theme('item_list', array('items' => $items));
+  $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));
+  return $output;
 }
 
 /**

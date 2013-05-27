@@ -1,198 +1,219 @@
 
 .carousel-item {
-	float: left;
-	width: 236px;
-	height: 188px;
-	display: block;
-	text-align: center;
+  float: left;
+  width: 236px;
+  height: 188px;
+  display: block;
+  text-align: center;
 }
 
 .carousel {
-	margin-left: auto !important;
-	margin-right: auto !important;
-	.item-list {
-		height: 188px;
-		overflow: hidden;
-	}
-	h4 {
-		font-family: $headline-semi;
-	}
-	.view {
-		background: none;
-		border: none;
-		box-shadow: none;
-		margin: 0 auto;
-		max-width: 1319px;
-		overflow: hidden;
-		position: relative;
-		padding: 0 15px;
-		padding: 0;
-		@include breakpoint($bp-person-small-width) {
-//			padding-left: 37px;
-//			padding-right: 37px;
-		}
-		&:after, &:before {
-			content: "";
-			display: block;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			width: 50px;
-			z-index: 95;
-		}
-		&:before {
-			@include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
-			left: 0px;
-		}
-		&:after {
-			@include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
-			right: 0px;
-		}
-	}
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-	li.carousel-item {
-		padding: 0;
-		margin: 0;
-		&.active {
-			figure {
-				border-color: $white;
-			}
-			.item-content {
-				&:after {
-					@include cssTriangle(8px, $white, left);
-					position: absolute;
-					left:0;
-					bottom: 23px;
-				}
-			}
-		}
-		figure {
-			border: 2px solid $gray-dark;
-			left: 8px;
-			position: absolute;
-			top: 0;
-			z-index: 1;
-
-		}
-		img {
-			max-width: none;
-			display: block;
-		}
-		a.article-link {
-			height: 188px;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-			z-index: 90;
-		}
-	}
-	.carousel-item-wrapper {
-		position: relative;
-	}
-	.item-content {
-		letter-spacing: .05em;
-		font-weight: normal;
-		color: $white;
-		left: 10px;
-		position: absolute;
-		top: 125px;
-		width: 221px;
-		z-index: 10;
-		height: 61px;
-		padding: 8px 18px 8px;
-		background: $black-trans;
-		overflow: hidden;
-		a {
-			color: $white;
-		}
-		> div {
-			display: inline;
-			overflow: hidden;
-			white-space: nowrap;
-			&:first-child {
-				display: block;
-			}
-		}
-	}
+  margin-left: auto !important;
+  margin-right: auto !important;
+  .item-list {
+    height: 188px;
+    overflow: hidden;
+  }
+  h4 {
+    font-family: $headline-semi;
+  }
+  .view {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0 auto;
+    max-width: 1319px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 15px;
+    padding: 0;
+    @include breakpoint($bp-person-small-width) {
+//      padding-left: 37px;
+//      padding-right: 37px;
+    }
+    &:after, &:before {
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 50px;
+      z-index: 95;
+    }
+    &:before {
+      @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
+      left: 0px;
+    }
+    &:after {
+      @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%));
+      right: 0px;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li.carousel-item {
+    padding: 0;
+    margin: 0;
+    &.active {
+      figure {
+        border-color: $white;
+      }
+      .item-content {
+        &:after {
+          @include cssTriangle(8px, $white, left);
+          position: absolute;
+          left:0;
+          bottom: 23px;
+        }
+      }
+    }
+    figure {
+      border: 2px solid $gray-dark;
+      left: 8px;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+    img {
+      max-width: none;
+      display: block;
+    }
+    a.article-link {
+      height: 188px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 90;
+    }
+  }
+  .carousel-item-wrapper {
+    position: relative;
+  }
+  .item-content {
+    letter-spacing: .05em;
+    font-weight: normal;
+    color: $white;
+    left: 10px;
+    position: absolute;
+    top: 125px;
+    width: 221px;
+    z-index: 10;
+    height: 61px;
+    padding: 8px 18px 8px;
+    background: $black-trans;
+    overflow: hidden;
+    a {
+      color: $white;
+    }
+    > div {
+      display: inline;
+      overflow: hidden;
+      white-space: nowrap;
+      &:first-child {
+        display: block;
+      }
+    }
+  }
 }
 
 .carousel-btns .btns {
-	@extend %usanetwork-font;
-	color: $gray-darker-light;
-	font-size: 2.35em;
-	cursor: pointer;
-	position: absolute;
-	left: 5px;
-	top: 39%;
-	z-index: 96;
-	&:hover {
-		color: $gray-light;
-	}
-	&.next {
-		left: auto;
-		right: 0;
-	}
+  @extend %usanetwork-font;
+  color: $gray-darker-light;
+  font-size: 2.35em;
+  cursor: pointer;
+  position: absolute;
+  left: 5px;
+  top: 39%;
+  z-index: 96;
+  &:hover {
+    color: $gray-light;
+  }
+  &.next {
+    left: auto;
+    right: 0;
+  }
 }
 
 /* cast carousel */
 
 #cast-carousel {
-	background-color: $black;
-	border: 1px solid $gray-dark;
-	border-left: 0;
-	border-right: 0;
-	padding: 30px 0;
-	.carousel {
-		h4 {
-			font-family: $headline-semi;
-			font-size: 16px;
-			margin: 0;
-		}
-		.item-content > div {
-			font-size: 14px;
-		}
-	}
+  background-color: $black;
+  border: 1px solid $gray-dark;
+  border-left: 0;
+  border-right: 0;
+  padding: 30px 0;
+  &.carousel {
+    h4 {
+      font-family: $headline-semi;
+      font-size: 16px;
+      margin: 0;
+    }
+    .item-content > div {
+      font-size: 14px;
+    }
+    .view {
+      &:before {
+        @include background(linear-gradient(left center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
+      }
+      &:after {
+        @include background(linear-gradient(right center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
+      }
+    }
+  }
 }
 
 
 /* show carousel */
 
 #block-views-usa-shows-block-1 {
-	margin-bottom: 30px;
-	.view-mode-block_cover_title {
-		position: relative;
-	}
-	.item-list {
-		height: 188px;
-		overflow: hidden;
-	}
-	h4 {
-		font-weight: normal;
-		color: $white;
-		left: 10px;
-		position: absolute;
-		top: 125px;
-		width: 221px;
-		z-index: 10;
-		height: 61px;
-		padding: 20px 18px 10px;
-		background: $black-trans;
-		overflow: hidden;
-		white-space: nowrap;
-		font-size: 16px;
-		margin: 0;
-	}
-	li.active h4 {
-		&:after {
-			@include cssTriangle(8px, $white, left);
-			position: absolute;
-			left:0;
-			bottom: 23px;
-		}
-	}
+  margin-bottom: 30px;
+  .view-mode-block_cover_title {
+    position: relative;
+  }
+  .item-list {
+    height: 145px;
+    overflow: hidden;
+  }
+  .carousel-item {
+    width: 183px;
+    height: 145px;
+    img {
+      max-width: 169px;
+    }
+    a.article-link {
+      height: 145px;
+    }
+  }
+  figure {
+    height: 145px;
+    width: 173px;
+  }
+  h4 {
+    font-weight: normal;
+    color: $white;
+    left: 10px;
+    position: absolute;
+    top: 109px;
+    width: 169px;
+    z-index: 10;
+    height: 34px;
+    padding: 8px 18px;
+    background: $black-trans;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+  }
+  li.active h4 {
+    &:after {
+      @include cssTriangle(8px, $white, left);
+      position: absolute;
+      left:0;
+      bottom: 10px;
+    }
+  }
 }
 

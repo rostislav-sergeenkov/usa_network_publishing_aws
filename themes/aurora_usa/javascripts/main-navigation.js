@@ -5,6 +5,9 @@
 
       // TOUCH NAVIGATION
       $('.primary-nav').prepend('<div id="main-menu-toggle" class="mobi-menu-icon slide-menu-toggle" data-module-type="SlideOut" data-active-layer="mega-menu"></div>');
+      // no destination for links with this class
+      // if there is a child menu add a class
+      $('#tv-show-menu li .item-list').parent().addClass('parent-item');
 
       // NARROW NAVIGATION
       var jPM = $.jPanelMenu({
@@ -41,11 +44,31 @@
             $show_menu = $('#block-usanetwork-blocks-usa-tv-show-menu').clone();
             if ($show_menu.length > 0) {
               $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
-              $show_links = $show_menu.find('#tv-show-menu');
-              $new_show_menu = $('<h1 class="menu-title"></h1>').html($show_trigger);
-              $new_show_menu.append($show_links);
-              // @todo - assemble the rest of the links from $show_menu
+              $new_show_menu = $show_menu.find('#tv-show-menu');
+              $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);
+              $new_show_menu.prepend($new_show_title);
               $('#jPanelMenu-menu').prepend($new_show_menu);
+              $('#jPanelMenu-menu')
+                .find('a')
+                  .addClass('slide-panel-link')
+                  .end()
+               .find('.parent-item')
+                  .addClass('expandable')
+                  .addClass('expandable-menu')
+                  .end()
+               .find('li .item-list')
+                  .addClass('panel-sub-nav-container')
+                  .end()
+                .find('li .item-list ul')
+                  .addClass('panel-sub-nav')
+                  .end()
+                .find('.parent-item a:first-child')
+                  .click(function() {
+                    $(this).parent().toggleClass('active-item');
+                    return false;
+                  })
+                  .end()
+                ;
             }
             $('.jPanelMenu-panel').css('min-height', $(window).height());
           },

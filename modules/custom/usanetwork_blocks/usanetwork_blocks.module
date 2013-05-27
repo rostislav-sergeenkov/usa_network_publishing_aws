@@ -299,14 +299,14 @@ function usanetwork_blocks_tv_show_menu() {
     $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
     if (!empty($link_fields)) {
       foreach ($link_fields as $link) {
-        $mlinks['data'] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+        $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
       }
     }
 
     $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
     if (!empty($link_fields)) {
       foreach ($link_fields as $link) {
-        $mlinks['children'][] = empty($link['url']) ? $link['title'] : l($link['title'], $link['url']); 
+        $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
       }
     }
     $links[] = $mlinks;

@@ -270,6 +270,45 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    // AIRDATE IN VIDEOS
+    case 'field_video_air_date':
+      // change display
+      if (isset($vars['element']['#view_mode']))  {
+        switch($vars['element']['#view_mode']) {
+          case 'full' :
+            $airtime = $vars['element']['#items'][0]['value'];
+            $air_custom = date('n/d/Y', $airtime);
+            $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
+            break;
+
+          case 'vid_teaser_episode':
+            $airtime = $vars['element']['#items'][0]['value'];
+            $air_custom = date('n/d/Y', $airtime);
+            $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
+            break;
+          }
+        }
+      break;
+    // SHOW TITLE WITHIN VIDEO TEASERS
+    case 'field_show':
+      // change display
+      if (isset($vars['element']['#view_mode']))  {
+        switch($vars['element']['#view_mode']) {
+          case 'vid_teaser_episode':
+          case 'vid_teaser_general':
+          $vars['items'][0]['#prefix'] = '<h4>';
+          $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          }
+        }
+      break;
+    // DURATION WITHIN VIDEO TEASERS
+    case 'field_video_duration':
+      // change display
+      $duration = $vars['element']['#items'][0]['value'];
+      $duration_custom = gmdate("H:i:s", $duration);
+      $vars['items'][0]['#markup'] = $duration_custom;
+      break;
   }
 }
 
@@ -381,7 +420,7 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
 function aurora_usa_preprocess_panels_pane(&$vars) {
 
   if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
-    $vars['pane_prefix'] = '<div class="person-content-wrapper"><aside id="person-content" class="panel-pane">';
+    $vars['pane_prefix'] = '<div class="person-content-wrapper clearfix"><aside id="person-content" class="panel-pane">';
   }
 
   if($vars['pane']->panel == 'person_image') {

@@ -1,0 +1,53 @@
+#footer {
+  padding: 20px 25px;
+  li, ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+.region-footer {
+  display: block;
+  padding-top: 117px;
+  overflow: hidden;
+  padding-bottom: 0;
+  font-size: 12px;
+  font-family: $headline-semi;
+  color: $gray-dark-light;
+  li a {
+    color: $gray-dark-light;
+  }
+  h2 {
+    display: none;
+  }
+  li {
+    display: inline-block;
+  }
+  .block {
+    float: left;
+  }
+}
+
+/* section not on empathy ? hide? */
+#block-usanetwork-blocks-usa-social-footer {
+  float: right;
+}
+
+#block-menu-usa-footer-bottom {
+  a {
+    margin-right: 15px;
+    padding: 10px 0;
+  }
+}
+
+/* overriding module styles - remove from there? */
+#footer-message {
+  font-size: 10px;
+  font-family: $headline-reg;
+  color: $gray-dark-light;
+}
+
+#block-usanetwork-blocks-usa-footer-message {
+  clear: both;
+}

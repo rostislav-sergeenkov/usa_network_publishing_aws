@@ -25,7 +25,7 @@ function usanetwork_home_field_group_info() {
     'children' => array(
       0 => 'field_usa_hp_arefs',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'A-spots',
       'instance_settings' => array(
@@ -33,7 +33,7 @@ function usanetwork_home_field_group_info() {
         'classes' => '',
         'description' => 'No more than 3 A-spots are recommended for this region',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_hp_aspots|node|usa_homepage|form'] = $field_group;
@@ -53,16 +53,16 @@ function usanetwork_home_field_group_info() {
     'children' => array(
       0 => 'field_usa_hp_brefs',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'B-spots',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br /><br />
+        'description' => 'A maximum of 3 promos recommended for this region.<br />
 On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_hp_bspots|node|usa_homepage|form'] = $field_group;
@@ -82,16 +82,16 @@ On page load, only the first promo in each spot will be displayed.  Additional p
     'children' => array(
       0 => 'field_usa_hp_crefs',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'C-spots',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br /><br />
+        'description' => 'A maximum of 3 promos recommended for this region.<br />
 On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_hp_cspots|node|usa_homepage|form'] = $field_group;
@@ -111,16 +111,16 @@ On page load, only the first promo in each spot will be displayed.  Additional p
     'children' => array(
       0 => 'field_hp_promos',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Featured',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 4 promos recommended for this region.<br /><br />
+        'description' => 'A maximum of 4 promos recommended for this region.<br />
 If more than 4 are added a carousel will be triggered on page load so content can be scrolled through.',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_hp_promos|node|usa_homepage|form'] = $field_group;

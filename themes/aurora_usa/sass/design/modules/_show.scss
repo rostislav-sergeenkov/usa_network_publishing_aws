@@ -30,9 +30,16 @@
   }
   .panel-row {
     clear: both;
-    margin-bottom: 26px;
+    margin-bottom: 15px;
     .dart-tag {
-      border: 2px solid $gray-dark;
+      img, object {
+        border: 2px solid $gray-dark;
+        height: 250px;
+        width: 300px;
+      }
+    }
+    &.a-spot-panel {
+      margin-bottom: 40px;
     }
   }
   .panel-col1 {
@@ -42,8 +49,9 @@
     float: right;
   }
   h2 {
-    margin-bottom: 21px;
+    margin-bottom: 13px;
     font-size: 18px;
+    line-height: 1.5em;
     font-family: $headline-semi;
     text-transform: uppercase;
     @include breakpoint($bp-show-mid-width) {
@@ -51,6 +59,7 @@
     }
   }
 }
+
 
 
 .video-promo-ads-panel {
@@ -88,6 +97,19 @@
 }
 
 
+.expandable-content {
+  > div:first-child {
+    .pane-content {
+       height: 269px;
+    }
+  }
+}
+
+.video-promo-ads-panel {
+  .panel-col2 {
+    height: 250px;
+  }
+}
 
 .expandable-container {
   clear: both;
@@ -100,8 +122,6 @@
     > ul {
       > li {
         float: left;
-        width: 304px;
-        height: 254px;
         margin: 0 0 15px;
         @include breakpoint($bp-show-mid-width) {
           margin-right: 11px;
@@ -191,6 +211,7 @@
   .flexslider {
     height: 250px;
     width: 300px;
+    overflow: hidden;
     @include breakpoint($bp-aspot-mid-width) {
       height: 350px;
       width: 615px;

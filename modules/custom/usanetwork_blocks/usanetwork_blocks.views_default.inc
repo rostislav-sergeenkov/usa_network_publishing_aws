@@ -176,7 +176,7 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -194,7 +194,7 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['alter']['text'] = 'New!';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'html5_tools_iso8601';
-  $handler->display->display_options['path'] = 'admin/usanetwork/shows_nav';
+  $handler->display->display_options['path'] = 'admin/usanetwork/shows/shows_nav';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Shows nav sort order';
   $handler->display->display_options['menu']['weight'] = '0';

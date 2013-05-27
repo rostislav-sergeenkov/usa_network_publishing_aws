@@ -10,8 +10,11 @@
 /**
  * Create what's hot video queue
  */
+/*
 function usanetwork_video_update_7100() {
   $entity = entity_create('queues', array('type' =>'video_queue'));
   $entity->title = "What's Hot";
   $entity->save();
+
 }
+*/

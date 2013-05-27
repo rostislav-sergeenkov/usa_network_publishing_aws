@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork video needs.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Create what's hot video queue
+ */
+function usanetwork_video_update_7100() {
+  $entity = entity_create('queues', array('type' =>'video_queue'));
+  $entity->title = "What's Hot";
+  $entity->save();
+}

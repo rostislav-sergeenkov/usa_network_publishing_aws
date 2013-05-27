@@ -146,7 +146,7 @@
 
 
 <!-- FOOTER -->
-<footer id="footer" role="contentinfo">
+<footer id="footer" role="contentinfo" class="clearfix">
   <?php print render($page['footer']); ?>
 </footer>
 <!-- /FOOTER -->

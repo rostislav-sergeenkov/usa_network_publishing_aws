@@ -10,6 +10,7 @@ body.person-page {
 #person-content {
 	width: auto;
 	position: relative;
+	background: $black-true;
 	h1 {
 		text-transform: none;
 		font-size: 24px;
@@ -23,6 +24,7 @@ body.person-page {
 		text-transform: none;
 		font-size: 14px;
 		margin: 5px 30px 5px 0;
+	  position: relative;
 		@include breakpoint($bp-person-medium-width) {
 			font-size: 18px;
 		}

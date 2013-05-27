@@ -270,6 +270,45 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    // AIRDATE IN VIDEOS
+    case 'field_video_air_date':
+      // change display
+      if (isset($vars['element']['#view_mode']))  {
+        switch($vars['element']['#view_mode']) {
+          case 'full' :
+            $airtime = $vars['element']['#items'][0]['value'];
+            $air_custom = date('n/d/Y', $airtime);
+            $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
+            break;
+
+          case 'vid_teaser_episode':
+            $airtime = $vars['element']['#items'][0]['value'];
+            $air_custom = date('n/d/Y', $airtime);
+            $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
+            break;
+          }
+        }
+      break;
+    // SHOW TITLE WITHIN VIDEO TEASERS
+    case 'field_show':
+      // change display
+      if (isset($vars['element']['#view_mode']))  {
+        switch($vars['element']['#view_mode']) {
+          case 'vid_teaser_episode':
+          case 'vid_teaser_general':
+          $vars['items'][0]['#prefix'] = '<h4>';
+          $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          }
+        }
+      break;
+    // DURATION WITHIN VIDEO TEASERS
+    case 'field_video_duration':
+      // change display
+      $duration = $vars['element']['#items'][0]['value'];
+      $duration_custom = gmdate("H:i:s", $duration);
+      $vars['items'][0]['#markup'] = $duration_custom;
+      break;
   }
 }
 

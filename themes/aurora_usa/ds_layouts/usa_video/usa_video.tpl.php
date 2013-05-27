@@ -32,7 +32,7 @@ if ($node->type == 'usa_tve_video') {
 
 ?>
 
-<div class="<?php print $classes;?> video usa-video featured-asset premium-asset">
+<div class="<?php print $classes;?> video usa-video featured-asset premium-asset clearfix">
 
   <div class="meta">
     <div class="meta-head">
@@ -42,7 +42,7 @@ if ($node->type == 'usa_tve_video') {
     <div class="details">
       <?php if ($season): ?><span class="season-info"><?php print $season; ?></span><?php endif; ?>
       <?php if ($episode): ?><span class="episode-info"><?php print $episode; ?></span><?php endif; ?>
-      <?php if ($airdate): ?><span class="episode-info">(<?php print $airdate; ?>)</span><?php endif; ?>
+      <?php if ($airdate): ?><span class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
     </div>
   </div>
   <div class="video-player-wrapper">

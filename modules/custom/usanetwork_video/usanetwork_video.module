@@ -120,9 +120,14 @@ function usanetwork_video_show_nav() {
   $output = '';
   $items = array();
   $arg = arg();
-  $cpath = current_path();
-  $node = node_load($arg[1]);
   $lang = LANGUAGE_NONE;
+  $node = node_load($arg[1]);
+
+  if (isset($node->nid)) {
+    $cpath = drupal_get_path_alias('node/'.$node->nid);
+  } else {
+    $cpath = current_path();
+  }
 
   // return empty block if the url is invalid
   if (!isset($arg[1]) || empty($arg[1])) {
@@ -167,36 +172,51 @@ function usanetwork_video_show_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+  $classes = array('full-episodes');
+  if ((isset($arg[2]) && $arg[2] == 'full-episodes') || 
+    (isset($node->field_full_episode[$lang][0]['value']) && $node->field_full_episode[$lang][0]['value'] == 1)) {
+    $classes[] = 'active';
+  }
+  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes); 
 
+  $active_tids = array();
   if (isset($node->field_usa_video_terms[$lang][0]['target_id']) || !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
     foreach ($node->field_usa_video_terms[$lang] as $tids) {
       $parent = array_values(taxonomy_get_parents($tids['target_id']));
       if (isset($parent[0]) && $parent[0]->name == 'Series') { 
         $term = taxonomy_term_load($tids['target_id']);
-        break;
       }
+      $active_tids[] = $tids['target_id'];
     }
 
     $terms = taxonomy_get_children($term->tid, $term->vid);
     $i=1;
     foreach ($terms as $term1) {
-      $class = str_replace(' ', '-', strtolower($term1->name));
+      $class = array(str_replace(' ', '-', strtolower($term1->name)));
+      if (!in_array('active', $classes) && ((isset($_GET['tid']) && $_GET['tid'] == $term1->tid) || in_array($term1->tid, $active_tids))) {
+        $class[] = 'active';
+      }
       $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
       if ($i == 3) {
         $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
       } 
       if ($i >= 3) {
-        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => array($class));
+        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
         foreach ($terms1 as $term2) {
+          if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
+            $class[] = 'active';
+          }
           $class = str_replace(' ', '-', strtolower($term2->name));
-          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => array($class));
+          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
         }
       } else {
-        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => array($class));
+        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
         foreach ($terms1 as $term2) {
+          if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
+            $class[] = 'active';
+          }
           $class = str_replace(' ', '-', strtolower($term2->name));
-          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => array($class));
+          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
         }
       }
       $i++;
@@ -265,8 +285,7 @@ function usanetwork_video_views() {
  * Renders the global video page
  */
 function usanetwork_video_global_videos_page() {
-  //TODO: re-write this code to determine the correct video node and redirect to that url
-  return t('Global Videos Page: Placeholder in the usanetwork_videos module');
+  return views_embed_view('usa_video', 'global_latest_full_episode_video');
 }
 
 

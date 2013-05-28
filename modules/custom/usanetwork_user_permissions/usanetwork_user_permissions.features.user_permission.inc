@@ -20,6 +20,33 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'draggableviews',
   );
 
+  // Exported permission: administer SiteCatalyst configuration.
+  $permissions['administer SiteCatalyst configuration'] = array(
+    'name' => 'administer SiteCatalyst configuration',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'sitecatalyst',
+  );
+
+  // Exported permission: administer usanetwork.
+  $permissions['administer usanetwork'] = array(
+    'name' => 'administer usanetwork',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'usanetwork',
+  );
+
+  // Exported permission: administer usanetwork dart settings.
+  $permissions['administer usanetwork dart settings'] = array(
+    'name' => 'administer usanetwork dart settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'usanetwork_ads',
+  );
+
   // Exported permission: create media_gallery content.
   $permissions['create media_gallery content'] = array(
     'name' => 'create media_gallery content',
@@ -30,19 +57,11 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create movie content.
-  $permissions['create movie content'] = array(
-    'name' => 'create movie content',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create person content.
   $permissions['create person content'] = array(
     'name' => 'create person content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -52,6 +71,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create tv_episode content'] = array(
     'name' => 'create tv_episode content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -61,6 +81,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create tv_season content'] = array(
     'name' => 'create tv_season content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -70,6 +91,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create tv_show content'] = array(
     'name' => 'create tv_show content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -79,6 +101,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create usa_homepage content'] = array(
     'name' => 'create usa_homepage content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -88,6 +111,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create usanetwork_aspot content'] = array(
     'name' => 'create usanetwork_aspot content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -97,6 +121,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create usanetwork_promo content'] = array(
     'name' => 'create usanetwork_promo content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -106,6 +131,17 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['create usanetwork_static_page content'] = array(
     'name' => 'create usanetwork_static_page content',
     'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any usa_homepage content.
+  $permissions['delete any usa_homepage content'] = array(
+    'name' => 'delete any usa_homepage content',
+    'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -121,19 +157,11 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own movie content.
-  $permissions['delete own movie content'] = array(
-    'name' => 'delete own movie content',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own person content.
   $permissions['delete own person content'] = array(
     'name' => 'delete own person content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -143,6 +171,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own tv_episode content'] = array(
     'name' => 'delete own tv_episode content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -152,6 +181,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own tv_season content'] = array(
     'name' => 'delete own tv_season content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -161,6 +191,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own tv_show content'] = array(
     'name' => 'delete own tv_show content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -170,6 +201,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own usa_homepage content'] = array(
     'name' => 'delete own usa_homepage content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -179,6 +211,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own usanetwork_aspot content'] = array(
     'name' => 'delete own usanetwork_aspot content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -188,6 +221,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own usanetwork_promo content'] = array(
     'name' => 'delete own usanetwork_promo content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -197,9 +231,29 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['delete own usanetwork_static_page content'] = array(
     'name' => 'delete own usanetwork_static_page content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit any usa_homepage content.
+  $permissions['edit any usa_homepage content'] = array(
+    'name' => 'edit any usa_homepage content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any video_queue queue.
+  $permissions['edit any video_queue queue'] = array(
+    'name' => 'edit any video_queue queue',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'queues',
   );
 
   // Exported permission: edit own media_gallery content.
@@ -212,19 +266,11 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own movie content.
-  $permissions['edit own movie content'] = array(
-    'name' => 'edit own movie content',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own person content.
   $permissions['edit own person content'] = array(
     'name' => 'edit own person content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -234,6 +280,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own tv_episode content'] = array(
     'name' => 'edit own tv_episode content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -243,6 +290,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own tv_season content'] = array(
     'name' => 'edit own tv_season content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -252,6 +300,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own tv_show content'] = array(
     'name' => 'edit own tv_show content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -261,6 +310,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own usa_homepage content'] = array(
     'name' => 'edit own usa_homepage content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -270,6 +320,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own usanetwork_aspot content'] = array(
     'name' => 'edit own usanetwork_aspot content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -279,6 +330,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own usanetwork_promo content'] = array(
     'name' => 'edit own usanetwork_promo content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',
@@ -288,6 +340,7 @@ function usanetwork_user_permissions_user_default_permissions() {
   $permissions['edit own usanetwork_static_page content'] = array(
     'name' => 'edit own usanetwork_static_page content',
     'roles' => array(
+      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'node',

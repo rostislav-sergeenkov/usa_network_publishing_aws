@@ -11,6 +11,8 @@ include_once 'pub_files_overrides.features.inc';
  *
  */
 function pub_files_overrides_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
-  // Removes "Replace file" field on the edit file form.
+  // RESTORES "Replace file" field on the edit file form.
+  // for some wacky reason pub_files removed access to the thing we want
+  // @TODO we can remove this hook when this is restored in p7 core
   $form['replace_upload']['#access'] = TRUE;
 }

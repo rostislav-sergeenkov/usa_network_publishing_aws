@@ -1,7 +1,287 @@
 
-.page-videos {
+/* verify body classes for videos */
+.page-videos,
+.node-type-usa-tve-video {
   #main {
-
+    padding: 0;
+    margin: 0 auto 30px;
+    @include breakpoint($bp-video-mid-small-width) {
+      width: 457px;
+    }
+    @include breakpoint($bp-video-medium-width) {
+      width: 693px;
+    }
+    @include breakpoint($bp-video-large-width) {
+      width: 929px;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 1245px;
+    }
   }
+  .view {
+    padding: 0 15px;
+    @include breakpoint($bp-video-mid-small-width) {
+      margin-right: -15px;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      margin: 0;
+    }
+  }
+  .view-mode-vid_teaser_show_episode,
+  .view-mode-vid_teaser_episode,
+  .view-mode-vid_teaser_general {
+    width: 46%;
+    float: left;
+    border: 2px solid $gray-dark;
+    margin: 0 2% 4%;
+    @include breakpoint($bp-video-mid-small-width) {
+      width: 221px;
+      margin-right: 11px;
+      margin-bottom: 10px;
+      margin-left: 0;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 300px;
+    }
+    .caption-fields-wrapper {
+      position: static;
+      width: 100%;
+      height: 44px;
+      margin: 0;
+      padding: 5px 10px;
+      @include breakpoint($bp-video-medium-width) {
+        height: 56px;
+        padding: 9px 10px 5px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        height: 77px;
+        padding: 15px 15px 9px;
+      }
+    }
+    h4 {
+      font-family: $headline-semi;
+      font-size: 12px;
+      margin: 0;
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 18px;
+      }
+    }
+    .caption {
+      font-size: 10px;
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 15px;
+      }
+    }
+  }
+  .usa-secondary-menu {
+    background: transparent;
+    border: 0;
+    @include breakpoint($bp-video-mid-large-width) {
+      background-color: $gray-dark;
+      border: 1px solid $gray-med-dark;
+    }
+    a {
+      &.active {
+        color: $white;
+        border-bottom: 0;
+        @include breakpoint($bp-video-mid-large-width) {
+          background-color: $gray-med;
+          color: $gray-extra-light;
+          border-left: 1px solid $gray-med-dark;
+          border-right: 1px solid $gray-med-dark;
+          &:after {
+            @include cssTriangle(12px, $gray-med, top);
+            position: absolute;
+            left: 50%;
+            top: 58px;
+            margin-left: -12px;
+          }
+        }
+      }
+      &:hover {
+        @include breakpoint($bp-video-mid-large-width) {
+          background-color: $gray-med;
+        }
+      }
+      &:hover:after {
+        @include breakpoint($bp-video-mid-large-width) {
+          @include cssTriangle(12px, $gray-med, top);
+          position: absolute;
+          left: 50%;
+          top: 58px;
+          margin-left: -12px;
+          z-index: 9;
+        }
+      }
+    }
+    li.more ul.more {
+      display: none;
+    }
+    ul.shows li {
+      width: 100%;
+      margin: 0;
+    }
+    .menu-label {
+      display: none;
+    }
+    .filter-dropdown_v2 {
+      background-color: $gray-dark;
+      position: relative;
+      .menu-label {
+        display: block;
+        padding: 19px;
+        float: left;
+        width: 100%;
+        cursor: pointer;
+        border: 1px solid $gray-med-dark;
+         &:after,
+          &:hover:after {
+            position: absolute;
+            right: 21px;
+            top: 28px;
+            left: auto;
+            @include cssTriangle(5px, $white, top);
+          }
+          &:before {
+            position: absolute;
+            right: 20px;
+            left: auto;
+            top: 16px;
+            @include cssTriangle(5px, $white, bottom);
+          }
+          &:hover {
+            color: $gray-extra-light;
+          }
+        + ul.categories {
+          display: none;
+        }
+      }
+      &.open {
+        ul.categories {
+          z-index: 99;
+          margin: 0;
+          max-height: 300px;
+          overflow-y: auto;
+          display: block;
+          position: absolute;
+          top: 59px;
+          border: 1px solid $gray-med-dark;
+          border-top: 0;
+          background-color: $gray-dark;
+          width: 100%;
+          left: 0;
+          white-space: nowrap;
+          .active {
+            background-color: transparent;
+            color: $white;
+            &:after {
+              border: 0;
+            }
+          }
+          > li {
+            font-family: $headline-thn;
+            margin: 0;
+            border: 0;
+            padding: 0;
+            line-height: 1em;
+            letter-spacing: 0.05em;
+            float: none;
+            &.first {
+               a {
+                border-top: 0;
+              }
+            }
+            > a {
+              font-size: 14px;
+              padding: 10px 20px 8px;
+              float: none;
+              border: 0;
+              border-top: 1px solid $gray-med-dark;
+              &:hover {
+                background-color: $gray-ultra-med;
+              }
+              &:hover:after {
+                @include cssTriangle(0, $gray-med, top);
+              }
+            }
+          }
+        }
+      }
+    }
 
+        .content  {
+          padding: 0 15px;
+          @include breakpoint($bp-video-mid-small-width) {
+            padding: 0;
+          }
+          > .item-list {
+          float: left;
+          width: 100%;
+          margin-bottom: 15px;
+          @include breakpoint($bp-video-mid-range2-width) {
+            width: 221px;
+            margin-left: 15px;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+          @include breakpoint($bp-video-mid-range3-width) {
+            width: 49%;
+            margin-left: 2%;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+          @include breakpoint($bp-video-large-width) {
+            width: 457px;
+            margin-left: 15px;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+          @include breakpoint($bp-video-mid-large-width) {
+            font-size: 20px;
+            width: 75%;
+            margin: 0;
+            border: 0;
+            &:first-child {
+              width: 25%;
+              border-right: 1px solid $gray-med-dark;
+            }
+          }
+          .more  {
+            > span {
+            height: auto;
+            padding: 15px 20px 13px;
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            @include breakpoint($bp-social-mid-width) {
+              padding: 20px 30px 18px;
+              padding-left: 30px;
+              padding-right: 30px;
+              float: left;
+              width: auto;
+              border-top: 0;
+              border-left: 1px solid $gray-dark;
+              border-right: 1px solid $gray-dark;
+              &:hover {
+                color: $gray-extra-light;
+                border-left: 1px solid $gray-med-dark;
+                border-right: 1px solid $gray-med-dark;
+              }
+            }
+//            .item-list ul {
+//              width: auto;
+//              max-height: none;
+//              overflow-y: inherit;
+//            }
+          }
+        }
+      }
+    }
+  }
 }

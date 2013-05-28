@@ -71,7 +71,7 @@ function usanetwork_custompages_games($node) {
       switch ($arg[3]) {
         case 'seeitlikeaspy':
           if (!isset($arg[4]) || empty($arg[4])) {
-            drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/seeit-likeaspy.css");
+            drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/seeitlikeaspy.css");
             $output = usanetwork_custompages_games_seeitlikeaspy($node);
           }
           else {
@@ -219,14 +219,261 @@ function usanetwork_custompages_games($node) {
           $output = usanetwork_custompages_games_office($node);
         break;
         case 'findthepineapple':
-          $output = usanetwork_custompages_games_findthepineapple($node);
+            if (!isset($arg[4]) || empty($arg[4])) {
+              drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/seeitlikeaspy.css");
+              $output = usanetwork_custompages_games_findthepineapple($node);
+            }
+          else {
+            switch ($arg[4]) {
+              case 'index1':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index1', 'PSYCH_pineapple1.swf');
+              break;
+              case 'index2':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index2', 'PSYCH_pineapple2.swf');
+              break;
+              case 'index3':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index3', 'PSYCH_pineapple3.swf');
+              break;
+              case 'index4':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index4', 'PSYCH_pineapple4.swf');
+              break;
+              case 'index5':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index5', 'PSYCH_pineapple5.swf');
+              break;
+              case 'index6':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index6', 'PSYCH_pineapple6.swf');
+              break;
+              case 'index7':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index7', 'PSYCH_pineapple7.swf');
+              break;
+              case 'index8':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index8', 'PSYCH_pineapple8.swf');
+              break;
+              case 'index9':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index9', 'PSYCH_pineapple9.swf');
+              break;
+              case 'index10':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index10', 'PSYCH_pineapple10.swf');
+              break;
+              case 'index11':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index11', 'PSYCH_pineapple11.swf');
+              break;
+              case 'index12':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index12', 'PSYCH_pineapple12.swf');
+              break;
+              case 'index13':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index13', 'PSYCH_pineapple13.swf');
+              break;
+              case 'index14':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index14', 'PSYCH_pineapple14.swf');
+              break;
+              case 'index15':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index15', 'PSYCH_pineapple15.swf');
+              break;
+              case 'index16':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index16', 'PSYCH_pineapple16.swf');
+              break;
+              case 'index17':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index17', 'PSYCH_pineapple17.swf');
+              break;
+              case 'index18':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index18', 'PSYCH_pineapple18.swf');
+              break;
+              case 'index19':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index19', 'PSYCH_pineapple19.swf');
+              break;
+              case 'index20':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index20', 'PSYCH_pineapple20.swf');
+              break;
+              case 'index21':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index21', 'PSYCH_pineapple21.swf');
+              break;
+              case 'index22':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index22', 'PSYCH_pineapple22.swf');
+              break;
+              case 'index23':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index23', 'PSYCH_pineapple23.swf');
+              break;
+              case 'index24':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index24', 'PSYCH_pineapple24.swf');
+              break;
+              case 'index25':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index25', 'PSYCH_pineapple25.swf');
+              break;
+              case 'index26':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index26', 'PSYCH_pineapple26.swf');
+              break;
+              case 'index27':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index27', 'PSYCH_pineapple27.swf');
+              break;
+              case 'index28':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index28', 'PSYCH_pineapple28.swf');
+              break;
+              case 'index29':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index29', 'PSYCH_pineapple29.swf');
+              break;
+              case 'index30':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index30', 'PSYCH_pineapple30.swf');
+              break;
+              case 'index31':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index31', 'PSYCH_pineapple31.swf');
+              break;
+              case 'index32':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index32', 'PSYCH_pineapple32.swf');
+              break;
+              case 'index33':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index33', 'PSYCH_pineapple33.swf');
+              break;
+              case 'index34':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index34', 'PSYCH_pineapple34.swf');
+              break;
+              case 'index35':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index35', 'PSYCH_pineapple35.swf');
+              break;
+              case 'index36':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index36', 'PSYCH_pineapple36.swf');
+              break;
+              case 'index37':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index37', 'PSYCH_pineapple37.swf');
+              break;
+              case 'index38':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index38', 'PSYCH_pineapple38.swf');
+              break;
+              case 'index39':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index39', 'PSYCH_pineapple39.swf');
+              break;
+              case 'index40':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index40', 'PSYCH_pineapple40.swf');
+              break;
+              case 'index41':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index41', 'PSYCH_pineapple41.swf');
+              break;
+              case 'index42':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index42', 'PSYCH_pineapple42.swf');
+              break;
+              case 'index43':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index43', 'PSYCH_pineapple43.swf');
+              break;
+              case 'index44':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index44', 'PSYCH_pineapple44.swf');
+              break;
+              case 'index45':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index45', 'PSYCH_pineapple45.swf');
+              break;
+              case 'index46':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index46', 'PSYCH_pineapple46.swf');
+              break;
+              case 'index47':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index47', 'PSYCH_pineapple47.swf');
+              break;
+              case 'index48':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index48', 'PSYCH_pineapple48.swf');
+              break;
+              case 'index49':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index49', 'PSYCH_pineapple49.swf');
+              break;
+              case 'index50':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index50', 'PSYCH_pineapple50.swf');
+              break;
+              case 'index51':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index51', 'PSYCH_pineapple51.swf');
+              break;
+              case 'index52':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index52', 'PSYCH_pineapple52.swf');
+              break;
+              case 'index53':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index53', 'PSYCH_pineapple53.swf');
+              break;
+              case 'index54':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index54', 'PSYCH_pineapple54.swf');
+              break;
+              case 'index55':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index55', 'PSYCH_pineapple55.swf');
+              break;
+              case 'index56':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index56', 'PSYCH_pineapple56.swf');
+              break;
+              case 'index57':
+                $output = usanetwork_custompages_games_findthepineapple_game($node, 'index57', 'PSYCH_pineapple57.swf');
+              break;
+            }
+          }
         break;
       }
     break;
     case 'royalpains':
       switch ($arg[3]) {
         case 'beachcomber':
-          $output = usanetwork_custompages_games_beachcomber($node);
+          if (!isset($arg[4]) || empty($arg[4])) {
+            $output = usanetwork_custompages_games_beachcomber($node);
+          }
+          else {
+            switch ($arg[4]) {
+              case 'index1':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index1', 'RP_beachcomber01.swf');
+              break;
+              case 'index2':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index2', 'RP_beachcomber02.swf');
+              break;
+              case 'index3':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index3', 'RP_beachcomber03.swf');
+              break;
+              case 'index4':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index4', 'RP_beachcomber04.swf');
+              break;
+              case 'index5':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index5', 'RP_beachcomber05.swf');
+              break;
+              case 'index6':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index6', 'RP_beachcomber06.swf');
+              break;
+              case 'index7':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index7', 'RP_beachcomber07.swf');
+              break;
+              case 'index8':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index8', 'RP_beachcomber08.swf');
+              break;
+              case 'index9':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index9', 'RP_beachcomber09.swf');
+              break;
+              case 'index10':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index10', 'RP_beachcomber10.swf');
+              break;
+              case 'index11':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index11', 'RP_beachcomber11.swf');
+              break;
+              case 'index12':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index12', 'RP_beachcomber12.swf');
+              break;
+              case 'index13':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index13', 'RP_beachcomber13.swf');
+              break;
+              case 'index14':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index14', 'RP_beachcomber14.swf');
+              break;
+              case 'index15':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index15', 'RP_beachcomber15.swf');
+              break;
+              case 'index16':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index16', 'RP_beachcomber16.swf');
+              break;
+              case 'index17':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index17', 'RP_beachcomber17.swf');
+              break;
+              case 'index18':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index18', 'RP_beachcomber18.swf');
+              break;
+              case 'index19':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index19', 'RP_beachcomber19.swf');
+              break;
+              case 'index20':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index20', 'RP_beachcomber20.swf');
+              break;
+              case 'index21':
+                $output = usanetwork_custompages_games_beachcomber_challenges($node, 'index21', 'RP_beachcomber21.swf');
+              break;
+            }
+          }
         break;
         case 'operationhamptons':
           $output = usanetwork_custompages_games_operationhamptons($node);
@@ -288,9 +535,20 @@ function usanetwork_custompages_theme($existing, $type, $theme, $path) {
       'path' => $path . '/theme',
       'template' => 'usa-findthepineapple',
     ),
+    'findthepineapplegames' => array(
+      'path' => $path . '/theme',
+      'variables' => array('data' => null,'swffile' => null),
+      'template' => 'usa-findthepineapplegames',
+    ),
     'beachcomber' => array(
       'path' => $path . '/theme',
+      'variables' => array('data' => null),
       'template' => 'usa-beachcomber',
+    ),
+    'beachcomberchallenges' => array(
+      'path' => $path . '/theme',
+      'variables' => array('data' => null,'swffile' => null),
+      'template' => 'usa-beachcomberchallenges',
     ),
     'operationhamptons' => array(
       'path' => $path . '/theme',
@@ -313,7 +571,6 @@ function usanetwork_custompages_quizzes_spottheaccent($node) {
  */
 function usanetwork_custompages_games_seeitlikeaspy($node) {
   drupal_set_title(t('See It Like A Spy'));
-  //$output = 'PASTE THE SEE IT LIKE A SPY GAME HTML HERE';
   return theme('seeitlikeaspy',  array('data' => $node));
 }
 
@@ -322,10 +579,11 @@ function usanetwork_custompages_games_seeitlikeaspy($node) {
  */
 
 function usanetwork_custompages_games_jetski($node) {
+  drupal_set_title(t('JetSki Getaway'));
   drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
   drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/main.js");
   drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/jetski.css");
-  drupal_set_title(t('JetSki Getaway'));
+
   return theme('jetski');
 }
 
@@ -344,8 +602,9 @@ function usanetwork_custompages_games_dpdoffice($node) {
  */
 function usanetwork_custompages_games_codename($node) {
   drupal_set_title(t('Code Name'));
-  $output = 'CODE NAME GENERATOR FLASH GAME COMES HERE';
-  return $output;
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_set_title(t('Code Name'));
+  return theme('codename');
 }
 
 /**
@@ -364,8 +623,9 @@ function usanetwork_custompages_games_80schallenge($node) {
 
 function usanetwork_custompages_games_office($node) {
   drupal_set_title(t('Office'));
-  $output = 'OFFICE FLASH GAME COMES HERE';
-  return $output;
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/psych.css");
+  return theme('office');
 }
 
 /**
@@ -373,9 +633,9 @@ function usanetwork_custompages_games_office($node) {
  */
 
 function usanetwork_custompages_games_findthepineapple($node) {
-  drupal_set_title(t('Find The Pineapple'));
-  $output = 'FIND THE PINEAPPLE FLASH GAME COMES HERE';
-  return $output;
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_set_title(t('See It Like A spy'));
+  return theme('findthepineapple',  array('data' => $node));
 }
 
 /**
@@ -384,8 +644,8 @@ function usanetwork_custompages_games_findthepineapple($node) {
 
 function usanetwork_custompages_games_beachcomber($node) {
   drupal_set_title(t('Beach Comber'));
-  $output = 'BEACH COMBER FLASH GAME COMES HERE';
-  return $output;
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  return theme('beachcomber',  array('data' => $node));
 }
 
 /**
@@ -394,8 +654,9 @@ function usanetwork_custompages_games_beachcomber($node) {
 
 function usanetwork_custompages_games_operationhamptons($node) {
   drupal_set_title(t('Operation Hamptons'));
-  $output = 'OPERATION HAMPTONS FLASH GAME COMES HERE';
-  return $output;
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/AC_OETags.js");
+  return theme('operationhamptons');
 }
 
 /**
@@ -406,4 +667,24 @@ function usanetwork_custompages_games_seeitlikeaspy_game($node, $game_name, $swf
   drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
   drupal_set_title(t('See It Like A spy'));
   return theme('seeitlikeaspygames',  array('data' => $node, 'swffile' => $swf_file_name));
+}
+
+/**
+ * Royal Pains  - Beach Comber challenges callback
+ */
+
+function usanetwork_custompages_games_beachcomber_challenges($node, $game_name, $swf_file_name) {
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_set_title(t('Beachcomber'));
+  return theme('beachcomberchallenges',  array('data' => $node, 'swffile' => $swf_file_name));
+}
+
+/**
+ * Psych  - Find the Pineapple challenge callback
+ */
+
+function usanetwork_custompages_games_findthepineapple_game($node, $game_name, $swf_file_name) {
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_set_title(t('Find The Pineapple'));
+  return theme('findthepineapplegames',  array('data' => $node, 'swffile' => $swf_file_name));
 }

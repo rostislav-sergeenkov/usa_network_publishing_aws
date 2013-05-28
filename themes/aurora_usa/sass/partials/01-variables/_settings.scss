@@ -138,11 +138,24 @@ $bp-aspot-mid-width: 645px;
 
 /* show landing page */
 $bp-video-very-large-width: 1275px;
+$bp-video-mid-large-width: 1024px;
 $bp-video-large-width: 959px;
+$bp-video-medium-width: 723px;
 $bp-video-mid-width: 645px;
+$bp-video-mid-small-width: 487px;
+$bp-video-mid-smaller-width: 481px;
+//$bp-video-small-width;
 
+$bp-video-mid-range-width: 481px 1023px;
 
+$bp-video-mid-range2-width: 487px 722px;
 
+$bp-video-mid-range3-width: 723px 958px;
+
+$bp-aspot-large-width: 1275px;
+$bp-aspot-mid-width: 645px;
+$bp-aspot-mid-range-width: 645px 959px;
+$bp-aspot-mid-range2-width: 960px 1274px;
 
 ////////////////////////////
 // COMPASS DEFAULTS

@@ -102,51 +102,50 @@
 </div>
 <!-- /TOP TITLE AND TOOLS BAR -->
 
-<!-- leaderboard ad -->
-  <?php if ($page['leaderboard']): ?><div id="head-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
-<!-- /leaderboard -->
+<div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
+  <!-- leaderboard ad -->
+    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+  <!-- /leaderboard -->
+  
+  <!-- MAIN CONTENT -->
+  <div id="main" role="main" class="clearfix">
+    <?php if ($page['main_prefix']) :?>
+      <?php print render($page['main_prefix']); ?>
+    <?php endif; ?>
+    <?php //print $breadcrumb; ?>
+    <?php if ($messages): ?>
+      <div id="messages" role="alertdialog"><?php print $messages; ?></div>
+    <?php endif; ?>
+    <div id="content" role="article" class="column">
+      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
+      <a id="main-content"></a>
+      <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+      <?php print render($page['help']); ?>
+      <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php print $feed_icons; ?>
+    </div>
+    <?php if ($page['sidebar_first']): ?>
+      <aside id="sidebar-first" role="complementary" class="column sidebar">
+        <?php print render($page['sidebar_first']); ?>
+      </aside><!-- #sidebar-first -->
+    <?php endif; ?>
+  
+    <?php if ($page['sidebar_second']): ?>
+      <aside id="sidebar-second" role="complementary" class="column sidebar">
+        <?php print render($page['sidebar_second']); ?>
+      </aside><!-- #sidebar-second -->
+    <?php endif; ?>
+    <!-- #content-suffix -->
+    <?php if ($page['main_suffix']) :?>
+      <?php print render($page['main_suffix']); ?>
+    <?php endif; ?>
+  </div><!-- #main -->
+  <!-- /MAIN CONTENT -->
 
-<!-- MAIN CONTENT -->
-<div id="main" role="main" class="clearfix">
-  <?php if ($page['main_prefix']) :?>
-    <?php print render($page['main_prefix']); ?>
-  <?php endif; ?>
-  <?php //print $breadcrumb; ?>
-  <?php if ($messages): ?>
-    <div id="messages" role="alertdialog"><?php print $messages; ?></div>
-  <?php endif; ?>
-  <div id="content" role="article" class="column">
-    <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-    <a id="main-content"></a>
-    <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-    <?php print render($page['help']); ?>
-    <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-    <?php print render($page['content']); ?>
-    <?php print $feed_icons; ?>
-  </div>
-  <?php if ($page['sidebar_first']): ?>
-    <aside id="sidebar-first" role="complementary" class="column sidebar">
-      <?php print render($page['sidebar_first']); ?>
-    </aside><!-- #sidebar-first -->
-  <?php endif; ?>
-
-  <?php if ($page['sidebar_second']): ?>
-    <aside id="sidebar-second" role="complementary" class="column sidebar">
-      <?php print render($page['sidebar_second']); ?>
-    </aside><!-- #sidebar-second -->
-  <?php endif; ?>
-  <!-- #content-suffix -->
-  <?php if ($page['main_suffix']) :?>
-    <?php print render($page['main_suffix']); ?>
-  <?php endif; ?>
-</div><!-- #main -->
-<!-- /MAIN CONTENT -->
-
-
-
-
-<!-- FOOTER -->
-<footer id="footer" role="contentinfo" class="clearfix">
-  <?php print render($page['footer']); ?>
-</footer>
-<!-- /FOOTER -->
+  <!-- FOOTER -->
+  <footer id="footer" role="contentinfo" class="clearfix">
+    <?php print render($page['footer']); ?>
+  </footer>
+  <!-- /FOOTER -->
+</div>

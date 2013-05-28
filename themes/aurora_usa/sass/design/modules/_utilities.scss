@@ -10,6 +10,7 @@
   font-family: $headline-reg;
   
   h1#page-title {
+    @include float-left;
     font-family: $headline-reg;
     font-size: 19px;
     margin: 5px 0 0 0;

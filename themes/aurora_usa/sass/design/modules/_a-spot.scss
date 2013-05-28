@@ -164,11 +164,11 @@
     @include breakpoint($bp-aspot-mid-range-width) {
       font-size: 18px;
     }
-    @include breakpoint($bp-aspot-mid-range-width) {
+    @include breakpoint($bp-aspot-mid-range2-width) {
       font-size: 22px;
     }
     @include breakpoint($bp-aspot-large-width) {
-      font-size: 32px;
+      font-size: 28px;
     }
   }
   .suits .show-time {
@@ -180,77 +180,15 @@
 
 
 /* make into icon font ? */
-.aspot a .cta.watch:before {
-  background-image: url("../img/home/watch.png");
-}
-.aspot a .cta.sync:before {
-  background-image: url("../img/home/sync.png");
-}
-.aspot a .cta.favorite:before {
-  background-image: url("../img/home/favorite.png");
-}
-.aspot a .cta.share:before {
-  background-image: url("../img/home/share.png");
-}
-
-
-
-// ?? specific shows ? * /
-//@media (min-width: 645px) and (max-width: 959px) {
-//  .aspot .suits .show-time {
-//    margin-bottom: 3px;
-//    font-size: 37px;
-//  }
+//.aspot a .cta.watch:before {
+//  background-image: url("../img/home/watch.png");
 //}
-//@media (min-width: 960px) and (max-width: 1274px) {
-//  .aspot .suits .show-time {
-//    margin-bottom: 4px;
-//    font-size: 50px;
-//  }
+//.aspot a .cta.sync:before {
+//  background-image: url("../img/home/sync.png");
 //}
-//@media (min-width: 1275px) {
-//  .aspot .suits .show-time {
-//    margin-bottom: 2px;
-//    font-size: 67px;
-//  }
+//.aspot a .cta.favorite:before {
+//  background-image: url("../img/home/favorite.png");
 //}
-//.aspot .themoment a .meta-wrap {
-//  top: 105px;
-//}
-//@media (min-width: 645px) and (max-width: 959px) {
-//  .aspot .themoment a .meta-wrap {
-//    top: 150px;
-//  }
-//}
-//@media (min-width: 960px) and (max-width: 1274px) {
-//  .aspot .themoment a .meta-wrap {
-//    top: 140px;
-//  }
-//}
-//@media (min-width: 1275px) {
-//  .aspot .themoment a .meta-wrap {
-//    top: 190px;
-//  }
-//}
-//.aspot .themoment a .meta {
-//  width: 190px;
-//  margin-bottom: 0;
-//}
-//@media (min-width: 645px) and (max-width: 959px) {
-//  .aspot .themoment a .meta {
-//    width: 250px;
-//    margin-bottom: 5px;
-//  }
-//}
-//@media (min-width: 960px) and (max-width: 1274px) {
-//  .aspot .themoment a .meta {
-//    width: auto;
-//    margin-bottom: 52px;
-//  }
-//}
-//@media (min-width: 1275px) {
-//  .aspot .themoment a .meta {
-//    width: auto;
-//    margin-bottom: 68px;
-//  }
+//.aspot a .cta.share:before {
+//  background-image: url("../img/home/share.png");
 //}

@@ -211,12 +211,17 @@ function usanetwork_video_show_nav() {
         }
       } else {
         $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+        $first = true;
         foreach ($terms1 as $term2) {
           if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
             $class[] = 'active';
           }
           $class = str_replace(' ', '-', strtolower($term2->name));
           $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+          if ($first) {
+            $first = false;
+            $items[$i]['class'][] = 'more';
+          }
         }
       }
       $i++;

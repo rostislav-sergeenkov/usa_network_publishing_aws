@@ -54,6 +54,10 @@ function usanetwork_blocks_block_info() {
     'info' => t('USA: Footer message'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_footer_links'] = array(
+    'info' => t('USA: Footer links'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
   $blocks['usa_detect_ieversion'] = array(
     'info' => t('USA: Detect ie version'),
     'cache' => DRUPAL_CACHE_GLOBAL,
@@ -105,6 +109,10 @@ function usanetwork_blocks_block_view($delta) {
       drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_footer_message();
+      break;
+    case 'usa_footer_links':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_footer_links();
       break;
     case 'usa_detect_ieversion':
       drupal_add_css(drupal_get_path("module", "usanetwork_blocks")."/theme/css/usanetwork_block.css");
@@ -326,11 +334,26 @@ function usanetwork_blocks_usa_footer_message() {
   $render = array();
   $render['usa_footer']['body'] = array(
     '#type' => 'markup',
-    '#prefix' => '<div id ="footer-message">'. str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message")),
+    '#prefix' => '<div id ="footer-message">'. str_replace("YYYY", date("Y"), variable_get("usanetwork_footer_message", '')),
     '#suffix' => '</div>',
   );
   return $render;
 }
+
+/**
+ * Block for Displaying Footer Links
+ */
+function usanetwork_blocks_usa_footer_links() {
+  $render = menu_tree('usa-footer-bottom');
+
+  $render['ad_chocies'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id ="footer-links">'. variable_get("usanetwork_footer_ad_choices_text", ''),
+    '#suffix' => '</div>',
+  );
+  return $render;
+}
+
 
 /**
  * Block callback for the usa_detect_ieversion

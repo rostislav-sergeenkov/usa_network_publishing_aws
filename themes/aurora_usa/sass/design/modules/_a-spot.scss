@@ -1,0 +1,257 @@
+.aspot {
+  position: relative;
+  display: block;
+  a {
+    color: $white;
+    &:hover,
+    &:visited {
+      color: $white;
+    }
+    .meta-wrap {
+      position: absolute;
+      color: $white;
+      z-index: 1;
+      top: 110px;
+      left: 0;
+      padding-left: 15px;
+      text-align: left;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        top: 150px;
+        padding-left: 25px;
+      }
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        top: 140px;
+        padding-left: 35px;
+      }
+      @include breakpoint($bp-aspot-large-width) {
+        top: 190px;
+        padding-left: 50px;
+      }
+    }
+    .meta {
+      margin-bottom: 10px;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        margin-bottom: 15px;
+      }
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        margin-bottom: 22px;
+      }
+      @include breakpoint($bp-aspot-large-width) {
+         margin-bottom: 27px;
+      }
+    }
+    .cta {
+      position: relative;
+      padding-left: 45px;
+      font-size: 12px;
+      line-height: 35px;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        padding-left: 55px;
+        font-size: 14px;
+        line-height: 45px;
+      }
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        padding-left: 70px;
+        font-size: 18px;
+        line-height: 60px;
+      }
+      @include breakpoint($bp-aspot-large-width) {
+        padding-left: 90px;
+        font-size: 25px;
+        line-height: 80px;
+      }
+      &:before {
+        content: "";
+        z-index: 1;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 35px;
+        height: 35px;
+        background-color: none;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        @include breakpoint($bp-aspot-mid-range-width) {
+          width: 45px;
+          height: 45px;
+        }
+        @include breakpoint($bp-aspot-mid-range2-width) {
+          width: 60px;
+          height: 60px;
+        }
+        @include breakpoint($bp-aspot-large-width) {
+          width: 80px;
+          height: 80px;
+        }
+      }
+      span {
+        font-family: $headline-semi;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+  .show-title:after {
+    content: "";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, transparent));
+    background-image: -webkit-linear-gradient(left, #ffffff, transparent);
+    background-image: -moz-linear-gradient(left, #ffffff, transparent);
+    background-image: -o-linear-gradient(left, #ffffff, transparent);
+    background-image: linear-gradient(left, #ffffff, transparent);
+  }
+  .show-title,
+  .show-time,
+  .episode-title,
+  .cta {
+    margin: 0;
+    line-height: 1;
+  }
+  .show-title,
+  .show-time {
+    font-size: 24px;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      font-size: 34px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      font-size: 44px;
+    }
+  }
+  .show-title,
+  .show-time,
+  .cta {
+    text-transform: uppercase;
+  }
+  .show-time,
+  .episode-title,
+  .cta {
+    font-family: $headline-reg;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+  }
+  .show-title {
+    position: relative;
+    margin-bottom: 5px;
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      margin-bottom: 10px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      font-size: 54px;
+      margin-bottom: 16px;
+    }
+  }
+  .show-time {
+    margin-bottom: 2px;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      margin-bottom: 5px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      margin-bottom: 8px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      margin-bottom: 8px;
+      font-size: 60px;
+    }
+  }
+  .episode-title {
+    font-size: 12px;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      font-size: 18px;
+    }
+    @include breakpoint($bp-aspot-mid-range-width) {
+      font-size: 22px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      font-size: 32px;
+    }
+  }
+  .suits .show-time {
+    margin-bottom: 0;
+    font-size: 27px;
+  }
+}
+
+
+
+/* make into icon font ? */
+.aspot a .cta.watch:before {
+  background-image: url("../img/home/watch.png");
+}
+.aspot a .cta.sync:before {
+  background-image: url("../img/home/sync.png");
+}
+.aspot a .cta.favorite:before {
+  background-image: url("../img/home/favorite.png");
+}
+.aspot a .cta.share:before {
+  background-image: url("../img/home/share.png");
+}
+
+
+
+// ?? specific shows ? * /
+//@media (min-width: 645px) and (max-width: 959px) {
+//  .aspot .suits .show-time {
+//    margin-bottom: 3px;
+//    font-size: 37px;
+//  }
+//}
+//@media (min-width: 960px) and (max-width: 1274px) {
+//  .aspot .suits .show-time {
+//    margin-bottom: 4px;
+//    font-size: 50px;
+//  }
+//}
+//@media (min-width: 1275px) {
+//  .aspot .suits .show-time {
+//    margin-bottom: 2px;
+//    font-size: 67px;
+//  }
+//}
+//.aspot .themoment a .meta-wrap {
+//  top: 105px;
+//}
+//@media (min-width: 645px) and (max-width: 959px) {
+//  .aspot .themoment a .meta-wrap {
+//    top: 150px;
+//  }
+//}
+//@media (min-width: 960px) and (max-width: 1274px) {
+//  .aspot .themoment a .meta-wrap {
+//    top: 140px;
+//  }
+//}
+//@media (min-width: 1275px) {
+//  .aspot .themoment a .meta-wrap {
+//    top: 190px;
+//  }
+//}
+//.aspot .themoment a .meta {
+//  width: 190px;
+//  margin-bottom: 0;
+//}
+//@media (min-width: 645px) and (max-width: 959px) {
+//  .aspot .themoment a .meta {
+//    width: 250px;
+//    margin-bottom: 5px;
+//  }
+//}
+//@media (min-width: 960px) and (max-width: 1274px) {
+//  .aspot .themoment a .meta {
+//    width: auto;
+//    margin-bottom: 52px;
+//  }
+//}
+//@media (min-width: 1275px) {
+//  .aspot .themoment a .meta {
+//    width: auto;
+//    margin-bottom: 68px;
+//  }
+//}

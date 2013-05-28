@@ -23,11 +23,12 @@ if ($node->type == 'usa_video') {
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
-//$player_url = variable_get('usanetwork_theplatform_tve_player_url');
+// hiding all of these values for launch
+  //$player_url = variable_get('usanetwork_theplatform_tve_player_url');
   // @todo: this is temporary only!
-  $player_url = 'http://player.theplatform.com/p/dCK2IC/usa-vod-stage';
-  $feed_url = variable_get('usanetwork_theplatform_tve_feed_url');
-  $platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
+  //$player_url = 'http://player.theplatform.com/p/dCK2IC/usa-vod-stage';
+  //$feed_url = variable_get('usanetwork_theplatform_tve_feed_url');
+  //$platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
 }
 
 ?>

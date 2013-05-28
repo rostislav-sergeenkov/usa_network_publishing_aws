@@ -391,11 +391,10 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'usa_tve_video' => 'usa_tve_video',
         'usa_video' => 'usa_video',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );

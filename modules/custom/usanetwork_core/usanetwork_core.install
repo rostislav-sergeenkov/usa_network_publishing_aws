@@ -232,3 +232,11 @@ function usanetwork_core_update_7102() {
   module_enable($modules);
 }
 
+/**
+ * Enable usanetwork_nitro module
+ */
+function usanetwork_core_update_7103() {
+  $modules = array('usanetwork_nitro');
+  module_enable($modules);
+}
+

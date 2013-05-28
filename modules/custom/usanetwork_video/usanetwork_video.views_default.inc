@@ -24,6 +24,7 @@ function usanetwork_video_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'usa_video';
   $handler->display->display_options['css_class'] = 'expandable-container';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -150,6 +151,22 @@ function usanetwork_video_views_default_views() {
     0 => '0',
   );
   $handler->display->display_options['block_description'] = 'Category Videos';
+
+  /* Display: Global Latest Full Episode Video */
+  $handler = $view->new_display('block', 'Global Latest Full Episode Video', 'global_latest_full_episode_video');
+  $handler->display->display_options['display_description'] = 'Global Latest Full Episode Video';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
   $export['usa_video'] = $view;
 
   $view = new view();
@@ -165,6 +182,7 @@ function usanetwork_video_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['css_class'] = 'expandable-container';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';

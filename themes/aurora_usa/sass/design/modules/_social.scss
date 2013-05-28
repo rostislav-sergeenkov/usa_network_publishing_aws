@@ -144,11 +144,12 @@ body.usa-social {
   //@include background(linear-gradient(top bottom, $gray-dark 0%, $gray-med-dark 100%));
   h2 {
     color: $gray-extra-light;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-family: $headline-reg;
     font-size: 18px;
-    padding: 16px 12px 11px;
+    padding: 16px 12px 11px 8px;
     line-height: 1em;
+    text-align: center;
     margin: 0;
   }
   ul {
@@ -245,16 +246,23 @@ body.usa-social {
       border-top: 1px solid $gray-ultra-med;
       font-family: $headline-reg;
       font-size: 20px;
-      padding: 20px 15px 20px 20px;
-      text-transform: uppercase;
+      padding: 20px 15px 20px 10px;
+      text-transform: lowercase;
       cursor: pointer;
+      text-align: center;
       &:after {
-        @extend %usanetwork-font;
-        content: "Next";
-        font-size: 0.55em;
-        left: 230px;
+        @include cssTriangle(6px, $white, top);
+        right: 50px;
         position: absolute;
-        top: 24px;
+        top: 27px;
+      }
+      &.open {
+        &:after {
+          @include cssTriangle(6px, $white, bottom);
+          right: 50px;
+          position: absolute;
+          top: 25px;
+        }
       }
     }
     .view-content {

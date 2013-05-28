@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * seeit-likeaspy-games.tpl.php
+ * usa-seeitlikeaspygames.tpl.php
  *
  * Theme implementation for the seeitlikeaspy games
  *
@@ -21,7 +21,7 @@
             <a href="#"><img src="/<?php echo $image_path;?>silas_logo.gif" border="0" height="33" width="321"></a>
             </td>
             <td align="right">
-              <?php require_once("menu.tpl.php");?>
+              <?php require_once("usa-seeitlikeaspy-menu.tpl.php");?>
             </td>
         </tr>
     </tbody>

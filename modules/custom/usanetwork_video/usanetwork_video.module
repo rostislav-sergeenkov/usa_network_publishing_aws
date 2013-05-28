@@ -257,6 +257,7 @@ function usanetwork_video_views() {
   if (empty($output)) {
     $output = views_embed_view('whats_hot', 'whats_hot');
   }
+
   return $output;
 }
 

@@ -1,19 +1,17 @@
 
 %secondary-menu {
   font-size: 19px;
-  font-family: $headline-reg;
+  font-family: $headline-thn;
   line-height: 1;
   text-transform: lowercase;
   font-weight: normal;
   z-index: 5;
   @include breakpoint($bp-social-mid-width) {
-    font-family: $headline-thn;
     background-color: $gray-dark;
     border: 1px solid $gray-med-dark;
     height: 60px;
     z-index: 6;
     margin-bottom: 30px;
-    font-size: 20px;
   }
 }
 
@@ -44,41 +42,22 @@
           .item-list {
             font-family: $headline-reg;
             display: none;
-            a {
-              color: $white;
-              @include breakpoint($bp-social-mid-width) {
-                padding-top: 10px;
-                padding-bottom: 8px;
+          > ul {
+            li.first {
+              a:first-child {
+                border-top: 0;
               }
             }
-          > ul {
-            margin: 0;
-            max-height: 300px;
-            overflow-y: auto;
             a {
-              padding: 15px 20px 13px;
+              font-size: 14px;
+              padding: 10px 20px 8px;
               float: none;
-              border-top: 1px solid $gray-light;
+              border-top: 1px solid $gray-med-dark;
               &:hover {
                 background-color: $gray-ultra-med;
               }
-              @include breakpoint($bp-social-mid-width) {
-                font-size: 14px;
-                border-top: 1px solid $gray-med-dark;
-                padding-top: 10px;
-                padding-bottom: 8px;
-              }
               &:hover:after {
                 @include cssTriangle(0, $gray-med, top);
-              }
-            }
-            @include breakpoint($bp-social-mid-width) {
-                right: auto;
-                left: -1px;
-              > li {
-                border-bottom: 0;
-                display: block;
-                width: auto;
               }
             }
           }
@@ -88,59 +67,52 @@
             color: $gray-extra-light;
           }
         }
-        .item-list {
-
-        }
         > span {
           height: auto;
-          padding: 15px 20px 13px;
           color: $white;
           display: block;
           height: 100%;
           width: 100%;
-          @include breakpoint($bp-social-mid-width) {
-            position: relative;
-            font-family: $headline-thn;
-            padding: 20px 30px 18px;
-            padding-left: 30px;
-            padding-right: 30px;
-            float: left;
-            width: auto;
-            border-top: 0;
-            border-left: 1px solid $gray-dark;
-            border-right: 1px solid $gray-dark;
-            cursor: pointer;
-            width: 245px;
-            border-right: 1px solid $gray-med-dark;
-            &:after,
-            &:hover:after {
-              position: absolute;
-              right: 21px;
-              top: 28px;
-              left: auto;
-              @include cssTriangle(5px, $white, top);
-            }
-            &:before {
-              position: absolute;
-              right: 20px;
-              left: auto;
-              top: 16px;
-              @include cssTriangle(5px, $white, bottom);
-            }
-            &:hover {
-              color: $gray-extra-light;
-            }
+          position: relative;
+          font-family: $headline-thn;
+          padding: 20px 20px 18px;
+          float: left;
+          width: 100%;
+          border-top: 0;
+          border: 1px solid $gray-med-dark;
+          cursor: pointer;
+          background-color: $gray-dark;
+          @include breakpoint($bp-video-mid-large-width) {
+            border: 0;
           }
+          &:after,
+          &:hover:after {
+            position: absolute;
+            right: 21px;
+            top: 28px;
+            left: auto;
+            @include cssTriangle(5px, $white, top);
           }
+          &:before {
+            position: absolute;
+            right: 20px;
+            left: auto;
+            top: 16px;
+            @include cssTriangle(5px, $white, bottom);
+          }
+          &:hover {
+            color: $gray-extra-light;
+          }
+        }
         &.open > span {
           color: $gray-extra-light;
         }
       }
-
     }
   }
   .item-list .item-list  {
     ul {
+      z-index: 99;
       margin: 0;
       max-height: 300px;
       overflow-y: auto;
@@ -175,22 +147,19 @@
           }
         }
       }
-      @include breakpoint($bp-social-mid-width) {
-        display: inline-block;
-        min-width: 246px;
-        position: absolute;
-        top: 59px;
-        border: 1px solid $gray-med-dark;
-        border-top: 0;
-        background-color: $gray-dark;
+      display: inline-block;
+      position: absolute;
+      top: 59px;
+      border: 1px solid $gray-med-dark;
+      border-top: 0;
+      background-color: $gray-dark;
+      width: 100%;
+      right: 0;
+      white-space: nowrap;
+      > li {
+        border-bottom: 0;
+        display: block;
         width: auto;
-        right: 0;
-        white-space: nowrap;
-        > li {
-          border-bottom: 0;
-          display: block;
-          width: auto;
-        }
       }
     }
   }
@@ -201,6 +170,7 @@
     height: 100%;
     width: 100%;
     position: relative;
+    z-index: 100;
     @include breakpoint($bp-social-mid-width) {
       padding: 20px 30px 18px;
       padding-left: 30px;
@@ -214,38 +184,6 @@
         color: $gray-extra-light;
         border-left: 1px solid $gray-med-dark;
         border-right: 1px solid $gray-med-dark;
-      }
-    }
-    &.active {
-        color: $white;
-        border-bottom: 0;
-        @include breakpoint($bp-social-mid-width) {
-          background-color: $gray-med;
-          color: $gray-extra-light;
-          border-left: 1px solid $gray-med-dark;
-          border-right: 1px solid $gray-med-dark;
-          &:after {
-            @include cssTriangle(12px, $gray-med, top);
-            position: absolute;
-            left: 50%;
-            top: 58px;
-            margin-left: -12px;
-          }
-        }
-    }
-    &:hover {
-      @include breakpoint($bp-social-mid-width) {
-        background-color: $gray-med;
-      }
-    }
-    &:hover:after {
-      @include breakpoint($bp-social-mid-width) {
-        @include cssTriangle(12px, $gray-med, top);
-        position: absolute;
-        left: 50%;
-        top: 58px;
-        margin-left: -12px;
-        z-index: 9;
       }
     }
   }

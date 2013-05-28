@@ -3253,7 +3253,6 @@ function usanetwork_video_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
-            'usa_tve_video' => 'usa_tve_video',
             'usa_video' => 'usa_video',
           ),
         ),

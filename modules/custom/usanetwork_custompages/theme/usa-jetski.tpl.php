@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * jetski_gateway.tpl.php
+ * usa-jetski.tpl.php
  *
  * Theme implementation for the seeitlikeaspy games
  *
@@ -11,7 +11,6 @@
  global $base_url;
  $swf_path = drupal_get_path("module", "usanetwork_custompages")."/swf/";
  $image_path = drupal_get_path("module", "usanetwork_custompages")."/theme/images/";
- //$loading_ad_path = $base_url."/".drupal_get_path("module", "usanetwork_custompages")."/theme/loading-ad.tpl.php";
  $loading_ad_path = $base_url."/".drupal_get_path("module", "usanetwork_custompages")."/theme/loading_ad.html";
  $ad728_path = $base_url."/".drupal_get_path("module", "usanetwork_custompages")."/theme/ad728.html";
  ?>
@@ -58,7 +57,7 @@
         <div style="position: absolute; top: 80px; left: 312px; width:300px; height:250px" ><iframe  src="<?php echo $loading_ad_path; ?>" width="300" height="250" id="adFrameRHS3" name="adFrameRHS3" scrolling="no" frameborder="0" allowtransparency="yes"></iframe></div>
         <div id="adStatus" style="position: absolute; top: 395px; left: 0px; width: 100%; height: 30px; font-family: Arial; font-size: 14px; color: #FFFFFF; text-align: center">GET READY! YOUR GAME IS LOADING...</div>
         <div style="position: absolute; top: 413px; left: 0px; width: 100%; height: 30px; font-family: Arial; font-size: 8px; color: #333333; text-align: center">CLICKING ON THE AD WILL NOT TAKE YOU OUT OF THE SITE.</div>
-        <div id="cont" style="position: absolute; top: 385px; left: 755px;"><a href="#" onClick="show_game(); return false;"><img src="<?php echo $base_url."/".$image_path;?>button_continue.png" width="143" height="50" alt="Continue to Game" border="0" /></a></div><script type="text/javascript" charset="utf-8"> hide("cont"); </script>
+        <div id="cont" style="position: absolute; top: 385px; left: 755px;"><a href="#" onClick="show_game(); return false;"><img src="<?php echo "/".$image_path;?>button_continue.png" width="143" height="50" alt="Continue to Game" border="0" /></a></div><script type="text/javascript" charset="utf-8"> hide("cont"); </script>
        </div>
 
       <script type="text/javascript">

@@ -1,6 +1,6 @@
 <?php
   $class = '';
-  if ($content['six']) {
+  if ($content['six'] && $content['five']) {
     $class = 'panel-two-cols';
   }
 ?>

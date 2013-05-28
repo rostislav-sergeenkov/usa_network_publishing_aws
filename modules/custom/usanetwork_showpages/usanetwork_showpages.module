@@ -284,11 +284,12 @@ function usanetwork_showpages_videos($node) {
   $show = $node->nid;
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+  $query->entityCondition('bundle', array('usa_video'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
   $query->fieldCondition('field_full_episode', 'value', '1', '=');
-  $query->propertyOrderBy('created', 'desc');
+  //$query->propertyOrderBy('created', 'desc');
+  $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
   $query->range(0, 1);
   // execute the query
   $result = $query->execute();

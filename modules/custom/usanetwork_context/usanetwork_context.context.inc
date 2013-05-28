@@ -391,11 +391,10 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'usa_tve_video' => 'usa_tve_video',
         'usa_video' => 'usa_video',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );
@@ -555,17 +554,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-17',
         ),
-        'menu-usa-footer-bottom' => array(
-          'module' => 'menu',
-          'delta' => 'usa-footer-bottom',
-          'region' => 'footer',
-          'weight' => '-16',
-        ),
         'usanetwork_blocks-usa_footer_message' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_footer_message',
           'region' => 'footer',
           'weight' => '-10',
+        ),
+        'usanetwork_blocks-usa_footer_links' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_links',
+          'region' => 'footer',
+          'weight' => '-16',
         ),
       ),
     ),

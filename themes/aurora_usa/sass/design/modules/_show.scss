@@ -52,7 +52,7 @@
     margin-bottom: 13px;
     font-size: 18px;
     line-height: 1.5em;
-    font-family: $headline-semi;
+    font-family: $headline-bold;
     text-transform: uppercase;
     @include breakpoint($bp-show-mid-width) {
       font-size: 26px;
@@ -62,7 +62,7 @@
 
 
 
-.video-promo-ads-panel {
+.promo-ads-panel {
   position: relative;
   .panel-col2  {
     position: static;

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * jetski_gateway.tpl.php
+ * usa-80schallenge.tpl.php
  *
  * Theme implementation for the seeitlikeaspy games
  *
@@ -13,7 +13,7 @@
  $image_path = drupal_get_path("module", "usanetwork_custompages")."/theme/images/";
  ?>
 
-<div align="center"><div id="usa_noflash"><img src="<?php echo $base_url."/".$image_path;?>flash_sorry.png"></div>
+<div align="center"><div id="usa_noflash"><img src="<?php echo "/".$image_path;?>psych_flash_sorry.png"></div>
   	<script type="text/javascript">
 		var flashvars = {};
 

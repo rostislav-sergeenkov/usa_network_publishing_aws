@@ -158,12 +158,12 @@ function usanetwork_video_show_nav() {
           $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           if ($node->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
-            $items['data'] = $title;
-            $items['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
+            $items[0]['data'] = $title;
+            $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
 
-            $items['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
+            $items[0]['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
           } else  {
-            $items['children'][] = l($title, $path, array('html' => true));
+            $items[0]['children'][] = l($title, $path, array('html' => true));
           }
         }
       }
@@ -241,7 +241,7 @@ function usanetwork_video_views() {
   $output = '';
   $lang = LANGUAGE_NONE;
   $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
-   
+  
   if (!empty($tid)) {
     $output = views_embed_view('usa_video', 'category_videos', $tid);
   } else if ($arg[0] == 'videos') {

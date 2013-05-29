@@ -390,7 +390,8 @@ $logo-height-med-2: 32px;
           @include link-colors($gray-dark-light, $gray-light, $gray-dark-light, $gray-dark-light, $gray-dark-light);
           font-size: 16px;
           line-height: 16px;
-          display: inline;
+          display: inline-block;
+          padding-bottom: 12px;
         }
       }
       &:hover {

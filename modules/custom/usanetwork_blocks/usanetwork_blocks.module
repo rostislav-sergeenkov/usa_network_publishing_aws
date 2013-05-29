@@ -266,12 +266,13 @@ function usanetwork_blocks_usa_social_footer() {
  */
 function usanetwork_blocks_tv_show_menu() {
   $lang = LANGUAGE_NONE;
-  $links = array();
+  $showlinks = array();
   $output = '';
   $show = '';
   $show_nid = '';
   $node = menu_get_object();
   $field_name = "field_show";
+  $displaytitle = $node->title;
   
   // if there is no NID get out of there
   if (!isset($node->nid)) {
@@ -280,6 +281,7 @@ function usanetwork_blocks_tv_show_menu() {
 
   if ($node->type == 'tv_show') {
     $show = $node->nid;
+    $show = node_load($show);
   }
   
   if (!empty($node->$field_name)) {
@@ -288,10 +290,22 @@ function usanetwork_blocks_tv_show_menu() {
     $show = node_load($show_nid);
   }
 
+  if (!empty($node->$field_name)) {
+    $show_nid = field_get_items('node', $node, $field_name);
+    $show_nid = $show_nid[0]['target_id'];
+    $show = node_load($show_nid);
+  }
+  
+  // if display title is populated load that as the menu title
+  if (!empty($show->field_display_title)) {
+    $displaytitle = field_get_items('node', $show, 'field_display_title');
+    $displaytitle = $displaytitle[0]['safe_value'];
+  }
+
   // Get the field collection items.
   $fc_fields = field_get_items('node', $show, 'field_show_links');
   if (empty($fc_fields)) {
-    return '';
+    return;
   }
 
   // Extract the field collection item ids
@@ -303,7 +317,7 @@ function usanetwork_blocks_tv_show_menu() {
   // Load up the field collection items
   $items = field_collection_item_load_multiple($ids);
   if (empty($items)) {
-    return '';
+    return;
   }
 
   // Loop through the items and extract field values
@@ -322,11 +336,11 @@ function usanetwork_blocks_tv_show_menu() {
         $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
       }
     }
-    $links[] = $mlinks;
+    $showlinks[] = $mlinks;
   }
-  if (!empty($links)) {
-    $output .= '<div class="tv-show-menu-trigger">'. $show->title  .'</div>';
-    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
+  if (!empty($showlinks)) {
+    $output .= '<div class="tv-show-menu-trigger">'. $displaytitle  .'</div>';
+    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $showlinks)) . '</div>';
   }
 
   return $output;

@@ -20,7 +20,9 @@
     width: 1245px;
   }
 }
-.block-usanetwork-video .view {
+
+
+.block-usanetwork-video .view  {
   .view-content {
     @include breakpoint($bp-video-mid-small-width) {
       margin-right: -15px;
@@ -33,10 +35,8 @@
   li {
     list-style: none;
     margin: 0;
+    padding: 0;
   }
-}
-
-.block-usanetwork-video .view  {
   .node {
     width: 46%;
     float: left;
@@ -59,7 +59,7 @@
       padding: 5px 10px;
       @include breakpoint($bp-video-medium-width) {
         height: 56px;
-        padding: 9px 10px 5px;
+//        padding: 9px 10px 5px;
       }
       @include breakpoint($bp-video-very-large-width) {
         height: 77px;
@@ -87,21 +87,20 @@
       }
     }
   }
-  .view-mode-vid_teaser_episode {
-    .caption-fields-wrapper {
-      padding-top:5px;
-      padding-bottom: 5px;
-      h4 {
-        line-height: 1em;
-      }
-      .caption {
-        line-height: 1em;
-        > div {
-          float: left;
-        }
+  .ajax-progress, .ajax-progress-throbber {
+    display: none;
+  }
+  .expandable-toggle  {
+    li {
+      font-family: $headline-semi;
+      font-size: 16px;
+      color: $gray-ultra-med;
+      a {
+        color: $gray-ultra-med;
       }
     }
   }
+
 }
 
 

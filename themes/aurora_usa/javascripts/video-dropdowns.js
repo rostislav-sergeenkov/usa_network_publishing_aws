@@ -26,7 +26,7 @@
           $menu_item = $(this).find('.categories > li.first span');
         }
 
-        $('.menu-label').remove();
+        $filter_menu.find('.menu-label').remove();
         $menu_label = '<div class="menu-label">' + $menu_item.text() + '</div>';
 
         $($filter_menu).find('.categories').addClass('filter-menu').before($menu_label);

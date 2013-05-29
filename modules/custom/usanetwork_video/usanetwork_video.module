@@ -73,6 +73,10 @@ function usanetwork_video_global_nav() {
   $items = array();
   $items[] = array('data' => '<span>all shows</span>', 'class' => array('all-shows'));
   $lang = LANGUAGE_NONE;
+  $arg = arg();
+  if (isset($arg[1]) && !empty($arg[1])) {
+    $node = node_load($arg[1]);
+  }
 
   $query = new EntityFieldQuery();
 
@@ -106,8 +110,13 @@ function usanetwork_video_global_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
-  $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
+  if (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])) {
+    $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
+    $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
+  } else {
+    $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+    $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
+  }
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));
   return $output;
@@ -129,8 +138,8 @@ function usanetwork_video_show_nav() {
     $cpath = current_path();
   }
 
-  // return empty block if the url is invalid
-  if (!isset($arg[1]) || empty($arg[1])) {
+  // return empty block if the url is invalid or global video url
+  if (!isset($arg[1]) || empty($arg[1]) || !isset($node->field_show[$lang][0]['target_id']) || empty($node->field_show[$lang][0]['target_id'])) {
     return '';
   }
   $query = new EntityFieldQuery();
@@ -242,6 +251,19 @@ function usanetwork_video_views() {
   $lang = LANGUAGE_NONE;
   $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
   
+  // we need these js files and headers for video player integration
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video') . '/js/tpPdkController.js');
+   $meta_video_tag = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' =>  'tp:EnableExternalController',
+      'content' => 'true',
+    )
+  );
+  // Add header meta tag for video integration 
+  drupal_add_html_head($meta_video_tag, 'meta_video_tag');
+  
   if (!empty($tid)) {
     $output = views_embed_view('usa_video', 'category_videos', $tid);
   } else if ($arg[0] == 'videos') {
@@ -253,8 +275,32 @@ function usanetwork_video_views() {
   } else if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
     $node = node_load($arg[1]);
 
+    $query = new EntityFieldQuery();
+
+    // Fetch the what's hot queue id
+    $query->entityCondition('entity_type', 'queues')
+      ->entityCondition('bundle', array('video_queue'))
+      ->propertyCondition('title', "What's Hot")
+      ->range(0, 1);
+
+    $result = $query->execute();
+    if (isset($result['queues'])) {
+      $qid = array_keys($result['queues']);
+
+      $queue = db_select('field_data_field_qt_node', 'q')
+        ->fields('q', array('entity_id'))
+        ->condition('entity_id', $qid[0], '=')
+        ->condition('field_qt_node_target_id', $node->nid, '=')
+        ->execute()
+        ->fetchField();
+      
+      if (!empty($queue)) {
+        $output = views_embed_view('whats_hot', 'whats_hot');
+      }
+    }
+
     // video node with a show association
-    if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
+    if (empty($output) && isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
       $show_nid = $node->field_show[$lang][0]['target_id'];
       $full_episode = isset($node->field_full_episode[$lang][0]['value']) ? $node->field_full_episode[$lang][0]['value'] : 0; 
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
@@ -274,12 +320,12 @@ function usanetwork_video_views() {
           $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
         }
       } 
-    } else if (isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
+    } else if (empty($output) && isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
       $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
     }
   }
 
-  //TODO: change the whats hot logic with queues api
+  //promote the whats hot videos if there are no releated videos
   if (empty($output)) {
     $output = views_embed_view('whats_hot', 'whats_hot');
   }

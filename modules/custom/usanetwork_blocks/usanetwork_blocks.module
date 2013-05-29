@@ -272,77 +272,74 @@ function usanetwork_blocks_tv_show_menu() {
   $show_nid = '';
   $node = menu_get_object();
   $field_name = "field_show";
-  $displaytitle = $node->title;
+  $displaytitle = '';
   
   // if there is no NID get out of there
   if (!isset($node->nid)) {
     return;
   }
-
-  if ($node->type == 'tv_show') {
-    $show = $node->nid;
+  // otherwise do stuff
+  if ($node->type == 'tv_show' || !empty($show->field_display_title)) {
+    if ($node->type == 'tv_show') {
+      $show = $node->nid;
+    }
+    if (!empty($node->$field_name)) {
+      $show_nid = field_get_items('node', $node, $field_name);
+      $show = $show_nid[0]['target_id'];
+    }
     $show = node_load($show);
-  }
-  
-  if (!empty($node->$field_name)) {
-    $show_nid = field_get_items('node', $node, $field_name);
-    $show_nid = $show_nid[0]['target_id'];
-    $show = node_load($show_nid);
-  }
-
-  if (!empty($node->$field_name)) {
-    $show_nid = field_get_items('node', $node, $field_name);
-    $show_nid = $show_nid[0]['target_id'];
-    $show = node_load($show_nid);
-  }
-  
-  // if display title is populated load that as the menu title
-  if (!empty($show->field_display_title)) {
-    $displaytitle = field_get_items('node', $show, 'field_display_title');
-    $displaytitle = $displaytitle[0]['safe_value'];
-  }
-
-  // Get the field collection items.
-  $fc_fields = field_get_items('node', $show, 'field_show_links');
-  if (empty($fc_fields)) {
-    return;
-  }
-
-  // Extract the field collection item ids
-  $ids = array();
-  foreach ($fc_fields as $fc_field) {
-    $ids[] = $fc_field['value'];
-  }
-  
-  // Load up the field collection items
-  $items = field_collection_item_load_multiple($ids);
-  if (empty($items)) {
-    return;
-  }
-
-  // Loop through the items and extract field values
-  foreach ($items as $item) {
-    $mlinks = array();
-    $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
-    if (!empty($link_fields)) {
-      foreach ($link_fields as $link) {
-        $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
-      }
+    
+    // if display title is populated load that as the menu title
+    if (!empty($show->field_display_title)) {
+      $displaytitle = field_get_items('node', $show, 'field_display_title');
+      $displaytitle = $displaytitle[0]['safe_value'];
     }
-
-    $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
-    if (!empty($link_fields)) {
-      foreach ($link_fields as $link) {
-        $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
-      }
+    else {
+      $displaytitle = $show->title;
     }
-    $showlinks[] = $mlinks;
+  
+    // Get the field collection items.
+    $fc_fields = field_get_items('node', $show, 'field_show_links');
+    if (empty($fc_fields)) {
+      return;
+    }
+  
+    // Extract the field collection item ids
+    $ids = array();
+    foreach ($fc_fields as $fc_field) {
+      $ids[] = $fc_field['value'];
+    }
+    
+    // Load up the field collection items
+    $items = field_collection_item_load_multiple($ids);
+    if (empty($items)) {
+      return;
+    }
+  
+    // Loop through the items and extract field values
+    foreach ($items as $item) {
+      $mlinks = array();
+      $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
+      if (!empty($link_fields)) {
+        foreach ($link_fields as $link) {
+          $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
+        }
+      }
+  
+      $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
+      if (!empty($link_fields)) {
+        foreach ($link_fields as $link) {
+          $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
+        }
+      }
+      $showlinks[] = $mlinks;
+    }
+    if (!empty($showlinks)) {
+      $output .= '<div class="tv-show-menu-trigger">'. $displaytitle  .'</div>';
+      $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $showlinks)) . '</div>';
+    }
   }
-  if (!empty($showlinks)) {
-    $output .= '<div class="tv-show-menu-trigger">'. $displaytitle  .'</div>';
-    $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $showlinks)) . '</div>';
-  }
-
+  
   return $output;
 }
 

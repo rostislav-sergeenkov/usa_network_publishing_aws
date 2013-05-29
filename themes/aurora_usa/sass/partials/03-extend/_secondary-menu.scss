@@ -43,6 +43,9 @@
             font-family: $headline-reg;
             display: none;
           > ul {
+            @include breakpoint($bp-video-mid-large-width) {
+              left: -1px;
+            }
             li.first {
               a:first-child {
                 border-top: 0;
@@ -88,14 +91,14 @@
           &:after,
           &:hover:after {
             position: absolute;
-            right: 21px;
+            right: 11px;
             top: 28px;
             left: auto;
             @include cssTriangle(5px, $white, top);
           }
           &:before {
             position: absolute;
-            right: 20px;
+            right: 10px;
             left: auto;
             top: 16px;
             @include cssTriangle(5px, $white, bottom);

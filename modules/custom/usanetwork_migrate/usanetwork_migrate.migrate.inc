@@ -19,7 +19,7 @@ function usanetwork_migrate_migrate_api() {
     'api' => 2,
     'migrations' => array(
       // Use migration machine names as keys.
-      'usanetwork_tve_videos' => array('class_name' => 'USANetworkTVEVideoFeedMigration'),
+      #'usanetwork_tve_videos' => array('class_name' => 'USANetworkTVEVideoFeedMigration'),
       'usanetwork_mpx_videos' => array('class_name' => 'USANetworkMPXVideoFeedMigration'),
     ),
   );

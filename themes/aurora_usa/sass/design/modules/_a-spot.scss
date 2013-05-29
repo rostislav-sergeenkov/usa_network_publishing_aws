@@ -62,7 +62,7 @@
 //        line-height: 80px;
       }
       &:before {
-        content: "";
+        content: $space;
         z-index: 1;
         display: block;
         position: absolute;

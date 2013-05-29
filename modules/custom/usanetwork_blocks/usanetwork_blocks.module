@@ -265,26 +265,31 @@ function usanetwork_blocks_usa_social_footer() {
  * Block for displaying TV show menu
  */
 function usanetwork_blocks_tv_show_menu() {
-  $arg = arg();
   $lang = LANGUAGE_NONE;
   $links = array();
   $output = '';
-
-  if (isset($arg[1])) {
-    $node = node_load($arg[1]);
+  $show = '';
+  $show_nid = '';
+  $node = menu_get_object();
+  $field_name = "field_show";
+  
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
   }
 
-  // return empty block if the node id is empty
-  if (!isset($node->nid) || empty($node->nid)) {
-    return '';
+  if ($node->type == 'tv_show') {
+    $show = $node->nid;
   }
   
-  if ($node->type != 'tv_show' && isset($node->field_show[$lang][0]['entity'])) {
-    $node = $node->field_show[$lang][0]['entity'];
+  if (!empty($node->$field_name)) {
+    $show_nid = field_get_items('node', $node, $field_name);
+    $show_nid = $show_nid[0]['target_id'];
+    $show = node_load($show_nid);
   }
 
   // Get the field collection items.
-  $fc_fields = field_get_items('node', $node, 'field_show_links');
+  $fc_fields = field_get_items('node', $show, 'field_show_links');
   if (empty($fc_fields)) {
     return '';
   }
@@ -319,11 +324,11 @@ function usanetwork_blocks_tv_show_menu() {
     }
     $links[] = $mlinks;
   }
-
   if (!empty($links)) {
-    $output .= '<div class="tv-show-menu-trigger">'. $node->title  .'</div>';
+    $output .= '<div class="tv-show-menu-trigger">'. $show->title  .'</div>';
     $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $links)) . '</div>';
   }
+
   return $output;
 }
 

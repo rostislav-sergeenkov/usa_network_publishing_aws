@@ -138,7 +138,7 @@
     text-align: center;
     &:before,
     &:after {
-      border-color: #444;
+      border-color: $gray-ultra-med;
       border-style: solid;
       border-width: 0 0 1px;
       content: "";
@@ -155,14 +155,14 @@
   }
 
   .expandable-toggle {
-    color: #444;
+    color: $gray-ultra-med;
     cursor: pointer;
     font-size: 16px;
     line-height: 1;
     margin: 0 auto;
     position: relative;
     &:after {
-      @include cssTriangle(18px, #444, 'top');
+      @include cssTriangle(18px, $gray-ultra-med, 'top');
       border-width: 12px 18px 18px;
       top: 18px;
       content: "";
@@ -184,7 +184,7 @@
   }
   .expandable-toggle {
     &:after {
-      @include cssTriangle(18px, #444, 'bottom');
+      @include cssTriangle(18px, $gray-ultra-med, 'bottom');
         border-width: 18px 18px 12px;
         bottom: 18px;
         top: auto;
@@ -197,6 +197,10 @@
       display: none;
     }
   }
+}
+
+.pager-load-more {
+
 }
 
 #block-usanetwork-video-usa-show-video-nav .content > .item-list > ul > li > a {

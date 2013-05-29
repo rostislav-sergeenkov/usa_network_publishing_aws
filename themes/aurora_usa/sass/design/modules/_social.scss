@@ -140,13 +140,15 @@ body.usa-social {
 }
 
 .social-follow-block {
-  background-color: $gray-med-dark;
-  //@include background(linear-gradient(top bottom, $gray-dark 0%, $gray-med-dark 100%));
+  background-color: $black-into-gray;
+  border: 1px solid $gray-med;
+
   h2 {
-    color: $gray-extra-light;
+    @include background(linear-gradient(center top , $black-true, $gray-dark));
+    color: $white;
     text-transform: lowercase;
-    font-family: $headline-reg;
-    font-size: 18px;
+    font-family: $headline-lt;
+    font-size: 24px;
     padding: 16px 12px 11px 8px;
     line-height: 1em;
     text-align: center;
@@ -244,29 +246,30 @@ body.usa-social {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
-      font-family: $headline-reg;
-      font-size: 20px;
-      padding: 20px 15px 20px 10px;
+      font-family: $headline-lt;
+      font-size: 24px;
+      padding: 10px 15px 7px 10px;
       text-transform: lowercase;
       cursor: pointer;
       text-align: center;
       &:after {
         @include cssTriangle(6px, $white, top);
-        right: 50px;
+        right: 40px;
         position: absolute;
-        top: 27px;
+        top: 18px;
       }
       &.open {
         &:after {
           @include cssTriangle(6px, $white, bottom);
-          right: 50px;
+          right: 40px;
           position: absolute;
-          top: 25px;
+          top: 14px;
         }
       }
     }
     .view-content {
       display: none;
+
     }
   }
 }

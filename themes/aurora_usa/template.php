@@ -123,9 +123,6 @@ function aurora_usa_preprocess_page(&$vars) {
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';
   }
-  if (!empty($vars['page']['sponsored'])) {
-    $util_regions[] = 'utilities-sponsored';
-  }
   $vars['util_classes'] = implode(' ', $util_regions);
   
 }

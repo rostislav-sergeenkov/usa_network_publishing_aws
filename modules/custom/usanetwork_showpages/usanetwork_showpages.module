@@ -133,6 +133,12 @@ function usanetwork_showpages_showbanner() {
       if (arg(2) == 'games') {
         $show_section = t('Games');
       }
+      if (arg(2) == 'features') {
+        $show_section = t('Features');
+      }
+      if (arg(2) == 'quizzes') {
+        $show_section = t('Quizzes');
+      }
     }
     // looks for nodes with a value in field_show
     if (!empty($node->$field_name)) {
@@ -157,6 +163,20 @@ function usanetwork_showpages_showbanner() {
         case 'usa_video':
         case 'usa_tve_video':
           $show_section = t('Videos');
+          break;
+        case 'usanetwork_static_page':
+        case 'catchall_page':
+          $custompath = drupal_get_path_alias('node/'.$node->nid);
+          $path_parts = explode('/', $custompath);
+          if ($path_parts['1'] == 'features') {
+            $show_section = t('Features');
+          }
+          if ($path_parts['1'] == 'quizzes') {
+            $show_section = t('Quizzes');
+          }
+          if ($path_parts['1'] == 'games') {
+            $show_section = t('Games');
+          }
           break;
       }
     }

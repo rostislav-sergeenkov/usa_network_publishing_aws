@@ -3,7 +3,8 @@
 /**
  * Migration class for TVE Video content.
  */
-class USANetworkTVEVideoFeedMigration extends XMLMigration {
+#class USANetworkTVEVideoFeedMigration extends XMLMigration {
+class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
 
   public $imgDestDir;
 

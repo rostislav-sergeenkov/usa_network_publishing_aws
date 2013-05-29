@@ -158,17 +158,18 @@ function usanetwork_video_show_nav() {
           $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           if ($node->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
-            $items[0]['data'] = $title;
-            $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
+            $items['data'] = $title;
+            $items['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
 
-            $items[0]['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
+            $items['children'][] = array('data' => l($title, $path, array('html' => true)), 'class' => array('active'));
           } else  {
-            $items[0]['children'][] = l($title, $path, array('html' => true));
+            $items['children'][] = l($title, $path, array('html' => true));
           }
         }
       }
     }
   }
+
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
@@ -206,7 +207,7 @@ function usanetwork_video_show_nav() {
           if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
             $class[] = 'active';
           }
-          $class = str_replace(' ', '-', strtolower($term2->name));
+          $class = array(str_replace(' ', '-', strtolower($term2->name)));
           $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
         }
       } else {
@@ -216,7 +217,7 @@ function usanetwork_video_show_nav() {
           if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
             $class[] = 'active';
           }
-          $class = str_replace(' ', '-', strtolower($term2->name));
+          $class = array(str_replace(' ', '-', strtolower($term2->name)));
           $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
           if ($first) {
             $first = false;

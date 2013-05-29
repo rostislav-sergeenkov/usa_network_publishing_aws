@@ -15,6 +15,46 @@
         $(this).toggleClass('open');
     });
 
+
+    // video items toggler
+
+    $expandable_container = $('.view.expandable-container');
+    $container = $('.view.expandable-container .view-content');
+    $toggler = $('.view.expandable-container .expandable-toggle li');
+
+    var i = 0;
+
+    if($toggler.text() != 'more') {
+      $toggler.addClass('less').text('close');
+      $expandable_container.addClass('expanded');
+      i = 1;
+    }
+
+    $toggler.click(function() {
+      console.log(i);
+      if($toggler.text() == 'close') {
+        i = 1;
+        $container.find('.item-list').hide();
+        $container.find('.item-list:first-child').css('display','block');
+        $toggler.text('more');
+        $expandable_container.removeClass('expanded');
+      } else if ($toggler.text() == 'more') {
+        $container.find('.item-list:first-child').css('display','block');
+        $count = $container.find('.item-list').length - 1;
+        $container.find('.item-list:eq('+ i + ')').show();
+
+        if($count == i) {
+          $toggler.text('close');
+          $expandable_container.addClass('expanded');
+          i = 1;
+        }
+        i++;
+      }
+    });
+
+
+
+
       $filter_menus = $('.usa-secondary-menu .content > .item-list:nth-child(2)');
       $filter_menus.each(function(index, value){
         $filter_menu = $(this);
@@ -26,7 +66,7 @@
           $menu_item = $(this).find('.categories > li.first span');
         }
 
-        $('.menu-label').remove();
+        $filter_menu.find('.menu-label').remove();
         $menu_label = '<div class="menu-label">' + $menu_item.text() + '</div>';
 
         $($filter_menu).find('.categories').addClass('filter-menu').before($menu_label);

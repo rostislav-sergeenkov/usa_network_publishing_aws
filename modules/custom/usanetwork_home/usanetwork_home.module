@@ -33,7 +33,12 @@ function usanetwork_home_menu() {
 function usanetwork_home_landing($day = '') {
   $render = array();
   if (empty($day)) {
-    $day = strtolower(date('l'));
+    // old method used current
+    //$day = strtolower(date('l'));
+    // new method subtracts 3 hours so homepages publish at 3am
+    $day = strtotime("-3 hours");
+    $day = date('l', $day);
+    $day = strtolower($day);
   }
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 

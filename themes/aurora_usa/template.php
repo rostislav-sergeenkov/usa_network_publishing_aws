@@ -301,7 +301,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     // SHOW TITLE WITHIN VIDEO TEASERS
     case 'field_show':
       // change display
-      if (isset($vars['element']['#view_mode']))  {
+      if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'vid_teaser_episode':
           case 'vid_teaser_general':
@@ -317,6 +317,18 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       $duration = $vars['element']['#items'][0]['value'];
       $duration_custom = gmdate("H:i:s", $duration);
       $vars['items'][0]['#markup'] = $duration_custom;
+      break;
+    // PROMO line 1 text on
+    case 'field_promo_text_line_1':
+      // change display
+      if (isset($vars['element']['#view_mode'])) {
+        switch($vars['element']['#view_mode']) {
+          case 'promo_teaser':
+          $vars['items'][0]['#prefix'] = '<h3>';
+          $vars['items'][0]['#suffix'] = '</h3>';
+            break;
+          }
+        }
       break;
   }
 }

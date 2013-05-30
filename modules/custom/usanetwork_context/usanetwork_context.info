@@ -14,6 +14,7 @@ dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_catchall
 dependencies[] = usanetwork_home
 dependencies[] = usanetwork_lyris
+dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_showpages
 dependencies[] = usanetwork_social
 dependencies[] = usanetwork_static_page

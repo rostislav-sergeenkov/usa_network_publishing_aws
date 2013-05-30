@@ -8,89 +8,107 @@
     &:visited {
       color: $white;
     }
-    .meta-wrap {
-      position: absolute;
-      color: $white;
-      z-index: 1;
-      top: 110px;
-      left: 0;
-      padding-left: 15px;
-      text-align: left;
-      @include breakpoint($bp-aspot-mid-range-width) {
-        top: 150px;
-        padding-left: 25px;
-      }
-      @include breakpoint($bp-aspot-mid-range2-width) {
-        top: 140px;
-        padding-left: 35px;
-      }
-      @include breakpoint($bp-aspot-large-width) {
-        top: 190px;
-        padding-left: 50px;
-      }
+  }
+  .meta-wrap {
+    position: absolute;
+    color: $white;
+    z-index: 1;
+    top: 110px;
+    left: 0;
+    padding-left: 15px;
+    text-align: left;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      top: 150px;
+      padding-left: 25px;
     }
-    .meta {
-      margin-bottom: 10px;
-      @include breakpoint($bp-aspot-mid-range-width) {
-        margin-bottom: 15px;
-      }
-      @include breakpoint($bp-aspot-mid-range2-width) {
-        margin-bottom: 22px;
-      }
-      @include breakpoint($bp-aspot-large-width) {
-         margin-bottom: 27px;
-      }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      top: 140px;
+      padding-left: 35px;
     }
-    .cta {
+    @include breakpoint($bp-aspot-large-width) {
+      top: 190px;
+      padding-left: 50px;
+    }
+  }
+  .meta {
+    margin-bottom: 10px;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      margin-bottom: 15px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      margin-bottom: 22px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+       margin-bottom: 27px;
+    }
+  }
+  .cta {
+    position: relative;
+    padding-left: 34px;
+    font-size: 12px;
+    @include breakpoint($bp-aspot-mid-width) {
+      top: 4px;
+    }
+    .view-mode-usa_term_icon {
+      float: left;
+      width: 26px;
       position: relative;
-      padding-left: 45px;
-      font-size: 12px;
-//      line-height: 35px;
-      @include breakpoint($bp-aspot-mid-range-width) {
-        padding-left: 55px;
-        font-size: 14px;
-//        line-height: 45px;
-      }
-      @include breakpoint($bp-aspot-mid-range2-width) {
-        padding-left: 70px;
-        font-size: 18px;
-//        line-height: 60px;
+      top: -8px;
+      margin-left: -34px;
+      background-color: $black-trans-3;
+      border-radius: 50%;
+      @include breakpoint($bp-aspot-mid-width) {
+        width: 45px;
+        top: -16px;
+        margin-left: -52px;
       }
       @include breakpoint($bp-aspot-large-width) {
-        padding-left: 90px;
-        font-size: 25px;
-//        line-height: 80px;
+        width: 70px;
+        top: -24px;
+        margin-left: -84px;
       }
-      &:before {
-        content: $space;
-        z-index: 1;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 35px;
-        height: 35px;
-        background-color: none;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        @include breakpoint($bp-aspot-mid-range-width) {
-          width: 45px;
-          height: 45px;
-        }
-        @include breakpoint($bp-aspot-mid-range2-width) {
-          width: 60px;
-          height: 60px;
-        }
-        @include breakpoint($bp-aspot-large-width) {
-          width: 80px;
-          height: 80px;
-        }
+    }
+    @include breakpoint($bp-aspot-mid-width) {
+      padding-left: 55px;
+      font-size: 14px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      // padding-left: 70px;
+      font-size: 18px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      padding-left: 90px;
+      font-size: 25px;
+    }
+    &:before {
+      content: $space;
+      z-index: 1;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 35px;
+      height: 35px;
+      background-color: none;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        width: 45px;
+        height: 45px;
       }
-      span {
-        font-family: $headline-semi;
-        font-weight: normal;
-        letter-spacing: 0.05em;
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        width: 60px;
+        height: 60px;
       }
+      @include breakpoint($bp-aspot-large-width) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    span {
+      font-family: $headline-semi;
+      font-weight: normal;
+      letter-spacing: 0.05em;
     }
   }
   .show-title:after {
@@ -174,6 +192,9 @@
   .suits .show-time {
     margin-bottom: 0;
     font-size: 27px;
+  }
+  img, .flexslider & img {
+    max-height: none;
   }
 }
 

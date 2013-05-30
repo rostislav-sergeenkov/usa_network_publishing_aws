@@ -164,10 +164,12 @@
       float: left;
       height: 250px;
       width: 300px;
+      margin-right: 15px;
     }
     @include breakpoint($bp-home-widest) {
       height: 250px;
       width: 615px;
+      margin-right: 15px;
       .media-normal {
         display: none;
       }
@@ -259,12 +261,37 @@
 
 .usa-home-featured {
   position: relative;
-  height: 300px;
   background-color: $black;
-  padding: 12px 0;
+  padding: 12px 0 36px;
   @extend %un-margin;
+  .carousel-item {
+    @extend .title-overlay;
+    border: 1px solid $black;
+  }
+  .meta {
+    text-align: left;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    max-width: 221px;
+    @include breakpoint($bp-home-widest) {
+      height: 67px;
+      max-width: none;
+    }
+  }
+  .field-name-field-promo-text-line-1 {
+    font-family: $headline-semi;
+    font-size: 20px;
+    @include breakpoint($bp-home-widest) {
+      font-size: 26px;
+    }
+  }
+  .caption {
+    font-size: 10px;
+    @include breakpoint($bp-home-widest) {
+      font-size: 15px;
+    }
+  }
   .featured-carousel {
-    // padding: 0 37px;
     margin: 0 auto;
     @include breakpoint($bp-home-narrowest) {
       width: 300px;
@@ -282,8 +309,23 @@
       text-transform: uppercase;
     }
   }
+  .carousel-item {
+    height: auto;
+  }
   .carousel {
     width: auto !important;
+    @include breakpoint($bp-home-widest) {
+      height: 254px !important;
+      li.carousel-item {
+        height: 254px;
+        img, .meta {
+          width: 300px;
+        }
+        img {
+          height: 254px;
+        }
+      }
+    }
   }
   .carousel-btns {
     position: absolute;
@@ -304,7 +346,3 @@
     }
   }
 }
-
-
-
-

@@ -1,9 +1,3 @@
-.usa-home-featured {
-  position: relative;
-  height: 300px;
-  padding: 0 37px;
-}
-
 .node-usa-homepage {
   a {
     @include link-colors($white, $white, $white, $white, $white);
@@ -261,3 +255,56 @@
     }
   }
 }
+
+
+.usa-home-featured {
+  position: relative;
+  height: 300px;
+  background-color: $black;
+  padding: 12px 0;
+  @extend %un-margin;
+  .featured-carousel {
+    // padding: 0 37px;
+    margin: 0 auto;
+    @include breakpoint($bp-home-narrowest) {
+      width: 300px;
+    }
+    @include breakpoint($bp-home-mid) {
+      width: 615px;
+    }
+    @include breakpoint($bp-home-wide) {
+      width: 930px;
+    }
+    @include breakpoint($bp-home-widest) {
+      width: 1245px;
+    }
+    > h2 {
+      text-transform: uppercase;
+    }
+  }
+  .carousel {
+    width: auto !important;
+  }
+  .carousel-btns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform3d(translateX(-50%));
+    @include breakpoint($bp-home-narrowest) {
+      width: 370px;
+    }
+    @include breakpoint($bp-home-mid) {
+      width: 685px;
+    }
+    @include breakpoint($bp-home-wide) {
+      width: 1000px;
+    }
+    @include breakpoint($bp-home-widest) {
+      width: 1245px;
+    }
+  }
+}
+
+
+
+

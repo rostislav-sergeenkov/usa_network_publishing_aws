@@ -1,5 +1,4 @@
 #footer {
-  padding: 20px 25px;
   li, ul {
     padding: 0;
     margin: 0;
@@ -7,22 +6,45 @@
   }
 }
 
+.usa-tv-show .region-footer {
+//  padding-bottom: 55px;
+  @include breakpoint($bp-menu-switch) {
+    padding-bottom: 137px;
+  }
+}
+
 .region-footer {
-  display: block;
-  padding-top: 117px;
+  border-top: 1px solid $gray-med-dark;
+  padding: 3px 15px 65px;
+  margin-top: 20px;
   overflow: hidden;
-  padding-bottom: 0;
-  font-size: 12px;
-  font-family: $headline-semi;
+  font-size: 14px;
+  font-family: $headline-reg;
   color: $gray-dark-light;
+  @include breakpoint($bp-menu-switch) {
+    font-size: 12px;
+    font-family: $headline-semi;
+    padding-bottom: 85px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
   li a {
     color: $gray-dark-light;
+    margin-right: 15px;
+    padding: 10px 0 6px;
+    display: block;
+    @include breakpoint($bp-menu-switch) {
+      display: inline-block;
+    }
   }
   h2 {
     display: none;
   }
   li {
-    display: inline-block;
+    display: block;
+    @include breakpoint($bp-menu-switch) {
+      display: inline-block;
+    }
   }
   .block {
     float: left;
@@ -43,9 +65,12 @@
 
 /* overriding module styles - remove from there? */
 #footer-message {
-  font-size: 10px;
+  font-size: 12px;
   font-family: $headline-reg;
   color: $gray-dark-light;
+  @include breakpoint($bp-menu-switch) {
+    font-size: 10px;
+  }
 }
 
 #block-usanetwork-blocks-usa-footer-message {

@@ -606,8 +606,9 @@
     float: right;
   }
   .featured-asset {
-    @include breakpoint($bp-video-large2-width) {
-      position: relative;
-    }
+    position: relative;
+//    @include breakpoint($bp-video-large2-width) {
+
+//    }
   }
 }

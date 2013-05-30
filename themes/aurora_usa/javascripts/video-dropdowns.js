@@ -15,6 +15,11 @@
         $(this).toggleClass('open');
     });
 
+    // $(document).on('click', '#block-usanetwork-video-usa-global-video-nav .shows > li.first', function (){
+    //     $('#block-usanetwork-video-usa-global-video-nav .shows > li.first').toggleClass('hello');
+    //     return false;
+    // });
+
 
     // video items toggler
 
@@ -31,7 +36,7 @@
     }
 
     $toggler.click(function() {
-      console.log(i);
+      //console.log(i);
       if($toggler.text() == 'close') {
         i = 1;
         $container.find('.item-list').hide();

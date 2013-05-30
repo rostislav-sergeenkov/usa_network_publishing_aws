@@ -273,7 +273,7 @@ function usanetwork_blocks_tv_show_menu() {
   $node = menu_get_object();
   $field_name = "field_show";
   $displaytitle = '';
-  
+
   // if there is no NID get out of there
   if (!isset($node->nid)) {
     return;
@@ -288,7 +288,7 @@ function usanetwork_blocks_tv_show_menu() {
       $show = $show_nid[0]['target_id'];
     }
     $show = node_load($show);
-    
+
     // if display title is populated load that as the menu title
     if (!empty($show->field_display_title)) {
       $displaytitle = field_get_items('node', $show, 'field_display_title');
@@ -297,39 +297,39 @@ function usanetwork_blocks_tv_show_menu() {
     else {
       $displaytitle = $show->title;
     }
-  
+
     // Get the field collection items.
     $fc_fields = field_get_items('node', $show, 'field_show_links');
     if (empty($fc_fields)) {
       return;
     }
-  
+
     // Extract the field collection item ids
     $ids = array();
     foreach ($fc_fields as $fc_field) {
       $ids[] = $fc_field['value'];
     }
-    
+
     // Load up the field collection items
     $items = field_collection_item_load_multiple($ids);
     if (empty($items)) {
       return;
     }
-  
+
     // Loop through the items and extract field values
     foreach ($items as $item) {
       $mlinks = array();
       $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
       if (!empty($link_fields)) {
         foreach ($link_fields as $link) {
-          $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
+          $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']);
         }
       }
-  
+
       $link_fields = field_get_items('field_collection_item', $item, 'field_child_link');
       if (!empty($link_fields)) {
         foreach ($link_fields as $link) {
-          $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']); 
+          $mlinks['children'][] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']);
         }
       }
       $showlinks[] = $mlinks;
@@ -339,7 +339,7 @@ function usanetwork_blocks_tv_show_menu() {
       $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $showlinks)) . '</div>';
     }
   }
-  
+
   return $output;
 }
 
@@ -364,8 +364,8 @@ function usanetwork_blocks_usa_footer_links() {
 
   $render['ad_chocies'] = array(
     '#type' => 'markup',
-    '#prefix' => '<div id ="footer-links">'. variable_get("usanetwork_footer_ad_choices_text", ''),
-    '#suffix' => '</div>',
+    '#prefix' => '<li id ="footer-links">'. variable_get("usanetwork_footer_ad_choices_text", ''),
+    '#suffix' => '</li>',
   );
   return $render;
 }

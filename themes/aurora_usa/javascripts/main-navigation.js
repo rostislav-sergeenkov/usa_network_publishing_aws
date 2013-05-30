@@ -8,6 +8,10 @@
       // no destination for links with this class
       // if there is a child menu add a class
       $('#tv-show-menu li .item-list').parent().addClass('parent-item');
+      $('#tv-show-menu a.link-empty').click(function() {
+        return false;
+      });
+
 
       // NARROW NAVIGATION
       var jPM = $.jPanelMenu({
@@ -54,6 +58,7 @@
                   .end()
                .find('.parent-item')
                   .addClass('expandable')
+                  .addClass('shows-expandable')
                   .addClass('expandable-menu')
                   .end()
                .find('li .item-list')
@@ -62,7 +67,7 @@
                 .find('li .item-list ul')
                   .addClass('panel-sub-nav')
                   .end()
-                .find('.parent-item a:first-child')
+                .find('.shows-expandable a:first-child')
                   .click(function() {
                     $(this).parent().toggleClass('active-item');
                     return false;

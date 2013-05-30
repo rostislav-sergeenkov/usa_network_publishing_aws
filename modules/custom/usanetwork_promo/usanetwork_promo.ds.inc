@@ -168,24 +168,22 @@ function usanetwork_promo_ds_layout_settings_info() {
     'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
     'regions' => array(
-      'title' => array(
-        0 => 'title',
-      ),
       'media' => array(
         0 => 'field_promo_regular_image',
       ),
-      'caption' => array(
+      'title' => array(
         0 => 'field_promo_text_line_1',
-        1 => 'field_promo_text_line_2',
+      ),
+      'caption' => array(
+        0 => 'field_promo_text_line_2',
       ),
       'link' => array(
         0 => 'field_promo_link',
       ),
     ),
     'fields' => array(
-      'title' => 'title',
       'field_promo_regular_image' => 'media',
-      'field_promo_text_line_1' => 'caption',
+      'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',
       'field_promo_link' => 'link',
     ),

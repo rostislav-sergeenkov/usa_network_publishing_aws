@@ -279,7 +279,7 @@ function usanetwork_blocks_tv_show_menu() {
     return;
   }
   // otherwise do stuff
-  if ($node->type == 'tv_show' || !empty($show->field_display_title)) {
+  if ($node->type == 'tv_show' || !empty($node->$field_name)) {
     if ($node->type == 'tv_show') {
       $show = $node->nid;
     }

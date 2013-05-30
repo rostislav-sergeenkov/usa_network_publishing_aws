@@ -1,4 +1,4 @@
-<?php 
+<?php
 // @TODO: tve auth
 // may be done in a block
 // and placed into this tpl via layout
@@ -23,11 +23,12 @@ if ($node->type == 'usa_video') {
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
-//$player_url = variable_get('usanetwork_theplatform_tve_player_url');
+// hiding all of these values for launch
+  //$player_url = variable_get('usanetwork_theplatform_tve_player_url');
   // @todo: this is temporary only!
-  $player_url = 'http://player.theplatform.com/p/dCK2IC/usa-vod-stage';
-  $feed_url = variable_get('usanetwork_theplatform_tve_feed_url');
-  $platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
+  //$player_url = 'http://player.theplatform.com/p/dCK2IC/usa-vod-stage';
+  //$feed_url = variable_get('usanetwork_theplatform_tve_feed_url');
+  //$platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
 }
 
 ?>
@@ -36,31 +37,29 @@ if ($node->type == 'usa_tve_video') {
 
   <div class="meta">
     <div class="meta-head">
-      <?php if ($show): ?><h1 class="show-name"><?php print $show; ?></h1><?php endif; ?>
-      <?php if ($video_title): ?><h2 class="episode-title"><?php print $video_title; ?></h2><?php endif; ?>
+      <?php if ($show && $show != "&nbsp;"): ?><h1 class="show-name"><?php print $show; ?></h1><?php endif; ?>
+      <?php if ($video_title && $video_title != "&nbsp;"): ?><h2 class="episode-title"><?php print $video_title; ?></h2><?php endif; ?>
+       <div class="details">
+      <?php if ($season && $season != "&nbsp;"): ?><span class="season-info"><?php print $season; ?></span><?php endif; ?>
+      <?php if ($episode && $episode != "&nbsp;"): ?><span class="episode-info"><?php print $episode; ?></span><?php endif; ?>
+      <?php if ($airdate && $airdate != "&nbsp;"): ?><span class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
     </div>
-    <div class="details">
-      <?php if ($season): ?><span class="season-info"><?php print $season; ?></span><?php endif; ?>
-      <?php if ($episode): ?><span class="episode-info"><?php print $episode; ?></span><?php endif; ?>
-      <?php if ($airdate): ?><span class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
     </div>
   </div>
   <div class="video-player-wrapper">
     <?php if ($guid && $player_url): ?>
-    <div class="video-player">
       <iframe
       class="video-iframe"
-      style="width: 100%; height: 100%"
+      style=""
       src="<?php print $player_url; ?>/embed/select/<?php print $platform_file_id; ?>"
       frameborder="0"
       allowfullscreen>
       Your browser does not support iframes.
       </iframe>
-    </div>
     <?php endif; ?>
   </div>
-  <?php if ($tve_auth): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?>
-  <?php if ($body): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
-  <?php if ($ad): ?><div class="ad"><?php print $ad; ?></div><?php endif; ?>
+ <!--  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?> -->
+  <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
+  <?php if ($ad && $ad != "&nbsp;"): ?><div class="ad"><?php print $ad; ?></div><?php endif; ?>
 
 </div>

@@ -50,6 +50,12 @@ function usanetwork_settings_form() {
     '#description' => t('YYYY will be replaced by current year'),
     '#default_value' => variable_get('usanetwork_footer_message', '&copy;YYYY NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal'),
   );
+  /* ad choices html */
+  $form['footer']['usanetwork_footer_ad_choices_text'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Ad Choices HTML'),
+    '#default_value' => variable_get('usanetwork_footer_ad_choices_text', ''),
+  );
 
   /* more menu settings */
   $form['more_menu'] = array(
@@ -64,7 +70,7 @@ function usanetwork_settings_form() {
     '#description' => t('The HTML to include in the "more" link on the primary navigation (Eg. ul, li tags)'),
     '#default_value' => variable_get('usanetwork_more_menu_links', ''),
   );
-
+  
   return system_settings_form($form);
 }
 

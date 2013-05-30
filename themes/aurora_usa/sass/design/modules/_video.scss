@@ -1,7 +1,601 @@
 
-.page-videos {
+.node-type-usa-video, .page-videos {
   #main {
+    padding: 0 0 80px;
+    background-color: $black;
+  }
+}
 
+.node-type-usa-video, .page-videos {
+  #block-system-main {
+    background-color: $black-dark;
+    border-bottom: 1px solid $gray-dark;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+  }
+}
+
+.block-usanetwork-video {
+  padding: 0;
+  margin: 0 auto 10px;
+  @include breakpoint($bp-video-mid-small-width) {
+    width: 457px;
+  }
+  @include breakpoint($bp-video-medium-width) {
+    width: 693px;
+  }
+  @include breakpoint($bp-video-large-width) {
+    width: 929px;
+    margin-bottom: 28px;
+  }
+  @include breakpoint($bp-video-very-large-width) {
+    width: 1245px;
+  }
+}
+
+.block-usanetwork-video .view  {
+  .view-content {
+    @include breakpoint($bp-video-mid-small-width) {
+      margin-right: -15px;
+    }
+  }
+  @include breakpoint($bp-video-mid-small-width) {
+    padding: 0 15px;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .node {
+    width: 46%;
+    float: left;
+    border: 2px solid $gray-dark;
+    margin: 0 1.5% 4%;
+    @include breakpoint($bp-video-mid-small-width) {
+      width: 225px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      margin-left: 0;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 304px;
+    }
+    .caption-fields-wrapper {
+      position: static;
+      width: 100%;
+      height: 41px;
+      margin: 0;
+      padding: 4px 10px;
+      @include breakpoint($bp-video-medium-width) {
+        height: 52px;
+        padding: 4px 10px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        height: 73px;
+        padding: 10px 15px;
+      }
+    }
+    h4 {
+      font-family: $headline-semi;
+      font-size: 12px;
+      margin: 0;
+      line-height: 15px;
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 18px;
+        line-height: 22.5px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        margin-bottom: 3px;
+        font-size: 20px;
+      }
+    }
+    .caption {
+      font-size: 10px;
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 15px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        font-size: 16px;
+      }
+    }
+  }
+  .view-mode-vid_teaser_show_episode {
+    h4 {
+      @include breakpoint($bp-video-very-large-width) {
+//        line-height: 55px;
+      }
+    }
+  }
+  .ajax-progress, .ajax-progress-throbber {
+    display: none;
+  }
+  .expandable-toggle  {
+    li {
+      font-family: $headline-semi;
+      font-size: 16px;
+      color: $gray-ultra-med;
+      a {
+        color: $gray-ultra-med;
+      }
+    }
   }
 
+}
+
+
+.block-usanetwork-video.usa-secondary-menu {
+  background: transparent;
+  border: 0;
+  @include breakpoint($bp-video-mid-large-width) {
+    background-color: $gray-dark;
+    border: 1px solid $gray-med-dark;
+  }
+  a {
+    &.active {
+      color: $white;
+      border-bottom: 0;
+      @include breakpoint($bp-video-mid-large-width) {
+        background-color: $gray-med;
+        color: $gray-extra-light;
+        border-left: 1px solid $gray-med-dark;
+        border-right: 1px solid $gray-med-dark;
+        &:after {
+          @include cssTriangle(12px, $gray-med, top);
+          position: absolute;
+          left: 50%;
+          top: 58px;
+          margin-left: -12px;
+        }
+      }
+    }
+    &:hover {
+      @include breakpoint($bp-video-mid-large-width) {
+        background-color: $gray-med;
+      }
+    }
+    &:hover:after {
+      @include breakpoint($bp-video-mid-large-width) {
+        @include cssTriangle(12px, $gray-med, top);
+        position: absolute;
+        left: 50%;
+        top: 58px;
+        margin-left: -12px;
+        z-index: 9;
+      }
+    }
+  }
+  li.more ul.more {
+    display: none;
+  }
+  ul.shows li {
+    width: 100%;
+    margin: 0;
+  }
+  .menu-label {
+    display: none;
+  }
+  .filter-dropdown_v2 {
+    background-color: $gray-dark;
+    position: relative;
+    .menu-label {
+      display: block;
+      padding: 20px 19px 18px;
+      float: left;
+      width: 100%;
+      cursor: pointer;
+      border: 1px solid $gray-med-dark;
+       &:after,
+        &:hover:after {
+          position: absolute;
+          right: 11px;
+          top: 29px;
+          left: auto;
+          @include cssTriangle(5px, $white, top);
+        }
+        &:before {
+          position: absolute;
+          right: 10px;
+          left: auto;
+          top: 17px;
+          @include cssTriangle(5px, $white, bottom);
+        }
+        &:hover {
+          color: $gray-extra-light;
+        }
+      + ul.categories {
+        display: none;
+      }
+    }
+    &.open {
+      ul.categories {
+        z-index: 99;
+        margin: 0;
+        max-height: 300px;
+        overflow-y: auto;
+        display: block;
+        position: absolute;
+        top: 59px;
+        border: 1px solid $gray-med-dark;
+        border-top: 0;
+        background-color: $gray-dark;
+        width: 100%;
+        left: 0;
+        white-space: nowrap;
+        .active {
+          background-color: transparent;
+          color: $white;
+          &:after {
+            border: 0;
+          }
+        }
+        > li {
+          font-family: $headline-thn;
+          margin: 0;
+          border: 0;
+          padding: 0;
+          line-height: 1em;
+          letter-spacing: 0.05em;
+          float: none;
+          &.first {
+             a {
+              border-top: 0;
+            }
+          }
+          > a {
+            font-size: 14px;
+            padding: 10px 20px 8px;
+            float: none;
+            border: 0;
+            border-top: 1px solid $gray-med-dark;
+            &:hover {
+              background-color: $gray-ultra-med;
+            }
+            &:hover:after {
+              @include cssTriangle(0, $gray-med, top);
+            }
+          }
+        }
+      }
+    }
+  }
+
+      .content  {
+        padding: 0 15px;
+        @include breakpoint($bp-video-mid-small-width) {
+          padding: 0;
+        }
+        > .item-list {
+        float: left;
+        width: 100%;
+        margin-bottom: 15px;
+        @include breakpoint($bp-video-mid-range2-width) {
+          width: 221px;
+          margin-left: 15px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+        @include breakpoint($bp-video-mid-range3-width) {
+          width: 49%;
+          margin-left: 2%;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+        @include breakpoint($bp-video-large-width) {
+          width: 457px;
+          margin-left: 15px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+        @include breakpoint($bp-video-mid-large-width) {
+          font-size: 20px;
+          width: 75%;
+          margin: 0;
+          border: 0;
+          &:first-child {
+            width: 25%;
+            border-right: 1px solid $gray-med-dark;
+          }
+        }
+        .more  {
+          .item-list > .more {
+            max-height: none;
+            overflow-y: inherit;
+            background-color: $gray-dark;
+            border: 0;
+            border-top: 1px solid $gray-med-dark;
+            position: relative;
+            top: 0;
+            @include breakpoint($bp-video-mid-large-width) {
+              position: absolute;
+              background-color: $black-trans;
+              border: 1px solid $gray-med-dark;
+              border-top: 0;
+              min-width: 358px;
+              width: auto;
+              z-index: 100;
+              padding: 30px 30px 33px;
+              white-space: normal;
+              top: 59px;
+            }
+            li {
+              &.first a {
+                border-top: 0;
+              }
+            }
+            li a:hover:after {
+              border: 0;
+            }
+            li a {
+              border-top: 1px solid $gray-med-dark;
+              @include breakpoint($bp-video-mid-large-width) {
+                float: left;
+                padding-bottom: 4px;
+                padding-top: 4px;
+                width: 50%;
+                line-height: 1em;
+                border: 0;
+                &:hover {
+                  background-color: transparent;
+                  color: $white;
+                }
+                &.active {
+                  background-color: transparent;
+                  &:after {
+                    border: 0;
+                  }
+                }
+              }
+            }
+          }
+          &.open > span {
+            @include breakpoint($bp-video-mid-large-width) {
+              background-color: $gray-med;
+              color: $gray-extra-light;
+              border-left: 1px solid $gray-med-dark;
+              border-right: 1px solid $gray-med-dark;
+            }
+            &:after {
+              @include cssTriangle(5px, $blue, top);
+              @include breakpoint($bp-video-mid-large-width) {
+                @include cssTriangle(12px, $gray-med, top);
+                  position: absolute;
+                  left: 50%;
+                  top: 58px;
+                  margin-left: -12px;
+                  z-index: 9999;
+              }
+            }
+          }
+          &.open {
+            > a:first-child span {
+              &:after {
+                @include cssTriangle(5px, $blue, top);
+              }
+            }
+          }
+          > a:first-child span {
+            &:after {
+              @include cssTriangle(5px, $white, left);
+              position: absolute;
+              right: 14px;
+              top: 15px;
+              @include breakpoint($bp-video-mid-large-width) {
+                border: 0;
+              }
+            }
+            &:hover {
+              background-color: $gray-ultra-med;
+              @include breakpoint($bp-video-mid-large-width) {
+                background-color: $gray-med;
+              }
+            }
+          }
+          > span {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            position: relative;
+            font-size: 14px;
+            padding: 10px 20px 8px;
+            float: none;
+            border: 0;
+            border-top: 1px solid $gray-med-dark;
+            &:after {
+              @include cssTriangle(5px, $white, left);
+              position: absolute;
+              right: 14px;
+              top: 15px;
+            }
+            &:hover {
+              background-color: $gray-ultra-med;
+            }
+            @include breakpoint($bp-video-mid-large-width) {
+              font-size: 20px;
+              height: 100%;
+              padding: 20px 30px 18px;
+              padding-left: 30px;
+              padding-right: 30px;
+              float: left;
+              width: auto;
+              border-top: 0;
+              border-left: 1px solid $gray-dark;
+              border-right: 1px solid $gray-dark;
+              &:after {
+                border: 0;
+              }
+              &:hover {
+                background-color: $gray-med;
+                color: $gray-extra-light;
+                border-left: 1px solid $gray-med-dark;
+                border-right: 1px solid $gray-med-dark;
+                &:after {
+                  @include cssTriangle(12px, $gray-med, top);
+                  position: absolute;
+                  left: 50%;
+                  top: 58px;
+                  margin-left: -12px;
+                  z-index: 9999;
+                }
+              }
+            }
+        }
+      }
+    }
+  }
+}
+
+
+.featured-asset  {
+  margin: 30px auto 0;
+  @include breakpoint($bp-video-low-range-width) {
+    width: 90%;
+  }
+  @include breakpoint($bp-video-mid-range4-width) {
+    width: 615px;
+  }
+  @include breakpoint($bp-video-high-range-width) {
+    width: 930px;
+  }
+  @include breakpoint($bp-video-very-large-width) {
+    width: 1245px;
+  }
+  .video-player-wrapper {
+    position: relative;
+    float: left;
+    width: 615px;
+    height: 375px;
+    margin-right: 15px;
+    @include breakpoint($bp-video-player-section) {
+      width: 100%;
+      height: 60.975609756098%;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      float: none;
+      margin-bottom: 15px;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 930px;
+      height: 567px;
+    }
+    iframe {
+      width: 615px;
+      height: 375px;
+      @include breakpoint($bp-video-player-section) {
+        height: 60.975609756098%;
+        width: 100%;
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
+        float: none;
+        margin-bottom: 15px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        width: 930px;
+        height: 567px;
+      }
+    }
+  }
+  .meta {
+    overflow: hidden;
+  }
+  .meta-head {
+    float: left;
+    width: 615px;
+    margin-bottom: 15px;
+    @include breakpoint($bp-video-player-section) {
+//      float: none;
+      width: 100%;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      float: none;
+      margin-bottom: 15px;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 930px;
+    }
+    .show-name,
+    .episode-title,
+    .details,
+    .description {
+      margin: 0;
+      font-family: $headline-lt;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+    }
+    .show-name,
+    .episode-title {
+      display: inline;
+    }
+    .show-name {
+      font-size: 26px;
+      margin-right: 15px;
+      text-transform: uppercase;
+    }
+    .episode-title,
+    .details {
+      color: $gray-light;
+    }
+    .episode-title {
+      font-size: 24px;
+      text-transform: none;
+      div {
+        display: inline;
+      }
+    }
+    .details,
+    .description {
+      font-size: 16px;
+    }
+  }
+  .description {
+    float: right;
+    width: 300px;
+    p:first-child {
+      margin-top: 0;
+    }
+    @include breakpoint($bp-video-player-section) {
+      float: none;
+      overflow: hidden;
+      width: 100%;
+      margin-right: 0;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      display: inline;
+      float: left;
+      width: 300px;
+      margin-top: 0;
+      margin-right: 15px;
+    }
+    @include breakpoint($bp-video-large2-width) {
+      overflow: hidden;
+    }
+  }
+  .ad {
+    @include breakpoint($bp-video-mid2_width) {
+      display: inline;
+      float: right;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      margin-top: 0;
+    }
+    @include breakpoint($bp-video-large2-width) {
+      position: absolute;
+      bottom: 2px;
+      right: 0;
+    }
+  }
+  .tve-auth {
+    float: right;
+  }
+  .featured-asset {
+    @include breakpoint($bp-video-large2-width) {
+      position: relative;
+    }
+  }
 }

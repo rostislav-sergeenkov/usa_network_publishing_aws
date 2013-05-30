@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * seeit-likeaspy.tpl.php
+ * usa-seeitlikeaspy.tpl.php
  *
  * Theme implementation for the seeitlikeaspy
  *
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td height="250" valign="top">
-              <?php require_once("menu.tpl.php");?>
+              <?php require_once("usa-seeitlikeaspy-menu.tpl.php");?>
             </td>
           </tr>
         </tbody>

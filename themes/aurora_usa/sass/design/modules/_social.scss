@@ -22,6 +22,9 @@ body.usa-social {
 }
 
 #block-usanetwork-social-usa-show-social-tab-nav {
+  @include breakpoint($bp-social-mid-width) {
+    font-size: 20px;
+  }
   &.open .menu-label {
     color: $gray-extra-light;
   }
@@ -137,15 +140,18 @@ body.usa-social {
 }
 
 .social-follow-block {
-  background-color: $gray-med-dark;
-  //@include background(linear-gradient(top bottom, $gray-dark 0%, $gray-med-dark 100%));
+  background-color: $black-into-gray;
+  border: 1px solid $gray-med;
+
   h2 {
-    color: $gray-extra-light;
-    text-transform: uppercase;
-    font-family: $headline-reg;
-    font-size: 18px;
-    padding: 16px 12px 11px;
+    @include background(linear-gradient(center top , $black-true, $gray-dark));
+    color: $white;
+    text-transform: lowercase;
+    font-family: $headline-lt;
+    font-size: 24px;
+    padding: 16px 12px 11px 8px;
     line-height: 1em;
+    text-align: center;
     margin: 0;
   }
   ul {
@@ -240,22 +246,30 @@ body.usa-social {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
-      font-family: $headline-reg;
-      font-size: 20px;
-      padding: 20px 15px 20px 20px;
-      text-transform: uppercase;
+      font-family: $headline-lt;
+      font-size: 24px;
+      padding: 10px 15px 7px 10px;
+      text-transform: lowercase;
       cursor: pointer;
+      text-align: center;
       &:after {
-        @extend %usanetwork-font;
-        content: "Next";
-        font-size: 0.55em;
-        left: 230px;
+        @include cssTriangle(6px, $white, top);
+        right: 40px;
         position: absolute;
-        top: 24px;
+        top: 18px;
+      }
+      &.open {
+        &:after {
+          @include cssTriangle(6px, $white, bottom);
+          right: 40px;
+          position: absolute;
+          top: 14px;
+        }
       }
     }
     .view-content {
       display: none;
+
     }
   }
 }
@@ -659,12 +673,16 @@ input.echo-submit-text {
       @extend %two-to-one-col-social-content-no-sidebar;
     }
     .panel-col2 {
+      width: 100%;
+    }
+    &.panel-two-cols .panel-col2 {
       @extend %two-to-one-col-social-sidebar;
     }
   }
   &.panel-two-cols .panel-col1 {
     @extend %two-to-one-col-social-content-sidebar;
   }
+
 }
 
 #usanetwork_social_chatter_title {

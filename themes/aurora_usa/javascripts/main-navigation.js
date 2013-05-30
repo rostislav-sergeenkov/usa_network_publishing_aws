@@ -67,8 +67,7 @@
                     $(this).parent().toggleClass('active-item');
                     return false;
                   })
-                  .end()
-                ;
+                  .end();
             }
             $('.jPanelMenu-panel').css('min-height', $(window).height());
           },

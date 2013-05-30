@@ -32,7 +32,7 @@
     clear: both;
     margin-bottom: 15px;
     .dart-tag {
-      img, object {
+      img {
         border: 2px solid $gray-dark;
         height: 250px;
         width: 300px;
@@ -52,7 +52,7 @@
     margin-bottom: 13px;
     font-size: 18px;
     line-height: 1.5em;
-    font-family: $headline-semi;
+    font-family: $headline-bold;
     text-transform: uppercase;
     @include breakpoint($bp-show-mid-width) {
       font-size: 26px;
@@ -62,7 +62,7 @@
 
 
 
-.video-promo-ads-panel {
+.promo-ads-panel {
   position: relative;
   .panel-col2  {
     position: static;
@@ -138,7 +138,7 @@
     text-align: center;
     &:before,
     &:after {
-      border-color: #444;
+      border-color: $gray-ultra-med;
       border-style: solid;
       border-width: 0 0 1px;
       content: "";
@@ -155,14 +155,14 @@
   }
 
   .expandable-toggle {
-    color: #444;
+    color: $gray-ultra-med;
     cursor: pointer;
     font-size: 16px;
     line-height: 1;
     margin: 0 auto;
     position: relative;
     &:after {
-      @include cssTriangle(18px, #444, 'top');
+      @include cssTriangle(18px, $gray-ultra-med, 'top');
       border-width: 12px 18px 18px;
       top: 18px;
       content: "";
@@ -184,7 +184,7 @@
   }
   .expandable-toggle {
     &:after {
-      @include cssTriangle(18px, #444, 'bottom');
+      @include cssTriangle(18px, $gray-ultra-med, 'bottom');
         border-width: 18px 18px 12px;
         bottom: 18px;
         top: auto;
@@ -198,6 +198,7 @@
     }
   }
 }
+
 
 #block-usanetwork-video-usa-show-video-nav .content > .item-list > ul > li > a {
   padding-left: 20px;
@@ -213,14 +214,17 @@
     width: 300px;
     overflow: hidden;
     @include breakpoint($bp-aspot-mid-width) {
+      margin-right: 15px;
+    }
+    @include breakpoint($bp-aspot-mid-range-width) {
       height: 350px;
       width: 615px;
     }
-    @include breakpoint($bp-aspot-large-width) {
+    @include breakpoint($bp-aspot-mid-range2-width) {
       width: 930px;
       height: 378px;
     }
-    @include breakpoint($bp-aspot-very-large-width) {
+    @include breakpoint($bp-aspot-large-width) {
       height: 506px;
       width: 1245px;
     }

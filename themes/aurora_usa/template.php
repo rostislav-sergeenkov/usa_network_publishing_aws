@@ -100,7 +100,7 @@ function aurora_usa_preprocess_page(&$vars) {
       'href' => $theme_path . '/images/ios-home.png',
     ),
   );
-  
+
   // touch icon
   drupal_add_html_head($ios_icon, 'apple_touch_icon');
 
@@ -124,7 +124,7 @@ function aurora_usa_preprocess_page(&$vars) {
     $util_regions[] = 'utilities-search';
   }
   $vars['util_classes'] = implode(' ', $util_regions);
-  
+
 }
 
 /**
@@ -246,6 +246,16 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       }
     break;
+    case 'title':
+      if (isset($vars['element']['#view_mode'])) {
+        switch($vars['element']['#view_mode']) {
+          case 'vid_teaser_episode':
+            unset($vars['items'][0]);
+          break;
+        }
+
+      }
+      break;
     case 'field_usa_character_thumb':
       // making thumb clickable
       if (isset($vars['element']['#view_mode']))  {
@@ -279,9 +289,11 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
 
           case 'vid_teaser_episode':
+            $title = $vars['element']['#object']->title;
             $airtime = $vars['element']['#items'][0]['value'];
             $air_custom = date('n/d/Y', $airtime);
-            $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
+            $vars['classes_array'][] = drupal_html_class('field-name-title');
+            $vars['items'][0]['#markup'] = $title . ' (' . $air_custom . ')';
             break;
           }
         }

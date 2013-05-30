@@ -110,7 +110,8 @@ function usanetwork_video_global_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  if (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])) {
+  if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
+    (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value']))) {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
     $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
   } else {
@@ -131,6 +132,7 @@ function usanetwork_video_show_nav() {
   $arg = arg();
   $lang = LANGUAGE_NONE;
   $node = node_load($arg[1]);
+  $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
 
   if (isset($node->nid)) {
     $cpath = drupal_get_path_alias('node/'.$node->nid);
@@ -183,14 +185,14 @@ function usanetwork_video_show_nav() {
   $items = array();
 
   $classes = array('full-episodes');
-  if ((isset($arg[2]) && $arg[2] == 'full-episodes') || 
-    (isset($node->field_full_episode[$lang][0]['value']) && $node->field_full_episode[$lang][0]['value'] == 1)) {
+  if (empty($tid) && ((isset($arg[2]) && $arg[2] == 'full-episodes') || 
+    (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
   $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes); 
 
   $active_tids = array();
-  if (isset($node->field_usa_video_terms[$lang][0]['target_id']) || !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
+  if (isset($node->field_usa_video_terms[$lang][0]['target_id']) && !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
     foreach ($node->field_usa_video_terms[$lang] as $tids) {
       $parent = array_values(taxonomy_get_parents($tids['target_id']));
       if (isset($parent[0]) && $parent[0]->name == 'Series') { 
@@ -199,42 +201,54 @@ function usanetwork_video_show_nav() {
       $active_tids[] = $tids['target_id'];
     }
 
-    $terms = taxonomy_get_children($term->tid, $term->vid);
-    $i=1;
-    foreach ($terms as $term1) {
-      $class = array(str_replace(' ', '-', strtolower($term1->name)));
-      if (!in_array('active', $classes) && ((isset($_GET['tid']) && $_GET['tid'] == $term1->tid) || in_array($term1->tid, $active_tids))) {
-        $class[] = 'active';
-      }
-      $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
-      if ($i == 3) {
-        $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
-      } 
-      if ($i >= 3) {
-        $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
-        foreach ($terms1 as $term2) {
-          if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
-            $class[] = 'active';
-          }
-          $class = array(str_replace(' ', '-', strtolower($term2->name)));
-          $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
-        }
-      } else {
-        $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
-        $first = true;
-        foreach ($terms1 as $term2) {
-          if ((isset($_GET['tid']) && $_GET['tid'] == $term2->tid) || in_array($term2->tid, $active_tids)) {
-            $class[] = 'active';
-          }
-          $class = array(str_replace(' ', '-', strtolower($term2->name)));
-          $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
-          if ($first) {
-            $first = false;
-            $items[$i]['class'][] = 'more';
-          }
+    if (!isset($term->tid)) {
+      $parents = array_values(taxonomy_get_parents_all($node->field_usa_video_terms[$lang][0]['target_id']));
+      foreach ($parents as $i => $pterm) { 
+        if (isset($pterm->name) && $pterm->name == 'Series') { 
+          $term = $parents[$i-1];
+          break;
         }
       }
-      $i++;
+    } 
+    
+    if (isset($term->tid)) {
+      $terms = taxonomy_get_children($term->tid, $term->vid);
+      $i=1;
+      foreach ($terms as $term1) {
+        $class = array(str_replace(' ', '-', strtolower($term1->name)));
+        if (!in_array('active', $classes) && (($tid == $term1->tid) || in_array($term1->tid, $active_tids))) {
+          $class[] = 'active';
+        }
+        $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
+        if ($i == 3) {
+          $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
+        } 
+        if ($i >= 3) {
+          $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+          foreach ($terms1 as $term2) {
+            if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
+              $class[] = 'active';
+            }
+            $class = array(str_replace(' ', '-', strtolower($term2->name)));
+            $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+          }
+        } else {
+          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+          $first = true;
+          foreach ($terms1 as $term2) {
+            if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
+              $class[] = 'active';
+            }
+            $class = array(str_replace(' ', '-', strtolower($term2->name)));
+            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+            if ($first) {
+              $first = false;
+              $items[$i]['class'][] = 'more';
+            }
+          }
+        }
+        $i++;
+      }
     }
   }
 
@@ -292,8 +306,11 @@ function usanetwork_video_views() {
         if (isset($term->tid) && !empty($term->tid)) {
           $output = views_embed_view('usa_video', 'category_videos', $term->tid);
         }
-        if (isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
-          $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
+
+        // the last term is the correct term id of the category
+        $count = count($node->field_usa_video_terms[$lang]);
+        if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
+          $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
         }
       } 
     } else {
@@ -321,8 +338,11 @@ function usanetwork_video_views() {
         }
       }
     }
-    if (empty($output) && isset($node->field_usa_video_terms[$lang][0]['target_id'])) {
-      $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][0]['target_id']);
+
+    // the last term is the correct term id of the category
+    $count = count($node->field_usa_video_terms[$lang]);
+    if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
+      $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
     }
   }
 

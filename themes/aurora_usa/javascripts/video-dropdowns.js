@@ -10,7 +10,7 @@
         $(this).find('.item-list').toggle();
     });
 
-    $('.usa-secondary-menu .categories > li.more').click(function() {
+    $('.usa-secondary-menu .categories > li.more').hover(function() {
         $(this).find('.item-list .more').toggle();
         $(this).toggleClass('open');
     });

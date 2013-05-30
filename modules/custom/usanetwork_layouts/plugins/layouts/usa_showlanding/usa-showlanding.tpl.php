@@ -6,9 +6,12 @@
 ?>
 <div class="panel-display panel-onecol-stacked clearfix">
   <div class="panel-wrapper">
+    <?php if($content['one']) : ?>
     <div class="panel-panel panel-one panel-row first-row a-spot-panel">
     <?php print $content['one']; ?>
     </div>
+  <?php endif; ?>
+    <?php if($content['four'] || $content['three']) : ?>
     <div class="inner-wrapper panel-row promo-ads-panel expandable-container">
       <?php print '<h2 class="pane-title">' . t('Featured') . '</h2>'; ?>
       <div class="expandable-content">
@@ -19,13 +22,17 @@
           <?php print $content['three']; ?>
         </div>
        </div>
+       <?php if($content['four']): ?>
        <div class="expandable-toggle-wrap">
         <div class="expandable-toggle">
               <div class="more">more</div>
               <div class="less">close</div>
           </div>
         </div>
+       <?php endif; ?>
     </div>
+    <?php endif; ?>
+    <?php if($content['two']) : ?>
     <div class="panel-panel panel-four panel-row video-promo-panel expandable-container">
       <?php print '<h2 class="pane-title">' . t('Videos') . '</h2>'; ?>
       <div class="expandable-content">
@@ -38,6 +45,8 @@
           </div>
         </div>
     </div>
+    <?php endif; ?>
+     <?php if($content['five'] || $content['six']) : ?>
     <div class="inner-wrapper panel-row last-row social-panel <?php print $class; ?>">
       <?php print '<h2 class="pane-title">' . t('Social') . '</h2>'; ?>
       <div class="panel-panel panel-five panel-col1">
@@ -47,5 +56,6 @@
         <?php print $content['six']; ?>
       </div>
     </div>
+  <?php endif; ?>
   </div>
 </div>

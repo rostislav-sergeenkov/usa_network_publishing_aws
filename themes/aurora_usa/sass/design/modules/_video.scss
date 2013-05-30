@@ -68,26 +68,35 @@
       height: 41px;
       margin: 0;
       padding: 4px 10px;
+      line-height: 1em;
       @include breakpoint($bp-video-medium-width) {
         height: 52px;
         padding: 4px 10px;
+        line-height: 1.25em;
       }
       @include breakpoint($bp-video-very-large-width) {
         height: 73px;
-        padding: 10px 15px;
+        padding: 11px 15px;
       }
     }
     h4 {
       font-family: $headline-semi;
       font-size: 12px;
       margin: 0;
-      line-height: 15px;
+      &:after {
+        @include background-image(linear-gradient(right, $black-trans 20%, transparent));
+        content: $space;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1em;
+        height: 100%;
+      }
       @include breakpoint($bp-video-medium-width) {
         font-size: 18px;
-        line-height: 22.5px;
       }
       @include breakpoint($bp-video-very-large-width) {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         font-size: 20px;
       }
     }
@@ -375,6 +384,9 @@
             > a:first-child span {
               &:after {
                 @include cssTriangle(5px, $blue, top);
+                @include breakpoint($bp-video-mid-large-width) {
+                  border: 0;
+                }
               }
             }
           }

@@ -71,7 +71,7 @@ function usanetwork_video_block_view($delta) {
 function usanetwork_video_global_nav() {
   $output = '';
   $items = array();
-  $items[] = array('data' => '<span>all shows</span>', 'class' => array('all-shows'));
+  $items[] = array('data' => '<span>select a show</span>', 'class' => array('all-shows'));
   $lang = LANGUAGE_NONE;
   $arg = arg();
   if (isset($arg[1]) && !empty($arg[1])) {
@@ -185,17 +185,17 @@ function usanetwork_video_show_nav() {
   $items = array();
 
   $classes = array('full-episodes');
-  if (empty($tid) && ((isset($arg[2]) && $arg[2] == 'full-episodes') || 
+  if (empty($tid) && ((isset($arg[2]) && $arg[2] == 'full-episodes') ||
     (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
-  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes); 
+  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
 
   $active_tids = array();
   if (isset($node->field_usa_video_terms[$lang][0]['target_id']) && !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
     foreach ($node->field_usa_video_terms[$lang] as $tids) {
       $parent = array_values(taxonomy_get_parents($tids['target_id']));
-      if (isset($parent[0]) && $parent[0]->name == 'Series') { 
+      if (isset($parent[0]) && $parent[0]->name == 'Series') {
         $term = taxonomy_term_load($tids['target_id']);
       }
       $active_tids[] = $tids['target_id'];
@@ -203,14 +203,14 @@ function usanetwork_video_show_nav() {
 
     if (!isset($term->tid)) {
       $parents = array_values(taxonomy_get_parents_all($node->field_usa_video_terms[$lang][0]['target_id']));
-      foreach ($parents as $i => $pterm) { 
-        if (isset($pterm->name) && $pterm->name == 'Series') { 
+      foreach ($parents as $i => $pterm) {
+        if (isset($pterm->name) && $pterm->name == 'Series') {
           $term = $parents[$i-1];
           break;
         }
       }
-    } 
-    
+    }
+
     if (isset($term->tid)) {
       $terms = taxonomy_get_children($term->tid, $term->vid);
       $i=1;
@@ -222,7 +222,7 @@ function usanetwork_video_show_nav() {
         $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
         if ($i == 3) {
           $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
-        } 
+        }
         if ($i >= 3) {
           $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
           foreach ($terms1 as $term2) {
@@ -264,7 +264,7 @@ function usanetwork_video_views() {
   $output = '';
   $lang = LANGUAGE_NONE;
   $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
-  
+
   // we need these js files and headers for video player integration
   drupal_add_js(drupal_get_path('module', 'usanetwork_video') . '/js/tpPdkController.js');
    $meta_video_tag = array(
@@ -275,9 +275,9 @@ function usanetwork_video_views() {
       'content' => 'true',
     )
   );
-  // Add header meta tag for video integration 
+  // Add header meta tag for video integration
   drupal_add_html_head($meta_video_tag, 'meta_video_tag');
-  
+
   if (!empty($tid)) {
     $output = views_embed_view('usa_video', 'category_videos', $tid);
   } else if ($arg[0] == 'videos') {
@@ -292,13 +292,13 @@ function usanetwork_video_views() {
     // video node with a show association
     if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
       $show_nid = $node->field_show[$lang][0]['target_id'];
-      $full_episode = isset($node->field_full_episode[$lang][0]['value']) ? $node->field_full_episode[$lang][0]['value'] : 0; 
+      $full_episode = isset($node->field_full_episode[$lang][0]['value']) ? $node->field_full_episode[$lang][0]['value'] : 0;
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
         $output = views_embed_view('usa_video', 'show_full_episode', $show_nid);
       } else {
         foreach ($node->field_usa_video_terms[$lang] as $tids) {
           $parent = array_values(taxonomy_get_parents($tids['target_id']));
-          if (isset($parent[0]) && $parent[0]->name != 'Series') { 
+          if (isset($parent[0]) && $parent[0]->name != 'Series') {
             $term = taxonomy_term_load($tids['target_id']);
             break;
           }
@@ -312,7 +312,7 @@ function usanetwork_video_views() {
         if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
           $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
         }
-      } 
+      }
     } else {
       $query = new EntityFieldQuery();
 
@@ -332,7 +332,7 @@ function usanetwork_video_views() {
           ->condition('field_qt_node_target_id', $node->nid, '=')
           ->execute()
           ->fetchField();
-        
+
         if (!empty($queue)) {
           $output = views_embed_view('whats_hot', 'whats_hot');
         }
@@ -367,7 +367,7 @@ function usanetwork_video_global_videos_page() {
  * Helper function that will load file IDs from a video node item's GUID.
  * we stole this method from pub_theplatform
  * altered to dynamically pass guid and feed url
- * we pass these values via our ds layout which lives in the theme 
+ * we pass these values via our ds layout which lives in the theme
  * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
  *
  * @TODO: have someone smarter than suzi look at this :)
@@ -380,7 +380,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
 
   //  Load the file info for the item we're trying to view, and cur us down to the media$content items.
   $file_info = $api->addField('media:content')->setID($guid)->execute();
-  
+
   //  Handle error conditions, we may have nothing come back.
   if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
     return False;

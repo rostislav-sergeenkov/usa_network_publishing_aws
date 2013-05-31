@@ -2,8 +2,7 @@
   @extend %visuallyhidden;
 }
 #main {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 15px 15px;
 }
 .smaller-header h2 {
   @extend %h3;

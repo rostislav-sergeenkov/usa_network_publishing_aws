@@ -136,14 +136,16 @@
           padding: 15px 20px 13px;
           float: none;
           border-top: 1px solid $gray-light;
+          font-size: 14px;
+          padding-top: 10px;
+          padding-bottom: 8px;
           &:hover {
             background-color: $gray-ultra-med;
           }
           @include breakpoint($bp-social-mid-width) {
-            font-size: 14px;
             border: 0;
-            padding-top: 10px;
-            padding-bottom: 8px;
+//            padding-top: 10px;
+//            padding-bottom: 8px;
           }
           &:hover:after {
             @include cssTriangle(0, $gray-med, top);

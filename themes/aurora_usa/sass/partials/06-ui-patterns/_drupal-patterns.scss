@@ -36,6 +36,10 @@
   @extend .messages;
 }
 
+.error {
+  color: $black-true;
+}
+
 .status {
   border-color: $green;
   // color: $green;

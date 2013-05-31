@@ -267,6 +267,96 @@ function pub_tv_overrides_field_default_fields() {
           'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
+        'weight' => '65',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_pathauto_alias'.
+  $fields['node-tv_show-field_pathauto_alias'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pathauto_alias',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 58,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_pathauto_alias',
+      'label' => 'Show alias used to generate automatic paths',
+      'required' => 1,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
         'weight' => '64',
       ),
     ),
@@ -458,7 +548,7 @@ function pub_tv_overrides_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '67',
+        'weight' => '68',
       ),
     ),
   );
@@ -583,7 +673,7 @@ function pub_tv_overrides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '66',
+        'weight' => '67',
       ),
     ),
   );
@@ -693,7 +783,7 @@ function pub_tv_overrides_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '68',
+        'weight' => '69',
       ),
     ),
   );
@@ -881,7 +971,7 @@ function pub_tv_overrides_field_default_fields() {
           'soft_length_minimum' => '',
         ),
         'type' => 'text_textfield',
-        'weight' => '65',
+        'weight' => '66',
       ),
     ),
   );
@@ -897,6 +987,7 @@ function pub_tv_overrides_field_default_fields() {
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Main_link');
   t('Recommend a maximum of 3 a-spots per show. This is the large a-spot display at the top of the show homepage.');
+  t('Show alias used to generate automatic paths');
   t('The Latest');
   t('This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)');
   t('Tune-in Display Date');

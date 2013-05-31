@@ -42,7 +42,7 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tv_show_pattern';
-  $strongarm->value = '[node:title]';
+  $strongarm->value = '[node:field_pathauto_alias]';
   $export['pathauto_node_tv_show_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

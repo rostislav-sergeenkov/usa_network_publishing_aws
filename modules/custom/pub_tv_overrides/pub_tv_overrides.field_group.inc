@@ -53,11 +53,11 @@ function pub_tv_overrides_field_group_info() {
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_a_spot',
-      2 => 'field_usa_tv_featured_videos',
-      3 => 'field_usa_tv_on_now',
-      4 => 'field_usa_tv_promo',
-      5 => 'field_usa_tv_tune_in_date',
-      6 => 'field_usa_tv_promo_vids',
+      2 => 'field_usa_tv_on_now',
+      3 => 'field_usa_tv_promo',
+      4 => 'field_usa_tv_tune_in_date',
+      5 => 'field_usa_tv_promo_vids',
+      6 => 'field_pathauto_alias',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

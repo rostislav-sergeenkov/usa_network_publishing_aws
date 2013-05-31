@@ -8,6 +8,7 @@
 .promo-metadata {
   position: absolute;
   width: 100%;
+  height: 62px;
   bottom: 0;
   background-color: $black-trans;
   padding: 14px 14px 13px;
@@ -22,6 +23,7 @@
     font-size: 15px;
   }
   @include breakpoint($bp-home-narrowest) {
+    height: 32px;
     padding: 4px 8px 3px;
     h2 {
       font-size: 12px;

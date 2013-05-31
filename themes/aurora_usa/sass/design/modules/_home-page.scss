@@ -388,6 +388,25 @@
         }
       }
     }
+    .usa-adrails & {
+      height: 184px !important;
+      .carousel-item {
+        width: 221px;
+        height: 184px;
+        margin-right: 15px;
+        img, .meta {
+          width: 221px;
+        }
+        img {
+          height: 184px;
+        }
+      }
+      li.carousel-item {
+        &:last-of-type {
+          display: block;
+        }
+      }
+    }
   }
   .carousel-btns {
     position: absolute;
@@ -408,6 +427,7 @@
     }
     .usa-adrails & {
       width: 1000px;
+      display: block;
     }
   }
 }

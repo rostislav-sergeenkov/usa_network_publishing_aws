@@ -96,6 +96,7 @@
     float: none;
     height: 250px;
     width: 300px;
+    overflow: hidden;
     @include breakpoint($bp-home-mid) {
       height: 350px;
       width: 615px;
@@ -175,6 +176,19 @@
       }
       .media-wide {
         display: block;
+      }
+      .usa-adrails & {
+        display: inline;
+        float: left;
+        height: 250px;
+        width: 300px;
+        margin-right: 15px;
+        .media-normal {
+          display: block;
+        }
+        .media-wide {
+          display: none;
+        }
       }
     }
   }
@@ -264,6 +278,9 @@
   background-color: $black;
   padding: 12px 0 36px;
   @extend %un-margin;
+  .usa-adrails & {
+    background-color: transparent;
+  }
   .carousel-item {
     @extend .title-overlay;
     border: 1px solid $black;

@@ -76,3 +76,20 @@ function usanetwork_menu() {
   }
   return $show_nids;
 }
+
+/**
+ * Implementation hook_tokens_alter().
+ */
+function usanetwork_tokens_alter(&$replacements, $context) {
+  if (isset($context['data']['entity'])){
+    if (isset($replacements['[node:field_show]'])){
+      $show_nid = $context['data']['entity']->field_show[LANGUAGE_NONE][0]['target_id'];
+      if (!empty($show_nid)) { 
+        $show = node_load($show_nid);
+        if (isset($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']) && !empty($show->field_pathauto_alias[LANGUAGE_NONE][0]['value'])) {
+          $replacements['[node:field_show]']  = check_plain($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']);
+        }
+      }
+    }
+  }
+}

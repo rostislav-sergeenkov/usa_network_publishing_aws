@@ -1,0 +1,41 @@
+.schedule-header {
+  text-align: center;
+  width: auto;
+  vertical-align: middle;
+  font-family: $headline-semi;
+  padding: 1em 0;
+}
+.schedule-date {
+  font-size: 36px;
+  text-transform: uppercase;
+}
+a.prev-day,
+a.next-day {
+  padding: .5em .5em 1em .5em;
+  font-size: 36px;
+}
+.show-time {
+  white-space: nowrap;
+  padding-left: .5em;
+}
+.schedule-table {
+  thead {
+    background: $gray-dark;
+    th {
+      background: $gray-dark;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      border-bottom: $black solid 2px;
+    }
+  }
+  td {
+    padding-top: 12px;
+    padding-bottom: 10px;
+    border-bottom: $black solid 2px;
+  }
+  tr {
+    background: $gray-med;
+    border: none;
+  }
+}
+

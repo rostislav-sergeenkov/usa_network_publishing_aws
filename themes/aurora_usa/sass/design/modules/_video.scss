@@ -603,11 +603,11 @@
     @include breakpoint($bp-video-mid-range4-width) {
       margin-top: 0;
     }
-    @include breakpoint($bp-video-large2-width) {
-      position: absolute;
-      bottom: 2px;
-      right: 0;
-    }
+//    @include breakpoint($bp-video-large2-width) {
+//      position: absolute;
+//      bottom: 2px;
+//      right: 0;
+//    }
   }
   .tve-auth {
     float: right;

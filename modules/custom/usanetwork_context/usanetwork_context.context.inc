@@ -542,29 +542,17 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'menu-usa-footer-top' => array(
-          'module' => 'menu',
-          'delta' => 'usa-footer-top',
-          'region' => 'footer',
-          'weight' => '-18',
-        ),
-        'usanetwork_blocks-usa_social_footer' => array(
+        'usanetwork_blocks-usa_footer_links' => array(
           'module' => 'usanetwork_blocks',
-          'delta' => 'usa_social_footer',
+          'delta' => 'usa_footer_links',
           'region' => 'footer',
-          'weight' => '-17',
+          'weight' => '-16',
         ),
         'usanetwork_blocks-usa_footer_message' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_footer_message',
           'region' => 'footer',
           'weight' => '-10',
-        ),
-        'usanetwork_blocks-usa_footer_links' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_footer_links',
-          'region' => 'footer',
-          'weight' => '-16',
         ),
       ),
     ),

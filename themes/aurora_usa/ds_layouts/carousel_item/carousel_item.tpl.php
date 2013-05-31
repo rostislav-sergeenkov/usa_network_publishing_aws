@@ -2,10 +2,6 @@
   <?php if ($link): ?>
     <a href="<?php print $link; ?>" class="carousel-item-link">
   <?php endif; ?>
-  <?php if ($media): ?>
-  <div class="asset-img"><?php print $media; ?></div>
-  <?php endif; ?>
-  
   <div class="title-overlay meta">
     <?php if ($title && $title != "&nbsp;"): ?>
       <div class="title"><?php print $title; ?></div>
@@ -14,6 +10,9 @@
       <div class="caption"><?php print ($caption); ?></div>
     <?php endif; ?>
   </div>
+  <?php if ($media): ?>
+  <div class="asset-img"><?php print $media; ?></div>
+  <?php endif; ?>
   <?php if ($link): ?>
     </a>
   <?php endif; ?>

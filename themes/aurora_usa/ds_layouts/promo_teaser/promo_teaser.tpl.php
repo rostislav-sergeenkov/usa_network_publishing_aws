@@ -5,6 +5,7 @@
   <?php if ($media): ?>
   <div class="asset-img"><?php print $media; ?></div>
   <?php endif; ?>
+  <?php if(($title && $title != "&nbsp;") || ($caption && $caption != "&nbsp;") ) : ?>
   <div class="caption-overlay meta">
     <div class="caption-fields-wrapper">
     <?php if ($title && $title != "&nbsp;"): ?>
@@ -15,6 +16,7 @@
     <?php endif; ?>
     </div>
   </div>
+<?php endif; ?>
   <?php if ($link): ?>
     </a>
   <?php endif; ?>

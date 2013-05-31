@@ -141,8 +141,8 @@
     background-color: $gray-dark;
     border: 1px solid $gray-med-dark;
   }
-  a {
-    &.active {
+  .categories li.active {
+    a {
       color: $white;
       border-bottom: 0;
       @include breakpoint($bp-video-mid-large-width) {
@@ -159,6 +159,12 @@
         }
       }
     }
+  }
+  a {
+//    font-size: 14px;
+//    @include breakpoint($bp-video-mid-large-width) {
+//      font-size: 20px;
+//    }
     &:hover {
       @include breakpoint($bp-video-mid-large-width) {
         background-color: $gray-med;
@@ -463,7 +469,8 @@
 
 
 .featured-asset  {
-  margin: 30px auto 0;
+  margin: 0 auto 0;
+  position: relative;
   @include breakpoint($bp-video-low-range-width) {
     width: 90%;
   }
@@ -596,19 +603,13 @@
     @include breakpoint($bp-video-mid-range4-width) {
       margin-top: 0;
     }
-    @include breakpoint($bp-video-large2-width) {
-      position: absolute;
-      bottom: 2px;
-      right: 0;
-    }
+//    @include breakpoint($bp-video-large2-width) {
+//      position: absolute;
+//      bottom: 2px;
+//      right: 0;
+//    }
   }
   .tve-auth {
     float: right;
-  }
-  .featured-asset {
-    position: relative;
-//    @include breakpoint($bp-video-large2-width) {
-
-//    }
   }
 }

@@ -2,7 +2,12 @@ body.person-page {
 	overflow-x: hidden;
 	font-family: $headline-reg;
 	#main {
-		padding: 0;
+		padding-left: 0;
+		padding-right: 0;
+		background-color: $black-true;
+	}
+	.ad-leaderboard {
+		background-color: $black;
 	}
 }
 
@@ -10,7 +15,6 @@ body.person-page {
 #person-content {
 	width: auto;
 	position: relative;
-	background: $black-true;
 	h1 {
 		text-transform: none;
 		font-size: 24px;
@@ -92,10 +96,11 @@ body.person-page {
 		width: 300px;
 		position: relative;
 		border: 2px solid $gray-dark;
-		margin: 0 auto;
+		margin: 0 auto 15px;
 		@include breakpoint($bp-person-gall-width) {
 			height: 252px;
 			margin: 0 15px 0 0;
+			float: left;
 		}
 		h2 {
 			font-size: 20px;

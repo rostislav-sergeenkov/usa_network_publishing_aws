@@ -9,7 +9,6 @@ function ds_usa_home() {
       'cspot' => t('cspot'),
       'featured' => t('featured'),
     ),
-    'css' => true,
     'image' => false
   );
 }

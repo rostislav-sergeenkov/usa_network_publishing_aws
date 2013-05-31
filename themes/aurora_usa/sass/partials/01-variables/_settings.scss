@@ -105,7 +105,15 @@ $bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
 $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
-/* person page breakpoints */
+// home page grid
+$bp-home-2col: 645px;
+$bp-home-3col: 960px;
+$bp-home-widest: 1275px;
+$bp-home-narrowest: max-width ($bp-home-2col - 1);
+$bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
+$bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
+
+// person page breakpoints
 $bp-person-small-width: 330px;
 $bp-person-mid-two-width: 390px;
 $bp-person-medium-width: 768px;
@@ -114,7 +122,7 @@ $bp-person-gall-width: 704px;
 
 
 
-/* social page breakpoints */
+// social page breakpoints
 $bp-social-xtra-large-width: 1275px;
 $bp-social-very-large-width: 1050px;
 $bp-social-large-width: 900px;
@@ -122,11 +130,11 @@ $bp-social-mid-width: 723px;
 $bp-social-echo: 500px;
 $bp-social-small-width: 330px;
 
-/* on now */
+// on now
 $bp-on-now: 640px;
 
 
-/* show landing page */
+// show landing page
 $bp-show-very-large-width: 1275px;
 $bp-show-large-width: 959px;
 $bp-show-mid-width: 645px;
@@ -136,7 +144,7 @@ $bp-aspot-large-width: 959px;
 $bp-aspot-mid-width: 645px;
 
 
-/* show landing page */
+// show landing page
 $bp-video-very-large-width: 1275px;
 $bp-video-mid-large-width: 1024px;
 $bp-video-large-width: 959px;

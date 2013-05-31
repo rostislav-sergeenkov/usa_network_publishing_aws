@@ -243,16 +243,18 @@
   }
   .flex-next,
   .flex-prev {
-    display: none;
+    // display: none;
+    @include opacity(0);
   }
   &:hover {
+    .flex-next, .flex-prev {
+      @include opacity(1);
+    }
     .flex-next {
-      display: block;
       right: 5px;
       left: auto;
     }
     .flex-prev {
-      display: block;
       left: 5px;
     }
   }

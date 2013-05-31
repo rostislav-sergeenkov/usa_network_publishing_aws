@@ -15,7 +15,7 @@
             currentSlide = slider.currentSlide;
           $secondaryslider.each(function (index, element) {
             var flexslider = $(element).data('flexslider');
-            // Setting the animation direction of the secondary slider to be the 
+            // Setting the animation direction of the secondary slider to be the
             // same as the primary slider.
             // but ONLY if we have more than one list item
             // else the main slider breaks

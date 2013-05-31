@@ -53,6 +53,9 @@
     float: left;
     border: 2px solid $gray-dark;
     margin: 0 1.5% 4%;
+    .ie8 & {
+      width: 304px;
+    }
     @include breakpoint($bp-video-mid-small-width) {
       width: 225px;
       margin-right: 10px;

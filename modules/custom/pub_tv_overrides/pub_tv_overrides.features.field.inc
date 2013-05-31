@@ -267,7 +267,7 @@ function pub_tv_overrides_field_default_fields() {
           'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '64',
+        'weight' => '65',
       ),
     ),
   );
@@ -357,7 +357,7 @@ function pub_tv_overrides_field_default_fields() {
           'soft_length_style_select' => 0,
         ),
         'type' => 'text_textfield',
-        'weight' => '65',
+        'weight' => '64',
       ),
     ),
   );

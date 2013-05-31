@@ -74,4 +74,13 @@ function usanetwork_settings_form() {
   return system_settings_form($form);
 }
 
+/**
+ * Provides crossdomain xml handler
+ */
+function usanetwork_crossdomain_xml() {
+  drupal_add_http_header('Content-Type', 'text/xml');
+  $xml_path = drupal_get_path('module', 'usanetwork') . '/xml/crossdomain.xml';
+  print file_get_contents($xml_path);
+  die();
+}
 

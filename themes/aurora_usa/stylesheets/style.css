@@ -643,16 +643,16 @@ strong, dfn, b {
   padding: 15px 20px 13px;
   float: none;
   border-top: 1px solid #878785;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 8px;
 }
 .usa-secondary-menu .item-list .item-list ul > li > a:hover {
   background-color: #4b4b4b;
 }
 @media (min-width: 723px) {
   .usa-secondary-menu .item-list .item-list ul > li > a {
-    font-size: 14px;
     border: 0;
-    padding-top: 10px;
-    padding-bottom: 8px;
   }
 }
 .usa-secondary-menu .item-list .item-list ul > li > a:hover:after {
@@ -2188,16 +2188,9 @@ input[type="radio"], input[type="checkbox"] {
   list-style: none;
 }
 
-@media (min-width: 768px) {
-  .usa-tv-show .region-footer {
-    padding-bottom: 137px;
-  }
-}
-
 .region-footer {
   border-top: 1px solid #414141;
   padding: 3px 15px 65px;
-  margin-top: 20px;
   overflow: hidden;
   font-size: 14px;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
@@ -2215,12 +2208,15 @@ input[type="radio"], input[type="checkbox"] {
 .region-footer li a {
   color: #717274;
   margin-right: 15px;
-  padding: 10px 0 6px;
+  padding: 5px 0;
   display: block;
 }
 @media (min-width: 768px) {
   .region-footer li a {
     display: inline-block;
+    line-height: 2.1em;
+    padding-top: 10px;
+    padding-bottom: 5px;
   }
 }
 .region-footer h2 {
@@ -2228,6 +2224,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 .region-footer li {
   display: block;
+  line-height: 2em;
 }
 @media (min-width: 768px) {
   .region-footer li {
@@ -2236,6 +2233,32 @@ input[type="radio"], input[type="checkbox"] {
 }
 .region-footer .block {
   float: left;
+}
+.region-footer #footer-links a {
+  padding: 2px 0 10px;
+}
+@media (min-width: 768px) {
+  .region-footer #footer-links a {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}
+
+.usa-tv-show .region-footer,
+.node-type-usa-video .region-footer,
+.page-node-social .region-footer,
+.node-type-person .region-footer,
+.node-type-media-gallery .region-footer {
+  padding-bottom: 55px;
+}
+@media (min-width: 768px) {
+  .usa-tv-show .region-footer,
+  .node-type-usa-video .region-footer,
+  .page-node-social .region-footer,
+  .node-type-person .region-footer,
+  .node-type-media-gallery .region-footer {
+    padding-bottom: 137px;
+  }
 }
 
 /* section not on empathy ? hide? */
@@ -2253,6 +2276,7 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 12px;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: #717274;
+  line-height: 18px;
 }
 @media (min-width: 768px) {
   #footer-message {
@@ -3574,13 +3598,17 @@ body.person-page {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
 }
 body.person-page #main {
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: black;
+}
+body.person-page .ad-leaderboard {
+  background-color: #1f1f1f;
 }
 
 #person-content {
   width: auto;
   position: relative;
-  background: black;
 }
 #person-content h1 {
   text-transform: none;
@@ -3671,12 +3699,13 @@ body.person-page #main {
   width: 300px;
   position: relative;
   border: 2px solid #2d2d2d;
-  margin: 0 auto;
+  margin: 0 auto 15px;
 }
 @media (min-width: 704px) {
   #person-content .node-media-gallery {
     height: 252px;
     margin: 0 15px 0 0;
+    float: left;
   }
 }
 #person-content .node-media-gallery h2 {
@@ -3832,6 +3861,7 @@ body.person-page #main {
 #cast-carousel {
   background-color: #1f1f1f;
   border: 1px solid #2d2d2d;
+  border-top: 0;
   border-left: 0;
   border-right: 0;
   padding: 30px 0;
@@ -4184,18 +4214,18 @@ span#on-now-episode {
     border: 1px solid #414141;
   }
 }
-.block-usanetwork-video.usa-secondary-menu a.active {
+.block-usanetwork-video.usa-secondary-menu .categories li.active a {
   color: white;
   border-bottom: 0;
 }
 @media (min-width: 1024px) {
-  .block-usanetwork-video.usa-secondary-menu a.active {
+  .block-usanetwork-video.usa-secondary-menu .categories li.active a {
     background-color: #3d3d3d;
     color: #a3a3a3;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
-  .block-usanetwork-video.usa-secondary-menu a.active:after {
+  .block-usanetwork-video.usa-secondary-menu .categories li.active a:after {
     content: "";
     display: block;
     width: 0;
@@ -4567,7 +4597,8 @@ span#on-now-episode {
 }
 
 .featured-asset {
-  margin: 30px auto 0;
+  margin: 0 auto 0;
+  position: relative;
 }
 @media (min-width: 320px) and (max-width: 644px) {
   .featured-asset {
@@ -4744,9 +4775,6 @@ span#on-now-episode {
 }
 .featured-asset .tve-auth {
   float: right;
-}
-.featured-asset .featured-asset {
-  position: relative;
 }
 
 .usa-tv-show #main {
@@ -5123,7 +5151,6 @@ body.usa-social {
   margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 30px;
 }
 @media (min-width: 330px) {
   .usa-social #main {
@@ -5135,7 +5162,8 @@ body.usa-social {
   .usa-social #main {
     width: auto;
     clear: both;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 .usa-social .tabs {

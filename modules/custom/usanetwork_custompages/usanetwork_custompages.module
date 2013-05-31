@@ -218,6 +218,9 @@ function usanetwork_custompages_games($node) {
         case 'office':
           $output = usanetwork_custompages_games_office($node);
         break;
+        case 'psychlibs':
+          $output = usanetwork_custompages_games_psychlibs($node);
+        break; 
         case 'findthepineapple':
             if (!isset($arg[4]) || empty($arg[4])) {
               drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/seeitlikeaspy.css");
@@ -531,6 +534,10 @@ function usanetwork_custompages_theme($existing, $type, $theme, $path) {
       'path' => $path . '/theme',
       'template' => 'usa-office',
     ),
+    'psychlibs' => array(
+      'path' => $path . '/theme',
+      'template' => 'usa-psychlibs',
+    ),
     'findthepineapple' => array(
       'path' => $path . '/theme',
       'template' => 'usa-findthepineapple',
@@ -626,6 +633,17 @@ function usanetwork_custompages_games_office($node) {
   drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
   drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/psych.css");
   return theme('office');
+}
+
+/**
+ * Psych - Office game callback
+ */
+
+function usanetwork_custompages_games_psychlibs($node) {
+  drupal_set_title(t('Psychlibs'));
+  drupal_add_js(drupal_get_path("module", "usanetwork_custompages")."/theme/js/swfobject.js");
+  drupal_add_css(drupal_get_path("module", "usanetwork_custompages")."/theme/css/psych.css");
+  return theme('psychlibs');
 }
 
 /**

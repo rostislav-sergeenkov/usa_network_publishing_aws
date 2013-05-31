@@ -44,6 +44,16 @@ function usanetwork_menu() {
     'file path' => drupal_get_path('module', 'system'),
   );
  
+  // we need this file on the root of our site for video and components to work
+  $items['crossdomain.xml'] = array(
+    'title' => 'crossdomain.xml',
+    'file' => 'usanetwork.admin.inc',
+    'description' => 'Provide crossdomain.xml handler',
+    'page callback' => 'usanetwork_crossdomain_xml',
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+  );
+ 
   return $items;
 }
 

@@ -1,0 +1,416 @@
+.node-usa-homepage {
+  a {
+    @include link-colors($white, $white, $white, $white, $white);
+  }
+}
+
+
+.promo-metadata {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: $black-trans;
+  padding: 14px 14px 13px;
+  h2, h3 {
+    margin: 0;
+    line-height: 1;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  @include breakpoint($bp-home-narrowest) {
+    padding: 4px 8px 3px;
+    h2 {
+      font-size: 12px;
+    }
+    h3 {
+      font-size: 10px;
+    }
+  }
+  .usa-adrails & {
+    padding: 14px 14px 13px;
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+  }
+  .promo-cta {
+    width: 44px;
+    float: left;
+    // margin-right: 12px;
+    & ~ h2, & ~ h3 {
+      padding-left: 56px;
+    }
+    @include breakpoint($bp-home-narrowest) {
+      width: 20px;
+      margin-right: 2px;
+      & ~ h2, & ~ h3 {
+        padding-left: 22px;
+      }
+    }
+    .usa-adrails & {
+      width: 44px;
+      & ~ h2, & ~ h3 {
+        padding-left: 56px;
+      }
+    }
+  }
+}
+
+
+.tiles {
+  width: 300px;
+  margin: 0 auto 40px;
+  padding-top: 15px;
+  @include breakpoint($bp-home-mid) {
+    width: 615px;
+  }
+  @include breakpoint($bp-home-wide) {
+    width: 930px;
+  }
+  .usa-adrails & {
+    width: 930px !important;
+  }
+  @include breakpoint($bp-home-widest) {
+    width: 1245px;
+    padding-top: 0;
+  }
+  .tiles-inner {
+    margin-right: 0;
+    overflow: hidden;
+    @include breakpoint($bp-home-2col) {
+      margin-right: -15px;
+    }
+    @include breakpoint($bp-home-mid) {
+      position: relative;
+    }
+  }
+  .ad, .b-spot, .c-spot {
+    display: inline;
+    float: left;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .ad, .a-spot, .b-spot {
+    @include breakpoint($bp-home-2col) {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+  }
+  [class$="-spot"] {
+    a {
+      display: block;
+    }
+  }
+  .a-spot {
+    display: block;
+    float: none;
+    height: 250px;
+    width: 300px;
+    overflow: hidden;
+    @include breakpoint($bp-home-mid) {
+      height: 350px;
+      width: 615px;
+    }
+    @include breakpoint($bp-home-wide) {
+      height: 378px;
+      width: 930px;
+    }
+    @include breakpoint($bp-home-widest) {
+      height: 506px;
+      width: 1245px;
+    }
+    .usa-adrails & {
+      height: 378px;
+      width: 930px;
+    }
+    .flex-viewport {
+      height: 100%;
+    }
+  }
+  .aspot {
+    @include breakpoint($bp-home-widest) {
+      .show-title, .show-time {
+        font-size: 44px;
+      }
+      .episode-title {
+        font-size: 22px;
+      }
+    }
+  }
+  .ad {
+    height: 50px;
+    @include breakpoint($bp-home-2col) {
+      display: inline;
+      float: right;
+      height: 250px;
+    }
+    @include breakpoint($bp-home-mid) {
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+    .usa-adrails & {
+      display: inline;
+      float: right;
+      height: 250px;
+    }
+  }
+  .b-spot, .c-spot {
+    .node{
+      position: relative;
+    }
+    .media-wide {
+      display: none;
+    }
+  }
+  .b-spot {
+    height: 122px;
+    margin-right: 8px;
+    width: 146px;
+    @include breakpoint($bp-home-mid) {
+      display: block;
+      float: none;
+      height: 250px;
+      width: 615px;
+      .media-normal {
+        display: none;
+      }
+      .media-wide {
+        display: block;
+      }
+    }
+    @include breakpoint($bp-home-wide) {
+      display: inline;
+      float: left;
+      height: 250px;
+      width: 300px;
+      margin-right: 15px;
+    }
+    @include breakpoint($bp-home-widest) {
+      height: 250px;
+      width: 615px;
+      margin-right: 15px;
+      .media-normal {
+        display: none;
+      }
+      .media-wide {
+        display: block;
+      }
+      .usa-adrails & {
+        display: inline;
+        float: left;
+        height: 250px;
+        width: 300px;
+        margin-right: 15px;
+        .media-normal {
+          display: block;
+        }
+        .media-wide {
+          display: none;
+        }
+      }
+    }
+    .usa-adrails & {
+      display: inline;
+      float: left;
+      height: 250px;
+      width: 300px;
+      margin-right: 15px;
+      .media-normal {
+        display: block;
+      }
+      .media-wide {
+        display: none;
+      }
+    }
+  }
+  .c-spot {
+    height: 122px;
+    width: 146px;
+    @include breakpoint($bp-home-2col) {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      height: 250px;
+      width: 300px;
+    }
+    .usa-adrails & {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      height: 250px;
+      width: 300px;
+
+    }
+    &.tablet-only {
+      display: none;
+      @include breakpoint($bp-home-mid) {
+        display: inline;
+      }
+    }
+  }
+  .flexslider {
+    @include box-shadow(none);
+    border-radius: 0;
+    background: none;
+    border: none;
+    .flex-next, .flex-prev {
+      @include transition-duration(0.3s);
+      @include transition-property(opacity, color, background-color);
+      // @include opacity(0);
+      display: block;
+      color: rgba($white, 0);
+      background-color: rgba($black, 0);
+      &:hover {
+        color: rgba($white, 0.9);
+        background-color: rgba($black, 0.9);
+      }
+    }
+    // .flex-direction-nav {
+    //   .flex-next, .flex-prev {
+
+    //   }
+    // }
+    &:hover {
+      .flex-next, .flex-prev {
+        // @include opacity(0.7);
+        color: rgba($white, 0.7);
+        background-color: rgba($black, 0.7);
+      }
+    }
+  }
+  #main-slider {
+    text-align: center;
+  }
+  .flex-control-paging {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    bottom: 0;
+    font-size: 0;
+    height: 0;
+    margin: 0;
+    position: relative;
+    top: -26px;
+    overflow: visible;
+    vertical-align: top;
+    width: auto;
+    li {
+      margin: 0 5px;
+      a {
+        @include box-shadow(none);
+        background: $gray-darker-light;
+        height: 14px;
+        width: 14px;
+        &.flex-active, &:hover {
+          background: $white;
+        }
+      }
+    }
+  }
+}
+
+
+.usa-home-featured {
+  position: relative;
+  background-color: $black;
+  padding: 12px 0 36px;
+  @extend %un-margin;
+  .usa-adrails & {
+    background-color: transparent;
+  }
+  .carousel-item {
+    @extend .title-overlay;
+    border: 1px solid $black;
+  }
+  .meta {
+    text-align: left;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    max-width: 221px;
+    @include breakpoint($bp-home-widest) {
+      height: 67px;
+      max-width: none;
+    }
+  }
+  .field-name-field-promo-text-line-1 {
+    font-family: $headline-semi;
+    font-size: 20px;
+    @include breakpoint($bp-home-widest) {
+      font-size: 26px;
+    }
+  }
+  .caption {
+    font-size: 10px;
+    @include breakpoint($bp-home-widest) {
+      font-size: 15px;
+    }
+  }
+  .featured-carousel {
+    margin: 0 auto;
+    @include breakpoint($bp-home-narrowest) {
+      width: 300px;
+    }
+    @include breakpoint($bp-home-mid) {
+      width: 615px;
+    }
+    @include breakpoint($bp-home-wide) {
+      width: 930px;
+    }
+    @include breakpoint($bp-home-widest) {
+      width: 1245px;
+    }
+    .usa-adrails & {
+      width: 930px;
+    }
+    > h2 {
+      text-transform: uppercase;
+    }
+  }
+  .carousel-item {
+    height: auto;
+  }
+  .carousel {
+    width: auto !important;
+    @include breakpoint($bp-home-widest) {
+      height: 254px !important;
+      li.carousel-item {
+        height: 254px;
+        img, .meta {
+          width: 300px;
+        }
+        img {
+          height: 254px;
+        }
+      }
+    }
+  }
+  .carousel-btns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform3d(translateX(-50%));
+    @include breakpoint($bp-home-narrowest) {
+      width: 370px;
+    }
+    @include breakpoint($bp-home-mid) {
+      width: 685px;
+    }
+    @include breakpoint($bp-home-wide) {
+      width: 1000px;
+    }
+    @include breakpoint($bp-home-widest) {
+      width: 1245px;
+    }
+    .usa-adrails & {
+      width: 1000px;
+    }
+  }
+}

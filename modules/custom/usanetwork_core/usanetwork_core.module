@@ -92,14 +92,6 @@ function usanetwork_core_create_menu_items() {
     'weight' => 3,
     'expanded' => '1',
   );
-  $menu_links['ad_choices'] = array(
-    'link_path' => '<front>',
-    'link_title' => st('Ad Choices'),
-    'options' => array('attributes' => array('title' => st('Ad Choices'))),
-    'menu_name' => 'usa-footer-bottom',
-    'weight' => 4,
-    'expanded' => '1',
-  );
   $menu_links['help'] = array(
     'link_path' => '<front>',
     'link_title' => st('Help'),

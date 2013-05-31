@@ -51,7 +51,7 @@ if ($node->type == 'usa_tve_video') {
       <iframe
       class="video-iframe"
       style=""
-      src="<?php print $player_url; ?>/embed/select/<?php print $platform_file_id; ?>"
+      src="<?php print $player_url; ?>/select/<?php print $platform_file_id; ?>"
       frameborder="0"
       allowfullscreen>
       Your browser does not support iframes.

@@ -6,17 +6,11 @@
   }
 }
 
-.usa-tv-show .region-footer {
-//  padding-bottom: 55px;
-  @include breakpoint($bp-menu-switch) {
-    padding-bottom: 137px;
-  }
-}
+
 
 .region-footer {
   border-top: 1px solid $gray-med-dark;
   padding: 3px 15px 65px;
-  margin-top: 20px;
   overflow: hidden;
   font-size: 14px;
   font-family: $headline-reg;
@@ -31,10 +25,13 @@
   li a {
     color: $gray-dark-light;
     margin-right: 15px;
-    padding: 10px 0 6px;
+    padding: 5px 0;
     display: block;
     @include breakpoint($bp-menu-switch) {
       display: inline-block;
+      line-height: 2.1em;
+      padding-top: 10px;
+      padding-bottom: 5px;
     }
   }
   h2 {
@@ -42,12 +39,31 @@
   }
   li {
     display: block;
+    line-height: 2em;
     @include breakpoint($bp-menu-switch) {
       display: inline-block;
     }
   }
   .block {
     float: left;
+  }
+  #footer-links a {
+    padding: 2px 0 10px;
+    @include breakpoint($bp-menu-switch) {
+      padding-top: 10px;
+      padding-bottom: 5px;
+    }
+  }
+}
+
+.usa-tv-show .region-footer,
+.node-type-usa-video .region-footer,
+.page-node-social .region-footer,
+.node-type-person .region-footer,
+.node-type-media-gallery  .region-footer {
+  padding-bottom: 55px;
+  @include breakpoint($bp-menu-switch) {
+    padding-bottom: 137px;
   }
 }
 
@@ -68,6 +84,7 @@
   font-size: 12px;
   font-family: $headline-reg;
   color: $gray-dark-light;
+  line-height: 18px;
   @include breakpoint($bp-menu-switch) {
     font-size: 10px;
   }

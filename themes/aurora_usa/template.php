@@ -237,7 +237,11 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         switch ($vars['element']['#view_mode']) {
           case 'cast_carousel':
             // modify role field text
-            $vars['items'][0]['#markup'] = t('played by');
+            if(isset($vars['element']['#object']->field_usa_actor_name)) {
+              $actor_name = $vars['element']['#object']->field_usa_actor_name[LANGUAGE_NONE][0]['value'];
+              $vars['items'][0]['#markup'] = t('played by') . ' ' . $actor_name;
+            }
+
             break;
           case 'follow_social':
             //remove role field
@@ -245,15 +249,24 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
         }
       }
-    break;
+      break;
+    case 'field_usa_actor_name':
+       if (isset($vars['element']['#view_mode']))  {
+        switch ($vars['element']['#view_mode']) {
+          case 'cast_carousel':
+            // remove as adding to field role so in same div
+            unset($vars['items'][0]);
+            break;
+        }
+      }
+      break;
     case 'title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
-          break;
+            break;
         }
-
       }
       break;
     case 'field_usa_character_thumb':

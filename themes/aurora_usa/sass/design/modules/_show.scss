@@ -3,7 +3,8 @@
 .usa-tv-show {
   #main {
     margin: 0 auto;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
     width: 304px;
     @include breakpoint($bp-show-mid-width) {
       width: 615px;
@@ -32,10 +33,12 @@
     clear: both;
     margin-bottom: 15px;
     .dart-tag {
+      height: 250px;
+      width: 304px;
       img {
-        border: 2px solid $gray-dark;
-        height: 250px;
-        width: 300px;
+//        border: 2px solid $gray-dark;
+//        height: 250px;
+//        width: 300px;
       }
     }
     &.a-spot-panel {
@@ -100,7 +103,7 @@
 .expandable-content {
   > div:first-child {
     .pane-content {
-       height: 269px;
+//       height: 269px;
     }
   }
 }
@@ -145,6 +148,10 @@
       position: absolute;
       top: 50%;
       width: 50%;
+    }
+    &.off:before,
+    &.off:after {
+      width: 100%;
     }
     &:before {
       left: -30px;

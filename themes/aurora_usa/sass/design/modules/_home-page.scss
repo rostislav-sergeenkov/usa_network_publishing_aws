@@ -30,8 +30,16 @@
       font-size: 10px;
     }
   }
+  .usa-adrails & {
+    padding: 14px 14px 13px;
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+  }
   .promo-cta {
-
     width: 44px;
     float: left;
     // margin-right: 12px;
@@ -43,6 +51,12 @@
       margin-right: 2px;
       & ~ h2, & ~ h3 {
         padding-left: 22px;
+      }
+    }
+    .usa-adrails & {
+      width: 44px;
+      & ~ h2, & ~ h3 {
+        padding-left: 56px;
       }
     }
   }
@@ -58,6 +72,9 @@
   }
   @include breakpoint($bp-home-wide) {
     width: 930px;
+  }
+  .usa-adrails & {
+    width: 930px !important;
   }
   @include breakpoint($bp-home-widest) {
     width: 1245px;
@@ -88,7 +105,6 @@
   [class$="-spot"] {
     a {
       display: block;
-
     }
   }
   .a-spot {
@@ -108,6 +124,10 @@
     @include breakpoint($bp-home-widest) {
       height: 506px;
       width: 1245px;
+    }
+    .usa-adrails & {
+      height: 378px;
+      width: 930px;
     }
     .flex-viewport {
       height: 100%;
@@ -134,6 +154,11 @@
       bottom: 0;
       right: 0;
       position: absolute;
+    }
+    .usa-adrails & {
+      display: inline;
+      float: right;
+      height: 250px;
     }
   }
   .b-spot, .c-spot {
@@ -191,6 +216,19 @@
         }
       }
     }
+    .usa-adrails & {
+      display: inline;
+      float: left;
+      height: 250px;
+      width: 300px;
+      margin-right: 15px;
+      .media-normal {
+        display: block;
+      }
+      .media-wide {
+        display: none;
+      }
+    }
   }
   .c-spot {
     height: 122px;
@@ -200,6 +238,13 @@
       margin-bottom: 15px;
       height: 250px;
       width: 300px;
+    }
+    .usa-adrails & {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      height: 250px;
+      width: 300px;
+
     }
     &.tablet-only {
       display: none;
@@ -322,6 +367,9 @@
     @include breakpoint($bp-home-widest) {
       width: 1245px;
     }
+    .usa-adrails & {
+      width: 930px;
+    }
     > h2 {
       text-transform: uppercase;
     }
@@ -360,6 +408,9 @@
     }
     @include breakpoint($bp-home-widest) {
       width: 1245px;
+    }
+    .usa-adrails & {
+      width: 1000px;
     }
   }
 }

@@ -29,6 +29,10 @@
       top: 190px;
       padding-left: 50px;
     }
+    .usa-adrails & {
+      top: 140px;
+      padding-left: 35px;
+    }
   }
   .meta {
     margin-bottom: 10px;
@@ -40,6 +44,9 @@
     }
     @include breakpoint($bp-aspot-large-width) {
        margin-bottom: 27px;
+    }
+    .usa-adrails & {
+      margin-bottom: 22px;
     }
   }
   .cta {
@@ -67,6 +74,11 @@
         top: -24px;
         margin-left: -84px;
       }
+      .usa-adrails & {
+        width: 70px;
+        top: -24px;
+        margin-left: -84px;
+      }
     }
     @include breakpoint($bp-aspot-mid-width) {
       padding-left: 55px;
@@ -79,6 +91,10 @@
     @include breakpoint($bp-aspot-large-width) {
       padding-left: 90px;
       font-size: 25px;
+    }
+    .usa-adrails & {
+      padding-left: 90px;
+      font-size: 18px;
     }
     &:before {
       content: $space;
@@ -103,6 +119,10 @@
       @include breakpoint($bp-aspot-large-width) {
         width: 80px;
         height: 80px;
+      }
+      .usa-adrails & {
+        width: 60px;
+        height: 60px;
       }
     }
     span {
@@ -136,6 +156,9 @@
       font-size: 34px;
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
+      font-size: 44px;
+    }
+    .usa-adrails & {
       font-size: 44px;
     }
   }
@@ -175,6 +198,10 @@
       margin-bottom: 8px;
       font-size: 60px;
     }
+    .usa-adrails & {
+      margin-bottom: 8px;
+      font-size: 60px;
+    }
   }
   .episode-title {
     font-family: $headline-reg;
@@ -188,6 +215,9 @@
     @include breakpoint($bp-aspot-large-width) {
       font-size: 28px;
     }
+    .usa-adrails & {
+      font-size: 28px;
+    }
   }
   .suits .show-time {
     margin-bottom: 0;
@@ -195,6 +225,9 @@
   }
   img, .flexslider & img {
     max-height: none;
+    .usa-adrails & {
+      width: 100%;
+    }
   }
 }
 

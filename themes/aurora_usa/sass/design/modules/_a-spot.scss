@@ -200,6 +200,10 @@
   }
   img, .flexslider & img {
     max-height: none;
+    .ie9 &, .ie8 & {
+      width: 1245px;
+      height: 709px;
+    }
     .usa-adrails &, .ie9 &, .ie8 & {
       width: 100%;
     }

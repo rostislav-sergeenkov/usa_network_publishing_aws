@@ -49,7 +49,7 @@ function pub_files_overrides_features_override_default_overrides() {
     'custom_settings' => TRUE,
   );
   $overrides["variable.field_bundle_settings_file__image.value|view_modes|media_gallery"] = array(
-    'custom_settings' => TRUE,
+    'custom_settings' => FALSE, 
   );
   $overrides["variable.field_bundle_settings_file__image.value|view_modes|person_cover_image"] = array(
     'custom_settings' => TRUE,

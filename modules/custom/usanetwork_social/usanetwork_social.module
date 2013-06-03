@@ -84,7 +84,7 @@ function usanetwork_social_menu() {
   );
   // tv show trending page
   $items['node/%node/social/latest'] = array(
-    'title' => t('latest'),
+    'title' => t('social buzz'),
     'page callback' => 'usanetwork_social_trending',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',
@@ -852,7 +852,7 @@ function usanetwork_social_preprocess_html(&$vars) {
   if ($node && $node->type == "tv_show" && arg(3)) {
     switch (arg(3)) {
       case 'latest':
-        $head_title = t("@showname Social Dashboard: Latest | USA Network", array('@showname' => $node->title));
+        $head_title = t("@showname Social Dashboard: Social Buzz | USA Network", array('@showname' => $node->title));
         break;
       case 'chat-with-fans':
         $head_title = t("@showname Social Dashboard: Chatter | USA Network", array('@showname' => $node->title));

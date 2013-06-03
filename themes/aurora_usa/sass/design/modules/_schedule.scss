@@ -14,9 +14,11 @@ a.next-day {
   padding: .5em .5em 1em .5em;
   font-size: 36px;
 }
-.show-time {
-  white-space: nowrap;
-  padding-left: .5em;
+table {
+  .show-time {
+    white-space: nowrap;
+    padding-left: .5em;
+  }
 }
 .schedule-table {
   thead {

@@ -12,8 +12,7 @@ $logo-height-med-2: 32px;
   bottom: 0;
   width: 100%;
   height: $primary-nav-height-mobi;
-  background-color: $black-dark;
-  background-color: $nav-black;
+  background-color: $black-true;
   border-top: 1px solid $gray-med-dark;
   text-align: center;
   @include transition-property(left);
@@ -55,6 +54,11 @@ $logo-height-med-2: 32px;
       font-family: $font-mono;
       margin-right: 22px;
       @include scale(1.25,1);
+    }
+  }
+  .usa-showmenu-active .mega-nav-link {
+    @include breakpoint($bp-menu-switch) {
+      @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
     }
   }
 }
@@ -316,7 +320,7 @@ $logo-height-med-2: 32px;
   &:after {
     position: absolute;
     content: $space;
-    @include cssTriangle(14px, $nav-black, bottom);
+    @include cssTriangle(14px, $black-true, bottom);
     border-top: none;
     top: -28px;
     left: 50%;
@@ -370,7 +374,7 @@ $logo-height-med-2: 32px;
         bottom: 100%;
         width: 100%;
         padding: 1em 50px 1em 110px;
-        background-color: rgba($gray-dark, 0.95);
+        background-color: $gray-med;
         border-top: 1px solid $gray-darker-light;
         border-bottom: 1px solid $gray-ultra-med;
         ul {
@@ -380,9 +384,9 @@ $logo-height-med-2: 32px;
           .ie9 & {
             li {
               float: left;
-              width: 25%;
               margin-right: 1em;
               overflow: hidden;
+              width: 25%
             }
           }
         }
@@ -391,19 +395,23 @@ $logo-height-med-2: 32px;
           font-size: 16px;
           line-height: 16px;
           color: $gray-darker-light;
+          a {
+            padding: 0;
+            white-space: normal;
+            padding-bottom: 12px;
+          }
         }
         a {
-          @include link-colors($gray-dark-light, $gray-light, $gray-dark-light, $gray-dark-light, $gray-dark-light);
+          @include link-colors($gray-extra-light, $off-white, $gray-extra-light, $gray-extra-light, $gray-extra-light);
           font-size: 16px;
           line-height: 16px;
           display: inline-block;
-          padding-bottom: 12px;
         }
       }
       &:hover {
       > a {
-        position: relative;
-        background-color: $gray-med-dark;
+          position: relative;
+          background-color: $gray-med-dark;
         }
       }
       &.parent-item:hover {

@@ -48,6 +48,7 @@
                   .addClass('expandable-menu');
             $show_menu = $('#block-usanetwork-blocks-usa-tv-show-menu').clone();
             if ($show_menu.length > 0) {
+              $('#block-usanetwork-blocks-usa-meganav').addClass('usa-showmenu-active');
               $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
               $new_show_menu = $show_menu.find('#tv-show-menu');
               $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);

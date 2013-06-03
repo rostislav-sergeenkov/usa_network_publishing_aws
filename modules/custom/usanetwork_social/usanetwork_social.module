@@ -166,16 +166,42 @@ function usanetwork_social_block_view($delta) {
  */
 function usanetwork_social_show_tab_nav() {
   $output = '';
+  $lang = LANGUAGE_NONE;
+
   if (arg(0) == 'social') {
     $links = menu_local_tasks(0);
   } else {
     $links = menu_local_tasks(0);
+    $node = node_load(arg(1));
   }
   $items = array();
 
   foreach ($links['tabs']['output'] as $link) {
     $alias = drupal_get_path_alias(str_replace('%', arg(1), $link['#link']['path']));
-    $items[] = l($link['#link']['title'], $alias);
+    switch ($link['#link']['path']) {
+      case 'node/%/social/latest':
+        if (isset($node->field_show_trending[$lang][0]['value']) && !empty($node->field_show_trending[$lang][0]['value'])) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
+      case 'node/%/social/chat-with-fans':
+        if (isset($node->field_show_chat_page[$lang][0]['value']) && !empty($node->field_show_chat_page[$lang][0]['value'])) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
+      case 'node/%/social/tweets':
+        if (isset($node->field_show_twitter_page[$lang][0]['value']) && !empty($node->field_show_twitter_page[$lang][0]['value'])) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
+      case 'node/%/social/sync':
+        if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
+      default:
+        $items[] = l($link['#link']['title'], $alias);
+    }
   }
 
   if (!empty($items)) {

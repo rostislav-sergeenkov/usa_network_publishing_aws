@@ -269,13 +269,14 @@ function usanetwork_showpages_cast($node) {
   if (!isset($node->nid)) {
     return;
   }
-  $show = $node->nid;
 
   // grab the first element from the draggable view
   $view = views_get_view('usa_cast');
-  $view->set_display('panel_pane_1');
+  $view->set_display('block_1');
+  $view->args = array($node->nid);
   $view->pre_execute();
   $view->execute();
+  
   if (!empty($view->result)) {
     $cast_nid = $view->result[0]->nid;
   }

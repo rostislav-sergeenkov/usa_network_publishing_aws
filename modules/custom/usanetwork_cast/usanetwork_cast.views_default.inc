@@ -221,7 +221,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['operator'] = 'not';
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
-    52 => '52',
+    256 => '256',
   );
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
@@ -415,7 +415,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['operator'] = 'not';
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
-    52 => '52',
+    256 => '256',
   );
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
@@ -1079,7 +1079,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Related Person (field_person) */
+  /* Contextual filter: Field: Person (field_person) */
   $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';

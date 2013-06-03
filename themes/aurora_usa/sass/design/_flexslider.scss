@@ -134,10 +134,22 @@ html[xmlns] .slides {
     background-position: 100% 0;
     right: -30px;
     text-indent: 3px;
+    .ie9 &, .ie8 & {
+      @extend .icons-arrow-next-v2;
+      &:hover {
+        @extend .icons-arrow-next-hover-v2;
+      }
+    }
   }
   .flex-prev {
     left: -30px;
     text-indent: -3px;
+    .ie9 &, .ie8 & {
+      @extend .icons-arrow-prev-v2;
+      &:hover {
+        @extend .icons-arrow-prev-hover-v2;
+      }
+    }
   }
 }
 

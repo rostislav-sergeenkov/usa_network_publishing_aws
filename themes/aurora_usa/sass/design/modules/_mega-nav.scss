@@ -12,6 +12,7 @@ $logo-height-med-2: 32px;
   bottom: 0;
   width: 100%;
   height: $primary-nav-height-mobi;
+  background-color: $black-dark;
   background-color: $nav-black;
   border-top: 1px solid $gray-med-dark;
   text-align: center;
@@ -78,6 +79,11 @@ $logo-height-med-2: 32px;
     @include float-left;
     font-size: $logo-height-large;
     border-right: 1px solid $gray-med;
+  }
+  .ie8 &,
+  .ie7 & {
+    @include replace-text-with-dimensions('icons/logo-usa-tablet.png');
+    display: inline-block;
   }
   a {
     @include link-colors($white, $white, $white, $white, $white);

@@ -19,6 +19,7 @@
           trigger: '#main-menu-toggle',
           openPosition: '258px',
           duration: '300',
+          keyboardShortcuts: false,
           afterOn: function() {
             $('#jPanelMenu-menu')
               .prepend('<h1 class="menu-title">Main Menu</h1>')

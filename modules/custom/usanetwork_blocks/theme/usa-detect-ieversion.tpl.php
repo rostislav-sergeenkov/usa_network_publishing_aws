@@ -6,11 +6,12 @@
  * Theme implementation for the ie browser upgrade 
  ** 
  */
+ global $base_url;
 $image_path = drupal_get_path("module", "usanetwork_blocks")."/theme/images/";
 ?>
 <!-- Error Modals -->
 <!--[if lte IE 8]> 
-	<div id="lackOfFeaturesModal-main">
+	<div id="lackOfFeaturesModal-main" style = "display:none;">
 	<div id="lackOfFeaturesModal" class="reveal-modal modal authen-modal"> 
 		<a class="lackOfFeaturesModal-close-modal">Close</a>
 		<div id="lackOfFeaturesModal-modal-header-main">
@@ -33,9 +34,9 @@ $image_path = drupal_get_path("module", "usanetwork_blocks")."/theme/images/";
 				</ol>
 			</div>
 			<div id="bullet-list">
-				<div id="lackOfFeaturesModal-bullet-list1"><img src="<?php echo $image_path;?>firefox.png" alt="Firefox" /></div>
-				<div id="lackOfFeaturesModal-bullet-list2"><img src="<?php echo $image_path;?>safari.png" alt="Safari" /></div>
-				<div id="lackOfFeaturesModal-bullet-list3"><img src="<?php echo $image_path;?>chrome.png" alt="Chrome" /></div>
+				<div id="lackOfFeaturesModal-bullet-list1"><img src="<?php echo $base_url."/".$image_path;?>firefox.png" alt="Firefox" /></div>
+				<div id="lackOfFeaturesModal-bullet-list2"><img src="<?php echo $base_url."/".$image_path;?>safari.png" alt="Safari" /></div>
+				<div id="lackOfFeaturesModal-bullet-list3"><img src="<?php echo $base_url."/".$image_path;?>chrome.png" alt="Chrome" /></div>
 			</div>
 		</div>
 		<div id="lackOfFeaturesModal-modal-footer-main">

@@ -10,12 +10,20 @@
  * closing browser upgrade message popup
  */
  var mouse_is_inside = false;
-	jQuery(document).ready(function()
+ 	jQuery(document).ready(function()
 	{
-		jQuery(".lackOfFeaturesModal-close-modal").click(function()
+     if(jQuery.cookie("iemessage") == null)
+    {
+      jQuery("#lackOfFeaturesModal-main").show();
+    }
+    jQuery(".lackOfFeaturesModal-close-modal").click(function()
 		{
-			document.getElementById('lackOfFeaturesModal').style.display = 'none';
-      document.getElementById('lackOfFeaturesModal-main').style.display = 'none';
+      jQuery.cookie("iemessage", "upgrade", {path    : '/'});
+      if(jQuery.cookie("iemessage") != null)
+      {
+        document.getElementById('lackOfFeaturesModal').style.display = 'none';
+        document.getElementById('lackOfFeaturesModal-main').style.display = 'none';
+      }
 		});
 		jQuery("#lackOfFeaturesModal-bullet-list1").click(function(){ 
 			window.open('http://www.mozilla.org', '_blank');

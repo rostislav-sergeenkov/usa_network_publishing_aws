@@ -13,7 +13,7 @@ css for Ie browser version detection
 */
 #lackOfFeaturesModal-main {
 	 background-color:black;
-   position:absolute;
+   position:fixed;
    top: 0px;
 	 padding-bottom:50px;
    height:1000px;
@@ -22,14 +22,14 @@ css for Ie browser version detection
    z-index: 999;
 }
 #lackOfFeaturesModal {
-  margin-top: 35px;
+  margin-top: 85px;
   margin-bottom: 20px;
   margin-left: 220px;
   width: 600px;
   border:black solid 1px;
   padding:0px;
   background-color:black;
-  position:fixed;
+  position:absolute;
 }
 #lackOfFeaturesModalIE{
 	border-top:solid #D8D8D8 1px;

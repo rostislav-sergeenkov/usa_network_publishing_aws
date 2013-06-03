@@ -308,7 +308,6 @@ function usanetwork_showpages_videos($node) {
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
   $query->fieldCondition('field_full_episode', 'value', '1', '=');
-  //$query->propertyOrderBy('created', 'desc');
   $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
   $query->range(0, 1);
   // execute the query
@@ -319,9 +318,26 @@ function usanetwork_showpages_videos($node) {
     $nid = array_keys($result['node']);
     $nid = $nid[0];
     drupal_goto('node/' . $nid);
+  } else {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', array('usa_video'));
+    $query->propertyCondition('status', 1);
+    $query->fieldCondition('field_show', 'target_id', $show);
+    $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute();
+    // load the latest episode
+    // then go to that page
+    if (!empty($result['node'])) {
+      $nid = array_keys($result['node']);
+      $nid = $nid[0];
+      drupal_goto('node/' . $nid);
+    }
+    // or go back to the show node
+    drupal_goto('node/' . $show);
   }
-  // or go back to the show node
-  drupal_goto('node/' . $show);
 }
 
 function usanetwork_showpages_preprocess_html(&$vars) {

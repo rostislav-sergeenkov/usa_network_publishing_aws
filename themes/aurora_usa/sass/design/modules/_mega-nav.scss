@@ -84,6 +84,11 @@ $logo-height-med-2: 32px;
     font-size: $logo-height-large;
     border-right: 1px solid $gray-med;
   }
+  .ie8 &,
+  .ie7 & {
+    @include replace-text-with-dimensions('icons/logo-usa-tablet.png');
+    display: inline-block;
+  }
   a {
     @include link-colors($white, $white, $white, $white, $white);
   }

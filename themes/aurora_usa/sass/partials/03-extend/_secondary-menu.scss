@@ -98,7 +98,7 @@
           }
           &:before {
             position: absolute;
-            right: 10px;
+            right: 11px;
             left: auto;
             top: 16px;
             @include cssTriangle(5px, $white, bottom);

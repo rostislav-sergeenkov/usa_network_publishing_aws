@@ -380,6 +380,9 @@ $logo-height-med-2: 32px;
         background-color: $gray-med;
         border-top: 1px solid $gray-darker-light;
         border-bottom: 1px solid $gray-ultra-med;
+        @include breakpoint($bp-menu-switch) {
+          text-transform: none;
+        }  
         ul {
           display: block;
           @include column-count(4);

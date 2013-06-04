@@ -56,11 +56,13 @@
   }
 }
 
+/* todo set up general class for show pgs */
 .usa-tv-show .region-footer,
 .node-type-usa-video .region-footer,
 .page-node-social .region-footer,
 .node-type-person .region-footer,
-.node-type-media-gallery  .region-footer {
+.node-type-media-gallery  .region-footer,
+.node-type-tv-episode .region-footer {
   padding-bottom: 55px;
   @include breakpoint($bp-menu-switch) {
     padding-bottom: 137px;

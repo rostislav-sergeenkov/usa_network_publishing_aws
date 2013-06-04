@@ -507,7 +507,7 @@ strong, dfn, b {
   margin: 0;
 }
 .usa-secondary-menu li a {
-  color: white;
+  color: #a3a3a3;
 }
 .usa-secondary-menu ul {
   margin: 0;
@@ -1481,7 +1481,7 @@ input[type="radio"], input[type="checkbox"] {
   bottom: 0;
   width: 100%;
   height: 50px;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: black;
   border-top: 1px solid #414141;
   text-align: center;
   -webkit-transition-property: left;
@@ -1524,7 +1524,7 @@ input[type="radio"], input[type="checkbox"] {
 [data-menu-position="open"] #mega-nav .primary-nav > *:not(#main-menu-toggle) a {
   cursor: default;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #mega-nav {
     border-top: none;
     height: auto;
@@ -1575,8 +1575,25 @@ input[type="radio"], input[type="checkbox"] {
     transform: scale(1.25, 1);
   }
 }
+@media (min-width: 769px) {
+  #mega-nav .usa-showmenu-active .mega-nav-link {
+    color: #717274;
+  }
+  #mega-nav .usa-showmenu-active .mega-nav-link:visited {
+    color: #717274;
+  }
+  #mega-nav .usa-showmenu-active .mega-nav-link:focus {
+    color: #717274;
+  }
+  #mega-nav .usa-showmenu-active .mega-nav-link:hover {
+    color: #a3a3a3;
+  }
+  #mega-nav .usa-showmenu-active .mega-nav-link:active {
+    color: #a3a3a3;
+  }
+}
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .primary-nav {
     border-top: 1px solid #414141;
     height: 65px;
@@ -1599,13 +1616,24 @@ input[type="radio"], input[type="checkbox"] {
   *display: inline;
   font-size: 28px;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #logo {
     display: inline;
     float: left;
     font-size: 34px;
     border-right: 1px solid #3d3d3d;
   }
+}
+.ie8 #logo, .ie7 #logo {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/logo-usa-tablet.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 77px;
+  height: 34px;
+  display: inline-block;
 }
 #logo a {
   color: white;
@@ -1623,7 +1651,7 @@ input[type="radio"], input[type="checkbox"] {
   color: white;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .menu-title {
     display: none;
   }
@@ -1642,7 +1670,7 @@ input[type="radio"], input[type="checkbox"] {
   background-color: transparent;
   cursor: pointer;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .mobi-menu-icon {
     display: none;
   }
@@ -1672,7 +1700,7 @@ input[type="radio"], input[type="checkbox"] {
   text-align: left;
   display: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .mega-menu-items {
     display: -moz-inline-stack;
     display: inline-block;
@@ -1899,7 +1927,7 @@ input[type="radio"], input[type="checkbox"] {
   width: 0;
   height: 0;
   border: solid 14px;
-  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
+  border-color: transparent transparent black transparent;
   border-top: none;
   top: -28px;
   left: 50%;
@@ -1923,7 +1951,7 @@ input[type="radio"], input[type="checkbox"] {
   background-color: #2d2d2d;
   border-color: #3d3d3d;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #tv-show-menu {
     display: block;
     position: absolute;
@@ -1969,7 +1997,7 @@ input[type="radio"], input[type="checkbox"] {
     bottom: 100%;
     width: 100%;
     padding: 1em 50px 1em 110px;
-    background-color: rgba(45, 45, 45, 0.95);
+    background-color: #3d3d3d;
     border-top: 1px solid #636363;
     border-bottom: 1px solid #4b4b4b;
   }
@@ -1988,9 +2016,9 @@ input[type="radio"], input[type="checkbox"] {
   }
   .ie9 #tv-show-menu li .item-list ul li {
     float: left;
-    width: 25%;
     margin-right: 1em;
     overflow: hidden;
+    width: 25%;
   }
   #tv-show-menu li .item-list li {
     display: block;
@@ -1998,24 +2026,28 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 16px;
     color: #636363;
   }
+  #tv-show-menu li .item-list li a {
+    padding: 0;
+    white-space: normal;
+    padding-bottom: 12px;
+  }
   #tv-show-menu li .item-list a {
-    color: #717274;
+    color: white;
     font-size: 16px;
     line-height: 16px;
     display: inline-block;
-    padding-bottom: 12px;
   }
   #tv-show-menu li .item-list a:visited {
-    color: #717274;
+    color: white;
   }
   #tv-show-menu li .item-list a:focus {
-    color: #717274;
+    color: white;
   }
   #tv-show-menu li .item-list a:hover {
-    color: #878785;
+    color: #a3a3a3;
   }
   #tv-show-menu li .item-list a:active {
-    color: #717274;
+    color: white;
   }
   #tv-show-menu li:hover > a {
     position: relative;
@@ -2115,7 +2147,6 @@ input[type="radio"], input[type="checkbox"] {
   *vertical-align: auto;
   zoom: 1;
   *display: inline;
-  background: url("../images/icons-sprite.png") 0 0;
   height: 36px;
   margin: -4px 6px 0 5px;
   width: 11px;
@@ -2199,7 +2230,7 @@ input[type="radio"], input[type="checkbox"] {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: #717274;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .region-footer {
     font-size: 12px;
     font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -2214,7 +2245,7 @@ input[type="radio"], input[type="checkbox"] {
   padding: 5px 0;
   display: block;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .region-footer li a {
     display: inline-block;
     line-height: 2.1em;
@@ -2229,7 +2260,7 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   line-height: 2em;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .region-footer li {
     display: inline-block;
   }
@@ -2240,7 +2271,7 @@ input[type="radio"], input[type="checkbox"] {
 .region-footer #footer-links a {
   padding: 2px 0 10px;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .region-footer #footer-links a {
     padding-top: 10px;
     padding-bottom: 5px;
@@ -2254,7 +2285,7 @@ input[type="radio"], input[type="checkbox"] {
 .node-type-media-gallery .region-footer {
   padding-bottom: 55px;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .usa-tv-show .region-footer,
   .node-type-usa-video .region-footer,
   .page-node-social .region-footer,
@@ -2281,7 +2312,7 @@ input[type="radio"], input[type="checkbox"] {
   color: #717274;
   line-height: 18px;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   #footer-message {
     font-size: 10px;
   }
@@ -2913,10 +2944,10 @@ input[type="radio"], input[type="checkbox"] {
 .promo-metadata {
   position: absolute;
   width: 100%;
-  height: 62px;
+  height: 77px;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 14px 14px 13px;
+  padding: 17px 15px 8px;
 }
 .promo-metadata h2, .promo-metadata h3 {
   margin: 0;
@@ -2924,9 +2955,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 .promo-metadata h2 {
   font-size: 20px;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  line-height: 22.5px;
+  margin-bottom: 3px;
 }
 .promo-metadata h3 {
   font-size: 15px;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  line-height: 24px;
 }
 @media (max-width: 644px) {
   .promo-metadata {
@@ -2935,16 +2971,21 @@ input[type="radio"], input[type="checkbox"] {
   }
   .promo-metadata h2 {
     font-size: 12px;
+    line-height: 13.5px;
+    margin-bottom: 1px;
   }
   .promo-metadata h3 {
     font-size: 10px;
+    line-height: 12px;
   }
 }
 .usa-adrails .promo-metadata, .ie9 .promo-metadata, .ie8 .promo-metadata {
-  padding: 14px 14px 13px;
+  padding: 17px 15px 8px;
 }
 .usa-adrails .promo-metadata h2, .ie9 .promo-metadata h2, .ie8 .promo-metadata h2 {
   font-size: 20px;
+  line-height: 22.5px;
+  margin-bottom: 3px;
 }
 .usa-adrails .promo-metadata h3, .ie9 .promo-metadata h3, .ie8 .promo-metadata h3 {
   font-size: 15px;
@@ -2974,7 +3015,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .tiles {
   width: 300px;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   padding-top: 15px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -3253,34 +3294,41 @@ input[type="radio"], input[type="checkbox"] {
 .usa-home-featured {
   position: relative;
   background-color: #1f1f1f;
-  padding: 12px 0 36px;
+  padding: 0 0 36px;
 }
 .usa-adrails .usa-home-featured, .ie9 .usa-home-featured, .ie8 .usa-home-featured {
   background-color: transparent;
 }
-.usa-home-featured .meta {
+.usa-home-featured .carousel-item .meta {
   text-align: left;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: 0.05em;
   max-width: 221px;
-  height: 54px;
+  height: 50px;
+  padding: 8px 15px 8px;
 }
 @media (min-width: 1275px) {
-  .usa-home-featured .meta {
-    height: 60px;
+  .usa-home-featured .carousel-item .meta {
+    height: 77px;
+    padding: 17px 15px 8px;
     max-width: none;
   }
 }
 .usa-home-featured .field-name-field-promo-text-line-1 {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 20px;
+  line-height: 22.5px;
+  margin-bottom: 3px;
 }
 .usa-home-featured .caption {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 10px;
+  line-height: 12px;
 }
 @media (min-width: 1275px) {
   .usa-home-featured .caption {
     font-size: 15px;
+    line-height: 24px;
   }
 }
 .usa-home-featured .featured-carousel {
@@ -3869,6 +3917,11 @@ body.person-page .ad-leaderboard {
   top: 39%;
   z-index: 96;
 }
+.ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns {
+  width: 25px;
+  height: 33px;
+  text-indent: -9999px;
+}
 .carousel-btns .btns:hover {
   color: #878785;
 }
@@ -4218,10 +4271,10 @@ span#on-now-episode {
 .block-usanetwork-video .view .expandable-toggle li {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: #4b4b4b;
+  color: #b0b0b0;
 }
 .block-usanetwork-video .view .expandable-toggle li a {
-  color: #4b4b4b;
+  color: #b0b0b0;
 }
 
 .block-usanetwork-video.usa-secondary-menu {
@@ -4241,7 +4294,7 @@ span#on-now-episode {
 @media (min-width: 1024px) {
   .block-usanetwork-video.usa-secondary-menu .categories li.active a {
     background-color: #3d3d3d;
-    color: #a3a3a3;
+    color: white;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -4261,6 +4314,7 @@ span#on-now-episode {
 @media (min-width: 1024px) {
   .block-usanetwork-video.usa-secondary-menu a:hover {
     background-color: #3d3d3d;
+    color: white;
   }
 }
 @media (min-width: 1024px) {
@@ -4649,14 +4703,16 @@ span#on-now-episode {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper {
-    width: 100%;
-    height: 60.975609756098%;
+    width: 330px;
+    height: 201px;
+    margin: 0 auto;
+    float: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset .video-player-wrapper {
-    float: none;
     margin-bottom: 15px;
+    margin-right: 15px;
   }
 }
 @media (min-width: 1275px) {
@@ -4671,8 +4727,8 @@ span#on-now-episode {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper iframe {
-    height: 60.975609756098%;
-    width: 100%;
+    width: 330px;
+    height: 201px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -4821,14 +4877,14 @@ span#on-now-episode {
 }
 .usa-tv-show .panel-row {
   clear: both;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 .usa-tv-show .panel-row .dart-tag {
   height: 250px;
   width: 300px;
 }
 .usa-tv-show .panel-row.a-spot-panel {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .usa-tv-show .panel-col1 {
   float: left;
@@ -4842,6 +4898,7 @@ span#on-now-episode {
   line-height: 1.5em;
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
+  margin-top: 1px;
 }
 @media (min-width: 645px) {
   .usa-tv-show h2 {
@@ -4926,7 +4983,7 @@ span#on-now-episode {
   width: 50%;
 }
 .expandable-container .expandable-toggle-wrap.off:before, .expandable-container .expandable-toggle-wrap.off:after {
-  width: 100%;
+  display: none;
 }
 .expandable-container .expandable-toggle-wrap:before {
   left: -30px;
@@ -4935,7 +4992,7 @@ span#on-now-episode {
   right: -30px;
 }
 .expandable-container .expandable-toggle {
-  color: #4b4b4b;
+  color: #b0b0b0;
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -4948,7 +5005,7 @@ span#on-now-episode {
   width: 0;
   height: 0;
   border: solid 18px;
-  border-color: #4b4b4b transparent transparent transparent;
+  border-color: #b0b0b0 transparent transparent transparent;
   border-width: 12px 18px 18px;
   top: 18px;
   content: "";
@@ -4971,7 +5028,7 @@ span#on-now-episode {
   width: 0;
   height: 0;
   border: solid 18px;
-  border-color: transparent transparent #4b4b4b transparent;
+  border-color: transparent transparent #b0b0b0 transparent;
   border-width: 18px 18px 12px;
   bottom: 18px;
   top: auto;
@@ -5094,6 +5151,7 @@ body.usa-social {
 }
 #block-usanetwork-social-usa-show-social-tab-nav a {
   border-top: 1px solid #878785;
+  color: #a3a3a3;
 }
 #block-usanetwork-social-usa-show-social-tab-nav a.active {
   color: white;
@@ -5102,7 +5160,6 @@ body.usa-social {
 @media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav a.active {
     background-color: #3d3d3d;
-    color: #a3a3a3;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -5121,6 +5178,7 @@ body.usa-social {
 }
 #block-usanetwork-social-usa-show-social-tab-nav a:hover {
   background-color: #4b4b4b;
+  color: white;
 }
 @media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav a:hover {
@@ -5149,9 +5207,10 @@ body.usa-social {
     border-top: 0;
     border-left: 1px solid #2d2d2d;
     border-right: 1px solid #2d2d2d;
+    color: #a3a3a3;
   }
   #block-usanetwork-social-usa-show-social-tab-nav a:hover {
-    color: #a3a3a3;
+    color: white;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -5279,6 +5338,17 @@ body.usa-social {
   padding: 0;
   font-size: 1.4em;
 }
+.ie9 .social-follow-block .icons-social a, .ie8 .social-follow-block .icons-social a {
+  text-indent: -9999px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  height: 18px;
+  width: 9px;
+  margin-right: 5px;
+}
 .social-follow-block .icons-social a:hover {
   color: #0ab6e8;
 }
@@ -5288,12 +5358,24 @@ body.usa-social {
   padding-top: 3px;
   width: 21px;
 }
+.ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
+  width: 20px;
+  height: 20px;
+  padding-top: 0;
+  background-color: transparent;
+}
 .social-follow-block .icons-social .usasocial-pinterest:hover {
   background-color: #0ab6e8;
   color: #414141;
 }
 .social-follow-block .icons-social .usasocial-fb {
   margin-left: 3px;
+}
+.ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
+  width: 22px;
+}
+.ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
+  width: 12px;
 }
 .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer {
   position: relative;
@@ -5779,7 +5861,7 @@ input.echo-submit-text {
 .usanetwork_social_show_comment {
   border-bottom: 1px solid #3d3d3d;
   border-top: 1px solid #161616;
-  padding: 20px 15px;
+  padding: 10px 15px;
 }
 .usanetwork_social_show_comment .echo-item-content {
   color: white;
@@ -5879,6 +5961,9 @@ input.echo-submit-text {
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
   top: 140px;
   padding-left: 35px;
+}
+.ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
+  top: 22%;
 }
 .aspot .meta {
   margin-bottom: 10px;
@@ -5996,6 +6081,11 @@ input.echo-submit-text {
 .aspot .show-time {
   font-size: 24px;
 }
+.ie9 .usa-tv-show .aspot .show-title, .ie8 .usa-tv-show .aspot .show-title, .ie9 .usa-tv-show
+.aspot .show-time, .ie8 .usa-tv-show
+.aspot .show-time {
+  font-size: 1.7em;
+}
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .show-title,
   .aspot .show-time {
@@ -6094,12 +6184,12 @@ input.echo-submit-text {
 .aspot img, .flexslider .aspot img {
   max-height: none;
 }
-.ie9 .aspot img, .ie8 .aspot img, .ie9 .flexslider .aspot img, .ie8 .flexslider .aspot img {
-  width: 1245px;
-  height: 709px;
-}
 .usa-adrails .aspot img, .ie9 .aspot img, .ie8 .aspot img, .usa-adrails .flexslider .aspot img, .ie9 .flexslider .aspot img, .ie8 .flexslider .aspot img {
   width: 100%;
+}
+.ie9 .usa-tv-show .aspot .flexslider img, .ie8 .usa-tv-show .aspot .flexslider img {
+  width: 1245px;
+  height: 709px;
 }
 
 .schedule-header {
@@ -6121,7 +6211,7 @@ a.next-day {
   font-size: 36px;
 }
 
-.show-time {
+table .show-time {
   white-space: nowrap;
   padding-left: .5em;
 }
@@ -6147,6 +6237,181 @@ a.next-day {
 
 [class*="iib"] {
   background-color: #2d2d2d;
+}
+
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+  background: url('../images/icons-s205f8e0a6f.png') no-repeat;
+}
+
+.icons-arrow-next-hover-v2, .ie9 .flex-direction-nav .flex-next:hover, .ie8 .flex-direction-nav .flex-next:hover {
+  background-position: 0 -984px;
+}
+
+.icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next {
+  background-position: 0 -1262px;
+}
+
+.icons-arrow-next {
+  background-position: 0 -1380px;
+}
+
+.icons-arrow-prev-hover-v2, .ie9 .flex-direction-nav .flex-prev:hover, .ie8 .flex-direction-nav .flex-prev:hover {
+  background-position: 0 -1064px;
+}
+
+.icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev {
+  background-position: 0 -1716px;
+}
+
+.icons-arrow-prev {
+  background-position: 0 -1495px;
+}
+
+.icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
+  background-position: 0 -2466px;
+}
+
+.icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
+  background-position: 0 -2362px;
+}
+
+.icons-facebook {
+  background-position: 0 -932px;
+}
+
+.icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
+  background-position: 0 -1457px;
+}
+
+.icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
+  background-position: 0 -1834px;
+}
+
+.icons-follow-facebook-v3 {
+  background-position: 0 -2064px;
+}
+
+.icons-follow-facebook {
+  background-position: 0 -653px;
+}
+
+.icons-follow-twitter-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
+  background-position: 0 -472px;
+}
+
+.icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
+  background-position: 0 -615px;
+}
+
+.icons-follow-twitter-v3 {
+  background-position: 0 -1678px;
+}
+
+.icons-follow-twitter {
+  background-position: 0 -363px;
+}
+
+.icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns {
+  background-position: 0 -1572px;
+}
+
+.icons-gray-arrow-right, .ie9 .carousel-btns .btns.next, .ie8 .carousel-btns .btns.next {
+  background-position: 0 -1625px;
+}
+
+.icons-ico-close-tray-mobi {
+  background-position: 0 -1950px;
+}
+
+.icons-ico-close-tray-tablet {
+  background-position: 0 -1910px;
+}
+
+.icons-line-arrow-gray, #utilities .breadcrumb .separator {
+  background-position: 0 -252px;
+}
+
+.icons-logo-usa-mobi {
+  background-position: 0 -510px;
+}
+
+.icons-logo-usa-tablet {
+  background-position: 0 -418px;
+}
+
+.icons-pinterest-hover-v2 {
+  background-position: 0 -1342px;
+}
+
+.icons-pinterest-hover-v3 {
+  background-position: 0 -1796px;
+}
+
+.icons-pinterest-hover-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
+  background-position: 0 -1184px;
+}
+
+.icons-pinterest-hover-v6, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
+  background-position: 0 -2258px;
+}
+
+.icons-pinterest-v2 {
+  background-position: 0 -1224px;
+}
+
+.icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
+  background-position: 0 -1144px;
+}
+
+.icons-pinterest-v5 {
+  background-position: 0 -1872px;
+}
+
+.icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
+  background-position: 0 -2206px;
+}
+
+.icons-pinterest {
+  background-position: 0 0;
+}
+.icons-pinterest:hover, .icons-pinterest.pinterest_hover, .icons-pinterest.pinterest-hover {
+  background-position: 0 -84px;
+}
+
+.icons-tumblr-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
+  background-position: 0 -2026px;
+}
+
+.icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
+  background-position: 0 -2414px;
+}
+
+.icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
+  background-position: 0 -1988px;
+}
+
+.icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
+  background-position: 0 -2310px;
+}
+
+.icons-tumblr {
+  background-position: 0 -880px;
+}
+
+.icons-twitter-hover-v4, .ie9 .icons-social a.usasocial-twitter:hover, .ie8 .icons-social a.usasocial-twitter:hover {
+  background-position: 0 -2154px;
+}
+
+.icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter {
+  background-position: 0 -2102px;
+}
+
+.icons-twitter {
+  background-position: 0 -168px;
+}
+
+.icons-watch-alt {
+  background-position: 0 -710px;
 }
 
 .usa-adrails {

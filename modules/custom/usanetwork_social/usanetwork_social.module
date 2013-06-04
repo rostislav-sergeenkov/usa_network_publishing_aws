@@ -831,18 +831,22 @@ function usanetwork_social_preprocess_html(&$vars) {
   $node = menu_get_object();
   // global social
   switch ($_GET['q']) {
+    // Social Buzz | Social | SITE_TITLE
     case 'social':
     case 'social/trending':
-      $head_title = t('Social Dashboard - Social Buzz | USA Network');
+      $head_title = t('Social Buzz | Social | USA Network');
       break;
+    // Chatter | Social | SITE_TITLE
     case 'social/chat-with-fans':
-      $head_title = t('Social Dashboard - Chatter | USA Network');
+      $head_title = t('Chatter | Social | USA Network');
       break;
+    // Tweets | Social | SITE_TITLE
     case 'social/tweets':
-      $head_title = t('Social Dashboard - Tweets | USA Network');
+      $head_title = t('Tweets | Social | USA Network');
       break;
+    // Sync | Social | SITE_TITLE
     case 'social/sync':
-      $head_title = t('Social Dashboard - USA Sync | USA Network');
+      $head_title = t('Sync | Social | USA Network');
       break;
 
     default:
@@ -851,17 +855,21 @@ function usanetwork_social_preprocess_html(&$vars) {
   // show node social pages
   if ($node && $node->type == "tv_show" && arg(3)) {
     switch (arg(3)) {
+      // Social Buzz | Social | SHOW_NAME | SITE_TITLE
       case 'latest':
-        $head_title = t("@showname Social Dashboard: Social Buzz | USA Network", array('@showname' => $node->title));
+        $head_title = t("Social Buzz | Social | @showname | USA Network", array('@showname' => $node->title));
         break;
+      // Chatter | Social | SHOW_NAME | SITE_TITLE
       case 'chat-with-fans':
-        $head_title = t("@showname Social Dashboard: Chatter | USA Network", array('@showname' => $node->title));
+        $head_title = t("Chatter | Social | @showname | USA Network", array('@showname' => $node->title));
         break;
+      // Tweets | Social | SHOW_NAME | SITE_TITLE
       case 'tweets':
-        $head_title = t("@showname Social Dashboard: Tweets | USA Network", array('@showname' => $node->title));
+        $head_title = t("Tweets | Social | @showname | USA Network", array('@showname' => $node->title));
         break;
+      // Sync | Social | SHOW_NAME | SITE_TITLE
       case 'sync':
-        $head_title = t("@showname Social Dashboard: USA sync | USA Network", array('@showname' => $node->title));
+        $head_title = t("Sync | Social | @showname | USA Network", array('@showname' => $node->title));
         break;
       default:
         break;

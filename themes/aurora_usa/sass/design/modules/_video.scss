@@ -30,10 +30,10 @@
   }
   @include breakpoint($bp-video-very-large-width) {
     width: 1245px;
-    .usa-adrails & {
-      width: 929px;
-    }  
   }
+  .usa-adrails & {
+    width: 929px;
+  }   
 }
 
 .block-usanetwork-video .view  {
@@ -488,9 +488,9 @@
   }
   @include breakpoint($bp-video-very-large-width) {
     width: 1245px;
-    .usa-adrails & {
-      width: 930px;
-    }
+  }
+  .usa-adrails & {
+    width: 930px;
   }
   .video-player-wrapper {
     position: relative;
@@ -511,11 +511,11 @@
     @include breakpoint($bp-video-very-large-width) {
       width: 930px;
       height: 567px;
-      .usa-adrails & {
-        width: 615px;
-        height: 375px;
-      }  
     }
+    .usa-adrails & {
+      width: 615px;
+      height: 375px;
+    }  
     iframe {
       width: 615px;
       height: 375px;
@@ -530,11 +530,11 @@
       @include breakpoint($bp-video-very-large-width) {
         width: 930px;
         height: 567px;
-        .usa-adrails & {
-          width: 615px;
-          height: 375px;
-        }  
       }
+      .usa-adrails & {
+        width: 615px;
+        height: 375px;
+      }  
     }
   }
   .meta {

@@ -101,9 +101,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/default/files-private';
 
     // Memchache settings.
-    //$conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
-    //$conf['cache_default_class'] = 'MemCacheDrupal';
-    //$conf['cache_class_form'] = 'DrupalDatabaseCache';
+    $conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
+    $conf['cache_default_class'] = 'MemCacheDrupal';
+    $conf['cache_class_form'] = 'DrupalDatabaseCache';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "CGJK-32328";

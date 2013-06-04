@@ -189,7 +189,11 @@ function usanetwork_video_show_nav() {
     (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
-  $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
+  
+  // show the full episodes links iff there are full episodes for that tv show
+  if (_usanetwork_video_full_episodes_exist($node->field_show[$lang][0]['target_id'])) {
+    $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
+  }
 
   $active_tids = array();
   if (isset($node->field_usa_video_terms[$lang][0]['target_id']) && !empty($node->field_usa_video_terms[$lang][0]['target_id'])) {
@@ -339,19 +343,15 @@ function usanetwork_video_views() {
       }
     }
 
-    // the last term is the correct term id of the category
-    $count = count($node->field_usa_video_terms[$lang]);
-    if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
-      $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
+    if (isset($node->field_usa_video_terms[$lang])) {
+      // the last term is the correct term id of the category
+      $count = count($node->field_usa_video_terms[$lang]);
+      if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
+        $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
+      }
     }
   }
 
-/*
-  //promote the whats hot videos if there are no releated videos
-  if (empty($output)) {
-    $output = views_embed_view('whats_hot', 'whats_hot');
-  }
-*/
   return $output;
 }
 
@@ -399,4 +399,25 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
   $file_id = array_pop($file_id); //  And just last part of the URL's path.
 
   return $file_id;
+}
+
+/**
+ * Helper function to check if a show has full episodes
+ */
+function _usanetwork_video_full_episodes_exist($show_nid) {
+  if (empty($show_nid)) {
+    return false;
+  } 
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('usa_video'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show_nid);
+  $query->fieldCondition('field_full_episode', 'value', '1', '=');
+  $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+  $query->count();
+  // execute the query
+  $count = intval($query->execute());
+  
+  return  $count > 0 ? true : false;
 }

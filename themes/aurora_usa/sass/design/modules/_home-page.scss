@@ -77,7 +77,7 @@
 
 .tiles {
   width: 300px;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   padding-top: 15px;
   @include breakpoint($bp-home-mid) {
     width: 615px;
@@ -327,7 +327,7 @@
 .usa-home-featured {
   position: relative;
   background-color: $black;
-  padding: 0 0 36px;
+  padding: 5px 0 36px;
   @extend %un-margin;
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;

@@ -317,6 +317,7 @@
         width: 14px;
         &.flex-active, &:hover {
           background: $white;
+          border: 1px solid $off-white;
         }
       }
     }

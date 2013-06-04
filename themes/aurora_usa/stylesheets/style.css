@@ -507,7 +507,7 @@ strong, dfn, b {
   margin: 0;
 }
 .usa-secondary-menu li a {
-  color: white;
+  color: #a3a3a3;
 }
 .usa-secondary-menu ul {
   margin: 0;
@@ -2032,22 +2032,22 @@ input[type="radio"], input[type="checkbox"] {
     padding-bottom: 12px;
   }
   #tv-show-menu li .item-list a {
-    color: #a3a3a3;
+    color: white;
     font-size: 16px;
     line-height: 16px;
     display: inline-block;
   }
   #tv-show-menu li .item-list a:visited {
-    color: #a3a3a3;
+    color: white;
   }
   #tv-show-menu li .item-list a:focus {
-    color: #a3a3a3;
+    color: white;
   }
   #tv-show-menu li .item-list a:hover {
-    color: #ebebeb;
+    color: #a3a3a3;
   }
   #tv-show-menu li .item-list a:active {
-    color: #a3a3a3;
+    color: white;
   }
   #tv-show-menu li:hover > a {
     position: relative;
@@ -3015,7 +3015,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .tiles {
   width: 300px;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   padding-top: 15px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -3294,7 +3294,7 @@ input[type="radio"], input[type="checkbox"] {
 .usa-home-featured {
   position: relative;
   background-color: #1f1f1f;
-  padding: 12px 0 36px;
+  padding: 0 0 36px;
 }
 .usa-adrails .usa-home-featured, .ie9 .usa-home-featured, .ie8 .usa-home-featured {
   background-color: transparent;
@@ -4271,10 +4271,10 @@ span#on-now-episode {
 .block-usanetwork-video .view .expandable-toggle li {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: #4b4b4b;
+  color: #b0b0b0;
 }
 .block-usanetwork-video .view .expandable-toggle li a {
-  color: #4b4b4b;
+  color: #b0b0b0;
 }
 
 .block-usanetwork-video.usa-secondary-menu {
@@ -4294,7 +4294,7 @@ span#on-now-episode {
 @media (min-width: 1024px) {
   .block-usanetwork-video.usa-secondary-menu .categories li.active a {
     background-color: #3d3d3d;
-    color: #a3a3a3;
+    color: white;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -4314,6 +4314,7 @@ span#on-now-episode {
 @media (min-width: 1024px) {
   .block-usanetwork-video.usa-secondary-menu a:hover {
     background-color: #3d3d3d;
+    color: white;
   }
 }
 @media (min-width: 1024px) {
@@ -4702,14 +4703,16 @@ span#on-now-episode {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper {
-    width: 100%;
-    height: 60.975609756098%;
+    width: 330px;
+    height: 201px;
+    margin: 0 auto;
+    float: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset .video-player-wrapper {
-    float: none;
     margin-bottom: 15px;
+    margin-right: 15px;
   }
 }
 @media (min-width: 1275px) {
@@ -4724,8 +4727,8 @@ span#on-now-episode {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper iframe {
-    height: 60.975609756098%;
-    width: 100%;
+    width: 330px;
+    height: 201px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -4874,14 +4877,14 @@ span#on-now-episode {
 }
 .usa-tv-show .panel-row {
   clear: both;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 .usa-tv-show .panel-row .dart-tag {
   height: 250px;
   width: 300px;
 }
 .usa-tv-show .panel-row.a-spot-panel {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .usa-tv-show .panel-col1 {
   float: left;
@@ -4895,6 +4898,7 @@ span#on-now-episode {
   line-height: 1.5em;
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
+  margin-top: 1px;
 }
 @media (min-width: 645px) {
   .usa-tv-show h2 {
@@ -4988,7 +4992,7 @@ span#on-now-episode {
   right: -30px;
 }
 .expandable-container .expandable-toggle {
-  color: #4b4b4b;
+  color: #b0b0b0;
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -5001,7 +5005,7 @@ span#on-now-episode {
   width: 0;
   height: 0;
   border: solid 18px;
-  border-color: #4b4b4b transparent transparent transparent;
+  border-color: #b0b0b0 transparent transparent transparent;
   border-width: 12px 18px 18px;
   top: 18px;
   content: "";
@@ -5024,7 +5028,7 @@ span#on-now-episode {
   width: 0;
   height: 0;
   border: solid 18px;
-  border-color: transparent transparent #4b4b4b transparent;
+  border-color: transparent transparent #b0b0b0 transparent;
   border-width: 18px 18px 12px;
   bottom: 18px;
   top: auto;
@@ -5147,6 +5151,7 @@ body.usa-social {
 }
 #block-usanetwork-social-usa-show-social-tab-nav a {
   border-top: 1px solid #878785;
+  color: #a3a3a3;
 }
 #block-usanetwork-social-usa-show-social-tab-nav a.active {
   color: white;
@@ -5155,7 +5160,6 @@ body.usa-social {
 @media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav a.active {
     background-color: #3d3d3d;
-    color: #a3a3a3;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -5174,6 +5178,7 @@ body.usa-social {
 }
 #block-usanetwork-social-usa-show-social-tab-nav a:hover {
   background-color: #4b4b4b;
+  color: white;
 }
 @media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav a:hover {
@@ -5202,9 +5207,10 @@ body.usa-social {
     border-top: 0;
     border-left: 1px solid #2d2d2d;
     border-right: 1px solid #2d2d2d;
+    color: #a3a3a3;
   }
   #block-usanetwork-social-usa-show-social-tab-nav a:hover {
-    color: #a3a3a3;
+    color: white;
     border-left: 1px solid #414141;
     border-right: 1px solid #414141;
   }
@@ -5855,7 +5861,7 @@ input.echo-submit-text {
 .usanetwork_social_show_comment {
   border-bottom: 1px solid #3d3d3d;
   border-top: 1px solid #161616;
-  padding: 20px 15px;
+  padding: 10px 15px;
 }
 .usanetwork_social_show_comment .echo-item-content {
   color: white;

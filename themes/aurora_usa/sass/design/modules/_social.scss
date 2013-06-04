@@ -69,7 +69,7 @@ body.usa-social {
     }
     &.first a {
       @include breakpoint($bp-social-mid-width) {
-        font-family: $headline-thn;
+        font-family: $headline-reg;
       }
     }
   }
@@ -211,7 +211,7 @@ body.usa-social {
     .title {
       line-height: 1em;
       font-size: 14px;
-      font-family: $headline-thn;
+      font-family: $headline-reg;
       display: inline-block;
       text-align: left;
       vertical-align: middle;

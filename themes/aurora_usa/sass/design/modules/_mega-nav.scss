@@ -340,6 +340,7 @@ $logo-height-med-2: 32px;
     border-color: $gray-med;
   }
   @include breakpoint($bp-menu-switch) {
+    @include box-shadow(rgba(0,0,0,.7) 0 -20px 40px);
     display: block;
     position: absolute;
     left: 0;

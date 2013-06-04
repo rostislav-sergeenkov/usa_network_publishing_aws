@@ -4,6 +4,7 @@
   <?php endif; ?>
 
   <?php
+  $print_cta = null;
   if (($text_1 && $text_1 != '&nbsp;') || ($text_2 && $text_2 != '&nbsp;')) {
     $print_cta = true;
   }
@@ -18,12 +19,12 @@
     </div>
   <?php endif; ?>
 
-  <div data-picture data-alt="" data-class="tile-img">
+  <div class="picture-wrapper">
     <?php if ($media_wide): ?>
-      <div class="media-wide"><?php print $media_wide; ?></div>
+      <div class="media-wide"  data-picture data-alt="" data-class="tile-img"><?php print $media_wide; ?></div>
     <?php endif; ?>
     <?php if ($media_normal): ?>
-      <div class="media-normal"><?php print $media_normal; ?></div>
+      <div class="media-normal"  data-picture data-alt="" data-class="tile-img"><?php print $media_normal; ?></div>
     <?php endif; ?>
   </div>
 

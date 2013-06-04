@@ -619,6 +619,10 @@ function aurora_usa_field__field_promo_wide_image($vars) {
     $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1275px)"></div>';
     $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1275px) and (min-device-pixel-ratio: 2.0)"></div>';
 
+    $output .= '<noscript>';
+    $output .= theme('image_style', array('style_name' => '615x250', 'path' => $filepath, 'alt' => '', 'title' => ''));
+    $output .= '</noscript>';
+    return $output;
   }
 }
 
@@ -640,7 +644,9 @@ function aurora_usa_field__field_promo_regular_image($vars) {
     $output .= '<noscript>';
     $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
     $output .= '</noscript>';
+    return $output;
   }
+
   // c-spot
   if ($vars['element']['#view_mode'] == 'home_promo') {
     // polyfill
@@ -652,6 +658,7 @@ function aurora_usa_field__field_promo_regular_image($vars) {
     $output .= '<noscript>';
     $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
     $output .= '</noscript>';
+    return $output;
   }
 }
 

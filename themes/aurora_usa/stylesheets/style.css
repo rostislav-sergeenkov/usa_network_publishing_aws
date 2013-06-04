@@ -4163,6 +4163,9 @@ span#on-now-episode {
     width: 1245px;
   }
 }
+.usa-adrails .block-usanetwork-video {
+  width: 929px;
+}
 
 @media (min-width: 487px) {
   .block-usanetwork-video .view .view-content {
@@ -4694,6 +4697,9 @@ span#on-now-episode {
     width: 1245px;
   }
 }
+.usa-adrails .featured-asset {
+  width: 930px;
+}
 .featured-asset .video-player-wrapper {
   position: relative;
   float: left;
@@ -4721,6 +4727,10 @@ span#on-now-episode {
     height: 567px;
   }
 }
+.usa-adrails .featured-asset .video-player-wrapper {
+  width: 615px;
+  height: 375px;
+}
 .featured-asset .video-player-wrapper iframe {
   width: 615px;
   height: 375px;
@@ -4742,6 +4752,10 @@ span#on-now-episode {
     width: 930px;
     height: 567px;
   }
+}
+.usa-adrails .featured-asset .video-player-wrapper iframe {
+  width: 615px;
+  height: 375px;
 }
 .featured-asset .meta {
   overflow: hidden;

@@ -268,6 +268,12 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
             break;
+          case 'block_cover_title_lg':
+            if ($vars['element']['#bundle'] == 'media_gallery' ) {
+              $title = strip_tags($vars['element'][0]['#markup']);
+              $vars['items'][0]['#markup'] =  '<h2>' . $title . ' gallery</h2>';
+            }
+            break; 
         }
       }
       break;

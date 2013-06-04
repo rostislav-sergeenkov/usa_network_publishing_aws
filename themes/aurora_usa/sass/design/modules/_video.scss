@@ -30,6 +30,9 @@
   }
   @include breakpoint($bp-video-very-large-width) {
     width: 1245px;
+    .usa-adrails & {
+      width: 929px;
+    }  
   }
 }
 
@@ -485,6 +488,9 @@
   }
   @include breakpoint($bp-video-very-large-width) {
     width: 1245px;
+    .usa-adrails & {
+      width: 930px;
+    }
   }
   .video-player-wrapper {
     position: relative;
@@ -493,8 +499,6 @@
     height: 375px;
     margin-right: 15px;
     @include breakpoint($bp-video-player-section) {
-      //width: 100%;
-      //height: 60.975609756098%;
         width: 330px;
         height: 201px;
         margin: 0 auto;
@@ -507,6 +511,10 @@
     @include breakpoint($bp-video-very-large-width) {
       width: 930px;
       height: 567px;
+      .usa-adrails & {
+        width: 615px;
+        height: 375px;
+      }  
     }
     iframe {
       width: 615px;
@@ -522,6 +530,10 @@
       @include breakpoint($bp-video-very-large-width) {
         width: 930px;
         height: 567px;
+        .usa-adrails & {
+          width: 615px;
+          height: 375px;
+        }  
       }
     }
   }

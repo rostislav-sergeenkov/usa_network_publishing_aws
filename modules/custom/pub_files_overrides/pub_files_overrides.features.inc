@@ -56,7 +56,7 @@ function pub_files_overrides_strongarm_alter(&$data) {
       'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['media_gallery'] = array(
-      'custom_settings' => TRUE,
+      'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['person_cover_image'] = array(
       'custom_settings' => TRUE,

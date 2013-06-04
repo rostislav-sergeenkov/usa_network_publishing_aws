@@ -75,6 +75,9 @@
 @import "design/modules/a-spot";
 @import "design/modules/schedule";
 @import "design/design";
+@import "icons/*.png";
+@include all-icons-sprites;
+
 // load this last
 @import "design/modules/ads";
 

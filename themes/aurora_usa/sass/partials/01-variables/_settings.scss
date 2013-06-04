@@ -2,6 +2,9 @@
 // Kit Default Variables
 ////////////////////////////
 
+
+$icons-spacing: 20px;
+
 // Pick a reset or normalization
 // accepted values: 'meyer' (default), 'normalize', false
 // choose to reset header sizes (applies to 'normalize' only)
@@ -76,7 +79,7 @@ $ziFilterOpen   : 95;
 // Breakpoint variables
 // small grid breakpoints
 $breakpoint-no-query-fallbacks: true;
-$bp-menu-switch: 768px;
+$bp-menu-switch: 769px;
 $bp-grid-small-2-squish: max-width 524px;
 $bp-grid-small-2: 525px;
 $bp-grid-small-3: 772px;

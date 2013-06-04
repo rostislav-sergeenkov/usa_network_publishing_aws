@@ -128,12 +128,21 @@
   left: 5px;
   top: 39%;
   z-index: 96;
+  .ie9 &, .ie8 & {
+    @extend .icons-gray-arrow-left;
+    width: 25px;
+    height: 33px;
+    text-indent: -9999px;
+  }
   &:hover {
     color: $gray-light;
   }
   &.next {
     left: auto;
     right: 0;
+    .ie9 &, .ie8 & {
+      @extend .icons-gray-arrow-right;
+    }
   }
 }
 

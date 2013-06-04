@@ -8,7 +8,7 @@
   overflow: hidden;
   position: relative;
   font-family: $headline-reg;
-  
+
   h1#page-title {
     @include float-left;
     font-family: $headline-reg;
@@ -41,7 +41,8 @@
     .separator {
       @include inline-block;
       //background: sprite($icons-sprites, 'line-arrow-gray');
-      background:  url('../images/icons-sprite.png') 0 0;
+      //background:  url('../images/icons-sprite.png') 0 0;
+      @extend .icons-line-arrow-gray;
       height: 36px;
       margin: -4px 6px 0 5px;
       width: 11px;

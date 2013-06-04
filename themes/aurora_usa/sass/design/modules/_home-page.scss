@@ -8,34 +8,45 @@
 .promo-metadata {
   position: absolute;
   width: 100%;
-  height: 62px;
+  height: 77px;
   bottom: 0;
   background-color: $black-trans;
-  padding: 14px 14px 13px;
+  padding: 17px 15px 8px;
   h2, h3 {
     margin: 0;
     line-height: 1;
   }
   h2 {
     font-size: 20px;
+    font-family: $headline-semi;
+    line-height: 22.5px;
+    margin-bottom: 3px;
+    // outline: 1px dashed white;
   }
   h3 {
     font-size: 15px;
+    font-family: $headline-reg;
+    line-height: 24px;
   }
   @include breakpoint($bp-home-narrowest) {
     height: 32px;
     padding: 4px 8px 3px;
     h2 {
       font-size: 12px;
+      line-height: 13.5px;
+      margin-bottom: 1px;
     }
     h3 {
       font-size: 10px;
+      line-height: 12px;
     }
   }
   .usa-adrails &, .ie9 &, .ie8 & {
-    padding: 14px 14px 13px;
+    padding: 17px 15px 8px;
     h2 {
       font-size: 20px;
+      line-height: 22.5px;
+      margin-bottom: 3px;
     }
     h3 {
       font-size: 15px;
@@ -66,7 +77,7 @@
 
 .tiles {
   width: 300px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
   padding-top: 15px;
   @include breakpoint($bp-home-mid) {
     width: 615px;
@@ -306,6 +317,7 @@
         width: 14px;
         &.flex-active, &:hover {
           background: $white;
+          border: 1px solid $off-white;
         }
       }
     }
@@ -316,33 +328,40 @@
 .usa-home-featured {
   position: relative;
   background-color: $black;
-  padding: 12px 0 36px;
+  padding: 5px 0 36px;
   @extend %un-margin;
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
   .carousel-item {
     @extend .title-overlay;
-  }
-  .meta {
-    text-align: left;
-    line-height: 1.1;
-    letter-spacing: 0.05em;
-    max-width: 221px;
-    height: 54px;
-    @include breakpoint($bp-home-widest) {
-      height: 60px;
-      max-width: none;
+    .meta {
+      text-align: left;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      max-width: 221px;
+      height: 50px;
+      padding: 8px 15px 8px;
+      @include breakpoint($bp-home-widest) {
+        height: 77px;
+        padding: 17px 15px 8px;
+        max-width: none;
+      }
     }
   }
   .field-name-field-promo-text-line-1 {
     font-family: $headline-semi;
     font-size: 20px;
+    line-height: 22.5px;
+    margin-bottom: 3px;
   }
   .caption {
+    font-family: $headline-reg;
     font-size: 10px;
+    line-height: 12px;
     @include breakpoint($bp-home-widest) {
       font-size: 15px;
+      line-height: 24px;
     }
   }
   .featured-carousel {

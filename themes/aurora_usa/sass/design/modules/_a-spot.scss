@@ -33,6 +33,9 @@
       top: 140px;
       padding-left: 35px;
     }
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+        top: 22%;
+    }
   }
   .meta {
     margin-bottom: 10px;
@@ -127,6 +130,9 @@
   .show-title,
   .show-time {
     font-size: 24px;
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+      font-size: 1.7em;
+    }
     @include breakpoint($bp-aspot-mid-range-width) {
       font-size: 34px;
     }
@@ -200,12 +206,14 @@
   }
   img, .flexslider & img {
     max-height: none;
-    .ie9 &, .ie8 & {
-      width: 1245px;
-      height: 709px;
-    }
     .usa-adrails &, .ie9 &, .ie8 & {
       width: 100%;
+    }
+  }
+  .flexslider img {
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+      width: 1245px;
+      height: 709px;
     }
   }
 }

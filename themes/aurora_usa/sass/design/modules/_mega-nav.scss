@@ -402,7 +402,7 @@ $logo-height-med-2: 32px;
           }
         }
         a {
-          @include link-colors($gray-extra-light, $off-white, $gray-extra-light, $gray-extra-light, $gray-extra-light);
+          @include link-colors($white, $gray-extra-light, $white, $white, $white);
           font-size: 16px;
           line-height: 16px;
           display: inline-block;

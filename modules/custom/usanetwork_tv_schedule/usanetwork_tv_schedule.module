@@ -185,7 +185,9 @@ function usanetwork_tv_schedule_on_now_block() {
  */
 function usanetwork_tv_schedule_schedule_page() {
   $output = '';
-  drupal_add_css(drupal_get_path('module', 'usanetwork_tv_schedule') . '/css/usanetwork_tv_schedule.css');
+  // styles moved to theme
+  //@TODO clean this up
+  //drupal_add_css(drupal_get_path('module', 'usanetwork_tv_schedule') . '/css/usanetwork_tv_schedule.css');
 
   // switch to ET timezone to perform calculations and then switch back to original timezone
   $orginal_tz = date_default_timezone_get();
@@ -238,13 +240,13 @@ function usanetwork_tv_schedule_schedule_page() {
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
-        $show = l(check_plain($program[0]), 'movies');
+        $show = l(check_plain($program[0]), 'movies', array('html' => true));
       } else {
         $show = check_plain($program[0]);
       }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
-      $show = l(check_plain($program[0]), $path);
+      $show = l(check_plain($program[0]), $path, array('html' => true));
     }
 
     $row = array(
@@ -266,7 +268,9 @@ function usanetwork_tv_schedule_schedule_page() {
   $output .= l('>', $cpath, array('attributes' => array('class' => array('next-day')), 'query' => array('sdate' => date('Y_m_d', $ctime+86400))));
   $output .= '</div>';
 
+  $output .= '<div class="schedule-table">';
   $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
+  $output .= '</div>';
 
   // switch back to original server time zone
   date_default_timezone_set($orginal_tz);

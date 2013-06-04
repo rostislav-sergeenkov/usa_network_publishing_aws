@@ -8,32 +8,45 @@
 .promo-metadata {
   position: absolute;
   width: 100%;
+  height: 77px;
   bottom: 0;
   background-color: $black-trans;
-  padding: 14px 14px 13px;
+  padding: 17px 15px 8px;
   h2, h3 {
     margin: 0;
     line-height: 1;
   }
   h2 {
     font-size: 20px;
+    font-family: $headline-semi;
+    line-height: 22.5px;
+    margin-bottom: 3px;
+    // outline: 1px dashed white;
   }
   h3 {
     font-size: 15px;
+    font-family: $headline-reg;
+    line-height: 24px;
   }
   @include breakpoint($bp-home-narrowest) {
+    height: 32px;
     padding: 4px 8px 3px;
     h2 {
       font-size: 12px;
+      line-height: 13.5px;
+      margin-bottom: 1px;
     }
     h3 {
       font-size: 10px;
+      line-height: 12px;
     }
   }
-  .usa-adrails & {
-    padding: 14px 14px 13px;
+  .usa-adrails &, .ie9 &, .ie8 & {
+    padding: 17px 15px 8px;
     h2 {
       font-size: 20px;
+      line-height: 22.5px;
+      margin-bottom: 3px;
     }
     h3 {
       font-size: 15px;
@@ -42,7 +55,6 @@
   .promo-cta {
     width: 44px;
     float: left;
-    // margin-right: 12px;
     & ~ h2, & ~ h3 {
       padding-left: 56px;
     }
@@ -53,7 +65,7 @@
         padding-left: 22px;
       }
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       width: 44px;
       & ~ h2, & ~ h3 {
         padding-left: 56px;
@@ -65,7 +77,7 @@
 
 .tiles {
   width: 300px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
   padding-top: 15px;
   @include breakpoint($bp-home-mid) {
     width: 615px;
@@ -73,7 +85,7 @@
   @include breakpoint($bp-home-wide) {
     width: 930px;
   }
-  .usa-adrails & {
+  .usa-adrails &, .ie9 &, .ie8 & {
     width: 930px !important;
   }
   @include breakpoint($bp-home-widest) {
@@ -125,7 +137,7 @@
       height: 506px;
       width: 1245px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       height: 378px;
       width: 930px;
     }
@@ -155,7 +167,7 @@
       right: 0;
       position: absolute;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       display: inline;
       float: right;
       height: 250px;
@@ -202,7 +214,7 @@
       .media-wide {
         display: block;
       }
-      .usa-adrails & {
+      .usa-adrails &, .ie9 &, .ie8 & {
         display: inline;
         float: left;
         height: 250px;
@@ -216,7 +228,7 @@
         }
       }
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       display: inline;
       float: left;
       height: 250px;
@@ -239,7 +251,7 @@
       height: 250px;
       width: 300px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       margin-right: 15px;
       margin-bottom: 15px;
       height: 250px;
@@ -261,7 +273,6 @@
     .flex-next, .flex-prev {
       @include transition-duration(0.3s);
       @include transition-property(opacity, color, background-color);
-      // @include opacity(0);
       display: block;
       color: rgba($white, 0);
       background-color: rgba($black, 0);
@@ -270,14 +281,9 @@
         background-color: rgba($black, 0.9);
       }
     }
-    // .flex-direction-nav {
-    //   .flex-next, .flex-prev {
 
-    //   }
-    // }
     &:hover {
       .flex-next, .flex-prev {
-        // @include opacity(0.7);
         color: rgba($white, 0.7);
         background-color: rgba($black, 0.7);
       }
@@ -311,6 +317,7 @@
         width: 14px;
         &.flex-active, &:hover {
           background: $white;
+          border: 1px solid $off-white;
         }
       }
     }
@@ -321,36 +328,40 @@
 .usa-home-featured {
   position: relative;
   background-color: $black;
-  padding: 12px 0 36px;
+  padding: 5px 0 36px;
   @extend %un-margin;
-  .usa-adrails & {
+  .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
   .carousel-item {
     @extend .title-overlay;
-    border: 1px solid $black;
-  }
-  .meta {
-    text-align: left;
-    line-height: 1.1;
-    letter-spacing: 0.05em;
-    max-width: 221px;
-    @include breakpoint($bp-home-widest) {
-      height: 67px;
-      max-width: none;
+    .meta {
+      text-align: left;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      max-width: 221px;
+      height: 50px;
+      padding: 8px 15px 8px;
+      @include breakpoint($bp-home-widest) {
+        height: 77px;
+        padding: 17px 15px 8px;
+        max-width: none;
+      }
     }
   }
   .field-name-field-promo-text-line-1 {
     font-family: $headline-semi;
     font-size: 20px;
-    @include breakpoint($bp-home-widest) {
-      font-size: 26px;
-    }
+    line-height: 22.5px;
+    margin-bottom: 3px;
   }
   .caption {
+    font-family: $headline-reg;
     font-size: 10px;
+    line-height: 12px;
     @include breakpoint($bp-home-widest) {
       font-size: 15px;
+      line-height: 24px;
     }
   }
   .featured-carousel {
@@ -367,7 +378,7 @@
     @include breakpoint($bp-home-widest) {
       width: 1245px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       width: 930px;
     }
     > h2 {
@@ -381,13 +392,39 @@
     width: auto !important;
     @include breakpoint($bp-home-widest) {
       height: 254px !important;
-      li.carousel-item {
+      .carousel-item {
+        width: 300px;
         height: 254px;
+        margin-right: 15px;
         img, .meta {
           width: 300px;
         }
         img {
           height: 254px;
+        }
+      }
+      li.carousel-item {
+        &:last-of-type {
+          display: none;
+        }
+      }
+    }
+    .usa-adrails &, .ie9 &, .ie8 & {
+      height: 184px !important;
+      .carousel-item {
+        width: 221px;
+        height: 184px;
+        margin-right: 15px;
+        img, .meta {
+          width: 221px;
+        }
+        img {
+          height: 184px;
+        }
+      }
+      li.carousel-item {
+        &:last-of-type {
+          display: block;
         }
       }
     }
@@ -407,10 +444,11 @@
       width: 1000px;
     }
     @include breakpoint($bp-home-widest) {
-      width: 1245px;
+      display: none;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       width: 1000px;
+      display: block;
     }
   }
 }

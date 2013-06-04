@@ -13,6 +13,32 @@ body.usa-social {
   width: 32px;
   display: inline-block;
   margin-left: 5px;
+  .ie9 &, .ie8 & {
+    &.usasocial-tumblr {
+      @extend .icons-tumblr-v3;
+      &:hover {
+        @extend .icons-tumblr-hover-v3;
+      }
+    }
+    &.usasocial-pinterest {
+      @extend .icons-pinterest-v6;
+      &:hover {
+        @extend .icons-pinterest-hover-v6;
+      }
+    }
+    &.usasocial-fb {
+      @extend .icons-facebook-v6;
+      &:hover {
+         @extend .icons-facebook-hover-v6;
+      }
+    }
+    &.usasocial-twitter {
+      @extend .icons-twitter-v4;
+      &:hover {
+        @extend .icons-twitter-hover-v4;
+      }
+    }
+  }
   &:hover {
     background-color: $white;
   }
@@ -49,12 +75,13 @@ body.usa-social {
   }
   a {
     border-top: 1px solid $gray-light;
+    color: $gray-extra-light;
     &.active {
         color: $white;
         border-bottom: 0;
         @include breakpoint($bp-social-mid-width) {
           background-color: $gray-med;
-          color: $gray-extra-light;
+          //color: $gray-extra-light;
           border-left: 1px solid $gray-med-dark;
           border-right: 1px solid $gray-med-dark;
           &:after {
@@ -68,6 +95,7 @@ body.usa-social {
     }
     &:hover {
       background-color: $gray-ultra-med;
+      color: $white;
       @include breakpoint($bp-social-mid-width) {
         background-color: $gray-med;
       }
@@ -88,8 +116,9 @@ body.usa-social {
       border-top: 0;
       border-left: 1px solid $gray-dark;
       border-right: 1px solid $gray-dark;
+      color: $gray-extra-light;
       &:hover {
-        color: $gray-extra-light;
+        color: $white;
         border-left: 1px solid $gray-med-dark;
         border-right: 1px solid $gray-med-dark;
       }
@@ -224,6 +253,13 @@ body.usa-social {
       height: 21px;
       padding:0;
       font-size: 1.4em;
+      .ie9 &, .ie8 & {
+        text-indent: -9999px;
+        @include border-radius(0);
+        height: 18px;
+        width: 9px;
+        margin-right: 5px;
+      }
       &:hover {
         color: $blue;
       }
@@ -233,6 +269,16 @@ body.usa-social {
         color: $gray-med-dark;
         padding-top: 3px;
         width: 21px;
+        .ie9 &, .ie8 &{
+          @extend .icons-pinterest-v4;
+          width: 20px;
+          height: 20px;
+          padding-top: 0;
+          background-color: transparent;
+          &:hover {
+            @extend .icons-pinterest-hover-v4;
+          }
+        }
         &:hover {
           background-color: $blue;
           color: $gray-med-dark;
@@ -240,6 +286,30 @@ body.usa-social {
     }
     .usasocial-fb {
       margin-left:3px;
+      .ie9 &, .ie8 & {
+         @extend .icons-follow-facebook-v2;
+         &:hover {
+          @extend .icons-follow-facebook-hover-v2;
+         }
+      }
+    }
+    .usasocial-twitter {
+      .ie9 &, .ie8 & {
+        @extend .icons-follow-twitter-v2;
+        width: 22px;
+        &:hover {
+          @extend .icons-follow-twitter-hover-v2;
+        }
+      }
+    }
+    .usasocial-tumblr {
+      .ie9 &, .ie8 & {
+        @extend .icons-tumblr-v2;
+        width: 12px;
+        &:hover {
+          @extend .icons-tumblr-hover-v2;
+        }
+      }
     }
   }
   .attachment-after .view-usa-shows.view-display-id-attachment_1 {
@@ -706,7 +776,7 @@ input.echo-submit-text {
 .usanetwork_social_show_comment {
   border-bottom: 1px solid $gray-med;
   border-top: 1px solid $black-dark;
-  padding: 20px 15px;
+  padding: 10px 15px;
   .echo-item-content {
     color: $white;
   }

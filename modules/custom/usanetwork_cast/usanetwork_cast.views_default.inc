@@ -221,7 +221,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['operator'] = 'not';
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
-    52 => '52',
+    256 => '256',
   );
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
@@ -415,7 +415,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['operator'] = 'not';
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
-    52 => '52',
+    256 => '256',
   );
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
@@ -557,7 +557,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_show_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_show_target_id']['title'] = 'Follow %1';
+  $handler->display->display_options['arguments']['field_show_target_id']['title'] = 'Follow';
   $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
@@ -989,7 +989,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_show_target_id']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_show_target_id']['title'] = 'Follow %1';
+  $handler->display->display_options['arguments']['field_show_target_id']['title'] = 'Follow';
   $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
@@ -1079,7 +1079,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Related Person (field_person) */
+  /* Contextual filter: Field: Person (field_person) */
   $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';

@@ -29,9 +29,12 @@
       top: 190px;
       padding-left: 50px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       top: 140px;
       padding-left: 35px;
+    }
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+        top: 22%;
     }
   }
   .meta {
@@ -45,7 +48,7 @@
     @include breakpoint($bp-aspot-large-width) {
        margin-bottom: 27px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       margin-bottom: 22px;
     }
   }
@@ -53,76 +56,52 @@
     position: relative;
     padding-left: 34px;
     font-size: 12px;
+    line-height: 35px;
     @include breakpoint($bp-aspot-mid-width) {
       top: 4px;
+      padding-left: 55px;
+      font-size: 14px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      line-height: 60px;
+      font-size: 18px;
+      padding-left: 70px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      line-height: 80px;
+      padding-left: 90px;
+      font-size: 25px;
+    }
+    .usa-adrails &, .ie9 &, .ie8 & {
+      line-height: 60px;
+      font-size: 18px;
+      padding-left: 70px;
     }
     .view-mode-usa_term_icon {
       float: left;
       width: 26px;
       position: relative;
-      top: -8px;
+      top: 2px;
       margin-left: -34px;
-      background-color: $black-trans-3;
-      border-radius: 50%;
       @include breakpoint($bp-aspot-mid-width) {
         width: 45px;
-        top: -16px;
-        margin-left: -52px;
-      }
-      @include breakpoint($bp-aspot-large-width) {
-        width: 70px;
-        top: -24px;
-        margin-left: -84px;
-      }
-      .usa-adrails & {
-        width: 70px;
-        top: -24px;
-        margin-left: -84px;
-      }
-    }
-    @include breakpoint($bp-aspot-mid-width) {
-      padding-left: 55px;
-      font-size: 14px;
-    }
-    @include breakpoint($bp-aspot-mid-range2-width) {
-      // padding-left: 70px;
-      font-size: 18px;
-    }
-    @include breakpoint($bp-aspot-large-width) {
-      padding-left: 90px;
-      font-size: 25px;
-    }
-    .usa-adrails & {
-      padding-left: 90px;
-      font-size: 18px;
-    }
-    &:before {
-      content: $space;
-      z-index: 1;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 35px;
-      height: 35px;
-      background-color: none;
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      @include breakpoint($bp-aspot-mid-range-width) {
-        width: 45px;
-        height: 45px;
+        top: -6px;
+        margin-left: -58px;
       }
       @include breakpoint($bp-aspot-mid-range2-width) {
         width: 60px;
-        height: 60px;
+        top: -2px;
+        margin-left: -74px;
       }
       @include breakpoint($bp-aspot-large-width) {
-        width: 80px;
-        height: 80px;
+        width: 77px;
+        top: 0;
+        margin-left: -90px;
       }
-      .usa-adrails & {
+      .usa-adrails &, .ie9 &, .ie8 & {
         width: 60px;
-        height: 60px;
+        top: -2px;
+        margin-left: -74px;
       }
     }
     span {
@@ -144,22 +123,24 @@
   }
   .show-title,
   .show-time,
-  .episode-title,
-  .cta {
+  .episode-title {
     margin: 0;
     line-height: 1;
   }
   .show-title,
   .show-time {
     font-size: 24px;
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+      font-size: 1.7em;
+    }
     @include breakpoint($bp-aspot-mid-range-width) {
       font-size: 34px;
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
       font-size: 44px;
     }
-    .usa-adrails & {
-      font-size: 44px;
+    .usa-adrails &, .ie9 &, .ie8 & {
+      font-size: 34px;
     }
   }
   .show-title,
@@ -198,9 +179,9 @@
       margin-bottom: 8px;
       font-size: 60px;
     }
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       margin-bottom: 8px;
-      font-size: 60px;
+      font-size: 44px;
     }
   }
   .episode-title {
@@ -215,8 +196,8 @@
     @include breakpoint($bp-aspot-large-width) {
       font-size: 28px;
     }
-    .usa-adrails & {
-      font-size: 28px;
+    .usa-adrails &, .ie9 &, .ie8 & {
+      font-size: 22px;
     }
   }
   .suits .show-time {
@@ -225,24 +206,14 @@
   }
   img, .flexslider & img {
     max-height: none;
-    .usa-adrails & {
+    .usa-adrails &, .ie9 &, .ie8 & {
       width: 100%;
     }
   }
+  .flexslider img {
+    .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
+      width: 1245px;
+      height: 709px;
+    }
+  }
 }
-
-
-
-/* make into icon font ? */
-//.aspot a .cta.watch:before {
-//  background-image: url("../img/home/watch.png");
-//}
-//.aspot a .cta.sync:before {
-//  background-image: url("../img/home/sync.png");
-//}
-//.aspot a .cta.favorite:before {
-//  background-image: url("../img/home/favorite.png");
-//}
-//.aspot a .cta.share:before {
-//  background-image: url("../img/home/share.png");
-//}

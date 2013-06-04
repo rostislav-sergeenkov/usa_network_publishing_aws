@@ -322,7 +322,7 @@ function usanetwork_blocks_tv_show_menu() {
       $link_fields = field_get_items('field_collection_item', $item, 'field_main_link');
       if (!empty($link_fields)) {
         foreach ($link_fields as $link) {
-          $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty')))) : l($link['title'], $link['url']);
+          $mlinks['data'] = empty($link['url']) ? l($link['title'], '', array('attributes' => array('class' => array('link-empty', 'parent-trigger')))) : l($link['title'], $link['url'], array('attributes' => array('class' => array('parent-trigger'))));
         }
       }
 
@@ -335,7 +335,7 @@ function usanetwork_blocks_tv_show_menu() {
       $showlinks[] = $mlinks;
     }
     if (!empty($showlinks)) {
-      $output .= '<div class="tv-show-menu-trigger">' . l($displaytitle, 'node/' . $show->nid) . '</div>';
+      $output .= '<div class="tv-show-menu-trigger">' . l($displaytitle, 'node/' . $show->nid, array('html' => true)) . '</div>';
       $output .= '<div id="tv-show-menu">' . theme('item_list', array('items' => $showlinks)) . '</div>';
     }
   }

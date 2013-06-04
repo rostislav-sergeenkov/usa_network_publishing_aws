@@ -18,7 +18,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '7';
   $tag->sz = '300x250';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:0:{}}';
   $export['300x250_ifr_reload'] = $tag;
 
   $tag = new stdClass();
@@ -29,7 +29,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '7';
   $tag->sz = '300x250';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:0:{}}';
   $export['300x250_scr'] = $tag;
 
   $tag = new stdClass();
@@ -40,7 +40,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '7';
   $tag->sz = '300x250';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:0:{}}';
   $export['300x250_scr_vid_short'] = $tag;
 
   $tag = new stdClass();
@@ -51,7 +51,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '1';
   $tag->sz = '728x90,970x66';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:1:{i:0;a:3:{s:3:"key";s:5:"dcopt";s:3:"val";s:3:"ist";s:4:"eval";i:0;}}}';
   $export['728x90_970x66_ifr_rel'] = $tag;
 
   $tag = new stdClass();
@@ -62,7 +62,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '1';
   $tag->sz = '728x90,970x66';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:1:{i:0;a:3:{s:3:"key";s:5:"dcopt";s:3:"val";s:3:"ist";s:4:"eval";i:0;}}}';
   $export['728x90_970x66_scr'] = $tag;
 
   $tag = new stdClass();
@@ -73,7 +73,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '1';
   $tag->sz = '728x90';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:3:"usa";s:4:"zone";s:5:"home_";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adi";}s:8:"key_vals";a:1:{i:0;a:3:{s:3:"key";s:5:"dcopt";s:3:"val";s:3:"ist";s:4:"eval";i:0;}}}';
   $export['728x90_ifr_reload'] = $tag;
 
   $tag = new stdClass();
@@ -84,7 +84,7 @@ function usanetwork_ads_default_dart_tag() {
   $tag->pos = '1';
   $tag->sz = '728x90';
   $tag->block = 1;
-  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:3:{i:0;a:3:{s:3:"key";s:4:"sect";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sect";s:4:"eval";i:1;}i:1;a:3:{s:3:"key";s:3:"sub";s:3:"val";s:35:"Drupal.settings.USA.DART.values.sub";s:4:"eval";i:1;}i:2;a:3:{s:3:"key";s:4:"sub2";s:3:"val";s:36:"Drupal.settings.USA.DART.values.sub2";s:4:"eval";i:1;}}}';
+  $tag->settings = 'a:3:{s:9:"overrides";a:3:{s:4:"site";s:0:"";s:4:"zone";s:0:"";s:4:"slug";s:0:"";}s:7:"options";a:2:{s:10:"scriptless";i:0;s:6:"method";s:3:"adj";}s:8:"key_vals";a:1:{i:0;a:3:{s:3:"key";s:5:"dcopt";s:3:"val";s:3:"ist";s:4:"eval";i:0;}}}';
   $export['728x90_scr_vid'] = $tag;
 
   return $export;

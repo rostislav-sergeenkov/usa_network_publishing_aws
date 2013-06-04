@@ -524,10 +524,10 @@
     }  
     iframe {
       width: 615px;
-      height: 375px;
+      height: 346px;
       @include breakpoint($bp-video-player-section) {
         width: 330px;
-        height: 201px;
+        height: 186px;
       }
       @include breakpoint($bp-video-mid-range4-width) {
         float: none;
@@ -535,7 +535,7 @@
       }
       @include breakpoint($bp-video-very-large-width) {
         width: 930px;
-        height: 567px;
+        height: 523px;
       }
       .usa-adrails & {
         width: 615px;

@@ -57,8 +57,8 @@ class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
-      $updated_date = date('c', strtotime('-24 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
+      $updated_date = date('c', strtotime('-1 hours'));
+      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
       $items_url .= '?range=1-500';
@@ -267,8 +267,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
-      $updated_date = date('c', strtotime('-24 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
+      $updated_date = date('c', strtotime('-1 hour'));
+      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
       // As of 5/14/13 there were 4329 MPX videos.  Setting range to grab them all,

@@ -16,6 +16,7 @@
           useCSS: true,
           touch: true,
           smoothHeight: false,
+          slideshow: false,
           start: function(){
             update_counter();
           },

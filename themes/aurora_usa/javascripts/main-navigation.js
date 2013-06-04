@@ -69,7 +69,7 @@
                 .find('li .item-list ul')
                   .addClass('panel-sub-nav')
                   .end()
-                .find('.shows-expandable a:first-child')
+                .find('.shows-expandable a.parent-trigger')
                   .click(function() {
                     $(this).parent().toggleClass('active-item');
                     return false;

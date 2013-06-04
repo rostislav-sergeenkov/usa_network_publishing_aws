@@ -58,9 +58,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/default/files-private';
 
     // Memchache settings.
-    $conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
-    $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    //$conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
+    //$conf['cache_default_class'] = 'MemCacheDrupal';
+    //$conf['cache_class_form'] = 'DrupalDatabaseCache';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "GMWX-32384";
@@ -80,9 +80,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'stg/sites/default/files-private';
 
     // Memchache settings.
-    $conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
-    $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['cache_class_form'] = 'DrupalDatabaseCache';
+    //$conf['cache_backends'][] = './profiles/all/modules/contrib/memcache/memcache.inc';
+    //$conf['cache_default_class'] = 'MemCacheDrupal';
+    //$conf['cache_class_form'] = 'DrupalDatabaseCache';
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "GMWX-32384";
@@ -126,18 +126,20 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
  */
   drupal_fast_404();
 
+// commenting out the memory changes
 /**
  * Use the page_memory_limit module to increase the page memory limit on admin
  * pages only.
  */
+ /*
 $conf['page_memory_limit']['admin/*'] = '256M';
 $conf['page_memory_limit']['devel/*'] = '256M';
 $conf['page_memory_limit']['batch'] = '256M';
 if (isset($_SERVER['argv'][0]) && strrpos($_SERVER['argv'][0], 'drush.php') !== FALSE) {
   ini_set('memory_limit', '256M');
 }
-
+*/
 /**
  * Setting a reasonable minimum php memory limit.
  */
-ini_set('memory_limit', '256M');
+//ini_set('memory_limit', '256M');

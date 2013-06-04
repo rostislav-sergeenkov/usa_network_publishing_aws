@@ -84,7 +84,7 @@ function usanetwork_social_menu() {
   );
   // tv show trending page
   $items['node/%node/social/latest'] = array(
-    'title' => t('latest'),
+    'title' => t('social buzz'),
     'page callback' => 'usanetwork_social_trending',
     'page arguments' => array(1),
     'access callback' => 'usanetwork_social_menu_access',

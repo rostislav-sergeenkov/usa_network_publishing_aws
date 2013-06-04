@@ -237,9 +237,11 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         switch ($vars['element']['#view_mode']) {
           case 'cast_carousel':
             // modify role field text
-            if(isset($vars['element']['#object']->field_usa_actor_name)) {
+            if(isset($vars['element']['#object']->field_usa_actor_name) && !(empty($vars['element']['#object']->field_usa_actor_name))) {
               $actor_name = $vars['element']['#object']->field_usa_actor_name[LANGUAGE_NONE][0]['value'];
               $vars['items'][0]['#markup'] = t('played by') . ' ' . $actor_name;
+            } else {
+              $vars['items'][0]['#markup'] = '';
             }
 
             break;

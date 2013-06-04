@@ -317,16 +317,18 @@ $logo-height-med-2: 32px;
   border-right: 1px solid $gray-med;
   position: relative;
   font-family: $headline-semi;
-  &:after {
-    position: absolute;
-    content: $space;
-    @include cssTriangle(14px, $black-true, bottom);
-    border-top: none;
-    top: -28px;
-    left: 50%;
-    @include transform3d(translateX(-50%));
-    z-index: 105;
-    @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+  @include breakpoint($bp-menu-switch) {
+    &:after {
+      position: absolute;
+      content: $space;
+      @include cssTriangle(14px, $black-true, bottom);
+      border-top: none;
+      top: -28px;
+      left: 50%;
+      @include transform3d(translateX(-50%));
+      z-index: 105;
+      @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+    }
   }
 }
 #tv-show-menu {

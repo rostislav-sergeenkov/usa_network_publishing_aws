@@ -341,16 +341,109 @@ function usanetwork_showpages_videos($node) {
   }
 }
 
+/**
+  * Implements hook_preprocess_html()
+  * custom titles for show related pages
+  * where we do not want the code in a feature override module
+  * or the theme
+  */
 function usanetwork_showpages_preprocess_html(&$vars) {
-  
+  $head_title = NULL;
   $node = menu_get_object();
-  if ($node && $node->type == "tv_show") {
-    switch (arg(2)) {
-      case 'videos':
-        $headtitle = t("@show Videos", array('@show' => $node->title));
-        $vars['title'] = $headtitle;
-        break;
+  $lang = LANGUAGE_NONE;
+  // nodes with show references
+  $show = array();
+
+  // see if we are on a node page
+  if ($node = menu_get_object()) {
+    
+    // see if we are on a show node
+    if ($node->type == 'tv_show') {
+      $show = $node->nid;
+      // see if we are in a show subsection
+      // custom module or dynamic based on path
+      switch (arg(2)) {
+       // video landing 
+       case 'videos':
+          $headtitle = t("@show Videos", array('@show' => $node->title));
+          $vars['title'] = $headtitle;
+          break;
+        // GAME_TITLE | Games | SHOW_NAME | SITE_TITLE
+        case 'games':
+          $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // FEATURE_TITLE | Features | SHOW_NAME | SITE_TITLE
+        case 'features':
+          $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // quiz_TITLE | Quizzes | SHOW_NAME | SITE_TITLE
+        case 'quizzes':
+          $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+      }
     }
+    // looks for nodes with a value in field_show
+    if (!empty($node->field_show)) {
+      $show_nid = field_get_items('node', $node, 'field_show');
+      $show_nid = $show_nid[0]['target_id'];
+      $show = node_load($show_nid);
+      switch ($node->type) {
+      // person pages have 2 cases
+        case 'person':
+          $role = array();
+          $actor = array();
+          $role = field_get_items('node', $node, 'field_role');
+          $actor = field_get_items('node', $node, 'field_usa_actor_name');
+          // check for role and actor field
+          // CHARACTER_NAME played by ACTOR_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
+          if ($role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
+            $head_title = t("@person played by @actor | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
+          }
+          // everyone else
+          // CHARACTER_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
+          else {
+            $head_title = t("@person | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title));
+          }
+          break;
+        // EPISODE_TITLE - Season SEASON_NUMBER | Episode Guide | SHOW_NAME | SITE_TITLE
+        case 'tv_episode':
+          $season_nid = field_get_items('node', $node, 'field_season');
+          $season = $season_nid[0]['target_id'];
+          $season = node_load($season);
+          $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $node->title, '@season' => $season->title));
+          break;
+        // GALLERY_TITLE | Photo Galleries | SHOW_NAME | SITE_TITLE
+        case 'media_gallery':
+          $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // VIDEO_TITLE | Videos | SHOW_NAME | SITE_TITLE
+        case 'usa_video':
+        case 'usa_tve_video':
+          $head_title = t("@video | Videos | @showname | USA Network", array('@showname' => $show->title, '@video' => $node->title));
+          break;
+        // SAME LOGIC AS CUSTOM PATHS ABOVE
+        case 'usanetwork_static_page':
+        case 'catchall_page':
+          $custompath = drupal_get_path_alias('node/'.$node->nid);
+          $path_parts = explode('/', $custompath);
+          if ($path_parts['1'] == 'features') {
+            $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          }
+          if ($path_parts['1'] == 'quizzes') {
+            $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          }
+          if ($path_parts['1'] == 'games') {
+            $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          }
+          break;
+      }
+    }
+    // end of node types
+  }
+
+  // If there are head titles print the new ones
+  if (!empty($head_title)) {
+    $vars['head_title'] = $head_title;
   }
 
 }

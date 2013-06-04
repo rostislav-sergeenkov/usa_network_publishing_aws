@@ -221,6 +221,7 @@ function usanetwork_migrate_get_scheduled_nodes() {
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
+  $query->propertyCondition('status', 1);
   $query->fieldCondition('field_publish_date', 'value2', REQUEST_TIME, '<=');
   $query_result = $query->execute();
 

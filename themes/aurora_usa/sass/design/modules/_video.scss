@@ -150,7 +150,7 @@
       border-bottom: 0;
       @include breakpoint($bp-video-mid-large-width) {
         background-color: $gray-med;
-        color: $gray-extra-light;
+        color: $white;
         border-left: 1px solid $gray-med-dark;
         border-right: 1px solid $gray-med-dark;
         &:after {
@@ -171,6 +171,7 @@
     &:hover {
       @include breakpoint($bp-video-mid-large-width) {
         background-color: $gray-med;
+        color: $white;
       }
     }
     &:hover:after {
@@ -493,12 +494,16 @@
     height: 375px;
     margin-right: 15px;
     @include breakpoint($bp-video-player-section) {
-      width: 100%;
-      height: 60.975609756098%;
+      //width: 100%;
+      //height: 60.975609756098%;
+        width: 330px;
+        height: 201px;
+        margin: 0 auto;
+        float: none;
     }
     @include breakpoint($bp-video-mid-range4-width) {
-      float: none;
       margin-bottom: 15px;
+      margin-right: 15px;
     }
     @include breakpoint($bp-video-very-large-width) {
       width: 930px;
@@ -508,8 +513,8 @@
       width: 615px;
       height: 375px;
       @include breakpoint($bp-video-player-section) {
-        height: 60.975609756098%;
-        width: 100%;
+        width: 330px;
+        height: 201px;
       }
       @include breakpoint($bp-video-mid-range4-width) {
         float: none;

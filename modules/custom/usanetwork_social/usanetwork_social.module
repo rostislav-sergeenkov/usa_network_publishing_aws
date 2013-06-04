@@ -865,7 +865,7 @@ function usanetwork_social_preprocess_html(&$vars) {
         break;
       // Tweets | Social | SHOW_NAME | SITE_TITLE
       case 'tweets':
-        $head_title = t("weets | Social | @showname | USA Network", array('@showname' => $node->title));
+        $head_title = t("Tweets | Social | @showname | USA Network", array('@showname' => $node->title));
         break;
       // Sync | Social | SHOW_NAME | SITE_TITLE
       case 'sync':

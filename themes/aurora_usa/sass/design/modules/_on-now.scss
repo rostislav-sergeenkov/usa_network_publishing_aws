@@ -44,6 +44,14 @@
       font-size: 28px;
       height: 100%;
     }
+    .ie9 &, .ie8 & {
+      @extend .icons-on_now;
+      display: block;
+      width: image-width('icons/on_now.png');
+      height: image-height('icons/on_now.png');
+      margin-top: 14px;
+      text-indent: -200%;
+    }
   }
   #on-now-show-name {
     font-size: 16px;

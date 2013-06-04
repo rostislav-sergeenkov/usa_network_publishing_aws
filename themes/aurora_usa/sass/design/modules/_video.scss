@@ -1,12 +1,14 @@
 
-.node-type-usa-video, .page-videos {
+.node-type-usa-video, 
+.page-videos {
   #main {
     padding: 0 0 80px;
     background-color: $black;
   }
 }
 
-.node-type-usa-video, .page-videos {
+.node-type-usa-video, 
+.page-videos {
   #block-system-main {
     background-color: $black-dark;
     border-bottom: 1px solid $gray-dark;
@@ -36,7 +38,7 @@
   }   
 }
 
-.block-usanetwork-video .view  {
+.block-usanetwork-video .view {
   .view-content {
     @include breakpoint($bp-video-mid-small-width) {
       margin-right: -15px;
@@ -68,6 +70,9 @@
     @include breakpoint($bp-video-very-large-width) {
       width: 304px;
     }
+    .asset-img {
+      line-height: 1em;
+    }
     .caption-fields-wrapper {
       position: static;
       width: 100%;
@@ -75,9 +80,10 @@
       margin: 0;
       padding: 4px 10px;
       line-height: 1em;
+      background: $black;
       @include breakpoint($bp-video-medium-width) {
         height: 52px;
-        padding: 4px 10px;
+        padding: 6px 10px;
         line-height: 1.25em;
       }
       @include breakpoint($bp-video-very-large-width) {
@@ -86,11 +92,11 @@
       }
     }
     h4 {
-      font-family: $headline-semi;
+      font-family: $headline-reg;
       font-size: 12px;
       margin: 0;
       &:after {
-        @include background-image(linear-gradient(right, $black-trans 20%, transparent));
+        @include background-image(linear-gradient(right, $black 30%, $black-trans-vid));
         content: $space;
         position: absolute;
         top: 0;

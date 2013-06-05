@@ -78,7 +78,6 @@
 .tiles {
   width: 300px;
   margin: 0 auto;
-  padding-top: 15px;
   @include breakpoint($bp-home-mid) {
     width: 615px;
   }

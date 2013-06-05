@@ -3211,7 +3211,6 @@ input[type="radio"], input[type="checkbox"] {
 .tiles {
   width: 300px;
   margin: 0 auto;
-  padding-top: 15px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .tiles {
@@ -6476,9 +6475,6 @@ table .show-time {
   background-color: #2d2d2d;
 }
 
-.usa-adrails {
-  background-color: #161616 !important;
-}
 .usa-adrails .usa-wrap {
   max-width: 1000px;
   margin: 0 auto;
@@ -6497,9 +6493,11 @@ table .show-time {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 16px 0;
+  padding: 16px 0 15px;
   line-height: 1em;
-  padding-bottom: 15px;
+}
+.usa-adrails .ad-leaderboard {
+  padding-top: 0;
 }
 
 #head-sponsored {

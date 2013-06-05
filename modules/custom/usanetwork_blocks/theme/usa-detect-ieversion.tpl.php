@@ -37,7 +37,7 @@
 			</div>
 			<div id="bullet-list">
 				<div id="lackOfFeaturesModal-bullet-list1"><a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank"><img src="<?php echo $base_url."/".$image_path;?>firefox_150.png" alt="Firefox" /></a></div>
-				<div id="lackOfFeaturesModal-bullet-list2"><a href=" http://www.apple.com/safari/" target="_blank"><img src="<?php echo $base_url."/".$image_path;?>safari_150.png" alt="Safari" /></a></div>
+				<div id="lackOfFeaturesModal-bullet-list2"><a href="http://www.apple.com/safari/" target="_blank"><img src="<?php echo $base_url."/".$image_path;?>safari_150.png" alt="Safari" /></a></div>
 				<div id="lackOfFeaturesModal-bullet-list3"><a href="https://www.google.com/intl/en/chrome/browser/" target="_blank"><img src="<?php echo $base_url."/".$image_path;?>chrome_150.png" alt="Chrome" /></a></div>
 				<div id="lackOfFeaturesModal-bullet-list4"><a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank"><img src="<?php echo $base_url."/".$image_path;?>ielogo_150.png" alt="Chrome" /></a></div>
 			</div>

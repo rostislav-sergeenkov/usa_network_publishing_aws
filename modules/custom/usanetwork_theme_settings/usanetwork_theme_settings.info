@@ -6,5 +6,4 @@ dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
-features[variable][] = site_name
 features[variable][] = theme_settings

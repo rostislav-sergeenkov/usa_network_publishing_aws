@@ -485,7 +485,7 @@ strong, dfn, b {
 
 .usa-secondary-menu {
   font-size: 19px;
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   line-height: 1;
   text-transform: lowercase;
   font-weight: normal;
@@ -564,7 +564,7 @@ strong, dfn, b {
   height: 100%;
   width: 100%;
   position: relative;
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   padding: 20px 20px 18px;
   float: left;
   width: 100%;
@@ -592,7 +592,7 @@ strong, dfn, b {
 }
 .usa-secondary-menu .content > .item-list > ul > li.first > span:before {
   position: absolute;
-  right: 10px;
+  right: 11px;
   left: auto;
   top: 16px;
   content: "";
@@ -624,7 +624,7 @@ strong, dfn, b {
   white-space: nowrap;
 }
 .usa-secondary-menu .item-list .item-list ul > li {
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   margin: 0;
   border: 0;
   padding: 0;
@@ -1381,6 +1381,185 @@ input[type="radio"], input[type="checkbox"] {
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
 }
 
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #block-usanetwork-tv-schedule-usa-on-now-block #on-now, .ie8 #block-usanetwork-tv-schedule-usa-on-now-block #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+  background: url('../images/icons-sd03e858936.png') no-repeat;
+}
+
+.icons-arrow-next-hover-v2, .ie9 .flex-direction-nav .flex-next:hover, .ie8 .flex-direction-nav .flex-next:hover {
+  background-position: 0 -984px;
+}
+
+.icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next {
+  background-position: 0 -1262px;
+}
+
+.icons-arrow-next {
+  background-position: 0 -1380px;
+}
+
+.icons-arrow-prev-hover-v2, .ie9 .flex-direction-nav .flex-prev:hover, .ie8 .flex-direction-nav .flex-prev:hover {
+  background-position: 0 -1064px;
+}
+
+.icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev {
+  background-position: 0 -1716px;
+}
+
+.icons-arrow-prev {
+  background-position: 0 -1495px;
+}
+
+.icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
+  background-position: 0 -2514px;
+}
+
+.icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
+  background-position: 0 -2362px;
+}
+
+.icons-facebook {
+  background-position: 0 -932px;
+}
+
+.icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
+  background-position: 0 -1457px;
+}
+
+.icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
+  background-position: 0 -1834px;
+}
+
+.icons-follow-facebook-v3 {
+  background-position: 0 -2064px;
+}
+
+.icons-follow-facebook {
+  background-position: 0 -653px;
+}
+
+.icons-follow-twitter-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
+  background-position: 0 -472px;
+}
+
+.icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
+  background-position: 0 -615px;
+}
+
+.icons-follow-twitter-v3 {
+  background-position: 0 -1678px;
+}
+
+.icons-follow-twitter {
+  background-position: 0 -363px;
+}
+
+.icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns {
+  background-position: 0 -1572px;
+}
+
+.icons-gray-arrow-right, .ie9 .carousel-btns .btns.next, .ie8 .carousel-btns .btns.next {
+  background-position: 0 -1625px;
+}
+
+.icons-ico-close-tray-mobi {
+  background-position: 0 -1950px;
+}
+
+.icons-ico-close-tray-tablet {
+  background-position: 0 -1910px;
+}
+
+.icons-line-arrow-gray, #utilities .breadcrumb .separator {
+  background-position: 0 -252px;
+}
+
+.icons-logo-usa-mobi {
+  background-position: 0 -510px;
+}
+
+.icons-logo-usa-tablet {
+  background-position: 0 -418px;
+}
+
+.icons-on_now, .ie9 #block-usanetwork-tv-schedule-usa-on-now-block #on-now, .ie8 #block-usanetwork-tv-schedule-usa-on-now-block #on-now {
+  background-position: 0 -2414px;
+}
+
+.icons-pinterest-hover-v2 {
+  background-position: 0 -1342px;
+}
+
+.icons-pinterest-hover-v3 {
+  background-position: 0 -1796px;
+}
+
+.icons-pinterest-hover-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
+  background-position: 0 -1184px;
+}
+
+.icons-pinterest-hover-v6, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
+  background-position: 0 -2258px;
+}
+
+.icons-pinterest-v2 {
+  background-position: 0 -1224px;
+}
+
+.icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
+  background-position: 0 -1144px;
+}
+
+.icons-pinterest-v5 {
+  background-position: 0 -1872px;
+}
+
+.icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
+  background-position: 0 -2206px;
+}
+
+.icons-pinterest {
+  background-position: 0 0;
+}
+.icons-pinterest:hover, .icons-pinterest.pinterest_hover, .icons-pinterest.pinterest-hover {
+  background-position: 0 -84px;
+}
+
+.icons-tumblr-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
+  background-position: 0 -2026px;
+}
+
+.icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
+  background-position: 0 -2462px;
+}
+
+.icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
+  background-position: 0 -1988px;
+}
+
+.icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
+  background-position: 0 -2310px;
+}
+
+.icons-tumblr {
+  background-position: 0 -880px;
+}
+
+.icons-twitter-hover-v4, .ie9 .icons-social a.usasocial-twitter:hover, .ie8 .icons-social a.usasocial-twitter:hover {
+  background-position: 0 -2154px;
+}
+
+.icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter {
+  background-position: 0 -2102px;
+}
+
+.icons-twitter {
+  background-position: 0 -168px;
+}
+
+.icons-watch-alt {
+  background-position: 0 -710px;
+}
+
 #main {
   padding: 0 15px 15px;
 }
@@ -1624,7 +1803,7 @@ input[type="radio"], input[type="checkbox"] {
     border-right: 1px solid #3d3d3d;
   }
 }
-.ie8 #logo, .ie7 #logo {
+.ie9 #logo a, .ie8 #logo a, .ie7 #logo a {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -1919,27 +2098,29 @@ input[type="radio"], input[type="checkbox"] {
   position: relative;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
-.tv-show-menu-trigger:after {
-  position: absolute;
-  content: "\0020";
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 14px;
-  border-color: transparent transparent black transparent;
-  border-top: none;
-  top: -28px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  z-index: 105;
-  -webkit-filter: drop-shadow(#414141 0 -2px 0);
-  -moz-filter: drop-shadow(#414141 0 -2px 0);
-  filter: drop-shadow(#414141 0 -2px 0);
+@media (min-width: 769px) {
+  .tv-show-menu-trigger:after {
+    position: absolute;
+    content: "\0020";
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 14px;
+    border-color: transparent transparent black transparent;
+    border-top: none;
+    top: -28px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 105;
+    -webkit-filter: drop-shadow(#414141 0 -2px 0);
+    -moz-filter: drop-shadow(#414141 0 -2px 0);
+    filter: drop-shadow(#414141 0 -2px 0);
+  }
 }
 
 #tv-show-menu li {
@@ -1953,6 +2134,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (min-width: 769px) {
   #tv-show-menu {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 -20px 40px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.7) 0 -20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.7) 0 -20px 40px;
     display: block;
     position: absolute;
     left: 0;
@@ -2083,6 +2267,11 @@ input[type="radio"], input[type="checkbox"] {
   }
   #tv-show-menu li.parent-item:hover > .item-list {
     display: block;
+  }
+}
+@media (min-width: 769px) and (min-width: 769px) {
+  #tv-show-menu li .item-list {
+    text-transform: none;
   }
 }
 
@@ -2238,6 +2427,9 @@ input[type="radio"], input[type="checkbox"] {
     padding-left: 25px;
     padding-right: 25px;
   }
+  .region-footer.usa-showmenu-loaded {
+    padding-bottom: 135px;
+  }
 }
 .region-footer li a {
   color: #717274;
@@ -2278,11 +2470,13 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+/* todo set up general class for show pgs */
 .usa-tv-show .region-footer,
 .node-type-usa-video .region-footer,
 .page-node-social .region-footer,
 .node-type-person .region-footer,
-.node-type-media-gallery .region-footer {
+.node-type-media-gallery .region-footer,
+.node-type-tv-episode .region-footer {
   padding-bottom: 55px;
 }
 @media (min-width: 769px) {
@@ -2290,7 +2484,8 @@ input[type="radio"], input[type="checkbox"] {
   .node-type-usa-video .region-footer,
   .page-node-social .region-footer,
   .node-type-person .region-footer,
-  .node-type-media-gallery .region-footer {
+  .node-type-media-gallery .region-footer,
+  .node-type-tv-episode .region-footer {
     padding-bottom: 137px;
   }
 }
@@ -3015,8 +3210,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .tiles {
   width: 300px;
-  margin: 0 auto 20px;
-  padding-top: 15px;
+  margin: 0 auto;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .tiles {
@@ -3289,12 +3483,13 @@ input[type="radio"], input[type="checkbox"] {
 }
 .tiles .flex-control-paging li a.flex-active, .tiles .flex-control-paging li a:hover {
   background: white;
+  border: 1px solid #ebebeb;
 }
 
 .usa-home-featured {
   position: relative;
   background-color: #1f1f1f;
-  padding: 0 0 36px;
+  padding: 5px 0 36px;
 }
 .usa-adrails .usa-home-featured, .ie9 .usa-home-featured, .ie8 .usa-home-featured {
   background-color: transparent;
@@ -3714,6 +3909,11 @@ body.person-page .ad-leaderboard {
     width: auto;
   }
 }
+.usa-adrails #person-content .person-content-wrapper {
+  max-width: 880px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 #person-content aside {
   position: relative;
   z-index: 2;
@@ -4067,6 +4267,13 @@ body.person-page .ad-leaderboard {
     height: 100%;
   }
 }
+.ie9 #block-usanetwork-tv-schedule-usa-on-now-block #on-now, .ie8 #block-usanetwork-tv-schedule-usa-on-now-block #on-now {
+  display: block;
+  width: 35px;
+  height: 28px;
+  margin-top: 14px;
+  text-indent: -200%;
+}
 #block-usanetwork-tv-schedule-usa-on-now-block #on-now-show-name {
   font-size: 16px;
   line-height: 1em;
@@ -4126,12 +4333,14 @@ span#on-now-episode {
   }
 }
 
-.node-type-usa-video #main, .page-videos #main {
+.node-type-usa-video #main,
+.page-videos #main {
   padding: 0 0 80px;
   background-color: #1f1f1f;
 }
 
-.node-type-usa-video #block-system-main, .page-videos #block-system-main {
+.node-type-usa-video #block-system-main,
+.page-videos #block-system-main {
   background-color: #161616;
   border-bottom: 1px solid #2d2d2d;
   margin-bottom: 30px;
@@ -4205,6 +4414,9 @@ span#on-now-episode {
     width: 304px;
   }
 }
+.block-usanetwork-video .view .node .asset-img {
+  line-height: 1em;
+}
 .block-usanetwork-video .view .node .caption-fields-wrapper {
   position: static;
   width: 100%;
@@ -4212,11 +4424,12 @@ span#on-now-episode {
   margin: 0;
   padding: 4px 10px;
   line-height: 1em;
+  background: #1f1f1f;
 }
 @media (min-width: 723px) {
   .block-usanetwork-video .view .node .caption-fields-wrapper {
     height: 52px;
-    padding: 4px 10px;
+    padding: 6px 10px;
     line-height: 1.25em;
   }
 }
@@ -4227,16 +4440,16 @@ span#on-now-episode {
   }
 }
 .block-usanetwork-video .view .node h4 {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 12px;
   margin: 0;
 }
 .block-usanetwork-video .view .node h4:after {
-  background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(20%, rgba(0, 0, 0, 0.8)), color-stop(100%, transparent));
-  background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
+  background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(30%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0.3)));
+  background-image: -webkit-linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
+  background-image: -moz-linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
+  background-image: -o-linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
+  background-image: linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
   content: "\0020";
   position: absolute;
   top: 0;
@@ -4410,7 +4623,7 @@ span#on-now-episode {
   border: 0;
 }
 .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2.open ul.categories > li {
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   margin: 0;
   border: 0;
   padding: 0;
@@ -4733,12 +4946,12 @@ span#on-now-episode {
 }
 .featured-asset .video-player-wrapper iframe {
   width: 615px;
-  height: 375px;
+  height: 346px;
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper iframe {
     width: 330px;
-    height: 201px;
+    height: 186px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -4750,7 +4963,7 @@ span#on-now-episode {
 @media (min-width: 1275px) {
   .featured-asset .video-player-wrapper iframe {
     width: 930px;
-    height: 567px;
+    height: 523px;
   }
 }
 .usa-adrails .featured-asset .video-player-wrapper iframe {
@@ -4880,6 +5093,10 @@ span#on-now-episode {
   .usa-tv-show #main {
     width: 1245px;
   }
+}
+
+.usa-adrails.usa-tv-show #main {
+  width: 930px;
 }
 
 .usa-tv-show ul {
@@ -5089,6 +5306,11 @@ span#on-now-episode {
   height: 100%;
 }
 
+.usa-adrails.usa-tv-show .flexslider {
+  width: 930px;
+  height: 378px;
+}
+
 .a-spot.flexslider .flex-direction-nav a {
   position: absolute;
   top: 46%;
@@ -5160,7 +5382,7 @@ body.usa-social {
 }
 @media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav li.first a {
-    font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+    font-family: "Proxima N W01 Reg", Arial, sans-serif;
   }
 }
 #block-usanetwork-social-usa-show-social-tab-nav a {
@@ -5310,7 +5532,7 @@ body.usa-social {
 .social-follow-block .item-content .title {
   line-height: 1em;
   font-size: 14px;
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   display: inline-block;
   text-align: left;
   vertical-align: middle;
@@ -6253,184 +6475,6 @@ table .show-time {
   background-color: #2d2d2d;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-s205f8e0a6f.png') no-repeat;
-}
-
-.icons-arrow-next-hover-v2, .ie9 .flex-direction-nav .flex-next:hover, .ie8 .flex-direction-nav .flex-next:hover {
-  background-position: 0 -984px;
-}
-
-.icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next {
-  background-position: 0 -1262px;
-}
-
-.icons-arrow-next {
-  background-position: 0 -1380px;
-}
-
-.icons-arrow-prev-hover-v2, .ie9 .flex-direction-nav .flex-prev:hover, .ie8 .flex-direction-nav .flex-prev:hover {
-  background-position: 0 -1064px;
-}
-
-.icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev {
-  background-position: 0 -1716px;
-}
-
-.icons-arrow-prev {
-  background-position: 0 -1495px;
-}
-
-.icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2466px;
-}
-
-.icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2362px;
-}
-
-.icons-facebook {
-  background-position: 0 -932px;
-}
-
-.icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
-  background-position: 0 -1457px;
-}
-
-.icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
-  background-position: 0 -1834px;
-}
-
-.icons-follow-facebook-v3 {
-  background-position: 0 -2064px;
-}
-
-.icons-follow-facebook {
-  background-position: 0 -653px;
-}
-
-.icons-follow-twitter-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
-  background-position: 0 -472px;
-}
-
-.icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
-  background-position: 0 -615px;
-}
-
-.icons-follow-twitter-v3 {
-  background-position: 0 -1678px;
-}
-
-.icons-follow-twitter {
-  background-position: 0 -363px;
-}
-
-.icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns {
-  background-position: 0 -1572px;
-}
-
-.icons-gray-arrow-right, .ie9 .carousel-btns .btns.next, .ie8 .carousel-btns .btns.next {
-  background-position: 0 -1625px;
-}
-
-.icons-ico-close-tray-mobi {
-  background-position: 0 -1950px;
-}
-
-.icons-ico-close-tray-tablet {
-  background-position: 0 -1910px;
-}
-
-.icons-line-arrow-gray, #utilities .breadcrumb .separator {
-  background-position: 0 -252px;
-}
-
-.icons-logo-usa-mobi {
-  background-position: 0 -510px;
-}
-
-.icons-logo-usa-tablet {
-  background-position: 0 -418px;
-}
-
-.icons-pinterest-hover-v2 {
-  background-position: 0 -1342px;
-}
-
-.icons-pinterest-hover-v3 {
-  background-position: 0 -1796px;
-}
-
-.icons-pinterest-hover-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
-  background-position: 0 -1184px;
-}
-
-.icons-pinterest-hover-v6, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
-  background-position: 0 -2258px;
-}
-
-.icons-pinterest-v2 {
-  background-position: 0 -1224px;
-}
-
-.icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
-  background-position: 0 -1144px;
-}
-
-.icons-pinterest-v5 {
-  background-position: 0 -1872px;
-}
-
-.icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
-  background-position: 0 -2206px;
-}
-
-.icons-pinterest {
-  background-position: 0 0;
-}
-.icons-pinterest:hover, .icons-pinterest.pinterest_hover, .icons-pinterest.pinterest-hover {
-  background-position: 0 -84px;
-}
-
-.icons-tumblr-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
-  background-position: 0 -2026px;
-}
-
-.icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
-  background-position: 0 -2414px;
-}
-
-.icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
-  background-position: 0 -1988px;
-}
-
-.icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
-  background-position: 0 -2310px;
-}
-
-.icons-tumblr {
-  background-position: 0 -880px;
-}
-
-.icons-twitter-hover-v4, .ie9 .icons-social a.usasocial-twitter:hover, .ie8 .icons-social a.usasocial-twitter:hover {
-  background-position: 0 -2154px;
-}
-
-.icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter {
-  background-position: 0 -2102px;
-}
-
-.icons-twitter {
-  background-position: 0 -168px;
-}
-
-.icons-watch-alt {
-  background-position: 0 -710px;
-}
-
-.usa-adrails {
-  background-color: #161616 !important;
-}
 .usa-adrails .usa-wrap {
   max-width: 1000px;
   margin: 0 auto;
@@ -6449,9 +6493,11 @@ table .show-time {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 16px 0;
+  padding: 16px 0 15px;
   line-height: 1em;
-  padding-bottom: 15px;
+}
+.usa-adrails .ad-leaderboard {
+  padding-top: 0;
 }
 
 #head-sponsored {

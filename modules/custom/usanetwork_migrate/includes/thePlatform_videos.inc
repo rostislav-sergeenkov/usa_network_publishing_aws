@@ -57,8 +57,8 @@ class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
-      $updated_date = date('c', strtotime('-24 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
+      $updated_date = date('c', strtotime('-1 hours'));
+      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
       $items_url .= '?range=1-500';
@@ -267,8 +267,39 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
-      $updated_date = date('c', strtotime('-24 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-500';
+      $updated_date = date('c', strtotime('-1 hour'));
+      $items_url .= '?byUpdated=' . $updated_date . '~';
+      $items_url .= '&sort=updated|desc';
+      $items_url .= '&range=1-100';
+      $limiting_fields = array(
+        'guid',
+        'title',
+        'description',
+        'author',
+        'dcterms:valid',
+        'media:category',
+        'media:keywords',
+        'media:rating',
+        'media:restriction',
+        'media:group',
+        'media:thumbnail',
+        'pubDate',
+        'plmedia:defaultThumbnailUrl',
+        'plmedia:provider',
+        'pl1:active',
+        'pl1:comScore',
+        'pl1:dart',
+        'pl1:emmy',
+        'pl1:fullEpisode',
+        'pl1:metrics',
+        'pl1:notVisibleOnHub',
+        'pl1:promo',
+        'pl1:shortDescription',
+        'pl1:subtitle',
+        'pl1:tuneInTime',
+        'pl1:tve',
+      );
+      #$items_url .= '&fields=' . implode(',', $limiting_fields);
     }
     else {
       // As of 5/14/13 there were 4329 MPX videos.  Setting range to grab them all,

@@ -1,7 +1,7 @@
 
 %secondary-menu {
   font-size: 19px;
-  font-family: $headline-thn;
+  font-family: $headline-reg;
   line-height: 1;
   text-transform: lowercase;
   font-weight: normal;
@@ -77,7 +77,7 @@
           height: 100%;
           width: 100%;
           position: relative;
-          font-family: $headline-thn;
+          font-family: $headline-reg;
           padding: 20px 20px 18px;
           float: left;
           width: 100%;
@@ -98,7 +98,7 @@
           }
           &:before {
             position: absolute;
-            right: 10px;
+            right: 11px;
             left: auto;
             top: 16px;
             @include cssTriangle(5px, $white, bottom);
@@ -120,7 +120,7 @@
       max-height: 300px;
       overflow-y: auto;
       > li {
-        font-family: $headline-thn;
+        font-family: $headline-reg;
         margin: 0;
         border: 0;
         padding: 0;

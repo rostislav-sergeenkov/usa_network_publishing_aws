@@ -5,4 +5,13 @@ ________________________________________________________________________________
     - libraries/jpanelmenu/jquery.jpanelmenu.min.js
 
 ================================== CONTRIB =====================================
+================================== CORE ========================================
+  * Overridden the file core module to resolve the missing file reference
+  * exception; patch file: 1443158-file-field-presave-D7.patch
+  * Issue ref in drupal.org: https://drupal.org/node/1443158#comment-6955596
+    - modules/core/file/file.field.inc
+
+  * Changed the require_once statement to use the correct file.field.inc
+    - modules/core/file/file.module
+
 ________________________________________________________________________________

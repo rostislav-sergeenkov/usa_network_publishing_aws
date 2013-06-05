@@ -6,8 +6,6 @@
   }
 }
 
-
-
 .region-footer {
   border-top: 1px solid $gray-med-dark;
   padding: 3px 15px 65px;
@@ -21,6 +19,9 @@
     padding-bottom: 85px;
     padding-left: 25px;
     padding-right: 25px;
+    &.usa-showmenu-loaded {
+      padding-bottom: 135px;
+    }
   }
   li a {
     color: $gray-dark-light;
@@ -56,11 +57,13 @@
   }
 }
 
+/* todo set up general class for show pgs */
 .usa-tv-show .region-footer,
 .node-type-usa-video .region-footer,
 .page-node-social .region-footer,
 .node-type-person .region-footer,
-.node-type-media-gallery  .region-footer {
+.node-type-media-gallery  .region-footer,
+.node-type-tv-episode .region-footer {
   padding-bottom: 55px;
   @include breakpoint($bp-menu-switch) {
     padding-bottom: 137px;

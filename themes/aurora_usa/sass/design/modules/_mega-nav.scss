@@ -84,10 +84,13 @@ $logo-height-med-2: 32px;
     font-size: $logo-height-large;
     border-right: 1px solid $gray-med;
   }
+  .ie9 &,
   .ie8 &,
   .ie7 & {
-    @include replace-text-with-dimensions('icons/logo-usa-tablet.png');
-    display: inline-block;
+    a {
+      @include replace-text-with-dimensions('icons/logo-usa-tablet.png');
+      display: inline-block;
+    }
   }
   a {
     @include link-colors($white, $white, $white, $white, $white);
@@ -317,16 +320,18 @@ $logo-height-med-2: 32px;
   border-right: 1px solid $gray-med;
   position: relative;
   font-family: $headline-semi;
-  &:after {
-    position: absolute;
-    content: $space;
-    @include cssTriangle(14px, $black-true, bottom);
-    border-top: none;
-    top: -28px;
-    left: 50%;
-    @include transform3d(translateX(-50%));
-    z-index: 105;
-    @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+  @include breakpoint($bp-menu-switch) {
+    &:after {
+      position: absolute;
+      content: $space;
+      @include cssTriangle(14px, $black-true, bottom);
+      border-top: none;
+      top: -28px;
+      left: 50%;
+      @include transform3d(translateX(-50%));
+      z-index: 105;
+      @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+    }
   }
 }
 #tv-show-menu {
@@ -340,6 +345,7 @@ $logo-height-med-2: 32px;
     border-color: $gray-med;
   }
   @include breakpoint($bp-menu-switch) {
+    @include box-shadow(rgba(0,0,0,.7) 0 -20px 40px);
     display: block;
     position: absolute;
     left: 0;
@@ -377,6 +383,9 @@ $logo-height-med-2: 32px;
         background-color: $gray-med;
         border-top: 1px solid $gray-darker-light;
         border-bottom: 1px solid $gray-ultra-med;
+        @include breakpoint($bp-menu-switch) {
+          text-transform: none;
+        }
         ul {
           display: block;
           @include column-count(4);

@@ -14,8 +14,11 @@
       width: 1245px;
     }
   }
-  h2.pane-title {
+}
 
+.usa-adrails.usa-tv-show {
+  #main {
+    width: 930px;
   }
 }
 
@@ -238,6 +241,13 @@
   }
   .flex-viewport {
     height: 100%;
+  }
+}
+
+.usa-adrails.usa-tv-show {
+  .flexslider {
+    width: 930px;
+    height: 378px;
   }
 }
 

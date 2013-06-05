@@ -6,8 +6,6 @@
   }
 }
 
-
-
 .region-footer {
   border-top: 1px solid $gray-med-dark;
   padding: 3px 15px 65px;
@@ -21,6 +19,9 @@
     padding-bottom: 85px;
     padding-left: 25px;
     padding-right: 25px;
+    &.usa-showmenu-loaded {
+      padding-bottom: 135px;
+    }
   }
   li a {
     color: $gray-dark-light;

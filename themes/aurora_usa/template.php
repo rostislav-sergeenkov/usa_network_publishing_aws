@@ -225,6 +225,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       $vars['classes_array'][] = drupal_html_class('slides');
     break;
     case 'field_hp_promos':
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
@@ -273,7 +274,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $title = strip_tags($vars['element'][0]['#markup']);
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' gallery</h2>';
             }
-            break; 
+            break;
         }
       }
       break;
@@ -417,11 +418,13 @@ function aurora_usa_preprocess_views_view(&$vars) {
      $views_preprocess_function($vars);
     }
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/cast-carousel.js');
     }
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
     }

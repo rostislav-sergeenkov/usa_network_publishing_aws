@@ -81,7 +81,7 @@
   <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
     <div class="primary-nav">
       <?php if ($site_name): ?>
-        <div id="logo" class="icon-usa">
+        <div id="logo">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
         </div>
       <?php endif; ?>
@@ -106,7 +106,7 @@
   <!-- leaderboard ad -->
     <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
   <!-- /leaderboard -->
-  
+
   <!-- MAIN CONTENT -->
   <div id="main" role="main" class="clearfix">
     <?php if ($page['main_prefix']) :?>
@@ -130,7 +130,7 @@
         <?php print render($page['sidebar_first']); ?>
       </aside><!-- #sidebar-first -->
     <?php endif; ?>
-  
+
     <?php if ($page['sidebar_second']): ?>
       <aside id="sidebar-second" role="complementary" class="column sidebar">
         <?php print render($page['sidebar_second']); ?>

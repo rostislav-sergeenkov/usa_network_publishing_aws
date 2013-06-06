@@ -110,6 +110,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_key"] = "dc2bfa15286aedc061f759dfd20e2f9a";
     $conf["apachesolr_path"] = "/solr/CGJK-32328";
     $conf['apachesolr_read_only'] = "0";
+
+    // www redirect
+    default_site_request_handler();
+
     break;
 }
 
@@ -185,6 +189,18 @@ function default_site_select_redirect() {
     exit;
   }
   return $location;
+}
+
+/**
+* Handle default site requests
+*/
+function default_site_request_handler() {
+  $location = default_site_select_redirect();
+  if ($location) {
+    drupal_add_http_header('Location', 'http://' . $location);
+    drupal_add_http_header('Status', '301 Moved Permanently');
+    exit;
+  }
 }
 
 // commenting out the memory changes

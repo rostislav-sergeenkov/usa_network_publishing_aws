@@ -197,7 +197,8 @@ function default_site_select_redirect() {
 */
 function default_site_request_handler() {
   $location = default_site_select_redirect();
-  if ($location) {
+  $cli = (php_sapi_name() == 'cli');
+  if ($location && !$cli) {
     drupal_add_http_header('Location', 'http://' . $location);
     drupal_add_http_header('Status', '301 Moved Permanently');
     exit;

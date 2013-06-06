@@ -1803,7 +1803,7 @@ input[type="radio"], input[type="checkbox"] {
     border-right: 1px solid #3d3d3d;
   }
 }
-.ie9 #logo a, .ie8 #logo a, .ie7 #logo a {
+.no-font-feature-settings #logo a, .ie9 #logo a, .ie8 #logo a, .ie7 #logo a {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -5142,9 +5142,11 @@ span#on-now-episode {
 }
 .promo-ads-panel .panel-col2 {
   position: static;
+  display: none;
 }
 @media (min-width: 645px) {
   .promo-ads-panel .panel-col2 {
+    display: block;
     position: absolute;
     right: 11px;
   }
@@ -5169,6 +5171,12 @@ span#on-now-episode {
   .promo-ads-panel .panel-col1 .field li:first-child + li + li {
     margin-right: 304px;
   }
+}
+.usa-adrails .promo-ads-panel .panel-col1 .field li:first-child + li {
+  margin-right: 304px;
+}
+.usa-adrails .promo-ads-panel .panel-col1 .field li:first-child + li + li {
+  margin-right: 11px;
 }
 
 .video-promo-ads-panel .panel-col2 {
@@ -5213,14 +5221,14 @@ span#on-now-episode {
   top: 50%;
   width: 50%;
 }
-.expandable-container .expandable-toggle-wrap.off:before, .expandable-container .expandable-toggle-wrap.off:after {
-  display: none;
-}
 .expandable-container .expandable-toggle-wrap:before {
   left: -30px;
 }
 .expandable-container .expandable-toggle-wrap:after {
   right: -30px;
+}
+.expandable-container .expandable-toggle-wrap.off {
+  display: none;
 }
 .expandable-container .expandable-toggle {
   color: #b0b0b0;
@@ -6105,6 +6113,7 @@ input.echo-submit-text {
 .usanetwork_social_show_comment .echo-item-data {
   font-size: 16px;
   font-family: "Proxima N W01 Light", Arial, sans-serif;
+  word-break: break-all;
 }
 @media (min-width: 500px) {
   .usanetwork_social_show_comment .echo-item-data {

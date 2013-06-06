@@ -384,17 +384,25 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
   //  Handle error conditions, we may have nothing come back.
   if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
     return False;
+
   $file_info = $file_info[0]->{'media$content'};
 
-  //  Run through everything and grab the first video in the feed.
+  // Run through everything and grab the MPEG4 video with the highest bit rate from the feed.
+  $highest_bit_rate = 0;
+  $selected_video = $file_info[0];
   foreach($file_info as $file) {
+    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' && 
+        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate) {
+      $highest_bit_rate = $file->{'plfile$bitrate'};
+      $selected_video = $file;
+    }
     // our feed does not have this
     //if(in_array('Video', $file->{'plfile$assetTypes'}))
     //  break;
   }
 
   //  Extract the file id from the URL
-  list($file_id) = explode('?', $file->{'plfile$url'}); //  The part before the ?
+  list($file_id) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
   $file_id = explode('/', $file_id);  //  Get the parts of the url.
   $file_id = array_pop($file_id); //  And just last part of the URL's path.
 

@@ -23,7 +23,8 @@ if (file_exists('../settings.usanetwork.php')) {
 }
 
 if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/' . $_ENV["AH_SITE_GROUP"] . '/' . $_ENV["AH_SITE_GROUP"] . '-settings.inc');
+  //require('/var/www/site-php/' . $_ENV["AH_SITE_GROUP"] . '/' . $_ENV["AH_SITE_GROUP"] . '-settings.inc');
+  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
 }
 
 /**

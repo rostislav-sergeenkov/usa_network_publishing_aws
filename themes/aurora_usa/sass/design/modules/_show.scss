@@ -98,7 +98,16 @@
         margin-right: 304px;
       }
     }
-  }
+    .usa-adrails & {
+      li:first-child + li {
+        margin-right: 304px;
+      }
+      li:first-child + li + li,
+      li:first-child + li + li + li {
+        margin-right: 11px;
+      }
+    }
+  } 
 }
 
 

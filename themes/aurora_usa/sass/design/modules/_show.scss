@@ -71,7 +71,9 @@
   position: relative;
   .panel-col2  {
     position: static;
+    display: none;
     @include breakpoint($bp-show-mid-width) {
+      display: block;
       position: absolute;
       right: 11px;
     }
@@ -98,7 +100,15 @@
         margin-right: 304px;
       }
     }
-  }
+    .usa-adrails & {
+      li:first-child + li {
+        margin-right: 304px;
+      }
+      li:first-child + li + li {
+        margin-right: 11px;
+      }
+    }
+  } 
 }
 
 
@@ -151,16 +161,14 @@
       top: 50%;
       width: 50%;
     }
-    &.off:before,
-    &.off:after {
-      //width: 100%;
-      display: none;
-    }
     &:before {
       left: -30px;
     }
     &:after {
       right: -30px;
+    }
+    &.off {
+      display: none;
     }
   }
 

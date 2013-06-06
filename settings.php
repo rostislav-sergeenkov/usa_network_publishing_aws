@@ -23,7 +23,8 @@ if (file_exists('../settings.usanetwork.php')) {
 }
 
 if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/' . $_ENV["AH_SITE_GROUP"] . '/' . $_ENV["AH_SITE_GROUP"] . '-settings.inc');
+  //require('/var/www/site-php/' . $_ENV["AH_SITE_GROUP"] . '/' . $_ENV["AH_SITE_GROUP"] . '-settings.inc');
+  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
 }
 
 /**
@@ -110,6 +111,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_key"] = "dc2bfa15286aedc061f759dfd20e2f9a";
     $conf["apachesolr_path"] = "/solr/CGJK-32328";
     $conf['apachesolr_read_only'] = "0";
+
+    // www redirect
+    default_site_request_handler();
+
     break;
 }
 
@@ -125,6 +130,80 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
  * To enable this functionality, remove the leading hash sign below.
  */
   drupal_fast_404();
+
+/**
+* Redirection rules for default Drupal site
+*
+* This drop-in for the default site's settings.php provides HTTP 301
+* redirection rules for any request which does not already have a Drupal
+* site folder assigned. Redirect rules are located in the global
+* default_redirect array.
+*
+* Redirects are selected in the following manner:
+* 1. HTTP_HOST and REQUEST_URI combined to look for an exact match in
+*    default_redirect
+* 2. If not found, look for the full HTTP_HOST in default_redirect
+* 3. Then iterate through progressively more abstract hostname parts until
+*    match is found.
+* 4. Default site redirect is used if no other is found.
+*
+* Example Request: http://aa.bb.example.localhost/some/path
+*
+* - looks for match to 'aa.bb.example.localhost/some/path'
+* - looks for match to 'aa.bb.example.localhost'
+* - looks for match to 'bb.example.localhost'
+* - looks for match to 'example.localhost'
+* - looks for match to 'localhost'
+*
+* To use this file to redirect traffic, append or include this file at the
+* bottom of sites/default/settings.php. For example:
+*
+*   require_once('default-site-redirect.settings.php');
+*
+* Edit the following defined variables as needed.
+*
+* DEFAULT_SITE_REDIRECT - if this is blank, the default drupal site will load
+* DEFAULT_SITE_DRY_RUN - when true, adds mock-headers instead of redirecting
+*
+* Note: in all cases, the SERVER_PORT is dropped from the request's HTTP_HOST
+*/
+
+/**
+* Select the most specific matching pattern for the given hostname
+*/
+function default_site_select_redirect() {
+
+  $default_redirect = array (
+    'usanetwork.com' => 'www.usanetwork.com',
+    'beta.usanetwork.com' => 'www.usanetwork.com',
+    'usanetwork.prod.acquia-sites.com' => 'www.usanetwork.com',
+  );
+  $location = '';
+
+  // Sanitize and trim the HTTP_HOST
+  $http_host = preg_match('/^([a-zA-Z0-9_\-\.]+)(\.)?(:[0-9]+)?$/', $_SERVER['HTTP_HOST'], $matches) ? $matches[1] : 'default';
+  // check against $http_host so drush aliases continue to work
+  if (isset($http_host)) {
+    $location = (isset($default_redirect[$http_host])) ? $default_redirect[$http_host] . $_SERVER['REQUEST_URI']: FALSE;
+  }
+  else {
+    exit;
+  }
+  return $location;
+}
+
+/**
+* Handle default site requests
+*/
+function default_site_request_handler() {
+  $location = default_site_select_redirect();
+  $cli = (php_sapi_name() == 'cli');
+  if ($location && !$cli) {
+    drupal_add_http_header('Location', 'http://' . $location);
+    drupal_add_http_header('Status', '301 Moved Permanently');
+    exit;
+  }
+}
 
 // commenting out the memory changes
 /**

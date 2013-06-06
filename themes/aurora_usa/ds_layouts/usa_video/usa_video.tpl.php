@@ -20,6 +20,15 @@ if ($node->type == 'usa_video') {
   $player_url = variable_get('usanetwork_theplatform_mpx_player_url');
   $feed_url = variable_get('usanetwork_theplatform_mpx_feed_url');
   $platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
+  $full_episode = field_get_items('node', $node, 'field_full_episode');
+  $full_episode = $full_episode[0]['value'];
+  $is_full = '';
+  if ($full_episode == '1') {
+    $is_full = '?usa_fullEpisode=true';
+  }
+  else {
+    $is_full = '?usa_fullEpisode=false';
+  }
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
@@ -51,7 +60,7 @@ if ($node->type == 'usa_tve_video') {
       <iframe
       class="video-iframe"
       style=""
-      src="<?php print $player_url; ?>/select/<?php print $platform_file_id; ?>"
+      src="<?php print $player_url; ?>/select/<?php print $platform_file_id . $is_full; ?>"
       frameborder="0"
       allowfullscreen>
       Your browser does not support iframes.

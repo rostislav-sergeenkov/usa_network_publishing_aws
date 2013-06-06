@@ -783,6 +783,7 @@ input.echo-submit-text {
   .echo-item-data {
     font-size: 16px;
     font-family: $headline-lt;
+    word-break: break-all;
     @include breakpoint($bp-social-echo) {
       font-size: 21px;
     }

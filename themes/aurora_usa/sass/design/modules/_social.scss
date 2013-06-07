@@ -396,10 +396,14 @@ body.usa-social {
   float: none;
   width: auto;
   clear: both;
+  margin-right: 80px;
   @include breakpoint($bp-social-small-width) {
     clear: none;
-    margin-left: 58px;
+    margin-left: 58px;    
   }
+  @include breakpoint($bp-social-echo) {
+    margin-right: 100px;
+  }  
   @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
   }
@@ -669,7 +673,10 @@ input.echo-submit-text {
     font-family: $headline-reg;
     text-transform: lowercase;
     margin-bottom: 5px;
-
+    margin-right: 75px;
+    @include breakpoint($bp-social-echo) {
+      margin-right: 100px;
+    }   
   }
   .go-chat {
     position: absolute;

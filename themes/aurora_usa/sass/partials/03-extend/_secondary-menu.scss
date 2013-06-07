@@ -29,7 +29,7 @@
   ul {
     margin: 0;
   }
-  .content > .item-list > ul {
+  .shows {
     > li {
       margin-bottom: 15px;
       position: relative;
@@ -58,6 +58,7 @@
               border-top: 1px solid $gray-med-dark;
               &:hover {
                 background-color: $gray-ultra-med;
+                color: $white;
               }
               &:hover:after {
                 @include cssTriangle(0, $gray-med, top);
@@ -103,9 +104,6 @@
             top: 16px;
             @include cssTriangle(5px, $white, bottom);
           }
-          &:hover {
-            color: $gray-extra-light;
-          }
         }
         &.open > span {
           color: $gray-extra-light;
@@ -144,8 +142,6 @@
           }
           @include breakpoint($bp-social-mid-width) {
             border: 0;
-//            padding-top: 10px;
-//            padding-bottom: 8px;
           }
           &:hover:after {
             @include cssTriangle(0, $gray-med, top);
@@ -176,17 +172,17 @@
     width: 100%;
     position: relative;
     z-index: 100;
+    &:hover {
+      color: $white;
+    }
     @include breakpoint($bp-social-mid-width) {
       padding: 20px 30px 18px;
-      padding-left: 30px;
-      padding-right: 30px;
       float: left;
       width: auto;
       border-top: 0;
       border-left: 1px solid $gray-dark;
       border-right: 1px solid $gray-dark;
       &:hover {
-        color: $gray-extra-light;
         border-left: 1px solid $gray-med-dark;
         border-right: 1px solid $gray-med-dark;
       }

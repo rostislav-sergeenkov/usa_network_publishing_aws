@@ -20,8 +20,10 @@
       $promos_count = $promos.find('.pane-node-field-usa-tv-promo ul li').length;
       $videos_count = $video_promo.find('.pane-node-field-usa-tv-promo-vids ul li').length;
 
-      video_count_check();
-      promo_count_check();
+      window.onload = function() {
+        video_count_check();
+        promo_count_check();
+      };
 
 
       function video_count_check() {

@@ -346,6 +346,11 @@
         padding: 17px 15px 8px;
         max-width: none;
       }
+      .usa-adrails &, .ie9 &, .ie8 & {
+        height: 50px;
+        padding: 8px 15px 8px;
+        max-width: 221px;
+      }
     }
   }
   .field-name-field-promo-text-line-1 {
@@ -361,6 +366,10 @@
     @include breakpoint($bp-home-widest) {
       font-size: 15px;
       line-height: 24px;
+    }
+    .usa-adrails &, .ie9 &, .ie8 & {
+      font-size: 10px;
+      line-height: 12px;
     }
   }
   .featured-carousel {

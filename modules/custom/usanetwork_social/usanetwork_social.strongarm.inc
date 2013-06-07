@@ -126,28 +126,28 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_desktop_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa';
   $export['usanetwork_social_sync_desktop_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_desktop_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa';
   $export['usanetwork_social_sync_global_desktop_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_phone_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile';
   $export['usanetwork_social_sync_global_phone_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_phone_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile';
   $export['usanetwork_social_sync_phone_url'] = $strongarm;
 
   $strongarm = new stdClass();

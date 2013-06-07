@@ -13,7 +13,7 @@
     position: absolute;
     color: $white;
     z-index: 1;
-    top: 110px;
+    top: 95px;
     left: 0;
     padding-left: 15px;
     text-align: left;
@@ -22,15 +22,15 @@
       padding-left: 25px;
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
-      top: 140px;
+      top: 125px;
       padding-left: 35px;
     }
     @include breakpoint($bp-aspot-large-width) {
-      top: 190px;
+      top: 175px;
       padding-left: 50px;
     }
     .usa-adrails &, .ie9 &, .ie8 & {
-      top: 140px;
+      top: 125px;
       padding-left: 35px;
     }
     .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {

@@ -220,6 +220,12 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['title']['table'] = 'queues';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['value'] = 'What\'s Hot';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_qt_node_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Whats Hot */
   $handler = $view->new_display('block', 'Whats Hot', 'whats_hot');

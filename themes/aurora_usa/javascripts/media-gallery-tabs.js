@@ -28,6 +28,7 @@
         $(this).addClass('selected');
         $('.gallery-tab-group').hide().filter(this.hash).show();
         $('.filter-dropdown').removeClass('open');
+        $('.menu-label').text($(this).text());
         return false;
       });
 

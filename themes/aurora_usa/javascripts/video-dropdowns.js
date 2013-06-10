@@ -66,9 +66,9 @@
         $filter_menu.addClass('filter-dropdown_v2')
         // grab active item and copy it as a lable
         // create a div classed 'filter-menu' to contain the options
-        $menu_item = $(this).find('.categories > li > a.active');
+        $menu_item = $(this).find('.categories > li.active > a');
         if($menu_item.text() == '') {
-          $menu_item = $(this).find('.categories > li.first span');
+          $menu_item = $(this).find('.categories > li.first > span');
         }
 
         $filter_menu.find('.menu-label').remove();

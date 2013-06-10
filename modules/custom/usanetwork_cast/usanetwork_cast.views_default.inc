@@ -999,6 +999,40 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
     'tv_show' => 'tv_show',
   );
+
+  /* Display: Attachment: show landing people list expanded */
+  $handler = $view->new_display('attachment', 'Attachment: show landing people list expanded', 'attachment_2');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '2';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'follow_social';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|title';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'follow_social';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = 'expand to view all';
+  $handler->display->display_options['footer']['area']['format'] = 'wysiwyg_basic';
+  $handler->display->display_options['displays'] = array(
+    'panel_pane_2' => 'panel_pane_2',
+    'default' => 0,
+    'block_1' => 0,
+    'page_1' => 0,
+    'block_2' => 0,
+    'page_2' => 0,
+    'panel_pane_1' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
   $export['usa_cast'] = $view;
 
   $view = new view();

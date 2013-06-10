@@ -308,7 +308,8 @@ body.usa-social {
       }
     }
   }
-  .attachment-after .view-usa-shows.view-display-id-attachment_1 {
+  .attachment-after .view-usa-shows.view-display-id-attachment_1,
+  .attachment-after .view-usa-cast.view-display-id-attachment_2 {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
@@ -395,10 +396,14 @@ body.usa-social {
   float: none;
   width: auto;
   clear: both;
+  margin-right: 80px;
   @include breakpoint($bp-social-small-width) {
     clear: none;
-    margin-left: 58px;
+    margin-left: 58px;    
   }
+  @include breakpoint($bp-social-echo) {
+    margin-right: 100px;
+  }  
   @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
   }
@@ -644,6 +649,10 @@ input.echo-submit-text {
   display: none;
 }
 
+#syncIframe {
+  height: 1250px;
+}
+
 #showList {
   background-color: $white;
   padding: 10px 12px 40px;
@@ -668,7 +677,10 @@ input.echo-submit-text {
     font-family: $headline-reg;
     text-transform: lowercase;
     margin-bottom: 5px;
-
+    margin-right: 75px;
+    @include breakpoint($bp-social-echo) {
+      margin-right: 100px;
+    }   
   }
   .go-chat {
     position: absolute;

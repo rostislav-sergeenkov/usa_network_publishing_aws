@@ -276,7 +276,9 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
         'title',
         'description',
         'author',
-        'dcterms:valid',
+        // The following 2 fields return the contens of the 'dcterms:valid' node.
+        'availableDate',
+        'expirationDate',
         'media:category',
         'media:keywords',
         'media:rating',
@@ -415,6 +417,21 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       global $user;
 
       $user = user_load(1);
+
+      // If this is an unpublished node, transition it to the "Draft" state, so
+      // that it can be published during scheduling.  Nodes can't be transitioned
+      // directly from an "Unpublished" to a "Published" state.
+      if (!$entity->status) {
+        $state_flow_form = array();
+        $state_flow_form_state = array();
+        $state_flow_form_state['values'] = array(
+          'node_revision' => $entity,
+          'state_flow' => state_flow_load_state_machine($entity),
+          'event' => 'to draft',
+          'event_comment' => t('Transitioning to "Draft" via migration script.'),
+        );
+        state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+      }
 
       $state_flow_form = array();
       $state_flow_form_state = array();

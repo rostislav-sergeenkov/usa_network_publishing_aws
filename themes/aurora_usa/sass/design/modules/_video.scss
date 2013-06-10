@@ -239,9 +239,10 @@
           top: 24px;
           left: auto;
           @extend %usanetwork-font;
-          font-size: 12px;
+          font-size: 11px;
           content: "\e000";
           color: $white;
+          @include text-shadow(1px 0 0 $gray-dark-light, -1px 0 0 $gray-dark-light);
         }
         &:hover {
           color: $gray-extra-light;

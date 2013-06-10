@@ -96,8 +96,9 @@
             top: 24px;
             left: auto;
             @extend %usanetwork-font;
-            font-size: 12px;
+            font-size: 11px;
             content: "\e000";
+            @include text-shadow(1px 0 0 $gray-dark-light, -1px 0 0 $gray-dark-light);
           }
         }
         &.open > span {

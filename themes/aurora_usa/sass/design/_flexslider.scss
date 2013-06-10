@@ -129,6 +129,9 @@ html[xmlns] .slides {
     &:hover {
       background-color: $black-trans;
     }
+    .touch & {
+      display: none;
+    }
   }
   .flex-next {
     background-position: 100% 0;

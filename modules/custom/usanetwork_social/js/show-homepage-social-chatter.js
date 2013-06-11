@@ -19,7 +19,7 @@
 })(jQuery);
 
 (function ($) {
-  Drupal.behaviors.show_homepage_social_chatter_stream = {
+  Drupal.behaviors.show_homepage_social_chatter = {
     attach: function (context, settings) {
 
 			var usa_debugFlag = false;

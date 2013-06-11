@@ -160,6 +160,7 @@
       display: inline;
       float: right;
       height: 250px;
+      max-width: 300px;
     }
     @include breakpoint($bp-home-mid) {
       bottom: 0;

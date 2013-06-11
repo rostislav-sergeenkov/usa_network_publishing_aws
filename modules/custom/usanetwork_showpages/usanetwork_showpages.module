@@ -396,7 +396,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           $actor = field_get_items('node', $node, 'field_usa_actor_name');
           // check for role and actor field
           // CHARACTER_NAME played by ACTOR_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
-          if ($role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
+          if (!empty($role) && $role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
             $head_title = t("@person played by @actor | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
           }
           // everyone else

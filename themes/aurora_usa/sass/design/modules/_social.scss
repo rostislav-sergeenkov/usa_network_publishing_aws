@@ -215,11 +215,14 @@ body.usa-social {
       > div {
         margin: 4px 0 0 11px;
       }
-      h2, h4 {
+      h2, 
+      h4,
+      .field-name-field-usa-actor-name {
         font-size: 14px;
         font-family: $headline-reg;
         color: $white;
         text-transform: none;
+        font-weight: normal;
       }
       .field-name-field-role {
         font-style: italic;

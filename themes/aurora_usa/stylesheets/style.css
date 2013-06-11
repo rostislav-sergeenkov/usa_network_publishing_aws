@@ -367,19 +367,6 @@ strong, dfn, b {
   line-height: 22.5px;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
-.caption-overlay .caption-fields-wrapper h3:after {
-  background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(20%, rgba(0, 0, 0, 0.8)), color-stop(100%, transparent));
-  background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: -o-linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  background-image: linear-gradient(right, rgba(0, 0, 0, 0.8) 20%, transparent);
-  content: "\0020";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1em;
-  height: 100%;
-}
 .caption-overlay .caption-fields-wrapper .caption {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 15px;
@@ -3291,6 +3278,7 @@ input[type="radio"], input[type="checkbox"] {
     display: inline;
     float: right;
     height: 250px;
+    max-width: 300px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -3484,6 +3472,9 @@ input[type="radio"], input[type="checkbox"] {
   max-width: 221px;
   height: 50px;
   padding: 8px 15px 8px;
+}
+.usa-home-featured .carousel-item .meta:after {
+  background: none;
 }
 @media (min-width: 1275px) {
   .usa-home-featured .carousel-item .meta {
@@ -3746,6 +3737,9 @@ html[xmlns] .slides {
 }
 .flex-direction-nav a:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+.touch .flex-direction-nav a {
+  display: none;
 }
 .flex-direction-nav .flex-next {
   background-position: 100% 0;
@@ -4100,6 +4094,9 @@ body.person-page .ad-leaderboard {
   display: block;
 }
 
+.touch .carousel-btns {
+  display: none;
+}
 .carousel-btns .btns {
   color: #636363;
   font-size: 2.35em;
@@ -5569,14 +5566,16 @@ body.usa-social {
 .social-follow-block .item-content .title > div {
   margin: 4px 0 0 11px;
 }
-.social-follow-block .item-content .title h2, .social-follow-block .item-content .title h4 {
+.social-follow-block .item-content .title h2,
+.social-follow-block .item-content .title h4,
+.social-follow-block .item-content .title .field-name-field-usa-actor-name {
   font-size: 14px;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: white;
   text-transform: none;
+  font-weight: normal;
 }
-.social-follow-block .item-content .title .field-name-field-role,
-.social-follow-block .item-content .title .field-name-field-usa-actor-name {
+.social-follow-block .item-content .title .field-name-field-role {
   font-style: italic;
   color: #d0d0d0;
   font-weight: normal;
@@ -5745,7 +5744,7 @@ body.usa-social {
 }
 @media (min-width: 500px) {
   .echo-item-wrapper {
-    margin-right: 100px;
+    margin-right: 150px;
   }
 }
 @media (min-width: 723px) {
@@ -6542,7 +6541,7 @@ table .show-time {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 16px 0 15px;
+  padding: 10px 0;
   line-height: 1em;
 }
 .usa-adrails .ad-leaderboard {

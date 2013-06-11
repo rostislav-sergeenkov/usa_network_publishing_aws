@@ -1,228 +1,165 @@
-/**
- * Javascript code for show homepage social chatter block
- * This shows the most recent chat with fans comment
- * and 1 reply, if there is one.
- * Uses Echo's mux API method for 'multiplex' requests
- * For more info on mux, see http://wiki.aboutecho.com/w/page/32433803/API-method-mux
- * By Donna Vaughan, May 15, 2013
- * Example mux query for this:
- * http://api.echoenabled.com/v2/mux?appkey=prod.usanetwork&requests=[{%22id%22:%22search1%22,%22method%22:%22search%22,%22q%22:%22%28childrenof:http://chatter.usanetwork.com/psych/public/comments%20-state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged%20-user.state:ModeratorBanned%29%20sortOrder:reverseChronological%20safeHTML:true%20itemsPerPage:1%20children:1%22}]&callback=jsonp12345
- */
-(function ($) {
-	Drupal.behaviors.show_homepage_social_chatter = {
-		attach: function(context){
+(function($) {
+	var plugin = Echo.createPlugin({
+		"name": "SourceIconTweaks",
+		"applications": ["Stream"],
+		"init": function(plugin, application) {
+			plugin.extendRenderer("Item", "sourceIcon", function() {
+				var item = this;
+				var source = item.data.source.name;
+				if (source) {
+					var icon = plugin.config.get(item, "icons." + source);
+					if (icon) {
+						item.data.source.icon = icon;
+					}
+				}
+				item.parentRenderer("sourceIcon", arguments);
+			});
+		}
+	});
+})(jQuery);
 
-			var usa_debug_flag = false; // set to false to turn off all debugging alerts or console logging
+(function ($) {
+  Drupal.behaviors.show_homepage_social_chatter_stream = {
+    attach: function (context, settings) {
+
+			var usa_debugFlag = false;
 			var usa_debug = function(msg)
 			{
-				if (usa_debug_flag)
+				if (usa_debugFlag)
 				{
-					if (typeof console != 'undefined') {
+					if (typeof console != 'undefined')
+					{
 						console.log(msg);
 					}
 					else
 					{
-						//alert(msg);
+						// alert(msg);
 					}
 				}
 			}
 
-			/**
-			 * parseDateStr
-			 * re-converts UTC time to UTC time
-			 * because of a problem with IE8
-			 */
-			function parseDate(str) {
-				var v = str.split(/[-T:]/g);
-				return Date.UTC(v[0],(v[1]-1),v[2],v[3],v[4],v[5].replace('Z', ''),'000');
-			}
-
-			/**
-			 * ago -- takes a time in the form yyyy-mm-ddThh:mm:ssZ
-			 * and converts it to something like '# timeperiod ago', such as '3 days ago'
-			 */
-			var ago = function(time)
-			{
-				var periods = ["second", "minute", "hour", "day", "week", "month", "year", "decade"];
-				var lengths = [60,60,24,7,4.35,12,10];
-
-				var now = new Date();
-				var jsTime = new Date(parseDate(time));
-				var difference = (now - jsTime)/1000;
-
-				for (var j = 0; difference >= lengths[j] && j < (lengths.length-1); j++) {
-					difference = difference / lengths[j];
-				}
-
-				difference = Math.round(difference);
-
-				if (difference != 1)
-				{
-					periods[j] += "s";
-				}
-
-				var agoStr = difference + ' ' + periods[j] + ' ago';
-				if (agoStr == '1 day ago') agoStr = 'Yesterday';
-
-				return agoStr;
-			}
-
-			/**
-			 * outputShowComment -- takes the data
-			 * returned from processShowCommentData
-			 * and builds the html that is then
-			 * inserted into div#usanetwork_social_chatter_body
-			 */
-			var outputShowComment = function()
-			{
-				// set defaults
-				var commentPresent = 0;
-				var showUrlLink = (showUrl != '') ? '<a href="'+showUrl+'/social/chat-with-fans">' : '';
-				var showUrlLinkEnd = (showUrl != '') ? '</a>' : '';
-				var joinHtml = '<div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>';
-				var html = showUrlLink;
-
-				// if data was returned, create html comment and comment reply, if there is one
-				if (showData != null && typeof showData == 'object' && showData.length > 0)
-				{
-					for (var index in showData)
-					{
-						// for comment, index == 0
-						if (index == 0)
-						{
-							html += '<div class="usanetwork_social_show_comment">'+
-								'<div class="echo-item-content">'+
-									'<div class="echo-item-avatar-wrapper">'+
-										'<div class="echo-item-avatar">'+
-											'<img src="'+showData[0]["avatar"]+'" width="48" />'+
-										'</div>'+
-									'</div>'+
-									'<div class="echo-item-wrapper echo-item-wrapper-root">'+
-										'<div class="echo-item-subwrapper">'+
-											'<div class="echo-item-frame">'+
-												'<div class="author echo-item-authorName echo-linkColor">'+showData[0]["actor"]+'</div>'+
-												'<div class="echo-clear"></div>'+
-												'<div class="comment echo-item-data">'+
-													'<div class="echo-item-body">'+
-														'<span class="echo-item-text">'+showData[0]["comment"]+'</span>'+
-													'</div>'+
-												'</div>'+
-												'<div class="echo-item-footer">'+
-													'<img class="echo-item-sourceIcon echo-clickable" style="display: block" src="http://www.usanetwork.com/_img/chatter_icon_red_16x16.gif" />'+
-													'<div class="echo-item-date">'+showData[0]["timeStr"]+'</div>'+
-													'<div class="echo-item-from">&nbsp;from&nbsp;usanetwork</div>'+
-													'<div class="echo-clear"></div>'+
-												'</div>'+
-											'</div>'+
-										'</div>'+
-									'</div>'+
-									'<div class="echo-clear"></div>'+
-								'</div>'+
-							'</div>'+"\n";
-
-							commentPresent = 1;
-						}
-
-						/* @TODO: Remove this commented section if they do not want
-						// to show a reply to the comment. Initial comps, showed a reply.
-						// for a reply to the comment, index == 1
-						if (index == 1)
-						{
-							html+= "<div id=\"showCommentReply\">"+
-								"<div id=\"latestReply\">Latest Reply</div>"+
-								"<img src=\""+showData[1]["avatar"]+"\">"+
-								"<div class=\"comment\">"+showData[1]["comment"]+"</div>"+
-								"<div class=\"postdate\">"+showData[1]["timeStr"]+" - </div>"+
-								"<div class=\"separator\">-</div>"+
-								"<div class=\"author\">"+showData[1]["actor"]+"</div>"+
-							"</div>" + commentHtml;
-						}
-						*/
-					}
-				}
-
-				// if no comment was found
-				if (!commentPresent)
-				{
-					html += '<div id="usanetwork_social_show_comment">Add a comment to join the conversation!</div>';
-				}
-				html += joinHtml + showUrlLinkEnd;
-
-				$('#usanetwork_social_chatter_body').html(html);
-			}
-
-			/**
-			 * processShowCommentData -- takes the data
-			 * output from getShowCommentData and
-			 * processes it, creating and returning an array
-			 * called showData.
-			 */
-			var processShowCommentData = function(data)
-			{
-				var showData = [];
-				if (typeof data == "object")
-				{
-					// loop through each search result and get necessary data
-					for(var searchKey in data)
-					{
-						var entries = (typeof data[searchKey]["entries"] == "object") ? data[searchKey]["entries"] : null;
-
-						// loop through each entry
-						for (var entry in entries)
-						{
-							// verify some data
-							if (typeof entries[entry]["object"]["content"] == "string")
-							{
-								var avatar = (typeof entries[entry]["actor"]["avatar"] != 'undefined' && entries[entry]["actor"]["avatar"] != '') ? entries[entry]["actor"]["avatar"] : "http://cdn.echoenabled.com/images/avatar-default.png";
-
-								showData[entry] = { "showToken" : searchKey.replace("search_", ""), "avatar": avatar, "actor" : entries[entry]["actor"]["title"], "comment" : entries[entry]["object"]["content"], "timeStr" : ago(entries[entry]["postedTime"]) };
-							}
-							// we shouldn't get here
-							// if we do, find out why and fix it!
-							else
-							{
-								usa_debug(console.log("BUSTED"));
-							}
-						}
-					}
-				}
-
-				return showData;
-			}
-
-			var showData = [];
-			/**
-			 * getShowCommentData -- uses ajax
-			 * to get the results of the Echo mux query.
-			 * If successful, it processes the data
-			 * and inserts it into div#usanetwork_social_chatter_body.
-			 */
-			var getShowCommentData = function()
-			{
-				$.ajax({
-					url: echoQuery,
-					dataType: "jsonp",
-					data: echoQueryParams,
-					success: function(data){
-						// According to MUX info, if there's an error, the following is returned
-						// {"result": "error", "errorCode": <errorCode>, "errorMessage": <errorMessage>}
-						if (data.result == 'error')
-						{
-							usa_debug('ERROR: '+data.errorMessage);
-							showData = null;
-							outputShowComment();
-						}
-						else
-						{
-							showData = processShowCommentData(data);
-							outputShowComment();
-						}
-					}
+			var strip_tags = function(input, allowed) {
+				// http://kevin.vanzonneveld.net
+				// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +   improved by: Luke Godfrey
+				// +      input by: Pul
+				// +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +   bugfixed by: Onno Marsman
+				// +      input by: Alex
+				// +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +      input by: Marc Palau
+				// +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +      input by: Brett Zamir (http://brett-zamir.me)
+				// +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +   bugfixed by: Eric Nagel
+				// +      input by: Bobby Drake
+				// +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+				// +   bugfixed by: Tomasz Wesolowski
+				// +      input by: Evertjan Garretsen
+				// +    revised by: Rafał Kukawski (http://blog.kukawski.pl/)
+				// *     example 1: strip_tags('<p>Kevin</p> <br /><b>van</b> <i>Zonneveld</i>', '<i><b>');
+				// *     returns 1: 'Kevin <b>van</b> <i>Zonneveld</i>'
+				// *     example 2: strip_tags('<p>Kevin <img src="someimage.png" onmouseover="someFunction()">van <i>Zonneveld</i></p>', '<p>');
+				// *     returns 2: '<p>Kevin van Zonneveld</p>'
+				// *     example 3: strip_tags("<a href='http://kevin.vanzonneveld.net'>Kevin van Zonneveld</a>", "<a>");
+				// *     returns 3: '<a href='http://kevin.vanzonneveld.net'>Kevin van Zonneveld</a>'
+				// *     example 4: strip_tags('1 < 5 5 > 1');
+				// *     returns 4: '1 < 5 5 > 1'
+				// *     example 5: strip_tags('1 <br/> 1');
+				// *     returns 5: '1  1'
+				// *     example 6: strip_tags('1 <br/> 1', '<br>');
+				// *     returns 6: '1  1'
+				// *     example 7: strip_tags('1 <br/> 1', '<br><br/>');
+				// *     returns 7: '1 <br/> 1'
+				allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join(''); // making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
+				var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+					commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+				return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+					return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
 				});
 			}
 
-			// Begin processing the Echo mux query
-			getShowCommentData();
+			var usa_trimCommentLength = function()
+			{
+				usa_debug('fn: usa_trimCommentLength()');
+				if ($('#usanetwork_social_show_comment').html().length > 0)
+				{
+					var fr = $("#usanetwork_social_show_comment");
+					fr.find(".echo-item-text").each(function(index) {
+						var newComment = '';
+						var newWords = [];
+						var words = [];
+						var comment = $(this).html();
+						var cleanComment = strip_tags(comment);
+						words = cleanComment.split(' ');
+						if (words.length > maxWordsPerComment)
+						{
+							newWords = words.slice(0, maxWordsPerComment);
+							newComment = newWords.join(' ') + ' &hellip;';
+							$(this).html(newComment);
+						}
+					});
+				}
+				else
+				{
+					usa_trimCommentLengthTO = setTimeout(usa_trimCommentLength, 1000 * 10);
+				}
+			}
+
+			var usa_trimCommentCount = function()
+			{
+				usa_debug('fn: usa_trimCommentCount()');
+				if ($('#usanetwork_social_show_comment').html().length > 0)
+				{
+					var fr = $("#usanetwork_social_show_comment");
+					var count = 0;
+					fr.find(".echo-item-content").each(function(index) {
+						if (count >= maxComments)
+						{
+							$(this).remove();
+						}
+						count++;
+					});
+				}
+				else
+				{
+					usa_trimCommentCountTO = setTimeout(usa_trimCommentCount, 1000 * 10);
+				}
+			}
+
+			var EchoRiverClient;
+			function initEchoRiverClient() {
+				usa_debug('fn: initEchoRiverClient()');
+				EchoRiverClient = new Echo.Stream({
+						"target": $('#usanetwork_social_show_comment'),
+						"appkey": echoAppKey,
+						"query": chatWithFansEQL,
+						"maxBodyCharacters": 2000,
+						"viaLabel": {"icon": true,"text": true},
+						"reTag": false,
+						"streamStateLabel": {"icon": true,"text": true},
+						"aggressiveSanitization": false,
+						"plugins": [
+							{
+								"name": "SourceIconTweaks",
+								"icons": {
+									"usanetwork": chatterSourceIcon,
+									"yap-tv": chatterSourceIcon
+								}
+							}
+						]
+				});
+			}
+
+			Echo.Broadcast.subscribe("Stream.onReady",
+				function(topic, data, contextId) {
+					usa_trimCommentCount();
+					usa_trimCommentLength();
+				}
+			);
+
+			initEchoRiverClient();
+
 		}
 	}
 })(jQuery);

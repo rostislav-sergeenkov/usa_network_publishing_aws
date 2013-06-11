@@ -276,7 +276,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             // link actor name
             $nid = $vars['element']['#object']->nid;
             $name = $vars['element']['#items'][0]['safe_value'];
-            $vars['items'][0]['#markup'] = l($name, 'node/' . $nid);
+            $vars['items'][0]['#markup'] = l($name, 'node/' . $nid, array('html' => TRUE));
             break;
         }
       }

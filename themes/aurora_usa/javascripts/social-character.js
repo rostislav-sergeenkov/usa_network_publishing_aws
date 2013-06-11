@@ -2,7 +2,7 @@
 (function ($) {
   Drupal.behaviors.social_character = {
     attach: function (context, settings) {
-      $('#block-views-usa-cast-block-2 .field-name-field-usa-actor-name').parent().find('.field-name-title').css('display', 'none');
+      $('.social-follow-block .field-name-field-usa-actor-name').parent().find('.field-name-title').css('display', 'none');
     },
   };
 }(jQuery));

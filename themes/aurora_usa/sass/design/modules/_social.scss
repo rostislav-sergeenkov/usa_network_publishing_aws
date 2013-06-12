@@ -879,7 +879,7 @@ input.echo-submit-text {
     }
     .mCSB_draggerRail{
       background: $white-trans-1;
-      border-radius: 1px 1px 1px 1px;
+      @include border-radius(1px);
       width: 4px;
       height: 100%;
       margin: 0 auto;

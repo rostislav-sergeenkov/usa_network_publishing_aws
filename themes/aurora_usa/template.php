@@ -249,17 +249,34 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
           case 'follow_social':
             //remove role field
+            // hide title with js because ds will not let us properly preprocess
+            drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-character.js');
+            unset($vars['items'][0]);
+            break;
+        }
+      }
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Self') {
+        switch ($vars['element']['#view_mode']) {
+          case 'follow_social':
+            //remove role field
             unset($vars['items'][0]);
             break;
         }
       }
       break;
+    // ACTOR NAME IN PEOPLE NODES
     case 'field_usa_actor_name':
-       if (isset($vars['element']['#view_mode']))  {
+       if (isset($vars['element']['#view_mode'])) {
         switch ($vars['element']['#view_mode']) {
           case 'cast_carousel':
             // remove as adding to field role so in same div
             unset($vars['items'][0]);
+            break;
+          case 'follow_social':
+            // link actor name
+            $nid = $vars['element']['#object']->nid;
+            $name = $vars['element']['#items'][0]['safe_value'];
+            $vars['items'][0]['#markup'] = l($name, 'node/' . $nid, array('html' => TRUE));
             break;
         }
       }
@@ -281,7 +298,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     case 'field_usa_character_thumb':
       // making thumb clickable
-      if (isset($vars['element']['#view_mode']))  {
+      if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'follow_social' :
             $node = $vars['element']['#object'];
@@ -289,28 +306,19 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $thumb = $vars['items'][0];
             $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
             break;
-
-          case 'cast_carousel':
-            // $node = $vars['element']['#object'];
-            // $url = drupal_lookup_path('alias',"node/".$node->nid);
-            // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
-            // $thumb = $vars['items'][0];
-            // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
-            break;
           }
         }
       break;
     // AIRDATE IN VIDEOS
     case 'field_video_air_date':
       // change display
-      if (isset($vars['element']['#view_mode']))  {
+      if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'full' :
             $airtime = $vars['element']['#items'][0]['value'];
             $air_custom = date('n/d/Y', $airtime);
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
-
           case 'vid_teaser_episode':
             $title = $vars['element']['#object']->title;
             $airtime = $vars['element']['#items'][0]['value'];

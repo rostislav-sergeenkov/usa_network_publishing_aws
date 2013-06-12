@@ -119,29 +119,34 @@
   }
 }
 
-.carousel-btns .btns {
-  @extend %usanetwork-font;
-  color: $gray-darker-light;
-  font-size: 2.35em;
-  cursor: pointer;
-  position: absolute;
-  left: 5px;
-  top: 39%;
-  z-index: 96;
-  .ie9 &, .ie8 & {
-    @extend .icons-gray-arrow-left;
-    width: 25px;
-    height: 33px;
-    text-indent: -9999px;
+.carousel-btns {
+  .touch & {
+    display: none;
   }
-  &:hover {
-    color: $gray-light;
-  }
-  &.next {
-    left: auto;
-    right: 0;
+  .btns {
+    @extend %usanetwork-font;
+    color: $gray-darker-light;
+    font-size: 2.35em;
+    cursor: pointer;
+    position: absolute;
+    left: 5px;
+    top: 39%;
+    z-index: 96;
     .ie9 &, .ie8 & {
-      @extend .icons-gray-arrow-right;
+      @extend .icons-gray-arrow-left;
+      width: 25px;
+      height: 33px;
+      text-indent: -9999px;
+    }
+    &:hover {
+      color: $gray-light;
+    }
+    &.next {
+      left: auto;
+      right: 0;
+      .ie9 &, .ie8 & {
+        @extend .icons-gray-arrow-right;
+      }
     }
   }
 }

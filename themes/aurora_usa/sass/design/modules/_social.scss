@@ -398,14 +398,10 @@ body.usa-social {
   float: none;
   width: auto;
   clear: both;
-  margin-right: 80px;
   @include breakpoint($bp-social-small-width) {
     clear: none;
     margin-left: 58px;    
-  }
-  @include breakpoint($bp-social-echo) {
-    margin-right: 150px;
-  }  
+  } 
   @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
   }
@@ -723,6 +719,12 @@ input.echo-submit-text {
   .echo-item-footer {
     @extend %clearfix;
   }
+  .echo-item-wrapper {
+    margin-right: 80px;
+    @include breakpoint($bp-social-echo) {
+      margin-right: 150px;
+    }  
+  }
 }
 
 .usanetwork_social_global_show {
@@ -774,7 +776,7 @@ input.echo-submit-text {
   letter-spacing: 0.05em;
   line-height: 1;
   margin: 0;
-  padding: 10px 15px 7px;
+  padding: 14px 15px 14px;
   text-transform: lowercase;
 }
 
@@ -783,7 +785,7 @@ input.echo-submit-text {
   background-color: $gray-dark;
 }
 
-.usanetwork_social_show_comment {
+#usanetwork_social_show_comment {
   border-bottom: 1px solid $gray-med;
   border-top: 1px solid $black-dark;
   padding: 10px 15px;
@@ -792,15 +794,14 @@ input.echo-submit-text {
   }
   .echo-item-data {
     font-size: 16px;
-    font-family: $headline-lt;
-    word-break: break-all;
-    @include breakpoint($bp-social-echo) {
-      font-size: 21px;
+    font-family: $headline-reg;
+    a {
+      word-break: break-all;
     }
   }
   .echo-item-authorName {
     color: $gray-dark-light;
-    font-size: 26px;
+    font-size: 20px;
     padding-bottom: 8px;
   }
   .echo-item-footer {
@@ -812,6 +813,10 @@ input.echo-submit-text {
   .echo-item-date,
   .echo-item-from {
     float: left;
+  }
+  .echo-stream-header, 
+  .echo-stream-more { 
+    display: none !important; 
   }
 }
 
@@ -836,6 +841,61 @@ input.echo-submit-text {
       position: absolute;
       left: 0;
       top: 5px;
+    }
+  }
+}
+
+
+/* basic scrollbar styling */
+/* vertical scrollbar */
+
+
+.usa-sync-scroll {
+  height: 800px;
+  margin-top: 0;
+  min-height: 800px;
+  overflow: hidden;
+  .mCSB_container{
+    width: auto;
+    overflow: hidden;
+  }
+  .mCustomScrollBox > .mCSB_scrollTools {
+    width: 16px;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+  .mCSB_scrollTools  {
+    .mCSB_draggerContainer{
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0; 
+      height: auto;
+    }
+    a + .mCSB_draggerContainer {
+      margin:20px 0;
+    }
+    .mCSB_draggerRail{
+      background: $white-trans-1;
+      @include border-radius(1px);
+      width: 4px;
+      height: 100%;
+      margin: 0 auto;
+    }
+    .mCSB_dragger{
+      cursor: pointer;
+      width: 100%;
+      height: 30px;
+      .mCSB_dragger_bar{
+        width: 4px;
+        height: 100%;
+        margin: 0 auto;
+        background: $white-trans-75;
+        text-align: center;
+        @include border-radius(1px);
+      }
     }
   }
 }

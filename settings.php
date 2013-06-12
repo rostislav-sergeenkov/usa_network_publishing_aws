@@ -177,6 +177,22 @@ function default_site_select_redirect() {
     'usanetwork.com' => 'www.usanetwork.com',
     'beta.usanetwork.com' => 'www.usanetwork.com',
     'usanetwork.prod.acquia-sites.com' => 'www.usanetwork.com',
+    'burnnotice.usanetwork.com ' => 'www.usanetwork.com/burnnotice',
+    'covertaffairs.usanetwork.com' => 'www.usanetwork.com/covertaffairs',
+    'csi.usanetwork.com' => 'www.usanetwork.com/csi',
+    'graceland.usanetwork.com' => 'www.usanetwork.com/graceland',
+    'house.usanetwork.com' => 'www.usanetwork.com/house',
+    'svu.usanetwork.com' => 'www.usanetwork.com/svu',
+    'themoment.usanetwork.com' => 'www.usanetwork.com/themoment',
+    'ncis.usanetwork.com' => 'www.usanetwork.com/ncis',
+    'ncisla.usanetwork.com' => 'www.usanetwork.com/ncisla',
+    'necessaryroughness.usanetwork.com' => 'www.usanetwork.com/necessaryroughness',
+    'psych.usanetwork.com' => 'www.usanetwork.com/psych',
+    'royalpains.usanetwork.com' => 'www.usanetwork.com/royalpains',
+    'suits.usanetwork.com' => 'www.usanetwork.com/suits',
+    'summercamp.usanetwork.com' => 'www.usanetwork.com/summercamp',
+    'whitecollar.usanetwork.com' => 'www.usanetwork.com/whitecollar',
+    'raw.usanetwork.com' => 'www.usanetwork.com/wwe',
   );
   $location = '';
 

@@ -156,11 +156,18 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'type' => 'hidden',
       'weight' => 0,
     ); /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['display']['default']['weight'] = '4'; /* WAS: 4 */
     $data['node-tv_show-field_banner']['field_instance']['display']['follow_social'] = array(
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
       'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_banner']['field_instance']['display']['search_result'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => '36',
     ); /* WAS: '' */
     $data['node-tv_show-field_banner']['field_instance']['fences_wrapper'] = 'div'; /* WAS: '' */
     $data['node-tv_show-field_banner']['field_instance']['required'] = 0; /* WAS: 1 */
@@ -180,11 +187,18 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'type' => 'image',
       'weight' => '0',
     ); /* WAS: '' */
+    $data['node-tv_show-field_logo']['field_instance']['display']['default']['weight'] = '3'; /* WAS: 3 */
     $data['node-tv_show-field_logo']['field_instance']['display']['follow_social'] = array(
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
       'weight' => '38',
+    ); /* WAS: '' */
+    $data['node-tv_show-field_logo']['field_instance']['display']['search_result'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => '35',
     ); /* WAS: '' */
     $data['node-tv_show-field_logo']['field_instance']['fences_wrapper'] = 'figure'; /* WAS: '' */
   }
@@ -201,6 +215,12 @@ function pub_tv_overrides_field_default_fields_alter(&$data) {
       'settings' => array(),
       'type' => 'hidden',
       'weight' => 0,
+    ); /* WAS: '' */
+    $data['node-tv_show-field_tv_cover_media']['field_instance']['display']['search_result'] = array(
+      'label' => 'above',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => '37',
     ); /* WAS: '' */
     $data['node-tv_show-field_tv_cover_media']['field_instance']['required'] = 0; /* WAS: 1 */
   }
@@ -241,8 +261,32 @@ function pub_tv_overrides_strongarm_alter(&$data) {
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['home_promo'] = array(
       'custom_settings' => FALSE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['home_promo_bspot'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['promo_teaser'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['search_index'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['search_result'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
     $data['field_bundle_settings_node__tv_show']->value['view_modes']['social_follow'] = array(
       'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['vid_teaser_episode'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['vid_teaser_general'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['vid_teaser_show_episode'] = array(
+      'custom_settings' => FALSE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__tv_show']->value['view_modes']['vid_teaser_show_general'] = array(
+      'custom_settings' => FALSE,
     ); /* WAS: '' */
   }
 }

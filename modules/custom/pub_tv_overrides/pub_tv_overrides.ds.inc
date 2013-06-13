@@ -50,6 +50,21 @@ function pub_tv_overrides_ds_field_settings_info() {
   );
   $export['node|tv_show|follow_social'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tv_show|search_result';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tv_show';
+  $ds_fieldsetting->view_mode = 'search_result';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '32',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|tv_show|search_result'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -118,6 +133,36 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|tv_show|follow_social'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tv_show|search_result';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tv_show';
+  $ds_layout->view_mode = 'search_result';
+  $ds_layout->layout = 'usa_search';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_social_logo',
+      ),
+      'body' => array(
+        0 => 'body',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+    ),
+    'fields' => array(
+      'field_social_logo' => 'media',
+      'body' => 'body',
+      'title' => 'title',
+    ),
+    'classes' => array(),
+  );
+  $export['node|tv_show|search_result'] = $ds_layout;
 
   return $export;
 }

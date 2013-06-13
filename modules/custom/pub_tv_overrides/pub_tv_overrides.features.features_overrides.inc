@@ -119,11 +119,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => 0,
   );
+  $overrides["field.node-tv_show-field_banner.field_instance|display|default|weight"] = '4';
   $overrides["field.node-tv_show-field_banner.field_instance|display|follow_social"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
     'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_banner.field_instance|display|search_result"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '36',
   );
   $overrides["field.node-tv_show-field_banner.field_instance|fences_wrapper"] = 'div';
   $overrides["field.node-tv_show-field_banner.field_instance|required"] = 0;
@@ -141,11 +148,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'image',
     'weight' => '0',
   );
+  $overrides["field.node-tv_show-field_logo.field_instance|display|default|weight"] = '3';
   $overrides["field.node-tv_show-field_logo.field_instance|display|follow_social"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
     'weight' => '38',
+  );
+  $overrides["field.node-tv_show-field_logo.field_instance|display|search_result"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '35',
   );
   $overrides["field.node-tv_show-field_logo.field_instance|fences_wrapper"] = 'figure';
   $overrides["field.node-tv_show-field_tv_cover_media.field_instance|description"] = 'This field is not used by USA';
@@ -160,6 +174,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'settings' => array(),
     'type' => 'hidden',
     'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|display|search_result"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '37',
   );
   $overrides["field.node-tv_show-field_tv_cover_media.field_instance|required"] = 0;
 
@@ -192,8 +212,32 @@ function pub_tv_overrides_features_override_default_overrides() {
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|home_promo"] = array(
     'custom_settings' => FALSE,
   );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|home_promo_bspot"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|promo_teaser"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|search_index"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|search_result"] = array(
+    'custom_settings' => TRUE,
+  );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|social_follow"] = array(
     'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|vid_teaser_episode"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|vid_teaser_general"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|vid_teaser_show_episode"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|vid_teaser_show_general"] = array(
+    'custom_settings' => FALSE,
   );
 
  return $overrides;

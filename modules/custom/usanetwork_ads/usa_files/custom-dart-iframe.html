@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6 no-js"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7 no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"  lang="en" dir="ltr"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>Ad Iframe | USA Network</title>
+	<script>/* RF V1.13 */
+if (typeof eTandomAd == "undefined") eTandomAd = "none";
+
+
+/* device detection code */
+// @TODO: move to external JS
+function usa_detectCurrentDevice () {
+    var agent = navigator.userAgent.toLowerCase();
+    var scrWidth = screen.width;
+    var scrHeight = screen.height;
+    // The document.documentElement dimensions seem to be identical to
+    // the screen dimensions on all the mobile browsers I've tested so far
+    var elemWidth = document.documentElement.clientWidth;
+    var elemHeight = document.documentElement.clientHeight;
+    // We need to eliminate Symbian, Series 60, Windows Mobile and Blackberry
+    // browsers for this quick and dirty check. This can be done with the user agent.
+    var otherBrowser = (agent.indexOf("series60") != -1) || (agent.indexOf("symbian") != -1) || (agent.indexOf("windows ce") != -1) || (agent.indexOf("blackberry") != -1);
+    // If the screen orientation is defined we are in a modern mobile OS
+    var mobileOS = typeof orientation != 'undefined' ? true : false;
+    // If touch events are defined we are in a modern touch screen OS
+    var touchOS = ('ontouchstart' in document.documentElement) ? true : false; //var touchOS = Modernizr.touch;
+
+    // iPhone and iPad can be reliably identified with the navigator.platform
+    // string, which is currently only available on these devices.
+    var iOS = ((navigator.platform).toLowerCase().indexOf("iphone") != -1) ||
+                ((navigator.platform).toLowerCase().indexOf("ipad") != -1) ||
+            ((navigator.platform).toLowerCase().indexOf("ipod") != -1) ||
+                ((agent).toLowerCase().indexOf("iphone") != -1) ||
+            ((agent).toLowerCase().indexOf("ipod") != -1) ||
+                ((agent).toLowerCase().indexOf("ipad") != -1) ? true : false;
+
+    // If the user agent string contains "android" then it's Android. If it
+    // doesn't but it's not another browser, not an iOS device and we're in
+    // a mobile and touch OS then we can be 99% certain that it's Android.
+    var android = (agent.indexOf("android") != -1) || (!iOS && !otherBrowser && touchOS && mobileOS) ? true : false;
+    var smartphone = false;
+    var mobileDevice = (iOS || android || mobileOS || touchOS || otherBrowser) ? true : false;
+
+    var smartphoneWidthThreshold = 768;
+    var bW = window.innerWidth;
+    var bH = window.innerHeight;
+    if (window.innerWidth && window.innerHeight)
+    {
+        if (bW < smartphoneWidthThreshold && mobileDevice)
+        {
+            smartphone = true;
+        }
+    }
+
+    return {
+        otherBrowser : otherBrowser,
+        mobileOS : mobileOS,
+        touchOS : touchOS,
+        iOS : iOS,
+        android : android,
+        mobileDevice : mobileDevice,
+        smartphone : smartphone
+    }
+}
+
+var usa_deviceInfo = usa_detectCurrentDevice();
+
+// OVERRIDE JUST FOR TESTING
+//usa_deviceInfo.smartphone = true;
+
+
+// Override Drupal.DART.tag function
+usa_outputAdTag = function(tag) {
+  tag = typeof(tag) == 'string' ? eval('(' + tag + ')') : tag;
+
+  if (usa_deviceInfo.smartphone) {
+    // SMARTPHONE
+    if (tag.sz == '728x90' || tag.sz == '728x90,970x66') {
+      // this unit should become a 300x50 unless we are on the homepage, and then we shouldn't render anything as it's in a different spot
+      if (Drupal.settings.USA.DART.values.sect == 'home') {
+        return;
+      } else {
+        tag.sz = '300x50';
+        tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
+      }
+    } else if (tag.sz == '300x250') {
+      // no 300x250's on mobile, so exit, unless its the homepage and it will turn into a mobile unit
+      if (Drupal.settings.USA.DART.values.sect == 'home') {
+        tag.sz = '300x50';
+        tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
+      } else {
+        return;
+      }
+    }
+  } else if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
+    // TABLET
+    if (tag.sz == '728x90,970x66' || tag.sz == '728x90') {
+      if (Drupal.settings.USA.DART.is_sponsored || Drupal.settings.USA.DART.values.sub == 'video') {
+        // no OPA push down's for tablets thanks! and only if sponsored
+        tag.sz == '728x90';
+        tag.key_vals.sz[0] = {'val' : '728x90', 'eval': false};
+      } else {
+        // this unit only shows if sponsored
+        return;
+      }
+    }
+  } else {
+    // DESKTOP
+
+  }
+
+
+  // check for sponsored
+  // hide tune in on desktop and tablet
+  // dont show for smartphone at all
+
+// @TODO: check for sponsor logo size, then sponsor flag
+
+if (tag.sz == '220x60') {
+  // this is a sponsor unit
+
+  if (Drupal.settings.USA.DART.is_sponsored) {
+    // page is sponsored
+    if (usa_deviceInfo.smartphone) {
+      // no sponsored logos for smartphones, so hide block and exit
+      jQuery('.utilities-sponsored .block-dart').hide();
+      return;
+    } else {
+      jQuery('aside.show-time').hide();
+    }
+  } else {
+    // dont render this sponsor tag as this page is NOT sponsored
+    jQuery('.utilities-sponsored .block-dart').hide();
+    return;
+  }
+}
+
+  // force smartphones to use JS instead of IFRAMEs
+  if (usa_deviceInfo.smartphone) {
+    tag.settings.options.method = 'adj';
+  }
+
+  var tagname = tag.settings.options.method == 'adj' ? 'script' : 'iframe';
+  var options = tag.settings.options.method == 'adj' ? 'type="text/javascript"' : 'frameborder="0" scrolling="no" width="' + tag.sz.split("x")[0] + '" height="' + tag.sz.split("x")[1] + '"';
+
+  // Allow other modules to include js that can manipulate the tag object.
+  var processed_tag = ($ !== undefined) ? $(document).triggerHandler('dart_tag_process', [tag]) : undefined;
+  tag = processed_tag !== undefined ? processed_tag : tag;
+
+  if (usa_deviceInfo.smartphone) {
+    // SMARTPHONE
+    tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
+    delete tag.key_vals.dcopt;
+    delete tag.key_vals.tile;
+    delete tag.key_vals.pm;
+    delete tag.key_vals.tandomad;
+
+    ad = '<' + tagname + ' ' + options + ' src="';
+    ad +="http://ad.mo.doubleclick.net/DARTProxy/mobile.handler?k=mo.";
+    ad += tag.site + "/";
+    //ad += tag.zone;
+    if (typeof tag.key_vals.sect != 'undefined') {
+      var sectVal = (tag.key_vals.sect[0].eval) ? eval(tag.key_vals.sect[0].val) : tag.key_vals.sect[0].val;
+      if (sectVal != '') {
+        ad += sectVal + "_";
+      }
+    }
+   if (typeof tag.key_vals.sub != 'undefined') {
+      var subVal = (tag.key_vals.sub[0].eval) ? eval(tag.key_vals.sub[0].val) : tag.key_vals.sub[0].val;
+      if (subVal != '') {
+        ad += subVal;
+      }
+    }
+    ad += ";mdeck=1";
+    ad += "site=" + tag.site + ";";
+    ad += this.keyVals(tag.key_vals);
+
+    /*if (typeof console != 'undefined') {
+      console.log('Smartphone Device Detected, outputting mobile ad tag: ');
+    }*/
+  } else if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
+    // TABLET
+    ad = '<' + tagname + ' ' + options + ' src="';
+    ad += dart_url + "/";
+    ad += tag.network_id !== '' ? tag.network_id + "/" : "";
+    ad += tag.settings.options.method + "/";
+    ad += tag.prefix + '.' + tag.site + "/"; // + tag.zone;
+    if (typeof tag.key_vals.sect != 'undefined') {
+      var sectVal = (tag.key_vals.sect[0].eval) ? eval(tag.key_vals.sect[0].val) : tag.key_vals.sect[0].val;
+      if (sectVal != '') {
+        ad += sectVal + "_";
+      }
+    }
+    if (typeof tag.key_vals.sub != 'undefined') {
+      var subVal = (tag.key_vals.sub[0].eval) ? eval(tag.key_vals.sub[0].val) : tag.key_vals.sub[0].val;
+      if (subVal != '') {
+        ad += subVal + '_tablet';
+      } else {
+        ad += 'tablet';
+      }
+    } else {
+      ad += 'tablet';
+    }
+    ad += ";platform=tablet;!c=tablet";
+    ad += ";" + this.keyVals(tag.key_vals);
+
+    /*if (typeof console != 'undefined') {
+      console.log('Tablet Device Detected, outputting tablet ad tag: ');
+    }*/
+  } else {
+    // DESKTOP
+    ad = '<' + tagname + ' ' + options + ' src="';
+    ad += dart_url + "/";
+    ad += tag.network_id !== '' ? tag.network_id + "/" : "";
+    ad += tag.settings.options.method + "/";
+    ad += tag.prefix + '.' + tag.site + "/"; // + tag.zone;
+    if (typeof tag.key_vals.sect != 'undefined') {
+      var sectVal = (tag.key_vals.sect[0].eval) ? eval(tag.key_vals.sect[0].val) : tag.key_vals.sect[0].val;
+      if (sectVal != '') {
+        ad += sectVal + "_";
+      }
+    }
+    if (typeof tag.key_vals.sub != 'undefined') {
+      var subVal = (tag.key_vals.sub[0].eval) ? eval(tag.key_vals.sub[0].val) : tag.key_vals.sub[0].val;
+      if (subVal != '') {
+        ad += subVal;
+      }
+    }
+    ad += ";" + this.keyVals(tag.key_vals);
+
+    /*if (typeof console != 'undefined') {
+      console.log('Desktop Detected, outputting desktop ad tag: ');
+    }*/
+  }
+  // Allow other modules to include js that can manipulate the concatenated tag string.
+  rendered_ad = ($ !== undefined) ? $(document).triggerHandler('dart_tag_render', [ad]) : undefined;
+  ad = rendered_ad !== undefined ? rendered_ad : ad;
+
+  if (!usa_deviceInfo.smartphone)  {
+    ad += '"></' + tagname + '>';
+  } else {
+    ad = ad.replace('pm=1;', ''); // temp hack until I work out where this is being appended
+    ad += '&forecast=1&csit=1&dw=1"></' + tagname + '>';
+  }
+
+/*  if (typeof console != 'undefined') {
+      console.log(tag);
+      console.log(ad);
+  }*/
+
+  if (Drupal.DART.settings.writeTags) {
+    //document.write(ad);
+    document.write('<center>' + ad + '</center>');
+  }
+
+  return ad;
+};
+
+
+
+
+
+
+
+
+/* rails code from current site */
+var usa_defaultBgImg, usa_defaultBgAttach, usa_defaultBgPos, usa_defaultBgCol;
+var usa_railsSet = false;
+
+// this function sets the body CSS properties to show the rails and handle the click
+function usa_setRails(railAdBg, railAdBgColor, railAdBgRepeat, railAdBgClickthru)
+{
+    //usa_debug('rf - usa_setRails()');
+
+	if (usa_railsSet || usa_deviceInfo.mobileDevice)
+	{
+		return;
+	}
+
+	if ((typeof railAdBg != 'undefined') && railAdBg)
+	{
+		// site specific custom background code.
+		if (typeof usa_defaultBgImg == 'undefined')
+		{
+			usa_defaultBgImg = jQuery('body').css('background-image');
+			usa_defaultBgAttach = jQuery('body').css('background-attachment');
+			usa_defaultBgPos = jQuery('body').css('background-position');
+		}
+		jQuery('body').css({'background-image':'url("'+railAdBg+'")'});
+		jQuery('body').css({'background-attachment':'fixed'});
+		jQuery('body').css({'background-position':'center 62px'});
+	}
+
+	if((typeof railAdBgColor !='undefined') && railAdBgColor)
+	{
+		if (typeof usa_defaultBgCol == 'undefined')
+		{
+			usa_defaultBgCol = jQuery('body').css('background-color');
+		}
+		// site specific custom background color code.
+		jQuery('body').css({'background-color':'#'+railAdBgColor});
+	}
+	if((typeof railAdBgRepeat != 'undefined') && railAdBgRepeat)
+	{
+		// site specific custom background repeat code.
+		jQuery('body').css({'background-repeat':railAdBgRepeat});
+	}
+
+	if ((typeof railAdBgClickthru !='undefined') && railAdBgClickthru)
+	{
+		//usa_debug('railAdBgClickthru: ' + railAdBgClickthru);
+
+		// site specific custom background click event code.
+	  jQuery('body').click(function (e) {
+	  evt = e || window.event;
+	  if (e.target) targ = e.target;
+	  else if (e.srcElement) targ = e.srcElement;
+	  if (targ.nodeType == 3) // Safari bug
+	  targ = targ.parentNode;
+
+	  //railAdBgClickthru = unescape(railAdBgClickthru);
+	  //if (targ.id == jQuery('body').attr('id')) {
+	  // if (targ.tagName.toLowerCase() == jQuery('body')[0].tagName.toLowerCase() || targ.id == 'usa_innerContainer') {
+	  if (targ.nodeName == 'DIV' && targ.className == 'jPanelMenu-panel') {
+		  //usa_debug('open rails page...');
+		  window.open(railAdBgClickthru);
+		}
+	 });
+
+	 jQuery('body').bind('mouseenter',function () {
+	   jQuery(this).css('cursor','pointer');
+	 });
+
+	 jQuery('body').bind('mouseleave',function () {
+	    jQuery(this).css('cursor','default');
+	  });
+	}
+
+	// rails are set, so set the class on the body tag to lock the desktop
+	jQuery('body').addClass('usa-adrails');
+
+	// for admin use, hide the background color on the page div, so we can see the rails in the admin tool
+	jQuery('div#page').css('background','transparent');
+	jQuery('.jPanelMenu-panel').css('background','transparent');
+
+	usa_railsSet = true;
+}
+
+// this will set the rails once the page is done loading and call our usa_setRails function
+jQuery(document).ready(function() {
+	var p1 = null;
+	var p2 = null;
+	var p3 = null;
+	var p4 = null;
+
+	if((typeof railAdBg !='undefined') && railAdBg)
+	{
+		p1 = railAdBg;
+	}
+
+	if((typeof railAdBgColor !='undefined') && railAdBgColor)
+	{
+		p2 = railAdBgColor;
+	}
+
+	if((typeof railAdBgRepeat !='undefined') && railAdBgRepeat)
+	{
+		p3 = railAdBgRepeat;
+	}
+
+	if((typeof railAdBgClickthru !='undefined') && railAdBgClickthru)
+	{
+		p4 = railAdBgClickthru;
+	}
+
+	if ((p1 != null || p2 != null || p3 != null || p4 != null) && typeof parent.usa_setRails != 'undefined')
+	{
+		parent.usa_setRails(p1, p2, p3, p4);
+	}
+});
+
+
+
+
+
+jQuery(document).ready(function() {
+
+});
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+var dart_url = parent.dart_url || "http://ad.doubleclick.net";
+var tile = parent.tile || 1;
+var ord = parent.ord || (1000000000 + Math.floor(Math.random() * 900000000));</script>
+
+<style>
+body {
+	margin:0px;
+	padding:0px;
+	background: #161616;
+}
+</style>
+
+  </head>
+  <body>
+
+	<script>
+	// get dart ad tag from query string
+	var tagKey = getUrlVars()['key'];
+	var tagObj = parent.usa_getCurrentTagObj(tagKey);
+	usa_outputAdTag(tagObj);
+
+	</script>
+  </body>
+</html>

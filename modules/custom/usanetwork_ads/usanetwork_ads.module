@@ -109,15 +109,17 @@ function usanetwork_ads_menu() {
 function usanetwork_ads_custom_dart_iframe() {
   global $base_url;
   $jquery_path = $base_url .'/'. drupal_get_path('module', 'jquery_update') . '/replace/jquery/1.7/jquery.min.js?v=1.7.1';
-  $query = $_GET['query_variable'];
+  $file_path = $base_url . '/' . drupal_get_path('module', 'usanetwork_ads') . '/usa_files/custom_dart_iframe.html';
+  $file = file_get_contents($file_path);
   $output  = '';
-  // use drupal_json_decode to convert a json object to a php object and use drupal_json_encode to convert vice versa
-  
-  $output .= '<script src="'. $jquery_path .'"></script>';
+
+  $output .= str_replace('<title>Ad Iframe | USA Network</title>', '<title>Ad Iframe | USA Network</title>'."\n".'<script src="'.$jquery_path.'"></script>', $file);
 
   echo $output;
-  exit;  
+  exit;
 }
+
+
 /**
  * Helper that returns nodes of a given type.
  */

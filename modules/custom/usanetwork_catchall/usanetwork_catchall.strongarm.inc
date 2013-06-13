@@ -43,6 +43,45 @@ function usanetwork_catchall_strongarm() {
       'block_cover_title' => array(
         'custom_settings' => FALSE,
       ),
+      'search_result' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

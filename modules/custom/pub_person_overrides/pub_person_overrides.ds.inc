@@ -18,7 +18,7 @@ function pub_person_overrides_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'search_result';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -115,12 +115,12 @@ function pub_person_overrides_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'media' => array(
+        0 => 'field_usa_character_thumb',
+      ),
       'title' => array(
         0 => 'title',
         1 => 'field_usa_actor_name',
-      ),
-      'media' => array(
-        0 => 'field_usa_character_thumb',
       ),
       'body' => array(
         0 => 'field_show',
@@ -128,10 +128,10 @@ function pub_person_overrides_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'title' => 'title',
       'field_usa_character_thumb' => 'media',
-      'field_show' => 'body',
+      'title' => 'title',
       'field_usa_actor_name' => 'title',
+      'field_show' => 'body',
       'body' => 'body',
     ),
     'classes' => array(),

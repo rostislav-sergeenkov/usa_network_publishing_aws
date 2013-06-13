@@ -75,7 +75,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '34',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -135,6 +135,9 @@ function pub_person_overrides_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -181,7 +184,7 @@ function pub_person_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '9',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -267,11 +270,11 @@ function pub_person_overrides_field_default_fields() {
           'weight' => '3',
         ),
         'search_result' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -372,11 +375,13 @@ function pub_person_overrides_field_default_fields() {
           'weight' => '0',
         ),
         'search_result' => array(
-          'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => '6',
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'search_result_files',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -489,7 +494,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '31',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -595,7 +600,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -701,7 +706,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '35',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -807,7 +812,7 @@ function pub_person_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '32',
         ),
         'teaser' => array(
           'label' => 'above',

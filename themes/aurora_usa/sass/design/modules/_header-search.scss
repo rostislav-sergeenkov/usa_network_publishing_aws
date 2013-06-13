@@ -1,7 +1,7 @@
 
 #utilities.search-active {
   height: 85px;
-  @include breakpoint(641px) {
+  @include breakpoint($bp-head-search) {
     height: 62px;
   }  
 }
@@ -26,7 +26,7 @@
   clear: both;
   @include border-radius(20px);
   margin: 0 15px 0 0;
-  @include breakpoint(641px) {
+  @include breakpoint($bp-head-search) {
     background-color: $gray-med;
     clear: none;
     @include float-right;
@@ -60,7 +60,7 @@
         content: "\e00a";
         color: $gray-light;
       }  
-      @include breakpoint(641px) {
+      @include breakpoint($bp-head-search) {
         display: none;
       }  
     }
@@ -89,7 +89,7 @@
       top: 5px;
       right: 5px;
       @include border-radius(20px);
-      @include breakpoint(641px) {
+      @include breakpoint($bp-head-search) {
         font-size: 20px;
         background-color: transparent;
         @include border-radius(0);
@@ -115,7 +115,7 @@
     margin: 0;
     padding: 0;
     @include border-radius(15px);
-    @include breakpoint(641px) {
+    @include breakpoint($bp-head-search) {
       background-color: transparent;
       @include border-radius(0);
       height: 30px;
@@ -125,7 +125,7 @@
       font-size: 16px;
       padding: 5px 0 5px 10px;
       width: 100%;
-      @include breakpoint(641px) {
+      @include breakpoint($bp-head-search) {
         font-size: 20px;
         padding-top: 6px;
         width: 224px;
@@ -134,4 +134,4 @@
   }
 
 
-}// END #header-search
+}// END #head-search

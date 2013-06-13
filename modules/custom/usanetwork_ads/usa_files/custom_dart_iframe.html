@@ -12,11 +12,17 @@
 <script>
 if (typeof eTandomAd == "undefined") eTandomAd = "none";
 
-var usa_debugFlag = false;
+var usa_debugFlag = false; /* just for testing */
 var usa_debug = function(msg)
 {
 	if (usa_debugFlag)
 	{
+		/* just for testing */
+		/*
+		if (usa_deviceInfo.mobileDevice) {
+			parent.jQuery('body').append('<div style="color:#ffffff"><hr><pre>' +JSON.stringify(msg, null, 4)+ '</pre></div>');
+		}
+		*/
 		if (typeof console != 'undefined')
 		{
 			console.log(msg);
@@ -24,68 +30,13 @@ var usa_debug = function(msg)
 	}
 }
 
-/* device detection code */
-// @TODO: move to external JS
-function usa_detectCurrentDevice () {
-    var agent = navigator.userAgent.toLowerCase();
-    var scrWidth = screen.width;
-    var scrHeight = screen.height;
-    // The document.documentElement dimensions seem to be identical to
-    // the screen dimensions on all the mobile browsers I've tested so far
-    var elemWidth = document.documentElement.clientWidth;
-    var elemHeight = document.documentElement.clientHeight;
-    // We need to eliminate Symbian, Series 60, Windows Mobile and Blackberry
-    // browsers for this quick and dirty check. This can be done with the user agent.
-    var otherBrowser = (agent.indexOf("series60") != -1) || (agent.indexOf("symbian") != -1) || (agent.indexOf("windows ce") != -1) || (agent.indexOf("blackberry") != -1);
-    // If the screen orientation is defined we are in a modern mobile OS
-    var mobileOS = typeof orientation != 'undefined' ? true : false;
-    // If touch events are defined we are in a modern touch screen OS
-    var touchOS = ('ontouchstart' in document.documentElement) ? true : false; //var touchOS = Modernizr.touch;
-
-    // iPhone and iPad can be reliably identified with the navigator.platform
-    // string, which is currently only available on these devices.
-    var iOS = ((navigator.platform).toLowerCase().indexOf("iphone") != -1) ||
-                ((navigator.platform).toLowerCase().indexOf("ipad") != -1) ||
-            ((navigator.platform).toLowerCase().indexOf("ipod") != -1) ||
-                ((agent).toLowerCase().indexOf("iphone") != -1) ||
-            ((agent).toLowerCase().indexOf("ipod") != -1) ||
-                ((agent).toLowerCase().indexOf("ipad") != -1) ? true : false;
-
-    // If the user agent string contains "android" then it's Android. If it
-    // doesn't but it's not another browser, not an iOS device and we're in
-    // a mobile and touch OS then we can be 99% certain that it's Android.
-    var android = (agent.indexOf("android") != -1) || (!iOS && !otherBrowser && touchOS && mobileOS) ? true : false;
-    var smartphone = false;
-    var mobileDevice = (iOS || android || mobileOS || touchOS || otherBrowser) ? true : false;
-
-    var smartphoneWidthThreshold = 768;
-    var bW = window.innerWidth;
-    var bH = window.innerHeight;
-    if (window.innerWidth && window.innerHeight)
-    {
-        if (bW < smartphoneWidthThreshold && mobileDevice)
-        {
-            smartphone = true;
-        }
-    }
-
-    return {
-        otherBrowser : otherBrowser,
-        mobileOS : mobileOS,
-        touchOS : touchOS,
-        iOS : iOS,
-        android : android,
-        mobileDevice : mobileDevice,
-        smartphone : smartphone
-    }
-}
-
-var usa_deviceInfo = usa_detectCurrentDevice();
+// get the device info of the parent
+var usa_deviceInfo = parent.usa_deviceInfo;
 
 
 // tag function similar to the DART.tag function
 usa_outputAdTag = function(tag) {
-	usa_debug('usa_outputAdTag() called, using tag: '); usa_debug(tag);
+  //usa_debug('usa_outputAdTag() called, using tag: '); usa_debug(tag);
 
   tag = typeof(tag) == 'string' ? eval('(' + tag + ')') : tag;
 
@@ -110,10 +61,9 @@ usa_outputAdTag = function(tag) {
 
   }
 
-  // force smartphones to use JS instead of IFRAMEs
-//  if (usa_deviceInfo.smartphone) {
-    tag.settings.options.method = 'adj';
-//  }
+
+  // as we are inside of an iframe we need to force units to use adj instea of adi
+  tag.settings.options.method = 'adj';
 
   var tagname = tag.settings.options.method == 'adj' ? 'script' : 'iframe';
   var options = tag.settings.options.method == 'adj' ? 'type="text/javascript"' : 'frameborder="0" scrolling="no" width="' + tag.sz.split("x")[0] + '" height="' + tag.sz.split("x")[1] + '"';
@@ -122,6 +72,7 @@ usa_outputAdTag = function(tag) {
   var processed_tag = ($ !== undefined) ? $(document).triggerHandler('dart_tag_process', [tag]) : undefined;
   tag = processed_tag !== undefined ? processed_tag : tag;
 
+  
   if (usa_deviceInfo.smartphone) {
     // SMARTPHONE
     tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
@@ -212,8 +163,8 @@ usa_outputAdTag = function(tag) {
     ad += '&forecast=1&csit=1&dw=1"></' + tagname + '>';
   }
 
-  usa_debug(tag);
-  usa_debug(ad);
+  //usa_debug(tag);
+  usa_debug('AD TAG: ' + escape(ad));
 
   document.write(ad);
 
@@ -312,6 +263,8 @@ body {
 
 	<script>
 	// get dart ad tag from query string
+	usa_debug(usa_deviceInfo);
+	
 	var tagKey = getUrlVars()['key'];
 	usa_debug('IFRAME: tagKey: ' + tagKey);
 

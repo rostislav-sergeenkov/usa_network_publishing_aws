@@ -1,4 +1,4 @@
-// SELECT LIST-LIKE DROP DOWN MENUS
+// scroll
 (function ($) {
   Drupal.behaviors.social_sync_scroll = {
 

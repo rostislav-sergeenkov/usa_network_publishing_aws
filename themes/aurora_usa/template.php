@@ -51,9 +51,6 @@ function aurora_usa_preprocess_html(&$vars) {
   // adding usa-social body class to global and show pages
   if(arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
-    $theme_path = drupal_get_path('theme', 'aurora_usa');
-    drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
-    drupal_add_js($theme_path . '/javascripts/social-sync-scroll.js');
   }
 }
 

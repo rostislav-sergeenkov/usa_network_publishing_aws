@@ -509,7 +509,7 @@ function usanetwork_social_global_trending() {
 
 	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }
@@ -836,7 +836,7 @@ function usanetwork_social_trending($node) {
 
 	$query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }

@@ -16,4 +16,8 @@ function usanetwork_search_ctools_plugin_api() {
   if ($module == "apachesolr_search" && $api == "apachesolr_search_defaults") {
     return array("version" => "3");
   }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }

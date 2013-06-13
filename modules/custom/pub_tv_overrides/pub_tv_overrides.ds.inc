@@ -12,6 +12,21 @@ function pub_tv_overrides_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tv_episode|search_result';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tv_episode';
+  $ds_fieldsetting->view_mode = 'search_result';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|tv_episode|search_result'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|tv_show|block_cover_title';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'tv_show';
@@ -73,6 +88,44 @@ function pub_tv_overrides_ds_field_settings_info() {
  */
 function pub_tv_overrides_ds_layout_settings_info() {
   $export = array();
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tv_episode|search_result';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tv_episode';
+  $ds_layout->view_mode = 'search_result';
+  $ds_layout->layout = 'usa_search';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_tv_cover_media',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+      'body' => array(
+        0 => 'field_show',
+        1 => 'field_season',
+        2 => 'field_episode_number',
+        3 => 'field_original_air_date',
+        4 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'field_tv_cover_media' => 'media',
+      'title' => 'title',
+      'field_show' => 'body',
+      'field_season' => 'body',
+      'field_episode_number' => 'body',
+      'field_original_air_date' => 'body',
+      'body' => 'body',
+    ),
+    'classes' => array(),
+  );
+  $export['node|tv_episode|search_result'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

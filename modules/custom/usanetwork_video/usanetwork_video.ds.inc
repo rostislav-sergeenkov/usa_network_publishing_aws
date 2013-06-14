@@ -37,6 +37,21 @@ function usanetwork_video_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|usa_tve_video|search_result';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'usa_tve_video';
+  $ds_fieldsetting->view_mode = 'search_result';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|usa_tve_video|search_result'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|usa_tve_video|vid_teaser_episode';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'usa_tve_video';
@@ -139,6 +154,21 @@ function usanetwork_video_ds_field_settings_info() {
     ),
   );
   $export['node|usa_video|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|usa_video|search_result';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'usa_video';
+  $ds_fieldsetting->view_mode = 'search_result';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|usa_video|search_result'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -301,6 +331,44 @@ function usanetwork_video_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|usa_tve_video|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usa_tve_video|search_result';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usa_tve_video';
+  $ds_layout->view_mode = 'search_result';
+  $ds_layout->layout = 'usa_search';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_video_thumbnail',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+      'body' => array(
+        0 => 'field_show',
+        1 => 'field_season_id',
+        2 => 'field_episode_number',
+        3 => 'field_video_air_date',
+        4 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'field_video_thumbnail' => 'media',
+      'title' => 'title',
+      'field_show' => 'body',
+      'field_season_id' => 'body',
+      'field_episode_number' => 'body',
+      'field_video_air_date' => 'body',
+      'body' => 'body',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usa_tve_video|search_result'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -475,6 +543,44 @@ function usanetwork_video_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|usa_video|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usa_video|search_result';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usa_video';
+  $ds_layout->view_mode = 'search_result';
+  $ds_layout->layout = 'usa_search';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_video_thumbnail',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+      'body' => array(
+        0 => 'field_show',
+        1 => 'field_season_id',
+        2 => 'field_episode_number',
+        3 => 'field_video_air_date',
+        4 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'field_video_thumbnail' => 'media',
+      'title' => 'title',
+      'field_show' => 'body',
+      'field_season_id' => 'body',
+      'field_episode_number' => 'body',
+      'field_video_air_date' => 'body',
+      'body' => 'body',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usa_video|search_result'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

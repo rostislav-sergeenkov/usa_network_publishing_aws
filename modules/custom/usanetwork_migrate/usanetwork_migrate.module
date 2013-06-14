@@ -201,6 +201,9 @@ function usanetwork_migrate_cron() {
     // Trigger the migration
     $result = $migration->processImport();
   }
+
+  // Clearing the cache fixes some access issues for newly published nodes.
+  cache_clear_all();
 }
 
 /*

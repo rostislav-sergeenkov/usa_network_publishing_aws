@@ -42,6 +42,9 @@ function usanetwork_catchall_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -74,6 +77,15 @@ function usanetwork_catchall_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '5',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -151,6 +163,12 @@ function usanetwork_catchall_field_default_fields() {
           'type' => 'hidden',
           'weight' => '2',
         ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -226,6 +244,13 @@ function usanetwork_catchall_field_default_fields() {
           'settings' => array(),
           'type' => 'raw_formatter',
           'weight' => '3',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -311,6 +336,12 @@ function usanetwork_catchall_field_default_fields() {
           'type' => 'custom_js',
           'weight' => '1',
         ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -390,13 +421,20 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '4',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -494,6 +532,12 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
           'settings' => array(),
           'type' => 'custom_css',
           'weight' => '0',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',

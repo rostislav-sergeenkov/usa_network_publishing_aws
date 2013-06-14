@@ -1,5 +1,5 @@
 <div class="<?php print $classes;?> usa-search">
-  <?php if ($link): ?>
+  <?php if ($link && $link != "&nbsp;"): ?>
     <a href="<?php print $link; ?>" class="usa-search-link">
   <?php endif; ?>
   <div class="">
@@ -13,7 +13,7 @@
   <?php if ($media): ?>
   <div class="asset-img"><?php print $media; ?></div>
   <?php endif; ?>
-  <?php if ($link): ?>
+  <?php if ($link && $link != "&nbsp;"): ?>
     </a>
   <?php endif; ?>
 </div>

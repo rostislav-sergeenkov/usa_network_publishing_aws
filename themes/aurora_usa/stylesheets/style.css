@@ -3388,6 +3388,10 @@ input[type="radio"], input[type="checkbox"] {
   vertical-align: top;
   width: auto;
 }
+.ie9 .tiles .flex-control-paging {
+  top: -32px;
+  padding-bottom: 8px;
+}
 .tiles .flex-control-paging li {
   margin: 0 5px;
 }

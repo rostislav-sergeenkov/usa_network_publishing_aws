@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * warning: hideos temporary things ahead
  * @TODO: a proper implementation of the css and js
@@ -28,6 +28,9 @@ $css = '
   background-image: -moz-linear-gradient(left, #'. $hexcolor .', transparent);
   background-image: -o-linear-gradient(left, #'. $hexcolor .', transparent);
   background-image: linear-gradient(left, #'. $hexcolor .', transparent);
+}
+.ie9 .aspot-node-'. $nodeid .' a .meta .show-title:after {
+  background-color: #'. $hexcolor .';
 }
 ';
 // ugly is ugly but ugly is working for the moment
@@ -61,7 +64,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
     <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
   </div>
-  
+
 <?php if ($link || $link !== '&nbsp;'): ?>
   </a>
 <?php endif; ?>

@@ -144,7 +144,7 @@
   <!-- /MAIN CONTENT -->
 
   <!-- ON NOW -->
-  <aside id="on-now" class="clearfix">
+  <aside id="on-now-panel" class="clearfix">
     <?php print render($page['on_now']); ?>
   </aside>
   <!-- /ON NOW -->

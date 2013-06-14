@@ -275,7 +275,7 @@ function usanetwork_social_show_landing() {
   $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
   $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
   $vars .= 'var maxComments = "20"; ';
-	$vars .= 'var maxWordsPerComment = 100; ';
+	$vars .= 'var maxWordsPerComment = 60; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
@@ -509,7 +509,7 @@ function usanetwork_social_global_trending() {
 
 	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }
@@ -836,7 +836,7 @@ function usanetwork_social_trending($node) {
 
 	$query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
 
-	$output .= '<div><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
 	return $output;
 }

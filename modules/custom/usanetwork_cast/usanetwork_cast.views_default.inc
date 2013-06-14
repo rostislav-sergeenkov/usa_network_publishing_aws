@@ -1023,6 +1023,34 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = 'expand to view all';
   $handler->display->display_options['footer']['area']['format'] = 'wysiwyg_basic';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Draggableviews: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_cast:page_2';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_arguments'] = 'none';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Show (field_show) */
+  $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_show_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_show_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
+    'tv_show' => 'tv_show',
+  );
   $handler->display->display_options['displays'] = array(
     'panel_pane_2' => 'panel_pane_2',
     'default' => 0,
@@ -1033,6 +1061,7 @@ function usanetwork_cast_views_default_views() {
     'panel_pane_1' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
+  $handler->display->display_options['inherit_arguments'] = FALSE;
   $export['usa_cast'] = $view;
 
   $view = new view();

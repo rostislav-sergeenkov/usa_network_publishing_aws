@@ -5,9 +5,10 @@
   z-index: 11;
   padding-left: 12px;
   border-bottom: 1px solid $gray-dark;
-  overflow: hidden;
+//  overflow: hidden;
   position: relative;
   font-family: $headline-reg;
+  @extend .clearfix;
 
   h1#page-title {
     @include float-left;

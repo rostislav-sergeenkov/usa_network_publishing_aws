@@ -71,6 +71,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'taxonomy_term_reference_plain',
           'weight' => '2',
         ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '34',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -129,6 +135,9 @@ function pub_person_overrides_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -167,6 +176,15 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '29',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -250,6 +268,13 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '3',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -345,6 +370,15 @@ function pub_person_overrides_field_default_fields() {
           'module' => 'file_entity',
           'settings' => array(
             'file_view_mode' => 'thumb_tiny',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '0',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'search_result_files',
           ),
           'type' => 'file_rendered',
           'weight' => '0',
@@ -456,6 +490,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'link_default',
           'weight' => '4',
         ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '31',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -555,6 +595,12 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '6',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -656,6 +702,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'link_default',
           'weight' => '7',
         ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '35',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -755,6 +807,12 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '5',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '32',
         ),
         'teaser' => array(
           'label' => 'above',

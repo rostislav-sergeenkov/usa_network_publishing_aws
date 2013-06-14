@@ -1,0 +1,16 @@
+#menu-wrapper {
+  .state-menu & {
+    display: block;
+  }
+  .state-on-now & {
+    display: none;
+  }
+}
+#on-now-panel {
+  .state-menu & {
+    display: none;
+  }
+  .state-on-now & {
+    display: block;
+  }
+}

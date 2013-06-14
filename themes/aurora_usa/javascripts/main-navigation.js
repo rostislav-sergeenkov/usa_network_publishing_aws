@@ -22,6 +22,8 @@
           keyboardShortcuts: false,
           afterOn: function() {
             $('#jPanelMenu-menu')
+              .wrapInner('<div id="menu-wrapper"></div>');
+            $('#menu-wrapper')
               .prepend('<h1 class="menu-title">Main Menu</h1>')
               .find('a')
                 .removeClass('mega-nav-link')
@@ -133,6 +135,22 @@
           $(Wall).remove();
         }
         return false;
+      });
+
+      // on now button
+      $('#jPanelMenu-menu')
+        .append($('#on-now-panel'))
+        .addClass('state-menu');
+      $('#on-now').click(function() {
+        $('#jPanelMenu-menu')
+          .removeClass('state-menu')
+          .addClass('state-on-now');
+        jPM.trigger();
+      });
+      $('#main-menu-toggle').click(function() {
+        $('#jPanelMenu-menu')
+          .removeClass('state-on-now')
+          .addClass('state-menu');
       });
 
       // RESPONSIVE BEHAVIOR

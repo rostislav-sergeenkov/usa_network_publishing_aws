@@ -52,15 +52,6 @@
       margin: 0 0 3px;
       line-height: 22.5px;
       font-family: $headline-semi;
-      &:after {
-        @include background-image(linear-gradient(right, $black-trans 20%, transparent));
-        content: $space;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 1em;
-        height: 100%;
-      }
     }
     .caption {
       font-family: $headline-reg;

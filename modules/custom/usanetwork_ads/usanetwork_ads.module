@@ -6,7 +6,6 @@
 
 include_once 'usanetwork_ads.features.inc';
 
-
 /**
  * Helper that returns the tv_show node nid associated with a given node.
  */
@@ -94,11 +93,31 @@ function usanetwork_ads_menu() {
     'page arguments' => array('_usanetwork_ads_site_metric_settings_form'),
     'access arguments' => array('administer usanetwork dart settings'),
   );
+  $items['custom-dart-iframe'] = array(
+    'page callback' => 'usanetwork_ads_custom_dart_iframe',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
 
 
+/**
+ * Menu callback to output dart ad content without drupal theme
+ */
+function usanetwork_ads_custom_dart_iframe() {
+  global $base_url;
+  $jquery_path = $base_url .'/'. drupal_get_path('module', 'jquery_update') . '/replace/jquery/1.7/jquery.min.js?v=1.7.1';
+  $query = $_GET['query_variable'];
+  $output  = '';
+  // use drupal_json_decode to convert a json object to a php object and use drupal_json_encode to convert vice versa
+  
+  $output .= '<script src="'. $jquery_path .'"></script>';
+
+  echo $output;
+  exit;  
+}
 /**
  * Helper that returns nodes of a given type.
  */

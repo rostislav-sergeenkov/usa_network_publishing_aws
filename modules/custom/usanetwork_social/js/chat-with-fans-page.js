@@ -119,9 +119,6 @@ Drupal.behaviors.chat_with_fans_page = {
 								"usanetwork": chatterSourceIcon,
 								"yap-tv": chatterSourceIcon
 							}
-						},
-						{
-							"name": "InlineMedia"
 						}
 					]
 				});

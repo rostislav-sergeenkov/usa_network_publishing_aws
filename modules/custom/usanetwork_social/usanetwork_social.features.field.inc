@@ -2270,11 +2270,11 @@ function usanetwork_social_field_default_fields() {
       'bundle' => 'tv_show',
       'default_value' => array(
         0 => array(
-          'value' => 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa',
+          'value' => 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa',
+      'description' => 'Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa',
       'display' => array(
         'block_cover_title' => array(
           'label' => 'above',
@@ -2305,7 +2305,7 @@ function usanetwork_social_field_default_fields() {
       'entity_type' => 'node',
       'fences_wrapper' => 'div',
       'field_name' => 'field_sync_desktop_url',
-      'label' => 'Desktop URL',
+      'label' => 'Desktop / Tablet URL',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -2364,11 +2364,11 @@ function usanetwork_social_field_default_fields() {
       'bundle' => 'tv_show',
       'default_value' => array(
         0 => array(
-          'value' => 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa',
+          'value' => 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa',
+      'description' => 'Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile',
       'display' => array(
         'block_cover_title' => array(
           'label' => 'above',
@@ -2399,7 +2399,7 @@ function usanetwork_social_field_default_fields() {
       'entity_type' => 'node',
       'fences_wrapper' => 'div',
       'field_name' => 'field_sync_phone_url',
-      'label' => 'Phone URL',
+      'label' => 'Mobile URL',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -4603,13 +4603,13 @@ function usanetwork_social_field_default_fields() {
   t('Base URL');
   t('CHILDREN');
   t('CHILDRENOF');
-  t('Desktop URL');
+  t('Desktop / Tablet URL');
   t('EQL Token');
   t('Echo Query Template');
   t('Ex: PsychUSA');
   t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2');
-  t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa');
-  t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa');
+  t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa');
+  t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile');
   t('Ex: https://www.rebelmouse.com');
   t('FEED');
   t('Facebook page');
@@ -4617,7 +4617,7 @@ function usanetwork_social_field_default_fields() {
   t('ITEMSPERPAGE');
   t('Lyris List ID');
   t('MARKERS');
-  t('Phone URL');
+  t('Mobile URL');
   t('Pinterest page');
   t('SAFEHTML');
   t('SHOW');

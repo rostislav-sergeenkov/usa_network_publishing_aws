@@ -143,6 +143,12 @@
   </div><!-- #main -->
   <!-- /MAIN CONTENT -->
 
+  <!-- ON NOW -->
+  <aside id="on-now" class="clearfix">
+    <?php print render($page['on_now']); ?>
+  </aside>
+  <!-- /ON NOW -->
+
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo" class="clearfix">
     <?php print render($page['footer']); ?>

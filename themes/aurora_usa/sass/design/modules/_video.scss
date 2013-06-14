@@ -235,17 +235,14 @@
        &:after,
         &:hover:after {
           position: absolute;
-          right: 10px;
-          top: 29px;
+          right: 9px;
+          top: 24px;
           left: auto;
-          @include cssTriangle(5px, $white, top);
-        }
-        &:before {
-          position: absolute;
-          right: 10px;
-          left: auto;
-          top: 17px;
-          @include cssTriangle(5px, $white, bottom);
+          @extend %usanetwork-font;
+          font-size: 11px;
+          content: "\e000";
+          color: $white;
+          @include text-shadow(1px 0 0 $gray-dark-light, -1px 0 0 $gray-dark-light);
         }
         &:hover {
           color: $gray-extra-light;

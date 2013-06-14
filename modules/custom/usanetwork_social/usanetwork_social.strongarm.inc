@@ -126,28 +126,28 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_desktop_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa';
   $export['usanetwork_social_sync_desktop_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_desktop_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=web&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa';
   $export['usanetwork_social_sync_global_desktop_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_phone_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile';
   $export['usanetwork_social_sync_global_phone_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_phone_url';
-  $strongarm->value = 'http://m.usanetwork.com/usaSync/?layout=phone&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile';
   $export['usanetwork_social_sync_phone_url'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -182,7 +182,7 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_trend_global_url_params';
-  $strongarm->value = 'embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm';
+  $strongarm->value = 'embedded=1&flexible=0&scrollbar_theme=light-2&skip=also-on-rm';
   $export['usanetwork_social_trend_global_url_params'] = $strongarm;
 
   $strongarm = new stdClass();

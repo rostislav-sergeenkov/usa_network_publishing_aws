@@ -36,16 +36,16 @@ function usanetwork_social_settings_form() {
 
   $form['sync']['usanetwork_social_sync_desktop_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('DESKTOP URL'),
+    '#title' => t('DESKTOP / TABLET URL'),
     '#default_value' => variable_get('usanetwork_social_sync_desktop_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa'),
   );
 
   $form['sync']['usanetwork_social_sync_phone_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('PHONE URL'),
+    '#title' => t('MOBILE URL'),
     '#default_value' => variable_get('usanetwork_social_sync_phone_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile'),
   );
 
   // CHAT WITH FANS
@@ -301,16 +301,16 @@ function usanetwork_social_settings_form() {
 
   $form['global_sync']['usanetwork_social_sync_global_desktop_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('DESKTOP URL'),
+    '#title' => t('DESKTOP / TABLET URL'),
     '#default_value' => variable_get('usanetwork_social_sync_global_desktop_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=web&partner=usa'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa'),
   );
 
   $form['global_sync']['usanetwork_social_sync_global_phone_url'] = array(
     '#type' => 'textfield',
-    '#title' => t('PHONE URL'),
+    '#title' => t('MOBILE URL'),
     '#default_value' => variable_get('usanetwork_social_sync_global_phone_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/usaSync/?layout=phone&partner=usa'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile'),
   );
 
   return system_settings_form($form);

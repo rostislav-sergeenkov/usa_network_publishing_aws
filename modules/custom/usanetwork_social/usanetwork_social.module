@@ -630,7 +630,7 @@ function usanetwork_social_global_sync() {
 	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';
 	$vars .= 'var iframeHtml = "<iframe id=\"syncIframe\" src=\"[SOURCE]\" width=\"100%\" frameborder=\"0\" scrolling=\"auto\"></iframe>";';
 	drupal_add_js($vars, array('type' => 'inline'));
-	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sniff.js');
+//	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sniff.js');
 	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
 	$output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';

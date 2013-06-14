@@ -10,3 +10,35 @@
     background-color: $background-color;
   }
 }
+
+
+// Create CSS Triangles in a Breeze
+//$triangleDirection : top, bottom, left, right
+@mixin cssRightTriangle($triangleSize, $triangleColor, $triangleDirection, $triangleDirection2 ) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  //border: solid $triangleSize;
+  @if ($triangleDirection == top) {
+    @if ($triangleDirection2 == left) {
+      border-top: solid $triangleSize $triangleColor;
+      border-right: solid $triangleSize transparent;
+    } 
+     @if ($triangleDirection2 == right) {
+      border-top: solid $triangleSize $triangleColor;
+      border-left: solid $triangleSize transparent;
+    } 
+  }
+  @if ($triangleDirection == bottom) {
+    @if ($triangleDirection2 == left) {
+      border-bottom: solid $triangleSize $triangleColor;
+      border-right: solid $triangleSize transparent;
+    } 
+     @if ($triangleDirection2 == right) {
+      border-bottom: solid $triangleSize $triangleColor;
+      border-left: solid $triangleSize transparent;
+    } 
+  }
+  // .example { @include cssRightTriangle(5px, $white, bottom ,left); }
+}

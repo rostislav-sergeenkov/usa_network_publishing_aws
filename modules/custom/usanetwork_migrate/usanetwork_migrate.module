@@ -164,9 +164,6 @@ function usanetwork_migrate_cron() {
   $queue_name = USANETWORK_MIGRATE_UNPUBLISH_QUEUE;
 
   $queue = DrupalQueue::get($queue_name);
-
-  $queue->deleteQueue();
-
   $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
   $results = usanetwork_migrate_get_nodes_to_unpublish();
 
@@ -181,9 +178,6 @@ function usanetwork_migrate_cron() {
   $queue_name = USANETWORK_MIGRATE_STATE_FLOW_FIX_QUEUE;
 
   $queue = DrupalQueue::get($queue_name);
-
-  $queue->deleteQueue();
-
   $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
   $scheduled_nodes = db_query("SELECT * FROM {state_flow_schedule} ORDER BY sid ASC")->fetchAllAssoc('nid');
 

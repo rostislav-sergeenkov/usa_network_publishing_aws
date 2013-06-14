@@ -308,6 +308,10 @@
     overflow: visible;
     vertical-align: top;
     width: auto;
+    .ie9 & {
+      top: -32px;
+      padding-bottom: 8px;
+    }
     li {
       margin: 0 5px;
       a {

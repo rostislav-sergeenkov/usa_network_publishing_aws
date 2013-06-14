@@ -133,14 +133,14 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_desktop_url';
-  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?layout=web&ww=OQFL9NEFSDD&partner=usa&show=usa ';
   $export['usanetwork_social_sync_global_desktop_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_sync_global_phone_url';
-  $strongarm->value = 'http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile';
+  $strongarm->value = 'http://m.usanetwork.com/sync/?layout=mobile&ww=Q3FJIIQJ2AA&partner=usamobile&show=usa ';
   $export['usanetwork_social_sync_global_phone_url'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -196,7 +196,7 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_trend_url_params';
-  $strongarm->value = 'embedded=1&flexible=1&scrollbar_theme=light-2';
+  $strongarm->value = 'embedded=1&flexible=0&scrollbar_theme=light-2';
   $export['usanetwork_social_trend_url_params'] = $strongarm;
 
   $strongarm = new stdClass();

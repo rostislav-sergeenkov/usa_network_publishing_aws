@@ -443,7 +443,7 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       $form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_identitymanagerurl', '');
     }
 
-		// TRENDING
+		// SOCIAL BUZZ
     // baseUrl
     if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
       empty($form['field_trend_base_url'][$lang][0]['value']['#default_value'])) {
@@ -496,7 +496,7 @@ function usanetwork_social_global_landing_page() {
 }
 
 /**
- * Menu callback of social global trending page
+ * Menu callback of social global social buzz (aka trending or latest) page
  */
 function usanetwork_social_global_trending() {
 	$output = '';

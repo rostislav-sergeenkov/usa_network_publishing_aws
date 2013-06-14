@@ -182,7 +182,7 @@ function usanetwork_social_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_trend_global_url_params';
-  $strongarm->value = 'embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm';
+  $strongarm->value = 'embedded=1&flexible=0&scrollbar_theme=light-2&skip=also-on-rm';
   $export['usanetwork_social_trend_global_url_params'] = $strongarm;
 
   $strongarm = new stdClass();

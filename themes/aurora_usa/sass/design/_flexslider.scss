@@ -143,6 +143,10 @@ html[xmlns] .slides {
         @extend .icons-arrow-next-hover-v2;
       }
     }
+    .no-font-feature-settings & {
+      @include replace-text-with-dimensions('icons/arrow-next.png');
+      display: block;
+    }
   }
   .flex-prev {
     left: -30px;
@@ -152,6 +156,10 @@ html[xmlns] .slides {
       &:hover {
         @extend .icons-arrow-prev-hover-v2;
       }
+    }
+    .no-font-feature-settings & {
+      @include replace-text-with-dimensions('icons/arrow-prev.png');
+      display: block;
     }
   }
 }

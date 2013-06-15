@@ -144,8 +144,11 @@ html[xmlns] .slides {
       }
     }
     .no-font-feature-settings & {
-      @include replace-text-with-dimensions('icons/arrow-next.png');
+      @include replace-text('icons/arrow-next.png');
       display: block;
+      width: 60px;
+      height: 60px;
+      background-size: 18px 30px;
     }
   }
   .flex-prev {
@@ -158,8 +161,11 @@ html[xmlns] .slides {
       }
     }
     .no-font-feature-settings & {
-      @include replace-text-with-dimensions('icons/arrow-prev.png');
+      @include replace-text('icons/arrow-prev.png');
       display: block;
+      width: 60px;
+      height: 60px;
+      background-size: 18px 30px;
     }
   }
 }

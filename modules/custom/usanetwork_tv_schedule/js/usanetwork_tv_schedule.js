@@ -64,14 +64,24 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       for (var i=0; i<tv_schedule.length; i++) {
         if (show_time < tv_schedule[i]['ts']) {
           on_now_show = tv_schedule[i]['link'];
+          on_now_text = tv_schedule[i]['episode_name'];
+          next_up_text = tv_schedule[i+1]['episode_name'];
+          on_now_default_show_nid = tv_schedule[i]['nid'];
+          next_up_default_show_nid = tv_schedule[i+1]['nid'];
           break;
         }
         on_now_show = tv_schedule[i]['link'];
+        on_now_default_show_nid = tv_schedule[i]['nid'];
       }
     } else if (tv_schedule == '') {
       on_now_show = on_now_default_show;
     }
 
+    $.ajax({
+      url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?on_now="+on_now_text+"&next_up="+next_up_text,
+    }).done(function ( data ) {
+      $('#block-usanetwork-tv-schedule-usa-on-now-panel .content').html(data); 
+    });
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 
   }
 }

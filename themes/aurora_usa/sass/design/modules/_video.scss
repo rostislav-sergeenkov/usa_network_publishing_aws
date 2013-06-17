@@ -86,9 +86,6 @@
         font-size: 25px;
         color: $white;
         @extend %usanetwork-font;
-        &:hover {
-          color: $white;
-        }
       }
       .asset-img:after {
         @include cssRightTriangle(50px, $black-trans-5, top, right);

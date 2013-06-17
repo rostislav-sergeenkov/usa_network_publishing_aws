@@ -215,12 +215,12 @@ function usanetwork_social_show_tab_nav() {
 /**
  * Generate the show landing social block on the show homepage
  */
-function usanetwork_social_show_landing() {
+function usanetwork_social_show_landing($node = null, $items_per_page=3) {
   $output = '';
   $lang = LANGUAGE_NONE;
   $arg = arg();
 
-  if (isset($arg[1])) {
+  if (empty($node) && isset($arg[1])) {
     $node = node_load($arg[1]);
   }
 
@@ -266,7 +266,7 @@ function usanetwork_social_show_landing() {
   $tokens['[TAGS]'] = isset($node->field_chat_tags[$lang][0]['value']) ? $node->field_chat_tags[$lang][0]['value'] : '';
   $tokens['[SORTORDER]'] = isset($node->field_chat_sortorder[$lang][0]['value']) ? $node->field_chat_sortorder[$lang][0]['value'] : '';
   $tokens['[SAFEHTML]'] = isset($node->field_chat_safehtml[$lang][0]['value']) ? $node->field_chat_safehtml[$lang][0]['value'] : '';
-  $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:3';
+  $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page;
   $tokens['[CHILDREN]'] = 'children:0';
 
   $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);

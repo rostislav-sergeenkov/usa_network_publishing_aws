@@ -33,6 +33,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'head_general',
           'weight' => '-10',
         ),
+        'usanetwork_tv_schedule-usa_on_now_panel' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_on_now_panel',
+          'region' => 'on_now',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -501,6 +507,12 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_block',
           'region' => 'head_general',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_schedule-usa_on_now_panel' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_on_now_panel',
+          'region' => 'on_now',
           'weight' => '-10',
         ),
       ),

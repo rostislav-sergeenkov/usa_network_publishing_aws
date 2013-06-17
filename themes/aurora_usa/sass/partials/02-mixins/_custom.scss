@@ -12,20 +12,20 @@
 }
 
 
-// Create CSS Triangles in a Breeze
-//$triangleDirection : top, bottom, left, right
+// Create CSS Right Triangles in a Breeze
+//$triangleDirection : top, bottom
+//$triangleDirection2 : left, right
 @mixin cssRightTriangle($triangleSize, $triangleColor, $triangleDirection, $triangleDirection2 ) {
   content: "";
   display: block;
   width: 0;
   height: 0;
-  //border: solid $triangleSize;
   @if ($triangleDirection == top) {
     @if ($triangleDirection2 == left) {
       border-top: solid $triangleSize $triangleColor;
       border-right: solid $triangleSize transparent;
     } 
-     @if ($triangleDirection2 == right) {
+    @if ($triangleDirection2 == right) {
       border-top: solid $triangleSize $triangleColor;
       border-left: solid $triangleSize transparent;
     } 

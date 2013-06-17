@@ -3,8 +3,8 @@
 /**
  * Migration class for TVE Video content.
  */
-#class USANetworkTVEVideoFeedMigration extends XMLMigration {
-class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
+class USANetworkTVEVideoFeedMigration extends XMLMigration {
+#class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
 
   public $imgDestDir;
 
@@ -58,10 +58,10 @@ class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
       $updated_date = date('c', strtotime('-1 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
+      $items_url .= '?&byCustomValue={fullEpisode}{true}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
-      $items_url .= '?range=1-500';
+      $items_url .= '?range=1-500&byCustomValue={fullEpisode}{true}';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document

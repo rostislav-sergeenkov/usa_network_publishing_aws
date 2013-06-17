@@ -345,6 +345,36 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    // episode num IN VIDEOS
+    case 'field_episode_number':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $episode = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
+              break;
+            }
+          }
+        }
+      break;
+    // season num IN VIDEOS
+    case 'field_season_id':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $season = $vars['element']['#items'][0]['safe_value'];
+                $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
+                break;
+            }
+          }
+        }
+      break;
     // SHOW TITLE WITHIN VIDEO TEASERS
     case 'field_show':
       // change display

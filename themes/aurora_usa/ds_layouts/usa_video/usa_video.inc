@@ -9,7 +9,7 @@ function ds_usa_video() {
       'episode' => t('episode'),
       'airdate' => t('airdate'),
       'guid' => t('guid implements player'),
-      'tve_auth' => t('tve authentication block'),
+      'tve_auth' => t('tve video image'),
       'body' => t('body'),
       'ad' => t('ad')
     ),

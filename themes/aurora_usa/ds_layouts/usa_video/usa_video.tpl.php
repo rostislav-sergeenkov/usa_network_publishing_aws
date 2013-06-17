@@ -14,6 +14,10 @@
 $player_url = '';
 $feed_url = '';
 $platform_file_id = '';
+$pl_id = '';
+$vid_title = '';
+$vid_showname = '';
+$tve_url = '';
 
 // mpx video
 if ($node->type == 'usa_video') {
@@ -32,12 +36,20 @@ if ($node->type == 'usa_video') {
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
-// hiding all of these values for launch
-  //$player_url = variable_get('usanetwork_theplatform_tve_player_url');
-  // @todo: this is temporary only!
-  //$player_url = 'http://player.theplatform.com/p/dCK2IC/usa-vod-stage';
-  //$feed_url = variable_get('usanetwork_theplatform_tve_feed_url');
-  //$platform_file_id = _usanetwork_video_platform_get_file_id($guid, $feed_url);
+  //Sample URL to USA TVE asset detail 
+  // page: http://www.usanetwork.com/anywhere/show/{Showname}/{MPX ID}/1/{asset title}.
+  // parse the media id for the tve path
+  $pl_id = field_get_items('node', $node, 'field_video_pid');
+  $pl_id = $pl_id[0]['value'];
+  $pl_id = explode('/', $pl_id);  // Get the parts of the url.
+  $pl_id = array_pop($pl_id); // And just last part of the URL's path.
+  // strip tags and rawurlencode to convert spaces to %20 for tve paths
+  $vid_title = strip_tags($node->title);
+  $vid_title = rawurlencode($vid_title);
+  $vid_showname = strip_tags(trim($show));
+  $vid_showname = rawurlencode($vid_showname);
+  // full path to tve
+  $tve_url = 'http://www.usanetwork.com/anywhere/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }
 
 ?>
@@ -56,6 +68,7 @@ if ($node->type == 'usa_tve_video') {
     </div>
   </div>
   <div class="video-player-wrapper">
+    <?php // this is for mpx with a player integration ?>
     <?php if ($guid && $player_url): ?>
       <iframe
       class="video-iframe"
@@ -65,6 +78,10 @@ if ($node->type == 'usa_tve_video') {
       allowfullscreen>
       Your browser does not support iframes.
       </iframe>
+    <?php endif; ?>
+    <?php // this is for tve with a linked image, we leverage the auth region for now ?>
+    <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
+      <?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?>
     <?php endif; ?>
   </div>
  <!--  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?> -->

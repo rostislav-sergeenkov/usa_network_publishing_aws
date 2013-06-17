@@ -15,6 +15,9 @@ $player_url = '';
 $feed_url = '';
 $platform_file_id = '';
 $pl_id = '';
+$vid_title = '';
+$vid_showname = '';
+$tve_url = '';
 
 // mpx video
 if ($node->type == 'usa_video') {
@@ -33,21 +36,20 @@ if ($node->type == 'usa_video') {
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
-//Sample URL to USA TVE asset detail 
-// page: http://www.usanetwork.com/anywhere/show/{Showname}/{MPX ID}/1/{asset title}.
+  //Sample URL to USA TVE asset detail 
+  // page: http://www.usanetwork.com/anywhere/show/{Showname}/{MPX ID}/1/{asset title}.
   // parse the media id for the tve path
   $pl_id = field_get_items('node', $node, 'field_video_pid');
   $pl_id = $pl_id[0]['value'];
   $pl_id = explode('/', $pl_id);  // Get the parts of the url.
   $pl_id = array_pop($pl_id); // And just last part of the URL's path.
-
-  $vid_title = strip_tags($video_title);
-  $vid_showname = strip_tags($show);
-
-$tve_url = $node->title;
-    
-
-  //dpm(strip_tags($video_title));
+  // strip tags and rawurlencode to convert spaces to %20 for tve paths
+  $vid_title = strip_tags($node->title);
+  $vid_title = rawurlencode($vid_title);
+  $vid_showname = strip_tags(trim($show));
+  $vid_showname = rawurlencode($vid_showname);
+  // full path to tve
+  $tve_url = 'http://www.usanetwork.com/anywhere/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }
 
 ?>
@@ -79,8 +81,7 @@ $tve_url = $node->title;
     <?php endif; ?>
     <?php // this is for tve with a linked image, we leverage the auth region for now ?>
     <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
-      tve image will load here
-      <?php print $tve_auth; ?>
+      <?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?>
     <?php endif; ?>
   </div>
  <!--  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?> -->

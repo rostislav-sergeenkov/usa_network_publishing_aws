@@ -138,10 +138,17 @@
       });
 
       // on now button
+      // jPM = $.jPanelMenu({
+      //     openPosition: '400px',
+      //   });
       $('#jPanelMenu-menu')
         .append($('#on-now-panel'))
         .addClass('state-menu');
-      $('#on-now').click(function() {
+      $('#on-now.trigger').click(function() {
+        console.log(jPM);
+        // console.log(jPM.options);
+        // console.log(jPM.options.openPosition);
+        jPM.position('500px');
         $('#jPanelMenu-menu')
           .removeClass('state-menu')
           .addClass('state-on-now');

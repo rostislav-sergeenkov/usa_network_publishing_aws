@@ -7,19 +7,18 @@
 }
 
 @include breakpoint(641px) {
-  .utilities-search #head-show {
+  .utilities-search .utilties-main-group {
     float: left;
     margin-right: -60px;
     padding-right: 60px;
     width: 100%;
   }
 
-  .utilities-search.search-active #head-show {
+  .utilities-search.search-active .utilties-main-group {
     margin-right: -290px;
     padding-right: 290px;
   }
 }
-
 
 
 #head-search {

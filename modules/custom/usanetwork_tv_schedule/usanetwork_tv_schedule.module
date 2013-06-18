@@ -111,7 +111,7 @@ function usanetwork_tv_schedule_on_now_block() {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = 'your mom <div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {

@@ -108,9 +108,10 @@ function usanetwork_tv_schedule_on_now_block() {
 
       $arrow = '';
       if (!empty($nid)) {
-        $arrow = '<span id="on-now-panel-trigger"><</span>';
+        $arrow = 'class="trigger"';
       }
-      $tv_show = $arrow . '<span id="on-now">onnow</span><div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+      $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {
@@ -118,7 +119,7 @@ function usanetwork_tv_schedule_on_now_block() {
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
-        $tv_show = l($tv_show, $path, array('html' => true));
+        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
       }
 
       $full_tv_schedule[] = array(
@@ -146,17 +147,18 @@ function usanetwork_tv_schedule_on_now_block() {
 
       $arrow = '';
       if (!empty($nid)) {
-        $arrow = '<span id="on-now-panel-trigger"><</span>';
+        $arrow = 'class="trigger"';
       }
-      $tv_show = $arrow . '<span id="on-now">onnow</span><div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+      $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show) == 'USA MOVIE') {
-          $tv_show = l($tv_show, 'movies', array('html' => true));
+          $tv_show = '<span id="on-now">onnow</span>' . l($tv_show, 'movies', array('html' => true));
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
-        $tv_show = l($tv_show, $path, array('html' => true));
+        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
       }
 
       $full_tv_schedule[] = array(
@@ -177,12 +179,12 @@ function usanetwork_tv_schedule_on_now_block() {
   foreach ($full_tv_schedule as $i => $show) {
     if ($et_time < $show['ts']) {
       $show_name = $show['link'];
-      $show_nid = $show['nid'];   
-      $next_up_nid = $full_tv_schedule[$i+1]['nid'];   
+      $show_nid = $show['nid'];
+      $next_up_nid = $full_tv_schedule[$i+1]['nid'];
       break;
     }
     $show_name = $show['link'];
-    $show_nid = $show['nid'];   
+    $show_nid = $show['nid'];
   }
 
   // expose default et show for rest of the world
@@ -212,7 +214,7 @@ function usanetwork_tv_schedule_on_now_block() {
  * Block callback for the On Now Panel
  */
 function usanetwork_tv_schedule_on_now_panel() {
-  return '<div id="on-now-panel">Placeholder</div>';
+  return '<div id="on-now-panel"></div>';
 }
 
 /**
@@ -370,24 +372,26 @@ function usanetwork_on_now_panel_js() {
   $arg = arg();
   $output = '';
   $links = array();
-  
+
   if (empty($arg[1]) && empty($arg[2])) {
-    return $output; 
+    return $output;
   }
-  
+
   if (!empty($arg[1])) {
     $on_now = node_load($arg[1]);
-    $links[0]['data'] = t('On Now');
+    $links[0]['data'] = '<span class="tab-wrapper"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
+    $links[0]['class'] = array('on-now', 'tab-1');
     $links[0]['children'][] = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
   }
 
   if (!empty($arg[2])) {
     $next_up = node_load($arg[2]);
-    $links[1]['data'] = t('Next Up');
+    $links[1]['data'] = '<span class="tab-wrapper"><span>' . t('Up') . '</span> ' . t('Next') . '</span>';
+    $links[1]['class'] = array('up-next', 'tab-2');
     $links[1]['children'][] = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
   }
 
-  $output = theme('item_list', array('items' => $links)); 
+  $output = theme('item_list', array('items' => $links));
   echo $output;
   exit;
 }
@@ -398,48 +402,56 @@ function usanetwork_on_now_panel_js() {
 function usanetwork_on_now_panel_node_content($node, $text) {
   $output = '';
   $lang = LANGUAGE_NONE;
-  
+
   $image = $node->field_usa_tv_on_now[$lang][0];
   $on_now_image = array(
-    'style_name' => 'medium',
+    'style_name' => 'on_now_panel',
     'path' => $image['uri'],
     'alt' => $image['alt'],
     'title' => $image['title'],
   );
-  
+
   $path = drupal_get_path_alias('node/'.$node->nid);
 
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
-    $output .= l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true));  
+    $output .= '<figure>' . l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true)) . '</figure>';
   } else {
-    $output .= theme('image_style', $on_now_image);
+    $output .= '<figure>' . theme('image_style', $on_now_image) . '</figure>';
   }
+
+  // show info
+  $output .= '<div class="show-info-wrapper">';
+  $output .= '<div class="show-info">';
 
   // show name
   $output .= '<div class="show-title">' . l($node->title, $path) . '</div>';
 
   // episode name
   $output .= '<div class="episode-title">' . l($text, $path) . '</div>';
-  
+
+  $output .= '</div>';
+
   // social icons
   $output .= '<div class="icons-social icons-inline">';
   if (isset($node->field_usa_link_facebook[$lang][0]['url']) && !empty($node->field_usa_link_facebook[$lang][0]['url'])) {
-    $output .= l('facebook', $node->field_usa_link_facebook[$lang][0]['url'], 
+    $output .= l('facebook', $node->field_usa_link_facebook[$lang][0]['url'],
       array('attributes' => array('class' => array('show-facebook', 'usasocial-facebook'))));
   }
   if (isset($node->field_usa_link_twitter[$lang][0]['url']) && !empty($node->field_usa_link_twitter[$lang][0]['url'])) {
-    $output .= l('twitter', $node->field_usa_link_twitter[$lang][0]['url'], 
+    $output .= l('twitter', $node->field_usa_link_twitter[$lang][0]['url'],
       array('attributes' => array('class' => array('show-twitter', 'usasocial-twitter'))));
   }
   if (isset($node->field_usa_link_pinterest[$lang][0]['url']) && !empty($node->field_usa_link_pinterest[$lang][0]['url'])) {
-    $output .= l('pinterest', $node->field_usa_link_pinterest[$lang][0]['url'], 
+    $output .= l('pinterest', $node->field_usa_link_pinterest[$lang][0]['url'],
       array('attributes' => array('class' => array('show-pinterest', 'usasocial-pinterest'))));
   }
   if (isset($node->field_usa_link_tumblr[$lang][0]['url']) && !empty($node->field_usa_link_tumblr[$lang][0]['url'])) {
-    $output .= l('tumblr', $node->field_usa_link_tumblr[$lang][0]['url'], 
+    $output .= l('tumblr', $node->field_usa_link_tumblr[$lang][0]['url'],
       array('attributes' => array('class' => array('show-tumblr', 'usasocial-tumblr'))));
   }
+  $output .= '</div>';
+
   $output .= '</div>';
 
   // schedule page

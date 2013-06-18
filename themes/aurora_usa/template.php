@@ -66,6 +66,7 @@ function aurora_usa_preprocess_page(&$vars) {
   global $base_path, $base_url;
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
@@ -130,7 +131,7 @@ function aurora_usa_preprocess_page(&$vars) {
 
 
 function aurora_usa_form_search_block_form_alter(&$form){
-  $form['search_block_form']['#title'] = t('search'); 
+  $form['search_block_form']['#title'] = t('search');
   $form['search_block_form']['#title_display'] = 'before';
   // Add placeholder attribute to the text box
   $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
@@ -142,7 +143,7 @@ function aurora_usa_form_search_block_form_alter(&$form){
   );
 
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
-} 
+}
 
 /**
  * Override or insert variables into the region templates.

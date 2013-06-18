@@ -22,6 +22,8 @@
           keyboardShortcuts: false,
           afterOn: function() {
             $('#jPanelMenu-menu')
+              .wrapInner('<div id="menu-wrapper"></div>');
+            $('#menu-wrapper')
               .prepend('<h1 class="menu-title">Main Menu</h1>')
               .find('a')
                 .removeClass('mega-nav-link')
@@ -135,12 +137,53 @@
         return false;
       });
 
+      // on now button
+      $('#jPanelMenu-menu')
+        .append($('#on-now-panel'))
+        .addClass('state-menu');
+      $('#on-now.trigger').click(function() {
+        $('#jPanelMenu-menu')
+          .removeClass('state-menu')
+          .addClass('state-on-now');
+        jPM.trigger();
+      });
+      $('#main-menu-toggle').click(function() {
+        $('#jPanelMenu-menu')
+          .removeClass('state-on-now')
+          .addClass('state-menu');
+      });
+
       // RESPONSIVE BEHAVIOR
       $(window).resize(function(){
         if ($('#main-menu-toggle').is(':hidden') && jPM.isOpen()) {
           jPM.close();
         }
         $('.jPanelMenu-panel').css('min-height', $(window).height());
+      });
+
+      // call jRespond and add breakpoints
+      var jRes = jRespond([
+        {
+          label: 'narrow',
+          enter: 0,
+          exit: 959
+        },{
+          label: 'wide',
+          enter: 960,
+          exit: 10000
+        }
+      ]);
+      jRes.addFunc({
+        breakpoint: 'narrow',
+        enter: function() {
+          jPM.position('258px');
+        }
+      });
+      jRes.addFunc({
+        breakpoint: 'wide',
+        enter: function() {
+          jPM.position('362px');
+        }
       });
     },
   };

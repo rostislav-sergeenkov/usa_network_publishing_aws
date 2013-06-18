@@ -567,20 +567,20 @@
     width: 930px;
   }
   &.node-usa-tve-video {
-    .video-player-wrapper:after {
-       position: absolute;
-        left: 43%;
-        top: 35%;
-        content: "\e001";
-        font-size: 50px;
-        color: $white;
-        @extend %usanetwork-font;
-        @include breakpoint($bp-video-mid-range4-width) {
-          font-size: 85px;
-        }  
-        @include breakpoint($bp-video-large2-width) {
-          font-size: 110px
-        }  
+    .video-player-wrapper a:after {
+      position: absolute;
+      left: 43%;
+      top: 35%;
+      content: "\e001";
+      font-size: 50px;
+      color: $white;
+      @extend %usanetwork-font;
+      @include breakpoint($bp-video-mid-range4-width) {
+        font-size: 85px;
+      }  
+      @include breakpoint($bp-video-large2-width) {
+        font-size: 110px
+      }  
     }  
   }
   .video-player-wrapper {
@@ -590,10 +590,10 @@
     height: 375px;
     margin-right: 15px;    
     @include breakpoint($bp-video-player-section) {
-        width: 330px;
-        height: 201px;
-        margin: 0 auto;
-        float: none;
+      width: 330px;
+      height: 201px;
+      margin: 0 auto;
+      float: none;
     }
     @include breakpoint($bp-video-mid-range4-width) {
       margin-bottom: 15px;

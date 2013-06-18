@@ -41,6 +41,7 @@ function usanetwork_imagestyles_strongarm() {
     1 => 'promoted_content',
     2 => 'large',
     3 => 'episode_wide',
+    4 => 'video_full',
   );
   $export['borealis_ri_children'] = $strongarm;
 
@@ -182,6 +183,32 @@ function usanetwork_imagestyles_strongarm() {
           'ieid' => '2',
           'isid' => '1',
           'weight' => '2',
+        ),
+      ),
+    ),
+    'video_full' => array(
+      'isid' => '2',
+      'name' => 'video_full',
+      'module' => NULL,
+      'storage' => 1,
+      'effects' => array(
+        2 => array(
+          'label' => 'Scale',
+          'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+          'effect callback' => 'image_scale_effect',
+          'dimensions callback' => 'image_scale_dimensions',
+          'form callback' => 'image_scale_form',
+          'summary theme' => 'image_scale_summary',
+          'module' => 'image',
+          'name' => 'image_scale',
+          'data' => array(
+            'width' => '1245',
+            'height' => '',
+            'upscale' => 0,
+          ),
+          'ieid' => '2',
+          'isid' => '2',
+          'weight' => '1',
         ),
       ),
     ),

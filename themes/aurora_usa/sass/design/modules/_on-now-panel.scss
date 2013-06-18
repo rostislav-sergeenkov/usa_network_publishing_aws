@@ -14,3 +14,45 @@
     display: block;
   }
 }
+
+
+#on-now-panel {
+  padding: 0 15px;
+  .item-list {
+    @include no-bullets;
+    // @include debug-outline;
+  }
+  .tab-wrapper {
+    text-transform: uppercase;
+    font-size: 16px;
+    padding-top: 6px;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 1px;
+    span {
+      font-style: normal;
+      font-family: $headline-thn;
+    }
+  }
+  ul[class*="tab"] {
+    padding-top: 15px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  figure {
+    margin-bottom: 15px;
+  }
+  .show-title {
+    font-family: $headline-bold;
+  }
+  .full-schedule-link {
+    margin: 1.5em 0 1em;
+    a {
+      color: $gray-extra-light;
+    }
+  }
+  .up-next {
+    display: none; // remove when we show up next tab
+  }
+}

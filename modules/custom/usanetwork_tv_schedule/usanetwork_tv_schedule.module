@@ -379,13 +379,15 @@ function usanetwork_on_now_panel_js() {
 
   if (!empty($arg[1])) {
     $on_now = node_load($arg[1]);
-    $links[0]['data'] = t('On Now');
+    $links[0]['data'] = '<span class="tab-wrapper"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
+    $links[0]['class'] = array('on-now', 'tab-1');
     $links[0]['children'][] = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
   }
 
   if (!empty($arg[2])) {
     $next_up = node_load($arg[2]);
-    $links[1]['data'] = t('Next Up');
+    $links[1]['data'] = '<span class="tab-wrapper"><span>' . t('Up') . '</span> ' . t('Next') . '</span>';
+    $links[1]['class'] = array('up-next', 'tab-2');
     $links[1]['children'][] = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
   }
 
@@ -403,7 +405,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   $image = $node->field_usa_tv_on_now[$lang][0];
   $on_now_image = array(
-    'style_name' => 'medium',
+    'style_name' => 'on_now_panel',
     'path' => $image['uri'],
     'alt' => $image['alt'],
     'title' => $image['title'],
@@ -413,9 +415,9 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
-    $output .= l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true));
+    $output .= '<figure>' . l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true)) . '</figure>';
   } else {
-    $output .= theme('image_style', $on_now_image);
+    $output .= '<figure>' . theme('image_style', $on_now_image) . '</figure>';
   }
 
   // show name

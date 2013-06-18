@@ -809,6 +809,9 @@ input.echo-submit-text {
     img {
       display: none !important;
     }
+    a {
+      color: $gray-extra-light;
+    }
   }
   .echo-item-date,
   .echo-item-from {

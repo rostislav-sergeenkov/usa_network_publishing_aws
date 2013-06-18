@@ -214,7 +214,7 @@ function usanetwork_tv_schedule_on_now_block() {
  * Block callback for the On Now Panel
  */
 function usanetwork_tv_schedule_on_now_panel() {
-  return '<div id="on-now-panel">Placeholder</div>';
+  return '<div id="on-now-panel"></div>';
 }
 
 /**
@@ -420,11 +420,17 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     $output .= '<figure>' . theme('image_style', $on_now_image) . '</figure>';
   }
 
+  // show info
+  $output .= '<div class="show-info-wrapper">';
+  $output .= '<div class="show-info">';
+
   // show name
   $output .= '<div class="show-title">' . l($node->title, $path) . '</div>';
 
   // episode name
   $output .= '<div class="episode-title">' . l($text, $path) . '</div>';
+
+  $output .= '</div>';
 
   // social icons
   $output .= '<div class="icons-social icons-inline">';
@@ -444,6 +450,8 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     $output .= l('tumblr', $node->field_usa_link_tumblr[$lang][0]['url'],
       array('attributes' => array('class' => array('show-tumblr', 'usasocial-tumblr'))));
   }
+  $output .= '</div>';
+
   $output .= '</div>';
 
   // schedule page

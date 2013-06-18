@@ -30,6 +30,10 @@
     display: inline-block;
     text-align: center;
     letter-spacing: 1px;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 20px;
+      padding-top: 15px;
+    }
     span {
       font-style: normal;
       font-family: $headline-thn;
@@ -39,17 +43,83 @@
     padding-top: 15px;
     font-size: 12px;
     line-height: 1.4;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 16px;
+    }
   }
   figure {
     margin-bottom: 15px;
   }
+  .show-info-wrapper {
+    display: table;
+    width: 100%;
+  }
+  .show-info {
+    display: table-cell;
+  }
+  a {
+    @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
+  }
+  .icons-social {
+    display: table-cell;
+    text-align: right;
+    a {
+      background-color: transparent;
+      color: $gray-extra-light;
+      font-size: 1.25em;
+      line-height: 1;
+      border-radius: 0;
+      padding: 0;
+      display: inline;
+      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+      @include breakpoint($bp-menu-wide) {
+        font-size: 1.8em;
+      }
+    }
+  }
   .show-title {
     font-family: $headline-bold;
+  }
+  .episode-title {
+    a {
+      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+    }
   }
   .full-schedule-link {
     margin: 1.5em 0 1em;
     a {
-      color: $gray-extra-light;
+      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+    }
+  }
+  #usanetwork_social_show_homepage_chatter {
+    background-color: transparent;
+    margin-top: 15px;
+    border-top: 2px solid $gray-ultra-med;
+    padding-top: 13px;
+  }
+  #usanetwork_social_chatter_title {
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: $gray-extra-light;
+    padding: 6px 0 8px;
+    border-bottom: none;
+  }
+  #usanetwork_social_show_comment {
+    border-color: $gray-ultra-med;
+  }
+  #usanetwork_social_join {
+    border: none;
+    background-color: $gray-dark;
+    .usanetwork_social_join_msg {
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding-left: 0;
+      color: $blue;
+      &:before {
+        display: none;
+      }
     }
   }
   .up-next {

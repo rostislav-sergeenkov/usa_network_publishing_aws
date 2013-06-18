@@ -1351,7 +1351,7 @@ input[type="radio"], input[type="checkbox"] {
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .no-font-feature-settings #on-now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-sd03e858936.png') no-repeat;
 }
 
@@ -1451,7 +1451,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -418px;
 }
 
-.icons-on_now, .no-font-feature-settings #on-now, .ie9 #on-now, .ie8 #on-now {
+.icons-on_now, .ie9 #on-now, .ie8 #on-now {
   background-position: 0 -2414px;
 }
 
@@ -3700,9 +3700,33 @@ html[xmlns] .slides {
   right: -30px;
   text-indent: 3px;
 }
+.no-font-feature-settings .flex-direction-nav .flex-next {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-size: 18px 30px;
+}
 .flex-direction-nav .flex-prev {
   left: -30px;
   text-indent: -3px;
+}
+.no-font-feature-settings .flex-direction-nav .flex-prev {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-size: 18px 30px;
 }
 
 .flexslider:hover .flex-next {
@@ -4210,7 +4234,7 @@ body.person-page .ad-leaderboard {
     height: 100%;
   }
 }
-.no-font-feature-settings #on-now, .ie9 #on-now, .ie8 #on-now {
+.ie9 #on-now, .ie8 #on-now {
   display: block;
   width: 35px;
   height: 28px;
@@ -4218,6 +4242,17 @@ body.person-page .ad-leaderboard {
   margin-right: 8px;
   text-indent: -200%;
   float: left;
+}
+.no-font-feature-settings #on-now {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/on_now.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 35px;
+  height: 28px;
+  display: block;
 }
 
 #on-now-show-name {

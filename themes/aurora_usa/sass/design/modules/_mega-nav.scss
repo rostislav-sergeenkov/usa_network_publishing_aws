@@ -23,6 +23,9 @@ $logo-height-med-2: 32px;
   }
   [data-menu-position="open"] & {
     left: 258px;
+    @include breakpoint($bp-menu-wide) {
+      left: 362px;
+    }
     .primary-nav {
       > *:not(#main-menu-toggle) {
         opacity: 0.2;

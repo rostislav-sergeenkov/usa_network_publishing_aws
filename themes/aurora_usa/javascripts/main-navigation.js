@@ -138,17 +138,10 @@
       });
 
       // on now button
-      // jPM = $.jPanelMenu({
-      //     openPosition: '400px',
-      //   });
       $('#jPanelMenu-menu')
         .append($('#on-now-panel'))
         .addClass('state-menu');
       $('#on-now.trigger').click(function() {
-        console.log(jPM);
-        // console.log(jPM.options);
-        // console.log(jPM.options.openPosition);
-        jPM.position('500px');
         $('#jPanelMenu-menu')
           .removeClass('state-menu')
           .addClass('state-on-now');
@@ -166,6 +159,31 @@
           jPM.close();
         }
         $('.jPanelMenu-panel').css('min-height', $(window).height());
+      });
+
+      // call jRespond and add breakpoints
+      var jRes = jRespond([
+        {
+          label: 'narrow',
+          enter: 0,
+          exit: 959
+        },{
+          label: 'wide',
+          enter: 960,
+          exit: 10000
+        }
+      ]);
+      jRes.addFunc({
+        breakpoint: 'narrow',
+        enter: function() {
+          jPM.position('258px');
+        }
+      });
+      jRes.addFunc({
+        breakpoint: 'wide',
+        enter: function() {
+          jPM.position('362px');
+        }
       });
     },
   };

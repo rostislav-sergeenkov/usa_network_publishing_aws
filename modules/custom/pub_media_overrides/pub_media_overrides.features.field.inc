@@ -92,6 +92,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -205,6 +211,15 @@ function pub_media_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '13',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -329,6 +344,12 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -446,6 +467,15 @@ function pub_media_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '10',
         ),
         'search_result' => array(
           'label' => 'hidden',

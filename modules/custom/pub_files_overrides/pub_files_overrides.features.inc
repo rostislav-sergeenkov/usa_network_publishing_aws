@@ -39,6 +39,10 @@ function pub_files_overrides_strongarm_alter(&$data) {
       'weight' => '0',
       'visible' => TRUE,
     ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['search_result_files'] = array(
+      'weight' => '0',
+      'visible' => TRUE,
+    ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['extra_fields']['display']['file']['thumb_tiny'] = array(
       'weight' => '0',
       'visible' => TRUE,
@@ -59,6 +63,9 @@ function pub_files_overrides_strongarm_alter(&$data) {
       'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['person_cover_image'] = array(
+      'custom_settings' => TRUE,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_file__image']->value['view_modes']['search_result_files'] = array(
       'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_file__image']->value['view_modes']['thumb_tiny'] = array(

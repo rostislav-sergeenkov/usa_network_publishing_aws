@@ -160,6 +160,7 @@
       display: inline;
       float: right;
       height: 250px;
+      max-width: 300px;
     }
     @include breakpoint($bp-home-mid) {
       bottom: 0;
@@ -307,6 +308,10 @@
     overflow: visible;
     vertical-align: top;
     width: auto;
+    .ie9 & {
+      top: -32px;
+      padding-bottom: 8px;
+    }
     li {
       margin: 0 5px;
       a {
@@ -341,6 +346,9 @@
       max-width: 221px;
       height: 50px;
       padding: 8px 15px 8px;
+      &:after {
+        background: none;
+      }
       @include breakpoint($bp-home-widest) {
         height: 77px;
         padding: 17px 15px 8px;

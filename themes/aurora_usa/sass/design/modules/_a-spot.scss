@@ -131,7 +131,7 @@
   .show-time {
     font-size: 24px;
     .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
-      font-size: 1.7em;
+      font-size: 2.75em;
     }
     @include breakpoint($bp-aspot-mid-range-width) {
       font-size: 34px;
@@ -196,7 +196,10 @@
     @include breakpoint($bp-aspot-large-width) {
       font-size: 28px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .ie9 &, .ie8 & {
+      font-size: 1.375em;
+    }
+    .usa-adrails & {
       font-size: 22px;
     }
   }

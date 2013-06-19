@@ -1,5 +1,10 @@
 <?php
 
+
+define('USANETWORK_MIGRATE_UNPUBLISH_QUEUE', 'usanetwork_migrate_unpublish_content');
+define('USANETWORK_MIGRATE_STATE_FLOW_FIX_QUEUE', 'usanetwork_migrate_state_flow_fix');
+
+
 /**
  * Helper that takes a node entity and array of SimpleXMLElement objects and
  * attaches taxonomy terms to the node preserving hierarchy.
@@ -154,20 +159,40 @@ function usanetwork_migrate_cron() {
     return;
   }
 
-  // Process nodes scheduled to be unpublished in field_publish_date.
-  $results = usanetwork_migrate_get_scheduled_nodes();
-  $queue = DrupalQueue::get('usanetwork_migrate');
+  // Process nodes scheduled to be unpublished in field_publish_date, but only
+  // if the current queue is empty.  Since data is stored in binary format,
+  $queue_name = USANETWORK_MIGRATE_UNPUBLISH_QUEUE;
+
+  $queue = DrupalQueue::get($queue_name);
+  $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
+  $results = usanetwork_migrate_get_nodes_to_unpublish();
 
   foreach ($results as $result) {
-    $queue->createItem($result);
+    if (!in_array($result->nid, $queued_node_nids)) {
+      $queue->createItem($result);
+    }
+  }
+
+  // Process state_flow_schedule queue items so that they can be transferred to
+  // the published state.
+  $queue_name = USANETWORK_MIGRATE_STATE_FLOW_FIX_QUEUE;
+
+  $queue = DrupalQueue::get($queue_name);
+  $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
+  $scheduled_nodes = db_query("SELECT * FROM {state_flow_schedule} ORDER BY sid ASC")->fetchAllAssoc('nid');
+
+  foreach ($scheduled_nodes as $nid => $row) {
+    if (!in_array($result->nid, $queued_node_nids)) {
+      $queue->createItem($row);
+    }
   }
 
   // Run migration to update content.
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
-  #$machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
-  $machine_names = array('usanetwork_mpx_videos');
+  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+  #$machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
     $migration = Migration::getInstance($machine_name);
@@ -176,6 +201,9 @@ function usanetwork_migrate_cron() {
     // Trigger the migration
     $result = $migration->processImport();
   }
+
+  // Clearing the cache fixes some access issues for newly published nodes.
+  _usanetwork_migrate_cron_cache_clear();
 }
 
 /*
@@ -183,12 +211,41 @@ function usanetwork_migrate_cron() {
  */
 function usanetwork_migrate_cron_queue_info() {
 
-  $queues['usanetwork_migrate'] = array(
-    'worker callback' => 'usanetwork_migrate_process_item',
-    'time' => 60,
+  $queues[USANETWORK_MIGRATE_UNPUBLISH_QUEUE] = array(
+    'worker callback' => 'process_usanetwork_migrate_unpublish_content_item',
+    'time' => 3,
+  );
+  $queues[USANETWORK_MIGRATE_STATE_FLOW_FIX_QUEUE] = array(
+    'worker callback' => 'process_usanetwork_migrate_state_flow_fix_item',
+    'time' => 3,
   );
 
   return $queues;
+}
+
+/**
+ * Process state flow schedule queue items to prepare them for publishing.
+ *
+ * @param object $data
+ */
+function process_usanetwork_migrate_state_flow_fix_item($data) {
+
+  $node = node_load($data->nid);
+
+  if (!is_object($node)) {
+    return;
+  }
+
+  $entity_state_machine =& state_flow_load_state_machine($node);
+  $current_entity_state = $entity_state_machine->get_current_state();
+
+  if ($current_entity_state == 'published' && $node->status == 0) {
+    $node->status = 1;
+    node_save($node);
+  }
+  else if ($current_entity_state != 'published' && $current_entity_state != 'scheduled') {
+    _usanetwork_migrate_complete_entity_state_transition($node, 'draft');
+  }
 }
 
 /**
@@ -196,45 +253,160 @@ function usanetwork_migrate_cron_queue_info() {
  *
  * @param object $data
  */
-function usanetwork_migrate_process_item($data) {
+function process_usanetwork_migrate_unpublish_content_item($data) {
 
-  global $user;
-
-  $user = user_load(1);
   $node = node_load($data->nid, $data->vid);
 
-  drupal_set_message('Attempting to unpublish nid:' . $node->nid . ', vid:' . $node->vid);
+  drupal_set_message('USANetwork Migrate:  Attempting to unpublish nid:' . $node->nid . ', vid:' . $node->vid);
 
-  $state_flow = state_flow_load_state_machine($node, TRUE);
-  $state_flow->fire_event('unpublish', $user->uid, 'Unpublished on cron.');
+  _usanetwork_migrate_complete_entity_state_transition($node, 'unpublished');
+
+  // Reload the node and ensure it is saved with a status of 0.
+  $node = node_load($node->nid, NULL, TRUE);
+  $node->status = 0;
+  node_save($node);
+}
+
+/**
+ * Helper that returns the items in a queue.
+ */
+function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit = NULL) {
+
+  if ($limit && FALSE) {
+    $query = "SELECT * FROM queue WHERE name = :queue_name ORDER BY item_id DESC LIMIT " . (int)$limit;
+    $query_args = array(':queue_name' => $queue_name);
+  }
+  else {
+    $query = "SELECT * FROM queue WHERE name = :queue_name ORDER BY item_id DESC";
+    $query_args = array(':queue_name' => $queue_name);
+  }
+
+  $query_result = db_query($query, $query_args);
+
+  // Get the data field for each queued item.
+  $queued_items = array();
+  foreach ($query_result as $result) {
+    $data = unserialize($result->data);
+    if (is_object($data) && isset($data->{$data_field})) {
+      $queued_items[ $data->{$data_field} ] = $data->{$data_field};
+    }
+  }
+
+  return $queued_items;
 }
 
 /**
  * Return all nodes scheduled to be published
- *
- * @param int $nid
- * @param int $vid
- * @param int $date
- * @return object
  */
-function usanetwork_migrate_get_scheduled_nodes() {
+function usanetwork_migrate_get_nodes_to_unpublish() {
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_publish_date', 'value2', 0, '>');
   $query->fieldCondition('field_publish_date', 'value2', REQUEST_TIME, '<=');
   $query_result = $query->execute();
 
   return isset($query_result['node']) ? $query_result['node'] : array();
 }
 
+/**
+ * Helper function that properly transitions an entity to the desired state flow state.
+ */
+function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_state) {
+
+  module_load_include('inc', 'state_flow', 'state_flow.pages');
+
+  $entity_state_machine =& state_flow_load_state_machine($entity);
+  $current_entity_state = $entity_state_machine->get_current_state();
+  $transition_states = array();
+
+  switch ($current_entity_state) {
+
+    case 'unpublished':
+      switch ($end_state) {
+        case 'unpublished':
+          // Don't do anything.
+          break;
+        case 'draft':
+          $transition_states = array('to draft');
+          break;
+        case 'published':
+          $transition_states = array('to draft', 'publish');
+      }
+      break;
+
+    case 'draft':
+      switch ($end_state) {
+        case 'unpublished':
+          // TODO: Go to scheduled state, then to unpublished, or goto published
+          // state, then to unpublished?  May not be needed.
+          break;
+        case 'draft':
+          // Don't do anything.
+          break;
+        case 'published':
+          $transition_states = array('publish');
+      }
+      break;
+
+    case 'published':
+      switch ($end_state) {
+        case 'unpublished':
+          $transition_states = array('unpublish');
+          break;
+        case 'draft':
+          $transition_states = array('unpublish', 'to draft');
+          break;
+        case 'published':
+          // Don't do anything.
+      }
+      break;
+  }
+
+  // Now perform the necessary entity state transitions individually.
+  foreach ($transition_states as $state) {
+    _usanetwork_migrate_transition_entity_state($entity, $state, $entity_state_machine);
+  }
+}
 
 
+/**
+ * Helper that performs a single entity state transition.
+ */
+function _usanetwork_migrate_transition_entity_state($entity, $transition, $entity_state_machine) {
 
+  $state_flow_form = array();
+  $state_flow_form_state = array();
 
+  $state_flow_form_state['values'] = array(
+    'node_revision' => $entity,
+    'state_flow' => $entity_state_machine,
+    'event' => $transition,
+    'event_comment' => t('Transitioning to "@transition" via migration script.',
+          array('@transition' => ucwords($transition))),
+  );
 
+  state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
+}
 
+/**
+ * Helper to clear caches on cron.
+ */
+function _usanetwork_migrate_cron_cache_clear() {
 
+  $core = array(
+    'cache',
+    'cache_path',
+    'cache_filter',
+    'cache_bootstrap',
+    'cache_page',
+  );
+  $cache_tables = array_merge(module_invoke_all('flush_caches'), $core);
+  foreach ($cache_tables as $table) {
+    cache_clear_all('*', $table, TRUE);
+  }
+}
 
 
 

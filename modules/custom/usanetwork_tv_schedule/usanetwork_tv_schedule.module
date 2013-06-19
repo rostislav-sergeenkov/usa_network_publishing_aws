@@ -212,7 +212,18 @@ function usanetwork_tv_schedule_on_now_block() {
  * Block callback for the On Now Panel
  */
 function usanetwork_tv_schedule_on_now_panel() {
-  return '<div id="on-now-panel">Placeholder</div>';
+  $output = '';
+  $links = array();
+  
+  $links[0]['data'] = t('On Now');
+  $links[0]['children'][] = '<div id="on-now-panel"></div>';
+
+  $links[1]['data'] = t('Next Up');
+  $links[1]['children'][] = '<div id="next-up-panel"></div>';
+
+  $output = theme('item_list', array('items' => $links)); 
+
+  return $output;
 }
 
 /**
@@ -375,21 +386,17 @@ function usanetwork_on_now_panel_js() {
     return $output; 
   }
   
-  if (!empty($arg[1])) {
+  if (!empty($arg[1]) && isset($_GET['on_now'])) {
     $on_now = node_load($arg[1]);
-    $links[0]['data'] = t('On Now');
-    $links[0]['children'][] = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
+    $output = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
   }
 
-  if (!empty($arg[2])) {
+  if (!empty($arg[2]) && isset($_GET['next_up'])) {
     $next_up = node_load($arg[2]);
-    $links[1]['data'] = t('Next Up');
-    $links[1]['children'][] = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
+    $output = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
   }
 
-  $output = theme('item_list', array('items' => $links)); 
-  echo $output;
-  exit;
+  return $output;
 }
 
 /**

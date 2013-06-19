@@ -107,9 +107,10 @@ function usanetwork_tv_schedule_on_now_block() {
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
       $arrow = '';
-      if (!empty($nid)) {
-        $arrow = 'class="trigger"';
-      }
+      // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
+      // if (!empty($nid)) {
+      //   $arrow = 'class="trigger"';
+      // }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
@@ -146,9 +147,10 @@ function usanetwork_tv_schedule_on_now_block() {
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
       $arrow = '';
-      if (!empty($nid)) {
-        $arrow = 'class="trigger"';
-      }
+      // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
+      // if (!empty($nid)) {
+      //   $arrow = 'class="trigger"';
+      // }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 

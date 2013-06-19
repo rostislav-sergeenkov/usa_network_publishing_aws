@@ -81,6 +81,7 @@ if ($node->type == 'usa_tve_video') {
     <?php endif; ?>
     <?php // this is for tve with a linked image, we leverage the auth region for now ?>
     <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
+      <div class="locked-msg"><?php print t('Please sign in with your TV provider<br />to unlock this episode.'); ?></div>
       <?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?>
     <?php endif; ?>
   </div>

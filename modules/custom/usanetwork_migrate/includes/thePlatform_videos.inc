@@ -49,7 +49,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     }
     //*/
 
-    $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC');
+    $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/HNK2IC/v_LMXFxZY7Z2');
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
     global $usanetwork_migrate_is_cron;
@@ -58,10 +58,10 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
       $updated_date = date('c', strtotime('-1 hours'));
-      $items_url .= '?&byCustomValue={fullEpisode}{true}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
+      $items_url .= '?&byCustomValue={fullEpisode}{true},{entitlement}{auth}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
-      $items_url .= '?range=1-500&byCustomValue={fullEpisode}{true}';
+      $items_url .= '?range=1-500&byCustomValue={fullEpisode}{true},{entitlement}{auth}';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document

@@ -14,14 +14,17 @@ if ($node->type == 'usa_tve_video') {
   // strip tags and rawurlencode to convert spaces to %20 for tve paths
   $vid_title = strip_tags($node->title);
   $vid_title = rawurlencode($vid_title);
+  $vid_showname = '';
   // load the showname
   if (!empty($node->field_show)) {
     $show_nid = field_get_items('node', $node, 'field_show');
     $show = $show_nid[0]['target_id'];
+    $show = node_load($show);
+    $showtitle = $show->title;
+    $vid_showname = strip_tags($showtitle);
+    $vid_showname = trim($showtitle);
+    $vid_showname = rawurlencode($vid_showname);
   }
-  $show = node_load($show);
-  $vid_showname = strip_tags(trim($show->title));
-  $vid_showname = rawurlencode($vid_showname);
   // full path to tve
   $url = 'http://www.usanetwork.com/anywhere/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }

@@ -574,14 +574,37 @@
       content: "\e001";
       font-size: 50px;
       color: $white;
+      @include text-shadow(1px 1px 5px $black-true);
       @extend %usanetwork-font;
       @include breakpoint($bp-video-mid-range4-width) {
         font-size: 85px;
       }  
       @include breakpoint($bp-video-large2-width) {
-        font-size: 110px
+        font-size: 85px
       }  
-    }  
+    }
+    .locked-msg {
+      position: absolute;
+      top: 120px;
+      left: 40px;
+      margin: 0 auto;
+      text-align: center;
+      z-index: 10;
+      @include text-shadow(1px 1px 5px $black-true);
+      @include breakpoint($bp-video-mid-range4-width) {
+        top: 220px;
+        left: 200px;
+      }
+      @include breakpoint($bp-video-high-range-width) {
+        top: 220px;
+        left: 200px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        top: 300px;
+        left: 300px;
+        font-size: 1.25em;
+      }
+    }
   }
   .video-player-wrapper {
     position: relative;
@@ -626,6 +649,22 @@
         width: 615px;
         height: 375px;
       }  
+    }
+    .no-touch & {
+      .locked-msg,
+      a:after {
+        display: none;
+      }
+      &:hover {
+        cusror: pointer;
+        .locked-msg,
+        a:after {
+          display: block;
+        }
+        img {
+          opacity: .5;
+        }
+      }
     }
   }
   .meta {

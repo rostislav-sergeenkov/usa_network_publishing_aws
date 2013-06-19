@@ -784,6 +784,9 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $adobe_tagloader_settings['tag_container_name'] : '';
   #drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js', array('scope' => 'footer', 'preprocess' => FALSE));
 
+	// Set the JS device detection code
+	drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/device-detect.js', array('type' => 'file', 'scope' => 'header', 'every_page' => true, 'preprocess' => true));
+
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');
 }

@@ -33,7 +33,7 @@
   <?php print l('More', '', array('attributes' => array('class' => array('mega-nav-link', 'more')))); ?>
   <div class="mega-sub-nav-container">
     <div class="mega-sub-nav">
-      <span class="mega-nav-close">x</span>
+      <span class="mega-nav-close">close</span>
       <?php print variable_get('usanetwork_more_menu_links', ''); ?>
     </div>
   </div>

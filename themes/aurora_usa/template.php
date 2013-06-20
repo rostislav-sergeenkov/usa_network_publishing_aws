@@ -129,7 +129,6 @@ function aurora_usa_preprocess_page(&$vars) {
 
   // remove headers and footers for ajax callback
   if (isset($_GET['ajax']) && $_GET['ajax'] == 1) {
-    //$vars['theme_hook_suggestions'][] = 'html__ajax';
     $content = $vars['page']['content'];
     $vars['page'] = array('content' => $content);
     $vars['ajax'] = true;

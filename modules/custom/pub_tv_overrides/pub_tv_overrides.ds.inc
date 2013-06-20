@@ -77,11 +77,6 @@ function pub_tv_overrides_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'search_snippet' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
   );
   $export['node|tv_show|search_result'] = $ds_fieldsetting;
 
@@ -205,7 +200,6 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'regions' => array(
       'body' => array(
         0 => 'body',
-        1 => 'search_snippet',
       ),
       'media' => array(
         0 => 'field_social_logo',
@@ -216,7 +210,6 @@ function pub_tv_overrides_ds_layout_settings_info() {
     ),
     'fields' => array(
       'body' => 'body',
-      'search_snippet' => 'body',
       'field_social_logo' => 'media',
       'title' => 'title',
     ),

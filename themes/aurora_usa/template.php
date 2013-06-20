@@ -132,6 +132,7 @@ function aurora_usa_preprocess_page(&$vars) {
     //$vars['theme_hook_suggestions'][] = 'html__ajax';
     $content = $vars['page']['content'];
     $vars['page'] = array('content' => $content);
+    $vars['ajax'] = true;
   }
 
 }

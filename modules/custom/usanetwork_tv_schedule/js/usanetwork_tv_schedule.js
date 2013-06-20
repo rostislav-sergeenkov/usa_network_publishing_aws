@@ -78,20 +78,25 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     }
 
     if (!$('body').hasClass('on-now-js-processed')) {
-      $.ajax({
-        url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text,
-      }).done(function ( data ) {
-        $('#on-now-panel-tab').html(data); 
-      });
-      $.ajax({
-        url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text,
-      }).done(function ( data ) {
-        $('#next-up-panel-tab').html(data); 
-      });
+      data = '<iframe id="up-next-iframe"  frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src="' + "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text+'"></iframe>';
+
+      $('#on-now-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text);
+      $('#up-next-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text);
+
+      // TODO: Fix the iframe height dynamically
+      // $('#on-now-iframe').attr('height', getDocHeight() + 'px');
+      // $('#up-next-iframe').attr('height', getDocHeight() + 'px');
+
+      $('#on-now-iframe').attr('height', '1024px');
+      $('#up-next-iframe').attr('height', '1024px');
+     
       $('body').addClass('on-now-js-processed');
     }
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 
+
+    function getDocHeight() {
+      return Math.max(Math.max(document.body.offsetHeight, document.documentElement.offsetHeight));
+    }
   }
 }
 })(jQuery);
-

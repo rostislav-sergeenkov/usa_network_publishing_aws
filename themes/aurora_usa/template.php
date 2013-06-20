@@ -138,6 +138,7 @@ function aurora_usa_preprocess_page(&$vars) {
 
 
 function aurora_usa_form_search_block_form_alter(&$form){
+
   $form['search_block_form']['#title'] = t('search');
   $form['search_block_form']['#title_display'] = 'before';
   // Add placeholder attribute to the text box
@@ -145,7 +146,7 @@ function aurora_usa_form_search_block_form_alter(&$form){
 
 
   $form['actions']['reset'] = array(
-    '#markup' => '<button class="form-reset" type="reset"/>',
+    '#markup' => '<button class="form-reset" type="reset"></button>',
     '#weight' => 1000
   );
 

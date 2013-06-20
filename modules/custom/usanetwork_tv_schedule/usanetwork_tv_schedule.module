@@ -109,7 +109,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $arrow = '';
       // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
       // if (!empty($nid)) {
-      //   $arrow = 'class="trigger"';
+      //  $arrow = 'class="trigger"';
       // }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
@@ -149,7 +149,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $arrow = '';
       // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
       // if (!empty($nid)) {
-      //   $arrow = 'class="trigger"';
+      //  $arrow = 'class="trigger"';
       // }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
@@ -216,7 +216,20 @@ function usanetwork_tv_schedule_on_now_block() {
  * Block callback for the On Now Panel
  */
 function usanetwork_tv_schedule_on_now_panel() {
-  return '<div id="on-now-panel"></div>';
+  $output = '';
+  $links = array();
+  
+  $links[0]['data'] = '<span class="tab-wrapper"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
+  $links[0]['class'] = array('on-now', 'tab-1');
+  $links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+
+  $links[1]['data'] = '<span class="tab-wrapper"><span>' . t('Up') . '</span> ' . t('Next') . '</span>';
+  $links[1]['class'] = array('up-next', 'tab-2');
+  $links[1]['children'][] = '<div id="up-next-panel-tab"><iframe id="up-next-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+
+  $output = theme('item_list', array('items' => $links)); 
+
+  return '<div id="on-now-panel">'. $output .'</div>';
 }
 
 /**
@@ -379,23 +392,17 @@ function usanetwork_on_now_panel_js() {
     return $output;
   }
 
-  if (!empty($arg[1])) {
+  if (!empty($arg[1]) && isset($_GET['on_now'])) {
     $on_now = node_load($arg[1]);
-    $links[0]['data'] = '<span class="tab-wrapper"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
-    $links[0]['class'] = array('on-now', 'tab-1');
-    $links[0]['children'][] = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
+    $output = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
   }
 
-  if (!empty($arg[2])) {
+  if (!empty($arg[2]) && isset($_GET['next_up'])) {
     $next_up = node_load($arg[2]);
-    $links[1]['data'] = '<span class="tab-wrapper"><span>' . t('Up') . '</span> ' . t('Next') . '</span>';
-    $links[1]['class'] = array('up-next', 'tab-2');
-    $links[1]['children'][] = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
+    $output = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
   }
 
-  $output = theme('item_list', array('items' => $links));
-  echo $output;
-  exit;
+  return $output;
 }
 
 /**

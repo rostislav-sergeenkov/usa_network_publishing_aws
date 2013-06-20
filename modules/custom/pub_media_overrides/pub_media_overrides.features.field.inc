@@ -134,7 +134,7 @@ function pub_media_overrides_field_default_fields() {
   $fields['node-media_gallery-field_person'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_person',
@@ -414,9 +414,6 @@ function pub_media_overrides_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'body:value',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(

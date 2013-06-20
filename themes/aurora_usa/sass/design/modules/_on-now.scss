@@ -34,7 +34,6 @@
   padding: 2px 10px 0 0;
   font-size: 23px;
   display: inline;
-  cursor: pointer;
   display: table-cell;
   overflow: hidden;
   position: relative;
@@ -44,7 +43,6 @@
     font-size: 28px;
     height: 100%;
   }
-  .no-font-feature-settings &,
   .ie9 &,
   .ie8 & {
     @extend .icons-on_now;
@@ -55,6 +53,35 @@
     margin-right: 8px;
     text-indent: -200%;
     float: left;
+  }
+  .no-font-feature-settings & {
+    @include replace-text-with-dimensions('icons/on_now.png');
+    display: block;
+  }
+  &.trigger {
+    padding-left: 14px;
+    cursor: pointer;
+    &:before {
+      content: $space;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border: {
+        width: 5px 5px 5px 0;
+        style: solid;
+        color: transparent $white transparent transparent;
+      }
+      top: 50%;
+      left: 0;
+      @include transform3d(translateY(-50%));
+    }
+    @include breakpoint($bp-on-now) {
+      padding-left: 16px;
+      &:before {
+        border-width: 6px 6px 6px 0;
+      }
+    }
   }
 }
 

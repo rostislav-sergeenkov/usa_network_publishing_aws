@@ -191,8 +191,8 @@ function usanetwork_migrate_cron() {
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
-  #$machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
-  $machine_names = array('usanetwork_mpx_videos');
+  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+  #$machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
     $migration = Migration::getInstance($machine_name);
@@ -203,7 +203,7 @@ function usanetwork_migrate_cron() {
   }
 
   // Clearing the cache fixes some access issues for newly published nodes.
-  cache_clear_all();
+  _usanetwork_migrate_cron_cache_clear();
 }
 
 /*
@@ -390,8 +390,23 @@ function _usanetwork_migrate_transition_entity_state($entity, $transition, $enti
   state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
 }
 
+/**
+ * Helper to clear caches on cron.
+ */
+function _usanetwork_migrate_cron_cache_clear() {
 
-
+  $core = array(
+    'cache',
+    'cache_path',
+    'cache_filter',
+    'cache_bootstrap',
+    'cache_page',
+  );
+  $cache_tables = array_merge(module_invoke_all('flush_caches'), $core);
+  foreach ($cache_tables as $table) {
+    cache_clear_all('*', $table, TRUE);
+  }
+}
 
 
 

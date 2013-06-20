@@ -137,10 +137,10 @@ function usanetwork_social_field_group_info() {
     'children' => array(
       0 => 'group_chat_settings',
       1 => 'group_newsletter',
-      2 => 'group_trend',
-      3 => 'group_twitter_settings',
-      4 => 'group_usa_show_follow',
-      5 => 'group_sync_settings',
+      2 => 'group_sync_settings',
+      3 => 'group_trend',
+      4 => 'group_twitter_settings',
+      5 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -167,9 +167,9 @@ function usanetwork_social_field_group_info() {
     'label' => 'Sync Settings',
     'weight' => '45',
     'children' => array(
-      0 => 'field_sync_desktop_url',
-      1 => 'field_sync_phone_url',
-      2 => 'field_show_sync',
+      0 => 'field_show_sync',
+      1 => 'field_sync_desktop_url',
+      2 => 'field_sync_phone_url',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -194,17 +194,17 @@ function usanetwork_social_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
-    'label' => 'Trending Settings',
+    'label' => 'Social Buzz Settings',
     'weight' => '44',
     'children' => array(
-      0 => 'field_trend_base_url',
-      1 => 'field_trend_url_params',
-      2 => 'field_show_trending',
-      3 => 'field_trend_show_path',
+      0 => 'field_show_trending',
+      1 => 'field_trend_base_url',
+      2 => 'field_trend_show_path',
+      3 => 'field_trend_url_params',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Trending Settings',
+      'label' => 'Social Buzz Settings',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',

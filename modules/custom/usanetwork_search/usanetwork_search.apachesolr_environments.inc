@@ -8,14 +8,42 @@
  * Implements hook_apachesolr_environments().
  */
 function usanetwork_search_apachesolr_environments() {
+  //
+  // @TODO - BIG @TODO future changes
+  // when P7 switches to CI this logic will need to be rewritten
+  //
+
+  // custom environment check for usa
+  // we want features to read this dynamically
+  $usa_solr_url = '';
+  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+    // local
+    case 'local':
+      //Acquia Search settings
+      $usa_solr_url = 'http://localhost:8983/solr';
+      break;
+    // dev and stage
+    case 'dev':
+    case 'test':
+    case 'stage':
+      //Acquia Search settings
+      $usa_solr_url = 'http://search.acquia.com/solr/GMWX-32384';
+      break;
+    // prod
+    case 'prod':
+      //Acquia Search settings
+      $usa_solr_url = 'http://search.acquia.com/solr/CGJK-32328';
+      break;
+  }
+
+  // standard features export begins
   $export = array();
 
   $environment = new stdClass();
   $environment->api_version = 1;
   $environment->env_id = 'acquia_search_server_1';
   $environment->name = 'Acquia Search';
-  // @TODO we need an environment check for this
-  $environment->url = 'http://search.acquia.com/solr/GMWX-32384';
+  $environment->url = $usa_solr_url;
   $environment->service_class = 'AcquiaSearchService';
   $environment->conf = array(
     'apachesolr_search_changed_boost' => '0:0',
@@ -35,7 +63,7 @@ function usanetwork_search_apachesolr_environments() {
       'usanetwork_static_page' => '0',
       'tv_episode' => '0',
       'tv_season' => '0',
-      'tv_show' => '8.0',
+      'tv_show' => '13.0',
       'usa_video' => '5.0',
       'usa_tve_video' => '5.0',
       'webform' => '0',
@@ -43,7 +71,6 @@ function usanetwork_search_apachesolr_environments() {
     'field_bias' => array(
       'bm_field_different_legal_name' => '0',
       'bm_field_enable_nitro' => '0',
-      'bm_field_full_episode' => '0',
       'bm_field_show_chat_page' => '0',
       'bm_field_show_chat_post_comment' => '0',
       'bm_field_show_sync' => '0',
@@ -52,7 +79,6 @@ function usanetwork_search_apachesolr_environments() {
       'bm_field_usa_catchall_fixedwidth' => '0',
       'bs_field_different_legal_name' => '0',
       'bs_field_enable_nitro' => '0',
-      'bs_field_full_episode' => '0',
       'bs_field_show_chat_page' => '0',
       'bs_field_show_chat_post_comment' => '0',
       'bs_field_show_sync' => '0',
@@ -68,7 +94,6 @@ function usanetwork_search_apachesolr_environments() {
       'content' => '1.0',
       'dm_field_original_air_date' => '0',
       'dm_field_original_air_date_end' => '0',
-      'dm_field_video_air_date' => '0',
       'ds_changed' => '0',
       'ds_created' => '0',
       'ds_last_comment_or_change' => '0',
@@ -80,14 +105,11 @@ function usanetwork_search_apachesolr_environments() {
       'im_vid_16' => '0',
       'is_tnid' => '0',
       'is_uid' => '0',
-      'itm_field_video_duration' => '0',
-      'its_field_video_duration' => '0',
       'label' => '5.0',
       'path' => '0',
       'path_alias' => '0',
       'site' => '0',
       'sm_field_episode' => '0',
-      'sm_field_person' => '0',
       'sm_field_season' => '0',
       'sm_field_show' => '0',
       'sm_field_usa_tv_a_spot' => '0',

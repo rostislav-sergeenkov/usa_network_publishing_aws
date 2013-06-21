@@ -334,10 +334,22 @@
   background-color: $black;
   padding: 5px 0 36px;
   @extend %un-margin;
+  &:hover {
+    .carousel-btns {
+      opacity: 1;
+    }  
+  }
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
-  .carousel-item {
+  li.carousel-item {
+    width: 221px;
+    height: 184px;
+    margin-right: 15px;
+    img {
+      width: 221px;
+      height: 184px;
+    }
     @extend .title-overlay;
     .meta {
       text-align: left;
@@ -361,6 +373,7 @@
       }
     }
   }
+
   .field-name-field-promo-text-line-1 {
     font-family: $headline-semi;
     font-size: 20px;
@@ -401,22 +414,19 @@
       text-transform: uppercase;
     }
   }
-  .carousel-item {
-    height: auto;
-  }
   .carousel {
     width: auto !important;
     @include breakpoint($bp-home-widest) {
       height: 254px !important;
       .carousel-item {
         width: 300px;
-        height: 254px;
+        height: 250px;
         margin-right: 15px;
         img, .meta {
           width: 300px;
         }
         img {
-          height: 254px;
+          height: 250px;
         }
       }
       li.carousel-item {
@@ -446,6 +456,7 @@
     }
   }
   .carousel-btns {
+    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;

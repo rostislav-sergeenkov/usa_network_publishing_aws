@@ -25,7 +25,12 @@
         });
       }
 
-      create_home_carousel();
+
+      window.onload = function() {
+        create_home_carousel();
+      };
+
+      
       $(window).resize(function(){
         create_home_carousel();
       });

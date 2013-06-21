@@ -50,7 +50,21 @@ function usanetwork_static_page_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '0',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -115,6 +129,9 @@ function usanetwork_static_page_field_default_fields() {
             ),
           ),
           'sort' => array(
+            'direction' => 'ASC',
+            'field' => 'body:value',
+            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -140,7 +157,25 @@ function usanetwork_static_page_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 1,
+          'weight' => '1',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '1',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',

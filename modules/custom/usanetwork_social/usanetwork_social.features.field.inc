@@ -1991,7 +1991,7 @@ function usanetwork_social_field_default_fields() {
       'entity_type' => 'node',
       'fences_wrapper' => 'div',
       'field_name' => 'field_show_trending',
-      'label' => 'Show Trending',
+      'label' => 'Show Social Buzz',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -2642,11 +2642,11 @@ function usanetwork_social_field_default_fields() {
       'bundle' => 'tv_show',
       'default_value' => array(
         0 => array(
-          'value' => 'embedded=1&flexible=1&scrollbar_theme=light-2',
+          'value' => 'embedded=1&flexible=0&scrollbar_theme=light-2',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Ex: embedded=1&flexible=1&scrollbar_theme=light-2',
+      'description' => 'Ex: embedded=1&flexible=0&scrollbar_theme=light-2',
       'display' => array(
         'block_cover_title' => array(
           'label' => 'above',
@@ -4607,7 +4607,7 @@ function usanetwork_social_field_default_fields() {
   t('EQL Token');
   t('Echo Query Template');
   t('Ex: PsychUSA');
-  t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2');
+  t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2');
   t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa');
   t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile');
   t('Ex: https://www.rebelmouse.com');
@@ -4629,8 +4629,8 @@ function usanetwork_social_field_default_fields() {
   t('Show Chat with Fans Page');
   t('Show Chat with Fans Post Comment');
   t('Show Path');
+  t('Show Social Buzz');
   t('Show Sync');
-  t('Show Trending');
   t('Show Twitter Page');
   t('Social Logo');
   t('TAGS');

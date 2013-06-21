@@ -66,6 +66,7 @@ function aurora_usa_preprocess_page(&$vars) {
   global $base_path, $base_url;
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
@@ -126,23 +127,31 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   $vars['util_classes'] = implode(' ', $util_regions);
 
+  // remove headers and footers for ajax callback
+  if (isset($_GET['ajax']) && $_GET['ajax'] == 1) {
+    $content = $vars['page']['content'];
+    $vars['page'] = array('content' => $content);
+    $vars['ajax'] = true;
+  }
+
 }
 
 
 function aurora_usa_form_search_block_form_alter(&$form){
-  $form['search_block_form']['#title'] = t('search'); 
+
+  $form['search_block_form']['#title'] = t('search');
   $form['search_block_form']['#title_display'] = 'before';
   // Add placeholder attribute to the text box
   $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
 
 
   $form['actions']['reset'] = array(
-    '#markup' => '<button class="form-reset" type="reset"/>',
+    '#markup' => '<button class="form-reset" type="reset"></button>',
     '#weight' => 1000
   );
 
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
-} 
+}
 
 /**
  * Override or insert variables into the region templates.
@@ -342,6 +351,36 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $vars['classes_array'][] = drupal_html_class('field-name-title');
             $vars['items'][0]['#markup'] = $title . ' (' . $air_custom . ')';
             break;
+          }
+        }
+      break;
+    // episode num IN VIDEOS
+    case 'field_episode_number':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $episode = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
+              break;
+            }
+          }
+        }
+      break;
+    // season num IN VIDEOS
+    case 'field_season_id':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $season = $vars['element']['#items'][0]['safe_value'];
+                $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
+                break;
+            }
           }
         }
       break;

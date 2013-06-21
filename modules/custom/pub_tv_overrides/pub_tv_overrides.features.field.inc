@@ -236,6 +236,19 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '57',
         ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '48',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -318,13 +331,25 @@ function pub_tv_overrides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 58,
+          'weight' => '58',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '58',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '28',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -375,7 +400,7 @@ function pub_tv_overrides_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
-        'hide_blank_items' => 1,
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '0',
@@ -407,6 +432,18 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '60',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -513,6 +550,18 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '61',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '31',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
         'social_follow' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -609,6 +658,18 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '63',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '33',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'social_follow' => array(
           'label' => 'above',
@@ -748,6 +809,18 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '62',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '32',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'social_follow' => array(
           'label' => 'above',
           'module' => 'entityreference',
@@ -850,13 +923,25 @@ function pub_tv_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 57,
+          'weight' => '57',
         ),
         'follow_social' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '57',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -940,6 +1025,19 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '59',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '49',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',

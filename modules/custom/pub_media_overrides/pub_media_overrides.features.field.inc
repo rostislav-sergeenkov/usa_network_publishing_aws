@@ -92,6 +92,18 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -122,7 +134,7 @@ function pub_media_overrides_field_default_fields() {
   $fields['node-media_gallery-field_person'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_person',
@@ -192,13 +204,28 @@ function pub_media_overrides_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 13,
+          'weight' => '13',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '13',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -317,6 +344,18 @@ function pub_media_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -375,9 +414,6 @@ function pub_media_overrides_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'body:value',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -428,6 +464,24 @@ function pub_media_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '10',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',

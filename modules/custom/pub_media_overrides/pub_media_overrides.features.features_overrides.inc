@@ -90,6 +90,18 @@ function pub_media_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '0',
   );
+  $overrides["field.node-media_gallery-field_media_items.field_instance|display|search_index"] = array(
+    'label' => 'hidden',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '0',
+  );
+  $overrides["field.node-media_gallery-field_media_items.field_instance|display|search_result"] = array(
+    'label' => 'hidden',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '11',
+  );
   $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_schemes|theplatform"] = 0;
   $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_types|video"] = 0;
   $overrides["field.node-media_gallery-field_media_items.field_instance|widget|settings|browser_plugins|pub_theplatform"] = 0;
@@ -102,6 +114,42 @@ function pub_media_overrides_features_override_default_overrides() {
   );
   $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|block_cover_title_lg"] = array(
     'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|carousel_promo"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|cast_carousel"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|follow_social"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|home_promo"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|home_promo_bspot"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|promo_teaser"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|search_index"] = array(
+    'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|search_result"] = array(
+    'custom_settings' => TRUE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|vid_teaser_episode"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|vid_teaser_general"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|vid_teaser_show_episode"] = array(
+    'custom_settings' => FALSE,
+  );
+  $overrides["variable.field_bundle_settings_node__media_gallery.value|view_modes|vid_teaser_show_general"] = array(
+    'custom_settings' => FALSE,
   );
 
  return $overrides;

@@ -209,8 +209,8 @@ function usanetwork_migrate_cron() {
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
-  #$machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
-  $machine_names = array('usanetwork_mpx_videos');
+  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+  #$machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
     // Log that we're starting this update.

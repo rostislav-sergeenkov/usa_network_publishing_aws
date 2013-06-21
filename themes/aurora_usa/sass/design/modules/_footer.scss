@@ -13,6 +13,9 @@
   font-size: 14px;
   font-family: $headline-reg;
   color: $gray-dark-light;
+  position: relative;
+  z-index: 50;
+  background-color: $black-true;
   @include breakpoint($bp-menu-switch) {
     font-size: 12px;
     font-family: $headline-semi;

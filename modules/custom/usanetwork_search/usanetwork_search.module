@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_search feature.
+ */
+
+include_once 'usanetwork_search.features.inc';
+
+/**
+ * Setup Acquia Search variables and environment.
+ */
+function usanetwork_search_setup_acquia_search() {
+  global $conf;
+  $ret = FALSE;
+  $updates = array();
+
+  // Core Search settings.
+  $table = 'apachesolr_search_page';
+  $page_id = 'core_search';
+  $env_id = variable_get('apachesolr_default_environment', 'solr');
+
+  // Bundles that will be indexed.
+  $bundles = array(
+    'catchall_page',
+    'media_gallery',
+    'person',
+    'tv_episode',
+    'tv_show',
+    'usanetwork_static_page',
+    'usa_tve_video',
+    'usa_video',
+  );
+
+  //allow the above bundles to have per-node exclusion options
+  foreach ($bundles as $bundle) {
+    variable_set('apachesolr_exclude_node_enable_' . $bundle, 1);
+  }
+
+  // We define search boost per content type
+  $apachesolr_search_type_boosts = array(
+    'usanetwork_aspot' => '0',
+    'catchall_page' => '0',
+    'character_profile' => '0',
+    'usa_homepage' => '0',
+    'media_gallery' => '0',
+    'movie' => '0',
+    'person' => '0',
+    'usanetwork_promo' => '0',
+    'usanetwork_static_page' => '0',
+    'tv_episode' => '0',
+    'tv_season' => '0',
+    'tv_show' => '13.0',
+    'usa_video' => '5.0',
+    'usa_tve_video' => '5.0',
+    'webform' => '0',
+  );
+  apachesolr_environment_variable_set($env_id, 'apachesolr_search_type_boosts', $apachesolr_search_type_boosts);
+
+  // Set the apachesolr index bundles.
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
+  apachesolr_index_set_bundles($env_id, 'node', $bundles);
+  $updates[] = 'apachesolr_index_set_bundles:' . join(';', $bundles);
+
+  // Set the search settings.
+  foreach ($vars as $key => $value) {
+    variable_set($key, $value);
+    $updates[] = $key;
+  }
+
+  if (count($updates) > 0) {
+    $ret = t('Updated the acquia search environment and variables: @updates', array('@updates' => join(', ', array_values($updates))));
+  }
+  if ($ret) {
+    $ret .= "\n";
+    watchdog('usanetwork_search_setup', $ret);
+    drupal_set_message($ret);
+    return $ret;
+  }
+}

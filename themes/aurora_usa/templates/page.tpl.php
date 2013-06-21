@@ -73,33 +73,40 @@
  * @see template_process()
  */
 ?>
-
-<header role="banner" id="page-header">
-  <h1 id="site-name">
-    <?php print $site_name; ?>
-  </h1>
-  <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
-    <div class="primary-nav">
-      <?php if ($site_name): ?>
-        <div id="logo">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
-        </div>
-      <?php endif; ?>
-      <?php print render($page['header']); ?>
+<?php if (!isset($ajax) || empty($ajax)): ?>
+  <header role="banner" id="page-header">
+    <h1 id="site-name">
+      <?php print $site_name; ?>
+    </h1>
+    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
+      <div class="primary-nav">
+        <?php if ($site_name): ?>
+          <div id="logo">
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
+          </div>
+        <?php endif; ?>
+        <?php print render($page['header']); ?>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- TOP TITLE AND TOOLS BAR -->
-<div id="utilities" class="clearfix <?php print $util_classes; ?>">
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-  <?php print render($title_suffix); ?>
-  <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
-  <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
-  <?php if ($page['sponsored']): ?><div id="head-sponsored"><?php print render($page['sponsored']); ?></div><?php endif; ?>
-  <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
-</div>
+  <!-- TOP TITLE AND TOOLS BAR -->
+  <div id="utilities" class="clearfix <?php print $util_classes; ?>">
+    <?php if ($page['search']) : ?>
+      <div class="utilties-main-group">
+    <?php endif; ?>
+    <?php print render($title_prefix); ?>
+    <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+    <?php print render($title_suffix); ?>
+    <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
+    <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>
+    <?php if ($page['sponsored']): ?><div id="head-sponsored"><?php print render($page['sponsored']); ?></div><?php endif; ?>
+    <?php if ($page['search']): ?>
+      </div>
+    <?php endif; ?>  
+    <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
+  </div>
+<?php endif; ?>  
 <!-- /TOP TITLE AND TOOLS BAR -->
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
@@ -144,7 +151,7 @@
   <!-- /MAIN CONTENT -->
 
   <!-- ON NOW -->
-  <aside id="on-now" class="clearfix">
+  <aside id="on-now-panel" class="clearfix">
     <?php print render($page['on_now']); ?>
   </aside>
   <!-- /ON NOW -->

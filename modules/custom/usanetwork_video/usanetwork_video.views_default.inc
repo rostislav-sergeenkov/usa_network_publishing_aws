@@ -77,10 +77,41 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: State Flow: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'node_revision_states';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'published' => 'published',
+  );
 
   /* Display: Global Full Episode */
   $handler = $view->new_display('block', 'Global Full Episode', 'global_full_episode');
   $handler->display->display_options['display_description'] = 'Global Full Episode';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
+  );
+  /* Filter criterion: Content: Full Episode (field_full_episode) */
+  $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['table'] = 'field_data_field_full_episode';
+  $handler->display->display_options['filters']['field_full_episode_value']['field'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['block_description'] = 'Global Full Episode';
 
   /* Display: Show Full Episode */
@@ -103,6 +134,30 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
+  );
+  /* Filter criterion: Content: Full Episode (field_full_episode) */
+  $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['table'] = 'field_data_field_full_episode';
+  $handler->display->display_options['filters']['field_full_episode_value']['field'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['block_description'] = 'Show Full Episode';
 
   /* Display: Category Videos */
@@ -164,6 +219,30 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
+  );
+  /* Filter criterion: Content: Full Episode (field_full_episode) */
+  $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['table'] = 'field_data_field_full_episode';
+  $handler->display->display_options['filters']['field_full_episode_value']['field'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
   $export['usa_video'] = $view;
 

@@ -109,6 +109,8 @@ function _usanetwork_migrate_create_term($term_name, $parent_tid = 0) {
     watchdog('usanetwork_migrate',
         'Failed to create term "@term_name" with parent tid "@parent_tid".',
         array('@term_name' => $term_name, '@parent_tid' => $parent_tid));
+    drupal_set_message(t('Failed to create term "@term_name" with parent tid "@parent_tid".',
+        array('@term_name' => $term_name, '@parent_tid' => $parent_tid)));
   }
 
   return isset($new_term->tid) ? $new_term->tid : FALSE;
@@ -166,12 +168,19 @@ function usanetwork_migrate_cron() {
   $queue = DrupalQueue::get($queue_name);
   $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
   $results = usanetwork_migrate_get_nodes_to_unpublish();
+  $queued_items = array();
 
   foreach ($results as $result) {
     if (!in_array($result->nid, $queued_node_nids)) {
       $queue->createItem($result);
+      $queued_items[] = $result;
     }
   }
+
+  watchdog('usanetwork_migrate', 'Populated the custom Unpublish Queue with the following items: @items',
+      array('@items' => print_r($queued_items, TRUE)));
+  drupal_set_message(t('USANETWORK MIGRATE:  Populated the custom Unpublish Queue with the following items: @items',
+      array('@items' => print_r($queued_items, TRUE))));
 
   // Process state_flow_schedule queue items so that they can be transferred to
   // the published state.
@@ -180,14 +189,23 @@ function usanetwork_migrate_cron() {
   $queue = DrupalQueue::get($queue_name);
   $queued_node_nids = _usanetwork_migrate_get_queued_items($queue_name, 'nid');
   $scheduled_nodes = db_query("SELECT * FROM {state_flow_schedule} ORDER BY sid ASC")->fetchAllAssoc('nid');
+  $queued_items = array();
 
   foreach ($scheduled_nodes as $nid => $row) {
     if (!in_array($result->nid, $queued_node_nids)) {
       $queue->createItem($row);
+      $queued_items[] = $result;
     }
   }
 
+  watchdog('usanetwork_migrate', 'Populated the custom State Flow Fix Queue with the following items: @items',
+      array('@items' => print_r($queued_items, TRUE)));
+  drupal_set_message(t('USANETWORK MIGRATE:  Populated the custom State Flow Fix Queue with the following items: @items',
+      array('@items' => print_r($queued_items, TRUE))));
+
+
   // Run migration to update content.
+  //*  Comment this block out when the migration update crontab goes live.
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
@@ -195,12 +213,23 @@ function usanetwork_migrate_cron() {
   $machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
+    // Log that we're starting this update.
+    watchdog('usanetwork_migrate', 'Starting @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Starting @migration migration update.',
+        array('@migration' => $machine_name)));
     $migration = Migration::getInstance($machine_name);
     // Prepare to Update the contents/data
     $migration->prepareUpdate();
     // Trigger the migration
     $result = $migration->processImport();
+    // Log that we've completed this update.
+    watchdog('usanetwork_migrate', 'Completed @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Completed @migration migration update.',
+        array('@migration' => $machine_name)));
   }
+  //*/  <-- Up to here.  (Migration Update)
 
   // Clearing the cache fixes some access issues for newly published nodes.
   _usanetwork_migrate_cron_cache_clear();
@@ -240,11 +269,23 @@ function process_usanetwork_migrate_state_flow_fix_item($data) {
   $current_entity_state = $entity_state_machine->get_current_state();
 
   if ($current_entity_state == 'published' && $node->status == 0) {
+
     $node->status = 1;
     node_save($node);
+
+    watchdog('usanetwork_migrate', 'Set status to 1 for node @nid that was already in a published State Flow state.',
+        array('@nid' => $node->nid));
+    drupal_set_message(t('USANETWORK MIGRATE:  Set status to 1 for node @nid that was already in a published State Flow state.',
+        array('@nid' => $node->nid)));
   }
   else if ($current_entity_state != 'published' && $current_entity_state != 'scheduled') {
+
     _usanetwork_migrate_complete_entity_state_transition($node, 'draft');
+
+    watchdog('usanetwork_migrate', 'Transitioned node @nid to a draft State Flow state.',
+        array('@nid' => $node->nid));
+    drupal_set_message(t('USANETWORK MIGRATE:  Transitioned node @nid to a draft State Flow state.',
+        array('@nid' => $node->nid)));
   }
 }
 
@@ -257,6 +298,8 @@ function process_usanetwork_migrate_unpublish_content_item($data) {
 
   $node = node_load($data->nid, $data->vid);
 
+  watchdog('usanetwork_migrate', 'USANetwork Migrate:  Attempting to unpublish nid: @nid, vid: @vid.',
+      array('@nid' => $data->nid, '@vid' => $data->vid));
   drupal_set_message('USANetwork Migrate:  Attempting to unpublish nid:' . $node->nid . ', vid:' . $node->vid);
 
   _usanetwork_migrate_complete_entity_state_transition($node, 'unpublished');
@@ -320,6 +363,11 @@ function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_sta
   $entity_state_machine =& state_flow_load_state_machine($entity);
   $current_entity_state = $entity_state_machine->get_current_state();
   $transition_states = array();
+
+  watchdog('usanetwork_migrate', 'Transition node @nid from @current_state to @end_state',
+      array('@nid' => $entity->nid, '@current_state' => $current_entity_state, '@end_state' => $end_state));
+  drupal_set_message(t('USANETWORK MIGRATE:  Transition node @nid from @current_state to @end_state',
+      array('@nid' => $entity->nid, '@current_state' => $current_entity_state, '@end_state' => $end_state)));
 
   switch ($current_entity_state) {
 
@@ -406,8 +454,7 @@ function _usanetwork_migrate_cron_cache_clear() {
   foreach ($cache_tables as $table) {
     cache_clear_all('*', $table, TRUE);
   }
+
+  watchdog('usanetwork_migrate', 'Ran custom cache clear on cron.');
+  drupal_set_message(t('Ran custom cache clear on cron.'));
 }
-
-
-
-

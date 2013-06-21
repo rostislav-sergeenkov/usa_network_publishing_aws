@@ -198,19 +198,19 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'media' => array(
-        0 => 'field_social_logo',
-      ),
       'body' => array(
         0 => 'body',
+      ),
+      'media' => array(
+        0 => 'field_social_logo',
       ),
       'title' => array(
         0 => 'title',
       ),
     ),
     'fields' => array(
-      'field_social_logo' => 'media',
       'body' => 'body',
+      'field_social_logo' => 'media',
       'title' => 'title',
     ),
     'classes' => array(),

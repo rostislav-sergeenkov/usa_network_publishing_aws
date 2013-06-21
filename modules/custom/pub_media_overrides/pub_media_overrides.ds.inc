@@ -123,22 +123,22 @@ function pub_media_overrides_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'body' => array(
+        0 => 'body',
+        1 => 'field_show',
+      ),
       'media' => array(
         0 => 'field_cover_item',
       ),
       'title' => array(
         0 => 'title',
       ),
-      'body' => array(
-        0 => 'field_show',
-        1 => 'body',
-      ),
     ),
     'fields' => array(
+      'body' => 'body',
       'field_cover_item' => 'media',
       'title' => 'title',
       'field_show' => 'body',
-      'body' => 'body',
     ),
     'classes' => array(),
   );

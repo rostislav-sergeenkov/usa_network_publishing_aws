@@ -111,6 +111,12 @@ function pub_media_overrides_field_default_fields_alter(&$data) {
       'type' => 'hidden',
       'weight' => '0',
     ); /* WAS: '' */
+    $data['node-media_gallery-field_media_items']['field_instance']['display']['search_index'] = array(
+      'label' => 'hidden',
+      'settings' => array(),
+      'type' => 'hidden',
+      'weight' => '0',
+    ); /* WAS: '' */
     $data['node-media_gallery-field_media_items']['field_instance']['display']['search_result'] = array(
       'label' => 'hidden',
       'settings' => array(),
@@ -155,7 +161,7 @@ function pub_media_overrides_strongarm_alter(&$data) {
       'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__media_gallery']->value['view_modes']['search_index'] = array(
-      'custom_settings' => FALSE,
+      'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__media_gallery']->value['view_modes']['search_result'] = array(
       'custom_settings' => TRUE,

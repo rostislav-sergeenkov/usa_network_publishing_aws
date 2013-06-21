@@ -15,7 +15,74 @@ function usanetwork_static_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__usanetwork_static_page';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_result' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'admin_reference_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promoted_content' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'block_cover_title_lg' => array(
+        'custom_settings' => FALSE,
+      ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'cast_carousel' => array(
+        'custom_settings' => FALSE,
+      ),
+      'follow_social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(

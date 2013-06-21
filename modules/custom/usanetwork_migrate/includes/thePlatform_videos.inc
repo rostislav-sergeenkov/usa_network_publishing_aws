@@ -371,7 +371,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $final_date_data = array();
       // Onl
       if ($start_date > $five_years_ago) {
-        $final_date_data['from'] = $start_data;
+        $final_date_data['from'] = $start_date;
       }
       if ($end_date > $five_years_ago) {
         $final_date_data['to'] = $end_date;
@@ -419,6 +419,11 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
     if (!$entity->status) {
+
+      watchdog('usanetwork_migrate', 'Scheduling node @nid to be published at @time.',
+          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
+      drupal_set_message(t('usanetwork_migrate', 'USANETWORK MIGRATE: Scheduling node @nid to be published at @time.',
+          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
 
       module_load_include('inc', 'state_flow', 'state_flow.pages');
 

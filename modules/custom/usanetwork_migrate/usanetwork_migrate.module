@@ -192,7 +192,7 @@ function usanetwork_migrate_cron() {
   $queued_items = array();
 
   foreach ($scheduled_nodes as $nid => $row) {
-    if (!in_array($result->nid, $queued_node_nids)) {
+    if (!in_array($row->nid, $queued_node_nids)) {
       $queue->createItem($row);
       $queued_items[] = $result;
     }
@@ -261,24 +261,40 @@ function process_usanetwork_migrate_state_flow_fix_item($data) {
 
   $node = node_load($data->nid);
 
-  if (!is_object($node)) {
+  if (!is_object($node) || !isset($node->nid)) {
     return;
   }
 
   $entity_state_machine =& state_flow_load_state_machine($node);
   $current_entity_state = $entity_state_machine->get_current_state();
 
-  if ($current_entity_state == 'published' && $node->status == 0) {
+  // If the node is published...
+  if ($current_entity_state == 'published') {
 
-    $node->status = 1;
-    node_save($node);
+    // If a node's status property is 0 (zero), then set it to 1 and save.
+    if ($node->status == 0) {
+      $node->status = 1;
+      node_save($node);
+      watchdog('usanetwork_migrate', 'Set status to 1 for node @nid that was already in a published State Flow state.',
+          array('@nid' => $node->nid));
+      drupal_set_message(t('USANETWORK MIGRATE:  Set status to 1 for node @nid that was already in a published State Flow state.',
+          array('@nid' => $node->nid)));
+    }
 
-    watchdog('usanetwork_migrate', 'Set status to 1 for node @nid that was already in a published State Flow state.',
-        array('@nid' => $node->nid));
-    drupal_set_message(t('USANETWORK MIGRATE:  Set status to 1 for node @nid that was already in a published State Flow state.',
-        array('@nid' => $node->nid)));
+    // Ensure the node is no longer in the state_flow_schedule queueu.  It will
+    // get stuck there as the state_flow_schedule module fails when it tries to
+    // publish a scheduled node that is already published.
+    $result = db_delete('state_flow_schedule')
+        ->condition('nid', $entity->nid)
+        ->execute();
+    if ($result) {
+      watchdog('usanetwork_migrate', 'Removed record for node @nid from state_flow_schedule table.',
+          array('@nid' => $node->nid));
+      drupal_set_message(t('Removed record for node @nid from state_flow_schedule table.',
+          array('@nid' => $node->nid)));
+    }
   }
-  else if ($current_entity_state != 'published' && $current_entity_state != 'scheduled') {
+  else if ($current_entity_state != 'scheduled') {
 
     _usanetwork_migrate_complete_entity_state_transition($node, 'draft');
 
@@ -315,6 +331,7 @@ function process_usanetwork_migrate_unpublish_content_item($data) {
  */
 function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit = NULL) {
 
+  // Keeping disabled for now.
   if ($limit && FALSE) {
     $query = "SELECT * FROM queue WHERE name = :queue_name ORDER BY item_id DESC LIMIT " . (int)$limit;
     $query_args = array(':queue_name' => $queue_name);

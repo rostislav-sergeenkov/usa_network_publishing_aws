@@ -448,7 +448,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '</div>';
 
   // social icons
-  $output .= '<div class="icons-social icons-inline test">';
+  $output .= '<div class="icons-social icons-inline">';
   if (isset($node->field_usa_link_facebook[$lang][0]['url']) && !empty($node->field_usa_link_facebook[$lang][0]['url'])) {
     $output .= l('facebook', $node->field_usa_link_facebook[$lang][0]['url'],
       array('attributes' => array('class' => array('show-facebook', 'usasocial-facebook'))));

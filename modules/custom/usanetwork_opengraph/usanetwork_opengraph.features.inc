@@ -13,3 +13,18 @@ function usanetwork_opengraph_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_metatag_export_default_alter().
+ */
+function usanetwork_opengraph_metatag_export_default_alter(&$data) {
+  if (isset($data['node:media_gallery'])) {
+    $data['node:media_gallery']['config']['description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:media_gallery']['config']['og:description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:media_gallery']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_cover_item]' */
+  }
+}

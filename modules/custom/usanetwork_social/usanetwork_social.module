@@ -254,8 +254,6 @@ function usanetwork_social_show_getglue($node) {
     return $output;
   }
 
-//	drupal_add_js('http://widgets.getglue.com/checkin.js', array('scope'=>'header', 'type'=>'external', 'preprocess'=>false));
-
   $output .= '
 		<div id="usanetwork_social_getglue">
 			<script type="text/javascript" src="http://widgets.getglue.com/checkin.js"></script>

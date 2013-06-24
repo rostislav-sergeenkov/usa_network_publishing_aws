@@ -193,6 +193,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
+        'usanetwork_social-usa_show_social_getglue' => array(
+          'module' => 'usanetwork_social',
+          'delta' => 'usa_show_social_getglue',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
+        ),
       ),
     ),
   );
@@ -476,6 +482,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa_shows-block_2',
           'region' => 'sidebar_second',
           'weight' => '-9',
+        ),
+        'usanetwork_social-usa_show_social_getglue' => array(
+          'module' => 'usanetwork_social',
+          'delta' => 'usa_show_social_getglue',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
       ),
     ),

@@ -19,6 +19,13 @@ function usanetwork_opengraph_features_override_default_overrides() {
     'value' => '[node:field_usa_og_description]',
   );
   $overrides["metatag.node:media_gallery.config|og:image|value"] = '[node:field_usa_og_image]';
+  $overrides["metatag.node:person.config|description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:person.config|og:description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:person.config|og:image|value"] = '[node:field_usa_og_image]';
 
  return $overrides;
 }

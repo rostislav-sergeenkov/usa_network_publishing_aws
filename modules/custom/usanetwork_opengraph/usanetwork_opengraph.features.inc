@@ -27,4 +27,13 @@ function usanetwork_opengraph_metatag_export_default_alter(&$data) {
     ); /* WAS: '' */
     $data['node:media_gallery']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_cover_item]' */
   }
+  if (isset($data['node:person'])) {
+    $data['node:person']['config']['description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:person']['config']['og:description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:person']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_person_cover_photo]' */
+  }
 }

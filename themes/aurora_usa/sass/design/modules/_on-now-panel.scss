@@ -1,3 +1,5 @@
+
+
 #menu-wrapper {
   .state-menu & {
     display: block;
@@ -6,6 +8,7 @@
     display: none;
   }
 }
+
 #on-now-panel {
   .state-menu & {
     display: none;
@@ -15,114 +18,169 @@
   }
 }
 
-
-#on-now-panel {
-  padding: 0 15px;
-  .item-list {
-    @include no-bullets;
-    // @include debug-outline;
-  }
-  .tab-wrapper {
-    text-transform: uppercase;
-    font-size: 16px;
-    padding-top: 6px;
-    width: 50%;
-    display: inline-block;
-    text-align: center;
-    letter-spacing: 1px;
-    @include breakpoint($bp-menu-wide) {
-      font-size: 20px;
-      padding-top: 15px;
-    }
-    span {
-      font-style: normal;
-      font-family: $headline-thn;
-    }
-  }
-  ul[class*="tab"] {
-    padding-top: 15px;
-    font-size: 12px;
-    line-height: 1.4;
-    @include breakpoint($bp-menu-wide) {
-      font-size: 16px;
-    }
-  }
-  figure {
-    margin-bottom: 15px;
-  }
-  .show-info-wrapper {
-    display: table;
-    width: 100%;
-  }
+.show-info-wrapper {
+  display: table;
+  width: 100%;
   .show-info {
-    display: table-cell;
+    display: table-cell;  
   }
-  a {
-    @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
+  .show-title {
+    font-size: 18px;
+    font-family: $headline-semi;
+    padding-bottom: 2px;
+  }
+  .episode-title {
+    line-height: 1.15em;
   }
   .icons-social {
     display: table-cell;
     text-align: right;
     a {
       background-color: transparent;
-      color: $gray-extra-light;
       font-size: 1.25em;
       line-height: 1;
-      border-radius: 0;
       padding: 0;
       display: inline;
       @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+      &.usasocial-pinterest {
+        color: $black;
+        background-color: $gray-extra-light;
+        &:hover {
+          background-color: $gray-light;
+        }
+      }
+      &:hover {
+        background-color: transparent;
+      }
       @include breakpoint($bp-menu-wide) {
         font-size: 1.8em;
       }
     }
   }
-  .show-title {
-    font-family: $headline-bold;
+}
+
+.show-on-now-wrapper {
+  padding: 25px 28px 1em;
+  background-color: $black;
+//  @include breakpoint($bp-menu-wide) {
+//    padding-left: 25px;
+//    padding-right: 25px;
+//  }  
+  a {
+    @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
-  .episode-title {
-    a {
-      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
-    }
+  figure { 
+    margin-bottom: 15px;
   }
   .full-schedule-link {
-    margin: 1.5em 0 1em;
+    margin: 1em 0 0;
     a {
       @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
     }
   }
-  #usanetwork_social_show_homepage_chatter {
-    background-color: transparent;
-    margin-top: 15px;
-    border-top: 2px solid $gray-ultra-med;
-    padding-top: 13px;
-  }
-  #usanetwork_social_chatter_title {
+}
+
+.show-on-sync {
+  position: relative;
+  span {
+    font-family: $headline-semi;
+    font-size: 18px; 
+    color: $white;
+    bottom: 15px;
+    display: inline-block;
+    height: 50px;
+    left: 15px;
+    padding-left: 60px;
+    padding-top: 12px;
+    position: absolute;
     text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: $gray-extra-light;
-    padding: 6px 0 8px;
-    border-bottom: none;
+    z-index: 99;
+    @extend .icons-sync-now-small;
+    display: inline-block;
   }
-  #usanetwork_social_show_comment {
-    border-color: $gray-ultra-med;
+}
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: $gray-med-darker;
+}
+
+.on-now-js-processed {
+  #jPanelMenu-menu {
+    background-color: $gray-med-darker;
+  }
+}
+.page-usa-on-now-panel-js {
+  .jPanelMenu-panel {
+    background-color: $gray-med-darker;
+  }
+  #main {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
   }
   #usanetwork_social_join {
-    border: none;
-    background-color: $gray-dark;
-    .usanetwork_social_join_msg {
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding-left: 0;
-      color: $blue;
-      &:before {
-        display: none;
-      }
+    background-color: $black;
+  }
+}
+
+
+#on-now-panel {
+  ul, ol, li {
+    margin: 0;
+  }
+  .item-list {
+    @include no-bullets;
+    // @include debug-outline;
+    .item-list {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      z-index: 1;
     }
   }
-  .up-next {
-    display: none; // remove when we show up next tab
+  .tab-wrapper {
+    float: left;
+    text-transform: lowercase;
+    font-size: 16px;
+    padding: 10px 25px 6px;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: $gray-dark;
+    position: relative;
+    z-index: 5;
+    &.active {
+      background-color: $gray-med;
+      + .item-list {
+        display: none;
+      }
+      &:after {
+        @include cssTriangle(10px, $gray-med, top);
+        position: absolute;
+        left:45%;
+        top: 39px;
+        z-index: 999999999;
+      }  
+    }
+    @include breakpoint($bp-menu-wide) {
+      font-size: 20px;
+      padding-left: 35px;
+      padding-right: 35px;
+      padding-bottom: 5px;
+    }
+    span {
+      font-style: normal;
+    }
+  }
+  ul[class*="tab"] {
+    font-size: 12px;
+    line-height: 1.4;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 16px;
+    }
+  }
+  a {
+    @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
 }

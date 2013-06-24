@@ -104,6 +104,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $episode = (array) $item->TitleName;
 
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+      $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
       $arrow = '';
@@ -115,8 +116,10 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
       if (empty($nid)) {
-        if (strtoupper($tv_show) == 'USA MOVIE') {
-          $tv_show = l($tv_show, 'movies', array('html' => true));
+        if (strtoupper($tv_show_name) == 'USA MOVIE') {
+          $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
+        } else {
+          $tv_show = $on_now_icon . $tv_show;
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);
@@ -144,6 +147,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $episode = (array) $item->TitleName;
 
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
+      $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
       $arrow = '';
@@ -155,8 +159,10 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
 
       if (empty($nid)) {
-        if (strtoupper($tv_show) == 'USA MOVIE') {
-          $tv_show = '<span id="on-now">onnow</span>' . l($tv_show, 'movies', array('html' => true));
+        if (strtoupper($tv_show_name) == 'USA MOVIE') {
+          $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
+        } else {
+          $tv_show = $on_now_icon . $tv_show;
         }
       } else {
         $path = drupal_get_path_alias('node/'.$nid);

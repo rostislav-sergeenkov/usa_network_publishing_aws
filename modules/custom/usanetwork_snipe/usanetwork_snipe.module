@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * Code for the USANetwork Snipe feature.
+ */
+
+include_once 'usanetwork_snipe.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_snipe_block_info() {
+  $blocks = array();
+  $blocks['usa_snipe'] = array(
+    'info' => t('USA Snipe HTML Block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_snipe_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_snipe':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_snipe_block_callback();
+      break;
+  }
+  return $block;
+}
+
+
+/**
+ * Renders the Snipe HTML on specified path at specified date & time
+ */
+function usanetwork_snipe_block_callback() {
+  $output = '';
+  $lang = LANGUAGE_NONE;
+
+  $result = db_query('select entity_id from field_data_field_usa_display_date_time where date(from_unixtime(field_usa_display_date_time_value)) = date(now())'); 
+
+  $snipe = array();
+  foreach ($result as $record) {
+    $node = node_load($record->entity_id);
+    $snipe_id = 'snipe-' . $node->nid;
+    if (isset($node->field_usa_display_date_time[$lang][0]['value']) && !empty($node->field_usa_display_date_time[$lang][0]['value'])) {
+      $snipe_start = $node->field_usa_display_date_time[$lang][0]['value'];
+    
+      if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
+        $snipe_end = $snipe_start + $length;
+      }
+    }
+    $snipe[] = array(
+      'id' => $snipe_id,
+      'start' => $snipe_start,
+      'end' => $snipe_end,
+    );    
+    $output .= '<div id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '</div>';
+  }
+   
+  $vars = 'var snipe = ' . drupal_json_encode($snipe) . ';';
+  drupal_add_js($vars, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path("module", "usanetwork_snipe")."/js/usanetwork_snipe.js");
+  return $output;
+}

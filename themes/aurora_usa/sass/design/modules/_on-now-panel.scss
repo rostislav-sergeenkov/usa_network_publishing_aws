@@ -25,11 +25,12 @@
     display: table-cell;  
   }
   .show-title {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: $headline-semi;
     padding-bottom: 2px;
   }
   .episode-title {
+    font-size: 1.0625em;
     line-height: 1.15em;
   }
   .icons-social {
@@ -102,6 +103,7 @@
 
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-med-darker;
+  font-size: 1.5em;
 }
 
 .on-now-js-processed {
@@ -153,8 +155,8 @@
   .tab-wrapper {
     float: left;
     text-transform: lowercase;
-    font-size: 16px;
-    padding: 10px 25px 6px;
+    font-size: 1.375em;
+    padding: 6px 25px 10px;
     width: 50%;
     display: inline-block;
     text-align: center;
@@ -176,10 +178,10 @@
       }  
     }
     @include breakpoint($bp-menu-wide) {
-      font-size: 20px;
-      padding-left: 35px;
-      padding-right: 35px;
-      padding-bottom: 5px;
+//      font-size: 20px;
+//      padding-left: 35px;
+//      padding-right: 35px;
+//      padding-bottom: 5px;
     }
     span {
       font-style: normal;

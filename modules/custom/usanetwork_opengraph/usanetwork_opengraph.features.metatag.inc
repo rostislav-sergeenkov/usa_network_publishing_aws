@@ -26,5 +26,21 @@ function usanetwork_opengraph_metatag_export_default() {
     ),
   );
 
+  // Exported Metatag config instance: node:usanetwork_static_page.
+  $config['node:usanetwork_static_page'] = array(
+    'instance' => 'node:usanetwork_static_page',
+    'config' => array(
+      'description' => array(
+        'value' => '[node:field_usa_og_description]',
+      ),
+      'og:description' => array(
+        'value' => '[node:field_usa_og_description]',
+      ),
+      'og:image' => array(
+        'value' => '[node:field_usa_og_image]',
+      ),
+    ),
+  );
+
   return $config;
 }

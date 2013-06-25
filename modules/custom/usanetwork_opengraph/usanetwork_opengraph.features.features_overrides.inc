@@ -26,6 +26,20 @@ function usanetwork_opengraph_features_override_default_overrides() {
     'value' => '[node:field_usa_og_description]',
   );
   $overrides["metatag.node:person.config|og:image|value"] = '[node:field_usa_og_image]';
+  $overrides["metatag.node:tv_episode.config|description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:tv_episode.config|og:description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:tv_episode.config|og:image|value"] = '[node:field_usa_og_image]';
+  $overrides["metatag.node:tv_show.config|description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:tv_show.config|og:description"] = array(
+    'value' => '[node:field_usa_og_description]',
+  );
+  $overrides["metatag.node:tv_show.config|og:image|value"] = '[node:field_usa_og_image]';
 
  return $overrides;
 }

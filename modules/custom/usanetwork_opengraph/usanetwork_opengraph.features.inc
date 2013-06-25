@@ -36,4 +36,22 @@ function usanetwork_opengraph_metatag_export_default_alter(&$data) {
     ); /* WAS: '' */
     $data['node:person']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_person_cover_photo]' */
   }
+  if (isset($data['node:tv_episode'])) {
+    $data['node:tv_episode']['config']['description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:tv_episode']['config']['og:description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:tv_episode']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_tv_cover_media]' */
+  }
+  if (isset($data['node:tv_show'])) {
+    $data['node:tv_show']['config']['description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:tv_show']['config']['og:description'] = array(
+      'value' => '[node:field_usa_og_description]',
+    ); /* WAS: '' */
+    $data['node:tv_show']['config']['og:image']['value'] = '[node:field_usa_og_image]'; /* WAS: '[node:field_tv_cover_media]' */
+  }
 }

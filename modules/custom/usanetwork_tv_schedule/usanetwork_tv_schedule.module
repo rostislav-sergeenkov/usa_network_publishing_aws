@@ -225,7 +225,7 @@ function usanetwork_tv_schedule_on_now_panel() {
   $output = '';
   $links = array();
   
-  $links[0]['data'] = '<span class="tab-wrapper"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
+  $links[0]['data'] = '<span class="tab-wrapper active"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
   $links[0]['class'] = array('on-now', 'tab-1');
   $links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
 
@@ -430,9 +430,9 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
-    $output .= '<figure id="show-on-now-sync" class="show-on-now-image">' . l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true)) . '</figure>';
+    $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true)) . '</figure><span>sync now</span></div>';
   } else {
-    $output .= '<figure class="show-on-now-image">' . theme('image_style', $on_now_image) . '</figure>';
+    $output .= '<div class="show-on-now-wrapper"><figure>' . theme('image_style', $on_now_image) . '</figure>';
   }
 
   // show info
@@ -471,6 +471,8 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   // schedule page
   $output .= '<div class="full-schedule-link">'. l(t('View full schedule'), 'schedule') . '</div>';
+
+  $output .= '</div>';
 
   // chat with fans block
   $output .= usanetwork_social_show_landing($node, 2);

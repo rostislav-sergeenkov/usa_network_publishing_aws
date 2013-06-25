@@ -156,6 +156,13 @@
             .addClass('state-menu');
         });
 
+        // toggle on now / up next
+        $wrapper = $("#inner-on-now-panel .tab-wrapper");
+        $($wrapper).on('click', function() {
+          $($wrapper).removeClass('active');
+          $(this).addClass('active');
+        });
+
         // RESPONSIVE BEHAVIOR
         $(window).resize(function(){
           if ($('#main-menu-toggle').is(':hidden') && jPM.isOpen()) {

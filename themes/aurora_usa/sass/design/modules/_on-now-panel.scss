@@ -125,12 +125,6 @@
   #usanetwork_social_join {
     background-color: $black;
   }
-  #admin-menu-wrapper,
-  #environment-indicator,
-  .sps-preview-form,
-  .messages {
-    display: none;
-  }
 }
 
 
@@ -138,11 +132,6 @@
 #on-now-panel {
   ul, ol, li {
     margin: 0;
-  }
-  .logged-in & {
-    li {
-      margin-top: 35px;
-    }    
   }
   .item-list {
     @include no-bullets;

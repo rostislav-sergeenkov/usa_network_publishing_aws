@@ -423,7 +423,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       watchdog('usanetwork_migrate', 'Scheduling node @nid to be published at @time.',
           array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
       drupal_set_message(t('usanetwork_migrate', 'USANETWORK MIGRATE: Scheduling node @nid to be published at @time.',
-          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
+          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa'))));
 
       module_load_include('inc', 'state_flow', 'state_flow.pages');
 

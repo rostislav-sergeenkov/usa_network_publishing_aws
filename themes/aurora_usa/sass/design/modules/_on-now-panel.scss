@@ -103,7 +103,9 @@
 
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-med-darker;
-  font-size: 1.5em;
+  #usanetwork_social_join .usanetwork_social_join_msg {
+    font-size: 1.375em;
+  }
 }
 
 .on-now-js-processed {

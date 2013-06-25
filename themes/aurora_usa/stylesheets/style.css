@@ -2295,11 +2295,12 @@ input[type="radio"], input[type="checkbox"] {
   display: table-cell;
 }
 .show-info-wrapper .show-title {
-  font-size: 18px;
+  font-size: 1.125em;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   padding-bottom: 2px;
 }
 .show-info-wrapper .episode-title {
+  font-size: 1.0625em;
   line-height: 1.15em;
 }
 .show-info-wrapper .icons-social {
@@ -2405,6 +2406,9 @@ input[type="radio"], input[type="checkbox"] {
 #usanetwork_social_show_homepage_chatter {
   background-color: #313131;
 }
+#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+  font-size: 1.375em;
+}
 
 .on-now-js-processed #jPanelMenu-menu {
   background-color: #313131;
@@ -2440,10 +2444,11 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 1;
 }
 #on-now-panel .tab-wrapper {
+  cursor: pointer;
   float: left;
   text-transform: lowercase;
-  font-size: 16px;
-  padding: 10px 25px 6px;
+  font-size: 1.375em;
+  padding: 6px 25px 10px;
   width: 50%;
   display: inline-block;
   text-align: center;
@@ -2469,14 +2474,6 @@ input[type="radio"], input[type="checkbox"] {
   left: 45%;
   top: 39px;
   z-index: 999999999;
-}
-@media (min-width: 960px) {
-  #on-now-panel .tab-wrapper {
-    font-size: 20px;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-bottom: 5px;
-  }
 }
 #on-now-panel .tab-wrapper span {
   font-style: normal;

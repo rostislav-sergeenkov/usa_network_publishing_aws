@@ -555,11 +555,17 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_snipe-usa_snipe' => array(
+          'module' => 'usanetwork_snipe',
+          'delta' => 'usa_snipe',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_blocks-usa_meganav' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '0',
+          'weight' => '-9',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

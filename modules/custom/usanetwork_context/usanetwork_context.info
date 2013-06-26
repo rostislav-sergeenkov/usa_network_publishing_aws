@@ -17,6 +17,7 @@ dependencies[] = usanetwork_home
 dependencies[] = usanetwork_lyris
 dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_showpages
+dependencies[] = usanetwork_snipe
 dependencies[] = usanetwork_social
 dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_tv_schedule

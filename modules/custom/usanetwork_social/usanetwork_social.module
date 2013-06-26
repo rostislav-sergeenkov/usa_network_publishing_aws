@@ -1019,7 +1019,7 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
   
   if (isset($response->entries)) {
     $output .= '<div id="usanetwork_social_show_homepage_chatter">
-      <div id="usanetwork_social_chatter_title"><span class="panel-chatter-box"><span>Chat</span> with fans</span></div>';
+      <div id="usanetwork_social_chatter_title"><span class="panel-chatter-box">Chatter</span></div>';
     foreach ($response->entries as $entries) {
       $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
       $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';

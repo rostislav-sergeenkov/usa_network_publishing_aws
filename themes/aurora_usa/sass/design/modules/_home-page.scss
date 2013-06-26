@@ -396,27 +396,35 @@
   .featured-carousel {
     margin: 0 auto;
     @include breakpoint($bp-home-narrowest) {
-      width: 300px;
+      width: 315px;
     }
     @include breakpoint($bp-home-mid) {
       width: 615px;
     }
     @include breakpoint($bp-home-wide) {
-      width: 930px;
+      max-width: 944px;
     }
     @include breakpoint($bp-home-widest) {
-      width: 1245px;
+      max-width: 1260px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
-      width: 930px;
+    .usa-adrails &, .ie8 & {
+      max-width: 944px;
     }
     > h2 {
       text-transform: uppercase;
     }
   }
   .carousel {
-    width: auto !important;
+//    width: auto !important;
+    @include breakpoint($bp-home-wide) { 
+      > ul {
+        margin-left: 8px !important;
+      }
+    }  
     @include breakpoint($bp-home-widest) {
+      > ul {
+        margin-left: 8px !important;
+      }
       height: 254px !important;
       .carousel-item {
         width: 300px;
@@ -429,28 +437,17 @@
           height: 250px;
         }
       }
-      li.carousel-item {
-        &:last-of-type {
-          display: none;
-        }
-      }
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       height: 184px !important;
       .carousel-item {
         width: 221px;
         height: 184px;
-        margin-right: 15px;
         img, .meta {
           width: 221px;
         }
         img {
           height: 184px;
-        }
-      }
-      li.carousel-item {
-        &:last-of-type {
-          display: block;
         }
       }
     }
@@ -471,9 +468,9 @@
       width: 1000px;
     }
     @include breakpoint($bp-home-widest) {
-      display: none;
+        width: 1325px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       width: 1000px;
       display: block;
     }

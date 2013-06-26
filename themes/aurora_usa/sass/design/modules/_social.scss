@@ -172,7 +172,7 @@ body.usa-social {
     @include background(linear-gradient(center top , $black-true, $gray-dark));
     color: $white;
     text-transform: lowercase;
-    font-family: $headline-lt;
+    font-family: $headline-reg;
     font-size: 24px;
     padding: 16px 12px 11px 8px;
     line-height: 1em;
@@ -315,7 +315,7 @@ body.usa-social {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
-      font-family: $headline-lt;
+      font-family: $headline-reg;
       font-size: 24px;
       padding: 10px 15px 7px 10px;
       text-transform: lowercase;
@@ -770,7 +770,7 @@ input.echo-submit-text {
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid $gray-med;
   color: $white;
-  font-family: $headline-lt;
+  font-family: $headline-reg;
   font-size: 24px;
   font-weight: normal;
   letter-spacing: 0.05em;
@@ -827,7 +827,7 @@ input.echo-submit-text {
   position: relative;
   .usanetwork_social_join_msg {
     color: $white;
-    font-family: $headline-lt;
+    font-family: $headline-reg;
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 0.05em;

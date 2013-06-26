@@ -2295,11 +2295,12 @@ input[type="radio"], input[type="checkbox"] {
   display: table-cell;
 }
 .show-info-wrapper .show-title {
-  font-size: 18px;
+  font-size: 1.125em;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   padding-bottom: 2px;
 }
 .show-info-wrapper .episode-title {
+  font-size: 1.0625em;
   line-height: 1.15em;
 }
 .show-info-wrapper .icons-social {
@@ -2405,6 +2406,9 @@ input[type="radio"], input[type="checkbox"] {
 #usanetwork_social_show_homepage_chatter {
   background-color: #313131;
 }
+#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+  font-size: 1.375em;
+}
 
 .on-now-js-processed #jPanelMenu-menu {
   background-color: #313131;
@@ -2440,10 +2444,11 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 1;
 }
 #on-now-panel .tab-wrapper {
+  cursor: pointer;
   float: left;
   text-transform: lowercase;
-  font-size: 16px;
-  padding: 10px 25px 6px;
+  font-size: 1.375em;
+  padding: 7px 20px 9px;
   width: 50%;
   display: inline-block;
   text-align: center;
@@ -2469,14 +2474,6 @@ input[type="radio"], input[type="checkbox"] {
   left: 45%;
   top: 39px;
   z-index: 999999999;
-}
-@media (min-width: 960px) {
-  #on-now-panel .tab-wrapper {
-    font-size: 20px;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-bottom: 5px;
-  }
 }
 #on-now-panel .tab-wrapper span {
   font-style: normal;
@@ -4030,7 +4027,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 644px) {
   .usa-home-featured .featured-carousel {
-    width: 300px;
+    width: 315px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -4040,26 +4037,31 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .usa-home-featured .featured-carousel {
-    width: 930px;
+    max-width: 944px;
   }
 }
 @media (min-width: 1275px) {
   .usa-home-featured .featured-carousel {
-    width: 1245px;
+    max-width: 1260px;
   }
 }
-.usa-adrails .usa-home-featured .featured-carousel, .ie9 .usa-home-featured .featured-carousel, .ie8 .usa-home-featured .featured-carousel {
-  width: 930px;
+.usa-adrails .usa-home-featured .featured-carousel, .ie8 .usa-home-featured .featured-carousel {
+  max-width: 944px;
 }
 .usa-home-featured .featured-carousel > h2 {
   text-transform: uppercase;
 }
-.usa-home-featured .carousel {
-  width: auto !important;
+@media (min-width: 960px) and (max-width: 1274px) {
+  .usa-home-featured .carousel > ul {
+    margin-left: 8px !important;
+  }
 }
 @media (min-width: 1275px) {
   .usa-home-featured .carousel {
     height: 254px !important;
+  }
+  .usa-home-featured .carousel > ul {
+    margin-left: 8px !important;
   }
   .usa-home-featured .carousel .carousel-item {
     width: 300px;
@@ -4072,26 +4074,19 @@ input[type="radio"], input[type="checkbox"] {
   .usa-home-featured .carousel .carousel-item img {
     height: 250px;
   }
-  .usa-home-featured .carousel li.carousel-item:last-of-type {
-    display: none;
-  }
 }
-.usa-adrails .usa-home-featured .carousel, .ie9 .usa-home-featured .carousel, .ie8 .usa-home-featured .carousel {
+.usa-adrails .usa-home-featured .carousel, .ie8 .usa-home-featured .carousel {
   height: 184px !important;
 }
-.usa-adrails .usa-home-featured .carousel .carousel-item, .ie9 .usa-home-featured .carousel .carousel-item, .ie8 .usa-home-featured .carousel .carousel-item {
+.usa-adrails .usa-home-featured .carousel .carousel-item, .ie8 .usa-home-featured .carousel .carousel-item {
   width: 221px;
   height: 184px;
-  margin-right: 15px;
 }
-.usa-adrails .usa-home-featured .carousel .carousel-item img, .usa-adrails .usa-home-featured .carousel .carousel-item .meta, .ie9 .usa-home-featured .carousel .carousel-item img, .ie9 .usa-home-featured .carousel .carousel-item .meta, .ie8 .usa-home-featured .carousel .carousel-item img, .ie8 .usa-home-featured .carousel .carousel-item .meta {
+.usa-adrails .usa-home-featured .carousel .carousel-item img, .usa-adrails .usa-home-featured .carousel .carousel-item .meta, .ie8 .usa-home-featured .carousel .carousel-item img, .ie8 .usa-home-featured .carousel .carousel-item .meta {
   width: 221px;
 }
-.usa-adrails .usa-home-featured .carousel .carousel-item img, .ie9 .usa-home-featured .carousel .carousel-item img, .ie8 .usa-home-featured .carousel .carousel-item img {
+.usa-adrails .usa-home-featured .carousel .carousel-item img, .ie8 .usa-home-featured .carousel .carousel-item img {
   height: 184px;
-}
-.usa-adrails .usa-home-featured .carousel li.carousel-item:last-of-type, .ie9 .usa-home-featured .carousel li.carousel-item:last-of-type, .ie8 .usa-home-featured .carousel li.carousel-item:last-of-type {
-  display: block;
 }
 .usa-home-featured .carousel-btns {
   opacity: 0;
@@ -4121,10 +4116,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (min-width: 1275px) {
   .usa-home-featured .carousel-btns {
-    display: none;
+    width: 1325px;
   }
 }
-.usa-adrails .usa-home-featured .carousel-btns, .ie9 .usa-home-featured .carousel-btns, .ie8 .usa-home-featured .carousel-btns {
+.usa-adrails .usa-home-featured .carousel-btns, .ie8 .usa-home-featured .carousel-btns {
   width: 1000px;
   display: block;
 }
@@ -4656,7 +4651,7 @@ body.person-page .ad-leaderboard {
 
 #on-now-episode {
   font-size: 14px;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   letter-spacing: 0.03em;
   color: #878785;
   display: inline-block;
@@ -5479,7 +5474,7 @@ body.person-page .ad-leaderboard {
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description {
   margin: 0;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.05em;
 }
@@ -5976,7 +5971,7 @@ body.usa-social {
   background: linear-gradient(center top, #000000, #2d2d2d);
   color: white;
   text-transform: lowercase;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 24px;
   padding: 16px 12px 11px 8px;
   line-height: 1em;
@@ -6099,7 +6094,7 @@ body.usa-social {
 .social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer {
   position: relative;
   border-top: 1px solid #4b4b4b;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 24px;
   padding: 10px 15px 7px 10px;
   text-transform: lowercase;
@@ -6584,7 +6579,7 @@ input.echo-submit-text {
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid #3d3d3d;
   color: white;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 24px;
   font-weight: normal;
   letter-spacing: 0.05em;
@@ -6641,7 +6636,7 @@ input.echo-submit-text {
 }
 #usanetwork_social_join .usanetwork_social_join_msg {
   color: white;
-  font-family: "Proxima N W01 Light", Arial, sans-serif;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 24px;
   font-weight: normal;
   letter-spacing: 0.05em;

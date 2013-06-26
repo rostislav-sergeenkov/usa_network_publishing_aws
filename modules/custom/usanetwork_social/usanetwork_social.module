@@ -122,6 +122,7 @@ function usanetwork_social_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => 4
   );
+
   return $items;
 }
 
@@ -136,6 +137,10 @@ function usanetwork_social_block_info() {
   );
   $blocks['usa_show_landing_social'] = array(
     'info' => t('USA: show landing social'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['usa_show_social_getglue'] = array(
+    'info' => t('USA: show social getglue'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
 
@@ -156,6 +161,10 @@ function usanetwork_social_block_view($delta) {
     case 'usa_show_landing_social':
       $block['subject'] = '';
       $block['content'] = usanetwork_social_show_landing();
+      break;
+    case 'usa_show_social_getglue':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_social_show_getglue();
       break;
   }
   return $block;
@@ -207,6 +216,49 @@ function usanetwork_social_show_tab_nav() {
   if (!empty($items)) {
     $output = theme('item_list', array('items' => $items));
   }
+
+  return $output;
+}
+
+
+/**
+ * Show the GetGlue widget on social pages
+ */
+function usanetwork_social_show_getglue($node) {
+  $output = '';
+  $lang = LANGUAGE_NONE;
+  $arg = arg();
+
+  if (empty($node) && isset($arg[1])) {
+    $node = node_load($arg[1]);
+  }
+
+  if (!isset($node->nid)) {
+    drupal_not_found();
+  }
+	else
+	{
+		$showGetglue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0;
+		$getglueShow = isset($node->field_getglue_show[$lang][0]['value']) ? strval($node->field_getglue_show[$lang][0]['value']) : 0;
+		$getglueSticker = isset($node->field_getglue_sticker_name[$lang][0]['value']) ? $node->field_getglue_sticker_name[$lang][0]['value'] : 0;
+		$showName = (isset($node->title)) ? $node->title : '';
+		$showAlias = drupal_get_path_alias('node/'.$node->nid);
+		$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+	}
+
+  // return empty if show Getglue is not turned on
+  // or if a show name or show sticker name has not been set for this show
+  if (!$showGetglue
+		|| !$getglueShow
+		|| !$getglueSticker) {
+    return $output;
+  }
+
+  $output .= '
+		<div id="usanetwork_social_getglue">
+			<script type="text/javascript" src="http://widgets.getglue.com/checkin.js"></script>
+			<a href="http://getglue.com/tv_shows/'.$getglueShow.'" class="glue-checkin-widget" data-width="300" data-type="sticker" data-sticker="'.$getglueSticker.'" data-bgColor="#EFEFEF">'.$showName.'</a>
+		</div>';
 
   return $output;
 }

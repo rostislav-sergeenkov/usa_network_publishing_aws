@@ -25,11 +25,12 @@
     display: table-cell;  
   }
   .show-title {
-    font-size: 18px;
+    font-size: 1.125em;
     font-family: $headline-semi;
     padding-bottom: 2px;
   }
   .episode-title {
+    font-size: 1.0625em;
     line-height: 1.15em;
   }
   .icons-social {
@@ -102,6 +103,9 @@
 
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-med-darker;
+  #usanetwork_social_join .usanetwork_social_join_msg {
+    font-size: 1.375em;
+  }
 }
 
 .on-now-js-processed {
@@ -124,6 +128,7 @@
 }
 
 
+
 #on-now-panel {
   ul, ol, li {
     margin: 0;
@@ -139,10 +144,11 @@
     }
   }
   .tab-wrapper {
+    cursor: pointer;
     float: left;
     text-transform: lowercase;
-    font-size: 16px;
-    padding: 10px 25px 6px;
+    font-size: 1.375em;
+    padding: 7px 20px 9px;
     width: 50%;
     display: inline-block;
     text-align: center;
@@ -164,10 +170,10 @@
       }  
     }
     @include breakpoint($bp-menu-wide) {
-      font-size: 20px;
-      padding-left: 35px;
-      padding-right: 35px;
-      padding-bottom: 5px;
+//      font-size: 20px;
+//      padding-left: 35px;
+//      padding-right: 35px;
+//      padding-bottom: 5px;
     }
     span {
       font-style: normal;

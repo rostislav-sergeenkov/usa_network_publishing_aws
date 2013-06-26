@@ -92,10 +92,7 @@
         });
         // Remove dart tag JS so it does not get re-executed and overwrite the page.
         $('.dart-tag script').remove();
-
-          console.log("your mom");
-          jPM.on();
-
+        jPM.on();
 
         // WIDE NAVIGATION
         $('.slide-container')

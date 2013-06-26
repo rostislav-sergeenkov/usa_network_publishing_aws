@@ -425,7 +425,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   $image = $node->field_usa_tv_on_now[$lang][0];
   $on_now_image = array(
-    'style_name' => '300x250',
+    'style_name' => '300x250_on_now',
     'path' => $image['uri'],
     'alt' => $image['alt'],
     'title' => $image['title'],

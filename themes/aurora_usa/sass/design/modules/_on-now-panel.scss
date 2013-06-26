@@ -18,55 +18,14 @@
   }
 }
 
-.show-info-wrapper {
-  display: table;
-  width: 100%;
-  .show-info {
-    display: table-cell;  
-  }
-  .show-title {
-    font-size: 1.125em;
-    font-family: $headline-semi;
-    padding-bottom: 2px;
-  }
-  .episode-title {
-    font-size: 1.0625em;
-    line-height: 1.15em;
-  }
-  .icons-social {
-    display: table-cell;
-    text-align: right;
-    a {
-      background-color: transparent;
-      font-size: 1.25em;
-      line-height: 1;
-      padding: 0;
-      display: inline;
-      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
-      &.usasocial-pinterest {
-        color: $black;
-        background-color: $gray-extra-light;
-        &:hover {
-          background-color: $gray-light;
-        }
-      }
-      &:hover {
-        background-color: transparent;
-      }
-      @include breakpoint($bp-menu-wide) {
-        font-size: 1.8em;
-      }
-    }
-  }
-}
 
 .show-on-now-wrapper {
-  padding: 25px 28px 1em;
+  padding: 25px 20px 1em;
   background-color: $black;
-//  @include breakpoint($bp-menu-wide) {
-//    padding-left: 25px;
-//    padding-right: 25px;
-//  }  
+  @include breakpoint($bp-menu-wide) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }  
   a {
     @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
@@ -75,9 +34,13 @@
   }
   .full-schedule-link {
     margin: 1em 0 0;
+    font-size: 12px;
     a {
       @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
     }
+    @include breakpoint($bp-menu-wide) {
+      font-size: 16px;
+    }  
   }
 }
 
@@ -85,7 +48,7 @@
   position: relative;
   span {
     font-family: $headline-semi;
-    font-size: 18px; 
+    font-size: 14px; 
     color: $white;
     bottom: 15px;
     display: inline-block;
@@ -98,32 +61,59 @@
     z-index: 99;
     @extend .icons-sync-now-small;
     display: inline-block;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 18px;
+    }  
   }
 }
 
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-med-darker;
-  #usanetwork_social_join .usanetwork_social_join_msg {
-    font-size: 1.375em;
-  }
-}
+  padding-bottom: 50px;
+  .echo-item-content {
+    padding-left: 20px;
+    padding-left: 20px;
+    @include breakpoint($bp-menu-wide) {
+      padding-left: 25px;
+      padding-right: 25px;
 
-.on-now-js-processed {
-  #jPanelMenu-menu {
-    background-color: $gray-med-darker;
+    }  
   }
-}
-.page-usa-on-now-panel-js {
-  .jPanelMenu-panel {
-    background-color: $gray-med-darker;
+  .echo-item-authorName {
+    font-size: 14px;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 20px;
+    }
   }
-  #main {
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
+  .echo-item-data {
+    @include breakpoint($bp-menu-wide) {
+      font-size: 16px;
+    }
   }
-  #usanetwork_social_join {
+  #usanetwork_social_join  {
     background-color: $black;
+    .usanetwork_social_join_msg {
+      font-size: 16px;
+      &:before {
+        top: 1px;
+      }
+      @include breakpoint($bp-menu-wide) {
+        font-size: 22px;
+        &:before {
+          top: 5px;
+        }
+      }  
+    }
+  }
+  #usanetwork_social_chatter_title {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    @include breakpoint($bp-menu-wide) {
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 24px;
+    }  
   }
 }
 
@@ -147,7 +137,6 @@
     cursor: pointer;
     float: left;
     text-transform: lowercase;
-    font-size: 1.375em;
     padding: 7px 20px 9px;
     width: 50%;
     display: inline-block;
@@ -170,10 +159,7 @@
       }  
     }
     @include breakpoint($bp-menu-wide) {
-//      font-size: 20px;
-//      padding-left: 35px;
-//      padding-right: 35px;
-//      padding-bottom: 5px;
+        font-size: 22px;
     }
     span {
       font-style: normal;
@@ -189,4 +175,51 @@
   a {
     @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
+  .show-info-wrapper {
+  display: table;
+  width: 100%;
+  .show-info {
+    display: table-cell;  
+  }
+  .show-title {
+    font-size: 14px;
+    font-family: $headline-semi;
+    padding-bottom: 2px;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 18px;
+    }  
+  }
+  .episode-title {
+    font-size: 13px;
+    line-height: 1.15em;
+    @include breakpoint($bp-menu-wide) {
+      font-size: 17px;
+    }  
+  }
+  .icons-social {
+    display: table-cell;
+    text-align: right;
+    a {
+      background-color: transparent;
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
+      display: inline;
+      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+      &.usasocial-pinterest {
+        color: $black;
+        background-color: $gray-extra-light;
+        &:hover {
+          background-color: $gray-light;
+        }
+      }
+      &:hover {
+        background-color: transparent;
+      }
+      @include breakpoint($bp-menu-wide) {
+        font-size: 18px;
+      }
+    }
+  }
+}
 }

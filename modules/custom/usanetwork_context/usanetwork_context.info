@@ -10,6 +10,7 @@ dependencies[] = menu
 dependencies[] = pub_media_overrides
 dependencies[] = pub_person_overrides
 dependencies[] = pub_tv_overrides
+dependencies[] = usanetwork_ads
 dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_catchall
 dependencies[] = usanetwork_home

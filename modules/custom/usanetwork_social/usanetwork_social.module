@@ -276,20 +276,20 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     $node = node_load($arg[1]);
   }
 
-	if (isset($node->nid))
-	{
-		$showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
-		$showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
-		$showAlias = drupal_get_path_alias('node/'.$node->nid);
-		$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
-	}
+  if (isset($node->nid))
+  {
+    $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+    $showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
+    $showAlias = drupal_get_path_alias('node/'.$node->nid);
+    $showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+  }
 
   // return empty block if its not a node page
   // or if chat with fans is not turned on for this show
   // or if a show token has not been set for this show
   if (!isset($node->nid)
-		|| !$showChatPage
-		|| !$showTokenName) {
+    || !$showChatPage
+    || !$showTokenName) {
     return $output;
   }
 
@@ -300,8 +300,8 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
   $eql = isset($node->field_chat_eql_template[$lang][0]['value']) ? $node->field_chat_eql_template[$lang][0]['value'] : '';
   $eql = empty($eql) ? variable_get('usanetwork_social_chat_echo_query_template', '') : $eql;
 
-	$showAlias = drupal_get_path_alias('node/'.$node->nid);
-	$showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+  $showAlias = drupal_get_path_alias('node/'.$node->nid);
+  $showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
 
   // if EQL is empty or show Chat with Fans checkbox is not checked, show social landing page
   if (empty($eql) || $showChatPage != 1) {
@@ -327,24 +327,24 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
   $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
   $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
   $vars .= 'var maxComments = "20"; ';
-	$vars .= 'var maxWordsPerComment = 60; ';
+  $vars .= 'var maxWordsPerComment = 60; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
-	drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
 
   $output .= '
-		<div id="usanetwork_social_show_homepage_chatter">
-			<div id="usanetwork_social_chatter_title">chatter</div>
-			<div id="usanetwork_social_chatter_body">
-				<a href="'.$showBaseUrl.'/social/chat-with-fans">
-					<div id="usanetwork_social_show_comment"></div>
-					<div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>
-				</a>
-			</div>
-		</div>';
+    <div id="usanetwork_social_show_homepage_chatter">
+      <div id="usanetwork_social_chatter_title">chatter</div>
+      <div id="usanetwork_social_chatter_body">
+        <a href="'.$showBaseUrl.'/social/chat-with-fans">
+          <div id="usanetwork_social_show_comment"></div>
+          <div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>
+        </a>
+      </div>
+    </div>';
   return $output;
 }
 
@@ -495,7 +495,7 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       $form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_identitymanagerurl', '');
     }
 
-		// SOCIAL BUZZ
+    // SOCIAL BUZZ
     // baseUrl
     if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
       empty($form['field_trend_base_url'][$lang][0]['value']['#default_value'])) {
@@ -507,7 +507,7 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       $form['field_trend_url_params'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_url_params', '');
     }
 
-		// SYNC
+    // SYNC
     // desktopUrl
     if (!isset($form['field_sync_desktop_url'][$lang][0]['value']['#default_value']) ||
       empty($form['field_sync_desktop_url'][$lang][0]['value']['#default_value'])) {
@@ -551,19 +551,19 @@ function usanetwork_social_global_landing_page() {
  * Menu callback of social global social buzz (aka trending or latest) page
  */
 function usanetwork_social_global_trending() {
-	$output = '';
+  $output = '';
   drupal_set_title('Social Dashboard');
-	$showTrending = variable_get('usanetwork_social_trend_show_global');
-	$baseUrl = variable_get('usanetwork_social_trend_global_base_url');
-	$basePath = variable_get('usanetwork_social_trend_global_base_path');
-	$currentUrl = $GLOBALS['base_url'].'/'.request_path();
-	$urlParams = variable_get('usanetwork_social_trend_global_url_params').'&referrer=http://'.$currentUrl;
+  $showTrending = variable_get('usanetwork_social_trend_show_global');
+  $baseUrl = variable_get('usanetwork_social_trend_global_base_url');
+  $basePath = variable_get('usanetwork_social_trend_global_base_path');
+  $currentUrl = $GLOBALS['base_url'].'/'.request_path();
+  $urlParams = variable_get('usanetwork_social_trend_global_url_params').'&referrer=http://'.$currentUrl;
 
-	$query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
+  $query = $baseUrl.'/'.$basePath.'/?'.$urlParams;
 
-	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+  $output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
-	return $output;
+  return $output;
 }
 
 /**
@@ -571,59 +571,59 @@ function usanetwork_social_global_trending() {
  */
 function usanetwork_social_global_chat_with_fans() {
   $lang = LANGUAGE_NONE;
-	$showInfo = array();
-	$shows = _usanetwork_social_show_nids();
+  $showInfo = array();
+  $shows = _usanetwork_social_show_nids();
   drupal_set_title('Social Dashboard');
 
-	if (is_array($shows) && !empty($shows)) {
-		$nodes = node_load_multiple($shows);
-		foreach ($nodes as $node) {
-			$showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
-			$showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : 0;
-			$showAlias = drupal_get_path_alias('node/'.$node->nid);
-			$showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
-			if ($showChatPage && $showTokenName) {
-				$showInfo[] = array(
-					'title' => $node->title,
-					'showTokenName' => $showTokenName,
-					'showUrl' => $showUrl
-				);
-			}
-		}
-	}
+  if (is_array($shows) && !empty($shows)) {
+    $nodes = node_load_multiple($shows);
+    foreach ($nodes as $node) {
+      $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+      $showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : 0;
+      $showAlias = drupal_get_path_alias('node/'.$node->nid);
+      $showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+      if ($showChatPage && $showTokenName) {
+        $showInfo[] = array(
+          'title' => $node->title,
+          'showTokenName' => $showTokenName,
+          'showUrl' => $showUrl
+        );
+      }
+    }
+  }
 
-	$output = '
-		<div id="globalChatWithFans">
-			<div>Join the Conversation: </div>
-			<div id="showList"></div>
-		</div>
-		';
+  $output = '
+    <div id="globalChatWithFans">
+      <div>Join the Conversation: </div>
+      <div id="showList"></div>
+    </div>
+    ';
 
-	if (count($showInfo) > 0) {
-		$showArrayVar = '';
-		$query = 'http://api.echoenabled.com/v2/mux';
-		$queryParams = '';
-		foreach ($showInfo as $array)
-		{
-			$showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showUrl'].'"], ';
-			$queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
-		}
-		$showArrayVar = substr($showArrayVar, 0, -1);
-		$queryParams = urlencode(substr($queryParams, 0, -1));
-		$queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
-		$queryStr = $query.'?'.$queryParams;
+  if (count($showInfo) > 0) {
+    $showArrayVar = '';
+    $query = 'http://api.echoenabled.com/v2/mux';
+    $queryParams = '';
+    foreach ($showInfo as $array)
+    {
+      $showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showUrl'].'"], ';
+      $queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
+    }
+    $showArrayVar = substr($showArrayVar, 0, -1);
+    $queryParams = urlencode(substr($queryParams, 0, -1));
+    $queryParams = 'appkey=prod.usanetwork&requests=['.$queryParams .']&callback=?';
+    $queryStr = $query.'?'.$queryParams;
 
-		$vars = 'var echoQuery="'.$query.'"; ';
-		$vars .= 'var echoQueryParams = "'.$queryParams.'"; ';
-		$vars .= 'var showArray = {'.$showArrayVar.'}; ';
-		drupal_add_js($vars, array('type' => 'inline'));
-		drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/global-chat-with-fans.js');
-	}
-	else
-	{
-		$output = str_replace('<div id="showList"></div>', '<div id="showList">No shows found. Please come back again soon.</div>', $output);
-	}
-	return $output;
+    $vars = 'var echoQuery="'.$query.'"; ';
+    $vars .= 'var echoQueryParams = "'.$queryParams.'"; ';
+    $vars .= 'var showArray = {'.$showArrayVar.'}; ';
+    drupal_add_js($vars, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/global-chat-with-fans.js');
+  }
+  else
+  {
+    $output = str_replace('<div id="showList"></div>', '<div id="showList">No shows found. Please come back again soon.</div>', $output);
+  }
+  return $output;
 }
 
 /**
@@ -674,18 +674,18 @@ function usanetwork_social_global_twitter() {
  */
 function usanetwork_social_global_sync() {
   drupal_set_title('Social Dashboard');
-	$showSync = variable_get('usanetwork_social_sync_show_global');
-	$desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
-	$phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
+  $showSync = variable_get('usanetwork_social_sync_show_global');
+  $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+  $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-	$vars = 'var desktopUrl = "'.$desktopUrl.'";';
-	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';
-	drupal_add_js($vars, array('type' => 'inline'));
-	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+  $vars = 'var desktopUrl = "'.$desktopUrl.'";';
+  $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+  drupal_add_js($vars, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
-	$output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+  $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
 
-	return $output;
+  return $output;
 }
 
 /**
@@ -763,20 +763,20 @@ function usanetwork_social_sync($node) {
   $desktopUrl = !empty($node->field_sync_desktop_url[$lang][0]['value']) ? $node->field_sync_desktop_url[$lang][0]['value'] : 0;
   $phoneUrl = !empty($node->field_sync_phone_url[$lang][0]['value']) ? $node->field_sync_phone_url[$lang][0]['value'] : 0;
 
-	if (!$showSync || !$desktopUrl || !$phoneUrl)
-	{
+  if (!$showSync || !$desktopUrl || !$phoneUrl)
+  {
     drupal_goto('social/sync');
-	}
+  }
 
-	$vars = 'var desktopUrl = "'.$desktopUrl.'";';
-	$vars .= 'var phoneUrl = "'.$phoneUrl.'";';
-	drupal_add_js($vars, array('type' => 'inline'));
+  $vars = 'var desktopUrl = "'.$desktopUrl.'";';
+  $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+  drupal_add_js($vars, array('type' => 'inline'));
 
-	drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
-	$output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+  $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
 
-	return $output;
+  return $output;
 }
 
 
@@ -803,8 +803,8 @@ function usanetwork_social_chat_with_fans($node) {
   $identityManagerUrl = isset($node->field_chat_identitymanagerurl[$lang][0]['value']) ? $node->field_chat_identitymanagerurl[$lang][0]['value'] : '';
   $identityManagerUrl = empty($identityManagerUrl) ? variable_get('usanetwork_social_chat_identitymanagerurl', '') : $identityManagerUrl;
 
-	$showAlias = drupal_get_path_alias('node/'.$node->nid);
-	$showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+  $showAlias = drupal_get_path_alias('node/'.$node->nid);
+  $showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
 
   // if EQL is empty or show Chat with Fans checkbox is not checked, show social landing page
   if (empty($eql) || $showChatWithFansPage != 1) {
@@ -839,7 +839,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
-	drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/backplane.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/auth.js', 'external');
@@ -866,25 +866,25 @@ function usanetwork_social_chat_with_fans($node) {
  * Menu callback of tv show social trending page
  */
 function usanetwork_social_trending($node) {
-	$output = '';
+  $output = '';
   $lang = LANGUAGE_NONE;
 
-	$title = $node->title;
-	$showTrending = !empty($node->field_show_trending[$lang][0]['value']) ? $node->field_show_trending[$lang][0]['value'] : 0;
-	$baseUrl = !empty($node->field_trend_base_url[$lang][0]['value']) ? $node->field_trend_base_url[$lang][0]['value'] : null;
-	$showPath = !empty($node->field_trend_show_path[$lang][0]['value']) ? $node->field_trend_show_path[$lang][0]['value'] : null;
-	$currentUrl = $GLOBALS['base_url'].'/'.request_path();
-	$urlParams = !empty($node->field_trend_url_params[$lang][0]['value']) ? $node->field_trend_url_params[$lang][0]['value'] . '&referrer='.$currentUrl : null;
+  $title = $node->title;
+  $showTrending = !empty($node->field_show_trending[$lang][0]['value']) ? $node->field_show_trending[$lang][0]['value'] : 0;
+  $baseUrl = !empty($node->field_trend_base_url[$lang][0]['value']) ? $node->field_trend_base_url[$lang][0]['value'] : null;
+  $showPath = !empty($node->field_trend_show_path[$lang][0]['value']) ? $node->field_trend_show_path[$lang][0]['value'] : null;
+  $currentUrl = $GLOBALS['base_url'].'/'.request_path();
+  $urlParams = !empty($node->field_trend_url_params[$lang][0]['value']) ? $node->field_trend_url_params[$lang][0]['value'] . '&referrer='.$currentUrl : null;
 
-	if (!$showTrending || !$baseUrl || !$showPath || !$urlParams) {
-		drupal_goto('social/trending');
-	}
+  if (!$showTrending || !$baseUrl || !$showPath || !$urlParams) {
+    drupal_goto('social/trending');
+  }
 
-	$query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
+  $query = $baseUrl . '/' . $showPath . '/?' . $urlParams;
 
-	$output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
+  $output .= '<div class="usa-rebelmouse"><iframe src="'.$query.'" width="100%" scrolling="auto" height="500" frameborder="0"></iframe></div>';
 
-	return $output;
+  return $output;
 }
 
 
@@ -946,3 +946,143 @@ function usanetwork_social_preprocess_html(&$vars) {
   }
 }
 
+
+function usanetwork_social_ago($time)
+{
+   $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+   $lengths = array("60","60","24","7","4.35","12","10");
+
+   $now = time();
+
+       $difference     = $now - $time;
+       $tense         = "ago";
+
+   for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+       $difference /= $lengths[$j];
+   }
+
+   $difference = round($difference);
+
+   if ($difference != 1)
+   {
+       $periods[$j].= "s";
+   }
+
+   return "$difference $periods[$j] ago ";
+}
+
+function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) {
+  $lang = LANGUAGE_NONE;
+  $output = '';
+
+  if (isset($node->nid)) {
+    $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+    $showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
+    $showAlias = drupal_get_path_alias('node/'.$node->nid);
+    $showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+
+  }
+
+  // return empty block if its not a node page
+  // or if chat with fans is not turned on for this show
+  // or if a show token has not been set for this show
+  if (!isset($node->nid) || !$showChatPage || !$showTokenName) {
+    return $output;
+  }
+
+  $show = $showTokenName;
+ 
+  switch ($show) {
+    case 'covertaffairs':
+      $queryShow = 'caffairs';
+      break;
+    case 'criminalintent':
+      $queryShow = 'laworderci';
+      break;
+    case 'svu':
+      $queryShow = 'losvu';
+      break;
+    default:
+      $queryShow = $show;
+      break;
+  }
+  
+  $query = urlencode("(childrenof:http://chatter.usanetwork.com/".$queryShow."/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:".$numCommentsToShow." children:0");
+  
+  $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$query;
+  
+  // get Echo query results
+  $session = curl_init($echoApi);
+  curl_setopt($session, CURLOPT_HEADER, false);
+  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+  $response = json_decode(trim(curl_exec($session)));
+  
+  if (isset($response->entries)) {
+    $output .= '<div id="usanetwork_social_show_homepage_chatter">
+      <div id="usanetwork_social_chatter_title"><span class="panel-chatter-box"><span>Chat</span> with fans</span></div>';
+    foreach ($response->entries as $entries) {
+      $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
+      $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';
+      $comment = strip_tags(strval($entries->object->content));
+      $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
+      $sourceName = strval($entries->source->name);
+      $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
+      $markers = (isset($entries->object->markers) && 
+        is_array($entries->object->markers) && 
+        count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
+  
+      if ($sourceName == 'usanetwork') {
+        //$sourceIcon = file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif'));
+        $sourceUri = 'http://www.usanetwork.com';
+      }
+  
+      $time = usanetwork_social_ago(strtotime(strval($entries->postedTime)));
+  
+      $output .= '
+      <div class="echo-item-content">
+        <div class="echo-item-container echo-item-container-root echo-item-depth-0">
+          <div class="echo-item-avatar-wrapper">
+            <div class="echo-item-avatar">
+              <img src="'.$avatar.'" style="width: 48px; height: 48px;">
+            </div>
+          </div>
+          <div class="echo-item-wrapper echo-item-wrapper-root">
+            <div class="echo-item-subwrapper">
+              <div class="echo-item-subcontainer">
+                <div class="echo-item-frame">
+                  <div class="echo-item-authorName echo-linkColor">'.$username.'</div>
+                  <div class="echo-clear"></div>
+                  <div class="echo-item-data">
+                    <div class="echo-item-body echo-primaryColor">
+                      <span>
+                      <div class="note_title">'.$comment.'</div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="echo-item-footer echo-secondaryColor echo-secondaryFont">
+                    <a href="'.$sourceUri.'"><img class="echo-item-sourceIcon echo-clickable" style="display: block;" src="'.$sourceIcon.'"></a>
+                    <div class="echo-item-date">'.$time.'&nbsp;from&nbsp;<a class="echo-secondaryColor" href="javascript:void(0)">usanetwork</a></div>
+                    <div class="echo-clear"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="echo-clear"></div>
+            </div>
+          </div>
+          <div class="echo-clear"></div>
+        </div>
+      </div>
+      ';
+  
+    }
+    $output .= '<a href="'.$showUrl.'/social/chat-with-fans">
+        <div id="usanetwork_social_join">
+            <span class="usanetwork_social_pointer_image"></span>
+            <span class="usanetwork_social_join_msg">join the conversation</span></div>
+          </a>
+        </div>
+      </div>';
+  }
+  
+  return $output;
+}

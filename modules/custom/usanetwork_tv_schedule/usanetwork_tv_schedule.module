@@ -480,7 +480,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '</div>';
 
   // chat with fans block
-  // $output .= usanetwork_social_show_landing($node, 2);
+  $output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   return $output;
 }

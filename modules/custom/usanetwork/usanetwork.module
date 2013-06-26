@@ -61,6 +61,7 @@ function usanetwork_menu() {
  * Implements hook_menu_alter().
  *
  * Allow the revisions page views to show the primary tabs.
+ * @TODO remove or change this when new workflow tools are in place
  */
 function usanetwork_menu_alter(&$items) {
   $items['node/%node/revisions/%/view']['type'] = MENU_LOCAL_TASK;

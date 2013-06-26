@@ -167,7 +167,7 @@ body.usa-social {
 .social-follow-block {
   background-color: $black-into-gray;
   border: 1px solid $gray-med;
-
+  margin-bottom: 20px;
   h2 {
     @include background(linear-gradient(center top , $black-true, $gray-dark));
     color: $white;
@@ -842,6 +842,14 @@ input.echo-submit-text {
       top: 5px;
     }
   }
+}
+
+#block-usanetwork-social-usa-show-social-getglue iframe {
+  width: 100% !important;
+  @include breakpoint($bp-social-large-width) { 
+    width: 300px;
+  }  
+
 }
 
 

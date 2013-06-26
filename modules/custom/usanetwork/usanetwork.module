@@ -43,7 +43,7 @@ function usanetwork_menu() {
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
- 
+
   // we need this file on the root of our site for video and components to work
   $items['crossdomain.xml'] = array(
     'title' => 'crossdomain.xml',
@@ -53,9 +53,19 @@ function usanetwork_menu() {
     'type' => MENU_CALLBACK,
     'access callback' => TRUE,
   );
- 
+
   return $items;
 }
+
+/**
+ * Implements hook_menu_alter().
+ *
+ * Allow the revisions page views to show the primary tabs.
+ */
+function usanetwork_menu_alter(&$items) {
+  $items['node/%node/revisions/%/view']['type'] = MENU_LOCAL_TASK;
+}
+
 
 /**
  * helper function to return an array of show nids
@@ -84,7 +94,7 @@ function usanetwork_tokens_alter(&$replacements, $context) {
   if (isset($context['data']['entity'])){
     if (isset($replacements['[node:field_show]'])){
       $show_nid = $context['data']['entity']->field_show[LANGUAGE_NONE][0]['target_id'];
-      if (!empty($show_nid)) { 
+      if (!empty($show_nid)) {
         $show = node_load($show_nid);
         if (isset($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']) && !empty($show->field_pathauto_alias[LANGUAGE_NONE][0]['value'])) {
           $replacements['[node:field_show]']  = check_plain($show->field_pathauto_alias[LANGUAGE_NONE][0]['value']);

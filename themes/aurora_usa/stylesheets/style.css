@@ -5962,6 +5962,7 @@ body.usa-social {
 .social-follow-block {
   background-color: #232323;
   border: 1px solid #3d3d3d;
+  margin-bottom: 20px;
 }
 .social-follow-block h2 {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
@@ -6655,6 +6656,15 @@ input.echo-submit-text {
   position: absolute;
   left: 0;
   top: 5px;
+}
+
+#block-usanetwork-social-usa-show-social-getglue iframe {
+  width: 100% !important;
+}
+@media (min-width: 900px) {
+  #block-usanetwork-social-usa-show-social-getglue iframe {
+    width: 300px;
+  }
 }
 
 /* basic scrollbar styling */

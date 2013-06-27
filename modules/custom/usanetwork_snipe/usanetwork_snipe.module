@@ -64,23 +64,25 @@ function usanetwork_snipe_block_callback() {
   $snipe = array();
   foreach ($result as $record) {
     $node = node_load($record->entity_id);
-    $snipe_id = 'snipe-' . $node->nid;
-    if (isset($node->field_usa_display_date_time[$lang][0]['value']) && !empty($node->field_usa_display_date_time[$lang][0]['value'])) {
-      $snipe_start = $node->field_usa_display_date_time[$lang][0]['value'];
-    
-      if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
-        $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
-      } else {
-        // set end date after an year to make it not expire at all
-        $snipe_end = $snipe_start + 30758400;
+    if (isset($node->nid) && !empty($node->nid) && _usanetwork_snipe_get_node_visibility_settings($node->nid)) {
+      $snipe_id = 'snipe-' . $node->nid;
+      if (isset($node->field_usa_display_date_time[$lang][0]['value']) && !empty($node->field_usa_display_date_time[$lang][0]['value'])) {
+        $snipe_start = $node->field_usa_display_date_time[$lang][0]['value'];
+      
+        if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
+          $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
+        } else {
+          // set end date after an year to make it not expire at all
+          $snipe_end = $snipe_start + 30758400;
+        }
       }
+      $snipe[] = array(
+        'id' => $snipe_id,
+        'start' => date('F d, Y H:i:s', $snipe_start),
+        'end' => date('F d, Y H:i:s', $snipe_end),
+      );    
+      $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '<span class="close">close</span></div><span class="secondary-close close"></span>';
     }
-    $snipe[] = array(
-      'id' => $snipe_id,
-      'start' => date('F d, Y H:i:s', $snipe_start),
-      'end' => date('F d, Y H:i:s', $snipe_end),
-    );    
-    $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '<span class="close">close</span></div><span class="secondary-close close"></span>';
   }
 
   $vars = 'var snipe = ' . drupal_json_encode($snipe) . ';';
@@ -228,7 +230,7 @@ function _usanetwork_snipe_custom_path_form_elements(&$parent_element, &$form_st
     '#collapsed' => TRUE,
   );
 
-  foreach (_usanetwork_ads_get_usanetwork_menu_paths() as $path => $clean_path) {
+  foreach (_usanetwork_snipe_get_usanetwork_menu_paths() as $path => $clean_path) {
     // Set the base form element for this path.
     $parent_element['path'][ $path ] = array();
     // Add DART form elements.
@@ -237,6 +239,112 @@ function _usanetwork_snipe_custom_path_form_elements(&$parent_element, &$form_st
         $form_state['storage']['default_settings']['path'][ $path ] : array();
     _usanetwork_snipe_form_elements($fieldset_title, $parent_element['path'][ $path ], $default_settings);
   }
+}
+
+/**
+ * Helper that returns snipe visibility settings for a given snipe node id.
+ */
+function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
+  $arg = arg();
+  $lang = LANGUAGE_NONE;
+  $snipe_settings = variable_get('usanetwork_snipe_settings', array());
+
+  // Check sitewide settings
+  if (isset($snipe_settings['sitewide'][$snipe_nid]) && !empty($snipe_settings['sitewide'][$snipe_nid])) {
+    return true;
+  }
+
+  // Check homepage settings
+  if ($arg[0] == 'home' && isset($snipe_settings['sitewide'][$snipe_nid]) && !empty($snipe_settings['home'][$snipe_nid])) {
+    return true;
+  }
+  
+  // Check node page settings
+  if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
+    $node = node_load($arg[1]);
+
+    $tv_show_nid = 0;
+    if (isset($node->type) && $node->type == 'tv_show') {
+      $tv_show_nid = $node->nid;
+    } else if (isset($node->field_show[$lang][0]['entity_id']) && !empty($node->field_show[$lang][0]['entity_id'])) {
+      $tv_show_nid = $node->field_show[$lang][0]['entity_id']; 
+    }
+
+    // Check tv show and related nodes
+    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show']['all'][$snipe_nid]) && 
+      !empty($snipe_settings['node']['tv_show']['all'][$snipe_nid])) {
+      return true;
+    }
+    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show'][$tv_show_nid][$snipe_nid]) && 
+      !empty($snipe_settings['node']['tv_show'][$tv_show_nid][$snipe_nid])) {
+      return true;
+    }
+
+    // Check node type global settings
+    if (isset($node->type) && isset($snipe_settings['node'][$node->type]['all'][$snipe_nid]) &&
+      !empty($snipe_settings['node'][$node->type]['all'][$snipe_nid])) {
+      return true;
+    }
+
+    // Check catchall page and static page node settings
+    if (isset($node->type) && ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') && 
+      isset($snipe_settings['node'][$node->type][$node->nid]) && !empty($snipe_settings['node'][$node->type][$node->nid])) {
+      return true;
+    } 
+    
+    //replace nid in the argument for path checking
+    $arg[1] = '%node';
+  }
+
+  // check custom path settings
+  $full_path = implode('/', $arg);
+  $node_path1 = implode('/', array($arg[0], $arg[1], $arg[2]));
+  $node_path2 = implode('/', array($arg[0], $arg[1], $arg[2], $arg[3]));
+  if ((isset($snipe_settings['path'][$node_path1][$snipe_nid]) && !empty($snipe_settings['path'][$node_path1][$snipe_nid])) ||
+    (isset($snipe_settings['path'][$node_path2][$snipe_nid]) && !empty($snipe_settings['path'][$node_path2][$snipe_nid])) ||
+    (isset($snipe_settings['path'][$full_path][$snipe_nid]) && !empty($snipe_settings['path'][$full_path][$snipe_nid]))) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Helper that converts menu item router paths to a more easily understood form.
+ */
+function _usanetwork_snipe_clean_menu_item_path($path) {
+
+  // Change "%node" to "[content id]" to be more easily understood by
+  // non-Drupalists.
+  $path = str_replace('%node', '[content id]', $path);
+
+  return $path;
+}
+
+/**
+ * Helper that returns menu paths (from hook_menu() implementations) for all
+ * usanetwork_* modules.
+ */
+function _usanetwork_snipe_get_usanetwork_menu_paths() {
+
+  $menu_paths = array();
+  $hook_menu_modules = module_implements('menu');
+
+  foreach ($hook_menu_modules as $module) {
+    if (strpos($module, 'usanetwork_') === 0) {
+      $function_name = $module . '_menu';
+      $module_menu_items = $function_name();
+      foreach ($module_menu_items as $item_path => $item_data) {
+        if (strpos($item_path, 'admin') === FALSE && $item_path != 'home') {
+          $menu_paths[ $item_path ] = _usanetwork_snipe_clean_menu_item_path($item_path);
+        }
+      }
+    }
+  }
+
+  asort($menu_paths);
+
+  return $menu_paths;
 }
 
 

@@ -18,6 +18,12 @@
   }
 }
 
+.on-now-js-processed {
+  #jPanelMenu-menu {
+    background-color: $gray-med-darker;
+  }
+}
+
 
 .show-on-now-wrapper {
   padding: 25px 20px 1em;
@@ -80,6 +86,7 @@
     }  
   }
   .echo-item-authorName {
+    color: $gray-dark-light;
     font-size: 14px;
     @include breakpoint($bp-menu-wide) {
       font-size: 20px;
@@ -205,12 +212,12 @@
       line-height: 1;
       padding: 0;
       display: inline;
-      @include link-colors($gray-extra-light, $gray-light, $gray-light, $gray-extra-light, $gray-extra-light);
+      @include link-colors($gray-extra-light, $blue, $gray-light, $gray-extra-light, $gray-extra-light);
       &.usasocial-pinterest {
         color: $black;
         background-color: $gray-extra-light;
         &:hover {
-          background-color: $gray-light;
+          background-color: $blue;
         }
       }
       &:hover {

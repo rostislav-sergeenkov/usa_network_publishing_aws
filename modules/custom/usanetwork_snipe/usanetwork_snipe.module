@@ -80,7 +80,7 @@ function usanetwork_snipe_block_callback() {
       'start' => date('F d, Y H:i:s', $snipe_start),
       'end' => date('F d, Y H:i:s', $snipe_end),
     );    
-    $output .= '<div style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '</div>';
+    $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '<span class="close">close</span></div><span class="secondary-close close"></span>';
   }
 
   $vars = 'var snipe = ' . drupal_json_encode($snipe) . ';';

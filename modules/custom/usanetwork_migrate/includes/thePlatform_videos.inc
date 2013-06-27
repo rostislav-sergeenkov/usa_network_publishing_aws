@@ -3,8 +3,8 @@
 /**
  * Migration class for TVE Video content.
  */
-#class USANetworkTVEVideoFeedMigration extends XMLMigration {
-class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
+class USANetworkTVEVideoFeedMigration extends XMLMigration {
+#class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
 
   public $imgDestDir;
 
@@ -49,7 +49,7 @@ class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
     }
     //*/
 
-    $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC');
+    $items_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/HNK2IC/v_LMXFxZY7Z2');
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
     global $usanetwork_migrate_is_cron;
@@ -58,10 +58,10 @@ class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
       // Append query parameters to only retrieve video data updated within the
       // last 24 hours.
       $updated_date = date('c', strtotime('-1 hours'));
-      $items_url .= '?byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
+      $items_url .= '?&byCustomValue={fullEpisode}{true},{entitlement}{auth}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
     else {
-      $items_url .= '?range=1-500';
+      $items_url .= '?range=1-500&byCustomValue={fullEpisode}{true},{entitlement}{auth}';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document
@@ -363,11 +363,19 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $date_data = (string)array_shift($dc_terms);
       $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
       $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
-      // Format the dates for the date field.
-      $final_date_data = array(
-        'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
-        'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
-      );
+      $start_date = strtotime($start_date);
+      $end_date = strtotime($end_date);
+      // Format the dates for the date field.  Only store the dates if they are
+      // fairly recent (i.e. within 5 years).
+      $five_years_ago = REQUEST_TIME - (86400 * 365 * 5);
+      $final_date_data = array();
+      // Onl
+      if ($start_date > $five_years_ago) {
+        $final_date_data['from'] = $start_date;
+      }
+      if ($end_date > $five_years_ago) {
+        $final_date_data['to'] = $end_date;
+      }
       // Encode in JSON for the date field.
       $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
     }
@@ -410,7 +418,12 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    if (isset($row->{'dcterms:valid'})) {
+    if (!$entity->status) {
+
+      watchdog('usanetwork_migrate', 'Scheduling node @nid to be published at @time.',
+          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
+      drupal_set_message(t('usanetwork_migrate', 'USANETWORK MIGRATE: Scheduling node @nid to be published at @time.',
+          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa'))));
 
       module_load_include('inc', 'state_flow', 'state_flow.pages');
 
@@ -421,17 +434,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       // If this is an unpublished node, transition it to the "Draft" state, so
       // that it can be published during scheduling.  Nodes can't be transitioned
       // directly from an "Unpublished" to a "Published" state.
-      if (!$entity->status) {
-        $state_flow_form = array();
-        $state_flow_form_state = array();
-        $state_flow_form_state['values'] = array(
-          'node_revision' => $entity,
-          'state_flow' => state_flow_load_state_machine($entity),
-          'event' => 'to draft',
-          'event_comment' => t('Transitioning to "Draft" via migration script.'),
-        );
-        state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
-      }
+      _usanetwork_migrate_complete_entity_state_transition($entity, 'draft');
 
       $state_flow_form = array();
       $state_flow_form_state = array();
@@ -453,6 +456,11 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
         'vid' => $entity->vid,
       );
       state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+    }
+    // Otherwise, this is a published node, and we need to convert it to that state.
+    else {
+
+      _usanetwork_migrate_complete_entity_state_transition($entity, 'published');
     }
   }
 

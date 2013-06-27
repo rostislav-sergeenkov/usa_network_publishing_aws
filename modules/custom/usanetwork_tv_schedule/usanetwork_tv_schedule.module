@@ -227,11 +227,13 @@ function usanetwork_tv_schedule_on_now_panel() {
   
   $links[0]['data'] = '<span class="tab-wrapper active"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
   $links[0]['class'] = array('on-now', 'tab-1');
-  $links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+  //$links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+  $links[0]['children'][] = '<div id="on-now-panel-tab"></div>';
 
   $links[1]['data'] = '<span class="tab-wrapper"><span>' . t('Up') . '</span> ' . t('Next') . '</span>';
   $links[1]['class'] = array('up-next', 'tab-2');
-  $links[1]['children'][] = '<div id="up-next-panel-tab"><iframe id="up-next-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+  //$links[1]['children'][] = '<div id="up-next-panel-tab"><iframe id="up-next-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
+  $links[1]['children'][] = '<div id="up-next-panel-tab"></div>';
 
   $output = theme('item_list', array('items' => $links)); 
 
@@ -408,7 +410,10 @@ function usanetwork_on_now_panel_js() {
     $output = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
   }
 
-  return $output;
+  echo $output;
+  exit;
+
+  //return $output;
 }
 
 /**
@@ -420,7 +425,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   $image = $node->field_usa_tv_on_now[$lang][0];
   $on_now_image = array(
-    'style_name' => '300x250',
+    'style_name' => '300x250_on_now',
     'path' => $image['uri'],
     'alt' => $image['alt'],
     'title' => $image['title'],
@@ -475,7 +480,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '</div>';
 
   // chat with fans block
-  $output .= usanetwork_social_show_landing($node, 2);
+  $output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   return $output;
 }

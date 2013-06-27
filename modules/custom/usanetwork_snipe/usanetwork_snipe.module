@@ -1,0 +1,183 @@
+<?php
+/**
+ * @file
+ * Code for the USANetwork Snipe feature.
+ */
+
+include_once 'usanetwork_snipe.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_snipe_menu() {
+
+  $items = array();
+  $items['admin/usanetwork/snipe-settings'] = array(
+    'title' => t('Snipe Settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_snipe_display_settings_form'),
+    'access arguments' => array('access administration pages'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_snipe_block_info() {
+  $blocks = array();
+  $blocks['usa_snipe'] = array(
+    'info' => t('USA Snipe HTML Block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_snipe_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'usa_snipe':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_snipe_block_callback();
+      break;
+  }
+  return $block;
+}
+
+
+/**
+ * Renders the Snipe HTML on specified path at specified date & time
+ */
+function usanetwork_snipe_block_callback() {
+  $output = '';
+  $lang = LANGUAGE_NONE;
+
+  $result = db_query('select d.entity_id from field_data_field_usa_display_date_time d,node n where 
+    n.nid=d.entity_id and n.status=1 and date(from_unixtime(d.field_usa_display_date_time_value)) = date(now())');
+
+  $snipe = array();
+  foreach ($result as $record) {
+    $node = node_load($record->entity_id);
+    $snipe_id = 'snipe-' . $node->nid;
+    if (isset($node->field_usa_display_date_time[$lang][0]['value']) && !empty($node->field_usa_display_date_time[$lang][0]['value'])) {
+      $snipe_start = $node->field_usa_display_date_time[$lang][0]['value'];
+    
+      if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
+        $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
+      }
+    }
+    $snipe[] = array(
+      'id' => $snipe_id,
+      'start' => date('F d, Y H:i:s', $snipe_start),
+      'end' => date('F d, Y H:i:s', $snipe_end),
+    );    
+    $output .= '<div style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '</div>';
+  }
+
+  $vars = 'var snipe = ' . drupal_json_encode($snipe) . ';';
+  drupal_add_js($vars, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path("module", "usanetwork_snipe")."/js/usanetwork_snipe.js");
+  return $output;
+}
+
+/**
+ * Form definition / page callback for snipe visibility settings admin page.
+ */
+function usanetwork_snipe_display_settings_form($form, $form_state) {
+
+  $form = array();
+  $default_settings = variable_get('usanetwork_snipe_settings', array());
+  $form_state['storage']['default_settings'] = isset($form_state['storage']['default_settings']) ?
+      $form_state['storage']['default_settings'] : $default_settings;
+  $form_state['new_form'] = isset($form_state['new_form']) ? FALSE : TRUE;
+
+  // Set the base form element for the dart and omniture settings.
+  $form['usanetwork_snipe_settings'] = array(
+    '#tree' => TRUE,
+  );
+
+  // Homepage settings.
+  _usanetwork_snipe_homepage_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+  // TV Show node/node-reference based settings.
+  //_usanetwork_ads_tv_show_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+  // Catchall Page node based settings.
+  //_usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+  // Static Page node based dart settings.
+  //_usanetwork_ads_usanetwork_static_page_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+  // Content type based settings.
+  //_usanetwork_ads_content_type_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+  // Path based settings.
+  //_usanetwork_ads_custom_path_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+
+
+  return system_settings_form($form);
+}
+
+/**
+ * Helper that returns the snipe settings form elements for the homepage.
+ */
+function _usanetwork_snipe_homepage_form_elements(&$parent_element, &$form_state) {
+
+  $parent_element['home'] = array();
+
+  $default_settings = isset($form_state['storage']['default_settings']['home']) ?
+      $form_state['storage']['default_settings']['home'] : array();
+  _usanetwork_snipe_form_elements(t('Homepage Settings'), $parent_element['home'], $default_settings);
+}
+
+/**
+ * Helper that adds each snipe content as form elements.
+ */
+function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$default_settings) {
+
+  $base_element = array(
+    '#type' => 'fieldset',
+    '#title' => $fieldset_title,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  // Added enable checkbox elements per snipe node.
+  if ($snipes = _usanetwork_snipe_get_nodes('snipe')) {
+    foreach ($snipes as $snipe) {
+      $base_element[$snipe->nid] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Display ') . $snipe->title,
+        '#default_value' => isset($default_settings[$snipe->nid]) ?  $default_settings[$snipe->nid] : '',
+      );
+    }
+  }
+}
+
+/**
+ * Helper that returns nodes of a given type.
+ */
+function _usanetwork_snipe_get_nodes($node_type) {
+
+  $nodes_query = new EntityFieldQuery();
+  $nodes_query->entityCondition('entity_type', 'node');
+  $nodes_query->entityCondition('bundle', $node_type);
+  $nodes_query->propertyCondition('status', 1);
+  $nodes_query->propertyOrderBy('title', 'ASC');
+  $nodes_result = $nodes_query->execute();
+
+  $nodes = array();
+
+  if (isset($nodes_result['node'])) {
+    foreach ($nodes_result['node'] as $result) {
+      $nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+    }
+  }
+
+  return $nodes;
+}

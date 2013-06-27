@@ -16,6 +16,7 @@ features[image][] = 221x124_video
 features[image][] = 2490x1418
 features[image][] = 300x169_video
 features[image][] = 300x250
+features[image][] = 300x250_on_now
 features[image][] = 600x500
 features[image][] = 615x250
 features[image][] = 615x350

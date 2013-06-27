@@ -84,18 +84,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '28',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -212,18 +200,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '19',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -342,18 +318,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '18',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -471,18 +435,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '20',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -599,18 +551,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '24',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -730,18 +670,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '27',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -858,18 +786,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '23',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -988,18 +904,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '26',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1116,18 +1020,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '30',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1246,18 +1138,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '25',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1374,18 +1254,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '22',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1504,18 +1372,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '21',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1632,18 +1488,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '24',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1763,18 +1607,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '24',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1814,6 +1646,186 @@ function usanetwork_social_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '34',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_getglue_show'.
+  $fields['node-tv_show-field_getglue_show'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_getglue_show',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Ex: psych, burn_notice, white_collar',
+      'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 60,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_getglue_show',
+      'label' => 'Show',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_getglue_sticker_name'.
+  $fields['node-tv_show-field_getglue_sticker_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_getglue_sticker_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Ex: usa_network/white_collar_character_chatter_matt_bomer',
+      'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 61,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_getglue_sticker_name',
+      'label' => 'Sticker Name',
+      'required' => 0,
+      'settings' => array(
+        'linkit' => array(
+          'button_text' => 'Search',
+          'enable' => 0,
+          'profile' => '',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+          'soft_length_limit' => '',
+          'soft_length_minimum' => '',
+          'soft_length_style_select' => 0,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '12',
       ),
     ),
   );
@@ -1892,18 +1904,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '31',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1995,18 +1995,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2032,6 +2020,88 @@ function usanetwork_social_field_default_fields() {
         ),
         'type' => 'options_onoff',
         'weight' => '26',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-tv_show-field_show_getglue'.
+  $fields['node-tv_show-field_show_getglue'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_show_getglue',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'tv_show',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'block_cover_title' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 59,
+        ),
+        'follow_social' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'fences_wrapper' => 'div',
+      'field_name' => 'field_show_getglue',
+      'label' => 'Show Getglue',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '10',
       ),
     ),
   );
@@ -2090,18 +2160,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2184,18 +2242,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2299,18 +2345,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'list_default',
           'weight' => '29',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2406,18 +2440,6 @@ function usanetwork_social_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2535,18 +2557,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2640,18 +2650,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2747,18 +2745,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2848,18 +2834,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2954,18 +2928,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3076,18 +3038,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '28',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3206,18 +3156,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '19',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3334,18 +3272,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '18',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3464,18 +3390,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '20',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3592,18 +3506,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '27',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3722,18 +3624,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '23',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3850,18 +3740,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '26',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3980,18 +3858,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '30',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4108,18 +3974,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '25',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4238,18 +4092,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '22',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4366,18 +4208,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '21',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4496,18 +4326,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'text_default',
           'weight' => '24',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4606,18 +4424,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4719,18 +4525,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'link_default',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4830,18 +4624,6 @@ function usanetwork_social_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '0',
-        ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4943,18 +4725,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'link_default',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5053,18 +4823,6 @@ function usanetwork_social_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
-        'search_index' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5115,6 +4873,8 @@ function usanetwork_social_field_default_fields() {
   t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa');
   t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile');
   t('Ex: https://www.rebelmouse.com');
+  t('Ex: psych, burn_notice, white_collar');
+  t('Ex: usa_network/white_collar_character_chatter_matt_bomer');
   t('FEED');
   t('Facebook page');
   t('IDENTITYMANAGERURL');
@@ -5130,13 +4890,16 @@ function usanetwork_social_field_default_fields() {
   t('STATE');
   t('SUBMITTARGETURL');
   t('SUBMITTARGETURL Template');
+  t('Show');
   t('Show Chat with Fans Page');
   t('Show Chat with Fans Post Comment');
+  t('Show Getglue');
   t('Show Path');
   t('Show Social Buzz');
   t('Show Sync');
   t('Show Twitter Page');
   t('Social Logo');
+  t('Sticker Name');
   t('TAGS');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
   t('Tumblr Page');

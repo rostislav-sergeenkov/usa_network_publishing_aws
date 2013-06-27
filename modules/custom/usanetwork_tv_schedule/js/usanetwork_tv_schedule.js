@@ -60,6 +60,11 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       break;
     }
 
+    var on_now_text = '';
+    var next_up_text = '';
+    var next_up_default_show_nid = '';
+    var on_now_default_show_nid = '';
+
     if (on_now_show == '' && tv_schedule != '') {
       for (var i=0; i<tv_schedule.length; i++) {
         if (show_time < tv_schedule[i]['ts']) {
@@ -78,17 +83,25 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     }
 
     if (!$('body').hasClass('on-now-js-processed')) {
-      data = '<iframe id="up-next-iframe"  frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src="' + "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text+'"></iframe>';
 
-      $('#on-now-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text);
-      $('#up-next-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text);
+      $.ajax({ url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text }).done(function ( data ) {
+        $('#on-now-panel-tab').html(data);
+      });
+
+      $.ajax({ url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text }).done(function ( data ) {
+        $('#up-next-panel-tab').html(data);
+      });
+
+      // commenting the iframe logic and put back the ajax call
+      //$('#on-now-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text);
+      //$('#up-next-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text);
 
       // TODO: Fix the iframe height dynamically
       // $('#on-now-iframe').attr('height', getDocHeight() + 'px');
       // $('#up-next-iframe').attr('height', getDocHeight() + 'px');
 
-      $('#on-now-iframe').attr('height', '1024px');
-      $('#up-next-iframe').attr('height', '1024px');
+      //$('#on-now-iframe').attr('height', '1024px');
+      //$('#up-next-iframe').attr('height', '1024px');
      
       $('body').addClass('on-now-js-processed');
     }

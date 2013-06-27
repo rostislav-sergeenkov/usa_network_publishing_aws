@@ -240,3 +240,11 @@ function usanetwork_core_update_7103() {
   module_enable($modules);
 }
 
+/**
+ * Enable usanetwork_snipe module
+ */
+function usanetwork_core_update_7104() {
+  $modules = array('usanetwork_snipe');
+  module_enable($modules);
+}
+

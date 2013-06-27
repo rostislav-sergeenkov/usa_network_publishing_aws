@@ -109,10 +109,10 @@ function usanetwork_snipe_display_settings_form($form, $form_state) {
   _usanetwork_snipe_homepage_form_elements($form['usanetwork_snipe_settings'], $form_state);
 
   // TV Show node/node-reference based settings.
-  //_usanetwork_ads_tv_show_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+  _usanetwork_snipe_tv_show_form_elements($form['usanetwork_snipe_settings'], $form_state);
 
   // Catchall Page node based settings.
-  //_usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
+  _usanetwork_snipe_catchall_page_form_elements($form['usanetwork_snipe_settings'], $form_state);
 
   // Static Page node based dart settings.
   //_usanetwork_ads_usanetwork_static_page_site_metric_form_elements($form['usanetwork_snipe_settings'], $form_state);
@@ -162,6 +162,75 @@ function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$defa
   }
 }
 
+/**
+ * Helper that returns the snipe settings form elements for tv_show nodes.
+ */
+function _usanetwork_snipe_tv_show_form_elements(&$parent_element, &$form_state) {
+
+  $default_settings = $form_state['storage']['default_settings'];
+
+  $parent_element['node']['tv_show'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('TV Show Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  // Add a set of form elements per tv_show node.
+  if ($tv_show_nodes = _usanetwork_ads_get_nodes('tv_show')) {
+    foreach ($tv_show_nodes as $node) {
+      $parent_element['node']['tv_show'][ $node->nid ] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Show:  %tv_show_title', array('%tv_show_title' => $node->title)),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+      );
+      // snipe content form.
+      $id = 'tv-show-' . $node->nid;
+      $display_id = htmlspecialchars_decode(check_plain($node->title));
+      $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ] = isset($form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]) ?
+          $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ] : array();
+      _usanetwork_snipe_form_elements($display_id, $parent_element['node']['tv_show'][ $node->nid ],
+          $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]);
+    }
+  }
+  // If no tv_show nodes are found, let the user know.
+  else {
+    $parent_element['node']['tv_show']['no_results']['#markup'] = t('There are no TV shows available.');
+  }
+}
+
+/**
+ * Helper that returns the snipe settings form elements for catchall_page nodes.
+ */
+function _usanetwork_snipe_catchall_page_form_elements(&$parent_element, &$form_state) {
+
+  $default_settings = $form_state['storage']['default_settings'];
+
+  $parent_element['node']['catchall_page'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Catchall Page Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  // Add a set of form elements per catchall_page node.
+  if ($catchall_page_nodes = _usanetwork_ads_get_nodes('catchall_page')) {
+    foreach ($catchall_page_nodes as $node) {
+      // Set the base form element for this node.
+      $parent_element['node']['catchall_page'][ $node->nid ] = array();
+      // Add snipe content form elements.
+      $fieldset_title = t('Catchall Page:  %catchall_page_title', array('%catchall_page_title' => $node->title));
+      $default_settings = isset($form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]) ?
+          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ] : array();
+      _usanetwork_snipe_form_elements($fieldset_title, $parent_element['node']['catchall_page'][ $node->nid ], $default_settings);
+    }
+  }
+  // If no catchall_page nodes are found, let the user know.
+  else {
+    $parent_element['node']['catchall_page']['no_results']['#markup'] = t('There are no Catchall Pages available.');
+  }
+}
 /**
  * Helper that returns nodes of a given type.
  */

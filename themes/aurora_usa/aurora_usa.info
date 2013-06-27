@@ -21,6 +21,7 @@ regions[sidebar_first]  = Primary Sidebar
 regions[sidebar_second] = Secondary Sidebar
 regions[main_suffix]    = Main Region Suffix
 regions[footer]         = Footer
+regions[on_now]         = On Now
 
 ; THEME OPTIONS
 

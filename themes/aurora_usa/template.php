@@ -66,6 +66,7 @@ function aurora_usa_preprocess_page(&$vars) {
   global $base_path, $base_url;
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
@@ -126,6 +127,22 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   $vars['util_classes'] = implode(' ', $util_regions);
 
+}
+
+
+function aurora_usa_form_search_block_form_alter(&$form){
+  $form['search_block_form']['#title'] = t('search');
+  $form['search_block_form']['#title_display'] = 'before';
+  // Add placeholder attribute to the text box
+  $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
+
+
+  $form['actions']['reset'] = array(
+    '#markup' => '<button class="form-reset" type="reset"/>',
+    '#weight' => 1000
+  );
+
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
 
 /**
@@ -249,17 +266,34 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
           case 'follow_social':
             //remove role field
+            // hide title with js because ds will not let us properly preprocess
+            drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-character.js');
+            unset($vars['items'][0]);
+            break;
+        }
+      }
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'Self') {
+        switch ($vars['element']['#view_mode']) {
+          case 'follow_social':
+            //remove role field
             unset($vars['items'][0]);
             break;
         }
       }
       break;
+    // ACTOR NAME IN PEOPLE NODES
     case 'field_usa_actor_name':
-       if (isset($vars['element']['#view_mode']))  {
+       if (isset($vars['element']['#view_mode'])) {
         switch ($vars['element']['#view_mode']) {
           case 'cast_carousel':
             // remove as adding to field role so in same div
             unset($vars['items'][0]);
+            break;
+          case 'follow_social':
+            // link actor name
+            $nid = $vars['element']['#object']->nid;
+            $name = $vars['element']['#items'][0]['safe_value'];
+            $vars['items'][0]['#markup'] = l($name, 'node/' . $nid, array('html' => TRUE));
             break;
         }
       }
@@ -281,7 +315,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     case 'field_usa_character_thumb':
       // making thumb clickable
-      if (isset($vars['element']['#view_mode']))  {
+      if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'follow_social' :
             $node = $vars['element']['#object'];
@@ -289,28 +323,19 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $thumb = $vars['items'][0];
             $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
             break;
-
-          case 'cast_carousel':
-            // $node = $vars['element']['#object'];
-            // $url = drupal_lookup_path('alias',"node/".$node->nid);
-            // $vars['test'] = drupal_lookup_path('alias',"node/".$node->nid);
-            // $thumb = $vars['items'][0];
-            // $vars['items'][0] = l(render($thumb), $url, array('html' => TRUE));
-            break;
           }
         }
       break;
     // AIRDATE IN VIDEOS
     case 'field_video_air_date':
       // change display
-      if (isset($vars['element']['#view_mode']))  {
+      if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'full' :
             $airtime = $vars['element']['#items'][0]['value'];
             $air_custom = date('n/d/Y', $airtime);
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
-
           case 'vid_teaser_episode':
             $title = $vars['element']['#object']->title;
             $airtime = $vars['element']['#items'][0]['value'];
@@ -318,6 +343,36 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $vars['classes_array'][] = drupal_html_class('field-name-title');
             $vars['items'][0]['#markup'] = $title . ' (' . $air_custom . ')';
             break;
+          }
+        }
+      break;
+    // episode num IN VIDEOS
+    case 'field_episode_number':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $episode = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
+              break;
+            }
+          }
+        }
+      break;
+    // season num IN VIDEOS
+    case 'field_season_id':
+      // change display
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+        if (isset($vars['element']['#view_mode'])) {
+          switch($vars['element']['#view_mode']) {
+            case 'full' :
+            case 'vid_teaser_show_episode':
+              $season = $vars['element']['#items'][0]['safe_value'];
+                $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
+                break;
+            }
           }
         }
       break;
@@ -431,7 +486,7 @@ function aurora_usa_preprocess_views_view(&$vars) {
     }
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'attachment_2') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/follow-social.js');
-    }  
+    }
 
   }
 
@@ -579,6 +634,7 @@ function aurora_usa_js_alter(&$js) {
  */
 function aurora_usa_field__field_usa_aspot_desktop($vars) {
   // polyfill
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
@@ -600,6 +656,7 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
  */
 function aurora_usa_field__field_usa_aspot_mobile($vars) {
   // polyfill
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
@@ -623,6 +680,7 @@ function aurora_usa_field__field_promo_wide_image($vars) {
   // b-spot
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
     // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
     drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
@@ -650,6 +708,7 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // b-spot these are mobile fallbacks
   if ($vars['element']['#view_mode'] == 'home_promo_bspot') {
   // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
     drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
@@ -664,6 +723,7 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   // c-spot
   if ($vars['element']['#view_mode'] == 'home_promo') {
     // polyfill
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
     drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];

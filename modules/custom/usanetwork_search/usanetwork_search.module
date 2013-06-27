@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_search feature.
+ */
+
+include_once 'usanetwork_search.features.inc';

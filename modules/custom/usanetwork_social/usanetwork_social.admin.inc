@@ -5,10 +5,10 @@
  */
 function usanetwork_social_settings_form() {
 
-	// TRENDING
+	// SOCIAL BUZZ
   $form['trend'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Trending Settings'),
+    '#title' => t('Social Buzz Settings'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
@@ -23,7 +23,7 @@ function usanetwork_social_settings_form() {
     '#type' => 'textfield',
     '#title' => t('URL PARAMS'),
     '#default_value' => variable_get('usanetwork_social_trend_url_params', ''),
-    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2'),
+    '#description' => t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2'),
   );
 
 	// SYNC
@@ -248,17 +248,17 @@ function usanetwork_social_settings_form() {
     '#description' => t('PATH Token'),
   );
 
-  // GLOBAL TRENDING
+  // GLOBAL SOCIAL BUZZ
   $form['global_trend'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Global Trending Settings'),
+    '#title' => t('Global Social Buzz Settings'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
 
   $form['global_trend']['usanetwork_social_trend_show_global'] = array(
     '#type' => 'checkbox',
-    '#title' => t('SHOW GLOBAL TRENDING'),
+    '#title' => t('SHOW GLOBAL SOCIAL BUZZ'),
     '#default_value' => variable_get('usanetwork_social_trend_show_global', ''),
     '#description' => t('Check to turn global trending on'),
   );
@@ -281,7 +281,7 @@ function usanetwork_social_settings_form() {
     '#type' => 'textfield',
     '#title' => t('URL PARAMS'),
     '#default_value' => variable_get('usanetwork_social_trend_global_url_params', ''),
-    '#description' => t('Ex: embedded=1&flexible=1&scrollbar_theme=light-2&skip=also-on-rm'),
+    '#description' => t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2&skip=also-on-rm'),
   );
 
 	// GLOBAL SYNC
@@ -303,14 +303,14 @@ function usanetwork_social_settings_form() {
     '#type' => 'textfield',
     '#title' => t('DESKTOP / TABLET URL'),
     '#default_value' => variable_get('usanetwork_social_sync_global_desktop_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=usa&layout=web&partner=usa'),
   );
 
   $form['global_sync']['usanetwork_social_sync_global_phone_url'] = array(
     '#type' => 'textfield',
     '#title' => t('MOBILE URL'),
     '#default_value' => variable_get('usanetwork_social_sync_global_phone_url', ''),
-    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile'),
+    '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=usa&layout=mobile&partner=usamobile'),
   );
 
   return system_settings_form($form);

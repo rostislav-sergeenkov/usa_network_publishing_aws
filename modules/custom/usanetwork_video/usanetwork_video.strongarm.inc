@@ -174,6 +174,12 @@ function usanetwork_video_strongarm() {
       'promo_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'search_result' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -256,6 +262,12 @@ function usanetwork_video_strongarm() {
         'custom_settings' => TRUE,
       ),
       'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -375,7 +387,7 @@ function usanetwork_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_theplatform_tve_feed_url';
-  $strongarm->value = 'http://feed.theplatform.com/f/dCK2IC/lQ46POmX6zQC';
+  $strongarm->value = 'http://feed.theplatform.com/f/HNK2IC/v_LMXFxZY7Z2';
   $export['usanetwork_theplatform_tve_feed_url'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -56,7 +56,9 @@
   }
   .no-font-feature-settings & {
     @include replace-text-with-dimensions('icons/on_now.png');
-    display: block;
+    display: table-cell;
+    width: 50px;
+    background-position: 0 50%;
   }
   &.trigger {
     padding-left: 14px;

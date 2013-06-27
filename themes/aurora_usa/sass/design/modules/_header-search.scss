@@ -50,6 +50,10 @@
     @include float-right;
     margin-top: 10px;
     height: 40px;
+    width: 40px;
+    .search-active & {
+      width: 274px;
+    }  
   }  
   input {
     @include inline-block;

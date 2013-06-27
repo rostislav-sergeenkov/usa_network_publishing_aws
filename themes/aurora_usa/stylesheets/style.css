@@ -4466,10 +4466,10 @@ body.person-page .ad-leaderboard {
   text-align: left;
   background-image: url('../images/icons/on_now.png');
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 35px;
+  background-position: 0 50%;
+  width: 50px;
   height: 28px;
-  display: block;
+  display: table-cell;
 }
 #on-now.trigger {
   padding-left: 14px;

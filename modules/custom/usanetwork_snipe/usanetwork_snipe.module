@@ -13,7 +13,7 @@ function usanetwork_snipe_menu() {
 
   $items = array();
   $items['admin/usanetwork/snipe-settings'] = array(
-    'title' => t('Snipe Settings'),
+    'title' => t('Snipe Visibility Settings'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_snipe_display_settings_form'),
     'access arguments' => array('access administration pages'),
@@ -70,6 +70,9 @@ function usanetwork_snipe_block_callback() {
     
       if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
         $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
+      } else {
+        // set end date after an year to make it not expire at all
+        $snipe_end = $snipe_start + 30758400;
       }
     }
     $snipe[] = array(
@@ -152,7 +155,7 @@ function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$defa
     foreach ($snipes as $snipe) {
       $base_element[$snipe->nid] = array(
         '#type' => 'checkbox',
-        '#title' => t('Display ') . $snipe->title,
+        '#title' => $snipe->title,
         '#default_value' => isset($default_settings[$snipe->nid]) ?  $default_settings[$snipe->nid] : '',
       );
     }

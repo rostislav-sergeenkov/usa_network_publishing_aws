@@ -215,7 +215,7 @@ body.usa-social {
       > div {
         margin: 4px 0 0 11px;
       }
-      h2, 
+      h2,
       h4,
       .field-name-field-usa-actor-name {
         font-size: 14px;
@@ -400,8 +400,8 @@ body.usa-social {
   clear: both;
   @include breakpoint($bp-social-small-width) {
     clear: none;
-    margin-left: 58px;    
-  } 
+    margin-left: 58px;
+  }
   @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
   }
@@ -678,7 +678,7 @@ input.echo-submit-text {
     margin-right: 75px;
     @include breakpoint($bp-social-echo) {
       margin-right: 100px;
-    }   
+    }
   }
   .go-chat {
     position: absolute;
@@ -723,7 +723,7 @@ input.echo-submit-text {
     margin-right: 80px;
     @include breakpoint($bp-social-echo) {
       margin-right: 150px;
-    }  
+    }
   }
 }
 
@@ -813,9 +813,9 @@ input.echo-submit-text {
   .echo-item-from {
     float: left;
   }
-  .echo-stream-header, 
-  .echo-stream-more { 
-    display: none !important; 
+  .echo-stream-header,
+  .echo-stream-more {
+    display: none !important;
   }
 }
 
@@ -846,9 +846,9 @@ input.echo-submit-text {
 
 #block-usanetwork-social-usa-show-social-getglue iframe {
   width: 100% !important;
-  @include breakpoint($bp-social-large-width) { 
+  @include breakpoint($bp-social-large-width) {
     width: 300px;
-  }  
+  }
 }
 
 

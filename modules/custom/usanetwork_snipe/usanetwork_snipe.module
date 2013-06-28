@@ -298,8 +298,8 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
 
   // check custom path settings
   $full_path = implode('/', $arg);
-  $node_path1 = implode('/', array($arg[0], $arg[1], $arg[2]));
-  $node_path2 = implode('/', array($arg[0], $arg[1], $arg[2], $arg[3]));
+  $node_path1 = isset($arg[2]) ? implode('/', array($arg[0], $arg[1], $arg[2])) : '';
+  $node_path2 = isset($arg[3]) ? implode('/', array($arg[0], $arg[1], $arg[2], $arg[3])) : '';
   if ((isset($snipe_settings['path'][$node_path1][$snipe_nid]) && !empty($snipe_settings['path'][$node_path1][$snipe_nid])) ||
     (isset($snipe_settings['path'][$node_path2][$snipe_nid]) && !empty($snipe_settings['path'][$node_path2][$snipe_nid])) ||
     (isset($snipe_settings['path'][$full_path][$snipe_nid]) && !empty($snipe_settings['path'][$full_path][$snipe_nid]))) {

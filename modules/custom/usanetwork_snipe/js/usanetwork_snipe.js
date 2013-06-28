@@ -17,17 +17,10 @@ Drupal.behaviors.usanetwork_snipe = {
         $('.block-usanetwork-snipe .close').on('click', function() {
           $(this).closest('.primary-nav').removeClass('snipe-active');
           $(this).closest('.block-usanetwork-snipe').find('.snipe-msg').hide(1000);
-            //end.setDate(end.getDate()-9999);
-            //console.log(end);
             close = false;
-            console.log(close);
         });
       }
-
-
-    }, 10000);
-
-
+    }, 5000);
   }
 }
 })(jQuery);

@@ -80,7 +80,6 @@
 
 .block-usanetwork-snipe {
   bottom: -30px;
-  background-color: $gray-dark;
   width: 100%;
   display: block;
   height: 80px;
@@ -91,6 +90,7 @@
   z-index: 1;
   .snipe-active & {
     bottom: 50px;  
+    background-color: $gray-dark;
   }
   @include breakpoint($bp-menu-switch) {
     background-color: transparent;

@@ -175,7 +175,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.usa-secondary-menu .shows > li.first > span:after, #logo, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"] {
+.usa-secondary-menu .shows > li.first > span:after, #logo, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -2287,6 +2287,10 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
 }
 
+.on-now-js-processed #jPanelMenu-menu {
+  background-color: #313131;
+}
+
 .show-on-now-wrapper {
   padding: 25px 20px 1em;
   background-color: #1f1f1f;
@@ -2379,6 +2383,7 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 #usanetwork_social_show_homepage_chatter .echo-item-authorName {
+  color: #717274;
   font-size: 14px;
 }
 @media (min-width: 960px) {
@@ -2546,7 +2551,7 @@ input[type="radio"], input[type="checkbox"] {
   color: #a3a3a3;
 }
 #on-now-panel .show-info-wrapper .icons-social a:hover {
-  color: #878785;
+  color: #0ab6e8;
 }
 #on-now-panel .show-info-wrapper .icons-social a:active {
   color: #878785;
@@ -2556,7 +2561,7 @@ input[type="radio"], input[type="checkbox"] {
   background-color: #a3a3a3;
 }
 #on-now-panel .show-info-wrapper .icons-social a.usasocial-pinterest:hover {
-  background-color: #878785;
+  background-color: #0ab6e8;
 }
 #on-now-panel .show-info-wrapper .icons-social a:hover {
   background-color: transparent;
@@ -2864,6 +2869,10 @@ input[type="radio"], input[type="checkbox"] {
     float: right;
     margin-top: 10px;
     height: 40px;
+    width: 40px;
+  }
+  .search-active #head-search {
+    width: 274px;
   }
 }
 #head-search input {
@@ -3667,7 +3676,7 @@ input[type="radio"], input[type="checkbox"] {
   color: white;
 }
 
-.promo-metadata {
+.promo-metadata, .upcoming-movie .meta {
   position: absolute;
   width: 100%;
   height: 77px;
@@ -3675,67 +3684,67 @@ input[type="radio"], input[type="checkbox"] {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 17px 15px 8px;
 }
-.promo-metadata h2, .promo-metadata h3 {
+.promo-metadata h2, .upcoming-movie .meta h2, .promo-metadata h3, .upcoming-movie .meta h3 {
   margin: 0;
   line-height: 1;
 }
-.promo-metadata h2 {
+.promo-metadata h2, .upcoming-movie .meta h2 {
   font-size: 20px;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   line-height: 22.5px;
   margin-bottom: 3px;
 }
-.promo-metadata h3 {
+.promo-metadata h3, .upcoming-movie .meta h3 {
   font-size: 15px;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   line-height: 24px;
 }
 @media (max-width: 644px) {
-  .promo-metadata {
+  .promo-metadata, .upcoming-movie .meta {
     height: 32px;
     padding: 4px 8px 3px;
   }
-  .promo-metadata h2 {
+  .promo-metadata h2, .upcoming-movie .meta h2 {
     font-size: 12px;
     line-height: 13.5px;
     margin-bottom: 1px;
   }
-  .promo-metadata h3 {
+  .promo-metadata h3, .upcoming-movie .meta h3 {
     font-size: 10px;
     line-height: 12px;
   }
 }
-.usa-adrails .promo-metadata, .ie9 .promo-metadata, .ie8 .promo-metadata {
+.usa-adrails .promo-metadata, .usa-adrails .upcoming-movie .meta, .upcoming-movie .usa-adrails .meta, .ie9 .promo-metadata, .ie9 .upcoming-movie .meta, .upcoming-movie .ie9 .meta, .ie8 .promo-metadata, .ie8 .upcoming-movie .meta, .upcoming-movie .ie8 .meta {
   padding: 17px 15px 8px;
 }
-.usa-adrails .promo-metadata h2, .ie9 .promo-metadata h2, .ie8 .promo-metadata h2 {
+.usa-adrails .promo-metadata h2, .usa-adrails .upcoming-movie .meta h2, .upcoming-movie .usa-adrails .meta h2, .ie9 .promo-metadata h2, .ie9 .upcoming-movie .meta h2, .upcoming-movie .ie9 .meta h2, .ie8 .promo-metadata h2, .ie8 .upcoming-movie .meta h2, .upcoming-movie .ie8 .meta h2 {
   font-size: 20px;
   line-height: 22.5px;
   margin-bottom: 3px;
 }
-.usa-adrails .promo-metadata h3, .ie9 .promo-metadata h3, .ie8 .promo-metadata h3 {
+.usa-adrails .promo-metadata h3, .usa-adrails .upcoming-movie .meta h3, .upcoming-movie .usa-adrails .meta h3, .ie9 .promo-metadata h3, .ie9 .upcoming-movie .meta h3, .upcoming-movie .ie9 .meta h3, .ie8 .promo-metadata h3, .ie8 .upcoming-movie .meta h3, .upcoming-movie .ie8 .meta h3 {
   font-size: 15px;
 }
-.promo-metadata .promo-cta {
+.promo-metadata .promo-cta, .upcoming-movie .meta .promo-cta {
   width: 44px;
   float: left;
 }
-.promo-metadata .promo-cta ~ h2, .promo-metadata .promo-cta ~ h3 {
+.promo-metadata .promo-cta ~ h2, .upcoming-movie .meta .promo-cta ~ h2, .promo-metadata .promo-cta ~ h3, .upcoming-movie .meta .promo-cta ~ h3 {
   padding-left: 56px;
 }
 @media (max-width: 644px) {
-  .promo-metadata .promo-cta {
+  .promo-metadata .promo-cta, .upcoming-movie .meta .promo-cta {
     width: 20px;
     margin-right: 2px;
   }
-  .promo-metadata .promo-cta ~ h2, .promo-metadata .promo-cta ~ h3 {
+  .promo-metadata .promo-cta ~ h2, .upcoming-movie .meta .promo-cta ~ h2, .promo-metadata .promo-cta ~ h3, .upcoming-movie .meta .promo-cta ~ h3 {
     padding-left: 22px;
   }
 }
-.usa-adrails .promo-metadata .promo-cta, .ie9 .promo-metadata .promo-cta, .ie8 .promo-metadata .promo-cta {
+.usa-adrails .promo-metadata .promo-cta, .usa-adrails .upcoming-movie .meta .promo-cta, .upcoming-movie .usa-adrails .meta .promo-cta, .ie9 .promo-metadata .promo-cta, .ie9 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie9 .meta .promo-cta, .ie8 .promo-metadata .promo-cta, .ie8 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie8 .meta .promo-cta {
   width: 44px;
 }
-.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .ie9 .promo-metadata .promo-cta ~ h2, .ie9 .promo-metadata .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3 {
+.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .usa-adrails .meta .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .usa-adrails .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .usa-adrails .meta .promo-cta ~ h3, .ie9 .promo-metadata .promo-cta ~ h2, .ie9 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie9 .meta .promo-cta ~ h2, .ie9 .promo-metadata .promo-cta ~ h3, .ie9 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie9 .meta .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie8 .meta .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3, .ie8 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie8 .meta .promo-cta ~ h3 {
   padding-left: 56px;
 }
 
@@ -3776,7 +3785,7 @@ input[type="radio"], input[type="checkbox"] {
     position: relative;
   }
 }
-.tiles .ad, .tiles .b-spot, .tiles .c-spot {
+.tiles .ad, .tiles .b-spot, .tiles .c-spot, .tiles .upcoming-movie {
   display: inline;
   float: left;
   margin-bottom: 8px;
@@ -3854,10 +3863,10 @@ input[type="radio"], input[type="checkbox"] {
   float: right;
   height: 250px;
 }
-.tiles .b-spot .node, .tiles .c-spot .node {
+.tiles .b-spot .node, .tiles .c-spot .node, .tiles .upcoming-movie .node {
   position: relative;
 }
-.tiles .b-spot .media-wide, .tiles .c-spot .media-wide {
+.tiles .b-spot .media-wide, .tiles .c-spot .media-wide, .tiles .upcoming-movie .media-wide {
   display: none;
 }
 .tiles .b-spot {
@@ -3927,29 +3936,29 @@ input[type="radio"], input[type="checkbox"] {
 .usa-adrails .tiles .b-spot .media-wide, .ie9 .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
   display: none;
 }
-.tiles .c-spot {
+.tiles .c-spot, .tiles .upcoming-movie {
   height: 122px;
   width: 146px;
 }
 @media (min-width: 645px) {
-  .tiles .c-spot {
+  .tiles .c-spot, .tiles .upcoming-movie {
     margin-right: 15px;
     margin-bottom: 15px;
     height: 250px;
     width: 300px;
   }
 }
-.usa-adrails .tiles .c-spot, .ie9 .tiles .c-spot, .ie8 .tiles .c-spot {
+.usa-adrails .tiles .c-spot, .usa-adrails .tiles .upcoming-movie, .ie9 .tiles .c-spot, .ie9 .tiles .upcoming-movie, .ie8 .tiles .c-spot, .ie8 .tiles .upcoming-movie {
   margin-right: 15px;
   margin-bottom: 15px;
   height: 250px;
   width: 300px;
 }
-.tiles .c-spot.tablet-only {
+.tiles .c-spot.tablet-only, .tiles .tablet-only.upcoming-movie {
   display: none;
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .tiles .c-spot.tablet-only {
+  .tiles .c-spot.tablet-only, .tiles .tablet-only.upcoming-movie {
     display: inline;
   }
 }
@@ -4638,7 +4647,9 @@ body.person-page .ad-leaderboard {
   background-position: 50% 50%;
   width: 35px;
   height: 28px;
-  display: block;
+  display: table-cell;
+  width: 50px;
+  background-position: 0 50%;
 }
 #on-now.trigger {
   padding-left: 14px;
@@ -7130,6 +7141,224 @@ a[class*="day"] {
   .schedule-table .rating {
     display: table-cell;
   }
+}
+
+.snipe-active #block-usanetwork-blocks-usa-meganav {
+  display: none;
+}
+.snipe-active .tv-show-menu-trigger:after {
+  top: -14px;
+}
+
+.snipe-msg {
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .snipe-msg {
+    width: 67%;
+  }
+}
+@media (min-width: 769px) {
+  .snipe-msg {
+    background-color: black;
+    float: left;
+    max-width: 680px;
+    position: relative;
+    width: 70%;
+    padding-top: 0;
+    padding-right: 25px;
+    margin-right: 26px;
+    font-size: 22px;
+  }
+  .snipe-msg:after {
+    background-color: #3d3d3d;
+    content: "";
+    display: block;
+    height: 34px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    z-index: 1;
+  }
+}
+.snipe-msg h2, .snipe-msg h3, .snipe-msg h4 {
+  margin: 0;
+  line-height: 1em;
+}
+.snipe-msg h2 {
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #0ab6e8;
+}
+@media (min-width: 769px) {
+  .snipe-msg h2 {
+    font-size: 22px;
+  }
+}
+.snipe-msg h3 {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 16px;
+}
+@media (min-width: 769px) {
+  .snipe-msg h3 {
+    font-size: 18px;
+  }
+}
+.snipe-msg .close {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  cursor: pointer;
+  color: #878785;
+  font-size: 16px;
+}
+@media (min-width: 769px) {
+  .snipe-msg .close {
+    top: 0;
+  }
+}
+.ie9 .snipe-msg .close, .ie8 .snipe-msg .close {
+  background: url(../images/svgs/ie_x1.svg) no-repeat top left;
+  height: 20px;
+  width: 20px;
+  text-indent: -9999px;
+}
+
+.block-usanetwork-snipe {
+  bottom: -30px;
+  width: 100%;
+  display: block;
+  height: 80px;
+  left: 0;
+  padding: 16px;
+  position: absolute;
+  text-align: left;
+  z-index: 1;
+}
+.snipe-active .block-usanetwork-snipe {
+  bottom: 50px;
+  background-color: #2d2d2d;
+}
+@media (min-width: 769px) {
+  .block-usanetwork-snipe {
+    background-color: transparent;
+    bottom: auto;
+    height: 65px;
+    left: -100%;
+    overflow: hidden;
+    padding-left: 25px;
+    padding-right: 25px;
+    top: 1px;
+    margin-left: 0;
+  }
+  .snipe-active .block-usanetwork-snipe {
+    background-color: black;
+    left: 0;
+    margin-left: 119px;
+    bottom: auto;
+  }
+  .block-usanetwork-snipe .secondary-close {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border: 5px solid #0ab6e8;
+    border-width: 5px 0 5px 0;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    display: block;
+  }
+  .block-usanetwork-snipe .secondary-close:before {
+    content: "\0020";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    display: block;
+    width: 25px;
+    height: 0px;
+    border-top: 5px solid #0ab6e8;
+  }
+}
+
+.featured-movie.aspot .meta-wrap {
+  top: auto;
+  bottom: 0;
+  padding-left: 30px;
+}
+.featured-movie.aspot .show-title {
+  font-size: 28px;
+  margin-bottom: 0px;
+}
+.featured-movie.aspot .show-title:after {
+  display: none;
+}
+.featured-movie.aspot .show-time {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.upcoming-movies .ad {
+  margin-right: 0;
+}
+.upcoming-movies a {
+  color: white;
+}
+.upcoming-movies a:visited {
+  color: white;
+}
+.upcoming-movies a:focus {
+  color: white;
+}
+.upcoming-movies a:hover {
+  color: white;
+}
+.upcoming-movies a:active {
+  color: white;
+}
+
+.upcoming-movie {
+  position: relative;
+}
+.tiles .upcoming-movie {
+  height: 118px;
+  width: 142px;
+}
+@media (min-width: 645px) {
+  .tiles .upcoming-movie {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    height: 250px;
+    width: 300px;
+  }
+  .tiles .upcoming-movie:nth-of-type(2n+1) {
+    margin-right: 0;
+  }
+}
+@media (min-width: 960px) {
+  .tiles .upcoming-movie:nth-of-type(2n+1) {
+    margin-right: 15px;
+  }
+  .tiles .upcoming-movie:nth-of-type(3n+6) {
+    margin-right: 0;
+  }
+}
+@media (min-width: 1275px) {
+  .tiles .upcoming-movie:nth-of-type(3n+6) {
+    margin-right: 15px;
+  }
+  .tiles .upcoming-movie:nth-of-type(4n+8) {
+    margin-right: 0;
+  }
+}
+.upcoming-movie:nth-of-type(2n+2) {
+  margin-right: 15px;
+}
+.upcoming-movie .meta {
+  white-space: nowrap;
 }
 
 [class*="iib"] {

@@ -266,8 +266,8 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
     $tv_show_nid = 0;
     if (isset($node->type) && $node->type == 'tv_show') {
       $tv_show_nid = $node->nid;
-    } else if (isset($node->field_show[$lang][0]['entity_id']) && !empty($node->field_show[$lang][0]['entity_id'])) {
-      $tv_show_nid = $node->field_show[$lang][0]['entity_id']; 
+    } else if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
+      $tv_show_nid = $node->field_show[$lang][0]['target_id']; 
     }
 
     // Check tv show and related nodes
@@ -288,7 +288,7 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
 
     // Check catchall page and static page node settings
     if (isset($node->type) && ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') && 
-      isset($snipe_settings['node'][$node->type][$node->nid]) && !empty($snipe_settings['node'][$node->type][$node->nid])) {
+      isset($snipe_settings['node'][$node->type][$node->nid][$snipe_nid]) && !empty($snipe_settings['node'][$node->type][$node->nid][$snipe_nid])) {
       return true;
     } 
     

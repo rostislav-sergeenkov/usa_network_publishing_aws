@@ -71,6 +71,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'taxonomy_term_reference_plain',
           'weight' => '2',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -135,9 +141,6 @@ function pub_person_overrides_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'body:value',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -177,13 +180,19 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '29',
         ),
-        'search_result' => array(
+        'search_index' => array(
           'label' => 'hidden',
           'module' => 'entityreference',
           'settings' => array(
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
+          'weight' => '6',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -268,6 +277,13 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '3',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -374,13 +390,16 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'file_rendered',
           'weight' => '0',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
         'search_result' => array(
           'label' => 'hidden',
-          'module' => 'file_entity',
-          'settings' => array(
-            'file_view_mode' => 'search_result_files',
-          ),
-          'type' => 'file_rendered',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -490,6 +509,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'link_default',
           'weight' => '4',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -595,6 +620,12 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '6',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -702,6 +733,12 @@ function pub_person_overrides_field_default_fields() {
           'type' => 'link_default',
           'weight' => '7',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -807,6 +844,12 @@ function pub_person_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '5',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'search_result' => array(
           'label' => 'above',

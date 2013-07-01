@@ -476,11 +476,8 @@ function pub_media_overrides_field_default_fields() {
         ),
         'search_result' => array(
           'label' => 'hidden',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '2',
         ),
         'teaser' => array(

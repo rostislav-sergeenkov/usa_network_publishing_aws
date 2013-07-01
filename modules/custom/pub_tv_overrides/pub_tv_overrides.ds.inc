@@ -101,7 +101,7 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'media' => array(
-        0 => 'field_tv_cover_media',
+        0 => 'field_usa_og_image',
       ),
       'title' => array(
         0 => 'title',
@@ -111,17 +111,17 @@ function pub_tv_overrides_ds_layout_settings_info() {
         1 => 'field_season',
         2 => 'field_episode_number',
         3 => 'field_original_air_date',
-        4 => 'body',
+        4 => 'field_usa_og_description',
       ),
     ),
     'fields' => array(
-      'field_tv_cover_media' => 'media',
+      'field_usa_og_image' => 'media',
       'title' => 'title',
       'field_show' => 'body',
       'field_season' => 'body',
       'field_episode_number' => 'body',
       'field_original_air_date' => 'body',
-      'body' => 'body',
+      'field_usa_og_description' => 'body',
     ),
     'classes' => array(),
   );
@@ -199,18 +199,18 @@ function pub_tv_overrides_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'body' => array(
-        0 => 'body',
+        0 => 'field_usa_og_description',
       ),
       'media' => array(
-        0 => 'field_social_logo',
+        0 => 'field_usa_og_image',
       ),
       'title' => array(
         0 => 'title',
       ),
     ),
     'fields' => array(
-      'body' => 'body',
-      'field_social_logo' => 'media',
+      'field_usa_og_description' => 'body',
+      'field_usa_og_image' => 'media',
       'title' => 'title',
     ),
     'classes' => array(),

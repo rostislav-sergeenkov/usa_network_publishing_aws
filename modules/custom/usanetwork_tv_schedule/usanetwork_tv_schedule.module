@@ -397,7 +397,10 @@ function usanetwork_on_now_panel_js() {
   $links = array();
 
   if (empty($arg[1]) && empty($arg[2])) {
-    return $output;
+    // return empty div to avoid 304: Not modified http header
+    $output = '<div>&nbsp</div>';
+    echo $output;
+    exit;
   }
 
   if (!empty($arg[1]) && isset($_GET['on_now'])) {

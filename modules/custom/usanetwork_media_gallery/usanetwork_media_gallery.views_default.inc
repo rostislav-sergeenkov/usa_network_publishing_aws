@@ -293,6 +293,27 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
     'tv_show' => 'tv_show',
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'media_gallery' => 'media_gallery',
+  );
+  /* Filter criterion: Field: Person (field_person) */
+  $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
+  $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
+  $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';
+  $handler->display->display_options['filters']['field_person_target_id']['operator'] = 'empty';
   $handler->display->display_options['argument_input'] = array(
     'field_show_target_id' => array(
       'type' => 'context',
@@ -423,11 +444,10 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_character_target_id']['id'] = 'field_character_target_id';
-  $handler->display->display_options['relationships']['field_character_target_id']['table'] = 'field_data_field_character';
-  $handler->display->display_options['relationships']['field_character_target_id']['field'] = 'field_character_target_id';
-  $handler->display->display_options['relationships']['field_character_target_id']['label'] = 'Character';
-  $handler->display->display_options['relationships']['field_character_target_id']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_person_target_id']['id'] = 'field_person_target_id';
+  $handler->display->display_options['relationships']['field_person_target_id']['table'] = 'field_data_field_person';
+  $handler->display->display_options['relationships']['field_person_target_id']['field'] = 'field_person_target_id';
+  $handler->display->display_options['relationships']['field_person_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -602,11 +622,11 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['filters']['field_episode_target_id']['table'] = 'field_data_field_episode';
   $handler->display->display_options['filters']['field_episode_target_id']['field'] = 'field_episode_target_id';
   $handler->display->display_options['filters']['field_episode_target_id']['operator'] = 'empty';
-  /* Filter criterion: Field: Character (field_character) */
-  $handler->display->display_options['filters']['field_character_target_id']['id'] = 'field_character_target_id';
-  $handler->display->display_options['filters']['field_character_target_id']['table'] = 'field_data_field_character';
-  $handler->display->display_options['filters']['field_character_target_id']['field'] = 'field_character_target_id';
-  $handler->display->display_options['filters']['field_character_target_id']['operator'] = 'empty';
+  /* Filter criterion: Field: Person (field_person) */
+  $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
+  $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
+  $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';
+  $handler->display->display_options['filters']['field_person_target_id']['operator'] = 'empty';
   $handler->display->display_options['argument_input'] = array(
     'field_show_target_id' => array(
       'type' => 'context',

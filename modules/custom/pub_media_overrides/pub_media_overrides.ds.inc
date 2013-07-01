@@ -123,22 +123,20 @@ function pub_media_overrides_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'body' => array(
-        0 => 'body',
-        1 => 'field_show',
-      ),
       'media' => array(
-        0 => 'field_cover_item',
+        0 => 'field_usa_og_image',
+      ),
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
       'title' => array(
         0 => 'title',
       ),
     ),
     'fields' => array(
-      'body' => 'body',
-      'field_cover_item' => 'media',
+      'field_usa_og_image' => 'media',
+      'field_usa_og_description' => 'body',
       'title' => 'title',
-      'field_show' => 'body',
     ),
     'classes' => array(),
   );

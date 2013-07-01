@@ -102,6 +102,33 @@ function usanetwork_ads_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_ads_block_info() {
+  $blocks = array();
+  $blocks['dart_floodlight'] = array(
+    'info' => t('DART: Floodlight Tags for Show Homepages '),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_ads_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'dart_floodlight':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_ads_dart_floodlight();
+      break;
+  }
+  return $block;
+}
+
 
 /**
  * Menu callback to output dart ad content without drupal theme
@@ -903,4 +930,106 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
   }
 
   return array('variables' => $omniture_variables);
+}
+
+/**
+ * Block callback for the dart floodlight show homepages block
+ */
+function usanetwork_ads_dart_floodlight() {
+  $output = array();
+  $flood_type = '';
+  $flood_cat = '';
+  $node = menu_get_object();
+
+  // array of show paths with floodlight settings
+  // not all shows have these
+  $flooded_shows = array (
+    'burnnotice' => array (
+      'flood_type' => 'burnn832',
+      'flood_cat' => 'burnn655',
+    ),
+    'covertaffairs' => array (
+      'flood_type' => '2010a975',
+      'flood_cat' => 'cover674',
+    ),
+    'graceland' => array (
+      'flood_type' => '2012g832',
+      'flood_cat' => 'grace041',
+    ),
+    'house' => array (
+      'flood_type' => '2009o386',
+      'flood_cat' => 'house033',
+    ),
+    'svu' => array (
+      'flood_type' => '2011d848',
+      'flood_cat' => 'losvu379',
+    ),
+    'ncis' => array (
+      'flood_type' => '2009o386',
+      'flood_cat' => 'ncisv947',
+    ),
+    'necessaryroughness' => array (
+      'flood_type' => '2011d848',
+      'flood_cat' => 'neces763',
+    ),
+    'psych' => array (
+      'flood_type' => '2011d848',
+      'flood_cat' => 'psych222',
+    ),
+    'royalpains' => array (
+      'flood_type' => '2009o386',
+      'flood_cat' => 'royal068',
+    ),
+    'suits' => array (
+      'flood_type' => '2011d848',
+      'flood_cat' => 'suits889',
+    ),
+    'summercamp' => array (
+      'flood_type' => '2012g832',
+      'flood_cat' => 'summe869',
+    ),
+    'whitecollar' => array (
+      'flood_type' => '2009o386',
+      'flood_cat' => 'white368',
+    ),
+    'wwe' => array (
+      'flood_type' => 'wwera869',
+      'flood_cat' => 'wwera436',
+    ),
+  );
+
+  // see if we are on a tv show node landing page
+  if ($node && $node->type == 'tv_show' && arg(2) == '') {
+    $custompath = drupal_get_path_alias('node/'.$node->nid);
+    $path_parts = explode('/', $custompath);
+    $show = $flooded_shows[$path_parts['0']];
+
+    // if the show is not in our array
+    // do not render this block
+    if (!isset($show)) {
+      return;
+    }
+
+    // code for the block
+    $floodlight_js = '
+    (function ($) {
+      $(document).ready(function(){
+      var axel = Math.random() + "";
+      var a = axel * 10000000000000;
+      $(\'body\').append(\'<iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $show['flood_type'] . ';cat=' . $show['flood_cat'] . ';ord=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+      });
+    })(jQuery);
+    ';
+    drupal_add_js($floodlight_js, 'inline');
+    $output[] = '<noscript>';
+    $output[] = '<iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $show['flood_type'] . ';cat=' . $show['flood_cat'] . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>';
+    $output[] = '</noscript>';
+
+  }
+  // exit if not a show landing
+  else {
+    return;
+  }
+
+  return implode("\n", $output);
 }

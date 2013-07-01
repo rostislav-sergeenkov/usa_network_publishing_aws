@@ -83,20 +83,6 @@ function usanetwork_webform_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'recaptcha_private_key';
-  $strongarm->value = '6Lcmst8SAAAAAOsGz_NbQA0nUVI5xMEWtMT4JlU6';
-  $export['recaptcha_private_key'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'recaptcha_public_key';
-  $strongarm->value = '6Lcmst8SAAAAAOL8Bib6-FVK-8vXAUwC5q8V94AS';
-  $export['recaptcha_public_key'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'recaptcha_tabindex';
   $strongarm->value = '';
   $export['recaptcha_tabindex'] = $strongarm;

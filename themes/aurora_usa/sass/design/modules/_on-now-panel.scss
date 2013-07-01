@@ -22,6 +22,11 @@
   #jPanelMenu-menu {
     background-color: $gray-med-darker;
   }
+  &.logged-in {
+     #jPanelMenu-menu {
+      margin-top: 30px;
+     }
+  }
 }
 
 

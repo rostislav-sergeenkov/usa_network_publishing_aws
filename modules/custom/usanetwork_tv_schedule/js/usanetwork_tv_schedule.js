@@ -60,6 +60,11 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       break;
     }
 
+    var on_now_text = '';
+    var next_up_text = '';
+    var next_up_default_show_nid = '';
+    var on_now_default_show_nid = '';
+
     if (on_now_show == '' && tv_schedule != '') {
       for (var i=0; i<tv_schedule.length; i++) {
         if (show_time < tv_schedule[i]['ts']) {

@@ -60,18 +60,20 @@ function usanetwork_static_page_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'body' => array(
-        0 => 'body',
-        1 => 'field_show',
-      ),
       'title' => array(
         0 => 'title',
       ),
+      'body' => array(
+        0 => 'field_usa_og_description',
+      ),
+      'media' => array(
+        0 => 'field_usa_og_image',
+      ),
     ),
     'fields' => array(
-      'body' => 'body',
       'title' => 'title',
-      'field_show' => 'body',
+      'field_usa_og_description' => 'body',
+      'field_usa_og_image' => 'media',
     ),
     'classes' => array(),
   );

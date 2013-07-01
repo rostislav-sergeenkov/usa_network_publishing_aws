@@ -61,9 +61,8 @@ function usanetwork_static_page_field_default_fields() {
         ),
         'search_result' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -129,9 +128,6 @@ function usanetwork_static_page_field_default_fields() {
             ),
           ),
           'sort' => array(
-            'direction' => 'ASC',
-            'field' => 'body:value',
-            'property' => 'nid',
             'type' => 'none',
           ),
           'target_bundles' => array(
@@ -170,11 +166,8 @@ function usanetwork_static_page_field_default_fields() {
         ),
         'search_result' => array(
           'label' => 'hidden',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(

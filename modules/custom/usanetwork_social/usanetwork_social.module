@@ -224,7 +224,7 @@ function usanetwork_social_show_tab_nav() {
 /**
  * Show the GetGlue widget on social pages
  */
-function usanetwork_social_show_getglue($node) {
+function usanetwork_social_show_getglue($node = null) {
   $output = '';
   $lang = LANGUAGE_NONE;
   $arg = arg();
@@ -991,7 +991,7 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
   }
 
   $show = $showTokenName;
- 
+
   switch ($show) {
     case 'covertaffairs':
       $queryShow = 'caffairs';
@@ -1006,17 +1006,17 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
       $queryShow = $show;
       break;
   }
-  
+
   $query = urlencode("(childrenof:http://chatter.usanetwork.com/".$queryShow."/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:".$numCommentsToShow." children:0");
-  
+
   $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$query;
-  
+
   // get Echo query results
   $session = curl_init($echoApi);
   curl_setopt($session, CURLOPT_HEADER, false);
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
   $response = json_decode(trim(curl_exec($session)));
-  
+
   if (isset($response->entries)) {
     $output .= '<div id="usanetwork_social_show_homepage_chatter">
       <div id="usanetwork_social_chatter_title"><span class="panel-chatter-box">Chatter</span></div>';
@@ -1027,17 +1027,17 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
       $sourceName = strval($entries->source->name);
       $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
-      $markers = (isset($entries->object->markers) && 
-        is_array($entries->object->markers) && 
+      $markers = (isset($entries->object->markers) &&
+        is_array($entries->object->markers) &&
         count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
-  
+
       if ($sourceName == 'usanetwork') {
         //$sourceIcon = file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif'));
         $sourceUri = 'http://www.usanetwork.com';
       }
-  
+
       $time = usanetwork_social_ago(strtotime(strval($entries->postedTime)));
-  
+
       $output .= '
       <div class="echo-item-content">
         <div class="echo-item-container echo-item-container-root echo-item-depth-0">
@@ -1073,7 +1073,7 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
         </div>
       </div>
       ';
-  
+
     }
     $output .= '<a href="'.$showUrl.'/social/chat-with-fans">
         <div id="usanetwork_social_join">
@@ -1083,6 +1083,6 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
         </div>
       </div>';
   }
-  
+
   return $output;
 }

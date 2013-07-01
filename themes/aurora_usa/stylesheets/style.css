@@ -2290,6 +2290,9 @@ input[type="radio"], input[type="checkbox"] {
 .on-now-js-processed #jPanelMenu-menu {
   background-color: #313131;
 }
+.on-now-js-processed.logged-in #jPanelMenu-menu {
+  margin-top: 30px;
+}
 
 .show-on-now-wrapper {
   padding: 25px 20px 1em;
@@ -2375,6 +2378,10 @@ input[type="radio"], input[type="checkbox"] {
 #usanetwork_social_show_homepage_chatter .echo-item-content {
   padding-left: 20px;
   padding-left: 20px;
+  margin: 0;
+  color: #ebebeb;
+  border-bottom: 1px solid #505050;
+  border-top: 1px solid #161616;
 }
 @media (min-width: 960px) {
   #usanetwork_social_show_homepage_chatter .echo-item-content {
@@ -2417,6 +2424,7 @@ input[type="radio"], input[type="checkbox"] {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 18px;
+  border-top: 1px solid #505050;
 }
 @media (min-width: 960px) {
   #usanetwork_social_show_homepage_chatter #usanetwork_social_chatter_title {
@@ -2442,6 +2450,7 @@ input[type="radio"], input[type="checkbox"] {
   top: 40px;
   width: 100%;
   z-index: 1;
+  display: none;
 }
 #on-now-panel .tab-wrapper {
   cursor: pointer;
@@ -2460,7 +2469,7 @@ input[type="radio"], input[type="checkbox"] {
   background-color: #3d3d3d;
 }
 #on-now-panel .tab-wrapper.active + .item-list {
-  display: none;
+  display: block;
 }
 #on-now-panel .tab-wrapper.active:after {
   content: "";
@@ -2512,6 +2521,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 #on-now-panel .show-info-wrapper .show-info {
   display: table-cell;
+}
+#on-now-panel .show-info-wrapper .show-title, #on-now-panel .show-info-wrapper .episode-title {
+  text-transform: capitalize;
 }
 #on-now-panel .show-info-wrapper .show-title {
   font-size: 14px;
@@ -2936,7 +2948,7 @@ input[type="radio"], input[type="checkbox"] {
   -o-border-radius: 20px;
   border-radius: 20px;
 }
-.ie8 #head-search .form-type-searchfield label, .ie9 #head-search .form-type-searchfield label {
+.ie8 #head-search .form-type-searchfield label, .ie9 #head-search .form-type-searchfield label, .no-font-feature-settings #head-search .form-type-searchfield label {
   background: url(../images/svgs/search.svg) no-repeat 8px 9px transparent;
   text-indent: -9999px;
 }
@@ -3005,6 +3017,7 @@ input[type="radio"], input[type="checkbox"] {
     font-size: 20px;
     padding-top: 6px;
     width: 224px;
+    line-height: 1em;
     -webkit-transition-property: width;
     -moz-transition-property: width;
     -o-transition-property: width;
@@ -3714,15 +3727,15 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 12px;
   }
 }
-.usa-adrails .promo-metadata, .usa-adrails .upcoming-movie .meta, .upcoming-movie .usa-adrails .meta, .ie9 .promo-metadata, .ie9 .upcoming-movie .meta, .upcoming-movie .ie9 .meta, .ie8 .promo-metadata, .ie8 .upcoming-movie .meta, .upcoming-movie .ie8 .meta {
+.usa-adrails .promo-metadata, .usa-adrails .upcoming-movie .meta, .upcoming-movie .usa-adrails .meta, .ie8 .promo-metadata, .ie8 .upcoming-movie .meta, .upcoming-movie .ie8 .meta {
   padding: 17px 15px 8px;
 }
-.usa-adrails .promo-metadata h2, .usa-adrails .upcoming-movie .meta h2, .upcoming-movie .usa-adrails .meta h2, .ie9 .promo-metadata h2, .ie9 .upcoming-movie .meta h2, .upcoming-movie .ie9 .meta h2, .ie8 .promo-metadata h2, .ie8 .upcoming-movie .meta h2, .upcoming-movie .ie8 .meta h2 {
+.usa-adrails .promo-metadata h2, .usa-adrails .upcoming-movie .meta h2, .upcoming-movie .usa-adrails .meta h2, .ie8 .promo-metadata h2, .ie8 .upcoming-movie .meta h2, .upcoming-movie .ie8 .meta h2 {
   font-size: 20px;
   line-height: 22.5px;
   margin-bottom: 3px;
 }
-.usa-adrails .promo-metadata h3, .usa-adrails .upcoming-movie .meta h3, .upcoming-movie .usa-adrails .meta h3, .ie9 .promo-metadata h3, .ie9 .upcoming-movie .meta h3, .upcoming-movie .ie9 .meta h3, .ie8 .promo-metadata h3, .ie8 .upcoming-movie .meta h3, .upcoming-movie .ie8 .meta h3 {
+.usa-adrails .promo-metadata h3, .usa-adrails .upcoming-movie .meta h3, .upcoming-movie .usa-adrails .meta h3, .ie8 .promo-metadata h3, .ie8 .upcoming-movie .meta h3, .upcoming-movie .ie8 .meta h3 {
   font-size: 15px;
 }
 .promo-metadata .promo-cta, .upcoming-movie .meta .promo-cta {
@@ -3741,10 +3754,10 @@ input[type="radio"], input[type="checkbox"] {
     padding-left: 22px;
   }
 }
-.usa-adrails .promo-metadata .promo-cta, .usa-adrails .upcoming-movie .meta .promo-cta, .upcoming-movie .usa-adrails .meta .promo-cta, .ie9 .promo-metadata .promo-cta, .ie9 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie9 .meta .promo-cta, .ie8 .promo-metadata .promo-cta, .ie8 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie8 .meta .promo-cta {
+.usa-adrails .promo-metadata .promo-cta, .usa-adrails .upcoming-movie .meta .promo-cta, .upcoming-movie .usa-adrails .meta .promo-cta, .ie8 .promo-metadata .promo-cta, .ie8 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie8 .meta .promo-cta {
   width: 44px;
 }
-.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .usa-adrails .meta .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .usa-adrails .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .usa-adrails .meta .promo-cta ~ h3, .ie9 .promo-metadata .promo-cta ~ h2, .ie9 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie9 .meta .promo-cta ~ h2, .ie9 .promo-metadata .promo-cta ~ h3, .ie9 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie9 .meta .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie8 .meta .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3, .ie8 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie8 .meta .promo-cta ~ h3 {
+.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .usa-adrails .meta .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .usa-adrails .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .usa-adrails .meta .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie8 .meta .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3, .ie8 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie8 .meta .promo-cta ~ h3 {
   padding-left: 56px;
 }
 
@@ -3762,7 +3775,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 930px;
   }
 }
-.usa-adrails .tiles, .ie9 .tiles, .ie8 .tiles {
+.usa-adrails .tiles, .ie8 .tiles {
   width: 930px !important;
 }
 @media (min-width: 1275px) {
@@ -3825,7 +3838,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 1245px;
   }
 }
-.usa-adrails .tiles .a-spot, .ie9 .tiles .a-spot, .ie8 .tiles .a-spot {
+.usa-adrails .tiles .a-spot, .ie8 .tiles .a-spot {
   height: 378px;
   width: 930px;
 }
@@ -3858,7 +3871,7 @@ input[type="radio"], input[type="checkbox"] {
     position: absolute;
   }
 }
-.usa-adrails .tiles .ad, .ie9 .tiles .ad, .ie8 .tiles .ad {
+.usa-adrails .tiles .ad, .ie8 .tiles .ad {
   display: inline;
   float: right;
   height: 250px;
@@ -3909,31 +3922,31 @@ input[type="radio"], input[type="checkbox"] {
   .tiles .b-spot .media-wide {
     display: block;
   }
-  .usa-adrails .tiles .b-spot, .ie9 .tiles .b-spot, .ie8 .tiles .b-spot {
+  .usa-adrails .tiles .b-spot, .ie8 .tiles .b-spot {
     display: inline;
     float: left;
     height: 250px;
     width: 300px;
     margin-right: 15px;
   }
-  .usa-adrails .tiles .b-spot .media-normal, .ie9 .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
+  .usa-adrails .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
     display: block;
   }
-  .usa-adrails .tiles .b-spot .media-wide, .ie9 .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
+  .usa-adrails .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
     display: none;
   }
 }
-.usa-adrails .tiles .b-spot, .ie9 .tiles .b-spot, .ie8 .tiles .b-spot {
+.usa-adrails .tiles .b-spot, .ie8 .tiles .b-spot {
   display: inline;
   float: left;
   height: 250px;
   width: 300px;
   margin-right: 15px;
 }
-.usa-adrails .tiles .b-spot .media-normal, .ie9 .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
+.usa-adrails .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
   display: block;
 }
-.usa-adrails .tiles .b-spot .media-wide, .ie9 .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
+.usa-adrails .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
   display: none;
 }
 .tiles .c-spot, .tiles .upcoming-movie {
@@ -3948,7 +3961,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 300px;
   }
 }
-.usa-adrails .tiles .c-spot, .usa-adrails .tiles .upcoming-movie, .ie9 .tiles .c-spot, .ie9 .tiles .upcoming-movie, .ie8 .tiles .c-spot, .ie8 .tiles .upcoming-movie {
+.usa-adrails .tiles .c-spot, .usa-adrails .tiles .upcoming-movie, .ie8 .tiles .c-spot, .ie8 .tiles .upcoming-movie {
   margin-right: 15px;
   margin-bottom: 15px;
   height: 250px;
@@ -4015,10 +4028,12 @@ input[type="radio"], input[type="checkbox"] {
   top: -32px;
   padding-bottom: 8px;
 }
-.tiles .flex-control-paging li {
+.tiles .flex-control-paging x
+li {
   margin: 0 5px;
 }
-.tiles .flex-control-paging li a {
+.tiles .flex-control-paging x
+li a {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -4026,7 +4041,9 @@ input[type="radio"], input[type="checkbox"] {
   height: 14px;
   width: 14px;
 }
-.tiles .flex-control-paging li a.flex-active, .tiles .flex-control-paging li a:hover {
+.tiles .flex-control-paging x
+li a.flex-active, .tiles .flex-control-paging x
+li a:hover {
   background: white;
   border: 1px solid #ebebeb;
 }
@@ -4069,7 +4086,7 @@ input[type="radio"], input[type="checkbox"] {
     max-width: none;
   }
 }
-.usa-adrails .usa-home-featured li.carousel-item .meta, .ie9 .usa-home-featured li.carousel-item .meta, .ie8 .usa-home-featured li.carousel-item .meta {
+.usa-adrails .usa-home-featured li.carousel-item .meta, .ie8 .usa-home-featured li.carousel-item .meta {
   height: 50px;
   padding: 8px 15px 8px;
   max-width: 221px;
@@ -4091,7 +4108,7 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 24px;
   }
 }
-.usa-adrails .usa-home-featured .caption, .ie9 .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
+.usa-adrails .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
   font-size: 10px;
   line-height: 12px;
 }
@@ -4649,7 +4666,10 @@ body.person-page .ad-leaderboard {
   height: 28px;
   display: table-cell;
   width: 50px;
-  background-position: 0 50%;
+  background-position: 31px 50%;
+}
+.no-font-feature-settings.ie9 #on-now, .no-font-feature-settings.ie8 #on-now {
+  background-position: 15px 50%;
 }
 #on-now.trigger {
   padding-left: 14px;

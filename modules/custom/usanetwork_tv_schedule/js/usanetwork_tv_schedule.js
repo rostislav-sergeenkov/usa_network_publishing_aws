@@ -77,11 +77,14 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       on_now_show = on_now_default_show;
     }
 
-    $.ajax({
-      url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?on_now="+on_now_text+"&next_up="+next_up_text,
-    }).done(function ( data ) {
-      $('#block-usanetwork-tv-schedule-usa-on-now-panel .content').html(data); 
-    });
+    if (!$('body').hasClass('on-now-js-processed')) {
+      $.ajax({
+        url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?on_now="+on_now_text+"&next_up="+next_up_text,
+      }).done(function ( data ) {
+        $('#block-usanetwork-tv-schedule-usa-on-now-panel .content').html(data); 
+      });
+      $('body').addClass('on-now-js-processed');
+    }
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 
   }
 }

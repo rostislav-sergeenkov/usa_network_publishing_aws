@@ -445,10 +445,10 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '<div class="show-info">';
 
   // show name
-  $output .= '<div class="show-title">' . l($node->title, $path) . '</div>';
+  $output .= '<div class="show-title">' . l(ucwords(strtolower($node->title)), $path) . '</div>';
 
   // episode name
-  $output .= '<div class="episode-title">' . l($text, $path) . '</div>';
+  $output .= '<div class="episode-title">' . l(ucwords(strtolower($text)), $path) . '</div>';
 
   $output .= '</div>';
 

@@ -58,6 +58,9 @@
     @include replace-text-with-dimensions('icons/on_now.png');
     display: table-cell;
     width: 50px;
+    background-position: 31px 50%;
+  }
+  .no-font-feature-settings.ie9 &, .no-font-feature-settings.ie8 & {
     background-position: 0 50%;
   }
   &.trigger {

@@ -1344,10 +1344,19 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .node-unpublished {
-  background-color: #000000;
-  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
-  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: -webkit-repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+}
+.node-unpublished:before {
+  content: "unpublished";
+  display: block;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  background: #f8981d;
+  padding: 0.3em;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
@@ -2364,6 +2373,7 @@ input[type="radio"], input[type="checkbox"] {
   text-transform: uppercase;
   z-index: 99;
   display: inline-block;
+  text-shadow: 0 0 1.5em black;
 }
 @media (min-width: 960px) {
   .show-on-sync span {
@@ -2371,11 +2381,11 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
-#usanetwork_social_show_homepage_chatter {
-  background-color: #313131;
+.block-usanetwork-tv-schedule #usanetwork_social_show_homepage_chatter {
   padding-bottom: 50px;
+  background-color: #313131;
 }
-#usanetwork_social_show_homepage_chatter .echo-item-content {
+.block-usanetwork-tv-schedule .echo-item-content {
   padding-left: 20px;
   padding-left: 20px;
   margin: 0;
@@ -2384,50 +2394,50 @@ input[type="radio"], input[type="checkbox"] {
   border-top: 1px solid #161616;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-content {
+  .block-usanetwork-tv-schedule .echo-item-content {
     padding-left: 25px;
     padding-right: 25px;
   }
 }
-#usanetwork_social_show_homepage_chatter .echo-item-authorName {
+.block-usanetwork-tv-schedule .echo-item-authorName {
   color: #717274;
   font-size: 14px;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-authorName {
+  .block-usanetwork-tv-schedule .echo-item-authorName {
     font-size: 20px;
   }
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-data {
+  .block-usanetwork-tv-schedule .echo-item-data {
     font-size: 16px;
   }
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join {
+.block-usanetwork-tv-schedule #usanetwork_social_join {
   background-color: #1f1f1f;
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+.block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg {
   font-size: 16px;
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg:before {
+.block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg:before {
   top: 1px;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+  .block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg {
     font-size: 22px;
   }
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg:before {
+  .block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg:before {
     top: 5px;
   }
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_chatter_title {
+.block-usanetwork-tv-schedule #usanetwork_social_chatter_title {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 18px;
   border-top: 1px solid #505050;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_chatter_title {
+  .block-usanetwork-tv-schedule #usanetwork_social_chatter_title {
     padding-left: 25px;
     padding-right: 25px;
     font-size: 24px;
@@ -4665,11 +4675,8 @@ body.person-page .ad-leaderboard {
   width: 35px;
   height: 28px;
   display: table-cell;
-  width: 50px;
-  background-position: 31px 50%;
-}
-.no-font-feature-settings.ie9 #on-now, .no-font-feature-settings.ie8 #on-now {
-  background-position: 15px 50%;
+  width: 75px;
+  background-position: 21px 50%;
 }
 #on-now.trigger {
   padding-left: 14px;
@@ -6672,6 +6679,10 @@ input.echo-submit-text {
   width: 100%;
 }
 
+#usanetwork_social_show_homepage_chatter {
+  background-color: #2d2d2d;
+}
+
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid #3d3d3d;
   color: white;
@@ -7241,7 +7252,7 @@ a[class*="day"] {
     top: 0;
   }
 }
-.ie9 .snipe-msg .close, .ie8 .snipe-msg .close {
+.ie9 .snipe-msg .close, .ie8 .snipe-msg .close, .no-font-feature-settings .snipe-msg .close {
   background: url(../images/svgs/ie_x1.svg) no-repeat top left;
   height: 20px;
   width: 20px;
@@ -7408,8 +7419,13 @@ a[class*="day"] {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 0 0px;
   line-height: 1em;
+}
+@media (min-width: 768px) {
+  .ad-leaderboard {
+    padding-bottom: 10px;
+  }
 }
 .usa-adrails .ad-leaderboard {
   padding-top: 0;

@@ -20,7 +20,7 @@ Drupal.behaviors.usanetwork_snipe = {
             close = false;
         });
       }
-    }, 5000);
+    }, 1000);
   }
 }
 })(jQuery);

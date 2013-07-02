@@ -72,6 +72,7 @@
     z-index: 99;
     @extend .icons-sync-now-small;
     display: inline-block;
+    @include text-shadow( 0 0 1.5em $black-true);
     @include breakpoint($bp-menu-wide) {
       font-size: 18px;
     }  

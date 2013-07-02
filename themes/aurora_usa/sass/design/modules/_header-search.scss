@@ -93,7 +93,7 @@
     margin: 0;
     outline: none;
     label  {
-      .ie8 &, .ie9 & {
+      .ie8 &, .ie9 &, .no-font-feature-settings & {
         background: url(../images/svgs/search.svg) no-repeat 8px 9px transparent;
         text-indent: -9999px;
       }
@@ -155,6 +155,7 @@
         font-size: 20px;
         padding-top: 6px;
         width: 224px;
+        line-height: 1em;
         @include transition-property(width);
         @include transition-duration(0.2s);
       }  

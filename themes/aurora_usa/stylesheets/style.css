@@ -1344,10 +1344,19 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .node-unpublished {
-  background-color: #000000;
-  background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
-  background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(31, 31, 31, 0.5) 35px, rgba(31, 31, 31, 0.5) 70px);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: -webkit-repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: -moz-repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+  background-image: repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 35px, rgba(248, 152, 29, 0.25) 35px, rgba(248, 152, 29, 0.25) 70px);
+}
+.node-unpublished:before {
+  content: "unpublished";
+  display: block;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  background: #f8981d;
+  padding: 0.3em;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
@@ -2290,6 +2299,9 @@ input[type="radio"], input[type="checkbox"] {
 .on-now-js-processed #jPanelMenu-menu {
   background-color: #313131;
 }
+.on-now-js-processed.logged-in #jPanelMenu-menu {
+  margin-top: 30px;
+}
 
 .show-on-now-wrapper {
   padding: 25px 20px 1em;
@@ -2361,6 +2373,7 @@ input[type="radio"], input[type="checkbox"] {
   text-transform: uppercase;
   z-index: 99;
   display: inline-block;
+  text-shadow: 0 0 1.5em black;
 }
 @media (min-width: 960px) {
   .show-on-sync span {
@@ -2368,58 +2381,63 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
-#usanetwork_social_show_homepage_chatter {
-  background-color: #313131;
+.block-usanetwork-tv-schedule #usanetwork_social_show_homepage_chatter {
   padding-bottom: 50px;
+  background-color: #313131;
 }
-#usanetwork_social_show_homepage_chatter .echo-item-content {
+.block-usanetwork-tv-schedule .echo-item-content {
   padding-left: 20px;
   padding-left: 20px;
+  margin: 0;
+  color: #ebebeb;
+  border-bottom: 1px solid #505050;
+  border-top: 1px solid #161616;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-content {
+  .block-usanetwork-tv-schedule .echo-item-content {
     padding-left: 25px;
     padding-right: 25px;
   }
 }
-#usanetwork_social_show_homepage_chatter .echo-item-authorName {
+.block-usanetwork-tv-schedule .echo-item-authorName {
   color: #717274;
   font-size: 14px;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-authorName {
+  .block-usanetwork-tv-schedule .echo-item-authorName {
     font-size: 20px;
   }
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter .echo-item-data {
+  .block-usanetwork-tv-schedule .echo-item-data {
     font-size: 16px;
   }
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join {
+.block-usanetwork-tv-schedule #usanetwork_social_join {
   background-color: #1f1f1f;
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+.block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg {
   font-size: 16px;
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg:before {
+.block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg:before {
   top: 1px;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg {
+  .block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg {
     font-size: 22px;
   }
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_join .usanetwork_social_join_msg:before {
+  .block-usanetwork-tv-schedule #usanetwork_social_join .usanetwork_social_join_msg:before {
     top: 5px;
   }
 }
-#usanetwork_social_show_homepage_chatter #usanetwork_social_chatter_title {
+.block-usanetwork-tv-schedule #usanetwork_social_chatter_title {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 18px;
+  border-top: 1px solid #505050;
 }
 @media (min-width: 960px) {
-  #usanetwork_social_show_homepage_chatter #usanetwork_social_chatter_title {
+  .block-usanetwork-tv-schedule #usanetwork_social_chatter_title {
     padding-left: 25px;
     padding-right: 25px;
     font-size: 24px;
@@ -2442,6 +2460,7 @@ input[type="radio"], input[type="checkbox"] {
   top: 40px;
   width: 100%;
   z-index: 1;
+  display: none;
 }
 #on-now-panel .tab-wrapper {
   cursor: pointer;
@@ -2460,7 +2479,7 @@ input[type="radio"], input[type="checkbox"] {
   background-color: #3d3d3d;
 }
 #on-now-panel .tab-wrapper.active + .item-list {
-  display: none;
+  display: block;
 }
 #on-now-panel .tab-wrapper.active:after {
   content: "";
@@ -2512,6 +2531,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 #on-now-panel .show-info-wrapper .show-info {
   display: table-cell;
+}
+#on-now-panel .show-info-wrapper .show-title, #on-now-panel .show-info-wrapper .episode-title {
+  text-transform: capitalize;
 }
 #on-now-panel .show-info-wrapper .show-title {
   font-size: 14px;
@@ -2936,7 +2958,7 @@ input[type="radio"], input[type="checkbox"] {
   -o-border-radius: 20px;
   border-radius: 20px;
 }
-.ie8 #head-search .form-type-searchfield label, .ie9 #head-search .form-type-searchfield label {
+.ie8 #head-search .form-type-searchfield label, .ie9 #head-search .form-type-searchfield label, .no-font-feature-settings #head-search .form-type-searchfield label {
   background: url(../images/svgs/search.svg) no-repeat 8px 9px transparent;
   text-indent: -9999px;
 }
@@ -3005,6 +3027,7 @@ input[type="radio"], input[type="checkbox"] {
     font-size: 20px;
     padding-top: 6px;
     width: 224px;
+    line-height: 1em;
     -webkit-transition-property: width;
     -moz-transition-property: width;
     -o-transition-property: width;
@@ -3714,15 +3737,15 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 12px;
   }
 }
-.usa-adrails .promo-metadata, .usa-adrails .upcoming-movie .meta, .upcoming-movie .usa-adrails .meta, .ie9 .promo-metadata, .ie9 .upcoming-movie .meta, .upcoming-movie .ie9 .meta, .ie8 .promo-metadata, .ie8 .upcoming-movie .meta, .upcoming-movie .ie8 .meta {
+.usa-adrails .promo-metadata, .usa-adrails .upcoming-movie .meta, .upcoming-movie .usa-adrails .meta, .ie8 .promo-metadata, .ie8 .upcoming-movie .meta, .upcoming-movie .ie8 .meta {
   padding: 17px 15px 8px;
 }
-.usa-adrails .promo-metadata h2, .usa-adrails .upcoming-movie .meta h2, .upcoming-movie .usa-adrails .meta h2, .ie9 .promo-metadata h2, .ie9 .upcoming-movie .meta h2, .upcoming-movie .ie9 .meta h2, .ie8 .promo-metadata h2, .ie8 .upcoming-movie .meta h2, .upcoming-movie .ie8 .meta h2 {
+.usa-adrails .promo-metadata h2, .usa-adrails .upcoming-movie .meta h2, .upcoming-movie .usa-adrails .meta h2, .ie8 .promo-metadata h2, .ie8 .upcoming-movie .meta h2, .upcoming-movie .ie8 .meta h2 {
   font-size: 20px;
   line-height: 22.5px;
   margin-bottom: 3px;
 }
-.usa-adrails .promo-metadata h3, .usa-adrails .upcoming-movie .meta h3, .upcoming-movie .usa-adrails .meta h3, .ie9 .promo-metadata h3, .ie9 .upcoming-movie .meta h3, .upcoming-movie .ie9 .meta h3, .ie8 .promo-metadata h3, .ie8 .upcoming-movie .meta h3, .upcoming-movie .ie8 .meta h3 {
+.usa-adrails .promo-metadata h3, .usa-adrails .upcoming-movie .meta h3, .upcoming-movie .usa-adrails .meta h3, .ie8 .promo-metadata h3, .ie8 .upcoming-movie .meta h3, .upcoming-movie .ie8 .meta h3 {
   font-size: 15px;
 }
 .promo-metadata .promo-cta, .upcoming-movie .meta .promo-cta {
@@ -3741,10 +3764,10 @@ input[type="radio"], input[type="checkbox"] {
     padding-left: 22px;
   }
 }
-.usa-adrails .promo-metadata .promo-cta, .usa-adrails .upcoming-movie .meta .promo-cta, .upcoming-movie .usa-adrails .meta .promo-cta, .ie9 .promo-metadata .promo-cta, .ie9 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie9 .meta .promo-cta, .ie8 .promo-metadata .promo-cta, .ie8 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie8 .meta .promo-cta {
+.usa-adrails .promo-metadata .promo-cta, .usa-adrails .upcoming-movie .meta .promo-cta, .upcoming-movie .usa-adrails .meta .promo-cta, .ie8 .promo-metadata .promo-cta, .ie8 .upcoming-movie .meta .promo-cta, .upcoming-movie .ie8 .meta .promo-cta {
   width: 44px;
 }
-.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .usa-adrails .meta .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .usa-adrails .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .usa-adrails .meta .promo-cta ~ h3, .ie9 .promo-metadata .promo-cta ~ h2, .ie9 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie9 .meta .promo-cta ~ h2, .ie9 .promo-metadata .promo-cta ~ h3, .ie9 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie9 .meta .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie8 .meta .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3, .ie8 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie8 .meta .promo-cta ~ h3 {
+.usa-adrails .promo-metadata .promo-cta ~ h2, .usa-adrails .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .usa-adrails .meta .promo-cta ~ h2, .usa-adrails .promo-metadata .promo-cta ~ h3, .usa-adrails .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .usa-adrails .meta .promo-cta ~ h3, .ie8 .promo-metadata .promo-cta ~ h2, .ie8 .upcoming-movie .meta .promo-cta ~ h2, .upcoming-movie .ie8 .meta .promo-cta ~ h2, .ie8 .promo-metadata .promo-cta ~ h3, .ie8 .upcoming-movie .meta .promo-cta ~ h3, .upcoming-movie .ie8 .meta .promo-cta ~ h3 {
   padding-left: 56px;
 }
 
@@ -3762,7 +3785,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 930px;
   }
 }
-.usa-adrails .tiles, .ie9 .tiles, .ie8 .tiles {
+.usa-adrails .tiles, .ie8 .tiles {
   width: 930px !important;
 }
 @media (min-width: 1275px) {
@@ -3825,7 +3848,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 1245px;
   }
 }
-.usa-adrails .tiles .a-spot, .ie9 .tiles .a-spot, .ie8 .tiles .a-spot {
+.usa-adrails .tiles .a-spot, .ie8 .tiles .a-spot {
   height: 378px;
   width: 930px;
 }
@@ -3858,7 +3881,7 @@ input[type="radio"], input[type="checkbox"] {
     position: absolute;
   }
 }
-.usa-adrails .tiles .ad, .ie9 .tiles .ad, .ie8 .tiles .ad {
+.usa-adrails .tiles .ad, .ie8 .tiles .ad {
   display: inline;
   float: right;
   height: 250px;
@@ -3909,31 +3932,31 @@ input[type="radio"], input[type="checkbox"] {
   .tiles .b-spot .media-wide {
     display: block;
   }
-  .usa-adrails .tiles .b-spot, .ie9 .tiles .b-spot, .ie8 .tiles .b-spot {
+  .usa-adrails .tiles .b-spot, .ie8 .tiles .b-spot {
     display: inline;
     float: left;
     height: 250px;
     width: 300px;
     margin-right: 15px;
   }
-  .usa-adrails .tiles .b-spot .media-normal, .ie9 .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
+  .usa-adrails .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
     display: block;
   }
-  .usa-adrails .tiles .b-spot .media-wide, .ie9 .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
+  .usa-adrails .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
     display: none;
   }
 }
-.usa-adrails .tiles .b-spot, .ie9 .tiles .b-spot, .ie8 .tiles .b-spot {
+.usa-adrails .tiles .b-spot, .ie8 .tiles .b-spot {
   display: inline;
   float: left;
   height: 250px;
   width: 300px;
   margin-right: 15px;
 }
-.usa-adrails .tiles .b-spot .media-normal, .ie9 .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
+.usa-adrails .tiles .b-spot .media-normal, .ie8 .tiles .b-spot .media-normal {
   display: block;
 }
-.usa-adrails .tiles .b-spot .media-wide, .ie9 .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
+.usa-adrails .tiles .b-spot .media-wide, .ie8 .tiles .b-spot .media-wide {
   display: none;
 }
 .tiles .c-spot, .tiles .upcoming-movie {
@@ -3948,7 +3971,7 @@ input[type="radio"], input[type="checkbox"] {
     width: 300px;
   }
 }
-.usa-adrails .tiles .c-spot, .usa-adrails .tiles .upcoming-movie, .ie9 .tiles .c-spot, .ie9 .tiles .upcoming-movie, .ie8 .tiles .c-spot, .ie8 .tiles .upcoming-movie {
+.usa-adrails .tiles .c-spot, .usa-adrails .tiles .upcoming-movie, .ie8 .tiles .c-spot, .ie8 .tiles .upcoming-movie {
   margin-right: 15px;
   margin-bottom: 15px;
   height: 250px;
@@ -4015,10 +4038,12 @@ input[type="radio"], input[type="checkbox"] {
   top: -32px;
   padding-bottom: 8px;
 }
-.tiles .flex-control-paging li {
+.tiles .flex-control-paging x
+li {
   margin: 0 5px;
 }
-.tiles .flex-control-paging li a {
+.tiles .flex-control-paging x
+li a {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -4026,7 +4051,9 @@ input[type="radio"], input[type="checkbox"] {
   height: 14px;
   width: 14px;
 }
-.tiles .flex-control-paging li a.flex-active, .tiles .flex-control-paging li a:hover {
+.tiles .flex-control-paging x
+li a.flex-active, .tiles .flex-control-paging x
+li a:hover {
   background: white;
   border: 1px solid #ebebeb;
 }
@@ -4069,7 +4096,7 @@ input[type="radio"], input[type="checkbox"] {
     max-width: none;
   }
 }
-.usa-adrails .usa-home-featured li.carousel-item .meta, .ie9 .usa-home-featured li.carousel-item .meta, .ie8 .usa-home-featured li.carousel-item .meta {
+.usa-adrails .usa-home-featured li.carousel-item .meta, .ie8 .usa-home-featured li.carousel-item .meta {
   height: 50px;
   padding: 8px 15px 8px;
   max-width: 221px;
@@ -4091,7 +4118,7 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 24px;
   }
 }
-.usa-adrails .usa-home-featured .caption, .ie9 .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
+.usa-adrails .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
   font-size: 10px;
   line-height: 12px;
 }
@@ -4648,8 +4675,8 @@ body.person-page .ad-leaderboard {
   width: 35px;
   height: 28px;
   display: table-cell;
-  width: 50px;
-  background-position: 0 50%;
+  width: 75px;
+  background-position: 21px 50%;
 }
 #on-now.trigger {
   padding-left: 14px;
@@ -6652,6 +6679,10 @@ input.echo-submit-text {
   width: 100%;
 }
 
+#usanetwork_social_show_homepage_chatter {
+  background-color: #2d2d2d;
+}
+
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid #3d3d3d;
   color: white;
@@ -7221,7 +7252,7 @@ a[class*="day"] {
     top: 0;
   }
 }
-.ie9 .snipe-msg .close, .ie8 .snipe-msg .close {
+.ie9 .snipe-msg .close, .ie8 .snipe-msg .close, .no-font-feature-settings .snipe-msg .close {
   background: url(../images/svgs/ie_x1.svg) no-repeat top left;
   height: 20px;
   width: 20px;
@@ -7388,8 +7419,13 @@ a[class*="day"] {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 0 0px;
   line-height: 1em;
+}
+@media (min-width: 768px) {
+  .ad-leaderboard {
+    padding-bottom: 10px;
+  }
 }
 .usa-adrails .ad-leaderboard {
   padding-top: 0;

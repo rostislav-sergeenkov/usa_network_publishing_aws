@@ -47,7 +47,7 @@ function usanetwork_catchall_strongarm() {
         'custom_settings' => TRUE,
       ),
       'search_index' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'block_cover_title_lg' => array(
         'custom_settings' => FALSE,

@@ -241,7 +241,7 @@ function pub_tv_overrides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_plain',
-          'weight' => '48',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -343,7 +343,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '58',
+          'weight' => '64',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -437,7 +437,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '59',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -554,7 +554,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '31',
+          'weight' => '60',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -663,7 +663,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '33',
+          'weight' => '62',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -813,7 +813,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '32',
+          'weight' => '61',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -935,7 +935,7 @@ function pub_tv_overrides_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '57',
+          'weight' => '63',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1031,7 +1031,7 @@ function pub_tv_overrides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_plain',
-          'weight' => '49',
+          'weight' => '3',
         ),
         'search_result' => array(
           'label' => 'above',

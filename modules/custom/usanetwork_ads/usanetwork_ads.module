@@ -1005,13 +1005,15 @@ function usanetwork_ads_dart_floodlight() {
   if ($node && $node->type == 'tv_show' && arg(2) == '') {
     $custompath = drupal_get_path_alias('node/'.$node->nid);
     $path_parts = explode('/', $custompath);
-    $show = $flooded_shows[$path_parts['0']];
 
     // if the show is not in our array
     // do not render this block
-    if (!isset($show)) {
+    if (!isset($flooded_shows[$path_parts['0']])) {
       return;
     }
+
+    $show = $flooded_shows[$path_parts['0']];
+
 
     // code for the block
     $floodlight_js = '

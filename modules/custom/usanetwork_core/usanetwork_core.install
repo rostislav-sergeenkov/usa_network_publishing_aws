@@ -248,3 +248,10 @@ function usanetwork_core_update_7104() {
   module_enable($modules);
 }
 
+/**
+ * Enable usanetwork_opengraph module
+ */
+function usanetwork_core_update_7105() {
+  $modules = array('usanetwork_opengraph');
+  module_enable($modules);
+}

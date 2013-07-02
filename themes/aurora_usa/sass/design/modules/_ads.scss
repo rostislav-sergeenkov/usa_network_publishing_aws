@@ -17,8 +17,11 @@
 
 .ad-leaderboard {
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 0 0px;
   line-height: 1em;
+  @include breakpoint($bp-ad-leaderboard-med-width) {
+    padding-bottom: 10px;
+  }
   .usa-adrails & {
     padding-top: 0;
   }

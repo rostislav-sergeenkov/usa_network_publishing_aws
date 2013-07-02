@@ -45,21 +45,19 @@ function usanetwork_catchall_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'media' => array(
-        0 => 'field_usa_catchall_media',
-      ),
       'body' => array(
-        0 => 'field_show',
-        1 => 'field_usa_catchall_html',
+        0 => 'field_usa_og_description',
+      ),
+      'media' => array(
+        0 => 'field_usa_og_image',
       ),
       'title' => array(
         0 => 'title',
       ),
     ),
     'fields' => array(
-      'field_usa_catchall_media' => 'media',
-      'field_show' => 'body',
-      'field_usa_catchall_html' => 'body',
+      'field_usa_og_description' => 'body',
+      'field_usa_og_image' => 'media',
       'title' => 'title',
     ),
     'classes' => array(),

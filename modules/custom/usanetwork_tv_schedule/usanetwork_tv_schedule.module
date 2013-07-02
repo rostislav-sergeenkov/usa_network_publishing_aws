@@ -449,7 +449,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
-    $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image), $path.'/social/sync', array('html' => true)) . '</figure><span>sync now</span></div>';
+    $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path.'/social/sync', array('html' => true)) . '</figure></div>';
   } else {
     $output .= '<div class="show-on-now-wrapper"><figure>' . theme('image_style', $on_now_image) . '</figure>';
   }
@@ -466,7 +466,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   }
 
   // episode name
-  $output .= '<div class="episode-title">' . l($text, $path) . '</div>';
+  $output .= '<div class="episode-title">' . l(ucwords(strtolower($text)), $path) . '</div>';
 
   $output .= '</div>';
 

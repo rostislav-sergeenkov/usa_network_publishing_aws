@@ -117,6 +117,10 @@ $bp-home-narrowest: max-width ($bp-home-2col - 1);
 $bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
 $bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
 
+
+// ad leaderboard
+$bp-ad-leaderboard-med-width: 768px;
+
 // person page breakpoints
 $bp-person-small-width: 330px;
 $bp-person-mid-two-width: 390px;

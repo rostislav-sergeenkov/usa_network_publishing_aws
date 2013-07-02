@@ -319,8 +319,15 @@ $logo-height-med-2: 32px;
 //////////////
 #mega-nav {
   .block {
-    display: inline-block;
+    display: inline-block;   
+    position: relative;
+    z-index: 10; 
   }
+  .snipe-active {
+    .block {
+      position: absolute;
+    }
+  }   
 }
 #block-usanetwork-blocks-usa-tv-show-menu {
   display: inline-block;

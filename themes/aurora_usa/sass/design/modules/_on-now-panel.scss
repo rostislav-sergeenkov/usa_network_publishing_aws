@@ -78,9 +78,12 @@
   }
 }
 
-#usanetwork_social_show_homepage_chatter {
-  background-color: $gray-med-darker;
-  padding-bottom: 50px;
+
+#block-usanetwork-tv-schedule-usa-on-now-panel {  
+  #usanetwork_social_show_homepage_chatter {
+    padding-bottom: 50px;
+    background-color: $gray-med-darker;
+  }
   .echo-item-content {
     padding-left: 20px;
     padding-left: 20px;

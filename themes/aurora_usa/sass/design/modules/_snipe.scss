@@ -68,7 +68,7 @@
     @include breakpoint($bp-menu-switch) {
       top: 0;
     }  
-    .ie9 &, .ie8 & {
+    .ie9 &, .ie8 &, .no-font-feature-settings & {
       background: url(../images/svgs/ie_x1.svg) no-repeat top left;
       height: 20px;
       width: 20px;

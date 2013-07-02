@@ -611,6 +611,28 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
   }
 }
 
+function aurora_usa_preprocess_views_view_unformatted(&$vars) {
+  $view = $vars['view'];
+  switch($view->name) {
+    case 'usa_gallery' :
+      if ($vars['view']->current_display == 'panel_pane_1' 
+        || $vars['view']->current_display == 'panel_pane_3' 
+        || $vars['view']->current_display == 'panel_pane_4') {
+        //get node id for page
+        $nid = arg(1);
+        //loop thru gallery results
+        foreach($view->result as $delta => $item) {
+          //if gallery node id == node id for page add class
+          if($item->nid == $nid) {
+            $vars['classes_array'][$delta] .= ' active';
+          }
+        }
+      }
+    break;
+  }
+}
+
+
 /**
  * Override or insert css on the site.
  *

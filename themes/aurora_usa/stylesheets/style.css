@@ -2083,6 +2083,17 @@ input[type="radio"], input[type="checkbox"] {
 #mega-nav .block {
   display: inline-block;
 }
+@media (min-width: 300px) and (max-width: 768px) {
+  #mega-nav .block {
+    position: relative;
+    z-index: 10;
+  }
+}
+@media (min-width: 300px) and (max-width: 768px) {
+  #mega-nav .snipe-active .block {
+    position: absolute;
+  }
+}
 
 #block-usanetwork-blocks-usa-tv-show-menu {
   display: inline-block;
@@ -7186,7 +7197,7 @@ a[class*="day"] {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .snipe-msg {
     width: 67%;
   }

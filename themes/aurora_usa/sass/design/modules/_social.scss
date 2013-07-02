@@ -764,8 +764,11 @@ input.echo-submit-text {
   &.panel-two-cols .panel-col1 {
     @extend %two-to-one-col-social-content-sidebar;
   }
-
 }
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: $gray-dark;
+}  
 
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid $gray-med;

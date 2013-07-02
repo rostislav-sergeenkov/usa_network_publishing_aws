@@ -319,13 +319,18 @@ $logo-height-med-2: 32px;
 //////////////
 #mega-nav {
   .block {
-    display: inline-block;   
-    position: relative;
-    z-index: 10; 
+    display: inline-block; 
+    @include breakpoint($bp-snipe-small-width-range) {
+      position: relative;
+      z-index: 10; 
+    }  
+  
   }
   .snipe-active {
     .block {
-      position: absolute;
+      @include breakpoint($bp-snipe-small-width-range) {
+        position: absolute;
+      }
     }
   }   
 }

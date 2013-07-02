@@ -2082,6 +2082,11 @@ input[type="radio"], input[type="checkbox"] {
 
 #mega-nav .block {
   display: inline-block;
+  position: relative;
+  z-index: 10;
+}
+#mega-nav .snipe-active .block {
+  position: absolute;
 }
 
 #block-usanetwork-blocks-usa-tv-show-menu {

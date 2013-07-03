@@ -30,7 +30,7 @@ function usanetwork_snipe_field_default_fields() {
           'hour' => 'hour',
           'minute' => 'minute',
           'month' => 'month',
-          'second' => 0,
+          'second' => 'second',
           'year' => 'year',
         ),
         'timezone_db' => '',

@@ -74,7 +74,7 @@ function usanetwork_snipe_block_callback() {
           $snipe_end = date('F d, Y H:i:s', $snipe_end);
         } else {
           // set end of day as end date if the length is 0
-          $snipe_end = date('F d, Y 23:59:59', $snipe_end);
+          $snipe_end = date('F d, Y 23:59:59', $snipe_start);
         }
       }
       $snipe[] = array(

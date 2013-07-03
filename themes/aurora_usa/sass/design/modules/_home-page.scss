@@ -182,6 +182,9 @@
     }
   }
   .b-spot {
+    @include breakpoint($bp-home-narrowest) {
+      margin-right: 6px;
+    }
     height: 122px;
     margin-right: 8px;
     width: 146px;

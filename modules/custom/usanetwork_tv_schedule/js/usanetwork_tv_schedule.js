@@ -89,7 +89,11 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       });
 
       $.ajax({ url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text }).done(function ( data ) {
-        $('#up-next-panel-tab').html(data);
+        if (data == '&nbsp;') {
+          $('li.up-next.tab-2').hide();
+        } else {
+          $('#up-next-panel-tab').html(data);
+        }
       });
 
       // commenting the iframe logic and put back the ajax call

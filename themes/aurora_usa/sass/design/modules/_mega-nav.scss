@@ -34,7 +34,8 @@ $logo-height-med-2: 32px;
         }
       }
     }
-  }
+  }  
+
   @include box-shadow(rgba(0,0,0,.7) 0 -31px 63px);
   @include breakpoint($bp-menu-switch) {
     border-top: none;
@@ -53,10 +54,26 @@ $logo-height-med-2: 32px;
       float: right;
       cursor: pointer;
       color: $gray-light;
-      font-size: 32px;
-      font-family: $font-mono;
-      margin-right: 22px;
-      @include scale(1.25,1);
+      font-size: 20px;
+      margin-right: 22px; 
+      /* cant use - @extend %usanetwork-font -inside bp */
+      font-family: 'usanetwork';
+      speak: none;
+      -webkit-font-feature-settings:"liga","dlig";-moz-font-feature-settings:"liga=1, dlig=1";-moz-font-feature-settings:"liga","dlig";-ms-font-feature-settings:"liga","dlig";-o-font-feature-settings:"liga","dlig";
+      font-feature-settings:"liga","dlig";
+      text-rendering:optimizeLegibility;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased; 
+      .ie9 &, .ie8 & {
+        background: url(../images/svgs/ie_x1.svg) no-repeat top left;
+        height: 20px;
+        width: 20px;
+        text-indent: -9999px;
+      }
     }
   }
   .usa-showmenu-active .mega-nav-link {
@@ -302,8 +319,20 @@ $logo-height-med-2: 32px;
 //////////////
 #mega-nav {
   .block {
-    display: inline-block;
+    display: inline-block; 
+    @include breakpoint($bp-snipe-small-width-range) {
+      position: relative;
+      z-index: 10; 
+    }  
+  
   }
+  .snipe-active {
+    .block {
+      @include breakpoint($bp-snipe-small-width-range) {
+        position: absolute;
+      }
+    }
+  }   
 }
 #block-usanetwork-blocks-usa-tv-show-menu {
   display: inline-block;

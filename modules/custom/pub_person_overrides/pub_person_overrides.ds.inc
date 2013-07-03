@@ -21,6 +21,11 @@ function pub_person_overrides_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => '',
+        'class' => '',
+      ),
     ),
   );
   $export['node|person|search_result'] = $ds_fieldsetting;
@@ -116,23 +121,21 @@ function pub_person_overrides_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'media' => array(
-        0 => 'field_usa_character_thumb',
+        0 => 'field_usa_og_image',
+      ),
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
       'title' => array(
         0 => 'title',
         1 => 'field_usa_actor_name',
       ),
-      'body' => array(
-        0 => 'field_show',
-        1 => 'body',
-      ),
     ),
     'fields' => array(
-      'field_usa_character_thumb' => 'media',
+      'field_usa_og_image' => 'media',
+      'field_usa_og_description' => 'body',
       'title' => 'title',
       'field_usa_actor_name' => 'title',
-      'field_show' => 'body',
-      'body' => 'body',
     ),
     'classes' => array(),
   );

@@ -377,7 +377,7 @@ function usanetwork_promo_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => 'gallery_block_cover',
+            'image_style' => '300x250',
           ),
           'type' => 'image',
           'weight' => '1',

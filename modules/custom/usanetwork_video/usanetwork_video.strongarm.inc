@@ -178,7 +178,7 @@ function usanetwork_video_strongarm() {
         'custom_settings' => TRUE,
       ),
       'search_index' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -268,7 +268,7 @@ function usanetwork_video_strongarm() {
         'custom_settings' => TRUE,
       ),
       'search_index' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

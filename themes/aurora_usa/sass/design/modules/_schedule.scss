@@ -6,20 +6,46 @@
   padding: 1em 0;
 }
 .schedule-date {
-  font-size: 36px;
   text-transform: uppercase;
-}
-a.prev-day,
-a.next-day {
-  padding: .5em .5em 1em .5em;
-  font-size: 36px;
-}
-table {
-  .show-time {
-    white-space: nowrap;
-    padding-left: .5em;
+  @include breakpoint($bp-schedule-date-wide) {
+    font-size: 36px;
   }
 }
+a[class*="day"] {
+  @extend %usanetwork-font;
+  padding: 0 .5em 1em .5em;
+  font-size: 12px;
+  display: inline-block;
+  @include breakpoint($bp-schedule-date-wide) {
+    @include transform3d( translateY(-30%) );
+  }
+  .no-font-feature-settings & {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-top: 6px;
+    background-size: 14px 14px;
+  }
+}
+a.next-day {
+  .no-font-feature-settings & {
+    margin-left: 1em;
+    @include replace-text('svgs/arrow3.svg');
+  }
+}
+a.prev-day {
+  .no-font-feature-settings & {
+    margin-right: 1em;
+    @include replace-text('svgs/arrow3-left.svg');
+  }
+}
+// table {
+//   .show-time {
+//     // white-space: nowrap;
+//     // padding-left: .5em;
+//   }
+// }
+
 .schedule-table {
   thead {
     background: $gray-dark;
@@ -28,6 +54,7 @@ table {
       padding-top: 12px;
       padding-bottom: 10px;
       border-bottom: $black solid 2px;
+      color: $gray-light;
     }
   }
   td {
@@ -38,6 +65,29 @@ table {
   tr {
     background: $gray-med;
     border: none;
+  }
+  .show-time {
+    white-space: nowrap;
+    padding-left: .5em;
+    width: 23%;
+    @include breakpoint($bp-schedule-table-wide) {
+      width: auto;
+    }
+  }
+  .program {
+    padding-right: 2%;
+    width: 55%;
+    @include breakpoint($bp-schedule-table-wide) {
+      padding-right: 0;
+      width: auto;
+    }
+  }
+  .episode,
+  .rating {
+    display: none;
+    @include breakpoint($bp-schedule-table-wide) {
+      display: table-cell;
+    }
   }
 }
 

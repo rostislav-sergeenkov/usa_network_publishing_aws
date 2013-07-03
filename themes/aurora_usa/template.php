@@ -127,10 +127,18 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   $vars['util_classes'] = implode(' ', $util_regions);
 
+  // remove headers and footers for ajax callback
+  if (isset($_GET['ajax']) && $_GET['ajax'] == 1) {
+    $content = $vars['page']['content'];
+    $vars['page'] = array('content' => $content);
+    $vars['ajax'] = true;
+  }
+
 }
 
 
 function aurora_usa_form_search_block_form_alter(&$form){
+
   $form['search_block_form']['#title'] = t('search');
   $form['search_block_form']['#title_display'] = 'before';
   // Add placeholder attribute to the text box
@@ -138,7 +146,7 @@ function aurora_usa_form_search_block_form_alter(&$form){
 
 
   $form['actions']['reset'] = array(
-    '#markup' => '<button class="form-reset" type="reset"/>',
+    '#markup' => '<button class="form-reset" type="reset"></button>',
     '#weight' => 1000
   );
 
@@ -602,6 +610,28 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
       break;
   }
 }
+
+function aurora_usa_preprocess_views_view_unformatted(&$vars) {
+  $view = $vars['view'];
+  switch($view->name) {
+    case 'usa_gallery' :
+      if ($vars['view']->current_display == 'panel_pane_1' 
+        || $vars['view']->current_display == 'panel_pane_3' 
+        || $vars['view']->current_display == 'panel_pane_4') {
+        //get node id for page
+        $nid = arg(1);
+        //loop thru gallery results
+        foreach($view->result as $delta => $item) {
+          //if gallery node id == node id for page add class
+          if($item->nid == $nid) {
+            $vars['classes_array'][$delta] .= ' active';
+          }
+        }
+      }
+    break;
+  }
+}
+
 
 /**
  * Override or insert css on the site.

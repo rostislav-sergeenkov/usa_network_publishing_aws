@@ -117,6 +117,10 @@ $bp-home-narrowest: max-width ($bp-home-2col - 1);
 $bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
 $bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
 
+
+// ad leaderboard
+$bp-ad-leaderboard-med-width: 768px;
+
 // person page breakpoints
 $bp-person-small-width: 330px;
 $bp-person-mid-two-width: 390px;
@@ -124,7 +128,8 @@ $bp-person-medium-width: 768px;
 $bp-person-gall-width: 704px;
 //$bp-person-share-icon-width: 300px;
 
-
+$bp-snipe-small-width-range: 300px 768px;
+$bp-snipe-large-width-range: 769px 1023px;
 
 // social page breakpoints
 $bp-social-xtra-large-width: 1275px;
@@ -173,7 +178,7 @@ $bp-video-mid-range4-width: 645px 959px;
 $bp-video-high-range-width: 960px 1274px;
 
 
-/* aspot */
+// aspot
 $bp-aspot-large-width: 1275px;
 $bp-aspot-mid-width: 645px;
 $bp-aspot-mid-range-width: 645px 959px;
@@ -181,6 +186,10 @@ $bp-aspot-mid-range2-width: 960px 1274px;
 
 
 $bp-head-search: 641px;
+
+// schedule
+$bp-schedule-table-wide: 719px;
+$bp-schedule-date-wide: 640px;
 
 ////////////////////////////
 // COMPASS DEFAULTS

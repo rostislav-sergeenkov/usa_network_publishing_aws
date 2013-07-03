@@ -142,6 +142,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'usanetwork_ads-dart_floodlight' => array(
+          'module' => 'usanetwork_ads',
+          'delta' => 'dart_floodlight',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -192,6 +198,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa_cast-block_2',
           'region' => 'sidebar_first',
           'weight' => '-9',
+        ),
+        'usanetwork_social-usa_show_social_getglue' => array(
+          'module' => 'usanetwork_social',
+          'delta' => 'usa_show_social_getglue',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -469,13 +481,13 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-300x250_ifr_reload',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-36',
         ),
         'views-usa_shows-block_2' => array(
           'module' => 'views',
           'delta' => 'usa_shows-block_2',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-35',
         ),
       ),
     ),
@@ -543,11 +555,17 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_snipe-usa_snipe' => array(
+          'module' => 'usanetwork_snipe',
+          'delta' => 'usa_snipe',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_blocks-usa_meganav' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_meganav',
           'region' => 'header',
-          'weight' => '0',
+          'weight' => '-9',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

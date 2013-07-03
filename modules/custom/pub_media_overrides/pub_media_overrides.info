@@ -34,6 +34,7 @@ features[features_overrides][] = field.node-media_gallery-field_cover_item.field
 features[features_overrides][] = field.node-media_gallery-field_cover_item.field_instance|display|block_cover_title_lg
 features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|display|block_cover_title
 features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|display|block_cover_title_lg
+features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|display|search_index
 features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|display|search_result
 features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_schemes|theplatform
 features[features_overrides][] = field.node-media_gallery-field_media_items.field_instance|widget|settings|allowed_types|video

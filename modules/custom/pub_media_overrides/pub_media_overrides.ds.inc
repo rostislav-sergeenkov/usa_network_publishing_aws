@@ -124,21 +124,19 @@ function pub_media_overrides_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'media' => array(
-        0 => 'field_cover_item',
+        0 => 'field_usa_og_image',
+      ),
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
       'title' => array(
         0 => 'title',
       ),
-      'body' => array(
-        0 => 'field_show',
-        1 => 'body',
-      ),
     ),
     'fields' => array(
-      'field_cover_item' => 'media',
+      'field_usa_og_image' => 'media',
+      'field_usa_og_description' => 'body',
       'title' => 'title',
-      'field_show' => 'body',
-      'body' => 'body',
     ),
     'classes' => array(),
   );

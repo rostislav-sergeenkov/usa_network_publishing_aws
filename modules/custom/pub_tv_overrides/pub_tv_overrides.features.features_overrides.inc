@@ -19,14 +19,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'text_default',
     'weight' => '1',
   );
-  $overrides["field.node-tv_episode-body.field_instance|display|search_result"] = array(
+  $overrides["field.node-tv_episode-body.field_instance|display|search_index"] = array(
     'label' => 'hidden',
     'module' => 'text',
-    'settings' => array(
-      'trim_length' => '300',
-    ),
-    'type' => 'text_summary_or_trimmed',
-    'weight' => '6',
+    'settings' => array(),
+    'type' => 'text_plain',
+    'weight' => '1',
+  );
+  $overrides["field.node-tv_episode-body.field_instance|display|search_result"] = array(
+    'label' => 'hidden',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '18',
   );
   $overrides["field.node-tv_episode-body.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_episode-field_content_tags.field_instance|display|default|weight"] = '1';
@@ -36,11 +40,17 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '3',
   );
+  $overrides["field.node-tv_episode-field_content_tags.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '7',
+  );
   $overrides["field.node-tv_episode-field_content_tags.field_instance|display|search_result"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '15',
+    'weight' => '19',
   );
   $overrides["field.node-tv_episode-field_content_tags.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_episode-field_episode_credit.field_instance|display|default|weight"] = '13';
@@ -50,11 +60,17 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '5',
   );
+  $overrides["field.node-tv_episode-field_episode_credit.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '12',
+  );
   $overrides["field.node-tv_episode-field_episode_credit.field_instance|display|search_result"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '16',
+    'weight' => '20',
   );
   $overrides["field.node-tv_episode-field_episode_credit.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_episode-field_episode_number.field_instance|display|default|weight"] = '8';
@@ -63,6 +79,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'settings' => array(),
     'type' => 'hidden',
     'weight' => '9',
+  );
+  $overrides["field.node-tv_episode-field_episode_number.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '10',
   );
   $overrides["field.node-tv_episode-field_episode_number.field_instance|display|search_result"] = array(
     'label' => 'inline',
@@ -92,11 +114,17 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '2',
   );
+  $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|search_index"] = array(
+    'label' => 'hidden',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '13',
+  );
   $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|display|search_result"] = array(
     'label' => 'hidden',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '17',
+    'weight' => '21',
   );
   $overrides["field.node-tv_episode-field_gigya_share_bar.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|display|full"] = array(
@@ -104,6 +132,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'settings' => array(),
     'type' => 'hidden',
     'weight' => '4',
+  );
+  $overrides["field.node-tv_episode-field_original_air_date.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '11',
   );
   $overrides["field.node-tv_episode-field_original_air_date.field_instance|display|search_result"] = array(
     'label' => 'hidden',
@@ -131,6 +165,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '10',
   );
+  $overrides["field.node-tv_episode-field_season.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '9',
+  );
   $overrides["field.node-tv_episode-field_season.field_instance|display|search_result"] = array(
     'label' => 'inline',
     'module' => 'entityreference',
@@ -141,11 +181,23 @@ function pub_tv_overrides_features_override_default_overrides() {
     'weight' => '3',
   );
   $overrides["field.node-tv_episode-field_season.field_instance|settings|exclude_cv"] = FALSE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|direction"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|field"]["DELETED"] = TRUE;
+  $overrides["field.node-tv_episode-field_show.field_config|settings|handler_settings|sort|property"]["DELETED"] = TRUE;
   $overrides["field.node-tv_episode-field_show.field_instance|display|full"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
     'weight' => '8',
+  );
+  $overrides["field.node-tv_episode-field_show.field_instance|display|search_index"] = array(
+    'label' => 'hidden',
+    'module' => 'entityreference',
+    'settings' => array(
+      'link' => FALSE,
+    ),
+    'type' => 'entityreference_label',
+    'weight' => '2',
   );
   $overrides["field.node-tv_episode-field_show.field_instance|display|search_result"] = array(
     'label' => 'hidden',
@@ -163,14 +215,17 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '0',
   );
+  $overrides["field.node-tv_episode-field_tv_cover_media.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '8',
+  );
   $overrides["field.node-tv_episode-field_tv_cover_media.field_instance|display|search_result"] = array(
     'label' => 'hidden',
-    'module' => 'file_entity',
-    'settings' => array(
-      'file_view_mode' => 'search_result_files',
-    ),
-    'type' => 'file_rendered',
-    'weight' => '0',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '16',
   );
   $overrides["field.node-tv_episode-field_tv_cover_media.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_episode-field_tv_episode_type.field_instance|display|default|weight"] = '15';
@@ -180,11 +235,18 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '6',
   );
+  $overrides["field.node-tv_episode-field_tv_episode_type.field_instance|display|search_index"] = array(
+    'label' => 'hidden',
+    'module' => 'taxonomy',
+    'settings' => array(),
+    'type' => 'taxonomy_term_reference_plain',
+    'weight' => '3',
+  );
   $overrides["field.node-tv_episode-field_tv_episode_type.field_instance|display|search_result"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
-    'weight' => '18',
+    'weight' => '22',
   );
   $overrides["field.node-tv_episode-field_tv_episode_type.field_instance|settings|exclude_cv"] = FALSE;
   $overrides["field.node-tv_season-field_original_air_date.field_instance|exclude_cv"] = 1;
@@ -205,6 +267,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'settings' => array(),
     'type' => 'hidden',
     'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_banner.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '57',
   );
   $overrides["field.node-tv_show-field_banner.field_instance|display|search_result"] = array(
     'label' => 'above',
@@ -235,6 +303,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'type' => 'hidden',
     'weight' => '38',
   );
+  $overrides["field.node-tv_show-field_logo.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '56',
+  );
   $overrides["field.node-tv_show-field_logo.field_instance|display|search_result"] = array(
     'label' => 'above',
     'settings' => array(),
@@ -254,6 +328,12 @@ function pub_tv_overrides_features_override_default_overrides() {
     'settings' => array(),
     'type' => 'hidden',
     'weight' => 0,
+  );
+  $overrides["field.node-tv_show-field_tv_cover_media.field_instance|display|search_index"] = array(
+    'label' => 'above',
+    'settings' => array(),
+    'type' => 'hidden',
+    'weight' => '58',
   );
   $overrides["field.node-tv_show-field_tv_cover_media.field_instance|display|search_result"] = array(
     'label' => 'above',
@@ -290,7 +370,7 @@ function pub_tv_overrides_features_override_default_overrides() {
     'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|search_index"] = array(
-    'custom_settings' => FALSE,
+    'custom_settings' => TRUE,
   );
   $overrides["variable.field_bundle_settings_node__tv_episode.value|view_modes|search_result"] = array(
     'custom_settings' => TRUE,
@@ -335,7 +415,7 @@ function pub_tv_overrides_features_override_default_overrides() {
     'custom_settings' => FALSE,
   );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|search_index"] = array(
-    'custom_settings' => FALSE,
+    'custom_settings' => TRUE,
   );
   $overrides["variable.field_bundle_settings_node__tv_show.value|view_modes|search_result"] = array(
     'custom_settings' => TRUE,

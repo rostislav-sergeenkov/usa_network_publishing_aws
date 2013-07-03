@@ -236,6 +236,13 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '57',
         ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '2',
+        ),
         'search_result' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -332,6 +339,12 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '64',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -419,6 +432,12 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '60',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '59',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -531,6 +550,12 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '61',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '60',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -633,6 +658,12 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '63',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '62',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -778,6 +809,12 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => '62',
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '61',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -894,6 +931,12 @@ function pub_tv_overrides_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '63',
+        ),
         'search_result' => array(
           'label' => 'above',
           'settings' => array(),
@@ -982,6 +1025,13 @@ function pub_tv_overrides_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '59',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '3',
         ),
         'search_result' => array(
           'label' => 'above',

@@ -11,8 +11,9 @@
   font-size: 18px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  @include breakpoint($bp-snipe-large-width-range) {
-    width: 67%;
+  .snipe-html {
+    overflow: hidden;
+    margin-right: 30px;
   }
   @include breakpoint($bp-menu-switch) {
     background-color: $black-true;

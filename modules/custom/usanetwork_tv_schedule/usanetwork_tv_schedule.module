@@ -406,12 +406,11 @@ function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
  */
 function usanetwork_on_now_panel_js() {
   $arg = arg();
-  $output = '';
+  $output = '&nbsp;';
   $links = array();
 
   if (empty($arg[1]) && empty($arg[2])) {
     // return empty div to avoid 304: Not modified http header
-    $output = '<div>&nbsp</div>';
     echo $output;
     exit;
   }

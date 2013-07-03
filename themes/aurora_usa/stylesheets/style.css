@@ -7209,10 +7209,9 @@ a[class*="day"] {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-@media (min-width: 769px) and (max-width: 1023px) {
-  .snipe-msg {
-    width: 67%;
-  }
+.snipe-msg .snipe-html {
+  overflow: hidden;
+  margin-right: 30px;
 }
 @media (min-width: 769px) {
   .snipe-msg {

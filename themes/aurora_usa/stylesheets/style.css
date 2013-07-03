@@ -2543,9 +2543,6 @@ input[type="radio"], input[type="checkbox"] {
 #on-now-panel .show-info-wrapper .show-info {
   display: table-cell;
 }
-#on-now-panel .show-info-wrapper .show-title, #on-now-panel .show-info-wrapper .episode-title {
-  text-transform: capitalize;
-}
 #on-now-panel .show-info-wrapper .show-title {
   font-size: 14px;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -3002,14 +2999,6 @@ input[type="radio"], input[type="checkbox"] {
   width: 0;
   margin: 0;
   padding: 0;
-  -webkit-transition-property: width;
-  -moz-transition-property: width;
-  -o-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
@@ -3018,6 +3007,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (min-width: 641px) {
   #head-search input[type="search"] {
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
     background-color: transparent;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -3710,6 +3707,16 @@ input[type="radio"], input[type="checkbox"] {
   color: white;
 }
 
+.page-home #main {
+  padding: 0 0 15px;
+}
+@media (min-width: 645px) {
+  .page-home #main {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 .promo-metadata, .upcoming-movie .meta {
   position: absolute;
   width: 100%;
@@ -3907,6 +3914,11 @@ input[type="radio"], input[type="checkbox"] {
   height: 122px;
   margin-right: 8px;
   width: 146px;
+}
+@media (max-width: 644px) {
+  .tiles .b-spot {
+    margin-right: 6px;
+  }
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .tiles .b-spot {
@@ -4138,7 +4150,7 @@ li a:hover {
 }
 @media (max-width: 644px) {
   .usa-home-featured .featured-carousel {
-    width: 315px;
+    width: 300px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {

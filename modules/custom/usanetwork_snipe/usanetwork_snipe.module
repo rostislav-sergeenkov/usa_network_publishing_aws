@@ -81,7 +81,7 @@ function usanetwork_snipe_block_callback() {
         'start' => date('F d, Y H:i:s', $snipe_start),
         'end' => date('F d, Y H:i:s', $snipe_end),
       );    
-      $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '<span class="close">close</span></div><span class="secondary-close close"></span>';
+      $output = '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '">' . $node->field_usa_snipe_html[$lang][0]['value'] . '<span class="close">close</span></div><span class="secondary-close close"></span>';
     }
   }
 
@@ -155,20 +155,29 @@ function _usanetwork_snipe_homepage_form_elements(&$parent_element, &$form_state
 /**
  * Helper that adds each snipe content as form elements.
  */
-function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$default_settings) {
-
+function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$default_settings, $desc='') {
+  $lang = LANGUAGE_NONE;
   $base_element = array(
     '#type' => 'fieldset',
     '#title' => $fieldset_title,
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
+    '#description' => $desc,
   );
   // Added enable checkbox elements per snipe node.
   if ($snipes = _usanetwork_snipe_get_nodes('snipe')) {
-    foreach ($snipes as $snipe) {
+    foreach ($snipes as $node) {
+      $snipe = node_load($node->nid);    
+      $title = l($snipe->title, 'node/'.$snipe->nid);
+      if (isset($snipe->field_usa_display_date_time[$lang][0]['value']) && !empty($snipe->field_usa_display_date_time[$lang][0]['value'])) {
+        $title .= ' Validity: '. date('M d, Y H:i:s', $snipe->field_usa_display_date_time[$lang][0]['value']);
+        if (isset($snipe->field_usa_display_length[$lang][0]['value']) && !empty($snipe->field_usa_display_length[$lang][0]['value'])) {
+          $title .= ' - '. date('M d, Y H:i:s', $snipe->field_usa_display_date_time[$lang][0]['value']+$snipe->field_usa_display_length[$lang][0]['value']);
+        }
+      }
       $base_element[$snipe->nid] = array(
         '#type' => 'checkbox',
-        '#title' => $snipe->title,
+        '#title' => $title,
         '#default_value' => isset($default_settings[$snipe->nid]) ?  $default_settings[$snipe->nid] : '',
       );
     }
@@ -193,7 +202,7 @@ function _usanetwork_snipe_ctype_form_elements(&$parent_element, &$form_state, $
   $form_state['storage']['default_settings']['node'][$ctype]['all'] = isset($form_state['storage']['default_settings']['node'][$ctype]['all']) ?
     $form_state['storage']['default_settings']['node'][$ctype]['all'] : array();
   _usanetwork_snipe_form_elements(t('All ') . $ctype_title, $parent_element['node'][$ctype]['all'],
-    $form_state['storage']['default_settings']['node'][$ctype]['all']);
+    $form_state['storage']['default_settings']['node'][$ctype]['all'], "*These opitions will override all the individual $ctype_title settings");
 
   // Add a set of form elements per tv_show node.
   if ($tv_show_nodes = _usanetwork_snipe_get_nodes($ctype)) {

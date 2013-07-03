@@ -4,6 +4,16 @@
   }
 }
 
+.page-home {
+  #main {
+    padding: 0 0 15px;
+    @include breakpoint($bp-home-2col) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
 
 .promo-metadata {
   position: absolute;
@@ -182,6 +192,9 @@
     }
   }
   .b-spot {
+    @include breakpoint($bp-home-narrowest) {
+      margin-right: 6px;
+    }
     height: 122px;
     margin-right: 8px;
     width: 146px;
@@ -396,7 +409,7 @@
   .featured-carousel {
     margin: 0 auto;
     @include breakpoint($bp-home-narrowest) {
-      width: 315px;
+      width: 300px;
     }
     @include breakpoint($bp-home-mid) {
       width: 615px;

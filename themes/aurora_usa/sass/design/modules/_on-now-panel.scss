@@ -198,13 +198,10 @@
     @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
   .show-info-wrapper {
-  display: table;
-  width: 100%;
+    display: table;
+    width: 100%;
   .show-info {
     display: table-cell;  
-  }
-  .show-title, .episode-title {
-    text-transform: capitalize;
   }
   .show-title {
     font-size: 14px;

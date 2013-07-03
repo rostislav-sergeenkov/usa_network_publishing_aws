@@ -97,6 +97,36 @@ function usanetwork_social_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_getglue_settings|node|tv_show|form';
+  $field_group->group_name = 'group_getglue_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'GetGlue Settings',
+    'weight' => '48',
+    'children' => array(
+      0 => 'field_show_getglue',
+      1 => 'field_getglue_show',
+      2 => 'field_getglue_sticker_name',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'GetGlue Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_getglue_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_newsletter|node|tv_show|form';
   $field_group->group_name = 'group_newsletter';
   $field_group->entity_type = 'node';
@@ -141,6 +171,7 @@ function usanetwork_social_field_group_info() {
       3 => 'group_trend',
       4 => 'group_twitter_settings',
       5 => 'group_usa_show_follow',
+      6 => 'group_getglue_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

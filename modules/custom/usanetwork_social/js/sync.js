@@ -4,14 +4,24 @@
  * donna.vaughan@nbcuni.com
  */
 var source = desktopUrl;
-var usa_deviceInfo = '';
 
 (function ($) {
 Drupal.behaviors.sync_page = {
   attach: function(context){
 
+
+			var usa_debugFlag = false; // Set to true for console logging
+			var usa_debug = function(msg)
+			{
+				if (usa_debugFlag && typeof console != 'undefined')
+				{
+					console.log(msg);
+				}
+			}
+
 			var refreshIframe = function(source)
 			{
+				//usa_debug('fn: refreshIframe('+source+')');
 				if ($('#sync').html().length > 0)
 				{
 					var iframe = document.getElementById('syncIframe');
@@ -47,32 +57,23 @@ if (url.search('local') > -1 || url.search('dev.usanetwork.com') > -1)
 				}
 			}
 
+			var displaySyncIframeCount = 0;
 			var displaySyncIframe = function()
 			{
+				//usa_debug('fn: displaySyncIframe()');
 				// Check to make sure device detection has loaded
-				if (typeof usa_detectCurrentDevice == 'function')
+				if (typeof usa_deviceInfo != 'undefined')
 				{
-					usa_deviceInfo = usa_detectCurrentDevice();
-					if (usa_deviceInfo.smartphone)
+					if (typeof usa_deviceInfo.smartphone != 'undefined' && usa_deviceInfo.smartphone)
 					{
 						source = phoneUrl;
 					}
 					refreshIframe(source);
-
-/*				// Check to make sure sniff.js has loaded
-				if (typeof phone != 'undefined')
-				{
-					if (phone !== false)
-					{
-						source = phoneUrl;
-					}
-
-					refreshIframe(source);
-*/
 				}
-				else
+				else if (displaySyncIframeCount < 30) // to stop this from repeating after 30 secs
 				{
 					setTimeout(displaySyncIframe, 1000);
+					displaySyncIframeCount++;
 				}
 			}
 			displaySyncIframe();

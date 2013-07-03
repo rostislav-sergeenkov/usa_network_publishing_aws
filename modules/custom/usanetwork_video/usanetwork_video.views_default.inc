@@ -77,6 +77,13 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: State Flow: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'node_revision_states';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'published' => 'published',
+  );
 
   /* Display: Global Full Episode */
   $handler = $view->new_display('block', 'Global Full Episode', 'global_full_episode');

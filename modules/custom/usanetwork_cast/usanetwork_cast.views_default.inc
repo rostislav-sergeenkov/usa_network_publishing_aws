@@ -793,7 +793,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['field_usa_character_thumb']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_usa_character_thumb']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_usa_character_thumb']['settings'] = array(
-    'file_view_mode' => 'cast_gallery',
+    'file_view_mode' => 'block_cover_title',
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Weight */

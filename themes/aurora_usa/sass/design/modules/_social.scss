@@ -167,12 +167,12 @@ body.usa-social {
 .social-follow-block {
   background-color: $black-into-gray;
   border: 1px solid $gray-med;
-
+  margin-bottom: 20px;
   h2 {
     @include background(linear-gradient(center top , $black-true, $gray-dark));
     color: $white;
     text-transform: lowercase;
-    font-family: $headline-lt;
+    font-family: $headline-reg;
     font-size: 24px;
     padding: 16px 12px 11px 8px;
     line-height: 1em;
@@ -215,7 +215,7 @@ body.usa-social {
       > div {
         margin: 4px 0 0 11px;
       }
-      h2, 
+      h2,
       h4,
       .field-name-field-usa-actor-name {
         font-size: 14px;
@@ -315,7 +315,7 @@ body.usa-social {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
-      font-family: $headline-lt;
+      font-family: $headline-reg;
       font-size: 24px;
       padding: 10px 15px 7px 10px;
       text-transform: lowercase;
@@ -400,8 +400,8 @@ body.usa-social {
   clear: both;
   @include breakpoint($bp-social-small-width) {
     clear: none;
-    margin-left: 58px;    
-  } 
+    margin-left: 58px;
+  }
   @include breakpoint($bp-social-mid-width) {
     margin-left: 63px;
   }
@@ -678,7 +678,7 @@ input.echo-submit-text {
     margin-right: 75px;
     @include breakpoint($bp-social-echo) {
       margin-right: 100px;
-    }   
+    }
   }
   .go-chat {
     position: absolute;
@@ -723,7 +723,7 @@ input.echo-submit-text {
     margin-right: 80px;
     @include breakpoint($bp-social-echo) {
       margin-right: 150px;
-    }  
+    }
   }
 }
 
@@ -764,13 +764,16 @@ input.echo-submit-text {
   &.panel-two-cols .panel-col1 {
     @extend %two-to-one-col-social-content-sidebar;
   }
-
 }
+
+#usanetwork_social_show_homepage_chatter {
+  background-color: $gray-dark;
+}  
 
 #usanetwork_social_chatter_title {
   border-bottom: 1px solid $gray-med;
   color: $white;
-  font-family: $headline-lt;
+  font-family: $headline-reg;
   font-size: 24px;
   font-weight: normal;
   letter-spacing: 0.05em;
@@ -780,10 +783,6 @@ input.echo-submit-text {
   text-transform: lowercase;
 }
 
-
-#usanetwork_social_show_homepage_chatter {
-  background-color: $gray-dark;
-}
 
 #usanetwork_social_show_comment {
   border-bottom: 1px solid $gray-med;
@@ -817,9 +816,9 @@ input.echo-submit-text {
   .echo-item-from {
     float: left;
   }
-  .echo-stream-header, 
-  .echo-stream-more { 
-    display: none !important; 
+  .echo-stream-header,
+  .echo-stream-more {
+    display: none !important;
   }
 }
 
@@ -831,7 +830,7 @@ input.echo-submit-text {
   position: relative;
   .usanetwork_social_join_msg {
     color: $white;
-    font-family: $headline-lt;
+    font-family: $headline-reg;
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 0.05em;
@@ -845,6 +844,13 @@ input.echo-submit-text {
       left: 0;
       top: 5px;
     }
+  }
+}
+
+#block-usanetwork-social-usa-show-social-getglue iframe {
+  width: 100% !important;
+  @include breakpoint($bp-social-large-width) {
+    width: 300px;
   }
 }
 

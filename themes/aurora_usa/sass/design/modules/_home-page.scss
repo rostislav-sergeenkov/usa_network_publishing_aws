@@ -4,6 +4,16 @@
   }
 }
 
+.page-home {
+  #main {
+    padding: 0 0 15px;
+    @include breakpoint($bp-home-2col) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
 
 .promo-metadata {
   position: absolute;
@@ -41,7 +51,7 @@
       line-height: 12px;
     }
   }
-  .usa-adrails &, .ie9 &, .ie8 & {
+  .usa-adrails &, .ie8 & {
     padding: 17px 15px 8px;
     h2 {
       font-size: 20px;
@@ -65,7 +75,7 @@
         padding-left: 22px;
       }
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       width: 44px;
       & ~ h2, & ~ h3 {
         padding-left: 56px;
@@ -84,7 +94,7 @@
   @include breakpoint($bp-home-wide) {
     width: 930px;
   }
-  .usa-adrails &, .ie9 &, .ie8 & {
+  .usa-adrails &, .ie8 & {
     width: 930px !important;
   }
   @include breakpoint($bp-home-widest) {
@@ -136,7 +146,7 @@
       height: 506px;
       width: 1245px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       height: 378px;
       width: 930px;
     }
@@ -167,7 +177,7 @@
       right: 0;
       position: absolute;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       display: inline;
       float: right;
       height: 250px;
@@ -182,6 +192,9 @@
     }
   }
   .b-spot {
+    @include breakpoint($bp-home-narrowest) {
+      margin-right: 6px;
+    }
     height: 122px;
     margin-right: 8px;
     width: 146px;
@@ -214,7 +227,7 @@
       .media-wide {
         display: block;
       }
-      .usa-adrails &, .ie9 &, .ie8 & {
+      .usa-adrails &, .ie8 & {
         display: inline;
         float: left;
         height: 250px;
@@ -228,7 +241,7 @@
         }
       }
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       display: inline;
       float: left;
       height: 250px;
@@ -251,7 +264,7 @@
       height: 250px;
       width: 300px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       margin-right: 15px;
       margin-bottom: 15px;
       height: 250px;
@@ -311,7 +324,7 @@
     .ie9 & {
       top: -32px;
       padding-bottom: 8px;
-    }
+    }x
     li {
       margin: 0 5px;
       a {
@@ -334,10 +347,22 @@
   background-color: $black;
   padding: 5px 0 36px;
   @extend %un-margin;
+  &:hover {
+    .carousel-btns {
+      opacity: 1;
+    }  
+  }
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
-  .carousel-item {
+  li.carousel-item {
+    width: 221px;
+    height: 184px;
+    margin-right: 15px;
+    img {
+      width: 221px;
+      height: 184px;
+    }
     @extend .title-overlay;
     .meta {
       text-align: left;
@@ -354,13 +379,14 @@
         padding: 17px 15px 8px;
         max-width: none;
       }
-      .usa-adrails &, .ie9 &, .ie8 & {
+      .usa-adrails &, .ie8 & {
         height: 50px;
         padding: 8px 15px 8px;
         max-width: 221px;
       }
     }
   }
+
   .field-name-field-promo-text-line-1 {
     font-family: $headline-semi;
     font-size: 20px;
@@ -375,7 +401,7 @@
       font-size: 15px;
       line-height: 24px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       font-size: 10px;
       line-height: 12px;
     }
@@ -389,48 +415,47 @@
       width: 615px;
     }
     @include breakpoint($bp-home-wide) {
-      width: 930px;
+      max-width: 944px;
     }
     @include breakpoint($bp-home-widest) {
-      width: 1245px;
+      max-width: 1260px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
-      width: 930px;
+    .usa-adrails &, .ie8 & {
+      max-width: 944px;
     }
     > h2 {
       text-transform: uppercase;
     }
   }
-  .carousel-item {
-    height: auto;
-  }
   .carousel {
-    width: auto !important;
+//    width: auto !important;
+    @include breakpoint($bp-home-wide) { 
+      > ul {
+        margin-left: 8px !important;
+      }
+    }  
     @include breakpoint($bp-home-widest) {
+      > ul {
+        margin-left: 8px !important;
+      }
       height: 254px !important;
       .carousel-item {
         width: 300px;
-        height: 254px;
+        height: 250px;
         margin-right: 15px;
         img, .meta {
           width: 300px;
         }
         img {
-          height: 254px;
-        }
-      }
-      li.carousel-item {
-        &:last-of-type {
-          display: none;
+          height: 250px;
         }
       }
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       height: 184px !important;
       .carousel-item {
         width: 221px;
         height: 184px;
-        margin-right: 15px;
         img, .meta {
           width: 221px;
         }
@@ -438,14 +463,10 @@
           height: 184px;
         }
       }
-      li.carousel-item {
-        &:last-of-type {
-          display: block;
-        }
-      }
     }
   }
   .carousel-btns {
+    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -460,9 +481,9 @@
       width: 1000px;
     }
     @include breakpoint($bp-home-widest) {
-      display: none;
+        width: 1325px;
     }
-    .usa-adrails &, .ie9 &, .ie8 & {
+    .usa-adrails &, .ie8 & {
       width: 1000px;
       display: block;
     }

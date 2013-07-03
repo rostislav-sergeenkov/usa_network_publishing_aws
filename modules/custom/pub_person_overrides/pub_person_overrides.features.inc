@@ -48,7 +48,7 @@ function pub_person_overrides_strongarm_alter(&$data) {
       'custom_settings' => FALSE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__person']->value['view_modes']['search_index'] = array(
-      'custom_settings' => FALSE,
+      'custom_settings' => TRUE,
     ); /* WAS: '' */
     $data['field_bundle_settings_node__person']->value['view_modes']['search_result'] = array(
       'custom_settings' => TRUE,

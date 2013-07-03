@@ -27,12 +27,12 @@ function usanetwork_flag_flag_default_flags() {
     'link_type' => 'toggle',
     'roles' => array(
       'flag' => array(
-        0 => '3',
-        1 => '4',
+        0 => '11',
+        1 => '16',
       ),
       'unflag' => array(
-        0 => '3',
-        1 => '4',
+        0 => '11',
+        1 => '16',
       ),
     ),
     'weight' => 0,
@@ -42,11 +42,11 @@ function usanetwork_flag_flag_default_flags() {
     'show_on_teaser' => 1,
     'show_contextual_link' => FALSE,
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'usanetwork_flag',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   return $flags;
 

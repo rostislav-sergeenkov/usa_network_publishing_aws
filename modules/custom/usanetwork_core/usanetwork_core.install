@@ -240,3 +240,18 @@ function usanetwork_core_update_7103() {
   module_enable($modules);
 }
 
+/**
+ * Enable usanetwork_snipe module
+ */
+function usanetwork_core_update_7104() {
+  $modules = array('usanetwork_snipe');
+  module_enable($modules);
+}
+
+/**
+ * Enable usanetwork_opengraph module
+ */
+function usanetwork_core_update_7105() {
+  $modules = array('usanetwork_opengraph');
+  module_enable($modules);
+}

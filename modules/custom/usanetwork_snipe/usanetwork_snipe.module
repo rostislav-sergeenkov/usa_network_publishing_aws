@@ -71,15 +71,16 @@ function usanetwork_snipe_block_callback() {
       
         if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
           $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
+          $snipe_end = date('F d, Y H:i:s', $snipe_end);
         } else {
-          // set end date after an year to make it not expire at all
-          $snipe_end = $snipe_start + 30758400;
+          // set end of day as end date if the length is 0
+          $snipe_end = date('F d, Y 23:59:59', $snipe_start);
         }
       }
       $snipe[] = array(
         'id' => $snipe_id,
         'start' => date('F d, Y H:i:s', $snipe_start),
-        'end' => date('F d, Y H:i:s', $snipe_end),
+        'end' => $snipe_end,
       );    
       $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '"><div class="snipe-html">' . $node->field_usa_snipe_html[$lang][0]['value'] . '</div><span class="close">close</span></div><span class="secondary-close close"></span>';
     }
@@ -173,6 +174,8 @@ function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$defa
         $title .= ' Validity: '. date('M d, Y H:i:s', $snipe->field_usa_display_date_time[$lang][0]['value']);
         if (isset($snipe->field_usa_display_length[$lang][0]['value']) && !empty($snipe->field_usa_display_length[$lang][0]['value'])) {
           $title .= ' - '. date('M d, Y H:i:s', $snipe->field_usa_display_date_time[$lang][0]['value']+$snipe->field_usa_display_length[$lang][0]['value']);
+        } else {
+          $title .= ' - '. date('M d, Y 23:59:59', $snipe->field_usa_display_date_time[$lang][0]['value']);
         }
       }
       $base_element[$snipe->nid] = array(

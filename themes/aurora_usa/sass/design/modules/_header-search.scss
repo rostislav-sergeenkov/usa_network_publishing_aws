@@ -138,10 +138,10 @@
     width: 0;
     margin: 0;
     padding: 0;
-    @include transition-property(width);
-    @include transition-duration(0.2s);
     @include border-radius(15px);
     @include breakpoint($bp-head-search) {
+      @include transition-property(width);
+      @include transition-duration(0.2s);
       background-color: transparent;
       @include border-radius(0);
       height: 30px;

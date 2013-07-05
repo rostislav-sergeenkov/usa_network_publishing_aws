@@ -213,7 +213,6 @@ function usanetwork_snipe_field_default_field_instances() {
         ),
         'browser_plugins' => array(
           'media_internet' => 0,
-          'pub_theplatform' => 0,
           'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
           'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
           'upload' => 'upload',

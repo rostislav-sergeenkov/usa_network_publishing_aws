@@ -137,20 +137,44 @@
           return false;
         });
 
-        // on now button
+        // on now button / personalization trigger
+        // add on now and personalization content to the panel
+        // set the panel 'state' to menu (default)
         $('#jPanelMenu-menu')
           .append($('#on-now-panel'))
+          .append($('#personalization-panel'))
           .addClass('state-menu');
+        // set the panel 'state' to on now
+        // and trigger panel
         $('#on-now.trigger').click(function() {
           $('#jPanelMenu-menu')
             .removeClass('state-menu')
+            .removeClass('state-personalization')
             .addClass('state-on-now');
+          jPM.direction('left');
+          $('body').attr('data-menu-direction', 'left');
           jPM.trigger();
         });
+        // set the panel 'state' to personalization
+        // and trigger panel
+        $('.personalization-trigger').click(function() {
+          $('#jPanelMenu-menu')
+            .removeClass('state-menu')
+            .removeClass('state-on-now')
+            .addClass('state-personalization');
+          jPM.direction('right');
+          $('body').attr('data-menu-direction', 'right');
+          jPM.trigger();
+        });
+        // set the panel 'state' to menu
+        // and trigger panel
         $('#main-menu-toggle').click(function() {
           $('#jPanelMenu-menu')
             .removeClass('state-on-now')
+            .removeClass('state-personalization')
             .addClass('state-menu');
+          jPM.direction('left');
+          $('body').attr('data-menu-direction', 'left');
         });
 
         // toggle on now / up next

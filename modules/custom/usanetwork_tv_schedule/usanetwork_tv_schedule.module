@@ -202,6 +202,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $show_name = $show['link'];
       $show_nid = $show['nid'];
       $next_up_nid = $full_tv_schedule[$i+1]['nid'];
+      $show_index = $i;
       break;
     }
     $show_name = $show['link'];
@@ -211,8 +212,7 @@ function usanetwork_tv_schedule_on_now_block() {
   // expose default et show for rest of the world
   $vars .= "var on_now_default_show = '" . $show_name . "';";
   // expose default show nid for on now panel
-  $vars .= "var on_now_default_show_nid = " . $show_nid . ";";
-  $vars .= "var next_up_default_show_nid = " . $show_nid . ";";
+  $vars .= "var on_now_index = " . $show_index . ";";
 
   drupal_add_js($vars, array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');

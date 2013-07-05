@@ -60,6 +60,7 @@ features[field_base][] = field_twitter_sortorder
 features[field_base][] = field_twitter_source
 features[field_base][] = field_twitter_state
 features[field_base][] = field_twitter_tags
+features[field_base][] = field_usa_link_facebook
 features[field_base][] = field_usa_link_pinterest
 features[field_base][] = field_usa_link_tumblr
 features[field_base][] = field_usa_link_twitter

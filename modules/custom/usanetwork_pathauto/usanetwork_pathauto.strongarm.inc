@@ -20,6 +20,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_media_gallery_pattern';
+  $strongarm->value = '[node:field_show]/photos/[node:title]';
+  $export['pathauto_node_media_gallery_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_person_pattern';
   $strongarm->value = '[node:field_show]/cast/[node:title]';
   $export['pathauto_node_person_pattern'] = $strongarm;
@@ -63,7 +70,7 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_usanetwork_static_page_pattern';
-  $strongarm->value = 'page/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_usanetwork_static_page_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

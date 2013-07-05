@@ -534,6 +534,15 @@
         if ( typeof(newPosition) == "undefined" || newPosition == null ) { newPosition = jP.options.openPosition };
         jP.options.openPosition = newPosition;
         jP.setMenuStyle({ width: jP.options.openPosition });
+      },
+
+      setDirection: function(newDirection) {
+        if ( typeof(newDirection) == "undefined" || newDirection == null ) { newDirection = jP.options.direction };
+        jP.options.direction = newDirection;
+        $('.jPanelMenu-panel').css('left', 'auto').css('right', 'auto');
+        $('#jPanelMenu-style-master').remove();
+        jP.checkFixedChildren();
+        jP.setjPanelMenuStyles();
       }
     };
 
@@ -548,7 +557,8 @@
       getMenu: function() { return $(jP.menu); },
       panel: jP.panel,
       getPanel: function() { return $(jP.panel); },
-      position: jP.setPosition
+      position: jP.setPosition,
+      direction: jP.setDirection
     };
   };
 })(jQuery);

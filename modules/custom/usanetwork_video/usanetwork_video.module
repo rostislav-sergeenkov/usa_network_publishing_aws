@@ -230,17 +230,17 @@ function usanetwork_video_show_nav() {
           $class[] = 'active';
         }
         $terms1 = taxonomy_get_children($term1->tid, $term1->vid);
-        if ($i == 3) {
+        if ($i == 4) {
           $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
         }
-        if ($i >= 3) {
-          $items[3]['children'][$i-3] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+        if ($i >= 4) {
+          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[3]['children'][$i-3]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
           }
         } else {
           $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);

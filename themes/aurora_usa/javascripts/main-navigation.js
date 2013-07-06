@@ -140,6 +140,9 @@
         // on now button / personalization trigger
         // add on now and personalization content to the panel
         // set the panel 'state' to menu (default)
+        $personalization_drawer = $('#personalization-panel').clone();
+        $personalization_drawer.attr('id', 'personalization-drawer');
+        $('.personalization-trigger').append($personalization_drawer);
         $('#jPanelMenu-menu')
           .append($('#on-now-panel'))
           .append($('#personalization-panel'))
@@ -155,17 +158,7 @@
           $('body').attr('data-menu-direction', 'left');
           jPM.trigger();
         });
-        // set the panel 'state' to personalization
-        // and trigger panel
-        $('.personalization-trigger').click(function() {
-          $('#jPanelMenu-menu')
-            .removeClass('state-menu')
-            .removeClass('state-on-now')
-            .addClass('state-personalization');
-          jPM.direction('right');
-          $('body').attr('data-menu-direction', 'right');
-          jPM.trigger();
-        });
+
         // set the panel 'state' to menu
         // and trigger panel
         $('#main-menu-toggle').click(function() {
@@ -207,13 +200,51 @@
         jRes.addFunc({
           breakpoint: 'narrow',
           enter: function() {
+            jPM.close();
+            $('.personalization-trigger').removeClass('active-item');
+            //
             jPM.position('258px');
+            // set the panel 'state' to personalization
+            // and trigger panel
+            $('.personalization-trigger')
+              .off('click')
+              .click(function() {
+                $('#jPanelMenu-menu')
+                  .removeClass('state-menu')
+                  .removeClass('state-on-now')
+                  .addClass('state-personalization');
+                jPM.direction('right');
+                $('body').attr('data-menu-direction', 'right');
+                jPM.trigger();
+              });
           }
         });
         jRes.addFunc({
           breakpoint: 'wide',
           enter: function() {
+            jPM.close();
+            $('.personalization-trigger').removeClass('active-item');
+            //
             jPM.position('362px');
+            // slide up the drawer
+            $('.personalization-trigger')
+              .off('click')
+              .click(function() {
+                var Self = $(this);
+                var Wall = document.getElementById('wall');
+                Self.toggleClass('active-item');
+                if (Self.hasClass('active-item') && Wall === null) {
+                  Wall = $('<div id="wall" data-module-type="Wall"></div>')
+                    .click(function() {
+                      $('.active-item').removeClass('active-item');
+                      $(this).remove();
+                    })
+                  $('.jPanelMenu-panel').append(Wall);
+                } else {
+                  $(Wall).remove();
+                }
+                return false;
+              });
           }
         });
       });

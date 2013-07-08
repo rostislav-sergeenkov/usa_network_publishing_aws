@@ -295,3 +295,9 @@ function usanetwork_core_update_7106() {
   module_enable($modules_en);
 }
 
+/**
+ * Reset our install profile from pub_entertainment to pub_vanilla
+ */
+function usanetwork_core_update_7107() {
+  variable_set('install_profile', 'pub_vanilla');
+}

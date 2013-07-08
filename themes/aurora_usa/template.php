@@ -416,6 +416,23 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    // display title for shows
+    //
+    case 'field_display_title':
+      // change display
+      if (isset($vars['element']['#view_mode'])) {
+        switch($vars['element']['#view_mode']) {
+          case 'block_cover_title':
+          $vars['items'][0]['#prefix'] = '<h4>';
+          $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          case 'follow_social':
+          $vars['items'][0]['#prefix'] = '<div><h4>';
+          $vars['items'][0]['#suffix'] = '</h4></div>';
+            break;
+          }
+        }
+      break;
   }
 }
 
@@ -615,8 +632,8 @@ function aurora_usa_preprocess_views_view_unformatted(&$vars) {
   $view = $vars['view'];
   switch($view->name) {
     case 'usa_gallery' :
-      if ($vars['view']->current_display == 'panel_pane_1' 
-        || $vars['view']->current_display == 'panel_pane_3' 
+      if ($vars['view']->current_display == 'panel_pane_1'
+        || $vars['view']->current_display == 'panel_pane_3'
         || $vars['view']->current_display == 'panel_pane_4') {
         //get node id for page
         $nid = arg(1);

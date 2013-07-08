@@ -1269,7 +1269,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1282,7 +1282,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -1338,7 +1338,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 50,
       ),
       'default' => array(
         'label' => 'above',
@@ -1351,7 +1351,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 60,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -1398,7 +1398,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'default' => array(
         'label' => 'above',
@@ -1414,7 +1414,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 51,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -1501,7 +1501,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 45,
       ),
       'default' => array(
         'label' => 'above',
@@ -1520,7 +1520,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 49,
       ),
       'full' => array(
         'label' => 'above',
@@ -1601,7 +1601,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 46,
       ),
       'default' => array(
         'label' => 'above',
@@ -1620,7 +1620,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 48,
       ),
       'full' => array(
         'label' => 'above',
@@ -1701,7 +1701,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 48,
       ),
       'default' => array(
         'label' => 'above',
@@ -1720,7 +1720,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 43,
       ),
       'full' => array(
         'label' => 'above',
@@ -1801,7 +1801,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 47,
       ),
       'default' => array(
         'label' => 'above',
@@ -1820,7 +1820,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 42,
       ),
       'full' => array(
         'label' => 'above',
@@ -1901,7 +1901,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 42,
       ),
       'default' => array(
         'label' => 'above',
@@ -1920,7 +1920,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'full' => array(
         'label' => 'above',
@@ -2002,7 +2002,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 41,
       ),
       'default' => array(
         'label' => 'above',
@@ -2021,7 +2021,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 36,
       ),
       'full' => array(
         'label' => 'above',
@@ -2102,7 +2102,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 36,
       ),
       'default' => array(
         'label' => 'above',
@@ -2121,7 +2121,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 38,
       ),
       'full' => array(
         'label' => 'above',
@@ -2202,7 +2202,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
       'default' => array(
         'label' => 'above',
@@ -2221,7 +2221,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'full' => array(
         'label' => 'above',
@@ -2302,7 +2302,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 60,
       ),
       'default' => array(
         'label' => 'above',
@@ -2321,7 +2321,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 61,
       ),
       'full' => array(
         'label' => 'above',
@@ -2402,7 +2402,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 59,
       ),
       'default' => array(
         'label' => 'above',
@@ -2421,7 +2421,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 62,
       ),
       'full' => array(
         'label' => 'above',
@@ -2502,7 +2502,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 61,
       ),
       'default' => array(
         'label' => 'above',
@@ -2521,7 +2521,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 64,
       ),
       'full' => array(
         'label' => 'above',
@@ -2602,7 +2602,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 62,
       ),
       'default' => array(
         'label' => 'above',
@@ -2621,7 +2621,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 63,
       ),
       'full' => array(
         'label' => 'above',
@@ -2702,7 +2702,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 64,
       ),
       'default' => array(
         'label' => 'above',
@@ -2721,7 +2721,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 59,
       ),
       'full' => array(
         'label' => 'above',
@@ -2803,7 +2803,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 63,
       ),
       'default' => array(
         'label' => 'above',
@@ -2822,7 +2822,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 58,
       ),
       'full' => array(
         'label' => 'above',
@@ -2896,7 +2896,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 49,
       ),
       'default' => array(
         'label' => 'above',
@@ -2909,7 +2909,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 50,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -2958,9 +2958,10 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'display' => array(
       'block_cover_title' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 54,
+        'type' => 'text_default',
+        'weight' => 70,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -2970,10 +2971,11 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'weight' => 48,
       ),
       'follow_social' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 57,
+        'type' => 'text_default',
+        'weight' => 66,
       ),
       'search_index' => array(
         'label' => 'hidden',
@@ -3034,7 +3036,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'default' => array(
         'label' => 'above',
@@ -3047,7 +3049,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 32,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3107,7 +3109,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 26,
       ),
       'default' => array(
         'label' => 'above',
@@ -3120,7 +3122,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3180,7 +3182,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -3206,7 +3208,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 40,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3274,7 +3276,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 65,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3355,7 +3357,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'default' => array(
         'label' => 'above',
@@ -3368,7 +3370,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3428,7 +3430,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 38,
       ),
       'default' => array(
         'label' => 'above',
@@ -3441,7 +3443,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 45,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3500,7 +3502,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 58,
       ),
       'default' => array(
         'label' => 'above',
@@ -3519,7 +3521,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 53,
       ),
       'full' => array(
         'label' => 'above',
@@ -3590,7 +3592,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 57,
       ),
       'default' => array(
         'label' => 'above',
@@ -3602,7 +3604,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 52,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3659,7 +3661,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
       'default' => array(
         'label' => 'above',
@@ -3672,7 +3674,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3723,7 +3725,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 66,
       ),
       'default' => array(
         'label' => 'above',
@@ -3738,7 +3740,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 68,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3801,7 +3803,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'default' => array(
         'label' => 'above',
@@ -3814,7 +3816,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3869,7 +3871,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 52,
       ),
       'default' => array(
         'label' => 'above',
@@ -3882,7 +3884,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 54,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -3944,7 +3946,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 51,
       ),
       'default' => array(
         'label' => 'above',
@@ -3963,7 +3965,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 55,
       ),
       'full' => array(
         'label' => 'above',
@@ -4028,7 +4030,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 53,
       ),
       'default' => array(
         'label' => 'above',
@@ -4134,7 +4136,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'default' => array(
         'label' => 'above',
@@ -4147,7 +4149,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4211,7 +4213,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'default' => array(
         'label' => 'above',
@@ -4224,7 +4226,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4288,7 +4290,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 54,
       ),
       'default' => array(
         'label' => 'above',
@@ -4301,7 +4303,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 57,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4361,7 +4363,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 56,
       ),
       'default' => array(
         'label' => 'above',
@@ -4374,7 +4376,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 56,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4438,7 +4440,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 55,
       ),
       'default' => array(
         'label' => 'above',
@@ -4451,7 +4453,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 41,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4510,7 +4512,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 65,
       ),
       'default' => array(
         'label' => 'above',
@@ -4525,7 +4527,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 44,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4598,7 +4600,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 44,
       ),
       'default' => array(
         'label' => 'above',
@@ -4611,7 +4613,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 46,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4681,7 +4683,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 43,
       ),
       'default' => array(
         'label' => 'above',
@@ -4694,7 +4696,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 47,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -4753,7 +4755,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 40,
       ),
       'default' => array(
         'label' => 'above',
@@ -4772,7 +4774,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
       'full' => array(
         'label' => 'above',
@@ -4853,7 +4855,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'default' => array(
         'label' => 'above',
@@ -4872,7 +4874,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'full' => array(
         'label' => 'above',
@@ -4953,7 +4955,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'default' => array(
         'label' => 'above',
@@ -4972,7 +4974,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
       'full' => array(
         'label' => 'above',
@@ -5053,7 +5055,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'default' => array(
         'label' => 'above',
@@ -5072,7 +5074,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'full' => array(
         'label' => 'above',
@@ -5153,7 +5155,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
       'default' => array(
         'label' => 'above',
@@ -5172,7 +5174,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'full' => array(
         'label' => 'above',
@@ -5253,7 +5255,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'default' => array(
         'label' => 'above',
@@ -5272,7 +5274,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'full' => array(
         'label' => 'above',
@@ -5353,7 +5355,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'default' => array(
         'label' => 'above',
@@ -5372,7 +5374,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'full' => array(
         'label' => 'above',
@@ -5453,7 +5455,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'default' => array(
         'label' => 'above',
@@ -5472,7 +5474,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'full' => array(
         'label' => 'above',
@@ -5553,7 +5555,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'default' => array(
         'label' => 'above',
@@ -5572,7 +5574,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'full' => array(
         'label' => 'above',
@@ -5653,7 +5655,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'default' => array(
         'label' => 'above',
@@ -5672,7 +5674,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'above',
@@ -5753,7 +5755,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'default' => array(
         'label' => 'above',
@@ -5772,7 +5774,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'above',
@@ -5853,7 +5855,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'default' => array(
         'label' => 'above',
@@ -5872,7 +5874,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'above',
@@ -5946,7 +5948,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -5960,7 +5962,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6028,7 +6030,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -6042,7 +6044,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6110,7 +6112,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -6124,7 +6126,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6192,7 +6194,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -6206,7 +6208,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6274,7 +6276,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'default' => array(
         'label' => 'above',
@@ -6287,7 +6289,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6348,7 +6350,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'default' => array(
         'label' => 'above',
@@ -6361,7 +6363,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6420,7 +6422,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 32,
       ),
       'default' => array(
         'label' => 'above',
@@ -6436,7 +6438,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6516,7 +6518,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 67,
       ),
       'default' => array(
         'label' => 'above',
@@ -6531,7 +6533,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 69,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6594,7 +6596,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 69,
       ),
       'default' => array(
         'label' => 'above',
@@ -6610,7 +6612,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 71,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6702,7 +6704,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 68,
       ),
       'default' => array(
         'label' => 'above',
@@ -6717,7 +6719,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 70,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6781,7 +6783,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 27,
       ),
       'default' => array(
         'label' => 'above',
@@ -6796,7 +6798,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
       'search_index' => array(
         'label' => 'above',
@@ -6849,7 +6851,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 71,
       ),
       'default' => array(
         'label' => 'above',
@@ -6862,7 +6864,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 67,
       ),
       'search_index' => array(
         'label' => 'above',

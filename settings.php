@@ -35,6 +35,7 @@ if (file_exists('/var/www/site-php')) {
  * below, you must add $override_defaults = TRUE to your local settings file.
  */
 
+$conf['environment_indicator_overwrite'] = TRUE;
 switch ($_ENV['AH_SITE_ENVIRONMENT']) {
   case 'local':
     if (empty($override_defaults)) {

@@ -331,3 +331,23 @@ function usanetwork_core_update_7109() {
   // forcing the menu cache to be rebuilt
   variable_set('menu_rebuild_needed', TRUE);
 }
+
+/**
+ * Update environment_indicator to 2.x-dev
+ */
+function usanetwork_core_update_7110() {
+  $modules = array(
+    'environment_indicator',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'environment_indicator',
+  );
+  drupal_uninstall_modules($modules_un);
+
+  $modules_en = array(
+    'environment_indicator',
+  );
+  module_enable($modules_en);
+}

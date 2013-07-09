@@ -29,12 +29,21 @@
           });
         }
 
+        function show_carousel_width() {
+          $carousel = $('#block-views-usa-shows-block-1 .view-content');
+          if($carousel.css('width') == '300px') {
+            $carousel.find('.show-carousel').css('width','auto');
+          } 
+        }
+
         window.onload = function() {
            create_show_carousel();
+           show_carousel_width();
         };
 
         $(window).resize(function(){
            create_show_carousel();
+           show_carousel_width();
         });
 
     },

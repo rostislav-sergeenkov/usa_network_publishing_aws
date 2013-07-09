@@ -38,12 +38,21 @@
           });
         }
 
+        function cast_carousel_width() {
+          $carousel = $('#cast-carousel .view-content');
+          if($carousel.css('width') == '300px') {
+            $carousel.find('.cast-carousel').css('width','auto').css('left','20px');
+          } 
+        }
+
         window.onload = function() {
            create_cast_carousel();
+           cast_carousel_width();
         };
 
         $(window).resize(function(){
           create_cast_carousel();
+          cast_carousel_width();
         });
 
     },

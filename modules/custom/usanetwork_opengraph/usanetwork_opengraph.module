@@ -1,7 +1,5 @@
 <?php
 /**
  * @file
- * Code for the usanetwork_opengraph feature.
+ * Drupal needs this blank file.
  */
-
-include_once 'usanetwork_opengraph.features.inc';

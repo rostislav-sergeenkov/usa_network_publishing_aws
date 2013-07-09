@@ -255,3 +255,79 @@ function usanetwork_core_update_7105() {
   $modules = array('usanetwork_opengraph');
   module_enable($modules);
 }
+
+/**
+ * Disable p7 core modules we no longer wish to use and uninstall the relationships elements
+ * install our new features content modules
+ * this should be run under the p7 v7.14.0 tag
+ */
+function usanetwork_core_update_7106() {
+  $modules = array(
+    'pub_relationships_movie',
+    'pub_relationships',
+    'pub_movie',
+    'pub_character_profile',
+    'pub_person_overrides',
+    'pub_person',
+    'pub_media',
+    'comment',
+    'pub_media_overrides',
+    'pub_theplatform',
+    'pub_gigya_overrides',
+    'pub_gigya',
+    'pub_tv',
+    'pub_tv_overrides',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'pub_relationships_movie',
+    'pub_relationships_tv',
+    'pub_relationships',
+  );
+  drupal_uninstall_modules($modules_un);
+
+  $modules_en = array(
+    'usanetwork_person',
+    'usanetwork_tv_shows',
+    'usanetwork_gallery_content',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Reset our install profile from pub_entertainment to pub_vanilla
+ */
+function usanetwork_core_update_7107() {
+  variable_set('install_profile', 'pub_vanilla');
+}
+
+/**
+ * Disable pub_tv and pub_person
+ */
+function usanetwork_core_update_7108() {
+  $modules = array(
+    'pub_tv',
+    'pub_person',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'pub_tv',
+    'pub_person',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * Delete unused content types movie and character_profile from db
+ */
+function usanetwork_core_update_7109() {
+  // deleting the movie and character_profile content type references
+  node_type_delete('movie');
+  node_type_delete('character_profile');
+
+  node_types_rebuild();
+  // forcing the menu cache to be rebuilt
+  variable_set('menu_rebuild_needed', TRUE);
+}

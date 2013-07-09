@@ -66,7 +66,6 @@ function usanetwork_video_default_queues_type() {
           "usa_tve_video" : "usa_tve_video",
           "usanetwork_aspot" : 0,
           "catchall_page" : 0,
-          "character_profile" : 0,
           "usa_homepage" : 0,
           "media_gallery" : 0,
           "movie" : 0,

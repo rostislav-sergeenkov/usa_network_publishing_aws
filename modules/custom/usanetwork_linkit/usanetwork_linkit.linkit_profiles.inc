@@ -56,7 +56,6 @@ function usanetwork_linkit_default_linkit_profiles() {
       'bundles' => array(
         'comment_node_usanetwork_aspot' => 0,
         'comment_node_catchall_page' => 0,
-        'comment_node_character_profile' => 0,
         'comment_node_usa_homepage' => 0,
         'comment_node_media_gallery' => 0,
         'comment_node_movie' => 0,
@@ -92,7 +91,6 @@ function usanetwork_linkit_default_linkit_profiles() {
         'tv_show' => 'tv_show',
         'webform' => 'webform',
         'usanetwork_aspot' => 0,
-        'character_profile' => 0,
         'usa_homepage' => 0,
         'usanetwork_promo' => 0,
       ),
@@ -224,7 +222,6 @@ function usanetwork_linkit_default_linkit_profiles() {
       'bundles' => array(
         'comment_node_usanetwork_aspot' => 0,
         'comment_node_catchall_page' => 0,
-        'comment_node_character_profile' => 0,
         'comment_node_usa_homepage' => 0,
         'comment_node_media_gallery' => 0,
         'comment_node_movie' => 0,
@@ -264,7 +261,6 @@ function usanetwork_linkit_default_linkit_profiles() {
         'usa_tve_video' => 'usa_tve_video',
         'webform' => 'webform',
         'usanetwork_aspot' => 0,
-        'character_profile' => 0,
         'usa_homepage' => 0,
         'usanetwork_promo' => 0,
       ),

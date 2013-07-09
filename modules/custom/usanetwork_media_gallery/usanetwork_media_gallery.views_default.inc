@@ -386,7 +386,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['arguments']['field_episode_target_id']['id'] = 'field_episode_target_id';
   $handler->display->display_options['arguments']['field_episode_target_id']['table'] = 'field_data_field_episode';
   $handler->display->display_options['arguments']['field_episode_target_id']['field'] = 'field_episode_target_id';
-  $handler->display->display_options['arguments']['field_episode_target_id']['relationship'] = 'field_pub_relation_tv_shows_value';
+  $handler->display->display_options['arguments']['field_episode_target_id']['relationship'] = 'field_episode_target_id';
   $handler->display->display_options['arguments']['field_episode_target_id']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['field_episode_target_id']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_episode_target_id']['summary']['number_of_records'] = '0';

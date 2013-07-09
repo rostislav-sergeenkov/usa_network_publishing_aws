@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_tv_shows feature.
+ */
+
+include_once 'usanetwork_tv_shows.features.inc';

@@ -35,12 +35,15 @@ if (file_exists('/var/www/site-php')) {
  * below, you must add $override_defaults = TRUE to your local settings file.
  */
 
+$conf['environment_indicator_overwrite'] = TRUE;
 switch ($_ENV['AH_SITE_ENVIRONMENT']) {
   case 'local':
     if (empty($override_defaults)) {
       // Envronment indicator settings.
-      $conf['environment_indicator_text'] = 'LOCAL SERVER';
-      $conf['environment_indicator_color'] = '#339999';
+      $conf['environment_indicator_overwritten_name'] = 'LOCAL SERVER';
+      $conf['environment_indicator_overwritten_color'] = '#339999';
+      $conf['environment_indicator_overwritten_position'] = 'top';
+      $conf['environment_indicator_overwritten_fixed'] = FALSE;
 
       // File path settings.
       $conf['file_temporary_path'] = '/tmp/php';
@@ -51,8 +54,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'dev':
     // Envronment indicator settings.
-    $conf['environment_indicator_text'] = 'DEV SERVER';
-    $conf['environment_indicator_color'] = '#0000CC';
+    $conf['environment_indicator_overwritten_name'] = 'DEV SERVER';
+    $conf['environment_indicator_overwritten_color'] = '#0000CC';
+    $conf['environment_indicator_overwritten_position'] = 'top';
+    $conf['environment_indicator_overwritten_fixed'] = FALSE;
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
@@ -73,8 +78,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
   case 'test':
   case 'stage':
     // Envronment indicator settings.
-    $conf['environment_indicator_text'] = 'STAGE SERVER';
-    $conf['environment_indicator_color'] = '#990099';
+    $conf['environment_indicator_overwritten_name'] = 'STAGE SERVER';
+    $conf['environment_indicator_overwritten_color'] = '#990099';
+    $conf['environment_indicator_overwritten_position'] = 'top';
+    $conf['environment_indicator_overwritten_fixed'] = FALSE;
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
@@ -94,8 +101,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'prod':
     // Envronment indicator settings.
-    $conf['environment_indicator_text'] = 'LIVE';
-    $conf['environment_indicator_color'] = '#990000';
+    $conf['environment_indicator_overwritten_name'] = 'LIVE';
+    $conf['environment_indicator_overwritten_color'] = '#990000';
+    $conf['environment_indicator_overwritten_position'] = 'top';
+    $conf['environment_indicator_overwritten_fixed'] = FALSE;
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.

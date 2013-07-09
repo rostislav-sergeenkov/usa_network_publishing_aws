@@ -469,8 +469,16 @@ body.usa-social {
   margin-top: 0;
 }
 
-.echo-TwitterIntents-plugin .echo-item-footer {
-  margin-top: 0;
+.echo-TwitterIntents-plugin {
+  .echo-item-text {
+    a:hover {
+      color: $gray-med;
+      text-decoration: none;
+    }
+  }  
+  .echo-item-footer {
+    margin-top: 0;
+  }
 }
 
 .echo-item-controls .echo-item-control,

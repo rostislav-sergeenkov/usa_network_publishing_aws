@@ -3461,15 +3461,23 @@ input[type="radio"], input[type="checkbox"] {
 
 .carousel-item {
   float: left;
-  width: 236px;
-  height: 188px;
   display: block;
   text-align: center;
+  width: 183px;
+  height: 145px;
+}
+@media (min-width: 330px) {
+  .carousel-item {
+    width: 236px;
+    height: 188px;
+  }
 }
 
-.carousel {
-  margin-left: auto !important;
-  margin-right: auto !important;
+@media (min-width: 330px) {
+  .carousel {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 .carousel .item-list {
   height: 188px;
@@ -3486,7 +3494,6 @@ input[type="radio"], input[type="checkbox"] {
   max-width: 1319px;
   overflow: hidden;
   position: relative;
-  padding: 0 15px;
   padding: 0;
 }
 .carousel .view:after, .carousel .view:before {
@@ -3499,20 +3506,38 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 95;
 }
 .carousel .view:before {
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
-  background: -webkit-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: -moz-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: -o-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #161616), color-stop(5%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(left center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(left center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(left center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(left center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
   left: 0px;
 }
+@media (min-width: 330px) {
+  .carousel .view:before {
+    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
+    background: -webkit-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: -moz-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: -o-linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: linear-gradient(left center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+  }
+}
 .carousel .view:after {
-  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
-  background: -webkit-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: -moz-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: -o-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
-  background: linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #161616), color-stop(5%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(right center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(right center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(right center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(right center, #161616 0%, #161616 5%, rgba(31, 31, 31, 0) 100%);
   right: 0px;
+}
+@media (min-width: 330px) {
+  .carousel .view:after {
+    background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(31, 31, 31, 0)));
+    background: -webkit-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: -moz-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: -o-linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+    background: linear-gradient(right center, #161616 0%, #161616 60%, rgba(31, 31, 31, 0) 100%);
+  }
 }
 .carousel ul {
   margin: 0;
@@ -3538,10 +3563,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 .carousel li.carousel-item figure {
   border: 2px solid #2d2d2d;
-  left: 8px;
   position: absolute;
   top: 0;
   z-index: 1;
+}
+@media (min-width: 330px) {
+  .carousel li.carousel-item figure {
+    left: 8px;
+  }
 }
 .carousel li.carousel-item img {
   max-width: none;
@@ -3562,15 +3591,29 @@ input[type="radio"], input[type="checkbox"] {
   letter-spacing: .05em;
   font-weight: normal;
   color: white;
-  left: 10px;
+  left: 2px;
   position: absolute;
-  top: 125px;
-  width: 221px;
+  top: 93px;
   z-index: 10;
-  height: 61px;
-  padding: 8px 18px 8px;
+  padding: 10px 18px;
   background: rgba(0, 0, 0, 0.8);
   overflow: hidden;
+  width: 169px;
+  height: 50px;
+}
+@media (min-width: 330px) {
+  .carousel .item-content {
+    width: 221px;
+    top: 125px;
+    height: 61px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+@media (min-width: 330px) {
+  .carousel .item-content {
+    left: 10px;
+  }
 }
 .carousel .item-content a {
   color: white;
@@ -3613,15 +3656,69 @@ input[type="radio"], input[type="checkbox"] {
 #cast-carousel {
   background-color: #1f1f1f;
   border-bottom: 1px solid #2d2d2d;
-  padding: 30px 0;
+  padding: 15px 0;
+}
+@media (min-width: 330px) {
+  #cast-carousel {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+}
+#cast-carousel .view-content {
+  width: 300px;
+  height: 145px;
+}
+@media (min-width: 330px) {
+  #cast-carousel .view-content {
+    width: auto;
+    height: auto;
+  }
+}
+#cast-carousel .carousel-item img {
+  max-width: 169px;
+}
+@media (min-width: 330px) {
+  #cast-carousel .carousel-item img {
+    max-width: none;
+  }
+}
+#cast-carousel .carousel-item a.article-link {
+  height: 145px;
+}
+@media (min-width: 330px) {
+  #cast-carousel .carousel-item a.article-link {
+    height: 188px;
+  }
+}
+#cast-carousel figure {
+  height: 145px;
+  width: 173px;
+}
+@media (min-width: 330px) {
+  #cast-carousel figure {
+    width: auto;
+    height: auto;
+  }
 }
 #cast-carousel.carousel h4 {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   margin: 0;
 }
+@media (min-width: 330px) {
+  #cast-carousel.carousel h4 {
+    font-size: 16px;
+  }
+}
 #cast-carousel.carousel .item-content > div {
-  font-size: 14px;
+  font-size: 10px;
+  line-height: 1.1em;
+}
+@media (min-width: 330px) {
+  #cast-carousel.carousel .item-content > div {
+    font-size: 14px;
+    line-height: 1.5em;
+  }
 }
 #cast-carousel.carousel .view:before {
   background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
@@ -3640,7 +3737,20 @@ input[type="radio"], input[type="checkbox"] {
 
 /* show carousel */
 #block-views-usa-shows-block-1 {
-  margin-bottom: 30px;
+  margin: 5px 0 20px;
+}
+@media (min-width: 330px) {
+  #block-views-usa-shows-block-1 {
+    margin-bottom: 30px;
+  }
+}
+#block-views-usa-shows-block-1 .view-content {
+  width: 300px;
+}
+@media (min-width: 330px) {
+  #block-views-usa-shows-block-1 .view-content {
+    width: auto;
+  }
 }
 #block-views-usa-shows-block-1 .view-mode-block_cover_title {
   position: relative;
@@ -3666,7 +3776,7 @@ input[type="radio"], input[type="checkbox"] {
 #block-views-usa-shows-block-1 h4 {
   font-weight: normal;
   color: white;
-  left: 10px;
+  left: 2px;
   position: absolute;
   top: 109px;
   width: 169px;
@@ -3678,6 +3788,11 @@ input[type="radio"], input[type="checkbox"] {
   white-space: nowrap;
   font-size: 12px;
   margin: 0;
+}
+@media (min-width: 330px) {
+  #block-views-usa-shows-block-1 h4 {
+    left: 10px;
+  }
 }
 #block-views-usa-shows-block-1 li.active h4:after {
   content: "";
@@ -4822,7 +4937,6 @@ body.person-page .ad-leaderboard {
 .page-videos #block-system-main {
   background-color: #161616;
   border-bottom: 1px solid #2d2d2d;
-  margin-bottom: 30px;
   padding-bottom: 16px;
 }
 
@@ -6385,6 +6499,10 @@ body.usa-social {
   color: #2d2d2d;
 }
 
+.echo-TwitterIntents-plugin .echo-item-text a:hover {
+  color: #3d3d3d;
+  text-decoration: none;
+}
 .echo-TwitterIntents-plugin .echo-item-footer {
   margin-top: 0;
 }

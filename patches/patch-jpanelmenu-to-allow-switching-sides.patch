@@ -1,0 +1,42 @@
+From 62361add2be8535af426431403e385db56a063bf Mon Sep 17 00:00:00 2001
+From: Mason Wendell <mason@canarypromo.com>
+Date: Fri, 5 Jul 2013 15:45:15 -0400
+Subject: [PATCH 04/13] patch jpanelmenu to allow switching sides
+
+---
+ libraries/jpanelmenu/jquery.jpanelmenu.js | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/libraries/jpanelmenu/jquery.jpanelmenu.js b/libraries/jpanelmenu/jquery.jpanelmenu.js
+index 5fee013..4456291 100644
+--- a/libraries/jpanelmenu/jquery.jpanelmenu.js
++++ b/libraries/jpanelmenu/jquery.jpanelmenu.js
+@@ -534,6 +534,15 @@
+         if ( typeof(newPosition) == "undefined" || newPosition == null ) { newPosition = jP.options.openPosition };
+         jP.options.openPosition = newPosition;
+         jP.setMenuStyle({ width: jP.options.openPosition });
++      },
++
++      setDirection: function(newDirection) {
++        if ( typeof(newDirection) == "undefined" || newDirection == null ) { newDirection = jP.options.direction };
++        jP.options.direction = newDirection;
++        $('.jPanelMenu-panel').css('left', 'auto').css('right', 'auto');
++        $('#jPanelMenu-style-master').remove();
++        jP.checkFixedChildren();
++        jP.setjPanelMenuStyles();
+       }
+     };
+ 
+@@ -548,7 +557,8 @@
+       getMenu: function() { return $(jP.menu); },
+       panel: jP.panel,
+       getPanel: function() { return $(jP.panel); },
+-      position: jP.setPosition
++      position: jP.setPosition,
++      direction: jP.setDirection
+     };
+   };
+ })(jQuery);
+-- 
+1.7.12.4 (Apple Git-37)
+

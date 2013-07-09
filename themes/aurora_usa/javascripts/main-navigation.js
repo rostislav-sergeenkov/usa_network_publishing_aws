@@ -34,8 +34,20 @@
         function jpm_after_on() {
           $('#jPanelMenu-menu')
             .wrapInner('<div id="menu-wrapper"></div>');
+          // dupe the footer into the side menu
+          $footer_clone = $('#footer').clone();
+          $footer_clone
+            .attr('id', 'footer-clone')
+            .find('.region-footer')
+              .removeClass('region-footer')
+              .addClass('region-footer-clone')
+              .end()
+            .find('#footer-message')
+              .attr('id', 'footer-message-clone')
+              .end();
           $('#menu-wrapper')
             .prepend('<h1 class="menu-title">Main Menu</h1>')
+            .append($footer_clone)
             .find('a')
               .removeClass('mega-nav-link')
               .addClass('slide-panel-link')

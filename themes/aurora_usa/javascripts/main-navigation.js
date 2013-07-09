@@ -18,7 +18,7 @@
         // set the panel 'state' to menu (DEFAULT)
         $personalization_drawer = $('#personalization-panel').clone();
         $personalization_drawer.attr('id', 'personalization-drawer');
-        $('.personalization-trigger').append($personalization_drawer);
+        $('.personalization-trigger').after($personalization_drawer);
 
 
         // MOVE CONTENT PANELS INTO JPM

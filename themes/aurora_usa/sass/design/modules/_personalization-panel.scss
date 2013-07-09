@@ -23,7 +23,7 @@
   @include transition-duration(0.2s);
   @include transition-timing-function(linear);
   @include transition-property(all);
-  .active-item & {
+  .active-item + & {
     bottom: 100%;
     opacity: 1;
     @include transform3d( translateY(0) );

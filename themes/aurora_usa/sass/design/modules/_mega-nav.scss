@@ -8,24 +8,38 @@ $logo-height-med-2: 32px;
 #mega-nav {
   position: fixed;
   z-index: $ziMegaNav;
-  left: 0;
   bottom: 0;
   width: 100%;
   height: $primary-nav-height-mobi;
   background-color: $black-true;
   border-top: 1px solid $gray-med-dark;
   text-align: center;
-  @include transition-property(left);
   @include transition-duration(300ms);
   @include transition-timing-function(ease-in-out);
   a {
     @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
   }
-  [data-menu-position="open"] & {
+  [data-menu-direction="left"] & {
+    left: 0;
+    @include transition-property(left);
+  }
+  [data-menu-direction="left"][data-menu-position="open"] & {
     left: 258px;
     @include breakpoint($bp-menu-wide) {
       left: 362px;
     }
+  }
+  [data-menu-direction="right"] & {
+    right: 0;
+    @include transition-property(right);
+  }
+  [data-menu-direction="right"][data-menu-position="open"] & {
+    right: 258px;
+    @include breakpoint($bp-menu-wide) {
+      right: 362px;
+    }
+  }
+  [data-menu-position="open"] & {
     .primary-nav {
       > *:not(#main-menu-toggle) {
         opacity: 0.2;
@@ -34,7 +48,7 @@ $logo-height-med-2: 32px;
         }
       }
     }
-  }  
+  }
 
   @include box-shadow(rgba(0,0,0,.7) 0 -31px 63px);
   @include breakpoint($bp-menu-switch) {
@@ -55,7 +69,7 @@ $logo-height-med-2: 32px;
       cursor: pointer;
       color: $gray-light;
       font-size: 20px;
-      margin-right: 22px; 
+      margin-right: 22px;
       /* cant use - @extend %usanetwork-font -inside bp */
       font-family: 'usanetwork';
       speak: none;
@@ -67,7 +81,7 @@ $logo-height-med-2: 32px;
       font-variant: normal;
       text-transform: none;
       line-height: 1;
-      -webkit-font-smoothing: antialiased; 
+      -webkit-font-smoothing: antialiased;
       .ie9 &, .ie8 & {
         background: url(../images/svgs/ie_x1.svg) no-repeat top left;
         height: 20px;
@@ -319,12 +333,12 @@ $logo-height-med-2: 32px;
 //////////////
 #mega-nav {
   .block {
-    display: inline-block; 
+    display: inline-block;
     @include breakpoint($bp-snipe-small-width-range) {
       position: relative;
-      z-index: 10; 
-    }  
-  
+      z-index: 10;
+    }
+
   }
   .snipe-active {
     .block {
@@ -332,7 +346,7 @@ $logo-height-med-2: 32px;
         position: absolute;
       }
     }
-  }   
+  }
 }
 #block-usanetwork-blocks-usa-tv-show-menu {
   display: inline-block;

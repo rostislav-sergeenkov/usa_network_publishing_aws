@@ -80,6 +80,7 @@
     </h1>
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
+        <?php print render($page['personalization_trigger']); ?>
         <?php if ($site_name): ?>
           <div id="logo">
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
@@ -103,10 +104,10 @@
     <?php if ($page['sponsored']): ?><div id="head-sponsored"><?php print render($page['sponsored']); ?></div><?php endif; ?>
     <?php if ($page['search']): ?>
       </div>
-    <?php endif; ?>  
+    <?php endif; ?>
     <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
   </div>
-<?php endif; ?>  
+<?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
@@ -155,6 +156,12 @@
     <?php print render($page['on_now']); ?>
   </aside>
   <!-- /ON NOW -->
+
+  <!-- PERSONALIZATION -->
+  <aside id="personalization-panel" class="clearfix">
+    <?php print render($page['personalization']); ?>
+  </aside>
+  <!-- /PERSONALIZATION -->
 
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo" class="clearfix">

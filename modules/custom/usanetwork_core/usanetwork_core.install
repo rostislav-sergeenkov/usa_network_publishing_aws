@@ -351,3 +351,25 @@ function usanetwork_core_update_7110() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * remove old environment_indicator vars
+ */
+function usanetwork_core_update_7111() {
+  $color = !is_null(variable_get('environment_indicator_color', NULL));
+  $enabled = !is_null(variable_get('environment_indicator_enabled', NULL));
+  $name = !is_null(variable_get('environment_indicator_text', NULL));
+  $pos = !is_null(variable_get('environment_indicator_position', NULL));
+  if ($color) {
+    variable_del('environment_indicator_color');
+  }
+  if ($enabled) {
+    variable_del('environment_indicator_enabled');
+  }
+  if ($name) {
+    variable_del('environment_indicator_text');
+  }
+  if ($pos) {
+    variable_del('environment_indicator_position');
+  }
+}

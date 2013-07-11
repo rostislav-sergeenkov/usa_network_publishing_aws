@@ -71,7 +71,7 @@
             $new_show_menu = $show_menu.find('#tv-show-menu');
             $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);
             $new_show_menu.prepend($new_show_title);
-            $('#jPanelMenu-menu').prepend($new_show_menu);
+            $("#jPanelMenu-menu").prepend($new_show_menu); 
             $('#jPanelMenu-menu')
               .find('a')
                 .addClass('slide-panel-link')
@@ -203,6 +203,11 @@
           wall_remove();
         }
 
+        function close_wide_personalization() {
+          $('.personalization-trigger.active-item').removeClass('active-item');
+          wall_remove();
+        }
+
         $('.slide-container')
           .find('.mega-sub-nav-container')
           .siblings('a')
@@ -214,6 +219,11 @@
         // close button
         $('.mega-nav-close').click(function() {
           close_wide_subnav();
+          return false;
+        });
+
+        $('#personalization-drawer .close').click(function() {
+          close_wide_personalization();
           return false;
         });
 

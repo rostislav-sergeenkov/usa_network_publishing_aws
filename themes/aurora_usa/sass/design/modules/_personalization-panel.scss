@@ -1,12 +1,71 @@
+body {
+  &[data-menu-direction="right"][data-menu-position="open"] {
+    .jPanelMenu-panel {
+      right: 75% !important;
+      //width: auto;
+      position: absolute !important;
+      @include breakpoint($bp-menu-switch) {
+        position: relative !important;
+      }  
+    }
+    #jPanelMenu-menu {
+      background-color: $gray-med;
+      width: 75% !important;
+       &.state-personalization {
+        #tv-show-menu {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.personalization-content {
+  background-color: $gray-med;
+  padding: 10px;
+  .close {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: $gray-light;
+    font-size: 20px;
+    margin-right: 22px;
+    display: none;
+    @include breakpoint($bp-menu-switch) {
+      display: block;
+    }
+    @extend %usanetwork-font;
+    .ie9 &, .ie8 & {
+      background: url(../images/svgs/ie_x1.svg) no-repeat top left;
+      height: 20px;
+      width: 20px;
+      text-indent: -9999px;
+    }
+  }
+}
+
 .region-personalization-trigger {
   float: right;
+  span {
+    text-transform: uppercase;
+  }
+  .block-usanetwork-personalization {
+    width: 100%;
+  }
 }
 .personalization-trigger {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
-  border: 1px solid $white;
-  background-color: $orange;
+  height: 50px;
+  position: absolute;
+  right: 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  @include breakpoint($bp-menu-switch) {
+    height: 65px;
+    line-height: 65px;
+    position: relative;
+  }  
 }
 
 
@@ -20,12 +79,13 @@
   opacity: 0;
   // display: none;
   @include transform3d( translateY(100%) );
-  @include transition-duration(0.2s);
+  @include transition-duration(0);
   @include transition-timing-function(linear);
   @include transition-property(all);
   .active-item + & {
     bottom: 100%;
     opacity: 1;
     @include transform3d( translateY(0) );
+    @include transition-duration(0.2s);
   }
 }

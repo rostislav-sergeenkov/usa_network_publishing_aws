@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * USA Personalization Blocks
+ */
+
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_personalization_block_info() {
+  $blocks = array();
+  $blocks['sign_in'] = array(
+    'info' => t('Personalization: Sign In'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+   $blocks['content'] = array(
+    'info' => t('Personalization: Content'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_personalization_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'sign_in':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_personalization_sign_in();
+      break;
+    case 'content':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_personalization_content();
+      break;  
+
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_personalization_theme($existing, $type, $theme, $path) {
+  // @TODO: add variables, make these real theme functions
+  return array(
+   'usa_personalization_sign_in' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-personalization-sign-in',
+    ),
+    'usa_personalization_content' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-personalization-content',
+    ),
+  );
+}
+
+/**
+ * Block callback for the personalization block
+ */
+function usanetwork_personalization_sign_in() {
+  $render = array();
+
+  $render['personalization_sign_in'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_personalization_sign_in', array()),
+  );
+
+  return $render;
+}
+
+/**
+ * Block callback for the personalization block
+ */
+function usanetwork_personalization_content() {
+  $render = array();
+
+  $render['personalization_content'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_personalization_content', array()),
+  );
+
+  return $render;
+}

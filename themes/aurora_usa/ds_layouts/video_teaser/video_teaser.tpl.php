@@ -26,7 +26,7 @@ if ($node->type == 'usa_tve_video') {
     $vid_showname = rawurlencode($vid_showname);
   }
   // full path to tve
-  $url = 'http://www.usanetwork.com/anywhere/now/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
+  $url = 'http://www.usanetwork.com/now/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }
 
 ?>

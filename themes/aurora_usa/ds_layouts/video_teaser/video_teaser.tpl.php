@@ -1,10 +1,10 @@
-<?php 
+<?php
 $url = '';
 if ($node->type == 'usa_video') {
   $url = drupal_lookup_path('alias',"node/" . $variables['node']->nid);
 }
 if ($node->type == 'usa_tve_video') {
-  //Sample URL to USA TVE asset detail 
+  //Sample URL to USA TVE asset detail
   // page: http://www.usanetwork.com/anywhere/show/{Showname}/{MPX ID}/1/{asset title}.
   // parse the media id for the tve path
   $pl_id = field_get_items('node', $node, 'field_video_pid');
@@ -26,7 +26,7 @@ if ($node->type == 'usa_tve_video') {
     $vid_showname = rawurlencode($vid_showname);
   }
   // full path to tve
-  $url = 'http://www.usanetwork.com/anywhere/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
+  $url = 'http://www.usanetwork.com/anywhere/now/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }
 
 ?>

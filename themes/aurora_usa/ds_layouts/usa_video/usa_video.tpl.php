@@ -36,7 +36,7 @@ if ($node->type == 'usa_video') {
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
-  //Sample URL to USA TVE asset detail 
+  //Sample URL to USA TVE asset detail
   // page: http://www.usanetwork.com/anywhere/show/{Showname}/{MPX ID}/1/{asset title}.
   // parse the media id for the tve path
   $pl_id = field_get_items('node', $node, 'field_video_pid');
@@ -49,7 +49,7 @@ if ($node->type == 'usa_tve_video') {
   $vid_showname = strip_tags(trim($show));
   $vid_showname = rawurlencode($vid_showname);
   // full path to tve
-  $tve_url = 'http://www.usanetwork.com/anywhere/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
+  $tve_url = 'http://www.usanetwork.com/now/show/' . $vid_showname . '/' . $pl_id .'/1/' . $vid_title;
 }
 
 ?>

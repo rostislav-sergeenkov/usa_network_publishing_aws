@@ -14,6 +14,7 @@ $logo-height-med-2: 32px;
   background-color: $black-true;
   border-top: 1px solid $gray-med-dark;
   text-align: center;
+  @include transition-property(none);
   @include transition-duration(300ms);
   @include transition-timing-function(ease-in-out);
   a {
@@ -110,7 +111,7 @@ $logo-height-med-2: 32px;
   margin-bottom: 15px;
   margin-left: 15px;
   padding-right: 25px;
-  height: auto;
+  height: 33px;
   @include inline-block;
   font-size: $logo-height-med;
   @include breakpoint($bp-menu-switch) {

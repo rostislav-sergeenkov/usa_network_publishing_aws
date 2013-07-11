@@ -34,7 +34,7 @@ $logo-height-med-2: 32px;
     @include transition-property(right);
   }
   [data-menu-direction="right"][data-menu-position="open"] & {
-    right: 75%;
+    right: 258px;
     @include breakpoint($bp-menu-wide) {
       right: 362px;
     }

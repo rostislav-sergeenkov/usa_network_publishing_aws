@@ -1,16 +1,7 @@
 body {
   &[data-menu-direction="right"][data-menu-position="open"] {
-    .jPanelMenu-panel {
-      right: 75% !important;
-      //width: auto;
-      position: absolute !important;
-      @include breakpoint($bp-menu-switch) {
-        position: relative !important;
-      }  
-    }
     #jPanelMenu-menu {
       background-color: $gray-med;
-      width: 75% !important;
        &.state-personalization {
         #tv-show-menu {
           display: none;
@@ -22,7 +13,7 @@ body {
 
 .personalization-content {
   background-color: $gray-med;
-  padding: 10px;
+  padding: 10px; 
   .close {
     display: block;
     position: absolute;
@@ -56,13 +47,16 @@ body {
   }
 }
 .personalization-trigger {
+  font-size: 14px;
   height: 50px;
   position: absolute;
-  right: 15px;
+  right: 5px;
   white-space: nowrap;
   cursor: pointer;
   @include breakpoint($bp-menu-switch) {
+    font-size: 16px;
     height: 65px;
+    right: 15px;
     line-height: 65px;
     position: relative;
   }  
@@ -79,7 +73,7 @@ body {
   opacity: 0;
   // display: none;
   @include transform3d( translateY(100%) );
-  @include transition-duration(0);
+  @include transition-duration(0.2s);
   @include transition-timing-function(linear);
   @include transition-property(all);
   .active-item + & {

@@ -337,18 +337,18 @@ function usanetwork_promo_field_default_field_instances() {
         'allowed_schemes' => array(
           'private' => 'private',
           'public' => 'public',
-          'theplatform' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
+          0 => 0,
         ),
         'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 0,
-          'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
-          'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',
@@ -597,18 +597,18 @@ function usanetwork_promo_field_default_field_instances() {
         'allowed_schemes' => array(
           'private' => 'private',
           'public' => 'public',
-          'theplatform' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
+          0 => 0,
         ),
         'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 0,
-          'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
-          'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',

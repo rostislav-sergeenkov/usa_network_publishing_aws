@@ -335,7 +335,6 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'allowed_schemes' => array(
           'private' => 'private',
           'public' => 'public',
-          'theplatform' => 0,
         ),
         'allowed_types' => array(
           'audio' => 'audio',
@@ -344,9 +343,9 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
           'video' => 'video',
         ),
         'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
-          'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
-          'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',
@@ -559,18 +558,18 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'allowed_schemes' => array(
           'private' => 'private',
           'public' => 'public',
-          'theplatform' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
+          0 => 0,
         ),
         'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
-          'publisher_media_browser--media_browser_1' => 'publisher_media_browser--media_browser_1',
-          'publisher_media_browser--media_browser_my_files' => 'publisher_media_browser--media_browser_my_files',
           'upload' => 'upload',
         ),
         'progress_indicator' => 'throbber',

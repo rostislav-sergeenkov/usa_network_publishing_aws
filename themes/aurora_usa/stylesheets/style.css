@@ -175,7 +175,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.usa-secondary-menu .shows > li.first > span:after, #logo, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
+.usa-secondary-menu .shows > li.first > span:after, #logo, .personalization-content .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -1642,17 +1642,16 @@ input[type="radio"], input[type="checkbox"] {
 #mega-nav {
   position: fixed;
   z-index: 101;
-  left: 0;
   bottom: 0;
   width: 100%;
   height: 50px;
   background-color: black;
   border-top: 1px solid #414141;
   text-align: center;
-  -webkit-transition-property: left;
-  -moz-transition-property: left;
-  -o-transition-property: left;
-  transition-property: left;
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
   -webkit-transition-duration: 300ms;
   -moz-transition-duration: 300ms;
   -o-transition-duration: 300ms;
@@ -1680,12 +1679,34 @@ input[type="radio"], input[type="checkbox"] {
 #mega-nav a:active {
   color: #a3a3a3;
 }
-[data-menu-position="open"] #mega-nav {
+[data-menu-direction="left"] #mega-nav {
+  left: 0;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+}
+[data-menu-direction="left"][data-menu-position="open"] #mega-nav {
   left: 258px;
 }
 @media (min-width: 960px) {
-  [data-menu-position="open"] #mega-nav {
+  [data-menu-direction="left"][data-menu-position="open"] #mega-nav {
     left: 362px;
+  }
+}
+[data-menu-direction="right"] #mega-nav {
+  right: 0;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  transition-property: right;
+}
+[data-menu-direction="right"][data-menu-position="open"] #mega-nav {
+  right: 258px;
+}
+@media (min-width: 960px) {
+  [data-menu-direction="right"][data-menu-position="open"] #mega-nav {
+    right: 362px;
   }
 }
 [data-menu-position="open"] #mega-nav .primary-nav > *:not(#main-menu-toggle) {
@@ -1793,7 +1814,7 @@ input[type="radio"], input[type="checkbox"] {
   margin-bottom: 15px;
   margin-left: 15px;
   padding-right: 25px;
-  height: auto;
+  height: 33px;
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -1841,6 +1862,10 @@ input[type="radio"], input[type="checkbox"] {
   .menu-title {
     display: none;
   }
+}
+
+#jPanelMenu-menu.state-menu {
+  background-color: #161616;
 }
 
 .mobi-menu-icon {
@@ -2296,22 +2321,30 @@ input[type="radio"], input[type="checkbox"] {
 .state-menu #menu-wrapper {
   display: block;
 }
-.state-on-now #menu-wrapper {
+.state-on-now #menu-wrapper, .state-personalization #menu-wrapper {
   display: none;
 }
 
-.state-menu #on-now-panel {
-  display: none;
-}
 .state-on-now #on-now-panel {
   display: block;
 }
-
-.on-now-js-processed #jPanelMenu-menu {
-  background-color: #313131;
+.state-menu #on-now-panel, .state-personalization #on-now-panel {
+  display: none;
 }
+
+.state-personalization #personalization-panel {
+  display: block;
+}
+.state-menu #personalization-panel, .state-on-now #personalization-panel {
+  display: none;
+}
+
 .on-now-js-processed.logged-in #jPanelMenu-menu {
   margin-top: 30px;
+}
+
+#jPanelMenu-menu.state-on-now {
+  background-color: #313131;
 }
 
 .show-on-now-wrapper {
@@ -2602,6 +2635,108 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu {
+  background-color: #3d3d3d;
+}
+body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.state-personalization #tv-show-menu {
+  display: none;
+}
+
+.personalization-content {
+  background-color: #3d3d3d;
+  padding: 10px;
+}
+.personalization-content .close {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  color: #878785;
+  font-size: 20px;
+  margin-right: 22px;
+  display: none;
+}
+@media (min-width: 769px) {
+  .personalization-content .close {
+    display: block;
+  }
+}
+.ie9 .personalization-content .close, .ie8 .personalization-content .close {
+  background: url(../images/svgs/ie_x1.svg) no-repeat top left;
+  height: 20px;
+  width: 20px;
+  text-indent: -9999px;
+}
+
+.region-personalization-trigger {
+  float: right;
+}
+.region-personalization-trigger span {
+  text-transform: uppercase;
+}
+.region-personalization-trigger .block-usanetwork-personalization {
+  width: 100%;
+}
+
+.personalization-trigger {
+  font-size: 14px;
+  height: 50px;
+  position: absolute;
+  right: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+@media (min-width: 769px) {
+  .personalization-trigger {
+    font-size: 16px;
+    height: 65px;
+    right: 15px;
+    line-height: 65px;
+    position: relative;
+  }
+}
+
+#personalization-drawer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+}
+.active-item + #personalization-drawer {
+  bottom: 100%;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
 #utilities {
   height: 45px;
   background-color: black;
@@ -2731,19 +2866,57 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+#jPanelMenu-menu .region-footer-offside, .region-footer {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  color: #717274;
+  padding: 11px 5px 8px 25px;
+  font-size: 14px;
+}
+#jPanelMenu-menu .region-footer-offside a, .region-footer a {
+  color: #717274;
+}
+#jPanelMenu-menu .region-footer-offside a:visited, .region-footer a:visited {
+  color: #717274;
+}
+#jPanelMenu-menu .region-footer-offside a:focus, .region-footer a:focus {
+  color: #717274;
+}
+#jPanelMenu-menu .region-footer-offside a:hover, .region-footer a:hover {
+  color: #a3a3a3;
+}
+#jPanelMenu-menu .region-footer-offside a:active, .region-footer a:active {
+  color: #a3a3a3;
+}
+
+[data-menu-position="open"] #footer {
+  display: none;
+}
 #footer li, #footer ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
+#footer-offside ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+#footer-offside ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+#footer-offside .slide-panel-link {
+  background: none;
+  border-width: 0;
+  text-transform: none;
+}
+
 .region-footer {
   border-top: 1px solid #414141;
   padding: 3px 15px 65px;
   overflow: hidden;
-  font-size: 14px;
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
-  color: #717274;
   position: relative;
   z-index: 50;
   background-color: black;
@@ -2761,7 +2934,6 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 .region-footer li a {
-  color: #717274;
   margin-right: 15px;
   padding: 5px 0;
   display: block;
@@ -2805,14 +2977,16 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 /* overriding module styles - remove from there? */
-#footer-message {
+#footer-message,
+#footer-message-offside {
   font-size: 12px;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: #717274;
   line-height: 18px;
 }
 @media (min-width: 769px) {
-  #footer-message {
+  #footer-message,
+  #footer-message-offside {
     font-size: 10px;
   }
 }

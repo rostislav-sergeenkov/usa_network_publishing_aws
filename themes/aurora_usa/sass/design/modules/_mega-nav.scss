@@ -137,6 +137,13 @@ $logo-height-med-2: 32px;
     display: none;
   }
 }
+
+#jPanelMenu-menu {
+  &.state-menu {
+    background-color: $black-dark;
+  }
+}
+
 .mobi-menu-icon {
   @include float-left;
   position: relative;

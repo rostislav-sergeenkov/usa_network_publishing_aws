@@ -31,13 +31,16 @@
 }
 
 .on-now-js-processed {
-  #jPanelMenu-menu {
-    background-color: $gray-med-darker;
-  }
   &.logged-in {
      #jPanelMenu-menu {
       margin-top: 30px;
      }
+  }
+}
+
+#jPanelMenu-menu {
+  &.state-on-now {
+    background-color: $gray-med-darker;
   }
 }
 

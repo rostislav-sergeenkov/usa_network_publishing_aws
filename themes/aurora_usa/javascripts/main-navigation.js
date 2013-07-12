@@ -37,18 +37,18 @@
           // dupe the footer into the side menu
           $footer_clone = $('#footer').clone();
           $footer_clone
-            .attr('id', 'footer-clone')
+            .attr('id', 'footer-offside')
             .find('.region-footer')
               .removeClass('region-footer')
-              .addClass('region-footer-clone')
+              .addClass('region-footer-offside')
               .end()
             .find('#footer-message')
-              .attr('id', 'footer-message-clone')
+              .attr('id', 'footer-message-offside')
               .end();
           $('#menu-wrapper')
             .prepend('<h1 class="menu-title">Main Menu</h1>')
             .append($footer_clone)
-            .find('a')
+            .find('.mega-menu-items a')
               .removeClass('mega-nav-link')
               .addClass('slide-panel-link')
               .end()
@@ -83,7 +83,7 @@
             $new_show_menu = $show_menu.find('#tv-show-menu');
             $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);
             $new_show_menu.prepend($new_show_title);
-            $("#jPanelMenu-menu").prepend($new_show_menu); 
+            $("#jPanelMenu-menu").prepend($new_show_menu);
             $('#jPanelMenu-menu')
               .find('a')
                 .addClass('slide-panel-link')

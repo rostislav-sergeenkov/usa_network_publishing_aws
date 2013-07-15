@@ -117,7 +117,7 @@ function usanetwork_video_global_nav() {
   if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
     (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value']))) {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
-    $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
+    $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
   } else {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
     $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));

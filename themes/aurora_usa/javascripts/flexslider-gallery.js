@@ -17,15 +17,15 @@
           touch: true,
           smoothHeight: false,
           slideshow: false,
-          start: function(){
-            update_counter();
+          start: function(slider){
+            update_counter(slider);
           },
-          after: function(){
-            update_counter();
+          after: function(slider){
+            update_counter(slider);
           }
         });
-        function update_counter() {
-          $current = ($counter > $count)? 1 : $counter++;
+        function update_counter(slider) {
+          $current = slider.currentSlide + 1;
           $counter_output = $current + "/" + $count;
           $counter_selector.html($counter_output);
         }

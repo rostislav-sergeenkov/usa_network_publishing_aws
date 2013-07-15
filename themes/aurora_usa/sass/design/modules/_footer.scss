@@ -9,8 +9,9 @@
 }
 
 #footer {
-  [data-menu-position="open"] & {
-    display: none;
+  display: none;
+  @include breakpoint($bp-menu-switch) {
+    display: block;
   }
   li, ul {
     padding: 0;

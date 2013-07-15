@@ -38,21 +38,25 @@
       height: 100%;
       position: absolute;
       top: 0;
-      width: 50px;
+      width: 20px;
       z-index: 95;
+      @include breakpoint($bp-carousel-smallest) {
+        width: 50px;
+      }  
+      
     }
     &:before {
-      @include background(linear-gradient(left center, $black-dark 0%, $black-dark 5%, rgba(31, 31, 31, 0) 100%));
+      @include background(linear-gradient(left center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
       left: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%)); 
+        @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%)); 
       }  
     }
     &:after {
-      @include background(linear-gradient(right center, $black-dark 0%, $black-dark 5%, rgba(31, 31, 31, 0) 100%));
+      @include background(linear-gradient(right center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
       right: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba(31, 31, 31, 0) 100%)); 
+        @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%)); 
       }  
     }
   }
@@ -175,7 +179,7 @@
 #cast-carousel {
   background-color: $black;
   border-bottom: 1px solid $gray-dark;
-  padding: 15px 0;
+  padding: 10px 0 15px;
   @include breakpoint($bp-carousel-smallest) {
     padding-bottom: 30px;
     padding-top: 30px;
@@ -228,12 +232,21 @@
         line-height: 1.5em;
       }  
     }
-    .view {
+    .view {  
+      &:after, &:before {
+        width: 37px;  
+      }
       &:before {
-        @include background(linear-gradient(left center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
+        @include background(linear-gradient(left center, $black 0%, $black 45%, rgba($black, 0) 100%));
+        @include breakpoint($bp-carousel-smallest) {
+          @include background(linear-gradient(left center, $black 0%, $black 60%, rgba($black, 0) 100%));
+        } 
       }
       &:after {
-        @include background(linear-gradient(right center, $black 0%, $black 60%, rgba(31, 31, 31, 0) 100%));
+        @include background(linear-gradient(right center, $black 0%, $black 45%, rgba($black, 0) 100%));
+        @include breakpoint($bp-carousel-smallest) {  
+          @include background(linear-gradient(right center, $black 0%, $black 60%, rgba($black, 0) 100%));
+        }
       }
     }
   }

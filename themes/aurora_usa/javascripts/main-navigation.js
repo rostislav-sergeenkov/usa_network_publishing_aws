@@ -21,7 +21,7 @@
         $('.personalization-trigger').after($personalization_drawer);
 
 
-        // MOVE CONTENT PANELS INTO JPM 
+        // MOVE CONTENT PANELS INTO JPM
         function insert_jpm_content() {
           $('#jPanelMenu-menu')
             .append($('#on-now-panel'))
@@ -122,6 +122,12 @@
           $('#wall').remove();
           $('.jPanelMenu-panel')
             .append('<div id="wall" data-module-type="Wall"></div>');
+          $('#wall').click(function(){
+            if ($('body[data-menu-position="open"]').length > 0) {
+              jPM.close();
+            }
+            return false;
+          });
         }
         function wall_remove() {
           $('#wall').remove();
@@ -179,6 +185,7 @@
             openPosition: '258px',
             duration: '300',
             keyboardShortcuts: false,
+            closeOnContentClick: false,
             beforeOn: function() {
               remove_dart();
             },
@@ -205,6 +212,7 @@
               .click(function() {
                 $('#mega-nav .active-item').removeClass('active-item');
                 wall_remove();
+                return false;
               });
           } else if (!Self.hasClass('active-item') && wall_exists() == true) {
             wall_remove();

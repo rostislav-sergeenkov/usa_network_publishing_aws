@@ -365,15 +365,22 @@ function usanetwork_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'representative_image_field_node_usa_tve_video';
+  $strongarm->value = 'field_video_thumbnail';
+  $export['representative_image_field_node_usa_tve_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'representative_image_field_node_usa_video';
-  $strongarm->value = 0;
+  $strongarm->value = 'field_video_thumbnail';
   $export['representative_image_field_node_usa_video'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_theplatform_mpx_feed_url';
-  $strongarm->value = 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_';
+  $strongarm->value = 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q';
   $export['usanetwork_theplatform_mpx_feed_url'] = $strongarm;
 
   $strongarm = new stdClass();

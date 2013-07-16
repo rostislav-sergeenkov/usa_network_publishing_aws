@@ -133,14 +133,11 @@
           $('#wall').remove();
         }
         function wall_exists() {
-          console.log($('#wall').length);
-          console.log(($('#wall').length == 0)? false : true);
           return ($('#wall').length == 0)? false : true ;
         }
 
         // MANAGE JPM //
         function jpm_on_onnow() {
-          console.log('on now');
           // set the panel 'state' to 'on now'
           // and trigger panel
           $('#jPanelMenu-menu')

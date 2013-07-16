@@ -21,7 +21,7 @@
         $('.personalization-trigger').after($personalization_drawer);
 
 
-        // MOVE CONTENT PANELS INTO JPM
+        // MOVE CONTENT PANELS INTO JPM 
         function insert_jpm_content() {
           $('#jPanelMenu-menu')
             .append($('#on-now-panel'))
@@ -274,10 +274,10 @@
           {
             label: 'narrow',
             enter: 0,
-            exit: 959
+            exit: 769
           },{
             label: 'wide',
-            enter: 960,
+            enter: 770,
             exit: 10000
           }
         ]);

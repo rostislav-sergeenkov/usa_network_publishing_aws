@@ -259,7 +259,10 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
     //*/
 
-    $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
+    $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq');
+    //$items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
+    // test sort by expiring
+    // http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q?range=1-1000&fields=availableDate,expirationDate,title&sort=expirationDate|asc
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
     global $usanetwork_migrate_is_cron;
@@ -271,6 +274,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $items_url .= '?byUpdated=' . $updated_date . '~';
       $items_url .= '&sort=updated|desc';
       $items_url .= '&range=1-100';
+      // if we wanted to limit fields displayed this is how we would
+      /*
       $limiting_fields = array(
         'guid',
         'title',
@@ -301,12 +306,17 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
         'pl1:tuneInTime',
         'pl1:tve',
       );
+      */
       #$items_url .= '&fields=' . implode(',', $limiting_fields);
     }
     else {
       // As of 5/14/13 there were 4329 MPX videos.  Setting range to grab them all,
       // plus any that have been added since.
-      $items_url .= '?range=1-6000';
+      //$items_url .= '?range=1-6000';
+
+      // As of 7/15/13 NEW FEED there were 887 MPX videos.  Setting range to grab them all,
+      // plus any that have been added since.
+      $items_url .= '?range=1-1000';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document
@@ -344,6 +354,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
+    // adding this new as of 7/15
+    $this->addFieldMapping('status', 'status');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -354,7 +366,9 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
     //*/
   }
-
+// hiding the old method where we check for 5 years ago
+// our updated feed makes this obsolete
+/*
   public function prepareRow($row) {
 
     // Process date field data.
@@ -398,12 +412,64 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $row->pubDate = drupal_json_encode($final_date_data);
     }
   }
+  */
+  public function prepareRow($row) {
+
+    // Process publishing date field data.
+    $dc_terms = $row->xml->xpath('dcterms:valid');
+    if (is_array($dc_terms)) {
+      $date_data = (string)array_shift($dc_terms);
+      $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
+      $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
+      // for custom processing
+      $pub_start = strtotime($start_date);
+      $pub_end = strtotime($end_date);
+      $yesterday = strtotime("-1 day");
+      $next_month = strtotime("+1 month");
+      // started earlier than yesterday
+      // ends later than next month
+      // set this as published and skip complex scheduling
+      if ($pub_start <= $yesterday && $pub_end >= $next_month) {
+        $row->status = 1;
+      }
+      else {
+        $row->status = 0;
+      }
+
+      // Format the dates for the date field.
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
+        'to' => date('m/d/Y h:i:sa', strtotime($end_date)),
+      );
+      // Encode in JSON for the date field.
+      $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
+    }
+
+    // Convert pl1:fullEpisode value.
+    $full_episode = $row->xml->xpath('pl1:fullEpisode');
+    if (is_array($full_episode)) {
+      $full_episode_value = (string)array_shift($full_episode);
+      $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
+    }
+
+    // Process air date field data.
+    $air_date = $row->xml->xpath('pubDate');
+    if (is_array($air_date)) {
+      $date_data = (string)array_shift($air_date);
+      $final_date_data = array(
+        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
+        #'to' => '',
+      );
+      $row->pubDate = drupal_json_encode($final_date_data);
+    }
+  }
 
   public function prepare($entity, stdClass $row) {
 
     // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
     // field is missing.
-    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
+    //$entity->status = isset($row->status) ? 1 : 0;
+    // update - we undid this logic so we can get nodes in faster based on sunrise and sunset
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -418,17 +484,16 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
-    if (!$entity->status) {
+    if ($entity->status == 0) {
 
       watchdog('usanetwork_migrate', 'Scheduling node @nid to be published at @time.',
           array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
-      drupal_set_message(t('usanetwork_migrate', 'USANETWORK MIGRATE: Scheduling node @nid to be published at @time.',
+      drupal_set_message(t('USA MIGRATE IMPORT: Scheduling node @nid to be published at @time.',
           array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa'))));
 
       module_load_include('inc', 'state_flow', 'state_flow.pages');
 
       global $user;
-
       $user = user_load(1);
 
       // If this is an unpublished node, transition it to the "Draft" state, so
@@ -458,10 +523,15 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
     }
     // Otherwise, this is a published node, and we need to convert it to that state.
+    // lets skip this and see if it bring in the nodes we set to 1 as published
+
     else {
+      //global $user;
+      //$user = user_load(1);
 
       _usanetwork_migrate_complete_entity_state_transition($entity, 'published');
     }
+
   }
 
   public function postRollback() {

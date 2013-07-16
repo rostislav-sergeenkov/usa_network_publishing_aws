@@ -199,7 +199,7 @@ html[xmlns] .slides {
   text-align: center;
   display: none;
   li {
-    margin: 0 6px;
+    margin: 0 5px;
     display: inline-block;
     zoom: 1;
     *display: inline;
@@ -207,26 +207,23 @@ html[xmlns] .slides {
 }
 
 .flex-control-paging li a {
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   display: block;
-  background: #666;
-  background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   text-indent: -9999px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  @include border-radius(20px);
+  background-color: $gray-semi-med;
+  border: 1px solid $gray-semi-med;
   &:hover {
-    background: #333;
-    background: rgba(0, 0, 0, 0.7);
+    background-color: $white;
+    cursor: pointer;
+    border: 1px solid $off-white;
   }
   &.flex-active {
-    background: #000;
-    background: rgba(0, 0, 0, 0.9);
+    background: $white;
     cursor: default;
+    border: 1px solid $off-white;
   }
 }
 

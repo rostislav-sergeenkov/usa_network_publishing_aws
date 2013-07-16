@@ -26,7 +26,7 @@ $logo-height-med-2: 32px;
   }
   [data-menu-direction="left"][data-menu-position="open"] & {
     left: 258px;
-    @include breakpoint($bp-menu-switch) {
+    @include breakpoint($bp-menu-wide) {
       left: 362px;
     }
   }

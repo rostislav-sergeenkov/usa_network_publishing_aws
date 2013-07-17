@@ -177,6 +177,12 @@ $logo-height-med-2: 32px;
       border-color: $white;
     }
   }
+  [data-menu-direction="right"][data-menu-position="open"] & {
+    right: 20px;
+    left: auto;
+    position: absolute;
+    margin-right: 0;
+  }  
 }
 .mega-menu-items {
   margin: 16px 15px;

@@ -16,6 +16,22 @@ function usanetwork_video_menu() {
     'page callback' => 'usanetwork_video_global_videos_page',
     'access arguments' => array('access content'),
   );
+  $items['admin/usanetwork/video'] = array(
+    'title' => t('USA videos'),
+    'description' => t('debug helpers for USA Network TVE and MPX videos.'),
+    'access arguments' => array('administer usanetwork'),
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'management',
+  );
+  $items['admin/usanetwork/video/debug/debug-titles'] = array(
+    'title' => t('Video shows and categories'),
+    'description' => t('Video Debug - shows and categories for MPX and TVE'),
+    'page callback' => 'usanetwork_video_admin_debug_titles',
+    'access arguments' => array('administer usanetwork'),
+  );
 
   return $items;
 }
@@ -108,7 +124,7 @@ function usanetwork_video_global_nav() {
     }
   }
 
-  // sort the shows alphabetically 
+  // sort the shows alphabetically
   asort($items[0]['children']);
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
@@ -184,7 +200,7 @@ function usanetwork_video_show_nav() {
     }
   }
 
-  // sort the shows alphabetically 
+  // sort the shows alphabetically
   asort($items[0]['children']);
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
@@ -195,7 +211,7 @@ function usanetwork_video_show_nav() {
     (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
-  
+
   // show the full episodes links iff there are full episodes for that tv show
   if (_usanetwork_video_full_episodes_exist($node->field_show[$lang][0]['target_id'])) {
     $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
@@ -376,8 +392,6 @@ function usanetwork_video_global_videos_page() {
  * we pass these values via our ds layout which lives in the theme
  * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
  *
- * @TODO: have someone smarter than suzi look at this :)
- *
  */
 function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
   require_once('usanetwork_video_theplatform.api.inc');
@@ -397,7 +411,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
   $highest_bit_rate = 0;
   $selected_video = $file_info[0];
   foreach($file_info as $file) {
-    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' && 
+    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
         isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate) {
       $highest_bit_rate = $file->{'plfile$bitrate'};
       $selected_video = $file;
@@ -421,7 +435,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
 function _usanetwork_video_full_episodes_exist($show_nid) {
   if (empty($show_nid)) {
     return false;
-  } 
+  }
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', array('usa_video'));
@@ -432,6 +446,49 @@ function _usanetwork_video_full_episodes_exist($show_nid) {
   $query->count();
   // execute the query
   $count = intval($query->execute());
-  
+
   return  $count > 0 ? true : false;
+}
+
+/**
+ * Menu callback of video categories and titles
+ */
+function usanetwork_video_admin_debug_titles() {
+  $render = array();
+  $type = 'tv_show';
+  $nodes = node_load_multiple(array(), array('type' => $type));
+  foreach($nodes as $shows) {
+    $showtitles[] = '<tr><td>' . $shows->title . '</td>';
+  }
+  asort($showtitles);
+
+  $render['vid'] = array(
+    '#prefix' => '<div style="clear: both;"><h1>' . t('Both lists should match - show or term titles in MPX or TVE may need editing') . '</h1>',
+    '#suffix' => '</div>',
+  );
+  $render['vid']['shows'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="shows" style="float: left;display: block; margin-right: 20px; padding-right: 20px; border-right: #ccc solid 1px;"><h2>' . t('Show titles in the CMS - full title field') . '</h2>',
+    '#markup' => theme('item_list', array('items' => $showtitles)),
+    '#suffix' => '</div>',
+  );
+  $voc = taxonomy_vocabulary_machine_name_load('usa_video_terms');
+  $parentterm = taxonomy_get_term_by_name('series');
+  foreach ($parentterm as $series => $tid) {
+    $series_tid[] = $series;
+  }
+  $terms = taxonomy_get_tree($voc->vid, $parent = $series_tid[0], $max_depth = 1, $load_entities = FALSE);
+  foreach ($terms as $termtitle) {
+    $term_titles[] = $termtitle->name;
+  }
+  asort($term_titles);
+
+  $render['vid']['terms'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div class="terms" style="float: left;display: block; margin-right: 20px"><h2>' . t('Terms listed under MPX and TVE SERIES category') . '</h2>',
+    '#markup' => theme('item_list', array('items' => $term_titles)),
+    '#suffix' => '</div>',
+  );
+
+  return $render;
 }

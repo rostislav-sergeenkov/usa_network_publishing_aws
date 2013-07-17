@@ -63,3 +63,12 @@
     }
   }
 }
+
+.node-usanetwork-promo.promo-hide-overlay {
+  .caption-fields-wrapper,
+  .promo-metadata,
+  .title-overlay,
+  .title-overlay.meta {
+    background: none;
+  }
+}

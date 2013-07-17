@@ -137,6 +137,10 @@ function aurora_usa_preprocess_page(&$vars) {
 }
 
 
+/**
+ * Implementation of hook_form_alter 
+ */
+
 function aurora_usa_form_search_block_form_alter(&$form){
 
   $form['search_block_form']['#title'] = t('search');
@@ -220,11 +224,18 @@ function aurora_usa_preprocess_entity(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-/* -- Delete this line if you want to use this function
+/* -- Delete this line if you want to use this function */
 function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
+
+  switch ($node->type) {
+    case 'usanetwork_promo': 
+      if(!(empty($node->field_meta_text_bar)) && $node->field_meta_text_bar[LANGUAGE_NONE][0]['value'] == '1') {
+        $vars['classes_array'][] = drupal_html_class('promo-hide-overlay');
+      }
+      break;
+  }
 }
-// */
 
 /**
  * Override or insert variables into the field template.
@@ -235,6 +246,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  *   The name of the template being rendered ("field" in this case.)
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
+
   if (isset($vars['element']['#object']->type)) {
     if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#field_name'] == 'field_media_items')) {
       append_cover_to_media($vars);
@@ -315,7 +327,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'block_cover_title_lg':
             if ($vars['element']['#bundle'] == 'media_gallery' ) {
               $title = strip_tags($vars['element'][0]['#markup']);
-              $vars['items'][0]['#markup'] =  '<h2>' . $title . ' gallery</h2>';
+              $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
             break;
         }

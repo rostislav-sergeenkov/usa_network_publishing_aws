@@ -125,5 +125,5 @@ features[variable][] = usanetwork_theplatform_mpx_player_url
 features[variable][] = usanetwork_theplatform_tve_feed_url
 features[variable][] = usanetwork_theplatform_tve_player_url
 features[views_view][] = usa_video
+features[views_view][] = video_debugging
 features[views_view][] = whats_hot
-

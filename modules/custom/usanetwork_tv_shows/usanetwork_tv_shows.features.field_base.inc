@@ -856,6 +856,48 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_usa_autoscroll'
+  $field_bases['field_usa_autoscroll'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_usa_autoscroll',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_usa_slide_speed'
+  $field_bases['field_usa_slide_speed'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_usa_slide_speed',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_usa_tv_a_spot'
   $field_bases['field_usa_tv_a_spot'] = array(
     'active' => 1,

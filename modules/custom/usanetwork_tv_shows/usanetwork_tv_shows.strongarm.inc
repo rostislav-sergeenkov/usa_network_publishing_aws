@@ -409,6 +409,9 @@ function usanetwork_tv_shows_strongarm() {
         'flag' => array(
           'weight' => '10',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

@@ -10,6 +10,14 @@ if ($hex == '&nbsp;') {
 $hexcolor = $hex ?  $hex : 'ffffff';
 $nodeid = $node->nid;
 
+if($text_1_font_size == '&nbsp;') {
+  $text_1_font_size = '';
+}
+
+if($text_2_font_size == '&nbsp;') {
+  $text_2_font_size = '';
+}
+
 /*
  * adding custom css here
  */
@@ -45,11 +53,14 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
 
   <div class="meta-wrap">
     <div class="meta">
+    <?php if ($mobile_text_1 && $mobile_text_1 !== '&nbsp;'): ?>
+      <h1 class="mobile-show-title show-title"><?php print $mobile_text_1; ?></h1>
+    <?php endif; ?>
     <?php if ($text_1 && $text_1 !== '&nbsp;'): ?>
-      <h1 class="show-title"><?php print $text_1; ?></h1>
+      <h1 class="show-title<?php print $text_1_font_size; ?>"><?php print $text_1; ?></h1>
     <?php endif; ?>
     <?php if ($text_2 && $text_2 !== '&nbsp;'): ?>
-      <h2 class="show-time"><?php print ($text_2); ?></h2>
+      <h2 class="show-time<?php print $text_2_font_size; ?>"><?php print ($text_2); ?></h2>
     <?php endif; ?>
     <?php if ($text_3 && $text_3 !== '&nbsp;'): ?>
       <h3 class="episode-title"><?php print ($text_3); ?></h3>

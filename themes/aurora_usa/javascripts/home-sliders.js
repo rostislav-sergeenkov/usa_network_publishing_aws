@@ -5,12 +5,17 @@
       $mainslider = $('#main-slider');
       $secondaryslider = $('.secondary-slider');
 
+      $slideshow = false;
+      $slideshowSpeed = 7000;
+
       $(document).ready(function() {
         $mainslider.flexslider({
           animation: 'slide',
           controlNav: true,
           directionNav: (!Modernizr.touch),
-          slideshow: false,
+          slideshow: $slideshow,
+          slideshowSpeed: $slideshowSpeed,
+          pauseOnHover: true,
           before: function(slider) {
             var target = slider.animatingTo,
               currentSlide = slider.currentSlide;

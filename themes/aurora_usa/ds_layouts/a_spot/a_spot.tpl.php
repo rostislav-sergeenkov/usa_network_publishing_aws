@@ -10,6 +10,9 @@ if ($hex == '&nbsp;') {
 $hexcolor = $hex ?  $hex : 'ffffff';
 $nodeid = $node->nid;
 
+$text_1_font_size = $text_1_font_size ? $text_1_font_size : '';
+$text_2_font_size = $text_2_font_size ? $text_2_font_size : '';
+
 if($text_1_font_size == '&nbsp;') {
   $text_1_font_size = '';
 }

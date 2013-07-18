@@ -3684,6 +3684,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .carousel-item {
   float: left;
   display: block;
+}
+.cast-carousel .carousel-item {
   text-align: center;
   width: 183px;
   height: 145px;
@@ -4449,6 +4451,14 @@ li a:hover {
   background-color: #1f1f1f;
   padding: 5px 0 36px;
 }
+.usa-home-featured .carousel-btns {
+  display: none;
+}
+@media (min-width: 960px) {
+  .usa-home-featured .carousel-btns {
+    display: block;
+  }
+}
 .usa-home-featured:hover .carousel-btns {
   opacity: 1;
 }
@@ -4456,29 +4466,57 @@ li a:hover {
   background-color: transparent;
 }
 .usa-home-featured li.carousel-item {
-  width: 221px;
-  height: 184px;
-  margin-right: 15px;
+  margin-right: 8px;
+  width: 146px;
+  height: 122px;
 }
 .usa-home-featured li.carousel-item img {
-  width: 221px;
-  height: 184px;
+  width: 146px;
+  height: 122px;
+}
+@media (min-width: 645px) {
+  .usa-home-featured li.carousel-item {
+    margin-right: 15px;
+    width: 195px;
+    height: 163px;
+  }
+  .usa-home-featured li.carousel-item img {
+    width: 195px;
+    height: 163px;
+  }
+}
+@media (min-width: 960px) {
+  .usa-home-featured li.carousel-item {
+    margin-right: 15px;
+    width: 221px;
+    height: 185px;
+  }
+  .usa-home-featured li.carousel-item img {
+    width: 221px;
+    height: 185px;
+  }
 }
 .usa-home-featured li.carousel-item .meta {
-  text-align: left;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  max-width: 221px;
-  height: 50px;
-  padding: 8px 15px 8px;
+  height: 32px;
+  padding: 8px;
 }
 .usa-home-featured li.carousel-item .meta:after {
   background: none;
 }
+@media (min-width: 645px) {
+  .usa-home-featured li.carousel-item .meta {
+    height: 44px;
+    padding: 12px 15px 8px;
+  }
+}
+@media (min-width: 960px) {
+  .usa-home-featured li.carousel-item .meta {
+    height: 50px;
+  }
+}
 @media (min-width: 1275px) {
   .usa-home-featured li.carousel-item .meta {
-    height: 77px;
-    padding: 17px 15px 8px;
+    height: 53px;
     max-width: none;
   }
 }
@@ -4487,26 +4525,49 @@ li a:hover {
   padding: 8px 15px 8px;
   max-width: 221px;
 }
-.usa-home-featured .field-name-field-promo-text-line-1 {
+.usa-home-featured .title {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 22.5px;
   margin-bottom: 3px;
+  font-size: 10px;
+  line-height: 1;
+}
+@media (min-width: 645px) {
+  .usa-home-featured .title {
+    font-size: 12px;
+  }
+}
+@media (min-width: 960px) {
+  .usa-home-featured .title {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1275px) {
+  .usa-home-featured .title {
+    font-size: 18px;
+  }
+}
+.usa-adrails .usa-home-featured .title, .ie8 .usa-home-featured .title {
+  font-size: 18px;
 }
 .usa-home-featured .caption {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 8px;
+  line-height: 1;
+  color: #cccccc;
+}
+@media (min-width: 645px) {
+  .usa-home-featured .caption {
+    font-size: 10px;
+    color: #878785;
+  }
 }
 @media (min-width: 1275px) {
   .usa-home-featured .caption {
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 12px;
   }
 }
 .usa-adrails .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 12px;
 }
 .usa-home-featured .featured-carousel {
   margin: 0 auto;
@@ -7344,6 +7405,10 @@ input.echo-submit-text {
 .aspot .show-time {
   font-size: 24px;
 }
+.aspot .show-title.small,
+.aspot .show-time.small {
+  font-size: 20px;
+}
 .ie8 .usa-tv-show .aspot .show-title, .ie8 .usa-tv-show
 .aspot .show-time {
   font-size: 2.75em;
@@ -7353,11 +7418,19 @@ input.echo-submit-text {
   .aspot .show-time {
     font-size: 34px;
   }
+  .aspot .show-title.small,
+  .aspot .show-time.small {
+    font-size: 28px;
+  }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .show-title,
   .aspot .show-time {
     font-size: 44px;
+  }
+  .aspot .show-title.small,
+  .aspot .show-time.small {
+    font-size: 34px;
   }
 }
 .usa-adrails .aspot .show-title, .ie8 .aspot .show-title, .usa-adrails
@@ -7375,6 +7448,22 @@ input.echo-submit-text {
 .aspot .cta {
   font-weight: normal;
   letter-spacing: 0.05em;
+}
+.aspot .mobile-show-title.show-title {
+  display: block;
+}
+@media (min-width: 645px) {
+  .aspot .mobile-show-title.show-title {
+    display: none;
+  }
+}
+.aspot .mobile-show-title.show-title + .show-title {
+  display: none;
+}
+@media (min-width: 645px) {
+  .aspot .mobile-show-title.show-title + .show-title {
+    display: block;
+  }
 }
 .aspot .show-title {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;

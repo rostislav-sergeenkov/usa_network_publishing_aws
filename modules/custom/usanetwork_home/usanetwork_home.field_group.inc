@@ -21,9 +21,10 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spots',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_hp_arefs',
+      1 => 'group_slide_settings',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -49,7 +50,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'B-spots',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_hp_brefs',
     ),
@@ -78,7 +79,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'C-spots',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_usa_hp_crefs',
     ),
@@ -107,7 +108,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_hp_promos',
     ),
@@ -124,6 +125,35 @@ If more than 4 are added a carousel will be triggered on page load so content ca
     ),
   );
   $export['group_hp_promos|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_slide_settings|node|usa_homepage|form';
+  $field_group->group_name = 'group_slide_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_hp_aspots';
+  $field_group->data = array(
+    'label' => 'slideshow options',
+    'weight' => '17',
+    'children' => array(
+      0 => 'field_usa_autoscroll',
+      1 => 'field_usa_slide_speed',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'slideshow options',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_slide_settings|node|usa_homepage|form'] = $field_group;
 
   return $export;
 }

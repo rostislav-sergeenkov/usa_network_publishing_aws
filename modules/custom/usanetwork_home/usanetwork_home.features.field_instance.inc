@@ -64,6 +64,56 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usa_homepage-field_usa_autoscroll'
+  $field_instances['node-usa_homepage-field_usa_autoscroll'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_usa_autoscroll',
+    'label' => 'Autoscroll A-spot carousel',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-usa_homepage-field_usa_hp_arefs'
   $field_instances['node-usa_homepage-field_usa_hp_arefs'] = array(
     'bundle' => 'usa_homepage',
@@ -116,7 +166,7 @@ function usanetwork_home_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 16,
     ),
   );
 
@@ -278,13 +328,73 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usa_homepage-field_usa_slide_speed'
+  $field_instances['node-usa_homepage-field_usa_slide_speed'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 7000,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Set the speed of the slideshow cycling, in milliseconds, example: 7000',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_usa_slide_speed',
+    'label' => 'slideshowSpeed',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 15,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A-spot references');
+  t('Autoscroll A-spot carousel');
   t('B-spot references');
   t('C-spot references');
   t('Day');
   t('Featured Promos');
+  t('Set the speed of the slideshow cycling, in milliseconds, example: 7000');
+  t('slideshowSpeed');
 
   return $field_instances;
 }

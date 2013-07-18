@@ -226,9 +226,9 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'GetGlue Settings',
     'weight' => '48',
     'children' => array(
-      0 => 'field_show_getglue',
-      1 => 'field_getglue_show',
-      2 => 'field_getglue_sticker_name',
+      0 => 'field_getglue_show',
+      1 => 'field_getglue_sticker_name',
+      2 => 'field_show_getglue',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -363,6 +363,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_show_aspots|node|tv_show|form';
+  $field_group->group_name = 'group_show_aspots';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom_tab';
+  $field_group->data = array(
+    'label' => 'A-SPOTS',
+    'weight' => '68',
+    'children' => array(
+      0 => 'field_usa_tv_a_spot',
+      1 => 'group_slide_settings',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'A-SPOTS',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => 'No more than 3 A-spots are recommended for this region',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_show_aspots|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_show_menu|node|tv_show|form';
   $field_group->group_name = 'group_show_menu';
   $field_group->entity_type = 'node';
@@ -391,6 +420,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_slide_settings|node|tv_show|form';
+  $field_group->group_name = 'group_slide_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_show_aspots';
+  $field_group->data = array(
+    'label' => 'slideshow options',
+    'weight' => '70',
+    'children' => array(
+      0 => 'field_usa_autoscroll',
+      1 => 'field_usa_slide_speed',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'slideshow options',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_slide_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_social_information|node|tv_show|form';
   $field_group->group_name = 'group_social_information';
   $field_group->entity_type = 'node';
@@ -402,12 +460,12 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'group_chat_settings',
-      1 => 'group_newsletter',
-      2 => 'group_sync_settings',
-      3 => 'group_trend',
-      4 => 'group_twitter_settings',
-      5 => 'group_usa_show_follow',
-      6 => 'group_getglue_settings',
+      1 => 'group_getglue_settings',
+      2 => 'group_newsletter',
+      3 => 'group_sync_settings',
+      4 => 'group_trend',
+      5 => 'group_twitter_settings',
+      6 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -602,12 +660,12 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_display_title',
-      1 => 'field_usa_tv_a_spot',
-      2 => 'field_usa_tv_on_now',
-      3 => 'field_usa_tv_promo',
-      4 => 'field_usa_tv_tune_in_date',
-      5 => 'field_usa_tv_promo_vids',
-      6 => 'field_pathauto_alias',
+      1 => 'field_usa_tv_on_now',
+      2 => 'field_usa_tv_promo',
+      3 => 'field_usa_tv_tune_in_date',
+      4 => 'field_usa_tv_promo_vids',
+      5 => 'field_pathauto_alias',
+      6 => 'group_show_aspots',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -663,8 +721,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'USA OG fields',
     'weight' => '5',
     'children' => array(
-      0 => 'field_usa_og_image',
-      1 => 'field_usa_og_description',
+      0 => 'field_usa_og_description',
+      1 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

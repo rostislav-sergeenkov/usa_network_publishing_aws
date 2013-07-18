@@ -24,21 +24,33 @@
     @if ($triangleDirection2 == left) {
       border-top: solid $triangleSize $triangleColor;
       border-right: solid $triangleSize transparent;
-    } 
+    }
     @if ($triangleDirection2 == right) {
       border-top: solid $triangleSize $triangleColor;
       border-left: solid $triangleSize transparent;
-    } 
+    }
   }
   @if ($triangleDirection == bottom) {
     @if ($triangleDirection2 == left) {
       border-bottom: solid $triangleSize $triangleColor;
       border-right: solid $triangleSize transparent;
-    } 
+    }
      @if ($triangleDirection2 == right) {
       border-bottom: solid $triangleSize $triangleColor;
       border-left: solid $triangleSize transparent;
-    } 
+    }
   }
   // .example { @include cssRightTriangle(5px, $white, bottom ,left); }
+}
+
+
+// set the size of a carousel item
+@mixin carousel-item($size: (237px, 198px), $margin: 15px) {
+  margin-right: $margin;
+  width: nth($size, 1);
+  height: nth($size, 2);
+  img {
+    width: nth($size, 1);
+    height: nth($size, 2);
+  }
 }

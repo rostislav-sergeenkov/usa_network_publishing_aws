@@ -31,7 +31,6 @@
     font-family: $headline-semi;
     line-height: 22.5px;
     margin-bottom: 3px;
-    // outline: 1px dashed white;
   }
   h3 {
     font-size: 15px;
@@ -350,33 +349,36 @@
   &:hover {
     .carousel-btns {
       opacity: 1;
-    }  
+    }
   }
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
   li.carousel-item {
-    width: 221px;
-    height: 184px;
-    margin-right: 15px;
-    img {
-      width: 221px;
-      height: 184px;
-    }
+    @include carousel-item($carousel-smallest, 8px);
     @extend .title-overlay;
+    @include breakpoint($bp-home-2col) {
+      @include carousel-item($carousel-small);
+    }
+    @include breakpoint($bp-home-3col) {
+      @include carousel-item($carousel-medium);
+    }
+
     .meta {
-      text-align: left;
-      line-height: 1;
-      letter-spacing: 0.05em;
-      max-width: 221px;
-      height: 50px;
-      padding: 8px 15px 8px;
+      height: 32px;
+      padding: 8px;
       &:after {
         background: none;
       }
+      @include breakpoint($bp-home-2col) {
+        height: 44px;
+        padding: 12px 15px 8px;
+      }
+      @include breakpoint($bp-home-3col) {
+        height: 50px;
+      }
       @include breakpoint($bp-home-widest) {
-        height: 77px;
-        padding: 17px 15px 8px;
+        height: 53px;
         max-width: none;
       }
       .usa-adrails &, .ie8 & {
@@ -387,23 +389,38 @@
     }
   }
 
-  .field-name-field-promo-text-line-1 {
+  .title {
     font-family: $headline-semi;
-    font-size: 20px;
-    line-height: 22.5px;
     margin-bottom: 3px;
+    font-size: 10px;
+    line-height: 1;
+    @include breakpoint($bp-home-2col) {
+      font-size: 12px;
+    }
+    @include breakpoint($bp-home-3col) {
+      font-size: 16px;
+    }
+    @include breakpoint($bp-home-widest) {
+      font-size: 18px;
+    }
+    .usa-adrails &, .ie8 & {
+      font-size: 18px;
+    }
   }
   .caption {
     font-family: $headline-reg;
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 8px;
+    line-height: 1;
+    color: $gray-sky;
+    @include breakpoint($bp-home-2col) {
+      font-size: 10px;
+      color: $gray-light;
+    }
     @include breakpoint($bp-home-widest) {
-      font-size: 15px;
-      line-height: 24px;
+      font-size: 12px;
     }
     .usa-adrails &, .ie8 & {
-      font-size: 10px;
-      line-height: 12px;
+      font-size: 12px;
     }
   }
   .featured-carousel {
@@ -428,12 +445,11 @@
     }
   }
   .carousel {
-//    width: auto !important;
-    @include breakpoint($bp-home-wide) { 
+    @include breakpoint($bp-home-wide) {
       > ul {
         margin-left: 8px !important;
       }
-    }  
+    }
     @include breakpoint($bp-home-widest) {
       > ul {
         margin-left: 8px !important;

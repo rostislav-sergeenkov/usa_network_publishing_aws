@@ -21,7 +21,7 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Basic Information',
-    'weight' => '3',
+    'weight' => '0',
     'children' => array(
       0 => 'field_show',
       1 => 'field_usa_aspot_link',
@@ -50,7 +50,7 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spot text rows',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_call_to_action_type',
       1 => 'field_usa_aspot_txt1',
@@ -58,6 +58,9 @@ function usanetwork_aspot_field_group_info() {
       3 => 'field_usa_aspot_txt3',
       4 => 'field_usa_aspot_txt4',
       5 => 'field_usa_text_color',
+      6 => 'field_mobile_text_line_1',
+      7 => 'field_text_line_1_font_size',
+      8 => 'field_text_line_2_font_size',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -82,7 +85,7 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spot media',
-    'weight' => '4',
+    'weight' => '1',
     'children' => array(
       0 => 'field_usa_aspot_desktop',
       1 => 'field_usa_aspot_mobile',

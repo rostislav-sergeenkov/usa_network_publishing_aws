@@ -21,14 +21,23 @@ function usanetwork_aspot_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'hex' => array(
-        0 => 'field_usa_text_color',
+      'text_2_font_size' => array(
+        0 => 'field_text_line_2_font_size',
+      ),
+      'text_1_font_size' => array(
+        0 => 'field_text_line_1_font_size',
+      ),
+      'mobile_text_1' => array(
+        0 => 'field_mobile_text_line_1',
       ),
       'media_desktop' => array(
         0 => 'field_usa_aspot_desktop',
       ),
       'media_mobile' => array(
         0 => 'field_usa_aspot_mobile',
+      ),
+      'hex' => array(
+        0 => 'field_usa_text_color',
       ),
       'text_1' => array(
         0 => 'field_usa_aspot_txt1',
@@ -39,24 +48,27 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'text_3' => array(
         0 => 'field_usa_aspot_txt3',
       ),
-      'link' => array(
-        0 => 'field_usa_aspot_link',
-      ),
       'cta' => array(
         0 => 'field_call_to_action_type',
         1 => 'field_usa_aspot_txt4',
       ),
+      'link' => array(
+        0 => 'field_usa_aspot_link',
+      ),
     ),
     'fields' => array(
-      'field_usa_text_color' => 'hex',
+      'field_text_line_2_font_size' => 'text_2_font_size',
+      'field_text_line_1_font_size' => 'text_1_font_size',
+      'field_mobile_text_line_1' => 'mobile_text_1',
       'field_usa_aspot_desktop' => 'media_desktop',
       'field_usa_aspot_mobile' => 'media_mobile',
+      'field_usa_text_color' => 'hex',
       'field_usa_aspot_txt1' => 'text_1',
       'field_usa_aspot_txt2' => 'text_2',
       'field_usa_aspot_txt3' => 'text_3',
-      'field_usa_aspot_link' => 'link',
       'field_call_to_action_type' => 'cta',
       'field_usa_aspot_txt4' => 'cta',
+      'field_usa_aspot_link' => 'link',
     ),
     'classes' => array(),
   );

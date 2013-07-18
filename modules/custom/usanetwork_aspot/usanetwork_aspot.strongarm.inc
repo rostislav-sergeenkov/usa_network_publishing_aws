@@ -62,12 +62,15 @@ function usanetwork_aspot_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '5',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
+          'weight' => '4',
+        ),
+        'redirect' => array(
           'weight' => '6',
         ),
       ),

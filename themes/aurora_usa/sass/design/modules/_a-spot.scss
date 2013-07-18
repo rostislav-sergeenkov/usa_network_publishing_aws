@@ -141,14 +141,23 @@
   .show-title,
   .show-time {
     font-size: 24px;
+    &.small {
+      font-size: 20px;
+    }
     .ie8 .usa-tv-show & {
       font-size: 2.75em;
     }
     @include breakpoint($bp-aspot-mid-range-width) {
       font-size: 34px;
+      &.small {
+        font-size: 28px;
+      }  
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
       font-size: 44px;
+      &.small {
+        font-size: 34px;
+      }  
     }
     .usa-adrails &, .ie8 & {
       font-size: 34px;
@@ -164,6 +173,18 @@
   .cta {
     font-weight: normal;
     letter-spacing: 0.05em;
+  }
+  .mobile-show-title.show-title {
+    display: block;
+    @include breakpoint($bp-home-2col) {
+      display: none;
+    }
+    + .show-title  {
+      display: none;
+      @include breakpoint($bp-home-2col) {
+        display: block;
+      }
+    }  
   }
   .show-title {
     font-family: $headline-reg;

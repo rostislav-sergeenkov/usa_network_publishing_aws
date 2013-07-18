@@ -346,6 +346,12 @@
   background-color: $black;
   padding: 5px 0 36px;
   @extend %un-margin;
+  .carousel-btns {
+    display: none;
+    @include breakpoint($bp-home-3col) {
+      display: block;
+    }
+  }
   &:hover {
     .carousel-btns {
       opacity: 1;

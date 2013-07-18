@@ -2,23 +2,26 @@
 .carousel-item {
   float: left;
   display: block;
-  text-align: center;
-  width: 183px;
-  height: 145px;
+  .cast-carousel & {
+    text-align: center;
+    width: 183px;
+    height: 145px;
+  }
   @include breakpoint($bp-carousel-smallest) {
     width: 236px;
     height: 188px;
-  }  
+  }
 }
+
 
 .carousel {
   @include breakpoint($bp-carousel-smallest) {
     margin-left: auto !important;
     margin-right: auto !important;
-  }  
+  }
   .item-list {
     height: 188px;
-    overflow: hidden; 
+    overflow: hidden;
   }
   h4 {
     font-family: $headline-semi;
@@ -42,22 +45,22 @@
       z-index: 95;
       @include breakpoint($bp-carousel-smallest) {
         width: 50px;
-      }  
-      
+      }
+
     }
     &:before {
       @include background(linear-gradient(left center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
       left: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%)); 
-      }  
+        @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%));
+      }
     }
     &:after {
       @include background(linear-gradient(right center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
       right: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%)); 
-      }  
+        @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%));
+      }
     }
   }
   ul {
@@ -84,7 +87,7 @@
       border: 2px solid $gray-dark;
       @include breakpoint($bp-social-small-width) {
         left: 8px;
-      }       
+      }
       position: absolute;
       top: 0;
       z-index: 1;
@@ -124,10 +127,10 @@
       height: 61px;
       padding-top: 8px;
       padding-bottom: 8px;
-    } 
+    }
     @include breakpoint($bp-carousel-smallest) {
       left: 10px;
-    }  
+    }
     a {
       color: $white;
     }
@@ -183,7 +186,7 @@
   @include breakpoint($bp-carousel-smallest) {
     padding-bottom: 30px;
     padding-top: 30px;
-  }  
+  }
   .view-content {
     width: 300px;
     height: 145px;
@@ -203,7 +206,7 @@
       height: 145px;
       @include breakpoint($bp-carousel-smallest) {
         height: 188px;
-      }  
+      }
     }
   }
   figure {
@@ -212,9 +215,9 @@
     @include breakpoint($bp-carousel-smallest) {
       width: auto;
       height: auto;
-    }  
+    }
   }
-  
+
   &.carousel {
     h4 {
       font-family: $headline-semi;
@@ -222,7 +225,7 @@
       margin: 0;
       @include breakpoint($bp-carousel-smallest) {
         font-size: 16px;
-      }  
+      }
     }
     .item-content > div {
       font-size: 10px;
@@ -230,21 +233,21 @@
       @include breakpoint($bp-carousel-smallest) {
         font-size: 14px;
         line-height: 1.5em;
-      }  
+      }
     }
-    .view {  
+    .view {
       &:after, &:before {
-        width: 37px;  
+        width: 37px;
       }
       &:before {
         @include background(linear-gradient(left center, $black 0%, $black 45%, rgba($black, 0) 100%));
         @include breakpoint($bp-carousel-smallest) {
           @include background(linear-gradient(left center, $black 0%, $black 60%, rgba($black, 0) 100%));
-        } 
+        }
       }
       &:after {
         @include background(linear-gradient(right center, $black 0%, $black 45%, rgba($black, 0) 100%));
-        @include breakpoint($bp-carousel-smallest) {  
+        @include breakpoint($bp-carousel-smallest) {
           @include background(linear-gradient(right center, $black 0%, $black 60%, rgba($black, 0) 100%));
         }
       }
@@ -259,12 +262,12 @@
   margin: 5px 0 20px;
   @include breakpoint($bp-carousel-smallest) {
     margin-bottom: 30px;
-  }  
+  }
   .view-content {
     width: 300px;
     @include breakpoint($bp-carousel-smallest) {
       width: auto;
-    }  
+    }
   }
 
   .view-mode-block_cover_title {
@@ -305,7 +308,7 @@
     margin: 0;
     @include breakpoint($bp-carousel-smallest) {
       left: 10px;
-    }  
+    }
   }
   li.active h4 {
     &:after {

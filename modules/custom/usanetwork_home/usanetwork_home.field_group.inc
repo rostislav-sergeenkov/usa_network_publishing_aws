@@ -21,7 +21,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spots',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_usa_hp_arefs',
       1 => 'group_slide_settings',
@@ -50,7 +50,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'B-spots',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_hp_brefs',
     ),
@@ -79,7 +79,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'C-spots',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_hp_crefs',
     ),
@@ -100,6 +100,34 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_globalnav_img|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_globalnav_img';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Global Nav images',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_hp_nav_img_shows',
+      1 => 'field_hp_nav_img_more',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_globalnav_img|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hp_promos|node|usa_homepage|form';
   $field_group->group_name = 'group_hp_promos';
   $field_group->entity_type = 'node';
@@ -108,7 +136,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_hp_promos',
     ),

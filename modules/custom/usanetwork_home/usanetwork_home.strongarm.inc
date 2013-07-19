@@ -72,6 +72,39 @@ function usanetwork_home_strongarm() {
       'follow_social' => array(
         'custom_settings' => FALSE,
       ),
+      'global_nav_block' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => TRUE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

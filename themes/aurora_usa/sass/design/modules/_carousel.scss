@@ -6,6 +6,10 @@
     text-align: center;
     width: 183px;
     height: 145px;
+    @include breakpoint($bp-carousel-smallest) {
+      width: 236px;
+      height: 188px;
+    }
   }
   @include breakpoint($bp-carousel-smallest) {
     width: 236px;

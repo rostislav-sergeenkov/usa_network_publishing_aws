@@ -13,6 +13,7 @@ $gray-med           : #3d3d3d;
 $gray-med-darker    : #313131;
 $gray-med-dark      : #414141;
 $gray-ultra-med     : #4B4B4B;
+$gray-ultra-med-alt : #4a4a4a;
 $gray-semi-med      : #5b5b5b;
 $gray-semi-ultra-med: #505050;
 $gray-darker-light  : #636363;
@@ -21,8 +22,10 @@ $gray-light         : #878785;
 $gray-extra-light   : #A3A3A3;
 $gray-sky           : #CCCCCC;
 $tan                : #b0b0b0;
+$tan-light          : #d6d6d6;
 $beige              : #D0D0D0;
 $off-white          : #EBEBEB;
+$off-white-alt      : #e8e8e8;
 $white              : white;
 $white-trans-1      : rgba($white, 0.1);
 $white-trans-75     : rgba($white, 0.75);
@@ -34,7 +37,7 @@ $orange             : #f8981d;
 $base-color: $black;
 $text-color: $white;
 $alt-color: $blue;
-$background-color: $black-dark;
+$background-color: $black;
 $border-color: $gray-light;
 
 

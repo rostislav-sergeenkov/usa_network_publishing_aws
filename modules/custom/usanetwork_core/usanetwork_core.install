@@ -373,3 +373,12 @@ function usanetwork_core_update_7111() {
     variable_del('environment_indicator_position');
   }
 }
+
+/**
+ * Enable new usanetwork_gobal_nav_image module
+ */
+function usanetwork_core_update_7112() {
+  $modules = array('usanetwork_gobal_nav_image');
+  module_enable($modules);
+}
+

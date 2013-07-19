@@ -514,7 +514,7 @@ strong, dfn, b {
   margin: 0;
 }
 .usa-secondary-menu li a {
-  color: #a3a3a3;
+  color: #d6d6d6;
 }
 .usa-secondary-menu ul {
   margin: 0;
@@ -982,7 +982,7 @@ html {
 body {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: white;
-  background: #161616;
+  background: #1f1f1f;
 }
 
 ::-moz-selection {
@@ -2213,7 +2213,7 @@ input[type="radio"], input[type="checkbox"] {
     bottom: 100%;
     width: 100%;
     background-color: #2d2d2d;
-    border-top: 1px solid #4b4b4b;
+    border-top: 1px solid #4a4a4a;
     height: 50px;
     padding-left: 110px;
     white-space: nowrap;
@@ -2786,7 +2786,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   position: relative;
   z-index: 11;
   padding-left: 12px;
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid #4b4b4b;
   position: relative;
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
 }
@@ -2798,12 +2798,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   margin: 5px 0 0 0;
   text-transform: uppercase;
   line-height: 40px;
-}
-@media (min-width: 640px) {
-  #utilities {
-    padding-top: 0;
-    height: 62px;
-  }
 }
 #utilities .breadcrumb {
   display: inline;
@@ -2824,14 +2818,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 19px;
   line-height: 40px;
-  color: #878785;
+  color: white;
   vertical-align: middle;
 }
 #utilities .breadcrumb > a:hover {
   color: white;
 }
 #utilities .breadcrumb > a:active {
-  color: #878785;
+  color: white;
 }
 #utilities .breadcrumb .separator {
   display: -moz-inline-stack;
@@ -2860,7 +2854,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities .show-time {
   display: inline;
   float: right;
-  color: #878785;
+  color: #e8e8e8;
   display: none;
   font-size: 22px;
   margin: 17px 35px 0;
@@ -3691,6 +3685,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   height: 145px;
 }
 @media (min-width: 330px) {
+  .cast-carousel .carousel-item {
+    width: 236px;
+    height: 188px;
+  }
+}
+@media (min-width: 330px) {
   .carousel-item {
     width: 236px;
     height: 188px;
@@ -3735,37 +3735,37 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .carousel .view:before {
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #161616), color-stop(8%, #161616), color-stop(100%, rgba(22, 22, 22, 0)));
-  background: -webkit-linear-gradient(left center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: -moz-linear-gradient(left center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: -o-linear-gradient(left center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: linear-gradient(left center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1f1f1f), color-stop(8%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(left center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
   left: 0px;
 }
 @media (min-width: 330px) {
   .carousel .view:before {
-    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(22, 22, 22, 0)));
-    background: -webkit-linear-gradient(left center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: -moz-linear-gradient(left center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: -o-linear-gradient(left center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: linear-gradient(left center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
+    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+    background: -webkit-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -moz-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -o-linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: linear-gradient(left center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
   }
 }
 .carousel .view:after {
-  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #161616), color-stop(8%, #161616), color-stop(100%, rgba(22, 22, 22, 0)));
-  background: -webkit-linear-gradient(right center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: -moz-linear-gradient(right center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: -o-linear-gradient(right center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
-  background: linear-gradient(right center, #161616 0%, #161616 8%, rgba(22, 22, 22, 0) 100%);
+  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(8%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+  background: -webkit-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
+  background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 8%, rgba(31, 31, 31, 0) 100%);
   right: 0px;
 }
 @media (min-width: 330px) {
   .carousel .view:after {
-    background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #161616), color-stop(60%, #161616), color-stop(100%, rgba(22, 22, 22, 0)));
-    background: -webkit-linear-gradient(right center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: -moz-linear-gradient(right center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: -o-linear-gradient(right center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
-    background: linear-gradient(right center, #161616 0%, #161616 60%, rgba(22, 22, 22, 0) 100%);
+    background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, #1f1f1f), color-stop(60%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0)));
+    background: -webkit-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -moz-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: -o-linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
+    background: linear-gradient(right center, #1f1f1f 0%, #1f1f1f 60%, rgba(31, 31, 31, 0) 100%);
   }
 }
 .carousel ul {
@@ -4450,6 +4450,9 @@ li a:hover {
   position: relative;
   background-color: #1f1f1f;
   padding: 5px 0 36px;
+}
+.usa-home-featured h2 {
+  margin-bottom: 2px;
 }
 .usa-home-featured .carousel-btns {
   display: none;
@@ -5174,7 +5177,7 @@ body.person-page .ad-leaderboard {
 }
 
 #on-now-show-episode {
-  color: #878785;
+  color: white;
   white-space: nowrap;
   display: table-cell;
   padding-top: 6px;
@@ -6149,7 +6152,7 @@ body.person-page .ad-leaderboard {
   float: right;
 }
 .usa-tv-show h2 {
-  margin-bottom: 13px;
+  margin-bottom: 2px;
   font-size: 18px;
   line-height: 1.5em;
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
@@ -7893,7 +7896,7 @@ a[class*="day"] {
 }
 
 .usa-wrap {
-  background-color: #161616;
+  background-color: #1f1f1f;
 }
 
 .ad-leaderboard {

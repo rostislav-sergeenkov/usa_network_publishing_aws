@@ -4,7 +4,7 @@
   position: relative;
   z-index: 11;
   padding-left: 12px;
-  border-bottom: 1px solid $gray-dark;
+  border-bottom: 1px solid $gray-ultra-med;
 //  overflow: hidden;
   position: relative;
   font-family: $headline-reg;
@@ -19,11 +19,6 @@
     line-height: 40px;
   }
 
-  @include breakpoint($bp-on-now) {
-    padding-top: 0;
-    height: 62px;
-  }
-
   .breadcrumb {
     @include float-left;
     color: $gray-light;
@@ -36,7 +31,7 @@
       font-family: $headline-semi;
       font-size: 19px;
       line-height: 40px;
-      @include link-colors($gray-light, $white, $gray-light);
+      @include link-colors($white, $white, $white);
       vertical-align: middle;
     }
     .separator {
@@ -60,7 +55,7 @@
   }
   .show-time {
     @include float-right;
-    color: $gray-light;
+    color: $off-white-alt;
     display: none;
     font-size: 22px;
     margin: 17px 35px 0;
@@ -77,9 +72,10 @@
     }
   }
 
-  @include breakpoint(640px) {
+  @include breakpoint($bp-on-now) {
     height: 62px;
     padding-left: 15px;
+//    padding-top: 0;
     h1#page-title {
       font-size: 30px;
       line-height: 52px;

@@ -53,17 +53,17 @@
 
     }
     &:before {
-      @include background(linear-gradient(left center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
+      @include background(linear-gradient(left center, $black 0%, $black 8%, rgba($black, 0) 100%));
       left: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(left center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%));
+        @include background(linear-gradient(left center, $black 0%, $black 60%, rgba($black, 0) 100%));
       }
     }
     &:after {
-      @include background(linear-gradient(right center, $black-dark 0%, $black-dark 8%, rgba($black-dark, 0) 100%));
+      @include background(linear-gradient(right center, $black 0%, $black 8%, rgba($black, 0) 100%));
       right: 0px;
       @include breakpoint($bp-carousel-smallest) {
-        @include background(linear-gradient(right center, $black-dark 0%, $black-dark 60%, rgba($black-dark, 0) 100%));
+        @include background(linear-gradient(right center, $black 0%, $black 60%, rgba($black, 0) 100%));
       }
     }
   }

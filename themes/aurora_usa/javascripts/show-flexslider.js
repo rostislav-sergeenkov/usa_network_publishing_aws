@@ -1,12 +1,11 @@
 // FLEXSLIDER for show aspot
-// @TODO generate the markup and styles we need for this to function
 (function ($) {
   Drupal.behaviors.showAspot = {
     attach: function (context, settings) {
       $slideshow_selector = $('#show-aspot ul');
 
-      $slideshow = false;
-      $slideshowSpeed = 7000;
+      $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
+      $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
 
       $slideshow_selector
         .addClass('slides')

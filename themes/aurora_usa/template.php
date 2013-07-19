@@ -91,6 +91,14 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
+    $language = $node->language;
+    $slideshow = (isset($node->field_usa_autoscroll[$language][0]['value']))? $node->field_usa_autoscroll[$language][0]['value']: null;
+    $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
+    $js_settings = array(
+      'slideshow' => $slideshow,
+      'slideshowSpeed' => $slideshowSpeed
+    );
+    drupal_add_js(array('showAspot' => $js_settings), array('type' => 'setting'));
     drupal_add_js($theme_path . '/javascripts/show-toggle.js');
     drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
   }
@@ -138,7 +146,7 @@ function aurora_usa_preprocess_page(&$vars) {
 
 
 /**
- * Implementation of hook_form_alter 
+ * Implementation of hook_form_alter
  */
 
 function aurora_usa_form_search_block_form_alter(&$form){
@@ -229,7 +237,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
 
   switch ($node->type) {
-    case 'usanetwork_promo': 
+    case 'usanetwork_promo':
       if(!(empty($node->field_meta_text_bar)) && $node->field_meta_text_bar[LANGUAGE_NONE][0]['value'] == '1') {
         $vars['classes_array'][] = drupal_html_class('promo-hide-overlay');
       }

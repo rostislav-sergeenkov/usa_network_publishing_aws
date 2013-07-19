@@ -5,8 +5,8 @@
       $mainslider = $('#main-slider');
       $secondaryslider = $('.secondary-slider');
 
-      $slideshow = false;
-      $slideshowSpeed = 7000;
+      $slideshow = (settings.homeSlides.slideshow !== null)? settings.homeSlides.slideshow : false;
+      $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null)? settings.homeSlides.slideshowSpeed : 7000;
 
       $(document).ready(function() {
         $mainslider.flexslider({

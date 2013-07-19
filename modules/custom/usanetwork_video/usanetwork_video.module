@@ -32,6 +32,12 @@ function usanetwork_video_menu() {
     'page callback' => 'usanetwork_video_admin_debug_titles',
     'access arguments' => array('administer usanetwork'),
   );
+  $items['admin/usanetwork/video/debug/debug-feeds'] = array(
+    'title' => t('Video feeds'),
+    'description' => t('Video Debug - links for checking the feeds'),
+    'page callback' => 'usanetwork_video_admin_debug_feeds',
+    'access arguments' => array('administer usanetwork'),
+  );
 
   return $items;
 }
@@ -492,3 +498,82 @@ function usanetwork_video_admin_debug_titles() {
 
   return $render;
 }
+
+
+/**
+ * Menu callback of video feed debug helpers
+ */
+function usanetwork_video_admin_debug_feeds() {
+  $render = array();
+  $updated_date = date('c', strtotime('-1 hour'));
+
+  // mpx debug
+  $mpx_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq');
+  // not cron
+  $mpx_url_ingest = $mpx_url . '?range=1-1000';
+  // cron
+  $mpx_url_cron = $mpx_url . '?byUpdated=' . $updated_date . '~' . '&sort=updated|desc&range=1-100';
+//http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_?byUpdated=2013-05-07T00:00:00Z~&sort=updated|desc&range=1-10&fields=guid,title,description,media:,:fullEpisode&fileFields=url,bitrate&byCustomValue={fullEpisode}{false}&byCategories=Series/Graceland
+  $mpx_url_test = $mpx_url . '?sort=updated|desc&range=1-100&byCategories=Series/Graceland';
+  $mpx_url_test2 = $mpx_url . '?sort=updated|desc&range=1-100&&byTitle=Commentary: Hair Of The Dog';
+
+  // tve debug
+  $tve_url = variable_get('usanetwork_theplatform_tve_feed_url', 'http://feed.theplatform.com/f/HNK2IC/v_LMXFxZY7Z2');
+  // not cron
+  $tve_url_ingest = $tve_url . '?range=1-500&byCustomValue={fullEpisode}{true},{entitlement}{auth}';
+  // Append query parameters to only retrieve video data updated within the
+  // last 24 hours.
+  $tve_url_cron = $tve_url . '?&byCustomValue={fullEpisode}{true},{entitlement}{auth}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
+
+  // mpx
+  $render['debug']['mpx'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h1>' . t('MPX') . '</h1>',
+    '#suffix' => '<br /><br />',
+  );
+  $render['debug']['mpx']['cron'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('MPX feed during cron') . '</h3>',
+    '#markup' => l($mpx_url_cron, $mpx_url_cron),
+    '#suffix' => '<p>' . t('Limited to elements updated within the last hour') . '</p>',
+  );
+  $render['debug']['mpx']['ingest'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('MPX feed for first migration') . '</h3>',
+    '#markup' => l($mpx_url_ingest, $mpx_url_ingest),
+  );
+  $render['debug']['mpx']['examples'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('filter by show') . '</h3>',
+    '#markup' => l($mpx_url_test, $mpx_url_test),
+    '#suffix' => '<p>' . t('added &byCategories=Series/Graceland to the end of the url to filter by "Graceland" shows') . '</p>',
+
+  );
+  $render['debug']['mpx']['examples_more'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('filter by title') . '</h3>',
+    '#markup' => l($mpx_url_test2, $mpx_url_test2),
+    '#suffix' => '<p>' . t('added "&byTitle=Commentary: Hair Of The Dog" to the end of the url to filter by a specific title') . '</p>',
+
+  );
+
+  $render['debug']['tve'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h1>' . t('TVE') . '</h1>',
+    '#suffix' => '<br /><br /><br />',
+  );
+  $render['debug']['tve']['cron'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('TVE feed during cron') . '</h3>',
+    '#markup' => l($tve_url_cron, $tve_url_cron),
+    '#suffix' => '<p>' . t('Limited to elements updated within the last hour') . '</p>',
+  );
+  $render['debug']['tve']['ingest'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<h3>' . t('TVE feed for first migration') . '</h3>',
+    '#markup' => l($tve_url_ingest, $tve_url_ingest),
+  );
+
+  return $render;
+}
+

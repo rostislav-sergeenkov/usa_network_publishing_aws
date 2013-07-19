@@ -406,14 +406,14 @@ $logo-height-med-2: 32px;
     border-color: $gray-med;
   }
   @include breakpoint($bp-menu-switch) {
-    @include box-shadow(rgba(0,0,0,.7) 0 -20px 40px);
+    @include box-shadow(rgba($black-true,.7) 0 -20px 40px);
     display: block;
     position: absolute;
     left: 0;
     bottom: 100%;
     width: 100%;
     background-color: $gray-dark;
-    border-top: 1px solid $gray-ultra-med;
+    border-top: 1px solid $gray-ultra-med-alt;
     height: 50px;
     padding-left: 110px;
     white-space: nowrap;

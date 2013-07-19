@@ -83,6 +83,9 @@ function usanetwork_tv_schedule_on_now_block() {
 
   // fetch today's schedule
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d'));
+  if (empty($tv_schedule)) {
+    return;
+  }
 
   // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
   $tv_schedule_prev_day = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d', time() - 60 * 60 * 24));
@@ -279,6 +282,7 @@ function usanetwork_tv_schedule_schedule_page() {
     // switch back to original server time zone
     date_default_timezone_set($orginal_tz);
     drupal_not_found();
+    return;
   }
 
   $header = array(

@@ -1,4 +1,11 @@
-<?php 
+<?php
+  $slideshow = (isset($field_usa_autoscroll[$language][0]['value']))? $field_usa_autoscroll[$language][0]['value']: null;
+  $slideshowSpeed = (isset($field_usa_slide_speed[$language][0]['value']))? $field_usa_slide_speed[$language][0]['value']: null;
+  $js_settings = array(
+    'slideshow' => $slideshow,
+    'slideshowSpeed' => $slideshowSpeed
+  );
+  drupal_add_js(array('homeSlides' => $js_settings), array('type' => 'setting'));
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js($theme_path . '/javascripts/home-sliders.js');
 ?>

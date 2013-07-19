@@ -103,7 +103,6 @@ function usanetwork_tv_schedule_on_now_block() {
       $end_time = (array) $item->EndTime;
       $program = (array) $item->ProgramName;
       $episode = (array) $item->TitleName;
-
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
@@ -120,9 +119,10 @@ function usanetwork_tv_schedule_on_now_block() {
         if (strtoupper($tv_show_name) == 'USA MOVIE') {
           $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
         } else {
-          $tv_show = $on_now_icon . $tv_show;
+          $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show_name . '</span></div>';
         }
-      } else {
+      }
+      else {
         $path = drupal_get_path_alias('node/'.$nid);
         $show_node = node_load($nid);
         if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
@@ -237,7 +237,7 @@ function usanetwork_tv_schedule_on_now_block() {
 function usanetwork_tv_schedule_on_now_panel() {
   $output = '';
   $links = array();
-  
+
   $links[0]['data'] = '<span class="tab-wrapper active"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
   $links[0]['class'] = array('on-now', 'tab-1');
   //$links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
@@ -248,7 +248,7 @@ function usanetwork_tv_schedule_on_now_panel() {
   //$links[1]['children'][] = '<div id="up-next-panel-tab"><iframe id="up-next-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
   $links[1]['children'][] = '<div id="up-next-panel-tab"></div>';
 
-  $output = theme('item_list', array('items' => $links)); 
+  $output = theme('item_list', array('items' => $links));
 
   return '<div id="inner-on-now-panel">'. $output .'</div>';
 }

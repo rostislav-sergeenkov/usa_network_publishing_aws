@@ -837,152 +837,57 @@
         <EndTime>04:00:00 PM</EndTime>
         <Duration>01:00:00</Duration>
         <DayOfWeekNo>4</DayOfWeekNo>
-        <ProgramName>CSI </ProgramName>
+        <ProgramName>PAID PROGRAMS</ProgramName>
         <DisplayName>
         </DisplayName>
-        <TitleName>GENETIC DISORDER</TitleName>
-        <TitleNo>755129</TitleNo>
-        <EpisodeNo>32</EpisodeNo>
+        <TitleName>
+        </TitleName>
+        <TitleNo>-1</TitleNo>
+        <EpisodeNo>
+        </EpisodeNo>
         <ShowID>
         </ShowID>
-        <SeriesTitleName>CSI (FIRST CYCLE STRIP)</SeriesTitleName>
-        <SeriesTitleNo>711774</SeriesTitleNo>
-        <Daypart>DAYTIME</Daypart>
-        <TitleType>Series</TitleType>
-        <ScheduleItemNo>17086437</ScheduleItemNo>
-        <Season>Season12</Season>
-        <SchedulingType>LBX</SchedulingType>
-        <Synopsis><![CDATA[When the body of a naked dead man is discovered by Dr. Robbins' wife in their master bedroom, it leads to a lot of questions for the CSI team.
-
-]]></Synopsis>
+        <SeriesTitleName>
+        </SeriesTitleName>
+        <SeriesTitleNo>-1</SeriesTitleNo>
+        <Daypart>OVERNIGHT</Daypart>
+        <TitleType>Paid Programming</TitleType>
+        <ScheduleItemNo>17085948</ScheduleItemNo>
+        <Season>
+        </Season>
+        <SchedulingType>
+        </SchedulingType>
+        <Synopsis><![CDATA[ ]]></Synopsis>
         <SynopsisInternal><![CDATA[ ]]></SynopsisInternal>
-        <RunCount>5</RunCount>
+        <RunCount>
+        </RunCount>
         <RunType>Unspecified</RunType>
-        <OriginalAirDate>2012-12-17</OriginalAirDate>
+        <OriginalAirDate>
+        </OriginalAirDate>
         <Genres />
-        <Distributor>CBS Television Distribution</Distributor>
-        <MapToSeries>CSI (FIRST CYCLE STRIP)</MapToSeries>
-        <MapToSeriesNo>757579</MapToSeriesNo>
-        <CC>Y</CC>
-        <LBOX>Y</LBOX>
-        <HD>Y</HD>
+        <Distributor>
+        </Distributor>
+        <MapToSeries>
+        </MapToSeries>
+        <MapToSeriesNo>-1</MapToSeriesNo>
+        <CC>N</CC>
+        <LBOX>N</LBOX>
+        <HD>N</HD>
         <SAP>N</SAP>
-        <Rating>TV-14-D-V</Rating>
-        <Stereo>STEREO</Stereo>
-        <AudioDesc>Y</AudioDesc>
-        <HouseNo>UDDCSS1210H</HouseNo>
-        <ProductionNo>0</ProductionNo>
+        <Rating>
+        </Rating>
+        <Stereo>
+        </Stereo>
+        <AudioDesc>N</AudioDesc>
+        <HouseNo>
+        </HouseNo>
+        <ProductionNo>
+        </ProductionNo>
         <Format>
         </Format>
         <StartOver>
         </StartOver>
-        <Talents>
-          <Talent>
-            <FirstName>Eric</FirstName>
-            <LastName>Szmanda</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>George</FirstName>
-            <LastName>Eads</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>JORJA</FirstName>
-            <LastName>FOX</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>LAURENCE</FirstName>
-            <LastName>DANSON</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>MARG</FirstName>
-            <LastName>GUILFOYL</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>ROBERT DAVID</FirstName>
-            <LastName>HALL</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>WALLACE</FirstName>
-            <LastName>LANGHAM</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>Eric</FirstName>
-            <LastName>Szmanda</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>George</FirstName>
-            <LastName>Eads</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>JORJA</FirstName>
-            <LastName>FOX</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>MARG</FirstName>
-            <LastName>HELGENBERGER</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>Paul</FirstName>
-            <LastName>Guilfoyle</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>ROBERT DAVID</FirstName>
-            <LastName>HALL</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>TED</FirstName>
-            <LastName>DANSON</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>WALLACE</FirstName>
-            <LastName>LANGHAM</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-        </Talents>
+        <Talents />
         <SchedulingCategory>
         </SchedulingCategory>
         <ScheduleNo>59337</ScheduleNo>
@@ -1010,190 +915,57 @@
         <EndTime>05:00:00 PM</EndTime>
         <Duration>01:00:00</Duration>
         <DayOfWeekNo>4</DayOfWeekNo>
-        <ProgramName>LAW &amp; ORDER: SVU (MORE ICE, PLEASE MARATHON)</ProgramName>
-        <DisplayName>DOMINANCE</DisplayName>
-        <TitleName>DOMINANCE</TitleName>
-        <TitleNo>102207</TitleNo>
-        <EpisodeNo>86</EpisodeNo>
+        <ProgramName>PAID PROGRAMS</ProgramName>
+        <DisplayName>
+        </DisplayName>
+        <TitleName>
+        </TitleName>
+        <TitleNo>-1</TitleNo>
+        <EpisodeNo>
+        </EpisodeNo>
         <ShowID>
         </ShowID>
-        <SeriesTitleName>LAW &amp; ORDER: SVU</SeriesTitleName>
-        <SeriesTitleNo>102024</SeriesTitleNo>
-        <Daypart>ACCESS</Daypart>
-        <TitleType>Series</TitleType>
-        <ScheduleItemNo>17085947</ScheduleItemNo>
-        <Season>Season4</Season>
-        <SchedulingType>LBX</SchedulingType>
-        <Synopsis><![CDATA[A quadruple homicide with sexual overtones is just the start of an intense rampage of killings that brings a homicide detective into the mix. As the entire squad races against time to prevent further victims, the evidence leads Tutuola to a building superintendent, his two sons, and a cross to bear.]]></Synopsis>
+        <SeriesTitleName>
+        </SeriesTitleName>
+        <SeriesTitleNo>-1</SeriesTitleNo>
+        <Daypart>OVERNIGHT</Daypart>
+        <TitleType>Paid Programming</TitleType>
+        <ScheduleItemNo>17085948</ScheduleItemNo>
+        <Season>
+        </Season>
+        <SchedulingType>
+        </SchedulingType>
+        <Synopsis><![CDATA[ ]]></Synopsis>
         <SynopsisInternal><![CDATA[ ]]></SynopsisInternal>
-        <RunCount>50</RunCount>
+        <RunCount>
+        </RunCount>
         <RunType>Unspecified</RunType>
-        <OriginalAirDate>2004-02-16</OriginalAirDate>
-        <Genres>
-          <Genre>CRIME</Genre>
-          <Genre>DETECTIVE</Genre>
-          <Genre>DRAMA</Genre>
-        </Genres>
-        <Distributor>NBCU TV Distribution</Distributor>
-        <MapToSeries>LAW &amp; ORDER: SVU</MapToSeries>
-        <MapToSeriesNo>145118</MapToSeriesNo>
-        <CC>Y</CC>
-        <LBOX>Y</LBOX>
+        <OriginalAirDate>
+        </OriginalAirDate>
+        <Genres />
+        <Distributor>
+        </Distributor>
+        <MapToSeries>
+        </MapToSeries>
+        <MapToSeriesNo>-1</MapToSeriesNo>
+        <CC>N</CC>
+        <LBOX>N</LBOX>
         <HD>N</HD>
         <SAP>N</SAP>
-        <Rating>TV-14</Rating>
+        <Rating>
+        </Rating>
         <Stereo>
         </Stereo>
         <AudioDesc>N</AudioDesc>
-        <HouseNo>UDSVSE3123H</HouseNo>
-        <ProductionNo>0</ProductionNo>
-        <Format>Law&amp;OrderSVUStrip Dis/Spsr</Format>
+        <HouseNo>
+        </HouseNo>
+        <ProductionNo>
+        </ProductionNo>
+        <Format>
+        </Format>
         <StartOver>
         </StartOver>
-        <Talents>
-          <Talent>
-            <FirstName>B.D.</FirstName>
-            <LastName>S</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>CHRISTOPHER</FirstName>
-            <LastName>MELONI</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>DANN</FirstName>
-            <LastName>FLOREK</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>ICE-T</FirstName>
-            <LastName>
-            </LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>MARISKA</FirstName>
-            <LastName>HARGITAY</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>RICHARD</FirstName>
-            <LastName>BELZER</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>STEPHANIE</FirstName>
-            <LastName>MARCH</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>TAMARA</FirstName>
-            <LastName>TUNIE</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>B.D.</FirstName>
-            <LastName>S</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>CHRISTOPHER</FirstName>
-            <LastName>MELONI</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>DANN</FirstName>
-            <LastName>FLOREK</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>ERIC</FirstName>
-            <LastName>PALLADINO</LastName>
-            <Part>
-            </Part>
-            <Credit>Guest</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>FRANK</FirstName>
-            <LastName>LANGELLA</LastName>
-            <Part>
-            </Part>
-            <Credit>Guest</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>IAN</FirstName>
-            <LastName>SOMERHALDER</LastName>
-            <Part>
-            </Part>
-            <Credit>Guest</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>ICE-T</FirstName>
-            <LastName>
-            </LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>JASON</FirstName>
-            <LastName>RITTER</LastName>
-            <Part>
-            </Part>
-            <Credit>Guest</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>MARISKA</FirstName>
-            <LastName>HARGITAY</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>RICHARD</FirstName>
-            <LastName>BELZER</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>STEPHANIE</FirstName>
-            <LastName>MARCH</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-          <Talent>
-            <FirstName>TAMARA</FirstName>
-            <LastName>S</LastName>
-            <Part>
-            </Part>
-            <Credit>Actor</Credit>
-          </Talent>
-        </Talents>
+        <Talents />
         <SchedulingCategory>
         </SchedulingCategory>
         <ScheduleNo>59337</ScheduleNo>

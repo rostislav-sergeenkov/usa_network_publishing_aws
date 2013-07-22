@@ -4452,7 +4452,7 @@ li a:hover {
   padding: 5px 0 36px;
 }
 .usa-home-featured h2 {
-  margin-bottom: 2px;
+  margin-bottom: 12px;
 }
 .usa-home-featured .carousel-btns {
   display: none;
@@ -5043,7 +5043,8 @@ body.person-page .ad-leaderboard {
 @media (min-width: 704px) {
   #person-content .node-media-gallery {
     height: 252px;
-    margin: 0 15px 0 0;
+    margin-left: 0;
+    margin-right: 15px;
     float: left;
   }
 }
@@ -5052,6 +5053,23 @@ body.person-page .ad-leaderboard {
 }
 #person-content .node-media-gallery .field-name-title h2 {
   margin-bottom: 2px;
+}
+#person-content .dart-tag {
+  width: 300px;
+  margin: 0 auto 15px;
+}
+@media (min-width: 330px) {
+  #person-content .dart-tag {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 704px) {
+  #person-content .dart-tag {
+    margin-left: 0;
+    margin-right: 15px;
+    width: auto;
+    float: left;
+  }
 }
 
 .ie8 img {
@@ -7677,7 +7695,7 @@ a[class*="day"] {
   .snipe-msg {
     background-color: black;
     float: left;
-    max-width: 680px;
+    max-width: 730px;
     position: relative;
     width: 70%;
     padding-top: 0;
@@ -7745,7 +7763,6 @@ a[class*="day"] {
   bottom: -30px;
   width: 100%;
   display: block;
-  height: 80px;
   left: 0;
   padding: 16px;
   position: absolute;
@@ -7901,12 +7918,16 @@ a[class*="day"] {
 
 .ad-leaderboard {
   text-align: center;
-  padding: 10px 0 0px;
+  padding: 10px 0 0;
   line-height: 1em;
+  height: 60px;
+  margin-bottom: 10px;
 }
 @media (min-width: 768px) {
   .ad-leaderboard {
     padding-bottom: 10px;
+    height: auto;
+    margin-bottom: 0;
   }
 }
 .usa-adrails .ad-leaderboard {

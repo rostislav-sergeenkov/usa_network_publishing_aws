@@ -15,16 +15,20 @@
   background-color: $black;
 }
 
+
 .ad-leaderboard {
   text-align: center;
   padding: 10px 0 0;
   line-height: 1em;
-  height: 60px;
-  margin-bottom: 10px;
+  body:not(.front) & {
+    margin-bottom: 10px;
+  }
   @include breakpoint($bp-ad-leaderboard-med-width) {
     padding-bottom: 10px;
     height: auto;
-    margin-bottom: 0;
+    body:not(.front) & {
+      margin-bottom: 0;
+    }  
   }
   .usa-adrails & {
     padding-top: 0;

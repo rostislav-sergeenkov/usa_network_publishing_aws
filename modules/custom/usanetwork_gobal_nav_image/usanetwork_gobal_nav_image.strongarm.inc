@@ -1,33 +1,19 @@
 <?php
 /**
  * @file
- * usanetwork_home.strongarm.inc
+ * usanetwork_gobal_nav_image.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function usanetwork_home_strongarm() {
+function usanetwork_gobal_nav_image_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_usa_homepage';
-  $strongarm->value = '[node:field_usa_hp_daylist]';
-  $export['ant_pattern_usa_homepage'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_usa_homepage';
-  $strongarm->value = '1';
-  $export['ant_usa_homepage'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__usa_homepage';
+  $strongarm->name = 'field_bundle_settings_node__global_nav_image';
   $strongarm->value = array(
     'view_modes' => array(
       'full' => array(
@@ -39,6 +25,12 @@ function usanetwork_home_strongarm() {
       'rss' => array(
         'custom_settings' => FALSE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
@@ -46,12 +38,6 @@ function usanetwork_home_strongarm() {
         'custom_settings' => FALSE,
       ),
       'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'carousel_promo' => array(
-        'custom_settings' => FALSE,
-      ),
-      'home_promo' => array(
         'custom_settings' => FALSE,
       ),
       'admin_reference_preview' => array(
@@ -66,19 +52,16 @@ function usanetwork_home_strongarm() {
       'block_cover_title_lg' => array(
         'custom_settings' => FALSE,
       ),
+      'carousel_promo' => array(
+        'custom_settings' => FALSE,
+      ),
       'cast_carousel' => array(
         'custom_settings' => FALSE,
       ),
       'follow_social' => array(
         'custom_settings' => FALSE,
       ),
-      'global_nav_block' => array(
-        'custom_settings' => TRUE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
+      'home_promo' => array(
         'custom_settings' => FALSE,
       ),
       'home_promo_bspot' => array(
@@ -99,76 +82,68 @@ function usanetwork_home_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
-      'global_nav_block_more' => array(
-        'custom_settings' => TRUE,
-      ),
-      'global_nav_block_shows' => array(
-        'custom_settings' => TRUE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '5',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '4',
         ),
       ),
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__usa_homepage'] = $strongarm;
+  $export['field_bundle_settings_node__global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_usa_homepage';
+  $strongarm->name = 'menu_options_global_nav_image';
   $strongarm->value = array();
-  $export['menu_options_usa_homepage'] = $strongarm;
+  $export['menu_options_global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_usa_homepage';
+  $strongarm->name = 'menu_parent_global_nav_image';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_usa_homepage'] = $strongarm;
+  $export['menu_parent_global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_usa_homepage';
-  $strongarm->value = array(
-    0 => 'revision',
-  );
-  $export['node_options_usa_homepage'] = $strongarm;
+  $strongarm->name = 'node_options_global_nav_image';
+  $strongarm->value = array();
+  $export['node_options_global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_usa_homepage';
+  $strongarm->name = 'node_preview_global_nav_image';
   $strongarm->value = '1';
-  $export['node_preview_usa_homepage'] = $strongarm;
+  $export['node_preview_global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_usa_homepage';
+  $strongarm->name = 'node_submitted_global_nav_image';
   $strongarm->value = 0;
-  $export['node_submitted_usa_homepage'] = $strongarm;
+  $export['node_submitted_global_nav_image'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'representative_image_field_node_usa_homepage';
-  $strongarm->value = '';
-  $export['representative_image_field_node_usa_homepage'] = $strongarm;
+  $strongarm->name = 'representative_image_field_node_global_nav_image';
+  $strongarm->value = 'field_gobal_nav_image';
+  $export['representative_image_field_node_global_nav_image'] = $strongarm;
 
   return $export;
 }

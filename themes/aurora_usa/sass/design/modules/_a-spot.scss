@@ -1,12 +1,68 @@
+%aspot-common-text {
+  font-size: 24px;
+  &.small {
+    font-size: 20px;
+  }
+  .ie8 .usa-tv-show & {
+    font-size: 2.75em;
+  }
+  @include breakpoint($bp-aspot-mid-range-width) {
+    font-size: 34px;
+    &.small {
+      font-size: 28px;
+    }
+  }
+  @include breakpoint($bp-aspot-mid-range2-width) {
+    font-size: 44px;
+    &.small {
+      font-size: 34px;
+    }
+  }
+  .usa-adrails &, .ie8 & {
+    font-size: 34px;
+  }
+}
+
+
 .aspot {
   position: relative;
   display: block;
-
   a {
     color: $white;
     &:hover,
     &:visited {
       color: $white;
+    }
+  }
+  .show-title-image {
+    position: absolute;
+    height: 124px;
+    width: 238px;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      height: 188px;
+      width: 360px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      height: 168px;
+      width: 500px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      height: 230px;
+      width: 600px;
+    }
+    img {
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        left: 20px;
+      }
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        left: 30px;
+      }
+      @include breakpoint($bp-aspot-large-width) {
+        left: 48px;
+      }
     }
   }
   .meta-wrap {
@@ -46,6 +102,20 @@
       }
     }
   }
+  .show-title-image {
+    + .meta-wrap {
+      padding-top: 30px;
+      @include breakpoint($bp-aspot-mid-range-width) {
+        padding-top: 40px;
+      }
+      @include breakpoint($bp-aspot-mid-range2-width) {
+        padding-top: 54px;
+      }
+      @include breakpoint($bp-aspot-large-width) {
+        padding-top: 60px;
+      }
+    }
+  }
   .meta {
     margin-bottom: 10px;
     @include breakpoint($bp-aspot-mid-range-width) {
@@ -61,11 +131,99 @@
       margin-bottom: 22px;
     }
   }
+  .mobile-show-title.show-title {
+    display: block;
+    @include breakpoint($bp-home-2col) {
+      display: none;
+    }
+    + .show-title  {
+      display: none;
+      @include breakpoint($bp-home-2col) {
+        display: block;
+      }
+    }
+  }
+  .show-title {
+    font-family: $headline-reg;
+    position: relative;
+    margin: 0 0 5px 0;
+    line-height: 1;
+    text-transform: uppercase;
+    @extend %aspot-common-text;
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      margin-bottom: 10px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      font-size: 54px;
+      margin-bottom: 16px;
+    }
+    &:after {
+      content: "";
+      z-index: 1;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      @include background-image(linear-gradient(left, $white, transparent));
+    }
+  }
+  .show-time {
+    font-family: $headline-thn;
+    margin-bottom: 2px;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    @extend %aspot-common-text;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      margin-bottom: 5px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      margin-bottom: 8px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      margin-bottom: 8px;
+      font-size: 60px;
+    }
+    .usa-adrails &, .ie8 & {
+      margin-bottom: 8px;
+      font-size: 44px;
+    }
+  }
+  .episode-title {
+    font-family: $headline-reg;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    @include breakpoint($bp-aspot-mid-range-width) {
+      font-size: 18px;
+    }
+    @include breakpoint($bp-aspot-mid-range2-width) {
+      font-size: 22px;
+    }
+    @include breakpoint($bp-aspot-large-width) {
+      font-size: 28px;
+    }
+    .ie8 & {
+      font-size: 1.375em;
+    }
+    .usa-adrails & {
+      font-size: 22px;
+    }
+  }
   .cta {
     position: relative;
     padding-left: 34px;
     font-size: 12px;
     line-height: 35px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.05em;
     @include breakpoint($bp-aspot-mid-width) {
       top: 4px;
       padding-left: 55px;
@@ -120,124 +278,6 @@
       font-weight: normal;
       letter-spacing: 0.05em;
     }
-  }
-  .show-title:after {
-    content: "";
-    z-index: 1;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    @include background-image(linear-gradient(left, $white, transparent));
-  }
-  .show-title,
-  .show-time,
-  .episode-title {
-    margin: 0;
-    line-height: 1;
-  }
-  .show-title,
-  .show-time {
-    font-size: 24px;
-    &.small {
-      font-size: 20px;
-    }
-    .ie8 .usa-tv-show & {
-      font-size: 2.75em;
-    }
-    @include breakpoint($bp-aspot-mid-range-width) {
-      font-size: 34px;
-      &.small {
-        font-size: 28px;
-      }  
-    }
-    @include breakpoint($bp-aspot-mid-range2-width) {
-      font-size: 44px;
-      &.small {
-        font-size: 34px;
-      }  
-    }
-    .usa-adrails &, .ie8 & {
-      font-size: 34px;
-    }
-  }
-  .show-title,
-  .show-time,
-  .cta {
-    text-transform: uppercase;
-  }
-  .show-time,
-  .episode-title,
-  .cta {
-    font-weight: normal;
-    letter-spacing: 0.05em;
-  }
-  .mobile-show-title.show-title {
-    display: block;
-    @include breakpoint($bp-home-2col) {
-      display: none;
-    }
-    + .show-title  {
-      display: none;
-      @include breakpoint($bp-home-2col) {
-        display: block;
-      }
-    }  
-  }
-  .show-title {
-    font-family: $headline-reg;
-    position: relative;
-    margin-bottom: 5px;
-    @include breakpoint($bp-aspot-mid-range2-width) {
-      margin-bottom: 10px;
-    }
-    @include breakpoint($bp-aspot-large-width) {
-      font-size: 54px;
-      margin-bottom: 16px;
-    }
-  }
-  .show-time {
-    font-family: $headline-thn;
-    margin-bottom: 2px;
-    @include breakpoint($bp-aspot-mid-range-width) {
-      margin-bottom: 5px;
-    }
-    @include breakpoint($bp-aspot-mid-range2-width) {
-      margin-bottom: 8px;
-    }
-    @include breakpoint($bp-aspot-large-width) {
-      margin-bottom: 8px;
-      font-size: 60px;
-    }
-    .usa-adrails &, .ie8 & {
-      margin-bottom: 8px;
-      font-size: 44px;
-    }
-  }
-  .episode-title {
-    font-family: $headline-reg;
-    font-size: 12px;
-    @include breakpoint($bp-aspot-mid-range-width) {
-      font-size: 18px;
-    }
-    @include breakpoint($bp-aspot-mid-range2-width) {
-      font-size: 22px;
-    }
-    @include breakpoint($bp-aspot-large-width) {
-      font-size: 28px;
-    }
-    .ie8 & {
-      font-size: 1.375em;
-    }
-    .usa-adrails & {
-      font-size: 22px;
-    }
-  }
-  .suits .show-time {
-    margin-bottom: 0;
-    font-size: 27px;
   }
   img, .flexslider & img {
     max-height: none;

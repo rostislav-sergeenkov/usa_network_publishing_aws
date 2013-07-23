@@ -61,6 +61,7 @@ function usanetwork_aspot_field_group_info() {
       6 => 'field_mobile_text_line_1',
       7 => 'field_text_line_1_font_size',
       8 => 'field_text_line_2_font_size',
+      9 => 'field_text_line_1_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

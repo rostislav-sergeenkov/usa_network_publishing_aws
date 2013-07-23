@@ -409,6 +409,7 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
         'tv_episode' => 'tv_episode',

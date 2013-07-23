@@ -7,6 +7,7 @@ function ds_a_spot() {
       'media_mobile' => t('Mobile Image'),
       'hex' => t('hex'),
       'text_1' => t('Text line 1'),
+      'text_1_image' => t('Text line 1 Image'),
       'text_2' => t('Text line 2'),
       'text_3' => t('Text line 3'),
       'text_1_font_size' => t('Text line 1 Font Size'),

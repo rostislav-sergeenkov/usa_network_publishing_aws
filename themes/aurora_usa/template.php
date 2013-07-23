@@ -242,6 +242,23 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
         $vars['classes_array'][] = drupal_html_class('promo-hide-overlay');
       }
       break;
+    case 'usanetwork_aspot':
+      $language = $vars['language'];
+      if (count($vars['field_usa_aspot_txt1']) > 0) {
+        $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
+      } else {
+        $alt = '';
+      }
+      if (count($vars['field_text_line_1_image']) > 0) {
+        $image_file = file_create_url($vars['field_text_line_1_image'][$language][0]['uri']);
+        $width =  $vars['field_text_line_1_image'][$language][0]['width'];
+        $height =  $vars['field_text_line_1_image'][$language][0]['height'];
+        $line_1_image = '<img src="' . $image_file . '" width="' . $width . '" height="' . $height . '" title="' . $alt . '" alt="' . $alt . '" />';
+      } else {
+        $line_1_image = '';
+      }
+      $vars['aspot_title_image'] = $line_1_image;
+      break;
   }
 }
 

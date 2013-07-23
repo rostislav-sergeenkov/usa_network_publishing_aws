@@ -92,7 +92,7 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
-    $slideshow = (isset($node->field_usa_autoscroll[$language][0]['value']))? $node->field_usa_autoscroll[$language][0]['value']: null;
+    $slideshow = ($node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
     $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
     $js_settings = array(
       'slideshow' => $slideshow,

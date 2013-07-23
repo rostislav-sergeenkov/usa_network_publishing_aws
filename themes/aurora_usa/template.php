@@ -249,7 +249,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       } else {
         $alt = '';
       }
-      if (count($vars['field_text_line_1_image']) > 0) {
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_text_line_1_image']) > 0) {
         $image_file = file_create_url($vars['field_text_line_1_image'][$language][0]['uri']);
         $width =  $vars['field_text_line_1_image'][$language][0]['width'];
         $height =  $vars['field_text_line_1_image'][$language][0]['height'];

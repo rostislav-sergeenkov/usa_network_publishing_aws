@@ -235,6 +235,7 @@ function aurora_usa_preprocess_entity(&$vars, $hook) {
 /* -- Delete this line if you want to use this function */
 function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
+  $language = $node->language;
 
   switch ($node->type) {
     case 'usanetwork_promo':
@@ -243,7 +244,6 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       break;
     case 'usanetwork_aspot':
-      $language = $vars['language'];
       if (count($vars['field_usa_aspot_txt1']) > 0) {
         $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
       } else {

@@ -235,6 +235,7 @@ function aurora_usa_preprocess_entity(&$vars, $hook) {
 /* -- Delete this line if you want to use this function */
 function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
+  $language = $node->language;
 
   switch ($node->type) {
     case 'usanetwork_promo':
@@ -243,13 +244,12 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       break;
     case 'usanetwork_aspot':
-      $language = $vars['language'];
       if (count($vars['field_usa_aspot_txt1']) > 0) {
         $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
       } else {
         $alt = '';
       }
-      if (count($vars['field_text_line_1_image']) > 0) {
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_text_line_1_image']) > 0) {
         $image_file = file_create_url($vars['field_text_line_1_image'][$language][0]['uri']);
         $width =  $vars['field_text_line_1_image'][$language][0]['width'];
         $height =  $vars['field_text_line_1_image'][$language][0]['height'];

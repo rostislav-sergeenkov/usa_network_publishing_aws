@@ -382,3 +382,35 @@ function usanetwork_core_update_7112() {
   module_enable($modules);
 }
 
+/**
+ * uninstall pub_tv, pub_movie, pub_character_profile, pub_person, pub_media_overrides, pub_person_overrides, pub_tv_overrides,
+ */
+function usanetwork_core_update_7113() {
+
+  $modules_un = array(
+    'pub_tv',
+    'pub_movie',
+    'pub_character_profile',
+    'pub_person',
+    'pub_media_overrides',
+    'pub_person_overrides',
+    'pub_tv_overrides',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * uninstall pub_gigya_overrides, pub_media, pub_theplatform, pub_gigya
+ */
+function usanetwork_core_update_7114() {
+
+  $modules_un = array(
+    'pub_gigya_overrides',
+    'pub_media',
+    'pub_theplatform',
+    'pub_gigya',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+

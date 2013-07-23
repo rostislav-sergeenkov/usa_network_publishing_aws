@@ -7255,6 +7255,35 @@ input.echo-submit-text {
   overflow: hidden;
 }
 
+.aspot .show-title, .aspot .show-time {
+  font-size: 24px;
+}
+.aspot .small.show-title, .aspot .small.show-time {
+  font-size: 20px;
+}
+.ie8 .usa-tv-show .aspot .show-title, .aspot .ie8 .usa-tv-show .show-title, .ie8 .usa-tv-show .aspot .show-time, .aspot .ie8 .usa-tv-show .show-time {
+  font-size: 2.75em;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .show-title, .aspot .show-time {
+    font-size: 34px;
+  }
+  .aspot .small.show-title, .aspot .small.show-time {
+    font-size: 28px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-title, .aspot .show-time {
+    font-size: 44px;
+  }
+  .aspot .small.show-title, .aspot .small.show-time {
+    font-size: 34px;
+  }
+}
+.usa-adrails .aspot .show-title, .aspot .usa-adrails .show-title, .usa-adrails .aspot .show-time, .aspot .usa-adrails .show-time, .ie8 .aspot .show-title, .aspot .ie8 .show-title, .ie8 .aspot .show-time, .aspot .ie8 .show-time {
+  font-size: 34px;
+}
+
 .aspot {
   position: relative;
   display: block;
@@ -7264,6 +7293,49 @@ input.echo-submit-text {
 }
 .aspot a:hover, .aspot a:visited {
   color: white;
+}
+.aspot .show-title-image {
+  position: absolute;
+  height: 124px;
+  width: 238px;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .show-title-image {
+    height: 188px;
+    width: 360px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-title-image {
+    height: 168px;
+    width: 500px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-title-image {
+    height: 230px;
+    width: 600px;
+  }
+}
+.aspot .show-title-image img {
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .show-title-image img {
+    left: 20px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-title-image img {
+    left: 30px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-title-image img {
+    left: 48px;
+  }
 }
 .aspot .meta-wrap {
   position: absolute;
@@ -7308,6 +7380,24 @@ input.echo-submit-text {
     top: 175px;
   }
 }
+.aspot .show-title-image + .meta-wrap {
+  padding-top: 30px;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .show-title-image + .meta-wrap {
+    padding-top: 40px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-title-image + .meta-wrap {
+    padding-top: 54px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-title-image + .meta-wrap {
+    padding-top: 60px;
+  }
+}
 .aspot .meta {
   margin-bottom: 10px;
 }
@@ -7329,11 +7419,121 @@ input.echo-submit-text {
 .usa-adrails .aspot .meta, .ie9 .aspot .meta, .ie8 .aspot .meta {
   margin-bottom: 22px;
 }
+.aspot .mobile-show-title.show-title {
+  display: block;
+}
+@media (min-width: 645px) {
+  .aspot .mobile-show-title.show-title {
+    display: none;
+  }
+}
+.aspot .mobile-show-title.show-title + .show-title {
+  display: none;
+}
+@media (min-width: 645px) {
+  .aspot .mobile-show-title.show-title + .show-title {
+    display: block;
+  }
+}
+.aspot .show-title {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  position: relative;
+  margin: 0 0 5px 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-title {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-title {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+}
+.aspot .show-title:after {
+  content: "";
+  z-index: 1;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, transparent));
+  background-image: -webkit-linear-gradient(left, #ffffff, transparent);
+  background-image: -moz-linear-gradient(left, #ffffff, transparent);
+  background-image: -o-linear-gradient(left, #ffffff, transparent);
+  background-image: linear-gradient(left, #ffffff, transparent);
+}
+.aspot .show-time {
+  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  margin-bottom: 2px;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .show-time {
+    margin-bottom: 5px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .show-time {
+    margin-bottom: 8px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-time {
+    margin-bottom: 8px;
+    font-size: 60px;
+  }
+}
+.usa-adrails .aspot .show-time, .ie8 .aspot .show-time {
+  margin-bottom: 8px;
+  font-size: 44px;
+}
+.aspot .episode-title {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .episode-title {
+    font-size: 18px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .episode-title {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .episode-title {
+    font-size: 28px;
+  }
+}
+.ie8 .aspot .episode-title {
+  font-size: 1.375em;
+}
+.usa-adrails .aspot .episode-title {
+  font-size: 22px;
+}
 .aspot .cta {
   position: relative;
   padding-left: 34px;
   font-size: 12px;
   line-height: 35px;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 0.05em;
 }
 @media (min-width: 645px) {
   .aspot .cta {
@@ -7400,160 +7600,6 @@ input.echo-submit-text {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.05em;
-}
-.aspot .show-title:after {
-  content: "";
-  z-index: 1;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 2px;
-  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(100%, transparent));
-  background-image: -webkit-linear-gradient(left, #ffffff, transparent);
-  background-image: -moz-linear-gradient(left, #ffffff, transparent);
-  background-image: -o-linear-gradient(left, #ffffff, transparent);
-  background-image: linear-gradient(left, #ffffff, transparent);
-}
-.aspot .show-title,
-.aspot .show-time,
-.aspot .episode-title {
-  margin: 0;
-  line-height: 1;
-}
-.aspot .show-title,
-.aspot .show-time {
-  font-size: 24px;
-}
-.aspot .show-title.small,
-.aspot .show-time.small {
-  font-size: 20px;
-}
-.ie8 .usa-tv-show .aspot .show-title, .ie8 .usa-tv-show
-.aspot .show-time {
-  font-size: 2.75em;
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .aspot .show-title,
-  .aspot .show-time {
-    font-size: 34px;
-  }
-  .aspot .show-title.small,
-  .aspot .show-time.small {
-    font-size: 28px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .show-title,
-  .aspot .show-time {
-    font-size: 44px;
-  }
-  .aspot .show-title.small,
-  .aspot .show-time.small {
-    font-size: 34px;
-  }
-}
-.usa-adrails .aspot .show-title, .ie8 .aspot .show-title, .usa-adrails
-.aspot .show-time, .ie8
-.aspot .show-time {
-  font-size: 34px;
-}
-.aspot .show-title,
-.aspot .show-time,
-.aspot .cta {
-  text-transform: uppercase;
-}
-.aspot .show-time,
-.aspot .episode-title,
-.aspot .cta {
-  font-weight: normal;
-  letter-spacing: 0.05em;
-}
-.aspot .mobile-show-title.show-title {
-  display: block;
-}
-@media (min-width: 645px) {
-  .aspot .mobile-show-title.show-title {
-    display: none;
-  }
-}
-.aspot .mobile-show-title.show-title + .show-title {
-  display: none;
-}
-@media (min-width: 645px) {
-  .aspot .mobile-show-title.show-title + .show-title {
-    display: block;
-  }
-}
-.aspot .show-title {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
-  position: relative;
-  margin-bottom: 5px;
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .show-title {
-    margin-bottom: 10px;
-  }
-}
-@media (min-width: 1275px) {
-  .aspot .show-title {
-    font-size: 54px;
-    margin-bottom: 16px;
-  }
-}
-.aspot .show-time {
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
-  margin-bottom: 2px;
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .aspot .show-time {
-    margin-bottom: 5px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .show-time {
-    margin-bottom: 8px;
-  }
-}
-@media (min-width: 1275px) {
-  .aspot .show-time {
-    margin-bottom: 8px;
-    font-size: 60px;
-  }
-}
-.usa-adrails .aspot .show-time, .ie8 .aspot .show-time {
-  margin-bottom: 8px;
-  font-size: 44px;
-}
-.aspot .episode-title {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
-  font-size: 12px;
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .aspot .episode-title {
-    font-size: 18px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .episode-title {
-    font-size: 22px;
-  }
-}
-@media (min-width: 1275px) {
-  .aspot .episode-title {
-    font-size: 28px;
-  }
-}
-.ie8 .aspot .episode-title {
-  font-size: 1.375em;
-}
-.usa-adrails .aspot .episode-title {
-  font-size: 22px;
-}
-.aspot .suits .show-time {
-  margin-bottom: 0;
-  font-size: 27px;
 }
 .aspot img, .flexslider .aspot img {
   max-height: none;

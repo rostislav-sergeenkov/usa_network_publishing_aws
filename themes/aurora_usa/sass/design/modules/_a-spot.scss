@@ -50,6 +50,10 @@
       height: 230px;
       width: 600px;
     }
+    .usa-adrails &, .ie9 &, .ie8 & {
+      height: 168px;
+      width: 500px;
+    }
     img {
       position: absolute;
       bottom: 0;
@@ -62,6 +66,9 @@
       }
       @include breakpoint($bp-aspot-large-width) {
         left: 48px;
+      }
+      .usa-adrails &, .ie9 &, .ie8 & {
+        left: 30px;
       }
     }
   }
@@ -113,6 +120,9 @@
       }
       @include breakpoint($bp-aspot-large-width) {
         padding-top: 60px;
+      }
+      .usa-adrails &, .ie9 &, .ie8 & {
+        padding-top: 54px;
       }
     }
   }

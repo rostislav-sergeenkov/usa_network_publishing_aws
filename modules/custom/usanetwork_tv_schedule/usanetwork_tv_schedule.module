@@ -111,7 +111,6 @@ function usanetwork_tv_schedule_on_now_block() {
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
 
       $arrow = '';
-      // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
       if (!empty($nid)) {
         $arrow = 'class="trigger"';
       }
@@ -129,7 +128,15 @@ function usanetwork_tv_schedule_on_now_block() {
         $path = drupal_get_path_alias('node/'.$nid);
         $show_node = node_load($nid);
         if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
-          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+          // check for identical program and episode name, of they match hide the episode
+          if (trim($program[0]) === trim($episode[0])) {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
+          }
+          else {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+          }
+
+          // link things up
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
         } else {
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));

@@ -52,7 +52,7 @@ function usanetwork_showpages_menu() {
 }
 
 /**
- * Shpw pages menu access callback to restrict only tv_show nodes 
+ * Shpw pages menu access callback to restrict only tv_show nodes
  */
 function usanetwork_showpages_menu_access($node) {
   return $node->type == 'tv_show' && user_access('access content');
@@ -276,7 +276,7 @@ function usanetwork_showpages_cast($node) {
   $view->args = array($node->nid);
   $view->pre_execute();
   $view->execute();
-  
+
   if (!empty($view->result)) {
     $cast_nid = $view->result[0]->nid;
   }
@@ -286,7 +286,7 @@ function usanetwork_showpages_cast($node) {
   if (isset($cast_nid)) {
     drupal_goto('node/' . $cast_nid);
   }
-  
+
   // or go back to the show node
   drupal_goto('node/' . $show);
 }
@@ -305,7 +305,7 @@ function usanetwork_showpages_videos($node) {
   $show = $node->nid;
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video'));
+  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
   $query->fieldCondition('field_full_episode', 'value', '1', '=');
@@ -322,7 +322,7 @@ function usanetwork_showpages_videos($node) {
   } else {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
-    $query->entityCondition('bundle', array('usa_video'));
+    $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
     $query->propertyCondition('status', 1);
     $query->fieldCondition('field_show', 'target_id', $show);
     $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
@@ -356,14 +356,14 @@ function usanetwork_showpages_preprocess_html(&$vars) {
 
   // see if we are on a node page
   if ($node = menu_get_object()) {
-    
+
     // see if we are on a show node
     if ($node->type == 'tv_show') {
       $show = $node->nid;
       // see if we are in a show subsection
       // custom module or dynamic based on path
       switch (arg(2)) {
-       // video landing 
+       // video landing
        case 'videos':
           $headtitle = t("@show Videos", array('@show' => $node->title));
           $vars['title'] = $headtitle;

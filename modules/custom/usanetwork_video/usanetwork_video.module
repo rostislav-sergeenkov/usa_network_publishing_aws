@@ -108,7 +108,7 @@ function usanetwork_video_global_nav() {
     }
   }
 
-  // sort the shows alphabetically 
+  // sort the shows alphabetically
   asort($items[0]['children']);
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
@@ -184,7 +184,7 @@ function usanetwork_video_show_nav() {
     }
   }
 
-  // sort the shows alphabetically 
+  // sort the shows alphabetically
   asort($items[0]['children']);
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
@@ -195,7 +195,7 @@ function usanetwork_video_show_nav() {
     (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
-  
+
   // show the full episodes links iff there are full episodes for that tv show
   if (_usanetwork_video_full_episodes_exist($node->field_show[$lang][0]['target_id'])) {
     $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
@@ -397,7 +397,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
   $highest_bit_rate = 0;
   $selected_video = $file_info[0];
   foreach($file_info as $file) {
-    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' && 
+    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
         isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate) {
       $highest_bit_rate = $file->{'plfile$bitrate'};
       $selected_video = $file;
@@ -421,10 +421,10 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
 function _usanetwork_video_full_episodes_exist($show_nid) {
   if (empty($show_nid)) {
     return false;
-  } 
+  }
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video'));
+  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show_nid);
   $query->fieldCondition('field_full_episode', 'value', '1', '=');
@@ -432,6 +432,6 @@ function _usanetwork_video_full_episodes_exist($show_nid) {
   $query->count();
   // execute the query
   $count = intval($query->execute());
-  
+
   return  $count > 0 ? true : false;
 }

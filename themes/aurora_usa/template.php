@@ -107,7 +107,7 @@ function aurora_usa_preprocess_page(&$vars) {
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => $theme_path . '/images/ios-home.png',
+      'href' => $base_url .'/'. $theme_path . '/images/ios-home.png',
     ),
   );
 

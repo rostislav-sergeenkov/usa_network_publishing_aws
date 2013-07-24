@@ -17,7 +17,11 @@
           pauseOnHover: true,
           animation: 'slide',
           controlNav: true,
-          directionNav: (!Modernizr.touch)
+          directionNav: (!Modernizr.touch),
+          after: function(slider) {
+            slider.pause();
+            slider.play();
+          }
         });
     },
   };

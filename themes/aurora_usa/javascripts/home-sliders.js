@@ -30,6 +30,10 @@
                 flexslider.flexAnimate(target, true);
               }
             });
+          },
+          after: function(slider) {
+            slider.pause();
+            slider.play();
           }
         });
         $secondaryslider.flexslider({

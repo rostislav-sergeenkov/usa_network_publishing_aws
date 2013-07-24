@@ -7457,6 +7457,10 @@ input.echo-submit-text {
     width: 600px;
   }
 }
+.usa-adrails .aspot .show-title-image, .ie9 .aspot .show-title-image, .ie8 .aspot .show-title-image {
+  height: 168px;
+  width: 500px;
+}
 .aspot .show-title-image img {
   position: absolute;
   bottom: 0;
@@ -7476,6 +7480,9 @@ input.echo-submit-text {
   .aspot .show-title-image img {
     left: 48px;
   }
+}
+.usa-adrails .aspot .show-title-image img, .ie9 .aspot .show-title-image img, .ie8 .aspot .show-title-image img {
+  left: 30px;
 }
 .aspot .meta-wrap {
   position: absolute;
@@ -7537,6 +7544,9 @@ input.echo-submit-text {
   .aspot .show-title-image + .meta-wrap {
     padding-top: 60px;
   }
+}
+.usa-adrails .aspot .show-title-image + .meta-wrap, .ie9 .aspot .show-title-image + .meta-wrap, .ie8 .aspot .show-title-image + .meta-wrap {
+  padding-top: 54px;
 }
 .aspot .meta {
   margin-bottom: 10px;

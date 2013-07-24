@@ -1,5 +1,5 @@
 <?php
-  $slideshow = (isset($field_usa_autoscroll[$language][0]['value']))? $field_usa_autoscroll[$language][0]['value']: null;
+  $slideshow = ($field_usa_autoscroll[$language][0]['value'] == 1)? true: null;
   $slideshowSpeed = (isset($field_usa_slide_speed[$language][0]['value']))? $field_usa_slide_speed[$language][0]['value']: null;
   $js_settings = array(
     'slideshow' => $slideshow,

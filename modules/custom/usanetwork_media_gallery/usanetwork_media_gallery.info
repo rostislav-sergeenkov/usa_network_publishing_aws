@@ -13,4 +13,3 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[page_manager_handlers][] = node_view_panel_context
 features[views_view][] = usa_gallery
-features_exclude[dependencies][ctools] = ctools

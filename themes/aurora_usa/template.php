@@ -92,7 +92,7 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
-    $slideshow = (isset($node->field_usa_autoscroll[$language][0]['value']))? $node->field_usa_autoscroll[$language][0]['value']: null;
+    $slideshow = ($node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
     $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
     $js_settings = array(
       'slideshow' => $slideshow,
@@ -235,12 +235,29 @@ function aurora_usa_preprocess_entity(&$vars, $hook) {
 /* -- Delete this line if you want to use this function */
 function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
+  $language = $node->language;
 
   switch ($node->type) {
     case 'usanetwork_promo':
       if(!(empty($node->field_meta_text_bar)) && $node->field_meta_text_bar[LANGUAGE_NONE][0]['value'] == '1') {
         $vars['classes_array'][] = drupal_html_class('promo-hide-overlay');
       }
+      break;
+    case 'usanetwork_aspot':
+      if (count($vars['field_usa_aspot_txt1']) > 0) {
+        $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
+      } else {
+        $alt = '';
+      }
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_text_line_1_image']) > 0) {
+        $image_file = file_create_url($vars['field_text_line_1_image'][$language][0]['uri']);
+        $width =  $vars['field_text_line_1_image'][$language][0]['width'];
+        $height =  $vars['field_text_line_1_image'][$language][0]['height'];
+        $line_1_image = '<img src="' . $image_file . '" width="' . $width . '" height="' . $height . '" title="' . $alt . '" alt="' . $alt . '" />';
+      } else {
+        $line_1_image = '';
+      }
+      $vars['aspot_title_image'] = $line_1_image;
       break;
   }
 }

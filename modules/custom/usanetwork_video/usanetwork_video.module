@@ -444,7 +444,7 @@ function _usanetwork_video_full_episodes_exist($show_nid) {
   }
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video'));
+  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show_nid);
   $query->fieldCondition('field_full_episode', 'value', '1', '=');

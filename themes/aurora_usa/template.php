@@ -67,7 +67,7 @@ function aurora_usa_preprocess_page(&$vars) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
-  drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
@@ -91,6 +91,14 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
+    $language = $node->language;
+    $slideshow = ($node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
+    $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
+    $js_settings = array(
+      'slideshow' => $slideshow,
+      'slideshowSpeed' => $slideshowSpeed
+    );
+    drupal_add_js(array('showAspot' => $js_settings), array('type' => 'setting'));
     drupal_add_js($theme_path . '/javascripts/show-toggle.js');
     drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
   }
@@ -99,7 +107,7 @@ function aurora_usa_preprocess_page(&$vars) {
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => $theme_path . '/images/ios-home.png',
+      'href' => $base_url .'/'. $theme_path . '/images/ios-home.png',
     ),
   );
 
@@ -136,6 +144,10 @@ function aurora_usa_preprocess_page(&$vars) {
 
 }
 
+
+/**
+ * Implementation of hook_form_alter
+ */
 
 function aurora_usa_form_search_block_form_alter(&$form){
 
@@ -220,11 +232,35 @@ function aurora_usa_preprocess_entity(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-/* -- Delete this line if you want to use this function
+/* -- Delete this line if you want to use this function */
 function aurora_usa_preprocess_node(&$vars, $hook) {
   $node = $vars['node'];
+  $language = $node->language;
+
+  switch ($node->type) {
+    case 'usanetwork_promo':
+      if(!(empty($node->field_meta_text_bar)) && $node->field_meta_text_bar[LANGUAGE_NONE][0]['value'] == '1') {
+        $vars['classes_array'][] = drupal_html_class('promo-hide-overlay');
+      }
+      break;
+    case 'usanetwork_aspot':
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_usa_aspot_txt1']) > 0) {
+        $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
+      } else {
+        $alt = '';
+      }
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_text_line_1_image']) > 0) {
+        $image_file = file_create_url($vars['field_text_line_1_image'][$language][0]['uri']);
+        $width =  $vars['field_text_line_1_image'][$language][0]['width'];
+        $height =  $vars['field_text_line_1_image'][$language][0]['height'];
+        $line_1_image = '<img src="' . $image_file . '" width="' . $width . '" height="' . $height . '" title="' . $alt . '" alt="' . $alt . '" />';
+      } else {
+        $line_1_image = '';
+      }
+      $vars['aspot_title_image'] = $line_1_image;
+      break;
+  }
 }
-// */
 
 /**
  * Override or insert variables into the field template.
@@ -235,6 +271,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  *   The name of the template being rendered ("field" in this case.)
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
+
   if (isset($vars['element']['#object']->type)) {
     if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#field_name'] == 'field_media_items')) {
       append_cover_to_media($vars);
@@ -315,7 +352,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'block_cover_title_lg':
             if ($vars['element']['#bundle'] == 'media_gallery' ) {
               $title = strip_tags($vars['element'][0]['#markup']);
-              $vars['items'][0]['#markup'] =  '<h2>' . $title . ' gallery</h2>';
+              $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
             break;
         }

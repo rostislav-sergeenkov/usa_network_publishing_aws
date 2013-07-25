@@ -1,4 +1,18 @@
+%footer-links {
+  font-family: $headline-reg;
+  color: $gray-dark-light;
+  padding: 11px 5px 8px 25px;
+  font-size: 14px;
+  a {
+    @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
+  }
+}
+
 #footer {
+  display: none;
+  @include breakpoint($bp-menu-switch) {
+    display: block;
+  }
   li, ul {
     padding: 0;
     margin: 0;
@@ -6,16 +20,35 @@
   }
 }
 
+#footer-offside {
+  ul {
+    @include no-bullets;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .slide-panel-link {
+    background: none;
+    border-width: 0;
+    // font-size: $base-font-size;
+    // line-height: $base-line-height;
+    text-transform: none;
+  }
+}
+
+#jPanelMenu-menu {
+  .region-footer-offside {
+    @extend %footer-links;
+  }
+}
+
 .region-footer {
   border-top: 1px solid $gray-med-dark;
   padding: 3px 15px 65px;
   overflow: hidden;
-  font-size: 14px;
-  font-family: $headline-reg;
-  color: $gray-dark-light;
   position: relative;
   z-index: 50;
   background-color: $black-true;
+  @extend %footer-links;
   @include breakpoint($bp-menu-switch) {
     font-size: 12px;
     font-family: $headline-semi;
@@ -27,7 +60,6 @@
     }
   }
   li a {
-    color: $gray-dark-light;
     margin-right: 15px;
     padding: 5px 0;
     display: block;
@@ -69,7 +101,8 @@
 }
 
 /* overriding module styles - remove from there? */
-#footer-message {
+#footer-message,
+#footer-message-offside {
   font-size: 12px;
   font-family: $headline-reg;
   color: $gray-dark-light;

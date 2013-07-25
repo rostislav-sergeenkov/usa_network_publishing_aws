@@ -15,6 +15,7 @@ body.person-page {
 #person-content {
 	width: auto;
 	position: relative;
+	min-height: 750px;
 	h1 {
 		text-transform: none;
 		font-size: 24px;
@@ -104,7 +105,8 @@ body.person-page {
 		margin: 0 auto 15px;
 		@include breakpoint($bp-person-gall-width) {
 			height: 252px;
-			margin: 0 15px 0 0;
+			margin-left: 0;
+			margin-right: 15px;
 			float: left;
 		}
 		h2 {
@@ -116,5 +118,19 @@ body.person-page {
 				margin-bottom: 2px;
 			}
 		}
+	}
+	.dart-tag {
+		width: 300px;
+		margin: 0 auto 15px;
+		@include breakpoint($bp-person-small-width) {
+			margin-bottom: 0;
+		}
+		@include breakpoint($bp-person-gall-width) {
+			margin-left: 0;
+			margin-right: 15px;
+			width: auto;
+			float: left;
+		}		
+
 	}
 }

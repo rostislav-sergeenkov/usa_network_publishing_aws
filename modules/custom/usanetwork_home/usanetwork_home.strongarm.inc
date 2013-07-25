@@ -72,17 +72,53 @@ function usanetwork_home_strongarm() {
       'follow_social' => array(
         'custom_settings' => FALSE,
       ),
+      'global_nav_block' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_promo_bspot' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => TRUE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
+        ),
+        'redirect' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -126,6 +162,13 @@ function usanetwork_home_strongarm() {
   $strongarm->name = 'node_submitted_usa_homepage';
   $strongarm->value = 0;
   $export['node_submitted_usa_homepage'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'representative_image_field_node_usa_homepage';
+  $strongarm->value = '';
+  $export['representative_image_field_node_usa_homepage'] = $strongarm;
 
   return $export;
 }

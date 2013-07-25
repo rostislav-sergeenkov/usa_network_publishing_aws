@@ -4,28 +4,43 @@
   .state-menu & {
     display: block;
   }
-  .state-on-now & {
+  .state-on-now &,
+  .state-personalization & {
     display: none;
   }
 }
 
 #on-now-panel {
-  .state-menu & {
-    display: none;
-  }
   .state-on-now & {
     display: block;
+  }
+  .state-menu &,
+  .state-personalization & {
+    display: none;
+  }
+}
+
+#personalization-panel {
+  .state-personalization & {
+    display: block;
+  }
+  .state-menu &,
+  .state-on-now & {
+    display: none;
   }
 }
 
 .on-now-js-processed {
-  #jPanelMenu-menu {
-    background-color: $gray-med-darker;
-  }
   &.logged-in {
      #jPanelMenu-menu {
       margin-top: 30px;
      }
+  }
+}
+
+#jPanelMenu-menu {
+  &.state-on-now {
+    background-color: $gray-med-darker;
   }
 }
 
@@ -36,11 +51,11 @@
   @include breakpoint($bp-menu-wide) {
     padding-left: 25px;
     padding-right: 25px;
-  }  
+  }
   a {
     @include link-colors($white, $gray-extra-light, $gray-extra-light, $white, $white);
   }
-  figure { 
+  figure {
     margin-bottom: 15px;
   }
   .full-schedule-link {
@@ -51,7 +66,7 @@
     }
     @include breakpoint($bp-menu-wide) {
       font-size: 16px;
-    }  
+    }
   }
 }
 
@@ -59,7 +74,7 @@
   position: relative;
   span {
     font-family: $headline-semi;
-    font-size: 14px; 
+    font-size: 14px;
     color: $white;
     bottom: 15px;
     display: inline-block;
@@ -75,12 +90,12 @@
     @include text-shadow( 0 0 1.5em $black-true);
     @include breakpoint($bp-menu-wide) {
       font-size: 18px;
-    }  
+    }
   }
 }
 
 
-.block-usanetwork-tv-schedule {  
+.block-usanetwork-tv-schedule {
   #usanetwork_social_show_homepage_chatter {
     padding-bottom: 50px;
     background-color: $gray-med-darker;
@@ -96,7 +111,7 @@
       padding-left: 25px;
       padding-right: 25px;
 
-    }  
+    }
   }
   .echo-item-authorName {
     color: $gray-dark-light;
@@ -122,7 +137,7 @@
         &:before {
           top: 5px;
         }
-      }  
+      }
     }
   }
   #usanetwork_social_chatter_title {
@@ -134,7 +149,7 @@
       padding-left: 25px;
       padding-right: 25px;
       font-size: 24px;
-    }  
+    }
   }
 }
 
@@ -178,7 +193,7 @@
         left:45%;
         top: 39px;
         z-index: 999999999;
-      }  
+      }
     }
     @include breakpoint($bp-menu-wide) {
       font-size: 22px;
@@ -201,7 +216,7 @@
     display: table;
     width: 100%;
   .show-info {
-    display: table-cell;  
+    display: table-cell;
   }
   .show-title {
     font-size: 14px;
@@ -209,14 +224,14 @@
     padding-bottom: 2px;
     @include breakpoint($bp-menu-wide) {
       font-size: 18px;
-    }  
+    }
   }
   .episode-title {
     font-size: 13px;
     line-height: 1.15em;
     @include breakpoint($bp-menu-wide) {
       font-size: 17px;
-    }  
+    }
   }
   .icons-social {
     display: table-cell;

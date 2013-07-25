@@ -5,12 +5,17 @@
       $mainslider = $('#main-slider');
       $secondaryslider = $('.secondary-slider');
 
+      $slideshow = (settings.homeSlides.slideshow !== null)? settings.homeSlides.slideshow : false;
+      $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null)? settings.homeSlides.slideshowSpeed : 7000;
+
       $(document).ready(function() {
         $mainslider.flexslider({
           animation: 'slide',
           controlNav: true,
           directionNav: (!Modernizr.touch),
-          slideshow: false,
+          slideshow: $slideshow,
+          slideshowSpeed: $slideshowSpeed,
+          pauseOnHover: true,
           before: function(slider) {
             var target = slider.animatingTo,
               currentSlide = slider.currentSlide;
@@ -25,6 +30,10 @@
                 flexslider.flexAnimate(target, true);
               }
             });
+          },
+          after: function(slider) {
+            slider.pause();
+            slider.play();
           }
         });
         $secondaryslider.flexslider({

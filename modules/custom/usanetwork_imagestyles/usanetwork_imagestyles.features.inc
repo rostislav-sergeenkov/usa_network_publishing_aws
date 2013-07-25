@@ -34,10 +34,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1230',
-          'height' => '500',
+          'width' => 1230,
+          'height' => 500,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -56,10 +56,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1245',
-          'height' => '709',
+          'width' => 1245,
+          'height' => 709,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -78,10 +78,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '146',
-          'height' => '122',
+          'width' => 146,
+          'height' => 122,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -100,10 +100,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '221',
-          'height' => '124',
+          'width' => 221,
+          'height' => 124,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -122,10 +122,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '2490',
-          'height' => '1418',
+          'width' => 2490,
+          'height' => 1418,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -144,10 +144,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '169',
+          'width' => 300,
+          'height' => 169,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -166,10 +166,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '250',
+          'width' => 300,
+          'height' => 250,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -188,10 +188,32 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '250',
+          'width' => 300,
+          'height' => 250,
         ),
-        'weight' => '1',
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: 450x183_globalnav.
+  $styles['450x183_globalnav'] = array(
+    'name' => '450x183_globalnav',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 450,
+          'height' => 183,
+        ),
+        'weight' => 1,
       ),
     ),
   );
@@ -210,10 +232,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '600',
-          'height' => '500',
+          'width' => 600,
+          'height' => 500,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -232,10 +254,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '615',
-          'height' => '250',
+          'width' => 615,
+          'height' => 250,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -254,10 +276,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '615',
-          'height' => '350',
+          'width' => 615,
+          'height' => 350,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -275,11 +297,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '250',
+          'width' => 300,
+          'height' => 250,
           'strength' => 'high',
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
       2 => array(
         'label' => 'Scale and crop',
@@ -291,10 +313,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '300',
-          'height' => '250',
+          'width' => 300,
+          'height' => 250,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -312,11 +334,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '221',
-          'height' => '184',
+          'width' => 221,
+          'height' => 184,
           'strength' => 'high',
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
       7 => array(
         'label' => 'Scale and crop',
@@ -328,10 +350,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '221',
-          'height' => '184',
+          'width' => 221,
+          'height' => 184,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -349,11 +371,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '1024',
-          'height' => '767',
+          'width' => 1024,
+          'height' => 767,
           'strength' => 'low',
         ),
-        'weight' => '-9',
+        'weight' => -9,
       ),
       14 => array(
         'label' => 'Scale and crop',
@@ -365,10 +387,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1024',
-          'height' => '767',
+          'width' => 1024,
+          'height' => 767,
         ),
-        'weight' => '-8',
+        'weight' => -8,
       ),
     ),
   );
@@ -386,11 +408,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '760',
-          'height' => '879',
+          'width' => 760,
+          'height' => 879,
           'strength' => 'high',
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
       2 => array(
         'label' => 'Scale and crop',
@@ -402,10 +424,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '760',
-          'height' => '879',
+          'width' => 760,
+          'height' => 879,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -424,10 +446,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '221',
-          'height' => '124',
+          'width' => 221,
+          'height' => 124,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -445,11 +467,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '42',
-          'height' => '42',
+          'width' => 42,
+          'height' => 42,
           'strength' => 'high',
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
       2 => array(
         'label' => 'Scale and crop',
@@ -461,10 +483,10 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '42',
-          'height' => '42',
+          'width' => 42,
+          'height' => 42,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -483,11 +505,11 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '1245',
+          'width' => 1245,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );

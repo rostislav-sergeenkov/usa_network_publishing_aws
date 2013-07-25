@@ -1,21 +1,27 @@
 // FLEXSLIDER for show aspot
-// @TODO generate the markup and styles we need for this to function
 (function ($) {
   Drupal.behaviors.showAspot = {
     attach: function (context, settings) {
       $slideshow_selector = $('#show-aspot ul');
+
+      $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
+      $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
+
       $slideshow_selector
         .addClass('slides')
         .wrap('<div class="flexslider a-spot"></div>')
         .parent()
         .flexslider({
-          slideshow: false,
+          slideshow: $slideshow,
+          slideshowSpeed: $slideshowSpeed,
+          pauseOnHover: true,
           animation: 'slide',
           controlNav: true,
           directionNav: (!Modernizr.touch),
-          //useCSS: true,
-          //touch: true,
-          //smoothHeight: false
+          after: function(slider) {
+            slider.pause();
+            slider.play();
+          }
         });
     },
   };

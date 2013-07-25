@@ -1,5 +1,6 @@
 # Require any additional compass plugins here.
 require 'aurora'
+require 'singularitygs'
 require 'survivalkit'
 
 # Set this to the root of your project when deployed:

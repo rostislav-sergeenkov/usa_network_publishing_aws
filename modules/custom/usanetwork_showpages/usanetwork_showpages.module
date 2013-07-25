@@ -48,11 +48,28 @@ function usanetwork_showpages_menu() {
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
   );
+  // tv show videos category pages
+  $items['node/%node/video-categories'] = array(
+    'title' => t('Video categories'),
+    'page callback' => 'usanetwork_showpages_video_cats',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/video-categories/%'] = array(
+    'title' => t('Video categories'),
+    'page callback' => 'usanetwork_showpages_video_cats',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
 /**
- * Shpw pages menu access callback to restrict only tv_show nodes
+ * Show pages menu access callback to restrict only tv_show nodes
  */
 function usanetwork_showpages_menu_access($node) {
   return $node->type == 'tv_show' && user_access('access content');
@@ -339,6 +356,72 @@ function usanetwork_showpages_videos($node) {
     // or go back to the show node
     drupal_goto('node/' . $show);
   }
+}
+
+/**
+ * Menu callback of show videos page
+ * Redirect the user to the video Page of CATEGORY the most-recently-published
+ * CATEGORY Video associated with the show
+ */
+function usanetwork_showpages_video_cats($node) {
+  $lang = LANGUAGE_NONE;
+  // if there is no show NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  // define the show
+  $show = $node->nid;
+  // if arg 3 is missing  but we have a show nid
+  // load that show videos page
+  if ($node->nid && !arg(3)) {
+    drupal_goto('node/' . $show . '/videos');
+  }
+  /* test with these terms/paths
+  showname/video-categories/behind-the-scenes
+  showname/video-categories/clips
+  showname/video-categories/web-exclusives
+  showname/video-categories/full-episodes
+  showname/video-categories/promos
+  */
+  // add the basic logic for finding terms
+  $termname = arg(3);
+  $term_from_path = str_replace('-', ' ' , arg(3));
+  $terms = taxonomy_get_term_by_name($term_from_path);
+  // if no terms resolve go to the main show video page
+  // if full episodes is entered as the arg
+  // go to the main show video page
+  if (empty($terms) || arg(3) == 'full-episodes') {
+    drupal_goto('node/' . $show . '/videos');
+  }
+  // process the terms so they are easy to eat
+  $single_tids = array();
+  foreach ($terms as $term => $tid) {
+    $single_tids[] = $term;
+  }
+  // find the video containing the terms, sort by most recent airdate
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show);
+  $query->fieldCondition('field_usa_video_terms', 'target_id', $single_tids, 'IN');
+  $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+  $query->range(0, 1);
+  // execute the query
+  $result = $query->execute();
+  // load the latest video with the term match
+  // then go to that page
+  if (!empty($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+    $vid = node_load($nid);
+    drupal_goto('node/' . $nid);
+  }
+  // final fallback to show videos just in case
+  else {
+    drupal_goto('node/' . $show . '/videos');
+  }
+
 }
 
 /**

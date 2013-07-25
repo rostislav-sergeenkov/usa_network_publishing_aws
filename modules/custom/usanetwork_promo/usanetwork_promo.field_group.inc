@@ -56,6 +56,7 @@ function usanetwork_promo_field_group_info() {
       1 => 'field_promo_call_to_action_text',
       2 => 'field_promo_text_line_1',
       3 => 'field_promo_text_line_2',
+      4 => 'field_meta_text_bar',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

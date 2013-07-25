@@ -83,6 +83,9 @@ function usanetwork_tv_schedule_on_now_block() {
 
   // fetch today's schedule
   $tv_schedule = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d'));
+  if (empty($tv_schedule)) {
+    return;
+  }
 
   // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
   $tv_schedule_prev_day = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d', time() - 60 * 60 * 24));
@@ -103,30 +106,38 @@ function usanetwork_tv_schedule_on_now_block() {
       $end_time = (array) $item->EndTime;
       $program = (array) $item->ProgramName;
       $episode = (array) $item->TitleName;
-
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
-
+      $episode_name_clean = check_plain($episode[0]);
+      $episode_name_clean = ucwords(strtolower($episode_name_clean));
       $arrow = '';
-      // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
       if (!empty($nid)) {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">booo'. $episode_name_clean . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show_name) == 'USA MOVIE') {
           $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
         } else {
-          $tv_show = $on_now_icon . $tv_show;
+          $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show_name . '</span></div>';
         }
-      } else {
+      }
+      else {
         $path = drupal_get_path_alias('node/'.$nid);
         $show_node = node_load($nid);
         if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
-          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+          // check for identical program and episode name, if they match hide the episode
+          if (trim($program[0]) === trim($episode[0])) {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
+          }
+          else {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+          }
+
+          // link things up
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
         } else {
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
@@ -156,14 +167,15 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
+      $episode_name_clean = check_plain($episode[0]);
+      $episode_name_clean = ucwords(strtolower($episode_name_clean));
 
       $arrow = '';
-      // TODO: REMOVED TEMPORARILY TO DISABLE ON NOW SIDE PANE
       if (!empty($nid)) {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show_name) == 'USA MOVIE') {
@@ -175,7 +187,15 @@ function usanetwork_tv_schedule_on_now_block() {
         $path = drupal_get_path_alias('node/'.$nid);
         $show_node = node_load($nid);
         if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
-          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. check_plain($episode[0]) . '</span></div>';
+          // check for identical program and episode name, if they match hide the episode
+          if (trim($program[0]) === trim($episode[0])) {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
+          }
+          else {
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+          }
+
+          // link things up
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
         } else {
           $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
@@ -202,6 +222,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $show_name = $show['link'];
       $show_nid = $show['nid'];
       $next_up_nid = $full_tv_schedule[$i+1]['nid'];
+      $show_index = $i;
       break;
     }
     $show_name = $show['link'];
@@ -211,8 +232,7 @@ function usanetwork_tv_schedule_on_now_block() {
   // expose default et show for rest of the world
   $vars .= "var on_now_default_show = '" . $show_name . "';";
   // expose default show nid for on now panel
-  $vars .= "var on_now_default_show_nid = " . $show_nid . ";";
-  $vars .= "var next_up_default_show_nid = " . $show_nid . ";";
+  $vars .= "var on_now_index = " . $show_index . ";";
 
   drupal_add_js($vars, array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');
@@ -237,7 +257,7 @@ function usanetwork_tv_schedule_on_now_block() {
 function usanetwork_tv_schedule_on_now_panel() {
   $output = '';
   $links = array();
-  
+
   $links[0]['data'] = '<span class="tab-wrapper active"><span>' . t('On') . '</span> ' . t('Now') . '</span>';
   $links[0]['class'] = array('on-now', 'tab-1');
   //$links[0]['children'][] = '<div id="on-now-panel-tab"><iframe id="on-now-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
@@ -248,7 +268,7 @@ function usanetwork_tv_schedule_on_now_panel() {
   //$links[1]['children'][] = '<div id="up-next-panel-tab"><iframe id="up-next-iframe" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src=""></iframe></div>';
   $links[1]['children'][] = '<div id="up-next-panel-tab"></div>';
 
-  $output = theme('item_list', array('items' => $links)); 
+  $output = theme('item_list', array('items' => $links));
 
   return '<div id="inner-on-now-panel">'. $output .'</div>';
 }
@@ -279,6 +299,7 @@ function usanetwork_tv_schedule_schedule_page() {
     // switch back to original server time zone
     date_default_timezone_set($orginal_tz);
     drupal_not_found();
+    return;
   }
 
   $header = array(

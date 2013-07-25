@@ -75,6 +75,11 @@ $ziWall         : 100;
 $ziMegaNav      : 101;
 $ziFilterOpen   : 95;
 
+// carousel size variable: (width, height);
+$carousel-smallest: 146px, 122px;
+$carousel-small: 195px, 163px;
+$carousel-medium: 221px, 185px;
+$carousel-large: 237px, 198px;
 
 // Breakpoint variables
 // small grid breakpoints
@@ -142,6 +147,9 @@ $bp-social-small-width: 330px;
 // on now
 $bp-on-now: 640px;
 
+//carousel
+$bp-carousel-smallest: 330px;
+
 
 // show landing page
 $bp-show-very-large-width: 1275px;
@@ -190,6 +198,9 @@ $bp-head-search: 641px;
 // schedule
 $bp-schedule-table-wide: 719px;
 $bp-schedule-date-wide: 640px;
+
+// subnav promo image
+$bp-show-four-subnav-images: 1200px;
 
 ////////////////////////////
 // COMPASS DEFAULTS

@@ -78,8 +78,12 @@ Drupal.behaviors.usanetwork_tv_schedule = {
         on_now_show = tv_schedule[i]['link'];
         on_now_default_show_nid = tv_schedule[i]['nid'];
       }
-    } else if (tv_schedule == '') {
-      on_now_show = on_now_default_show;
+    } else if (tv_schedule != '' && on_now_index != '') {
+      on_now_show = tv_schedule[on_now_index]['link'];
+      on_now_text = tv_schedule[on_now_index]['episode_name'];
+      next_up_text = tv_schedule[on_now_index+1]['episode_name'];
+      on_now_default_show_nid = tv_schedule[on_now_index]['nid'];
+      next_up_default_show_nid = tv_schedule[on_now_index+1]['nid'];
     }
 
     if (!$('body').hasClass('on-now-js-processed')) {

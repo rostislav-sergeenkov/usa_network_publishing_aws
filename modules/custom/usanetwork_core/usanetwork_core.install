@@ -331,3 +331,86 @@ function usanetwork_core_update_7109() {
   // forcing the menu cache to be rebuilt
   variable_set('menu_rebuild_needed', TRUE);
 }
+
+/**
+ * Update environment_indicator to 2.x-dev
+ */
+function usanetwork_core_update_7110() {
+  $modules = array(
+    'environment_indicator',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'environment_indicator',
+  );
+  drupal_uninstall_modules($modules_un);
+
+  $modules_en = array(
+    'environment_indicator',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * remove old environment_indicator vars
+ */
+function usanetwork_core_update_7111() {
+  $color = !is_null(variable_get('environment_indicator_color', NULL));
+  $enabled = !is_null(variable_get('environment_indicator_enabled', NULL));
+  $name = !is_null(variable_get('environment_indicator_text', NULL));
+  $pos = !is_null(variable_get('environment_indicator_position', NULL));
+  if ($color) {
+    variable_del('environment_indicator_color');
+  }
+  if ($enabled) {
+    variable_del('environment_indicator_enabled');
+  }
+  if ($name) {
+    variable_del('environment_indicator_text');
+  }
+  if ($pos) {
+    variable_del('environment_indicator_position');
+  }
+}
+
+/**
+ * Enable new usanetwork_gobal_nav_image module
+ */
+function usanetwork_core_update_7112() {
+  $modules = array('usanetwork_gobal_nav_image');
+  module_enable($modules);
+}
+
+/**
+ * uninstall pub_tv, pub_movie, pub_character_profile, pub_person, pub_media_overrides, pub_person_overrides, pub_tv_overrides,
+ */
+function usanetwork_core_update_7113() {
+
+  $modules_un = array(
+    'pub_tv',
+    'pub_movie',
+    'pub_character_profile',
+    'pub_person',
+    'pub_media_overrides',
+    'pub_person_overrides',
+    'pub_tv_overrides',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * uninstall pub_gigya_overrides, pub_media, pub_theplatform, pub_gigya
+ */
+function usanetwork_core_update_7114() {
+
+  $modules_un = array(
+    'pub_gigya_overrides',
+    'pub_media',
+    'pub_theplatform',
+    'pub_gigya',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+

@@ -383,7 +383,7 @@ function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_sta
 
   watchdog('usanetwork_migrate', 'Transition node @nid from @current_state to @end_state',
       array('@nid' => $entity->nid, '@current_state' => $current_entity_state, '@end_state' => $end_state));
-  drupal_set_message(t('USANETWORK MIGRATE:  Transition node @nid from @current_state to @end_state',
+  drupal_set_message(t('USA MIGRATE MODULE:  Transition node @nid from @current_state to @end_state',
       array('@nid' => $entity->nid, '@current_state' => $current_entity_state, '@end_state' => $end_state)));
 
   switch ($current_entity_state) {

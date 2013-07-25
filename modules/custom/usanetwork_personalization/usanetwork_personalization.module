@@ -7,6 +7,21 @@
 
 
 /**
+ * Implementation of hook_menu().
+ */
+function usanetwork_personalization_menu() {
+  // surf / idx testing
+  $items['surf/test'] = array(
+    'title' => t('surf test'),
+    'page callback' => 'usanetwork_personalization_surf',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function usanetwork_personalization_block_info() {
@@ -37,7 +52,7 @@ function usanetwork_personalization_block_view($delta) {
     case 'content':
       $block['subject'] = '';
       $block['content'] = usanetwork_personalization_content();
-      break;  
+      break;
 
   }
   return $block;
@@ -90,4 +105,90 @@ function usanetwork_personalization_content() {
   );
 
   return $render;
+}
+
+/**
+ * Menu callback of surf test page
+ */
+//hook_html_head_alter
+function usanetwork_personalization_surf() {
+  $output = '';
+
+  // START SURF / IDX
+  // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
+  // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+    $surf = '
+  <script type="text/javascript">
+  // TESTING TESTING TESTING
+  var testTest;
+  var usa_debugFlag = true;
+  var usa_debug = function(msg) {
+    if (usa_debugFlag && typeof console != "undefined")
+    {
+      if (typeof msg == "object") {
+        console.log("msg is object");
+      }
+      else if (typeof msg == "array") {
+        console.log("msg is array");
+      }
+      console.log(msg);
+    }
+  }
+  </script>
+  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/session.js" ></script>
+  <script type="text/javascript" src="https://stage.surf.nbcuni.com/rdk/surf.js.php" data-rdk-url="/rdk/" data-config-key="usanetwork"></script>
+  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js" ></script>
+  <!-- <script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=2_JiEiF6RHo2vh_XmRgMEGoEyeQTG3FeInoWa5sPngFIc226QtXOuMdjT4oFw55geA" ></script> -->
+  <script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js" ></script>
+  <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js" ></script>
+  <link type="text/css" rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
+  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js" ></script>
+  <link type="text/css" rel="stylesheet" href="../../'.drupal_get_path('module', 'usanetwork_personalization').'/css/main.css" />
+
+	<!-- BACKPLANE START -->
+	<script type="text/javascript">
+	// Backplane config
+  var bpBusName = "usanetwork";
+  var bpRpx = "http://usanetwork.rpxnow.com/";
+	</script>
+	<script src="http://cdn.realtidbits.com/libs/v1/backplane.js"></script>
+	<script type="text/javascript" src="http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork"></script>
+	<script type="text/javascript">
+	// save Backplane channelID to a cookie
+	setCookie("bp_channel_id", Backplane.getChannelID(), 1);
+	</script>
+	<!-- BACKPLANE END -->
+  ';
+
+  drupal_add_html_head(array('#type' => 'markup', '#markup' => $surf), 'idx_surf');
+
+  $output .= '
+  <div id="surf">
+    <div class="float_right">
+      <ul id="buttons" class="navigation">
+        <li><button class="generic-button action-signin">Sign-in</button></li>
+        <li><button class="generic-button action-create-account">Register</button></li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div>
+    <div id="user-dialog" style="display: none;">
+      <div class="content">
+        <div class="thumbnail"></div>
+
+        <div class="meta">
+          <div id="username">Username</div>
+          <div id="fullname">Firstname Lastname</div>
+        </div>
+
+        <ul id="user-buttons">
+          <li><button id="button_edit_profile" class="action-edit-account button">Edit Account</button></li>
+          <li><button id="button_signout" class="action-signout button">Signout</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  ';
+
+  return $output;
 }

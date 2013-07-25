@@ -244,7 +244,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       break;
     case 'usanetwork_aspot':
-      if (count($vars['field_usa_aspot_txt1']) > 0) {
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_usa_aspot_txt1']) > 0) {
         $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
       } else {
         $alt = '';

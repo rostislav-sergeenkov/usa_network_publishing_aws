@@ -15,8 +15,8 @@ var usa_UserObj = function(args) {
 		this.points = (typeof args.points != 'undefined') ? args.points : 0;
 		this.avatar = (typeof args.avatar !='undefined' && args.avatar != '') ? args.avatar : 'http://'+window.location.host+'/sites/usanetwork/files/style/default_avatar_125x125.jpg';
 		this.loggedIn = (this.id == guestUser) ? 0 : 1;
-		this.fbLoggedIn = (typeof getCookie == 'function' && getCookie('ss_facebook_login') == 1) ? 1 : 0;
-		this.twLoggedIn = (typeof getCookie == 'function' && getCookie('ss_facebook_login') == 1) ? 1 : 0;
+		this.fbLoggedIn = (typeof args.fbLoggedIn !='undefined' && args.fbLoggedIn != 0) ? args.fbLoggedIn : 0;
+		this.twLoggedIn = (typeof args.twLoggedIn !='undefined' && args.twLoggedIn != 0) ? args.twLoggedIn : 0;
 	} else {
 		this.id = guestUser;
 		this.username = '';
@@ -74,112 +74,17 @@ function usa_userLogin(user)
   usa_debug('fn: usa_userLogin(user)');
   usa_debug(user);
   usa_debug('userId: '+user._id);
-/*  // check authenticity of cookie
-  jQuery.ajax({
-    url: usa_sessionBasePath+'/session.php',
-    dataType: 'json',
-    data: {'userId' : userId, 'auth' : auth, 'token' : token},
-    type: 'GET',
-    success: function(data) {
-      if (data != null)
-      {
-        if (data == true)
-        {
-          usa_debug('USER LOGGED IN');
-          // logged in, so set cookie with plain text userId and auth signature
-
-          usa_setCookie(usa_userCookie, user._id+'|||'); // +auth);
-*/
-          usa_User = new usa_UserObj(user);
-          usa_bpLogin();
-/*        }
-        else
-        {
-          // unset cookie
-          usa_setCookie(usa_userCookie, '', null);
-        }
-        // session.data = user;
-        // if (typeof callback === "function") callback.call(null, user);
-      }
-    }
-  });
-*/
+  usa_User = new usa_UserObj(user);
+  usa_bpLogin();
 }
-
-/*
-function usa_checkUserLoggedIn()
-{
-  usa_debug('fn: usa_checkUserLoggedIn()');
-
-  // if cookie is set
-  if (usa_getCookie(usa_userCookie).len() > 0)
-  {
-    // check authenticity of cookie
-    jQuery.ajax({
-      url: usa_sessionBasePath+'/session.php',
-      dataType: 'json',
-      data: {'userId' : userId, 'auth' : auth, 'token' : token},
-      type: 'GET',
-      success: function(data) {
-        if (data != null)
-        {
-          if (data == true)
-          {
-            usa_debug('USER LOGGED IN');
-            // logged in, so set cookie with plain text userId and auth signature
-            usa_setCookie(usa_userCookie, userId+'|||'+auth);
-          }
-          else
-          {
-            // unset cookie
-            usa_setCookie(usa_userCookie, '', null);
-          }
-          // session.data = user;
-          // if (typeof callback === "function") callback.call(null, user);
-        }
-      }
-    });
-  }
-  else
-  {
-    usa_debug('USER NOT LOGGED IN');
-  }
-}
-*/
 
 function usa_userLogout()
 {
   usa_debug('fn: usa_userLogout()');
-/*  // check authenticity of cookie
-  jQuery.ajax({
-    url: usa_sessionBasePath+'/session.php',
-    dataType: 'json',
-    data: {'userId' : userId, 'auth' : auth, 'token' : token},
-    type: 'GET',
-    success: function(data) {
-      if (data != null)
-      {
-        if (data == true)
-        {
-          usa_debug('USER LOGGED IN');
-          // logged in, so set cookie with plain text userId and auth signature
-*/
-          usa_setCookie(usa_userCookie, '');
-          usa_setCookie(usa_userCookie+'_id', '');
-          usa_User = new usa_UserObj(null);
-          usa_bpLogout();
-/*        }
-        else
-        {
-          // unset cookie
-          usa_setCookie(usa_userCookie, '', null);
-        }
-        // session.data = user;
-        // if (typeof callback === "function") callback.call(null, user);
-      }
-    }
-  });
-*/
+  usa_setCookie(usa_userCookie, '');
+  usa_setCookie(usa_userCookie+'_id', '');
+  usa_User = new usa_UserObj(null);
+  usa_bpLogout();
 }
 
 // BACKPLANE AUTO-LOGIN
@@ -235,19 +140,19 @@ var session = {
             dataType: 'json',
             type: 'GET',
             success: function(user) {
-usa_debug(user);
-                if (user != null)
-                {
-                  session.data = user;
-//                  usa_userLogin(user);
-                  usa_User = new usa_UserObj(user);
-                  if (typeof callback === "function") callback.call(null, user);
-                }
-                else
-                {
-                  session.data = {};
-                  usa_userLogout();
-                }
+              //usa_debug(user);
+              if (user != null)
+              {
+                session.data = user;
+                usa_userLogin(user);
+                //usa_User = new usa_UserObj(user);
+                if (typeof callback === "function") callback.call(null, user);
+              }
+              else
+              {
+                session.data = {};
+                usa_userLogout();
+              }
             }
         });
     },
@@ -261,8 +166,29 @@ usa_debug(user);
             dataType: 'json',
             data: user
         });
-        session.data = user;
-        usa_userLogin(user);
+        if (user != null)
+        {
+          // set some additional usanetwork values if not set yet
+          if (typeof user.avatar != 'undefined' && user.avatar == '') user.avatar = '/sites/usanetwork/files/styles/default_avatar_125x125.jpg';
+          if (typeof user._gigya_login_provider != 'undefined')
+          {
+            if (user._gigya_login_provider == 'facebook' && typeof user._provider.facebook != 'undefined')
+            {
+              user.fbLoggedIn = (user._provider.facebook != '') ? user._provider.facebook : 0;
+            }
+            else if (user._gigya_login_provider == 'twitter' && typeof user._provider.twitter != 'undefined')
+            {
+              user.twLoggedIn = (user._provider.twitter != '') ? user._provider.twitter : 0;
+            }
+          }
+          session.data = user;
+          usa_userLogin(user);
+        }
+        else
+        {
+          session.data = {};
+          usa_userLogout();
+        }
     },
     /* destroy a session, clear session.user */
     remove: function() {

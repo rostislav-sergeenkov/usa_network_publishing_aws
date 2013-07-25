@@ -15,10 +15,10 @@ function displayUserInfo(user) {
   jQuery('#user-dialog #fullname').text(user.firstname + ' ' + user.lastname);
 
   //if we have it, show their avatar
-  if ('avatar' in user) {
+  if ('avatar' in user && user.avatar != '') {
     jQuery('#user-dialog .thumbnail').html('<img src="'+user.avatar+'" width="50" height="50"/>');
   } else {
-    jQuery('#user-dialog .thumbnail').html('');
+    jQuery('#user-dialog .thumbnail').html('<img src="/sites/usanetwork/files/styles/default_avatar_125x125.jpg" width="50" height="50"/>');
   }
 }
 

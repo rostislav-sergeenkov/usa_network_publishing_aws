@@ -30,7 +30,7 @@ jQuery(document).on('click', '.action-signin', function() {
   callbacks in the case of dialog methods are deprecated, it's best practice to bind to SURF events
   whenever possible.
 
-  in this case, we update the UI to it's original state whena  SIGNOUT event fires
+  in this case, we update the UI to it's original state when a SIGNOUT event fires
 
   Other events you can hook:
 

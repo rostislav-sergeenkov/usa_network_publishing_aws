@@ -170,3 +170,11 @@ Echo.Broadcast.subscribe("User.onInit",
 	}
 })(jQuery);
 
+
+Backplane.expectMessages(["identity/ack"]);
+Backplane.subscribe(function(message) {
+  if (message.type == "identity/ack") {
+          // perform some actions if we receive the "identity/ack" message
+  }
+});
+

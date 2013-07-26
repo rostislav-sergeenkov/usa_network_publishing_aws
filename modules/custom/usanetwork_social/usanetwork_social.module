@@ -854,6 +854,21 @@ function usanetwork_social_chat_with_fans($node) {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/submit-text-counter.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
 
+  $output .= '
+	<!-- BACKPLANE START -->
+	<script type="text/javascript">
+	// Backplane config
+  var bpBusName = "usanetwork";
+  var bpRpx = "http://usanetwork.rpxnow.com/";
+	</script>
+	<script src="http://cdn.realtidbits.com/libs/v1/backplane.js"></script>
+	<script type="text/javascript" src="http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork"></script>
+	<script type="text/javascript">
+	// save Backplane channelID to a cookie
+	//setCookie("bp_channel_id", Backplane.getChannelID(), 1);
+	</script>
+	<!-- BACKPLANE END -->
+  ';
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
   $output .= '<div id="chat-submit-form">&nbsp;</div>';

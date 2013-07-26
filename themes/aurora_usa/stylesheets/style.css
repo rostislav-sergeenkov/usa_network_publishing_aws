@@ -6462,39 +6462,6 @@ body.person-page .ad-leaderboard {
   display: none;
 }
 
-/* see where to move/ consolidate with suzi's styles */
-.usa-tv-show .flexslider {
-  height: 250px;
-  width: 300px;
-  overflow: hidden;
-}
-@media (min-width: 645px) {
-  .usa-tv-show .flexslider {
-    margin-right: 15px;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .usa-tv-show .flexslider {
-    height: 350px;
-    width: 615px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .usa-tv-show .flexslider {
-    width: 930px;
-    height: 378px;
-  }
-}
-@media (min-width: 1275px) {
-  .usa-tv-show .flexslider {
-    height: 506px;
-    width: 1245px;
-  }
-}
-.usa-tv-show .flex-viewport {
-  height: 100%;
-}
-
 .usa-adrails.usa-tv-show .flexslider {
   width: 930px;
   height: 378px;

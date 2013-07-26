@@ -110,6 +110,8 @@ function usanetwork_tokens_alter(&$replacements, $context) {
  * Implements hook_form_FORM_ID_alter
  *
  */
+ // @TODO - TEST - REMOVED AFTER P7 UPDATE
+ /*
 function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork') . '/css/usa-entity-edit-alter.css';
   // RESTORES "Replace file" field on the edit file form.
@@ -117,4 +119,4 @@ function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) 
   // @TODO we can remove this hook when this is restored in p7 core
   $form['replace_upload']['#access'] = TRUE;
 }
-
+*/

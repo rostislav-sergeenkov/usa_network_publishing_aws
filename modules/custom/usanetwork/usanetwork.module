@@ -62,11 +62,11 @@ function usanetwork_menu() {
  *
  * Allow the revisions page views to show the primary tabs.
  * @TODO remove or change this when new workflow tools are in place
- */
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
 function usanetwork_menu_alter(&$items) {
   $items['node/%node/revisions/%/view']['type'] = MENU_LOCAL_TASK;
 }
-
+ */
 
 /**
  * helper function to return an array of show nids

@@ -7515,6 +7515,9 @@ input.echo-submit-text {
 .usa-adrails .aspot .show-title-image + .meta-wrap, .ie9 .aspot .show-title-image + .meta-wrap, .ie8 .aspot .show-title-image + .meta-wrap {
   padding-top: 54px;
 }
+.aspot .show-title-image + .meta-wrap .mobile-show-title {
+  display: none;
+}
 .aspot .meta {
   margin-bottom: 10px;
 }

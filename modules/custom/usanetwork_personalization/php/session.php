@@ -5,10 +5,11 @@ $request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 $userId = (strlen($_GET['userId']) > 0) ? $_GET['userId'] : null;
 $auth = (strlen($_GET['auth']) > 0) ? $_GET['auth'] : null;
 $token = (strlen($_GET['token']) > 0) ? $_GET['token'] : null;
+$salt = 'st58ccsoe#548gshoehuii8^245sh';
 
 function setHash($token)
 {
-  $hash = md5($token . '_usanework.com');
+  $hash = md5($token . '_usanework.com_'.$salt);
   return $hash;
 }
 

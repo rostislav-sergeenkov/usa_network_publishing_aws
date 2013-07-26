@@ -117,8 +117,26 @@ function usanetwork_personalization_surf() {
   // START SURF / IDX
   // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
   // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/session.js');
+  drupal_add_html_head(array(
+    '#tag' => 'script',
+    '#attributes' => array(
+      'src' => 'https://stage.surf.nbcuni.com/rdk/surf.js.php',
+      'data-rdk-url' => "/rdk/",
+      'data-config-key' => 'usanetwork',
+    ),
+  ), 'surf_js_php');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
+  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external')); 
+  drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
+  drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
+  drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
+  drupal_add_css(drupal_get_path('module', 'usanetwork_personalization').'/css/main.css');
+  drupal_add_js('http://cdn.realtidbits.com/libs/v1/backplane.js', array('type' => 'external'));
+  drupal_add_js('http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork', array('type' => 'external'));
+
     $surf = '
-  <script type="text/javascript">
   // TESTING TESTING TESTING
   var testTest;
   var usa_debugFlag = true;
@@ -134,34 +152,13 @@ function usanetwork_personalization_surf() {
       console.log(msg);
     }
   }
-  </script>
-  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/session.js" ></script>
-  <script type="text/javascript" src="https://stage.surf.nbcuni.com/rdk/surf.js.php" data-rdk-url="/rdk/" data-config-key="usanetwork"></script>
-  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js" ></script>
-  <!-- <script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=2_JiEiF6RHo2vh_XmRgMEGoEyeQTG3FeInoWa5sPngFIc226QtXOuMdjT4oFw55geA" ></script> -->
-  <script type="text/javascript" src="https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js" ></script>
-  <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js" ></script>
-  <link type="text/css" rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
-  <script type="text/javascript" src="../../'.drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js" ></script>
-  <link type="text/css" rel="stylesheet" href="../../'.drupal_get_path('module', 'usanetwork_personalization').'/css/main.css" />
-
-	<!-- BACKPLANE START -->
-	<script type="text/javascript">
-	// Backplane config
+  // Backplane config
   var bpBusName = "usanetwork";
   var bpRpx = "http://usanetwork.rpxnow.com/";
-	</script>
-	<script src="http://cdn.realtidbits.com/libs/v1/backplane.js"></script>
-	<script type="text/javascript" src="http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork"></script>
-	<script type="text/javascript">
-	// save Backplane channelID to a cookie
-	setCookie("bp_channel_id", Backplane.getChannelID(), 1);
-	</script>
-	<!-- BACKPLANE END -->
+  // save Backplane channelID to a cookie
+  setCookie("bp_channel_id", Backplane.getChannelID(), 1);
   ';
-
-  drupal_add_html_head(array('#type' => 'markup', '#markup' => $surf), 'idx_surf');
+  drupal_add_js($surf, array('type' => 'inline'));
 
   $output .= '
   <div id="surf">

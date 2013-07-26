@@ -117,6 +117,7 @@ function usanetwork_personalization_surf() {
   // START SURF / IDX
   // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
   // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+  // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
   drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/session.js');
   drupal_add_html_head(array(
     '#tag' => 'script',

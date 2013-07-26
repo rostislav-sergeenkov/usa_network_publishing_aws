@@ -7,8 +7,10 @@
 <div class="panel-display panel-onecol-stacked clearfix">
   <div class="panel-wrapper">
     <?php if($content['one']) : ?>
-    <div class="panel-panel panel-one panel-row first-row a-spot-panel">
-    <?php print $content['one']; ?>
+    <div class="panel-panel panel-one panel-row first-row a-spot-panel tiles">
+      <div id="main-slider">
+        <?php print $content['one']; ?>
+      </div>  
     </div>
   <?php endif; ?>
     <?php if($content['four'] || $content['three']) : ?>

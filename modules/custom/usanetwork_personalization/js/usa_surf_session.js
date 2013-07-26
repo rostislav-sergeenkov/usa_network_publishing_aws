@@ -32,6 +32,8 @@ var usa_User = new usa_UserObj(null);
 // CONFIG
 var usa_userCookie = 'usa_idx';
 var usa_sessionBasePath = 'http://'+window.location.host+'/sites/usanetwork/modules/custom/usanetwork_personalization/php';
+// @TODO: change any environment-specific url's to match the environment you're on
+// For example: http://stage.socialsector.usanetwork.com/donna should be http://socialsector.usanetwork.com/donna on production
 var usa_pathToUsaCode = 'http://stage.socialsector.usanetwork.com/donna';
 
 // MISC FUNCTIONS

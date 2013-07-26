@@ -77,7 +77,8 @@ jQuery(document).ready(function() {
 
     //Let the user know we are doing something
     jQuery(this).text('Posting...').addClass('disabled').data('posted', true);
-
+// @TODO: change environment-specific url's to match the environment you're on
+// For example: should http://www.surfexample-stage.com/ be changed to http://www.surfexample-prod.com/ when on production?
     var act = new gigya.socialize.UserAction();
     act.setActionName('learned how to implement SURF');
     act.setTitle('In the stage environment.')

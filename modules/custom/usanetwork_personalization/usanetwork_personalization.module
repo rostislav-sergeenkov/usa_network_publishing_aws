@@ -115,9 +115,10 @@ function usanetwork_personalization_surf() {
   $output = '';
 
   // START SURF / IDX
-  // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
   // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/session.js');
+  // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
+  // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
   drupal_add_html_head(array(
     '#tag' => 'script',
     '#attributes' => array(
@@ -127,12 +128,12 @@ function usanetwork_personalization_surf() {
     ),
   ), 'surf_js_php');
   drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
-  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external')); 
+  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
   drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
   drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
   drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
-  drupal_add_css(drupal_get_path('module', 'usanetwork_personalization').'/css/main.css');
+//  drupal_add_css(drupal_get_path('module', 'usanetwork_personalization').'/css/main.css');
   drupal_add_js('http://cdn.realtidbits.com/libs/v1/backplane.js', array('type' => 'external'));
   drupal_add_js('http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork', array('type' => 'external'));
 
@@ -161,6 +162,15 @@ function usanetwork_personalization_surf() {
   drupal_add_js($surf, array('type' => 'inline'));
 
   $output .= '
+<!--
+@TODO: remove this display:none after the SURF / IDX team fixes the
+background overlay problem where this div is on top of the login / reg forms
+-->
+<style>
+.raas-page-cover {
+  display: none !important;
+}
+</style>
   <div id="surf">
     <div class="float_right">
       <ul id="buttons" class="navigation">

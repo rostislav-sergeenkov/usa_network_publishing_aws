@@ -107,7 +107,7 @@ function aurora_usa_preprocess_page(&$vars) {
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => $theme_path . '/images/ios-home.png',
+      'href' => $base_url .'/'. $theme_path . '/images/ios-home.png',
     ),
   );
 
@@ -244,8 +244,8 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       break;
     case 'usanetwork_aspot':
-      if (count($vars['field_usa_aspot_txt1']) > 0) {
-        $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
+      if (isset($vars['field_text_line_1_image']) && count($vars['field_usa_aspot_txt1']) > 0) {
+        $alt = $vars['field_usa_aspot_txt1'][0]['safe_value'];
       } else {
         $alt = '';
       }

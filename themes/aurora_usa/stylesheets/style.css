@@ -6462,39 +6462,6 @@ body.person-page .ad-leaderboard {
   display: none;
 }
 
-/* see where to move/ consolidate with suzi's styles */
-.usa-tv-show .flexslider {
-  height: 250px;
-  width: 300px;
-  overflow: hidden;
-}
-@media (min-width: 645px) {
-  .usa-tv-show .flexslider {
-    margin-right: 15px;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .usa-tv-show .flexslider {
-    height: 350px;
-    width: 615px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .usa-tv-show .flexslider {
-    width: 930px;
-    height: 378px;
-  }
-}
-@media (min-width: 1275px) {
-  .usa-tv-show .flexslider {
-    height: 506px;
-    width: 1245px;
-  }
-}
-.usa-tv-show .flex-viewport {
-  height: 100%;
-}
-
 .usa-adrails.usa-tv-show .flexslider {
   width: 930px;
   height: 378px;
@@ -7457,6 +7424,10 @@ input.echo-submit-text {
     width: 600px;
   }
 }
+.usa-adrails .aspot .show-title-image, .ie9 .aspot .show-title-image, .ie8 .aspot .show-title-image {
+  height: 168px;
+  width: 500px;
+}
 .aspot .show-title-image img {
   position: absolute;
   bottom: 0;
@@ -7476,6 +7447,9 @@ input.echo-submit-text {
   .aspot .show-title-image img {
     left: 48px;
   }
+}
+.usa-adrails .aspot .show-title-image img, .ie9 .aspot .show-title-image img, .ie8 .aspot .show-title-image img {
+  left: 30px;
 }
 .aspot .meta-wrap {
   position: absolute;
@@ -7537,6 +7511,12 @@ input.echo-submit-text {
   .aspot .show-title-image + .meta-wrap {
     padding-top: 60px;
   }
+}
+.usa-adrails .aspot .show-title-image + .meta-wrap, .ie9 .aspot .show-title-image + .meta-wrap, .ie8 .aspot .show-title-image + .meta-wrap {
+  padding-top: 54px;
+}
+.aspot .show-title-image + .meta-wrap .mobile-show-title {
+  display: none;
 }
 .aspot .meta {
   margin-bottom: 10px;

@@ -66,11 +66,12 @@ $logo-height-med-2: 32px;
     }
     .mega-nav-close {
       display: block;
-      float: right;
+      position: absolute;
+      right: 22px;
+      top: 30px;
       cursor: pointer;
       color: $gray-light;
       font-size: 20px;
-      margin-right: 22px;
       /* cant use - @extend %usanetwork-font -inside bp */
       font-family: 'usanetwork';
       speak: none;

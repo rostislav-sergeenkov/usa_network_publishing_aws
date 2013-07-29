@@ -20,7 +20,6 @@
         $personalization_drawer.attr('id', 'personalization-drawer');
         $('.personalization-trigger').after($personalization_drawer);
 
-
         // MOVE CONTENT PANELS INTO JPM
         function insert_jpm_content() {
           $('#jPanelMenu-menu')
@@ -34,20 +33,8 @@
         function jpm_after_on() {
           $('#jPanelMenu-menu')
             .wrapInner('<div id="menu-wrapper"></div>');
-          // dupe the footer into the side menu
-          $footer_clone = $('#footer').clone();
-          $footer_clone
-            .attr('id', 'footer-offside')
-            .find('.region-footer')
-              .removeClass('region-footer')
-              .addClass('region-footer-offside')
-              .end()
-            .find('#footer-message')
-              .attr('id', 'footer-message-offside')
-              .end();
           $('#menu-wrapper')
             .prepend('<h1 class="menu-title">Main Menu</h1>')
-            .append($footer_clone)
             .find('.mega-menu-items a')
               .removeClass('mega-nav-link')
               .addClass('slide-panel-link')
@@ -300,6 +287,9 @@
                 jpm_on_personalization();
                 return false;
               });
+            // move footer to offside nav
+            $('#menu-wrapper')
+              .append($('#footer'));
           }
         });
         jRes.addFunc({
@@ -316,6 +306,9 @@
                 manage_wide_subnav($(this))
                 return false;
               });
+            // move footer below content
+            $('.usa-wrap')
+              .append($('#footer'));
           }
         });
       });

@@ -35,6 +35,7 @@ function setSession($user)
     // set cookies
     $person = array();
     $person['_id'] = $user['_id'];
+    $person['_auth_signature'] = $user['_auth_signature'];
     $person['username'] = isset($user['username']) ? $user['username'] : '';
     $person['loggedIn'] = 1;
     $person['points'] = 0;

@@ -8,24 +8,24 @@
 // USER CONFIGURATION
 var guestUser = 'anonymous';
 var usa_UserObj = function(args) {
-	if (args != null)
-	{
-		this.id = (typeof args._id != 'undefined') ? args._id : guestUser;
-		this.username = (typeof args.username != 'undefined') ? args.username : '';
-		this.points = (typeof args.points != 'undefined') ? args.points : 0;
-		this.avatar = (typeof args.avatar !='undefined' && args.avatar != '') ? args.avatar : 'http://'+window.location.host+'/sites/usanetwork/files/style/default_avatar_125x125.jpg';
-		this.loggedIn = (this.id == guestUser) ? 0 : 1;
-		this.fbLoggedIn = (typeof args.fbLoggedIn !='undefined' && args.fbLoggedIn != 0) ? args.fbLoggedIn : 0;
-		this.twLoggedIn = (typeof args.twLoggedIn !='undefined' && args.twLoggedIn != 0) ? args.twLoggedIn : 0;
-	} else {
-		this.id = guestUser;
-		this.username = '';
-		this.points = 0;
-		this.avatar = '';
-		this.loggedIn = 0;
-		this.fbLoggedIn = 0;
-		this.twLoggedIn = 0;
-	}
+  if (args != null)
+  {
+    this.id = (typeof args._id != 'undefined') ? args._id : guestUser;
+    this.username = (typeof args.username != 'undefined') ? args.username : '';
+    this.points = (typeof args.points != 'undefined') ? args.points : 0;
+    this.avatar = (typeof args.avatar !='undefined' && args.avatar != '') ? args.avatar : 'http://'+window.location.host+'/sites/usanetwork/files/style/default_avatar_125x125.jpg';
+    this.loggedIn = (this.id == guestUser) ? 0 : 1;
+    this.fbLoggedIn = (typeof args.fbLoggedIn !='undefined' && args.fbLoggedIn != 0) ? args.fbLoggedIn : 0;
+    this.twLoggedIn = (typeof args.twLoggedIn !='undefined' && args.twLoggedIn != 0) ? args.twLoggedIn : 0;
+  } else {
+    this.id = guestUser;
+    this.username = '';
+    this.points = 0;
+    this.avatar = '';
+    this.loggedIn = 0;
+    this.fbLoggedIn = 0;
+    this.twLoggedIn = 0;
+  }
 }
 var usa_User = new usa_UserObj(null);
 
@@ -76,6 +76,7 @@ function usa_userLogin(user)
   usa_debug('fn: usa_userLogin(user)');
   usa_debug(user);
   usa_debug('userId: '+user._id);
+  usa_debug('userAuthSignature: '+user._auth_signature);
   usa_User = new usa_UserObj(user);
   usa_bpLogin();
 }
@@ -92,39 +93,39 @@ function usa_userLogout()
 // BACKPLANE AUTO-LOGIN
 function usa_bpLogin(callback)
 {
-	usa_debug('fn: usa_bpLogin(callback)');
+  usa_debug('fn: usa_bpLogin(callback)');
 
-	// if user is logged in, auto login to chat-with-fans comments via backplane
-	if (usa_User.id != guestUser)
-	{
-		//var userId = usa_User.id.replace('usaFb_', '');
-		var params = 'format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
-		jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
-			//if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
-			if (data.success && typeof data.data.rsp.result != 'undefined' && typeof data.data.rsp.result == 'success')
-			{
-				// if successful
-				//usa_debug('Backplane user is logged in');
-				Backplane.expectMessages(["identity/ack"]);
-			}
-		});
-	}
-	else
-	{
-		usa_debug('user is not logged in');
-	}
+  // if user is logged in, auto login to chat-with-fans comments via backplane
+  if (usa_User.id != guestUser)
+  {
+    //var userId = usa_User.id.replace('usaFb_', '');
+    var params = 'format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
+    jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
+      //if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
+      if (data.success && typeof data.data.rsp.result != 'undefined' && typeof data.data.rsp.result == 'success')
+      {
+        // if successful
+        //usa_debug('Backplane user is logged in');
+        Backplane.expectMessages(["identity/ack"]);
+      }
+    });
+  }
+  else
+  {
+    usa_debug('user is not logged in');
+  }
 }
 
 // BACKPLANE LOGOUT
 function usa_bpLogout(callback)
 {
-	usa_debug('fn: usa_bpLogout(callback)');
+  usa_debug('fn: usa_bpLogout(callback)');
 
-	var params = 'method=bpLogout&format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
-	jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
-		//if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
-		Backplane.expectMessages(["identity/ack"]);
-	});
+  var params = 'method=bpLogout&format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
+  jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
+    //if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
+    Backplane.expectMessages(["identity/ack"]);
+  });
 }
 
 

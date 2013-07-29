@@ -38,6 +38,7 @@
     position: absolute;
     height: 124px;
     width: 238px;
+    z-index: 2;
     @include breakpoint($bp-aspot-mid-range-width) {
       height: 188px;
       width: 360px;

@@ -20,7 +20,7 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
   <?php print l('Shows', 'globalnav_shows/nojs', array('attributes' => array('class' => array('mega-nav-link', 'shows', 'use-ajax')))); ?>
   <div class="mega-sub-nav-container">
     <div class="mega-sub-nav">
-      <div class="more-title"><?php print ($show_title != '') ? $show_title : 'Shows'; ?></div>
+      <div class="more-title"><?php print empty($show_title) ? 'Shows t' : $show_title; ?></div>
       <span class="mega-nav-close">close</span>
       <span id="globalnav-shows"></span>
       <?php print views_embed_view('usa_nav','block'); ?>
@@ -40,7 +40,7 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
   <?php print l('More', 'globalnav_more/nojs', array('attributes' => array('class' => array('mega-nav-link', 'more', 'use-ajax')))); ?>
   <div class="mega-sub-nav-container">
     <div class="mega-sub-nav">
-      <div class="more-title"><?php print ($more_title != '') ? $more_title : 'More on USA'; ?></div>
+      <div class="more-title"><?php print empty($more_title) ? 'More on USA' : $more_title; ?></div>
       <span class="mega-nav-close">close</span>
       <span id="globalnav-more"></span>
       <?php print variable_get('usanetwork_more_menu_links', ''); ?>

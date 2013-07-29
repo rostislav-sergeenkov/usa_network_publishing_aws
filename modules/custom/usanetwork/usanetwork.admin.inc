@@ -83,14 +83,14 @@ function usanetwork_settings_form() {
     '#type' => 'textfield',
     '#title' => t('Global Nav Show Title'),
     '#description' => t('The Global Nav Show Title - displayed on the show drawer)'),
-    '#default_value' => variable_get('usanetwork_global_nav_show_title', ''),
+    '#default_value' => variable_get('usanetwork_global_nav_show_title', 'Shows'),
   );
 
    $form['global_nav_menu']['usanetwork_global_nav_more_title'] = array(
     '#type' => 'textfield',
     '#title' => t('Global Nav More Title'),
     '#description' => t('The Global Nav More Title - displayed on the more drawer)'),
-    '#default_value' => variable_get('usanetwork_global_nav_more_title', ''),
+    '#default_value' => variable_get('usanetwork_global_nav_more_title', 'More on USA'),
   );
   
   return system_settings_form($form);

@@ -9,35 +9,23 @@
 }
 
 #footer {
-  display: none;
-  @include breakpoint($bp-menu-switch) {
-    display: block;
-  }
   li, ul {
     padding: 0;
     margin: 0;
     list-style: none;
   }
-}
-
-#footer-offside {
-  ul {
-    @include no-bullets;
-    padding-left: 0;
-    margin-left: 0;
-  }
-  .slide-panel-link {
-    background: none;
-    border-width: 0;
-    // font-size: $base-font-size;
-    // line-height: $base-line-height;
-    text-transform: none;
-  }
-}
-
-#jPanelMenu-menu {
-  .region-footer-offside {
-    @extend %footer-links;
+  #jPanelMenu-menu & {
+    .region-footer {
+      border-top: none;
+      background-color: transparent;
+    }
+    .slide-panel-link {
+      background: none;
+      border-width: 0;
+      // font-size: $base-font-size;
+      // line-height: $base-line-height;
+      text-transform: none;
+    }
   }
 }
 

@@ -153,6 +153,16 @@
       height: 100%;
     }
   }
+  .aspot {
+    @include breakpoint($bp-home-widest) {
+      .show-title, .show-time {
+        font-size: 44px;
+      }
+      .episode-title {
+        font-size: 22px;
+      }
+    }
+  }
   .ad {
     height: 50px;
     @include breakpoint($bp-home-2col) {

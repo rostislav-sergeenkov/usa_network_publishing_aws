@@ -1823,11 +1823,12 @@ input[type="radio"], input[type="checkbox"] {
   }
   #mega-nav .mega-nav-close {
     display: block;
-    float: right;
+    position: absolute;
+    right: 22px;
+    top: 30px;
     cursor: pointer;
     color: #878785;
     font-size: 20px;
-    margin-right: 22px;
     /* cant use - @extend %usanetwork-font -inside bp */
     font-family: 'usanetwork';
     speak: none;
@@ -3032,53 +3033,38 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
-#jPanelMenu-menu .region-footer-offside, .region-footer {
+.region-footer {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   color: #717274;
   padding: 11px 5px 8px 25px;
   font-size: 14px;
 }
-#jPanelMenu-menu .region-footer-offside a, .region-footer a {
+.region-footer a {
   color: #717274;
 }
-#jPanelMenu-menu .region-footer-offside a:visited, .region-footer a:visited {
+.region-footer a:visited {
   color: #717274;
 }
-#jPanelMenu-menu .region-footer-offside a:focus, .region-footer a:focus {
+.region-footer a:focus {
   color: #717274;
 }
-#jPanelMenu-menu .region-footer-offside a:hover, .region-footer a:hover {
+.region-footer a:hover {
   color: #a3a3a3;
 }
-#jPanelMenu-menu .region-footer-offside a:active, .region-footer a:active {
+.region-footer a:active {
   color: #a3a3a3;
 }
 
-#footer {
-  display: none;
-}
-@media (min-width: 769px) {
-  #footer {
-    display: block;
-  }
-}
 #footer li, #footer ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-
-#footer-offside ul {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+#jPanelMenu-menu #footer .region-footer {
+  border-top: none;
+  background-color: transparent;
 }
-#footer-offside ul li {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0;
-}
-#footer-offside .slide-panel-link {
+#jPanelMenu-menu #footer .slide-panel-link {
   background: none;
   border-width: 0;
   text-transform: none;
@@ -7405,6 +7391,7 @@ input.echo-submit-text {
   position: absolute;
   height: 124px;
   width: 238px;
+  z-index: 2;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .show-title-image {
@@ -8062,6 +8049,27 @@ a[class*="day"] {
   white-space: nowrap;
 }
 
+.catchall-takeover #head-leaderboard {
+  margin-bottom: 15px;
+}
+.catchall-takeover #messages,
+.catchall-takeover #content .tabs {
+  display: none;
+}
+.catchall-takeover #main {
+  padding-left: 0;
+  padding-right: 0;
+}
+.catchall-takeover .field-name-field-usa-catchall-html iframe {
+  display: block;
+  width: 100%;
+  height: 1400px;
+  border: none;
+  top: -19px;
+  left: 0;
+  position: relative;
+}
+
 [class*="iib"] {
   background-color: #2d2d2d;
 }
@@ -8101,6 +8109,8 @@ body:not(.front) .ad-leaderboard {
 }
 .usa-adrails .ad-leaderboard {
   padding-top: 0;
+  position: relative;
+  z-index: 0;
 }
 
 #head-sponsored {

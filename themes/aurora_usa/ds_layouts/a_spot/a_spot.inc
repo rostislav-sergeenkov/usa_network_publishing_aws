@@ -12,7 +12,7 @@ function ds_a_spot() {
       'text_3' => t('Text line 3'),
       'text_1_font_size' => t('Text line 1 Font Size'),
       'text_2_font_size' => t('Text line 2 Font Size'),
-      'mobile_text_1' => t('Mobile Text line 1'),
+      'mobile_text_2' => t('Mobile Text line 2'),
       'cta' => t('CTA'),
       'link' => t('link')
     ),

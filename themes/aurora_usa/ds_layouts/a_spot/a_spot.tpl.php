@@ -58,13 +58,13 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
   <?php endif; ?>
   <div class="meta-wrap">
     <div class="meta">
-    <?php if ($mobile_text_1 && $mobile_text_1 !== '&nbsp;'): ?>
-      <h1 class="mobile-show-title show-title"><?php print $mobile_text_1; ?></h1>
-    <?php endif; ?>
     <?php if (!$aspot_title_image || $aspot_title_image == '&nbsp;'): ?>
       <?php if ($text_1 && $text_1 !== '&nbsp;'): ?>
         <h1 class="show-title<?php print $text_1_font_size; ?>"><?php print $text_1; ?></h1>
       <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($mobile_text_2 && $mobile_text_2 !== '&nbsp;'): ?>
+      <h2 class="mobile-show-time show-time"><?php print $mobile_text_2; ?></h2>
     <?php endif; ?>
     <?php if ($text_2 && $text_2 !== '&nbsp;'): ?>
       <h2 class="show-time<?php print $text_2_font_size; ?>"><?php print ($text_2); ?></h2>

@@ -12,7 +12,7 @@
       font-size: 28px;
     }
   }
-  @include breakpoint($bp-aspot-mid-range2-width) {
+  @include breakpoint($bp-home-3col) {
     font-size: 44px;
     &.small {
       font-size: 34px;
@@ -145,12 +145,12 @@
       margin-bottom: 22px;
     }
   }
-  .mobile-show-title.show-title {
+  .mobile-show-time.show-time {
     display: block;
     @include breakpoint($bp-home-2col) {
       display: none;
     }
-    + .show-title  {
+    + .show-time  {
       display: none;
       @include breakpoint($bp-home-2col) {
         display: block;
@@ -168,7 +168,6 @@
       margin-bottom: 10px;
     }
     @include breakpoint($bp-aspot-large-width) {
-      font-size: 54px;
       margin-bottom: 16px;
     }
     &:after {
@@ -200,7 +199,6 @@
     }
     @include breakpoint($bp-aspot-large-width) {
       margin-bottom: 8px;
-      font-size: 60px;
     }
     .usa-adrails &, .ie8 & {
       margin-bottom: 8px;

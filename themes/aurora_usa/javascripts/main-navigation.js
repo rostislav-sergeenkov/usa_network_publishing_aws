@@ -5,7 +5,8 @@
       $('body').once('mainNavigation', function() {
         // DOM SETUP SHUFFLING
         // TOUCH NAVIGATION
-        $('.primary-nav').prepend('<div id="main-menu-toggle" class="mobi-menu-icon slide-menu-toggle" data-module-type="SlideOut" data-active-layer="mega-menu"></div>');
+        $primary_nav = $('.primary-nav');
+        $primary_nav.prepend('<div id="main-menu-toggle" class="mobi-menu-icon slide-menu-toggle" data-module-type="SlideOut" data-active-layer="mega-menu"></div>');
         // no destination for links with this class
         // if there is a child menu add a class
         $('#tv-show-menu li .item-list').parent().addClass('parent-item');
@@ -16,9 +17,10 @@
         // ON NOW BUTTON / PERSONALIZATION TRIGGER
         // add on now and personalization content to the panel
         // set the panel 'state' to menu (DEFAULT)
+        $('.personalization-trigger').attr('data-drawer-id', 'personalization');
         $personalization_drawer = $('#personalization-panel').clone();
-        $personalization_drawer.attr('id', 'personalization-drawer');
-        $('.personalization-trigger').after($personalization_drawer);
+        $personalization_drawer.attr('id', 'personalization-drawer').attr('data-drawer', 'personalization');
+        $primary_nav.after($personalization_drawer);
 
         // MOVE CONTENT PANELS INTO JPM
         function insert_jpm_content() {
@@ -35,6 +37,12 @@
             .wrapInner('<div id="menu-wrapper"></div>');
           $('#menu-wrapper')
             .prepend('<h1 class="menu-title">Main Menu</h1>')
+            .find('[data-drawer-id]')
+              .removeAttr('data-drawer-id')
+              .end()
+            .find('[data-drawer]')
+              .removeAttr('data-drawer')
+              .end()
             .find('.mega-menu-items a')
               .removeClass('mega-nav-link')
               .addClass('slide-panel-link')
@@ -186,40 +194,37 @@
         jPM.on();
 
         // WIDE NAVIGATION
+        $drawers = $('[data-drawer]')
+        $('#mega-nav').after($drawers);
+
         function manage_wide_subnav(el) {
-          var Self = $(el);
-          $('#mega-nav .active-item').not(Self).removeClass('active-item');
-          Self.toggleClass('active-item');
-          if (Self.hasClass('active-item') && wall_exists() == false) {
+          var $self = $(el);
+          var $this_drawer_id = $self.attr('data-drawer-id');
+          var $matching_drawer = $('[data-drawer="' + $this_drawer_id + '"]');
+          $('[data-drawer]').not($matching_drawer).removeClass('active-item');
+          $matching_drawer.toggleClass('active-item');
+          if ($matching_drawer.hasClass('active-item') && wall_exists() == false) {
             wall_build();
             $('#wall')
               .click(function() {
-                $('#mega-nav .active-item').removeClass('active-item');
-                wall_remove();
+                close_wide_subnav()
                 return false;
               });
-          } else if (!Self.hasClass('active-item') && wall_exists() == true) {
+          } else if (!$matching_drawer.hasClass('active-item') && wall_exists() == true) {
             wall_remove();
           }
         }
         function close_wide_subnav() {
-          $('#mega-nav .active-item').removeClass('active-item');
+          $('[data-drawer].active-item').removeClass('active-item');
           wall_remove();
         }
 
-        function close_wide_personalization() {
-          $('.personalization-trigger.active-item').removeClass('active-item');
-          wall_remove();
-        }
-
-        $('.slide-container')
-          .find('.mega-sub-nav-container')
-          .siblings('a')
-            .css('cursor', 'default')
-            .click(function() {
-              manage_wide_subnav($(this).parent());
-              return false;
-            });
+        $('[data-drawer-id]')
+          .css('cursor', 'default')
+          .click(function() {
+            manage_wide_subnav($(this));
+            return false;
+          });
         // close button
         $('.mega-nav-close').click(function() {
           close_wide_subnav();
@@ -227,7 +232,7 @@
         });
 
         $('#personalization-drawer .close').click(function() {
-          close_wide_personalization();
+          close_wide_subnav();
           return false;
         });
 
@@ -277,7 +282,7 @@
           breakpoint: 'narrow',
           enter: function() {
             jPM.close();
-            $('.personalization-trigger').removeClass('active-item');
+            close_wide_subnav();
             jPM.position('258px');
             // set the panel 'state' to personalization
             // and trigger panel
@@ -296,7 +301,7 @@
           breakpoint: 'wide',
           enter: function() {
             jPM.close();
-            $('.personalization-trigger').removeClass('active-item');
+            close_wide_subnav();
             //
             jPM.position('362px');
             // slide up the drawer

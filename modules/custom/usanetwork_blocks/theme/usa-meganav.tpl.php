@@ -17,8 +17,8 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
 
 
 <div data-module-type="NavDrawer" class="mega-menu-items shows-mega-menu-item active">
-  <?php print l('Shows', 'globalnav_shows/nojs', array('attributes' => array('class' => array('mega-nav-link', 'shows', 'use-ajax')))); ?>
-  <div class="mega-sub-nav-container">
+  <?php print l('Shows', 'globalnav_shows/nojs', array('attributes' => array('class' => array('mega-nav-link', 'shows', 'use-ajax'), 'data-drawer-id' => 'main-nav-shows'))); ?>
+  <div class="mega-sub-nav-container" data-drawer="main-nav-shows">
     <div class="mega-sub-nav">
       <div class="more-title"><?php print empty($show_title) ? 'Shows' : $show_title; ?></div>
       <span class="mega-nav-close">close</span>
@@ -37,8 +37,8 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
   <?php print l('Schedule', 'schedule', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
 </div>
 <div class="mega-menu-items">
-  <?php print l('More', 'globalnav_more/nojs', array('attributes' => array('class' => array('mega-nav-link', 'more', 'use-ajax')))); ?>
-  <div class="mega-sub-nav-container">
+  <?php print l('More', 'globalnav_more/nojs', array('attributes' => array('class' => array('mega-nav-link', 'more', 'use-ajax'), 'data-drawer-id' => 'main-nav-more'))); ?>
+  <div class="mega-sub-nav-container" data-drawer="main-nav-more">
     <div class="mega-sub-nav">
       <div class="more-title"><?php print empty($more_title) ? 'More on USA' : $more_title; ?></div>
       <span class="mega-nav-close">close</span>

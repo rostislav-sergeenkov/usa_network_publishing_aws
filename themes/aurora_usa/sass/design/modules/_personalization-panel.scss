@@ -2,9 +2,9 @@ body {
   &[data-menu-direction="right"][data-menu-position="open"] {
     .jPanelMenu-panel {
       overflow: hidden;
-      @include breakpoint($bp-menu-switch) { 
+      @include breakpoint($bp-menu-switch) {
         overflow: visible;
-      }  
+      }
     }
     #jPanelMenu-menu {
       &.state-personalization {
@@ -18,7 +18,7 @@ body {
 
 .personalization-content {
   background-color: $gray-med;
-  padding: 10px; 
+  padding: 10px;
   .close {
     display: block;
     position: absolute;
@@ -64,34 +64,5 @@ body {
     right: 15px;
     line-height: 65px;
     position: relative;
-  }  
-}
-
-
-#personalization-drawer {
-  position: absolute;
-  @include breakpoint($bp-menu-switch) {
-    width: 100%;
-    overflow: hidden;
-    z-index: 1;
-    opacity: 0;
-    // display: none;
-    @include transform3d( translateY(100%) );
-    @include transition-duration(0.2s);
-    @include transition-timing-function(linear);
-    @include transition-property(all);
-    @include breakpoint($bp-menu-switch) {
-      overflow: hidden;
-      bottom: 0;
-      left: 0;
-    }  
-  }
-  .active-item + & {
-    @include breakpoint($bp-menu-switch) {
-      bottom: 100%;
-      opacity: 1;
-      @include transform3d( translateY(0) );
-      @include transition-duration(0.2s);
-    }
   }
 }

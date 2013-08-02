@@ -68,11 +68,19 @@ $show-baseline: false;
 // do something more targeted in production, ok?
 $animate-all-the-things: false;
 
+// NAVIGATION
+$primary-nav-height-mobi: 50px;
+$primary-nav-height-dt: 65px;
+$logo-height-large: 34px;
+$logo-height-med: 28px;
+$logo-height-med-2: 32px;
+
 // Z-Index
 // making utility higher than wall only when using slide out panel/menu
-$ziUtilities    : 102;
 $ziWall         : 100;
-$ziMegaNav      : 101;
+$ziMegaPanels   : 101;
+$ziMegaNav      : 102;
+$ziUtilities    : 103;
 $ziFilterOpen   : 95;
 
 // carousel size variable: (width, height);

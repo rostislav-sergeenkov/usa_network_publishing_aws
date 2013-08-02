@@ -23,6 +23,7 @@ function usanetwork_media_gallery_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Episode Galleries';
+  $handler->display->display_options['css_class'] = 'expandable-container';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -171,6 +172,8 @@ function usanetwork_media_gallery_views_default_views() {
 
   /* Display: Episode Galleries */
   $handler = $view->new_display('panel_pane', 'Episode Galleries', 'panel_pane_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'expandable-container';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
@@ -180,7 +183,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['more_button_text'] = 'more';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
@@ -309,7 +312,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'media_gallery' => 'media_gallery',
   );
-  /* Filter criterion: Field: Person (field_person) */
+  /* Filter criterion: Content: Related Person (field_person) */
   $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';
@@ -431,7 +434,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
@@ -530,7 +533,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
@@ -622,7 +625,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['filters']['field_episode_target_id']['table'] = 'field_data_field_episode';
   $handler->display->display_options['filters']['field_episode_target_id']['field'] = 'field_episode_target_id';
   $handler->display->display_options['filters']['field_episode_target_id']['operator'] = 'empty';
-  /* Filter criterion: Field: Person (field_person) */
+  /* Filter criterion: Content: Related Person (field_person) */
   $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';

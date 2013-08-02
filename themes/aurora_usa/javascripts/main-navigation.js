@@ -72,6 +72,7 @@
           // set up show menu
           $show_menu = $('#block-usanetwork-blocks-usa-tv-show-menu').clone();
           if ($show_menu.length > 0) {
+            $('body').addClass('usa-showmenu-active');
             $('#block-usanetwork-blocks-usa-meganav').addClass('usa-showmenu-active');
             $('.region-footer').addClass('usa-showmenu-loaded');
             $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();

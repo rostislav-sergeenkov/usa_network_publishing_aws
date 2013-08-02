@@ -123,6 +123,17 @@ function usanetwork_social_menu() {
     'weight' => 4
   );
 
+  // social test page
+  $items['node/%node/social/test'] = array(
+    'title' => t('test'),
+    'page callback' => 'usanetwork_social_test',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_social_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 5
+  );
+
   return $items;
 }
 
@@ -207,6 +218,11 @@ function usanetwork_social_show_tab_nav() {
         if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
           $items[] = l($link['#link']['title'], $alias);
         }
+      break;
+      case 'node/%/social/test':
+//        if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
+          $items[] = l($link['#link']['title'], $alias);
+//        }
       break;
       default:
         $items[] = l($link['#link']['title'], $alias);
@@ -1086,6 +1102,75 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
         </div>
       </div>';
   }
+
+  return $output;
+}
+
+
+/**
+ * Show the social test page
+ */
+function usanetwork_social_test($node = null)
+{
+  $output = '<div id="im_notifier"></div>';
+
+  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
+  drupal_add_js('<script src="http://cdn.echoenabled.com/sdk/v3/loader.js"></script>', array('type'=>'external'));
+  $notifier = '
+// @TODO: REMOVE usa_debug ONCE IT\'S BEEN ADDED GLOBALLY
+var usa_debugFlag = false;
+var usa_debug = function(msg) {
+  if (usa_debugFlag && typeof console != "undefined")
+  {
+    if (typeof msg == "object") {
+      console.log("msg is object");
+    }
+    else if (typeof msg == "array") {
+      console.log("msg is array");
+    }
+    console.log(msg);
+  }
+}
+
+// BEGIN SESSION HANDLING / BACKPLANE INITIALIZATION
+// needed for auto-login to chatter
+var usa_user = jQuery.parseJSON(jQuery.cookie("usa_idx_id"));
+if (usa_user != null)
+{
+  usa_debug(usa_user);
+  if (typeof Backplane != "undefined") Backplane.resetCookieChannel();
+  Backplane.init({
+    "serverBaseURL": "http://api.echoenabled.com/v1",
+    "busName": "usanetwork",
+    "channelName": usa_user.username
+  });
+}
+
+Backplane.expectMessages(["identity/ack"]);
+// END BACKPLANE INITIALIZATION
+
+// IDEAMELT START
+var IDEAMELT_API_KEY = "dev.usanetwork";
+var ECHO_APP_KEY = "echo.ideamelt.notifier.usanetwork.prod";
+var IDEAMELT_BASE_DOMAIN = "http://usanetwork.com";
+
+Echo.Loader.initApplication({
+  "script": "http://ideamelt.com/static/apps/3.0/im.notifier.js",
+  "component": "IdeaMelt.Apps.Notifier",
+  "config": {
+      "target": "#im_notifier",
+      "appkey": ECHO_APP_KEY,
+      "imAppkey": IDEAMELT_API_KEY,
+      "baseDomain": IDEAMELT_BASE_DOMAIN,
+      "ready": function() {
+        im_notifier = this;
+      },
+  }
+});
+// IDEAMELT END
+  ';
+
+  drupal_add_js($notifier, array('type'=>'inline'));
 
   return $output;
 }

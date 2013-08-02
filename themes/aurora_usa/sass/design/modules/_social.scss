@@ -334,9 +334,9 @@ body.usa-social {
     @include breakpoint($bp-social-small-width) {
       margin-right: 159px;
     } 
-//    @include breakpoint($bp-social-lyris-large) {
-//      margin-right: 0;
-//    }  
+    @include breakpoint($bp-social-lyris-large) {
+      margin-right: 0;
+    }  
   }
   .form-item-email {
     float: left;
@@ -345,9 +345,9 @@ body.usa-social {
     @include breakpoint($bp-social-small-width) {
       margin-left: 158px;
     }  
-//    @include breakpoint($bp-social-lyris-large) {
-//      margin-left: 0;
-//    }  
+    @include breakpoint($bp-social-lyris-large) {
+      margin-left: 0;
+    }  
     input {
       margin: 0;
       font-family: $headline-reg;

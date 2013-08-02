@@ -79,6 +79,7 @@ function usa_userLogin(user)
   usa_debug('userAuthSignature: '+user._auth_signature);
   usa_user = new usa_userObj(user);
   usa_bpLogin();
+  usa_imCreateUser(usa_user);
 }
 
 function usa_userLogout()
@@ -126,6 +127,35 @@ function usa_bpLogin(callback)
   }
 }
 
+// IDEAMELT
+function usa_imCreateUser(user)
+{
+  if (typeof $ == "undefined") $ = jQuery;
+  var IDEAMELT_API_KEY = "dev.usanetwork";
+  var ENDPOINT = "UserCreate";
+
+  IdeaMelt.init({api_key: IDEAMELT_API_KEY});
+
+  var DATA = {
+    user_url: "http://www.usanetwork.com/profile/"+user.username,
+    title: user.username,
+    avatar: user.avatar,
+  }
+
+  var SUCCESS = function(response)
+  {
+    usa_debug("success");
+    usa_debug(response);
+  }
+
+  var FAIL = function(response)
+  {
+    usa_debug("fail");
+    usa_debug(response);
+  }
+
+  IdeaMelt.send(ENDPOINT, DATA, SUCCESS, FAIL);
+}
 
 // SESSION HANDLING
 var session = {

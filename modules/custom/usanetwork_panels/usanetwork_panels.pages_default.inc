@@ -211,6 +211,30 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-4';
     $pane->panel = 'six';
+    $pane->type = 'block';
+    $pane->subtype = 'usanetwork_lyris-newsletter_subscription';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'lyris',
+      'css_class' => 'lyris',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['six'][0] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
+    $pane->panel = 'six';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_cast-panel_pane_2';
     $pane->shown = TRUE;
@@ -225,12 +249,12 @@ function usanetwork_panels_default_page_manager_handlers() {
       'css_class' => 'social-follow-block',
     );
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['six'][0] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['six'][1] = 'new-5';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-6';
     $pane->panel = 'three';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_scr';
@@ -248,10 +272,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['three'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['three'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'two';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_usa_tv_promo_vids';
@@ -279,8 +303,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['two'][0] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['two'][0] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

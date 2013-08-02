@@ -3,7 +3,7 @@
   Drupal.behaviors.mediaGalleryTabs = {
     attach: function (context, settings) {
       $tabCount = 0;
-      $tabs = $('<div class="gallery-tabs grid-container-small"><ul></ul></div>');
+      $tabs = $('<div class="gallery-tabs grid-container-small usa-secondary-menu"><ul></ul></div>');
       $tabs_ul = $tabs.find('ul');
       $('.gallery-tab-group').once('gallery-tabs', function() {
         // grab all the gallery pane title headings

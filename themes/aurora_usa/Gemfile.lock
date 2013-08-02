@@ -7,7 +7,7 @@ GEM
       halcyon (>= 0.3.28)
     blend-mode (0.0.1)
       compass (~> 0.12)
-    breakpoint (2.0.5)
+    breakpoint (2.0.6)
       compass (>= 0.12.1)
       sass (>= 3.2.0)
     chunky_png (1.2.8)
@@ -45,10 +45,10 @@ GEM
     rake (10.0.4)
     rubigen (1.5.8)
       activesupport (>= 2.3.5, < 3.2.0)
-    sass (3.2.8)
+    sass (3.2.10)
     sassy-math (1.5)
       compass (~> 0.11)
-    singularitygs (1.0.8)
+    singularitygs (1.1.2)
       breakpoint (>= 2.0.1)
       compass (>= 0.12.2)
       sass (>= 3.2.1)
@@ -68,5 +68,5 @@ PLATFORMS
 
 DEPENDENCIES
   aurora (>= 0.2.0)
-  singularitygs (~> 1.0.8)
+  singularitygs (~> 1.1.2)
   survivalkit (>= 1.0.beta.15)

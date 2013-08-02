@@ -1,36 +1,85 @@
 // MEDIA GALLERY TABS
 (function ($) {
   Drupal.behaviors.mediaGalleryTabs = {
+
     attach: function (context, settings) {
-      $tabCount = 0;
-      $tabs = $('<div class="gallery-tabs grid-container-small usa-secondary-menu"><ul></ul></div>');
-      $tabs_ul = $tabs.find('ul');
-      $('.gallery-tab-group').once('gallery-tabs', function() {
-        // grab all the gallery pane title headings
-        // create an unordered list from them
-        $(this).each(function(index, value) {
-          $tabCount++;
-          $(this).attr('id', 'tab-' + $tabCount);
-          $thisHeader = $(this).find('header').hide();
-          $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'">' + $thisHeader.html() + '</a></li>';
-          $tabs_ul.append($thisTab);
-        });
-      });
-      // hide all the gallery panes
-      $('.gallery-tab-group').hide()
-      $('.pane-usa-gallery-panel-pane-1').before($tabs);
-      $('#tab-1').show();
-      // clicking a tab will set classes to hide all gallery panes,
-      // and show one associated with that tab
-      $('.tab a[href="#tab-1"]').addClass('selected');
-      $('.tab a').click(function() {
-        $('.tab a').removeClass('selected');
-        $(this).addClass('selected');
-        $('.gallery-tab-group').hide().filter(this.hash).show();
-        $('.filter-dropdown').removeClass('open');
-        $('.menu-label').text($(this).text());
-        return false;
-      });
+      window.onload = function() {
+        create_media_gallery_tabs();
+
+      };
+
+      // create function for onload so only happens once
+      function create_media_gallery_tabs() {
+        $tabCount = 0;
+        $tabs = $('<div class="gallery-tabs grid-container-small usa-secondary-menu"><ul></ul></div>');
+        $tabs_ul = $tabs.find('ul');
+        $('.gallery-tab-group').once('gallery-tabs', function() {
+          // grab all the gallery pane title headings
+          // create an unordered list from them
+          $(this).each(function(index, value) {
+            $tabCount++;
+            $(this).attr('id', 'tab-' + $tabCount);
+            $thisHeader = $(this).find('header').hide();
+            $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'">' + $thisHeader.html() + '</a></li>';
+           
+            $tabs_ul.append($thisTab);
+             console.log($tabs);
+          });
+        });    
+
+         // hide all the gallery panes
+        $('.gallery-tab-group').hide()
+        $('.panels-section-row-media-gallery .pane-views-panes:first-child').before($tabs);
+        $('#tab-1').show();
+        // clicking a tab will set classes to hide all gallery panes,
+        // and show one associated with that tab
+        $('.tab a[href="#tab-1"]').addClass('selected');
+        $('.tab a').click(function() {
+          $('.tab a').removeClass('selected');
+          $(this).addClass('selected');
+          $('.gallery-tab-group').hide().filter(this.hash).show();
+          $('.filter-dropdown').removeClass('open');
+          $('.menu-label').text($(this).text());
+          return false;
+        });  
+      }
+      
+     
+
+      // photo items toggler
+
+    $expandable_container = $('.view.expandable-container');
+    $container = $('.view.expandable-container .view-content');
+    $toggler = $('.view.expandable-container .expandable-toggle li');
+
+    var i = 0;
+
+    if($toggler.text() != 'more') {
+      $toggler.addClass('less').text('close');
+      $expandable_container.addClass('expanded');
+      i = 1;
+    }
+
+    $toggler.click(function() {
+      if($toggler.text() == 'close') {
+        i = 1;
+        $container.find('.item-list').hide();
+        $container.find('.item-list:first-child').css('display','block');
+        $toggler.text('more');
+        $expandable_container.removeClass('expanded');
+      } else if ($toggler.text() == 'more') {
+        $container.find('.item-list:first-child').css('display','block');
+        $count = $container.find('.item-list').length - 1;
+        $container.find('.item-list:eq('+ i + ')').show();
+
+        if($count == i) {
+          $toggler.text('close');
+          $expandable_container.addClass('expanded');
+          i = 1;
+        }
+        i++;
+      }
+    });
 
       ///// FILTER TABS FOR MEDIA GALLERY PAGE /////
       $filter_menus = $('.gallery-tabs');

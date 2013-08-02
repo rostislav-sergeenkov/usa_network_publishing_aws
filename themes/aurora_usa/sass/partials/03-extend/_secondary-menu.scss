@@ -28,7 +28,7 @@ $secondary-menu-bg  : $gray-med;
   position: relative;
   z-index: 100;
   color: $gray-extra-light;
-  &.active, &:hover {
+  &.active, &.selected, &:hover {
     color: $white;
   }
 }

@@ -98,6 +98,10 @@ $bp-grid-small-2-squish: max-width 524px;
 $bp-grid-small-2: 525px;
 $bp-grid-small-3: 772px;
 $bp-grid-small-4: 1020px;
+$bp-grid-small-2-3: max-width ($bp-grid-small-3 - 1);
+$bp-grid-small-2-fence: $bp-grid-small-2 ($bp-grid-small-3 - 1);
+$bp-grid-small-3-fence: $bp-grid-small-3 ($bp-grid-small-4 - 1);
+
 $bp-episode-side-menu: 769px, 'no-query' '.no-mediaqueries';
 $bp-episode-split-content: 881px;
 $bp-episode-ads-side-by-side: 660px $bp-episode-side-menu;

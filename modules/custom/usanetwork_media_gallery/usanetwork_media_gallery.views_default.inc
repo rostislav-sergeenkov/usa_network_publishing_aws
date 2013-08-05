@@ -641,4 +641,3 @@ function usanetwork_media_gallery_views_default_views() {
 
   return $export;
 }
-

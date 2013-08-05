@@ -19,10 +19,8 @@
     <h3><?php print $title; ?></h3>
   <?php endif; ?>
   <?php print $list_type_prefix; ?>  
+  <li class="carousel-item"><a href="/social/"><img src="/<?php print drupal_get_path('theme','aurora_usa') . '/images/usaall_221x184.jpg'; ?>" /></a></li>
     <?php foreach ($rows as $id => $row): ?>
-      <?php if($id == 0): ?>
-         <li class="<?php print $classes_array[$id]; ?>"><a href="/social/"><img src="/<?php print drupal_get_path('theme','aurora_usa') . '/images/usaall_221x184.jpg'; ?>" /></a></li>
-      <?php continue; endif; ?>
       <li class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></li>
     <?php endforeach; ?>
   <?php print $list_type_suffix; ?>

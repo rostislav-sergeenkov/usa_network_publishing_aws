@@ -70,22 +70,69 @@ function usa_setCookie(c_name, value, exdays)
   document.cookie=c_name + "=" + c_value;
 }
 
+
+// HIDE / DISPLAY USER INFO
+function showUserAvatarInGlobalNav(avatarUrl, username)
+{
+  usa_debug('fn: showUserAvatarInGlobalNav('+avatarUrl+', '+username+')');
+  if (jQuery('.personalization-trigger span').html().length > 0)
+  {
+    jQuery('.personalization-trigger span').html('<img src="'+avatarUrl+'" alt="'+username+'" />');
+  }
+  else
+  {
+    setTimeout(showUserAvatarInGlobalNav(), 500);
+  }
+}
+
+function usa_hideUser(user)
+{
+  // CODE BELOW SHOWS THE SIGN-IN LINK IN THE GLOBAL NAV BAR
+  // AND HIDES AND REMOVES THE USER INFO IN THE PERSONALIZATION DRAWER
+  jQuery('#personalization-user-info').hide();
+  jQuery('.personalization-trigger span').html('SIGN IN');
+
+  jQuery('#personalization-username').text('');
+  jQuery('#personalization-user-avatar').html('');
+}
+
+function usa_displayUser(user)
+{
+  // CODE BELOW IS FOR PERSONALIZATION DRAWER AND GLOBAL NAV AVATAR
+  //change welcome user name to include username and possibly avatar
+  //It's important to note that we use text() and not html() here as it's possible that data from SURF/IDX
+  //can contain html entities that need to be escaped by the browser
+  jQuery('#personalization-username').text(user.username);
+
+  //if we have it, show their avatar
+  if ('avatar' in user && user.avatar != '') {
+    jQuery('#personalization-user-avatar').html('<img src="'+user.avatar+'" alt="'+user.username+'" />');
+    showUserAvatarInGlobalNav(user.avatar, user.username);
+  } else {
+    jQuery('#personalization-user-avatar').html('<img src="'+defaultAvatar+'" alt="'+user.username+'" />');
+    showUserAvatarInGlobalNav(defaultAvatar, user.username);
+  }
+  jQuery('#personalization-user-info').show();
+}
+
 // USER LOGGING / SESSION HANDLING
 function usa_userLogin(user)
 {
   usa_debug('fn: usa_userLogin(user)');
-  usa_debug(user);
-  usa_debug('userId: '+user._id);
-  usa_debug('userAuthSignature: '+user._auth_signature);
+  //usa_debug(user);
+  //usa_debug('userId: '+user._id);
+  //usa_debug('userAuthSignature: '+user._auth_signature);
   usa_user = new usa_userObj(user);
   usa_bpLogin();
   usa_imCreateUser(usa_user);
+  usa_displayUser(usa_user);
 }
 
 function usa_userLogout()
 {
   usa_debug('fn: usa_userLogout()');
   usa_user = new usa_userObj(null);
+  usa_hideUser();
 }
 
 // BACKPLANE AUTO-LOGIN

@@ -19,6 +19,10 @@
      col2 lorem ipsum
   </div>
   <div id="personalization-navigation">
+    <div id="personalization-user-info">
+      <div id="personalization-user-avatar"></div>
+      <div id="personalization-username"></div>
+    </div>
     <ul>
       <li><a href="javascript:void(0)" class="action-edit-account">Account Settings</a></li>
     </ul>

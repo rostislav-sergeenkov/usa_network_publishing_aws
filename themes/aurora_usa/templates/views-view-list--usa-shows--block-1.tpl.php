@@ -8,6 +8,11 @@
  * - $options['type'] will either be ul or ol.
  * @ingroup views_templates
  */
+
+/* 
+  initial li is hardcoded b/c USA wants to show 'USA' image as first image in carousel"
+*/
+
 ?>
 <?php print $wrapper_prefix; ?>
   <?php if (!empty($title)) : ?>

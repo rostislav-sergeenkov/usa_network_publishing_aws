@@ -103,7 +103,6 @@ function usanetwork_media_gallery_views_default_views() {
 
   /* Display: Block - nid gallery */
   $handler = $view->new_display('block', 'Block - nid gallery', 'block');
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
@@ -172,7 +171,6 @@ function usanetwork_media_gallery_views_default_views() {
 
   /* Display: Episode Galleries */
   $handler = $view->new_display('panel_pane', 'Episode Galleries', 'panel_pane_1');
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
@@ -183,6 +181,9 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['more_button_text'] = 'more';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -308,7 +309,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'media_gallery' => 'media_gallery',
   );
-  /* Filter criterion: Content: Related Person (field_person) */
+  /* Filter criterion: Field: Person (field_person) */
   $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';
@@ -328,7 +329,6 @@ function usanetwork_media_gallery_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Gallery Cover', 'panel_pane_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Gallery';
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['display_description'] = 'Cover image, links to gallery page';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -423,7 +423,6 @@ function usanetwork_media_gallery_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Character Galleries', 'panel_pane_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Character Galleries';
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
@@ -433,6 +432,9 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -520,7 +522,6 @@ function usanetwork_media_gallery_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Other Show Galleries', 'panel_pane_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Other Galleries';
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
@@ -530,6 +531,9 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'asset-thumb';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -618,7 +622,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['filters']['field_episode_target_id']['table'] = 'field_data_field_episode';
   $handler->display->display_options['filters']['field_episode_target_id']['field'] = 'field_episode_target_id';
   $handler->display->display_options['filters']['field_episode_target_id']['operator'] = 'empty';
-  /* Filter criterion: Content: Related Person (field_person) */
+  /* Filter criterion: Field: Person (field_person) */
   $handler->display->display_options['filters']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['filters']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['filters']['field_person_target_id']['field'] = 'field_person_target_id';
@@ -637,3 +641,4 @@ function usanetwork_media_gallery_views_default_views() {
 
   return $export;
 }
+

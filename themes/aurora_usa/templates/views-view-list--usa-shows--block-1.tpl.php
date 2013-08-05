@@ -19,7 +19,13 @@
     <h3><?php print $title; ?></h3>
   <?php endif; ?>
   <?php print $list_type_prefix; ?>  
-  <li class="carousel-item"><a href="/social/"><figure><img src="/<?php print drupal_get_path('theme','aurora_usa') . '/images/usaall_221x184.jpg'; ?>" /></figure></a></li>
+    <li class="carousel-item">
+      <a href="/social/">
+        <figure>
+          <img src="/<?php print drupal_get_path('theme','aurora_usa') . '/images/usaall_221x184.jpg'; ?>" />
+        </figure>
+      </a>
+    </li>
     <?php foreach ($rows as $id => $row): ?>
       <li class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></li>
     <?php endforeach; ?>

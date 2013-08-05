@@ -23,11 +23,11 @@
             $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'">' + $thisHeader.html() + '</a></li>';
            
             $tabs_ul.append($thisTab);
-             console.log($tabs);
           });
         });    
 
-         // hide all the gallery panes
+      
+        // hide all the gallery panes
         $('.gallery-tab-group').hide()
         $('.panels-section-row-media-gallery .pane-views-panes:first-child').before($tabs);
         $('#tab-1').show();
@@ -42,74 +42,74 @@
           $('.menu-label').text($(this).text());
           return false;
         });  
-      }
-      
      
 
-      // photo items toggler
-
-    $expandable_container = $('.view.expandable-container');
-    $container = $('.view.expandable-container .view-content');
-    $toggler = $('.view.expandable-container .expandable-toggle li');
-
-    var i = 0;
-
-    if($toggler.text() != 'more') {
-      $toggler.addClass('less').text('close');
-      $expandable_container.addClass('expanded');
-      i = 1;
-    }
-
-    $toggler.click(function() {
-      if($toggler.text() == 'close') {
-        i = 1;
-        $container.find('.item-list').hide();
-        $container.find('.item-list:first-child').css('display','block');
-        $toggler.text('more');
-        $expandable_container.removeClass('expanded');
-      } else if ($toggler.text() == 'more') {
-        $container.find('.item-list:first-child').css('display','block');
-        $count = $container.find('.item-list').length - 1;
-        $container.find('.item-list:eq('+ i + ')').show();
-
-        if($count == i) {
-          $toggler.text('close');
-          $expandable_container.addClass('expanded');
-          i = 1;
-        }
-        i++;
-      }
-    });
-
-      ///// FILTER TABS FOR MEDIA GALLERY PAGE /////
-      $filter_menus = $('.gallery-tabs');
-      $filter_menus.each(function(index, value){
-        $filter_menu = $(this);
-        $filter_menu.addClass('filter-dropdown').find('li').addClass('menu-item');
-        // grab active item and copy it as a lable
-        // create a div classed 'filter-menu' to contain the options
-        $active_item = $(this).find('.selected');
-        $menu_label = '<div class="menu-label">' + $active_item.text() + '</div>';
-        $(this).find('ul').addClass('filter-menu');
-        $(this).prepend($menu_label);
-        // clicking the lable toggles an 'open' class on .filter-menu
-        $('.menu-label').click(function () {
-          // $filter_menus.not($(this).parent()).removeClass("open");
-          $(this).parent().toggleClass("open");
+        ///// FILTER TABS FOR MEDIA GALLERY PAGE /////
+        $filter_menus = $('.gallery-tabs');
+        $filter_menus.each(function(index, value){
+          $filter_menu = $(this);
+          $filter_menu.addClass('filter-dropdown').find('li').addClass('menu-item');
+          // grab active item and copy it as a lable
+          // create a div classed 'filter-menu' to contain the options
+          $active_item = $(this).find('.selected');
+          $menu_label = '<div class="menu-label">' + $active_item.text() + '</div>';
+          $(this).find('ul').addClass('filter-menu');
+          $(this).prepend($menu_label);
+          // clicking the lable toggles an 'open' class on .filter-menu
+          $('.menu-label').click(function () {
+            // $filter_menus.not($(this).parent()).removeClass("open");
+            $(this).parent().toggleClass("open");
+          });
         });
-      });
-      dropdown_class_toggle();
-      $(window).resize(function(){
         dropdown_class_toggle();
-      });
-      function dropdown_class_toggle() {
-        $drop_elements = $(".gallery-tabs");
-        if ($drop_elements.css("background-color") != "rgb(61, 61, 61)" ){
-          $drop_elements.removeClass("filter-dropdown");
-        } else {
-          $drop_elements.addClass("filter-dropdown");
+        $(window).resize(function(){
+          dropdown_class_toggle();
+        });
+        function dropdown_class_toggle() {
+          $drop_elements = $(".gallery-tabs");
+          if ($drop_elements.css("background-color") != "rgb(61, 61, 61)" ){
+            $drop_elements.removeClass("filter-dropdown");
+          } else {
+            $drop_elements.addClass("filter-dropdown");
+          }
         }
+      } 
+
+      //// photo more items toggler ////
+
+      $expandable_container = $('.view.expandable-container');
+      $container = $('.view.expandable-container .view-content');
+      $toggler = $('.view.expandable-container .expandable-toggle li');
+
+      var i = 0;
+
+      if($toggler.text() != 'more') {
+        $toggler.addClass('less').text('close');
+        $expandable_container.addClass('expanded');
+        i = 1;
       }
+
+      $toggler.click(function() {
+        if($toggler.text() == 'close') {
+          i = 1;
+          $container.find('.item-list').hide();
+          $container.find('.item-list:first-child').css('display','block');
+          $toggler.text('more');
+          $expandable_container.removeClass('expanded');
+        } else if ($toggler.text() == 'more') {
+          $container.find('.item-list:first-child').css('display','block');
+          $count = $container.find('.item-list').length - 1;
+          $container.find('.item-list:eq('+ i + ')').show();
+          if($count == i) {
+            $toggler.text('close');
+            $expandable_container.addClass('expanded');
+            i = 1;
+          }
+          i++;
+        }
+      });
+
+
     },
   };
 

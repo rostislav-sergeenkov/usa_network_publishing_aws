@@ -115,9 +115,11 @@ function usanetwork_personalization_surf() {
   $output = '';
 
   // START SURF / IDX
-  // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
   // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
   // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
+  $defaultAvatar = file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_personalization/images/default_avatar_125x125.jpg'));
+
+  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
   drupal_add_html_head(array(
     '#tag' => 'script',
@@ -127,20 +129,9 @@ function usanetwork_personalization_surf() {
       'data-config-key' => 'usanetwork',
     ),
   ), 'surf_js_php');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
-  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
-  drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
-  drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
-  drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
-//  drupal_add_css(drupal_get_path('module', 'usanetwork_personalization').'/css/main.css');
-  drupal_add_js('http://cdn.realtidbits.com/libs/v1/backplane.js', array('type' => 'external'));
-  drupal_add_js('http://stage.clubpsych.usanetwork.com/accounts/wcs-backplane-init?bus=usanetwork', array('type' => 'external'));
-
-    $surf = '
-  // TESTING TESTING TESTING
-  var testTest;
-  var usa_debugFlag = true;
+  // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+  $debug = '
+  var usa_debugFlag = false;
   var usa_debug = function(msg) {
     if (usa_debugFlag && typeof console != "undefined")
     {
@@ -153,13 +144,16 @@ function usanetwork_personalization_surf() {
       console.log(msg);
     }
   }
-  // Backplane config
-  var bpBusName = "usanetwork";
-  var bpRpx = "http://usanetwork.rpxnow.com/";
-  // save Backplane channelID to a cookie
-  setCookie("bp_channel_id", Backplane.getChannelID(), 1);
   ';
-  drupal_add_js($surf, array('type' => 'inline'));
+
+  $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
+  drupal_add_js($debug, array('type' => 'inline'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
+  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
+  drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
+  drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
+  drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
 
   $output .= '
 <!--

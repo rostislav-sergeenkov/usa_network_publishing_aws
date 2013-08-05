@@ -1,0 +1,31 @@
+.grid-container-small {
+  @extend %grid-small-two-three-four;
+  @include breakpoint($bp-grid-small-2) {
+    margin: 0 auto 30px;
+  }
+}
+
+.grid-container-small {
+  .asset-thumb {
+    @extend .title-overlay;
+    border: 2px solid $gray-dark;
+    &.active {
+      border-color: $white;
+    }
+    .meta {
+      padding: 6px 10px 5px;
+      @include breakpoint($bp-grid-small-2-squish) {
+        font-size: 12px;
+      }
+    }
+    .season-episode {
+      font-size: 14px;
+      @include breakpoint($bp-grid-small-2-squish) {
+        font-size: 12px;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

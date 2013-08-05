@@ -1,5 +1,5 @@
 /**
- * Session utility object to interface w/ session.php
+ * Session utility object to interface w/ usa_session.php
  *
  * Author: Joshua Mast <joshua.mast@nbcuni.com>
  * Modified: Donna Vaughan <donna.vaughan@nbcuni.com>
@@ -7,27 +7,27 @@
 
 // USER CONFIGURATION
 var guestUser = 'anonymous';
-var usa_UserObj = function(args) {
-	if (args != null)
-	{
-		this.id = (typeof args._id != 'undefined') ? args._id : guestUser;
-		this.username = (typeof args.username != 'undefined') ? args.username : '';
-		this.points = (typeof args.points != 'undefined') ? args.points : 0;
-		this.avatar = (typeof args.avatar !='undefined' && args.avatar != '') ? args.avatar : 'http://'+window.location.host+'/sites/usanetwork/files/style/default_avatar_125x125.jpg';
-		this.loggedIn = (this.id == guestUser) ? 0 : 1;
-		this.fbLoggedIn = (typeof args.fbLoggedIn !='undefined' && args.fbLoggedIn != 0) ? args.fbLoggedIn : 0;
-		this.twLoggedIn = (typeof args.twLoggedIn !='undefined' && args.twLoggedIn != 0) ? args.twLoggedIn : 0;
-	} else {
-		this.id = guestUser;
-		this.username = '';
-		this.points = 0;
-		this.avatar = '';
-		this.loggedIn = 0;
-		this.fbLoggedIn = 0;
-		this.twLoggedIn = 0;
-	}
+var usa_userObj = function(args) {
+  if (args != null)
+  {
+    this.id = (typeof args._id != 'undefined') ? args._id : guestUser;
+    this.username = (typeof args.username != 'undefined') ? args.username : '';
+    this.points = (typeof args.points != 'undefined') ? args.points : 0;
+    this.avatar = (typeof args.avatar !='undefined' && args.avatar != '') ? args.avatar : defaultAvatar;
+    this.loggedIn = (this.id == guestUser) ? 0 : 1;
+    this.fbLoggedIn = (typeof args.fbLoggedIn !='undefined' && args.fbLoggedIn != 0) ? args.fbLoggedIn : 0;
+    this.twLoggedIn = (typeof args.twLoggedIn !='undefined' && args.twLoggedIn != 0) ? args.twLoggedIn : 0;
+  } else {
+    this.id = guestUser;
+    this.username = '';
+    this.points = 0;
+    this.avatar = '';
+    this.loggedIn = 0;
+    this.fbLoggedIn = 0;
+    this.twLoggedIn = 0;
+  }
 }
-var usa_User = new usa_UserObj(null);
+var usa_user = new usa_userObj(null);
 
 // CONFIG
 var usa_userCookie = 'usa_idx';
@@ -66,7 +66,7 @@ function usa_setCookie(c_name, value, exdays)
 {
   var exdate=new Date();
   exdate.setDate(exdate.getDate() + exdays);
-  var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+  var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString()) + "; path=/ ; domain=.usanetwork.com";
   document.cookie=c_name + "=" + c_value;
 }
 
@@ -76,60 +76,58 @@ function usa_userLogin(user)
   usa_debug('fn: usa_userLogin(user)');
   usa_debug(user);
   usa_debug('userId: '+user._id);
-  usa_User = new usa_UserObj(user);
+  usa_debug('userAuthSignature: '+user._auth_signature);
+  usa_user = new usa_userObj(user);
   usa_bpLogin();
 }
 
 function usa_userLogout()
 {
   usa_debug('fn: usa_userLogout()');
-  usa_setCookie(usa_userCookie, '');
-  usa_setCookie(usa_userCookie+'_id', '');
-  usa_User = new usa_UserObj(null);
-  usa_bpLogout();
+  usa_user = new usa_userObj(null);
 }
 
 // BACKPLANE AUTO-LOGIN
 function usa_bpLogin(callback)
 {
-	usa_debug('fn: usa_bpLogin(callback)');
+  usa_debug('fn: usa_bpLogin(callback)');
 
-	// if user is logged in, auto login to chat-with-fans comments via backplane
-	if (usa_User.id != guestUser)
-	{
-		//var userId = usa_User.id.replace('usaFb_', '');
-		var params = 'format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
-		jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
-			//if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
-			if (data.success && typeof data.data.rsp.result != 'undefined' && typeof data.data.rsp.result == 'success')
-			{
-				// if successful
-				//usa_debug('Backplane user is logged in');
-				Backplane.expectMessages(["identity/ack"]);
-			}
-		});
-	}
-	else
-	{
-		usa_debug('user is not logged in');
-	}
-}
+  // if user is logged in, auto login to chat-with-fans comments via backplane
+  if (usa_user.id != guestUser)
+  {
+    usa_debug(usa_user);
 
-// BACKPLANE LOGOUT
-function usa_bpLogout(callback)
-{
-	usa_debug('fn: usa_bpLogout(callback)');
+    if (typeof Backplane != "undefined") Backplane.resetCookieChannel();
+    Backplane.init({
+      "serverBaseURL": "http://api.echoenabled.com/v1",
+      "busName": "usanetwork",
+      "channelName": usa_user.username
+    });
 
-	var params = 'method=bpLogout&format=json&userId='+usa_User.id+'&username='+usa_User.username+'&userAvatar='+usa_User.avatar+'&jsoncallback=?';
-	jQuery.getJSON(usa_pathToUsaCode + '/php/clubBackplane.php?' + params, function(data) {
-		//if (typeof JSON != 'undefined') usa_debug(JSON.stringify(data));
-		Backplane.expectMessages(["identity/ack"]);
-	});
+    // save the channel id to a cookie with jquery
+    jQuery.cookie('bp_channel_id', Backplane.getChannelID(), {path: "/", domain: ".usanetwork.com"});
+
+    jQuery.ajax({
+        url: usa_sessionBasePath+'/usa_session.php',
+        dataType: 'json',
+        type: 'GET',
+        data: 'bpLogin=1&username='+usa_user.username+'&avatar='+usa_user.avatar+'jsoncallback=?',
+        success: function(data) {
+          usa_debug('new bpLogin completed');
+          usa_debug(data);
+        }
+    });
+
+    Backplane.expectMessages(["identity/ack"]);
+  }
+  else
+  {
+    usa_debug('user is not logged in');
+  }
 }
 
 
 // SESSION HANDLING
-var usa_sessionBasePath = 'http://'+window.location.host+'/sites/usanetwork/modules/custom/usanetwork_personalization/php';
 var session = {
     data: {},
     /* get the current session object, if it exists, insert
@@ -138,7 +136,7 @@ var session = {
     get: function(callback) {
         usa_debug('fn: session.get()');
         jQuery.ajax({
-            url: usa_sessionBasePath+'/session.php',
+            url: usa_sessionBasePath+'/usa_session.php',
             dataType: 'json',
             type: 'GET',
             success: function(user) {
@@ -147,7 +145,6 @@ var session = {
               {
                 session.data = user;
                 usa_userLogin(user);
-                //usa_User = new usa_UserObj(user);
                 if (typeof callback === "function") callback.call(null, user);
               }
               else
@@ -163,15 +160,17 @@ var session = {
     set: function(user) {
         usa_debug('fn: session.set()');
         jQuery.ajax({
-            url: usa_sessionBasePath+'/session.php',
+            url: usa_sessionBasePath+'/usa_session.php',
             type: "POST",
             dataType: 'json',
-            data: user
+            data: user,
         });
         if (user != null)
         {
+          // save the channel id to a cookie with jquery
+          jQuery.cookie("bp_channel_id", Backplane.getChannelID(), {path: "/", domain: ".usanetwork.com"});
           // set some additional usanetwork values if not set yet
-          if (typeof user.avatar != 'undefined' && user.avatar == '') user.avatar = '/sites/usanetwork/files/styles/default_avatar_125x125.jpg';
+          if (typeof user.avatar == 'undefined' || (typeof user.avatar != 'undefined' && user.avatar == '')) user.avatar = defaultAvatar;
           if (typeof user._gigya_login_provider != 'undefined')
           {
             if (user._gigya_login_provider == 'facebook' && typeof user._provider.facebook != 'undefined')
@@ -195,8 +194,11 @@ var session = {
     /* destroy a session, clear session.user */
     remove: function() {
         usa_debug('fn: session.remove()');
+        //usa_debug('resetting Backplane cookie channel');
+        Backplane.resetCookieChannel();
+        //usa_debug('new cookie: '+Backplane.getChannelID());
         jQuery.ajax({
-            url: usa_sessionBasePath+'/session.php',
+            url: usa_sessionBasePath+'/usa_session.php',
             type: "DELETE"
         });
         session.data = {};

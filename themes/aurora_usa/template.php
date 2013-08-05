@@ -71,7 +71,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
-  drupal_add_js($theme_path . '/javascripts/video-dropdowns.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   $icomoon_ie_fix = array(
     '#tag' => 'script',
@@ -196,6 +195,9 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
           $vars['classes_array'][] = drupal_html_class('carousel');
         }
         break;
+      case 'usanetwork_video-usa_video_views':
+        drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
+        break;  
       case 'views-usa_cast-block_2':
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
@@ -549,9 +551,7 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'attachment_2') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/follow-social.js');
     }
-
   }
-
 
 }
 
@@ -662,12 +662,6 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
         }
       }
       break;
-  }
-}
-
-function aurora_usa_preprocess_views_view_unformatted(&$vars) {
-  $view = $vars['view'];
-  switch($view->name) {
     case 'usa_gallery' :
       if ($vars['view']->current_display == 'panel_pane_1'
         || $vars['view']->current_display == 'panel_pane_3'
@@ -682,7 +676,7 @@ function aurora_usa_preprocess_views_view_unformatted(&$vars) {
           }
         }
       }
-    break;
+      break;  
   }
 }
 

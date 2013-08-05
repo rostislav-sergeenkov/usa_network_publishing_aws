@@ -58,10 +58,10 @@ function usanetwork_aspot_field_group_info() {
       3 => 'field_usa_aspot_txt3',
       4 => 'field_usa_aspot_txt4',
       5 => 'field_usa_text_color',
-      6 => 'field_mobile_text_line_1',
-      7 => 'field_text_line_1_font_size',
+      6 => 'field_text_line_1_font_size',
+      7 => 'field_text_line_1_image',
       8 => 'field_text_line_2_font_size',
-      9 => 'field_text_line_1_image',
+      9 => 'field_mobile_text_line_2',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

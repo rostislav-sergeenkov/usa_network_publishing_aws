@@ -68,11 +68,19 @@ $show-baseline: false;
 // do something more targeted in production, ok?
 $animate-all-the-things: false;
 
+// NAVIGATION
+$primary-nav-height-mobi: 50px;
+$primary-nav-height-dt: 65px;
+$logo-height-large: 34px;
+$logo-height-med: 28px;
+$logo-height-med-2: 32px;
+
 // Z-Index
 // making utility higher than wall only when using slide out panel/menu
-$ziUtilities    : 102;
 $ziWall         : 100;
-$ziMegaNav      : 101;
+$ziMegaPanels   : 101;
+$ziMegaNav      : 102;
+$ziUtilities    : 103;
 $ziFilterOpen   : 95;
 
 // carousel size variable: (width, height);
@@ -90,6 +98,10 @@ $bp-grid-small-2-squish: max-width 524px;
 $bp-grid-small-2: 525px;
 $bp-grid-small-3: 772px;
 $bp-grid-small-4: 1020px;
+$bp-grid-small-2-3: max-width ($bp-grid-small-3 - 1);
+$bp-grid-small-2-fence: $bp-grid-small-2 ($bp-grid-small-3 - 1);
+$bp-grid-small-3-fence: $bp-grid-small-3 ($bp-grid-small-4 - 1);
+
 $bp-episode-side-menu: 769px, 'no-query' '.no-mediaqueries';
 $bp-episode-split-content: 881px;
 $bp-episode-ads-side-by-side: 660px $bp-episode-side-menu;
@@ -143,6 +155,8 @@ $bp-social-large-width: 900px;
 $bp-social-mid-width: 723px;
 $bp-social-echo: 500px;
 $bp-social-small-width: 330px;
+
+$bp-social-lyris-large: 960px;
 
 // on now
 $bp-on-now: 640px;

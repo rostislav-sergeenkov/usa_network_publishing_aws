@@ -4,7 +4,6 @@
 .page-videos {
   #main {
     padding: 0 0 80px;
-    background-color: $black;
   }
 }
 
@@ -12,7 +11,6 @@
 .node-type-usa-video, 
 .page-videos {
   #block-system-main {
-    background-color: $black-dark;
     border-bottom: 1px solid $gray-dark;
     padding-bottom: 16px;
   }
@@ -152,19 +150,6 @@
       }
     }
   }
-  .ajax-progress, .ajax-progress-throbber {
-    display: none;
-  }
-  .expandable-toggle  {
-    li {
-      font-family: $headline-semi;
-      font-size: 16px;
-      color: $tan;
-      a {
-        color: $tan;
-      }
-    }
-  }
 }
 
 
@@ -178,69 +163,19 @@
   .categories  {
     > li {
       margin: 0;
-      float: left;
-      &.active {
-        > a {
-          color: $white;
-          border-bottom: 0;
-          @include breakpoint($bp-video-mid-large-width) {
-            background-color: $gray-med;
-            border-left: 1px solid $gray-med-dark;
-            border-right: 1px solid $gray-med-dark;
-            padding-left: 30px;
-            padding-right: 30px;
-            z-index: 60;
-            &:hover {
-              margin: 0;
-              padding-left: 30px;
-              padding-right: 30px;
-            }
-            &:after {
-              @include cssTriangle(12px, $gray-med, top);
-              position: absolute;
-              left: 50%;
-              top: 58px;
-              margin-left: -12px;
-            }
-          }
-        }
-      }
-      > a {
-        &:hover {
-          @include breakpoint($bp-video-mid-large-width) {   
-            margin: 0 -1px;
-            padding-left: 31px;
-            padding-right: 31px;
-          }  
-        }
-      } 
+      @include breakpoint($bp-video-mid-large-width) {   
+        @include secondary-menu-wide($secondary-menu-bg, true);
+      }  
     }
   }  
   a {
-    &:hover {
-      @include breakpoint($bp-video-mid-large-width) {
-        background-color: $gray-med;
-        color: $white;
-        z-index: 99;
-      }
-    }
-    &:hover:after {
-      @include breakpoint($bp-video-mid-large-width) {
-        @include cssTriangle(12px, $gray-med, top);
-        position: absolute;
-        left: 50%;
-        top: 58px;
-        margin-left: -12px;
-        z-index: 9;
-      }
-    }
+    color: $gray-extra-light;
   }
   li.more ul.more {
     display: none;
   }
   ul.shows li {
     width: 100%;
-    margin: 0;
   }
   .menu-label {
     display: none;
@@ -297,8 +232,6 @@
           }
         }
         > li {
-          font-family: $headline-reg;
-          margin: 0;
           border: 0;
           padding: 0;
           line-height: 1em;
@@ -315,9 +248,7 @@
             float: none;
             border: 0;
             border-top: 1px solid $gray-med-dark;
-            &:hover {
-              background-color: $gray-ultra-med;
-            }
+            @include link-colors($gray-extra-light, $white, $gray-extra-light, $gray-extra-light, $gray-extra-light);
             &:hover:after {
               @include cssTriangle(0, $gray-med, top);
             }
@@ -427,16 +358,9 @@
       &.open { 
         > a:first-child  {
            color: $white;
-          @include breakpoint($bp-video-mid-large-width) {   
-            margin: 0 -1px;
-            padding-left: 31px;
-            padding-right: 31px;
-          }  
           @include breakpoint($bp-video-mid-large-width) {
             background-color: $gray-med;      
             z-index: 99;
-            border-left: 1px solid $gray-med-dark;
-            border-right: 1px solid $gray-med-dark;
             &:after {
               @include cssTriangle(12px, $gray-med, top);
               position: absolute;
@@ -458,7 +382,6 @@
         > span {
           @include breakpoint($bp-video-mid-large-width) {
             background-color: $gray-med;
-            color: $gray-extra-light;
             color: $white;
             border-left: 1px solid $gray-med-dark;
             border-right: 1px solid $gray-med-dark;
@@ -655,7 +578,7 @@
         display: none;
       }
       &:hover {
-        cusror: pointer;
+        cursor: pointer;
         .locked-msg,
         a:after {
           display: block;

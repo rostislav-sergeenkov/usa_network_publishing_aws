@@ -136,12 +136,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_lyris-newsletter_subscription' => array(
-          'module' => 'usanetwork_lyris',
-          'delta' => 'newsletter_subscription',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'usanetwork_ads-dart_floodlight' => array(
           'module' => 'usanetwork_ads',
           'delta' => 'dart_floodlight',

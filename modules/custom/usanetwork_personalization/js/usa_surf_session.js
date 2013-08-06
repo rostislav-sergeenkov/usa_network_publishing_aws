@@ -32,96 +32,56 @@ var usa_user = new usa_userObj(null);
 // CONFIG
 var usa_userCookie = 'usa_idx';
 var usa_sessionBasePath = 'http://'+window.location.host+'/sites/usanetwork/modules/custom/usanetwork_personalization/php';
-// @TODO: change any environment-specific url's to match the environment you're on
-// For example: http://stage.socialsector.usanetwork.com/donna should be http://socialsector.usanetwork.com/donna on production
-var usa_pathToUsaCode = 'http://stage.socialsector.usanetwork.com/donna';
-
-// MISC FUNCTIONS
-function usa_getCookie(c_name)
-{
-  var c_value = document.cookie;
-  var c_start = c_value.indexOf(" " + c_name + "=");
-  if (c_start == -1)
-  {
-    c_start = c_value.indexOf(c_name + "=");
-  }
-  if (c_start == -1)
-  {
-    c_value = null;
-  }
-  else
-  {
-    c_start = c_value.indexOf("=", c_start) + 1;
-    var c_end = c_value.indexOf(";", c_start);
-    if (c_end == -1)
-    {
-      c_end = c_value.length;
-    }
-    c_value = unescape(c_value.substring(c_start,c_end));
-  }
-  return c_value;
-}
-
-function usa_setCookie(c_name, value, exdays)
-{
-  var exdate=new Date();
-  exdate.setDate(exdate.getDate() + exdays);
-  var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString()) + "; path=/ ; domain=.usanetwork.com";
-  document.cookie=c_name + "=" + c_value;
-}
-
 
 // HIDE / DISPLAY USER INFO
-function showUserAvatarInGlobalNav(avatarUrl, username)
-{
-  usa_debug('fn: showUserAvatarInGlobalNav('+avatarUrl+', '+username+')');
-  if (jQuery('.personalization-trigger span').html().length > 0)
-  {
-    jQuery('.personalization-trigger span').html('<img src="'+avatarUrl+'" alt="'+username+'" />');
-  }
-  else
-  {
-    setTimeout(showUserAvatarInGlobalNav(), 500);
-  }
-}
-
 function usa_hideUser(user)
 {
-  // CODE BELOW SHOWS THE SIGN-IN LINK IN THE GLOBAL NAV BAR
-  // AND HIDES AND REMOVES THE USER INFO IN THE PERSONALIZATION DRAWER
+  // Code below shows the sign in link in the global nav bar
+  // and hides and removes the user info in the personalization drawer.
   jQuery('#personalization-user-info').hide();
   jQuery('.personalization-trigger span').html('SIGN IN');
 
   jQuery('#personalization-username').text('');
   jQuery('#personalization-user-avatar').html('');
+
+  // It also hides loggedin nav elements in the personalization drawer.
+  jQuery('#personalization-navigation .loggedin').hide();
 }
 
 function usa_displayUser(user)
 {
+  usa_debug('fn: usa_displayUser(user)');
+  usa_debug(user);
   // CODE BELOW IS FOR PERSONALIZATION DRAWER AND GLOBAL NAV AVATAR
-  //change welcome user name to include username and possibly avatar
-  //It's important to note that we use text() and not html() here as it's possible that data from SURF/IDX
-  //can contain html entities that need to be escaped by the browser
-  jQuery('#personalization-username').text(user.username);
+  // Note that we use text() and not html() here as it's possible
+  // that data from SURF/IDX can contain html entities that need to
+  // be escaped by the browser.
+  // Make sure HTML has rendered before updating contents or showing them
+  if (jQuery('#personalization-user-info').length)
+  {
+    jQuery('#personalization-username').text(user.username);
 
-  //if we have it, show their avatar
-  if ('avatar' in user && user.avatar != '') {
-    jQuery('#personalization-user-avatar').html('<img src="'+user.avatar+'" alt="'+user.username+'" />');
-    showUserAvatarInGlobalNav(user.avatar, user.username);
-  } else {
-    jQuery('#personalization-user-avatar').html('<img src="'+defaultAvatar+'" alt="'+user.username+'" />');
-    showUserAvatarInGlobalNav(defaultAvatar, user.username);
+    // if we have it, show their avatar
+    if ('avatar' in user && user.avatar != '') {
+      jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+user.avatar+'" alt="'+user.username+'" />');
+    } else {
+      jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+defaultAvatar+'" alt="'+user.username+'" />');
+    }
+    jQuery('#personalization-user-info').show();
+
+    // Show loggedin navigation elements in the personalization drawer
+    jQuery('#personalization-navigation .loggedin').show();
   }
-  jQuery('#personalization-user-info').show();
+  else
+  {
+    setTimeout(function() { usa_displayUser(user); }, 1000);
+  }
 }
 
 // USER LOGGING / SESSION HANDLING
 function usa_userLogin(user)
 {
   usa_debug('fn: usa_userLogin(user)');
-  //usa_debug(user);
-  //usa_debug('userId: '+user._id);
-  //usa_debug('userAuthSignature: '+user._auth_signature);
   usa_user = new usa_userObj(user);
   usa_bpLogin();
   usa_imCreateUser(usa_user);
@@ -141,11 +101,12 @@ function usa_bpLogin(callback)
   usa_debug('fn: usa_bpLogin(callback)');
 
   // if user is logged in, auto login to chat-with-fans comments via backplane
-  if (usa_user.id != guestUser)
+  if (typeof Backplane == 'object' && usa_user.id != guestUser)
   {
     usa_debug(usa_user);
 
-    if (typeof Backplane != "undefined") Backplane.resetCookieChannel();
+    //if (typeof Backplane != "undefined")
+    Backplane.resetCookieChannel();
     Backplane.init({
       "serverBaseURL": "http://api.echoenabled.com/v1",
       "busName": "usanetwork",
@@ -177,31 +138,36 @@ function usa_bpLogin(callback)
 // IDEAMELT
 function usa_imCreateUser(user)
 {
-  if (typeof $ == "undefined") $ = jQuery;
-  var IDEAMELT_API_KEY = "dev.usanetwork";
-  var ENDPOINT = "UserCreate";
-
-  IdeaMelt.init({api_key: IDEAMELT_API_KEY});
-
-  var DATA = {
-    user_url: "http://www.usanetwork.com/profile/"+user.username,
-    title: user.username,
-    avatar: user.avatar,
-  }
-
-  var SUCCESS = function(response)
+  // on pages that do not require SURF login / registration
+  // check to make sure IdeaMelt has been installed
+  if (typeof IdeaMelt != 'undefined')
   {
-    usa_debug("success");
-    usa_debug(response);
-  }
+    if (typeof $ == "undefined") $ = jQuery;
+    var IDEAMELT_API_KEY = "dev.usanetwork";
+    var ENDPOINT = "UserCreate";
 
-  var FAIL = function(response)
-  {
-    usa_debug("fail");
-    usa_debug(response);
-  }
+    IdeaMelt.init({api_key: IDEAMELT_API_KEY});
 
-  IdeaMelt.send(ENDPOINT, DATA, SUCCESS, FAIL);
+    var DATA = {
+      user_url: "http://www.usanetwork.com/profile/"+user.username,
+      title: user.username,
+      avatar: user.avatar,
+    }
+
+    var SUCCESS = function(response)
+    {
+      usa_debug("success");
+      usa_debug(response);
+    }
+
+    var FAIL = function(response)
+    {
+      usa_debug("fail");
+      usa_debug(response);
+    }
+
+    IdeaMelt.send(ENDPOINT, DATA, SUCCESS, FAIL);
+  }
 }
 
 // SESSION HANDLING

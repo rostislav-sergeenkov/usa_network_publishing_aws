@@ -35,7 +35,6 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
      * Image destination directory for the content type.
      * If there is no directory for content type files will be moved to Drupal default files directory
     */
-    // TODO:  Determine/confirm this directory.
     $this->imgDestDir = "public://video";
 
     $options = array();
@@ -162,6 +161,8 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function complete($entity, stdClass $row) {
 
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/**************************
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
@@ -194,10 +195,12 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       );
       state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
     }
+    ****************************/
   }
 
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/*
   public function postRollback() {
-
     // Clear out old stateflow schedule records and queue items.  Will break
     // re-import if left in there.
     db_query("DELETE FROM state_flow_schedule, node
@@ -208,6 +211,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     $queue = DrupalQueue::get('state_flow_schedule');
     $queue->deleteQueue();
   }
+  */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -259,7 +263,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
     //*/
 
-    $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq');
+    $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q');
     //$items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
     // test sort by expiring
     // http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q?range=1-1000&fields=availableDate,expirationDate,title&sort=expirationDate|asc
@@ -316,7 +320,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
       // As of 7/15/13 NEW FEED there were 887 MPX videos.  Setting range to grab them all,
       // plus any that have been added since.
-      $items_url .= '?range=1-1000';
+      $items_url .= '?range=1-1200';
     }
 
     $item_xpath = '/rss/channel/item';  // relative to document
@@ -481,6 +485,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public function complete($entity, stdClass $row) {
 
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/**************************
     // Save state_flow_schedule data by passing $form_state values to the
     // state_flow_events_revision_submit() and state_flow_schedule_content()
     // state_flow_events_revision form submit handlers.
@@ -531,9 +537,11 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
       _usanetwork_migrate_complete_entity_state_transition($entity, 'published');
     }
-
+******************/
   }
 
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/*
   public function postRollback() {
 
     // Clear out old stateflow schedule records and queue items.  Will break
@@ -546,5 +554,6 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $queue = DrupalQueue::get('state_flow_schedule');
     $queue->deleteQueue();
   }
+  */
 }
 

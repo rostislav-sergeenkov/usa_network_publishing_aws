@@ -30,7 +30,6 @@
     <?php print $page_top; ?>
     <div id="page" role="document">
       <header id="header" role="banner" class="clearfix">
-
         <?php if ($site_name): ?>
             <?php if ($site_name): ?>
               <div id="logo">
@@ -39,7 +38,6 @@
             <?php endif; ?>
         <?php endif; ?>
       </header>
-
 
       <?php if ($messages): ?>
         <div id="messages" role="alertdialog"><?php print $messages; ?></div>

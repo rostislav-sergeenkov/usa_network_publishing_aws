@@ -1,34 +1,38 @@
 jQuery(document).ready(function() {
   session.get(displayUserInfo); // check our session and run the callback on success
 
-  jQuery('#debug .content ul').append('<li>Site level jQuery version is '+jQuery().jquery+'</li>');
+  SURF.debug = false;
+  if (SURF.debug) jQuery('#debug .content ul').append('<li>Site level jQuery version is '+jQuery().jquery+'</li>');
 
   //get all our events
   var ev = '';
   var reverseEvents = {}
   for (i in SURF.events) {
-    jQuery('#debug .content ul').prepend('<li>Binding to SURF.events.'+i+'</li>')
+    if (SURF.debug) jQuery('#debug .content ul').prepend('<li>Binding to SURF.events.'+i+'</li>')
     ev += SURF.events[i] + ' ';
     reverseEvents[SURF.events[i]] = i;
   }
 
-  //bind a simple debugging output handler to them
-  SURF.event.bind(ev, function(e, a) {
+  if (SURF.debug)
+  {
+    //bind a simple debugging output handler to them
+    SURF.event.bind(ev, function(e, a) {
 
-  jQuery('#events > .content ul').prepend(
-    jQuery('<li></li>').append('<div class="title"><span class="subtitle">SURF.events.</span>'+reverseEvents[e.type]+'</div>')
-      .append(jQuery('<div class="value"></div>').text(JSON.stringify(a, null, 4)))
-      .append(
-        //again, we use text() to ensure that our JSON is properly htmlescaped
-        jQuery('<pre></pre>').addClass('prettyprint').text(JSON.stringify(a, null, 4))
-      )
-      .addClass(e.type)
-      .addClass('event-log')
-    );
+    jQuery('#events > .content ul').prepend(
+      jQuery('<li></li>').append('<div class="title"><span class="subtitle">SURF.events.</span>'+reverseEvents[e.type]+'</div>')
+        .append(jQuery('<div class="value"></div>').text(JSON.stringify(a, null, 4)))
+        .append(
+          //again, we use text() to ensure that our JSON is properly htmlescaped
+          jQuery('<pre></pre>').addClass('prettyprint').text(JSON.stringify(a, null, 4))
+        )
+        .addClass(e.type)
+        .addClass('event-log')
+      );
 
-    prettyPrint()
+      prettyPrint()
 
-  });
+    });
+  }
 
   /*
   Once all your event handlers are setup, simply call SURF.init();
@@ -78,7 +82,7 @@ jQuery(document).ready(function() {
     //Let the user know we are doing something
     jQuery(this).text('Posting...').addClass('disabled').data('posted', true);
 // @TODO: change environment-specific url's to match the environment you're on
-// For example: should http://www.surfexample-stage.com/ be changed to http://www.surfexample-prod.com/ when on production?
+// For example: should http://www.surfexample-stage.com be changed to http://www.surfexample-prod.com on production?
     var act = new gigya.socialize.UserAction();
     act.setActionName('learned how to implement SURF');
     act.setTitle('In the stage environment.')

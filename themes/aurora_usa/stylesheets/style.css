@@ -6645,6 +6645,8 @@ body.usa-social {
   padding: 19px 15px;
   border-top: 1px solid #161616;
   position: relative;
+  width: 300px;
+  margin: 0 auto;
 }
 .lyris .form-submit {
   float: right;
@@ -6660,30 +6662,10 @@ body.usa-social {
   padding-top: 2px;
   line-height: 2.5714em;
 }
-@media (min-width: 330px) {
-  .lyris .form-submit {
-    margin-right: 159px;
-  }
-}
-@media (min-width: 960px) {
-  .lyris .form-submit {
-    margin-right: 0;
-  }
-}
 .lyris .form-item-email {
   float: left;
   width: 204px;
   margin: 0;
-}
-@media (min-width: 330px) {
-  .lyris .form-item-email {
-    margin-left: 158px;
-  }
-}
-@media (min-width: 960px) {
-  .lyris .form-item-email {
-    margin-left: 0;
-  }
 }
 .lyris .form-item-email input {
   margin: 0;

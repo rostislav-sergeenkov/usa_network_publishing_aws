@@ -8063,6 +8063,50 @@ a[class*="day"] {
   color: #b0b0b0;
 }
 
+.maintenance-page #page {
+  padding: 0 15px;
+  margin: 4em auto;
+}
+@media (min-width: 330px) {
+  .maintenance-page #page {
+    padding: 0;
+    width: 580px;
+    margin-top: 10em;
+    margin-bottom: 10em;
+  }
+}
+.maintenance-page header {
+  width: 160px;
+  margin: 0 auto;
+}
+@media (min-width: 330px) {
+  .maintenance-page header {
+    width: 180px;
+  }
+}
+.maintenance-page h1 {
+  line-height: 1em;
+}
+@media (min-width: 330px) {
+  .maintenance-page h1 {
+    line-height: 24px;
+  }
+}
+.maintenance-page #logo {
+  border-right: 0;
+  font-size: 60px;
+  height: auto;
+  margin-bottom: 5px;
+}
+@media (min-width: 330px) {
+  .maintenance-page #logo {
+    font-size: 66px;
+  }
+}
+.maintenance-page #main {
+  text-align: center;
+}
+
 [class*="iib"] {
   background-color: #2d2d2d;
 }

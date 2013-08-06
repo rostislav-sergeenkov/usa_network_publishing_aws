@@ -102,7 +102,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
 }
 
 function newsletter_lyris_ajax_callback($form, $form_state) {
-  if ($form_state['values']['email'] == '') {
+  if ($form_state['values']['email'] == '' || !(valid_email_address($form_state['values']['email']))) {
     list($form, $form_state) = ajax_get_form();
     drupal_process_form($form['#newsletter'], $form, $form_state);
     form_set_error('', '<span class="error">' . t('please enter a valid e-mail') . '</span>');

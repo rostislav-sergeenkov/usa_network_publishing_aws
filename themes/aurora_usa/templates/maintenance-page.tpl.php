@@ -46,7 +46,6 @@
       <?php endif; ?>
 
       <div id="main" role="main" class="clearfix">
-
         <div id="content" role="article" class="column">
           <a id="main-content"></a>
           <?php print render($title_prefix); ?>

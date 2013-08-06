@@ -317,6 +317,8 @@ body.usa-social {
     border-top: 1px solid $black-dark;
     @extend .clearfix;
     position: relative;
+    width: 300px;
+    margin: 0 auto; 
   }
   .form-submit {
     float: right;
@@ -331,23 +333,11 @@ body.usa-social {
     font-size: 14px;
     padding-top: 2px;
     line-height: 2.5714em;
-    @include breakpoint($bp-social-small-width) {
-      margin-right: 159px;
-    } 
-    @include breakpoint($bp-social-lyris-large) {
-      margin-right: 0;
-    }  
   }
   .form-item-email {
     float: left;
     width: 204px;
     margin: 0;
-    @include breakpoint($bp-social-small-width) {
-      margin-left: 158px;
-    }  
-    @include breakpoint($bp-social-lyris-large) {
-      margin-left: 0;
-    }  
     input {
       margin: 0;
       font-family: $headline-reg;

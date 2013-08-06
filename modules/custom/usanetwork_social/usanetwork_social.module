@@ -837,7 +837,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
-  $vars .= 'var defaultAvatar = "/sites/usanetwork/modules/custom/usanetwork_personalization/images/default_avatar_125x125.jpg"; ';
+  $vars .= 'var defaultAvatar = "/' . drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');

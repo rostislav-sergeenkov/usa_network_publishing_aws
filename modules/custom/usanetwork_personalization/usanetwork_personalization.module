@@ -83,7 +83,7 @@ function usanetwork_personalization_theme($existing, $type, $theme, $path) {
  * Block callback for the personalization block
  */
 function usanetwork_personalization_sign_in(){
-  $defaultAvatar = '/sites/usanetwork/modules/custom/usanetwork_personalization/images/default_avatar_125x125.jpg';
+  $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg';
 
   // BACKPLANE
   drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
@@ -160,7 +160,7 @@ function usanetwork_personalization_surf() {
   // START SURF / IDX
   // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
   // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
-  $defaultAvatar = '/sites/usanetwork/modules/custom/usanetwork_personalization/images/default_avatar_125x125.jpg';
+  $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization').'/images/default_avatar_125x125.jpg';
 
   // BACKPLANE
   drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));

@@ -83,48 +83,49 @@ function usanetwork_personalization_theme($existing, $type, $theme, $path) {
  * Block callback for the personalization block
  */
 function usanetwork_personalization_sign_in(){
-  $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg';
+  // the following SURF code breaks the formatting of the admin pages, so
+  // if not an admin page, load the SURF code
+  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add')
+  {
+    $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg';
 
-  // BACKPLANE
-  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
+    // BACKPLANE
+    drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
 
-  // SURF / IDX INTEGRATION START
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
-  drupal_add_html_head(array(
-    '#tag' => 'script',
-    '#attributes' => array(
-      'src' => 'https://stage.surf.nbcuni.com/rdk/surf.js.php',
-      'data-rdk-url' => "/rdk/",
-      'data-config-key' => 'usanetwork',
-    ),
-  ), 'surf_js_php');
-  // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
-  $debug = '
-  var usa_debugFlag = false;
-  var usa_debug = function(msg) {
-    if (usa_debugFlag && typeof console != "undefined")
-    {
-      if (typeof msg == "object") {
-        console.log("msg is object");
+    // SURF / IDX INTEGRATION START
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
+    drupal_add_html_head(array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'src' => 'https://stage.surf.nbcuni.com/rdk/surf.js.php',
+        'data-rdk-url' => "/rdk/",
+        'data-config-key' => 'usanetwork',
+      ),
+    ), 'surf_js_php');
+    // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+    $debug = '
+    var usa_debugFlag = false;
+    var usa_debug = function(msg) {
+      if (usa_debugFlag && typeof console != "undefined")
+      {
+        if (typeof msg == "object") {
+          console.log("msg is object");
+        }
+        else if (typeof msg == "array") {
+          console.log("msg is array");
+        }
+        console.log(msg);
       }
-      else if (typeof msg == "array") {
-        console.log("msg is array");
-      }
-      console.log(msg);
     }
+    ';
+
+    $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
+    drupal_add_js($debug, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
+    drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
+    // SURF / IDX INTEGRATION END
   }
-  ';
-
-  $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
-  drupal_add_js($debug, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
-  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
-  drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
-  drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
-  drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
-  // SURF / IDX INTEGRATION END
-
 
   $render = array();
 
@@ -157,90 +158,92 @@ function usanetwork_personalization_content() {
 function usanetwork_personalization_surf() {
   $output = '';
 
-  // START SURF / IDX
-  // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
-  // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
-  $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization').'/images/default_avatar_125x125.jpg';
+  // the following SURF code breaks the formatting of the admin pages, so
+  // if not an admin page, load the SURF code
+  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add')
+  {
+    // START SURF / IDX
+    // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
+    // @TODO: UPDATE ANY URL'S SUCH AS stage.surf.nbcuni.com TO PRODUCTION URL'S
+    $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization').'/images/default_avatar_125x125.jpg';
 
-  // BACKPLANE
-  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
+    // BACKPLANE
+    drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
 
-  // SURF / IDX INTEGRATION START
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
-  drupal_add_html_head(array(
-    '#tag' => 'script',
-    '#attributes' => array(
-      'src' => 'https://stage.surf.nbcuni.com/rdk/surf.js.php',
-      'data-rdk-url' => "/rdk/",
-      'data-config-key' => 'usanetwork',
-    ),
-  ), 'surf_js_php');
-  // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
-  $debug = '
-  var usa_debugFlag = false;
-  var usa_debug = function(msg) {
-    if (usa_debugFlag && typeof console != "undefined")
-    {
-      if (typeof msg == "object") {
-        console.log("msg is object");
+    // SURF / IDX INTEGRATION START
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
+    drupal_add_html_head(array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'src' => 'https://stage.surf.nbcuni.com/rdk/surf.js.php',
+        'data-rdk-url' => "/rdk/",
+        'data-config-key' => 'usanetwork',
+      ),
+    ), 'surf_js_php');
+    // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+    $debug = '
+    var usa_debugFlag = false;
+    var usa_debug = function(msg) {
+      if (usa_debugFlag && typeof console != "undefined")
+      {
+        if (typeof msg == "object") {
+          console.log("msg is object");
+        }
+        else if (typeof msg == "array") {
+          console.log("msg is array");
+        }
+        console.log(msg);
       }
-      else if (typeof msg == "array") {
-        console.log("msg is array");
-      }
-      console.log(msg);
     }
-  }
-  ';
+    ';
 
-  $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
-  drupal_add_js($debug, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
-  drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
-  drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
-  drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
-  drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
-  // SURF / IDX INTEGRATION END
+    $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
+    drupal_add_js($debug, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
+    drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
+    // SURF / IDX INTEGRATION END
 
-  // IDEAMELT
-  drupal_add_js('http://www.ideamelt.com/static/apps/3.0/im.library.js', array('type' => 'external'));
+    // IDEAMELT
+    drupal_add_js('http://www.ideamelt.com/static/apps/3.0/im.library.js', array('type' => 'external'));
 
-  $output .= '
-  <!--
-  @TODO: remove this display:none after the SURF / IDX team fixes the
-  background overlay problem where this div is on top of the login / reg forms
-  -->
-  <style>
-  .raas-page-cover {
-    display: none !important;
-  }
-  </style>
+    $output .= '
+    <!--
+    @TODO: remove this display:none after the SURF / IDX team fixes the
+    background overlay problem where this div is on top of the login / reg forms
+    -->
+    <style>
+    .raas-page-cover {
+      display: none !important;
+    }
+    </style>
 
-  <div id="surf">
-    <div class="float_right">
-      <ul id="buttons" class="navigation">
-        <li><button class="generic-button action-signin">Sign-in</button></li>
-        <li><button class="generic-button action-create-account">Register</button></li>
-      </ul>
-    </div>
-    <div style="clear: both;"></div>
-    <div id="user-dialog" style="display: none;">
-      <div class="content">
-        <div class="thumbnail"></div>
-
-        <div class="meta">
-          <div id="username">Username</div>
-          <div id="fullname">Firstname Lastname</div>
-        </div>
-
-        <ul id="user-buttons">
-          <li><button id="button_edit_profile" class="action-edit-account button">Edit Account</button></li>
-          <li><button id="button_signout" class="action-signout button">Signout</button></li>
+    <div id="surf">
+      <div class="float_right">
+        <ul id="buttons" class="navigation">
+          <li><button class="generic-button action-signin">Sign-in</button></li>
+          <li><button class="generic-button action-create-account">Register</button></li>
         </ul>
       </div>
+      <div style="clear: both;"></div>
+      <div id="user-dialog" style="display: none;">
+        <div class="content">
+          <div class="thumbnail"></div>
+
+          <div class="meta">
+            <div id="username">Username</div>
+            <div id="fullname">Firstname Lastname</div>
+          </div>
+
+          <ul id="user-buttons">
+            <li><button id="button_edit_profile" class="action-edit-account button">Edit Account</button></li>
+            <li><button id="button_signout" class="action-signout button">Signout</button></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  ';
+    ';
+  }
 
   return $output;
 }

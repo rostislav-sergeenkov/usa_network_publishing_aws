@@ -2813,7 +2813,18 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 
 .personalization-content {
   background-color: #3d3d3d;
-  padding: 10px;
+  padding: 40px;
+}
+@media (min-width: 769px) {
+  .personalization-content {
+    height: 400px;
+  }
+}
+.personalization-content .col {
+  float: left;
+}
+.personalization-content #personalization-nav {
+  float: right;
 }
 .personalization-content .close {
   display: block;
@@ -2855,6 +2866,10 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   right: 5px;
   white-space: nowrap;
   cursor: pointer;
+  top: 14px;
+}
+.personalization-trigger.logged-in {
+  top: 10px;
 }
 @media (min-width: 769px) {
   .personalization-trigger {
@@ -2863,7 +2878,30 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     right: 15px;
     line-height: 65px;
     position: relative;
+    top: auto;
   }
+  .personalization-trigger.logged-in {
+    top: auto;
+  }
+}
+
+.personalization-avatar img {
+  border: 2px solid white;
+  vertical-align: middle;
+}
+.personalization-trigger .personalization-avatar img {
+  width: 32px;
+  height: 32px;
+}
+@media (min-width: 769px) {
+  .personalization-trigger .personalization-avatar img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+#block-usanetwork-personalization-sign-in.block {
+  display: block;
 }
 
 #utilities {

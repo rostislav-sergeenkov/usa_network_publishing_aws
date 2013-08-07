@@ -81,6 +81,30 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tv_show' => 'tv_show',
+  );
+  /* Filter criterion: Content: Hide from cast carousel (field_hide_cast_carousel) */
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['id'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['table'] = 'field_data_field_hide_cast_carousel';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['field'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: global social follow */
   $handler = $view->new_display('block', 'global social follow', 'block_2');
@@ -111,6 +135,30 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_shows:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_arguments'] = 'none';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tv_show' => 'tv_show',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: admin page: global social follow */
   $handler = $view->new_display('page', 'admin page: global social follow', 'page_1');
@@ -175,6 +223,30 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tv_show' => 'tv_show',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'admin/usanetwork/shows/social_shows';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Shows: global social follow block';
@@ -217,6 +289,30 @@ function usanetwork_showpages_views_default_views() {
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'usa_shows:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_arguments'] = 'none';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tv_show' => 'tv_show',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['displays'] = array(
     'block_2' => 'block_2',
     'default' => 0,

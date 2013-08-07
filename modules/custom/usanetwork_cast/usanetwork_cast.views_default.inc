@@ -62,7 +62,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -117,6 +117,22 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
+  /* Filter criterion: Content: Hide from cast carousel (field_hide_cast_carousel) */
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['id'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['table'] = 'field_data_field_hide_cast_carousel';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['field'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: show cast carousel */
   $handler = $view->new_display('block', 'show cast carousel', 'block_1');
@@ -164,7 +180,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -215,7 +231,8 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
-  /* Filter criterion: Field: Role (field_role) */
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Role (field_role) */
   $handler->display->display_options['filters']['field_role_tid']['id'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['table'] = 'field_data_field_role';
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
@@ -223,8 +240,18 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
     256 => '256',
   );
+  $handler->display->display_options['filters']['field_role_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
+  /* Filter criterion: Content: Hide from cast carousel (field_hide_cast_carousel) */
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['id'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['table'] = 'field_data_field_hide_cast_carousel';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['field'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['group'] = 1;
 
   /* Display: admin cast carousel sorting page */
   $handler = $view->new_display('page', 'admin cast carousel sorting page', 'page_1');
@@ -347,7 +374,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -409,7 +436,8 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
-  /* Filter criterion: Field: Role (field_role) */
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Role (field_role) */
   $handler->display->display_options['filters']['field_role_tid']['id'] = 'field_role_tid';
   $handler->display->display_options['filters']['field_role_tid']['table'] = 'field_data_field_role';
   $handler->display->display_options['filters']['field_role_tid']['field'] = 'field_role_tid';
@@ -417,8 +445,18 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['field_role_tid']['value'] = array(
     256 => '256',
   );
+  $handler->display->display_options['filters']['field_role_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_role_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_role_tid']['vocabulary'] = 'role';
+  /* Filter criterion: Content: Hide from cast carousel (field_hide_cast_carousel) */
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['id'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['table'] = 'field_data_field_hide_cast_carousel';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['field'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['group'] = 1;
   $handler->display->display_options['path'] = 'admin/usanetwork/shows/cast_carousel';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Shows: cast carousels';
@@ -474,7 +512,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -566,6 +604,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
     'tv_show' => 'tv_show',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
   );
 
   /* Display: admin show social: people list sorting page */
@@ -689,7 +751,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -735,6 +797,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'admin/usanetwork/shows/social_people';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Shows: social page people';
@@ -807,6 +893,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  /* Filter criterion: Content: Hide from cast carousel (field_hide_cast_carousel) */
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['id'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['table'] = 'field_data_field_hide_cast_carousel';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['field'] = 'field_hide_cast_carousel_value';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_cast_carousel_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['pane_title'] = 'Show Cast Button';
   $handler->display->display_options['argument_input'] = array(
     'field_show_target_id' => array(
@@ -941,6 +1051,14 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tv_show' => 'tv_show',
   );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['displays'] = array(
     'block_2' => 'block_2',
     'panel_pane_2' => 'panel_pane_2',
@@ -999,6 +1117,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
     'tv_show' => 'tv_show',
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Attachment: show landing people list expanded */
   $handler = $view->new_display('attachment', 'Attachment: show landing people list expanded', 'attachment_2');
@@ -1051,6 +1193,30 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['arguments']['field_show_target_id']['validate_options']['types'] = array(
     'tv_show' => 'tv_show',
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  /* Filter criterion: Content: Hide from social follow block (field_hide_social_follow) */
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['id'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['table'] = 'field_data_field_hide_social_follow';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['field'] = 'field_hide_social_follow_value';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_hide_social_follow_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['displays'] = array(
     'panel_pane_2' => 'panel_pane_2',
     'default' => 0,
@@ -1093,7 +1259,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';
@@ -1141,7 +1307,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Person (field_person) */
+  /* Contextual filter: Content: Related Person (field_person) */
   $handler->display->display_options['arguments']['field_person_target_id']['id'] = 'field_person_target_id';
   $handler->display->display_options['arguments']['field_person_target_id']['table'] = 'field_data_field_person';
   $handler->display->display_options['arguments']['field_person_target_id']['field'] = 'field_person_target_id';
@@ -1282,7 +1448,7 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: Role */
+  /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
   $handler->display->display_options['fields']['field_role']['table'] = 'field_data_field_role';
   $handler->display->display_options['fields']['field_role']['field'] = 'field_role';

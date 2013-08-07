@@ -180,7 +180,9 @@ function usanetwork_person_field_group_info() {
       1 => 'field_show',
       2 => 'field_usa_actor_name',
       3 => 'field_usa_character_thumb',
-      4 => 'group_social',
+      4 => 'field_hide_social_follow',
+      5 => 'field_hide_cast_carousel',
+      6 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

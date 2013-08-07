@@ -18,7 +18,16 @@ body {
 
 .personalization-content {
   background-color: $gray-med;
-  padding: 10px;
+  padding: 40px;
+  @include breakpoint($bp-menu-switch) {
+    height: 400px;
+  }  
+  .col {
+    float: left;
+  }
+  #personalization-nav {
+    float: right;
+  }
   .close {
     display: block;
     position: absolute;
@@ -58,11 +67,38 @@ body {
   right: 5px;
   white-space: nowrap;
   cursor: pointer;
+  top: 14px;
+  &.logged-in {
+    top: 10px;
+  }
   @include breakpoint($bp-menu-switch) {
     font-size: 16px;
     height: 65px;
     right: 15px;
     line-height: 65px;
     position: relative;
+    top: auto;
+    &.logged-in {
+      top: auto;
+    }  
   }
+}
+
+.personalization-avatar {
+  img {
+    border: 2px solid $white;
+    vertical-align: middle;
+    .personalization-trigger & {
+      width: 32px;
+      height: 32px;
+      @include breakpoint($bp-menu-switch) {
+        width: 45px;
+        height: 45px;
+      }  
+    }
+  }
+}
+
+#block-usanetwork-personalization-sign-in.block {
+  display: block;
 }

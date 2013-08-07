@@ -27,7 +27,6 @@
     <div id="skip-link">
       <a href="#main-content" class="element-invisible element-focusable" role="link"><?php print t('Skip to main content'); ?></a>
     </div>
-    <?php print $page_top; ?>
     <div id="page" role="document">
       <header id="header" role="banner" class="clearfix">
         <?php if ($site_name): ?>
@@ -54,6 +53,5 @@
       </div><!-- #main -->
 
     </div><!-- #page -->
-    <?php print $page_bottom; ?>
   </body>
 </html>

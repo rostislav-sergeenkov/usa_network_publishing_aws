@@ -90,17 +90,9 @@ $carousel-medium: 221px, 185px;
 $carousel-large: 237px, 198px;
 
 // Breakpoint variables
-// small grid breakpoints
 $breakpoint-no-query-fallbacks: true;
 $bp-menu-switch: 769px;
 $bp-menu-wide: 960px;
-$bp-grid-small-2-squish: max-width 524px;
-$bp-grid-small-2: 525px;
-$bp-grid-small-3: 772px;
-$bp-grid-small-4: 1020px;
-$bp-grid-small-2-3: max-width ($bp-grid-small-3 - 1);
-$bp-grid-small-2-fence: $bp-grid-small-2 ($bp-grid-small-3 - 1);
-$bp-grid-small-3-fence: $bp-grid-small-3 ($bp-grid-small-4 - 1);
 
 $bp-episode-side-menu: 769px, 'no-query' '.no-mediaqueries';
 $bp-episode-split-content: 881px;
@@ -217,6 +209,24 @@ $bp-schedule-date-wide: 640px;
 $bp-show-four-subnav-images: 1200px;
 
 $bp-maintenance: 330px;
+
+
+// small grid breakpoints
+$bp-grid-small-2-squish: max-width 524px;
+$bp-grid-small-2: 525px;
+$bp-grid-small-3: 772px;
+$bp-grid-small-4: 1020px;
+$bp-grid-small-2-3: max-width ($bp-grid-small-3 - 1);
+$bp-grid-small-2-fence: $bp-grid-small-2 ($bp-grid-small-3 - 1);
+$bp-grid-small-3-fence: $bp-grid-small-3 ($bp-grid-small-4 - 1);
+// small - wide grid breakpoints
+$bp-grid-small-wide-2-3: max-width ($bp-video-medium-width - 1);
+$bp-grid-small-wide-2-fence: $bp-video-mid-small-width ($bp-video-medium-width - 1);
+$bp-grid-small-wide-3-fence: $bp-video-medium-width ($bp-video-large-width - 1);
+$bp-grid-small-wide-4-fence: $bp-video-large-width ($bp-video-very-large-width - 1);
+$bp-grid-small-wide-4: $bp-video-very-large-width;
+
+
 
 ////////////////////////////
 // COMPASS DEFAULTS

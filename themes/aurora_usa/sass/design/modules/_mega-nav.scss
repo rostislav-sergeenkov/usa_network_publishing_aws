@@ -198,7 +198,7 @@
 .mega-sub-nav-link {
   font-family: $headline-reg;
   color: $white;
-  &:hover {
+  &:hover, &.active:hover {
     color: $blue;
   }
 }
@@ -218,6 +218,9 @@
   }
   a {
     color: $white;
+    &.active {
+      color: $white;
+    }
   }
   .more-title {
     @extend %h2;

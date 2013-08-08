@@ -452,3 +452,11 @@ function usanetwork_core_update_7117() {
   module_disable($modules_un);
   drupal_uninstall_modules($modules_un);
 }
+
+/**
+ * Enable new usanetwork_workbench module
+ */
+function usanetwork_core_update_7118() {
+  $modules = array('usanetwork_workbench');
+  module_enable($modules);
+}

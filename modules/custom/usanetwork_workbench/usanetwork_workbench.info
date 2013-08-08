@@ -1,0 +1,9 @@
+name = usanetwork_workbench
+description = custom workbench workflow for usa
+core = 7.x
+package = USA Network
+dependencies[] = ctools
+dependencies[] = workbench_workflows
+features[ctools][] = workbench_workflows:workbench_workflows:1
+features[features_api][] = api:2
+features[workbench_workflows_workflows][] = usa_default_workflow

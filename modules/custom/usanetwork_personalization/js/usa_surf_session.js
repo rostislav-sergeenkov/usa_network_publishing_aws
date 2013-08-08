@@ -60,6 +60,8 @@ function usa_displayUser(user)
   if (jQuery('#personalization-user-info').length)
   {
     jQuery('#personalization-username').text(user.username);
+    jQuery('.personalization-trigger span').addClass('personalization-avatar');
+    jQuery('.personalization-trigger').addClass('logged-in');
 
     // if we have it, show their avatar
     if ('avatar' in user && user.avatar != '') {
@@ -74,6 +76,8 @@ function usa_displayUser(user)
   }
   else
   {
+    jQuery('.personalization-trigger span').removeClass('personalization-avatar');
+    jQuery('.personalization-trigger').removeClass('logged-in');
     setTimeout(function() { usa_displayUser(user); }, 1000);
   }
 }

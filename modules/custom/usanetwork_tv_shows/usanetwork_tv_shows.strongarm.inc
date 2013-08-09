@@ -242,13 +242,13 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
       ),
       'display' => array(),

@@ -158,9 +158,9 @@ $bp-carousel-smallest: 330px;
 
 
 // show landing page
-$bp-show-very-large-width: 1275px;
-$bp-show-large-width: 959px;
 $bp-show-mid-width: 645px;
+$bp-show-large-width: 959px;
+$bp-show-very-large-width: 1275px;
 
 $bp-aspot-very-large-width: 1275px;
 $bp-aspot-large-width: 959px;
@@ -225,6 +225,13 @@ $bp-grid-small-wide-3-fence: $bp-video-medium-width ($bp-video-large-width - 1);
 $bp-grid-small-wide-2-3-fence: $bp-video-mid-small-width ($bp-video-large-width - 1);
 $bp-grid-small-wide-4-fence: $bp-video-large-width ($bp-video-very-large-width - 1);
 $bp-grid-small-wide-4: $bp-video-very-large-width;
+
+// show page grid breakpoints
+$bp-grid-show-2: $bp-show-mid-width;
+$bp-grid-show-3: $bp-show-large-width;
+$bp-grid-show-4: $bp-show-very-large-width;
+$bp-grid-show-2-fence: $bp-grid-show-2 ($bp-grid-show-3 - 1);
+$bp-grid-show-3-fence: $bp-grid-show-3 ($bp-grid-show-4 - 1);
 
 
 

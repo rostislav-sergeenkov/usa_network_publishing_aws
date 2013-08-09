@@ -1,6 +1,6 @@
 %grid-small-two-three-four {
   .grid-item {
-    margin-bottom: 15px;
+    @extend %grid-item;
   }
   @include breakpoint($bp-grid-small-2-3) {
     @include layout(2, .062){

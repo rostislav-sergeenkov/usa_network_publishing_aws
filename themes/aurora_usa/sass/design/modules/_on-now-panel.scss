@@ -73,8 +73,7 @@
 .show-on-sync {
   position: relative;
   span {
-    font-family: $headline-semi;
-    font-size: 14px;
+    @extend %semi-14;
     color: $white;
     bottom: 15px;
     display: inline-block;
@@ -219,8 +218,7 @@
     display: table-cell;
   }
   .show-title {
-    font-size: 14px;
-    font-family: $headline-semi;
+    @extend %semi-14;
     padding-bottom: 2px;
     @include breakpoint($bp-menu-wide) {
       font-size: 18px;

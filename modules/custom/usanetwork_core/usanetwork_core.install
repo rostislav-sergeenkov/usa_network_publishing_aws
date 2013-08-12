@@ -421,13 +421,6 @@ function usanetwork_core_update_7114() {
 function usanetwork_core_update_7115() {
   module_enable(array('workbench', 'workbench_moderation', 'revision_scheduler', 'pub_workbench'));
   module_disable(array('sps', 'pub_state_flow', 'state_flow_schedule'));
-
-  $queue = DrupalQueue::get('state_flow_schedule');
-  $queue->deleteQueue();
-  $queue = DrupalQueue::get('usanetwork_migrate_unpublish_content');
-  $queue->deleteQueue();
-  $queue = DrupalQueue::get('usanetwork_migrate_state_flow_fix');
-  $queue->deleteQueue();
 }
 
 /**

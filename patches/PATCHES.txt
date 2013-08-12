@@ -11,6 +11,12 @@
     - modules/contrib/revision_scheduler/revision_scheduler.module
     - patch_commit_db2a5cd385cc.patch
 
+================================== P7 CUSTOM =====================================
+
+  * Event name in install hook is incorrect
+    - sites/usanetwork/modules/custom_p7/pub_workbench/pub_workbench.module
+    - patch_commit_f885d3d75d63.patch
+
 ================================== CORE ========================================
 
   * Overridden the file core module to resolve the missing file reference

@@ -22,7 +22,7 @@ function pub_workbench_install() {
       $operation->entity_type = 'node';
       $operation->entity_id = $record->nid;
       $operation->revision_id = $record->vid;
-      $operation->operation = 'workbench_moderation_publish';
+      $operation->operation = 'workbench_moderation_to_published';
       $operation->time_scheduled = $record->date;
       $operation->time_queued = 0;
       $operation->time_executed = 0;

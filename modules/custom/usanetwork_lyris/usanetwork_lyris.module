@@ -115,8 +115,11 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
     if (empty($form['newsletter']['title'])) {
       $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up!') . '</span>';
     } else {
-      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up for the %title newsletter!' . '</span>',  array('%title' => $form_state['values']['title']));
+      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up for the %title newsletter!',  array('%title' => $form_state['values']['title'])) . '</span>';
     }
+    return $form['newsletter'];
+  } elseif (valid_email_address($form_state['values']['email']) && $result == null) {
+    $form['newsletter']['#markup'] = t('This email address is already registered for the %title newsletter.', array('%title' => $form_state['values']['title'])) ;
     return $form['newsletter'];
   } else {
     $form['newsletter']['#markup'] = t('Problem subscribing, please try again later.');

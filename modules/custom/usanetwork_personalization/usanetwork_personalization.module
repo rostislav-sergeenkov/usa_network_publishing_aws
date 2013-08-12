@@ -247,3 +247,79 @@ function usanetwork_personalization_surf() {
 
   return $output;
 }
+
+/**
+ * Implements hook_state_flow_event()
+ */
+function usanetwork_personalization_state_flow_event($new_state) {
+}
+
+/**
+ * Implements hook_node_update()
+ */
+function usanetwork_personalization_node_update($node) {
+  $lang = LANGUAGE_NONE;
+
+  if ($node->status == 1) {
+    $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode'); 
+     
+    $state = db_select('state_flow_history', 's')
+               ->fields('s', array('state'))
+               ->condition('entity_id', $node->nid, '=')
+               ->orderBy('timestamp', 'DESC')
+               ->range(0,1)
+               ->execute()
+               ->fetchField();
+    if ($state == 'published' && in_array($node->type, $ideamelt_entities) && 
+      isset($node->field_send_ideamelt_notification[$lang][0]['value']) && $node->field_send_ideamelt_notification[$lang][0]['value'] == 1) {
+      _usanetwork_personalization_notify_ideamelt($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_revision_scheduler_operation_preprocess()
+ */
+function usanetwork_personalization_revision_scheduler_operation_preprocess($entity, $operation) {
+  if ($operation->operation == 'workbench_moderation_to_published') {
+    _usanetwork_personalization_notify_ideamelt($entity);
+  }
+}
+
+/**
+ * Helper function to notify ideamelt
+ */
+function _usanetwork_personalization_notify_ideamelt($node) {
+  $lang = LANGUAGE_NONE;
+
+  $data = array();
+  //TODO: create a system configuration to capture ideamelt api key
+  $data['api_key'] = "dev.usanetwork";
+
+  if ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') {
+    $object_tid = isset($node->field_ideamelt_object_type[$lang][0]['tid']) ? $node->field_ideamelt_object_type[$lang][0]['tid'] : '';
+    $object_term = taxonomy_term_load($object_tid);
+    $data['object_type'] = $object_term->name;
+  } else if ($node->type == 'tv_episode') {
+    $data['object_type'] = 'Episode Guide';
+  } else if ($node->type == 'media_gallery') {
+    $data['object_type'] = 'Photo Gallery';
+  } else {
+    $data['object_type'] = $node->type;
+  }
+  
+  $data['action_type'] = isset($node->field_ideamelt_action_type[$lang][0]['value']) ? $node->field_ideamelt_action_type[$lang][0]['value'] : '';
+  if (isset($node->field_show[$lang][0]['target_id'])) {
+    $data['user_url'] = url(drupal_get_path_alias('node/'.$node->field_show[$lang][0]['target_id']), array('absolute' => true));
+  } 
+  $data['object_url'] = url(drupal_get_path_alias('node/'.$node->nid), array('absolute' => true));
+  $ideamelt_url = 'http://api.ideamelt.com/v1/story/create/';
+  $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+  
+  $response = drupal_http_request($ideamelt_url, array('headers' => $headers, 'method' => 'POST', 'data' => http_build_query($data)));
+  dvm($response);
+  $result = drupal_json_decode($response->data);
+  if (isset($result['success']) && !empty($result['success'])) {
+    watchdog('usanetwork_personalization', 'Error: Ideamelt notification for enitity id: ' . $node->nid .'; Response:'. $result['message_list']);
+  }
+}

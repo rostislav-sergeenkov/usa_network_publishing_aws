@@ -37,7 +37,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['more_button_text'] = 'more';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_episode';
   /* Field: Content: Title */
@@ -61,7 +60,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -70,6 +69,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
   );
   /* Filter criterion: Content: Full Episode (field_full_episode) */
   $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
@@ -77,13 +77,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['field_full_episode_value']['field'] = 'field_full_episode_value';
   $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
     1 => '1',
-  );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['state']['id'] = 'state';
-  $handler->display->display_options['filters']['state']['table'] = 'node_revision_states';
-  $handler->display->display_options['filters']['state']['field'] = 'state';
-  $handler->display->display_options['filters']['state']['value'] = array(
-    'published' => 'published',
   );
 
   /* Display: Global Full Episode */
@@ -120,7 +113,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['display_description'] = 'Show Full Episode';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
@@ -167,7 +159,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['display_description'] = 'Category Videos';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
@@ -338,14 +329,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['date']['id'] = 'date';
-  $handler->display->display_options['fields']['date']['table'] = 'state_flow_schedule';
-  $handler->display->display_options['fields']['date']['field'] = 'date';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['state']['id'] = 'state';
-  $handler->display->display_options['fields']['state']['table'] = 'node_revision_states';
-  $handler->display->display_options['fields']['state']['field'] = 'state';
   /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
@@ -377,11 +360,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['state']['id'] = 'state';
-  $handler->display->display_options['sorts']['state']['table'] = 'node_revision_states';
-  $handler->display->display_options['sorts']['state']['field'] = 'state';
-  $handler->display->display_options['sorts']['state']['order'] = 'DESC';
   /* Sort criterion: Content: Published */
   $handler->display->display_options['sorts']['status']['id'] = 'status';
   $handler->display->display_options['sorts']['status']['table'] = 'node';

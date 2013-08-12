@@ -577,3 +577,20 @@ function usanetwork_video_admin_debug_feeds() {
   return $render;
 }
 
+/**
+  * Implements hook_form_alter
+  * disable the delete button for videos
+  */
+function usanetwork_video_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'usa_tve_video_node_form':
+    case 'usa_video_node_form':
+      $form['actions']['delete'] = array(
+        '#weight' => 20,
+        '#disabled' => true,
+        '#type' => 'button',
+        '#value' => t('Delete'),
+        );
+    break;
+  }
+}

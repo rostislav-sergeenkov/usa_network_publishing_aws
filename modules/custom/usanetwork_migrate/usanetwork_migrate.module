@@ -239,6 +239,7 @@ function usanetwork_migrate_cron() {
 
 /*
  * Implements hook_cron_queue_info().
+ * @TODO this can be deleted after workbench upgrade
  */
 // REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
 /**************************
@@ -261,6 +262,7 @@ function usanetwork_migrate_cron_queue_info() {
  * Process state flow schedule queue items to prepare them for publishing.
  *
  * @param object $data
+ * @TODO this can be deleted after workbench upgrade
  */
 function process_usanetwork_migrate_state_flow_fix_item($data) {
 
@@ -314,6 +316,7 @@ function process_usanetwork_migrate_state_flow_fix_item($data) {
  * Process scheduled nodes to fire unpublish state flow event.
  *
  * @param object $data
+ * @TODO this can be deleted after workbench upgrade
  */
 function process_usanetwork_migrate_unpublish_content_item($data) {
 
@@ -333,6 +336,7 @@ function process_usanetwork_migrate_unpublish_content_item($data) {
 
 /**
  * Helper that returns the items in a queue.
+ * @TODO this can be deleted after workbench upgrade; delete the queues before removing this
  */
 function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit = NULL) {
 
@@ -362,6 +366,7 @@ function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit =
 
 /**
  * Return all nodes scheduled to be published
+ * @TODO this can be deleted after workbench upgrade
  */
 function usanetwork_migrate_get_nodes_to_unpublish() {
 
@@ -377,6 +382,7 @@ function usanetwork_migrate_get_nodes_to_unpublish() {
 
 /**
  * Helper function that properly transitions an entity to the desired state flow state.
+ * @TODO this can be deleted after workbench upgrade
  */
 function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_state) {
 
@@ -443,6 +449,7 @@ function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_sta
 
 /**
  * Helper that performs a single entity state transition.
+ * @TODO this can be deleted after workbench upgrade
  */
 function _usanetwork_migrate_transition_entity_state($entity, $transition, $entity_state_machine) {
 

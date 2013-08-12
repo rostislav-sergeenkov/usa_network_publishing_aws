@@ -118,15 +118,6 @@ $bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
 $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
-// home page grid
-$bp-home-2col: 645px;
-$bp-home-3col: 960px;
-$bp-home-widest: 1275px;
-$bp-home-narrowest: max-width ($bp-home-2col - 1);
-$bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
-$bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
-
-
 // ad leaderboard
 $bp-ad-leaderboard-med-width: 768px;
 
@@ -206,6 +197,14 @@ $bp-schedule-date-wide: 640px;
 $bp-show-four-subnav-images: 1200px;
 
 $bp-maintenance: 330px;
+
+// home page grid breakpoints
+$bp-home-2col: 645px;
+$bp-home-3col: 960px;
+$bp-home-widest: 1275px;
+$bp-home-narrowest: max-width ($bp-home-2col - 1);
+$bp-home-2-fence: $bp-home-2col ($bp-home-3col - 1);
+$bp-home-3-fence: $bp-home-3col ($bp-home-widest - 1);
 
 
 // small grid breakpoints

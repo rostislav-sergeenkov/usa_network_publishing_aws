@@ -196,7 +196,7 @@
   overflow: hidden;
 }
 .mega-sub-nav-link {
-  font-family: $headline-reg;
+  @extend %regular;
   color: $white;
   &:hover, &.active:hover {
     color: $blue;
@@ -224,7 +224,7 @@
   }
   .more-title {
     @extend %h2;
-    font-family: $headline-semi;
+    @extend %semi;
     color: $gray-extra-light;
     text-transform: uppercase;
   }
@@ -338,10 +338,9 @@
   }
 }
 #block-usanetwork-blocks-usa-tv-show-menu {
+  @extend %regular-18;
   display: inline-block;
-  font-family: $headline-reg;
   text-transform: lowercase;
-  font-size: 19px;
   height: $primary-nav-height-dt - 33px;
   line-height: $primary-nav-height-dt - 33px;
   > div {
@@ -349,13 +348,12 @@
   }
 }
 .tv-show-menu-trigger {
+  @extend %semi-22;
   color: $blue;
   margin-right: 8px;
-  font-size: 22px;
   padding: 0 1em 0 0.5em;
   border-right: 1px solid $gray-med;
   position: relative;
-  font-family: $headline-semi;
   @include breakpoint($bp-menu-switch) {
     &:after {
       position: absolute;

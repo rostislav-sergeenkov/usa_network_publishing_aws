@@ -118,15 +118,6 @@ $bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
 $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
-// home page grid
-$bp-home-2col: 645px;
-$bp-home-3col: 960px;
-$bp-home-widest: 1275px;
-$bp-home-narrowest: max-width ($bp-home-2col - 1);
-$bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
-$bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
-
-
 // ad leaderboard
 $bp-ad-leaderboard-med-width: 768px;
 
@@ -158,9 +149,9 @@ $bp-carousel-smallest: 330px;
 
 
 // show landing page
-$bp-show-very-large-width: 1275px;
-$bp-show-large-width: 959px;
 $bp-show-mid-width: 645px;
+$bp-show-large-width: 959px;
+$bp-show-very-large-width: 1275px;
 
 $bp-aspot-very-large-width: 1275px;
 $bp-aspot-large-width: 959px;
@@ -207,6 +198,14 @@ $bp-show-four-subnav-images: 1200px;
 
 $bp-maintenance: 330px;
 
+// home page grid breakpoints
+$bp-home-2col: 645px;
+$bp-home-3col: 960px;
+$bp-home-widest: 1275px;
+$bp-home-narrowest: max-width ($bp-home-2col - 1);
+$bp-home-2-fence: $bp-home-2col ($bp-home-3col - 1);
+$bp-home-3-fence: $bp-home-3col ($bp-home-widest - 1);
+
 
 // small grid breakpoints
 $bp-grid-small-2-squish: max-width 524px;
@@ -225,6 +224,13 @@ $bp-grid-small-wide-3-fence: $bp-video-medium-width ($bp-video-large-width - 1);
 $bp-grid-small-wide-2-3-fence: $bp-video-mid-small-width ($bp-video-large-width - 1);
 $bp-grid-small-wide-4-fence: $bp-video-large-width ($bp-video-very-large-width - 1);
 $bp-grid-small-wide-4: $bp-video-very-large-width;
+
+// show page grid breakpoints
+$bp-grid-show-2: $bp-show-mid-width;
+$bp-grid-show-3: $bp-show-large-width;
+$bp-grid-show-4: $bp-show-very-large-width;
+$bp-grid-show-2-fence: $bp-grid-show-2 ($bp-grid-show-3 - 1);
+$bp-grid-show-3-fence: $bp-grid-show-3 ($bp-grid-show-4 - 1);
 
 
 

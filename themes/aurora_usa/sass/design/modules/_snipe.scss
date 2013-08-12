@@ -2,10 +2,10 @@
   #block-usanetwork-blocks-usa-meganav {
     display: none;
   }
-  .tv-show-menu-trigger:after { 
+  .tv-show-menu-trigger:after {
     top: -14px;
-  }  
-}  
+  }
+}
 
 .snipe-msg {
   font-size: 18px;
@@ -36,26 +36,24 @@
       width: 1px;
       z-index: 1;
     }
-  }  
- 
+  }
+
   h2, h3, h4 {
     margin: 0;
     line-height: 1em;
   }
   h2 {
-    font-family: $headline-semi;
-    font-size: 18px;
+    @extend %semi-18;
     color: $blue;
     @include breakpoint($bp-menu-switch) {
       font-size: 22px;
-    }  
+    }
   }
   h3 {
-    font-family: $headline-reg;
-    font-size: 16px;
+    @extend %regular-16;
     @include breakpoint($bp-menu-switch) {
       font-size: 18px;
-    }  
+    }
   }
   .close {
     display: block;
@@ -68,7 +66,7 @@
     @extend %usanetwork-font;
     @include breakpoint($bp-menu-switch) {
       top: 0;
-    }  
+    }
     .ie9 &, .ie8 &, .no-font-feature-settings & {
       background: url(../images/svgs/ie_x1.svg) no-repeat top left;
       height: 20px;
@@ -89,7 +87,7 @@
   text-align: left;
   z-index: 1;
   .snipe-active & {
-    bottom: 50px;  
+    bottom: 50px;
     background-color: $gray-dark;
   }
   @include breakpoint($bp-menu-switch) {
@@ -131,5 +129,5 @@
         border-top: 5px solid $blue;
       }
     }
-  } 
-}  
+  }
+}

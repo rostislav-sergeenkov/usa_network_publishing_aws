@@ -24,6 +24,7 @@
         <figure>
           <img src="/<?php print drupal_get_path('theme','aurora_usa') . '/images/usaall_221x184.jpg'; ?>" />
         </figure>
+         <h4>USA All</h4>
       </a>
     </li>
     <?php foreach ($rows as $id => $row): ?>

@@ -48,10 +48,9 @@
     float: right;
   }
   h2 {
+    @extend %bold-18;
     margin-bottom: 2px;
-    font-size: 18px;
     line-height: 1.5em;
-    font-family: $headline-bold;
     text-transform: uppercase;
     margin-top: 1px;
     @include breakpoint($bp-show-mid-width) {
@@ -61,51 +60,21 @@
 }
 
 
-
 .promo-ads-panel {
-  position: relative;
+  .expandable-content {
+    position: relative;
+  }
   .panel-col2  {
     position: static;
     display: none;
     @include breakpoint($bp-show-mid-width) {
       display: block;
       position: absolute;
-      right: 11px;
+      right: 0;
+      top: 0;
     }
   }
-  .panel-col1 .field {
-    @include breakpoint($bp-show-mid-width) {
-      li:first-child {
-        margin-right: 304px;
-      }
-    }
-    @include breakpoint($bp-show-large-width) {
-      li:first-child {
-        margin-right: 11px;
-      }
-      li:first-child + li {
-        margin-right: 304px;
-      }
-    }
-    @include breakpoint($bp-show-very-large-width) {
-      li:first-child + li {
-        margin-right: 11px;
-      }
-      li:first-child + li + li {
-        margin-right: 304px;
-      }
-    }
-    .usa-adrails & {
-      li:first-child + li {
-        margin-right: 304px;
-      }
-      li:first-child + li + li {
-        margin-right: 11px;
-      }
-    }
-  } 
 }
-
 
 
 .video-promo-ads-panel {
@@ -131,7 +100,6 @@
   }
   .flex-next,
   .flex-prev {
-    // display: none;
     @include opacity(0);
   }
   &:hover {

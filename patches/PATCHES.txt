@@ -9,6 +9,7 @@
   * TODO added when we updated to pub 7 v7.18.0; remove when the module has this
   * patch properly integrated as part of a p7 release
     - modules/contrib/revision_scheduler/revision_scheduler.module
+    - patch_commit_db2a5cd385cc.patch
 
 ================================== CORE ========================================
 

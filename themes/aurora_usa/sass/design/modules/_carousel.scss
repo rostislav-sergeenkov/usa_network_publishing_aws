@@ -2,8 +2,8 @@
 .carousel-item {
   float: left;
   display: block;
-  .cast-carousel & {
-    text-align: center;
+  text-align: center;
+  .cast-carousel & {  
     width: 183px;
     height: 145px;
     @include breakpoint($bp-carousel-smallest) {

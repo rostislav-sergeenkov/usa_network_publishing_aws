@@ -2,8 +2,8 @@
 .carousel-item {
   float: left;
   display: block;
-  .cast-carousel & {
-    text-align: center;
+  text-align: center;
+  .cast-carousel & {  
     width: 183px;
     height: 145px;
     @include breakpoint($bp-carousel-smallest) {
@@ -28,7 +28,7 @@
     overflow: hidden;
   }
   h4 {
-    font-family: $headline-semi;
+    @extend %semi;
   }
   .view {
     background: none;
@@ -224,8 +224,7 @@
 
   &.carousel {
     h4 {
-      font-family: $headline-semi;
-      font-size: 12px;
+      @extend %semi-12;
       margin: 0;
       @include breakpoint($bp-carousel-smallest) {
         font-size: 16px;

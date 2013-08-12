@@ -30,7 +30,7 @@
 }
 
 body {
-  font-family: $font-body;
+  @extend %regular;
   color: $text-color;
   background: $background-color;
 }

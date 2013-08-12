@@ -11,18 +11,18 @@
     url("../fonts/1861a7b7-09a5-4efd-b681-5214784ded39.ttf") format("truetype"),
     url("../fonts/610147b3-ad15-4b4b-a0fb-25244238ab3d.svg#610147b3-ad15-4b4b-a0fb-25244238ab3d") format("svg");
 }
-@font-face {
-    font-family: "Proxima N W01 Light";
-    src:
-    url("../fonts/93cc6d34-798e-42c8-87d2-fd6391801b63.eot?iefix") format("eot");
-}
-@font-face {
-    font-family: "Proxima N W01 Light";
-    src:
-    url("../fonts/2fa30669-9bbd-4ced-912f-db94a367ed6c.woff") format("woff"),
-    url("../fonts/c12b3ebb-3771-483f-a84a-ac63d615c28e.ttf") format("truetype"),
-    url("../fonts/2a961063-ea56-4a4b-8cea-bdae32edb0e2.svg#2a961063-ea56-4a4b-8cea-bdae32edb0e2") format("svg");
-}
+// @font-face {
+//     font-family: "Proxima N W01 Light";
+//     src:
+//     url("../fonts/93cc6d34-798e-42c8-87d2-fd6391801b63.eot?iefix") format("eot");
+// }
+// @font-face {
+//     font-family: "Proxima N W01 Light";
+//     src:
+//     url("../fonts/2fa30669-9bbd-4ced-912f-db94a367ed6c.woff") format("woff"),
+//     url("../fonts/c12b3ebb-3771-483f-a84a-ac63d615c28e.ttf") format("truetype"),
+//     url("../fonts/2a961063-ea56-4a4b-8cea-bdae32edb0e2.svg#2a961063-ea56-4a4b-8cea-bdae32edb0e2") format("svg");
+// }
 @font-face {
     font-family: "Proxima N W01 Reg";
     src:
@@ -76,25 +76,12 @@
 $headline-bold      : "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 $headline-semi      : "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 $headline-reg       : "Proxima N W01 Reg", Arial, sans-serif;
-$headline-lt        : "Proxima N W01 Light", Arial, sans-serif;
+// $headline-lt        : "Proxima N W01 Light", Arial, sans-serif;
 $headline-thn       : "Proxima N W01 Thin Reg", Arial, sans-serif;
 
 
 // Default font stacks
-$font-sans: $headline-reg;
-$font-serifs: Georgia, serif;
 $font-mono: Consolas, Menlo, "Courier New", monospace, monospace;
-
-// General font variables
-$font-body: $headline-reg;
-$font-headline: $headline-bold;
-$font-logo: $headline-bold;
-
-// Special use font variables
-// ampersands
-$font-amp: $font-serifs;
-// caps
-$font-cap: $font-sans;
 
 
 ////////////////////////////

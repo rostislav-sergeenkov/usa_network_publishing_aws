@@ -3,7 +3,7 @@
   height: 85px;
   @include breakpoint($bp-head-search) {
     height: 62px;
-  }  
+  }
 }
 
 @include breakpoint($bp-head-search) {
@@ -22,7 +22,7 @@
       right: 60px;
       @include transition-property(right);
       @include transition-duration(0.2s);
-    }  
+    }
   }
   .utilities-search.search-active {
     .utilties-main-group {
@@ -53,8 +53,8 @@
     width: 40px;
     .search-active & {
       width: 274px;
-    }  
-  }  
+    }
+  }
   input {
     @include inline-block;
     border: none;
@@ -81,10 +81,10 @@
         font-size: 14px;
         content: "\e00a";
         color: $gray-light;
-      }  
+      }
       @include breakpoint($bp-head-search) {
         display: none;
-      }  
+      }
     }
   }
 
@@ -123,13 +123,13 @@
         position: static;
         right: auto;
         top: auto;
-      }  
+      }
     }
-  } 
+  }
 
   input[type="search"] {
     outline: none;
-    font-family: $headline-reg;
+    @extend %regular;
     color: $gray-light;
     float: left;
     background-color: $gray-med;
@@ -145,7 +145,7 @@
       background-color: transparent;
       @include border-radius(0);
       height: 30px;
-    }  
+    }
     .search-active & {
       outline: none;
       font-size: 16px;
@@ -158,7 +158,7 @@
         line-height: 1em;
         @include transition-property(width);
         @include transition-duration(0.2s);
-      }  
+      }
     }
   }
 

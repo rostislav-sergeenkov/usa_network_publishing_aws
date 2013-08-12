@@ -1,9 +1,9 @@
-%grid-small-two-three-four {
+%grid-small-wide-two-three-four {
   .grid-item {
     @extend %grid-item;
   }
-  @include breakpoint($bp-grid-small-2-3) {
-    @include layout(2, .062){
+  @include breakpoint($bp-grid-small-wide-2-3) {
+    @include layout(2, .062) {
       .grid-item {
         &:nth-of-type(odd) {
           @include grid-span(1, 1);
@@ -18,12 +18,12 @@
       }
     }
   }
-  @include breakpoint($bp-grid-small-2-fence) {
-    width: 477px;
+  @include breakpoint($bp-grid-small-wide-2-fence) {
+    width: 457px;
   }
-  @include breakpoint($bp-grid-small-3-fence) {
-    width: 714px;
-    @include layout(3, .062){
+  @include breakpoint($bp-grid-small-wide-3-fence) {
+    width: 693px;
+    @include layout(3, .062) {
       .grid-item {
         &:nth-of-type(3n + 1) {
           @include grid-span(1, 1);
@@ -41,9 +41,8 @@
       }
     }
   }
-  @include breakpoint($bp-grid-small-4) {
-    width: 953px;
-    @include layout(4, .062){
+  @include breakpoint($bp-video-large-width) {
+    @include layout(4, .062) {
       .grid-item {
         &:nth-of-type(4n + 1) {
           @include grid-span(1, 1);
@@ -63,5 +62,16 @@
         }
       }
     }
+  }
+  @include breakpoint($bp-grid-small-wide-4-fence) {
+    width: 929px;
+    margin-bottom: 28px;
+
+  }
+  @include breakpoint($bp-grid-small-wide-4) {
+    width: 1245px;
+  }
+  .usa-adrails & {
+    width: 929px;
   }
 }

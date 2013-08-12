@@ -149,7 +149,7 @@
       height: auto;
       @include breakpoint($bp-grid-small-3) {
         height: 60px;
-      }  
+      }
     }
     a {
       &.selected {
@@ -159,14 +159,13 @@
         @include secondary-menu-wide($secondary-menu-bg);
       }
     }
- 
+
     h2 {
-      font-size: 19px;
-      font-family: $headline-reg;
+      @extend %regular-18;
       letter-spacing: normal;
       @include breakpoint($bp-grid-small-3) {
         font-size: 20px;
-      }  
+      }
     }
 
     @include breakpoint($bp-grid-small-3) {

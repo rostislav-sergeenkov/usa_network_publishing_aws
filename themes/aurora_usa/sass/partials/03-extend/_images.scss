@@ -54,8 +54,7 @@
       font-family: $headline-semi;
     }
     .caption {
-      font-family: $headline-reg;
-      font-size: 15px;
+      @extend %regular-15;
       > div {
         display: inline;
 //        padding-right: 5px;

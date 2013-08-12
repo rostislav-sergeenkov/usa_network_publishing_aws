@@ -1,20 +1,12 @@
 .expandable-container {
+  @extend %grid-one-two-three-four;
   clear: both;
   margin: 0 0 15px;
+  .panel-col1 {
+    float: none;
+  }
   .pane-content {
     overflow: hidden;
-    @include breakpoint($bp-show-mid-width) {
-      margin-right: -15px;
-    }
-    > ul {
-      > li {
-        float: left;
-        margin: 0 0 15px;
-        @include breakpoint($bp-show-mid-width) {
-          margin-right: 11px;
-        }
-      }
-    }
   }
   .expandable-toggle-wrap {
     clear: both;
@@ -43,7 +35,6 @@
       display: none;
     }
   }
-
   .expandable-toggle {
     color: $tan;
     cursor: pointer;
@@ -59,9 +50,8 @@
       left: 50%;
       margin-left: -18px;
       position: absolute;
-    } 
+    }
   }
-
   .less {
     display: none;
   }
@@ -81,12 +71,15 @@
       }
     }
   }
-
   &.disabled {
     .expandable-toggle-wrap {
       display: none;
     }
   }
+}
+
+.expandable-container.promo-ads-panel {
+  @extend %grid-one-two-three-four-ads;
 }
 
 .view {

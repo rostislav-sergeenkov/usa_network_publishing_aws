@@ -15,11 +15,11 @@
   }
   // Black prints faster: h5bp.com/s
   body {
-    font-family: $font-serifs !important;
+    font-family: $headline-reg !important;
     font-size: 12pt !important;
   }
   #{headers(all)} {
-    font-family: $font-serifs !important;
+    font-family: $headline-reg !important;
   }
   a {
     text-decoration: underline;

@@ -158,7 +158,7 @@
     }
   }
   .show-title {
-    font-family: $headline-reg;
+    @extend %regular;
     position: relative;
     margin: 0 0 5px 0;
     line-height: 1;
@@ -183,7 +183,7 @@
     }
   }
   .show-time {
-    font-family: $headline-thn;
+    @extend %thin;
     margin-bottom: 2px;
     margin: 0;
     line-height: 1;
@@ -206,8 +206,7 @@
     }
   }
   .episode-title {
-    font-family: $headline-reg;
-    font-size: 12px;
+    @extend %regular-12;
     margin: 0;
     line-height: 1;
     font-weight: normal;
@@ -286,7 +285,7 @@
       }
     }
     span {
-      font-family: $headline-semi;
+      @extend %semi;
       font-weight: normal;
       letter-spacing: 0.05em;
     }

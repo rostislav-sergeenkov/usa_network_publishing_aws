@@ -81,8 +81,7 @@
       }
     }
     h4 {
-      font-family: $headline-reg;
-      font-size: 12px;
+      @extend %regular-12;
       margin: 0;
       &:after {
         @include background-image(linear-gradient(right, $black 30%, $black-trans-vid));
@@ -584,7 +583,7 @@
     .details,
     .description {
       margin: 0;
-      font-family: $headline-reg;
+      @extend %regular;
       font-weight: normal;
       letter-spacing: 0.05em;
     }

@@ -1,9 +1,9 @@
 
 #block-usanetwork-tv-schedule-usa-on-now-block {
+  @extend %bold;
   height: 45px;
   padding-left: 12px;
   position: relative;
-  font-family: $headline-bold;
   text-transform: none;
   float: left;
   display: table;
@@ -127,8 +127,7 @@
 
 
 #on-now-episode {
-  font-size: 14px;
-  font-family: $headline-reg;
+  @extend %regular-14;
   letter-spacing: 0.03em;
   color: $gray-light;
   display: inline-block;

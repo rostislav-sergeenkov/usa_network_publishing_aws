@@ -1,0 +1,61 @@
+/* social carousel */
+
+#block-views-usa-shows-block-1 {
+  margin: 5px 0 20px;
+  @include breakpoint($bp-carousel-smallest) {
+    margin-bottom: 30px;
+  }
+  .view-content {
+    width: 300px;
+    @include breakpoint($bp-carousel-smallest) {
+      width: auto;
+    }
+  }
+  .view-mode-block_cover_title {
+    position: relative;
+  }
+  .item-list {
+    height: 145px;
+    overflow: hidden;
+  }
+  .carousel-item {
+    width: 183px;
+    height: 145px;
+    img {
+      max-width: 169px;
+    }
+    a.article-link {
+      height: 145px;
+    }
+  }
+  figure {
+    height: 145px;
+    width: 173px;
+    border: 2px solid $gray-dark;
+  }
+  h4 {
+    font-weight: normal;
+    color: $white;
+    left: 2px;
+    position: absolute;
+    top: 109px;
+    width: 169px;
+    z-index: 10;
+    height: 34px;
+    padding: 8px 18px;
+    background: $black-trans;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+  }
+  li.active h4 {
+    &:after {
+      @include cssTriangle(8px, $white, left);
+      position: absolute;
+      left:0;
+      bottom: 10px;
+    }
+  }
+}
+

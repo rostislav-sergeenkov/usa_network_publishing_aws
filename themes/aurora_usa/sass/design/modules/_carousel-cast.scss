@@ -1,0 +1,154 @@
+/* cast carousel */
+#cast-carousel {
+  background-color: $black;
+  border-bottom: 1px solid $gray-dark;
+  padding: 10px 0 15px;
+  @include breakpoint($bp-carousel-smallest) {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+  .view-content {
+    width: 300px;
+    height: 145px;
+    @include breakpoint($bp-carousel-smallest) {
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.view-usa-cast {
+  // @extend %carousel-person;
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+  max-width: 1319px;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  &:after, &:before {
+    content: $space;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 20px;
+    z-index: 95;
+    @include breakpoint($bp-carousel-smallest) {
+      width: 50px;
+    }
+  }
+  &:before {
+    @include background(linear-gradient(left center, $black 0%, $black 8%, rgba($black, 0) 100%));
+    left: 0px;
+    @include breakpoint($bp-carousel-smallest) {
+      @include background(linear-gradient(left center, $black 0%, $black 60%, rgba($black, 0) 100%));
+    }
+  }
+  &:after {
+    @include background(linear-gradient(right center, $black 0%, $black 8%, rgba($black, 0) 100%));
+    right: 0px;
+    @include breakpoint($bp-carousel-smallest) {
+      @include background(linear-gradient(right center, $black 0%, $black 60%, rgba($black, 0) 100%));
+    }
+  }
+  .carousel-item {
+    // @extend %carousel-item-person;
+    width: 183px;
+    height: 145px;
+    @include breakpoint($bp-carousel-smallest) {
+      width: 236px;
+      height: 188px;
+    }
+    &.active {
+      figure {
+        border-color: $white;
+      }
+      .item-content {
+        &:after {
+          @include cssTriangle(8px, $white, left);
+          position: absolute;
+          left:0;
+          bottom: 23px;
+        }
+      }
+    }
+    h4 {
+      @extend %semi-12;
+      margin: 0;
+      @include breakpoint($bp-carousel-smallest) {
+        font-size: 16px;
+      }
+    }
+    figure {
+      position: absolute;
+      border: 2px solid $gray-dark;
+      height: 145px;
+      width: 173px;
+      top: 0;
+      z-index: 1;
+      @include breakpoint($bp-social-small-width) {
+        left: 8px;
+      }
+      @include breakpoint($bp-carousel-smallest) {
+        width: auto;
+        height: auto;
+      }
+    }
+    img {
+      max-width: 169px;
+      display: block;
+      @include breakpoint($bp-carousel-smallest) {
+        max-width: none;
+      }
+    }
+    a.article-link {
+      height: 145px;
+      @include breakpoint($bp-carousel-smallest) {
+        height: 188px;
+      }
+    }
+    .item-content {
+      letter-spacing: .05em;
+      font-weight: normal;
+      color: $white;
+      left: 2px;
+      position: absolute;
+      top: 93px;
+      z-index: 10;
+      padding: 10px 18px;
+      background: $black-trans;
+      overflow: hidden;
+      width: 169px;
+      height: 50px;
+      @include breakpoint($bp-carousel-smallest) {
+        width: 221px;
+        top: 125px;
+        height: 61px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      @include breakpoint($bp-carousel-smallest) {
+        left: 10px;
+      }
+      a {
+        color: $white;
+      }
+      > div {
+        display: inline;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 10px;
+        line-height: 1.1em;
+        @include breakpoint($bp-carousel-smallest) {
+          font-size: 14px;
+          line-height: 1.5em;
+        }
+        &:first-child {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -327,7 +327,7 @@ function usanetwork_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_usa_tve_video';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
   );
   $export['node_options_usa_tve_video'] = $strongarm;
 
@@ -336,7 +336,7 @@ function usanetwork_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_usa_video';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
   );
   $export['node_options_usa_video'] = $strongarm;
 

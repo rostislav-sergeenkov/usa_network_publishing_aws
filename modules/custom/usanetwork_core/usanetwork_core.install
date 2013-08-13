@@ -416,7 +416,7 @@ function usanetwork_core_update_7114() {
 }
 
 /**
- * ONLY RUN AGAINST P7 7.18.0 TAG! Enable Workbench modules, disable state flow schedule.
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! Enable Workbench modules, disable state flow schedule, remove state_flow_schedule queue items.
  */
 function usanetwork_core_update_7115() {
   module_enable(array('workbench', 'workbench_moderation', 'revision_scheduler', 'pub_workbench'));
@@ -424,7 +424,7 @@ function usanetwork_core_update_7115() {
 }
 
 /**
- * ONLY RUN AGAINST P7 7.18.0 TAG! uninstall pub_field_bases, pub_files, pub_files_overrides, pub_display_suite, pub_display_suite, pub_image_styles, pub_taxonomy
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! uninstall pub_field_bases, pub_files, pub_files_overrides, pub_display_suite, pub_display_suite, pub_image_styles, pub_taxonomy
  */
 function usanetwork_core_update_7116() {
 
@@ -455,8 +455,11 @@ function usanetwork_core_update_7117() {
 
 /**
  * Enable new usanetwork_workbench module
+ * commenting out for now - we will not need this
  */
-function usanetwork_core_update_7118() {
-  $modules = array('usanetwork_workbench');
-  module_enable($modules);
-}
+ /**
+//function usanetwork_core_update_7118() {
+//  $modules = array('usanetwork_workbench');
+//  module_enable($modules);
+//}
+*/

@@ -370,7 +370,63 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 5,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_episode-field_ideamelt_action_type'
+  $field_instances['node-tv_episode-field_ideamelt_action_type'] = array(
+    'bundle' => 'tv_episode',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ideamelt_action_type',
+    'label' => 'IdeaMelt action type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 11,
     ),
   );
 
@@ -580,6 +636,68 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_episode-field_send_ideamelt_notification'
+  $field_instances['node-tv_episode-field_send_ideamelt_notification'] = array(
+    'bundle' => 'tv_episode',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_send_ideamelt_notification',
+    'label' => 'Send IdeaMelt Notification',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 10,
     ),
   );
 
@@ -7210,6 +7328,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');
   t('ITEMSPERPAGE');
+  t('IdeaMelt action type');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Logo');
   t('Lyris List ID');
@@ -7232,6 +7351,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Season');
   t('Season #');
   t('Secondary');
+  t('Send IdeaMelt Notification');
   t('Set the speed of the slideshow cycling, in milliseconds, example: 7000');
   t('Show');
   t('Show Chat with Fans Page');

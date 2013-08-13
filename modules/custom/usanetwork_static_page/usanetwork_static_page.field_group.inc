@@ -21,7 +21,7 @@ function usanetwork_static_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '4',
+    'weight' => '1',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_usa_og_image',
@@ -50,7 +50,7 @@ function usanetwork_static_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Basic',
-    'weight' => '3',
+    'weight' => '0',
     'children' => array(
       0 => 'body',
       1 => 'field_show',

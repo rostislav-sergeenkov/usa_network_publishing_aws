@@ -261,7 +261,7 @@ function usanetwork_personalization_node_update($node) {
   $lang = LANGUAGE_NONE;
 
   if ($node->status == 1) {
-    $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode'); 
+    $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode', 'usa_video', 'usa_tve_video'); 
      
     $state = db_select('state_flow_history', 's')
                ->fields('s', array('state'))
@@ -270,8 +270,7 @@ function usanetwork_personalization_node_update($node) {
                ->range(0,1)
                ->execute()
                ->fetchField();
-    if ($state == 'published' && in_array($node->type, $ideamelt_entities) && 
-      isset($node->field_send_ideamelt_notification[$lang][0]['value']) && $node->field_send_ideamelt_notification[$lang][0]['value'] == 1) {
+    if ($state == 'published' && in_array($node->type, $ideamelt_entities)) {
       _usanetwork_personalization_notify_ideamelt($node);
     }
   }
@@ -281,7 +280,8 @@ function usanetwork_personalization_node_update($node) {
  * Implements hook_revision_scheduler_operation_preprocess()
  */
 function usanetwork_personalization_revision_scheduler_operation_preprocess($entity, $operation) {
-  if ($operation->operation == 'workbench_moderation_to_published') {
+  $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode', 'usa_video', 'usa_tve_video'); 
+  if ($operation->operation == 'workbench_moderation_to_published' && in_array($entity->type, $ideamelt_entities)) {
     _usanetwork_personalization_notify_ideamelt($entity);
   }
 }
@@ -300,6 +300,19 @@ function _usanetwork_personalization_notify_ideamelt($node) {
     return;
   }
 
+  if ($node->type == 'usa_video' || $node->type == 'usa_tve_video') {
+    if (isset($node->field_sent_ideamelt_notification[$lang][0]['value']) && empty($node->field_sent_ideamelt_notification[$lang][0]['value'])) {
+      $node->field_sent_ideamelt_notification[$lang][0]['value'] = 1;
+      node_save($node);
+    } else {
+      // send the notification only once per video node
+      return;
+    }
+  } else {
+    if (!isset($node->field_send_ideamelt_notification[$lang][0]['value']) || empty($node->field_send_ideamelt_notification[$lang][0]['value'])) {
+      return;
+    }
+  }
   if ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') {
     $object_tid = isset($node->field_ideamelt_object_type[$lang][0]['tid']) ? $node->field_ideamelt_object_type[$lang][0]['tid'] : '';
     $object_term = taxonomy_term_load($object_tid);
@@ -309,7 +322,7 @@ function _usanetwork_personalization_notify_ideamelt($node) {
   } else if ($node->type == 'media_gallery') {
     $data['object_type'] = 'Photo Gallery';
   } else {
-    $data['object_type'] = $node->type;
+    return;
   }
   
   $data['action_type'] = isset($node->field_ideamelt_action_type[$lang][0]['value']) ? $node->field_ideamelt_action_type[$lang][0]['value'] : '';

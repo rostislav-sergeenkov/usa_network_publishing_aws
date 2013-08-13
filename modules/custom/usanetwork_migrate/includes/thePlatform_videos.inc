@@ -366,7 +366,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
     // adding this new as of 7/15
-    $this->addFieldMapping('status', 'status');
+    // removed 8/13
+    //$this->addFieldMapping('status', 'status');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.

@@ -189,6 +189,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
   );
   /* Filter criterion: Content: Full Episode (field_full_episode) */
   $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
@@ -219,7 +220,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */

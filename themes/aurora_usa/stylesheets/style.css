@@ -1825,6 +1825,31 @@ input[type="radio"], input[type="checkbox"] {
     clear: both;
   }
 }
+.usa-adrails .expandable-container ul li:nth-of-type(3n + 1), .ie8 .expandable-container ul li:nth-of-type(3n + 1) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 0%;
+  clear: none;
+}
+.usa-adrails .expandable-container ul li:nth-of-type(3n + 2), .ie8 .expandable-container ul li:nth-of-type(3n + 2) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 33.85013%;
+  clear: none;
+}
+.usa-adrails .expandable-container ul li:nth-of-type(3n + 3), .ie8 .expandable-container ul li:nth-of-type(3n + 3) {
+  width: 32.29974%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: none;
+  padding-right: 0;
+}
+.usa-adrails .expandable-container ul li:nth-of-type(3n + 4), .ie8 .expandable-container ul li:nth-of-type(3n + 4) {
+  clear: both;
+}
 
 @media (min-width: 645px) and (max-width: 958px) {
   .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
@@ -1939,6 +1964,42 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: 0;
     clear: none;
   }
+}
+.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(1), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(1) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 0%;
+  clear: none;
+}
+.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(2), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(2) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 33.85013%;
+  clear: none;
+}
+.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 3), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 3) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 0%;
+  clear: none;
+  clear: both;
+}
+.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 4), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 4) {
+  width: 32.29974%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 33.85013%;
+  clear: none;
+}
+.usa-adrails .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 5), .ie8 .expandable-container.promo-ads-panel ul li:nth-of-type(3n + 5) {
+  width: 32.29974%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: none;
 }
 
 #main-menu {
@@ -5178,6 +5239,7 @@ li a:hover {
 .flexslider {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .flexslider .slides > li {
   display: none;

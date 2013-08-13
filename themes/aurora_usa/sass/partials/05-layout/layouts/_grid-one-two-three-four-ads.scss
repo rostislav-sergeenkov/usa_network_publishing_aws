@@ -70,4 +70,26 @@
       }
     }
   }
+  .usa-adrails &, .ie8 & {
+    @include layout(3, .048){
+      ul li {
+        &:nth-of-type(1) {
+          @include grid-span(1, 1);
+        }
+        &:nth-of-type(2) {
+          @include grid-span(1, 2);
+        }
+        &:nth-of-type(3n + 3) {
+          @include grid-span(1, 1);
+          clear: both;
+        }
+        &:nth-of-type(3n + 4) {
+          @include grid-span(1, 2);
+        }
+        &:nth-of-type(3n + 5) {
+          @include grid-span(1, 3);
+        }
+      }
+    }
+  }
 }

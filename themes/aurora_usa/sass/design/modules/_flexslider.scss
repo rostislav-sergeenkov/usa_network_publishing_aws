@@ -33,11 +33,8 @@
       -webkit-backface-visibility: hidden;
     }
     img {
-      // width: 100%;
-      // display: block;
       @include inline-block;
       max-height: 100%;
-//      max-width: 100%;
       vertical-align: top;
       width: auto;
     }
@@ -87,7 +84,6 @@ html[xmlns] .slides {
 }
 
 .flex-viewport {
-  // max-height: 500px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   transition: all 1s ease;

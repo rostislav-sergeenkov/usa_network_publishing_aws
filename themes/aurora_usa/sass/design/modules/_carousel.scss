@@ -14,15 +14,7 @@
   }
   li.carousel-item {
     padding: 0;
-    margin: 0;
-    a.article-link {
-      height: 188px;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 90;
-    }
+    margin: 0 15px 0 0;
   }
   .carousel-item-wrapper {
     position: relative;
@@ -33,6 +25,11 @@
 .carousel-item {
   float: left;
   display: block;
+  overflow: hidden;
+}
+
+%carousel-item-center {
+  @extend .carousel-item;
   text-align: center;
 }
 

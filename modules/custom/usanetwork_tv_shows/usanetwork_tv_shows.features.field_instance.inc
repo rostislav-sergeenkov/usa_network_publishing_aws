@@ -3062,7 +3062,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 70,
+        'weight' => -1,
       ),
       'default' => array(
         'label' => 'hidden',

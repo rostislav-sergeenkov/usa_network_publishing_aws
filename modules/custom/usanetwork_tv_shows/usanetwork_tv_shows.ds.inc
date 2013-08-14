@@ -22,13 +22,13 @@ function usanetwork_tv_shows_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_logo',
-        1 => 'field_display_title',
+        0 => 'field_display_title',
+        1 => 'field_logo',
       ),
     ),
     'fields' => array(
-      'field_logo' => 'ds_content',
       'field_display_title' => 'ds_content',
+      'field_logo' => 'ds_content',
     ),
     'classes' => array(),
   );

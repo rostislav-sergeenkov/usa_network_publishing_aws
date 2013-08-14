@@ -8,7 +8,7 @@ body.person-page {
 }
 
 
-#person-content {
+[id='person-content'] {
 	width: auto;
 	position: relative;
 	min-height: 750px;
@@ -21,9 +21,8 @@ body.person-page {
 		}
 	}
 	h4 {
-		font-family: $headline-reg;
+		@extend %regular-14;
 		text-transform: none;
-		font-size: 14px;
 		margin: 5px 30px 5px 0;
 	  position: relative;
 		@include breakpoint($bp-person-medium-width) {
@@ -126,7 +125,7 @@ body.person-page {
 			margin-right: 15px;
 			width: auto;
 			float: left;
-		}		
+		}
 
 	}
 }

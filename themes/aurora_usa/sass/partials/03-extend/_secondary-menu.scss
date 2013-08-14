@@ -2,8 +2,7 @@
 $secondary-menu-bg  : $gray-med;
 
 %secondary-menu {
-  font-size: 19px;
-  font-family: $headline-reg;
+  @extend %regular-18;
   line-height: 1;
   text-transform: lowercase;
   font-weight: normal;
@@ -56,7 +55,7 @@ $secondary-menu-bg  : $gray-med;
             top: 58px;
             margin-left: -12px;
           }
-        } 
+        }
     } @else {
       border-left: 1px solid $gray-dark;
       border-right: 1px solid $gray-dark;
@@ -79,14 +78,14 @@ $secondary-menu-bg  : $gray-med;
           }
         }
       }
-      .more .open { 
+      .more .open {
         > a:first-child {
 
-        } 
-      }  
+        }
+      }
     }
-  }  
-} 
+  }
+}
 
 %secondary-menu-label {
   color: $white;
@@ -149,7 +148,7 @@ $secondary-menu-bg  : $gray-med;
           height: 100%;
           width: 100%;
           position: relative;
-          font-family: $headline-reg;
+          @extend %regular;
           padding: 20px 20px 18px;
           float: left;
           width: 100%;

@@ -117,6 +117,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       $date_data = (string)array_shift($dc_terms);
       $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
       $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
+
       // Format the dates for the date field.
       $final_date_data = array(
         'from' => date('m/d/Y h:i:sa', strtotime($start_date)),
@@ -147,10 +148,6 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function prepare($entity, stdClass $row) {
 
-    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
-    // field is missing.
-    $entity->status = isset($row->{'dcterms:valid'}) ? 0 : 1;
-
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
     _usanetwork_migrate_attach_video_categories($entity, $video_categories);
@@ -161,57 +158,86 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
 
   public function complete($entity, stdClass $row) {
 
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
-/**************************
-    // Save state_flow_schedule data by passing $form_state values to the
-    // state_flow_events_revision_submit() and state_flow_schedule_content()
-    // state_flow_events_revision form submit handlers.
     if (isset($row->{'dcterms:valid'})) {
-
-      module_load_include('inc', 'state_flow', 'state_flow.pages');
-
-      global $user;
-
-      $user = user_load(1);
-
-      $state_flow_form = array();
-      $state_flow_form_state = array();
-      $state_flow_form_state['values'] = array(
-        'node_revision' => $entity,
-        'state_flow' => state_flow_load_state_machine($entity),
-        'event' => 'schedule',
-        'event_comment' => t('Scheduling publication date via migration script.'),
-      );
-      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
-
-      $state_flow_schedule_form = array();
-      $state_flow_schedule_form_state = array();
       $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-      $state_flow_schedule_form_state['values'] = array(
-        'selected-date' => $video_date_data['from'],
-        'event-name' => 'schedule',
-        'nid' => $entity->nid,
-        'vid' => $entity->vid,
-      );
-      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      /*
+      if ($row->status == 0) {
+        $sunrise = strtotime($video_date_data['from']);
+      }
+      else {
+        $sunrise = NULL;
+      }
+      */
+      $sunrise = strtotime($video_date_data['from']);
+      $sunset = strtotime($video_date_data['to']);
+      /**
+      // debug
+      watchdog('usanetwork_migrate', '@nid sunrise is @sunrise.',
+          array('@nid' => $entity->nid, '@sunrise' => date('m/d/Y h:i:sa', $sunrise)));
+      drupal_set_message(t('USA MIGRATE IMPORT: @nid sunrise is @sunrise.',
+          array('@nid' => $entity->nid, '@sunrise' => date('m/d/Y h:i:sa', $sunrise))));
+      watchdog('usanetwork_migrate', '@nid sunset is @sunset.',
+          array('@nid' => $entity->nid, '@sunset' => date('m/d/Y h:i:sa', $sunset)));
+      drupal_set_message(t('USA MIGRATE IMPORT: @nid sunset is @sunset.',
+          array('@nid' => $entity->nid, '@sunset' => date('m/d/Y h:i:sa', $sunset))));
+      */
+      // if we have a sunrise date, schedule the revision to publish
+      if (isset($sunrise)) {
+        $count = db_select('revision_scheduler', 'r')
+                 ->fields('r')
+                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_type', 'node', '=')
+                 ->condition('time_scheduled', $sunrise, '=')
+                 ->condition('operation', 'workbench_moderation_to_published', '=')
+                 ->execute()
+                 ->rowCount();
+        if ($count == 0) { 
+          $set_sunrise = new stdClass();
+          $set_sunrise->id = NULL;
+          $set_sunrise->entity_type = 'node';
+          $set_sunrise->entity_id = $entity->nid;
+          $set_sunrise->revision_id = $entity->vid;
+          $set_sunrise->operation = 'workbench_moderation_to_published';
+          $set_sunrise->time_scheduled = $sunrise;
+          $set_sunrise->time_queued = 0;
+          $set_sunrise->time_executed = 0;
+          revision_scheduler_operation_save($set_sunrise);
+        }
+      }
+      // if we have a sunset date, schedule the revision to draft
+      if (isset($sunset)) {
+        $count = db_select('revision_scheduler', 'r')
+                 ->fields('r')
+                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_type', 'node', '=')
+                 ->condition('time_scheduled', $sunset, '=')
+                 ->condition('operation', 'workbench_moderation_to_draft', '=')
+                 ->execute()
+                 ->rowCount();
+        if ($count == 0) { 
+          $set_sunset = new stdClass();
+          $set_sunset->id = NULL;
+          $set_sunset->entity_type = 'node';
+          $set_sunset->entity_id = $entity->nid;
+          $set_sunset->revision_id = $entity->vid;
+          $set_sunset->operation = 'workbench_moderation_to_draft';
+          $set_sunset->time_scheduled = $sunset;
+          $set_sunset->time_queued = 0;
+          $set_sunset->time_executed = 0;
+          revision_scheduler_operation_save($set_sunset);
+        }
+      }
     }
-    ****************************/
+
+  }
+  // remove related entries from revision_scheduler
+  public function completeRollback($entity_id) {
+    // Code to execute after an entity has been rolled back.
+      db_delete('revision_scheduler')
+      ->condition('entity_id', $entity_id)
+      ->execute();
   }
 
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
-/*
-  public function postRollback() {
-    // Clear out old stateflow schedule records and queue items.  Will break
-    // re-import if left in there.
-    db_query("DELETE FROM state_flow_schedule, node
-        USING state_flow_schedule
-        LEFT JOIN node ON node.nid = state_flow_schedule.nid
-        WHERE node.nid IS NULL");
-
-    $queue = DrupalQueue::get('state_flow_schedule');
-    $queue->deleteQueue();
-  }
-  */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -320,6 +346,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
       // As of 7/15/13 NEW FEED there were 887 MPX videos.  Setting range to grab them all,
       // plus any that have been added since.
+//      $items_url .= '?range=1-1200';
       $items_url .= '?range=1-1200';
     }
 
@@ -359,7 +386,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
     // adding this new as of 7/15
-    $this->addFieldMapping('status', 'status');
+    // removed 8/13
+    //$this->addFieldMapping('status', 'status');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -370,53 +398,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
     //*/
   }
-// hiding the old method where we check for 5 years ago
-// our updated feed makes this obsolete
-/*
-  public function prepareRow($row) {
 
-    // Process date field data.
-    $dc_terms = $row->xml->xpath('dcterms:valid');
-    if (is_array($dc_terms)) {
-      $date_data = (string)array_shift($dc_terms);
-      $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
-      $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
-      $start_date = strtotime($start_date);
-      $end_date = strtotime($end_date);
-      // Format the dates for the date field.  Only store the dates if they are
-      // fairly recent (i.e. within 5 years).
-      $five_years_ago = REQUEST_TIME - (86400 * 365 * 5);
-      $final_date_data = array();
-      // Onl
-      if ($start_date > $five_years_ago) {
-        $final_date_data['from'] = $start_date;
-      }
-      if ($end_date > $five_years_ago) {
-        $final_date_data['to'] = $end_date;
-      }
-      // Encode in JSON for the date field.
-      $row->{'dcterms:valid'} = drupal_json_encode($final_date_data);
-    }
-
-    // Convert pl1:fullEpisode value.
-    $full_episode = $row->xml->xpath('pl1:fullEpisode');
-    if (is_array($full_episode)) {
-      $full_episode_value = (string)array_shift($full_episode);
-      $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
-    }
-
-    // Process air date field data.
-    $air_date = $row->xml->xpath('pubDate');
-    if (is_array($air_date)) {
-      $date_data = (string)array_shift($air_date);
-      $final_date_data = array(
-        'from' => date('m/d/Y h:i:sa', strtotime($date_data)),
-        #'to' => '',
-      );
-      $row->pubDate = drupal_json_encode($final_date_data);
-    }
-  }
-  */
   public function prepareRow($row) {
 
     // Process publishing date field data.
@@ -426,6 +408,9 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
       $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
       // for custom processing
+      // hide for now - we tried this to speed in publishing
+      // but workbench does not play nice
+      /*
       $pub_start = strtotime($start_date);
       $pub_end = strtotime($end_date);
       $yesterday = strtotime("-1 day");
@@ -439,6 +424,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       else {
         $row->status = 0;
       }
+      */
 
       // Format the dates for the date field.
       $final_date_data = array(
@@ -485,65 +471,70 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public function complete($entity, stdClass $row) {
 
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
-/**************************
-    // Save state_flow_schedule data by passing $form_state values to the
-    // state_flow_events_revision_submit() and state_flow_schedule_content()
-    // state_flow_events_revision form submit handlers.
-    if ($entity->status == 0) {
-
-      watchdog('usanetwork_migrate', 'Scheduling node @nid to be published at @time.',
-          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa')));
-      drupal_set_message(t('USA MIGRATE IMPORT: Scheduling node @nid to be published at @time.',
-          array('@nid' => $entity->nid, '@time' => date('m/d/Y h:i:sa'))));
-
-      module_load_include('inc', 'state_flow', 'state_flow.pages');
-
-      global $user;
-      $user = user_load(1);
-
-      // If this is an unpublished node, transition it to the "Draft" state, so
-      // that it can be published during scheduling.  Nodes can't be transitioned
-      // directly from an "Unpublished" to a "Published" state.
-      _usanetwork_migrate_complete_entity_state_transition($entity, 'draft');
-
-      $state_flow_form = array();
-      $state_flow_form_state = array();
-      $state_flow_form_state['values'] = array(
-        'node_revision' => $entity,
-        'state_flow' => state_flow_load_state_machine($entity),
-        'event' => 'schedule',
-        'event_comment' => t('Scheduling publication date via migration script.'),
-      );
-      state_flow_events_revision_submit($state_flow_form, $state_flow_form_state);
-
-      $state_flow_schedule_form = array();
-      $state_flow_schedule_form_state = array();
+    if (isset($row->{'dcterms:valid'})) {
       $video_date_data = drupal_json_decode($row->{'dcterms:valid'});
-      $state_flow_schedule_form_state['values'] = array(
-        'selected-date' => $video_date_data['from'],
-        'event-name' => 'schedule',
-        'nid' => $entity->nid,
-        'vid' => $entity->vid,
-      );
-      state_flow_schedule_content($state_flow_schedule_form, $state_flow_schedule_form_state);
+      /*
+      if ($row->status == 0) {
+        $sunrise = strtotime($video_date_data['from']);
+      }
+      else {
+        $sunrise = NULL;
+      }
+      */
+      $sunrise = strtotime($video_date_data['from']);
+      $sunset = strtotime($video_date_data['to']);
+      /**
+      // debug
+      watchdog('usanetwork_migrate', '@nid sunrise is @sunrise.',
+          array('@nid' => $entity->nid, '@sunrise' => date('m/d/Y h:i:sa', $sunrise)));
+      drupal_set_message(t('USA MIGRATE IMPORT: @nid sunrise is @sunrise.',
+          array('@nid' => $entity->nid, '@sunrise' => date('m/d/Y h:i:sa', $sunrise))));
+      watchdog('usanetwork_migrate', '@nid sunset is @sunset.',
+          array('@nid' => $entity->nid, '@sunset' => date('m/d/Y h:i:sa', $sunset)));
+      drupal_set_message(t('USA MIGRATE IMPORT: @nid sunset is @sunset.',
+          array('@nid' => $entity->nid, '@sunset' => date('m/d/Y h:i:sa', $sunset))));
+      */
+      // if we have a sunrise date, schedule the revision to publish
+      if (isset($sunrise)) {
+        $set_sunrise = new stdClass();
+        $set_sunrise->id = NULL;
+        $set_sunrise->entity_type = 'node';
+        $set_sunrise->entity_id = $entity->nid;
+        $set_sunrise->revision_id = $entity->vid;
+        $set_sunrise->operation = 'workbench_moderation_to_published';
+        $set_sunrise->time_scheduled = $sunrise;
+        $set_sunrise->time_queued = 0;
+        $set_sunrise->time_executed = 0;
+        revision_scheduler_operation_save($set_sunrise);
+      }
+      // if we have a sunset date, schedule the revision to draft
+      if (isset($sunset)) {
+        $set_sunset = new stdClass();
+        $set_sunset->id = NULL;
+        $set_sunset->entity_type = 'node';
+        $set_sunset->entity_id = $entity->nid;
+        $set_sunset->revision_id = $entity->vid;
+        $set_sunset->operation = 'workbench_moderation_to_draft';
+        $set_sunset->time_scheduled = $sunset;
+        $set_sunset->time_queued = 0;
+        $set_sunset->time_executed = 0;
+        revision_scheduler_operation_save($set_sunset);
+      }
     }
-    // Otherwise, this is a published node, and we need to convert it to that state.
-    // lets skip this and see if it bring in the nodes we set to 1 as published
 
-    else {
-      //global $user;
-      //$user = user_load(1);
-
-      _usanetwork_migrate_complete_entity_state_transition($entity, 'published');
-    }
-******************/
   }
 
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+  // remove related entries from revision_scheduler
+  public function completeRollback($entity_id) {
+    // Code to execute after an entity has been rolled back.
+      db_delete('revision_scheduler')
+      ->condition('entity_id', $entity_id)
+      ->execute();
+  }
+
 /*
   public function postRollback() {
-
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
     // Clear out old stateflow schedule records and queue items.  Will break
     // re-import if left in there.
     db_query("DELETE FROM state_flow_schedule, node
@@ -553,7 +544,14 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
     $queue = DrupalQueue::get('state_flow_schedule');
     $queue->deleteQueue();
+
+    // Clear out old revision_scheduler records Will break
+    // re-import if left in there.
+    db_query("DELETE FROM revision_scheduler
+        LEFT JOIN node ON node.nid = revision_scheduler.entity_id");
+        //WHERE node.nid IS NULL");
   }
-  */
+*/
+
 }
 

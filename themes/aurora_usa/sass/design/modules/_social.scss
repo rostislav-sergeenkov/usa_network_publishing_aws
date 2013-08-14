@@ -6,8 +6,7 @@
 }
 
 %social-header-text {
-  font-size: 24px;
-  font-family: $headline-reg;
+  @extend %regular-24;
   font-weight: normal;
   color: $white;
   letter-spacing: 0.05em;
@@ -168,8 +167,7 @@ body.usa-social {
     width: 100%;
     .title {
       line-height: 1em;
-      font-size: 14px;
-      font-family: $headline-reg;
+      @extend %regular-14;
       display: inline-block;
       text-align: left;
       vertical-align: middle;
@@ -180,8 +178,7 @@ body.usa-social {
       h2,
       h4,
       .field-name-field-usa-actor-name {
-        font-size: 14px;
-        font-family: $headline-reg;
+        @extend %regular-14;
         color: $white;
         text-transform: none;
         font-weight: normal;
@@ -277,8 +274,7 @@ body.usa-social {
     .view-footer {
       position: relative;
       border-top: 1px solid $gray-ultra-med;
-      font-family: $headline-reg;
-      font-size: 24px;
+      @extend %regular-24;
       padding: 10px 15px 7px 10px;
       text-transform: lowercase;
       cursor: pointer;
@@ -318,19 +314,18 @@ body.usa-social {
     @extend .clearfix;
     position: relative;
     width: 300px;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
   .form-submit {
+    @extend %regular-14;
     float: right;
     background-color: $gray-light;
     height: 2.5714em;
     border: 0;
-    font-family: $headline-reg;
     width: 60px;
     padding-left:0;
     padding-right: 0;
     text-align: center;
-    font-size: 14px;
     padding-top: 2px;
     line-height: 2.5714em;
   }
@@ -340,7 +335,7 @@ body.usa-social {
     margin: 0;
     input {
       margin: 0;
-      font-family: $headline-reg;
+      @extend %regular;
     }
   }
   .error {
@@ -444,8 +439,7 @@ body.usa-social {
 
 .echo-item-data {
   padding-bottom: 6px;
-  font-size: 12px;
-  font-family: $headline-reg;
+  @extend %regular-12;
   letter-spacing: 0.05em;
   line-height: 1.2;
   padding-top: 4px;
@@ -468,9 +462,8 @@ body.usa-social {
 }
 
 .echo-item-authorName {
+  @extend %semi-18;
   color: $gray-med;
-  font-family: $headline-semi;
-  font-size: 17px;
   font-weight: normal;
   letter-spacing: 0.05em;
   line-height: 19px;
@@ -485,8 +478,7 @@ body.usa-social {
 
 .echo-item-footer {
   color: $gray-extra-light;
-  font-family: $headline-reg;
-  font-size: 12px;
+  @extend %regular-12;
   background: none;
   padding: 0;
   .echo-item-from a,
@@ -506,7 +498,7 @@ body.usa-social {
       color: $gray-med;
       text-decoration: none;
     }
-  }  
+  }
   .echo-item-footer {
     margin-top: 0;
   }
@@ -590,9 +582,8 @@ input.echo-submit-text {
       clear: none;
     }
     a {
-    color: $gray-med;
-    font-family: $headline-semi;
-    font-size: 12px;
+      @extend %semi-12;
+      color: $gray-med;
     }
   }
   .echo-item-tweetDate a {
@@ -694,8 +685,7 @@ input.echo-submit-text {
   background-color: $white;
   padding: 10px 12px 40px;
   color: $gray-extra-light;
-  font-family: $headline-reg;
-  font-size: 12px;
+  @extend %regular-12;
   @include breakpoint($bp-social-mid-width) {
     padding-left: 30px;
     padding-right: 30px;
@@ -710,8 +700,7 @@ input.echo-submit-text {
   }
   h3 {
     color: $gray-sky;
-    font-size: 30px;
-    font-family: $headline-reg;
+    @extend %regular-30;
     text-transform: lowercase;
     margin-bottom: 5px;
     margin-right: 75px;
@@ -807,7 +796,7 @@ input.echo-submit-text {
 
 #usanetwork_social_show_homepage_chatter {
   background-color: $gray-dark;
-}  
+}
 
 #usanetwork_social_chatter_title {
   @extend %social-header-text;
@@ -824,8 +813,7 @@ input.echo-submit-text {
     color: $white;
   }
   .echo-item-data {
-    font-size: 16px;
-    font-family: $headline-reg;
+    @extend %regular-16;
     a {
       word-break: break-all;
     }
@@ -862,9 +850,7 @@ input.echo-submit-text {
   position: relative;
   .usanetwork_social_join_msg {
     color: $white;
-    font-family: $headline-reg;
-    font-size: 24px;
-    font-weight: normal;
+    @extend %regular-24;
     letter-spacing: 0.05em;
     line-height: 1;
     padding-left: 20px;

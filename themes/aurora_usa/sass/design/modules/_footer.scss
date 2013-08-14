@@ -1,12 +1,4 @@
-%footer-links {
-  font-family: $headline-reg;
-  color: $gray-dark-light;
-  padding: 11px 5px 8px 25px;
-  font-size: 14px;
-  a {
-    @include link-colors($gray-dark-light, $gray-extra-light, $gray-extra-light, $gray-dark-light, $gray-dark-light);
-  }
-}
+@import 'footer/extend';
 
 #footer {
   li, ul {
@@ -38,8 +30,7 @@
   background-color: $black-true;
   @extend %footer-links;
   @include breakpoint($bp-menu-switch) {
-    font-size: 12px;
-    font-family: $headline-semi;
+    @include semi-12;
     padding-bottom: 85px;
     padding-left: 25px;
     padding-right: 25px;
@@ -91,8 +82,7 @@
 /* overriding module styles - remove from there? */
 #footer-message,
 #footer-message-offside {
-  font-size: 12px;
-  font-family: $headline-reg;
+  @extend %regular-12;
   color: $gray-dark-light;
   line-height: 18px;
   @include breakpoint($bp-menu-switch) {

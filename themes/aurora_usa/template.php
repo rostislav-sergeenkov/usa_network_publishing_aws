@@ -91,7 +91,7 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
-    $slideshow = ($node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
+    $slideshow = (!empty($node->field_usa_autoscroll) && $node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
     $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
     $js_settings = array(
       'slideshow' => $slideshow,
@@ -197,7 +197,7 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         break;
       case 'usanetwork_video-usa_video_views':
         drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
-        break;  
+        break;
       case 'views-usa_cast-block_2':
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
@@ -676,7 +676,7 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
           }
         }
       }
-      break;  
+      break;
   }
 }
 

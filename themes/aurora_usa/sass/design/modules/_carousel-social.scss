@@ -11,40 +11,23 @@
       width: auto;
     }
   }
-  .view-mode-block_cover_title {
-    position: relative;
-  }
   .item-list {
     height: 145px;
     overflow: hidden;
   }
   .carousel-item {
-    width: 183px;
-    height: 145px;
-    img {
-      max-width: 169px;
-    }
-    a.article-link {
-      height: 145px;
-    }
-  }
-  figure {
+    @extend %carousel-item-center;
     height: 145px;
     width: 173px;
     border: 2px solid $gray-dark;
+    position: relative;
   }
   h4 {
+    @extend %metadata-holder;
     font-weight: normal;
     color: $white;
-    left: 2px;
-    position: absolute;
-    top: 109px;
-    width: 169px;
-    z-index: 10;
     height: 34px;
     padding: 8px 18px;
-    background: $black-trans;
-    overflow: hidden;
     white-space: nowrap;
     font-size: 12px;
     margin: 0;

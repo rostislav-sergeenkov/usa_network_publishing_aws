@@ -1,5 +1,7 @@
 .expandable-container {
-  @extend %grid-one-two-three-four;
+  .pane-content {
+    @extend %grid-one-two-three-four;
+  }
   clear: both;
   margin: 0 0 15px;
   .panel-col1 {

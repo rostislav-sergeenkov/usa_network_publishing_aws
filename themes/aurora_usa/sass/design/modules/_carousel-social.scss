@@ -21,6 +21,18 @@
     width: 173px;
     border: 2px solid $gray-dark;
     position: relative;
+    &.active {
+      border-color: $white;
+      h4 {
+        &:after {
+          @include cssTriangle(8px, $white, left);
+          position: absolute;
+          left:0;
+          bottom: 50%;
+          @include transform3d( translateY(50%) );
+        }
+      }
+    }
   }
   h4 {
     @extend %metadata-holder;
@@ -31,14 +43,6 @@
     white-space: nowrap;
     font-size: 12px;
     margin: 0;
-  }
-  li.active h4 {
-    &:after {
-      @include cssTriangle(8px, $white, left);
-      position: absolute;
-      left:0;
-      bottom: 10px;
-    }
   }
 }
 

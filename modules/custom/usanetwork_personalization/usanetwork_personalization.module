@@ -18,6 +18,15 @@ function usanetwork_personalization_menu() {
     'type' => MENU_CALLBACK,
   );
 
+//  $items['profile/%username/favorites'] = array(
+  $items['profile/user/favorites'] = array(
+    'title' => t('show favorites'),
+    'page callback' => 'usanetwork_personalization_content',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -28,11 +37,11 @@ function usanetwork_personalization_block_info() {
   $blocks = array();
   $blocks['sign_in'] = array(
     'info' => t('Personalization: Sign In'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE, // DRUPAL_CACHE_GLOBAL,
   );
    $blocks['content'] = array(
     'info' => t('Personalization: Content'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE, // DRUPAL_CACHE_GLOBAL,
   );
 
   return $blocks;
@@ -71,8 +80,7 @@ function usanetwork_personalization_theme($existing, $type, $theme, $path) {
       'template' => 'usa-personalization-sign-in',
     ),
     'usa_personalization_content' => array(
-      'variables' => array(
-        ),
+      'variables' => array('showlist' => NULL),
       'path' => $path . '/theme',
       'template' => 'usa-personalization-content',
     ),
@@ -80,12 +88,33 @@ function usanetwork_personalization_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Block callback for the personalization block
+ * Local function for getting all published TV shows sorted alphabetically
+ */
+// @TODO: we already have a version of this usanetwork_social. Do we need it here again?
+function _usanetwork_personalization_show_nids() {
+  $show_nids = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_show'));
+  $query->propertyCondition('status', 1);
+  $query->propertyOrderBy('title', 'ASC');
+  $query->range(0, 100);
+  // execute the query
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $show_nids = array_keys($result['node']);
+  }
+  return $show_nids;
+}
+
+/**
+ * Block callback for the personalization sign in block
  */
 function usanetwork_personalization_sign_in(){
   // the following SURF code breaks the formatting of the admin pages, so
   // if not an admin page, load the SURF code
-  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add')
+  $mediaBrowser = (arg(0) == 'media' && arg(1) == 'browser') ? 1 : 0;
+  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add' && !$mediaBrowser)
   {
     $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg';
 
@@ -103,8 +132,9 @@ function usanetwork_personalization_sign_in(){
       ),
     ), 'surf_js_php');
     // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+    $debugFlag = true;
     $debug = '
-    var usa_debugFlag = false;
+    var usa_debugFlag = '.$debugFlag.';
     var usa_debug = function(msg) {
       if (usa_debugFlag && typeof console != "undefined")
       {
@@ -123,8 +153,23 @@ function usanetwork_personalization_sign_in(){
     drupal_add_js($debug, array('type' => 'inline'));
     drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
     drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
+    if ($debugFlag)
+    {
+      drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
+      drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
+      drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
+    }
     drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
     // SURF / IDX INTEGRATION END
+
+    // IDEAMELT
+    drupal_add_js('http://www.ideamelt.com/static/apps/3.0/im.library.js', array('type' => 'external'));
+    drupal_add_js('http://ideamelt.com/static/apps/usanetwork/im.follow.js', array('type' => 'external'));
+//    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/ideamelt.follow.js');
+//    drupal_add_js('http://www.ideamelt.com/static/apps/3.0/im.follow.js', array('type' => 'external'));
+//    drupal_add_js('IdeaMelt.Apps.Follow.init({api_key:"dev.usanetwork"});', array('type' => 'inline'));
+//    drupal_add_js('IdeaMelt.Apps.Follow.init("dev.usanetwork");', array('type' => 'inline'));
+    drupal_add_js('IdeaMelt.Apps.Follow.init({api_key: "dev.usanetwork", text: false});', array('type' => 'inline'));
   }
 
   $render = array();
@@ -138,29 +183,83 @@ function usanetwork_personalization_sign_in(){
 }
 
 /**
- * Block callback for the personalization block
+ * Block callback for the personalization show favorites page
+ */
+// function usanetwork_personalization_show_favorites(){
+//   return usanetwork_personalization_content();
+// }
+
+/**
+ * Block callback for the personalization content block
  */
 function usanetwork_personalization_content() {
+
+  $output = usanetwork_show_showlist();
+//return $output;
+
   $render = array();
 
   $render['personalization_content'] = array(
     '#type' => 'markup',
-    '#markup' => theme('usa_personalization_content', array()),
+    '#markup' => theme('usa_personalization_content', array('showlist' => $output)),
   );
 
   return $render;
 }
 
+function usanetwork_show_showlist() {
+//  $pathUsername = str_replace('%', arg(1), request_path());
+  $username = '';
+  if (isset($_COOKIE['usa_idx_id']) && $_COOKIE['usa_idx_id'] != '')
+  {
+    $user = json_decode($_COOKIE['usa_idx_id']);
+    $username = (isset($user->username)) ? strval($user->username) : '';
+  }
+//die('username: '.$username);
+
+  $output = '';
+
+//  if ($username != '' && $username == $pathUsername)
+  if ($username != '')
+  {
+    $shows = _usanetwork_social_show_nids();
+    $nodes = node_load_multiple($shows);
+//echo '<pre>nodes: '.print_r($nodes, true).'</pre><br>';
+    if (is_array($nodes) && !empty($nodes))
+    {
+// DELETE FOLLOWING LINE
+$output .= '<ul class="usa-personalization-follow-shows">';
+      $i = 0;
+      foreach ($nodes as $nid => $node)
+      {
+        $show = $node->title;
+        $showAlias = drupal_get_path_alias('node/'.$node->nid);
+        $showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+        $output .= '<li><span class="usa-personalization-show col">'.$show.'</span><span class="usa-personalization-follow col" data-ideamelt="follow" data-user-to-follow="http://www.usanetwork.com/'.$showUrl.'" data-user-url="http://www.usanetwork.com/profile/'.$username.'" data-title="'.$show.'"></span></li>';
+        if($i == 12) {
+          $output .= '</ul><ul class="usa-personalization-follow-shows">';
+        }
+        $i++;
+      }
+// DELETE FOLLOWING LINE
+      $output .= '</ul>';
+    }
+  }
+  return $output;
+}
+
+
+
 /**
  * Menu callback of surf test page
  */
-//hook_html_head_alter
 function usanetwork_personalization_surf() {
   $output = '';
-
+//return $output;
   // the following SURF code breaks the formatting of the admin pages, so
   // if not an admin page, load the SURF code
-  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add')
+  $mediaBrowser = (arg(0) == 'media' && arg(1) == 'browser') ? 1 : 0;
+  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add' && !$mediaBrowser)
   {
     // START SURF / IDX
     // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE
@@ -171,7 +270,6 @@ function usanetwork_personalization_surf() {
     drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', array('type' => 'external'));
 
     // SURF / IDX INTEGRATION START
-    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
     drupal_add_html_head(array(
       '#tag' => 'script',
       '#attributes' => array(
@@ -181,8 +279,9 @@ function usanetwork_personalization_surf() {
       ),
     ), 'surf_js_php');
     // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
+    $debugFlag = true;
     $debug = '
-    var usa_debugFlag = false;
+    var usa_debugFlag = '.$debugFlag.';
     var usa_debug = function(msg) {
       if (usa_debugFlag && typeof console != "undefined")
       {
@@ -199,13 +298,18 @@ function usanetwork_personalization_surf() {
 
     $debug .= 'var defaultAvatar = "'.$defaultAvatar.'"; ';
     drupal_add_js($debug, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/usa_surf_session.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf1.js');
     drupal_add_js('https://cdns.gigya.com/JS/socialize.js?apikey=2_p7HRGkwnEQpK0MzXUGXqWe-jZBb58hOsv9c3nJBa_riAktHijqVQmKrk2KLN_Ki6', array('type' => 'external'));
+    if ($debugFlag)
+    {
+      drupal_add_js('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', array('type' => 'external'));
+      drupal_add_js('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js', array('type' => 'external'));
+      drupal_add_css('http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css', array('type' => 'external'));
+    }
     drupal_add_js(drupal_get_path('module', 'usanetwork_personalization').'/js/surf2.js');
     // SURF / IDX INTEGRATION END
 
-    // IDEAMELT
-    drupal_add_js('http://www.ideamelt.com/static/apps/3.0/im.library.js', array('type' => 'external'));
 
     $output .= '
     <!--

@@ -8,12 +8,15 @@
  * Available variables:
  *
  */
-
 ?>
 
-<div class="usa-personalization personalization-content">
-  <div class="col">
-    col1 lorem ipsum
+<div class="usa-personalization personalization-wrapper">
+  <div id="personalization-main" class="col">
+    <?php if($showlist) : ?>
+    <ul class="usa-personalization-follow-shows">
+      <?php print $showlist; ?>
+    </ul>
+    <?php endif; ?>
   </div>
   <div id="personalization-nav" class="col">
     <div id="personalization-navigation">

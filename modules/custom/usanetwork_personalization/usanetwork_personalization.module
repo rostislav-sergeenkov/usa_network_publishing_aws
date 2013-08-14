@@ -328,6 +328,9 @@ function _usanetwork_personalization_notify_ideamelt($node) {
   $data['action_type'] = isset($node->field_ideamelt_action_type[$lang][0]['value']) ? $node->field_ideamelt_action_type[$lang][0]['value'] : '';
   if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
     $data['user_url'] = url(drupal_get_path_alias('node/'.$node->field_show[$lang][0]['target_id']), array('absolute' => true));
+
+    //TODO: remove the next line after the push to prod; this line is added to test ideamelt on dev and stage servers
+    $data['user_url'] = str_replace(array('dev.usa', 'stage.usa'), 'www.usa', $data['user_url']);
   } else {
     // if there are no shows associated with a node, don't send ideamelt notification
     return;

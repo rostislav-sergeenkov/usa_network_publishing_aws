@@ -584,6 +584,11 @@ function workbench_moderation_revision_operation_process($entity, $operation) {
   $event = substr($operation->operation, 21);
   $machine = state_flow_entity_load_state_machine($entity, 'node');
   $machine->fire_event($event);
+  // debug
+  watchdog('revision_scheduler', 'operation nid - @nid event @event.',
+    array('@nid' => $entity->nid, '@sunrise' => $event));
+  drupal_set_message(t('USA revision operation: operation nid - @nid event @event.',
+    array('@nid' => $entity->nid, '@event' => $event)));
 }
 
 /**

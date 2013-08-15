@@ -26,7 +26,7 @@ function usanetwork_static_page_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -82,20 +82,26 @@ function usanetwork_static_page_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
+      'global_nav_block_more' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

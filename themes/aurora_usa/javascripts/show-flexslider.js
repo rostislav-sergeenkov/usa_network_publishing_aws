@@ -3,7 +3,7 @@
   Drupal.behaviors.showAspot = {
     attach: function (context, settings) {
 
-      function create_show_flexslider() {
+      $('body').once('showFlexslider', function() { 
         $slideshow_selector = $('#show-aspot ul');
 
         $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
@@ -20,12 +20,8 @@
             animation: 'slide',
             controlNav: true,
             directionNav: (!Modernizr.touch)
-          });
-        }  
-
-      window.onload = function() {
-        create_show_flexslider();
-      };
+          });   
+       });  
 
 
     },

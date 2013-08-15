@@ -355,7 +355,7 @@ pre, code, kbd, tt {
   font-size: 10px;
 }
 
-.view-usa-cast .carousel-item h4, .echo-item-content .echo-item-tweetUserName a {
+.echo-item-content .echo-item-tweetUserName a {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 12px;
 }
@@ -363,6 +363,11 @@ pre, code, kbd, tt {
 .show-on-sync span, #on-now-panel .show-info-wrapper .show-title {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 14px;
+}
+
+.view-usa-cast .carousel-item h4 {
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 #utilities .breadcrumb > a, .echo-item-authorName, .snipe-msg h2 {
@@ -4600,7 +4605,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 #cast-carousel .view-content {
   width: 300px;
-  height: 145px;
+  height: 184px;
 }
 @media (min-width: 330px) {
   #cast-carousel .view-content {
@@ -4694,13 +4699,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .view-usa-cast .carousel-item h4 {
   margin: 0;
 }
-@media (min-width: 330px) {
-  .view-usa-cast .carousel-item h4 {
-    font-size: 16px;
-  }
-}
 .view-usa-cast .carousel-item img {
-  max-width: 169px;
   display: block;
 }
 @media (min-width: 330px) {
@@ -4709,12 +4708,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .view-usa-cast .carousel-item a.article-link {
-  height: 145px;
-}
-@media (min-width: 330px) {
-  .view-usa-cast .carousel-item a.article-link {
-    height: 188px;
-  }
+  height: 184px;
 }
 .view-usa-cast .carousel-item .item-content {
   letter-spacing: .05em;
@@ -4730,14 +4724,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .view-usa-cast .carousel-item .item-content > div {
   overflow: hidden;
   white-space: nowrap;
-  font-size: 10px;
-  line-height: 1.1em;
-}
-@media (min-width: 330px) {
-  .view-usa-cast .carousel-item .item-content > div {
-    font-size: 14px;
-    line-height: 1.5em;
-  }
+  line-height: 1.5em;
+  font-size: 14px;
 }
 
 /* social carousel */
@@ -4840,12 +4828,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     padding: 4px 8px 3px;
   }
   .promo-metadata h2, .upcoming-movie .meta h2 {
-    font-size: 12px;
+    font-size: 10px;
     line-height: 13.5px;
     margin-bottom: 1px;
   }
   .promo-metadata h3, .upcoming-movie .meta h3 {
-    font-size: 10px;
+    font-size: 8px;
     line-height: 12px;
   }
 }
@@ -4971,7 +4959,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 1275px) {
   .usa-home-featured li.carousel-item .meta {
-    height: 53px;
+    height: 77px;
     max-width: none;
   }
 }
@@ -4982,7 +4970,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .usa-home-featured .title {
   margin-bottom: 3px;
-  line-height: 1;
 }
 @media (min-width: 645px) {
   .usa-home-featured .title {
@@ -4996,29 +4983,27 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 1275px) {
   .usa-home-featured .title {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 .usa-adrails .usa-home-featured .title, .ie8 .usa-home-featured .title {
-  font-size: 18px;
+  font-size: 16px;
 }
 .usa-home-featured .caption {
   line-height: 1;
-  color: #cccccc;
 }
 @media (min-width: 645px) {
   .usa-home-featured .caption {
     font-size: 10px;
-    color: #878785;
   }
 }
 @media (min-width: 1275px) {
   .usa-home-featured .caption {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 .usa-adrails .usa-home-featured .caption, .ie8 .usa-home-featured .caption {
-  font-size: 12px;
+  font-size: 10px;
 }
 .usa-home-featured .featured-carousel {
   margin: 0 auto;
@@ -5049,6 +5034,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .usa-home-featured .featured-carousel > h2 {
   text-transform: uppercase;
 }
+.usa-home-featured .carousel .carousel-item .caption {
+  line-height: 13.5px;
+}
+@media (min-width: 645px) {
+  .usa-home-featured .carousel .carousel-item .caption {
+    line-height: 18px;
+  }
+}
 @media (min-width: 960px) and (max-width: 1274px) {
   .usa-home-featured .carousel > ul {
     margin-left: 8px !important;
@@ -5071,6 +5064,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
   .usa-home-featured .carousel .carousel-item img {
     height: 250px;
+  }
+  .usa-home-featured .carousel .carousel-item .title {
+    line-height: 35px;
+  }
+  .usa-adrails .usa-home-featured .carousel .carousel-item .title, .ie8 .usa-home-featured .carousel .carousel-item .title {
+    line-height: 18px;
   }
 }
 .usa-adrails .usa-home-featured .carousel, .ie8 .usa-home-featured .carousel {

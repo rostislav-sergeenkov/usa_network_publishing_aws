@@ -2,6 +2,10 @@
   position: relative;
   background-color: $black;
   padding: 5px 0 36px;
+  margin-bottom: 30px;
+  @include breakpoint($bp-menu-switch) {
+    margin-bottom: 0px;
+  }
   h2 {
     margin-bottom: 12px;
   }
@@ -42,7 +46,7 @@
         height: 50px;
       }
       @include breakpoint($bp-home-widest) {
-        height: 53px;
+        height: 77px;
         max-width: none;
       }
       .usa-adrails &, .ie8 & {
@@ -56,7 +60,6 @@
   .title {
     @extend %semi-10;
     margin-bottom: 3px;
-    line-height: 1;
     @include breakpoint($bp-home-2col) {
       font-size: 12px;
     }
@@ -64,25 +67,23 @@
       font-size: 16px;
     }
     @include breakpoint($bp-home-widest) {
-      font-size: 18px;
+      font-size: 20px;
     }
     .usa-adrails &, .ie8 & {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   .caption {
     @extend %regular-8;
     line-height: 1;
-    color: $gray-sky;
     @include breakpoint($bp-home-2col) {
       font-size: 10px;
-      color: $gray-light;
     }
     @include breakpoint($bp-home-widest) {
-      font-size: 12px;
+      font-size: 15px;
     }
     .usa-adrails &, .ie8 & {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
   .featured-carousel {
@@ -107,6 +108,15 @@
     }
   }
   .carousel {
+    .carousel-item {
+       .caption {
+        line-height: 13.5px;
+        @include breakpoint($bp-home-2col) {
+          line-height: 18px;
+        }  
+      }
+    }
+
     @include breakpoint($bp-home-3-fence) {
       > ul {
         margin-left: 8px !important;
@@ -127,6 +137,13 @@
         img {
           height: 250px;
         }
+        .title {
+          line-height: 35px;
+          .usa-adrails &, .ie8 & {
+            line-height: 18px;
+          }
+        }
+        
       }
     }
     .usa-adrails &, .ie8 & {

@@ -191,7 +191,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_published', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunrise = new stdClass();
           $set_sunrise->id = NULL;
           $set_sunrise->entity_type = 'node';
@@ -214,7 +214,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_draft', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunset = new stdClass();
           $set_sunset->id = NULL;
           $set_sunset->entity_type = 'node';
@@ -496,29 +496,49 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       */
       // if we have a sunrise date, schedule the revision to publish
       if (isset($sunrise)) {
-        $set_sunrise = new stdClass();
-        $set_sunrise->id = NULL;
-        $set_sunrise->entity_type = 'node';
-        $set_sunrise->entity_id = $entity->nid;
-        $set_sunrise->revision_id = $entity->vid;
-        $set_sunrise->operation = 'workbench_moderation_to_published';
-        $set_sunrise->time_scheduled = $sunrise;
-        $set_sunrise->time_queued = 0;
-        $set_sunrise->time_executed = 0;
-        revision_scheduler_operation_save($set_sunrise);
+        $count = db_select('revision_scheduler', 'r')
+                 ->fields('r')
+                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_type', 'node', '=')
+                 ->condition('time_scheduled', $sunrise, '=')
+                 ->condition('operation', 'workbench_moderation_to_published', '=')
+                 ->execute()
+                 ->rowCount();
+        if ($count == 0) {
+          $set_sunrise = new stdClass();
+          $set_sunrise->id = NULL;
+          $set_sunrise->entity_type = 'node';
+          $set_sunrise->entity_id = $entity->nid;
+          $set_sunrise->revision_id = $entity->vid;
+          $set_sunrise->operation = 'workbench_moderation_to_published';
+          $set_sunrise->time_scheduled = $sunrise;
+          $set_sunrise->time_queued = 0;
+          $set_sunrise->time_executed = 0;
+          revision_scheduler_operation_save($set_sunrise);
+        }
       }
       // if we have a sunset date, schedule the revision to draft
       if (isset($sunset)) {
-        $set_sunset = new stdClass();
-        $set_sunset->id = NULL;
-        $set_sunset->entity_type = 'node';
-        $set_sunset->entity_id = $entity->nid;
-        $set_sunset->revision_id = $entity->vid;
-        $set_sunset->operation = 'workbench_moderation_to_draft';
-        $set_sunset->time_scheduled = $sunset;
-        $set_sunset->time_queued = 0;
-        $set_sunset->time_executed = 0;
-        revision_scheduler_operation_save($set_sunset);
+        $count = db_select('revision_scheduler', 'r')
+                 ->fields('r')
+                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_type', 'node', '=')
+                 ->condition('time_scheduled', $sunset, '=')
+                 ->condition('operation', 'workbench_moderation_to_draft', '=')
+                 ->execute()
+                 ->rowCount();
+        if ($count == 0) {
+          $set_sunset = new stdClass();
+          $set_sunset->id = NULL;
+          $set_sunset->entity_type = 'node';
+          $set_sunset->entity_id = $entity->nid;
+          $set_sunset->revision_id = $entity->vid;
+          $set_sunset->operation = 'workbench_moderation_to_draft';
+          $set_sunset->time_scheduled = $sunset;
+          $set_sunset->time_queued = 0;
+          $set_sunset->time_executed = 0;
+          revision_scheduler_operation_save($set_sunset);
+        }
       }
     }
 

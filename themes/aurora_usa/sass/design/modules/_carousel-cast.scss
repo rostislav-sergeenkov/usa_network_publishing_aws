@@ -9,7 +9,7 @@
   }
   .view-content {
     width: 300px;
-    height: 145px;
+    height: 184px;
     @include breakpoint($bp-carousel-smallest) {
       width: auto;
       height: auto;
@@ -72,24 +72,18 @@
       }
     }
     h4 {
-      @extend %semi-12;
+      @extend %semi-16;
       margin: 0;
-      @include breakpoint($bp-carousel-smallest) {
-        font-size: 16px;
-      }
     }
     img {
-      max-width: 169px;
+//      max-width: 169px;
       display: block;
       @include breakpoint($bp-carousel-smallest) {
         max-width: none;
       }
     }
     a.article-link {
-      height: 145px;
-      @include breakpoint($bp-carousel-smallest) {
-        height: 188px;
-      }
+      height: 184px;
     }
     .item-content {
       @extend %metadata-holder;
@@ -105,12 +99,8 @@
       > div {
         overflow: hidden;
         white-space: nowrap;
-        font-size: 10px;
-        line-height: 1.1em;
-        @include breakpoint($bp-carousel-smallest) {
-          font-size: 14px;
-          line-height: 1.5em;
-        }
+        line-height: 1.5em;
+        font-size: 14px;
       }
     }
   }

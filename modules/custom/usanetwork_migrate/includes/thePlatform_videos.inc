@@ -185,7 +185,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       if (isset($sunrise)) {
         $count = db_select('revision_scheduler', 'r')
                  ->fields('r')
-                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_id', $entity->nid, '=')
                  ->condition('entity_type', 'node', '=')
                  ->condition('time_scheduled', $sunrise, '=')
                  ->condition('operation', 'workbench_moderation_to_published', '=')
@@ -208,7 +208,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
       if (isset($sunset)) {
         $count = db_select('revision_scheduler', 'r')
                  ->fields('r')
-                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_id', $entity->nid, '=')
                  ->condition('entity_type', 'node', '=')
                  ->condition('time_scheduled', $sunset, '=')
                  ->condition('operation', 'workbench_moderation_to_draft', '=')
@@ -498,7 +498,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       if (isset($sunrise)) {
         $count = db_select('revision_scheduler', 'r')
                  ->fields('r')
-                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_id', $entity->nid, '=')
                  ->condition('entity_type', 'node', '=')
                  ->condition('time_scheduled', $sunrise, '=')
                  ->condition('operation', 'workbench_moderation_to_published', '=')
@@ -521,7 +521,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       if (isset($sunset)) {
         $count = db_select('revision_scheduler', 'r')
                  ->fields('r')
-                 ->condition('entity_id', $entity_id->nid, '=')
+                 ->condition('entity_id', $entity->nid, '=')
                  ->condition('entity_type', 'node', '=')
                  ->condition('time_scheduled', $sunset, '=')
                  ->condition('operation', 'workbench_moderation_to_draft', '=')

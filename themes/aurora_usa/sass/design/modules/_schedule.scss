@@ -1,8 +1,8 @@
 .schedule-header {
+  @extend %semi;
   text-align: center;
   width: auto;
   vertical-align: middle;
-  font-family: $headline-semi;
   padding: 1em 0;
 }
 .schedule-date {

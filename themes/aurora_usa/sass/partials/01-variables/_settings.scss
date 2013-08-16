@@ -68,11 +68,19 @@ $show-baseline: false;
 // do something more targeted in production, ok?
 $animate-all-the-things: false;
 
+// NAVIGATION
+$primary-nav-height-mobi: 50px;
+$primary-nav-height-dt: 65px;
+$logo-height-large: 34px;
+$logo-height-med: 28px;
+$logo-height-med-2: 32px;
+
 // Z-Index
 // making utility higher than wall only when using slide out panel/menu
-$ziUtilities    : 102;
 $ziWall         : 100;
-$ziMegaNav      : 101;
+$ziMegaPanels   : 101;
+$ziMegaNav      : 102;
+$ziUtilities    : 103;
 $ziFilterOpen   : 95;
 
 // carousel size variable: (width, height);
@@ -82,14 +90,10 @@ $carousel-medium: 221px, 185px;
 $carousel-large: 237px, 198px;
 
 // Breakpoint variables
-// small grid breakpoints
 $breakpoint-no-query-fallbacks: true;
 $bp-menu-switch: 769px;
 $bp-menu-wide: 960px;
-$bp-grid-small-2-squish: max-width 524px;
-$bp-grid-small-2: 525px;
-$bp-grid-small-3: 772px;
-$bp-grid-small-4: 1020px;
+
 $bp-episode-side-menu: 769px, 'no-query' '.no-mediaqueries';
 $bp-episode-split-content: 881px;
 $bp-episode-ads-side-by-side: 660px $bp-episode-side-menu;
@@ -114,15 +118,6 @@ $bp-grid-small-meta-matrix-1: $bp-nav-nudge-1 $bp-nav-nudge-2;
 $bp-grid-small-meta-matrix-2: $bp-nav-nudge-2 $bp-nav-nudge-3;
 $bp-grid-small-meta-matrix-3: $bp-nav-nudge-3;
 
-// home page grid
-$bp-home-2col: 645px;
-$bp-home-3col: 960px;
-$bp-home-widest: 1275px;
-$bp-home-narrowest: max-width ($bp-home-2col - 1);
-$bp-home-mid: $bp-home-2col ($bp-home-3col - 1);
-$bp-home-wide: $bp-home-3col ($bp-home-widest - 1);
-
-
 // ad leaderboard
 $bp-ad-leaderboard-med-width: 768px;
 
@@ -144,6 +139,8 @@ $bp-social-mid-width: 723px;
 $bp-social-echo: 500px;
 $bp-social-small-width: 330px;
 
+$bp-social-lyris-large: 960px;
+
 // on now
 $bp-on-now: 640px;
 
@@ -152,9 +149,9 @@ $bp-carousel-smallest: 330px;
 
 
 // show landing page
-$bp-show-very-large-width: 1275px;
-$bp-show-large-width: 959px;
 $bp-show-mid-width: 645px;
+$bp-show-large-width: 959px;
+$bp-show-very-large-width: 1275px;
 
 $bp-aspot-very-large-width: 1275px;
 $bp-aspot-large-width: 959px;
@@ -177,12 +174,9 @@ $bp-video-player-section: max-width 644px;
 
 $bp-video-low-range-width: 320px 644px;
 $bp-video-mid-range-width: 481px 1023px;
-
 $bp-video-mid-range2-width: 487px 722px;
-
 $bp-video-mid-range3-width: 723px 958px;
 $bp-video-mid-range4-width: 645px 959px;
-
 $bp-video-high-range-width: 960px 1274px;
 
 
@@ -201,6 +195,44 @@ $bp-schedule-date-wide: 640px;
 
 // subnav promo image
 $bp-show-four-subnav-images: 1200px;
+
+$bp-maintenance: 330px;
+
+// home page grid breakpoints
+$bp-home-2col: 645px;
+$bp-home-3col: 960px;
+$bp-home-widest: 1275px;
+$bp-home-narrowest: max-width ($bp-home-2col - 1);
+$bp-home-2-fence: $bp-home-2col ($bp-home-3col - 1);
+$bp-home-3-fence: $bp-home-3col ($bp-home-widest - 1);
+
+
+// small grid breakpoints
+$bp-grid-small-2-squish: max-width 524px;
+$bp-grid-small-2: 525px;
+$bp-grid-small-3: 772px;
+$bp-grid-small-4: 1020px;
+$bp-grid-small-2-3: max-width ($bp-grid-small-3 - 1);
+$bp-grid-small-2-fence: $bp-grid-small-2 ($bp-grid-small-3 - 1);
+$bp-grid-small-3-fence: $bp-grid-small-3 ($bp-grid-small-4 - 1);
+
+// small - wide grid breakpoints
+$bp-grid-small-wide-small: max-width ($bp-video-mid-small-width - 1);
+$bp-grid-small-wide-2-3: max-width ($bp-video-medium-width - 1);
+$bp-grid-small-wide-2-fence: $bp-video-mid-small-width ($bp-video-medium-width - 1);
+$bp-grid-small-wide-3-fence: $bp-video-medium-width ($bp-video-large-width - 1);
+$bp-grid-small-wide-2-3-fence: $bp-video-mid-small-width ($bp-video-large-width - 1);
+$bp-grid-small-wide-4-fence: $bp-video-large-width ($bp-video-very-large-width - 1);
+$bp-grid-small-wide-4: $bp-video-very-large-width;
+
+// show page grid breakpoints
+$bp-grid-show-2: $bp-show-mid-width;
+$bp-grid-show-3: $bp-show-large-width;
+$bp-grid-show-4: $bp-show-very-large-width;
+$bp-grid-show-2-fence: $bp-grid-show-2 ($bp-grid-show-3 - 1);
+$bp-grid-show-3-fence: $bp-grid-show-3 ($bp-grid-show-4 - 1);
+
+
 
 ////////////////////////////
 // COMPASS DEFAULTS

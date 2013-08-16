@@ -42,7 +42,7 @@ function usanetwork_lyris_block_view($delta = '') {
     case 'newsletter_subscription':
       $node = node_load(arg(1));
       if (isset($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']) && !empty($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'])) {
-        $block['subject'] = t('Sign Up for the Newsletter');
+        $block['subject'] = t('Sign Up for Newsletter');
         $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
       }
       break;
@@ -69,8 +69,10 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
-    '#title' => t('E-Mail'),
-    '#size' => 26,
+    '#attributes' => array(
+      'placeholder' => 'enter email address',
+    ),
+    '#size' => 23,
     '#required' => TRUE,
     '#rules' => array(
       'email',
@@ -87,7 +89,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
   );
   $form['newsletter']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Sign Up'),
+    '#value' => t('submit'),
     '#ajax' => array(
       'callback' => 'newsletter_lyris_ajax_callback',
       'wrapper' => 'newsletter_lyris_ajax_wrapper',
@@ -100,8 +102,10 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
 }
 
 function newsletter_lyris_ajax_callback($form, $form_state) {
-  if ($form_state['values']['email'] == '') {
-    $form['newsletter']['#markup'] = t('Please enter the valid E-Mail Address');
+  if ($form_state['values']['email'] == '' || !(valid_email_address($form_state['values']['email']))) {
+    list($form, $form_state) = ajax_get_form();
+    drupal_process_form($form['#newsletter'], $form, $form_state);
+    form_set_error('', '<span class="error">' . t('please enter a valid e-mail') . '</span>');
     return $form['newsletter'];
   }
   $user['email'] = $form_state['values']['email'];
@@ -109,13 +113,16 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   $result = usanetwork_lyris_assign_user_to_list($user);
   if ($result) {
     if (empty($form['newsletter']['title'])) {
-      $form['newsletter']['#markup'] = t('Thank you for subscribing');
+      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up!') . '</span>';
     } else {
-      $form['newsletter']['#markup'] = t('Thank you for subscribing to %title',  array('%title' => $form_state['values']['title']));
+      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up for the %title newsletter!',  array('%title' => $form_state['values']['title'])) . '</span>';
     }
     return $form['newsletter'];
+  } elseif (valid_email_address($form_state['values']['email']) && $result == null) {
+    $form['newsletter']['#markup'] = t('This email address is already registered for the %title newsletter.', array('%title' => $form_state['values']['title'])) ;
+    return $form['newsletter'];
   } else {
-    $form['newsletter']['#markup'] = t('Problem subscribing, please try again later');
+    $form['newsletter']['#markup'] = t('Problem subscribing, please try again later.');
     return $form['newsletter'];
   }
 }

@@ -71,7 +71,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
-  drupal_add_js($theme_path . '/javascripts/video-dropdowns.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   $icomoon_ie_fix = array(
     '#tag' => 'script',
@@ -92,7 +91,7 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
-    $slideshow = ($node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
+    $slideshow = (!empty($node->field_usa_autoscroll) && $node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
     $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
     $js_settings = array(
       'slideshow' => $slideshow,
@@ -196,6 +195,9 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
           $vars['classes_array'][] = drupal_html_class('carousel');
         }
         break;
+      case 'usanetwork_video-usa_video_views':
+        drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
+        break;
       case 'views-usa_cast-block_2':
       case 'views-usa_shows-block_2':
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
@@ -245,7 +247,7 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       break;
     case 'usanetwork_aspot':
       if (isset($vars['field_text_line_1_image']) && count($vars['field_usa_aspot_txt1']) > 0) {
-        $alt = $vars['field_usa_aspot_txt1'][$language][0]['safe_value'];
+        $alt = $vars['field_usa_aspot_txt1'][0]['safe_value'];
       } else {
         $alt = '';
       }
@@ -549,9 +551,7 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'attachment_2') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/follow-social.js');
     }
-
   }
-
 
 }
 
@@ -662,12 +662,6 @@ function aurora_usa_preprocess_views_view_list(&$vars) {
         }
       }
       break;
-  }
-}
-
-function aurora_usa_preprocess_views_view_unformatted(&$vars) {
-  $view = $vars['view'];
-  switch($view->name) {
     case 'usa_gallery' :
       if ($vars['view']->current_display == 'panel_pane_1'
         || $vars['view']->current_display == 'panel_pane_3'
@@ -682,7 +676,7 @@ function aurora_usa_preprocess_views_view_unformatted(&$vars) {
           }
         }
       }
-    break;
+      break;
   }
 }
 

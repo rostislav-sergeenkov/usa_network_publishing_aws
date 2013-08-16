@@ -396,6 +396,7 @@ function usanetwork_core_update_7113() {
     'pub_person_overrides',
     'pub_tv_overrides',
   );
+  module_disable($modules_un);
   drupal_uninstall_modules($modules_un);
 }
 
@@ -410,7 +411,55 @@ function usanetwork_core_update_7114() {
     'pub_theplatform',
     'pub_gigya',
   );
+  module_disable($modules_un);
   drupal_uninstall_modules($modules_un);
 }
 
+/**
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! Enable Workbench modules, disable state flow schedule, remove state_flow_schedule queue items.
+ */
+function usanetwork_core_update_7115() {
+  module_enable(array('workbench', 'workbench_moderation', 'revision_scheduler', 'pub_workbench'));
+  module_disable(array('sps', 'pub_state_flow', 'state_flow_schedule'));
+}
 
+/**
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! uninstall pub_field_bases, pub_files, pub_files_overrides, pub_display_suite, pub_display_suite, pub_image_styles, pub_taxonomy
+ */
+function usanetwork_core_update_7116() {
+
+  $modules_un = array(
+    'pub_field_bases',
+    'pub_files',
+    'pub_display_suite',
+    'pub_image_styles',
+    'pub_taxonomy',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * Enable new usanetwork_files module
+ */
+function usanetwork_core_update_7117() {
+  $modules = array('usanetwork_files');
+  module_enable($modules);
+
+  $modules_un = array(
+    'pub_files_overrides',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * Enable new usanetwork_workbench module
+ * commenting out for now - we will not need this
+ */
+ /**
+//function usanetwork_core_update_7118() {
+//  $modules = array('usanetwork_workbench');
+//  module_enable($modules);
+//}
+*/

@@ -1,0 +1,48 @@
+/* social carousel */
+
+#block-views-usa-shows-block-1 {
+  margin: 5px 0 20px;
+  @include breakpoint($bp-carousel-smallest) {
+    margin-bottom: 30px;
+  }
+  .view-content {
+    width: 300px;
+    @include breakpoint($bp-carousel-smallest) {
+      width: auto;
+    }
+  }
+  .item-list {
+    height: 145px;
+    overflow: hidden;
+  }
+  .carousel-item {
+    @extend %carousel-item-center;
+    height: 145px;
+    width: 173px;
+    border: 2px solid $gray-dark;
+    position: relative;
+    &.active {
+      border-color: $white;
+      h4 {
+        &:after {
+          @include cssTriangle(8px, $white, left);
+          position: absolute;
+          left:0;
+          bottom: 50%;
+          @include transform3d( translateY(50%) );
+        }
+      }
+    }
+  }
+  h4 {
+    @extend %metadata-holder;
+    font-weight: normal;
+    color: $white;
+    height: 34px;
+    padding: 8px 18px;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+  }
+}
+

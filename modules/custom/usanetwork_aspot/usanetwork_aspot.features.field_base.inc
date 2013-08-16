@@ -44,13 +44,13 @@ function usanetwork_aspot_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_mobile_text_line_1'
-  $field_bases['field_mobile_text_line_1'] = array(
+  // Exported field_base: 'field_mobile_text_line_2'
+  $field_bases['field_mobile_text_line_2'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_mobile_text_line_1',
+    'field_name' => 'field_mobile_text_line_2',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(

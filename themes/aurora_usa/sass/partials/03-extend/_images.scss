@@ -17,15 +17,7 @@
     padding: 12px 15px 9px;
     margin: 0;
     overflow: hidden;
-    &:after {
-      content: $space;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 1em;
-      height: 100%;
-      @include background-image(linear-gradient(right, $black-trans 20%, transparent));
-    }
+
   }
   .field-name-field-caption {
     @extend %visuallyhidden;
@@ -54,8 +46,7 @@
       font-family: $headline-semi;
     }
     .caption {
-      font-family: $headline-reg;
-      font-size: 15px;
+      @extend %regular-15;
       > div {
         display: inline;
 //        padding-right: 5px;

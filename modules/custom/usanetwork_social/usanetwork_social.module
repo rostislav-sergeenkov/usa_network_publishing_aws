@@ -837,12 +837,13 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
+  $vars .= 'var defaultAvatar = "/' . drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg"; ';
   drupal_add_js($vars, array('type' => 'inline'));
 
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/backplane.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/auth.js', 'external');
+  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/backplane.js', 'external');
   drupal_add_js('http://characterchatter.usanetwork.com/js/metadata-tweaks-plugin.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/submit.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/counter.js', 'external');
@@ -852,6 +853,8 @@ function usanetwork_social_chat_with_fans($node) {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/reply.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/whirlpools.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/submit-text-counter.js', 'external');
+  // @TODO: MOVE THE FOLLOWING CSS INTO A STYLESHEET
+  drupal_add_css('#chat-submit-form .echo-auth-login, #chat-submit-form .echo-auth-logout { display:none !important }', array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
 
   $output .= '<div id="fb-root"></div>';

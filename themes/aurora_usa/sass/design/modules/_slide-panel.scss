@@ -9,8 +9,7 @@
   .menu-title {
     background: $nav-black;
     color: $blue;
-    font-family: $headline-reg;
-    font-size: 18px;
+    @extend %regular-18;
     font-weight: normal;
     margin: 0;
     padding: 10px 12px 8px;
@@ -34,8 +33,7 @@
   border-width: 0 0 1px;
   color: $beige;
   display: block;
-  font-size: 18px;
-  font-family: $headline-reg;
+  @extend %regular-18;
   margin: 0;
   padding: 10px 12px 8px;
   line-height: 1;

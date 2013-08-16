@@ -2,9 +2,9 @@ body {
   &[data-menu-direction="right"][data-menu-position="open"] {
     .jPanelMenu-panel {
       overflow: hidden;
-      @include breakpoint($bp-menu-switch) { 
+      @include breakpoint($bp-menu-switch) {
         overflow: visible;
-      }  
+      }
     }
     #jPanelMenu-menu {
       &.state-personalization {
@@ -18,7 +18,16 @@ body {
 
 .personalization-content {
   background-color: $gray-med;
-  padding: 10px; 
+  padding: 40px;
+  @include breakpoint($bp-menu-switch) {
+    height: 400px;
+  }  
+  .col {
+    float: left;
+  }
+  #personalization-nav {
+    float: right;
+  }
   .close {
     display: block;
     position: absolute;
@@ -58,40 +67,38 @@ body {
   right: 5px;
   white-space: nowrap;
   cursor: pointer;
+  top: 14px;
+  &.logged-in {
+    top: 10px;
+  }
   @include breakpoint($bp-menu-switch) {
     font-size: 16px;
     height: 65px;
     right: 15px;
     line-height: 65px;
     position: relative;
-  }  
-}
-
-
-#personalization-drawer {
-  position: absolute;
-  @include breakpoint($bp-menu-switch) {
-    width: 100%;
-    overflow: hidden;
-    z-index: 1;
-    opacity: 0;
-    // display: none;
-    @include transform3d( translateY(100%) );
-    @include transition-duration(0.2s);
-    @include transition-timing-function(linear);
-    @include transition-property(all);
-    @include breakpoint($bp-menu-switch) {
-      overflow: hidden;
-      bottom: 0;
-      left: 0;
+    top: auto;
+    &.logged-in {
+      top: auto;
     }  
   }
-  .active-item + & {
-    @include breakpoint($bp-menu-switch) {
-      bottom: 100%;
-      opacity: 1;
-      @include transform3d( translateY(0) );
-      @include transition-duration(0.2s);
+}
+
+.personalization-avatar {
+  img {
+    border: 2px solid $white;
+    vertical-align: middle;
+    .personalization-trigger & {
+      width: 32px;
+      height: 32px;
+      @include breakpoint($bp-menu-switch) {
+        width: 45px;
+        height: 45px;
+      }  
     }
   }
+}
+
+#block-usanetwork-personalization-sign-in.block {
+  display: block;
 }

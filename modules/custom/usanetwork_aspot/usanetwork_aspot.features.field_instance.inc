@@ -57,8 +57,8 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-usanetwork_aspot-field_mobile_text_line_1'
-  $field_instances['node-usanetwork_aspot-field_mobile_text_line_1'] = array(
+  // Exported field_instance: 'node-usanetwork_aspot-field_mobile_text_line_2'
+  $field_instances['node-usanetwork_aspot-field_mobile_text_line_2'] = array(
     'bundle' => 'usanetwork_aspot',
     'default_value' => NULL,
     'deleted' => 0,
@@ -69,14 +69,14 @@ function usanetwork_aspot_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 17,
       ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 9,
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -87,8 +87,8 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_mobile_text_line_1',
-    'label' => 'Mobile Text line 1',
+    'field_name' => 'field_mobile_text_line_2',
+    'label' => 'Mobile Text line 2',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -109,7 +109,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -268,7 +268,7 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -532,11 +532,11 @@ Suggested max dimensions 380px x 80px<br/>
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 0,
-          0 => 0,
           'audio' => 0,
           'document' => 0,
+          0 => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
@@ -661,7 +661,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -852,7 +852,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
   t('Link');
   t('Mobile Image');
-  t('Mobile Text line 1');
+  t('Mobile Text line 2');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>

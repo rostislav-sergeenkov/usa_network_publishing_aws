@@ -1,0 +1,39 @@
+.tiles {
+  #main-slider {
+    text-align: center;
+  }
+  .flex-control-paging {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    bottom: 0;
+    font-size: 0;
+    height: 0;
+    margin: 0;
+    position: relative;
+    top: -26px;
+    overflow: visible;
+    vertical-align: top;
+    width: auto;
+    .ie9 & {
+      top: -32px;
+      padding-bottom: 8px;
+    }
+    li {
+      margin: 0 5px;
+      a {
+        @include box-shadow(none);
+        background: $gray-darker-light;
+        height: 14px;
+        width: 14px;
+        &.flex-active, &:hover {
+          background: $white;
+          border: 1px solid $off-white;
+        }
+      }
+    }
+  }
+}

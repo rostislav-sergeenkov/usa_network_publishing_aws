@@ -161,6 +161,8 @@ function usanetwork_migrate_cron() {
     return;
   }
 
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/**************************
   // Process nodes scheduled to be unpublished in field_publish_date, but only
   // if the current queue is empty.  Since data is stored in binary format,
   $queue_name = USANETWORK_MIGRATE_UNPUBLISH_QUEUE;
@@ -202,15 +204,15 @@ function usanetwork_migrate_cron() {
       array('@items' => print_r($queued_items, TRUE)));
   drupal_set_message(t('USANETWORK MIGRATE:  Populated the custom State Flow Fix Queue with the following items: @items',
       array('@items' => print_r($queued_items, TRUE))));
-
+**************************/
 
   // Run migration to update content.
   //*  Comment this block out when the migration update crontab goes live.
+  // note 7/26/13 revusut this to see if migrate update is a better way to deal with this
   global $usanetwork_migrate_is_cron;
 
   $usanetwork_migrate_is_cron = TRUE;
   $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
-  #$machine_names = array('usanetwork_mpx_videos');
 
   foreach ($machine_names as $machine_name) {
     // Log that we're starting this update.
@@ -237,7 +239,10 @@ function usanetwork_migrate_cron() {
 
 /*
  * Implements hook_cron_queue_info().
+ * @TODO this can be deleted after workbench upgrade
  */
+// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
+/**************************
 function usanetwork_migrate_cron_queue_info() {
 
   $queues[USANETWORK_MIGRATE_UNPUBLISH_QUEUE] = array(
@@ -251,11 +256,13 @@ function usanetwork_migrate_cron_queue_info() {
 
   return $queues;
 }
+***************************/
 
 /**
  * Process state flow schedule queue items to prepare them for publishing.
  *
  * @param object $data
+ * @TODO this can be deleted after workbench upgrade
  */
 function process_usanetwork_migrate_state_flow_fix_item($data) {
 
@@ -309,6 +316,7 @@ function process_usanetwork_migrate_state_flow_fix_item($data) {
  * Process scheduled nodes to fire unpublish state flow event.
  *
  * @param object $data
+ * @TODO this can be deleted after workbench upgrade
  */
 function process_usanetwork_migrate_unpublish_content_item($data) {
 
@@ -328,6 +336,7 @@ function process_usanetwork_migrate_unpublish_content_item($data) {
 
 /**
  * Helper that returns the items in a queue.
+ * @TODO this can be deleted after workbench upgrade; delete the queues before removing this
  */
 function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit = NULL) {
 
@@ -357,6 +366,7 @@ function _usanetwork_migrate_get_queued_items($queue_name, $data_field, $limit =
 
 /**
  * Return all nodes scheduled to be published
+ * @TODO this can be deleted after workbench upgrade
  */
 function usanetwork_migrate_get_nodes_to_unpublish() {
 
@@ -372,6 +382,7 @@ function usanetwork_migrate_get_nodes_to_unpublish() {
 
 /**
  * Helper function that properly transitions an entity to the desired state flow state.
+ * @TODO this can be deleted after workbench upgrade
  */
 function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_state) {
 
@@ -438,6 +449,7 @@ function _usanetwork_migrate_complete_entity_state_transition(&$entity, $end_sta
 
 /**
  * Helper that performs a single entity state transition.
+ * @TODO this can be deleted after workbench upgrade
  */
 function _usanetwork_migrate_transition_entity_state($entity, $transition, $entity_state_machine) {
 
@@ -471,7 +483,7 @@ function _usanetwork_migrate_cron_cache_clear() {
   foreach ($cache_tables as $table) {
     cache_clear_all('*', $table, TRUE);
   }
-
+// @TODO do we need this after the workbench update?
   watchdog('usanetwork_migrate', 'Ran custom cache clear on cron.');
   drupal_set_message(t('Ran custom cache clear on cron.'));
 }

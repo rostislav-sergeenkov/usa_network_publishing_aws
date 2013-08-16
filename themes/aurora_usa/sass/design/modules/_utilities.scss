@@ -7,13 +7,11 @@
   border-bottom: 1px solid $gray-ultra-med;
 //  overflow: hidden;
   position: relative;
-  font-family: $headline-reg;
   @extend .clearfix;
 
   h1#page-title {
     @include float-left;
-    font-family: $headline-reg;
-    font-size: 19px;
+    @extend %regular-18;
     margin: 5px 0 0 0;
     text-transform: uppercase;
     line-height: 40px;
@@ -28,8 +26,7 @@
     text-transform: uppercase;
     > a {
       @include inline-block;
-      font-family: $headline-semi;
-      font-size: 19px;
+      @extend %semi-18;
       line-height: 40px;
       @include link-colors($white, $white, $white);
       vertical-align: middle;

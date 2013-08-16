@@ -191,7 +191,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_published', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunrise = new stdClass();
           $set_sunrise->id = NULL;
           $set_sunrise->entity_type = 'node';
@@ -214,7 +214,7 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_draft', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunset = new stdClass();
           $set_sunset->id = NULL;
           $set_sunset->entity_type = 'node';
@@ -504,7 +504,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_published', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunrise = new stdClass();
           $set_sunrise->id = NULL;
           $set_sunrise->entity_type = 'node';
@@ -527,7 +527,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
                  ->condition('operation', 'workbench_moderation_to_draft', '=')
                  ->execute()
                  ->rowCount();
-        if ($count == 0) { 
+        if ($count == 0) {
           $set_sunset = new stdClass();
           $set_sunset->id = NULL;
           $set_sunset->entity_type = 'node';

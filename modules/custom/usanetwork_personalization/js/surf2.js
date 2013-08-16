@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
   session.get(displayUserInfo); // check our session and run the callback on success
 
-  SURF.debug = false;
+  SURF.debug = (typeof usa_debugFlag != 'undefined') ? usa_debugFlag : false;
   if (SURF.debug) jQuery('#debug .content ul').append('<li>Site level jQuery version is '+jQuery().jquery+'</li>');
 
   //get all our events

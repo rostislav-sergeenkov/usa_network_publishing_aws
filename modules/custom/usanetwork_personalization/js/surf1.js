@@ -1,3 +1,24 @@
+
+function getSocialAvatar(response) {
+  if ( response.errorCode == 0 ) {
+    var user = response['user'];
+    if(user['thumbnailURL']!= ''){
+      //jQuery.cookie("socialavatar", user['thumbnailURL'], { path : '/',domain: '.usanetwork.com'});
+      if (typeof usa_user != 'undefined') usa_user.avatar = user['thumbnailURL'];
+
+      // @TODO: CONVERT THIS TO USE THE usa_idx_id COOKIE
+      jQuery.cookie("socialavatar", user['thumbnailURL'], { path : '/'});
+      usa_debug('fn: getSocialAvatar()');
+      var socialavatar = jQuery.cookie("socialavatar");
+      jQuery('#user-dialog .thumbnail').html('<img src="'+socialavatar+'" width="50" height="50"/>')
+    }
+  }
+  else {
+      alert('Error :' + response.errorMessage);
+  }
+}
+
+
 //This function is called when a user successfully signs in
 //See below for where it is used as a call back
 function displayUserInfo(user) {
@@ -16,9 +37,12 @@ function displayUserInfo(user) {
 
   //if we have it, show their avatar
   if ('avatar' in user && user.avatar != '') {
-    jQuery('#user-dialog .thumbnail').html('<img src="'+user.avatar+'" width="50" height="50"/>');
+//    jQuery('#user-dialog .thumbnail').html('<img src="'+user.avatar+'" width="50" height="50"/>');
+  }
+  else if(user._gigya_login_provider == 'twitter'){
+      gigya.socialize.getUserInfo({callback:getSocialAvatar});
   } else {
-    jQuery('#user-dialog .thumbnail').html('<img src="'+defaultAvatar+'" width="50" height="50"/>');
+//    jQuery('#user-dialog .thumbnail').html('<img src="'+defaultAvatar+'" width="50" height="50"/>');
   }
 }
 

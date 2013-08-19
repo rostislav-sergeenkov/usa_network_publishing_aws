@@ -42,8 +42,12 @@ function usanetwork_lyris_block_view($delta = '') {
     case 'newsletter_subscription':
       $node = node_load(arg(1));
       if (isset($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']) && !empty($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'])) {
-        $block['subject'] = t('Sign Up for Newsletter');
-        $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
+        $lyris = usanetwork_lyris_load_lyris();
+        $lyris_id = $lyris->GetListID($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']);
+        if (!empty($lyris_id)) {
+          $block['subject'] = t('Sign Up for Newsletter');
+          $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
+        }
       }
       break;
   }

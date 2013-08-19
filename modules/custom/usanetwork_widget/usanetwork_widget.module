@@ -1,0 +1,58 @@
+<?php
+/**
+ * @file
+ * USA Network widgets
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_widget_menu() {
+  $items['navbar'] = array(
+    'title' => t('USA Main Menu Widget'),
+    'page callback' => 'usanetwork_widget_navbar',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['navbar/plain'] = array(
+    'page callback' => 'usanetwork_widget_navbar_plain',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['navbar/docs'] = array(
+    'title' => t('USA Main Menu Widget Documentation'),
+    'page callback' => 'usanetwork_widget_navbar_docs',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Helper to generate and output the main menu bar
+ */
+function usanetwork_widget_navbar() {
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
+  return $main_menu['content'];
+}
+
+/**
+ * Helper to generate and output the main menu bar in plain html
+ */
+function usanetwork_widget_navbar_plain() {
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
+  print $main_menu['content']['meganav']['#markup'];
+  exit;
+}
+
+/**
+ * Helper to generate the main menu documentation
+ */
+function usanetwork_widget_navbar_docs() {
+  //TODO: Add the menu integration documentation
+  return 'Menu Documentation: Placeholder';
+}
+
+

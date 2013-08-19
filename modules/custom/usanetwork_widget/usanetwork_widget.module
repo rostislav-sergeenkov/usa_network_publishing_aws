@@ -9,7 +9,6 @@
  */
 function usanetwork_widget_menu() {
   $items['navbar'] = array(
-    'title' => t('USA Main Menu Widget'),
     'page callback' => 'usanetwork_widget_navbar',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -20,15 +19,31 @@ function usanetwork_widget_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['navbar/docs'] = array(
-    'title' => t('USA Main Menu Widget Documentation'),
     'page callback' => 'usanetwork_widget_navbar_docs',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar/plain'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_plain',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar/docs'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_docs',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
 
   return $items;
 }
-
 
 /**
  * Helper to generate and output the main menu bar
@@ -51,8 +66,34 @@ function usanetwork_widget_navbar_plain() {
  * Helper to generate the main menu documentation
  */
 function usanetwork_widget_navbar_docs() {
-  //TODO: Add the menu integration documentation
+  //TODO: Add the menu integration documentation here
   return 'Menu Documentation: Placeholder';
 }
+
+/**
+ * Helper to generate and output the show menu bar
+ */
+function usanetwork_widget_show_navbar($node) {
+  $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
+  return $show_menu['content'];
+}
+
+/**
+ * Helper to generate and output the show menu bar in plain html
+ */
+function usanetwork_widget_show_navbar_plain($node) {
+  $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
+  print $show_menu['content'];
+  exit;
+}
+
+/**
+ * Helper to generate the show menu documentation
+ */
+function usanetwork_widget_show_navbar_docs($node) {
+  //TODO: Add the show menu integration documentation here
+  return 'Show Menu Documentation: Placeholder';
+}
+
 
 

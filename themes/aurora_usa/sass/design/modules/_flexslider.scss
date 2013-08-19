@@ -108,20 +108,20 @@ html[xmlns] .slides {
 .flex-direction-nav {
   *height: 0;
   a {
-    width: 60px;
-    height: 60px;
+    width: 35px;
+    height: 80px;
     margin: -16px 0 0;
     display: block;
     position: absolute;
-    top: 50%;
+    top: 40%;
     z-index: 10;
     cursor: pointer;
     -webkit-transition: all .3s ease;
     @extend %usanetwork-font;
     background-color: $black-trans-5;
-    line-height: 60px;
+    line-height: 80px;
     text-align: center;
-    border-radius: 50%;
+    //border-radius: 50%;
     color: $gray-light;
     font-size: 28px;
     &:hover {
@@ -135,6 +135,8 @@ html[xmlns] .slides {
     background-position: 100% 0;
     right: -30px;
     text-indent: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 0;
     .ie9 &, .ie8 & {
       @extend .icons-arrow-next-v2;
       &:hover {
@@ -152,6 +154,8 @@ html[xmlns] .slides {
   .flex-prev {
     left: -30px;
     text-indent: -3px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 0;
     .ie9 &, .ie8 & {
       @extend .icons-arrow-prev-v2;
       &:hover {
@@ -171,11 +175,11 @@ html[xmlns] .slides {
 .flexslider:hover {
   .flex-next {
     opacity: 0.8;
-    right: 5px;
+    right: 0;
   }
   .flex-prev {
     opacity: 0.8;
-    left: 5px;
+    left: 0;
   }
   .flex-next:hover, .flex-prev:hover {
     opacity: 1;

@@ -36,6 +36,8 @@ var usa_sessionBasePath = 'http://'+window.location.host+'/sites/usanetwork/modu
 // HIDE / DISPLAY USER INFO
 function usa_hideUser(user)
 {
+  usa_debug('fn: usa_hideUser(user)');
+  usa_debug(user);
   // Code below shows the sign in link in the global nav bar
   // and hides and removes the user info in the personalization drawer.
   jQuery('#personalization-user-info').hide();
@@ -64,8 +66,20 @@ function usa_displayUser(user)
     jQuery('.personalization-trigger').addClass('logged-in');
 
     // if we have it, show their avatar
-    if ('avatar' in user && user.avatar != '') {
-      jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+user.avatar+'" alt="'+user.username+'" />');
+usa_debug('socialavatar: '+jQuery.cookie('socialavatar'));
+usa_debug('user.twLoggedIn: '+user.twLoggedIn);
+    if ('avatar' in user && user.avatar != '' && user.avatar != null) {
+usa_debug('user.avatar: '+user.avatar);
+      var userAvatar = user.avatar;
+//    if (false) {
+      if (userAvatar.search('a0.twimg.com') != 0) userAvatar = userAvatar.replace('_normal', '_bigger');
+      jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+userAvatar+'" alt="'+user.username+'" />');
+    } else if (user.twLoggedIn != 0 && jQuery.cookie('socialavatar') != '') {
+usa_debug('gonna show the tw avatar');
+      var twAvatar = jQuery.cookie('socialavatar');
+      twAvatar = twAvatar.replace('_normal', '_bigger');
+usa_debug('twAvatar: '+twAvatar);
+      jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+twAvatar+'" alt="'+user.username+'" />');
     } else {
       jQuery('#personalization-user-avatar, .personalization-trigger span').html('<img src="'+defaultAvatar+'" alt="'+user.username+'" />');
     }

@@ -1,4 +1,11 @@
+.node-type-catchall-page {
+  .tiles {
+    @extend %movies-grid;
+  }
+}
+
 .featured-movie {
+  @extend %grid-item;
   &.aspot {
     .meta-wrap {
       top: auto;
@@ -30,40 +37,8 @@
   }
 }
 .upcoming-movie {
-  @extend .c-spot;
+  @extend %grid-item;
   position: relative;
-  .tiles & {
-    height: 118px;
-    width: 142px;
-    @include breakpoint($bp-home-2col) {
-      margin-right: 15px;
-      margin-bottom: 15px;
-      height: 250px;
-      width: 300px;
-      &:nth-of-type(2n+2) {
-        margin-right: 0;
-      }
-    }
-    @include breakpoint($bp-home-3col) {
-      &:nth-of-type(2n+2) {
-        margin-right: 15px;
-      }
-      &:nth-of-type(3n+6) {
-        margin-right: 0;
-      }
-    }
-    @include breakpoint($bp-home-widest) {
-      &:nth-of-type(3n+6) {
-        margin-right: 15px;
-      }
-      &:nth-of-type(4n+8) {
-        margin-right: 0;
-      }
-    }
-  }
-  &:nth-of-type(2n+2) {
-    margin-right: 15px;
-  }
   .meta {
     @extend .promo-metadata;
     white-space: nowrap;

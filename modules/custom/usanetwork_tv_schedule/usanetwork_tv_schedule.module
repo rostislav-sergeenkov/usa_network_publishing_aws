@@ -289,7 +289,7 @@ function usanetwork_tv_schedule_schedule_page() {
 
   $sdate = date('Y_m_d');
   if (isset($_GET['sdate']) && !empty($_GET['sdate'])) {
-    $sdate = $_GET['sdate'];
+    $sdate = check_plain($_GET['sdate']);
     $et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
   }
 
@@ -438,12 +438,12 @@ function usanetwork_on_now_panel_js() {
 
   if (!empty($arg[1]) && isset($_GET['on_now'])) {
     $on_now = node_load($arg[1]);
-    $output = usanetwork_on_now_panel_node_content($on_now, $_GET['on_now']);
+    $output = usanetwork_on_now_panel_node_content($on_now, check_plain($_GET['on_now']));
   }
 
   if (!empty($arg[2]) && isset($_GET['next_up'])) {
     $next_up = node_load($arg[2]);
-    $output = usanetwork_on_now_panel_node_content($next_up, $_GET['next_up']);
+    $output = usanetwork_on_now_panel_node_content($next_up, check_plain($_GET['next_up']));
   }
 
   echo $output;

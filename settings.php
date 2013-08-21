@@ -50,6 +50,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
       $conf['file_public_path'] = 'sites/default/files';
       $conf['file_private_path'] = 'sites/default/files-private';
     }
+    // Turn on display PHP errors
+    error_reporting(E_ALL);
+    ini_set('display_errors', TRUE);
+    ini_set('display_startup_errors', TRUE);
     break;
 
   case 'dev':
@@ -73,6 +77,11 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_key"] = "1166f38ec6b5d664b8fb6b085fde8232";
     $conf["apachesolr_path"] = "/solr/GMWX-32384";
     $conf['apachesolr_read_only'] = "1";
+
+    // Turn on display PHP errors
+    error_reporting(E_ALL);
+    ini_set('display_errors', TRUE);
+    ini_set('display_startup_errors', TRUE);
     break;
 
   case 'test':
@@ -230,20 +239,7 @@ function default_site_request_handler() {
   }
 }
 
-// commenting out the memory changes
-/**
- * Use the page_memory_limit module to increase the page memory limit on admin
- * pages only.
- */
- /*
-$conf['page_memory_limit']['admin/*'] = '256M';
-$conf['page_memory_limit']['devel/*'] = '256M';
-$conf['page_memory_limit']['batch'] = '256M';
-if (isset($_SERVER['argv'][0]) && strrpos($_SERVER['argv'][0], 'drush.php') !== FALSE) {
-  ini_set('memory_limit', '256M');
-}
-*/
 /**
  * Setting a reasonable minimum php memory limit.
  */
-//ini_set('memory_limit', '256M');
+ini_set('memory_limit', '256M');

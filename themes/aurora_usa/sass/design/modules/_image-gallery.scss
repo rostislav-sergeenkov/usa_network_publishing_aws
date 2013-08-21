@@ -51,6 +51,13 @@
     }
   }
   .flex-direction-nav {
+    a {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      @include border-radius(50%);
+      border: 0;
+    }
     @include breakpoint($bp-nav-nudge-1) {
       .flex-next {
         margin-right: -228px;
@@ -79,6 +86,7 @@
       }
     }
   }
+
   .slide-meta {
     overflow: hidden;
     padding: 0 15px 0;

@@ -48,11 +48,11 @@ function usanetwork_episodes_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => '1230',
-          'height' => '360',
+          'width' => 1230,
+          'height' => 360,
           'strength' => 'high',
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
       3 => array(
         'label' => 'Scale and crop',
@@ -64,10 +64,10 @@ function usanetwork_episodes_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1230',
-          'height' => '360',
+          'width' => 1230,
+          'height' => 360,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );

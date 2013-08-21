@@ -454,12 +454,15 @@ function usanetwork_core_update_7117() {
 }
 
 /**
- * Enable new usanetwork_workbench module
- * commenting out for now - we will not need this
+ * disable search until it is needed
  */
- /**
-//function usanetwork_core_update_7118() {
-//  $modules = array('usanetwork_workbench');
-//  module_enable($modules);
-//}
-*/
+function usanetwork_core_update_7118() {
+
+  $modules_un = array(
+    'acquia_search',
+    'apachesolr',
+    'search',
+  );
+  module_disable($modules_un);
+}
+

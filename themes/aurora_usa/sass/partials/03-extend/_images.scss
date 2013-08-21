@@ -2,7 +2,7 @@
   position: relative;
   display: block;
   h2 {
-    @extend %h2;
+    margin-bottom: 2px;
     font-size: 20px;
   }
   .meta, h2 {

@@ -80,8 +80,15 @@
   }
 }
 
-.expandable-container.promo-ads-panel {
-  @extend %grid-one-two-three-four-ads;
+.expandable-container {
+  &.promo-ads-panel {
+    @extend %grid-one-two-three-four-ads;
+  }
+  .view-content {
+    > .item-list {
+    clear: both;
+    }
+  }
 }
 
 .view {

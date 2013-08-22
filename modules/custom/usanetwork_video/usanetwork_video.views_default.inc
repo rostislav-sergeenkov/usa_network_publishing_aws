@@ -86,6 +86,8 @@ function usanetwork_video_views_default_views() {
   /* Display: Global Full Episode */
   $handler = $view->new_display('block', 'Global Full Episode', 'global_full_episode');
   $handler->display->display_options['display_description'] = 'Global Full Episode';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'grid-item';
@@ -123,6 +125,8 @@ function usanetwork_video_views_default_views() {
   /* Display: Show Full Episode */
   $handler = $view->new_display('block', 'Show Full Episode', 'show_full_episode');
   $handler->display->display_options['display_description'] = 'Show Full Episode';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'grid-item';
@@ -170,6 +174,8 @@ function usanetwork_video_views_default_views() {
   /* Display: Category Videos */
   $handler = $view->new_display('block', 'Category Videos', 'category_videos');
   $handler->display->display_options['display_description'] = 'Category Videos';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['row_class'] = 'grid-item';

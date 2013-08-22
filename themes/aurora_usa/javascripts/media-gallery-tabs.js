@@ -3,13 +3,8 @@
   Drupal.behaviors.mediaGalleryTabs = {
 
     attach: function (context, settings) {
-      window.onload = function() {
-        create_media_gallery_tabs();
 
-      };
-
-      // create function for onload so only happens once
-      function create_media_gallery_tabs() {
+      $('body').once('mediaGallery', function() {
         $tabCount = 0;
         $tabs = $('<div class="gallery-tabs grid-container-small usa-secondary-menu"><ul></ul></div>');
         $tabs_ul = $tabs.find('ul');
@@ -73,7 +68,8 @@
             $drop_elements.addClass("filter-dropdown");
           }
         }
-      } 
+      });
+
 
       //// photo more items toggler ////
 
@@ -95,13 +91,16 @@
           $container.find('.item-list').hide();
           $container.find('.item-list:first-child').css('display','block');
           $toggler.text('more');
+          $toggler.removeClass('less').addClass('more');
           $expandable_container.removeClass('expanded');
         } else if ($toggler.text() == 'more') {
+          $toggler.removeClass('less').addClass('more');
           $container.find('.item-list:first-child').css('display','block');
           $count = $container.find('.item-list').length - 1;
           $container.find('.item-list:eq('+ i + ')').show();
           if($count == i) {
             $toggler.text('close');
+            $toggler.addClass('less').removeClass('more');
             $expandable_container.addClass('expanded');
             i = 1;
           }

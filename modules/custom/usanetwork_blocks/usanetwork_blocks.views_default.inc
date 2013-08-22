@@ -58,11 +58,7 @@ function usanetwork_blocks_views_default_views() {
   $handler = $view->new_display('block', 'shows_nav', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;

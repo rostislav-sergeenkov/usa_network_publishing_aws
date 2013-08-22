@@ -49,8 +49,12 @@ function usanetwork_widget_menu() {
  * Helper to generate and output the main menu bar
  */
 function usanetwork_widget_navbar() {
-  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  return $main_menu['content'];
+  $pageURL = 'http';
+  $pageURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
+  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
+  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget.js';
+  echo '<script src="'.$widget_js_path.'"></script>';
+  exit;
 }
 
 /**

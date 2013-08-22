@@ -1,3 +1,23 @@
+%more-triangle {
+  @include cssTriangle(18px, $tan, 'top');
+  border-width: 12px 18px 18px;
+  top: 18px;
+  content: $space;
+  left: 50%;
+  margin-left: -18px;
+  position: absolute;
+}
+
+%less-triangle {
+  @include cssTriangle(18px, $tan, 'bottom');
+  border-width: 18px 18px 12px;
+  bottom: 18px;
+  left: 50%;
+  top: auto;
+  margin-left: -18px;
+  position: absolute;
+}
+
 .expandable-container {
   .pane-content {
     @extend %grid-one-two-three-four;
@@ -22,7 +42,7 @@
       border-color: $gray-ultra-med;
       border-style: solid;
       border-width: 0 0 1px;
-      content: "";
+      content: $space;
       position: absolute;
       top: 50%;
       width: 50%;
@@ -45,31 +65,28 @@
     margin: 0 auto;
     position: relative;
     &:after {
-      @include cssTriangle(18px, $tan, 'top');
-      border-width: 12px 18px 18px;
-      top: 18px;
-      content: "";
-      left: 50%;
-      margin-left: -18px;
-      position: absolute;
+      @extend %more-triangle;
+    }
+  }
+  &.view .expandable-toggle,
+  &.view.expanded .expandable-toggle {
+    &:after {
+      border: 0;
     }
   }
   .less {
     display: none;
   }
   &.expanded {
-  .more {
-    display: none;
-  }
-  .less {
-    display: block;
-  }
-  .expandable-toggle {
-    &:after {
-      @include cssTriangle(18px, $tan, 'bottom');
-        border-width: 18px 18px 12px;
-        bottom: 18px;
-        top: auto;
+    .more {
+      display: none;
+    }
+    .less {
+      display: block;
+    }
+    .expandable-toggle {
+      &:after {
+        @extend %less-triangle;
       }
     }
   }
@@ -80,21 +97,41 @@
   }
 }
 
-.expandable-container.promo-ads-panel {
-  @extend %grid-one-two-three-four-ads;
+.expandable-container {
+  &.promo-ads-panel {
+    @extend %grid-one-two-three-four-ads;
+  }
+  .view-content {
+    > .item-list {
+    clear: both;
+    }
+  }
 }
 
 .view {
   .ajax-progress, .ajax-progress-throbber {
     display: none;
   }
+  .expandable-toggle {
+    li {
+      &.more:after {
+        @extend %more-triangle; 
+      }
+      &.less:after {
+        @extend %less-triangle;
+      }
+    }
+  }  
   .expandable-toggle  {
     li {
       font-size: 16px;
       margin: 0;
       padding: 0;
       a {
-        color: $tan;
+        color: $tan; 
+        &:after {
+          @extend %more-triangle;
+        }
       }
     }
   }

@@ -398,7 +398,7 @@ function _usanetwork_personalization_notify_ideamelt($node) {
 
   $data = array();
   $data['api_key'] = variable_get('usanetwork_social_ideamelt_api_key', '');
-  $enable_ideamelt = varible_get('usanetwork_social_enable_ideamelt', 0);
+  $enable_ideamelt = variable_get('usanetwork_social_enable_ideamelt', 0);
 
   if (empty($data['api_key']) || empty($enable_ideamelt)) {
     return;

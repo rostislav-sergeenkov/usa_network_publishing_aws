@@ -15,11 +15,6 @@
         $(this).toggleClass('open');
     });
 
-    // $(document).on('click', '#block-usanetwork-video-usa-global-video-nav .shows > li.first', function (){
-    //     $('#block-usanetwork-video-usa-global-video-nav .shows > li.first').toggleClass('hello');
-    //     return false;
-    // });
-
 
     // video items toggler
 
@@ -36,28 +31,27 @@
     }
 
     $toggler.click(function() {
-      //console.log(i);
       if($toggler.text() == 'close') {
         i = 1;
         $container.find('.item-list').hide();
         $container.find('.item-list:first-child').css('display','block');
         $toggler.text('more');
+        $toggler.removeClass('less').addClass('more');
         $expandable_container.removeClass('expanded');
       } else if ($toggler.text() == 'more') {
+        $toggler.removeClass('less').addClass('more');
         $container.find('.item-list:first-child').css('display','block');
         $count = $container.find('.item-list').length - 1;
         $container.find('.item-list:eq('+ i + ')').show();
-
         if($count == i) {
           $toggler.text('close');
+          $toggler.addClass('less').removeClass('more');
           $expandable_container.addClass('expanded');
           i = 1;
         }
         i++;
       }
     });
-
-
 
 
       $filter_menus = $('.usa-secondary-menu .content > .item-list:nth-child(2)');

@@ -8439,6 +8439,36 @@ a[class*="day"] {
   position: relative;
 }
 
+.expandable-container .expandable-toggle:after, .view .expandable-toggle li.more:after, .view .expandable-toggle li a:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 18px;
+  border-color: #b0b0b0 transparent transparent transparent;
+  border-width: 12px 18px 18px;
+  top: 18px;
+  content: "\0020";
+  left: 50%;
+  margin-left: -18px;
+  position: absolute;
+}
+
+.expandable-container.expanded .expandable-toggle:after, .view .expandable-toggle li.less:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 18px;
+  border-color: transparent transparent #b0b0b0 transparent;
+  border-width: 18px 18px 12px;
+  bottom: 18px;
+  left: 50%;
+  top: auto;
+  margin-left: -18px;
+  position: absolute;
+}
+
 .expandable-container {
   clear: both;
   margin: 0 0 15px;
@@ -8461,7 +8491,7 @@ a[class*="day"] {
   border-color: #4b4b4b;
   border-style: solid;
   border-width: 0 0 1px;
-  content: "";
+  content: "\0020";
   position: absolute;
   top: 50%;
   width: 50%;
@@ -8483,19 +8513,8 @@ a[class*="day"] {
   margin: 0 auto;
   position: relative;
 }
-.expandable-container .expandable-toggle:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 18px;
-  border-color: #b0b0b0 transparent transparent transparent;
-  border-width: 12px 18px 18px;
-  top: 18px;
-  content: "";
-  left: 50%;
-  margin-left: -18px;
-  position: absolute;
+.expandable-container.view .expandable-toggle:after, .expandable-container.view.expanded .expandable-toggle:after {
+  border: 0;
 }
 .expandable-container .less {
   display: none;
@@ -8506,19 +8525,12 @@ a[class*="day"] {
 .expandable-container.expanded .less {
   display: block;
 }
-.expandable-container.expanded .expandable-toggle:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 18px;
-  border-color: transparent transparent #b0b0b0 transparent;
-  border-width: 18px 18px 12px;
-  bottom: 18px;
-  top: auto;
-}
 .expandable-container.disabled .expandable-toggle-wrap {
   display: none;
+}
+
+.expandable-container .view-content > .item-list {
+  clear: both;
 }
 
 .view .ajax-progress, .view .ajax-progress-throbber {

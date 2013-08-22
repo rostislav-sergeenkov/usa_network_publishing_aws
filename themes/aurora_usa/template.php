@@ -484,7 +484,7 @@ function append_cover_to_media(&$vars) {
   $vars['items'][0]['file']['#path'] = $cover['uri'];
   $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
-  $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'];
+  $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';

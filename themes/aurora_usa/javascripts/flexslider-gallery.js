@@ -3,7 +3,6 @@
   Drupal.behaviors.flexslidergallery = {
     attach: function (context, settings) {
       $('.media-gallery').once('mediagallery', function() {
-        console.log('your mom');
         $slideshow_selector = $('.field-name-field-media-items');
         $counter_selector = $('.slide-meta h1').after('<span class="counter"></span>').siblings('.counter');
         $count = $slideshow_selector.find('li').length;

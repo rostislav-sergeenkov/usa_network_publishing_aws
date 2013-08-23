@@ -2163,7 +2163,12 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 #main {
-  padding: 0 15px 15px;
+  padding: 0 15px 80px;
+}
+@media (min-width: 769px) {
+  #main {
+    padding-bottom: 15px;
+  }
 }
 
 #jPanelMenu-menu {
@@ -5078,9 +5083,13 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .panel-twocol-nested-right-twocol .panel-five .pane-1 {
   display: inline;
   float: left;
-  margin-left: -250px;
-  padding-left: 250px;
   width: 100%;
+}
+@media (min-width: 500px) {
+  .panel-twocol-nested-right-twocol .panel-five .pane-1 {
+    margin-left: -250px;
+    padding-left: 250px;
+  }
 }
 .panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 {
   display: inline;
@@ -6337,13 +6346,18 @@ body.person-page #main {
   width: 300px;
   position: relative;
   margin: 0 auto;
-  padding: 26px 0 30px;
+  padding: 26px 0 0;
 }
 @media (min-width: 390px) {
   [id='person-content'] .person-content-wrapper {
-    padding: 40px 45px 60px;
+    padding: 40px 45px 0;
     max-width: 1335px;
     width: auto;
+  }
+}
+@media (min-width: 769px) {
+  [id='person-content'] .person-content-wrapper {
+    padding-bottom: 40px;
   }
 }
 .usa-adrails [id='person-content'] .person-content-wrapper {
@@ -6620,7 +6634,8 @@ body.person-page #main {
 .node-type-usa-tve-video #main,
 .node-type-usa-video #main,
 .page-videos #main {
-  padding: 0 0 80px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .node-type-usa-tve-video #block-system-main,
@@ -9223,6 +9238,16 @@ a[class*="day"] {
 }
 .maintenance-page #main {
   text-align: center;
+}
+
+.admin-menu .dev-query {
+  color: #d63c17;
+  font-size: 2em;
+  position: absolute;
+  z-index: 2000;
+  top: 200px;
+  background: white;
+  padding: 0.5em;
 }
 
 [class*="iib"] {

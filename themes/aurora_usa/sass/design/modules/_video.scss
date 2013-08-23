@@ -120,6 +120,7 @@
   border: 0;
   height: auto;
   @include pie-clearfix;
+  margin-bottom: 10px;
   @include breakpoint($bp-video-mid-large-width) {
     background-color: $gray-dark;
     border: 1px solid $gray-med-dark;

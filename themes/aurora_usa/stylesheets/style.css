@@ -1642,7 +1642,14 @@ input[type="radio"], input[type="checkbox"] {
 .node-type-catchall-page .tiles .upcoming-movie a, .node-type-catchall-page .tiles .ad a {
   display: block;
 }
+.node-type-catchall-page .tiles .a-spot {
+  overflow: hidden;
+}
 @media (max-width: 644px) {
+  .node-type-catchall-page .tiles .a-spot {
+    height: 250px;
+    width: 300px;
+  }
   .node-type-catchall-page .tiles .ad {
     width: 100%;
     float: right;
@@ -1674,6 +1681,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .node-type-catchall-page .tiles {
+    width: 615px;
+  }
+  .node-type-catchall-page .tiles .a-spot {
+    height: 350px;
     width: 615px;
   }
   .node-type-catchall-page .tiles .ad {
@@ -1709,6 +1720,10 @@ input[type="radio"], input[type="checkbox"] {
 @media (min-width: 960px) and (max-width: 1274px) {
   .node-type-catchall-page .tiles {
     width: 930px;
+  }
+  .node-type-catchall-page .tiles .a-spot {
+    width: 930px;
+    height: 378px;
   }
   .node-type-catchall-page .tiles .ad {
     position: absolute;
@@ -1758,6 +1773,10 @@ input[type="radio"], input[type="checkbox"] {
   .node-type-catchall-page .tiles {
     width: 1245px;
     padding-top: 0;
+  }
+  .node-type-catchall-page .tiles .a-spot {
+    height: 506px;
+    width: 1245px;
   }
   .node-type-catchall-page .tiles .ad {
     position: absolute;
@@ -1819,6 +1838,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 .usa-adrails .node-type-catchall-page .tiles, .node-type-catchall-page .usa-adrails .tiles, .ie8 .node-type-catchall-page .tiles, .node-type-catchall-page .ie8 .tiles {
   width: 930px !important;
+}
+.usa-adrails .node-type-catchall-page .tiles .a-spot, .node-type-catchall-page .usa-adrails .tiles .a-spot, .ie8 .node-type-catchall-page .tiles .a-spot, .node-type-catchall-page .ie8 .tiles .a-spot {
+  width: 930px;
+  height: 378px;
 }
 .usa-adrails .node-type-catchall-page .tiles .ad, .node-type-catchall-page .usa-adrails .tiles .ad, .ie8 .node-type-catchall-page .tiles .ad, .node-type-catchall-page .ie8 .tiles .ad {
   position: absolute;
@@ -6716,6 +6739,7 @@ body.person-page #main {
   border: 0;
   height: auto;
   *zoom: 1;
+  margin-bottom: 10px;
 }
 .block-usanetwork-video.usa-secondary-menu:after {
   content: "";

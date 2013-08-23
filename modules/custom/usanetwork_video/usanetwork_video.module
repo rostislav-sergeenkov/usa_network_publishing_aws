@@ -142,7 +142,7 @@ function usanetwork_video_global_nav() {
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
   } else {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
-    $items[] = array('data' => l('<span>whats hot</span>', 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
+    $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
   }
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));

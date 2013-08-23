@@ -95,9 +95,11 @@
   margin-top: 30px;
   @extend .clearfix;
   .pane-1 {
-    @include float(left);
-    margin-left: -250px;
-    padding-left: 250px;
+    @include float(left);  
+    @include breakpoint($bp-episode-ad-switch) {
+      margin-left: -250px;
+      padding-left: 250px;
+    }
     width: 100%;
   }
   .pane-usa-cast-panel-pane-1 {

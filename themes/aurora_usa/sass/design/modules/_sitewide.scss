@@ -2,7 +2,10 @@
   @extend %visuallyhidden;
 }
 #main {
-  padding: 0 15px 15px;
+  padding: 0 15px 80px;
+  @include breakpoint($bp-menu-switch) {
+    padding-bottom: 15px;
+  }  
 }
 .smaller-header h2 {
   @extend %h3;

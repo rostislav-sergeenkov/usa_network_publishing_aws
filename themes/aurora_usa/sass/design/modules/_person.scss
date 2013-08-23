@@ -34,12 +34,15 @@ body.person-page {
 		width:300px;
 		position: relative;
 		margin: 0 auto;
-		padding: 26px 0 30px;
+		padding: 26px 0 0;
 		@include breakpoint($bp-person-mid-two-width) {
-			padding: 40px 45px 60px;
+			padding: 40px 45px 0;
 			max-width: 1335px;
 			width: auto;
 		}
+		@include breakpoint($bp-menu-switch) {
+			padding-bottom: 40px;
+		}	
 		.usa-adrails & {
 			max-width: 880px;
 			padding-left: 10px;

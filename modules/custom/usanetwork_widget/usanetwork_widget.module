@@ -50,7 +50,7 @@ function usanetwork_widget_menu() {
  */
 function usanetwork_widget_navbar() {
   $pageURL = 'http';
-  $pageURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
+  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
   $pageURL .= "://" . $_SERVER["SERVER_NAME"];
   $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget.js';
   echo '<script src="'.$widget_js_path.'"></script>';
@@ -62,7 +62,23 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_plain() {
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  print $main_menu['content']['meganav']['#markup'];
+  $markup = '
+  <style>@import url("/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>
+  <header role="banner" id="page-header">
+    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
+      <div class="primary-nav">
+        <div id="logo">
+          <a href="/" title="Home" rel="home">USA</a>
+        </div>
+        <div class="region region-header">
+          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
+            %s
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>';
+  echo sprintf($markup, $main_menu['content']['meganav']['#markup']);
   exit;
 }
 

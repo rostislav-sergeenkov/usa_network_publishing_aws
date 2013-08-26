@@ -401,6 +401,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public function prepareRow($row) {
 
+    static $index = 1;
     // Process publishing date field data.
     $dc_terms = $row->xml->xpath('dcterms:valid');
     if (is_array($dc_terms)) {
@@ -436,7 +437,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
 
     // Convert pl1:fullEpisode value.
-    $full_episode = $row->xml->xpath('pl1:fullEpisode');
+    $full_episode_index = 'pl' . $index++ . ':fullEpisode';
+    $full_episode = $row->xml->xpath($full_episode_index);
     if (is_array($full_episode)) {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;

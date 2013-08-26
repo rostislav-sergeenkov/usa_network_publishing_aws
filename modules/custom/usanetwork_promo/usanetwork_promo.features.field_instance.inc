@@ -403,13 +403,13 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
           'document' => 0,
-          0 => 0,
           'image' => 'image',
           'video' => 0,
         ),
@@ -663,13 +663,13 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
+          0 => 0,
           'audio' => 0,
           'document' => 0,
-          0 => 0,
           'image' => 'image',
           'video' => 0,
         ),

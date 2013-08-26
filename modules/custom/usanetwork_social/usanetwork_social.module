@@ -495,6 +495,48 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
       $form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_identitymanagerurl', '');
     }
 
+    // title(chatter to tv)
+    if (!isset($form['field_chat_title'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_title'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_title'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_title', '');
+    }
+
+    // description(chatter to tv)
+    if (!isset($form['field_chat_description'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_description'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_description'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_description', '');
+    }
+
+    // on air comment question(chatter to tv)
+    if (!isset($form['field_chat_question'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_question'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_question'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_question', '');
+    }
+
+    // legal copy(chatter to tv)
+    if (!isset($form['field_chat_legal_copy'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_legal_copy'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_legal_copy'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_legal_copy', '');
+    }
+
+    // comment pre-fix(chatter to tv)
+    if (!isset($form['field_chat_comment_prefix'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_comment_prefix'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_comment_prefix'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_comment_prefix', '');
+    }
+
+    // echo marker(chatter to tv)
+    if (!isset($form['field_chat_echo_marker'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_echo_marker'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_echo_marker'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_echo_marker', '');
+    }
+
+    // checkbox text(chatter to tv)
+    if (!isset($form['field_chat_checkbox_text'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_checkbox_text'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_checkbox_text'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_checkbox_text', '');
+    }
+
     // SOCIAL BUZZ
     // baseUrl
     if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
@@ -806,6 +848,27 @@ function usanetwork_social_chat_with_fans($node) {
   $showAlias = drupal_get_path_alias('node/'.$node->nid);
   $showBaseUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
 
+  $chatterToTvStartTime = isset($node->field_chat_start_time[$lang][0]['value']) ? $node->field_chat_start_time[$lang][0]['value'] : '';
+  $chatterToTvEndTIme = isset($node->field_chat_end_time[$lang][0]['value']) ? $node->field_chat_end_time[$lang][0]['value'] : '';
+  $curTime = date("Y-m-d H:i:s");
+  $time_min = strtotime($chatterToTvStartTime);
+  $time_max = strtotime($chatterToTvEndTIme);
+  $curTime = strtotime($curTime);
+  if ($curTime >= $time_min && $curTime <= $time_max)
+  {
+    $showChatterToTv = 1;
+  }
+  else {
+    $showChatterToTv = 0;
+  }
+  $chatterToTvTitle = isset($node->field_chat_title[$lang][0]['value']) ? $node->field_chat_title[$lang][0]['value'] : '';
+  $chatterToTvDescription = isset($node->field_chat_description[$lang][0]['value']) ? $node->field_chat_description[$lang][0]['value'] : '';
+  $chatterToTvQuestion = isset($node->field_chat_question[$lang][0]['value']) ? $node->field_chat_question[$lang][0]['value'] : '';
+  $chatterToTvLegalCopy = isset($node->field_chat_legal_copy[$lang][0]['value']) ? $node->field_chat_legal_copy[$lang][0]['value'] : '';
+  $chatterToTvCommentPrefix = isset($node->field_chat_comment_prefix[$lang][0]['value']) ? $node->field_chat_comment_prefix[$lang][0]['value'] : '';
+  $chatterToTvEchoMarker = isset($node->field_chat_echo_marker[$lang][0]['value']) ? $node->field_chat_echo_marker[$lang][0]['value'] : '';
+  $chatterToTvCheckboxText = isset($node->field_chat_checkbox_text[$lang][0]['value']) ? $node->field_chat_checkbox_text[$lang][0]['value'] : '';
+
   // if EQL is empty or show Chat with Fans checkbox is not checked, show social landing page
   if (empty($eql) || $showChatWithFansPage != 1) {
     //drupal_goto('node/'.$node->nid.'/social');
@@ -836,6 +899,14 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatSubmitTargetURL = "' . $submitTargetUrl . '"; ';
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
+  $vars .= 'var chatterToTvTitle = "' . addslashes($chatterToTvTitle) . '"; ';
+  $vars .= 'var showChatterToTv = "' . addslashes($showChatterToTv) . '"; ';
+  $vars .= 'var chatterToTvDescription = "' . addslashes($chatterToTvDescription) . '"; ';
+  $vars .= 'var chatterToTvQuestion = "' . addslashes($chatterToTvQuestion) . '"; ';
+  $vars .= 'var chatterToTvLegalCopy = "' . addslashes($chatterToTvLegalCopy) . '"; ';
+  $vars .= 'var chatterToTvCommentPrefix = "' . $chatterToTvCommentPrefix . '"; ';
+  $vars .= 'var chatterToTvEchoMarker = "' . $chatterToTvEchoMarker . '"; ';
+  $vars .= 'var chatterToTvCheckboxText = "' . $chatterToTvCheckboxText . '"; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
   $vars .= 'var defaultAvatar = "/' . drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg"; ';
   drupal_add_js($vars, array('type' => 'inline'));

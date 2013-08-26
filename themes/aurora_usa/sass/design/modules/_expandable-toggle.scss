@@ -103,7 +103,8 @@
   }
   .view-content {
     > .item-list {
-    clear: both;
+      clear: both;
+      overflow: hidden;
     }
   }
 }

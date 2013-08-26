@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the pub_person_overrides feature.
- */
-
-include_once 'pub_person_overrides.features.inc';

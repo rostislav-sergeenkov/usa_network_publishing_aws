@@ -3,7 +3,8 @@
 .node-type-usa-video,
 .page-videos {
   #main {
-    padding: 0 0 80px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -120,6 +121,7 @@
   border: 0;
   height: auto;
   @include pie-clearfix;
+  margin-bottom: 10px;
   @include breakpoint($bp-video-mid-large-width) {
     background-color: $gray-dark;
     border: 1px solid $gray-med-dark;

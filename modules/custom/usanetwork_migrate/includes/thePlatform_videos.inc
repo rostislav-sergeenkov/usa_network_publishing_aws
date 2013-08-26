@@ -1,8 +1,18 @@
 <?php
+/**
+ * IMPORTANT NOTES
+ * any changes made to fields or feed urls should also be changed in:
+ * ~/usanetwork/modules/custom/usanetwork_video/usanetwork_video.module
+ * under the debugging functions
+ * usanetwork_video_admin_debug_feeds()
+ *
+ */
 
 /**
  * Migration class for TVE Video content.
  */
+
+/* -------------- BEGIN TVE ----------------*/
 class USANetworkTVEVideoFeedMigration extends XMLMigration {
 #class USANetworkTVEVideoFeedMigrationDisabled extends XMLMigration {
 
@@ -53,9 +63,13 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
     global $usanetwork_migrate_is_cron;
 
+    // we add &byCustomValue={fullEpisode}{true},{entitlement}{auth}
+    // filter by full episode and auth required only
+    // so we do not have mpx dupes
+
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
-      // last 24 hours.
+      // last hour.
       $updated_date = date('c', strtotime('-1 hours'));
       $items_url .= '?&byCustomValue={fullEpisode}{true},{entitlement}{auth}&byUpdated=' . $updated_date . '~&sort=updated|desc&range=1-100';
     }
@@ -239,12 +253,14 @@ class USANetworkTVEVideoFeedMigration extends XMLMigration {
   }
 
 }
+/* -------------- END TVE ----------------*/
 
 /* -------------------------------------------------------------------------- */
 
 /**
  * Migration class for MPX Video content.
  */
+/* -------------- BEGIN MPX ----------------*/
 class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public $imgDestDir;
@@ -265,8 +281,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       'media:rating' => t('MPAA Rating'),
       'pubDate' => t('Published/Air Date'),
       'plmedia:defaultThumbnailUrl' => t('Default Thumbnail Image'),
-      'pl1:episodeNumber' => t('Episode #'),  // Not always set for MPX.
-      'pl1:seasonNumber' => t('Season #'),  // Not always set for MPX.
+      'nbcu:episodeNumber' => t('Episode #'),  // Not always set for MPX.
+      'nbcu:seasonNumber' => t('Season #'),  // Not always set for MPX.
       'pl1:fullEpisode' => t('Full Episode'),  // Not always set for MPX.
       'duration' => t('Video Duration'),
     );
@@ -290,63 +306,21 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     //*/
 
     $items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q');
-    //$items_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_');
-    // test sort by expiring
-    // http://feed.theplatform.com/f/OyMl-B/UPo0Hq7sZn4q?range=1-1000&fields=availableDate,expirationDate,title&sort=expirationDate|asc
 
     // TODO: If this is run in cron, set appropriate query parameters to be passed to the api.
     global $usanetwork_migrate_is_cron;
 
     if ($usanetwork_migrate_is_cron) {
       // Append query parameters to only retrieve video data updated within the
-      // last 24 hours.
+      // last hour.
       $updated_date = date('c', strtotime('-1 hour'));
       $items_url .= '?byUpdated=' . $updated_date . '~';
       $items_url .= '&sort=updated|desc';
       $items_url .= '&range=1-100';
-      // if we wanted to limit fields displayed this is how we would
-      /*
-      $limiting_fields = array(
-        'guid',
-        'title',
-        'description',
-        'author',
-        // The following 2 fields return the contens of the 'dcterms:valid' node.
-        'availableDate',
-        'expirationDate',
-        'media:category',
-        'media:keywords',
-        'media:rating',
-        'media:restriction',
-        'media:group',
-        'media:thumbnail',
-        'pubDate',
-        'plmedia:defaultThumbnailUrl',
-        'plmedia:provider',
-        'pl1:active',
-        'pl1:comScore',
-        'pl1:dart',
-        'pl1:emmy',
-        'pl1:fullEpisode',
-        'pl1:metrics',
-        'pl1:notVisibleOnHub',
-        'pl1:promo',
-        'pl1:shortDescription',
-        'pl1:subtitle',
-        'pl1:tuneInTime',
-        'pl1:tve',
-      );
-      */
-      #$items_url .= '&fields=' . implode(',', $limiting_fields);
     }
     else {
-      // As of 5/14/13 there were 4329 MPX videos.  Setting range to grab them all,
-      // plus any that have been added since.
-      //$items_url .= '?range=1-6000';
-
-      // As of 7/15/13 NEW FEED there were 887 MPX videos.  Setting range to grab them all,
-      // plus any that have been added since.
-//      $items_url .= '?range=1-1200';
+      // limit the number of elements we pull for initial ingestion
+      // if the MPX feed grows beyond this we need to edit this number
       $items_url .= '?range=1-1200';
     }
 
@@ -381,13 +355,10 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_video_thumbnail:file_replace')->defaultValue(FILE_EXISTS_RENAME);
     $this->addFieldMapping('field_video_thumbnail:destination_dir')->defaultValue($this->imgDestDir);
     $this->addFieldMapping('field_video_air_date', 'pubDate');  // Do not use xpath() here.  Will be processed in prepareRow().
-    $this->addFieldMapping('field_episode_number', 'pl1:episodeNumber')->xpath('pl1:episodeNumber');
-    $this->addFieldMapping('field_season_id', 'pl1:seasonNumber')->xpath('pl1:seasonNumber');
+    $this->addFieldMapping('field_episode_number', 'nbcu:episodeNumber')->xpath('nbcu:episodeNumber');
+    $this->addFieldMapping('field_season_id', 'nbcu:seasonNumber')->xpath('nbcu:seasonNumber');
     $this->addFieldMapping('field_full_episode', 'pl1:fullEpisode');  // Do not use xpath() here.  Will be processed in prepareRow().
     $this->addFieldMapping('field_video_duration', 'duration')->xpath('media:group/media:content/@duration');
-    // adding this new as of 7/15
-    // removed 8/13
-    //$this->addFieldMapping('status', 'status');
 
     //This class has to be added so that we can set the proxy accordingly to fetch the contents(images, videos etc).
     //Right now we are adding the class based on the environment(local) as this is now required for other environments.
@@ -401,30 +372,13 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
 
   public function prepareRow($row) {
 
+    static $index = 1;
     // Process publishing date field data.
     $dc_terms = $row->xml->xpath('dcterms:valid');
     if (is_array($dc_terms)) {
       $date_data = (string)array_shift($dc_terms);
       $start_date = preg_replace('|.*;?start=([^;]*);.*|', '$1', $date_data);
       $end_date = preg_replace('|.*;?end=([^;]*);.*|', '$1', $date_data);
-      // for custom processing
-      // hide for now - we tried this to speed in publishing
-      // but workbench does not play nice
-      /*
-      $pub_start = strtotime($start_date);
-      $pub_end = strtotime($end_date);
-      $yesterday = strtotime("-1 day");
-      $next_month = strtotime("+1 month");
-      // started earlier than yesterday
-      // ends later than next month
-      // set this as published and skip complex scheduling
-      if ($pub_start <= $yesterday && $pub_end >= $next_month) {
-        $row->status = 1;
-      }
-      else {
-        $row->status = 0;
-      }
-      */
 
       // Format the dates for the date field.
       $final_date_data = array(
@@ -436,7 +390,8 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
     }
 
     // Convert pl1:fullEpisode value.
-    $full_episode = $row->xml->xpath('pl1:fullEpisode');
+    $full_episode_index = 'pl' . $index++ . ':fullEpisode';
+    $full_episode = $row->xml->xpath($full_episode_index);
     if (is_array($full_episode)) {
       $full_episode_value = (string)array_shift($full_episode);
       $row->{'pl1:fullEpisode'} = strtolower($full_episode_value) == 'true' ? 1 : 0;
@@ -455,11 +410,6 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
   }
 
   public function prepare($entity, stdClass $row) {
-
-    // Initially save all video nodes set to unpublished, unless the dcterms (scheduler)
-    // field is missing.
-    //$entity->status = isset($row->status) ? 1 : 0;
-    // update - we undid this logic so we can get nodes in faster based on sunrise and sunset
 
     // Attach video categories to entity.
     $video_categories = $row->xml->xpath('media:category');
@@ -552,26 +502,7 @@ class USANetworkMPXVideoFeedMigration extends XMLMigration {
       ->execute();
   }
 
-/*
-  public function postRollback() {
-// REMOVED AS PART OF TEST UPGRADE TO WORKBENCH
-    // Clear out old stateflow schedule records and queue items.  Will break
-    // re-import if left in there.
-    db_query("DELETE FROM state_flow_schedule, node
-        USING state_flow_schedule
-        LEFT JOIN node ON node.nid = state_flow_schedule.nid
-        WHERE node.nid IS NULL");
-
-    $queue = DrupalQueue::get('state_flow_schedule');
-    $queue->deleteQueue();
-
-    // Clear out old revision_scheduler records Will break
-    // re-import if left in there.
-    db_query("DELETE FROM revision_scheduler
-        LEFT JOIN node ON node.nid = revision_scheduler.entity_id");
-        //WHERE node.nid IS NULL");
-  }
-*/
+/* -------------- END MPX ----------------*/
 
 }
 

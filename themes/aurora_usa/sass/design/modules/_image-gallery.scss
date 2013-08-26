@@ -5,12 +5,17 @@
 .media-gallery {
   .flexslider {
     .field-name-field-media-items{
-      > li {
+      > li, > li .content {
         text-align: center;
         position: relative;
         overflow: hidden;
         position: relative;
         white-space: nowrap;
+        .ie9 & {
+          @include breakpoint($bp-image-size-ie) {
+            height: 450px;
+          }
+        }
         @include breakpoint($bp-image-size-matrix-1) {
           height: 370px;
         }

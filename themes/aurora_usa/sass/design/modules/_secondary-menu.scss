@@ -102,7 +102,7 @@ $secondary-menu-bg  : $gray-med;
   }
   ul {
     margin: 0;
-    @extend .clearfix;
+    @extend %clearfix;
   }
   .shows {
     > li {

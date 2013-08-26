@@ -11,8 +11,10 @@ if (window.XMLHttpRequest) {
 xmlhttp.onreadystatechange = function() {
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
     document.write(xmlhttp.responseText);
+    menu_init();
   }
 }
 
-xmlhttp.open("GET", "/navbar/plain", true);
+document.write('<script src="/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
+xmlhttp.open("GET", "/navbar/syndicate_styled", true);
 xmlhttp.send();

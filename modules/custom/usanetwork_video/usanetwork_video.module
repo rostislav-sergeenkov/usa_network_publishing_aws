@@ -510,10 +510,11 @@ function usanetwork_video_admin_debug_feeds() {
   // mpx debug
   $mpx_url = variable_get('usanetwork_theplatform_mpx_feed_url', 'http://feed.theplatform.com/f/OyMl-B/UPo0Hq');
   // not cron
-  $mpx_url_ingest = $mpx_url . '?range=1-1000';
+  $mpx_url_ingest = $mpx_url . '?range=1-1200';
   // cron
   $mpx_url_cron = $mpx_url . '?byUpdated=' . $updated_date . '~' . '&sort=updated|desc&range=1-100';
-//http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_?byUpdated=2013-05-07T00:00:00Z~&sort=updated|desc&range=1-10&fields=guid,title,description,media:,:fullEpisode&fileFields=url,bitrate&byCustomValue={fullEpisode}{false}&byCategories=Series/Graceland
+
+  //http://feed.theplatform.com/f/OyMl-B/8IyhuVgUXDd_?byUpdated=2013-05-07T00:00:00Z~&sort=updated|desc&range=1-10&fields=guid,title,description,media:,:fullEpisode&fileFields=url,bitrate&byCustomValue={fullEpisode}{false}&byCategories=Series/Graceland
   $mpx_url_test = $mpx_url . '?sort=updated|desc&range=1-100&byCategories=Series/Graceland';
   $mpx_url_test2 = $mpx_url . '?sort=updated|desc&range=1-100&&byTitle=Commentary: Hair Of The Dog';
 

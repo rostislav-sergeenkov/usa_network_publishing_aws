@@ -3902,7 +3902,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 

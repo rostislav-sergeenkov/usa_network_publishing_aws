@@ -421,7 +421,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -601,79 +601,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-media_gallery-field_gigya_share_bar'
-  $field_instances['node-media_gallery-field_gigya_share_bar'] = array(
-    'bundle' => 'media_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'block_cover_title_lg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_gigya_share_bar',
-    'label' => 'Gigya Share Bar',
-    'required' => FALSE,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'gigya',
-      'settings' => array(),
-      'type' => 'sharebar',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-media_gallery-field_ideamelt_action_type'
   $field_instances['node-media_gallery-field_ideamelt_action_type'] = array(
     'bundle' => 'media_gallery',
@@ -830,7 +757,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'module' => 'media_multiselect',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -1434,7 +1361,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -1466,7 +1393,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
   t('Cover Item');
   t('Enable Nitro');
   t('Episode');
-  t('Gigya Share Bar');
   t('IdeaMelt action type');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
   t('Media Items');

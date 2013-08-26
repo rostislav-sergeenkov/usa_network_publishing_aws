@@ -22,6 +22,7 @@ features[taxonomy][] = media_categories
 features[taxonomy][] = media_tags
 features[taxonomy][] = rating_attributes
 features[taxonomy][] = role
+features[taxonomy][] = tags
 features[taxonomy][] = tv_rating
 features[taxonomy][] = usa_video_terms
 features[variable][] = field_bundle_settings_taxonomy_term__cta_type

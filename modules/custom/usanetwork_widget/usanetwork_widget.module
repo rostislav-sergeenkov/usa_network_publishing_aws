@@ -39,9 +39,33 @@ function usanetwork_widget_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['node/%node/navbar/syndicate_styled'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_ajax_styled',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['node/%node/navbar/plain'] = array(
     'page arguments' => array(1),
     'page callback' => 'usanetwork_widget_show_navbar_plain',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar/syndicate_plain'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_ajax_plain',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar/only'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_only',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/navbar/syndicate_only'] = array(
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_widget_show_navbar_ajax_only',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
@@ -135,20 +159,20 @@ function usanetwork_widget_navbar_ajax_plain() {
 function usanetwork_widget_navbar_docs() {
   $docs_markup = '
   <h1>Syndicating the USANetwork navigation bar.</h1>
-  <h2>Main navigation</h2>
+  <h2>Main Navigation</h2>
   <p>Add the following style tag to your site. </p>
-  <code>
-  '. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
-  </code>
+  <code><pre>
+'. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
+  </pre></code>
   <p>Add the following script tag to your site. </p>
-  <code>
-  '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
-  </code>
-  <h2>Main navigation - no styles</h2>
+  <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
+  </pre></code>
+  <h2>Main Navigation - No Styles</h2>
   <p>Add the following script tag to your site. </p>
-  <code>
-  '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
-  </code>
+  <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
+  </pre></code>
   ';
   return $docs_markup;
 }
@@ -157,14 +181,103 @@ function usanetwork_widget_navbar_docs() {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar($node) {
+  $pageURL = 'http';
+  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
+  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
+  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js';
+  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
+  echo '<script src="'.$widget_js_path.'"></script>';
+  exit;
+}
+
+/**
+ * Helper to generate and output the show menu bar
+ */
+function usanetwork_widget_show_navbar_ajax_styled($node) {
+  $nav_styles = '<style>@import url("/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  echo $nav_styles;
+  $markup_wrapper = '
+  <header role="banner" id="page-header">
+    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
+      <div class="primary-nav">
+        <div id="logo">
+          <a href="/" title="Home" rel="home">USA</a>
+        </div>
+        <div class="region region-header">
+          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
-  return $show_menu['content'];
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
+  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu['content']['meganav']['#markup']);
+  exit;
 }
 
 /**
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_plain($node) {
+  $pageURL = 'http';
+  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
+  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
+  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js';
+  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
+  echo '<script src="'.$widget_js_path.'"></script>';
+  exit;
+}
+
+/**
+ * Helper to generate and output the main menu bar in plain html
+ */
+function usanetwork_widget_show_navbar_ajax_plain($node) {
+  $markup_wrapper = '
+  <header role="banner" id="page-header">
+    <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
+      <div class="primary-nav">
+        <div id="logo">
+          <a href="/" title="Home" rel="home">USA</a>
+        </div>
+        <div class="region region-header">
+          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </header>';
+  $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
+  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu['content']['meganav']['#markup']);
+  exit;
+}
+
+/**
+ * Helper to generate and output the show menu bar in plain html
+ */
+function usanetwork_widget_show_navbar_only($node) {
+  $pageURL = 'http';
+  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
+  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
+  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js';
+  echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
+  echo '<script src="'.$widget_js_path.'"></script>';
+  exit;
+}
+
+/**
+ * Helper to generate and output the main menu bar in plain html
+ */
+function usanetwork_widget_show_navbar_ajax_only($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   print $show_menu['content'];
   exit;
@@ -174,9 +287,32 @@ function usanetwork_widget_show_navbar_plain($node) {
  * Helper to generate the show menu documentation
  */
 function usanetwork_widget_show_navbar_docs($node) {
-  //TODO: Add the show menu integration documentation here
-  return 'Show Menu Documentation: Placeholder';
+  $docs_markup = '
+  <h1>Syndicating the USANetwork show navigation bar.</h1>
+  <h2>Show and Main Navigation</h2>
+  <p>Add the following style tag to your site.</p>
+  <code><pre>
+'. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
+    </pre></code>
+  <p>Add the following script tags to your site.</p>
+  <code><pre>
+'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
+  </pre></code>
+
+  <h2>Show and Main Navigation - No Styles</h2>
+  <p>Add the following script tags to your site.</p>
+  <code><pre>
+'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
+  </pre></code>
+
+  <h2>Show Navigation Only - No Styles</h2>
+  <p>Add the following script tags to your site.</p>
+  <code><pre>
+'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
+  </pre></code>
+  ';
+  return $docs_markup;
 }
-
-
-

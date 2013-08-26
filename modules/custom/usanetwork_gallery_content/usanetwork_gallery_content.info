@@ -52,7 +52,6 @@ features[field_instance][] = node-media_gallery-field_content_tags
 features[field_instance][] = node-media_gallery-field_cover_item
 features[field_instance][] = node-media_gallery-field_enable_nitro
 features[field_instance][] = node-media_gallery-field_episode
-features[field_instance][] = node-media_gallery-field_gigya_share_bar
 features[field_instance][] = node-media_gallery-field_ideamelt_action_type
 features[field_instance][] = node-media_gallery-field_media_items
 features[field_instance][] = node-media_gallery-field_nitro_action_name

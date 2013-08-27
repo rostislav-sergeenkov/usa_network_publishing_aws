@@ -14,5 +14,6 @@ xmlhttp.onreadystatechange = function() {
   }
 }
 
-xmlhttp.open("GET", "/navbar/syndicate_plain", true);
+// TODO: change the 'stage' part of each URL to www
+xmlhttp.open("GET", "http://stage.usanetwork.com/navbar/syndicate_plain", true);
 xmlhttp.send();

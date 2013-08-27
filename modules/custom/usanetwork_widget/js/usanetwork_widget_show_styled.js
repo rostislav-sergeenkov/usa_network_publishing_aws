@@ -15,8 +15,9 @@ xmlhttp.onreadystatechange = function() {
   }
 }
 
+// TODO: change the 'stage' part of each URL to www
 if(typeof $show_id != 'undefined') {
-  document.write('<script src="/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
-  xmlhttp.open("GET", "/node/" + $show_id + "/navbar/syndicate_styled", true);
+  document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
+  xmlhttp.open("GET", "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled", true);
   xmlhttp.send();
 }

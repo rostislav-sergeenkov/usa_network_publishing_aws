@@ -474,3 +474,19 @@ function usanetwork_core_update_7119() {
   $modules = array('usanetwork_widget');
   module_enable($modules);
 }
+
+/**
+ * goodbye to gigya
+ */
+function usanetwork_core_update_7120() {
+
+  $modules_dis = array(
+    'gigya',
+  );
+  $modules_un = array(
+    'gigya',
+    'pub_gigya',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_un);
+}

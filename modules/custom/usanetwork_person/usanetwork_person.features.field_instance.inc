@@ -951,7 +951,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -1662,7 +1662,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -2162,7 +2162,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(

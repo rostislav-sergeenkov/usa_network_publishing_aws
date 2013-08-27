@@ -318,62 +318,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_episode-field_gigya_share_bar'
-  $field_instances['node-tv_episode-field_gigya_share_bar'] = array(
-    'bundle' => 'tv_episode',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_gigya_share_bar',
-    'label' => 'Gigya Share Bar',
-    'required' => FALSE,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'gigya',
-      'settings' => array(),
-      'type' => 'sharebar',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_episode-field_ideamelt_action_type'
   $field_instances['node-tv_episode-field_ideamelt_action_type'] = array(
     'bundle' => 'tv_episode',
@@ -1040,7 +984,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -1105,57 +1049,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_season-field_gigya_share_bar'
-  $field_instances['node-tv_season-field_gigya_share_bar'] = array(
-    'bundle' => 'tv_season',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'gigya',
-        'settings' => array(
-          'gigya_sharebar_advanced' => array(),
-          'gigya_sharebar_buttons' => 'twitter-tweet, facebook-like',
-          'gigya_sharebar_container_id' => 'gigya-share',
-          'gigya_sharebar_desc' => '[node:summary]',
-          'gigya_sharebar_image_behavior' => 'first',
-          'gigya_sharebar_image_url' => '',
-          'gigya_sharebar_layout' => 'horizontal',
-          'gigya_sharebar_link_back' => '[node:url:absolute]',
-          'gigya_sharebar_override_default' => FALSE,
-          'gigya_sharebar_short_url' => 0,
-          'gigya_sharebar_showcounts' => 'right',
-          'gigya_sharebar_title' => '[node:title]',
-        ),
-        'type' => 'gigya_sharebar_formatter_default',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_gigya_share_bar',
-    'label' => 'Gigya Share Bar',
-    'required' => FALSE,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'gigya',
-      'settings' => array(),
-      'type' => 'sharebar',
-      'weight' => 9,
     ),
   );
 
@@ -1561,7 +1454,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -3831,81 +3724,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_gigya_share_bar'
-  $field_instances['node-tv_show-field_gigya_share_bar'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 39,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'gigya',
-        'settings' => array(
-          'gigya_sharebar_advanced' => array(),
-          'gigya_sharebar_buttons' => 'twitter-tweet, facebook-like',
-          'gigya_sharebar_container_id' => 'gigya-share',
-          'gigya_sharebar_desc' => '[node:summary]',
-          'gigya_sharebar_image_behavior' => 'first',
-          'gigya_sharebar_image_url' => '',
-          'gigya_sharebar_layout' => 'horizontal',
-          'gigya_sharebar_link_back' => '[node:url:absolute]',
-          'gigya_sharebar_override_default' => FALSE,
-          'gigya_sharebar_short_url' => 0,
-          'gigya_sharebar_showcounts' => 'right',
-          'gigya_sharebar_title' => '[node:title]',
-        ),
-        'type' => 'gigya_sharebar_formatter_default',
-        'weight' => 13,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 40,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_gigya_share_bar',
-    'label' => 'Gigya Share Bar',
-    'required' => FALSE,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'gigya',
-      'settings' => array(),
-      'type' => 'sharebar',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_hide_cast_carousel'
   $field_instances['node-tv_show-field_hide_cast_carousel'] = array(
     'bundle' => 'tv_show',
@@ -4117,7 +3935,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -4890,7 +4708,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -7342,7 +7160,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -7601,7 +7419,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'private' => 0,
           'public' => 'public',
         ),
         'allowed_types' => array(
@@ -7887,7 +7705,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('FEED');
   t('Facebook page');
   t('Featured Video Promos');
-  t('Gigya Share Bar');
   t('Hide from cast carousel');
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');

@@ -116,7 +116,6 @@ features[field_instance][] = node-tv_episode-field_tv_episode_type
 features[field_instance][] = node-tv_episode-field_usa_og_description
 features[field_instance][] = node-tv_episode-field_usa_og_image
 features[field_instance][] = node-tv_season-body
-features[field_instance][] = node-tv_season-field_gigya_share_bar
 features[field_instance][] = node-tv_season-field_original_air_date
 features[field_instance][] = node-tv_season-field_season_id
 features[field_instance][] = node-tv_season-field_show

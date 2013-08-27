@@ -124,7 +124,7 @@ function usanetwork_catchall_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_catchall_page';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
   );
   $export['node_options_catchall_page'] = $strongarm;
 
@@ -141,6 +141,13 @@ function usanetwork_catchall_strongarm() {
   $strongarm->name = 'node_submitted_catchall_page';
   $strongarm->value = 0;
   $export['node_submitted_catchall_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'representative_image_field_node_catchall_page';
+  $strongarm->value = 0;
+  $export['representative_image_field_node_catchall_page'] = $strongarm;
 
   return $export;
 }

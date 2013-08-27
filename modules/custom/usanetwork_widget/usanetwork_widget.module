@@ -160,6 +160,7 @@ function usanetwork_widget_navbar_docs() {
   $docs_markup = '
   <h1>Syndicating the USANetwork navigation bar.</h1>
   <h2>Main Navigation</h2>
+  <p><a href="/navbar">demo</a></p>
   <p>Add the following style tag to your site. </p>
   <code><pre>
 '. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
@@ -169,6 +170,7 @@ function usanetwork_widget_navbar_docs() {
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
   </pre></code>
   <h2>Main Navigation - No Styles</h2>
+  <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
@@ -290,6 +292,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   $docs_markup = '
   <h1>Syndicating the USANetwork show navigation bar.</h1>
   <h2>Show and Main Navigation</h2>
+  <p><a href="/node/'. $node->nid .'/navbar">demo</a></p>
   <p>Add the following style tag to your site.</p>
   <code><pre>
 '. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
@@ -301,6 +304,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   </pre></code>
 
   <h2>Show and Main Navigation - No Styles</h2>
+  <p><a href="/node/'. $node->nid .'/navbar/plain">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
@@ -308,6 +312,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   </pre></code>
 
   <h2>Show Navigation Only - No Styles</h2>
+  <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'

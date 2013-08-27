@@ -14,7 +14,8 @@ xmlhttp.onreadystatechange = function() {
   }
 }
 
+// TODO: change the 'stage' part of each URL to www
 if(typeof $show_id != 'undefined') {
-  xmlhttp.open("GET", "/node/" + $show_id + "/navbar/syndicate_only", true);
+  xmlhttp.open("GET", "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_only", true);
   xmlhttp.send();
 }

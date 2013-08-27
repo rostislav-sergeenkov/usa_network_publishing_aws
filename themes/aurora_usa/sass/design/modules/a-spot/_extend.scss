@@ -35,24 +35,24 @@
   }
   .show-title-image {
     position: absolute;
-    height: 124px;
+    height: 120px;
     width: 238px;
     z-index: 2;
     @include breakpoint($bp-aspot-mid-range-width) {
-      height: 188px;
-      width: 360px;
+      height: 186px;
+      width: 288px;
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
-      height: 168px;
+      height: 172px;
       width: 500px;
     }
     @include breakpoint($bp-aspot-large-width) {
-      height: 230px;
-      width: 600px;
+      height: 222px;
+      width: 480px;
     }
     .usa-adrails &, .ie9 &, .ie8 & {
-      height: 168px;
-      width: 500px;
+      height: 222px;
+      width: 480px;
     }
     img {
       position: absolute;

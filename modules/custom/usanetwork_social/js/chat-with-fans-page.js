@@ -1,3 +1,4 @@
+ // TODO: REview once personalization is enabled
 (function($) {
 	var plugin = Echo.createPlugin({
         "name": "SourceIconTweaks",
@@ -38,6 +39,8 @@ Drupal.behaviors.chat_with_fans_page = {
         }
       }
 
+
+      /**** Hiding till personalization is enabled ****/
       // BEGIN SESSION HANDLING / BACKPLANE INITIALIZATION
       // needed for auto-login to chatter
       // var usa_user = jQuery.parseJSON(jQuery.cookie('usa_idx_id'));
@@ -76,6 +79,7 @@ Drupal.behaviors.chat_with_fans_page = {
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
+      /**** Adding till personalization is enabled ****/
       Backplane.init({
         "serverBaseURL" : "http://api.echoenabled.com/v1",
         "busName": "usanetwork"

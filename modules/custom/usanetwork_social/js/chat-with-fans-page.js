@@ -40,19 +40,19 @@ Drupal.behaviors.chat_with_fans_page = {
 
       // BEGIN SESSION HANDLING / BACKPLANE INITIALIZATION
       // needed for auto-login to chatter
-      var usa_user = jQuery.parseJSON(jQuery.cookie('usa_idx_id'));
-      if (usa_user != null)
-      {
-        usa_debug(usa_user);
-        if (typeof Backplane != 'undefined') Backplane.resetCookieChannel();
-        Backplane.init({
-          "serverBaseURL": "http://api.echoenabled.com/v1",
-          "busName": "usanetwork",
-          "channelName": usa_user.username
-        });
-      }
+      // var usa_user = jQuery.parseJSON(jQuery.cookie('usa_idx_id'));
+      // if (usa_user != null)
+      // {
+      //   usa_debug(usa_user);
+      //   if (typeof Backplane != 'undefined') Backplane.resetCookieChannel();
+      //   Backplane.init({
+      //     "serverBaseURL": "http://api.echoenabled.com/v1",
+      //     "busName": "usanetwork",
+      //     "channelName": usa_user.username
+      //   });
+      // }
 
-      Backplane.expectMessages(["identity/ack"]);
+      // Backplane.expectMessages(["identity/ack"]);
       // END BACKPLANE INITIALIZATION
 
 			var FBappId = '241079750077';
@@ -75,6 +75,11 @@ Drupal.behaviors.chat_with_fans_page = {
 				js.src = "//connect.facebook.net/en_US/all.js";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
+
+      Backplane.init({
+        "serverBaseURL" : "http://api.echoenabled.com/v1",
+        "busName": "usanetwork"
+      });
 
 			// SUBMIT FORM WIDGET
 			var janrainTokenUrl = encodeURIComponent('http://api.echoenabled.com/apps/janrain/waiting.html');

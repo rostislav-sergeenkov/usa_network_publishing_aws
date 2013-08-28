@@ -390,6 +390,18 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
     return NULL;
   }
 
+  $proxy = variable_get('pub_utilities_proxy', '');
+  if (!empty($proxy)) {
+    $default_context = stream_context_get_default(
+      array('http' => 
+        array( 
+         'proxy' => $proxy, 
+         'request_fulluri' => true, 
+        ), 
+      ) 
+    ); 
+    libxml_set_streams_context($default_context); 
+  } 
   $tvs = simplexml_load_file($xml_feed);
 
   if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {

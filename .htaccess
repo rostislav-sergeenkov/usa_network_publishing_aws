@@ -1,1 +1,2 @@
-Header set Access-Control-Allow-Origin http://player.theplatform.com
+Header set Access-Control-Allow-Origin http://player.theplatform.com,http://dev.clubpsych.usanetwork.com
+

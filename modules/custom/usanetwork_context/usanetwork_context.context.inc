@@ -603,7 +603,7 @@ function usanetwork_context_context_default_contexts() {
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_detect_ieversion',
-          'region' => 'content',
+          'region' => 'main_suffix',
           'weight' => '-10',
         ),
         'usanetwork_blocks-usa_footer_links' => array(

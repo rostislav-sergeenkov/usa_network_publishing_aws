@@ -107,6 +107,9 @@ function usanetwork_files_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'gallery_flexslider' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -171,6 +174,10 @@ function usanetwork_files_strongarm() {
             'visible' => TRUE,
           ),
           'cover_image' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'gallery_flexslider' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

@@ -86,6 +86,3 @@ features[variable][] = field_bundle_settings_file__audio
 features[variable][] = field_bundle_settings_file__default
 features[variable][] = field_bundle_settings_file__image
 features[variable][] = field_bundle_settings_file__video
-features_exclude[dependencies][taxonomy] = taxonomy
-features_exclude[taxonomy][media_categories] = media_categories
-features_exclude[taxonomy][media_tags] = media_tags

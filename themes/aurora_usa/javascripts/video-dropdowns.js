@@ -4,56 +4,17 @@
 
    attach: function (context, settings) {
 
-    // all shows menu toggle
+      $('body').once('usaVideo', function() {
 
-    $('body').once('usaVideo', function() {
+        // all shows menu toggle
+        $('.usa-secondary-menu .shows > li.first').click(function() {
+            $(this).find('.item-list').toggle();
+        });
 
-      $('.usa-secondary-menu .shows > li.first').click(function() {
-          $(this).find('.item-list').toggle();
-      });
-
-      $('.usa-secondary-menu .categories > li.more').hover(function() {
-          $(this).find('.item-list .more').toggle();
-          $(this).toggleClass('open');
-      });
-
-
-      // video items toggler
-
-      $expandable_container = $('.view.expandable-container');
-      $container = $('.view.expandable-container .view-content');
-      $toggler = $('.view.expandable-container .expandable-toggle li');
-
-      var i = 0;
-
-      if($toggler.text() != 'more') {
-        $toggler.addClass('less').text('close');
-        $expandable_container.addClass('expanded');
-        i = 1;
-      }
-
-      $toggler.click(function() {
-        if($toggler.text() == 'close') {
-          i = 1;
-          $container.find('.item-list').hide();
-          $container.find('.item-list:first-child').css('display','block');
-          $toggler.text('more');
-          $toggler.removeClass('less').addClass('more');
-          $expandable_container.removeClass('expanded');
-        } else if ($toggler.text() == 'more') {
-          $toggler.removeClass('less').addClass('more');
-          $container.find('.item-list:first-child').css('display','block');
-          $count = $container.find('.item-list').length - 1;
-          $container.find('.item-list:eq('+ i + ')').show();
-          if($count == i) {
-            $toggler.text('close');
-            $toggler.addClass('less').removeClass('more');
-            $expandable_container.addClass('expanded');
-            i = 1;
-          }
-          i++;
-        }
-      });
+        $('.usa-secondary-menu .categories > li.more').hover(function() {
+            $(this).find('.item-list .more').toggle();
+            $(this).toggleClass('open');
+        });
 
 
         $filter_menus = $('.usa-secondary-menu .content > .item-list:nth-child(2)');
@@ -93,6 +54,44 @@
           }
         }
       });  
+
+       // video items toggler
+
+      $expandable_container = $('.view.expandable-container');
+      $container = $('.view.expandable-container .view-content');
+      $toggler = $('.view.expandable-container .expandable-toggle li');
+
+      var i = 0;
+
+      if($toggler.text() != 'more') {
+        $toggler.addClass('less').text('close');
+        $expandable_container.addClass('expanded');
+        i = 1;
+      }
+
+      $toggler.click(function() {
+        if($toggler.text() == 'close') {
+          i = 1;
+          $container.find('.item-list').hide();
+          $container.find('.item-list:first-child').css('display','block');
+          $toggler.text('more');
+          $toggler.removeClass('less').addClass('more');
+          $expandable_container.removeClass('expanded');
+        } else if ($toggler.text() == 'more') {
+          $toggler.removeClass('less').addClass('more');
+          $container.find('.item-list:first-child').css('display','block');
+          $count = $container.find('.item-list').length - 1;
+          $container.find('.item-list:eq('+ i + ')').show();
+          if($count == i) {
+            $toggler.text('close');
+            $toggler.addClass('less').removeClass('more');
+            $expandable_container.addClass('expanded');
+            i = 1;
+          }
+          i++;
+        }
+      });
+
     },
  };
 

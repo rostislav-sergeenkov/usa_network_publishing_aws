@@ -1,5 +1,5 @@
 <?php
-
+// @TODO: REview once personalization is enabled
 /**
  * @file
  * Code for the usanetwork_social feature.
@@ -924,8 +924,8 @@ function usanetwork_social_chat_with_fans($node) {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/reply.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/whirlpools.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/submit-text-counter.js', 'external');
-  // @TODO: MOVE THE FOLLOWING CSS INTO A STYLESHEET
-  drupal_add_css('#chat-submit-form .echo-auth-login, #chat-submit-form .echo-auth-logout { display:none !important }', array('type' => 'inline'));
+  // @TODO: REview once personalization is enabled- will need to rehide
+  //drupal_add_css('#chat-submit-form .echo-auth-login, #chat-submit-form .echo-auth-logout { display:none !important }', array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
 
   $output .= '<div id="fb-root"></div>';

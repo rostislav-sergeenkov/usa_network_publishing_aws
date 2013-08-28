@@ -70,6 +70,15 @@ function usanetwork_tv_shows_field_group_info() {
       13 => 'field_chat_tags',
       14 => 'field_show_chat_page',
       15 => 'field_show_chat_post_comment',
+      16 => 'field_chat_title',
+      17 => 'field_chat_description',
+      18 => 'field_chat_question',
+      19 => 'field_chat_legal_copy',
+      20 => 'field_chat_comment_prefix',
+      21 => 'field_chat_echo_marker',
+      22 => 'field_chat_start_time',
+      23 => 'field_chat_end_time',
+      24 => 'field_chat_checkbox_text',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -662,11 +671,11 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_display_title',
-      1 => 'field_usa_tv_on_now',
-      2 => 'field_usa_tv_promo',
-      3 => 'field_usa_tv_tune_in_date',
+      1 => 'field_pathauto_alias',
+      2 => 'field_usa_tv_on_now',
+      3 => 'field_usa_tv_promo',
       4 => 'field_usa_tv_promo_vids',
-      5 => 'field_pathauto_alias',
+      5 => 'field_usa_tv_tune_in_date',
       6 => 'group_show_aspots',
     ),
     'format_type' => 'tab',
@@ -721,7 +730,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_usa_og_image',

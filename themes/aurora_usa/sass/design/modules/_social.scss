@@ -384,9 +384,6 @@ body.usa-social {
 
 /* Chatter with TV */
 
-//drupal_add_css('#chatterToTv { display:none; color: black; background-color: white; padding: 40px 40px 0; } 
-//  #tvTitle { color:#33CCFF; padding-bottom:15px; font-size: large; } #tvDescription { padding-bottom:15px; } #tvOnAir { margin-bottom:25px; } #tvLegalCopy { padding-bottom:15px; font-size: small; } .echo-submit-markersContainer.echo-submit-metadata-container.showMe { display: block !important; }', array('type' => 'inline'));
-
 #tvTitle {
   color: $blue;
   font-size: 16px;

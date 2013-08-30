@@ -382,6 +382,59 @@ body.usa-social {
   }
 }
 
+/* Chatter with TV */
+
+//drupal_add_css('#chatterToTv { display:none; color: black; background-color: white; padding: 40px 40px 0; } 
+//  #tvTitle { color:#33CCFF; padding-bottom:15px; font-size: large; } #tvDescription { padding-bottom:15px; } #tvOnAir { margin-bottom:25px; } #tvLegalCopy { padding-bottom:15px; font-size: small; } .echo-submit-markersContainer.echo-submit-metadata-container.showMe { display: block !important; }', array('type' => 'inline'));
+
+#tvTitle {
+  color: $blue;
+  font-size: 16px;
+  line-height: 1em;
+  @include breakpoint($bp-social-very-large-width) {
+    font-size: 18px;
+  }  
+}
+
+#chatterToTv {
+  font-size: 14px;
+  background-color: $white;
+  color: $black-true;
+  display: none;
+  padding: 25px 12px 0;
+  line-height: 1em;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 16px;
+  }
+  div {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    @include breakpoint($bp-social-very-large-width) {
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }  
+    &:first-child {
+      padding: 0;
+    }
+  }
+  + #chat-submit-form {
+    padding-top: 10px;
+  }
+}
+
+#tvLegalCopy {
+  font-size: 12px;
+  @include breakpoint($bp-social-very-large-width) {
+    font-size: 13px;
+  }  
+}
+
+.commentAnnotation {
+  font-weight: bold;
+}
+
 /* twitter */
 
 #echo-stream {

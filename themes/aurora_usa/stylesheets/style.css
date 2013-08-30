@@ -1081,6 +1081,7 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: -100%;
     margin-left: 33.85013%;
     clear: none;
+    width: 300px;
   }
 }
 @media (min-width: 1275px) {
@@ -1120,6 +1121,7 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: -100%;
     margin-left: 50.57915%;
     clear: none;
+    width: 300px;
   }
 }
 .usa-adrails .usa-home, .ie8 .usa-home {
@@ -1160,6 +1162,7 @@ input[type="radio"], input[type="checkbox"] {
   margin-right: -100%;
   margin-left: 33.85013%;
   clear: none;
+  width: 300px;
 }
 
 @media (max-width: 771px) {
@@ -6615,13 +6618,13 @@ body.person-page #main {
   position: relative;
   float: left;
   width: 615px;
-  height: 375px;
+  height: 346px;
   margin-right: 15px;
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper {
     width: 330px;
-    height: 201px;
+    height: 186px;
     margin: 0 auto;
     float: none;
   }
@@ -6635,7 +6638,7 @@ body.person-page #main {
 @media (min-width: 1275px) {
   .featured-asset .video-player-wrapper {
     width: 930px;
-    height: 567px;
+    height: 523px;
   }
 }
 .usa-adrails .featured-asset .video-player-wrapper {
@@ -6745,12 +6748,19 @@ body.person-page #main {
 .featured-asset .description p:first-child {
   margin-top: 0;
 }
+.featured-asset .description p:last-child {
+  margin-bottom: 0;
+}
 @media (max-width: 644px) {
   .featured-asset .description {
     float: none;
     overflow: hidden;
     width: 100%;
+    margin-top: 10px;
     margin-right: 0;
+  }
+  .featured-asset .description p:last-child {
+    margin-bottom: 0;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -6765,6 +6775,9 @@ body.person-page #main {
 @media (min-width: 960px) {
   .featured-asset .description {
     overflow: hidden;
+  }
+  .featured-asset .description p:last-child {
+    margin-bottom: 1.5em;
   }
 }
 @media (min-width: 644px) {
@@ -7623,6 +7636,63 @@ body.usa-social {
     padding-left: 42px;
     padding-right: 42px;
   }
+}
+
+/* Chatter with TV */
+#tvTitle {
+  color: #0ab6e8;
+  font-size: 16px;
+  line-height: 1em;
+}
+@media (min-width: 1050px) {
+  #tvTitle {
+    font-size: 18px;
+  }
+}
+
+#chatterToTv {
+  font-size: 14px;
+  background-color: white;
+  color: black;
+  display: none;
+  padding: 25px 12px 0;
+  line-height: 1em;
+}
+@media (min-width: 1050px) {
+  #chatterToTv {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 16px;
+  }
+}
+#chatterToTv div {
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+@media (min-width: 1050px) {
+  #chatterToTv div {
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+}
+#chatterToTv div:first-child {
+  padding: 0;
+}
+#chatterToTv + #chat-submit-form {
+  padding-top: 10px;
+}
+
+#tvLegalCopy {
+  font-size: 12px;
+}
+@media (min-width: 1050px) {
+  #tvLegalCopy {
+    font-size: 13px;
+  }
+}
+
+.commentAnnotation {
+  font-weight: bold;
 }
 
 /* twitter */

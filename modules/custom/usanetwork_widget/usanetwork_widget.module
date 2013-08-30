@@ -193,6 +193,7 @@ function usanetwork_widget_navbar_docs() {
   </pre></code>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
@@ -200,6 +201,7 @@ function usanetwork_widget_navbar_docs() {
   <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>

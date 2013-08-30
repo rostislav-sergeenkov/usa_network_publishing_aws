@@ -1,4 +1,35 @@
- // TODO: REview once personalization is enabled
+var usa_debugFlag = false;
+var usa_debug = function(msg) {
+  if (usa_debugFlag && typeof console != "undefined")
+  {
+    if (typeof msg == "object") {
+      console.log("msg is object");
+    }
+    else if (typeof msg == "array") {
+      console.log("msg is array");
+    }
+    console.log(msg);
+  }
+}
+
+var EchoSubmit;
+function usa_setMarker(marker)
+{
+  usa_debug('fn: usa_setMarker('+marker+')');
+  if (showChatterToTv && jQuery('#tvOnAir').attr('checked') == 'checked')
+  {
+    marker = chatterToTvEchoMarker;
+  }
+
+  if (typeof EchoSubmit != 'undefined' && typeof EchoSubmit.config != 'undefined')
+  {
+    EchoSubmit.config.set("markers", [marker]);
+    EchoSubmit.refresh();
+    EchoSubmit.rerender("markers");
+    if (usa_debugFlag) jQuery('.echo-submit-markersContainer').addClass('showMe');
+  }
+}
+
 (function($) {
 	var plugin = Echo.createPlugin({
         "name": "SourceIconTweaks",
@@ -15,7 +46,7 @@
 				}
 				item.parentRenderer("sourceIcon", arguments);
 			});
-        }
+    }
 	});
 })(jQuery);
 
@@ -24,39 +55,6 @@
 Drupal.behaviors.chat_with_fans_page = {
   attach: function(context){
 
-      // @TODO: REMOVE usa_debug ONCE IT'S BEEN ADDED GLOBALLY
-      var usa_debugFlag = false;
-      var usa_debug = function(msg) {
-        if (usa_debugFlag && typeof console != "undefined")
-        {
-          if (typeof msg == "object") {
-            console.log("msg is object");
-          }
-          else if (typeof msg == "array") {
-            console.log("msg is array");
-          }
-          console.log(msg);
-        }
-      }
-
-
-      /**** Hiding till personalization is enabled ****/
-      // BEGIN SESSION HANDLING / BACKPLANE INITIALIZATION
-      // needed for auto-login to chatter
-      // var usa_user = jQuery.parseJSON(jQuery.cookie('usa_idx_id'));
-      // if (usa_user != null)
-      // {
-      //   usa_debug(usa_user);
-      //   if (typeof Backplane != 'undefined') Backplane.resetCookieChannel();
-      //   Backplane.init({
-      //     "serverBaseURL": "http://api.echoenabled.com/v1",
-      //     "busName": "usanetwork",
-      //     "channelName": usa_user.username
-      //   });
-      // }
-
-      // Backplane.expectMessages(["identity/ack"]);
-      // END BACKPLANE INITIALIZATION
 
 			var FBappId = '241079750077';
 			window.fbAsyncInit = function() {
@@ -79,11 +77,34 @@ Drupal.behaviors.chat_with_fans_page = {
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
-      /**** Adding till personalization is enabled ****/
-      Backplane.init({
-        "serverBaseURL" : "http://api.echoenabled.com/v1",
-        "busName": "usanetwork"
-      });
+
+      // BEGIN SESSION HANDLING / BACKPLANE INITIALIZATION
+      if (personalizationEnabled)
+      {
+        // needed for auto-login to chatter
+        var usa_user = jQuery.parseJSON(jQuery.cookie('usa_idx_id'));
+        if (usa_user != null)
+        {
+          usa_debug(usa_user);
+          if (typeof Backplane != 'undefined') Backplane.resetCookieChannel();
+          Backplane.init({
+            "serverBaseURL": "http://api.echoenabled.com/v1",
+            "busName": "usanetwork",
+            "channelName": usa_user.username
+          });
+        }
+
+        Backplane.expectMessages(["identity/ack"]);
+      }
+      else
+      {
+        Backplane.init({
+          "serverBaseURL" : "http://api.echoenabled.com/v1",
+          "busName": "usanetwork"
+        });
+      }
+      // END BACKPLANE INITIALIZATION
+
 
 			// SUBMIT FORM WIDGET
 			var janrainTokenUrl = encodeURIComponent('http://api.echoenabled.com/apps/janrain/waiting.html');
@@ -154,7 +175,6 @@ Drupal.behaviors.chat_with_fans_page = {
 				});
 			}
 
-			var EchoSubmit;
 			function usa_buildSubmitForm(marker)
 			{
 				usa_debug('fn: usa_buildSubmitForm('+marker+')');
@@ -178,65 +198,60 @@ Drupal.behaviors.chat_with_fans_page = {
 				});
       }
 
-      function usa_buildChatterToTv(marker)
+      function usa_showChatterToTv()
       {
-
-        usa_debug('fn: usa_buildChatterToTv('+marker+')');
-        var tv = '<div id="tvTitle" style="color:#33CCFF;padding-bottom:15px;font-size: large;"><b>'+chatterToTvTitle+'</b></div>';
-        tv += '<div id="tvDescription" style="color:black;padding-bottom:15px;">'+chatterToTvDescription+'</div>';
-        tv += '<input type="checkbox" name="tvOnAir" id="tvOnAir" value="'+chatterToTvEchoMarker+'" checked="checked" style="margin-bottom:25px;"><span style="color:black;">'+chatterToTvCheckboxText+'</span><br>';
-        tv += '<div id="tvQuestion" style="color:black;padding-bottom:15px;">'+chatterToTvQuestion+'</div>';
-        tv += '<div id="tvLegalCopy" style="color:black;padding-bottom:15px;font-size: small;">'+chatterToTvLegalCopy+'</div>';
-        jQuery('#chat-submit-form').prepend(tv);
-      }
-
-      function usa_setMarker(marker)
-      {
-        usa_debugOut('chat fn: usa_setMarker('+marker+')');
-        //EchoSubmit.config.set("plugins.MetadataTweaks.markers", [marker]);
-          //EchoSubmit.rerender("markers");
-        //if (usa_liveChat && usa_useEchoMarkersOnAllTabs && usa_liveChatMarkers != '') marker = usa_liveChatMarkers;
-        if (jQuery('#tvOnAir').attr('checked') == 'checked') marker = jQuery('#tvOnAir').val();
-        //usa_debugOut('marker: '+marker);
-
-        if (typeof EchoSubmit != 'undefined' && typeof EchoSubmit.config != 'undefined')
-        {
-          EchoSubmit.config.set("markers", [marker]);
-          EchoSubmit.refresh();
-          EchoSubmit.rerender("markers");
-        }
+        usa_debug('fn: usa_showChatterToTv()');
+        var tv = '<div id="tvTitle"><b>'+chatterToTvTitle+'</b></div>';
+        tv += '<div id="tvDescription">'+chatterToTvDescription+'</div>';
+        tv += '<input type="checkbox" name="tvOnAir" id="tvOnAir" value="'+chatterToTvEchoMarker+'" checked="checked" onclick="usa_setMarker(\'\')"><span>'+chatterToTvCheckboxText+'</span><br>';
+        tv += '<div id="tvLegalCopy">'+chatterToTvLegalCopy+'</div>';
+        jQuery('#chatterToTv').html(tv).show();
       }
 
       function usa_updateMarkersPostLogin()
       {
-        usa_debugOut('chat fn: usa_updateMarkersPostLogin()');
+        usa_debug('fn: usa_updateMarkersPostLogin()');
 
-        if(showChatterToTv > 0)
+        if (showChatterToTv)
         {
-          usa_setMarker('');
-        }
-        /*if ((usa_liveChat && jQuery('#navAskTalent').hasClass('selected')) || (usa_liveChat && usa_useEchoMarkersOnAllTabs))
-        {
-          usa_setMarker(usa_liveChatMarkers);
+          usa_setMarker(chatterToTvEchoMarker);
+          jQuery('#tvOnAir').attr('checked', 'checked');
         }
         else
         {
           usa_setMarker('');
-        }*/
-        //if (typeof EchoSubmit != 'undefined' && typeof EchoSubmit.rerender != 'undefined') EchoSubmit.rerender('shareContainer');
+          jQuery('#tvOnAir').attr('checked', '');
+        }
       }
 
-      //DV: We will need this in a future iteration, so I'm leaving it for now
       Echo.Broadcast.subscribe("User.onInit",
-          function(topic, data, contextId) {
-            $('.echo-submit-forcedLoginUserInfoMessage').html('Logging you in...').fadeIn('fast');
-              setTimeout("usa_updateMarkersPostLogin()", 1000);
-            }
-        );
+        function(topic, data, contextId) {
+          //$('.echo-submit-forcedLoginUserInfoMessage').html('Logging you in...').fadeIn('fast');
+          setTimeout(usa_updateMarkersPostLogin, 1000);
+        }
+      );
 
       Echo.Broadcast.subscribe("Submit.onPostComplete",
         function(topic, data, contextId) {
-          setTimeout("usa_updateMarkersPostLogin()", 1000);
+          setTimeout(usa_updateMarkersPostLogin, 1000);
+        }
+      );
+
+      Echo.Broadcast.subscribe("Stream.Item.onRender",
+        function(topic, data, contextId) {
+          if (typeof data.item.data.object.markers != "undefined")
+          {
+            for (var i=0 ; i<data.item.data.object.markers.length ; i++)
+            {
+              if (data.item.data.object.markers[i] == chatterToTvEchoMarker)
+              {
+                var item = $(data.item.target);
+                item.find("div.echo-item-body").each(function(index) {
+                  $(this).html('<span class="commentAnnotation">'+chatterToTvCommentPrefix+'</span>' + $(this).html());
+                });
+              }
+            }
+          }
         }
       );
 
@@ -244,29 +259,9 @@ Drupal.behaviors.chat_with_fans_page = {
 			{
 				runEchoAuth();
 				usa_buildSubmitForm('');
-        if(showChatterToTv > 0)
-          usa_buildChatterToTv('');
+        if (showChatterToTv > 0) usa_showChatterToTv();
 			}
 			initEchoRiverClient();
 		}
 	}
 })(jQuery);
-
-Echo.Broadcast.subscribe("Stream.Item.onRender",
-  function(topic, data, contextId) {
-    if (typeof data.item.data.object.markers != "undefined")
-    {
-      for (var i=0 ; i<data.item.data.object.markers.length ; i++)
-      {
-        if (data.item.data.object.markers[i] == chatterToTvEchoMarker)
-        {
-          var item = $(data.item.target);
-          item.find("div.echo-item-body").each(function(index) {
-            $(this).html('<span class="commentAnnotation">'+chatterToTvCommentPrefix+'</span>' + $(this).html());
-            //$(this).parent().parent().parent().parent().parent().parent().parent().addClass('<?=$showConfig['chatterToTv']['cssClass']; ?>');
-          });
-        }
-      }
-    }
-  }
-);

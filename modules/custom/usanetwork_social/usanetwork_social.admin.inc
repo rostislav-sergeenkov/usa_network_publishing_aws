@@ -143,56 +143,6 @@ function usanetwork_social_settings_form() {
     '#description' => t('IDENTITYMANAGERURL'),
     '#maxlength' => 512,
   );
-  $form['chat']['usanetwork_social_chat_title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('TITLE'),
-    '#default_value' => variable_get('usanetwork_social_chat_title', ''),
-    '#description' => t('TITLE'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_description'] = array(
-    '#type' => 'textfield',
-    '#title' => t('DECRIPTION'),
-    '#default_value' => variable_get('usanetwork_social_chat_description', ''),
-    '#description' => t('DECRIPTION'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_question'] = array(
-    '#type' => 'textfield',
-    '#title' => t('ON AIR COMMENT "QUESTION"'),
-    '#default_value' => variable_get('usanetwork_social_chat_question', ''),
-    '#description' => t('ON AIR COMMENT "QUESTION"'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_legal_copy'] = array(
-    '#type' => 'textfield',
-    '#title' => t('LEGAL COPY'),
-    '#default_value' => variable_get('usanetwork_social_chat_legal_copy', ''),
-    '#description' => t('LEGAL COPY'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_comment_prefix'] = array(
-    '#type' => 'textfield',
-    '#title' => t('COMMENT PRE-FIX'),
-    '#default_value' => variable_get('usanetwork_social_chat_comment_prefix', ''),
-    '#description' => t('COMMENT PRE-FIX'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_echo_marker'] = array(
-    '#type' => 'textfield',
-    '#title' => t('ECHO MARKER'),
-    '#default_value' => variable_get('usanetwork_social_chat_echo_marker', ''),
-    '#description' => t('ECHO MARKER'),
-    '#maxlength' => 512,
-  );
-  $form['chat']['usanetwork_social_chat_checkbox_text'] = array(
-    '#type' => 'textfield',
-    '#title' => t('CHECKBOX TEXT'),
-    '#default_value' => variable_get('usanetwork_social_chat_checkbox_text', ''),
-    '#description' => t('CHECKBOX TEXT'),
-    '#maxlength' => 512,
-  );
-
 
   // TWITTER
   $form['twitter'] = array(

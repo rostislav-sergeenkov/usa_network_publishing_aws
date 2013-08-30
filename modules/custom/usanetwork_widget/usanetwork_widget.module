@@ -107,9 +107,13 @@ function usanetwork_widget_menu() {
  */
 function usanetwork_widget_navbar() {
   // TODO: change the 'stage' part of each URL to www
+  
   $site_base_url = 'http://stage.usanetwork.com/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js';
+  echo '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<h3>page body goes here..</h3>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -190,12 +194,14 @@ function usanetwork_widget_navbar_docs() {
   <p>Add the following script tag to your site. </p>
   <code><pre>
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   <h2>Main Navigation - No Styles</h2>
   <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   ';
   return $docs_markup;

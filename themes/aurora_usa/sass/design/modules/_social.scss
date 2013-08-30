@@ -382,6 +382,56 @@ body.usa-social {
   }
 }
 
+/* Chatter with TV */
+
+#tvTitle {
+  color: $blue;
+  font-size: 16px;
+  line-height: 1em;
+  @include breakpoint($bp-social-very-large-width) {
+    font-size: 18px;
+  }  
+}
+
+#chatterToTv {
+  font-size: 14px;
+  background-color: $white;
+  color: $black-true;
+  display: none;
+  padding: 25px 12px 0;
+  line-height: 1em;
+  @include breakpoint($bp-social-very-large-width) {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 16px;
+  }
+  div {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    @include breakpoint($bp-social-very-large-width) {
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }  
+    &:first-child {
+      padding: 0;
+    }
+  }
+  + #chat-submit-form {
+    padding-top: 10px;
+  }
+}
+
+#tvLegalCopy {
+  font-size: 12px;
+  @include breakpoint($bp-social-very-large-width) {
+    font-size: 13px;
+  }  
+}
+
+.commentAnnotation {
+  font-weight: bold;
+}
+
 /* twitter */
 
 #echo-stream {

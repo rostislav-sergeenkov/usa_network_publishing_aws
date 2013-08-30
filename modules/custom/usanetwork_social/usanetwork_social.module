@@ -886,13 +886,15 @@ function usanetwork_social_chat_with_fans($node) {
   {
     drupal_add_css('#chat-submit-form .echo-auth-login, #chat-submit-form .echo-auth-logout { display:none !important }', array('type' => 'inline'));
   }
-  // @TODO: have a themer take care of the following css
-  drupal_add_css('#chatterToTv { display:none; color: black; background-color: white; padding: 40px 40px 0; } #tvTitle { color:#33CCFF; padding-bottom:15px; font-size: large; } #tvDescription { padding-bottom:15px; } #tvOnAir { margin-bottom:25px; } #tvLegalCopy { padding-bottom:15px; font-size: small; } .echo-submit-markersContainer.echo-submit-metadata-container.showMe { display: block !important; }', array('type' => 'inline'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/chat-with-fans-page.js');
 
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
-  $output .= '<div id="chatterToTv"></div>';
+  
+  if ($displayChatterToTv && $chatterToTvStartTime <= $now && $now <= $chatterToTvEndTime) {
+    $output .= '<div id="chatterToTv"></div>';
+  }
+  
   $output .= '<div id="chat-submit-form">&nbsp;</div>';
   $output .= '<div id="chat-echo-stream">&nbsp;</div>';
 

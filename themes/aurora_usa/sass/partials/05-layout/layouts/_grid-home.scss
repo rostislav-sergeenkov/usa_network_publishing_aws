@@ -95,6 +95,7 @@
       }
       .c-spot {
         @include grid-span(1, 2);
+        width: 300px;
       }
     }
   }
@@ -122,6 +123,7 @@
       }
       .c-spot {
         @include grid-span(1, 3);
+        width: 300px;
       }
     }
   }
@@ -151,6 +153,7 @@
       }
       .c-spot {
         @include grid-span(1, 2);
+        width: 300px;
       }
     }
   }

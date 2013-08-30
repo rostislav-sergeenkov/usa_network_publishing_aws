@@ -774,8 +774,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'audio' => 0,
           0 => 0,
+          'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 'video',
@@ -988,11 +988,11 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 0,
           0 => 0,
           'audio' => 0,
           'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
@@ -1234,8 +1234,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'audio' => 0,
           0 => 0,
+          'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 'video',
@@ -1458,8 +1458,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'audio' => 0,
           0 => 0,
+          'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
@@ -1474,67 +1474,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'media_generic',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_checkbox_text'
-  $field_instances['node-tv_show-field_chat_checkbox_text'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 74,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_checkbox_text',
-    'label' => 'CHECKBOX TEXT',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 49,
     ),
   );
 
@@ -1735,255 +1674,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 28,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_comment_prefix'
-  $field_instances['node-tv_show-field_chat_comment_prefix'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 69,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_comment_prefix',
-    'label' => 'COMMENT PRE-FIX',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 47,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_description'
-  $field_instances['node-tv_show-field_chat_description'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 66,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_description',
-    'label' => 'DESCRIPTION',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 44,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_echo_marker'
-  $field_instances['node-tv_show-field_chat_echo_marker'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 70,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_echo_marker',
-    'label' => 'ECHO MARKER',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 48,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_end_time'
-  $field_instances['node-tv_show-field_chat_end_time'] = array(
-    'bundle' => 'tv_show',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 73,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_end_time',
-    'label' => 'END TIME',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 42,
     ),
   );
 
@@ -2388,67 +2078,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_chat_legal_copy'
-  $field_instances['node-tv_show-field_chat_legal_copy'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 68,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_legal_copy',
-    'label' => 'LEGAL COPY',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 46,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_chat_markers'
   $field_instances['node-tv_show-field_chat_markers'] = array(
     'bundle' => 'tv_show',
@@ -2546,67 +2175,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 33,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_show-field_chat_question'
-  $field_instances['node-tv_show-field_chat_question'] = array(
-    'bundle' => 'tv_show',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 67,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_question',
-    'label' => 'ON AIR COMMENT  "QUESTION"',
-    'required' => 0,
-    'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 45,
     ),
   );
 
@@ -3010,72 +2578,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_chat_start_time'
-  $field_instances['node-tv_show-field_chat_start_time'] = array(
-    'bundle' => 'tv_show',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 72,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_start_time',
-    'label' => 'START TIME',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 41,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_chat_state'
   $field_instances['node-tv_show-field_chat_state'] = array(
     'bundle' => 'tv_show',
@@ -3377,12 +2879,16 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_chat_title'
-  $field_instances['node-tv_show-field_chat_title'] = array(
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_checkbox_text'
+  $field_instances['node-tv_show-field_chat_to_tv_checkbox_text'] = array(
     'bundle' => 'tv_show',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Consider my comment for on-air use.',
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Ex: Consider my comment for on-air use.',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -3395,7 +2901,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 65,
+        'weight' => 71,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -3412,8 +2918,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_chat_title',
-    'label' => 'TITLE',
+    'field_name' => 'field_chat_to_tv_checkbox_text',
+    'label' => 'Checkbox Text',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -3428,13 +2934,450 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 200,
         'soft_length_limit' => '',
         'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
+        'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 43,
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_comment_prefix'
+  $field_instances['node-tv_show-field_chat_to_tv_comment_prefix'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ex: Why I\'m the ultimate SVU fan: ',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 74,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_comment_prefix',
+    'label' => 'Comment Prefix',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 200,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_description'
+  $field_instances['node-tv_show-field_chat_to_tv_description'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ex: Chat during the marathon using the hashtag #SVUTruthFiles on March 16th between 1pm and 11pm ET and your comment could be featured on air! See if your comment is revealed between 8pm-11pm during the marathon.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 70,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_description',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 500,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_echo_marker'
+  $field_instances['node-tv_show-field_chat_to_tv_echo_marker'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ex: svuCTT1_whySuperfan3',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 73,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_echo_marker',
+    'label' => 'Echo Marker',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 100,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_end_time'
+  $field_instances['node-tv_show-field_chat_to_tv_end_time'] = array(
+    'bundle' => 'tv_show',
+    'deleted' => 0,
+    'description' => 'Use Eastern time and a 24-hour clock.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 68,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_end_time',
+    'label' => 'End Time',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'M j Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_legal_copy'
+  $field_instances['node-tv_show-field_chat_to_tv_legal_copy'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ex: Thanks for participating in our SVU "Truth Files" Marathon. If you post comments about the Marathon, USA may take your comments and post them on USA from 8-11pm March 16 along with your login or user name. Your posts may be shortened, edited or altered for content or editorial reasons.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 72,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_legal_copy',
+    'label' => 'Legal Copy',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 500,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_start_time'
+  $field_instances['node-tv_show-field_chat_to_tv_start_time'] = array(
+    'bundle' => 'tv_show',
+    'deleted' => 0,
+    'description' => 'Use Eastern time and a 24-hour clock.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 67,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_start_time',
+    'label' => 'Start Time',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'M j Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_chat_to_tv_title'
+  $field_instances['node-tv_show-field_chat_to_tv_title'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Ex: Tell us why you are excited about the #SVUTruthFiles marathon.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 69,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_chat_to_tv_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 200,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 15,
     ),
   );
 
@@ -3788,7 +3731,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 49,
+      'weight' => 50,
     ),
   );
 
@@ -3856,7 +3799,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 50,
+      'weight' => 51,
     ),
   );
 
@@ -3939,8 +3882,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'audio' => 0,
           0 => 0,
+          'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
@@ -4255,6 +4198,62 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 26,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_show_chatter_to_tv'
+  $field_instances['node-tv_show-field_show_chatter_to_tv'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 66,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_show_chatter_to_tv',
+    'label' => 'Show Chatter to Tv',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
     ),
   );
 
@@ -4712,11 +4711,11 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 0,
           0 => 0,
           'audio' => 0,
           'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
@@ -5179,8 +5178,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'audio' => 0,
           0 => 0,
+          'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
@@ -7164,11 +7163,11 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 0,
           0 => 0,
           'audio' => 0,
           'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
@@ -7423,11 +7422,11 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'public' => 'public',
         ),
         'allowed_types' => array(
-          'image' => 'image',
-          'video' => 0,
           0 => 0,
           'audio' => 0,
           'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
@@ -7676,30 +7675,36 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Autoscroll A-spot carousel');
   t('Banner');
   t('Base URL');
-  t('CHECKBOX TEXT');
   t('CHILDREN');
   t('CHILDRENOF');
-  t('COMMENT PRE-FIX');
   t('Carousel featuring promos on the show landing page. A maximum of 6 promos recommended for this region.');
   t('Character max 40. Enter a short description that will be added to the show\'s navigation. Examples include "Wednesdays 10/9c", "Tonight at 8/7c", "Series Premiere on Thursday".');
+  t('Checkbox Text');
+  t('Comment Prefix');
   t('Cover Media');
   t('Credit');
-  t('DESCRIPTION');
+  t('Description');
   t('Desktop / Tablet URL');
   t('Display Title');
-  t('ECHO MARKER');
-  t('END TIME');
   t('EQL Token');
+  t('Echo Marker');
   t('Echo Query Template');
   t('Enable Nitro');
+  t('End Time');
   t('Episode #');
   t('Episode Type');
+  t('Ex: Chat during the marathon using the hashtag #SVUTruthFiles on March 16th between 1pm and 11pm ET and your comment could be featured on air! See if your comment is revealed between 8pm-11pm during the marathon.');
+  t('Ex: Consider my comment for on-air use.');
   t('Ex: PsychUSA');
+  t('Ex: Tell us why you are excited about the #SVUTruthFiles marathon.');
+  t('Ex: Thanks for participating in our SVU "Truth Files" Marathon. If you post comments about the Marathon, USA may take your comments and post them on USA from 8-11pm March 16 along with your login or user name. Your posts may be shortened, edited or altered for content or editorial reasons.');
+  t('Ex: Why I\'m the ultimate SVU fan: ');
   t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2');
   t('Ex: http://m.usanetwork.com/sync/?ww=OQFL9NEFSDD&show=&layout=web&partner=usa');
   t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=&layout=mobile&partner=usamobile');
   t('Ex: https://www.rebelmouse.com');
   t('Ex: psych, burn_notice, white_collar');
+  t('Ex: svuCTT1_whySuperfan3');
   t('Ex: usa_network/white_collar_character_chatter_matt_bomer');
   t('External Links');
   t('FEED');
@@ -7710,7 +7715,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('IDENTITYMANAGERURL');
   t('ITEMSPERPAGE');
   t('IdeaMelt action type');
-  t('LEGAL COPY');
+  t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Logo');
   t('Lyris List ID');
@@ -7720,7 +7725,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Nitro action name');
   t('OG Description');
   t('OG Image');
-  t('ON AIR COMMENT  "QUESTION"');
   t('Pinterest page');
   t('Primary');
   t('Recommend a maximum of 3 a-spots per show. This is the large a-spot display at the top of the show homepage.');
@@ -7728,7 +7732,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('SHOW');
   t('SORTORDER');
   t('SOURCE');
-  t('START TIME');
   t('STATE');
   t('SUBMITTARGETURL');
   t('SUBMITTARGETURL Template');
@@ -7740,6 +7743,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show');
   t('Show Chat with Fans Page');
   t('Show Chat with Fans Post Comment');
+  t('Show Chatter to Tv');
   t('Show Getglue');
   t('Show Marquee');
   t('Show Path');
@@ -7749,19 +7753,21 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show alias used to generate automatic paths');
   t('Social Logo');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL  (e.g. Twitter, Facebook).');
+  t('Start Time');
   t('Sticker Name');
   t('Synopsis');
   t('TAGS');
-  t('TITLE');
   t('Tags');
   t('The Latest');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
   t('This field is not used by USA');
   t('This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)');
+  t('Title');
   t('Tumblr Page');
   t('Tune-in Display Date');
   t('Twitter page');
   t('URL Params');
+  t('Use Eastern time and a 24-hour clock.');
   t('Used in show carousels.');
   t('show_links');
   t('slideshowSpeed');

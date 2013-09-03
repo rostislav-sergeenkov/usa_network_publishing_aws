@@ -107,10 +107,12 @@ function usanetwork_widget_menu() {
  */
 function usanetwork_widget_navbar() {
   // TODO: change the 'stage' part of each URL to www
-  
   $site_base_url = 'http://stage.usanetwork.com/';
+  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js';
-  echo '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js';
+  echo '<style>@import url("'.$style_css_path.'");</style>';
+  echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<h3>page body goes here..</h3>';
   echo '<div id="usanetwork-main-menu"></div>';

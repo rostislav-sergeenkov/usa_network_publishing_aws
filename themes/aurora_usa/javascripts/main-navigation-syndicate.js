@@ -197,7 +197,7 @@ function menu_init(){
       keyboardShortcuts: false,
       closeOnContentClick: false,
       beforeOn: function () {
-        remove_dart();
+        //remove_dart();
       },
       afterOn: function () {
         jpm_after_on();

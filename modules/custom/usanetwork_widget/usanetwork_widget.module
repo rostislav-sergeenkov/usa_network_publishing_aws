@@ -5,6 +5,17 @@
  */
 
 /**
+ * Implementation of hook_init().
+ */
+function usanetwork_widget_init() {
+  $cors_urls = variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com');
+  
+  if (!empty($cors_urls)) {
+    drupal_add_http_header('Access-Control-Allow-Origin', $cors_urls);
+  }
+}
+
+/**
  * Implementation of hook_menu().
  */
 function usanetwork_widget_menu() {
@@ -75,6 +86,18 @@ function usanetwork_widget_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['admin/usanetwork/syndicate-links'] = array(
+    'title' => t('Syndicate Links'),
+    'page callback' => 'usanetwork_widget_navbar_links',
+    'access arguments' => array('administer usanetwork'),
+  );
+  $items['admin/usanetwork/cross-domain-settings'] = array(
+    'title' => t('Cross Domain Access Control Settings'),
+    'description' => t('Administer USA Network Cross Domain Access Control list.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_widget_settings_form'),
+    'access arguments' => array('administer usanetwork'),
+  );
 
   return $items;
 }
@@ -83,11 +106,16 @@ function usanetwork_widget_menu() {
  * Helper to generate and output the main menu bar
  */
 function usanetwork_widget_navbar() {
-  $pageURL = 'http';
-  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
-  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
-  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js';
+  // TODO: change the 'stage' part of each URL to www
+  $site_base_url = 'http://stage.usanetwork.com/';
+  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js';
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js';
+  echo '<style>@import url("'.$style_css_path.'");</style>';
+  echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<h3>page body goes here..</h3>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -95,7 +123,8 @@ function usanetwork_widget_navbar() {
  * Helper to generate and output the main menu bar in styled html
  */
 function usanetwork_widget_navbar_ajax_styled() {
-  $nav_styles = '<style>@import url("/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  // TODO: change the 'stage' part of each URL to www
+  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -121,10 +150,9 @@ function usanetwork_widget_navbar_ajax_styled() {
  * Helper to generate and output the main menu bar in plain html
  */
 function usanetwork_widget_navbar_plain() {
-  $pageURL = 'http';
-  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
-  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
-  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js';
+  // TODO: change the 'stage' part of each URL to www
+  $site_base_url = 'http://stage.usanetwork.com/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
 }
@@ -160,18 +188,24 @@ function usanetwork_widget_navbar_docs() {
   $docs_markup = '
   <h1>Syndicating the USANetwork navigation bar.</h1>
   <h2>Main Navigation</h2>
+  <p><a href="/navbar">demo</a></p>
   <p>Add the following style tag to your site. </p>
   <code><pre>
 '. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
   </pre></code>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   <h2>Main Navigation - No Styles</h2>
+  <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   ';
   return $docs_markup;
@@ -181,10 +215,9 @@ function usanetwork_widget_navbar_docs() {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar($node) {
-  $pageURL = 'http';
-  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
-  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
-  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js';
+  // TODO: change the 'stage' part of each URL to www
+  $site_base_url = 'http://stage.usanetwork.com/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
@@ -194,7 +227,8 @@ function usanetwork_widget_show_navbar($node) {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
-  $nav_styles = '<style>@import url("/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  // TODO: change the 'stage' part of each URL to www
+  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -224,10 +258,9 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_plain($node) {
-  $pageURL = 'http';
-  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
-  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
-  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js';
+  // TODO: change the 'stage' part of each URL to www
+  $site_base_url = 'http://stage.usanetwork.com/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
@@ -265,10 +298,9 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_only($node) {
-  $pageURL = 'http';
-  $pageURL .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '';
-  $pageURL .= "://" . $_SERVER["SERVER_NAME"];
-  $widget_js_path = $pageURL .'/'. drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js';
+  // TODO: change the 'stage' part of each URL to www
+  $site_base_url = 'http://stage.usanetwork.com/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
@@ -290,6 +322,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   $docs_markup = '
   <h1>Syndicating the USANetwork show navigation bar.</h1>
   <h2>Show and Main Navigation</h2>
+  <p><a href="/node/'. $node->nid .'/navbar">demo</a></p>
   <p>Add the following style tag to your site.</p>
   <code><pre>
 '. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
@@ -301,6 +334,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   </pre></code>
 
   <h2>Show and Main Navigation - No Styles</h2>
+  <p><a href="/node/'. $node->nid .'/navbar/plain">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
@@ -308,6 +342,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   </pre></code>
 
   <h2>Show Navigation Only - No Styles</h2>
+  <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
@@ -315,4 +350,71 @@ function usanetwork_widget_show_navbar_docs($node) {
   </pre></code>
   ';
   return $docs_markup;
+}
+
+/**
+ * Helper to generate the admin syndicate links
+ */
+function usanetwork_widget_navbar_links() {
+  $links = array();
+  $output = '';
+   
+  $links[] = l(t('Global Navbar'), 'navbar');
+  $links[] = l(t('Global Navbar Plain'), 'navbar/plain');
+  $links[] = l(t('Global Navbar Docs'), 'navbar/docs');
+
+  $output .= '<b>' . t('Global Menu Links') . '</b>';
+  $output .= theme('item_list', array('items' => $links));
+
+  $output .= '<b>' . t('Show Menu Links') . '</b>';
+  $links = array();
+  $shows = _usanetwork_widget_get_nodes('tv_show');  
+  foreach ($shows as $show) {
+    $show_path = drupal_get_path_alias('node/'.$show->nid);
+    $links[] = l($show->title .': Styled Navbar', $show_path . '/navbar');
+    $links[] = l($show->title .': Plain Navbar', $show_path . '/navbar/plain');
+    $links[] = l($show->title .': Plain Navbar Only', $show_path . '/navbar/only');
+    $links[] = l($show->title .': Plain Navbar Docs', $show_path . '/navbar/docs');
+    $links[] = '<br/>';
+  }
+  $output .= theme('item_list', array('items' => $links));
+
+  return $output;
+}
+
+/**
+ * Helper that returns nodes of a given type.
+ */
+function _usanetwork_widget_get_nodes($node_type) {
+
+  $nodes_query = new EntityFieldQuery();
+  $nodes_query->entityCondition('entity_type', 'node');
+  $nodes_query->entityCondition('bundle', $node_type);
+  $nodes_query->propertyCondition('status', 1);
+  $nodes_query->propertyOrderBy('title', 'ASC');
+  $nodes_result = $nodes_query->execute();
+
+  $nodes = array();
+
+  if (isset($nodes_result['node'])) {
+    foreach ($nodes_result['node'] as $result) {
+      $nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+    }
+  }
+
+  return $nodes;
+}
+
+/**
+ * USA Network settings form
+ */
+function usanetwork_widget_settings_form() {
+  $form['usanetwork_widget_cors_urls'] = array(
+    '#type' => 'textarea',
+    '#title' => t('CORS URL List'),
+    '#default_value' => variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com'),
+    '#description' => t('Enter the list of all urls you need to add to the cross domain access control list seperated using comma (,).'),
+  );
+
+  return system_settings_form($form);
 }

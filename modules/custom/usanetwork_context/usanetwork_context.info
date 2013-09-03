@@ -37,4 +37,4 @@ features[context][] = usanetwork_homepage
 features[context][] = usanetwork_sitewide
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2

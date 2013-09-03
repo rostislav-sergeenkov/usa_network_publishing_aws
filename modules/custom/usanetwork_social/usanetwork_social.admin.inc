@@ -144,7 +144,6 @@ function usanetwork_social_settings_form() {
     '#maxlength' => 512,
   );
 
-
   // TWITTER
   $form['twitter'] = array(
     '#type' => 'fieldset',

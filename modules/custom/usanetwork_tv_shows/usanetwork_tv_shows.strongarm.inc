@@ -401,16 +401,16 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'flag' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '10',
         ),
       ),
       'display' => array(),

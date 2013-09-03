@@ -375,6 +375,8 @@ function usanetwork_blocks_usa_footer_links() {
  * Block callback for the usa_detect_ieversion
  */
 function usanetwork_blocks_usa_detect_ieversion() {
+  // add the cookie library so things to not explode
+  drupal_add_library('system', 'jquery.cookie');
   $render = array();
 
   $render['ieversion_detection'] = array(

@@ -5,6 +5,7 @@ base theme = aurora
 
 ; Stylesheets
 stylesheets[all][] = stylesheets/style.css
+stylesheets[all][] = static-stylesheets/static-style.css
 
 ; Regions
 regions[header]                  = Header

@@ -10,9 +10,10 @@ if (window.XMLHttpRequest) {
 
 xmlhttp.onreadystatechange = function() {
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    document.write(xmlhttp.responseText);
+    document.getElementById("usanetwork-main-menu").innerHTML = xmlhttp.responseText;
   }
 }
 
-xmlhttp.open("GET", "/navbar/syndicate_plain", true);
+// TODO: change the 'stage' part of each URL to www
+xmlhttp.open("GET", "http://stage.usanetwork.com/navbar/syndicate_plain", true);
 xmlhttp.send();

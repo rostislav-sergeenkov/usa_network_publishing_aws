@@ -716,7 +716,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'headline',
+          'file_view_mode' => 'gallery_flexslider',
         ),
         'type' => 'file_rendered',
         'weight' => 0,

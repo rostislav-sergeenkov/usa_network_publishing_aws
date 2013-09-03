@@ -62,6 +62,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -184,6 +190,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -303,6 +315,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -416,6 +434,12 @@ function usanetwork_files_field_default_field_instances() {
         'weight' => 9,
       ),
       'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'gallery_flexslider' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -539,6 +563,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -657,6 +687,12 @@ function usanetwork_files_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'media_link' => array(
         'label' => 'above',
@@ -778,11 +814,16 @@ function usanetwork_files_field_default_field_instances() {
         'weight' => 8,
       ),
       'full' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 1,
+      ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'media_link' => array(
         'label' => 'above',
@@ -900,6 +941,12 @@ function usanetwork_files_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'media_link' => array(
         'label' => 'above',
@@ -1019,6 +1066,12 @@ function usanetwork_files_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'media_link' => array(
         'label' => 'above',

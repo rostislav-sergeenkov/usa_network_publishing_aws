@@ -1,7 +1,0 @@
-name =  aurora_usa_css_styles
-description =  aurora_usa theme based on the Aurora base theme.
-core = 7.x
-base theme = aurora_usa
-
-; Stylesheets
-stylesheets[all][] = stylesheets/usa-styles.css

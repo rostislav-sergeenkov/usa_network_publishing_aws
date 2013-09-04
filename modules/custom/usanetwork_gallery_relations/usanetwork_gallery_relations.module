@@ -12,7 +12,19 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_gallery_relations') . '/usanetwork-gallery-relations.css';
 
-  // Add AJAX handling to the the show field so that users only see seasons for
+  // wrappers and labels
+  $form['field_show'][LANGUAGE_NONE]['#prefix'] = '<div id="show-wrapper">';
+  $form['field_show'][LANGUAGE_NONE]['#suffix'] = '</div>';
+
+  $form['field_season'][LANGUAGE_NONE]['#description'] = t('You must select a TV Show before selecting a season.');
+  $form['field_season'][LANGUAGE_NONE]['#prefix'] = '<div id="season-wrapper">';
+  $form['field_season'][LANGUAGE_NONE]['#suffix'] = '</div>';
+
+  $form['field_episode'][LANGUAGE_NONE]['#description'] = t('You must select a TV season before selecting an episode.');
+  $form['field_episode'][LANGUAGE_NONE]['#prefix'] = '<div id="episode-wrapper">';
+  $form['field_episode'][LANGUAGE_NONE]['#suffix'] = '</div>';
+
+ // Add AJAX handling to the the show field so that users only see seasons for
   // the selected show.
   $form['field_show'][LANGUAGE_NONE]['#ajax'] = array(
     'event' => 'change',
@@ -20,13 +32,20 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     'wrapper' => 'season-wrapper',
     'effect' => 'fade',
   );
-  $form['field_show'][LANGUAGE_NONE]['#prefix'] = '<div id="show-wrapper">';
-  $form['field_show'][LANGUAGE_NONE]['#suffix'] = '</div>';
 
   // Hide the seasons field until the user has selected a show.
   $form['field_season'][LANGUAGE_NONE]['#states'] = array(
     'disabled' => array(
       ':input[name="field_show[' . LANGUAGE_NONE . ']"]' => array(
+        'value' => '_none',
+      ),
+    ),
+  );
+
+  // Hide the episode field until the user has selected a season.
+  $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
+    'disabled' => array(
+      ':input[name="field_season[' . LANGUAGE_NONE . ']"]' => array(
         'value' => '_none',
       ),
     ),
@@ -41,32 +60,6 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     'effect' => 'fade',
   );
 
-  // Hide the seasons field until the user has selected a show.
-  $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
-    'disabled' => array(
-      ':input[name="field_season[' . LANGUAGE_NONE . ']"]' => array(
-        'value' => '_none',
-      ),
-    ),
-  );
-
-  $form['field_season'][LANGUAGE_NONE]['#description'] = t('You must select a TV Show before selecting a season.');
-  $form['field_season'][LANGUAGE_NONE]['#prefix'] = '<div id="season-wrapper">';
-  $form['field_season'][LANGUAGE_NONE]['#suffix'] = '</div>';
-
-  // Hide the episode field until the user has selected a show.
-  $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
-    'disabled' => array(
-      ':input[name="field_show[' . LANGUAGE_NONE . ']"]' => array(
-        'value' => '_none',
-      ),
-    ),
-  );
-
-  $form['field_episode'][LANGUAGE_NONE]['#description'] = t('You must select a TV season before selecting an episode.');
-  $form['field_episode'][LANGUAGE_NONE]['#prefix'] = '<div id="episode-wrapper">';
-  $form['field_episode'][LANGUAGE_NONE]['#suffix'] = '</div>';
-
   // Check if a value for show has already been provided.
   $selected_show = '';
   if (isset($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) {
@@ -79,8 +72,9 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
   // If a value for show has already been provided, reset the form accordingly.
   if (!empty($selected_show)) {
     // Get the list of seasons based on the user-entered show value.
-    $query = new EntityFieldQuery('entity_type', 'node');
-    $query->entityCondition('bundle', 'tv_season');
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', array('tv_season'));
     $query->fieldCondition('field_show', 'target_id', $selected_show);
     $result = $query->execute();
 
@@ -97,20 +91,19 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     // Add each season that belongs to the user-selected show to the options
     // array.
     if (isset($result['node'])) {
-      $news_items_nids = array_keys($result['node']);
-      $nodes = entity_load('node', $news_items_nids);
+      $season_nids = array_keys($result['node']);
+      $nodes = entity_load('node', $season_nids);
       foreach ($nodes as $node) {
-        $options[$node->nid] = check_plain($node->title);
+        $stat = check_plain($node->status) ? 'published' : 'unpublished';
+        $options[$node->nid] = check_plain($node->title) . ' (' . $stat . ')';
       }
     }
     else {
-      drupal_set_message(t('There are no seasons associated with the show you selected. Please !url first.', array('!url' => l(t('create a season'), 'node/add/tv-season'))), 'error');
-      watchdog('pub_tv', 'While creating an episode, a user chose a season that does not belong to the selected show.', array(), WATCHDOG_WARNING);
+      $form['field_season'][LANGUAGE_NONE]['#description'] = t('There are no seasons associated with the show you selected. You can !url', array('!url' => l(t('create a season here'), 'node/add/tv-season')));
     }
-    $form['field_season'][LANGUAGE_NONE]['#description'] = '';
     $form['field_season'][LANGUAGE_NONE]['#options'] = $options;
   }
-  
+
   // Check if a value for season has already been provided.
   $selected_season = '';
   if (isset($form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'])) {
@@ -123,8 +116,10 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
   // If a value for season has already been provided, reset the form accordingly.
   if (!empty($selected_season)) {
     // Get the list of seasons based on the user-entered show value.
-    $query = new EntityFieldQuery('entity_type', 'node');
-    $query->entityCondition('bundle', 'tv_episode');
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', array('tv_episode'));
+    $query->fieldCondition('field_show', 'target_id', $selected_show);
     $query->fieldCondition('field_season', 'target_id', $selected_season);
     $result = $query->execute();
 
@@ -138,22 +133,21 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
       $options = array();
     }
 
-    // Add each season that belongs to the user-selected show to the options
+    // Add each episode that belongs to the user-selected show and season to the options
     // array.
     if (isset($result['node'])) {
-      $news_items_nids = array_keys($result['node']);
-      $nodes = entity_load('node', $news_items_nids);
+      $episode_nids = array_keys($result['node']);
+      $nodes = entity_load('node', $episode_nids);
       foreach ($nodes as $node) {
-        $options[$node->nid] = check_plain($node->title);
+      $stat = check_plain($node->status) ? 'published' : 'unpublished';
+       $options[$node->nid] = check_plain($node->title) . ' (' . $stat . ')';
       }
     }
     else {
-      drupal_set_message(t('There are no episodes associated with the season you selected. Please !url first.', array('!url' => l(t('create an episode'), 'node/add/tv-episode'))), 'error');
-      watchdog('pub_tv', 'While creating an episode, a user chose a season that does not belong to the selected show.', array(), WATCHDOG_WARNING);
+      $form['field_episode'][LANGUAGE_NONE]['#description'] = t('There are no episodes associated with the show you selected. You can !url', array('!url' => l(t('create an episode here'), 'node/add/tv-episode')));
     }
-    $form['field_episode'][LANGUAGE_NONE]['#description'] = '';
     $form['field_episode'][LANGUAGE_NONE]['#options'] = $options;
-  }  
+  }
 
   // If a user re-selects "- Select a value -" on the node add form, or if the
   // slected show has no seasons, make sure the season field is re-disabled.
@@ -202,12 +196,28 @@ function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state)
     $season_node = node_load($selected_season);
     if ($season_node->field_show[LANGUAGE_NONE][0]['target_id'] !== $selected_show) {
       form_set_error('field_season', t('The season you selected belongs to a different show than the show you selected on this form.'));
+      // Hide the seasons field until the user has selected a show.
+      $form['field_season'][LANGUAGE_NONE]['#states'] = array(
+        'disabled' => array(
+          ':input[name="field_show[' . LANGUAGE_NONE . ']"]' => array(
+            'value' => '_none',
+          ),
+        ),
+      );
     }
   }
   if ($selected_episode) {
     $episode_node = node_load($selected_episode);
     if ($episode_node->field_season[LANGUAGE_NONE][0]['target_id'] !== $selected_season) {
       form_set_error('field_episode', t('The episode you selected belongs to a different season than the one you selected on this form.'));
+      // Hide the episode field until the user has selected a season.
+      $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
+        'disabled' => array(
+          ':input[name="field_season[' . LANGUAGE_NONE . ']"]' => array(
+            'value' => '_none',
+          ),
+        ),
+      );
     }
   }
 }

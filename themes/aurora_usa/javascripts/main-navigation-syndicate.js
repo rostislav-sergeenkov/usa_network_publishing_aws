@@ -95,7 +95,7 @@ function menu_init(){
       var $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
       var $new_show_menu = $show_menu.find('#tv-show-menu');
       var $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);      
-      $new_show_menu.prepend($new_show_title);Ï
+      $new_show_menu.prepend($new_show_title);
       $('#jPanelMenu-menu').prepend($new_show_menu);
       $('#jPanelMenu-menu')
         .find('a')

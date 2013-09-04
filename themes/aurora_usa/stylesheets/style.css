@@ -8684,7 +8684,6 @@ a[class*="day"] {
 
 .usa-adrails .usa-wrap {
   max-width: 1000px;
-  margin: 0 auto;
 }
 .usa-adrails .usa-wrap .panel-wrapper {
   position: relative;
@@ -8696,6 +8695,10 @@ a[class*="day"] {
 
 .usa-wrap {
   background-color: #1f1f1f;
+}
+
+.usa-adrails[data-menu-position="closed"] .usa-wrap {
+  margin: 0 auto;
 }
 
 .ad-leaderboard {

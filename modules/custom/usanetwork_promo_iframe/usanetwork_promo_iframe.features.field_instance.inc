@@ -10,20 +10,26 @@
 function usanetwork_promo_iframe_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-usanetwork_promo_iframe-field_promo_iframe_src'
-  $field_instances['node-usanetwork_promo_iframe-field_promo_iframe_src'] = array(
+  // Exported field_instance: 'node-usanetwork_promo_iframe-field_promo_iframe_src_link'
+  $field_instances['node-usanetwork_promo_iframe-field_promo_iframe_src_link'] = array(
     'bundle' => 'usanetwork_promo_iframe',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter the iframe src for the promo iframe.
-Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html',
+    'description' => 'Enter the src for the promo iframe.<br>Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'link_plain',
+        'weight' => 12,
+      ),
+      'promo_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_plain',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -33,30 +39,41 @@ Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html',
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_promo_iframe_src',
-    'label' => 'iframe src',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_promo_iframe_src_link',
+    'label' => 'iframe src link',
     'required' => 0,
     'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
       'linkit' => array(
         'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
+        'enable' => 1,
+        'profile' => 'usanetwork_fields',
       ),
-      'text_processing' => 0,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 250,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 4,
     ),
   );
 
@@ -67,13 +84,22 @@ Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html',
     'deleted' => 0,
     'description' => 'Please select the show from the list.',
     'display' => array(
+      'carousel_promo' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'promo_teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -102,11 +128,10 @@ Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Enter the iframe src for the promo iframe.
-Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html');
+  t('Enter the src for the promo iframe.<br>Ex: https://www.nbcudtv.com/ads/300x250/2c9efeabfc95dc876438395bc2ae43a9.html');
   t('Please select the show from the list.');
   t('Show');
-  t('iframe src');
+  t('iframe src link');
 
   return $field_instances;
 }

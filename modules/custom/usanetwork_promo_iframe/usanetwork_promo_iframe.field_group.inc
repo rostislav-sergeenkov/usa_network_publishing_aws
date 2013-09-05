@@ -24,7 +24,7 @@ function usanetwork_promo_iframe_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_show',
-      1 => 'field_promo_iframe_src',
+      1 => 'field_promo_iframe_src_link',
       2 => 'title',
     ),
     'format_type' => 'tab',

@@ -94,6 +94,7 @@ function usanetwork_blocks_block_view($delta) {
       $block['content'] = usanetwork_blocks_fpo_block();
       break;
     case 'usa_meganav':
+      drupal_add_library('system', 'drupal.ajax');
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_meganav();
       break;

@@ -471,7 +471,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $lang = LANGUAGE_NONE;
 
   // Change only the first occurance of the quote to "'"; which will be safe from security attack
-  $text = preg_replace("/&amp;#039;/", "'", $text, 1);
+  $text = preg_replace('/&amp;#039;/', "'", $text, 1);
 
   $image = $node->field_usa_tv_on_now[$lang][0];
   $on_now_image = array(

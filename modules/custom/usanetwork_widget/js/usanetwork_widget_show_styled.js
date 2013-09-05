@@ -8,10 +8,12 @@ if (window.XMLHttpRequest) {
   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-xmlhttp.onreadystatechange = function() {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    document.write(xmlhttp.responseText);
-    menu_init();
+window.onload = function() {
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      document.write(xmlhttp.responseText);
+      menu_init();
+    }
   }
 }
 

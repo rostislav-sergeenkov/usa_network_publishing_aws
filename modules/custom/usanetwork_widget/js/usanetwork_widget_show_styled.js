@@ -15,7 +15,7 @@ window.onload = function() {
       menu_init();
     }
   }
-}
+};
 
 // TODO: change the 'stage' part of each URL to www
 if(typeof $show_id != 'undefined') {

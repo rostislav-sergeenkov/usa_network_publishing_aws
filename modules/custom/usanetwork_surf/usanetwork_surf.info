@@ -1,0 +1,4 @@
+name = USA Network SURF Integration Module
+description =  USA Network SURF Integration Module
+core = 7.x
+dependencies[] = surf

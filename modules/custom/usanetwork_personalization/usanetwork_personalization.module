@@ -113,8 +113,7 @@ function _usanetwork_personalization_show_nids() {
 function usanetwork_personalization_sign_in(){
   // the following SURF code breaks the formatting of the admin pages, so
   // if not an admin page, load the SURF code
-  $mediaBrowser = (arg(0) == 'media' && arg(1) == 'browser') ? 1 : 0;
-  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add' && !$mediaBrowser)
+  if (!path_is_admin(current_path()))
   {
     $defaultAvatar = '/'.drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg';
 
@@ -255,11 +254,9 @@ $output .= '<ul class="usa-personalization-follow-shows">';
  */
 function usanetwork_personalization_surf() {
   $output = '';
-//return $output;
   // the following SURF code breaks the formatting of the admin pages, so
   // if not an admin page, load the SURF code
-  $mediaBrowser = (arg(0) == 'media' && arg(1) == 'browser') ? 1 : 0;
-  if (arg(0) !== 'admin' && arg(2) !== 'edit' && arg(1) !== 'add' && !$mediaBrowser)
+  if (!path_is_admin(current_path()))
   {
     // START SURF / IDX
     // ginormous @TODO: HAVE MASON REVIEW ANY CSS AND JS ADDED HERE

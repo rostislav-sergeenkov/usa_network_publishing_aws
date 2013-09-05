@@ -83,7 +83,10 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       on_now_default_show_nid = tv_schedule[on_now_index]['nid'];
       next_up_default_show_nid = tv_schedule[on_now_index+1]['nid'];
     }
+    on_now_text = escape(decodeURI(on_now_text));
+    next_up_text = escape(decodeURI(next_up_text));
 
+   
     if (!$('body').hasClass('on-now-js-processed')) {
 
       $.ajax({ url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text }).done(function ( data ) {

@@ -8,13 +8,11 @@ if (window.XMLHttpRequest) {
   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-window.onload = function() {
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      document.getElementById("usanetwork-main-menu").innerHTML = xmlhttp.responseText;
-    }
+xmlhttp.onreadystatechange = function() {
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    document.getElementById("usanetwork-main-menu").innerHTML = xmlhttp.responseText;
   }
-}  
+}
 
 // TODO: change the 'stage' part of each URL to www
 xmlhttp.open("GET", "http://stage.usanetwork.com/navbar/syndicate_plain", true);

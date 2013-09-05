@@ -81,11 +81,24 @@ if ($node->type == 'usa_tve_video') {
     <?php endif; ?>
     <?php // this is for tve with a linked image, we leverage the auth region for now ?>
     <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
+      <div class="tve-help">
+        <div class="tve-msg">By signing in with your TV provider you get access to<br /> full episodes the day after they air! Otherwise you may<br /> have to wait up to 30 days to watch most full episodes.</div>
+        <div class="tve-download">DOWNLOAD USA NOW</div>
+        <div class="tve-download-link">
+          <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img src="sites/usanetwork/themes/aurora_usa/images/googlePlayAppStore.jpg"></img></a>
+          <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img src="sites/usanetwork/themes/aurora_usa/images/usa.jpg"></img></a>
+          <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img src="sites/usanetwork/themes/aurora_usa/images/itunesAppStore.jpg"></img></a>
+        </div>
+        <div class="tve-close">Close</div>
+      </div>
       <div class="locked-msg"><?php print t('Please sign in with your TV provider<br />to unlock this episode.'); ?></div>
       <?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?>
     <?php endif; ?>
   </div>
  <!--  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?> -->
+  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
+    <div class="tve-help-link">Why do I have to sign in?</div>
+  <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
   <?php if ($ad && $ad != "&nbsp;"): ?><div class="ad"><?php print $ad; ?></div><?php endif; ?>
 

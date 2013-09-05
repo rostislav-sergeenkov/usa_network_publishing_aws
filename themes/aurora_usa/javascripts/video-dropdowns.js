@@ -91,6 +91,15 @@
           i++;
         }
       });
+      $('.tve-help-link').click(function() {
+        $('.tve-help').show();
+        $('.video-player-wrapper').find('.locked-msg').hide();
+      });
+
+      $('.tve-close').click(function() {
+        $('.tve-help').removeAttr('style');
+        $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
+      });
 
     },
  };

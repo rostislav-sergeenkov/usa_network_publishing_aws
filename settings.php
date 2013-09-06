@@ -243,3 +243,16 @@ function default_site_request_handler() {
  * Setting a reasonable minimum php memory limit.
  */
 ini_set('memory_limit', '256M');
+
+
+/**
+ * SURF Settings
+ */
+$conf['surf_default_library_module'] = 'usanetwork_surf';
+$conf['surf_default_library_name'] = 'usanetwork_surf';
+
+//TODO: Be sure to change these settings per environment.
+$conf['surf_src_url'] = 'https://stage.surf.nbcuni.com/rdk/surf.js.php';
+$conf['surf_rdk_url'] = '/rdk/';
+$conf['surf_config_key'] = 'usanetwork';
+

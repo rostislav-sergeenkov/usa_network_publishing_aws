@@ -147,6 +147,7 @@
   }
   .mobile-show-time.show-time {
     display: block;
+    font-size: 1.2em;
     @include breakpoint($bp-home-2col) {
       display: none;
     }
@@ -191,6 +192,7 @@
     font-weight: normal;
     letter-spacing: 0.05em;
     @extend %aspot-common-text;
+
     @include breakpoint($bp-aspot-mid-range-width) {
       margin-bottom: 5px;
     }

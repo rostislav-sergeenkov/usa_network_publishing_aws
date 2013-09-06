@@ -55,7 +55,13 @@ function usanetwork_files_form_file_entity_edit_alter(&$form, &$form_state, $for
  * Add our css/js to the file_entity_add_update form.
  * We also add a preview image.
  */
-function usanetwork_files_form_file_entity_add_upload_alter(&$form, &$form_state, $form_id){
+function usanetwork_files_form_file_entity_add_upload_alter(&$form, &$form_state, $form_id) {
+
+  // disable ability to select private filesystem
+  if (isset($form['#step']) && $form['#step'] == 3) {
+    $form['scheme']['private']['#disabled'] = TRUE;
+  }
+
   if (isset($form['#step']) && $form['#step'] == 4) {
     $bundle = $form['#bundle'];
     if ($bundle === 'image') {

@@ -370,7 +370,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -641,7 +641,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 

@@ -1187,6 +1187,74 @@ function usanetwork_gallery_content_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-media_gallery-field_summary'
+  $field_instances['node-media_gallery-field_summary'] = array(
+    'bundle' => 'media_gallery',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'block_cover_title_lg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_summary',
+    'label' => 'Short Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+        'soft_length_limit' => 140,
+        'soft_length_minimum' => 10,
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-media_gallery-field_usa_og_description'
   $field_instances['node-media_gallery-field_usa_og_description'] = array(
     'bundle' => 'media_gallery',
@@ -1402,6 +1470,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
   t('Related Person');
   t('Season');
   t('Send IdeaMelt Notification');
+  t('Short Description');
   t('Show');
   t('Tags');
 

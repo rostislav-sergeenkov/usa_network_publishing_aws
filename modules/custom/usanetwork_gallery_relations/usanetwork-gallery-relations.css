@@ -7,12 +7,18 @@
   float: left;
   margin-right: 10px;
   width: 30%;
+  max-width: 30%;
 }
 #show-wrapper {
   clear: left;
 }
 #episode-wrapper {
   clear: right;
+}
+#show-wrapper .form-select,
+#season-wrapper .form-select,
+#episode-wrapper .form-select {
+  max-width: 200px;
 }
 
 

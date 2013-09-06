@@ -204,6 +204,7 @@ function usanetwork_home_globalnav_more_block() {
  *   Return an array of ajax commands.
  */
 function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
   $day = '';
   if (empty($day)) {
     $day = strtotime("-3 hours");
@@ -244,6 +245,7 @@ function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
  *   Return an array of ajax commands.
  */
 function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
   $day = '';
   if (empty($day)) {
     $day = strtotime("-3 hours");

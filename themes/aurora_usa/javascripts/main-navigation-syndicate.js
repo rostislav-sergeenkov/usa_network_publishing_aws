@@ -94,7 +94,7 @@ function menu_init(){
       $('.region-footer').addClass('usa-showmenu-loaded');
       var $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
       var $new_show_menu = $show_menu.find('#tv-show-menu');
-      var $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);
+      var $new_show_title = $('<h1 class="menu-title"></h1>').html($show_trigger);   
       $new_show_menu.prepend($new_show_title);
       $('#jPanelMenu-menu').prepend($new_show_menu);
       $('#jPanelMenu-menu')
@@ -127,7 +127,8 @@ function menu_init(){
   // DART
   // Remove dart tag JS so it does not get re-executed and overwrite the page.
   function remove_dart() {
-    $('.dart-tag script').remove();
+    // document.write is crashing site so we are removing so it's not called over and over
+    $('body').find('document.write').parent().remove();
   }
 
   // THE WALL

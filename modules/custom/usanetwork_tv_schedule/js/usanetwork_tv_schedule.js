@@ -66,17 +66,15 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     var on_now_default_show_nid = '';
 
     if (on_now_show == '' && tv_schedule != '') {
-      for (var i=0; i<tv_schedule.length; i++) {
+      for (var i=0; i<tv_schedule.length-1; i++) {
+        on_now_show = tv_schedule[i]['link'];
+        on_now_text = tv_schedule[i]['episode_name'];
+        next_up_text = tv_schedule[i+1]['episode_name'];
+        on_now_default_show_nid = tv_schedule[i]['nid'];
+        next_up_default_show_nid = tv_schedule[i+1]['nid'];
         if (show_time < tv_schedule[i]['ts']) {
-          on_now_show = tv_schedule[i]['link'];
-          on_now_text = tv_schedule[i]['episode_name'];
-          next_up_text = tv_schedule[i+1]['episode_name'];
-          on_now_default_show_nid = tv_schedule[i]['nid'];
-          next_up_default_show_nid = tv_schedule[i+1]['nid'];
           break;
         }
-        on_now_show = tv_schedule[i]['link'];
-        on_now_default_show_nid = tv_schedule[i]['nid'];
       }
     } else if (tv_schedule != '' && on_now_index != '') {
       on_now_show = tv_schedule[on_now_index]['link'];
@@ -85,7 +83,10 @@ Drupal.behaviors.usanetwork_tv_schedule = {
       on_now_default_show_nid = tv_schedule[on_now_index]['nid'];
       next_up_default_show_nid = tv_schedule[on_now_index+1]['nid'];
     }
+    on_now_text = escape(decodeURI(on_now_text));
+    next_up_text = escape(decodeURI(next_up_text));
 
+   
     if (!$('body').hasClass('on-now-js-processed')) {
 
       $.ajax({ url: "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text }).done(function ( data ) {
@@ -100,24 +101,9 @@ Drupal.behaviors.usanetwork_tv_schedule = {
         }
       });
 
-      // commenting the iframe logic and put back the ajax call
-      //$('#on-now-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&on_now="+on_now_text);
-      //$('#up-next-iframe').attr('src', "/usa-on-now-panel-js/"+on_now_default_show_nid+"/"+next_up_default_show_nid+"?ajax=1&next_up="+next_up_text);
-
-      // TODO: Fix the iframe height dynamically
-      // $('#on-now-iframe').attr('height', getDocHeight() + 'px');
-      // $('#up-next-iframe').attr('height', getDocHeight() + 'px');
-
-      //$('#on-now-iframe').attr('height', '1024px');
-      //$('#up-next-iframe').attr('height', '1024px');
-     
       $('body').addClass('on-now-js-processed');
     }
     $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show); 
-
-    function getDocHeight() {
-      return Math.max(Math.max(document.body.offsetHeight, document.documentElement.offsetHeight));
-    }
   }
 }
 })(jQuery);

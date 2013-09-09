@@ -128,7 +128,8 @@ function menu_init(){
   // Remove dart tag JS so it does not get re-executed and overwrite the page.
   function remove_dart() {
     // document.write is crashing site so we are removing so it's not called over and over
-    $('body').find('document.write').parent().remove();
+    $('.dart-tag script').remove();
+    $($.find('document.write')).parent().remove();
   }
 
   // THE WALL

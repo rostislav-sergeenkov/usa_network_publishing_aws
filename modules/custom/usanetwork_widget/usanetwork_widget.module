@@ -114,8 +114,14 @@ function usanetwork_widget_navbar() {
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<!--[if IE 9]>';
+  echo '<div class="ie ie9">';
+  echo '<![endif]-->';
   echo '<h3>page body goes here..</h3>';
   echo '<div id="usanetwork-main-menu"></div>';
+  echo '<!--[if IE 9]>';
+  echo '</div>';
+  echo '<![endif]-->';
   exit;
 }
 
@@ -196,17 +202,23 @@ function usanetwork_widget_navbar_docs() {
   </pre></code>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('<div class="ie ie9">') .'
+'. htmlentities('<![endif]-->') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('</div>') .'
+'. htmlentities('<![endif]-->') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   <h2>Main Navigation - No Styles</h2>
   <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
   </pre></code>
   ';
   return $docs_markup;

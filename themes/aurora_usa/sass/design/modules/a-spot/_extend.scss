@@ -36,8 +36,9 @@
   .show-title-image {
     position: absolute;
     height: 120px;
-    width: 238px;
+    width: 140px;
     z-index: 2;
+    margin-left: 5px;
     @include breakpoint($bp-aspot-mid-range-width) {
       height: 186px;
       width: 288px;
@@ -81,31 +82,31 @@
     padding-left: 15px;
     text-align: left;
     .usa-adrails &, .ie9 &, .ie8 & {
-      top: 125px;
+      top: 115px;
       padding-left: 35px;
     }
     .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
         top: 27%;
     }
     @include breakpoint($bp-aspot-mid-range-width) {
-      top: 150px;
+      top: 140px;
       padding-left: 25px;
       .ie9 .usa-tv-show & {
         top: 140px;
       }
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
-      top: 125px;
+      top: 115px;
       padding-left: 35px;
       .ie9 .usa-tv-show & {
-        top: 125px;
+        top: 115px;
       }
     }
     @include breakpoint($bp-aspot-large-width) {
-      top: 175px;
+      top: 165px;
       padding-left: 50px;
       .ie9 .usa-tv-show & {
-        top: 175px;
+        top: 165px;
       }
     }
   }
@@ -146,6 +147,7 @@
   }
   .mobile-show-time.show-time {
     display: block;
+    font-size: 1.2em;
     @include breakpoint($bp-home-2col) {
       display: none;
     }
@@ -190,6 +192,7 @@
     font-weight: normal;
     letter-spacing: 0.05em;
     @extend %aspot-common-text;
+
     @include breakpoint($bp-aspot-mid-range-width) {
       margin-bottom: 5px;
     }

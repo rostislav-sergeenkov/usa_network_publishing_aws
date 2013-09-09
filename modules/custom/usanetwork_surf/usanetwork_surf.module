@@ -20,7 +20,7 @@ function usanetwork_surf_library() {
       drupal_get_path('module', 'usanetwork_surf') . '/usanetwork_surf.js' => array(
         'type' => 'file',
         'group' => JS_LIBRARY,
-        'scope' => 'header',
+        'scope' => 'footer',
       ),
     ),
     'dependencies' => array(

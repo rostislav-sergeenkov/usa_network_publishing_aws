@@ -124,8 +124,8 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   // TODO: change the 'stage' part of each URL to www
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
-  echo $nav_styles;
+  //$nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  //echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
@@ -154,6 +154,7 @@ function usanetwork_widget_navbar_plain() {
   $site_base_url = 'http://stage.usanetwork.com/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 

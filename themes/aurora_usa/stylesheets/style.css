@@ -6840,8 +6840,9 @@ body.person-page #main {
 .aspot .show-title-image {
   position: absolute;
   height: 120px;
-  width: 238px;
+  width: 140px;
   z-index: 2;
+  margin-left: 5px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .show-title-image {
@@ -6898,7 +6899,7 @@ body.person-page #main {
   text-align: left;
 }
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
-  top: 125px;
+  top: 115px;
   padding-left: 35px;
 }
 .ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
@@ -6906,7 +6907,7 @@ body.person-page #main {
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
-    top: 150px;
+    top: 140px;
     padding-left: 25px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
@@ -6915,20 +6916,20 @@ body.person-page #main {
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .meta-wrap {
-    top: 125px;
+    top: 115px;
     padding-left: 35px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 125px;
+    top: 115px;
   }
 }
 @media (min-width: 1275px) {
   .aspot .meta-wrap {
-    top: 175px;
+    top: 165px;
     padding-left: 50px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 175px;
+    top: 165px;
   }
 }
 .aspot .show-title-image + .meta-wrap {
@@ -6978,6 +6979,7 @@ body.person-page #main {
 }
 .aspot .mobile-show-time.show-time {
   display: block;
+  font-size: 1.2em;
 }
 @media (min-width: 645px) {
   .aspot .mobile-show-time.show-time {

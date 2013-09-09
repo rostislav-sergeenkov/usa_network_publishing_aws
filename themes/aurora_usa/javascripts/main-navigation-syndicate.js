@@ -129,6 +129,7 @@ function menu_init(){
   function remove_dart() {
     // document.write is crashing site so we are removing so it's not called over and over
     $('.dart-tag script').remove();
+    $($.find('document.write')).parent().remove();
   }
 
   // THE WALL

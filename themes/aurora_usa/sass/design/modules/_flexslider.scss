@@ -123,7 +123,7 @@ html[xmlns] .slides {
     background-color: $black-trans-5;
     line-height: 80px;
     text-align: center;
-    color: $gray-light;
+    color: $white-trans-5;
     font-size: 28px;
     &:hover {
       background-color: $black-trans;
@@ -140,15 +140,16 @@ html[xmlns] .slides {
     border-right: 0;
     .ie9 &, .ie8 & {
       @extend .icons-arrow-next-v2;
+      background-color: $black-trans-3;
       &:hover {
-        @extend .icons-arrow-next-hover-v2;
+         background-color: $black-trans;
       }
     }
     .no-font-feature-settings & {
       @include replace-text('icons/arrow-next.png');
       display: block;
-      width: 60px;
-      height: 60px;
+      width: 35px;
+      height: 80px;
       background-size: 18px 30px;
     }
   }
@@ -159,15 +160,16 @@ html[xmlns] .slides {
     border-left: 0;
     .ie9 &, .ie8 & {
       @extend .icons-arrow-prev-v2;
+      background-color: $black-trans-3;
       &:hover {
-        @extend .icons-arrow-prev-hover-v2;
+        background-color: $black-trans;
       }
     }
     .no-font-feature-settings & {
       @include replace-text('icons/arrow-prev.png');
       display: block;
-      width: 60px;
-      height: 60px;
+      width: 35px;
+      height: 80px;
       background-size: 18px 30px;
     }
   }

@@ -17,7 +17,9 @@ if (isIE9) {
 
 
 function loadUsanetworkShowNavMenu() {
-  document.write(xmlhttp.responseText);
+  //document.write(xmlhttp.responseText);
+  var text = xmlhttp.responseText;
+  document.getElementById("usanetwork-main-menu").innerHTML = text;
   menu_init();
 }
 

@@ -22,7 +22,6 @@ function loadUsanetworkShowNavMenu() {
 }
 
 
-// // TODO: change the 'stage' part of each URL to www
 if(isIE9) { 
   xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
   xmlhttp.onprogress = function() {};
@@ -34,8 +33,7 @@ if(isIE9) {
   }
 }
 
-// // TODO: change the 'stage' part of each URL to www
-
+// TODO: change the 'stage' part of each URL to www
 if(typeof $show_id != 'undefined') {
   document.write('<script src="http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
   if(isIE9) { 

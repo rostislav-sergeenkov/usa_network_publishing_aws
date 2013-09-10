@@ -16,6 +16,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 // JPANELMENU
 
 
+function disableDocWrite () {
+  document.oldDocumentWrite = document.write;
+  document.write = function () {};
+}
+
+disableDocWrite();
+
 
 // Navigation for narrow and wide screens
 function menu_init(){

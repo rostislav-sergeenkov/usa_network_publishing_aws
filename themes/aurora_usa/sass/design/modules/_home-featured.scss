@@ -8,6 +8,16 @@
   }
   h2 {
     margin-bottom: 12px;
+    margin-left: 0px;
+    @include breakpoint($bp-home-3col) {
+      margin-left: 8px;
+    }
+    @include breakpoint($bp-home-widest) {
+      margin-left: 8px;
+    }
+    .usa-adrails &, .ie8 & {
+       margin-left: 8px;
+    }
   }
   @extend %un-margin;
   .carousel-btns {
@@ -161,9 +171,9 @@
     }
   }
   .carousel-btns {
-    opacity: 0;
+    opacity: 1;
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     @include transform3d(translateX(-50%));
     @include breakpoint($bp-home-narrowest) {

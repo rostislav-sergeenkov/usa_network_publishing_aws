@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/navbar/syndicate_styled";
+var url = 'http://origin.stage.usanetwork.com/navbar/syndicate_styled';
 var isIE9 = window.XDomainRequest ? true : false;
 
 

@@ -16,9 +16,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 // JPANELMENU
 
 
+function disableDocWrite () {
+  document.oldDocumentWrite = document.write;
+  document.write = function () {};
+}
+
+function enableDocumentWrite () {
+  document.write = document.oldDocumentWrite;
+}
+
 
 // Navigation for narrow and wide screens
 function menu_init(){
+
+  disableDocWrite();
 
   // DOM SETUP SHUFFLING
   // TOUCH NAVIGATION
@@ -199,7 +210,7 @@ function menu_init(){
       keyboardShortcuts: false,
       closeOnContentClick: false,
       beforeOn: function () {
-        remove_dart();
+        //remove_dart();
       },
       afterOn: function () {
         jpm_after_on();
@@ -336,4 +347,6 @@ function menu_init(){
         .append($('#footer'));
     }
   });
+  enableDocumentWrite();
 }
+

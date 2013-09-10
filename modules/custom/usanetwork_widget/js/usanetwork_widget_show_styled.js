@@ -17,9 +17,8 @@ if (isIE9) {
 
 
 function loadUsanetworkShowNavMenu() {
-  //document.write(xmlhttp.responseText);
   var text = xmlhttp.responseText;
-  document.getElementById("usanetwork-main-menu").innerHTML = text;
+  document.getElementById("usanetwork-show-menu").innerHTML = text;
   menu_init();
 }
 
@@ -44,4 +43,4 @@ if(typeof $show_id != 'undefined') {
     xmlhttp.open("GET", url, true);  
   }
   xmlhttp.send();
-} 
+}

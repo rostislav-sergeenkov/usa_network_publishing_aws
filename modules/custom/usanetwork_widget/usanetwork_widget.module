@@ -130,8 +130,8 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   // TODO: change the 'stage' part of each URL to www
-  //$nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
-  //echo $nav_styles;
+  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
@@ -233,6 +233,8 @@ function usanetwork_widget_show_navbar($node) {
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<h3>page body goes here..</h3>';
+  echo '<div id="usanetwork-show-menu"></div>';
   exit;
 }
 
@@ -342,6 +344,13 @@ function usanetwork_widget_show_navbar_docs($node) {
     </pre></code>
   <p>Add the following script tags to your site.</p>
   <code><pre>
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('<div class="ie ie9">') .'
+'. htmlentities('<![endif]-->') .'
+'. htmlentities('<div id="usanetwork-show-menu"></div>') .'
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('</div>') .'
+'. htmlentities('<![endif]-->') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
   </pre></code>
@@ -358,6 +367,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
+'. htmlentities('<div id="usanetwork-show-menu"></div>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>

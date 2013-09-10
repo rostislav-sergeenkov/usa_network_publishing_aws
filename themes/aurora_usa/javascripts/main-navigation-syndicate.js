@@ -21,11 +21,15 @@ function disableDocWrite () {
   document.write = function () {};
 }
 
-disableDocWrite();
+function enableDocumentWrite () {
+  document.write = document.oldDocumentWrite;
+}
 
 
 // Navigation for narrow and wide screens
 function menu_init(){
+
+  disableDocWrite();
 
   // DOM SETUP SHUFFLING
   // TOUCH NAVIGATION
@@ -206,7 +210,7 @@ function menu_init(){
       keyboardShortcuts: false,
       closeOnContentClick: false,
       beforeOn: function () {
-        remove_dart();
+        //remove_dart();
       },
       afterOn: function () {
         jpm_after_on();
@@ -343,4 +347,6 @@ function menu_init(){
         .append($('#footer'));
     }
   });
+  enableDocumentWrite();
 }
+

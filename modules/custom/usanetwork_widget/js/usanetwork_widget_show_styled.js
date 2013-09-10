@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled";
+var url = "http://origin.stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -16,37 +16,32 @@ if (isIE9) {
 }
 
 
-function loadUsanetworkGlobalNavMenu() {
-  var text = xmlhttp.responseText;
-  document.getElementById("usanetwork-main-menu").innerHTML = text;
+function loadUsanetworkShowNavMenu() {
+  document.write(xmlhttp.responseText);
   menu_init();
 }
 
-if (typeof window.onload != 'function') {
-   window.onload = create_show_menu;
-} else {
-  window.onload = function() {
-    create_show_menu();;
-  }
-}  
 
-
-// TODO: change the 'stage' part of each URL to www
-function create_show_menu() {
-  if(typeof $show_id != 'undefined') {
-    document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
-    if(isIE9) { 
-      xmlhttp.onload = function() { loadUsanetworkGlobalNavMenu(); };
-      xmlhttp.open("GET", url);
-      xmlhttp.onprogress = function() {};
-    } else { 
-      xmlhttp.open("GET", url, true);  
-      xmlhttp.onreadystatechange = function() { 
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          loadUsanetworkGlobalNavMenu();
-        }
-      }
+// // TODO: change the 'stage' part of each URL to www
+if(isIE9) { 
+  xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
+  xmlhttp.onprogress = function() {};
+} else { 
+  xmlhttp.onreadystatechange = function() { 
+   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      loadUsanetworkShowNavMenu();
     }
-    xmlhttp.send();
-  } 
-}  
+  }
+}
+
+// // TODO: change the 'stage' part of each URL to www
+
+if(typeof $show_id != 'undefined') {
+  document.write('<script src="http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
+  if(isIE9) { 
+    xmlhttp.open("GET", url);
+  } else { 
+    xmlhttp.open("GET", url, true);  
+  }
+  xmlhttp.send();
+} 

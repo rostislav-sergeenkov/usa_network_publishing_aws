@@ -49,15 +49,15 @@ function usanetwork_video_block_info() {
   $blocks = array();
   $blocks['usa_global_video_nav'] = array(
     'info' => t('USA: global video navigation'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_show_video_nav'] = array(
     'info' => t('USA: show video navigation'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_video_views'] = array(
     'info' => t('USA: video views'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   return $blocks;

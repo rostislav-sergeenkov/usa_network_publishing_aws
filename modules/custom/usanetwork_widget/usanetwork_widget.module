@@ -106,11 +106,11 @@ function usanetwork_widget_menu() {
  * Helper to generate and output the main menu bar
  */
 function usanetwork_widget_navbar() {
-  // TODO: change the 'stage' part of each URL to www
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $site_base_url = 'http://origin.stage.usanetwork.com/';
-  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js';
-  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js';
+  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?'.time();
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
@@ -129,9 +129,9 @@ function usanetwork_widget_navbar() {
  * Helper to generate and output the main menu bar in styled html
  */
 function usanetwork_widget_navbar_ajax_styled() {
-  // TODO: change the 'stage' part of each URL to www
-  //$nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
-  //echo $nav_styles;
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
@@ -156,9 +156,9 @@ function usanetwork_widget_navbar_ajax_styled() {
  * Helper to generate and output the main menu bar in plain html
  */
 function usanetwork_widget_navbar_plain() {
-  // TODO: change the 'stage' part of each URL to www
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $site_base_url = 'http://origin.stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js?'.time();
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
   exit;
@@ -228,11 +228,13 @@ function usanetwork_widget_navbar_docs() {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar($node) {
-  // TODO: change the 'stage' part of each URL to www
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $site_base_url = 'http://origin.stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<h3>page body goes here..</h3>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -240,8 +242,8 @@ function usanetwork_widget_show_navbar($node) {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
-  // TODO: change the 'stage' part of each URL to www
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>';
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -271,9 +273,9 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_plain($node) {
-  // TODO: change the 'stage' part of each URL to www
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $site_base_url = 'http://origin.stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
@@ -311,9 +313,9 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_only($node) {
-  // TODO: change the 'stage' part of each URL to www
+  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $site_base_url = 'http://origin.stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   exit;
@@ -342,6 +344,13 @@ function usanetwork_widget_show_navbar_docs($node) {
     </pre></code>
   <p>Add the following script tags to your site.</p>
   <code><pre>
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('<div class="ie ie9">') .'
+'. htmlentities('<![endif]-->') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<!--[if IE 9]>') .'
+'. htmlentities('</div>') .'
+'. htmlentities('<![endif]-->') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
   </pre></code>
@@ -350,6 +359,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p><a href="/node/'. $node->nid .'/navbar/plain">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'  
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
   </pre></code>
@@ -358,7 +368,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
-'. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>
   ';

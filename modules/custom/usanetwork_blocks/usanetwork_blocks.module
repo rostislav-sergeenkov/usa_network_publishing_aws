@@ -40,15 +40,15 @@ function usanetwork_blocks_block_info() {
   );
   $blocks['usa_meganav'] = array(
     'info' => t('USA: mega nav'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_social_footer'] = array(
-    'info' => t('USA: social footer'),
+    'info' => t('USA: social footer (unused)'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   $blocks['usa_tv_show_menu'] = array(
     'info' => t('USA: TV Show Menu'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_footer_message'] = array(
     'info' => t('USA: Footer message'),

@@ -970,8 +970,11 @@ body {
   display: none;
 }
 
-.usanetwork-syndicate-menu {
+[id="usanetwork-main-menu"] {
   font-size: 16px;
+}
+[id="usanetwork-main-menu"] .item-list li {
+  margin-bottom: 0.25em;
 }
 
 header {

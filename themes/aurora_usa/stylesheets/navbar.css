@@ -969,3 +969,11 @@ body {
 #jPanelMenu-menu .more-title:nth-of-type(1n + 2), #mega-nav .more-title:nth-of-type(1n + 2), .mega-sub-nav-container .more-title:nth-of-type(1n + 2) {
   display: none;
 }
+
+.usanetwork-syndicate-menu {
+  font-size: 16px;
+}
+
+header {
+  display: block;
+}

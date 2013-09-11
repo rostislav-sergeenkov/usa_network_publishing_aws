@@ -829,7 +829,7 @@ function usanetwork_social_chat_with_fans($node) {
   $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
   $submitTargetUrl = str_replace(array_keys($tokens), array_values($tokens), $submitTargetUrl);
   $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
-  $personalizationEnabled = (module_exists('usanetwork_social')) ? 1 : 0;
+  $personalizationEnabled = (module_exists('usanetwork_personalization')) ? 1 : 0;
 
   $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
   $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
@@ -837,7 +837,7 @@ function usanetwork_social_chat_with_fans($node) {
   $vars .= 'var chatIdentityManagerURL = "' . $identityManagerUrl . '"; ';
   $vars .= 'var chatShowPostComments = "' . $showChatWithFansPostComments . '"; ';
   $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
-  $vars .= 'var defaultAvatar = "/' . drupal_get_path('module', 'usanetwork_social') . '/images/default_avatar_125x125.jpg"; ';
+  $vars .= 'var defaultAvatar = "/' . drupal_get_path('module', 'usanetwork_personalization') . '/images/default_avatar_125x125.jpg"; ';
   $vars .= 'var personalizationEnabled = '.$personalizationEnabled.'; ';
 
 

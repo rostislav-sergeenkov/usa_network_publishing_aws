@@ -49,12 +49,12 @@ function usanetwork_surf_block_info() {
 
   $blocks['surf-login'] = array(
     'info' => t('Surf'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['surf-content'] = array(
     'info' => t('Surf Content'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   return $blocks;

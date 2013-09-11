@@ -137,11 +137,11 @@ function usanetwork_social_block_info() {
   );
   $blocks['usa_show_landing_social'] = array(
     'info' => t('USA: show landing social'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_show_social_getglue'] = array(
     'info' => t('USA: show social getglue'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   return $blocks;

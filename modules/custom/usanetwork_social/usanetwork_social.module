@@ -133,7 +133,7 @@ function usanetwork_social_block_info() {
   $blocks = array();
   $blocks['usa_show_social_tab_nav'] = array(
     'info' => t('USA: show social tab navigation'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['usa_show_landing_social'] = array(
     'info' => t('USA: show landing social'),
@@ -890,11 +890,11 @@ function usanetwork_social_chat_with_fans($node) {
 
   $output .= '<div id="fb-root"></div>';
   $output .= '<div id="echo-login-form" style="display:none"></div>';
-  
+
   if ($displayChatterToTv && $chatterToTvStartTime <= $now && $now <= $chatterToTvEndTime) {
     $output .= '<div id="chatterToTv"></div>';
   }
-  
+
   $output .= '<div id="chat-submit-form">&nbsp;</div>';
   $output .= '<div id="chat-echo-stream">&nbsp;</div>';
 

@@ -130,7 +130,7 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css"?'.time().');</style>';
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -243,7 +243,7 @@ function usanetwork_widget_show_navbar($node) {
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?"'.time().');</style>';
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">

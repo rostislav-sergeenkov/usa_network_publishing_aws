@@ -43,7 +43,7 @@ function usanetwork_blocks_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_social_footer'] = array(
-    'info' => t('USA: social footer'),
+    'info' => t('USA: social footer (unused)'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   $blocks['usa_tv_show_menu'] = array(

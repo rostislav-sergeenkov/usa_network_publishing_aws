@@ -118,7 +118,7 @@ function usanetwork_widget_navbar() {
   echo '<div class="ie ie9">';
   echo '<![endif]-->';
   echo '<h3>page body goes here..</h3>';
-  echo '<div id="usanetwork-main-menu"></div>';
+  echo '<div id="usanetwork-main-menu" class="usanetwork-syndicate-menu"></div>';
   echo '<!--[if IE 9]>';
   echo '</div>';
   echo '<![endif]-->';
@@ -205,7 +205,7 @@ function usanetwork_widget_navbar_docs() {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('<div class="ie ie9">') .'
 '. htmlentities('<![endif]-->') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<div id="usanetwork-main-menu" class="usanetwork-syndicate-menu"></div>') .'
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
@@ -234,7 +234,7 @@ function usanetwork_widget_show_navbar($node) {
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<h3>page body goes here..</h3>';
-  echo '<div id="usanetwork-main-menu"></div>';
+  echo '<div id="usanetwork-main-menu" class="usanetwork-syndicate-menu"></div>';
   exit;
 }
 
@@ -243,7 +243,7 @@ function usanetwork_widget_show_navbar($node) {
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?"'.time().');</style>';
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?"'.time().');</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -347,7 +347,7 @@ function usanetwork_widget_show_navbar_docs($node) {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('<div class="ie ie9">') .'
 '. htmlentities('<![endif]-->') .'
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<div id="usanetwork-main-menu" class="usanetwork-syndicate-menu"></div>') .'
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
@@ -368,7 +368,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p><a href="/node/'. $node->nid .'/navbar/only">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
-'. htmlentities('<div id="usanetwork-main-menu" class="usanetwork-syndicate-menu"></div>') .'
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>
   ';

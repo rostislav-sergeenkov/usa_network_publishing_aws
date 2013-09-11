@@ -13,6 +13,12 @@
     }
   }
   @include breakpoint($bp-home-3col) {
+    font-size: 36px;
+    &.small {
+      font-size: 30px;
+    }
+  }
+  @include breakpoint($bp-aspot-large-width) {
     font-size: 44px;
     &.small {
       font-size: 34px;
@@ -40,20 +46,20 @@
     z-index: 2;
     margin-left: 5px;
     @include breakpoint($bp-aspot-mid-range-width) {
-      height: 186px;
+      height: 177px;
       width: 288px;
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
-      height: 172px;
-      width: 500px;
+      height: 167px;
+      width: 330px;
     }
     @include breakpoint($bp-aspot-large-width) {
       height: 222px;
       width: 480px;
     }
     .usa-adrails &, .ie9 &, .ie8 & {
-      height: 172px;
-      width: 500px;
+      height: 167px;
+      width: 330px;
     }
     img {
       position: absolute;
@@ -204,7 +210,6 @@
     }
     .usa-adrails &, .ie8 & {
       margin-bottom: 8px;
-      font-size: 44px;
     }
   }
   .episode-title {

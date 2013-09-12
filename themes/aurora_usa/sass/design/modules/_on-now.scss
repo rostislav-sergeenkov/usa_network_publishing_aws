@@ -105,7 +105,7 @@
   color: $white;
   white-space: nowrap;
   display: table-cell;
-  padding-top: 6px;
+  padding-top: 10px;
   @include breakpoint($bp-on-now) {
     white-space: nowrap;
     height: 100%;

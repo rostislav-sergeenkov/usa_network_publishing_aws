@@ -5961,7 +5961,7 @@ body.person-page #main {
   color: white;
   white-space: nowrap;
   display: table-cell;
-  padding-top: 6px;
+  padding-top: 10px;
 }
 @media (min-width: 640px) {
   #on-now-show-episode {
@@ -6843,6 +6843,14 @@ body.person-page #main {
 }
 @media (min-width: 960px) {
   .aspot .show-title, .aspot .show-time {
+    font-size: 36px;
+  }
+  .aspot .small.show-title, .aspot .small.show-time {
+    font-size: 30px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .show-title, .aspot .show-time {
     font-size: 44px;
   }
   .aspot .small.show-title, .aspot .small.show-time {
@@ -6872,14 +6880,14 @@ body.person-page #main {
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .show-title-image {
-    height: 186px;
+    height: 177px;
     width: 288px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .show-title-image {
-    height: 172px;
-    width: 500px;
+    height: 167px;
+    width: 330px;
   }
 }
 @media (min-width: 1275px) {
@@ -6889,8 +6897,8 @@ body.person-page #main {
   }
 }
 .usa-adrails .aspot .show-title-image, .ie9 .aspot .show-title-image, .ie8 .aspot .show-title-image {
-  height: 172px;
-  width: 500px;
+  height: 167px;
+  width: 330px;
 }
 .aspot .show-title-image img {
   position: absolute;
@@ -7076,7 +7084,6 @@ body.person-page #main {
 }
 .usa-adrails .aspot .show-time, .ie8 .aspot .show-time {
   margin-bottom: 8px;
-  font-size: 44px;
 }
 .aspot .episode-title {
   margin: 0;

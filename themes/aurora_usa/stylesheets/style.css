@@ -8730,26 +8730,42 @@ body:not(.front) .ad-leaderboard {
   margin: 1px 12px 0 0;
 }
 .featured-asset .tve-help-link{
+  color: #9D9C9C;
   cursor: pointer;
-  font-style: italic;
-  padding-bottom: 10px;
+  font-family: proxima nova;
+  font-size: 12pt;
+  font-weight: bold;
+  /*font-style: italic;*/
+  padding-bottom: 12px;
+}
+.tve-help-link > img{
+  padding-right: 5px;
 }
 .video-player-wrapper .tve-help{
   z-index: 9999;
   background-color: black;
-  opacity: 0.7;
+  opacity: 0.8;
   width: 615px;
   height: 346px;
   text-align: center;
+  border: 1px solid #9D9C9C;
 }
 .video-player-wrapper .tve-help .tve-msg{
   position: relative;
-  top: 52px
+  top: 52px;
+  font-family: proxima nova;
+  font-size: 18pt;
+  font-weight: bold;
+  color:#d5d4d4;
 }
 .video-player-wrapper .tve-help .tve-download{
   padding-top: 20px;
   position: relative;
   top: 82px;
+  font-family: proxima nova;
+  font-size: 18pt;
+  font-weight: bold;
+  color:#d5d4d4;
 }
 .video-player-wrapper .tve-help .tve-download-link{
   position: relative;
@@ -8758,13 +8774,18 @@ body:not(.front) .ad-leaderboard {
 .video-player-wrapper .tve-help .tve-close{
   float: right;
   position: relative;
-  top: 160px;
+  top: 112px;
   right: 10px;
+  text-transform: uppercase;
+  color: #0AB6E8;
+}
+.tve-close > img{
+  padding-right: 5px;
 }
 .video-player-wrapper .tve-help .tve-download-link a:after {
   content : "";
 }
 .video-player-wrapper .tve-help .tve-download-link a img {
   height: 35px;
-  padding-left: 30px;
+  padding-left: 28px;
 }

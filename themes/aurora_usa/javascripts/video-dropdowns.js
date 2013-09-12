@@ -94,13 +94,18 @@
       $('.tve-help-link').click(function() {
         $('.tve-help').show();
         $('.video-player-wrapper').find('.locked-msg').hide();
+        $('.video-player-wrapper #player').find('a').css('opacity', 0);
+        $('.video-player-wrapper img').css('opacity', 1);
+        $('.tve-help-link img').attr('src','../sites/usanetwork/themes/aurora_usa/images/info_blue.png');
       });
 
       $('.tve-close').click(function() {
         $('.tve-help').removeAttr('style');
+        $('.video-player-wrapper #player').find('a').removeAttr('style');
+        $('.video-player-wrapper img').removeAttr('style');
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
+        $('.tve-help-link img').attr('src','../sites/usanetwork/themes/aurora_usa/images/info_gray.png');
       });
-
     },
  };
 

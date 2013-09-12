@@ -38,7 +38,6 @@ if(isIE9) {
 if(typeof $show_id != 'undefined') {
   document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?test1"></script>');
   if(isIE9) { 
-    document.write('<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?test1</style>');
     xmlhttp.open("GET", url);
   } else { 
     xmlhttp.open("GET", url, true);  

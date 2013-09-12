@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://origin.stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled";
+var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -34,10 +34,11 @@ if(isIE9) {
   }
 }
 
-// TODO: change the 'stage' part of each URL to www
+// TODO: change the 'stage' part of each URL to www & remove cache buster
 if(typeof $show_id != 'undefined') {
-  document.write('<script src="http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>');
+  document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?test1"></script>');
   if(isIE9) { 
+    document.write('<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?test1</style>');
     xmlhttp.open("GET", url);
   } else { 
     xmlhttp.open("GET", url, true);  

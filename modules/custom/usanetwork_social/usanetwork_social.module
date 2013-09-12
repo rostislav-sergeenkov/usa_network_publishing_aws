@@ -1127,12 +1127,27 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
 }
 
 /**
+ * Implements hook_node_insert()
+ */
+function usanetwork_social_node_insert($node) {
+  $lang = LANGUAGE_NONE;
+
+  if ($node->status == 1 && isset($node->event) && $node->event == 'to_published') {
+    $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode', 'usa_video', 'usa_tve_video'); 
+     
+    if (in_array($node->type, $ideamelt_entities)) {
+      _usanetwork_social_notify_ideamelt($node);
+    }
+  }
+}
+
+/**
  * Implements hook_node_update()
  */
 function usanetwork_social_node_update($node) {
   $lang = LANGUAGE_NONE;
 
-  if ($node->status == 1 && !empty($node->published_revision_id)) {
+  if ($node->status == 1 && isset($node->event) && $node->event == 'to_published') {
     $ideamelt_entities = array('catchall_page', 'media_gallery', 'usanetwork_static_page', 'tv_episode', 'usa_video', 'usa_tve_video'); 
      
     $state = db_select('state_flow_history', 's')
@@ -1215,6 +1230,7 @@ function _usanetwork_social_notify_ideamelt($node) {
   
   $response = drupal_http_request($ideamelt_url, array('headers' => $headers, 'method' => 'POST', 'data' => http_build_query($data)));
   $result = drupal_json_decode($response->data);
+
   if (isset($result['success']) && !empty($result['success'])) {
     watchdog('usanetwork_social', 'Error: Ideamelt notification for enitity id: ' . $node->nid .'; Response:'. $result['message_list']);
   }

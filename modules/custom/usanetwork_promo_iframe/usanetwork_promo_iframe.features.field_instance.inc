@@ -57,7 +57,7 @@ function usanetwork_promo_iframe_field_default_field_instances() {
       'enable_tokens' => 1,
       'linkit' => array(
         'button_text' => 'Search',
-        'enable' => 1,
+        'enable' => 0,
         'profile' => 'usanetwork_fields',
       ),
       'rel_remove' => 'default',

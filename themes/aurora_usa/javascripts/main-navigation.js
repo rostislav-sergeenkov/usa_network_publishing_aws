@@ -258,6 +258,11 @@
           $(this).addClass('active');
         });
 
+        $('#action-signout').click(function() {
+            jPM.close();
+            close_wide_subnav();
+        });  
+
 
         // RESPONSIVE BEHAVIOR
         $(window).resize(function(){

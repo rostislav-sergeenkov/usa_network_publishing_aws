@@ -2425,7 +2425,7 @@ input[type="radio"], input[type="checkbox"] {
   background: #2d2d2d;
 }
 
-.mega-sub-nav-container, #personalization-drawer {
+.mega-sub-nav-container, [id="personalization-drawer"] {
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
@@ -2450,7 +2450,7 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 101;
   background: rgba(0, 0, 0, 0.9);
 }
-.active-item.mega-sub-nav-container, .active-item#personalization-drawer {
+.active-item.mega-sub-nav-container, .active-item[id="personalization-drawer"] {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -2458,7 +2458,7 @@ input[type="radio"], input[type="checkbox"] {
   transform: translate3d(0, 0, 0);
   bottom: 65px;
 }
-.usa-showmenu-active .active-item.mega-sub-nav-container, .usa-showmenu-active .active-item#personalization-drawer {
+.usa-showmenu-active .active-item.mega-sub-nav-container, .usa-showmenu-active .active-item[id="personalization-drawer"] {
   bottom: 115px;
 }
 
@@ -3385,6 +3385,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .on-now-js-processed.logged-in #jPanelMenu-menu {
   margin-top: 30px;
+  z-index: 2 !important;
 }
 
 #jPanelMenu-menu.state-on-now {
@@ -4601,6 +4602,10 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .ie8 .panel-twocol-nested-right-twocol .panel-five .pane-usa-cast-panel-pane-1 img {
   width: 221px;
+}
+
+.panel-pane p {
+  word-wrap: break-word;
 }
 
 .image-style-gallery_full_photo {

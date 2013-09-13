@@ -3,6 +3,6 @@
 .mega-sub-nav-container {
   @extend %bottom-drawer
 }
-#personalization-drawer {
+[id="personalization-drawer"] {
   @extend %bottom-drawer
 }

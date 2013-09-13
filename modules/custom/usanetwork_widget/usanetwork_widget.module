@@ -148,7 +148,9 @@ function usanetwork_widget_navbar_ajax_styled() {
     </div>
   </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  echo sprintf($markup_wrapper, $main_menu['content']['meganav']['#markup']);
+  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  echo sprintf($markup_wrapper, $main_menu);
   exit;
 }
 
@@ -184,7 +186,9 @@ function usanetwork_widget_navbar_ajax_plain() {
     </div>
   </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  echo sprintf($markup_wrapper, $main_menu['content']['meganav']['#markup']);
+  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  echo sprintf($markup_wrapper, $main_menu);
   exit;
 }
 
@@ -273,7 +277,9 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu['content']['meganav']['#markup']);
+  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu);
   exit;
 }
 
@@ -313,7 +319,9 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu['content']['meganav']['#markup']);
+  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu);
   exit;
 }
 
@@ -359,6 +367,7 @@ function usanetwork_widget_show_navbar_docs($node) {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
   </pre></code>
@@ -368,6 +377,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'  
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
   </pre></code>
@@ -377,6 +387,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>
   ';

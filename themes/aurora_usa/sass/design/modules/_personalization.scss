@@ -7,7 +7,7 @@ body {
       }
     }
     #jPanelMenu-menu {
-      background-color: #232323;
+      background-color: $gray-dark;
       &.state-personalization {
         #tv-show-menu {
           display: none;
@@ -17,13 +17,23 @@ body {
   }
 }
 
-#personalization-drawer {
-  background-color: #232323;
+[id="personalization-drawer"] {
+  background-color: $gray-dark;
   display: none;
   @include breakpoint($bp-menu-switch) {
     display: block;
     @include clearfix;
+    .ie9 &, .ie8 & {
+      display: none;
+    }
+    .active-item {
+      display: block;
+    }
   }
+} 
+
+.ie9 [id="personalization-drawer"].active-item {
+  display: block;
 } 
 
 
@@ -43,7 +53,7 @@ body {
 }
 
 .block-usanetwork-personalization {
-  background-color: #232323;
+  background-color: $gray-dark;
   @include breakpoint($bp-menu-switch) {
 //    min-height: 400px;
   }  
@@ -51,9 +61,6 @@ body {
     @include breakpoint($bp-menu-switch) {
       float: left;
     }
-  }
-  [id="personalization-navigation"] {
-    padding-top: 15px;
   }
   ul {
     list-style: none;
@@ -77,8 +84,8 @@ body {
       font-size: 14px;
       line-height: 28px;
       @include breakpoint($bp-menu-switch) {
-        border-top: 1px solid #242424;
-        border-bottom: 1px solid #0b0b0b;
+        border-top: 1px solid $gray-dark;
+        border-bottom: 1px solid $black-true;
         &:hover {
           color: $white;
         }
@@ -110,7 +117,7 @@ body {
 
 [id="personalization-main"] {
   @include breakpoint($bp-menu-switch) {
-    background-color: #232323;
+    background-color: $gray-dark;
     h3 {
       text-transform: uppercase;
       font-size: 18px;
@@ -118,12 +125,17 @@ body {
     }
   }
 }
+
 [id="personalization-sidebar"] { 
   @include breakpoint($bp-menu-switch) {
-    color: #a9a9a9;
+    color: $gray-extra-light;
     float: right;
-    background-color: #1c1c1c;
+    background-color: $black-dark;
   }  
+}
+
+[id="personalization-navigation"] {
+  padding-top: 15px;
 }
 
 [id="personalization-user-info"] {
@@ -220,4 +232,3 @@ body {
     display: block;
   }
 }
-

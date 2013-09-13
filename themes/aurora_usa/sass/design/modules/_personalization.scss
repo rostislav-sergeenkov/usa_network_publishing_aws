@@ -1,15 +1,3 @@
-@import "compass"; // http://compass-style.org
-@import "survivalkit"; // http://canarymason.github.com/Survival-Kit
-@import "breakpoint";  // http://breakpoint-sass.com
-@import "modular-scale"; // https://github.com/scottkellum/modular-scale
-
-@import "partials/01-variables/colors";
-@import "partials/01-variables/fonts";
-@import "partials/01-variables/icon-font";
-@import "partials/01-variables/settings";
-@import "partials/02-mixins/empathy";
-@import "partials/03-extend/all";
-
 body {
   &[data-menu-direction="right"][data-menu-position="open"] {
     .jPanelMenu-panel {

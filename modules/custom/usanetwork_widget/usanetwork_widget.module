@@ -229,7 +229,7 @@ function usanetwork_widget_navbar_docs() {
  */
 function usanetwork_widget_show_navbar($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
+  $site_base_url = 'http://origin.stage.usanetwork.com/';
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
   echo '<style>@import url("'.$style_css_path.'");</style>';
@@ -251,7 +251,7 @@ function usanetwork_widget_show_navbar($node) {
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">

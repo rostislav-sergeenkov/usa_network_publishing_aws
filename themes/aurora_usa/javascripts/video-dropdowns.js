@@ -97,6 +97,7 @@
         $('.video-player-wrapper #player').find('a').css('opacity', 0);
         $('.video-player-wrapper img').css('opacity', 1);
         $('.tve-help-link img').attr('src','../sites/usanetwork/themes/aurora_usa/images/info_blue.png');
+        $('.featured-asset').addClass('tve-overlay');
       });
 
       $('.tve-close').click(function() {
@@ -105,6 +106,7 @@
         $('.video-player-wrapper img').removeAttr('style');
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.tve-help-link img').attr('src','../sites/usanetwork/themes/aurora_usa/images/info_gray.png');
+        $('.featured-asset').removeClass('tve-overlay');        
       });
     },
  };

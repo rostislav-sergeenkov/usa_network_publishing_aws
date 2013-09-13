@@ -8743,12 +8743,19 @@ body:not(.front) .ad-leaderboard {
 }
 .video-player-wrapper .tve-help{
   z-index: 9999;
-  background-color: black;
+  /*background-color: black;*/
   opacity: 0.8;
   width: 615px;
   height: 346px;
   text-align: center;
   border: 1px solid #9D9C9C;
+  background-image :url("/sites/usanetwork/themes/aurora_usa/images/arrow_box.png");
+  background-repeat: no-repeat;
+  background-position: -10px 0;
+}
+.video-player-wrapper .tve-help .arrow {
+  position : absolute;
+  right: 0;
 }
 .video-player-wrapper .tve-help .tve-msg{
   position: relative;
@@ -8788,4 +8795,7 @@ body:not(.front) .ad-leaderboard {
 .video-player-wrapper .tve-help .tve-download-link a img {
   height: 35px;
   padding-left: 28px;
+}
+.tve-overlay {
+  opacity : 0.6;
 }

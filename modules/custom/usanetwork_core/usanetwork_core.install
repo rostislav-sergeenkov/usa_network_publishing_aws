@@ -490,3 +490,15 @@ function usanetwork_core_update_7120() {
   module_disable($modules_dis);
   drupal_uninstall_modules($modules_un);
 }
+
+/**
+ * disabled coder module
+ */
+function usanetwork_core_update_7121() {
+
+  $modules_dis = array(
+    'coder',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_dis);
+}

@@ -107,7 +107,7 @@ function usanetwork_widget_menu() {
  */
 function usanetwork_widget_navbar() {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://origin.stage.usanetwork.com/';
+  $site_base_url = 'http://stage.usanetwork.com/';
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?'.time();
   $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
@@ -130,7 +130,7 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -159,7 +159,7 @@ function usanetwork_widget_navbar_ajax_styled() {
  */
 function usanetwork_widget_navbar_plain() {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://origin.stage.usanetwork.com/';
+  $site_base_url = 'http://stage.usanetwork.com/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js?'.time();
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
@@ -233,7 +233,7 @@ function usanetwork_widget_navbar_docs() {
  */
 function usanetwork_widget_show_navbar($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://origin.stage.usanetwork.com/';
+  $site_base_url = 'http://stage.usanetwork.com/';
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
   echo '<style>@import url("'.$style_css_path.'");</style>';
@@ -255,7 +255,7 @@ function usanetwork_widget_show_navbar($node) {
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://origin.stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
   echo $nav_styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
@@ -276,10 +276,12 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
     </div>
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
+  $show_menu = $show_menu['content'];
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu);
+  echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
 }
 
@@ -288,7 +290,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
  */
 function usanetwork_widget_show_navbar_plain($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://origin.stage.usanetwork.com/';
+  $site_base_url = 'http://stage.usanetwork.com/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
@@ -318,10 +320,12 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
     </div>
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
+  $show_menu = $show_menu['content'];
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
-  echo sprintf($markup_wrapper, $show_menu['content'], $main_menu);
+  echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
 }
 
@@ -330,7 +334,7 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
  */
 function usanetwork_widget_show_navbar_only($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://origin.stage.usanetwork.com/';
+  $site_base_url = 'http://stage.usanetwork.com/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
@@ -342,7 +346,9 @@ function usanetwork_widget_show_navbar_only($node) {
  */
 function usanetwork_widget_show_navbar_ajax_only($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
-  print $show_menu['content'];
+  $show_menu = $show_menu['content'];
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
+  print $show_menu;
   exit;
 }
 

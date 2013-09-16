@@ -967,6 +967,10 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => '2011d848',
       'flood_cat' => 'losvu379',
     ),
+    'modernfamily' => array (
+      'flood_type' => '2013i356',
+      'flood_cat' => 'moder594',
+    ),
     'ncis' => array (
       'flood_type' => '2009o386',
       'flood_cat' => 'ncisv947',

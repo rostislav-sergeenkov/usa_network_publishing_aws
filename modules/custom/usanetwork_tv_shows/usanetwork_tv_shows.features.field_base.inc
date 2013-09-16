@@ -1266,6 +1266,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'usanetwork_promo' => 'usanetwork_promo',
+          'usanetwork_promo_iframe' => 'usanetwork_promo_iframe',
         ),
       ),
       'target_type' => 'node',

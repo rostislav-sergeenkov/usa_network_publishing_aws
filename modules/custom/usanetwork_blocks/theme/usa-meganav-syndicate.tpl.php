@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * usa-meganav.tpl.php
+ * usa-meganav-syndicate.tpl.php
  *
  * Theme implementation for the usa mega nav
  *

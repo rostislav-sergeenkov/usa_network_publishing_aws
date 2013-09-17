@@ -51,7 +51,7 @@ body {
   }
 }
 
-#globalnav-shows-replaced {
+.globalnav-content-replaced {
   display: none;
   @include breakpoint($bp-menu-switch) {
     display: block;

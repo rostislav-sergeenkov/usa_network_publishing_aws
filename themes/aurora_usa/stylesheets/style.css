@@ -2230,7 +2230,7 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 20px;
 }
 .title-overlay .meta, .grid-container-small .asset-thumb .meta, .usa-home-featured li.carousel-item .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, .usa-home-featured li.carousel-item h2, [id='person-content'] .node-media-gallery .field-name-title h2 {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   bottom: 0;
   color: white;
   display: block;
@@ -2249,7 +2249,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 .caption-overlay .caption-fields-wrapper {
   height: 77px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   bottom: 0;
   color: white;
   display: block;
@@ -4381,7 +4381,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   position: absolute;
   width: 100%;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   padding-left: 15px;
   padding-right: 15px;
 }

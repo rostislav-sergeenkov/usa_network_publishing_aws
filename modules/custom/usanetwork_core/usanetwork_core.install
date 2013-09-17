@@ -142,6 +142,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_ads',
     'usanetwork_widget',
     'usanetwork_wysiwyg',
+    'usanetwork_promo_iframe',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -501,4 +502,15 @@ function usanetwork_core_update_7121() {
   );
   module_disable($modules_dis);
   drupal_uninstall_modules($modules_dis);
+}
+
+/**
+ * enabled usanetwork_promo_iframe module
+ */
+function usanetwork_core_update_7122() {
+
+  $modules_en = array(
+    'usanetwork_promo_iframe',
+  );
+  module_enable($modules_en);
 }

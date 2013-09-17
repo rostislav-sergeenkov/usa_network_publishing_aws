@@ -9,11 +9,13 @@
 @import "partials/01-variables/settings";
 @import "partials/02-mixins/empathy";
 @import "partials/03-extend/all";
+@import "partials/05-layout/grids-singularitygs";
 
 @import "design/modules/slide-panel";
 @import "design/modules/expandable";
 @import "design/modules/bottom-drawer";
 @import "design/modules/mega-nav";
+@import "design/modules/nav-promo-images";
 
 body {
   margin: 0;
@@ -42,6 +44,18 @@ body {
   .item-list li {
     margin-bottom: 0.25em;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: text-bottom;
+  }
+}
+
+#globalnav-shows-replaced {
+  display: none;
+  @include breakpoint($bp-menu-switch) {
+    display: block;
+  }  
 }
 
 header {

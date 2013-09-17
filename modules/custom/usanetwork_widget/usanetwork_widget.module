@@ -147,8 +147,8 @@ function usanetwork_widget_navbar_ajax_styled() {
       </div>
     </div>
   </header>';
-  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
+  $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $main_menu);
   exit;

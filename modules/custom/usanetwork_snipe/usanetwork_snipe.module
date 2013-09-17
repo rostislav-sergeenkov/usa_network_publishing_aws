@@ -29,7 +29,7 @@ function usanetwork_snipe_block_info() {
   $blocks = array();
   $blocks['usa_snipe'] = array(
     'info' => t('USA Snipe HTML Block'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   return $blocks;
@@ -58,7 +58,7 @@ function usanetwork_snipe_block_callback() {
   $output = '';
   $lang = LANGUAGE_NONE;
 
-  $result = db_query('select d.entity_id from field_data_field_usa_display_date_time d,node n where 
+  $result = db_query('select d.entity_id from field_data_field_usa_display_date_time d,node n where
     n.nid=d.entity_id and n.status=1 and date(from_unixtime(d.field_usa_display_date_time_value)) <= date(now())');
 
   $snipe = array();
@@ -68,7 +68,7 @@ function usanetwork_snipe_block_callback() {
       $snipe_id = 'snipe-' . $node->nid;
       if (isset($node->field_usa_display_date_time[$lang][0]['value']) && !empty($node->field_usa_display_date_time[$lang][0]['value'])) {
         $snipe_start = $node->field_usa_display_date_time[$lang][0]['value'];
-      
+
         if (isset($node->field_usa_display_length[$lang][0]['value']) && !empty($node->field_usa_display_length[$lang][0]['value'])) {
           $snipe_end = $snipe_start + $node->field_usa_display_length[$lang][0]['value'];
           $snipe_end = date('F d, Y H:i:s', $snipe_end);
@@ -81,7 +81,7 @@ function usanetwork_snipe_block_callback() {
         'id' => $snipe_id,
         'start' => date('F d, Y H:i:s', $snipe_start),
         'end' => $snipe_end,
-      );    
+      );
       $output .= '<div class="snipe-msg" style="display: none" id="snipe-' . $node->nid . '"><div class="snipe-html">' . $node->field_usa_snipe_html[$lang][0]['value'] . '</div><span class="close">close</span></div><span class="secondary-close close"></span>';
     }
   }
@@ -168,7 +168,7 @@ function _usanetwork_snipe_form_elements($fieldset_title, &$base_element, &$defa
   // Added enable checkbox elements per snipe node.
   if ($snipes = _usanetwork_snipe_get_nodes('snipe')) {
     foreach ($snipes as $node) {
-      $snipe = node_load($node->nid);    
+      $snipe = node_load($node->nid);
       $title = l($snipe->title, 'node/'.$snipe->nid);
       if (isset($snipe->field_usa_display_date_time[$lang][0]['value']) && !empty($snipe->field_usa_display_date_time[$lang][0]['value'])) {
         $title .= ' Validity: '. date('M d, Y H:i:s', $snipe->field_usa_display_date_time[$lang][0]['value']);
@@ -270,7 +270,7 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
   if ($arg[0] == 'home' && isset($snipe_settings['sitewide'][$snipe_nid]) && !empty($snipe_settings['home'][$snipe_nid])) {
     return true;
   }
-  
+
   // Check node page settings
   if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
     $node = node_load($arg[1]);
@@ -279,15 +279,15 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
     if (isset($node->type) && $node->type == 'tv_show') {
       $tv_show_nid = $node->nid;
     } else if (isset($node->field_show[$lang][0]['target_id']) && !empty($node->field_show[$lang][0]['target_id'])) {
-      $tv_show_nid = $node->field_show[$lang][0]['target_id']; 
+      $tv_show_nid = $node->field_show[$lang][0]['target_id'];
     }
 
     // Check tv show and related nodes
-    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show']['all'][$snipe_nid]) && 
+    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show']['all'][$snipe_nid]) &&
       !empty($snipe_settings['node']['tv_show']['all'][$snipe_nid])) {
       return true;
     }
-    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show'][$tv_show_nid][$snipe_nid]) && 
+    if (!empty($tv_show_nid) && isset($snipe_settings['node']['tv_show'][$tv_show_nid][$snipe_nid]) &&
       !empty($snipe_settings['node']['tv_show'][$tv_show_nid][$snipe_nid])) {
       return true;
     }
@@ -299,11 +299,11 @@ function _usanetwork_snipe_get_node_visibility_settings($snipe_nid) {
     }
 
     // Check catchall page and static page node settings
-    if (isset($node->type) && ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') && 
+    if (isset($node->type) && ($node->type == 'catchall_page' || $node->type == 'usanetwork_static_page') &&
       isset($snipe_settings['node'][$node->type][$node->nid][$snipe_nid]) && !empty($snipe_settings['node'][$node->type][$node->nid][$snipe_nid])) {
       return true;
-    } 
-    
+    }
+
     //replace nid in the argument for path checking
     $arg[1] = '%node';
   }

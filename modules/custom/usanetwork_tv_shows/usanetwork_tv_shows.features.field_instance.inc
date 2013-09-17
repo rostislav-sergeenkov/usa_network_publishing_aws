@@ -370,7 +370,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -641,7 +641,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -922,6 +922,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'bundle' => 'tv_episode',
     'deleted' => 0,
     'description' => 'An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.
+
+
 
 ',
     'display' => array(
@@ -7501,7 +7503,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'exclude_cv' => 0,
     'fences_wrapper' => 'ul',
     'field_name' => 'field_usa_tv_promo',
-    'label' => 'The Latest',
+    'label' => 'Featured',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -7671,6 +7673,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.
 
+
+
 ');
   t('Autoscroll A-spot carousel');
   t('Banner');
@@ -7709,6 +7713,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('External Links');
   t('FEED');
   t('Facebook page');
+  t('Featured');
   t('Featured Video Promos');
   t('Hide from cast carousel');
   t('Hide from social follow block');
@@ -7758,7 +7763,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Synopsis');
   t('TAGS');
   t('Tags');
-  t('The Latest');
   t('The tokenized Echo query string. Values in the string will be replaced with the following EQL Tokens.');
   t('This field is not used by USA');
   t('This text will be placed upper right corner of the tv show page. (Ex: WEDNESDAYS 10/9C)');

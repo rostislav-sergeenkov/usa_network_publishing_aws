@@ -82,7 +82,7 @@ function usanetwork_showpages_block_info() {
   $blocks = array();
   $blocks['show_banner'] = array(
     'info' => t('Show banner: title, section, tune-in date'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   return $blocks;
 }

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_static_page.features.inc
+ * usanetwork_promo_iframe.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function usanetwork_static_page_ctools_plugin_api($module = NULL, $api = NULL) {
+function usanetwork_promo_iframe_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -22,14 +22,14 @@ function usanetwork_static_page_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function usanetwork_static_page_node_info() {
+function usanetwork_promo_iframe_node_info() {
   $items = array(
-    'usanetwork_static_page' => array(
-      'name' => t('Static Page'),
+    'usanetwork_promo_iframe' => array(
+      'name' => t('Promo iFrame'),
       'base' => 'node_content',
-      'description' => t('Create simple, primarily text-based pages, such as Privacy Policy, Terms of Use, About, etc.'),
+      'description' => t('Used on show pages to set up and show promotional content in iframes in show promo carousels.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Administrative Title'),
       'help' => '',
     ),
   );

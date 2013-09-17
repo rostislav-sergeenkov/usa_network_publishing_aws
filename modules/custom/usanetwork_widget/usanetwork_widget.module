@@ -278,8 +278,8 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
   $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
-  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
+  $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
@@ -422,7 +422,7 @@ function usanetwork_widget_navbar_links() {
     $links[] = l($show->title .': Styled Navbar', $show_path . '/navbar');
     $links[] = l($show->title .': Plain Navbar', $show_path . '/navbar/plain');
     $links[] = l($show->title .': Plain Navbar Only', $show_path . '/navbar/only');
-    $links[] = l($show->title .': Plain Navbar Docs', $show_path . '/navbar/docs');
+    $links[] = l($show->title .': Navbar Docs', $show_path . '/navbar/docs');
     $links[] = '<br/>';
   }
   $output .= theme('item_list', array('items' => $links));

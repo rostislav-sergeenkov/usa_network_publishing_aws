@@ -220,7 +220,7 @@ function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
 
   if ($type == 'ajax') {
     $commands = array();
-    $content = '<span class="globalnav-content-more" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+    $content = '<div class="globalnav-content-more" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
     // Replace empty div with content.
     $commands[] = ajax_command_replace('#globalnav-more', $content);
 
@@ -261,7 +261,8 @@ function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
 
   if ($type == 'ajax') {
     $commands = array();
-    $content = '<span class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+
+    $content = '<div class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
     // Replace empty div with content.
     $commands[] = ajax_command_replace('#globalnav-shows', $content);
 
@@ -274,4 +275,51 @@ function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
   else {
     return '';
   }
+}
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_shows_banner() {
+  $day = '';
+  if (empty($day)) {
+    $day = strtotime("-3 hours");
+    $day = date('l', $day);
+    $day = strtolower($day);
+  }
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
+  }
+  
+  $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+
+  return $content;
+ 
+}
+
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_more_banner() {
+  $day = '';
+  if (empty($day)) {
+    $day = strtotime("-3 hours");
+    $day = date('l', $day);
+    $day = strtolower($day);
+  }
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
+  }
+
+  $content = '<div class="globalnav-content-more globalnav-content-replaced" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+
+  return $content;
+
 }

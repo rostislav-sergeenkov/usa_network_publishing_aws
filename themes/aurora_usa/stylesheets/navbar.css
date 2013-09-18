@@ -1062,11 +1062,11 @@ body {
   vertical-align: text-bottom;
 }
 
-#globalnav-shows-replaced {
+.globalnav-content-replaced {
   display: none;
 }
 @media (min-width: 769px) {
-  #globalnav-shows-replaced {
+  .globalnav-content-replaced {
     display: block;
   }
 }

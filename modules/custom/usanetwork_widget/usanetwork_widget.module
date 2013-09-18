@@ -294,6 +294,7 @@ function usanetwork_widget_show_navbar_plain($node) {
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -338,6 +339,7 @@ function usanetwork_widget_show_navbar_only($node) {
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 

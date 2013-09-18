@@ -9,6 +9,7 @@
 /**
  * Implementation of hook_menu().
  */
+
 function usanetwork_lyris_menu() {
   $items['admin/usanetwork/lyris-settings'] = array(
     'title' => t('Lyris configuration'),
@@ -138,20 +139,38 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
  */
 function usanetwork_lyris_load_lyris() {
   //suppress all the error from Sparklist
-  error_reporting(0);
-  $lyris_endpoint = variable_get('usanetwork_lyris_endpoint', 'http://studios.sparklist.com:82/?wsdl');
-  $lyris_username = variable_get('usanetwork_lyris_username', '');
-  $lyris_password = variable_get('usanetwork_lyris_password', '');
-  define('ENDPOINT', $lyris_endpoint);
+  //error_reporting(0);
+  $lyris_config = variable_get('usanetwork_lyris_active', '');
+  if($lyris_config) {
+    $lyris_endpoint = variable_get('usanetwork_lyrishq_endpoint', 'https://www.elabs13.com/API/mailing_list.html');
+    $lyris_password = variable_get('usanetwork_lyrishq_password', '');
+    $lyris_site_id = variable_get('usanetwork_lyrishq_site_id', '');
+    $lyris_mailing_list_id = variable_get('usanetwork_lyrishq_mailing_list_id', '');
+    $lyris_demographic_id = variable_get('usanetwork_lyrishq_demographic_id', '');
+    define('ENDPOINT', $lyris_endpoint);
 
-  $proxy = array(
-    'proxy_host' => variable_get('usanetwork_lyris_proxyhost', ''),
-    'proxy_port' => variable_get('usanetwork_lyris_proxyport', '')
-  );
+    $proxy = array(
+      'proxy_host' => variable_get('usanetwork_lyrishq_proxyhost', ''),
+      'proxy_port' => variable_get('usanetwork_lyrishq_proxyport', '')
+    );
 
-  $lyris = new lyris(ENDPOINT, $proxy['proxy_host'], $proxy['proxy_port']);
-  $lyris->login($lyris_username, $lyris_password);
+    $lyris = new lyrishq(ENDPOINT, $lyris_password, $lyris_site_id, $lyris_mailing_list_id, $lyris_demographic_id, $proxy['proxy_host'], $proxy['proxy_port']);
 
+  }
+  else {
+    $lyris_endpoint = variable_get('usanetwork_lyris_endpoint', 'http://studios.sparklist.com:82/?wsdl');
+    $lyris_username = variable_get('usanetwork_lyris_username', '');
+    $lyris_password = variable_get('usanetwork_lyris_password', '');
+    define('ENDPOINT', $lyris_endpoint);
+
+    $proxy = array(
+      'proxy_host' => variable_get('usanetwork_lyris_proxyhost', ''),
+      'proxy_port' => variable_get('usanetwork_lyris_proxyport', '')
+    );
+
+    $lyris = new lyris(ENDPOINT, $proxy['proxy_host'], $proxy['proxy_port']);
+    $lyris->login($lyris_username, $lyris_password);
+  }
   return $lyris;
 }
 
@@ -164,9 +183,22 @@ function usanetwork_lyris_load_lyris() {
  */
 function usanetwork_lyris_assign_user_to_list($user) {
   $lyris = usanetwork_lyris_load_lyris();
-  $member = $lyris->CreateSingleMember($user['email'], 'USA Network User', $user['list']);
-  if ($member) {
-    $lyris->UpdateMemberStatus($user['email'], $user['list'], 'normal');
+  $lyris_config = variable_get('usanetwork_lyris_active', '');
+  if($lyris_config) {
+    $demographicArray = array('White Collar');
+    $lyrishq_response = $lyris->AddContactToMalingList($user['email'], $demographicArray, 'record', 'add');
+    $pattern = "/<TYPE>(.*?)<\/TYPE>/";
+    preg_match($pattern, $lyrishq_response, $matches);
+    if($matches[1] == 'success')
+      $member = 1;
+    else
+      $member = 0;
+  }
+  else {
+    $member = $lyris->CreateSingleMember($user['email'], 'USA Network User', $user['list']);
+    if ($member) {
+      $lyris->UpdateMemberStatus($user['email'], $user['list'], 'normal');
+    }
   }
   return $member;
 }

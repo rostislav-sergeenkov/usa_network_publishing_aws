@@ -137,7 +137,7 @@ function usanetwork_widget_navbar_ajax_styled() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -175,7 +175,7 @@ function usanetwork_widget_navbar_ajax_plain() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -262,7 +262,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
@@ -307,7 +307,7 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">

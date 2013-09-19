@@ -6842,6 +6842,7 @@ body.person-page #main {
   height: 375px;
 }
 .no-touch .featured-asset .video-player-wrapper .locked-msg,
+.no-touch .featured-asset .video-player-wrapper .tve-help,
 .no-touch .featured-asset .video-player-wrapper a:after {
   display: none;
 }
@@ -8906,4 +8907,74 @@ body:not(.front) .ad-leaderboard {
 #head-sponsored {
   float: right;
   margin: 1px 12px 0 0;
+}
+.featured-asset .tve-help-link{
+  color: #9D9C9C;
+  cursor: pointer;
+  font-family: proxima nova;
+  font-size: 12pt;
+  font-weight: bold;
+  /*font-style: italic;*/
+  padding-bottom: 12px;
+}
+.tve-help-link > img{
+  padding-right: 5px;
+}
+.video-player-wrapper .tve-help{
+  z-index: 9999;
+  /*background-color: black;*/
+  opacity: 0.8;
+  width: 615px;
+  height: 346px;
+  text-align: center;
+  border: 1px solid #9D9C9C;
+  background-image :url("/sites/usanetwork/themes/aurora_usa/images/arrow_box.png");
+  background-repeat: no-repeat;
+  background-position: -10px 0;
+}
+.video-player-wrapper .tve-help .arrow {
+  position : absolute;
+  right: 0;
+}
+.video-player-wrapper .tve-help .tve-msg{
+  position: relative;
+  top: 52px;
+  font-family: proxima nova;
+  font-size: 18pt;
+  font-weight: bold;
+  color:#d5d4d4;
+}
+.video-player-wrapper .tve-help .tve-download{
+  padding-top: 20px;
+  position: relative;
+  top: 82px;
+  font-family: proxima nova;
+  font-size: 18pt;
+  font-weight: bold;
+  color:#d5d4d4;
+}
+.video-player-wrapper .tve-help .tve-download-link{
+  position: relative;
+  top: 100px;
+}
+.video-player-wrapper .tve-help .tve-close{
+  float: right;
+  position: relative;
+  top: 112px;
+  right: 10px;
+  text-transform: uppercase;
+  color: #0AB6E8;
+}
+.tve-close > img{
+  padding-right: 5px;
+}
+.video-player-wrapper .tve-help .tve-download-link a:after {
+  content : "";
+}
+.video-player-wrapper .tve-help .tve-download-link a img {
+  height: 35px;
+  padding-left: 28px;
+}
+.tve-overlay {
+  opacity : 0.6;
 }

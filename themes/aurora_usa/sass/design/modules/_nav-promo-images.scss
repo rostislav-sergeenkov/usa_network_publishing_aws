@@ -3,6 +3,9 @@
   @include clearfix;
   .node-global-nav-image {
       // padding-right: 15px;
+    > .asset-img {
+      cursor: default;
+    }  
     @include breakpoint(max-width ($bp-show-four-subnav-images - 1)) {
       @include layout(3, .06) {
         &:nth-of-type(1) { @include grid-span(1, 1); }

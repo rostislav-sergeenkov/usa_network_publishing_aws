@@ -42,6 +42,7 @@
       vertical-align: middle;
     }
     .show-section {
+      @extend %semi-headline;
       @include inline-block;
       color: $white;
       text-transform: none;
@@ -51,6 +52,7 @@
 
   }
   .show-time {
+    @extend %regular-headline;
     @include float-right;
     color: $off-white-alt;
     display: none;

@@ -104,9 +104,109 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   src: url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"), url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"), url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
 }
 
-/* WARNING: You are using ligatures for your icon font.
-      Ligatures are not supported in IE 9 (and older).
-      Use the Private Use Area encoding for best browser support.
+@font-face {
+  font-family: "avalonextra_light";
+  src: url("../fonts/Avalon-XLight-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonextra_light";
+  src: url("../fonts/Avalon-XLight-webfont.woff") format("woff"), url("../fonts/Avalon-XLight-webfont.ttf") format("truetype"), url("../fonts/Avalon-XLight-webfont.svg#avalonextra_light") format("svg");
+}
+
+@font-face {
+  font-family: "avalonextra_light_oblique";
+  src: url("../fonts/Avalon-XLightObl-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonextra_light_oblique";
+  src: url("../fonts/Avalon-XLightObl-webfont.woff") format("woff"), url("../fonts/Avalon-XLightObl-webfont.ttf") format("truetype"), url("../fonts/Avalon-XLightObl-webfont.svg#avalonextra_light_oblique") format("svg");
+}
+
+@font-face {
+  font-family: "avalonregular";
+  src: url("../fonts/Avalon-Book-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonregular";
+  src: url("../fonts/Avalon-Book-webfont.woff") format("woff"), url("../fonts/Avalon-Book-webfont.ttf") format("truetype"), url("../fonts/Avalon-Book-webfont.svg#avalonregular") format("svg");
+}
+
+@font-face {
+  font-family: "avalonitalic";
+  src: url("../fonts/Avalon-BookOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonitalic";
+  src: url("../fonts/Avalon-BookOblique-webfont.woff") format("woff"), url("../fonts/Avalon-BookOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-BookOblique-webfont.svg#avalonitalic") format("svg");
+}
+
+@font-face {
+  font-family: "avalonmedium";
+  src: url("../fonts/Avalon-Medium-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonmedium";
+  src: url("../fonts/Avalon-Medium-webfont.woff") format("woff"), url("../fonts/Avalon-Medium-webfont.ttf") format("truetype"), url("../fonts/Avalon-Medium-webfont.svg#avalonmedium") format("svg");
+}
+
+@font-face {
+  font-family: "avalonmedium_oblique";
+  src: url("../fonts/Avalon-MediumOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonmedium_oblique";
+  src: url("../fonts/Avalon-MediumOblique-webfont.woff") format("woff"), url("../fonts/Avalon-MediumOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-MediumOblique-webfont.svg#avalonmedium_oblique") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold";
+  src: url("../fonts/Avalon-Demi-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold";
+  src: url("../fonts/Avalon-Demi-webfont.woff") format("woff"), url("../fonts/Avalon-Demi-webfont.ttf") format("truetype"), url("../fonts/Avalon-Demi-webfont.svg#avalonbold") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold_italic";
+  src: url("../fonts/Avalon-DemiOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold_italic";
+  src: url("../fonts/Avalon-DemiOblique-webfont.woff") format("woff"), url("../fonts/Avalon-DemiOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-DemiOblique-webfont.svg#avalonbold_italic") format("svg");
+}
+
+@font-face {
+  font-family: "avalon_mediumbold";
+  src: url("../fonts/Avalon-Bold-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalon_mediumbold";
+  src: url("../fonts/Avalon-Bold-webfont.woff") format("woff"), url("../fonts/Avalon-Bold-webfont.ttf") format("truetype"), url("../fonts/Avalon-Bold-webfont.svg#avalon_mediumbold") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold_oblique";
+  src: url("../fonts/Avalon-BoldOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold_oblique";
+  src: url("../fonts/Avalon-BoldOblique-webfont.woff") format("woff"), url("../fonts/Avalon-BoldOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-BoldOblique-webfont.svg#avalonbold_oblique") format("svg");
+}
+
+/* WARNING:	You are using ligatures for your icon font.
+			Ligatures are not supported in IE 9 (and older).
+			Use the Private Use Area encoding for best browser support.
 ==================================================================== */
 @font-face {
   font-family: 'usanetwork';
@@ -288,7 +388,7 @@ pre, code, kbd, tt {
 }
 
 .aspot .show-time {
-  font-family: "Proxima N W01 Thin Reg", Arial, sans-serif;
+  font-family: "avalonextra_light", "Proxima N W01 Thin Reg", Arial, sans-serif;
 }
 
 body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-search input[type="search"], .featured-asset .meta-head .show-name,
@@ -296,6 +396,10 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description, .aspot .show-title, .lyris .form-item-email input {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
+}
+
+#utilities .show-time {
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
 }
 
 .usa-home-featured .caption {
@@ -309,10 +413,15 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
   font-size: 12px;
 }
 
-.region-footer, [id='person-content'] h4, #on-now-episode, .social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
+.region-footer, [id='person-content'] h4, .social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
 .social-follow-block .item-content .title h4,
 .social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 14px;
+}
+
+#on-now-show-name, #on-now-episode {
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 14px;
 }
 
@@ -327,23 +436,27 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
 }
 
 #jPanelMenu-menu .menu-title, .slide-panel-link, #block-usanetwork-blocks-usa-tv-show-menu, .usa-secondary-menu, #utilities h1#page-title, .media-gallery .gallery-tabs h2 {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 18px;
 }
 
 .social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer,
 .social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer, #usanetwork_social_join .usanetwork_social_join_msg {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 24px;
 }
 
 #showList h3 {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 30px;
 }
 
 .mega-sub-nav .more-title, .aspot .cta span, .schedule-header {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+}
+
+#on-now-panel .tab-wrapper, #utilities .breadcrumb .show-section, .usa-home-featured h2 {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
 .usa-home-featured .title {
@@ -356,7 +469,12 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
   font-size: 12px;
 }
 
-.show-on-sync span, #on-now-panel .show-info-wrapper .show-title {
+#on-now-panel .show-info-wrapper .show-title {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.show-on-sync span {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
@@ -366,28 +484,23 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
   font-size: 16px;
 }
 
-#utilities .breadcrumb > a, .echo-item-authorName, .snipe-msg h2 {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+#utilities .breadcrumb > a, .usa-tv-show h2, .echo-item-authorName, .snipe-msg h2 {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 
 .promo-metadata h2, .upcoming-movie .meta h2 {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 20px;
 }
 
 .tv-show-menu-trigger {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 22px;
 }
 
 h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanetwork-tv-schedule-usa-on-now-block {
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-}
-
-.usa-tv-show h2 {
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
 article,
@@ -2230,7 +2343,6 @@ input[type="radio"], input[type="checkbox"] {
   font-size: 20px;
 }
 .title-overlay .meta, .grid-container-small .asset-thumb .meta, .usa-home-featured li.carousel-item .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, .usa-home-featured li.carousel-item h2, [id='person-content'] .node-media-gallery .field-name-title h2 {
-  background: rgba(0, 0, 0, 0.85);
   bottom: 0;
   color: white;
   display: block;
@@ -2249,7 +2361,6 @@ input[type="radio"], input[type="checkbox"] {
 }
 .caption-overlay .caption-fields-wrapper {
   height: 77px;
-  background: rgba(0, 0, 0, 0.85);
   bottom: 0;
   color: white;
   display: block;
@@ -2264,7 +2375,7 @@ input[type="radio"], input[type="checkbox"] {
 .caption-overlay .caption-fields-wrapper h3 {
   margin: 0 0 3px;
   line-height: 22.5px;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 .caption-overlay .caption-fields-wrapper .caption > div {
   display: inline;
@@ -2734,7 +2845,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .mega-nav-link {
   color: #878785;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   text-transform: lowercase;
   font-size: 27px;
   letter-spacing: .05em;
@@ -2939,7 +3050,7 @@ input[type="radio"], input[type="checkbox"] {
     border: solid 14px;
     border-color: transparent transparent black transparent;
     border-top: none;
-    top: -28px;
+    top: -26px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -4380,11 +4491,21 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
+.title-overlay .meta, .grid-container-small .asset-thumb .meta, .usa-home-featured li.carousel-item .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, .usa-home-featured li.carousel-item h2, [id='person-content'] .node-media-gallery .field-name-title h2, .caption-overlay .caption-fields-wrapper, .view-usa-cast .carousel-item .item-content, #block-views-usa-shows-block-1 h4, .promo-metadata, .upcoming-movie .meta {
+  background-color: rgba(0, 0, 0, 0.85);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, black));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#000000',GradientType=0 );
+}
+
 .view-usa-cast .carousel-item .item-content, #block-views-usa-shows-block-1 h4, .promo-metadata, .upcoming-movie .meta, .usa-home-featured li.carousel-item .meta {
   position: absolute;
   width: 100%;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.85);
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -6088,7 +6209,6 @@ body.person-page #main {
 }
 
 #on-now-show-name {
-  font-size: 16px;
   line-height: 1em;
   float: left;
   letter-spacing: 0.03em;

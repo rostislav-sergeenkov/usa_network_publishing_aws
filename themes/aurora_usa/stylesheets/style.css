@@ -104,9 +104,9 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   src: url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"), url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"), url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
 }
 
-/* WARNING:	You are using ligatures for your icon font.
-			Ligatures are not supported in IE 9 (and older).
-			Use the Private Use Area encoding for best browser support.
+/* WARNING: You are using ligatures for your icon font.
+      Ligatures are not supported in IE 9 (and older).
+      Use the Private Use Area encoding for best browser support.
 ==================================================================== */
 @font-face {
   font-family: 'usanetwork';

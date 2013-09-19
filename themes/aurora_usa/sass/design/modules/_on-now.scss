@@ -88,8 +88,8 @@
 }
 
 #on-now-show-name {
-  font-size: 16px;
-  line-height: 1em;
+ @extend %regular-headline-14;
+ line-height: 1em;
   float: left;
   letter-spacing: 0.03em;
   white-space: nowrap;
@@ -127,7 +127,7 @@
 
 
 #on-now-episode {
-  @extend %regular-14;
+  @extend %regular-headline-14;
   letter-spacing: 0.03em;
   color: $gray-light;
   display: inline-block;

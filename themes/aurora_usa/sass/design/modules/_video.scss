@@ -562,7 +562,8 @@
         height: 375px;
       }
     }
-        .tve-help {
+    .tve-help {
+      display: none;
       z-index: 1;
       position: absolute;
       width: 615px;
@@ -644,6 +645,7 @@
           top: 82px;
         }
       }
+
       .tve-close {
         float: right;
         position: relative;
@@ -704,7 +706,7 @@
       }
     .no-touch & {
       .locked-msg,
-      a:after, .tve-help {
+      a:after {
         display: none;
       }
       &:hover {

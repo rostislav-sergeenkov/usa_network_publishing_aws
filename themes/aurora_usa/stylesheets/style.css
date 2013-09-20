@@ -6985,6 +6985,7 @@ body.person-page #main {
   height: 375px;
 }
 .featured-asset .video-player-wrapper .tve-help {
+  display: none;
   z-index: 1;
   position: absolute;
   width: 615px;
@@ -7153,7 +7154,7 @@ body.person-page #main {
   }
 }
 .no-touch .featured-asset .video-player-wrapper .locked-msg,
-.no-touch .featured-asset .video-player-wrapper a:after, .no-touch .featured-asset .video-player-wrapper .tve-help {
+.no-touch .featured-asset .video-player-wrapper a:after {
   display: none;
 }
 .no-touch .featured-asset .video-player-wrapper:hover {

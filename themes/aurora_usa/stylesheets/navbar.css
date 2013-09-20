@@ -52,6 +52,106 @@
   src: url("../fonts/19dd5cf2-ac2d-48d5-901a-c432fd291ee2.woff") format("woff"), url("../fonts/22cfbfa4-f607-4751-92eb-6fa194353e57.ttf") format("truetype"), url("../fonts/3d6b6348-e05f-4123-b19a-3bfd02c7f361.svg#3d6b6348-e05f-4123-b19a-3bfd02c7f361") format("svg");
 }
 
+@font-face {
+  font-family: "avalonextra_light";
+  src: url("../fonts/Avalon-XLight-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonextra_light";
+  src: url("../fonts/Avalon-XLight-webfont.woff") format("woff"), url("../fonts/Avalon-XLight-webfont.ttf") format("truetype"), url("../fonts/Avalon-XLight-webfont.svg#avalonextra_light") format("svg");
+}
+
+@font-face {
+  font-family: "avalonextra_light_oblique";
+  src: url("../fonts/Avalon-XLightObl-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonextra_light_oblique";
+  src: url("../fonts/Avalon-XLightObl-webfont.woff") format("woff"), url("../fonts/Avalon-XLightObl-webfont.ttf") format("truetype"), url("../fonts/Avalon-XLightObl-webfont.svg#avalonextra_light_oblique") format("svg");
+}
+
+@font-face {
+  font-family: "avalonregular";
+  src: url("../fonts/Avalon-Book-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonregular";
+  src: url("../fonts/Avalon-Book-webfont.woff") format("woff"), url("../fonts/Avalon-Book-webfont.ttf") format("truetype"), url("../fonts/Avalon-Book-webfont.svg#avalonregular") format("svg");
+}
+
+@font-face {
+  font-family: "avalonitalic";
+  src: url("../fonts/Avalon-BookOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonitalic";
+  src: url("../fonts/Avalon-BookOblique-webfont.woff") format("woff"), url("../fonts/Avalon-BookOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-BookOblique-webfont.svg#avalonitalic") format("svg");
+}
+
+@font-face {
+  font-family: "avalonmedium";
+  src: url("../fonts/Avalon-Medium-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonmedium";
+  src: url("../fonts/Avalon-Medium-webfont.woff") format("woff"), url("../fonts/Avalon-Medium-webfont.ttf") format("truetype"), url("../fonts/Avalon-Medium-webfont.svg#avalonmedium") format("svg");
+}
+
+@font-face {
+  font-family: "avalonmedium_oblique";
+  src: url("../fonts/Avalon-MediumOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonmedium_oblique";
+  src: url("../fonts/Avalon-MediumOblique-webfont.woff") format("woff"), url("../fonts/Avalon-MediumOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-MediumOblique-webfont.svg#avalonmedium_oblique") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold";
+  src: url("../fonts/Avalon-Demi-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold";
+  src: url("../fonts/Avalon-Demi-webfont.woff") format("woff"), url("../fonts/Avalon-Demi-webfont.ttf") format("truetype"), url("../fonts/Avalon-Demi-webfont.svg#avalonbold") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold_italic";
+  src: url("../fonts/Avalon-DemiOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold_italic";
+  src: url("../fonts/Avalon-DemiOblique-webfont.woff") format("woff"), url("../fonts/Avalon-DemiOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-DemiOblique-webfont.svg#avalonbold_italic") format("svg");
+}
+
+@font-face {
+  font-family: "avalon_mediumbold";
+  src: url("../fonts/Avalon-Bold-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalon_mediumbold";
+  src: url("../fonts/Avalon-Bold-webfont.woff") format("woff"), url("../fonts/Avalon-Bold-webfont.ttf") format("truetype"), url("../fonts/Avalon-Bold-webfont.svg#avalon_mediumbold") format("svg");
+}
+
+@font-face {
+  font-family: "avalonbold_oblique";
+  src: url("../fonts/Avalon-BoldOblique-webfont.eot?iefix") format("eot");
+}
+
+@font-face {
+  font-family: "avalonbold_oblique";
+  src: url("../fonts/Avalon-BoldOblique-webfont.woff") format("woff"), url("../fonts/Avalon-BoldOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-BoldOblique-webfont.svg#avalonbold_oblique") format("svg");
+}
+
 /* WARNING:	You are using ligatures for your icon font.
 			Ligatures are not supported in IE 9 (and older).
 			Use the Private Use Area encoding for best browser support.
@@ -168,7 +268,7 @@ you can use the generic selector below, but it's slower:
 }
 
 #jPanelMenu-menu .menu-title, .slide-panel-link, #block-usanetwork-blocks-usa-tv-show-menu {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 18px;
 }
 
@@ -177,12 +277,12 @@ you can use the generic selector below, but it's slower:
 }
 
 .tv-show-menu-trigger {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 22px;
 }
 
 .mega-sub-nav .more-title {
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
 #jPanelMenu-menu {
@@ -579,7 +679,7 @@ you can use the generic selector below, but it's slower:
 
 .mega-nav-link {
   color: #878785;
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   text-transform: lowercase;
   font-size: 27px;
   letter-spacing: .05em;
@@ -784,7 +884,7 @@ you can use the generic selector below, but it's slower:
     border: solid 14px;
     border-color: transparent transparent black transparent;
     border-top: none;
-    top: -28px;
+    top: -26px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);

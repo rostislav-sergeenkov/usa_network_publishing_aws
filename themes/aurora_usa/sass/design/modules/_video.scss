@@ -562,22 +562,7 @@
         height: 375px;
       }
     }
-    .no-touch & {
-      .locked-msg,
-      a:after {
-        display: none;
-      }
-      &:hover {
-        cursor: pointer;
-        .locked-msg,
-        a:after {
-          display: block;
-        }
-        img {
-          opacity: .5;
-        }
-      }
-    .tve-help {
+        .tve-help {
       z-index: 1;
       position: absolute;
       width: 615px;
@@ -621,12 +606,14 @@
       .tve-download-link {
         position: relative;
         top: 100px;
+        left: -10px;
           @include breakpoint($bp-video-player-section) {
             left: -4px;
             top: -3px;
           }
           @include breakpoint($bp-video-very-large-width) {
             top: 120px;
+            left: -14px;
           }
         a:after {
            content : "";
@@ -713,6 +700,21 @@
             -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
              filter: drop-shadow($gray-ultra-med 0 -2px 0);
           }
+        }
+      }
+    .no-touch & {
+      .locked-msg,
+      a:after, .tve-help {
+        display: none;
+      }
+      &:hover {
+        cursor: pointer;
+        .locked-msg,
+        a:after {
+          display: block;
+        }
+        img {
+          opacity: .5;
         }
       }
     }
@@ -818,8 +820,5 @@
 }
 .tve-overlay {
   opacity : 1;
-}
-.no-touch .featured-asset .video-player-wrapper .tve-help {
-  display: none;
 }
 

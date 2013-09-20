@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled?test111";
+var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled?920";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -36,7 +36,7 @@ if(isIE9) {
 
 // TODO: change the 'stage' part of each URL to www & remove cache buster
 if(typeof $show_id != 'undefined') {
-  document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?test1"></script>');
+  document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?920"></script>');
   if(isIE9) { 
     xmlhttp.open("GET", url);
   } else { 

@@ -6,6 +6,25 @@
  * For all USANetwork Integration with Sparklist/Lyris.
  *
  */
+
+/**
+ * Show name config assosiative array.
+ */
+
+$show_names = array(
+              'whitecollar' => 'White Collar',
+              'themoment' => 'The Moment',
+              'summercamp' => 'Summer Camp',
+              'suits' => 'Suits',
+              'royalpains' => 'Royal Pains',
+              'psych' => 'Psych',
+              'necessaryroughness' => 'Necessary Roughness',
+              'graceland' => 'Graceland',
+              'covertaffairs' => 'Covert Affairs',
+              'burnnotice' => 'Burn Notice'
+              );
+variable_set('show_names_config_array', $show_names);
+
 /**
  * Implementation of hook_menu().
  */
@@ -115,7 +134,12 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   }
   $user['email'] = $form_state['values']['email'];
   $user['list'] = $form_state['values']['show_ref_lyris_id'];
-  $result = usanetwork_lyris_assign_user_to_list($user);
+  $node = node_load(arg(1));
+  if(isset($node->field_pathauto_alias['und'][0]['value']))
+    $show_alias = $node->field_pathauto_alias['und'][0]['value'];
+  else
+    $show_alias = null;
+  $result = usanetwork_lyris_assign_user_to_list($user, $show_alias);
   if ($result) {
     if (empty($form['newsletter']['title'])) {
       $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up!') . '</span>';
@@ -181,12 +205,16 @@ function usanetwork_lyris_load_lyris() {
  *
  * @return array
  */
-function usanetwork_lyris_assign_user_to_list($user) {
+function usanetwork_lyris_assign_user_to_list($user, $show_alias = null) {
   $lyris = usanetwork_lyris_load_lyris();
   $lyris_config = variable_get('usanetwork_lyris_active', '');
   if($lyris_config) {
-    $demographicArray = array('White Collar');
-    $lyrishq_response = $lyris->AddContactToMalingList($user['email'], $demographicArray, 'record', 'add');
+    if($show_alias != null) {
+        $show_names_array = variable_get('show_names_config_array', '');
+        $demographic_value = $show_names_array[$show_alias];
+      }
+    $demographic_value = null;
+    $lyrishq_response = $lyris->AddContactToMalingList('praveenkumar.anthu@igate.com', $demographic_value, 'record', 'add');
     $pattern = "/<TYPE>(.*?)<\/TYPE>/";
     preg_match($pattern, $lyrishq_response, $matches);
     if($matches[1] == 'success')

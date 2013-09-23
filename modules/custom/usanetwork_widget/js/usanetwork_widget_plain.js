@@ -19,11 +19,11 @@ function load_menu() {
 }
 
 if (typeof window.onload != 'function') {
-   window.onload = create_menu;
+  window.onload = create_menu;
 } else {
   window.onload = function() {
     create_menu();
-  }
+  };
 }
 
 function create_menu() {
@@ -33,11 +33,11 @@ function create_menu() {
     xmlhttp.onprogress = function() {};
   } else {
     xmlhttp.open("GET", url, true);
-    xmlhttp.onreadystatechange = function() { 
+    xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         load_menu();
       }
-    }
-  } 
+    };
+  }
   xmlhttp.send();
 }

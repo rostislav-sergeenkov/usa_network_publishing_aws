@@ -115,6 +115,7 @@ function usanetwork_widget_navbar() {
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<body>';
   echo '<!--[if IE 9]>';
   echo '<div class="ie ie9">';
   echo '<![endif]-->';
@@ -123,6 +124,7 @@ function usanetwork_widget_navbar() {
   echo '<!--[if IE 9]>';
   echo '</div>';
   echo '<![endif]-->';
+  echo '</body>';
   echo '</html>';
   exit;
 }
@@ -242,6 +244,7 @@ function usanetwork_widget_show_navbar($node) {
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<body>';
   echo '<!--[if IE 9]>';
   echo '<div class="ie ie9">';
   echo '<![endif]-->';
@@ -250,6 +253,7 @@ function usanetwork_widget_show_navbar($node) {
   echo '<!--[if IE 9]>';
   echo '</div>';
   echo '<![endif]-->';
+  echo '</body>';
   echo '</html>';
   exit;
 }

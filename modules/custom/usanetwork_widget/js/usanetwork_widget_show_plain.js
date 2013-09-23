@@ -12,10 +12,10 @@ xmlhttp.onreadystatechange = function() {
   if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
     document.getElementById("usanetwork-main-menu").innerHTML = xmlhttp.responseText;
   }
-}
+};
 
 // TODO: change the 'stage' part of each URL to www
 if(typeof $show_id != 'undefined') {
-  xmlhttp.open("GET", "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_plain", true);
+  xmlhttp.open("GET", "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_plain?923", true);
   xmlhttp.send();
 }

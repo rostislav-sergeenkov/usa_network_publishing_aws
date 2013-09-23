@@ -108,7 +108,7 @@
   background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
 }
 .widget-background {
-  background-color: #DADADA;
+  background-color: #ffffff;
   text-align:center;
   display:none;
 }
@@ -130,9 +130,10 @@
   display: none;
   margin-top: 5px;
 }
-.echo-streamserver-controls-stream-item-mediagallery-item {
+.echo-streamserver-controls-stream-item-mediagallery-item, .echo-streamserver-controls-stream-item-mediagallery-item iframe {
   display: block;
-  width: 120px;
+  width: 112px;
+  height: 112px;
 	border: 4px solid whitesmoke;
 }
 .echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-content {
@@ -159,7 +160,7 @@
 }*/
 .echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-depth-0 {
   padding: 0px;
-	background-color: #DADADA;
+	background-color: #ffffff;
 }
 .echo-streamserver-controls-stream-item-content {
   width: 156px;
@@ -182,7 +183,7 @@
   width: 130px;
 }
 .echo-streamserver-controls-stream-item-mediagallery-container {
-  background-color: #DADADA;
+  background-color: #ffffff;
   height: 130px;
   width: 130px;
 }
@@ -238,3 +239,13 @@
 .getglue-checkin-widget {
   width: 100% !important;
 }
+
+.echo-streamserver-controls-stream-more, .echo-stream-more {
+  display: none !important;
+}
+
+#pinterest > span {
+  box-shadow: 0 0 0px #aaa!important;
+  border-radius: 0px!important;
+}
+

@@ -408,14 +408,14 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
 }
 
 #footer-message,
-#footer-message-offside, .block-usanetwork-video .view .node h4, .aspot .episode-title, .echo-item-data, .echo-item-footer, #showList {
+#footer-message-offside, .block-usanetwork-video .view .node h4, .aspot .episode-title, .echo-item-footer, #showList {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 12px;
 }
 
 .region-footer, [id='person-content'] h4, .social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
 .social-follow-block .item-content .title h4,
-.social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit {
+.social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit, .echo-item-data {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 14px;
 }
@@ -8251,7 +8251,7 @@ body.usa-social {
 .echo-item-data {
   padding-bottom: 6px;
   letter-spacing: 0.05em;
-  line-height: 1.2;
+  line-height: 1.3;
   padding-top: 4px;
 }
 .echo-item-data p {
@@ -8699,6 +8699,16 @@ input.echo-submit-text {
   width: 10px;
 }
 @media (min-width: 645px) {
+  .navSocial-empty-span {
+    width: 70px;
+  }
+}
+@media (min-width: 900px) and (max-width: 958px) {
+  .navSocial-empty-span {
+    width: 10px;
+  }
+}
+@media (min-width: 960px) {
   .navSocial-empty-span {
     width: 70px;
   }

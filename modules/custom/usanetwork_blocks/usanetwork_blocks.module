@@ -40,6 +40,10 @@ function usanetwork_blocks_block_info() {
   );
   $blocks['usa_meganav'] = array(
     'info' => t('USA: mega nav'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['usa_meganav_syndicate'] = array(
+    'info' => t('USA: mega nav syndicate'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   $blocks['usa_social_footer'] = array(
@@ -98,6 +102,10 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_meganav();
       break;
+    case 'usa_meganav_syndicate':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_meganav_syndicate();
+      break;  
     case 'usa_social_footer':
       $block['subject'] = t('Follow Us:');
       $block['content'] = usanetwork_blocks_usa_social_footer();
@@ -136,6 +144,12 @@ function usanetwork_blocks_theme($existing, $type, $theme, $path) {
         ),
       'path' => $path . '/theme',
       'template' => 'usa-meganav',
+    ),
+   'usa_meganav_syndicate' => array(
+      'variables' => array(
+        ),
+      'path' => $path . '/theme',
+      'template' => 'usa-meganav-syndicate',
     ),
    'usa_social_footer' => array(
       'variables' => array(
@@ -242,6 +256,21 @@ function usanetwork_blocks_usa_meganav() {
   $render['meganav'] = array(
     '#type' => 'markup',
     '#markup' => theme('usa_meganav', array()),
+  );
+
+  return $render;
+}
+
+
+/**
+ * Block callback for the usa_meganav syndicate block
+ */
+function usanetwork_blocks_usa_meganav_syndicate() {
+  $render = array();
+
+  $render['meganav_syndicate'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('usa_meganav_syndicate', array()),
   );
 
   return $render;

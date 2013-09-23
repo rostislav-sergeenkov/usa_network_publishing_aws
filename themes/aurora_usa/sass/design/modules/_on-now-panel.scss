@@ -171,6 +171,7 @@
     }
   }
   .tab-wrapper {
+    @extend %semi-headline;
     cursor: pointer;
     float: left;
     text-transform: lowercase;
@@ -219,7 +220,7 @@
     display: table-cell;
   }
   .show-title {
-    @extend %semi-14;
+    @extend %semi-headline-14;
     padding-bottom: 2px;
     @include breakpoint($bp-menu-wide) {
       font-size: 18px;

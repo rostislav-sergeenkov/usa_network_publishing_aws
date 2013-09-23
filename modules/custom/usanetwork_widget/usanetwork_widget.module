@@ -111,9 +111,13 @@ function usanetwork_widget_navbar() {
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?'.time();
   $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+  echo '<!DOCTYPE html>';
+  echo '<head>';
+  echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '</head>';
   echo '<!--[if IE 9]>';
   echo '<div class="ie ie9">';
   echo '<![endif]-->';
@@ -122,6 +126,7 @@ function usanetwork_widget_navbar() {
   echo '<!--[if IE 9]>';
   echo '</div>';
   echo '<![endif]-->';
+  echo '</html>';
   exit;
 }
 
@@ -137,7 +142,7 @@ function usanetwork_widget_navbar_ajax_styled() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -147,8 +152,8 @@ function usanetwork_widget_navbar_ajax_styled() {
       </div>
     </div>
   </header>';
-  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
+  $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $main_menu);
   exit;
@@ -175,7 +180,7 @@ function usanetwork_widget_navbar_ajax_plain() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -236,9 +241,15 @@ function usanetwork_widget_show_navbar($node) {
   $site_base_url = 'http://stage.usanetwork.com/';
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+  echo '<!DOCTYPE html>';
+  echo '<head>';
+  echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
   echo '<style>@import url("'.$style_css_path.'");</style>';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<script src="'.$library_js_path.'"></script>';
+  echo '</head>';
   echo '<!--[if IE 9]>';
   echo '<div class="ie ie9">';
   echo '<![endif]-->';
@@ -247,6 +258,7 @@ function usanetwork_widget_show_navbar($node) {
   echo '<!--[if IE 9]>';
   echo '</div>';
   echo '<![endif]-->';
+  echo '</html>';
   exit;
 }
 
@@ -262,7 +274,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
@@ -278,8 +290,8 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
   $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
-  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
-  $main_menu = $main_menu['content']['meganav']['#markup'];
+  $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
+  $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
@@ -294,6 +306,7 @@ function usanetwork_widget_show_navbar_plain($node) {
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -306,7 +319,7 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="/" title="Home" rel="home">USA</a>
+          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
@@ -338,6 +351,7 @@ function usanetwork_widget_show_navbar_only($node) {
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?'.time();
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
+  echo '<div id="usanetwork-main-menu"></div>';
   exit;
 }
 
@@ -422,7 +436,7 @@ function usanetwork_widget_navbar_links() {
     $links[] = l($show->title .': Styled Navbar', $show_path . '/navbar');
     $links[] = l($show->title .': Plain Navbar', $show_path . '/navbar/plain');
     $links[] = l($show->title .': Plain Navbar Only', $show_path . '/navbar/only');
-    $links[] = l($show->title .': Plain Navbar Docs', $show_path . '/navbar/docs');
+    $links[] = l($show->title .': Navbar Docs', $show_path . '/navbar/docs');
     $links[] = '<br/>';
   }
   $output .= theme('item_list', array('items' => $links));

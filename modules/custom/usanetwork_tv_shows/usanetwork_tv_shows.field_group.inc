@@ -21,7 +21,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_additional_genres',
       1 => 'field_content_tags',
@@ -97,15 +97,15 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Chatter to TV Settings',
     'weight' => '47',
     'children' => array(
-      0 => 'field_show_chatter_to_tv',
-      1 => 'field_chat_to_tv_start_time',
-      2 => 'field_chat_to_tv_end_time',
-      3 => 'field_chat_to_tv_title',
-      4 => 'field_chat_to_tv_description',
-      5 => 'field_chat_to_tv_checkbox_text',
-      6 => 'field_chat_to_tv_legal_copy',
-      7 => 'field_chat_to_tv_echo_marker',
-      8 => 'field_chat_to_tv_comment_prefix',
+      0 => 'field_chat_to_tv_checkbox_text',
+      1 => 'field_chat_to_tv_comment_prefix',
+      2 => 'field_chat_to_tv_description',
+      3 => 'field_chat_to_tv_echo_marker',
+      4 => 'field_chat_to_tv_end_time',
+      5 => 'field_chat_to_tv_legal_copy',
+      6 => 'field_chat_to_tv_start_time',
+      7 => 'field_chat_to_tv_title',
+      8 => 'field_show_chatter_to_tv',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -280,6 +280,46 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_fb_settings|node|tv_show|form';
+  $field_group->group_name = 'group_fb_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Facebook Settings',
+    'weight' => '49',
+    'children' => array(
+      0 => 'field_fb_children',
+      1 => 'field_fb_childrenof',
+      2 => 'field_fb_eql_template',
+      3 => 'field_fb_feed',
+      4 => 'field_fb_itemsperpage',
+      5 => 'field_fb_markers',
+      6 => 'field_fb_safehtml',
+      7 => 'field_fb_show',
+      8 => 'field_fb_sortorder',
+      9 => 'field_fb_source',
+      10 => 'field_fb_state',
+      11 => 'field_fb_tags',
+      12 => 'field_show_fb_page',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Facebook Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_fb_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_getglue_settings|node|tv_show|form';
   $field_group->group_name = 'group_getglue_settings';
   $field_group->entity_type = 'node';
@@ -288,7 +328,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'GetGlue Settings',
-    'weight' => '49',
+    'weight' => '51',
     'children' => array(
       0 => 'field_getglue_show',
       1 => 'field_getglue_sticker_name',
@@ -306,6 +346,35 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_getglue_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_instagram_settings|node|tv_show|form';
+  $field_group->group_name = 'group_instagram_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Instagram Settings',
+    'weight' => '52',
+    'children' => array(
+      0 => 'field_show_instagram_page',
+      1 => 'field_instagram_show_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Instagram Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_instagram_settings|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -334,6 +403,35 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_newsletter|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pinterest_settings|node|tv_show|form';
+  $field_group->group_name = 'group_pinterest_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Pinterest Settings',
+    'weight' => '50',
+    'children' => array(
+      0 => 'field_pinterest_url',
+      1 => 'field_show_pinterest_page',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Pinterest Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_pinterest_settings|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -525,14 +623,17 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_hide_cast_carousel',
       1 => 'field_hide_social_follow',
-      2 => 'group_chatter_to_tv_settings',
-      3 => 'group_chat_settings',
-      4 => 'group_getglue_settings',
-      5 => 'group_newsletter',
-      6 => 'group_sync_settings',
-      7 => 'group_trend',
-      8 => 'group_twitter_settings',
-      9 => 'group_usa_show_follow',
+      2 => 'group_instagram_settings',
+      3 => 'group_fb_settings',
+      4 => 'group_pinterest_settings',
+      5 => 'group_chat_settings',
+      6 => 'group_chatter_to_tv_settings',
+      7 => 'group_getglue_settings',
+      8 => 'group_newsletter',
+      9 => 'group_sync_settings',
+      10 => 'group_trend',
+      11 => 'group_twitter_settings',
+      12 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -724,7 +825,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_on_now',
@@ -786,7 +887,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_usa_og_image',

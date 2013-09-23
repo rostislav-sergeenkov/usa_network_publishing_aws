@@ -360,7 +360,7 @@
       content: $space;
       @include cssTriangle(14px, $black-true, bottom);
       border-top: none;
-      top: -28px;
+      top: -26px;
       left: 50%;
       @include transform3d(translateX(-50%));
       z-index: 105;

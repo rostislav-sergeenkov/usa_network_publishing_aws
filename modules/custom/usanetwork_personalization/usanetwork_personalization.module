@@ -5,6 +5,13 @@
  * USA Personalization Blocks
  */
 
+/**
+ * Implementation of hook_init().
+ */
+function usanetwork_personalization_init() {
+  // add the cookie library so things to not explode
+  drupal_add_library('system', 'jquery.cookie');
+}
 
 /**
  * Implementation of hook_menu().

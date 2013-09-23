@@ -212,9 +212,11 @@ function usanetwork_lyris_assign_user_to_list($user, $show_alias = null) {
     if($show_alias != null) {
         $show_names_array = variable_get('show_names_config_array', '');
         $demographic_value = $show_names_array[$show_alias];
-      }
-    $demographic_value = null;
-    $lyrishq_response = $lyris->AddContactToMalingList('praveenkumar.anthu@igate.com', $demographic_value, 'record', 'add');
+    }
+    else {
+      $demographic_value = null;
+    }
+    $lyrishq_response = $lyris->AddContactToMalingList($user['email'], $demographic_value, 'record', 'add');
     $pattern = "/<TYPE>(.*?)<\/TYPE>/";
     preg_match($pattern, $lyrishq_response, $matches);
     if($matches[1] == 'success')

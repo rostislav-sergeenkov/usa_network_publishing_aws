@@ -22,28 +22,18 @@ function loadUsanetworkShowNavMenu() {
   menu_init();
 }
 
-if (typeof window.onload != 'function') {
-  window.onload = create_show_menu;
+
+if(isIE9) {
+  xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
+  xmlhttp.onprogress = function() {};
 } else {
-  window.onload = function() {
-    create_show_menu();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      loadUsanetworkShowNavMenu();
+    }
   };
 }
 
-
-function create_show_menu() {
-  if(isIE9) {
-    xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
-    xmlhttp.onprogress = function() {};
-  } else {
-    xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        loadUsanetworkShowNavMenu();
-      }
-    };
-  }
-
-}
 
 // TODO: change the 'stage' part of each URL to www & remove cache buster
 if(typeof $show_id != 'undefined') {

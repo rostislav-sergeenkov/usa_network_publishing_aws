@@ -3306,7 +3306,7 @@ input[type="radio"], input[type="checkbox"] {
   z-index: 5;
   background-color: #3d3d3d;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .usa-secondary-menu {
     background-color: #2d2d2d;
     border: 1px solid #414141;
@@ -3346,7 +3346,7 @@ input[type="radio"], input[type="checkbox"] {
 .usa-secondary-menu .shows > li {
   margin-bottom: 15px;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .usa-secondary-menu .shows > li {
     margin: 0;
     float: left;
@@ -3436,7 +3436,7 @@ input[type="radio"], input[type="checkbox"] {
   line-height: 1em;
   letter-spacing: 0.05em;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .usa-secondary-menu .item-list .item-list ul > li {
     display: inline-block;
   }
@@ -3454,7 +3454,7 @@ input[type="radio"], input[type="checkbox"] {
 .usa-secondary-menu .item-list .item-list ul > li > a:hover {
   background-color: #4b4b4b;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .usa-secondary-menu .item-list .item-list ul > li > a {
     border: 0;
   }
@@ -7827,7 +7827,7 @@ body.usa-social {
   padding-left: 8px;
 }
 
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav {
     font-size: 20px;
   }
@@ -7842,7 +7842,7 @@ body.usa-social {
 #block-usanetwork-social-usa-show-social-tab-nav a.active {
   color: white;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   #block-usanetwork-social-usa-show-social-tab-nav a {
     z-index: 60;
     float: left;
@@ -8238,7 +8238,7 @@ body.usa-social {
     margin-left: 58px;
   }
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .echo-item-wrapper {
     margin-left: 63px;
   }
@@ -8339,7 +8339,7 @@ body.usa-social {
 .echo-item-children .echo-item-wrapper {
   margin-left: 30px;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   .echo-item-children .echo-item-wrapper {
     margin-left: 45px;
   }
@@ -8507,7 +8507,7 @@ input.echo-submit-text {
   padding: 10px 12px 40px;
   color: #a3a3a3;
 }
-@media (min-width: 900px) and (max-width: 958px) {
+@media (min-width: 723px) {
   #showList {
     padding-left: 30px;
     padding-right: 30px;

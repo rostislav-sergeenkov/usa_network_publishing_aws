@@ -929,7 +929,7 @@ input.echo-submit-text {
     @include breakpoint($bp-show-mid-width) {
        width: 70px; 
     }
-    @include breakpoint($bp-social-mid-width) {
+    @media (min-width: 900px) and (max-width: 958px) {
        width: 10px; 
     }
     @include breakpoint($bp-video-large2-width) {

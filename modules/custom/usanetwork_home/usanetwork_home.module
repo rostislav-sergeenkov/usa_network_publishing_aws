@@ -294,7 +294,7 @@ function usanetwork_home_globalnav_shows_banner() {
     $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
   }
   
-  $content = '<div class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+  $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
 
   return $content;
  
@@ -318,7 +318,7 @@ function usanetwork_home_globalnav_more_banner() {
     $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
   }
 
-  $content = '<div class="globalnav-content-more" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+  $content = '<div class="globalnav-content-more globalnav-content-replaced" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
 
   return $content;
 

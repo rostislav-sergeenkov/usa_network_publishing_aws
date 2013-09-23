@@ -7,6 +7,7 @@
     margin-bottom: 0px;
   }
   h2 {
+    @extend %semi-headline; 
     margin-bottom: 12px;
     margin-left: 0px;
     @include breakpoint($bp-home-3col) {
@@ -114,7 +115,7 @@
       max-width: 944px;
     }
     > h2 {
-      text-transform: uppercase;
+       text-transform: uppercase;
     }
   }
   .carousel {

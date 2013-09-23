@@ -40,7 +40,7 @@ function usanetwork_blocks_block_info() {
   );
   $blocks['usa_meganav'] = array(
     'info' => t('USA: mega nav'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['usa_meganav_syndicate'] = array(
     'info' => t('USA: mega nav syndicate'),

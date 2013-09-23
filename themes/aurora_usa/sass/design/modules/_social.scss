@@ -922,6 +922,14 @@ input.echo-submit-text {
   }
 }
 
+.navSocial-empty-span {
+  float: left;
+  height: 32px;
+  width: 10px;
+    @include breakpoint($bp-show-mid-width) {
+       width: 70px; 
+    }
+}
 
 /* basic scrollbar styling */
 /* vertical scrollbar */

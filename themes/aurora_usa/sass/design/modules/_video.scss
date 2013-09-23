@@ -607,14 +607,13 @@
       .tve-download-link {
         position: relative;
         top: 100px;
-        left: -10px;
+        left: -14px;
           @include breakpoint($bp-video-player-section) {
             left: -4px;
             top: -3px;
           }
           @include breakpoint($bp-video-very-large-width) {
             top: 120px;
-            left: -14px;
           }
         a:after {
            content : "";

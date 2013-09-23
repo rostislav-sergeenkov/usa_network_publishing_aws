@@ -5,11 +5,6 @@
   padding-right: 30px;
   text-align: left;
 }
-.navSocial-empty-span {
-  float: left;
-  height: 32px;
-  width: 70px;
-}
 .navTwitter-selected {
   background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
   float: left;
@@ -238,4 +233,8 @@
 	font-size: 24px;
 	cursor: pointer;
 	display : none;
+}
+
+.getglue-checkin-widget {
+  width: 100% !important;
 }

@@ -36,8 +36,8 @@ function lyrishq ($url, $lyris_password, $lyris_site_id, $lyris_mailing_list_id,
 * Function for adding contact to the mailinglist
 */
 
-function AddContactToMalingList($email, $demographicArray, $type, $activity) {
-  $this->input_param = $this->GenerateParams($email, $demographicArray);
+function AddContactToMalingList($email, $demographic_value, $type, $activity) {
+  $this->input_param = $this->GenerateParams($email, $demographic_value);
   $api_response = $this->LyrisHqCall($this->input_param, $type, $activity);
   return $api_response;
 
@@ -48,7 +48,7 @@ function AddContactToMalingList($email, $demographicArray, $type, $activity) {
 * Function for creating input params for api call
 */
 
-function GenerateParams($email, $demographicArray) {
+function GenerateParams($email, $demographic_value) {
   $xml = '';
   if($this->lyris_site_id != ''){
     $xml.= '<SITE_ID>'.$this->lyris_site_id.'</SITE_ID>';
@@ -59,8 +59,7 @@ function GenerateParams($email, $demographicArray) {
   if($email != ''){
     $xml.= '<DATA type="email">'.$email.'</DATA>';
   }
-  if(count($demographicArray) > 0){
-    foreach ($demographicArray as $value)
+  if($demographic_value != null){
       $xml.= '<DATA type="demographic" id="'.$this->lyris_demographic_id.'">'.$value.'</DATA>';
   }
   if($this->lyris_password != ''){

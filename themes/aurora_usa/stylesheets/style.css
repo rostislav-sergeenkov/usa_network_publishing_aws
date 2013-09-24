@@ -8714,6 +8714,289 @@ input.echo-submit-text {
   }
 }
 
+#usanetwork_social_chatter_title {
+  background-color: #232323;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
+  background: -webkit-linear-gradient(center top, #000000, #2d2d2d);
+  background: -moz-linear-gradient(center top, #000000, #2d2d2d);
+  background: -o-linear-gradient(center top, #000000, #2d2d2d);
+  background: linear-gradient(center top, #000000, #2d2d2d);
+  height: 55px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: left;
+}
+
+.navTwitter-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navChatter-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navFb-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navPinterest-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navGetGlue-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navInstagram-selected {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+.navTwitter {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navTwitter:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
+}
+
+.navChatter {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2831px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navChatter:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
+}
+
+.navFb {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navFb:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
+}
+
+.navPinterest {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3069px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navPinterest:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
+}
+
+.navGetGlue {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2989px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navGetGlue:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+}
+
+.navInstagram {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3148px transparent;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+.navInstagram:hover {
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
+}
+
+.widget-background {
+  background-color: #ffffff;
+  text-align: center;
+  display: none;
+}
+
+/*Instagram widget styles*/
+#instagram {
+  padding-left: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+}
+
+.echo-streamserver-controls-stream-item-header {
+  display: none;
+}
+
+.echo-streamserver-controls-stream-item-body.echo-primaryColor {
+  display: none;
+}
+
+.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-container .echo-streamserver-controls-stream-item-footer {
+  display: none;
+  margin-top: 5px;
+}
+
+.echo-streamserver-controls-stream-item-mediagallery-item, .echo-streamserver-controls-stream-item-mediagallery-item iframe {
+  display: block;
+  width: 112px;
+  height: 112px;
+  border: 4px solid whitesmoke;
+}
+
+.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-content {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 white;
+  border-color: #D9D4D4 -moz-use-text-color -moz-use-text-color #D9D4D4;
+  border-image: none;
+  border-style: none;
+  border-width: 0;
+  box-shadow: none;
+  margin: 0 30px 15px;
+  padding-bottom: 0;
+}
+
+/*.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
+  padding: 0px;
+}
+.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
+  left: 130px;
+  position: absolute;
+  top: 0px;
+}*/
+.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-depth-0 {
+  padding: 0px;
+  background-color: #ffffff;
+}
+
+.echo-streamserver-controls-stream-item-content {
+  width: 156px;
+}
+
+.echo-streamserver-controls-stream-item-plugin-PinboardVisualization-media {
+  margin-top: 0;
+  text-align: center;
+}
+
+.echo-streamserver-controls-stream-item-content {
+  width: 150px;
+}
+
+.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
+  float: left;
+  height: 130px;
+  width: 130px;
+}
+
+.echo-streamserver-controls-stream-item-mediagallery-thumbnails {
+  height: 130px;
+  overflow: hidden;
+  width: 130px;
+}
+
+.echo-streamserver-controls-stream-item-mediagallery-container {
+  background-color: #ffffff;
+  height: 130px;
+  width: 130px;
+}
+
+.echo-streamserver-controls-stream-more, .echo-streamserver-controls-stream-fullStateLayout {
+  border: 1px solid #E4E4E4;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.echo-streamserver-controls-stream-more, .echo-stream-more {
+  display: none !important;
+}
+
+#usanetwork_social_section_join {
+  background: #282828;
+  border-top: 1px solid #161616;
+  clear: both;
+  padding: 10px 0 7px;
+  position: relative;
+  text-align: center;
+}
+#usanetwork_social_section_join .usanetwork_social_join_msg:before {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent transparent transparent white;
+  border-image: none;
+  border-style: solid;
+  border-width: 6px;
+  content: "";
+  display: block;
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 0;
+}
+#usanetwork_social_section_join .usanetwork_social_join_msg {
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding-left: 20px;
+  position: relative;
+  text-transform: none;
+}
+
+#join-tweets, #join-chatter, #join-buzz {
+  text-transform: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.getglue-checkin-widget {
+  width: 100% !important;
+}
+
+#pinterest > span {
+  box-shadow: 0 0 0px #aaaaaa !important;
+  border-radius: 0px !important;
+}
+
 /* basic scrollbar styling */
 /* vertical scrollbar */
 .usa-rebelmouse iframe {

@@ -3,7 +3,6 @@ var xmlhttp;
 var url = "http://stage.usanetwork.com/navbar/syndicate_plain";
 var isIE9 = window.XDomainRequest ? true : false;
 
-
 if (isIE9) {
   // code for IE9 // ref http://www.codemonkeez.com/2011/12/ie9-cross-sitedomain-scripting-with.html
   xmlhttp = new window.XDomainRequest();
@@ -16,19 +15,16 @@ if (isIE9) {
 }
 
 function load_menu() {
-  var text = xmlhttp.responseText;
-  document.getElementById("usanetwork-main-menu").innerHTML = text;
+  document.getElementById("usanetwork-main-menu").innerHTML = xmlhttp.responseText;
 }
 
-
-if (window.attachEvent) {
-  window.attachEvent('onload', create_menu);
-} else if (window.addEventListener) {
-  window.addEventListener('load', create_menu, false);
+if (typeof window.onload != 'function') {
+  window.onload = create_menu;
 } else {
-  document.addEventListener('load', create_menu, false);
+  window.onload = function() {
+    create_menu();
+  };
 }
-
 
 function create_menu() {
   if(isIE9) {

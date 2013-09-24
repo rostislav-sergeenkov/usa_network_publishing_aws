@@ -554,7 +554,7 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_children';
-  $strongarm->value = 'children:1 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:1';
+  $strongarm->value = 'children:0 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:0';
   $export['usanetwork_social_facebook_children'] = $strongarm;
 
   $strongarm = new stdClass();

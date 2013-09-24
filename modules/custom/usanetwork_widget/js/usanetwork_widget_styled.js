@@ -23,12 +23,12 @@ function loadUsanetworkGlobalNavMenu() {
 }
 
 
-if (typeof window.onload != 'function') {
-   window.onload = create_menu;
+if (window.attachEvent) {
+  window.attachEvent('onload', create_menu);
+} else if (window.addEventListener) {
+  window.addEventListener('load', create_menu, false);
 } else {
-  window.onload = function() {
-    create_menu();
-  };
+  document.addEventListener('load', create_menu, false);
 }
 
 

@@ -554,42 +554,42 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_children';
-  $strongarm->value = '';
+  $strongarm->value = 'children:1 -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned childrenSortOrder:reverseChronological childrenItemsPerPage:1';
   $export['usanetwork_social_facebook_children'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_childrenof';
-  $strongarm->value = '';
+  $strongarm->value = 'childrenof:http://chatter.usanetwork.com';
   $export['usanetwork_social_facebook_childrenof'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_echo_app_key';
-  $strongarm->value = '';
+  $strongarm->value = 'prod.usanetwork';
   $export['usanetwork_social_facebook_echo_app_key'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_echo_query_template';
-  $strongarm->value = '';
+  $strongarm->value = '([CHILDRENOF]/[SHOW]/[FEED] [STATE] [MARKERS] [TAGS] [SOURCE]) [SORTORDER] [SAFEHTML] [ITEMSPERPAGE] [CHILDREN]';
   $export['usanetwork_social_facebook_echo_query_template'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_feed';
-  $strongarm->value = '';
+  $strongarm->value = 'id_All';
   $export['usanetwork_social_facebook_feed'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_itemsperpage';
-  $strongarm->value = '';
+  $strongarm->value = 'itemsPerPage:20';
   $export['usanetwork_social_facebook_itemsperpage'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -603,28 +603,28 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_safehtml';
-  $strongarm->value = '';
+  $strongarm->value = 'safeHTML:true';
   $export['usanetwork_social_facebook_safehtml'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_sortorder';
-  $strongarm->value = '';
+  $strongarm->value = 'sortOrder:reverseChronological';
   $export['usanetwork_social_facebook_sortorder'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_source';
-  $strongarm->value = '';
+  $strongarm->value = 'source:Facebook';
   $export['usanetwork_social_facebook_source'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_facebook_state';
-  $strongarm->value = '';
+  $strongarm->value = '-state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned';
   $export['usanetwork_social_facebook_state'] = $strongarm;
 
   $strongarm = new stdClass();

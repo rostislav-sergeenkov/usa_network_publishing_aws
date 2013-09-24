@@ -550,5 +550,103 @@ function usanetwork_tv_shows_strongarm() {
   $strongarm->value = 'field_logo';
   $export['representative_image_field_node_tv_show'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_children';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_children'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_childrenof';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_childrenof'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_echo_app_key';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_echo_app_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_echo_query_template';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_echo_query_template'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_feed';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_feed'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_itemsperpage';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_itemsperpage'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_markers';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_markers'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_safehtml';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_safehtml'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_sortorder';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_sortorder'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_source';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_state';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_state'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_facebook_tags';
+  $strongarm->value = '';
+  $export['usanetwork_social_facebook_tags'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_instagram_show_id';
+  $strongarm->value = 'jfy5b0xamh';
+  $export['usanetwork_social_instagram_show_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_social_pinterest_url';
+  $strongarm->value = '';
+  $export['usanetwork_social_pinterest_url'] = $strongarm;
+
   return $export;
 }

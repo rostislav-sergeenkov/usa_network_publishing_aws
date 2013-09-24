@@ -5,7 +5,7 @@
  */
 function usanetwork_social_settings_form() {
 
-	// SOCIAL BUZZ
+// SOCIAL BUZZ
   $form['trend'] = array(
     '#type' => 'fieldset',
     '#title' => t('Social Buzz Settings'),
@@ -26,7 +26,7 @@ function usanetwork_social_settings_form() {
     '#description' => t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2'),
   );
 
-	// SYNC
+// SYNC
   $form['sync'] = array(
     '#type' => 'fieldset',
     '#title' => t('Sync Settings'),
@@ -226,6 +226,132 @@ function usanetwork_social_settings_form() {
     '#maxlength' => 512,
   );
 
+  // FACEBOOK
+  $form['facebook'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('facebook Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['facebook']['usanetwork_social_facebook_echo_app_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Echo App Key'),
+    '#default_value' => variable_get('usanetwork_social_facebook_echo_app_key', ''),
+    '#description' => t(''),
+  );
+  $form['facebook']['usanetwork_social_facebook_echo_query_template'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Echo Query Template'),
+    '#default_value' => variable_get('usanetwork_social_facebook_echo_query_template', ''),
+    '#description' => t('The tokenized Echo query string. Values in the string will be replaced with the following Tokens.'),
+    '#maxlength' => 512,
+  );
+  $form['facebook']['usanetwork_social_facebook_childrenof'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CHILDRENOF'),
+    '#default_value' => variable_get('usanetwork_social_facebook_childrenof', ''),
+    '#description' => t('CHILDRENOF Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_feed'] = array(
+    '#type' => 'textfield',
+    '#title' => t('FEED'),
+    '#default_value' => variable_get('usanetwork_social_facebook_feed', ''),
+    '#description' => t('FEED Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_state'] = array(
+    '#type' => 'textfield',
+    '#title' => t('STATE'),
+    '#default_value' => variable_get('usanetwork_social_facebook_state', ''),
+    '#description' => t('STATE Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_source'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SOURCE'),
+    '#default_value' => variable_get('usanetwork_social_facebook_source', ''),
+    '#description' => t('SOURCE Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_markers'] = array(
+    '#type' => 'textfield',
+    '#title' => t('MARKERS'),
+    '#default_value' => variable_get('usanetwork_social_facebook_markers', ''),
+    '#description' => t('MARKERS Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TAGS'),
+    '#default_value' => variable_get('usanetwork_social_facebook_tags', ''),
+    '#description' => t('TAGS Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_sortorder'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SORTORDER'),
+    '#default_value' => variable_get('usanetwork_social_facebook_sortorder', ''),
+    '#description' => t('SORTORDER Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_safehtml'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SAFEHTML'),
+    '#default_value' => variable_get('usanetwork_social_facebook_safehtml', ''),
+    '#description' => t('SAFEHTML Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_itemsperpage'] = array(
+    '#type' => 'textfield',
+    '#title' => t('ITEMSPERPAGE'),
+    '#default_value' => variable_get('usanetwork_social_facebook_itemsperpage', ''),
+    '#description' => t('ITEMSPERPAGE Token'),
+  );
+  $form['facebook']['usanetwork_social_facebook_children'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CHILDREN'),
+    '#default_value' => variable_get('usanetwork_social_facebook_children', ''),
+    '#description' => t('CHILDREN Token'),
+    '#maxlength' => 512,
+  );
+
+  // PINTEREST
+  $form['pinterest'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Pinterest Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['pinterest']['usanetwork_social_pinterest_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#default_value' => variable_get('usanetwork_social_pinterest_url', ''),
+    '#description' => t('PINTEREST url'),
+    '#maxlength' => 512,
+  );
+
+  // GETGLUE
+  $form['getglue'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('GetGlue Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['getglue']['usanetwork_social_getglue_show'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#default_value' => variable_get('usanetwork_social_getglue_show', ''),
+    '#description' => t('GetGlue Show'),
+    '#maxlength' => 512,
+  );
+
+  // INSTAGRAM
+  $form['instagram'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Instagram Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['instagram']['usanetwork_social_instagram_show_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Show ID'),
+    '#default_value' => variable_get('usanetwork_social_instagram_show_id', ''),
+    '#description' => t('Instagram show ID'),
+  );
+
   // GLOBAL TWITTER
   $form['global_twitter'] = array(
     '#type' => 'fieldset',
@@ -283,7 +409,7 @@ function usanetwork_social_settings_form() {
     '#description' => t('Ex: embedded=1&flexible=0&scrollbar_theme=light-2&skip=also-on-rm'),
   );
 
-	// GLOBAL SYNC
+// GLOBAL SYNC
   $form['global_sync'] = array(
     '#type' => 'fieldset',
     '#title' => t('Global Sync Settings'),
@@ -334,5 +460,3 @@ function usanetwork_social_settings_form() {
 
   return system_settings_form($form);
 }
-
-

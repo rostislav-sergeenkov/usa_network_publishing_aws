@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled?920";
+var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled?923519";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -22,25 +22,37 @@ function loadUsanetworkShowNavMenu() {
   menu_init();
 }
 
+if (typeof window.onload != 'function') {
+  window.onload = create_show_menu;
+} else {
+  window.onload = function() {
+    create_show_menu();
+  };
+}
 
-if(isIE9) { 
-  xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
-  xmlhttp.onprogress = function() {};
-} else { 
-  xmlhttp.onreadystatechange = function() { 
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      loadUsanetworkShowNavMenu();
+
+function create_show_menu() {
+  if(isIE9) {
+    xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
+    xmlhttp.onprogress = function() {};
+  } else {
+
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        loadUsanetworkShowNavMenu();
+      }
+    };
+  }
+
+  // TODO: change the 'stage' part of each URL to www & remove cache buster
+  if(typeof $show_id != 'undefined') {
+    //document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?923"></script>');
+    if(isIE9) {
+      xmlhttp.open("GET", url);
+    } else {
+      xmlhttp.open("GET", url, true);
     }
+    xmlhttp.send();
   }
 }
 
-// TODO: change the 'stage' part of each URL to www & remove cache buster
-if(typeof $show_id != 'undefined') {
-  document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?920"></script>');
-  if(isIE9) { 
-    xmlhttp.open("GET", url);
-  } else { 
-    xmlhttp.open("GET", url, true);  
-  }
-  xmlhttp.send();
-}

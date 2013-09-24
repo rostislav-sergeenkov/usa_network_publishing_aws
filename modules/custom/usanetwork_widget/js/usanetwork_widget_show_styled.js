@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled?923519";
+var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_styled";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -22,12 +22,13 @@ function loadUsanetworkShowNavMenu() {
   menu_init();
 }
 
-if (typeof window.onload != 'function') {
-  window.onload = create_show_menu;
+
+if (window.attachEvent) {
+  window.attachEvent('onload', create_show_menu);
+} else if (window.addEventListener) {
+  window.addEventListener('load', create_show_menu, false);
 } else {
-  window.onload = function() {
-    create_show_menu();
-  };
+  document.addEventListener('load', create_show_menu, false);
 }
 
 
@@ -55,4 +56,3 @@ function create_show_menu() {
     xmlhttp.send();
   }
 }
-

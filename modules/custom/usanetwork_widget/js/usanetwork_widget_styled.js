@@ -1,6 +1,6 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = 'http://stage.usanetwork.com/navbar/syndicate_styled?923';
+var url = 'http://stage.usanetwork.com/navbar/syndicate_styled';
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -15,19 +15,22 @@ if (isIE9) {
   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
+
 function loadUsanetworkGlobalNavMenu() {
   var text = xmlhttp.responseText;
   document.getElementById("usanetwork-main-menu").innerHTML = text;
   menu_init();
 }
 
-if (typeof window.onload != 'function') {
-   window.onload = create_menu;
+
+if (window.attachEvent) {
+  window.attachEvent('onload', create_menu);
+} else if (window.addEventListener) {
+  window.addEventListener('load', create_menu, false);
 } else {
-  window.onload = function() {
-    create_menu();
-  };
+  document.addEventListener('load', create_menu, false);
 }
+
 
 function create_menu() {
   if(isIE9) {

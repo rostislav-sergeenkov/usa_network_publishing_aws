@@ -270,206 +270,210 @@ function usanetwork_social_show_getglue($node = null) {
 // @TODO: Add more validation here to make sure fields that are necessary
 // have been set?
 function usanetwork_social_show_landing($node = null, $items_per_page=3) {
-  $output = '';
-  $lang = LANGUAGE_NONE;
-  $arg = arg();
 
-  if (empty($node) && isset($arg[1])) {
-    $node = node_load($arg[1]);
+  if (!path_is_admin(current_path())) {
+
+    $output = '';
+    $lang = LANGUAGE_NONE;
+    $arg = arg();
+
+    if (empty($node) && isset($arg[1])) {
+      $node = node_load($arg[1]);
+    }
+
+    if (!isset($node->nid)) {
+      drupal_not_found();
+    }
+
+    $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
+    $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
+
+    // CHATTER SECTION
+    $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+
+    if ($showChatPage) {
+    /* @TODO: CHECK THE FOLLOWING -- DV: COMMENTING THIS FOR NOW AS WE SHOULD NOT NEED POST COMMENTS SECTION ON THE SHOW HOMEPAGE SOCIAL BLOCK CHATTER SECTION?
+      $submitTargetUrl = isset($node->field_chat_submittargeturl[$lang][0]['value']) ? $node->field_chat_submittargeturl[$lang][0]['value'] : '';
+      $submitTargetUrl = empty($submitTargetUrl) ? variable_get('usanetwork_social_chat_submittargeturl', '') : $submitTargetUrl;
+
+      $identityManagerUrl = isset($node->field_chat_identitymanagerurl[$lang][0]['value']) ? $node->field_chat_identitymanagerurl[$lang][0]['value'] : '';
+      $identityManagerUrl = empty($identityManagerUrl) ? variable_get('usanetwork_social_chat_identitymanagerurl', '') : $identityManagerUrl;
+    */
+      $eql = isset($node->field_chat_eql_template[$lang][0]['value']) ? $node->field_chat_eql_template[$lang][0]['value'] : '';
+      $eql = empty($eql) ? variable_get('usanetwork_social_chat_echo_query_template', '') : $eql;
+
+      $tokens = array();
+      $tokens['[CHILDRENOF]'] = isset($node->field_chat_childrenof[$lang][0]['value']) ? $node->field_chat_childrenof[$lang][0]['value'] : '';
+      $tokens['[SHOW]'] = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
+      $tokens['[FEED]'] = isset($node->field_chat_feed[$lang][0]['value']) ? $node->field_chat_feed[$lang][0]['value'] : '';
+      $tokens['[STATE]'] = isset($node->field_chat_state[$lang][0]['value']) ? $node->field_chat_state[$lang][0]['value'] : '';
+      $tokens['[SOURCE]'] = isset($node->field_chat_source[$lang][0]['value']) ? $node->field_chat_source[$lang][0]['value'] : '';
+      $tokens['[MARKERS]'] = isset($node->field_chat_markers[$lang][0]['value']) ? $node->field_chat_markers[$lang][0]['value'] : '';
+      $tokens['[TAGS]'] = isset($node->field_chat_tags[$lang][0]['value']) ? $node->field_chat_tags[$lang][0]['value'] : '';
+      $tokens['[SORTORDER]'] = isset($node->field_chat_sortorder[$lang][0]['value']) ? $node->field_chat_sortorder[$lang][0]['value'] : '';
+      $tokens['[SAFEHTML]'] = isset($node->field_chat_safehtml[$lang][0]['value']) ? $node->field_chat_safehtml[$lang][0]['value'] : '';
+      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page;
+      $tokens['[CHILDREN]'] = 'children:0';
+
+      $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
+
+      $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
+    }
+    else {
+      $vars .= 'var chatWithFansEQL = ""; ';
+    }
+    $vars .= 'var maxComments = "20"; ';
+    $vars .= 'var maxWordsPerComment = 60; ';
+    $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
+
+    // TWEETS SECTION
+    $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
+    if ($showTwitter) {
+      $eql = isset($node->field_twitter_eql_template[$lang][0]['value']) ? $node->field_twitter_eql_template[$lang][0]['value'] : '';
+      $eql = empty($eql) ? variable_get('usanetwork_social_twitter_echo_query_template', '') : $eql;
+
+      $tokens = array();
+      $tokens['[CHILDRENOF]'] = isset($node->field_twitter_childrenof[$lang][0]['value']) ? $node->field_twitter_childrenof[$lang][0]['value'] : '';
+      $tokens['[SHOW]'] = isset($node->field_twitter_show[$lang][0]['value']) ? $node->field_twitter_show[$lang][0]['value'] : '';
+      $tokens['[FEED]'] = isset($node->field_twitter_feed[$lang][0]['value']) ? $node->field_twitter_feed[$lang][0]['value'] : '';
+      $tokens['[STATE]'] = isset($node->field_twitter_state[$lang][0]['value']) ? $node->field_twitter_state[$lang][0]['value'] : '';
+      $tokens['[SOURCE]'] = isset($node->field_twitter_source[$lang][0]['value']) ? $node->field_twitter_source[$lang][0]['value'] : '';
+      $tokens['[MARKERS]'] = isset($node->field_twitter_markers[$lang][0]['value']) ? $node->field_twitter_markers[$lang][0]['value'] : '';
+      $tokens['[TAGS]'] = isset($node->field_twitter_tags[$lang][0]['value']) ? $node->field_twitter_tags[$lang][0]['value'] : '';
+      $tokens['[SORTORDER]'] = isset($node->field_twitter_sortorder[$lang][0]['value']) ? $node->field_twitter_sortorder[$lang][0]['value'] : '';
+      $tokens['[SAFEHTML]'] = isset($node->field_twitter_safehtml[$lang][0]['value']) ? $node->field_twitter_safehtml[$lang][0]['value'] : '';
+      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_twitter_itemsperpage[$lang][0]['value']) ? $node->field_twitter_itemsperpage[$lang][0]['value'] : '';
+      $tokens['[CHILDREN]'] = isset($node->field_twitter_children[$lang][0]['value']) ? $node->field_twitter_children[$lang][0]['value'] : '';
+
+      $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
+      $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
+
+      // @TODO: SHOULD WE PULL IN TWITTER ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
+      $vars .= 'var twitterEQL = "' . $eql . '"; ';
+    }
+    else {
+      $vars .= 'var twitterEQL = ""; ';
+    }
+
+    // FACEBOOK SECTION
+    $showFacebook = isset($node->field_show_fb_page[$lang][0]['value']) ? $node->field_show_fb_page[$lang][0]['value'] : 0 ;
+    if ($showFacebook) {
+      $eql = isset($node->field_fb_eql_template[$lang][0]['value']) ? $node->field_fb_eql_template[$lang][0]['value'] : '';
+      $eql = empty($eql) ? variable_get('usanetwork_social_facebook_echo_query_template', '') : $eql;
+
+      $tokens = array();
+      $tokens['[CHILDRENOF]'] = isset($node->field_fb_childrenof[$lang][0]['value']) ? $node->field_fb_childrenof[$lang][0]['value'] : '';
+      $tokens['[SHOW]'] = isset($node->field_fb_show[$lang][0]['value']) ? $node->field_fb_show[$lang][0]['value'] : '';
+      $tokens['[FEED]'] = isset($node->field_fb_feed[$lang][0]['value']) ? $node->field_fb_feed[$lang][0]['value'] : '';
+      $tokens['[STATE]'] = isset($node->field_fb_state[$lang][0]['value']) ? $node->field_fb_state[$lang][0]['value'] : '';
+      $tokens['[SOURCE]'] = isset($node->field_fb_source[$lang][0]['value']) ? $node->field_fb_source[$lang][0]['value'] : '';
+      $tokens['[MARKERS]'] = isset($node->field_fb_markers[$lang][0]['value']) ? $node->field_fb_markers[$lang][0]['value'] : '';
+      $tokens['[TAGS]'] = isset($node->field_fb_tags[$lang][0]['value']) ? $node->field_fb_tags[$lang][0]['value'] : '';
+      $tokens['[SORTORDER]'] = isset($node->field_fb_sortorder[$lang][0]['value']) ? $node->field_fb_sortorder[$lang][0]['value'] : '';
+      $tokens['[SAFEHTML]'] = isset($node->field_fb_safehtml[$lang][0]['value']) ? $node->field_fb_safehtml[$lang][0]['value'] : '';
+      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_fb_itemsperpage[$lang][0]['value']) ? $node->field_fb_itemsperpage[$lang][0]['value'] : '';
+      $tokens['[CHILDREN]'] = isset($node->field_fb_children[$lang][0]['value']) ? $node->field_fb_children[$lang][0]['value'] : '';
+
+      $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
+      $echoAppKey = variable_get('usanetwork_social_facebook_echo_app_key', '');
+
+      // @TODO: SHOULD WE PULL IN FACEBOOK ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
+      $vars .= 'var facebookEQL = "' . $eql . '"; ';
+    }
+    else {
+      $vars .= 'var facebookEQL = ""; ';
+    }
+
+    // PINTEREST SECTION
+    $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;
+    if ($showPinterest) {
+      $pinterestUrl = isset($node->field_pinterest_url[$lang][0]['value']) ? $node->field_pinterest_url[$lang][0]['value'] : '';
+      $pinterestUrl = empty($pinterestUrl) ? variable_get('usanetwork_social_pinterest_url', '') : $pinterestUrl;
+
+      $vars .= 'var pinterestUrl = "' . $pinterestUrl . '"; ';
+    }
+    else {
+      $vars .= 'var pinterestUrl = ""; ';
+    }
+
+    // GETGLUE SECTION
+    $showGetGlue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0 ;
+    if ($showGetGlue) {
+      $getGlueShow = isset($node->field_getglue_show[$lang][0]['value']) ? $node->field_getglue_show[$lang][0]['value'] : '';
+      $getGlueShow = empty($getGlueShow) ? variable_get('usanetwork_social_getglue_show', '') : $getGlueShow;
+      $getGlueSticker = isset($node->field_getglue_sticker_name[$lang][0]['value']) ? $node->field_getglue_sticker_name[$lang][0]['value'] : '';
+  //    $getGlueUrl = 'http://getglue.com/tv_shows/' . $getGlueShow . '/' .$getGlueSticker;
+      $getGlueUrl = 'http://getglue.com/tv_shows/' . $getGlueShow;
+
+      $vars .= 'var getGlueUrl = "' . $getGlueUrl . '"; ';
+      $vars .= 'var getGlueShowName = "' . $getGlueShow . '"; '; // $showName . '"; ';
+    }
+    else {
+      $vars .= 'var getGlueUrl = ""; ';
+      $vars .= 'var getGlueShowName = ""; '; // $showName . '"; ';
+    }
+
+    // INSTAGRAM SECTION
+    $showInstagram = isset($node->field_show_instagram_page[$lang][0]['value']) ? $node->field_show_instagram_page[$lang][0]['value'] : 0 ;
+    if ($showInstagram) {
+      $instagramShowId = isset($node->field_instagram_show_id[$lang][0]['value']) ? $node->field_instagram_show_id[$lang][0]['value'] : '';
+      $instagramShowId = empty($instagramShowId) ? variable_get('usanetwork_social_instagram_show_id', '') : $instagramShowId;
+
+      $vars .= 'var instagramShowId = "' . $instagramShowId . '"; ';
+    }
+    else {
+      $vars .= 'var instagramShowId = ""; ';
+    }
+
+    drupal_add_js($vars, array('type' => 'inline'));
+
+    drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
+    drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
+  //  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
+    drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
+    drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+    drupal_add_js('http://cdn.echoenabled.com/sdk/v3/loader.js', 'external');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/switch.js');
+
+    $output .= '<div id="usanetwork_social_show_homepage_chatter"><div id="usanetwork_social_chatter_title">';
+    if ($showTwitter) {
+      $output .= '<a id="navTwitter" href="#navTwitter"><span class="navTwitter">Tweets</span></a><span class="navSocial-empty-span"></span>';
+    }
+    if ($showChatPage) {
+      $output .= '<a id="navChatter" href="#navChatter"><span class="navChatter">Character Chatter</span></a><span class="navSocial-empty-span"></span>';
+    }
+    if ($showFacebook) {
+      $output .= '<a id="navFb" href="#navFb"><span class="navFb">FB</span></a><span class="navSocial-empty-span"></span>';
+    }
+    if ($showPinterest) {
+      $output .= '<a id="navPinterest" href="#navPinterest"><span class="navPinterest">Pinterest</span></a><span class="navSocial-empty-span"></span>';
+    }
+    if ($showGetGlue) {
+      $output .= '<a id="navGetGlue" href="#navGetGlue"><span class="navGetGlue">GetGlue</span></a><span class="navSocial-empty-span"></span>';
+    }
+    if ($showInstagram) {
+      $output .= '<a id="navInstagram" href="#navInstagram"><span class="navInstagram">Instagram</span></a>';
+    }
+    $output .= '</div></div>';
+
+        /*<div id="usanetwork_social_chatter_body">
+          <a href="'.$showBaseUrl.'/social/chat-with-fans">
+            <div id="usanetwork_social_show_comment"></div>
+            <div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>
+          </a>
+        </div>*/
+    $output .= '<div id="echo-stream">&nbsp;</div>';
+    $output .= '<div id="pinterest" class="widget-background"></div>';
+    $output .= '<div id="get-glue" class="widget-background"><div id="sticker" style="padding-top:20px"></div></div>';
+    $output .= '<div id="instagram" class="widget-background"></div>';
+    $output .= '<div id="usanetwork_social_section_join">';
+    $output .= '<span id="join-tweets">Check out more tweets<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
+    $output .= '<span id="join-chatter">Go chat with fans<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
+    $output .= '<span id="join-buzz">Get more social buzz<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
+    $output .= '<span class="usanetwork_social_pointer_image"></span>';
+    $output .= '</div>';
+    return $output;
   }
-
-  if (!isset($node->nid)) {
-    drupal_not_found();
-  }
-
-  $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
-  $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
-
-  // CHATTER SECTION
-  $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
-
-  if ($showChatPage) {
-  /* @TODO: CHECK THE FOLLOWING -- DV: COMMENTING THIS FOR NOW AS WE SHOULD NOT NEED POST COMMENTS SECTION ON THE SHOW HOMEPAGE SOCIAL BLOCK CHATTER SECTION?
-    $submitTargetUrl = isset($node->field_chat_submittargeturl[$lang][0]['value']) ? $node->field_chat_submittargeturl[$lang][0]['value'] : '';
-    $submitTargetUrl = empty($submitTargetUrl) ? variable_get('usanetwork_social_chat_submittargeturl', '') : $submitTargetUrl;
-
-    $identityManagerUrl = isset($node->field_chat_identitymanagerurl[$lang][0]['value']) ? $node->field_chat_identitymanagerurl[$lang][0]['value'] : '';
-    $identityManagerUrl = empty($identityManagerUrl) ? variable_get('usanetwork_social_chat_identitymanagerurl', '') : $identityManagerUrl;
-  */
-    $eql = isset($node->field_chat_eql_template[$lang][0]['value']) ? $node->field_chat_eql_template[$lang][0]['value'] : '';
-    $eql = empty($eql) ? variable_get('usanetwork_social_chat_echo_query_template', '') : $eql;
-
-    $tokens = array();
-    $tokens['[CHILDRENOF]'] = isset($node->field_chat_childrenof[$lang][0]['value']) ? $node->field_chat_childrenof[$lang][0]['value'] : '';
-    $tokens['[SHOW]'] = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
-    $tokens['[FEED]'] = isset($node->field_chat_feed[$lang][0]['value']) ? $node->field_chat_feed[$lang][0]['value'] : '';
-    $tokens['[STATE]'] = isset($node->field_chat_state[$lang][0]['value']) ? $node->field_chat_state[$lang][0]['value'] : '';
-    $tokens['[SOURCE]'] = isset($node->field_chat_source[$lang][0]['value']) ? $node->field_chat_source[$lang][0]['value'] : '';
-    $tokens['[MARKERS]'] = isset($node->field_chat_markers[$lang][0]['value']) ? $node->field_chat_markers[$lang][0]['value'] : '';
-    $tokens['[TAGS]'] = isset($node->field_chat_tags[$lang][0]['value']) ? $node->field_chat_tags[$lang][0]['value'] : '';
-    $tokens['[SORTORDER]'] = isset($node->field_chat_sortorder[$lang][0]['value']) ? $node->field_chat_sortorder[$lang][0]['value'] : '';
-    $tokens['[SAFEHTML]'] = isset($node->field_chat_safehtml[$lang][0]['value']) ? $node->field_chat_safehtml[$lang][0]['value'] : '';
-    $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page;
-    $tokens['[CHILDREN]'] = 'children:0';
-
-    $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
-
-    $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
-  }
-  else {
-    $vars .= 'var chatWithFansEQL = ""; ';
-  }
-  $vars .= 'var maxComments = "20"; ';
-  $vars .= 'var maxWordsPerComment = 60; ';
-  $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
-
-  // TWEETS SECTION
-  $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
-  if ($showTwitter) {
-    $eql = isset($node->field_twitter_eql_template[$lang][0]['value']) ? $node->field_twitter_eql_template[$lang][0]['value'] : '';
-    $eql = empty($eql) ? variable_get('usanetwork_social_twitter_echo_query_template', '') : $eql;
-
-    $tokens = array();
-    $tokens['[CHILDRENOF]'] = isset($node->field_twitter_childrenof[$lang][0]['value']) ? $node->field_twitter_childrenof[$lang][0]['value'] : '';
-    $tokens['[SHOW]'] = isset($node->field_twitter_show[$lang][0]['value']) ? $node->field_twitter_show[$lang][0]['value'] : '';
-    $tokens['[FEED]'] = isset($node->field_twitter_feed[$lang][0]['value']) ? $node->field_twitter_feed[$lang][0]['value'] : '';
-    $tokens['[STATE]'] = isset($node->field_twitter_state[$lang][0]['value']) ? $node->field_twitter_state[$lang][0]['value'] : '';
-    $tokens['[SOURCE]'] = isset($node->field_twitter_source[$lang][0]['value']) ? $node->field_twitter_source[$lang][0]['value'] : '';
-    $tokens['[MARKERS]'] = isset($node->field_twitter_markers[$lang][0]['value']) ? $node->field_twitter_markers[$lang][0]['value'] : '';
-    $tokens['[TAGS]'] = isset($node->field_twitter_tags[$lang][0]['value']) ? $node->field_twitter_tags[$lang][0]['value'] : '';
-    $tokens['[SORTORDER]'] = isset($node->field_twitter_sortorder[$lang][0]['value']) ? $node->field_twitter_sortorder[$lang][0]['value'] : '';
-    $tokens['[SAFEHTML]'] = isset($node->field_twitter_safehtml[$lang][0]['value']) ? $node->field_twitter_safehtml[$lang][0]['value'] : '';
-    $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_twitter_itemsperpage[$lang][0]['value']) ? $node->field_twitter_itemsperpage[$lang][0]['value'] : '';
-    $tokens['[CHILDREN]'] = isset($node->field_twitter_children[$lang][0]['value']) ? $node->field_twitter_children[$lang][0]['value'] : '';
-
-    $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
-    $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
-
-    // @TODO: SHOULD WE PULL IN TWITTER ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
-    $vars .= 'var twitterEQL = "' . $eql . '"; ';
-  }
-  else {
-    $vars .= 'var twitterEQL = ""; ';
-  }
-
-  // FACEBOOK SECTION
-  $showFacebook = isset($node->field_show_fb_page[$lang][0]['value']) ? $node->field_show_fb_page[$lang][0]['value'] : 0 ;
-  if ($showFacebook) {
-    $eql = isset($node->field_fb_eql_template[$lang][0]['value']) ? $node->field_fb_eql_template[$lang][0]['value'] : '';
-    $eql = empty($eql) ? variable_get('usanetwork_social_facebook_echo_query_template', '') : $eql;
-
-    $tokens = array();
-    $tokens['[CHILDRENOF]'] = isset($node->field_fb_childrenof[$lang][0]['value']) ? $node->field_fb_childrenof[$lang][0]['value'] : '';
-    $tokens['[SHOW]'] = isset($node->field_fb_show[$lang][0]['value']) ? $node->field_fb_show[$lang][0]['value'] : '';
-    $tokens['[FEED]'] = isset($node->field_fb_feed[$lang][0]['value']) ? $node->field_fb_feed[$lang][0]['value'] : '';
-    $tokens['[STATE]'] = isset($node->field_fb_state[$lang][0]['value']) ? $node->field_fb_state[$lang][0]['value'] : '';
-    $tokens['[SOURCE]'] = isset($node->field_fb_source[$lang][0]['value']) ? $node->field_fb_source[$lang][0]['value'] : '';
-    $tokens['[MARKERS]'] = isset($node->field_fb_markers[$lang][0]['value']) ? $node->field_fb_markers[$lang][0]['value'] : '';
-    $tokens['[TAGS]'] = isset($node->field_fb_tags[$lang][0]['value']) ? $node->field_fb_tags[$lang][0]['value'] : '';
-    $tokens['[SORTORDER]'] = isset($node->field_fb_sortorder[$lang][0]['value']) ? $node->field_fb_sortorder[$lang][0]['value'] : '';
-    $tokens['[SAFEHTML]'] = isset($node->field_fb_safehtml[$lang][0]['value']) ? $node->field_fb_safehtml[$lang][0]['value'] : '';
-    $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_fb_itemsperpage[$lang][0]['value']) ? $node->field_fb_itemsperpage[$lang][0]['value'] : '';
-    $tokens['[CHILDREN]'] = isset($node->field_fb_children[$lang][0]['value']) ? $node->field_fb_children[$lang][0]['value'] : '';
-
-    $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
-    $echoAppKey = variable_get('usanetwork_social_facebook_echo_app_key', '');
-
-    // @TODO: SHOULD WE PULL IN FACEBOOK ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
-    $vars .= 'var facebookEQL = "' . $eql . '"; ';
-  }
-  else {
-    $vars .= 'var facebookEQL = ""; ';
-  }
-
-  // PINTEREST SECTION
-  $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;
-  if ($showPinterest) {
-    $pinterestUrl = isset($node->field_pinterest_url[$lang][0]['value']) ? $node->field_pinterest_url[$lang][0]['value'] : '';
-    $pinterestUrl = empty($pinterestUrl) ? variable_get('usanetwork_social_pinterest_url', '') : $pinterestUrl;
-
-    $vars .= 'var pinterestUrl = "' . $pinterestUrl . '"; ';
-  }
-  else {
-    $vars .= 'var pinterestUrl = ""; ';
-  }
-
-  // GETGLUE SECTION
-  $showGetGlue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0 ;
-  if ($showGetGlue) {
-    $getGlueShow = isset($node->field_getglue_show[$lang][0]['value']) ? $node->field_getglue_show[$lang][0]['value'] : '';
-    $getGlueShow = empty($getGlueShow) ? variable_get('usanetwork_social_getglue_show', '') : $getGlueShow;
-    $getGlueSticker = isset($node->field_getglue_sticker_name[$lang][0]['value']) ? $node->field_getglue_sticker_name[$lang][0]['value'] : '';
-//    $getGlueUrl = 'http://getglue.com/tv_shows/' . $getGlueShow . '/' .$getGlueSticker;
-    $getGlueUrl = 'http://getglue.com/tv_shows/' . $getGlueShow;
-
-    $vars .= 'var getGlueUrl = "' . $getGlueUrl . '"; ';
-    $vars .= 'var getGlueShowName = "' . $getGlueShow . '"; '; // $showName . '"; ';
-  }
-  else {
-    $vars .= 'var getGlueUrl = ""; ';
-    $vars .= 'var getGlueShowName = ""; '; // $showName . '"; ';
-  }
-
-  // INSTAGRAM SECTION
-  $showInstagram = isset($node->field_show_instagram_page[$lang][0]['value']) ? $node->field_show_instagram_page[$lang][0]['value'] : 0 ;
-  if ($showInstagram) {
-    $instagramShowId = isset($node->field_instagram_show_id[$lang][0]['value']) ? $node->field_instagram_show_id[$lang][0]['value'] : '';
-    $instagramShowId = empty($instagramShowId) ? variable_get('usanetwork_social_instagram_show_id', '') : $instagramShowId;
-
-    $vars .= 'var instagramShowId = "' . $instagramShowId . '"; ';
-  }
-  else {
-    $vars .= 'var instagramShowId = ""; ';
-  }
-
-  drupal_add_js($vars, array('type' => 'inline'));
-
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
-  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
-  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
-  drupal_add_js('http://cdn.echoenabled.com/sdk/v3/loader.js', 'external');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/switch.js');
-
-  $output .= '<div id="usanetwork_social_show_homepage_chatter"><div id="usanetwork_social_chatter_title">';
-  if ($showTwitter) {
-    $output .= '<a id="navTwitter" href="#navTwitter"><span class="navTwitter">Tweets</span></a><span class="navSocial-empty-span"></span>';
-  }
-  if ($showChatPage) {
-    $output .= '<a id="navChatter" href="#navChatter"><span class="navChatter">Character Chatter</span></a><span class="navSocial-empty-span"></span>';
-  }
-  if ($showFacebook) {
-    $output .= '<a id="navFb" href="#navFb"><span class="navFb">FB</span></a><span class="navSocial-empty-span"></span>';
-  }
-  if ($showPinterest) {
-    $output .= '<a id="navPinterest" href="#navPinterest"><span class="navPinterest">Pinterest</span></a><span class="navSocial-empty-span"></span>';
-  }
-  if ($showGetGlue) {
-    $output .= '<a id="navGetGlue" href="#navGetGlue"><span class="navGetGlue">GetGlue</span></a><span class="navSocial-empty-span"></span>';
-  }
-  if ($showInstagram) {
-    $output .= '<a id="navInstagram" href="#navInstagram"><span class="navInstagram">Instagram</span></a>';
-  }
-  $output .= '</div></div>';
-
-      /*<div id="usanetwork_social_chatter_body">
-        <a href="'.$showBaseUrl.'/social/chat-with-fans">
-          <div id="usanetwork_social_show_comment"></div>
-          <div id="usanetwork_social_join"><span class="usanetwork_social_pointer_image"></span><span class="usanetwork_social_join_msg">join the conversation</span></div>
-        </a>
-      </div>*/
-  $output .= '<div id="echo-stream">&nbsp;</div>';
-  $output .= '<div id="pinterest" class="widget-background"></div>';
-  $output .= '<div id="get-glue" class="widget-background"><div id="sticker" style="padding-top:20px"></div></div>';
-  $output .= '<div id="instagram" class="widget-background"></div>';
-  $output .= '<div id="usanetwork_social_section_join">';
-  $output .= '<span id="join-tweets">Check out more tweets<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
-  $output .= '<span id="join-chatter">Go chat with fans<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
-  $output .= '<span id="join-buzz">Get more social buzz<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></span>';
-  $output .= '<span class="usanetwork_social_pointer_image"></span>';
-  $output .= '</div>';
-  return $output;
 }
 
   /**

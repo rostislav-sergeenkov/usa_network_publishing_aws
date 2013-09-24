@@ -23,36 +23,25 @@ function loadUsanetworkShowNavMenu() {
 }
 
 
-if (window.attachEvent) {
-  window.attachEvent('onload', create_show_menu);
-} else if (window.addEventListener) {
-  window.addEventListener('load', create_show_menu, false);
+if(isIE9) {
+  xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
+  xmlhttp.onprogress = function() {};
 } else {
-  document.addEventListener('load', create_show_menu, false);
+
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      loadUsanetworkShowNavMenu();
+    }
+  };
 }
 
-
-function create_show_menu() {
+// TODO: change the 'stage' part of each URL to www & remove cache buster
+if(typeof $show_id != 'undefined') {
+  //document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?923"></script>');
   if(isIE9) {
-    xmlhttp.onload = function() { loadUsanetworkShowNavMenu(); };
-    xmlhttp.onprogress = function() {};
+    xmlhttp.open("GET", url);
   } else {
-
-    xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        loadUsanetworkShowNavMenu();
-      }
-    };
+    xmlhttp.open("GET", url, true);
   }
-
-  // TODO: change the 'stage' part of each URL to www & remove cache buster
-  if(typeof $show_id != 'undefined') {
-    //document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?923"></script>');
-    if(isIE9) {
-      xmlhttp.open("GET", url);
-    } else {
-      xmlhttp.open("GET", url, true);
-    }
-    xmlhttp.send();
-  }
+  xmlhttp.send();
 }

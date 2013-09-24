@@ -514,3 +514,11 @@ function usanetwork_core_update_7122() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * removing gigya share bar on the drupal user login page
+ */
+function usanetwork_core_update_7123() {  
+  variable_set('gigya_login_enabled', FALSE);
+}
+

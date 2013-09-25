@@ -306,8 +306,9 @@ body.usa-social {
 /* lyris */
 
 .lyris  {
-  background-color: $gray-dark;
+  background-color: $black-into-gray;
   margin-bottom: 15px;
+  border: 1px solid $gray-med;
   .pane-content {
     padding: 19px 15px;
     border-top: 1px solid $black-dark;
@@ -362,6 +363,7 @@ body.usa-social {
   h2 {
     @extend %social-sidebar-header;
     @extend %social-header-text;
+    @include background(linear-gradient(center top , $black-true, $gray-dark));
   }
 }
 

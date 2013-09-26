@@ -60,7 +60,7 @@ function GenerateParams($email, $demographic_value) {
     $xml.= '<DATA type="email">'.$email.'</DATA>';
   }
   if($demographic_value != null){
-      $xml.= '<DATA type="demographic" id="'.$this->lyris_demographic_id.'">'.$value.'</DATA>';
+      $xml.= '<DATA type="demographic" id="'.$this->lyris_demographic_id.'">'.$demographic_value.'</DATA>';
   }
   if($this->lyris_password != ''){
     $xml.= '<DATA type="extra" id="password">'.$this->lyris_password.'</DATA>';

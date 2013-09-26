@@ -8,24 +8,6 @@
  */
 
 /**
- * Show name config assosiative array.
- */
-
-$show_names = array(
-              'whitecollar' => 'White Collar',
-              'themoment' => 'The Moment',
-              'summercamp' => 'Summer Camp',
-              'suits' => 'Suits',
-              'royalpains' => 'Royal Pains',
-              'psych' => 'Psych',
-              'necessaryroughness' => 'Necessary Roughness',
-              'graceland' => 'Graceland',
-              'covertaffairs' => 'Covert Affairs',
-              'burnnotice' => 'Burn Notice'
-              );
-variable_set('show_names_config_array', $show_names);
-
-/**
  * Implementation of hook_menu().
  */
 
@@ -40,9 +22,11 @@ function usanetwork_lyris_menu() {
   );
   return $items;
 }
+
 /**
  * Implementation of hook_block_info().
  */
+
 function usanetwork_lyris_block_info() {
   $blocks['newsletter_subscription'] = array(
     'info' => t('Newsletter Signup'),
@@ -52,30 +36,31 @@ function usanetwork_lyris_block_info() {
 
   return $blocks;
 }
+
 /**
  * Implementation of hook_block_view().
  */
+
 function usanetwork_lyris_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
     case 'newsletter_subscription':
       $node = node_load(arg(1));
-      if (isset($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']) && !empty($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'])) {
-        $lyris = usanetwork_lyris_load_lyris();
-        $lyris_id = $lyris->GetListID($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']);
-        if (!empty($lyris_id)) {
+      // Block will be vissible depends up on the admin configuration in the tvshow content type
+      if($node->field_show_news_letter[und][0]['value']) {
           $block['subject'] = t('Sign Up for Newsletter');
           $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
-        }
       }
       break;
   }
   return $block;
 }
+
 /**
  * Implementation of hook_theme().
  */
+
 function usanetwork_lyris_theme() {
   $themes = array(
     'newsletter_subscription' => array(
@@ -84,6 +69,10 @@ function usanetwork_lyris_theme() {
   );
   return $themes;
 }
+
+/**
+ * Implementation of newsletter subscription form.
+ */
 
 function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
   $form['newsletter'] = array(
@@ -103,13 +92,9 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
       'length[10, 100]',
     ),
   );
-  $form['newsletter']['show_ref_lyris_id'] = array(
+  $form['newsletter']['show_property'] = array(
     '#type' => 'hidden',
-    '#value' => isset($node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value']) ? $node->field_usa_lyris_listid[LANGUAGE_NONE][0]['value'] : '',
-  );
-  $form['newsletter']['title'] = array(
-    '#type' => 'hidden',
-    '#value' => isset($node->title) ? $node->title : '',
+    '#value' => isset($node->field_shows_property['und'][0]['value']) ? $node->field_shows_property['und'][0]['value'] : '',
   );
   $form['newsletter']['submit'] = array(
     '#type' => 'submit',
@@ -125,6 +110,10 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $node) {
   return $form;
 }
 
+/**
+ * Implementation of newsletter subscription ajax callback.
+ */
+
 function newsletter_lyris_ajax_callback($form, $form_state) {
   if ($form_state['values']['email'] == '' || !(valid_email_address($form_state['values']['email']))) {
     list($form, $form_state) = ajax_get_form();
@@ -133,25 +122,26 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
     return $form['newsletter'];
   }
   $user['email'] = $form_state['values']['email'];
-  $user['list'] = $form_state['values']['show_ref_lyris_id'];
-  $node = node_load(arg(1));
-  if(isset($node->field_pathauto_alias['und'][0]['value']))
-    $show_alias = $node->field_pathauto_alias['und'][0]['value'];
-  else
-    $show_alias = null;
-  $result = usanetwork_lyris_assign_user_to_list($user, $show_alias);
-  if ($result) {
-    if (empty($form['newsletter']['title'])) {
-      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up!') . '</span>';
-    } else {
-      $form['newsletter']['#markup'] = '<span class="success">' . t('Thanks for signing up for the %title newsletter!',  array('%title' => $form_state['values']['title'])) . '</span>';
+  if($form_state['values']['show_property'] != '') {
+    $show_property = $form_state['values']['show_property'];
+  }
+  else {
+    $show_property = null;
+  }
+  $result = usanetwork_lyris_assign_user_to_list($user, $show_property, 'newsletter');
+  preg_match("/<TYPE>(.*?)<\/TYPE>/", $result, $matches);
+  if($matches[1] == 'success') {
+    $form['newsletter']['#markup'] = t('Your email id %title is added successfully in the list,', array('%title' => $form_state['values']['email']));
+    return $form['newsletter'];
     }
-    return $form['newsletter'];
-  } elseif (valid_email_address($form_state['values']['email']) && $result == null) {
-    $form['newsletter']['#markup'] = t('This email address is already registered for the %title newsletter.', array('%title' => $form_state['values']['title'])) ;
-    return $form['newsletter'];
-  } else {
-    $form['newsletter']['#markup'] = t('Problem subscribing, please try again later.');
+  else {
+    preg_match("/<DATA>(.*?)<\/DATA>/", $result, $matches);
+    $search  = array('<DATA>', '</DATA>');
+    $replace = array('', '');
+    $error_message = str_replace($search, $replace, $matches[0]);
+    list($form, $form_state) = ajax_get_form();
+    drupal_process_form($form['#newsletter'], $form, $form_state);
+    form_set_error('', '<span class="error">' . t('%title,', array('%title' => $error_message)) . '</span>');    
     return $form['newsletter'];
   }
 }
@@ -161,10 +151,12 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
  *
  * @return Lyris Object
  */
+
 function usanetwork_lyris_load_lyris() {
   //suppress all the error from Sparklist
   //error_reporting(0);
   $lyris_config = variable_get('usanetwork_lyris_active', '');
+  //Lyris object will be created depends up on the admin config
   if($lyris_config) {
     $lyris_endpoint = variable_get('usanetwork_lyrishq_endpoint', 'https://www.elabs13.com/API/mailing_list.html');
     $lyris_password = variable_get('usanetwork_lyrishq_password', '');
@@ -205,24 +197,29 @@ function usanetwork_lyris_load_lyris() {
  *
  * @return array
  */
-function usanetwork_lyris_assign_user_to_list($user, $show_alias = null) {
+
+function usanetwork_lyris_assign_user_to_list($user, $show_property = null, $from = null) {
   $lyris = usanetwork_lyris_load_lyris();
   $lyris_config = variable_get('usanetwork_lyris_active', '');
   if($lyris_config) {
-    if($show_alias != null) {
-        $show_names_array = variable_get('show_names_config_array', '');
-        $demographic_value = $show_names_array[$show_alias];
+    if($show_property != null) {
+        $demographic_value = $show_property;
     }
     else {
       $demographic_value = null;
     }
     $lyrishq_response = $lyris->AddContactToMalingList($user['email'], $demographic_value, 'record', 'add');
-    $pattern = "/<TYPE>(.*?)<\/TYPE>/";
-    preg_match($pattern, $lyrishq_response, $matches);
-    if($matches[1] == 'success')
-      $member = 1;
-    else
-      $member = 0;
+    if($from != null) {
+      $member = $lyrishq_response;
+    }
+    else {
+      $pattern = "/<TYPE>(.*?)<\/TYPE>/";
+      preg_match($pattern, $lyrishq_response, $matches);
+      if($matches[1] == 'success')
+        $member = 1;
+      else
+        $member = 0;
+   }
   }
   else {
     $member = $lyris->CreateSingleMember($user['email'], 'USA Network User', $user['list']);
@@ -239,6 +236,7 @@ function usanetwork_lyris_assign_user_to_list($user, $show_alias = null) {
  * @param Object $user User object
  *
  */
+
 function usanetwork_lyris_unsub_user_from_list($user) {
   $lyris->UpdateMemberStatus($user['email'], $user['list'], 'unsub');
 }

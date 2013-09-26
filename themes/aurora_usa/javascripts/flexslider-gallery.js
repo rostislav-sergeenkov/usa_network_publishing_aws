@@ -23,12 +23,17 @@
             },
             after: function(slider){
               update_counter(slider);
+              update_ads_and_omniture();
             }
           });
         function update_counter(slider) {
           $current = slider.currentSlide + 1;
           $counter_output = $current + "/" + $count;
           $counter_selector.html($counter_output);
+        }
+        function update_ads_and_omniture() {
+          clearTimeout(usa_adRefreshTO);
+          usa_refreshBannerAd();
         }
       });
 

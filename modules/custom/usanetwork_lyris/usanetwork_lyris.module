@@ -48,7 +48,8 @@ function usanetwork_lyris_block_view($delta = '') {
     case 'newsletter_subscription':
       $node = node_load(arg(1));
       // Block will be vissible depends up on the admin configuration in the tvshow content type
-      if($node->field_show_news_letter[und][0]['value']) {
+      $lyris_config = variable_get('usanetwork_lyris_active', '');
+      if(($node->field_show_news_letter[und][0]['value']) && ($lyris_config)) {
           $block['subject'] = t('Sign Up for Newsletter');
           $block['content'] = drupal_get_form('usanetwork_lyris_newsletter_subscription', $node);
       }

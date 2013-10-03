@@ -80,7 +80,13 @@ function usanetwork_promo_strongarm() {
           'weight' => '30',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'usanetwork_promo_preview' => array(
+          'teaser' => array(
+            'visible' => FALSE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__usanetwork_promo'] = $strongarm;

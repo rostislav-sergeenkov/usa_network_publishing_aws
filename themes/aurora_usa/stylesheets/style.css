@@ -1,3 +1,4 @@
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2400,6 +2401,13 @@ input[type="radio"], input[type="checkbox"] {
 .node-usanetwork-promo.promo-hide-overlay [id='person-content'] .node-media-gallery .meta.field-name-title,
 [id='person-content'] .node-media-gallery .node-usanetwork-promo.promo-hide-overlay .meta.field-name-title {
   background: none;
+}
+
+.node-usanetwork-promo .promo-preview-iframe {
+  border: 0 none;
+  height: 254px;
+  overflow: hidden;
+  width: 304px;
 }
 
 .filter-dropdown {

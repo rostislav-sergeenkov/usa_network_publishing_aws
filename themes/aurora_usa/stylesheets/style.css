@@ -1,3 +1,4 @@
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2400,6 +2401,13 @@ input[type="radio"], input[type="checkbox"] {
 .node-usanetwork-promo.promo-hide-overlay [id='person-content'] .node-media-gallery .meta.field-name-title,
 [id='person-content'] .node-media-gallery .node-usanetwork-promo.promo-hide-overlay .meta.field-name-title {
   background: none;
+}
+
+.node-usanetwork-promo .promo-preview-iframe {
+  border: 0 none;
+  height: 254px;
+  overflow: hidden;
+  width: 304px;
 }
 
 .filter-dropdown {
@@ -8066,8 +8074,9 @@ body.usa-social {
 
 /* lyris */
 .lyris {
-  background-color: #2d2d2d;
+  background-color: #232323;
   margin-bottom: 15px;
+  border: 1px solid #3d3d3d;
 }
 .lyris .pane-content {
   padding: 19px 15px;
@@ -8113,6 +8122,14 @@ body.usa-social {
 }
 .lyris em {
   font-style: normal;
+}
+
+#lyris h2 {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
+  background: -webkit-linear-gradient(center top, #000000, #2d2d2d);
+  background: -moz-linear-gradient(center top, #000000, #2d2d2d);
+  background: -o-linear-gradient(center top, #000000, #2d2d2d);
+  background: linear-gradient(center top, #000000, #2d2d2d);
 }
 
 #usanetwork-lyris-newsletter-subscription {

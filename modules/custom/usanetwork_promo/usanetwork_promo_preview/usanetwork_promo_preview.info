@@ -1,0 +1,7 @@
+name = USANetwork Promo preview
+description = adds a preview to the promo page
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+
+dependencies[] = usanetwork_promo

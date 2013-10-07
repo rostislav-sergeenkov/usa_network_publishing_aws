@@ -1,0 +1,104 @@
+<?php
+
+define('USANETWORK_PROMO_PREVIEW_VIEW_MODE', 'promo_teaser');
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_promo_preview_menu() {
+  $items = array();
+  $items['promo/%/preview-small'] = array(
+    'title' => 'Promo preview',
+    'page callback' => 'usanetwork_promo_preview_page',
+    'access callback' => true,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function usanetwork_promo_preview_field_extra_fields() {
+  // Add pseudo-field, so the position of the preview could be changed
+  $extra['node']['usanetwork_promo'] = array(
+    'display' => array(
+      'usanetwork_promo_preview' => array(
+        'label' => t('Preview'),
+        'weight' => -10,
+      ),
+    ),
+  );
+  return $extra;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_promo_preview_node_view($node, $view_mode, $langcode) {
+  if ($node->type != 'usanetwork_promo' || $view_mode == USANETWORK_PROMO_PREVIEW_VIEW_MODE) {
+    return;
+  }
+  // Attach pseudo-field to the node
+  // Render it like a common field
+  $content = '<iframe class="promo-preview-iframe" src="' . url('node/' . $node->nid) . '/preview-small"></iframe>';
+  $node->content['usanetwork_promo_preview'] = array(
+    '#theme' => 'field',
+    '#weight' => 0,
+    '#access' => TRUE,
+    '#label_display' => 'above',
+    '#view_mode' => $view_mode,
+    '#language' => isset($langcode) ? $langcode : LANGUAGE_NONE,
+    '#entity_type' => 'node',
+    '#bundle' => 'usanetwork_promo',
+    '#title' => t('Preview'),
+    '#field_name' => 'usanetwork_promo_preview',
+    '#field_type' => 'text',
+    '#formatter' => 'text_default',
+    '#items' => array(array('value' => $content)),
+    0 => array('#markup' => $content)
+  );
+
+  // If fences module exists set 'no_wrapper' for the preview field
+  if (module_exists('fences')) {
+    $fences = &drupal_static('fences_get_suggestion', array());
+    if (!isset($fences['node']['usanetwork_promo']['usanetwork_promo_preview'])) {
+      $fences['node']['usanetwork_promo']['usanetwork_promo_preview'] = 'no_wrapper';
+    }
+  }
+}
+
+/**
+ * Promo preview page callback
+ */
+function usanetwork_promo_preview_page() {
+  // Get node path from the current one and extract node id
+  $node_path = explode('/', current_path());
+  array_pop($node_path);
+  $node_path = explode('/', drupal_get_normal_path(implode('/', $node_path)));
+  if ($node_path[0] == 'node' && is_numeric($node_path[1])) {
+    $nid = $node_path[1];
+    // Load the node
+    if ($node = node_load($nid)) {
+      // Check access to the node
+      $access = node_access('view', $node);
+      if (!$access) {
+        drupal_access_denied();
+        return;
+      }
+
+      // Render the node, wrap it with <html> and add css
+      $node_output = node_view($node, USANETWORK_PROMO_PREVIEW_VIEW_MODE);
+      $variables = array(
+        'page' => array(
+          '#children' => drupal_render($node_output),
+        )
+      );
+      print theme('html', $variables);
+      die();
+    }
+  }
+
+  drupal_not_found();
+}

@@ -229,13 +229,14 @@ function usanetwork_views_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::gigya_shareui_node_action' => array(
+/*    'action::gigya_shareui_node_action' => array(
       'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
     ),
+*/
     'action::node_unpublish_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,

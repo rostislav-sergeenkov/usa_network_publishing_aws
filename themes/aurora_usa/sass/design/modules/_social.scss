@@ -498,6 +498,14 @@ body.usa-social {
   p {
     margin: 0 0 10px;
   }
+  .echo-item-body .echo-primaryColor {
+    .echo-item-text {
+      a:hover {
+        color: $gray-med;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .echo-item-body {
@@ -610,7 +618,7 @@ input.echo-submit-text {
 }
 
 .echo-item-content {
-  color: $gray-extra-light;
+  color: $gray-med;
   position: relative;
   margin-bottom: 2px;
   padding: 8px 0 12px;

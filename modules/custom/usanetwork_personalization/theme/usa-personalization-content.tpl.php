@@ -36,9 +36,9 @@ $avatar_html = '<span class="avatar"><img src="'. $defaultAvatar . '"/></span>';
   <div id="personalization-sidebar" class="col">
       <div id="personalization-user-info">
         <div id="personalization-user-avatar" class="avatar"><?php print $avatar_html; ?></div>
-      </div>  
+      </div>
       <div id="personalization-navigation">
-        <ul class="personalization-logged-in">      
+        <ul class="personalization-logged-in">
           <li class="personalization-nav-item personalization-latest-updates">Latest Updates</li>
           <li class="personalization-nav-item active personalization-my-activity">My Activity</li>
           <li class="personalization-nav-item personalization-friends">Friends</li>

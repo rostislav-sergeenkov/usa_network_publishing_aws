@@ -90,6 +90,7 @@ function usanetwork_aspot_field_group_info() {
     'children' => array(
       0 => 'field_usa_aspot_desktop',
       1 => 'field_usa_aspot_mobile',
+      2 => 'field_usa_aspot_tablet_portrait',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

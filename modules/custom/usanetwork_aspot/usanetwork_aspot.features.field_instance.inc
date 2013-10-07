@@ -551,6 +551,85 @@ Suggested max dimensions 380px x 80px<br/>
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_usa_aspot_tablet_portrait'
+  $field_instances['node-usanetwork_aspot-field_usa_aspot_tablet_portrait'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'deleted' => 0,
+    'description' => 'Tablet Portrait image. Minimum 1230w x 700h.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_aspot_tablet_portrait',
+    'label' => 'Tablet Portrait',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => 'aspot_tablet',
+      'file_extensions' => 'png gif jpg jpeg',
+      'focus' => 0,
+      'focus_lock_ratio' => 0,
+      'focus_min_size' => '',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '1230x700',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'upload' => 'upload',
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_usa_aspot_txt1'
   $field_instances['node-usanetwork_aspot-field_usa_aspot_txt1'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -858,6 +937,8 @@ Suggested max dimensions 380px x 80px<br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');
   t('Show');
+  t('Tablet Portrait');
+  t('Tablet Portrait image. Minimum 1230w x 700h.');
   t('Text Line 1 Font Size');
   t('Text Line 1 Image');
   t('Text Line 2 Font Size');

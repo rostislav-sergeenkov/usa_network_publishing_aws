@@ -80,7 +80,8 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
 
   <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
-    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
+    <?php if ($media_tablet_portrait): ?><?php print $media_tablet_portrait; ?><?php endif; ?>
+    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>   
   </div>
 
 <?php if ($link || $link !== '&nbsp;'): ?>

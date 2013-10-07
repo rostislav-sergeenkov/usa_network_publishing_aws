@@ -4,6 +4,7 @@ function ds_a_spot() {
     'label' => t('A-spot'),
     'regions' => array(
       'media_desktop' => t('Desktop Image'),
+      'media_tablet_portrait' => t('Tablet Portrait Image'),
       'media_mobile' => t('Mobile Image'),
       'hex' => t('hex'),
       'text_1' => t('Text line 1'),

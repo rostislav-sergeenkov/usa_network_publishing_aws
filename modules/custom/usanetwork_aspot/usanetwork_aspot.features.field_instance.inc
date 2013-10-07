@@ -547,7 +547,7 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -626,7 +626,7 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 

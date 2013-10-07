@@ -1,8 +1,10 @@
 .usa-home-featured {
+  @extend %grid-small-wide-two-three-four;
   position: relative;
   background-color: $black;
   padding: 5px 0 36px;
-  margin-bottom: 30px;
+  margin:0 auto 30px;
+  width:100%;
   @include breakpoint($bp-menu-switch) {
     margin-bottom: 0px;
   }
@@ -35,6 +37,30 @@
   .usa-adrails &, .ie9 &, .ie8 & {
     background-color: transparent;
   }
+  .view {
+    margin:0 auto;
+    li {
+      list-style: none;
+    }
+    .node {
+      border: 2px solid $gray-dark;
+      .ie8 & {
+        width: 304px;
+      }
+      > a {
+        position: relative;
+        z-index: 1;
+        display: block;
+      }
+      .asset-img {
+        line-height: 1em;
+      }
+    }
+    div.carousel-item {
+      float:none;
+      border:0;
+    }
+  }
   li.carousel-item {
     @include carousel-item($carousel-smallest, 8px);
     @extend .title-overlay;
@@ -45,6 +71,29 @@
       @include carousel-item($carousel-medium);
     }
 
+    .meta {
+      @extend %metadata-holder;
+      height: 32px;
+      padding: 8px;
+      @include breakpoint($bp-home-2col) {
+        height: 44px;
+        padding: 12px 15px 8px;
+      }
+      @include breakpoint($bp-home-3col) {
+        height: 50px;
+      }
+      @include breakpoint($bp-home-widest) {
+        height: 77px;
+        max-width: none;
+      }
+      .usa-adrails &, .ie8 & {
+        height: 50px;
+        padding: 8px 15px 8px;
+        max-width: 221px;
+      }
+    }
+  }
+  li.grid-item {
     .meta {
       @extend %metadata-holder;
       height: 32px;
@@ -84,7 +133,8 @@
       font-size: 16px;
     }
   }
-  .caption {
+  .caption,
+  .view .node .caption {
     @extend %regular-8;
     line-height: 1;
     @include breakpoint($bp-home-2col) {
@@ -118,16 +168,16 @@
        text-transform: uppercase;
     }
   }
-  .carousel {
+  .carousel,
+  .view {
     .carousel-item {
        .caption {
         line-height: 13.5px;
         @include breakpoint($bp-home-2col) {
           line-height: 18px;
-        }  
+        }
       }
     }
-
     @include breakpoint($bp-home-3-fence) {
       > ul {
         margin-left: 8px !important;

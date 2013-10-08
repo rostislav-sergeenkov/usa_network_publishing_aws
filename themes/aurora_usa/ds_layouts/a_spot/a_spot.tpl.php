@@ -21,6 +21,10 @@ if($text_2_font_size == '&nbsp;') {
   $text_2_font_size = '';
 }
 
+if ($media_tablet_portrait == '&nbsp;') {
+  $media_tablet_portrait = '';
+}
+
 /*
  * adding custom css here
  */

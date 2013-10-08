@@ -1,0 +1,366 @@
+<?php
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Alters usa_homepage_node_form.
+ */
+function usanetwork_home_edit_form_usa_homepage_node_form_alter(&$form, &$form_state, $form_id) {
+  $move = array(
+    'field_usa_hp_brefs' => array(
+      '#title' => t('B Spot'),
+    ),
+    'field_usa_hp_crefs' => array(
+      '#title' => t('C Spot'),
+    ),
+  );
+
+  // Check if we have A Spots field
+  if (isset($form['field_usa_hp_arefs'][$form['field_usa_hp_arefs']['#language']])) {
+    $aspots =& $form['field_usa_hp_arefs'][$form['field_usa_hp_arefs']['#language']];
+    $aspots['#theme'] = 'usanetwork_home_edit_aspots_field_multiple_value';
+    $aspots['#title'] = t('References');
+
+    if (isset($form['#groups']['group_hp_aspots'])) {
+      $form['#groups']['group_hp_aspots']->label = t('Carousel management');
+      $form['#groups']['group_hp_aspots']->format_settings['instance_settings']['description'] = '';
+    }
+  }
+  else {
+    return;
+  }
+
+  // Move B and C spot fields to A spots table
+  foreach ($move as $field_name => $options) {
+    if (!isset($form[$field_name])) {
+      continue;
+    }
+    $field = $form[$field_name];
+    $lang = $field['#language'];
+    $children = element_children($field[$lang]);
+    $empty_field = null;
+
+    // Get the empty field
+    if ($field[$lang]['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+      if (($key = array_search('add_more', $children, true)) !== false) {
+        unset($children[$key]);
+      }
+      $last = array_pop($children);
+      $empty_field = $field[$lang][$last];
+    }
+
+    foreach (element_children($aspots) as $delta) {
+      $aspot =& $aspots[$delta];
+      $aspot['target_id']['#title'] = t('A Spot');
+      $aspot['target_id']['#theme_wrappers'] = array('form_element_inline_stretched');
+
+      // Check if we have corresponding field item to move
+      if (in_array($delta, $children)) {
+        $item = $field[$lang][$delta];
+      }
+      else {
+        // It might be a new item
+        if (isset($empty_field)) {
+          $item = $empty_field;
+        }
+        else {
+          // Something got wrong
+          watchdog('entity reference', 'Error moving field items.');
+        }
+      }
+
+      if (isset($item)) {
+        // Make moved field item look good
+        if (isset($item['_weight'])) {
+          $item['_weight'] = array(
+            '#type' => 'hidden',
+            '#value' => isset($aspot['_weight']['#value']) ? $aspot['_weight']['#value'] : $delta,
+          );
+        }
+        if (isset($item['target_id']) && isset($options['#title'])) {
+          $item['target_id']['#title'] = $options['#title'];
+          $item['target_id']['#theme_wrappers'] = array('form_element_inline_stretched');
+        }
+
+        // Finally move the field item
+        $aspot['nested_spots']['#tree'] = false;
+        $aspot['nested_spots'][$field_name]['#tree'] = true;
+        $aspot['nested_spots'][$field_name]['#language'] = $lang;
+        $aspot['nested_spots'][$field_name][$lang][$delta] = $item;
+      }
+    }
+  }
+
+  // Hide B and C spot fields
+  hide($form['field_usa_hp_brefs']);
+  hide($form['field_usa_hp_crefs']);
+  unset($form['#groups']['group_hp_bspots']);
+  unset($form['#fieldgroups']['group_hp_bspots']);
+  unset($form['#groups']['group_hp_cspots']);
+  unset($form['#fieldgroups']['group_hp_cspots']);
+
+  // Add validate handler
+  $form['#validate'][] = 'usanetwork_home_edit_form_usa_homepage_node_form_validate';
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function usanetwork_home_edit_theme() {
+  return array(
+    'usanetwork_home_edit_aspots_field_multiple_value' => array(
+      'render element' => 'element',
+    ),
+    'form_element_inline_stretched' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Theme for multiple value with edit parameter
+ */
+function theme_usanetwork_home_edit_aspots_field_multiple_value($variables) {
+  $element = $variables['element'];
+  $output = '';
+
+  drupal_add_css(drupal_get_path('module', 'usanetwork_home_edit') . '/usanetwork_home_edit.css');
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+    $header = array(
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Edit Link'),
+      t('Order'),
+    );
+    $rows = array();
+
+    // Add the items as table rows.
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+        continue;
+      }
+
+      $item =& $element[$key];
+      $nested_spots = $item['nested_spots']; // get nested spots
+      unset($item['nested_spots']);          // unset them to render later
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $id_class = $element['#field_name'] . '-item-id';
+      $item['_id'] = array(
+        '#type' => 'hidden',
+        '#attributes' => array(
+          'class' => array($id_class),
+        ),
+        '#value' => $key,
+      );
+
+      if (preg_match("/.+\((\d+)\)/", $item['target_id']['#value'], $matches)) {
+        $value = $matches[1];
+        $link = l('edit', 'node/'. $value . '/edit', array('attributes' => array('target'=>'_blank')));
+      } else {
+        $link = '';
+      }
+      $item['usanetwork_entityreference_edit_link'] =  array(
+        '#type' => 'item',
+        '#markup' => $link,
+      );
+
+      $delta_element = drupal_render($item['_weight']);
+      $delta_element_edit_link = drupal_render($item['usanetwork_entityreference_edit_link']);
+      $cells = array(
+        array('data' => '', 'class' => array('field-multiple-drag')),
+        drupal_render($item),
+        array('data' => $delta_element_edit_link, 'class' => array('field-usanetwork-entityreference-edit-link')),
+        array('data' => $delta_element, 'class' => array('delta-order')),
+      );
+      // Add root row (A spot)
+      $rows[] = array(
+        'data' => $cells,
+        'class' => array('draggable', 'tabledrag-root'),
+      );
+
+      // Add nested rows
+      $pid_class = $element['#field_name'] . '-item-pid';
+      $count = count(element_children($nested_spots));
+      $i = 1;
+      foreach (element_children($nested_spots) as $field_name) {
+        $nested_item = $nested_spots[$field_name];
+        if (!isset($nested_item['#language']) || !isset($nested_item[$nested_item['#language']][$key])) {
+          continue;
+        }
+        $nested_item = $nested_item[$nested_item['#language']][$key];
+        if (isset($nested_item['#language']))
+        $nested_item['_id'] = array(
+          '#type' => 'hidden',
+          '#attributes' => array(
+            'class' => array($id_class),
+          ),
+          '#value' => $field_name . '_' . $key,
+        );
+        $nested_item['_pid'] = array(
+          '#type' => 'hidden',
+          '#attributes' => array(
+            'class' => array($pid_class),
+          ),
+          '#value' => $key,
+        );
+
+        if (preg_match("/.+\((\d+)\)/", $nested_item['target_id']['#value'], $matches)) {
+          $value = $matches[1];
+          $link = l('edit', 'node/'. $value . '/edit', array('attributes' => array('target'=>'_blank')));
+        } else {
+          $link = '';
+        }
+        $nested_item['usanetwork_entityreference_edit_link'] =  array(
+          '#type' => 'item',
+          '#markup' => $link,
+        );
+
+        $delta_element_edit_link = drupal_render($nested_item['usanetwork_entityreference_edit_link']);
+        $indent = theme('indentation', array('size' => 1));
+        $cells = array(
+          array('data' => $indent, 'class' => array('field-multiple-drag')),
+          drupal_render($nested_item),
+          array('data' => $delta_element_edit_link, 'class' => array('field-usanetwork-entityreference-edit-link')),
+          array('data' => '', 'class' => array('delta-order')),
+        );
+        $classes = array('draggable', 'tabledrag-leaf', 'nested-spot');
+        if ($count == $i) {
+          $classes[] = 'nested-spot-last';
+        }
+        $rows[] = array(
+          'data' => $cells,
+          'class' => $classes,
+        );
+        $i++;
+      }
+    }
+
+    $output = '<div class="form-item">';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+    // Add tabledrag for parent/child tree
+    drupal_add_tabledrag($table_id, 'match', 'parent', $order_class, $pid_class, $id_class, FALSE);
+    // Allow sorting of parents
+    drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Returns HTML for a form element.
+ */
+function theme_form_element_inline_stretched($variables) {
+  $element = &$variables['element'];
+
+  drupal_add_css(drupal_get_path('module', 'usanetwork_home_edit') . '/usanetwork_home_edit.css');
+
+  // This function is invoked as theme wrapper, but the rendered form element
+  // may not necessarily have been processed by form_builder().
+  $element += array(
+    '#title_display' => 'before',
+  );
+
+  // Add element #id for #type 'item'.
+  if (isset($element['#markup']) && !empty($element['#id'])) {
+    $attributes['id'] = $element['#id'];
+  }
+  // Add element's #type and #name as class to aid with JS/CSS selectors.
+  $attributes['class'] = array('form-item');
+  if (!empty($element['#type'])) {
+    $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
+  }
+  if (!empty($element['#name'])) {
+    $attributes['class'][] = 'form-item-' . strtr($element['#name'], array(' ' => '-', '_' => '-', '[' => '-', ']' => ''));
+  }
+  // Add a class for disabled elements to facilitate cross-browser styling.
+  if (!empty($element['#attributes']['disabled'])) {
+    $attributes['class'][] = 'form-disabled';
+  }
+  $attributes['class'][] = 'form-item-inline-stretched';
+  $output = '<div' . drupal_attributes($attributes) . '>' . "\n";
+
+  // If #title is not set, we don't display any label or required marker.
+  if (!isset($element['#title'])) {
+    $element['#title_display'] = 'none';
+  }
+  $prefix = '<div class="form-item-container">';
+  $prefix .= isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
+  $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
+  $suffix .= '</div>';
+
+  switch ($element['#title_display']) {
+    case 'before':
+    case 'invisible':
+      $output .= ' ' . theme('form_element_label', $variables);
+      $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+      break;
+
+    case 'after':
+      $output .= ' ' . $prefix . $element['#children'] . $suffix;
+      $output .= ' ' . theme('form_element_label', $variables) . "\n";
+      break;
+
+    case 'none':
+    case 'attribute':
+      // Output no label and no required marker, only the children.
+      $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+      break;
+  }
+
+  if (!empty($element['#description'])) {
+    $output .= '<div class="description">' . $element['#description'] . "</div>\n";
+  }
+
+  $output .= "</div>\n";
+
+  return $output;
+}
+
+/**
+ * Validate handler for node edit form
+ */
+function usanetwork_home_edit_form_usa_homepage_node_form_validate($form, &$form_state) {
+  $aspot_values = end($form_state['input']['field_usa_hp_arefs']);
+  $bspots =& $form['field_usa_hp_brefs'][$form['field_usa_hp_brefs']['#language']];
+  $cspots =& $form['field_usa_hp_crefs'][$form['field_usa_hp_crefs']['#language']];
+
+  if (!isset($bspots) || !isset($cspots)) {
+    return;
+  }
+  foreach ($aspot_values as $delta => $value) {
+    if (isset($value['target_id']) && !empty($value['target_id'])) {
+      // Check if B spot entered
+      $bspot_value = drupal_array_get_nested_value($form_state['input'], $bspots[$delta]['#parents']);
+      if (!isset($bspot_value['target_id']) || empty($bspot_value['target_id'])) {
+        form_error($bspots[$delta], t('You have to set B spot if A spot is set.'));
+      }
+      // Set weight of B spot equal to A spot weight
+      form_set_value($bspots[$delta]['_weight'], $value['_weight'], $form_state);
+
+      // Check if C spot entered
+      $cspot_value = drupal_array_get_nested_value($form_state['input'], $cspots[$delta]['#parents']);
+      if (!isset($cspot_value['target_id']) || empty($cspot_value['target_id'])) {
+        form_error($cspots[$delta], t('You have to set C spot if A spot is set.'));
+      }
+      // Set weight of C spot equal to A spot weight
+      form_set_value($cspots[$delta]['_weight'], $value['_weight'], $form_state);
+    }
+  }
+}

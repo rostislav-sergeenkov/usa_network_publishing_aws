@@ -28,10 +28,11 @@
     </div>
   </div><!-- END tiles -->
   <?php if ($featured): ?>
-  <div class="usa-home-featured">
-    <div class="featured-carousel">
-      <h2><?php print t('Featured'); ?></h2>
-      <?php print $featured; ?>
+  <div class="usa-home-featured clearfix">
+    <div class="view">
+      <div class="item-list">
+        <?php print $featured; ?>
+      </div>
     </div>
   </div>
   <?php endif; ?>

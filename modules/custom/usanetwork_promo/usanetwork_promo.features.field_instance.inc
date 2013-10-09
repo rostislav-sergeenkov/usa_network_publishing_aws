@@ -763,10 +763,10 @@ function usanetwork_promo_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'carousel_promo' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 4,
       ),
       'default' => array(
@@ -777,24 +777,24 @@ function usanetwork_promo_field_default_field_instances() {
         'weight' => 11,
       ),
       'home_promo' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 6,
       ),
       'home_promo_bspot' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 7,
       ),
       'promo_teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'list_key',
         'weight' => 4,
       ),
       'teaser' => array(

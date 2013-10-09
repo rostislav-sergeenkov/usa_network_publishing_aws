@@ -21,7 +21,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 17,
       ),
       'default' => array(
         'label' => 'above',
@@ -35,7 +35,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'ds',
         'settings' => array(),
         'type' => 'taxonomy_usa_term_icon',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -48,7 +48,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -92,7 +92,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'default' => array(
         'label' => 'above',
@@ -105,19 +105,19 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'home_promo_bspot' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'promo_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -156,7 +156,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 16,
       ),
       'default' => array(
         'label' => 'above',
@@ -170,7 +170,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -183,7 +183,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -234,7 +234,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 9,
+        'weight' => 3,
       ),
       'default' => array(
         'label' => 'above',
@@ -248,7 +248,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 11,
+        'weight' => 5,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -262,7 +262,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -326,7 +326,7 @@ function usanetwork_promo_field_default_field_instances() {
           'image_style' => '300x250',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'default' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function usanetwork_promo_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -438,7 +438,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'default' => array(
         'label' => 'above',
@@ -452,7 +452,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -466,7 +466,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -517,7 +517,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'default' => array(
         'label' => 'above',
@@ -531,7 +531,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -545,7 +545,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -594,7 +594,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'default' => array(
         'label' => 'above',
@@ -610,7 +610,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'home_promo_bspot' => array(
         'label' => 'hidden',
@@ -626,7 +626,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -697,7 +697,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 15,
       ),
       'default' => array(
         'label' => 'above',
@@ -712,19 +712,19 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 17,
       ),
       'home_promo_bspot' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 17,
       ),
       'promo_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -755,6 +755,72 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_promo-field_target'
+  $field_instances['node-usanetwork_promo-field_target'] = array(
+    'bundle' => 'usanetwork_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'carousel_promo' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'home_promo' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'home_promo_bspot' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'promo_teaser' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_target',
+    'label' => 'Target',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Call to Action Text');
@@ -766,6 +832,7 @@ function usanetwork_promo_field_default_field_instances() {
   t('Minimum 600w x 500h - scales automatically for mobile.');
   t('Regular Image');
   t('Show');
+  t('Target');
   t('Text Line 1');
   t('Text Line 2');
   t('Wide Image');

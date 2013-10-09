@@ -54,7 +54,11 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
 
 <div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>">
 <?php if ($link && $link !== '&nbsp;'): ?>
-  <a href="<?php print $link; ?>" class="aspot-link">
+  <?php if ((!$target) || ($target && $target == '&nbsp;')): ?> 
+    <a href="<?php print $link; ?>" class="aspot-link">
+  <?php else: ?>
+    <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="aspot-link">
+  <?php endif; ?>
 <?php endif; ?>
 
   <?php if ($aspot_title_image && $aspot_title_image !== '&nbsp;'): ?>

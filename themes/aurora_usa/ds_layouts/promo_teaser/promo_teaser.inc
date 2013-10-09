@@ -6,7 +6,8 @@ function ds_promo_teaser() {
       'media' => t('Media'),
       'title' => t('Title'),
       'caption' => t('Caption'),
-      'link' => t('link')
+      'link' => t('link'),
+      'target' => t('Target'),
     ),
     'css' => false,
     'image' => false

@@ -8,7 +8,8 @@ function ds_home_promo() {
       'text_1' => t('Text line 1'),
       'text_2' => t('Text line 2'),
       'cta' => t('CTA'),
-      'link' => t('link')
+      'link' => t('link'),
+      'target' => t('Target'),
     ),
     'css' => false,
     'image' => false

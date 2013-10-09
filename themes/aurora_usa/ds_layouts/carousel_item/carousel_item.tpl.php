@@ -1,6 +1,10 @@
 <div class="<?php print $classes;?> carousel-item">
   <?php if ($link): ?>
-    <a href="<?php print $link; ?>" class="carousel-item-link">
+    <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
+      <a href="<?php print $link; ?>" class="carousel-item-link">
+    <?php else: ?>
+      <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="carousel-item-link">
+    <?php endif; ?>
   <?php endif; ?>
   <div class="title-overlay meta">
     <?php if ($title && $title != "&nbsp;"): ?>

@@ -62,12 +62,16 @@ function usanetwork_promo_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_promo_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',
       'field_promo_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );
@@ -100,6 +104,9 @@ function usanetwork_promo_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_promo_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_promo_regular_image' => 'media_normal',
@@ -108,6 +115,7 @@ function usanetwork_promo_ds_layout_settings_info() {
       'field_call_to_action_type' => 'cta',
       'field_promo_call_to_action_text' => 'cta',
       'field_promo_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );
@@ -143,6 +151,9 @@ function usanetwork_promo_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_promo_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_promo_wide_image' => 'media_wide',
@@ -152,6 +163,7 @@ function usanetwork_promo_ds_layout_settings_info() {
       'field_call_to_action_type' => 'cta',
       'field_promo_call_to_action_text' => 'cta',
       'field_promo_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );
@@ -180,12 +192,16 @@ function usanetwork_promo_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_promo_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',
       'field_promo_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );

@@ -833,3 +833,7 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   }
 }
 
+function aurora_usa_field__field_target($vars) {
+  $target = $vars['items'][0]['value'];
+  return $target;
+}

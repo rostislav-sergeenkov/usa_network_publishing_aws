@@ -326,24 +326,24 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     $vars .= 'var maxWordsPerComment = 60; ';
     $vars .= 'var chatterSourceIcon = "'.file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif')).'"; ';
 
-    // TWEETS SECTION
-    $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
+		// TWEETS SECTION
+    $showTwitter = isset($node->field_homepage_show_twitter_page[$lang][0]['value']) ? $node->field_homepage_show_twitter_page[$lang][0]['value'] : 0 ;
     if ($showTwitter) {
-      $eql = isset($node->field_twitter_eql_template[$lang][0]['value']) ? $node->field_twitter_eql_template[$lang][0]['value'] : '';
+      $eql = isset($node->field_homepage_twitter_eql_templ[$lang][0]['value']) ? $node->field_homepage_twitter_eql_templ[$lang][0]['value'] : '';
       $eql = empty($eql) ? variable_get('usanetwork_social_twitter_echo_query_template', '') : $eql;
 
       $tokens = array();
-      $tokens['[CHILDRENOF]'] = isset($node->field_twitter_childrenof[$lang][0]['value']) ? $node->field_twitter_childrenof[$lang][0]['value'] : '';
-      $tokens['[SHOW]'] = isset($node->field_twitter_show[$lang][0]['value']) ? $node->field_twitter_show[$lang][0]['value'] : '';
-      $tokens['[FEED]'] = isset($node->field_twitter_feed[$lang][0]['value']) ? $node->field_twitter_feed[$lang][0]['value'] : '';
-      $tokens['[STATE]'] = isset($node->field_twitter_state[$lang][0]['value']) ? $node->field_twitter_state[$lang][0]['value'] : '';
-      $tokens['[SOURCE]'] = isset($node->field_twitter_source[$lang][0]['value']) ? $node->field_twitter_source[$lang][0]['value'] : '';
-      $tokens['[MARKERS]'] = isset($node->field_twitter_markers[$lang][0]['value']) ? $node->field_twitter_markers[$lang][0]['value'] : '';
-      $tokens['[TAGS]'] = isset($node->field_twitter_tags[$lang][0]['value']) ? $node->field_twitter_tags[$lang][0]['value'] : '';
-      $tokens['[SORTORDER]'] = isset($node->field_twitter_sortorder[$lang][0]['value']) ? $node->field_twitter_sortorder[$lang][0]['value'] : '';
-      $tokens['[SAFEHTML]'] = isset($node->field_twitter_safehtml[$lang][0]['value']) ? $node->field_twitter_safehtml[$lang][0]['value'] : '';
-      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_twitter_itemsperpage[$lang][0]['value']) ? $node->field_twitter_itemsperpage[$lang][0]['value'] : '';
-      $tokens['[CHILDREN]'] = isset($node->field_twitter_children[$lang][0]['value']) ? $node->field_twitter_children[$lang][0]['value'] : '';
+      $tokens['[CHILDRENOF]'] = isset($node->field_homepage_twitter_childrnof[$lang][0]['value']) ? $node->field_homepage_twitter_childrnof[$lang][0]['value'] : '';
+      $tokens['[SHOW]'] = isset($node->field_homepage_twitter_show[$lang][0]['value']) ? $node->field_homepage_twitter_show[$lang][0]['value'] : '';
+      $tokens['[FEED]'] = isset($node->field_homepage_twitter_feed[$lang][0]['value']) ? $node->field_homepage_twitter_feed[$lang][0]['value'] : '';
+      $tokens['[STATE]'] = isset($node->field_homepage_twitter_state[$lang][0]['value']) ? $node->field_homepage_twitter_state[$lang][0]['value'] : '';
+      $tokens['[SOURCE]'] = isset($node->field_homepage_twitter_source[$lang][0]['value']) ? $node->field_homepage_twitter_source[$lang][0]['value'] : '';
+      $tokens['[MARKERS]'] = isset($node->field_homepage_twitter_markers[$lang][0]['value']) ? $node->field_homepage_twitter_markers[$lang][0]['value'] : '';
+      $tokens['[TAGS]'] = isset($node->field_homepage_twitter_tags[$lang][0]['value']) ? $node->field_homepage_twitter_tags[$lang][0]['value'] : '';
+      $tokens['[SORTORDER]'] = isset($node->field_homepage_twitter_sortorder[$lang][0]['value']) ? $node->field_homepage_twitter_sortorder[$lang][0]['value'] : '';
+      $tokens['[SAFEHTML]'] = isset($node->field_homepage_twitter_safehtml[$lang][0]['value']) ? $node->field_homepage_twitter_safehtml[$lang][0]['value'] : '';
+      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $items_per_page; // isset($node->field_homepage_twitter_itemsperp[$lang][0]['value']) ? $node->field_homepage_twitter_itemsperp[$lang][0]['value'] : '';
+      $tokens['[CHILDREN]'] = isset($node->field_homepage_twitter_children[$lang][0]['value']) ? $node->field_homepage_twitter_children[$lang][0]['value'] : '';
 
       $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
       $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
@@ -554,6 +554,63 @@ function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
     if (!isset($form['field_twitter_children'][$lang][0]['value']['#default_value']) ||
       empty($form['field_twitter_children'][$lang][0]['value']['#default_value'])) {
       $form['field_twitter_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_children', '');
+    }
+
+		// HOME PAGE TWITTER
+    // eql template
+    if (!isset($form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_echo_query_template', '');
+    }
+    // childrenof
+    if (!isset($form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_feed', '');
+    }
+    // state
+    if (!isset($form['field_homepage_twitter_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_state', '');
+    }
+    // source
+    if (!isset($form['field_homepage_twitter_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_source', '');
+    }
+    // markers
+    if (!isset($form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_markers', '');
+    }
+    // tags
+    if (!isset($form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_homepage_twitter_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_children', '');
     }
 
     // FACEBOOK

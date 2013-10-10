@@ -25,7 +25,8 @@ function usanetwork_aspot_field_group_info() {
     'children' => array(
       0 => 'field_show',
       1 => 'field_usa_aspot_link',
-      2 => 'title',
+      2 => 'field_target',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

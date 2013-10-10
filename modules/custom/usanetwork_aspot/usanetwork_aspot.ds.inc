@@ -81,6 +81,9 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_usa_aspot_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_mobile_text_line_2' => 'mobile_text_2',
@@ -97,6 +100,7 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'field_call_to_action_type' => 'cta',
       'field_usa_aspot_txt4' => 'cta',
       'field_usa_aspot_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );

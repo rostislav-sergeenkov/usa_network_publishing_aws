@@ -1,6 +1,10 @@
 <div class="<?php print $classes;?>">
   <?php if ($link): ?>
-    <a href="<?php print $link; ?>" class="item-link">
+    <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
+      <a href="<?php print $link; ?>" class="promo-link">
+    <?php else: ?>
+      <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="promo-link">
+    <?php endif; ?>
   <?php endif; ?>
   <?php if ($media): ?>
   <div class="asset-img"><?php print $media; ?></div>

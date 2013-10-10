@@ -15,7 +15,8 @@ function ds_a_spot() {
       'text_2_font_size' => t('Text line 2 Font Size'),
       'mobile_text_2' => t('Mobile Text line 2'),
       'cta' => t('CTA'),
-      'link' => t('link')
+      'link' => t('link'),
+      'target' => t('Target'),
     ),
     'css' => false,
     'image' => false

@@ -139,6 +139,7 @@ body.usa-social {
     border: 0;
     padding: 16px 12px 11px 8px;
     @include background(linear-gradient(center top , $black-true, $gray-dark));
+    text-transform:none;
   }
   ul {
     margin: 0;
@@ -293,6 +294,9 @@ body.usa-social {
           top: 14px;
         }
       }
+      &::first-letter {
+        text-transform:capitalize;
+      }
     }
     .view-content {
       display: none;
@@ -364,6 +368,11 @@ body.usa-social {
     @extend %social-sidebar-header;
     @extend %social-header-text;
     @include background(linear-gradient(center top , $black-true, $gray-dark));
+  }
+}
+#lyris.pane-usanetwork-lyris-newsletter-subscription {
+  h2 {
+    text-transform:capitalize;
   }
 }
 

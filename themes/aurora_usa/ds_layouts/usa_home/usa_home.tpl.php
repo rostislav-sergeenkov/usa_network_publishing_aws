@@ -27,13 +27,13 @@
     <?php endif; ?>
     </div>
   </div><!-- END tiles -->
+</div>
   <?php if ($featured): ?>
   <div class="usa-home-featured clearfix">
     <div class="view">
-      <div class="item-list">
+      <div class="carousel clearfix">
         <?php print $featured; ?>
       </div>
     </div>
   </div>
   <?php endif; ?>
-</div>

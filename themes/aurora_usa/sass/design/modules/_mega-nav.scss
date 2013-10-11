@@ -340,9 +340,12 @@
 #block-usanetwork-blocks-usa-tv-show-menu {
   @extend %regular-18;
   display: inline-block;
-  /* text-transform: lowercase; */
+  text-transform: lowercase;
   height: $primary-nav-height-dt - 33px;
   line-height: $primary-nav-height-dt - 33px;
+  .tv-show-menu-trigger {
+     text-transform:none;
+   }
   > div {
     display: inline-block;
   }

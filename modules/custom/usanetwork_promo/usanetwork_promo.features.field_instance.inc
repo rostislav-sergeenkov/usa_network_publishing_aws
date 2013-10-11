@@ -758,7 +758,11 @@ function usanetwork_promo_field_default_field_instances() {
   // Exported field_instance: 'node-usanetwork_promo-field_target'
   $field_instances['node-usanetwork_promo-field_target'] = array(
     'bundle' => 'usanetwork_promo',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => '_self',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

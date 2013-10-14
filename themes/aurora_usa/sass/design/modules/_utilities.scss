@@ -3,12 +3,19 @@
   background-color: $black-true;
   position: relative;
   z-index: 11;
-  padding-left: 12px;
-  border-bottom: 1px solid $gray-ultra-med;
+  /* padding-left: 12px;
+  border-bottom: 1px solid $gray-ultra-med; */
 //  overflow: hidden;
   position: relative;
   @extend .clearfix;
 
+  &.utilities-head-show {
+    #head-show {
+      height:100%;
+      padding-left: 12px;
+      border-bottom: 1px solid $gray-ultra-med;
+    }
+  }
   h1#page-title {
     @include float-left;
     @extend %regular-18;
@@ -51,6 +58,11 @@
     }
 
   }
+  .block-usanetwork-showpages {
+    .breadcrumb {
+      text-transform:none;
+    }
+}
   .show-time {
     @extend %regular-headline;
     @include float-right;
@@ -58,7 +70,6 @@
     display: none;
     font-size: 22px;
     margin: 17px 35px 0;
-    text-transform: uppercase;
   }
 
   @include breakpoint(0px 400px) {
@@ -73,8 +84,13 @@
 
   @include breakpoint($bp-on-now) {
     height: 62px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
 //    padding-top: 0;
+    &.utilities-head-show {
+      #head-show {
+        padding-left: 15px;
+      }
+    }
     h1#page-title {
       font-size: 30px;
       line-height: 52px;

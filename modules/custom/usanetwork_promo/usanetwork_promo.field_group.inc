@@ -25,7 +25,8 @@ function usanetwork_promo_field_group_info() {
     'children' => array(
       0 => 'field_promo_link',
       1 => 'field_show',
-      2 => 'title',
+      2 => 'field_target',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

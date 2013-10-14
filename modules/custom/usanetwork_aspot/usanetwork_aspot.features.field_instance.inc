@@ -29,7 +29,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'module' => 'ds',
         'settings' => array(),
         'type' => 'taxonomy_usa_term_icon',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -76,7 +76,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -133,7 +133,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -160,6 +160,55 @@ function usanetwork_aspot_field_default_field_instances() {
       'weight' => 1,
     ),
   );
+  
+  // Exported field_instance: 'node-usanetwork_aspot-field_target'
+  $field_instances['node-usanetwork_aspot-field_target'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => '_self',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_target',
+    'label' => 'Target',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
 
   // Exported field_instance: 'node-usanetwork_aspot-field_text_line_1_font_size'
   $field_instances['node-usanetwork_aspot-field_text_line_1_font_size'] = array(
@@ -184,7 +233,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -232,7 +281,7 @@ Suggested max dimensions 380px x 80px<br/>
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -295,7 +344,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -421,7 +470,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -494,7 +543,7 @@ Suggested max dimensions 380px x 80px<br/>
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -547,6 +596,85 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_usa_aspot_tablet_portrait'
+  $field_instances['node-usanetwork_aspot-field_usa_aspot_tablet_portrait'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'deleted' => 0,
+    'description' => 'Tablet Portrait image. Minimum 1230w x 700h.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_aspot_tablet_portrait',
+    'label' => 'Tablet Portrait',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => 'aspot_tablet',
+      'file_extensions' => 'png gif jpg jpeg',
+      'focus' => 0,
+      'focus_lock_ratio' => 0,
+      'focus_min_size' => '',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '1230x700',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'upload' => 'upload',
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
       'weight' => 7,
     ),
   );
@@ -570,7 +698,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -627,7 +755,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -684,7 +812,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -741,7 +869,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -802,7 +930,7 @@ Suggested max dimensions 380px x 80px<br/>
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -858,6 +986,9 @@ Suggested max dimensions 380px x 80px<br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');
   t('Show');
+  t('Tablet Portrait');
+  t('Tablet Portrait image. Minimum 1230w x 700h.');
+  t('Target');
   t('Text Line 1 Font Size');
   t('Text Line 1 Image');
   t('Text Line 2 Font Size');

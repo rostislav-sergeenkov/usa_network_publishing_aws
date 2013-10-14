@@ -21,6 +21,10 @@ if($text_2_font_size == '&nbsp;') {
   $text_2_font_size = '';
 }
 
+if ($media_tablet_portrait == '&nbsp;') {
+  $media_tablet_portrait = '';
+}
+
 /*
  * adding custom css here
  */
@@ -50,7 +54,11 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
 
 <div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>">
 <?php if ($link && $link !== '&nbsp;'): ?>
-  <a href="<?php print $link; ?>" class="aspot-link">
+  <?php if ((!$target) || ($target && $target == '&nbsp;')): ?> 
+    <a href="<?php print $link; ?>" class="aspot-link">
+  <?php else: ?>
+    <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="aspot-link">
+  <?php endif; ?>
 <?php endif; ?>
 
   <?php if ($aspot_title_image && $aspot_title_image !== '&nbsp;'): ?>
@@ -80,7 +88,8 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
 
   <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
-    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
+    <?php if ($media_tablet_portrait): ?><?php print $media_tablet_portrait; ?><?php endif; ?>
+    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>   
   </div>
 
 <?php if ($link || $link !== '&nbsp;'): ?>

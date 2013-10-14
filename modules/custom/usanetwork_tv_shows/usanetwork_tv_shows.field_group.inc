@@ -288,7 +288,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Facebook Settings',
-    'weight' => '49',
+    'weight' => '50',
     'children' => array(
       0 => 'field_fb_children',
       1 => 'field_fb_childrenof',
@@ -328,7 +328,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'GetGlue Settings',
-    'weight' => '51',
+    'weight' => '52',
     'children' => array(
       0 => 'field_getglue_show',
       1 => 'field_getglue_sticker_name',
@@ -350,6 +350,46 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_homepage_twitter_settings|node|tv_show|form';
+  $field_group->group_name = 'group_homepage_twitter_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_information';
+  $field_group->data = array(
+    'label' => 'Show Homepage Twitter Settings',
+    'weight' => '49',
+    'children' => array(
+      0 => 'field_homepage_show_twitter_page',
+      1 => 'field_homepage_twitter_eql_templ',
+      2 => 'field_homepage_twitter_childrnof',
+      3 => 'field_homepage_twitter_show',
+      4 => 'field_homepage_twitter_feed',
+      5 => 'field_homepage_twitter_state',
+      6 => 'field_homepage_twitter_source',
+      7 => 'field_homepage_twitter_markers',
+      8 => 'field_homepage_twitter_tags',
+      9 => 'field_homepage_twitter_sortorder',
+      10 => 'field_homepage_twitter_safehtml',
+      11 => 'field_homepage_twitter_itemsperp',
+      12 => 'field_homepage_twitter_children',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Show Homepage Twitter Settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_homepage_twitter_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_instagram_settings|node|tv_show|form';
   $field_group->group_name = 'group_instagram_settings';
   $field_group->entity_type = 'node';
@@ -358,7 +398,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Instagram Settings',
-    'weight' => '52',
+    'weight' => '53',
     'children' => array(
       0 => 'field_show_instagram_page',
       1 => 'field_instagram_show_id',
@@ -415,7 +455,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_social_information';
   $field_group->data = array(
     'label' => 'Pinterest Settings',
-    'weight' => '50',
+    'weight' => '51',
     'children' => array(
       0 => 'field_pinterest_url',
       1 => 'field_show_pinterest_page',
@@ -623,17 +663,18 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_hide_cast_carousel',
       1 => 'field_hide_social_follow',
-      2 => 'group_instagram_settings',
-      3 => 'group_fb_settings',
-      4 => 'group_pinterest_settings',
-      5 => 'group_chat_settings',
-      6 => 'group_chatter_to_tv_settings',
-      7 => 'group_getglue_settings',
+      2 => 'group_chat_settings',
+      3 => 'group_chatter_to_tv_settings',
+      4 => 'group_fb_settings',
+      5 => 'group_getglue_settings',
+      6 => 'group_homepage_twitter_settings',
+      7 => 'group_instagram_settings',
       8 => 'group_newsletter',
-      9 => 'group_sync_settings',
-      10 => 'group_trend',
-      11 => 'group_twitter_settings',
-      12 => 'group_usa_show_follow',
+      9 => 'group_pinterest_settings',
+      10 => 'group_sync_settings',
+      11 => 'group_trend',
+      12 => 'group_twitter_settings',
+      13 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

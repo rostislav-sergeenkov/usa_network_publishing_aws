@@ -292,7 +292,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
+      //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -716,13 +716,32 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
-  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
-  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
+  if ((!isset($vars['element']['#object']->field_usa_aspot_tablet_portrait)) || (empty($vars['element']['#object']->field_usa_aspot_tablet_portrait))) {
+    $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
+  }
   $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 960px)"></div>';
   $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)"></div>';
   $output .= '<noscript>';
   $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
   $output .= '</noscript>';
+
+  return $output;
+}
+
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ * aspot tablet portrait image
+ */
+function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
+  // polyfill
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/matchmedia.js', 'file');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
+  $output = '';
+  $filepath = $vars['items'][0]['#item']['uri'];
+  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
 
   return $output;
 }
@@ -814,3 +833,7 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   }
 }
 
+function aurora_usa_field__field_target($vars) {
+  $target = $vars['items'][0]['value'];
+  return $target;
+}

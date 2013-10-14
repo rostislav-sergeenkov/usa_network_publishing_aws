@@ -518,7 +518,41 @@ function usanetwork_core_update_7122() {
 /**
  * removing gigya share bar on the drupal user login page
  */
-function usanetwork_core_update_7123() {  
+function usanetwork_core_update_7123() {
   variable_set('gigya_login_enabled', FALSE);
+}
+
+/**
+ * goodbye to gigya -- AGAIN!
+ */
+function usanetwork_core_update_7124() {
+
+  $modules_dis = array(
+    'gigya',
+  );
+  $modules_un = array(
+    'gigya',
+    'pub_gigya',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * enable modules: colorfield, colorfield_minicolors, usanetwork_home_clone, usanetwork_home_edit, usanetwork_tv_shows_color, usanetwork_tv_shows_color_field, usanetwork_entityreference, usanetwork_node_copy
+ */
+function usanetwork_core_update_7125() {
+
+  $modules_en = array(
+    'colorfield_minicolors',
+    'colorfield',
+    'usanetwork_home_clone',
+    'usanetwork_home_edit',
+    'usanetwork_tv_shows_color',
+    'usanetwork_tv_shows_color_field',
+    'usanetwork_entityreference',
+    'usanetwork_node_copy',
+  );
+  module_enable($modules_en);
 }
 

@@ -139,6 +139,7 @@ body.usa-social {
     border: 0;
     padding: 16px 12px 11px 8px;
     @include background(linear-gradient(center top , $black-true, $gray-dark));
+    text-transform:none;
   }
   ul {
     margin: 0;
@@ -293,6 +294,9 @@ body.usa-social {
           top: 14px;
         }
       }
+      &::first-letter {
+        text-transform:capitalize;
+      }
     }
     .view-content {
       display: none;
@@ -306,8 +310,9 @@ body.usa-social {
 /* lyris */
 
 .lyris  {
-  background-color: $gray-dark;
+  background-color: $black-into-gray;
   margin-bottom: 15px;
+  border: 1px solid $gray-med;
   .pane-content {
     padding: 19px 15px;
     border-top: 1px solid $black-dark;
@@ -362,6 +367,12 @@ body.usa-social {
   h2 {
     @extend %social-sidebar-header;
     @extend %social-header-text;
+    @include background(linear-gradient(center top , $black-true, $gray-dark));
+  }
+}
+#lyris.pane-usanetwork-lyris-newsletter-subscription {
+  h2 {
+    text-transform:capitalize;
   }
 }
 
@@ -496,6 +507,14 @@ body.usa-social {
   p {
     margin: 0 0 10px;
   }
+  .echo-item-body .echo-primaryColor {
+    .echo-item-text {
+      a:hover {
+        color: $gray-med;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .echo-item-body {
@@ -608,7 +627,7 @@ input.echo-submit-text {
 }
 
 .echo-item-content {
-  color: $gray-extra-light;
+  color: $gray-med;
   position: relative;
   margin-bottom: 2px;
   padding: 8px 0 12px;
@@ -1139,6 +1158,9 @@ input.echo-submit-text {
 }
 .echo-streamserver-controls-stream-more, .echo-stream-more {
   display: none !important;
+}
+.page-node-social .echo-stream-more {
+  display: block !important;
 }
 
 #usanetwork_social_section_join {

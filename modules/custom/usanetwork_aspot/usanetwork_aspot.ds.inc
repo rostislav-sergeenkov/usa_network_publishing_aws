@@ -44,6 +44,9 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'mobile_text_2' => array(
         0 => 'field_mobile_text_line_2',
       ),
+      'media_tablet_portrait' => array(
+        0 => 'field_usa_aspot_tablet_portrait',
+      ),
       'text_1_image' => array(
         0 => 'aspot_title_image',
       ),
@@ -78,9 +81,13 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_usa_aspot_link',
       ),
+      'target' => array(
+        0 => 'field_target',
+      ),
     ),
     'fields' => array(
       'field_mobile_text_line_2' => 'mobile_text_2',
+      'field_usa_aspot_tablet_portrait' => 'media_tablet_portrait',
       'aspot_title_image' => 'text_1_image',
       'field_usa_aspot_desktop' => 'media_desktop',
       'field_usa_aspot_mobile' => 'media_mobile',
@@ -93,6 +100,7 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'field_call_to_action_type' => 'cta',
       'field_usa_aspot_txt4' => 'cta',
       'field_usa_aspot_link' => 'link',
+      'field_target' => 'target',
     ),
     'classes' => array(),
   );

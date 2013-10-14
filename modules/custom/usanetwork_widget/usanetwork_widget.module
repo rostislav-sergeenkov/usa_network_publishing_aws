@@ -111,10 +111,14 @@ function usanetwork_widget_navbar() {
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?'.time();
   $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+
+  // get collected styles
+  $styles = _usanetwork_widget_styles();
+
   echo '<!DOCTYPE html>';
   echo '<head>';
   echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
-  echo '<style>@import url("'.$style_css_path.'");</style>';
+  echo $styles;
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '</head>';
@@ -136,7 +140,11 @@ function usanetwork_widget_navbar() {
 function usanetwork_widget_navbar_ajax_styled() {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
-  echo $nav_styles;
+
+  // get collected styles
+  $styles = _usanetwork_widget_styles();
+
+  echo $styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
@@ -201,13 +209,16 @@ function usanetwork_widget_navbar_ajax_plain() {
  * Helper to generate the main menu documentation
  */
 function usanetwork_widget_navbar_docs() {
+  // get collected styles
+  $styles = _usanetwork_widget_styles();
+
   $docs_markup = '
   <h1>Syndicating the USANetwork navigation bar.</h1>
   <h2>Main Navigation</h2>
   <p><a href="/navbar">demo</a></p>
   <p>Add the following style tag to your site. </p>
   <code><pre>
-'. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
+'. htmlentities($styles) .'
   </pre></code>
   <p>Add the following script tag to your site. </p>
   <code><pre>
@@ -242,10 +253,14 @@ function usanetwork_widget_show_navbar($node) {
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
   $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+
+  // get collected styles
+  $styles = _usanetwork_widget_styles($node);
+
   echo '<!DOCTYPE html>';
   echo '<head>';
   echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
-  echo '<style>@import url("'.$style_css_path.'");</style>';
+  echo $styles;
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<script src="'.$library_js_path.'"></script>';
@@ -268,7 +283,11 @@ function usanetwork_widget_show_navbar($node) {
 function usanetwork_widget_show_navbar_ajax_styled($node) {
   // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
   $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
-  echo $nav_styles;
+
+  // get collected styles
+  $styles = _usanetwork_widget_styles($node);
+
+  echo $styles;
   $markup_wrapper = '
   <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
@@ -370,13 +389,16 @@ function usanetwork_widget_show_navbar_ajax_only($node) {
  * Helper to generate the show menu documentation
  */
 function usanetwork_widget_show_navbar_docs($node) {
+  // get collected styles
+  $styles = _usanetwork_widget_styles($node);
+
   $docs_markup = '
   <h1>Syndicating the USANetwork show navigation bar.</h1>
   <h2>Show and Main Navigation</h2>
   <p><a href="/node/'. $node->nid .'/navbar">demo</a></p>
   <p>Add the following style tag to your site.</p>
   <code><pre>
-'. htmlentities('<style>@import url("http://usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css");</style>') .'
+'. htmlentities($styles) .'
     </pre></code>
   <p>Add the following script tags to your site.</p>
   <code><pre>
@@ -479,4 +501,21 @@ function usanetwork_widget_settings_form() {
   );
 
   return system_settings_form($form);
+}
+
+/**
+ * Returns rendered styles
+ */
+function _usanetwork_widget_styles($show = null) {
+  $css = &drupal_static('drupal_add_css', array());
+  $copy_css = $css;
+  // Empty all styles
+  $css = array();
+  // Add initial styles
+  drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css');
+  // Get styling info from other modules
+  module_invoke_all('usanetwork_widget_style', $show);
+  $output = drupal_get_css($css);
+  $css = $copy_css;
+  return $output;
 }

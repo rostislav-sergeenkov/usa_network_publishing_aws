@@ -47,6 +47,7 @@ function usanetwork_views_views_default_views() {
     'changed' => 'changed',
     'edit_node' => 'edit_node',
     'delete_node' => 'edit_node',
+    'usanetwork_node_copy' => 'edit_node',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -103,6 +104,11 @@ function usanetwork_views_views_default_views() {
       'empty_column' => 0,
     ),
     'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'usanetwork_node_copy' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -295,6 +301,10 @@ function usanetwork_views_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Operations';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
+  /* Field: Content: Copy link */
+  $handler->display->display_options['fields']['usanetwork_node_copy']['id'] = 'usanetwork_node_copy';
+  $handler->display->display_options['fields']['usanetwork_node_copy']['table'] = 'node';
+  $handler->display->display_options['fields']['usanetwork_node_copy']['field'] = 'usanetwork_node_copy';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

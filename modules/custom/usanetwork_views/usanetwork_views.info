@@ -3,6 +3,7 @@ core = 7.x
 package = USA Network
 dependencies[] = ctools
 dependencies[] = ds
+dependencies[] = usanetwork_node_copy
 dependencies[] = views
 dependencies[] = views_content
 dependencies[] = views_load_more

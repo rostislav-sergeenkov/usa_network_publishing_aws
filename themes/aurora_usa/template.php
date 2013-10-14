@@ -294,7 +294,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
-        $vars['item_attributes_array'][$delta]['class'] = 'grid-item';
+        $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
     break;
 

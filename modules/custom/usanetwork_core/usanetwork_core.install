@@ -537,3 +537,22 @@ function usanetwork_core_update_7124() {
   module_disable($modules_dis);
   drupal_uninstall_modules($modules_un);
 }
+
+/**
+ * enable modules: colorfield, colorfield_minicolors, usanetwork_home_clone, usanetwork_home_edit, usanetwork_tv_shows_color, usanetwork_tv_shows_color_field, usanetwork_entityreference, usanetwork_node_copy
+ */
+function usanetwork_core_update_7125() {
+
+  $modules_en = array(
+    'colorfield_minicolors',
+    'colorfield',
+    'usanetwork_home_clone',
+    'usanetwork_home_edit',
+    'usanetwork_tv_shows_color',
+    'usanetwork_tv_shows_color_field',
+    'usanetwork_entityreference',
+    'usanetwork_node_copy',
+  );
+  module_enable($modules_en);
+}
+

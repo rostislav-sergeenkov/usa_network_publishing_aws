@@ -6297,7 +6297,7 @@ body.person-page #main {
   height: 0;
   border-width: 5px 5px 5px 0;
   border-style: solid;
-  border-color: transparent white transparent transparent;
+  border-color: transparent #0ab6e8 transparent transparent;
   top: 50%;
   /* left: 0; */
   margin-left: -16px;

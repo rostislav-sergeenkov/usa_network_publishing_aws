@@ -106,11 +106,11 @@ function usanetwork_widget_menu() {
  * Helper to generate and output the main menu bar
  */
 function usanetwork_widget_navbar() {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
-  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?'.time();
-  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+  global $base_root;
+  $site_base_url = $base_root . '/';
+  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?';
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?';
 
   // get collected styles
   $styles = _usanetwork_widget_styles();
@@ -138,8 +138,8 @@ function usanetwork_widget_navbar() {
  * Helper to generate and output the main menu bar in styled html
  */
 function usanetwork_widget_navbar_ajax_styled() {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  global $base_root;
+  $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
 
   // get collected styles
   $styles = _usanetwork_widget_styles();
@@ -171,9 +171,9 @@ function usanetwork_widget_navbar_ajax_styled() {
  * Helper to generate and output the main menu bar in plain html
  */
 function usanetwork_widget_navbar_plain() {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js?'.time();
+  global $base_root;
+  $site_base_url = $base_root . '/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_plain.js?';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
   exit;
@@ -209,11 +209,12 @@ function usanetwork_widget_navbar_ajax_plain() {
  * Helper to generate the main menu documentation
  */
 function usanetwork_widget_navbar_docs() {
+  global $base_root;
   // get collected styles
   $styles = _usanetwork_widget_styles();
 
   $docs_markup = '
-  <h1>Syndicating the USANetwork navigation bar.</h1>
+  <h1>Syndicating the USA Network navigation bar.</h1>
   <h2>Main Navigation</h2>
   <p><a href="/navbar">demo</a></p>
   <p>Add the following style tag to your site. </p>
@@ -229,16 +230,16 @@ function usanetwork_widget_navbar_docs() {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
   </pre></code>
   <h2>Main Navigation - No Styles</h2>
   <p><a href="/navbar/plain">demo</a></p>
   <p>Add the following script tag to your site. </p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
   </pre></code>
   ';
   return $docs_markup;
@@ -248,11 +249,11 @@ function usanetwork_widget_navbar_docs() {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar($node) {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
-  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?'.time();
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?'.time();
-  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?'.time();
+  global $base_root;
+  $site_base_url = $base_root . '/';
+  $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_styled.js?';
+  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?';
 
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
@@ -281,8 +282,8 @@ function usanetwork_widget_show_navbar($node) {
  * Helper to generate and output the show menu bar
  */
 function usanetwork_widget_show_navbar_ajax_styled($node) {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $nav_styles = '<style>@import url("http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?'.time().'");</style>';
+  global $base_root;
+  $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
 
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
@@ -320,9 +321,9 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_plain($node) {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?'.time();
+  global $base_root;
+  $site_base_url = $base_root .'/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_plain.js?';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
@@ -365,9 +366,9 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
  * Helper to generate and output the show menu bar in plain html
  */
 function usanetwork_widget_show_navbar_only($node) {
-  // TODO: change the 'stage' part of each URL to www & remove time() after testing is complete
-  $site_base_url = 'http://stage.usanetwork.com/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?'.time();
+  global $base_root;
+  $site_base_url = $base_root . '/';
+  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
@@ -389,11 +390,13 @@ function usanetwork_widget_show_navbar_ajax_only($node) {
  * Helper to generate the show menu documentation
  */
 function usanetwork_widget_show_navbar_docs($node) {
+  global $base_root;
+
   // get collected styles
   $styles = _usanetwork_widget_styles($node);
 
   $docs_markup = '
-  <h1>Syndicating the USANetwork show navigation bar.</h1>
+  <h1>Syndicating the USA Network show navigation bar.</h1>
   <h2>Show and Main Navigation</h2>
   <p><a href="/node/'. $node->nid .'/navbar">demo</a></p>
   <p>Add the following style tag to your site.</p>
@@ -409,9 +412,9 @@ function usanetwork_widget_show_navbar_docs($node) {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
   </pre></code>
 
   <h2>Show and Main Navigation - No Styles</h2>
@@ -419,9 +422,9 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'  
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
   </pre></code>
 
   <h2>Show Navigation Only - No Styles</h2>
@@ -429,8 +432,8 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
-'. htmlentities('<script src="http://usanetwork.com/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
+'. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>
   ';
   return $docs_markup;
@@ -443,25 +446,27 @@ function usanetwork_widget_navbar_links() {
   $links = array();
   $output = '';
    
-  $links[] = l(t('Global Navbar'), 'navbar');
-  $links[] = l(t('Global Navbar Plain'), 'navbar/plain');
-  $links[] = l(t('Global Navbar Docs'), 'navbar/docs');
+  $links[] = l(t('Global Navbar'), 'navbar', array('attributes' => array('target' => '_blank')));
+  $links[] = l(t('Global Navbar Plain'), 'navbar/plain', array('attributes' => array('target' => '_blank')));
+  $links[] = l(t('Global Navbar Docs'), 'navbar/docs', array('attributes' => array('target' => '_blank')));
 
-  $output .= '<b>' . t('Global Menu Links') . '</b>';
+  $output .= '<h2>' . t('Global Menu Links') . '</h2>';
   $output .= theme('item_list', array('items' => $links));
 
-  $output .= '<b>' . t('Show Menu Links') . '</b>';
-  $links = array();
+  $output .= '<br><h2>' . t('Show Menu Links') . '</h2>';
+  
   $shows = _usanetwork_widget_get_nodes('tv_show');  
   foreach ($shows as $show) {
+    $links = array();
     $show_path = drupal_get_path_alias('node/'.$show->nid);
-    $links[] = l($show->title .': Styled Navbar', $show_path . '/navbar');
-    $links[] = l($show->title .': Plain Navbar', $show_path . '/navbar/plain');
-    $links[] = l($show->title .': Plain Navbar Only', $show_path . '/navbar/only');
-    $links[] = l($show->title .': Navbar Docs', $show_path . '/navbar/docs');
-    $links[] = '<br/>';
+    $output .= '<h3>'.$show->title.'</h3>';
+    $links[] = l('Styled Navbar', $show_path . '/navbar', array('attributes' => array('target' => '_blank')));
+    $links[] = l('Plain Navbar', $show_path . '/navbar/plain', array('attributes' => array('target' => '_blank')));
+    $links[] = l('Plain Navbar Only', $show_path . '/navbar/only', array('attributes' => array('target' => '_blank')));
+    $links[] = l('Navbar Docs', $show_path . '/navbar/docs');
+    $output .= theme('item_list', array('items' => $links));
   }
-  $output .= theme('item_list', array('items' => $links));
+  
 
   return $output;
 }

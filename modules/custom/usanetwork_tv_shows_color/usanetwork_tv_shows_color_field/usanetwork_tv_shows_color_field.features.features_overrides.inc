@@ -12,8 +12,10 @@ function usanetwork_tv_shows_color_field_features_override_default_overrides() {
   $overrides = array();
 
   // Exported overrides for: field_group
-  $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|6"] = 'field_usa_tv_show_color';
-  $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|7"] = 'group_show_aspots';
+  $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|7"] = 'field_usa_tv_show_color';
 
- return $overrides;
+  // Exported overrides for: field_instance
+  $overrides["field_instance.node-tv_show-field_pathauto_alias.widget|weight"] = 63;
+
+  return $overrides;
 }

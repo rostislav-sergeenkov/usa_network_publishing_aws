@@ -240,7 +240,7 @@
 
         // MANAGE PANEL STATES
         // TURN ON 'ON NOW' PANEL
-        $('#on-now.trigger').click(function() {
+        $(context).on('click', '#on-now.trigger', function() {
           jpm_on_onnow();
         });
 

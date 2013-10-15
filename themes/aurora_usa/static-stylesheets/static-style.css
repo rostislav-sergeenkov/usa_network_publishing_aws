@@ -1,3 +1,32 @@
-.echo-application-message, .echo-control-message {
-  color: #3D3D3D;
+.onNow-navSocial-empty-span{
+    width:17px;
+    height:1px;
+    float:left;
+}
+.echo-primaryColor {
+    color:#3A3A3A;
+}
+.echo-item-authorName a {
+    color:#3D3D3D;
+}
+.echo-item-authorName {
+    color:#3D3D3D;
+    font-weight:normal;
+    letter-spacing:0.05em;
+    line-height:19px;
+}
+#socialblock_on_now_content .echo-item-content {
+    border-bottom-style : none;
+    border-top-style : none;
+
+}
+.echo-item-content .echo-item-tweetUserName a, #on-now-panel a, .block-usanetwork-tv-schedule .echo-item-authorName {
+    color : #3D3D3D;
+    font-family : "avalonmedium","Proxima N W01 Smbd",Helvetica,Arial,sans-serif;
+}
+#socialblock_on_now_content span.echo-item-text {
+    font-size : 13px;
+}
+.echo-secondaryColor {
+    color : #3D3D3D !important;
 }

@@ -6299,8 +6299,7 @@ body.person-page #main {
   border-style: solid;
   border-color: transparent white transparent transparent;
   top: 50%;
-  /* left: 0; */
-  margin-left: -16px;
+  margin-left: -14px;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -6312,6 +6311,7 @@ body.person-page #main {
     padding-left: 16px;
   }
   #on-now.trigger:before {
+    margin-left: -16px;
     border-width: 6px 8px 6px 0;
   }
 }

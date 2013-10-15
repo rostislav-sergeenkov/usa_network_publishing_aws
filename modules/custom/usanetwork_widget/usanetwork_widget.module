@@ -103,10 +103,27 @@ function usanetwork_widget_menu() {
 }
 
 /**
+ * Helper to generate an env value based on base root to be used for JS
+ */
+function _usanetwork_widget_get_environment() {
+  global $base_root;
+  switch ($base_root) {
+    case 'http://www.usanetwork.com': $site_env = 'prod'; break;
+    case 'http://stage.usanetwork.com': $site_env = 'stage'; break;
+    case 'http://qa.usanetwork.com': $site_env = 'qa'; break;
+    case 'http://dev.usanetwork.com': $site_env = 'dev'; break;
+    case 'http://local.usanetwork': $site_env = 'local'; break;
+  }
+
+  return $site_env;
+}
+
+/**
  * Helper to generate and output the main menu bar
  */
 function usanetwork_widget_navbar() {
   global $base_root;
+
   $site_base_url = $base_root . '/';
   $style_css_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css?';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?';
@@ -119,6 +136,7 @@ function usanetwork_widget_navbar() {
   echo '<head>';
   echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
   echo $styles;
+  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '</head>';
@@ -139,6 +157,7 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   global $base_root;
+  
   $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
 
   // get collected styles
@@ -230,6 +249,7 @@ function usanetwork_widget_navbar_docs() {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_styled.js"></script>') .'
   </pre></code>
@@ -238,6 +258,7 @@ function usanetwork_widget_navbar_docs() {
   <p>Add the following script tag to your site. </p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_plain.js"></script>') .'
   </pre></code>
@@ -263,6 +284,7 @@ function usanetwork_widget_show_navbar($node) {
   echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
   echo $styles;
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
+  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<script src="'.$library_js_path.'"></script>';
   echo '</head>';
@@ -369,6 +391,7 @@ function usanetwork_widget_show_navbar_only($node) {
   global $base_root;
   $site_base_url = $base_root . '/';
   $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_show_only.js?';
+  echo '<script>var $env = "'._usanetwork_widget_get_environment().'";</script>';
   echo '<script type="text/javascript"> var $show_id = '. $node->nid .'; </script>';
   echo '<script src="'.$widget_js_path.'"></script>';
   echo '<div id="usanetwork-main-menu"></div>';
@@ -412,6 +435,7 @@ function usanetwork_widget_show_navbar_docs($node) {
 '. htmlentities('<!--[if IE 9]>') .'
 '. htmlentities('</div>') .'
 '. htmlentities('<![endif]-->') .'
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_styled.js"></script>') .'
@@ -421,7 +445,8 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p><a href="/node/'. $node->nid .'/navbar/plain">demo</a></p>
   <p>Add the following script tags to your site.</p>
   <code><pre>
-'. htmlentities('<div id="usanetwork-main-menu"></div>') .'  
+'. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '  
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
@@ -432,6 +457,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_only.js"></script>') .'
   </pre></code>

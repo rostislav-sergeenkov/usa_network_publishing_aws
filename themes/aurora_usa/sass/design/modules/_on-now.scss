@@ -30,7 +30,7 @@
 
 #on-now {
   @extend %usanetwork-font;
-  color: $white;
+  color: $blue;
   padding: 2px 10px 0 0;
   font-size: 23px;
   display: inline;
@@ -75,7 +75,8 @@
         color: transparent $white transparent transparent;
       }
       top: 50%;
-      left: 0;
+      /* left: 0; */
+      margin-left:-16px;
       @include transform3d(translateY(-50%));
     }
     @include breakpoint($bp-on-now) {

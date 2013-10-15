@@ -1159,6 +1159,9 @@ input.echo-submit-text {
 .echo-streamserver-controls-stream-more, .echo-stream-more {
   display: none !important;
 }
+.page-node-social .echo-stream-more {
+  display: block !important;
+}
 
 #usanetwork_social_section_join {
   background: #282828;

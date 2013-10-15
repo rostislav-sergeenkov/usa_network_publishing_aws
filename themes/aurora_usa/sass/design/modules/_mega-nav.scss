@@ -340,9 +340,12 @@
 #block-usanetwork-blocks-usa-tv-show-menu {
   @extend %regular-18;
   display: inline-block;
-  /* text-transform: lowercase; */
+  text-transform: lowercase;
   height: $primary-nav-height-dt - 33px;
   line-height: $primary-nav-height-dt - 33px;
+  .tv-show-menu-trigger {
+     text-transform:none;
+   }
   > div {
     display: inline-block;
   }
@@ -351,16 +354,17 @@
   @extend %semi-22;
   color: $blue;
   margin-right: 8px;
-  padding: 0 1em 0 0.5em;
+  padding: 0 1em 1px 0.5em;
   border-right: 1px solid $gray-med;
   position: relative;
+  top: 3px;
   @include breakpoint($bp-menu-switch) {
     &:after {
       position: absolute;
       content: $space;
       @include cssTriangle(14px, $black-true, bottom);
       border-top: none;
-      top: -26px;
+      top: -29px;
       left: 50%;
       @include transform3d(translateX(-50%));
       z-index: 105;

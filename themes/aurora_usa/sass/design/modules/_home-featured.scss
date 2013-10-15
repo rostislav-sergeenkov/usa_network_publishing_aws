@@ -1,12 +1,12 @@
 .usa-home-featured {
   @extend %grid-small-wide-two-three-four;
   position: relative;
-  bottom:-15px;
-  margin-top:-15px;
   background-color: $gray-dark;
   padding: 5px 0 36px;
   width:auto;
   @include breakpoint($bp-menu-switch) {
+    bottom:-15px;
+    margin-top:-15px;
     margin-bottom: 0;
   }
   h2 {
@@ -80,7 +80,7 @@
       padding: 8px;
       @include breakpoint($bp-home-2col) {
         height: 44px;
-        padding: 12px 15px 8px;
+        padding: 9px 15px 8px 14px;
       }
       @include breakpoint($bp-home-3col) {
         height: 50px;

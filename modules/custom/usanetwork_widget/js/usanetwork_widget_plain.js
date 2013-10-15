@@ -1,9 +1,15 @@
 var xmlhttp;
-// TODO: change the 'stage' part of each URL to www
-
-var current_url = window.location.href;
-var url_parts = current_url.split('/');
-var domain = url_parts[2];
+var current_env = (typeof $env != 'undefined') ? $env : 'prod';
+var domain = 'www.usanetwork.com'
+switch (current_env) {
+  case 'local': domain = 'local.usanetwork'; break;
+  case 'dev': domain = 'dev.usanetwork.com'; break;
+  case 'qa': domain = 'qa.usanetwork.com'; break;
+  case 'stage': domain = 'stage.usanetwork.com'; break;
+  case 'stage_origin': domain = 'origin.stage.usanetwork.com'; break;
+  case 'prod': domain = 'www.usanetwork.com'; break;
+  case 'prod_origin': domain = 'origin-www.usanetwork.com'; break;
+}
 var url = "http://" + domain + "/navbar/syndicate_plain";
 var isIE9 = window.XDomainRequest ? true : false;
 

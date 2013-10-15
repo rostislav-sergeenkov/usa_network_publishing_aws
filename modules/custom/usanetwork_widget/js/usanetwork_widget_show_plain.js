@@ -1,6 +1,10 @@
 var xmlhttp;
 // TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_plain";
+
+var current_url = window.location.href;
+var url_parts = current_url.split('/');
+var domain = url_parts[2];
+var url = "http://" + domain + "/node/" + $show_id + "/navbar/syndicate_plain";
 var isIE9 = window.XDomainRequest ? true : false;
 
 

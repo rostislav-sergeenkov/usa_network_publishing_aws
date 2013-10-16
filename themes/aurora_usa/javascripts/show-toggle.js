@@ -19,7 +19,7 @@
       var $promos = new Array();
       var y_offset;
       var row = 0;
-      $content.find('.node').each(function() {
+      $content.find('ul li').each(function() {
         var $promo = $(this);
         var promo_offset = $promo.offset().top - $content.offset().top;
         if (promo_offset !== null && promo_offset > y_offset) {
@@ -40,11 +40,13 @@
             $promo = $promos[(display_rows - 1)][i];
           }
         }
-        // Calculate visible content height
-        var height = $promo.offset().top - $content.offset().top + $promo.outerHeight();
-        // Take care of paddings
-        height += parseInt($content.css('padding-top')) + parseInt($content.css('padding-bottom'));
-        $content.height(height);
+        if ($promo !== undefined) {
+          // Calculate visible content height
+          var height = $promo.offset().top - $content.offset().top + $promo.outerHeight();
+          // Take care of paddings
+          height += parseInt($content.css('padding-top')) + parseInt($content.css('padding-bottom'));
+          $content.height(height);
+        }
       }
 
       $toggle = $content.parent().children('.expandable-toggle-wrap');

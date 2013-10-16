@@ -1,7 +1,34 @@
 .ie8 {
+  max-width: 1024px;
+  margin: 0 auto;
   img {
     width: inherit;
     max-width: 100%;
     height: auto;
+  }
+  .mega-sub-nav-container {
+    display: none;
+  }
+  .mobi-menu-icon {
+    display: block;
+  }
+  .jPanelMenu-panel {
+      max-width: 1024px;
+      margin: 0 auto;
+  }
+  #mega-nav {
+      max-width: 1024px;
+      margin: 0 auto;
+  }
+  &[data-menu-direction="left"] {
+    #mega-nav {
+      left: auto;
+    }
+  }
+  .region-footer {
+    li {
+      /*display: inline-block !important;*/
+      float:left;
+    }
   }
 }

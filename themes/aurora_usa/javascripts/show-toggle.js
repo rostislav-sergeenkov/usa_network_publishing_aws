@@ -1,104 +1,121 @@
-// Show toggle
-// TODO:  cleanup
 (function ($) {
 
   Drupal.behaviors.show_more_toggle = {
-    attach: function (context, settings) {
-      $promo = $('.promo-ads-panel');
-      $promo_toggle_wrap = $('.promo-ads-panel .expandable-toggle-wrap');
-      $promo_toggle = $('.promo-ads-panel .expandable-toggle');
+    setCollapsibleContentHeight: function($content) {
+      var $container = $content.parents('.expandable-container');
+      var $toggle = $content.parent().children('.expandable-toggle-wrap');
+      // Number of rows to display by default
+      var display_rows = 1;
 
-      $promos = $('.expandable-container');
-
-      $video_promo = $('.video-promo-panel');
-      $video_promo_toggle_wrap = $('.video-promo-panel .expandable-toggle-wrap');
-      $video_promo_toggle = $('.video-promo-panel .expandable-toggle');
-      $target_pane = '.expandable-content > div:first-child .pane-content';
-
-      $promos.find($target_pane).height(269);
-
-      $promos_count = $promos.find('.pane-node-field-usa-tv-promo ul li').length;
-      $videos_count = $video_promo.find('.pane-node-field-usa-tv-promo-vids ul li').length;
-
-      window.onload = function() {
-        video_count_check();
-        promo_count_check();
-      };
-
-
-      function video_count_check() {
-        if($videos_count <= 4 && $('.usa-tv-show #main').css('width') == '1245px' ) {
-          $video_promo_toggle.hide();
-          $video_promo_toggle_wrap.addClass('off');
-        } else if ($videos_count <= 3 && $('.usa-tv-show #main').css('width') == '930px' ) {
-          $video_promo_toggle.hide();
-          $video_promo_toggle_wrap.addClass('off');
-        } else if ($videos_count <= 2 && $('.usa-tv-show #main').css('width') == '615px' ) {
-          $video_promo_toggle.hide();
-          $video_promo_toggle_wrap.addClass('off');
-        } else if ($videos_count <= 1 && $('.usa-tv-show #main').css('width') == '304px' ) {
-          $video_promo_toggle.hide();
-          $video_promo_toggle_wrap.addClass('off');
-        } else {
-          $video_promo_toggle.show();
-          $video_promo_toggle_wrap.removeClass('off');
+      // Check if we have rows configured
+      if ($container.data('show_more_toggle') !== undefined) {
+        var options = $container.data('show_more_toggle');
+        if (options.display_rows !== undefined) {
+          display_rows = options.display_rows;
         }
       }
 
-      function promo_count_check() {
-        if($promos_count <= 3 && $('.usa-tv-show #main').css('width') == '1245px' ) {
-          $promo_toggle.hide();
-          $promo_toggle_wrap.addClass('off');
-        } else if ($promos_count <= 2 && $('.usa-tv-show #main').css('width') == '930px' ) {
-          $promo_toggle.hide();
-          $promo_toggle_wrap.addClass('off');
-        } else if ($promos_count <= 1 && $('.usa-tv-show #main').css('width') == '615px' ) {
-          $promo_toggle.hide();
-          $promo_toggle_wrap.addClass('off');
-        } else if ($promos_count <= 1 && $('.usa-tv-show #main').css('width') == '304px' ) {
-          $promo_toggle.hide();
-          $promo_toggle_wrap.addClass('off');
-        } else {
-          $promo_toggle.show();
-          $promo_toggle_wrap.removeClass('off');
+      // Arrange promos by rows
+      var $promos = new Array();
+      var y_offset;
+      var row = 0;
+      $content.find('.node').each(function() {
+        var $promo = $(this);
+        var promo_offset = $promo.offset().top - $content.offset().top;
+        if (promo_offset !== null && promo_offset > y_offset) {
+          row++;
         }
-      }
-
-      $(window).resize(function() {
-        video_count_check();
-        promo_count_check();
+        y_offset = promo_offset;
+        if ($promos[row] == undefined) {
+          $promos[row] = new Array();
+        }
+        $promos[row].push($promo);
       });
 
-      $promo_toggle.click(function() {
-        if($promo.find('.more').css('display') == 'block') {
-          $promo.addClass('expanded');
-          $promo.find($target_pane).css('height','100%');
-          $promo.find('.more').hide();
-          $promo.find('.less').show();
-        } else {
-          $promo.removeClass('expanded');
-          $promo.find($target_pane).height(269);
-          $promo.find('.less').hide();
-          $promo.find('.more').show();
+      if (!$container.hasClass('expanded')) {
+        // Find the highest promo in the last row, in case they are not equal
+        var $promo;
+        for (i in $promos[(display_rows - 1)]) {
+          if ($promo == null || $promos[(display_rows - 1)][i].height() > $promo.height()) {
+            $promo = $promos[(display_rows - 1)][i];
+          }
         }
-     });
+        // Calculate visible content height
+        var height = $promo.offset().top - $content.offset().top + $promo.outerHeight();
+        // Take care of paddings
+        height += parseInt($content.css('padding-top')) + parseInt($content.css('padding-bottom'));
+        $content.height(height);
+      }
 
-      $video_promo_toggle.click(function() {
-        if($video_promo.find('.more').css('display') == 'block') {
-          $video_promo.addClass('expanded');
-          $video_promo.find($target_pane).css('height','100%');
-          $video_promo.find('.more').hide();
-          $video_promo.find('.less').show();
-        } else {
-          ;
-          $video_promo.removeClass('expanded');
-          $video_promo.find($target_pane).height(269);
-          $video_promo.find('.less').hide();
-          $video_promo.find('.more').show();
-        }
-     });
-
+      $toggle = $content.parent().children('.expandable-toggle-wrap');
+      // Check if all promos are shown or not. Hide or show toggle handle.
+      if ($promos[display_rows] == undefined) {
+        // They are all shown
+        $toggle.hide();
+      }
+      else {
+        $toggle.show();
+      }
     },
-};
 
+    attach: function(context, settings) {
+      $('.expandable-container').each(function() {
+        var $container = $(this);
+        var $content = $container.children('.expandable-content');
+        var $toggle = $container.children('.expandable-toggle-wrap');
+
+        // Force overflow: hidden;
+        $content.css({
+          overflow: 'hidden'
+        });
+
+        Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
+
+        // Make toggle handle clickable
+        $toggle.children('.expandable-toggle').click(function() {
+          var $container = $(this).parents('.expandable-container');
+          var $content = $container.children('.expandable-content');
+          if ($container.hasClass('expanded')) {
+            // collapse content
+            $container.removeClass('expanded');
+            Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
+            $(this).children('.more').show();
+            $(this).children('.less').hide();
+          }
+          else {
+            // expand it
+            $container.addClass('expanded');
+            $content.height('100%');
+            $(this).children('.more').hide();
+            $(this).children('.less').show();
+          }
+        });
+      });
+    }
+  };
+
+  // Bind onresize event
+  // Function is wrapped to be executed once in 200ms, but not on every onresize event
+  $(window).resize((function() {
+    var timer;
+    var needInvoke = true;
+
+    return function() {
+      if(needInvoke) {
+        needInvoke = false;
+
+        $('.expandable-container').each(function() {
+          var $content = $(this).children('.expandable-content');
+          Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
+        });
+
+        timer = setTimeout(function() {
+          needInvoke = true;
+        }, 200);
+      }
+      else {
+        timer = null;
+      }
+    }
+  })());
 }(jQuery));

@@ -15,7 +15,6 @@
   <?php endif; ?>
     <?php if($content['four'] || $content['three']) : ?>
     <div class="inner-wrapper panel-row promo-ads-panel expandable-container">
-      <?php print '<h2 class="pane-title">' . t('Featured') . '</h2>'; ?>
       <div class="expandable-content">
         <div class="panel-panel panel-two panel-col1">
           <?php print $content['four']; ?>
@@ -36,7 +35,6 @@
     <?php endif; ?>
     <?php if($content['two']) : ?>
     <div class="panel-panel panel-four panel-row video-promo-panel expandable-container">
-      <?php print '<h2 class="pane-title">' . t('Videos') . '</h2>'; ?>
       <div class="expandable-content">
           <?php print $content['two']; ?>
       </div>
@@ -50,7 +48,6 @@
     <?php endif; ?>
      <?php if($content['five'] || $content['six']) : ?>
     <div class="inner-wrapper panel-row last-row social-panel <?php print $class; ?>">
-      <?php print '<h2 class="pane-title">' . t('Social') . '</h2>'; ?>
       <div class="panel-panel panel-five panel-col1">
         <?php print $content['five']; ?>
       </div>

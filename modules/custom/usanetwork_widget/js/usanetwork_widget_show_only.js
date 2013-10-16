@@ -1,6 +1,16 @@
 var xmlhttp;
-// TODO: change the 'stage' part of each URL to www
-var url = "http://stage.usanetwork.com/node/" + $show_id + "/navbar/syndicate_only";
+var current_env = (typeof $env != 'undefined') ? $env : 'prod';
+var domain = 'www.usanetwork.com'
+switch (current_env) {
+  case 'local': domain = 'local.usanetwork'; break;
+  case 'dev': domain = 'dev.usanetwork.com'; break;
+  case 'qa': domain = 'qa.usanetwork.com'; break;
+  case 'stage': domain = 'stage.usanetwork.com'; break;
+  case 'stage_origin': domain = 'origin.stage.usanetwork.com'; break;
+  case 'prod': domain = 'www.usanetwork.com'; break;
+  case 'prod_origin': domain = 'origin-www.usanetwork.com'; break;
+}
+var url = "http://" + domain + "/node/" + $show_id + "/navbar/syndicate_only";
 var isIE9 = window.XDomainRequest ? true : false;
 
 

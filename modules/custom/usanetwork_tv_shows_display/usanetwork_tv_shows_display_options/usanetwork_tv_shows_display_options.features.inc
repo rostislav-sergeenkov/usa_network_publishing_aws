@@ -31,7 +31,7 @@ function usanetwork_tv_shows_display_options_default_page_manager_handlers_alter
 /**
  * Implements hook_field_group_info_alter().
  */
-function usanetwork_tv_shows_color_field_field_group_info_alter(&$data) {
+function usanetwork_tv_shows_display_field_field_group_info_alter(&$data) {
   if (isset($data['group_usa_custom_tab|node|tv_show|form'])) {
     $data['group_usa_custom_tab|node|tv_show|form']->data['children']['8'] = 'group_usa_tv_promo'; /* WAS: '' */
     $data['group_usa_custom_tab|node|tv_show|form']->data['children']['9'] = 'group_usa_tv_promo_vids'; /* WAS: '' */

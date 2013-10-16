@@ -461,6 +461,7 @@ body.usa-social {
 
  /* echo stream */
 
+
 .echo-stream-header {
   float: right;
   margin: 0;
@@ -579,6 +580,10 @@ body.usa-social {
   &:hover {
     color: $gray-dark;
   }
+}
+
+.echo-application-message, .echo-control-message {
+  color: #3D3D3D;
 }
 
 .echo-item-children {

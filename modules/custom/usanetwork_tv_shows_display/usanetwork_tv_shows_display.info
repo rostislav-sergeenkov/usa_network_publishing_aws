@@ -5,4 +5,4 @@ package = USA Network
 version = 7.x-1.0
 
 dependencies[] = usanetwork_tv_shows
-dependencies[] = usanetwork_tv_shows_options
+dependencies[] = usanetwork_tv_shows_display_options

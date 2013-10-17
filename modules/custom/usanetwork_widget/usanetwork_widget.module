@@ -5,13 +5,20 @@
  */
 
 /**
- * Implementation of hook_init().
+ * Implements hook_boot().
  */
-function usanetwork_widget_init() {
-  $cors_urls = variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com');
-  
-  if (!empty($cors_urls)) {
-    drupal_add_http_header('Access-Control-Allow-Origin', $cors_urls);
+function usanetwork_widget_boot() {
+  $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : false;
+  if ($origin) {
+    $cors_urls = explode(',', variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com'));
+    if (!empty($cors_urls)) {
+      foreach ($cors_urls as $url) {
+        $url = trim($url);
+        if (strpos($url, trim($origin, '/')) === 0) {
+          drupal_add_http_header('Access-Control-Allow-Origin', $url);
+        }
+      }
+    }
   }
 }
 

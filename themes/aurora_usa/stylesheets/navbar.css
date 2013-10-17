@@ -857,25 +857,28 @@ you can use the generic selector below, but it's slower:
 }
 
 #block-usanetwork-blocks-usa-tv-show-menu {
-  display: inline-block;
+  float: left;
+  display: block;
   text-transform: lowercase;
-  height: 32px;
+  height: 33px;
   line-height: 32px;
 }
 #block-usanetwork-blocks-usa-tv-show-menu .tv-show-menu-trigger {
   text-transform: none;
 }
 #block-usanetwork-blocks-usa-tv-show-menu > div {
-  display: inline-block;
+  display: block;
 }
 
 .tv-show-menu-trigger {
   color: #0ab6e8;
   margin-right: 8px;
-  padding: 0 1em 1px 0.5em;
+  margin-top: 16px;
+  height: 33px;
+  padding: 0 1em 0 0.5em;
   border-right: 1px solid #3d3d3d;
   position: relative;
-  top: 3px;
+  top: 0px;
 }
 @media (min-width: 769px) {
   .tv-show-menu-trigger:after {

@@ -847,7 +847,8 @@ input.echo-submit-text {
 
 
 .social-panel {
-  &.inner-wrapper  {
+  &.inner-wrapper {
+    margin-top:42px;
     .panel-col1 {
       @extend %two-to-one-col-social-content-no-sidebar;
     }

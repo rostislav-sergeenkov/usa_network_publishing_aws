@@ -4066,7 +4066,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   display: inline;
   float: left;
   margin: 5px 0 0 0;
-  text-transform: uppercase;
   line-height: 40px;
 }
 #utilities .breadcrumb {

@@ -153,6 +153,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_shows_color_field',
     'usanetwork_entityreference',
     'usanetwork_node_copy',
+    'usanetwork_promo_preview',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -566,3 +567,13 @@ function usanetwork_core_update_7125() {
   module_enable($modules_en);
 }
 
+/**
+ * enable modules: usanetwork_promo_preview
+ */
+function usanetwork_core_update_7126() {
+
+  $modules_en = array(
+    'usanetwork_promo_preview',
+  );
+  module_enable($modules_en);
+}

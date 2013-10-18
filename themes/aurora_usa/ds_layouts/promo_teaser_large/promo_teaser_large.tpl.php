@@ -1,0 +1,28 @@
+<div class="<?php print $classes;?>">
+  <?php if ($link): ?>
+    <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
+      <a href="<?php print $link; ?>" class="promo-link">
+    <?php else: ?>
+      <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="promo-link">
+    <?php endif; ?>
+  <?php endif; ?>
+  <?php if ($media): ?>
+  <div class="asset-img-large"><?php print $media_large; ?></div>
+  <div class="asset-img"><?php print $media; ?></div>
+  <?php endif; ?>
+  <?php if(($title && $title != "&nbsp;") || ($caption && $caption != "&nbsp;") ) : ?>
+  <div class="caption-overlay meta">
+    <div class="caption-fields-wrapper">
+    <?php if ($title && $title != "&nbsp;"): ?>
+      <div class="title"><?php print $title; ?></div>
+    <?php endif; ?>
+    <?php if ($caption && $caption != "&nbsp;"): ?>
+      <div class="caption"><?php print ($caption); ?></div>
+    <?php endif; ?>
+    </div>
+  </div>
+<?php endif; ?>
+  <?php if ($link): ?>
+    </a>
+  <?php endif; ?>
+</div>

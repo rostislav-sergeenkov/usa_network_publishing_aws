@@ -4065,8 +4065,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities h1#page-title {
   display: inline;
   float: left;
-  margin: 5px 0 0 0;
-  text-transform: uppercase;
+  margin: 5px 0 0 10px;
   line-height: 40px;
 }
 #utilities .breadcrumb {

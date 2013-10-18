@@ -19,8 +19,7 @@
   h1#page-title {
     @include float-left;
     @extend %regular-18;
-    margin: 5px 0 0 0;
-    text-transform: uppercase;
+    margin: 5px 0 0 10px;
     line-height: 40px;
   }
 

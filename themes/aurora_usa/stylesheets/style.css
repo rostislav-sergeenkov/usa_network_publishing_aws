@@ -6295,25 +6295,22 @@ body.person-page #main {
 #on-now.trigger:before {
   content: "\0020";
   position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
+  display: inline-block;
+  width: auto;
+  height: auto;
   border-width: 5px 5px 5px 0;
   border-style: solid;
-  border-color: transparent white transparent transparent;
-  top: 50%;
+  border-color: transparent #0ab6e8 transparent transparent;
+  top: 20px;
   margin-left: -14px;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  /* @include transform3d(translateY(-50%)); */
 }
 @media (min-width: 640px) {
   #on-now.trigger {
     padding-left: 16px;
   }
   #on-now.trigger:before {
+    top: 26px;
     margin-left: -16px;
     border-width: 6px 8px 6px 0;
   }

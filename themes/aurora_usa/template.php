@@ -449,6 +449,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'promo_teaser':
+          case 'promo_teaser_large':
           $vars['items'][0]['#prefix'] = '<h3>';
           $vars['items'][0]['#suffix'] = '</h3>';
             break;

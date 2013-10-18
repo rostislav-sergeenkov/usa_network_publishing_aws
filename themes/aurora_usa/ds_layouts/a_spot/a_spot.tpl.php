@@ -8,10 +8,36 @@ if ($hex == '&nbsp;') {
   $hex = 'fff';
 }
 $hexcolor = $hex ?  $hex : 'ffffff';
+
+//color for the episodic lines
+$line_1_color = trim(strip_tags($line_1_color));
+$line_2_color = trim(strip_tags($line_2_color));
+$line_3_color = trim(strip_tags($line_3_color));
+$line_1_hex = ((!isset($line_1_color)) || ($line_1_color == '&nbsp;')) ? 'ffffff' : $line_1_color;
+$line_2_hex = ((!isset($line_2_color)) || ($line_2_color == '&nbsp;')) ? 'ffffff' : $line_2_color;
+$line_3_hex = ((!isset($line_3_color)) || ($line_3_color == '&nbsp;')) ? 'ffffff' : $line_3_color;
+
+//font-size for the episodic lines
+$line_1_fontsize = trim(strip_tags($line_1_fontsize));
+$line_2_fontsize = trim(strip_tags($line_2_fontsize));
+$line_3_fontsize = trim(strip_tags($line_3_fontsize));
+$line_1_font_size = ((!isset($line_1_fontsize)) || ($line_1_fontsize == '&nbsp;')) ? '40' : $line_1_fontsize;
+$line_2_font_size = ((!isset($line_2_fontsize)) || ($line_2_fontsize == '&nbsp;')) ? '30' : $line_2_fontsize;
+$line_3_font_size = ((!isset($line_3_fontsize)) || ($line_3_fontsize == '&nbsp;')) ? '24' : $line_3_fontsize;
+
+//mobile font-size for the episodic lines
+$line_1_mobile_fontsize = trim(strip_tags($line_1_mobile_fontsize));
+$line_2_mobile_fontsize = trim(strip_tags($line_2_mobile_fontsize));
+$line_3_mobile_fontsize = trim(strip_tags($line_3_mobile_fontsize));
+$line_1_mobile_font_size = ((!isset($line_1_mobile_fontsize)) || ($line_1_mobile_fontsize == '&nbsp;')) ? '28' : $line_1_mobile_fontsize;
+$line_2_mobile_font_size = ((!isset($line_2_mobile_fontsize)) || ($line_2_mobile_fontsize == '&nbsp;')) ? '21' : $line_2_mobile_fontsize;
+$line_3_mobile_font_size = ((!isset($line_3_mobile_fontsize)) || ($line_3_mobile_fontsize == '&nbsp;')) ? '17' : $line_3_mobile_fontsize;
+
 $nodeid = $node->nid;
 
 $text_1_font_size = $text_1_font_size ? $text_1_font_size : '';
 $text_2_font_size = $text_2_font_size ? $text_2_font_size : '';
+$media_tablet_portrait = $media_tablet_portrait ? $media_tablet_portrait : '';
 
 if($text_1_font_size == '&nbsp;') {
   $text_1_font_size = '';
@@ -47,6 +73,35 @@ $css = '
 .ie9 .aspot-node-'. $nodeid .' a .meta .show-title:after {
   background-color: #'. $hexcolor .';
 }
+.aspot-node-'. $nodeid .' a .meta-wrap .episodic-show-title,
+.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-title,
+.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-title {
+  color: #' . $line_1_hex . ';
+  font-size: ' . $line_1_font_size . 'pt;
+}
+.aspot-node-'. $nodeid .' a .meta-wrap .episodic-show-time,
+.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-time 
+.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-time {
+  color: #' . $line_2_hex . ';
+  font-size: ' .$line_2_font_size. 'pt;
+}
+.aspot-node-'. $nodeid .' a .meta-wrap .episodic-episode-title,
+.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-episode-title,
+.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-episode-title {
+  color: #' . $line_3_hex . ';
+  font-size: ' . $line_3_font_size . 'pt;
+}
+@media (min-width: 300px) and (max-width: 768px) {
+  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-title {
+    font-size: ' . $line_1_mobile_font_size . 'pt;
+  }
+  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-time {
+    font-size: ' . $line_2_mobile_font_size . 'pt;
+  }
+  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-episode-title {
+    font-size: ' . $line_3_mobile_font_size . 'pt;
+  }
+}
 ';
 // ugly is ugly but ugly is working for the moment
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
@@ -61,6 +116,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
   <?php endif; ?>
 <?php endif; ?>
 
+  <?php if ((!isset($node->field_is_episodic['und'][0]['value'])) || (isset($node->field_is_episodic['und'][0]['value']) && $node->field_is_episodic['und'][0]['value'] == 0)): ?>
   <?php if ($aspot_title_image && $aspot_title_image !== '&nbsp;'): ?>
     <div class="show-title-image"><?php print $aspot_title_image; ?></div>
   <?php endif; ?>
@@ -85,6 +141,29 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
     <div class="cta"><?php print $cta; ?></div>
     <?php endif; ?>
   </div>
+  <?php else : ?>
+     <?php if ($line_1_image && $line_1_image !== '&nbsp;'): ?>
+      <div class="show-title-image"><?php print $line_1_image; ?></div>
+    <?php endif; ?>
+    <div class="meta-wrap">
+      <div class="meta">
+      <?php if (!$line_1_image || $line_1_image == '&nbsp;'): ?>
+        <?php if ($line_1_tite && $line_1_tite !== '&nbsp;'): ?>
+          <h1 class="episodic-show-title"><?php print $line_1_tite; ?></h1>
+        <?php endif; ?>
+      <?php endif; ?>
+      <?php if ($line_2_tite && $line_2_tite !== '&nbsp;'): ?>
+        <h2 class="episodic-show-time"><?php print ($line_2_tite); ?></h2>
+      <?php endif; ?>
+      <?php if ($line_3_tite && $line_3_tite !== '&nbsp;'): ?>
+        <h3 class="episodic-episode-title"><?php print ($line_3_tite); ?></h3>
+      <?php endif; ?>
+      </div>
+      <?php if ($cta && $cta !== '&nbsp;'): ?>
+      <div class="cta"><?php print $cta; ?></div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
 
   <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>

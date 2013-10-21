@@ -1309,7 +1309,7 @@ function usanetwork_social_server_side_chatter_box($node, $numCommentsToShow=2) 
   // get Echo query results
   $session = curl_init($echoApi);
   curl_setopt($session, CURLOPT_HEADER, false);
-  curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+  //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
   $response = json_decode(trim(curl_exec($session)));
 
@@ -1511,32 +1511,35 @@ if (!path_is_admin(current_path())) {
   $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
   $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
 
-  // TWEETS SECTION
+  // SET VARIABLES THAT DETERMINE WHETHER TO SHOW EACH FEED TYPE
   $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
-  // CHATTER SECTION
   $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
-  // FACEBOOK SECTION
   $showFacebook = isset($node->field_show_fb_page[$lang][0]['value']) ? $node->field_show_fb_page[$lang][0]['value'] : 0 ;
+  $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;  
+  $showGetGlue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0 ;
+  $showInstagram = isset($node->field_show_instagram_page[$lang][0]['value']) ? $node->field_show_instagram_page[$lang][0]['value'] : 0 ;
+
   // PINTEREST SECTION
-  $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;
   if ($showPinterest) {
     $pinterestUrl = isset($node->field_pinterest_url[$lang][0]['value']) ? $node->field_pinterest_url[$lang][0]['value'] : '';
     $pinterestUrl = empty($pinterestUrl) ? variable_get('usanetwork_social_pinterest_url', '') : $pinterestUrl;
   }
+
   // GETGLUE SECTION
-  $showGetGlue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0 ;
   if ($showGetGlue) {
     $getGlueShow = isset($node->field_getglue_show[$lang][0]['value']) ? $node->field_getglue_show[$lang][0]['value'] : '';
     $getGlueShow = empty($getGlueShow) ? variable_get('usanetwork_social_getglue_show', '') : $getGlueShow;
     $getGlueSticker = isset($node->field_getglue_sticker_name[$lang][0]['value']) ? $node->field_getglue_sticker_name[$lang][0]['value'] : '';
     $getGlueUrl = 'http://getglue.com/tv_shows/' . $getGlueShow;
   }
+
   // INSTAGRAM SECTION
-  $showInstagram = isset($node->field_show_instagram_page[$lang][0]['value']) ? $node->field_show_instagram_page[$lang][0]['value'] : 0 ;
     if ($showInstagram) {
       $instagramShowId = isset($node->field_instagram_show_id[$lang][0]['value']) ? $node->field_instagram_show_id[$lang][0]['value'] : '';
       $instagramShowId = empty($instagramShowId) ? variable_get('usanetwork_social_instagram_show_id', '') : $instagramShowId;
     }
+
+  // TWITTER SECTION
   if ($showTwitter) {
     $eql = isset($node->field_twitter_eql_template[$lang][0]['value']) ? $node->field_twitter_eql_template[$lang][0]['value'] : '';
     $eql = empty($eql) ? variable_get('usanetwork_social_twitter_echo_query_template', '') : $eql;
@@ -1561,7 +1564,7 @@ if (!path_is_admin(current_path())) {
 
     $session = curl_init($echoApi);
     curl_setopt($session, CURLOPT_HEADER, false);
-    curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+    //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
     $response = json_decode(trim(curl_exec($session)));
 
@@ -1569,22 +1572,22 @@ if (!path_is_admin(current_path())) {
     $output .= '<div id="usanetwork_social_show_homepage_chatter">
       <div id="usanetwork_social_chatter_title">';
       if ($showTwitter) {
-        $output .= '<a id="navTwitterOnNow" href="#navTwitter" name = "'.$node->nid.'"><span class="navTwitter-selected">Tweets</span></a><span class="onNow-navSocial-empty-span"></span>';
+        $output .= '<a id="navTwitterOnNow" href="#navTwitter" name = "'.$node->nid.'"><span class="navTwitter onnow_social_nav onnow_social_selected">Tweets</span></a><span class="onNow-navSocial-empty-span"></span>';
       }
       if ($showChatPage) {
-        $output .= '<a id="navChatterOnNow" href="#navChatter" name = "'.$node->nid.'"><span class="navChatter">Character Chatter</span></a><span class="onNow-navSocial-empty-span"></span>';
+        $output .= '<a id="navChatterOnNow" href="#navChatter" name = "'.$node->nid.'"><span class="navChatter onnow_social_nav">Character Chatter</span></a><span class="onNow-navSocial-empty-span"></span>';
       }
       if ($showFacebook) {
-        $output .= '<a id="navFbOnNow" href="#navFb" name = "'.$node->nid.'"><span class="navFb">FB</span></a><span class="onNow-navSocial-empty-span"></span>';
+        $output .= '<a id="navFbOnNow" href="#navFb" name = "'.$node->nid.'"><span class="navFb onnow_social_nav">FB</span></a><span class="onNow-navSocial-empty-span"></span>';
       }
       if ($showPinterest) {
-        $output .= '<a id="navPinterestOnNow" href="#navPinterest" name = "'.$pinterestUrl.'"><span class="navPinterest">Pinterest</span></a><span class="onNow-navSocial-empty-span"></span>';
+        $output .= '<a id="navPinterestOnNow" href="#navPinterest" name = "'.$pinterestUrl.'"><span class="navPinterest onnow_social_nav">Pinterest</span></a><span class="onNow-navSocial-empty-span"></span>';
       }
       if ($showGetGlue) {
-        $output .= '<a id="navGetGlueOnNow" href="#navGetGlue" name = "'.$getGlueUrl."urlshowseperator".$getGlueShow.'"><span class="navGetGlue">GetGlue</span></a><span class="onNow-navSocial-empty-span"></span>';
+        $output .= '<a id="navGetGlueOnNow" href="#navGetGlue" name = "'.$getGlueUrl."urlshowseperator".$getGlueShow.'"><span class="navGetGlue onnow_social_nav">GetGlue</span></a><span class="onNow-navSocial-empty-span"></span>';
       }
       if ($showInstagram) {
-        $output .= '<a id="navInstagramOnNow" href="#navInstagram" name = "'.$instagramShowId.'"><span class="navInstagram">Instagram</span></a>';
+        $output .= '<a id="navInstagramOnNow" href="#navInstagram" name = "'.$instagramShowId.'"><span class="navInstagram onnow_social_nav">Instagram</span></a>';
       }
     $output .=  '</div><div id="pinterest" class="widget-background"></div><div id="instagram" class="widget-background"></div><div id="get-glue" class="widget-background"><div id="sticker" style="padding-top:20px;" ></div></div>
       <div id="echo-stream" class="echo-ui echo-TwitterIntents-plugin"><div class="echo-stream-container echo-primaryFont echo-primaryBackgroundColor"><div class="echo-stream-header">
@@ -1697,7 +1700,7 @@ function usanetwork_social_show_on_now_chatter_response($node, $numCommentsToSho
   // get Echo query results
   $session = curl_init($echoApi);
   curl_setopt($session, CURLOPT_HEADER, false);
-  curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+  //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
   $response = json_decode(trim(curl_exec($session)));
 
@@ -1807,7 +1810,7 @@ if (!path_is_admin(current_path())) {
       $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$eql;
       $session = curl_init($echoApi);
       curl_setopt($session, CURLOPT_HEADER, false);
-      curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+      //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
       curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
       $response = drupal_json_decode(trim(curl_exec($session)));
       if (isset($response['entries'])) {
@@ -1923,7 +1926,7 @@ if (!path_is_admin(current_path())) {
 
     $session = curl_init($echoApi);
     curl_setopt($session, CURLOPT_HEADER, false);
-    curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+    //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
     $response = json_decode(trim(curl_exec($session)));
 

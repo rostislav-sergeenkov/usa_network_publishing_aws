@@ -84,8 +84,9 @@
     color: $white;
     z-index: 1;
     top: 95px;
+    bottom:0;
     left: 0;
-    padding-left: 15px;
+    padding-left: 50px;
     text-align: left;
     .usa-adrails &, .ie9 &, .ie8 & {
       top: 115px;
@@ -93,6 +94,19 @@
     }
     .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
         top: 27%;
+    }
+    .episodic-show-title {
+      text-transform:uppercase;
+      margin:0 0 18px 0;
+    }
+    .episodic-show-time {
+      margin:0 0 23px 0;
+    }
+    .episodic-episode-title {
+      margin:0;
+      padding-left:23px;
+      background:url("../images/icons/watch-alt.png") -17px center no-repeat transparent;
+      background-size:55%;
     }
     @include breakpoint($bp-aspot-mid-range-width) {
       top: 140px;
@@ -109,10 +123,10 @@
       }
     }
     @include breakpoint($bp-aspot-large-width) {
-      top: 165px;
+      top: 350px;
       padding-left: 50px;
       .ie9 .usa-tv-show & {
-        top: 165px;
+        top: 350px;
       }
     }
   }

@@ -77,29 +77,29 @@ $css = '
 .aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-title,
 .aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-title {
   color: #' . $line_1_hex . ';
-  font-size: ' . $line_1_font_size . 'pt;
+  font-size: ' . $line_1_font_size . 'px;
 }
 .aspot-node-'. $nodeid .' a .meta-wrap .episodic-show-time,
 .aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-time 
 .aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-time {
   color: #' . $line_2_hex . ';
-  font-size: ' .$line_2_font_size. 'pt;
+  font-size: ' .$line_2_font_size. 'px;
 }
 .aspot-node-'. $nodeid .' a .meta-wrap .episodic-episode-title,
 .aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-episode-title,
 .aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-episode-title {
   color: #' . $line_3_hex . ';
-  font-size: ' . $line_3_font_size . 'pt;
+  font-size: ' . $line_3_font_size . 'px;
 }
 @media (min-width: 300px) and (max-width: 768px) {
   .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-title {
-    font-size: ' . $line_1_mobile_font_size . 'pt;
+    font-size: ' . $line_1_mobile_font_size . 'px;
   }
   .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-time {
-    font-size: ' . $line_2_mobile_font_size . 'pt;
+    font-size: ' . $line_2_mobile_font_size . 'px;
   }
   .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-episode-title {
-    font-size: ' . $line_3_mobile_font_size . 'pt;
+    font-size: ' . $line_3_mobile_font_size . 'px;
   }
 }
 ';

@@ -5376,7 +5376,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   margin-bottom: 3px;
 }
 .promo-metadata h3, .upcoming-movie .meta h3 {
-  line-height: 24px;
+  line-height: 23px;
 }
 @media (max-width: 644px) {
   .promo-metadata, .upcoming-movie .meta {
@@ -7494,8 +7494,9 @@ body.person-page #main {
   color: white;
   z-index: 1;
   top: 95px;
+  bottom: 0;
   left: 0;
-  padding-left: 15px;
+  padding-left: 50px;
   text-align: left;
 }
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
@@ -7504,6 +7505,19 @@ body.person-page #main {
 }
 .ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
   top: 27%;
+}
+.aspot .meta-wrap .episodic-show-title {
+  text-transform: uppercase;
+  margin: 0 0 18px 0;
+}
+.aspot .meta-wrap .episodic-show-time {
+  margin: 0 0 23px 0;
+}
+.aspot .meta-wrap .episodic-episode-title {
+  margin: 0;
+  padding-left: 23px;
+  background: url("../images/icons/watch-alt.png") -17px center no-repeat transparent;
+  background-size: 55%;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
@@ -7525,11 +7539,11 @@ body.person-page #main {
 }
 @media (min-width: 1275px) {
   .aspot .meta-wrap {
-    top: 165px;
+    top: 350px;
     padding-left: 50px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 165px;
+    top: 350px;
   }
 }
 .aspot .show-title-image + .meta-wrap {

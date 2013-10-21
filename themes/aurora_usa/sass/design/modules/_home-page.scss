@@ -30,7 +30,7 @@
   }
   h3 {
     @extend %regular-15;
-    line-height: 24px;
+    line-height: 23px;
   }
   @include breakpoint($bp-home-narrowest) {
     height: 32px;

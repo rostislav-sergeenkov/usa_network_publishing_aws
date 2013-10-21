@@ -82,7 +82,7 @@ function LyrisHqCall($params, $type, $activity){
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
   curl_setopt($ch, CURLOPT_PROXY, $this->proxyhost.':'.$this->proxyport);
   curl_setopt($ch, CURLOPT_POST, 1);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $param_string); 
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $param_string);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   $response = curl_exec($ch);
   curl_close($ch);
@@ -90,5 +90,3 @@ function LyrisHqCall($params, $type, $activity){
 }
 
 }
-
-?>

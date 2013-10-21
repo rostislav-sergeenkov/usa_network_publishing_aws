@@ -339,25 +339,28 @@
 }
 #block-usanetwork-blocks-usa-tv-show-menu {
   @extend %regular-18;
-  display: inline-block;
+  float:left;
+  display: block;
   text-transform: lowercase;
-  height: $primary-nav-height-dt - 33px;
+  height: $primary-nav-height-dt - 32px;
   line-height: $primary-nav-height-dt - 33px;
   .tv-show-menu-trigger {
      text-transform:none;
    }
   > div {
-    display: inline-block;
+    display: block;
   }
 }
 .tv-show-menu-trigger {
   @extend %semi-22;
   color: $blue;
   margin-right: 8px;
-  padding: 0 1em 1px 0.5em;
+  margin-top: 16px;
+  height: 33px;
+  padding: 0 1em 0 0.5em;
   border-right: 1px solid $gray-med;
   position: relative;
-  top: 3px;
+  top: 0px;
   @include breakpoint($bp-menu-switch) {
     &:after {
       position: absolute;

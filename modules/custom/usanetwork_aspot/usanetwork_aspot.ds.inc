@@ -41,6 +41,48 @@ function usanetwork_aspot_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'line_3_fontsize' => array(
+        0 => 'field_episodic_3_fontsize',
+      ),
+      'line_1_mobile_fontsize' => array(
+        0 => 'field_episodic_1_mobile_fontsize',
+      ),
+      'line_2_mobile_fontsize' => array(
+        0 => 'field_episodic_2_mobile_fontsize',
+      ),
+      'line_2_fontsize' => array(
+        0 => 'field_episodic_2_fontsize',
+      ),
+      'line_1_fontsize' => array(
+        0 => 'field_episodic_1_fontsize',
+      ),
+      'line_1_tite' => array(
+        0 => 'field_episodic_1_title',
+      ),
+      'line_2_tite' => array(
+        0 => 'field_episodic_2_title',
+      ),
+      'line_3_tite' => array(
+        0 => 'field_episodic_3_title',
+      ),
+      'line_3_mobile_fontsize' => array(
+        0 => 'field_episodic_3_mobile_fontsize',
+      ),
+      'line_1_image' => array(
+        0 => 'field_episodic_1_image',
+      ),
+      'line_2_color' => array(
+        0 => 'field_episodic_2_color',
+      ),
+      'line_3_color' => array(
+        0 => 'field_episodic_3_color',
+      ),
+      'line_1_color' => array(
+        0 => 'field_episodic_1_color',
+      ),
+      'is_episodic' => array(
+        0 => 'field_is_episodic',
+      ),
       'mobile_text_2' => array(
         0 => 'field_mobile_text_line_2',
       ),
@@ -86,6 +128,20 @@ function usanetwork_aspot_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
+      'field_episodic_3_fontsize' => 'line_3_fontsize',
+      'field_episodic_1_mobile_fontsize' => 'line_1_mobile_fontsize',
+      'field_episodic_2_mobile_fontsize' => 'line_2_mobile_fontsize',
+      'field_episodic_2_fontsize' => 'line_2_fontsize',
+      'field_episodic_1_fontsize' => 'line_1_fontsize',
+      'field_episodic_1_title' => 'line_1_tite',
+      'field_episodic_2_title' => 'line_2_tite',
+      'field_episodic_3_title' => 'line_3_tite',
+      'field_episodic_3_mobile_fontsize' => 'line_3_mobile_fontsize',
+      'field_episodic_1_image' => 'line_1_image',
+      'field_episodic_2_color' => 'line_2_color',
+      'field_episodic_3_color' => 'line_3_color',
+      'field_is_episodic' => 'is_episodic',
+      'field_episodic_1_color' => 'line_1_color',
       'field_mobile_text_line_2' => 'mobile_text_2',
       'field_usa_aspot_tablet_portrait' => 'media_tablet_portrait',
       'aspot_title_image' => 'text_1_image',

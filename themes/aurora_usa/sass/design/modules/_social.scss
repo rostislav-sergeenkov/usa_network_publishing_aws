@@ -461,6 +461,7 @@ body.usa-social {
 
  /* echo stream */
 
+
 .echo-stream-header {
   float: right;
   margin: 0;
@@ -579,6 +580,10 @@ body.usa-social {
   &:hover {
     color: $gray-dark;
   }
+}
+
+.echo-application-message, .echo-control-message {
+  color: #3D3D3D;
 }
 
 .echo-item-children {
@@ -847,7 +852,8 @@ input.echo-submit-text {
 
 
 .social-panel {
-  &.inner-wrapper  {
+  &.inner-wrapper {
+    margin-top:42px;
     .panel-col1 {
       @extend %two-to-one-col-social-content-no-sidebar;
     }

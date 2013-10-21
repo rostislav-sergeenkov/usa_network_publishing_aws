@@ -304,7 +304,8 @@ you can use the generic selector below, but it's slower:
   color: white;
 }
 
-.view-mode-promo_teaser .asset-img {
+.view-mode-promo_teaser .asset-img,
+.view-mode-promo_teaser_large .asset-img {
   border: 2px solid #2d2d2d;
   width: 304px;
   height: 254px;
@@ -3031,25 +3032,28 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 #block-usanetwork-blocks-usa-tv-show-menu {
-  display: inline-block;
+  float: left;
+  display: block;
   text-transform: lowercase;
-  height: 32px;
+  height: 33px;
   line-height: 32px;
 }
 #block-usanetwork-blocks-usa-tv-show-menu .tv-show-menu-trigger {
   text-transform: none;
 }
 #block-usanetwork-blocks-usa-tv-show-menu > div {
-  display: inline-block;
+  display: block;
 }
 
 .tv-show-menu-trigger {
   color: #0ab6e8;
   margin-right: 8px;
-  padding: 0 1em 1px 0.5em;
+  margin-top: 16px;
+  height: 33px;
+  padding: 0 1em 0 0.5em;
   border-right: 1px solid #3d3d3d;
   position: relative;
-  top: 3px;
+  top: 0px;
 }
 @media (min-width: 769px) {
   .tv-show-menu-trigger:after {
@@ -4062,8 +4066,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities h1#page-title {
   display: inline;
   float: left;
-  margin: 5px 0 0 0;
-  text-transform: uppercase;
+  margin: 5px 0 0 10px;
   line-height: 40px;
 }
 #utilities .breadcrumb {
@@ -6292,26 +6295,23 @@ body.person-page #main {
 #on-now.trigger:before {
   content: "\0020";
   position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
+  display: inline-block;
+  width: auto;
+  height: auto;
   border-width: 5px 5px 5px 0;
   border-style: solid;
-  border-color: transparent white transparent transparent;
-  top: 50%;
-  /* left: 0; */
-  margin-left: -16px;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  border-color: transparent #0ab6e8 transparent transparent;
+  top: 20px;
+  margin-left: -14px;
+  /* @include transform3d(translateY(-50%)); */
 }
 @media (min-width: 640px) {
   #on-now.trigger {
     padding-left: 16px;
   }
   #on-now.trigger:before {
+    top: 26px;
+    margin-left: -16px;
     border-width: 6px 8px 6px 0;
   }
 }
@@ -8447,6 +8447,10 @@ body.usa-social {
   color: #2d2d2d;
 }
 
+.echo-application-message, .echo-control-message {
+  color: #3D3D3D;
+}
+
 .echo-item-children {
   padding-left: 20px;
 }
@@ -8741,6 +8745,9 @@ input.echo-submit-text {
 }
 
 /* show landing page social */
+.social-panel.inner-wrapper {
+  margin-top: 42px;
+}
 .social-panel.inner-wrapper .panel-col2 {
   width: 100%;
 }
@@ -9539,6 +9546,105 @@ a[class*="day"] {
   display: none;
 }
 
+.expandable-container.promo-ads-panel .first-promo-large .asset-img-large {
+  display: none;
+}
+@media (min-width: 645px) and (max-width: 958px) {
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 315px;
+  }
+}
+@media (min-width: 959px) and (max-width: 1274px) {
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 14px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(3n+5) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 14px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 314px 15px 0;
+  }
+}
+@media (min-width: 1275px) {
+  .expandable-container.promo-ads-panel .first-promo-large {
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 14px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(4n+6) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 14px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 314px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li {
+    float: left;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img {
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large {
+    display: block;
+    width: 617px;
+    height: 254px;
+    border: 2px solid #2d2d2d;
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child {
+    width: 615px;
+    height: 254px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child .asset-img {
+    display: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper {
+    width: 613px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 315px 15px 0;
+  }
+}
+.expandable-container.promo-ads-panel .first-promo-large .expandable-toggle-wrap {
+  display: none;
+}
 .expandable-container .view-content > .item-list {
   clear: both;
   overflow: hidden;

@@ -66,22 +66,23 @@
     &:before {
       content: $space;
       position: absolute;
-      display: block;
-      width: 0;
-      height: 0;
+      display: inline-block;
+      width: auto;
+      height: auto;
       border: {
         width: 5px 5px 5px 0;
         style: solid;
-        color: transparent $white transparent transparent;
+        color: transparent $blue transparent transparent;
       }
-      top: 50%;
-      /* left: 0; */
-      margin-left:-16px;
-      @include transform3d(translateY(-50%));
+      top: 20px;
+      margin-left: -14px;
+      /* @include transform3d(translateY(-50%)); */
     }
     @include breakpoint($bp-on-now) {
       padding-left: 16px;
       &:before {
+        top: 26px;
+        margin-left: -16px;
         border-width: 6px 8px 6px 0;
       }
     }

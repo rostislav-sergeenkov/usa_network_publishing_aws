@@ -2094,8 +2094,8 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-se438755a6f.png') no-repeat;
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+  background: url('../images/icons-sbc77eb34aa.png') no-repeat;
 }
 
 .icons-arrow-next-hover-v2 {
@@ -2123,11 +2123,11 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2707px;
+  background-position: 0 -2755px;
 }
 
 .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2555px;
+  background-position: 0 -2603px;
 }
 
 .icons-facebook {
@@ -2195,7 +2195,11 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-on_now, .ie9 #on-now, .ie8 #on-now {
-  background-position: 0 -2607px;
+  background-position: 0 -2655px;
+}
+
+.icons-on_now_blue {
+  background-position: 0 -2555px;
 }
 
 .icons-pinterest-hover-v2 {
@@ -2250,7 +2254,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
-  background-position: 0 -2655px;
+  background-position: 0 -2703px;
 }
 
 .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
@@ -6270,23 +6274,66 @@ body.person-page #main {
   display: block;
   width: 35px;
   height: 28px;
-  margin-top: 8px;
-  margin-right: 8px;
-  text-indent: -200%;
-  float: left;
+  padding-left: 0;
+  text-indent: 0;
+  overflow: visible;
+  float: none;
+}
+.ie9 #on-now:before, .ie8 #on-now:before {
+  content: "\0020";
+  position: absolute;
+  top: 26px;
+  left: 22px;
+  margin-left: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 6px 8px 6px 0;
+  border-style: solid;
+  border-color: transparent #0ab6e8 transparent transparent;
 }
 .no-font-feature-settings #on-now {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('../images/icons/on_now.png');
+  background-image: url('../images/icons/on_now_blue.png');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 35px;
   height: 28px;
   display: table-cell;
   width: 75px;
-  background-position: 21px 50%;
+  background-position: 21px 40%;
+  background-size: auto 50%;
+  text-indent: 0 !important;
+  overflow: visible !important;
+}
+@media (min-width: 640px) {
+  .no-font-feature-settings #on-now {
+    background-position: 21px 50%;
+    background-size: auto auto;
+  }
+}
+#on-now .ie9,
+#on-now .ie8 {
+  overflow: visible;
+}
+#on-now .ie9.trigger:before,
+#on-now .ie8.trigger:before {
+  content: "\0020";
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  left: 22px;
+  margin-left: 0;
+}
+@media (min-width: 640px) {
+  #on-now .ie9.trigger:before,
+  #on-now .ie8.trigger:before {
+    top: 26px;
+    margin-left: 0px;
+  }
 }
 #on-now.trigger {
   padding-left: 14px;
@@ -6357,6 +6404,14 @@ body.person-page #main {
     vertical-align: middle;
   }
 }
+.ie9 #on-now-show-episode, .ie8 #on-now-show-episode {
+  height: 45px;
+}
+@media (min-width: 640px) {
+  .ie9 #on-now-show-episode, .ie8 #on-now-show-episode {
+    height: 63px;
+  }
+}
 
 #on-now-episode {
   letter-spacing: 0.03em;
@@ -6383,7 +6438,12 @@ body.person-page #main {
   }
 }
 .ie9 #on-now-episode {
-  line-height: 44px;
+  line-height: 14px;
+}
+@media (min-width: 640px) {
+  .ie9 #on-now-episode {
+    line-height: 62px;
+  }
 }
 .ie8 #on-now-episode {
   font-size: 23px;

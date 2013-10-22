@@ -14,7 +14,7 @@ $line_1_color = trim(strip_tags($line_1_color));
 $line_2_color = trim(strip_tags($line_2_color));
 $line_3_color = trim(strip_tags($line_3_color));
 $line_1_hex = ((!isset($line_1_color)) || ($line_1_color == '&nbsp;')) ? 'ffffff' : $line_1_color;
-$line_2_hex = ((!isset($line_2_color)) || ($line_2_color == '&nbsp;')) ? 'ffffff' : $line_2_color;
+$line_2_hex = ((!isset($line_2_color)) || ($line_2_color == '&nbsp;')) ? 'b5b5b5' : $line_2_color;
 $line_3_hex = ((!isset($line_3_color)) || ($line_3_color == '&nbsp;')) ? 'ffffff' : $line_3_color;
 
 //font-size for the episodic lines
@@ -156,7 +156,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
         <h2 class="episodic-show-time"><?php print ($line_2_tite); ?></h2>
       <?php endif; ?>
       <?php if ($line_3_tite && $line_3_tite !== '&nbsp;'): ?>
-        <h3 class="episodic-episode-title"><?php print ($line_3_tite); ?></h3>
+        <h3 class="episodic-episode-title"><span>&#9658;</span><?php print ($line_3_tite); ?></h3>
       <?php endif; ?>
       </div>
       <?php if ($cta && $cta !== '&nbsp;'): ?>
@@ -168,7 +168,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
   <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
     <?php if ($media_tablet_portrait): ?><?php print $media_tablet_portrait; ?><?php endif; ?>
-    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>   
+    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
   </div>
 
 <?php if ($link || $link !== '&nbsp;'): ?>

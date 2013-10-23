@@ -1,0 +1,15 @@
+.block-usanetwork-video .ajax-content {
+  position: relative;
+}
+.block-usanetwork-video .ajax-content.ajax-loading > div {
+  opacity: 0.5;
+}
+.block-usanetwork-video .ajax-content.ajax-loading .ajax-loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+}

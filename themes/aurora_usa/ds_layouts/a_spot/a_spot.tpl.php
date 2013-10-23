@@ -13,25 +13,16 @@ $hexcolor = $hex ?  $hex : 'ffffff';
 $line_1_color = trim(strip_tags($line_1_color));
 $line_2_color = trim(strip_tags($line_2_color));
 $line_3_color = trim(strip_tags($line_3_color));
-$line_1_hex = ((!isset($line_1_color)) || ($line_1_color == '&nbsp;')) ? 'ffffff' : $line_1_color;
-$line_2_hex = ((!isset($line_2_color)) || ($line_2_color == '&nbsp;')) ? 'ffffff' : $line_2_color;
-$line_3_hex = ((!isset($line_3_color)) || ($line_3_color == '&nbsp;')) ? 'ffffff' : $line_3_color;
 
 //font-size for the episodic lines
 $line_1_fontsize = trim(strip_tags($line_1_fontsize));
 $line_2_fontsize = trim(strip_tags($line_2_fontsize));
 $line_3_fontsize = trim(strip_tags($line_3_fontsize));
-$line_1_font_size = ((!isset($line_1_fontsize)) || ($line_1_fontsize == '&nbsp;')) ? '40' : $line_1_fontsize;
-$line_2_font_size = ((!isset($line_2_fontsize)) || ($line_2_fontsize == '&nbsp;')) ? '30' : $line_2_fontsize;
-$line_3_font_size = ((!isset($line_3_fontsize)) || ($line_3_fontsize == '&nbsp;')) ? '24' : $line_3_fontsize;
 
 //mobile font-size for the episodic lines
 $line_1_mobile_fontsize = trim(strip_tags($line_1_mobile_fontsize));
 $line_2_mobile_fontsize = trim(strip_tags($line_2_mobile_fontsize));
 $line_3_mobile_fontsize = trim(strip_tags($line_3_mobile_fontsize));
-$line_1_mobile_font_size = ((!isset($line_1_mobile_fontsize)) || ($line_1_mobile_fontsize == '&nbsp;')) ? '28' : $line_1_mobile_fontsize;
-$line_2_mobile_font_size = ((!isset($line_2_mobile_fontsize)) || ($line_2_mobile_fontsize == '&nbsp;')) ? '21' : $line_2_mobile_fontsize;
-$line_3_mobile_font_size = ((!isset($line_3_mobile_fontsize)) || ($line_3_mobile_fontsize == '&nbsp;')) ? '17' : $line_3_mobile_fontsize;
 
 $nodeid = $node->nid;
 
@@ -73,36 +64,92 @@ $css = '
 .ie9 .aspot-node-'. $nodeid .' a .meta .show-title:after {
   background-color: #'. $hexcolor .';
 }
-.aspot-node-'. $nodeid .' a .meta-wrap .episodic-show-title,
-.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-title,
-.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-title {
-  color: #' . $line_1_hex . ';
-  font-size: ' . $line_1_font_size . 'px;
+';
+
+if ((isset($line_1_color)) && ($line_1_color != '&nbsp;')) {
+  $css .= '  
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+  color: #' . $line_1_color . ';
 }
-.aspot-node-'. $nodeid .' a .meta-wrap .episodic-show-time,
-.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-show-time 
-.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-show-time {
-  color: #' . $line_2_hex . ';
-  font-size: ' .$line_2_font_size. 'px;
+';
 }
-.aspot-node-'. $nodeid .' a .meta-wrap .episodic-episode-title,
-.aspot-node-'. $nodeid .' a:hover .meta-wrap .episodic-episode-title,
-.aspot-node-'. $nodeid .' a:visited .meta-wrap .episodic-episode-title {
-  color: #' . $line_3_hex . ';
-  font-size: ' . $line_3_font_size . 'px;
+if ((isset($line_2_color)) && ($line_2_color != '&nbsp;')) {
+  $css .= '
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+  color: #' . $line_2_color . ';
+} 
+';
 }
-@media (min-width: 300px) and (max-width: 768px) {
-  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-title {
-    font-size: ' . $line_1_mobile_font_size . 'px;
-  }
-  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-show-time {
-    font-size: ' . $line_2_mobile_font_size . 'px;
-  }
-  .aspot-node-'. $nodeid .' a .meta-wrap .meta .episodic-episode-title {
-    font-size: ' . $line_3_mobile_font_size . 'px;
+if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
+  $css .= '
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+  color: #' . $line_3_color . ';
+}  
+';
+}
+
+if ((isset($line_1_mobile_fontsize)) && ($line_1_mobile_fontsize != '&nbsp;')) {
+  $css .= '
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+  font-size: ' . $line_1_mobile_fontsize . 'px;
+}
+';
+}
+if ((isset($line_2_mobile_fontsize)) && ($line_2_mobile_fontsize != '&nbsp;')) {
+  $css .= '
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+  font-size: ' . $line_2_mobile_fontsize . 'px;
+}
+';
+}
+if ((isset($line_3_mobile_fontsize)) && ($line_3_mobile_fontsize != '&nbsp;')) {
+  $css .= '
+.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+  font-size: ' . $line_3_mobile_fontsize . 'px;
+}
+';
+}
+
+if ((isset($line_1_fontsize)) && ($line_1_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 1275px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-show-title {
+    font-size: ' . $line_1_fontsize . 'px;
   }
 }
 ';
+}
+if ((isset($line_2_fontsize)) && ($line_2_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 1275px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-show-time {
+    font-size: ' . $line_2_fontsize . 'px;
+  }
+}
+';
+}
+if ((isset($line_3_fontsize)) && ($line_3_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 1275px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-episode-title {
+    font-size: ' . $line_3_fontsize . 'px;
+  }
+}
+';
+}
+
 // ugly is ugly but ugly is working for the moment
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
 ?>
@@ -156,7 +203,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
         <h2 class="episodic-show-time"><?php print ($line_2_tite); ?></h2>
       <?php endif; ?>
       <?php if ($line_3_tite && $line_3_tite !== '&nbsp;'): ?>
-        <h3 class="episodic-episode-title"><?php print ($line_3_tite); ?></h3>
+        <h3 class="episodic-episode-title"><div class="arrow-right"></div><?php print ($line_3_tite); ?></h3>
       <?php endif; ?>
       </div>
       <?php if ($cta && $cta !== '&nbsp;'): ?>

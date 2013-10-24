@@ -47,6 +47,12 @@ function usanetwork_aspot_ds_layout_settings_info() {
       'line_1_mobile_fontsize' => array(
         0 => 'field_episodic_1_mobile_fontsize',
       ),
+      'line_1_tabletportrait_fontsize' => array(
+        0 => 'field_episodic_1_tabpor_fontsize',
+      ),
+      'line_2_tabletportrait_fontsize' => array(
+        0 => 'field_episodic_2_tabpor_fontsize',
+      ),
       'line_2_mobile_fontsize' => array(
         0 => 'field_episodic_2_mobile_fontsize',
       ),
@@ -58,6 +64,18 @@ function usanetwork_aspot_ds_layout_settings_info() {
       ),
       'line_1_tite' => array(
         0 => 'field_episodic_1_title',
+      ),
+      'line_3_tabletportrait_fontsize' => array(
+        0 => 'field_episodic_3_tabpor_fontsize',
+      ),
+      'line_3_tabletlandscape_fontsize' => array(
+        0 => 'field_episodic_3_tablan_fontsize',
+      ),
+      'line_1_tabletlandscape_fontsize' => array(
+        0 => 'field_episodic_1_tablan_fontsize',
+      ),
+      'line_2_tabletlandscape_fontsize' => array(
+        0 => 'field_episodic_2_tablan_fontsize',
       ),
       'line_2_tite' => array(
         0 => 'field_episodic_2_title',
@@ -130,10 +148,16 @@ function usanetwork_aspot_ds_layout_settings_info() {
     'fields' => array(
       'field_episodic_3_fontsize' => 'line_3_fontsize',
       'field_episodic_1_mobile_fontsize' => 'line_1_mobile_fontsize',
+      'field_episodic_1_tabpor_fontsize' => 'line_1_tabletportrait_fontsize',
+      'field_episodic_2_tabpor_fontsize' => 'line_2_tabletportrait_fontsize',
       'field_episodic_2_mobile_fontsize' => 'line_2_mobile_fontsize',
       'field_episodic_2_fontsize' => 'line_2_fontsize',
       'field_episodic_1_fontsize' => 'line_1_fontsize',
       'field_episodic_1_title' => 'line_1_tite',
+      'field_episodic_3_tabpor_fontsize' => 'line_3_tabletportrait_fontsize',
+      'field_episodic_3_tablan_fontsize' => 'line_3_tabletlandscape_fontsize',
+      'field_episodic_1_tablan_fontsize' => 'line_1_tabletlandscape_fontsize',
+      'field_episodic_2_tablan_fontsize' => 'line_2_tabletlandscape_fontsize',
       'field_episodic_2_title' => 'line_2_tite',
       'field_episodic_3_title' => 'line_3_tite',
       'field_episodic_3_mobile_fontsize' => 'line_3_mobile_fontsize',

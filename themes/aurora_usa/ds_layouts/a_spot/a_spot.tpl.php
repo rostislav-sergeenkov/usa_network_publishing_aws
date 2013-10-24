@@ -19,6 +19,16 @@ $line_1_fontsize = trim(strip_tags($line_1_fontsize));
 $line_2_fontsize = trim(strip_tags($line_2_fontsize));
 $line_3_fontsize = trim(strip_tags($line_3_fontsize));
 
+//tablet landscape font-size for the episodic lines
+$line_1_tabletlandscape_fontsize = trim(strip_tags($line_1_tabletlandscape_fontsize));
+$line_2_tabletlandscape_fontsize = trim(strip_tags($line_2_tabletlandscape_fontsize));
+$line_3_tabletlandscape_fontsize = trim(strip_tags($line_3_tabletlandscape_fontsize));
+
+//tablet portrait font-size for the episodic lines
+$line_1_tabletportrait_fontsize = trim(strip_tags($line_1_tabletportrait_fontsize));
+$line_2_tabletportrait_fontsize = trim(strip_tags($line_2_tabletportrait_fontsize));
+$line_3_tabletportrait_fontsize = trim(strip_tags($line_3_tabletportrait_fontsize));
+
 //mobile font-size for the episodic lines
 $line_1_mobile_fontsize = trim(strip_tags($line_1_mobile_fontsize));
 $line_2_mobile_fontsize = trim(strip_tags($line_2_mobile_fontsize));
@@ -96,28 +106,102 @@ if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
 
 if ((isset($line_1_mobile_fontsize)) && ($line_1_mobile_fontsize != '&nbsp;')) {
   $css .= '
+@media (max-width: 644px) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
   font-size: ' . $line_1_mobile_fontsize . 'px;
 }
+}
 ';
 }
 if ((isset($line_2_mobile_fontsize)) && ($line_2_mobile_fontsize != '&nbsp;')) {
   $css .= '
+@media (max-width: 644px) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
   font-size: ' . $line_2_mobile_fontsize . 'px;
 }
+}
 ';
 }
 if ((isset($line_3_mobile_fontsize)) && ($line_3_mobile_fontsize != '&nbsp;')) {
   $css .= '
+@media (max-width: 644px) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
   font-size: ' . $line_3_mobile_fontsize . 'px;
+}
+}
+';
+}
+
+if ((isset($line_1_tabletportrait_fontsize)) && ($line_1_tabletportrait_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+    font-size: ' . $line_1_tabletportrait_fontsize . 'px;
+  }
+}
+';
+}
+if ((isset($line_2_tabletportrait_fontsize)) && ($line_2_tabletportrait_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+    font-size: ' . $line_2_tabletportrait_fontsize . 'px;
+  }
+}
+';
+}
+if ((isset($line_3_tabletportrait_fontsize)) && ($line_3_tabletportrait_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+    font-size: ' . $line_3_tabletportrait_fontsize . 'px;
+  }
+}
+';
+}
+
+if ((isset($line_1_tabletlandscape_fontsize)) && ($line_1_tabletlandscape_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+    font-size: ' . $line_1_tabletlandscape_fontsize . 'px;
+  }
+}
+';
+}
+if ((isset($line_2_tabletlandscape_fontsize)) && ($line_2_tabletlandscape_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+    font-size: ' . $line_2_tabletlandscape_fontsize . 'px;
+  }
+}
+';
+}
+if ((isset($line_3_tabletlandscape_fontsize)) && ($line_3_tabletlandscape_fontsize != '&nbsp;')) {
+  $css .= '
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+    font-size: ' . $line_3_tabletlandscape_fontsize . 'px;
+  }
 }
 ';
 }

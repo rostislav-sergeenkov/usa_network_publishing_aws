@@ -77,6 +77,12 @@ function usanetwork_aspot_field_group_info() {
       21 => 'field_episodic_2_mobile_fontsize',
       22 => 'field_episodic_3_mobile_fontsize',
       23 => 'field_episodic_1_image',
+      24 => 'field_episodic_1_tabpor_fontsize',
+      25 => 'field_episodic_2_tabpor_fontsize',
+      26 => 'field_episodic_3_tabpor_fontsize',
+      27 => 'field_episodic_3_tablan_fontsize',
+      28 => 'field_episodic_1_tablan_fontsize',
+      29 => 'field_episodic_2_tablan_fontsize',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

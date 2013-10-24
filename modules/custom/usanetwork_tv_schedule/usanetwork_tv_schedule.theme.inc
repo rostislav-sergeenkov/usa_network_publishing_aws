@@ -15,7 +15,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   $current_time = REQUEST_TIME;
 
   $output = '';
-  $output .= '<div class="schedule-header">';
+  $output .= '<div class="schedule-header clearfix">';
   $output .= '<div class="schedule-header-navigation">';
   $output .= '<a class="previous-week" href="#">&lt;</a>';
   $output .= '<div class="schedule-header-navigation-wrapper">';

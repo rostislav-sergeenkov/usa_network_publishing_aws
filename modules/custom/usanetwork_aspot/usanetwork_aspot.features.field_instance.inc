@@ -53,7 +53,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 42,
+      'weight' => 48,
     ),
   );
 
@@ -113,7 +113,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
@@ -239,7 +239,7 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 30,
+      'weight' => 29,
     ),
   );
 
@@ -295,7 +295,119 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
       'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
     ),
   );
 
@@ -411,7 +523,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 36,
     ),
   );
 
@@ -471,7 +583,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 38,
     ),
   );
 
@@ -527,7 +639,119 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 37,
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 40,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
     ),
   );
 
@@ -583,7 +807,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 37,
     ),
   );
 
@@ -643,7 +867,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 42,
     ),
   );
 
@@ -703,7 +927,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 44,
     ),
   );
 
@@ -759,7 +983,119 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 41,
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 46,
     ),
   );
 
@@ -815,7 +1151,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 39,
+      'weight' => 43,
     ),
   );
 
@@ -839,9 +1175,8 @@ Suggested max dimensions 380px x 80px<br/>
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1716,7 +2051,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 43,
+      'weight' => 49,
     ),
   );
 
@@ -1809,7 +2144,13 @@ Suggested max dimensions 380px x 80px<br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text line 1 will render as the alt text.');
   t('Show');
+  t('Tablet Landscape Text line 1 Font Size');
+  t('Tablet Landscape Text line 2 Font Size');
+  t('Tablet Landscape Text line 3 Font Size');
   t('Tablet Portrait');
+  t('Tablet Portrait Text line 1 Font Size');
+  t('Tablet Portrait Text line 2 Font Size');
+  t('Tablet Portrait Text line 3 Font Size');
   t('Tablet Portrait image. Minimum 1230w x 700h.');
   t('Target');
   t('Text Line 1 Font Size');

@@ -364,7 +364,7 @@ function usanetwork_tv_schedule_schedule_page() {
 
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
-    $episode_suffix = '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>';
+    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>' : '';
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
         $show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
@@ -447,9 +447,19 @@ function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
 
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $type)
-    ->propertyCondition('title', $title)
     ->propertyCondition('status', 1)
     ->range(0, 1);
+
+  /**
+   * add fix for WWE
+   * @todo: make configurable
+   */
+  if (strpos($title, 'WWE') === 0) {
+    $query->propertyCondition('title', 'WWE%', 'LIKE');
+  }
+  else {
+    $query->propertyCondition('title', $title);
+  }
 
   $result = $query->execute();
 

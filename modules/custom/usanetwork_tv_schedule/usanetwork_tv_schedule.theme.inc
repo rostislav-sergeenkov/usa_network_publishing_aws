@@ -4,12 +4,15 @@
  * Theme function for schedule header
  */
 function theme_usanetwork_tv_schedule_navigation($variables) {
-  $cpath = current_path();
   $timestamp = $variables['timestamp'];
   $first_day = $variables['first_day'];
   if (!isset($timestamp)) {
     return '';
   }
+
+  $past_weeks = variable_get('usanetwork_tv_schedule_past_weeks', 1);
+  $future_weeks = variable_get('usanetwork_tv_schedule_future_weeks', 1);
+  $current_time = REQUEST_TIME;
 
   $output = '';
   $output .= '<div class="schedule-header">';
@@ -17,9 +20,25 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   $output .= '<a class="previous-week" href="#">&lt;</a>';
   $output .= '<div class="schedule-header-navigation-wrapper">';
   $output .= '<ul class="schedule-header-navigation-weeks">';
-  $output .= '<li class="previous-week">' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $timestamp, 'first_day' => $first_day, 'offset' => -1)) . '</li>';
-  $output .= '<li class="current-week">' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $timestamp, 'first_day' => $first_day)) . '</li>';
-  $output .= '<li class="next-week">' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $timestamp, 'first_day' => $first_day, 'offset' => 1)) . '</li>';
+
+  for($offset = -($past_weeks); $offset <= $future_weeks; $offset++) {
+    $classes = '';
+    // check if it is selected week
+    $selected_week = date('W', $timestamp);
+    $printed_week = date('W', $current_time) + $offset;
+    if ($first_day == 'sun') {
+      if (date('w', $timestamp) == 0) {
+        $selected_week++;
+      }
+      if (date('w', $current_time) == 0) {
+        $printed_week++;
+      }
+    }
+    if ($selected_week == $printed_week) {
+      $classes .= ' current-week';
+    }
+    $output .= '<li' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</li>';
+  }
   $output .= '</ul><div class="clearfix"></div>';
   $output .= '</div>';
   $output .= '<a class="next-week" href="#">&gt;</a>';

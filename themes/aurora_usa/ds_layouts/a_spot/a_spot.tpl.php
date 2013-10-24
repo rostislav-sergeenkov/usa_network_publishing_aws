@@ -287,7 +287,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
         <h2 class="episodic-show-time"><?php print ($line_2_tite); ?></h2>
       <?php endif; ?>
       <?php if ($line_3_tite && $line_3_tite !== '&nbsp;'): ?>
-        <h3 class="episodic-episode-title"><div class="arrow-right"></div><?php print ($line_3_tite); ?></h3>
+        <h3 class="episodic-episode-title"><span class="arrow-right">&#9658;</span><?php print ($line_3_tite); ?></h3>
       <?php endif; ?>
       </div>
       <?php if ($cta && $cta !== '&nbsp;'): ?>

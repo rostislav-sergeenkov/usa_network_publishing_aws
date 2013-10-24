@@ -314,10 +314,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 39,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -370,10 +370,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 35,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -658,10 +658,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 40,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -714,10 +714,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 36,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1002,10 +1002,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 38,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1058,10 +1058,10 @@ Suggested max dimensions 380px x 80px<br/>
         'weight' => 37,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'teaser' => array(

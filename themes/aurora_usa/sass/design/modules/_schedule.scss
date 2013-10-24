@@ -47,20 +47,48 @@ a.prev-day {
 // }
 
 .schedule-table {
+  table {
+    table-layout: fixed;
+  }
+  @include breakpoint($bp-schedule-table-wide) {
+    table {
+      table-layout: auto;
+    }
+  }
   thead {
-    background: $gray-dark;
+    background: $gray-med;
+    tr {
+      display: none;
+      @include breakpoint($bp-schedule-table-wide) {
+        display: table-row;
+      }
+    }
     th {
-      background: $gray-dark;
+      background: $gray-med;
       padding-top: 12px;
       padding-bottom: 10px;
-      border-bottom: $black solid 2px;
-      color: $gray-light;
+      padding-left: 8px;
+      border-bottom: $gray-light solid 1px;
+      border-right: $gray-light solid 1px;
+      color: white;
+    }
+  }
+  tbody {
+    border-width:0;
+  }
+  a {
+    color: $gray-light-gamma;
+    &:hover {
+      color: white;
     }
   }
   td {
     padding-top: 12px;
     padding-bottom: 10px;
-    border-bottom: $black solid 2px;
+    padding-left: 8px;
+    border-bottom: $gray-light solid 1px;
+    border-right: $gray-light solid 1px;
+    color: $gray-light-gamma;
   }
   tr {
     background: $gray-med;
@@ -70,6 +98,7 @@ a.prev-day {
     white-space: nowrap;
     padding-left: .5em;
     width: 23%;
+    color: white;
     @include breakpoint($bp-schedule-table-wide) {
       width: auto;
     }
@@ -77,9 +106,16 @@ a.prev-day {
   .program {
     padding-right: 2%;
     width: 55%;
+    border-right-width:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @include breakpoint($bp-schedule-table-wide) {
+      width: 40%;
       padding-right: 0;
-      width: auto;
+      border-right-width:1px;
+      overflow: inherit;
+      white-space: normal;
     }
   }
   .episode,
@@ -89,5 +125,12 @@ a.prev-day {
       display: table-cell;
     }
   }
+  .rating {
+    border-right-width: 0;
+  }
+  .episode {
+    @include breakpoint($bp-schedule-table-wide) {
+      width: 40%;
+    }
+  }
 }
-

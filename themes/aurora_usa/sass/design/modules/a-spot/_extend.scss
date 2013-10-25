@@ -384,4 +384,26 @@
       height: 709px;
     }
   }
+  .usa-adrails & {
+    .meta-wrap {
+      top: 241px;
+      padding-left: 26px;
+      .episodic-show-title {
+        margin:0 0 8px 0;
+        font-size: 24px;
+      }
+      .episodic-show-time {
+        margin:0 0 10px 0;
+        font-size: 18px;
+      }
+      .episodic-episode-title {
+        padding-left: 14px;
+        font-size: 14px;
+        .arrow-right {
+          margin-left: -14px;
+        }
+      }
+    }
+
+  }
 }

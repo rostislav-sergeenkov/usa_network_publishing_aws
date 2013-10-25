@@ -6305,7 +6305,6 @@ body.person-page #main {
   width: 75px;
   background-position: 21px 40%;
   background-size: auto 50%;
-  text-indent: 0 !important;
   overflow: visible !important;
 }
 @media (min-width: 640px) {
@@ -7912,6 +7911,25 @@ body.person-page #main {
 .ie9 .usa-tv-show .aspot .flexslider img, .ie8 .usa-tv-show .aspot .flexslider img {
   width: 1245px;
   height: 709px;
+}
+.usa-adrails .aspot .meta-wrap {
+  top: 241px;
+  padding-left: 26px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-time {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title {
+  padding-left: 14px;
+  font-size: 14px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title .arrow-right {
+  margin-left: -14px;
 }
 
 .usa-tv-show #main {

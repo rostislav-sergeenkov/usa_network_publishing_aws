@@ -2,12 +2,14 @@
   @extend %grid-small-wide-two-three-four;
   position: relative;
   background-color: $gray-dark;
-  padding: 5px 0 36px;
+    padding: 5px 0 36px;
   width:auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
   @include breakpoint($bp-menu-switch) {
     bottom:-15px;
-    margin-top:-15px;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: -15px;
   }
   h2 {
     @extend %semi-headline;
@@ -212,13 +214,14 @@
       > ul {
         margin-right:-8px;
         margin-left:0!important;
+		margin-top: 17px;
         .carousel-item {
           margin-bottom:8px;
         }
       }
     }
     @include breakpoint($bp-home-2-fence) {
-      padding:10px 0 0;
+      padding:25px 0 0;
       > ul {
         margin-right: -15px;
         margin-left:0!important;
@@ -228,7 +231,7 @@
       }
     }
     @include breakpoint($bp-home-3-fence) {
-      padding:10px 0 0 8px;
+      padding:25px 0 0 8px;
       > ul {
         margin-right: -15px;
         margin-left:0!important;
@@ -238,7 +241,7 @@
       }
     }
     @include breakpoint($bp-home-widest) {
-      padding:10px 0 0 8px;
+      padding:25px 0 0 8px;
       > ul {
         margin-right: -15px;
         margin-left:0!important;

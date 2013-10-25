@@ -5454,12 +5454,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   background-color: #2d2d2d;
   padding: 5px 0 36px;
   width: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 @media (min-width: 769px) {
   .usa-home-featured {
     bottom: -15px;
-    margin-top: -15px;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: -15px;
   }
 }
 .usa-home-featured h2 {
@@ -5709,6 +5711,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .usa-home-featured .view .carousel > ul {
     margin-right: -8px;
     margin-left: 0 !important;
+    margin-top: 17px;
   }
   .usa-home-featured .view .carousel > ul .carousel-item {
     margin-bottom: 8px;
@@ -5716,7 +5719,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0;
+    padding: 25px 0 0;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5728,7 +5731,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5740,7 +5743,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 1275px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;

@@ -37,6 +37,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
     if ($selected_week == $printed_week) {
       $classes .= ' current-week';
     }
+    $classes = trim($classes);
     $output .= '<li' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</li>';
   }
   $output .= '</ul><div class="clearfix"></div>';

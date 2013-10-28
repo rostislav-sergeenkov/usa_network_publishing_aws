@@ -20,7 +20,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   $output = '';
   $output .= '<div class="schedule-header clearfix">';
   $output .= '<div class="schedule-header-navigation">';
-  $output .= '<a class="touchslider-prev previous-week">&lt;</a>';
+  $output .= '<a class="touchslider-prev previous-week" href="#">&lt;</a>';
   $output .= '<div class="schedule-header-navigation-weeks touchslider-viewport"><div>';
 
   for($offset = -($past_weeks); $offset <= $future_weeks; $offset++) {
@@ -43,7 +43,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
     $output .= '<div' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</div>';
   }
   $output .= '</div></div>';
-  $output .= '<a class="touchslider-next next-week">&gt;</a>';
+  $output .= '<a class="touchslider-next next-week" href="#">&gt;</a>';
   $output .= '</div>';
 
   $output .= '</div>';

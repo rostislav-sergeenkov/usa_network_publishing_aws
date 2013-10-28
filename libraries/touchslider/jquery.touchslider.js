@@ -29,10 +29,13 @@ http://touchslider.com
 				pagination: "." + namespace + "-nav-item",
 				currentClass: namespace + "-nav-item-current",
 				duration: 350,
-				mouseTouch: true
+				mouseTouch: true,
+				page: 0,
+        continuous: true,
+				callback: function() {}
 				// [container, scroller]
 			}, options);
-
+		
 		var ret = {
 				current: 0,
 				step: step,
@@ -119,9 +122,17 @@ http://touchslider.com
 				to: function(toIndex, opt) {
 					opt = opt || {};
 					if (toIndex >= slides.length) {
-						toIndex = 0;
+						if(options.continuous){
+							toIndex = 0;
+						} else { 
+							return false; 
+						}
 					} else if (toIndex < 0){
-						toIndex = slides.length - 1;
+						if(options.continuous){
+							toIndex = slides.length - 1;
+						} else { 
+							return false; 
+						}
 					}
 					var duration = options.duration,
 						node = slides.eq(toIndex),
@@ -191,7 +202,7 @@ http://touchslider.com
 
 							// right calc, [3,4]
 							var leftInR = nodeLeft;
-							
+
 							for (i = indexInViewport + 1; i < l; i++) {
 								leftInR += slides.eq(inViewport[i]).outerWidth() + options.margin;
 								endCoords[i] = leftInR;
@@ -399,6 +410,19 @@ http://touchslider.com
 		function changedView(index) {
 			pagination.removeClass(options.currentClass)
 				.eq(index).addClass(options.currentClass);
+
+      if (!options.continuous) {
+        // enable/disable controls
+        container.find(options.prev + '.disabled, ' + options.next + '.disabled').removeClass('disabled');
+        if (index == 0) {
+          container.find(options.prev).addClass('disabled');
+        }
+        if (index == (slides.length - 1)) {
+          container.find(options.next).addClass('disabled');
+        }
+      }
+
+			options.callback.call(container, index);
 		}
 
 		// set item or next
@@ -466,10 +490,12 @@ http://touchslider.com
 		// left/right button
 		$(options.prev, container).click(function() {
 			prev();
+      return false;
 		});
 
 		$(options.next, container).click(function() {
 			next();
+      return false;
 		});
 
 		function initTouch() {
@@ -631,6 +657,10 @@ http://touchslider.com
 		if (options.autoplay) {
 			start();
 		}
+		
+		if(options.page){
+			step(options.page);
+		}
 
 		container.data(namespace, ret);
 	};
@@ -642,3 +672,4 @@ http://touchslider.com
 		return this;
 	};
 }(jQuery));
+

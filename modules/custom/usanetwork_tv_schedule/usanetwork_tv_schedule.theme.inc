@@ -10,6 +10,9 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
     return '';
   }
 
+  drupal_add_js('https://raw.github.com/lusever/TouchSlider/master/jquery.touchslider.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.navigation.js');
+
   $past_weeks = variable_get('usanetwork_tv_schedule_past_weeks', 1);
   $future_weeks = variable_get('usanetwork_tv_schedule_future_weeks', 1);
   $current_time = REQUEST_TIME;
@@ -17,12 +20,10 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   $output = '';
   $output .= '<div class="schedule-header clearfix">';
   $output .= '<div class="schedule-header-navigation">';
-  $output .= '<a class="previous-week" href="#">&lt;</a>';
-  $output .= '<div class="schedule-header-navigation-wrapper">';
-  $output .= '<ul class="schedule-header-navigation-weeks">';
+  $output .= '<div class="schedule-header-navigation-weeks touchslider-viewport">';
 
   for($offset = -($past_weeks); $offset <= $future_weeks; $offset++) {
-    $classes = '';
+    $classes = 'touchslider-item';
     // check if it is selected week
     $selected_week = date('W', $timestamp);
     $printed_week = date('W', $current_time) + $offset;
@@ -38,11 +39,10 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
       $classes .= ' current-week';
     }
     $classes = trim($classes);
-    $output .= '<li' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</li>';
+    $output .= '<div' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</div>';
   }
-  $output .= '</ul><div class="clearfix"></div>';
   $output .= '</div>';
-  $output .= '<a class="next-week" href="#">&gt;</a>';
+  $output .= '<div><a class="touchslider-prev previous-week" href="#">&lt;</a><a class="touchslider-next next-week" href="#">&gt;</a></div>';
   $output .= '</div>';
 
   $output .= '</div>';

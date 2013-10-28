@@ -22,10 +22,12 @@ function usanetwork_tv_schedule_menu() {
     'page callback' => 'usanetwork_on_now_panel_js',
     'access arguments' => array('access content'),
   );
+/*
   $items['usa-on-now-social-block'] = array(
     'page callback' => 'usanetwork_on_now_social_block',
     'access arguments' => array('access content'),
   );
+*/
   return $items;
 }
 
@@ -467,7 +469,7 @@ function usanetwork_on_now_panel_js() {
   exit;
 }
 
-
+/*
 function usanetwork_on_now_social_block() {
   $arg = arg();
   $output = '&nbsp;';
@@ -499,6 +501,8 @@ function usanetwork_on_now_social_block_content($node, $tab) {
   }
   return $output;
 }
+*/
+
 /**
  * On now panel content given the tv show node
  */
@@ -569,8 +573,12 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   $output .= '</div>';
 
+  // chat with fans block
+    $output .= usanetwork_social_server_side_chatter_box($node, 2);
+/*
   // Social Show block
   $output .= usanetwork_social_show_on_now_box($node, 2);
+*/
 
   return $output;
 }

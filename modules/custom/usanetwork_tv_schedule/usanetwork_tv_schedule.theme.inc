@@ -10,7 +10,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
     return '';
   }
 
-  drupal_add_js('https://raw.github.com/lusever/TouchSlider/master/jquery.touchslider.js');
+  drupal_add_js(libraries_get_path('touchslider') . '/jquery.touchslider.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.navigation.js');
 
   $past_weeks = variable_get('usanetwork_tv_schedule_past_weeks', 1);
@@ -20,7 +20,8 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   $output = '';
   $output .= '<div class="schedule-header clearfix">';
   $output .= '<div class="schedule-header-navigation">';
-  $output .= '<div class="schedule-header-navigation-weeks touchslider-viewport">';
+  $output .= '<a class="touchslider-prev previous-week">&lt;</a>';
+  $output .= '<div class="schedule-header-navigation-weeks touchslider-viewport"><div>';
 
   for($offset = -($past_weeks); $offset <= $future_weeks; $offset++) {
     $classes = 'touchslider-item';
@@ -41,8 +42,8 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
     $classes = trim($classes);
     $output .= '<div' . (!empty($classes) ? ' class="' . $classes . '"' : '') . '>' . theme('usanetwork_tv_schedule_navigation_week', array('timestamp' => $current_time, 'first_day' => $first_day, 'offset' => $offset)) . '</div>';
   }
-  $output .= '</div>';
-  $output .= '<div><a class="touchslider-prev previous-week" href="#">&lt;</a><a class="touchslider-next next-week" href="#">&gt;</a></div>';
+  $output .= '</div></div>';
+  $output .= '<a class="touchslider-next next-week">&gt;</a>';
   $output .= '</div>';
 
   $output .= '</div>';

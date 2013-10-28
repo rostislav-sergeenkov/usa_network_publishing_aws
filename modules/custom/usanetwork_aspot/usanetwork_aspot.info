@@ -5,6 +5,7 @@ package = USA Network
 php = 5.2.4
 version = 7.x-1.0
 project = usanetwork_aspot
+dependencies[] = colorfield
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = entityreference

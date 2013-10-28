@@ -81,7 +81,7 @@ if ((isset($line_1_color)) && ($line_1_color != '&nbsp;')) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
-  color: #' . $line_1_color . ';
+  color: ' . $line_1_color . ';
 }
 ';
 }
@@ -90,7 +90,7 @@ if ((isset($line_2_color)) && ($line_2_color != '&nbsp;')) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
-  color: #' . $line_2_color . ';
+  color: ' . $line_2_color . ';
 } 
 ';
 }
@@ -99,7 +99,7 @@ if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
 .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
-  color: #' . $line_3_color . ';
+  color: ' . $line_3_color . ';
 }  
 ';
 }

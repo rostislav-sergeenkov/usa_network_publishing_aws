@@ -1,20 +1,27 @@
 .schedule-header {
   @extend %semi;
-  text-align: center;
   width: auto;
-  vertical-align: middle;
+  margin: 0 -15px 13px -15px;
   padding: 19px 0 4px 0;
+  border-top: 1px solid #878787;
+  text-align: center;
+  vertical-align: middle;
   background-color:#434343;
+  @include box-shadow(rgba(0,0,0,.7) 0 17px 24px -12px inset);
   .schedule-header-navigation {
     float:left;
     .previous-week,
     .next-week {
-      display: inline-block;
+      display: none;
       width: 35px;
-      margin:9px 11px 0 11px;
+      margin:9px 11px 0;
       height: 38px;
       vertical-align:top;
       background-color: #2b2b2b;
+      cursor:pointer;
+      &.disabled {
+        pointer-events: none;
+      }
     }
     .previous-week {
         @include replace-text('icons/arrow-prev.png');
@@ -26,45 +33,57 @@
         background-position:55% 50%;
         background-size:30% auto;
     }
-    .schedule-header-navigation-wrapper {
+    .schedule-header-navigation-weeks {
       display: inline-block;
-      /* width: 656px; */
-      ul {
-        list-style:none;
-        margin:0;
-        padding:0;
-        &.schedule-header-navigation-weeks > li {
-          display: none;
-          &.current-week,
-          & .schedule-header-navigation-week li {
-            display:block;
-            float:left;
+      width:624px;
+      height: 70px;
+      overflow:hidden;
+      .touchslider-item {
+          float:left;
+        ul {
+          list-style:none;
+          margin:0;
+          padding:0;
+        }
+        &.current-week,
+        & .schedule-header-navigation-week li {
+          float:left;
+        }
+        & .schedule-header-navigation-week li {
+          height: 70px;
+          padding:8px 20px 0 20px;
+          &.active {
+            background:url('../images/bg_current_day.png') center top no-repeat transparent;
+            span {
+              color: #2d2d2d;
+            }
           }
-          & .schedule-header-navigation-week li {
-            height: 70px;
-            padding:8px 20px 0 20px;
-            &.active {
-              background:url('../images/bg_current_day.png') center top no-repeat transparent;
-              span {
-                color: #2d2d2d;
-              }
-            }
-            a, span {
-              display: block;
-              color: white;
-              font-family: "Proxima N W01 Bold";
-            }
-            .week-day {
-              font-size:25px;
-              line-height:22px;
-              text-transform:uppercase;
-            }
-            .date {
-              font-size:16px;
-              line-height:22px;
-            }
+          a, span {
+            display: block;
+            color: white;
+            font-family: "Proxima N W01 Bold";
+          }
+          .week-day {
+            font-size:25px;
+            line-height:22px;
+            text-transform:uppercase;
+          }
+          .date {
+            font-size:16px;
+            line-height:22px;
           }
         }
+      }
+    }
+  }
+  @include breakpoint($bp-schedule-table-wide) {
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    .schedule-header-navigation {
+      .previous-week,
+      .next-week {
+        display: inline-block;
       }
     }
   }
@@ -112,6 +131,7 @@ a.prev-day {
 
 .schedule-table {
   margin: 0 -15px;
+  border-top: 1px solid #878787;
   table {
     table-layout: fixed;
   }
@@ -178,31 +198,30 @@ a.prev-day {
     display: none;
   }
   @include breakpoint($bp-schedule-table-wide) {
-    & {
-      margin: 0;
-      table {
-        table-layout: auto;
+    margin: 0;
+    border:0;
+    table {
+      table-layout: auto;
+    }
+    .program {
+      width: 40%;
+      padding-right: 0;
+      overflow: inherit;
+      white-space: normal;
+      .episode-suffix {
+        display: none;
       }
-      .program {
-        width: 40%;
-        padding-right: 0;
-        overflow: inherit;
-        white-space: normal;
-        .episode-suffix {
-          display: none;
-        }
-      }
-      .show-time {
-        width: auto;
-      }
-      .episode {
-        display: table-cell;
-        width: 40%;
-      }
-      .rating {
-        overflow: inherit;
-        white-space: normal;
-      }
+    }
+    .show-time {
+      width: auto;
+    }
+    .episode {
+      display: table-cell;
+      width: 40%;
+    }
+    .rating {
+      overflow: inherit;
+      white-space: normal;
     }
   }
 }

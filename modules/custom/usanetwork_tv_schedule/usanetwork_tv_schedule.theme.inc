@@ -13,7 +13,7 @@ function theme_usanetwork_tv_schedule_navigation($variables) {
   drupal_add_js(libraries_get_path('touchslider') . '/jquery.touchslider.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.navigation.js');
 
-  $past_weeks = variable_get('usanetwork_tv_schedule_past_weeks', 1);
+  $past_weeks = variable_get('usanetwork_tv_schedule_past_weeks', 4);
   $future_weeks = variable_get('usanetwork_tv_schedule_future_weeks', 1);
   $current_time = REQUEST_TIME;
 

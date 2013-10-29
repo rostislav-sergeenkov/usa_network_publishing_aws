@@ -1493,6 +1493,7 @@ function _usanetwork_social_notify_ideamelt($node) {
   }
 }
 
+/*
 function usanetwork_social_show_on_now_box($node, $numCommentsToShow=2) {
 if (!path_is_admin(current_path())) {
 
@@ -1515,7 +1516,7 @@ if (!path_is_admin(current_path())) {
   $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
   $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
   $showFacebook = isset($node->field_show_fb_page[$lang][0]['value']) ? $node->field_show_fb_page[$lang][0]['value'] : 0 ;
-  $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;  
+  $showPinterest = isset($node->field_show_pinterest_page[$lang][0]['value']) ? $node->field_show_pinterest_page[$lang][0]['value'] : 0 ;
   $showGetGlue = isset($node->field_show_getglue[$lang][0]['value']) ? $node->field_show_getglue[$lang][0]['value'] : 0 ;
   $showInstagram = isset($node->field_show_instagram_page[$lang][0]['value']) ? $node->field_show_instagram_page[$lang][0]['value'] : 0 ;
 
@@ -1592,11 +1593,11 @@ if (!path_is_admin(current_path())) {
     $output .=  '</div><div id="pinterest" class="widget-background"></div><div id="instagram" class="widget-background"></div><div id="get-glue" class="widget-background"><div id="sticker" style="padding-top:20px;" ></div></div>
       <div id="echo-stream" class="echo-ui echo-TwitterIntents-plugin"><div class="echo-stream-container echo-primaryFont echo-primaryBackgroundColor"><div class="echo-stream-header">
       <div class="echo-clear"></div>
-      </div><div class="echo-stream-body"><span id = "socialblock_on_now_content">';    
+      </div><div class="echo-stream-body"><span id = "socialblock_on_now_content">';
     foreach ($response->entries as $entries) {
       $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
       $link = (isset($entries->actor->links[0])) ? strval($entries->actor->links[0]) : '';
-      $id = (isset($entries->object->id)) ? strval($entries->object->id) : '';      
+      $id = (isset($entries->object->id)) ? strval($entries->object->id) : '';
       $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';
       $comment = strip_tags(strval($entries->object->content));
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
@@ -1934,7 +1935,7 @@ if (!path_is_admin(current_path())) {
     foreach ($response->entries as $entries) {
       $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
       $link = (isset($entries->actor->links[0])) ? strval($entries->actor->links[0]) : '';
-      $id = (isset($entries->object->id)) ? strval($entries->object->id) : '';      
+      $id = (isset($entries->object->id)) ? strval($entries->object->id) : '';
       $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';
       $comment = strip_tags(strval($entries->object->content));
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
@@ -1992,3 +1993,4 @@ if (!path_is_admin(current_path())) {
     }
   }
 }
+*/

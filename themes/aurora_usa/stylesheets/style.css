@@ -5454,12 +5454,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   background-color: #2d2d2d;
   padding: 5px 0 36px;
   width: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 @media (min-width: 769px) {
   .usa-home-featured {
     bottom: -15px;
-    margin-top: -15px;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: -15px;
   }
 }
 .usa-home-featured h2 {
@@ -5709,6 +5711,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .usa-home-featured .view .carousel > ul {
     margin-right: -8px;
     margin-left: 0 !important;
+    margin-top: 17px;
   }
   .usa-home-featured .view .carousel > ul .carousel-item {
     margin-bottom: 8px;
@@ -5716,7 +5719,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0;
+    padding: 25px 0 0;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5728,7 +5731,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5740,7 +5743,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 1275px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -6305,7 +6308,6 @@ body.person-page #main {
   width: 75px;
   background-position: 21px 40%;
   background-size: auto 50%;
-  text-indent: 0 !important;
   overflow: visible !important;
 }
 @media (min-width: 640px) {
@@ -6469,6 +6471,22 @@ body.person-page #main {
 
 .block-usanetwork-video {
   margin: 0 auto;
+}
+.block-usanetwork-video .ajax-content {
+  position: relative;
+}
+.block-usanetwork-video .ajax-content.ajax-loading > div {
+  opacity: 0.5;
+}
+.block-usanetwork-video .ajax-content.ajax-loading .ajax-loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+  background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
 }
 
 @media (max-width: 722px) {
@@ -7553,48 +7571,94 @@ body.person-page #main {
   position: absolute;
   color: white;
   z-index: 1;
-  top: 95px;
+  top: 175px;
   bottom: 0;
   left: 0;
-  padding-left: 50px;
+  padding-left: 16px;
   text-align: left;
 }
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
-  top: 115px;
-  padding-left: 35px;
+  top: 175px;
+  padding-left: 16px;
 }
 .ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
   top: 27%;
 }
 .aspot .meta-wrap .episodic-show-title {
+  margin: 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1;
   text-transform: uppercase;
-  margin: 0 0 18px 0;
 }
 .aspot .meta-wrap .episodic-show-time {
-  margin: 0 0 23px 0;
+  margin: 0 0 9px 0;
+  color: #b5b5b5;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: capitalize;
 }
 .aspot .meta-wrap .episodic-episode-title {
   margin: 0;
-  padding-left: 23px;
-  background: url("../images/icons/watch-alt.png") -17px center no-repeat transparent;
-  background-size: 55%;
+  padding-left: 12px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: capitalize;
+}
+.aspot .meta-wrap .episodic-episode-title .arrow-right {
+  display: inline-block;
+  margin-left: -12px;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
-    top: 140px;
-    padding-left: 25px;
+    top: 241px;
+    padding-left: 26px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 140px;
+    top: 241px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    padding-left: 14px;
+    font-size: 14px;
+  }
+  .aspot .meta-wrap .episodic-episode-title .arrow-right {
+    margin-left: -14px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .meta-wrap {
-    top: 115px;
+    top: 262px;
     padding-left: 35px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 115px;
+    top: 262px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 12px 0;
+    font-size: 30px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 16px 0;
+    font-size: 23px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    padding-left: 17px;
+    font-size: 18px;
+  }
+  .aspot .meta-wrap .episodic-episode-title .arrow-right {
+    margin-left: -17px;
   }
 }
 @media (min-width: 1275px) {
@@ -7604,6 +7668,21 @@ body.person-page #main {
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
     top: 350px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 18px 0;
+    font-size: 40px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 23px 0;
+    font-size: 30px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    padding-left: 23px;
+    font-size: 24px;
+  }
+  .aspot .meta-wrap .episodic-episode-title .arrow-right {
+    margin-left: -23px;
   }
 }
 .aspot .show-title-image + .meta-wrap {
@@ -7835,6 +7914,25 @@ body.person-page #main {
 .ie9 .usa-tv-show .aspot .flexslider img, .ie8 .usa-tv-show .aspot .flexslider img {
   width: 1245px;
   height: 709px;
+}
+.usa-adrails .aspot .meta-wrap {
+  top: 241px;
+  padding-left: 26px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-time {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title {
+  padding-left: 14px;
+  font-size: 14px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title .arrow-right {
+  margin-left: -14px;
 }
 
 .usa-tv-show #main {

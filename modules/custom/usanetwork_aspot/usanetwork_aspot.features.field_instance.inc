@@ -53,7 +53,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 42,
+      'weight' => 48,
     ),
   );
 
@@ -62,24 +62,29 @@ function usanetwork_aspot_field_default_field_instances() {
     'bundle' => 'usanetwork_aspot',
     'default_value' => array(
       0 => array(
-        'value' => 'ffffff',
+        'rgb' => '#ffffff',
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 22,
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 41,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -95,25 +100,21 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Text line 1 color hex value',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'colorfield',
       'settings' => array(
-        'size' => 7,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
       ),
-      'type' => 'text_textfield',
-      'weight' => 29,
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 30,
     ),
   );
 
@@ -239,14 +240,18 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 30,
+      'weight' => 29,
     ),
   );
 
   // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_mobile_fontsize'
   $field_instances['node-usanetwork_aspot-field_episodic_1_mobile_fontsize'] = array(
     'bundle' => 'usanetwork_aspot',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 17,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -295,7 +300,127 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 30,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
       'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 24,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
     ),
   );
 
@@ -360,24 +485,29 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => array(
       0 => array(
-        'value' => 'ffffff',
+        'rgb' => '#b5b5b5',
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 23,
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 42,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -393,25 +523,21 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 2 color hex value',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'colorfield',
       'settings' => array(
-        'size' => 7,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
       ),
-      'type' => 'text_textfield',
-      'weight' => 34,
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 36,
     ),
   );
 
@@ -420,11 +546,11 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => array(
       0 => array(
-        'value' => 28,
+        'value' => 30,
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter in pixels<br />Recommended is 28',
+    'description' => 'Enter in pixels<br />Recommended is 30',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -471,14 +597,18 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 38,
     ),
   );
 
   // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_mobile_fontsize'
   $field_instances['node-usanetwork_aspot-field_episodic_2_mobile_fontsize'] = array(
     'bundle' => 'usanetwork_aspot',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 15,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -527,7 +657,127 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 37,
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 23,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 40,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 18,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
     ),
   );
 
@@ -583,7 +833,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 37,
     ),
   );
 
@@ -592,24 +842,29 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => array(
       0 => array(
-        'value' => 'ffffff',
+        'rgb' => '#ffffff',
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 24,
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 43,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -625,25 +880,21 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 3 color hex value',
     'required' => 0,
     'settings' => array(
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'colorfield',
       'settings' => array(
-        'size' => 7,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 1,
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
       ),
-      'type' => 'text_textfield',
-      'weight' => 38,
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 42,
     ),
   );
 
@@ -652,11 +903,11 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => array(
       0 => array(
-        'value' => 22,
+        'value' => 24,
       ),
     ),
     'deleted' => 0,
-    'description' => 'Enter in pixels<br />Recommended is 22',
+    'description' => 'Enter in pixels<br />Recommended is 24',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -703,14 +954,18 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 44,
     ),
   );
 
   // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_mobile_fontsize'
   $field_instances['node-usanetwork_aspot-field_episodic_3_mobile_fontsize'] = array(
     'bundle' => 'usanetwork_aspot',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 13,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -759,7 +1014,127 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 41,
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 18,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 14,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 46,
     ),
   );
 
@@ -815,7 +1190,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 39,
+      'weight' => 43,
     ),
   );
 
@@ -839,9 +1214,8 @@ Suggested max dimensions 380px x 80px<br/>
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1716,7 +2090,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 43,
+      'weight' => 49,
     ),
   );
 
@@ -1786,8 +2160,8 @@ Suggested max dimensions 380px x 80px<br/>
   t('Call to Action Type');
   t('Desktop Image');
   t('Enter either a full external url or use the \'search\' button to browse links to local pages. If there is NO call to action it is recommended this link back to the show landing page.');
-  t('Enter in pixels<br />Recommended is 22');
-  t('Enter in pixels<br />Recommended is 28');
+  t('Enter in pixels<br />Recommended is 24');
+  t('Enter in pixels<br />Recommended is 30');
   t('Enter in pixels<br />Recommended is 40');
   t('Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333');
   t('Episodic');
@@ -1809,7 +2183,13 @@ Suggested max dimensions 380px x 80px<br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text line 1 will render as the alt text.');
   t('Show');
+  t('Tablet Landscape Text line 1 Font Size');
+  t('Tablet Landscape Text line 2 Font Size');
+  t('Tablet Landscape Text line 3 Font Size');
   t('Tablet Portrait');
+  t('Tablet Portrait Text line 1 Font Size');
+  t('Tablet Portrait Text line 2 Font Size');
+  t('Tablet Portrait Text line 3 Font Size');
   t('Tablet Portrait image. Minimum 1230w x 700h.');
   t('Target');
   t('Text Line 1 Font Size');

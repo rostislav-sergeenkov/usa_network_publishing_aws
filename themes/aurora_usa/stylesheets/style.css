@@ -7571,62 +7571,64 @@ body.person-page #main {
   position: absolute;
   color: white;
   z-index: 1;
-  top: 175px;
+  top: 171px;
   bottom: 0;
   left: 0;
   padding-left: 16px;
   text-align: left;
 }
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
-  top: 175px;
+  top: 171px;
   padding-left: 16px;
 }
 .ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
   top: 27%;
 }
 .aspot .meta-wrap .episodic-show-title {
-  margin: 0;
+  margin: 0 0 1px 0;
   color: #fff;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 17px;
   font-weight: normal;
   line-height: 1;
   text-transform: uppercase;
 }
 .aspot .meta-wrap .episodic-show-time {
-  margin: 0 0 9px 0;
+  margin: 0 0 5px 0;
   color: #b5b5b5;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: normal;
   line-height: 1;
-  text-transform: capitalize;
 }
 .aspot .meta-wrap .episodic-episode-title {
+  position: relative;
   margin: 0;
   padding-left: 12px;
   color: #fff;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
-  text-transform: capitalize;
 }
 .aspot .meta-wrap .episodic-episode-title .arrow-right {
-  display: inline-block;
-  margin-left: -12px;
+  position: absolute;
+  left: 0;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
-    top: 241px;
+    top: 240px;
     padding-left: 26px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 241px;
+    top: 240px;
   }
   .aspot .meta-wrap .episodic-show-title {
-    margin: 0 0 8px 0;
+    margin: 0 0 2px 0;
     font-size: 24px;
   }
   .aspot .meta-wrap .episodic-show-time {
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     font-size: 18px;
   }
   .aspot .meta-wrap .episodic-episode-title {
@@ -7634,23 +7636,23 @@ body.person-page #main {
     font-size: 14px;
   }
   .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -14px;
+    margin-left: -2px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .meta-wrap {
-    top: 262px;
+    top: 256px;
     padding-left: 35px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 262px;
+    top: 256px;
   }
   .aspot .meta-wrap .episodic-show-title {
-    margin: 0 0 12px 0;
+    margin: 0 0 4px 0;
     font-size: 30px;
   }
   .aspot .meta-wrap .episodic-show-time {
-    margin: 0 0 16px 0;
+    margin: 0 0 9px 0;
     font-size: 23px;
   }
   .aspot .meta-wrap .episodic-episode-title {
@@ -7658,23 +7660,23 @@ body.person-page #main {
     font-size: 18px;
   }
   .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -17px;
+    margin-left: -3px;
   }
 }
 @media (min-width: 1275px) {
   .aspot .meta-wrap {
-    top: 350px;
-    padding-left: 50px;
+    top: 344px;
+    padding-left: 46px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 350px;
+    top: 344px;
   }
   .aspot .meta-wrap .episodic-show-title {
-    margin: 0 0 18px 0;
+    margin: 0 0 8px 0;
     font-size: 40px;
   }
   .aspot .meta-wrap .episodic-show-time {
-    margin: 0 0 23px 0;
+    margin: 0 0 16px 0;
     font-size: 30px;
   }
   .aspot .meta-wrap .episodic-episode-title {
@@ -7682,7 +7684,7 @@ body.person-page #main {
     font-size: 24px;
   }
   .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -23px;
+    margin-left: -5px;
   }
 }
 .aspot .show-title-image + .meta-wrap {

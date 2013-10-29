@@ -19,7 +19,7 @@ function usanetwork_tv_schedule_settings_form() {
   $form['navigation']['usanetwork_tv_schedule_past_weeks'] = array(
     '#type' => 'textfield',
     '#title' => t('Weeks in past'),
-    '#default_value' => variable_get('usanetwork_tv_schedule_past_weeks', 1),
+    '#default_value' => variable_get('usanetwork_tv_schedule_past_weeks', 4),
     '#description' => t('Number of weeks to show past schedule.'),
   );
   $form['navigation']['usanetwork_tv_schedule_future_weeks'] = array(

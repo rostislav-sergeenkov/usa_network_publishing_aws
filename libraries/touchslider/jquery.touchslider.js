@@ -54,13 +54,11 @@ http://touchslider.com
 		if (scroller.css("position") !== "absolute") {
 			var viewportHeight = viewport.height();
 			viewport.css({
-				height: viewportHeight,
 				position: "relative"
 			});
 			scroller.css({
 				position: "absolute",
 				left: 0,
-				height: viewportHeight,
 				width: 100000
 			});
 		}

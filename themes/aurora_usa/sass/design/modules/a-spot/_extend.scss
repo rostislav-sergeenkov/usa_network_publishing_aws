@@ -83,7 +83,7 @@
     position: absolute;
     color: $white;
     z-index: 1;
-    top: 171px;
+    top: 163px;
     bottom:0;
     left: 0;
     padding-left: 16px;
@@ -98,29 +98,31 @@
     .episodic-show-title {
       margin: 0 0 1px 0;
       color: #fff;
-      font-family: $headline-semi;
+      font-family: $headline-reg;
       font-size: 17px;
       font-weight:normal;
       line-height:1;
-      text-transform: uppercase;
+      letter-spacing: .01em;
     }
     .episodic-show-time {
       margin: 0 0 5px 0;
       color: #b5b5b5;
-      font-family: $headline-semi;
+      font-family: $headline-reg;
       font-size: 15px;
       font-weight:normal;
       line-height:1;
+      letter-spacing: .01em;
     }
     .episodic-episode-title {
       position:relative;
       margin:0;
       padding-left:12px;
       color: #fff;
-      font-family: $headline-semi;
+      font-family: $headline-reg;
       font-size: 13px;
       font-weight:normal;
       line-height:1;
+      letter-spacing: .01em;
       .arrow-right {
         position:absolute;
         left: 0;
@@ -246,7 +248,6 @@
     position: relative;
     margin: 0 0 5px 0;
     line-height: 1;
-    text-transform: uppercase;
     @extend %aspot-common-text;
     @include breakpoint($bp-aspot-mid-range2-width) {
       margin-bottom: 10px;
@@ -271,7 +272,6 @@
     margin-bottom: 2px;
     margin: 0;
     line-height: 1;
-    text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.05em;
     @extend %aspot-common-text;
@@ -316,7 +316,6 @@
     padding-left: 34px;
     font-size: 12px;
     line-height: 35px;
-    text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.05em;
     @include breakpoint($bp-aspot-mid-width) {

@@ -7605,17 +7605,12 @@ body.person-page #main {
 .aspot .meta-wrap .episodic-episode-title {
   position: relative;
   margin: 0;
-  padding-left: 12px;
   color: #fff;
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
   letter-spacing: .01em;
-}
-.aspot .meta-wrap .episodic-episode-title .arrow-right {
-  position: absolute;
-  left: 0;
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
@@ -7634,11 +7629,7 @@ body.person-page #main {
     font-size: 18px;
   }
   .aspot .meta-wrap .episodic-episode-title {
-    padding-left: 14px;
     font-size: 14px;
-  }
-  .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -2px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
@@ -7658,11 +7649,7 @@ body.person-page #main {
     font-size: 23px;
   }
   .aspot .meta-wrap .episodic-episode-title {
-    padding-left: 17px;
     font-size: 18px;
-  }
-  .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -3px;
   }
 }
 @media (min-width: 1275px) {
@@ -7682,11 +7669,7 @@ body.person-page #main {
     font-size: 30px;
   }
   .aspot .meta-wrap .episodic-episode-title {
-    padding-left: 23px;
     font-size: 24px;
-  }
-  .aspot .meta-wrap .episodic-episode-title .arrow-right {
-    margin-left: -5px;
   }
 }
 .aspot .show-title-image + .meta-wrap {

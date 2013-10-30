@@ -73,6 +73,8 @@ function usanetwork_core_uninstall_modules() {
     'overlay',
     'shortcut',
     'contextual',
+    'gigya',
+    'pub_gigya',
   );
 
   module_disable($modules);
@@ -107,6 +109,8 @@ function usanetwork_core_enable_modules() {
     'views_load_more',
     'addanother',
     'styleguide',
+    'colorfield_minicolors',
+    'colorfield',
     // custom contrib
     'context_entity_field',
     // USA custom
@@ -143,6 +147,16 @@ function usanetwork_core_enable_modules() {
     'usanetwork_widget',
     'usanetwork_wysiwyg',
     'usanetwork_promo_iframe',
+    'usanetwork_home_clone',
+    'usanetwork_home_edit',
+    'usanetwork_tv_shows_color',
+    'usanetwork_tv_shows_color_field',
+    'usanetwork_entityreference',
+    'usanetwork_node_copy',
+    'usanetwork_promo_preview',
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -556,3 +570,25 @@ function usanetwork_core_update_7125() {
   module_enable($modules_en);
 }
 
+/**
+ * enable modules: usanetwork_promo_preview
+ */
+function usanetwork_core_update_7126() {
+
+  $modules_en = array(
+    'usanetwork_promo_preview',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_tv_shows_display, usanetwork_tv_shows_display_options, usanetwork_field_episodic
+ */
+function usanetwork_core_update_7127() {
+  $modules_en = array(
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
+  );
+  module_enable($modules_en);
+}

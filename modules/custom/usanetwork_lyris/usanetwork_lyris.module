@@ -17,7 +17,7 @@ function usanetwork_lyris_menu() {
     'description' => t('Administer USA Network lyris config.'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_lyris_settings_form'),
-    'access arguments' => array('administer content'),
+    'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_lyris.admin.inc',
   );
   return $items;
@@ -132,9 +132,9 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   $result = usanetwork_lyris_assign_user_to_list($user, $show_property, 'newsletter');
   preg_match("/<TYPE>(.*?)<\/TYPE>/", $result, $matches);
   if($matches[1] == 'success') {
-    $form['newsletter']['#markup'] = t('Your email id %title is added successfully in the list,', array('%title' => $form_state['values']['email']));
+    $form['newsletter']['#markup'] = t('Your email id %title was added successfully to the list.', array('%title' => $form_state['values']['email']));
     return $form['newsletter'];
-    }
+  }
   else {
     preg_match("/<DATA>(.*?)<\/DATA>/", $result, $matches);
     $search  = array('<DATA>', '</DATA>');
@@ -142,7 +142,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
     $error_message = str_replace($search, $replace, $matches[0]);
     list($form, $form_state) = ajax_get_form();
     drupal_process_form($form['#newsletter'], $form, $form_state);
-    form_set_error('', '<span class="error">' . t('%title,', array('%title' => $error_message)) . '</span>');    
+    form_set_error('', '<span class="error">' . t('%title,', array('%title' => $error_message)) . '</span>');
     return $form['newsletter'];
   }
 }
@@ -155,7 +155,6 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
 
 function usanetwork_lyris_load_lyris() {
   //suppress all the error from Sparklist
-  //error_reporting(0);
   $lyris_config = variable_get('usanetwork_lyris_active', '');
   //Lyris object will be created depends up on the admin config
   if($lyris_config) {

@@ -116,17 +116,12 @@
     .episodic-episode-title {
       position:relative;
       margin:0;
-      padding-left:12px;
       color: #fff;
       font-family: $headline-reg;
       font-size: 13px;
       font-weight:normal;
       line-height:1;
       letter-spacing: .01em;
-      .arrow-right {
-        position:absolute;
-        left: 0;
-      }
     }
     @include breakpoint($bp-aspot-mid-range-width) {
       top: 240px;
@@ -143,11 +138,7 @@
         font-size: 18px;
       }
       .episodic-episode-title {
-        padding-left: 14px;
         font-size: 14px;
-        .arrow-right {
-          margin-left: -2px;
-        }
       }
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
@@ -165,11 +156,7 @@
         font-size: 23px;
       }
       .episodic-episode-title {
-        padding-left:17px;
         font-size: 18px;
-        .arrow-right {
-          margin-left: -3px;
-        }
       }
     }
     @include breakpoint($bp-aspot-large-width) {
@@ -187,11 +174,7 @@
         font-size: 30px;
       }
       .episodic-episode-title {
-        padding-left:23px;
         font-size: 24px;
-        .arrow-right {
-          margin-left: -5px;
-        }
       }
     }
   }

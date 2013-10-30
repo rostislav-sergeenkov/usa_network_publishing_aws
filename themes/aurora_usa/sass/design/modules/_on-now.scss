@@ -49,16 +49,61 @@
     display: block;
     width: image-width('icons/on_now.png');
     height: image-height('icons/on_now.png');
-    margin-top: 8px;
-    margin-right: 8px;
-    text-indent: -200%;
-    float: left;
+    padding-left:0;
+    text-indent: 0;
+    overflow:visible;
+    float: none;
+  }
+  .ie9 &:before,
+  .ie8 &:before {
+    content: $space;
+    position: absolute;
+    top: 26px;
+    left:22px;
+    margin-left: 0;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: {
+      width: 6px 8px 6px 0;
+      style: solid;
+      color: transparent $blue transparent transparent;
+    }
   }
   .no-font-feature-settings & {
-    @include replace-text-with-dimensions('icons/on_now.png');
+    @include replace-text-with-dimensions('icons/on_now_blue.png');
     display: table-cell;
     width: 75px;
+    background-position: 21px 40%;
+    background-size:auto 50%;
+    overflow: visible !important;
+    @include breakpoint($bp-on-now) {
     background-position: 21px 50%;
+      background-size:auto auto;
+    }
+  }
+  .ie9,
+  .ie8 {
+    & {
+      overflow:visible;
+    }
+    &.trigger {
+      &:before {
+        content: $space;
+        position: absolute;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        left: 22px;
+        margin-left: 0;
+      }
+      @include breakpoint($bp-on-now) {
+        &:before {
+          top: 26px;
+          margin-left: 0px;
+        }
+      }
+    }
   }
   &.trigger {
     padding-left: 14px;
@@ -124,9 +169,14 @@
       vertical-align: middle;
     }
   }
+  .ie9 &,
+  .ie8 & {
+    height:45px;
+    @include breakpoint($bp-on-now) {
+      height:63px;
+    }
+  }
 }
-
-
 
 #on-now-episode {
   @extend %regular-headline-14;
@@ -152,7 +202,10 @@
     padding: 1px 0 0 5px;
   }
   .ie9 & {
-    line-height: 44px;
+    line-height: 14px;
+    @include breakpoint($bp-on-now) {
+    line-height: 62px;
+    }
   }
   .ie8 & {
     font-size: 23px;

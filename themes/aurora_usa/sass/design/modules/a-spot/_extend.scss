@@ -83,36 +83,98 @@
     position: absolute;
     color: $white;
     z-index: 1;
-    top: 95px;
+    top: 163px;
+    bottom:0;
     left: 0;
-    padding-left: 15px;
+    padding-left: 16px;
     text-align: left;
     .usa-adrails &, .ie9 &, .ie8 & {
-      top: 115px;
-      padding-left: 35px;
+      top: 171px;
+      padding-left: 16px;
     }
     .ie9 .usa-tv-show &, .ie8 .usa-tv-show & {
         top: 27%;
     }
+    .episodic-show-title {
+      margin: 0 0 1px 0;
+      color: #fff;
+      font-family: $headline-reg;
+      font-size: 17px;
+      font-weight:normal;
+      line-height:1;
+      letter-spacing: .01em;
+    }
+    .episodic-show-time {
+      margin: 0 0 5px 0;
+      color: #b5b5b5;
+      font-family: $headline-reg;
+      font-size: 15px;
+      font-weight:normal;
+      line-height:1;
+      letter-spacing: .01em;
+    }
+    .episodic-episode-title {
+      position:relative;
+      margin:0;
+      color: #fff;
+      font-family: $headline-reg;
+      font-size: 13px;
+      font-weight:normal;
+      line-height:1;
+      letter-spacing: .01em;
+    }
     @include breakpoint($bp-aspot-mid-range-width) {
-      top: 140px;
-      padding-left: 25px;
+      top: 240px;
+      padding-left: 26px;
       .ie9 .usa-tv-show & {
-        top: 140px;
+        top: 240px;
+      }
+      .episodic-show-title {
+        margin:0 0 2px 0;
+        font-size: 24px;
+      }
+      .episodic-show-time {
+        margin:0 0 8px 0;
+        font-size: 18px;
+      }
+      .episodic-episode-title {
+        font-size: 14px;
       }
     }
     @include breakpoint($bp-aspot-mid-range2-width) {
-      top: 115px;
+      top: 256px;
       padding-left: 35px;
       .ie9 .usa-tv-show & {
-        top: 115px;
+        top: 256px;
+      }
+      .episodic-show-title {
+        margin:0 0 4px 0;
+        font-size: 30px;
+      }
+      .episodic-show-time {
+        margin:0 0 9px 0;
+        font-size: 23px;
+      }
+      .episodic-episode-title {
+        font-size: 18px;
       }
     }
     @include breakpoint($bp-aspot-large-width) {
-      top: 165px;
-      padding-left: 50px;
+      top: 344px;
+      padding-left: 46px;
       .ie9 .usa-tv-show & {
-        top: 165px;
+        top: 344px;
+      }
+      .episodic-show-title {
+        margin:0 0 8px 0;
+        font-size: 40px;
+      }
+      .episodic-show-time {
+        margin:0 0 16px 0;
+        font-size: 30px;
+      }
+      .episodic-episode-title {
+        font-size: 24px;
       }
     }
   }
@@ -169,7 +231,6 @@
     position: relative;
     margin: 0 0 5px 0;
     line-height: 1;
-    text-transform: uppercase;
     @extend %aspot-common-text;
     @include breakpoint($bp-aspot-mid-range2-width) {
       margin-bottom: 10px;
@@ -194,7 +255,6 @@
     margin-bottom: 2px;
     margin: 0;
     line-height: 1;
-    text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.05em;
     @extend %aspot-common-text;
@@ -239,7 +299,6 @@
     padding-left: 34px;
     font-size: 12px;
     line-height: 35px;
-    text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.05em;
     @include breakpoint($bp-aspot-mid-width) {
@@ -308,5 +367,27 @@
       width: 1245px;
       height: 709px;
     }
+  }
+  .usa-adrails & {
+    .meta-wrap {
+      top: 241px;
+      padding-left: 26px;
+      .episodic-show-title {
+        margin:0 0 8px 0;
+        font-size: 24px;
+      }
+      .episodic-show-time {
+        margin:0 0 10px 0;
+        font-size: 18px;
+      }
+      .episodic-episode-title {
+        padding-left: 14px;
+        font-size: 14px;
+        .arrow-right {
+          margin-left: -14px;
+        }
+      }
+    }
+
   }
 }

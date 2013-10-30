@@ -245,7 +245,8 @@ you can use the generic selector below, but it's slower:
   color: white;
 }
 
-.view-mode-promo_teaser .asset-img {
+.view-mode-promo_teaser .asset-img,
+.view-mode-promo_teaser_large .asset-img {
   border: 2px solid #2d2d2d;
   width: 304px;
   height: 254px;

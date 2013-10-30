@@ -53,10 +53,1197 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 48,
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_color'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_color'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 41,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_color',
+    'label' => 'Text line 1 color hex value',
+    'required' => 0,
+    'settings' => array(
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'colorfield',
+      'settings' => array(
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
+      ),
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 30,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 40,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Enter in pixels<br />Recommended is 40',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_episodic_1_fontsize',
+    'label' => 'Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_image'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_image'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'deleted' => 0,
+    'description' => 'Optional image to display in place of the Title Text line 1. <br/>
+Suggested max dimensions 380px x 80px<br/>
+* Title Text line 1 will render as the alt text.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_image',
+    'label' => 'Text line 1 Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png',
+      'focus' => 0,
+      'focus_lock_ratio' => 0,
+      'focus_min_size' => '',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 29,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_mobile_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_mobile_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 17,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_mobile_fontsize',
+    'label' => 'Mobile Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 30,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 33,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 24,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 1 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_1_title'
+  $field_instances['node-usanetwork_aspot-field_episodic_1_title'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'example: Show name',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_1_title',
+    'label' => 'Title text line 1',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_color'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_color'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#b5b5b5',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 42,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_color',
+    'label' => 'Text line 2 color hex value',
+    'required' => 0,
+    'settings' => array(
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'colorfield',
+      'settings' => array(
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
+      ),
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 30,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Enter in pixels<br />Recommended is 30',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_fontsize',
+    'label' => 'Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_mobile_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_mobile_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 15,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_mobile_fontsize',
+    'label' => 'Mobile Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 23,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 40,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 18,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 2 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_2_title'
+  $field_instances['node-usanetwork_aspot-field_episodic_2_title'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'example: Show name',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 26,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_2_title',
+    'label' => 'Title text line 2',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_color'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_color'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'colorfield',
+        'settings' => array(
+          'height' => 20,
+          'width' => 20,
+      ),
+        'type' => 'colorfield_color_swatch',
+        'weight' => 43,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'colorfield',
+        'settings' => array(
+          'display_hash' => TRUE,
+        ),
+        'type' => 'colorfield_raw_rgb',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_color',
+    'label' => 'Text line 3 color hex value',
+    'required' => 0,
+    'settings' => array(
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'colorfield',
+      'settings' => array(
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
+      ),
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 24,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Enter in pixels<br />Recommended is 24',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_fontsize',
+    'label' => 'Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_mobile_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_mobile_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 13,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_mobile_fontsize',
+    'label' => 'Mobile Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tablan_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tablan_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 18,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tablan_fontsize',
+    'label' => 'Tablet Landscape Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_tabpor_fontsize'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 14,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_tabpor_fontsize',
+    'label' => 'Tablet Portrait Text line 3 Font Size',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 46,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_episodic_3_title'
+  $field_instances['node-usanetwork_aspot-field_episodic_3_title'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'example: Show name',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 27,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_episodic_3_title',
+    'label' => 'Title text line 3',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_is_episodic'
+  $field_instances['node-usanetwork_aspot-field_is_episodic'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_is_episodic',
+    'label' => 'Episodic',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
+    ),
+  );
+  
   // Exported field_instance: 'node-usanetwork_aspot-field_mobile_text_line_2'
   $field_instances['node-usanetwork_aspot-field_mobile_text_line_2'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -109,7 +1296,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 26,
     ),
   );
 
@@ -255,7 +1442,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 23,
     ),
   );
 
@@ -317,7 +1504,7 @@ Suggested max dimensions 380px x 80px<br/>
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 13,
+      'weight' => 24,
     ),
   );
 
@@ -366,7 +1553,7 @@ Suggested max dimensions 380px x 80px<br/>
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 27,
     ),
   );
 
@@ -732,7 +1919,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 22,
     ),
   );
 
@@ -789,7 +1976,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 25,
     ),
   );
 
@@ -846,7 +2033,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 28,
     ),
   );
 
@@ -903,7 +2090,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 49,
     ),
   );
 
@@ -963,7 +2150,7 @@ Suggested max dimensions 380px x 80px<br/>
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 21,
     ),
   );
 
@@ -973,29 +2160,54 @@ Suggested max dimensions 380px x 80px<br/>
   t('Call to Action Type');
   t('Desktop Image');
   t('Enter either a full external url or use the \'search\' button to browse links to local pages. If there is NO call to action it is recommended this link back to the show landing page.');
+  t('Enter in pixels<br />Recommended is 24');
+  t('Enter in pixels<br />Recommended is 30');
+  t('Enter in pixels<br />Recommended is 40');
   t('Enter the 6 hex characters - no not enter the # symbol.<br />Examples: white: ffffff; black: 000000; dark grey: 333333');
+  t('Episodic');
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
   t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
   t('Link');
   t('Mobile Image');
+  t('Mobile Text line 1 Font Size');
   t('Mobile Text line 2');
+  t('Mobile Text line 2 Font Size');
+  t('Mobile Text line 3 Font Size');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 600w x 500h.');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');
+  t('Optional image to display in place of the Title Text line 1. <br/>
+Suggested max dimensions 380px x 80px<br/>
+* Title Text line 1 will render as the alt text.');
   t('Show');
+  t('Tablet Landscape Text line 1 Font Size');
+  t('Tablet Landscape Text line 2 Font Size');
+  t('Tablet Landscape Text line 3 Font Size');
   t('Tablet Portrait');
+  t('Tablet Portrait Text line 1 Font Size');
+  t('Tablet Portrait Text line 2 Font Size');
+  t('Tablet Portrait Text line 3 Font Size');
   t('Tablet Portrait image. Minimum 1230w x 700h.');
   t('Target');
   t('Text Line 1 Font Size');
   t('Text Line 1 Image');
   t('Text Line 2 Font Size');
   t('Text color hex value');
+  t('Text line 1 Font Size');
+  t('Text line 1 Image');
+  t('Text line 1 color hex value');
   t('Text line 2');
+  t('Text line 2 Font Size');
+  t('Text line 2 color hex value');
   t('Text line 3');
+  t('Text line 3 Font Size');
+  t('Text line 3 color hex value');
   t('Title text line 1');
+  t('Title text line 2');
+  t('Title text line 3');
   t('example (tune-in time): TONIGHT 10/9C');
   t('example: Show name');
   t('example: episode name');

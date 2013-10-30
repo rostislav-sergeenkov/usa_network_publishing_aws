@@ -154,6 +154,9 @@ function usanetwork_core_enable_modules() {
     'usanetwork_entityreference',
     'usanetwork_node_copy',
     'usanetwork_promo_preview',
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -574,6 +577,18 @@ function usanetwork_core_update_7126() {
 
   $modules_en = array(
     'usanetwork_promo_preview',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_tv_shows_display, usanetwork_tv_shows_display_options, usanetwork_field_episodic
+ */
+function usanetwork_core_update_7127() {
+  $modules_en = array(
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
   );
   module_enable($modules_en);
 }

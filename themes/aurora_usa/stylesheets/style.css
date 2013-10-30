@@ -304,7 +304,8 @@ you can use the generic selector below, but it's slower:
   color: white;
 }
 
-.view-mode-promo_teaser .asset-img {
+.view-mode-promo_teaser .asset-img,
+.view-mode-promo_teaser_large .asset-img {
   border: 2px solid #2d2d2d;
   width: 304px;
   height: 254px;
@@ -2093,8 +2094,8 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-se438755a6f.png') no-repeat;
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+  background: url('../images/icons-sbc77eb34aa.png') no-repeat;
 }
 
 .icons-arrow-next-hover-v2 {
@@ -2122,11 +2123,11 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2707px;
+  background-position: 0 -2755px;
 }
 
 .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2555px;
+  background-position: 0 -2603px;
 }
 
 .icons-facebook {
@@ -2194,7 +2195,11 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-on_now, .ie9 #on-now, .ie8 #on-now {
-  background-position: 0 -2607px;
+  background-position: 0 -2655px;
+}
+
+.icons-on_now_blue {
+  background-position: 0 -2555px;
 }
 
 .icons-pinterest-hover-v2 {
@@ -2249,7 +2254,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
-  background-position: 0 -2655px;
+  background-position: 0 -2703px;
 }
 
 .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
@@ -5375,7 +5380,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   margin-bottom: 3px;
 }
 .promo-metadata h3, .upcoming-movie .meta h3 {
-  line-height: 24px;
+  line-height: 23px;
 }
 @media (max-width: 644px) {
   .promo-metadata, .upcoming-movie .meta {
@@ -5449,12 +5454,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   background-color: #2d2d2d;
   padding: 5px 0 36px;
   width: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 @media (min-width: 769px) {
   .usa-home-featured {
     bottom: -15px;
-    margin-top: -15px;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: -15px;
   }
 }
 .usa-home-featured h2 {
@@ -5704,6 +5711,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .usa-home-featured .view .carousel > ul {
     margin-right: -8px;
     margin-left: 0 !important;
+    margin-top: 17px;
   }
   .usa-home-featured .view .carousel > ul .carousel-item {
     margin-bottom: 8px;
@@ -5711,7 +5719,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0;
+    padding: 25px 0 0;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5723,7 +5731,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -5735,7 +5743,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 1275px) {
   .usa-home-featured .view .carousel {
-    padding: 10px 0 0 8px;
+    padding: 25px 0 0 8px;
   }
   .usa-home-featured .view .carousel > ul {
     margin-right: -15px;
@@ -6269,23 +6277,65 @@ body.person-page #main {
   display: block;
   width: 35px;
   height: 28px;
-  margin-top: 8px;
-  margin-right: 8px;
-  text-indent: -200%;
-  float: left;
+  padding-left: 0;
+  text-indent: 0;
+  overflow: visible;
+  float: none;
+}
+.ie9 #on-now:before, .ie8 #on-now:before {
+  content: "\0020";
+  position: absolute;
+  top: 26px;
+  left: 22px;
+  margin-left: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 6px 8px 6px 0;
+  border-style: solid;
+  border-color: transparent #0ab6e8 transparent transparent;
 }
 .no-font-feature-settings #on-now {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('../images/icons/on_now.png');
+  background-image: url('../images/icons/on_now_blue.png');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 35px;
   height: 28px;
   display: table-cell;
   width: 75px;
-  background-position: 21px 50%;
+  background-position: 21px 40%;
+  background-size: auto 50%;
+  overflow: visible !important;
+}
+@media (min-width: 640px) {
+  .no-font-feature-settings #on-now {
+    background-position: 21px 50%;
+    background-size: auto auto;
+  }
+}
+#on-now .ie9,
+#on-now .ie8 {
+  overflow: visible;
+}
+#on-now .ie9.trigger:before,
+#on-now .ie8.trigger:before {
+  content: "\0020";
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  left: 22px;
+  margin-left: 0;
+}
+@media (min-width: 640px) {
+  #on-now .ie9.trigger:before,
+  #on-now .ie8.trigger:before {
+    top: 26px;
+    margin-left: 0px;
+  }
 }
 #on-now.trigger {
   padding-left: 14px;
@@ -6356,6 +6406,14 @@ body.person-page #main {
     vertical-align: middle;
   }
 }
+.ie9 #on-now-show-episode, .ie8 #on-now-show-episode {
+  height: 45px;
+}
+@media (min-width: 640px) {
+  .ie9 #on-now-show-episode, .ie8 #on-now-show-episode {
+    height: 63px;
+  }
+}
 
 #on-now-episode {
   letter-spacing: 0.03em;
@@ -6382,7 +6440,12 @@ body.person-page #main {
   }
 }
 .ie9 #on-now-episode {
-  line-height: 44px;
+  line-height: 14px;
+}
+@media (min-width: 640px) {
+  .ie9 #on-now-episode {
+    line-height: 62px;
+  }
 }
 .ie8 #on-now-episode {
   font-size: 23px;
@@ -6408,6 +6471,22 @@ body.person-page #main {
 
 .block-usanetwork-video {
   margin: 0 auto;
+}
+.block-usanetwork-video .ajax-content {
+  position: relative;
+}
+.block-usanetwork-video .ajax-content.ajax-loading > div {
+  opacity: 0.5;
+}
+.block-usanetwork-video .ajax-content.ajax-loading .ajax-loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+  background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
 }
 
 @media (max-width: 722px) {
@@ -7492,43 +7571,105 @@ body.person-page #main {
   position: absolute;
   color: white;
   z-index: 1;
-  top: 95px;
+  top: 163px;
+  bottom: 0;
   left: 0;
-  padding-left: 15px;
+  padding-left: 16px;
   text-align: left;
 }
 .usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
-  top: 115px;
-  padding-left: 35px;
+  top: 171px;
+  padding-left: 16px;
 }
 .ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
   top: 27%;
 }
+.aspot .meta-wrap .episodic-show-title {
+  margin: 0 0 1px 0;
+  color: #fff;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: .01em;
+}
+.aspot .meta-wrap .episodic-show-time {
+  margin: 0 0 5px 0;
+  color: #b5b5b5;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: .01em;
+}
+.aspot .meta-wrap .episodic-episode-title {
+  position: relative;
+  margin: 0;
+  color: #fff;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: .01em;
+}
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot .meta-wrap {
-    top: 140px;
-    padding-left: 25px;
+    top: 240px;
+    padding-left: 26px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 140px;
+    top: 240px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 2px 0;
+    font-size: 24px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    font-size: 14px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .meta-wrap {
-    top: 115px;
+    top: 256px;
     padding-left: 35px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 115px;
+    top: 256px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 4px 0;
+    font-size: 30px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 9px 0;
+    font-size: 23px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    font-size: 18px;
   }
 }
 @media (min-width: 1275px) {
   .aspot .meta-wrap {
-    top: 165px;
-    padding-left: 50px;
+    top: 344px;
+    padding-left: 46px;
   }
   .ie9 .usa-tv-show .aspot .meta-wrap {
-    top: 165px;
+    top: 344px;
+  }
+  .aspot .meta-wrap .episodic-show-title {
+    margin: 0 0 8px 0;
+    font-size: 40px;
+  }
+  .aspot .meta-wrap .episodic-show-time {
+    margin: 0 0 16px 0;
+    font-size: 30px;
+  }
+  .aspot .meta-wrap .episodic-episode-title {
+    font-size: 24px;
   }
 }
 .aspot .show-title-image + .meta-wrap {
@@ -7597,7 +7738,6 @@ body.person-page #main {
   position: relative;
   margin: 0 0 5px 0;
   line-height: 1;
-  text-transform: uppercase;
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot .show-title {
@@ -7628,7 +7768,6 @@ body.person-page #main {
   margin-bottom: 2px;
   margin: 0;
   line-height: 1;
-  text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 0.05em;
 }
@@ -7682,7 +7821,6 @@ body.person-page #main {
   padding-left: 34px;
   font-size: 12px;
   line-height: 35px;
-  text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 0.05em;
 }
@@ -7761,6 +7899,25 @@ body.person-page #main {
   width: 1245px;
   height: 709px;
 }
+.usa-adrails .aspot .meta-wrap {
+  top: 241px;
+  padding-left: 26px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-show-time {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title {
+  padding-left: 14px;
+  font-size: 14px;
+}
+.usa-adrails .aspot .meta-wrap .episodic-episode-title .arrow-right {
+  margin-left: -14px;
+}
 
 .usa-tv-show #main {
   margin: 0 auto;
@@ -7838,7 +7995,6 @@ body.person-page #main {
 .usa-tv-show h2 {
   margin-bottom: 2px;
   line-height: 1.5em;
-  text-transform: uppercase;
   margin-top: 1px;
 }
 @media (min-width: 645px) {
@@ -8744,6 +8900,9 @@ input.echo-submit-text {
 }
 
 /* show landing page social */
+.social-panel.inner-wrapper {
+  margin-top: 42px;
+}
 .social-panel.inner-wrapper .panel-col2 {
   width: 100%;
 }
@@ -9542,6 +9701,105 @@ a[class*="day"] {
   display: none;
 }
 
+.expandable-container.promo-ads-panel .first-promo-large .asset-img-large {
+  display: none;
+}
+@media (min-width: 645px) and (max-width: 958px) {
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 315px;
+  }
+}
+@media (min-width: 959px) and (max-width: 1274px) {
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 14px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(3n+5) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 14px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 314px 15px 0;
+  }
+}
+@media (min-width: 1275px) {
+  .expandable-container.promo-ads-panel .first-promo-large {
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
+    float: left;
+    margin: 0 14px 15px 0;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(odd) {
+    margin: 0 14px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(4n+6) {
+    margin: 0 0 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(1) {
+    margin-right: 14px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 314px 15px 0;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li {
+    float: left;
+    clear: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img {
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large {
+    display: block;
+    width: 617px;
+    height: 254px;
+    border: 2px solid #2d2d2d;
+    overflow: hidden;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li .asset-img-large img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child {
+    width: 615px;
+    height: 254px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child .asset-img {
+    display: none;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper {
+    width: 613px;
+  }
+  .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 315px 15px 0;
+  }
+}
+.expandable-container.promo-ads-panel .first-promo-large .expandable-toggle-wrap {
+  display: none;
+}
 .expandable-container .view-content > .item-list {
   clear: both;
   overflow: hidden;

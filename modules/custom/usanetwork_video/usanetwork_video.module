@@ -16,6 +16,13 @@ function usanetwork_video_menu() {
     'page callback' => 'usanetwork_video_global_videos_page',
     'access arguments' => array('access content'),
   );
+  $items['videos/ajax'] = array(
+    'title' => 'Video View',
+    'page callback' => 'usanetwork_video_views_ajax',
+    'delivery callback' => 'ajax_deliver',
+    'access callback' => true,
+    'type' => MENU_CALLBACK,
+  );
   $items['admin/usanetwork/video'] = array(
     'title' => t('USA videos'),
     'description' => t('debug helpers for USA Network TVE and MPX videos.'),
@@ -72,11 +79,25 @@ function usanetwork_video_block_view($delta) {
   switch ($delta) {
     case 'usa_global_video_nav':
       $block['subject'] = '';
-      $block['content'] = usanetwork_video_global_nav();
+      $block['content'] = array(
+        '#markup' => usanetwork_video_global_nav(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_ajax.js',
+          ),
+        ),
+      );
       break;
     case 'usa_show_video_nav':
       $block['subject'] = '';
-      $block['content'] = usanetwork_video_show_nav();
+      $block['content'] = array(
+        '#markup' => usanetwork_video_show_nav(),
+        '#attached' => array(
+          'js' => array(
+              drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_ajax.js',
+          ),
+        ),
+      );
       break;
     case 'usa_video_views':
       $block['subject'] = '';
@@ -291,8 +312,10 @@ function usanetwork_video_show_nav() {
 /**
  * renders the correct video view based upon the argument
  */
-function usanetwork_video_views() {
-  $arg = arg();
+function usanetwork_video_views($arg = null) {
+  if (!isset($arg)) {
+    $arg = arg();
+  }
   $output = '';
   $lang = LANGUAGE_NONE;
   $tid = isset($_GET['tid']) ? $_GET['tid'] : 0;
@@ -380,7 +403,20 @@ function usanetwork_video_views() {
     }
   }
 
-  return $output;
+  return '<div class="ajax-content">' . $output . '</div>';
+}
+
+/**
+ * Ajax callback for video views
+ */
+function usanetwork_video_views_ajax() {
+  $commands = array();
+  if (isset($_POST['path'])) {
+    $path = drupal_get_normal_path($_POST['path']); // get system path from alias
+    $arg = explode('/', $path);
+    $commands[] = ajax_command_replace('#block-usanetwork-video-usa-video-views .ajax-content', usanetwork_video_views($arg));
+  }
+  return  array('#type' => 'ajax', '#commands' => $commands);
 }
 
 /**

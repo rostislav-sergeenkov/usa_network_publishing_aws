@@ -70,7 +70,6 @@
     @extend %semi-18;
     margin-bottom: 2px;
     line-height: 1.5em;
-    text-transform: uppercase;
     margin-top: 1px;
     @include breakpoint($bp-show-mid-width) {
       font-size: 26px;

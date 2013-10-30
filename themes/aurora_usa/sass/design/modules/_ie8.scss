@@ -1,6 +1,4 @@
 .ie8 {
-  max-width: 1024px;
-  margin: 0 auto;
   img {
     width: inherit;
     max-width: 100%;
@@ -8,21 +6,8 @@
   }
   .mega-sub-nav-container {
     display: none;
-  }
-  .mobi-menu-icon {
-    display: block;
-  }
-  .jPanelMenu-panel {
-      max-width: 1024px;
-      margin: 0 auto;
-  }
-  #mega-nav {
-      max-width: 1024px;
-      margin: 0 auto;
-  }
-  &[data-menu-direction="left"] {
-    #mega-nav {
-      left: auto;
+    &.active-item {
+      display: block;
     }
   }
   .region-footer {

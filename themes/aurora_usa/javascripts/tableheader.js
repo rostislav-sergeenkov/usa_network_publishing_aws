@@ -115,7 +115,7 @@ Drupal.tableHeader.prototype.eventhandlerRecalculateStickyHeader = function (eve
       $stickyCell = this.stickyHeaderCells.eq($that.index());
       display = $that.css('display');
       if (display !== 'none') {
-        cellWidth = $that.css('width');
+        cellWidth = $that.outerWidth(true);
         // Exception for IE7.
         if (cellWidth === 'auto') {
           cellWidth = $that[0].clientWidth + 'px';
@@ -126,7 +126,7 @@ Drupal.tableHeader.prototype.eventhandlerRecalculateStickyHeader = function (eve
         $stickyCell.css('display', 'none');
       }
     }
-    this.stickyTable.css('width', this.originalTable.outerWidth());
+    this.stickyTable.css('width', this.originalTable.outerWidth(true));
   }
 };
 

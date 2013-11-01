@@ -241,7 +241,7 @@ a.prev-day {
       border-right: $gray-light solid 1px;
       color: white;
       font-size: 9px;
-      @include box-sizing(content-box);
+      /* @include box-sizing(content-box); */
     }
   }
   tbody {

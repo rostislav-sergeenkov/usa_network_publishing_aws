@@ -76,6 +76,7 @@
     width: 75px;
     background-position: 21px 40%;
     background-size:auto 50%;
+    background-repeat: no-repeat;
     overflow: visible !important;
     @include breakpoint($bp-on-now) {
     background-position: 21px 50%;

@@ -4,7 +4,6 @@
   margin: 0 -15px 6px -15px;
   padding: 10px 0 2px 0;
   overflow:hidden;
-  border-top: 1px solid #878787;
   text-align: center;
   vertical-align: middle;
   background-color:#434343;
@@ -164,11 +163,12 @@
     }
   }
   @include breakpoint($bp-schedule-table-wide) {
-    margin: 0;
+    margin: 0 auto;
     border: 0;
     box-shadow: none;
   }
   @include breakpoint($bp-person-medium-width) {
+    max-width: 1245px;
     .schedule-header-navigation {
       .previous-week,
       .next-week {
@@ -220,7 +220,6 @@ a.prev-day {
 
 .schedule-table {
   margin: 0 -15px;
-  border-top: 1px solid #878787;
   table {
     table-layout: fixed;
   }
@@ -237,8 +236,8 @@ a.prev-day {
       padding-top: 6px;
       padding-bottom: 5px;
       padding-left: 4px;
-      border-bottom: $gray-light solid 1px;
-      border-right: $gray-light solid 1px;
+      border-bottom: $gray-dark solid 1px;
+      border-right: $gray-dark solid 1px;
       color: white;
       font-size: 9px;
       /* @include box-sizing(content-box); */
@@ -257,8 +256,8 @@ a.prev-day {
     padding-top: 6px;
     padding-bottom: 5px;
     padding-left: 4px;
-    border-bottom: $gray-light solid 1px;
-    border-right: $gray-light solid 1px;
+    border-bottom: $gray-dark solid 1px;
+    border-right: $gray-dark solid 1px;
     color: $gray-light-gamma;
     font-size: 9px;
   }
@@ -337,7 +336,8 @@ a.prev-day {
     }
 }
   @include breakpoint($bp-schedule-table-wide) {
-    margin: 0;
+    max-width: 1245px;
+    margin: 0 auto;
     border:0;
     table {
       table-layout: auto;

@@ -9,7 +9,6 @@
       // init touch slider
       $(".schedule-header-navigation").touchSlider({
         continuous: false,
-        mouseTouch: false,
         page: currentItem
       });
     }

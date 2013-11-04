@@ -7,10 +7,6 @@ Drupal.behaviors.switch_nav = {
     {
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
-
-
-    $('#navTwitter span').removeClass('navTwitter').addClass('navTwitter-selected');
-    $('#join-tweets').show();
     var EchoRiverClient;
     var usa_chatter = function() {
       this.twitterQuery = twitterEQL;
@@ -36,8 +32,12 @@ Drupal.behaviors.switch_nav = {
         }]
       });
     }
+    $('#navTwitter span').once(function(){
+      $('#navTwitter span').removeClass('navTwitter').addClass('navTwitter-selected');
+      $('#join-tweets').show();
+      initEchoRiverClient();
+    });
 
-    initEchoRiverClient();
     $('#navChatter').click(function(){
       $('#navChatter span').removeClass('navChatter').addClass('navChatter-selected');
       $('#navTwitter span').removeClass('navTwitter-selected').addClass('navTwitter');

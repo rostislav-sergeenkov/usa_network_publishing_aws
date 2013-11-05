@@ -27,7 +27,7 @@ function usanetwork_node_copy_menu() {
  */
 function usanetwork_node_copy_is_copy($type){
   $copied = variable_get('usanetwork_node_type_copy', array('usanetwork_aspot' => 'usanetwork_aspot', 'usanetwork_promo' => 'usanetwork_promo'));
-  return $copied[$type];
+  return isset($copied[$type]) ? $copied[$type] : false;
 }
 
 /**

@@ -1,0 +1,295 @@
+<?php
+
+// usanetwork_page_collection_
+
+define('USANETOWRK_PAGE_COLLECTION_NAMESPACE', 'usanetwork_page_collection');
+include_once('usanetwork_page_collection.field.inc');
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_page_collection_theme() {
+  return array(
+    'usanetwork_page_collection_relation_table' => array(
+      'render element' => 'element',
+      'file' => 'usanetwork_page_collection.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_page_collection_menu() {
+  $items = array();
+
+  $items['admin/config/content/page_collection'] = array(
+    'title' => 'Page collection settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_page_collection_admin_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'description' => 'Global configuration of page collections functionality.',
+    'file' => 'usanetwork_page_collection.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['admin/structure/types/manage/%/page_collection'] = array(
+    'title' => 'Page collection',
+    'description' => 'Per content type page collection configuration.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_page_collection_content_type_settings', 4),
+    'access callback' => '_usanetwork_page_collection_content_type_access',
+    'access arguments' => array('administer site configuration', 4),
+    'file' => 'usanetwork_page_collection.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['node/%node/page_collection'] = array(
+    'title' => 'Page collection',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_page_collection_node', 1),
+    'access callback' => '_usanetwork_page_collection_node_access',
+    'access arguments' => array('update', 1),
+    'file' => 'usanetwork_page_collection.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
+  $items['node/%node/page_collection/add'] = array(
+    'title' => 'Add new content',
+    'page callback' => 'usanetwork_page_collection_node_add',
+    'page arguments' => array(1),
+    'access callback' => '_usanetwork_page_collection_node_access',
+    'access arguments' => array('update', 1),
+    'file' => 'usanetwork_page_collection.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+  );
+  $items['node/%node/page_collection/add/autocomplete'] = array(
+    'title' => 'Autocomplete',
+    'page callback' => 'usanetwork_page_collection_node_autocomplete',
+    'page arguments' => array(1),
+    'access callback' => '_usanetwork_page_collection_node_access',
+    'access arguments' => array('update', 1),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/page_collection/%node/remove'] = array(
+    'title' => 'Remove item',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_page_collection_node_remove', 1, 3),
+    'access callback' => '_usanetwork_page_collection_node_access',
+    'access arguments' => array('update', 1),
+    'file' => 'usanetwork_page_collection.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function usanetwork_page_collection_admin_paths() {
+  if (variable_get('node_admin_theme')) {
+    $paths = array(
+      'node/*/page_collection' => TRUE,
+      'node/*/page_collection/*' => TRUE,
+    );
+    return $paths;
+  }
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function usanetwork_page_collection_node_load($nodes, $types) {
+  if (count(array_intersect(_usanetwork_page_collection_content_types(), $types))) {
+    $relations = db_select('page_collection_relations', 'pc')
+      ->fields('pc')
+      ->condition('pcid', array_keys($nodes), 'IN')
+      ->orderBy('weight')
+      ->execute()
+      ->fetchAllAssoc('id');
+
+    /*foreach ($relations as $relation) {
+      $nodes[$relation->pcid]->page_collection[] = $relation;
+    }*/
+    foreach ($nodes as $nid => $node) {
+      $node->page_collection = _usanetwork_page_collection_node_tree($nid, $relations);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * @todo: add revision support
+ */
+function usanetwork_page_collection_node_update($node) {
+
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function usanetwork_page_collection_node_delete($node) {
+  // delete relations for page collection
+  if (in_array($node->type, _usanetwork_page_collection_content_types())) {
+    db_delete('page_collection_relations')
+      ->condition('pcid', $node->nid, '=')
+      ->execute();
+  }
+
+  // get page collections for cache reset
+  $pc_nids = db_select('page_collection_relations', 'pc')
+    ->fields('pc', array('pcid'))
+    ->condition('pnid', $node->nid, '=')
+    ->groupBy('pnid')
+    ->execute()
+    ->fetchCol();
+
+  // update relations, set parent to 0 where parent was deleted
+  db_update('page_collection_relations')
+    ->fields(array(
+      'pnid' => 0,
+    ))
+    ->condition('pnid', $node->nid, '=')
+    ->execute();
+
+  if (count($pc_nids) > 0) {
+    // clear cache
+    entity_get_controller('node')->resetCache($pc_nids);
+  }
+}
+
+/**
+ * Autocomplete callback
+ */
+function usanetwork_page_collection_node_autocomplete($page_collection, $title = "") {
+  $matches = array();
+  if ($title) {
+    $types = _usanetwork_page_collection_node_content_types($page_collection->nid);
+
+    $query = db_select('node', 'n')
+      ->fields('n', array('title', 'nid', 'type'))
+      ->fields('pc', array('nid'))
+      ->condition('title', db_like($title) . '%', 'LIKE')
+      ->condition('type', array_keys($types), 'IN')
+      ->condition('n.nid', $page_collection->nid, '<>')
+      ->isNull('pc.nid');
+    $query->leftJoin('page_collection_relations', 'pc', 'n.nid = pc.nid');
+    $result = $query->range(0, 10)
+      ->execute();
+    foreach ($result as $node) {
+      $matches[$types[$node->type] . ': ' . $node->title . ' (' . $node->nid . ')'] = check_plain($types[$node->type]) . ': ' . check_plain($node->title);
+    }
+  }
+  drupal_json_output($matches);
+}
+
+/**
+ * Builds page collection tree
+ */
+function _usanetwork_page_collection_node_tree($pcid, $relations, $parent = 0) {
+  $page_collection = array();
+  foreach ($relations as $item) {
+    if ($item->pcid == $pcid && $item->pnid == $parent) {
+      $page = new stdClass();
+      $page->node = node_load($item->nid);
+      if ($page->node) {
+        $page->id = $item->id;
+        $page->pcid = $item->pcid;
+        $page->weight = $item->weight;
+        $page->parent = node_load($item->pnid);
+        $page->children = _usanetwork_page_collection_node_tree($pcid, $relations, $item->nid);
+        $page_collection[] = $page;
+      }
+    }
+  }
+  return $page_collection;
+}
+
+/**
+ * Access callback for per content type configuration page
+ */
+function _usanetwork_page_collection_content_type_access($string, $content_type) {
+  $content_types = _usanetwork_page_collection_content_types();
+  if (in_array($content_type, $content_types)) {
+    return user_access($string);
+  }
+  return false;
+}
+
+/**
+ * Access callback for page collection node form
+ */
+function _usanetwork_page_collection_node_access($op, $node) {
+  $content_types = _usanetwork_page_collection_content_types();
+  if (in_array($node->type, $content_types)) {
+    return node_access($op, $node);
+  }
+  return false;
+}
+
+/**
+ * Helper function. Returns page collection content types
+ */
+function _usanetwork_page_collection_content_types() {
+  $namespace = USANETOWRK_PAGE_COLLECTION_NAMESPACE;
+  $content_types = variable_get($namespace . '_content_types', array());
+
+  $result = array();
+  foreach ($content_types as $content_type => $enabled) {
+    if ($enabled) {
+      $result[] = $content_type;
+    }
+  }
+
+  return $result;
+}
+
+/**
+ * Helper function. Returns items content type for page collection
+ * @todo: add configuration
+ */
+function _usanetwork_page_collection_node_content_types($pcid) {
+  return array('catchall_page' => 'Catchall Page');
+  //return db_select('node_type', 'nt')->fields('nt', array('type', 'name'))->execute()->fetchAllKeyed();
+}
+
+class RelationsRecursiveIterator implements RecursiveIterator {
+  private $_data;
+  private $_position = 0;
+
+  public function __construct(array $data) {
+    $this->_data = $data;
+  }
+
+  public function valid() {
+    return isset($this->_data[$this->_position]);
+  }
+
+  public function hasChildren() {
+    return is_array($this->_data[$this->_position]->children) && count($this->_data[$this->_position]->children);
+  }
+
+  public function next() {
+    $this->_position++;
+  }
+
+  public function current() {
+    return $this->_data[$this->_position];
+  }
+
+  public function getChildren() {
+    return new RelationsRecursiveIterator($this->_data[$this->_position]->children);
+  }
+
+  public function rewind() {
+    $this->_position = 0;
+  }
+
+  public function key() {
+    return $this->_position;
+  }
+}

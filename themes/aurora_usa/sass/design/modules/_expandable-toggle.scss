@@ -104,6 +104,9 @@
       .asset-img-large {
         display: none;
       }
+      .node-usanetwork-promo-iframe {
+        line-height:0;
+      }
       @include breakpoint($bp-grid-show-2-fence) {
         li:nth-of-type(n) {
           float:left;

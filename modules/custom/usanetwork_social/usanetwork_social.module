@@ -1493,7 +1493,7 @@ function _usanetwork_social_notify_ideamelt($node) {
   }
 }
 
-/*
+
 function usanetwork_social_show_on_now_box($node, $numCommentsToShow=2) {
 if (!path_is_admin(current_path())) {
 
@@ -1993,4 +1993,3 @@ if (!path_is_admin(current_path())) {
     }
   }
 }
-*/

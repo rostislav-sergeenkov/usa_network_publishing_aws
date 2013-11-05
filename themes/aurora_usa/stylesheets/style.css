@@ -9980,6 +9980,9 @@ a[class*="day"] {
 .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {
   display: none;
 }
+.expandable-container.promo-ads-panel .first-promo-large .node-usanetwork-promo-iframe {
+  line-height: 0;
+}
 @media (min-width: 645px) and (max-width: 958px) {
   .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {
     float: left;

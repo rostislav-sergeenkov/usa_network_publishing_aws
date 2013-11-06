@@ -8,11 +8,12 @@
     display: none;
     &.active-item {
       display: block;
+      background-color:#000;
+      filter: alpha(opacity=90);
     }
   }
   .region-footer {
     li {
-      /*display: inline-block !important;*/
       float:left;
     }
   }
@@ -47,6 +48,22 @@
           display: inline-block;
           margin: 0 3px 11px 0 !important;
         }
+      }
+    }
+  }
+  .mega-sub-nav {
+    ul {
+      column-count: 3;
+      column-gap: 32px;
+    }
+    .globalnav-promos {
+      .node-global-nav-image {
+        display: inline-block;
+        width: 23%;
+        margin-left:1%;
+      }
+      .node-global-nav-image:first-child {
+        margin-left:0;
       }
     }
   }

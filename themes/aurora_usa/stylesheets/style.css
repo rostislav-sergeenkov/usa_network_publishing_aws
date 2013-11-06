@@ -5444,6 +5444,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   top: -32px;
   padding-bottom: 8px;
 }
+.ie8 .tiles .flex-control-paging {
+  top: -36px;
+}
 .tiles .flex-control-paging li {
   margin: 0 5px;
 }
@@ -6232,7 +6235,7 @@ body.person-page #main {
 }
 
 .ie8 img {
-  width: inherit;
+  /*    width: inherit; */
   max-width: 100%;
   height: auto;
 }
@@ -6280,6 +6283,9 @@ body.person-page #main {
 }
 .ie8 .mega-sub-nav .globalnav-promos .node-global-nav-image:first-child {
   margin-left: 0;
+}
+.ie8 .region-footer #footer-links a {
+  width: 100px;
 }
 
 #block-usanetwork-tv-schedule-usa-on-now-block {

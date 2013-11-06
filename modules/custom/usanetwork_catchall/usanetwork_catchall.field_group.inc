@@ -25,7 +25,9 @@ function usanetwork_catchall_field_group_info() {
     'children' => array(
       0 => 'field_show',
       1 => 'field_usa_catchall_fixedwidth',
-      2 => 'title',
+      2 => 'field_automatic_refresh',
+      3 => 'field_refresh_time',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

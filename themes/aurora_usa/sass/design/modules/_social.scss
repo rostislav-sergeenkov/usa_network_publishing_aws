@@ -51,9 +51,29 @@ body.usa-social {
       }
     }
     &.usasocial-twitter {
-      @extend .icons-twitter-v4;
+/*      @extend .icons-twitter-v4; */
+        @include replace-text-with-dimensions('icons/follow-twitter-v2.png');
+        width:image-width('icons/follow-twitter-v2.png');
+        height:image-height('icons/follow-twitter-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
       &:hover {
-        @extend .icons-twitter-hover-v4;
+        @include replace-text-with-dimensions('icons/follow-twitter-hover-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
+        /* @extend .icons-twitter-hover-v4; */
+      }
+    }
+    &.usasocial-facebook {
+        @include replace-text-with-dimensions('icons/follow-facebook-v2.png');
+        width: 9px;
+        height: 18px;
+        display:inline-block !important;
+        text-indent:9999px;
+      &:hover {
+        @include replace-text-with-dimensions('icons/follow-facebook-hover-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
       }
     }
   }
@@ -212,7 +232,7 @@ body.usa-social {
       padding:0;
       font-size: 1.4em;
       .ie9 &, .ie8 & {
-        text-indent: -9999px;
+        text-indent: 9999px;
         @include border-radius(0);
         height: 18px;
         width: 9px;
@@ -253,7 +273,7 @@ body.usa-social {
     }
     .usasocial-twitter {
       .ie9 &, .ie8 & {
-        @extend .icons-follow-twitter-v2;
+       @extend .icons-follow-twitter-v2;
         width: 22px;
         &:hover {
           @extend .icons-follow-twitter-hover-v2;

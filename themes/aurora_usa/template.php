@@ -724,6 +724,10 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   }
   $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 960px)"></div>';
   $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<!--[if (IE 8) & (!IEMobile)]>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '"></div>';
+  $output .= '<![endif]-->';
+
   $output .= '<noscript>';
   $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
   $output .= '</noscript>';

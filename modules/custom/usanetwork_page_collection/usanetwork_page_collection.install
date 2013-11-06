@@ -80,7 +80,8 @@ function usanetwork_page_collection_uninstall() {
   field_purge_batch(1000);
 
   // delete variables
-  $query = db_delete('variable')
-    ->condition('name', db_like(USANETOWRK_PAGE_COLLECTION_NAMESPACE . '_') . '%', 'LIKE');
-  $query->execute();
+  db_delete('variable')
+    ->condition('name', db_like(USANETOWRK_PAGE_COLLECTION_NAMESPACE . '_') . '%', 'LIKE')
+    ->execute();
+  cache_clear_all('variables', 'cache_bootstrap');
 }

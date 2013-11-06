@@ -10,11 +10,12 @@ function usanetwork_page_collection_node_add($page_collection) {
   foreach ($content as $key => $menu_item) {
     $args = unserialize($menu_item['page_arguments']);
     $content_type = isset($args[0]) ? $args[0] : null;
-    if (!isset($content_type) || !in_array($content_type, array_keys(_usanetwork_page_collection_node_content_types($page_collection->nid)))) {
+    if (!isset($content_type) || !in_array($content_type, array_keys(_usanetwork_page_collection_node_content_types($page_collection->type)))) {
       unset($content[$key]);
     }
     else {
       $content[$key]['localized_options']['query']['page_collection'] = $page_collection->nid;
+      $content[$key]['localized_options']['query']['destination'] = 'node/' . $page_collection->nid . '/page_collection';
     }
   }
   if (count($content) == 1) {
@@ -34,7 +35,7 @@ function usanetwork_page_collection_admin_settings($form, &$form_state) {
     '#type' => 'checkboxes',
     '#title' => t('Page collection content types'),
     '#options' => node_type_get_names(),
-    '#default_value' => variable_get($namespace . '_content_types'),
+    '#default_value' => variable_get($namespace . '_content_types', array()),
   );
 
   $form = system_settings_form($form);
@@ -82,6 +83,15 @@ function usanetwork_page_collection_admin_settings_submit($form, &$form_state) {
  * Per content type configuration form
  */
 function usanetwork_page_collection_content_type_settings($form, &$form_state, $content_type) {
+  $namespace = USANETOWRK_PAGE_COLLECTION_NAMESPACE;
+
+  $form[$namespace . '_' . $content_type . '_content_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Child content types'),
+    '#options' => node_type_get_names(),
+    '#default_value' => variable_get($namespace . '_' . $content_type . '_content_types', array()),
+  );
+
   $form = system_settings_form($form);
   array_unshift($form['#submit'], 'usanetwork_page_collection_content_type_settings_submit');
   return $form;
@@ -91,13 +101,12 @@ function usanetwork_page_collection_content_type_settings($form, &$form_state, $
  * Submit handler for per content type settings form.
  */
 function usanetwork_page_collection_content_type_settings_submit($form, &$form_state) {
-
 }
 
 /**
  * Page collection node form.
  */
-function usanetwork_page_collection_node($form, &$form_state, $page_collection) {
+function usanetwork_page_collection_node_form($form, &$form_state, $page_collection) {
   $form_state['page_collection'] = $page_collection;
 
   $form['#tree'] = true;
@@ -166,6 +175,32 @@ function usanetwork_page_collection_node($form, &$form_state, $page_collection) 
     );
   }
 
+  $form['additional_settings'] = array(
+    '#type' => 'vertical_tabs',
+  );
+
+  $form['field_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Field synchronization'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#group' => 'additional_settings',
+    '#weight' => 0,
+  );
+  $system_fields = _usanetwork_page_collection_field_bases();
+  $instances = field_info_instances('node', $page_collection->type);
+  $options = array();
+  foreach ($instances as $instance) {
+    if (!in_array($instance['field_name'], array_keys($system_fields))) {
+      $options[$instance['field_name']] = $instance['label'];
+    }
+  }
+  $form['field_sync']['fields'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enable synchronization for selected fields:'),
+    '#options' => $options,
+  );
+
   $form['actions'] = array('#type' => 'actions',);
   $form['actions']['submit'] = array(
     '#type' => 'submit',
@@ -178,7 +213,7 @@ function usanetwork_page_collection_node($form, &$form_state, $page_collection) 
 /**
  * Submit handler for page collection node form
  */
-function usanetwork_page_collection_node_submit($form, &$form_state) {
+function usanetwork_page_collection_node_form_submit($form, &$form_state) {
   $page_collection = $form_state['page_collection'];
   $relations = $form_state['input']['relations'];
   // update relations
@@ -199,8 +234,12 @@ function usanetwork_page_collection_node_submit($form, &$form_state) {
  * Validate handler for page collection item addition
  */
 function usanetwork_page_collection_node_add_validate($form, &$form_state) {
+  $page_collection = $form_state['page_collection'];
+
   $string = $form_state['values']['add']['node'];
   if (!preg_match('/\(([0-9]{1,})\)$/', $string, $matches)) {
+    $content_types = _usanetwork_page_collection_node_content_types($page_collection->type);
+
     if (strpos($string, ':') !== false) {
       list($type, $title) = explode(':', $string);
     }
@@ -210,7 +249,8 @@ function usanetwork_page_collection_node_add_validate($form, &$form_state) {
     // no nid provided, try to find by title
     $query = db_select('node', 'n');
     $query->fields('n', array('nid'))
-      ->condition('n.title', db_like(trim($title)), 'LIKE');
+      ->condition('n.title', db_like(trim($title)), 'LIKE')
+      ->condition('n.type', array_keys($content_types), 'IN');
     if (isset($type)) {
       $query->leftJoin('node_type', 'nt', 'n.type = nt.type');
       $query->condition('nt.name', db_like(trim($type)), 'like');

@@ -7,14 +7,14 @@ function _usanetwork_page_collection_field_bases() {
   $fields = array();
 
   /* Content to be displayed on the top of every page */
-  $fields['usa_pc_overall_content'] = array(
+  $fields['field_usa_pc_overall_content'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_overall_content',
+    'field_name' => 'field_usa_pc_overall_content',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -36,14 +36,14 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* Content to be displayed on the bottom of every page */
-  $fields['usa_pc_afterall_content'] = array(
+  $fields['field_usa_pc_afterall_content'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_afterall_content',
+    'field_name' => 'field_usa_pc_afterall_content',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -65,14 +65,14 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* Inline Javascript */
-  $fields['usa_pc_javascript_inline'] = array(
+  $fields['field_usa_pc_javascript_inline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_javascript_inline',
+    'field_name' => 'field_usa_pc_javascript_inline',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -94,14 +94,14 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* Inline CSS */
-  $fields['usa_pc_css_inline'] = array(
+  $fields['field_usa_pc_css_inline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_css_inline',
+    'field_name' => 'field_usa_pc_css_inline',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -123,14 +123,14 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* Javascript files */
-  $fields['usa_pc_javascript'] = array(
+  $fields['field_usa_pc_javascript'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_javascript',
+    'field_name' => 'field_usa_pc_javascript',
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -156,14 +156,14 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* CSS files */
-  $fields['usa_pc_css'] = array(
+  $fields['field_usa_pc_css'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(
       0 => 'node',
     ),
-    'field_name' => 'usa_pc_css',
+    'field_name' => 'field_usa_pc_css',
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -189,12 +189,12 @@ function _usanetwork_page_collection_field_bases() {
   );
 
   /* Images */
-  $fields['usa_pc_images'] = array(
+  $fields['field_usa_pc_images'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'usa_pc_images',
+    'field_name' => 'field_usa_pc_images',
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -209,23 +209,22 @@ function _usanetwork_page_collection_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'file',
+    'module' => 'image',
     'settings' => array(
-      'display_default' => 0,
-      'display_field' => 0,
+      'default_image' => 0,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
-    'type' => 'file',
+    'type' => 'image',
   );
 
   /* Files */
-  $fields['usa_pc_files'] = array(
+  $fields['field_usa_pc_files'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'usa_pc_files',
+    'field_name' => 'field_usa_pc_files',
     'foreign keys' => array(
       'fid' => array(
         'columns' => array(
@@ -255,22 +254,28 @@ function _usanetwork_page_collection_field_bases() {
 
 /**
  * Returns field instances default data
+ * @todo: cleanup
  */
 function _usanetwork_page_collection_field_instances() {
   $field_instances = array();
 
-  $field_instances['usa_pc_css'] = array(
+  $field_instances['field_usa_pc_css'] = array(
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -279,7 +284,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_css',
+    'field_name' => 'field_usa_pc_css',
     'label' => 'CSS Files',
     'required' => 0,
     'settings' => array(
@@ -300,16 +305,15 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_files'] = array(
+  $field_instances['field_usa_pc_files'] = array(
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -317,10 +321,17 @@ function _usanetwork_page_collection_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_table',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_files',
+    'field_name' => 'field_usa_pc_files',
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
@@ -341,16 +352,15 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_images'] = array(
+  $field_instances['field_usa_pc_images'] = array(
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 7,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -358,58 +368,65 @@ function _usanetwork_page_collection_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'file',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_images',
+    'field_name' => 'field_usa_pc_images',
     'label' => 'Images',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'alt_field' => 0,
+      'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
+      'focus' => 0,
+      'focus_lock_ratio' => 0,
+      'focus_min_size' => '',
       'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_multiselect',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 'private',
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_multiselect',
-      'weight' => 11,
+      'type' => 'image_image',
+      'weight' => 5,
     ),
   );
 
-  $field_instances['usa_pc_javascript'] = array(
+  $field_instances['field_usa_pc_javascript'] = array(
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -418,7 +435,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_javascript',
+    'field_name' => 'field_usa_pc_javascript',
     'label' => 'Javascript Files',
     'required' => 0,
     'settings' => array(
@@ -439,19 +456,24 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_afterall_content'] = array(
+  $field_instances['field_usa_pc_afterall_content'] = array(
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Global content, displayed on the bottom of all pages.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -460,7 +482,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_afterall_content',
+    'field_name' => 'field_usa_pc_afterall_content',
     'label' => 'Afterall Content',
     'required' => 0,
     'settings' => array(
@@ -486,19 +508,24 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_css_inline'] = array(
+  $field_instances['field_usa_pc_css_inline'] = array(
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -507,7 +534,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_css_inline',
+    'field_name' => 'field_usa_pc_css_inline',
     'label' => 'Inline CSS',
     'required' => 0,
     'settings' => array(
@@ -533,19 +560,24 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_javascript_inline'] = array(
+  $field_instances['field_usa_pc_javascript_inline'] = array(
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -554,7 +586,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_javascript_inline',
+    'field_name' => 'field_usa_pc_javascript_inline',
     'label' => 'Inline Javascript',
     'required' => 0,
     'settings' => array(
@@ -580,19 +612,24 @@ function _usanetwork_page_collection_field_instances() {
     ),
   );
 
-  $field_instances['usa_pc_overall_content'] = array(
+  $field_instances['field_usa_pc_overall_content'] = array(
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Global content, displayed on the top of all pages.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -601,7 +638,7 @@ function _usanetwork_page_collection_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'usa_pc_overall_content',
+    'field_name' => 'field_usa_pc_overall_content',
     'label' => 'Overall Content',
     'required' => 0,
     'settings' => array(

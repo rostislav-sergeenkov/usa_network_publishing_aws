@@ -10,6 +10,56 @@
 function usanetwork_catchall_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-catchall_page-field_automatic_refresh'
+  $field_instances['node-catchall_page-field_automatic_refresh'] = array(
+    'bundle' => 'catchall_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_automatic_refresh',
+    'label' => 'Enable Automatic Ad and Omniture Refresh',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-catchall_page-field_enable_nitro'
   $field_instances['node-catchall_page-field_enable_nitro'] = array(
     'bundle' => 'catchall_page',
@@ -251,6 +301,61 @@ function usanetwork_catchall_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-catchall_page-field_refresh_time'
+  $field_instances['node-catchall_page-field_refresh_time'] = array(
+    'bundle' => 'catchall_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_refresh_time',
+    'label' => 'Refresh time in seconds',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-catchall_page-field_send_ideamelt_notification'
   $field_instances['node-catchall_page-field_send_ideamelt_notification'] = array(
     'bundle' => 'catchall_page',
@@ -436,7 +541,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -505,7 +610,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 38,
     ),
   );
 
@@ -574,7 +679,7 @@ function usanetwork_catchall_field_default_field_instances() {
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 37,
     ),
   );
 
@@ -723,7 +828,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 36,
     ),
   );
 
@@ -889,6 +994,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Custom Files');
   t('Custom HTML');
   t('Custom JS');
+  t('Enable Automatic Ad and Omniture Refresh');
   t('Enable Nitro');
   t('IdeaMelt action type');
   t('IdeaMelt object type');
@@ -901,6 +1007,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Nitro action name');
   t('OG Description');
   t('OG Image');
+  t('Refresh time in seconds');
   t('Send IdeaMelt Notification');
   t('Show');
   t('set fixed width?');

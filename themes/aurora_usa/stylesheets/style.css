@@ -2094,7 +2094,7 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-sbc77eb34aa.png') no-repeat;
 }
 
@@ -2269,11 +2269,11 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1073px;
 }
 
-.icons-twitter-hover-v4, .ie9 .icons-social a.usasocial-twitter:hover, .ie8 .icons-social a.usasocial-twitter:hover {
+.icons-twitter-hover-v4 {
   background-position: 0 -2347px;
 }
 
-.icons-twitter-v4, .ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter {
+.icons-twitter-v4 {
   background-position: 0 -2295px;
 }
 
@@ -2909,7 +2909,7 @@ input[type="radio"], input[type="checkbox"] {
   list-style-type: none;
   margin-left: 0;
 }
-.ie9 .mega-sub-nav ul li {
+.ie9 .mega-sub-nav ul li, .ie8 .mega-sub-nav ul li {
   float: left;
   width: 30%;
   margin-right: 1em;
@@ -2982,6 +2982,10 @@ input[type="radio"], input[type="checkbox"] {
   width: 100%;
   z-index: 100;
 }
+.ie8 #wall {
+  background-color: #000000;
+  filter: alpha(opacity=80);
+}
 
 .mega-nav-close {
   display: none;
@@ -3012,10 +3016,17 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
   }
-  .ie9 .mega-nav-close, .ie8 .mega-nav-close {
+  .ie9 .mega-nav-close {
     background: url(../images/svgs/ie_x1.svg) no-repeat top left;
     height: 20px;
     width: 20px;
+    text-indent: -9999px;
+  }
+  .ie8 .mega-nav-close {
+    display: block;
+    width: 21px;
+    height: 20px;
+    background: url(../images/icons/ico-close-tray-tablet.png) no-repeat center center transparent;
     text-indent: -9999px;
   }
 }
@@ -6225,6 +6236,51 @@ body.person-page #main {
   max-width: 100%;
   height: auto;
 }
+.ie8 .mega-sub-nav-container {
+  display: none;
+}
+.ie8 .mega-sub-nav-container.active-item {
+  display: block;
+  background-color: #000;
+  filter: alpha(opacity=90);
+}
+.ie8 .region-footer li {
+  float: left;
+}
+.ie8 .schedule-header .schedule-header-navigation .previous-week, .ie8 .schedule-header .schedule-header-navigation .next-week {
+  text-indent: 0px;
+  background-image: none;
+  text-align: center;
+  line-height: 38px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #878787;
+}
+.ie8 #on-now-episode {
+  line-height: 62px !important;
+}
+.ie8 .block-usanetwork-video .grid-item {
+  display: inline-block;
+  float: none;
+  margin: 0 3px 11px 0 !important;
+}
+.ie8 .expandable-container.promo-ads-panel .pane-content ul.field-name-field-usa-tv-promo li {
+  float: none;
+  display: inline-block;
+  margin: 0 3px 11px 0 !important;
+}
+.ie8 .mega-sub-nav ul {
+  column-count: 3;
+  column-gap: 32px;
+}
+.ie8 .mega-sub-nav .globalnav-promos .node-global-nav-image {
+  display: inline-block;
+  width: 23%;
+  margin-left: 1%;
+}
+.ie8 .mega-sub-nav .globalnav-promos .node-global-nav-image:first-child {
+  margin-left: 0;
+}
 
 #block-usanetwork-tv-schedule-usa-on-now-block {
   height: 45px;
@@ -8084,6 +8140,60 @@ body.usa-social {
   display: inline-block;
   margin-left: 5px;
 }
+.ie9 .icons-social a.usasocial-twitter, .ie8 .icons-social a.usasocial-twitter {
+  /*      @extend .icons-twitter-v4; */
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/follow-twitter-v2.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 22px;
+  height: 18px;
+  width: 22px;
+  height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+}
+.ie9 .icons-social a.usasocial-twitter:hover, .ie8 .icons-social a.usasocial-twitter:hover {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/follow-twitter-hover-v2.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 22px;
+  height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+  /* @extend .icons-twitter-hover-v4; */
+}
+.ie9 .icons-social a.usasocial-facebook, .ie8 .icons-social a.usasocial-facebook {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/follow-facebook-v2.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 9px;
+  height: 18px;
+  width: 9px;
+  height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+}
+.ie9 .icons-social a.usasocial-facebook:hover, .ie8 .icons-social a.usasocial-facebook:hover {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/follow-facebook-hover-v2.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 9px;
+  height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+}
 .icons-social a:hover {
   background-color: white;
 }
@@ -8253,7 +8363,7 @@ body.usa-social {
   font-size: 1.4em;
 }
 .ie9 .social-follow-block .icons-social a, .ie8 .social-follow-block .icons-social a {
-  text-indent: -9999px;
+  text-indent: 9999px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
@@ -9546,9 +9656,10 @@ a[class*="day"] {
 }
 .schedule-table table {
   table-layout: fixed;
+  border-top: #3d3d3d solid 1px;
 }
 .schedule-table thead {
-  background-color: #3d3d3d;
+  background-color: #2d2d2d;
 }
 .schedule-table thead tr {
   display: none;
@@ -9559,12 +9670,11 @@ a[class*="day"] {
   }
 }
 .schedule-table thead th {
-  background: #3d3d3d;
   padding-top: 6px;
   padding-bottom: 5px;
   padding-left: 4px;
-  border-bottom: #2d2d2d solid 1px;
-  border-right: #2d2d2d solid 1px;
+  border-bottom: #3d3d3d solid 1px;
+  border-right: #3d3d3d solid 1px;
   color: white;
   font-size: 9px;
   /* @include box-sizing(content-box); */
@@ -9582,13 +9692,13 @@ a[class*="day"] {
   padding-top: 6px;
   padding-bottom: 5px;
   padding-left: 4px;
-  border-bottom: #2d2d2d solid 1px;
-  border-right: #2d2d2d solid 1px;
+  border-bottom: #3d3d3d solid 1px;
+  border-right: #3d3d3d solid 1px;
   color: #959595;
   font-size: 9px;
 }
 .schedule-table tr {
-  background: #3d3d3d;
+  background: #2d2d2d;
   border: none;
 }
 .schedule-table .show-time {
@@ -9663,6 +9773,7 @@ a[class*="day"] {
   }
   .schedule-table table {
     table-layout: auto;
+    border-top-width: 0;
   }
   .schedule-table .program {
     width: 40%;

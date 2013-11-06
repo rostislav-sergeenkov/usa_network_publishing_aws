@@ -731,7 +731,7 @@ you can use the generic selector below, but it's slower:
   list-style-type: none;
   margin-left: 0;
 }
-.ie9 .mega-sub-nav ul li {
+.ie9 .mega-sub-nav ul li, .ie8 .mega-sub-nav ul li {
   float: left;
   width: 30%;
   margin-right: 1em;
@@ -804,6 +804,10 @@ you can use the generic selector below, but it's slower:
   width: 100%;
   z-index: 100;
 }
+.ie8 #wall {
+  background-color: #000000;
+  filter: alpha(opacity=80);
+}
 
 .mega-nav-close {
   display: none;
@@ -834,10 +838,17 @@ you can use the generic selector below, but it's slower:
     line-height: 1;
     -webkit-font-smoothing: antialiased;
   }
-  .ie9 .mega-nav-close, .ie8 .mega-nav-close {
+  .ie9 .mega-nav-close {
     background: url(../images/svgs/ie_x1.svg) no-repeat top left;
     height: 20px;
     width: 20px;
+    text-indent: -9999px;
+  }
+  .ie8 .mega-nav-close {
+    display: block;
+    width: 21px;
+    height: 20px;
+    background: url(../images/icons/ico-close-tray-tablet.png) no-repeat center center transparent;
     text-indent: -9999px;
   }
 }

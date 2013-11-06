@@ -6308,6 +6308,7 @@ body.person-page #main {
   width: 75px;
   background-position: 21px 40%;
   background-size: auto 50%;
+  background-repeat: no-repeat;
   overflow: visible !important;
 }
 @media (min-width: 640px) {
@@ -9307,7 +9308,6 @@ input.echo-submit-text {
   margin: 0 -15px 6px -15px;
   padding: 10px 0 2px 0;
   overflow: hidden;
-  border-top: 1px solid #878787;
   text-align: center;
   vertical-align: middle;
   background-color: #434343;
@@ -9475,12 +9475,15 @@ input.echo-submit-text {
 }
 @media (min-width: 719px) {
   .schedule-header {
-    margin: 0;
+    margin: 0 auto;
     border: 0;
     box-shadow: none;
   }
 }
 @media (min-width: 768px) {
+  .schedule-header {
+    max-width: 1245px;
+  }
   .schedule-header .schedule-header-navigation .previous-week,
   .schedule-header .schedule-header-navigation .next-week {
     display: inline-block;
@@ -9540,7 +9543,6 @@ a[class*="day"] {
 
 .schedule-table {
   margin: 0 -15px;
-  border-top: 1px solid #878787;
 }
 .schedule-table table {
   table-layout: fixed;
@@ -9561,13 +9563,11 @@ a[class*="day"] {
   padding-top: 6px;
   padding-bottom: 5px;
   padding-left: 4px;
-  border-bottom: #878785 solid 1px;
-  border-right: #878785 solid 1px;
+  border-bottom: #2d2d2d solid 1px;
+  border-right: #2d2d2d solid 1px;
   color: white;
   font-size: 9px;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  /* @include box-sizing(content-box); */
 }
 .schedule-table tbody {
   border-width: 0;
@@ -9582,8 +9582,8 @@ a[class*="day"] {
   padding-top: 6px;
   padding-bottom: 5px;
   padding-left: 4px;
-  border-bottom: #878785 solid 1px;
-  border-right: #878785 solid 1px;
+  border-bottom: #2d2d2d solid 1px;
+  border-right: #2d2d2d solid 1px;
   color: #959595;
   font-size: 9px;
 }
@@ -9657,7 +9657,8 @@ a[class*="day"] {
 }
 @media (min-width: 719px) {
   .schedule-table {
-    margin: 0;
+    max-width: 1245px;
+    margin: 0 auto;
     border: 0;
   }
   .schedule-table table {
@@ -9978,6 +9979,9 @@ a[class*="day"] {
 
 .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {
   display: none;
+}
+.expandable-container.promo-ads-panel .first-promo-large .node-usanetwork-promo-iframe {
+  line-height: 0;
 }
 @media (min-width: 645px) and (max-width: 958px) {
   .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(n) {

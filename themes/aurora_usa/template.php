@@ -72,6 +72,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
+  drupal_add_js($theme_path . '/javascripts/tableheader.js');
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(

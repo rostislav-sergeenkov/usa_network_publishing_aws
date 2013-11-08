@@ -43,6 +43,36 @@ function usanetwork_page_collection_schema() {
     'primary key' => array('id'),
   );
 
+  $schema['page_collection_field_sync'] = array(
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+      'type' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'field_name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ),
+      'enabled' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('nid', 'type', 'field_name'),
+  );
+
   return $schema;
 }
 

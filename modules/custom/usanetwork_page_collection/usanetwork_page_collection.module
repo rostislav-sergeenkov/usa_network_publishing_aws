@@ -105,6 +105,7 @@ function usanetwork_page_collection_admin_paths() {
 function usanetwork_page_collection_node_load($nodes, $types) {
   // use cache to prevent recursive node_load
   $cache = &drupal_static(__FUNCTION__, array());
+  // load page collection
   if (count(array_intersect(array_keys(_usanetwork_page_collection_content_types()), $types))) {
     $relations = db_select('page_collection_relations', 'pc')
       ->fields('pc')
@@ -118,19 +119,32 @@ function usanetwork_page_collection_node_load($nodes, $types) {
       $node->page_collection = _usanetwork_page_collection_node_tree($nid, $relations);
     }
   }
-  else {
-    $pcids = db_select('page_collection_relations', 'pc')
-      ->fields('pc', array('nid', 'pcid'))
-      ->condition('nid', array_keys($nodes), 'IN')
-      ->execute()
-      ->fetchAllKeyed();
 
-    foreach ($pcids as $nid => $pcid) {
-      if (isset($cache['page_collection'][$pcid])) {
-        $nodes[$nid]->page_collection_parent = $cache['page_collection'][$pcid];
-      }
-      else {
-        $nodes[$nid]->page_collection_parent = node_load($pcid);
+  // load page collection parents
+  $pcids = db_select('page_collection_relations', 'pc')
+    ->fields('pc', array('nid', 'pcid'))
+    ->condition('nid', array_keys($nodes), 'IN')
+    ->execute()
+    ->fetchAllKeyed();
+
+  foreach ($pcids as $nid => $pcid) {
+    if (isset($cache['page_collection'][$pcid])) {
+      $nodes[$nid]->page_collection_parent = $cache['page_collection'][$pcid];
+    }
+    else {
+      $nodes[$nid]->page_collection_parent = node_load($pcid);
+    }
+  }
+
+  // sync fields
+  foreach ($nodes as $nid => $node) {
+    if (isset($node->page_collection_parent)) {
+      $parent = $node->page_collection_parent;
+      $field_sync = _usanetwork_page_collection_sync_fields_load($parent->type, $parent->nid);
+      foreach ($field_sync as $field_name => $enabled) {
+        if ($enabled && isset($parent->{$field_name}) && isset($node->{$field_name})) {
+          $node->{$field_name} = $parent->{$field_name};
+        }
       }
     }
   }
@@ -236,7 +250,7 @@ function usanetwork_page_collection_node_delete($node) {
  * Implements hook_form_FORM_ID_alter().
  * Alter node edit form.
  */
-function usanetwork_page_collection_form_node_form_alter(&$form, $form_state) {
+function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
   $node = $form_state['node'];
   $pc_options = _usanetwork_page_collection_by_child_content_type($node->type);
 
@@ -270,7 +284,7 @@ function usanetwork_page_collection_form_node_form_alter(&$form, $form_state) {
   );
 
   $pc_options = _usanetwork_page_collection_by_child_content_type($node->type);
-  $pc_options = array(0 => t('- none -')) + $pc_options;
+  $pc_options = array(0 => t('- None -')) + $pc_options;
   $form['page_collection']['page_collection'] = array(
     '#type' => 'select',
     '#title' => t('Page collection'),
@@ -281,8 +295,8 @@ function usanetwork_page_collection_form_node_form_alter(&$form, $form_state) {
     $form['page_collection']['page_collection']['#disabled'] = true;
   }
 
-  // Add resources
   if ($page_collection) {
+    // Add resources
     $form['page_collection_resources'] = array(
       '#type' => 'fieldset',
       '#title' => t('Page collection resources'),
@@ -292,6 +306,22 @@ function usanetwork_page_collection_form_node_form_alter(&$form, $form_state) {
     );
 
     $form['page_collection_resources']['resources'] = node_view($page_collection, 'page_collection_resources');
+
+    // sync fields
+    $field_sync = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
+    foreach ($field_sync as $field_name => $enabled) {
+      if ($enabled && isset($page_collection->{$field_name})) {
+        $node->{$field_name} = $page_collection->{$field_name};
+      }
+    }
+
+    // hide synchronized fields
+    $fields = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
+    foreach ($fields as $field_name => $enabled) {
+      if ($enabled && isset($form[$field_name])) {
+        $form[$field_name]['#access'] = false;
+      }
+    }
   }
 }
 
@@ -517,6 +547,75 @@ function _usanetwork_page_collection_by_child($node) {
     ->fetchField();
 
   return $pcid ? node_load($pcid) : false;
+}
+
+/**
+ * Helper function. Returns list of synchronized fields.
+ */
+function _usanetwork_page_collection_sync_fields_load($type, $nid = 0) {
+  $query = db_select('page_collection_field_sync', 'pf')
+    ->fields('pf', array('field_name', 'enabled'))
+    ->condition('type', $type, '=');
+
+  if ($nid) {
+    $max_nid = db_query('SELECT MAX(nid) FROM {page_collection_field_sync} WHERE type = :type AND (nid = :nid OR nid = 0)', array(
+      ':type' => $type,
+      ':nid' => $nid,
+    ))->fetchField();
+  }
+  else {
+    $max_nid = $nid;
+  }
+
+  $query->condition('nid', $max_nid, '=');
+  $fields = $query->execute()
+    ->fetchAllKeyed();
+
+  return $fields;
+}
+
+/**
+ * Helper function. Checks if page collection uses default settings for field sync.
+ */
+function _usanetwork_page_collection_sync_fields_default($nid) {
+  $result = db_select('page_collection_field_sync', 'pf')
+    ->fields('pf', array('nid'))
+    ->condition('nid', $nid, '=')
+    ->execute()
+    ->fetchField();
+
+  return $result ? false : true;
+}
+
+/**
+ * Helper function. Saves list of synchronized fields.
+ */
+function _usanetwork_page_collection_sync_fields_save($fields, $type, $nid = 0) {
+  if ($fields == null) {
+    // remove from database
+    db_delete('page_collection_field_sync')
+      ->condition('type', $type, '=')
+      ->condition('nid', $nid, '=')
+      ->execute();
+  }
+  else {
+    // update database
+    foreach ($fields as $field_name => $enabled) {
+      db_merge('page_collection_field_sync')
+        ->key(array(
+          'nid' => $nid,
+          'type' => $type,
+          'field_name' => $field_name,
+        ))
+        ->fields(array(
+          'nid' => $nid,
+          'type' => $type,
+          'field_name' => $field_name,
+          'enabled' => $enabled ? 1 : 0,
+        ))
+        ->execute();
+    }
+  }
 }
 
 class RelationsRecursiveIterator implements RecursiveIterator {

@@ -83,17 +83,60 @@ function usanetwork_page_collection_admin_settings_submit($form, &$form_state) {
  * Per content type configuration form
  */
 function usanetwork_page_collection_content_type_settings($form, &$form_state, $content_type) {
-  $namespace = USANETOWRK_PAGE_COLLECTION_NAMESPACE;
-
-  $form[$namespace . '_' . $content_type . '_content_types'] = array(
+  $form_state['content_type'] = $content_type;
+  $form['#tree'] = true;
+  $content_types = _usanetwork_page_collection_node_content_types($content_type);
+  foreach ($content_types as $key => $value) {
+    if ($value) {
+      $content_types[$key] = $key;
+    }
+  }
+  $form['content_types'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Child content types'),
     '#options' => node_type_get_names(),
-    '#default_value' => variable_get($namespace . '_' . $content_type . '_content_types', array()),
+    '#default_value' => $content_types,
   );
 
-  $form = system_settings_form($form);
-  array_unshift($form['#submit'], 'usanetwork_page_collection_content_type_settings_submit');
+  $form['additional_settings'] = array(
+    '#type' => 'vertical_tabs',
+  );
+
+  $form['field_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Field synchronization'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#group' => 'additional_settings',
+    '#weight' => 0,
+  );
+  $system_fields = _usanetwork_page_collection_field_bases();
+  $instances = field_info_instances('node', $content_type);
+  $options = array();
+  $default = _usanetwork_page_collection_sync_fields_load($content_type);
+  foreach ($default as $key => $value) {
+    if ($value) {
+      $default[$key] = $key;
+    }
+  }
+  foreach ($instances as $instance) {
+    if (!in_array($instance['field_name'], array_keys($system_fields))) {
+      $options[$instance['field_name']] = $instance['label'];
+    }
+  }
+  $form['field_sync']['fields'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enable synchronization for selected fields:'),
+    '#options' => $options,
+    '#default_value' => $default,
+  );
+
+  $form['actions'] = array('#type' => 'actions',);
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+
   return $form;
 }
 
@@ -101,6 +144,16 @@ function usanetwork_page_collection_content_type_settings($form, &$form_state, $
  * Submit handler for per content type settings form.
  */
 function usanetwork_page_collection_content_type_settings_submit($form, &$form_state) {
+  $content_type = $form_state['content_type'];
+  $namespace = USANETOWRK_PAGE_COLLECTION_NAMESPACE;
+
+  if (isset($form_state['values']['content_types'])) {
+    variable_set($namespace . '_' . $content_type . '_content_types', $form_state['values']['content_types']);
+  }
+
+  if (isset($form_state['values']['field_sync']['fields'])) {
+    _usanetwork_page_collection_sync_fields_save($form_state['values']['field_sync']['fields'], $content_type);
+  }
 }
 
 /**
@@ -190,15 +243,32 @@ function usanetwork_page_collection_node_form($form, &$form_state, $page_collect
   $system_fields = _usanetwork_page_collection_field_bases();
   $instances = field_info_instances('node', $page_collection->type);
   $options = array();
+  $default = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
+  foreach ($default as $key => $value) {
+    if ($value) {
+      $default[$key] = $key;
+    }
+  }
   foreach ($instances as $instance) {
     if (!in_array($instance['field_name'], array_keys($system_fields))) {
       $options[$instance['field_name']] = $instance['label'];
     }
   }
+  $form['field_sync']['default'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use default settings'),
+    '#default_value' => _usanetwork_page_collection_sync_fields_default($page_collection->nid) ? 1 : 0,
+  );
   $form['field_sync']['fields'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Enable synchronization for selected fields:'),
     '#options' => $options,
+    '#default_value' => $default,
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="field_sync[default]"]' => array('checked' => true),
+      ),
+    )
   );
 
   $form['actions'] = array('#type' => 'actions',);
@@ -215,17 +285,26 @@ function usanetwork_page_collection_node_form($form, &$form_state, $page_collect
  */
 function usanetwork_page_collection_node_form_submit($form, &$form_state) {
   $page_collection = $form_state['page_collection'];
-  $relations = $form_state['input']['relations'];
-  // update relations
-  foreach ($relations as $relation) {
-    db_update('page_collection_relations')
-      ->fields(array(
-        'pnid' => $relation['pnid'],
-        'weight' => $relation['weight'],
-      ))
-      ->condition('id', $relation['id'], '=')
-      ->execute();
+  if (isset($form_state['values']['relations'])) {
+    $relations = $form_state['values']['relations'];
+    // update relations
+    foreach ($relations as $relation) {
+      db_update('page_collection_relations')
+        ->fields(array(
+          'pnid' => $relation['pnid'],
+          'weight' => $relation['weight'],
+        ))
+        ->condition('id', $relation['id'], '=')
+        ->execute();
+    }
   }
+
+  // save field sync config
+  if ($form_state['values']['field_sync']['default']) {
+    $form_state['values']['field_sync']['fields'] = null;
+  }
+  _usanetwork_page_collection_sync_fields_save($form_state['values']['field_sync']['fields'], $page_collection->type, $page_collection->nid);
+
   // clear cache
   entity_get_controller('node')->resetCache(array($page_collection->nid));
 }

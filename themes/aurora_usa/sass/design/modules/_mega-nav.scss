@@ -96,6 +96,11 @@
       display: inline-block;
     }
   }
+  .ie8 & {
+    a {
+      position:relative;
+    }
+  }
   a {
     @include link-colors($white, $white, $white, $white, $white);
   }

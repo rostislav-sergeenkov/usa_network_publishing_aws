@@ -389,6 +389,9 @@
       z-index: 105;
       @include filter(drop-shadow($gray-med-dark 0 -2px 0));
     }
+    .ie8 &:after {
+      display: none;
+    }
   }
 }
 #tv-show-menu {
@@ -505,5 +508,16 @@
         }
       }
     }
+  }
+  .ie8 &:after {
+      position: absolute;
+      content: $space;
+      @include cssTriangle(14px, $black-true, bottom);
+      border-top: none;
+      bottom: -1px;
+      left: 165px;
+      @include transform3d(translateX(-50%));
+      z-index: 105;
+      @include filter(drop-shadow($gray-med-dark 0 -2px 0));
   }
 }

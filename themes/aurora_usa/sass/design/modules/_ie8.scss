@@ -44,18 +44,118 @@
     .pane-content {
       ul.field-name-field-usa-tv-promo {
         li {
+          /*
           float: none;
           display: inline-block;
           margin: 0 3px 11px 0 !important;
+          */
+          float:left;
+          clear:none;
         }
+      }
+    }
+    @include breakpoint($bp-grid-show-2-fence) {
+      li {
+        margin:0 14px 15px 0;
+      }
+      li.odd {
+        margin:0 0 15px 0;
+      }
+      li.nth1 {
+        margin-right:315px;
+      }
+    }
+    @include breakpoint($bp-grid-show-3-fence) {
+      li {
+        float:left;
+        margin:0 14px 15px 0;
+        clear: none;
+      }
+      li.odd {
+        margin:0 14px 15px 0;
+      }
+      li.nth3n5 {
+        margin:0 0 15px 0;
+      }
+      li.nth1 {
+      margin-right:14px;
+      }
+      li.nth2 {
+        margin:0 314px 15px 0;
+      }
+    }
+    @include breakpoint($bp-grid-show-4) {
+      overflow:hidden;
+      li {
+        float:left;
+        margin:0 10px 15px 0;
+        clear: none;
+      }
+      li.odd {
+        margin:0 10px 15px 0;
+      }
+      li.nth4n6 {
+        margin:0 0 15px 0;
+      }
+      li.nth1 {
+      margin-right:10px;
+      }
+      li.nth2 {
+        margin:0 310px 15px 0;
+      }
+      li {
+        .asset-img {
+          overflow:hidden;
+          img {
+            display:block;
+            width:100%;
+            height: auto;
+            vertical-align:top;
+          }
+        }
+        .asset-img-large {
+          display: block;
+          width: 617px;
+          height: 254px;
+          border: 2px solid $gray-dark;
+          overflow:hidden;
+          img {
+            display:block;
+            width:100%;
+            height: auto;
+            vertical-align:top;
+          }
+        }
+      }
+      /*
+      li:first-child {
+        width: 615px;
+        height: 254px;
+        .asset-img {
+          display: none;
+        }
+        .caption-fields-wrapper {
+          width: 613px;
+        }
+      }
+      */
+      li.nth2 {
+        margin:0 10px 15px 0;
+      }
+      li.nth3 {
+        margin:0 300px 15px 0px;
+      }
+      li.nth4n4 {
+        clear:both;
+        margin-left:0;
+      }
+      li.nth4n7 {
+        float:right !important;
+        margin:0 0 15px 0;
       }
     }
   }
   .mega-sub-nav {
-    ul {
-      column-count: 3;
-      column-gap: 32px;
-    }
     .globalnav-promos {
       .node-global-nav-image {
         display: inline-block;
@@ -73,5 +173,26 @@
         width:100px;
       }
     }
+  }
+  #tv-show-menu {
+    .parent-item {
+      li {
+        float: left;
+        width: 23%;
+        margin-right: 1em;
+        overflow: hidden;
+      }
+    }
+  }
+  .usa-tv-show {
+    .video-promo-panel {
+      li {
+        display:inline-block;
+        margin:0 3px 11px 0;
+      }
+    }
+    .expandable-toggle-wrap {
+      margin-bottom:10px;
+  }
   }
 }

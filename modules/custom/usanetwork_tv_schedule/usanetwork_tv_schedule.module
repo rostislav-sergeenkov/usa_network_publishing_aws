@@ -521,13 +521,13 @@ function usanetwork_on_now_social_block() {
 function usanetwork_on_now_social_block_content($node, $tab) {
   $output = '';
   if($tab == 'twitter'){
-    $output .= usanetwork_social_show_on_now_twitter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_twitter_response($node, 3);
   }
   if($tab == 'chatter'){
-    $output .= usanetwork_social_show_on_now_chatter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_chatter_response($node, 3);
   }
   if($tab == 'facebook'){
-    $output .= usanetwork_social_show_on_now_facebook_response($node, 2);
+    $output .= usanetwork_social_show_on_now_facebook_response($node, 3);
   }
   return $output;
 }
@@ -607,7 +607,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     //$output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   // Social Show block
-  $output .= usanetwork_social_show_on_now_box($node, 2);
+  $output .= usanetwork_social_show_on_now_box($node, 3);
 
 
   return $output;

@@ -12,6 +12,9 @@
     $('#'+tab_id+' #instagram').hide();
     $('#'+tab_id+' #get-glue').hide();
     $('#'+tab_id+' #echo-stream').show();
+    $('#'+tab_id+' #join-tweets').show();
+    $('#'+tab_id+' #join-buzz').hide();
+    $('#'+tab_id+' #join-chatter').hide();
   });
   $('#navChatterOnNow').live("click",function(){
     $('.onnow_social_nav').removeClass('onnow_social_selected');
@@ -26,6 +29,9 @@
     $('#'+tab_id+' #instagram').hide();
     $('#'+tab_id+' #get-glue').hide();
     $('#'+tab_id+' #echo-stream').show();
+    $('#'+tab_id+' #join-tweets').hide();
+    $('#'+tab_id+' #join-buzz').hide();
+    $('#'+tab_id+' #join-chatter').show();
   });
 
   $('#navFbOnNow').live("click",function(){
@@ -41,6 +47,9 @@
     $('#'+tab_id+' #instagram').hide();
     $('#'+tab_id+' #get-glue').hide();
     $('#'+tab_id+' #echo-stream').show();
+    $('#'+tab_id+' #join-tweets').hide();
+    $('#'+tab_id+' #join-buzz').show();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
   $('#navPinterestOnNow').live("click",function(){
@@ -54,6 +63,9 @@
     $('#'+tab_id+' #get-glue').hide();
     $('#'+tab_id+' #instagram').hide();
     $('#'+tab_id+' #pinterest').show();
+    $('#'+tab_id+' #join-tweets').hide();
+    $('#'+tab_id+' #join-buzz').show();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
   $('#navGetGlueOnNow').live("click",function(){
@@ -70,6 +82,9 @@
     $('#'+tab_id+' #pinterest').empty();
     $('#'+tab_id+' #instagram').hide();
     $('#'+tab_id+' #get-glue').show();
+    $('#'+tab_id+' #join-tweets').hide();
+    $('#'+tab_id+' #join-buzz').show();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
   $('#navInstagramOnNow').live("click",function(){
@@ -84,6 +99,9 @@
     $('#'+tab_id+' #sticker').empty();
     $('#'+tab_id+' #get-glue').hide();
     $('#'+tab_id+' #instagram').show();
+    $('#'+tab_id+' #join-tweets').hide();
+    $('#'+tab_id+' #join-buzz').show();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
   $('#inner-on-now-panel ul li.first span.active').live("click",function(){
@@ -98,6 +116,9 @@
     $('#on-now-panel-tab #instagram').hide();
     $('#on-now-panel-tab #get-glue').hide();
     $('#on-now-panel-tab #echo-stream').show();
+    $('#'+tab_id+' #join-tweets').show();
+    $('#'+tab_id+' #join-buzz').hide();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
   $('#inner-on-now-panel ul li.last span.active').live("click",function(){
@@ -112,6 +133,9 @@
     $('#up-next-panel-tab #instagram').hide();
     $('#up-next-panel-tab #get-glue').hide();
     $('#up-next-panel-tab #echo-stream').show();
+    $('#'+tab_id+' #join-tweets').show();
+    $('#'+tab_id+' #join-buzz').hide();
+    $('#'+tab_id+' #join-chatter').hide();
   });
 
 })(jQuery);

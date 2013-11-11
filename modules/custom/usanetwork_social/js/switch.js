@@ -25,6 +25,7 @@ Drupal.behaviors.switch_nav = {
         "reTag": false,
         "streamStateLabel": {"icon": true,"text": true},
         "aggressiveSanitization": false,
+        "defaultAvatar" : "//cdn.echoenabled.com/images/favicons/comments.png",
         "plugins": [{
           "name": "TwitterIntents"
         }, {

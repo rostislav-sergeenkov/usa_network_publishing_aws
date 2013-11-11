@@ -1655,9 +1655,9 @@ if (!path_is_admin(current_path())) {
             $output .= '</span></div></div></div>';
             $output .= '<div id="usanetwork_on_now_social_section_join">';
             $output .= '<div id="usanetwork_social_section_join">';
-            $output .= '<span id="join-tweets" class = "onnow-social-section-join" style = "display:block;"><a href = "/'.$alias.'/social/tweets">Check out more tweets<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></a></span>';
-            $output .= '<span id="join-chatter" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/chat-with-fans">Go chat with fans<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></a></span>';
-            $output .= '<span id="join-buzz" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/latest">Get more social buzz<span class="usanetwork_social_join_msg" style="margin-left:15px;top:4px;"></span></a></span>';
+            $output .= '<span id="join-tweets" class = "onnow-social-section-join" style = "display:block;"><a href = "/'.$alias.'/social/tweets">Check out more tweets<span class="usanetwork_social_join_msg"></span></a></span>';
+            $output .= '<span id="join-chatter" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/chat-with-fans">Go chat with fans<span class="usanetwork_social_join_msg"></span></a></span>';
+            $output .= '<span id="join-buzz" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/latest">Get more social buzz<span class="usanetwork_social_join_msg"></span></a></span>';
             $output .= '<span class="usanetwork_social_pointer_image"></span>';
             $output .= '</div>';
             $output .= '</div>';

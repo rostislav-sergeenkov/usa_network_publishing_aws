@@ -3618,27 +3618,10 @@ input[type="radio"], input[type="checkbox"] {
   background-color: #313131;
 }
 .block-usanetwork-tv-schedule .echo-item-content {
-  padding-left: 20px;
-  padding-left: 20px;
+  padding-bottom: 10px;
   margin: 0;
-  color: #ebebeb;
-  border-bottom: 1px solid #505050;
-  border-top: 1px solid #161616;
-}
-@media (min-width: 960px) {
-  .block-usanetwork-tv-schedule .echo-item-content {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-}
-.block-usanetwork-tv-schedule .echo-item-authorName {
-  color: #717274;
-  font-size: 14px;
-}
-@media (min-width: 960px) {
-  .block-usanetwork-tv-schedule .echo-item-authorName {
-    font-size: 20px;
-  }
+  color: #3d3d3d;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 960px) {
   .block-usanetwork-tv-schedule .echo-item-data {
@@ -3662,6 +3645,9 @@ input[type="radio"], input[type="checkbox"] {
     top: 5px;
   }
 }
+.block-usanetwork-tv-schedule #usanetwork_social_section_join .usanetwork_social_join_msg {
+  margin-left: 15px;
+}
 .block-usanetwork-tv-schedule #usanetwork_social_chatter_title {
   padding-left: 20px;
   padding-right: 20px;
@@ -3676,6 +3662,13 @@ input[type="radio"], input[type="checkbox"] {
   }
 }
 
+#on-now-panel {
+  /*
+    #get-glue #sticker {
+      padding: 25px !important;
+    }
+  */
+}
 #on-now-panel ul, #on-now-panel ol, #on-now-panel li {
   margin: 0;
 }
@@ -3757,6 +3750,31 @@ input[type="radio"], input[type="checkbox"] {
 #on-now-panel a:active {
   color: #a3a3a3;
 }
+#on-now-panel #echo-stream {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#on-now-panel .echo-item-authorName a {
+  color: #3d3d3d;
+  font-size: 14px;
+}
+@media (min-width: 960px) {
+  #on-now-panel .echo-item-authorName a {
+    font-size: 20px;
+  }
+}
+#on-now-panel .echo-item-text {
+  font-size: 13px;
+}
+#on-now-panel .echo-item-footer > a {
+  float: left;
+}
+#on-now-panel .echo-item-from {
+  float: left;
+}
+#on-now-panel .echo-item-container > .echo-clear {
+  clear: both;
+}
 #on-now-panel .show-info-wrapper {
   display: table;
   width: 100%;
@@ -3771,6 +3789,9 @@ input[type="radio"], input[type="checkbox"] {
   #on-now-panel .show-info-wrapper .show-title {
     font-size: 18px;
   }
+}
+#on-now-panel .show-info-wrapper .show-title a:hover {
+  color: #a3a3a3;
 }
 #on-now-panel .show-info-wrapper .episode-title {
   font-size: 13px;
@@ -3820,6 +3841,73 @@ input[type="radio"], input[type="checkbox"] {
     font-size: 18px;
   }
 }
+#on-now-panel .onnow_social_selected {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png");
+  background-origin: padding-box;
+  background-position: 0 -2792px;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  float: left;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+#on-now-panel #echo-stream-container {
+  padding: 25px;
+}
+
+/* Changes from Siva via DV on Nov 11, 2013 */
+#navChatterOnNow .onnow_social_selected {
+  background-position: 0 -2871px;
+}
+
+#navFbOnNow .onnow_social_selected {
+  background-position: 0 -2950px;
+}
+
+#navPinterestOnNow .onnow_social_selected {
+  background-position: 0 -3109px;
+}
+
+#navGetGlueOnNow .onnow_social_selected {
+  background-position: 0 -3028px;
+}
+
+#navInstagramOnNow .onnow_social_selected {
+  background-position: 0 -3187px;
+}
+
+#navTwitterOnNow .onnow_social_selected {
+  background-position: 0 -2792px;
+}
+
+.onNow-navSocial-empty-span {
+  width: 17px;
+  height: 1px;
+  float: left;
+}
+
+.echo-primaryColor {
+  color: #3A3A3A;
+}
+
+.echo-secondaryColor {
+  color: #3d3d3d !important;
+}
+
+#usanetwork_on_now_social_section_join {
+  border: 1px solid #505050 !important;
+}
+
+.onnow-social-section-join {
+  margin-bottom: 3px;
+}
+.onnow-social-section-join a {
+  color: #FFFFFF !important;
+}
 
 body[data-menu-direction="right"][data-menu-position="open"] .jPanelMenu-panel {
   overflow: hidden;
@@ -3860,12 +3948,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .ie9 [id="personalization-drawer"], .ie8 [id="personalization-drawer"] {
     display: none;
   }
-  [id="personalization-drawer"] .active-item {
+  [id="personalization-drawer"] .active {
     display: block;
   }
 }
 
-.ie9 [id="personalization-drawer"].active-item {
+.ie9 [id="personalization-drawer"].active {
   display: block;
 }
 

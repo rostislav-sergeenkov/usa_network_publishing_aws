@@ -121,3 +121,44 @@
   width:32px;
   height:32px;
 }
+
+#on-now-panel .show-info-wrapper .icons-social a {
+  font-family : usanetwork;
+}
+
+#on-now-panel-tab #echo-stream {
+  padding : 25px;
+}
+
+#up-next-panel-tab #echo-stream {
+  padding : 25px;
+}
+
+#usanetwork_on_now_social_section_join {
+  border : 1px solid rgb(80, 80, 80) !important;
+}
+.onnow-social-section-join {
+  margin-bottom : 3px;
+}
+.onnow-social-section-join a {
+  color : #FFFFFF !important;
+}
+
+#on-now-panel-tab #echo-stream #socialblock_on_now_content .echo-item-content {
+  padding : 0px 0px 10px 0px !important;
+}
+
+#up-next-panel-tab #echo-stream #socialblock_on_now_content .echo-item-content {
+  padding : 0px 0px 10px 0px !important;
+}
+
+#on-now-panel-tab .show-on-now-wrapper {
+  padding : 25px;
+}
+#on-now-panel-tab #echo-stream #socialblock_on_now_content .echo-item-footer a {
+  float :left;
+}
+
+#up-next-panel-tab #echo-stream #socialblock_on_now_content .echo-item-footer a {
+  float :left;
+}

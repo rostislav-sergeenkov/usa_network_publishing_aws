@@ -128,22 +128,30 @@ function usanetwork_page_collection_node_load($nodes, $types) {
     ->fetchAllKeyed();
 
   foreach ($pcids as $nid => $pcid) {
-    if (isset($cache['page_collection'][$pcid])) {
-      $nodes[$nid]->page_collection_parent = $cache['page_collection'][$pcid];
+    if (!isset($cache['page_collection'][$pcid])) {
+      node_load($pcid);
     }
-    else {
-      $nodes[$nid]->page_collection_parent = node_load($pcid);
-    }
+    $nodes[$nid]->page_collection_parent = &$cache['page_collection'][$pcid];
   }
 
-  // sync fields
   foreach ($nodes as $nid => $node) {
     if (isset($node->page_collection_parent)) {
+      $nodes[$nid]->page_collection_relation = &$cache['pages'][$nid];
+
+      // sync fields
       $parent = $node->page_collection_parent;
+      while(isset($parent->page_collection_parent)) {
+        $parent = $parent->page_collection_parent;
+      }
       $field_sync = _usanetwork_page_collection_sync_fields_load($parent->type, $parent->nid);
       foreach ($field_sync as $field_name => $enabled) {
-        if ($enabled && isset($parent->{$field_name}) && isset($node->{$field_name})) {
-          $node->{$field_name} = $parent->{$field_name};
+        if ($enabled) {
+          if (isset($parent->{$field_name})) {
+            $node->{$field_name} = $parent->{$field_name};
+          }
+          else {
+            unset($node->{$field_name});
+          }
         }
       }
     }
@@ -160,6 +168,7 @@ function usanetwork_page_collection_node_insert($node) {
       ->fields(array(
         'pcid' => $node->page_collection_parent->nid,
         'nid' => $node->nid,
+        'prepend_parent_path' => isset($node->path['prepend_parent_path']) ? $node->path['prepend_parent_path'] : 1,
       ))
       ->execute();
 
@@ -194,7 +203,6 @@ function usanetwork_page_collection_node_update($node) {
       ->execute();
   }
 
-  // clear cache
   $nids = array();
   if (isset($node->page_collection_parent)) {
     $nids[$node->page_collection_parent->nid] = $node->page_collection_parent->nid;
@@ -204,33 +212,164 @@ function usanetwork_page_collection_node_update($node) {
   }
 
   if (isset($node->page_collection)) {
+    if (isset($node->original) && isset($node->original->page_collection)) {
+      if (module_exists('path')) {
+        $paths = array();
+        $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($node->original->page_collection), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($relations as $relation) {
+          if ($relation->prepend_parent_path) {
+            $path = path_load(array(
+              'source' => 'node/' . $relation->node->nid,
+            ));
+            if ($path) {
+              $pnid = $relation->parent ? $relation->parent->nid : $node->nid;
+              $parent_path = drupal_get_path_alias('node/' . $pnid);
+              if ($parent_path != 'node/' . $pnid) {
+                if (strpos($path['alias'] . '/', $parent_path) === 0) {
+                  $paths[$relation->id] = substr($path['alias'], strlen($parent_path) + 1);
+                }
+                else {
+                  $paths[$relation->id] = $path['alias'];
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($node->page_collection), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($relations as $relation) {
+      // update relations
+      db_update('page_collection_relations')
+        ->fields(array(
+          'pnid' => $relation->parent ? $relation->parent->nid : 0,
+          'weight' => $relation->weight,
+        ))
+        ->condition('id', $relation->id, '=')
+        ->execute();
+
+      if ($relation->prepend_parent_path && isset($paths[$relation->id])) {
+        $path = path_load(array(
+          'source' => 'node/' . $relation->node->nid,
+        ));
+        if ($path) {
+          $pnid = $relation->parent ? $relation->parent->nid : $node->nid;
+          $parent_path = drupal_get_path_alias('node/' . $pnid);
+          if ($parent_path != 'node/' . $pnid) {
+            $path['alias'] = $parent_path . '/' . $paths[$relation->id];
+            path_save($path);
+          }
+          else {
+            path_delete(array(
+              'pid' => $path['pid'],
+            ));
+          }
+        }
+      }
+
       $nids[$relation->node->nid] = $relation->node->nid;
     }
   }
 
+  // clear cache
   entity_get_controller('node')->resetCache($nids);
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function usanetwork_page_collection_node_presave($node) {
+  if (module_exists('path')
+    && isset($node->page_collection_parent)
+    && isset($node->page_collection_relation->prepend_parent_path)
+    && $node->page_collection_relation->prepend_parent_path)
+  {
+    $pnid = db_select('page_collection_relations', 'pc')
+      ->fields('pc',  array('pnid'))
+      ->condition('nid', $node->nid)
+      ->execute()
+      ->fetchField();
+
+    if ($pnid) {
+      $parent = node_load($pnid);
+    }
+    else {
+      $parent = $node->page_collection_parent;
+    }
+
+    $lang = entity_language('node', $parent);
+    $parent_alias = drupal_get_path_alias('node/' . $parent->nid, $lang);
+    if ($parent_alias != 'node/' . $parent->nid) {
+      $old_path = path_load(array('pid' => $node->path['pid']));
+      $old_alias = $old_path['alias'];
+      if (!empty($node->path['alias']) && strpos($node->path['alias'], $parent_alias . '/') !== 0) {
+        $node->path['alias'] = $parent_alias . '/' . $node->path['alias'];
+      }
+
+      // update children aliases
+      $children = array();
+      if (!isset($node->page_collection_parent->page_collection)) {
+        $node->page_collection_parent = node_load($node->page_collection_parent->nid, $node->page_collection_parent->vid, true);
+      }
+      foreach (new RecursiveIteratorIterator(new RelationsRecursiveIterator($node->page_collection_parent->page_collection), RecursiveIteratorIterator::SELF_FIRST) as $relation) {
+        if ($relation->node->nid == $node->nid) {
+          $children = $relation->children;
+          break;
+        }
+      }
+      foreach (new RecursiveIteratorIterator(new RelationsRecursiveIterator($children), RecursiveIteratorIterator::SELF_FIRST) as $relation) {
+        if ($relation->prepend_parent_path) {
+          $path = path_load(array(
+            'source' => 'node/' . $relation->node->nid,
+          ));
+          if ($path) {
+            if (empty($node->path['alias'])) {
+              path_delete(array(
+                'pid' => $path['pid'],
+              ));
+            }
+            else {
+              if (!empty($old_alias) && strstr($path['alias'], $old_alias . '/')) {
+                $path['alias'] = preg_replace('|^' . preg_quote($old_alias . '/') . '|', $node->path['alias'] . '/', $path['alias'], 1);
+              }
+              elseif (empty($old_alias)) {
+                $path['alias'] = $node->path['alias'] . '/' . $path['alias'];
+              }
+              path_save($path);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /**
  * Implements hook_node_delete().
  */
 function usanetwork_page_collection_node_delete($node) {
-  // delete relations for page collection
-  if (in_array($node->type, array_keys(_usanetwork_page_collection_content_types()))) {
-    db_delete('page_collection_relations')
-      ->condition('pcid', $node->nid, '=')
-      ->execute();
+  // get nids for cache reset
+  $nids = array();
+  $conditions = db_or();
+  $conditions->condition('nid', $node->nid, '=');
+  $conditions->condition('pnid', $node->nid, '=');
+  $result = db_select('page_collection_relations', 'pc')
+    ->fields('pc', array('id', 'pcid', 'nid'))
+    ->condition($conditions)
+    ->execute()
+    ->fetchAllAssoc('id');
+  foreach($result as $item) {
+    $nids[$item->pcid] = $item->pcid;
+    $nids[$item->nid] = $item->nid;
   }
 
-  // get page collections for cache reset
-  $pc_nids = db_select('page_collection_relations', 'pc')
-    ->fields('pc', array('pcid'))
-    ->condition('pnid', $node->nid, '=')
-    ->groupBy('pnid')
-    ->execute()
-    ->fetchCol();
+  // delete relations
+  $conditions = db_or();
+  $conditions->condition('pcid', $node->nid, '=');
+  $conditions->condition('nid', $node->nid, '=');
+  db_delete('page_collection_relations')
+    ->condition($conditions)
+    ->execute();
 
   // update relations, set parent to 0 where parent was deleted
   db_update('page_collection_relations')
@@ -240,9 +379,9 @@ function usanetwork_page_collection_node_delete($node) {
     ->condition('pnid', $node->nid, '=')
     ->execute();
 
-  if (count($pc_nids) > 0) {
+  if (count($nids) > 0) {
     // clear cache
-    entity_get_controller('node')->resetCache($pc_nids);
+    entity_get_controller('node')->resetCache($nids);
   }
 }
 
@@ -252,13 +391,12 @@ function usanetwork_page_collection_node_delete($node) {
  */
 function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
   $node = $form_state['node'];
-  $pc_options = _usanetwork_page_collection_by_child_content_type($node->type);
 
   if (isset($node->page_collection_parent)) {
     $page_collection = $node->page_collection_parent;
   }
   else {
-    if (isset($_GET['page_collection']) && in_array($_GET['page_collection'], array_keys($pc_options))) {
+    if (isset($_GET['page_collection']) && in_array($_GET['page_collection'], array_keys(_usanetwork_page_collection_by_child_content_type($node->type)))) {
       $page_collection = node_load($_GET['page_collection']);
     }
     if (!isset($page_collection) || $page_collection == false) {
@@ -268,58 +406,114 @@ function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
     if (isset($page_collection) && $page_collection) {
       $node->page_collection_parent = $page_collection;
     }
-    else {
-      return;
+  }
+
+  if (isset($node->page_collection) || isset($node->page_collection_parent)) {
+    $file_folder = isset($node->field_usa_pc_file_folder) ? $node->field_usa_pc_file_folder : array();
+    if (empty($node->field_usa_pc_file_folder) && isset($node->page_collection_parent)) {
+      $parent = $node->page_collection_parent;
+      while (empty($parent->field_usa_pc_file_folder) && isset($parent->page_collection_parent)) {
+        $parent = $parent->page_collection_parent;
+      }
+      $file_folder = $parent->field_usa_pc_file_folder;
     }
-  }
-
-  $form['page_collection'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Page collection'),
-    '#collapsible' => true,
-    '#collapsed' => true,
-    '#weight' => 100,
-    '#group' => 'additional_settings',
-    '#tree' => true,
-  );
-
-  $pc_options = _usanetwork_page_collection_by_child_content_type($node->type);
-  $pc_options = array(0 => t('- None -')) + $pc_options;
-  $form['page_collection']['page_collection'] = array(
-    '#type' => 'select',
-    '#title' => t('Page collection'),
-    '#options' => $pc_options,
-    '#default_value' => $page_collection ? $page_collection->nid : 0,
-  );
-  if (!isset($node->nid)) {
-    $form['page_collection']['page_collection']['#disabled'] = true;
-  }
-
-  if ($page_collection) {
-    // Add resources
-    $form['page_collection_resources'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Page collection resources'),
-      '#collapsible' => true,
-      '#collapsed' => true,
-      '#weight' => -100,
-    );
-
-    $form['page_collection_resources']['resources'] = node_view($page_collection, 'page_collection_resources');
-
-    // sync fields
-    $field_sync = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
-    foreach ($field_sync as $field_name => $enabled) {
-      if ($enabled && isset($page_collection->{$field_name})) {
-        $node->{$field_name} = $page_collection->{$field_name};
+    // change #upload_location
+    $lang = $form['language']['#value'];
+    if (!empty($file_folder)) {
+      $file_folder = reset($file_folder[$lang]);
+      $file_folder = $file_folder['value'];
+    }
+    foreach (_usanetwork_page_collection_field_bases() as $field_name => $field) {
+      if (isset($form[$field_name]) && ($field['type'] == 'file' || $field['type'] == 'image')) {
+        foreach (element_children($form[$field_name][$lang]) as $key) {
+          if (isset($form[$field_name][$lang][$key]['#upload_location'])) {
+            list($scheme, $location) = explode('://', $form[$field_name][$lang][$key]['#upload_location']);
+            if (empty($location)) {
+              $location = $file_folder;
+            }
+            else {
+              $location = trim($location, '/\\') . '/' . trim($file_folder, '/\\');
+            }
+            $form[$field_name][$lang][$key]['#upload_location'] = $scheme . '://' . $location;
+          }
+        }
       }
     }
+  }
 
-    // hide synchronized fields
-    $fields = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
-    foreach ($fields as $field_name => $enabled) {
-      if ($enabled && isset($form[$field_name])) {
-        $form[$field_name]['#access'] = false;
+  if (isset($node->page_collection_parent)) {
+    if (isset($node->nid)) {
+      $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($page_collection->page_collection), RecursiveIteratorIterator::SELF_FIRST);
+      foreach ($relations as $relation) {
+        if ($node->nid == $relation->node->nid) {
+          break;
+        }
+      }
+      $form_state['#page_collection_relation'] = $relation;
+    }
+
+    $form['page_collection'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Page collection'),
+      '#collapsible' => true,
+      '#collapsed' => true,
+      '#weight' => 100,
+      '#group' => 'additional_settings',
+      '#tree' => true,
+    );
+
+    $pc_options = _usanetwork_page_collection_by_child_content_type($node->type, $node);
+    $form['page_collection']['page_collection'] = array(
+      '#type' => 'select',
+      '#title' => t('Page collection'),
+      '#options' => array(0 => t('- None -')) + $pc_options,
+      '#default_value' => $page_collection ? $page_collection->nid : 0,
+    );
+    if (!isset($node->nid)) {
+      $form['page_collection']['page_collection']['#disabled'] = true;
+    }
+
+    if ($page_collection) {
+      // Add resources
+      $form['page_collection_resources'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Page collection resources'),
+        '#collapsible' => true,
+        '#collapsed' => true,
+        '#weight' => -100,
+      );
+
+      $form['page_collection_resources']['resources'] = node_view($page_collection, 'page_collection_resources');
+
+      // sync fields
+      $field_sync = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
+      foreach ($field_sync as $field_name => $enabled) {
+        if ($enabled) {
+          if (isset($page_collection->{$field_name})) {
+            $node->{$field_name} = $page_collection->{$field_name};
+          }
+          else {
+            unset($node->{$field_name});
+          }
+        }
+      }
+
+      // hide synchronized fields
+      $fields = _usanetwork_page_collection_sync_fields_load($page_collection->type, $page_collection->nid);
+      foreach ($fields as $field_name => $enabled) {
+        if ($enabled && isset($form[$field_name])) {
+          $form[$field_name]['#access'] = false;
+        }
+      }
+
+      // add path options
+      if (module_exists('path')) {
+        $form['path']['prepend_parent_path'] = array(
+          '#type' => 'checkbox',
+          '#title' => t('Prepend parent path'),
+          '#default_value' => isset($relation) ? $relation->prepend_parent_path : 1,
+        );
+        $form['path']['alias']['#element_validate'] = array('usanetwork_page_collection_path_form_element_validate');
       }
     }
   }
@@ -329,6 +523,7 @@ function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
  * Implements hook_node_submit().
  */
 function usanetwork_page_collection_node_submit($node, $form, &$form_state) {
+  $relation = isset($form_state['#page_collection_relation']) ? $form_state['#page_collection_relation'] : false;
   if (!empty($form_state['values']['page_collection']['page_collection'])
       && $form_state['values']['page_collection']['page_collection'] != 0) {
     $page_collection = node_load($form_state['values']['page_collection']['page_collection']);
@@ -338,6 +533,19 @@ function usanetwork_page_collection_node_submit($node, $form, &$form_state) {
   }
   elseif (isset($form_state['values']['page_collection']['page_collection']) && $form_state['values']['page_collection']['page_collection'] == 0) {
     unset($node->page_collection_parent);
+  }
+
+  if (isset($node->path) && isset($form_state['values']['path']['prepend_parent_path'])) {
+    if (!isset($node->page_collection_relation)) {
+      $node->page_collection_relation = new stdClass();
+    }
+    $node->page_collection_relation->prepend_parent_path = $form_state['values']['path']['prepend_parent_path'] ? true : false;
+  }
+}
+
+function usanetwork_page_collection_path_form_element_validate($element, &$form_state, $complete_form) {
+  if (!isset($form_state['values']['path']['prepend_parent_path']) || !$form_state['values']['path']['prepend_parent_path']) {
+    path_form_element_validate($element, $form_state, $complete_form);
   }
 }
 
@@ -415,14 +623,24 @@ function usanetwork_page_collection_node_autocomplete($page_collection, $title =
   if ($title) {
     $types = _usanetwork_page_collection_node_content_types($page_collection->type);
 
+    $exclude = array($page_collection->nid);
     $query = db_select('node', 'n')
       ->fields('n', array('title', 'nid', 'type'))
       ->fields('pc', array('nid'))
       ->condition('title', db_like($title) . '%', 'LIKE')
       ->condition('type', array_keys($types), 'IN')
-      ->condition('n.nid', $page_collection->nid, '<>')
       ->isNull('pc.nid');
+
+    if (isset($page_collection->page_collection_parent)) {
+      $exclude[] = $page_collection->page_collection_parent->nid;
+      $parent = $page_collection->page_collection_parent;
+      while (isset($parent->page_collection_parent)) {
+        $parent = $parent->page_collection_parent;
+        $exclude[] = $parent->nid;
+      }
+    }
     $query->leftJoin('page_collection_relations', 'pc', 'n.nid = pc.nid');
+    $query->condition('n.nid', $exclude, 'NOT IN');
     $result = $query->range(0, 10)
       ->execute();
     foreach ($result as $node) {
@@ -436,6 +654,7 @@ function usanetwork_page_collection_node_autocomplete($page_collection, $title =
  * Builds page collection tree
  */
 function _usanetwork_page_collection_node_tree($pcid, $relations, $parent = 0) {
+  $cache = &drupal_static('usanetwork_page_collection_node_load', array());
   $page_collection = array();
   foreach ($relations as $item) {
     if ($item->pcid == $pcid && $item->pnid == $parent) {
@@ -446,6 +665,8 @@ function _usanetwork_page_collection_node_tree($pcid, $relations, $parent = 0) {
         $page->pcid = $item->pcid;
         $page->weight = $item->weight;
         $page->parent = node_load($item->pnid);
+        $page->prepend_parent_path = $item->prepend_parent_path ? true: false;
+        $cache['pages'][$page->node->nid] = $page;
         $page->children = _usanetwork_page_collection_node_tree($pcid, $relations, $item->nid);
         $page_collection[] = $page;
       }
@@ -515,7 +736,7 @@ function _usanetwork_page_collection_node_content_types($content_type) {
 /**
  * Helper functions. Returns list of page collections that have $content_type as child content type
  */
-function _usanetwork_page_collection_by_child_content_type($content_type) {
+function _usanetwork_page_collection_by_child_content_type($content_type, $node = null) {
   $pc_content_types = _usanetwork_page_collection_content_types();
   foreach ($pc_content_types as $pc_content_type => $title) {
     if (!in_array($content_type, array_keys(_usanetwork_page_collection_node_content_types($pc_content_type)))) {
@@ -527,19 +748,50 @@ function _usanetwork_page_collection_by_child_content_type($content_type) {
     return array();
   }
 
-  $result = db_select('node', 'n')
+  $query = db_select('node', 'n')
     ->fields('n', array('nid', 'title'))
-    ->condition('type', array_keys($pc_content_types), 'IN')
-    ->execute()
+    ->condition('type', array_keys($pc_content_types), 'IN');
+
+  if (isset($node) && isset($node->nid)) {
+    $exclude = array(
+      $node->nid => $node->nid,
+    );
+    if (isset($node->page_collection)) {
+      _usanetwork_page_collection_by_child_content_type_exclude_nested($node, $exclude);
+    }
+    if (!empty($exclude)) {
+      $query->condition('nid', $exclude, 'NOT IN');
+    }
+  }
+
+  $result = $query->execute()
     ->fetchAllKeyed();
 
   return $result;
 }
 
 /**
+ * Helper function. Excludes nested page collections.
+ */
+function _usanetwork_page_collection_by_child_content_type_exclude_nested($node, &$exclude) {
+  if (!isset($node->page_collection)) {
+    return;
+  }
+
+  $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($node->page_collection), RecursiveIteratorIterator::SELF_FIRST);
+  foreach ($relations as $relation) {
+    $exclude[$relation->node->nid] = $relation->node->nid;
+    _usanetwork_page_collection_by_child_content_type_exclude_nested($relation->node, $exclude);
+  }
+}
+
+/**
  * Helper function. Returns page collection for a child node
  */
 function _usanetwork_page_collection_by_child($node) {
+  if (!isset($node->nid)) {
+    return false;
+  }
   $pcid = db_select('page_collection_relations', 'pc')
     ->fields('pc', array('pcid'))
     ->condition('nid', $node->nid, '=')
@@ -614,7 +866,20 @@ function _usanetwork_page_collection_sync_fields_save($fields, $type, $nid = 0) 
           'enabled' => $enabled ? 1 : 0,
         ))
         ->execute();
+
+      db_delete('page_collection_field_sync')
+        ->condition('type', $type, '=')
+        ->condition('nid', $nid, '=')
+        ->condition('field_name', array_keys($fields), 'NOT IN')
+        ->execute();
     }
+  }
+}
+
+function _usanetwork_page_collection_rebuild_paths($page_collection) {
+  $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($page_collection->page_collection), RecursiveIteratorIterator::SELF_FIRST);
+  foreach ($relations as $relation) {
+
   }
 }
 

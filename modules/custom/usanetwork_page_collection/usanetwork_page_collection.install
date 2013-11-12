@@ -33,6 +33,13 @@ function usanetwork_page_collection_schema() {
         'not null' => true,
         'default' => 0,
       ),
+      'prepend_parent_path' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 1,
+      ),
       'weight' => array(
         'type' => 'int',
         'unsigned' => false,
@@ -96,6 +103,7 @@ function usanetwork_page_collection_install() {
  * Implements hook_uninstall().
  */
 function usanetwork_page_collection_uninstall() {
+  module_load_include('module', 'usanetwork_page_collection');
   module_load_include('inc', 'usanetwork_page_collection', 'usanetwork_page_collection.field');
 
   // delete fields

@@ -160,6 +160,9 @@ function usanetwork_page_collection_content_type_settings_submit($form, &$form_s
  * Page collection node form.
  */
 function usanetwork_page_collection_node_form($form, &$form_state, $page_collection) {
+  if (!isset($page_collection->page_collection)) {
+    $page_collection = node_load($page_collection->nid, $page_collection->vid, true);
+  }
   $form_state['page_collection'] = $page_collection;
 
   $form['#tree'] = true;
@@ -198,7 +201,7 @@ function usanetwork_page_collection_node_form($form, &$form_state, $page_collect
     $operations[] = l('edit', 'node/' . $relation->node->nid . '/edit', array('query' => array('destination' => 'node/' . $page_collection->nid . '/page_collection')));
     $operations[] = l('delete', 'node/' . $relation->node->nid . '/delete', array('query' => array('destination' => 'node/' . $page_collection->nid . '/page_collection')));
 
-    $form['relations'][] = array(
+    $form['relations'][$relation->id] = array(
       '#depth' => $relations->getDepth(),
       'id' => array(
         '#type' => 'hidden',
@@ -211,6 +214,10 @@ function usanetwork_page_collection_node_form($form, &$form_state, $page_collect
       'pnid' => array(
         '#type' => 'hidden',
         '#value' => $relation->parent ? $relation->parent->nid : 0,
+      ),
+      'prepend_parent_path' => array(
+        '#type' => 'hidden',
+        '#value' => $relation->prepend_parent_path ? 1 : 0,
       ),
       'link' => array(
         '#markup' => l($relation->node->title, 'node/' . $relation->node->nid),
@@ -285,18 +292,25 @@ function usanetwork_page_collection_node_form($form, &$form_state, $page_collect
  */
 function usanetwork_page_collection_node_form_submit($form, &$form_state) {
   $page_collection = $form_state['page_collection'];
-  if (isset($form_state['values']['relations'])) {
-    $relations = $form_state['values']['relations'];
+  $page_collection->original = clone $page_collection;
+  $lang = entity_language('node', $page_collection);
+
+  if (isset($form_state['input']['relations'])) {
+    $relations = $form_state['input']['relations'];
     // update relations
-    foreach ($relations as $relation) {
-      db_update('page_collection_relations')
-        ->fields(array(
-          'pnid' => $relation['pnid'],
-          'weight' => $relation['weight'],
-        ))
-        ->condition('id', $relation['id'], '=')
-        ->execute();
+    $_relations = array();
+    foreach (new RecursiveIteratorIterator(new RelationsRecursiveIterator($page_collection->page_collection), RecursiveIteratorIterator::SELF_FIRST) as $relation) {
+      $_relation = new stdClass();
+      $_relation->id = $relation->id;
+      $_relation->pcid = $relation->pcid;
+      $_relation->pnid = isset($relations[$relation->id]['pnid']) ? $relations[$relation->id]['pnid'] : 0;
+      $_relation->nid = $relation->node->nid;
+      $_relation->weight = $relations[$relation->id]['weight'];
+      $_relation->prepend_parent_path = $relation->prepend_parent_path;
+      $_relations[] = $_relation;
     }
+    $page_collection->page_collection = _usanetwork_page_collection_node_tree($page_collection->nid, $_relations);
+    node_save($page_collection);
   }
 
   // save field sync config
@@ -305,8 +319,13 @@ function usanetwork_page_collection_node_form_submit($form, &$form_state) {
   }
   _usanetwork_page_collection_sync_fields_save($form_state['values']['field_sync']['fields'], $page_collection->type, $page_collection->nid);
 
+  $nids = array($page_collection->nid);
+  $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($page_collection->page_collection), RecursiveIteratorIterator::SELF_FIRST);
+  foreach ($relations as $relation) {
+    $nids[] = $relation->node->nid;
+  }
   // clear cache
-  entity_get_controller('node')->resetCache(array($page_collection->nid));
+  entity_get_controller('node')->resetCache($nids);
 }
 
 /**

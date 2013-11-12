@@ -6,6 +6,35 @@
 function _usanetwork_page_collection_field_bases() {
   $fields = array();
 
+  /* File folder */
+  $field_bases['field_usa_pc_file_folder'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_usa_pc_file_folder',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   /* Content to be displayed on the top of every page */
   $fields['field_usa_pc_overall_content'] = array(
     'active' => 1,
@@ -259,6 +288,51 @@ function _usanetwork_page_collection_field_bases() {
 function _usanetwork_page_collection_field_instances() {
   $field_instances = array();
 
+  $field_instances['field_usa_pc_file_folder'] = array(
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_pc_file_folder',
+    'label' => 'File folder',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+    ),
+  );
+
   $field_instances['field_usa_pc_css'] = array(
     'deleted' => 0,
     'description' => '',
@@ -301,7 +375,6 @@ function _usanetwork_page_collection_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 9,
     ),
   );
 
@@ -326,7 +399,6 @@ function _usanetwork_page_collection_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_table',
-        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -348,7 +420,6 @@ function _usanetwork_page_collection_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 12,
     ),
   );
 
@@ -406,7 +477,6 @@ function _usanetwork_page_collection_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
     ),
   );
 
@@ -452,7 +522,6 @@ function _usanetwork_page_collection_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 7,
     ),
   );
 
@@ -504,7 +573,6 @@ function _usanetwork_page_collection_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
     ),
   );
 
@@ -556,7 +624,6 @@ function _usanetwork_page_collection_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
     ),
   );
 
@@ -608,7 +675,6 @@ function _usanetwork_page_collection_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
     ),
   );
 
@@ -660,7 +726,6 @@ function _usanetwork_page_collection_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
     ),
   );
 

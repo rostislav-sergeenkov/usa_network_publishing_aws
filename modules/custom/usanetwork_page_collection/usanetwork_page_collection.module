@@ -100,6 +100,16 @@ function usanetwork_page_collection_admin_paths() {
 }
 
 /**
+ * Implements hook_entity_info_alter().
+ */
+function usanetwork_page_collection_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['page_collection_resources'] = array(
+    'label' => t('Page collection resources'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
  * Implements hook_node_load().
  */
 function usanetwork_page_collection_node_load($nodes, $types) {

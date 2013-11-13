@@ -14,6 +14,9 @@ function usanetwork_page_collection_theme() {
       'render element' => 'element',
       'file' => 'usanetwork_page_collection.admin.inc',
     ),
+    'usanetwork_page_collection_formatter_table' => array(
+      'variables' => array('items' => NULL),
+    ),
   );
 }
 

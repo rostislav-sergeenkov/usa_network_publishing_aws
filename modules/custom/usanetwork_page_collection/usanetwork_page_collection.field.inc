@@ -1,6 +1,65 @@
 <?php
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function usanetwork_page_collection_field_formatter_info() {
+  return array(
+    'page_collection_resources_table' => array(
+      'label' => t('Resources table'),
+      'field types' => array('file', 'image'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function usanetwork_page_collection_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array(); // Initialize the var
+  $settings = $display['settings']; // get the settings
+
+  switch ($display['type']) {
+    case 'page_collection_resources_table':
+      if (!empty($items)) {
+        // Display all values in a single element..
+        $element[0] = array(
+          '#theme' => 'usanetwork_page_collection_formatter_table',
+          '#items' => $items,
+        );
+      }
+    break;
+  }
+  return $element;
+}
+
+/**
+ * Returns HTML for a file attachments table.
+ */
+function theme_usanetwork_page_collection_formatter_table($variables) {
+  $header = array(t('Attachment'), t('URL'), t('Size'));
+  $rows = array();
+  foreach ($variables['items'] as $delta => $item) {
+    $row = array();
+    $url = file_create_url($item['uri']);
+    if (preg_match('/image\//', $item['filemime'])) {
+      $item['path'] = $item['uri'];
+      $item['style_name'] = 'thumbnail';
+      $row[] = l(theme('image_style', $item), $url, array('html' => true));
+    }
+    else {
+      $row[] = theme('file_link', array('file' => (object) $item));
+    }
+    $row[] = $url;
+    $row[] = format_size($item['filesize']);
+    $rows[] = $row;
+  }
+
+  return empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows));
+}
+
+
+/**
  * Returns field bases data
  */
 function _usanetwork_page_collection_field_bases() {

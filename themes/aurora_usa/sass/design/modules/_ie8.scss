@@ -56,32 +56,36 @@
     }
     @include breakpoint($bp-grid-show-2-fence) {
       li {
-        margin:0 14px 15px 0;
+        margin:0 7px 15px 0;
       }
       li.odd {
         margin:0 0 15px 0;
       }
       li.nth1 {
-        margin-right:315px;
+        margin-right:300px;
+      }
+      li.nth3 {
+        margin:0 0 15px 0px;
       }
     }
     @include breakpoint($bp-grid-show-3-fence) {
       li {
         float:left;
-        margin:0 14px 15px 0;
+        margin:0 9px 15px 0;
         clear: none;
       }
       li.odd {
-        margin:0 14px 15px 0;
+        margin:0 9px 15px 0;
       }
       li.nth3n5 {
+        float:right !important;
         margin:0 0 15px 0;
       }
       li.nth1 {
-      margin-right:14px;
+      margin:0 9px 15px 0;
       }
       li.nth2 {
-        margin:0 314px 15px 0;
+        margin:0 300px 15px 0;
       }
     }
     @include breakpoint($bp-grid-show-4) {
@@ -98,10 +102,10 @@
         margin:0 0 15px 0;
       }
       li.nth1 {
-      margin-right:10px;
+      margin-right:0 10px 15px 0;
       }
       li.nth2 {
-        margin:0 310px 15px 0;
+        margin:0 300px 15px 0;
       }
       li {
         .asset-img {
@@ -127,8 +131,7 @@
           }
         }
       }
-      /*
-      li:first-child {
+      /* li:first-child {
         width: 615px;
         height: 254px;
         .asset-img {
@@ -137,8 +140,7 @@
         .caption-fields-wrapper {
           width: 613px;
         }
-      }
-      */
+      } */
       li.nth2 {
         margin:0 10px 15px 0;
       }
@@ -150,7 +152,7 @@
         margin-left:0;
       }
       li.nth4n7 {
-        float:right !important;
+       float:right !important;
         margin:0 0 15px 0;
       }
     }
@@ -188,11 +190,41 @@
     .video-promo-panel {
       li {
         display:inline-block;
-        margin:0 3px 11px 0;
+        margin:0 1px 11px 0;
+      }
+      @include breakpoint($bp-grid-show-3-fence) {
+        li {
+          margin:0 3px 11px 0;
+        }
       }
     }
     .expandable-toggle-wrap {
       margin-bottom:10px;
+    }
   }
+  .panel-five {
+    .view-usa-cast.view-id-usa_cast{
+      width:221px !important;
+    }
+  }
+  .iframe-container.game {
+    width:994px;
+    height:1008px;
+    overflow:hidden;
+    iframe {
+      margin:-2px 0 0 -1px !important;
+    }
+  }
+  .panel-twocol-nested-right-twocol .panel-four {
+    .pane-dart-dart-tag-300x250-scr {
+      margin-bottom: 15px;
+    }
+    @include breakpoint(770px) {
+      width: 300px;
+      .pane-2, .pane-usa-gallery-panel-pane-2 {
+        @include float(none);
+        margin-right: 0px;
+      }
+    }
   }
 }

@@ -570,12 +570,9 @@ function usanetwork_page_collection_node_view($node, $view_mode, $langcode) {
     return;
   }
   if (isset($node->page_collection_parent) || isset($node->page_collection)) {
-    $page_collection = isset($node->page_collection) ? clone $node : clone $node->page_collection_parent;
-    if (isset($page_collection->page_collection)) {
-      unset($page_collection->page_collection);
-    }
+    $page_collection = isset($node->page_collection) ? $node : $node->page_collection_parent;
     $level = 0;
-    while (isset($page_collection->page_collection_parent) || isset($page_collection->page_collection)) {
+    do {
       // Attach Javascript and CSS files
       $attach_files = array();
       $attach_files['js'] = field_get_items('node', $page_collection, 'field_usa_pc_javascript', $langcode);
@@ -635,14 +632,15 @@ function usanetwork_page_collection_node_view($node, $view_mode, $langcode) {
           $node->content['afterall_content'][$page_collection->nid]['#markup'] .= $content['value'];
         }
       }
-      if (isset($page_collection->page_collection)) {
-        unset($page_collection);
-      }
-      else {
+
+      if (isset($page_collection->page_collection_parent)) {
         $page_collection = clone $page_collection->page_collection_parent;
       }
+      else {
+        $page_collection = false;
+      }
       $level++;
-    }
+    } while ($page_collection);
   }
 }
 

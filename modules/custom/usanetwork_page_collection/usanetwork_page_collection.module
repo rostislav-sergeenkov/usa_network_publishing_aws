@@ -905,13 +905,6 @@ function _usanetwork_page_collection_sync_fields_save($fields, $type, $nid = 0) 
   }
 }
 
-function _usanetwork_page_collection_rebuild_paths($page_collection) {
-  $relations = new RecursiveIteratorIterator(new RelationsRecursiveIterator($page_collection->page_collection), RecursiveIteratorIterator::SELF_FIRST);
-  foreach ($relations as $relation) {
-
-  }
-}
-
 class RelationsRecursiveIterator implements RecursiveIterator {
   private $_data;
   private $_position = 0;

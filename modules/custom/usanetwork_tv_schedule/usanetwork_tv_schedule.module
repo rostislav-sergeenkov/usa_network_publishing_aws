@@ -140,7 +140,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
-      $episode_name_clean = check_plain($episode[0]);
+      $episode_name_clean = check_plain(trim($episode[0]));
       $episode_name_clean = ucwords(strtolower($episode_name_clean));
       $arrow = '';
       if (!empty($nid)) {
@@ -197,7 +197,7 @@ function usanetwork_tv_schedule_on_now_block() {
     $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $tv_show_name = $tv_show;
     $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
-    $episode_name_clean = check_plain($episode[0]);
+    $episode_name_clean = check_plain(trim($episode[0]));
     $episode_name_clean = ucwords(strtolower($episode_name_clean));
 
     $arrow = '';
@@ -521,13 +521,13 @@ function usanetwork_on_now_social_block() {
 function usanetwork_on_now_social_block_content($node, $tab) {
   $output = '';
   if($tab == 'twitter'){
-    $output .= usanetwork_social_show_on_now_twitter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_twitter_response($node, 3);
   }
   if($tab == 'chatter'){
-    $output .= usanetwork_social_show_on_now_chatter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_chatter_response($node, 3);
   }
   if($tab == 'facebook'){
-    $output .= usanetwork_social_show_on_now_facebook_response($node, 2);
+    $output .= usanetwork_social_show_on_now_facebook_response($node, 3);
   }
   return $output;
 }
@@ -607,7 +607,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     //$output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   // Social Show block
-  $output .= usanetwork_social_show_on_now_box($node, 2);
+  $output .= usanetwork_social_show_on_now_box($node, 3);
 
 
   return $output;

@@ -26,13 +26,13 @@ body {
     .ie9 &, .ie8 & {
       display: none;
     }
-    .active-item {
+    .active {
       display: block;
     }
   }
 } 
 
-.ie9 [id="personalization-drawer"].active-item {
+.ie9 [id="personalization-drawer"].active {
   display: block;
 } 
 

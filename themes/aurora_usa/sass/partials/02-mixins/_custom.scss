@@ -54,3 +54,20 @@
     height: nth($size, 2);
   }
 }
+
+// set the styling for the on-now / up-next social block navigation
+@mixin on-now-panel-social-navigation() {
+  background-attachment : scroll;
+  background-clip : border-box;
+  background-color : rgba(0, 0, 0, 0);
+  background-image : url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png");
+  background-origin : padding-box;
+  background-position : 0 -2792px;
+  background-repeat : no-repeat;
+  background-size : auto auto;
+  float : left;
+  text-indent : -9999px;
+  width:32px;
+  height:32px;
+}
+

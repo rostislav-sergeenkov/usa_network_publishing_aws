@@ -22,6 +22,9 @@
       top: -32px;
       padding-bottom: 8px;
     }
+    .ie8 & {
+      top: -36px;
+    }
     li {
       margin: 0 5px;
       a {

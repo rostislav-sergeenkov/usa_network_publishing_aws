@@ -1,7 +1,77 @@
 .ie8 {
   img {
-    width: inherit;
+/*    width: inherit; */
     max-width: 100%;
     height: auto;
+  }
+  .mega-sub-nav-container {
+    display: none;
+    &.active-item {
+      display: block;
+      background-color:#000;
+      filter: alpha(opacity=90);
+    }
+  }
+  .region-footer {
+    li {
+      float:left;
+    }
+  }
+  .schedule-header {
+    .schedule-header-navigation {
+      .previous-week, .next-week {
+        text-indent: 0px;
+        background-image:none;
+        text-align:center;
+        line-height:38px;
+        font-size:26px;
+        font-weight:bold;
+        color: #878787;
+      }
+    }
+  }
+  #on-now-episode {
+    line-height:62px !important;
+  }
+  .block-usanetwork-video {
+    .grid-item {
+      display: inline-block;
+      float:none;
+      margin: 0 3px 11px 0 !important;
+    }
+  }
+  .expandable-container.promo-ads-panel {
+    .pane-content {
+      ul.field-name-field-usa-tv-promo {
+        li {
+          float: none;
+          display: inline-block;
+          margin: 0 3px 11px 0 !important;
+        }
+      }
+    }
+  }
+  .mega-sub-nav {
+    ul {
+      column-count: 3;
+      column-gap: 32px;
+    }
+    .globalnav-promos {
+      .node-global-nav-image {
+        display: inline-block;
+        width: 23%;
+        margin-left:1%;
+      }
+      .node-global-nav-image:first-child {
+        margin-left:0;
+      }
+    }
+  }
+  .region-footer {
+    #footer-links {
+      a {
+        width:100px;
+      }
+    }
   }
 }

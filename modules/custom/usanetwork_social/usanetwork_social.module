@@ -1493,7 +1493,7 @@ function _usanetwork_social_notify_ideamelt($node) {
   }
 }
 
-/*
+
 function usanetwork_social_show_on_now_box($node, $numCommentsToShow=2) {
 if (!path_is_admin(current_path())) {
 
@@ -1508,9 +1508,11 @@ if (!path_is_admin(current_path())) {
   if (!isset($node->nid)) {
   drupal_not_found();
   }
-
   $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
   $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
+
+  // GET URL ALIAS FOR THE NODE
+  $alias = drupal_get_path_alias('node/'.$node->nid);
 
   // SET VARIABLES THAT DETERMINE WHETHER TO SHOW EACH FEED TYPE
   $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
@@ -1650,8 +1652,16 @@ if (!path_is_admin(current_path())) {
                  <div class="echo-item-childrenByCurrentActorLive"></div>
                 </div>';
               }
-            '</span></div></div></div>
-          </div></div>';
+            $output .= '</span></div></div></div>';
+            $output .= '<div id="usanetwork_on_now_social_section_join">';
+            $output .= '<div id="usanetwork_social_section_join">';
+            $output .= '<span id="join-tweets" class = "onnow-social-section-join" style = "display:block;"><a href = "/'.$alias.'/social/tweets">Check out more tweets<span class="usanetwork_social_join_msg"></span></a></span>';
+            $output .= '<span id="join-chatter" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/chat-with-fans">Go chat with fans<span class="usanetwork_social_join_msg"></span></a></span>';
+            $output .= '<span id="join-buzz" class = "onnow-social-section-join" style = "display:none;"><a href = "/'.$alias.'/social/latest">Get more social buzz<span class="usanetwork_social_join_msg"></span></a></span>';
+            $output .= '<span class="usanetwork_social_pointer_image"></span>';
+            $output .= '</div>';
+            $output .= '</div>';
+            $output .= '</div>';
         }
       return $output;
     }
@@ -1993,4 +2003,3 @@ if (!path_is_admin(current_path())) {
     }
   }
 }
-*/

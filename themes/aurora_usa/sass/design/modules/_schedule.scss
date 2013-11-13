@@ -222,9 +222,10 @@ a.prev-day {
   margin: 0 -15px;
   table {
     table-layout: fixed;
+    border-top: $gray-med solid 1px;
   }
   thead {
-    background-color: $gray-med;
+    background-color: $gray-dark;
     tr {
       display: none;
       @include breakpoint($bp-schedule-table-wide) {
@@ -232,12 +233,11 @@ a.prev-day {
       }
     }
     th {
-      background: $gray-med;
       padding-top: 6px;
       padding-bottom: 5px;
       padding-left: 4px;
-      border-bottom: $gray-dark solid 1px;
-      border-right: $gray-dark solid 1px;
+      border-bottom: $gray-med solid 1px;
+      border-right: $gray-med solid 1px;
       color: white;
       font-size: 9px;
       /* @include box-sizing(content-box); */
@@ -256,13 +256,13 @@ a.prev-day {
     padding-top: 6px;
     padding-bottom: 5px;
     padding-left: 4px;
-    border-bottom: $gray-dark solid 1px;
-    border-right: $gray-dark solid 1px;
+    border-bottom: $gray-med solid 1px;
+    border-right: $gray-med solid 1px;
     color: $gray-light-gamma;
     font-size: 9px;
   }
   tr {
-    background: $gray-med;
+    background: $gray-dark;
     border: none;
   }
   .show-time {
@@ -341,6 +341,7 @@ a.prev-day {
     border:0;
     table {
       table-layout: auto;
+      border-top-width: 0;
     }
     .program {
       width: 40%;

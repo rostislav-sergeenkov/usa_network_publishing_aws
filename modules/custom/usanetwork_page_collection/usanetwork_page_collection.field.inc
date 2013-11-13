@@ -66,7 +66,7 @@ function _usanetwork_page_collection_field_bases() {
   $fields = array();
 
   /* File folder */
-  $field_bases['field_usa_pc_file_folder'] = array(
+  $fields['field_usa_pc_file_folder'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,

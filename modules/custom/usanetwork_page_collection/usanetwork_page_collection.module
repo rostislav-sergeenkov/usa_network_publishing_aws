@@ -566,64 +566,82 @@ function usanetwork_page_collection_path_form_element_validate($element, &$form_
  * Implements hook_node_view().
  */
 function usanetwork_page_collection_node_view($node, $view_mode, $langcode) {
-  if (isset($node->page_collection_parent)) {
-    $page_collection = $node->page_collection_parent;
-    // Attach Javascript and CSS files
-    $attach_files = array();
-    $attach_files['js'] = field_get_items('node', $page_collection, 'field_usa_pc_javascript', $langcode);
-    if (!$attach_files['js']) {
-      unset($attach_files['js']);
+  if ($view_mode == 'page_collection_resources') {
+    return;
+  }
+  if (isset($node->page_collection_parent) || isset($node->page_collection)) {
+    $page_collection = isset($node->page_collection) ? clone $node : clone $node->page_collection_parent;
+    if (isset($page_collection->page_collection)) {
+      unset($page_collection->page_collection);
     }
-    $attach_files['css'] = field_get_items('node', $page_collection, 'field_usa_pc_css', $langcode);
-    if (!$attach_files['css']) {
-      unset($attach_files['css']);
-    }
-    foreach ($attach_files as $type => $files) {
-      foreach ($files as $file) {
-        $node->content['#attached'][$type][] = file_create_url($file['uri']);
+    $level = 0;
+    while (isset($page_collection->page_collection_parent) || isset($page_collection->page_collection)) {
+      // Attach Javascript and CSS files
+      $attach_files = array();
+      $attach_files['js'] = field_get_items('node', $page_collection, 'field_usa_pc_javascript', $langcode);
+      if (!$attach_files['js']) {
+        unset($attach_files['js']);
       }
-    }
+      $attach_files['css'] = field_get_items('node', $page_collection, 'field_usa_pc_css', $langcode);
+      if (!$attach_files['css']) {
+        unset($attach_files['css']);
+      }
+      foreach ($attach_files as $type => $files) {
+        foreach ($files as $file) {
+          $node->content['#attached'][$type][] = file_create_url($file['uri']);
+        }
+      }
 
-    // Attach inline Javascript and CSS
-    $attach_inline = array();
-    $attach_inline['js'] = field_get_items('node', $page_collection, 'field_usa_pc_javascript_inline', $langcode);
-    if (!$attach_inline['js']) {
-      unset($attach_inline['js']);
-    }
-    $attach_inline['css'] = field_get_items('node', $page_collection, 'field_usa_pc_css_inline', $langcode);
-    if (!$attach_inline['css']) {
-      unset($attach_inline['css']);
-    }
-    foreach ($attach_inline as $type => $items) {
-      foreach ($items as $item) {
-        $node->content['#attached'][$type][] = array(
-          'data' => $item['value'],
-          'type' => 'inline',
+      // Attach inline Javascript and CSS
+      $attach_inline = array();
+      $attach_inline['js'] = field_get_items('node', $page_collection, 'field_usa_pc_javascript_inline', $langcode);
+      if (!$attach_inline['js']) {
+        unset($attach_inline['js']);
+      }
+      $attach_inline['css'] = field_get_items('node', $page_collection, 'field_usa_pc_css_inline', $langcode);
+      if (!$attach_inline['css']) {
+        unset($attach_inline['css']);
+      }
+      foreach ($attach_inline as $type => $items) {
+        foreach ($items as $item) {
+          $node->content['#attached'][$type][] = array(
+            'data' => $item['value'],
+            'type' => 'inline',
+          );
+        }
+      }
+
+      // Add overall and afterall content
+      $overall = field_get_items('node', $page_collection, 'field_usa_pc_overall_content', $langcode);
+      if ($overall) {
+        $node->content['overall_content']['#weight'] = -100;
+        $node->content['overall_content'][$page_collection->nid] = array(
+          '#weight' => -$level,
+          '#markup' => '',
         );
+        foreach ($overall as $content) {
+          $node->content['overall_content'][$page_collection->nid]['#markup'] .= $content['value'];
+        }
       }
-    }
 
-    // Add overall and afterall content
-    $overall = field_get_items('node', $page_collection, 'field_usa_pc_overall_content', $langcode);
-    if ($overall) {
-      $node->content['overall_content'] = array(
-        '#weight' => -100,
-        '#markup' => '',
-      );
-      foreach ($overall as $content) {
-        $node->content['overall_content']['#markup'] .= $content['value'];
+      $afterall = field_get_items('node', $page_collection, 'field_usa_pc_afterall_content', $langcode);
+      if ($afterall) {
+        $node->content['afterall_content']['#weight'] = 100;
+        $node->content['afterall_content'][$page_collection->nid] = array(
+          '#weight' => $level,
+          '#markup' => '',
+        );
+        foreach ($afterall as $content) {
+          $node->content['afterall_content'][$page_collection->nid]['#markup'] .= $content['value'];
+        }
       }
-    }
-
-    $afterall = field_get_items('node', $page_collection, 'field_usa_pc_afterall_content', $langcode);
-    if ($afterall) {
-      $node->content['afterall_content'] = array(
-        '#weight' => 100,
-        '#markup' => '',
-      );
-      foreach ($afterall as $content) {
-        $node->content['afterall_content']['#markup'] .= $content['value'];
+      if (isset($page_collection->page_collection)) {
+        unset($page_collection);
       }
+      else {
+        $page_collection = clone $page_collection->page_collection_parent;
+      }
+      $level++;
     }
   }
 }

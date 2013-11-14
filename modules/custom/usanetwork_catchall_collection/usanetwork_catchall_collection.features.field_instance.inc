@@ -285,7 +285,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'otf mp3 htf pdf swf',
+      'file_extensions' => 'otf mp3 htf pdf swf txt html htm flv xml ini',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),

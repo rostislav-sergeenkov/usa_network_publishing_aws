@@ -207,12 +207,68 @@
       width:221px !important;
     }
   }
-  .iframe-container.game {
+  .borealis.image-style-episode_wide.borealis-js {
+    display: none;
+  }
+  .field-name-field-tv-cover-media .field-item {
+    img {
+      width:100%;
+    }
+  }
+  #block-views-usa-shows-block-1 .carousel-item figure {
+    img {
+      width:100%;
+    }
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a .caption-overlay {
+    position:relative;
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a .caption-overlay:after {
+    position:absolute;
+    right:0px;
+    top:-169px;
+    width:54px;
+    height:50px;
+    content : ' ';
+    background:url('../images/locked-video.png') center top no-repeat;
+    z-index:10;
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a:after{
+    content : ' ';
+  }
+  .usa-secondary-menu .shows > li.first > span:after,
+  .usa-secondary-menu .shows > li.first > span:hover:after {
+    @extend .icons-selector_arrows;
+    content: ' ';
+    display: block;
+    width: image-width('icons/selector_arrows.png');
+    height: image-height('icons/selector_arrows.png');
+  }
+  .usa-secondary-menu .item-list .item-list ul > li {
+    display:block;
+  }
+  .featured-asset.node-usa-tve-video .video-player-wrapper a:after {
+    content: ' ';
+  }
+  .featured-asset.node-usa-tve-video .video-player-wrapper .locked-msg {
+    padding-top:118px;
+    background:url('../images/key-in-circle.png') center top no-repeat;
+  }
+  #block-views-usa-cast-block-2 .icons-social a.person-twitter.usasocial-twitter {
+      @include replace-text-with-dimensions('icons/follow-twitter-v2.png');
+      width:image-width('icons/follow-twitter-v2.png');
+      height:image-height('icons/follow-twitter-v2.png');
+    &:hover {
+      @include replace-text-with-dimensions('icons/follow-twitter-hover-v2.png');
+    }
+  }
+  #game-wrap .iframe-container.game {
     width:994px;
     height:1008px;
+    margin:0 auto;
     overflow:hidden;
     iframe {
-      margin:-2px 0 0 -1px !important;
+      margin:-2px 0 0 -2px !important;
     }
   }
   .panel-twocol-nested-right-twocol .panel-four {

@@ -883,3 +883,35 @@ function aurora_usa_field__field_target($vars) {
   $target = $vars['items'][0]['value'];
   return $target;
 }
+/*function aurora_usa_field__field_video_thumbnail($variables) {
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>';
+    $output .= drupal_render($item);
+    $output .= '<!--[if (IE 8) & (!IEMobile)]>';
+    $file = $item['file'];
+    unset($file['#theme']);
+    $_vars = array();
+    foreach ($file as $name => $value) {
+      $_vars[str_replace('#', '', $name)] = $value;
+    }
+    $output .= theme_image_style($_vars);
+    $output .= '<![endif]-->';
+    $output .= '</div>';
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}*/

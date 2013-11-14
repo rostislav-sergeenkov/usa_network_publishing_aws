@@ -16,7 +16,6 @@
         $('li:nth-of-type(4n+6)', panel).addClass('nth4n6');
         $('li:nth-of-type(4n+7)', panel).addClass('nth4n7');
       }
-      $('iframe').attr("frameBorder", 0).attr("marginheight", 0).attr("marginwidth", 0).attr("hspace", 0).attr("vspace", 0).attr('border', 'none').css("border-collapse", "1");
     },
 
   };

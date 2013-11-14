@@ -96,7 +96,7 @@ if ($node->type == 'usa_tve_video') {
       <div id="player"><?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?></div>
     <?php endif; ?>
   </div>
- <!--  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?> -->
+ <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?>
   <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
     <div class="tve-help-link"><img src="/sites/usanetwork/themes/aurora_usa/images/info_gray.png" />Why do I have to sign in?</div>
   <?php endif; ?>

@@ -581,6 +581,9 @@ you can use the generic selector below, but it's slower:
   height: 34px;
   display: inline-block;
 }
+.ie8 #logo a {
+  position: relative;
+}
 #logo a {
   color: white;
 }
@@ -915,6 +918,9 @@ you can use the generic selector below, but it's slower:
     -moz-filter: drop-shadow(#414141 0 -2px 0);
     filter: drop-shadow(#414141 0 -2px 0);
   }
+  .ie8 .tv-show-menu-trigger:after {
+    display: none;
+  }
 }
 
 #tv-show-menu li {
@@ -1067,6 +1073,28 @@ you can use the generic selector below, but it's slower:
   #tv-show-menu li .item-list {
     text-transform: none;
   }
+}
+.ie8 #tv-show-menu:after {
+  position: absolute;
+  content: "\0020";
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid 14px;
+  border-color: transparent transparent black transparent;
+  border-top: none;
+  bottom: -1px;
+  left: 165px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 105;
+  -webkit-filter: drop-shadow(#414141 0 -2px 0);
+  -moz-filter: drop-shadow(#414141 0 -2px 0);
+  filter: drop-shadow(#414141 0 -2px 0);
 }
 
 .globalnav-promos {

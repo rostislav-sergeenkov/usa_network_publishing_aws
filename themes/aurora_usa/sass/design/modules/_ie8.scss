@@ -207,7 +207,8 @@
       width:221px !important;
     }
   }
-  .borealis.image-style-episode_wide.borealis-js {
+  .borealis.image-style-episode_wide.borealis-js,
+  .borealis.image-style-video_full.borealis-js {
     display: none;
   }
   .field-name-field-tv-cover-media .field-item {
@@ -251,7 +252,7 @@
     content: ' ';
   }
   .featured-asset.node-usa-tve-video .video-player-wrapper .locked-msg {
-    padding-top:118px;
+    padding-top:100px;
     background:url('../images/key-in-circle.png') center top no-repeat;
   }
   #block-views-usa-cast-block-2 .icons-social a.person-twitter.usasocial-twitter {
@@ -282,5 +283,187 @@
         margin-right: 0px;
       }
     }
+  }
+
+  .node-type-catchall-page {
+    .tiles {
+      margin:0 auto;
+      width:300px;
+      .ad {
+        float:left;
+        clear:none;
+        width:300px;
+        height:50%;
+        margin:0 0 8px 0;
+      }
+      .upcoming-movie {
+        float: left;
+        clear: none;
+        width:146px;
+        height:126px;
+        margin:0 4px 8px 0;
+        .meta {
+          padding:4px 8px 3px;
+          h2 {
+            font-size:10px;
+            line-height:13px;
+            margin-bottom:1px;
+          }
+          h3 {
+            font-size:8px;
+            line-height:12px;
+          }
+        }
+      }
+      @include breakpoint($bp-home-2-fence) {
+        width: 615px;
+        @include layout(2, .048) {
+          .a-spot {
+            height: 350px;
+            width: 615px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 2);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth2n3 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth2n4 {
+              @include grid-span(1, 2);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($bp-home-3-fence) {
+        width: 930px;
+        @include layout(3, .048) {
+          .a-spot {
+            width: 930px;
+            height: 378px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 3);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth3 {
+              @include grid-span(1, 2);
+            }
+            &.nth3n4 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth3n5 {
+              @include grid-span(1, 2);
+            }
+            &.nth3n6 {
+              @include grid-span(1, 3);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($bp-home-widest) {
+        width: 1245px;
+        padding-top: 0;
+        @include layout(4, .048) {
+          .a-spot {
+            height: 506px;
+            width: 1245px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 4);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth3 {
+              @include grid-span(1, 2);
+            }
+            &.nth4 {
+              @include grid-span(1, 3);
+            }
+            &.nth4n5 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth4n6 {
+              @include grid-span(1, 2);
+            }
+            &.nth4n7 {
+              @include grid-span(1, 3);
+            }
+            &.nth4n8 {
+              @include grid-span(1, 4);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #utilities .block-usanetwork-showpages .breadcrumb {
+    float:none;
+    display: inline-block;
+  }
+  .featured-asset .video-player-wrapper img {
+    width:100%;
   }
 }

@@ -78,27 +78,27 @@ $css = '
 
 if ((isset($line_1_color)) && ($line_1_color != '&nbsp;')) {
   $css .= '  
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-title {
   color: ' . $line_1_color . ';
 }
 ';
 }
 if ((isset($line_2_color)) && ($line_2_color != '&nbsp;')) {
   $css .= '
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
   color: ' . $line_2_color . ';
 } 
 ';
 }
 if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
   $css .= '
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-episode-title {
   color: ' . $line_3_color . ';
 }  
 ';
@@ -107,9 +107,9 @@ if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
 if ((isset($line_1_mobile_fontsize)) && ($line_1_mobile_fontsize != '&nbsp;')) {
   $css .= '
 @media (max-width: 644px) {
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-title {
   font-size: ' . $line_1_mobile_fontsize . 'px;
 }
 }
@@ -118,9 +118,9 @@ if ((isset($line_1_mobile_fontsize)) && ($line_1_mobile_fontsize != '&nbsp;')) {
 if ((isset($line_2_mobile_fontsize)) && ($line_2_mobile_fontsize != '&nbsp;')) {
   $css .= '
 @media (max-width: 644px) {
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
   font-size: ' . $line_2_mobile_fontsize . 'px;
 }
 }
@@ -129,9 +129,9 @@ if ((isset($line_2_mobile_fontsize)) && ($line_2_mobile_fontsize != '&nbsp;')) {
 if ((isset($line_3_mobile_fontsize)) && ($line_3_mobile_fontsize != '&nbsp;')) {
   $css .= '
 @media (max-width: 644px) {
-.aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
-.aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+.aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-episode-title,
+.aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-episode-title {
   font-size: ' . $line_3_mobile_fontsize . 'px;
 }
 }
@@ -141,9 +141,9 @@ if ((isset($line_3_mobile_fontsize)) && ($line_3_mobile_fontsize != '&nbsp;')) {
 if ((isset($line_1_tabletportrait_fontsize)) && ($line_1_tabletportrait_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 645px) and (max-width: 959px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-title {
     font-size: ' . $line_1_tabletportrait_fontsize . 'px;
   }
 }
@@ -152,9 +152,9 @@ if ((isset($line_1_tabletportrait_fontsize)) && ($line_1_tabletportrait_fontsize
 if ((isset($line_2_tabletportrait_fontsize)) && ($line_2_tabletportrait_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 645px) and (max-width: 959px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
     font-size: ' . $line_2_tabletportrait_fontsize . 'px;
   }
 }
@@ -163,9 +163,9 @@ if ((isset($line_2_tabletportrait_fontsize)) && ($line_2_tabletportrait_fontsize
 if ((isset($line_3_tabletportrait_fontsize)) && ($line_3_tabletportrait_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 645px) and (max-width: 959px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-episode-title {
     font-size: ' . $line_3_tabletportrait_fontsize . 'px;
   }
 }
@@ -175,9 +175,9 @@ if ((isset($line_3_tabletportrait_fontsize)) && ($line_3_tabletportrait_fontsize
 if ((isset($line_1_tabletlandscape_fontsize)) && ($line_1_tabletlandscape_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 960px) and (max-width: 1274px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-title,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-title,
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-title {
     font-size: ' . $line_1_tabletlandscape_fontsize . 'px;
   }
 }
@@ -186,9 +186,9 @@ if ((isset($line_1_tabletlandscape_fontsize)) && ($line_1_tabletlandscape_fontsi
 if ((isset($line_2_tabletlandscape_fontsize)) && ($line_2_tabletlandscape_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 960px) and (max-width: 1274px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-show-time,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-show-time 
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-show-time {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
     font-size: ' . $line_2_tabletlandscape_fontsize . 'px;
   }
 }
@@ -197,9 +197,9 @@ if ((isset($line_2_tabletlandscape_fontsize)) && ($line_2_tabletlandscape_fontsi
 if ((isset($line_3_tabletlandscape_fontsize)) && ($line_3_tabletlandscape_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 960px) and (max-width: 1274px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .episodic-episode-title,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap .episodic-episode-title,
-  .aspot-node-' . $nodeid . ' a:visited .meta-wrap .episodic-episode-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-episode-title,
+  .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-episode-title {
     font-size: ' . $line_3_tabletlandscape_fontsize . 'px;
   }
 }
@@ -209,7 +209,7 @@ if ((isset($line_3_tabletlandscape_fontsize)) && ($line_3_tabletlandscape_fontsi
 if ((isset($line_1_fontsize)) && ($line_1_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 1275px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-show-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .meta .episodic-show-title {
     font-size: ' . $line_1_fontsize . 'px;
   }
 }
@@ -218,7 +218,7 @@ if ((isset($line_1_fontsize)) && ($line_1_fontsize != '&nbsp;')) {
 if ((isset($line_2_fontsize)) && ($line_2_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 1275px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-show-time {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .meta .episodic-show-time {
     font-size: ' . $line_2_fontsize . 'px;
   }
 }
@@ -227,7 +227,7 @@ if ((isset($line_2_fontsize)) && ($line_2_fontsize != '&nbsp;')) {
 if ((isset($line_3_fontsize)) && ($line_3_fontsize != '&nbsp;')) {
   $css .= '
 @media (min-width: 1275px) {
-  .aspot-node-' . $nodeid . ' a .meta-wrap .meta .episodic-episode-title {
+  .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .meta .episodic-episode-title {
     font-size: ' . $line_3_fontsize . 'px;
   }
 }
@@ -276,7 +276,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
      <?php if ($line_1_image && $line_1_image !== '&nbsp;'): ?>
       <div class="show-title-image"><?php print $line_1_image; ?></div>
     <?php endif; ?>
-    <div class="meta-wrap">
+    <div class="meta-wrap episodic">
       <div class="meta">
       <?php if (!$line_1_image || $line_1_image == '&nbsp;'): ?>
         <?php if ($line_1_tite && $line_1_tite !== '&nbsp;'): ?>

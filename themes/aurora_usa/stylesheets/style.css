@@ -6958,7 +6958,7 @@ body.person-page #main {
   background-position: 21px 40%;
   background-size: auto 50%;
   background-repeat: no-repeat;
-  overflow: visible !important;
+  overflow: hidden;
 }
 @media (min-width: 640px) {
   .no-font-feature-settings #on-now {
@@ -7012,6 +7012,16 @@ body.person-page #main {
     top: 26px;
     margin-left: -16px;
     border-width: 6px 8px 6px 0;
+  }
+}
+.no-font-feature-settings #on-now.trigger:before {
+  top: 15px;
+  margin-left: -9px;
+}
+@media (min-width: 640px) {
+  .no-font-feature-settings #on-now.trigger:before {
+    top: 26px;
+    margin-left: -16px;
   }
 }
 
@@ -8221,20 +8231,63 @@ body.person-page #main {
   position: absolute;
   color: white;
   z-index: 1;
+  top: 95px;
+  left: 0;
+  padding-left: 15px;
+  text-align: left;
+}
+.usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
+  top: 115px;
+  padding-left: 35px;
+}
+.ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
+  top: 27%;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .aspot .meta-wrap {
+    top: 140px;
+    padding-left: 25px;
+  }
+  .ie9 .usa-tv-show .aspot .meta-wrap {
+    top: 140px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .aspot .meta-wrap {
+    top: 115px;
+    padding-left: 35px;
+  }
+  .ie9 .usa-tv-show .aspot .meta-wrap {
+    top: 115px;
+  }
+}
+@media (min-width: 1275px) {
+  .aspot .meta-wrap {
+    top: 165px;
+    padding-left: 50px;
+  }
+  .ie9 .usa-tv-show .aspot .meta-wrap {
+    top: 165px;
+  }
+}
+.aspot .meta-wrap.episodic {
+  position: absolute;
+  color: white;
+  z-index: 1;
   top: 163px;
   bottom: 0;
   left: 0;
   padding-left: 16px;
   text-align: left;
 }
-.usa-adrails .aspot .meta-wrap, .ie9 .aspot .meta-wrap, .ie8 .aspot .meta-wrap {
+.usa-adrails .aspot .meta-wrap.episodic, .ie9 .aspot .meta-wrap.episodic, .ie8 .aspot .meta-wrap.episodic {
   top: 171px;
   padding-left: 16px;
 }
-.ie9 .usa-tv-show .aspot .meta-wrap, .ie8 .usa-tv-show .aspot .meta-wrap {
+.ie9 .usa-tv-show .aspot .meta-wrap.episodic, .ie8 .usa-tv-show .aspot .meta-wrap.episodic {
   top: 27%;
 }
-.aspot .meta-wrap .episodic-show-title {
+.aspot .meta-wrap.episodic .episodic-show-title {
   margin: 0 0 1px 0;
   color: #fff;
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
@@ -8243,7 +8296,7 @@ body.person-page #main {
   line-height: 1;
   letter-spacing: .01em;
 }
-.aspot .meta-wrap .episodic-show-time {
+.aspot .meta-wrap.episodic .episodic-show-time {
   margin: 0 0 5px 0;
   color: #b5b5b5;
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
@@ -8252,7 +8305,7 @@ body.person-page #main {
   line-height: 1;
   letter-spacing: .01em;
 }
-.aspot .meta-wrap .episodic-episode-title {
+.aspot .meta-wrap.episodic .episodic-episode-title {
   position: relative;
   margin: 0;
   color: #fff;
@@ -8263,62 +8316,62 @@ body.person-page #main {
   letter-spacing: .01em;
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .aspot .meta-wrap {
+  .aspot .meta-wrap.episodic {
     top: 240px;
     padding-left: 26px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 240px;
   }
-  .aspot .meta-wrap .episodic-show-title {
+  .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 2px 0;
     font-size: 24px;
   }
-  .aspot .meta-wrap .episodic-show-time {
+  .aspot .meta-wrap.episodic .episodic-show-time {
     margin: 0 0 8px 0;
     font-size: 18px;
   }
-  .aspot .meta-wrap .episodic-episode-title {
+  .aspot .meta-wrap.episodic .episodic-episode-title {
     font-size: 14px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .aspot .meta-wrap {
+  .aspot .meta-wrap.episodic {
     top: 256px;
     padding-left: 35px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 256px;
   }
-  .aspot .meta-wrap .episodic-show-title {
+  .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 4px 0;
     font-size: 30px;
   }
-  .aspot .meta-wrap .episodic-show-time {
+  .aspot .meta-wrap.episodic .episodic-show-time {
     margin: 0 0 9px 0;
     font-size: 23px;
   }
-  .aspot .meta-wrap .episodic-episode-title {
+  .aspot .meta-wrap.episodic .episodic-episode-title {
     font-size: 18px;
   }
 }
 @media (min-width: 1275px) {
-  .aspot .meta-wrap {
+  .aspot .meta-wrap.episodic {
     top: 344px;
     padding-left: 46px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 344px;
   }
-  .aspot .meta-wrap .episodic-show-title {
+  .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 8px 0;
     font-size: 40px;
   }
-  .aspot .meta-wrap .episodic-show-time {
+  .aspot .meta-wrap.episodic .episodic-show-time {
     margin: 0 0 16px 0;
     font-size: 30px;
   }
-  .aspot .meta-wrap .episodic-episode-title {
+  .aspot .meta-wrap.episodic .episodic-episode-title {
     font-size: 24px;
   }
 }
@@ -8466,11 +8519,15 @@ body.person-page #main {
 .usa-adrails .aspot .episode-title {
   font-size: 22px;
 }
+.aspot .meta-wrap.episodic .cta {
+  text-transform: none;
+}
 .aspot .cta {
   position: relative;
   padding-left: 34px;
   font-size: 12px;
   line-height: 35px;
+  text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 0.05em;
 }
@@ -8549,23 +8606,23 @@ body.person-page #main {
   width: 1245px;
   height: 709px;
 }
-.usa-adrails .aspot .meta-wrap {
+.usa-adrails .aspot .flexslider .meta-wrap.episodic {
   top: 241px;
   padding-left: 26px;
 }
-.usa-adrails .aspot .meta-wrap .episodic-show-title {
+.usa-adrails .aspot .flexslider .meta-wrap.episodic .episodic-show-title {
   margin: 0 0 8px 0;
   font-size: 24px;
 }
-.usa-adrails .aspot .meta-wrap .episodic-show-time {
+.usa-adrails .aspot .flexslider .meta-wrap.episodic .episodic-show-time {
   margin: 0 0 10px 0;
   font-size: 18px;
 }
-.usa-adrails .aspot .meta-wrap .episodic-episode-title {
+.usa-adrails .aspot .flexslider .meta-wrap.episodic .episodic-episode-title {
   padding-left: 14px;
   font-size: 14px;
 }
-.usa-adrails .aspot .meta-wrap .episodic-episode-title .arrow-right {
+.usa-adrails .aspot .flexslider .meta-wrap.episodic .episodic-episode-title .arrow-right {
   margin-left: -14px;
 }
 

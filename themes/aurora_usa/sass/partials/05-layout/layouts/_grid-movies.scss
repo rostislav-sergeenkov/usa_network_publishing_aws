@@ -149,7 +149,7 @@
       }
     }
   }
-  .usa-adrails &, .ie8 & {
+  .usa-adrails & /* , .ie8 & */ {
     width: 930px !important;
     @include layout(3, .048) {
       .a-spot {

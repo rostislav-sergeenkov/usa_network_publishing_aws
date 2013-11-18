@@ -793,6 +793,9 @@ function aurora_usa_field__field_promo_wide_image($vars) {
 
     $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1275px)"></div>';
     $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1275px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<!--[if (IE 8) & (!IEMobile)]>';
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '"></div>';
+    $output .= '<![endif]-->';
 
     $output .= '<noscript>';
     $output .= theme('image_style', array('style_name' => '615x250', 'path' => $filepath, 'alt' => '', 'title' => ''));
@@ -839,7 +842,75 @@ function aurora_usa_field__field_promo_regular_image($vars) {
   }
 }
 
+/**
+ * Override of theme_field();
+ * see theme_field() for available variables
+ */
+function aurora_usa_field__field_tv_cover_media($variables) {
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>';
+    $output .= drupal_render($item);
+    $output .= '<!--[if (IE 8) & (!IEMobile)]>';
+    $file = $item['file'];
+    unset($file['#theme']);
+    $_vars = array();
+    foreach ($file as $name => $value) {
+      $_vars[str_replace('#', '', $name)] = $value;
+    }
+    $output .= theme_image_style($_vars);
+    $output .= '<![endif]-->';
+    $output .= '</div>';
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}
+
 function aurora_usa_field__field_target($vars) {
   $target = $vars['items'][0]['value'];
   return $target;
+}
+function aurora_usa_field__field_video_thumbnail($variables) {
+  if ($variables['element']['#view_mode'] == 'full') {
+    $output = '';
+
+    // Render the label, if it's not hidden.
+    if (!$variables['label_hidden']) {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+    }
+
+    // Render the items.
+    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+      $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+      $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>';
+      $output .= drupal_render($item);
+      $output .= '<!--[if (IE 8) & (!IEMobile)]>';
+      $file = $item['#item'];
+      $file['style_name'] = $item['#image_style'];
+      $file['path'] = $file['uri'];
+      $output .= theme_image_style($file);
+      $output .= '<![endif]-->';
+      $output .= '</div>';
+    }
+    $output .= '</div>';
+
+    // Render the top-level DIV.
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  }
+
+  return $output;
 }

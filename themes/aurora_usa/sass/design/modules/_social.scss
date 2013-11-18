@@ -46,11 +46,13 @@ body.usa-social {
     }
     &.usasocial-fb {
       @extend .icons-facebook-v6;
+      text-indent:9999px;
+      vertical-align:top;
       &:hover {
          @extend .icons-facebook-hover-v6;
       }
     }
-    &.usasocial-twitter {
+    &.show-twitter.usasocial-twitter {
 /*      @extend .icons-twitter-v4; */
         @include replace-text-with-dimensions('icons/follow-twitter-v2.png');
         width:image-width('icons/follow-twitter-v2.png');
@@ -62,6 +64,21 @@ body.usa-social {
         display:inline-block !important;
         text-indent:9999px;
         /* @extend .icons-twitter-hover-v4; */
+      }
+    }
+    &.person-twitter.usasocial-twitter {
+        @include replace-text-with-dimensions('icons/twitter-v4.png');
+        width:image-width('icons/twitter-v4.png');
+        height:image-height('icons/twitter-v4.png');
+        display:inline-block !important;
+        text-indent:9999px;
+        background-color:transparent;
+      &:hover {
+        @include replace-text-with-dimensions('icons/twitter-hover-v4.png');
+        width:image-width('icons/twitter-v4.png');
+        height:image-height('icons/twitter-v4.png');
+        display:inline-block !important;
+        text-indent:9999px;
       }
     }
     &.usasocial-facebook {

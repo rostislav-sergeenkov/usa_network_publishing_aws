@@ -43,9 +43,12 @@
 
 
 #head-sponsored {
-  /* float: right; */
+  display: none;
   position:absolute;
   top:0;
   right:0;
   margin: 1px 12px 0 0;
+  @include breakpoint($bp-on-now) {
+    display: block;
+  }
 }

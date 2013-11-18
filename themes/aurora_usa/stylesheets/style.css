@@ -10934,6 +10934,14 @@ body:not(.front) .ad-leaderboard {
 }
 
 #head-sponsored {
-  float: right;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
   margin: 1px 12px 0 0;
+}
+@media (min-width: 640px) {
+  #head-sponsored {
+    display: block;
+  }
 }

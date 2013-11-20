@@ -163,8 +163,10 @@
     @include breakpoint($bp-aspot-mid-range-width) {
       top: 240px;
       padding-left: 26px;
-      .ie9 .usa-tv-show & {
+      .ie9 .usa-tv-show &,
+      .ie8 .usa-tv-show & {
         top: 240px;
+        padding-left: 26px;
       }
       .episodic-show-title {
         margin:0 0 2px 0;
@@ -181,8 +183,10 @@
     @include breakpoint($bp-aspot-mid-range2-width) {
       top: 256px;
       padding-left: 35px;
-      .ie9 .usa-tv-show & {
+      .ie9 .usa-tv-show &,
+      .ie8 .usa-tv-show & {
         top: 256px;
+        padding-left: 35px;
       }
       .episodic-show-title {
         margin:0 0 4px 0;
@@ -199,8 +203,10 @@
     @include breakpoint($bp-aspot-large-width) {
       top: 344px;
       padding-left: 46px;
-      .ie9 .usa-tv-show & {
+      .ie9 .usa-tv-show &,
+      .ie8 .usa-tv-show & {
         top: 344px;
+        padding-left: 46px;
       }
       .episodic-show-title {
         margin:0 0 8px 0;

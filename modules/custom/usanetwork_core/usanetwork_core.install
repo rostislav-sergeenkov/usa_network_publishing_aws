@@ -159,6 +159,7 @@ function usanetwork_core_enable_modules() {
     'usanetwork_field_episodic',
 //    'usanetwork_catchall_collection',
 //    'usanetwork_page_collection',
+//    'usanetwork_mpx_video',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -603,6 +604,7 @@ function usanetwork_core_update_7127() {
   $modules_en = array(
     'usanetwork_catchall_collection',
     'usanetwork_page_collection',
+    'usanetwork_mpx_video',
   );
   module_enable($modules_en);
 }

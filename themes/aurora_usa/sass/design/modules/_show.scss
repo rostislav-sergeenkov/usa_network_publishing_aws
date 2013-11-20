@@ -81,6 +81,10 @@
 .promo-ads-panel {
   .expandable-content {
     position: relative;
+    .ie9 &,
+    .ie8 & {
+      overflow:hidden;
+    }
   }
   .panel-col2  {
     position: static;

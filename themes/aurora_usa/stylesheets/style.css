@@ -2111,7 +2111,7 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .ie9 #on-now, .ie8 #on-now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v5, .icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-sb4b845171f.png') no-repeat;
 }
 
@@ -2167,11 +2167,11 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -846px;
 }
 
-.icons-follow-twitter-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
+.icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
   background-position: 0 -665px;
 }
 
-.icons-follow-twitter-v2, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
+.icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
   background-position: 0 -808px;
 }
 
@@ -2211,7 +2211,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -611px;
 }
 
-.icons-on_now, .ie9 #on-now, .ie8 #on-now {
+.icons-on_now {
   background-position: 0 -2655px;
 }
 
@@ -2219,7 +2219,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -2555px;
 }
 
-.icons-pinterest-hover-v2 {
+.icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
   background-position: 0 -1535px;
 }
 
@@ -2227,19 +2227,19 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1989px;
 }
 
-.icons-pinterest-hover-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
+.icons-pinterest-hover-v4 {
   background-position: 0 -1377px;
 }
 
-.icons-pinterest-hover-v6, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
+.icons-pinterest-hover-v6 {
   background-position: 0 -2451px;
 }
 
-.icons-pinterest-v2 {
+.icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
   background-position: 0 -1417px;
 }
 
-.icons-pinterest-v4, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
+.icons-pinterest-v4 {
   background-position: 0 -1337px;
 }
 
@@ -2247,7 +2247,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -2065px;
 }
 
-.icons-pinterest-v6, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
+.icons-pinterest-v6 {
   background-position: 0 -2399px;
 }
 
@@ -2271,19 +2271,19 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -252px;
 }
 
-.icons-tumblr-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
+.icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
   background-position: 0 -2219px;
 }
 
-.icons-tumblr-hover-v3, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
+.icons-tumblr-hover-v3 {
   background-position: 0 -2703px;
 }
 
-.icons-tumblr-v2, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
+.icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
   background-position: 0 -2181px;
 }
 
-.icons-tumblr-v3, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
+.icons-tumblr-v3 {
   background-position: 0 -2503px;
 }
 
@@ -6521,6 +6521,9 @@ body.person-page #main {
   width: 23%;
   margin-left: 1%;
 }
+.ie8 .mega-sub-nav .globalnav-promos .node-global-nav-image img {
+  width: 100%;
+}
 .ie8 .mega-sub-nav .globalnav-promos .node-global-nav-image:first-child {
   margin-left: 0;
 }
@@ -6913,6 +6916,18 @@ body.person-page #main {
   display: table-cell;
   overflow: hidden;
   position: relative;
+  /*
+  .ie9 &,
+  .ie8 & {
+    @extend .icons-on_now;
+    display: block;
+    width: image-width('icons/on_now.png');
+    height: image-height('icons/on_now.png');
+    padding-left:0;
+    text-indent: 0;
+    overflow:visible;
+    float: none;
+  }*/
 }
 @media (min-width: 640px) {
   #on-now {
@@ -6922,16 +6937,7 @@ body.person-page #main {
     height: 100%;
   }
 }
-.ie9 #on-now, .ie8 #on-now {
-  display: block;
-  width: 35px;
-  height: 28px;
-  padding-left: 0;
-  text-indent: 0;
-  overflow: visible;
-  float: none;
-}
-.ie9 #on-now:before, .ie8 #on-now:before {
+.ie9 #on-now:before {
   content: "\0020";
   position: absolute;
   top: 26px;
@@ -6966,12 +6972,10 @@ body.person-page #main {
     background-size: auto auto;
   }
 }
-#on-now .ie9,
-#on-now .ie8 {
+#on-now .ie9 {
   overflow: visible;
 }
-#on-now .ie9.trigger:before,
-#on-now .ie8.trigger:before {
+#on-now .ie9.trigger:before {
   content: "\0020";
   position: absolute;
   display: inline-block;
@@ -6981,8 +6985,7 @@ body.person-page #main {
   margin-left: 0;
 }
 @media (min-width: 640px) {
-  #on-now .ie9.trigger:before,
-  #on-now .ie8.trigger:before {
+  #on-now .ie9.trigger:before {
     top: 26px;
     margin-left: 0px;
   }
@@ -7023,6 +7026,19 @@ body.person-page #main {
     top: 26px;
     margin-left: -16px;
   }
+}
+.ie8.no-font-feature-settings #on-now.trigger:before {
+  content: " ";
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  margin-left: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: 6px 8px 6px 0;
+  border-style: solid;
+  border-color: transparent #0ab6e8 transparent transparent;
 }
 
 #on-now-show-name {
@@ -8320,8 +8336,9 @@ body.person-page #main {
     top: 240px;
     padding-left: 26px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic, .ie8 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 240px;
+    padding-left: 26px;
   }
   .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 2px 0;
@@ -8340,8 +8357,9 @@ body.person-page #main {
     top: 256px;
     padding-left: 35px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic, .ie8 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 256px;
+    padding-left: 35px;
   }
   .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 4px 0;
@@ -8360,8 +8378,9 @@ body.person-page #main {
     top: 344px;
     padding-left: 46px;
   }
-  .ie9 .usa-tv-show .aspot .meta-wrap.episodic {
+  .ie9 .usa-tv-show .aspot .meta-wrap.episodic, .ie8 .usa-tv-show .aspot .meta-wrap.episodic {
     top: 344px;
+    padding-left: 46px;
   }
   .aspot .meta-wrap.episodic .episodic-show-title {
     margin: 0 0 8px 0;
@@ -8795,7 +8814,6 @@ body.usa-social {
   vertical-align: top;
 }
 .ie9 .icons-social a.show-twitter.usasocial-twitter, .ie8 .icons-social a.show-twitter.usasocial-twitter {
-  /*      @extend .icons-twitter-v4; */
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -8820,34 +8838,15 @@ body.usa-social {
   height: 18px;
   display: inline-block !important;
   text-indent: 9999px;
-  /* @extend .icons-twitter-hover-v4; */
 }
 .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/twitter-v4.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 32px;
-  height: 32px;
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 18px;
   display: inline-block !important;
   text-indent: 9999px;
   background-color: transparent;
 }
 .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/twitter-hover-v4.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 32px;
-  height: 32px;
-  width: 32px;
-  height: 32px;
   display: inline-block !important;
   text-indent: 9999px;
 }
@@ -8874,6 +8873,29 @@ body.usa-social {
   background-position: 50% 50%;
   width: 9px;
   height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+}
+.ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
+  width: 18px;
+  height: 18px;
+  display: inline-block !important;
+  text-indent: 9999px;
+  vertical-align: top;
+  background-color: transparent !important;
+}
+.ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
+  display: inline-block !important;
+  text-indent: 9999px;
+}
+.ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
+  width: 12px;
+  height: 18px;
+  display: inline-block !important;
+  vertical-align: top;
+  text-indent: 9999px;
+}
+.ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
   display: inline-block !important;
   text-indent: 9999px;
 }

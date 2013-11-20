@@ -8732,6 +8732,9 @@ body.person-page #main {
 .promo-ads-panel .expandable-content {
   position: relative;
 }
+.ie9 .promo-ads-panel .expandable-content, .ie8 .promo-ads-panel .expandable-content {
+  overflow: hidden;
+}
 .promo-ads-panel .panel-col2 {
   position: static;
   display: none;

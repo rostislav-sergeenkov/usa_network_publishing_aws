@@ -402,6 +402,77 @@ function usanetwork_page_collection_node_delete($node) {
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_page_collection_form_file_entity_add_upload_multiple_alter(&$form, &$form_state) {
+  // change submit callback
+  foreach ($form['#submit'] as $delta => $callback) {
+    if ($callback == 'file_entity_add_upload_multiple_submit') {
+      $form['#submit'][$delta] = 'usanetwork_page_collection_file_entity_add_upload_multiple_submit';
+    }
+  }
+}
+
+/**
+ * Submit callback for file_entity_add_upload_multiple form
+ */
+function usanetwork_page_collection_file_entity_add_upload_multiple_submit($form, &$form_state) {
+  $upload_location = !empty($form['upload']['#upload_location']) ?
+    $form['upload']['#upload_location'] . '/' :
+    variable_get('file_default_scheme', 'public') . '://';
+
+  // We can't use file_save_upload() because of http://www.jacobsingh.name/content/tight-coupling-no-not
+  foreach ($form_state['values']['upload'] as $uploaded_file) {
+    if ($uploaded_file['status'] == 'done') {
+      $source = $uploaded_file['tmppath'];
+      $destination = file_stream_wrapper_uri_normalize($upload_location . $uploaded_file['name']);
+      // Rename it to its original name, and put it in its final home.
+      // Note - not using file_move here because if we call file_get_mime
+      // (in file_uri_to_object) while it has a .tmp extension, it horks.
+
+      $dirname = dirname($destination);
+      file_prepare_directory($dirname, FILE_MODIFY_PERMISSIONS | FILE_CREATE_DIRECTORY);
+      $destination = file_unmanaged_move($source, $destination, FILE_EXISTS_RENAME);
+
+      if (!$destination) {
+        form_set_error('pud', t('The specified file %name could not be uploaded.', array('%name' => $uploaded_file['name'])));
+      }
+      else {
+        $file = file_uri_to_object($destination);
+        $file->status = FILE_STATUS_PERMANENT;
+        file_save($file);
+
+        $saved_files[] = $file;
+        $form_state['files'][$file->fid] = $file;
+      }
+    }
+    else {
+      // @todo: move this to element validate or something.
+      form_set_error('pud', t('The specified file %name could not be uploaded.', array('%name' => $uploaded_file['name'])));
+    }
+  }
+
+  // Redirect to the file edit page.
+  if (file_entity_access('update', $file) && module_exists('multiform') && module_exists('media')) {
+    $destination = array();
+    if (isset($_GET['destination'])) {
+      $destination = drupal_get_destination();
+      unset($_GET['destination']);
+    }
+    elseif (user_access('administer files')) {
+      $destination = array('destination' => 'admin/content/file');
+    }
+    $form_state['redirect'] = array('admin/content/file/edit-multiple/' . implode(' ', array_keys($form_state['files'])), array('query' => $destination));
+  }
+  else {
+    $form_state['redirect'] = user_access('administer files') ? 'admin/content/file' : '<front>';
+  }
+
+  // Clear the page and block caches.
+  cache_clear_all();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
  * Alter node edit form.
  */
 function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
@@ -440,7 +511,32 @@ function usanetwork_page_collection_form_node_form_alter(&$form, &$form_state) {
     }
     foreach (_usanetwork_page_collection_field_bases() as $field_name => $field) {
       if (isset($form[$field_name]) && ($field['type'] == 'file' || $field['type'] == 'image')) {
+        // Media support
+        if (isset($form[$field_name][$lang]['#media_options'])) {
+          $location = trim($form[$field_name][$lang]['#media_options']['global']['file_directory'], '/\\');
+          if (empty($location)) {
+            $location = $file_folder;
+          }
+          else {
+            $location = $location . '/' . trim($file_folder, '/\\');
+          }
+          $form[$field_name][$lang]['#media_options']['global']['file_directory'] = $location;
+        }
+
         foreach (element_children($form[$field_name][$lang]) as $key) {
+          // Media support
+          if (isset($form[$field_name][$lang][$key]['#media_options'])) {
+            $location = trim($form[$field_name][$lang][$key]['#media_options']['global']['file_directory'], '/\\');
+            if (empty($location)) {
+              $location = $file_folder;
+            }
+            else {
+              $location = $location . '/' . trim($file_folder, '/\\');
+            }
+            $form[$field_name][$lang]['#media_options'][$key]['global']['file_directory'] = $location;
+          }
+
+          // General file widget support
           if (isset($form[$field_name][$lang][$key]['#upload_location'])) {
             list($scheme, $location) = explode('://', $form[$field_name][$lang][$key]['#upload_location']);
             if (empty($location)) {

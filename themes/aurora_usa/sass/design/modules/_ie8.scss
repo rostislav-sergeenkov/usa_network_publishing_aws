@@ -163,6 +163,9 @@
         display: inline-block;
         width: 23%;
         margin-left:1%;
+        img {
+          width:100%;
+        }
       }
       .node-global-nav-image:first-child {
         margin-left:0;

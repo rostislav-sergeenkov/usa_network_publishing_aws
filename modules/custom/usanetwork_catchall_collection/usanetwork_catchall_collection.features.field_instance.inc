@@ -45,7 +45,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_usa_pc_afterall_content',
-    'label' => 'Afterall Content',
+    'label' => 'Site Footer',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -285,7 +285,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'otf mp3 htf pdf swf txt html htm flv xml ini',
+      'file_extensions' => 'otf mp3 htf pdf swf txt html htm flv xml ini as',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -353,12 +353,27 @@ function usanetwork_catchall_collection_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media_multiselect',
       'settings' => array(
-        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'allowed_schemes' => array(
+          'private' => 'private',
+          'public' => 'public',
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
       ),
-      'type' => 'image_image',
+      'type' => 'media_multiselect',
       'weight' => 41,
     ),
   );
@@ -512,7 +527,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_usa_pc_overall_content',
-    'label' => 'Overall Content',
+    'label' => 'Site Header',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -539,7 +554,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Afterall Content');
+  t('Site Footer');
   t('CSS Files');
   t('File folder');
   t('Files');
@@ -549,7 +564,7 @@ function usanetwork_catchall_collection_field_default_field_instances() {
   t('Inline CSS');
   t('Inline Javascript');
   t('Javascript Files');
-  t('Overall Content');
+  t('Site Header');
 
   return $field_instances;
 }

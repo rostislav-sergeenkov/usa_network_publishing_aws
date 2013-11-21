@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Migrate old data to new format.
+ */
+function usanetwork_ads_update_7100() {
+  /* Move content types settings */
+  $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  foreach ($settings['node_type'] as $type => $data) {
+    if (!isset($settings['node'][$type]['default'])) {
+      $settings['node'][$type]['default'] = array();
+    }
+    $settings['node'][$type]['default'] += $data;
+  }
+  unset($settings['node_type']);
+
+  /* Move omnitrue variables */
+  foreach ($settings['node'] as $type => &$data) {
+    foreach ($data as &$variables) {
+      if (!isset($variables['omniture']['variables'])) {
+        foreach ($variables['omniture'] as $delta => $omniture) {
+          $variables['omniture']['variables'][$delta] = $omniture;
+          unset($variables['omniture'][$delta]);
+        }
+      }
+    }
+  }
+
+  variable_set('usanetwork_ads_site_metric_settings', $settings);
+}

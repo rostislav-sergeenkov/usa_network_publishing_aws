@@ -5,6 +5,7 @@
  */
 
 include_once 'usanetwork_ads.features.inc';
+include_once 'usanetwork_ads.pages.inc';
 
 /**
  * Helper that returns the tv_show node nid associated with a given node.
@@ -313,196 +314,6 @@ function _usanetwork_ads_homepage_site_metric_form_elements(&$parent_element, &$
       $form_state['storage']['default_settings']['home']['omniture'], $form_state['new_form']);
 }
 
-
-/**
- * Helper that returns the ad/tracking settings form elements for tv_show nodes.
- */
-function _usanetwork_ads_tv_show_site_metric_form_elements(&$parent_element, &$form_state) {
-
-  $default_settings = $form_state['storage']['default_settings'];
-
-  $parent_element['node']['tv_show'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('TV Show Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  // Default "sub" and "sub2" form elements.
-  $parent_element['node']['tv_show']['default']['sub'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Default landing page "sub" value'),
-    '#default_value' => isset($default_settings['node']['tv_show']['default']['sub']) ?
-        $default_settings['node']['tv_show']['default']['sub'] : '',
-  );
-  $parent_element['node']['tv_show']['default']['sub2'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Default landing page "sub2" value'),
-    '#default_value' => isset($default_settings['node']['tv_show']['default']['sub2']) ?
-        $default_settings['node']['tv_show']['default']['sub2'] : '',
-  );
-
-  // Add a set of dart form elements per tv_show node.
-  if ($tv_show_nodes = _usanetwork_ads_get_nodes('tv_show')) {
-    foreach ($tv_show_nodes as $node) {
-      $parent_element['node']['tv_show'][ $node->nid ] = array(
-        '#type' => 'fieldset',
-        '#title' => t('Show:  %tv_show_title', array('%tv_show_title' => $node->title)),
-        '#collapsible' => TRUE,
-        '#collapsed' => TRUE,
-      );
-      // "Is Sponsored" checkbox.
-      $parent_element['node']['tv_show'][ $node->nid ]['is_sponsored'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Is Sponsored'),
-        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['is_sponsored']) ?
-            $default_settings['node']['tv_show'][ $node->nid ]['is_sponsored'] : FALSE,
-      );
-      // Dart "sect" value.
-      $parent_element['node']['tv_show'][ $node->nid ]['sect'] = array(
-        '#type' => 'textfield',
-        '#title' => t('"sect" Value'),
-        '#default_value' => isset($default_settings['node']['tv_show'][ $node->nid ]['sect']) ?
-            $default_settings['node']['tv_show'][ $node->nid ]['sect'] : '',
-      );
-      // Omniture unlimited value form.
-      $id = 'tv-show-' . $node->nid;
-      $display_id = htmlspecialchars_decode(check_plain($node->title));
-      $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]['omniture'] = isset($form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]['omniture']) ?
-          $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]['omniture'] : array();
-      _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['node']['tv_show'][ $node->nid ],
-          $form_state['storage']['default_settings']['node']['tv_show'][ $node->nid ]['omniture'], $form_state['new_form']);
-    }
-  }
-  // If no tv_show nodes are found, let the user know.
-  else {
-    $parent_element['node']['tv_show']['no_results']['#markup'] = t('There are no TV shows available.');
-  }
-}
-
-
-/**
- * Helper that returns the ad/tracking settings form elements for catchall_page nodes.
- */
-function _usanetwork_ads_catchall_page_site_metric_form_elements(&$parent_element, &$form_state) {
-
-  $default_settings = $form_state['storage']['default_settings'];
-
-  $parent_element['node']['catchall_page'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Catchall Page Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  // Add a set of dart form elements per catchall_page node.
-  if ($catchall_page_nodes = _usanetwork_ads_get_nodes('catchall_page')) {
-    foreach ($catchall_page_nodes as $node) {
-      // Set the base form element for this node.
-      $parent_element['node']['catchall_page'][ $node->nid ] = array();
-      // Add DART form elements.
-      $fieldset_title = t('Catchall Page:  %catchall_page_title', array('%catchall_page_title' => $node->title));
-      $default_settings = isset($form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]) ?
-          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ] : array();
-      _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node']['catchall_page'][ $node->nid ], $default_settings);
-      // Omniture unlimited value form.
-      $id = 'catchall-page-' . $node->nid;
-      $display_id = htmlspecialchars_decode(check_plain($node->title));
-      $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'] = isset($form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture']) ?
-          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'] : array();
-      _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['node']['catchall_page'][ $node->nid ],
-          $form_state['storage']['default_settings']['node']['catchall_page'][ $node->nid ]['omniture'], $form_state['new_form']);
-    }
-  }
-  // If no catchall_page nodes are found, let the user know.
-  else {
-    $parent_element['node']['catchall_page']['no_results']['#markup'] = t('There are no Catchall Pages available.');
-  }
-}
-
-
-/**
- * Helper that returns the ad/tracking settings form elements for usanetwork_static_page nodes.
- */
-function _usanetwork_ads_usanetwork_static_page_site_metric_form_elements(&$parent_element, &$form_state) {
-
-  $default_settings = $form_state['storage']['default_settings'];
-
-  $parent_element['node']['usanetwork_static_page'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Static Page Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  // Add a set of dart form elements per usanetwork_static_page node.
-  if ($usanetwork_static_page_nodes = _usanetwork_ads_get_nodes('usanetwork_static_page')) {
-    foreach ($usanetwork_static_page_nodes as $node) {
-      // Set the base form element for this node.
-      $parent_element['node']['usanetwork_static_page'][ $node->nid ] = array();
-      // Add DART form elements.
-      $fieldset_title = t('Static Page:  %usanetwork_static_page_title', array('%usanetwork_static_page_title' => $node->title));
-      $default_settings = isset($form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]) ?
-          $form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ] : array();
-      _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node']['usanetwork_static_page'][ $node->nid ], $default_settings);
-      // Omniture unlimited value form.
-      $id = 'usanetwork-static-page-' . $node->nid;
-      $display_id = htmlspecialchars_decode(check_plain($node->title));
-      $form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]['omniture'] = isset($form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]['omniture']) ?
-          $form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]['omniture'] : array();
-      _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['node']['usanetwork_static_page'][ $node->nid ],
-          $form_state['storage']['default_settings']['node']['usanetwork_static_page'][ $node->nid ]['omniture'], $form_state['new_form']);
-    }
-  }
-  // If no usanetwork_static_page nodes are found, let the user know.
-  else {
-    $parent_element['node']['usanetwork_static_page']['no_results']['#markup'] = t('There are no Static Pages available.');
-  }
-}
-
-
-/**
- * Helper that returns the ad/tracking settings form elements for content types.
- */
-function _usanetwork_ads_content_type_site_metric_form_elements(&$parent_element, &$form_state) {
-
-  $default_settings = $form_state['storage']['default_settings'];
-
-  // Define node types used for displaying content.
-  $content_node_types = array(
-    'person' => t('Person'),
-    'tv_episode' => t('TV Episode'),
-    'media_gallery' => t('Media Gallery'),
-    'usa_video' => t('MPX Video'),
-    'usa_tve_video' => t('TVE Video'),
-  );
-
-  $parent_element['node_type'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Content Type Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  foreach ($content_node_types as $node_type => $title) {
-    // Set the base form element for this node type.
-    $parent_element['node_type'][ $node_type ] = array();
-    // Add DART form elements.
-    $fieldset_title = t('Type:  %type', array('%type' => $title));
-    $default_settings = isset($form_state['storage']['default_settings']['node_type'][ $node_type ]) ?
-        $form_state['storage']['default_settings']['node_type'][ $node_type ] : array();
-    _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['node_type'][ $node_type ], $default_settings);
-    // Omniture unlimited value form.
-    $id = 'node-type-' . $node_type;
-    $display_id = t('@type', array('@type' => $title));
-    $form_state['storage']['default_settings']['node_type'][ $node_type ]['omniture'] = isset($form_state['storage']['default_settings']['node_type'][ $node_type ]['omniture']) ?
-        $form_state['storage']['default_settings']['node_type'][ $node_type ]['omniture'] : array();
-    _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['node_type'][ $node_type ],
-        $form_state['storage']['default_settings']['node_type'][ $node_type ]['omniture'], $form_state['new_form']);
-  }
-}
-
-
 /**
  * Helper that returns the ad/tracking settings form elements for custom paths.
  */
@@ -565,25 +376,24 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
   // Homepage settings.
   _usanetwork_ads_homepage_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
-  // TV Show node/node-reference based settings.
-  _usanetwork_ads_tv_show_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
-
-  // Catchall Page node based settings.
-  _usanetwork_ads_catchall_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
-
-  // Static Page node based dart settings.
-  _usanetwork_ads_usanetwork_static_page_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
-
-  // Content type based settings.
-  _usanetwork_ads_content_type_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
-
   // Path based settings.
   _usanetwork_ads_custom_path_site_metric_form_elements($form['usanetwork_ads_site_metric_settings'], $form_state);
 
+  $form = system_settings_form($form);
+  array_unshift($form['#submit'], 'usanetwork_ads_site_metric_settings_form_submit');
 
-  return system_settings_form($form);
+  return $form;
 }
 
+/**
+ * Submit callback
+ */
+function usanetwork_ads_site_metric_settings_form_submit($form, &$form_state) {
+  if (isset($form_state['values']['usanetwork_ads_site_metric_settings'])) {
+    $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+    $form_state['values']['usanetwork_ads_site_metric_settings']['node'] = $settings['node'];
+  }
+}
 
 /**
  * AJAX callback for adding omniture key|value pairs.
@@ -629,54 +439,46 @@ function usanetwork_ads_admin_paths() {
 
 /**
  * Helper that returns DART ad settings for a given node.
+ * @todo Add content type defaults
  */
 function _usanetwork_ads_get_node_dart_settings($node) {
-
+  $node_settings = _usanetwork_ads_node_settings($node);
   $node_dart_settings = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
-  $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
   $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
-  // Set "sect" value by TV Show.
-  if ($tv_show_nid) {
-    $node_dart_settings['sect'] = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect']) ?
-        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['sect'] : '';
+  if (isset($node->page_collection_parent)) {
+    // node has page collection parent
+    $node_dart_settings = _usanetwork_ads_get_node_dart_settings($node->page_collection_parent);
+  }
+  else {
+    // load content type defaults
+    $type_settings = _usanetwork_ads_content_type_settings($node->type);
+    foreach (array_keys($node_dart_settings) as $key) {
+      if (isset($type_settings[$key])) {
+        $node_dart_settings[$key] = $type_settings[$key];
+      }
+    }
+
+    // node has show parent
+    if ($tv_show_nid && $node->type != 'tv_show') {
+      $show_settins = _usanetwork_ads_get_node_dart_settings(node_load($tv_show_nid));
+      if (!empty($show_settins['sect'])) {
+        $node_dart_settings['sect'] = $show_settins['sect'];
+      }
+    }
   }
 
-  // Default "sub" and "sub2" values for tv_show node pages.
-  if ($node->type == 'tv_show') {
-    $node_dart_settings['sub'] = isset($site_metric_settings['node']['tv_show']['default']['sub']) ?
-        $site_metric_settings['node']['tv_show']['default']['sub'] : '';
-    $node_dart_settings['sub2'] = isset($site_metric_settings['node']['tv_show']['default']['sub2']) ?
-        $site_metric_settings['node']['tv_show']['default']['sub2'] : '';
+  // Node uses default settings
+  if (empty($node_settings) || $node_settings['default']) {
+    return $node_dart_settings;
   }
 
-  // Over-ride values for catchall_page nodes.
-  if ($node->type == 'catchall_page') {
-    $node_dart_settings['sect'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sect']) ?
-      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sect'] : $node_dart_settings['sect'];
-    $node_dart_settings['sub'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sub']) ?
-      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sub'] : $node_dart_settings['sub'];
-    $node_dart_settings['sub2'] = !empty($site_metric_settings['node']['catchall_page'][ $node->nid ]['sub2']) ?
-      $site_metric_settings['node']['catchall_page'][ $node->nid ]['sub2'] : $node_dart_settings['sub2'];
+  // override parent settings
+  foreach(array_keys($node_dart_settings) as $variable) {
+    if (!empty($node_settings[$variable])) {
+      $node_dart_settings[$variable] = $node_settings[$variable];
+    }
   }
-  // Over-ride values for usanetwork_static_page nodes.
-  else if ($node->type == 'usanetwork_static_page') {
-    $node_dart_settings['sect'] = !empty($site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sect']) ?
-      $site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sect'] : $node_dart_settings['sect'];
-    $node_dart_settings['sub'] = !empty($site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sub']) ?
-      $site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sub'] : $node_dart_settings['sub'];
-    $node_dart_settings['sub2'] = !empty($site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sub2']) ?
-      $site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['sub2'] : $node_dart_settings['sub2'];
-  }
-
-  // Over-ride values by content type.
-  $node_dart_settings['sect'] = !empty($site_metric_settings['node_type'][ $node->type ]['sect']) ?
-    $site_metric_settings['node_type'][ $node->type ]['sect'] : $node_dart_settings['sect'];
-  $node_dart_settings['sub'] = !empty($site_metric_settings['node_type'][ $node->type ]['sub']) ?
-    $site_metric_settings['node_type'][ $node->type ]['sub'] : $node_dart_settings['sub'];
-  $node_dart_settings['sub2'] = !empty($site_metric_settings['node_type'][ $node->type ]['sub2']) ?
-    $site_metric_settings['node_type'][ $node->type ]['sub2'] : $node_dart_settings['sub2'];
-
 
   return $node_dart_settings;
 }
@@ -699,14 +501,26 @@ function _usanetwork_ads_get_node_refresh_settings($node) {
  * Helper that determines if a node is sponsored.
  */
 function _usanetwork_ads_is_node_sponsored($node) {
-
+  $node_settings = _usanetwork_ads_node_settings($node);
   $node_is_sponsored = FALSE;
   $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
-  if ($tv_show_nid) {
-    $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
-    $node_is_sponsored = isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['is_sponsored']) ?
-        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['is_sponsored'] : FALSE;
+  if (empty($node_settings)
+    || $node_settings['default']
+    || !isset($node_settings['is_sponsored'])
+    || $node_settings['is_sponsored'] == -1
+  ) {
+    if (isset($node->page_collection_parent)) {
+      // node has page collection parent
+      $node_is_sponsored = _usanetwork_ads_is_node_sponsored($node->page_collection_parent);
+    }
+    elseif ($tv_show_nid && $node->type != 'tv_show') {
+      // node has tv show parent
+      $node_is_sponsored = _usanetwork_ads_is_node_sponsored(node_load($tv_show_nid));
+    }
+  }
+  else {
+    $node_is_sponsored = $node_settings['is_sponsored'];
   }
 
   return (bool)$node_is_sponsored;
@@ -871,39 +685,42 @@ function _usanetwork_ads_get_omniture_variables($omniture_settings) {
  * Helper that returns omniture variables for a given node.
  */
 function _usanetwork_ads_get_node_omniture_variables($node) {
+  $node_settings = _usanetwork_ads_node_settings($node);
+  $node_omniture_variables = array();
+  $variables = array();
 
-  $node_omniture_settings = array();
-  $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  // Omniture disabled
+  if (isset($node_settings['omniture']['disable']) && $node_settings['omniture']['disable']) {
+    return array();
+  }
+
   $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
-  if ($tv_show_nid) {
-    $node_omniture_settings =
-        isset($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) && is_array($site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture']) ?
-        $site_metric_settings['node']['tv_show'][ $tv_show_nid ]['omniture'] : array();
+  // load content type defaults
+  $type_settings = _usanetwork_ads_content_type_settings($node->type);
+  $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables']) ? $type_settings['omniture']['variables'] : array());
+
+  // node has tv show parent
+  if ($tv_show_nid && $node->type != 'tv_show') {
+    $variables[] = _usanetwork_ads_get_node_omniture_variables(node_load($tv_show_nid));
   }
 
-  $node_omniture_variables = _usanetwork_ads_get_omniture_variables($node_omniture_settings);
-
-  // Variable over-ride values for catchall_page nodes.
-  if ($node->type == 'catchall_page') {
-    $catchall_page_omniture_settings = isset($site_metric_settings['node']['catchall_page'][ $node->nid ]['omniture']) ?
-        $site_metric_settings['node']['catchall_page'][ $node->nid ]['omniture'] : array();
-    $catchall_page_omniture_variables = _usanetwork_ads_get_omniture_variables($catchall_page_omniture_settings);
-    $node_omniture_variables = $catchall_page_omniture_variables + $node_omniture_variables;
-  }
-  // Variable over-ride values for usanetwork_static_page nodes.
-  if ($node->type == 'usanetwork_static_page') {
-    $static_page_omniture_settings = isset($site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['omniture']) ?
-        $site_metric_settings['node']['usanetwork_static_page'][ $node->nid ]['omniture'] : array();
-    $static_page_omniture_variables = _usanetwork_ads_get_omniture_variables($static_page_omniture_settings);
-    $node_omniture_variables = $static_page_omniture_variables + $node_omniture_variables;
+  // node has page collection parent
+  if (isset($node->page_collection_parent)) {
+    $variables[] = _usanetwork_ads_get_node_omniture_variables($node->page_collection_parent);
   }
 
-  // Variable over-rides by content type.
-  $node_type_omniture_settings = isset($site_metric_settings['node_type'][ $node->type ]['omniture']) ?
-      $site_metric_settings['node_type'][ $node->type ]['omniture'] : array();
-  $node_type_omniture_variables = _usanetwork_ads_get_omniture_variables($node_type_omniture_settings);
-  $node_omniture_variables = $node_type_omniture_variables + $node_omniture_variables;
+  if (!empty($node_settings) && !$node_settings['default']) {
+    // override parent settings
+    $variables[] = _usanetwork_ads_get_omniture_variables($node_settings['omniture']['variables']);
+  }
+
+  // merge variables
+  foreach ($variables as $set) {
+    foreach ($set as $key => $value) {
+      $node_omniture_variables[$key] = $value;
+    }
+  }
 
   return $node_omniture_variables;
 }

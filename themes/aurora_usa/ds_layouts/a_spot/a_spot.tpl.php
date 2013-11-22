@@ -290,9 +290,6 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
         <h3 class="episodic-episode-title"><span class="arrow-right">&#9658;</span><?php print ($line_3_tite); ?></h3>
       <?php endif; ?>
       </div>
-      <?php if ($cta && $cta !== '&nbsp;'): ?>
-      <div class="cta"><?php print $cta; ?></div>
-      <?php endif; ?>
     </div>
   <?php endif; ?>
 

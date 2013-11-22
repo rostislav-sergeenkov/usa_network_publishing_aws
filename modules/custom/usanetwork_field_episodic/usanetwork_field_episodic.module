@@ -13,6 +13,8 @@ function usanetwork_field_episodic_form_usanetwork_aspot_node_form_alter(&$form,
     'field_mobile_text_line_2',
     'field_text_line_2_font_size',
     'field_usa_aspot_txt3',
+    'field_call_to_action_type',
+    'field_usa_aspot_txt4',
   );
   
   $episodic_fields = array(

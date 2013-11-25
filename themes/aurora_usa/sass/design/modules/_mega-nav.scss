@@ -96,6 +96,11 @@
       display: inline-block;
     }
   }
+  .ie8 & {
+    a {
+      position:relative;
+    }
+  }
   a {
     @include link-colors($white, $white, $white, $white, $white);
   }
@@ -207,7 +212,7 @@
     @include no-bullets;
     @include column-count(3);
     @include column-gap(2em);
-    .ie9 & {
+    .ie9 &, .ie8 & {
       li {
         float: left;
         width: 30%;
@@ -282,6 +287,10 @@
   top: 0;
   width: 100%;
   z-index: $ziWall;
+  .ie8 & {
+    background-color:#000000;
+    filter: alpha(opacity=80);
+  }
 }
 
 .mega-nav-close {
@@ -306,10 +315,17 @@
     text-transform: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    .ie9 &, .ie8 & {
+    .ie9 & {
       background: url(../images/svgs/ie_x1.svg) no-repeat top left;
       height: 20px;
       width: 20px;
+      text-indent: -9999px;
+    }
+    .ie8 & {
+      display: block;
+      width: image-width('icons/ico-close-tray-tablet.png');
+      height: image-height('icons/ico-close-tray-tablet.png');
+      background: url(../images/icons/ico-close-tray-tablet.png) no-repeat center center transparent;
       text-indent: -9999px;
     }
   }
@@ -372,6 +388,9 @@
       @include transform3d(translateX(-50%));
       z-index: 105;
       @include filter(drop-shadow($gray-med-dark 0 -2px 0));
+    }
+    .ie8 &:after {
+      display: none;
     }
   }
 }
@@ -489,5 +508,16 @@
         }
       }
     }
+  }
+  .ie8 &:after {
+      position: absolute;
+      content: $space;
+      @include cssTriangle(14px, $black-true, bottom);
+      border-top: none;
+      bottom: -1px;
+      left: 165px;
+      @include transform3d(translateX(-50%));
+      z-index: 105;
+      @include filter(drop-shadow($gray-med-dark 0 -2px 0));
   }
 }

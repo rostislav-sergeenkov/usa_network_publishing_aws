@@ -2,6 +2,14 @@
   .grid-item {
     @extend %grid-item;
   }
+  .ie8 & {
+    .grid-item {
+      float:left;
+      clear:none;
+      width:48.4966%;
+      margin:0 7px 15px 0;
+    }
+  }
   @include breakpoint($bp-grid-small-2-3) {
     @include layout(2, .062){
       .grid-item {
@@ -40,6 +48,13 @@
         }
       }
     }
+    .ie8 & {
+      .grid-item {
+        float:left;
+        clear:none;
+        width:32.0102%;
+      }
+    }
   }
   @include breakpoint($bp-grid-small-4) {
     width: 953px;
@@ -61,6 +76,14 @@
         &:nth-of-type(4n + 5) {
           clear: both;
         }
+      }
+    }
+    .ie8 & {
+      .grid-item {
+        float:left;
+        clear:none;
+        width:23.8892%;
+        margin:0 10px 15px 0;
       }
     }
   }

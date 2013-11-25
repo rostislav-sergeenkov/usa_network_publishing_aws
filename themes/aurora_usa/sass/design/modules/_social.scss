@@ -32,28 +32,76 @@ body.usa-social {
   display: inline-block;
   margin-left: 5px;
   .ie9 &, .ie8 & {
-    &.usasocial-tumblr {
-      @extend .icons-tumblr-v3;
-      &:hover {
-        @extend .icons-tumblr-hover-v3;
-      }
-    }
-    &.usasocial-pinterest {
-      @extend .icons-pinterest-v6;
-      &:hover {
-        @extend .icons-pinterest-hover-v6;
-      }
-    }
     &.usasocial-fb {
       @extend .icons-facebook-v6;
+      text-indent:9999px;
+      vertical-align:top;
       &:hover {
          @extend .icons-facebook-hover-v6;
       }
     }
-    &.usasocial-twitter {
-      @extend .icons-twitter-v4;
+    &.show-twitter.usasocial-twitter {
+        @include replace-text-with-dimensions('icons/follow-twitter-v2.png');
+        width:image-width('icons/follow-twitter-v2.png');
+        height:image-height('icons/follow-twitter-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
       &:hover {
-        @extend .icons-twitter-hover-v4;
+        @include replace-text-with-dimensions('icons/follow-twitter-hover-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
+      }
+    }
+    &.person-twitter.usasocial-twitter {
+        @extend .icons-follow-twitter-v2;
+        width:image-width('icons/follow-twitter-v2.png');
+        height:image-height('icons/follow-twitter-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
+        background-color:transparent;
+      &:hover {
+        @extend .icons-follow-twitter-hover-v2;
+        display:inline-block !important;
+        text-indent:9999px;
+      }
+    }
+    &.usasocial-facebook {
+        @include replace-text-with-dimensions('icons/follow-facebook-v2.png');
+        width: 9px;
+        height: 18px;
+        display:inline-block !important;
+        text-indent:9999px;
+      &:hover {
+        @include replace-text-with-dimensions('icons/follow-facebook-hover-v2.png');
+        display:inline-block !important;
+        text-indent:9999px;
+      }
+    }
+    &.usasocial-pinterest {
+      @extend .icons-pinterest-v2;
+      width: 18px;
+      height: 18px;
+      display:inline-block !important;
+      text-indent:9999px;
+      vertical-align:top;
+      background-color:transparent !important;
+      &:hover {
+        @extend .icons-pinterest-hover-v2;
+        display:inline-block !important;
+        text-indent:9999px;
+      }
+    }
+    &.usasocial-tumblr {
+      @extend .icons-tumblr-v2;
+      width: 12px;
+      height: 18px;
+      display:inline-block !important;
+      vertical-align:top;
+      text-indent:9999px;
+      &:hover {
+        @extend .icons-tumblr-hover-v2;
+        display:inline-block !important;
+        text-indent:9999px;
       }
     }
   }
@@ -212,7 +260,7 @@ body.usa-social {
       padding:0;
       font-size: 1.4em;
       .ie9 &, .ie8 & {
-        text-indent: -9999px;
+        text-indent: 9999px;
         @include border-radius(0);
         height: 18px;
         width: 9px;
@@ -228,13 +276,13 @@ body.usa-social {
         padding-top: 3px;
         width: 21px;
         .ie9 &, .ie8 &{
-          @extend .icons-pinterest-v4;
+          @extend .icons-pinterest-v2;
           width: 20px;
           height: 20px;
           padding-top: 0;
           background-color: transparent;
           &:hover {
-            @extend .icons-pinterest-hover-v4;
+            @extend .icons-pinterest-hover-v2;
           }
         }
         &:hover {
@@ -253,7 +301,7 @@ body.usa-social {
     }
     .usasocial-twitter {
       .ie9 &, .ie8 & {
-        @extend .icons-follow-twitter-v2;
+       @extend .icons-follow-twitter-v2;
         width: 22px;
         &:hover {
           @extend .icons-follow-twitter-hover-v2;

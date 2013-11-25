@@ -43,6 +43,7 @@
     font-size: 28px;
     height: 100%;
   }
+  /*
   .ie9 &,
   .ie8 & {
     @extend .icons-on_now;
@@ -53,9 +54,9 @@
     text-indent: 0;
     overflow:visible;
     float: none;
-  }
-  .ie9 &:before,
-  .ie8 &:before {
+  }*/
+  .ie9 &:before/*,
+  .ie8 &:before*/ {
     content: $space;
     position: absolute;
     top: 26px;
@@ -76,14 +77,15 @@
     width: 75px;
     background-position: 21px 40%;
     background-size:auto 50%;
-    overflow: visible !important;
+    background-repeat: no-repeat;
+    overflow: hidden;
     @include breakpoint($bp-on-now) {
     background-position: 21px 50%;
       background-size:auto auto;
     }
   }
-  .ie9,
-  .ie8 {
+  .ie9/*,
+  .ie8*/ {
     & {
       overflow:visible;
     }
@@ -130,6 +132,33 @@
         margin-left: -16px;
         border-width: 6px 8px 6px 0;
       }
+    }
+  }
+  .no-font-feature-settings &.trigger {
+    &:before {
+      top: 15px;
+      margin-left: -9px;
+    }
+    @include breakpoint($bp-on-now) {
+      &:before {
+        top: 26px;
+        margin-left: -16px;
+      }
+    }
+  }
+  .ie8.no-font-feature-settings &.trigger:before {
+    content: " ";
+    position: absolute;
+    top: 9px;
+    left:5px;
+    margin-left: 0;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: {
+      width: 6px 8px 6px 0;
+      style: solid;
+      color: transparent $blue transparent transparent;
     }
   }
 }

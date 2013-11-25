@@ -157,6 +157,10 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_shows_display',
     'usanetwork_tv_shows_display_options',
     'usanetwork_field_episodic',
+    'usanetwork_catchall_collection',
+    'usanetwork_page_collection',
+    'usanetwork_lyris',
+//    'usanetwork_mpx_video',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -592,3 +596,27 @@ function usanetwork_core_update_7127() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * ITERATION 3
+ */
+function usanetwork_core_update_7128() {
+  $modules_en = array(
+    'usanetwork_catchall_collection',
+    'usanetwork_page_collection',
+    'usanetwork_lyris',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * PREP FOR NEW VIDEO CODE
+ */
+/*
+function usanetwork_core_update_7129() {
+  $modules_en = array(
+    'usanetwork_mpx_video',
+  );
+  module_enable($modules_en);
+}
+*/

@@ -205,6 +205,8 @@ $bp-head-search: 641px;
 // schedule
 $bp-schedule-table-wide: 719px;
 $bp-schedule-date-wide: 640px;
+$bp-schedule-mobile-small: 359px 479px;
+$bp-schedule-mobile-mid: 480px ($bp-schedule-date-wide - 1);
 
 // subnav promo image
 $bp-show-four-subnav-images: 1200px;

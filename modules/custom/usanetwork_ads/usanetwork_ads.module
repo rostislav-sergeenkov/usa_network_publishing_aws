@@ -681,6 +681,19 @@ function _usanetwork_ads_get_node_dart_settings($node) {
   return $node_dart_settings;
 }
 
+/**
+ * Helper that returns refresh settings for a given node.
+ */
+function _usanetwork_ads_get_node_refresh_settings($node) {
+  $node_refresh_settings = array('isAutomaticRefresh' => NULL, 'refreshTime' => NULL);
+  
+  $node_refresh_settings['isAutomaticRefresh'] = !empty($node->field_automatic_refresh[$node->language]['0']['value']) ?
+    $node->field_automatic_refresh[$node->language]['0']['value'] : '0';
+  $node_refresh_settings['refreshTime'] = !empty($node->field_refresh_time[$node->language]['0']['value']) ?
+    $node->field_refresh_time[$node->language]['0']['value'] : '';
+  
+  return $node_refresh_settings;
+}
 
 /**
  * Helper that determines if a node is sponsored.
@@ -770,6 +783,7 @@ function usanetwork_ads_preprocess_page(&$variables) {
   else if ($current_menu_item_path == 'node/%' &&
       is_object($current_menu_object) && isset($current_menu_object->nid)) {
     $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($current_menu_object);
+    $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($current_menu_object);
   }
   // Path based settings.
   else {
@@ -777,6 +791,7 @@ function usanetwork_ads_preprocess_page(&$variables) {
     // with the path specific values.
     if (isset($variables['node'])) {
       $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($variables['node']);
+      $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($variables['node']);
     }
 
     // Match current path to how it is made available by the custom modules.

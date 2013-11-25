@@ -22,12 +22,10 @@ function usanetwork_tv_schedule_menu() {
     'page callback' => 'usanetwork_on_now_panel_js',
     'access arguments' => array('access content'),
   );
-/*
   $items['usa-on-now-social-block'] = array(
     'page callback' => 'usanetwork_on_now_social_block',
     'access arguments' => array('access content'),
   );
-*/
   return $items;
 }
 
@@ -65,6 +63,35 @@ function usanetwork_tv_schedule_block_view($delta) {
       break;
   }
   return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_tv_schedule_theme() {
+  return array(
+    'usanetwork_tv_schedule_navigation' => array(
+      'file' => 'usanetwork_tv_schedule.theme.inc',
+      'variables' => array(
+        'timestamp' => null,
+        'first_day' => 'sun',
+      ),
+    ),
+    'usanetwork_tv_schedule_navigation_week' => array(
+      'file' => 'usanetwork_tv_schedule.theme.inc',
+      'variables' => array(
+        'timestamp' => null,
+        'first_day' => 'sun',
+        'offset' => 0,
+      ),
+    ),
+    'usanetwork_tv_schedule_navigation_weekday' => array(
+      'file' => 'usanetwork_tv_schedule.theme.inc',
+      'variables' => array(
+        'timestamp' => null,
+      ),
+    ),
+  );
 }
 
 /**
@@ -113,7 +140,7 @@ function usanetwork_tv_schedule_on_now_block() {
       $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
       $tv_show_name = $tv_show;
       $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
-      $episode_name_clean = check_plain($episode[0]);
+      $episode_name_clean = check_plain(trim($episode[0]));
       $episode_name_clean = ucwords(strtolower($episode_name_clean));
       $arrow = '';
       if (!empty($nid)) {
@@ -170,7 +197,7 @@ function usanetwork_tv_schedule_on_now_block() {
     $tv_show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $tv_show_name = $tv_show;
     $nid = _usanetwork_tv_schedule_get_nid_by_title($tv_show, 'tv_show');
-    $episode_name_clean = check_plain($episode[0]);
+    $episode_name_clean = check_plain(trim($episode[0]));
     $episode_name_clean = ucwords(strtolower($episode_name_clean));
 
     $arrow = '';
@@ -337,15 +364,16 @@ function usanetwork_tv_schedule_schedule_page() {
 
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
+    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>' : '';
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
-        $show = l(check_plain($program[0]), 'movies', array('html' => true));
+        $show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
       } else {
-        $show = check_plain($program[0]);
+        $show = check_plain($program[0]) . $episode_suffix;
       }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
-      $show = l(check_plain($program[0]), $path, array('html' => true));
+      $show = l(check_plain($program[0]) . $episode_suffix, $path, array('html' => true));
     }
 
     $row = array(
@@ -355,17 +383,9 @@ function usanetwork_tv_schedule_schedule_page() {
       array('data' => $rating[0], 'class' => array('rating')),
     );
     $rows[] = array('data' => $row, 'class' => $classes);
-
   }
 
-  $cpath = current_path();
-  $ctime = strtotime($cur_date[0]);
-
-  $output .= '<div class="schedule-header">';
-  $output .= l('<', $cpath, array('attributes' => array('class' => array('prev-day')), 'query' => array('sdate' => date('Y_m_d', $ctime-86400))));
-  $output .= '<span class="schedule-date">' . date('l M d, Y', $ctime) . '</span>';
-  $output .= l('>', $cpath, array('attributes' => array('class' => array('next-day')), 'query' => array('sdate' => date('Y_m_d', $ctime+86400))));
-  $output .= '</div>';
+  $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => strtotime($cur_date[0])));
 
   $output .= '<div class="schedule-table">';
   $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
@@ -408,7 +428,7 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
     libxml_set_streams_context($default_context);
   }
   $tvs = simplexml_load_file($xml_feed);
-  //$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml');
+  //$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml','SimpleXMLElement',LIBXML_NOCDATA);
 
 
   if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
@@ -427,9 +447,19 @@ function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
 
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $type)
-    ->propertyCondition('title', $title)
     ->propertyCondition('status', 1)
     ->range(0, 1);
+
+  /**
+   * add fix for WWE
+   * @todo: make configurable
+   */
+  if (strpos($title, 'WWE') === 0) {
+    $query->propertyCondition('title', 'WWE%', 'LIKE');
+  }
+  else {
+    $query->propertyCondition('title', $title);
+  }
 
   $result = $query->execute();
 
@@ -469,7 +499,7 @@ function usanetwork_on_now_panel_js() {
   exit;
 }
 
-/*
+
 function usanetwork_on_now_social_block() {
   $arg = arg();
   $output = '&nbsp;';
@@ -491,17 +521,17 @@ function usanetwork_on_now_social_block() {
 function usanetwork_on_now_social_block_content($node, $tab) {
   $output = '';
   if($tab == 'twitter'){
-    $output .= usanetwork_social_show_on_now_twitter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_twitter_response($node, 3);
   }
   if($tab == 'chatter'){
-    $output .= usanetwork_social_show_on_now_chatter_response($node, 2);
+    $output .= usanetwork_social_show_on_now_chatter_response($node, 3);
   }
   if($tab == 'facebook'){
-    $output .= usanetwork_social_show_on_now_facebook_response($node, 2);
+    $output .= usanetwork_social_show_on_now_facebook_response($node, 3);
   }
   return $output;
 }
-*/
+
 
 /**
  * On now panel content given the tv show node
@@ -574,11 +604,11 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '</div>';
 
   // chat with fans block
-    $output .= usanetwork_social_server_side_chatter_box($node, 2);
-/*
+    //$output .= usanetwork_social_server_side_chatter_box($node, 2);
+
   // Social Show block
-  $output .= usanetwork_social_show_on_now_box($node, 2);
-*/
+  $output .= usanetwork_social_show_on_now_box($node, 3);
+
 
   return $output;
 }

@@ -3935,9 +3935,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .onNow-navSocial-empty-span {
-  width: 17px;
+  width: 5px;
   height: 1px;
   float: left;
+}
+@media (min-width: 930px) {
+  .onNow-navSocial-empty-span {
+    width: 17px;
+  }
 }
 
 .echo-primaryColor {

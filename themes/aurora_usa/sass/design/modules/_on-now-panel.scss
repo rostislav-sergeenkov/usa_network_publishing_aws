@@ -315,9 +315,12 @@
 }
 
 .onNow-navSocial-empty-span{
-    width: 17px;
+    width: 5px;
     height: 1px;
     float: left;
+    @include breakpoint($bp-3-col) {
+      width: 17px;
+    }
 }
 
 .echo-primaryColor {

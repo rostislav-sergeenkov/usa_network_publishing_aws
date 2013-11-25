@@ -197,6 +197,7 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         }
         break;
       case 'usanetwork_video-usa_video_views':
+      case 'usanetwork_mpx_video-usa_mpx_video_views':
         drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
         break;
       case 'views-usa_cast-block_2':
@@ -204,6 +205,8 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
         break;
       case 'usanetwork_video-usa_global_video_nav':
+      case 'usanetwork_mpx_video-usa_global_mpx_video_nav':
+      case 'usanetwork_mpx_video-usa_show_mpx_video_nav':
       case 'usanetwork_video-usa_show_video_nav':
       case 'usanetwork_social-usa_show_social_tab_nav':
         $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
@@ -347,6 +350,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       }
       break;
     case 'title':
+    case 'field_mpx_title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'vid_teaser_episode':
@@ -376,6 +380,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // AIRDATE IN VIDEOS
     case 'field_video_air_date':
+    case 'field_mpx_airdate':
       // change display
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
@@ -385,7 +390,11 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
           case 'vid_teaser_episode':
+            if ($vars['element']['#object']->type == 'mpx_video_1') {
+              $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
+            } else {
             $title = $vars['element']['#object']->title;
+            }
             $airtime = $vars['element']['#items'][0]['value'];
             $air_custom = date('n/d/Y', $airtime);
             $vars['classes_array'][] = drupal_html_class('field-name-title');
@@ -396,8 +405,9 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // episode num IN VIDEOS
     case 'field_episode_number':
+    case 'field_mpx_episode_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || ($vars['element']['#object']->type == 'mpx_video_1')) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
@@ -411,8 +421,9 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // season num IN VIDEOS
     case 'field_season_id':
+    case 'field_mpx_season_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || ($vars['element']['#object']->type == 'mpx_video_1')) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :

@@ -17,7 +17,8 @@
   }
 }
 
-.block-usanetwork-video {
+.block-usanetwork-video,
+.block-usanetwork-mpx-video {
   @extend %grid-small-wide-two-three-four;
   margin: 0 auto;
   .ajax-content {
@@ -40,7 +41,8 @@
   }
 }
 
-#block-usanetwork-video-usa-video-views {
+#block-usanetwork-video-usa-video-views,
+#block-usanetwork-mpx-video-usa-video-views {
   @include breakpoint($bp-grid-small-wide-2-3) {
     padding-left: 15px;
     padding-right: 15px;
@@ -132,9 +134,95 @@
     }
   }
 }
+.block-usanetwork-mpx-video .view {
+  li {
+    list-style: none;
+  }
+  .file {
+    border: 2px solid $gray-dark;
+    .ie8 & {
+      width: 304px;
+    }
+    > a {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    &.file-mpx-video-1  {
+      > a:after {
+        position: absolute;
+        right: 3px;
+        top: 2px;
+        content: "\e002";
+        font-size: 25px;
+        color: $white;
+        @extend %usanetwork-font;
+      }
+      .asset-img:after {
+        @include cssRightTriangle(50px, $black-trans-5, top, right);
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+    .asset-img {
+      line-height: 1em;
+    }
+    .caption-fields-wrapper {
+      position: static;
+      width: 100%;
+      height: 41px;
+      margin: 0;
+      padding: 4px 10px;
+      line-height: 1em;
+      background: $black;
+      @include breakpoint($bp-video-medium-width) {
+        height: 52px;
+        padding: 6px 10px;
+        line-height: 1.25em;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        height: 73px;
+        padding: 11px 15px;
+      }
+    }
+    h4 {
+      @extend %regular-12;
+      margin: 0;
+      &:after {
+        @include background-image(linear-gradient(right, $black 30%, $black-trans-vid));
+        content: $space;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1em;
+        height: 100%;
+      }
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 16px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        margin-bottom: 5px;
+      }
+    }
+    .caption {
+      font-size: 10px;
+      @include breakpoint($bp-video-medium-width) {
+        font-size: 14px;
+      }
+    }
+  }
+  .view-mode-vid_teaser_show_episode {
+    h4 {
+      @include breakpoint($bp-video-very-large-width) {
+      }
+    }
+  }
+}
 
 
-.block-usanetwork-video.usa-secondary-menu {
+.block-usanetwork-video.usa-secondary-menu,
+.block-usanetwork-mpx-video.usa-secondary-menu {
   background: transparent;
   border: 0;
   height: auto;

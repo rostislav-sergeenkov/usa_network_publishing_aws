@@ -64,6 +64,9 @@ function usanetwork_promo_strongarm() {
       'promo_teaser' => array(
         'custom_settings' => TRUE,
       ),
+      'promo_teaser_large' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -83,6 +86,22 @@ function usanetwork_promo_strongarm() {
       'display' => array(
         'usanetwork_promo_preview' => array(
           'teaser' => array(
+            'visible' => FALSE,
+          ),
+          'promo_teaser_large' => array(
+            'weight' => '-10',
+            'visible' => FALSE,
+          ),
+          'home_promo' => array(
+            'weight' => '-10',
+            'visible' => FALSE,
+          ),
+          'home_promo_bspot' => array(
+            'weight' => '-10',
+            'visible' => FALSE,
+          ),
+          'promo_teaser' => array(
+            'weight' => '-10',
             'visible' => FALSE,
           ),
         ),

@@ -142,9 +142,11 @@ function usanetwork_page_collection_node_load($nodes, $types) {
 
   foreach ($pcids as $nid => $pcid) {
     if (!isset($cache['page_collection'][$pcid])) {
-      node_load($pcid);
+      $nodes[$nid]->page_collection_parent = node_load($pcid);
     }
-    $nodes[$nid]->page_collection_parent = &$cache['page_collection'][$pcid];
+    else {
+      $nodes[$nid]->page_collection_parent = &$cache['page_collection'][$pcid];
+    }
   }
 
   foreach ($nodes as $nid => $node) {
@@ -784,12 +786,22 @@ function _usanetwork_page_collection_node_tree($pcid, $relations, $parent = 0) {
   foreach ($relations as $item) {
     if ($item->pcid == $pcid && $item->pnid == $parent) {
       $page = new stdClass();
-      $page->node = node_load($item->nid);
+      if (isset($cache['nodes'][$item->nid])) {
+        $page->node = $cache['nodes'][$item->nid];
+      }
+      else {
+        $page->node = node_load($item->nid);
+      }
       if ($page->node) {
         $page->id = $item->id;
         $page->pcid = $item->pcid;
         $page->weight = $item->weight;
-        $page->parent = node_load($item->pnid);
+        if (isset($cache['page_collection'][$item->pnid])) {
+          $page->parent = $cache['page_collection'][$item->pnid];
+        }
+        else {
+          $page->parent = node_load($item->pnid);
+        }
         $page->prepend_parent_path = $item->prepend_parent_path ? true: false;
         $cache['pages'][$page->node->nid] = $page;
         $page->children = _usanetwork_page_collection_node_tree($pcid, $relations, $item->nid);

@@ -2437,6 +2437,137 @@ input[type="radio"], input[type="checkbox"] {
   width: 304px;
 }
 
+.node-type-tv-show .caption-overlay .title-wide,
+.node-type-tv-show .caption-overlay .caption-wide {
+  display: block;
+}
+@media (max-width: 644px) {
+  .node-type-tv-show .caption-overlay .title-wide,
+  .node-type-tv-show .caption-overlay .caption-wide {
+    display: none;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .node-type-tv-show .caption-overlay .title-wide,
+  .node-type-tv-show .caption-overlay .caption-wide {
+    display: block;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .node-type-tv-show .caption-overlay .title-wide,
+  .node-type-tv-show .caption-overlay .caption-wide {
+    display: none;
+  }
+}
+@media (min-width: 1275px) {
+  .node-type-tv-show .caption-overlay .title-wide,
+  .node-type-tv-show .caption-overlay .caption-wide {
+    display: block;
+  }
+}
+.node-type-tv-show .caption-overlay .title,
+.node-type-tv-show .caption-overlay .caption {
+  display: none;
+}
+@media (max-width: 644px) {
+  .node-type-tv-show .caption-overlay .title,
+  .node-type-tv-show .caption-overlay .caption {
+    display: block;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .node-type-tv-show .caption-overlay .title,
+  .node-type-tv-show .caption-overlay .caption {
+    display: none;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .node-type-tv-show .caption-overlay .title,
+  .node-type-tv-show .caption-overlay .caption {
+    display: block;
+  }
+}
+@media (min-width: 1275px) {
+  .node-type-tv-show .caption-overlay .title,
+  .node-type-tv-show .caption-overlay .caption {
+    display: none;
+  }
+}
+
+.promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
+.promo-metadata .meta-subhead-wide,
+.upcoming-movie .meta .meta-subhead-wide {
+  display: block;
+}
+@media (max-width: 644px) {
+  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
+  .promo-metadata .meta-subhead-wide,
+  .upcoming-movie .meta .meta-subhead-wide {
+    display: none;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
+  .promo-metadata .meta-subhead-wide,
+  .upcoming-movie .meta .meta-subhead-wide {
+    display: block;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
+  .promo-metadata .meta-subhead-wide,
+  .upcoming-movie .meta .meta-subhead-wide {
+    display: none;
+  }
+}
+@media (min-width: 1275px) {
+  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
+  .promo-metadata .meta-subhead-wide,
+  .upcoming-movie .meta .meta-subhead-wide {
+    display: block;
+  }
+}
+.promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
+.promo-metadata .meta-subhead,
+.upcoming-movie .meta .meta-subhead {
+  display: none;
+}
+@media (max-width: 644px) {
+  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
+  .promo-metadata .meta-subhead,
+  .upcoming-movie .meta .meta-subhead {
+    display: block;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
+  .promo-metadata .meta-subhead,
+  .upcoming-movie .meta .meta-subhead {
+    display: none;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
+  .promo-metadata .meta-subhead,
+  .upcoming-movie .meta .meta-subhead {
+    display: block;
+  }
+}
+@media (min-width: 1275px) {
+  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
+  .promo-metadata .meta-subhead,
+  .upcoming-movie .meta .meta-subhead {
+    display: none;
+  }
+}
+
+.c-sport .promo-metadata .meta-head-wide, .c-sport .upcoming-movie .meta .meta-head-wide, .upcoming-movie .c-sport .meta .meta-head-wide,
+.c-sport .promo-metadata .meta-subhead-wide,
+.c-sport .upcoming-movie .meta .meta-subhead-wide,
+.upcoming-movie .c-sport .meta .meta-subhead-wide {
+  display: none;
+}
+
 .filter-dropdown {
   background: #3d3d3d;
   cursor: pointer;
@@ -8311,7 +8442,7 @@ body.person-page #main {
 .aspot .meta-wrap.episodic .episodic-show-title {
   margin: 0 0 1px 0;
   color: #fff;
-  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 17px;
   font-weight: normal;
   line-height: 1;

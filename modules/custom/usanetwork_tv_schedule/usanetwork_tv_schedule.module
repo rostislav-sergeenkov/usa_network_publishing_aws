@@ -419,10 +419,10 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   if (!empty($proxy)) {
     $default_context = stream_context_get_default(
       array('http' =>
-        array(
-         'proxy' => $proxy,
-         'request_fulluri' => true,
-        ),
+      array(
+        'proxy' => $proxy,
+        'request_fulluri' => true,
+      ),
       )
     );
     libxml_set_streams_context($default_context);
@@ -557,7 +557,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     // link image to show sync page
     $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path.'/social/sync', array('html' => true)) . '</figure></div>';
   } else {
-    $output .= '<div class="show-on-now-wrapper"><figure>' . theme('image_style', $on_now_image) . '</figure>';
+    $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), $path, array('html' => true)) . '</figure>';
   }
 
   // show info
@@ -604,7 +604,7 @@ function usanetwork_on_now_panel_node_content($node, $text) {
   $output .= '</div>';
 
   // chat with fans block
-    //$output .= usanetwork_social_server_side_chatter_box($node, 2);
+  //$output .= usanetwork_social_server_side_chatter_box($node, 2);
 
   // Social Show block
   $output .= usanetwork_social_show_on_now_box($node, 3);

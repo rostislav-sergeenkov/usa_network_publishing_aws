@@ -610,10 +610,21 @@ function usanetwork_core_update_7128() {
 }
 
 /**
+ * enable modules: metatag_twitter_cards, metatag_twitter_cards_see_it
+ */
+function usanetwork_core_update_7129() {
+  $modules_en = array(
+    'metatag_twitter_cards',
+    'metatag_twitter_cards_see_it',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PREP FOR NEW VIDEO CODE
  */
 /*
-function usanetwork_core_update_7129() {
+function usanetwork_core_update_7130() {
   $modules_en = array(
     'usanetwork_mpx_video',
   );

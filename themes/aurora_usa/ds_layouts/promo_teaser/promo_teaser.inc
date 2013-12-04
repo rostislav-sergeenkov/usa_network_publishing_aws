@@ -6,6 +6,8 @@ function ds_promo_teaser() {
       'media' => t('Media'),
       'title' => t('Title'),
       'caption' => t('Caption'),
+      'title_wide' => t('Title Wide'),
+      'caption_wide' => t('Caption Wide'),
       'link' => t('link'),
       'target' => t('Target'),
     ),

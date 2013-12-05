@@ -1605,7 +1605,10 @@ if (!path_is_admin(current_path())) {
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
       $sourceName = strval($entries->source->name);
       $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
-
+      if($sourceUri != '') {
+        $tweetId = explode("/status/", $sourceUri);
+      }
+      //echo 'tweetId'.$tweetId[1];exit;
       $markers = (isset($entries->object->markers) &&
       is_array($entries->object->markers) &&
       count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
@@ -1637,7 +1640,9 @@ if (!path_is_admin(current_path())) {
                                    <div class="echo-item-date" style="display: none;">'.$time.'</div>
                                    <div class="echo-item-from">&nbsp;from&nbsp;<a href="https://twitter.com/saadz94/status/388261974410534912" class="echo-secondaryColor">Twitter</a></div>
                                    <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
-                                   <div class="echo-clear"></div>
+                                  <div class="echo-item-controls"><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconReply">&nbsp;</span><span>Reply</span></a><span class="echo-item-control-delim"> · </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Retweet" href="https://twitter.com/intent/retweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconRetweet">&nbsp;</span><span>Retweet</span></a><span class="echo-item-control-delim"> · </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Favorite" href="https://twitter.com/intent/favorite?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconFavorite">&nbsp;</span><span>Favorite</span></a></div>
+                                  <div class="echo-clear"></div>
+
                                 </div>
                              </div>
                           </div>
@@ -1951,7 +1956,9 @@ if (!path_is_admin(current_path())) {
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
       $sourceName = strval($entries->source->name);
       $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
-
+      if($sourceUri != '') {
+        $tweetId = explode("/status/", $sourceUri);
+      }
       $markers = (isset($entries->object->markers) &&
       is_array($entries->object->markers) &&
       count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
@@ -1983,6 +1990,7 @@ if (!path_is_admin(current_path())) {
                                  <div class="echo-item-date" style="display: none;">'.$time.'</div>
                                  <div class="echo-item-from">&nbsp;from&nbsp;<a href="https://twitter.com/saadz94/status/388261974410534912" class="echo-secondaryColor">Twitter</a></div>
                                  <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
+                                 <div class="echo-item-controls"><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconReply">&nbsp;</span><span>Reply</span></a><span class="echo-item-control-delim"> · </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Retweet" href="https://twitter.com/intent/retweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconRetweet">&nbsp;</span><span>Retweet</span></a><span class="echo-item-control-delim"> · </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Favorite" href="https://twitter.com/intent/favorite?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconFavorite">&nbsp;</span><span>Favorite</span></a></div>                                 
                                  <div class="echo-clear"></div>
                               </div>
                            </div>

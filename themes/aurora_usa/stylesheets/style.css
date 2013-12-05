@@ -4095,6 +4095,22 @@ input[type="radio"], input[type="checkbox"] {
   color: #FFFFFF !important;
 }
 
+body[data-menu-direction="left"][data-menu-position="open"] .jPanelMenu-panel {
+  overflow: visible;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 500ms;
+  -moz-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  transition-duration: 500ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
 body[data-menu-direction="right"][data-menu-position="open"] .jPanelMenu-panel {
   overflow: hidden;
 }

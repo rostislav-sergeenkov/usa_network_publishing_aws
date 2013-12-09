@@ -16,8 +16,18 @@
     <?php if ($title && $title != "&nbsp;"): ?>
       <div class="title"><?php print $title; ?></div>
     <?php endif; ?>
+    <?php if ($title_wide && $title_wide != "&nbsp;"): ?>
+      <div class="title-wide"><?php print $title_wide; ?></div>
+    <?php elseif ($title && $title != "&nbsp;"): ?>
+      <div class="title-wide"><?php print $title; ?></div>
+    <?php endif; ?>
     <?php if ($caption && $caption != "&nbsp;"): ?>
       <div class="caption"><?php print ($caption); ?></div>
+    <?php endif; ?>
+    <?php if ($caption_wide && $caption_wide != "&nbsp;"): ?>
+      <div class="caption-wide"><?php print ($caption_wide); ?></div>
+    <?php elseif ($caption && $caption != "&nbsp;"): ?>
+      <div class="caption-wide"><?php print ($caption); ?></div>
     <?php endif; ?>
     </div>
   </div>

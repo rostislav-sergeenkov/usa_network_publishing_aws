@@ -341,3 +341,42 @@
     color : #FFFFFF !important;
   }
 }
+body {
+  &[data-menu-direction="left"][data-menu-position="open"] {
+    .jPanelMenu-panel {
+        overflow: visible;
+        @include transition-property(left);
+        @include transition-duration(500ms);
+        @include transition-timing-function(ease-in-out);
+    }
+  }
+}
+
+.echo-item-twitterIntentsIcon {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 3px;
+    background: url("https://si0.twimg.com/images/dev/cms/intents/icons/sprites/everything-spritev2.png") no-repeat scroll 0% 0% transparent;
+}
+.echo-item-twitterIntentsIconReply {
+    background-position: 0px -2px;
+}
+.echo-item-twitterIntentsIconRetweet {
+    background-position: -80px -2px;
+}
+.echo-item-twitterIntentsIconFavorite {
+    background-position: -32px -2px;
+}
+.tweetDisplay-activeButton.echo-item-twitterIntentsIconReply {
+    background-position: -16px -2px;
+}
+.tweetDisplay-activeButton.echo-item-twitterIntentsIconRetweet {
+    background-position: -96px -2px;
+}
+.tweetDisplay-activeButton.echo-item-twitterIntentsIconFavorite {
+    background-position: -48px -2px;
+}
+#inner-on-now-panel .echo-item-from {
+  width : 90%;
+}

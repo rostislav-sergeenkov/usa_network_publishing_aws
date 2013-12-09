@@ -19,7 +19,17 @@
         <div class="promo-cta row-4 media"><?php print $cta; ?></div>
       <?php endif; ?>
       <?php if ($text_1 && $text_1 != '&nbsp;'): ?><h2 class="meta-head"><?php print $text_1; ?></h2><?php endif; ?>
+      <?php if ($text_1_wide && $text_1_wide != '&nbsp;'): ?>
+        <h2 class="meta-head-wide"><?php print $text_1_wide; ?></h2>
+      <?php elseif ($text_1 && $text_1 != '&nbsp;'): ?>
+        <h2 class="meta-head-wide"><?php print $text_1; ?></h2>
+      <?php endif; ?>
       <?php if ($text_2 && $text_2 != '&nbsp;'): ?><h3 class="meta-subhead"><?php print ($text_2); ?></h3><?php endif; ?>
+      <?php if ($text_2_wide && $text_2_wide != '&nbsp;'): ?>
+        <h3 class="meta-subhead-wide"><?php print ($text_2_wide); ?></h3>
+      <?php elseif ($text_2 && $text_2 != '&nbsp;'): ?>
+        <h3 class="meta-subhead-wide"><?php print ($text_2); ?></h3>
+      <?php endif; ?>
     </div>
   <?php endif; ?>
 

@@ -160,6 +160,11 @@ function usanetwork_core_enable_modules() {
     'usanetwork_catchall_collection',
     'usanetwork_page_collection',
     'usanetwork_lyris',
+    'usanetwork_video_mobile',
+//    'surf',
+//    'usanetwork_surf',
+//    'usanetwork_personalization',
+//    'usanetwork_og_metatags',
 //    'usanetwork_mpx_video',
     // pub ent overrides
     'pub_files_overrides',
@@ -610,10 +615,46 @@ function usanetwork_core_update_7128() {
 }
 
 /**
+ * enable modules: metatag_twitter_cards, metatag_twitter_cards_see_it
+ */
+function usanetwork_core_update_7129() {
+  $modules_en = array(
+    'metatag_twitter_cards',
+    'metatag_twitter_cards_see_it',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * ITERATION 4
+ */
+function usanetwork_core_update_7130() {
+  $modules_en = array(
+    'usanetwork_video_mobile'
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * PERSONALIZATION
+ */
+/*
+function usanetwork_core_update_7130() {
+  $modules_en = array(
+    'surf',
+    'usanetwork_surf',
+    'usanetwork_personalization',
+    'usanetwork_og_metatags',
+  );
+  module_enable($modules_en);
+}
+*/
+
+/**
  * PREP FOR NEW VIDEO CODE
  */
 /*
-function usanetwork_core_update_7129() {
+function usanetwork_core_update_7131() {
   $modules_en = array(
     'usanetwork_mpx_video',
   );

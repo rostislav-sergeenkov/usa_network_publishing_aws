@@ -141,6 +141,7 @@
             .removeClass('state-personalization')
             .addClass('state-on-now');
           jPM.direction('left');
+          $('.jPanelMenu-panel').slideDown();
           $('body').attr('data-menu-direction', 'left');
           jPM.trigger();
         }

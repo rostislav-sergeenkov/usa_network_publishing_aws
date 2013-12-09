@@ -446,6 +446,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // PROMO line 1 text on
     case 'field_promo_text_line_1':
+    case 'field_promo_text_line_1_wide':
       // change display
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {

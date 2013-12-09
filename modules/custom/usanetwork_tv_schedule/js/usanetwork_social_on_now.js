@@ -143,4 +143,18 @@
     $('#up-next-panel #join-chatter').hide();
   });
 
+  $("#inner-on-now-panel .echo-item-controls a").live("click", function() {
+    window.open($(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes"); 
+    return false;
+  });
+
+  $("#inner-on-now-panel .echo-item-controls a").live("mouseover", function() {
+    //$(this).parent().addClass("tweetDisplay-activeButton");
+    $(this).find('.echo-item-twitterIntentsIcon').addClass("tweetDisplay-activeButton");
+  });
+
+  $("#inner-on-now-panel .echo-item-controls a").live("mouseout", function() {
+    $(this).find('.echo-item-twitterIntentsIcon').removeClass("tweetDisplay-activeButton");
+  });
+
 })(jQuery);

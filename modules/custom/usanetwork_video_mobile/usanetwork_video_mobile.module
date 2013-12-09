@@ -9,7 +9,8 @@ define('USANETWORK_USANOW_ANDROID_URL', 'https://play.google.com/store/apps/deta
  */
 function usanetwork_video_mobile_node_view($node, $view_mode, $langcode) {
   // add app link for full episodes
-  if ($node->type == 'usa_video' && $view_mode == 'full') {
+  $types = array('usa_video', 'usa_tve_video');
+  if (in_array($node->type, $types) && $view_mode == 'full') {
     $full_episode = reset(field_get_items('node', $node, 'field_full_episode'));
     if ($full_episode) {
       $full_episode = (bool) $full_episode['value'];

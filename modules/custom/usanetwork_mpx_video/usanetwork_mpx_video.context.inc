@@ -19,8 +19,8 @@ function usanetwork_mpx_video_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'videos_mpx' => 'videos_mpx',
-        'videos_mpx/*' => 'videos_mpx/*',
+        'videos' => 'videos',
+        'videos/*' => 'videos/*',
       ),
     ),
   );
@@ -71,6 +71,11 @@ function usanetwork_mpx_video_context_default_contexts() {
         'field_not_empty' => 1,
       ),
     ),
+    'path' => array(
+      'values' => array(
+        '~video' => '~video',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -96,7 +101,7 @@ function usanetwork_mpx_video_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.

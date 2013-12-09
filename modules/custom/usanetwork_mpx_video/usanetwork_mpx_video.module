@@ -6,17 +6,19 @@
 
 include_once 'usanetwork_mpx_video.features.inc';
 
+define('USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR', '[default mpx field]');
+
 /**
  * Implementation of hook_menu().
  */
 function usanetwork_mpx_video_menu() {
   // global videos page
-  $items['videos_mpx'] = array(
+  $items['videos'] = array(
     'title' => t('Videos'),
     'page callback' => 'usanetwork_mpx_video_global_videos_page',
     'access arguments' => array('access content'),
   );
-  $items['videos_mpx/ajax'] = array(
+  $items['videos/ajax'] = array(
     'title' => 'MPX Video View',
     'page callback' => 'usanetwork_mpx_video_views_ajax',
     'delivery callback' => 'ajax_deliver',
@@ -102,7 +104,7 @@ function usanetwork_mpx_video_global_nav() {
 
   // Fetch all the video node associated with any show
   $query->entityCondition('entity_type', 'file')
-    ->entityCondition('bundle', array('mpx_video_1'))
+    ->entityCondition('bundle', _usanetwork_mpx_video_get_all_file_types())
     ->propertyCondition('published', 1)
     ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
 
@@ -121,7 +123,7 @@ function usanetwork_mpx_video_global_nav() {
         // Add all the published tv show nodes
         if (isset($show[0]) && !empty($show[0])) {
           $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
-          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos_mpx');
+          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           $items[0]['children'][] = l($title, $path, array('html' => true));
         }
       }
@@ -134,13 +136,13 @@ function usanetwork_mpx_video_global_nav() {
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
 
-  if (($arg[0] == 'videos_mpx' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
+  if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
     (isset($node->field_mpx_full_episode[$lang][0]['value']) && !empty($node->field_mpx_full_episode[$lang][0]['value']))) {
-    $items[] = array('data' => l('<span>full episodes</span>', 'videos_mpx/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
-    $items[] = array('data' => l("<span>what's hot</span>", 'videos_mpx/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
+    $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
+    $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
   } else {
-    $items[] = array('data' => l('<span>full episodes</span>', 'videos_mpx/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
-    $items[] = array('data' => l("<span>what's hot</span>", 'videos_mpx/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
+    $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
+    $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
   }
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('categories'))));
@@ -172,8 +174,8 @@ function usanetwork_mpx_video_show_nav() {
 
   // Fetch all the video node associated with any show
   $query->entityCondition('entity_type', 'file')
-    ->entityCondition('bundle', array('mpx_video_1'))
-    ->propertyCondition('status', 1)
+    ->entityCondition('bundle', _usanetwork_mpx_video_get_all_file_types())
+    ->propertyCondition('published', 1)
     ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
 
   $result = $query->execute();
@@ -191,7 +193,7 @@ function usanetwork_mpx_video_show_nav() {
         // Add all the published tv show nodes
         if (isset($show[0]) && !empty($show[0])) {
           $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
-          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos_mpx');
+          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
           if ($file->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
             $items[0]['data'] = $title;
             $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
@@ -222,17 +224,25 @@ function usanetwork_mpx_video_show_nav() {
   }
 
   $active_tids = array();
-  if (isset($file->field_usa_video_terms[$lang][0]['target_id']) && !empty($file->field_usa_video_terms[$lang][0]['target_id'])) {
-    foreach ($file->field_usa_video_terms[$lang] as $tids) {
-      $parent = array_values(taxonomy_get_parents($tids['target_id']));
+  if (isset($file->field_mpx_media_categories[$lang][0]['value']) && !empty($file->field_mpx_media_categories[$lang][0]['value'])) {
+    foreach ($file->field_mpx_media_categories[$lang] as $categories_mpx) {
+      $categories = explode('/', $categories_mpx['value']);
+      foreach ($categories as $category) {
+        $term_mpx_array = taxonomy_get_term_by_name($category, 'usa_video_terms');
+        $term_mpx = current($term_mpx_array);
+        $parent = array_values(taxonomy_get_parents($term_mpx->tid));
       if (isset($parent[0]) && $parent[0]->name == 'Series') {
-        $term = taxonomy_term_load($tids['target_id']);
+          $term = taxonomy_term_load($term_mpx->tid);
       }
-      $active_tids[] = $tids['target_id'];
+        $active_tids[] = $term_mpx->tid;
+      }
     }
 
     if (!isset($term->tid)) {
-      $parents = array_values(taxonomy_get_parents_all($file->field_usa_video_terms[$lang][0]['target_id']));
+      $categories = explode('/', $file->field_mpx_media_categories[$lang][0]['value']);
+      $term_mpx_array = taxonomy_get_term_by_name($categories[0], 'usa_video_terms');
+      $term_mpx = current($term_mpx_array);
+      $parents = array_values(taxonomy_get_parents_all($term_mpx->tid));
       foreach ($parents as $i => $pterm) {
         if (isset($pterm->name) && $pterm->name == 'Series') {
           $term = $parents[$i-1];
@@ -312,7 +322,7 @@ function usanetwork_mpx_video_views($arg = null) {
 
   if (!empty($tid)) {
     $output = views_embed_view('usa_mpx_video', 'category_mpx_videos', $tid);
-  } else if ($arg[0] == 'videos_mpx') {
+  } else if ($arg[0] == 'videos') {
     if (!isset($arg[1]) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
       $output = views_embed_view('usa_mpx_video', 'global_full_mpx_episode');
     } else if ($arg[1] == 'whats-hot') {
@@ -328,11 +338,16 @@ function usanetwork_mpx_video_views($arg = null) {
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
         $output = views_embed_view('usa_mpx_video', 'show_full_mpx_episode', $show_nid);
       } else {
-        foreach ($file->field_usa_video_terms[$lang] as $tids) {
-          $parent = array_values(taxonomy_get_parents($tids['target_id']));
-          if (isset($parent[0]) && $parent[0]->name != 'Series') {
-            $term = taxonomy_term_load($tids['target_id']);
-            break;
+        foreach ($file->field_mpx_media_categories[$lang] as $categories_mpx) {
+          $categories = explode('/', $categories_mpx['value']);
+          foreach ($categories as $category) {
+            $term_mpx_array = taxonomy_get_term_by_name($category, 'usa_video_terms');
+            $term_mpx = current($term_mpx_array);
+            $parent = array_values(taxonomy_get_parents($term_mpx->tid));
+            if (isset($parent[0]) && $parent[0]->name == 'Series') {
+              $term = taxonomy_term_load($term_mpx->tid);
+              break;
+            }
           }
         }
         if (isset($term->tid) && !empty($term->tid)) {
@@ -340,9 +355,12 @@ function usanetwork_mpx_video_views($arg = null) {
         }
 
         // the last term is the correct term id of the category
-        $count = count($file->field_usa_video_terms[$lang]);
-        if (empty($output) && isset($file->field_usa_video_terms[$lang][$count-1]['target_id'])) {
-          $output = views_embed_view('usa_mpx_video', 'category_mpx_videos', $file->field_usa_video_terms[$lang][$count-1]['target_id']);
+        $categories = explode('/', $file->field_mpx_media_categories[$lang][0]['value']);
+        $count = count($categories);
+        $term_mpx_array = taxonomy_get_term_by_name($categories[$count-1], 'usa_video_terms');
+        $term_mpx = current($term_mpx_array);
+        if (empty($output) && isset($term_mpx->tid)) {
+          $output = views_embed_view('usa_mpx_video', 'category_mpx_videos', $term_mpx->tid);
         }
       }
     } else {
@@ -370,11 +388,14 @@ function usanetwork_mpx_video_views($arg = null) {
       }
     }
 
-    if (isset($file->field_usa_video_terms[$lang])) {
+    if (isset($file->field_mpx_media_categories[$lang][0])) {
       // the last term is the correct term id of the category
-      $count = count($file->field_usa_video_terms[$lang]);
-      if (empty($output) && isset($file->field_usa_video_terms[$lang][$count-1]['target_id'])) {
-        $output = views_embed_view('usa_mpx_video', 'category_mpx_videos', $file->field_usa_video_terms[$lang][$count-1]['target_id']);
+      $categories = explode('/', $file->field_mpx_media_categories[$lang][0]['value']);
+      $count = count($categories);
+      $term_mpx_array = taxonomy_get_term_by_name($categories[$count-1], 'usa_video_terms');
+      $term_mpx = current($term_mpx_array);
+      if (empty($output) && isset($term_mpx->tid)) {
+        $output = views_embed_view('usa_mpx_video', 'category_mpx_videos', $term_mpx->tid);
       }
     }
   }
@@ -421,4 +442,131 @@ function _usanetwork_mpx_video_full_episodes_exist($show_nid) {
   $count = intval($query->execute());
 
   return  $count > 0 ? true : false;
+}
+
+/**
+ * Helper function; Load node by title
+ */
+function _usanetwork_mpx_video_node_load_by_title($title, $node_type) {
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', $node_type)
+    ->propertyCondition('title', $title)
+    ->propertyCondition('status', 1)
+    ->range(0,1)
+    ->execute();
+  if(!empty($entities)) {
+    return node_load(array_shift(array_keys($entities['node'])));
+  }
+}
+
+/**
+ * Implements hook_file_presave().
+ */
+function usanetwork_mpx_video_file_presave($file) {
+  
+  if (strpos($file->type, 'mpx_video') !== 0) {
+    return;
+  }
+  $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 0, 'value');;
+  $categories = explode('/', $categories_mpx);
+  if (isset($categories[1])) {
+    $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
+    if (isset($node->nid)) {
+      $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+    } 
+  }
+}
+
+/**
+ * Helper function for getting all file types
+ */
+function _usanetwork_mpx_video_get_all_file_types() {
+  $file_types = array();
+  foreach (_media_theplatform_mpx_get_account_data() as $account) {
+    $file_types[] = 'mpx_video_' . $account->id;
+  }
+
+  return $file_types;
+}
+
+/**
+ * Gets the 'pl%d' pattern prefix.
+ *
+ * @param $media_data
+ * @return string
+ */
+function _usanetwork_mpx_video_parse_pl_prefix($media_data) {
+  if (isset($media_data['$xmlns'])) {
+    foreach ($media_data['$xmlns'] as $key => $data) {
+      if (preg_match('/pl\d/', $key)) {
+        return $key . '$';
+      }
+    }
+  }
+
+  return 'pl1$';
+}
+
+function _usanetwork_mpx_video_parse_data($path, $data) {
+  $result = array();
+
+  if (!is_array($path)) {
+    $path = explode('/', $path);
+  }
+
+  while ($path) {
+    $step = array_shift($path);
+
+    if (!isset($data[$step])) {
+      continue;
+    }
+
+    if (is_array($data[$step])) {
+      foreach ($data[$step] as $data_unit) {
+        if (is_array($data_unit)) {
+          $result[] = _usanetwork_mpx_video_parse_data($path, $data_unit);
+        }
+        else {
+          $result[] = $data_unit;
+        }
+      }
+    }
+    else {
+      $result = $data[$step];
+    }
+  }
+
+  return $result;
+}
+
+/**
+ * Prepares ingested metadata to be saved into file entity.
+ * Implements hook_media_theplatform_mpx_media_import_item_alter().
+ */
+function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$media_item, &$media_data, $account){
+  if (!isset($media_item['field_data'])) {
+    $media_item['field_data'] = array();
+  }
+ 
+  foreach (_pub_mpx_get_mpx_account_video_file_types() as $file_bundle_name => $file_type) {
+    foreach (field_info_instances('file', $file_bundle_name) as $field) {
+      
+      if (!isset($field['widget']['settings']['pub_mpx']['media_data_fieldpath']) ||
+          $field['widget']['settings']['pub_mpx']['media_data_fieldpath'] == USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR) {
+        continue;
+      }
+      
+      $field_pattern = $field['widget']['settings']['pub_mpx']['media_data_fieldpath'];
+      $pl_prefix = _usanetwork_mpx_video_parse_pl_prefix($media_data);
+      $pattern = str_replace('pl1$', $pl_prefix, $field_pattern);
+      $value = _usanetwork_mpx_video_parse_data($pattern, $media_data);
+      
+      if ($field['field_name'] == 'field_mpx_full_episode') {
+        $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
+      } else {
+        $media_item['field_data'][$field['field_name']] = $value;
+      }
+    }
+  }
 }

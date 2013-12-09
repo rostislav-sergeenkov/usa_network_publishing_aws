@@ -14,7 +14,7 @@ function usanetwork_mpx_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_file_mpx_video_1_pattern';
-  $strongarm->value = '[file:field_show]/videos_mpx/[file:name]';
+  $strongarm->value = '[file:field_show]/videos/[file:name]';
   $export['pathauto_file_mpx_video_1_pattern'] = $strongarm;
 
   return $export;

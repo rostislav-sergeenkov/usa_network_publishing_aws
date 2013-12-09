@@ -8,8 +8,6 @@ function ds_usa_mpx_video() {
       'season' => t('season'),
       'episode' => t('episode'),
       'airdate' => t('airdate'),
-      'tve_auth' => t('video image'),
-      'ad' => t('ad')
     ),
     'css' => true,
     'image' => false

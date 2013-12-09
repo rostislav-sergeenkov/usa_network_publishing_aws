@@ -47,7 +47,7 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = '';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Field: Air Date (Pub Date) (field_mpx_airdate) */
+  /* Sort criterion: File: MPX Media Air Date (field_mpx_airdate) */
   $handler->display->display_options['sorts']['field_mpx_airdate_value']['id'] = 'field_mpx_airdate_value';
   $handler->display->display_options['sorts']['field_mpx_airdate_value']['table'] = 'field_data_field_mpx_airdate';
   $handler->display->display_options['sorts']['field_mpx_airdate_value']['field'] = 'field_mpx_airdate_value';
@@ -63,20 +63,25 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['published']['field'] = 'published';
   $handler->display->display_options['filters']['published']['value'] = '1';
   $handler->display->display_options['filters']['published']['group'] = 1;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'mpx_video_1' => 'mpx_video_1',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
   $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
   $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
   $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
   $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
   $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'mpx_player' => 'mpx_player',
+    'mpx_video' => 'mpx_video',
+    'video' => 'video',
+  );
 
   /* Display: Global Full Episode */
   $handler = $view->new_display('block', 'Global Full Episode', 'global_full_mpx_episode');

@@ -320,28 +320,51 @@ function usanetwork_showpages_videos($node) {
     return;
   }
   $show = $node->nid;
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
-  $query->propertyCondition('status', 1);
-  $query->fieldCondition('field_show', 'target_id', $show);
-  $query->fieldCondition('field_full_episode', 'value', '1', '=');
-  $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
-  $query->range(0, 1);
-  // execute the query
-  $result = $query->execute();
-  // load the latest episode
-  // then go to that page
-  if (!empty($result['node'])) {
-    $nid = array_keys($result['node']);
-    $nid = $nid[0];
-    drupal_goto('node/' . $nid);
+  if (module_exists('usanetwork_mpx_video')) {
+    $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+    $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+    $query->condition('fm.published', 1);
+    $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
+    $query->condition('fdfs.field_show_target_id', $show);
+    $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+    $query->orderBy('mv.airdate', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute()->fetchObject();
+    // load the latest episode
+    // then go to that page
+    if (!empty($result->fid)) {
+      drupal_goto('file/' . $result->fid);
+  } else {
+      $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+      $query->condition('fm.type', 'mpx_video_1');
+      $query->condition('fm.published', 1);
+      $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+      $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+      $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->orderBy('mv.airdate', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute();
+      // load the latest episode
+      // then go to that page
+      if (!empty($result->fid)) {
+        drupal_goto('file/' . $result->fid);
+    }
+    // or go back to the show node
+    drupal_goto('node/' . $show);
+    }
   } else {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
     $query->propertyCondition('status', 1);
     $query->fieldCondition('field_show', 'target_id', $show);
+    $query->fieldCondition('field_full_episode', 'value', '1', '=');
     $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
     $query->range(0, 1);
     // execute the query
@@ -352,9 +375,26 @@ function usanetwork_showpages_videos($node) {
       $nid = array_keys($result['node']);
       $nid = $nid[0];
       drupal_goto('node/' . $nid);
+    } else {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node');
+      $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+      $query->propertyCondition('status', 1);
+      $query->fieldCondition('field_show', 'target_id', $show);
+      $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute();
+      // load the latest episode
+      // then go to that page
+      if (!empty($result['node'])) {
+        $nid = array_keys($result['node']);
+        $nid = $nid[0];
+        drupal_goto('node/' . $nid);
+      }
+      // or go back to the show node
+      drupal_goto('node/' . $show);
     }
-    // or go back to the show node
-    drupal_goto('node/' . $show);
   }
 }
 

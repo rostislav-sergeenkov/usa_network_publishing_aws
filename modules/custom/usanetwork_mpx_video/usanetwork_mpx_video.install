@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * usanetwork_mpx_video module installation.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function usanetwork_mpx_video_install() {
+  module_disable(array('usanetwork_migrate', 'usanetwork_video'));
+  
+  db_update('system')
+    ->fields(array('weight' => 700))
+    ->condition('name', 'usanetwork_mpx_video')
+    ->execute();
+}

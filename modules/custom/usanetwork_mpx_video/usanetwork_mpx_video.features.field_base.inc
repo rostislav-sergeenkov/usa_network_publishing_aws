@@ -153,17 +153,17 @@ function usanetwork_mpx_video_field_default_field_bases() {
     'settings' => array(
       'handler' => 'base',
       'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
         'sort' => array(
           'type' => 'none',
         ),
         'target_bundles' => array(
-          0 => 0,
-          'audio' => 0,
-          'document' => 0,
-          'image' => 0,
-          'mpx_player' => 0,
           'mpx_video_1' => 'mpx_video_1',
-          'video' => 0,
+          'mpx_video_2' => 'mpx_video_2',
         ),
       ),
       'target_type' => 'file',

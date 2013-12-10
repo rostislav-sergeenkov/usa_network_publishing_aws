@@ -465,16 +465,28 @@ function _usanetwork_mpx_video_node_load_by_title($title, $node_type) {
  */
 function usanetwork_mpx_video_file_presave($file) {
   
+  //saving show  
   if (strpos($file->type, 'mpx_video') !== 0) {
     return;
   }
-  $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 0, 'value');;
+  $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 0, 'value');
   $categories = explode('/', $categories_mpx);
+  if (count($categories) !== 1) {
   if (isset($categories[1])) {
     $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
     if (isset($node->nid)) {
       $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
     } 
+  }
+  } else {
+    $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 1, 'value');
+    $categories = explode('/', $categories_mpx);
+    if (isset($categories[1])) {
+      $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
+      if (isset($node->nid)) {
+        $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+      } 
+    }
   }
 }
 

@@ -177,6 +177,7 @@ function usanetwork_ads_add_omniture_ajax_submit(&$form, &$form_state) {
  * Returns dart form elements
  */
 function _usanetwork_ads_dart_elements(&$parent, $defaults = array()) {
+  dpm($defaults);
   $parent['is_sponsored'] = array(
     '#type' => 'radios',
     '#title' => t('Is Sponsored'),
@@ -185,7 +186,7 @@ function _usanetwork_ads_dart_elements(&$parent, $defaults = array()) {
       0 => t('No'),
       1 => t('Yes'),
     ),
-    '#default_value' => isset($defaults['is_sponsored']) ? $defaults['is_sponsored'] : -1,
+    '#default_value' => isset($defaults['is_sponsored']) && $defaults['is_sponsored'] !== false ? $defaults['is_sponsored'] : -1,
   );
   $parent['sect'] = array(
     '#type' => 'textfield',

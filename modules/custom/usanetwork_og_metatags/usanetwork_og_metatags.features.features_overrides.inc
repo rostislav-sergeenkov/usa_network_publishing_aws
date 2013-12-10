@@ -13,7 +13,7 @@ function usanetwork_og_metatags_features_override_default_overrides() {
 
   // Exported overrides for: metatag
   $overrides["metatag.node:media_gallery.config|og:description"] = array(
-    'value' => '[node:title] Photos | [node:summary]',
+    'value' => '[node:title] Photos | [node:body]',
   );
   $overrides["metatag.node:media_gallery.config|og:title"] = array(
     'value' => '[node:field-show:title] | [node:title]',
@@ -31,16 +31,18 @@ function usanetwork_og_metatags_features_override_default_overrides() {
   $overrides["metatag.node:tv_season.config|og:title"] = array(
     'value' => '[node:field-show:title] | [node:title]',
   );
-  $overrides["metatag.node:tv_show.config|og:description"]["DELETED"] = TRUE;
+  $overrides["metatag.node:tv_show.config|og:description"] = array(
+		'value' => '[node:body]',
+	);
   $overrides["metatag.node:tv_show.config|og:image|value"] = '[node:field_logo]';
   $overrides["metatag.node:usa_tve_video.config|og:description"] = array(
-    'value' => '[node:title] | [node:summary]',
+    'value' => '[node:title] | [node:body]',
   );
   $overrides["metatag.node:usa_tve_video.config|og:title"] = array(
     'value' => '[node:field-show:title] | [node:title]',
   );
   $overrides["metatag.node:usa_video.config|og:description"] = array(
-    'value' => '[node:title] | [node:summary]',
+    'value' => '[node:title] | [node:body]',
   );
   $overrides["metatag.node:usa_video.config|og:title"] = array(
     'value' => '[node:field-show:title] | [node:title]',

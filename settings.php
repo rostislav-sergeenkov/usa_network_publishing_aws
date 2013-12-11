@@ -271,7 +271,7 @@ function default_site_request_handler() {
 /**
  * Setting a reasonable minimum php memory limit.
  */
-ini_set('memory_limit', '256M');
+ini_set('memory_limit', '512M');
 
 
 /**

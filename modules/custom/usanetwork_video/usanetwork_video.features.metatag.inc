@@ -15,7 +15,7 @@ function usanetwork_video_metatag_export_default() {
     'instance' => 'node:usa_tve_video',
     'config' => array(
       'og:title' => array(
-        'value' => '[node:field_show:title] | [node:title]',
+        'value' => '[node:field-show:title] | [node:title]',
       ),
       'og:description' => array(
         'value' => '[node:title] | [node:body]',
@@ -31,7 +31,7 @@ function usanetwork_video_metatag_export_default() {
     'instance' => 'node:usa_video',
     'config' => array(
       'og:title' => array(
-        'value' => '[node:field_show:title] | [node:title]',
+        'value' => '[node:field-show:title] | [node:title]',
       ),
       'og:description' => array(
         'value' => '[node:title] | [node:body]',

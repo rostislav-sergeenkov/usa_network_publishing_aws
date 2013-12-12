@@ -17,6 +17,9 @@ function usanetwork_static_page_metatag_export_default() {
       'description' => array(
         'value' => '[node:field_usa_og_description]',
       ),
+      'og:title' => array(
+        'value' => '[node:title]',
+      ),
       'og:description' => array(
         'value' => '[node:field_usa_og_description]',
       ),

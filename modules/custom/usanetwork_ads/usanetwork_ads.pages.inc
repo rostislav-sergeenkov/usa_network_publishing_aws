@@ -185,7 +185,7 @@ function _usanetwork_ads_dart_elements(&$parent, $defaults = array()) {
       0 => t('No'),
       1 => t('Yes'),
     ),
-    '#default_value' => isset($defaults['is_sponsored']) ? $defaults['is_sponsored'] : -1,
+    '#default_value' => isset($defaults['is_sponsored']) && $defaults['is_sponsored'] !== false ? $defaults['is_sponsored'] : -1,
   );
   $parent['sect'] = array(
     '#type' => 'textfield',

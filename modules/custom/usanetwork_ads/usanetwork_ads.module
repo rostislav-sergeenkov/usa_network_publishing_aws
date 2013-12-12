@@ -130,6 +130,22 @@ function usanetwork_ads_block_view($delta) {
   return $block;
 }
 
+/**
+ * Implements hook_page_alter().
+ */
+function usanetwork_ads_page_alter(&$page) {
+  // Disable omniture if needed
+  if (isset($page['page_bottom']['sitecatalyst'])) {
+    $current_path = current_path();
+    $args = explode('/', $current_path);
+    if (count($args) >=2 && $args[0] == 'node' && is_numeric($args[1])) {
+      $node = node_load($args[1]);
+      if (_usanetwork_ads_get_node_omniture_variables($node) == false) {
+        unset($page['page_bottom']['sitecatalyst']);
+      }
+    }
+  }
+}
 
 /**
  * Menu callback to output dart ad content without drupal theme
@@ -691,7 +707,7 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
 
   // Omniture disabled
   if (isset($node_settings['omniture']['disable']) && $node_settings['omniture']['disable']) {
-    return array();
+    return false;
   }
 
   $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
@@ -764,7 +780,12 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
     $omniture_variables = $path_omniture_variables + $omniture_variables;
   }
 
-  return array('variables' => $omniture_variables);
+  if ($omniture_variables) {
+    return array('variables' => $omniture_variables);
+  }
+  else {
+    return array();
+  }
 }
 
 /**

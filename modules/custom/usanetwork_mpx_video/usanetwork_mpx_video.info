@@ -14,6 +14,7 @@ dependencies[] = text
 dependencies[] = usanetwork_ds
 dependencies[] = views
 dependencies[] = views_load_more
+dependencies[] = usanetwork_widget
 features[context][] = usa_global_mpx_videos
 features[context][] = usa_show_mpx_videos
 features[ctools][] = context:context:3

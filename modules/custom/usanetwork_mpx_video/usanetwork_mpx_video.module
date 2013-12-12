@@ -582,3 +582,63 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
     }
   }
 }
+
+/**
+ * Implements hook_pub_mpx_player_id_rulesets_info().
+ *
+ * Define rules for choosing players 
+ */
+function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
+  $rulesets = array();
+  $rulesets[] = array(
+      'fields' => array(
+        'fullEpisode' => FALSE,
+      ),
+      'guid' => '3uWVG4mcXhSeetRhwnSOVQTuA0roKWZz',
+    );
+  
+  if ((_usanetwork_widget_get_environment() == 'prod')){
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'auth',
+        'fullEpisode' => TRUE,
+      ),
+      'guid' => 'sXd2mWVlXSeVzlp87VIyaGBcrPW6YRig',
+    );
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'free',
+        'fullEpisode' => TRUE,
+      ),
+      'guid' => 'GlApLjKdYMfOQXa8NC_sKWoJtBeqXt1L',
+    );
+    $rulesets[] = array(
+      'fields' => array(
+        'media$name' => 'Live',
+      ),
+      'guid' => 'eaVyQVIaegQArVW_QZ7kL7R072ZruGAq',
+    );
+  } else {
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'auth',
+        'fullEpisode' => TRUE,
+      ),
+      'guid' => 'zfoUj0XwllWKTTfQ_V_5Kp84RmjUhcjJ',
+    );
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'free',
+        'fullEpisode' => TRUE,
+      ),
+      'guid' => 'Vfu3SHfT0GBBgK068N_iVhm1ZP4tWbPL',
+    );
+    $rulesets[] = array(
+      'fields' => array(
+        'media$name' => 'Live',
+      ),
+      'guid' => 'MX_EZuC00kfqiQcMAKf_FlyQdvmKFOIX',
+    );
+  }
+  return $rulesets;
+}

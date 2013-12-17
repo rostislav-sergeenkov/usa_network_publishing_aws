@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TVE Analytics module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tve_analytics_form_sitecatalyst_admin_settings_alter(&$form, &$form_state) {
+  // Add a TVE Specific Suite ID field.
+  $form['general']['sitecatalyst_tve_report_suite_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TVE Report Suite ID for Authentication events'),
+    '#default_value' => variable_get('sitecatalyst_tve_report_suite_id', ''),
+    '#weight' => 100,
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_analytics_page_alter(&$page) {
+  if (!variable_get('sitecatalyst_tve_report_suite_id')) {
+    return;
+  }
+
+  if (isset($page['page_bottom']['sitecatalyst'])) {
+    drupal_add_js(
+      array(
+        'analytics' => array(
+          'brandSuiteId' => variable_get('sitecatalyst_report_suite_id'),
+          'tveSuiteId' => variable_get('sitecatalyst_tve_report_suite_id'),
+        )
+      ),
+      'setting'
+    );
+
+    $page['page_bottom']['sitecatalyst']['#attached']['js'][drupal_get_path('module', 'tve_analytics') . '/js/tve-analytics.js'] = array(
+      'type' => 'file',
+      'scope' => 'footer',
+    );
+  }
+}

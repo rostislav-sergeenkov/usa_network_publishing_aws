@@ -1,0 +1,71 @@
+<?php
+/**
+ * @file Tve errors generic
+ *
+ * Provides functionality for showing generic errors
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function tve_errors_generic_menu() {
+  $menu = array();
+
+  $menu['errors/modal/gen'] = array(
+    'page callback' => '_tve_errors_generic_errors_window_content',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $menu;
+}
+
+/**
+ * Page callback function for errors windows.
+ */
+function _tve_errors_generic_errors_window_content($type) {
+  $vars = array();
+  switch ($type) {
+    case 'gen':
+      $vars = _tve_errors_get_error_vars('generic_section');
+      break;
+  }
+  drupal_json_output($vars);
+}
+
+/**
+ * Implements hook_form_formid_alter().
+ */
+function tve_errors_generic_form__tve_admin_ui_section_form_alter(&$form, &$form_state) {
+  if (isset($form_state['build_info']['args'][1]['form callback']) &&
+    ($form_state['build_info']['args'][1]['form callback'] == '_tve_errors_settings_form')) {
+    $defaults = $form_state['build_info']['args'][0];
+    $error_types = array(
+      'generic_section' => 'Generic Errors',
+    );
+    // Add form by error type.
+    foreach ($error_types as $error_type => $error_title) {
+      _tve_errors_custom_error_form($form, $defaults, $error_type, $error_title);
+    }
+
+    // Set submit button to the bottom of form.
+    $form['submit']['#weight'] = 10;
+  }
+}
+
+/**
+ * Implements hook_tve_admin_ui_info_alter().
+ */
+function tve_errors_generic_tve_admin_ui_info_alter(&$items) {
+  if (isset($items['errors']['variables'])) {
+    $items['errors']['variables']['generic_section'] = array(
+      'header_title' => "Sorry! There's a problem.",
+      'body_text' => array(
+        'value' => 'Sorry about that! We seem to be experiencing a technical issue right now. Please try again later.',
+        'format' => 'wysiwyg_full',
+      ),
+      'error_image' => array('fid' => 0),
+    );
+  }
+}

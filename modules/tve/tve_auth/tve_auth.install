@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Contains install and requirement functions for TVE Auth module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function tve_auth_requirements($phase) {
+  $t = get_t();
+  if ('runtime' == $phase) {
+    $jquery_version = variable_get('jquery_update_jquery_version');
+
+    if (version_compare($jquery_version, '1.8', 'lt')) {
+      $requirements['tve_auth'] = array(
+        'title' => 'TVE Auth Flow',
+        'description' => $t('jQuery library version 1.8 or greater required.'),
+        'value' => $jquery_version ? $jquery_version : 'n/a',
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+    else {
+      $requirements['tve_auth'] = array(
+        'title' => 'TVE Auth Flow',
+        'description' => $t('jQuery library version 1.8 or greater exists.'),
+        'value' => $jquery_version,
+        'severity' => REQUIREMENT_OK,
+      );
+    }
+
+    return $requirements;
+  }
+}

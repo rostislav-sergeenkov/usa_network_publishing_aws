@@ -469,23 +469,17 @@ function usanetwork_mpx_video_file_presave($file) {
   if (strpos($file->type, 'mpx_video') !== 0) {
     return;
   }
-  $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 0, 'value');
-  $categories = explode('/', $categories_mpx);
-  if (count($categories) !== 1) {
-  if (isset($categories[1])) {
+  $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file);
+  foreach ($categories_mpx as $categories_mpx_value) {
+    $categories = explode('/', $categories_mpx_value);
+    if (count($categories) == 2) {
     $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
     if (isset($node->nid)) {
       $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
-    } 
+        break;
   }
   } else {
-    $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file, 1, 'value');
-    $categories = explode('/', $categories_mpx);
-    if (isset($categories[1])) {
-      $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
-      if (isset($node->nid)) {
-        $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
-      } 
+      continue;
     }
   }
 }
@@ -601,14 +595,14 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'auth',
-        'fullEpisode' => TRUE,
+        'fullEpisode' => '1',
       ),
       'guid' => 'sXd2mWVlXSeVzlp87VIyaGBcrPW6YRig',
     );
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'free',
-        'fullEpisode' => TRUE,
+        'fullEpisode' => '1',
       ),
       'guid' => 'GlApLjKdYMfOQXa8NC_sKWoJtBeqXt1L',
     );
@@ -622,14 +616,14 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'auth',
-        'fullEpisode' => TRUE,
+        'fullEpisode' => '1',
       ),
       'guid' => 'zfoUj0XwllWKTTfQ_V_5Kp84RmjUhcjJ',
     );
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'free',
-        'fullEpisode' => TRUE,
+        'fullEpisode' => '1',
       ),
       'guid' => 'Vfu3SHfT0GBBgK068N_iVhm1ZP4tWbPL',
     );

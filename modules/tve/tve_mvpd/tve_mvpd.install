@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install/uninstall/update functions for TVE MVPD module.
+ *
+ * @ingroup tve_mvpd
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function tve_mvpd_uninstall() {
+  variable_del('tve_mvpd_providers');
+  variable_del('tve_mvpd_service');
+  variable_del('tve_mvpd_brand_id');
+  variable_del('tve_mvpd_instance');
+  variable_del('tve_mvpd_error_message');
+  variable_del('tve_mvpd_service_url');
+}

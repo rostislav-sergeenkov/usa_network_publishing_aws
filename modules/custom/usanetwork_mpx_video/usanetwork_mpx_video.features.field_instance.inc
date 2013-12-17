@@ -740,7 +740,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'pl1$entitlement',
         ),
         'size' => 60,
         'soft_length_limit' => '',
@@ -831,7 +831,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'pl1$episodeNumber',
         ),
         'size' => 60,
         'soft_length_limit' => '',
@@ -920,7 +920,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'pl1$fullEpisode',
         ),
         'size' => 60,
         'soft_length_limit' => '',
@@ -1011,7 +1011,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'pl1$seasonNumber',
         ),
         'size' => 60,
         'soft_length_limit' => '',

@@ -214,6 +214,9 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'show' => array(
+        0 => 'field_show',
+      ),
       'video_title' => array(
         0 => 'field_mpx_title',
       ),
@@ -226,16 +229,13 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'season' => array(
         0 => 'field_mpx_season_number',
       ),
-      'show' => array(
-        0 => 'field_show',
-      ),
     ),
     'fields' => array(
+      'field_show' => 'show',
       'field_mpx_title' => 'video_title',
       'field_mpx_available_date' => 'airdate',
       'field_mpx_episode_number' => 'episode',
       'field_mpx_season_number' => 'season',
-      'field_show' => 'show',
     ),
     'classes' => array(),
   );
@@ -255,19 +255,19 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'media' => array(
         0 => 'file_name',
       ),
+      'title' => array(
+        0 => 'field_show',
+      ),
       'caption' => array(
         0 => 'field_mpx_title',
         1 => 'field_mpx_airdate',
       ),
-      'title' => array(
-        0 => 'field_show',
-      ),
     ),
     'fields' => array(
       'file_name' => 'media',
+      'field_show' => 'title',
       'field_mpx_title' => 'caption',
       'field_mpx_airdate' => 'caption',
-      'field_show' => 'title',
     ),
     'classes' => array(),
   );
@@ -284,16 +284,16 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'caption' => array(
-        0 => 'field_mpx_title',
-      ),
       'title' => array(
         0 => 'field_show',
       ),
+      'caption' => array(
+        0 => 'field_mpx_title',
+      ),
     ),
     'fields' => array(
-      'field_mpx_title' => 'caption',
       'field_show' => 'title',
+      'field_mpx_title' => 'caption',
     ),
     'classes' => array(),
   );

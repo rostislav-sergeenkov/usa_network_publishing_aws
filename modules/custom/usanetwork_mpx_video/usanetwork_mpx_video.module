@@ -432,7 +432,7 @@ function _usanetwork_mpx_video_full_episodes_exist($show_nid) {
   }
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'file');
-  $query->entityCondition('bundle', array('mpx_video_1'));
+  $query->entityCondition('bundle',  _usanetwork_mpx_video_get_all_file_types(), 'IN');
   $query->propertyCondition('published', 1);
   $query->fieldCondition('field_show', 'target_id', $show_nid);
   $query->fieldCondition('field_mpx_full_episode', 'value', '1', '=');

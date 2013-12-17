@@ -390,7 +390,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
           case 'vid_teaser_episode':
-            if ($vars['element']['#object']->type == 'mpx_video_1') {
+            if (strpos($vars['element']['#object']->type, 'mpx_video') === 0) {
               $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
             } else {
             $title = $vars['element']['#object']->title;
@@ -407,7 +407,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_episode_number':
     case 'field_mpx_episode_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || ($vars['element']['#object']->type == 'mpx_video_1')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
@@ -423,7 +423,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_season_id':
     case 'field_mpx_season_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || ($vars['element']['#object']->type == 'mpx_video_1')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :

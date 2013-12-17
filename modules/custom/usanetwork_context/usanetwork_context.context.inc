@@ -155,6 +155,161 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'show_social_chatter';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/social/chat-with-fans' => 'node/*/social/chat-with-fans',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[current-page:tv-show:title] | Chatter',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'Chat with other fans about [current-page:tv-show:title]!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_social_chatter'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'show_social_page';
   $context->description = '';
   $context->tag = 'shows';
@@ -201,6 +356,139 @@ function usanetwork_context_context_default_contexts() {
         ),
       ),
     ),
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => '',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '[current-page:tv-show:field_logo]',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
   );
   $context->condition_mode = 0;
 
@@ -208,6 +496,472 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('shows');
   $export['show_social_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_social_sync';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/social/sync' => 'node/*/social/sync',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[current-page:tv-show:title] | Sync',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See facts, trivia and photos, take quizzes and enjoy live synced events for your favorite USA Network shows!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_social_sync'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_social_trending';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/social' => 'node/*/social',
+        'node/*/social/latest' => 'node/*/social/latest',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[current-page:tv-show:title] | Trending',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See what\'s currently popular about [current-page:tv-show:title] on a variety of social networks!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_social_trending'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_social_tweets';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/social/tweets' => 'node/*/social/tweets',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[current-page:tv-show:title] | Tweets',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See what\'s being tweeted about [current-page:tv-show:title]!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_social_tweets'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -484,6 +1238,161 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usa_social_chatter';
+  $context->description = '';
+  $context->tag = 'social';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'social/chat-with-fans' => 'social/chat-with-fans',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[site:name] | Chatter',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See recent chatter from fans about [site:name] shows!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('social');
+  $export['usa_social_chatter'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usa_social_pages';
   $context->description = 'context for all global social pages';
   $context->tag = 'social';
@@ -524,6 +1433,139 @@ function usanetwork_context_context_default_contexts() {
         ),
       ),
     ),
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => '',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => 'http://www.usanetwork.com/sites/usanetwork/files/Frozen_Bug.png',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
   );
   $context->condition_mode = 0;
 
@@ -532,6 +1574,472 @@ function usanetwork_context_context_default_contexts() {
   t('context for all global social pages');
   t('social');
   $export['usa_social_pages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_social_sync';
+  $context->description = '';
+  $context->tag = 'social';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'social/sync' => 'social/sync',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[site:name] | Sync',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See facts, trivia and photos, take quizzes and enjoy live synced events for your favorite [site:name] shows!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('social');
+  $export['usa_social_sync'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_social_trending';
+  $context->description = '';
+  $context->tag = 'social';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'social' => 'social',
+        'social/trending' => 'social/trending',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[site:name] | Trending',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See what\'s currently popular about USA Network on a variety of social networks!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('social');
+  $export['usa_social_trending'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_social_tweets';
+  $context->description = '';
+  $context->tag = 'social';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'social/tweets' => 'social/tweets',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'metatag_context_reaction' => array(
+      'metatags' => array(
+        'title' => array(
+          'value' => '[current-page:title] | [site:name]',
+          'default' => '[current-page:title] | [site:name]',
+        ),
+        'description' => array(
+          'value' => '',
+        ),
+        'abstract' => array(
+          'value' => '',
+        ),
+        'keywords' => array(
+          'value' => '',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 0,
+            'follow' => 0,
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+          ),
+        ),
+        'news_keywords' => array(
+          'value' => '',
+        ),
+        'generator' => array(
+          'value' => 'Drupal 7 (http://drupal.org)',
+          'default' => 'Drupal 7 (http://drupal.org)',
+        ),
+        'copyright' => array(
+          'value' => '',
+        ),
+        'image_src' => array(
+          'value' => '',
+        ),
+        'canonical' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'shortlink' => array(
+          'value' => '[current-page:url:unaliased]',
+          'default' => '[current-page:url:unaliased]',
+        ),
+        'publisher' => array(
+          'value' => '',
+        ),
+        'author' => array(
+          'value' => '',
+        ),
+        'original-source' => array(
+          'value' => '',
+        ),
+        'fb:admins' => array(
+          'value' => '',
+        ),
+        'fb:app_id' => array(
+          'value' => '',
+        ),
+        'og:site_name' => array(
+          'value' => '[site:name]',
+          'default' => '[site:name]',
+        ),
+        'og:title' => array(
+          'value' => '[site:name] | Tweets',
+          'default' => '[current-page:title]',
+        ),
+        'og:description' => array(
+          'value' => 'See what\'s being tweeted about [site:name]!',
+        ),
+        'og:type' => array(
+          'value' => 'article',
+          'default' => 'article',
+        ),
+        'og:image' => array(
+          'value' => '',
+        ),
+        'og:url' => array(
+          'value' => '[current-page:url:absolute]',
+          'default' => '[current-page:url:absolute]',
+        ),
+        'og:latitude' => array(
+          'value' => '',
+        ),
+        'og:longitude' => array(
+          'value' => '',
+        ),
+        'og:street-address' => array(
+          'value' => '',
+        ),
+        'og:locality' => array(
+          'value' => '',
+        ),
+        'og:region' => array(
+          'value' => '',
+        ),
+        'og:postal-code' => array(
+          'value' => '',
+        ),
+        'og:country-name' => array(
+          'value' => '',
+        ),
+        'og:email' => array(
+          'value' => '',
+        ),
+        'og:phone_number' => array(
+          'value' => '',
+        ),
+        'og:fax_number' => array(
+          'value' => '',
+        ),
+        'og:video' => array(
+          'value' => '',
+        ),
+        'og:video:secure_url' => array(
+          'value' => '',
+        ),
+        'og:video:width' => array(
+          'value' => '',
+        ),
+        'og:video:height' => array(
+          'value' => '',
+        ),
+        'og:video:type' => array(
+          'value' => '',
+        ),
+      ),
+      'metatag_admin' => 0,
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('social');
+  $export['usa_social_tweets'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

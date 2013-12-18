@@ -34,7 +34,7 @@
    */
   Drupal.behaviors.usanetwork_mpx_video_ajax = {
     attach: function(context, settings) {
-      var default_url = Drupal.settings.basePath + 'videos_mpx/ajax';
+      var default_url = Drupal.settings.basePath + 'videos/ajax';
 
       // Create Drupal ajax action
       var ajaxSettings = {

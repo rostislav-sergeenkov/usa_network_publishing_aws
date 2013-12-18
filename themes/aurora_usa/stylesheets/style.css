@@ -1,3 +1,4 @@
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -265,7 +266,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-mpx-video .view .file.file-mpx-video-1 > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
+#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
@@ -2457,137 +2458,6 @@ input[type="radio"], input[type="checkbox"] {
   width: 304px;
 }
 
-.node-type-tv-show .caption-overlay .title-wide,
-.node-type-tv-show .caption-overlay .caption-wide {
-  display: block;
-}
-@media (max-width: 644px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
-    display: none;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
-    display: block;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
-    display: none;
-  }
-}
-@media (min-width: 1275px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
-    display: block;
-  }
-}
-.node-type-tv-show .caption-overlay .title,
-.node-type-tv-show .caption-overlay .caption {
-  display: none;
-}
-@media (max-width: 644px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
-    display: block;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
-    display: none;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
-    display: block;
-  }
-}
-@media (min-width: 1275px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
-    display: none;
-  }
-}
-
-.promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-.promo-metadata .meta-subhead-wide,
-.upcoming-movie .meta .meta-subhead-wide {
-  display: block;
-}
-@media (max-width: 644px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
-    display: none;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
-    display: block;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
-    display: none;
-  }
-}
-@media (min-width: 1275px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
-    display: block;
-  }
-}
-.promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-.promo-metadata .meta-subhead,
-.upcoming-movie .meta .meta-subhead {
-  display: none;
-}
-@media (max-width: 644px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
-    display: block;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
-    display: none;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
-    display: block;
-  }
-}
-@media (min-width: 1275px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
-    display: none;
-  }
-}
-
-.c-sport .promo-metadata .meta-head-wide, .c-sport .upcoming-movie .meta .meta-head-wide, .upcoming-movie .c-sport .meta .meta-head-wide,
-.c-sport .promo-metadata .meta-subhead-wide,
-.c-sport .upcoming-movie .meta .meta-subhead-wide,
-.upcoming-movie .c-sport .meta .meta-subhead-wide {
-  display: none;
-}
-
 .filter-dropdown {
   background: #3d3d3d;
   cursor: pointer;
@@ -4086,14 +3956,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .onNow-navSocial-empty-span {
-  width: 5px;
+  width: 17px;
   height: 1px;
   float: left;
-}
-@media (min-width: 930px) {
-  .onNow-navSocial-empty-span {
-    width: 17px;
-  }
 }
 
 .echo-primaryColor {
@@ -4113,58 +3978,6 @@ input[type="radio"], input[type="checkbox"] {
 }
 .onnow-social-section-join a {
   color: #FFFFFF !important;
-}
-
-body[data-menu-direction="left"][data-menu-position="open"] .jPanelMenu-panel {
-  overflow: visible;
-  -webkit-transition-property: left;
-  -moz-transition-property: left;
-  -o-transition-property: left;
-  transition-property: left;
-  -webkit-transition-duration: 500ms;
-  -moz-transition-duration: 500ms;
-  -o-transition-duration: 500ms;
-  transition-duration: 500ms;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  -o-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
-}
-
-.echo-item-twitterIntentsIcon {
-  width: 15px;
-  height: 15px;
-  display: inline-block;
-  margin-right: 3px;
-  background: url("https://si0.twimg.com/images/dev/cms/intents/icons/sprites/everything-spritev2.png") no-repeat scroll 0% 0% transparent;
-}
-
-.echo-item-twitterIntentsIconReply {
-  background-position: 0px -2px;
-}
-
-.echo-item-twitterIntentsIconRetweet {
-  background-position: -80px -2px;
-}
-
-.echo-item-twitterIntentsIconFavorite {
-  background-position: -32px -2px;
-}
-
-.tweetDisplay-activeButton.echo-item-twitterIntentsIconReply {
-  background-position: -16px -2px;
-}
-
-.tweetDisplay-activeButton.echo-item-twitterIntentsIconRetweet {
-  background-position: -96px -2px;
-}
-
-.tweetDisplay-activeButton.echo-item-twitterIntentsIconFavorite {
-  background-position: -48px -2px;
-}
-
-#inner-on-now-panel .echo-item-from {
-  width: 90%;
 }
 
 body[data-menu-direction="right"][data-menu-position="open"] .jPanelMenu-panel {
@@ -7492,7 +7305,7 @@ body.person-page #main {
   z-index: 1;
   display: block;
 }
-.block-usanetwork-mpx-video .view .file.file-mpx-video-1 > a:after {
+.block-usanetwork-mpx-video .view .file.tve-video-auth > a:after {
   position: absolute;
   right: 3px;
   top: 2px;
@@ -7500,7 +7313,7 @@ body.person-page #main {
   font-size: 25px;
   color: white;
 }
-.block-usanetwork-mpx-video .view .file.file-mpx-video-1 .asset-img:after {
+.block-usanetwork-mpx-video .view .file.tve-video-auth .asset-img:after {
   content: "";
   display: block;
   width: 0;
@@ -8686,7 +8499,7 @@ body.person-page #main {
 .aspot .meta-wrap.episodic .episodic-show-title {
   margin: 0 0 1px 0;
   color: #fff;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 17px;
   font-weight: normal;
   line-height: 1;

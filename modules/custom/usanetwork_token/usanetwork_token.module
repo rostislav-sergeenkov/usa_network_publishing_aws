@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * Implements hook_token_info().
+ */
+function usanetwork_token_token_info() {
+  $data = array();
+  $data['tokens']['current-page']['tv-show'] = array(
+    'name' => t('TV Show'),
+    'description' => t('TV Show current page is assigned to.'),
+    'type' => 'node',
+  );
+  return $data;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function usanetwork_token_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
+
+  if ($type == 'current-page') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'tv-show':
+          $show = _usanetwork_token_get_tv_show();
+          $replacements[$original] = $show ? ($sanitize ? check_plain($show->title) : $show->title) : '';
+          break;
+      }
+    }
+
+    if ($show_tokens = token_find_with_prefix($tokens, 'tv-show')) {
+      $show = _usanetwork_token_get_tv_show();
+      $replacements += token_generate('node', $show_tokens, array('node' => $show), $options);
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Returns show node based on path.
+ */
+function _usanetwork_token_get_tv_show($path = null) {
+  $cache = &drupal_static(__FUNCTION__);
+  if (!isset($path)) {
+    $path = current_path();
+  }
+
+  if (isset($cache[$path])) {
+    return $cache[$path];
+  }
+
+  // get show node
+  $show = false;
+  $parts = explode('/', $path);
+  if ($parts[0] == 'node' && is_numeric($parts[1])) {
+    $node = node_load($parts[1]);
+    if ($node) {
+      if ($node->type == 'tv_show') {
+        $show = $node;
+      }
+      elseif (isset($node->field_show) && !empty($node->field_show)) {
+        $show_nid = field_get_items('node', $node, 'field_show');
+        if ($show_nid = reset($show_nid)) {
+          $show = node_load($show_nid['target_id']);
+        }
+      }
+    }
+  }
+
+  $cache[$path] = $show;
+  return $show;
+}

@@ -636,6 +636,17 @@ function usanetwork_core_update_7130() {
 }
 
 /**
+ * enable modules: usanetwork_token, metatag_context
+ */
+function usanetwork_core_update_7131() {
+  $modules_en = array(
+    'usanetwork_token',
+    'metatag_context',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

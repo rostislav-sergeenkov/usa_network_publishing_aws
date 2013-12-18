@@ -362,6 +362,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
             break;
+          case 'vid_teaser_show_general':
+            $vars['items'][0]['#prefix'] = '<h4>';
+            $vars['items'][0]['#suffix'] = '</h4>';
+            break;
         }
       }
       break;
@@ -412,6 +416,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
+            case 'vid_teaser_show_general':
               $episode = $vars['element']['#items'][0]['safe_value'];
               $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
               break;
@@ -428,6 +433,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
+            case 'vid_teaser_show_general':
               $season = $vars['element']['#items'][0]['safe_value'];
                 $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
                 break;

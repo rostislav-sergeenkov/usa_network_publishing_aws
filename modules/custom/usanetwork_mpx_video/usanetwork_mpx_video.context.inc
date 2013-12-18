@@ -65,7 +65,7 @@ function usanetwork_mpx_video_context_default_contexts() {
     'entity_field' => array(
       'values' => array(
         'entity_type' => 'a:12:{s:4:"file";s:4:"file";s:10:"collection";i:0;s:21:"field_collection_item";i:0;s:4:"node";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;}',
-        'field_name' => 'field_mpx_title',
+        'field_name' => 'field_mpx_full_episode',
         'field_value' => '1',
         'field_empty' => 0,
         'field_not_empty' => 1,
@@ -73,7 +73,7 @@ function usanetwork_mpx_video_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        '~video' => '~video',
+        '~videos' => '~videos',
       ),
     ),
   );

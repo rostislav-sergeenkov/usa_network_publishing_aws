@@ -266,9 +266,9 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
+#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.file-video-mpx > a:after, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after,
-.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
+.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.file-video-mpx .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -7212,7 +7212,7 @@ body.person-page #main {
   z-index: 1;
   display: block;
 }
-.block-usanetwork-video .view .node.node-usa-tve-video > a:after {
+.block-usanetwork-video .view .node.file-video-mpx > a:after {
   position: absolute;
   right: 3px;
   top: 2px;
@@ -7220,7 +7220,7 @@ body.person-page #main {
   font-size: 25px;
   color: white;
 }
-.block-usanetwork-video .view .node.node-usa-tve-video .asset-img:after {
+.block-usanetwork-video .view .node.file-video-mpx .asset-img:after {
   content: "";
   display: block;
   width: 0;
@@ -7915,7 +7915,7 @@ body.person-page #main {
 .usa-adrails .featured-asset {
   width: 930px;
 }
-.featured-asset.node-usa-tve-video .video-player-wrapper a:after {
+.featured-asset.file-video-mpx .video-player-wrapper a:after {
   position: absolute;
   left: 43%;
   top: 35%;
@@ -7925,16 +7925,16 @@ body.person-page #main {
   text-shadow: 1px 1px 5px black;
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .featured-asset.node-usa-tve-video .video-player-wrapper a:after {
+  .featured-asset.file-video-mpx .video-player-wrapper a:after {
     font-size: 85px;
   }
 }
 @media (min-width: 960px) {
-  .featured-asset.node-usa-tve-video .video-player-wrapper a:after {
+  .featured-asset.file-video-mpx .video-player-wrapper a:after {
     font-size: 85px;
   }
 }
-.featured-asset.node-usa-tve-video .locked-msg {
+.featured-asset.file-video-mpx .locked-msg {
   position: absolute;
   top: 120px;
   left: 40px;
@@ -7944,19 +7944,19 @@ body.person-page #main {
   text-shadow: 1px 1px 5px black;
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .featured-asset.node-usa-tve-video .locked-msg {
+  .featured-asset.file-video-mpx .locked-msg {
     top: 220px;
     left: 200px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .featured-asset.node-usa-tve-video .locked-msg {
+  .featured-asset.file-video-mpx .locked-msg {
     top: 220px;
     left: 200px;
   }
 }
 @media (min-width: 1275px) {
-  .featured-asset.node-usa-tve-video .locked-msg {
+  .featured-asset.file-video-mpx .locked-msg {
     top: 300px;
     left: 300px;
     font-size: 1.25em;

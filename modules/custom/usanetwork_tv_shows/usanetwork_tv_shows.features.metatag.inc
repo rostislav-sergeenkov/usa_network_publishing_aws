@@ -14,14 +14,17 @@ function usanetwork_tv_shows_metatag_export_default() {
   $config['node:tv_episode'] = array(
     'instance' => 'node:tv_episode',
     'config' => array(
-      'og:image' => array(
-        'value' => '[node:field_usa_og_image]',
-      ),
       'description' => array(
         'value' => '[node:field_usa_og_description]',
       ),
+      'og:title' => array(
+        'value' => '[node:field-show:title] | [node:title]',
+      ),
       'og:description' => array(
-        'value' => '[node:field_usa_og_description]',
+        'value' => '[node:body]',
+      ),
+      'og:image' => array(
+        'value' => '[node:field_tv_cover_media]',
       ),
     ),
   );
@@ -30,6 +33,12 @@ function usanetwork_tv_shows_metatag_export_default() {
   $config['node:tv_season'] = array(
     'instance' => 'node:tv_season',
     'config' => array(
+      'og:title' => array(
+        'value' => '[node:field-show:title] | [node:title]',
+      ),
+      'og:description' => array(
+        'value' => '[node:field_show] | [node:title]',
+      ),
       'og:image' => array(
         'value' => '[node:field_tv_cover_media]',
       ),
@@ -40,14 +49,17 @@ function usanetwork_tv_shows_metatag_export_default() {
   $config['node:tv_show'] = array(
     'instance' => 'node:tv_show',
     'config' => array(
-      'og:image' => array(
-        'value' => '[node:field_usa_og_image]',
-      ),
       'description' => array(
         'value' => '[node:field_usa_og_description]',
       ),
+      'og:title' => array(
+        'value' => '[node:title]',
+      ),
       'og:description' => array(
-        'value' => '[node:field_usa_og_description]',
+        'value' => '[node:body]',
+      ),
+      'og:image' => array(
+        'value' => '[node:field_logo]',
       ),
     ),
   );

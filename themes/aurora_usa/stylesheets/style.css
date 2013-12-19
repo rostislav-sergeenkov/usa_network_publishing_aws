@@ -1,3 +1,4 @@
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2437,59 +2438,59 @@ input[type="radio"], input[type="checkbox"] {
   width: 304px;
 }
 
-.node-type-tv-show .caption-overlay .title-wide,
-.node-type-tv-show .caption-overlay .caption-wide {
+.caption-overlay .title-wide,
+.caption-overlay .caption-wide {
   display: block;
 }
 @media (max-width: 644px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
+  .caption-overlay .title-wide,
+  .caption-overlay .caption-wide {
     display: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
+  .caption-overlay .title-wide,
+  .caption-overlay .caption-wide {
     display: block;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
+  .caption-overlay .title-wide,
+  .caption-overlay .caption-wide {
     display: none;
   }
 }
 @media (min-width: 1275px) {
-  .node-type-tv-show .caption-overlay .title-wide,
-  .node-type-tv-show .caption-overlay .caption-wide {
+  .caption-overlay .title-wide,
+  .caption-overlay .caption-wide {
     display: block;
   }
 }
-.node-type-tv-show .caption-overlay .title,
-.node-type-tv-show .caption-overlay .caption {
+.caption-overlay .title,
+.caption-overlay .caption {
   display: none;
 }
 @media (max-width: 644px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
+  .caption-overlay .title,
+  .caption-overlay .caption {
     display: block;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
+  .caption-overlay .title,
+  .caption-overlay .caption {
     display: none;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
+  .caption-overlay .title,
+  .caption-overlay .caption {
     display: block;
   }
 }
 @media (min-width: 1275px) {
-  .node-type-tv-show .caption-overlay .title,
-  .node-type-tv-show .caption-overlay .caption {
+  .caption-overlay .title,
+  .caption-overlay .caption {
     display: none;
   }
 }

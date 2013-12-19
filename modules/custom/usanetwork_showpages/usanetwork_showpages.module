@@ -131,10 +131,11 @@ function usanetwork_showpages_showbanner() {
   $show_name = '';
   $show_section = '';
   $show_tunein = '';
+  $field_name = "field_show";
 
   // see if we are on a node page
   if ($node = menu_get_object()) {
-    $field_name = "field_show";
+    
     // see if we are on a show node
     if ($node->type == 'tv_show') {
       $show = $node->nid;
@@ -199,6 +200,22 @@ function usanetwork_showpages_showbanner() {
     }
     // render the theme function
     $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein));
+    
+  } elseif ($file = menu_get_object('file')) {
+    
+    // looks for nodes with a value in field_show
+    if (!empty($file->$field_name)) {
+      $show_nid = field_get_items('file', $file, $field_name);
+      $show_nid = $show_nid[0]['target_id'];
+      $show = node_load($show_nid);
+      $show_title = isset($show->field_display_title[$lang][0]['safe_value']) ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
+      $show_title = decode_entities($show_title);
+      $show_tunein = isset($show->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $show_url = 'node/' . $show->nid;
+      $show_name = l($show_title, $show_url);
+    }
+    // render the theme function
+    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => t('Videos'), 'show_tunein' => $show_tunein));
   }
 
   return $render;

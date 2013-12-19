@@ -4,13 +4,9 @@
  * Implements hook_init().
  */
 function usanetwork_tv_shows_color_init() {
-  $node = menu_get_object();
   $field_name = 'field_show';
 
-  // if there is no NID get out of there
-  if (!isset($node->nid)) {
-    return;
-  }
+  if ($node = menu_get_object()) {
   if ($node->type == 'tv_show' || !empty($node->{$field_name})) {
     // Get the Show node
     if ($node->type == 'tv_show') {
@@ -21,12 +17,19 @@ function usanetwork_tv_shows_color_init() {
       $show_nid = $show_nid[0]['target_id'];
       $show = node_load($show_nid);
     }
+    }
+  } elseif ($file = menu_get_object('file')) {
+    if (!empty($file->{$field_name})) {
+        $show_nid = field_get_items('file', $file, $field_name);
+        $show_nid = $show_nid[0]['target_id'];
+        $show = node_load($show_nid);
+      }
+    }
 
-    if ($show) {
+    if (isset($show) && ($show)) {
       usanetwork_tv_shows_color_add_css($show);
     }
   }
-}
 
 /*
  * Implements hook_usanetwork_widget_style().

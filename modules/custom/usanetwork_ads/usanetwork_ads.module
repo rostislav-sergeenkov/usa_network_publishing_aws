@@ -712,14 +712,14 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
 
   $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
 
-  // load content type defaults
-  $type_settings = _usanetwork_ads_content_type_settings($node->type);
-  $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables']) ? $type_settings['omniture']['variables'] : array());
-
   // node has tv show parent
   if ($tv_show_nid && $node->type != 'tv_show') {
     $variables[] = _usanetwork_ads_get_node_omniture_variables(node_load($tv_show_nid));
   }
+
+  // load content type defaults
+  $type_settings = _usanetwork_ads_content_type_settings($node->type);
+  $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables']) ? $type_settings['omniture']['variables'] : array());
 
   // node has page collection parent
   if (isset($node->page_collection_parent)) {

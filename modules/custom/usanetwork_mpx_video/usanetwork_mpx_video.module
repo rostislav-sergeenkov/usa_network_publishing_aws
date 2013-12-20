@@ -487,7 +487,8 @@ function usanetwork_mpx_video_file_presave($file) {
       } 
   }
   
-  foreach ($saved_category as $id => $tid) {
+  $unique_saved_category = array_unique($saved_category);
+  foreach ($unique_saved_category as $id => $tid) {
     $file->field_usa_video_terms[LANGUAGE_NONE][$id]['target_id'] = $tid;
   }
   

@@ -1106,7 +1106,7 @@ function usanetwork_person_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_person_first_name',
     'label' => 'Person: First Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1171,7 +1171,7 @@ function usanetwork_person_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_person_last_name',
     'label' => 'Person: Last Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,

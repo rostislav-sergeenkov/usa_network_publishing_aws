@@ -1,0 +1,103 @@
+<?php
+
+define('USANETWORK_AUTH_SALT', '8POqhg6mJ_4Yzw}_Kr!DJB}3+8@0x>');
+define('USANETWORK_AUTH_EXPIRE', 31536000); // 1 year
+
+/**
+ * Implements hook_boot().
+ */
+function usanetwork_auth_boot() {
+  if (!_usanetwork_auth_enabled()) {
+    return;
+  }
+  if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    // require authentication
+    _usanetwork_auth_set_headers();
+  } else {
+    // check credentials
+    $username = $_SERVER['PHP_AUTH_USER'];
+    $password = $_SERVER['PHP_AUTH_PW'];
+    if (isset($_COOKIE['usanetwork_auth'])
+      && $_COOKIE['usanetwork_auth'] == md5($username.$password.USANETWORK_AUTH_SALT)) {
+      return;
+    }
+    require_once DRUPAL_ROOT . '/includes/password.inc';
+    $condition = db_or();
+    $condition->condition('name', $username, '=');
+    $condition->condition('mail', $username, '=');
+    $account = db_select('users')
+      ->fields('users')
+      ->condition($condition)
+      ->execute();
+    $account = $account->fetch();
+    if (!user_check_password($password, $account)) {
+      // wrong user/password
+      _usanetwork_auth_set_headers();
+    }
+
+    /* Check session data */
+    $session_id = session_id();
+    if (!empty($session_id)) {
+      $session = db_select('sessions', 's')
+        ->fields('s')
+        ->condition('sid', $session_id, '=')
+        ->execute()
+        ->fetch();
+    }
+    if (!isset($session) || !$session || $session->uid == 0) {
+      // perform full bootstrap and authenticate user in Drupal
+      drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+      global $user;
+      $user = user_load($account->uid);
+      $edit = array(
+        'uid' => $user->uid,
+      );
+      user_login_finalize($edit);
+      $destination = drupal_get_destination();
+      drupal_goto($destination['destination']);
+    }
+
+    // set cookie not to check credentials every load
+    setcookie('usanetwork_auth', md5($username.$password.USANETWORK_AUTH_SALT), time() + USANETWORK_AUTH_EXPIRE, '/');
+  }
+}
+
+/**
+ * Checks if auth needed.
+ */
+function _usanetwork_auth_enabled() {
+  $env_exclude = array(
+    'prod',
+    'local',
+  );
+  // check environment name
+  if (in_array($_ENV['AH_SITE_ENVIRONMENT'], $env_exclude)) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Sets HTTP auth headers.
+ */
+function _usanetwork_auth_set_headers() {
+  header('WWW-Authenticate: Basic realm="' . _usanetwork_auth_get_realm() . '"');
+  header('HTTP/1.0 401 Unauthorized');
+  echo _usanetwork_auth_access_denied_message();
+  exit();
+}
+
+/**
+ * Returns realm.
+ */
+function _usanetwork_auth_get_realm() {
+  return check_plain(variable_get('usanetwork_auth_realm', t('Restricted Area')));
+}
+
+/**
+ * Returns access denied message.
+ */
+function _usanetwork_auth_access_denied_message() {
+  return variable_get('usanetwork_auth_access_denied_message', t('Access denied.'));
+}

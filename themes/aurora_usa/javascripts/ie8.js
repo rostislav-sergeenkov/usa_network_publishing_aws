@@ -11,6 +11,7 @@
         $('li:first-child', panel).addClass('nth1');
         $('li:nth-of-type(2)', panel).addClass('nth2');
         $('li:nth-of-type(3)', panel).addClass('nth3');
+        $('li:nth-of-type(2n+1)', panel).addClass('nth2n+1');
         $('li:nth-of-type(3n+5)', panel).addClass('nth3n5');
         $('li:nth-of-type(4n+4)', panel).addClass('nth4n4');
         $('li:nth-of-type(4n+6)', panel).addClass('nth4n6');

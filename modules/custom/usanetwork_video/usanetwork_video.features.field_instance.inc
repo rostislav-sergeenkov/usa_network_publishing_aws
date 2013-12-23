@@ -86,7 +86,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'display_summary' => 1,
       'text_processing' => 1,
@@ -1550,7 +1550,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'display_summary' => 1,
       'text_processing' => 1,

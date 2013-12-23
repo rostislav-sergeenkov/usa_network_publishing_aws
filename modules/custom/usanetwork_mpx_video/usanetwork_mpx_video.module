@@ -6,6 +6,8 @@
 
 include_once 'usanetwork_mpx_video.features.inc';
 
+module_load_include('inc', 'usanetwork_mpx_video', 'usanetwork_mpx_video.video_file_entity');
+
 define('USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR', '[default mpx field]');
 define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
 
@@ -25,6 +27,12 @@ function usanetwork_mpx_video_menu() {
     'delivery callback' => 'ajax_deliver',
     'access callback' => true,
     'type' => MENU_CALLBACK,
+  );
+  $items['admin/config/system/kill_all_content_usa'] = array(
+    'title' => 'usa  kill all mpx content',
+    'access callback' => TRUE,
+    'page callback' => 'usa_mpx_debug_kill_all_content',
+    'weight' => 1,
   );
   return $items;
 }
@@ -661,3 +669,75 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
   }
   return $rulesets;
 }
+
+/** Tested functionality / should be deleted*/
+function usa_mpx_debug_kill_all_content(){
+  $time = time();
+
+  usa_mpx_debug_delete_mpx_videos();
+  drupal_set_message(format_interval(time() - $time) . ' passed');
+
+  usa_mpx_debug_delete_mpx_players();
+  drupal_set_message(format_interval(time() - $time) . ' passed');
+
+  usa_mpx_debug_delete_mpx_accounts();
+  drupal_set_message(format_interval(time() - $time) . ' passed');
+  
+  drupal_set_message('clearing cache');
+  cache_clear_all();
+  drupal_set_message(format_interval(time() - $time) . ' passed');
+
+  drupal_set_message('all mpx-related content deleted');
+  drupal_goto('');
+}
+
+function usa_mpx_debug_delete_mpx_videos() {
+  $deleted_videos = 0;
+  $db_select = db_select('file_managed', 'f')
+    ->fields('f', array('fid'))
+    ->condition('f.filemime', 'video/mpx', '=');
+  $db_select->leftJoin('mpx_video', 'mv', '%alias.fid = f.fid');
+  $db_select->condition('mv.parent_account', '2', '=');
+  $result =  $db_select->execute()
+    ->fetchAll();
+  foreach ($result as $f) {
+    $file = file_load($f->fid);
+    file_delete($file);
+
+    $deleted_videos++;
+  }
+
+  drupal_set_message("deleted {$deleted_videos} videos");
+}
+
+function usa_mpx_debug_delete_mpx_players() {
+  $deleted_players = 0;
+  $db_select = db_select('file_managed', 'f')
+    ->fields('f', array('fid'))
+    ->condition('f.filemime', 'player/mpx', '=');
+  $db_select->leftJoin('mpx_player', 'mv', '%alias.fid = f.fid');
+  $db_select->condition('mv.parent_account', '2', '=');
+  $result =  $db_select->execute();
+  
+  foreach ($result as $f) {
+    $db_select = db_delete('file_managed')
+    ->condition('fid', $f->fid)
+    ->execute();
+    $deleted_players++;
+  }
+  
+  $db_select = db_delete('mpx_player')
+    ->condition('parent_account', '2', '=')
+    ->execute();
+
+  drupal_set_message("deleted {$deleted_players} players");
+}
+
+function usa_mpx_debug_delete_mpx_accounts() {
+  $db_select = db_delete('mpx_accounts')
+    ->condition('id', '2', '=')
+    ->execute();
+  
+  drupal_set_message('query executed: "delete from mpx_accounts where 1"');
+}
+/** Tested functionality / should be deleted*/

@@ -6,10 +6,17 @@
 $field_mpx_description = field_get_items('file', $file, 'field_mpx_description');
 $body = isset($field_mpx_description[0]['safe_value']) ? $field_mpx_description[0]['safe_value'] : '';
 
+$field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+$lock_video = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
+
 if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != NULL)) {
   $nbcu_auth = TRUE;
 } else {
+  if ($lock_video) {
+    $nbcu_auth = TRUE;
+  } else {
   $nbcu_auth = FALSE;
+}
 }
 //$nbcu_user_settings = $_COOKIE['nbcu_user_settings'];
 //
@@ -34,13 +41,6 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
   </div>
   <?php if ($nbcu_auth) : ?>
   <div class="video-player-wrapper">
-    <?php 
-      $video = theme('pub_mpx_video', array('file' => $file));
-      print $video;
-    ?>
-  </div>
-  <?php else : ?>
-    <div class="video-player-wrapper">
       <div class="tve-help">
         <!-- <img class ="arrow" src="/sites/usanetwork/themes/aurora_usa/images/arrow2.png" /> -->
         <div class="tve-msg">By signing in with your TV provider you get access to full<br />episodes the day after they air! Otherwise you may have to<br /> wait up to 30 days to watch most full episodes.</div>
@@ -61,6 +61,13 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
       </div>
     </div>
     <div class="tve-help-link"><img src="/sites/usanetwork/themes/aurora_usa/images/info_gray.png" />Why do I have to sign in?</div>
+  <?php else : ?>
+    <div class="video-player-wrapper">
+      <?php 
+        $video = theme('pub_mpx_video', array('file' => $file));
+        print $video;
+      ?>
+    </div>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
 

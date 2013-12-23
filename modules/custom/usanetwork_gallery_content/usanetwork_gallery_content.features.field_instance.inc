@@ -408,7 +408,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_cover_item',
     'label' => 'Cover Item',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
@@ -1173,7 +1173,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,

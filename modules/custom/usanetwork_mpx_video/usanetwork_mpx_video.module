@@ -10,6 +10,8 @@ module_load_include('inc', 'usanetwork_mpx_video', 'usanetwork_mpx_video.video_f
 
 define('USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR', '[default mpx field]');
 define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
+define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
+define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 
 /**
  * Implementation of hook_menu().
@@ -27,12 +29,6 @@ function usanetwork_mpx_video_menu() {
     'delivery callback' => 'ajax_deliver',
     'access callback' => true,
     'type' => MENU_CALLBACK,
-  );
-  $items['admin/config/system/kill_all_content_usa'] = array(
-    'title' => 'usa  kill all mpx content',
-    'access callback' => TRUE,
-    'page callback' => 'usa_mpx_debug_kill_all_content',
-    'weight' => 1,
   );
   return $items;
 }
@@ -301,6 +297,7 @@ function usanetwork_mpx_video_show_nav() {
  * renders the correct video view based upon the argument
  */
 function usanetwork_mpx_video_views($arg = null) {
+
   if (!isset($arg)) {
     $arg = arg();
   }
@@ -624,11 +621,12 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'guid' => '3uWVG4mcXhSeetRhwnSOVQTuA0roKWZz',
     );
   
-  if ((_usanetwork_widget_get_environment() == 'prod')){
+   //for prod 
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'auth',
         'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
       'guid' => 'sXd2mWVlXSeVzlp87VIyaGBcrPW6YRig',
     );
@@ -636,20 +634,25 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'entitlement' => 'free',
         'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
       'guid' => 'GlApLjKdYMfOQXa8NC_sKWoJtBeqXt1L',
     );
     $rulesets[] = array(
       'fields' => array(
         'media$name' => 'Live',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
       'guid' => 'eaVyQVIaegQArVW_QZ7kL7R072ZruGAq',
     );
-  } else {
+    
+    
+    //for stage
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'auth',
         'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
       'guid' => 'zfoUj0XwllWKTTfQ_V_5Kp84RmjUhcjJ',
     );
@@ -657,87 +660,48 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'entitlement' => 'free',
         'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
       'guid' => 'Vfu3SHfT0GBBgK068N_iVhm1ZP4tWbPL',
     );
     $rulesets[] = array(
       'fields' => array(
         'media$name' => 'Live',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
       'guid' => 'MX_EZuC00kfqiQcMAKf_FlyQdvmKFOIX',
     );
-  }
   return $rulesets;
 }
 
-/** Tested functionality / should be deleted*/
-function usa_mpx_debug_kill_all_content(){
-  $time = time();
+/**
+ * Returns array of menu items for Sign In block.
+ *
+ * @return array
+ *   Menu items for render.
+ */
+function _usa_auth_prepare_menu_items() {
+  $menu_items = array();
 
-  usa_mpx_debug_delete_mpx_videos();
-  drupal_set_message(format_interval(time() - $time) . ' passed');
+  $image = theme('image', array(
+      'attributes' => array(
+        'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
+      ),
+    )
+  );
 
-  usa_mpx_debug_delete_mpx_players();
-  drupal_set_message(format_interval(time() - $time) . ' passed');
+  $menu_items[] = l($image, '', array(
+    'attributes' => array(
+      'class' => 'clean providerLogo',
+      'data-ng-if' => 'global.isAuthN',
+      'data-ng-href' => "{{global.currentProvider.mvpd_url}}",
+      'target' => '_blank',
+      'data-ng-cloak' => '',
+    ),
+    'html' => TRUE,
+  ));
 
-  usa_mpx_debug_delete_mpx_accounts();
-  drupal_set_message(format_interval(time() - $time) . ' passed');
-  
-  drupal_set_message('clearing cache');
-  cache_clear_all();
-  drupal_set_message(format_interval(time() - $time) . ' passed');
+  $menu_items[] = '<div data-tve-auth-menu data-ng-if="global.isAuthN"></div>';
 
-  drupal_set_message('all mpx-related content deleted');
-  drupal_goto('');
+  return $menu_items;
 }
-
-function usa_mpx_debug_delete_mpx_videos() {
-  $deleted_videos = 0;
-  $db_select = db_select('file_managed', 'f')
-    ->fields('f', array('fid'))
-    ->condition('f.filemime', 'video/mpx', '=');
-  $db_select->leftJoin('mpx_video', 'mv', '%alias.fid = f.fid');
-  $db_select->condition('mv.parent_account', '2', '=');
-  $result =  $db_select->execute()
-    ->fetchAll();
-  foreach ($result as $f) {
-    $file = file_load($f->fid);
-    file_delete($file);
-
-    $deleted_videos++;
-  }
-
-  drupal_set_message("deleted {$deleted_videos} videos");
-}
-
-function usa_mpx_debug_delete_mpx_players() {
-  $deleted_players = 0;
-  $db_select = db_select('file_managed', 'f')
-    ->fields('f', array('fid'))
-    ->condition('f.filemime', 'player/mpx', '=');
-  $db_select->leftJoin('mpx_player', 'mv', '%alias.fid = f.fid');
-  $db_select->condition('mv.parent_account', '2', '=');
-  $result =  $db_select->execute();
-  
-  foreach ($result as $f) {
-    $db_select = db_delete('file_managed')
-    ->condition('fid', $f->fid)
-    ->execute();
-    $deleted_players++;
-  }
-  
-  $db_select = db_delete('mpx_player')
-    ->condition('parent_account', '2', '=')
-    ->execute();
-
-  drupal_set_message("deleted {$deleted_players} players");
-}
-
-function usa_mpx_debug_delete_mpx_accounts() {
-  $db_select = db_delete('mpx_accounts')
-    ->condition('id', '2', '=')
-    ->execute();
-  
-  drupal_set_message('query executed: "delete from mpx_accounts where 1"');
-}
-/** Tested functionality / should be deleted*/

@@ -10,14 +10,27 @@ $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement')
 $lock_video = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
 
 if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != NULL)) {
-  $nbcu_auth = TRUE;
+  $nbcu_auth = FALSE;
+  
+  $menu_items = _usa_auth_prepare_menu_items();
+    
+  $links = array(
+    '#theme' => 'item_list',
+    '#items' => $menu_items,
+    '#attributes' => array('class' => array('tve-header-links', 'inline')),
+    '#prefix' => '<div class="links-wrapper">',
+    '#suffix' => '</div>',
+  );
 } else {
   if ($lock_video) {
     $nbcu_auth = TRUE;
   } else {
-  $nbcu_auth = FALSE;
+    $nbcu_auth = FALSE;
 }
 }
+
+//  return drupal_render($links);
+
 //$nbcu_user_settings = $_COOKIE['nbcu_user_settings'];
 //
 //$nbcu_auth = $nbcu_user_settings ? TRUE : FALSE;
@@ -68,6 +81,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         print $video;
       ?>
     </div>
+    <div class="tve-help-link"><?php print drupal_render($links); ?></div>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
 

@@ -5,3 +5,9 @@
  */
 
 include_once 'usanetwork_tve_video.features.inc';
+
+function usanetwork_tve_video_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['tve_auth_welcome_window'])) {
+    $theme_registry['tve_auth_welcome_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/tve_auth_welcome_window';
+  }
+}

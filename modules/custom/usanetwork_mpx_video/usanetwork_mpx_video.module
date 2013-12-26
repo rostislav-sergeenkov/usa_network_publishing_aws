@@ -30,6 +30,11 @@ function usanetwork_mpx_video_menu() {
     'access callback' => true,
     'type' => MENU_CALLBACK,
   );
+  $items['videos/live'] = array(
+    'title' => 'MPX Video Live',
+    'page callback' => 'usanetwork_mpx_video_live',
+    'access arguments' => array('access content'),
+  );
   return $items;
 }
 
@@ -408,6 +413,13 @@ function usanetwork_mpx_video_views_ajax() {
  */
 function usanetwork_mpx_video_global_videos_page() {
   return views_embed_view('usa_mpx_video', 'global_latest_full_episode_video_mpx');
+}
+
+/**
+ * Renders live video page
+ */
+function usanetwork_mpx_video_live() {
+  return views_embed_view('usa_mpx_video', 'global_latest_live_video_mpx');
 }
 
 /**

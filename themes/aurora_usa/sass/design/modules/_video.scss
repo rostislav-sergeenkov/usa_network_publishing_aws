@@ -171,24 +171,25 @@
     .caption-fields-wrapper {
       position: static;
       width: 100%;
-      height: 41px;
+      height: 58px;
       margin: 0;
-      padding: 4px 10px;
+      padding: 8px;
       line-height: 1em;
       background: $black;
       @include breakpoint($bp-video-medium-width) {
-        height: 52px;
-        padding: 6px 10px;
-        line-height: 1.25em;
+        height: 66px;
+        padding: 10px;
+        line-height: 1.15em;
       }
       @include breakpoint($bp-video-very-large-width) {
-        height: 73px;
-        padding: 11px 15px;
+        height:72px;
+        padding: 11px;
       }
     }
     h4 {
-      @extend %regular-12;
       margin: 0;
+      font-family: $bodytext-reg;
+      font-size: 13px;
       &:after {
         @include background-image(linear-gradient(right, $black 30%, $black-trans-vid));
         content: $space;
@@ -199,16 +200,26 @@
         height: 100%;
       }
       @include breakpoint($bp-video-medium-width) {
-        font-size: 16px;
+        font-size: 14px;
       }
       @include breakpoint($bp-video-very-large-width) {
-        margin-bottom: 5px;
+        font-size: 16px;
+        white-space:normal;
       }
     }
     .caption {
-      font-size: 10px;
+      color:#a7a6a6;
+      font-size: 11px;
       @include breakpoint($bp-video-medium-width) {
-        font-size: 14px;
+        font-size: 12px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        font-size: 13px;
+        .field-item {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
   }
@@ -571,40 +582,60 @@
   &.file-video-mpx {
     .video-player-wrapper a:after {
       position: absolute;
-      left: 43%;
-      top: 35%;
-      content: "\e001";
-      font-size: 50px;
-      color: $white;
-      @include text-shadow(1px 1px 5px $black-true);
-      @extend %usanetwork-font;
-      @include breakpoint($bp-video-mid-range4-width) {
-        font-size: 85px;
-      }
-      @include breakpoint($bp-video-large2-width) {
-        font-size: 85px
-      }
+      left: 50%;
+      top: 55%;
+      width:296px;
+      height:39px;
+      margin-left:-148px;
+      content: " ";
+      background:url('../images/sign_in_key.png') center top no-repeat;
     }
     .locked-msg {
       position: absolute;
-      top: 120px;
-      left: 40px;
+      top: 40px;
+      left: 5px;
       margin: 0 auto;
       text-align: center;
       z-index: 10;
+      .first-line {
+        display:block;
+        font-size:12px;
+      }
+      .second-line {
+        display:block;
+        font-size:10px;
+      }
       @include text-shadow(1px 1px 5px $black-true);
       @include breakpoint($bp-video-mid-range4-width) {
-        top: 220px;
-        left: 200px;
+        top: 120px;
+        left: 50px;
+        .first-line {
+          font-size:20px;
+        }
+        .second-line {
+          font-size:14px;
+        }
       }
       @include breakpoint($bp-video-high-range-width) {
-        top: 220px;
-        left: 200px;
+        top: 120px;
+        left: 50px;
+        .first-line {
+          font-size:20px;
+        }
+        .second-line {
+          font-size:14px;
+        }
       }
       @include breakpoint($bp-video-very-large-width) {
-        top: 300px;
-        left: 300px;
-        font-size: 1.25em;
+        top: 182px;
+        left: 110px;
+        .first-line {
+          font-size:26px;
+          line-height:45px;
+        }
+        .second-line {
+          font-size:16px;
+        }
       }
     }
   }
@@ -617,13 +648,40 @@
     cursor: pointer;
     padding-bottom: 12px;
     padding-top: 5px;
-      @include breakpoint($bp-video-player-section) {
-        text-align: center;
-      }
-      @include breakpoint($bp-video-mid-range4-width) {
-        text-align: left;
+    @include breakpoint($bp-video-player-section) {
+      text-align: center;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      text-align: left;
+    }
+    &.signOut {
+      position:absolute;
+      display:inline-block;
+      top:4px;
+      right:0;
+      .item-list {
+        li.last {
+          margin:0;
+        }
+        ul.ng-scope {
+          display:inline-block;
+          margin-left:10px;
+          padding:0 0 0 12px;
+          border-left:1px solid #6c6c6c;
+          line-height:10px;
+          li {
+            margin:0 !important;
+            padding:0;
+            a {
+              color:#6c6c6c;
+              font-size:14px;
+              line-height:10px;
+            }
+          }
+        }
       }
     }
+  }
   .video-player-wrapper {
     position: relative;
     float: left;
@@ -821,7 +879,8 @@
           display: block;
         }
         img {
-          opacity: .5;
+          opacity: .2;
+          transition: opacity 0.3s ease-in-out;
         }
       }
     }
@@ -865,11 +924,16 @@
     .details {
       color: $gray-light;
     }
+    .details .episode-info div{
+      display: inline-block;
+    }
     .episode-title {
+      margin-top:10px;
       font-size: 24px;
       text-transform: none;
+      display:block;
       div {
-        display: inline;
+        display: inline-block;
       }
     }
     .details,

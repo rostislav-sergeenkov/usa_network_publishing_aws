@@ -268,7 +268,7 @@ you can use the generic selector below, but it's slower:
 
 #logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.file-video-mpx > a:after, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after,
-.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.file-video-mpx .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
+.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -413,7 +413,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
 }
 
 #footer-message,
-#footer-message-offside, .block-usanetwork-video .view .node h4, .block-usanetwork-mpx-video .view .file h4, .aspot .episode-title, .echo-item-footer, #showList {
+#footer-message-offside, .block-usanetwork-video .view .node h4, .aspot .episode-title, .echo-item-footer, #showList {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 12px;
 }
@@ -7330,27 +7330,29 @@ body.person-page #main {
 .block-usanetwork-mpx-video .view .file .caption-fields-wrapper {
   position: static;
   width: 100%;
-  height: 41px;
+  height: 58px;
   margin: 0;
-  padding: 4px 10px;
+  padding: 8px;
   line-height: 1em;
   background: #1f1f1f;
 }
 @media (min-width: 723px) {
   .block-usanetwork-mpx-video .view .file .caption-fields-wrapper {
-    height: 52px;
-    padding: 6px 10px;
-    line-height: 1.25em;
+    height: 66px;
+    padding: 10px;
+    line-height: 1.15em;
   }
 }
 @media (min-width: 1275px) {
   .block-usanetwork-mpx-video .view .file .caption-fields-wrapper {
-    height: 73px;
-    padding: 11px 15px;
+    height: 72px;
+    padding: 11px;
   }
 }
 .block-usanetwork-mpx-video .view .file h4 {
   margin: 0;
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 13px;
 }
 .block-usanetwork-mpx-video .view .file h4:after {
   background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(30%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0.3)));
@@ -7367,20 +7369,32 @@ body.person-page #main {
 }
 @media (min-width: 723px) {
   .block-usanetwork-mpx-video .view .file h4 {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 @media (min-width: 1275px) {
   .block-usanetwork-mpx-video .view .file h4 {
-    margin-bottom: 5px;
+    font-size: 16px;
+    white-space: normal;
   }
 }
 .block-usanetwork-mpx-video .view .file .caption {
-  font-size: 10px;
+  color: #a7a6a6;
+  font-size: 11px;
 }
 @media (min-width: 723px) {
   .block-usanetwork-mpx-video .view .file .caption {
-    font-size: 14px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 1275px) {
+  .block-usanetwork-mpx-video .view .file .caption {
+    font-size: 13px;
+  }
+  .block-usanetwork-mpx-video .view .file .caption .field-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -7917,49 +7931,66 @@ body.person-page #main {
 }
 .featured-asset.file-video-mpx .video-player-wrapper a:after {
   position: absolute;
-  left: 43%;
-  top: 35%;
-  content: "\e001";
-  font-size: 50px;
-  color: white;
-  text-shadow: 1px 1px 5px black;
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .featured-asset.file-video-mpx .video-player-wrapper a:after {
-    font-size: 85px;
-  }
-}
-@media (min-width: 960px) {
-  .featured-asset.file-video-mpx .video-player-wrapper a:after {
-    font-size: 85px;
-  }
+  left: 50%;
+  top: 55%;
+  width: 296px;
+  height: 39px;
+  margin-left: -148px;
+  content: " ";
+  background: url("../images/sign_in_key.png") center top no-repeat;
 }
 .featured-asset.file-video-mpx .locked-msg {
   position: absolute;
-  top: 120px;
-  left: 40px;
+  top: 40px;
+  left: 5px;
   margin: 0 auto;
   text-align: center;
   z-index: 10;
   text-shadow: 1px 1px 5px black;
 }
+.featured-asset.file-video-mpx .locked-msg .first-line {
+  display: block;
+  font-size: 12px;
+}
+.featured-asset.file-video-mpx .locked-msg .second-line {
+  display: block;
+  font-size: 10px;
+}
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset.file-video-mpx .locked-msg {
-    top: 220px;
-    left: 200px;
+    top: 120px;
+    left: 50px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .first-line {
+    font-size: 20px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .second-line {
+    font-size: 14px;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .featured-asset.file-video-mpx .locked-msg {
-    top: 220px;
-    left: 200px;
+    top: 120px;
+    left: 50px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .first-line {
+    font-size: 20px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .second-line {
+    font-size: 14px;
   }
 }
 @media (min-width: 1275px) {
   .featured-asset.file-video-mpx .locked-msg {
-    top: 300px;
-    left: 300px;
-    font-size: 1.25em;
+    top: 182px;
+    left: 110px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .first-line {
+    font-size: 26px;
+    line-height: 45px;
+  }
+  .featured-asset.file-video-mpx .locked-msg .second-line {
+    font-size: 16px;
   }
 }
 .featured-asset .tve-help-link {
@@ -7981,6 +8012,31 @@ body.person-page #main {
   .featured-asset .tve-help-link {
     text-align: left;
   }
+}
+.featured-asset .tve-help-link.signOut {
+  position: absolute;
+  display: inline-block;
+  top: 4px;
+  right: 0;
+}
+.featured-asset .tve-help-link.signOut .item-list li.last {
+  margin: 0;
+}
+.featured-asset .tve-help-link.signOut .item-list ul.ng-scope {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 0 0 12px;
+  border-left: 1px solid #6c6c6c;
+  line-height: 10px;
+}
+.featured-asset .tve-help-link.signOut .item-list ul.ng-scope li {
+  margin: 0 !important;
+  padding: 0;
+}
+.featured-asset .tve-help-link.signOut .item-list ul.ng-scope li a {
+  color: #6c6c6c;
+  font-size: 14px;
+  line-height: 10px;
 }
 .featured-asset .video-player-wrapper {
   position: relative;
@@ -8219,7 +8275,8 @@ body.person-page #main {
   display: block;
 }
 .no-touch .featured-asset .video-player-wrapper:hover img {
-  opacity: .5;
+  opacity: .2;
+  transition: opacity 0.3s ease-in-out;
 }
 .featured-asset .meta {
   overflow: hidden;
@@ -8266,12 +8323,17 @@ body.person-page #main {
 .featured-asset .meta-head .details {
   color: #878785;
 }
+.featured-asset .meta-head .details .episode-info div {
+  display: inline-block;
+}
 .featured-asset .meta-head .episode-title {
+  margin-top: 10px;
   font-size: 24px;
   text-transform: none;
+  display: block;
 }
 .featured-asset .meta-head .episode-title div {
-  display: inline;
+  display: inline-block;
 }
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description {

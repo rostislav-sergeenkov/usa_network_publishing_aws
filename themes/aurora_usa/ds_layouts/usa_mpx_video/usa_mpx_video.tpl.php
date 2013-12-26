@@ -66,7 +66,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         </div>
         <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" />Close</div>
       </div>
-      <div class="locked-msg"><?php print t('Please sign in with your TV provider<br />to unlock this episode.'); ?></div>
+      <div class="locked-msg"><?php print t('<span class="first-line">Please sign in with your TV provider to unlock this episode.</span><span class="second-line">(This episode will automatically unlock 30 days after original airdate.)</span>'); ?></div>
       <div id="player">
         <a href="javascript:void(0)" class="loginButton clean ng-scope" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()">
           <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
@@ -74,7 +74,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         </a>
       </div>
     </div>
-    <div class="tve-help-link"><img src="/sites/usanetwork/themes/aurora_usa/images/info_gray.png" />Why do I have to sign in?</div>
+    <div class="tve-help-link signIn"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div>
   <?php else : ?>
     <div class="video-player-wrapper">
       <?php 
@@ -86,7 +86,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         print $video;
       ?>
     </div>
-    <div class="tve-help-link"><?php print drupal_render($links); ?></div>
+    <div class="tve-help-link signOut"><?php print drupal_render($links); ?></div>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
 

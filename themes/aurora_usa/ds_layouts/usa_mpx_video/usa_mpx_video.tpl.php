@@ -73,7 +73,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         </a>
       </div>
     </div>
-    <div class="tve-help-link"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div>
+    <div class="tve-help-link signIn"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div>
   <?php else : ?>
     <div class="video-player-wrapper">
       <?php 
@@ -81,7 +81,7 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         print $video;
       ?>
     </div>
-    <div class="tve-help-link"><?php print drupal_render($links); ?></div>
+    <div class="tve-help-link signOut"><?php print drupal_render($links); ?></div>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
 

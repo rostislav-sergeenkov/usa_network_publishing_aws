@@ -648,13 +648,40 @@
     cursor: pointer;
     padding-bottom: 12px;
     padding-top: 5px;
-      @include breakpoint($bp-video-player-section) {
-        text-align: center;
-      }
-      @include breakpoint($bp-video-mid-range4-width) {
-        text-align: left;
+    @include breakpoint($bp-video-player-section) {
+      text-align: center;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      text-align: left;
+    }
+    &.signOut {
+      position:absolute;
+      display:inline-block;
+      top:4px;
+      right:0;
+      .item-list {
+        li.last {
+          margin:0;
+        }
+        ul.ng-scope {
+          display:inline-block;
+          margin-left:10px;
+          padding:0 0 0 12px;
+          border-left:1px solid #6c6c6c;
+          line-height:10px;
+          li {
+            margin:0 !important;
+            padding:0;
+            a {
+              color:#6c6c6c;
+              font-size:14px;
+              line-height:10px;
+            }
+          }
+        }
       }
     }
+  }
   .video-player-wrapper {
     position: relative;
     float: left;

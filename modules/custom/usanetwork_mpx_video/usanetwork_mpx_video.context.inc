@@ -21,6 +21,7 @@ function usanetwork_mpx_video_context_default_contexts() {
       'values' => array(
         'videos' => 'videos',
         'videos/*' => 'videos/*',
+        '~videos/live' => '~videos/live',
       ),
     ),
   );
@@ -74,6 +75,7 @@ function usanetwork_mpx_video_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~videos' => '~videos',
+        '~videos/live' => '~videos/live',
       ),
     ),
   );

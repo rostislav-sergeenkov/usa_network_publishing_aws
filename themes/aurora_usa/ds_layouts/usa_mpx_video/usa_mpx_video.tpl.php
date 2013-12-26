@@ -9,6 +9,9 @@ $body = isset($field_mpx_description[0]['safe_value']) ? $field_mpx_description[
 $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
 $lock_video = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
 
+$field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
+$is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+
 if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != NULL)) {
   $nbcu_auth = FALSE;
   
@@ -28,8 +31,6 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
     $nbcu_auth = FALSE;
 }
 }
-
-//  return drupal_render($links);
 
 //$nbcu_user_settings = $_COOKIE['nbcu_user_settings'];
 //
@@ -77,7 +78,11 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
   <?php else : ?>
     <div class="video-player-wrapper">
       <?php 
+        if ($is_live) {
+          $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
+        } else {
         $video = theme('pub_mpx_video', array('file' => $file));
+        }
         print $video;
       ?>
     </div>

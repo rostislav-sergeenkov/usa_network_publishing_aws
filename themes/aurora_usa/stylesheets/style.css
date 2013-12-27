@@ -2132,8 +2132,8 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-sb4b845171f.png') no-repeat;
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal.welcomeModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
+  background: url('../images/icons-s063d43a0ab.png') no-repeat;
 }
 
 .icons-arrow-next-hover-v2 {
@@ -2160,12 +2160,16 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1688px;
 }
 
+.icons-close_welcome_popup, .tveModal.welcomeModal .modalHeader .closeButton {
+  background-position: 0 -2399px;
+}
+
 .icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2755px;
+  background-position: 0 -2795px;
 }
 
 .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2603px;
+  background-position: 0 -2643px;
 }
 
 .icons-facebook {
@@ -2233,11 +2237,11 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-on_now {
-  background-position: 0 -2655px;
+  background-position: 0 -2695px;
 }
 
 .icons-on_now_blue {
-  background-position: 0 -2555px;
+  background-position: 0 -2595px;
 }
 
 .icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
@@ -2253,7 +2257,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-pinterest-hover-v6 {
-  background-position: 0 -2451px;
+  background-position: 0 -2491px;
 }
 
 .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
@@ -2269,7 +2273,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-pinterest-v6 {
-  background-position: 0 -2399px;
+  background-position: 0 -2439px;
 }
 
 .icons-pinterest {
@@ -2281,7 +2285,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after,
 .ie8 .usa-secondary-menu .shows > li.first > span:hover:after {
-  background-position: 0 -2807px;
+  background-position: 0 -2847px;
 }
 
 .icons-sync-now-small, .show-on-sync span {
@@ -2297,7 +2301,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-tumblr-hover-v3 {
-  background-position: 0 -2703px;
+  background-position: 0 -2743px;
 }
 
 .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
@@ -2305,7 +2309,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .icons-tumblr-v3 {
-  background-position: 0 -2503px;
+  background-position: 0 -2543px;
 }
 
 .icons-tumblr {
@@ -8330,7 +8334,7 @@ body.person-page #main {
   margin-top: 10px;
   font-size: 24px;
   text-transform: none;
-  display: block;
+  display: inline-block;
 }
 .featured-asset .meta-head .episode-title div {
   display: inline-block;
@@ -8397,6 +8401,121 @@ body.person-page #main {
 
 .tve-overlay {
   opacity: 1;
+}
+
+.tveModal.welcomeModal * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.tveModal.welcomeModal .modalHeader {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #3b3b3b), color-stop(2%, #3b3b3b), color-stop(60%, #3b3b3b), color-stop(100%, #1f1f1f));
+  background-image: -webkit-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -moz-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -o-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  width: 94% !important;
+  margin: 0 auto;
+  padding: 2% !important;
+}
+.tveModal.welcomeModal .modalHeader h1 {
+  margin: 0;
+  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  line-height: 32px;
+  letter-spacing: normal;
+}
+.tveModal.welcomeModal .modalHeader .moreDetails {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 26px;
+}
+.tveModal.welcomeModal .modalHeader .closeButton {
+  top: -12px;
+  right: -21px;
+  border-radius: 0;
+  border: 0;
+}
+.tveModal.welcomeModal .modalContent {
+  min-height: 365px;
+  width: 95.3703%;
+  margin: 0 auto;
+  padding: 2.7777% 2.3148%;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper {
+  overflow: hidden;
+  width: 70%;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper article {
+  width: 40%;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper article img {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group {
+  *zoom: 1;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature-img-wrap {
+  margin-bottom: 10px;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature:first-child {
+  padding: 0;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature:nth-child(2) {
+  margin: 0 3%;
+  padding: 0 3%;
+  border-left: 1px solid #d7d7d6;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group h2 {
+  margin: 0 0 3.6% 0;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+}
+.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature-copy {
+  margin: 0 0 10px 0;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+}
+.tveModal.welcomeModal .modalContent .buttonBar {
+  margin-top: 20px !important;
+}
+.tveModal.welcomeModal .modalContent .buttonBar .gettingStarted {
+  display: inline-block;
+  padding: 5px 20px;
+  border: 0;
+  color: white;
+  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: .05em;
+  background: #0ab6e8;
+}
+.tveModal.welcomeModal .richContent {
+  min-height: 321px;
+}
+.tveModal.welcomeModal .welcomeBgImage {
+  right: -2%;
+}
+.tveModal.welcomeModal .modalFooter {
+  width: 94% !important;
+  margin: 0 auto;
+  padding: 2%;
+  text-align: center;
+  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 25px;
 }
 
 .aspot .show-title, .aspot .show-time {

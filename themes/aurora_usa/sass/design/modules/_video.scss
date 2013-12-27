@@ -931,7 +931,7 @@
       margin-top:10px;
       font-size: 24px;
       text-transform: none;
-      display:block;
+      display:inline-block;
       div {
         display: inline-block;
       }
@@ -993,3 +993,107 @@
   opacity : 1;
 }
 
+.tveModal.welcomeModal {
+  * {
+    @include box-sizing("content-box");
+  }
+  .modalHeader {
+    @include background-image(linear-gradient(top,#3b3b3b 1%,#3b3b3b 2%,#3b3b3b 60%,#1f1f1f 100%));
+    @include box-shadow(rgba(255,255,255,.2) 0 1px 1px inset);
+    width:94% !important;
+    margin:0 auto;
+    padding:2% !important;
+    h1 {
+      margin:0;
+      font-family:$bodytext-bold;
+      line-height:32px;
+      letter-spacing:normal;
+    }
+    .moreDetails {
+      font-family:$bodytext-reg;
+      font-size:12px;
+      line-height:26px;
+    }
+    .closeButton {
+      top:-12px;
+      right:-21px;
+      @extend .icons-close_welcome_popup;
+      border-radius:0;
+      border:0;
+    }
+  }
+  .modalContent {
+    min-height:365px;
+    width:95.3703%;
+    margin:0 auto;
+    padding:2.7777% 2.3148%;
+    .articles .features-wrapper {
+      overflow:hidden;
+      width:70%;
+      article {
+        width:40%;
+        img{
+          display:block;
+          width:auto;
+          margin:0 auto;
+        }
+      }
+      .feature-group {
+        @include pie-clearfix;
+        .feature-img-wrap {
+          margin-bottom:10px;
+        }
+        .feature:first-child {
+          padding:0;
+        }
+        .feature:nth-child(2) {
+          margin:0 3%;
+          padding:0 3%;
+          border-left:1px solid #d7d7d6;
+        }
+        h2 {
+          margin:0 0 3.6% 0;
+          font-family:$bodytext-semi;
+          font-size:18px;
+          line-height:27px;
+        }
+        .feature-copy {
+          margin:0 0 10px 0;
+          font-family:$bodytext-semi;
+          font-size:13px;
+          line-height:20px;
+        }
+      }
+    }
+    .buttonBar {
+      margin-top:20px !important;
+      .gettingStarted {
+        display: inline-block;
+        padding: 5px 20px;
+        border:0;
+        color:white;
+        font-family: $bodytext-bold;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: .05em;
+        background: #0ab6e8;
+      }
+    }
+  }
+  .richContent {
+    min-height:321px;
+  }
+  .welcomeBgImage{
+    right:-2%;
+  }
+  .modalFooter {
+    width:94% !important;
+    margin:0 auto;
+    padding:2%;
+    text-align:center;
+    font-family: $bodytext-bold;
+    font-size:16px;
+    line-height:25px;
+  }
+}

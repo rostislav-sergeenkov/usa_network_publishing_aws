@@ -21,7 +21,7 @@
           if (isset($image_1) && ($image_1['fid'] != 0)){ ?>
           <img src="" data-ng-src="{{welcomeWindow.block_1_image.url}}"/>
           <?php } else { ?>
-          <img src="<?php print drupal_get_path('module', 'usanetwork_tve_video') . '/images/benefits1.png'; ?>" />
+          <img src="<?php print '/' . drupal_get_path('module', 'usanetwork_tve_video') . '/images/benefits1.png'; ?>" />
           <?php } ?>
         </figure>
         <figcaption data-ng-bind-html-unsafe="welcomeWindow.block_1_text.value"></figcaption>
@@ -33,7 +33,7 @@
           if (isset($image_2) && ($image_2['fid'] != 0)){ ?>
           <img src="" data-ng-src="{{welcomeWindow.block_2_image.url}}"/>
           <?php } else { ?>
-          <img src="<?php print drupal_get_path('module', 'usanetwork_tve_video') . '/images/benefits3.png'; ?>" />
+          <img src="<?php print '/' . drupal_get_path('module', 'usanetwork_tve_video') . '/images/benefits3.png'; ?>" />
           <?php } ?>
         </figure>
         <figcaption data-ng-bind-html-unsafe="welcomeWindow.block_2_text.value"></figcaption>
@@ -53,7 +53,7 @@
     if (isset($image_bg) && ($image_bg['fid'] != 0)){ ?>
     <div class="welcomeBgImage" data-ng-style="welcomeWindow.bgImage"></div>
     <?php } else { ?>
-    <div class="welcomeBgImage" style="background: url(<?php print drupal_get_path('module', 'usanetwork_tve_video') . '/images/psych.png'; ?>); height: 399px;"></div>
+    <div class="welcomeBgImage" style="background: url(<?php print '/' . drupal_get_path('module', 'usanetwork_tve_video') . '/images/psych.png'; ?>); height: 399px;"></div>
     <?php } ?>
   </section>
   <footer class="modalFooter alignCenter">

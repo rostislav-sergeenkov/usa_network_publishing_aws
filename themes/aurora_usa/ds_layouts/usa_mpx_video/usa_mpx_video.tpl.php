@@ -12,7 +12,11 @@ $lock_video = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALS
 $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
 $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
 
-if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != NULL)) {
+if (isset($_COOKIE['nbcu_user_settings'])) {
+  
+  $nbcu_decode = drupal_json_decode($_COOKIE['nbcu_user_settings']);
+  
+  if ($nbcu_decode['authn']) {
   $nbcu_auth = FALSE;
   
   $menu_items = _usa_auth_prepare_menu_items();
@@ -24,6 +28,9 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
     '#prefix' => '<div class="links-wrapper">',
     '#suffix' => '</div>',
   );
+} else {
+    $nbcu_auth = TRUE;
+  }
 } else {
   if ($lock_video) {
     $nbcu_auth = TRUE;
@@ -68,7 +75,8 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
       </div>
       <div class="locked-msg"><?php print t('<span class="first-line">Please sign in with your TV provider to unlock this episode.</span><span class="second-line">(This episode will automatically unlock 30 days after original airdate.)</span>'); ?></div>
       <div id="player">
-        <a href="javascript:void(0)" class="loginButton clean ng-scope" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()">
+        <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()" data-ng-cloak="">
+        <!--<a href="javascript:void(0)" class="loginButton clean ng-scope" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()">-->
           <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
           print drupal_render($image); ?>
         </a>
@@ -86,7 +94,9 @@ if (isset($_COOKIE['nbcu_user_settings']) && ($_COOKIE['nbcu_user_settings'] != 
         print $video;
       ?>
     </div>
+    <?php if ($lock_video) : ?>
     <div class="tve-help-link signOut"><?php print drupal_render($links); ?></div>
+  <?php endif; ?>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
 

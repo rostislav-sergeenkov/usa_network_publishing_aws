@@ -21,51 +21,119 @@ function usanetwork_auth_boot() {
       && $_COOKIE['usanetwork_auth'] == md5($username.$password.USANETWORK_AUTH_SALT)) {
       return;
     }
-    require_once DRUPAL_ROOT . '/includes/password.inc';
-    $condition = db_or();
-    $condition->condition('name', $username, '=');
-    $condition->condition('mail', $username, '=');
-    $account = db_select('users')
-      ->fields('users')
-      ->condition($condition)
-      ->execute();
-    $account = $account->fetch();
-    if (!user_check_password($password, $account)) {
-      // wrong user/password
-      _usanetwork_auth_set_headers();
-    }
 
-    /* Check session data */
-    $session_id = session_id();
-    if (!empty($session_id)) {
-      $session = db_select('sessions', 's')
-        ->fields('s')
-        ->condition('sid', $session_id, '=')
-        ->execute()
-        ->fetch();
+    // check anonymous credentials
+    $anonymous = _usanetwork_auth_anonymous();
+    if ($anonymous['enabled'] && $username == $anonymous['user'] && $password == $anonymous['password']) {
+      // do nothing
     }
-    if (!isset($session) || !$session || $session->uid == 0) {
-      // perform full bootstrap and authenticate user in Drupal
-      drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-      global $user;
-      $user = user_load($account->uid);
-      $edit = array(
-        'uid' => $user->uid,
-      );
-      user_login_finalize($edit);
-      $destination = drupal_get_destination();
-      drupal_goto($destination['destination']);
-    }
+    else {
+      require_once DRUPAL_ROOT . '/includes/password.inc';
+      $condition = db_or();
+      $condition->condition('name', $username, '=');
+      $condition->condition('mail', $username, '=');
+      $account = db_select('users')
+        ->fields('users')
+        ->condition($condition)
+        ->execute();
+      $account = $account->fetch();
+      if (!user_check_password($password, $account)) {
+        // wrong user/password
+        _usanetwork_auth_set_headers();
+      }
 
+      /* Check session data */
+      $session_id = session_id();
+      if (!empty($session_id)) {
+        $session = db_select('sessions', 's')
+          ->fields('s')
+          ->condition('sid', $session_id, '=')
+          ->execute()
+          ->fetch();
+      }
+      if (!isset($session) || !$session || $session->uid == 0) {
+        // perform full bootstrap and authenticate user in Drupal
+        drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+        global $user;
+        $user = user_load($account->uid);
+        $edit = array(
+          'uid' => $user->uid,
+        );
+        user_login_finalize($edit);
+        $destination = drupal_get_destination();
+        drupal_goto($destination['destination']);
+      }
+    }
     // set cookie not to check credentials every load
     setcookie('usanetwork_auth', md5($username.$password.USANETWORK_AUTH_SALT), time() + USANETWORK_AUTH_EXPIRE, '/');
   }
 }
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_auth_menu() {
+  $items = array();
+
+  $items['admin/usanetwork/auth'] = array(
+    'title' => 'Authentication',
+    'description' => 'HTTP Auth configuration. Secures environments with password',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_auth_admin'),
+    'access arguments' => array('administer usanetwork'),
+  );
+
+  return $items;
+}
+
+/**
+ * Admin page callback.
+ */
+function usanetwork_auth_admin() {
+  $form = array(
+    '#tree' => true,
+  );
+  $form['usanetwork_auth_realm'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Realm'),
+    '#description' => t('Message displayed in a popup asking for credentials.'),
+    '#default_value' => _usanetwork_auth_get_realm(),
+  );
+  $form['usanetwork_auth_access_denied_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Access denied message'),
+    '#description' => t('Message displayed if user cancels authentication.'),
+    '#default_value' => _usanetwork_auth_access_denied_message(),
+  );
+
+  $anonymous = _usanetwork_auth_anonymous();
+  $form['usanetwork_auth_anonymous'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Anonymous credentials'),
+  );
+  $form['usanetwork_auth_anonymous']['enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enabled'),
+    '#default_value' => $anonymous['enabled'],
+  );
+  $form['usanetwork_auth_anonymous']['user'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Username'),
+    '#default_value' => $anonymous['user'],
+  );
+  $form['usanetwork_auth_anonymous']['password'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Password'),
+    '#default_value' => $anonymous['password'],
+  );
+  return system_settings_form($form);
+}
+
+/**
  * Checks if auth needed.
  */
 function _usanetwork_auth_enabled() {
+  return true;
   $env_exclude = array(
     'prod',
     'local',
@@ -100,4 +168,16 @@ function _usanetwork_auth_get_realm() {
  */
 function _usanetwork_auth_access_denied_message() {
   return variable_get('usanetwork_auth_access_denied_message', t('Access denied.'));
+}
+
+/**
+ * Returns anonymous username/password.
+ */
+function _usanetwork_auth_anonymous() {
+  $default = array(
+    'enabled' => 1,
+    'user' => 'anonymous',
+    'password' => 'anonymous',
+  );
+  return variable_get('usanetwork_auth_anonymous', $default);
 }

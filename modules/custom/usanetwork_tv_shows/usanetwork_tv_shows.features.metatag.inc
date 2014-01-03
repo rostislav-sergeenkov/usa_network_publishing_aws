@@ -37,7 +37,7 @@ function usanetwork_tv_shows_metatag_export_default() {
         'value' => '[node:field-show:title] | [node:title]',
       ),
       'og:description' => array(
-        'value' => '[node:field_show] | [node:title]',
+        'value' => '[node:field-show:title] | [node:title]',
       ),
       'og:image' => array(
         'value' => '[node:field_tv_cover_media]',

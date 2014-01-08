@@ -133,7 +133,6 @@ function usanetwork_auth_admin() {
  * Checks if auth needed.
  */
 function _usanetwork_auth_enabled() {
-  return true;
   $env_exclude = array(
     'prod',
     'local',

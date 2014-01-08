@@ -77,8 +77,11 @@ if (isset($_COOKIE['nbcu_user_settings'])) {
       <div id="player">
         <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()" data-ng-cloak="">
         <!--<a href="javascript:void(0)" class="loginButton clean ng-scope" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()">-->
-          <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
-          print drupal_render($image); ?>
+          <?php 
+          if (!$is_live) {
+            $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
+            print drupal_render($image); 
+          }?>
         </a>
       </div>
     </div>

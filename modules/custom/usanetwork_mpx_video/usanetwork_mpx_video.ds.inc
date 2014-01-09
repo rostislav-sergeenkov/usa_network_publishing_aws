@@ -44,6 +44,29 @@ function usanetwork_mpx_video_ds_field_settings_info() {
 }
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function usanetwork_mpx_video_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'video_mpx_companion_rectangle';
+  $ds_field->label = 'video_mpx_companion_rectangle';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'file' => 'file',
+  );
+  $ds_field->properties = array(
+    'block' => 'pub_ads|ad_300x250_1',
+    'block_render' => '1',
+  );
+  $export['video_mpx_companion_rectangle'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function usanetwork_mpx_video_ds_layout_settings_info() {
@@ -60,8 +83,17 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'ad' => array(
+        0 => 'video_mpx_companion_rectangle',
+      ),
+      'season' => array(
+        0 => 'field_mpx_season_number',
+      ),
       'show' => array(
         0 => 'field_show',
+      ),
+      'episode' => array(
+        0 => 'field_mpx_episode_number',
       ),
       'video_title' => array(
         0 => 'field_mpx_title',
@@ -69,19 +101,14 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'airdate' => array(
         0 => 'field_mpx_airdate',
       ),
-      'season' => array(
-        0 => 'field_mpx_season_number',
-      ),
-      'episode' => array(
-        0 => 'field_mpx_episode_number',
-      ),
     ),
     'fields' => array(
+      'video_mpx_companion_rectangle' => 'ad',
+      'field_mpx_season_number' => 'season',
       'field_show' => 'show',
+      'field_mpx_episode_number' => 'episode',
       'field_mpx_title' => 'video_title',
       'field_mpx_airdate' => 'airdate',
-      'field_mpx_season_number' => 'season',
-      'field_mpx_episode_number' => 'episode',
     ),
     'classes' => array(),
   );
@@ -220,14 +247,17 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'ad' => array(
+        0 => 'video_mpx_companion_rectangle',
+      ),
+      'airdate' => array(
+        0 => 'field_mpx_airdate',
+      ),
       'show' => array(
         0 => 'field_show',
       ),
       'video_title' => array(
         0 => 'field_mpx_title',
-      ),
-      'airdate' => array(
-        0 => 'field_mpx_airdate',
       ),
       'episode' => array(
         0 => 'field_mpx_episode_number',
@@ -237,9 +267,10 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
+      'video_mpx_companion_rectangle' => 'ad',
+      'field_mpx_airdate' => 'airdate',
       'field_show' => 'show',
       'field_mpx_title' => 'video_title',
-      'field_mpx_airdate' => 'airdate',
       'field_mpx_episode_number' => 'episode',
       'field_mpx_season_number' => 'season',
     ),

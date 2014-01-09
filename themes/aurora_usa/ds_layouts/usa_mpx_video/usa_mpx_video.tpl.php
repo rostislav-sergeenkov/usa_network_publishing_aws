@@ -102,5 +102,6 @@ if (isset($_COOKIE['nbcu_user_settings'])) {
   <?php endif; ?>
   <?php endif; ?>
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
-
+  <?php if ($is_live) :
+    if ($ad && $ad != "&nbsp;"): ?><div class="ad"><?php print $ad; ?></div><?php endif; endif; ?>
 </div>

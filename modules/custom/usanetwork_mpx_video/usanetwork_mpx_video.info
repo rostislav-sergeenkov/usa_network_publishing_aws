@@ -25,6 +25,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = file|mpx_video_1|vid_teaser_episode
 features[ds_field_settings][] = file|mpx_video_2|vid_teaser_episode
+features[ds_fields][] = video_mpx_companion_rectangle
 features[ds_layout_settings][] = file|mpx_video_1|full
 features[ds_layout_settings][] = file|mpx_video_1|vid_teaser_episode
 features[ds_layout_settings][] = file|mpx_video_1|vid_teaser_general

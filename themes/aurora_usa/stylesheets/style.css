@@ -7194,6 +7194,15 @@ body.person-page #main {
   background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
 }
 
+.file-video-mpx .inlineLoader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  vertical-align: middle;
+  background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+}
+
 @media (max-width: 722px) {
   #block-usanetwork-video-usa-video-views,
   #block-usanetwork-mpx-video-usa-video-views {

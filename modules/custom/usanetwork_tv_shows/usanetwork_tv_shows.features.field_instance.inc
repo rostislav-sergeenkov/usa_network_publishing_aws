@@ -757,7 +757,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_tv_cover_media',
     'label' => 'Cover Media',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
@@ -1219,7 +1219,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_tv_cover_media',
     'label' => 'Cover Media',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',

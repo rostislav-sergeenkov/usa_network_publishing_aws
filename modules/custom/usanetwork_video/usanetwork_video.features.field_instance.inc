@@ -86,7 +86,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'display_summary' => 1,
       'text_processing' => 1,
@@ -747,7 +747,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
@@ -1440,7 +1440,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_video_thumbnail',
     'label' => 'video_thumbnail',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -1550,7 +1550,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'display_summary' => 1,
       'text_processing' => 1,
@@ -2261,7 +2261,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
@@ -3015,7 +3015,7 @@ function usanetwork_video_field_default_field_instances() {
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_video_thumbnail',
     'label' => 'video_thumbnail',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_og_metatags feature.
+ */
+
+include_once 'usanetwork_og_metatags.features.inc';

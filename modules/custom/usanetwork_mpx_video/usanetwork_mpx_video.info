@@ -77,6 +77,7 @@ features[variable][] = media_theplatform_mpx__cron_videos_per_run
 features[variable][] = pathauto_file_image_pattern
 features[variable][] = pathauto_file_mpx_video_1_pattern
 features[variable][] = pathauto_file_mpx_video_2_pattern
+features[variable][] = pathauto_file_pattern
 features[variable][] = pathauto_file_video_pattern
 features[views_view][] = usa_mpx_video
 features[views_view][] = whats_hot_file

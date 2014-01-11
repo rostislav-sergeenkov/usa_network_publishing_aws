@@ -507,12 +507,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
-        'tve_auth-tve_auth_header' => array(
-          'module' => 'tve_auth',
-          'delta' => 'tve_auth_header',
-          'region' => 'header',
-          'weight' => '-8',
-        ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_detect_ieversion',

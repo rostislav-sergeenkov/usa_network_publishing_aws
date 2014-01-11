@@ -7,7 +7,6 @@ dependencies[] = context
 dependencies[] = ctools
 dependencies[] = dart
 dependencies[] = menu
-dependencies[] = tve_auth
 dependencies[] = usanetwork_ads
 dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_catchall

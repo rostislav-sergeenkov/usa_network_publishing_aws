@@ -302,7 +302,6 @@ function usanetwork_mpx_video_show_nav() {
  * renders the correct video view based upon the argument
  */
 function usanetwork_mpx_video_views($arg = null) {
-
   if (!isset($arg)) {
     $arg = arg();
   }
@@ -516,14 +515,23 @@ function usanetwork_mpx_video_file_presave($file) {
     $path['source'] = 'file/' . $file->fid;
     
     if (isset($show)) {
-      $path['alias'] = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+      $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
     } else {
-      $path['alias'] = 'mpxfile/videos/' . pathauto_cleanstring($title);
+      $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
     }
+    
+    $i = 0;
+    $exist_path = path_load(array('alias' => $new_path));
+    while($exist_path && $exist_path['source'] != $path['source']) {
+      $new_path = $new_path . '-' . $i;
+      $i++;
+      $exist_path = path_load(array('alias' => $new_path));
+    }  
+    
+    $path['alias'] = $new_path;
     
     path_save($path);
   }
-  
 }
 
 /**

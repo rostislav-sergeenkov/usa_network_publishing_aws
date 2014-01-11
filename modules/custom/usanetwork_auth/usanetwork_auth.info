@@ -1,0 +1,4 @@
+name = USA Network Auth
+description = Adds HTTP authentication to environments.
+core = 7.x
+package = USA Network

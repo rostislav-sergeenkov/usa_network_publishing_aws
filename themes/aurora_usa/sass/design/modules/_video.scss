@@ -1108,3 +1108,16 @@
     line-height:25px;
   }
 }
+
+.tveModal.loginModal,
+.tveModal.adobePassFrame {
+  .modalHeader {
+    .closeButton {
+      top:-12px;
+      right:-21px;
+      @extend .icons-close_welcome_popup;
+      border-radius:0;
+      border:0;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 <?php
+drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
 
 $field_mpx_description = field_get_items('file', $file, 'field_mpx_description');
 $body = isset($field_mpx_description[0]['safe_value']) ? $field_mpx_description[0]['safe_value'] : '';

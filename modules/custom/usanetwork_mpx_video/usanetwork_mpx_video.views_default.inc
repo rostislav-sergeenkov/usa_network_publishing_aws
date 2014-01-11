@@ -47,11 +47,11 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = '';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: File: MPX Media Air Date (field_mpx_airdate) */
-  $handler->display->display_options['sorts']['field_mpx_airdate_value']['id'] = 'field_mpx_airdate_value';
-  $handler->display->display_options['sorts']['field_mpx_airdate_value']['table'] = 'field_data_field_mpx_airdate';
-  $handler->display->display_options['sorts']['field_mpx_airdate_value']['field'] = 'field_mpx_airdate_value';
-  $handler->display->display_options['sorts']['field_mpx_airdate_value']['order'] = 'DESC';
+  /* Sort criterion: thePlatform MPX Video: Air Date */
+  $handler->display->display_options['sorts']['airdate']['id'] = 'airdate';
+  $handler->display->display_options['sorts']['airdate']['table'] = 'mpx_video';
+  $handler->display->display_options['sorts']['airdate']['field'] = 'airdate';
+  $handler->display->display_options['sorts']['airdate']['order'] = 'DESC';
   /* Sort criterion: File: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'file_managed';

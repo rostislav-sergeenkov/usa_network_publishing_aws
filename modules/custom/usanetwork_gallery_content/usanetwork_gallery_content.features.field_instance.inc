@@ -81,7 +81,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
       'display_summary' => TRUE,
       'text_processing' => 1,

@@ -71,7 +71,7 @@ if (typeof jQuery == 'undefined' || jQuery.fn.jquery != "1.7.1") {
       settings: {
         transitionsSupported: 'WebkitTransition' in document.body.style || 'MozTransition' in document.body.style || 'msTransition' in document.body.style || 'OTransition' in document.body.style || 'Transition' in document.body.style,
         shiftFixedChildren: false,
-        panelPosition: 'absolute',
+        panelPosition: 'fixed',
         positionUnits: 'px'
       },
       menu: '#jPanelMenu-menu',
@@ -226,8 +226,9 @@ if (typeof jQuery == 'undefined' || jQuery.fn.jquery != "1.7.1") {
         jP.options.beforeOpen();
         jP.setMenuState(true);
         jP.setPanelStyle({
-          position: 'absolute',
-          display: 'block'
+          position: 'fixed',
+          display: 'block',
+          right: 0
         });
         jP.showMenu();
         var animationChecks = {

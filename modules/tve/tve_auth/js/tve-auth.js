@@ -147,20 +147,22 @@
           switch (Drupal.settings.windowType) {
             case 'auth':
               tveModal.openLoginModal();
+              $.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
               break;
             case 'orig':
               tveAnalytics.trackAuthEvents(tveAnalytics.events.ADOBE_PASS_LANDING);
               tveModal.openWelcomeModal();
+              $.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
               break;
             case 'none':
               break;
             default:
               tveAnalytics.trackAuthEvents(tveAnalytics.events.ADOBE_PASS_LANDING);
               tveModal.openWelcomeModal();
+              $.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
               break;
           }
-
-          $.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
+          
         }
         else if (Drupal.settings.enableLiveWindow && !$.cookie(tveCookiesKeys.FIRST_VISIT_LIVE_PAGE)) {
           tveModal.openLiveModal();

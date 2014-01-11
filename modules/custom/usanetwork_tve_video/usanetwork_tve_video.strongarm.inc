@@ -61,6 +61,15 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'tve_auth_published_welcome_modal';
+  $strongarm->value = array(
+    'variant' => 'none',
+  );
+  $export['tve_auth_published_welcome_modal'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_published_welcome_window';
   $strongarm->value = array(
     'title' => 'Welcome to USA Now',

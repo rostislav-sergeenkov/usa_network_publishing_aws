@@ -14,6 +14,7 @@ features[variable][] = sitecatalyst_tve_report_suite_id
 features[variable][] = tve_adobe_pass_requestor_id
 features[variable][] = tve_adobe_pass_resource_id
 features[variable][] = tve_auth_published_login_window_1
+features[variable][] = tve_auth_published_welcome_modal
 features[variable][] = tve_auth_published_welcome_window
 features[variable][] = tve_k2_api_url
 features[variable][] = tve_mvpd_brand_id

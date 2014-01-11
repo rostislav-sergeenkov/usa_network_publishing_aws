@@ -105,7 +105,7 @@
           $('.video-player-wrapper #player').find('a').removeAttr('style');
           $('.video-player-wrapper img').removeAttr('style');
           $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
-          $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_gray.png');
+//          $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_gray.png');
           $('.featured-asset').removeClass('tve-overlay');
         }
         else {
@@ -115,7 +115,7 @@
           $('.video-player-wrapper #player').find('div').css('opacity', 0.1);
           $('.video-player-wrapper #player').find('a').css('opacity', 0);
           $('.video-player-wrapper img').css('opacity', 1);
-          $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_blue.png');
+//          $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_blue.png');
           $('.featured-asset').addClass('tve-overlay');
         }
       });
@@ -127,7 +127,7 @@
         $('.video-player-wrapper #player').find('a').removeAttr('style');
         $('.video-player-wrapper img').removeAttr('style');
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
-        $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_gray.png');
+//        $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_gray.png');
         $('.featured-asset').removeClass('tve-overlay');
       });
     },

@@ -7954,6 +7954,9 @@ body.person-page #main {
   content: " ";
   background: url("../images/sign_in_key.png") center top no-repeat;
 }
+.featured-asset.file-video-mpx.tve-overlay .video-player-wrapper a:after {
+  background-image: none;
+}
 .featured-asset.file-video-mpx .locked-msg {
   position: absolute;
   top: 40px;
@@ -8014,10 +8017,6 @@ body.person-page #main {
   padding-bottom: 12px;
   padding-top: 5px;
 }
-.featured-asset .tve-help-link > img {
-  padding-right: 5px;
-  padding-bottom: 1px;
-}
 @media (max-width: 644px) {
   .featured-asset .tve-help-link {
     text-align: center;
@@ -8052,6 +8051,10 @@ body.person-page #main {
   color: #6c6c6c;
   font-size: 14px;
   line-height: 10px;
+}
+.featured-asset .tve-help-sign > img {
+  padding-right: 5px;
+  padding-bottom: 1px;
 }
 .featured-asset .video-player-wrapper {
   position: relative;

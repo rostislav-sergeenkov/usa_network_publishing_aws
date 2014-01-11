@@ -601,6 +601,11 @@
       content: " ";
       background:url('../images/sign_in_key.png') center top no-repeat;
     }
+    &.tve-overlay {
+      .video-player-wrapper a:after {
+        background-image: none;
+      }
+    }
     .locked-msg {
       position: absolute;
       top: 40px;
@@ -651,10 +656,6 @@
     }
   }
   .tve-help-link {
-    > img {
-     padding-right: 5px;
-     padding-bottom: 1px;
-    }
     color: $gray-extra-light;
     cursor: pointer;
     padding-bottom: 12px;
@@ -691,6 +692,12 @@
           }
         }
       }
+    }
+  }
+  .tve-help-sign {
+    > img {
+     padding-right: 5px;
+     padding-bottom: 1px;
     }
   }
   .video-player-wrapper {

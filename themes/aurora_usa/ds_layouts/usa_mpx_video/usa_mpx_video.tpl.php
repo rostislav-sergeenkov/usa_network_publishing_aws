@@ -36,6 +36,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
     </div>
   </div>
   
+  <?php if ($lock_video): ?>
   <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
       <div class="tve-help">
         <div class="tve-msg">By signing in with your TV provider you get access to full<br />episodes the day after they air! Otherwise you may have to<br /> wait up to 30 days to watch most full episodes.</div>
@@ -54,7 +55,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
           if (!$is_live) {
             $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
             print drupal_render($image); 
-          }?>
+          } ?>
         </a>
       </div>
     </div>
@@ -68,8 +69,20 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
         print $video;
       ?>
     </div>
-  <div class="tve-help-link signIn" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div>
+    <div class="tve-help-link signIn"><div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div></div>
   <div class="tve-help-link signOut" data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
+  <?php else: ?>
+    <div class="video-player-wrapper">
+    <?php 
+      if ($is_live) {
+        $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
+      } else {
+        $video = theme('pub_mpx_video', array('file' => $file));
+      }
+      print $video;
+    ?>
+    </div>
+  <?php endif; ?>
     
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
   <?php if ($is_live) :

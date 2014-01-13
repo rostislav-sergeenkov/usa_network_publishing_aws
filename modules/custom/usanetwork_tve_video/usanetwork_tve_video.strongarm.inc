@@ -20,6 +20,13 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'tve_adobe_pass_accessenabler_loc';
+  $strongarm->value = 'http://entitlement.auth.adobe.com/entitlement/AccessEnabler.swf';
+  $export['tve_adobe_pass_accessenabler_loc'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'tve_adobe_pass_requestor_id';
   $strongarm->value = 'usa';
   $export['tve_adobe_pass_requestor_id'] = $strongarm;
@@ -187,7 +194,7 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_k2_api_url';
-  $strongarm->value = 'http://staging159.viewerlink.tv/';
+  $strongarm->value = 'http://nbcutve.viewerlink.tv/';
   $export['tve_k2_api_url'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -196,6 +203,13 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->name = 'tve_mvpd_brand_id';
   $strongarm->value = 'usa';
   $export['tve_mvpd_brand_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_mvpd_instance';
+  $strongarm->value = 'prod';
+  $export['tve_mvpd_instance'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

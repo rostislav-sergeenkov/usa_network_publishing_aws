@@ -64,7 +64,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
         if ($is_live) {
           $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
         } else {
-        $video = theme('pub_mpx_video', array('file' => $file));
+          $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true')));
         }
         print $video;
       ?>
@@ -77,7 +77,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
       if ($is_live) {
         $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
       } else {
-        $video = theme('pub_mpx_video', array('file' => $file));
+        $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true')));
       }
       print $video;
     ?>

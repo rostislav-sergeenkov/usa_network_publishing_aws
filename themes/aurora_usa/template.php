@@ -202,6 +202,13 @@ function aurora_usa_form_search_block_form_alter(&$form){
     '#weight' => 1000
   );
 
+  // remove keywords from action
+  $parts = explode('/', trim($form['#action'], '/'));
+  if ($parts[0] == 'search' && count($parts) > 2) {
+    $parts = array_slice($parts, 0, 2);
+    $form['#action'] = '/' . implode('/', $parts);
+  }
+
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
 

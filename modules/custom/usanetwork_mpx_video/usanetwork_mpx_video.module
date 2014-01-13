@@ -141,7 +141,7 @@ function usanetwork_mpx_video_global_nav() {
   }
 
   // sort the shows alphabetically
-  asort($items[0]['children']);
+  uasort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
@@ -217,7 +217,7 @@ function usanetwork_mpx_video_show_nav() {
   }
 
   // sort the shows alphabetically
-  asort($items[0]['children']);
+  uasort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();

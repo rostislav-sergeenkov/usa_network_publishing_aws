@@ -4860,44 +4860,36 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 
 .page-search .pager {
   float: right;
-  margin: 10px 0 0;
+  margin: 0;
   padding: 0;
 }
-.page-search .pager .pager-item,
-.page-search .pager .pager-current,
-.page-search .pager .pager-ellipsis,
-.page-search .pager .pager-last,
-.page-search .pager .pager-next {
+.page-search .pager li {
   margin: 5px;
   padding: 0;
   font-size: 14px;
   text-transform: capitalize;
 }
-.page-search .pager .pager-item a,
-.page-search .pager .pager-current a,
-.page-search .pager .pager-ellipsis a,
-.page-search .pager .pager-last a,
-.page-search .pager .pager-next a {
+.page-search .pager li a {
   color: #868686;
 }
-.page-search .pager .pager-item a:hover,
-.page-search .pager .pager-current a:hover,
-.page-search .pager .pager-ellipsis a:hover,
-.page-search .pager .pager-last a:hover,
-.page-search .pager .pager-next a:hover {
+.page-search .pager li a:hover {
   color: #fff;
 }
 .page-search h2 {
-  margin-left: 18px;
+  padding-left: 0px;
   padding-bottom: 9px;
+  margin-bottom: 9px;
   border-bottom: 1px solid #adadad;
 }
 .page-search h2 span {
   color: #868686;
 }
+.page-search .search-totals {
+  color: #868686;
+}
 .page-search .search-results {
   margin-bottom: 0;
-  padding-left: 18px;
+  padding-left: 0;
   list-style: none;
 }
 .page-search .search-results .search-result {
@@ -4905,11 +4897,20 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border-bottom: 1px dashed #adadad;
   color: #868686;
 }
+.page-search .search-results .search-result h3 a {
+  color: #fff;
+}
+.page-search .search-results .search-result .search-snippet-info {
+  padding-left: 0;
+}
+.page-search .search-results .search-result .search-snippet-info .search-snippet strong {
+  color: #fff;
+}
 .page-search .search-results .search-result:last-child {
   border-bottom: 1px solid #adadad;
 }
 .page-search .search-results .search-result a {
-  color: #fff;
+  color: #868686;
 }
 .page-search .search-results .search-result .title {
   margin-bottom: 0;

@@ -2126,6 +2126,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'search',
+          'weight' => -10,
+        ),
       ),
     ),
   );

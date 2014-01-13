@@ -33,12 +33,6 @@ function usanetwork_search_context_default_contexts() {
           'region' => 'head_general',
           'weight' => '-10',
         ),
-        'solr_devel-query_debug' => array(
-          'module' => 'solr_devel',
-          'delta' => 'query_debug',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'usanetwork_tv_schedule-usa_on_now_panel' => array(
           'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_panel',

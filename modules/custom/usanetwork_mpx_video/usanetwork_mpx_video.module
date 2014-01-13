@@ -141,7 +141,7 @@ function usanetwork_mpx_video_global_nav() {
   }
 
   // sort the shows alphabetically
-  asort($items[0]['children']);
+  uasort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
@@ -217,7 +217,7 @@ function usanetwork_mpx_video_show_nav() {
   }
 
   // sort the shows alphabetically
-  asort($items[0]['children']);
+  uasort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
@@ -519,16 +519,17 @@ function usanetwork_mpx_video_file_presave($file) {
     } else {
       $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
     }
+    $new_path_promt = $new_path;
     
     $i = 0;
     $exist_path = path_load(array('alias' => $new_path));
     while($exist_path && $exist_path['source'] != $path['source']) {
-      $new_path = $new_path . '-' . $i;
+      $new_path_promt = $new_path . '-' . $i;
       $i++;
-      $exist_path = path_load(array('alias' => $new_path));
+      $exist_path = path_load(array('alias' => $new_path_promt));
     }  
     
-    $path['alias'] = $new_path;
+    $path['alias'] = $new_path_promt;
     
     path_save($path);
   }

@@ -149,13 +149,7 @@ function aurora_usa_preprocess_page(&$vars) {
  */
 function aurora_usa_preprocess_search_results(&$variables) {
   // add keywords to template
-  $path = explode('/', $_GET['q'], 3);
-  if(count($path) == 3 && $path[0]=="search") {
-    $keywords = $path[2];
-  } else {
-    $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
-  }
-  $variables['keywords'] = urldecode($keywords);
+  $variables['keywords'] = _aurora_usa_search_keywords();
 
   // search.module shows 10 items per page (this isn't customizable)
   $itemsPerPage = 10;
@@ -199,6 +193,9 @@ function aurora_usa_form_search_block_form_alter(&$form){
   // Add placeholder attribute to the text box
   $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
 
+  if ($keywords = _aurora_usa_search_keywords()) {
+    $form['search_block_form']['#value'] = $keywords;
+  }
 
   $form['actions']['reset'] = array(
     '#markup' => '<button class="form-reset" type="reset"></button>',
@@ -957,4 +954,19 @@ function aurora_usa_field__field_video_thumbnail($variables) {
   }
 
   return $output;
+}
+
+
+/**
+ * Returns search keywords.
+ */
+function _aurora_usa_search_keywords() {
+  // add keywords to template
+  $path = explode('/', $_GET['q'], 3);
+  if(count($path) == 3 && $path[0]=="search") {
+    $keywords = $path[2];
+  } else {
+    $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
+  }
+  return urldecode($keywords);
 }

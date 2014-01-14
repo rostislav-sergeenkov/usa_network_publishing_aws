@@ -7,7 +7,7 @@ define('USANETWORK_AUTH_EXPIRE', 31536000); // 1 year
  * Implements hook_boot().
  */
 function usanetwork_auth_boot() {
-  if (!_usanetwork_auth_enabled()) {
+  if (!_usanetwork_auth_enabled() || drupal_is_cli()) {
     return;
   }
   if (!isset($_SERVER['PHP_AUTH_USER'])) {

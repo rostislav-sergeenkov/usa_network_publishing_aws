@@ -744,6 +744,25 @@
         height: 375px;
       }
     }
+    
+    .no-touch & {
+      .locked-msg,
+      a:after {
+        display: none;
+      }
+      &:hover {
+        cursor: pointer;
+        .locked-msg,
+        a:after {
+          display: block;
+        }
+        img {
+          opacity: .2;
+          transition: opacity 0.3s ease-in-out;
+        }
+      }
+    }
+  }
     .tve-help {
       display: none;
       z-index: 1;
@@ -885,24 +904,6 @@
           }
         }
       }
-    .no-touch & {
-      .locked-msg,
-      a:after {
-        display: none;
-      }
-      &:hover {
-        cursor: pointer;
-        .locked-msg,
-        a:after {
-          display: block;
-        }
-        img {
-          opacity: .2;
-          transition: opacity 0.3s ease-in-out;
-        }
-      }
-    }
-  }
   .meta {
     overflow: hidden;
   }

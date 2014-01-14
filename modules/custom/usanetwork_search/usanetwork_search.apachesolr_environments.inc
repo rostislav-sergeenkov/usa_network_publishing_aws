@@ -14,7 +14,7 @@ function usanetwork_search_apachesolr_environments() {
   $environment->api_version = 1;
   $environment->env_id = 'acquia_search_server_1';
   $environment->name = 'Acquia Search';
-  $environment->url = 'http://search.acquia.com/solr/CGJK-32328';
+  $environment->url = 'http://search.acquia.com/solr/GMWX-32384';
   $environment->service_class = 'AcquiaSearchService';
   $environment->conf = array(
     'apachesolr_index_last' => array(
@@ -71,7 +71,18 @@ function usanetwork_search_apachesolr_environments() {
     'apachesolr_last_optimize' => 1377184501,
     'apachesolr_read_only' => '0',
   );
-  $environment->index_bundles = array();
+  $environment->index_bundles = array(
+    'node' => array(
+      0 => 'catchall_page',
+      1 => 'media_gallery',
+      2 => 'person',
+      3 => 'tv_episode',
+      4 => 'tv_show',
+      5 => 'usanetwork_static_page',
+      6 => 'usa_tve_video',
+      7 => 'usa_video',
+    ),
+	);
   $export['acquia_search_server_1'] = $environment;
 
   return $export;

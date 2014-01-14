@@ -1081,6 +1081,8 @@ function usanetwork_context_context_default_contexts() {
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
         '<front>' => '<front>',
+        'search' => 'search',
+        'search/*' => 'search/*',
       ),
     ),
   );

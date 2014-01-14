@@ -21,17 +21,3 @@ function usanetwork_search_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
-
-/**
- * Implements hook_context_default_contexts_alter().
- */
-function usanetwork_search_context_default_contexts_alter(&$data) {
-  if (isset($data['usanetwork_sitewide'])) {
-    $data['usanetwork_sitewide']->reactions['block']['blocks']['search-form'] = array(
-      'module' => 'search',
-      'delta' => 'form',
-      'region' => 'search',
-      'weight' => -10,
-    ); /* WAS: '' */
-  }
-}

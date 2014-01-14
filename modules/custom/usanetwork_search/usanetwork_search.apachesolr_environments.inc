@@ -28,8 +28,8 @@ function usanetwork_search_apachesolr_environments() {
         'last_entity_id' => 0,
       ),
       'node' => array(
-        'last_changed' => '1387800791',
-        'last_entity_id' => '42095',
+        'last_changed' => '1387879351',
+        'last_entity_id' => '42099',
       ),
       'queues' => array(
         'last_changed' => 0,
@@ -68,8 +68,8 @@ function usanetwork_search_apachesolr_environments() {
         'last_entity_id' => 0,
       ),
     ),
-    'apachesolr_index_updated' => 1387879079,
-    'apachesolr_last_optimize' => 1387371200,
+    'apachesolr_index_updated' => 1389605400,
+    'apachesolr_last_optimize' => 1389605284,
     'apachesolr_read_only' => '0',
     'apachesolr_search_changed_boost' => '0:0',
     'apachesolr_search_comment_boost' => '0:0',

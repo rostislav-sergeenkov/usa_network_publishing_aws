@@ -52,6 +52,9 @@ function aurora_usa_preprocess_html(&$vars) {
   if(arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
+  if (module_exists('views_load_more')) {
+    drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
+  }
 }
 
 /**

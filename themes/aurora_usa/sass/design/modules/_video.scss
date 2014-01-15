@@ -1129,3 +1129,12 @@
     }
   }
 }
+.tveModal.adobePassFrame {
+  .modalContent {
+    padding: 12px 0;
+    text-align: center;
+    iframe {
+      border: 0;
+    }
+  }
+}

@@ -8540,6 +8540,14 @@ body.person-page #main {
   border: 0;
 }
 
+.tveModal.adobePassFrame .modalContent {
+  padding: 12px 0;
+  text-align: center;
+}
+.tveModal.adobePassFrame .modalContent iframe {
+  border: 0;
+}
+
 .aspot .show-title, .aspot .show-time {
   font-size: 24px;
 }

@@ -255,5 +255,23 @@ function usanetwork_mpx_video_strongarm() {
   $strongarm->value = '';
   $export['pathauto_file_video_pattern'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_auth_draft_auth_settings';
+  $strongarm->value = array(
+    'auth_flow' => 'mvpd',
+  );
+  $export['tve_auth_draft_auth_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_auth_published_auth_settings';
+  $strongarm->value = array(
+    'auth_flow' => 'mvpd',
+  );
+  $export['tve_auth_published_auth_settings'] = $strongarm;
+
   return $export;
 }

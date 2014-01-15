@@ -732,8 +732,8 @@ function _usa_auth_prepare_menu_items() {
  *
  * Trying fix more button issue 
  */
-function usanetwork_mpx_video_page_alter(&$page) { 
-  if (module_exists('views_load_more')) {
-    drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
-  }
-}
+//function usanetwork_mpx_video_page_alter(&$page) { 
+//  if (module_exists('views_load_more')) {
+//    drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
+//  }
+//}

@@ -342,12 +342,12 @@ function usanetwork_showpages_videos($node) {
     $query = db_select('file_managed', 'fm')
           ->fields('fm', array('fid'));
     $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
-    $query->condition('fm.published', 1);
     $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
     $query->condition('fdfs.field_show_target_id', $show);
     $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
     $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
     $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+    $query->condition('mv.status', 1);
     $query->orderBy('mv.airdate', 'desc');
     $query->range(0, 1);
     // execute the query
@@ -361,10 +361,10 @@ function usanetwork_showpages_videos($node) {
       $query = db_select('file_managed', 'fm')
           ->fields('fm', array('fid'));
       $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
-      $query->condition('fm.published', 1);
       $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
       $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
       $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->condition('mv.status', 1);
       $query->orderBy('mv.airdate', 'desc');
       $query->range(0, 1);
       // execute the query
@@ -378,10 +378,10 @@ function usanetwork_showpages_videos($node) {
         $query = db_select('file_managed', 'fm')
           ->fields('fm', array('fid'));
         $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
-        $query->condition('fm.published', 1);
         $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
         $query->condition('fdfs.field_show_target_id', $show);
         $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+        $query->condition('mv.status', 1);
         $query->orderBy('mv.airdate', 'desc');
         $query->range(0, 1);
         // execute the query
@@ -394,8 +394,8 @@ function usanetwork_showpages_videos($node) {
           $query = db_select('file_managed', 'fm')
             ->fields('fm', array('fid'));
           $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
-          $query->condition('fm.published', 1);
           $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+          $query->condition('mv.status', 1);
           $query->orderBy('mv.airdate', 'desc');
           $query->range(0, 1);
           // execute the query

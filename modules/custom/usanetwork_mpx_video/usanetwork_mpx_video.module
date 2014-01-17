@@ -531,6 +531,10 @@ function usanetwork_mpx_video_file_presave($file) {
       $exist_path = path_load(array('alias' => $new_path_promt));
     }  
     
+    if ($exist_path) {
+      $path['pid'] = $exist_path['pid'];
+    }
+    
     $path['alias'] = $new_path_promt;
     
     path_save($path);

@@ -140,6 +140,7 @@ class views_plugin_pager_load_more extends views_plugin_pager_full {
         'waypoints' => 'infinite',
       );
       drupal_add_library('waypoints', 'waypoints');
+      drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
       drupal_add_js(array('viewsLoadMore' => $viewsLoadMore),'setting');
     }
 

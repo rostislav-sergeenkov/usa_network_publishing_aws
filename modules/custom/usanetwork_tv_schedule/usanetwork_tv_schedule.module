@@ -557,7 +557,8 @@ function usanetwork_on_now_panel_node_content($node, $text) {
     // link image to show sync page
     $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path.'/social/sync', array('html' => true)) . '</figure></div>';
   } else {
-    $output .= '<div class="show-on-now-wrapper"><figure>' . theme('image_style', $on_now_image) . '</figure>';
+    $link = l(theme('image_style', $on_now_image), $path, array('html' => true));
+    $output .= '<div class="show-on-now-wrapper"><div><figure>' . $link . '</figure></div>';
   }
 
   // show info

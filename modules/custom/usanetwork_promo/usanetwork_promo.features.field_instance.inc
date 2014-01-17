@@ -505,6 +505,82 @@ function usanetwork_promo_field_default_field_instances() {
     ),
   );
 
+// Exported field_instance: 'node-usanetwork_promo-field_promo_text_line_1_wide'
+  $field_instances['node-usanetwork_promo-field_promo_text_line_1_wide'] = array(
+    'bundle' => 'usanetwork_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'carousel_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'home_promo' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'home_promo_bspot' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'promo_teaser' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_promo_text_line_1_wide',
+    'label' => 'Wide Image Text Line 1 override',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_promo-field_promo_text_line_2'
   $field_instances['node-usanetwork_promo-field_promo_text_line_2'] = array(
     'bundle' => 'usanetwork_promo',
@@ -581,6 +657,82 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_promo-field_promo_text_line_2_wide'
+  $field_instances['node-usanetwork_promo-field_promo_text_line_2_wide'] = array(
+    'bundle' => 'usanetwork_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'carousel_promo' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'home_promo' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'home_promo_bspot' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'promo_teaser' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_promo_text_line_2_wide',
+    'label' => 'Wide Image Text Line 2 override',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
     ),
   );
 
@@ -840,6 +992,8 @@ function usanetwork_promo_field_default_field_instances() {
   t('Text Line 1');
   t('Text Line 2');
   t('Wide Image');
+  t('Wide Image Text Line 1 override');
+  t('Wide Image Text Line 2 override');
 
   return $field_instances;
 }

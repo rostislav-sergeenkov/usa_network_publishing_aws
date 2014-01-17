@@ -39,6 +39,27 @@ function usanetwork_tv_shows_color_usanetwork_widget_style($show) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_tv_shows_color_field_widget_colorfield_unified_textfield_form_alter(&$element, &$form_state, $context) {
+  // Attaches the library to the field based on the selected colorpicker.
+  $settings = $context['instance']['widget']['settings'];
+  if (isset($settings['colorfield_options']['colorfield_enable_colorpicker']) && $settings['colorfield_options']['colorfield_colorpicker_type'] == 'minicolors') {
+    // Load jQuery minicolors if we can't, farbtastic will fallback.
+    if (($library = libraries_load('jquery-miniColors')) && !empty($library['loaded'])) {
+      $element['rgb']['#post_render'][] = 'usanetwork_tv_shows_color_field_attach_library';
+    }
+  }
+}
+
+/**
+ * Callback to load library. Fixes library not loading on validation error.
+ */
+function usanetwork_tv_shows_color_field_attach_library() {
+  libraries_load('jquery-miniColors');
+}
+
+/**
  * Adds show-specific css
  */
 function usanetwork_tv_shows_color_add_css($show) {

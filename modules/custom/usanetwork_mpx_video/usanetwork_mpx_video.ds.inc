@@ -12,6 +12,21 @@ function usanetwork_mpx_video_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'file|mpx_video_1|full';
+  $ds_fieldsetting->entity_type = 'file';
+  $ds_fieldsetting->bundle = 'mpx_video_1';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'video_mpx_companion_rectangle' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['file|mpx_video_1|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'file|mpx_video_1|vid_teaser_episode';
   $ds_fieldsetting->entity_type = 'file';
   $ds_fieldsetting->bundle = 'mpx_video_1';
@@ -24,6 +39,21 @@ function usanetwork_mpx_video_ds_field_settings_info() {
     ),
   );
   $export['file|mpx_video_1|vid_teaser_episode'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'file|mpx_video_2|full';
+  $ds_fieldsetting->entity_type = 'file';
+  $ds_fieldsetting->bundle = 'mpx_video_2';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'video_mpx_companion_rectangle' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['file|mpx_video_2|full'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;

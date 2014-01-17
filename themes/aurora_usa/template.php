@@ -52,6 +52,7 @@ function aurora_usa_preprocess_html(&$vars) {
   if(arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
+  drupal_add_library('system', 'drupal.ajax');
 }
 
 /**

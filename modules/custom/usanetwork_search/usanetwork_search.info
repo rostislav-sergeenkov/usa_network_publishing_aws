@@ -10,6 +10,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = search
 dependencies[] = strongarm
+dependencies[] = usanetwork_token
 features[apachesolr_environment][] = acquia_search_server_1
 features[apachesolr_search_page][] = core_search
 features[context][] = search

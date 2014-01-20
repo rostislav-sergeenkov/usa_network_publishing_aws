@@ -1,5 +1,9 @@
 <?php
 
+define('OG_DESCRIPTION_FIELD', 'field_usa_og_description');
+define('OG_DESCRIPTION_LIMIT', 50);
+define('OG_IMAGE_FIELD', 'field_usa_og_image');
+
 /**
  * Implements hook_token_info().
  */
@@ -9,6 +13,14 @@ function usanetwork_token_token_info() {
     'name' => t('TV Show'),
     'description' => t('TV Show current page is assigned to.'),
     'type' => 'node',
+  );
+  $data['tokens']['node']['og-description'] = array(
+    'name' => t('OG Description'),
+    'description' => t('OpenGraph description with fallback.'),
+  );
+  $data['tokens']['node']['og-image'] = array(
+    'name' => t('OG Image'),
+    'description' => t('OpenGraph image with fallback.'),
   );
   return $data;
 }
@@ -36,6 +48,22 @@ function usanetwork_token_tokens($type, $tokens, array $data = array(), array $o
     }
   }
 
+  if ($type == 'node' && !empty($data['node'])) {
+    $node = $data['node'];
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'og-description':
+          $description = _usanetwork_token_og_description($node);
+          $replacements[$original] = $sanitize ? htmlspecialchars_decode(check_plain($description)) : $description;
+          break;
+        case 'og-image':
+          $image = file_create_url(_usanetwork_token_og_image($node));
+          $replacements[$original] = $sanitize ? htmlspecialchars_decode(check_plain($image)) : $image;
+          break;
+      }
+    }
+  }
+
   return $replacements;
 }
 
@@ -58,18 +86,191 @@ function _usanetwork_token_get_tv_show($path = null) {
   if ($parts[0] == 'node' && is_numeric($parts[1])) {
     $node = node_load($parts[1]);
     if ($node) {
-      if ($node->type == 'tv_show') {
-        $show = $node;
-      }
-      elseif (isset($node->field_show) && !empty($node->field_show)) {
-        $show_nid = field_get_items('node', $node, 'field_show');
-        if ($show_nid = reset($show_nid)) {
-          $show = node_load($show_nid['target_id']);
-        }
-      }
+      $show = _usanetwork_token_get_node_tv_show($node);
     }
   }
 
   $cache[$path] = $show;
   return $show;
+}
+
+/**
+ * Returns tv show associated with node.
+ */
+function _usanetwork_token_get_node_tv_show($node) {
+  $cache = &drupal_static(__FUNCTION__);
+  if (isset($cache[$node->nid])) {
+    return $cache[$node->nid];
+  }
+
+  $show = false;
+  if ($node->type == 'tv_show') {
+    $show = $node;
+  }
+  elseif (isset($node->field_show) && !empty($node->field_show)) {
+    $show_nid = field_get_items('node', $node, 'field_show');
+    if ($show_nid = reset($show_nid)) {
+      $show = node_load($show_nid['target_id']);
+    }
+  }
+
+  $cache[$node->nid] = $show;
+  return $show;
+}
+
+/**
+ * Returns node opengraph description.
+ */
+function _usanetwork_token_og_description($node) {
+  $result = false;
+  if (is_object($node)) {
+    // check if description is set in CMS
+    if (isset($node->{OG_DESCRIPTION_FIELD})) {
+      $description = field_get_items('node', $node, OG_DESCRIPTION_FIELD);
+      if ($description && $description = reset($description)) {
+        $result = (isset($description['safe_value']) && !empty($description['safe_value'])) ? $description['safe_value'] : '';
+      }
+    }
+
+    if ($result === false) {
+      $show = _usanetwork_token_get_node_tv_show($node);
+      // add fallback
+      switch ($node->type) {
+        case 'catchall_page':
+          if ($show) {
+            $result = t('Featured !show_title Content', array(
+              '!show_title' => $show->title,
+            ));
+          }
+          break;
+        case 'media_gallery':
+          if (isset($node->field_person) && !empty($node->field_person)) {
+            // character gallery
+            $person_id = reset(field_get_items('node', $node, 'field_person'));
+            if ($person_id && $person = node_load($person_id)) {
+              $result = t('!show_name !character_name Character Gallery', array(
+                '!show_name' => $show ? $show->title : '',
+                '!character_name' => $person->title,
+              ));
+            }
+          }
+          elseif (isset($node->field_episode) && !empty($node->field_episode)) {
+            // episodic gallery
+            $episode_id = reset(field_get_items('node', $node, 'field_episode'));
+            if ($episode_id && $episode = node_load($episode_id)) {
+              $result = t('!show_name !episode_title Gallery', array(
+                '!show_name' => $show ? $show->title : '',
+                '!episode_title' => $episode->title,
+              ));
+            }
+          }
+          if ($result === false) {
+            // generic gallery
+            $result = t('!show_name Gallery', array(
+              '!show_name' => $show ? $show->title : '',
+            ));
+          }
+          break;
+        default:
+            $result = _usanetwork_token_og_description_body($node);
+          break;
+      }
+    }
+  }
+  return !$result ? '' : $result;
+}
+
+/**
+ * Returns node opengraph image.
+ */
+function _usanetwork_token_og_image($node) {
+  $result = false;
+  if (is_object($node)) {
+    // check if image is set in CMS
+    if (isset($node->{OG_IMAGE_FIELD})) {
+      $image = field_get_items('node', $node, OG_IMAGE_FIELD);
+      if ($image && $image = reset($image)) {
+        $result = $image['uri'];
+      }
+    }
+
+    if ($result === false) {
+      // add fallback
+      switch ($node->type) {
+        case 'media_gallery':
+          $image = field_get_items('node', $node, 'field_media_items');
+          if ($image && $image = reset($image)) {
+            $result = $image['uri'];
+          }
+          break;
+        case 'person':
+          $image = field_get_items('node', $node, 'field_usa_character_thumb');
+          if ($image && $image = reset($image)) {
+            $result = $image['uri'];
+          }
+          break;
+        case 'tv_episode':
+          $gallery_id = db_select('field_data_field_episode', 'fd')
+            ->fields('fd', array(
+              'entity_id',
+            ))
+            ->condition('bundle', 'media_gallery', '=')
+            ->condition('field_episode_target_id', $node->nid, '=')
+            ->execute()
+            ->fetchField();
+          if ($gallery_id) {
+            $gallery = node_load($gallery_id);
+            $image = field_get_items('node', $gallery, 'field_media_items');
+            if ($image && $image = reset($image)) {
+              $result = $image['uri'];
+            }
+          }
+          break;
+        case 'tv_show':
+          $image = field_get_items('node', $node, 'field_logo');
+          if ($image && $image = reset($image)) {
+            $result = $image['uri'];
+          }
+          break;
+        case 'usa_video':
+        case 'usa_tve_video':
+          $image = field_get_items('node', $node, 'field_vide_thumbnail');
+          if ($image && $image = reset($image)) {
+            $result = $image['uri'];
+          }
+          break;
+      }
+
+      if ($result === false) {
+        $result = 'public://og_image/USAlogo_OG_600x500.jpg';
+      }
+    }
+  }
+  return !$result ? '' : $result;
+}
+
+/**
+ *
+ */
+function _usanetwork_token_og_description_body($node) {
+  $result = false;
+  if (isset($node->body) && !empty($node->body) && $body = reset(field_get_items('node', $node, 'body'))) {
+    $result = _usanetwork_token_limit_text($body['safe_value'], OG_DESCRIPTION_LIMIT);
+    if (function_exists('_filter_htmlcorrector')) {
+      $result = _filter_htmlcorrector($result);
+    }
+  }
+  return $result;
+}
+
+/**
+ * Returns first $limit words.
+ */
+function _usanetwork_token_limit_text($text, $limit) {
+  if (str_word_count($text, 0) > $limit) {
+    $words = str_word_count($text, 2);
+    $pos = array_keys($words);
+    $text = substr($text, 0, $pos[$limit]) . '...';
+  }
+  return $text;
 }

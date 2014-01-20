@@ -14,7 +14,7 @@ function usanetwork_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_derived_key_salt';
-  $strongarm->value = '0e2190c92dc34d304dca56ae8ba623fa';
+  $strongarm->value = '35ca8413f24dd5d175321b87c65fbd9b';
   $export['acquia_search_derived_key_salt'] = $strongarm;
 
   $strongarm = new stdClass();

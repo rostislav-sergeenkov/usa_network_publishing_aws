@@ -147,7 +147,7 @@ function _usanetwork_token_og_description($node) {
           if (isset($node->field_person) && !empty($node->field_person)) {
             // character gallery
             $person_id = reset(field_get_items('node', $node, 'field_person'));
-            if ($person_id && $person = node_load($person_id)) {
+            if ($person_id && $person = node_load($person_id['target_id'])) {
               $result = t('!show_name !character_name Character Gallery', array(
                 '!show_name' => $show ? $show->title : '',
                 '!character_name' => $person->title,
@@ -157,7 +157,7 @@ function _usanetwork_token_og_description($node) {
           elseif (isset($node->field_episode) && !empty($node->field_episode)) {
             // episodic gallery
             $episode_id = reset(field_get_items('node', $node, 'field_episode'));
-            if ($episode_id && $episode = node_load($episode_id)) {
+            if ($episode_id && $episode = node_load($episode_id['target_id'])) {
               $result = t('!show_name !episode_title Gallery', array(
                 '!show_name' => $show ? $show->title : '',
                 '!episode_title' => $episode->title,

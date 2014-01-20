@@ -36,11 +36,18 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 12,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -110,11 +117,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 26,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -178,11 +191,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 10,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -246,11 +265,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -314,11 +339,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -378,11 +409,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 25,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -443,11 +480,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 24,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -508,11 +551,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 22,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -573,11 +622,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -638,11 +693,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 28,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -703,11 +764,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -781,11 +848,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 31,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -854,11 +927,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -915,11 +994,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1000,11 +1085,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 29,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1083,11 +1174,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 30,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1148,11 +1245,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 27,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1213,11 +1316,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1278,11 +1387,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 21,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1343,11 +1458,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1410,11 +1531,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 2,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 27,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1475,6 +1602,12 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 34,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1482,7 +1615,7 @@ function usanetwork_person_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 1,
       ),
       'search_result' => array(
         'label' => 'hidden',
@@ -1544,18 +1677,23 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'text_plain',
+        'weight' => 0,
       ),
       'search_result' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -1625,11 +1763,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'file_rendered',
         'weight' => 0,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 24,
       ),
       'search_result' => array(
         'label' => 'hidden',
@@ -1712,11 +1856,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 4,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 25,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1794,11 +1944,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 6,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 28,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1876,11 +2032,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 7,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 29,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -1958,11 +2120,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 5,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 26,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -2039,11 +2207,17 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'search_result' => array(
         'label' => 'hidden',
@@ -2115,17 +2289,23 @@ function usanetwork_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'search_result' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
-          'image_link' => '',
+          'image_link' => 'content',
           'image_style' => 'search_result',
         ),
         'type' => 'image',

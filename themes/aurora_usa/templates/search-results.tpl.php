@@ -24,13 +24,17 @@
  */
 ?>
 <?php if ($search_results): ?>
-  <?php print $pager; ?>
-  <h2><?php print t('Search results for:');?> <span><?php print $keywords; ?></span></h2>
+  <div class="search-header clearfix">
+    <h1><?php print t('Search Results for:');?> <span><?php print $keywords; ?></span></h1>
+    <?php print $pager; ?>
+  </div>
   <div class="search-totals"><?php print $search_totals; ?></div>
   <ol class="search-results <?php print $module; ?>-results">
     <?php print $search_results; ?>
   </ol>
-  <?php print $pager; ?>
+  <div class="search-footer">
+    <?php print $pager; ?>
+  </div>
 <?php else : ?>
   <h2><?php print t('Your search yielded no results');?></h2>
   <?php print search_help('search#noresults', drupal_help_arg()); ?>

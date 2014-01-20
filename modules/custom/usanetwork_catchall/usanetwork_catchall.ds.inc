@@ -21,6 +21,11 @@ function usanetwork_catchall_ds_field_settings_info() {
       'weight' => '11',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|catchall_page|search_result'] = $ds_fieldsetting;
@@ -45,19 +50,19 @@ function usanetwork_catchall_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'body' => array(
-        0 => 'field_usa_og_description',
-      ),
       'media' => array(
         0 => 'field_usa_og_image',
+      ),
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
       'title' => array(
         0 => 'title',
       ),
     ),
     'fields' => array(
-      'field_usa_og_description' => 'body',
       'field_usa_og_image' => 'media',
+      'field_usa_og_description' => 'body',
       'title' => 'title',
     ),
     'classes' => array(),

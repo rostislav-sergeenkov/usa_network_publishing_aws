@@ -70,3 +70,71 @@ function usanetwork_search_setup_acquia_search() {
     return $ret;
   }
 }
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_search_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'search_result' || $view_mode == 'search_index') {
+    if (!isset($node->content['field_usa_og_description'])) {
+      // add description fallback
+      $description = _usanetwork_token_og_description($node);
+      $node->field_usa_og_description = array(
+        LANGUAGE_NONE => array(
+          array(
+            'value' => $description,
+            'safe_value' => $description,
+          ),
+        ),
+      );
+      $node->content['field_usa_og_description'] = field_view_field('node', $node, 'field_usa_og_description', $view_mode, $langcode);
+    }
+
+    if (!isset($node->content['field_usa_og_image'])) {
+      // add image fallback
+      $image = _usanetwork_token_og_image($node);
+      $node->field_usa_og_image = array(
+        LANGUAGE_NONE => array(
+          array(
+            'uri' => $image,
+          ),
+        ),
+      );
+      $node->content['field_usa_og_image'] = field_view_field('node', $node, 'field_usa_og_image', $view_mode, $langcode);
+    }
+
+    if (isset($node->content['title'])) {
+      // change the title
+      $title_prefix = '';
+      $title_suffix = '';
+      $show = _usanetwork_token_get_node_tv_show($node);
+      if ($show) {
+        $title_prefix .= $show->title . ' ';
+        switch ($node->type) {
+          case 'catchall_page':
+            $title_prefix .= t('Feature') . ' ';
+            break;
+          case 'tv_show':
+            $title_prefix = '';
+            break;
+          case 'media_gallery':
+            $title_prefix .= t('Photos') . ' ';
+            break;
+          case 'person':
+            $title_prefix .= t('Characters & Crew') . ' ';
+            break;
+          case 'usa_video':
+          case 'usa_tve_video':
+            $title_prefix .= t('Videos') . ' ';
+            break;
+        }
+      }
+
+      if (!empty($title_prefix)) {
+        $title_prefix .= '- ';
+      }
+      $title = $title_prefix . check_plain($node->title) . $title_suffix;
+      $node->content['title'][0]['#markup'] = str_replace(check_plain($node->title), $title, $node->content['title'][0]['#markup']);
+    }
+  }
+}

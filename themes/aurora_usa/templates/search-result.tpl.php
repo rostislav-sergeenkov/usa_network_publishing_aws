@@ -64,16 +64,9 @@
  * @ingroup themeable
  */
 ?>
-<li class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <h3 class="title"<?php print $title_attributes; ?>>
-    <a href="<?php print $url; ?>"><?php print $title; ?></a>
-  </h3>
-  <?php print render($title_suffix); ?>
-  <div class="search-snippet-info">
-    <?php if ($snippet): ?>
-      <p class="search-snippet"<?php print $content_attributes; ?>><?php print $snippet; ?></p>
-    <?php endif; ?>
-    <?php print l(str_replace('http://', '', $url), $url); ?>
-  </div>
-</li>
+<?php
+  $entity_info = $result['node'];
+  $entity = entity_load($entity_info->entity_type, array($entity_info->entity_id));
+  $view = entity_view($entity_info->entity_type, $entity, 'search_result');
+  print render($view);
+?>

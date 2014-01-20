@@ -46,6 +46,11 @@ function usanetwork_video_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|usa_tve_video|search_result'] = $ds_fieldsetting;
@@ -166,6 +171,11 @@ function usanetwork_video_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|usa_video|search_result'] = $ds_fieldsetting;
@@ -354,20 +364,12 @@ function usanetwork_video_ds_layout_settings_info() {
         0 => 'title',
       ),
       'body' => array(
-        0 => 'field_show',
-        1 => 'field_season_id',
-        2 => 'field_episode_number',
-        3 => 'field_video_air_date',
-        4 => 'body',
+        0 => 'body',
       ),
     ),
     'fields' => array(
       'field_video_thumbnail' => 'media',
       'title' => 'title',
-      'field_show' => 'body',
-      'field_season_id' => 'body',
-      'field_episode_number' => 'body',
-      'field_video_air_date' => 'body',
       'body' => 'body',
     ),
     'classes' => array(),
@@ -566,20 +568,12 @@ function usanetwork_video_ds_layout_settings_info() {
         0 => 'title',
       ),
       'body' => array(
-        0 => 'field_show',
-        1 => 'field_season_id',
-        2 => 'field_episode_number',
-        3 => 'field_video_air_date',
-        4 => 'body',
+        0 => 'body',
       ),
     ),
     'fields' => array(
       'field_video_thumbnail' => 'media',
       'title' => 'title',
-      'field_show' => 'body',
-      'field_season_id' => 'body',
-      'field_episode_number' => 'body',
-      'field_video_air_date' => 'body',
       'body' => 'body',
     ),
     'classes' => array(),

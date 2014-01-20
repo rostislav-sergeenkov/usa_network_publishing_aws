@@ -234,7 +234,7 @@ function _usanetwork_token_og_image($node) {
           break;
         case 'usa_video':
         case 'usa_tve_video':
-          $image = field_get_items('node', $node, 'field_vide_thumbnail');
+          $image = field_get_items('node', $node, 'field_video_thumbnail');
           if ($image && $image = reset($image)) {
             $result = $image['uri'];
           }

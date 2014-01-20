@@ -72,15 +72,15 @@ function usanetwork_mpx_video_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-842711bab9ea8598270f33bcc0629569' => array(
+        'views-usa_mpx_video-latest_live_video' => array(
           'module' => 'views',
-          'delta' => '842711bab9ea8598270f33bcc0629569',
+          'delta' => 'usa_mpx_video-latest_live_video',
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-48c7e998553ff5a0341b886262f1d268' => array(
+        'views-usa_mpx_video-fullepisodes_live' => array(
           'module' => 'views',
-          'delta' => '48c7e998553ff5a0341b886262f1d268',
+          'delta' => 'usa_mpx_video-fullepisodes_live',
           'region' => 'content',
           'weight' => '-9',
         ),

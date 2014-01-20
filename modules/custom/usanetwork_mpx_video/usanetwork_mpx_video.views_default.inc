@@ -354,7 +354,7 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
 
   /* Display: Global Live Video */
-  $handler = $view->new_display('block', 'Global Live Video', 'global_latest_live_video_mpx');
+  $handler = $view->new_display('block', 'Global Live Video', 'latest_live_video');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -412,8 +412,9 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['block_description'] = 'Global Live Video';
 
   /* Display: Global Full Episodes Live */
-  $handler = $view->new_display('block', 'Global Full Episodes Live', 'global_full_mpx_episode_live');
+  $handler = $view->new_display('block', 'Global Full Episodes Live', 'fullepisodes_live');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest Full Episodes';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;

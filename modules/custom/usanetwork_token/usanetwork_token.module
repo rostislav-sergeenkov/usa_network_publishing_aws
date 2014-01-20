@@ -242,6 +242,7 @@ function _usanetwork_token_og_image($node) {
       }
 
       if ($result === false) {
+        // @todo: add logo configuration
         $result = 'public://og_image/USAlogo_OG_600x500.jpg';
       }
     }

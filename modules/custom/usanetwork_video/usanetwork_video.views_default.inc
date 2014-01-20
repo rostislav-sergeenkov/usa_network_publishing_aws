@@ -620,7 +620,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'video_queue' => 'video_queue',
   );
-  /* Filter criterion: Queue: Title */
+  /* Filter criterion: Queue: Label */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'queues';
   $handler->display->display_options['filters']['title']['field'] = 'title';

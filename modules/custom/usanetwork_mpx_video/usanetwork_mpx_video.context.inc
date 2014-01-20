@@ -59,6 +59,44 @@ function usanetwork_mpx_video_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usa_mpx_videos_live';
+  $context->description = '';
+  $context->tag = 'videos page';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'videos/live' => 'videos/live',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-usa_mpx_video-latest_live_video' => array(
+          'module' => 'views',
+          'delta' => 'usa_mpx_video-latest_live_video',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-usa_mpx_video-fullepisodes_live' => array(
+          'module' => 'views',
+          'delta' => 'usa_mpx_video-fullepisodes_live',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('videos page');
+  $export['usa_mpx_videos_live'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usa_show_mpx_videos';
   $context->description = '';
   $context->tag = 'videos page';

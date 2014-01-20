@@ -41,6 +41,16 @@
   }
 }
 
+.view-display-id-global_full_mpx_episode_live {
+  @extend %grid-small-wide-two-three-four;
+  margin: 0 auto;
+  .view-content {
+    position: relative;
+    clear: both;
+    margin: 0 0 15px;
+  }
+}
+
 .file-video-mpx {
   .inlineLoader {
     display: inline-block;
@@ -53,14 +63,16 @@
 }
 
 #block-usanetwork-video-usa-video-views,
-#block-usanetwork-mpx-video-usa-video-views {
+#block-usanetwork-mpx-video-usa-video-views,
+.view-display-id-global_full_mpx_episode_live {
   @include breakpoint($bp-grid-small-wide-2-3) {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
 
-.block-usanetwork-video .view {
+.block-usanetwork-video .view,
+.view-display-id-global_full_mpx_episode_live {
   li {
     list-style: none;
   }
@@ -145,7 +157,8 @@
     }
   }
 }
-.block-usanetwork-mpx-video .view {
+.block-usanetwork-mpx-video .view,
+.view-display-id-global_full_mpx_episode_live {
   li {
     list-style: none;
   }

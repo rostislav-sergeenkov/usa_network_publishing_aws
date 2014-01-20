@@ -55,7 +55,9 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
           if (!$is_live) {
             $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'video_full')), '');
             print drupal_render($image); 
-          } ?>
+          } else { ?>
+            <img src="<?php print '/' . path_to_theme() .'/images/usa_liveTV.jpg'; ?>" /> 
+          <?php } ?>
         </a>
       </div>
     </div>
@@ -85,7 +87,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
   <?php endif; ?>
     
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
-  <?php if ($is_live) :
-    if ($ad && $ad != "&nbsp;"): ?><div class="ad"><?php print $ad; ?></div>
-  <?php endif; endif; ?>
+  <?php if ($ad && $ad != "&nbsp;"): ?>
+    <div class="ad"><?php print $ad; ?></div>
+  <?php endif;  ?>
 </div>

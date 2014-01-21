@@ -414,8 +414,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
 }
 
 #footer-message,
-#footer-message-offside, .block-usanetwork-video .view .node h4,
-#block-views-usa-mpx-video-fullepisodes-live .view .node h4, .aspot .episode-title, .echo-item-footer, #showList {
+#footer-message-offside, .block-usanetwork-video .view .node h4, .aspot .episode-title, .echo-item-footer, #showList {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 12px;
 }
@@ -7317,36 +7316,24 @@ body.person-page #main {
   }
 }
 
-.block-usanetwork-video .view li,
-#block-views-usa-mpx-video-fullepisodes-live .view li {
+.block-usanetwork-video .view li {
   list-style: none;
 }
-@media (max-width: 486px) {
-  .block-usanetwork-video .view li,
-  #block-views-usa-mpx-video-fullepisodes-live .view li {
-    margin-left: 0;
-  }
-}
-.block-usanetwork-video .view .node,
-#block-views-usa-mpx-video-fullepisodes-live .view .node {
+.block-usanetwork-video .view .node {
   border: 2px solid #2d2d2d;
 }
-.ie8 .block-usanetwork-video .view .node, .ie8
-#block-views-usa-mpx-video-fullepisodes-live .view .node {
+.ie8 .block-usanetwork-video .view .node {
   width: 304px;
 }
-.block-usanetwork-video .view .node > a,
-#block-views-usa-mpx-video-fullepisodes-live .view .node > a {
+.block-usanetwork-video .view .node > a {
   position: relative;
   z-index: 1;
   display: block;
 }
-.block-usanetwork-video .view .node .asset-img,
-#block-views-usa-mpx-video-fullepisodes-live .view .node .asset-img {
+.block-usanetwork-video .view .node .asset-img {
   line-height: 1em;
 }
-.block-usanetwork-video .view .node .caption-fields-wrapper,
-#block-views-usa-mpx-video-fullepisodes-live .view .node .caption-fields-wrapper {
+.block-usanetwork-video .view .node .caption-fields-wrapper {
   position: static;
   width: 100%;
   height: 41px;
@@ -7356,26 +7343,22 @@ body.person-page #main {
   background: #1f1f1f;
 }
 @media (min-width: 723px) {
-  .block-usanetwork-video .view .node .caption-fields-wrapper,
-  #block-views-usa-mpx-video-fullepisodes-live .view .node .caption-fields-wrapper {
+  .block-usanetwork-video .view .node .caption-fields-wrapper {
     height: 52px;
     padding: 6px 10px;
     line-height: 1.25em;
   }
 }
 @media (min-width: 1275px) {
-  .block-usanetwork-video .view .node .caption-fields-wrapper,
-  #block-views-usa-mpx-video-fullepisodes-live .view .node .caption-fields-wrapper {
+  .block-usanetwork-video .view .node .caption-fields-wrapper {
     height: 73px;
     padding: 11px 15px;
   }
 }
-.block-usanetwork-video .view .node h4,
-#block-views-usa-mpx-video-fullepisodes-live .view .node h4 {
+.block-usanetwork-video .view .node h4 {
   margin: 0;
 }
-.block-usanetwork-video .view .node h4:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .node h4:after {
+.block-usanetwork-video .view .node h4:after {
   background-image: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(30%, #1f1f1f), color-stop(100%, rgba(31, 31, 31, 0.3)));
   background-image: -webkit-linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
   background-image: -moz-linear-gradient(right, #1f1f1f 30%, rgba(31, 31, 31, 0.3));
@@ -7389,24 +7372,20 @@ body.person-page #main {
   height: 100%;
 }
 @media (min-width: 723px) {
-  .block-usanetwork-video .view .node h4,
-  #block-views-usa-mpx-video-fullepisodes-live .view .node h4 {
+  .block-usanetwork-video .view .node h4 {
     font-size: 16px;
   }
 }
 @media (min-width: 1275px) {
-  .block-usanetwork-video .view .node h4,
-  #block-views-usa-mpx-video-fullepisodes-live .view .node h4 {
+  .block-usanetwork-video .view .node h4 {
     margin-bottom: 5px;
   }
 }
-.block-usanetwork-video .view .node .caption,
-#block-views-usa-mpx-video-fullepisodes-live .view .node .caption {
+.block-usanetwork-video .view .node .caption {
   font-size: 10px;
 }
 @media (min-width: 723px) {
-  .block-usanetwork-video .view .node .caption,
-  #block-views-usa-mpx-video-fullepisodes-live .view .node .caption {
+  .block-usanetwork-video .view .node .caption {
     font-size: 14px;
   }
 }
@@ -7414,6 +7393,12 @@ body.person-page #main {
 .block-usanetwork-mpx-video .view li,
 #block-views-usa-mpx-video-fullepisodes-live .view li {
   list-style: none;
+}
+@media (max-width: 486px) {
+  .block-usanetwork-mpx-video .view li,
+  #block-views-usa-mpx-video-fullepisodes-live .view li {
+    margin-left: 0;
+  }
 }
 .block-usanetwork-mpx-video .view .file,
 #block-views-usa-mpx-video-fullepisodes-live .view .file {

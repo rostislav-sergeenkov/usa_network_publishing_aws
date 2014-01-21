@@ -79,13 +79,9 @@
   }
 }
 
-.block-usanetwork-video .view,
-#block-views-usa-mpx-video-fullepisodes-live .view {
+.block-usanetwork-video .view {
   li {
     list-style: none;
-    @include breakpoint($bp-grid-small-wide-small) {
-      margin-left: 0;
-    }
   }
   .node {
     border: 2px solid $gray-dark;
@@ -97,23 +93,6 @@
       z-index: 1;
       display: block;
     }
-    //&.file-video-mpx  {
-  //    > a:after {
-  //      position: absolute;
-   //     right: 3px;
-   //     top: 2px;
-   //     content: "\e002";
-  //      font-size: 25px;
-  //      color: $white;
-   //     @extend %usanetwork-font;
-  //    }
-  //    .asset-img:after {
-  //      @include cssRightTriangle(50px, $black-trans-5, top, right);
-  //      position: absolute;
-  //      right: 0;
-   //     top: 0;
-  //    }
-  //  }
     .asset-img {
       line-height: 1em;
     }
@@ -172,6 +151,9 @@
 #block-views-usa-mpx-video-fullepisodes-live .view {
   li {
     list-style: none;
+    @include breakpoint($bp-grid-small-wide-small) {
+      margin-left: 0;
+    }
   }
   .file {
     border: 2px solid $gray-dark;

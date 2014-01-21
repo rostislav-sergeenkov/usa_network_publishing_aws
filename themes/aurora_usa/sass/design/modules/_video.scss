@@ -42,7 +42,7 @@
 }
 
 #block-views-usa-mpx-video-fullepisodes-live {
-  @extend %grid-small-wide-two-three-four;
+  @extend %grid-small-wide-one-two-three-four;
   margin: 0 auto;
   .view-content {
     position: relative;
@@ -50,9 +50,13 @@
     margin: 0 0 15px;
   }
   h2 {
+    text-transform: uppercase;
     font-size: 20px;
     font-family: $headline-semi;
-    text-transform: uppercase;
+    @include breakpoint($bp-video-player-section) { 
+      font-size: 16px;
+      font-family: $headline-bold;
+    }
   }
 }
 
@@ -68,8 +72,7 @@
 }
 
 #block-usanetwork-video-usa-video-views,
-#block-usanetwork-mpx-video-usa-video-views,
-#block-views-usa-mpx-video-fullepisodes-live {
+#block-usanetwork-mpx-video-usa-video-views {
   @include breakpoint($bp-grid-small-wide-2-3) {
     padding-left: 15px;
     padding-right: 15px;
@@ -80,6 +83,9 @@
 #block-views-usa-mpx-video-fullepisodes-live .view {
   li {
     list-style: none;
+    @include breakpoint($bp-grid-small-wide-small) {
+      margin-left: 0;
+    }
   }
   .node {
     border: 2px solid $gray-dark;
@@ -91,23 +97,23 @@
       z-index: 1;
       display: block;
     }
-    &.file-video-mpx  {
-      > a:after {
-        position: absolute;
-        right: 3px;
-        top: 2px;
-        content: "\e002";
-        font-size: 25px;
-        color: $white;
-        @extend %usanetwork-font;
-      }
-      .asset-img:after {
-        @include cssRightTriangle(50px, $black-trans-5, top, right);
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-    }
+    //&.file-video-mpx  {
+  //    > a:after {
+  //      position: absolute;
+   //     right: 3px;
+   //     top: 2px;
+   //     content: "\e002";
+  //      font-size: 25px;
+  //      color: $white;
+   //     @extend %usanetwork-font;
+  //    }
+  //    .asset-img:after {
+  //      @include cssRightTriangle(50px, $black-trans-5, top, right);
+  //      position: absolute;
+  //      right: 0;
+   //     top: 0;
+  //    }
+  //  }
     .asset-img {
       line-height: 1em;
     }
@@ -678,18 +684,18 @@
     cursor: pointer;
     padding-bottom: 12px;
     padding-top: 5px;
-    @include breakpoint($bp-video-player-section) {
-      text-align: center;
-    }
+    //@include breakpoint($bp-video-player-section) {
+    //  text-align: center;
+    //}
     @include breakpoint($bp-video-mid-range4-width) {
       text-align: left;
     }
     &.signOut {
       &.not-live {
-      position:absolute;
-      display:inline-block;
-      top:4px;
-      right:0;
+        position:absolute;
+        display:inline-block;
+        top:4px;
+        right:0;
       }
       &.live .item-list ul li {
         margin-left: 0;
@@ -711,6 +717,11 @@
               color:#878785;
               font-size:16px;
               line-height:10px;
+              @include breakpoint($bp-video-player-section) {
+                font-size: 14px;
+                width: 304px;
+                margin-left: 10px;
+              }
             }
           }
         }
@@ -718,6 +729,11 @@
     }
   }
   .tve-help-sign {
+    @include breakpoint($bp-video-player-section) {
+      font-size: 14px;
+      width: 304px;
+      margin-left: 10px;
+    }
     > img {
      padding-right: 5px;
      padding-bottom: 1px;
@@ -730,7 +746,7 @@
     height: 346px;
     margin-right: 15px;
     @include breakpoint($bp-video-player-section) {
-      width: 330px;
+      width: 304px;
       height: 186px;
       margin: 0 auto;
       float: none;
@@ -786,77 +802,77 @@
       }
     }
   }
-    .tve-help {
-      display: none;
-      z-index: 1;
-      position: absolute;
+  .tve-help {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    width: 615px;
+    height: 346px;
+    text-align: center;
+    background-color: $black-dark;
+    border: 1px solid $gray-ultra-med;
+    @include breakpoint($bp-video-player-section) {
+      width: 330px;
+      height: 186px;
+      margin: 0 auto;
+      float: none;
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      margin-bottom: 15px;
+      margin-right: 15px;
+    }
+    @include breakpoint($bp-video-very-large-width) {
+      width: 930px;
+      height: 523px;
+    }
+    .usa-adrails & {
       width: 615px;
-      height: 346px;
-      text-align: center;
-      background-color: $black-dark;
-      border: 1px solid $gray-ultra-med;
-      @include breakpoint($bp-video-player-section) {
-        width: 330px;
-        height: 186px;
-        margin: 0 auto;
-        float: none;
-      }
-      @include breakpoint($bp-video-mid-range4-width) {
-        margin-bottom: 15px;
-        margin-right: 15px;
-      }
-      @include breakpoint($bp-video-very-large-width) {
-        width: 930px;
-        height: 523px;
-      }
-      .usa-adrails & {
-        width: 615px;
-        height: 375px;
-      }
-      .tve-download {
-        padding-top: 20px;
-        position: relative;
-        top: 82px;
-          @include breakpoint($bp-video-player-section) {
-            font-size: 11px;
-            line-height: 16px;
-            top: -6px
-          }
-          @include breakpoint($bp-video-very-large-width) {
-            font-size: 20px;
-            line-height: 30px;
-            top: 102px;
-          }
+      height: 375px;
+    }
+    .tve-download {
+      padding-top: 20px;
+      position: relative;
+      top: 82px;
+        @include breakpoint($bp-video-player-section) {
+          font-size: 11px;
+          line-height: 16px;
+          top: -6px
         }
-      .tve-download-link {
-        position: relative;
-        top: 100px;
-        left: -14px;
-          @include breakpoint($bp-video-player-section) {
-            left: -4px;
-            top: -3px;
-          }
-          @include breakpoint($bp-video-very-large-width) {
-            top: 120px;
-          }
-        a:after {
-           content : "";
+        @include breakpoint($bp-video-very-large-width) {
+          font-size: 20px;
+          line-height: 30px;
+          top: 102px;
         }
-        a img {
-          height: 35px;
-          padding-left: 29px;
-          @include breakpoint($bp-video-player-section) {
-            padding-left: 9px;
-          }
+    }
+    .tve-download-link {
+      position: relative;
+      top: 100px;
+      left: -14px;
+        @include breakpoint($bp-video-player-section) {
+          left: -4px;
+          top: -3px;
+        }
+        @include breakpoint($bp-video-very-large-width) {
+          top: 120px;
+        }
+      a:after {
+         content : "";
+      }
+      a img {
+        height: 35px;
+        padding-left: 29px;
+        @include breakpoint($bp-video-player-section) {
+          padding-left: 9px;
         }
       }
-      .arrow {
-         position : absolute;
-         right: 0;
-      }
-      .tve-msg {
-        position: relative;
-        top: 52px;
+    }
+    .arrow {
+       position : absolute;
+       right: 0;
+    }
+    .tve-msg {
+      position: relative;
+      top: 52px;
         @include breakpoint($bp-video-player-section) {
           top: 14px;
           font-size: 11px;
@@ -867,66 +883,66 @@
           line-height: 30px;
           top: 82px;
         }
-      }
+    }
 
-      .tve-close {
-        float: right;
-        position: relative;
-        top: 112px;
-        right: 10px;
-        text-transform: uppercase;
-        color: #0AB6E8;
-          @include breakpoint($bp-video-player-section) {
-            top: 3px;
-          }
-          @include breakpoint($bp-video-very-large-width) {
-            top: 250px;
-          }
-        > img {
-          padding-right: 5px;
-          padding-bottom: 1px;
+    .tve-close {
+      float: right;
+      position: relative;
+      top: 112px;
+      right: 10px;
+      text-transform: uppercase;
+      color: #0AB6E8;
+        @include breakpoint($bp-video-player-section) {
+          top: 3px;
+        }
+        @include breakpoint($bp-video-very-large-width) {
+          top: 250px;
+        }
+      > img {
+        padding-right: 5px;
+        padding-bottom: 1px;
+      }
+    }
+    &:after {
+      position: absolute;
+      content: "\0020";
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: solid 14px;
+      border-color: transparent $black transparent transparent;
+      top: 3px;
+      right: -16px;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      z-index: 105;
+      -webkit-filter: drop-shadow($gray-ultra-med -2px 0px);
+      -moz-filter: drop-shadow($gray-ultra-med -2px 0px);
+      filter: drop-shadow($gray-ultra-med -2px 0px);
+        @include breakpoint($bp-video-player-section) {
+          border-color: transparent transparent $black transparent;
+          border-top: none;
+          top: 173px;
+          left: 50%;
+           -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
+          -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
+          filter: drop-shadow($gray-ultra-med 0 -2px 0);
+        }
+        @include breakpoint($bp-video-mid-range4-width) {
+          border-color: transparent transparent $black transparent;
+          border-top: none;
+          top: 333px;
+          left: 16%;
+          -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
+          -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
+           filter: drop-shadow($gray-ultra-med 0 -2px 0);
         }
       }
-      &:after {
-        position: absolute;
-        content: "\0020";
-        content: "";
-        display: block;
-        width: 0;
-        height: 0;
-        border: solid 14px;
-        border-color: transparent $black transparent transparent;
-        top: 3px;
-        right: -16px;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        z-index: 105;
-        -webkit-filter: drop-shadow($gray-ultra-med -2px 0px);
-        -moz-filter: drop-shadow($gray-ultra-med -2px 0px);
-        filter: drop-shadow($gray-ultra-med -2px 0px);
-          @include breakpoint($bp-video-player-section) {
-            border-color: transparent transparent $black transparent;
-            border-top: none;
-            top: 173px;
-            left: 50%;
-            -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-            -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-            filter: drop-shadow($gray-ultra-med 0 -2px 0);
-          }
-          @include breakpoint($bp-video-mid-range4-width) {
-            border-color: transparent transparent $black transparent;
-            border-top: none;
-            top: 333px;
-            left: 16%;
-            -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-            -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-             filter: drop-shadow($gray-ultra-med 0 -2px 0);
-          }
-        }
-      }
+    }
   .meta {
     overflow: hidden;
   }
@@ -995,12 +1011,16 @@
     @include breakpoint($bp-video-player-section) {
       float: none;
       overflow: hidden;
-      width: 100%;
+      width: 304px;
+      margin-left: 10px;
+      margin-right: 10px;
       margin-top: 10px;
       margin-right: 0;
       p:last-child {
         margin-bottom: 0;
       }
+      font-size: 14px;
+      
     }
     @include breakpoint($bp-video-mid-range4-width) {
       display: inline;
@@ -1095,9 +1115,9 @@
         }
         h2 {
           margin:0 0 3.6% 0;
-          font-family:$bodytext-semi;
-          font-size:18px;
-          line-height:27px;
+          font-family: $bodytext-semi;
+          font-size: 18px;
+          line-height: 27px;
         }
         .feature-copy {
           margin:0 0 10px 0;

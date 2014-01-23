@@ -7316,6 +7316,13 @@ body.person-page #main {
   }
 }
 
+.usa-video .companionContainer {
+  padding-top: 10px;
+}
+.usa-video .companionContainer .ad_lead {
+  text-align: center;
+}
+
 .block-usanetwork-video .view li {
   list-style: none;
 }
@@ -8133,7 +8140,7 @@ body.person-page #main {
 .featured-asset .tve-help-link.signOut.not-live {
   position: absolute;
   display: inline-block;
-  top: 4px;
+  top: 104px;
   right: 0;
 }
 .featured-asset .tve-help-link.signOut.live .item-list ul li {

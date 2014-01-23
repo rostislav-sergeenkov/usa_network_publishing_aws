@@ -22,8 +22,15 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
 
 ?>
 
-<div class="<?php print $classes;?> video usa-video featured-asset premium-asset clearfix">
-
+<div class="<?php print $classes;?> video usa-video featured-asset premium-asset clearfix" data-tve-player>
+  <div class="companionContainer">
+    <?php if ($ad_dart && $ad_dart != "&nbsp;"): ?>
+      <div class="ad_dart" data-ng-show="isDartReq"><?php print $ad_dart; ?></div>
+    <?php endif;  ?>
+    <?php if ($ad_lead && $ad_lead != "&nbsp;"): ?>
+      <div class="ad_lead" data-ng-show="isFreeWheelReq"><?php print $ad_lead; ?></div>
+    <?php endif;  ?>
+  </div>
   <div class="meta">
     <div class="meta-head">
       <?php if ($show && $show != "&nbsp;"): ?><h1 class="show-name"><?php print $show; ?></h1><?php endif; ?>
@@ -87,7 +94,7 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
   <?php endif; ?>
     
   <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
-  <?php if ($ad && $ad != "&nbsp;"): ?>
-    <div class="ad"><?php print $ad; ?></div>
+  <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?>
+    <div class="ad" data-ng-cloak data-ng-show="showCompanionAdd"><?php print $ad_comp; ?></div>
   <?php endif;  ?>
 </div>

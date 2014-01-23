@@ -79,6 +79,15 @@
   }
 }
 
+.usa-video {
+  .companionContainer {
+    padding-top: 10px;
+    .ad_lead {
+      text-align: center;
+    }
+  }
+}
+
 .block-usanetwork-video .view {
   li {
     list-style: none;
@@ -676,8 +685,8 @@
       &.not-live {
         position:absolute;
         display:inline-block;
-        top:4px;
-        right:0;
+        top: 104px;
+        right: 0;
       }
       &.live .item-list ul li {
         margin-left: 0;

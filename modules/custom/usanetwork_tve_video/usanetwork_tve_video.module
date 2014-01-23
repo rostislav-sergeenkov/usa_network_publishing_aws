@@ -13,25 +13,64 @@ function usanetwork_tve_video_theme_registry_alter(&$theme_registry) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_tve_video_preprocess_pub_mpx_video(&$variables, $hook) {
+  usanetwork_tve_video_add_custom_player_variables($variables, 'vod');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_tve_video_preprocess_usanetwork_tve_live_video(&$variables, $hook) {
+  usanetwork_tve_video_add_custom_player_variables($variables, 'live');
+}
+
+/**
+ * Adds the extra advertisement/other custom parameters to the player iframe src.
+ *
+ * @param $variables
+ * @param string $type
+ */
+function usanetwork_tve_video_add_custom_player_variables(&$variables, $type = 'vod') {
+  if (empty($variables)) {
+    $variables['pub_mpx_player_parameters'] = array();
+  }
+  $mvpd_id = '';
+  if (isset($_COOKIE['nbcu_user_settings']) && is_string($_COOKIE['nbcu_user_settings'])) {
+    // Gets the logged in user mvpd provider and passes it to player for freewheel ads.
+    $cookie_value = (array) drupal_json_decode($_COOKIE['nbcu_user_settings']);
+    // Validate variable.
+    if ($cookie_value) {
+      $mvpd_id = isset($cookie_value['selectedProvider']) ? $cookie_value['selectedProvider'] : '';
+    }
+  }
+  
+  $variables['pub_mpx_player_parameters']['mbr'] = 'true';
+  
+  if (!empty($mvpd_id)) {
+    $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;
+  }
+}
+
+/**
  * Implements hook_theme().
  */
 function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
-
-  $items = array();
-  $items['usanetwork_tve_live_video'] = array(
+  return array(
+    'usanetwork_tve_live_video' => array(
     'variables' => array(
       'file' => NULL,
       'player_id' => NULL,
       'width' => NULL,
       'height' => NULL,
     ),
+    ),
   );
-
-  return $items;
 }
 
 /**
- * Theme function to render mpx video.
+ * Theme function to render live video.
  */
 function theme_usanetwork_tve_live_video($variables) {
 

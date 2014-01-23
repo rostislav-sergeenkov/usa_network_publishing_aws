@@ -22,6 +22,16 @@ function usanetwork_mpx_video_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'video_mpx_dart' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'video_mpx_leaderboard' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
   );
   $export['file|mpx_video_1|full'] = $ds_fieldsetting;
 
@@ -48,6 +58,16 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_mpx_companion_rectangle' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'video_mpx_dart' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'video_mpx_leaderboard' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
@@ -93,6 +113,34 @@ function usanetwork_mpx_video_ds_custom_fields_info() {
   );
   $export['video_mpx_companion_rectangle'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'video_mpx_dart';
+  $ds_field->label = 'video_mpx_dart';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'file' => 'file',
+  );
+  $ds_field->properties = array(
+    'block' => 'dart|dart-tag-728x90_scr_vid',
+    'block_render' => '1',
+  );
+  $export['video_mpx_dart'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'video_mpx_leaderboard';
+  $ds_field->label = 'video_mpx_leaderboard';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'file' => 'file',
+  );
+  $ds_field->properties = array(
+    'block' => 'pub_ads|ad_728x90_1',
+    'block_render' => '1',
+  );
+  $export['video_mpx_leaderboard'] = $ds_field;
+
   return $export;
 }
 
@@ -113,14 +161,20 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'ad' => array(
-        0 => 'video_mpx_companion_rectangle',
+      'ad_lead' => array(
+        0 => 'video_mpx_leaderboard',
       ),
-      'season' => array(
-        0 => 'field_mpx_season_number',
+      'ad_dart' => array(
+        0 => 'video_mpx_dart',
+      ),
+      'ad_comp' => array(
+        0 => 'video_mpx_companion_rectangle',
       ),
       'show' => array(
         0 => 'field_show',
+      ),
+      'season' => array(
+        0 => 'field_mpx_season_number',
       ),
       'episode' => array(
         0 => 'field_mpx_episode_number',
@@ -133,9 +187,11 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'video_mpx_companion_rectangle' => 'ad',
-      'field_mpx_season_number' => 'season',
+      'video_mpx_leaderboard' => 'ad_lead',
+      'video_mpx_dart' => 'ad_dart',
+      'video_mpx_companion_rectangle' => 'ad_comp',
       'field_show' => 'show',
+      'field_mpx_season_number' => 'season',
       'field_mpx_episode_number' => 'episode',
       'field_mpx_title' => 'video_title',
       'field_mpx_airdate' => 'airdate',
@@ -277,7 +333,13 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'ad' => array(
+      'ad_lead' => array(
+        0 => 'video_mpx_leaderboard',
+      ),
+      'ad_dart' => array(
+        0 => 'video_mpx_dart',
+      ),
+      'ad_comp' => array(
         0 => 'video_mpx_companion_rectangle',
       ),
       'airdate' => array(
@@ -297,7 +359,9 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'video_mpx_companion_rectangle' => 'ad',
+      'video_mpx_leaderboard' => 'ad_lead',
+      'video_mpx_dart' => 'ad_dart',
+      'video_mpx_companion_rectangle' => 'ad_comp',
       'field_mpx_airdate' => 'airdate',
       'field_show' => 'show',
       'field_mpx_title' => 'video_title',

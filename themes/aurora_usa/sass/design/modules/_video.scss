@@ -83,7 +83,8 @@
   }
 }
 
-#block-views-usa-mpx-video-fullepisodes-live {
+#block-views-usa-mpx-video-fullepisodes-live,
+.block-usanetwork-tv-schedule {
   @extend %grid-small-wide-one-two-three-four;
   margin: 0 auto;
 }

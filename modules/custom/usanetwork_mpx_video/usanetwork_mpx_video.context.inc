@@ -78,11 +78,17 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'usanetwork_tv_schedule-usa_live_tv_schedule' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_live_tv_schedule',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'views-usa_mpx_video-fullepisodes_live' => array(
           'module' => 'views',
           'delta' => 'usa_mpx_video-fullepisodes_live',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

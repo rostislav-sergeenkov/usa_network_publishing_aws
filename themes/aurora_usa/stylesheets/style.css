@@ -4055,7 +4055,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 #navGetGlueOnNow .onnow_social_selected {
-  background-position: 0 -3028px;
+  background-position: 0 -3030px;
 }
 
 #navInstagramOnNow .onnow_social_selected {
@@ -4951,9 +4951,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 641px) {
   .page-search .search-results .search-result {
     font-size: 15px;
-  }
-  .page-search .search-results .search-result .search-title h2 {
-    font-size: 20px;
   }
 }
 .page-search .search-results .search-result .search-title h2 {
@@ -10185,7 +10182,7 @@ input.echo-submit-text {
 }
 
 .navGetGlue-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10245,14 +10242,14 @@ input.echo-submit-text {
 }
 
 .navGetGlue {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2989px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navGetGlue:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
 }
 
 .navInstagram {

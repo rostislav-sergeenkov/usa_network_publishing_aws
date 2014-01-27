@@ -44,8 +44,6 @@
 .page-videos-live {
   #content {
     .block {
-      @extend %grid-small-wide-one-two-three-four;
-      margin: 0 auto;
       &:after {
         content: ".";
         display: block;
@@ -83,6 +81,11 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+#block-views-usa-mpx-video-fullepisodes-live {
+  @extend %grid-small-wide-one-two-three-four;
+  margin: 0 auto;
 }
 
 .usa-video {

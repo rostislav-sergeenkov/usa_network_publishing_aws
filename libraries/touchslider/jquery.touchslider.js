@@ -102,21 +102,51 @@ http://touchslider.com
 					webkitTransitionTimingFunction: "cubic-bezier(0,0,0.25,1)"
 				});
 		}
-		crossLeft(slides.not(slides[0]), 10000);
-		crossLeft(slides.eq(0), 0);
 
-		var switching = (function() {
-			var inViewport = [0],
-				endCoords = [0], // for calc when an animation
-				toComplete = $.noop;
+    var switching = (function() {
+      var inViewport = [0],
+        endCoords = [0], // for calc when an animation
+        toComplete = $.noop;
 
 			return {
 				moving: false,
+        viewportWidth: false,
 				init: function() {
+          viewportWidth = viewport.innerWidth();
+          this.refresh();
 					scroller.bind("webkitTransitionEnd", function() {
 						toComplete();
 					});
+
+          // add refresh if viewport size changes
+          $(window).resize(function(){
+            if (viewport.innerWidth() !== switching.viewportWidth) {
+              switching.refresh();
+              switching.viewportWidth = viewport.innerWidth();
+            }
+          });
 				},
+        refresh: function() {
+          crossLeft(slides.eq(0), 0);
+          slides.not(slides[0]).each(function(index) {
+            var prevSlide = $(slides[index]);
+            var slide = $(this);
+            var left = crossLeft(prevSlide) + prevSlide.outerWidth() + options.margin;
+            crossLeft(slide, left);
+          });
+          endCoords[0] = crossLeft($(slides[inViewport[0]]));
+          switching.to(inViewport[0]);
+
+          // hide scroll buttons
+          container.removeClass('no-scroll');
+          var nodesWidth = 0;
+          slides.each(function() {
+            nodesWidth += $(this).outerWidth();
+          });
+          if (nodesWidth <= viewport.innerWidth()) {
+            container.addClass('no-scroll');
+          }
+        },
 				to: function(toIndex, opt) {
 					opt = opt || {};
 					if (toIndex >= slides.length) {
@@ -145,7 +175,7 @@ http://touchslider.com
 
 					if (indexInViewport !== -1) {
 						nodeLeft = endCoords[indexInViewport];
-					// add node if not exist
+					  // add node if not exist
 					} else {
 						var i, nodeIndex = slides.index(node);
 						// set position in viewport
@@ -160,7 +190,7 @@ http://touchslider.com
 						} else {
 							for (i = inViewport.length - 1; i >= 0; i--){
 								if (inViewport[i] < nodeIndex) {
-									endCoords.splice(i + 1, 0, 0);
+									endCoords.splice(i + 1, 0, crossLeft(node));
 									inViewport.splice(i + 1, 0, nodeIndex);
 									indexInViewport = 0; // temp
 									break;
@@ -175,21 +205,21 @@ http://touchslider.com
 
 						// set start coordinates
 						if (indexInViewport === 0) {
-							nodeLeft = endCoords[1] - (node.outerWidth() + options.margin);
-							crossLeft(node, nodeLeft);
+							//nodeLeft = endCoords[1] - (node.outerWidth() + options.margin);
+              nodeLeft = crossLeft(node);
 							endCoords[indexInViewport] = nodeLeft;
 						} else if (indexInViewport === inViewport.length - 1) {
-							nodeLeft = endCoords[indexInViewport - 1] + slides.eq(inViewport[indexInViewport - 1]).outerWidth() + options.margin;
-							crossLeft(node, nodeLeft);
+							//nodeLeft = endCoords[indexInViewport - 1] + slides.eq(inViewport[indexInViewport - 1]).outerWidth() + options.margin;
+              nodeLeft = crossLeft(node);
 							endCoords[indexInViewport] = nodeLeft;
 						} else {
 							var nodeWidth = node.outerWidth();
 							node.css("opacity", 0);
 							// for example: inViewport = [0,1,2,3,4] and indexInViewport = 2
 							// center, [2]
-							nodeLeft = endCoords[indexInViewport+1] - Math.round((nodeWidth + options.margin) / 2);
-							endCoords[indexInViewport] = nodeLeft;
-							crossLeft(node, nodeLeft);
+							//nodeLeft = endCoords[indexInViewport+1] - Math.round((nodeWidth + options.margin) / 2);
+              nodeLeft = crossLeft(node);
+              endCoords[indexInViewport] = nodeLeft;
 
 							// left calc, [0,1]
 							var leftInL = nodeLeft, l = inViewport.length;
@@ -226,7 +256,7 @@ http://touchslider.com
 					}
 
 					toComplete = function() {
-						crossLeft(slides.not(node), -10000);
+						crossLeft(slides.not(node));
 						inViewport = [slides.index(node)];
 						endCoords = [nodeLeft];
 						if (opt.complete) {
@@ -234,8 +264,19 @@ http://touchslider.com
 						}
 						switching.moving = false;
 						autoPlay();
+            changedView(toIndex);
 					};
 
+          // attach left or right
+          var first = slides.first();
+          var last = slides.last();
+          if (container.hasClass('no-scroll')) {
+            nodeLeft = 0;
+          }
+          else if ((crossLeft(first) - nodeLeft < 0) &&
+            (crossLeft(last) + last.outerWidth() - nodeLeft) <= viewport.innerWidth()) {
+            nodeLeft = (crossLeft(last) + last.outerWidth()) - viewport.innerWidth();
+          }
 					// go!
 					if (!isTouchWebkit) {
 						scroller.animate(
@@ -251,7 +292,6 @@ http://touchslider.com
 					}
 
 					ret.current = toIndex;
-					changedView(toIndex);
 				},
 
 				stop: function() {
@@ -263,6 +303,9 @@ http://touchslider.com
 				},
 
 				moveStart: function(e) {
+          if (container.hasClass('no-scroll')) {
+            return;
+          }
 					switching.moving = true;
 					clearTimeout(autoPlayTimeout);
 					scroller.stop();
@@ -299,8 +342,7 @@ http://touchslider.com
 						// while is used in case of fast moving
 						while (inViewport[0] !== 0 && scrollerLeft + endCoords[0] + diffX > options.margin) {
 							add = slides.eq(inViewport[0] - 1); // or "first.index() - 1"
-							addLeft = endCoords[0] - add.outerWidth() - options.margin;
-							crossLeft(add, addLeft);
+							addLeft = crossLeft(add);
 							endCoords.unshift(addLeft);
 							inViewport.unshift(inViewport[0] - 1);
 							lastIndex++;
@@ -321,8 +363,7 @@ http://touchslider.com
 					if (diffX < 0) {
 						while (!last.is(slides.last()) && scrollerLeft + endCoords[lastIndex] + diffX + last.outerWidth() + options.margin < viewport.innerWidth()) {
 							add = slides.eq(inViewport[lastIndex] + 1);
-							addLeft = endCoords[lastIndex] + last.outerWidth() + options.margin;
-							crossLeft(add, addLeft);
+							addLeft = crossLeft(add);
 							endCoords.push(addLeft);
 							inViewport.push(inViewport[lastIndex++] + 1);
 							last = add;
@@ -331,9 +372,12 @@ http://touchslider.com
 					// deceleration in right
 					if ((
 						    (diffX > 0 && scrollerLeft + endCoords[lastIndex] < 0)
-						 || (diffX < 0 && scrollerLeft + endCoords[lastIndex] + diffX < 0)
+						 || (diffX < 0 && scrollerLeft + endCoords[0] + diffX < 0)
 						) && last.is(slides.last())
 					) {
+            if (diffX < 0) {
+              lastIndex = 0;
+            }
 						deceleration = Math.max(Math.round((switching.leftCount + endCoords[lastIndex]) / 4), - viewport.innerWidth() / 2);
 						diffX = deceleration - (scrollerLeft + endCoords[lastIndex]);
 					}
@@ -434,11 +478,30 @@ http://touchslider.com
 		}
 
 		function next(complete) {
-			switching.to(ret.current + 1, { dirX: 1, complete: complete });
+      var last = slides.last();
+      var lastIndex = slides.index(last);
+      if ((crossLeft(last) + last.outerWidth() + crossLeft(scroller)) <= viewport.innerWidth()) {
+        switching.to(lastIndex, { complete: complete });
+      }
+      else {
+        switching.to(ret.current + 1, { dirX: 1, complete: complete });
+      }
 		}
 
 		function prev(complete) {
-			switching.to(ret.current - 1, { dirX: -1, complete: complete });
+      var last = slides.last();
+      if (ret.current == slides.index(last)) {
+        var unvisible = ret.current - 1;
+        var node = $(slides[unvisible]);
+        while (unvisible > 0 && (crossLeft(node) + crossLeft(scroller)) >= 0) {
+          unvisible--;
+          node = $(slides[unvisible]);
+        }
+        switching.to(unvisible, { complete: complete });
+      }
+      else {
+        switching.to(ret.current - 1, { dirX: -1, complete: complete });
+      }
 		}
 
 		/* Autoplay */
@@ -487,12 +550,16 @@ http://touchslider.com
 
 		// left/right button
 		$(options.prev, container).click(function() {
-			prev();
+      if (!$(this).hasClass('disabled')) {
+        prev();
+      }
       return false;
 		});
 
 		$(options.next, container).click(function() {
-			next();
+      if (!$(this).hasClass('disabled')) {
+        next();
+      }
       return false;
 		});
 

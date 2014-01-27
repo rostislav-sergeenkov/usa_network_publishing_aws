@@ -4858,66 +4858,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
-.page-search .pager {
-  float: right;
-  margin: 10px 0 0;
-  padding: 0;
-}
-.page-search .pager .pager-item,
-.page-search .pager .pager-current,
-.page-search .pager .pager-ellipsis,
-.page-search .pager .pager-last,
-.page-search .pager .pager-next {
-  margin: 5px;
-  padding: 0;
-  font-size: 14px;
-  text-transform: capitalize;
-}
-.page-search .pager .pager-item a,
-.page-search .pager .pager-current a,
-.page-search .pager .pager-ellipsis a,
-.page-search .pager .pager-last a,
-.page-search .pager .pager-next a {
-  color: #868686;
-}
-.page-search .pager .pager-item a:hover,
-.page-search .pager .pager-current a:hover,
-.page-search .pager .pager-ellipsis a:hover,
-.page-search .pager .pager-last a:hover,
-.page-search .pager .pager-next a:hover {
-  color: #fff;
-}
-.page-search h2 {
-  margin-left: 18px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid #adadad;
-}
-.page-search h2 span {
-  color: #868686;
-}
-.page-search .search-results {
-  margin-bottom: 0;
-  padding-left: 18px;
-  list-style: none;
-}
-.page-search .search-results .search-result {
-  padding-bottom: 5px;
-  border-bottom: 1px dashed #adadad;
-  color: #868686;
-}
-.page-search .search-results .search-result:last-child {
-  border-bottom: 1px solid #adadad;
-}
-.page-search .search-results .search-result a {
-  color: #fff;
-}
-.page-search .search-results .search-result .title {
-  margin-bottom: 0;
-}
-.page-search .search-results .search-result p {
-  margin: 0;
-}
-
 .title-overlay .meta, .grid-container-small .asset-thumb .meta, .usa-home-featured li.carousel-item .meta, [id='person-content'] .node-media-gallery .field-name-title .meta, .title-overlay h2, .grid-container-small .asset-thumb h2, .usa-home-featured li.carousel-item h2, [id='person-content'] .node-media-gallery .field-name-title h2, .caption-overlay .caption-fields-wrapper, .view-usa-cast .carousel-item .item-content, #block-views-usa-shows-block-1 h4, .promo-metadata, .upcoming-movie .meta {
   background-color: rgba(0, 0, 0, 0.85);
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
@@ -10111,7 +10051,7 @@ input.echo-submit-text {
 }
 
 .navGetGlue-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10171,14 +10111,14 @@ input.echo-submit-text {
 }
 
 .navGetGlue {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2989px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navGetGlue:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
 }
 
 .navInstagram {

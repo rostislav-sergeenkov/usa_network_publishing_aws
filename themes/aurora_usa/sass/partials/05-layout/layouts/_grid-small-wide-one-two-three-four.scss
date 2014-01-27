@@ -4,18 +4,23 @@
   }
   @include breakpoint($bp-grid-small-wide-small) {
     width: 304px;
-    //@include layout(1, .062) {
-    //  .grid-item {
-    //    padding-left: 0px;
-    //    padding-right: 0px;
-    //  }
-   // }
   }
- // @include breakpoint($bp-grid-small-wide-2-3) {
-    
- // }
   @include breakpoint($bp-grid-small-wide-2-fence) {
     width: 457px;
+    @include layout(2, .062) {
+      .grid-item {
+        &:nth-of-type(odd) {
+          @include grid-span(1, 1);
+        }
+        &:nth-of-type(even) {
+          @include grid-span(1, 2);
+          padding-right: 0;
+        }
+        &:nth-of-type(2n + 3) {
+          clear: both;
+        }
+      }
+    }
   }
   @include breakpoint($bp-grid-small-wide-3-fence) {
     width: 615px;

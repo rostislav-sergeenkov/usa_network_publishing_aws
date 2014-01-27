@@ -469,8 +469,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 221,
-          'height' => 124,
+          'width' => 100,
+          'height' => 83,
         ),
         'weight' => 1,
       ),

@@ -31,12 +31,17 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'search_result' => array(
         'label' => 'hidden',
@@ -94,11 +99,17 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -150,11 +161,17 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -210,11 +227,17 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'search_result' => array(
         'label' => 'above',
@@ -270,6 +293,12 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'search_index' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -277,7 +306,7 @@ function usanetwork_static_page_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'search_result' => array(
         'label' => 'hidden',
@@ -329,16 +358,24 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_result' => array(
-        'label' => 'above',
+      'search_index' => array(
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_plain',
+        'weight' => 1,
+      ),
+      'search_result' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -398,16 +435,26 @@ function usanetwork_static_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
-      'search_index' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_result' => array(
+      'search_index' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'search_result' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'search_result',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'teaser' => array(

@@ -36,6 +36,11 @@ function usanetwork_static_page_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|usanetwork_static_page|search_result'] = $ds_fieldsetting;
@@ -63,17 +68,17 @@ function usanetwork_static_page_ds_layout_settings_info() {
       'title' => array(
         0 => 'title',
       ),
-      'body' => array(
-        0 => 'field_usa_og_description',
-      ),
       'media' => array(
         0 => 'field_usa_og_image',
+      ),
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
     ),
     'fields' => array(
       'title' => 'title',
-      'field_usa_og_description' => 'body',
       'field_usa_og_image' => 'media',
+      'field_usa_og_description' => 'body',
     ),
     'classes' => array(),
   );

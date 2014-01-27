@@ -144,6 +144,159 @@ function aurora_usa_preprocess_page(&$vars) {
 
 }
 
+/**
+ * Override or insert variables in search results template
+ */
+function aurora_usa_preprocess_search_results(&$variables) {
+  // add keywords to template
+  $variables['keywords'] = _aurora_usa_search_keywords();
+
+  // search.module shows 10 items per page (this isn't customizable)
+  $itemsPerPage = 10;
+  // Determine which page is being viewed
+  // If $_REQUEST['page'] is not set, we are on page 1
+  $currentPage = (isset($_REQUEST['page']) ? $_REQUEST['page'] : 0) + 1;
+  // Get the total number of results from the global pager
+  $total = $GLOBALS['pager_total_items'][0];
+  // Determine which results are being shown ("Showing results x through y")
+  $start = ($itemsPerPage * $currentPage) - $itemsPerPage + 1;
+  // If on the last page, only go up to $total, not the total that COULD be
+  // shown on the page. This prevents things like "Displaying 11-20 of 17".
+  $end = (($itemsPerPage * $currentPage) >= $total) ? $total : ($itemsPerPage * $currentPage);
+  // If there is more than one page of results:
+  if ($total > $itemsPerPage) {
+    $variables['search_totals'] = t('Displaying results !start - !end of !total', array(
+      '!start' => $start,
+      '!end' => $end,
+      '!total' => $total,
+    ));
+  }
+  else {
+    // Only one page of results, so make it simpler
+    $variables['search_totals'] = t('Displaying !total !results_label', array(
+      '!total' => $total,
+      // Be smart about labels: show "result" for one, "results" for multiple
+      '!results_label' => format_plural($total, 'result', 'results'),
+    ));
+  }
+
+  $variables['pager'] = theme('pager', array(
+    'tags' => null,
+    'element' => 0,
+    'parameters' => array(),
+    'quantity' => 3,
+    'small' => true,
+  ));
+}
+
+/**
+ * Override or insert variables in pager template
+ */
+function aurora_usa_pager(&$variables) {
+  if (!isset($variables['small']) || !$variables['small']) {
+    return theme_pager($variables);
+  }
+
+  $tags = $variables['tags'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $quantity = $variables['quantity'];
+  global $pager_page_array, $pager_total;
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+  // current is the page we are currently paged to
+  $pager_current = $pager_page_array[$element] + 1;
+  // first is the first page listed by this pager piece (re quantity)
+  $pager_first = $pager_current - $pager_middle + 1;
+  // last is the last page listed by this pager piece (re quantity)
+  $pager_last = $pager_current + $quantity - $pager_middle;
+  // max is the maximum page number
+  $pager_max = $pager_total[$element];
+  // End of marker calculations.
+
+  // Prepare for generation loop.
+  $i = $pager_first;
+  if ($pager_last > $pager_max) {
+    // Adjust "center" if at end of query.
+    $i = $i + ($pager_max - $pager_last);
+    $pager_last = $pager_max;
+  }
+  if ($i <= 0) {
+    // Adjust "center" if at start of query.
+    $pager_last = $pager_last + (1 - $i);
+    $i = 1;
+  }
+  // End of generation loop preparation.
+
+  $li_previous = theme('pager_previous', array('text' => (isset($tags[1]) ? $tags[1] : t('« prev')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_next = theme('pager_next', array('text' => (isset($tags[3]) ? $tags[3] : t('next »')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+
+  if ($pager_total[$element] > 1) {
+    // When there is more than one page, create the pager list.
+    if ($i != $pager_max) {
+      if ($i > 1) {
+        $items[] = array(
+          'class' => array('pager-first'),
+          'data' => theme('pager_first', array('text' => 1, 'element' => $element, 'parameters' => $parameters)),
+        );
+        $items[] = array(
+          'class' => array('pager-ellipsis'),
+          'data' => '…',
+        );
+      }
+      // Now generate the actual pager piece.
+      for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+        if ($i < $pager_current) {
+          $items[] = array(
+            'class' => array('pager-item'),
+            'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
+          );
+        }
+        if ($i == $pager_current) {
+          $items[] = array(
+            'class' => array('pager-current'),
+            'data' => $i,
+          );
+        }
+        if ($i > $pager_current) {
+          $items[] = array(
+            'class' => array('pager-item'),
+            'data' => theme('pager_next', array('text' => $i, 'element' => $element, 'interval' => ($i - $pager_current), 'parameters' => $parameters)),
+          );
+        }
+      }
+      if ($i < $pager_max) {
+        $items[] = array(
+          'class' => array('pager-ellipsis'),
+          'data' => '…',
+        );
+        $items[] = array(
+          'class' => array('pager-last'),
+          'data' => theme('pager_last', array('text' => $pager_max, 'element' => $element, 'parameters' => $parameters)),
+        );
+      }
+    }
+    // End generation.
+    if ($li_previous) {
+      $items[] = array(
+        'class' => array('pager-previous'),
+        'data' => $li_previous,
+      );
+    }
+    if ($li_next) {
+      $items[] = array(
+        'class' => array('pager-next'),
+        'data' => $li_next,
+      );
+    }
+    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+      'items' => $items,
+      'attributes' => array('class' => array('pager')),
+    ));
+  }
+}
 
 /**
  * Implementation of hook_form_alter
@@ -156,11 +309,21 @@ function aurora_usa_form_search_block_form_alter(&$form){
   // Add placeholder attribute to the text box
   $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
 
+  if ($keywords = _aurora_usa_search_keywords()) {
+    $form['search_block_form']['#value'] = $keywords;
+  }
 
   $form['actions']['reset'] = array(
     '#markup' => '<button class="form-reset" type="reset"></button>',
     '#weight' => 1000
   );
+
+  // remove keywords from action
+  $parts = explode('/', trim($form['#action'], '/'));
+  if ($parts[0] == 'search' && count($parts) > 2) {
+    $parts = array_slice($parts, 0, 2);
+    $form['#action'] = '/' . implode('/', $parts);
+  }
 
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
@@ -914,4 +1077,19 @@ function aurora_usa_field__field_video_thumbnail($variables) {
   }
 
   return $output;
+}
+
+
+/**
+ * Returns search keywords.
+ */
+function _aurora_usa_search_keywords() {
+  // add keywords to template
+  $path = explode('/', $_GET['q'], 3);
+  if(count($path) == 3 && $path[0]=="search") {
+    $keywords = $path[2];
+  } else {
+    $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
+  }
+  return urldecode($keywords);
 }

@@ -10,10 +10,12 @@
   @extend .clearfix;
 
   &.utilities-head-show {
-    #head-show {
+    .utilties-main-group {
       height:100%;
-      padding-left: 12px;
       border-bottom: 1px solid $gray-ultra-med;
+    }
+    #head-show {
+      padding-left: 12px;
     }
   }
   h1#page-title {

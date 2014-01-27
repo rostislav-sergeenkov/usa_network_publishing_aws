@@ -1058,7 +1058,8 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot, .grid-container-small .grid-item, .usa-home-featured .grid-item, .block-usanetwork-video .grid-item,
-.block-usanetwork-mpx-video .grid-item, .page-videos-live #content .block .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
+.block-usanetwork-mpx-video .grid-item, #block-views-usa-mpx-video-fullepisodes-live .grid-item,
+.block-usanetwork-tv-schedule .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
   margin-bottom: 15px;
 }
 
@@ -1517,27 +1518,26 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 @media (max-width: 486px) {
-  .page-videos-live #content .block {
+  #block-views-usa-mpx-video-fullepisodes-live,
+  .block-usanetwork-tv-schedule {
     width: 304px;
   }
 }
 @media (min-width: 487px) and (max-width: 722px) {
-  .page-videos-live #content .block {
+  #block-views-usa-mpx-video-fullepisodes-live,
+  .block-usanetwork-tv-schedule {
     width: 457px;
   }
-}
-@media (min-width: 723px) and (max-width: 958px) {
-  .page-videos-live #content .block {
-    width: 615px;
-  }
-  .page-videos-live #content .block .grid-item:nth-of-type(odd) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
     width: 48.49661%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(even) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
     width: 48.49661%;
     float: right;
     margin-left: 0;
@@ -1545,33 +1545,65 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(2n + 3) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
+    clear: both;
+  }
+}
+@media (min-width: 723px) and (max-width: 958px) {
+  #block-views-usa-mpx-video-fullepisodes-live,
+  .block-usanetwork-tv-schedule {
+    width: 615px;
+  }
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
+    width: 48.49661%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0%;
+    clear: none;
+  }
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
+    width: 48.49661%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+    padding-right: 0;
+  }
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
     clear: both;
   }
 }
 @media (min-width: 959px) {
-  .page-videos-live #content .block .grid-item:nth-of-type(4n + 1) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 1),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 1) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(4n + 2) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 2),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 2) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 25.37028%;
     clear: none;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(4n + 3) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 3),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 3) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 50.74056%;
     clear: none;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(4n + 4) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 4),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 4) {
     width: 23.88915%;
     float: right;
     margin-left: 0;
@@ -1579,22 +1611,26 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  .page-videos-live #content .block .grid-item:nth-of-type(4n + 5) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 5),
+  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 5) {
     clear: both;
   }
 }
 @media (min-width: 959px) and (max-width: 1274px) {
-  .page-videos-live #content .block {
+  #block-views-usa-mpx-video-fullepisodes-live,
+  .block-usanetwork-tv-schedule {
     width: 929px;
     margin-bottom: 28px;
   }
 }
 @media (min-width: 1275px) {
-  .page-videos-live #content .block {
+  #block-views-usa-mpx-video-fullepisodes-live,
+  .block-usanetwork-tv-schedule {
     width: 1245px;
   }
 }
-.usa-adrails .page-videos-live #content .block, .page-videos-live #content .usa-adrails .block {
+.usa-adrails #block-views-usa-mpx-video-fullepisodes-live,
+.usa-adrails .block-usanetwork-tv-schedule {
   width: 929px;
 }
 
@@ -7290,9 +7326,6 @@ body.person-page #main {
   background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
 }
 
-.page-videos-live #content .block {
-  margin: 0 auto;
-}
 .page-videos-live #content .block:after {
   content: ".";
   display: block;
@@ -7327,6 +7360,11 @@ body.person-page #main {
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+#block-views-usa-mpx-video-fullepisodes-live,
+.block-usanetwork-tv-schedule {
+  margin: 0 auto;
 }
 
 .usa-video .companionContainer {
@@ -11075,27 +11113,27 @@ a[class*="day"] {
 }
 @media (max-width: 486px) {
   .schedule-day-small .schedule-items .schedule-item {
-    width: 275px;
+    width: 274px;
   }
 }
 @media (min-width: 487px) and (max-width: 722px) {
   .schedule-day-small .schedule-items .schedule-item {
-    width: 214px;
+    width: 274px;
   }
 }
 @media (min-width: 723px) and (max-width: 958px) {
   .schedule-day-small .schedule-items .schedule-item {
-    width: 293px;
+    width: 243px;
   }
 }
 @media (min-width: 959px) {
   .schedule-day-small .schedule-items .schedule-item {
-    width: 300px;
+    width: 243px;
   }
 }
 @media (min-width: 1275px) {
   .schedule-day-small .schedule-items .schedule-item {
-    width: 304px;
+    width: 243px;
   }
 }
 .schedule-day-small .schedule-items .schedule-item .schedule-item-content {
@@ -11125,9 +11163,15 @@ a[class*="day"] {
   background-image: none;
   background-color: #000;
 }
+.schedule-day-small .schedule-items .schedule-item.schedule-item-on-now .time:after {
+  margin-left: 10px;
+  font-family: "Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+  color: #0AB6E8;
+  content: "ON NOW";
+}
 .schedule-day-small .schedule-navigation {
   float: right;
-  width: 29px;
+  width: 30px;
   height: 109px;
   background-color: #0c0c0c;
 }
@@ -11156,6 +11200,9 @@ a[class*="day"] {
   background-position: 50% 50%;
   background-position: 55% 50%;
   background-size: 30% auto;
+}
+.schedule-day-small.no-scroll .schedule-navigation {
+  display: none;
 }
 
 .snipe-active #block-usanetwork-blocks-usa-meganav {

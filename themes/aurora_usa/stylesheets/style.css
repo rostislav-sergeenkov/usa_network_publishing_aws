@@ -457,7 +457,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
   font-size: 30px;
 }
 
-.mega-sub-nav .more-title, .aspot .cta span, .schedule-header {
+.mega-sub-nav .more-title, .aspot .cta span, .schedule-header, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
@@ -1058,7 +1058,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot, .grid-container-small .grid-item, .usa-home-featured .grid-item, .block-usanetwork-video .grid-item,
-.block-usanetwork-mpx-video .grid-item, #block-views-usa-mpx-video-fullepisodes-live .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
+.block-usanetwork-mpx-video .grid-item, .page-videos-live #content .block .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
   margin-bottom: 15px;
 }
 
@@ -1517,27 +1517,27 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 @media (max-width: 486px) {
-  #block-views-usa-mpx-video-fullepisodes-live {
+  .page-videos-live #content .block {
     width: 304px;
   }
 }
 @media (min-width: 487px) and (max-width: 722px) {
-  #block-views-usa-mpx-video-fullepisodes-live {
+  .page-videos-live #content .block {
     width: 457px;
   }
 }
 @media (min-width: 723px) and (max-width: 958px) {
-  #block-views-usa-mpx-video-fullepisodes-live {
+  .page-videos-live #content .block {
     width: 615px;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd) {
+  .page-videos-live #content .block .grid-item:nth-of-type(odd) {
     width: 48.49661%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even) {
+  .page-videos-live #content .block .grid-item:nth-of-type(even) {
     width: 48.49661%;
     float: right;
     margin-left: 0;
@@ -1545,33 +1545,33 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3) {
+  .page-videos-live #content .block .grid-item:nth-of-type(2n + 3) {
     clear: both;
   }
 }
 @media (min-width: 959px) {
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 1) {
+  .page-videos-live #content .block .grid-item:nth-of-type(4n + 1) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 2) {
+  .page-videos-live #content .block .grid-item:nth-of-type(4n + 2) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 25.37028%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 3) {
+  .page-videos-live #content .block .grid-item:nth-of-type(4n + 3) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 50.74056%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 4) {
+  .page-videos-live #content .block .grid-item:nth-of-type(4n + 4) {
     width: 23.88915%;
     float: right;
     margin-left: 0;
@@ -1579,22 +1579,22 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 5) {
+  .page-videos-live #content .block .grid-item:nth-of-type(4n + 5) {
     clear: both;
   }
 }
 @media (min-width: 959px) and (max-width: 1274px) {
-  #block-views-usa-mpx-video-fullepisodes-live {
+  .page-videos-live #content .block {
     width: 929px;
     margin-bottom: 28px;
   }
 }
 @media (min-width: 1275px) {
-  #block-views-usa-mpx-video-fullepisodes-live {
+  .page-videos-live #content .block {
     width: 1245px;
   }
 }
-.usa-adrails #block-views-usa-mpx-video-fullepisodes-live {
+.usa-adrails .page-videos-live #content .block, .page-videos-live #content .usa-adrails .block {
   width: 929px;
 }
 
@@ -4835,6 +4835,17 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   padding-left: 56px;
 }
 
+.schedule-day-small .schedule-items .schedule-item {
+  background-color: rgba(0, 0, 0, 0.85);
+  background: -moz-linear-gradient(top, #2a2a2a 0%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2a2a2a), color-stop(100%, black));
+  background: -webkit-linear-gradient(top, #2a2a2a 0%, black 100%);
+  background: -o-linear-gradient(top, #2a2a2a 0%, black 100%);
+  background: -ms-linear-gradient(top, #2a2a2a 0%, black 100%);
+  background: linear-gradient(to bottom, #2a2a2a 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2A2A2A', endColorstr='#000000',GradientType=0 );
+}
+
 @media (min-width: 769px) {
   .view-id-usa_episodes.view-display-id-panel_pane_1 {
     font-size: 16px;
@@ -7279,21 +7290,23 @@ body.person-page #main {
   background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
 }
 
-#block-views-usa-mpx-video-fullepisodes-live {
+.page-videos-live #content .block {
   margin: 0 auto;
 }
-#block-views-usa-mpx-video-fullepisodes-live .view-content {
-  position: relative;
+.page-videos-live #content .block:after {
+  content: ".";
+  display: block;
+  height: 0;
   clear: both;
-  margin: 0 0 15px;
+  visibility: hidden;
 }
-#block-views-usa-mpx-video-fullepisodes-live h2 {
+.page-videos-live #content .block h2 {
   text-transform: uppercase;
   font-size: 20px;
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
-  #block-views-usa-mpx-video-fullepisodes-live h2 {
+  .page-videos-live #content .block h2 {
     font-size: 16px;
     font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   }
@@ -11037,6 +11050,112 @@ a[class*="day"] {
     overflow: inherit;
     white-space: normal;
   }
+}
+
+.schedule-day-small {
+  height: 109px;
+}
+.schedule-day-small .schedule-viewport {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.schedule-day-small .schedule-items {
+  width: 10000px;
+  height: 109px;
+  margin: 0;
+  padding: 0;
+}
+.schedule-day-small .schedule-items .schedule-item {
+  float: left;
+  height: 100%;
+  font-size: 14px;
+  line-height: 16px;
+}
+@media (max-width: 486px) {
+  .schedule-day-small .schedule-items .schedule-item {
+    width: 275px;
+  }
+}
+@media (min-width: 487px) and (max-width: 722px) {
+  .schedule-day-small .schedule-items .schedule-item {
+    width: 214px;
+  }
+}
+@media (min-width: 723px) and (max-width: 958px) {
+  .schedule-day-small .schedule-items .schedule-item {
+    width: 293px;
+  }
+}
+@media (min-width: 959px) {
+  .schedule-day-small .schedule-items .schedule-item {
+    width: 300px;
+  }
+}
+@media (min-width: 1275px) {
+  .schedule-day-small .schedule-items .schedule-item {
+    width: 304px;
+  }
+}
+.schedule-day-small .schedule-items .schedule-item .schedule-item-content {
+  border-right: 1px solid #1f1f1f;
+  padding: 20px;
+}
+.schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
+  font-size: 22px;
+  color: #878785;
+  margin-bottom: 15px;
+}
+.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title {
+  height: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program a, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title a {
+  color: #fff;
+  text-decoration: none;
+}
+.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program a:hover, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title a:hover {
+  text-decoration: underline;
+}
+.schedule-day-small .schedule-items .schedule-item.schedule-item-on-now {
+  background-image: none;
+  background-color: #000;
+}
+.schedule-day-small .schedule-navigation {
+  float: right;
+  width: 29px;
+  height: 109px;
+  background-color: #0c0c0c;
+}
+.schedule-day-small .schedule-navigation a {
+  display: block;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+.schedule-day-small .schedule-navigation a.schedule-navigation-prev {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-position: 45% 50%;
+  background-size: 30% auto;
+}
+.schedule-day-small .schedule-navigation a.schedule-navigation-next {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-position: 55% 50%;
+  background-size: 30% auto;
 }
 
 .snipe-active #block-usanetwork-blocks-usa-meganav {

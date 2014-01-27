@@ -94,6 +94,7 @@ features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][features] = features
 features_exclude[dependencies][options] = options
 features_exclude[dependencies][image] = image
+features_exclude[dependencies][usanetwork_tv_schedule] = usanetwork_tv_schedule
 features_exclude[field_base][field_mpx_media_thumbnail] = field_mpx_media_thumbnail
 features_exclude[field_base][field_mpx_airdate] = field_mpx_airdate
 features_exclude[field_base][field_mpx_title] = field_mpx_title

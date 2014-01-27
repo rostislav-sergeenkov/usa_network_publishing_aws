@@ -47,7 +47,7 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['fields']['filename']['label'] = '';
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: thePlatform MPX Video: Air Date */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['airdate']['id'] = 'airdate';
   $handler->display->display_options['sorts']['airdate']['table'] = 'mpx_video';
   $handler->display->display_options['sorts']['airdate']['field'] = 'airdate';
@@ -331,7 +331,7 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
   $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: thePlatform MPX Video: Air Date */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['airdate']['id'] = 'airdate';
   $handler->display->display_options['sorts']['airdate']['table'] = 'mpx_video';
   $handler->display->display_options['sorts']['airdate']['field'] = 'airdate';

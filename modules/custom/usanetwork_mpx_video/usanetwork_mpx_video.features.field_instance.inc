@@ -294,8 +294,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-        'weight' => 27,
-      ),
+      'weight' => 27,
+    ),
   );
 
   // Exported field_instance: 'file-mpx_video_1-field_mpx_full_episode'

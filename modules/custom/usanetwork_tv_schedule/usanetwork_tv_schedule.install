@@ -6,3 +6,67 @@
  *
  * @ingroup USA Network
  */
+
+/**
+ * Implements hook_schema().
+ */
+function usanetwork_tv_schedule_schema() {
+  $schema = array();
+
+  $schema['usanetwork_tv_schedule_items'] = array(
+    'description' => 'Stores schedule items',
+    'fields' => array(
+      'feed' => array(
+        'description' => 'Feed machine name.',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+      ),
+      'start_time' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'end_time' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'ratings' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'snid' => array(
+        'description' => 'Node id of associated tv show.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ),
+      'info' => array(
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => TRUE,
+        'serialize' => TRUE,
+      ),
+    ),
+    'primary key' => array('feed', 'start_time'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Create database tables for schedule data.
+ */
+function usanetwork_tv_schedule_update_7000() {
+  drupal_install_schema('usanetwork_tv_schedule');
+  variable_set('', array(
+    'on_air' => array(
+      'url' => 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing',
+    ),
+    'live_tv' => array(
+      'url' => 'http://feed.entertainment.tv.theplatform.com/f/dCK2IC/stage_tve_usa_listing',
+    ),
+  ));
+}

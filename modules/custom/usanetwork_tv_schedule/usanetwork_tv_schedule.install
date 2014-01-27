@@ -61,7 +61,13 @@ function usanetwork_tv_schedule_schema() {
  */
 function usanetwork_tv_schedule_update_7000() {
   drupal_install_schema('usanetwork_tv_schedule');
-  variable_set('', array(
+}
+
+/**
+ * Add feeds configuration
+ */
+function usanetwork_tv_schedule_update_7001() {
+  variable_set('usanetwork_tv_schedule_feeds', array(
     'on_air' => array(
       'url' => 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing',
     ),

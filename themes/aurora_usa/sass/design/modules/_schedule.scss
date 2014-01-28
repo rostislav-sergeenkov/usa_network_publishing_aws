@@ -405,9 +405,15 @@ a.prev-day {
         padding: 20px;
         .time {
           @extend %semi;
-          font-size: 22px;
+          font-size: 18px;
           color: #878785;
           margin-bottom: 15px;
+          @include breakpoint($bp-video-large-width) {
+            font-size: 22px;
+          }
+          @include breakpoint($bp-grid-small-wide-4) {
+            font-size: 22px;
+          }
         }
         .program, .title {
           height: 20px;

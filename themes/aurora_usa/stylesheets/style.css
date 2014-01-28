@@ -396,7 +396,7 @@ pre, code, kbd, tt {
   font-family: "avalonextra_light", "Proxima N W01 Thin Reg", Arial, sans-serif;
 }
 
-body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-search input[type="search"], .featured-asset .meta-head .show-name,
+body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-search input[type="search"], #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name, #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in, #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating, .featured-asset .meta-head .show-name,
 .featured-asset .meta-head .episode-title,
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description, .aspot .show-title, .lyris .form-item-email input {
@@ -457,7 +457,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-se
   font-size: 30px;
 }
 
-.mega-sub-nav .more-title, .aspot .cta span, .schedule-header, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
+.mega-sub-nav .more-title, #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title, .aspot .cta span, .schedule-header, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
@@ -7344,6 +7344,10 @@ body.person-page #main {
     font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   }
 }
+.page-videos-live .file.view-mode-full .meta-head h1.show-name {
+  font-family: "Proxima N W01 Smbd";
+  font-size: 30px;
+}
 
 .file-video-mpx .inlineLoader {
   display: inline-block;
@@ -7352,6 +7356,95 @@ body.person-page #main {
   margin: 0 5px;
   vertical-align: middle;
   background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+}
+
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title {
+    margin: 15px 0;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title {
+    margin: 15px 0;
+  }
+}
+#block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
+  float: left;
+  margin-right: 10px;
+  font-size: 16px;
+}
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h1.show-name {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+  }
+}
+#block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
+  float: left;
+  margin: 0;
+  color: #878785;
+  font-size: 16px;
+}
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h2.tune-in {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+  }
+}
+#block-views-usa-mpx-video-latest-live-video .view-mode-full .description {
+  font-size: 14px;
+}
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description {
+    font-size: 16px;
+  }
+}
+#block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
+  margin: 0;
+  color: #878785;
+  font-size: 15px;
+}
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
+    font-size: 18px;
+  }
+}
+#block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
+  color: #878785;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+@media (min-width: 959px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  }
+}
+@media (min-width: 1275px) {
+  #block-views-usa-mpx-video-latest-live-video .view-mode-full .description .rating {
+    font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  }
 }
 
 @media (max-width: 722px) {
@@ -7369,6 +7462,7 @@ body.person-page #main {
 
 .usa-video .companionContainer {
   padding-top: 10px;
+  margin-bottom: 15px;
 }
 .usa-video .companionContainer .ad_lead {
   text-align: center;
@@ -8482,6 +8576,11 @@ body.person-page #main {
   width: 615px;
   margin-bottom: 15px;
 }
+@media (min-width: 959px) {
+  .featured-asset .meta-head {
+    width: 100%;
+  }
+}
 @media (max-width: 644px) {
   .featured-asset .meta-head {
     width: 100%;
@@ -8537,7 +8636,6 @@ body.person-page #main {
 }
 .featured-asset .description {
   float: right;
-  width: 300px;
 }
 .featured-asset .description p:first-child {
   margin-top: 0;
@@ -8549,7 +8647,6 @@ body.person-page #main {
   .featured-asset .description {
     float: none;
     overflow: hidden;
-    width: 304px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
@@ -8564,13 +8661,13 @@ body.person-page #main {
   .featured-asset .description {
     display: inline;
     float: left;
-    width: 300px;
     margin-top: 0;
     margin-right: 15px;
   }
 }
 @media (min-width: 960px) {
   .featured-asset .description {
+    width: 300px;
     overflow: hidden;
   }
   .featured-asset .description p:last-child {
@@ -11141,9 +11238,19 @@ a[class*="day"] {
   padding: 20px;
 }
 .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
-  font-size: 22px;
+  font-size: 18px;
   color: #878785;
   margin-bottom: 15px;
+}
+@media (min-width: 959px) {
+  .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1275px) {
+  .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
+    font-size: 22px;
+  }
 }
 .schedule-day-small .schedule-items .schedule-item .schedule-item-content .program, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title {
   height: 20px;

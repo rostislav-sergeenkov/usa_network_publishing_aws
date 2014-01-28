@@ -185,6 +185,9 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'airdate' => array(
         0 => 'field_mpx_airdate',
       ),
+      'descripton' => array(
+        0 => 'field_mpx_description',
+      ),
     ),
     'fields' => array(
       'video_mpx_leaderboard' => 'ad_lead',
@@ -356,6 +359,9 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       ),
       'season' => array(
         0 => 'field_mpx_season_number',
+      ),
+      'description' => array(
+        0 => 'field_mpx_description',
       ),
     ),
     'fields' => array(

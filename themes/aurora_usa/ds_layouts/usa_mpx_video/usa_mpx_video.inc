@@ -10,6 +10,7 @@ function ds_usa_mpx_video() {
       'season' => t('season'),
       'episode' => t('episode'),
       'airdate' => t('airdate'),
+      'description' => t('description'),
       'ad_comp' => t('ad_comp'),
     ),
     'css' => true,

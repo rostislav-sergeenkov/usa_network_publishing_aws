@@ -343,8 +343,17 @@ function usanetwork_tv_schedule_on_now_panel() {
  * USA Live TV schedule block.
  */
 function usanetwork_tv_schedule_live_tv() {
-  $today = new DateTime(date('Y-m-d ' . USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR . ':00:00'), new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
-  $items = _usanetwork_tv_schedule_get_by_date('live_tv', $today->getTimestamp());
+  $timezone = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
+  $start_hour = USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR;
+  $_timezone = date_default_timezone_get();
+  date_default_timezone_set($timezone);
+  $timestamp = REQUEST_TIME;
+  if ((int) date('G') < $start_hour) {
+    $timestamp = strtotime('yesterday');
+  }
+  $today = new DateTime(date('Y-m-d ' . $start_hour . ':00:00', $timestamp), new DateTimeZone($timezone));
+  $items = _usanetwork_tv_schedule_get_by_date('on_air', $today->getTimestamp());
+  date_default_timezone_set($_timezone);
   return theme('usanetwork_tv_schedule_day_small', array('items' => $items));
 }
 
@@ -755,38 +764,56 @@ function _usanetwork_tv_schedule_get_by_date($feed_id, $date, $interval = 86400)
 }
 
 /**
+ * Returns schedule data on now.
+ */
+function _usanetwork_tv_schedule_get_on_now($feed_id) {
+  $item = db_select('usanetwork_tv_schedule_items', 's')
+    ->fields('s')
+    ->condition('feed', $feed_id, '=')
+    ->condition('start_time', REQUEST_TIME, '<=')
+    ->condition('end_time', REQUEST_TIME, '>')
+    ->execute()
+    ->fetch(PDO::FETCH_OBJ);
+
+  return _usanetwork_tv_schedule_prepare_item($item);
+}
+
+/**
  * Prepares results loaded from database
  */
 function _usanetwork_tv_schedule_prepare($items) {
   $result = array();
-  $now = REQUEST_TIME;
   foreach ($items as $row) {
-    $item = new stdClass();
-    $item->feed = $row->feed;
-    $item->start_time = $row->start_time;
-    $item->end_time = $row->end_time;
-    $item->info = unserialize($row->info);
-    $item->title = $item->info['title'];
-    $item->ratings = $item->info['program_ratings'];
-    $item->tv_show = node_load($row->snid);
-
-    if ($item->tv_show) {
-      $item->program = $item->tv_show->title;
-    }
-    elseif ($item->info['program_type'] == 'movie') {
-      $item->program = t('USA Movie');
-    }
-    else {
-      $item->program = $item->info['short_title'];
-    }
-
-    if ($item->start_time < $now && $item->end_time > $now) {
-      $item->on_now = true;
-    }
-
-    $result[] = $item;
+    $result[] = _usanetwork_tv_schedule_prepare_item($row);
   }
   return $result;
+}
+
+function _usanetwork_tv_schedule_prepare_item($row) {
+  $item = new stdClass();
+  $item->feed = $row->feed;
+  $item->start_time = $row->start_time;
+  $item->end_time = $row->end_time;
+  $item->info = unserialize($row->info);
+  $item->title = $item->info['title'];
+  $item->ratings = $item->info['program_ratings'];
+  $item->tv_show = node_load($row->snid);
+
+  if ($item->tv_show) {
+    $item->program = $item->tv_show->title;
+  }
+  elseif ($item->info['program_type'] == 'movie') {
+    $item->program = t('USA Movie');
+  }
+  else {
+    $item->program = $item->info['short_title'];
+  }
+
+  if ($item->start_time < REQUEST_TIME && $item->end_time > REQUEST_TIME) {
+    $item->on_now = true;
+  }
+
+  return $item;
 }
 
 /**

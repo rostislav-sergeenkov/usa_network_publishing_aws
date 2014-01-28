@@ -97,7 +97,7 @@ function usanetwork_mpx_video_strongarm() {
           ),
           'full' => array(
             'weight' => '0',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
       ),

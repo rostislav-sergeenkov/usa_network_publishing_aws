@@ -161,11 +161,11 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'ad_lead' => array(
-        0 => 'video_mpx_leaderboard',
-      ),
       'ad_dart' => array(
         0 => 'video_mpx_dart',
+      ),
+      'ad_lead' => array(
+        0 => 'video_mpx_leaderboard',
       ),
       'ad_comp' => array(
         0 => 'video_mpx_companion_rectangle',
@@ -179,23 +179,24 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'episode' => array(
         0 => 'field_mpx_episode_number',
       ),
+      'description' => array(
+        0 => 'field_mpx_description',
+      ),
       'video_title' => array(
         0 => 'field_mpx_title',
       ),
       'airdate' => array(
         0 => 'field_mpx_airdate',
       ),
-      'descripton' => array(
-        0 => 'field_mpx_description',
-      ),
     ),
     'fields' => array(
-      'video_mpx_leaderboard' => 'ad_lead',
       'video_mpx_dart' => 'ad_dart',
+      'video_mpx_leaderboard' => 'ad_lead',
       'video_mpx_companion_rectangle' => 'ad_comp',
       'field_show' => 'show',
       'field_mpx_season_number' => 'season',
       'field_mpx_episode_number' => 'episode',
+      'field_mpx_description' => 'description',
       'field_mpx_title' => 'video_title',
       'field_mpx_airdate' => 'airdate',
     ),
@@ -336,11 +337,11 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'ad_lead' => array(
-        0 => 'video_mpx_leaderboard',
-      ),
       'ad_dart' => array(
         0 => 'video_mpx_dart',
+      ),
+      'ad_lead' => array(
+        0 => 'video_mpx_leaderboard',
       ),
       'ad_comp' => array(
         0 => 'video_mpx_companion_rectangle',
@@ -354,23 +355,24 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'video_title' => array(
         0 => 'field_mpx_title',
       ),
+      'description' => array(
+        0 => 'field_mpx_description',
+      ),
       'episode' => array(
         0 => 'field_mpx_episode_number',
       ),
       'season' => array(
         0 => 'field_mpx_season_number',
       ),
-      'description' => array(
-        0 => 'field_mpx_description',
-      ),
     ),
     'fields' => array(
-      'video_mpx_leaderboard' => 'ad_lead',
       'video_mpx_dart' => 'ad_dart',
+      'video_mpx_leaderboard' => 'ad_lead',
       'video_mpx_companion_rectangle' => 'ad_comp',
       'field_mpx_airdate' => 'airdate',
       'field_show' => 'show',
       'field_mpx_title' => 'video_title',
+      'field_mpx_description' => 'description',
       'field_mpx_episode_number' => 'episode',
       'field_mpx_season_number' => 'season',
     ),

@@ -3,7 +3,6 @@
     attach: function(context) {
       // move slider to the initial week
       var currentItem = $(".schedule-header-navigation").find('.touchslider-item').index($(".schedule-header-navigation").find('.touchslider-item.current-week'));
-      console.debug(currentItem);
       if (currentItem < 0) {
         currentItem = 0;
       }

@@ -769,7 +769,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
   // Live player variables
   if ($vars['is_live'] && module_exists('usanetwork_tv_schedule')) {
-    $on_now = _usanetwork_tv_schedule_get_on_now('on_air');
+    $on_now = _usanetwork_tv_schedule_get_on_now('live_tv');
     if ($on_now->tv_show) {
       $vars['on_now_show'] = $on_now->tv_show->title;
       $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');

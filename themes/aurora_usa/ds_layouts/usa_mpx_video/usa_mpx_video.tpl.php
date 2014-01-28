@@ -1,27 +1,3 @@
-<?php
-drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
-
-$field_mpx_description = field_get_items('file', $file, 'field_mpx_description');
-$body = isset($field_mpx_description[0]['safe_value']) ? $field_mpx_description[0]['safe_value'] : '';
-
-$field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
-$lock_video = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
-
-$field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-$is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-  $menu_items = _usa_auth_prepare_menu_items();
-    
-  $links = array(
-    '#theme' => 'item_list',
-    '#items' => $menu_items,
-    '#attributes' => array('class' => array('tve-header-links', 'inline')),
-    '#prefix' => '<div class="links-wrapper">',
-    '#suffix' => '</div>',
-  );
-
-?>
-
 <div class="<?php print $classes;?> video usa-video featured-asset premium-asset clearfix" data-tve-player>
   <div class="companionContainer">
     <?php if ($ad_dart && $ad_dart != "&nbsp;"): ?>
@@ -33,13 +9,20 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
   </div>
   <div class="meta">
     <div class="meta-head">
-      <?php if ($show && $show != "&nbsp;"): ?><h1 class="show-name"><?php print $show; ?></h1><?php endif; ?>
-      <?php if ($video_title && $video_title != "&nbsp;"): ?><h2 class="episode-title"><?php print $video_title; ?></h2><?php endif; ?>
-       <div class="details">
-      <?php if ($season && $season != "&nbsp;"): ?><span class="season-info"><?php print $season; ?></span><?php endif; ?>
-      <?php if ($episode && $episode != "&nbsp;"): ?><span class="episode-info"><?php print $episode; ?></span><?php endif; ?>
-      <?php if ($airdate && $airdate != "&nbsp;"): ?><span class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
-    </div>
+      <?php if ($is_live): ?>
+        <div class="show-title clearfix">
+          <?php if ($on_now_show): ?><h1 class="show-name"><?php print $on_now_show; ?></h1><?php endif; ?>
+          <?php if ($on_now_tune_in): ?><h2 class="tune-in"><?php print $on_now_tune_in; ?></h2><?php endif; ?>
+        </div>
+      <?php else: ?>
+        <?php if ($show && $show != "&nbsp;"): ?><h1 class="show-name"><?php print $show; ?></h1><?php endif; ?>
+        <?php if ($video_title && $video_title != "&nbsp;"): ?><h2 class="episode-title"><?php print $video_title; ?></h2><?php endif; ?>
+        <div class="details">
+        <?php if ($season && $season != "&nbsp;"): ?><span class="season-info"><?php print $season; ?></span><?php endif; ?>
+        <?php if ($episode && $episode != "&nbsp;"): ?><span class="episode-info"><?php print $episode; ?></span><?php endif; ?>
+        <?php if ($airdate && $airdate != "&nbsp;"): ?><span class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
   
@@ -93,7 +76,15 @@ $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
     </div>
   <?php endif; ?>
     
-  <?php if ($body && $body != "&nbsp;"): ?><div class="description"><?php print $body; ?></div><?php endif; ?>
+  <?php if ($is_live): ?>
+    <div class="description">
+      <?php if ($on_now_title): ?><h3 class="title"><?php print $on_now_title; ?></h3><?php endif; ?>
+      <?php if ($on_now_description): ?><?php print $on_now_description; ?><?php endif; ?>
+      <?php if ($on_now_rating): ?><div class="rating"><?php print $on_now_rating; ?></div><?php endif; ?>
+    </div>
+  <?php else: ?>
+    <?php if ($description && $description != "&nbsp;"): ?><div class="description"><?php print $description; ?></div><?php endif; ?>
+  <?php endif; ?>
   <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?>
     <div class="ad" data-ng-cloak data-ng-show="showCompanionAdd"><?php print $ad_comp; ?></div>
   <?php endif;  ?>

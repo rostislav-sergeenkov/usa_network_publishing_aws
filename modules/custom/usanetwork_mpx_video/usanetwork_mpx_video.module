@@ -744,3 +744,45 @@ function usanetwork_mpx_video_page_alter(&$page) {
     drupal_add_js(drupal_get_path('module', 'views_load_more').'/views_load_more.js');
   }
 }
+
+/**
+ * Process variables for file_entity.
+ */
+function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
+  $file = $vars['file'];
+  drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
+
+  $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+  $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
+
+  $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
+  $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+
+  $menu_items = _usa_auth_prepare_menu_items();
+  $vars['links'] = array(
+    '#theme' => 'item_list',
+    '#items' => $menu_items,
+    '#attributes' => array('class' => array('tve-header-links', 'inline')),
+    '#prefix' => '<div class="links-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  // Live player variables
+  if ($vars['is_live'] && module_exists('usanetwork_tv_schedule')) {
+    $on_now = _usanetwork_tv_schedule_get_on_now('on_air');
+    if ($on_now->tv_show) {
+      $vars['on_now_show'] = $on_now->tv_show->title;
+      $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');
+      if ($tune_in && $tune_in = reset($tune_in)) {
+        $vars['on_now_tune_in'] = $tune_in['safe_value'];
+      }
+    }
+    else {
+      $vars['on_now_show'] = $on_now->program;
+    }
+
+    $vars['on_now_title'] = $on_now->info['title'];
+    $vars['on_now_description'] = $on_now->info['description'];
+    $vars['on_now_rating'] = implode(', ', $on_now->ratings);
+  }
+}

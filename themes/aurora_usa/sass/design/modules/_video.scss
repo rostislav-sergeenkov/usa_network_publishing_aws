@@ -62,6 +62,15 @@
       }
     }
   }
+
+  .file.view-mode-full {
+    .meta-head {
+      h1.show-name {
+        font-family: "Proxima N W01 Smbd";
+        font-size: 30px;
+      }
+    }
+  }
 }
 
 .file-video-mpx {
@@ -72,6 +81,81 @@
     margin: 0 5px;
     vertical-align: middle;
     background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+  }
+}
+
+#block-views-usa-mpx-video-latest-live-video {
+  .view-mode-full {
+    .show-title {
+      @include breakpoint($bp-video-large-width) {
+        margin: 15px 0;
+      }
+      @include breakpoint($bp-grid-small-wide-4) {
+        margin: 15px 0;
+      }
+      h1.show-name {
+        float: left;
+        margin-right: 10px;
+        @extend %regular;
+        font-size: 16px;
+        @include breakpoint($bp-video-large-width) {
+          font-family: $bodytext-semi;
+          font-size: 30px;
+        }
+        @include breakpoint($bp-grid-small-wide-4) {
+          font-family: $bodytext-semi;
+          font-size: 30px;
+        }
+      }
+      h2.tune-in {
+        float: left;
+        margin: 0;
+        color: #878785;
+        @extend %regular;
+        font-size: 16px;
+        @include breakpoint($bp-video-large-width) {
+          font-family: $bodytext-semi;
+          font-size: 30px;
+        }
+        @include breakpoint($bp-grid-small-wide-4) {
+          font-family: $bodytext-semi;
+          font-size: 30px;
+        }
+      }
+    }
+    .description {
+      font-size: 14px;
+      @include breakpoint($bp-video-large-width) {
+        font-size: 16px;
+      }
+      @include breakpoint($bp-grid-small-wide-4) {
+        font-size: 16px;
+      }
+      h3.title {
+        margin: 0;
+        color: #878785;
+        @extend %semi;
+        font-size: 15px;
+        @include breakpoint($bp-video-large-width) {
+          font-size: 18px;
+        }
+        @include breakpoint($bp-grid-small-wide-4) {
+          font-size: 18px;
+        }
+      }
+      .rating {
+        color: #878785;
+        @extend %regular;
+        text-transform: uppercase;
+        margin: 10px 0;
+        @include breakpoint($bp-video-large-width) {
+          font-family: $bodytext-semi;
+        }
+        @include breakpoint($bp-grid-small-wide-4) {
+          font-family: $bodytext-semi;
+        }
+      }
+    }
   }
 }
 
@@ -92,6 +176,7 @@
 .usa-video {
   .companionContainer {
     padding-top: 10px;
+    margin-bottom: 15px;
     .ad_lead {
       text-align: center;
     }
@@ -951,6 +1036,9 @@
     float: left;
     width: 615px;
     margin-bottom: 15px;
+    @include breakpoint($bp-video-large-width) {
+      width: 100%;
+    }
     @include breakpoint($bp-video-player-section) {
       width: 100%;
     }
@@ -1002,7 +1090,6 @@
   }
   .description {
     float: right;
-    width: 300px;
     p:first-child {
       margin-top: 0;
     }
@@ -1012,7 +1099,6 @@
     @include breakpoint($bp-video-player-section) {
       float: none;
       overflow: hidden;
-      width: 304px;
       margin-left: 10px;
       margin-right: 10px;
       margin-top: 10px;
@@ -1021,16 +1107,15 @@
         margin-bottom: 0;
       }
       font-size: 14px;
-      
     }
     @include breakpoint($bp-video-mid-range4-width) {
       display: inline;
       float: left;
-      width: 300px;
       margin-top: 0;
       margin-right: 15px;
     }
     @include breakpoint($bp-video-large2-width) {
+      width: 300px;
       overflow: hidden;
       p:last-child {
       margin-bottom: 1.5em;

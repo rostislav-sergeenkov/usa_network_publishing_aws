@@ -449,7 +449,7 @@ body.usa-social {
   line-height: 1em;
   @include breakpoint($bp-social-very-large-width) {
     font-size: 18px;
-  }  
+  }
 }
 
 #chatterToTv {
@@ -470,7 +470,7 @@ body.usa-social {
     @include breakpoint($bp-social-very-large-width) {
       padding-bottom: 15px;
       padding-top: 15px;
-    }  
+    }
     &:first-child {
       padding: 0;
     }
@@ -484,7 +484,7 @@ body.usa-social {
   font-size: 12px;
   @include breakpoint($bp-social-very-large-width) {
     font-size: 13px;
-  }  
+  }
 }
 
 .commentAnnotation {
@@ -1000,13 +1000,13 @@ input.echo-submit-text {
   height: 32px;
   width: 10px;
     @include breakpoint($bp-show-mid-width) {
-       width: 70px; 
+       width: 70px;
     }
     @media (min-width: 900px) and (max-width: 958px) {
-       width: 10px; 
+       width: 10px;
     }
     @include breakpoint($bp-video-large2-width) {
-       width: 70px; 
+       width: 70px;
     }
 }
 
@@ -1048,7 +1048,7 @@ input.echo-submit-text {
   height: 32px;
 }
 .navGetGlue-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -1102,13 +1102,13 @@ input.echo-submit-text {
   }
 }
 .navGetGlue {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2989px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
   &:hover{
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3028px transparent;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
   }
 }
 .navInstagram {

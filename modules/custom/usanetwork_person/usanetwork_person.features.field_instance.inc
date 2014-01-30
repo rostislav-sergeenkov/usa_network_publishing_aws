@@ -1274,7 +1274,7 @@ function usanetwork_person_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_person_last_name',
     'label' => 'Person: Last Name',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,

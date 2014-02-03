@@ -81,7 +81,7 @@ function usanetwork_tv_schedule_block_view($delta) {
         '#markup' => usanetwork_tv_schedule_live_tv(),
         '#attached' => array(
           'js' => array(
-            libraries_get_path('touchslider') . '/jquery.touchslider.js',
+            libraries_get_path('swiper') . '/idangerous.swiper.js',
             drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.small.js'
           )
         ),

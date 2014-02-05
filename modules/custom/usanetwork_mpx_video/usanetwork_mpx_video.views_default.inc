@@ -170,6 +170,11 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['published']['field'] = 'published';
   $handler->display->display_options['filters']['published']['value'] = '1';
   $handler->display->display_options['filters']['published']['group'] = 1;
+  /* Filter criterion: Field: Show (field_show) */
+  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
   $handler->display->display_options['block_description'] = 'Global Full Episode';
 
   /* Display: Show Full Episode */
@@ -382,6 +387,11 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['published']['table'] = 'file_managed';
   $handler->display->display_options['filters']['published']['field'] = 'published';
   $handler->display->display_options['filters']['published']['value'] = '1';
+  /* Filter criterion: Field: Show (field_show) */
+  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
   $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
 
   /* Display: Global Live Video */

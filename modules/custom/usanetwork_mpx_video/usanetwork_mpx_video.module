@@ -12,6 +12,7 @@ define('USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR', '[default mpx field]');
 define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
 define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
 define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
+define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
 
 /**
  * Implementation of hook_menu().
@@ -613,8 +614,9 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
     $media_item['field_data'] = array();
   }
  
-  foreach (_pub_mpx_get_mpx_account_video_file_types() as $file_bundle_name => $file_type) {
-    foreach (field_info_instances('file', $file_bundle_name) as $field) {
+//  foreach (_pub_mpx_get_mpx_account_video_file_types() as $file_bundle_name => $file_type) {
+//    foreach (field_info_instances('file', $file_bundle_name) as $field) {
+    foreach (field_info_instances('file', 'mpx_video_' . $account->id) as $field) {
       
       if (!isset($field['widget']['settings']['pub_mpx']['media_data_fieldpath']) ||
           $field['widget']['settings']['pub_mpx']['media_data_fieldpath'] == USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR) {
@@ -632,7 +634,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
         $media_item['field_data'][$field['field_name']] = $value;
       }
     }
-  }
+//  }
 }
 
 /**
@@ -784,5 +786,51 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     $vars['on_now_title'] = $on_now->info['title'];
     $vars['on_now_description'] = $on_now->info['description'];
     $vars['on_now_rating'] = implode(', ', $on_now->ratings);
+  }
+}
+
+/**
+ * Helper function for check if file type is mpx file type
+ * 
+ * @param type $type
+ * @return boolean
+ */
+function _usanetwork_mpx_video_is_mpx_file_type($type) {
+  $is_mpx = FALSE;
+  foreach (_media_theplatform_mpx_get_account_data() as $account) {
+    if (basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) {
+     if ($type == 'mpx_video_' . $account->id) {
+       $is_mpx = TRUE;
+     }
+    }
+  }
+
+  return $is_mpx;
+} 
+
+/**
+ * Implements hook_media_theplatform_mpx_import_media().
+ */
+function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_item, $account) {
+
+  $media_files = media_theplatform_mpx_get_files_by_guid_account($media_item['guid'], $account->id);
+
+  foreach ($media_files as $file) { 
+    $full_episode = $media_item['field_data']['field_mpx_full_episode'];
+    if (basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) {
+      if ($full_episode == 1) {
+        db_update('mpx_video')
+        ->fields(array('status' => 0))
+        ->condition('fid', $file->fid)
+        ->execute();
+      } 
+    } else {
+      if ($full_episode == 0) {
+        db_update('mpx_video')
+        ->fields(array('status' => 0))
+        ->condition('fid', $file->fid)
+        ->execute();
+      } 
+    }
   }
 }

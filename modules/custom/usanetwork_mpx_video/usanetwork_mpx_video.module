@@ -512,17 +512,30 @@ function usanetwork_mpx_video_file_presave($file) {
     $id++;
   }
   
+  $set_alias = FALSE;
+  
+  $full_episodes = field_get_items('file', $file, 'field_mpx_entitlement');
+  if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
+      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
+    $set_alias = TRUE;
+  }
+  
   $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
   if (!empty($title)) {
     module_load_include('inc', 'pathauto', 'pathauto');
     $path = array();
     $path['source'] = 'file/' . $file->fid;
     
-    if (isset($show)) {
-      $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+    if ($set_alias) {
+      if (isset($show)) {
+        $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+      } else {
+        $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
+      }
     } else {
       $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
     }
+    
     $new_path_promt = $new_path;
     
     $i = 0;

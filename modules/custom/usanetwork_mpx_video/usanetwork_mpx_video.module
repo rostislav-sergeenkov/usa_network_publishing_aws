@@ -527,11 +527,11 @@ function usanetwork_mpx_video_file_presave($file) {
     $path['source'] = 'file/' . $file->fid;
     
     if ($set_alias) {
-    if (isset($show)) {
-      $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
-    } else {
-      $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
-    }
+      if (isset($show)) {
+        $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+      } else {
+        $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
+      }
     } else {
       $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
     }

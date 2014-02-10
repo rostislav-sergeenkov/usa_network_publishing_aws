@@ -52,8 +52,9 @@ function usanetwork_tv_shows_color_field_widget_colorfield_unified_textfield_for
 /**
  * Callback to load library. Fixes library not loading on validation error.
  */
-function usanetwork_tv_shows_color_field_attach_library() {
+function usanetwork_tv_shows_color_field_attach_library($children, $elements) {
   libraries_load('jquery-miniColors');
+  return $children;
 }
 
 /**

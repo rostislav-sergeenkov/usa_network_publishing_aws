@@ -471,45 +471,47 @@ function usanetwork_mpx_video_file_presave($file) {
   }
   $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file);
   $saved_category = array();
-  foreach ($categories_mpx as $categories_mpx_value) {
-    $categories = explode('/', $categories_mpx_value);
-    $array_category = array();
-    $array_category[] = '0';
-    foreach ($categories as $key => $category_name) {
-      $db_select = db_select('taxonomy_term_data', 'ttd')
+  if ($categories_mpx[0] == 'Series') {
+    foreach ($categories_mpx as $categories_mpx_value) {
+      $categories = explode('/', $categories_mpx_value);
+      $array_category = array();
+      $array_category[] = '0';
+      foreach ($categories as $key => $category_name) {
+        $db_select = db_select('taxonomy_term_data', 'ttd')
               ->fields('ttd', array('tid'));
-      $db_select->condition('ttd.name', $category_name, 'LIKE');
-      $db_select->join('taxonomy_term_hierarchy', 'tth', '%alias.tid = ttd.tid');
-      $db_select->condition('tth.parent', $array_category[$key]);
-      $categoty_tid = $db_select->execute()->fetchField();
+        $db_select->condition('ttd.name', $category_name, 'LIKE');
+        $db_select->join('taxonomy_term_hierarchy', 'tth', '%alias.tid = ttd.tid');
+        $db_select->condition('tth.parent', $array_category[$key]);
+        $categoty_tid = $db_select->execute()->fetchField();
       
-      if ($categoty_tid) {
-        $array_category[] = $saved_category[] = $categoty_tid;
-      } else {
-        $new_term = new stdClass();
-        $new_term->name = $category_name;
-        $new_term->parent = $array_category[$key];
-        $new_term->vid = USA_MPX_VIDEO_USA_VIDEO_TERMS_VID;
+        if ($categoty_tid) {
+          $array_category[] = $saved_category[] = $categoty_tid;
+        } else {
+          $new_term = new stdClass();
+          $new_term->name = $category_name;
+          $new_term->parent = $array_category[$key];
+          $new_term->vid = USA_MPX_VIDEO_USA_VIDEO_TERMS_VID;
         
-        taxonomy_term_save($new_term); 
-        $array_category[] = $saved_category[] = $new_term->tid;
-      }    
-    }
+          taxonomy_term_save($new_term); 
+          $array_category[] = $saved_category[] = $new_term->tid;
+        }    
+      }
     
-    if ((count($categories) == 2) && ($categories[0] == 'Series')) {
-    $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
-    if (isset($node->nid)) {
-      $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
-        $show = $node->title;
+      if ((count($categories) == 2) && ($categories[0] == 'Series')) {
+        $node = _usanetwork_mpx_video_node_load_by_title($categories[1], 'tv_show'); 
+        if (isset($node->nid)) {
+          $file->field_show[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+          $show = $node->title;
+        } 
       } 
-      } 
-  }
+    }
   
-  $unique_saved_category = array_unique($saved_category);
-  $id = 0;
-  foreach ($unique_saved_category as $tid) {
-    $file->field_usa_video_terms[LANGUAGE_NONE][$id]['target_id'] = $tid;
-    $id++;
+    $unique_saved_category = array_unique($saved_category);
+    $id = 0;
+    foreach ($unique_saved_category as $tid) {
+      $file->field_usa_video_terms[LANGUAGE_NONE][$id]['target_id'] = $tid;
+      $id++;
+    }
   }
   
   $set_alias = FALSE;
@@ -844,6 +846,13 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
         ->condition('fid', $file->fid)
         ->execute();
       } 
+    }
+    $categories = unserialize($media_item['categories']);
+    if ($categories[0] != 'Series') {
+      db_update('mpx_video')
+        ->fields(array('status' => 0))
+        ->condition('fid', $file->fid)
+        ->execute();
     }
   }
 }

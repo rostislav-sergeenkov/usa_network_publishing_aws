@@ -461,6 +461,21 @@ function _usanetwork_mpx_video_node_load_by_title($title, $node_type) {
 }
 
 /**
+ * Helper function for check if this video for usa 
+ */
+function _usanetwork_mpx_video_is_usa_video($categories_mpx) {
+  $is_usa = FALSE;
+  
+  foreach ($categories_mpx as $categories_mpx_value) {
+    $categories = explode('/', $categories_mpx_value);
+    if ($categories[0] == 'Series') {
+      $is_usa = TRUE;
+    }
+  }
+  return $is_usa;
+}
+
+/**
  * Implements hook_file_presave().
  */
 function usanetwork_mpx_video_file_presave($file) {
@@ -471,7 +486,7 @@ function usanetwork_mpx_video_file_presave($file) {
   }
   $categories_mpx = _pub_mpx_get_default_mpx_values('field_mpx_media_categories', $file);
   $saved_category = array();
-  if ($categories_mpx[0] == 'Series') {
+  if (_usanetwork_mpx_video_is_usa_video($categories_mpx)) {
     foreach ($categories_mpx as $categories_mpx_value) {
       $categories = explode('/', $categories_mpx_value);
       $array_category = array();
@@ -848,7 +863,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
       } 
     }
     $categories = unserialize($media_item['categories']);
-    if ($categories[0] != 'Series') {
+    if (_usanetwork_mpx_video_is_usa_video($categories)) {
       db_update('mpx_video')
         ->fields(array('status' => 0))
         ->condition('fid', $file->fid)

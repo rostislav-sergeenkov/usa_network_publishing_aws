@@ -468,7 +468,7 @@ function _usanetwork_mpx_video_is_usa_video($categories_mpx) {
   
   foreach ($categories_mpx as $categories_mpx_value) {
     $categories = explode('/', $categories_mpx_value);
-    if ($categories[0] == 'Series') {
+    if (($categories[0] == 'Series') || ($categories[0] == 'Live')) {
       $is_usa = TRUE;
     }
   }

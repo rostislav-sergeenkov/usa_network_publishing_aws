@@ -531,7 +531,7 @@ function usanetwork_mpx_video_file_presave($file) {
   
   $set_alias = FALSE;
   
-  $full_episodes = field_get_items('file', $file, 'field_mpx_entitlement');
+  $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');
   if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
       ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
     $set_alias = TRUE;

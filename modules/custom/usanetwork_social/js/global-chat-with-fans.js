@@ -185,10 +185,32 @@
 			 */
 			var getGlobalChatWithFansData = function()
 			{
-				jQuery.ajax({
+				jQuery.post(echoQuery, echoQueryParams, function(data) { usa_debug('POST SUCCESS'); })
+					.done(function(data){
+						if (typeof data == 'string') {
+              var newData = data.replace(/(\r\n|\n|\r|\t)/gm, ""); // remove all line breaks and tabs
+              newData = newData.replace(/^\({/, "{"); // replace "({" at the beginning of the string with "{"
+              newData = newData.replace(/}\);$/, "}"); // replace a string ending with "});" with "}"
+						  data = jQuery.parseJSON(newData);
+						}
+						showData = processGlobalChatWithFansData(data);
+						var showDataKeys = getKeys(showData);
+						if (showDataKeys.length > 0) {
+							outputGlobalChatWithFans(showData);
+						} else {
+							jQuery('#showList').html("No shows found. Please come back again soon.");
+						}
+					})
+					.fail(function() {
+					  alert('error');
+					});
+
+/* COMMENTED ON FEB 12, 2014 BY DV BECAUSE THE QUERY PARAMS STRING WAS
+// NOW TOO LONG TO WORK AS A GET IN CHROME. NEW POST AJAX CODE ABOVE THIS.
+        jQuery.ajax({
 					url: echoQuery,
-					dataType: "jsonp",
 					data: echoQueryParams,
+					dataType: "jsonp",
 					success: function(data){
 						showData = processGlobalChatWithFansData(data);
 						var showDataKeys = getKeys(showData);
@@ -199,6 +221,7 @@
 						}
 					}
 				});
+*/
 			}
 
 			// Begin processing the Echo mux query

@@ -644,9 +644,9 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
     $media_item['field_data'] = array();
   }
  
-//  foreach (_pub_mpx_get_mpx_account_video_file_types() as $file_bundle_name => $file_type) {
-//    foreach (field_info_instances('file', $file_bundle_name) as $field) {
-    foreach (field_info_instances('file', 'mpx_video_' . $account->id) as $field) {
+  foreach (_pub_mpx_get_mpx_account_video_file_types() as $file_bundle_name => $file_type) {
+    foreach (field_info_instances('file', $file_bundle_name) as $field) {
+//    foreach (field_info_instances('file', 'mpx_video_' . $account->id) as $field) {
       
       if (!isset($field['widget']['settings']['pub_mpx']['media_data_fieldpath']) ||
           $field['widget']['settings']['pub_mpx']['media_data_fieldpath'] == USA_MPX_VIDEO_DEFAULT_MPX_FIELD_INDICATOR) {
@@ -664,7 +664,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
         $media_item['field_data'][$field['field_name']] = $value;
       }
     }
-//  }
+  }
 }
 
 /**

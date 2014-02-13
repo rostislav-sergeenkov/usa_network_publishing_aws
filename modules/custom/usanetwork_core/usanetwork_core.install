@@ -607,3 +607,14 @@ function usanetwork_core_update_7127() {
   module_enable($modules_en);
 }
 */
+
+/**
+ * PREP FOR NEW VIDEO CODE
+ */
+function usanetwork_core_update_7132() {
+  $modules_en = array(
+    'usanetwork_mpx_video',
+    'usanetwork_tve_video',
+  );
+  module_enable($modules_en);
+}

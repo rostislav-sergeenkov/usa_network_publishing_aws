@@ -9,10 +9,12 @@ jQuery(function() {setTimeout(function(){
       $injector.invoke(['tveConfig', 'authService', 'tveModal', function(tveConfig, authService, tveModal) {
        
         var tveCookiesKeys = tveConfig.cookies;
-        if (authService.isFirstVisit()) {
+        var timer = setTimeout(function() {
+          if ((authService.isFirstVisit()) && !(authService.isAuthN())) {
           tveModal.openWelcomeModal();
           jQuery.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
         }
+        }, 1000);
       }]);   
     }
   })(this.angular);

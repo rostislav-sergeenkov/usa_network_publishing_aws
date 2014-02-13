@@ -856,6 +856,8 @@ function usanetwork_social_global_chat_with_fans() {
     ';
 
   if (count($showInfo) > 0) {
+    // jquery.xdomainrequest.min.js is needed to fix an IE9 jQuery POST, cross-domain (CORS) problem
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.xdomainrequest.min.js');
     $showArrayVar = '';
     $query = 'http://api.echoenabled.com/v2/mux';
     $queryParams = '';

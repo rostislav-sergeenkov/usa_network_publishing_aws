@@ -72,7 +72,7 @@ usa_outputAdTag = function(tag) {
   var processed_tag = ($ !== undefined) ? $(document).triggerHandler('dart_tag_process', [tag]) : undefined;
   tag = processed_tag !== undefined ? processed_tag : tag;
 
-  
+
   if (usa_deviceInfo.smartphone) {
     // SMARTPHONE
     tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
@@ -82,7 +82,7 @@ usa_outputAdTag = function(tag) {
     delete tag.key_vals.tandomad;
 
     ad = '<' + tagname + ' ' + options + ' src="';
-    ad +="http://ad.mo.doubleclick.net/DARTProxy/mobile.handler?k=mo.";
+    ad +="http://ad.mo.doubleclick.net/DARTProxy/mobile.handler?k=N2620/mo.";
     ad += tag.site + "/";
     //ad += tag.zone;
     if (typeof tag.key_vals.sect != 'undefined') {
@@ -264,7 +264,7 @@ body {
 	<script>
 	// get dart ad tag from query string
 	usa_debug(usa_deviceInfo);
-	
+
 	var tagKey = getUrlVars()['key'];
 	usa_debug('IFRAME: tagKey: ' + tagKey);
 
@@ -276,4 +276,3 @@ body {
 	</script>
 </body>
 </html>
-

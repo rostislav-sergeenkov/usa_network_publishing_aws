@@ -5,6 +5,9 @@
  */
 function usanetwork_ads_form_node_form_alter(&$form, &$form_state) {
   $node = $form_state['node'];
+  if (!isset($node->nid)) {
+    return;
+  }
 
   $defaults = _usanetwork_ads_node_settings($node);
   if (!empty($defaults) && !isset($defaults['is_sponsored'])) {
@@ -60,7 +63,7 @@ function usanetwork_ads_form_node_form_alter(&$form, &$form_state) {
  * Saves settings
  */
 function usanetwork_ads_form_node_form_submit($form, &$form_state) {
-  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form_state['node'])) {
+  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form_state['node']) || !isset($form_state['node']->nid)) {
     return;
   }
 
@@ -71,9 +74,11 @@ function usanetwork_ads_form_node_form_submit($form, &$form_state) {
 
   // remove empty omniture variables
   $variables = array();
-  foreach ($node_settings['omniture']['variables'] as $item) {
-    if (!empty($item['key'])) {
-      $variables[] = $item;
+  if (isset($node_settings['omniture']['variables']) && is_array($node_settings['omniture']['variables'])) {
+    foreach ($node_settings['omniture']['variables'] as $item) {
+      if (!empty($item['key'])) {
+        $variables[] = $item;
+      }
     }
   }
   $node_settings['omniture']['variables'] = $variables;

@@ -117,6 +117,87 @@ function usanetwork_mpx_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-mpx_video_1-field_mpx_description'
+  $field_instances['file-mpx_video_1-field_mpx_description'] = array(
+    'bundle' => 'mpx_video_1',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 70,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_mpx_description',
+    'label' => 'MPX Media Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 50,
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '[default mpx field]',
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 58,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_1-field_mpx_entitlement'
   $field_instances['file-mpx_video_1-field_mpx_entitlement'] = array(
     'bundle' => 'mpx_video_1',
@@ -853,6 +934,87 @@ function usanetwork_mpx_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-mpx_video_2-field_mpx_description'
+  $field_instances['file-mpx_video_2-field_mpx_description'] = array(
+    'bundle' => 'mpx_video_2',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 56,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_mpx_description',
+    'label' => 'MPX Media Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 50,
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '[default mpx field]',
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 93,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_2-field_mpx_entitlement'
   $field_instances['file-mpx_video_2-field_mpx_entitlement'] = array(
     'bundle' => 'mpx_video_2',
@@ -1511,6 +1673,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
   t('Episode Number');
   t('Full Episode');
   t('MPX Media Air Date');
+  t('MPX Media Description');
   t('MPX Media Title');
   t('Queue items');
   t('Season Number');

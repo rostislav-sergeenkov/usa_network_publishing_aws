@@ -14,7 +14,7 @@ jQuery(function() {setTimeout(function(){
           tveModal.openWelcomeModal();
           jQuery.cookie(tveCookiesKeys.FIRST_VISIT, '0', { expires: 365, path: Drupal.settings.basePath });
         }
-        }, 1000);
+        }, 2000);
       }]);   
     }
   })(this.angular);

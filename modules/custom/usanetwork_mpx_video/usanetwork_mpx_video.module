@@ -135,14 +135,14 @@ function usanetwork_mpx_video_global_nav() {
         if (isset($show[0]) && !empty($show[0])) {
           $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
           $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
-          $items[0]['children'][] = l($title, $path, array('html' => true));
+          $items[0]['children'][$title] = l($title, $path, array('html' => true));
         }
       }
     }
   }
 
   // sort the shows alphabetically
-  uasort($items[0]['children'], "strcasecmp");
+  uksort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();
@@ -225,9 +225,9 @@ function usanetwork_mpx_video_show_nav() {
           if ($file->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
             $items[0]['data'] = $title;
             $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
-            $items[0]['children'][] = l($title, $path, array('html' => true));
+            $items[0]['children'][$title] = l($title, $path, array('html' => true));
           } else  {
-            $items[0]['children'][] = l($title, $path, array('html' => true));
+            $items[0]['children'][$title] = l($title, $path, array('html' => true));
           }
         }
       }
@@ -235,7 +235,7 @@ function usanetwork_mpx_video_show_nav() {
   }
 
   // sort the shows alphabetically
-  uasort($items[0]['children'], "strcasecmp");
+  uksort($items[0]['children'], "strcasecmp");
 
   $output .= theme('item_list', array('items' => $items, 'attributes' => array('class' => array('shows'))));
   $items = array();

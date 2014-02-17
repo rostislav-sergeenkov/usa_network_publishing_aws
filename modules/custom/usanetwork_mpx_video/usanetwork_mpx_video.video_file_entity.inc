@@ -922,6 +922,87 @@ function _usa_mpx_get_mpx_video_file_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_mpx_description'
+  $field_instances['field_mpx_description'] = array(
+    'bundle' => NULL,
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 70,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'field_name' => 'field_mpx_description',
+    'label' => 'MPX Media Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'weight' => 50,
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '[default mpx field]',
+        ),
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 58,
+    ),
+  );
+  
   // Translatables
   // Included for use with string extractors like potx.
   t('Entitlement');
@@ -933,6 +1014,7 @@ function _usa_mpx_get_mpx_video_file_field_instances() {
   t('Season Number');
   t('Show');
   t('USA Video Term');
+  t('MPX Media Description');
 
   return $field_instances;
 }

@@ -890,3 +890,15 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
     }
   }
 }
+
+/**
+ * Altering media_theplatform_mpx_feed_request
+ */
+//function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$options) {
+//
+//  $nbc_filtering_category = 'Series';
+//  
+//  if ( strpos($url, '//read.data.media.theplatform.com/media/data/Media') !== FALSE ) {
+//    $url .= '&byCategories='. rawurlencode($nbc_filtering_category);
+//  }
+//}

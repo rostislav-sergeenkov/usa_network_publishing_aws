@@ -73,7 +73,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
-  drupal_add_js($theme_path . '/javascripts/omniture-tracking.js', array('scope' => 'footer'));
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(

@@ -1,4 +1,4 @@
-<div class="<?php print $classes;?> home-promo">
+<div class="<?php print $classes;?> home-promo"<?php print $attributes; ?>>
   <?php if ($link): ?>
     <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
       <a href="<?php print $link; ?>" class="promo-link">

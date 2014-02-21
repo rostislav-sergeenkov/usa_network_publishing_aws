@@ -238,7 +238,7 @@ if ((isset($line_3_fontsize)) && ($line_3_fontsize != '&nbsp;')) {
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
 ?>
 
-<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>">
+<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>"<?php print $attributes; ?>>
 <?php if ($link && $link !== '&nbsp;'): ?>
   <?php if ((!$target) || ($target && $target == '&nbsp;')): ?> 
     <a href="<?php print $link; ?>" class="aspot-link">

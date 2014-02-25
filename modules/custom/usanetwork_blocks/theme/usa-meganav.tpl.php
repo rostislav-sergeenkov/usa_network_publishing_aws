@@ -37,6 +37,9 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
   <?php print l('Schedule', 'schedule', array('attributes' => array('class' => array('mega-nav-link', 'schedule')))); ?>
 </div>
 <div class="mega-menu-items">
+  <?php print l('Games', 'http://www.characterarcade.com', array('attributes' => array('class' => array('mega-nav-link', 'games')))); ?>
+</div>
+<div class="mega-menu-items">
   <?php print l('More', 'globalnav_more/nojs', array('absolute' => true, 'attributes' => array('class' => array('mega-nav-link', 'more', 'use-ajax'), 'data-drawer-id' => 'main-nav-more'))); ?>
   <div class="mega-sub-nav-container" data-drawer="main-nav-more">
     <div class="mega-sub-nav">

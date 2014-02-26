@@ -125,11 +125,13 @@
           s.events='event64';
           var sub_menu_name = $self.text();
           s.eVar64=s.prop64=sub_menu_name;
-          s.bcf = function() {
-            setTimeout(function() {
-              window.location = $self.attr('href');
-            }, 500);
-          };
+          if (!$self.hasClass('use-ajax') && !$self.hasClass('link-empty') && $self.attr('href') != '#') {
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = $self.attr('href');
+              }, 500);
+            };
+          }
           s.tl(this,'o','Global SubMenu Click');
           s.manageVars('clearVars', s.linkTrackVars, 1);
         });

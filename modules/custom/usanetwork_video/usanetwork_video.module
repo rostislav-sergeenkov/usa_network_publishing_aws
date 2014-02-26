@@ -670,14 +670,16 @@ function usanetwork_video_data_ajax() {
       ->execute()
       ->fetchAssoc();
 
-    $entity = entity_load_single($data['entity_type'], $data['entity_id']);
-    if ($entity) {
-      $uri = entity_uri($data['entity_type'], $entity);
-      $result[$guid] = url(drupal_get_path_alias($uri['path']), array('absolute' => true));
+    if ($data) {
+      $entity = entity_load_single($data['entity_type'], $data['entity_id']);
+      if ($entity) {
+        $uri = entity_uri($data['entity_type'], $entity);
+        $result[$guid] = url(drupal_get_path_alias($uri['path']), array('absolute' => true));
+        continue;
+      }
     }
-    else {
-      $result[$guid] = false;
-    }
+
+    $result[$guid] = false;
   }
 
   return $result;
@@ -687,5 +689,5 @@ function usanetwork_video_data_ajax() {
  * Test new autoplay player.
  */
 function usanetwork_video_test() {
-  return '<iframe src="http://player.theplatform.com/p/OyMl-B/LJ9pCqcsoRM8/select/fvMH42x6hlKI?form=html" width="720" height="480" frameBorder="0" seamless="seamless" allowFullScreen></iframe>';
+  return '<iframe src="http://player.theplatform.com/p/OyMl-B/LJ9pCqcsoRM8/select/fvMH42x6hlKI?form=html#playerurl='. rawurldecode(url(current_path(), array('absolute' => true))) .'" width="720" height="480" frameBorder="0" seamless="seamless" allowFullScreen></iframe>';
 }

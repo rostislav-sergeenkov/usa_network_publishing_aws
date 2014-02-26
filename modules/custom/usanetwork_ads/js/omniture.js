@@ -45,7 +45,7 @@
     },
     attach: function (context, settings) {
       //Click on "On Now" button
-      $('#on-now, #jPanelMenu-menu .on-now .tab-wrapper').once('omniture-tracking', function() {
+      $('#on-now').once('omniture-tracking', function() {
         $(this).on('click', function(){
           s.linkTrackVars='events,eVar63,prop63';
           s.linkTrackEvents='event63';
@@ -57,21 +57,46 @@
       });
 
       //Click on "Up Next"
-      $('#jPanelMenu-menu .up-next .tab-wrapper').once('omniture-tracking', function() {
+      $('#jPanelMenu-menu .up-next .tab-wrapper, #jPanelMenu-menu .on-now .tab-wrapper').once('omniture-tracking', function() {
         $(this).on('click', function(){
+          $self = $(this);
+          var prop = '';
+          var descr = '';
+          if ($self.parents('.on-now').length > 0) {
+            prop = 'On Now';
+            descr = 'On Now Click';
+          }
+          else {
+            prop = 'On Now - Up Next';
+            descr = 'Up Next Click';
+          }
           s.linkTrackVars='events,eVar64,prop64';
           s.linkTrackEvents='event64';
           s.events='event64';
-          s.eVar64=s.prop64='On Now - Up Next';
-          s.tl(this,'o','Up Next Click');
+          s.eVar64=s.prop64=prop;
+          s.tl(this,'o',descr);
           s.manageVars("clearVars", s.linkTrackVars, 1);
         });
       });
 
       // Click on menu item
-      $('#block-usanetwork-blocks-usa-meganav .mega-menu-items a').once('omniture-tracking', function() {
+      $('#block-usanetwork-blocks-usa-meganav .mega-menu-items a, #logo a').once('omniture-tracking', function() {
         $(this).on('click', function(e){
           var $self = $(this);
+
+          // check if link is related to drawer
+          if ($self.attr('data-drawer-id')) {
+            var drawerId = $self.attr('data-drawer-id');
+            var $drawer = $('[data-drawer="' + drawerId + '"]');
+            if ($drawer.length > 0) {
+              $drawer.toggleClass('omniture-drawer-opened');
+              if (!$drawer.hasClass('omniture-drawer-opened')) {
+                // do not track when closing
+                return;
+              }
+            }
+          }
+
           s.linkTrackVars='events,eVar63,prop63';
           s.linkTrackEvents='event63';
           s.events='event63';

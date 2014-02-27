@@ -387,7 +387,7 @@ function usanetwork_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_theplatform_mpx_player_url';
-  $strongarm->value = 'http://player.theplatform.com/p/OyMl-B/4Dl3P2Df_j5l';
+  $strongarm->value = 'http://player.theplatform.com/p/OyMl-B/LJ9pCqcsoRM8';
   $export['usanetwork_theplatform_mpx_player_url'] = $strongarm;
 
   $strongarm = new stdClass();

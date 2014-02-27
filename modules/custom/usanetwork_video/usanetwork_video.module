@@ -366,13 +366,17 @@ function usanetwork_video_views($arg = null) {
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
         $output = views_embed_view('usa_video', 'show_full_episode', $show_nid);
       } else {
+        $deepest_term = null;
+        $deepest_term_depth = 0;
         foreach ($node->field_usa_video_terms[$lang] as $tids) {
-          $parent = array_values(taxonomy_get_parents($tids['target_id']));
-          if (isset($parent[0]) && $parent[0]->name != 'Series') {
-            $term = taxonomy_term_load($tids['target_id']);
-            break;
+          $tid = $tids['target_id'];
+          $term_depth = _usanetwork_video_get_term_depth($tid);
+          if (($deepest_term == null || $deepest_term_depth < $term_depth) && $term = taxonomy_term_load($tid)) {
+            $deepest_term = $term;
+            $deepest_term_depth = $term_depth;
           }
         }
+        $term = $deepest_term;
         if (isset($term->tid) && !empty($term->tid)) {
           $output = views_embed_view('usa_video', 'category_videos', $term->tid);
         }
@@ -680,3 +684,14 @@ function usanetwork_video_data_ajax() {
   return $result;
 }
 
+function _usanetwork_video_get_term_depth($tid, $limit = 10) {
+  $depth = 0;
+  while ($parent = db_select('taxonomy_term_hierarchy', 't') ->condition('tid', $tid, '=') ->fields('t') ->execute() ->fetchAssoc()) {
+    $depth ++;
+    $tid = $parent['parent'];
+    if ($depth > $limit) {
+      break;
+    }
+  }
+  return $depth;
+}

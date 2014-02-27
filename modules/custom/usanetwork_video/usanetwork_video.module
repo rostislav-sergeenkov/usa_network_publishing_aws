@@ -17,13 +17,6 @@ function usanetwork_video_init() {
  * Implementation of hook_menu().
  */
 function usanetwork_video_menu() {
-
-  $items['video-test'] = array(
-    'title' => 'Test video',
-    'page callback' => 'usanetwork_video_test',
-    'access callback' => true,
-  );
-
   // global videos page
   $items['videos'] = array(
     'title' => t('Videos'),
@@ -687,9 +680,3 @@ function usanetwork_video_data_ajax() {
   return $result;
 }
 
-/**
- * Test new autoplay player.
- */
-function usanetwork_video_test() {
-  return '<iframe src="http://player.theplatform.com/p/OyMl-B/LJ9pCqcsoRM8/select/fvMH42x6hlKI?form=html#playerurl='. rawurldecode(url(current_path(), array('absolute' => true))) .'" width="720" height="480" frameBorder="0" seamless="seamless" allowFullScreen></iframe>';
-}

@@ -77,7 +77,7 @@ $css = '
 ';
 
 if ((isset($line_1_color)) && ($line_1_color != '&nbsp;')) {
-  $css .= '  
+  $css .= '
 .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-title {
@@ -88,10 +88,10 @@ if ((isset($line_1_color)) && ($line_1_color != '&nbsp;')) {
 if ((isset($line_2_color)) && ($line_2_color != '&nbsp;')) {
   $css .= '
 .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
   color: ' . $line_2_color . ';
-} 
+}
 ';
 }
 if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
@@ -100,7 +100,7 @@ if ((isset($line_3_color)) && ($line_3_color != '&nbsp;')) {
 .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-episode-title,
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-episode-title {
   color: ' . $line_3_color . ';
-}  
+}
 ';
 }
 
@@ -119,7 +119,7 @@ if ((isset($line_2_mobile_fontsize)) && ($line_2_mobile_fontsize != '&nbsp;')) {
   $css .= '
 @media (max-width: 644px) {
 .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
-.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+.aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time
 .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
   font-size: ' . $line_2_mobile_fontsize . 'px;
 }
@@ -153,7 +153,7 @@ if ((isset($line_2_tabletportrait_fontsize)) && ($line_2_tabletportrait_fontsize
   $css .= '
 @media (min-width: 645px) and (max-width: 959px) {
   .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time
   .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
     font-size: ' . $line_2_tabletportrait_fontsize . 'px;
   }
@@ -187,7 +187,7 @@ if ((isset($line_2_tabletlandscape_fontsize)) && ($line_2_tabletlandscape_fontsi
   $css .= '
 @media (min-width: 960px) and (max-width: 1274px) {
   .aspot-node-' . $nodeid . ' a .meta-wrap.episodic .episodic-show-time,
-  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time 
+  .aspot-node-' . $nodeid . ' a:hover .meta-wrap.episodic .episodic-show-time
   .aspot-node-' . $nodeid . ' a:visited .meta-wrap.episodic .episodic-show-time {
     font-size: ' . $line_2_tabletlandscape_fontsize . 'px;
   }
@@ -238,9 +238,9 @@ if ((isset($line_3_fontsize)) && ($line_3_fontsize != '&nbsp;')) {
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
 ?>
 
-<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>">
+<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>"<?php print $attributes; ?>>
 <?php if ($link && $link !== '&nbsp;'): ?>
-  <?php if ((!$target) || ($target && $target == '&nbsp;')): ?> 
+  <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
     <a href="<?php print $link; ?>" class="aspot-link">
   <?php else: ?>
     <a href="<?php print $link; ?>" target="<?php print $target; ?>" class="aspot-link">
@@ -296,7 +296,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
   <div data-picture data-alt="" data-class="tile-img">
     <?php if ($media_mobile): ?><?php print $media_mobile; ?><?php endif; ?>
     <?php if ($media_tablet_portrait): ?><?php print $media_tablet_portrait; ?><?php endif; ?>
-    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>   
+    <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>
   </div>
 
 <?php if ($link || $link !== '&nbsp;'): ?>

@@ -8,6 +8,13 @@ include_once 'usanetwork_ads.features.inc';
 include_once 'usanetwork_ads.pages.inc';
 
 /**
+ * Implements hook_init().
+ */
+function usanetwork_ads_init() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer'));
+}
+
+/**
  * Helper that returns the tv_show node nid associated with a given node.
  */
 function _usanetwork_ads_get_node_tv_show($node) {
@@ -504,12 +511,12 @@ function _usanetwork_ads_get_node_dart_settings($node) {
  */
 function _usanetwork_ads_get_node_refresh_settings($node) {
   $node_refresh_settings = array('isAutomaticRefresh' => NULL, 'refreshTime' => NULL);
-  
+
   $node_refresh_settings['isAutomaticRefresh'] = !empty($node->field_automatic_refresh[$node->language]['0']['value']) ?
     $node->field_automatic_refresh[$node->language]['0']['value'] : '0';
   $node_refresh_settings['refreshTime'] = !empty($node->field_refresh_time[$node->language]['0']['value']) ?
     $node->field_refresh_time[$node->language]['0']['value'] : '';
-  
+
   return $node_refresh_settings;
 }
 
@@ -894,4 +901,19 @@ function usanetwork_ads_dart_floodlight() {
   }
 
   return implode("\n", $output);
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function usanetwork_ads_preprocess_node(&$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $node = $variables['node'];
+
+  $types = array('usanetwork_aspot', 'usanetwork_promo');
+  if (in_array($node->type, $types)) {
+    $variables['attributes_array']['omniture-title'] = trim($node->title);
+    $variables['attributes_array']['omniture-nid'] = $node->nid;
+    $variables['attributes_array']['omniture-vid'] = $node->vid;
+  }
 }

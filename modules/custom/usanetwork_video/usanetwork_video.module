@@ -663,16 +663,18 @@ function usanetwork_video_data_ajax() {
 
   // get entites by guid
   $guid_field = 'field_video_guid';
+  $bundles = array('usa_video');
   foreach ($guids as $guid) {
     $data = db_select('field_data_' . $guid_field, 'fd')
       ->fields('fd')
       ->condition($guid_field . '_value', $guid)
+      ->condition('bundle', $bundles, 'IN')
       ->execute()
       ->fetchAssoc();
 
     if ($data) {
       $entity = entity_load_single($data['entity_type'], $data['entity_id']);
-      if ($entity) {
+      if ($entity && $entity->status == 1) {
         $uri = entity_uri($data['entity_type'], $entity);
         $result[$guid] = url(drupal_get_path_alias($uri['path']), array('absolute' => true));
         continue;

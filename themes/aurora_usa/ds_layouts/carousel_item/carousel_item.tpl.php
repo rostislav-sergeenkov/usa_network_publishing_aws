@@ -1,4 +1,4 @@
-<div class="<?php print $classes;?> carousel-item">
+<div class="<?php print $classes;?> carousel-item"<?php print $attributes; ?>>
   <?php if ($link): ?>
     <?php if ((!$target) || ($target && $target == '&nbsp;')): ?>
       <a href="<?php print $link; ?>" class="carousel-item-link">

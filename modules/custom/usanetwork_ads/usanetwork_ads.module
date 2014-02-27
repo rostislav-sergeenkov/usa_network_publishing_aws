@@ -511,12 +511,12 @@ function _usanetwork_ads_get_node_dart_settings($node) {
  */
 function _usanetwork_ads_get_node_refresh_settings($node) {
   $node_refresh_settings = array('isAutomaticRefresh' => NULL, 'refreshTime' => NULL);
-  
+
   $node_refresh_settings['isAutomaticRefresh'] = !empty($node->field_automatic_refresh[$node->language]['0']['value']) ?
     $node->field_automatic_refresh[$node->language]['0']['value'] : '0';
   $node_refresh_settings['refreshTime'] = !empty($node->field_refresh_time[$node->language]['0']['value']) ?
     $node->field_refresh_time[$node->language]['0']['value'] : '';
-  
+
   return $node_refresh_settings;
 }
 
@@ -784,7 +784,8 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
     $path_omniture_settings = isset($site_metric_settings['path'][ $current_menu_item_path ]['omniture']) ?
         $site_metric_settings['path'][ $current_menu_item_path ]['omniture'] : array();
     $path_omniture_variables = _usanetwork_ads_get_omniture_variables($path_omniture_settings);
-    $omniture_variables = $path_omniture_variables + $omniture_variables;
+//    $omniture_variables = $path_omniture_variables + $omniture_variables;
+    $omniture_variables = (!is_array($path_omniture_variables)) ? $path_omniture_variables + $omniture_variables : '';
   }
 
   if ($omniture_variables) {

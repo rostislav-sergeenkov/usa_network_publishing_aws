@@ -778,13 +778,15 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
     if (is_object($current_menu_object) && isset($current_menu_object->nid)) {
       $omniture_variables = _usanetwork_ads_get_node_omniture_variables($current_menu_object);
     }
-    // Match current path to how it is made available by the custom modules.
-    $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);
-    // Now over-ride node omniture variables with path variables.
-    $path_omniture_settings = isset($site_metric_settings['path'][ $current_menu_item_path ]['omniture']) ?
+    if ($omniture_variables !== false) {
+      // Match current path to how it is made available by the custom modules.
+      $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);
+      // Now over-ride node omniture variables with path variables.
+      $path_omniture_settings = isset($site_metric_settings['path'][ $current_menu_item_path ]['omniture']) ?
         $site_metric_settings['path'][ $current_menu_item_path ]['omniture'] : array();
-    $path_omniture_variables = _usanetwork_ads_get_omniture_variables($path_omniture_settings);
-    $omniture_variables = $path_omniture_variables + $omniture_variables;
+      $path_omniture_variables = _usanetwork_ads_get_omniture_variables($path_omniture_settings);
+      $omniture_variables = $path_omniture_variables + $omniture_variables;
+    }
   }
 
   if ($omniture_variables) {

@@ -145,16 +145,16 @@ function usanetwork_showpages_showbanner() {
       $show_name = l($show_title, $show_url);
       // see if we are in a show social subsection
       if (arg(2) == 'social') {
-        $show_section = t('Social');
+        $show_section = l(t('Social'), $show_url . '/social');
       }
       if (arg(2) == 'games') {
-        $show_section = t('Games');
+        $show_section = l(t('Games'), $show_url . '/games');
       }
       if (arg(2) == 'features') {
-        $show_section = t('Features');
+        $show_section = l(t('Features'), $show_url . '/features');
       }
       if (arg(2) == 'quizzes') {
-        $show_section = t('Quizzes');
+        $show_section = l(t('Quizzes'), $show_url . '/quizzes');
       }
     }
     // looks for nodes with a value in field_show
@@ -169,30 +169,30 @@ function usanetwork_showpages_showbanner() {
       $show_name = l($show_title, $show_url);
       switch ($node->type) {
         case 'person':
-          $show_section = t('Characters & Crew');
+          $show_section = l(t('Characters & Crew'), $show_url . '/cast');
           break;
         case 'tv_episode':
-          $show_section = t('Episode Guide');
+          $show_section = l(t('Episode Guide'), $show_url . '/episodes');
           break;
         case 'media_gallery':
-          $show_section = t('Photos');
+          $show_section = l(t('Photos'), $show_url . '/photos');
           break;
         case 'usa_video':
         case 'usa_tve_video':
-          $show_section = t('Videos');
+          $show_section = l(t('Videos'), $show_url . '/videos');
           break;
         case 'usanetwork_static_page':
         case 'catchall_page':
           $custompath = drupal_get_path_alias('node/'.$node->nid);
           $path_parts = explode('/', $custompath);
           if ($path_parts['1'] == 'features') {
-            $show_section = t('Features');
+            $show_section = l(t('Features'), $show_url . '/features');
           }
           if ($path_parts['1'] == 'quizzes') {
-            $show_section = t('Quizzes');
+            $show_section = l(t('Quizzes'), $show_url . '/quizzes');
           }
           if ($path_parts['1'] == 'games') {
-            $show_section = t('Games');
+            $show_section = l(t('Games'), $show_url . '/games');
           }
           break;
       }

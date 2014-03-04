@@ -144,6 +144,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     },
     RequestVideoData: function() {
       USAEndShareCard.debug('[USAEndShareCard request video data]');
+      $(".endcardymalheading").hide();
       // get GUID list
       var guids = [];
       USAEndShareCard.debug(USAEndShareCard.entries);
@@ -404,6 +405,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
 
 
       if(selectedItems.length > 0){
+        $(".endcardymalheading").show();
         ymal.empty();
         var startingIndex = 0;
         // Show the first one.

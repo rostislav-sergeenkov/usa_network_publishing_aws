@@ -10,7 +10,9 @@ include_once 'usanetwork_video.features.inc';
  * Implements hook_init().
  */
 function usanetwork_video_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_endcard.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_endcard.js', array(
+    'every_page' => true,
+  ));
 }
 
 /**

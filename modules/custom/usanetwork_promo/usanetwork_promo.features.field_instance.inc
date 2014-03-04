@@ -18,10 +18,11 @@ function usanetwork_promo_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'carousel_promo' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'ds',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
+        'type' => 'taxonomy_usa_term_icon',
+        'weight' => 3,
       ),
       'default' => array(
         'label' => 'above',
@@ -44,17 +45,25 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'taxonomy_usa_term_icon',
         'weight' => 4,
       ),
-      'promo_teaser' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'promo_teaser_large' => array(
+      'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 0,
+      ),
+      'promo_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'ds',
+        'settings' => array(),
+        'type' => 'taxonomy_usa_term_icon',
+        'weight' => 5,
+      ),
+      'promo_teaser_large' => array(
+        'label' => 'hidden',
+        'module' => 'ds',
+        'settings' => array(),
+        'type' => 'taxonomy_usa_term_icon',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -98,7 +107,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 19,
       ),
       'default' => array(
         'label' => 'above',
@@ -119,17 +128,23 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'promo_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 18,
       ),
       'promo_teaser_large' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -153,8 +168,8 @@ function usanetwork_promo_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 13,
-    ),
+        'weight' => 13,
+      ),
   );
 
   // Exported field_instance: 'node-usanetwork_promo-field_promo_call_to_action_text'
@@ -165,10 +180,11 @@ function usanetwork_promo_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'carousel_promo' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
+        'type' => 'text_default',
+        'weight' => 4,
       ),
       'default' => array(
         'label' => 'above',
@@ -199,15 +215,17 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'promo_teaser' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'promo_teaser_large' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'type' => 'text_default',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -258,7 +276,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'above',
@@ -292,14 +310,14 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 3,
+        'weight' => 7,
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_plain',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -582,7 +600,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'default' => array(
         'label' => 'above',
@@ -616,14 +634,13 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -763,7 +780,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'default' => array(
         'label' => 'above',
@@ -797,14 +814,13 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -851,7 +867,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 18,
       ),
       'default' => array(
         'label' => 'above',
@@ -889,7 +905,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
@@ -970,7 +986,7 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 20,
       ),
       'default' => array(
         'label' => 'above',
@@ -1003,13 +1019,13 @@ function usanetwork_promo_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'promo_teaser_large' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1056,7 +1072,7 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_key',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'above',
@@ -1090,13 +1106,13 @@ function usanetwork_promo_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_key',
-        'weight' => 4,
+        'weight' => 8,
       ),
       'promo_teaser_large' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',

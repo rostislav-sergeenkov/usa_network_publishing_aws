@@ -7,6 +7,9 @@
     <?php endif; ?>
   <?php endif; ?>
   <div class="title-overlay meta">
+    <?php if ($cta && $cta != '&nbsp;' && $action_type == 'video'): ?>
+      <div class="promo-cta"><?php print $cta; ?></div>
+    <?php endif; ?>
     <?php if ($title && $title != "&nbsp;"): ?>
       <div class="title"><?php print $title; ?></div>
     <?php endif; ?>

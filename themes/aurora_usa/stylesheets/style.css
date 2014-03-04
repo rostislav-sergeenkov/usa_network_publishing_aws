@@ -2494,6 +2494,37 @@ input[type="radio"], input[type="checkbox"] {
     display: none;
   }
 }
+.node-usanetwork-promo .caption-overlay .promo-cta {
+  width: 44px;
+  float: left;
+  /*    @include breakpoint($bp-home-narrowest) {
+        width: 20px;
+        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
+          padding-left: 22px;
+        }
+      }*/
+  /*    @include breakpoint($bp-home-2col){
+        width: 30px;
+        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
+          padding-left: 39px;
+        }
+      }
+      @include breakpoint($bp-home-widest) {
+        width: 44px;
+        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
+          padding-left: 56px;
+        }
+      }*/
+}
+.node-usanetwork-promo .caption-overlay .promo-cta ~ .title, .node-usanetwork-promo .caption-overlay .promo-cta ~ .title-wide, .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption, .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption-wide {
+  padding-left: 56px;
+}
+.usa-adrails .node-usanetwork-promo .caption-overlay .promo-cta, .ie8 .node-usanetwork-promo .caption-overlay .promo-cta {
+  width: 44px;
+}
+.usa-adrails .node-usanetwork-promo .caption-overlay .promo-cta ~ .title, .usa-adrails .node-usanetwork-promo .caption-overlay .promo-cta ~ .title-wide, .usa-adrails .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption, .usa-adrails .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption-wide, .ie8 .node-usanetwork-promo .caption-overlay .promo-cta ~ .title, .ie8 .node-usanetwork-promo .caption-overlay .promo-cta ~ .title-wide, .ie8 .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption, .ie8 .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption-wide {
+  padding-left: 56px;
+}
 
 .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
 .promo-metadata .meta-subhead-wide,
@@ -6052,6 +6083,64 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   height: 50px;
   padding: 8px 15px 8px;
   max-width: 221px;
+}
+.usa-home-featured li.carousel-item .meta .promo-cta {
+  width: 44px;
+  float: left;
+}
+.usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption {
+  padding-left: 56px;
+}
+@media (max-width: 644px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta {
+    width: 20px;
+    margin-right: 2px;
+    padding-top: 0;
+  }
+  .usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption {
+    padding-left: 22px;
+  }
+}
+@media (min-width: 645px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta {
+    width: 30px;
+  }
+  .usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption {
+    padding-left: 39px;
+  }
+}
+@media (min-width: 1275px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta {
+    width: 44px;
+    padding-top: 8px;
+  }
+  .usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption {
+    padding-left: 56px;
+  }
+}
+.usa-adrails .usa-home-featured li.carousel-item .meta .promo-cta, .ie8 .usa-home-featured li.carousel-item .meta .promo-cta {
+  width: 44px;
+}
+.usa-adrails .usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .usa-adrails .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption, .ie8 .usa-home-featured li.carousel-item .meta .promo-cta ~ .title, .ie8 .usa-home-featured li.carousel-item .meta .promo-cta ~ .caption {
+  padding-left: 56px;
+}
+.usa-home-featured li.carousel-item .meta .promo-cta img {
+  height: 44px;
+}
+@media (max-width: 644px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta img {
+    height: 20px;
+  }
+}
+@media (min-width: 645px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta img {
+    height: 30px;
+  }
+}
+@media (min-width: 1275px) {
+  .usa-home-featured li.carousel-item .meta .promo-cta img {
+    height: 44px;
+  }
 }
 .usa-home-featured .title {
   margin-bottom: 3px;

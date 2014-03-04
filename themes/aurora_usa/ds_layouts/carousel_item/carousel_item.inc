@@ -6,6 +6,7 @@ function ds_carousel_item() {
       'media' => t('Media'),
       'title' => t('Title'),
       'caption' => t('Caption'),
+      'cta' => t('CTA'),
       'link' => t('link'),
       'target' => t('Target'),
     ),

@@ -813,6 +813,10 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => 'burnn832',
       'flood_cat' => 'burnn655',
     ),
+    'chrisleyknowsbest' => array(
+      'flood_type' => '2014b766',
+      'flood_cat' => 'chris342',
+    ),
     'covertaffairs' => array (
       'flood_type' => '2010a975',
       'flood_cat' => 'cover674',
@@ -841,6 +845,10 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => '2011d848',
       'flood_cat' => 'neces763',
     ),
+    'playinghouse' => array(
+      'flood_type' => '2014b766',
+      'flood_cat' => 'playi219',
+    ),
     'psych' => array (
       'flood_type' => '2011d848',
       'flood_cat' => 'psych222',
@@ -848,6 +856,10 @@ function usanetwork_ads_dart_floodlight() {
     'royalpains' => array (
       'flood_type' => '2009o386',
       'flood_cat' => 'royal068',
+    ),
+    'sirens' => array(
+      'flood_type' => '2014b766',
+      'flood_cat' => 'siren497',
     ),
     'suits' => array (
       'flood_type' => '2011d848',

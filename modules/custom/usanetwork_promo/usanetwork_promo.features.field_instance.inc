@@ -638,8 +638,9 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 17,
       ),
       'teaser' => array(
@@ -818,8 +819,9 @@ function usanetwork_promo_field_default_field_instances() {
       ),
       'promo_teaser_large' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 16,
       ),
       'teaser' => array(

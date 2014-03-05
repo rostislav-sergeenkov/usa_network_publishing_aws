@@ -40,6 +40,12 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
       'link' => array(
         0 => 'field_promo_link',
       ),
+      'caption_wide' => array(
+        0 => 'field_promo_text_line_2_wide',
+      ),
+      'title_wide' => array(
+        0 => 'field_promo_text_line_1_wide',
+      ),
     ),
     'fields' => array(
       'field_promo_wide_image' => 'media_large',
@@ -49,6 +55,8 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
       'field_call_to_action_type' => 'cta',
       'field_promo_call_to_action_text' => 'cta',
       'field_promo_link' => 'link',
+      'field_promo_text_line_2_wide' => 'caption_wide',
+      'field_promo_text_line_1_wide' => 'title_wide',
     ),
     'classes' => array(),
   );

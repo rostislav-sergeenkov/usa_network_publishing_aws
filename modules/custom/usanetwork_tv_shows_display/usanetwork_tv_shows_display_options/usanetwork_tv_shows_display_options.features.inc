@@ -30,28 +30,12 @@ function usanetwork_tv_shows_display_options_field_group_info_alter(&$data) {
  * Implements hook_field_default_field_instances_alter().
  */
 function usanetwork_tv_shows_display_options_field_default_field_instances_alter(&$data) {
-  if (isset($data['node-usanetwork_promo-field_call_to_action_type'])) {
-    $data['node-usanetwork_promo-field_call_to_action_type']['display']['promo_teaser_large'] = array(
-      'label' => 'above',
-      'settings' => array(),
-      'type' => 'hidden',
-      'weight' => 9,
-    ); /* WAS: '' */
-  }
   if (isset($data['node-usanetwork_promo-field_meta_text_bar'])) {
     $data['node-usanetwork_promo-field_meta_text_bar']['display']['promo_teaser_large'] = array(
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
       'weight' => 10,
-    ); /* WAS: '' */
-  }
-  if (isset($data['node-usanetwork_promo-field_promo_call_to_action_text'])) {
-    $data['node-usanetwork_promo-field_promo_call_to_action_text']['display']['promo_teaser_large'] = array(
-      'label' => 'above',
-      'settings' => array(),
-      'type' => 'hidden',
-      'weight' => 7,
     ); /* WAS: '' */
   }
   if (isset($data['node-usanetwork_promo-field_promo_link'])) {

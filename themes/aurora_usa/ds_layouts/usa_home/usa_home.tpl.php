@@ -122,10 +122,43 @@ drupal_add_js($aspotVideo, array('type' => 'inline'));
 */
 
 
+
 $aspotVideoCSS = <<<EOD
 #aspot-video {
-  margin-top: -521px;
   z-index: 100;
+  position: relative;
+}
+@media (min-width: 881px) {
+  /* desktop wide */
+  #aspot-video {
+    margin-top: -521px;
+    width: 1245px;
+    height: 506px;
+  }
+}
+@media (max-width: 1274px) and (min-width: 960px) {
+  /* tablet landscape */
+  #aspot-video {
+    margin-top: -393px;
+    width: 930px;
+    height: 378px;
+  }
+}
+@media (max-width: 959px) and (min-width: 645px) {
+  /* tablet portrait */
+  #aspot-video {
+    margin-top: -365px;
+    width: 615px;
+    height: 350px;
+  }
+}
+@media (max-width: 644px) {
+  /* smartphone */
+  #aspot-video {
+    margin-top: -258px;
+    width: 300px;
+    height: 250px;
+  }
 }
 EOD;
 drupal_add_css($aspotVideoCSS, array('type' => 'inline'));
@@ -138,56 +171,54 @@ function usa_debug(msg) {
   }
 }
 
-var videoUrl = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/video/NBCU_USA_Network/608/79/sirens_richmedia_Aspot_1600.mp4';
-var videoTag = '<video width="100%" autoplay><source src="' + videoUrl + '" type="video/mp4">Your browser does not support the video tag.</video>';
-
-var video_show = function() {
-  usa_debug('video_show()');
-  if (jQuery('#main-slider').html() != '' && jQuery('#main-slider').html() != null && jQuery('#main-slider').html().length > 0) {
-    jQuery('#main-slider').css('opacity', 0);
-    if (typeof jQuery("#main-slider").flexslider != 'undefined' && typeof jQuery("#main-slider").flexslider == 'function') {
-      usa_debug('flexslider is ready');
+if (!usa_deviceInfo.smartphone) {
+  var mp4VideoUrl = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/video/NBCU_USA_Network/608/79/sirens_richmedia_Aspot_1600.mp4';
+  var webmVideoUrl = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/mezzanine/NBCU_USA_Network/819/15/sirens_richmedia_Aspot.webmhd.webm';
+  var video_show = function() {
+    usa_debug('video_show()');
+    if (jQuery('#main-slider').html() != '' && jQuery('#main-slider').html() != null && jQuery('#main-slider').html().length > 0) {
+      jQuery('#main-slider').css('opacity', 0);
+      if (typeof jQuery("#main-slider").flexslider != 'undefined' && typeof jQuery("#main-slider").flexslider == 'function') {
+        usa_debug('flexslider is ready');
+        var videoTag = '<video width="100%" autoplay><source src="' + mp4VideoUrl + '" type="video/mp4"><source src="' + webmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
+        if (navigator.userAgent.indexOf('MSIE') != -1) {
+          var videoWidth = jQuery('#main-slider').width();
+          var videoHeight = jQuery('#main-slider').height();
+          videoTag = '<video width="' + videoWidth + '" height="' + videoHeight + '" autoplay><source src="' + mp4VideoUrl + '" type="video/mp4"><source src="' + webmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
+        }
         setTimeout(function() {
           usa_debug("loading video now");
           jQuery("#main-slider").flexslider("pause");
-          jQuery('#main-slider').css('opacity', 0);
           jQuery('#aspot-video').html(videoTag).show();
           resumeFlexsliderPlay();
-        }, 2000);
+        }, 3000);
+      }
+      else {
+        setTimeout(video_show, 1000);
+      }
     }
     else {
       setTimeout(video_show, 1000);
     }
   }
-  else {
-    setTimeout(video_show, 1000);
+
+  var resumeFlexsliderPlay = function() {
+    usa_debug("resumeFlexsliderPlay()");
+    jQuery('#aspot-video video').bind('ended', function() {
+      usa_debug("video ended");
+      jQuery('#main-slider').css('opacity', 1);
+      jQuery("#aspot-video").animate({'opacity': 0}, 400, function(){
+        jQuery("#main-slider").flexslider("play");
+        jQuery("#aspot-video").remove();
+      })
+    });
   }
+
+  video_show();
 }
-
-var resumeFlexsliderPlay = function() {
-  usa_debug("resumeFlexsliderPlay()");
-  jQuery('#aspot-video video').bind('ended', function() {
-    usa_debug("video ended");
-    jQuery('#main-slider').css('opacity', 1); // show().animate({'opacity': 1}, 400);
-    jQuery("#aspot-video").animate({'opacity': 0}, 400, function(){
-      jQuery("#main-slider").flexslider("play");
-      jQuery("#aspot-video").remove();
-    })
-  });
-}
-
-video_show();
-
 EOD;
 drupal_add_js($aspotVideo, array('type' => 'inline'));
 ?>
-
-<?php /* ?>
-function pr($value, $label='') {
-  if ($label != '') $label = $label . ': ';
-  echo '<pre>' . $label . print_r(htmlspecialchars($value), true) . '</pre><br>';
-}
-<?php */ ?>
 
 <div class="<?php print $classes;?> usa-home">
   <div class="tiles" data-module-type="SliderTiles">
@@ -209,12 +240,12 @@ function pr($value, $label='') {
     </div>
   </div><!-- END tiles -->
 </div>
-  <?php if ($featured): ?>
-  <div class="usa-home-featured clearfix">
-    <div class="view">
-      <div class="carousel clearfix">
-        <?php print $featured; ?>
-      </div>
+<?php if ($featured): ?>
+<div class="usa-home-featured clearfix">
+  <div class="view">
+    <div class="carousel clearfix">
+      <?php print $featured; ?>
     </div>
   </div>
-  <?php endif; ?>
+</div>
+<?php endif; ?>

@@ -647,6 +647,20 @@ function usanetwork_core_update_7131() {
 }
 
 /**
+ * enable search
+ */
+function usanetwork_core_update_7132() {
+  $modules_en = array(
+    'acquia_search',
+    'apachesolr',
+    'apachesolr_search',
+    'search',
+    'usanetwork_search',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

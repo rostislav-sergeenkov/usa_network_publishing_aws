@@ -44,11 +44,6 @@
     .pane-content {
       ul.field-name-field-usa-tv-promo {
         li {
-          /*
-          float: none;
-          display: inline-block;
-          margin: 0 3px 11px 0 !important;
-          */
           float:left;
           clear:none;
         }
@@ -92,24 +87,11 @@
       overflow:hidden;
       li {
         float:left;
-        margin:0 10px 15px 0;
+        margin:0 14px 15px 0;
         clear: none;
-      }
-      li.odd {
-        margin:0 10px 15px 0;
-      }
-      li.nth4n6 {
-        margin:0 0 15px 0;
-      }
-      li.nth1 {
-      margin-right:0 10px 15px 0;
-      }
-      li.nth2 {
-        margin:0 300px 15px 0;
-      }
-      li {
         .asset-img {
           overflow:hidden;
+          width:300px;
           img {
             display:block;
             width:100%;
@@ -130,30 +112,37 @@
             vertical-align:top;
           }
         }
-      }
-      /* li:first-child {
-        width: 615px;
-        height: 254px;
-        .asset-img {
-          display: none;
-        }
         .caption-fields-wrapper {
-          width: 613px;
+          width:296px;
         }
-      } */
-      li.nth2 {
-        margin:0 10px 15px 0;
       }
+      li.odd {
+        margin:0 14px 15px 0;
+      }
+      li.nth1 {
+      margin-right:0 14px 15px 0;
+      }
+      li.nth2 {
+        margin:0 300px 15px 0;
+      }
+      /*
       li.nth3 {
         margin:0 300px 15px 0px;
+      }
+      */
+      li.nth2n1 {
+        margin:0 14px 15px 0px;
       }
       li.nth4n4 {
         clear:both;
         margin-left:0;
       }
-      li.nth4n7 {
-       float:right !important;
+      li.nth4n6 {
         margin:0 0 15px 0;
+      }
+      li.nth4n7 {
+       /*float:right !important;*/
+        margin:0 14px 15px 0;
       }
     }
   }

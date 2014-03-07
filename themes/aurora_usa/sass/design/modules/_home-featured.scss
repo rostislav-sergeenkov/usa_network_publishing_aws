@@ -96,6 +96,53 @@
         padding: 8px 15px 8px;
         max-width: 221px;
       }
+      
+      .promo-cta {
+        width: 44px;
+        float: left;
+        & ~ .title, & ~ .caption {
+          padding-left: 56px;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          width: 20px;
+          margin-right: 2px;
+          padding-top: 0;
+          & ~ .title, & ~ .caption {
+            padding-left: 22px;
+          }
+        }
+        @include breakpoint($bp-home-2col){
+          width: 30px;
+          & ~ .title, & ~ .caption {
+            padding-left: 39px;
+          }
+        }
+        @include breakpoint($bp-home-widest) {
+          width: 44px;
+          padding-top: 8px;
+          & ~ .title, & ~ .caption {
+            padding-left: 56px;
+          }
+        }
+        .usa-adrails &, .ie8 & {
+          width: 44px;
+          & ~ .title, & ~ .caption {
+            padding-left: 56px;
+          }
+        }
+        img {
+          height: 44px;
+          @include breakpoint($bp-home-narrowest) {
+            height: 20px;
+          }
+          @include breakpoint($bp-home-2col){
+            height: 30px;
+          }
+          @include breakpoint($bp-home-widest) {
+            height: 44px;
+          }
+        }
+      }
     }
   }
 

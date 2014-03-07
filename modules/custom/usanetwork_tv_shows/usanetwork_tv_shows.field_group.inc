@@ -872,11 +872,12 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_display_title',
       1 => 'field_usa_tv_on_now',
-      2 => 'field_usa_tv_promo',
+      2 => 'group_usa_tv_promo',
       3 => 'field_usa_tv_tune_in_date',
-      4 => 'field_usa_tv_promo_vids',
+      4 => 'group_usa_tv_promo_vids',
       5 => 'field_pathauto_alias',
       6 => 'group_show_aspots',
+      7 => 'field_usa_tv_show_color',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

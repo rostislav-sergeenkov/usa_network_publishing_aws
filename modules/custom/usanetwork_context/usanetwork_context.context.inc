@@ -1081,6 +1081,8 @@ function usanetwork_context_context_default_contexts() {
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
         '<front>' => '<front>',
+        'search' => 'search',
+        'search/*' => 'search/*',
       ),
     ),
   );
@@ -2125,6 +2127,12 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa_footer_message',
           'region' => 'footer',
           'weight' => '-10',
+        ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'search',
+          'weight' => -10,
         ),
       ),
     ),

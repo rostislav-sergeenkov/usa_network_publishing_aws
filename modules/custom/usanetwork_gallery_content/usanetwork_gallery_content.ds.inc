@@ -51,6 +51,11 @@ function usanetwork_gallery_content_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|media_gallery|search_result'] = $ds_fieldsetting;
@@ -123,20 +128,20 @@ function usanetwork_gallery_content_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'title' => array(
+        0 => 'title',
+      ),
       'media' => array(
         0 => 'field_usa_og_image',
       ),
       'body' => array(
         0 => 'field_usa_og_description',
       ),
-      'title' => array(
-        0 => 'title',
-      ),
     ),
     'fields' => array(
+      'title' => 'title',
       'field_usa_og_image' => 'media',
       'field_usa_og_description' => 'body',
-      'title' => 'title',
     ),
     'classes' => array(),
   );

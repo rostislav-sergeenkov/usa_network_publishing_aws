@@ -237,7 +237,7 @@ function usanetwork_page_collection_node_update($node) {
               'source' => 'node/' . $relation->node->nid,
             ));
             if ($path) {
-              $pnid = $relation->parent ? $relation->parent->nid : $node->nid;
+              $pnid = $relation->parent ? $relation->parent->nid : $relation->pcid;
               $parent_path = drupal_get_path_alias('node/' . $pnid);
               if ($parent_path != 'node/' . $pnid) {
                 if (strpos($path['alias'] . '/', $parent_path) === 0) {
@@ -268,7 +268,7 @@ function usanetwork_page_collection_node_update($node) {
           'source' => 'node/' . $relation->node->nid,
         ));
         if ($path) {
-          $pnid = $relation->parent ? $relation->parent->nid : $node->nid;
+          $pnid = $relation->parent ? $relation->parent->nid : $relation->pcid;
           $parent_path = drupal_get_path_alias('node/' . $pnid);
           if ($parent_path != 'node/' . $pnid) {
             $path['alias'] = $parent_path . '/' . $paths[$relation->id];

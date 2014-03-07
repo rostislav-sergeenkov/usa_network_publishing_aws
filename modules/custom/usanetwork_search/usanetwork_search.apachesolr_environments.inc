@@ -14,7 +14,7 @@ function usanetwork_search_apachesolr_environments() {
   $environment->api_version = 1;
   $environment->env_id = 'acquia_search_server_1';
   $environment->name = 'Acquia Search';
-  $environment->url = 'http://search.acquia.com/solr/GMWX-32384';
+  $environment->url = 'http://useast1-c5.acquia-search.com/solr/CGJK-32328';
   $environment->service_class = 'AcquiaSearchService';
   $environment->conf = array(
     'apachesolr_index_last' => array(

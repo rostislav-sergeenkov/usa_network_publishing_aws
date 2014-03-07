@@ -267,7 +267,7 @@ function aurora_usa_pager(&$variables) {
           );
         }
       }
-      if ($i < $pager_max) {
+      if ($i <= $pager_max) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
           'data' => '…',

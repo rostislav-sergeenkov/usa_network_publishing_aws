@@ -12,6 +12,9 @@
   <?php if(($title && $title != "&nbsp;") || ($caption && $caption != "&nbsp;") ) : ?>
   <div class="caption-overlay meta">
     <div class="caption-fields-wrapper">
+    <?php if ($cta && $cta != '&nbsp;' && $action_type == 'video'): ?>
+      <div class="promo-cta"><?php print $cta; ?></div>
+    <?php endif; ?>
     <?php if ($title && $title != "&nbsp;"): ?>
       <div class="title"><?php print $title; ?></div>
     <?php endif; ?>

@@ -16,23 +16,11 @@ function usanetwork_tv_shows_display_options_features_override_default_overrides
   $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|4"] = 'group_usa_tv_promo_vids';
 
   // Exported overrides for: field_instance
-  $overrides["field_instance.node-usanetwork_promo-field_call_to_action_type.display|promo_teaser_large"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 9,
-  );
   $overrides["field_instance.node-usanetwork_promo-field_meta_text_bar.display|promo_teaser_large"] = array(
     'label' => 'above',
     'settings' => array(),
     'type' => 'hidden',
     'weight' => 10,
-  );
-  $overrides["field_instance.node-usanetwork_promo-field_promo_call_to_action_text.display|promo_teaser_large"] = array(
-    'label' => 'above',
-    'settings' => array(),
-    'type' => 'hidden',
-    'weight' => 7,
   );
   $overrides["field_instance.node-usanetwork_promo-field_promo_link.display|promo_teaser_large"] = array(
     'label' => 'hidden',

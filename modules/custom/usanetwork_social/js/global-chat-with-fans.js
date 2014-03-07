@@ -225,15 +225,17 @@
 					url: echoQuery,
 					data: echoQueryParams,
 					dataType: "jsonp",
-					success: function(data){
-						showData = processGlobalChatWithFansData(data);
-						var showDataKeys = getKeys(showData);
-						if (showDataKeys.length > 0) {
-							outputGlobalChatWithFans(showData);
-						} else {
-							jQuery('#showList').html("No shows found. Please come back again soon.");
-						}
+					showData = processGlobalChatWithFansData(data);
+					var showDataKeys = getKeys(showData);
+					if (showDataKeys.length > 0) {
+						outputGlobalChatWithFans(showData);
+					} else {
+						jQuery('#showList').html("No shows found. Please come back again soon.");
 					}
+				})
+				.fail(function(jqXHR, textStatus, errorThrown) {
+					usa_debug('error');
+					usa_debug(errorThrown);
 				});
 */
 			}

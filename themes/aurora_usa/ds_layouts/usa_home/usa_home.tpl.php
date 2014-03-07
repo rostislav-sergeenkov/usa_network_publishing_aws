@@ -164,7 +164,7 @@ EOD;
 drupal_add_css($aspotVideoCSS, array('type' => 'inline'));
 
 $aspotVideo = <<<EOD
-if (aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
+if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
   var aspotVideoAgent = navigator.userAgent.toLowerCase();
   var aspotVideoShow = function() {
     usa_debug('aspotVideoShow()');

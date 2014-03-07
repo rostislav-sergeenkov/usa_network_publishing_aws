@@ -661,6 +661,20 @@ function usanetwork_core_update_7132() {
 }
 
 /**
+ * enable cloud sticky sessions
+ */
+function usanetwork_core_update_7133() {
+  $modules_en = array(
+    'acquia_cloud_sticky_sessions',
+  );
+  module_enable($modules_en);
+  $modules_dis = array(
+    'acquia_managed_cloud_sticky_sessions'
+  );
+  module_disable($modules_dis);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

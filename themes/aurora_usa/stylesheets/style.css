@@ -2438,83 +2438,66 @@ input[type="radio"], input[type="checkbox"] {
   width: 304px;
 }
 
-.node-usanetwork-promo .caption-overlay .title-wide,
-.node-usanetwork-promo .caption-overlay .caption-wide {
+.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
+.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
   display: block;
 }
 @media (max-width: 644px) {
-  .node-usanetwork-promo .caption-overlay .title-wide,
-  .node-usanetwork-promo .caption-overlay .caption-wide {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
     display: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .node-usanetwork-promo .caption-overlay .title-wide,
-  .node-usanetwork-promo .caption-overlay .caption-wide {
-    display: block;
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
+    display: none;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .node-usanetwork-promo .caption-overlay .title-wide,
-  .node-usanetwork-promo .caption-overlay .caption-wide {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
     display: none;
   }
 }
 @media (min-width: 1275px) {
-  .node-usanetwork-promo .caption-overlay .title-wide,
-  .node-usanetwork-promo .caption-overlay .caption-wide {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title-wide,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption-wide {
     display: block;
   }
 }
-.node-usanetwork-promo .caption-overlay .title,
-.node-usanetwork-promo .caption-overlay .caption {
+.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
+.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
   display: none;
 }
 @media (max-width: 644px) {
-  .node-usanetwork-promo .caption-overlay .title,
-  .node-usanetwork-promo .caption-overlay .caption {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
     display: block;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .node-usanetwork-promo .caption-overlay .title,
-  .node-usanetwork-promo .caption-overlay .caption {
-    display: none;
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
+    display: block;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .node-usanetwork-promo .caption-overlay .title,
-  .node-usanetwork-promo .caption-overlay .caption {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
     display: block;
   }
 }
 @media (min-width: 1275px) {
-  .node-usanetwork-promo .caption-overlay .title,
-  .node-usanetwork-promo .caption-overlay .caption {
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .title,
+  .node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay .caption {
     display: none;
   }
 }
+
 .node-usanetwork-promo .caption-overlay .promo-cta {
   width: 44px;
   float: left;
-  /*    @include breakpoint($bp-home-narrowest) {
-        width: 20px;
-        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
-          padding-left: 22px;
-        }
-      }*/
-  /*    @include breakpoint($bp-home-2col){
-        width: 30px;
-        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
-          padding-left: 39px;
-        }
-      }
-      @include breakpoint($bp-home-widest) {
-        width: 44px;
-        & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
-          padding-left: 56px;
-        }
-      }*/
 }
 .node-usanetwork-promo .caption-overlay .promo-cta ~ .title, .node-usanetwork-promo .caption-overlay .promo-cta ~ .title-wide, .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption, .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption-wide {
   padding-left: 56px;
@@ -2526,77 +2509,92 @@ input[type="radio"], input[type="checkbox"] {
   padding-left: 56px;
 }
 
-.promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-.promo-metadata .meta-subhead-wide,
-.upcoming-movie .meta .meta-subhead-wide {
+.view-mode-promo_teaser .caption-overlay .title-wide,
+.view-mode-promo_teaser .caption-overlay .caption-wide {
+  display: none;
+}
+
+.b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
+.b-spot .promo-metadata .meta-subhead-wide,
+.b-spot .upcoming-movie .meta .meta-subhead-wide,
+.upcoming-movie .b-spot .meta .meta-subhead-wide {
   display: block;
 }
 @media (max-width: 644px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
+  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
+  .b-spot .promo-metadata .meta-subhead-wide,
+  .b-spot .upcoming-movie .meta .meta-subhead-wide,
+  .upcoming-movie .b-spot .meta .meta-subhead-wide {
     display: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
+  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
+  .b-spot .promo-metadata .meta-subhead-wide,
+  .b-spot .upcoming-movie .meta .meta-subhead-wide,
+  .upcoming-movie .b-spot .meta .meta-subhead-wide {
     display: block;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
+  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
+  .b-spot .promo-metadata .meta-subhead-wide,
+  .b-spot .upcoming-movie .meta .meta-subhead-wide,
+  .upcoming-movie .b-spot .meta .meta-subhead-wide {
     display: none;
   }
 }
 @media (min-width: 1275px) {
-  .promo-metadata .meta-head-wide, .upcoming-movie .meta .meta-head-wide,
-  .promo-metadata .meta-subhead-wide,
-  .upcoming-movie .meta .meta-subhead-wide {
+  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
+  .b-spot .promo-metadata .meta-subhead-wide,
+  .b-spot .upcoming-movie .meta .meta-subhead-wide,
+  .upcoming-movie .b-spot .meta .meta-subhead-wide {
     display: block;
   }
 }
-.promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-.promo-metadata .meta-subhead,
-.upcoming-movie .meta .meta-subhead {
+.b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
+.b-spot .promo-metadata .meta-subhead,
+.b-spot .upcoming-movie .meta .meta-subhead,
+.upcoming-movie .b-spot .meta .meta-subhead {
   display: none;
 }
 @media (max-width: 644px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
+  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
+  .b-spot .promo-metadata .meta-subhead,
+  .b-spot .upcoming-movie .meta .meta-subhead,
+  .upcoming-movie .b-spot .meta .meta-subhead {
     display: block;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
+  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
+  .b-spot .promo-metadata .meta-subhead,
+  .b-spot .upcoming-movie .meta .meta-subhead,
+  .upcoming-movie .b-spot .meta .meta-subhead {
     display: none;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
+  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
+  .b-spot .promo-metadata .meta-subhead,
+  .b-spot .upcoming-movie .meta .meta-subhead,
+  .upcoming-movie .b-spot .meta .meta-subhead {
     display: block;
   }
 }
 @media (min-width: 1275px) {
-  .promo-metadata .meta-head, .upcoming-movie .meta .meta-head,
-  .promo-metadata .meta-subhead,
-  .upcoming-movie .meta .meta-subhead {
+  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
+  .b-spot .promo-metadata .meta-subhead,
+  .b-spot .upcoming-movie .meta .meta-subhead,
+  .upcoming-movie .b-spot .meta .meta-subhead {
     display: none;
   }
 }
 
-.c-sport .promo-metadata .meta-head-wide, .c-sport .upcoming-movie .meta .meta-head-wide, .upcoming-movie .c-sport .meta .meta-head-wide,
-.c-sport .promo-metadata .meta-subhead-wide,
-.c-sport .upcoming-movie .meta .meta-subhead-wide,
-.upcoming-movie .c-sport .meta .meta-subhead-wide {
+.c-spot .promo-metadata .meta-head-wide, .c-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .c-spot .meta .meta-head-wide,
+.c-spot .promo-metadata .meta-subhead-wide,
+.c-spot .upcoming-movie .meta .meta-subhead-wide,
+.upcoming-movie .c-spot .meta .meta-subhead-wide {
   display: none;
 }
 

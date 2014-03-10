@@ -14,4 +14,14 @@ function usanetwork_mpx_video_install() {
     ->fields(array('weight' => 700))
     ->condition('name', 'usanetwork_mpx_video')
     ->execute();
+  
+  $db_select = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', array('usa_video', 'usa_tve_video'), 'IN');
+  $video_nid = $db_select->execute()->fetchAll();
+  
+  foreach ($video_nid as $nid) {
+    path_delete(array('source' => 'node/'.$nid->nid));
+  }
+
 }

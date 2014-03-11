@@ -551,8 +551,8 @@ function usanetwork_mpx_video_file_presave($file) {
   $set_alias = FALSE;
   
   $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');
-  if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] === 0)) ||
-      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] === 1))) {
+  if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
+      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
     $set_alias = TRUE;
   }
   
@@ -894,11 +894,19 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
 /**
  * Altering media_theplatform_mpx_feed_request
  */
-//function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$options) {
-//
-//  $nbc_filtering_category = 'Series';
-//  
-//  if ( strpos($url, '//read.data.media.theplatform.com/media/data/Media') !== FALSE ) {
-//    $url .= '&byCategories='. rawurlencode($nbc_filtering_category);
-//  }
-//}
+function usanetwork_mpx_video_media_theplatform_mpx_feed_request_alter(&$url, &$options) {
+
+  $nbc_import_account = 'NBCU USA Network';
+  $nbc_import_account_id = db_select('mpx_accounts', 'ma')
+    ->fields('ma', array('account_id'))
+    ->condition('import_account', rawurlencode($nbc_import_account), 'LIKE')
+    ->execute()
+    ->fetchField();
+  $nbc_filtering_category = 'Series';
+  
+  if ($nbc_import_account_id && strpos($url, '//read.data.media.theplatform.com/media/data/Media') !== FALSE
+      && strpos($url, 'byOwnerId=' . $nbc_import_account_id) !== FALSE) {
+
+    $url .= '&byCategories='. rawurlencode($nbc_filtering_category);
+  }
+}

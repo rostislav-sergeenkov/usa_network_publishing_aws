@@ -73,7 +73,7 @@
   }
 }
 
-.node-usanetwork-promo .caption-overlay {
+.node-usanetwork-promo.view-mode-promo_teaser_large .caption-overlay {
   .title-wide,
   .caption-wide {
     display:block;
@@ -81,7 +81,7 @@
       display:none;
     }
     @include breakpoint($bp-video-mid-range4-width) {
-      display:block;
+      display:none;
     }
     @include breakpoint($bp-video-high-range-width) {
       display:none;
@@ -97,7 +97,7 @@
       display:block;
     }
     @include breakpoint($bp-video-mid-range4-width) {
-      display:none;
+      display:block;
     }
     @include breakpoint($bp-video-high-range-width) {
       display:block;
@@ -106,6 +106,8 @@
       display:none;
     }
   }
+}
+.node-usanetwork-promo .caption-overlay {
   .promo-cta {
     width: 44px;
     float: left;
@@ -121,6 +123,14 @@
   }
 }
 
+.view-mode-promo_teaser .caption-overlay {
+  .title-wide,
+  .caption-wide {
+    display: none;
+  }
+}
+
+.b-spot {
 .promo-metadata {
   .meta-head-wide,
   .meta-subhead-wide {
@@ -155,7 +165,8 @@
     }
   }
 }
-.c-sport {
+}
+.c-spot {
   .promo-metadata {
     .meta-head-wide,
     .meta-subhead-wide {

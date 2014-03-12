@@ -191,7 +191,7 @@ if (typeof aspotVideoEnabled != 'undefined'
       jQuery('#main-slider').css('opacity', 1);
       jQuery("#aspot-video-container").animate({'opacity': 0}, 400, function(){
         jQuery("#main-slider").flexslider("play");
-        jQuery("#aspot-video-container").css('display', 'none').remove();
+        jQuery("#aspot-video-container").remove();
       })
     });
   }

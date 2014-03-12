@@ -171,15 +171,13 @@ if (typeof aspotVideoEnabled != 'undefined'
 
   var aspotVideoPauseFlexslider = function() {
     usa_debug('aspotVideoPauseFlexslider()');
-    if (typeof jQuery('#main-slider') === 'object' && typeof jQuery('#main-slider').flexslider === 'function') {
-      usa_debug('#main-slider is object and flexslider is function');
-      jQuery('#main-slider').flexslider({
-        start: function(slider) {
-          usa_debug("pausing flexslider");
-          jQuery("#main-slider").flexslider("pause");
-          aspotVideoResumeFlexsliderPlay();
-        }
-      });
+    if (typeof jQuery('#main-slider').html() != '' && typeof jQuery('#main-slider').flexslider === 'function') {
+      usa_debug('#main-slider html is != "" and flexslider is function');
+      setTimeout(function(){
+        usa_debug("pausing flexslider");
+        jQuery("#main-slider").flexslider("pause");
+        aspotVideoResumeFlexsliderPlay();
+      }, 1000);
     }
     else {
       setTimeout(aspotVideoPauseFlexslider, 500);
@@ -193,7 +191,7 @@ if (typeof aspotVideoEnabled != 'undefined'
       jQuery('#main-slider').css('opacity', 1);
       jQuery("#aspot-video-container").animate({'opacity': 0}, 400, function(){
         jQuery("#main-slider").flexslider("play");
-        jQuery("#aspot-video-container").remove();
+        jQuery("#aspot-video-container").css('display', 'none').remove();
       })
     });
   }
@@ -218,13 +216,8 @@ if (typeof aspotVideoEnabled != 'undefined'
 
   jQuery(document).ready(function(){
     jQuery('#main-slider').css('opacity', 0);
-    try {
-      jQuery("#main-slider").flexslider("pause");
-    }
-    catch (err) {
-      aspotVideoPauseFlexslider();
-    }
     aspotVideoShow();
+    aspotVideoPauseFlexslider();
   });
 }
 EOD;

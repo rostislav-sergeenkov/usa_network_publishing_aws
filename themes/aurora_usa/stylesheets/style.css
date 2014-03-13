@@ -5923,12 +5923,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border: 1px solid #ebebeb;
 }
 
-/*
 #aspot-video-container {
   z-index: 100;
   position: relative;
 }
-*/
+
 @media (min-width: 881px) {
   /* desktop wide */
   #aspot-video-container {

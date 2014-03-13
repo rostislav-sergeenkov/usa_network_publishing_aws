@@ -10,15 +10,7 @@
 function usanetwork_widget_boot() {
   $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : false;
   if ($origin) {
-    $cors_urls = explode(',', variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com'));
-    if (!empty($cors_urls)) {
-      foreach ($cors_urls as $url) {
-        $url = trim($url);
-        if (strpos($url, trim($origin, '/')) === 0) {
-          drupal_add_http_header('Access-Control-Allow-Origin', $url);
-        }
-      }
-    }
+    drupal_add_http_header('Access-Control-Allow-Origin', '*');
   }
 }
 
@@ -164,7 +156,7 @@ function usanetwork_widget_navbar() {
  */
 function usanetwork_widget_navbar_ajax_styled() {
   global $base_root;
-  
+
   $nav_styles = '<style>@import url("' . $base_root . '/sites/usanetwork/themes/aurora_usa/stylesheets/navbar.css?");</style>';
 
   // get collected styles
@@ -338,7 +330,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
   $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
@@ -383,7 +375,7 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
   $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
@@ -411,7 +403,7 @@ function usanetwork_widget_show_navbar_only($node) {
 function usanetwork_widget_show_navbar_ajax_only($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu); 
+  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
   print $show_menu;
   exit;
 }
@@ -453,7 +445,7 @@ function usanetwork_widget_show_navbar_docs($node) {
   <p>Add the following script tags to your site.</p>
   <code><pre>
 '. htmlentities('<div id="usanetwork-main-menu"></div>') .'
-'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '  
+'. htmlentities('<script>var $env = "'._usanetwork_widget_get_environment().'";</script>') . '
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js"></script>') .'
 '. htmlentities('<script type="text/javascript">var $show_id = '. $node->nid .'; </script>') .'
 '. htmlentities('<script src="'.$base_root.'/sites/usanetwork/modules/custom/usanetwork_widget/js/usanetwork_widget_show_plain.js"></script>') .'
@@ -478,7 +470,7 @@ function usanetwork_widget_show_navbar_docs($node) {
 function usanetwork_widget_navbar_links() {
   $links = array();
   $output = '';
-   
+
   $links[] = l(t('Global Navbar'), 'navbar', array('attributes' => array('target' => '_blank')));
   $links[] = l(t('Global Navbar Plain'), 'navbar/plain', array('attributes' => array('target' => '_blank')));
   $links[] = l(t('Global Navbar Docs'), 'navbar/docs', array('attributes' => array('target' => '_blank')));
@@ -487,8 +479,8 @@ function usanetwork_widget_navbar_links() {
   $output .= theme('item_list', array('items' => $links));
 
   $output .= '<br><h2>' . t('Show Menu Links') . '</h2>';
-  
-  $shows = _usanetwork_widget_get_nodes('tv_show');  
+
+  $shows = _usanetwork_widget_get_nodes('tv_show');
   foreach ($shows as $show) {
     $links = array();
     $show_path = drupal_get_path_alias('node/'.$show->nid);
@@ -499,7 +491,7 @@ function usanetwork_widget_navbar_links() {
     $links[] = l('Navbar Docs', $show_path . '/navbar/docs');
     $output .= theme('item_list', array('items' => $links));
   }
-  
+
 
   return $output;
 }

@@ -5389,6 +5389,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
   font-size: 26px;
   display: inline;
+  white-space: nowrap;
 }
 .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-field-season {
   float: left;

@@ -661,8 +661,6 @@ function append_cover_to_media(&$vars) {
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
   $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
-  $test = $cover['field_caption'][$language];
-  $test2 = $vars['items'][0]['field_caption']['#items'];
   $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
   $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
   

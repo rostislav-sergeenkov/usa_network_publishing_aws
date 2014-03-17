@@ -92,7 +92,7 @@
                     });
                   }
                   else {
-                    $pdk.controller.clickPlayButton(true);
+                    //$pdk.controller.clickPlayButton(true);
                   }
                 }
 

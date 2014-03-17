@@ -6,7 +6,9 @@ define('USANETWORK_VIDEO_ENDCARD_RELATED_COUNT', 3);
  * Implements hook_init().
  */
 function usanetwork_video_endcard_init() {
-
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
+    'every_page' => true
+  ));
 }
 
 /**
@@ -40,10 +42,11 @@ function usanetwork_video_endcard_related_items() {
     foreach ($files as $file_info) {
       if ($file_info->published) {
         $file = $file_info;
+        break;
       }
     }
     if ($file && $file->status && $file->published) {
-      $file = file_load($file->fid);
+      $file = entity_load_single('file', $file->fid);
 
       // check if it's full episode
       $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));

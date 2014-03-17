@@ -866,27 +866,16 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
 
   foreach ($media_files as $file) { 
     $full_episode = $media_item['field_data']['field_mpx_full_episode'];
-    if (basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) {
-      if ($full_episode === 1) {
-        db_update('mpx_video')
-        ->fields(array('status' => 0))
-        ->condition('fid', $file->fid)
-        ->execute();
-      } 
-    } else {
-      if ($full_episode ===  0) {
-        db_update('mpx_video')
-        ->fields(array('status' => 0))
-        ->condition('fid', $file->fid)
-        ->execute();
-      } 
-    }
     $categories = unserialize($media_item['categories']);
-    if (!_usanetwork_mpx_video_is_usa_video($categories)) {
-      db_update('mpx_video')
+    if (((basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 1)) ||
+            ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0)) ||
+            (!_usanetwork_mpx_video_is_usa_video($categories))){
+        db_update('mpx_video')
         ->fields(array('status' => 0))
         ->condition('fid', $file->fid)
         ->execute();
+      $file->status = 0;
+      file_save($file);
     }
   }
 }

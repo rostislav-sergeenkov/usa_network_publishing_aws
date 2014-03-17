@@ -874,7 +874,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
         ->fields(array('status' => 0))
         ->condition('fid', $file->fid)
         ->execute();
-      $file->status = 0;
+      $file->published = 0;
       file_save($file);
     }
   }

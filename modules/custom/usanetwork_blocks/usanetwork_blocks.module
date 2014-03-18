@@ -429,18 +429,31 @@ function usanetwork_blocks_usa_detect_ieversion() {
 }
 
 function usanetwork_blocks_usa_follow_block() {
+  
+  $node = menu_get_object();
+ 
+  $fb_account = 'https://www.facebook.com/USANetwork';
+  $tw_account = 'usa_network';
+  
+  if (isset($node) && ($node->type == 'tv_show')) {
+    $fb_link = field_get_items('node', $node, 'field_usa_link_facebook');
+    $fb_account = isset($fb_link) ? $fb_link[0]['url'] : $fb_account;
+    $tw_link = field_get_items('node', $node, 'field_usa_link_twitter');
+    $tw_account = isset($tw_account) ? $tw_link[0]['url'] : $tw_account;
+  }
+  
   drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");',
           'inline');
   
   $facebook_like = '<div class="social-dropdown">';
-  $facebook_like .= '<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FUSANetwork&amp;width&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;locale=en_US&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>';
+  $facebook_like .= '<iframe src="//www.facebook.com/plugins/likebox.php?href=' . $fb_account . '&width&height=62&colorscheme=light&show_faces=false&locale=en_US&header=true&stream=false&show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>';
   $facebook_like .= '</div>';
   
   $output = '<div class="top-bar-social">';
-  $output .= l($facebook_like, 'https://www.facebook.com/USANetwork',
+  $output .= l($facebook_like, $fb_account,
     array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
   $output .= l('', 'https://twitter.com/intent/user',
-    array('query' => array('screen_name' => '@usa_network'),'attributes' => array('class' => array('usa-twitter-share'))));
+    array('query' => array('screen_name' => '@' . basename($tw_account)),'attributes' => array('class' => array('usa-twitter-share'))));
   $output .= '</div>';
  
   return $output;

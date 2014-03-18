@@ -4701,7 +4701,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
   .utilities-search .show-time {
     position: absolute;
-    right: 60px;
+    right: 92px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4728,7 +4728,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     transition-duration: 0.2s;
   }
   .utilities-search.search-active .show-time {
-    right: 290px;
+    right: 322px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4950,7 +4950,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities #block-usanetwork-blocks-usa-follow-block a .social-dropdown {
   width: 205px;
   background: #FFF;
-  max-height: 0px;
+  max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height 0.8s ease-in-out;
   -moz-transition: max-height 0.8s ease-in-out;

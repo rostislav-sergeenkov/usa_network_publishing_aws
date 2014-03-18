@@ -31,7 +31,7 @@
     }
     .show-time {
       position: absolute;
-      right: 60px;
+      right: 92px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
@@ -47,7 +47,7 @@
       @include transition-duration(0.2s);
     }
     .show-time {
-      right: 290px;
+      right: 322px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
@@ -226,7 +226,7 @@
         }
       }
       .social-dropdown {
-        width: 205px;
+        width: 292px;
         background: #FFF;
         max-height: 0;
         overflow: hidden;

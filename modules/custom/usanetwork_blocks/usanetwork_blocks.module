@@ -432,11 +432,13 @@ function usanetwork_blocks_usa_follow_block() {
   drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");',
           'inline');
   
-  $output = '';
+  $facebook_like = '<div class="social-dropdown">';
+  $facebook_like .= '<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FUSANetwork&amp;width&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;locale=en_US&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>';
+  $facebook_like .= '</div>';
   
-  $output .= '<div class="top-bar-social">';
-  $output .= l('', 'https://www.facebook.com/USANetwork',
-    array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank')));
+  $output = '<div class="top-bar-social">';
+  $output .= l($facebook_like, 'https://www.facebook.com/USANetwork',
+    array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
   $output .= l('', 'https://twitter.com/intent/user',
     array('query' => array('screen_name' => '@usa_network'),'attributes' => array('class' => array('usa-twitter-share'))));
   $output .= '</div>';

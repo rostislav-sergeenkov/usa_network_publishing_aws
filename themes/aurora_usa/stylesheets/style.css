@@ -266,7 +266,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #head-search .form-reset:after, #head-search .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
+#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #block-search-form .form-reset:after, #block-search-form .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -393,7 +393,7 @@ pre, code, kbd, tt {
   font-family: "avalonextra_light", "Proxima N W01 Thin Reg", Arial, sans-serif;
 }
 
-body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #head-search input[type="search"], .featured-asset .meta-head .show-name,
+body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #block-search-form input[type="search"], .featured-asset .meta-head .show-name,
 .featured-asset .meta-head .episode-title,
 .featured-asset .meta-head .details,
 .featured-asset .meta-head .description, .aspot .show-title, .lyris .form-item-email input {
@@ -4423,11 +4423,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities {
   height: 45px;
   background-color: black;
-  position: relative;
   z-index: 11;
   /* padding-left: 12px;
   border-bottom: 1px solid $gray-ultra-med; */
-  position: relative;
+  position: fixed;
+  width: 100%;
 }
 #utilities.utilities-head-show .utilties-main-group {
   height: 100%;
@@ -4675,11 +4675,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     height: 62px;
   }
 }
-#utilities.utilities-head-show #head-search {
+#utilities.utilities-head-show #block-search-form {
   margin-top: -40px;
 }
 @media (min-width: 641px) {
-  #utilities.utilities-head-show #head-search {
+  #utilities.utilities-head-show #block-search-form {
     margin-top: 10px;
   }
 }
@@ -4687,8 +4687,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 641px) {
   .utilities-search .utilties-main-group {
     float: left;
-    margin-right: -60px;
-    padding-right: 60px;
+    margin-right: -124px;
+    padding-right: 124px;
     width: 100%;
     -webkit-transition-property: margin, padding;
     -moz-transition-property: margin, padding;
@@ -4716,8 +4716,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 
   .utilities-search.search-active .utilties-main-group {
-    margin-right: -290px;
-    padding-right: 290px;
+    margin-right: -354px;
+    padding-right: 354px;
     -webkit-transition-property: padding;
     -moz-transition-property: padding;
     -o-transition-property: padding;
@@ -4742,7 +4742,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     margin-right: 302px;
   }
 }
-#head-search {
+#block-search-form {
   clear: both;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -4752,7 +4752,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   margin: 0 15px 0 0;
 }
 @media (min-width: 641px) {
-  #head-search {
+  #block-search-form {
     background-color: #3d3d3d;
     clear: none;
     display: inline;
@@ -4761,11 +4761,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     height: 40px;
     width: 40px;
   }
-  .search-active #head-search {
+  .search-active #block-search-form {
     width: 274px;
   }
 }
-#head-search input {
+#block-search-form input {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -4775,14 +4775,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border: none;
   vertical-align: middle;
 }
-#head-search .form-submit {
+#block-search-form .form-submit {
   font-size: 0;
   display: none;
 }
-#head-search .form-reset {
+#block-search-form .form-reset {
   display: none;
 }
-.search-active #head-search .form-reset {
+.search-active #block-search-form .form-reset {
   display: block;
   position: absolute;
   top: 48px;
@@ -4791,22 +4791,22 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border: 0;
   padding: 0;
 }
-.search-active #head-search .form-reset:after {
+.search-active #block-search-form .form-reset:after {
   font-size: 14px;
   content: "\e00a";
   color: #878785;
 }
 @media (min-width: 641px) {
-  .search-active #head-search .form-reset {
+  .search-active #block-search-form .form-reset {
     display: none;
   }
 }
-#head-search .form-type-searchfield {
+#block-search-form .form-type-searchfield {
   display: block;
   margin: 0;
   outline: none;
 }
-#head-search .form-type-searchfield label {
+#block-search-form .form-type-searchfield label {
   font-size: 14px;
   background-color: #3d3d3d;
   padding-top: 7px;
@@ -4826,12 +4826,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   -o-border-radius: 20px;
   border-radius: 20px;
 }
-.ie8 #head-search .form-type-searchfield label, .ie9 #head-search .form-type-searchfield label, .no-font-feature-settings #head-search .form-type-searchfield label {
+.ie8 #block-search-form .form-type-searchfield label, .ie9 #block-search-form .form-type-searchfield label, .no-font-feature-settings #block-search-form .form-type-searchfield label {
   background: url(../images/svgs/search.svg) no-repeat 8px 9px transparent;
   text-indent: -9999px;
 }
 @media (min-width: 641px) {
-  #head-search .form-type-searchfield label {
+  #block-search-form .form-type-searchfield label {
     font-size: 20px;
     background-color: transparent;
     -webkit-border-radius: 0;
@@ -4848,7 +4848,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     top: auto;
   }
 }
-#head-search input[type="search"] {
+#block-search-form input[type="search"] {
   outline: none;
   color: #878785;
   float: left;
@@ -4865,7 +4865,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border-radius: 15px;
 }
 @media (min-width: 641px) {
-  #head-search input[type="search"] {
+  #block-search-form input[type="search"] {
     -webkit-transition-property: width;
     -moz-transition-property: width;
     -o-transition-property: width;
@@ -4883,14 +4883,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     height: 30px;
   }
 }
-.search-active #head-search input[type="search"] {
+.search-active #block-search-form input[type="search"] {
   outline: none;
   font-size: 16px;
   padding: 5px 0 5px 10px;
   width: 100%;
 }
 @media (min-width: 641px) {
-  .search-active #head-search input[type="search"] {
+  .search-active #block-search-form input[type="search"] {
     font-size: 20px;
     padding-top: 6px;
     width: 224px;
@@ -4903,6 +4903,69 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     transition-duration: 0.2s;
+  }
+}
+
+#utilities #block-usanetwork-blocks-usa-follow-block {
+  float: right;
+  margin-top: 15px;
+  position: relative;
+  width: 64px;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
+  position: absolute;
+  top: -54px;
+  left: -36px;
+  /*      top: -7px;
+          left: 0px; //without search*/
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share {
+  height: 32px;
+  width: 32px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;
+  display: inline-block;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {
+  height: 32px;
+  width: 32px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;
+  display: inline-block;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share:hover {
+  height: 32px;
+  width: 32px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
+  display: inline-block;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share:hover {
+  height: 32px;
+  width: 32px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
+  display: inline-block;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share:hover .social-dropdown {
+  max-height: 1000px;
+  overflow: hidden;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a .social-dropdown {
+  width: 205px;
+  background: #FFF;
+  max-height: 0px;
+  overflow: hidden;
+  -webkit-transition: max-height 0.8s ease-in-out;
+  -moz-transition: max-height 0.8s ease-in-out;
+  -o-transition: max-height 0.8s ease-in-out;
+  transition: max-height 0.8s ease-in-out;
+  position: absolute;
+  right: 85px;
+  top: 50px;
+}
+@media (min-width: 641px) {
+  #utilities #block-usanetwork-blocks-usa-follow-block {
+    position: static;
+  }
+  #utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
+    position: static;
   }
 }
 
@@ -11491,6 +11554,7 @@ a[class*="day"] {
 
 .usa-wrap {
   background-color: #1f1f1f;
+  padding-top: 62px;
 }
 
 .usa-adrails[data-menu-position="closed"] .usa-wrap {

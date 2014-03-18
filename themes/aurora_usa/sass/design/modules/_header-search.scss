@@ -7,11 +7,11 @@
     }
   }
   &.utilities-head-show {
-    #head-search {
+    #block-search-form {
       margin-top: -40px;
     }
     @include breakpoint($bp-head-search) {
-      #head-search {
+      #block-search-form {
         margin-top: 10px;
       }
     }
@@ -23,8 +23,8 @@
   .utilities-search {
     .utilties-main-group {
       float: left;
-      margin-right: -60px;
-      padding-right: 60px;
+      margin-right: -124px;
+      padding-right: 124px;
       width: 100%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
@@ -41,8 +41,8 @@
   }
   .utilities-search.search-active {
     .utilties-main-group {
-      margin-right: -290px;
-      padding-right: 290px;
+      margin-right: -354px;
+      padding-right: 354px;
       @include transition-property(padding);
       @include transition-duration(0.2s);
     }
@@ -58,7 +58,7 @@
 }
 
 
-#head-search {
+#block-search-form {
   clear: both;
   @include border-radius(20px);
   margin: 0 15px 0 0;
@@ -182,3 +182,53 @@
 
 
 }// END #head-search
+
+#utilities {
+  #block-usanetwork-blocks-usa-follow-block {
+    float: right;
+    margin-top: 15px;
+    position: relative;
+    width: 64px;
+    .top-bar-social {
+      position: absolute;
+      top: -54px;
+      left: -36px;
+/*      top: -7px;
+        left: 0px; //without search*/
+    }
+    a {
+      &.usa-twitter-share {
+        height: 32px;
+        width: 32px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;; 
+        display: inline-block;
+      }
+      &.usa-facebook-share {
+        height: 32px;
+        width: 32px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;; 
+        display: inline-block;
+      }
+      &.usa-twitter-share:hover {
+        height: 32px;
+        width: 32px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;; 
+        display: inline-block;
+      }
+      &.usa-facebook-share:hover {
+        height: 32px;
+        width: 32px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;; 
+        display: inline-block;
+      }
+    }
+  }
+  @include breakpoint($bp-head-search) {
+    #block-usanetwork-blocks-usa-follow-block {
+      position: static;
+      .top-bar-social {
+        position: static;
+      }
+    }
+  }
+}

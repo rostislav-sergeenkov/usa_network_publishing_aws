@@ -68,7 +68,7 @@ function usanetwork_blocks_block_info() {
   );
   $blocks['usa_follow_block'] = array(
     'info' => t('USA: Follow us block'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   return $blocks;
@@ -440,16 +440,16 @@ function usanetwork_blocks_usa_follow_block() {
   if ($entity) {
     if ($entity->type == 'tv_show') {
       $fb_link = field_get_items($entity_type, $entity, 'field_usa_link_facebook');
-      $fb_account = isset($fb_link) ? $fb_link[0]['url'] : $fb_account;
+      $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
       $tw_link = field_get_items($entity_type, $entity, 'field_usa_link_twitter');
-      $tw_account = isset($tw_account) ? $tw_link[0]['url'] : $tw_account;
+      $tw_account = ($tw_account) ? $tw_link[0]['url'] : $tw_account;
     } else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video', ))) {
       $show = field_get_items($entity_type, $entity, 'field_show');
       $show_node = node_load($show[0]['target_id']);
       $fb_link = field_get_items($entity_type, $show_node, 'field_usa_link_facebook');
-      $fb_account = isset($fb_link) ? $fb_link[0]['url'] : $fb_account;
+      $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
       $tw_link = field_get_items($entity_type, $show_node, 'field_usa_link_twitter');
-      $tw_account = isset($tw_account) ? $tw_link[0]['url'] : $tw_account;
+      $tw_account = ($tw_account) ? $tw_link[0]['url'] : $tw_account;
     }
   }
   

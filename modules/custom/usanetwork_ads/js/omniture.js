@@ -29,16 +29,16 @@
       s.prop53 = s.eVar34 = location;
       s.prop54 = s.eVar35 = data.promoId;
 
-      s.bcf = function() {
-        if (link.target != '_blank') {
+      if (link.target != '_blank') {
+        s.bcf = function() {
           setTimeout(function() {
             window.location = link.href;
           }, 500);
-        }
-        else {
-          window.open(link.href, '_blank');
-        }
-      };
+        };
+      }
+      else {
+        window.open(link.href, '_blank');
+      }
 
       s.tl(this,'o','Promo Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -192,7 +192,7 @@
 
       /* Show pages */
       // A Spot
-      $('.show-aspot a').once('omniture-tracking', function() {
+      $('.show-aspot .node a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           e.preventDefault();
           var $self = $(this);

@@ -144,3 +144,41 @@ function usanetwork_search_node_view($node, $view_mode, $langcode) {
     }
   }
 }
+
+/**
+ * Implements hook_apachesolr_process_results().
+ */
+function usanetwork_search_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+  dpm($results);
+  // if for some reason unpublished content appears in search results remove it
+  foreach ($results as $id => $result) {
+    $entity_type = isset($result['fields']['entity_type']) ? $result['fields']['entity_type'] : false;
+    $entity_id = isset($result['fields']['entity_id']) ? $result['fields']['entity_id'] : false;
+
+    if ($entity_type && $entity_id) {
+      $entity = entity_load_single($entity_type, $entity_id);
+      if ($entity) {
+        $published = true;
+        switch ($entity_type) {
+          case 'node':
+            if ($entity->status == 0) {
+              $published = false;
+            }
+            break;
+          default:
+            if (isset($entity->status) && $entity->status == 0) {
+              $published = false;
+            }
+            if (isset($entity->published) && $entity->published == 0) {
+              $published = false;
+            }
+            break;
+        }
+      }
+
+      if (!$entity || !$published) {
+        unset($results[$id]);
+      }
+    }
+  }
+}

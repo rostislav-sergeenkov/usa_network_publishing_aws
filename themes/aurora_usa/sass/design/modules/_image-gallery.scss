@@ -3,111 +3,7 @@
   max-height: 767px;
 }
 .media-gallery {
-  .panels-section-row-media-gallery:nth-of-type(1) {
-    position: relative;
-    width: 1140px;
-      margin: 0 auto;
-    margin-bottom: 25px;
-    @include breakpoint($bp-home-narrowest) {
-      width: 300px;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      width: 615px;
-    }
-    @include breakpoint($bp-home-3-fence) {
-      width: 950px;
-    }
-    .field-name-field-caption {
-      display: none;  
-    }
-    .pane-node-title {
-      display: inline;
-      float: left;
-      margin-right: 15px;
-      h1 {
-        font-size: 26px;
-        display: inline;
-        white-space: nowrap;
-      }
-    }
-    .pane-node-field-season {
-      float: left;
-      height: 40px;
-      font-size: 24px;
-    }
-    .pane-node-field-episode {
-      height: 40px;
-      margin-top: 10px;
-      font-size: 24px;
-    }
-    .pane-node-field-media-items {
-      width: 810px;
-      float: left;
-      height: 610px;
-      @include breakpoint($bp-home-narrowest) {
-        width: 300px;
-        height: 225px;
-      }
-      @include breakpoint($bp-home-2-fence) {
-        width: 615px;
-        height: 460px;
-    }
-      @include breakpoint($bp-home-3-fence) {
-        width: 615px;
-        height: 460px;
-  }
-    }
-  }
-  .navigation-buttons{
-    float: right;
-    width: 300px;
-    .slider-navigation {
-      position: relative;
-      height: 90px;
-      width: 130px;
-      float: left;
-      @include breakpoint($bp-home-3-fence) {
-        height: 40px;
-      margin-bottom: 30px;
-      }
-    }
-    .counter{
-      margin-left: 150px;
-      margin-top: 35px;
-      font-size: 16pt;
-      @include breakpoint($bp-home-3-fence) {
-        margin-top: 18px;
-      }
-    }
-    @include breakpoint($bp-home-2-fence) {
-      float: left;
-    }
-  }
-  .image-caption {
-    float: right;
-    width: 300px;
-    .gallery-image-caption{
-      font-size: 24px;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      width: 100%;
-    }
-  }
-  .pane-dart-dart-tag-300x250-ifr-reload {
-    /*float: right;*/
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    @include breakpoint($bp-home-narrowest) {
-      display: none;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      display: none;
-    }
-  }
-  
-    
-/*  .flexslider {
+  .flexslider {
     .field-name-field-media-items{
       > li, > li .content {
         text-align: center;
@@ -115,6 +11,8 @@
         overflow: hidden;
         position: relative;
         white-space: nowrap;
+        font-size: 0;
+        height: 370px;
         .ie9 & {
           @include breakpoint($bp-image-size-ie) {
             height: 450px;
@@ -157,8 +55,17 @@
           height: 750px;
         }
       }
+      > li .content:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+      }
+      img {
+        vertical-align: middle;
+      }
     }
-  }*/
+  }
   .flex-direction-nav {
     a {
       width: 60px;
@@ -166,21 +73,39 @@
       line-height: 60px;
       @include border-radius(50%);
       border: 0;
-      background-color: rgba(64, 64, 64, 0.5);
-      &:hover {
-        background-color: rgba(64, 64, 64, 0.8);
-      }
+      top: 50%;
+      margin-top: -30px;
     }
+    @include breakpoint($bp-nav-nudge-1) {
     .flex-next {
-      left: 0;
-      left: 70px;
+        margin-right: -228px;
+        right: 50% !important;
     }
     .flex-prev {
-      left: 0;
+        margin-left: -228px;
+        left: 50% !important;
+  }
+    }
+    @include breakpoint($bp-nav-nudge-2) {
+      .flex-next {
+        margin-right: -346px;
+      }
+      .flex-prev {
+        margin-left: -346px;
+      }
+      width: 693px;
+    }
+    @include breakpoint($bp-nav-nudge-3) {
+      .flex-next {
+        margin-right: -464px;
+      }
+      .flex-prev {
+        margin-left: -464px;
+      }
     }
   }
 
-/*  .slide-meta {
+  .slide-meta {
     overflow: hidden;
     padding: 0 15px 0;
     text-align: center;
@@ -215,7 +140,7 @@
   }
   .panels-section-row:nth-of-type(1) {
     padding-bottom: 30px;
-  }*/
+  }
   .panels-section-row:nth-of-type(2) {
     @extend %un-margin;
     @extend %mid-gray-top-border;

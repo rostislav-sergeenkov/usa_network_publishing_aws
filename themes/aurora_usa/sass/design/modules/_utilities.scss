@@ -1,5 +1,6 @@
 #utilities {
   height: 45px;
+  opacity: 0.9;
   background-color: $black-true;
   z-index: 11;
   /* padding-left: 12px;
@@ -10,6 +11,7 @@
   @extend .clearfix;
 
   &.utilities-head-show {
+    opacity: 1;
     .utilties-main-group {
       height:100%;
       border-bottom: 1px solid $gray-ultra-med;
@@ -29,7 +31,7 @@
     @include float-left;
     color: $gray-light;
     font-size: 0;
-    margin: 5px 0 0 0;
+    margin: 2px 0 0 0;
     overflow: hidden;
     text-transform: uppercase;
     > a {
@@ -70,10 +72,10 @@
   .show-time {
     @extend %regular-headline;
     @include float-right;
-    color: $off-white-alt;
+    color: #bababa;
     display: none;
-    font-size: 22px;
-    margin: 17px 35px 0;
+    font-size: 18px;
+    margin: 15px 35px 0;
   }
 
   @include breakpoint(0px 400px) {
@@ -87,7 +89,7 @@
   }
 
   @include breakpoint($bp-on-now) {
-    height: 62px;
+    height: 50px;
     /* padding-left: 15px; */
 //    padding-top: 0;
     &.utilities-head-show {
@@ -102,10 +104,10 @@
       line-height: 52px;
     }
     .breadcrumb {
-      margin-top: 7px;
+      margin-top: 0;
       > a {
-        font-size: 30px;
-        line-height: 52px;
+        font-size: 24px;
+        line-height: 50px;
       }
       .separator {
         margin: -5px 13px 0 8px;

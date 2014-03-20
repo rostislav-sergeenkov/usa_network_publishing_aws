@@ -3,7 +3,7 @@
   &.search-active {
     height: 85px;
     @include breakpoint($bp-head-search) {
-      height: 62px;
+      height: 50px;
     }
   }
   &.utilities-head-show {
@@ -12,7 +12,7 @@
     }
     @include breakpoint($bp-head-search) {
       #block-search-form {
-        margin-top: 10px;
+        margin-top: 5px;
       }
     }
   }
@@ -23,36 +23,36 @@
   .utilities-search {
     .utilties-main-group {
       float: left;
-      margin-right: -124px;
-      padding-right: 124px;
+      margin-right: -156px;
+      padding-right: 156px;
       width: 100%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }
     .show-time {
       position: absolute;
-      right: 92px;
+      right: 130px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
     #head-sponsored {
-      margin-right: 72px;
+      margin-right: 150px;
     }
   }
   .utilities-search.search-active {
     .utilties-main-group {
-      margin-right: -354px;
-      padding-right: 354px;
+      margin-right: -386px;
+      padding-right: 386px;
       @include transition-property(padding);
       @include transition-duration(0.2s);
     }
     .show-time {
-      right: 322px;
+      right: 350px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
     #head-sponsored {
-      margin-right: 302px;
+      margin-right: 378px;
     }
   }
 }
@@ -66,7 +66,7 @@
     background-color: $gray-med;
     clear: none;
     @include float-right;
-    margin-top: 10px;
+    margin-top: 5px;
     height: 40px;
     width: 40px;
     .search-active & {
@@ -186,66 +186,75 @@
 #utilities {
   #block-usanetwork-blocks-usa-follow-block {
     float: right;
-    margin-top: 15px;
+    margin-top: 1px;
     position: relative;
-    width: 64px;
     .top-bar-social {
       position: absolute;
-      top: -54px;
-      left: -36px;
+      top: -40px;
+      right: 42px;
+      width: 60px;
 /*      top: -7px;
         left: 0px; //without search*/
     }
     a {
       &.usa-twitter-share {
-        height: 32px;
-        width: 32px;
-        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;; 
+        height: 30px;
+        width: 30px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_sm.png"); 
         display: inline-block;
       }
       &.usa-facebook-share {
-        height: 32px;
-        width: 32px;
-        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;; 
+        height: 30px;
+        width: 30px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_sm.png"); 
         display: inline-block;
       }
-      &.usa-twitter-share:hover {
-        height: 32px;
-        width: 32px;
-        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;; 
-        display: inline-block;
-      }
-      &.usa-facebook-share:hover {
-        height: 32px;
-        width: 32px;
-        background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;; 
-        display: inline-block;
+    }
         .social-dropdown {
-          max-height: 1000px;
+      width: 205px;
+      background: #FFF;
+      max-height: 0;
           overflow: hidden;
-        }
-      }
-      .social-dropdown {
-        width: 292px;
-        background: #FFF;
-        max-height: 0;
-        overflow: hidden;
         -webkit-transition: max-height 0.8s ease-in-out;
         -moz-transition: max-height 0.8s ease-in-out;
         -o-transition: max-height 0.8s ease-in-out;
         transition: max-height 0.8s ease-in-out;
         position: absolute;
-        right: 85px;
+      right: 103px;
         top: 50px;
       }
-    }
-  }
-  @include breakpoint($bp-head-search) {
-    #block-usanetwork-blocks-usa-follow-block {
+    
+    @include breakpoint($bp-head-search) {
       position: static;
       .top-bar-social {
         position: static;
+        width: 100%;
+    }
+      a {
+        &.usa-twitter-share {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header.png"); 
+          display: inline-block;
+        }
+        &.usa-facebook-share {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header.png"); 
+          display: inline-block;
+        }
+        &.usa-facebook-share:hover {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_over.png"); 
+          display: inline-block;
+          .social-dropdown {
+            max-height: 1000px;
+            overflow: hidden;
+          }
+        }
       }
     }
+    
   }
 }

@@ -95,7 +95,15 @@
     var tab_id = $(this).parent().parent().parent().attr('id');
     $('.onnow_social_nav').removeClass('onnow_social_selected');
     $('#navInstagramOnNow span').addClass('onnow_social_selected');
-    $('#'+tab_id+' #instagram').html('<script src = "http://cdn.echoenabled.com/sdk/v3/loader.js"></script><div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div><script type="text/javascript"> Echo.Loader.init(); </script>');
+    $('#'+tab_id+' #instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div>');
+    if (typeof Echo == 'undefined') {
+      $.getScript('http://cdn.echoenabled.com/sdk/v3/loader.js', function() {
+        Echo.Loader.init();
+      });
+    }
+    else {
+      Echo.Loader.init();
+    }
     $('#'+tab_id+' #echo-stream').hide();
     $('#'+tab_id+' #pinterest').hide();
     $('#'+tab_id+' #pinterest').empty();

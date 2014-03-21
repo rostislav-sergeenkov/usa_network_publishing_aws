@@ -65,7 +65,7 @@ Drupal.behaviors.usanetwork_tv_schedule = {
     var next_up_default_show_nid = '';
     var on_now_default_show_nid = '';
 
-    if (on_now_show == '' && tv_schedule != '') {
+    if (on_now_show == '' && tv_schedule !== '') {
       for (var i=0; i<tv_schedule.length-1; i++) {
         on_now_show = tv_schedule[i]['link'];
         on_now_text = tv_schedule[i]['episode_name'];
@@ -76,7 +76,7 @@ Drupal.behaviors.usanetwork_tv_schedule = {
           break;
         }
       }
-    } else if (tv_schedule != '' && on_now_index != '') {
+    } else if (tv_schedule !== '' && on_now_index !== '') {
       on_now_show = tv_schedule[on_now_index]['link'];
       on_now_text = tv_schedule[on_now_index]['episode_name'];
       next_up_text = tv_schedule[on_now_index+1]['episode_name'];

@@ -241,10 +241,20 @@ function aurora_usa_pager(&$variables) {
           'class' => array('pager-first'),
           'data' => theme('pager_first', array('text' => 1, 'element' => $element, 'parameters' => $parameters)),
         );
-        $items[] = array(
-          'class' => array('pager-ellipsis'),
-          'data' => '…',
-        );
+        if ($i >= $quantity) {
+          $items[] = array(
+            'class' => array('pager-ellipsis'),
+            'data' => '…',
+          );
+        }
+        else {
+          $i = 2;
+          $pager_last = $quantity;
+        }
+      }
+      if ($i >= ($pager_max - $quantity)) {
+        $i = $pager_max - $quantity + 1;
+        $pager_last = $pager_max;
       }
       // Now generate the actual pager piece.
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
@@ -638,6 +648,15 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    case 'field_episode':
+      // change episode display
+      if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#view_mode'] == '_custom_display')){
+        $episode = $vars['items'][0]['#markup'];
+        $episode_number = field_get_items('node', node_load($episode), 'field_episode_number');
+        $vars['items'][0]['#markup'] = $episode_number ? t(', Episode ') . $episode_number[0]['value'] : '';
+        break;
+      }
+      break;
   }
 }
 
@@ -652,6 +671,9 @@ function append_cover_to_media(&$vars) {
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
   $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
+  $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
+  $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
+  
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';
   // $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;

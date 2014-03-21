@@ -2,6 +2,8 @@
 (function ($) {
   Drupal.behaviors.homeSlides = {
     attach: function (context, settings) {
+
+
       $mainslider = $('#main-slider');
       $secondaryslider = $('.secondary-slider');
 
@@ -41,7 +43,65 @@
         });
       });
 
-    },
+
+      // A-SPOT VIDEOS
+      if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
+
+        var aspotVideoPauseFlexslider = function(slider) {
+          usa_debug('aspotVideoPauseFlexslider()');
+          if (typeof $mainslider.flexslider === 'function') {
+            // if we don't put a timeout here, the flexslider control
+            // nav ("the dots") never appear
+            setTimeout(function(){
+              usa_debug("pausing flexslider");
+              slider.flexslider("pause");
+              aspotVideoResumeFlexsliderPlay(slider);
+            }, 1000);
+          }
+          else {
+            setTimeout("aspotVideoPauseFlexslider(" + slider + ")", 500);
+          }
+        }
+
+        var aspotVideoResumeFlexsliderPlay = function(slider) {
+          usa_debug("aspotVideoResumeFlexsliderPlay()");
+          $('#aspot-video').bind('ended', function() {
+            usa_debug("video ended");
+            slider.css('opacity', 1);
+            $('#aspot-video-container').animate({'opacity': 0}, 400, function(){
+              slider.flexslider('play');
+              $(this).remove();
+            })
+          });
+        }
+
+        var aspotVideoDone = 0;
+        var aspotVideoShow = function() {
+          usa_debug('aspotVideoShow()');
+          if (!aspotVideoDone) { //  && $('#aspot-video-container').html() !== '') {
+            var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
+            if (aspotVideoAgent.indexOf('msie') != -1) {
+              var aspotVideoWidth = $('#main-slider').width();
+              var aspotVideoHeight = $('#main-slider').height();
+              aspotVideoTag = '<video id="aspot-video" width="' + aspotVideoWidth + '" height="' + aspotVideoHeight + '" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
+            }
+            $('#aspot-video-container').html(aspotVideoTag).show();
+            aspotVideoDone = 1
+          }
+          else {
+            setTimeout(aspotVideoShow, 500);
+          }
+        }
+
+        jQuery(document).ready(function(){
+          $mainslider.css('opacity', 0);
+          aspotVideoShow();
+          aspotVideoPauseFlexslider($mainslider);
+        });
+      } // usa_showAspotVideo
+
+
+    }
   };
 
 }(jQuery));

@@ -121,7 +121,7 @@ Drupal.behaviors.switch_nav = {
       $('#pinterest').hide();
       $('#pinterest').empty();
       $('#instagram').hide();
-      $('#sticker').html('<script>var s=document.createElement("script"); s.src="//widgets.getglue.com/checkin.js"; var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(s,n);</script><a class="glue-checkin-widget" href="' +getGlueUrl+ '" data-type="conversation" data-width="530" data-headerBgColor="#dddddd" data-bgColor="#ffffff" data-rolloverBgColor="#f9f9f9" data-borderColor="#d3d3d3" data-replyBgColor="#f1f2f4" data-linkColor="#2269b9" data-textColor="#000000" data-subtextColor="#ababab">'+getGlueShowName+'</a>');
+      $('#sticker').html('<script>(function() { var s=document.createElement("script"); s.src="//widgets.getglue.com/checkin.js"; var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(s,n); })();</script><a class="glue-checkin-widget" href="' +getGlueUrl+ '" data-type="conversation" data-width="530" data-headerBgColor="#dddddd" data-bgColor="#ffffff" data-rolloverBgColor="#f9f9f9" data-borderColor="#d3d3d3" data-replyBgColor="#f1f2f4" data-linkColor="#2269b9" data-textColor="#000000" data-subtextColor="#ababab">'+getGlueShowName+'</a>');
 //      $('#sticker').html('<div id="showHomepageGetGlueMsg">Check-in and unlock exclusive ' + toTitleCase(getGlueShowName) + ' GetGlue stickers</div><script type="text/javascript" src="http://widgets.getglue.com/checkin.js"></script><a href="http://getglue.com/tv_shows/' + getGlueShowName + '" class="glue-checkin-widget" data-width="300" data-type="sticker" data-sticker="' + getGlueUrl + '" data-bgColor="#EFEFEF">' + getGlueShowName + '</a>');
       $('#get-glue').show();
       $('#join-chatter').hide();
@@ -140,7 +140,15 @@ Drupal.behaviors.switch_nav = {
       $('#pinterest').empty();
       $('#sticker').empty();
       $('#get-glue').hide();
-      $('#instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div><script type="text/javascript"> Echo.Loader.init(); </script>');
+      $('#instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div>');
+      if (typeof Echo == 'undefined') {
+        $.getScript('http://cdn.echoenabled.com/sdk/v3/loader.js', function() {
+          Echo.Loader.init();
+        });
+      }
+      else {
+        Echo.Loader.init();
+      }
       $('#instagram').show();
       $('#join-chatter').hide();
       $('#join-tweets').hide();

@@ -4430,8 +4430,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   width: 100%;
 }
 #utilities #utilities-wrap {
-  opacity: 0.9;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   height: 100%;
 }
 #utilities.utilities-head-show .utilties-main-group {

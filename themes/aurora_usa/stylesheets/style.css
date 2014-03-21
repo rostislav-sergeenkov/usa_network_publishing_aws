@@ -4422,16 +4422,17 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 
 #utilities {
   height: 45px;
-  opacity: 0.9;
-  background-color: black;
+  opacity: 1;
   z-index: 11;
   /* padding-left: 12px;
   border-bottom: 1px solid $gray-ultra-med; */
   position: fixed;
   width: 100%;
 }
-#utilities.utilities-head-show {
-  opacity: 1;
+#utilities #utilities-wrap {
+  opacity: 0.9;
+  background-color: black;
+  height: 100%;
 }
 #utilities.utilities-head-show .utilties-main-group {
   height: 100%;
@@ -4443,8 +4444,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities h1#page-title {
   display: inline;
   float: left;
-  margin: 5px 0 0 10px;
+  margin: 0 0 0 10px;
   line-height: 40px;
+  white-space: nowrap;
 }
 #utilities .breadcrumb {
   display: inline;
@@ -4493,7 +4495,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   *display: inline;
   color: white;
   text-transform: none;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 40px;
 }
 #utilities .breadcrumb .show-section a {
@@ -4522,16 +4524,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 640px) {
   #utilities {
     height: 50px;
-    /* padding-left: 15px; */
   }
   #utilities.utilities-head-show #head-show {
     padding-left: 15px;
   }
   #utilities h1#page-title {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 52px;
-    margin-top: 7px;
-    line-height: 52px;
+    line-height: 50px;
   }
   #utilities .breadcrumb {
     margin-top: 0;
@@ -4546,7 +4546,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     line-height: 52px;
   }
   #utilities .breadcrumb .show-section {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 52px;
   }
 }
@@ -4691,8 +4691,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 641px) {
   .utilities-search .utilties-main-group {
     float: left;
-    margin-right: -156px;
-    padding-right: 156px;
+    margin-right: -180px;
+    padding-right: 180px;
     width: 100%;
     -webkit-transition-property: margin, padding;
     -moz-transition-property: margin, padding;
@@ -4705,7 +4705,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
   .utilities-search .show-time {
     position: absolute;
-    right: 130px;
+    right: 140px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4720,8 +4720,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 
   .utilities-search.search-active .utilties-main-group {
-    margin-right: -386px;
-    padding-right: 386px;
+    margin-right: -394px;
+    padding-right: 394px;
     -webkit-transition-property: padding;
     -moz-transition-property: padding;
     -o-transition-property: padding;
@@ -4732,7 +4732,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     transition-duration: 0.2s;
   }
   .utilities-search.search-active .show-time {
-    right: 350px;
+    right: 360px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4910,14 +4910,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
-#utilities #block-usanetwork-blocks-usa-follow-block {
-  float: right;
-  margin-top: 1px;
-  position: relative;
-}
 #utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
   position: absolute;
-  top: -40px;
+  top: 5px;
   right: 42px;
   width: 60px;
   /*      top: -7px;
@@ -4945,16 +4940,19 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   -o-transition: max-height 0.8s ease-in-out;
   transition: max-height 0.8s ease-in-out;
   position: absolute;
-  right: 103px;
+  right: 111px;
   top: 50px;
 }
 @media (min-width: 641px) {
   #utilities #block-usanetwork-blocks-usa-follow-block {
     position: static;
+    float: right;
+    margin-top: 1px;
   }
   #utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
     position: static;
     width: 100%;
+    margin-right: 8px;
   }
   #utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share {
     height: 48px;

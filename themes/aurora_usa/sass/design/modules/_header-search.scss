@@ -23,15 +23,15 @@
   .utilities-search {
     .utilties-main-group {
       float: left;
-      margin-right: -156px;
-      padding-right: 156px;
+      margin-right: -180px;
+      padding-right: 180px;
       width: 100%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }
     .show-time {
       position: absolute;
-      right: 130px;
+      right: 140px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
@@ -41,13 +41,13 @@
   }
   .utilities-search.search-active {
     .utilties-main-group {
-      margin-right: -386px;
-      padding-right: 386px;
+      margin-right: -394px;
+      padding-right: 394px;
       @include transition-property(padding);
       @include transition-duration(0.2s);
     }
     .show-time {
-      right: 350px;
+      right: 360px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
@@ -185,12 +185,9 @@
 
 #utilities {
   #block-usanetwork-blocks-usa-follow-block {
-    float: right;
-    margin-top: 1px;
-    position: relative;
     .top-bar-social {
       position: absolute;
-      top: -40px;
+      top: 5px;
       right: 42px;
       width: 60px;
 /*      top: -7px;
@@ -220,15 +217,18 @@
         -o-transition: max-height 0.8s ease-in-out;
         transition: max-height 0.8s ease-in-out;
         position: absolute;
-      right: 103px;
+      right: 111px;
         top: 50px;
       }
     
     @include breakpoint($bp-head-search) {
       position: static;
+      float: right;
+      margin-top: 1px;
       .top-bar-social {
         position: static;
         width: 100%;
+        margin-right: 8px;
     }
       a {
         &.usa-twitter-share {
@@ -255,6 +255,5 @@
         }
       }
     }
-    
   }
-}
+  }

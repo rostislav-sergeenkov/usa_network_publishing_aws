@@ -11,10 +11,13 @@
   #utilities-wrap {
     background-color: rgba(0, 0, 0, 0.9);
     height: 100%;
+    
   }
   &.utilities-head-show {
     .utilties-main-group {
       height:100%;
+    }
+    #utilities-wrap {
       border-bottom: 1px solid $gray-ultra-med;
     }
     #head-show {

@@ -486,11 +486,13 @@ function usanetwork_on_now_panel_js() {
   }
 
   if (!empty($arg[1]) && isset($_GET['on_now'])) {
+    $arg[1] = 41;
     $on_now = node_load($arg[1]);
     $output = usanetwork_on_now_panel_node_content($on_now, check_plain($_GET['on_now']));
   }
 
   if (!empty($arg[2]) && isset($_GET['next_up'])) {
+    $arg[2] = 41;
     $next_up = node_load($arg[2]);
     $output = usanetwork_on_now_panel_node_content($next_up, check_plain($_GET['next_up']));
   }

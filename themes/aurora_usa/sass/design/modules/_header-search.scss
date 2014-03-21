@@ -25,7 +25,7 @@
       float: left;
       margin-right: -180px;
       padding-right: 180px;
-      width: 100%;
+      /*width: 100%;*/
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }

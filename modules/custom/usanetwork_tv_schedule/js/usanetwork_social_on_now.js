@@ -98,12 +98,10 @@
     $('#'+tab_id+' #instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div>');
     if (typeof Echo == 'undefined') {
       $.getScript('http://cdn.echoenabled.com/sdk/v3/loader.js', function() {
-        alert('preload');
         Echo.Loader.init();
       });
     }
     else {
-      alert('init');
       Echo.Loader.init();
     }
     $('#'+tab_id+' #echo-stream').hide();

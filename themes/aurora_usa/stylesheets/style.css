@@ -4912,22 +4912,34 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 
 #utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
   position: absolute;
-  top: 5px;
+  top: -4px;
   right: 42px;
-  width: 60px;
+  width: 74px;
   /*      top: -7px;
           left: 0px; //without search*/
 }
 #utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share {
-  height: 30px;
-  width: 30px;
+  height: 48px;
+  width: 37px;
   background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_sm.png");
   display: inline-block;
 }
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share:hover {
+  height: 48px;
+  width: 37px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_sm_over.png");
+  display: inline-block;
+}
 #utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {
-  height: 30px;
-  width: 30px;
+  height: 48px;
+  width: 37px;
   background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_sm.png");
+  display: inline-block;
+}
+#utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share:hover {
+  height: 48px;
+  width: 37px;
+  background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_sm_over.png");
   display: inline-block;
 }
 #utilities #block-usanetwork-blocks-usa-follow-block .social-dropdown {
@@ -4958,6 +4970,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     height: 48px;
     width: 48px;
     background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header.png");
+    display: inline-block;
+  }
+  #utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share:hover {
+    height: 48px;
+    width: 48px;
+    background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png");
     display: inline-block;
   }
   #utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {

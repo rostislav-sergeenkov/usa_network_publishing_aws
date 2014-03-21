@@ -140,7 +140,15 @@ Drupal.behaviors.switch_nav = {
       $('#pinterest').empty();
       $('#sticker').empty();
       $('#get-glue').hide();
-      $('#instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div><script type="text/javascript"> Echo.Loader.init(); </script>');
+      $('#instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div>');
+      if (typeof Echo == 'undefined') {
+        $.getScript('http://cdn.echoenabled.com/sdk/v3/loader.js', function() {
+          Echo.Loader.init();
+        });
+      }
+      else {
+        Echo.Loader.init();
+      }
       $('#instagram').show();
       $('#join-chatter').hide();
       $('#join-tweets').hide();

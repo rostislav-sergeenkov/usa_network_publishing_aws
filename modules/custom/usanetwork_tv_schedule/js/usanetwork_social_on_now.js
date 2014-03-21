@@ -79,7 +79,7 @@
     var tab_id = $(this).parent().parent().parent().attr('id');
     $('.onnow_social_nav').removeClass('onnow_social_selected');
     $('#navGetGlueOnNow span').addClass('onnow_social_selected');
-    $('#'+tab_id+' #sticker').html('<script>var s=document.createElement("script"); s.src="//widgets.getglue.com/checkin.js"; var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(s,n);</script><a class="glue-checkin-widget" href="' +getGlueUrl+ '" data-type="conversation" data-width="530" data-height="889" data-headerBgColor="#dddddd" data-bgColor="#ffffff" data-rolloverBgColor="#f9f9f9" data-borderColor="#d3d3d3" data-replyBgColor="#f1f2f4" data-linkColor="#2269b9" data-textColor="#000000" data-subtextColor="#ababab">'+getGlueShowName+'</a>');
+    $('#'+tab_id+' #sticker').html('<script>(function() { var s=document.createElement("script"); s.src="//widgets.getglue.com/checkin.js"; var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(s,n); })();</script><a class="glue-checkin-widget" href="' +getGlueUrl+ '" data-type="conversation" data-width="530" data-height="889" data-headerBgColor="#dddddd" data-bgColor="#ffffff" data-rolloverBgColor="#f9f9f9" data-borderColor="#d3d3d3" data-replyBgColor="#f1f2f4" data-linkColor="#2269b9" data-textColor="#000000" data-subtextColor="#ababab">'+getGlueShowName+'</a>');
     $('#'+tab_id+' #echo-stream').hide();
     $('#'+tab_id+' #pinterest').hide();
     $('#'+tab_id+' #pinterest').empty();
@@ -95,7 +95,15 @@
     var tab_id = $(this).parent().parent().parent().attr('id');
     $('.onnow_social_nav').removeClass('onnow_social_selected');
     $('#navInstagramOnNow span').addClass('onnow_social_selected');
-    $('#'+tab_id+' #instagram').html('<script src = "http://cdn.echoenabled.com/sdk/v3/loader.js"></script><div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div><script type="text/javascript"> Echo.Loader.init(); </script>');
+    $('#'+tab_id+' #instagram').html('<div class="echo-canvas echo-canvas-'+instagramShowId+'" data-canvas-appkey="echo.echo.streamserver.usanetwork.prod" data-canvas-id="usanetwork/'+instagramShowId+'"></div>');
+    if (typeof Echo == 'undefined') {
+      $.getScript('http://cdn.echoenabled.com/sdk/v3/loader.js', function() {
+        Echo.Loader.init();
+      });
+    }
+    else {
+      Echo.Loader.init();
+    }
     $('#'+tab_id+' #echo-stream').hide();
     $('#'+tab_id+' #pinterest').hide();
     $('#'+tab_id+' #pinterest').empty();

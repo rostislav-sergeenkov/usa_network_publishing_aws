@@ -11,6 +11,8 @@
         overflow: hidden;
         position: relative;
         white-space: nowrap;
+        font-size: 0;
+        height: 370px;
         .ie9 & {
           @include breakpoint($bp-image-size-ie) {
             height: 450px;
@@ -53,6 +55,15 @@
           height: 750px;
         }
       }
+      > li .content:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+      }
+      img {
+        vertical-align: middle;
+      }
     }
   }
   .flex-direction-nav {
@@ -62,16 +73,18 @@
       line-height: 60px;
       @include border-radius(50%);
       border: 0;
+      top: 50%;
+      margin-top: -30px;
     }
     @include breakpoint($bp-nav-nudge-1) {
-      .flex-next {
+    .flex-next {
         margin-right: -228px;
         right: 50% !important;
-      }
-      .flex-prev {
+    }
+    .flex-prev {
         margin-left: -228px;
         left: 50% !important;
-      }
+  }
     }
     @include breakpoint($bp-nav-nudge-2) {
       .flex-next {
@@ -137,7 +150,7 @@
   }
 }
 .media-gallery {
-  .menu-label {
+      .menu-label {
     @extend %secondary-menu-label;
   }
   .filter-dropdown {

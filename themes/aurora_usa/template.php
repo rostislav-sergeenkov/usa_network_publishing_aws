@@ -241,20 +241,10 @@ function aurora_usa_pager(&$variables) {
           'class' => array('pager-first'),
           'data' => theme('pager_first', array('text' => 1, 'element' => $element, 'parameters' => $parameters)),
         );
-        if ($i >= $quantity) {
-          $items[] = array(
-            'class' => array('pager-ellipsis'),
-            'data' => '…',
-          );
-        }
-        else {
-          $i = 2;
-          $pager_last = $quantity;
-        }
-      }
-      if ($i >= ($pager_max - $quantity)) {
-        $i = $pager_max - $quantity + 1;
-        $pager_last = $pager_max;
+        $items[] = array(
+          'class' => array('pager-ellipsis'),
+          'data' => '…',
+        );
       }
       // Now generate the actual pager piece.
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
@@ -277,7 +267,7 @@ function aurora_usa_pager(&$variables) {
           );
         }
       }
-      if ($i < $pager_max) {
+      if ($i <= $pager_max) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
           'data' => '…',

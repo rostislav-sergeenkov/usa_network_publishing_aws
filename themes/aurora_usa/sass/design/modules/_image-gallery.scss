@@ -3,56 +3,56 @@
   max-height: 767px;
 }
 .media-gallery {
-  .flexslider {
-    .field-name-field-media-items{
+  .panels-section-row-media-gallery:nth-of-type(1) {
+    font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+        position: relative;
+    width: 1140px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    @include breakpoint($bp-home-narrowest) {
+      width: 260px;
+    }
+    @include breakpoint($bp-home-2-fence) {
+      width: 641px;
+    }
+    @include breakpoint($bp-home-3-fence) {
+      width: 950px;
+    }
+    .field-name-field-caption {
+      display: none;  
+    }
+    .pane-node-field-media-items {
+      width: 810px;
+      height: 610px;
+      float: left;
+      @include breakpoint($bp-home-narrowest) {
+        width: 256px;
+        height: 192px;
+        float: none;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        width: 641px;
+        height: 479px;
+        float: none;
+      }
+      @include breakpoint($bp-home-3-fence) {
+        width: 641px;
+        height: 479px;
+      }
+    }
+    .field-name-field-media-items {
       > li, > li .content {
         text-align: center;
-        position: relative;
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
         font-size: 0;
-        height: 370px;
-        .ie9 & {
-          @include breakpoint($bp-image-size-ie) {
-            height: 450px;
-          }
+        height: 610px;
+        @include breakpoint($bp-home-narrowest) {
+          height: 192px;
         }
-        @include breakpoint($bp-image-size-matrix-1) {
-          height: 370px;
+        @include breakpoint($bp-home-2-fence) {
+          height: 479px;
         }
-        @include breakpoint($bp-image-size-matrix-2) {
-          height: 470px;
-        }
-        @include breakpoint($bp-image-size-matrix-3) {
-          height: 570px;
-        }
-        @include breakpoint($bp-image-size-matrix-4) {
-          height: 670px;
-        }
-        @include breakpoint($bp-image-size-matrix-5) {
-          height: 770px;
-        }
-        @include breakpoint($bp-image-size-matrix-6) {
-          height: auto;
-        }
-        @include breakpoint($bp-image-size-matrix-7) {
-          height: 250px;
-        }
-        @include breakpoint($bp-image-size-matrix-8) {
-          height: 350px;
-        }
-        @include breakpoint($bp-image-size-matrix-9) {
-          height: 450px;
-        }
-        @include breakpoint($bp-image-size-matrix-10) {
-          height: 550px;
-        }
-        @include breakpoint($bp-image-size-matrix-11) {
-          height: 650px;
-        }
-        @include breakpoint($bp-image-size-matrix-12) {
-          height: 750px;
+        @include breakpoint($bp-home-3-fence) {
+          height: 479px;
         }
       }
       > li .content:before {
@@ -65,81 +65,149 @@
         vertical-align: middle;
       }
     }
+    .pane-node-title {
+      width: 300px;
+      float: right;
+      @include breakpoint($bp-home-narrowest) {
+        width: 260px;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        float: none;
+        clear: both;
+      }
+    h1 {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 25px;
+        white-space: nowrap;
+        margin: 24px 0 0;
+        @include breakpoint($bp-home-narrowest) {
+          font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+          font-size: 13px;
+          margin: 10px 0 -5px;
+    }
+        @include breakpoint($bp-home-2-fence) {
+          font-size: 19px;
+          margin: 18px 0 0px;
+        }
+        @include breakpoint($bp-home-3-fence) {
+          font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+    margin-top: 0;
+          font-size: 20px;
+        }
+      }
+    }
+    .pane-node-field-season {
+      float: left;
+      font-size: 14px;
+      margin-left: 30px;
+      @include breakpoint($bp-home-narrowest) {
+        margin-left: 0;
+        font-size: 8px;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        margin-left: 0;
+        font-size: 12px;
+      }
+      @include breakpoint($bp-home-3-fence) {
+        font-size: 13px;
+        margin-left: 10px;
+      }
+    }
+    .pane-node-field-episode {
+      font-size: 14px;
+      float: left;
+      @include breakpoint($bp-home-narrowest) {
+        font-size: 8px;
+        float: none;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        font-size: 12px;
+        float: none;
+      }
+      @include breakpoint($bp-home-3-fence) {
+        font-size: 13px;
+      }
+    }
+  }
+  .image-caption {
+    float: right;
+    width: 300px;
+    padding-right: 60px;
+    .gallery-image-caption{
+      font-size: 20px;
+      @include breakpoint($bp-home-narrowest) {
+        font-size: 11px;
+        clear: left;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        font-size: 15px;
+      }
+      @include breakpoint($bp-home-3-fence) {
+        font-size: 19px;
+        margi-right: 100px;
+      }
+    }
+    @include breakpoint($bp-home-narrowest) {
+      width: 60%;
+      float: left;
+      padding-right: 0;
+    }
+    @include breakpoint($bp-home-2-fence) {
+      width: 75%;
+      float: left;
+      padding-right: 0;
+    }
+  }
+  .navigation-counter{
+    float: right;
+    width: 300px;
+    .counter{
+      margin-top: 35px;
+      font-size: 20px;
+      @include breakpoint($bp-home-narrowest) {
+        font-size: 10px;
+        margin-top: 10px;
+      }
+      @include breakpoint($bp-home-2-fence) {
+        font-size: 16px;
+        margin-top: 17px;
+      }
+      @include breakpoint($bp-home-3-fence) {
+        margin-top: 18px;
+      }
+    }
+    @include breakpoint($bp-home-narrowest) {
+      float: right;
+      width: auto;
+    }
+    @include breakpoint($bp-home-2-fence) {
+      float: right;
+      width: auto;
+    }
+  }
+  .pane-dart-dart-tag-300x250-ifr-reload {
+    /*float: right;*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @include breakpoint($bp-home-narrowest) {
+      display: none;
+    }
+    @include breakpoint($bp-home-2-fence) {
+      display: none;
+    }
   }
   .flex-direction-nav {
     a {
-      width: 60px;
-      height: 60px;
-      line-height: 60px;
-      @include border-radius(50%);
-      border: 0;
       top: 50%;
       margin-top: -30px;
-    }
-    @include breakpoint($bp-nav-nudge-1) {
-    .flex-next {
-        margin-right: -228px;
-        right: 50% !important;
-    }
-    .flex-prev {
-        margin-left: -228px;
-        left: 50% !important;
-  }
-    }
-    @include breakpoint($bp-nav-nudge-2) {
-      .flex-next {
-        margin-right: -346px;
+      &.flex-next {
+        right: 0;
       }
-      .flex-prev {
-        margin-left: -346px;
-      }
-      width: 693px;
-    }
-    @include breakpoint($bp-nav-nudge-3) {
-      .flex-next {
-        margin-right: -464px;
-      }
-      .flex-prev {
-        margin-left: -464px;
+      &.flex-prev {
+        left: 0;
       }
     }
-  }
-
-  .slide-meta {
-    overflow: hidden;
-    padding: 0 15px 0;
-    text-align: center;
-    h1 {
-      @include inline-block;
-      font-size: 16px;
-      vertical-align: middle;
-      font-weight: normal;
-      margin: 0 1em 0 0;
-    }
-    @include breakpoint($bp-nav-nudge-1) {
-      margin: 0 auto;
-    }
-    @include breakpoint($bp-grid-small-meta-matrix-1) {
-      width: 457px;
-    }
-    @include breakpoint($bp-grid-small-meta-matrix-2) {
-      width: 693px;
-    }
-    @include breakpoint($bp-grid-small-meta-matrix-3) {
-      width: 929px;
-    }
-    @include breakpoint($bp-nav-nudge-2) {
-      text-align: left;
-    }
-  }
-  .share-icons {
-    @include inline-block;
-    @include breakpoint($bp-nav-nudge-2) {
-      @include float-right;
-    }
-  }
-  .panels-section-row:nth-of-type(1) {
-    padding-bottom: 30px;
   }
   .panels-section-row:nth-of-type(2) {
     @extend %un-margin;

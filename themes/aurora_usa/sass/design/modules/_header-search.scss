@@ -229,7 +229,7 @@
         -o-transition: max-height 0.8s ease-in-out;
         transition: max-height 0.8s ease-in-out;
         position: absolute;
-      right: 111px;
+      right: 0;
         top: 50px;
       }
     
@@ -260,6 +260,7 @@
           width: 48px;
           background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header.png"); 
           display: inline-block;
+          position: relative;
         }
         &.usa-facebook-share:hover {
           height: 48px;

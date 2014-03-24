@@ -76,12 +76,14 @@
         clear: both;
       }
     h1 {
-        font-family: Verdana, Geneva, sans-serif;
+        /*font-family: Verdana, Geneva, sans-serif;*/
+        /*font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;*/
+        font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
         font-size: 25px;
         white-space: nowrap;
         margin: 24px 0 0;
         @include breakpoint($bp-home-narrowest) {
-          font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+          /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
           font-size: 13px;
           margin: 10px 0 -5px;
     }
@@ -90,7 +92,7 @@
           margin: 18px 0 0px;
         }
         @include breakpoint($bp-home-3-fence) {
-          font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+          /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     margin-top: 0;
           font-size: 20px;
         }
@@ -252,6 +254,9 @@
       @include breakpoint($bp-grid-small-3) {
         @include secondary-menu-wide($secondary-menu-bg);
       }
+    }
+    .menu-item a {
+      z-index: 0;
     }
 
     h2 {

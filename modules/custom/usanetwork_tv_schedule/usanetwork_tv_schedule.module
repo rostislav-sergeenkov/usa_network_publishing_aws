@@ -261,8 +261,6 @@ function usanetwork_tv_schedule_on_now_block() {
     }
   }
 
-  $show_index = 9;
-
   // expose default et show for rest of the world
   $vars .= "var on_now_default_show = '" . $show_name . "';";
   // expose default show nid for on now panel

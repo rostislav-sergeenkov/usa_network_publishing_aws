@@ -1,5 +1,7 @@
 <?php
 
+define('USANETWORK_TV_SCHEDULE_DEFAULT_TZ', 'America/New_York');
+
 /**
  * Implementation of hook_menu().
  */
@@ -631,8 +633,10 @@ function _usanetwork_onnow_upnext_node() {
 
   foreach ($tv_schedule as $item) {
     $item = (array) $item;
-    $start_time = strtotime($item['CalendarScheduleDate'] . ' ' . $item['StartTime']);
-    $end_time = strtotime($item['CalendarScheduleDate'] . ' ' . $item['EndTime']);
+    $start_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['StartTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TZ));
+    $start_time = $start_time->getTimestamp();
+    $end_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['EndTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TZ));
+    $end_time = $end_time->getTimestamp();
     $show_name = trim(preg_replace('/\(.*\)/', '', $item['ProgramName']));
 
     if ($start_time <= $now && $end_time >= $now) {

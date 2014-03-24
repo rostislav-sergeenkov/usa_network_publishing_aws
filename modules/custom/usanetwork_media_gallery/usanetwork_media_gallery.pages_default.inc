@@ -217,7 +217,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'first';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_season';
+    $pane->subtype = 'node:field_media_items';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

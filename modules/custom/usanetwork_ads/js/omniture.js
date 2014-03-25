@@ -339,7 +339,7 @@
       });
 
       // Show selection drop-down
-      $('#block-usanetwork-video-usa-show-video-nav ul.shows a').once('omniture-tracking', function() {
+      $('#block-usanetwork-video-usa-show-video-nav ul.shows a, #block-usanetwork-video-usa-global-video-nav ul.shows a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
@@ -363,7 +363,7 @@
       });
 
       // Show video categories
-      $('#block-usanetwork-video-usa-show-video-nav ul.categories a').once('omniture-tracking', function() {
+      $('#block-usanetwork-video-usa-show-video-nav ul.categories a, #block-usanetwork-video-usa-global-video-nav ul.categories a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();

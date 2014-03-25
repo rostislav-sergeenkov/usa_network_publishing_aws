@@ -465,8 +465,15 @@ function usanetwork_blocks_usa_follow_block() {
   $output = '<div class="top-bar-social">';
   $output .= l($facebook_like, $fb_account,
     array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
-  $output .= l('', 'https://twitter.com/intent/user',
-    array('query' => array('screen_name' => '@' . basename($tw_account)),'attributes' => array('class' => array('usa-twitter-share'))));
+  
+  $output .= l('', 'https://twitter.com/'. basename($tw_account),
+    array('query' => array('screen_name' => '@' . basename($tw_account)),'attributes' => array('class' => array('usa-twitter-share'), 'target' => '_blank')));
+ 
+  $output .= '<div class="twitter-dropdown"><div class="twitter-wrap">';
+  $output .= l('Follow @'. basename($tw_account), 'https://twitter.com/'. basename($tw_account),
+    array('attributes' => array('class' => array('twitter-follow-button'), 'data-show-count' => array('true'), 'data-size' => array('medium'), 'height' => array('100px'))));
+  $output .= '</div></div>';
+  
   $output .= '</div>';
  
   return $output;

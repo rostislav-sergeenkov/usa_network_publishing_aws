@@ -273,8 +273,8 @@
       });
 
       // Showpage more button
-      $('.expandable-toggle .more').once('omniture-tracking', function() {
-        $(this).on('click', function(e) {
+      $('.expandable-toggle').once('omniture-tracking', function() {
+        $(this).on('click', '.more', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             s.linkTrackVars = 'events,eVar65,prop65';

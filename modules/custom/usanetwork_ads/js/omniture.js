@@ -273,15 +273,17 @@
       });
 
       // Showpage more button
-      $('.expandable-toggle').once('omniture-tracking', function() {
-        $(this).on('click', '.more', function(e) {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            e.preventDefault();
-            s.linkTrackVars = 'events,eVar65,prop65';
-            s.linkTrackEvents = s.events = 'event65';
-            s.eVar65 = s.prop65 = 'Show Page : More';
-            s.tl(this,'o','Show Page : More');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+      $('.node-type-tv-show .expandable-toggle-wrap').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          var $self = $(this);
+          if ($self.find('.more:visible').length == 0) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              s.linkTrackVars = 'events,eVar65,prop65';
+              s.linkTrackEvents = s.events = 'event65';
+              s.eVar65 = s.prop65 = 'Show Page : More';
+              s.tl(this,'o','Show Page : More');
+              s.manageVars('clearVars',s.linkTrackVars,1);
+            }
           }
         });
       });

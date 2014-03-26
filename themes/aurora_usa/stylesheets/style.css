@@ -5455,16 +5455,13 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-  /*font-family: Verdana, Geneva, sans-serif;*/
   /*font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;*/
   font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
   font-size: 25px;
-  white-space: nowrap;
-  margin: 24px 0 0;
+  margin: 24px 0 5px;
 }
 @media (max-width: 644px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-    /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     font-size: 13px;
     margin: 10px 0 -5px;
   }
@@ -5477,7 +5474,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-    /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     margin-top: 0;
     font-size: 20px;
   }
@@ -5528,6 +5524,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .media-gallery .image-caption {
+  font-family: "Proxima N W01 Reg",Arial,sans-serif;
   float: right;
   width: 300px;
   padding-right: 60px;
@@ -5539,6 +5536,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .media-gallery .image-caption .gallery-image-caption {
     font-size: 11px;
     clear: left;
+    line-height: 1.3em;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {

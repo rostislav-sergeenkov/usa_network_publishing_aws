@@ -98,7 +98,7 @@
           aspotVideoShow();
           aspotVideoPauseFlexslider($mainslider);
         });
-      } // usa_showAspotVideo
+      } // A-SPOT VIDEOS
 
 
     }

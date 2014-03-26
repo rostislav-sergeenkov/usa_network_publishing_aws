@@ -5476,8 +5476,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title {
-    float: none;
     clear: both;
+    float: left;
+    width: 341px;
   }
 }
 .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
@@ -5523,6 +5524,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-field-season {
     margin-left: 0;
     font-size: 12px;
+    clear: left;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
@@ -5544,7 +5546,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-field-episode {
     font-size: 12px;
-    float: none;
+    float: left;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
@@ -5586,9 +5588,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .image-caption {
-    width: 75%;
-    float: left;
+    float: none;
     padding-right: 0;
+    float: left;
+    width: 300px;
+    clear: left;
   }
 }
 .media-gallery .navigation-counter {
@@ -5624,12 +5628,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .navigation-counter {
-    float: right;
-    width: auto;
+    float: left;
+    width: 50px;
+    clear: left;
   }
 }
 .media-gallery .pane-dart-dart-tag-300x250-ifr-reload {
-  /*float: right;*/
   position: absolute;
   bottom: 0;
   right: 0;
@@ -5641,7 +5645,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .pane-dart-dart-tag-300x250-ifr-reload {
-    display: none;
+    position: static;
+    margin-top: 13px;
   }
 }
 .media-gallery .flex-direction-nav a {
@@ -5650,9 +5655,11 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .media-gallery .flex-direction-nav a.flex-next {
   right: 0;
+  border: none;
 }
 .media-gallery .flex-direction-nav a.flex-prev {
   left: 0;
+  border: none;
 }
 .media-gallery .panels-section-row:nth-of-type(2) > ul, .media-gallery .panels-section-row:nth-of-type(2) > section {
   max-width: 1000px;

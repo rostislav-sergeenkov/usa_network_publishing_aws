@@ -10,7 +10,8 @@
     <div class="panel-panel panel-one panel-row first-row a-spot-panel tiles">
       <div id="main-slider">
         <?php print $content['one']; ?>
-      </div>  
+      </div>
+      <div id="aspot-video-container" style="display: none"></div>
     </div>
   <?php endif; ?>
     <?php if($content['four'] || $content['three']) : ?>

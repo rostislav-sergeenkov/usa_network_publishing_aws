@@ -72,7 +72,6 @@
         width: 260px;
       }
       @include breakpoint($bp-home-2-fence) {
-        float: none;
         clear: both;
       }
     h1 {
@@ -109,6 +108,7 @@
       @include breakpoint($bp-home-2-fence) {
         margin-left: 0;
         font-size: 12px;
+        clear: left;
       }
       @include breakpoint($bp-home-3-fence) {
         font-size: 13px;
@@ -124,7 +124,7 @@
       }
       @include breakpoint($bp-home-2-fence) {
         font-size: 12px;
-        float: none;
+        float: left;
       }
       @include breakpoint($bp-home-3-fence) {
         font-size: 13px;
@@ -155,9 +155,11 @@
       padding-right: 0;
     }
     @include breakpoint($bp-home-2-fence) {
-      width: 75%;
-      float: left;
+      float: none;
       padding-right: 0;
+      float: left;
+    width: 300px;
+      clear: left;
     }
   }
   .navigation-counter{
@@ -183,12 +185,12 @@
       width: auto;
     }
     @include breakpoint($bp-home-2-fence) {
-      float: right;
-      width: auto;
+      float: left;
+      width: 50px;
+      clear: left;
     }
   }
   .pane-dart-dart-tag-300x250-ifr-reload {
-    /*float: right;*/
     position: absolute;
     bottom: 0;
     right: 0;
@@ -196,7 +198,8 @@
       display: none;
     }
     @include breakpoint($bp-home-2-fence) {
-      display: none;
+      position: static;
+      margin-top: 13px; 
     }
   }
   .flex-direction-nav {
@@ -205,9 +208,11 @@
       margin-top: -30px;
       &.flex-next {
         right: 0;
+        border: none;
       }
       &.flex-prev {
         left: 0;
+        border: none;
       }
     }
   }

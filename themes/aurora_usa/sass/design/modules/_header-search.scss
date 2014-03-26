@@ -233,27 +233,6 @@
         top: 50px;
       }
     
-    .twitter-dropdown {
-      width: 255px;
-      background: #FFF;
-      max-height: 0;
-      overflow: hidden;
-      -webkit-transition: max-height 0.8s ease-in-out;
-      -moz-transition: max-height 0.8s ease-in-out;
-      -o-transition: max-height 0.8s ease-in-out;
-      transition: max-height 0.8s ease-in-out;
-      position: absolute;
-      right: 63px;
-      top: 50px;
-      .twitter-wrap {
-        padding: 22px 0 22px 10px;
-      }
-    }
-    .twitter-dropdown:hover {
-      max-height: 1000px;
-      overflow: hidden;
-    }
-    
     @include breakpoint($bp-head-search) {
       position: static;
       float: right;
@@ -275,10 +254,6 @@
           width: 48px;
           background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png"); 
           display: inline-block;
-          & + .twitter-dropdown {
-            max-height: 1000px;
-            overflow: hidden;
-          }
         }
         &.usa-facebook-share {
           height: 48px;
@@ -299,8 +274,5 @@
         }
       }
     }
-  }
-  &.search-active #block-usanetwork-blocks-usa-follow-block .twitter-dropdown {
-    right: 297px;
   }
 }

@@ -4956,26 +4956,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   right: 0;
   top: 50px;
 }
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown {
-  width: 255px;
-  background: #FFF;
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 0.8s ease-in-out;
-  -moz-transition: max-height 0.8s ease-in-out;
-  -o-transition: max-height 0.8s ease-in-out;
-  transition: max-height 0.8s ease-in-out;
-  position: absolute;
-  right: 63px;
-  top: 50px;
-}
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown .twitter-wrap {
-  padding: 22px 0 22px 10px;
-}
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown:hover {
-  max-height: 1000px;
-  overflow: hidden;
-}
 @media (min-width: 641px) {
   #utilities #block-usanetwork-blocks-usa-follow-block {
     position: static;
@@ -4999,10 +4979,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png");
     display: inline-block;
   }
-  #utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share:hover + .twitter-dropdown {
-    max-height: 1000px;
-    overflow: hidden;
-  }
   #utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {
     height: 48px;
     width: 48px;
@@ -5020,9 +4996,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     max-height: 1000px;
     overflow: hidden;
   }
-}
-#utilities.search-active #block-usanetwork-blocks-usa-follow-block .twitter-dropdown {
-  right: 297px;
 }
 
 .page-search .pager {

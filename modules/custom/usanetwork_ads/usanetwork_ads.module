@@ -27,7 +27,7 @@ function usanetwork_ads_init() {
     ), 'setting');
   }
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
 }
 
 /**

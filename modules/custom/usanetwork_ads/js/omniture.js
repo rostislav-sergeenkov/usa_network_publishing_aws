@@ -157,6 +157,12 @@
             s.linkTrackEvents='event64';
             s.events='event64';
             var sub_menu_name = $self.text();
+
+            var $parent = $self.parent('li');
+            $parent.parents('li').each(function() {
+              sub_menu_name = $(this).children('a').text() + ' : ' + sub_menu_name;
+            });
+
             s.eVar64=s.prop64=sub_menu_name;
             if (!$self.hasClass('use-ajax') && !$self.hasClass('link-empty') && $self.attr('href') != '#') {
               s.bcf = function() {

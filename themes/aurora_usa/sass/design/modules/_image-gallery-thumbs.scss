@@ -1,4 +1,5 @@
 .grid-container-small {
+  /*@extend %grid-gallery-wide-two-three-four;*/
   @extend %grid-small-two-three-four;
   @include breakpoint($bp-grid-small-2) {
     margin: 0 auto 30px;
@@ -6,6 +7,9 @@
 }
 
 .grid-container-small {
+  @include breakpoint($bp-grid-small-wide-4) {
+    width: 1140px;
+  }
   .asset-thumb {
     @extend .title-overlay;
     border: 2px solid $gray-dark;

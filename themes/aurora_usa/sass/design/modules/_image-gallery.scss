@@ -73,16 +73,15 @@
       }
       @include breakpoint($bp-home-2-fence) {
         clear: both;
+        float: left;
+        width: 341px;
       }
     h1 {
-        /*font-family: Verdana, Geneva, sans-serif;*/
         /*font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;*/
         font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
         font-size: 25px;
-        white-space: nowrap;
-        margin: 24px 0 0;
+        margin: 24px 0 5px;
         @include breakpoint($bp-home-narrowest) {
-          /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
           font-size: 13px;
           margin: 10px 0 -5px;
     }
@@ -91,7 +90,6 @@
           margin: 18px 0 0px;
         }
         @include breakpoint($bp-home-3-fence) {
-          /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     margin-top: 0;
           font-size: 20px;
         }
@@ -132,6 +130,7 @@
     }
   }
   .image-caption {
+    font-family: "Proxima N W01 Reg",Arial,sans-serif;
     float: right;
     width: 300px;
     padding-right: 60px;
@@ -140,6 +139,7 @@
       @include breakpoint($bp-home-narrowest) {
         font-size: 11px;
         clear: left;
+        line-height: 1.3em;
       }
       @include breakpoint($bp-home-2-fence) {
         font-size: 15px;
@@ -236,7 +236,7 @@
     @extend %un-margin;
     @extend %mid-gray-top-border;
     > ul, > section {
-      max-width: 1000px;
+      max-width: 1140px;
     }
   }
 }

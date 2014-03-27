@@ -4956,26 +4956,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   right: 0;
   top: 50px;
 }
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown {
-  width: 255px;
-  background: #FFF;
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 0.8s ease-in-out;
-  -moz-transition: max-height 0.8s ease-in-out;
-  -o-transition: max-height 0.8s ease-in-out;
-  transition: max-height 0.8s ease-in-out;
-  position: absolute;
-  right: 63px;
-  top: 50px;
-}
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown .twitter-wrap {
-  padding: 22px 0 22px 10px;
-}
-#utilities #block-usanetwork-blocks-usa-follow-block .twitter-dropdown:hover {
-  max-height: 1000px;
-  overflow: hidden;
-}
 @media (min-width: 641px) {
   #utilities #block-usanetwork-blocks-usa-follow-block {
     position: static;
@@ -4999,10 +4979,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png");
     display: inline-block;
   }
-  #utilities #block-usanetwork-blocks-usa-follow-block a.usa-twitter-share:hover + .twitter-dropdown {
-    max-height: 1000px;
-    overflow: hidden;
-  }
   #utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {
     height: 48px;
     width: 48px;
@@ -5020,9 +4996,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     max-height: 1000px;
     overflow: hidden;
   }
-}
-#utilities.search-active #block-usanetwork-blocks-usa-follow-block .twitter-dropdown {
-  right: 297px;
 }
 
 .page-search .pager {
@@ -5482,16 +5455,13 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-  /*font-family: Verdana, Geneva, sans-serif;*/
   /*font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;*/
   font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;
   font-size: 25px;
-  white-space: nowrap;
-  margin: 24px 0 0;
+  margin: 24px 0 5px;
 }
 @media (max-width: 644px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-    /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     font-size: 13px;
     margin: 10px 0 -5px;
   }
@@ -5504,7 +5474,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title h1 {
-    /*font-family: "avalonbold","Proxima N W01 Bold",Helvetica,Arial,sans-serif;*/
     margin-top: 0;
     font-size: 20px;
   }
@@ -5555,6 +5524,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .media-gallery .image-caption {
+  font-family: "Proxima N W01 Reg",Arial,sans-serif;
   float: right;
   width: 300px;
   padding-right: 60px;
@@ -5566,6 +5536,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .media-gallery .image-caption .gallery-image-caption {
     font-size: 11px;
     clear: left;
+    line-height: 1.3em;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -5662,7 +5633,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   border: none;
 }
 .media-gallery .panels-section-row:nth-of-type(2) > ul, .media-gallery .panels-section-row:nth-of-type(2) > section {
-  max-width: 1000px;
+  max-width: 1140px;
 }
 
 .media-gallery .filter-dropdown .tab {
@@ -5786,12 +5757,20 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
+.grid-container-small {
+  /*@extend %grid-gallery-wide-two-three-four;*/
+}
 @media (min-width: 525px) {
   .grid-container-small {
     margin: 0 auto 30px;
   }
 }
 
+@media (min-width: 1275px) {
+  .grid-container-small {
+    width: 1140px;
+  }
+}
 .grid-container-small .asset-thumb {
   border: 2px solid #2d2d2d;
 }

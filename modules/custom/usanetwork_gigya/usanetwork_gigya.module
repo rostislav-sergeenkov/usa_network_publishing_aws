@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Gigya feature.
+ */
+
+include_once 'usanetwork_gigya.features.inc';

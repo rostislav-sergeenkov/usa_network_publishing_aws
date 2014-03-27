@@ -360,6 +360,49 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-9';
     $pane->panel = 'first';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_gigya_share_bar';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'gigya_sharebar_formatter_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'gigya_sharebar_container_id' => 'gigya-share',
+        'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest',
+        'gigya_sharebar_layout' => 'horizontal',
+        'gigya_sharebar_showcounts' => 'none',
+        'gigya_sharebar_title' => '[node:title]',
+        'gigya_sharebar_desc' => '[node:summary]',
+        'gigya_sharebar_link_back' => '[node:url:absolute]',
+        'gigya_sharebar_image_behavior' => 'default',
+        'gigya_sharebar_image_url' => '',
+        'gigya_sharebar_short_url' => 0,
+        'gigya_sharebar_advanced' => array(
+          'iconsOnly' => 'true',
+        ),
+        'gigya_sharebar_override_default' => 0,
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['first'][5] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
+    $pane->panel = 'first';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
@@ -380,12 +423,12 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => 'navigation-counter',
     );
     $pane->extras = array();
-    $pane->position = 5;
+    $pane->position = 6;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['first'][5] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['first'][6] = 'new-10';
     $pane = new stdClass();
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'first';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
@@ -404,10 +447,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 6;
+    $pane->position = 7;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['first'][6] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['first'][7] = 'new-11';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

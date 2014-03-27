@@ -5446,6 +5446,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (max-width: 644px) {
   .media-gallery .panels-section-row-media-gallery:nth-of-type(1) .pane-node-title {
     width: 260px;
+    padding-right: 116px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -5562,6 +5563,28 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   .media-gallery .image-caption {
     float: none;
     padding-right: 0;
+    float: left;
+    width: 300px;
+    clear: left;
+  }
+}
+.media-gallery .pane-node-field-gigya-share-bar {
+  float: right;
+  width: 300px;
+  margin-top: 18px;
+}
+@media (max-width: 644px) {
+  .media-gallery .pane-node-field-gigya-share-bar {
+    margin-top: 0;
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 205px;
+    width: auto;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .media-gallery .pane-node-field-gigya-share-bar {
     float: left;
     width: 300px;
     clear: left;
@@ -10480,7 +10503,7 @@ input.echo-submit-text {
 }
 
 .navTwitter-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10488,7 +10511,7 @@ input.echo-submit-text {
 }
 
 .navChatter-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10496,7 +10519,7 @@ input.echo-submit-text {
 }
 
 .navFb-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10504,7 +10527,7 @@ input.echo-submit-text {
 }
 
 .navPinterest-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10512,7 +10535,7 @@ input.echo-submit-text {
 }
 
 .navGetGlue-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10520,7 +10543,7 @@ input.echo-submit-text {
 }
 
 .navInstagram-selected {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
@@ -10528,69 +10551,69 @@ input.echo-submit-text {
 }
 
 .navTwitter {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navTwitter:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
 }
 
 .navChatter {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2831px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2831px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navChatter:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
 }
 
 .navFb {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navFb:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
 }
 
 .navPinterest {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3069px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3069px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navPinterest:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
 }
 
 .navGetGlue {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navGetGlue:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
 }
 
 .navInstagram {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3148px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3148px transparent;
   float: left;
   text-indent: -9999px;
   width: 32px;
   height: 32px;
 }
 .navInstagram:hover {
-  background: url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
+  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
 }
 
 .widget-background {
@@ -10760,6 +10783,74 @@ input.echo-submit-text {
   margin-top: 0;
   min-height: 800px;
   overflow: hidden;
+}
+
+.field-name-field-gigya-share-bar .gig-button-container td > div {
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url("../images/social_chatter_icons.png") !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container td > div {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
+  background-position: 0 -2910px !important;
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
+  background-position: 0 -2950px !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
+    background-position: 0 -3423px !important;
+  }
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
+    background-position: 0 -3453px !important;
+  }
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
+  background-position: 0 -2752px !important;
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
+  background-position: 0 -2792px !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
+    background-position: 0 -3305px !important;
+  }
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
+    background-position: 0 -3335px !important;
+  }
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
+  background-position: 0 -3227px !important;
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
+  background-position: 0 -3267px !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
+    background-position: 0 -3661px !important;
+  }
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
+    background-position: 0 -3691px !important;
+  }
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
+  background-position: 0 -3069px !important;
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
+  background-position: 0 -3109px !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
+    background-position: 0 -3543px !important;
+  }
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
+    background-position: 0 -3573px !important;
+  }
 }
 
 .schedule-header {

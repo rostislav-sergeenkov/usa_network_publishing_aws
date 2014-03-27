@@ -162,6 +162,22 @@
       clear: left;
     }
   }
+  .pane-node-field-gigya-share-bar {
+    float: right;
+    width: 300px;
+    @include breakpoint($bp-home-narrowest) {
+      width: auto;
+      float: none;
+      position: absolute;
+      padding-right: 0;
+    }
+    @include breakpoint($bp-home-2-fence) {
+      padding-right: 0;
+      float: left;
+      width: 300px;
+      clear: left;
+    }
+  }
   .navigation-counter{
     float: right;
     width: 300px;

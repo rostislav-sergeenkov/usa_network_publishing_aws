@@ -4978,6 +4978,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     width: 48px;
     background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png");
     display: inline-block;
+    cursor: pointer;
   }
   #utilities #block-usanetwork-blocks-usa-follow-block a.usa-facebook-share {
     height: 48px;
@@ -5757,9 +5758,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 
-.grid-container-small {
-  /*@extend %grid-gallery-wide-two-three-four;*/
-}
 @media (min-width: 525px) {
   .grid-container-small {
     margin: 0 auto 30px;

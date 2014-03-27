@@ -5,3 +5,13 @@
  */
 
 include_once 'usanetwork_gigya.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_gigya_init() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_gigya') . '/js/usanetwork_gigya_sharebar.js', array(
+    'every_page' => true,
+    'group' => JS_THEME,
+  ));
+}

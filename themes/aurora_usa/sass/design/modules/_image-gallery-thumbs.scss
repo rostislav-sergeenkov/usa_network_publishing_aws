@@ -1,5 +1,4 @@
 .grid-container-small {
-  /*@extend %grid-gallery-wide-two-three-four;*/
   @extend %grid-small-two-three-four;
   @include breakpoint($bp-grid-small-2) {
     margin: 0 auto 30px;

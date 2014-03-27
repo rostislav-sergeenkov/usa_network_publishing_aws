@@ -70,6 +70,7 @@
       float: right;
       @include breakpoint($bp-home-narrowest) {
         width: 260px;
+        padding-right: 116px;
       }
       @include breakpoint($bp-home-2-fence) {
         clear: both;
@@ -90,7 +91,7 @@
           margin: 18px 0 0px;
         }
         @include breakpoint($bp-home-3-fence) {
-    margin-top: 0;
+          margin-top: 0;
           font-size: 20px;
         }
       }
@@ -165,14 +166,16 @@
   .pane-node-field-gigya-share-bar {
     float: right;
     width: 300px;
+    margin-top: 18px;
     @include breakpoint($bp-home-narrowest) {
-      width: auto;
+      margin-top: 0;
       float: none;
       position: absolute;
-      padding-right: 0;
+      right: 0;
+      top: 205px;
+      width: auto;
     }
     @include breakpoint($bp-home-2-fence) {
-      padding-right: 0;
       float: left;
       width: 300px;
       clear: left;

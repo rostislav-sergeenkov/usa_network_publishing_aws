@@ -20,6 +20,13 @@ function usanetwork_gigya_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_enabled';
+  $strongarm->value = 1;
+  $export['gigya_comments_enabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'gigya_debug';
   $strongarm->value = 0;
   $export['gigya_debug'] = $strongarm;
@@ -37,6 +44,20 @@ function usanetwork_gigya_strongarm() {
   $strongarm->name = 'gigya_language';
   $strongarm->value = 'en';
   $export['gigya_language'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_login_enabled';
+  $strongarm->value = 0;
+  $export['gigya_login_enabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_network_list';
+  $strongarm->value = 'Facebook, Twitter';
+  $export['gigya_network_list'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -64,6 +85,13 @@ function usanetwork_gigya_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_share_buttons';
+  $strongarm->value = 'twitter-tweet, facebook-like';
+  $export['gigya_share_buttons'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'gigya_share_container_id';
   $strongarm->value = 'gigya-share';
   $export['gigya_share_container_id'] = $strongarm;
@@ -74,6 +102,13 @@ function usanetwork_gigya_strongarm() {
   $strongarm->name = 'gigya_share_desc';
   $strongarm->value = '[node:summary]';
   $export['gigya_share_desc'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_share_image_behavior';
+  $strongarm->value = 'first';
+  $export['gigya_share_image_behavior'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

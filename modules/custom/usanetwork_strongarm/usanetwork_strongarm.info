@@ -21,4 +21,5 @@ features[variable][] = usanetwork_lyris_password
 features[variable][] = usanetwork_lyris_proxyhost
 features[variable][] = usanetwork_lyris_proxyport
 features[variable][] = usanetwork_lyris_username
+features[variable][] = usanetwork_tv_schedule_accessibility_text
 features[variable][] = usanetwork_tv_schedule_xml_feed

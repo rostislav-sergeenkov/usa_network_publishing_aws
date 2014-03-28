@@ -21,6 +21,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
       ),
     ),
   );
@@ -1080,6 +1082,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',

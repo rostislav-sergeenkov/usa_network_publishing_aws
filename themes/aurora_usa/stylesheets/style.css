@@ -11237,6 +11237,122 @@ a[class*="day"] {
   }
 }
 
+.page-accessibility .usa-wrap {
+  background-color: #ffffff;
+}
+.page-accessibility .schedule-header {
+  clear: left;
+  background-color: #000000;
+}
+.page-accessibility .schedule-table table {
+  border: #3d3d3d solid 1px;
+}
+.page-accessibility .schedule-table thead th {
+  font-family: "Proxima N W01 Smbd", Arial, sans-serif;
+  color: #000000;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+@media (min-width: 960px) {
+  .page-accessibility .schedule-table thead th {
+    font-family: avalon_mediumbold,"Proxima N W01 xBold", Arial, sans-serif;
+  }
+}
+.page-accessibility .schedule-table .show-time {
+  color: #000000;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+.page-accessibility .schedule-table tr {
+  background: #ffffff;
+}
+.page-accessibility .schedule-table td {
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  color: #000000;
+}
+.page-accessibility .schedule-table .rating {
+  border-right-width: 1px;
+}
+.page-accessibility .schedule-table a {
+  color: #000000;
+}
+.page-accessibility .schedule-table td.program, .page-accessibility .schedule-table td.episode, .page-accessibility .schedule-table td.rating {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+}
+@media (min-width: 960px) {
+  .page-accessibility .schedule-table td.program, .page-accessibility .schedule-table td.episode, .page-accessibility .schedule-table td.rating {
+    font-family: avalonbold,"Proxima N W01 Smbd", Arial, sans-serif;
+  }
+}
+.page-accessibility .schedule-table td.show-time {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+}
+@media (min-width: 960px) {
+  .page-accessibility .schedule-table td.show-time {
+    font-family: avalonregular,"Proxima N W01 Smbd", Arial, sans-serif;
+  }
+}
+
+.accesibility-header {
+  margin: 70px auto 0;
+  color: #000000;
+  line-height: 1.3em;
+  width: 100%;
+  font-size: 14px;
+}
+.accesibility-header .accessibility-left {
+  width: 100%;
+  float: none;
+  margin-bottom: 40px;
+}
+.accesibility-header .accessibility-right {
+  width: 100%;
+  float: none;
+  margin-bottom: 70px;
+}
+.accesibility-header h1 {
+  font-size: 16px;
+}
+@media (min-width: 640px) {
+  .accesibility-header {
+    font-size: 18px;
+  }
+  .accesibility-header h1 {
+    font-size: 20px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .accesibility-header {
+    width: 925px;
+  }
+  .accesibility-header .accessibility-left {
+    width: 48%;
+    float: left;
+    margin-bottom: 70px;
+  }
+  .accesibility-header .accessibility-right {
+    width: 48%;
+    float: right;
+    margin-bottom: 70px;
+  }
+}
+@media (min-width: 1275px) {
+  .accesibility-header {
+    width: 1248px;
+  }
+  .accesibility-header .accessibility-left {
+    width: 48%;
+    float: left;
+    margin-bottom: 70px;
+  }
+  .accesibility-header .accessibility-right {
+    width: 48%;
+    float: right;
+    margin-bottom: 70px;
+  }
+}
+
 .snipe-active #block-usanetwork-blocks-usa-meganav {
   display: none;
 }

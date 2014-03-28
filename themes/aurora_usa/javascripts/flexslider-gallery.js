@@ -5,6 +5,25 @@
       $('.media-gallery').once('mediagallery', function() {
         $slideshow_selector = $('.field-name-field-media-items');
         $counter_selector = $('.media-gallery .navigation-counter').append('<div class="counter"></div>').find('.counter');
+        
+        //hot-fix wrap gallery
+        $('.media-gallery .pane-node-field-media-items').after('<div class="wrap-gallery-right"></div>');
+        $('.media-gallery .pane-node-title').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .pane-node-field-season').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .pane-node-field-episode').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .image-caption').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .pane-node-field-gigya-share-bar').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .navigation-counter').appendTo('.media-gallery .wrap-gallery-right');
+        $('.media-gallery .pane-dart-dart-tag-300x250-ifr-reload').appendTo('.media-gallery .wrap-gallery-right');
+        
+        $('.media-gallery .pane-node-title').before('<div class="wrap-gallery-caption"></div>');
+        $('.media-gallery .pane-node-title').appendTo('.media-gallery .wrap-gallery-caption');
+        $('.media-gallery .pane-node-field-season').appendTo('.media-gallery .wrap-gallery-caption');
+        $('.media-gallery .pane-node-field-episode').appendTo('.media-gallery .wrap-gallery-caption');
+        $('.media-gallery .image-caption').appendTo('.media-gallery .wrap-gallery-caption');
+        $('.media-gallery .pane-node-field-gigya-share-bar').appendTo('.media-gallery .wrap-gallery-caption');
+        $('.media-gallery .navigation-counter').appendTo('.media-gallery .wrap-gallery-caption');
+        
         $count = $slideshow_selector.find('li').length;
         var $current = 0;
 

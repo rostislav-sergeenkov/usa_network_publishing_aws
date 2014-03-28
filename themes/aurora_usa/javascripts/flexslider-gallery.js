@@ -6,13 +6,20 @@
         $slideshow_selector = $('.field-name-field-media-items');
         $counter_selector = $('.media-gallery .navigation-counter').append('<div class="counter"></div>').find('.counter');
         $count = $slideshow_selector.find('li').length;
-        $counter = 1;
-        $current = $counter;
+        var $current = 0;
+
+        var hash = window.location.hash;
+        if (hash) {
+          $current = /\d+/.exec(hash)[0];
+          $current = (parseInt($current) || 1) - 1;
+        }
+
         $slideshow_selector
           .addClass('slides')
           .wrap('<div class="flexslider"></div>')
           .parent()
           .flexslider({
+            startAt: $current,
             animation: "slide",
             useCSS: true,
             touch: true,
@@ -54,6 +61,8 @@
               var $currentImage = slider.find('.flex-active-slide .file-image img');
               $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
                 if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+                  var url = window.location.href.split('#')[0];
+                  sharebar.gigyaSharebar.ua.linkBack = url + '#' + (slider.currentSlide + 1);
                   sharebar.gigyaSharebar.ua.imageBhev = 'url';
                   sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('src');
                   sharebar.gigyaSharebar.ua.description = $currentDescription;

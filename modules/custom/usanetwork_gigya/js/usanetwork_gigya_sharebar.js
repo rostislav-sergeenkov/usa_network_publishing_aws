@@ -36,7 +36,7 @@
       ua.setSubtitle(settings.gigyaSharebar.ua.subtitle);
     }
     if (typeof settings.gigyaSharebar.ua.description !== 'undefined') {
-      ua.setDescription(settings.gigyaSharebar.description);
+      ua.setDescription(settings.gigyaSharebar.ua.description);
     }
     ua.addMediaItem(mediaObj);
     // Step 2: Define the Share Bar Plugin's params object.
@@ -44,9 +44,7 @@
     delete params.ua;
     params.userAction = ua;
     // Step 3: Load the Share Bar Plugin.
-    console.debug(params);
     gigya.services.socialize.showShareBarUI(params);
-
   };
 })(jQuery);
 

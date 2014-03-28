@@ -29,6 +29,16 @@ function usanetwork_tv_schedule_settings_form() {
     '#description' => t('Number of weeks to show future schedule.'),
   );
 
+  $usanetwork_tv_schedule_accessibility = variable_get('usanetwork_tv_schedule_accessibility_text', array('value' => variable_get('usanetwork_tv_schedule_accessibility_text',''), 'format' => NULL));
+  
+  $form['usanetwork_tv_schedule_accessibility_text'] = array(
+    '#type'=>'text_format',
+    '#base_type' => 'textarea',
+    '#title' => t('Text for Page "Accessibility"'),
+    '#format'=> $usanetwork_tv_schedule_accessibility['format'],
+		'#default_value' => $usanetwork_tv_schedule_accessibility['value'],
+  );
+
   return system_settings_form($form);
 }
 

@@ -97,6 +97,28 @@ function usanetwork_strongarm_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_tv_schedule_accessibility_text';
+  $strongarm->value = array(
+    'value' => '<div class="accessibility-left">
+<h1>Accessibility at USA Network</h1>
+<p>USA Network is proud to offer the blind and visually impaired video description of its original and acquired programming. Beginning July 1, 2012, USA will describe at least 50 hours of programming per quarter including hit shows such as Covert Affairs, Common Law, Suits, Royal Pains, Psych, Law &amp; Order: SVU and NCIS, along with select movies.</p>
+<p>USA and its Characters Unite public service campaign to combat prejudice and discrimination have a longstanding commitment to accessibility and the Network will continue to build on this initiative to make its programming available to all.</p>
+</div>
+<div class="accessibility-right">
+<h1>Directions for Accessing Video Description</h1>
+<ul class="list">
+<li>Select the SAP (secondary audio) feature through your television or set top box. The television manual and customer service department can assist in activating this feature.</li>
+<li>When activated, the video description will provide explanations of the program\'s visuals during the natural pauses in the dialogue.</li>
+<li>Go to <a href="/accessibility">usanetwork.com/accessibility</a> or call 212- 664-7010 for up-to-date listings and schedule information.</li>
+</ul>
+</div>',
+    'format' => 'plain_text',
+  );
+  $export['usanetwork_tv_schedule_accessibility_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_tv_schedule_xml_feed';
   $strongarm->value = 'http://www.usanetwork.com/compassfeeds/USA_Network_YYYY_MM_DD.xml';
   $export['usanetwork_tv_schedule_xml_feed'] = $strongarm;

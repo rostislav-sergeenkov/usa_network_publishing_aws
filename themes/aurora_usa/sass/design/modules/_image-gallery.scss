@@ -210,7 +210,8 @@
   }
   .navigation-counter{
     .counter{
-      margin-top: 35px;
+      margin-top: 20px;
+      margin-bottom: 7px;
       font-size: 20px;
       @include breakpoint($bp-home-narrowest) {
         font-size: 10px;

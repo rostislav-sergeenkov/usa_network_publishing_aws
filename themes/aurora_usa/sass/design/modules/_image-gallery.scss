@@ -36,14 +36,18 @@
         width: 641px;
       }
     }
-    .field-name-field-media-items {
-      li.flex-active-slide {
+    .pane-node-field-media-items {
         background-color: #101010;
-      }
+      border: #000000 solid 1px;
+    }
+    .flexslider {
+      margin-bottom: 0; 
+    }
+    .field-name-field-media-items {
       > li, > li .content {
         text-align: center;
         font-size: 0;
-        height: 610px;
+        height: 606px;
         @include breakpoint($bp-home-narrowest) {
           height: 192px;
         }
@@ -65,15 +69,15 @@
       }
     }
     .navigation-counter{
-      margin: -5px 0 34px;
+      margin: 10px 0 34px;
       @include breakpoint($bp-home-narrowest) {
-        margin: -7px 0 0;
+        margin: 8px 0 0;
       }
       @include breakpoint($bp-home-2-fence) {
-        margin-top: -2px 0 37px;
+        margin-top: 13px 0 37px;
       }
       @include breakpoint($bp-home-3-fence) {
-        margin: -6px 0 28px;
+        margin: 9px 0 28px;
       }
       .counter{
         font-size: 16px;

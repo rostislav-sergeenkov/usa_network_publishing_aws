@@ -54,7 +54,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'section';
+  $display->layout = 'usa_twocol_stacked';
   $display->layout_settings = array(
     'items' => array(
       'canvas' => array(
@@ -126,6 +126,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'center' => NULL,
       'middle' => NULL,
       'first' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+      'right_ad' => NULL,
+      'bottom' => NULL,
     ),
     'first' => array(
       'style' => 'naked',
@@ -140,7 +144,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'center';
+    $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_1';
     $pane->shown = TRUE;
@@ -162,10 +166,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-1'] = $pane;
-    $display->panels['center'][0] = 'new-1';
+    $display->panels['bottom'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
-    $pane->panel = 'center';
+    $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_3';
     $pane->shown = TRUE;
@@ -187,10 +191,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->position = 1;
     $pane->locks = array();
     $display->content['new-2'] = $pane;
-    $display->panels['center'][1] = 'new-2';
+    $display->panels['bottom'][1] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
-    $pane->panel = 'center';
+    $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_4';
     $pane->shown = TRUE;
@@ -212,10 +216,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->position = 2;
     $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['center'][2] = 'new-3';
+    $display->panels['bottom'][2] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'first';
+    $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_media_items';
     $pane->shown = TRUE;
@@ -242,10 +246,37 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-4'] = $pane;
-    $display->panels['first'][0] = 'new-4';
+    $display->panels['left'][0] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
-    $pane->panel = 'first';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'node: slider count',
+      'title' => '',
+      'body' => '<div class="slider-count"></div>',
+      'format' => 'wysiwyg_full_html',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'navigation-counter',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][1] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'right';
     $pane->type = 'node_title';
     $pane->subtype = 'node_title';
     $pane->shown = TRUE;
@@ -268,16 +299,16 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => 'slide-meta',
     );
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['first'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'first';
+    $pane->pid = 'new-7';
+    $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_season';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
@@ -298,16 +329,16 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['first'][2] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][1] = 'new-7';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
-    $pane->panel = 'first';
+    $pane->pid = 'new-8';
+    $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_episode';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
@@ -326,13 +357,13 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['first'][3] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][2] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
-    $pane->panel = 'first';
+    $pane->pid = 'new-9';
+    $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = TRUE;
@@ -353,13 +384,13 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => 'image-caption',
     );
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['first'][4] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][3] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
-    $pane->panel = 'first';
+    $pane->pid = 'new-10';
+    $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_gigya_share_bar';
     $pane->shown = TRUE;
@@ -396,40 +427,13 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 5;
-    $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['first'][5] = 'new-9';
-    $pane = new stdClass();
-    $pane->pid = 'new-10';
-    $pane->panel = 'first';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'admin_title' => 'node: slider count',
-      'title' => '',
-      'body' => '<div class="slider-count"></div>',
-      'format' => 'wysiwyg_full_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'navigation-counter',
-    );
-    $pane->extras = array();
-    $pane->position = 6;
+    $pane->position = 4;
     $pane->locks = array();
     $display->content['new-10'] = $pane;
-    $display->panels['first'][6] = 'new-10';
+    $display->panels['right'][4] = 'new-10';
     $pane = new stdClass();
     $pane->pid = 'new-11';
-    $pane->panel = 'first';
+    $pane->panel = 'right_ad';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
     $pane->shown = TRUE;
@@ -447,10 +451,10 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 7;
+    $pane->position = 0;
     $pane->locks = array();
     $display->content['new-11'] = $pane;
-    $display->panels['first'][7] = 'new-11';
+    $display->panels['right_ad'][0] = 'new-11';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

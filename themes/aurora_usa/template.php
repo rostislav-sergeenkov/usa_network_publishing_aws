@@ -638,15 +638,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
-    case 'field_episode':
-      // change episode display
-      if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#view_mode'] == '_custom_display')){
-        $episode = $vars['items'][0]['#markup'];
-        $episode_number = field_get_items('node', node_load($episode), 'field_episode_number');
-        $vars['items'][0]['#markup'] = $episode_number ? t(', Episode ') . $episode_number[0]['value'] : '';
-        break;
-      }
-      break;
   }
 }
 

@@ -5365,7 +5365,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   position: relative;
   width: 1140px;
   margin: 0 auto;
-  margin-bottom: 25px;
   /*    .pane-node-field-season {
         float: left;
         font-size: 14px;
@@ -5421,21 +5420,18 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (max-width: 644px) {
   .media-gallery .center-wrapper .panel-col-first {
     width: 256px;
-    /*height: 192px;*/
     float: none;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .media-gallery .center-wrapper .panel-col-first {
     width: 641px;
-    /*height: 479px;*/
     float: none;
   }
 }
 @media (min-width: 960px) and (max-width: 1274px) {
   .media-gallery .center-wrapper .panel-col-first {
     width: 641px;
-    /*height: 479px;*/
   }
 }
 .media-gallery .center-wrapper .field-name-field-media-items li.flex-active-slide {

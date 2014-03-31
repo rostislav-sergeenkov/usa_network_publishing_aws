@@ -8,7 +8,6 @@
     position: relative;
     width: 1140px;
     margin: 0 auto;
-    margin-bottom: 25px;
     @include breakpoint($bp-home-narrowest) {
       width: 260px;
     }
@@ -27,17 +26,14 @@
       float: left;
       @include breakpoint($bp-home-narrowest) {
         width: 256px;
-        /*height: 192px;*/
         float: none;
       }
       @include breakpoint($bp-home-2-fence) {
         width: 641px;
-        /*height: 479px;*/
         float: none;
       }
       @include breakpoint($bp-home-3-fence) {
         width: 641px;
-        /*height: 479px;*/
       }
     }
     .field-name-field-media-items {

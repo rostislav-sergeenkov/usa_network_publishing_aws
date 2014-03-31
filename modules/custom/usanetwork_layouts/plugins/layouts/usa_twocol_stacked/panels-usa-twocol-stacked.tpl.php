@@ -18,7 +18,7 @@
 ?>
 <div class="media-gallery panel-2col-stacked clearfix panel-display" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
 
-  <div class="center-wrapper">
+  <div class="center-wrapper clearfix">
     <div class="panel-col-first panel-panel">
       <?php print $content['left']; ?>
     </div>

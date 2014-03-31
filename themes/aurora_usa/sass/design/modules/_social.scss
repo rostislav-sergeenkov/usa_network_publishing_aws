@@ -1296,14 +1296,14 @@ input.echo-submit-text {
     &.gig-button-container-facebook {
       td {
         > div {
-          background-position: 0 -2910px !important;
+          background-position: 1px -2908px !important;
           &:hover {
-            background-position: 0 -2950px !important;
+            background-position: 1px -2948px !important;
           }
           @include breakpoint($bp-home-narrowest) {
-            background-position: 0 -3423px !important;
+            background-position: 1px -3422px !important;
             &:hover {
-              background-position: 0 -3453px !important;
+              background-position: 1px -3452px !important;
             }
           }
         }
@@ -1312,14 +1312,14 @@ input.echo-submit-text {
     &.gig-button-container-twitter {
       td {
         > div {
-          background-position: 0 -2752px !important;
+          background-position: 1px -2750px !important;
           &:hover {
-            background-position: 0 -2792px !important;
+            background-position: 1px -2790px !important;
           }
           @include breakpoint($bp-home-narrowest) {
-            background-position: 0 -3305px !important;
+            background-position: 1px -3304px !important;
             &:hover {
-              background-position: 0 -3335px !important;
+              background-position: 1px -3334px !important;
             }
           }
         }
@@ -1328,14 +1328,14 @@ input.echo-submit-text {
     &.gig-button-container-tumblr {
       td {
         > div {
-          background-position: 0 -3227px !important;
+          background-position: 1px -3225px !important;
           &:hover {
-            background-position: 0 -3267px !important;
+            background-position: 1px -3265px !important;
           }
           @include breakpoint($bp-home-narrowest) {
-            background-position: 0 -3661px !important;
+            background-position: 1px -3660px !important;
             &:hover {
-              background-position: 0 -3691px !important;
+              background-position: 1px -3690px !important;
             }
           }
         }
@@ -1344,17 +1344,51 @@ input.echo-submit-text {
     &.gig-button-container-pinterest {
       td {
         > div {
-          background-position: 0 -3069px !important;
+          background-position: 1px -3067px !important;
           &:hover {
-            background-position: 0 -3109px !important;
+            background-position: 1px -3107px !important;
           }
           @include breakpoint($bp-home-narrowest) {
-            background-position: 0 -3543px !important;
+            background-position: 1px -3542px !important;
             &:hover {
-              background-position: 0 -3573px !important;
+              background-position: 1px -3572px !important;
             }
           }
         }
+      }
+    }
+    &.gig-button-container-share {
+      td {
+        > div {
+          background-position: 5px -3717px !important;
+          &:hover {
+            background-position: 5px -3747px !important;
+          }
+          @include breakpoint($bp-home-narrowest) {
+            background-position: 4px -3779px !important;
+            &:hover {
+              background-position: 4px -3804px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  div.gig-simpleShareUI {
+    border-color: #414141;
+    div.gig-simpleShareUI-inner {
+      background-color: #2D2D2D;
+      border-color: #000;
+      .gig-simpleShareUI-caption {
+        border-bottom: 1px solid #000;
+      }
+      .gig-simpleShareUI-caption,
+      .gig-simpleShareUI-caption-text {
+        background-color: #1C1C1C;
+        color: #A7A6A6;
       }
     }
   }

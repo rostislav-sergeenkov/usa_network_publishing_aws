@@ -372,7 +372,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'gigya_sharebar_container_id' => 'gigya-share',
-        'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest',
+        'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
         'gigya_sharebar_layout' => 'horizontal',
         'gigya_sharebar_showcounts' => 'none',
         'gigya_sharebar_title' => '[node:title]',

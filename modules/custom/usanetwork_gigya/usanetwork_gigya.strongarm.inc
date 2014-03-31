@@ -86,7 +86,7 @@ function usanetwork_gigya_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gigya_share_buttons';
-  $strongarm->value = 'facebook, twitter, tumblr, pinterest';
+  $strongarm->value = 'facebook, twitter, tumblr, pinterest, share';
   $export['gigya_share_buttons'] = $strongarm;
 
   $strongarm = new stdClass();

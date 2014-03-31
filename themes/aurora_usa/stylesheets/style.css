@@ -10827,60 +10827,90 @@ input.echo-submit-text {
   }
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
-  background-position: 0 -2910px !important;
+  background-position: 1px -2908px !important;
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
-  background-position: 0 -2950px !important;
+  background-position: 1px -2948px !important;
 }
 @media (max-width: 644px) {
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
-    background-position: 0 -3423px !important;
+    background-position: 1px -3422px !important;
   }
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
-    background-position: 0 -3453px !important;
+    background-position: 1px -3452px !important;
   }
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
-  background-position: 0 -2752px !important;
+  background-position: 1px -2750px !important;
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
-  background-position: 0 -2792px !important;
+  background-position: 1px -2790px !important;
 }
 @media (max-width: 644px) {
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
-    background-position: 0 -3305px !important;
+    background-position: 1px -3304px !important;
   }
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
-    background-position: 0 -3335px !important;
+    background-position: 1px -3334px !important;
   }
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
-  background-position: 0 -3227px !important;
+  background-position: 1px -3225px !important;
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
-  background-position: 0 -3267px !important;
+  background-position: 1px -3265px !important;
 }
 @media (max-width: 644px) {
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
-    background-position: 0 -3661px !important;
+    background-position: 1px -3660px !important;
   }
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
-    background-position: 0 -3691px !important;
+    background-position: 1px -3690px !important;
   }
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
-  background-position: 0 -3069px !important;
+  background-position: 1px -3067px !important;
 }
 .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
-  background-position: 0 -3109px !important;
+  background-position: 1px -3107px !important;
 }
 @media (max-width: 644px) {
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
-    background-position: 0 -3543px !important;
+    background-position: 1px -3542px !important;
   }
   .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
-    background-position: 0 -3573px !important;
+    background-position: 1px -3572px !important;
   }
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div {
+  background-position: 5px -3717px !important;
+}
+.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div:hover {
+  background-position: 5px -3747px !important;
+}
+@media (max-width: 644px) {
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div {
+    background-position: 4px -3779px !important;
+  }
+  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div:hover {
+    background-position: 4px -3804px !important;
+  }
+}
+
+body div.gig-simpleShareUI {
+  border-color: #414141;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner {
+  background-color: #2D2D2D;
+  border-color: #000;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption {
+  border-bottom: 1px solid #000;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption,
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption-text {
+  background-color: #1C1C1C;
+  color: #A7A6A6;
 }
 
 .schedule-header {

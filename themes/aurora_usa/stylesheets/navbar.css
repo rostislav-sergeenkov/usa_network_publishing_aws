@@ -458,7 +458,7 @@ you can use the generic selector below, but it's slower:
 [data-menu-direction="left"][data-menu-position="open"] #mega-nav {
   left: 258px;
 }
-@media (min-width: 960px) {
+@media (min-width: 769px) {
   [data-menu-direction="left"][data-menu-position="open"] #mega-nav {
     left: 362px;
   }

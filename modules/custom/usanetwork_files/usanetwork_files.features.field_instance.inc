@@ -63,10 +63,11 @@ function usanetwork_files_field_default_field_instances() {
         'weight' => 0,
       ),
       'gallery_flexslider' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'type' => 'text_default',
+        'weight' => 1,
       ),
       'media_link' => array(
         'label' => 'above',

@@ -267,7 +267,7 @@ function aurora_usa_pager(&$variables) {
           );
         }
       }
-      if ($i < $pager_max) {
+      if ($i <= $pager_max) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
           'data' => '…',
@@ -652,6 +652,9 @@ function append_cover_to_media(&$vars) {
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
   $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
+  $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
+  $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
+  
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';
   // $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;

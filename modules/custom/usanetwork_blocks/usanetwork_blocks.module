@@ -66,6 +66,10 @@ function usanetwork_blocks_block_info() {
     'info' => t('USA: Detect ie version'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
+  $blocks['usa_follow_block'] = array(
+    'info' => t('USA: Follow us block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
 
   return $blocks;
 }
@@ -128,6 +132,10 @@ function usanetwork_blocks_block_view($delta) {
       drupal_add_js(drupal_get_path("module", "usanetwork_blocks")."/theme/js/usanetwork_block.js");
       $block['subject'] = '';
       $block['content'] = usanetwork_blocks_usa_detect_ieversion();
+      break;
+    case 'usa_follow_block':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_blocks_usa_follow_block();
       break;
   }
   return $block;
@@ -418,4 +426,49 @@ function usanetwork_blocks_usa_detect_ieversion() {
   );
 
   return $render;
+}
+
+function usanetwork_blocks_usa_follow_block() {
+  
+  $fb_account = 'https://www.facebook.com/USANetwork';
+  $tw_account = 'usa_network';
+  
+  $menu = menu_get_item();
+  $entity_type = $menu['map'][0];
+  $entity = menu_get_object($entity_type);
+
+  if ($entity) {
+    if ($entity->type == 'tv_show') {
+      $fb_link = field_get_items($entity_type, $entity, 'field_usa_link_facebook');
+      $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
+      $tw_link = field_get_items($entity_type, $entity, 'field_usa_link_twitter');
+      $tw_account = ($tw_link) ? $tw_link[0]['url'] : $tw_account;
+    } else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video', ))) {
+      $show = field_get_items($entity_type, $entity, 'field_show');
+      if ($show) {
+        $show_node = node_load($show[0]['target_id']);
+        $fb_link = field_get_items($entity_type, $show_node, 'field_usa_link_facebook');
+        $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
+        $tw_link = field_get_items($entity_type, $show_node, 'field_usa_link_twitter');
+        $tw_account = ($tw_link) ? $tw_link[0]['url'] : $tw_account;
+      }
+    }
+  }
+  
+  drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");',
+          'inline');
+  
+  $facebook_like = '<div class="social-dropdown">';
+  $facebook_like .= '<iframe src="//www.facebook.com/plugins/likebox.php?href=' . $fb_account . '&width&height=62&colorscheme=light&show_faces=false&locale=en_US&header=true&stream=false&show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:62px;" allowTransparency="true"></iframe>';
+  $facebook_like .= '</div>';
+  
+  $output = '<div class="top-bar-social">';
+  $output .= l($facebook_like, $fb_account,
+    array('attributes' => array('class' => array('usa-facebook-share'), 'target' => '_blank'), 'html' => TRUE));
+  
+  $output .= '<a class="usa-twitter-share" url="https://twitter.com/intent/user?screen_name=@' . basename($tw_account).'"></a>';
+  
+  $output .= '</div>';
+ 
+  return $output;
 }

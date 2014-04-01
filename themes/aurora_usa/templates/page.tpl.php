@@ -93,6 +93,7 @@
 
   <!-- TOP TITLE AND TOOLS BAR -->
   <div id="utilities" class="clearfix <?php print $util_classes; ?>">
+    <div id="utilities-wrap" class="clearfix">
     <?php if ($page['search']) : ?>
       <div class="utilties-main-group">
     <?php endif; ?>
@@ -106,6 +107,7 @@
       </div>
     <?php endif; ?>
     <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
+  </div>
   </div>
 <?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->

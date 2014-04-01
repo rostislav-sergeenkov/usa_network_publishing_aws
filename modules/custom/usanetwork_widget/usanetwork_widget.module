@@ -90,13 +90,6 @@ function usanetwork_widget_menu() {
     'page callback' => 'usanetwork_widget_navbar_links',
     'access arguments' => array('administer usanetwork'),
   );
-  $items['admin/usanetwork/cross-domain-settings'] = array(
-    'title' => t('Cross Domain Access Control Settings'),
-    'description' => t('Administer USA Network Cross Domain Access Control list.'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('usanetwork_widget_settings_form'),
-    'access arguments' => array('administer usanetwork'),
-  );
 
   return $items;
 }
@@ -517,20 +510,6 @@ function _usanetwork_widget_get_nodes($node_type) {
   }
 
   return $nodes;
-}
-
-/**
- * USA Network settings form
- */
-function usanetwork_widget_settings_form() {
-  $form['usanetwork_widget_cors_urls'] = array(
-    '#type' => 'textarea',
-    '#title' => t('CORS URL List'),
-    '#default_value' => variable_get('usanetwork_widget_cors_urls', 'http://player.theplatform.com'),
-    '#description' => t('Enter the list of all urls you need to add to the cross domain access control list seperated using comma (,).'),
-  );
-
-  return system_settings_form($form);
 }
 
 /**

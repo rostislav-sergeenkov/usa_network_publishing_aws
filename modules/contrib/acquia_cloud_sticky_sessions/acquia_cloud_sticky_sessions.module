@@ -5,7 +5,7 @@
 function acquia_cloud_sticky_sessions_permission() {
   return array(
     'stick to Acquia web node' => array(
-      'title' => t('Stick to Acquia web node'),
+      'title' => t('Stick to Acquia web node'), 
       'description' => t('Direct all traffic from these users to a single Acquia Cloud web node.'),
     )
   );

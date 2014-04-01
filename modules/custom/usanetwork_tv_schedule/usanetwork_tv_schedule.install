@@ -6,3 +6,9 @@
  *
  * @ingroup USA Network
  */
+/**
+ * Delete redirect accessibility to external resource
+ */
+function usanetwork_tv_schedule_update_7100() {
+  redirect_delete_by_path('accessibility');
+}

@@ -21,6 +21,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
       ),
     ),
   );
@@ -1080,6 +1082,8 @@ function usanetwork_context_context_default_contexts() {
       'values' => array(
         'schedule' => 'schedule',
         'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
         '<front>' => '<front>',
         'search' => 'search',
         'search/*' => 'search/*',
@@ -2110,6 +2114,18 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'search',
+          'weight' => '-10',
+        ),
+        'usanetwork_blocks-usa_follow_block' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_follow_block',
+          'region' => 'search',
+          'weight' => '-9',
+        ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_detect_ieversion',
@@ -2127,12 +2143,6 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usa_footer_message',
           'region' => 'footer',
           'weight' => '-10',
-        ),
-        'search-form' => array(
-          'module' => 'search',
-          'delta' => 'form',
-          'region' => 'search',
-          'weight' => -10,
         ),
       ),
     ),

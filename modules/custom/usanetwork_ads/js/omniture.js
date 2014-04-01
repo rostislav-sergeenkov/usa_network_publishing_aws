@@ -3,6 +3,12 @@
  */
 (function ($) {
   Drupal.behaviors.omniture_tracking = {
+    omniturePresent: function() {
+      if (typeof s == 'object' && typeof s.tl == 'function') {
+        return true;
+      }
+      false;
+    },
     formatPromo: function($node) {
       // get promo data
       var promoName = $node.attr('omniture-title');
@@ -48,13 +54,20 @@
         return;
       }
       //Click on "On Now" button
-      $('#on-now').once('omniture-tracking', function() {
+      $('#on-now.trigger').once('omniture-tracking', function() {
         $(this).on('click', function(){
-          if (typeof s == 'object' && typeof s.tl == 'function') {
-            s.linkTrackVars='events,eVar63,prop63';
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var showName = '';
+            try {
+              showName = Drupal.settings.usanetwork_ads.onnow_upnext.on_now['s.prop10'];
+            }
+            catch (e) {}
+
+            s.linkTrackVars='events,eVar63,prop63,prop10';
             s.linkTrackEvents='event63';
             s.events='event63';
-            s.eVar63=s.prop63='On Now'
+            s.eVar63=s.prop63='On Now';
+            s.prop10=showName;
             s.tl(this,'o','On Now Click');
             s.manageVars("clearVars", s.linkTrackVars, 1);
           }
@@ -64,22 +77,32 @@
       //Click on "Up Next"
       $('#jPanelMenu-menu .up-next .tab-wrapper, #jPanelMenu-menu .on-now .tab-wrapper').once('omniture-tracking', function() {
         $(this).on('click', function(){
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             var $self = $(this);
             var prop = '';
             var descr = '';
+            var showName = '';
             if ($self.parents('.on-now').length > 0) {
               prop = 'On Now';
               descr = 'On Now Click';
+              try {
+                showName = Drupal.settings.usanetwork_ads.onnow_upnext.on_now['s.prop10'];
+              }
+              catch (e) {}
             }
             else {
               prop = 'On Now - Up Next';
               descr = 'Up Next Click';
+              try {
+                showName = Drupal.settings.usanetwork_ads.onnow_upnext.up_next['s.prop10'];
+              }
+              catch (e) {}
             }
-            s.linkTrackVars='events,eVar64,prop64';
+            s.linkTrackVars='events,eVar64,prop64,prop10';
             s.linkTrackEvents='event64';
             s.events='event64';
             s.eVar64=s.prop64=prop;
+            s.prop10=showName;
             s.tl(this,'o',descr);
             s.manageVars("clearVars", s.linkTrackVars, 1);
           }
@@ -89,7 +112,7 @@
       // Click on menu item
       $('#block-usanetwork-blocks-usa-meganav .mega-menu-items a, #logo a').once('omniture-tracking', function() {
         $(this).on('click', function(e){
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             var $self = $(this);
 
             // check if link is related to drawer
@@ -127,13 +150,19 @@
       //Click on submenu item
       $('.mega-sub-nav .item-list li a, #tv-show-menu .item-list li a').once('omniture-tracking', function() {
         $(this).on('click', function(e){
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             var $self = $(this);
             s.linkTrackVars='events,eVar64,prop64';
             s.linkTrackEvents='event64';
             s.events='event64';
             var sub_menu_name = $self.text();
+
+            var $parent = $self.parent('li');
+            $parent.parents('li').each(function() {
+              sub_menu_name = $(this).children('a').text() + ' : ' + sub_menu_name;
+            });
+
             s.eVar64=s.prop64=sub_menu_name;
             if (!$self.hasClass('use-ajax') && !$self.hasClass('link-empty') && $self.attr('href') != '#') {
               s.bcf = function() {
@@ -156,7 +185,7 @@
       // A/B/C Spots
       $('.usa-home-aspot .node a, .usa-home-bspot .node a, .usa-home-cspot .node a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             var $self = $(this);
             var $node = $self.parents('.node');
@@ -189,7 +218,7 @@
       // Featured
       $('.field-name-field-hp-promos .node a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             var $self = $(this);
             var $node = $self.parents('.node');
@@ -209,7 +238,7 @@
       // A Spot
       $('.show-aspot .node a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             var $self = $(this);
             var $node = $self.parents('.node');
@@ -233,7 +262,7 @@
       // Featured
       $('.field-name-field-usa-tv-promo .node a').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
-          if (typeof s == 'object' && typeof s.tl == 'function') {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
             var $self = $(this);
             var $node = $self.parents('.node');
@@ -245,6 +274,161 @@
               href: $self.attr('href'),
               target: $self.attr('target')
             });
+          }
+        });
+      });
+
+      // Showpage more button
+      $('.node-type-tv-show .expandable-toggle-wrap').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          var $self = $(this);
+          if ($self.find('.more:visible').length == 0) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              s.linkTrackVars = 'events,eVar65,prop65';
+              s.linkTrackEvents = s.events = 'event65';
+              s.eVar65 = s.prop65 = 'Show Page : More';
+              s.tl(this,'o','Show Page : More');
+              s.manageVars('clearVars',s.linkTrackVars,1);
+            }
+          }
+        });
+      });
+
+      // Showpage social links
+      $('.region-content #usanetwork_social_chatter_title > a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var id = $self.attr('id');
+            var feedTitle = 'Social Feed';
+            switch (id) {
+              case 'navFb': feedTitle = 'Facebook Feed'; break;
+              default:
+                if (id.indexOf('nav') === 0) {
+                  feedTitle = id.substr(3) + ' Feed';
+                }
+                break;
+            }
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
+            s.eVar65 = s.prop65 = 'Show Page : ' + feedTitle;
+            s.tl(this,'o','Show Page : Social Feed Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
+
+      // OnNow/UpNext social links
+      $('#block-usanetwork-tv-schedule-usa-on-now-panel').once('omniture-tracking', function() {
+        $(this).on('click', '#usanetwork_social_chatter_title > a', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var id = $self.attr('id').replace('OnNow', '');
+            var feedTitle = 'Social Feed';
+            switch (id) {
+              case 'navFb': feedTitle = 'Facebook Feed'; break;
+              default:
+                if (id.indexOf('nav') === 0) {
+                  feedTitle = id.substr(3) + ' Feed';
+                }
+                break;
+            }
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
+            s.eVar65 = s.prop65 = 'On Now : ' + feedTitle;
+            s.tl(this,'o','On Now : Social Feed Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
+
+      // Show selection drop-down
+      $('#block-usanetwork-video-usa-show-video-nav ul.shows a, #block-usanetwork-video-usa-global-video-nav ul.shows a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var showName = $self.text();
+            var href = $self.attr('href');
+
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = href;
+              }, 500);
+            };
+
+            s.linkTrackVars = 'events,eVar64,prop64';
+            s.linkTrackEvents = s.events = 'event64';
+            s.eVar64 = s.prop64 = 'Video Page : Show Selector : ' + showName;
+            s.tl(this,'o','Video Page : Show Selector Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
+
+      // Show video categories
+      $('#block-usanetwork-video-usa-show-video-nav ul.categories a, #block-usanetwork-video-usa-global-video-nav ul.categories a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var category = $self.text();
+
+            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackEvents = s.events = 'event65';
+            s.eVar65 = s.prop65 = 'Video Page : ' + category;
+            s.tl(this,'o','Video Page : View Selection Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
+
+      // Show-level breadcrumbs
+      $('.show-banner .show-name > a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var showName = $self.text();
+            var href = $self.attr('href');
+
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = href;
+              }, 500);
+            };
+
+            s.linkTrackVars = 'events,eVar64,prop64';
+            s.linkTrackEvents = s.events = 'event64';
+            s.eVar64 = s.prop64 = 'Breadcrumb : ' + showName;
+            s.tl(this,'o','Video Page : Show Selector Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
+
+      // Main nav show name
+      $('#block-usanetwork-blocks-usa-tv-show-menu .tv-show-menu-trigger > a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var showName = $self.text();
+            var href = $self.attr('href');
+
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = href;
+              }, 500);
+            };
+
+            s.linkTrackVars = 'events,eVar64,prop64';
+            s.linkTrackEvents = s.events = 'event64';
+            s.eVar64 = s.prop64 = 'Main Nav : ' + showName;
+            s.tl(this,'o','Footer Show Home Page Click');
+            s.manageVars('clearVars',s.linkTrackVars,1);
           }
         });
       });

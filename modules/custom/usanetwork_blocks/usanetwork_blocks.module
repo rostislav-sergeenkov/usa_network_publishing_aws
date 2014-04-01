@@ -135,7 +135,14 @@ function usanetwork_blocks_block_view($delta) {
       break;
     case 'usa_follow_block':
       $block['subject'] = '';
-      $block['content'] = usanetwork_blocks_usa_follow_block();
+      $block['content'] = array(
+        '#markup' => usanetwork_blocks_usa_follow_block(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'usanetwork_blocks') . '/js/usanetwork_blocks_social.js'
+          ),
+        ),
+      );
       break;
   }
   return $block;

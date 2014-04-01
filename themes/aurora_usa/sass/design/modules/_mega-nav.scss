@@ -20,7 +20,7 @@
   }
   [data-menu-direction="left"][data-menu-position="open"] & {
     left: 258px;
-    @include breakpoint($bp-menu-wide) {
+    @include breakpoint($bp-menu-switch) {
       left: 362px;
     }
   }

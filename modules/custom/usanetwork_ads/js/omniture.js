@@ -47,7 +47,9 @@
       }
 
       s.tl(this,'o','Promo Click');
-      s.manageVars('clearVars', s.linkTrackVars, 1);
+      if (typeof s.manageVars == 'function') {
+        s.manageVars('clearVars', s.linkTrackVars, 1);
+      }
     },
     attach: function (context, settings) {
       if (typeof s != 'object') {
@@ -69,7 +71,9 @@
             s.eVar63=s.prop63='On Now';
             s.prop10=showName;
             s.tl(this,'o','On Now Click');
-            s.manageVars("clearVars", s.linkTrackVars, 1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -104,7 +108,9 @@
             s.eVar64=s.prop64=prop;
             s.prop10=showName;
             s.tl(this,'o',descr);
-            s.manageVars("clearVars", s.linkTrackVars, 1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -142,7 +148,9 @@
               };
             }
             s.tl(this,'o','Global Menu Click');
-            s.manageVars("clearVars", s.linkTrackVars, 1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -172,7 +180,9 @@
               };
             }
             s.tl(this,'o','Global SubMenu Click');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -288,7 +298,9 @@
               s.linkTrackEvents = s.events = 'event65';
               s.eVar65 = s.prop65 = 'Show Page : More';
               s.tl(this,'o','Show Page : More');
-              s.manageVars('clearVars',s.linkTrackVars,1);
+              if (typeof s.manageVars == 'function') {
+                s.manageVars('clearVars', s.linkTrackVars, 1);
+              }
             }
           }
         });
@@ -314,7 +326,9 @@
             s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = 'Show Page : ' + feedTitle;
             s.tl(this,'o','Show Page : Social Feed Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -339,7 +353,9 @@
             s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = 'On Now : ' + feedTitle;
             s.tl(this,'o','On Now : Social Feed Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -363,7 +379,9 @@
             s.linkTrackEvents = s.events = 'event64';
             s.eVar64 = s.prop64 = 'Video Page : Show Selector : ' + showName;
             s.tl(this,'o','Video Page : Show Selector Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -380,7 +398,9 @@
             s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = 'Video Page : ' + category;
             s.tl(this,'o','Video Page : View Selection Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -404,7 +424,9 @@
             s.linkTrackEvents = s.events = 'event64';
             s.eVar64 = s.prop64 = 'Breadcrumb : ' + showName;
             s.tl(this,'o','Video Page : Show Selector Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });
@@ -428,7 +450,9 @@
             s.linkTrackEvents = s.events = 'event64';
             s.eVar64 = s.prop64 = 'Main Nav : ' + showName;
             s.tl(this,'o','Footer Show Home Page Click');
-            s.manageVars('clearVars',s.linkTrackVars,1);
+            if (typeof s.manageVars == 'function') {
+              s.manageVars('clearVars', s.linkTrackVars, 1);
+            }
           }
         });
       });

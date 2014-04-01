@@ -675,6 +675,17 @@ function usanetwork_core_update_7133() {
 }
 
 /**
+ * enable gigya sharing
+ */
+function usanetwork_core_update_7134() {
+  $modules_en = array(
+    'gigya',
+    'usanetwork_gigya',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

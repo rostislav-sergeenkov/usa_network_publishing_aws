@@ -4,7 +4,9 @@
 (function ($) {
   Drupal.behaviors.omniture_tracking = {
     omniturePresent: function() {
-      if (typeof s == 'object' && typeof s.tl == 'function') {
+      if (typeof s == 'object'
+        && typeof s.tl == 'function'
+        && typeof s.manageVars == 'function') {
         return true;
       }
       false;

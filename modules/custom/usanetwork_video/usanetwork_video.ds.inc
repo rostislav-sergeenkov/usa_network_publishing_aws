@@ -18,7 +18,7 @@ function usanetwork_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle' => array(
-      'weight' => '8',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -143,12 +143,12 @@ function usanetwork_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle' => array(
-      'weight' => '0',
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -321,14 +321,15 @@ function usanetwork_video_ds_layout_settings_info() {
       'guid' => array(
         0 => 'field_video_guid',
       ),
+      'tve_auth' => array(
+        0 => 'field_video_thumbnail',
+      ),
       'body' => array(
         0 => 'body',
+        1 => 'field_gigya_share_bar',
       ),
       'ad' => array(
         0 => 'video_companion_rectangle',
-      ),
-      'tve_auth' => array(
-        0 => 'field_video_thumbnail',
       ),
     ),
     'fields' => array(
@@ -338,9 +339,10 @@ function usanetwork_video_ds_layout_settings_info() {
       'field_episode_number' => 'episode',
       'field_video_air_date' => 'airdate',
       'field_video_guid' => 'guid',
-      'body' => 'body',
-      'video_companion_rectangle' => 'ad',
       'field_video_thumbnail' => 'tve_auth',
+      'body' => 'body',
+      'field_gigya_share_bar' => 'body',
+      'video_companion_rectangle' => 'ad',
     ),
     'classes' => array(),
   );
@@ -511,40 +513,42 @@ function usanetwork_video_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'ad' => array(
-        0 => 'video_companion_rectangle',
-      ),
-      'body' => array(
-        0 => 'body',
+      'show' => array(
+        0 => 'field_show',
       ),
       'video_title' => array(
         0 => 'title',
       ),
-      'airdate' => array(
-        0 => 'field_video_air_date',
-      ),
-      'show' => array(
-        0 => 'field_show',
-      ),
-      'guid' => array(
-        0 => 'field_video_guid',
+      'season' => array(
+        0 => 'field_season_id',
       ),
       'episode' => array(
         0 => 'field_episode_number',
       ),
-      'season' => array(
-        0 => 'field_season_id',
+      'airdate' => array(
+        0 => 'field_video_air_date',
+      ),
+      'guid' => array(
+        0 => 'field_video_guid',
+      ),
+      'body' => array(
+        0 => 'body',
+        1 => 'field_gigya_share_bar',
+      ),
+      'ad' => array(
+        0 => 'video_companion_rectangle',
       ),
     ),
     'fields' => array(
-      'video_companion_rectangle' => 'ad',
-      'body' => 'body',
-      'title' => 'video_title',
-      'field_video_air_date' => 'airdate',
       'field_show' => 'show',
-      'field_video_guid' => 'guid',
-      'field_episode_number' => 'episode',
+      'title' => 'video_title',
       'field_season_id' => 'season',
+      'field_episode_number' => 'episode',
+      'field_video_air_date' => 'airdate',
+      'field_video_guid' => 'guid',
+      'body' => 'body',
+      'field_gigya_share_bar' => 'body',
+      'video_companion_rectangle' => 'ad',
     ),
     'classes' => array(),
   );

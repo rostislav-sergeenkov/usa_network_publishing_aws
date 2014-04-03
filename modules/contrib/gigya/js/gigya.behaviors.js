@@ -65,8 +65,8 @@
               mediaObj.src = Drupal.settings.gigya.shareUIParams.imageUrl;
             }
             else if (Drupal.settings.gigya.shareUIParams.imageBhev === 'default') {
-              if ($('meta[property=og:image]').length > 0) {
-                mediaObj.src = $('meta[property=og:image]').attr('content');
+              if ($('meta[property="og:image"]').length > 0) {
+                mediaObj.src = $('meta[property="og:image"]').attr('content');
               }
               else {
                 mediaObj.src = $('#block-system-main img').eq(0).attr('src') || $('img').eq(0).attr('src');

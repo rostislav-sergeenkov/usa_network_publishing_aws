@@ -523,6 +523,15 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
   drupal_add_js(drupal_get_path('module', 'gigya') . '/js/gigya_ratings.js');
   drupal_add_css(drupal_get_path('module', 'gigya') . '/css/gigya.css');
   $settings = $display['settings'];
+  $context = array(
+    'entity_type' => $entity_type,
+    'entity' => $entity,
+    'field' => $field,
+    'instance' => $instance,
+    'langcode' => $langcode,
+    'items' => $items,
+    'display' => $display,
+  );
   if ($field['type'] == 'gigya_sharebar') {
     $defaults = _gigya_field_info_formatter_default_settings($display['type']);
     if (!empty($settings['gigya_sharebar_override_default'])) {
@@ -554,7 +563,7 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
         $share_settings['gigyaSharebar'][$key] = gigya_json_to_php($set);
       }
     }
-    drupal_alter('gigya_sharebar', $share_settings);
+    drupal_alter('gigya_sharebar', $share_settings, $context);
     $sharebars['gigyaSharebars'][] = $share_settings;
     drupal_add_js($sharebars, 'setting');
     $element = array();
@@ -601,7 +610,7 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
     }
 
     // Allow other modules to modify global configuration.
-    drupal_alter('gigya_reactions', $reactions_settings);
+    drupal_alter('gigya_reactions', $reactions_settings, $context);
     $reactionbars['gigyaReactionsBars'][] = $reactions_settings;
     drupal_add_js($reactionbars, 'setting');
     $element = array();
@@ -617,7 +626,7 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
       'showCommentButton' => $settings['gigya_ratings_show_write'],
     );
     // Allow other modules to modify global configuration.
-    drupal_alter('gigya_reatings', $ratings_settings);
+    drupal_alter('gigya_reatings', $ratings_settings, $context);
     $ratings['gigyaRaitingsInstances'][] = $ratings_settings;
     drupal_add_js($ratings, 'setting');
     $element = array();

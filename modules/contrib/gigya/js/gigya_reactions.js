@@ -17,8 +17,8 @@
         mediaObj.src = settings.gigyaReactions.ua.imageUrl;
       }
       else if (settings.gigyaReactions.ua.imageBhev === 'default') {
-        if ($('meta[property=og:image]').length > 0) {
-          mediaObj.src = $('meta[property=og:image]').attr('content');
+        if ($('meta[property="og:image"]').length > 0) {
+          mediaObj.src = $('meta[property="og:image"]').attr('content');
         }
         else {
           mediaObj.src = $('#block-system-main img').eq(0).attr('src') || $('img').eq(0).attr('src');
@@ -43,7 +43,7 @@
         ua.setSubtitle(settings.gigyaSharebar.ua.subtitle);
       }
       if (typeof settings.gigyaReactions.ua.description !== 'undefined') {
-        ua.setDescription(settings.gigyaReactions.description);
+        ua.setDescription(settings.gigyaReactions.ua.description);
       }
       ua.addMediaItem(mediaObj);
       // Step 2: Define the Share Bar Plugin's params object.

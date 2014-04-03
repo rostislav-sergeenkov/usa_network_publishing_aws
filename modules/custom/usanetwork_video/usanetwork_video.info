@@ -8,6 +8,7 @@ dependencies[] = ds
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
+dependencies[] = gigya
 dependencies[] = image
 dependencies[] = list
 dependencies[] = metatag

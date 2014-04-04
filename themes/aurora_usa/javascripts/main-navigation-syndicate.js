@@ -523,6 +523,129 @@ function menu_init(){
       return false;
     });
 
+    // SHOW MENU
+    $('#tv-show-menu .parent-item a').on('click', function() {
+      var $menu = $('#tv-show-menu');
+      if ($menu.hasClass('sliding')) {
+        return;
+      }
+      $menu.addClass('sliding');
+      var $parent = $(this).parents('li');
+      var $active = $menu.find('.parent-item.active');
+      var toggle_submenu = function() {
+        $parent.children('.item-list').slideToggle('fast', function() {
+          $parent.toggleClass('active');
+          $menu.removeClass('sliding');
+        });
+      }
+      if ($active.length > 0 && !$parent.hasClass('active')) {
+        $active.children('.item-list').slideToggle('fast', function() {
+          $active.removeClass('active');
+          toggle_submenu();
+        });
+      }
+      else {
+        toggle_submenu();
+      }
+    });
+
+    // SHOW MENU MAIN NAVIGATION
+    var doBounce = function(element, direction, times, distance, speed, callback) {
+      var animationFirst = {};
+      var animationSecond = {};
+      switch (direction) {
+        case 'left':
+          animationFirst.marginLeft = '-=' + distance;
+          animationSecond.marginLeft = '+=' + distance;
+          animationFirst.marginRight = '+=' + distance;
+          animationSecond.marginRight = '-=' + distance;
+          break;
+        case 'right':
+          animationFirst.marginLeft = '+=' + distance;
+          animationSecond.marginLeft = '-=' + distance;
+          animationFirst.marginRight = '-=' + distance;
+          animationSecond.marginRight = '+=' + distance;
+          break;
+        case 'bottom':
+          animationFirst.marginTop = '+=' + distance;
+          animationSecond.marginTop = '-=' + distance;
+          animationFirst.marginBottom = '-=' + distance;
+          animationSecond.marginBottom = '+=' + distance;
+          break;
+        default:
+          animationFirst.marginTop = '-=' + distance;
+          animationSecond.marginTop = '+=' + distance;
+          animationFirst.marginBottom = '+=' + distance;
+          animationSecond.marginBottom = '-=' + distance;
+          break;
+      }
+      var effect = 'margin' + direction.charAt(0).toUpperCase() + direction.slice(1);
+      var animation = {};
+      element.animate(animationFirst, speed, function() {
+        $(this).animate(animationSecond, speed, function() {
+          if (times <= 1) {
+            if (typeof callback == 'function') {
+              callback(element);
+            }
+          }
+          else {
+            doBounce(element, direction, --times, distance, speed, callback);
+          }
+        });
+      });
+    }
+    var $menu = $('#block-usanetwork-blocks-usa-meganav');
+    $menu.find('.slide-menu-toggle span').on('mouseover', function() {
+      var $self = $(this);
+      if ($menu.hasClass('menu-opened') || $self.hasClass('animating') || $self.hasClass('animated')) {
+        return;
+      }
+      $self.addClass('animating');
+      doBounce($self, 'right', 2, '5px', 100, function(element) {
+        element.removeClass('animating');
+        if (element.is(':hover')) {
+          element.addClass('animated');
+        }
+      });
+    });
+    $menu.find('.slide-menu-toggle span').on('mouseout', function() {
+      var $self = $(this);
+      $self.removeClass('animated');
+    });
+    $menu.find('.slide-menu-toggle').on('click', function() {
+      var duration = 500;
+      if ($menu.hasClass('menu-opened')) {
+        $menu.animate({
+          width: $(this).outerWidth(true)
+        }, duration, function() {
+          $menu.removeClass('menu-opened');
+        });
+      }
+      else {
+        // close tv show submenu
+        var $show_menu = $('#tv-show-menu');
+        var $active = $show_menu.find('.parent-item.active');
+        $active.children('.item-list').slideToggle('fast', function() {
+          $active.removeClass('active');
+        });
+
+        // open menu
+        $menu.animate({
+          width: '100%'
+        }, duration, function() {
+          $menu.addClass('menu-opened');
+        });
+      }
+    });
+    $menu.find('.slide-menu-close').on('click', function() {
+      var duration = 500;
+      $menu.animate({
+        width: $menu.find('.slide-menu-toggle').outerWidth(true)
+      }, duration, function() {
+        $menu.removeClass('menu-opened');
+      });
+    });
+
     // ON NOW BUTTON / PERSONALIZATION TRIGGER
     // add on now and personalization content to the panel
     // set the panel 'state' to menu (DEFAULT)
@@ -581,8 +704,8 @@ function menu_init(){
       // set up show menu
       var $show_menu = $('#block-usanetwork-blocks-usa-tv-show-menu').clone();
       if ($show_menu.length > 0) {
-        $('body').addClass('usa-showmenu-active');
-        $('#block-usanetwork-blocks-usa-meganav').addClass('usa-showmenu-active');
+        /*$('body').addClass('usa-showmenu-active');
+        $('#block-usanetwork-blocks-usa-meganav').addClass('usa-showmenu-active');*/
         $('.region-footer').addClass('usa-showmenu-loaded');
         var $show_trigger = $show_menu.find('.tv-show-menu-trigger').html();
         var $new_show_menu = $show_menu.find('#tv-show-menu');

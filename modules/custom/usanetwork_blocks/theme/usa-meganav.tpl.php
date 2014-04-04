@@ -15,7 +15,7 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
 ?>
 
 
-
+<div class="mega-menu-items slide-menu-toggle"><span></span></div>
 <div data-module-type="NavDrawer" class="mega-menu-items shows-mega-menu-item active">
   <?php print l('Shows', 'globalnav_shows/nojs', array('absolute' => true, 'attributes' => array('class' => array('mega-nav-link', 'shows', 'use-ajax'), 'data-drawer-id' => 'main-nav-shows'))); ?>
   <div class="mega-sub-nav-container" data-drawer="main-nav-shows">
@@ -50,3 +50,4 @@ $more_title = variable_get('usanetwork_global_nav_more_title');
     </div>
   </div>
 </div>
+<div class="mega-menu-items slide-menu-close"><span>x</span></div>

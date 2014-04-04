@@ -304,7 +304,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
 
   echo $styles;
   $markup_wrapper = '
-  <header role="banner" id="page-header">
+  <header role="banner" id="page-header" class="usa-showmenu-active">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
@@ -349,7 +349,7 @@ function usanetwork_widget_show_navbar_plain($node) {
  */
 function usanetwork_widget_show_navbar_ajax_plain($node) {
   $markup_wrapper = '
-  <header role="banner" id="page-header">
+  <header role="banner" id="page-header" class="usa-showmenu-active">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">

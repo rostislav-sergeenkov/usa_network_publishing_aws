@@ -15,18 +15,18 @@
         });
 
         // SHOW MENU
-        $('#tv-show-menu .parent-item a').on('click', function() {
-          var $menu = $('#tv-show-menu');
-          if ($menu.hasClass('sliding')) {
+        var $show_menu = $('#tv-show-menu');
+        $show_menu.find('.parent-item a').on('click', function() {
+          if ($show_menu.hasClass('sliding')) {
             return;
           }
-          $menu.addClass('sliding');
+          $show_menu.addClass('sliding');
           var $parent = $(this).parents('li');
-          var $active = $menu.find('.parent-item.active');
+          var $active = $show_menu.find('.parent-item.active');
           var toggle_submenu = function() {
             $parent.children('.item-list').slideToggle('fast', function() {
               $parent.toggleClass('active');
-              $menu.removeClass('sliding');
+              $show_menu.removeClass('sliding');
             });
           }
           if ($active.length > 0 && !$parent.hasClass('active')) {

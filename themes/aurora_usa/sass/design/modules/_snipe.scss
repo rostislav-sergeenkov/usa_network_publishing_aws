@@ -91,6 +91,12 @@
     background-color: $gray-dark;
   }
   @include breakpoint($bp-menu-switch) {
+    #mega-nav .primary-nav & {
+      display: none;
+    }
+    #mega-nav .primary-nav.snipe-active & {
+      display: inline-block;
+    }
     background-color: transparent;
     bottom: auto;
     height: 65px;

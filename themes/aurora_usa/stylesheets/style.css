@@ -11503,6 +11503,12 @@ a[class*="day"] {
     top: 1px;
     margin-left: 0;
   }
+  #mega-nav .primary-nav .block-usanetwork-snipe {
+    display: none;
+  }
+  #mega-nav .primary-nav.snipe-active .block-usanetwork-snipe {
+    display: inline-block;
+  }
   .snipe-active .block-usanetwork-snipe {
     background-color: black;
     left: 0;

@@ -525,86 +525,29 @@ function menu_init(){
 
     // SHOW MENU
     var $showmenu = $('#tv-show-menu');
-    $showmenu.find('.parent-item a').on('click', function() {
-      if ($showmenu.hasClass('sliding')) {
-        return;
-      }
-      $showmenu.addClass('sliding');
-      var $parent = $(this).parents('li');
-      var $active = $showmenu.find('.parent-item.active');
-      var toggle_submenu = function() {
-        $parent.children('.item-list').slideToggle('fast', function() {
-          $parent.toggleClass('active');
-          $showmenu.removeClass('sliding');
-        });
-      }
-      if ($active.length > 0 && !$parent.hasClass('active')) {
-        $active.children('.item-list').slideToggle('fast', function() {
-          $active.removeClass('active');
-          toggle_submenu();
-        });
-      }
-      else {
-        toggle_submenu();
-      }
-    });
+    var $showmenu_block = $('#block-usanetwork-blocks-usa-tv-show-menu');
 
     // SHOW MENU MAIN NAVIGATION
-    var doBounce = function(element, direction, times, distance, speed, callback) {
-      var animationFirst = {};
-      var animationSecond = {};
-      switch (direction) {
-        case 'left':
-          animationFirst.marginLeft = '-=' + distance;
-          animationSecond.marginLeft = '+=' + distance;
-          animationFirst.marginRight = '+=' + distance;
-          animationSecond.marginRight = '-=' + distance;
-          break;
-        case 'right':
-          animationFirst.marginLeft = '+=' + distance;
-          animationSecond.marginLeft = '-=' + distance;
-          animationFirst.marginRight = '-=' + distance;
-          animationSecond.marginRight = '+=' + distance;
-          break;
-        case 'bottom':
-          animationFirst.marginTop = '+=' + distance;
-          animationSecond.marginTop = '-=' + distance;
-          animationFirst.marginBottom = '-=' + distance;
-          animationSecond.marginBottom = '+=' + distance;
-          break;
-        default:
-          animationFirst.marginTop = '-=' + distance;
-          animationSecond.marginTop = '+=' + distance;
-          animationFirst.marginBottom = '+=' + distance;
-          animationSecond.marginBottom = '-=' + distance;
-          break;
-      }
-      var effect = 'margin' + direction.charAt(0).toUpperCase() + direction.slice(1);
-      var animation = {};
-      element.animate(animationFirst, speed, function() {
-        $(this).animate(animationSecond, speed, function() {
-          if (times <= 1) {
-            if (typeof callback == 'function') {
-              callback(element);
-            }
-          }
-          else {
-            doBounce(element, direction, --times, distance, speed, callback);
-          }
-        });
-      });
-    }
     var $menu = $('#block-usanetwork-blocks-usa-meganav');
     $menu.find('.slide-menu-toggle span').on('mouseover', function() {
+      var menu_width = '100px';
       var $self = $(this);
       if ($menu.hasClass('menu-opened') || $self.hasClass('animating') || $self.hasClass('animated')) {
         return;
       }
       $self.addClass('animating');
-      doBounce($self, 'right', 2, '5px', 100, function(element) {
-        element.removeClass('animating');
-        if (element.is(':hover')) {
-          element.addClass('animated');
+      $menu.animate({
+        width: '+=' + menu_width
+      }, 200, function() {
+        if (!$self.hasClass('animated')) {
+          $menu.animate({
+            width: '-=' + menu_width
+          }, 200, function() {
+            $self.removeClass('animating');
+            if ($self.is(':hover')) {
+              $self.addClass('animated');
+            }
+          });
         }
       });
     });
@@ -615,10 +558,12 @@ function menu_init(){
     $menu.find('.slide-menu-toggle').on('click', function() {
       var duration = 500;
       if ($menu.hasClass('menu-opened')) {
+        $showmenu_block.css('visibility', 'visible');
         $menu.animate({
           width: $(this).outerWidth(true)
         }, duration, function() {
           $menu.removeClass('menu-opened');
+          $menu.find('.slide-menu-toggle span').removeClass('animated');
         });
       }
       else {
@@ -634,21 +579,34 @@ function menu_init(){
         if (calculatedWidth > width) {
           width = calculatedWidth;
         }
+        $menu.find('.slide-menu-toggle span').removeClass('animating');
+        $menu.find('.slide-menu-toggle span').addClass('animated');
         $menu.animate({
           width: width
         }, duration, function() {
           $menu.addClass('menu-opened');
+          $showmenu_block.css('visibility', 'hidden');
         });
       }
     });
     $menu.find('.slide-menu-close').on('click', function() {
       var duration = 500;
+      $showmenu_block.css('visibility', 'visible');
       $menu.animate({
         width: $menu.find('.slide-menu-toggle').outerWidth(true)
       }, duration, function() {
         $menu.removeClass('menu-opened');
+        $menu.find('.slide-menu-toggle span').removeClass('animated');
       });
     });
+
+    // display main menu for 3 sec if show-menu present
+    if ($showmenu.length > 0) {
+      $menu.find('.slide-menu-toggle').click();
+      setTimeout(function() {
+        $menu.find('.slide-menu-close').click();
+      }, 3000);
+    }
 
     // ON NOW BUTTON / PERSONALIZATION TRIGGER
     // add on now and personalization content to the panel

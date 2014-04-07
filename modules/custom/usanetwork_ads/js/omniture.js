@@ -434,6 +434,35 @@
           }
         });
       });
+
+      $('.field-type-gigya-sharebar').once('omniture-tracking', function() {
+        $(this).on('click', '.gig-share-button', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var $self = $(this);
+            var $container = $self.parents('.gig-button-container');
+            var network = 'Share';
+            if ($container.hasClass('gig-button-container-facebook')) {
+              network = 'Facebook';
+            }
+            else if ($container.hasClass('gig-button-container-twitter')) {
+              network = 'Twitter';
+            }
+            else if ($container.hasClass('gig-button-container-tumblr')) {
+              network = 'Tumblr';
+            }
+            else if ($container.hasClass('gig-button-container-pinterest')) {
+              network = 'Pinterest';
+            }
+
+            s.linkTrackVars = 'events,eVar74';
+            s.linkTrackEvents = 'event41';
+            s.events = 'event41';
+            s.eVar74 = network;
+            s.tl(this,'o','Social Share');
+            s.manageVars('clearVars',s.linkTrackVars,1);
+          }
+        });
+      });
     }
   }
 }(jQuery));

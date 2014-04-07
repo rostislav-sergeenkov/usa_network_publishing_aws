@@ -88,6 +88,8 @@
   font-size: $logo-height-med;
   @include breakpoint($bp-menu-switch) {
     @include float-left;
+    margin-top: 13px;
+    margin-bottom: 12px;
     font-size: $logo-height-large;
     border-right: 1px solid $gray-med;
     .usa-showmenu-active & {
@@ -153,16 +155,16 @@
       }
       .slide-menu-close {
         font-family: $headline-semi;
-        height: 64px;
+        height: 58px;
         border-left: 4px solid $blue;
         margin: 0;
         padding-left: 25px;
         font-size: 22px;
-        line-height: 32px;
+        line-height: 26px;
         span {
           color: $blue;
           display: block;
-          height: 32px;
+          height: 26px;
           margin: 16px 0;
           cursor: pointer;
         }
@@ -242,6 +244,10 @@
   @include breakpoint($bp-menu-switch) {
     @include inline-block;
   }
+  @include breakpoint($bp-menu-narrow) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   &:first-child {
     margin: 0 12px;
   }
@@ -251,6 +257,12 @@
     a {
       background-color: $gray-dark;
       border-color: $gray-med;
+    }
+    &.slide-menu-toggle {
+      display: none;
+    }
+    &.slide-menu-close {
+      display: none;
     }
   }
 }
@@ -446,7 +458,7 @@
   }
   @include breakpoint($bp-menu-switch) {
     margin-left: 63px;
-    height: 64px;
+    height: 58px;
     border-left: 1px solid $gray-med-dark;
   }
   .tv-show-menu-trigger {
@@ -463,17 +475,18 @@
       border: none;
       padding: 2px;
       display: inline-block;
-      height: 64px;
+      height: 58px;
       margin-top: 0;
       margin-right: 0;
-      line-height: 60px;
+      line-height: 54px;
       > a {
         @include link-colors($white, $white, $white, $white, $white);
         display: block;
-        height: 60px;
+        height: 54px;
         padding: 0 23px;
         background-color: $blue;
         text-transform: lowercase;
+        font-size: 24px;
       }
     }
   }
@@ -490,12 +503,12 @@
   }
   @include breakpoint($bp-menu-switch) {
     display: inline-block;
-    height: 64px;
+    height: 58px;
     white-space: nowrap;
     a {
       @include link-colors($blue, $blue, $blue, $blue, $blue);
       font-size: 22px;
-      line-height: 64px;
+      line-height: 58px;
       padding: 0 23px;
       display: inline-block;
       background: none;
@@ -548,6 +561,7 @@
           margin-top: -4px;
         }
         .item-list {
+          display: block;
           li:hover {
             > a {
               border-top: none;
@@ -564,6 +578,11 @@
           }
         }
       }
+    }
+  }
+  @include breakpoint($bp-menu-narrow) {
+    a {
+      padding: 0 10px;
     }
   }
 }

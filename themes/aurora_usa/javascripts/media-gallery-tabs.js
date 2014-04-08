@@ -15,7 +15,6 @@
             $tabCount++;
             $(this).attr('id', 'tab-' + $tabCount);
             $thisHeader = $(this).find('h2.pane-title').hide();
-            console.log($thisHeader);
             $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'"><h2>' + $thisHeader.html() + '</h2></a></li>';
            
             $tabs_ul.append($thisTab);

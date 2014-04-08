@@ -524,88 +524,162 @@ function menu_init(){
     });
 
     // SHOW MENU
-    var $showmenu = $('#tv-show-menu');
-    var $showmenu_block = $('#block-usanetwork-blocks-usa-tv-show-menu');
-
+    var $showmenu = $('#block-usanetwork-blocks-usa-tv-show-menu');
     // SHOW MENU MAIN NAVIGATION
     var $menu = $('#block-usanetwork-blocks-usa-meganav');
-    $menu.find('.slide-menu-toggle span').on('mouseover', function() {
-      var menu_width = '100px';
-      var $self = $(this);
-      if ($menu.hasClass('menu-opened') || $self.hasClass('animating') || $self.hasClass('animated')) {
-        return;
+    var $toggle_handle = $primary_nav.find('.slide-menu-toggle-main span');
+    if ($showmenu.length > 0) {
+      var $viewport = $menu.closest('.region-header');
+      var bounce = '30px';
+      var duration = 500;
+      var menuToggleBeforeAnimate = function() {
+        $viewport.addClass('animating');
+        var max_width = Math.max.apply(Math, $viewport.children().map(function(){
+          return $(this).width();
+        }).get());
+        $viewport.width(max_width);
+        $viewport.css({
+          overflow: 'hidden'
+        });
+        $menu.css('position', 'absolute');
+        $showmenu.css('position', 'absolute');
       }
-      $self.addClass('animating');
-      $menu.animate({
-        width: '+=' + menu_width
-      }, 200, function() {
-        if (!$self.hasClass('animated')) {
+      var menuToggleAfterAnimate = function() {
+        $menu.css('position', '');
+        $showmenu.css('position', '');
+        $viewport.css({
+          width: '',
+          overflow: ''
+        });
+        $viewport.removeClass('animating');
+      };
+      var menuToggleInit = function(callback) {
+        if ($viewport.hasClass('animating')) {
+          return;
+        }
+        menuToggleBeforeAnimate();
+        $menu.css({
+          left: 0
+        });
+        $menu.animate({
+          left: '+=' + bounce
+        }, duration / 5, function() {
           $menu.animate({
-            width: '-=' + menu_width
-          }, 200, function() {
-            $self.removeClass('animating');
-            if ($self.is(':hover')) {
-              $self.addClass('animated');
-            }
+            left: '-' + $menu.outerWidth(true) + 'px'
+          }, duration, function() {
+            $menu.hide();
+            $showmenu.css({
+              left: '-' + $showmenu.outerWidth(true) + 'px'
+            });
+            $showmenu.show();
+            $showmenu.animate({
+              left: 0
+            }, duration, function() {
+              menuToggleAfterAnimate();
+              $menu.removeClass('menu-opened');
+              $toggle_handle.parent().removeClass('menu-opened');
+              if (typeof callback == 'function') {
+                callback();
+              }
+            });
+          });
+        });
+      };
+      var menuToggle = function(callback) {
+        if ($viewport.hasClass('animating')) {
+          return;
+        }
+        menuToggleBeforeAnimate();
+        if ($menu.hasClass('menu-opened')) {
+          // close main menu
+          // initial state
+          $menu.css({
+            left: 0
+          });
+          $showmenu.css({
+            left: '100%'
+          });
+          $showmenu.show();
+
+          // animate
+          $menu.animate({
+            left: '+=' + bounce
+          }, duration / 5, function() {
+            $menu.animate({
+              left: '-' + $menu.outerWidth(true) + 'px'
+            }, duration);
+            $showmenu.animate({
+              left: 0
+            }, duration, function() {
+              $menu.hide();
+              menuToggleAfterAnimate();
+              $menu.removeClass('menu-opened');
+              $toggle_handle.parent().removeClass('menu-opened');
+              if (typeof callback == 'function') {
+                callback();
+              }
+            });
           });
         }
-      });
-    });
-    $menu.find('.slide-menu-toggle span').on('mouseout', function() {
-      var $self = $(this);
-      $self.removeClass('animated');
-    });
-    $menu.find('.slide-menu-toggle').on('click', function() {
-      var duration = 500;
-      if ($menu.hasClass('menu-opened')) {
-        $showmenu_block.css('visibility', 'visible');
-        $menu.animate({
-          width: $(this).outerWidth(true)
-        }, duration, function() {
-          $menu.removeClass('menu-opened');
-          $menu.find('.slide-menu-toggle span').removeClass('animated');
-        });
-      }
-      else {
-        // close tv show submenu
-        var $active = $showmenu.find('.parent-item.active');
-        $active.children('.item-list').slideToggle('fast', function() {
-          $active.removeClass('active');
-        });
+        else {
+          // open main menu
+          // initial state
+          $menu.css({
+            left: '-' + $menu.outerWidth(true) + 'px'
+          });
+          $showmenu.css({
+            left: 0
+          });
+          $menu.show();
 
-        // open menu
-        var width = $menu.parents('.region-header').width();
-        var calculatedWidth = $menu.children('.content').children(':last').offset().left - $menu.children('.content').children(':first').offset().left + $menu.children('.content').children(':last').outerWidth(true);
-        if (calculatedWidth > width) {
-          width = calculatedWidth;
+          // animate
+          $showmenu.animate({
+            left: '-=' + bounce
+          }, duration / 5, function() {
+            $menu.animate({
+              left: 0
+            }, duration);
+            $showmenu.animate({
+              left: '100%'
+            }, duration, function() {
+              $showmenu.hide();
+              menuToggleAfterAnimate();
+              $menu.addClass('menu-opened');
+              $toggle_handle.parent().addClass('menu-opened');
+              if (typeof callback == 'function') {
+                callback();
+              }
+            });
+          });
         }
-        $menu.find('.slide-menu-toggle span').removeClass('animating');
-        $menu.find('.slide-menu-toggle span').addClass('animated');
-        $menu.animate({
-          width: width
-        }, duration, function() {
-          $menu.addClass('menu-opened');
-          $showmenu_block.css('visibility', 'hidden');
-        });
-      }
-    });
-    $menu.find('.slide-menu-close').on('click', function() {
-      var duration = 500;
-      $showmenu_block.css('visibility', 'visible');
-      $menu.animate({
-        width: $menu.find('.slide-menu-toggle').outerWidth(true)
-      }, duration, function() {
-        $menu.removeClass('menu-opened');
-        $menu.find('.slide-menu-toggle span').removeClass('animated');
+      };
+      $menu.addClass('menu-opened');
+      $toggle_handle.parent().addClass('menu-opened');
+      var initTimer = setTimeout(menuToggleInit, 3000);
+      $toggle_handle.on('click', function() {
+        clearTimeout(initTimer);
+        menuToggle();
       });
-    });
-
-    // display main menu for 3 sec if show-menu present
-    if ($showmenu.length > 0) {
-      $menu.find('.slide-menu-toggle').click();
-      setTimeout(function() {
-        $menu.find('.slide-menu-close').click();
-      }, 3000);
+      $toggle_handle.on('mouseenter', function() {
+        var $self = $(this);
+        if ($menu.hasClass('menu-opened') || $self.hasClass('animating')) {
+          return;
+        }
+        $self.addClass('animating');
+        $viewport.animate({
+          marginLeft: '+=' + bounce
+        }, 150, function() {
+          $viewport.animate({
+            marginLeft: '-=' + bounce
+          }, 150, function() {
+            $self.removeClass('animating');
+          });
+        });
+      });
+      $menu.on('click', '.slide-menu-close', function() {
+        clearTimeout(initTimer);
+        menuToggle();
+      });
     }
 
     // ON NOW BUTTON / PERSONALIZATION TRIGGER

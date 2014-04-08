@@ -310,13 +310,16 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
         <div id="logo">
           <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
+        <div class="main-menu">
+          <div class="slide-menu-toggle-main"><span></span></div>
+          <div class="region region-header">
+            <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+              %s
+            </div></div>
+            <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+              %s
+            </div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -355,13 +358,16 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
         <div id="logo">
           <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
-        <div class="region region-header">
-          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
-          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-            %s
-          </div></div>
+        <div class="main-menu">
+          <div class="slide-menu-toggle-main"><span></span></div>
+          <div class="region region-header">
+            <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+              %s
+            </div></div>
+            <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+              %s
+            </div></div>
+          </div>
         </div>
       </div>
     </div>

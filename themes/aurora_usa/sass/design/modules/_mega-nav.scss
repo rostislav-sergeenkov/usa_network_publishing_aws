@@ -84,13 +84,20 @@
     .slide-menu-toggle-main {
       display: none;
     }
+    .main-menu {
+      position: relative;
+      margin-left: 127px;
+    }
     .usa-showmenu-active & {
+      .main-menu {
+        margin-left: 126px;
+      }
       .slide-menu-toggle-main {
         display: block;
         position: absolute;
         width: 63px;
         height: 58px;
-        left: 126px;
+        left:0px;
         top: 0px;
         z-index: 3;
         span {

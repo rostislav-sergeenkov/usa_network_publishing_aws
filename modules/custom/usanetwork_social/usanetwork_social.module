@@ -208,6 +208,12 @@ function usanetwork_social_show_tab_nav() {
           $items[] = l($link['#link']['title'], $alias);
         }
       break;
+      case 'social/sync':
+        $showSync = variable_get('usanetwork_social_sync_show_global');
+        if ($showSync) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
       default:
         $items[] = l($link['#link']['title'], $alias);
     }
@@ -934,17 +940,24 @@ function usanetwork_social_global_twitter() {
 function usanetwork_social_global_sync() {
   drupal_set_title('Social Dashboard');
   $showSync = variable_get('usanetwork_social_sync_show_global');
-  $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
-  $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-  $vars = 'var desktopUrl = "'.$desktopUrl.'";';
-  $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
-  drupal_add_js($vars, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+  if ($showSync) {
+    $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+    
+    $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-  $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+    $vars = 'var desktopUrl = "'.$desktopUrl.'";';
+    $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+    drupal_add_js($vars, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
-  return $output;
+    $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+
+    return $output;
+  } else {
+    $not_found_url = variable_get('site_404');
+    drupal_goto($not_found_url);
+  }
 }
 
   /**
@@ -1022,9 +1035,10 @@ function usanetwork_social_sync($node) {
   $desktopUrl = !empty($node->field_sync_desktop_url[$lang][0]['value']) ? $node->field_sync_desktop_url[$lang][0]['value'] : 0;
   $phoneUrl = !empty($node->field_sync_phone_url[$lang][0]['value']) ? $node->field_sync_phone_url[$lang][0]['value'] : 0;
 
-  if (!$showSync || !$desktopUrl || !$phoneUrl)
-  {
-    drupal_goto('social/sync');
+  if (!$showSync || !$desktopUrl || !$phoneUrl) { 
+//    drupal_goto('social/sync');
+    $not_found_url = variable_get('site_404');
+    drupal_goto($not_found_url);
   }
 
   $vars = 'var desktopUrl = "'.$desktopUrl.'";';

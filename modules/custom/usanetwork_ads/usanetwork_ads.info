@@ -9,6 +9,7 @@ dependencies[] = dart
 dependencies[] = strongarm
 features[ctools][] = dart:dart_tag_default:1
 features[ctools][] = strongarm:strongarm:1
+features[dart_tags][] = 220x60_sponsor_logo
 features[dart_tags][] = 300x250_ifr_reload
 features[dart_tags][] = 300x250_scr
 features[dart_tags][] = 300x250_scr_vid_short

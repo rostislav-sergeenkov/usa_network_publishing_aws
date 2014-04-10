@@ -9786,7 +9786,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'class' => 'show-fb usasocial-fb',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -9874,7 +9874,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'class' => 'show-pinterest usasocial-pinterest',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -9962,7 +9962,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'class' => 'show-tumblr usasocial-tumblr',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -10050,7 +10050,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'class' => 'show-twitter usasocial-twitter',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(

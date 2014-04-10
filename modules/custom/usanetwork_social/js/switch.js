@@ -29,6 +29,8 @@ Drupal.behaviors.switch_nav = {
         "plugins": [{
           "name": "TwitterIntents"
         }, {
+          "name": "FbImages"
+        }, {
           "name": "InlineMedia"
         }]
       });

@@ -10444,9 +10444,8 @@ input.echo-submit-text {
 
 /* signin popup */
 #fancybox-wrap {
+  padding: 0;
   left: 0 !important;
-  height: 300px !important;
-  width: 460px !important;
 }
 @media (min-width: 330px) {
   #fancybox-wrap {

@@ -439,6 +439,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
     drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
     drupal_add_js('http://cdn.echoenabled.com/sdk/v3/loader.js', 'external');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/switch.js');
 
     $output .= '<div id="usanetwork_social_show_homepage_chatter"><div id="usanetwork_social_chatter_title">';

@@ -887,9 +887,8 @@ input.echo-submit-text {
 
 /* signin popup */
 #fancybox-wrap {
+  padding: 0;
   left: 0 !important;
-  height: 300px !important;
-  width: 460px !important;
   @include breakpoint($bp-social-small-width) {
     left: 25% !important;
   }

@@ -1892,7 +1892,7 @@ function usanetwork_person_field_default_field_instances() {
         'class' => 'person-fb usasocial-fb',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -1980,7 +1980,7 @@ function usanetwork_person_field_default_field_instances() {
         'class' => 'person-pinterest usasocial-pinterest',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -2068,7 +2068,7 @@ function usanetwork_person_field_default_field_instances() {
         'class' => 'person-tumblr usasocial-tumblr',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(
@@ -2156,7 +2156,7 @@ function usanetwork_person_field_default_field_instances() {
         'class' => 'person-twitter usasocial-twitter',
         'configurable_title' => 0,
         'rel' => '',
-        'target' => 'default',
+        'target' => '_blank',
         'title' => '',
       ),
       'display' => array(

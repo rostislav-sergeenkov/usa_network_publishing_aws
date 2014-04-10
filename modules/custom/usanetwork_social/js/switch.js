@@ -27,6 +27,8 @@ Drupal.behaviors.switch_nav = {
         "aggressiveSanitization": false,
         "defaultAvatar" : "//cdn.echoenabled.com/images/favicons/comments.png",
         "plugins": [{
+          "name": "LinksBlank"
+        }, {
           "name": "TwitterIntents"
         }, {
           "name": "FbImages"

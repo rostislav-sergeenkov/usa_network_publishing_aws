@@ -17,9 +17,9 @@
       var target = $(this).attr('target');
       if (typeof target == 'undefined') {
         target = '_self';
-        if (target == '_self') {
-          $(this).attr('target', '_blank');
-        }
+      }
+      if (target == '_self') {
+        $(this).attr('target', '_blank');
       }
     });
   }

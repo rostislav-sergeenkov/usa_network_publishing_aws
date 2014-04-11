@@ -4578,7 +4578,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   color: #bababa;
   display: none;
   font-size: 18px;
-  margin: 15px 35px 0;
+  margin: 15px 0 0 35px;
 }
 @media (min-width: 0px) and (max-width: 400px) {
   #utilities .breadcrumb {
@@ -4758,7 +4758,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     float: left;
     margin-right: -180px;
     padding-right: 180px;
-    /*width: 100%;*/
+    width: 100%;
     -webkit-transition-property: margin, padding;
     -moz-transition-property: margin, padding;
     -o-transition-property: margin, padding;
@@ -4769,8 +4769,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     transition-duration: 0.2s;
   }
   .utilities-search .show-time {
-    position: absolute;
-    right: 140px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4779,9 +4777,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     transition-duration: 0.2s;
-  }
-  .utilities-search #head-sponsored {
-    margin-right: 160px;
   }
 
   .utilities-search.search-active .utilties-main-group {
@@ -4797,7 +4792,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     transition-duration: 0.2s;
   }
   .utilities-search.search-active .show-time {
-    right: 360px;
     -webkit-transition-property: right;
     -moz-transition-property: right;
     -o-transition-property: right;
@@ -4806,9 +4800,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     transition-duration: 0.2s;
-  }
-  .utilities-search.search-active #head-sponsored {
-    margin-right: 393px;
   }
 }
 #block-search-form {
@@ -11976,9 +11967,7 @@ body:not(.front) .ad-leaderboard {
 
 #head-sponsored {
   display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
   margin: -1px 12px 0 0;
 }
 @media (min-width: 640px) {

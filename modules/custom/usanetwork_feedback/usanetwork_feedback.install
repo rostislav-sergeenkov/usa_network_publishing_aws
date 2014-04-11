@@ -595,3 +595,37 @@ function usanetwork_feedback_uninstall() {
     ->condition('nid', $nid)
     ->execute();
 }
+
+/**
+ * Change email topic settings
+ */
+function usanetwork_feedback_update_7101() {
+  $nid = db_select("node", "n")
+    ->fields("n", array("nid"))
+    ->condition("title", "Feedback", '=')
+    ->condition("type", "webform", '=')
+    ->orderBy('nid', 'desc')
+    ->execute()
+    ->fetchField();
+ 
+  $node = node_load($nid);
+  
+  $node->webform['emails'] = array(
+    1 => array(
+      'nid' => $node->nid,
+      'eid' => '1',
+      'email' => 'usawebmaster@nbcuni.com',
+      'subject' => '7',
+      'from_name' => 'default',
+      'from_address' => '2',
+      'template' => 'default',
+      'excluded_components' => array(
+        0 => '6',
+      ),
+      'html' => '0',
+      'attachments' => '0',
+    ),
+  );
+  
+  node_save($node);
+}

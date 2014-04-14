@@ -3,7 +3,7 @@
     "name": "LinksBlank",
     "applications": ["Stream"],
     "init": function (plugin, application) {
-      plugin.extendRenderer("Item", "body", function(element, dom) {
+      plugin.extendRenderer("Item", "content", function(element, dom) {
         var item = this;
         this.parentRenderer("body", arguments);
         plugin.doLinks(element, application);
@@ -18,8 +18,11 @@
       if (typeof target == 'undefined') {
         target = '_self';
       }
-      if (target == '_self') {
-        $(this).attr('target', '_blank');
+      var $link = $(this);
+      if (target == '_self'
+      && $link.attr('href') != 'javascript:void(0)'
+      && $link.attr('href') != '#') {
+        $link.attr('target', '_blank');
       }
     });
   }

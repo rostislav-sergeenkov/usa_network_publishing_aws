@@ -10799,84 +10799,87 @@ input.echo-submit-text {
   overflow: hidden;
 }
 
-.field-name-field-gigya-share-bar .gig-button-container td > div {
+.field-type-gigya-sharebar {
+  margin-bottom: 20px;
+}
+.field-type-gigya-sharebar .gig-button-container td > div {
   width: 32px !important;
   height: 32px !important;
   background-image: url("../images/social_chatter_icons.png") !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container td > div {
+  .field-type-gigya-sharebar .gig-button-container td > div {
     width: 24px !important;
     height: 24px !important;
   }
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div {
   background-position: 1px -2908px !important;
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover {
   background-position: 1px -2948px !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div {
     background-position: 1px -3422px !important;
   }
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-facebook td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover {
     background-position: 1px -3452px !important;
   }
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div {
   background-position: 1px -2750px !important;
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover {
   background-position: 1px -2790px !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div {
     background-position: 1px -3304px !important;
   }
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-twitter td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover {
     background-position: 1px -3334px !important;
   }
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div {
   background-position: 1px -3225px !important;
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover {
   background-position: 1px -3265px !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div {
     background-position: 1px -3660px !important;
   }
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-tumblr td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover {
     background-position: 1px -3690px !important;
   }
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div {
   background-position: 1px -3067px !important;
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover {
   background-position: 1px -3107px !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div {
     background-position: 1px -3542px !important;
   }
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-pinterest td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover {
     background-position: 1px -3572px !important;
   }
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div {
   background-position: 5px -3717px !important;
 }
-.field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover {
   background-position: 5px -3747px !important;
 }
 @media (max-width: 644px) {
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div {
     background-position: 4px -3779px !important;
   }
-  .field-name-field-gigya-share-bar .gig-button-container.gig-button-container-share td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover {
     background-position: 4px -3804px !important;
   }
 }

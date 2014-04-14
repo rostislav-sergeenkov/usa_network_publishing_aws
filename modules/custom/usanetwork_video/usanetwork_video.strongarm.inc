@@ -184,13 +184,16 @@ function usanetwork_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
           'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '18',
         ),
       ),
       'display' => array(),
@@ -281,6 +284,9 @@ function usanetwork_video_strongarm() {
         ),
         'path' => array(
           'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

@@ -145,8 +145,11 @@ drupal_add_js($aspotVideo, array('type' => 'inline'));
 <?php if ($featured): ?>
 <div class="usa-home-featured clearfix">
   <div class="view">
+    <h2 class="block-title"><?php print t('Featured'); ?></h2>
     <div class="carousel clearfix">
-      <?php print $featured; ?>
+      <div class="carousel-viewport">
+        <?php print $featured; ?>
+      </div>
     </div>
   </div>
 </div>

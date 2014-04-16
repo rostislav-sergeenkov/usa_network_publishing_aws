@@ -512,6 +512,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
+          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
             break;
@@ -564,6 +565,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
+            case 'vid_teaser_front':
             case 'vid_teaser_show_episode':
               $episode = $vars['element']['#items'][0]['safe_value'];
               $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
@@ -583,6 +585,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $season = $vars['element']['#items'][0]['safe_value'];
                 $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
                 break;
+            case 'vid_teaser_front':
+              $season = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $season ? t('Season ') . $season . ',' : '';
+              break;
             }
           }
         }
@@ -596,6 +602,12 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'vid_teaser_general':
           $vars['items'][0]['#prefix'] = '<h4>';
           $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          case 'vid_teaser_front':
+            $title = $vars['element']['#object']->title;
+            $show_name = $vars['element'][0]['#markup'];
+            $vars['classes_array'][] = drupal_html_class('field-name-title');
+            $vars['items'][0]['#markup'] = $show_name . ': ' . $title;           
             break;
           }
         }

@@ -77,6 +77,21 @@ function usanetwork_video_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|usa_tve_video|vid_teaser_front';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'usa_tve_video';
+  $ds_fieldsetting->view_mode = 'vid_teaser_front';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|usa_tve_video|vid_teaser_front'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|usa_tve_video|vid_teaser_general';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'usa_tve_video';
@@ -199,6 +214,21 @@ function usanetwork_video_ds_field_settings_info() {
     ),
   );
   $export['node|usa_video|vid_teaser_episode'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|usa_video|vid_teaser_front';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'usa_video';
+  $ds_fieldsetting->view_mode = 'vid_teaser_front';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|usa_video|vid_teaser_front'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -412,6 +442,40 @@ function usanetwork_video_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usa_tve_video|vid_teaser_front';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usa_tve_video';
+  $ds_layout->view_mode = 'vid_teaser_front';
+  $ds_layout->layout = 'video_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_video_thumbnail',
+      ),
+      'title' => array(
+        0 => 'field_show',
+        1 => 'title',
+      ),
+      'caption' => array(
+        0 => 'field_season_id',
+        1 => 'field_episode_number',
+      ),
+    ),
+    'fields' => array(
+      'field_video_thumbnail' => 'media',
+      'field_show' => 'title',
+      'title' => 'title',
+      'field_season_id' => 'caption',
+      'field_episode_number' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usa_tve_video|vid_teaser_front'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|usa_tve_video|vid_teaser_general';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'usa_tve_video';
@@ -618,6 +682,40 @@ function usanetwork_video_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usa_video|vid_teaser_front';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usa_video';
+  $ds_layout->view_mode = 'vid_teaser_front';
+  $ds_layout->layout = 'video_teaser';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'media' => array(
+        0 => 'field_video_thumbnail',
+      ),
+      'title' => array(
+        0 => 'field_show',
+        1 => 'title',
+      ),
+      'caption' => array(
+        0 => 'field_episode_number',
+        1 => 'field_season_id',
+      ),
+    ),
+    'fields' => array(
+      'field_video_thumbnail' => 'media',
+      'field_show' => 'title',
+      'title' => 'title',
+      'field_episode_number' => 'caption',
+      'field_season_id' => 'caption',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usa_video|vid_teaser_front'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|usa_video|vid_teaser_general';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'usa_video';
@@ -707,6 +805,24 @@ function usanetwork_video_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|usa_video|vid_teaser_show_general'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function usanetwork_video_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'vid_teaser_front';
+  $ds_view_mode->label = 'vid_teaser_front';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['vid_teaser_front'] = $ds_view_mode;
 
   return $export;
 }

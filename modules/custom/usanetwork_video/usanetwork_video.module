@@ -697,3 +697,37 @@ function _usanetwork_video_get_term_depth($tid, $limit = 10) {
   }
   return $depth;
 }
+
+/**
+ * Implements hook_views_query_alter()
+ */
+function usanetwork_video_views_query_alter(&$view, &$query) {
+  if ($view->name == 'usa_video' && $view->current_display == 'front_full_episodes') {
+    
+      $subsubquery = db_select('node', 'nd')
+        ->fields('sub_fdfs',array('field_show_target_id'))
+        ->condition('nd.type', array('usa_video', 'usa_tve_video'), 'IN')
+        ->condition('nd.status', '1');   
+      $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = nd.nid'); 
+      $subsubquery->join('field_data_field_full_episode', 'sub_fdffe', 'nd.nid = sub_fdffe.entity_id');
+      $subsubquery->leftJoin('field_data_field_video_air_date', 'sub_fdfvad', 'nd.nid = sub_fdfvad.entity_id');
+      $subsubquery->condition('sub_fdffe.field_full_episode_value', '1');
+      $subsubquery->addExpression('MAX(sub_fdfvad.field_video_air_date_value)', 'max_data');
+      $subsubquery->groupBy('sub_fdfs.field_show_target_id');
+    
+      $subquery = db_select('node', 'ns')
+        ->fields('ns',array('nid'))
+        ->fields('fdfs',array('field_show_target_id'))
+        ->condition('type', array('usa_video', 'usa_tve_video'), 'IN')
+        ->condition('status', '1');
+      $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = ns.nid');
+      $subquery->leftJoin('field_data_field_video_air_date', 'fdfvad', 'ns.nid = fdfvad.entity_id');
+      $subquery->join($subsubquery, 'subsub', 'subsub.max_data = fdfvad.field_video_air_date_value and fdfs.field_show_target_id = subsub.field_show_target_id');
+      $subquery->addExpression('MAX(ns.nid)', 'max_nid');
+      $subquery->groupBy('field_show_target_id');
+      
+      $join = new views_join();
+      $join->construct($subquery, 'node', 'nid', 'max_nid', array(), 'INNER');
+      $query->add_relationship('field_data_field_dependens_show', $join, 'node');
+  }
+}

@@ -264,7 +264,7 @@ function usanetwork_video_views_default_views() {
   /* Display: Front Global Full Episodes */
   $handler = $view->new_display('block', 'Front Global Full Episodes', 'front_full_episodes');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'front_usa_video';
+  $handler->display->display_options['title'] = 'Latest Full Episodes';
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
@@ -279,7 +279,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_episode';
+  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_front';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;

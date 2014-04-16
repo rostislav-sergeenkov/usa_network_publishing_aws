@@ -1,81 +1,57 @@
 .usa-home-featured {
-  @extend %grid-small-wide-two-three-four;
+  @extend %grid-home-featured;
   position: relative;
-  background-color: $gray-dark;
-    padding: 5px 0 36px;
-  width:auto;
+  padding: 5px 0 36px;
   margin-top: 15px;
   margin-bottom: 15px;
-  @include breakpoint($bp-menu-switch) {
-    bottom:-15px;
-    margin-top: 0;
-    margin-bottom: -15px;
-  }
-  h2 {
+
+  h2.block-title {
     @extend %semi-headline;
     margin-bottom: 12px;
     margin-left: 0px;
+    font-size: 13px;
+    @include breakpoint($bp-home-2col) {
+      font-size: 21px;
+    }
     @include breakpoint($bp-home-3col) {
-      margin-left: 8px;
+      font-size: 23px;
     }
     @include breakpoint($bp-home-widest) {
-      margin-left: 8px;
+      font-size: 25px;
     }
     .usa-adrails &, .ie8 & {
-       margin-left: 8px;
     }
   }
-  @extend %un-margin;
-  .carousel-btns {
-    display: none;
-    @include breakpoint($bp-home-3col) {
-      display: block;
-    }
-  }
-  &:hover {
-    .carousel-btns {
-      opacity: 1;
-    }
-  }
-  .usa-adrails &, .ie9 &, .ie8 & {
-    margin-left:auto;
-    margin-right:auto;
-    /* background-color: transparent; */
-  }
-  .view {
-    margin:0 auto;
-    li {
-      list-style: none;
-    }
-    .node {
-      border: 2px solid $gray-dark;
-      .ie8 & {
-        width: 304px;
-      }
-      > a {
-        position: relative;
-        z-index: 1;
-        display: block;
-      }
-      .asset-img {
-        line-height: 1em;
-      }
-    }
-    div.carousel-item {
-      float:none;
-      border:0;
-    }
-  }
-  li.carousel-item {
-    @include carousel-item($carousel-smallest, 8px);
-    @extend .title-overlay;
-    @include breakpoint($bp-home-2col) {
-      @include carousel-item($carousel-small);
-    }
-    @include breakpoint($bp-home-3col) {
-      @include carousel-item($carousel-medium);
-    }
 
+  .carousel-viewport {
+    margin: 0 -7px 0 -7px;
+  }
+
+  .home-carousel-processed {
+    .carousel-btns {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      margin-top: -19px;
+      .btns {
+        &.prev {
+          top: 0;
+          left: -45px;
+        }
+        &.next {
+          top: 0;
+          right: -45px;
+        }
+        &.disabled {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  li.carousel-item {
+    position: relative;
+    @extend .title-overlay;
     .meta {
       @extend %metadata-holder;
       height: 32px;
@@ -88,7 +64,7 @@
         height: 50px;
       }
       @include breakpoint($bp-home-widest) {
-        height: 77px;
+        height: 50px;
         max-width: none;
       }
       .usa-adrails &, .ie8 & {
@@ -96,7 +72,7 @@
         padding: 8px 15px 8px;
         max-width: 221px;
       }
-      
+
       .promo-cta {
         width: 44px;
         float: left;
@@ -143,183 +119,47 @@
           }
         }
       }
-    }
-  }
 
-  .title {
-    @extend %semi-10;
-    margin-bottom: 3px;
-    @include breakpoint($bp-home-2col) {
-      font-size: 12px;
-    }
-    @include breakpoint($bp-home-3col) {
-      font-size: 16px;
-    }
-    @include breakpoint($bp-home-widest) {
-      font-size: 20px;
-    }
-    .usa-adrails &, .ie8 & {
-      font-size: 16px;
-    }
-  }
-  .caption,
-  .view .node .caption {
-    @extend %regular-8;
-    line-height: 1;
-    @include breakpoint($bp-home-2col) {
-      font-size: 10px;
-    }
-    @include breakpoint($bp-home-widest) {
-      font-size: 15px;
-    }
-    .usa-adrails &, .ie8 & {
-      font-size: 10px;
-    }
-  }
-  .featured-carousel, .view {
-    margin: 0 auto;
-    @include breakpoint($bp-home-narrowest) {
-      width: 300px;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      width: 615px;
-    }
-    @include breakpoint($bp-home-3-fence) {
-      max-width: 944px;
-    }
-    @include breakpoint($bp-home-widest) {
-      max-width: 1260px;
-    }
-    .usa-adrails &, .ie8 & {
-      width: 944px;
-      ul {
-        margin-right:-15px !important;
-        .carousel-item {
-          margin: 0 15px 15px 0;
-        }
-      }
-    }
-    > h2 {
-       text-transform: uppercase;
-    }
-  }
-  .carousel {
-    .carousel-item {
-       .caption {
-        line-height: 13.5px;
+      .title {
+        margin-bottom: 3px;
+        @extend %semi-10;
         @include breakpoint($bp-home-2col) {
-          line-height: 18px;
+          font-size: 12px;
+        }
+        @include breakpoint($bp-home-3col) {
+          font-size: 16px;
+        }
+        @include breakpoint($bp-home-widest) {
+          font-size: 16px;
+        }
+        .usa-adrails &, .ie8 & {
+          font-size: 16px;
         }
       }
-    }
-    @include breakpoint($bp-home-3-fence) {
-      > ul {
-        margin-left: 8px !important;
+      .title,
+      .title .field {
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-    }
-    @include breakpoint($bp-home-widest) {
-      > ul {
-        margin-left: 8px !important;
+      .caption {
+        @extend %regular-8;
+        line-height: 1;
+        @include breakpoint($bp-home-2col) {
+          font-size: 10px;
+        }
+        @include breakpoint($bp-home-widest) {
+          font-size: 12px;
+        }
+        .usa-adrails &, .ie8 & {
+          font-size: 10px;
+        }
       }
-      height: 254px !important;
-      .carousel-item {
-        width: 300px;
-        height: 250px;
-        margin-right: 15px;
-        img, .meta {
-          width: 300px;
-        }
-        img {
-          height: 250px;
-        }
-        .title {
-          line-height: 35px;
-          .usa-adrails &, .ie8 & {
-            line-height: 18px;
-          }
-        }
-        
-      }
-    }
-    .usa-adrails &, .ie8 & {
-      height: 184px !important;
-      padding-left:0 !important;
-      .carousel-item {
-        width: 221px;
-        height: 184px;
-        img, .meta {
-          width: 221px;
-        }
-        img {
-          height: 184px;
-        }
+      .caption,
+      .caption .field {
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
-  .view .carousel {
-    @include breakpoint($bp-home-narrowest) {
-      > ul {
-        margin-right:-8px;
-        margin-left:0!important;
-		margin-top: 17px;
-        .carousel-item {
-          margin-bottom:8px;
-        }
-      }
-    }
-    @include breakpoint($bp-home-2-fence) {
-      padding:25px 0 0;
-      > ul {
-        margin-right: -15px;
-        margin-left:0!important;
-        .carousel-item {
-          margin-bottom:15px;
-        }
-      }
-    }
-    @include breakpoint($bp-home-3-fence) {
-      padding:25px 0 0 8px;
-      > ul {
-        margin-right: -15px;
-        margin-left:0!important;
-        .carousel-item {
-          margin-bottom:15px;
-        }
-      }
-    }
-    @include breakpoint($bp-home-widest) {
-      padding:25px 0 0 8px;
-      > ul {
-        margin-right: -15px;
-        margin-left:0!important;
-        .carousel-item {
-          margin-bottom:15px;
-        }
-      }
-    }
-  }
-  .carousel-btns {
-    opacity: 1;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    @include transform3d(translateX(-50%));
-    @include breakpoint($bp-home-narrowest) {
-      width: 370px;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      width: 685px;
-    }
-    @include breakpoint($bp-home-3-fence) {
-      width: 1000px;
-    }
-    @include breakpoint($bp-home-widest) {
-        width: 1325px;
-    }
-    .usa-adrails &, .ie8 & {
-      width: 1000px;
-      display: block;
-    }
-  }
-
 }
+

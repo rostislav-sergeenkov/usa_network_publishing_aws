@@ -180,6 +180,9 @@ function usanetwork_video_strongarm() {
       'search_index' => array(
         'custom_settings' => TRUE,
       ),
+      'vid_teaser_front' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -271,6 +274,9 @@ function usanetwork_video_strongarm() {
         'custom_settings' => TRUE,
       ),
       'search_index' => array(
+        'custom_settings' => TRUE,
+      ),
+      'vid_teaser_front' => array(
         'custom_settings' => TRUE,
       ),
     ),

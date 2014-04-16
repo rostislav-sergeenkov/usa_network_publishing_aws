@@ -714,6 +714,7 @@ function usanetwork_video_views_query_alter(&$view, &$query) {
       $subsubquery->condition('sub_fdffe.field_full_episode_value', '1');
       $subsubquery->addExpression('MAX(sub_fdfvad.field_video_air_date_value)', 'max_data');
       $subsubquery->groupBy('sub_fdfs.field_show_target_id');
+      $subsubquery->range(0, 10);
     
       $subquery = db_select('node', 'ns')
         ->fields('ns',array('nid'))

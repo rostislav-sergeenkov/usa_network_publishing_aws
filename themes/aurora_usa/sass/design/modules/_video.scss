@@ -46,16 +46,8 @@
     padding-right: 15px;
   }
 }
-
-.block-usanetwork-video .view {
-  li {
-    list-style: none;
-  }
+.view-usa-video {
   .node {
-    border: 2px solid $gray-dark;
-    .ie8 & {
-      width: 304px;
-    }
     > a {
       position: relative;
       z-index: 1;
@@ -77,6 +69,18 @@
         right: 0;
         top: 0;
       }
+    }
+  }
+}
+
+.block-usanetwork-video .view {
+  li {
+    list-style: none;
+  }
+  .node {
+    border: 2px solid $gray-dark;
+    .ie8 & {
+      width: 304px;
     }
     .asset-img {
       line-height: 1em;

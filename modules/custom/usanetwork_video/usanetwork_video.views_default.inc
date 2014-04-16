@@ -266,7 +266,6 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Latest Full Episodes';
   $handler->display->display_options['defaults']['group_by'] = FALSE;
-  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['query'] = FALSE;
@@ -276,6 +275,8 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'item-list carousel-viewport';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';

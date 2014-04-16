@@ -1699,7 +1699,7 @@ function usanetwork_video_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '300x169_video',
+          'image_style' => '300x250',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -3574,7 +3574,7 @@ function usanetwork_video_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '300x169_video',
+          'image_style' => '300x250',
         ),
         'type' => 'image',
         'weight' => 0,

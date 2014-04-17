@@ -6602,6 +6602,7 @@ body.front {
 .usa-home-featured li.carousel-item .meta {
   height: 32px;
   padding: 8px;
+  overflow: visible;
 }
 @media (min-width: 645px) {
   #block-views-usa-video-front-full-episodes li.carousel-item .meta,

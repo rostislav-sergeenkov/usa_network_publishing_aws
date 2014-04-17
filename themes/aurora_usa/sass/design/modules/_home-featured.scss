@@ -1,10 +1,21 @@
+.usa-home-featured {
+  margin-top: 12px;
+  @include breakpoint($bp-home-2col) {
+    margin-top: 15px;
+  }
+}
+
+#block-views-usa-video-front-full-episodes {
+  margin-top: 3px;
+  @include breakpoint($bp-home-2col) {
+    margin-top: 30px;
+  }
+}
+
 #block-views-usa-video-front-full-episodes,
 .usa-home-featured {
   @extend %grid-home-featured;
   position: relative;
-  padding: 5px 0;
-  margin-top: 15px;
-  margin-bottom: -15px;
 
   .usa-adrails &, .ie8 & {
     width: 930px;
@@ -32,9 +43,10 @@
 
   h2 {
     @extend %semi-headline;
-    margin-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 8px;
     margin-left: 0px;
-    font-size: 13px;
+    font-size: 14px;
     @include breakpoint($bp-home-2col) {
       font-size: 21px;
     }

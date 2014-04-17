@@ -1,3 +1,14 @@
+body {
+  &.front {
+    margin-bottom: 49px !important;
+  }
+  @include breakpoint($bp-menu-switch) {
+    &.front {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .node-usa-homepage {
   a {
     @include link-colors($white, $white, $white, $white, $white);

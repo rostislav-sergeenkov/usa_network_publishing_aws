@@ -7,7 +7,7 @@
     }
   }
   @include breakpoint($bp-home-narrowest) {
-    @include layout(2, .062) {
+    @include layout(2, .048) {
       .carousel-item {
         &:nth-of-type(odd) {
           @include grid-span(1, 1);
@@ -24,7 +24,7 @@
   }
   @include breakpoint($bp-home-2-fence) {
     width: 615px;
-    @include layout(3, .062) {
+    @include layout(3, .048) {
       .carousel-item {
         &:nth-of-type(3n + 1) {
           @include grid-span(1, 1);
@@ -44,7 +44,7 @@
   }
   @include breakpoint($bp-home-3-fence) {
     width: 930px;
-    @include layout(4, .062) {
+    @include layout(4, .048) {
       .carousel-item {
         &:nth-of-type(4n + 1) {
           @include grid-span(1, 1);
@@ -67,7 +67,7 @@
   }
   @include breakpoint($bp-home-widest) {
     width: 1245px;
-    @include layout(5, .062) {
+    @include layout(5, .048) {
       .carousel-item {
         &:nth-of-type(5n + 1) {
           @include grid-span(1, 1);
@@ -103,7 +103,9 @@
     }
     @include breakpoint($bp-home-narrowest) {
       .carousel-item {
-        width: 143px;
+        width: 146px;
+        margin-left: 4px;
+        margin-right: 4px;
       }
     }
     @include breakpoint($bp-home-2-fence) {

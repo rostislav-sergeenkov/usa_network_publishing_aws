@@ -270,7 +270,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #block-search-form .form-reset:after, #block-search-form .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-video .view .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
+#logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #block-search-form .form-reset:after, #block-search-form .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .view-usa-video .node.node-usa-tve-video > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .featured-asset.node-usa-tve-video .video-player-wrapper a:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -8001,21 +8001,12 @@ body.person-page #main {
   }
 }
 
-.block-usanetwork-video .view li {
-  list-style: none;
-}
-.block-usanetwork-video .view .node {
-  border: 2px solid #2d2d2d;
-}
-.ie8 .block-usanetwork-video .view .node {
-  width: 304px;
-}
-.block-usanetwork-video .view .node > a {
+.view-usa-video .node > a {
   position: relative;
   z-index: 1;
   display: block;
 }
-.block-usanetwork-video .view .node.node-usa-tve-video > a:after {
+.view-usa-video .node.node-usa-tve-video > a:after {
   position: absolute;
   right: 3px;
   top: 2px;
@@ -8023,7 +8014,7 @@ body.person-page #main {
   font-size: 25px;
   color: white;
 }
-.block-usanetwork-video .view .node.node-usa-tve-video .asset-img:after {
+.view-usa-video .node.node-usa-tve-video .asset-img:after {
   content: "";
   display: block;
   width: 0;
@@ -8033,6 +8024,16 @@ body.person-page #main {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.block-usanetwork-video .view li {
+  list-style: none;
+}
+.block-usanetwork-video .view .node {
+  border: 2px solid #2d2d2d;
+}
+.ie8 .block-usanetwork-video .view .node {
+  width: 304px;
 }
 .block-usanetwork-video .view .node .asset-img {
   line-height: 1em;

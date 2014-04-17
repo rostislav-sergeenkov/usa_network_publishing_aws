@@ -62,35 +62,37 @@
 
     attach: function(context, settings) {
       $('.expandable-container').each(function() {
-        var $container = $(this);
-        var $content = $container.children('.expandable-content');
-        var $toggle = $container.children('.expandable-toggle-wrap');
-
-        // Force overflow: hidden;
-        $content.css({
-          overflow: 'hidden'
-        });
-
-        Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
-
-        // Make toggle handle clickable
-        $toggle.children('.expandable-toggle').click(function() {
-          var $container = $(this).parents('.expandable-container');
+        $(this).once('show-toggle', function() {
+          var $container = $(this);
           var $content = $container.children('.expandable-content');
-          if ($container.hasClass('expanded')) {
-            // collapse content
-            $container.removeClass('expanded');
-            Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
-            $(this).children('.more').show();
-            $(this).children('.less').hide();
-          }
-          else {
-            // expand it
-            $container.addClass('expanded');
-            $content.height('100%');
-            $(this).children('.more').hide();
-            $(this).children('.less').show();
-          }
+          var $toggle = $container.children('.expandable-toggle-wrap');
+
+          // Force overflow: hidden;
+          $content.css({
+            overflow: 'hidden'
+          });
+
+          Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
+
+          // Make toggle handle clickable
+          $toggle.children('.expandable-toggle').click(function() {
+            var $container = $(this).parents('.expandable-container');
+            var $content = $container.children('.expandable-content');
+            if ($container.hasClass('expanded')) {
+              // collapse content
+              $container.removeClass('expanded');
+              Drupal.behaviors.show_more_toggle.setCollapsibleContentHeight($content);
+              $(this).children('.more').show();
+              $(this).children('.less').hide();
+            }
+            else {
+              // expand it
+              $container.addClass('expanded');
+              $content.height('100%');
+              $(this).children('.more').hide();
+              $(this).children('.less').show();
+            }
+          });
         });
       });
     }

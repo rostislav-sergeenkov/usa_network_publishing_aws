@@ -2,7 +2,7 @@
 (function ($) {
   Drupal.behaviors.home_carousel = {
     setCollapsibleContentHeight: function($content) {
-      var $container = $content.parents('.expandable-container');
+      var $container = $content.closest('.expandable-container');
       var $toggle = $content.parent().children('.expandable-toggle-wrap');
       // Number of rows to display by default
       var display_rows = 2;
@@ -91,7 +91,7 @@
 
             // Make toggle handle clickable
             $toggle.children('.expandable-toggle').click(function() {
-              var $container = $(this).parents('.expandable-container');
+              var $container = $(this).closest('.expandable-container');
               var $content = $container.children('.expandable-content');
               if ($container.hasClass('expanded')) {
                 // collapse content
@@ -121,6 +121,7 @@
           $content.css('height', '');
           $toggle.remove();
           $self.removeClass('expandable-container');
+          $self.removeClass('expanded');
           $content.removeClass('expandable-content');
           $self.removeClass('home-carousel-collapsible-processed');
         });
@@ -168,5 +169,14 @@
         doit = null
       }, 50);
     }
+  });
+
+  // check the collapsible content height one again when page is fully loaded
+  $(window).load(function() {
+    $(this).each('.home-carousel-collapsible-processed', function() {
+      var $container = $(this);
+      var $content = $container.children('.carousel-viewport');
+      Drupal.behaviors.home_carousel.setCollapsibleContentHeight($content);
+    });
   });
 }(jQuery));

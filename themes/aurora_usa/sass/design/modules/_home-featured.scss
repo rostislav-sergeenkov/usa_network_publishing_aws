@@ -128,6 +128,7 @@
       @extend %metadata-holder;
       height: 32px;
       padding: 8px;
+      overflow: visible;
       @include breakpoint($bp-home-2col) {
         height: 44px;
         padding: 9px 15px 8px 14px;

@@ -62,6 +62,9 @@
       width: 100%;
       top: 50%;
       margin-top: -19px;
+      .touch & {
+        display: block;
+      }
       .btns {
         &.prev {
           top: 0;

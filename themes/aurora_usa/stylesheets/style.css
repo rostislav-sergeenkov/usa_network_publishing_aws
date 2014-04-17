@@ -6552,6 +6552,10 @@ body.front {
   top: 50%;
   margin-top: -19px;
 }
+.touch #block-views-usa-video-front-full-episodes .home-carousel-processed .carousel-btns, .touch
+.usa-home-featured .home-carousel-processed .carousel-btns {
+  display: block;
+}
 #block-views-usa-video-front-full-episodes .home-carousel-processed .carousel-btns .btns.prev,
 .usa-home-featured .home-carousel-processed .carousel-btns .btns.prev {
   top: 0;

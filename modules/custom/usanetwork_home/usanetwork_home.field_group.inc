@@ -110,8 +110,8 @@ On page load, only the first promo in each spot will be displayed.  Additional p
     'label' => 'Global Nav images',
     'weight' => '6',
     'children' => array(
-      0 => 'field_hp_nav_img_shows',
-      1 => 'field_hp_nav_img_more',
+      0 => 'field_hp_nav_img_more',
+      1 => 'field_hp_nav_img_shows',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -139,6 +139,8 @@ On page load, only the first promo in each spot will be displayed.  Additional p
     'weight' => '5',
     'children' => array(
       0 => 'field_hp_promos',
+      1 => 'field_hp_promos_block_title',
+      2 => 'field_hp_episodes_block_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

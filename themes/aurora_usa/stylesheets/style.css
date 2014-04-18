@@ -6572,6 +6572,14 @@ body.front {
 .usa-home-featured .home-carousel-processed .carousel-btns {
   display: block;
 }
+#block-views-usa-video-front-full-episodes .home-carousel-processed .carousel-btns .btns,
+.usa-home-featured .home-carousel-processed .carousel-btns .btns {
+  color: #d8d8d8;
+}
+#block-views-usa-video-front-full-episodes .home-carousel-processed .carousel-btns .btns:hover,
+.usa-home-featured .home-carousel-processed .carousel-btns .btns:hover {
+  color: #0ab6e8;
+}
 #block-views-usa-video-front-full-episodes .home-carousel-processed .carousel-btns .btns.prev,
 .usa-home-featured .home-carousel-processed .carousel-btns .btns.prev {
   top: 0;

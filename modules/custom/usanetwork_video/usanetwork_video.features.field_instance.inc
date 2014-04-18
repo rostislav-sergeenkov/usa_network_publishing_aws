@@ -1946,7 +1946,7 @@ function usanetwork_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -2525,7 +2525,7 @@ function usanetwork_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',

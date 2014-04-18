@@ -699,16 +699,16 @@ function usanetwork_video_ds_layout_settings_info() {
         1 => 'title',
       ),
       'caption' => array(
-        0 => 'field_episode_number',
-        1 => 'field_season_id',
+        0 => 'field_season_id',
+        1 => 'field_episode_number',
       ),
     ),
     'fields' => array(
       'field_video_thumbnail' => 'media',
       'field_show' => 'title',
       'title' => 'title',
-      'field_episode_number' => 'caption',
       'field_season_id' => 'caption',
+      'field_episode_number' => 'caption',
     ),
     'classes' => array(),
   );

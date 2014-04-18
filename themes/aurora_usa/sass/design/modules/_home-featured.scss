@@ -78,6 +78,10 @@
         display: block;
       }
       .btns {
+        color: #d8d8d8;
+        &:hover {
+          color: #0ab6e8;
+        }
         &.prev {
           top: 0;
           left: -45px;

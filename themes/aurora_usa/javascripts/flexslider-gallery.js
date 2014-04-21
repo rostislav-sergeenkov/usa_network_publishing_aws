@@ -64,7 +64,7 @@
                   var url = window.location.href.split('#')[0];
                   sharebar.gigyaSharebar.ua.linkBack = url + '#' + (slider.currentSlide + 1);
                   sharebar.gigyaSharebar.ua.imageBhev = 'url';
-                  sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('src');
+                  sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
                   sharebar.gigyaSharebar.ua.description = $currentDescription;
                   Drupal.gigya.showSharebar(sharebar);
                 }

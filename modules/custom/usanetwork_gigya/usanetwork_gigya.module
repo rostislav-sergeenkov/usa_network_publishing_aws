@@ -17,6 +17,30 @@ function usanetwork_gigya_init() {
 }
 
 /**
+ * Implements hook_preprocess_file_entity().
+ */
+function usanetwork_gallery_content_preprocess_file_entity(&$variables) {
+  if ($variables['view_mode'] == 'gallery_flexslider') {
+    $content = &$variables['content'];
+    $file = $content['file']['#file'];
+
+    $filesize = $file->filesize;
+    if ($content['file']['#theme'] == 'image_style') {
+      $styled_file = image_style_path($content['file']['#style_name'], $file->uri);
+      if (file_exists($styled_file)) {
+        $filesize = filesize($styled_file);
+      }
+    }
+
+    if ($filesize > 4194304) {
+      // if file size is more that 4M
+      // add compressed image url
+      $content['file']['#attributes']['data-src-share'] = image_style_url('share', $file->uri);
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter()
  *
  * Overriding "Comment settings" dropdown options on Content Type add/edit

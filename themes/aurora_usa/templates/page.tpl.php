@@ -86,10 +86,7 @@
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print t('USA'); ?></a>
           </div>
         <?php endif; ?>
-        <div class="main-menu">
-          <div class="slide-menu-toggle-main"><span></span></div>
-          <?php print render($page['header']); ?>
-        </div>
+        <?php print render($page['header']); ?>
       </div>
     </div>
   </header>

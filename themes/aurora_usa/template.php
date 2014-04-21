@@ -660,6 +660,7 @@ function append_cover_to_media(&$vars) {
   $language = $node->language;
   array_unshift($vars['items'], $vars['items'][0]);
   $cover = $node->field_cover_item[$language][0];
+  $vars['items'][0]['#file'] = file_load($cover['fid']);
   $vars['items'][0]['file']['#path'] = $cover['uri'];
   $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];

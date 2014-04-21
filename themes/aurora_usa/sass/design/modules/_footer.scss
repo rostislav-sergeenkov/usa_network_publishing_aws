@@ -34,6 +34,9 @@
     padding-bottom: 85px;
     padding-left: 25px;
     padding-right: 25px;
+    &.usa-showmenu-loaded {
+      padding-bottom: 135px;
+    }
   }
   li a {
     margin-right: 15px;

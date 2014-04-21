@@ -318,22 +318,19 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
 
   echo $styles;
   $markup_wrapper = '
-  <header role="banner" id="page-header" class="usa-showmenu-active">
+  <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
           <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
-        <div class="main-menu">
-          <div class="slide-menu-toggle-main"><span></span></div>
-          <div class="region region-header">
-            <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-              %s
-            </div></div>
-            <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-              %s
-            </div></div>
-          </div>
+        <div class="region region-header">
+          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
         </div>
       </div>
     </div>
@@ -366,22 +363,19 @@ function usanetwork_widget_show_navbar_plain($node) {
  */
 function usanetwork_widget_show_navbar_ajax_plain($node) {
   $markup_wrapper = '
-  <header role="banner" id="page-header" class="usa-showmenu-active">
+  <header role="banner" id="page-header">
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
           <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
-        <div class="main-menu">
-          <div class="slide-menu-toggle-main"><span></span></div>
-          <div class="region region-header">
-            <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
-              %s
-            </div></div>
-            <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
-              %s
-            </div></div>
-          </div>
+        <div class="region region-header">
+          <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
+          <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks"><div class="content">
+            %s
+          </div></div>
         </div>
       </div>
     </div>

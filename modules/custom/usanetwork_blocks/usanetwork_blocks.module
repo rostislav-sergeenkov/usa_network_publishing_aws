@@ -472,13 +472,3 @@ function usanetwork_blocks_usa_follow_block() {
  
   return $output;
 }
-
-/**
- * Implements hook_preprocess_html().
- */
-function usanetwork_blocks_preprocess_html(&$variables) {
-  $show_menu = usanetwork_blocks_tv_show_menu();
-  if (!empty($show_menu)) {
-    $variables['classes_array'][] = 'usa-showmenu-active';
-  }
-}

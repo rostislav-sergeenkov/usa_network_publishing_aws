@@ -9,6 +9,7 @@
   @include breakpoint($bp-home-narrowest) {
     @include layout(2, .048) {
       .carousel-item {
+        height: 123px;
         &:nth-of-type(odd) {
           @include grid-span(1, 1);
         }
@@ -26,6 +27,7 @@
     width: 615px;
     @include layout(3, .048) {
       .carousel-item {
+        height: 163px;
         &:nth-of-type(3n + 1) {
           @include grid-span(1, 1);
         }
@@ -46,6 +48,7 @@
     width: 930px;
     @include layout(4, .048) {
       .carousel-item {
+        height: 186px;
         &:nth-of-type(4n + 1) {
           @include grid-span(1, 1);
         }
@@ -69,6 +72,7 @@
     width: 1245px;
     @include layout(5, .048) {
       .carousel-item {
+        height: 202px;
         &:nth-of-type(5n + 1) {
           @include grid-span(1, 1);
         }

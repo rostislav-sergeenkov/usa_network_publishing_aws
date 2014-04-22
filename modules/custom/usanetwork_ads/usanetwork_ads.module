@@ -940,7 +940,7 @@ function usanetwork_ads_preprocess_node(&$variables) {
   $variables['view_mode'] = $variables['elements']['#view_mode'];
   $node = $variables['node'];
 
-  $types = array('usanetwork_aspot', 'usanetwork_promo');
+  $types = array('usanetwork_aspot', 'usanetwork_promo', 'usa_video', 'usa_tve_video');
   if (in_array($node->type, $types)) {
     $variables['attributes_array']['omniture-title'] = trim($node->title);
     $variables['attributes_array']['omniture-nid'] = $node->nid;

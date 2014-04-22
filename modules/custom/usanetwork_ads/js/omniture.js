@@ -217,15 +217,24 @@
           }
         });
       });
-      // Featured
-      $('.field-name-field-hp-promos .node a').once('omniture-tracking', function() {
+      // Featured and Full Episodes
+      $('.field-name-field-hp-promos .node a, #block-views-usa-video-front-full-episodes .node a').once('omniture-tracking', function() {
+        var $self = $(this);
+        var $items = $self.closest('.carousel').find('.node');
+        var $node = $self.parents('.node');
+        var promoLocation = $items.index($self.parents('.node')) + 1;
+        $node.attr('omniture-index', promoLocation);
+
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             e.preventDefault();
-            var $self = $(this);
-            var $node = $self.parents('.node');
-            var $items = $self.parents('.field-name-field-hp-promos').find('.node');
-            var promoLocation = $items.index($self.parents('.node')) + 4;
+            var promoLocation = $node.attr('omniture-index');
+            if ($self.closest('.field-name-field-hp-promos').length > 0) {
+              promoLocation = 'F' + promoLocation;
+            }
+            else {
+              promoLocation = 'FEP' + promoLocation;
+            }
 
             // track it
             Drupal.behaviors.omniture_tracking.trackPromo($node, promoLocation, {

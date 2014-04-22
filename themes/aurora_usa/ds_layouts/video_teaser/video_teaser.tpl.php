@@ -30,7 +30,7 @@ if ($node->type == 'usa_tve_video') {
 }
 
 ?>
-<div class="<?php print $classes;?>">
+<div class="<?php print $classes;?>"<?php print $attributes; ?>>
 	<?php if ($url && $node->type == 'usa_video') : ?>
 		<a class="item-link" href="/<?php print $url; ?>">
 	<?php endif; ?>

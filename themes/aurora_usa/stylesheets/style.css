@@ -6790,6 +6790,38 @@ body.front {
   text-overflow: ellipsis;
 }
 
+#block-views-usa-video-front-full-episodes .caption-fields-wrapper:before {
+  content: " ";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: url(../images/aspot_icon_watch.png) center top no-repeat;
+  background-size: 20px 20px;
+}
+@media (min-width: 960px) {
+  #block-views-usa-video-front-full-episodes .caption-fields-wrapper:before {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+}
+#block-views-usa-video-front-full-episodes .title {
+  margin-left: 27px;
+}
+@media (min-width: 960px) {
+  #block-views-usa-video-front-full-episodes .title {
+    margin-left: 42px;
+  }
+}
+#block-views-usa-video-front-full-episodes .caption {
+  margin-left: 27px;
+}
+@media (min-width: 960px) {
+  #block-views-usa-video-front-full-episodes .caption {
+    margin-left: 42px;
+  }
+}
+
 /*
  * jQuery FlexSlider v2.0
  * http://www.woothemes.com/flexslider/

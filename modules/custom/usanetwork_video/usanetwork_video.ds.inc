@@ -223,7 +223,7 @@ function usanetwork_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'vid_teaser_front';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '2',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -456,19 +456,17 @@ function usanetwork_video_ds_layout_settings_info() {
       ),
       'title' => array(
         0 => 'field_show',
-        1 => 'title',
       ),
       'caption' => array(
-        0 => 'field_season_id',
-        1 => 'field_episode_number',
+        0 => 'title',
+        1 => 'field_video_air_date',
       ),
     ),
     'fields' => array(
       'field_video_thumbnail' => 'media',
       'field_show' => 'title',
-      'title' => 'title',
-      'field_season_id' => 'caption',
-      'field_episode_number' => 'caption',
+      'title' => 'caption',
+      'field_video_air_date' => 'caption',
     ),
     'classes' => array(),
   );
@@ -696,19 +694,17 @@ function usanetwork_video_ds_layout_settings_info() {
       ),
       'title' => array(
         0 => 'field_show',
-        1 => 'title',
       ),
       'caption' => array(
-        0 => 'field_season_id',
-        1 => 'field_episode_number',
+        0 => 'title',
+        1 => 'field_video_air_date',
       ),
     ),
     'fields' => array(
       'field_video_thumbnail' => 'media',
       'field_show' => 'title',
-      'title' => 'title',
-      'field_season_id' => 'caption',
-      'field_episode_number' => 'caption',
+      'title' => 'caption',
+      'field_video_air_date' => 'caption',
     ),
     'classes' => array(),
   );

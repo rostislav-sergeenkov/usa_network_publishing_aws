@@ -172,9 +172,8 @@ function usanetwork_video_field_default_field_instances() {
       ),
       'vid_teaser_front' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'vid_teaser_general' => array(
@@ -284,7 +283,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -411,7 +410,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -508,7 +507,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -613,7 +612,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 15,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -717,9 +716,8 @@ function usanetwork_video_field_default_field_instances() {
       ),
       'vid_teaser_front' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'vid_teaser_general' => array(
@@ -829,7 +827,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 21,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1036,7 +1034,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1155,10 +1153,17 @@ function usanetwork_video_field_default_field_instances() {
         'weight' => 14,
       ),
       'vid_teaser_front' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 19,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1266,7 +1271,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 20,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1369,7 +1374,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 12,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1474,7 +1479,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 13,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1579,7 +1584,7 @@ function usanetwork_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 14,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1943,9 +1948,8 @@ function usanetwork_video_field_default_field_instances() {
       ),
       'vid_teaser_front' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'vid_teaser_general' => array(
@@ -2522,10 +2526,9 @@ function usanetwork_video_field_default_field_instances() {
       ),
       'vid_teaser_front' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -2991,9 +2994,16 @@ function usanetwork_video_field_default_field_instances() {
         'weight' => 13,
       ),
       'vid_teaser_front' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
         'weight' => 20,
       ),
       'vid_teaser_general' => array(

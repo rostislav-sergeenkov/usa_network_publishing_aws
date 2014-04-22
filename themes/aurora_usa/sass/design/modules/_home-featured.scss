@@ -251,3 +251,30 @@
   }
 }
 
+#block-views-usa-video-front-full-episodes {
+  .caption-fields-wrapper:before {
+    content: " ";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: url(../images/aspot_icon_watch.png) center top no-repeat;
+    background-size: 20px 20px;
+    @include breakpoint($bp-home-3col) {
+      width: 30px;
+      height: 30px;
+      background-size: 30px 30px;
+    }
+  }
+  .title {
+    margin-left: 27px;
+    @include breakpoint($bp-home-3col) {
+      margin-left: 42px;
+    }
+  }
+  .caption {
+    margin-left: 27px;
+    @include breakpoint($bp-home-3col) {
+      margin-left: 42px;
+    }
+  }
+}

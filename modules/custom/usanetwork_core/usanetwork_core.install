@@ -686,6 +686,16 @@ function usanetwork_core_update_7134() {
 }
 
 /**
+ * enable usanetwork_admin_menu module
+ */
+function usanetwork_core_update_7135() {
+  $modules_en = array(
+    'usanetwork_admin_menu',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

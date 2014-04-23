@@ -67,7 +67,7 @@
         $self.removeClass('home-carousel-processed');
       });
 
-      if ($(window).width() < 645) {
+      if ($(window).width() < 730) {
         // items should collapse
         $('.carousel').each(function() {
           $(this).once('home-carousel-collapsible', function() {

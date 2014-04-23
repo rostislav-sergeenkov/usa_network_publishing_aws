@@ -79,6 +79,7 @@ function usanetwork_search_node_update($node) {
   if (isset($node->original) && $node->original->status == NODE_PUBLISHED && $node->status == NODE_NOT_PUBLISHED) {
     // remove from index
     $env_id = apachesolr_default_environment();
+    module_load_include('inc', 'apachesolr', 'apachesolr.index');
     apachesolr_index_delete_entity_from_index($env_id, 'node', $node->nid);
   }
 }

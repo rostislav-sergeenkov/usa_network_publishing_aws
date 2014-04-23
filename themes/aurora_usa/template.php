@@ -492,6 +492,15 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
         }
       }
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'BLANK') {
+        switch ($vars['element']['#view_mode']) {
+          case 'cast_carousel':
+          case 'follow_social':
+            //remove role field
+            unset($vars['items'][0]);
+            break;
+        }
+      }
       break;
     // ACTOR NAME IN PEOPLE NODES
     case 'field_usa_actor_name':

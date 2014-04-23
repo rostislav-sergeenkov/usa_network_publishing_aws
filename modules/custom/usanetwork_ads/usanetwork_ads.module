@@ -749,6 +749,19 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
     $variables[] = _usanetwork_ads_get_node_omniture_variables($node->page_collection_parent);
   }
 
+  // add s.prop5 for media galleries
+  if ($node->type == 'media_gallery') {
+    if (!empty($node->field_gallery_type)) {
+      $gallery_type = reset(field_get_items('node', $node, 'field_gallery_type'));
+      if ($gallery_type && $gallery_type['value'] != '0') {
+        $variables[] = array(
+          's.prop5' => $gallery_type['value'],
+        );
+      }
+    }
+  }
+  //
+
   if (!empty($node_settings) && !$node_settings['default']) {
     // override parent settings
     $variables[] = _usanetwork_ads_get_omniture_variables($node_settings['omniture']['variables']);

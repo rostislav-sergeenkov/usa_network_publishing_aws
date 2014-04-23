@@ -64,6 +64,34 @@ function usanetwork_gallery_content_field_default_field_bases() {
     'type' => 'collection',
   );
 
+  // Exported field_base: 'field_gallery_type'
+  $field_bases['field_gallery_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_gallery_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'Episodic Gallery' => 'Episodic Gallery',
+        'Character Gallery' => 'Character Gallery',
+        'GIF Gallery' => 'GIF Gallery',
+        0 => 'Other',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_media_items'
   $field_bases['field_media_items'] = array(
     'active' => 1,

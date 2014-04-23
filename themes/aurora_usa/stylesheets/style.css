@@ -7253,6 +7253,30 @@ body.person-page #main {
   }
 }
 
+/* Preview styles */
+.node-type-usanetwork-promo .preview-item {
+  margin-bottom: 20px;
+}
+.node-type-usanetwork-promo .preview-item .view-mode-promo_teaser {
+  width: 304px;
+}
+.node-type-usanetwork-promo .preview-item .view-mode-promo_teaser_large {
+  width: 617px;
+}
+.node-type-usanetwork-promo .preview-item .view-mode-promo_teaser_large .asset-img {
+  display: none;
+}
+.node-type-usanetwork-promo .preview-item .view-mode-promo_teaser_large .asset-img-large {
+  border: 2px solid #2D2D2D;
+  display: block;
+  height: 254px;
+  width: 617px;
+  overflow: hidden;
+}
+.node-type-usanetwork-promo .preview-item .view-mode-promo_teaser_large .caption-fields-wrapper {
+  width: 613px;
+}
+
 .ie8 img {
   /*    width: inherit; */
   max-width: 100%;

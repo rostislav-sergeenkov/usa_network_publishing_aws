@@ -547,8 +547,7 @@ function usanetwork_showpages_filter_page($node, $path_part) {
   if ($node->type == 'tv_show') {
     $path_exist = drupal_lookup_path('alias', $path) || drupal_lookup_path('source', $path);
     if (!$path_exist) {    
-      $not_found_url = variable_get('site_404');
-      drupal_goto($not_found_url);
+      drupal_not_found();
     } else {
       $url = drupal_lookup_path('alias', $path);
       drupal_goto($url);

@@ -65,6 +65,13 @@ function usanetwork_showpages_menu() {
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
   );
+  $items['node/%node/%'] = array(
+    'title' => t('Show page'),
+    'page callback' => 'usanetwork_showpages_filter_page',
+    'page arguments' => array(1, 2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -529,4 +536,25 @@ function usanetwork_showpages_preprocess_html(&$vars) {
     $vars['head_title'] = $head_title;
   }
 
+}
+
+/**
+ * Check if system path or alias is exist for show
+ */
+function usanetwork_showpages_filter_page($node, $path_part) {
+  $path = 'node/' . $node->nid . '/' . $path_part;
+  
+  if ($node->type == 'tv_show') {
+    $path_exist = drupal_lookup_path('alias', $path) || drupal_lookup_path('source', $path);
+    if (!$path_exist) {    
+      $not_found_url = variable_get('site_404');
+      drupal_goto($not_found_url);
+    } else {
+      $url = drupal_lookup_path('alias', $path);
+      drupal_goto($url);
+    }
+  } else {
+    $url = drupal_lookup_path('alias', $path);
+    drupal_goto($url);
+  }
 }

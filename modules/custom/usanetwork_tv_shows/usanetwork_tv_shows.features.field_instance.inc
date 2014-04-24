@@ -3890,7 +3890,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 65,
+      'weight' => 85,
     ),
   );
 
@@ -6428,7 +6428,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 63,
+      'weight' => 83,
     ),
   );
 
@@ -10612,7 +10612,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 67,
+      'weight' => 87,
     ),
   );
 
@@ -10849,7 +10849,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textfield',
-      'weight' => 66,
+      'weight' => 86,
     ),
   );
 

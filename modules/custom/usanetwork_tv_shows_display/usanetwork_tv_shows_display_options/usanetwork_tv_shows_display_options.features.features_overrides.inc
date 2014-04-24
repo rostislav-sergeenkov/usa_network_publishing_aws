@@ -11,10 +11,6 @@ function usanetwork_tv_shows_display_options_features_override_default_overrides
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
-  // Exported overrides for: field_group
-  $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|2"] = 'group_usa_tv_promo';
-  $overrides["field_group.group_usa_custom_tab|node|tv_show|form.data|children|4"] = 'group_usa_tv_promo_vids';
-
   // Exported overrides for: field_instance
   $overrides["field_instance.node-usanetwork_promo-field_meta_text_bar.display|promo_teaser_large"] = array(
     'label' => 'above',

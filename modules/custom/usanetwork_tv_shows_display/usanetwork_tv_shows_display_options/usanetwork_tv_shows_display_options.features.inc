@@ -17,16 +17,6 @@ function usanetwork_tv_shows_display_options_ctools_plugin_api($module = NULL, $
 }
 
 /**
- * Implements hook_field_group_info_alter().
- */
-function usanetwork_tv_shows_display_options_field_group_info_alter(&$data) {
-  if (isset($data['group_usa_custom_tab|node|tv_show|form'])) {
-    $data['group_usa_custom_tab|node|tv_show|form']->data['children']['2'] = 'group_usa_tv_promo'; /* WAS: 'field_usa_tv_promo' */
-    $data['group_usa_custom_tab|node|tv_show|form']->data['children']['4'] = 'group_usa_tv_promo_vids'; /* WAS: 'field_usa_tv_promo_vids' */
-  }
-}
-
-/**
  * Implements hook_field_default_field_instances_alter().
  */
 function usanetwork_tv_shows_display_options_field_default_field_instances_alter(&$data) {

@@ -696,6 +696,16 @@ function usanetwork_core_update_7135() {
 }
 
 /**
+ * enable facebook pixel tracking module
+ */
+function usanetwork_core_update_7136() {
+  $modules_en = array(
+    'usanetwork_facebook_tracking',
+  );
+  module_enable($modules_en);
+}
+
+/**
  * PERSONALIZATION
  */
 /*

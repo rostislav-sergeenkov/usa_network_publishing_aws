@@ -1,0 +1,10 @@
+name = Facebook Tracking
+core = 7.x
+package = USA Network
+dependencies[] = features
+dependencies[] = list
+dependencies[] = options
+features[features_api][] = api:2
+features[field_base][] = field_facebook_tracking_enabled
+features[field_instance][] = node-tv_show-field_facebook_tracking_enabled
+features_exclude[dependencies][usanetwork_tv_shows] = usanetwork_tv_shows

@@ -66,7 +66,7 @@ function usanetwork_tv_shows_color_field_field_default_field_instances() {
         ),
       ),
       'type' => 'colorfield_unified_textfield',
-      'weight' => 64,
+      'weight' => 84,
     ),
   );
 

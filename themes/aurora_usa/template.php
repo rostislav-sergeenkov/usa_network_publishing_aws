@@ -532,6 +532,18 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
             break;
+          case 'cast_carousel':
+            $db_select = db_select('node', 'n')
+              ->fields('n', array('nid'));
+            $db_select->condition('title', strip_tags($vars['element']['#items'][0]['value']));
+            $db_select->join('field_data_field_role','fdfr', 'fdfr.entity_id = n.nid');
+            $db_select->join('taxonomy_term_data','ttd', 'ttd.tid = fdfr.field_role_tid');
+            $db_select->condition('ttd.name', 'BLANK');
+            $nid = $db_select->execute()->fetchField();
+            if(!empty($nid)) {
+              $vars['classes_array'][] = 'role-blank';
+            }
+            break;
         }
       }
       break;

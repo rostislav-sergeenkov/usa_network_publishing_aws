@@ -483,14 +483,9 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #block-s
   font-size: 14px;
 }
 
-.show-on-sync span {
+.show-on-sync span, .view-usa-cast .carousel-item h4 {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 14px;
-}
-
-.view-usa-cast .carousel-item h4 {
-  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
-  font-size: 16px;
 }
 
 #utilities .breadcrumb > a, .usa-tv-show h2, .echo-item-authorName, .snipe-msg h2 {
@@ -6249,7 +6244,10 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   overflow: hidden;
   white-space: nowrap;
   line-height: 1.5em;
-  font-size: 14px;
+  font-size: 12px;
+}
+.view-usa-cast .carousel-item .item-content div.role-blank {
+  line-height: 3.0em;
 }
 
 /* social carousel */

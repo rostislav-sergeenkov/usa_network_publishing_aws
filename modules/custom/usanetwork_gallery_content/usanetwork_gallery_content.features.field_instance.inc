@@ -646,7 +646,11 @@ function usanetwork_gallery_content_field_default_field_instances() {
   // Exported field_instance: 'node-media_gallery-field_gallery_type'
   $field_instances['node-media_gallery-field_gallery_type'] = array(
     'bundle' => 'media_gallery',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'Episodic Gallery',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

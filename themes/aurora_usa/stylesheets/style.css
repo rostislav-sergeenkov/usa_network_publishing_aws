@@ -8180,6 +8180,10 @@ body.person-page #main {
     margin-bottom: 30px;
   }
 }
+.block-usanetwork-video.usa-secondary-menu .categories {
+  position: relative;
+  z-index: 1;
+}
 .block-usanetwork-video.usa-secondary-menu .categories > li {
   margin: 0;
 }

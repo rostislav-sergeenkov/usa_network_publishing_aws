@@ -942,18 +942,18 @@ function usanetwork_social_global_sync() {
   $showSync = variable_get('usanetwork_social_sync_show_global');
 
   if ($showSync) {
-  $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+    $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
     
-  $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
+    $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-  $vars = 'var desktopUrl = "'.$desktopUrl.'";';
-  $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
-  drupal_add_js($vars, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+    $vars = 'var desktopUrl = "'.$desktopUrl.'";';
+    $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+    drupal_add_js($vars, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
-  $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+    $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
 
-  return $output;
+    return $output;
   } else {
     $not_found_url = variable_get('site_404');
     drupal_goto($not_found_url);

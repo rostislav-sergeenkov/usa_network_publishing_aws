@@ -36,6 +36,11 @@ function usanetwork_settings_form() {
     '#description' => t('Player URL used to play MPX videos.'),
     '#default_value' => variable_get('usanetwork_theplatform_mpx_player_url', ''),
   );
+  $form['video']['usanetwork_theplatform_twitter_card_player_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('thePlatform.com MPX video player URL for twitter card'),
+    '#default_value' => variable_get('usanetwork_theplatform_twitter_card_player_url', ''),
+  );
 
   /* footer region settings */
   $form['footer'] = array(

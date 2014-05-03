@@ -830,6 +830,18 @@ function usanetwork_video_preprocess_node(&$variables) {
       );
       drupal_add_html_head($tag_stream, 'usanetwork_twitter:player:stream');
       
+      //twitter player content type
+      $tag_content_type = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player:stream:content_typ', 
+          'content' => 'video/mp4', 
+        ),
+        '#weight' => 10,
+      );
+      drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
+      
       //twitter player height
       $tag_height = array(
         '#type' => 'html_tag',
@@ -838,7 +850,7 @@ function usanetwork_video_preprocess_node(&$variables) {
           'name' => 'twitter:player:height', 
           'content' => '338', 
         ),
-        '#weight' => 10,
+        '#weight' => 11,
       );
       drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
       
@@ -850,7 +862,7 @@ function usanetwork_video_preprocess_node(&$variables) {
           'name' => 'twitter:player:width', 
           'content' => '600', 
         ),
-        '#weight' => 11,
+        '#weight' => 12,
       );
       drupal_add_html_head($tag_width, 'usanetwork_twitterplayer:width');     
     }

@@ -1121,3 +1121,23 @@ function _aurora_usa_search_keywords() {
   }
   return urldecode($keywords);
 }
+
+/**
+* Implements hook_html_head_alter().
+*/
+function aurora_usa_html_head_alter(&$head_elements) {
+  
+  if ($node = menu_get_object()) {
+    if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
+      if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {
+        foreach ($head_elements as $key => $element) {
+          switch ($key) {
+            case 'metatag_twitter:card':
+              unset($head_elements[$key]);
+            break;
+          }
+        }
+      }
+    }
+  }
+}

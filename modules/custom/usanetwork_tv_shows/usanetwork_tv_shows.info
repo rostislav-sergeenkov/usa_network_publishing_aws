@@ -25,6 +25,7 @@ dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
+dependencies[] = usanetwork
 dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_opengraph
 dependencies[] = usanetwork_social

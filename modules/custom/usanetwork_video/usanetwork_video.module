@@ -796,7 +796,9 @@ function usanetwork_video_preprocess_node(&$variables) {
       drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
       
       //twitter player
-      $player = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
+      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
+      $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
+      $player = $player_url . '/select/' . $platform_file_id;
       $tag_player = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
@@ -810,7 +812,6 @@ function usanetwork_video_preprocess_node(&$variables) {
       
       //twitter stream
       $account_id = explode('/', $player);
-      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
       $player_stream = url('http://link.theplatform.com/s/' . $account_id[4] . '/' . $platform_file_id, array(
         'query' => array(
           'mbr' => 'true',

@@ -835,7 +835,7 @@ function usanetwork_video_preprocess_node(&$variables) {
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player:stream:content_typ', 
+          'name' => 'twitter:player:stream:content_type', 
           'content' => 'video/mp4', 
         ),
         '#weight' => 10,
@@ -864,7 +864,7 @@ function usanetwork_video_preprocess_node(&$variables) {
         ),
         '#weight' => 12,
       );
-      drupal_add_html_head($tag_width, 'usanetwork_twitterplayer:width');     
+      drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');     
     }
   }
 }

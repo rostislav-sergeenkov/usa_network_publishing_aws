@@ -1,6 +1,6 @@
 <?php
 
-define(USANETWORK_ENTITY_INSERT_CONFIG_NAMESPACE, 'usanetwork_entity_insert_');
+define('USANETWORK_ENTITY_INSERT_CONFIG_NAMESPACE', 'usanetwork_entity_insert_');
 
 /**
  * Implements hook_permission().
@@ -90,10 +90,10 @@ function usanetwork_entity_insert_token_info() {
     'usa_embed' => array(),
   );
 
-  foreach (_usanetwork_entity_insert_types() as $type) {
-    $items['tokens']['usa_embed'] = array(
-      'name' => $type['name'],
-      'description' => $type['description'],
+  foreach (_usanetwork_entity_insert_types() as $type => $info) {
+    $items['tokens']['usa_embed'][$type] = array(
+      'name' => $info['name'],
+      'description' => $info['description'],
     );
   }
 

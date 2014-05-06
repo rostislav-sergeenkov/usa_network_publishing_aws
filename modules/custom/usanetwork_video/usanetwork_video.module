@@ -456,7 +456,7 @@ function usanetwork_video_global_videos_page() {
  * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
  *
  */
-function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
+function _usanetwork_video_platform_get_file_id($guid, $feed_url, $highest_bitrate = TRUE) {
   require_once('usanetwork_video_theplatform.api.inc');
 
   $api = new usaPlatformAPIRequest($feed_url);
@@ -470,6 +470,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
 
   $file_info = $file_info[0]->{'media$content'};
 
+  if ($highest_bitrate) {
   // Run through everything and grab the MPEG4 video with the highest bit rate from the feed.
   $highest_bit_rate = 0;
   $selected_video = $file_info[0];
@@ -483,7 +484,19 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
     //if(in_array('Video', $file->{'plfile$assetTypes'}))
     //  break;
   }
-
+  } else {
+    // Run through everything and grab the MPEG4 video with the bit rate not moew than 600k from the feed.
+    $sixh_bit_rate = 600000;
+    $highest_bit_rate = 0;
+    $selected_video = $file_info[0];
+    foreach($file_info as $file) {
+      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} < $sixh_bit_rate) {
+        $highest_bit_rate = $file->{'plfile$bitrate'};
+        $selected_video = $file;
+      }
+    }
+  }
   //  Extract the file id from the URL
   list($file_id) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
   $file_id = explode('/', $file_id);  //  Get the parts of the url.
@@ -730,5 +743,142 @@ function usanetwork_video_views_query_alter(&$view, &$query) {
       $join = new views_join();
       $join->construct($subquery, 'node', 'nid', 'max_nid', array(), 'INNER');
       $query->add_relationship('field_data_field_dependens_show', $join, 'node');
+  }
+}
+
+/**
+ * Implements hook_preprocess()
+ */
+function usanetwork_video_preprocess_node(&$variables) {
+
+  $node = $variables['node'];
+
+  if ((($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) && ($variables['view_mode'] == 'full')) {    
+    if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0'){
+      
+      //twitter card
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:card', 
+          'content' => 'player', 
+        ),
+        '#weight' => 1,
+      );
+      drupal_add_html_head($tag_card, 'usanetwork_twitter:card');
+      
+      //twitter site
+      $tag_site = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:site', 
+          'content' => '@USA_Network', 
+        ),
+        '#weight' => 2,
+      );
+      drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
+      
+      //twitter creator
+      $show = $node->field_show[LANGUAGE_NONE][0]['entity'];
+      $creator = basename($show->field_usa_link_twitter[LANGUAGE_NONE][0]['url']);
+      $tag_creator = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:creator', 
+          'content' => '@' . $creator, 
+        ),
+        '#weight' => 3,
+      );
+      drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
+      
+      
+      //twitter thumbnail
+      $thumbnail = file_create_url($node->field_video_thumbnail[LANGUAGE_NONE][0]['uri']);
+      $tag_thumbnail = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:image:src', 
+          'content' => $thumbnail, 
+        ),
+        '#weight' => 6,
+      );
+      drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
+      
+      //twitter player
+      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'), FALSE);
+      $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
+      $player = $player_url . '/select/' . $platform_file_id;
+      $tag_player = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player', 
+          'content' => $player, 
+        ),
+        '#weight' => 7,
+      );
+      drupal_add_html_head($tag_player, 'usanetwork_twitter:player');
+      
+      //twitter stream
+      $account_id = explode('/', $player);
+      $player_stream = url('http://link.theplatform.com/s/' . $account_id[4] . '/' . $platform_file_id, array(
+        'query' => array(
+          'mbr' => 'true',
+          'switch' => 'progressive',
+          'format' => 'redirect',
+         ),
+         '#weight' => 8,
+      ));
+      $tag_stream = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player:stream', 
+          'content' => $player_stream, 
+        ),
+        '#weight' => 9,
+      );
+      drupal_add_html_head($tag_stream, 'usanetwork_twitter:player:stream');
+      
+      //twitter player content type
+      $tag_content_type = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player:stream:content_type', 
+          'content' => 'video/mp4', 
+        ),
+        '#weight' => 10,
+      );
+      drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
+      
+      //twitter player height
+      $tag_height = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player:height', 
+          'content' => '338', 
+        ),
+        '#weight' => 11,
+      );
+      drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
+      
+      //twitter player width
+      $tag_width = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'twitter:player:width', 
+          'content' => '600', 
+        ),
+        '#weight' => 12,
+      );
+      drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');     
+    }
   }
 }

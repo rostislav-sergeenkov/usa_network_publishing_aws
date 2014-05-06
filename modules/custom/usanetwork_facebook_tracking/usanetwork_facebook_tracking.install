@@ -23,8 +23,9 @@ function usanetwork_facebook_tracking_install() {
   $nodes = $query->execute();
 
   if (!empty($nodes['node'])) {
+    $nodes = node_load_multiple(array_keys($nodes['node']));
     module_load_include('module', 'usanetwork_facebook_tracking');
-    foreach ($nodes['node'] as $node) {
+    foreach ($nodes as $node) {
       $node->{USANETWORK_FACEBOOK_TRACKING_ENABLED} = array(
         'und' => array(
           0 => array(

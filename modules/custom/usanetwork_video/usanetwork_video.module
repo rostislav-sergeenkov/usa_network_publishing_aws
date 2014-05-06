@@ -456,7 +456,7 @@ function usanetwork_video_global_videos_page() {
  * aurora_usa/ds_layouts/usa_video/usa_home.tpl.php
  *
  */
-function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
+function _usanetwork_video_platform_get_file_id($guid, $feed_url, $highest_bitrate = TRUE) {
   require_once('usanetwork_video_theplatform.api.inc');
 
   $api = new usaPlatformAPIRequest($feed_url);
@@ -470,6 +470,7 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
 
   $file_info = $file_info[0]->{'media$content'};
 
+  if ($highest_bitrate) {
   // Run through everything and grab the MPEG4 video with the highest bit rate from the feed.
   $highest_bit_rate = 0;
   $selected_video = $file_info[0];
@@ -483,7 +484,19 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url) {
     //if(in_array('Video', $file->{'plfile$assetTypes'}))
     //  break;
   }
-
+  } else {
+    // Run through everything and grab the MPEG4 video with the bit rate not moew than 600k from the feed.
+    $sixh_bit_rate = 600000;
+    $highest_bit_rate = 0;
+    $selected_video = $file_info[0];
+    foreach($file_info as $file) {
+      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} < $sixh_bit_rate) {
+        $highest_bit_rate = $file->{'plfile$bitrate'};
+        $selected_video = $file;
+      }
+    }
+  }
   //  Extract the file id from the URL
   list($file_id) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
   $file_id = explode('/', $file_id);  //  Get the parts of the url.
@@ -796,7 +809,7 @@ function usanetwork_video_preprocess_node(&$variables) {
       drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
       
       //twitter player
-      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
+      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'), FALSE);
       $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
       $player = $player_url . '/select/' . $platform_file_id;
       $tag_player = array(

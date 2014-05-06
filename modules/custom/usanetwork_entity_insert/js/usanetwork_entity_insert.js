@@ -44,20 +44,20 @@
         return content;
       }
 
-      var $nodes = $(content).find('.' + node_class);
+      var $content = $(content);
+      var $nodes = $content.find('.' + node_class);
       $nodes.each(function() {
         var $node = $(this);
-        var node_html = $('<div>').append($node.clone()).html();
         var token = '[usa_embed:' + type + ':' + $node.attr('entity_type') + ':' + $node.attr('entity_id');
         if ($node.attr('view_mode').length > 0) {
           token += ':' + $node.attr('view_mode');
         }
         token += ']';
 
-        content = content.replace(new RegExp(escapeRegExp(node_html), 'ig'), token);
+        $node.replaceWith(token);
       });
 
-      return content;
+      return $('<div>').append($content).html();
     },
     insertEntity: function(instanceId, settings) {
       settings = settings || {};

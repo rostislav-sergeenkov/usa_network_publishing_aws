@@ -47,6 +47,8 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
         ),
         'drupal' => array(
           'media' => 1,
+          'usa_inline_gallery' => 1,
+          'usa_inline_video' => 1,
         ),
       ),
       'toolbar_loc' => 'top',

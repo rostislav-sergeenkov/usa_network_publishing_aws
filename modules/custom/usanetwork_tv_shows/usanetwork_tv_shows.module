@@ -6,6 +6,8 @@
 
 include_once 'usanetwork_tv_shows.features.inc';
 
+define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
+
 /**
   * Implements hook_form_FORM_ID_alter
   * this is a straight rip from pub_tv old relations fields
@@ -114,4 +116,26 @@ function usanetwork_tv_shows_episode_form_validate($form, &$form_state) {
       form_set_error('field_season', t('The season you selected belongs to a different show than the show you selected on this form.'));
     }
   }
+}
+
+/**
+ * Returns show assosiated with current page.
+ */
+function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, $path = NULL) {
+  $show = false;
+  $entity = _usanetwork_menu_get_object($entity_type, $position, $path);
+  if ($entity) {
+    list(,,$bundle) = entity_extract_ids($entity_type, $entity);
+    if ($entity_type == 'node' && $bundle == 'tv_show') {
+      $show = $entity;
+    }
+    elseif (!empty($entity->{USANETWORK_TV_SHOWS_FIELD_NAME})) {
+      $show_ref = reset(field_get_items($entity_type, $entity, USANETWORK_TV_SHOWS_FIELD_NAME));
+      if ($show_ref) {
+        $show = node_load($show_ref['target_id']);
+      }
+    }
+  }
+
+  return $show;
 }

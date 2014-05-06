@@ -122,7 +122,7 @@ function gigya_login_ajax() {
         return array('#type' => 'ajax', '#commands' => $commands);
       }
       else {
-        $commands[] = ajax_command_alert(t('Only site administrators can create new user accounts.'));
+        //$commands[] = ajax_command_alert(t('Only site administrators can create new user accounts.'));
         return array('#type' => 'ajax', '#commands' => $commands);
       }
     }

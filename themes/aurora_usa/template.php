@@ -532,6 +532,18 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
             break;
+          case 'cast_carousel':
+            $db_select = db_select('node', 'n')
+              ->fields('n', array('nid'));
+            $db_select->condition('title', strip_tags($vars['element']['#items'][0]['value']));
+            $db_select->join('field_data_field_role','fdfr', 'fdfr.entity_id = n.nid');
+            $db_select->join('taxonomy_term_data','ttd', 'ttd.tid = fdfr.field_role_tid');
+            $db_select->condition('ttd.name', 'BLANK');
+            $nid = $db_select->execute()->fetchField();
+            if(!empty($nid)) {
+              $vars['classes_array'][] = 'role-blank';
+            }
+            break;
         }
       }
       break;
@@ -1108,4 +1120,24 @@ function _aurora_usa_search_keywords() {
     $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
   }
   return urldecode($keywords);
+}
+
+/**
+* Implements hook_html_head_alter().
+*/
+function aurora_usa_html_head_alter(&$head_elements) {
+  
+  if ($node = menu_get_object()) {
+    if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
+      if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {
+        foreach ($head_elements as $key => $element) {
+          switch ($key) {
+            case 'metatag_twitter:card':
+              unset($head_elements[$key]);
+            break;
+          }
+        }
+      }
+    }
+  }
 }

@@ -151,6 +151,8 @@
     margin-bottom: 30px;
   }
   .categories  {
+    position: relative;
+    z-index: 2;
     > li {
       margin: 0;
       @include breakpoint($bp-video-mid-large-width) {

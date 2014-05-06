@@ -13,6 +13,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_blog_pattern';
+  $strongarm->value = 'blogs/[user:name]';
+  $export['pathauto_blog_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_catchall_page_pattern';
   $strongarm->value = '';
   $export['pathauto_node_catchall_page_pattern'] = $strongarm;
@@ -30,6 +37,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->name = 'pathauto_node_person_pattern';
   $strongarm->value = '[node:field_show]/cast/[node:title]';
   $export['pathauto_node_person_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_post_pattern';
+  $strongarm->value = '[node:field_show]/blog/[node:field_blog]/[node:title]';
+  $export['pathauto_node_post_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

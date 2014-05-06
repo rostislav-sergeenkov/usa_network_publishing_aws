@@ -543,7 +543,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'user_ref_preview' => array(
         'label' => 'above',

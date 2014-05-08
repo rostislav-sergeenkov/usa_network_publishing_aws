@@ -136,7 +136,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_episode';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -309,7 +309,7 @@ function usanetwork_video_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_full_episode_value']['group'] = 1;
-  /* Filter criterion: Content: Show (field_show) */
+  /* Filter criterion: Field: Show (field_show) */
   $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -422,7 +422,7 @@ function usanetwork_video_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_usa_video_terms']['delta_offset'] = '0';
-  /* Field: Content: Show */
+  /* Field: Field: Show */
   $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
   $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
   $handler->display->display_options['fields']['field_show']['field'] = 'field_show';
@@ -454,7 +454,7 @@ function usanetwork_video_views_default_views() {
     'usa_video' => 'usa_video',
     'usa_tve_video' => 'usa_tve_video',
   );
-  /* Filter criterion: Content: Show (field_show) */
+  /* Filter criterion: Field: Show (field_show) */
   $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -594,7 +594,7 @@ function usanetwork_video_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_usa_video_terms']['delta_offset'] = '0';
-  /* Field: Content: Show */
+  /* Field: Field: Show */
   $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
   $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
   $handler->display->display_options['fields']['field_show']['field'] = 'field_show';

@@ -618,6 +618,28 @@ function usanetwork_video_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|usa_video|inline_content';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'usa_video';
+  $ds_layout->view_mode = 'inline_content';
+  $ds_layout->layout = 'usa_video_inline';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'guid' => array(
+        0 => 'field_video_guid',
+      ),
+    ),
+    'fields' => array(
+      'field_video_guid' => 'guid',
+    ),
+    'classes' => array(),
+  );
+  $export['node|usa_video|inline_content'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|usa_video|search_result';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'usa_video';

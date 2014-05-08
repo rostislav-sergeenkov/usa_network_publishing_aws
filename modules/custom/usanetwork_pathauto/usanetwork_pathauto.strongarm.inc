@@ -13,13 +13,6 @@ function usanetwork_pathauto_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_blog_pattern';
-  $strongarm->value = 'blogs/[user:name]';
-  $export['pathauto_blog_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_catchall_page_pattern';
   $strongarm->value = '';
   $export['pathauto_node_catchall_page_pattern'] = $strongarm;
@@ -107,6 +100,13 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->name = 'pathauto_node_usa_video_pattern';
   $strongarm->value = '[node:field_show]/videos/[node:title]';
   $export['pathauto_node_usa_video_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_blog_pattern';
+  $strongarm->value = '[term:field-show:field_pathauto_alias]/blog/[term:name]';
+  $export['pathauto_taxonomy_term_blog_pattern'] = $strongarm;
 
   return $export;
 }

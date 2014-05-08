@@ -51,7 +51,6 @@ function usanetwork_wysiwyg_strongarm() {
   $strongarm->value = array(
     'node' => array(
       0 => 'usa_video',
-      1 => 'usa_tve_video',
     ),
   );
   $export['usanetwork_entity_insert_video_enabled'] = $strongarm;

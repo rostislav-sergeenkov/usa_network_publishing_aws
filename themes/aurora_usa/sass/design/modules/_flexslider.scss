@@ -28,6 +28,9 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
+  border: none;
+  background: none;
+  border-radius: 0;
   .slides {
     > li {
       display: none;
@@ -121,6 +124,7 @@ html[xmlns] .slides {
     @include transition-property(all);
     @extend %usanetwork-font;
     background-color: $black-trans-5;
+    background-image: none;
     line-height: 80px;
     text-align: center;
     color: $white-trans-5;

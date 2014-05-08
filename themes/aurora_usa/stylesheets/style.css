@@ -5579,7 +5579,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 
 .node-media-gallery.view-mode-inline_content {
-  max-width: 1400px;
+  max-width: 1024px;
 }
 .node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a {
   display: block;

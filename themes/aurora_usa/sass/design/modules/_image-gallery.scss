@@ -2,6 +2,27 @@
   max-width: 1024px;
   max-height: 767px;
 }
+.node-media-gallery {
+  &.view-mode-inline_content {
+    max-width: 1024px;
+    .flexslider {
+      .flex-direction-nav {
+        a {
+          display: block;
+          opacity: 0.8;
+          top: 50%;
+          margin-top: -39px;
+          &.flex-prev {
+            left: 0;
+          }
+          &.flex-next {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
 .media-gallery {
   .center-wrapper {
     font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;

@@ -137,7 +137,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = 'group_usa_custom';
   $field_group->data = array(
     'label' => 'Show relationships',
-    'weight' => '6',
+    'weight' => '23',
     'children' => array(
       0 => 'field_episode',
       1 => 'field_season',
@@ -169,7 +169,8 @@ function usanetwork_gallery_content_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_person',
-      1 => 'group_show_rels',
+      1 => 'field_gallery_type',
+      2 => 'group_show_rels',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

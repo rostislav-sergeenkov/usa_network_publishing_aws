@@ -68,6 +68,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
+	drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
@@ -491,6 +492,15 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
         }
       }
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'BLANK') {
+        switch ($vars['element']['#view_mode']) {
+          case 'cast_carousel':
+          case 'follow_social':
+            //remove role field
+            unset($vars['items'][0]);
+            break;
+        }
+      }
       break;
     // ACTOR NAME IN PEOPLE NODES
     case 'field_usa_actor_name':
@@ -520,6 +530,18 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             if ($vars['element']['#bundle'] == 'media_gallery' ) {
               $title = strip_tags($vars['element'][0]['#markup']);
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
+            }
+            break;
+          case 'cast_carousel':
+            $db_select = db_select('node', 'n')
+              ->fields('n', array('nid'));
+            $db_select->condition('title', strip_tags($vars['element']['#items'][0]['value']));
+            $db_select->join('field_data_field_role','fdfr', 'fdfr.entity_id = n.nid');
+            $db_select->join('taxonomy_term_data','ttd', 'ttd.tid = fdfr.field_role_tid');
+            $db_select->condition('ttd.name', 'BLANK');
+            $nid = $db_select->execute()->fetchField();
+            if(!empty($nid)) {
+              $vars['classes_array'][] = 'role-blank';
             }
             break;
         }
@@ -649,6 +671,7 @@ function append_cover_to_media(&$vars) {
   $language = $node->language;
   array_unshift($vars['items'], $vars['items'][0]);
   $cover = $node->field_cover_item[$language][0];
+  $vars['items'][0]['#file'] = file_load($cover['fid']);
   $vars['items'][0]['file']['#path'] = $cover['uri'];
   $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
@@ -1097,4 +1120,24 @@ function _aurora_usa_search_keywords() {
     $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
   }
   return urldecode($keywords);
+}
+
+/**
+* Implements hook_html_head_alter().
+*/
+function aurora_usa_html_head_alter(&$head_elements) {
+  
+  if ($node = menu_get_object()) {
+    if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
+      if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {
+        foreach ($head_elements as $key => $element) {
+          switch ($key) {
+            case 'metatag_twitter:card':
+              unset($head_elements[$key]);
+            break;
+          }
+        }
+      }
+    }
+  }
 }

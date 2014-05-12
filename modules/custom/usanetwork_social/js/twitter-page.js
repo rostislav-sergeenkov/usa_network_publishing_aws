@@ -14,7 +14,11 @@ Drupal.behaviors.twitter_page = {
         "streamStateLabel": {"icon": true,"text": true},
         "aggressiveSanitization": false,
         "plugins": [{
+          "name": "LinksBlank"
+        }, {
           "name": "TwitterIntents"
+        }, {
+          "name": "FbImages"
         }, {
           "name": "InlineMedia"
         }]

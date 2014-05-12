@@ -25,18 +25,13 @@
       float: left;
       margin-right: -180px;
       padding-right: 180px;
-      /*width: 100%;*/
+      width: 100%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }
     .show-time {
-      position: absolute;
-      right: 140px;
       @include transition-property(right);
       @include transition-duration(0.2s);
-    }
-    #head-sponsored {
-      margin-right: 150px;
     }
   }
   .utilities-search.search-active {
@@ -47,12 +42,8 @@
       @include transition-duration(0.2s);
     }
     .show-time {
-      right: 360px;
       @include transition-property(right);
       @include transition-duration(0.2s);
-    }
-    #head-sponsored {
-      margin-right: 378px;
     }
   }
 }

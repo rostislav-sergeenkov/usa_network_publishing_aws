@@ -20,9 +20,75 @@ function usanetwork_gigya_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_af_scope';
+  $strongarm->value = 'external';
+  $export['gigya_comments_af_scope'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_categoryid';
+  $strongarm->value = '';
+  $export['gigya_comments_categoryid'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_categoryid_post';
+  $strongarm->value = 'USA Blogs';
+  $export['gigya_comments_categoryid_post'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_container';
+  $strongarm->value = 'comments';
+  $export['gigya_comments_container'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_container_post';
+  $strongarm->value = 'comments';
+  $export['gigya_comments_container_post'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'gigya_comments_enabled';
   $strongarm->value = 1;
   $export['gigya_comments_enabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_extra';
+  $strongarm->value = array(
+    'enabledShareProviders' => '"facebook,twitter,linkedin"',
+    'showLoginBar' => 'true',
+  );
+  $export['gigya_comments_extra'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_extra_post';
+  $strongarm->value = array();
+  $export['gigya_comments_extra_post'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_hide_drupal_comments';
+  $strongarm->value = 1;
+  $export['gigya_comments_hide_drupal_comments'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gigya_comments_override_default_post';
+  $strongarm->value = 1;
+  $export['gigya_comments_override_default_post'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

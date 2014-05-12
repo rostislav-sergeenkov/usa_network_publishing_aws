@@ -31,6 +31,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -140,6 +146,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -248,6 +260,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -376,6 +394,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'gigya_sharebar_formatter_default',
         'weight' => 8,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -472,6 +496,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 23,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -578,6 +608,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 21,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -683,6 +719,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -793,6 +835,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -890,6 +938,12 @@ function usanetwork_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'page_collection_resources' => array(
@@ -999,6 +1053,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 22,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1114,6 +1174,12 @@ function usanetwork_video_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1237,6 +1303,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1339,6 +1411,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1445,6 +1523,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 18,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1549,6 +1633,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 20,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1660,6 +1750,16 @@ function usanetwork_video_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 6,
+      ),
+      'inline_content' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'video_full',
+        ),
+        'type' => 'image',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -1800,6 +1900,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1916,6 +2022,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2031,6 +2143,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2159,6 +2277,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'gigya_sharebar_formatter_default',
         'weight' => 7,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2268,6 +2392,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 23,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2380,6 +2510,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 21,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2494,6 +2630,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2603,6 +2745,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2709,6 +2857,12 @@ function usanetwork_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'page_collection_resources' => array(
@@ -2827,6 +2981,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 22,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -2955,6 +3115,12 @@ function usanetwork_video_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3090,6 +3256,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3199,6 +3371,13 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'inline_content' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3312,6 +3491,12 @@ function usanetwork_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3423,6 +3608,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 18,
+      ),
+      'inline_content' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',
@@ -3540,6 +3731,12 @@ function usanetwork_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 20,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'page_collection_resources' => array(
         'label' => 'above',

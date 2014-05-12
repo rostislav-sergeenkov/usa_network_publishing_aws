@@ -105,6 +105,39 @@ function usanetwork_tokens_alter(&$replacements, $context) {
   }
 }
 
+/**
+ * Returns entity by path.
+ */
+function _usanetwork_menu_get_object(&$entity_type = NULL, $position = 1, $path = NULL) {
+  if (!isset($path)) {
+    $path = $_GET['q'];
+  }
+  $entity = null;
+  while (!$entity && $position < count(explode('/', $path))) {
+    if ($entity_type !== NULL) {
+      $entity = menu_get_object($entity_type, $position, $path);
+    }
+    else {
+      $entities = entity_get_info();
+      foreach ($entities as $entity_type => $info) {
+        $path_position = $position;
+        if (isset($info['path'])) {
+          $index = array_search('%' . $entity_type, explode('/', $info['path']));
+          if ($index) {
+            $path_position = $index;
+          }
+        }
+        $entity = menu_get_object($entity_type, $path_position, $path);
+        if ($entity) {
+          break;
+        }
+      }
+    }
+    $position++;
+  }
+
+  return $entity;
+}
 
 /**
  * Implements hook_form_FORM_ID_alter

@@ -872,7 +872,7 @@ function _usanetwork_mpx_video_is_mpx_file_type($type) {
  */
 function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_item, $account) {
 
-  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid']);
+  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid'], $account);
 
   foreach ($media_files as $file) { 
     $full_episode = $media_item['field_data']['field_mpx_full_episode'];

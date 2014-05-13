@@ -133,15 +133,6 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
 }
 
 /**
- * Implements hook_preprocess_node().
- */
-function usanetwork_entity_insert_preprocess_node(&$vars) {
-  $vars['content'][] = array(
-    '#markup' => 'test'
-  );
-}
-
-/**
  * Delivery callback for dialog.
  */
 function usanetwork_entity_insert_delivery($page_callback_result) {

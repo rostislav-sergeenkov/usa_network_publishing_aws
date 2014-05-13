@@ -8,6 +8,25 @@
   }
 }
 
+.node-usa-video,
+.node-usa-tve-video {
+  &.view-mode-inline_content {
+    .video-iframe {
+      width: 615px;
+      height: 346px;
+      margin: 0;
+      @include breakpoint($bp-video-player-section) {
+        width: 330px;
+        height: 186px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        width: 930px;
+        height: 523px;
+      }
+    }
+  }
+}
+
 .node-type-usa-tve-video,
 .node-type-usa-video,
 .page-videos {

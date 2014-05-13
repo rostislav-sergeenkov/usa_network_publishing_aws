@@ -6,6 +6,9 @@
 
 include_once 'usanetwork_video.features.inc';
 
+define('USANETWORK_TWITTER_CARD_HEIGHT', 338);
+define('USANETWORK_TWITTER_CARD_WIDTH', 600);
+
 /**
  * Implements hook_init().
  */
@@ -490,19 +493,34 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url, $highest_bitra
     $highest_bit_rate = 0;
     $selected_video = $file_info[0];
     foreach($file_info as $file) {
-      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} < $sixh_bit_rate) {
+      if ( isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && 
+        isset($file->{'plfile$height'}) && $file->{'plfile$height'} == USANETWORK_TWITTER_CARD_HEIGHT &&
+        isset($file->{'plfile$width'}) && $file->{'plfile$width'} == USANETWORK_TWITTER_CARD_WIDTH ) {
         $highest_bit_rate = $file->{'plfile$bitrate'};
         $selected_video = $file;
       }
     }
+    if ($highest_bit_rate == 0) {
+      foreach($file_info as $file) {
+      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+          isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} <= $sixh_bit_rate) {
+            $highest_bit_rate = $file->{'plfile$bitrate'};
+            $selected_video = $file;
+        }
+      }
+    }
   }
   //  Extract the file id from the URL
-  list($file_id) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
-  $file_id = explode('/', $file_id);  //  Get the parts of the url.
+  list($file_url) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
+  $file_id = explode('/', $file_url);  //  Get the parts of the url.
   $file_id = array_pop($file_id); //  And just last part of the URL's path.
 
+  if ($highest_bitrate) { 
   return $file_id;
+  } else {
+    return array($file_id, $file_url);
+  }
 }
 
 /**
@@ -809,7 +827,8 @@ function usanetwork_video_preprocess_node(&$variables) {
       drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
       
       //twitter player
-      $platform_file_id = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'), FALSE);
+      $platform_file = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'), FALSE);
+      $platform_file_id = $platform_file[0];
       $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
       $player = $player_url . '/select/' . $platform_file_id;
       $tag_player = array(
@@ -825,7 +844,7 @@ function usanetwork_video_preprocess_node(&$variables) {
       
       //twitter stream
       $account_id = explode('/', $player);
-      $player_stream = url('http://link.theplatform.com/s/' . $account_id[4] . '/' . $platform_file_id, array(
+      $player_stream = url($platform_file[1], array(
         'query' => array(
           'mbr' => 'true',
           'switch' => 'progressive',
@@ -862,7 +881,7 @@ function usanetwork_video_preprocess_node(&$variables) {
         '#tag' => 'meta',
         '#attributes' => array(
           'name' => 'twitter:player:height', 
-          'content' => '338', 
+          'content' => USANETWORK_TWITTER_CARD_HEIGHT, 
         ),
         '#weight' => 11,
       );
@@ -874,7 +893,7 @@ function usanetwork_video_preprocess_node(&$variables) {
         '#tag' => 'meta',
         '#attributes' => array(
           'name' => 'twitter:player:width', 
-          'content' => '600', 
+          'content' => USANETWORK_TWITTER_CARD_WIDTH, 
         ),
         '#weight' => 12,
       );

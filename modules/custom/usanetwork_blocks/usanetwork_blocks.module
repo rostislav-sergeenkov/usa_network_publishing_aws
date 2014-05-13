@@ -312,24 +312,9 @@ function usanetwork_blocks_tv_show_menu() {
   $field_name = "field_show";
   $displaytitle = '';
 
-  // if there is no NID get out of there
-  if (!isset($node->nid)) {
-    return;
-  }
+  $show = _usanetwork_tv_show_menu_get_show();
   // otherwise do stuff
-  if ($node->type == 'tv_show' || !empty($node->$field_name)) {
-    $vid = null;
-    if ($node->type == 'tv_show') {
-      $show = $node->nid;
-      // if we are watching show page show the menu for the revision
-      $vid = $node->vid;
-    }
-    if (!empty($node->$field_name)) {
-      $show_nid = field_get_items('node', $node, $field_name);
-      $show = $show_nid[0]['target_id'];
-    }
-    $show = node_load($show, $vid);
-
+  if ($show) {
     // if display title is populated load that as the menu title
     if (!empty($show->field_display_title)) {
       $displaytitle = field_get_items('node', $show, 'field_display_title');

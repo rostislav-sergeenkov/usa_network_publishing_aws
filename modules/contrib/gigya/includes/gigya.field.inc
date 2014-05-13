@@ -552,7 +552,7 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
         ),
         'shareButtons' => $settings['gigya_sharebar_buttons'],
         'shortURLs' => !empty($settings['gigya_sharebar_short_url']) ? 'always' : 'never',
-        'containerID' => $settings['gigya_sharebar_container_id'],
+        'containerID' => token_replace($settings['gigya_sharebar_container_id'], array($entity_type => $entity)),
         'showCounts' => $settings['gigya_sharebar_showcounts'],
         'layout' => $settings['gigya_sharebar_layout'],
       ),
@@ -564,10 +564,11 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
       }
     }
     drupal_alter('gigya_sharebar', $share_settings, $context);
+    $share_settings['gigyaSharebar']['containerID'] = drupal_html_id($share_settings['gigyaSharebar']['containerID']);
     $sharebars['gigyaSharebars'][] = $share_settings;
     drupal_add_js($sharebars, 'setting');
     $element = array();
-    $element[0] = array('#markup' => '<div id="' . $settings['gigya_sharebar_container_id'] . '"></div>');
+    $element[0] = array('#markup' => '<div id="' . $share_settings['gigyaSharebar']['containerID'] . '"></div>');
   }
   if ($field['type'] == 'gigya_reactions') {
     $reactions = (string) str_replace(array("\r", "\r\n", "\n"), '', $settings['gigya_reactions_buttons']);
@@ -590,7 +591,7 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
           'imageUrl' => $settings['gigya_reactions_image_url'],
         ),
         'barID' => token_replace($settings['gigya_reactions_bar_id'], array($entity_type => $entity)),
-        'containerID' => $settings['gigya_reactions_container_id'],
+        'containerID' => token_replace($settings['gigya_reactions_container_id'], array($entity_type => $entity)),
         'multipleReactions' => !empty($settings['gigya_reactions_multiple_reactions']) ? 'true' : 'false',
         'showCounts' => $settings['gigya_reactions_show_counts'],
         'layout' => $settings['gigya_reactions_layout'],
@@ -604,21 +605,22 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
     // Merge extra parameters.
     if (!empty($settings['gigya_reactions_advanced'])) {
       foreach ($settings['gigya_reactions_advanced'] as $key => $set) {
-        $share_settings['gigyaReacations'][$key] = gigya_json_to_php($set);
+        $reactions_settings['gigyaReacations'][$key] = gigya_json_to_php($set);
       }
       $reactions_settings['gigyaReactions'] = array_merge($reactions_settings['gigyaReactions'], $settings['gigya_reactions_advanced']);
     }
 
     // Allow other modules to modify global configuration.
     drupal_alter('gigya_reactions', $reactions_settings, $context);
+    $reactions_settings['gigyaReactions']['containerID'] = drupal_html_id($reactions_settings['gigyaReactions']['containerID']);
     $reactionbars['gigyaReactionsBars'][] = $reactions_settings;
     drupal_add_js($reactionbars, 'setting');
     $element = array();
-    $element[0] = array('#markup' => '<div id="' . $settings['gigya_reactions_container_id'] . '"></div>');
+    $element[0] = array('#markup' => '<div id="' . $reactions_settings['gigyaReactions']['containerID'] . '"></div>');
   }
   if ($field['type'] == 'gigya_ratings') {
     $ratings_settings = array(
-      'containerID' => $settings['gigya_ratings_container_id'],
+      'containerID' => token_replace($settings['gigya_ratings_container_id'], array($entity_type => $entity)),
       'categoryID' => $settings['gigya_ratings_category_id'],
       'streamID' => $entity->nid,
       'linkedCommentsUI' => $settings['gigya_ratings_linked_comments'],
@@ -626,11 +628,12 @@ function gigya_field_formatter_view($entity_type, $entity, $field, $instance, $l
       'showCommentButton' => $settings['gigya_ratings_show_write'],
     );
     // Allow other modules to modify global configuration.
-    drupal_alter('gigya_reatings', $ratings_settings, $context);
+    drupal_alter('gigya_reatings', $ratings_settings);
+    $ratings_settings['containerID'] = drupal_html_id($ratings_settings['containerID']);
     $ratings['gigyaRaitingsInstances'][] = $ratings_settings;
     drupal_add_js($ratings, 'setting');
     $element = array();
-    $element[0] = array('#markup' => '<div id="' . $settings['gigya_ratings_container_id'] . '"></div>');
+    $element[0] = array('#markup' => '<div id="' . $ratings_settings['containerID'] . '"></div>');
   }
   return $element;
 }

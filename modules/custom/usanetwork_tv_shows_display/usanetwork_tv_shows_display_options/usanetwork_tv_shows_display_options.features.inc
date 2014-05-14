@@ -17,41 +17,15 @@ function usanetwork_tv_shows_display_options_ctools_plugin_api($module = NULL, $
 }
 
 /**
- * Implements hook_field_group_info_alter().
- */
-function usanetwork_tv_shows_display_options_field_group_info_alter(&$data) {
-  if (isset($data['group_usa_custom_tab|node|tv_show|form'])) {
-    $data['group_usa_custom_tab|node|tv_show|form']->data['children']['2'] = 'group_usa_tv_promo'; /* WAS: 'field_usa_tv_promo' */
-    $data['group_usa_custom_tab|node|tv_show|form']->data['children']['4'] = 'group_usa_tv_promo_vids'; /* WAS: 'field_usa_tv_promo_vids' */
-  }
-}
-
-/**
  * Implements hook_field_default_field_instances_alter().
  */
 function usanetwork_tv_shows_display_options_field_default_field_instances_alter(&$data) {
-  if (isset($data['node-usanetwork_promo-field_call_to_action_type'])) {
-    $data['node-usanetwork_promo-field_call_to_action_type']['display']['promo_teaser_large'] = array(
-      'label' => 'above',
-      'settings' => array(),
-      'type' => 'hidden',
-      'weight' => 9,
-    ); /* WAS: '' */
-  }
   if (isset($data['node-usanetwork_promo-field_meta_text_bar'])) {
     $data['node-usanetwork_promo-field_meta_text_bar']['display']['promo_teaser_large'] = array(
       'label' => 'above',
       'settings' => array(),
       'type' => 'hidden',
       'weight' => 10,
-    ); /* WAS: '' */
-  }
-  if (isset($data['node-usanetwork_promo-field_promo_call_to_action_text'])) {
-    $data['node-usanetwork_promo-field_promo_call_to_action_text']['display']['promo_teaser_large'] = array(
-      'label' => 'above',
-      'settings' => array(),
-      'type' => 'hidden',
-      'weight' => 7,
     ); /* WAS: '' */
   }
   if (isset($data['node-usanetwork_promo-field_promo_link'])) {

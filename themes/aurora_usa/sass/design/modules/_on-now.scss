@@ -8,8 +8,8 @@
   float: left;
   display: table;
   @include breakpoint($bp-on-now) {
-    padding-left: 15px;
-    height: 62px;
+    padding-left: 13px;
+    height: 50px;
   }
   span {
     vertical-align: middle;
@@ -39,8 +39,8 @@
   position: relative;
   @include breakpoint($bp-on-now) {
     padding-top: 0;
-    padding-right: 15px;
-    font-size: 28px;
+    padding-right: 14px;
+    font-size: 19px;
     height: 100%;
   }
   /*
@@ -121,14 +121,14 @@
         style: solid;
         color: transparent $blue transparent transparent;
       }
-      top: 20px;
+      top: 18px;
       margin-left: -14px;
       /* @include transform3d(translateY(-50%)); */
     }
     @include breakpoint($bp-on-now) {
       padding-left: 16px;
       &:before {
-        top: 26px;
+        top: 20px;
         margin-left: -16px;
         border-width: 6px 8px 6px 0;
       }
@@ -172,7 +172,7 @@
   @include breakpoint($bp-on-now) {
     vertical-align: middle;
     display: inline;
-    font-size: 27px;
+    font-size: 24px;
     float: none;
   }
 }
@@ -222,10 +222,10 @@
   width: 65%;
   width: 65vw;
   @include breakpoint($bp-on-now) {
-    font-size: 23px;
+    font-size: 18px;
     float: none;
     height: 100%;
-    line-height: 62px;
+    line-height: 50px;
     width: 50%;
     width: 50vw;
     padding: 1px 0 0 5px;

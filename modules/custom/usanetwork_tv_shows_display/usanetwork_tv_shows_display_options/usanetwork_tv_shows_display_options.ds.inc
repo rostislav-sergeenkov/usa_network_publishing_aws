@@ -33,8 +33,18 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
       'caption' => array(
         0 => 'field_promo_text_line_2',
       ),
+      'cta' => array(
+        0 => 'field_call_to_action_type',
+        1 => 'field_promo_call_to_action_text',
+      ),
       'link' => array(
         0 => 'field_promo_link',
+      ),
+      'caption_wide' => array(
+        0 => 'field_promo_text_line_2_wide',
+      ),
+      'title_wide' => array(
+        0 => 'field_promo_text_line_1_wide',
       ),
     ),
     'fields' => array(
@@ -42,7 +52,11 @@ function usanetwork_tv_shows_display_options_ds_layout_settings_info() {
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',
+      'field_call_to_action_type' => 'cta',
+      'field_promo_call_to_action_text' => 'cta',
       'field_promo_link' => 'link',
+      'field_promo_text_line_2_wide' => 'caption_wide',
+      'field_promo_text_line_1_wide' => 'title_wide',
     ),
     'classes' => array(),
   );

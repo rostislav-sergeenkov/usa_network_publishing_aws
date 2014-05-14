@@ -1,8 +1,20 @@
 
-#utilities.search-active {
-  height: 85px;
-  @include breakpoint($bp-head-search) {
-    height: 62px;
+#utilities {
+  &.search-active {
+    height: 85px;
+    @include breakpoint($bp-head-search) {
+      height: 50px;
+    }
+  }
+  &.utilities-head-show {
+    #block-search-form {
+      margin-top: -40px;
+    }
+    @include breakpoint($bp-head-search) {
+      #block-search-form {
+        margin-top: 5px;
+      }
+    }
   }
 }
 
@@ -11,28 +23,25 @@
   .utilities-search {
     .utilties-main-group {
       float: left;
-      margin-right: -60px;
-      padding-right: 60px;
+      margin-right: -180px;
+      padding-right: 180px;
       width: 100%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }
     .show-time {
-      position: absolute;
-      right: 60px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
   }
   .utilities-search.search-active {
     .utilties-main-group {
-      margin-right: -290px;
-      padding-right: 290px;
+      margin-right: -394px;
+      padding-right: 394px;
       @include transition-property(padding);
       @include transition-duration(0.2s);
     }
     .show-time {
-      right: 290px;
       @include transition-property(right);
       @include transition-duration(0.2s);
     }
@@ -40,7 +49,7 @@
 }
 
 
-#head-search {
+#block-search-form {
   clear: both;
   @include border-radius(20px);
   margin: 0 15px 0 0;
@@ -48,7 +57,7 @@
     background-color: $gray-med;
     clear: none;
     @include float-right;
-    margin-top: 10px;
+    margin-top: 5px;
     height: 40px;
     width: 40px;
     .search-active & {
@@ -164,3 +173,98 @@
 
 
 }// END #head-search
+
+#utilities {
+  #block-usanetwork-blocks-usa-follow-block {
+    .top-bar-social {
+      position: absolute;
+      top: -4px;
+      right: 42px;
+      width: 74px;
+/*      top: -7px;
+        left: 0px; //without search*/
+    }
+    a {
+      &.usa-twitter-share {
+        height: 48px;
+        width: 37px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_sm.png"); 
+        display: inline-block;
+      }
+      &.usa-twitter-share:hover {
+        height: 48px;
+        width: 37px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_sm_over.png"); 
+        display: inline-block;
+      }
+      &.usa-facebook-share {
+        height: 48px;
+        width: 37px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_sm.png"); 
+        display: inline-block;
+      }
+      &.usa-facebook-share:hover {
+        height: 48px;
+        width: 37px;
+        background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_sm_over.png"); 
+        display: inline-block;
+      }
+    }
+        .social-dropdown {
+      width: 205px;
+      background: #FFF;
+      max-height: 0;
+          overflow: hidden;
+        -webkit-transition: max-height 0.8s ease-in-out;
+        -moz-transition: max-height 0.8s ease-in-out;
+        -o-transition: max-height 0.8s ease-in-out;
+        transition: max-height 0.8s ease-in-out;
+        position: absolute;
+      right: 0;
+        top: 50px;
+      }
+    
+    @include breakpoint($bp-head-search) {
+      position: static;
+      float: right;
+      margin-top: 1px;
+      .top-bar-social {
+        position: static;
+        width: 100%;
+        margin-right: 8px;
+    }
+      a {
+        &.usa-twitter-share {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header.png"); 
+          display: inline-block;
+        }
+        &.usa-twitter-share:hover {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/tw_header_over.png"); 
+          display: inline-block;
+          cursor: pointer;
+        }
+        &.usa-facebook-share {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header.png"); 
+          display: inline-block;
+          position: relative;
+        }
+        &.usa-facebook-share:hover {
+          height: 48px;
+          width: 48px;
+          background: url("/sites/usanetwork/themes/aurora_usa/images/fb_header_over.png"); 
+          display: inline-block;
+          .social-dropdown {
+            max-height: 1000px;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

@@ -57,16 +57,24 @@ function usanetwork_tv_schedule_schema() {
 }
 
 /**
+ * Delete redirect accessibility to external resource
+ */
+function usanetwork_tv_schedule_update_7100() {
+  redirect_delete_by_path('accessibility');
+}
+
+
+/**
  * Create database tables for schedule data.
  */
-function usanetwork_tv_schedule_update_7000() {
+function usanetwork_tv_schedule_update_7101() {
   drupal_install_schema('usanetwork_tv_schedule');
 }
 
 /**
  * Add feeds configuration
  */
-function usanetwork_tv_schedule_update_7001() {
+function usanetwork_tv_schedule_update_7102() {
   variable_set('usanetwork_tv_schedule_feeds', array(
     'on_air' => array(
       'url' => 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing',
@@ -80,7 +88,7 @@ function usanetwork_tv_schedule_update_7001() {
 /**
  * Set live tv feed to point production feed
  */
-function usanetwork_tv_schedule_update_7002() {
+function usanetwork_tv_schedule_update_7103() {
   module_load_include('module', 'usanetwork_tv_schedule');
   _usanetwork_tv_schedule_save_feed_config('live_tv', array(
     'url' => 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_tve_usa_listing',

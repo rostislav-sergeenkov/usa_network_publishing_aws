@@ -14,8 +14,9 @@
           $(this).each(function(index, value) {
             $tabCount++;
             $(this).attr('id', 'tab-' + $tabCount);
-            $thisHeader = $(this).find('header').hide();
-            $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'">' + $thisHeader.html() + '</a></li>';
+            $thisHeader = $(this).find('h2.pane-title').hide();
+            console.log($thisHeader);
+            $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'"><h2>' + $thisHeader.html() + '</h2></a></li>';
            
             $tabs_ul.append($thisTab);
           });
@@ -24,7 +25,7 @@
       
         // hide all the gallery panes
         $('.gallery-tab-group').hide()
-        $('.panels-section-row-media-gallery .pane-views-panes:first-child').before($tabs);
+        $('.panel-col-bottom .pane-views-panes:first-child').before($tabs);
         $('#tab-1').show();
         // clicking a tab will set classes to hide all gallery panes,
         // and show one associated with that tab

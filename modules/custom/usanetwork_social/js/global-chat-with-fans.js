@@ -91,34 +91,39 @@
 					// loop through each search result and get necessary data
 					for(var searchKey in data) {
 						var result = (typeof data[searchKey]["result"] == "string") ? data[searchKey]["result"] : null;
-						var result = data[searchKey]["result"];
+//						var result = data[searchKey]["result"];
 						var entries = (typeof data[searchKey]["entries"] == "object" && typeof data[searchKey]["entries"][0] == "object") ? data[searchKey]["entries"][0] : null;
 
-						// if there was an error, show the error in the console
-						if (result == "error") {
-							usa_debug("ERROR: "+ data[searchKey]["errorMessage"]);
-						}
-						// if successful, process data
-						else if (entries != null && typeof entries["object"]["content"] == "string" && entries["object"]["content"] != "")
-						{
-							var vars = new Array();
-							vars["showToken"] = searchKey.replace("search_", "");
-							vars["avatar"] = (typeof entries["actor"]["avatar"] != 'undefined' && entries["actor"]["avatar"] != '') ? entries["actor"]["avatar"] : "http://cdn.echoenabled.com/images/avatar-default.png";
-							vars["actor"] = entries["actor"]["title"];
-							vars["comment"] = entries["object"]["content"];
-							vars["timeStr"] = ago(entries["postedTime"]);
-
-							var showArray = {};
-							for (var index in vars) {
-								showArray[index] = vars[index];
+						// some items contain empty entries, so skip those
+						if (entries != null) {
+							// if there was an error, show the error in the console
+							if (result == "error") {
+								usa_debug("ERROR: "+ data[searchKey]["errorMessage"]);
 							}
-							showData[vars["showToken"]] = showArray;
-						}
-						// we shouldn't get here
-						// if we do, find out why and fix it!
-						else
-						{
-							usa_debug(console.log("BUSTED"));
+							// if successful, process data
+							else if (entries != null && typeof entries["object"]["content"] == "string" && entries["object"]["content"] != "")
+							{
+								var vars = new Array();
+								vars["showToken"] = searchKey.replace("search_", "");
+								vars["avatar"] = (typeof entries["actor"]["avatar"] != 'undefined' && entries["actor"]["avatar"] != '') ? entries["actor"]["avatar"] : "http://cdn.echoenabled.com/images/avatar-default.png";
+								vars["actor"] = entries["actor"]["title"];
+								vars["comment"] = entries["object"]["content"];
+								vars["timeStr"] = ago(entries["postedTime"]);
+
+								var showArray = {};
+								for (var index in vars) {
+									showArray[index] = vars[index];
+								}
+								showData[vars["showToken"]] = showArray;
+							}
+							// we shouldn't get here
+							// if we do, find out why and fix it!
+							else
+							{
+								usa_debug("BUSTED: ");
+								usa_debug(result);
+								usa_debug(entries);
+							}
 						}
 					}
 					return showData;
@@ -185,19 +190,35 @@
 			 */
 			var getGlobalChatWithFansData = function()
 			{
+				jQuery.support.cors = true; // this is needed to fix an IE9 jQuery POST, cross-domain (CORS) problem
 				jQuery.ajax({
 					url: echoQuery,
-					dataType: "jsonp",
 					data: echoQueryParams,
-					success: function(data){
-						showData = processGlobalChatWithFansData(data);
-						var showDataKeys = getKeys(showData);
-						if (showDataKeys.length > 0) {
-							outputGlobalChatWithFans(showData);
-						} else {
-							jQuery('#showList').html("No shows found. Please come back again soon.");
-						}
+					dataType: 'text',
+					crossDomain: true,
+					type: 'POST'
+				})
+				.done(function(data){
+					// this method of using a POST with a cross-domain request
+					// returns a string instead of a json object, so we have to clean up
+					// the string a little before parsing it to form an object
+					if (typeof data == 'string') {
+						var newData = data.replace(/(\r\n|\n|\r|\t)/gm, ""); // remove all line breaks and tabs
+						newData = newData.replace(/^\({/, "{"); // replace "({" at the beginning of the string with "{"
+						newData = newData.replace(/}\);$/, "}"); // replace a string ending with "});" with "}"
+						data = jQuery.parseJSON(newData);
 					}
+					showData = processGlobalChatWithFansData(data);
+					var showDataKeys = getKeys(showData);
+					if (showDataKeys.length > 0) {
+						outputGlobalChatWithFans(showData);
+					} else {
+						jQuery('#showList').html("No shows found. Please come back again soon.");
+					}
+				})
+				.fail(function(jqXHR, textStatus, errorThrown) {
+					usa_debug('error');
+					usa_debug(errorThrown);
 				});
 			}
 

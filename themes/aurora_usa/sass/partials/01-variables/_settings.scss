@@ -214,9 +214,9 @@ $bp-show-four-subnav-images: 1200px;
 $bp-maintenance: 330px;
 
 // home page grid breakpoints
-$bp-home-2col: 645px;
-$bp-home-3col: 960px;
-$bp-home-widest: 1275px;
+$bp-home-2col: 710px;
+$bp-home-3col: 1020px;
+$bp-home-widest: 1335px;
 $bp-home-narrowest: max-width ($bp-home-2col - 1);
 $bp-home-2-fence: $bp-home-2col ($bp-home-3col - 1);
 $bp-home-3-fence: $bp-home-3col ($bp-home-widest - 1);

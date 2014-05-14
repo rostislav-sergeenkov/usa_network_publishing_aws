@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork gallery content.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Update gallery types field value
+ */
+function usanetwork_gallery_content_update_7100() {
+  $gallery_nid_select = db_select('node', 'n')
+          ->fields('n', array('nid'));
+  $gallery_nid_select->condition('type', 'media_gallery');
+  $gallery_nid_select->condition('status', '1');
+  $gallery_nid_select->leftJoin('field_data_field_gallery_type', 'fdfgt', 'fdfgt.entity_id = n.nid');
+  $gallery_nid_select->isNull('fdfgt.field_gallery_type_value');
+  $gallery_nids = $gallery_nid_select->execute()->fetchCol();
+  
+  $gallery_nodes = node_load_multiple($gallery_nids, array(), TRUE);
+  
+  
+  foreach ($gallery_nodes as $gallery_node) {
+    $gallery_node->field_gallery_type[LANGUAGE_NONE][0]['value'] = 'Episodic Gallery';
+    node_save($gallery_node);
+  }
+}
+
+/**
+ * Update gallery path aliases
+ */
+function usanetwork_gallery_content_update_7101() {
+   $gallery_nid_select = db_select('node', 'n')
+          ->fields('n', array('nid'));
+  $gallery_nid_select->condition('type', 'media_gallery');
+  $gallery_nid_select->condition('status', '1');
+  $gallery_nid_select->leftJoin('field_data_field_gallery_type', 'fdfgt', 'fdfgt.entity_id = n.nid');
+  $gallery_nid_select->condition('fdfgt.field_gallery_type_value', 'Episodic Gallery');
+  $gallery_nids = $gallery_nid_select->execute()->fetchCol();
+  
+  $gallery_nodes = node_load_multiple($gallery_nids, array(), TRUE);
+  
+  foreach ($gallery_nodes as $gallery_node) {
+    $gallery_node->path['pathauto'] = TRUE;
+    node_save($gallery_node);
+  }
+}

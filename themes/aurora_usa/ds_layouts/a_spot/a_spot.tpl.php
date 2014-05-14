@@ -238,7 +238,7 @@ if ((isset($line_3_fontsize)) && ($line_3_fontsize != '&nbsp;')) {
 drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page' => FALSE));
 ?>
 
-<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>">
+<div class="<?php print $classes;?> aspot aspot-node-<?php print $nodeid; ?>"<?php print $attributes; ?>>
 <?php if ($link && $link !== '&nbsp;'): ?>
   <?php if ((!$target) || ($target && $target == '&nbsp;')): ?> 
     <a href="<?php print $link; ?>" class="aspot-link">
@@ -290,9 +290,6 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
         <h3 class="episodic-episode-title"><span class="arrow-right">&#9658;</span><?php print ($line_3_tite); ?></h3>
       <?php endif; ?>
       </div>
-      <?php if ($cta && $cta !== '&nbsp;'): ?>
-      <div class="cta"><?php print $cta; ?></div>
-      <?php endif; ?>
     </div>
   <?php endif; ?>
 

@@ -65,6 +65,13 @@ function usanetwork_showpages_menu() {
     'access arguments' => array(1),
     'type' => MENU_CALLBACK,
   );
+  $items['node/%node/%'] = array(
+    'title' => t('Show page'),
+    'page callback' => 'usanetwork_showpages_filter_page',
+    'page arguments' => array(1, 2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -121,6 +128,7 @@ function usanetwork_showpages_theme($existing, $type, $theme, $path) {
 
 /**
  * Block callback for show banner
+ * @todo: clean up the code to work with any entity type
  */
 function usanetwork_showpages_showbanner() {
   $render = array();
@@ -134,33 +142,34 @@ function usanetwork_showpages_showbanner() {
   $field_name = "field_show";
 
   // see if we are on a node page
-  if ($node = menu_get_object()) {
-    
+  $entity_type = null;
+  $entity = _usanetwork_menu_get_object($entity_type);
+  if ($entity) {
     // see if we are on a show node
-    if ($node->type == 'tv_show') {
-      $show = $node->nid;
-      $show_title = isset($node->field_display_title[$lang][0]['safe_value']) ? $node->field_display_title[$lang][0]['safe_value'] : $node->title;
+    if ($entity_type == 'node' && $entity->type == 'tv_show') {
+      $show = $entity->nid;
+      $show_title = isset($entity->field_display_title[$lang][0]['safe_value']) ? $entity->field_display_title[$lang][0]['safe_value'] : $entity->title;
       $show_title = decode_entities($show_title);
-      $show_tunein = isset($node->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $node->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
-      $show_url = 'node/' . $node->nid;
+      $show_tunein = isset($entity->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $entity->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $show_url = 'node/' . $entity->nid;
       $show_name = l($show_title, $show_url);
       // see if we are in a show social subsection
       if (arg(2) == 'social') {
-        $show_section = t('Social');
+        $show_section = l(t('Social'), $show_url . '/social');
       }
       if (arg(2) == 'games') {
-        $show_section = t('Games');
+        $show_section = l(t('Games'), $show_url . '/games');
       }
       if (arg(2) == 'features') {
-        $show_section = t('Features');
+        $show_section = l(t('Features'), $show_url . '/features');
       }
       if (arg(2) == 'quizzes') {
-        $show_section = t('Quizzes');
+        $show_section = l(t('Quizzes'), $show_url . '/quizzes');
       }
     }
     // looks for nodes with a value in field_show
-    if (!empty($node->$field_name)) {
-      $show_nid = field_get_items('node', $node, $field_name);
+    if (!empty($entity->$field_name)) {
+      $show_nid = field_get_items($entity_type, $entity, $field_name);
       $show_nid = $show_nid[0]['target_id'];
       $show = node_load($show_nid);
       $show_title = isset($show->field_display_title[$lang][0]['safe_value']) ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
@@ -168,54 +177,40 @@ function usanetwork_showpages_showbanner() {
       $show_tunein = isset($show->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
       $show_url = 'node/' . $show->nid;
       $show_name = l($show_title, $show_url);
-      switch ($node->type) {
-        case 'person':
-          $show_section = t('Characters & Crew');
-          break;
-        case 'tv_episode':
-          $show_section = t('Episode Guide');
-          break;
-        case 'media_gallery':
-          $show_section = t('Photos');
-          break;
-        case 'usa_video':
-        case 'usa_tve_video':
-          $show_section = t('Videos');
-          break;
-        case 'usanetwork_static_page':
-        case 'catchall_page':
-          $custompath = drupal_get_path_alias('node/'.$node->nid);
-          $path_parts = explode('/', $custompath);
-          if ($path_parts['1'] == 'features') {
-            $show_section = t('Features');
-          }
-          if ($path_parts['1'] == 'quizzes') {
-            $show_section = t('Quizzes');
-          }
-          if ($path_parts['1'] == 'games') {
-            $show_section = t('Games');
-          }
-          break;
+      if ($entity_type == 'node') {
+        switch ($entity->type) {
+          case 'person':
+            $show_section = l(t('Characters & Crew'), $show_url . '/cast');
+            break;
+          case 'tv_episode':
+            $show_section = l(t('Episode Guide'), $show_url . '/episodes');
+            break;
+          case 'media_gallery':
+            $show_section = l(t('Photos'), $show_url . '/photos');
+            break;
+          case 'usa_video':
+          case 'usa_tve_video':
+            $show_section = l(t('Videos'), $show_url . '/videos');
+            break;
+          case 'usanetwork_static_page':
+          case 'catchall_page':
+            $custompath = drupal_get_path_alias('node/'.$entity->nid);
+            $path_parts = explode('/', $custompath);
+            if ($path_parts['1'] == 'features') {
+              $show_section = l(t('Features'), $show_url . '/features');
+            }
+            if ($path_parts['1'] == 'quizzes') {
+              $show_section = l(t('Quizzes'), $show_url . '/quizzes');
+            }
+            if ($path_parts['1'] == 'games') {
+              $show_section = l(t('Games'), $show_url . '/games');
+            }
+            break;
+        }
       }
     }
     // render the theme function
     $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein));
-    
-  } elseif ($file = menu_get_object('file')) {
-    
-    // looks for nodes with a value in field_show
-    if (!empty($file->$field_name)) {
-      $show_nid = field_get_items('file', $file, $field_name);
-      $show_nid = $show_nid[0]['target_id'];
-      $show = node_load($show_nid);
-      $show_title = isset($show->field_display_title[$lang][0]['safe_value']) ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
-      $show_title = decode_entities($show_title);
-      $show_tunein = isset($show->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
-      $show_url = 'node/' . $show->nid;
-      $show_name = l($show_title, $show_url);
-    }
-    // render the theme function
-    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => t('Videos'), 'show_tunein' => $show_tunein));
   }
 
   return $render;
@@ -616,4 +611,24 @@ function usanetwork_showpages_preprocess_html(&$vars) {
     $vars['head_title'] = $head_title;
   }
 
+}
+
+/**
+ * Check if system path or alias is exist for show
+ */
+function usanetwork_showpages_filter_page($node, $path_part) {
+  $path = 'node/' . $node->nid . '/' . $path_part;
+  
+  if ($node->type == 'tv_show') {
+    $path_exist = drupal_lookup_path('alias', $path) || drupal_lookup_path('source', $path);
+    if (!$path_exist) {    
+      drupal_not_found();
+    } else {
+      $url = drupal_lookup_path('alias', $path);
+      drupal_goto($url);
+    }
+  } else {
+    $url = drupal_lookup_path('alias', $path);
+    drupal_goto($url);
+  }
 }

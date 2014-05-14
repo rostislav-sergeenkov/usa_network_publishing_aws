@@ -472,3 +472,115 @@ a.prev-day {
     }
   }
 }
+
+//accessibility page
+.page-accessibility {
+  .usa-wrap {
+    background-color: #ffffff;
+  }
+  .schedule-header{
+    clear: left;
+    background-color: #000000;
+  }
+  .schedule-table {
+    table {
+      border: #3d3d3d solid 1px;
+    }
+    thead th {
+      font-family: "Proxima N W01 Smbd", Arial, sans-serif;
+      color: #000000;
+      border-bottom-width: 3px;
+      border-right-width: 3px;
+      @include breakpoint($bp-home-3col) {
+        
+        font-family: avalon_mediumbold,"Proxima N W01 xBold", Arial, sans-serif;
+      }
+    }
+    .show-time {
+      color: #000000;
+      border-bottom-width: 3px;
+      border-right-width: 3px;
+    }
+    tr {
+      background: #ffffff;
+    }
+    td {
+      border-bottom-width: 3px;
+      border-right-width: 3px;
+      color: #000000;
+    }
+    .rating {
+      border-right-width: 1px;
+    }
+    a {
+      color: #000000;
+    }
+    td {
+      &.program, &.episode, &.rating {
+        font-family: "Proxima N W01 Reg", Arial, sans-serif;
+        @include breakpoint($bp-home-3col) {
+          font-family: avalonbold,"Proxima N W01 Smbd", Arial, sans-serif;
+        }
+      }
+      &.show-time {
+        font-family: "Proxima N W01 Reg", Arial, sans-serif;
+        @include breakpoint($bp-home-3col) {
+          font-family: avalonregular,"Proxima N W01 Smbd", Arial, sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.accesibility-header {
+  margin: 70px auto 0;
+  color: #000000;
+  line-height: 1.3em;
+  width: 100%;
+  font-size: 14px;
+  .accessibility-left {
+    width: 100%;
+    float: none;
+    margin-bottom: 40px;
+  }
+  .accessibility-right {
+    width: 100%;
+    float: none;
+    margin-bottom: 70px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  @include breakpoint($bp-schedule-date-wide) {
+    font-size: 18px;
+    h1 {
+      font-size: 20px;
+    }
+  }
+  @include breakpoint($bp-home-3-fence) {
+    width: 925px;
+    .accessibility-left {
+      width: 48%;
+      float: left;
+      margin-bottom: 70px;
+    }
+    .accessibility-right {
+      width: 48%;
+      float: right;
+      margin-bottom: 70px;
+    }
+  }
+  @include breakpoint($bp-home-widest) {
+    width: 1248px;
+    .accessibility-left {
+      width: 48%;
+      float: left;
+      margin-bottom: 70px;
+    }
+    .accessibility-right {
+      width: 48%;
+      float: right;
+      margin-bottom: 70px;
+    }
+  }
+}

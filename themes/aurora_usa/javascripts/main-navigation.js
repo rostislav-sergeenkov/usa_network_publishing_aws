@@ -38,34 +38,34 @@
           $('#menu-wrapper')
             .prepend('<h1 class="menu-title">Main Menu</h1>')
             .find('[data-drawer-id]')
-              .removeAttr('data-drawer-id')
-              .end()
+            .removeAttr('data-drawer-id')
+            .end()
             .find('[data-drawer]')
-              .removeAttr('data-drawer')
-              .end()
+            .removeAttr('data-drawer')
+            .end()
             .find('.mega-menu-items a')
-              .removeClass('mega-nav-link')
-              .addClass('slide-panel-link')
-              .end()
+            .removeClass('mega-nav-link')
+            .addClass('slide-panel-link')
+            .end()
             .find('.mega-sub-nav-container')
-              .removeClass('mega-sub-nav-container')
-              .addClass('panel-sub-nav-container')
-              .end()
+            .removeClass('mega-sub-nav-container')
+            .addClass('panel-sub-nav-container')
+            .end()
             .find('.mega-sub-nav')
-              .removeClass('mega-sub-nav')
-              .addClass('panel-sub-nav')
-              .end()
+            .removeClass('mega-sub-nav')
+            .addClass('panel-sub-nav')
+            .end()
             .find('.panel-sub-nav-container')
-              .siblings('a')
-                .css('cursor', 'default')
-                .click(function() {
-                  $(this).parent().toggleClass('active-item');
-                  return false;
-                })
-                .end()
-              .parent()
-                .addClass('expandable')
-                .addClass('expandable-menu');
+            .siblings('a')
+            .css('cursor', 'default')
+            .click(function() {
+              $(this).parent().toggleClass('active-item');
+              return false;
+            })
+            .end()
+            .parent()
+            .addClass('expandable')
+            .addClass('expandable-menu');
 
           insert_jpm_content();
 
@@ -82,25 +82,25 @@
             $("#jPanelMenu-menu").prepend($new_show_menu);
             $('#jPanelMenu-menu')
               .find('a')
-                .addClass('slide-panel-link')
-                .end()
-             .find('.parent-item')
-                .addClass('expandable')
-                .addClass('shows-expandable')
-                .addClass('expandable-menu')
-                .end()
-             .find('li .item-list')
-                .addClass('panel-sub-nav-container')
-                .end()
+              .addClass('slide-panel-link')
+              .end()
+              .find('.parent-item')
+              .addClass('expandable')
+              .addClass('shows-expandable')
+              .addClass('expandable-menu')
+              .end()
+              .find('li .item-list')
+              .addClass('panel-sub-nav-container')
+              .end()
               .find('li .item-list ul')
-                .addClass('panel-sub-nav')
-                .end()
+              .addClass('panel-sub-nav')
+              .end()
               .find('.shows-expandable a.parent-trigger')
-                .click(function() {
-                  $(this).parent().toggleClass('active-item');
-                  return false;
-                })
-                .end();
+              .click(function() {
+                $(this).parent().toggleClass('active-item');
+                return false;
+              })
+              .end();
           }
 
           // initialize menu to height of window
@@ -141,6 +141,7 @@
             .removeClass('state-personalization')
             .addClass('state-on-now');
           jPM.direction('left');
+          $('.jPanelMenu-panel').slideDown();
           $('body').attr('data-menu-direction', 'left');
           jPM.trigger();
         }
@@ -173,24 +174,30 @@
 
         // NARROW NAVIGATION
         var jPM = $.jPanelMenu({
-            menu: '#block-usanetwork-blocks-usa-meganav',
-            trigger: '#main-menu-toggle',
-            openPosition: '258px',
-            duration: '300',
-            keyboardShortcuts: false,
-            closeOnContentClick: false,
-            beforeOn: function() {
-              remove_dart();
-            },
-            afterOn: function() {
-              jpm_after_on();
-            },
-            beforeOpen: function() {
-              wall_build();
-            },
-            beforeClose: function() {
-              wall_remove();
-            }
+          menu: '#block-usanetwork-blocks-usa-meganav',
+          trigger: '#main-menu-toggle',
+          openPosition: '258px',
+          duration: '300',
+          keyboardShortcuts: false,
+          closeOnContentClick: false,
+          before: function() {
+            $(window).trigger('resize.drupal-tableheader');
+          },
+          after: function() {
+            $(window).trigger('resize.drupal-tableheader');
+          },
+          beforeOn: function() {
+            remove_dart();
+          },
+          afterOn: function() {
+            jpm_after_on();
+          },
+          beforeOpen: function() {
+            wall_build();
+          },
+          beforeClose: function() {
+            wall_remove();
+          }
         });
         jPM.on();
 
@@ -259,9 +266,9 @@
         });
 
         $('#action-signout').click(function() {
-            jPM.close();
-            close_wide_subnav();
-        });  
+          jPM.close();
+          close_wide_subnav();
+        });
 
 
         // RESPONSIVE BEHAVIOR

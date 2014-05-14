@@ -157,8 +157,15 @@ function usanetwork_core_enable_modules() {
     'usanetwork_tv_shows_display',
     'usanetwork_tv_shows_display_options',
     'usanetwork_field_episodic',
-//    'usanetwork_catchall_collection',
-//    'usanetwork_page_collection',
+    'usanetwork_catchall_collection',
+    'usanetwork_page_collection',
+    'usanetwork_lyris',
+    'usanetwork_video_mobile',
+//    'surf',
+//    'usanetwork_surf',
+//    'usanetwork_personalization',
+//    'usanetwork_og_metatags',
+//    'usanetwork_mpx_video',
     // pub ent overrides
     'pub_files_overrides',
     'pub_tv_overrides',
@@ -596,22 +603,112 @@ function usanetwork_core_update_7127() {
 }
 
 /**
- * PREP FOR ITERATION 3
+ * ITERATION 3
  */
-/*
-function usanetwork_core_update_7127() {
+function usanetwork_core_update_7128() {
   $modules_en = array(
     'usanetwork_catchall_collection',
     'usanetwork_page_collection',
+    'usanetwork_lyris',
   );
   module_enable($modules_en);
 }
-*/
 
 /**
- * PREP FOR NEW VIDEO CODE
+ * enable modules: metatag_twitter_cards, metatag_twitter_cards_see_it
+ */
+function usanetwork_core_update_7129() {
+  $modules_en = array(
+    'metatag_twitter_cards',
+    'metatag_twitter_cards_see_it',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * ITERATION 4
+ */
+function usanetwork_core_update_7130() {
+  $modules_en = array(
+    'usanetwork_video_mobile'
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_token, metatag_context
+ */
+function usanetwork_core_update_7131() {
+  $modules_en = array(
+    'usanetwork_token',
+    'metatag_context',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable search
  */
 function usanetwork_core_update_7132() {
+  $modules_en = array(
+    'acquia_search',
+    'apachesolr',
+    'apachesolr_search',
+    'search',
+    'usanetwork_search',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable cloud sticky sessions
+ */
+function usanetwork_core_update_7133() {
+  $modules_en = array(
+    'acquia_cloud_sticky_sessions',
+  );
+  module_enable($modules_en);
+  $modules_dis = array(
+    'acquia_managed_cloud_sticky_sessions'
+  );
+  module_disable($modules_dis);
+}
+
+/**
+ * enable gigya sharing
+ */
+function usanetwork_core_update_7134() {
+  $modules_en = array(
+    'gigya',
+    'usanetwork_gigya',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable usanetwork_admin_menu module
+ */
+function usanetwork_core_update_7135() {
+  $modules_en = array(
+    'usanetwork_admin_menu',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable facebook pixel tracking module
+ */
+function usanetwork_core_update_7136() {
+  $modules_en = array(
+    'usanetwork_facebook_tracking',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * NEW VIDEO CODE
+ */
+function usanetwork_core_update_7137() {
   $modules_en = array(
     'usanetwork_mpx_video',
     'usanetwork_tve_video',

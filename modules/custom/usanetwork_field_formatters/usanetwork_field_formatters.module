@@ -96,6 +96,15 @@ function usanetwork_field_formatters_theme() {
 }
 
 /**
+ * Implements hook_field_formatter_info_alter().
+ */
+function usanetwork_field_formatters_field_formatter_info_alter(&$info) {
+  if (isset($info['flexslider'])) {
+    $info['flexslider']['field types'][] = 'file';
+  }
+}
+
+/**
  * Implements hook_element_info_alter().
  *
  * Adds our wrapper function to the processing of media fields on forms.

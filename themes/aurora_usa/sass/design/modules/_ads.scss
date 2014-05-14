@@ -12,6 +12,7 @@
 }
 .usa-wrap {
   background-color: $black;
+  padding-top: 50px;
 }
 
 .usa-adrails[data-menu-position="closed"] {
@@ -44,10 +45,8 @@
 
 #head-sponsored {
   display: none;
-  position:absolute;
-  top:0;
-  right:0;
-  margin: 1px 12px 0 0;
+  float: right;
+  margin: -1px 12px 0 0;
   @include breakpoint($bp-on-now) {
     display: block;
   }

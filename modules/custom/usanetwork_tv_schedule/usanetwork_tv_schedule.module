@@ -28,6 +28,12 @@ function usanetwork_tv_schedule_menu() {
     'page callback' => 'usanetwork_tv_schedule_schedule_page',
     'access arguments' => array('access content'),
   );
+  $items['accessibility'] = array(
+    'title' => t('Accessibility'),
+    'page callback' => 'usanetwork_tv_schedule_schedule_page',
+    'page arguments' => array(TRUE),
+    'access arguments' => array('access content'),
+  );
   $items['usa-on-now-panel-js'] = array(
     'page callback' => 'usanetwork_on_now_panel_js',
     'access arguments' => array('access content'),
@@ -360,7 +366,7 @@ function usanetwork_tv_schedule_live_tv() {
 /**
  * TV schedule page menu callback
  */
-function usanetwork_tv_schedule_schedule_page() {
+function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
 
   $output = '';
   // styles moved to theme
@@ -405,6 +411,13 @@ function usanetwork_tv_schedule_schedule_page() {
     $cur_date = (array) $item->ScheduleDate;
     $cal_date = (array) $item->CalendarScheduleDate;
     $day_part = (array) $item->Daypart;
+    $audio_desc  = (array) $item->AudioDesc;
+
+    if ($is_accessibility_page) {
+      if ($audio_desc[0] == 'N') {
+        continue;
+      }
+    }
 
     // convert to timestamp to determine on-air / off-air
     $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
@@ -438,6 +451,11 @@ function usanetwork_tv_schedule_schedule_page() {
     $rows[] = array('data' => $row, 'class' => $classes);
   }
 
+  if ($is_accessibility_page) {
+    $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
+    $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
+  }
+  
   $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => strtotime($cur_date[0])));
 
   $output .= '<div class="schedule-table">';
@@ -665,6 +683,51 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
 
   return $output;
+}
+
+/**
+ * Returns node of the show that is on.
+ */
+function _usanetwork_onnow_upnext_node() {
+  $result = array(
+    'on_now' => false,
+    'up_next' => false,
+  );
+
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d'));
+  if (empty($tv_schedule)) {
+    return false;
+  }
+
+  $now = REQUEST_TIME;
+
+  foreach ($tv_schedule as $item) {
+    $item = (array) $item;
+    $start_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['StartTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
+    $start_time = $start_time->getTimestamp();
+    $end_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['EndTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
+    $end_time = $end_time->getTimestamp();
+    $show_name = trim(preg_replace('/\(.*\)/', '', $item['ProgramName']));
+
+    if ($start_time <= $now && $end_time >= $now) {
+      // get onnow node
+      $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if ($nid) {
+        $result['on_now'] = node_load($nid);
+      }
+    }
+
+    if ($start_time > $now) {
+      // get upnext node
+      $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if ($nid) {
+        $result['up_next'] = node_load($nid);
+      }
+      break;
+    }
+  }
+
+  return $result;
 }
 
 /**

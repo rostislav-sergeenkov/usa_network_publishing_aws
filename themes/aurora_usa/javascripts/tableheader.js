@@ -1,5 +1,17 @@
 (function ($) {
 
+  /**
+   * Return table header offset.
+   */
+  Drupal.settings.tableHeaderOffset = 'tableHeaderOffset';
+  function tableHeaderOffset() {
+    var offset = 0;
+    if ($('#utilities').length > 0) {
+      offset += $('#utilities').height();
+    }
+    return offset;
+  }
+
 /**
  * Attaches sticky table headers.
  */

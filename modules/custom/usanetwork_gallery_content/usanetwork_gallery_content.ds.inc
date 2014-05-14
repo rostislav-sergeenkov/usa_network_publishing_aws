@@ -51,6 +51,11 @@ function usanetwork_gallery_content_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|media_gallery|search_result'] = $ds_fieldsetting;
@@ -114,6 +119,28 @@ function usanetwork_gallery_content_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|media_gallery|inline_content';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'media_gallery';
+  $ds_layout->view_mode = 'inline_content';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_media_items',
+      ),
+    ),
+    'fields' => array(
+      'field_media_items' => 'ds_content',
+    ),
+    'classes' => array(),
+  );
+  $export['node|media_gallery|inline_content'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|media_gallery|search_result';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'media_gallery';
@@ -123,20 +150,20 @@ function usanetwork_gallery_content_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
+      'title' => array(
+        0 => 'title',
+      ),
       'media' => array(
         0 => 'field_usa_og_image',
       ),
       'body' => array(
         0 => 'field_usa_og_description',
       ),
-      'title' => array(
-        0 => 'title',
-      ),
     ),
     'fields' => array(
+      'title' => 'title',
       'field_usa_og_image' => 'media',
       'field_usa_og_description' => 'body',
-      'title' => 'title',
     ),
     'classes' => array(),
   );

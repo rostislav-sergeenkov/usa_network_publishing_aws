@@ -33,6 +33,15 @@ if ($node->type == 'usa_video') {
   else {
     $is_full = '?usa_fullEpisode=false';
   }
+
+  $video_url = url($player_url . '/select/' . $platform_file_id, array(
+    'external' => true,
+    'query' => array(
+      'usa_fullEpisode' => ($full_episode == '1') ? 'true' : 'false',
+      'usa_filterByCategory' => (current_path() == 'videos') ? 'false' : 'true',
+    ),
+    'fragment' => 'playerurl=' . url(current_path(), array('absolute' => true)),
+  ));
 }
 // tve video
 if ($node->type == 'usa_tve_video') {
@@ -69,11 +78,11 @@ if ($node->type == 'usa_tve_video') {
   </div>
   <div class="video-player-wrapper">
     <?php // this is for mpx with a player integration ?>
-    <?php if ($guid && $player_url): ?>
+    <?php if ($guid && $video_url): ?>
       <iframe
       class="video-iframe"
       style=""
-      src="<?php print $player_url; ?>/select/<?php print $platform_file_id . $is_full; ?>"
+      src="<?php print $video_url; ?>"
       frameborder="0"
       allowfullscreen>
       Your browser does not support iframes.
@@ -96,7 +105,7 @@ if ($node->type == 'usa_tve_video') {
       <div id="player"><?php print l($tve_auth, $tve_url, array('html' => TRUE)); ?></div>
     <?php endif; ?>
   </div>
- <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php print $tve_auth; ?></div><?php endif; ?>
+  <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?><div class="tve-auth"><?php //print $tve_auth; ?></div><?php endif; ?>
   <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
     <div class="tve-help-link"><img src="/sites/usanetwork/themes/aurora_usa/images/info_gray.png" />Why do I have to sign in?</div>
   <?php endif; ?>

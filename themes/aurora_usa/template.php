@@ -69,6 +69,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
+  drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
@@ -145,6 +146,159 @@ function aurora_usa_preprocess_page(&$vars) {
 
 }
 
+/**
+ * Override or insert variables in search results template
+ */
+function aurora_usa_preprocess_search_results(&$variables) {
+  // add keywords to template
+  $variables['keywords'] = _aurora_usa_search_keywords();
+
+  // search.module shows 10 items per page (this isn't customizable)
+  $itemsPerPage = 10;
+  // Determine which page is being viewed
+  // If $_REQUEST['page'] is not set, we are on page 1
+  $currentPage = (isset($_REQUEST['page']) ? $_REQUEST['page'] : 0) + 1;
+  // Get the total number of results from the global pager
+  $total = $GLOBALS['pager_total_items'][0];
+  // Determine which results are being shown ("Showing results x through y")
+  $start = ($itemsPerPage * $currentPage) - $itemsPerPage + 1;
+  // If on the last page, only go up to $total, not the total that COULD be
+  // shown on the page. This prevents things like "Displaying 11-20 of 17".
+  $end = (($itemsPerPage * $currentPage) >= $total) ? $total : ($itemsPerPage * $currentPage);
+  // If there is more than one page of results:
+  if ($total > $itemsPerPage) {
+    $variables['search_totals'] = t('Displaying results !start - !end of !total', array(
+      '!start' => $start,
+      '!end' => $end,
+      '!total' => $total,
+    ));
+  }
+  else {
+    // Only one page of results, so make it simpler
+    $variables['search_totals'] = t('Displaying !total !results_label', array(
+      '!total' => $total,
+      // Be smart about labels: show "result" for one, "results" for multiple
+      '!results_label' => format_plural($total, 'result', 'results'),
+    ));
+  }
+
+  $variables['pager'] = theme('pager', array(
+    'tags' => null,
+    'element' => 0,
+    'parameters' => array(),
+    'quantity' => 3,
+    'small' => true,
+  ));
+}
+
+/**
+ * Override or insert variables in pager template
+ */
+function aurora_usa_pager(&$variables) {
+  if (!isset($variables['small']) || !$variables['small']) {
+    return theme_pager($variables);
+  }
+
+  $tags = $variables['tags'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $quantity = $variables['quantity'];
+  global $pager_page_array, $pager_total;
+
+  // Calculate various markers within this pager piece:
+  // Middle is used to "center" pages around the current page.
+  $pager_middle = ceil($quantity / 2);
+  // current is the page we are currently paged to
+  $pager_current = $pager_page_array[$element] + 1;
+  // first is the first page listed by this pager piece (re quantity)
+  $pager_first = $pager_current - $pager_middle + 1;
+  // last is the last page listed by this pager piece (re quantity)
+  $pager_last = $pager_current + $quantity - $pager_middle;
+  // max is the maximum page number
+  $pager_max = $pager_total[$element];
+  // End of marker calculations.
+
+  // Prepare for generation loop.
+  $i = $pager_first;
+  if ($pager_last > $pager_max) {
+    // Adjust "center" if at end of query.
+    $i = $i + ($pager_max - $pager_last);
+    $pager_last = $pager_max;
+  }
+  if ($i <= 0) {
+    // Adjust "center" if at start of query.
+    $pager_last = $pager_last + (1 - $i);
+    $i = 1;
+  }
+  // End of generation loop preparation.
+
+  $li_previous = theme('pager_previous', array('text' => (isset($tags[1]) ? $tags[1] : t('« prev')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+  $li_next = theme('pager_next', array('text' => (isset($tags[3]) ? $tags[3] : t('next »')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+
+  if ($pager_total[$element] > 1) {
+    // When there is more than one page, create the pager list.
+    if ($i != $pager_max) {
+      if ($i > 1) {
+        $items[] = array(
+          'class' => array('pager-first'),
+          'data' => theme('pager_first', array('text' => 1, 'element' => $element, 'parameters' => $parameters)),
+        );
+        $items[] = array(
+          'class' => array('pager-ellipsis'),
+          'data' => '…',
+        );
+      }
+      // Now generate the actual pager piece.
+      for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+        if ($i < $pager_current) {
+          $items[] = array(
+            'class' => array('pager-item'),
+            'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
+          );
+        }
+        if ($i == $pager_current) {
+          $items[] = array(
+            'class' => array('pager-current'),
+            'data' => $i,
+          );
+        }
+        if ($i > $pager_current) {
+          $items[] = array(
+            'class' => array('pager-item'),
+            'data' => theme('pager_next', array('text' => $i, 'element' => $element, 'interval' => ($i - $pager_current), 'parameters' => $parameters)),
+          );
+        }
+      }
+      if ($i <= $pager_max) {
+        $items[] = array(
+          'class' => array('pager-ellipsis'),
+          'data' => '…',
+        );
+        $items[] = array(
+          'class' => array('pager-last'),
+          'data' => theme('pager_last', array('text' => $pager_max, 'element' => $element, 'parameters' => $parameters)),
+        );
+      }
+    }
+    // End generation.
+    if ($li_previous) {
+      $items[] = array(
+        'class' => array('pager-previous'),
+        'data' => $li_previous,
+      );
+    }
+    if ($li_next) {
+      $items[] = array(
+        'class' => array('pager-next'),
+        'data' => $li_next,
+      );
+    }
+    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+      'items' => $items,
+      'attributes' => array('class' => array('pager')),
+    ));
+  }
+}
 
 /**
  * Implementation of hook_form_alter
@@ -157,11 +311,21 @@ function aurora_usa_form_search_block_form_alter(&$form){
   // Add placeholder attribute to the text box
   $form['search_block_form']['#attributes']['placeholder'] = t('Search Now');
 
+  if ($keywords = _aurora_usa_search_keywords()) {
+    $form['search_block_form']['#value'] = $keywords;
+  }
 
   $form['actions']['reset'] = array(
     '#markup' => '<button class="form-reset" type="reset"></button>',
     '#weight' => 1000
   );
+
+  // remove keywords from action
+  $parts = explode('/', trim($form['#action'], '/'));
+  if ($parts[0] == 'search' && count($parts) > 2) {
+    $parts = array_slice($parts, 0, 2);
+    $form['#action'] = '/' . implode('/', $parts);
+  }
 
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
@@ -297,7 +461,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
-      //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -332,6 +496,15 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
         }
       }
+      if (isset($vars['element']['#view_mode']) && strip_tags($vars['element'][0]['#markup']) == 'BLANK') {
+        switch ($vars['element']['#view_mode']) {
+          case 'cast_carousel':
+          case 'follow_social':
+            //remove role field
+            unset($vars['items'][0]);
+            break;
+        }
+      }
       break;
     // ACTOR NAME IN PEOPLE NODES
     case 'field_usa_actor_name':
@@ -354,6 +527,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_mpx_title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
+          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
             break;
@@ -366,6 +540,18 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           case 'vid_teaser_show_general':
             $vars['items'][0]['#prefix'] = '<h4>';
             $vars['items'][0]['#suffix'] = '</h4>';
+            break;
+          case 'cast_carousel':
+            $db_select = db_select('node', 'n')
+              ->fields('n', array('nid'));
+            $db_select->condition('title', strip_tags($vars['element']['#items'][0]['value']));
+            $db_select->join('field_data_field_role','fdfr', 'fdfr.entity_id = n.nid');
+            $db_select->join('taxonomy_term_data','ttd', 'ttd.tid = fdfr.field_role_tid');
+            $db_select->condition('ttd.name', 'BLANK');
+            $nid = $db_select->execute()->fetchField();
+            if(!empty($nid)) {
+              $vars['classes_array'][] = 'role-blank';
+            }
             break;
         }
       }
@@ -394,6 +580,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $air_custom = date('n/d/Y', $airtime);
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
+          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             if (strpos($vars['element']['#object']->type, 'mpx_video') === 0) {
               $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
@@ -464,6 +651,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // PROMO line 1 text on
     case 'field_promo_text_line_1':
+    case 'field_promo_text_line_1_wide':
       // change display
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
@@ -501,11 +689,15 @@ function append_cover_to_media(&$vars) {
   $language = $node->language;
   array_unshift($vars['items'], $vars['items'][0]);
   $cover = $node->field_cover_item[$language][0];
+  $vars['items'][0]['#file'] = file_load($cover['fid']);
   $vars['items'][0]['file']['#path'] = $cover['uri'];
   $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
   $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
   $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
+  $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
+  $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
+  
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';
   // $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;
@@ -931,4 +1123,39 @@ function aurora_usa_field__field_video_thumbnail($variables) {
   }
 
   return $output;
+}
+
+
+/**
+ * Returns search keywords.
+ */
+function _aurora_usa_search_keywords() {
+  // add keywords to template
+  $path = explode('/', $_GET['q'], 3);
+  if(count($path) == 3 && $path[0]=="search") {
+    $keywords = $path[2];
+  } else {
+    $keywords = empty($_REQUEST['keys']) ? '' : $_REQUEST['keys'];
+  }
+  return urldecode($keywords);
+}
+
+/**
+* Implements hook_html_head_alter().
+*/
+function aurora_usa_html_head_alter(&$head_elements) {
+  
+  if ($node = menu_get_object()) {
+    if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
+      if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {
+        foreach ($head_elements as $key => $element) {
+          switch ($key) {
+            case 'metatag_twitter:card':
+              unset($head_elements[$key]);
+            break;
+          }
+        }
+      }
+    }
+  }
 }

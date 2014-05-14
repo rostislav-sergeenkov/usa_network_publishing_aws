@@ -21,6 +21,11 @@ function usanetwork_person_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|person|search_result'] = $ds_fieldsetting;
@@ -115,22 +120,20 @@ function usanetwork_person_ds_layout_settings_info() {
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'title' => array(
-        0 => 'title',
-        1 => 'field_usa_actor_name',
+      'body' => array(
+        0 => 'field_usa_og_description',
       ),
       'media' => array(
         0 => 'field_usa_og_image',
       ),
-      'body' => array(
-        0 => 'field_usa_og_description',
+      'title' => array(
+        0 => 'title',
       ),
     ),
     'fields' => array(
-      'title' => 'title',
-      'field_usa_og_image' => 'media',
       'field_usa_og_description' => 'body',
-      'field_usa_actor_name' => 'title',
+      'field_usa_og_image' => 'media',
+      'title' => 'title',
     ),
     'classes' => array(),
   );

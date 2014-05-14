@@ -136,7 +136,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_episode';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -260,6 +260,66 @@ function usanetwork_video_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
+
+  /* Display: Front Global Full Episodes */
+  $handler = $view->new_display('block', 'Front Global Full Episodes', 'front_full_episodes');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest Full Episodes';
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'carousel-item';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'item-list carousel-viewport';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_front';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'usa_video' => 'usa_video',
+    'usa_tve_video' => 'usa_tve_video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Full Episode (field_full_episode) */
+  $handler->display->display_options['filters']['field_full_episode_value']['id'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['table'] = 'field_data_field_full_episode';
+  $handler->display->display_options['filters']['field_full_episode_value']['field'] = 'field_full_episode_value';
+  $handler->display->display_options['filters']['field_full_episode_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_full_episode_value']['group'] = 1;
+  /* Filter criterion: Field: Show (field_show) */
+  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_show_target_id']['value'] = array(
+    'min' => '',
+    'max' => '',
+    'value' => '',
+  );
+  $handler->display->display_options['block_description'] = 'Front Latest Full Episodes';
   $export['usa_video'] = $view;
 
   $view = new view();
@@ -362,7 +422,7 @@ function usanetwork_video_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_usa_video_terms']['delta_offset'] = '0';
-  /* Field: Content: Show */
+  /* Field: Field: Show */
   $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
   $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
   $handler->display->display_options['fields']['field_show']['field'] = 'field_show';
@@ -394,7 +454,7 @@ function usanetwork_video_views_default_views() {
     'usa_video' => 'usa_video',
     'usa_tve_video' => 'usa_tve_video',
   );
-  /* Filter criterion: Content: Show (field_show) */
+  /* Filter criterion: Field: Show (field_show) */
   $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -534,7 +594,7 @@ function usanetwork_video_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_usa_video_terms']['delta_offset'] = '0';
-  /* Field: Content: Show */
+  /* Field: Field: Show */
   $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
   $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
   $handler->display->display_options['fields']['field_show']['field'] = 'field_show';
@@ -620,7 +680,7 @@ function usanetwork_video_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'video_queue' => 'video_queue',
   );
-  /* Filter criterion: Queue: Title */
+  /* Filter criterion: Queue: Label */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'queues';
   $handler->display->display_options['filters']['title']['field'] = 'title';

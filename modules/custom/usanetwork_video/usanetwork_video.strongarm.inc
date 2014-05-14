@@ -180,17 +180,23 @@ function usanetwork_video_strongarm() {
       'search_index' => array(
         'custom_settings' => TRUE,
       ),
+      'vid_teaser_front' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
           'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '18',
         ),
       ),
       'display' => array(),
@@ -270,6 +276,9 @@ function usanetwork_video_strongarm() {
       'search_index' => array(
         'custom_settings' => TRUE,
       ),
+      'vid_teaser_front' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -281,6 +290,9 @@ function usanetwork_video_strongarm() {
         ),
         'path' => array(
           'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -387,7 +399,7 @@ function usanetwork_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_theplatform_mpx_player_url';
-  $strongarm->value = 'http://player.theplatform.com/p/OyMl-B/4Dl3P2Df_j5l';
+  $strongarm->value = 'http://player.theplatform.com/p/OyMl-B/LJ9pCqcsoRM8';
   $export['usanetwork_theplatform_mpx_player_url'] = $strongarm;
 
   $strongarm = new stdClass();

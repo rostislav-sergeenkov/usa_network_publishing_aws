@@ -43,6 +43,42 @@ function usanetwork_home_menu() {
 }
 
 /**
+ * Implements hook_preprocess_block().
+ */
+function usanetwork_home_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->bid == 'views-usa_video-front_full_episodes') {
+    $day = strtotime("-3 hours");
+    $day = date('l', $day);
+    $day = strtolower($day);
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+    if (!empty($homepage)) {
+      $nid = reset(array_keys($homepage['node']));
+      if ($nid && $homepage = node_load($nid)) {
+        if (!empty($homepage->field_hp_episodes_block_title)) {
+          $title = reset(field_get_items('node', $homepage, 'field_hp_episodes_block_title'));
+          $block->subject = $title['safe_value'];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_home_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->type == 'usa_homepage') {
+    if (!empty($node->field_hp_promos_block_title)) {
+      $title = reset(field_get_items('node', $node, 'field_hp_promos_block_title'));
+      $variables['featured_title'] = $title['safe_value'];
+    }
+  }
+}
+
+/**
  * Callback for the USA homepage
  */
 function usanetwork_home_landing($day = '') {

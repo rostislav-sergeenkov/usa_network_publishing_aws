@@ -208,6 +208,12 @@ function usanetwork_social_show_tab_nav() {
           $items[] = l($link['#link']['title'], $alias);
         }
       break;
+      case 'social/sync':
+        $showSync = variable_get('usanetwork_social_sync_show_global');
+        if ($showSync) {
+          $items[] = l($link['#link']['title'], $alias);
+        }
+      break;
       default:
         $items[] = l($link['#link']['title'], $alias);
     }
@@ -433,6 +439,8 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
     drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
     drupal_add_js('http://cdn.echoenabled.com/sdk/v3/loader.js', 'external');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/switch.js');
 
     $output .= '<div id="usanetwork_social_show_homepage_chatter"><div id="usanetwork_social_chatter_title">';
@@ -856,13 +864,16 @@ function usanetwork_social_global_chat_with_fans() {
     ';
 
   if (count($showInfo) > 0) {
+    // jquery.xdomainrequest.min.js is needed to fix an IE9 jQuery POST, cross-domain (CORS) problem
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.xdomainrequest.min.js');
     $showArrayVar = '';
     $query = 'http://api.echoenabled.com/v2/mux';
     $queryParams = '';
     foreach ($showInfo as $array)
     {
       $showArrayVar .= '"'.$array['showTokenName'].'":["'.$array['title'].'", "'.$array['showUrl'].'"], ';
-      $queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
+//      $queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:1 children:0"},';
+      $queryParams .= '{"id":"search_'.$array['showTokenName'].'","method":"search","q":"(childrenof:http://chatter.usanetwork.com/'.$array['showTokenName'].'/public/comments state:Untouched,ModeratorApproved -user.state:ModeratorBanned) itemsPerPage:1 children:0"},';
     }
     $showArrayVar = substr($showArrayVar, 0, -1);
     $queryParams = urlencode(substr($queryParams, 0, -1));
@@ -914,10 +925,12 @@ function usanetwork_social_global_twitter() {
   $vars .= 'var twitterEQL = "' . $eql . '"';
   drupal_add_js($vars, array('type' => 'inline'));
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
   drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
 
   $output .= '<div id="echo-stream">&nbsp;</div>';
@@ -931,17 +944,24 @@ function usanetwork_social_global_twitter() {
 function usanetwork_social_global_sync() {
   drupal_set_title('Social Dashboard');
   $showSync = variable_get('usanetwork_social_sync_show_global');
-  $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
-  $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-  $vars = 'var desktopUrl = "'.$desktopUrl.'";';
-  $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
-  drupal_add_js($vars, array('type' => 'inline'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
+  if ($showSync) {
+    $desktopUrl = variable_get('usanetwork_social_sync_global_desktop_url');
+    
+    $phoneUrl = variable_get('usanetwork_social_sync_global_phone_url');
 
-  $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+    $vars = 'var desktopUrl = "'.$desktopUrl.'";';
+    $vars .= 'var phoneUrl = "'.$phoneUrl.'";';
+    drupal_add_js($vars, array('type' => 'inline'));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/sync.js');
 
-  return $output;
+    $output = '<div id="sync"><iframe id="syncIframe" width="100%" scrolling="no" align="top" height="806" frameborder="0" seamless="seamless" marginwidth="0" marginheight="0" src="" name="syncIframe"></iframe></div>';
+
+    return $output;
+  } else {
+    $not_found_url = variable_get('site_404');
+    drupal_goto($not_found_url);
+  }
 }
 
   /**
@@ -998,10 +1018,12 @@ function usanetwork_social_twitter($node) {
   $vars .= 'var twitterEQL = "' . $eql . '"';
   drupal_add_js($vars, array('type' => 'inline'));
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/jquery.fancybox.pack.js');
+  drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
   drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
 
   $output .= '<div id="echo-stream">&nbsp;</div>';
@@ -1019,9 +1041,10 @@ function usanetwork_social_sync($node) {
   $desktopUrl = !empty($node->field_sync_desktop_url[$lang][0]['value']) ? $node->field_sync_desktop_url[$lang][0]['value'] : 0;
   $phoneUrl = !empty($node->field_sync_phone_url[$lang][0]['value']) ? $node->field_sync_phone_url[$lang][0]['value'] : 0;
 
-  if (!$showSync || !$desktopUrl || !$phoneUrl)
-  {
-    drupal_goto('social/sync');
+  if (!$showSync || !$desktopUrl || !$phoneUrl) { 
+//    drupal_goto('social/sync');
+    $not_found_url = variable_get('site_404');
+    drupal_goto($not_found_url);
   }
 
   $vars = 'var desktopUrl = "'.$desktopUrl.'";';
@@ -1605,7 +1628,10 @@ if (!path_is_admin(current_path())) {
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
       $sourceName = strval($entries->source->name);
       $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
-
+      if($sourceUri != '') {
+        $tweetId = explode("/status/", $sourceUri);
+      }
+      //echo 'tweetId'.$tweetId[1];exit;
       $markers = (isset($entries->object->markers) &&
       is_array($entries->object->markers) &&
       count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
@@ -1637,7 +1663,9 @@ if (!path_is_admin(current_path())) {
                                    <div class="echo-item-date" style="display: none;">'.$time.'</div>
                                    <div class="echo-item-from">&nbsp;from&nbsp;<a href="https://twitter.com/saadz94/status/388261974410534912" class="echo-secondaryColor">Twitter</a></div>
                                    <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
-                                   <div class="echo-clear"></div>
+                                   <div class="echo-item-controls"><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconReply">&nbsp;</span><span>Reply</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Retweet" href="https://twitter.com/intent/retweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconRetweet">&nbsp;</span><span>Retweet</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Favorite" href="https://twitter.com/intent/favorite?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconFavorite">&nbsp;</span><span>Favorite</span></a></div>
+                                  <div class="echo-clear"></div>
+
                                 </div>
                              </div>
                           </div>
@@ -1951,7 +1979,9 @@ if (!path_is_admin(current_path())) {
       $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
       $sourceName = strval($entries->source->name);
       $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
-
+      if($sourceUri != '') {
+        $tweetId = explode("/status/", $sourceUri);
+      }
       $markers = (isset($entries->object->markers) &&
       is_array($entries->object->markers) &&
       count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
@@ -1983,6 +2013,7 @@ if (!path_is_admin(current_path())) {
                                  <div class="echo-item-date" style="display: none;">'.$time.'</div>
                                  <div class="echo-item-from">&nbsp;from&nbsp;<a href="https://twitter.com/saadz94/status/388261974410534912" class="echo-secondaryColor">Twitter</a></div>
                                  <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
+                                 <div class="echo-item-controls"><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconReply">&nbsp;</span><span>Reply</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Retweet" href="https://twitter.com/intent/retweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconRetweet">&nbsp;</span><span>Retweet</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Favorite" href="https://twitter.com/intent/favorite?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconFavorite">&nbsp;</span><span>Favorite</span></a></div>
                                  <div class="echo-clear"></div>
                               </div>
                            </div>

@@ -649,12 +649,6 @@ function usanetwork_cast_views_default_views() {
     3 => '3',
     4 => '4',
   );
-  $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -1487,6 +1481,11 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Role (field_role) */
+  $handler->display->display_options['relationships']['field_role_tid']['id'] = 'field_role_tid';
+  $handler->display->display_options['relationships']['field_role_tid']['table'] = 'field_data_field_role';
+  $handler->display->display_options['relationships']['field_role_tid']['field'] = 'field_role_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Role */
   $handler->display->display_options['fields']['field_role']['id'] = 'field_role';
@@ -1537,6 +1536,14 @@ function usanetwork_cast_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_role_tid';
+  $handler->display->display_options['filters']['name']['operator'] = '!=';
+  $handler->display->display_options['filters']['name']['value'] = 'BLANK';
   $export['usa_people'] = $view;
 
   return $export;

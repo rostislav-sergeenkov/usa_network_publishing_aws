@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * Code for the Post feature.
+ */
+
+include_once 'usanetwork_post.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
+  $form['field_show']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function usanetwork_post_node_presave($node) {
+  if ($node->type == 'post' && empty($node->taxonomy_term_update)) {
+    if (!empty($node->field_blog)) {
+      $blog = reset(field_get_items('node', $node, 'field_blog'));
+      if ($blog) {
+        $blog = taxonomy_term_load($blog['tid']);
+        if ($blog) {
+          $node->field_show = $blog->field_show;
+        }
+      }
+    }
+
+    if (empty($blog)) {
+      $node->field_show = array();
+    }
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function usanetwork_post_taxonomy_term_update($term) {
+  if ($term->vocabulary_machine_name == 'blog') {
+    $query = new EntityFieldQuery('node');
+    $nodes = $query->entityCondition('bundle', 'post', '=')
+      ->fieldCondition('field_blog', 'tid', $term->tid, '=')
+      ->execute();
+    if (!empty($nodes)) {
+      $nodes = node_load_multiple(array_keys($nodes['node']));
+      foreach ($nodes as $node) {
+        $node->taxonomy_term_update = TRUE;
+        $node->field_show = $term->field_show;
+        node_save($node);
+      }
+    }
+  }
+}

@@ -4,32 +4,11 @@
  * Implements hook_init().
  */
 function usanetwork_tv_shows_color_init() {
-  $field_name = 'field_show';
-
-  if ($node = menu_get_object()) {
-  if ($node->type == 'tv_show' || !empty($node->{$field_name})) {
-    // Get the Show node
-    if ($node->type == 'tv_show') {
-      $show = $node;
-    }
-    else {
-      $show_nid = field_get_items('node', $node, $field_name);
-      $show_nid = $show_nid[0]['target_id'];
-      $show = node_load($show_nid);
-    }
-    }
-  } elseif ($file = menu_get_object('file')) {
-    if (!empty($file->{$field_name})) {
-        $show_nid = field_get_items('file', $file, $field_name);
-        $show_nid = $show_nid[0]['target_id'];
-        $show = node_load($show_nid);
-      }
-    }
-
-    if (isset($show) && ($show)) {
-      usanetwork_tv_shows_color_add_css($show);
-    }
+  $show = _usanetwork_tv_show_menu_get_show();
+  if ($show) {
+    usanetwork_tv_shows_color_add_css($show);
   }
+}
 
 /*
  * Implements hook_usanetwork_widget_style().
@@ -55,8 +34,9 @@ function usanetwork_tv_shows_color_field_widget_colorfield_unified_textfield_for
 /**
  * Callback to load library. Fixes library not loading on validation error.
  */
-function usanetwork_tv_shows_color_field_attach_library() {
+function usanetwork_tv_shows_color_field_attach_library($children, $elements) {
   libraries_load('jquery-miniColors');
+  return $children;
 }
 
 /**

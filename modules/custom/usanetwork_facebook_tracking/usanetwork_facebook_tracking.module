@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+
+define('USANETWORK_FACEBOOK_TRACKING_ENABLED', 'field_facebook_tracking_enabled');
+define('USANETWORK_FACEBOOK_TRACKING_ID', '702197316510882');
+
+/**
+ * Implements hook_entity_view().
+ */
+function usanetwork_facebook_tracking_entity_view($entity, $entity_type, $view_mode, $langcode) {
+  if (_usanetwork_facebook_tracking_enabled($entity, $entity_type)) {
+    $entity->content['#post_render'][] = '_usanetwork_facebook_tracking_post_render';
+    $entity->content['#attached']['js'][] = array(
+      'type' => 'setting',
+      'data' => array(
+        'usanetwork_facebook_tracking' => array(
+          'id' => USANETWORK_FACEBOOK_TRACKING_ID,
+        ),
+      ),
+    );
+    $entity->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_facebook_tracking') . '/js/usanetwork_facebook_tracking.js';
+  }
+}
+
+/**
+ * Checks if tracking is enabled for entity.
+ */
+function _usanetwork_facebook_tracking_enabled($entity, $entity_type) {
+  if (!empty($entity->{USANETWORK_FACEBOOK_TRACKING_ENABLED})) {
+    $enabled = reset(field_get_items($entity_type, $entity, USANETWORK_FACEBOOK_TRACKING_ENABLED));
+    if ($enabled['value']) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Entity post-render callback.
+ */
+function _usanetwork_facebook_tracking_post_render($markup, $element) {
+  $markup .= '<noscript><img height="1" width="1" border="0" alt="" style="display:none" src="https://www.facebook.com/tr?id=' . USANETWORK_FACEBOOK_TRACKING_ID . '&amp;ev=NoScript" /></noscript>';
+  return $markup;
+}

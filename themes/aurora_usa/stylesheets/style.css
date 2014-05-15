@@ -8380,6 +8380,9 @@ body.person-page #main {
 .usa-video .companionContainer .ad_lead {
   text-align: center;
 }
+.usa-video.view-mode-full .description .field {
+  margin-bottom: 20px;
+}
 
 .block-usanetwork-video .view li {
   list-style: none;
@@ -8608,6 +8611,11 @@ body.person-page #main {
     margin-top: 30px;
     margin-bottom: 30px;
   }
+}
+.block-usanetwork-video.usa-secondary-menu .categories,
+.block-usanetwork-mpx-video.usa-secondary-menu .categories {
+  position: relative;
+  z-index: 2;
 }
 .block-usanetwork-video.usa-secondary-menu .categories > li,
 .block-usanetwork-mpx-video.usa-secondary-menu .categories > li {

@@ -181,6 +181,13 @@
       text-align: center;
     }
   }
+  &.view-mode-full {
+    .description {
+      .field {
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
 
 .block-usanetwork-video .view {
@@ -367,6 +374,8 @@
     margin-bottom: 30px;
   }
   .categories  {
+    position: relative;
+    z-index: 2;
     > li {
       margin: 0;
       @include breakpoint($bp-video-mid-large-width) {

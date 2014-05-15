@@ -844,9 +844,9 @@ function usanetwork_video_preprocess_node(&$variables) {
       
       //twitter stream
       $account_id = explode('/', $player);
-      $player_stream = url($platform_file[1], array(
+      $player_stream_url = str_replace('http:', 'https:', $platform_file[1]);
+      $player_stream = url($player_stream_url, array(
         'query' => array(
-          'mbr' => 'true',
           'switch' => 'progressive',
           'format' => 'redirect',
          ),

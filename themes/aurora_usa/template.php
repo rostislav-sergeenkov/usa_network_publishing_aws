@@ -1141,3 +1141,41 @@ function aurora_usa_html_head_alter(&$head_elements) {
     }
   }
 }
+
+/**
+ * Converts an associative array to an XML/HTML tag attribute string without escaping.
+ */
+function aurora_usa_drupal_attributes(array $attributes = array()) {
+  foreach ($attributes as $attribute => &$data) {
+    $data = implode(' ', (array) $data);
+    $data = $attribute . '="' .$data . '"';
+  }
+  return $attributes ? ' ' . implode(' ', $attributes) : '';
+}
+
+/**
+ * Override theme_html_tag()
+ */
+function aurora_usa_html_tag($variables) {
+  $element = $variables['element'];
+  if ($element['#attributes']['name'] != 'twitter:player:stream' ) {
+    $attributes = isset($element['#attributes']) ? drupal_attributes($element['#attributes']) : '';
+  } else {
+    $attributes = isset($element['#attributes']) ? aurora_usa_drupal_attributes($element['#attributes']) : '';
+  }
+  if (!isset($element['#value'])) {
+    return '<' . $element['#tag'] . $attributes . " />\n";
+  }
+  else {
+    $output = '<' . $element['#tag'] . $attributes . '>';
+    if (isset($element['#value_prefix'])) {
+      $output .= $element['#value_prefix'];
+    }
+    $output .= $element['#value'];
+    if (isset($element['#value_suffix'])) {
+      $output .= $element['#value_suffix'];
+    }
+    $output .= '</' . $element['#tag'] . ">\n";
+    return $output;
+  }
+}

@@ -4,14 +4,19 @@
 
 if (typeof NBCUEndShareCard !== 'undefined') {
   var tpController = $pdk.controller;
+  var tpconfig = tpconfig || {};
+
+  NBCUEndShareCard.Feed = 'http://usanetwork.com/videos/endcard/ajax/related';
+  var match = window.location.hash.match(/#playerurl=(.*)/);
+  if (match) {
+    NBCUEndShareCard.ShareURL = match[1];
+  }
 
   /**
    * NBCUEndShareCard Overrides
    */
   NBCUEndShareCard.Initialize = function () {
     /* Set the feed URL */
-    NBCUEndShareCard.Feed = 'http://qa.usanetwork.com/videos/endcard/ajax/related';
-
     if(navigator.userAgent.toString().indexOf("MSIE") != -1){
       NBCUEndShareCard.AppearsToBeIE = true;
     }

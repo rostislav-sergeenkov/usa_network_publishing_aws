@@ -10,6 +10,118 @@
 function usanetwork_mpx_video_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'file-mpx_video_1-field_gigya_share_bar'
+  $field_instances['file-mpx_video_1-field_gigya_share_bar'] = array(
+    'bundle' => 'mpx_video_1',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[node:summary]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[node:url:absolute]',
+          'gigya_sharebar_override_default' => FALSE,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[node:title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 90,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[file:field_mpx_description]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[file:url]',
+          'gigya_sharebar_override_default' => 1,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[file:field_mpx_title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 8,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gigya_share_bar',
+    'label' => 'Gigya Share Bar',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+      'wysiwyg_override' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'gigya',
+      'settings' => array(),
+      'type' => 'sharebar',
+      'weight' => 79,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_1-field_mpx_airdate'
   $field_instances['file-mpx_video_1-field_mpx_airdate'] = array(
     'bundle' => 'mpx_video_1',
@@ -40,7 +152,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 8,
+        'weight' => 6,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -136,6 +254,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
+        'weight' => 7,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -213,6 +337,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'weight' => 43,
       ),
       'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -306,6 +436,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -394,6 +530,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'weight' => 40,
       ),
       'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -487,6 +629,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -580,6 +728,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -683,6 +837,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -766,6 +926,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -827,6 +993,118 @@ function usanetwork_mpx_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-mpx_video_2-field_gigya_share_bar'
+  $field_instances['file-mpx_video_2-field_gigya_share_bar'] = array(
+    'bundle' => 'mpx_video_2',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[node:summary]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[node:url:absolute]',
+          'gigya_sharebar_override_default' => FALSE,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[node:title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 76,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[file:field_mpx_description]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[file:url]',
+          'gigya_sharebar_override_default' => 1,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[file:field_mpx_title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 8,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gigya_share_bar',
+    'label' => 'Gigya Share Bar',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+      'wysiwyg_override' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'gigya',
+      'settings' => array(),
+      'type' => 'sharebar',
+      'weight' => 114,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_2-field_mpx_airdate'
   $field_instances['file-mpx_video_2-field_mpx_airdate'] = array(
     'bundle' => 'mpx_video_2',
@@ -857,6 +1135,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
+        'weight' => 6,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -953,6 +1237,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
+        'weight' => 7,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -1033,7 +1323,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 33,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1123,7 +1419,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 5,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1214,7 +1516,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 32,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1304,7 +1612,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'preview' => array(
         'label' => 'above',
@@ -1396,6 +1710,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -1485,6 +1805,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -1568,6 +1894,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -1645,6 +1977,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'queues',
     'fences_wrapper' => 'div',
@@ -1672,6 +2010,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
   t('Entitlement');
   t('Episode Number');
   t('Full Episode');
+  t('Gigya Share Bar');
   t('MPX Media Air Date');
   t('MPX Media Description');
   t('MPX Media Title');

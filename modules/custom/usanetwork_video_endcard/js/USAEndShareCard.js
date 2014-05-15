@@ -242,4 +242,11 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   NBCUEndShareCard.PickMostRelatedItems = function(arrData) {
     return arrData;
   };
+
+  /**
+   * Initialize EndShareCard
+   */
+  $(window).on('load', function() {
+    NBCUEndShareCard.Initialize();
+  });
 }

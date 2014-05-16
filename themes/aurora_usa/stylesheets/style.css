@@ -6479,7 +6479,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 
 body.front {
-  margin-bottom: 49px !important;
+  margin-bottom: 49px;
 }
 @media (min-width: 769px) {
   body.front {
@@ -9584,6 +9584,7 @@ body.person-page #main {
     float: left;
     margin-top: 0;
     margin-right: 15px;
+    width: 300px;
   }
 }
 @media (min-width: 960px) {

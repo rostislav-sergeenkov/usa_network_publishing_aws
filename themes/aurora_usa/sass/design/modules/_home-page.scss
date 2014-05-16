@@ -1,6 +1,6 @@
 body {
   &.front {
-    margin-bottom: 49px !important;
+    margin-bottom: 49px;
   }
   @include breakpoint($bp-menu-switch) {
     &.front {

@@ -202,12 +202,6 @@ function usanetwork_promo_ds_layout_settings_info() {
     'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
     'regions' => array(
-      'caption_wide' => array(
-        0 => 'field_promo_text_line_2_wide',
-      ),
-      'title_wide' => array(
-        0 => 'field_promo_text_line_1_wide',
-      ),
       'media' => array(
         0 => 'field_promo_regular_image',
       ),
@@ -235,8 +229,6 @@ function usanetwork_promo_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'field_promo_text_line_2_wide' => 'caption_wide',
-      'field_promo_text_line_1_wide' => 'title_wide',
       'field_promo_regular_image' => 'media',
       'field_promo_text_line_1' => 'title',
       'field_promo_text_line_2' => 'caption',

@@ -6,10 +6,10 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpController = $pdk.controller;
   var tpconfig = tpconfig || {};
 
-  NBCUEndShareCard.Feed = 'http://usanetwork.com/videos/endcard/ajax/related';
-  var match = window.location.hash.match(/#playerurl=(.*)/);
-  if (match) {
-    NBCUEndShareCard.ShareURL = match[1];
+  NBCUEndShareCard.Feed = 'http://www.usanetwork.com/videos/endcard/ajax/related';
+  var playerurl = window.location.hash.match(/#playerurl=(.*)/);
+  if (playerurl) {
+    NBCUEndShareCard.ShareURL = playerurl[1];
   }
 
   /**

@@ -5,7 +5,8 @@
   }
 }
 
-#block-views-usa-video-front-full-episodes {
+#block-views-usa-video-front-full-episodes,
+#block-views-usa-mpx-video-front-full-epsds {
   margin-top: 3px;
   @include breakpoint($bp-home-2col) {
     margin-top: 30px;
@@ -13,6 +14,7 @@
 }
 
 #block-views-usa-video-front-full-episodes,
+#block-views-usa-mpx-video-front-full-epsds,
 .usa-home-featured {
   @extend %grid-home-featured;
   position: relative;
@@ -251,7 +253,8 @@
   }
 }
 
-#block-views-usa-video-front-full-episodes {
+#block-views-usa-video-front-full-episodes,
+#block-views-usa-mpx-video-front-full-epsds {
   .caption-fields-wrapper:before {
     content: " ";
     width: 20px;

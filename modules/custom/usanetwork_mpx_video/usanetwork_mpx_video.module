@@ -999,3 +999,37 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
   }
 }
 
+/**
+ * Implements hook_views_query_alter()
+ */
+function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
+  if ($view->name == 'usa_mpx_video' && $view->current_display == 'front_full_epsds') {
+
+    $subsubquery = db_select('file_managed', 'fm')
+        ->fields('sub_fdfs',array('field_show_target_id'))
+        ->condition('fm.type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
+        ->condition('fm.published', '1');   
+      $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = fm.fid'); 
+      $subsubquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+      $subsubquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+      $subsubquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+      $subsubquery->addExpression('MAX(mv.airdate)', 'max_data');
+      $subsubquery->groupBy('sub_fdfs.field_show_target_id');
+      $subsubquery->range(0, 10);
+    
+      $subquery = db_select('file_managed', 'fs')
+        ->fields('fs',array('fid'))
+        ->fields('fdfs',array('field_show_target_id'))
+        ->condition('type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
+        ->condition('published', '1');
+      $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+      $subquery->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
+      $subquery->join($subsubquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
+      $subquery->addExpression('MAX(fs.fid)', 'max_fid');
+      $subquery->groupBy('fdfs.field_show_target_id');
+     
+      $join = new views_join();
+      $join->construct($subquery, 'file_managed', 'fid', 'max_fid', array(), 'INNER');
+      $query->add_relationship('field_data_field_dependens_show', $join, 'file_managed');
+  }
+}

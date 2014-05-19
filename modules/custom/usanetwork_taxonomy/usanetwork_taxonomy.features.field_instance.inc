@@ -26,6 +26,22 @@ function usanetwork_taxonomy_field_default_field_instances() {
         'type' => 'image',
         'weight' => 0,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'usa_term_icon' => array(
         'label' => 'hidden',
         'module' => 'image',

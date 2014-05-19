@@ -276,7 +276,7 @@ ini_set('memory_limit', '512M');
 /**
  * Github credentials
  */
-$conf['github_credentials'] = 'JenkinsNBC:Mp@tSu77GiT14';
+$conf['github_credentials'] = 'JenkinsNBC:MpatSu77GiT14';
 
 /**
  * SURF Settings

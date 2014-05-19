@@ -23,9 +23,9 @@
   .utilities-search {
     .utilties-main-group {
       float: left;
-      margin-right: -180px;
-      padding-right: 180px;
-      width: 100%;
+      margin-right: -65px;
+      padding-right: 65px;
+      width: 94%;
       @include transition-property(margin, padding);
       @include transition-duration(0.2s);
     }
@@ -36,8 +36,8 @@
   }
   .utilities-search.search-active {
     .utilties-main-group {
-      margin-right: -394px;
-      padding-right: 394px;
+      margin-right: -280px;
+      padding-right: 280px;
       @include transition-property(padding);
       @include transition-duration(0.2s);
     }

@@ -265,7 +265,7 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['row_options']['links'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: USA Video Terms (field_usa_video_terms) */
+  /* Contextual filter: Field: USA Video Term (field_usa_video_terms) */
   $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
   $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
   $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';

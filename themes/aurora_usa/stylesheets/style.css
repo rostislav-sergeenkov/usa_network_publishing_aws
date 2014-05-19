@@ -4913,9 +4913,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 @media (min-width: 641px) {
   .utilities-search .utilties-main-group {
     float: left;
-    margin-right: -180px;
-    padding-right: 180px;
-    width: 100%;
+    margin-right: -65px;
+    padding-right: 65px;
+    width: 94%;
     -webkit-transition-property: margin, padding;
     -moz-transition-property: margin, padding;
     -o-transition-property: margin, padding;
@@ -4937,8 +4937,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 
   .utilities-search.search-active .utilties-main-group {
-    margin-right: -394px;
-    padding-right: 394px;
+    margin-right: -280px;
+    padding-right: 280px;
     -webkit-transition-property: padding;
     -moz-transition-property: padding;
     -o-transition-property: padding;

@@ -1113,50 +1113,6 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'usa_leader_video';
-  $context->description = 'video specific leaderboards';
-  $context->tag = 'ads';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'usa_tve_video' => 'usa_tve_video',
-        'usa_video' => 'usa_video',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'videos' => 'videos',
-        'videos/*' => 'videos/*',
-        '*/videos/*' => '*/videos/*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'dart-dart-tag-728x90_scr_vid' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-728x90_scr_vid',
-          'region' => 'leaderboard',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('ads');
-  t('video specific leaderboards');
-  $export['usa_leader_video'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'usa_nitro';
   $context->description = 'Adds code to page to allow Nitro rewards';
   $context->tag = 'nitro pages';

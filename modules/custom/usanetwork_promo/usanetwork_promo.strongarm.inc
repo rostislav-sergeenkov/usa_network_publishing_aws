@@ -104,6 +104,10 @@ function usanetwork_promo_strongarm() {
             'weight' => '-10',
             'visible' => FALSE,
           ),
+          'carousel_promo' => array(
+            'weight' => '-10',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),

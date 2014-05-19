@@ -644,6 +644,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // DURATION WITHIN VIDEO TEASERS
     case 'field_video_duration':
+    case 'field_mpx_duration':
       // change display
       $duration = $vars['element']['#items'][0]['value'];
       $duration_custom = gmdate("H:i:s", $duration);

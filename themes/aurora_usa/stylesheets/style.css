@@ -1060,8 +1060,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot, #block-views-usa-video-front-full-episodes .carousel .carousel-item,
 .usa-home-featured .carousel .carousel-item, .grid-container-small .grid-item, .block-usanetwork-video .grid-item,
-.block-usanetwork-mpx-video .grid-item, #block-views-usa-mpx-video-fullepisodes-live .grid-item,
-.block-usanetwork-tv-schedule .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
+.block-usanetwork-mpx-video .grid-item, #block-views-usa-mpx-video-fullepisodes-live .grid-item, .region-content .block-usanetwork-tv-schedule .grid-item, .expandable-container .pane-content ul li, .expandable-container.promo-ads-panel ul li, .node-type-catchall-page .tiles .ad, .featured-movie, .upcoming-movie {
   margin-bottom: 15px;
 }
 
@@ -1731,26 +1730,22 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 @media (max-width: 486px) {
-  #block-views-usa-mpx-video-fullepisodes-live,
-  .block-usanetwork-tv-schedule {
+  #block-views-usa-mpx-video-fullepisodes-live, .region-content .block-usanetwork-tv-schedule {
     width: 304px;
   }
 }
 @media (min-width: 487px) and (max-width: 722px) {
-  #block-views-usa-mpx-video-fullepisodes-live,
-  .block-usanetwork-tv-schedule {
+  #block-views-usa-mpx-video-fullepisodes-live, .region-content .block-usanetwork-tv-schedule {
     width: 457px;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
     width: 48.49661%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
     width: 48.49661%;
     float: right;
     margin-left: 0;
@@ -1758,26 +1753,22 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
     clear: both;
   }
 }
 @media (min-width: 723px) and (max-width: 958px) {
-  #block-views-usa-mpx-video-fullepisodes-live,
-  .block-usanetwork-tv-schedule {
+  #block-views-usa-mpx-video-fullepisodes-live, .region-content .block-usanetwork-tv-schedule {
     width: 615px;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(odd), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(odd) {
     width: 48.49661%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(even), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(even) {
     width: 48.49661%;
     float: right;
     margin-left: 0;
@@ -1785,38 +1776,33 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(2n + 3), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(2n + 3) {
     clear: both;
   }
 }
 @media (min-width: 959px) {
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 1),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 1) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 1), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 1) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 2),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 2) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 2), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 2) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 25.37028%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 3),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 3) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 3), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 3) {
     width: 23.88915%;
     float: left;
     margin-right: -100%;
     margin-left: 50.74056%;
     clear: none;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 4),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 4) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 4), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 4) {
     width: 23.88915%;
     float: right;
     margin-left: 0;
@@ -1824,26 +1810,22 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     padding-right: 0;
   }
-  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 5),
-  .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 5) {
+  #block-views-usa-mpx-video-fullepisodes-live .grid-item:nth-of-type(4n + 5), .region-content .block-usanetwork-tv-schedule .grid-item:nth-of-type(4n + 5) {
     clear: both;
   }
 }
 @media (min-width: 959px) and (max-width: 1274px) {
-  #block-views-usa-mpx-video-fullepisodes-live,
-  .block-usanetwork-tv-schedule {
+  #block-views-usa-mpx-video-fullepisodes-live, .region-content .block-usanetwork-tv-schedule {
     width: 929px;
     margin-bottom: 28px;
   }
 }
 @media (min-width: 1275px) {
-  #block-views-usa-mpx-video-fullepisodes-live,
-  .block-usanetwork-tv-schedule {
+  #block-views-usa-mpx-video-fullepisodes-live, .region-content .block-usanetwork-tv-schedule {
     width: 1245px;
   }
 }
-.usa-adrails #block-views-usa-mpx-video-fullepisodes-live,
-.usa-adrails .block-usanetwork-tv-schedule {
+.usa-adrails #block-views-usa-mpx-video-fullepisodes-live, .usa-adrails .region-content .block-usanetwork-tv-schedule, .region-content .usa-adrails .block-usanetwork-tv-schedule {
   width: 929px;
 }
 
@@ -8368,8 +8350,11 @@ body.person-page #main {
   }
 }
 
-#block-views-usa-mpx-video-fullepisodes-live,
-.block-usanetwork-tv-schedule {
+#block-views-usa-mpx-video-fullepisodes-live {
+  margin: 0 auto;
+}
+
+.region-content .block-usanetwork-tv-schedule {
   margin: 0 auto;
 }
 

@@ -167,10 +167,16 @@
   }
 }
 
-#block-views-usa-mpx-video-fullepisodes-live,
-.block-usanetwork-tv-schedule {
+#block-views-usa-mpx-video-fullepisodes-live {
   @extend %grid-small-wide-one-two-three-four;
   margin: 0 auto;
+}
+
+.region-content {
+  .block-usanetwork-tv-schedule {
+    @extend %grid-small-wide-one-two-three-four;
+    margin: 0 auto;
+  }
 }
 
 .usa-video {

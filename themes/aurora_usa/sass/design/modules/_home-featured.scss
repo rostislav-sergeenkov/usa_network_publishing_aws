@@ -130,7 +130,7 @@
       margin-bottom: 8px;
     }
 
-    .node {
+    > div {
       border: 2px solid $gray-dark;
       .ie8 & {
         width: 224px;

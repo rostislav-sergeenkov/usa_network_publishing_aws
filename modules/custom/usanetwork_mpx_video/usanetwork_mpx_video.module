@@ -411,7 +411,7 @@ function usanetwork_mpx_video_views($arg = null) {
         $queue = db_select('field_data_field_qt_file', 'q')
           ->fields('q', array('entity_id'))
           ->condition('entity_id', $qid[0], '=')
-          ->condition('field_qt_file_target_id', $node->nid, '=')
+          ->condition('field_qt_file_target_id', $file->fid, '=')
           ->execute()
           ->fetchField();
 

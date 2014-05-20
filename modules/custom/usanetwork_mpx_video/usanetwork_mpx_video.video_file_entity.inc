@@ -1032,8 +1032,8 @@ function _usa_mpx_get_mpx_video_file_field_instances() {
     ),
   );
   
-  // Exported field_instance: 'file-mpx_video_1-field_mpx_duration'
-  $field_instances['file-mpx_video_1-field_mpx_duration'] = array(
+  // Exported field_instance: 'field_mpx_duration'
+  $field_instances['field_mpx_duration'] = array(
     'bundle' => NULL,
     'default_value' => NULL,
     'deleted' => 0,

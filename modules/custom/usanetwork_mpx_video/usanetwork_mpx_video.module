@@ -1075,7 +1075,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
     // Save file count for the termination message.
     $context['sandbox']['max'] = db_query('SELECT COUNT(DISTINCT fid) FROM {file_managed} WHERE type IN (\''. implode('\',\'', $types) .'\')')->fetchField();
-    $context['mpx_accounts'] = _media_theplatform_mpx_get_account_data();
+    $context['sandbox']['mpx_accounts'] = _media_theplatform_mpx_get_account_data();
   }
 
   $limit = 25;
@@ -1097,7 +1097,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
     $video_item = media_theplatform_mpx_get_videos_by_fid($row->fid);
     if (!empty($video_item)) {
       $video_item = (array) reset($video_item);
-      $account = $context['mpx_accounts'][$video_item['parent_account']];
+      $account = $context['sandbox']['mpx_accounts'][$video_item['parent_account']];
       $items[$account->id][$video_item['id']] = array(
         'file' => $file,
         'video_item' => $video_item,
@@ -1111,7 +1111,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
   // process videos
   foreach ($items as $account_id => $files) {
-    $account = isset($context['mpx_accounts'][$account_id]) ? $context['mpx_accounts'][$account_id] : false;
+    $account = isset($context['sandbox']['mpx_accounts'][$account_id]) ? $context['sandbox']['mpx_accounts'][$account_id] : false;
     if ($account) {
       $url = _media_theplatform_mpx_get_video_feed_url(implode(',', array_keys($items[$account_id])), $account);
       $token = media_theplatform_mpx_check_token($account->id);
@@ -1129,6 +1129,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
           foreach ($entries as $video) {
             if (empty($video)) {
+              $context['results']['failed']++;
               continue;
             }
             $published_ids[] = basename($video['id']);
@@ -1149,6 +1150,9 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
       else {
         $context['results']['failed'] += count($files);
       }
+    }
+    else {
+      $context['results']['failed'] += count($files);
     }
   }
 

@@ -6,6 +6,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpController = $pdk.controller;
   var tpconfig = tpconfig || {};
 
+  NBCUEndShareCard.initialized = false;
   NBCUEndShareCard.Feed = 'http://www.usanetwork.com/videos/endcard/ajax/related';
   var playerurl = window.location.hash.match(/#playerurl=(.*)/);
   if (playerurl) {
@@ -97,6 +98,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     tpController.addEventListener("OnReleaseStart", NBCUEndShareCard.OnReleaseStart);
     tpController.addEventListener("OnMediaStart", NBCUEndShareCard.OnMediaStart);
     tpController.addEventListener("OnSetReleaseUrl", NBCUEndShareCard.OnSetReleaseUrl);
+
+    NBCUEndShareCard.initialized = true;
   };
 
   NBCUEndShareCard.OnMediaStart = function (evt) {
@@ -141,7 +144,9 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     if (NBCUEndShareCard.currentCountdown == 0) {
       clearInterval(NBCUEndShareCard.countdownTimer);
       var next_url = $('.ymalitemnext').attr('href');
-      tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
+      if (next_url) {
+        tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
+      }
     }
   }
 
@@ -149,7 +154,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     NBCUEndShareCard.Debug("[GetYouMayAlsoLike]");
     var feedAnnex = "?guid=" + encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
     if (!NBCUEndShareCard.IsEmpty(NBCUEndShareCard.ShareURL)) {
-      feedAnnex += "&url=" + NBCUEndShareCard.ShareURL;
+      feedAnnex += "&url=" + encodeURIComponent(NBCUEndShareCard.ShareURL);
     }
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
@@ -252,6 +257,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
    * Initialize EndShareCard
    */
   $(window).on('load', function() {
-    NBCUEndShareCard.Initialize();
+    if (!NBCUEndShareCard.initialized) {
+      NBCUEndShareCard.Initialize();
+    }
   });
 }

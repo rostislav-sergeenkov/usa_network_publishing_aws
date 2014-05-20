@@ -1132,14 +1132,27 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
               $context['results']['failed']++;
               continue;
             }
-            $published_ids[] = basename($video['id']);
+            $id = basename($video['id']);
+            $published_ids[] = $id;
             // Add item to video queue.
             $item = array(
               'queue_operation' => 'publish',
               'video' => $video,
               'account' => $account,
             );
-            process_media_theplatform_mpx_video_cron_queue_item($item);
+            // update video
+            //process_media_theplatform_mpx_video_cron_queue_item($item);
+
+            // update associated player
+            $video_item = $files[$id]['video_item'];
+            $file = $files[$id]['file'];
+            pub_mpx_media_theplatform_mpx_media_import_item_alter($video_item, $video, $account);
+            db_update('mpx_video')
+              ->fields(array(
+                'player_id' => $video_item['player_id'],
+              ))
+              ->condition('fid', $file->fid, '=')
+              ->execute();
             $context['results']['updated']++;
           }
         }

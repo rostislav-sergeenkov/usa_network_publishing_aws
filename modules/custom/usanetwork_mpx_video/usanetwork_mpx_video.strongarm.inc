@@ -216,19 +216,19 @@ function usanetwork_mpx_video_strongarm() {
           ),
           'vid_teaser_episode' => array(
             'weight' => '0',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
           'vid_teaser_general' => array(
             'weight' => '0',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
           'vid_teaser_show_episode' => array(
             'weight' => '1',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
           'vid_teaser_show_general' => array(
             'weight' => '0',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
           'vid_teaser_front' => array(
             'weight' => '0',

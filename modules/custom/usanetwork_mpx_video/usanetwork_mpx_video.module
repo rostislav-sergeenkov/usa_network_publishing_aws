@@ -36,6 +36,15 @@ function usanetwork_mpx_video_menu() {
     'page callback' => 'usanetwork_mpx_video_live',
     'access arguments' => array('access content'),
   );
+
+  // admin area
+  $items['admin/usanetwork/video'] = array(
+    'title' => 'Video settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_mpx_video_admin'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_mpx_video.admin.inc',
+  );
   return $items;
 }
 
@@ -402,7 +411,7 @@ function usanetwork_mpx_video_views($arg = null) {
         $queue = db_select('field_data_field_qt_file', 'q')
           ->fields('q', array('entity_id'))
           ->condition('entity_id', $qid[0], '=')
-          ->condition('field_qt_file_target_id', $node->nid, '=')
+          ->condition('field_qt_file_target_id', $file->fid, '=')
           ->execute()
           ->fetchField();
 
@@ -867,7 +876,7 @@ function _usanetwork_mpx_video_is_mpx_file_type($type) {
   }
 
   return $is_mpx;
-} 
+}
 
 /**
  * Implements hook_media_theplatform_mpx_import_media().
@@ -1031,5 +1040,143 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
       $join = new views_join();
       $join->construct($subquery, 'file_managed', 'fid', 'max_fid', array(), 'INNER');
       $query->add_relationship('field_data_field_dependens_show', $join, 'file_managed');
+  }
+}
+
+/**
+ * Return videos sync batch.
+ */
+function usanetwork_mpx_video_sync_batch($types = NULL) {
+  if ($types == NULL) {
+    $types = _pub_mpx_get_mpx_account_video_file_types(TRUE);
+  }
+  $batch = array(
+    'operations' => array(
+      array('usanetwork_mpx_video_sync_batch_operation', array($types)),
+    ),
+    'finished' => 'usanetwork_mpx_video_sync_batch_finished',
+    'title' => t('Synchronize videos'),
+    'init_message' => t('Videos synchronization is starting.'),
+    'error_message' => t('Synchronization process has encountered an error.'),
+  );
+  return $batch;
+}
+
+/**
+ * Videos sync batch operation.
+ */
+function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
+  if (empty($context['sandbox'])) {
+    $context['sandbox'] = array();
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['current_file'] = 0;
+    $context['results']['updated'] = 0;
+    $context['results']['failed'] = 0;
+
+    // Save file count for the termination message.
+    $context['sandbox']['max'] = db_query('SELECT COUNT(DISTINCT fid) FROM {file_managed} WHERE type IN (\''. implode('\',\'', $types) .'\')')->fetchField();
+    $context['mpx_accounts'] = _media_theplatform_mpx_get_account_data();
+  }
+
+  $limit = 25;
+
+  // Retrieve the next group of fids.
+  $result = db_select('file_managed', 'f')
+    ->fields('f', array('fid'))
+    ->orderBy('f.fid', 'ASC')
+    ->condition('fid', $context['sandbox']['current_file'], '>')
+    ->condition('type', $types, 'IN')
+    ->extend('PagerDefault')
+    ->limit($limit)
+    ->execute();
+
+  module_load_include('php', 'media_theplatform_mpx', 'media_theplatform_mpx.video');
+  $items = array();
+  foreach ($result as $row) {
+    $file = file_load($row->fid, NULL, TRUE);
+    $video_item = media_theplatform_mpx_get_videos_by_fid($row->fid);
+    if (!empty($video_item)) {
+      $video_item = (array) reset($video_item);
+      $account = $context['mpx_accounts'][$video_item['parent_account']];
+      $items[$account->id][$video_item['id']] = array(
+        'file' => $file,
+        'video_item' => $video_item,
+        'account' => $account,
+      );
+    }
+    // Update progress information.
+    $context['sandbox']['progress']++;
+    $context['sandbox']['current_file'] = $file->fid;
+  }
+
+  // process videos
+  foreach ($items as $account_id => $files) {
+    $account = isset($context['mpx_accounts'][$account_id]) ? $context['mpx_accounts'][$account_id] : false;
+    if ($account) {
+      $url = _media_theplatform_mpx_get_video_feed_url(implode(',', array_keys($items[$account_id])), $account);
+      $token = media_theplatform_mpx_check_token($account->id);
+      if ($token) {
+        $url = $url . '&token=' . $token;
+        $result_data = _media_theplatform_mpx_retrieve_feed_data($url);
+        if ($result_data) {
+          $entries = array();
+          if (isset($result_data['entryCount'])) {
+            $entries = $result_data['entries'];
+          }
+          elseif (!isset($result_data['responseCode'])) {
+            $entries = array($result_data);
+          }
+
+          foreach ($entries as $video) {
+            if (empty($video)) {
+              continue;
+            }
+            $published_ids[] = basename($video['id']);
+            // Add item to video queue.
+            $item = array(
+              'queue_operation' => 'publish',
+              'video' => $video,
+              'account' => $account,
+            );
+            process_media_theplatform_mpx_video_cron_queue_item($item);
+            $context['results']['updated']++;
+          }
+        }
+        else {
+          $context['results']['failed'] += count($files);
+        }
+      }
+      else {
+        $context['results']['failed'] += count($files);
+      }
+    }
+  }
+
+  $context['message'] = t('Updated @progress videos of @total.', array(
+    '@progress' => $context['sandbox']['progress'],
+    '@total' => $context['sandbox']['max'],
+  ));
+
+  // Inform the batch engine that we are not finished,
+  // and provide an estimation of the completion level we reached.
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = ($context['sandbox']['progress'] >= $context['sandbox']['max']);
+  }
+}
+
+/**
+ * 'Finished' callback of videos sync batch.
+ */
+function usanetwork_mpx_video_sync_batch_finished($success, $results, $operations) {
+  if ($success) {
+    $message_type = $results['failed'] ? 'warning' : 'status';
+    drupal_set_message(t('@updated videos where synchronized, @failed failed.', array(
+      '@updated' => $results['updated'],
+      '@failed' => $results['failed'],
+    )), $message_type);
+  }
+  else {
+    $error_operation = reset($operations);
+    drupal_set_message(t('An error occurred while processing @operation with arguments : @args', array('@operation' => $error_operation[0], '@args' => print_r($error_operation[0], TRUE))));
   }
 }

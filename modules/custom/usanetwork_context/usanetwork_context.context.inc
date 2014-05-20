@@ -2031,11 +2031,11 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-usa_video-front_full_episodes' => array(
+        'views-usa_mpx_video-front_full_epsds' => array(
           'module' => 'views',
-          'delta' => 'usa_video-front_full_episodes',
+          'delta' => 'usa_mpx_video-front_full_epsds',
           'region' => 'content',
-          'weight' => '10',
+          'weight' => '-9',
         ),
         'usanetwork_tv_schedule-usa_on_now_panel' => array(
           'module' => 'usanetwork_tv_schedule',

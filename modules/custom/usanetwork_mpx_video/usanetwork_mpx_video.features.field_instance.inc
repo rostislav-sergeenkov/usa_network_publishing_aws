@@ -185,6 +185,19 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 8,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 8,
+      ),
       'vid_teaser_general' => array(
         'label' => 'above',
         'settings' => array(),
@@ -280,6 +293,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 70,
+      ),
       'vid_teaser_general' => array(
         'label' => 'above',
         'settings' => array(),
@@ -319,6 +338,102 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 58,
+    ),
+  );
+
+  // Exported field_instance: 'file-mpx_video_1-field_mpx_duration'
+  $field_instances['file-mpx_video_1-field_mpx_duration'] = array(
+    'bundle' => 'mpx_video_1',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 90,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 90,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mpx_duration',
+    'label' => 'Duration',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+      'wysiwyg_override' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => 'media$content/plfile$duration',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 79,
     ),
   );
 
@@ -365,6 +480,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -462,6 +583,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
+      ),
       'vid_teaser_general' => array(
         'label' => 'above',
         'settings' => array(),
@@ -477,9 +604,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'vid_teaser_show_general' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -558,6 +684,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -655,6 +787,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
+      ),
       'vid_teaser_general' => array(
         'label' => 'above',
         'settings' => array(),
@@ -670,9 +808,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'vid_teaser_show_general' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -748,6 +885,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'weight' => 0,
       ),
       'vid_teaser_episode' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'vid_teaser_front' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -866,6 +1010,15 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 39,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 39,
+      ),
       'vid_teaser_general' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -951,6 +1104,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 64,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1066,7 +1225,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 76,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1166,7 +1331,20 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 0,
+        'weight' => 4,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 35,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1261,7 +1439,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -1305,6 +1489,102 @@ function usanetwork_mpx_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-mpx_video_2-field_mpx_duration'
+  $field_instances['file-mpx_video_2-field_mpx_duration'] = array(
+    'bundle' => 'mpx_video_2',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 76,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 76,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mpx_duration',
+    'label' => 'Duration',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+      'wysiwyg_override' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => 'media$content/plfile$duration',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 113,
+    ),
+  );
+
   // Exported field_instance: 'file-mpx_video_2-field_mpx_entitlement'
   $field_instances['file-mpx_video_2-field_mpx_entitlement'] = array(
     'bundle' => 'mpx_video_2',
@@ -1344,6 +1624,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'weight' => 0,
       ),
       'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'vid_teaser_front' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1443,6 +1729,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 31,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 22,
       ),
       'vid_teaser_general' => array(
@@ -1460,10 +1752,9 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'vid_teaser_show_general' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'file',
@@ -1537,6 +1828,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'weight' => 0,
       ),
       'vid_teaser_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'vid_teaser_front' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1636,6 +1933,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 23,
       ),
       'vid_teaser_general' => array(
@@ -1653,10 +1956,9 @@ function usanetwork_mpx_video_field_default_field_instances() {
       ),
       'vid_teaser_show_general' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'file',
@@ -1735,7 +2037,14 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 3,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
       ),
       'vid_teaser_general' => array(
         'label' => 'hidden',
@@ -1832,7 +2141,16 @@ function usanetwork_mpx_video_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 0,
+        'weight' => 2,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 49,
       ),
       'vid_teaser_general' => array(
         'label' => 'hidden',
@@ -1918,7 +2236,13 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 23,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
       ),
       'vid_teaser_general' => array(
         'label' => 'above',
@@ -2007,6 +2331,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Duration');
   t('Entitlement');
   t('Episode Number');
   t('Full Episode');

@@ -47,7 +47,8 @@ function usanetwork_home_menu() {
  */
 function usanetwork_home_preprocess_block(&$variables) {
   $block = $variables['block'];
-  if ($block->bid == 'views-usa_video-front_full_episodes') {
+  if ($block->bid == 'views-usa_video-front_full_episodes'
+     || $block->bid == 'views-usa_mpx_video-front_full_epsds') {
     $day = strtotime("-3 hours");
     $day = date('l', $day);
     $day = strtolower($day);

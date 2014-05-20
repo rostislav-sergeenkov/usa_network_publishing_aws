@@ -706,9 +706,19 @@ function usanetwork_core_update_7136() {
 }
 
 /**
- * NEW VIDEO CODE
+ * VIDEO MPX CODE
  */
 function usanetwork_core_update_7137() {
+  $modules_en = array(
+    'media_theplatform_mpx',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * NEW VIDEO CODE
+ */
+function usanetwork_core_update_7138() {
   $modules_en = array(
     'usanetwork_mpx_video',
     'usanetwork_tve_video',
@@ -719,7 +729,7 @@ function usanetwork_core_update_7137() {
 /**
  * Enable endcard module
  */
-function usanetwork_core_update_7138() {
+function usanetwork_core_update_7139() {
   $modules_en = array(
 	  'usanetwork_video_endcard',
 	);

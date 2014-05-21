@@ -6,7 +6,7 @@ $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement')
 $lock_video = ($field_mpx_entitlement[0]['safe_value'] == 'auth') ? 'tve-video-auth' : '';
 ?>
 
-<div class="<?php print $classes . ' ' . $lock_video; ?>">
+<div class="<?php print $classes . ' ' . $lock_video; ?>"<?php print $attributes; ?>>
   <a class="item-link" href="/<?php print $url; ?>">
    <?php if ($media): ?>
     <div class="asset-img">

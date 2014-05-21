@@ -956,7 +956,28 @@ function usanetwork_ads_preprocess_node(&$variables) {
   $types = array('usanetwork_aspot', 'usanetwork_promo', 'usa_video', 'usa_tve_video');
   if (in_array($node->type, $types)) {
     $variables['attributes_array']['omniture-title'] = trim($node->title);
-    $variables['attributes_array']['omniture-nid'] = $node->nid;
-    $variables['attributes_array']['omniture-vid'] = $node->vid;
+    $variables['attributes_array']['omniture-id'] = '/node/' . $node->nid;
+    if (!empty($node->vid)) {
+      $variables['attributes_array']['omniture-id'] .= '/revisions/' . $node->vid . '/view';
+    }
   }
 }
+
+/**
+ * Implements template_preprocess_file_entity().
+ */
+function usanetwork_ads_preprocess_file_entity(&$variables) {
+  if (module_exists('pub_mpx')) {
+    $variables['view_mode'] = $variables['elements']['#view_mode'];
+    $file = $variables['file'];
+
+    if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+      $variables['attributes_array']['omniture-title'] = trim($file->filename);
+      $variables['attributes_array']['omniture-id'] = '/file/' . $file->fid;
+      if (!empty($file->vid)) {
+        $variables['attributes_array']['omniture-id'] .= '/revisions/' . $file->vid . '/view';
+      }
+    }
+  }
+}
+

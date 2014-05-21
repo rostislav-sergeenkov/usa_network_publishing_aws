@@ -24,19 +24,28 @@ function usanetwork_mpx_video_install() {
     path_delete(array('source' => 'node/'.$nid->nid));
   }
 
-  $insert_accounts = array(
+  $mpx_accounts = array(
     '1' => array(
       'theplatform_username' => 'mpx/drupal-mpx-usa-main',
       'theplatform_password' => 'Pa55w0rd',
       'theplatform_import_account' => rawurlencode('NBCU USA Network'),
+      'theplatform_default_player_id' => 'Je0TXxCHkgdw',
     ),
     '2' => array(
       'theplatform_username' => 'mpx/drupal-mpx-usa-tve',
       'theplatform_password' => 'Pa55word',
       'theplatform_import_account' => rawurlencode('NBCU TVE - USA Network'),
+      'theplatform_default_player_id' => 'usa_hls_vod_endcard',
     ),
   );
   
+  _usanetwork_mpx_video_set_accounts($mpx_accounts);
+  
+  _usanetwork_mpx_video_set_players($mpx_accounts);
+ 
+}
+
+function _usanetwork_mpx_video_set_accounts($insert_accounts){
  //Add new accounts.
   foreach ($insert_accounts as $key => $values) {
 
@@ -110,7 +119,7 @@ function usanetwork_mpx_video_install() {
       <br /> account_id = @account_id,
       <br /> account_pid = @account_pid,
       <br /> last_notification = NULL
-<br />in mpx_accounts table for @account.',
+      <br />in mpx_accounts table for @account.',
       array(
         '@import_account' => $values['theplatform_import_account'],
         '@account_id' => $mpx_account_id,
@@ -153,5 +162,40 @@ function usanetwork_mpx_video_install() {
 
   // Import all players.
   $import = media_theplatform_mpx_import_all_players('manually');
+}
   
+function _usanetwork_mpx_video_set_players($insert_accounts){
+  
+  // Set default mpxPlayer variable.
+  foreach ($insert_accounts as $account_id => $values) {
+    
+    $player_id = db_select('mpx_player', 'p')
+      ->fields('p', array('player_id'))
+      ->condition('pid', $values['theplatform_default_player_id'])
+      ->execute()->fetchField();
+    
+    $currently_stored_default_player = db_select('mpx_accounts', 'mpx_accounts')
+      ->fields('mpx_accounts', array('default_player'))
+      ->condition('id', $account_id, '=')
+      ->execute()
+      ->fetchField();
+    if ($currently_stored_default_player != $player_id) {
+      _media_theplatform_mpx_set_field($account_id, 'default_player', $player_id);
+      $account = _media_theplatform_mpx_get_account_data($account_id);
+      $player = media_theplatform_mpx_get_mpx_player_by_player_id($player_id);
+      watchdog('media_theplatform_mpx', 'Player @pid -- @player -- set as default player for account @account.',
+        array(
+          '@pid' => $player['pid'],
+          '@player' => $player['title'],
+          '@account' => basename($account->account_id),
+        ),
+        WATCHDOG_NOTICE);
+    }
+  }
+
+  // Import videos.
+  media_theplatform_mpx_import_all_videos('manually');
+
+  drupal_set_message(t('!cron_link to complete the import/update process.',
+    array('!cron_link' => l(t('Run cron'), 'admin/config/system/cron'))));
 }

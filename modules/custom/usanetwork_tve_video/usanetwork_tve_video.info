@@ -25,3 +25,4 @@ features[variable][] = tve_mvpd_brand_id
 features[variable][] = tve_mvpd_instance
 features[variable][] = tve_mvpd_providers
 features[variable][] = tve_mvpd_service
+features[variable][] = tve_mvpd_service_url

@@ -21,7 +21,7 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_media_gallery_pattern';
-  $strongarm->value = '[node:field_show]/photos/[node:title]';
+  $strongarm->value = '[node:field-show:field-pathauto-alias]/photos/[node:title]';
   $export['pathauto_node_media_gallery_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -91,14 +91,14 @@ function usanetwork_pathauto_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_usa_tve_video_pattern';
-  $strongarm->value = '[node:field_show]/videos/[node:title]';
+  $strongarm->value = '[node:field_show]/old_videos/[node:title]';
   $export['pathauto_node_usa_tve_video_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_usa_video_pattern';
-  $strongarm->value = '[node:field_show]/videos/[node:title]';
+  $strongarm->value = '[node:field_show]/old_videos/[node:title]';
   $export['pathauto_node_usa_video_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

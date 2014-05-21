@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Install/uninstall functionality for the TVE K2 module.
+ *
+ * @ingroup tve_k2
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function tve_k2_requirements($phase) {
+  $t = get_t();
+  $requirements = array();
+  $function_exists = function_exists('simplexml_load_string');
+  $requirements_array = array(
+    'title' => 'TVE K2',
+    'description' => $t('Required PHP extension "libxml" is not installed or enabled.'),
+  );
+
+  switch ($phase) {
+    case 'install':
+      if (!$function_exists) {
+        $requirements['tve_k2_libxml'] = $requirements_array;
+        $requirements['tve_k2_libxml']['severity'] = REQUIREMENT_ERROR;
+      }
+      break;
+    case 'runtime':
+      $requirements['tve_k2_libxml'] = $requirements_array;
+
+      if ($function_exists) {
+        $requirements['tve_k2_libxml']['description'] = $t('Required PHP extension "libxml" is installed and enabled.');
+        $requirements['tve_k2_libxml']['severity'] = REQUIREMENT_OK;
+        $requirements['tve_k2_libxml']['value'] = $t('Extension enabled');
+      }
+      else {
+        $requirements['tve_k2_libxml']['severity'] = REQUIREMENT_ERROR;
+        $requirements['tve_k2_libxml']['value'] = $t('Extension missing');
+      }
+
+
+      break;
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function tve_k2_uninstall() {
+  // Delete all config variables.
+  variable_del('tve_k2_api_url');
+  variable_del('tve_k2_client_id');
+  variable_del('tve_k2_brand_id');
+  variable_del('tve_k2_messages');
+}

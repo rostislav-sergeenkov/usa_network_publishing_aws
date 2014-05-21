@@ -14,15 +14,7 @@
     formatPromo: function($node) {
       // get promo data
       var promoName = $node.attr('omniture-title');
-      var promoId = null;
-      var nid = $node.attr('omniture-nid');
-      var vid = $node.attr('omniture-vid');
-      if (nid) {
-        promoId = '/node/' + nid + '/';
-        if (vid) {
-          promoId += 'revisions/' + vid + '/view';
-        }
-      }
+      var promoId = $node.attr('omniture-id');
 
       return {
         'promoName': promoName,
@@ -218,11 +210,11 @@
         });
       });
       // Featured and Full Episodes
-      $('.field-name-field-hp-promos .node a, #block-views-usa-video-front-full-episodes .node a').once('omniture-tracking', function() {
+      $('.field-name-field-hp-promos .node a, #block-views-usa-mpx-video-front-full-epsds .file a').once('omniture-tracking', function() {
         var $self = $(this);
-        var $items = $self.closest('.carousel').find('.node');
-        var $node = $self.parents('.node');
-        var promoLocation = $items.index($self.parents('.node')) + 1;
+        var $items = $self.closest('.carousel').find('.carousel-item > div');
+        var $node = $self.closest('.carousel-item').children('div');
+        var promoLocation = $items.index($node) + 1;
         $node.attr('omniture-index', promoLocation);
 
         $(this).on('click', function(e) {

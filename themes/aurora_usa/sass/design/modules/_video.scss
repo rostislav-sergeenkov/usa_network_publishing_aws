@@ -365,6 +365,25 @@
   }
 }
 
+#block-views-usa-mpx-video-front-full-epsds {
+  .tve-video-auth  {
+    > a:after {
+      position: absolute;
+      right: 3px;
+      top: 2px;
+      content: "\e002";
+      font-size: 25px;
+      color: $white;
+      @extend %usanetwork-font;
+    }
+    .asset-img:after {
+      @include cssRightTriangle(50px, $black-trans-5, top, right);
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
 
 .block-usanetwork-video.usa-secondary-menu,
 .block-usanetwork-mpx-video.usa-secondary-menu {

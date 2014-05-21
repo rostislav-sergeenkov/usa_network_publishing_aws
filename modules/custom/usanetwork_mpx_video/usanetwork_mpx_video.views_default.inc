@@ -538,6 +538,7 @@ function usanetwork_mpx_video_views_default_views() {
   /* Display: Front Global Full Episodes */
   $handler = $view->new_display('block', 'Front Global Full Episodes', 'front_full_epsds');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest Full Episodes';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';

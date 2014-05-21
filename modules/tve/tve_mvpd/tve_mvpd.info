@@ -1,0 +1,7 @@
+name = TVE MVPD
+description = Bridge between TVE and MVPD service.
+core = 7.x
+version = 1.5
+package = NBCU TVE
+dependencies[] = ctools
+configure = admin/tve/mvpd-connection

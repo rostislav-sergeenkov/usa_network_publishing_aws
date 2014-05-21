@@ -57,3 +57,14 @@
     }
   }
 }
+
+%schedule-gradient {
+    background-color: $black-trans-85;
+    background: -moz-linear-gradient(top, #2A2A2A 0%, #000000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2A2A2A), color-stop(100%,#000000));
+    background: -webkit-linear-gradient(top, #2A2A2A 0%,#000000 100%);
+    background: -o-linear-gradient(top, #2A2A2A 0%,#000000 100%);
+    background: -ms-linear-gradient(top, #2A2A2A 0%,#000000 100%);
+    background: linear-gradient(to bottom, #2A2A2A 0%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2A2A2A', endColorstr='#000000',GradientType=0 );
+}

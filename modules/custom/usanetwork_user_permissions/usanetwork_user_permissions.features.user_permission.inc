@@ -247,9 +247,9 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any video_queue queue.
-  $permissions['edit any video_queue queue'] = array(
-    'name' => 'edit any video_queue queue',
+  // Exported permission: edit any video_mpx_queue queue.
+  $permissions['edit any video_mpx_queue queue'] = array(
+    'name' => 'edit any video_mpx_queue queue',
     'roles' => array(
       'administrator' => 'administrator',
     ),

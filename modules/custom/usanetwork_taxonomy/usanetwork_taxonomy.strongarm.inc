@@ -20,13 +20,16 @@ function usanetwork_taxonomy_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
       'token' => array(
         'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -52,6 +55,10 @@ function usanetwork_taxonomy_strongarm() {
           ),
           'usa_term_icon' => array(
             'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'full' => array(
+            'weight' => '1',
             'visible' => FALSE,
           ),
         ),

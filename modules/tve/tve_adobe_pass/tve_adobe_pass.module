@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TVE Adobe Pass module.
+ *
+ * @ingroup tve_adobe_pass
+ */
+
+define('TVE_ADOBE_PASS_ACCESS_ENABLER', 'http://entitlement.auth-staging.adobe.com/entitlement/AccessEnablerDebug.swf');
+define('TVE_ADOBE_PASS_TIMEOUT', 30000);
+define('TVE_ADOBE_PASS_FLASH_VER', '10.1.13');
+define('TVE_ADOBE_PASS_MESSAGE_AUTH_ERR', 'Your TV subscription does not include this channel. Please contact your TV Provider about upgrading your service to get access.');
+define('TVE_ADOBE_PASS_MESSAGE_INTERNAL_ERR', 'We had a problem reaching your TV provider. Please try again.');
+define('TVE_ADOBE_PASS_MESSAGE_GENERIC_ERR', 'Your TV subscription does not include this channel.');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_adobe_pass_menu() {
+  $items['admin/tve/adobe-pass'] = array(
+    'title' => 'Adobe Pass',
+    'description' => 'Adobe Pass settings',
+    'access arguments' => array('administer adobe pass'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_tve_adobe_pass_admin_form'),
+    'file' => 'tve_adobe_pass.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+  );
+  $items['adobe-pass/log'] = array(
+    'page callback' => 'tve_adobe_pass_log_errors',
+    'delivery callback' => 'ajax_deliver',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_adobe_pass_permission() {
+  return array(
+    'administer adobe pass' => array(
+      'title' => t('Administer Adobe Pass'),
+      'description' => t('Perform administration tasks for Adobe Pass.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_library().
+ */
+function tve_adobe_pass_library() {
+  $items['swfobject'] = array(
+    'title' => t('SWFObject'),
+    'version' => '2.2',
+    'js' => array(
+      drupal_get_path('module', 'tve_adobe_pass') . '/js/swfobject.js' => array(),
+    ),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_adobe_pass_page_alter(&$page) {
+  if (path_is_admin(current_path())
+    || !variable_get('tve_adobe_pass_requestor_id')
+    || !variable_get('tve_adobe_pass_resource_id')
+  ) {
+    // Adobe Pass is not configured or administration page is visited.
+    return;
+  }
+  // Adobe Pass variables (settings).
+  $js_variables = array(
+    'adobePassAccessEnablerLoc' => variable_get('tve_adobe_pass_accessenabler_loc', TVE_ADOBE_PASS_ACCESS_ENABLER),
+    'adobePassTimeoutLength' => variable_get('tve_adobe_pass_timeout_length', TVE_ADOBE_PASS_TIMEOUT),
+    'adobePassFlashVer' => variable_get('tve_adobe_pass_flash_ver', TVE_ADOBE_PASS_FLASH_VER),
+    'adobePassRequestorId' => variable_get('tve_adobe_pass_requestor_id'),
+    'adobePassResourceId' => variable_get('tve_adobe_pass_resource_id'),
+    'adobePassAuthorizedErrMsg' => t(variable_get('tve_adobe_pass_message_auth_err', TVE_ADOBE_PASS_MESSAGE_AUTH_ERR)),
+    'adobePassInternalErrMsg' => t(variable_get('tve_adobe_pass_message_internal_err', TVE_ADOBE_PASS_MESSAGE_INTERNAL_ERR)),
+    'adobePassGenericErrMsg' => t(variable_get('tve_adobe_pass_message_generic_err', TVE_ADOBE_PASS_MESSAGE_GENERIC_ERR)),
+  );
+  // Attach Adobe Pass JS library.
+  $page['page_bottom']['tve_adobe_pass']['#attached']['library'][] = array('tve_adobe_pass', 'swfobject');
+  $page['page_bottom']['tve_adobe_pass']['#attached']['js'][] = array(
+    'data' => array('adobePass' => $js_variables),
+    'type' => 'setting',
+    'scope' => 'footer',
+  );
+  // Attach "adobepass.js" to the footer.
+  $page['page_bottom']['tve_adobe_pass']['#attached']['js'][drupal_get_path('module', 'tve_adobe_pass') . '/js/adobepass.js'] = array(
+    'type' => 'file',
+    'scope' => 'footer',
+  );
+}
+
+/**
+ * Callback for logging adobe pass errors.
+ */
+function tve_adobe_pass_log_errors() {
+  $message = (isset($_POST['errorObj']['message'])) ?
+    check_plain($_POST['errorObj']['message']) :
+    t('An unknown Adobe Pass error has occurred.');
+  watchdog('tve_adobe_pass', $message, array(), WATCHDOG_ERROR);
+}

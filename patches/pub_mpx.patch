@@ -1,0 +1,12 @@
+diff --git a/docroot/profiles/all/modules/custom/pub_mpx/pub_mpx.module b/docroot/profiles/all/modules/custom/pub_mpx/pub_mpx.module
+
+--- a/docroot/profiles/all/modules/custom/pub_mpx/pub_mpx.module
++++ b/docroot/profiles/all/modules/custom/pub_mpx/pub_mpx.module
+@@ -3090,7 +3090,7 @@
+  */
+ function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) {
+ 
+-  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid']);
++  $media_files = media_theplatform_mpx_get_files_by_guid_account($media_item['guid'], $account->id);
+ 
+   foreach ($media_files as $file) {

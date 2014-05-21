@@ -1,0 +1,15 @@
+.tveApacheErrors{
+  margin-bottom: 15px;
+}
+.tveApacheErrors .header h1{
+  color: white;
+  font-family: Proxima N W01 Bold, sans-serif;
+  font-size: 24px;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+.tveApacheErrors .body{
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}

@@ -1,0 +1,13 @@
+.mvpd-selector-wrapper {
+    float: left;
+}
+
+.mvpd-selector {
+    float: left;
+    margin-left: 10px !important;
+    font-weight: bold;
+}
+
+.mvpd-item {
+    margin-top: 10px;
+}

@@ -1,6 +1,14 @@
 <?php
 
-define('USANETWORK_TV_SCHEDULE_DEFAULT_TZ', 'America/New_York');
+define('USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE', 'America/New_York');
+define('USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR', 6);
+
+/**
+ * Implements hook_cron().
+ */
+function usanetwork_tv_schedule_cron() {
+  _usanetwork_tv_schedule_synchronize();
+}
 
 /**
  * Implementation of hook_menu().
@@ -50,6 +58,10 @@ function usanetwork_tv_schedule_block_info() {
     'info' => t('USA: on now panel'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usa_live_tv_schedule'] = array(
+    'info' => t('USA: live tv schedule'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
 
   return $blocks;
 }
@@ -68,6 +80,18 @@ function usanetwork_tv_schedule_block_view($delta) {
     case 'usa_on_now_panel':
       $block['subject'] = '';
       $block['content'] = usanetwork_tv_schedule_on_now_panel();
+      break;
+    case 'usa_live_tv_schedule':
+      $block['subject'] = 'Today\'s Schedule';
+      $block['content'] = array(
+        '#markup' => usanetwork_tv_schedule_live_tv(),
+        '#attached' => array(
+          'js' => array(
+            libraries_get_path('swiper') . '/idangerous.swiper.js',
+            drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.small.js'
+          )
+        ),
+      );
       break;
   }
   return $block;
@@ -97,6 +121,14 @@ function usanetwork_tv_schedule_theme() {
       'file' => 'usanetwork_tv_schedule.theme.inc',
       'variables' => array(
         'timestamp' => null,
+      ),
+    ),
+    'usanetwork_tv_schedule_day_small' => array(
+      'file' => 'usanetwork_tv_schedule.theme.inc',
+      'variables' => array(
+        'items' => array(),
+        'timezone' => USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE,
+        'link' => false,
       ),
     ),
   );
@@ -314,9 +346,28 @@ function usanetwork_tv_schedule_on_now_panel() {
 }
 
 /**
+ * USA Live TV schedule block.
+ */
+function usanetwork_tv_schedule_live_tv() {
+  $timezone = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
+  $start_hour = USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR;
+  $_timezone = date_default_timezone_get();
+  date_default_timezone_set($timezone);
+  $timestamp = REQUEST_TIME;
+  if ((int) date('G') < $start_hour) {
+    $timestamp = strtotime('yesterday');
+  }
+  $today = new DateTime(date('Y-m-d ' . $start_hour . ':00:00', $timestamp), new DateTimeZone($timezone));
+  $items = _usanetwork_tv_schedule_get_by_date('live_tv', $today->getTimestamp());
+  date_default_timezone_set($_timezone);
+  return theme('usanetwork_tv_schedule_day_small', array('items' => $items));
+}
+
+/**
  * TV schedule page menu callback
  */
 function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
+
   $output = '';
   // styles moved to theme
   //@TODO clean this up
@@ -462,6 +513,7 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
  * Get node id given the title and type
  */
 function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
+  // @todo: add custom mappings
   $nid = 0;
   $query = new EntityFieldQuery();
 
@@ -651,9 +703,9 @@ function _usanetwork_onnow_upnext_node() {
 
   foreach ($tv_schedule as $item) {
     $item = (array) $item;
-    $start_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['StartTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TZ));
+    $start_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['StartTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
     $start_time = $start_time->getTimestamp();
-    $end_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['EndTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TZ));
+    $end_time = new DateTime($item['CalendarScheduleDate'] . ' ' . $item['EndTime'], new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
     $end_time = $end_time->getTimestamp();
     $show_name = trim(preg_replace('/\(.*\)/', '', $item['ProgramName']));
 
@@ -677,3 +729,251 @@ function _usanetwork_onnow_upnext_node() {
 
   return $result;
 }
+
+/**
+ * Returns feed list.
+ */
+function _usanetwork_tv_schedule_get_feeds() {
+  return variable_get('usanetwork_tv_schedule_feeds', array());
+}
+
+/**
+ * Saves schedule feed configuration.
+ */
+function _usanetwork_tv_schedule_save_feed_config($feed_id, $options) {
+  $config = variable_get('usanetwork_tv_schedule_feeds', array());
+  foreach ($options as $key => $value) {
+    $config[$feed_id][$key] = $value;
+  }
+  variable_set('usanetwork_tv_schedule_feeds', $config);
+}
+
+/**
+ * Synchronizes schedule data.
+ */
+function _usanetwork_tv_schedule_synchronize($feed_id = null) {
+  $feeds = _usanetwork_tv_schedule_get_feeds();
+
+  if (!is_array($feeds) || empty($feeds)) {
+    watchdog('tv_schedule', 'No feeds to synchronize.', array(), WATCHDOG_INFO);
+    return;
+  }
+
+  if ($feed_id !== null) {
+    if (isset($feeds[$feed_id])) {
+      $feeds = array(
+        $feed_id => $feeds[$feed_id],
+      );
+    }
+    else {
+      watchdog('tv_schedule', 'Schedule feed %feed_id does not exist.', array('%feed_id' => $feed_id), WATCHDOG_ERROR);
+      return;
+    }
+  }
+
+  // synchronize each feed
+  foreach ($feeds as $_feed_id => $feed) {
+    $last_updated = isset($feed['last_updated']) ? $feed['last_updated'] : 0;
+    $update_interval = isset($feed['update_interval']) ? $feed['update_interval'] : 21600; // 6 hours by default
+
+    if (REQUEST_TIME - $last_updated > $update_interval) {
+      $schedule_data = _usanetwork_tv_schedule_get_schedule_data_from_feed($feed['url']);
+      if ($schedule_data) {
+        if ($first = reset($schedule_data)) {
+          // delete old data
+          db_delete('usanetwork_tv_schedule_items')
+            ->condition('feed', $_feed_id, '=')
+            ->condition('start_time', $first['start_time'], '>=')
+            ->execute();
+        }
+
+        // insert new data
+        foreach ($schedule_data as $item) {
+          db_insert('usanetwork_tv_schedule_items')
+            ->fields(
+              array(
+                'feed' => $_feed_id,
+                'start_time' => $item['start_time'],
+                'end_time' => $item['end_time'],
+                'ratings' => '|' . implode('||', $item['program_ratings']) . '|',
+                'snid' => _usanetwork_tv_schedule_get_nid_by_title($item['short_title'], 'tv_show'),
+                'info' => serialize($item),
+              )
+            )
+            ->execute();
+        }
+        _usanetwork_tv_schedule_save_feed_config($_feed_id, array(
+          'last_updated' => REQUEST_TIME,
+        ));
+        watchdog('tv_schedule', 'Schedule feed %feed_id synchronized.', array('%feed_id' => $_feed_id), WATCHDOG_INFO);
+      }
+    }
+  }
+}
+
+/**
+ * Returns schedule data by date.
+ */
+function _usanetwork_tv_schedule_get_by_date($feed_id, $date, $interval = 86400) {
+  $items = db_select('usanetwork_tv_schedule_items', 's')
+    ->fields('s')
+    ->condition('feed', $feed_id, '=')
+    ->condition('start_time', $date, '>=')
+    ->condition('start_time', $date + $interval, '<')
+    ->execute()
+    ->fetchAll(PDO::FETCH_OBJ);
+
+  return _usanetwork_tv_schedule_prepare($items);
+}
+
+/**
+ * Returns schedule data on now.
+ */
+function _usanetwork_tv_schedule_get_on_now($feed_id) {
+  $item = db_select('usanetwork_tv_schedule_items', 's')
+    ->fields('s')
+    ->condition('feed', $feed_id, '=')
+    ->condition('start_time', REQUEST_TIME, '<=')
+    ->condition('end_time', REQUEST_TIME, '>')
+    ->execute()
+    ->fetch(PDO::FETCH_OBJ);
+
+  return _usanetwork_tv_schedule_prepare_item($item);
+}
+
+/**
+ * Prepares results loaded from database
+ */
+function _usanetwork_tv_schedule_prepare($items) {
+  $result = array();
+  foreach ($items as $row) {
+    $result[] = _usanetwork_tv_schedule_prepare_item($row);
+  }
+  return $result;
+}
+
+function _usanetwork_tv_schedule_prepare_item($row) {
+  $item = new stdClass();
+  $item->feed = $row->feed;
+  $item->start_time = $row->start_time;
+  $item->end_time = $row->end_time;
+  $item->info = unserialize($row->info);
+  $item->title = $item->info['title'];
+  $item->ratings = $item->info['program_ratings'];
+  $item->tv_show = node_load($row->snid);
+
+  if ($item->tv_show) {
+    $item->program = $item->tv_show->title;
+  }
+  elseif ($item->info['program_type'] == 'movie') {
+    $item->program = t('USA Movie');
+  }
+  else {
+    $item->program = $item->info['short_title'];
+  }
+
+  if ($item->start_time < REQUEST_TIME && $item->end_time > REQUEST_TIME) {
+    $item->on_now = true;
+  }
+
+  return $item;
+}
+
+/**
+ * Fetches and parses TV schedule data from feed url.
+ */
+function _usanetwork_tv_schedule_get_schedule_data_from_feed($feed_url) {
+  if (!$feed_url) {
+    watchdog('tv_schedule', 'Schedule feed url is empty.', array(), WATCHDOG_ERROR);
+
+    return FALSE;
+  }
+
+  $parameters = array(
+    'query' => array(
+      'form' => 'json',
+      'range' => '1-*',
+      'sort' => 'startTime',
+    ),
+  );
+
+  $url = url($feed_url, $parameters);
+  $result = drupal_http_request($url, array('timeout' => 300));
+
+  if (empty($result->data)) {
+    return NULL;
+  }
+
+  $data = drupal_json_decode($result->data);
+
+  if (!isset($data['entries']) || empty($data['entries'])) {
+    watchdog('tv_schedule', 'Could not fetch schedule feed %url data.', array('%url' => $url), WATCHDOG_ERROR);
+    return FALSE;
+  }
+
+  $schedule_data = _usanetwork_tv_schedule_parse_feed_data($data['entries']);
+  if (!$schedule_data) {
+    watchdog('tv_schedule', 'Could not parse schedule feed %url data.', array('%url' => $url), WATCHDOG_ERROR);
+
+    return FALSE;
+  }
+
+  return $schedule_data;
+}
+
+/**
+ * Converts TV schedule feed data into array.
+ *
+ * @param $feed_data
+ * @return array
+ */
+function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
+
+  $schedule_data = array();
+  foreach ($feed_data as $entry) {
+    $item = array();
+
+    $item['guid'] = $entry['guid'];
+    $item['start_time'] = $entry['pllisting$startTime'] / 1000;
+    $item['end_time'] = $entry['pllisting$endTime'] / 1000;
+    $item['airing_type'] = $entry['pllisting$airingType'];
+
+    if (!empty($entry['pllisting$seriesId'])) {
+      $item['series_id'] = basename($entry['pllisting$seriesId']);
+    }
+
+    if (!empty($entry['pllisting$programId'])) {
+      $item['program_id'] = basename($entry['pllisting$programId']);
+    }
+    $item['title'] = $entry['pllisting$program']['pl$title'];
+    $item['description'] = $entry['pllisting$program']['pl$description'];
+    $item['display_genre'] = $entry['pllisting$program']['plprogram$displayGenre'];
+    $item['program_type'] = $entry['pllisting$program']['plprogram$programType'];
+
+    $program_ratings = array();
+
+    if (isset($entry['pllisting$program']['plprogram$ratings'])
+      && is_array($entry['pllisting$program']['plprogram$ratings'])) {
+      foreach ($entry['pllisting$program']['plprogram$ratings'] as $rating) {
+        $program_rating = $rating['plprogram$rating'];
+        if (count($rating['plprogram$subRatings'])) {
+          $program_rating .= '-' . implode('-', $rating['plprogram$subRatings']);
+        }
+
+        $program_ratings[] = $program_rating;
+      }
+    }
+
+    $item['program_ratings'] = $program_ratings;
+    $item['program_runtime'] = $entry['pllisting$program']['plprogram$runtime'];
+    $item['short_title'] = $entry['pllisting$program']['plprogram$shortTitle'];
+    $item['series_episode_number'] = $entry['pllisting$program']['plprogram$seriesEpisodeNumber'];
+    $item['tv_season_episode_number'] = $entry['pllisting$program']['plprogram$tvSeasonEpisodeNumber'];
+    $item['tv_season_number'] = $entry['pllisting$program']['plprogram$tvSeasonNumber'];
+
+    $schedule_data[] = $item;
+  }
+
+  return $schedule_data;
+}
+

@@ -29,7 +29,7 @@ function usanetwork_mpx_video_install() {
       'theplatform_username' => 'mpx/drupal-mpx-usa-main',
       'theplatform_password' => 'Pa55w0rd',
       'theplatform_import_account' => rawurlencode('NBCU USA Network'),
-      'theplatform_default_player_id' => 'Je0TXxCHkgdw',
+      'theplatform_default_player_id' => 'usa_player_endcard',
     ),
     '2' => array(
       'theplatform_username' => 'mpx/drupal-mpx-usa-tve',

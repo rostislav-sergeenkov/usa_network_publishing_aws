@@ -181,7 +181,10 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
       ->condition('v.fid', $file->fid, '<>');
 
     $query->innerJoin('field_data_field_mpx_full_episode', 'fe', 'v.fid = fe.entity_id');
-    $query->condition('fe.entity_type', 'file', '=')
+    $query->innerJoin('file_managed', 'f', 'v.fid = f.fid');
+    $query->condition('f.status', 1, '=')
+      ->condition('f.published', 1, '=')
+      ->condition('fe.entity_type', 'file', '=')
       ->condition('fe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
     $query->orderBy('v.airdate', 'DESC')
       ->orderBy('v.created', 'DESC');

@@ -2915,7 +2915,7 @@ input[type="radio"], input[type="checkbox"] {
 .upcoming-movie .b-spot .meta .meta-subhead-wide {
   display: block;
 }
-@media (max-width: 644px) {
+@media (max-width: 709px) {
   .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
   .b-spot .promo-metadata .meta-subhead-wide,
   .b-spot .upcoming-movie .meta .meta-subhead-wide,
@@ -2923,7 +2923,7 @@ input[type="radio"], input[type="checkbox"] {
     display: none;
   }
 }
-@media (min-width: 645px) and (max-width: 959px) {
+@media (min-width: 710px) and (max-width: 1019px) {
   .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
   .b-spot .promo-metadata .meta-subhead-wide,
   .b-spot .upcoming-movie .meta .meta-subhead-wide,
@@ -2931,7 +2931,7 @@ input[type="radio"], input[type="checkbox"] {
     display: block;
   }
 }
-@media (min-width: 960px) and (max-width: 1274px) {
+@media (min-width: 1020px) and (max-width: 1334px) {
   .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
   .b-spot .promo-metadata .meta-subhead-wide,
   .b-spot .upcoming-movie .meta .meta-subhead-wide,
@@ -2939,7 +2939,7 @@ input[type="radio"], input[type="checkbox"] {
     display: none;
   }
 }
-@media (min-width: 1275px) {
+@media (min-width: 1335px) {
   .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
   .b-spot .promo-metadata .meta-subhead-wide,
   .b-spot .upcoming-movie .meta .meta-subhead-wide,
@@ -2953,7 +2953,7 @@ input[type="radio"], input[type="checkbox"] {
 .upcoming-movie .b-spot .meta .meta-subhead {
   display: none;
 }
-@media (max-width: 644px) {
+@media (max-width: 709px) {
   .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
   .b-spot .promo-metadata .meta-subhead,
   .b-spot .upcoming-movie .meta .meta-subhead,
@@ -2961,7 +2961,7 @@ input[type="radio"], input[type="checkbox"] {
     display: block;
   }
 }
-@media (min-width: 645px) and (max-width: 959px) {
+@media (min-width: 710px) and (max-width: 1019px) {
   .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
   .b-spot .promo-metadata .meta-subhead,
   .b-spot .upcoming-movie .meta .meta-subhead,
@@ -2969,7 +2969,7 @@ input[type="radio"], input[type="checkbox"] {
     display: none;
   }
 }
-@media (min-width: 960px) and (max-width: 1274px) {
+@media (min-width: 1020px) and (max-width: 1334px) {
   .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
   .b-spot .promo-metadata .meta-subhead,
   .b-spot .upcoming-movie .meta .meta-subhead,
@@ -2977,7 +2977,7 @@ input[type="radio"], input[type="checkbox"] {
     display: block;
   }
 }
-@media (min-width: 1275px) {
+@media (min-width: 1335px) {
   .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
   .b-spot .promo-metadata .meta-subhead,
   .b-spot .upcoming-movie .meta .meta-subhead,

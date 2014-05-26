@@ -68,7 +68,7 @@ function _usanetwork_mpx_video_set_accounts($insert_accounts){
 
       watchdog('media_theplatform_mpx', 'FATAL ERROR occurred while creating account @account --  "@message"  -- Exception output: @output.',
         array(
-          '@account' => _media_theplatform_mpx_account_log_string($account_data),
+          '@account' => _media_theplatform_mpx_account_log_string($key),
           '@message' => $e->getMessage(),
             '@output' => '<pre>' . print_r($e, TRUE) . '</pre>',
         ),
@@ -86,7 +86,7 @@ function _usanetwork_mpx_video_set_accounts($insert_accounts){
 
     if (!$account_data) {
       watchdog('media_theplatform_mpx', 'Failed to set import account for @account.  Account data could not be retrieved from the database.',
-        array('@account' => _media_theplatform_mpx_account_log_string($account_data)), WATCHDOG_ERROR);
+        array('@account' => _media_theplatform_mpx_account_log_string($key)), WATCHDOG_ERROR);
       continue;
     }
 

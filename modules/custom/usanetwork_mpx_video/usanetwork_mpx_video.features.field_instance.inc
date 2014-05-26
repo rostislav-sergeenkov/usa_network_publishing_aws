@@ -85,6 +85,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vid_teaser_general' => array(
         'label' => 'above',
         'settings' => array(),
@@ -359,6 +365,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -455,7 +467,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 35,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -659,7 +671,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 34,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1079,7 +1091,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 33,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1507,6 +1519,12 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'preview' => array(
@@ -1603,7 +1621,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1807,7 +1825,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2212,7 +2230,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 33,
       ),
       'inline_content' => array(
         'label' => 'above',

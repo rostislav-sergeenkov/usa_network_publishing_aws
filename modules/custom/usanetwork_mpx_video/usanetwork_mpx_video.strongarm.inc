@@ -112,7 +112,7 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '18',
+            'weight' => '32',
             'visible' => FALSE,
           ),
           'vid_teaser_front' => array(
@@ -211,7 +211,7 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '18',
+            'weight' => '32',
             'visible' => FALSE,
           ),
           'vid_teaser_episode' => array(

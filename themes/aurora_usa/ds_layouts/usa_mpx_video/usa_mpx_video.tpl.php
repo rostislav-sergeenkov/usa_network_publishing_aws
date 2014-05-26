@@ -86,6 +86,6 @@
     <?php if ($description && $description != "&nbsp;"): ?><div class="description"><?php print $description; ?></div><?php endif; ?>
   <?php endif; ?>
   <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?>
-    <div class="ad" data-ng-cloak data-ng-show="showCompanionAdd"><?php print $ad_comp; ?></div>
+    <div class="ad"><?php print $ad_comp; ?></div>
   <?php endif;  ?>
 </div>

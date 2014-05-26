@@ -872,171 +872,182 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
  */
 function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
-  drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
+  if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
 
-  $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
-  $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
-
-  $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-  $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-  $menu_items = _usa_auth_prepare_menu_items();
-  $vars['links'] = array(
-    '#theme' => 'item_list',
-    '#items' => $menu_items,
-    '#attributes' => array('class' => array('tve-header-links', 'inline')),
-    '#prefix' => '<div class="links-wrapper">',
-    '#suffix' => '</div>',
-  );
-
-  // Live player variables
-  if ($vars['is_live'] && module_exists('usanetwork_tv_schedule')) {
-    $on_now = _usanetwork_tv_schedule_get_on_now('live_tv');
-    if ($on_now->tv_show) {
-      $vars['on_now_show'] = $on_now->tv_show->title;
-      $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');
-      if ($tune_in && $tune_in = reset($tune_in)) {
-        $vars['on_now_tune_in'] = $tune_in['safe_value'];
-      }
+    $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
+    $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
+    if ($full_episode) {
+      $vars['content']['video_mpx_companion_rectangle']['#access'] = FALSE;
     }
     else {
-      $vars['on_now_show'] = $on_now->program;
+      $vars['content']['video_companion_rectangle_small']['#access'] = FALSE;
     }
 
-    $vars['on_now_title'] = $on_now->info['title'];
-    $vars['on_now_description'] = $on_now->info['description'];
-    $vars['on_now_rating'] = implode(', ', $on_now->ratings);
-  }
+    $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+    $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
 
-//twitter card
-  if (in_array($file->type, _usanetwork_mpx_video_get_all_file_types()) && ($vars['view_mode'] == 'full')) {    
-    if ($file->field_mpx_full_episode[LANGUAGE_NONE][0]['value'] == '0'){
-      
-      //twitter card
-      $tag_card = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:card', 
-          'content' => 'player', 
-        ),
-        '#weight' => 1,
-      );
-      drupal_add_html_head($tag_card, 'usanetwork_twitter:card');
-      
-      //twitter site
-      $tag_site = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:site', 
-          'content' => '@USA_Network', 
-        ),
-        '#weight' => 2,
-      );
-      drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
-      
-      //twitter creator
-      $show = $file->field_show[LANGUAGE_NONE][0]['entity'];
-      $creator = basename($show->field_usa_link_twitter[LANGUAGE_NONE][0]['url']);
-      $tag_creator = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:creator', 
-          'content' => '@' . $creator, 
-        ),
-        '#weight' => 3,
-      );
-      drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
-      
-      
-      //twitter thumbnail
-      $render_image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'300x169_video')), '');
-      $thumbnail = file_create_url($render_image['#path']);
-      $tag_thumbnail = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:image:src', 
-          'content' => $thumbnail, 
-        ),
-        '#weight' => 6,
-      );
-      drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
-      
-      //twitter player
-      $platform_file = _usanetwork_mpx_video_theplatform_guid_by_bitrate($file->field_mpx_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
-      $platform_file_id = $platform_file[0];
-      $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
-      $player = $player_url . '/select/' . $platform_file_id;
-      $tag_player = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:player', 
-          'content' => $player, 
-        ),
-        '#weight' => 7,
-      );
-      drupal_add_html_head($tag_player, 'usanetwork_twitter:player');
-      
-      //twitter stream      
-      $player_stream_url = str_replace('http:', 'https:', $platform_file[1]);
-      $player_stream = url($player_stream_url, array(
-        'query' => array(
-          'switch' => 'progressive',
-          'format' => 'redirect',
-         ),
-         '#weight' => 8,
-      ));
-      
-      $tag_stream = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:player:stream', 
-          'content' => $player_stream, 
-        ),
-        '#weight' => 9,
-      );
-      drupal_add_html_head($tag_stream, 'usanetwork_twitter:player:stream');
-      
-      //twitter player content type
-      $tag_content_type = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:player:stream:content_type', 
-          'content' => 'video/mp4', 
-        ),
-        '#weight' => 10,
-      );
-      drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
-      
-      //twitter player height
-      $tag_height = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:player:height', 
-          'content' => USANETWORK_MPX_TWITTER_CARD_HEIGHT, 
-        ),
-        '#weight' => 11,
-      );
-      drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
-      
-      //twitter player width
-      $tag_width = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'twitter:player:width', 
-          'content' => USANETWORK_MPX_TWITTER_CARD_WIDTH, 
-        ),
-        '#weight' => 12,
-      );
-      drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');     
+    $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
+    $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+
+    $menu_items = _usa_auth_prepare_menu_items();
+    $vars['links'] = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
+
+    // Live player variables
+    if ($vars['is_live'] && module_exists('usanetwork_tv_schedule')) {
+      $on_now = _usanetwork_tv_schedule_get_on_now('live_tv');
+      if ($on_now->tv_show) {
+        $vars['on_now_show'] = $on_now->tv_show->title;
+        $tune_in = field_get_items('node', $on_now->tv_show, 'field_usa_tv_tune_in_date');
+        if ($tune_in && $tune_in = reset($tune_in)) {
+          $vars['on_now_tune_in'] = $tune_in['safe_value'];
+        }
+      }
+      else {
+        $vars['on_now_show'] = $on_now->program;
+      }
+
+      $vars['on_now_title'] = $on_now->info['title'];
+      $vars['on_now_description'] = $on_now->info['description'];
+      $vars['on_now_rating'] = implode(', ', $on_now->ratings);
+    }
+
+    //twitter card
+    if (in_array($file->type, _usanetwork_mpx_video_get_all_file_types()) && ($vars['view_mode'] == 'full')) {
+      if ($file->field_mpx_full_episode[LANGUAGE_NONE][0]['value'] == '0'){
+
+        //twitter card
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:card',
+            'content' => 'player',
+          ),
+          '#weight' => 1,
+        );
+        drupal_add_html_head($tag_card, 'usanetwork_twitter:card');
+
+        //twitter site
+        $tag_site = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:site',
+            'content' => '@USA_Network',
+          ),
+          '#weight' => 2,
+        );
+        drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
+
+        //twitter creator
+        $show = $file->field_show[LANGUAGE_NONE][0]['entity'];
+        $creator = basename($show->field_usa_link_twitter[LANGUAGE_NONE][0]['url']);
+        $tag_creator = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:creator',
+            'content' => '@' . $creator,
+          ),
+          '#weight' => 3,
+        );
+        drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
+
+
+        //twitter thumbnail
+        $render_image = media_theplatform_mpx_file_formatter_image_view($file, array('settings'=> array('image_style'=>'300x169_video')), '');
+        $thumbnail = file_create_url($render_image['#path']);
+        $tag_thumbnail = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:image:src',
+            'content' => $thumbnail,
+          ),
+          '#weight' => 6,
+        );
+        drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
+
+        //twitter player
+        $platform_file = _usanetwork_mpx_video_theplatform_guid_by_bitrate($file->field_mpx_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'));
+        $platform_file_id = $platform_file[0];
+        $player_url = variable_get('usanetwork_theplatform_twitter_card_player_url', 'https://player.theplatform.com/p/OyMl-B/FuzMKey7SGew');
+        $player = $player_url . '/select/' . $platform_file_id;
+        $tag_player = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:player',
+            'content' => $player,
+          ),
+          '#weight' => 7,
+        );
+        drupal_add_html_head($tag_player, 'usanetwork_twitter:player');
+
+        //twitter stream
+        $player_stream_url = str_replace('http:', 'https:', $platform_file[1]);
+        $player_stream = url($player_stream_url, array(
+          'query' => array(
+            'switch' => 'progressive',
+            'format' => 'redirect',
+          ),
+          '#weight' => 8,
+        ));
+
+        $tag_stream = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:player:stream',
+            'content' => $player_stream,
+          ),
+          '#weight' => 9,
+        );
+        drupal_add_html_head($tag_stream, 'usanetwork_twitter:player:stream');
+
+        //twitter player content type
+        $tag_content_type = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:player:stream:content_type',
+            'content' => 'video/mp4',
+          ),
+          '#weight' => 10,
+        );
+        drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
+
+        //twitter player height
+        $tag_height = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:player:height',
+            'content' => USANETWORK_MPX_TWITTER_CARD_HEIGHT,
+          ),
+          '#weight' => 11,
+        );
+        drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
+
+        //twitter player width
+        $tag_width = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'twitter:player:width',
+            'content' => USANETWORK_MPX_TWITTER_CARD_WIDTH,
+          ),
+          '#weight' => 12,
+        );
+        drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
+      }
     }
   }
 }

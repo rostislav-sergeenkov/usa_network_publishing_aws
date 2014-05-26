@@ -17,8 +17,13 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'mpx_video_1';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'video_mpx_companion_rectangle' => array(
+    'video_companion_rectangle_small' => array(
       'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'video_mpx_companion_rectangle' => array(
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -57,8 +62,13 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'mpx_video_2';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'video_mpx_companion_rectangle' => array(
+    'video_companion_rectangle_small' => array(
       'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'video_mpx_companion_rectangle' => array(
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -98,6 +108,20 @@ function usanetwork_mpx_video_ds_field_settings_info() {
  */
 function usanetwork_mpx_video_ds_custom_fields_info() {
   $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'video_companion_rectangle_small';
+  $ds_field->label = 'video_companion_rectangle_small';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'file' => 'file',
+  );
+  $ds_field->properties = array(
+    'block' => 'pub_ads|ad_300x60_1',
+    'block_render' => '3',
+  );
+  $export['video_companion_rectangle_small'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -187,7 +211,8 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
         1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
-        0 => 'video_mpx_companion_rectangle',
+        0 => 'video_companion_rectangle_small',
+        1 => 'video_mpx_companion_rectangle',
       ),
     ),
     'fields' => array(
@@ -200,6 +225,7 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
       'field_gigya_share_bar' => 'description',
+      'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),
     'classes' => array(),
@@ -399,7 +425,8 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
         1 => 'field_gigya_share_bar',
       ),
       'ad_comp' => array(
-        0 => 'video_mpx_companion_rectangle',
+        0 => 'video_companion_rectangle_small',
+        1 => 'video_mpx_companion_rectangle',
       ),
     ),
     'fields' => array(
@@ -412,6 +439,7 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'field_mpx_airdate' => 'airdate',
       'field_mpx_description' => 'description',
       'field_gigya_share_bar' => 'description',
+      'video_companion_rectangle_small' => 'ad_comp',
       'video_mpx_companion_rectangle' => 'ad_comp',
     ),
     'classes' => array(),

@@ -571,44 +571,47 @@ function usanetwork_mpx_video_file_presave($file) {
   $set_alias = FALSE;
   
   $full_episodes = field_get_items('file', $file, 'field_mpx_full_episode');
-  if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
-      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
-    $set_alias = TRUE;
-  }
   
-  $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
-  if (!empty($title)) {
-    module_load_include('inc', 'pathauto', 'pathauto');
-    $path = array();
-    $path['source'] = 'file/' . $file->fid;
+  if ($full_episodes !== FALSE) { 
+    if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
+      ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
+      $set_alias = TRUE;
+    }
+  
+    $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
+    if (!empty($title)) {
+      module_load_include('inc', 'pathauto', 'pathauto');
+      $path = array();
+      $path['source'] = 'file/' . $file->fid;
     
-    if ($set_alias) {
-      if (isset($show)) {
-        $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+      if ($set_alias) {
+        if (isset($show)) {
+          $new_path = pathauto_cleanstring(str_replace(' ', '', $show)).'/videos/' . pathauto_cleanstring($title);
+        } else {
+          $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
+        }
       } else {
         $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
       }
-    } else {
-      $new_path = 'mpxfile/videos/' . pathauto_cleanstring($title);
+    
+      $new_path_promt = $new_path;
+    
+      $i = 0;
+      $exist_path = path_load(array('alias' => $new_path));
+      while($exist_path && $exist_path['source'] != $path['source']) {
+        $new_path_promt = $new_path . '-' . $i;
+        $i++;
+        $exist_path = path_load(array('alias' => $new_path_promt));
+      }  
+    
+      if ($exist_path) {
+        $path['pid'] = $exist_path['pid'];
+      }
+    
+      $path['alias'] = $new_path_promt;
+    
+      path_save($path);
     }
-    
-    $new_path_promt = $new_path;
-    
-    $i = 0;
-    $exist_path = path_load(array('alias' => $new_path));
-    while($exist_path && $exist_path['source'] != $path['source']) {
-      $new_path_promt = $new_path . '-' . $i;
-      $i++;
-      $exist_path = path_load(array('alias' => $new_path_promt));
-    }  
-    
-    if ($exist_path) {
-      $path['pid'] = $exist_path['pid'];
-    }
-    
-    $path['alias'] = $new_path_promt;
-    
-    path_save($path);
   }
 }
 

@@ -112,15 +112,12 @@ function usanetwork_widget_flush_caches() {
  * Helper to generate an env value based on base root to be used for JS
  */
 function _usanetwork_widget_get_environment() {
-  /*global $base_root;
-  switch ($base_root) {
-    case 'http://www.usanetwork.com': $site_env = 'prod'; break;
-    case 'http://stage.usanetwork.com': $site_env = 'stage'; break;
-    case 'http://qa.usanetwork.com': $site_env = 'qa'; break;
-    case 'http://dev.usanetwork.com': $site_env = 'dev'; break;
-    case 'http://local.usanetwork': $site_env = 'local'; break;
-  }*/
-  $site_env = $_ENV['AH_SITE_ENVIRONMENT'];
+  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
+
+  // override
+  switch ($site_env) {
+    case 'acceptance': $site_env = 'qa'; break;
+  }
 
   return $site_env;
 }

@@ -108,14 +108,26 @@ function theme_views_load_more_pager($vars) {
 }
 
 /**
- * Implements hook_views_pre_render().
+ * Implements hook_views_post_render().
  *
  * Load js file only if ajax is enabled.
  */
-function views_load_more_views_pre_render(&$view) {
+function views_load_more_views_post_render(&$view) {
   if (!$view->use_ajax) {
     return;
   }
 
-  drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+  if ($view->display_handler->options['pager']['type'] == 'load_more') {
+    drupal_add_js(drupal_get_path('module', 'views_load_more') . '/views_load_more.js');
+    if (module_exists('waypoints') && $view->display_handler->options['pager']['options']['waypoint']['infinite'] == 1) {
+      $viewsLoadMore = array();
+      $viewsLoadMore[] = array(
+        'view_name' => $view->name,
+        'view_display_id' => $view->current_display,
+        'waypoints' => 'infinite',
+      );
+      drupal_add_library('waypoints', 'waypoints');
+      drupal_add_js(array('viewsLoadMore' => $viewsLoadMore),'setting');
+    }
+  }
 }

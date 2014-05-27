@@ -9269,6 +9269,10 @@ body.person-page #main {
   content: " ";
   background: url("../images/sign_in_key.png") center top no-repeat;
 }
+.featured-asset.file-video-mpx .video-player-wrapper.wrapper-live a:after {
+  top: 52%;
+  background: url("../images/sign_in_key.png") center top no-repeat;
+}
 .featured-asset.file-video-mpx.tve-overlay .video-player-wrapper a:after {
   background-image: none;
 }
@@ -9324,6 +9328,24 @@ body.person-page #main {
   }
   .featured-asset.file-video-mpx .locked-msg .second-line {
     font-size: 16px;
+  }
+}
+.featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
+  top: 55px;
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
+    top: 135px;
+  }
+}
+@media (min-width: 960px) and (max-width: 1274px) {
+  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
+    top: 135px;
+  }
+}
+@media (min-width: 1275px) {
+  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
+    top: 200px;
   }
 }
 .featured-asset .tve-help-link {

@@ -745,6 +745,10 @@
       content: " ";
       background:url('../images/sign_in_key.png') center top no-repeat;
     }
+    .video-player-wrapper.wrapper-live a:after {
+      top: 52%;
+      background:url('../images/sign_in_key.png') center top no-repeat;
+    }
     &.tve-overlay {
       .video-player-wrapper a:after {
         background-image: none;
@@ -796,6 +800,18 @@
         .second-line {
           font-size:16px;
         }
+      }
+    }
+    .video-player-wrapper.wrapper-live .locked-msg {
+      top: 55px;
+      @include breakpoint($bp-video-mid-range4-width) {
+        top: 135px;
+      }
+      @include breakpoint($bp-video-high-range-width) {
+        top: 135px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        top: 200px;
       }
     }
   }

@@ -200,6 +200,20 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'tve_k2_brand_id';
+  $strongarm->value = 'usa';
+  $export['tve_k2_brand_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_k2_client_id';
+  $strongarm->value = 'NBCUTV';
+  $export['tve_k2_client_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'tve_mvpd_brand_id';
   $strongarm->value = 'usa';
   $export['tve_mvpd_brand_id'] = $strongarm;

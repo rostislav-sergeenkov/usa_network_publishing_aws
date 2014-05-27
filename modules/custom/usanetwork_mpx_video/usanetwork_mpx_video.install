@@ -42,7 +42,35 @@ function usanetwork_mpx_video_install() {
   _usanetwork_mpx_video_set_accounts($mpx_accounts);
   
   _usanetwork_mpx_video_set_players($mpx_accounts);
- 
+
+  // remove old video nodes
+  usanetwork_mpx_video_update_7000();
+}
+
+/**
+ * Remove old video nodes.
+ */
+function usanetwork_mpx_video_update_7000() {
+  $queue = DrupalQueue::get('usa_video_nodes_cleanup');
+
+  $types = array(
+    'usa_video',
+    'usa_tve_video'
+  );
+
+  // get nids to delete
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', $types, 'IN')
+    ->execute()
+    ->fetchCol();
+
+  // add them to queue and delete later by cron
+  $nodes_per_run = 50;
+  for($i = 0; $i < ceil(count($nids)/$nodes_per_run); $i++) {
+    $bunch = array_slice($nids, $i * $nodes_per_run, $nodes_per_run);
+    $queue->createItem($bunch);
+  }
 }
 
 function _usanetwork_mpx_video_set_accounts($insert_accounts){

@@ -118,6 +118,36 @@ function usanetwork_mpx_video_theme_registry_alter(&$theme_registry) {
 }
 
 /**
+ * Implements hook_cron_queue_info().
+ */
+function usanetwork_mpx_video_cron_queue_info() {
+  $queues = array();
+  $queues['usa_video_nodes_cleanup'] = array(
+    'worker callback' => '_usanetwork_mpx_video_node_cleanup',
+    'time' => 60,
+  );
+  return $queues;
+}
+
+/**
+ * Removes old video nodes.
+ */
+function _usanetwork_mpx_video_node_cleanup($nids) {
+  try {
+    node_delete_multiple($nids); // delete nodes
+  }
+  catch (Exception $e) {
+    return false;
+  }
+
+  $nodes = node_load_multiple($nids);
+  watchdog('usanetwork_mpx_video', 'Deleted @count old video nodes.', array(
+    '@count' => count($nids) - count($nodes),
+  ), WATCHDOG_INFO);
+  return empty($nodes);
+}
+
+/**
  * Generates the global video navigation
  */
 function usanetwork_mpx_video_global_nav() {

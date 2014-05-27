@@ -38,7 +38,13 @@
         <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" />Close</div>
       </div>
     <div class="video-player-wrapper" data-ng-if="!global.isAuthN">  
-      <div class="locked-msg"><?php print t('<span class="first-line">Please sign in with your TV provider to unlock this episode.</span><span class="second-line">(This episode will automatically unlock 30 days after original airdate.)</span>'); ?></div>
+      <div class="locked-msg">
+      <?php if ($is_live) { 
+        print t('<span class="first-line">Please sign in with your TV provider to unlock live tv viewing.</span>');
+      } else { 
+        print t('<span class="first-line">Please sign in with your TV provider to unlock this episode.</span><span class="second-line">(This episode will automatically unlock 30 days after original airdate.)</span>'); 
+      } ?>
+      </div>
       <div id="player">
         <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN" data-ng-click="openLoginWindow()" data-ng-cloak="">
           <?php 

@@ -37,7 +37,7 @@
         </div>
         <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" />Close</div>
       </div>
-    <div class="video-player-wrapper" data-ng-if="!global.isAuthN">  
+    <div class="video-player-wrapper <?php if ($is_live) print 'wrapper-live'; ?>" data-ng-if="!global.isAuthN">
       <div class="locked-msg">
       <?php if ($is_live) { 
         print t('<span class="first-line">Please sign in with your TV provider to unlock live tv viewing.</span>');

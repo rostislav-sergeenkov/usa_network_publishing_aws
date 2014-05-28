@@ -87,6 +87,7 @@
       <?php if ($on_now_title): ?><h3 class="title"><?php print $on_now_title; ?></h3><?php endif; ?>
       <?php if ($on_now_description): ?><?php print $on_now_description; ?><?php endif; ?>
       <?php if ($on_now_rating): ?><div class="rating"><?php print $on_now_rating; ?></div><?php endif; ?>
+      <?php if ($description && $description != "&nbsp;"): ?><?php print $description; ?><?php endif; ?>
     </div>
   <?php else: ?>
     <?php if ($description && $description != "&nbsp;"): ?><div class="description"><?php print $description; ?></div><?php endif; ?>

@@ -172,7 +172,7 @@
         },
         currentProvider = authService.getProviderById(providerId);
 
-    if (currentProvider['is_new_window']) {
+    if (currentProvider['is_new_window'] === '1') {
       createMVPDWindow();
     }
 

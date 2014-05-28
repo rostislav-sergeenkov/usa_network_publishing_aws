@@ -82,7 +82,7 @@ function usanetwork_tv_schedule_block_view($delta) {
       $block['content'] = usanetwork_tv_schedule_on_now_panel();
       break;
     case 'usa_live_tv_schedule':
-      $block['subject'] = 'Today\'s Live Streaming Schedule';
+      $block['subject'] = 'Today\'s Live Streaming Schedule' . '<span class="schedule-link">' . l('View our on-air TV schedule here', 'schedule') . '</span>';
       $block['content'] = array(
         '#markup' => usanetwork_tv_schedule_live_tv(),
         '#attached' => array(

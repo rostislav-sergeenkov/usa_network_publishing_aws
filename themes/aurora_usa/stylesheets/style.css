@@ -8371,17 +8371,17 @@ body.person-page #main {
   }
 }
 .page-videos-live #content .block .schedule-link {
-  margin-bottom: 1em;
-  margin-top: -0.4em;
+  padding-left: 1.5em;
 }
 .page-videos-live #content .block .schedule-link a {
+  text-transform: none;
   color: #FFFFFF;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 644px) {
   .page-videos-live #content .block .schedule-link a {
-    font-size: 14px;
+    font-size: 12px;
     font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   }
 }

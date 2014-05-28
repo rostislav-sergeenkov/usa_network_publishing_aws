@@ -60,6 +60,19 @@
           font-family: $headline-bold;
         }
       }
+      .schedule-link {
+        margin-bottom: 1em;
+        margin-top: -0.4em;
+        a {
+          color: #FFFFFF;
+          font-size: 18px;
+          font-family: $headline-semi;
+          @include breakpoint($bp-video-player-section) {
+            font-size: 14px;
+            font-family: $headline-bold;
+          }
+        }
+      }
     }
   }
 

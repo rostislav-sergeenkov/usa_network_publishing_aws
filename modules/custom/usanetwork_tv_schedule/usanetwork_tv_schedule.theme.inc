@@ -114,7 +114,6 @@ function theme_usanetwork_tv_schedule_day_small($variables) {
   $output = '';
 
   if (!empty($items)) {
-    $output .= '<div class="schedule-link">' . l('View our on-air TV schedule here', 'schedule') . '</div>';
     $output .= '<div class="schedule-day-small">';
     $output .= '<div class="schedule-navigation"><a class="schedule-navigation-prev" href="#">&lt;</a><a class="schedule-navigation-next" href="#">&gt;</a></div>';
     $output .= '<div class="schedule-viewport"><div class="schedule-items">';

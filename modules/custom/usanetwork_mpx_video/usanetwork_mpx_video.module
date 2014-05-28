@@ -1279,6 +1279,13 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $share_settings['gigyaSharebar']['ua']['imageBhev'] = 'url';
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
       $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($wrapper->getLocalThumbnailPath());
+
+      // change url for live player
+      $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
+      $live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+      if ($live) {
+        $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
+      }
     }
   }
 }

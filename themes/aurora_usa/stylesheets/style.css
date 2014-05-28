@@ -275,7 +275,7 @@ you can use the generic selector below, but it's slower:
 }
 
 #logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #block-search-form .form-reset:after, #block-search-form .form-type-searchfield label, .carousel-btns .btns, .flex-direction-nav a, #on-now, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after, #block-views-usa-mpx-video-front-full-epsds .tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
+#block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close {
   font-family: 'usanetwork';
@@ -8718,26 +8718,6 @@ body.person-page #main {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-}
-
-#block-views-usa-mpx-video-front-full-epsds .tve-video-auth > a:after {
-  position: absolute;
-  right: 3px;
-  top: 2px;
-  content: "\e002";
-  font-size: 25px;
-  color: white;
-}
-#block-views-usa-mpx-video-front-full-epsds .tve-video-auth .asset-img:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: solid 50px rgba(0, 0, 0, 0.5);
-  border-left: solid 50px transparent;
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 
 .block-usanetwork-video.usa-secondary-menu,

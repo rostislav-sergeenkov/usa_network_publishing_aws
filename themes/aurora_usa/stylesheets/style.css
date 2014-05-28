@@ -8370,6 +8370,21 @@ body.person-page #main {
     font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
   }
 }
+.page-videos-live #content .block .schedule-link {
+  margin-bottom: 1em;
+  margin-top: -0.4em;
+}
+.page-videos-live #content .block .schedule-link a {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 644px) {
+  .page-videos-live #content .block .schedule-link a {
+    font-size: 14px;
+    font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  }
+}
 .page-videos-live .file.view-mode-full .meta-head h1.show-name {
   font-family: "Proxima N W01 Smbd";
   font-size: 30px;

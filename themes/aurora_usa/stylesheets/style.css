@@ -9273,7 +9273,7 @@ body.person-page #main {
 }
 .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live a:after {
   top: 52%;
-  background: url("../images/sign_in_key.png") center top no-repeat;
+  background: url("../images/sign_in_live_key.png") center top no-repeat;
 }
 .featured-asset.file-video-mpx.tve-overlay .video-player-wrapper a:after {
   background-image: none;

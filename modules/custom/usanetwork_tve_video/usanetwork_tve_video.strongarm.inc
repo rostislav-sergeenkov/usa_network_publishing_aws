@@ -51,6 +51,7 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
+<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -59,7 +60,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Do not see your provider?',
+    'footer_text' => 'Don\'t see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );
@@ -127,6 +128,7 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
+<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -135,7 +137,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Do not see your provider?',
+    'footer_text' => 'Don\'t see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );

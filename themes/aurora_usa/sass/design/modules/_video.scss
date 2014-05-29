@@ -1185,34 +1185,19 @@
   opacity : 1;
 }
 
-.tveModal.welcomeModal {
+
+.tveModal {
   * {
     @include box-sizing("content-box");
   }
-  .modalHeader {
-    @include background-image(linear-gradient(top,#3b3b3b 1%,#3b3b3b 2%,#3b3b3b 60%,#1f1f1f 100%));
-    @include box-shadow(rgba(255,255,255,.2) 0 1px 1px inset);
+  .modalFooter {
     width:94% !important;
     margin:0 auto;
-    padding:2% !important;
-    h1 {
-      margin:0;
-      font-family:$bodytext-bold;
-      line-height:32px;
-      letter-spacing:normal;
-    }
-    .moreDetails {
-      font-family:$bodytext-reg;
-      font-size:12px;
-      line-height:26px;
-    }
-    .closeButton {
-      top:-12px;
-      right:-21px;
-      @extend .icons-close_welcome_popup;
-      border-radius:0;
-      border:0;
-    }
+    padding:2%;
+    text-align:center;
+    font-family: $bodytext-bold;
+    font-size:16px;
+    line-height:25px;
   }
   .modalContent {
     min-height:365px;
@@ -1258,7 +1243,12 @@
       }
     }
     .buttonBar {
-      margin-top:20px !important;
+      margin-top:0px !important;
+      button {
+        font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+        font-size: 18px !important;
+        font-weight: normal !important;
+      }
       .gettingStarted {
         display: inline-block;
         padding: 5px 20px;
@@ -1273,30 +1263,72 @@
       }
     }
   }
-  .richContent {
-    min-height:321px;
-  }
-  .welcomeBgImage{
-    right:-2%;
-  }
-  .modalFooter {
-    width:94% !important;
-    margin:0 auto;
-    padding:2%;
-    text-align:center;
-    font-family: $bodytext-bold;
-    font-size:16px;
-    line-height:25px;
-  }
-}
-
-.tveModal.loginModal,
-.tveModal.adobePassFrame,
-.tveModal.k2Modal {
   .modalHeader {
+    @include background-image(linear-gradient(top,#3b3b3b 1%,#3b3b3b 2%,#3b3b3b 60%,#1f1f1f 100%));
+    @include box-shadow(rgba(255,255,255,.2) 0 1px 1px inset);
+    width:98% !important;
+    margin:0 auto;
+    padding:0 !important;
+    h1 {
+      margin:0;
+      font-family:$bodytext-bold;
+      line-height:32px;
+      letter-spacing:normal;
+    }
+    .moreDetails {
+      font-family:$bodytext-reg;
+      font-size:12px;
+      line-height:26px;
+    }
     .closeButton {
       top:-12px;
       right:-21px;
+      @extend .icons-close_welcome_popup;
+      border-radius:0;
+      border:0;
+    }
+  }
+  &.welcomeModal {
+    .richContent {
+      min-height:321px;
+    }
+    .welcomeBgImage{
+      right:-2%;
+    }
+  }
+  &.loginModal {
+    .richContent {
+      h1 {
+        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-size: 30px;
+        letter-spacing: 1px;
+        margin: 0;
+        margin-bottom: 4.8192%;
+        padding: 0;
+      }
+      h2 {
+        font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+        font-size: 22px;
+        color: #4f4f4f;
+        letter-spacing: 0.5px;
+        margin: 0;
+        padding: 0;
+        text-transform: none;
+      }
+    }
+    .switchContent {
+      ul {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.tveModal {
+  .modalHeader {
+    .closeButton {
+      top:-10px;
+      right:-22px;
       @extend .icons-close_welcome_popup;
       border-radius:0;
       border:0;

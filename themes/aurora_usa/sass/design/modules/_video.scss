@@ -816,6 +816,9 @@
     //@include breakpoint($bp-video-player-section) {
     //  text-align: center;
     //}
+    img {
+      vertical-align: middle;
+    }
     @include breakpoint($bp-video-mid-range4-width) {
       text-align: left;
     }
@@ -823,7 +826,7 @@
       &.not-live {
         position:absolute;
         display:inline-block;
-        top: 104px;
+        top: 119px;
         right: 0;
       }
       &.live .item-list ul li {
@@ -831,7 +834,9 @@
       }
       .item-list {
         li.last {
+          line-height: 1.2;
           margin:0;
+          vertical-align: middle;
         }
         ul.ng-scope {
           display:inline-block;
@@ -1187,7 +1192,12 @@
 
 
 .tveModal {
-
+  &.k2Modal {
+    input[type=text] {
+      height: 2em;
+      margin-bottom: 0;
+    }
+  }
   &.welcomeModal {
     .richContent {
       min-height:321px;

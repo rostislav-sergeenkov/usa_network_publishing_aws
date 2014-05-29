@@ -9347,6 +9347,9 @@ body.person-page #main {
   padding-bottom: 12px;
   padding-top: 5px;
 }
+.featured-asset .tve-help-link img {
+  vertical-align: middle;
+}
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset .tve-help-link {
     text-align: left;
@@ -9355,14 +9358,16 @@ body.person-page #main {
 .featured-asset .tve-help-link.signOut.not-live {
   position: absolute;
   display: inline-block;
-  top: 104px;
+  top: 119px;
   right: 0;
 }
 .featured-asset .tve-help-link.signOut.live .item-list ul li {
   margin-left: 0;
 }
 .featured-asset .tve-help-link.signOut .item-list li.last {
+  line-height: 1.2;
   margin: 0;
+  vertical-align: middle;
 }
 .featured-asset .tve-help-link.signOut .item-list ul.ng-scope {
   display: inline-block;
@@ -9766,6 +9771,10 @@ body.person-page #main {
   opacity: 1;
 }
 
+.tveModal.k2Modal input[type=text] {
+  height: 2em;
+  margin-bottom: 0;
+}
 .tveModal.welcomeModal .richContent {
   min-height: 321px;
 }

@@ -17,7 +17,7 @@
               THIRD_STEP  = 3;
 
           var buttonTexts = {
-                'true': Drupal.t('View All'),
+                'true': Drupal.t('See the full list'),
                 'false': Drupal.t('Back')
               },
               previewStep = $location.search()['preview_step'],

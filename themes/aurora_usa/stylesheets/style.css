@@ -2513,7 +2513,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1688px;
 }
 
-.icons-close_welcome_popup, .tveModal.welcomeModal .modalHeader .closeButton, .tveModal .modalHeader .closeButton {
+.icons-close_welcome_popup, .tveModal .modalHeader .closeButton {
   background-position: 0 -2399px;
 }
 
@@ -9766,94 +9766,78 @@ body.person-page #main {
   opacity: 1;
 }
 
-.tveModal.welcomeModal * {
+.tveModal * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-.tveModal.welcomeModal .modalHeader {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #3b3b3b), color-stop(2%, #3b3b3b), color-stop(60%, #3b3b3b), color-stop(100%, #1f1f1f));
-  background-image: -webkit-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
-  background-image: -moz-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
-  background-image: -o-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
-  background-image: linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
-  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
-  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
-  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+.tveModal .modalFooter {
   width: 94% !important;
   margin: 0 auto;
-  padding: 2% !important;
-}
-.tveModal.welcomeModal .modalHeader h1 {
-  margin: 0;
+  padding: 2%;
+  text-align: center;
   font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-  line-height: 32px;
-  letter-spacing: normal;
+  font-size: 16px;
+  line-height: 25px;
 }
-.tveModal.welcomeModal .modalHeader .moreDetails {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 26px;
-}
-.tveModal.welcomeModal .modalHeader .closeButton {
-  top: -12px;
-  right: -21px;
-  border-radius: 0;
-  border: 0;
-}
-.tveModal.welcomeModal .modalContent {
+.tveModal .modalContent {
   min-height: 365px;
   width: 95.3703%;
   margin: 0 auto;
   padding: 2.7777% 2.3148%;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper {
+.tveModal .modalContent .articles .features-wrapper {
   overflow: hidden;
   width: 70%;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper article {
+.tveModal .modalContent .articles .features-wrapper article {
   width: 40%;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper article img {
+.tveModal .modalContent .articles .features-wrapper article img {
   display: block;
   width: auto;
   margin: 0 auto;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group {
+.tveModal .modalContent .articles .features-wrapper .feature-group {
   *zoom: 1;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group:after {
+.tveModal .modalContent .articles .features-wrapper .feature-group:after {
   content: "";
   display: table;
   clear: both;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature-img-wrap {
+.tveModal .modalContent .articles .features-wrapper .feature-group .feature-img-wrap {
   margin-bottom: 10px;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature:first-child {
+.tveModal .modalContent .articles .features-wrapper .feature-group .feature:first-child {
   padding: 0;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature:nth-child(2) {
+.tveModal .modalContent .articles .features-wrapper .feature-group .feature:nth-child(2) {
   margin: 0 3%;
   padding: 0 3%;
   border-left: 1px solid #d7d7d6;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group h2 {
+.tveModal .modalContent .articles .features-wrapper .feature-group h2 {
   margin: 0 0 3.6% 0;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 27px;
 }
-.tveModal.welcomeModal .modalContent .articles .features-wrapper .feature-group .feature-copy {
+.tveModal .modalContent .articles .features-wrapper .feature-group .feature-copy {
   margin: 0 0 10px 0;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
 }
-.tveModal.welcomeModal .modalContent .buttonBar {
-  margin-top: 20px !important;
+.tveModal .modalContent .buttonBar {
+  margin-top: 0px !important;
 }
-.tveModal.welcomeModal .modalContent .buttonBar .gettingStarted {
+.tveModal .modalContent .buttonBar button {
+  font-family: Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+  font-size: 18px !important;
+  font-weight: normal !important;
+}
+.tveModal .modalContent .buttonBar .gettingStarted {
   display: inline-block;
   padding: 5px 20px;
   border: 0;
@@ -9865,29 +9849,66 @@ body.person-page #main {
   letter-spacing: .05em;
   background: #0ab6e8;
 }
+.tveModal .modalHeader {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #3b3b3b), color-stop(2%, #3b3b3b), color-stop(60%, #3b3b3b), color-stop(100%, #1f1f1f));
+  background-image: -webkit-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -moz-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -o-linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 1px inset;
+  width: 98% !important;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+.tveModal .modalHeader h1 {
+  margin: 0;
+  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  line-height: 32px;
+  letter-spacing: normal;
+}
+.tveModal .modalHeader .moreDetails {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 26px;
+}
+.tveModal .modalHeader .closeButton {
+  top: -12px;
+  right: -21px;
+  border-radius: 0;
+  border: 0;
+}
 .tveModal.welcomeModal .richContent {
   min-height: 321px;
 }
 .tveModal.welcomeModal .welcomeBgImage {
   right: -2%;
 }
-.tveModal.welcomeModal .modalFooter {
-  width: 94% !important;
-  margin: 0 auto;
-  padding: 2%;
-  text-align: center;
-  font-family: "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 25px;
-}
 .tveModal.loginModal .richContent h1 {
-  font-family: 400 2.25em/32px Proxima N W01 Bold,Helvetica,Arial,sans-serif;
+  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
   font-size: 30px;
+  letter-spacing: 1px;
+  margin: 0;
+  margin-bottom: 4.8192%;
+  padding: 0;
+}
+.tveModal.loginModal .richContent h2 {
+  font-family: Proxima N W01 Smbd,Helvetica,Arial,sans-serif;
+  font-size: 22px;
+  color: #4f4f4f;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+}
+.tveModal.loginModal .switchContent ul {
+  padding: 0;
 }
 
 .tveModal .modalHeader .closeButton {
   top: -10px;
-  right: -10px;
+  right: -22px;
   border-radius: 0;
   border: 0;
 }

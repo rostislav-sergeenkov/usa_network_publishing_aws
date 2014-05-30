@@ -828,6 +828,24 @@
         display:inline-block;
         top: 119px;
         right: 0;
+        @include breakpoint($bp-video-low-range-width) {
+          position: relative;
+          top: 0;
+          .item-list {
+            .first {
+              margin: 0 0 0.25em 0.75em;
+            }
+          }
+        }
+        @include breakpoint($bp-video-mid-range4-width) {
+          position: relative;
+          top: 0;
+          .item-list {
+            .first {
+                margin: 0 0 0.25em 0;
+            }
+          }
+        }
       }
       &.live .item-list ul li {
         margin-left: 0;
@@ -1158,7 +1176,7 @@
     }
     @include breakpoint($bp-video-mid-range4-width) {
       display: inline;
-      float: left;
+      float: none;
       margin-top: 0;
       margin-right: 15px;
       width: 300px;

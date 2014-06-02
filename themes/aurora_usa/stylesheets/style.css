@@ -8310,6 +8310,24 @@ body.person-page #main {
   width: 50%;
 }
 
+.file-video-mpx.view-mode-inline_content iframe {
+  width: 615px;
+  height: 346px;
+  margin: 0;
+}
+@media (max-width: 644px) {
+  .file-video-mpx.view-mode-inline_content iframe {
+    width: 330px;
+    height: 186px;
+  }
+}
+@media (min-width: 1275px) {
+  .file-video-mpx.view-mode-inline_content iframe {
+    width: 930px;
+    height: 523px;
+  }
+}
+
 .node-type-usa-tve-video #main,
 .node-type-usa-video #main,
 .page-videos #main {

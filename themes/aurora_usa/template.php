@@ -1160,3 +1160,24 @@ function aurora_usa_html_head_alter(&$head_elements) {
     }
   }
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function aurora_usa_page_alter(&$page){
+  //rewrite pub_analytics_page_alter in pub_analytics.module
+  //remove escaping html elemets
+  if (path_is_admin(current_path())) {
+    return; // No need to track admin pages.
+  }
+  if (isset($page['page_bottom']['sitecatalyst'])) {
+    $report_id = variable_get('sitecatalyst_report_suite_id', '');
+    if (!empty($report_id)) {
+      if (isset($page['page_bottom']['sitecatalyst'])) {
+        $page['page_bottom']['sitecatalyst']['variables']['#markup'] = html_entity_decode(filter_xss($page['page_bottom']['sitecatalyst']['variables']['#markup']));
+      }
+    } else {
+      unset($page['page_bottom']['sitecatalyst']);
+    }
+  }
+}

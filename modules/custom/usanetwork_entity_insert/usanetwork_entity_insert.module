@@ -119,6 +119,9 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
           if ($entity) {
             $rendered_entity = entity_view($entity_type, array($entity), $view_mode);
             if ($rendered_entity) {
+              $rendered_entity = reset($rendered_entity);
+              $rendered_entity = $rendered_entity[$entity_id];
+              $rendered_entity['#embedded'] = TRUE;
               $content = drupal_render($rendered_entity);
             }
           }
@@ -130,6 +133,17 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
   }
 
   return $replacements;
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ */
+function usanetwork_entity_insert_preprocess_file_entity(&$vars) {
+  $view_mode = $vars['view_mode'];
+  $class = 'view-mode-' . $view_mode;
+  if (!in_array($class, $vars['classes_array'])) {
+    $vars['classes_array'][] = $class;
+  }
 }
 
 /**

@@ -18,7 +18,7 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => '9',
+      'weight' => 9,
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -63,7 +63,7 @@ function usanetwork_mpx_video_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_companion_rectangle_small' => array(
-      'weight' => '9',
+      'weight' => 9,
       'label' => 'hidden',
       'format' => 'default',
     ),

@@ -111,6 +111,15 @@ function usanetwork_mpx_video_block_view($delta) {
 }
 
 /**
+ * Implements hook_file_formatter_info_alter().
+ */
+function usanetwork_mpx_video_file_formatter_info_alter(&$info) {
+  if (isset($info['pub_mpx_video'])) {
+    $info['pub_mpx_video']['view callback'] = 'usanetwork_mpx_video_file_formatter_video_view';
+  }
+}
+
+/**
  * Implements hook_theme_registry_alter().
  */
 function usanetwork_mpx_video_theme_registry_alter(&$theme_registry) {
@@ -949,12 +958,30 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
 }
 
 /**
+ * Process variables for mpx video.
+ */
+function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
+  // inline content
+  if ($vars['file']->embedded == TRUE) {
+    $vars['pub_mpx_player_parameters'] = isset($vars['pub_mpx_player_parameters']) ? $vars['pub_mpx_player_parameters'] : array();
+    $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
+  }
+}
+
+/**
  * Process variables for file_entity.
  */
 function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
     //drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/video_page.js', array('scope' => 'footer'));
+
+    // inline content
+    if ($vars['elements']['#embedded'] == TRUE) {
+      if (isset($vars['content']['file'])) {
+        $vars['content']['file']['#file']->embedded = TRUE;
+      }
+    }
 
     $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
     $full_episode = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
@@ -1492,4 +1519,54 @@ function _usanetwork_mpx_video_embed_view($view) {
   }
 
   return $view->preview($view->current_display, $args);
+}
+
+/**
+ * View callback for the pub_mpx_video file formatter.
+ */
+function usanetwork_mpx_video_file_formatter_video_view($file, $display, $langcode) {
+
+  $scheme = file_uri_scheme($file->uri);
+
+  if ($scheme != 'mpx' || empty($file->mpx_video_data)) {
+    return array();
+  }
+
+  // Determine video player.
+  $video_player_pid = NULL;
+  $account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+
+  // use the player chosen in the formatter settings.
+  if (!empty($display['settings']['pub_mpx_video_player_id'][ $account->id ])) {
+    $video_player_pid = $display['settings']['pub_mpx_video_player_id'][ $account->id ];
+  }
+  // ...if not, then the player assigned directly to the video if it exists.
+  if (!$video_player_pid && !empty($file->mpx_video_data['player_id'])) {
+    $player = media_theplatform_mpx_get_mpx_player_by_player_id($file->mpx_video_data['player_id']);
+    if (!empty($player['pid'])) {
+      $video_player_pid = $player['pid'];
+    }
+  }
+  // ...finally use the default player for the video's account.
+  if (!$video_player_pid) {
+    $player = media_theplatform_mpx_get_mpx_player_by_player_id($account->default_player);
+    $video_player_pid = $player['pid'];
+  }
+  // If this file is inactive, display the themed inactive video.
+  if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
+    $element = array(
+      '#theme' => 'pub_mpx_inactive_video',
+      '#file' => $file,
+    );
+  }
+  // Otherwise theme the video player.
+  else {
+    $element = array(
+      '#theme' => 'pub_mpx_video',
+      '#file' => $file,
+      '#player_id' => $video_player_pid,
+    );
+  }
+
+  return $element;
 }

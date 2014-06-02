@@ -30,38 +30,6 @@ function usanetwork_mpx_video_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_ds_field_settings_info_alter().
- */
-function usanetwork_mpx_video_ds_field_settings_info_alter(&$data) {
-  if (isset($data['file|mpx_video_1|full'])) {
-    $data['file|mpx_video_1|full']->settings['video_companion_rectangle_small'] = array(
-      'weight' => 9,
-      'label' => 'hidden',
-      'format' => 'default',
-    ); /* WAS: '' */
-  }
-  if (isset($data['file|mpx_video_2|full'])) {
-    $data['file|mpx_video_2|full']->settings['video_companion_rectangle_small'] = array(
-      'weight' => 9,
-      'label' => 'hidden',
-      'format' => 'default',
-    ); /* WAS: '' */
-  }
-}
-
-/**
- * Implements hook_ds_layout_settings_info_alter().
- */
-function usanetwork_mpx_video_ds_layout_settings_info_alter(&$data) {
-  if (isset($data['file|mpx_video_1|full'])) {
-    $data['file|mpx_video_1|full']->settings['fields']['video_companion_rectangle_small'] = 'ad_comp'; /* WAS: '' */
-  }
-  if (isset($data['file|mpx_video_2|full'])) {
-    $data['file|mpx_video_2|full']->settings['fields']['video_companion_rectangle_small'] = 'ad_comp'; /* WAS: '' */
-  }
-}
-
-/**
  * Implements hook_ds_view_modes_info_alter().
  */
 function usanetwork_mpx_video_ds_view_modes_info_alter(&$data) {

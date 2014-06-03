@@ -185,10 +185,13 @@ function _tve_mvpd_get_mvpd() {
     $mvpd[$key][$order] = _tve_mvpd_get_mvpd_item($provider, $mvpd_logo, $mvpd_color);
   }
 
-  if (!empty($mvpd['featured'])) {
+  if (!empty($mvpd[TVE_MVPD_TYPE_FEATURED])) {
     // Sort "featured" MVPDs by weight (key).
-    ksort($mvpd['featured']);
+    ksort($mvpd[TVE_MVPD_TYPE_FEATURED]);
   }
+
+  $mvpd[TVE_MVPD_TYPE_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_FEATURED]) : array();
+  $mvpd[TVE_MVPD_TYPE_NOT_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) : array();
 
   // Add "success" status.
   $mvpd['status'] = TVE_MVPD_STATUS_SUCCESS;

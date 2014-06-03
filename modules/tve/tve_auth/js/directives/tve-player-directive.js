@@ -176,7 +176,23 @@
                       targetElem = document.getElementById(targetId);
 
                   if (targetElem) {
-                    $(targetElem).html(pdkEvent.data.message);
+                    // override FW default ad tag as it's not the correct format and we're not sure how to set this correctly
+                    // e.g. http://ad.doubleclick.net/adj/nbcu.usa/mrm_default;sect=default;site=usa;!category=usa;!category=videoplayer;sz=300x250;pos=7;tile=7;ord=5182
+                    var currentHtmlAdContent = pdkEvent.data.message;
+                    var tabletSuffix = '';
+                    if (typeof usa_deviceInfo !== 'undefined') {
+                      if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
+                        if (Drupal.settings.USA.DART.values.sub != '') {
+                          tabletSuffix = '_tablet';
+                        } else {
+                          tabletSuffix = 'tablet';
+                        }
+                      }
+                    }
+
+                    currentHtmlAdContent = currentHtmlAdContent.replace('mrm_default', (Drupal.settings.USA.DART.values.sect + '_' + Drupal.settings.USA.DART.values.sub + tabletSuffix));
+                    currentHtmlAdContent = currentHtmlAdContent.replace('sect=default', ('sect=' + Drupal.settings.USA.DART.values.sect + ';sub=' + Drupal.settings.USA.DART.values.sub));
+                    $(targetElem).html(currentHtmlAdContent);
 
                     if (~targetId.indexOf('728')) {
                       scope.$apply(function() {

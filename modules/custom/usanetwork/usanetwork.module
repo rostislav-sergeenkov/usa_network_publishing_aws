@@ -73,7 +73,6 @@ function usanetwork_menu_alter(&$items) {
  */
  function _usanetwork_show_nids() {
   $show_nids = array();
-  $show = $node->nid;
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', array('tv_show'));

@@ -4,12 +4,16 @@
  * Implements hook_form_alter().
  */
 function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
-
   // Entity edit forms
   $entity_edit_forms = array(
     'node_form',
     'file_entity_edit',
   );
+
+  if (isset($form['#bundle'])) {
+    $entity_edit_forms[] = $form['#bundle'] . '_node_form';
+  }
+
   if (in_array($form_id, $entity_edit_forms)) {
     $entity = FALSE;
     $entity_type = FALSE;
@@ -25,7 +29,13 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
     }
 
     if (!$entity || !$entity_type) {
-      return;
+      if (isset($form['#bundle']) && $form_id == $form['#bundle'] . '_node_form') {
+        $entity = isset($form_state['node']) ? $form_state['node'] : FALSE;
+        $entity_type = 'node';
+      }
+      else {
+        return;
+      }
     }
 
     list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);

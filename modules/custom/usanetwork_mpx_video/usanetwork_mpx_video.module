@@ -1326,6 +1326,35 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
 }
 
 /**
+ * Alter DART variables.
+ */
+function usanetwork_mpx_video_usa_dart_alter(&$settings, $context) {
+  if (module_exists('usanetwork_ads')) {
+    $menu_item = $context['menu_item'];
+    if ($menu_item['path'] == 'videos') {
+      // change DART variable to match latest full episode on /videos page
+      $query = db_select('mpx_video', 'v');
+      $query->fields('v', array('fid'));
+      $query->innerJoin('field_data_field_mpx_full_episode', 'fe', 'v.fid = fe.entity_id');
+      $query->innerJoin('file_managed', 'f', 'v.fid = f.fid');
+      $query->condition('f.status', 1, '=')
+        ->condition('f.published', 1, '=')
+        ->condition('fe.entity_type', 'file', '=')
+        ->condition('fe.field_mpx_full_episode_value', '1', '=');
+      $query->orderBy('v.airdate', 'DESC')
+        ->orderBy('v.created', 'DESC')
+        ->range(0, 1);
+
+      $latest_episode = $query->execute()
+        ->fetchField();
+      if ($latest_episode && $latest_episode = entity_load_single('file', $latest_episode)) {
+        $settings['USA']['DART']['values'] = _usanetwork_ads_get_entity_dart_settings($latest_episode, 'file');
+      }
+    }
+  }
+}
+
+/**
  * Return videos sync batch.
  */
 function usanetwork_mpx_video_sync_batch($types = NULL) {

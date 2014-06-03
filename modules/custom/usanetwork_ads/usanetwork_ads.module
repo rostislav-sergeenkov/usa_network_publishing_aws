@@ -513,9 +513,9 @@ function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
 
     // entity has show parent
     if ($tv_show_nid && ($entity_type != 'node' || ($entity_type == 'node' && $bundle != 'tv_show'))) {
-      $show_settins = _usanetwork_ads_get_entity_dart_settings(node_load($tv_show_nid), 'node');
-      if (!empty($show_settins['sect'])) {
-        $entity_dart_settings['sect'] = $show_settins['sect'];
+      $show_settings = _usanetwork_ads_get_entity_dart_settings(node_load($tv_show_nid), 'node');
+      if (!empty($show_settings['sect'])) {
+        $entity_dart_settings['sect'] = $show_settings['sect'];
       }
     }
   }
@@ -633,7 +633,6 @@ function _usanetwork_ads_is_page_sponsored($page_variables = array()) {
  * Implements hook_preprocess_page().
  */
 function usanetwork_ads_preprocess_page(&$variables) {
-
   // Define DART ad settings via Drupal JS settings.
   $usa_dart_js_settings = array();
   $usa_dart_js_settings['USA']['DART']['values'] = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
@@ -700,13 +699,19 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $adobe_tagloader_settings['tag_container_name'] : '';
   #drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js', array('scope' => 'footer', 'preprocess' => FALSE));
 
+  $context = array(
+    'menu_item' => $current_menu_item,
+    'entity' => $current_menu_object,
+    'entity_type' => $entity_type,
+  );
+  drupal_alter('usa_dart', $usa_dart_js_settings, $context);
+
 	// Set the JS device detection code
 	drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/device-detect.js', array('type' => 'file', 'scope' => 'header', 'every_page' => true, 'preprocess' => true));
 
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');
 }
-
 
 /**
  * Implements form_sitecatalyst_admin_settings_alter().

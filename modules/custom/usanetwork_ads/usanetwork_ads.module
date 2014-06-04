@@ -794,6 +794,32 @@ function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
       }
     }
   }
+  
+  // add s.prop5 for video pages
+  if ($entity_type == 'file' && (strpos($bundle, 'mpx_video_') !== false )) {
+    
+    $video_variables = array(
+      's.prop3' => 'Video',
+      's.prop4' => 'Video',  
+    );
+    
+    if (!empty($entity->field_mpx_full_episode)) {
+      $full_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_full_episode'));
+      if ($full_episode['value'] == '1'){
+        if (!empty($entity->field_mpx_entitlement)) {
+          $entitlement_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_entitlement'));
+          if ($entitlement_episode['value'] == 'auth') {
+            $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
+          } else {
+            $video_variables['s.prop5'] = "Video : Full Episodes : Free";
+          }
+        }
+      } else {
+        $video_variables['s.prop5'] = "Video : Short Form";
+      }
+    }
+    $variables[] = $video_variables;
+  }
   //
 
   if (!empty($entity_settings) && !$entity_settings['default']) {
@@ -848,6 +874,11 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
         $site_metric_settings['path'][ $current_menu_item_path ]['omniture'] : array();
       $path_omniture_variables = _usanetwork_ads_get_omniture_variables($path_omniture_settings);
       $omniture_variables = $path_omniture_variables + $omniture_variables;
+    }
+    if ($current_menu_item_path == 'videos') {
+      $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
+      $file_object = file_load($result->fid);
+      $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($file_object, 'file');
     }
   }
 

@@ -817,6 +817,8 @@
     //  text-align: center;
     //}
     img {
+      max-height: 16px;
+      max-width: 100%;
       vertical-align: middle;
     }
     @include breakpoint($bp-video-mid-range4-width) {

@@ -1382,6 +1382,56 @@ function usanetwork_mpx_video_usa_dart_alter(&$settings, $context) {
 }
 
 /**
+ * Alter sitecatalyst variables variables.
+ */
+function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context) {
+
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    $entity_type = $context['entity_type'];
+    list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+    if ($entity_type == 'file' && in_array($bundle, _usanetwork_mpx_video_get_all_file_types())) {
+      $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
+    }
+  } else if ($context['menu_item']['path'] == 'videos') {
+    $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
+    $file_object = file_load($result->fid);
+    $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
+  } 
+  
+  $omniture_variables = array_merge($omniture_variables, $video_variables);
+}
+
+/*
+ * Help function for set variables for file
+ */
+function _usanetwork_mpx_video_file_omniture($entity, $entity_type){
+ 
+  $video_variables = array(
+    's.prop3' => 'Video',
+    's.prop4' => 'Video',  
+  );
+    
+  if (!empty($entity->field_mpx_full_episode)) {
+    $full_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_full_episode'));
+    if ($full_episode['value'] == '1'){
+      if (!empty($entity->field_mpx_entitlement)) {
+        $entitlement_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_entitlement'));
+        if ($entitlement_episode['value'] == 'auth') {
+          $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
+        } else {
+          $video_variables['s.prop5'] = "Video : Full Episodes : Free";
+        }
+      }
+    } else {
+      $video_variables['s.prop5'] = "Video : Short Form";
+    }
+  }
+  
+  return $video_variables;
+}
+
+/**
  * Return videos sync batch.
  */
 function usanetwork_mpx_video_sync_batch($types = NULL) {

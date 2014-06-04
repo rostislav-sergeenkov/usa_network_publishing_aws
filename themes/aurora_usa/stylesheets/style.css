@@ -9366,6 +9366,8 @@ body.person-page #main {
   padding-top: 5px;
 }
 .featured-asset .tve-help-link img {
+  max-height: 16px;
+  max-width: 100%;
   vertical-align: middle;
 }
 @media (min-width: 645px) and (max-width: 959px) {

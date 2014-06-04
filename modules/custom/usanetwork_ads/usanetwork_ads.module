@@ -851,6 +851,13 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
     }
   }
 
+  $context = array(
+    'menu_item' => $current_menu_item,
+    'entity' => $current_menu_object,
+    'entity_type' => $entity_type,
+  );
+  drupal_alter('usa_omniture', $omniture_variables, $context);
+
   if ($omniture_variables) {
     return array('variables' => $omniture_variables);
   }

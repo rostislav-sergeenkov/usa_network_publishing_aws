@@ -125,16 +125,16 @@ $blue-hampton: #499ad2;
 body {
   &.blog {
     color: #000000;
+    #main {
+      padding-left: 0;
+      padding-right: 0;
+    }
     .usa-wrap {
       background-color: #f6f9fb;
-      #main {
-        padding-left: 0;
-        padding-right: 0;
-      }
-      .region-content {
-        a {
-          @include link-colors($blue-hampton, $black, $blue-hampton, $blue-hampton, $blue-hampton);
-        }
+    }
+    .region-content {
+      a {
+        @include link-colors($blue-hampton, $black, $blue-hampton, $blue-hampton, $blue-hampton);
       }
     }
 

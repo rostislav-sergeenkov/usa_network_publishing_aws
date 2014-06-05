@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.2.2
+ * jQuery FlexSlider v2.2.0
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  */
@@ -37,7 +37,7 @@
       init: function() {
         slider.animating = false;
         // Get current slide and make sure it is a number
-        slider.currentSlide = parseInt( ( slider.vars.startAt ? slider.vars.startAt : 0), 10 );
+        slider.currentSlide = parseInt( ( slider.vars.startAt ? slider.vars.startAt : 0) );
         if ( isNaN( slider.currentSlide ) ) slider.currentSlide = 0;
         slider.animatingTo = slider.currentSlide;
         slider.atEnd = (slider.currentSlide === 0 || slider.currentSlide === slider.last);
@@ -157,7 +157,7 @@
           slider.currentItem = slider.currentSlide;
           slider.slides.removeClass(namespace + "active-slide").eq(slider.currentItem).addClass(namespace + "active-slide");
           if(!msGesture){
-              slider.slides.on(eventType, function(e){
+              slider.slides.click(function(e){
                 e.preventDefault();
                 var $slide = $(this),
                     target = $slide.index();
@@ -592,13 +592,6 @@
           case "pause": $obj.pause(); break;
         }
       },
-      uniqueID: function($clone) {
-        $clone.find( '[id]' ).each(function() {
-          var $this = $(this);
-          $this.attr( 'id', $this.attr( 'id' ) + '_clone' );
-        });
-        return $clone;
-      },
       pauseInvisible: {
         visProp: null,
         init: function() {
@@ -606,7 +599,7 @@
 
           if ('hidden' in document) return 'hidden';
           for (var i = 0; i < prefixes.length; i++) {
-            if ((prefixes[i] + 'Hidden') in document)
+            if ((prefixes[i] + 'Hidden') in document) 
             methods.pauseInvisible.visProp = prefixes[i] + 'Hidden';
           }
           if (methods.pauseInvisible.visProp) {
@@ -621,7 +614,7 @@
                 else (slider.vars.initDelay > 0) ? setTimeout(slider.play, slider.vars.initDelay) : slider.play(); //Didn't init before: simply init or wait for it
               }
             });
-          }
+          }       
         },
         isHidden: function() {
           return document[methods.pauseInvisible.visProp] || false;
@@ -633,7 +626,7 @@
           watchedEvent = "";
         }, 3000);
       }
-    };
+    }
 
     // public methods
     slider.flexAnimate = function(target, pause, override, withSync, fromNav) {
@@ -745,7 +738,7 @@
         // SMOOTH HEIGHT:
         if (slider.vars.smoothHeight) methods.smoothHeight(slider.vars.animationSpeed);
       }
-    };
+    }
     slider.wrapup = function(dimension) {
       // SLIDE:
       if (!fade && !carousel) {
@@ -759,12 +752,12 @@
       slider.currentSlide = slider.animatingTo;
       // API: after() animation Callback
       slider.vars.after(slider);
-    };
+    }
 
     // SLIDESHOW:
     slider.animateSlides = function() {
       if (!slider.animating && focused ) slider.flexAnimate(slider.getTarget("next"));
-    };
+    }
     // SLIDESHOW:
     slider.pause = function() {
       clearInterval(slider.animatedSlides);
@@ -774,7 +767,7 @@
       if (slider.vars.pausePlay) methods.pausePlay.update("play");
       // SYNC:
       if (slider.syncExists) methods.sync("pause");
-    };
+    }
     // SLIDESHOW:
     slider.play = function() {
       if (slider.playing) clearInterval(slider.animatedSlides);
@@ -784,12 +777,12 @@
       if (slider.vars.pausePlay) methods.pausePlay.update("pause");
       // SYNC:
       if (slider.syncExists) methods.sync("play");
-    };
+    }
     // STOP:
     slider.stop = function () {
       slider.pause();
       slider.stopped = true;
-    };
+    }
     slider.canAdvance = function(target, fromNav) {
       // ASNAV:
       var last = (asNav) ? slider.pagingCount - 1 : slider.last;
@@ -801,7 +794,7 @@
              (slider.atEnd && slider.currentSlide === 0 && target === last && slider.direction !== "next") ? false :
              (slider.atEnd && slider.currentSlide === last && target === 0 && slider.direction === "next") ? false :
              true;
-    };
+    }
     slider.getTarget = function(dir) {
       slider.direction = dir;
       if (dir === "next") {
@@ -809,7 +802,7 @@
       } else {
         return (slider.currentSlide === 0) ? slider.last : slider.currentSlide - 1;
       }
-    };
+    }
 
     // SLIDE:
     slider.setProps = function(pos, special, dur) {
@@ -839,14 +832,11 @@
         target = (vertical) ? "translate3d(0," + target + ",0)" : "translate3d(" + target + ",0,0)";
         dur = (dur !== undefined) ? (dur/1000) + "s" : "0s";
         slider.container.css("-" + slider.pfx + "-transition-duration", dur);
-         slider.container.css("transition-duration", dur);
       }
 
       slider.args[slider.prop] = target;
       if (slider.transitions || dur === undefined) slider.container.css(slider.args);
-
-      slider.container.css('transform',target);
-    };
+    }
 
     slider.setup = function(type) {
       // SLIDE:
@@ -872,8 +862,6 @@
           // clear out old clones
           if (type !== "init") slider.container.find('.clone').remove();
           slider.container.append(slider.slides.first().clone().addClass('clone').attr('aria-hidden', 'true')).prepend(slider.slides.last().clone().addClass('clone').attr('aria-hidden', 'true'));
-		      methods.uniqueID( slider.slides.first().clone().addClass('clone') ).appendTo( slider.container );
-		      methods.uniqueID( slider.slides.last().clone().addClass('clone') ).prependTo( slider.container );
         }
         slider.newSlides = $(slider.vars.selector, slider);
 
@@ -913,10 +901,8 @@
       // !CAROUSEL:
       // CANDIDATE: active slide
       if (!carousel) slider.slides.removeClass(namespace + "active-slide").eq(slider.currentSlide).addClass(namespace + "active-slide");
+    }
 
-      //FlexSlider: init() Callback
-      slider.vars.init(slider);
-    };
 
     slider.doMath = function() {
       var slide = slider.slides.first(),
@@ -949,7 +935,8 @@
         slider.last = slider.count - 1;
       }
       slider.computedW = slider.itemW - slider.boxPadding;
-    };
+    }
+
 
     slider.update = function(pos, action) {
       slider.doMath();
@@ -979,7 +966,7 @@
       // update directionNav
       if (slider.vars.directionNav) methods.directionNav.update();
 
-    };
+    }
 
     slider.addSlide = function(obj, pos) {
       var $obj = $(obj);
@@ -1004,7 +991,7 @@
 
       //FlexSlider: added() Callback
       slider.vars.added(slider);
-    };
+    }
     slider.removeSlide = function(obj) {
       var pos = (isNaN(obj)) ? slider.slides.index($(obj)) : obj;
 
@@ -1030,11 +1017,11 @@
 
       // FlexSlider: removed() Callback
       slider.vars.removed(slider);
-    };
+    }
 
     //FlexSlider: Initialize
     methods.init();
-  };
+  }
 
   // Ensure the slider isn't focussed if the window loses focus.
   $( window ).blur( function ( e ) {
@@ -1103,9 +1090,9 @@
     after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
     end: function(){},              //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
     added: function(){},            //{NEW} Callback: function(slider) - Fires after a slide is added
-    removed: function(){},           //{NEW} Callback: function(slider) - Fires after a slide is removed
-    init: function() {}             //{NEW} Callback: function(slider) - Fires after the slider is initially setup
-  };
+    removed: function(){}           //{NEW} Callback: function(slider) - Fires after a slide is removed
+  }
+
 
   //FlexSlider: Plugin Function
   $.fn.flexslider = function(options) {
@@ -1137,5 +1124,5 @@
         default: if (typeof options === "number") $slider.flexAnimate(options, true);
       }
     }
-  };
+  }
 })(jQuery);

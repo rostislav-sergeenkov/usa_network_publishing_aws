@@ -2490,7 +2490,7 @@ input[type="radio"], input[type="checkbox"] {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .ie9 .carousel-btns .btns, .ie8 .carousel-btns .btns, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .show-on-sync span, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-s063d43a0ab.png') no-repeat;
 }
 
@@ -2498,7 +2498,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1177px;
 }
 
-.icons-arrow-next-v2, .ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next {
+.icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next {
   background-position: 0 -1455px;
 }
 
@@ -2510,7 +2510,7 @@ input[type="radio"], input[type="checkbox"] {
   background-position: 0 -1257px;
 }
 
-.icons-arrow-prev-v2, .ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev {
+.icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev {
   background-position: 0 -1909px;
 }
 
@@ -5775,17 +5775,40 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .node-media-gallery.view-mode-inline_content {
   max-width: 1024px;
 }
+.node-media-gallery.view-mode-inline_content .content {
+  text-align: center;
+}
 .node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a {
+  color: white;
   display: block;
   opacity: 0.8;
   top: 50%;
   margin-top: -39px;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:visited {
+  color: white;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:focus {
+  color: white;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:hover {
+  color: white;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a:active {
+  color: white;
 }
 .node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a.flex-prev {
   left: 0;
 }
 .node-media-gallery.view-mode-inline_content .flexslider .flex-direction-nav a.flex-next {
   right: 0;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .field-name-field-caption {
+  padding: 10px;
+  text-align: left;
+}
+.node-media-gallery.view-mode-inline_content .flexslider .field-name-field-caption p {
+  margin: 5px 0;
 }
 
 .media-gallery .center-wrapper {
@@ -7224,6 +7247,7 @@ html[xmlns] .slides {
   *height: 0;
 }
 .flex-direction-nav a {
+  color: white;
   width: 35px;
   height: 80px;
   margin: -16px 0 0;
@@ -7251,26 +7275,42 @@ html[xmlns] .slides {
   color: rgba(255, 255, 255, 0.5);
   font-size: 28px;
 }
+.flex-direction-nav a:visited {
+  color: white;
+}
+.flex-direction-nav a:focus {
+  color: white;
+}
+.flex-direction-nav a:hover {
+  color: white;
+}
+.flex-direction-nav a:active {
+  color: white;
+}
 .flex-direction-nav a:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 .touch .flex-direction-nav a {
   display: none;
 }
-.flex-direction-nav .flex-next {
+.flex-direction-nav a.flex-next {
   background-position: 100% 0;
   right: -30px;
   text-indent: 3px;
+  text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-right: 0;
 }
-.ie9 .flex-direction-nav .flex-next, .ie8 .flex-direction-nav .flex-next {
+.flex-direction-nav a.flex-next:before {
+  display: none;
+}
+.ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next {
   background-color: rgba(0, 0, 0, 0.3);
 }
-.ie9 .flex-direction-nav .flex-next:hover, .ie8 .flex-direction-nav .flex-next:hover {
+.ie9 .flex-direction-nav a.flex-next:hover, .ie8 .flex-direction-nav a.flex-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-.no-font-feature-settings .flex-direction-nav .flex-next {
+.no-font-feature-settings .flex-direction-nav a.flex-next {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -7282,19 +7322,23 @@ html[xmlns] .slides {
   height: 80px;
   background-size: 18px 30px;
 }
-.flex-direction-nav .flex-prev {
+.flex-direction-nav a.flex-prev {
   left: -30px;
   text-indent: -3px;
+  text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-left: 0;
 }
-.ie9 .flex-direction-nav .flex-prev, .ie8 .flex-direction-nav .flex-prev {
+.flex-direction-nav a.flex-prev:before {
+  display: none;
+}
+.ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev {
   background-color: rgba(0, 0, 0, 0.3);
 }
-.ie9 .flex-direction-nav .flex-prev:hover, .ie8 .flex-direction-nav .flex-prev:hover {
+.ie9 .flex-direction-nav a.flex-prev:hover, .ie8 .flex-direction-nav a.flex-prev:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-.no-font-feature-settings .flex-direction-nav .flex-prev {
+.no-font-feature-settings .flex-direction-nav a.flex-prev {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -13245,26 +13289,26 @@ body.blog .view-display-id-blog_content .views-row {
 body.blog {
   color: #000000;
 }
-body.blog .usa-wrap {
-  background-color: #f6f9fb;
-}
-body.blog .usa-wrap #main {
+body.blog #main {
   padding-left: 0;
   padding-right: 0;
 }
-body.blog .usa-wrap .region-content a {
+body.blog .usa-wrap {
+  background-color: #f6f9fb;
+}
+body.blog .region-content a {
   color: #499ad2;
 }
-body.blog .usa-wrap .region-content a:visited {
+body.blog .region-content a:visited {
   color: #499ad2;
 }
-body.blog .usa-wrap .region-content a:focus {
+body.blog .region-content a:focus {
   color: #499ad2;
 }
-body.blog .usa-wrap .region-content a:hover {
+body.blog .region-content a:hover {
   color: #1f1f1f;
 }
-body.blog .usa-wrap .region-content a:active {
+body.blog .region-content a:active {
   color: #499ad2;
 }
 body.blog .panel-display {

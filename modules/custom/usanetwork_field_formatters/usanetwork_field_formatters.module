@@ -22,7 +22,133 @@ function usanetwork_field_formatters_field_formatter_info() {
     'description' => t('This formatter should be used for outputting custom js inserted in a long text/plain text field.'),
   );
 
+  // formatter to display file entity in a flex slider
+  if (module_exists('file_entity')) {
+    $custom_formatters['flexslider_file_entity'] = array(
+      'label' => t('Flexslider'),
+      'field types' => array('file'),
+      'description' => t('The formatter to display file entity in a flex slider.'),
+      'settings' => array(
+        'view_mode' => '',
+        'view_mode_thumb' => '',
+        'thumbnail_path' => '',
+        'optionset' => '',
+      ),
+    );
+  }
+
   return $custom_formatters;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function usanetwork_field_formatters_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $field_name = $field['field_name'];
+  $parents_array = array($field_name, 'settings_edit_form', 'settings');
+  $parents = 'fields]' . implode('][', $parents_array) . ']';
+
+  $form = array();
+
+  switch ($display['type']) {
+    case 'flexslider_file_entity':
+      // Show select box for the option set.
+      $optionsets = array();
+      ctools_include('export');
+      foreach (flexslider_optionset_load_all() as $name => $optionset) {
+        $optionsets[$name] = check_plain($optionset->title);
+      }
+      $form['optionset'] = array(
+        '#title' => t('Option set'),
+        '#type' => 'select',
+        '#options' => $optionsets,
+        '#default_value' => $settings['optionset'],
+      );
+
+      $entity_info = entity_get_info('file');
+      $options = array();
+      if (!empty($entity_info['view modes'])) {
+        foreach ($entity_info['view modes'] as $view_mode => $view_mode_settings) {
+          $options[$view_mode] = $view_mode_settings['label'];
+        }
+      }
+      if (count($options) > 1) {
+        $form['view_mode'] = array(
+          '#type' => 'select',
+          '#options' => $options,
+          '#title' => t('Slide view mode'),
+          '#default_value' => $settings['view_mode'],
+        );
+        $form['view_mode_thumb'] = array(
+          '#type' => 'select',
+          '#options' => array(
+            '_empty' => '- ' . t('Nothing') . ' -',
+            '_image' => '- ' . t('Thumbnail image') . ' -',
+          ) + $options,
+          '#title' => t('Thumbnail view mode'),
+          '#default_value' => $settings['view_mode_thumb'],
+        );
+        $form['thumbnail_path'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Thumbnail path'),
+          '#default_value' => $settings['thumbnail_path'],
+          '#description' => t('The path of the image to use as thumbnail.'),
+        );
+        if (module_exists('token')) {
+          $form['thumbnail_path']['#description'] .= ' ' . t('This field support tokens. Example: %example', array(
+              '%example' => '[node:field-image:file:path]',
+            ));
+
+          $form['tokens'] = array(
+            '#markup' => theme('token_tree_link', array('token_types' => array($entity_info['token type']), '#global_types' => FALSE)),
+          );
+        }
+      }
+      break;
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function usanetwork_field_formatters_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  switch ($display['type']) {
+    case 'flexslider_file_entity':
+      // Load option set.
+      ctools_include('export');
+      if (!empty($settings['optionset'])) {
+        $optionset = flexslider_optionset_load($settings['optionset']);
+      }
+
+      // Build settings summary.
+      $optionset = isset($optionset->title) ? $optionset->title : t('Default settings');
+      $summary[] = t('Option set: %optionset', array('%optionset' => $optionset));
+
+      $entity_info = entity_get_info($field['settings']['target_type']);
+      $summary[] = t('Slides rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode']]['label']) ? $entity_info['view modes'][$settings['view_mode']]['label'] : $settings['view_mode']));
+      if ($settings['view_mode_thumb'] == '_empty') {
+        $summary[] = t('Thumbnails rendered as @mode', array('@mode' => t('empty strings')));
+      }
+      else if ($settings['view_mode_thumb'] == '_image') {
+        $summary[] = t('Thumbnails rendered as @mode', array('@mode' => t('images')));
+      }
+      else {
+        $summary[] = t('Thumbnails rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode_thumb']]['label']) ? $entity_info['view modes'][$settings['view_mode_thumb']]['label'] : $settings['view_mode_thumb']));
+      }
+      break;
+  }
+
+  return implode('<br />', $summary);
 }
 
 /**
@@ -77,6 +203,64 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
         );
       }
       break;
+    case 'flexslider_file_entity':
+      // Rebuild the items list to contain only those with access.
+      foreach ($items as $delta => $item) {
+        if (!file_entity_access('view', (object) $item)) {
+          unset($items[$delta]);
+        }
+      }
+
+      foreach ($items as $delta => $item) {
+        $file = (object) $item;
+        if (!isset($file->fid)) {
+          continue;
+        }
+
+        // Provide some context.
+        list($entity_id,,$bundle) = entity_extract_ids($entity_type, $entity);
+        $file->entityreference_flexslider = array(
+          'display' => $display,
+          'delta' => $delta,
+          'entity_type' => $entity_type,
+          'entity_id' => $entity_id,
+        );
+        list(,,$file_type) = entity_extract_ids('file', $file);
+
+        $build = entity_view('file', array($file->fid => $file), $settings['view_mode'], $langcode, FALSE);
+        $result[$delta] = array(
+          'slide' => array(
+            'entity' => $build['files'][$file->fid],
+            'caption' => entity_label('file', $file),
+            '#entity_info' => array(
+              'entity_type' => 'file',
+              'bundle' => $file_type,
+            ),
+          ),
+          'thumb' => array(),
+        );
+        if (!in_array($settings['view_mode_thumb'], array('_empty', '_image'))) {
+          $build = entity_view('file', array($file->fid => $file), $settings['view_mode_thumb'], $langcode, FALSE);
+          $result[$delta]['thumb'] = $build['files'][$file->fid];
+        } else if ($settings['view_mode_thumb'] == '_image') {
+          if (module_exists('token')) {
+            $result[$delta]['slide']['thumbnail'] = token_replace($settings['thumbnail_path'], array(
+              'file' => $file,
+            ));
+          } else {
+            $result[$delta]['slide']['thumbnail'] = $settings['thumbnail_path'];
+          }
+        }
+      }
+
+      if (count($result) > 0) {
+        $element = array(
+          '#theme' => 'flexslider_file_entity',
+          '#entities' => $result,
+          '#settings' => $display['settings'],
+        );
+      }
+      break;
   }
 
   return $element;
@@ -92,6 +276,13 @@ function usanetwork_field_formatters_theme() {
     'template'  => 'templates/raw-formatter',
     'variables' => array('data' => ''),
   );
+
+  $items['flexslider_file_entity'] = array(
+    'variables' => array('entities' => NULL, 'slides' => array(), 'settings' => array(), 'flexslider' => array()),
+    'render element' => 'flexslider',
+    'file' => 'usanetwork_field_formatters.theme.inc',
+  );
+
   return $items;
 }
 
@@ -99,9 +290,6 @@ function usanetwork_field_formatters_theme() {
  * Implements hook_field_formatter_info_alter().
  */
 function usanetwork_field_formatters_field_formatter_info_alter(&$info) {
-  if (isset($info['flexslider'])) {
-    $info['flexslider']['field types'][] = 'file';
-  }
 }
 
 /**

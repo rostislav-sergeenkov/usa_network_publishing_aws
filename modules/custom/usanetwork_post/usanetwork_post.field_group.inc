@@ -55,11 +55,12 @@ function usanetwork_post_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'body',
-      1 => 'field_cover_media',
-      2 => 'field_summary',
-      3 => 'field_blog',
-      4 => 'title',
-      5 => 'field_show',
+      1 => 'field_blog',
+      2 => 'field_cover_media',
+      3 => 'field_show',
+      4 => 'field_summary',
+      5 => 'field_post_cover',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

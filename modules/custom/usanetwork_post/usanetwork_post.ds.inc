@@ -48,7 +48,7 @@ function usanetwork_post_ds_field_settings_info() {
       ),
     ),
     'post_date' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
     ),
@@ -76,7 +76,7 @@ function usanetwork_post_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_cover_media',
+        0 => 'field_post_cover',
         1 => 'title',
         2 => 'body',
         3 => 'field_gigya_share_bar',
@@ -86,7 +86,7 @@ function usanetwork_post_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'field_cover_media' => 'ds_content',
+      'field_post_cover' => 'ds_content',
       'title' => 'ds_content',
       'body' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
@@ -110,19 +110,19 @@ function usanetwork_post_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_cover_media',
+        0 => 'field_post_cover',
         1 => 'title',
         2 => 'body',
-        3 => 'post_date',
-        4 => 'field_gigya_share_bar',
+        3 => 'field_gigya_share_bar',
+        4 => 'post_date',
       ),
     ),
     'fields' => array(
-      'field_cover_media' => 'ds_content',
+      'field_post_cover' => 'ds_content',
       'title' => 'ds_content',
       'body' => 'ds_content',
-      'post_date' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
+      'post_date' => 'ds_content',
     ),
     'classes' => array(),
   );

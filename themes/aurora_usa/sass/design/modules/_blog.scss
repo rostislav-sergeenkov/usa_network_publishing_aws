@@ -1,0 +1,335 @@
+body {
+  &.blog {
+    .panel-display {
+      width: 945px;
+      margin: 0 auto;
+      .panel-col-first {
+        width: 645px;
+        .inside {
+          margin-right: 30px;
+        }
+      }
+      .panel-col-last {
+        width: 300px;
+        .inside {
+          margin-left: 0;
+        }
+
+        .panel-pane {
+          border-bottom: 3px solid $gray-med-dark;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+
+          h2 {
+            &.pane-title {
+              @extend %regular-headline;
+              font-size: 28px;
+              margin: 10px 0;
+              text-transform: lowercase;
+              border-bottom: 3px solid $gray-med-dark;
+              margin: 10px 0;
+              padding-bottom: 10px;
+            }
+          }
+
+          .view-display-id-most_popular {
+            .views-row {
+              @extend %regular-headline;
+              font-size: 16px;
+              &:after {
+                clear: both;
+                content: "";
+                display: table;
+              }
+              .field-name-field-post-cover {
+                float: left;
+                margin: 0 10px 10px 0;
+              }
+              .views-field-title {
+                @extend %semi-headline;
+              }
+              .views-field-created {
+                margin-top: 5px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+
+      .file-video-mpx {
+        &.view-mode-inline_content {
+          iframe {
+            width: 615px;
+            height: 345px;
+          }
+        }
+      }
+    }
+
+    .view-display-id-blog_content {
+      .views-row {
+        border-bottom: 3px solid $gray-med-dark;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.node {
+  &.node-post {
+    &.node-teaser {
+      .field-name-body {
+        margin-bottom: 40px;
+      }
+      .field-name-field-gigya-share-bar {
+        margin: -10px 0 0 0;
+      }
+      .field-name-post-date {
+        @extend %regular-headline;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $blue;
+      }
+    }
+    .field-name-title {
+      h2 {
+        @extend %regular-headline;
+        font-size: 36px;
+        margin: 15px 0;
+      }
+    }
+    .field-name-body {
+      @extend %regular-headline-16;
+      text-align: justify;
+      text-justify: inter-word;
+      p {
+        margin: 10px 0;
+      }
+    }
+    .gig-comments-container {
+      clear: both;
+      width: 100% !important;
+      margin: 10px 0;
+    }
+    .field-name-field-gigya-share-bar {
+      float: right;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+$blue-hampton: #499ad2;
+
+body {
+  &.blog {
+    color: #000000;
+    .usa-wrap {
+      background-color: #f6f9fb;
+      #main {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .region-content {
+        a {
+          @include link-colors($blue-hampton, $black, $blue-hampton, $blue-hampton, $blue-hampton);
+        }
+      }
+    }
+
+    .panel-display {
+      width: 100%;
+      .panel-col-top {
+        background-color: #ffffff;
+        margin-bottom: 30px;
+        h1 {
+          @extend %regular-headline;
+          font-size: 58px;
+          line-height: 58px;
+          text-transform: uppercase;
+          color: $blue-hampton;
+          span {
+            color: $black;
+          }
+        }
+        .inside {
+          width: 1010px;
+          margin: 0 auto;
+          position: relative;
+          min-height: 135px;
+          background: url("../images/assets/blog/hamptons_header.png") scroll 130px 30px no-repeat transparent;
+          padding: 75px 0 0 130px;
+          &:before {
+            display: block;
+            width: 117px;
+            height: 110px;
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            background: url("../images/assets/blog/hamptons_logo.png") scroll 0 0 no-repeat transparent;
+          }
+        }
+        ul {
+          margin: 15px 0;
+          padding: 0;
+          word-spacing: 20px;
+          li {
+            display: inline-block;
+            word-spacing: normal;
+            list-style: none;
+            @extend %semi-headline;
+            font-size: 16px;
+          }
+        }
+      }
+      .center-wrapper {
+        width: 945px;
+        margin: 0 auto;
+      }
+      .panel-col-last {
+        .panel-pane {
+          border-bottom-color: $blue-hampton;
+
+          h2 {
+            &.pane-title {
+              color: $blue-hampton;
+              border-bottom-color: $blue-hampton;
+            }
+          }
+        }
+
+        .view-display-id-most_popular {
+          .views-row {
+            .views-field-title {
+              a {
+                @include link-colors($black, $blue-hampton, $black, $black, $black);
+              }
+            }
+            .views-field-created {
+              color: $blue-hampton;
+            }
+          }
+        }
+      }
+    }
+
+    .view-display-id-blog_content {
+      .views-row {
+        border-bottom-color: $blue-hampton;
+      }
+    }
+  }
+}
+
+.node {
+  &.node-post {
+    &.node-teaser {
+      .field-name-title {
+        h2 {
+          a {
+            @include link-colors($black, $blue-hampton, $black, $black, $black);
+          }
+        }
+      }
+    }
+
+    .field-type-gigya-sharebar {
+      .gig-button-container  {
+        td {
+          > div {
+            width: 35px !important;
+            height: 35px !important;
+            background-image: url("../images/assets/blog/hamptons_share.png") !important;
+            @include breakpoint($bp-home-narrowest) {
+              width: 35px !important;
+              height: 35px !important;
+            }
+          }
+        }
+
+        &.gig-button-container-facebook {
+          td {
+            > div {
+              background-position: 0px 0px !important;
+              &:hover {
+                background-position: 0px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: 0px 0px !important;
+                &:hover {
+                  background-position: 0px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-twitter {
+          td {
+            > div {
+              background-position: -42px 0px !important;
+              &:hover {
+                background-position: -42px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -42px 0px !important;
+                &:hover {
+                  background-position: -42px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-tumblr {
+          td {
+            > div {
+              background-position: -84px 0px !important;
+              &:hover {
+                background-position: -84px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -84px 0px !important;
+                &:hover {
+                  background-position: -84px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-pinterest {
+          td {
+            > div {
+              background-position: -126px 0px !important;
+              &:hover {
+                background-position: -126px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -126px 0px !important;
+                &:hover {
+                  background-position: -126px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-share {
+          td {
+            > div {
+              background-position: -168px 0px !important;
+              &:hover {
+                background-position: -168px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -168px 0px !important;
+                &:hover {
+                  background-position: -168px 0px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

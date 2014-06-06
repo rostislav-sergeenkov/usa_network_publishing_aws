@@ -5,3 +5,33 @@
  */
 
 include_once 'usanetwork_gallery_content.features.inc';
+
+/**
+ * Implements hook_node_load().
+ */
+function usanetwork_gallery_content_node_load($nodes, $types) {
+  if (in_array('media_gallery', $types)) {
+    foreach ($nodes as &$node) {
+      if ($node->type == 'media_gallery') {
+        // prepend cover image to media items
+        $lang = $node->language;
+        if (!empty($node->field_cover_item[$lang])) {
+          $cover = $node->field_cover_item[$lang][0];
+          array_unshift($node->field_media_items[$lang], $cover);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_prepare().
+ */
+function usanetwork_gallery_content_node_prepare($node) {
+  if ($node->type == 'media_gallery') {
+    $lang = $node->language;
+    if (!empty($node->field_cover_item[$lang])) {
+      array_shift($node->field_media_items[$lang]);
+    }
+  }
+}

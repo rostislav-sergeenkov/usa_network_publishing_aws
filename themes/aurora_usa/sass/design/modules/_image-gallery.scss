@@ -4,7 +4,7 @@
 }
 .node-media-gallery {
   &.view-mode-inline_content {
-    max-width: 1024px;
+    max-width: 800px;
     .content {
       text-align: center;
     }
@@ -106,7 +106,7 @@
         margin: 8px 0 0;
       }
       @include breakpoint($bp-home-2-fence) {
-        margin-top: 13px 0 37px;
+        margin: 13px 0 37px;
       }
       @include breakpoint($bp-home-3-fence) {
         margin: 9px 0 28px;

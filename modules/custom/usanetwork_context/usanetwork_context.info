@@ -10,7 +10,6 @@ dependencies[] = menu
 dependencies[] = metatag
 dependencies[] = metatag_context
 dependencies[] = metatag_opengraph
-dependencies[] = search
 dependencies[] = usanetwork_ads
 dependencies[] = usanetwork_blocks
 dependencies[] = usanetwork_catchall

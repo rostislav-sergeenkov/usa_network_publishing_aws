@@ -152,6 +152,38 @@
   src: url("../fonts/Avalon-BoldOblique-webfont.woff") format("woff"), url("../fonts/Avalon-BoldOblique-webfont.ttf") format("truetype"), url("../fonts/Avalon-BoldOblique-webfont.svg#avalonbold_oblique") format("svg");
 }
 
+@font-face {
+  font-family: 'avalonregular_condensed';
+  src: url("../fonts/Avalon-BookCond-webfont.eot");
+  src: url("../fonts/Avalon-BookCond-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Avalon-BookCond-webfont.woff") format("woff"), url("../fonts/Avalon-BookCond-webfont.ttf") format("truetype"), url("../fonts/Avalon-BookCond-webfont.svg#avalonbook_condensed") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'avalonmedium_condensed';
+  src: url("../fonts/Avalon-MediumCond-webfont.eot");
+  src: url("../fonts/Avalon-MediumCond-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Avalon-MediumCond-webfont.woff") format("woff"), url("../fonts/Avalon-MediumCond-webfont.ttf") format("truetype"), url("../fonts/Avalon-MediumCond-webfont.svg#avalonmedium_condensed") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'avalondemi_condensed';
+  src: url("../fonts/Avalon-DemiCond-webfont.eot");
+  src: url("../fonts/Avalon-DemiCond-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Avalon-DemiCond-webfont.woff") format("woff"), url("../fonts/Avalon-DemiCond-webfont.ttf") format("truetype"), url("../fonts/Avalon-DemiCond-webfont.svg#avalondemi_condensed") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'avalonbold_condensed';
+  src: url("../fonts/Avalon-BoldCond-webfont.eot");
+  src: url("../fonts/Avalon-BoldCond-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Avalon-BoldCond-webfont.woff") format("woff"), url("../fonts/Avalon-BoldCond-webfont.ttf") format("truetype"), url("../fonts/Avalon-BoldCond-webfont.svg#avalonbold_condensed") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* WARNING:	You are using ligatures for your icon font.
 			Ligatures are not supported in IE 9 (and older).
 			Use the Private Use Area encoding for best browser support.

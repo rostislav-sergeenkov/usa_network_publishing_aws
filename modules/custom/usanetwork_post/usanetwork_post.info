@@ -56,6 +56,7 @@ features[variable][] = menu_parent_post
 features[variable][] = node_options_post
 features[variable][] = node_preview_post
 features[variable][] = node_submitted_post
+features[variable][] = page_manager_term_view_disabled
 features[variable][] = representative_image_field_node_post
 features[views_view][] = blog
 features_exclude[dependencies][gigya] = gigya

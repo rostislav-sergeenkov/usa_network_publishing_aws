@@ -23,9 +23,14 @@ function usanetwork_post_ds_field_settings_info() {
       'format' => 'default',
     ),
     'comments' => array(
-      'weight' => '6',
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'post_date' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
     ),
   );
   $export['node|post|default'] = $ds_fieldsetting;
@@ -80,9 +85,8 @@ function usanetwork_post_ds_layout_settings_info() {
         1 => 'title',
         2 => 'body',
         3 => 'field_gigya_share_bar',
-        4 => 'field_content_tags',
-        5 => 'field_contributor',
-        6 => 'comments',
+        4 => 'post_date',
+        5 => 'comments',
       ),
     ),
     'fields' => array(
@@ -90,8 +94,7 @@ function usanetwork_post_ds_layout_settings_info() {
       'title' => 'ds_content',
       'body' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
-      'field_content_tags' => 'ds_content',
-      'field_contributor' => 'ds_content',
+      'post_date' => 'ds_content',
       'comments' => 'ds_content',
     ),
     'classes' => array(),

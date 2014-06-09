@@ -138,9 +138,9 @@ function usanetwork_post_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'usanetwork_post',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'post_blog',
       'weight' => 2,
     ),
   );
@@ -283,10 +283,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -348,13 +347,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'view_mode' => 'full',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 5,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',

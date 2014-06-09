@@ -35,13 +35,6 @@ function usanetwork_post_views_api($module = NULL, $api = NULL) {
 function usanetwork_post_image_default_styles() {
   $styles = array();
 
-  // Exported image style: blog_cover.
-  $styles['blog_cover'] = array(
-    'name' => 'blog_cover',
-    'label' => 'blog_cover',
-    'effects' => array(),
-  );
-
   // Exported image style: post_cover.
   $styles['post_cover'] = array(
     'name' => 'post_cover',
@@ -57,7 +50,7 @@ function usanetwork_post_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 615,
+          'width' => 680,
           'height' => '',
           'upscale' => 0,
         ),

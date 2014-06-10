@@ -303,7 +303,7 @@ function _usanetwork_post_get_blog_menu($tid, $vid = 0, $category = NULL) {
       if ($path == $_GET['q'] || $category == $term->tid) {
         $menu_item['class'][] = 'active';
       }
-      $children = _usanetwork_post_get_blog_menu($term->tid, $term->vid);
+      $children = _usanetwork_post_get_blog_menu($term->tid, $term->vid, $category);
       if (!empty($children)) {
         $menu_item['children'] = $children['#items'];
         foreach ($children['#items'] as $child) {

@@ -94,9 +94,6 @@ body {
     .field-name-body {
       margin-bottom: 40px;
     }
-    .field-name-field-gigya-share-bar {
-      margin: -10px 0 0 0;
-    }
     .field-name-post-date {
       @extend %semi-headline-14;
       text-transform: uppercase;
@@ -129,7 +126,10 @@ body {
     }
     .field-name-field-gigya-share-bar {
       float: right;
-      margin-bottom: 10px;
+      margin: -10px 0 10px 0;
+      @include breakpoint($bp-home-narrowest) {
+        float: none;
+      }
     }
   }
 }

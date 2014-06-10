@@ -28,7 +28,7 @@ function usanetwork_gigya_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gigya_comments_categoryid';
-  $strongarm->value = '';
+  $strongarm->value = 'USA Blogs';
   $export['gigya_comments_categoryid'] = $strongarm;
 
   $strongarm = new stdClass();

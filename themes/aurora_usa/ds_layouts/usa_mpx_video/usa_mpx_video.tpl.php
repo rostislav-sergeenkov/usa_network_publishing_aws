@@ -62,12 +62,12 @@
         if ($is_live) {
           $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
         } else {
-          $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true')));
+          $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')));
         }
         print $video;
       ?>
     </div>
-    <div class="tve-help-link signIn"><div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div></div>
+    <div class="tve-help-link signIn" data-ng-if="!global.isAuthN"><div class="tve-help-sign" data-tve-sign-in-button="" ><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div></div>
     <div class="tve-help-link signOut <?php print (!$is_live) ? 'not-live' : 'live'?>" data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
   <?php else: ?>
     <div class="video-player-wrapper">
@@ -75,7 +75,7 @@
       if ($is_live) {
         $video = theme('usanetwork_tve_live_video', array('file' => $file)); 
       } else {
-        $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true')));
+        $video = theme('pub_mpx_video', array('file' => $file, 'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')));
       }
       print $video;
     ?>
@@ -90,9 +90,13 @@
       <?php if ($description && $description != "&nbsp;"): ?><?php print $description; ?><?php endif; ?>
     </div>
   <?php else: ?>
-    <?php if ($description && $description != "&nbsp;"): ?><div class="description"><?php print $description; ?></div><?php endif; ?>
-  <?php endif; ?>
-  <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?>
-    <div class="ad"><?php print $ad_comp; ?></div>
-  <?php endif;  ?>
+    <?php if (!empty($watchwith_sidecar)): ?>
+      <div class="sidecarSection"  data-ng-show="!isMobile <?php if ($lock_video) print '&& global.isAuthN'; ?>">
+        <div class="sidecarTitle"><?php print t('USA Sidecar'); ?></div>
+        <?php print $watchwith_sidecar; ?>
+      </div>
+    <?php endif; ?>
+    <?php if ($description && $description != "&nbsp;"): ?><div class="description"><?php print $description; ?></div><?php endif; ?>   
+  <?php endif; ?> 
+  <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?><div class="ad"><?php print $ad_comp; ?></div><?php endif;  ?>
 </div>

@@ -1,143 +1,202 @@
 <?php
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_alter().
  */
-function usanetwork_ads_form_node_form_alter(&$form, &$form_state) {
-  $node = $form_state['node'];
-  if (!isset($node->nid)) {
-    return;
-  }
-
-  $defaults = _usanetwork_ads_node_settings($node);
-  if (!empty($defaults) && !isset($defaults['is_sponsored'])) {
-    $defaults['is_sponsored'] = _usanetwork_ads_is_node_sponsored($node);
-  }
-
-  $form['usanetwork_ads'] = array(
-    '#tree' => true,
-    '#type' => 'fieldset',
-    '#title' => t('Site Metrics'),
-    '#group' => 'additional_settings',
-    '#weight' => 5,
-    '#access' => user_access('administer usanetwork dart settings'),
-    '#collapsible' => true,
-    '#collapsed' => true,
+function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
+  // Entity edit forms
+  $entity_edit_forms = array(
+    'node_form',
+    'file_entity_edit',
   );
 
-  $form['usanetwork_ads']['default'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Use defaults'),
-    '#default_value' => empty($defaults) ? 1 : (isset($defaults['default']) ? $defaults['default'] : 0),
-  );
+  if (isset($form['#bundle'])) {
+    $entity_edit_forms[] = $form['#bundle'] . '_node_form';
+  }
 
-  $form['usanetwork_ads']['variables'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Variables'),
-    '#states' => array(
-      'invisible' => array(
-        ':input[name="usanetwork_ads[default]"]' => array('checked' => true),
+  if (in_array($form_id, $entity_edit_forms)) {
+    $entity = FALSE;
+    $entity_type = FALSE;
+    switch ($form_id) {
+      case 'node_form':
+        $entity = isset($form_state['node']) ? $form_state['node'] : FALSE;
+        $entity_type = 'node';
+        break;
+      case 'file_entity_edit':
+        $entity = isset($form_state['file']) ? $form_state['file'] : FALSE;
+        $entity_type = 'file';
+        break;
+    }
+
+    if (!$entity || !$entity_type) {
+      if (isset($form['#bundle']) && $form_id == $form['#bundle'] . '_node_form') {
+        $entity = isset($form_state['node']) ? $form_state['node'] : FALSE;
+        $entity_type = 'node';
+      }
+      else {
+        return;
+      }
+    }
+
+    list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
+    $form_state['entity'] = $entity;
+    $form_state['entity_type'] = $entity_type;
+    $form_state['entity_id'] = $entity_id;
+    $form_state['bundle'] = $bundle;
+
+    $defaults = _usanetwork_ads_entity_settings($entity, $entity_type);
+    if (!empty($defaults) && !isset($defaults['is_sponsored'])) {
+      $defaults['is_sponsored'] = _usanetwork_ads_is_entity_sponsored($entity, $entity_type);
+    }
+
+    $form['usanetwork_ads'] = array(
+      '#tree' => true,
+      '#type' => 'fieldset',
+      '#title' => t('Site Metrics'),
+      '#group' => 'additional_settings',
+      '#weight' => 5,
+      '#access' => user_access('administer usanetwork dart settings'),
+      '#collapsible' => true,
+      '#collapsed' => true,
+    );
+
+    $form['usanetwork_ads']['default'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use defaults'),
+      '#default_value' => empty($defaults) ? 1 : (isset($defaults['default']) ? $defaults['default'] : 0),
+    );
+
+    $form['usanetwork_ads']['variables'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Variables'),
+      '#states' => array(
+        'invisible' => array(
+          ':input[name="usanetwork_ads[default]"]' => array('checked' => true),
+        ),
       ),
-    ),
+    );
+
+    _usanetwork_ads_dart_elements($form['usanetwork_ads']['variables'], $defaults);
+
+    $id = drupal_html_id('usanetwork-ads-' . $bundle . '-' . $entity_id);
+    $form['usanetwork_ads']['variables']['omniture'] = array(
+      '#type' => 'fieldset',
+      '#tree' => TRUE,
+      '#title' => t('Omniture Variables'),
+    );
+
+    $items_count = isset($form_state['usanetwork_ads']['omniture']['items_count']) ? $form_state['usanetwork_ads']['omniture']['items_count'] : count($defaults['omniture']['variables']);
+    _usanetwork_ads_omniture_elements($id, $form['usanetwork_ads']['variables']['omniture'], $defaults['omniture'], $items_count);
+    $form_state['usanetwork_ads']['omniture']['items_count'] = $items_count;
+    $form['usanetwork_ads']['variables']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
+
+    $form['#submit'][] = 'usanetwork_ads_form_entity_form_submit';
+    $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_entity_form_submit';
+  }
+
+  // Bundle settings form
+  $bundle_setting_forms = array(
+    'node_type_form',
+    'file_entity_file_type_form'
   );
+  if (in_array($form_id, $bundle_setting_forms)) {
+    $entity_type = FALSE;
+    $bundle = FALSE;
 
-  _usanetwork_ads_dart_elements($form['usanetwork_ads']['variables'], $defaults);
+    switch ($form_id) {
+      case 'node_type_form':
+        $entity_type = 'node';
+        $bundle = isset($form['#node_type']) ? $form['#node_type']->type : FALSE;
+        break;
+      case 'file_entity_file_type_form':
+        $entity_type = 'file';
+        $bundle = isset($form['#file_type']) ? $form['#file_type']->type : FALSE;
+        break;
+    }
 
-  $id = drupal_html_id('usanetwork-ads-' . $node->type . '-' . $node->nid);
-  $form['usanetwork_ads']['variables']['omniture'] = array(
-    '#type' => 'fieldset',
-    '#tree' => TRUE,
-    '#title' => t('Omniture Variables'),
-  );
+    if (!$entity_type || !$bundle) {
+      return;
+    }
+    $form_state['entity_type'] = $entity_type;
+    $form_state['bundle'] = $bundle;
+    $defaults = _usanetwork_ads_bundle_settings($entity_type, $bundle);
 
-  $items_count = isset($form_state['usanetwork_ads']['omniture']['items_count']) ? $form_state['usanetwork_ads']['omniture']['items_count'] : count($defaults['omniture']['variables']);
-  _usanetwork_ads_omniture_elements($id, $form['usanetwork_ads']['variables']['omniture'], $defaults['omniture'], $items_count);
-  $form_state['usanetwork_ads']['omniture']['items_count'] = $items_count;
-  $form['usanetwork_ads']['variables']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
+    $form['usanetwork_ads'] = array(
+      '#tree' => true,
+      '#type' => 'fieldset',
+      '#title' => t('Site Metrics'),
+      '#group' => 'additional_settings',
+      '#weight' => 5,
+      '#access' => user_access('administer usanetwork dart settings'),
+      '#collapsible' => true,
+      '#collapsed' => true,
+    );
 
-  $form['#submit'][] = 'usanetwork_ads_form_node_form_submit';
+    _usanetwork_ads_dart_elements($form['usanetwork_ads'], $defaults);
+    unset($form['usanetwork_ads']['is_sponsored']);
+    unset($form['usanetwork_ads']['sect']['#description']);
+
+    $id = drupal_html_id('usanetwork-ads-' . $bundle);
+    $form['usanetwork_ads']['omniture'] = array(
+      '#type' => 'fieldset',
+      '#tree' => TRUE,
+      '#title' => t('Omniture Variables'),
+    );
+
+    $items_count = isset($form_state['usanetwork_ads']['omniture']['items_count']) ? $form_state['usanetwork_ads']['omniture']['items_count'] : count($defaults['omniture']['variables']);
+    _usanetwork_ads_omniture_elements($id, $form['usanetwork_ads']['omniture'], $defaults['omniture'], $items_count);
+    $form_state['usanetwork_ads']['omniture']['items_count'] = $items_count;
+    $form['usanetwork_ads']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
+
+    $form['#submit'][] = 'usanetwork_ads_form_bundle_form_submit';
+    $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_bundle_form_submit';
+  }
 }
 
 /**
- * Node save submit callback
+ * Entity save submit callback
  * Saves settings
  */
-function usanetwork_ads_form_node_form_submit($form, &$form_state) {
-  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form_state['node']) || !isset($form_state['node']->nid)) {
+function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
+  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form_state['entity'])) {
     return;
   }
 
-  $node = $form_state['node'];
+  $entity = $form_state['entity'];
+  $entity_type = $form_state['entity_type'];
+  $entity_id = $form_state['entity_id'];
+  $bundle = $form_state['bundle'];
+
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());
-  $node_settings = $form_state['input']['usanetwork_ads']['variables'];
-  $node_settings['default'] = $form_state['input']['usanetwork_ads']['default'];
+  $entity_settings = $form_state['input']['usanetwork_ads']['variables'];
+  $entity_settings['default'] = $form_state['input']['usanetwork_ads']['default'];
 
   // remove empty omniture variables
   $variables = array();
-  if (isset($node_settings['omniture']['variables']) && is_array($node_settings['omniture']['variables'])) {
-    foreach ($node_settings['omniture']['variables'] as $item) {
+  if (isset($entity_settings['omniture']['variables']) && is_array($entity_settings['omniture']['variables'])) {
+    foreach ($entity_settings['omniture']['variables'] as $item) {
       if (!empty($item['key'])) {
         $variables[] = $item;
       }
     }
   }
-  $node_settings['omniture']['variables'] = $variables;
+  $entity_settings['omniture']['variables'] = $variables;
 
-  $settings['node'][$node->type][$node->nid] = $node_settings;
+  $settings[$entity_type][$bundle][$entity_id] = $entity_settings;
   variable_set('usanetwork_ads_site_metric_settings', $settings);
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- */
-function usanetwork_ads_form_node_type_form_alter(&$form, &$form_state) {
-  if (!isset($form['#node_type'])) {
-    return;
-  }
-
-  $node_type = $form['#node_type'];
-  $defaults = _usanetwork_ads_content_type_settings($node_type->type);
-
-  $form['usanetwork_ads'] = array(
-    '#tree' => true,
-    '#type' => 'fieldset',
-    '#title' => t('Site Metrics'),
-    '#group' => 'additional_settings',
-    '#weight' => 5,
-    '#access' => user_access('administer usanetwork dart settings'),
-    '#collapsible' => true,
-    '#collapsed' => true,
-  );
-
-  _usanetwork_ads_dart_elements($form['usanetwork_ads'], $defaults);
-  unset($form['usanetwork_ads']['is_sponsored']);
-  unset($form['usanetwork_ads']['sect']['#description']);
-
-  $id = drupal_html_id('usanetwork-ads-' . $node_type->type);
-  $form['usanetwork_ads']['omniture'] = array(
-    '#type' => 'fieldset',
-    '#tree' => TRUE,
-    '#title' => t('Omniture Variables'),
-  );
-
-  $items_count = isset($form_state['usanetwork_ads']['omniture']['items_count']) ? $form_state['usanetwork_ads']['omniture']['items_count'] : count($defaults['omniture']['variables']);
-  _usanetwork_ads_omniture_elements($id, $form['usanetwork_ads']['omniture'], $defaults['omniture'], $items_count);
-  $form_state['usanetwork_ads']['omniture']['items_count'] = $items_count;
-  $form['usanetwork_ads']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
-
-  $form['#submit'][] = 'usanetwork_ads_form_node_type_form_submit';
-}
-
-/**
- * Node type save submit callback
+ * Bundle save submit callback
  * Saves settings
  */
-function usanetwork_ads_form_node_type_form_submit($form, &$form_state) {
-  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form['#node_type'])) {
+function usanetwork_ads_form_bundle_form_submit($form, &$form_state) {
+  if (!isset($form_state['input']['usanetwork_ads']) || !isset($form_state['bundle'])) {
     return;
   }
 
-  $node_type = $form['#node_type'];
+  $entity_type = $form_state['entity_type'];
+  $bundle = $form_state['bundle'];
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());
   $type_settings = $form_state['input']['usanetwork_ads'];
 
@@ -150,7 +209,7 @@ function usanetwork_ads_form_node_type_form_submit($form, &$form_state) {
   }
   $type_settings['omniture']['variables'] = $variables;
 
-  $settings['node'][$node_type->type]['default'] = $type_settings;
+  $settings[$entity_type][$bundle]['default'] = $type_settings;
   variable_set('usanetwork_ads_site_metric_settings', $settings);
 }
 
@@ -272,13 +331,24 @@ function _usanetwork_ads_omniture_variable_elements($defaults = array()) {
 }
 
 /**
- * Returns node specific settings.
+ * Returns entity specific settings.
  */
-function _usanetwork_ads_node_settings($node) {
+function _usanetwork_ads_entity_settings($entity, $entity_type) {
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());
-  $node_settings = isset($settings['node'][$node->type][$node->nid]) ? $settings['node'][$node->type][$node->nid] : array();
+  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+  $entity_settings = isset($settings[$entity_type][$bundle][$entity_id]) ? $settings[$entity_type][$bundle][$entity_id] : array();
 
-  return $node_settings;
+  return $entity_settings;
+}
+
+/**
+ * Returns bundle specific settings.
+ */
+function _usanetwork_ads_bundle_settings($entity_type, $bundle) {
+  $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  $bundle_settings = isset($settings[$entity_type][$bundle]['default']) ? $settings[$entity_type][$bundle]['default'] : array();
+
+  return $bundle_settings;
 }
 
 /**

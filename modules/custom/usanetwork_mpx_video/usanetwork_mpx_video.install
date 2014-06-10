@@ -29,7 +29,7 @@ function usanetwork_mpx_video_install() {
       'theplatform_username' => 'mpx/drupal-mpx-usa-main',
       'theplatform_password' => 'Pa55w0rd',
       'theplatform_import_account' => rawurlencode('NBCU USA Network'),
-      'theplatform_default_player_id' => 'Je0TXxCHkgdw',
+      'theplatform_default_player_id' => 'usa_player_endcard',
     ),
     '2' => array(
       'theplatform_username' => 'mpx/drupal-mpx-usa-tve',
@@ -42,7 +42,35 @@ function usanetwork_mpx_video_install() {
   _usanetwork_mpx_video_set_accounts($mpx_accounts);
   
   _usanetwork_mpx_video_set_players($mpx_accounts);
- 
+
+  // remove old video nodes
+  usanetwork_mpx_video_update_7000();
+}
+
+/**
+ * Remove old video nodes.
+ */
+function usanetwork_mpx_video_update_7000() {
+  $queue = DrupalQueue::get('usa_video_nodes_cleanup');
+
+  $types = array(
+    'usa_video',
+    'usa_tve_video'
+  );
+
+  // get nids to delete
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', $types, 'IN')
+    ->execute()
+    ->fetchCol();
+
+  // add them to queue and delete later by cron
+  $nodes_per_run = 50;
+  for($i = 0; $i < ceil(count($nids)/$nodes_per_run); $i++) {
+    $bunch = array_slice($nids, $i * $nodes_per_run, $nodes_per_run);
+    $queue->createItem($bunch);
+  }
 }
 
 function _usanetwork_mpx_video_set_accounts($insert_accounts){
@@ -68,7 +96,7 @@ function _usanetwork_mpx_video_set_accounts($insert_accounts){
 
       watchdog('media_theplatform_mpx', 'FATAL ERROR occurred while creating account @account --  "@message"  -- Exception output: @output.',
         array(
-          '@account' => _media_theplatform_mpx_account_log_string($account_data),
+          '@account' => _media_theplatform_mpx_account_log_string($key),
           '@message' => $e->getMessage(),
             '@output' => '<pre>' . print_r($e, TRUE) . '</pre>',
         ),
@@ -86,7 +114,7 @@ function _usanetwork_mpx_video_set_accounts($insert_accounts){
 
     if (!$account_data) {
       watchdog('media_theplatform_mpx', 'Failed to set import account for @account.  Account data could not be retrieved from the database.',
-        array('@account' => _media_theplatform_mpx_account_log_string($account_data)), WATCHDOG_ERROR);
+        array('@account' => _media_theplatform_mpx_account_log_string($key)), WATCHDOG_ERROR);
       continue;
     }
 

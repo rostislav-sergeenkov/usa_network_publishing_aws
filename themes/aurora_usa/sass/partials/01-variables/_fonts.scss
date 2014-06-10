@@ -194,6 +194,46 @@
     url("../fonts/Avalon-BoldOblique-webfont.ttf") format("truetype"),
     url("../fonts/Avalon-BoldOblique-webfont.svg#avalonbold_oblique") format("svg");
 }
+@font-face {
+    font-family: 'avalonregular_condensed';
+    src: url('../fonts/Avalon-BookCond-webfont.eot');
+    src: url('../fonts/Avalon-BookCond-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Avalon-BookCond-webfont.woff') format('woff'),
+    url('../fonts/Avalon-BookCond-webfont.ttf') format('truetype'),
+    url('../fonts/Avalon-BookCond-webfont.svg#avalonbook_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'avalonmedium_condensed';
+    src: url('../fonts/Avalon-MediumCond-webfont.eot');
+    src: url('../fonts/Avalon-MediumCond-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Avalon-MediumCond-webfont.woff') format('woff'),
+    url('../fonts/Avalon-MediumCond-webfont.ttf') format('truetype'),
+    url('../fonts/Avalon-MediumCond-webfont.svg#avalonmedium_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'avalondemi_condensed';
+    src: url('../fonts/Avalon-DemiCond-webfont.eot');
+    src: url('../fonts/Avalon-DemiCond-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Avalon-DemiCond-webfont.woff') format('woff'),
+    url('../fonts/Avalon-DemiCond-webfont.ttf') format('truetype'),
+    url('../fonts/Avalon-DemiCond-webfont.svg#avalondemi_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'avalonbold_condensed';
+    src: url('../fonts/Avalon-BoldCond-webfont.eot');
+    src: url('../fonts/Avalon-BoldCond-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Avalon-BoldCond-webfont.woff') format('woff'),
+    url('../fonts/Avalon-BoldCond-webfont.ttf') format('truetype'),
+    url('../fonts/Avalon-BoldCond-webfont.svg#avalonbold_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 // Font variables
@@ -201,6 +241,10 @@ $headline-bold      : "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans
 $headline-semi      : "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 $headline-reg       : "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
 $headline-thn       : "avalonextra_light", "Proxima N W01 Thin Reg", Arial, sans-serif;
+$headline-bold-condensed      : "avalonbold_condensed", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+$headline-demi-condensed      : "avalondemi_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+$headline-semi-condensed      : "avalonmedium_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+$headline-reg-condensed       : "avalonregular_condensed", "Proxima N W01 Reg", Arial, sans-serif;
 $bodytext-bold      : "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 $bodytext-semi      : "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 $bodytext-reg       : "Proxima N W01 Reg", Arial, sans-serif;

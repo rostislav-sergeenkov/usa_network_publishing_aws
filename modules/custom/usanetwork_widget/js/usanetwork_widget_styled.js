@@ -10,7 +10,7 @@ switch (current_env) {
   case 'prod': domain = 'www.usanetwork.com'; break;
   case 'prod_origin': domain = 'origin-www.usanetwork.com'; break;
 }
-var url = "http://" + domain + "/navbar/syndicate_styled";
+var url = "//" + domain + "/navbar/syndicate_styled";
 var isIE9 = window.XDomainRequest ? true : false;
 
 

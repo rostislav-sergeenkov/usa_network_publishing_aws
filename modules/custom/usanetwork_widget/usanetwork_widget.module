@@ -112,13 +112,11 @@ function usanetwork_widget_flush_caches() {
  * Helper to generate an env value based on base root to be used for JS
  */
 function _usanetwork_widget_get_environment() {
-  global $base_root;
-  switch ($base_root) {
-    case 'http://www.usanetwork.com': $site_env = 'prod'; break;
-    case 'http://stage.usanetwork.com': $site_env = 'stage'; break;
-    case 'http://qa.usanetwork.com': $site_env = 'qa'; break;
-    case 'http://dev.usanetwork.com': $site_env = 'dev'; break;
-    case 'http://local.usanetwork': $site_env = 'local'; break;
+  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
+
+  // override
+  switch ($site_env) {
+    case 'acceptance': $site_env = 'qa'; break;
   }
 
   return $site_env;
@@ -175,7 +173,7 @@ function usanetwork_widget_navbar_ajax_styled() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
+          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -187,7 +185,7 @@ function usanetwork_widget_navbar_ajax_styled() {
   </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
   $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
-  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $main_menu);
   exit;
 }
@@ -213,7 +211,7 @@ function usanetwork_widget_navbar_ajax_plain() {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
+          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-meganav" class="block block-usanetwork-blocks">
@@ -225,7 +223,7 @@ function usanetwork_widget_navbar_ajax_plain() {
   </header>';
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
-  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $main_menu);
   exit;
 }
@@ -322,7 +320,7 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
+          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
@@ -337,10 +335,10 @@ function usanetwork_widget_show_navbar_ajax_styled($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
+  $show_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav_syndicate');
   $main_menu = $main_menu['content']['meganav_syndicate']['#markup'];
-  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
 }
@@ -367,7 +365,7 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <div id="logo">
-          <a href="http://www.usanetwork.com" title="Home" rel="home">USA</a>
+          <a href="//www.usanetwork.com" title="Home" rel="home">USA</a>
         </div>
         <div class="region region-header">
           <div id="block-usanetwork-blocks-usa-tv-show-menu" class="block block-usanetwork-blocks"><div class="content">
@@ -382,10 +380,10 @@ function usanetwork_widget_show_navbar_ajax_plain($node) {
   </header>';
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
+  $show_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $show_menu);
   $main_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_meganav');
   $main_menu = $main_menu['content']['meganav']['#markup'];
-  $main_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $main_menu);
+  $main_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $main_menu);
   echo sprintf($markup_wrapper, $show_menu, $main_menu);
   exit;
 }
@@ -410,7 +408,7 @@ function usanetwork_widget_show_navbar_only($node) {
 function usanetwork_widget_show_navbar_ajax_only($node) {
   $show_menu = module_invoke('usanetwork_blocks', 'block_view', 'usa_tv_show_menu');
   $show_menu = $show_menu['content'];
-  $show_menu = preg_replace('/href="\//', 'href="http://www.usanetwork.com/', $show_menu);
+  $show_menu = preg_replace('/href="\//', 'href="//www.usanetwork.com/', $show_menu);
   print $show_menu;
   exit;
 }
@@ -539,7 +537,7 @@ function _usanetwork_widget_styles($show = null, $recreate = false) {
     $css = array();
     // Add initial styles
     drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css');
-    drupal_add_css('http://usanetwork.com/stylesheets/navbar.css', 'external');
+    drupal_add_css('//usanetwork.com/stylesheets/navbar.css', 'external');
     // Get styling info from other modules
     module_invoke_all('usanetwork_widget_style', $show);
     $content = _usanetwork_widget_aggregate_css($css);

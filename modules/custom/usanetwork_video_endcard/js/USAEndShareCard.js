@@ -10,7 +10,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   NBCUEndShareCard.Feed = 'http://www.usanetwork.com/videos/endcard/ajax/related';
   var playerurl = window.location.hash.match(/#playerurl=(.*)/);
   if (playerurl) {
-    NBCUEndShareCard.ShareURL = playerurl[1];
+    NBCUEndShareCard.ShareURL = decodeURIComponent(playerurl[1]);
   }
 
   /**

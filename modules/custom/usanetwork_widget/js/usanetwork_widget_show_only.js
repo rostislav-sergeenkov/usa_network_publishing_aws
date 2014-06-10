@@ -10,7 +10,7 @@ switch (current_env) {
   case 'prod': domain = 'www.usanetwork.com'; break;
   case 'prod_origin': domain = 'origin-www.usanetwork.com'; break;
 }
-var url = "http://" + domain + "/node/" + $show_id + "/navbar/syndicate_only";
+var url = "//" + domain + "/node/" + $show_id + "/navbar/syndicate_only";
 var isIE9 = window.XDomainRequest ? true : false;
 
 
@@ -56,7 +56,6 @@ function create_show_menu() {
 
   // TODO: change the 'stage' part of each URL to www & remove cache buster
   if(typeof $show_id != 'undefined') {
-    //document.write('<script src="http://stage.usanetwork.com/sites/usanetwork/themes/aurora_usa/javascripts/main-navigation-syndicate.js?923"></script>');
     if(isIE9) {
       xmlhttp.open("GET", url);
     } else {

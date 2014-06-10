@@ -33,16 +33,20 @@ function usanetwork_ads_init() {
 /**
  * Helper that returns the tv_show node nid associated with a given node.
  */
-function _usanetwork_ads_get_node_tv_show($node) {
-
+function _usanetwork_ads_get_entity_tv_show($entity, $entity_type) {
   $tv_show_nid = NULL;
 
-  if ($node->type == 'tv_show') {
-    $tv_show_nid = $node->nid;
-  }
-  else if (isset($node->field_show)) {
-    $field_show_items = field_get_items('node', $node, 'field_show');
-    $tv_show_nid = $field_show_items[0]['target_id'];
+  if ($entity) {
+    list($entity_id,,$bundle) = entity_extract_ids($entity_type, $entity);
+    if ($entity_type == 'node' && $bundle == 'tv_show') {
+      $tv_show_nid = $entity_id;
+    }
+    elseif (!empty($entity->field_show)) {
+      $show_ref = reset(field_get_items($entity_type, $entity, 'field_show'));
+      if ($show_ref) {
+        $tv_show_nid = $show_ref['target_id'];
+      }
+    }
   }
 
   return $tv_show_nid;
@@ -481,45 +485,54 @@ function usanetwork_ads_admin_paths() {
  * @todo Add content type defaults
  */
 function _usanetwork_ads_get_node_dart_settings($node) {
-  $node_settings = _usanetwork_ads_node_settings($node);
-  $node_dart_settings = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
-  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
+  return _usanetwork_ads_get_entity_dart_settings($node, 'node');
+}
 
-  if (isset($node->page_collection_parent)) {
+/**
+ * Helper that returns DART ad settings for a given node.
+ * @todo Add content type defaults
+ */
+function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
+  $entity_settings = _usanetwork_ads_entity_settings($entity, $entity_type);
+  $entity_dart_settings = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
+  $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
+  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+
+  if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
     // node has page collection parent
-    $node_dart_settings = _usanetwork_ads_get_node_dart_settings($node->page_collection_parent);
+    $entity_dart_settings = _usanetwork_ads_get_entity_dart_settings($entity->page_collection_parent, $entity_type);
   }
   else {
-    // load content type defaults
-    $type_settings = _usanetwork_ads_content_type_settings($node->type);
-    foreach (array_keys($node_dart_settings) as $key) {
+    // load bundle defaults
+    $type_settings = _usanetwork_ads_bundle_settings($entity_type, $bundle);
+    foreach (array_keys($entity_dart_settings) as $key) {
       if (isset($type_settings[$key])) {
-        $node_dart_settings[$key] = $type_settings[$key];
+        $entity_dart_settings[$key] = $type_settings[$key];
       }
     }
 
-    // node has show parent
-    if ($tv_show_nid && $node->type != 'tv_show') {
-      $show_settins = _usanetwork_ads_get_node_dart_settings(node_load($tv_show_nid));
-      if (!empty($show_settins['sect'])) {
-        $node_dart_settings['sect'] = $show_settins['sect'];
+    // entity has show parent
+    if ($tv_show_nid && ($entity_type != 'node' || ($entity_type == 'node' && $bundle != 'tv_show'))) {
+      $show_settings = _usanetwork_ads_get_entity_dart_settings(node_load($tv_show_nid), 'node');
+      if (!empty($show_settings['sect'])) {
+        $entity_dart_settings['sect'] = $show_settings['sect'];
       }
     }
   }
 
-  // Node uses default settings
-  if (empty($node_settings) || $node_settings['default']) {
-    return $node_dart_settings;
+  // Entity uses default settings
+  if (empty($entity_settings) || $entity_settings['default']) {
+    return $entity_dart_settings;
   }
 
   // override parent settings
-  foreach(array_keys($node_dart_settings) as $variable) {
-    if (!empty($node_settings[$variable])) {
-      $node_dart_settings[$variable] = $node_settings[$variable];
+  foreach(array_keys($entity_dart_settings) as $variable) {
+    if (!empty($entity_settings[$variable])) {
+      $entity_dart_settings[$variable] = $entity_settings[$variable];
     }
   }
 
-  return $node_dart_settings;
+  return $entity_dart_settings;
 }
 
 /**
@@ -540,31 +553,39 @@ function _usanetwork_ads_get_node_refresh_settings($node) {
  * Helper that determines if a node is sponsored.
  */
 function _usanetwork_ads_is_node_sponsored($node) {
-  $node_settings = _usanetwork_ads_node_settings($node);
-  $node_is_sponsored = FALSE;
-  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
+  return _usanetwork_ads_is_entity_sponsored($node, 'node');
+}
 
-  if (empty($node_settings)
-    || $node_settings['default']
-    || !isset($node_settings['is_sponsored'])
-    || $node_settings['is_sponsored'] == -1
+/**
+ * Helper that determines if an entity is sponsored.
+ */
+function _usanetwork_ads_is_entity_sponsored($entity, $entity_type) {
+  $entity_settings = _usanetwork_ads_entity_settings($entity, $entity_type);
+  $entity_is_sponsored = FALSE;
+  $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
+
+  if (empty($entity_settings)
+    || $entity_settings['default']
+    || !isset($entity_settings['is_sponsored'])
+    || $entity_settings['is_sponsored'] == -1
   ) {
-    if (isset($node->page_collection_parent)) {
-      // node has page collection parent
-      $node_is_sponsored = _usanetwork_ads_is_node_sponsored($node->page_collection_parent);
+    list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+
+    if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
+      // entity has page collection parent
+      $entity_is_sponsored = _usanetwork_ads_is_entity_sponsored($entity->page_collection_parent, $entity_type);
     }
-    elseif ($tv_show_nid && $node->type != 'tv_show') {
-      // node has tv show parent
-      $node_is_sponsored = _usanetwork_ads_is_node_sponsored(node_load($tv_show_nid));
+    elseif ($tv_show_nid && $bundle != 'tv_show') {
+      // entity has tv show parent
+      $entity_is_sponsored = _usanetwork_ads_is_entity_sponsored(node_load($tv_show_nid), 'node');
     }
   }
   else {
-    $node_is_sponsored = $node_settings['is_sponsored'];
+    $entity_is_sponsored = $entity_settings['is_sponsored'];
   }
 
-  return (bool)$node_is_sponsored;
+  return (bool)$entity_is_sponsored;
 }
-
 
 /**
  * Helper that determines if a node is sponsored.
@@ -589,15 +610,15 @@ function _usanetwork_ads_is_page_sponsored($page_variables = array()) {
   $page_is_sponsored = FALSE;
   $current_menu_item = menu_get_item();
   $current_menu_item_path = $current_menu_item['path'];
-  $current_menu_object = menu_get_object();
+  $entity_type = NULL;
+  $current_menu_object = _usanetwork_menu_get_object($entity_type);
 
   // Node page based settings.
   if (isset($page_variables['node']) && is_object($page_variables['node']) && isset($page_variables['node']->nid)) {
     $page_is_sponsored = _usanetwork_ads_is_node_sponsored($page_variables['node']);
   }
-  else if ($current_menu_item_path == 'node/%' &&
-      is_object($current_menu_object) && isset($current_menu_object->nid)) {
-    $page_is_sponsored = _usanetwork_ads_is_node_sponsored($current_menu_object);
+  else if ($current_menu_object) {
+    $page_is_sponsored = _usanetwork_ads_is_entity_sponsored($current_menu_object, $entity_type);
   }
   // Path based settings.
   else {
@@ -612,18 +633,16 @@ function _usanetwork_ads_is_page_sponsored($page_variables = array()) {
  * Implements hook_preprocess_page().
  */
 function usanetwork_ads_preprocess_page(&$variables) {
-
   // Define DART ad settings via Drupal JS settings.
   $usa_dart_js_settings = array();
   $usa_dart_js_settings['USA']['DART']['values'] = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
   $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
   $current_menu_item = menu_get_item();
   $current_menu_item_path = $current_menu_item['path'];
-  $current_menu_object = menu_get_object();
+  $entity_type = NULL;
+  $current_menu_object = _usanetwork_menu_get_object($entity_type);
 
   // Homepage specific settings.
-  $current_menu_item = menu_get_item();
-  $current_menu_object = menu_get_object();
   if (drupal_is_front_page()) {
     $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($site_metric_settings['home']['sect']) ?
       $site_metric_settings['home']['sect'] : 'home';
@@ -632,11 +651,12 @@ function usanetwork_ads_preprocess_page(&$variables) {
     $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($site_metric_settings['home']['sub2']) ?
       $site_metric_settings['home']['sub2'] : '';
   }
-  // Node page based settings.
-  else if ($current_menu_item_path == 'node/%' &&
-      is_object($current_menu_object) && isset($current_menu_object->nid)) {
-    $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($current_menu_object);
-    $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($current_menu_object);
+  // Entity page based settings.
+  else if ($current_menu_object) {
+    $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_entity_dart_settings($current_menu_object, $entity_type);
+    if ($entity_type == 'node') {
+      $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($current_menu_object);
+    }
   }
   // Path based settings.
   else {
@@ -679,13 +699,19 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $adobe_tagloader_settings['tag_container_name'] : '';
   #drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js', array('scope' => 'footer', 'preprocess' => FALSE));
 
+  $context = array(
+    'menu_item' => $current_menu_item,
+    'entity' => $current_menu_object,
+    'entity_type' => $entity_type,
+  );
+  drupal_alter('usa_dart', $usa_dart_js_settings, $context);
+
 	// Set the JS device detection code
 	drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/device-detect.js', array('type' => 'file', 'scope' => 'header', 'every_page' => true, 'preprocess' => true));
 
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');
 }
-
 
 /**
  * Implements form_sitecatalyst_admin_settings_alter().
@@ -724,35 +750,43 @@ function _usanetwork_ads_get_omniture_variables($omniture_settings) {
  * Helper that returns omniture variables for a given node.
  */
 function _usanetwork_ads_get_node_omniture_variables($node) {
-  $node_settings = _usanetwork_ads_node_settings($node);
-  $node_omniture_variables = array();
+  return _usanetwork_ads_get_entity_omniture_variables($node, 'node');
+}
+
+/**
+ * Helper that returns omniture variables for a given entity.
+ */
+function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
+  $entity_settings = _usanetwork_ads_entity_settings($entity, $entity_type);
+  $entity_omniture_variables = array();
   $variables = array();
+  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
 
   // Omniture disabled
-  if (isset($node_settings['omniture']['disable']) && $node_settings['omniture']['disable']) {
+  if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
     return false;
   }
 
-  $tv_show_nid = _usanetwork_ads_get_node_tv_show($node);
+  $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
 
   // node has tv show parent
-  if ($tv_show_nid && $node->type != 'tv_show') {
-    $variables[] = _usanetwork_ads_get_node_omniture_variables(node_load($tv_show_nid));
+  if ($tv_show_nid && $bundle != 'tv_show') {
+    $variables[] = _usanetwork_ads_get_entity_omniture_variables(node_load($tv_show_nid), 'node');
   }
 
   // load content type defaults
-  $type_settings = _usanetwork_ads_content_type_settings($node->type);
+  $type_settings = _usanetwork_ads_bundle_settings($entity_type, $bundle);
   $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables']) ? $type_settings['omniture']['variables'] : array());
 
   // node has page collection parent
-  if (isset($node->page_collection_parent)) {
-    $variables[] = _usanetwork_ads_get_node_omniture_variables($node->page_collection_parent);
+  if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
+    $variables[] = _usanetwork_ads_get_entity_omniture_variables($entity->page_collection_parent, 'node');
   }
 
   // add s.prop5 for media galleries
-  if ($node->type == 'media_gallery') {
-    if (!empty($node->field_gallery_type)) {
-      $gallery_type = reset(field_get_items('node', $node, 'field_gallery_type'));
+  if ($entity_type == 'node' && $bundle == 'media_gallery') {
+    if (!empty($entity->field_gallery_type)) {
+      $gallery_type = reset(field_get_items($entity_type, $entity, 'field_gallery_type'));
       if ($gallery_type && $gallery_type['value'] != '0') {
         $variables[] = array(
           's.prop5' => $gallery_type['value'],
@@ -762,21 +796,20 @@ function _usanetwork_ads_get_node_omniture_variables($node) {
   }
   //
 
-  if (!empty($node_settings) && !$node_settings['default']) {
+  if (!empty($entity_settings) && !$entity_settings['default']) {
     // override parent settings
-    $variables[] = _usanetwork_ads_get_omniture_variables($node_settings['omniture']['variables']);
+    $variables[] = _usanetwork_ads_get_omniture_variables($entity_settings['omniture']['variables']);
   }
 
   // merge variables
   foreach ($variables as $set) {
     foreach ($set as $key => $value) {
-      $node_omniture_variables[$key] = $value;
+      $entity_omniture_variables[$key] = $value;
     }
   }
 
-  return $node_omniture_variables;
+  return $entity_omniture_variables;
 }
-
 
 /**
  * Implements hook_sitecatalyst_variables().
@@ -787,7 +820,8 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
   $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
   $current_menu_item = menu_get_item();
   $current_menu_item_path = $current_menu_item['path'];
-  $current_menu_object = menu_get_object();
+  $entity_type = NULL;
+  $current_menu_object = _usanetwork_menu_get_object($entity_type);
 
   // Homepage specific settings.
   if (drupal_is_front_page()) {
@@ -795,17 +829,16 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
         $site_metric_settings['home']['omniture'] : array();
     $omniture_variables = _usanetwork_ads_get_omniture_variables($omniture_settings);
   }
-  // Node page based settings.
-  else if ($current_menu_item_path == 'node/%' &&
-      is_object($current_menu_object) && isset($current_menu_object->nid)) {
-    $omniture_variables = _usanetwork_ads_get_node_omniture_variables($current_menu_object);
+  // Entity page based settings.
+  else if ($current_menu_object) {
+    $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type);
   }
   // Path based settings.
   else {
     // If there is a node in $variables, get these values first.  Then over-ride
     // with the path specific values.
-    if (is_object($current_menu_object) && isset($current_menu_object->nid)) {
-      $omniture_variables = _usanetwork_ads_get_node_omniture_variables($current_menu_object);
+    if (isset($variables['node'])) {
+      $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($variables['node'], 'node');
     }
     if ($omniture_variables !== false) {
       // Match current path to how it is made available by the custom modules.
@@ -817,6 +850,13 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
       $omniture_variables = $path_omniture_variables + $omniture_variables;
     }
   }
+
+  $context = array(
+    'menu_item' => $current_menu_item,
+    'entity' => $current_menu_object,
+    'entity_type' => $entity_type,
+  );
+  drupal_alter('usa_omniture', $omniture_variables, $context);
 
   if ($omniture_variables) {
     return array('variables' => $omniture_variables);

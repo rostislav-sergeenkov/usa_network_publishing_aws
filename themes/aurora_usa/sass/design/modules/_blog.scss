@@ -1,0 +1,461 @@
+body {
+  &.blog {
+    .panel-display {
+      width: 945px;
+      margin: 0 auto;
+      @include breakpoint($bp-home-narrowest) {
+        width: 100%;
+      }
+      .panel-col-first {
+        width: 645px;
+        @include breakpoint($bp-home-narrowest) {
+          width: 100%;
+        }
+        .inside {
+          margin-right: 30px;
+          @include breakpoint($bp-home-narrowest) {
+            margin-right: 0;
+          }
+        }
+      }
+      .panel-col-last {
+        width: 300px;
+        @include breakpoint($bp-home-narrowest) {
+          width: 100%;
+        }
+        .inside {
+          margin-left: 0;
+        }
+
+        .panel-pane {
+          border-bottom: 3px solid $gray-med-dark;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+
+          h2 {
+            &.pane-title {
+              @extend %regular-headline;
+              font-size: 28px;
+              margin: 10px 0;
+              text-transform: lowercase;
+              border-bottom: 3px solid $gray-med-dark;
+              margin: 10px 0;
+              padding-bottom: 10px;
+            }
+          }
+
+          .view-display-id-most_popular {
+            .views-row {
+              @extend %regular-headline;
+              font-size: 16px;
+              &:after {
+                clear: both;
+                content: "";
+                display: table;
+              }
+              .field-name-field-post-cover {
+                float: left;
+                margin: 0 10px 10px 0;
+              }
+              .views-field-title {
+                @extend %semi-headline;
+              }
+              .views-field-created {
+                margin-top: 5px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+
+      .file-video-mpx {
+        &.view-mode-inline_content {
+          iframe {
+            width: 615px;
+            height: 345px;
+          }
+        }
+      }
+    }
+
+    .view-display-id-blog_content {
+      .views-row {
+        border-bottom: 3px solid $gray-med-dark;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.node {
+  &.node-post {
+    .field-name-body {
+      margin-bottom: 40px;
+    }
+    .field-name-post-date {
+      @extend %semi-headline-14;
+      text-transform: uppercase;
+      color: $blue;
+    }
+    .field-name-title {
+      h2 {
+        @extend %bold;
+        font-size: 37px;
+        text-transform: uppercase;
+        margin: 15px 0;
+        @include breakpoint($bp-home-narrowest) {
+          font-size: 27px;
+        }
+      }
+    }
+    .field-name-body {
+      @extend %semi-headline;
+      font-size: 16px;
+      text-align: justify;
+      text-justify: inter-word;
+      p {
+        margin: 10px 0;
+      }
+    }
+    .gig-comments-container {
+      clear: both;
+      width: 100% !important;
+      margin: 10px 0;
+    }
+    .field-name-field-gigya-share-bar {
+      float: right;
+      margin: -10px 0 10px 0;
+      @include breakpoint($bp-home-narrowest) {
+        float: none;
+      }
+    }
+  }
+}
+
+$blue-hampton: #499ad2;
+
+body {
+  &.blog {
+    color: #000000;
+    .usa-wrap {
+      background-color: #ffffff;
+    }
+    .region-content {
+      a {
+        @include link-colors($blue-hampton, $black, $blue-hampton, $blue-hampton, $blue-hampton);
+      }
+    }
+
+    .panel-display {
+      @include breakpoint($bp-home-narrowest) {
+        min-width: 297px;
+      }
+      .panel-col-top {
+        margin-bottom: 30px;
+        width: 100%;
+        h1 {
+          @extend %semi-headline;
+          font-size: 58px;
+          line-height: 58px;
+          text-transform: uppercase;
+          color: $blue-hampton;
+          span {
+            color: $black;
+          }
+        }
+        .inside {
+          margin: 0 auto;
+          position: relative;
+          min-height: 135px;
+          .blog-header {
+            .blog-logo {
+              display: block;
+              float: left;
+              width: 80px;
+              height: 75px;
+              margin: 13px 16px 3px 3px;
+              background: url("../images/assets/blog/hamptons_logo.png") scroll 0 0 no-repeat transparent;
+              @include breakpoint($bp-home-narrowest) {
+                display: none;
+              }
+            }
+            .blog-title {
+              display: block;
+              float: left;
+              width: 835px;
+              height: 49px;
+              margin: 22px 0 0 0;
+              background: url("../images/assets/blog/hamptons_header.png") scroll 0 0 no-repeat transparent;
+              overflow: hidden;
+              padding-top: 49px;
+              @include breakpoint($bp-home-narrowest) {
+                width: 297px;
+                height: 70px;
+                padding-top: 70px;
+                margin-bottom: 8px;
+                background: url("../images/assets/blog/hamptons_header_mobile.png") scroll 0 0 no-repeat transparent;
+              }
+            }
+            .category-menu {
+              clear: both;
+              border-color: #000000;
+              border-style: solid;
+              border-width: 1px 0 1px;
+              margin-top: 3px;
+              @include breakpoint($bp-home-narrowest) {
+                border: none;
+                > .item-list {
+                  position: relative;
+                  > .filter-menu {
+                    position: absolute;
+                    display: none;
+                    top: 54px;
+                    left: 0;
+                    right: 0;
+                  }
+                  &.open {
+                    > .filter-menu {
+                      display: block;
+                    }
+                  }
+                }
+              }
+              > .item-list {
+                &:after {
+                  clear: both;
+                  content: " ";
+                  display: table;
+                }
+              }
+              ul {
+                margin: 0;
+                li {
+                  list-style: none;
+                  float: left;
+                  margin: 6px 0 6px 19px;
+                  padding: 4px 19px 0 0;
+                  border-right: 2px solid #749eb6;
+                  color: #163969;
+                  text-transform: uppercase;
+                  font-family: $headline-semi-condensed;
+                  font-size: 20px;
+                  line-height: 25px;
+                  @include breakpoint($bp-home-narrowest) {
+                    font-size: 17px;
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    float: none;
+                    background-color: #062e62;
+                    color: #ffffff;
+                    border-right: none;
+                    &:hover {
+                      background-color: $blue-hampton;
+                    }
+                  }
+                  &.last {
+                    border-right: none;
+                  }
+                  a {
+                    @include link-colors(#163969, $black, #163969, #163969, #163969);
+                    @include breakpoint($bp-home-narrowest) {
+                      display: block;
+                      padding: 15px;
+                      width: 100%;
+                      @include link-colors($white, $white, $white, $white, $white);
+                    }
+                  }
+                  &.active,
+                  &.active-trail,
+                  a.active {
+                    font-family: $headline-bold-condensed;
+                    line-height: 24px;
+                  }
+                  .item-list {
+                    display: none;
+                  }
+                }
+              }
+              .menu-label {
+                display: none;
+                font-family: $headline-semi-condensed;
+                text-transform: uppercase;
+                font-size: 17px;
+                position: relative;
+                &:after,
+                &:hover:after {
+                  position: absolute;
+                  right: 10px;
+                  top: 23px;
+                  left: auto;
+                  @extend %usanetwork-font;
+                  font-size: 11px;
+                  content: "\e000";
+                  color: $white;
+                }
+                @include breakpoint($bp-home-narrowest) {
+                  display: block;
+                  padding: 15px;
+                  width: 100%;
+                  background-color: #062e62;
+                  color: $white;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+      .panel-col-last {
+        .panel-pane {
+          border-bottom: none;
+
+          h2 {
+            &.pane-title {
+              color: $blue-hampton;
+              border-bottom-color: $blue-hampton;
+            }
+          }
+        }
+
+        .view-display-id-most_popular {
+          .views-row {
+            .views-field-title {
+              a {
+                @include link-colors($black, $blue-hampton, $black, $black, $black);
+              }
+            }
+            .views-field-created {
+              color: $blue-hampton;
+            }
+          }
+        }
+      }
+    }
+
+    .view-display-id-blog_content {
+      .views-row {
+        border-bottom: 1px solid $beige;
+      }
+    }
+  }
+}
+
+.node {
+  &.node-post {
+    &.node-teaser {
+      .field-name-title {
+        h2 {
+          a {
+            @include link-colors($black, $blue-hampton, $black, $black, $black);
+          }
+        }
+      }
+    }
+
+    .field-name-post-date {
+      color: $blue-hampton;
+      @include breakpoint($bp-home-narrowest) {
+        display: none;
+      }
+    }
+    .field-type-gigya-sharebar {
+      .gig-button-container  {
+        td {
+          > div {
+            width: 35px !important;
+            height: 35px !important;
+            background-image: url("../images/assets/blog/hamptons_share.png") !important;
+            @include breakpoint($bp-home-narrowest) {
+              width: 35px !important;
+              height: 35px !important;
+            }
+          }
+        }
+
+        &.gig-button-container-facebook {
+          td {
+            > div {
+              background-position: 0px 0px !important;
+              &:hover {
+                background-position: 0px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: 0px 0px !important;
+                &:hover {
+                  background-position: 0px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-twitter {
+          td {
+            > div {
+              background-position: -42px 0px !important;
+              &:hover {
+                background-position: -42px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -42px 0px !important;
+                &:hover {
+                  background-position: -42px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-tumblr {
+          td {
+            > div {
+              background-position: -84px 0px !important;
+              &:hover {
+                background-position: -84px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -84px 0px !important;
+                &:hover {
+                  background-position: -84px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-pinterest {
+          td {
+            > div {
+              background-position: -126px 0px !important;
+              &:hover {
+                background-position: -126px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -126px 0px !important;
+                &:hover {
+                  background-position: -126px 0px !important;
+                }
+              }
+            }
+          }
+        }
+        &.gig-button-container-share {
+          td {
+            > div {
+              background-position: -168px 0px !important;
+              &:hover {
+                background-position: -168px 0px !important;
+              }
+              @include breakpoint($bp-home-narrowest) {
+                background-position: -168px 0px !important;
+                &:hover {
+                  background-position: -168px 0px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -51,6 +51,7 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
+<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -59,7 +60,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Do not see your provider?',
+    'footer_text' => 'Don\'t see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );
@@ -127,6 +128,7 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
+<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -135,7 +137,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Do not see your provider?',
+    'footer_text' => 'Don\'t see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );
@@ -196,6 +198,20 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->name = 'tve_k2_api_url';
   $strongarm->value = 'http://nbcutve.viewerlink.tv/';
   $export['tve_k2_api_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_k2_brand_id';
+  $strongarm->value = 'usa';
+  $export['tve_k2_brand_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'tve_k2_client_id';
+  $strongarm->value = 'NBCUTV';
+  $export['tve_k2_client_id'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

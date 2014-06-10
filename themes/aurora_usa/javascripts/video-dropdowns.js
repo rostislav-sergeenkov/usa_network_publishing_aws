@@ -2,18 +2,18 @@
 (function ($) {
   Drupal.behaviors.video_dropdowns = {
 
-   attach: function (context, settings) {
+    attach: function (context, settings) {
 
       $('body').once('usaVideo', function() {
 
         // all shows menu toggle
         $('.usa-secondary-menu .shows > li.first').click(function() {
-            $(this).find('.item-list').toggle();
+          $(this).find('.item-list').toggle();
         });
 
         $('.usa-secondary-menu .categories > li.more').hover(function() {
-            $(this).find('.item-list .more').toggle();
-            $(this).toggleClass('open');
+          $(this).find('.item-list .more').toggle();
+          $(this).toggleClass('open');
         });
 
 
@@ -55,43 +55,44 @@
         }
       });
 
-       // video items toggler
+      // video items toggler
+      var $expandable_container = $('.view.expandable-container');
+      $expandable_container.each(function() {
+        var $self = $(this);
+        var $container = $self.find('.view-content');
+        var $toggler = $self.find('.expandable-toggle li');
 
-      $expandable_container = $('.view.expandable-container');
-      $container = $('.view.expandable-container .view-content');
-      $toggler = $('.view.expandable-container .expandable-toggle li');
+        var i = 0;
 
-      var i = 0;
-
-      if($toggler.text() != 'more') {
-        $toggler.addClass('less').text('close');
-        $expandable_container.addClass('expanded');
-        i = 1;
-      }
-
-      $toggler.click(function() {
-        if($toggler.text() == 'close') {
+        if($toggler.text() != 'more') {
+          $toggler.addClass('less').text('close');
+          $self.addClass('expanded');
           i = 1;
-          $container.find('.item-list').hide();
-          $container.find('.item-list:first-child').css('display','block');
-          $toggler.text('more');
-          $toggler.removeClass('less').addClass('more');
-          $expandable_container.removeClass('expanded');
-        } else if ($toggler.text() == 'more') {
-          $toggler.removeClass('less').addClass('more');
-          $container.find('.item-list:first-child').css('display','block');
-          $count = $container.find('.item-list').length - 1;
-          $container.find('.item-list:eq('+ i + ')').show();
-          if($count == i) {
-            $toggler.text('close');
-            $toggler.addClass('less').removeClass('more');
-            $expandable_container.addClass('expanded');
-            i = 1;
-          }
-          i++;
         }
-      });
 
+        $toggler.click(function() {
+          if($toggler.text() == 'close') {
+            i = 1;
+            $container.find('.item-list').hide();
+            $container.find('.item-list:first-child').css('display','block');
+            $toggler.text('more');
+            $toggler.removeClass('less').addClass('more');
+            $self.removeClass('expanded');
+          } else if ($toggler.text() == 'more') {
+            $toggler.removeClass('less').addClass('more');
+            $container.find('.item-list:first-child').css('display','block');
+            $count = $container.find('.item-list').length - 1;
+            $container.find('.item-list:eq('+ i + ')').show();
+            if($count == i) {
+              $toggler.text('close');
+              $toggler.addClass('less').removeClass('more');
+              $self.addClass('expanded');
+              i = 1;
+            }
+            i++;
+          }
+        });
+      });
 
       // tve help messaging
 
@@ -130,7 +131,7 @@
 //        $('.tve-help-link img').attr('src','/sites/usanetwork/themes/aurora_usa/images/info_gray.png');
         $('.featured-asset').removeClass('tve-overlay');
       });
-    },
- };
+    }
+  };
 
 }(jQuery));

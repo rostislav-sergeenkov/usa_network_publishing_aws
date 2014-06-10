@@ -51,6 +51,6 @@ function context_entity_field_context_registry() {
  */
 function context_entity_field_entity_view($entity, $type, $view_mode, $langcode) {
   if ($plugin = context_get_plugin('condition', 'entity_field')) {
-    $plugin->execute($type, $entity);
+    $plugin->execute($type, $entity, $view_mode);
   }
 }

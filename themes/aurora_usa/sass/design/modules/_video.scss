@@ -842,7 +842,6 @@
       text-align: left;
     }
     &.signOut {
-      &.not-live {
         position:absolute;
         display:inline-block;
         top: 119px;
@@ -857,14 +856,18 @@
           }
         }
         @include breakpoint($bp-video-mid-range4-width) {
-          position: relative;
-          top: 0;
+        cursor: normal;
+        position: relative;
+        top: 0px;
+        width: 100%;
           .item-list {
             .first {
                 margin: 0 0 0.25em 0;
             }
           }
         }
+      &.not-live {
+
       }
       &.live .item-list ul li {
         margin-left: 0;
@@ -1121,9 +1124,9 @@
     float: left;
     width: 615px;
     margin-bottom: 15px;
-    @include breakpoint($bp-video-large-width) {
+    /*@include breakpoint($bp-video-large-width) {
       width: 100%;
-    }
+    }*/
     @include breakpoint($bp-video-player-section) {
       width: 100%;
     }
@@ -1209,9 +1212,10 @@
     }
   }
   .ad {
+    max-width: 300px;
     @include breakpoint($bp-video-mid2_width) {
-      display: inline;
-      float: right;
+      display: block;
+      float: none;
       margin-left: auto;
       margin-right: auto;
     }
@@ -1221,6 +1225,103 @@
   }
   .tve-auth {
     float: right;
+  }
+  .sidecarSection:not(.ng-hide) {
+    float: right;
+    height: 360px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 300px;
+    .sidecarTitle {
+      color: $gray-light;
+      font-size: 24px;
+      position: absolute;
+      top: -31px;
+    }
+    @include breakpoint($bp-video-player-section) {
+      float: none;
+      margin: 0 auto;
+      margin-top: 36px;
+    }
+    @include breakpoint($bp-video-high-range-width) {
+      height: 345px;
+      .ww-sidecar {
+        height: 345px;
+        section {
+          height: 300px;
+        }
+      }
+    }
+    @include breakpoint($bp-video-mid-range4-width) {
+      float: left;
+      margin-top: 25px;
+    }
+    & ~ .ad {
+      bottom: 220px;
+      float: none;
+      position: absolute;
+      right: 0;
+      @include breakpoint($bp-video-high-range-width) {
+        bottom: 0;
+        float: right;
+        position: relative;
+
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
+        bottom: 320px;
+      }
+      @include breakpoint($bp-video-player-section) {
+        bottom: 0px;
+        margin: 0 auto;
+        margin-top: 20px;
+        position: relative;
+
+      }
+    }
+    & ~ .description {
+      float: left;
+      overflow: hidden;
+      .field {
+        margin-top: 20px;
+      }
+      .field-name-field-mpx-description {
+        float: left;
+      }
+      .field-name-field-gigya-share-bar {
+        float: right;
+      }
+      @include breakpoint($bp-video-player-section) {
+        float: none;
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
+        float: right;
+        margin-right: 0;
+        margin-top: 80px;
+        width: 300px;
+        .field-name-field-gigya-share-bar {
+          float: left;
+          margin-top: 0px;
+        }
+      }
+      @include breakpoint($bp-video-high-range-width) {
+        width: 615px;
+        .field-name-field-mpx-description {
+          width: 415px;
+        }
+        .field-name-field-gigya-share-bar {
+          width: 190px;
+        }
+      }
+      @include breakpoint($bp-show-very-large-width) {
+        width: 930px;
+        .field-name-field-mpx-description {
+          width: 730px;
+        }
+        .field-name-field-gigya-share-bar {
+          width: 190px;
+        }
+      }
+    }
   }
 }
 .tve-overlay {

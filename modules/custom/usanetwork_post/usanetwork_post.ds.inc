@@ -30,7 +30,7 @@ function usanetwork_post_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '4',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_blog_post_date',
     ),
   );
   $export['node|post|default'] = $ds_fieldsetting;
@@ -55,7 +55,7 @@ function usanetwork_post_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '4',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_blog_post_date',
     ),
   );
   $export['node|post|teaser'] = $ds_fieldsetting;

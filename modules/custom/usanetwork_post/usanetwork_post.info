@@ -50,6 +50,7 @@ features[variable][] = comment_form_location_post
 features[variable][] = comment_post
 features[variable][] = comment_preview_post
 features[variable][] = comment_subject_field_post
+features[variable][] = date_format_blog_post_date
 features[variable][] = field_bundle_settings_node__post
 features[variable][] = menu_options_post
 features[variable][] = menu_parent_post

@@ -31,12 +31,12 @@ function usanetwork_mpx_video_install() {
       'theplatform_import_account' => rawurlencode('NBCU USA Network'),
       'theplatform_default_player_id' => 'usa_player_endcard',
     ),
-    '2' => array(
-      'theplatform_username' => 'mpx/drupal-mpx-usa-tve',
-      'theplatform_password' => 'Pa55word',
-      'theplatform_import_account' => rawurlencode('NBCU TVE - USA Network'),
-      'theplatform_default_player_id' => 'usa_hls_vod_endcard',
-    ),
+//    '2' => array(
+//      'theplatform_username' => 'mpx/drupal-mpx-usa-tve',
+//      'theplatform_password' => 'Pa55word',
+//      'theplatform_import_account' => rawurlencode('NBCU TVE - USA Network'),
+//      'theplatform_default_player_id' => 'usa_hls_vod_endcard',
+//    ),
   );
   
   _usanetwork_mpx_video_set_accounts($mpx_accounts);

@@ -39,9 +39,9 @@ function usanetwork_mpx_video_install() {
     ),
   );
   
-//  _usanetwork_mpx_video_set_accounts($mpx_accounts);
+  _usanetwork_mpx_video_set_accounts($mpx_accounts);
   
-//  _usanetwork_mpx_video_set_players($mpx_accounts);
+  _usanetwork_mpx_video_set_players($mpx_accounts);
 
   // remove old video nodes
   usanetwork_mpx_video_update_7000();

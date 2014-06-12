@@ -66,7 +66,7 @@ function usanetwork_watchwith_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_watchwith_show_all_events';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['tve_watchwith_show_all_events'] = $strongarm;
 
   $strongarm = new stdClass();

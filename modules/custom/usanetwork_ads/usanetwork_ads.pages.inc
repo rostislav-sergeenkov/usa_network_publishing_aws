@@ -91,7 +91,9 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
     $form['usanetwork_ads']['variables']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
 
     $form['#submit'][] = 'usanetwork_ads_form_entity_form_submit';
-    $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_entity_form_submit';
+    if (!empty($form['actions']['submit']['#submit'])) {
+      $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_entity_form_submit';
+    }
   }
 
   // Bundle settings form
@@ -149,7 +151,9 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
     $form['usanetwork_ads']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
 
     $form['#submit'][] = 'usanetwork_ads_form_bundle_form_submit';
-    $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_bundle_form_submit';
+    if (!empty($form['actions']['submit']['#submit'])) {
+      $form['actions']['submit']['#submit'][] = 'usanetwork_ads_form_bundle_form_submit';
+    }
   }
 }
 

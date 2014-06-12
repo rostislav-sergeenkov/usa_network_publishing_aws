@@ -121,7 +121,7 @@ function usanetwork_post_taxonomy_term_presave($term) {
 function usanetwork_post_preprocess_node(&$vars) {
   if ($vars['type'] == 'post') {
     if (isset($vars['content']['post_date'])) {
-      $vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
+      //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
         $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
       }

@@ -83,6 +83,7 @@ function _usanetwork_mpx_video_set_accounts($insert_accounts){
     try {
       $account_id = db_insert('mpx_accounts')
         ->fields(array(
+          'id' => $key,
           'username' => _media_theplatform_mpx_encrypt_value($values['theplatform_username']),
           'password' => _media_theplatform_mpx_encrypt_value($values['theplatform_password']),
         ))

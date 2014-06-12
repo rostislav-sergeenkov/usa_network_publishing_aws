@@ -54,8 +54,6 @@ function usanetwork_watchwith_preprocess_file_entity(&$variables) {
       $external_advertiser_id[0]['value'] :
       NULL;
 
-//      $external_advertiser_id = 'a0cf9f60-7ae6-4977-8831-52e4b8bd38f3';
-      $external_advertiser_id = 'USA_ANV_2784285';
     
       _tve_watchwith_load_sidecar($external_advertiser_id);
 

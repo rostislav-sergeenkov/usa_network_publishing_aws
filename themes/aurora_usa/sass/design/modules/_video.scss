@@ -856,7 +856,7 @@
           }
         }
         @include breakpoint($bp-video-mid-range4-width) {
-        cursor: normal;
+        cursor: default;
         position: relative;
         top: 0px;
         width: 100%;
@@ -1257,7 +1257,7 @@
       margin-top: 25px;
     }
     & ~ .ad {
-      bottom: 220px;
+      bottom: 166px;
       float: none;
       position: absolute;
       right: 0;

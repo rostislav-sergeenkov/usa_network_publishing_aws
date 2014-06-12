@@ -1240,7 +1240,7 @@ function _usa_mpx_get_mpx_video_file_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => 'nbcu$externalAdvertiserId',
+          'media_data_fieldpath' => 'pl1$externalAdvertiserId',
         ),
         'size' => 60,
         'soft_length_limit' => '',

@@ -235,11 +235,11 @@ body {
               overflow: hidden;
               padding-top: 49px;
               @include breakpoint($bp-menu-narrow) {
-                width: 297px;
-                height: 70px;
-                padding-top: 70px;
+                width: 100%;
+                padding-top: 24%;
                 margin-bottom: 8px;
                 background: url("../images/assets/blog/hamptons_header_mobile.png") scroll 0 0 no-repeat transparent;
+                background-size: contain;
               }
             }
             .category-menu {

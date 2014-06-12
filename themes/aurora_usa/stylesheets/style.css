@@ -13254,6 +13254,11 @@ body.blog .panel-display .panel-col-first .inside {
 body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
   margin-top: 0;
 }
+@media (max-width: 769px) {
+  body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
+    display: none;
+  }
+}
 body.blog .panel-display .panel-col-last {
   width: 300px;
 }

@@ -9468,7 +9468,7 @@ body.person-page #main {
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset .tve-help-link.signOut {
-    cursor: normal;
+    cursor: default;
     position: relative;
     top: 0px;
     width: 100%;
@@ -9921,7 +9921,7 @@ body.person-page #main {
   }
 }
 .featured-asset .sidecarSection:not(.ng-hide) ~ .ad {
-  bottom: 220px;
+  bottom: 166px;
   float: none;
   position: absolute;
   right: 0;

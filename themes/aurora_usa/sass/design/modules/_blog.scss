@@ -16,6 +16,11 @@ body {
           @include breakpoint($bp-menu-narrow) {
             margin-right: 0;
           }
+          .taxonomy-term-description {
+            p {
+              margin-top: 0;
+            }
+          }
         }
       }
       .panel-col-last {
@@ -34,9 +39,11 @@ body {
           }
           .panel-pane {
             width: 300px;
+            float: left;
+            clear: left;
             &:nth-of-type(2n + 2) {
               margin-left: 10px;
-              clear: both;
+              clear: none;
             }
           }
         }
@@ -56,6 +63,10 @@ body {
             &:nth-of-type(2n + 2) {
               margin-left: 0;
             }
+          }
+
+          p {
+            margin-top: 0;
           }
 
           h2 {

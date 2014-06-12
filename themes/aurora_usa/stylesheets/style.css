@@ -13255,7 +13255,7 @@ body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
   margin-top: 0;
 }
 @media (max-width: 769px) {
-  body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
+  body.blog .panel-display .panel-col-first .inside .taxonomy-term-description {
     display: none;
   }
 }

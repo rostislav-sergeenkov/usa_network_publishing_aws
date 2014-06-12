@@ -17,11 +17,11 @@ body {
             margin-right: 0;
           }
           .taxonomy-term-description {
+            @include breakpoint($bp-menu-narrow) {
+              display: none;
+            }
             p {
               margin-top: 0;
-              @include breakpoint($bp-menu-narrow) {
-                display: none;
-              }
             }
           }
         }

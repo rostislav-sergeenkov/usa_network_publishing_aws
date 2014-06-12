@@ -921,9 +921,11 @@ function gigya_action_info() {
  * Implements hook_node_view().
  */
 function gigya_node_view($node, $view_mode, $langcode) {
-  //gigya_add_comments_ui($node);
+  // add comments ui only if we have comments if comments are rendered
+  if (!empty($node->content['comments'])) {
+    gigya_add_comments_ui($node);
+  }
 }
-
 
 /**
  * Implements hook_node_view_alter().
@@ -931,10 +933,6 @@ function gigya_node_view($node, $view_mode, $langcode) {
 function gigya_node_view_alter(&$build) {
   // Check if comments component is enabled.
   if (_gigya_is_component_enabled('comments')) {
-    $node = $build['#node'];
-    if (isset($build['comments'])) {
-      gigya_add_comments_ui($node);
-    }
     // Remove the drupal add comment link.
     unset($build['links']['comment']['#links']['comment-add']);
     $unset = variable_get('gigya_comments_hide_drupal_comments', TRUE);

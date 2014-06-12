@@ -3,25 +3,44 @@ body {
     .panel-display {
       width: 945px;
       margin: 0 auto;
-      @include breakpoint($bp-home-narrowest) {
+      @include breakpoint($bp-menu-narrow) {
         width: 100%;
       }
       .panel-col-first {
         width: 645px;
-        @include breakpoint($bp-home-narrowest) {
+        @include breakpoint($bp-menu-narrow) {
           width: 100%;
         }
         .inside {
           margin-right: 30px;
-          @include breakpoint($bp-home-narrowest) {
+          @include breakpoint($bp-menu-narrow) {
             margin-right: 0;
           }
         }
       }
       .panel-col-last {
         width: 300px;
-        @include breakpoint($bp-home-narrowest) {
-          width: 100%;
+        @include breakpoint($bp-menu-narrow) {
+          width: 610px;
+          margin: 0 auto;
+          float: none;
+          clear: both;
+          .inside {
+            &:after {
+              clear: both;
+              content: " ";
+              display: table-cell;
+            }
+          }
+          .panel-pane {
+            width: 300px;
+            &:nth-of-type(2n + 2) {
+              margin-left: 10px;
+            }
+          }
+        }
+        @include breakpoint($bp-blog-mobile) {
+          width: 300px;
         }
         .inside {
           margin-left: 0;
@@ -31,6 +50,12 @@ body {
           border-bottom: 3px solid $gray-med-dark;
           padding-bottom: 10px;
           margin-bottom: 10px;
+
+          @include breakpoint($bp-blog-mobile) {
+            &:nth-of-type(2n + 2) {
+              margin-left: 0;
+            }
+          }
 
           h2 {
             &.pane-title {
@@ -74,6 +99,10 @@ body {
           iframe {
             width: 615px;
             height: 345px;
+            @include breakpoint($bp-blog-mobile) {
+              width: 300px;
+              height: 168px;
+            }
           }
         }
       }
@@ -105,7 +134,7 @@ body {
         font-size: 37px;
         text-transform: uppercase;
         margin: 15px 0;
-        @include breakpoint($bp-home-narrowest) {
+        @include breakpoint($bp-menu-narrow) {
           font-size: 27px;
         }
       }
@@ -127,7 +156,7 @@ body {
     .field-name-field-gigya-share-bar {
       float: right;
       margin: -10px 0 10px 0;
-      @include breakpoint($bp-home-narrowest) {
+      @include breakpoint($bp-menu-narrow) {
         float: none;
       }
     }
@@ -149,7 +178,7 @@ body {
     }
 
     .panel-display {
-      @include breakpoint($bp-home-narrowest) {
+      @include breakpoint($bp-menu-narrow) {
         min-width: 297px;
       }
       .panel-col-top {
@@ -177,7 +206,7 @@ body {
               height: 75px;
               margin: 13px 16px 3px 3px;
               background: url("../images/assets/blog/hamptons_logo.png") scroll 0 0 no-repeat transparent;
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 display: none;
               }
             }
@@ -190,7 +219,7 @@ body {
               background: url("../images/assets/blog/hamptons_header.png") scroll 0 0 no-repeat transparent;
               overflow: hidden;
               padding-top: 49px;
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 width: 297px;
                 height: 70px;
                 padding-top: 70px;
@@ -204,7 +233,7 @@ body {
               border-style: solid;
               border-width: 1px 0 1px;
               margin-top: 3px;
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 border: none;
                 > .item-list {
                   position: relative;
@@ -242,7 +271,7 @@ body {
                   font-family: $headline-semi-condensed;
                   font-size: 20px;
                   line-height: 25px;
-                  @include breakpoint($bp-home-narrowest) {
+                  @include breakpoint($bp-menu-narrow) {
                     font-size: 17px;
                     padding: 0;
                     margin: 0;
@@ -260,7 +289,7 @@ body {
                   }
                   a {
                     @include link-colors(#163969, $black, #163969, #163969, #163969);
-                    @include breakpoint($bp-home-narrowest) {
+                    @include breakpoint($bp-menu-narrow) {
                       display: block;
                       padding: 15px;
                       width: 100%;
@@ -295,7 +324,7 @@ body {
                   content: "\e000";
                   color: $white;
                 }
-                @include breakpoint($bp-home-narrowest) {
+                @include breakpoint($bp-menu-narrow) {
                   display: block;
                   padding: 15px;
                   width: 100%;
@@ -357,7 +386,7 @@ body {
 
     .field-name-post-date {
       color: $blue-hampton;
-      @include breakpoint($bp-home-narrowest) {
+      @include breakpoint($bp-menu-narrow) {
         display: none;
       }
     }
@@ -368,7 +397,7 @@ body {
             width: 35px !important;
             height: 35px !important;
             background-image: url("../images/assets/blog/hamptons_share.png") !important;
-            @include breakpoint($bp-home-narrowest) {
+            @include breakpoint($bp-menu-narrow) {
               width: 35px !important;
               height: 35px !important;
             }
@@ -382,7 +411,7 @@ body {
               &:hover {
                 background-position: 0px 0px !important;
               }
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 background-position: 0px 0px !important;
                 &:hover {
                   background-position: 0px 0px !important;
@@ -398,7 +427,7 @@ body {
               &:hover {
                 background-position: -42px 0px !important;
               }
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 background-position: -42px 0px !important;
                 &:hover {
                   background-position: -42px 0px !important;
@@ -414,7 +443,7 @@ body {
               &:hover {
                 background-position: -84px 0px !important;
               }
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 background-position: -84px 0px !important;
                 &:hover {
                   background-position: -84px 0px !important;
@@ -430,7 +459,7 @@ body {
               &:hover {
                 background-position: -126px 0px !important;
               }
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 background-position: -126px 0px !important;
                 &:hover {
                   background-position: -126px 0px !important;
@@ -446,7 +475,7 @@ body {
               &:hover {
                 background-position: -168px 0px !important;
               }
-              @include breakpoint($bp-home-narrowest) {
+              @include breakpoint($bp-menu-narrow) {
                 background-position: -168px 0px !important;
                 &:hover {
                   background-position: -168px 0px !important;

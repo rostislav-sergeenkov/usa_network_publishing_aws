@@ -13389,6 +13389,7 @@ body.blog .panel-display .panel-col-last {
   }
   body.blog .panel-display .panel-col-last .panel-pane:nth-of-type(2n + 2) {
     margin-left: 10px;
+    clear: both;
   }
 }
 @media (max-width: 639px) {

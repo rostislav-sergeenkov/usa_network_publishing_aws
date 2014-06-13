@@ -57,7 +57,7 @@
         </a>
       </div>
     </div>
-  <div class="video-player-wrapper" data-ng-if="global.isAuthN">
+  <div class="video-player-wrapper" data-ng-show="global.isAuthN">
       <?php 
         if ($is_live) {
           $video = theme('usanetwork_tve_live_video', array('file' => $file)); 

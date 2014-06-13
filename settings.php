@@ -273,6 +273,10 @@ function default_site_request_handler() {
  */
 ini_set('memory_limit', '512M');
 
+/**
+ * Github credentials
+ */
+$conf['github_credentials'] = 'JenkinsNBC:MpatSu77GiT14';
 
 /**
  * SURF Settings
@@ -284,4 +288,3 @@ $conf['surf_default_library_name'] = 'usanetwork_surf';
 $conf['surf_src_url'] = 'https://stage.surf.nbcuni.com/rdk/surf.js.php';
 $conf['surf_rdk_url'] = '/rdk/';
 $conf['surf_config_key'] = 'usanetwork';
-

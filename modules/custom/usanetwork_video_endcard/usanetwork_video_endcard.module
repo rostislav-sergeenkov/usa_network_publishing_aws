@@ -1,0 +1,273 @@
+<?php
+
+define('USANETWORK_VIDEO_ENDCARD_RELATED_COUNT', 3);
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_video_endcard_init() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
+    'every_page' => true
+  ));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_video_endcard_menu() {
+  $items = array();
+
+  $items['videos/endcard/ajax/related'] = array(
+    'title' => 'Related items',
+    'access callback' => true,
+    'page callback' => 'usanetwork_video_endcard_related_items',
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Menu callback for related items.
+ */
+function usanetwork_video_endcard_related_items() {
+  $items = array();
+
+  $guid = isset($_REQUEST['guid']) ? $_REQUEST['guid'] : false;
+  $player_url = isset($_GET['url']) ? $_GET['url'] : false;
+  if ($guid) {
+    $files = media_theplatform_mpx_get_files_by_guid($guid);
+    $file = false;
+    foreach ($files as $file_info) {
+      if ($file_info->published) {
+        $file = $file_info;
+        break;
+      }
+    }
+    if ($file && $file->status && $file->published) {
+      $file = entity_load_single('file', $file->fid);
+
+      // check if it's full episode
+      $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
+      if ($full_episode) {
+        $full_episode = ($full_episode['value'] == '1') ? true : false;
+      }
+
+      // check if it's video page or global page
+      $filter_category = true;
+      if ($player_url) {
+        $player_url = preg_replace('|https?:\/\/.*\/|Uis', '', $player_url);
+        $video_url = drupal_get_normal_path($player_url);
+        $video = menu_get_object('file', 1, $video_url);
+        if (!$video || !in_array($video->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+          $filter_category = false;
+        }
+      }
+
+      $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category);
+      foreach ($related_files as $related_file) {
+        $uri = entity_uri('file', $related_file);
+        $item = array(
+          'guid' => $related_file->mpx_video_data['guid'],
+          'url' => url($uri['path'], array('absolute' => TRUE)),
+          'title' => $related_file->filename,
+          'media$thumbnails' => array(
+            array(
+              'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
+            ),
+          ),
+        );
+
+        $items[] = $item;
+      }
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Returns related items for a file entity.
+ */
+function _usanetwork_video_endcard_pick_related_items($file, $full_episode = false, $filter_category = true) {
+  $items = array();
+  $term_field = 'field_usa_video_terms';
+
+  // Search by category
+  if ($filter_category && $terms = field_get_items('file', $file, $term_field)) {
+    if (count($terms) > 0) {
+      $tids = array();
+      foreach ($terms as $term) {
+        if (isset($term['target_id'])) {
+          $tids[$term['target_id']] = $term['target_id'];
+        }
+      }
+
+      while (count($tids) > 0 && count($items) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+        $tid = _usanetwork_video_endcard_get_deepest_term($tids);
+        if ($tid === false) {
+          break;
+        }
+
+        $depth = _usanetwork_video_endcard_get_term_depth($tid);
+        if ($depth === false || $depth <= 1) {
+          unset($tids[$tid]);
+          continue;
+        }
+
+        $query = db_select('field_data_' . $term_field, 'fd');
+        $query->fields('fd')
+          ->condition('fd.entity_type', 'file', '=')
+          ->condition('fd.bundle', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+          ->condition('fd.' . $term_field . '_target_id', $tid, '=')
+          ->innerJoin('mpx_video', 'v', 'fd.entity_id = v.fid');
+        $query->condition('v.status', 1, '=');
+        $query->innerJoin('file_managed', 'f', 'fd.entity_id = f.fid');
+        $query->condition('f.status', 1, '=')
+          ->condition('f.published', 1, '=');
+
+        $query->innerJoin('field_data_field_mpx_full_episode', 'fe', 'fd.entity_id = fe.entity_id');
+        $query->condition('fe.entity_type', 'file', '=')
+          ->condition('fe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
+
+        $query->orderBy('v.airdate', 'DESC')
+          ->orderBy('v.created', 'DESC');
+        $result = $query->execute()
+          ->fetchAllAssoc('entity_id');
+
+        if ($result) {
+          $_fids = array_keys($result);
+          $current = array_search($file->fid, $_fids);
+          if ($current === false) {
+            $current = -1;
+          }
+          $fids = array_slice($_fids, $current + 1, USANETWORK_VIDEO_ENDCARD_RELATED_COUNT);
+          if (count($fids) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+            $items_left = USANETWORK_VIDEO_ENDCARD_RELATED_COUNT - count($fids);
+            $fids = array_merge($fids, array_slice($_fids, 0, ($items_left < $current ? $items_left : $current)));
+          }
+          $related_files = entity_load('file', $fids);
+
+          foreach ($related_files as $related_file) {
+            if (count($items) >= USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+              break;
+            }
+            if (!in_array($related_file, $items)) {
+              $items[] = $related_file;
+            }
+          }
+        }
+
+        if (count($items) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+          if ($full_episode) {
+            $full_episode = false;
+          }
+          else {
+            unset($tids[$tid]);
+          }
+        }
+        else {
+          break;
+        }
+      }
+    }
+  }
+
+  // Search all videos
+  if (count($items) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+    $query = db_select('mpx_video', 'v');
+    $query->fields('v')
+      ->condition('v.fid', $file->fid, '<>');
+
+    $query->innerJoin('field_data_field_mpx_full_episode', 'fe', 'v.fid = fe.entity_id');
+    $query->innerJoin('file_managed', 'f', 'v.fid = f.fid');
+    $query->condition('f.status', 1, '=')
+      ->condition('f.published', 1, '=')
+      ->condition('fe.entity_type', 'file', '=')
+      ->condition('fe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
+    $query->orderBy('v.airdate', 'DESC')
+      ->orderBy('v.created', 'DESC');
+
+    $result = $query->execute()
+      ->fetchAllAssoc('fid');
+    if ($result) {
+      $_fids = array_keys($result);
+      $current = array_search($file->fid, $_fids);
+      if ($current === false) {
+        $current = -1;
+      }
+      $fids = array_slice($_fids, $current + 1, USANETWORK_VIDEO_ENDCARD_RELATED_COUNT);
+      if (count($fids) < USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+        $items_left = USANETWORK_VIDEO_ENDCARD_RELATED_COUNT - count($fids);
+        if ($current == -1) {
+          $current = 0;
+        }
+        $fids = array_merge($fids, array_slice($_fids, 0, ($items_left < $current ? $items_left : $current)));
+      }
+      $related_files = entity_load('file', $fids);
+
+      foreach ($related_files as $related_file) {
+        if (count($items) >= USANETWORK_VIDEO_ENDCARD_RELATED_COUNT) {
+          break;
+        }
+        if (!in_array($related_file, $items)) {
+          $items[] = $related_file;
+        }
+      }
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Returns deepest term.
+ */
+function _usanetwork_video_endcard_get_deepest_term($tids) {
+  $deepest = false;
+  $depth = 0;
+  if (is_array($tids)) {
+    foreach ($tids as $tid) {
+      $_depth = _usanetwork_video_endcard_get_term_depth($tid);
+      if ($_depth === false) {
+        continue;
+      }
+      if ($_depth > $depth) {
+        $deepest = $tid;
+      }
+    }
+  }
+
+  return $deepest;
+}
+
+/**
+ * Returns term depth.
+ */
+function _usanetwork_video_endcard_get_term_depth($tid, $limit = 10) {
+  $depth = 0;
+  do {
+    $query = db_select('taxonomy_term_hierarchy', 't')
+      ->condition('t.tid', $tid, '=')
+      ->fields('t');
+    $query->leftJoin('taxonomy_term_data', 'td', 'td.tid = t.tid');
+    $query->fields('td');
+    $parent = $query->execute()->fetchAssoc();
+    if ($parent) {
+      if ($parent['parent'] == 0 && $parent['name'] != 'Series') {
+        // filter by root term
+        return false;
+      }
+      $depth++;
+      $tid = $parent['parent'];
+      if ($depth > $limit) {
+        break;
+      }
+    }
+    else {
+      break;
+    }
+  } while($tid);
+  return $depth;
+}

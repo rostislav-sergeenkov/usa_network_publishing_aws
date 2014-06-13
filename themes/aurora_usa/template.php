@@ -52,6 +52,7 @@ function aurora_usa_preprocess_html(&$vars) {
   if(arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
+  drupal_add_library('system', 'drupal.ajax');
 }
 
 /**
@@ -68,7 +69,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
-	drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
+  drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/main-navigation.js');
   drupal_add_js($theme_path . '/javascripts/social-filter-dropdown.js',array('weight' => -5));
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
@@ -361,6 +362,7 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         }
         break;
       case 'usanetwork_video-usa_video_views':
+      case 'usanetwork_mpx_video-usa_mpx_video_views':
         drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/video-dropdowns.js');
         break;
       case 'views-usa_cast-block_2':
@@ -368,6 +370,8 @@ function aurora_usa_preprocess_block(&$vars, $hook) {
         $vars['classes_array'][] = drupal_html_class('social-follow-block');
         break;
       case 'usanetwork_video-usa_global_video_nav':
+      case 'usanetwork_mpx_video-usa_global_mpx_video_nav':
+      case 'usanetwork_mpx_video-usa_show_mpx_video_nav':
       case 'usanetwork_video-usa_show_video_nav':
       case 'usanetwork_social-usa_show_social_tab_nav':
         $vars['classes_array'][] = drupal_html_class('usa-secondary-menu');
@@ -520,6 +524,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       }
       break;
     case 'title':
+    case 'field_mpx_title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
           case 'vid_teaser_front':
@@ -531,6 +536,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $title = strip_tags($vars['element'][0]['#markup']);
               $vars['items'][0]['#markup'] =  '<h2>' . $title . ' ' . t('gallery') . '</h2>';
             }
+            break;
+          case 'vid_teaser_show_general':
+            $vars['items'][0]['#prefix'] = '<h4>';
+            $vars['items'][0]['#suffix'] = '</h4>';
             break;
           case 'cast_carousel':
             $db_select = db_select('node', 'n')
@@ -562,6 +571,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // AIRDATE IN VIDEOS
     case 'field_video_air_date':
+    case 'field_mpx_airdate':
       // change display
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
@@ -572,7 +582,11 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             break;
           case 'vid_teaser_front':
           case 'vid_teaser_episode':
+            if (strpos($vars['element']['#object']->type, 'mpx_video') === 0) {
+              $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
+            } else {
             $title = $vars['element']['#object']->title;
+            }
             $airtime = $vars['element']['#items'][0]['value'];
             $air_custom = date('n/d/Y', $airtime);
             $vars['classes_array'][] = drupal_html_class('field-name-title');
@@ -583,12 +597,14 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // episode num IN VIDEOS
     case 'field_episode_number':
+    case 'field_mpx_episode_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
+            case 'vid_teaser_show_general':
               $episode = $vars['element']['#items'][0]['safe_value'];
               $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
               break;
@@ -598,12 +614,14 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // season num IN VIDEOS
     case 'field_season_id':
+    case 'field_mpx_season_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video')) {
+      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
+            case 'vid_teaser_show_general':
               $season = $vars['element']['#items'][0]['safe_value'];
                 $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
                 break;
@@ -626,6 +644,7 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       break;
     // DURATION WITHIN VIDEO TEASERS
     case 'field_video_duration':
+    case 'field_mpx_duration':
       // change display
       $duration = $vars['element']['#items'][0]['value'];
       $duration_custom = gmdate("H:i:s", $duration);
@@ -1138,6 +1157,27 @@ function aurora_usa_html_head_alter(&$head_elements) {
           }
         }
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function aurora_usa_page_alter(&$page){
+  //rewrite pub_analytics_page_alter in pub_analytics.module
+  //remove escaping html elemets
+  if (path_is_admin(current_path())) {
+    return; // No need to track admin pages.
+  }
+  if (isset($page['page_bottom']['sitecatalyst'])) {
+    $report_id = variable_get('sitecatalyst_report_suite_id', '');
+    if (!empty($report_id)) {
+      if (isset($page['page_bottom']['sitecatalyst'])) {
+        $page['page_bottom']['sitecatalyst']['variables']['#markup'] = html_entity_decode(filter_xss($page['page_bottom']['sitecatalyst']['variables']['#markup']));
+      }
+    } else {
+      unset($page['page_bottom']['sitecatalyst']);
     }
   }
 }

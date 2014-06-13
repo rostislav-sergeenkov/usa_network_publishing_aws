@@ -49,8 +49,8 @@ function usanetwork_wysiwyg_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_entity_insert_video_enabled';
   $strongarm->value = array(
-    'node' => array(
-      0 => 'usa_video',
+    'file' => array(
+      0 => 'mpx_video_1',
     ),
   );
   $export['usanetwork_entity_insert_video_enabled'] = $strongarm;

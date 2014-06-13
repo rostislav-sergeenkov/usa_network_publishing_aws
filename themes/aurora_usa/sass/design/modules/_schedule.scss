@@ -365,6 +365,114 @@ a.prev-day {
     }
   }
 }
+
+.schedule-day-small {
+  height: 109px;
+  .schedule-viewport {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .schedule-items {
+    width: 10000px;
+    height: 109px;
+    margin: 0;
+    padding: 0;
+    .schedule-item {
+      @include breakpoint($bp-grid-small-wide-small) {
+        width: 274px;
+      }
+      @include breakpoint($bp-grid-small-wide-2-fence) {
+        width: 274px;
+      }
+      @include breakpoint($bp-grid-small-wide-3-fence) {
+        width: 243px;
+      }
+      @include breakpoint($bp-video-large-width) {
+        width: 243px;
+      }
+      @include breakpoint($bp-grid-small-wide-4) {
+        width: 243px;
+      }
+      float:left;
+      height: 100%;
+      @extend %schedule-gradient;
+      font-size: 14px;
+      line-height: 16px;
+      .schedule-item-content {
+        border-right: 1px solid #1f1f1f;
+        padding: 20px;
+        .time {
+          @extend %semi;
+          font-size: 18px;
+          color: #878785;
+          margin-bottom: 15px;
+          @include breakpoint($bp-video-large-width) {
+            font-size: 22px;
+          }
+          @include breakpoint($bp-grid-small-wide-4) {
+            font-size: 22px;
+          }
+        }
+        .program, .title {
+          height: 20px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          a {
+            color: #fff;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      &.schedule-item-on-now {
+        background-image: none;
+        background-color: #000;
+        .time {
+          &:after {
+            margin-left: 10px;
+            font-family: "Proxima N W01 Bold",Helvetica,Arial,sans-serif;
+            color: #0AB6E8;
+            content: "ON NOW";
+          }
+        }
+      }
+    }
+  }
+  .schedule-navigation {
+    float: right;
+    width: 30px;
+    height: 109px;
+    background-color: #0c0c0c;
+    a {
+      display: block;
+      height: 50%;
+      width: 100%;
+      text-align: center;
+      &.schedule-navigation-prev {
+        @include replace-text('icons/arrow-prev.png');
+        background-position:45% 50%;
+        background-size:30% auto;
+      }
+      &.schedule-navigation-next {
+        @include replace-text('icons/arrow-next.png');
+        background-position:55% 50%;
+        background-size:30% auto;
+      }
+    }
+  }
+  &.no-scroll {
+    .schedule-navigation {
+      display: none;
+    }
+  }
+}
+
 //accessibility page
 .page-accessibility {
   .usa-wrap {

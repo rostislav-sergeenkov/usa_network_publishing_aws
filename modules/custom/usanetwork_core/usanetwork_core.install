@@ -706,28 +706,52 @@ function usanetwork_core_update_7136() {
 }
 
 /**
- * PERSONALIZATION
+ * VIDEO MPX CODE
  */
-/*
-function usanetwork_core_update_7130() {
+function usanetwork_core_update_7137() {
   $modules_en = array(
-    'surf',
-    'usanetwork_surf',
-    'usanetwork_personalization',
-    'usanetwork_og_metatags',
+    'media_theplatform_mpx',
   );
   module_enable($modules_en);
 }
-*/
 
 /**
- * PREP FOR NEW VIDEO CODE
+ * NEW VIDEO CODE
  */
-/*
-function usanetwork_core_update_7131() {
+function usanetwork_core_update_7138() {
   $modules_en = array(
     'usanetwork_mpx_video',
   );
   module_enable($modules_en);
 }
-*/
+
+/**
+ * NEW VIDEO CODE
+ */
+function usanetwork_core_update_7139() {
+  $modules_en = array(
+    'usanetwork_tve_video',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable endcard module
+ */
+function usanetwork_core_update_7140() {
+  $modules_en = array(
+	  'usanetwork_video_endcard',
+	);
+	module_enable($modules_en);
+}
+
+/**
+ * Reenable video mobile pop-up
+ */
+function usanetwork_core_update_7141() {
+  $modules_en = array(
+    'usanetwork_video_mobile',
+  );
+  module_enable($modules_en);
+}
+

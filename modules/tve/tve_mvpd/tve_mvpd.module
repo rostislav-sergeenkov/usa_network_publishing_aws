@@ -1,0 +1,374 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TVE MVPD module - MVPD bridge.
+ *
+ * Attaches MVPD configs encoded in JSON format to the footer.
+ * Front end application uses this config to build provider (MVPD) selector for
+ * the first authentication step (inside modal window).
+ * The source of data is special service called "MVPD Admin". So this module is
+ * a bridge between MVPD Admin service and TVE FE auth application.
+ *
+ * @ingroup tve_mvpd
+ */
+
+// MVPD fields (properties).
+define('TVE_MVPD_COLOR_DARK', 'field_mvpd_dark_color');
+define('TVE_MVPD_COLOR_LIGHT', 'field_mvpd_light_color');
+define('TVE_MVPD_LOGO_DARK', 'field_mvpd_logo_dark');
+define('TVE_MVPD_LOGO_LIGHT', 'field_mvpd_logo_light');
+define('TVE_MVPD_LOGO_ALT', 'field_mvpd_logo_alternative');
+
+// Types of MVPD.
+define('TVE_MVPD_TYPE_FEATURED', 'featured');
+define('TVE_MVPD_TYPE_NOT_FEATURED', 'not_featured');
+
+// Statuses.
+define('TVE_MVPD_STATUS_SUCCESS', 'ok');
+define('TVE_MVPD_STATUS_ERROR', 'error');
+
+// Error message.
+define('TVE_MVPD_ERROR_MESSAGE', 'Oops! Something went wrong while fetching providers!');
+
+// Brand instances.
+define('TVE_MVPD_INST_PROD', 'prod');
+define('TVE_MVPD_INST_STAGE', 'stage');
+
+// Internal MVPD service path.
+define('TVE_MVPD_LOCAL_PATH', 'tve/mvpd/service/data');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_mvpd_menu() {
+  $items['admin/tve/mvpd-connection'] = array(
+    'title' => 'MVPD Connection',
+    'description' => 'TVE MVPD connection settings',
+    'access arguments' => array('administer mvpd connection'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_tve_mvpd_admin_connection_form'),
+    'file' => 'tve_mvpd.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+  $items['admin/tve/mvpd'] = array(
+    'title' => 'MVPD',
+    'description' => 'TVE MVPD settings',
+    'access arguments' => array('administer mvpd'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_tve_mvpd_admin_form'),
+    'file' => 'tve_mvpd.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 3,
+  );
+  $items[TVE_MVPD_LOCAL_PATH] = array(
+    'page callback' => '_tve_mvpd_providers_page_callback',
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission.
+ */
+function tve_mvpd_permission() {
+  return array(
+    'administer mvpd connection' => array(
+      'title' => t('Administer connection to MVPD service'),
+      'description' => t('Perform administration tasks for connection to MVPD service.'),
+    ),
+    'administer mvpd' => array(
+      'title' => t('Administer MVPD (providers)'),
+      'description' => t('Perform administration tasks for MVPD (providers).'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tve_mvpd_theme() {
+  return array(
+    'tve_mvpd_custom_radios' => array(
+      'render element' => 'element',
+      'file' => 'tve_mvpd.theme.inc',
+    ),
+    'tve_mvpd_custom_radio' => array(
+      'render element' => 'element',
+      'file' => 'tve_mvpd.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_init().
+ */
+function tve_mvpd_init() {
+  if (!path_is_admin(current_path())) {
+    // Front end application uses MVPD (Providers) data.
+    $providers = _tve_mvpd_get_mvpd();
+    drupal_add_js(array('tve_mvpd' => array('providers' => $providers)), 'setting');
+  }
+}
+
+/**
+ * Page callback for TVE_MVPD_LOCAL_PATH path.
+
+ * @return string
+ *  MVPD data in JSON format.
+ */
+function _tve_mvpd_providers_page_callback() {
+  return _tve_mvpd_get_mvpd();
+}
+
+/**
+ * Returns array of MVPDs for the specific Brand/environment.
+ *
+ * @return array
+ */
+function _tve_mvpd_get_mvpd() {
+  // Retrieve info about all supported MVPDs (providers).
+  $default_providers = _tve_mvpd_get_providers();
+  if (!$default_providers) {
+    watchdog('tve_mvpd', 'Could not retrieve MVPD data.', array(), WATCHDOG_ERROR);
+    // Return error status/message back to the requester.
+    return array(
+      'status' => TVE_MVPD_STATUS_ERROR,
+      'message' => t(variable_get('tve_mvpd_error_message', TVE_MVPD_ERROR_MESSAGE)),
+    );
+  }
+  // Get specific (custom) settings for MVPDs (grid and header/footer logos type).
+  $configured_providers = variable_get('tve_mvpd_providers', array());
+  // Calculate final MVPD options based on custom settings.
+  $providers = _tve_mvpd_get_default_providers($configured_providers, $default_providers);
+
+  $mvpd = array();
+  $index = 0;
+  foreach ($default_providers as $provider) {
+    $index++;
+    // Prepare title (clean unwanted characters) - make some kind of machine
+    // name for a MVPD item.
+    $title = _tve_mvpd_get_clean_title($provider->field_mvpd_id);
+
+    if (in_array($title, $providers)) {
+      // Specific type of a logo (grid or header/footer).
+      $mvpd_logo = $configured_providers[$title]['mvpd_logo'];
+      // Specific type of a color (dark/light).
+      $mvpd_color = $configured_providers[$title]['mvpd_color'];
+    }
+    else {
+      // Default type of a logo (grid or header/footer).
+      $mvpd_logo = (0 === $provider->{TVE_MVPD_LOGO_LIGHT}) ?
+        TVE_MVPD_LOGO_DARK :
+        TVE_MVPD_LOGO_LIGHT;
+
+      // Default type of a color (dark/light).
+      $mvpd_color = (0 === $provider->{TVE_MVPD_COLOR_LIGHT}) ?
+        TVE_MVPD_COLOR_DARK :
+        TVE_MVPD_COLOR_LIGHT;
+    }
+
+    // Determine order for an item.
+    if ((int) $provider->featured) {
+      $key = TVE_MVPD_TYPE_FEATURED;
+      $order = (int) $provider->weight;
+    }
+    else {
+      $key = TVE_MVPD_TYPE_NOT_FEATURED;
+      $order = $index;
+    }
+
+    // Prepares MVPD item (converts from object to array).
+    $mvpd[$key][$order] = _tve_mvpd_get_mvpd_item($provider, $mvpd_logo, $mvpd_color);
+  }
+
+  if (!empty($mvpd[TVE_MVPD_TYPE_FEATURED])) {
+    // Sort "featured" MVPDs by weight (key).
+    ksort($mvpd[TVE_MVPD_TYPE_FEATURED]);
+  }
+
+  $mvpd[TVE_MVPD_TYPE_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_FEATURED]) : array();
+  $mvpd[TVE_MVPD_TYPE_NOT_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) : array();
+
+  // Add "success" status.
+  $mvpd['status'] = TVE_MVPD_STATUS_SUCCESS;
+
+  return $mvpd;
+}
+
+/**
+ * Returns an MVPD item as array.
+ *
+ * @param object $provider
+ * @param string $mvpd_logo
+ * @param string $mvpd_color
+ *
+ * @return array
+ */
+function _tve_mvpd_get_mvpd_item($provider, $mvpd_logo, $mvpd_color) {
+  $item = array(
+    // Title.
+    'title' => $provider->title,
+    // Color (dark or light).
+    'mvpd_color' => $provider->{$mvpd_color},
+    // Unique id.
+    'mvpd_id' => $provider->field_mvpd_id,
+    // Id for K2 service.
+    'mvpd_k2_id' => $provider->field_mvpd_k2_id,
+    // Provider url.
+    'mvpd_url' => $provider->field_mvpd_url,
+    // Generic "error" message.
+    'generic_err' => $provider->field_mvpd_generic_err,
+    // Internal "error" message.
+    'internal_err' => $provider->field_mvpd_internal_err,
+    // Authorization "error" message.
+    'authorized_err' => $provider->field_mvpd_authorized_err,
+    // Provider form target (new window or not).
+    'is_new_window' => $provider->field_enable_new_window_workflow,
+  );
+
+  // Logo.
+  if (isset($provider->{TVE_MVPD_LOGO_ALT}->{$mvpd_logo})
+    && substr_count($mvpd_logo, 'img_') > 0
+  ) {
+    $item['mvpd_logo'] = $provider->{TVE_MVPD_LOGO_ALT}->{$mvpd_logo};
+  }
+  else {
+    $item['mvpd_logo'] = $provider->{$mvpd_logo};
+  }
+
+  return $item;
+}
+
+/**
+ * Removes (replaces) special characters from title.
+ *
+ * Uses Ctools' "ctools_cleanstring" helper.
+ *
+ * @param string $title
+ *
+ * @return string
+ */
+function _tve_mvpd_get_clean_title($title) {
+  $clean_titles = &drupal_static(__FUNCTION__, array());
+  if (!isset($clean_titles[$title])) {
+    $clean_title = trim($title);
+    $replacements = array(
+      '!' => '',
+      '?' => '',
+      ':' => '',
+      ';' => '',
+      '.' => '',
+      ',' => '',
+      '/' => '',
+      '+' => '',
+      '=' => '',
+      '~' => '',
+    );
+    ctools_include('cleanstring');
+    $clean_title = ctools_cleanstring($clean_title, array('replacements' => $replacements, 'lower case' => TRUE));
+    $clean_titles[$title] = $clean_title;
+  }
+
+  return $clean_titles[$title];
+}
+
+/**
+ * Returns decoded JSON data (providers) from MVPD service url.
+ *
+ * @param string $service_url
+ *
+ * @return mixed
+ *    array of decoded data or NULL in case of error.
+ */
+function _tve_mvpd_get_providers_from_service($service_url) {
+  if (empty($service_url)) {
+    watchdog('tve_mvpd', 'MVPD Service url is not configured. Configure MVPD connection.', array(), WATCHDOG_ERROR);
+    return NULL;
+  }
+
+  // Process http request to the service.
+  $response = drupal_http_request($service_url);
+
+  if (isset($response->error)) {
+    watchdog('tve_mvpd', 'Http request error for !url: !error.', array('!error' => $response->error, '!url' => $service_url), WATCHDOG_ERROR);
+    return NULL;
+  }
+
+  $data = json_decode($response->data);
+
+  if ('error' == $data) {
+    watchdog('tve_mvpd', 'Error response form MVPD service (!url).', array('!url' => $service_url), WATCHDOG_ERROR);
+    return NULL;
+  }
+
+  return $data;
+}
+
+/**
+ * Returns array of MVPD providers.
+ *
+ * @return mixed
+ *    array of MVPDs data or NULL in case of error.
+ */
+function _tve_mvpd_get_providers() {
+  return _tve_mvpd_get_providers_from_service(_tve_mvpd_get_service_url());
+}
+
+/**
+ * Returns "MVPD Admin" service url.
+ *
+ * @return string|null
+ */
+function _tve_mvpd_get_service_url() {
+  return variable_get('tve_mvpd_service_url');
+}
+
+/**
+ * Returns array of MVPDs which image settings differs from default.
+ *
+ * @param array $configured_providers
+ * @param array $providers
+ *
+ * @return array
+ */
+function _tve_mvpd_get_default_providers($configured_providers, $providers) {
+  $configured_provider_names = array_keys($configured_providers);
+  $provider_names = array();
+  foreach ($providers as $provider) {
+    // Prepare title (clean unwanted characters) - make some kind of machine
+    // name for a MVPD item.
+    $provider_names[] = _tve_mvpd_get_clean_title($provider->field_mvpd_id);
+  }
+  $same = array_intersect($provider_names, $configured_provider_names);
+  $data = array_values($same);
+
+  return $data;
+}
+
+/**
+ * Returns label for a radio button.
+ *
+ * @param string $value
+ *
+ * @return string
+ */
+function _tve_mvpd_get_radio_button_label($value) {
+  switch ($value) {
+    case TVE_MVPD_COLOR_LIGHT:
+
+    case TVE_MVPD_LOGO_LIGHT:
+      return t('Light Logo');
+
+    case TVE_MVPD_COLOR_DARK:
+
+    case TVE_MVPD_LOGO_DARK:
+      return t('Dark Logo');
+
+    default:
+      return t('Alternative Logo');
+  }
+}

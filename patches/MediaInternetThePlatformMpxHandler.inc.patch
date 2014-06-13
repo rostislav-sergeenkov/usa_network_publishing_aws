@@ -1,0 +1,47 @@
+diff --git a/docroot/profiles/all/modules/contrib/media_theplatform_mpx/includes/MediaInternetThePlatformMpxHandler.inc b/docroot/profiles/all/modules/contrib/media_theplatform_mpx/includes/MediaInternetThePlatformMpxHandler.inc
+
+--- a/docroot/profiles/all/modules/contrib/media_theplatform_mpx/includes/MediaInternetThePlatformMpxHandler.inc
++++ b/docroot/profiles/all/modules/contrib/media_theplatform_mpx/includes/MediaInternetThePlatformMpxHandler.inc
+@@ -57,6 +57,24 @@
+   }
+ 
+   /**
++   * Save file object.
++   */
++  public function insert($account = NULL, $title = NULL) {
++    $file = $this->getInsertFileObject($account);
++    
++    if ($title != NULL) {
++      $file->filename = $title;
++    }
++
++    watchdog('media_theplatform_mpx', 'Saving the following file object in MediaInternetThePlatformMpxHandler::insert:
++      <br /> <pre>@file</pre>',
++      array('@file' => print_r($file, TRUE)), WATCHDOG_DEBUG);
++
++    file_save($file);
++    return $file;
++  }
++
++  /**
+    * Get file type.
+    */
+   public function getFileType($file, $account = NULL) {
+@@ -76,6 +94,16 @@
+   }
+ 
+   /**
++   * Return mpx File Object with type video for insert.
++   */
++  public function getInsertFileObject($account = NULL) {
++    $uri = $this->parse($this->embedCode);
++    $file = file_uri_to_object($uri, FALSE);
++    $file->type = $this->getFileType($file, $account);
++    return $file;
++  }
++  
++  /**
+    * Not valid for ThePlatform.
+    */
+   public function getMRSS() {
+   

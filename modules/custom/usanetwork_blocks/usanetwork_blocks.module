@@ -315,12 +315,11 @@ function usanetwork_blocks_tv_show_menu() {
   $output = '';
   $show = '';
   $show_nid = '';
-  $node = menu_get_object();
   $field_name = "field_show";
   $displaytitle = '';
 
   $show = _usanetwork_tv_show_menu_get_show();
-  // otherwise do stuff
+
   if ($show) {
     // if display title is populated load that as the menu title
     if (!empty($show->field_display_title)) {

@@ -1,6 +1,8 @@
 (function ($) {
   $(document).ready(function() {
-    if (typeof usa_deviceInfo == 'undefined' || typeof Drupal.settings.usanetwork_video_mobile == 'undefined') {
+    if (typeof usa_deviceInfo == 'undefined'
+      || typeof Drupal.settings.usanetwork_video_mobile == 'undefined'
+      || window.location.pathname == '/videos') {
       return;
     }
 

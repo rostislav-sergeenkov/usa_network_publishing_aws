@@ -504,7 +504,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #block-s
 
 #on-now-panel .tab-wrapper, #utilities .breadcrumb .show-section, #block-views-usa-video-front-full-episodes h2,
 #block-views-usa-mpx-video-front-full-epsds h2,
-.usa-home-featured h2, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post .field-name-body, body.blog .panel-display .panel-col-top h1 {
+.usa-home-featured h2, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post, body.blog .panel-display .panel-col-top h1 {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
@@ -12244,6 +12244,9 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-captio
   background-color: #1C1C1C;
   color: #A7A6A6;
 }
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-buttonText {
+  color: #ffffff;
+}
 
 .schedule-header {
   width: auto;
@@ -13369,13 +13372,13 @@ body.blog .panel-display .panel-col-first .inside {
     margin-right: 0;
   }
 }
-body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
-  margin-top: 0;
-}
 @media (max-width: 769px) {
-  body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
+  body.blog .panel-display .panel-col-first .inside .taxonomy-term-description {
     display: none;
   }
+}
+body.blog .panel-display .panel-col-first .inside .taxonomy-term-description p {
+  margin-top: 0;
 }
 body.blog .panel-display .panel-col-last {
   width: 300px;
@@ -13420,6 +13423,10 @@ body.blog .panel-display .panel-col-last .panel-pane {
     margin-left: 0;
   }
 }
+body.blog .panel-display .panel-col-last .panel-pane .dart-name-300x250_scr {
+  max-height: 250px;
+  overflow: hidden;
+}
 body.blog .panel-display .panel-col-last .panel-pane p {
   margin-top: 0;
 }
@@ -13428,7 +13435,6 @@ body.blog .panel-display .panel-col-last .panel-pane h2.pane-title {
   margin: 10px 0;
   text-transform: lowercase;
   border-bottom: 3px solid #414141;
-  margin: 10px 0;
   padding-bottom: 10px;
 }
 body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row {
@@ -13463,6 +13469,9 @@ body.blog .view-display-id-blog_content .views-row {
   padding-bottom: 10px;
 }
 
+.node.node-post {
+  font-size: 16px;
+}
 .node.node-post .field-name-body {
   margin-bottom: 40px;
 }
@@ -13472,6 +13481,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .node.node-post .field-name-title h2 {
   font-size: 37px;
+  line-height: initial;
   text-transform: uppercase;
   margin: 15px 0;
 }
@@ -13480,13 +13490,10 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 27px;
   }
 }
-.node.node-post .field-name-body {
-  font-size: 16px;
+.node.node-post .field-name-field-summary {
   text-align: justify;
   text-justify: inter-word;
-}
-.node.node-post .field-name-body p {
-  margin: 10px 0;
+  margin-bottom: 40px;
 }
 .node.node-post .gig-comments-container {
   clear: both;
@@ -13501,6 +13508,9 @@ body.blog .view-display-id-blog_content .views-row {
   .node.node-post .field-name-field-gigya-share-bar {
     float: none;
   }
+}
+.node.node-post p {
+  margin: 16px 0;
 }
 
 body.blog {

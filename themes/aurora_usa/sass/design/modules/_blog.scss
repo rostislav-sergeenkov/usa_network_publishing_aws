@@ -368,6 +368,14 @@ body {
               border-bottom-color: $blue-hampton;
             }
           }
+          .blog-banners {
+            p {
+              margin-bottom: 20px;
+              img {
+                vertical-align: top;
+              }
+            }
+          }
         }
 
         .view-display-id-most_popular {

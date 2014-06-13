@@ -129,10 +129,28 @@ function usanetwork_post_taxonomy_term_presave($term) {
  */
 function usanetwork_post_preprocess_node(&$vars) {
   if ($vars['type'] == 'post') {
+    $node = $vars['node'];
     if (isset($vars['content']['post_date'])) {
       //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
         $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
+      }
+    }
+    if ($vars['view_mode'] != 'teaser') {
+      $show_cover = field_get_items('node', $node, 'field_post_cover_toggle');
+      if ($show_cover) {
+        if ($show_cover = reset($show_cover)) {
+          $show_cover = (bool) $show_cover['value'];
+        }
+        else {
+          // default to true
+          $show_cover = TRUE;
+        }
+
+        dpm($show_cover);
+        if (!$show_cover && isset($vars['content']['field_post_cover'])) {
+          unset($vars['content']['field_post_cover']);
+        }
       }
     }
   }

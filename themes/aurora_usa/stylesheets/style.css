@@ -13610,6 +13610,12 @@ body.blog .panel-display .panel-col-last .panel-pane h2.pane-title {
   color: #499ad2;
   border-bottom-color: #499ad2;
 }
+body.blog .panel-display .panel-col-last .panel-pane .blog-banners p {
+  margin-bottom: 20px;
+}
+body.blog .panel-display .panel-col-last .panel-pane .blog-banners p img {
+  vertical-align: top;
+}
 body.blog .panel-display .panel-col-last .view-display-id-most_popular .views-row .views-field-title a {
   color: #1f1f1f;
 }

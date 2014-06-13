@@ -92,7 +92,6 @@
   <?php else: ?>
     <?php if (!empty($watchwith_sidecar)): ?>
       <div class="sidecarSection"  data-ng-show="!isMobile <?php if ($lock_video) print '&& global.isAuthN'; ?>">
-        <div class="sidecarTitle"><?php print t('USA Sidecar'); ?></div>
         <?php print $watchwith_sidecar; ?>
       </div>
     <?php endif; ?>

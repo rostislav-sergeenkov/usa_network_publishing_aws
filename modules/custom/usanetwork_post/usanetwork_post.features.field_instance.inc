@@ -44,12 +44,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'user_ref_preview' => array(
         'label' => 'hidden',
@@ -443,7 +440,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -673,10 +670,11 @@ function usanetwork_post_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -691,13 +689,21 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Short Description',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
         'rows' => 5,
         'soft_length_limit' => 140,
         'soft_length_minimum' => 10,

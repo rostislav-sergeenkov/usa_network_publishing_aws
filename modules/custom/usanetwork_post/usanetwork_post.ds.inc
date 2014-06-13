@@ -115,7 +115,7 @@ function usanetwork_post_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_post_cover',
         1 => 'title',
-        2 => 'body',
+        2 => 'field_summary',
         3 => 'field_gigya_share_bar',
         4 => 'post_date',
       ),
@@ -123,7 +123,7 @@ function usanetwork_post_ds_layout_settings_info() {
     'fields' => array(
       'field_post_cover' => 'ds_content',
       'title' => 'ds_content',
-      'body' => 'ds_content',
+      'field_summary' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
       'post_date' => 'ds_content',
     ),

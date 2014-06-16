@@ -765,3 +765,13 @@ function usanetwork_core_update_7142() {
   module_enable($modules_en);
 }
 
+/**
+ * Enable Blogs and Sidecard.
+ */
+function usanetwork_core_update_7143() {
+  $modules_en = array(
+    'usanetwork_post',
+    'usanetwork_watchwith'
+  );
+  module_enable($modules_en);
+}

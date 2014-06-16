@@ -49,10 +49,7 @@ function usanetwork_home_preprocess_block(&$variables) {
   $block = $variables['block'];
   if ($block->bid == 'views-usa_video-front_full_episodes'
      || $block->bid == 'views-usa_mpx_video-front_full_epsds') {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-    $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
     if (!empty($homepage)) {
       $nid = reset(array_keys($homepage['node']));
@@ -82,16 +79,8 @@ function usanetwork_home_preprocess_node(&$variables) {
 /**
  * Callback for the USA homepage
  */
-function usanetwork_home_landing($day = '') {
+function usanetwork_home_landing($day = NULL) {
   $render = array();
-  if (empty($day)) {
-    // old method used current
-    //$day = strtolower(date('l'));
-    // new method subtracts 3 hours so homepages publish at 3am
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 
   // return the nodes as full
@@ -111,7 +100,7 @@ function usanetwork_home_landing($day = '') {
 /**
  * Callback for the USA homepage - admin preview pages
  */
-function usanetwork_home_admin_landing($day = '') {
+function usanetwork_home_admin_landing($day = NULL) {
   $render = array();
   if (arg(2)) {
     $day = strtolower(arg(2));
@@ -137,13 +126,17 @@ function usanetwork_home_admin_landing($day = '') {
 /**
  * To fetch homepage node by title
  */
-function usanetwork_home_get_homepage($types, $title) {
+function usanetwork_home_get_homepage($types, $day = NULL) {
+
+  if ($day === NULL) {
+    $day = _usanetwork_home_get_day();
+  }
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', $types);
   $query->propertyCondition('status', 1);
-  $query->propertyCondition('title', $title, '=');
+  $query->propertyCondition('title', $day, '=');
 
   // execute the query
   $homepage = $query->execute();
@@ -183,17 +176,86 @@ function usanetwork_home_node_validate($node, $form, &$form_state) {
 }
 
 /**
+ * Implements hook_form_FORD_ID_alter().
+ */
+function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_state) {
+  $form['home'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Homepages'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#tree' => TRUE,
+  );
+
+  $publish_time = variable_get('usanetwork_home_publish_time', '6:00 AM');
+  if (preg_match('|(\d{1,2})\:(\d{2}) ([AMP]{2})|Uis', $publish_time, $matches)) {
+    $hour = (int) $matches[1];
+    $minute = (int) $matches[2];
+    $part = $matches[3];
+  }
+  else {
+    $hour = 6;
+    $minute = 0;
+    $part = 'AM';
+  }
+  $form['home']['publish'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'container-inline'
+      ),
+    ),
+  );
+  $form['home']['publish']['usanetwork_home_publish_time'] = array(
+    '#type' => 'select',
+    '#title' => t('Publish time'),
+    '#default_value' => $hour,
+    '#options' => array_slice(range(0, 12, 1), 1, NULL, TRUE),
+    '#element_validate' => array('_usanetwork_home_publish_validate'),
+    '#tree' => FALSE,
+  );
+  $minutes = range(0, 59, 1);
+  for ($i = 0; $i < 10; $i++) {
+    $minutes[$i] = '0'.$minutes[$i];
+  }
+  $form['home']['publish']['minute'] = array(
+    '#type' => 'select',
+    '#title' => ':',
+    '#default_value' => $minute,
+    '#options' => $minutes,
+  );
+  $form['home']['publish']['part'] = array(
+    '#type' => 'select',
+    '#title' => '',
+    '#default_value' => $part,
+    '#options' => array(
+      'AM' => 'AM',
+      'PM' => 'PM',
+    ),
+  );
+}
+
+/**
+ * Validate callback for publish time.
+ */
+function _usanetwork_home_publish_validate($element, &$form_state, $form) {
+  $values =& $form_state['values'];
+  $publish = $values['usanetwork_home_publish_time'] . ':';
+  if ($values['home']['publish']['minute'] < 10) {
+    $publish .= '0';
+  }
+  $publish .= $values['home']['publish']['minute'] . ' ' . $values['home']['publish']['part'];
+  unset($values['home']['publish']);
+  form_set_value($element, $publish, $form_state);
+}
+
+/**
  * Block callback for the globalnav shows block
  * rip of home landing
  */
 function usanetwork_home_globalnav_shows_block() {
   $render = array();
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   // return the nodes as global_nav_block_shows
   if (!empty($homepage['node'])) {
@@ -212,12 +274,7 @@ function usanetwork_home_globalnav_shows_block() {
  */
 function usanetwork_home_globalnav_more_block() {
   $render = array();
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   // return the nodes as global_nav_block_more
   if (!empty($homepage['node'])) {
@@ -242,13 +299,7 @@ function usanetwork_home_globalnav_more_block() {
  */
 function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
   drupal_add_library('system', 'drupal.ajax');
-  $day = '';
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   $data = array();
   if (!empty($homepage['node'])) {
@@ -283,13 +334,7 @@ function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
  */
 function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
   drupal_add_library('system', 'drupal.ajax');
-  $day = '';
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   $data = array();
   if (!empty($homepage['node'])) {
@@ -318,13 +363,7 @@ function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
  * Retrieve more thingie and place them in the syndicate drawer
  */
 function usanetwork_home_globalnav_shows_banner() {
-  $day = '';
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   $data = array();
   if (!empty($homepage['node'])) {
@@ -342,13 +381,7 @@ function usanetwork_home_globalnav_shows_banner() {
  * Retrieve more thingie and place them in the syndicate drawer
  */
 function usanetwork_home_globalnav_more_banner() {
-  $day = '';
-  if (empty($day)) {
-    $day = strtotime("-3 hours");
-    $day = date('l', $day);
-    $day = strtolower($day);
-  }
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   $data = array();
   if (!empty($homepage['node'])) {
@@ -360,3 +393,19 @@ function usanetwork_home_globalnav_more_banner() {
   return $content;
 
 }
+
+/**
+ * Returns current day according to publish time.
+ */
+function _usanetwork_home_get_day() {
+  $publish = strtotime(variable_get('usanetwork_home_publish_time', '6:00 AM'));
+  if ($publish <= REQUEST_TIME) {
+    $day = strtolower(date('l'));
+  }
+  else {
+    $day = strtolower(date('l', strtotime('yesterday')));
+  }
+
+  return $day;
+}
+

@@ -909,13 +909,14 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
       'inline_content' => array(
         'label' => 'hidden',
-        'module' => 'flexslider_fields',
+        'module' => 'usanetwork_field_formatters',
         'settings' => array(
-          'caption' => 0,
-          'image_style' => '1400_wide',
-          'optionset' => 'default',
+          'optionset' => 'gallery',
+          'thumbnail_path' => '',
+          'view_mode' => 'gallery_flexslider',
+          'view_mode_thumb' => '_empty',
         ),
-        'type' => 'flexslider',
+        'type' => 'flexslider_file_entity',
         'weight' => 0,
       ),
       'page_collection_resources' => array(

@@ -134,7 +134,7 @@ function tve_auth_library() {
         'weight' => -1,
       ),
       'http://pdk.theplatform.com/pdk/tpPdkController.js' => array(
-        'scope' => 'footer',
+        'scope' => 'header',
         'weight' => -1,
       ),
       $path_prefix . '/js/services/idx-service.js' => array(

@@ -73,6 +73,18 @@ function usanetwork_mpx_video_strongarm() {
       'vid_teaser_front' => array(
         'custom_settings' => TRUE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'post_cover' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -116,6 +128,10 @@ function usanetwork_mpx_video_strongarm() {
             'visible' => FALSE,
           ),
           'vid_teaser_front' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'inline_content' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

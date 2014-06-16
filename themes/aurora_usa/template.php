@@ -443,14 +443,6 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
  */
 function aurora_usa_preprocess_field(&$vars, $hook) {
 
-  if (isset($vars['element']['#object']->type)) {
-    if (($vars['element']['#object']->type == 'media_gallery') && ($vars['element']['#field_name'] == 'field_media_items')) {
-      append_cover_to_media($vars);
-      // REMOVED in favor of node titles
-      // append_count_to_caption($vars);
-    }
-  }
-
   switch ($vars['element']['#field_name']) {
     // homepage aspots
     case 'field_usa_hp_arefs':

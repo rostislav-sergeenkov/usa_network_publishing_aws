@@ -102,6 +102,7 @@ $carousel-large: 237px, 198px;
 // Breakpoint variables
 $breakpoint-no-query-fallbacks: true;
 $bp-menu-switch: 769px;
+$bp-menu-narrow: max-width ($bp-menu-switch);
 $bp-menu-wide: 960px;
 
 $bp-episode-ad-switch:  500px;
@@ -247,7 +248,9 @@ $bp-grid-show-4: $bp-show-very-large-width;
 $bp-grid-show-2-fence: $bp-grid-show-2 ($bp-grid-show-3 - 1);
 $bp-grid-show-3-fence: $bp-grid-show-3 ($bp-grid-show-4 - 1);
 
-
+// blog
+$bp-blog-mobile: max-width 639px;
+$bp-blog-mobile-landscape: 639px 769px;
 
 ////////////////////////////
 // COMPASS DEFAULTS

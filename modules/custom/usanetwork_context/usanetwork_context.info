@@ -25,6 +25,7 @@ dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_token
 dependencies[] = usanetwork_tv_schedule
 dependencies[] = usanetwork_tv_shows
+dependencies[] = usanetwork_mpx_video
 features[context][] = schedule_page
 features[context][] = show_banner
 features[context][] = show_page
@@ -48,4 +49,3 @@ features[context][] = usanetwork_sitewide
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-

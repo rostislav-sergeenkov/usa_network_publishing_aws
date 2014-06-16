@@ -24,8 +24,16 @@ class context_condition_entity_field extends context_condition {
     $defaults = $this->fetch_from_context($context, 'values');
 
     $entity_types = array();
+    $view_modes = array();
     foreach (entity_get_info() as $entity_type_name => $entity_type) {
       $entity_types[$entity_type_name] = $entity_type['label'];
+      foreach ($entity_type['view modes'] as $view_mode_name => $view_mode) {
+        if (!isset($view_modes[$view_mode_name])) {
+          $view_modes[$view_mode_name] = "{$view_mode['label']} ({$entity_type['label']})";
+        } else {
+          $view_modes[$view_mode_name] .= ", {$view_mode['label']} ({$entity_type['label']})";
+        }
+      }
     }
 
     $fields_name = array_keys(field_info_fields());
@@ -37,6 +45,14 @@ class context_condition_entity_field extends context_condition {
       '#options' => $entity_types,
       '#description' => t('Select entity type to check'),
       '#default_value' => isset($defaults['entity_type']) ? unserialize($defaults['entity_type']) : array(),
+    );
+
+    $form['view_mode'] = array(
+      '#title' => t('View mode'),
+      '#type' => 'checkboxes',
+      '#options' => $view_modes,
+      '#description' => t('Select entity view modes to match.'),
+      '#default_value' => isset($defaults['view_mode']) ? unserialize($defaults['view_mode']) : array(),
     );
 
     $form['field_name'] = array(
@@ -84,6 +100,7 @@ class context_condition_entity_field extends context_condition {
     $values['field_empty'] = isset($values['field_empty']) ? $values['field_empty'] : FALSE;
     return array(
       'entity_type' => serialize($values['entity_type']),
+      'view_mode'   => serialize($values['view_mode']),
       'field_name'  => $values['field_name'],
       'field_value' => $values['field_value'],
       'field_empty' => $values['field_empty'],
@@ -94,15 +111,21 @@ class context_condition_entity_field extends context_condition {
   /**
    * Execute.
    */
-  public function execute($entity_type, $entity) {
+  public function execute($entity_type, $entity, $view_mode) {
     if ($this->condition_used()) {
       foreach ($this->get_contexts() as $context) {
         $settings = $this->fetch_from_context($context, 'values');
 
+        $view_modes = isset($settings['view_mode']) ? unserialize($settings['view_mode']) : array();
+        if (is_array($view_modes) && !empty($view_modes)) {
+          if (isset($view_modes[$view_mode]) && !$view_modes[$view_mode]) {
+            continue; // view mode doesn't match.
+          }
+        }
         if (in_array($entity_type, array_filter(unserialize($settings['entity_type'])))) {
           $items = field_get_items($entity_type, $entity, $settings['field_name']);
 
-          if (!is_array($items) && $settings['field_empty']) {
+          if (!is_array($items) && isset($settings['field_empty']) && $settings['field_empty']) {
             $this->condition_met($context);
           }
           elseif (!empty($items)) {

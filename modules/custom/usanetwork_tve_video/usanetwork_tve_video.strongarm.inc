@@ -51,7 +51,6 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
-<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -60,7 +59,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Don\'t see your provider?',
+    'footer_text' => 'Do not see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );
@@ -128,7 +127,6 @@ function usanetwork_tve_video_strongarm() {
 <h2>Here\'s what you\'ll get:</h2>
 <ul class="bullet-list">
 <li><span>Your favorite USA shows the day after they air</span></li>
-<li><span>Live TV</span></li>
 <li><span>A cinematic experience across your devices</span></li>
 </ul>',
       'format' => 'wysiwyg_basic',
@@ -137,7 +135,7 @@ function usanetwork_tve_video_strongarm() {
       'value' => '<h2>Select your provider and sign in</h2>',
       'format' => 'wysiwyg_basic',
     ),
-    'footer_text' => 'Don\'t see your provider?',
+    'footer_text' => 'Do not see your provider?',
     'footer_link_text' => 'Search by zip',
     'preview' => 'Preview "Login window step 1"',
   );
@@ -232,25 +230,9 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_mvpd_providers';
   $strongarm->value = array(
-    'auth-armstrongmywire-com' => array(
-      'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
-    ),
-    'att' => array(
-      'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_light_color',
-    ),
-    'charter' => array(
-      'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
-    ),
     'comcast-sso' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
-    ),
-    'cox' => array(
-      'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
     ),
     'dtv' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -260,15 +242,23 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'mediacom' => array(
-      'mvpd_logo' => 'field_mvpd_logo_light',
-      'mvpd_color' => 'field_mvpd_dark_color',
-    ),
-    'cablevision' => array(
+    'verizon' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'rcn' => array(
+    'att' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cox' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'charter-direct' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cablevision' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -276,7 +266,7 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'verizon' => array(
+    'mediacom' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -284,33 +274,53 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'rcn' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'auth-armstrongmywire-com' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'com140' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'acecommunications' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'acm010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'acc' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'algona' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'allwest' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'alpine' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'hun015' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'antietam' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'arkwest' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'arvig' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -318,7 +328,11 @@ function usanetwork_tve_video_strongarm() {
     ),
     'astound' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dix030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'auth-atlanticbb-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -326,15 +340,19 @@ function usanetwork_tve_video_strongarm() {
     ),
     'atmc' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'baldwin' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'baycreek' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bektel' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'bra020' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -350,7 +368,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'annearundel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'btc010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -362,19 +380,35 @@ function usanetwork_tve_video_strongarm() {
     ),
     'burlington-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'but010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'bvu' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'tel160-csp' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'csicable' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'phe030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cab140' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cableamerica' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'weh010-camtel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -382,31 +416,59 @@ function usanetwork_tve_video_strongarm() {
     ),
     'canbytel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'crt020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cas' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'casscomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cccomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cfunet' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dem010-01' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dem010-02' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dem010-03' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dem010-04' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dem010-05' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'auth-centurylink-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'dur010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'cimtel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cbt' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -420,13 +482,17 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'cit040' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'war040' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'wadsworth' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'clearcreek' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -436,9 +502,17 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'cml010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'cns' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cat020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'consolidatedcable' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -446,25 +520,41 @@ function usanetwork_tve_video_strongarm() {
     ),
     'consolidated-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'conwaycorp' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'crestview' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cross' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cro030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'ctcommunications' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'ctc040' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'cun010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'dak030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'tel160-del' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -494,7 +584,11 @@ function usanetwork_tve_video_strongarm() {
     ),
     'endeavor' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'mid030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'hickorytech-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -506,19 +600,23 @@ function usanetwork_tve_video_strongarm() {
     ),
     'fbc-tele' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'frontier' => array(
-      'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
-    ),
-    'firstmile' => array(
+    'fli020' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'fbcomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'tel160-fra' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'frontier' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'fullchannel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -526,7 +624,15 @@ function usanetwork_tve_video_strongarm() {
     ),
     'gci-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'clr010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'gla010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'goldenwest' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -538,7 +644,27 @@ function usanetwork_tve_video_strongarm() {
     ),
     'gpcom' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'gta-auth-gateway-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'gvtc-auth-gateway-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'hargray-auth-gateway-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'har005' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'har020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'auth-hawaiiantel-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -548,13 +674,21 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'hea040' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'htc020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'hometowncable-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'hometel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'hometelecom-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -574,17 +708,37 @@ function usanetwork_tve_video_strongarm() {
     ),
     'hotwirecommunications-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'harrison-telco' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'htccomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'htc' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'imon' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'stc020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'car100' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'icc010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'int050' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -592,9 +746,45 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'kal030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'kmt010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'kpu010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'kuh010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'lau020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'liberty-cable' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bra010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'lit020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'loc010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'longlines-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'weh010-longview' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -606,11 +796,11 @@ function usanetwork_tve_video_strongarm() {
     ),
     'lus-fiber' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'madison' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'man060' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -642,7 +832,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'midhudson' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'midrivers' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -650,15 +840,19 @@ function usanetwork_tve_video_strongarm() {
     ),
     'msauth-midco-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'mid045' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'mil080' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'morrisbroadband-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'mtacomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -666,7 +860,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'musfiber' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'mpw' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -676,13 +870,21 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'dur010-nel' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'nwcable-auth-gateway-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'nextech-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cic010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'nktelco' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -690,9 +892,29 @@ function usanetwork_tve_video_strongarm() {
     ),
     'nortex' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'nor140' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'northstate' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'nor030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'nor125' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'net010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'new045' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -706,15 +928,23 @@ function usanetwork_tve_video_strongarm() {
     ),
     'openband-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'daltonutilities' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'orbitel' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'ote010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'otter' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'paulbunyan' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -726,7 +956,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'phonoscope' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'weh010-pine' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -734,7 +964,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'pioncomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'pioneer' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -742,11 +972,11 @@ function usanetwork_tve_video_strongarm() {
     ),
     'pottawatomie' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'premiercomm' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'rai030' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -754,7 +984,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'myrtu-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'weh010-resort' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -766,15 +996,15 @@ function usanetwork_tve_video_strongarm() {
     ),
     'rockportcable' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'rtc' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'selco' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'service-electric-bb' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -788,9 +1018,13 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'she010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'sjoberg' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'sky050' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -812,6 +1046,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'summit-broadband' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'sum010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -830,7 +1068,7 @@ function usanetwork_tve_video_strongarm() {
     ),
     'tct' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'tds-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -842,7 +1080,15 @@ function usanetwork_tve_video_strongarm() {
     ),
     'tcc' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'tro010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'auth-truvista-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'tsc' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -856,25 +1102,57 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'unitedtel' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'uss020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cab060' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'valunet' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'sul015' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'ver025' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'weh010-vicksburg' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'volcanotel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bci010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'waitsfield' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'wal010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'wavebroadband' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'carolinata' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'wct010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
@@ -888,15 +1166,31 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'nttcwhi010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'weh010-white' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'wcta' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
-      'mvpd_color' => 'field_mvpd_dark_color',
+      'mvpd_color' => 'field_mvpd_light_color',
     ),
     'wtc010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'yadtel' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cou060' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'charter' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),

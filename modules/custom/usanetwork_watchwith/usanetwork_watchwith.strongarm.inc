@@ -101,13 +101,12 @@ function usanetwork_watchwith_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_watchwith_show_settings';
   $strongarm->value = array(
-    'graceland' => 'graceland',
-    'playing-house' => 'playing-house',
     'burn-notice' => 0,
     'csi' => 0,
     'chrisley-knows-best' => 0,
     'covert-affairs' => 0,
     'daytime' => 0,
+    'graceland' => 0,
     'house' => 0,
     'law-order-criminal-intent' => 0,
     'law-order-svu' => 0,
@@ -115,6 +114,7 @@ function usanetwork_watchwith_strongarm() {
     'ncis' => 0,
     'ncis-los-angeles' => 0,
     'necessary-roughness' => 0,
+    'playing-house' => 0,
     'psych' => 0,
     'royal-pains' => 0,
     'rush' => 0,

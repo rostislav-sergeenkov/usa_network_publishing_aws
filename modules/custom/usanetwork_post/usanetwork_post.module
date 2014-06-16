@@ -147,7 +147,6 @@ function usanetwork_post_preprocess_node(&$vars) {
           $show_cover = TRUE;
         }
 
-        dpm($show_cover);
         if (!$show_cover && isset($vars['content']['field_post_cover'])) {
           unset($vars['content']['field_post_cover']);
         }

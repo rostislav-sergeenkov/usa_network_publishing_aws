@@ -5,11 +5,54 @@
  */
 
 include_once 'usanetwork_post.features.inc';
+include_once 'usanetwork_post.field.inc';
+
+define('USANETWORK_FIELD_BLOG', 'field_blog');
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_post_block_info() {
+  $blocks['usanetwork_post_header'] = array(
+    'info' => t('Blog Header'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usanetwork_post_banners'] = array(
+    'info' => t('Blog Banners'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_post_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_post_header':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_post_get_blog_header();
+      break;
+    case 'usanetwork_post_banners':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_post_get_blog_banners();
+      break;
+  }
+  return $block;
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ * Alter post_node_form.
  */
 function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
+  $node = $form['#node'];
+  $lang = $node->language;
+  // Show is inherited from blog
   $form['field_show']['#access'] = FALSE;
 }
 
@@ -18,8 +61,8 @@ function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
  */
 function usanetwork_post_node_presave($node) {
   if ($node->type == 'post' && empty($node->taxonomy_term_update)) {
-    if (!empty($node->field_blog)) {
-      $blog = reset(field_get_items('node', $node, 'field_blog'));
+    if (!empty($node->{USANETWORK_FIELD_BLOG})) {
+      $blog = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
       if ($blog) {
         $blog = taxonomy_term_load($blog['tid']);
         if ($blog) {
@@ -41,7 +84,7 @@ function usanetwork_post_taxonomy_term_update($term) {
   if ($term->vocabulary_machine_name == 'blog') {
     $query = new EntityFieldQuery('node');
     $nodes = $query->entityCondition('bundle', 'post', '=')
-      ->fieldCondition('field_blog', 'tid', $term->tid, '=')
+      ->fieldCondition(USANETWORK_FIELD_BLOG, 'tid', $term->tid, '=')
       ->execute();
     if (!empty($nodes)) {
       $nodes = node_load_multiple(array_keys($nodes['node']));
@@ -52,4 +95,314 @@ function usanetwork_post_taxonomy_term_update($term) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function usanetwork_post_node_load($nodes, $types) {
+  if (in_array('post', $types)) {
+    foreach ($nodes as $node) {
+      if ($node->type == 'node') {
+
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_presave().
+ */
+function usanetwork_post_taxonomy_term_presave($term) {
+  if ($term->vocabulary_machine_name == 'blog') {
+    if (!isset($term->blog) && $blog = _usanetwork_post_get_blog_by_category($term)) {
+      $term->blog = $blog;
+    }
+    if (isset($term->blog) && $term->tid != $term->blog->tid) {
+      $term->field_show = $term->blog->field_show;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_post_preprocess_node(&$vars) {
+  if ($vars['type'] == 'post') {
+    $node = $vars['node'];
+    if (isset($vars['content']['post_date'])) {
+      //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
+      if ($vars['view_mode'] == 'teaser') {
+        $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
+      }
+    }
+    if ($vars['view_mode'] != 'teaser') {
+      $show_cover = field_get_items('node', $node, 'field_post_cover_toggle');
+      if ($show_cover) {
+        if ($show_cover = reset($show_cover)) {
+          $show_cover = (bool) $show_cover['value'];
+        }
+        else {
+          // default to true
+          $show_cover = TRUE;
+        }
+
+        dpm($show_cover);
+        if (!$show_cover && isset($vars['content']['field_post_cover'])) {
+          unset($vars['content']['field_post_cover']);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Returns the set of valid root terms for a blog field.
+ *
+ * @param $field
+ *   The field definition.
+ * @return
+ *   The array of valid terms for this field, keyed by term id.
+ */
+function usanetwork_post_blog_allowed_values($field) {
+  $options = array();
+  foreach ($field['settings']['allowed_values'] as $tree) {
+    if ($vocabulary = taxonomy_vocabulary_machine_name_load($tree['vocabulary'])) {
+      if ($terms = taxonomy_get_tree($vocabulary->vid, 0, 1)) {
+        foreach ($terms as $term) {
+          $options[$term->tid] = $term->name;
+        }
+      }
+    }
+  }
+  return $options;
+}
+
+/**
+ * Returns the set of valid categories for a blog field.
+ *
+ * @param $field
+ *   The field definition.
+ * @return
+ *   The array of valid terms for this field, keyed by term id.
+ */
+function usanetwork_post_categories_allowed_values($field, $blog = NULL) {
+  $options = array();
+  if ($blog !== NULL) {
+    $tid = is_object($blog) ? $blog->tid : $blog;
+    foreach ($field['settings']['allowed_values'] as $tree) {
+      if ($vocabulary = taxonomy_vocabulary_machine_name_load($tree['vocabulary'])) {
+        if ($terms = taxonomy_get_tree($vocabulary->vid, $tid)) {
+          foreach ($terms as $term) {
+            $options[$term->tid] = str_repeat('-', $term->depth) . $term->name;
+          }
+        }
+      }
+    }
+  }
+  return $options;
+}
+
+/**
+ * Returns blog term by category term.
+ */
+function _usanetwork_post_get_blog_by_category($category) {
+  $blog = FALSE;
+  $cache = &drupal_static(__FUNCTION__, array());
+
+  if ($category !== NULL) {
+    $tid = is_object($category) ? $category->tid : $category;
+    $original_tid = $tid;
+    if (is_object($category) && !empty($category->parent)) {
+      $tid = end($category->parent);
+    }
+    if ($tid && !isset($cache[$original_tid])) {
+      do {
+        $query = db_select('taxonomy_term_data', 't');
+        $query->join('taxonomy_term_hierarchy', 'h', 'h.parent = t.tid');
+        $query->addField('t', 'tid');
+        $query->condition('h.tid', $tid);
+        $query->addTag('term_access');
+        $query->orderBy('t.weight');
+        $query->orderBy('t.name');
+        $tids = $query->execute()->fetchCol();
+
+        if (!empty($tids)) {
+          $tid = reset($tids);
+        }
+        elseif ($tid != $original_tid) {
+          $blog = taxonomy_term_load($tid);
+        }
+
+      } while(!empty($tids));
+
+      if ($tid == $original_tid) {
+        $blog = is_object($category) ? $category : taxonomy_term_load($category);
+      }
+
+      if ($original_tid != NULL) {
+        $cache[$original_tid] = $blog;
+      }
+    }
+    elseif (isset($cache[$original_tid])) {
+      $blog = $cache[$original_tid];
+    }
+  }
+
+  return $blog;
+}
+
+/**
+ * Returns blog header block content.
+ */
+function _usanetwork_post_get_blog_header($blog = NULL) {
+  $content = array();
+
+  if ($blog === NULL) {
+    $entity_type = NULL;
+    $entity = _usanetwork_menu_get_object($entity_type);
+    if ($entity) {
+      switch ($entity_type) {
+        case 'taxonomy_term':
+          $blog = _usanetwork_post_get_blog_by_category($entity);
+          $category = $entity;
+          break;
+        default:
+          if (!empty($entity->{USANETWORK_FIELD_BLOG})) {
+            $category = field_get_items($entity_type, $entity, USANETWORK_FIELD_BLOG);
+            if ($category && $category = reset($category)) {
+              $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+              $category = taxonomy_term_load($category['tid']);
+            }
+          }
+          break;
+      }
+    }
+  }
+  if ($blog) {
+    $content = array(
+      '#prefix' => '<div class="blog-header">',
+      '#suffix' => '</div>',
+    );
+
+    // add blog logo
+    $content['logo'] = array(
+      '#theme' => 'link',
+      '#text' => ' ',
+      '#path' => 'taxonomy/term/' . $blog->tid,
+      '#options' => array(
+        'attributes' => array(
+          'title' => $blog->name,
+          'class' => array(
+            'blog-logo'
+          ),
+        ),
+      ),
+    );
+    // ... and title
+    $content['title'] = array(
+      '#theme' => 'link',
+      '#text' => $blog->name,
+      '#path' => 'taxonomy/term/' . $blog->tid,
+      '#options' => array(
+        'attributes' => array(
+          'title' => $blog->name,
+          'class' => array(
+            'blog-title'
+          ),
+        ),
+      ),
+    );
+
+    // add blog category menu
+    $menu = _usanetwork_post_get_blog_menu($blog->tid, $blog->vid, $category->tid);
+    if (!empty($menu)) {
+      $content['menu'] = $menu;
+      $content['menu']['#prefix'] = '<div class="category-menu">';
+      $content['menu']['#suffix'] = '</div>';
+      $content['menu']['#attached']['js'][] = drupal_get_path('module', 'usanetwork_post') . '/js/usanetwork_post_menu.js';
+    }
+  }
+
+  return $content;
+}
+
+/**
+ * Returns blog header block content.
+ */
+function _usanetwork_post_get_blog_banners($blog = NULL) {
+  $content = array();
+
+  if ($blog === NULL) {
+    $entity_type = NULL;
+    $entity = _usanetwork_menu_get_object($entity_type);
+    if ($entity) {
+      switch ($entity_type) {
+        case 'taxonomy_term':
+          $blog = _usanetwork_post_get_blog_by_category($entity);
+          $category = $entity;
+          break;
+        default:
+          if (!empty($entity->{USANETWORK_FIELD_BLOG})) {
+            $category = field_get_items($entity_type, $entity, USANETWORK_FIELD_BLOG);
+            if ($category && $category = reset($category)) {
+              $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+              $category = taxonomy_term_load($category['tid']);
+            }
+          }
+          break;
+      }
+    }
+  }
+  if ($blog) {
+    if (!empty($blog->field_blog_banners)) {
+      $banner_content = field_get_items('taxonomy_term', $blog, 'field_blog_banners');
+      if ($banner_content = reset($banner_content)) {
+        $content = array(
+          '#prefix' => '<div class="blog-banners">',
+          '#suffix' => '</div>',
+        );
+
+        $content['banners'] = array(
+          '#markup' => $banner_content['value'],
+        );
+      }
+    }
+  }
+
+  return $content;
+}
+
+/**
+ * Returns blog categories menu.
+ */
+function _usanetwork_post_get_blog_menu($tid, $vid = 0, $category = NULL) {
+  $tree = array();
+
+  $children = taxonomy_get_children($tid, $vid);
+  if (!empty($children)) {
+    foreach ($children as $term) {
+      $path = 'taxonomy/term/' . $term->tid;
+      $menu_item = array(
+        'data' => l($term->name, $path),
+      );
+      // Append active class.
+      if ($path == $_GET['q'] || $category == $term->tid) {
+        $menu_item['class'][] = 'active';
+      }
+      $children = _usanetwork_post_get_blog_menu($term->tid, $term->vid, $category);
+      if (!empty($children)) {
+        $menu_item['children'] = $children['#items'];
+        foreach ($children['#items'] as $child) {
+          if (!empty($child['class']) && in_array('active', $child['class'])) {
+            $menu_item['class'][] = 'active-trail';
+          }
+        }
+      }
+      $tree['#items'][$term->tid] = $menu_item;
+    }
+    $tree['#theme'] = 'item_list';
+  }
+
+  return $tree;
 }

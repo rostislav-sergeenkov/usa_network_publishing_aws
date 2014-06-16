@@ -1283,10 +1283,12 @@ input.echo-submit-text {
   margin-bottom: 20px;
   .gig-button-container {
     td {
-      > div {
+      > div,
+      > div:hover {
         width: 32px !important;
         height: 32px !important;
         background-image: url('../images/social_chatter_icons.png') !important;
+        background-repeat: none;
         @include breakpoint($bp-home-narrowest) {
           width: 24px !important;
           height: 24px !important;
@@ -1389,6 +1391,9 @@ body {
       .gig-simpleShareUI-caption-text {
         background-color: #1C1C1C;
         color: #A7A6A6;
+      }
+      .gig-simpleShareUI-buttonText {
+        color: #ffffff;
       }
     }
   }

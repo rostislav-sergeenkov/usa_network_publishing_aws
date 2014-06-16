@@ -234,6 +234,30 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'file|mpx_video_1|inline_content';
+  $ds_layout->entity_type = 'file';
+  $ds_layout->bundle = 'mpx_video_1';
+  $ds_layout->view_mode = 'inline_content';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'file',
+      ),
+    ),
+    'fields' => array(
+      'file' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(),
+    'layout_wrapper' => 'div',
+  );
+  $export['file|mpx_video_1|inline_content'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'file|mpx_video_1|vid_teaser_episode';
   $ds_layout->entity_type = 'file';
   $ds_layout->bundle = 'mpx_video_1';

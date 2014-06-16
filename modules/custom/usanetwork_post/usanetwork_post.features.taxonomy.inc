@@ -13,7 +13,7 @@ function usanetwork_post_taxonomy_default_vocabularies() {
       'name' => 'Blog',
       'machine_name' => 'blog',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

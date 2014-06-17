@@ -1398,8 +1398,10 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
     $file_object = file_load($result->fid);
     $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
   } 
-  
-  $omniture_variables = array_merge($omniture_variables, $video_variables);
+
+  if (!empty($video_variables)) {
+    $omniture_variables = array_merge($omniture_variables, $video_variables);
+  }
 }
 
 /*

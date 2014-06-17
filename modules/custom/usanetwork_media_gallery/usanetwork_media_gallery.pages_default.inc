@@ -148,7 +148,18 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_1';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'context_exists',
+          'settings' => array(
+            'exists' => '1',
+          ),
+          'context' => 'relationship_entity_from_field:field_show-node-node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'context' => array(
         0 => 'relationship_entity_from_field:field_show-node-node_1',
@@ -173,7 +184,18 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_3';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'context_exists',
+          'settings' => array(
+            'exists' => '1',
+          ),
+          'context' => 'relationship_entity_from_field:field_show-node-node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'context' => array(
         0 => 'relationship_entity_from_field:field_show-node-node_1',
@@ -198,7 +220,18 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->type = 'views_panes';
     $pane->subtype = 'usa_gallery-panel_pane_4';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'context_exists',
+          'settings' => array(
+            'exists' => '1',
+          ),
+          'context' => 'relationship_entity_from_field:field_show-node-node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'context' => array(
         0 => 'relationship_entity_from_field:field_show-node-node_1',

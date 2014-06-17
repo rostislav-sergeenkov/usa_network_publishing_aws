@@ -434,13 +434,14 @@ function usanetwork_blocks_usa_follow_block() {
       $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
       $tw_link = field_get_items($entity_type, $entity, 'field_usa_link_twitter');
       $tw_account = ($tw_link) ? $tw_link[0]['url'] : $tw_account;
-    } else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video', ))) {
+    } else if (in_array($entity->type, array('catchall_page', 'media_gallery', 'person', 'tv_episode', 'usa_video', 'usa_tve_video', ))
+            || (in_array($entity->type, _usanetwork_mpx_video_get_all_file_types()))) {
       $show = field_get_items($entity_type, $entity, 'field_show');
       if ($show) {
         $show_node = node_load($show[0]['target_id']);
-        $fb_link = field_get_items($entity_type, $show_node, 'field_usa_link_facebook');
+        $fb_link = field_get_items('node', $show_node, 'field_usa_link_facebook');
         $fb_account = ($fb_link) ? $fb_link[0]['url'] : $fb_account;
-        $tw_link = field_get_items($entity_type, $show_node, 'field_usa_link_twitter');
+        $tw_link = field_get_items('node', $show_node, 'field_usa_link_twitter');
         $tw_account = ($tw_link) ? $tw_link[0]['url'] : $tw_account;
       }
     }

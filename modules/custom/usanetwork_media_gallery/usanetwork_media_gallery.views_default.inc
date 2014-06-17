@@ -287,7 +287,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['sorts']['field_original_air_date_value']['relationship'] = 'field_episode_target_id';
   $handler->display->display_options['sorts']['field_original_air_date_value']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -505,7 +505,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -603,7 +603,7 @@ function usanetwork_media_gallery_views_default_views() {
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';

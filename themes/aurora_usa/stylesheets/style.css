@@ -5837,6 +5837,10 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .node-media-gallery.view-mode-inline_content .flexslider .field-name-field-caption p {
   margin: 5px 0;
 }
+.node-media-gallery.view-mode-inline_content .flexslider .counter {
+  padding: 10px;
+  font-size: 15px;
+}
 
 .media-gallery .center-wrapper {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -13889,6 +13893,9 @@ body.blog .view-display-id-blog_content .views-row {
   .node.node-post .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover {
     background-position: -168px 0px !important;
   }
+}
+.node.node-post .flexslider .counter {
+  color: #4e99d0;
 }
 
 [class*="iib"] {

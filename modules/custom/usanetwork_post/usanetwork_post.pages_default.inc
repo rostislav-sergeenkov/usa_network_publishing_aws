@@ -119,7 +119,7 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'block';
-    $pane->subtype = 'dart-dart-tag-300x250_scr';
+    $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -130,7 +130,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => 'block-dart-dart-tag-300x250-ifr-reload',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
@@ -296,7 +299,7 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'block';
-    $pane->subtype = 'dart-dart-tag-300x250_scr';
+    $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -307,7 +310,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => 'block-dart-dart-tag-300x250-ifr-reload',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

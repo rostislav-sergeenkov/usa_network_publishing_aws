@@ -4,6 +4,7 @@ package = USA Network
 version = 7.x-1.2
 project = usanetwork_post
 dependencies[] = field_group
+dependencies[] = list
 dependencies[] = page_manager
 dependencies[] = pub_contributor_profile
 dependencies[] = text

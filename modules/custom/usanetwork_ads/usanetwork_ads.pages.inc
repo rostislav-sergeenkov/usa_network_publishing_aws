@@ -8,6 +8,7 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
   $entity_edit_forms = array(
     'node_form',
     'file_entity_edit',
+    'taxonomy_form_term',
   );
 
   if (isset($form['#bundle'])) {
@@ -26,6 +27,10 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
         $entity = isset($form_state['file']) ? $form_state['file'] : FALSE;
         $entity_type = 'file';
         break;
+      case 'taxonomy_form_term':
+        $entity = isset($form_state['term']) ? $form_state['term'] : FALSE;
+        $entity_type = 'taxonomy_term';
+        break;
     }
 
     if (!$entity || !$entity_type) {
@@ -36,6 +41,10 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
       else {
         return;
       }
+    }
+
+    if (!$entity) {
+      return;
     }
 
     list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
@@ -99,7 +108,8 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
   // Bundle settings form
   $bundle_setting_forms = array(
     'node_type_form',
-    'file_entity_file_type_form'
+    'file_entity_file_type_form',
+    'taxonomy_form_vocabulary',
   );
   if (in_array($form_id, $bundle_setting_forms)) {
     $entity_type = FALSE;
@@ -113,6 +123,10 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
       case 'file_entity_file_type_form':
         $entity_type = 'file';
         $bundle = isset($form['#file_type']) ? $form['#file_type']->type : FALSE;
+        break;
+      case 'taxonomy_form_vocabulary':
+        $entity_type = 'taxonomy_term';
+        $bundle = isset($form['#vocabulary']) ? $form['#vocabulary']->machine_name : FALSE;
         break;
     }
 
@@ -203,6 +217,15 @@ function usanetwork_ads_form_bundle_form_submit($form, &$form_state) {
   $bundle = $form_state['bundle'];
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());
   $type_settings = $form_state['input']['usanetwork_ads'];
+
+  if ($entity_type == 'taxonomy_term' && $bundle !== $form_state['values']['machine_name']) {
+    $new_bundle = $form_state['values']['machine_name'];
+    if (isset($settings[$entity_type][$bundle])) {
+      $settings[$entity_type][$new_bundle] = $settings[$entity_type][$bundle];
+      unset($settings[$entity_type][$bundle]);
+    }
+    $bundle = $new_bundle;
+  }
 
   // remove empty omniture variables
   $variables = array();

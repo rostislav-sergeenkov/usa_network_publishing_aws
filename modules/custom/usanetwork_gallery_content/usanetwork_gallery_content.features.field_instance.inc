@@ -1437,7 +1437,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,

@@ -17,7 +17,10 @@ function usanetwork_gallery_content_node_load($nodes, $types) {
         $lang = $node->language;
         if (!empty($node->field_cover_item[$lang])) {
           $cover = $node->field_cover_item[$lang][0];
-          array_unshift($node->field_media_items[$lang], $cover);
+          $first = reset($node->field_media_items[$lang]);
+          if ($first['fid'] != $cover['fid']) {
+            array_unshift($node->field_media_items[$lang], $cover);
+          }
         }
       }
     }
@@ -25,14 +28,14 @@ function usanetwork_gallery_content_node_load($nodes, $types) {
 }
 
 /**
- * Implements hook_node_presave().
+ * Implements hook_node_update().
  */
-function usanetwork_gallery_content_node_presave($node) {
+function usanetwork_gallery_content_node_update($node) {
   if ($node->type == 'media_gallery') {
     $lang = $node->language;
     if (!empty($node->field_cover_item[$lang]) && !empty($node->field_media_items[$lang])) {
-      $first = reset($node->field_media_items[$lang]);
-      $cover = reset($node->field_cover_item[$lang]);
+      $first = $node->field_media_items[$lang][0];
+      $cover = $node->field_cover_item[$lang][0];
       if ($first['fid'] == $cover['fid']) {
         array_shift($node->field_media_items[$lang]);
       }
@@ -47,11 +50,20 @@ function usanetwork_gallery_content_node_prepare($node) {
   if ($node->type == 'media_gallery') {
     $lang = $node->language;
     if (!empty($node->field_cover_item[$lang]) && !empty($node->field_media_items[$lang])) {
-      $first = reset($node->field_media_items[$lang]);
-      $cover = reset($node->field_cover_item[$lang]);
+      $first = $node->field_media_items[$lang][0];
+      $cover = $node->field_cover_item[$lang][0];
       if ($first['fid'] == $cover['fid']) {
         array_shift($node->field_media_items[$lang]);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_gallery_content_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'media_gallery') {
+    $node->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery_content.js';
   }
 }

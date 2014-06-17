@@ -33,6 +33,25 @@ function usanetwork_watchwith_page_alter(&$page) {
     return;
   }
 
+  $current_menu_item = menu_get_item();
+  $current_menu_item_path = $current_menu_item['path'];
+  $view_watchwith = FALSE;
+  
+  if ($current_menu_item_path == 'videos') {
+    $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
+    $file = file_load($result->fid);
+    $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+  } else {
+    $file = menu_get_object('file');
+    if (isset($file->type) && (in_array($file->type, _usanetwork_mpx_video_get_all_file_types()))){
+      $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+    }
+  }
+  
+  if (!$view_watchwith) {
+    return;
+  }
+  
   $page['page_bottom']['usanetwork_watchwith']['#attached']['js'][drupal_get_path('module', 'usanetwork_watchwith') . '/js/usanetwork_watchwith.js'] = array(
     'type' => 'file',
     'scope' => 'footer',

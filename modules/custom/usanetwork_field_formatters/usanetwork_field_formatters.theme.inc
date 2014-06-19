@@ -4,13 +4,15 @@
  * Default theme implementation for 'flexslider_file_entity'.
  */
 function theme_flexslider_file_entity($vars) {
-  $output = array(
-    '#theme' => 'flexslider',
-    '#items' => array(),
-  );
   $element = $vars['element'];
   $langcode = $element['#language'];
   $settings = $element['#settings'];
+
+  $output = array(
+    '#theme' => 'flexslider',
+    '#items' => array(),
+    '#settings' => $settings,
+  );
 
   foreach ($element['#items'] as $delta => $item) {
     $file = (object) $item;

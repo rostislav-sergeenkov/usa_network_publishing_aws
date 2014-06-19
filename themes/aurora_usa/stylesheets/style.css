@@ -13643,6 +13643,7 @@ body.blog .panel-display .panel-col-top .inside .blog-header .category-menu {
     top: 54px;
     left: 0;
     right: 0;
+    z-index: 1;
   }
   body.blog .panel-display .panel-col-top .inside .blog-header .category-menu > .item-list.open > .filter-menu {
     display: block;

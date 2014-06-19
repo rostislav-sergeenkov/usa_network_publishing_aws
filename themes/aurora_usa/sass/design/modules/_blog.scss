@@ -264,6 +264,7 @@ body {
                     top: 54px;
                     left: 0;
                     right: 0;
+                    z-index: 1;
                   }
                   &.open {
                     > .filter-menu {

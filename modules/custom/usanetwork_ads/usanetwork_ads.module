@@ -652,21 +652,14 @@ function usanetwork_ads_preprocess_page(&$variables) {
       $site_metric_settings['home']['sub2'] : '';
   }
   // Entity page based settings.
-  else if ($current_menu_object) {
-    $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_entity_dart_settings($current_menu_object, $entity_type);
-    if ($entity_type == 'node') {
-      $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($current_menu_object);
-    }
-  }
-  // Path based settings.
   else {
-    // If there is a node in $variables, get these values first.  Then over-ride
-    // with the path specific values.
-    if (isset($variables['node'])) {
-      $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_node_dart_settings($variables['node']);
-      $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($variables['node']);
+    if ($current_menu_object) {
+      $usa_dart_js_settings['USA']['DART']['values'] = _usanetwork_ads_get_entity_dart_settings($current_menu_object, $entity_type);
+      if ($entity_type == 'node') {
+        $usa_dart_js_settings['USA']['refreshSettings'] = _usanetwork_ads_get_node_refresh_settings($current_menu_object);
+      }
     }
-
+    // Path based settings.
     // Match current path to how it is made available by the custom modules.
     $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);
 
@@ -830,16 +823,11 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
     $omniture_variables = _usanetwork_ads_get_omniture_variables($omniture_settings);
   }
   // Entity page based settings.
-  else if ($current_menu_object) {
-    $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type);
-  }
-  // Path based settings.
   else {
-    // If there is a node in $variables, get these values first.  Then over-ride
-    // with the path specific values.
-    if (isset($variables['node'])) {
-      $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($variables['node'], 'node');
+    if ($current_menu_object) {
+      $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type);
     }
+    // Path based settings.
     if ($omniture_variables !== false) {
       // Match current path to how it is made available by the custom modules.
       $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);

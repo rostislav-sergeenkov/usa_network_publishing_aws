@@ -67,20 +67,33 @@ function usanetwork_watchwith_preprocess_file_entity(&$variables) {
     $variables['watchwith_sidecar'] = NULL;
     if (_tve_watchwith_is_sidecar_load_required() &&  _usanetwork_watchwith_is_watchwith_show_required($file)) {
 
-    // Gets the anvato id from the node object and passes it to sidecar load function.
-    $external_advertiser_id = field_get_items('file', $file, 'field_mpx_external_advertiser_id');
-    $external_advertiser_id = isset($external_advertiser_id[0]['value']) ?
-      $external_advertiser_id[0]['value'] :
-      NULL;
+      // Gets the anvato id from the node object and passes it to sidecar load function.
+      $external_advertiser_id = field_get_items('file', $file, 'field_mpx_external_advertiser_id');
+      $external_advertiser_id = isset($external_advertiser_id[0]['value']) ?
+        $external_advertiser_id[0]['value'] :
+        NULL;
 
+      if ($external_advertiser_id) {
     
-      _tve_watchwith_load_sidecar($external_advertiser_id);
+        $sidecar_url = url('http://api.watchwith.com/v3/airings/' . $external_advertiser_id, array('query' => array('idSource' => 'anvatoAssetId', 'key' => variable_get('tve_watchwith_api_key'))));
+        
+        $result = drupal_http_request($sidecar_url);
+        
+        if (!empty($result->data)) {
+          $result_data = drupal_json_decode($result->data);
+          if (!empty($result_data['uuid'])) {
+            _tve_watchwith_load_sidecar($external_advertiser_id);
 
-      $variables['watchwith_sidecar'] = _tve_watchwith_get_sidecar_container_html();
-      $variables['watchwith_hide_sidecar_tabs'] = variable_get('tve_watchwith_hide_sidecar_tabs', 1);
+            if (isset($result_data['timeline']['events'])) {
+              $variables['watchwith_sidecar'] = _tve_watchwith_get_sidecar_container_html();
+            }
+            $variables['watchwith_hide_sidecar_tabs'] = variable_get('tve_watchwith_hide_sidecar_tabs', 1);
 
-      $default_no_content_message = variable_get('tve_watchwith_default_no_content_message', array());
-      $variables['watchwith_error_message'] = isset($default_no_content_message['value']) ? $default_no_content_message['value'] : '';
+            $default_no_content_message = variable_get('tve_watchwith_default_no_content_message', array());
+            $variables['watchwith_error_message'] = isset($default_no_content_message['value']) ? $default_no_content_message['value'] : '';
+          }
+        }      
+      }
     }
   }
 }

@@ -692,7 +692,9 @@ function aurora_usa_preprocess_flexslider_file_entity(&$vars) {
       $node = $vars['element']['#object'];
       $language = $node->language;
       $cover = $node->field_cover_item[$language][0];
-      array_unshift($vars['element']['#items'], (array) file_load($cover['fid']));
+      if ($cover) {
+        array_unshift($vars['element']['#items'], (array) file_load($cover['fid']));
+      }
     }
   }
 }

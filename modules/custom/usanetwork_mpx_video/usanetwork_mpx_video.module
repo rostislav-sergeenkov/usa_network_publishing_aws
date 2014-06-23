@@ -16,6 +16,7 @@ define('USA_MPX_VIDEO_USA_VIDEO_TERMS_VID', '66');
 define('USA_MPX_VIDEO_STAGE_ACCOUNT', '2297296056');
 define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
+define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 5);
 
 /**
  * Implementation of hook_menu().
@@ -1349,6 +1350,41 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
       $join = new views_join();
       $join->construct($subquery, 'file_managed', 'fid', 'max_fid', array(), 'INNER');
       $query->add_relationship('field_data_field_dependens_show', $join, 'file_managed');
+  }
+}
+
+/**
+ * Implements hook_views_post_execute()
+ */
+function usanetwork_mpx_video_views_post_execute(&$view) {
+  if ($view->name == 'usa_mpx_video' && $view->current_display == 'front_full_epsds') {
+    
+    $result_count = count($view->result);
+    $needed_count = USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL - $result_count;
+    
+    if ($needed_count > 0) {
+      
+      $result = array();
+      foreach ($view->result as $key => $value) {
+        $result[] = $value->fid;
+      }
+      
+      $query = db_select('file_managed', 'fm')
+        ->fields('fm',array('fid'))
+        ->condition('fm.type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
+        ->condition('fm.fid', $result, 'NOT IN')
+        ->condition('fm.published', '1');   
+      $query->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
+      $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+      $query->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');   
+      $query->addField('fm', 'timestamp', 'file_managed_created');
+      $query->addField('mv', 'available_date', 'mpx_video_airdate');
+      $query->orderBy('mv.airdate', 'DESC');
+      $query->range(0, $needed_count);
+      $query_result = $query->execute()->fetchAll();
+    }
+    
+    $view->result = array_merge($view->result, $query_result);
   }
 }
 

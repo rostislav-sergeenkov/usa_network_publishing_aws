@@ -1382,9 +1382,9 @@ function usanetwork_mpx_video_views_post_execute(&$view) {
       $query->orderBy('mv.airdate', 'DESC');
       $query->range(0, $needed_count);
       $query_result = $query->execute()->fetchAll();
+
+      $view->result = array_merge($view->result, $query_result);
     }
-    
-    $view->result = array_merge($view->result, $query_result);
   }
 }
 

@@ -204,62 +204,10 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
       }
       break;
     case 'flexslider_file_entity':
-      // Rebuild the items list to contain only those with access.
-      foreach ($items as $delta => $item) {
-        if (!file_entity_access('view', (object) $item)) {
-          unset($items[$delta]);
-        }
-      }
-
-      foreach ($items as $delta => $item) {
-        $file = (object) $item;
-        if (!isset($file->fid)) {
-          continue;
-        }
-
-        // Provide some context.
-        list($entity_id,,$bundle) = entity_extract_ids($entity_type, $entity);
-        $file->entityreference_flexslider = array(
-          'display' => $display,
-          'delta' => $delta,
-          'entity_type' => $entity_type,
-          'entity_id' => $entity_id,
-        );
-        list(,,$file_type) = entity_extract_ids('file', $file);
-
-        $build = entity_view('file', array($file->fid => $file), $settings['view_mode'], $langcode, FALSE);
-        $result[$delta] = array(
-          'slide' => array(
-            'entity' => $build['files'][$file->fid],
-            'caption' => entity_label('file', $file),
-            '#entity_info' => array(
-              'entity_type' => 'file',
-              'bundle' => $file_type,
-            ),
-          ),
-          'thumb' => array(),
-        );
-        if (!in_array($settings['view_mode_thumb'], array('_empty', '_image'))) {
-          $build = entity_view('file', array($file->fid => $file), $settings['view_mode_thumb'], $langcode, FALSE);
-          $result[$delta]['thumb'] = $build['files'][$file->fid];
-        } else if ($settings['view_mode_thumb'] == '_image') {
-          if (module_exists('token')) {
-            $result[$delta]['slide']['thumbnail'] = token_replace($settings['thumbnail_path'], array(
-              'file' => $file,
-            ));
-          } else {
-            $result[$delta]['slide']['thumbnail'] = $settings['thumbnail_path'];
-          }
-        }
-      }
-
-      if (count($result) > 0) {
-        $element = array(
-          '#theme' => 'flexslider_file_entity',
-          '#entities' => $result,
-          '#settings' => $display['settings'],
-        );
-      }
+      $element = array(
+        '#theme' => 'flexslider_file_entity',
+        '#settings' => $display['settings'],
+      );
       break;
   }
 
@@ -278,8 +226,7 @@ function usanetwork_field_formatters_theme() {
   );
 
   $items['flexslider_file_entity'] = array(
-    'variables' => array('entities' => NULL, 'slides' => array(), 'settings' => array(), 'flexslider' => array()),
-    'render element' => 'flexslider',
+    'render element' => 'element',
     'file' => 'usanetwork_field_formatters.theme.inc',
   );
 

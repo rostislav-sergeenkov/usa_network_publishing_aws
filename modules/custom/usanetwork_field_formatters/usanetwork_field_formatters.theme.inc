@@ -1,32 +1,39 @@
 <?php
 
 /**
- * Template process handler for 'flexslider_file_entity'.
+ * Default theme implementation for 'flexslider_file_entity'.
  */
-function template_process_flexslider_file_entity(&$vars) {
-  $settings =& $vars['settings'];
-  $options =& $settings['optionset'];
+function theme_flexslider_file_entity($vars) {
+  $element = $vars['element'];
+  $langcode = $element['#language'];
+  $settings = $element['#settings'];
 
-  $vars['flexslider'] += array(
+  $output = array(
     '#theme' => 'flexslider',
     '#items' => array(),
     '#settings' => $settings,
   );
-  foreach (element_children($vars['entities']) as $delta) {
-    $slide = $vars['entities'][$delta]['slide'];
 
-    $vars['flexslider']['#items'][$delta] = array(
-      'slide' => drupal_render($slide['entity']),
-      'thumb' => drupal_render($vars['entities'][$delta]['thumb']),
-    );
+  foreach ($element['#items'] as $delta => $item) {
+    $file = (object) $item;
+    if (file_entity_access('view', $file)) {
+      $build = entity_view('file', array($file->fid => $file), $settings['view_mode'], $langcode, FALSE);
+      $output['#items'][$delta]['slide'] = drupal_render($build['files'][$file->fid]);
+      if (!in_array($settings['view_mode_thumb'], array('_empty', '_image'))) {
+        $thumb_build = entity_view('file', array($file->fid => $file), $settings['view_mode_thumb'], $langcode, FALSE);
+        $output['#items'][$delta]['thumb'] = drupal_render($thumb_build['files'][$file->fid]);
+      }
+    } else if ($settings['view_mode_thumb'] == '_image') {
+      if (module_exists('token')) {
+        $output['#items'][$delta]['thumb'] = token_replace($settings['thumbnail_path'], array(
+          'file' => $file,
+        ));
+      } else {
+        $output['#items'][$delta]['thumb'] = $settings['thumbnail_path'];
+      }
+    }
   }
-}
 
-/**
- * Default theme implementation for 'flexslider_file_entity'.
- */
-function theme_flexslider_file_entity($vars) {
-  $output = '';
-  $output .= drupal_render($vars['flexslider']);
+  $output = drupal_render($output);
   return $output;
 }

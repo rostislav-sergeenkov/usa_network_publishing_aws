@@ -170,6 +170,10 @@ function usanetwork_tv_schedule_on_now_block() {
 
   $full_tv_schedule = array();
   // get the tv schedule from 00:00 AM till 5:59 AM
+  
+  $on_now_image = theme('image', array('path' => drupal_get_path('module', 'usanetwork_tv_schedule') . '/images/USA_watchlive_btn.png',
+                          'attributes' => array('width' => '63')));
+  
   foreach ($tv_schedule_prev_day as $item) {
     $cal_date = (array) $item->CalendarScheduleDate;
 
@@ -191,9 +195,9 @@ function usanetwork_tv_schedule_on_now_block() {
 
       if (empty($nid)) {
         if (strtoupper($tv_show_name) == 'USA MOVIE') {
-          $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
+          $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         } else {
-          $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show_name . '</span></div>';
+          $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . $tv_show_name . '</span></div><span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
       else {
@@ -209,9 +213,9 @@ function usanetwork_tv_schedule_on_now_block() {
           }
 
           // link things up
-          $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
+          $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         } else {
-          $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
+          $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
 
@@ -249,9 +253,9 @@ function usanetwork_tv_schedule_on_now_block() {
 
     if (empty($nid)) {
       if (strtoupper($tv_show_name) == 'USA MOVIE') {
-        $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true));
+        $tv_show = $on_now_icon . l($tv_show, 'movies', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       } else {
-        $tv_show = $on_now_icon . $tv_show;
+        $tv_show = $on_now_icon . $tv_show . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
@@ -266,9 +270,9 @@ function usanetwork_tv_schedule_on_now_block() {
         }
 
         // link things up
-        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
+        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       } else {
-        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true));
+        $tv_show = $on_now_icon . l($tv_show, $path, array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       }
     }
 
@@ -559,12 +563,12 @@ function usanetwork_on_now_panel_js() {
 
   if (!empty($arg[1]) && isset($_GET['on_now'])) {
     $on_now = node_load($arg[1]);
-    $output = usanetwork_on_now_panel_node_content($on_now, check_plain($_GET['on_now']));
+    $output = usanetwork_on_now_panel_node_content($on_now, check_plain($_GET['on_now']), TRUE);
   }
 
   if (!empty($arg[2]) && isset($_GET['next_up'])) {
     $next_up = node_load($arg[2]);
-    $output = usanetwork_on_now_panel_node_content($next_up, check_plain($_GET['next_up']));
+    $output = usanetwork_on_now_panel_node_content($next_up, check_plain($_GET['next_up']), FALSE);
   }
 
   echo $output;
@@ -608,7 +612,7 @@ function usanetwork_on_now_social_block_content($node, $tab) {
 /**
  * On now panel content given the tv show node
  */
-function usanetwork_on_now_panel_node_content($node, $text) {
+function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
   $output = '';
   $lang = LANGUAGE_NONE;
 
@@ -625,11 +629,18 @@ function usanetwork_on_now_panel_node_content($node, $text) {
 
   $path = drupal_get_path_alias('node/'.$node->nid);
 
+  $watch_now_image = theme('image', array('path' => drupal_get_path('module', 'usanetwork_tv_schedule') . '/images/USA_watchlive_onnow_btn.png',
+                          'attributes' => array('width' => '278')));
+  
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
     $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path.'/social/sync', array('html' => true)) . '</figure></div>';
   } else {
-    $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), $path, array('html' => true)) . '</figure>';
+    if ($is_on_now) {
+      $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), $path, array('html' => true)) . '<span id="show-on-now-watch">' . l($watch_now_image, 'videos/live', array('html' => TRUE)) . '</span></figure> ';
+    } else {
+      $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), $path, array('html' => true)) . '</figure>';
+    }
   }
 
   // show info

@@ -256,6 +256,12 @@
 
 #show-on-now-watch {
   position: absolute;
-  left: 34px;
-  top: 220px;
+  left: 28px;
+  top: 158px;
+  width: 185px;
+  @include breakpoint($bp-on-now) {
+    left: 34px;
+    top: 220px;
+    width: 100%;
+  }
 }

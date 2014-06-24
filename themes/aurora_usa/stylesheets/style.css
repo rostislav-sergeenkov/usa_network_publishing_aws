@@ -8401,8 +8401,16 @@ body.person-page #main {
 
 #show-on-now-watch {
   position: absolute;
-  left: 34px;
-  top: 220px;
+  left: 28px;
+  top: 158px;
+  width: 185px;
+}
+@media (min-width: 640px) {
+  #show-on-now-watch {
+    left: 34px;
+    top: 220px;
+    width: 100%;
+  }
 }
 
 .file-video-mpx.view-mode-inline_content iframe {

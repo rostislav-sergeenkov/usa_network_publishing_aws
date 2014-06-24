@@ -1,0 +1,368 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network Quizzes feature.
+ */
+
+include_once 'usanetwork_quiz.features.inc';
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_quiz_theme() {
+  $module_path = drupal_get_path('module', 'usanetwork_quiz');
+  return array(
+    'usanetwork_quiz' => array(
+      'variables' => array('node' => NULL),
+      'template' => 'usanetwork_quiz',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_splash' => array(
+      'variables' => array('node' => NULL, 'image' => NULL, 'description' => NULL, 'sidebar' => NULL, 'entry_text' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork_quiz_splash',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_questions' => array(
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork_quiz_questions',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_question' => array(
+      'variables' => array('question_id' => NULL, 'delta' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork_quiz_question',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_answer' => array(
+      'variables' => array('answer_id' => NULL, 'type' => NULL, 'delta' => NULL),
+      'template' => 'usanetwork_quiz_answer',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_results' => array(
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'repeat_text' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork_quiz_results',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_result' => array(
+      'variables' => array('result_id' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork_quiz_result',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_sidebar' => array(
+      'variables' => array('node' => NULL, 'phase' => 'spash'),
+      'file' => 'usanetwork_quiz.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function usanetwork_quiz_field_extra_fields() {
+  $extra['node']['quiz'] = array(
+    'display' => array(
+      'quiz' => array(
+        'label' => t('Quiz'),
+        'description' => t('Rendered quiz content'),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_quiz_preprocess_node(&$vars) {
+  $node = $vars['node'];
+
+  if ($node->type == 'quiz') {
+    $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+    // rebuild the content
+    $vars['content']['quiz'] = array(
+      '#theme' => 'usanetwork_quiz',
+      '#node' => $node,
+      '#attached' => array(
+        'js' => array(
+          drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.' . $quiz_type . '.js',
+          drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+
+  // add classess and attributes
+  $vars['classes_array'][] = 'usanetwork-quiz-type-' . $quiz_type;
+  $container_id = drupal_html_id('usanetwork-quiz-' . $node->nid);
+  $vars['attributes_array']['id'] = $container_id;
+
+  // add splash screen
+  $vars['splash'] = theme('usanetwork_quiz_splash', array(
+    'node' => $node,
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'splash')),
+  ));
+
+  // add questions
+  $vars['questions'] = theme('usanetwork_quiz_questions', array(
+    'node' => $node,
+    'visible' => FALSE,
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'questions')),
+  ));
+
+  // add results
+  $vars['results'] = theme('usanetwork_quiz_results', array(
+    'node' => $node,
+    'visible' => FALSE,
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'results')),
+  ));
+
+  $settings = array();
+  $settings['container'] = '#' . $container_id;
+  $settings['quizType'] = $quiz_type;
+  $settings['calculationMethod'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_calculation', 'value');
+  drupal_add_js(array(
+    'usanetwork_quiz' => array(
+      $node->nid => $settings,
+    ),
+  ), 'setting');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_splash template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_splash(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+
+  // add classes
+  $vars['classes_array'][] = 'splash';
+  $vars['classes_array'][] = 'container';
+
+  // add splash screen variables
+  if (!isset($vars['description'])) {
+    $vars['description'] = _usanetwork_quiz_get_field_item_value($node, 'body', 'value');
+  }
+  if (!isset($vars['splash_image'])) {
+    $splash_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_splash_image', 'uri');
+    if (!empty($splash_image)) {
+      $vars['splash_image'] = theme('image', array('path' => $splash_image));
+    }
+  }
+  if (!isset($vars['entry_text'])) {
+    $vars['entry_text'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_entry_text', 'value');
+    $vars['entry_text'] = $vars['entry_text'] ? $vars['entry_text'] : t('Start');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_questions template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_questions(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+
+  // add classes
+  $vars['classes_array'][] = 'questions';
+  $vars['classes_array'][] = 'container';
+
+  // add content
+  $header_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_header_image', 'uri');
+  if (!empty($header_image)) {
+    $vars['header_image'] = theme('image', array('path' => $header_image));
+  }
+
+  $questions = field_get_items('node', $node, 'field_quiz_questions');
+  $vars['questions'] = array();
+  foreach ($questions as $delta => $question) {
+    $visible = $delta == 0 ? TRUE : FALSE;
+    $vars['questions'][] = theme('usanetwork_quiz_question', array('question_id' => $question['value'], 'delta' => $delta, 'visible' => $visible));
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_question template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
+  // add classes
+  $vars['classes_array'][] = 'question';
+  if (isset($vars['delta'])) {
+    $vars['classes_array'][] = 'question-id-' . $vars['delta'];
+  }
+
+  // add content
+  $vars['question'] = $question = field_collection_item_load($vars['question_id']);
+  if ($question) {
+    $vars['type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_type', 'value', 0, 'field_collection_item');
+    $vars['classes_array'][] = 'question-type-' . $vars['type'];
+    $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    // add answers
+    $answers = field_get_items('field_collection_item', $question, 'field_quiz_answers');
+    $vars['answers'] = array();
+    foreach ($answers as $delta => $answer) {
+      $vars['answers'][] = theme('usanetwork_quiz_answer', array('type' => $vars['type'], 'answer_id' => $answer['value'], 'delta' => $delta));
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_answer template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_answer(&$vars) {
+  $vars['type'] = isset($vars['type']) ? $vars['type'] : 'text';
+
+  // add classes
+  $vars['classes_array'][] = 'answer';
+  if (isset($vars['delta'])) {
+    $vars['classes_array'][] = 'answer-id-' . $vars['delta'];
+    $vars['classes_array'][] = ($vars['delta'] % 2 == 0) ? 'odd' : 'even';
+  }
+  $vars['classes_array'][] = 'answer-type-' . $vars['type'];
+
+  // add content
+  $vars['answer'] = $answer = field_collection_item_load($vars['answer_id']);
+  if ($answer) {
+    $vars['title'] = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_text', 'safe_value', 0, 'field_collection_item');
+    $vars['value'] = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_value', 'value', 0, 'field_collection_item');
+    $image = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_image', 'uri', 0, 'field_collection_item');
+    if (!empty($image)) {
+      $vars['image'] = theme('image', array('path' => $image));
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_results template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_results(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+
+  // add classes
+  $vars['classes_array'][] = 'results';
+  $vars['classes_array'][] = 'container';
+
+  // add content
+  $header_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_header_image', 'uri');
+  if (!empty($header_image)) {
+    $vars['header_image'] = theme('image', array('path' => $header_image));
+  }
+  if (!isset($vars['repeat_text'])) {
+    $vars['repeat_text'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_repeat_text', 'value');
+    $vars['repeat_text'] = $vars['repeat_text'] ? $vars['repeat_text'] : t('Play Again');
+  }
+
+  $results = field_get_items('node', $node, 'field_quiz_results');
+  $vars['results'] = array();
+  foreach ($results as $delta => $result) {
+    $visible = $delta == 0 ? TRUE : FALSE;
+    $vars['results'][] = theme('usanetwork_quiz_result', array('result_id' => $result['value'], 'visible' => $visible));
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_result template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_result(&$vars) {
+  // add classes
+  $vars['classes_array'][] = 'result';
+
+  // add content
+  $vars['result'] = $result = field_collection_item_load($vars['result_id']);
+  if ($result) {
+    $vars['range'] = _usanetwork_quiz_get_field_item($result, 'field_quiz_result_range', 0, 'field_collection_item');
+    $image = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_image', 'uri', 0, 'field_collection_item');
+    if (!empty($image)) {
+      $vars['image'] = theme('image', array('path' => $image));
+    }
+    $vars['title'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_title', 'safe_value', 0, 'field_collection_item');
+    $vars['text'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_text', 'value', 0, 'field_collection_item');
+    $vars['share_text'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_share_text', 'safe_value', 0, 'field_collection_item');
+    if (!$vars['share_text']) {
+      $vars['share_text'] = strip_tags($vars['text']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_sidebar template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
+  $vars['content'] = isset($vars['content']) ? $vars['content'] : array();
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $phase = $vars['phase'];
+
+  // add share bar
+  $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+  $sharebar['#title'] = t('Share:');
+  if ($phase == 'results') {
+    $sharebar['#title'] = t('Share result:');
+  }
+  $sharebar['#prefix'] = '<div class="sharebar">';
+  $sharebar['#suffix'] = '</div>';
+  unset($sharebar['#weight']);
+  $vars['content']['sharebar'] = $sharebar;
+
+  // add ads
+  if ($phase == 'splash') {
+    $block = block_load('dart', 'dart-tag-300x250_ifr_reload');
+    $vars['content']['ads'] = _block_get_renderable_array(_block_render_blocks(array($block)));
+    $vars['content']['ads']['#prefix'] = '<div class="ad-container">';
+    $vars['content']['ads']['#suffix'] = '</div>';
+  }
+}
+
+/**
+ * Returns single field value.
+ */
+function _usanetwork_quiz_get_field_item($entity, $field_name, $delta = 0, $entity_type = 'node', $langcode = NULL) {
+  $items = field_get_items($entity_type, $entity, $field_name, $langcode);
+
+  if ($items) {
+    $item = isset($items[$delta]) ? $items[$delta] : NULL;
+    return $item;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns single field property value.
+ */
+function _usanetwork_quiz_get_field_item_value($entity, $field_name, $key, $delta = 0, $entity_type = 'node', $langcode = NULL) {
+  $item = _usanetwork_quiz_get_field_item($entity, $field_name, $delta, $entity_type, $langcode);
+
+  if ($item && isset($item[$key])) {
+    return $item[$key];
+  }
+
+  return NULL;
+}

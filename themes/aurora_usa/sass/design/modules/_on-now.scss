@@ -169,11 +169,13 @@
   float: left;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  margin-right: 10px;
   @include breakpoint($bp-on-now) {
     vertical-align: middle;
     display: inline;
     font-size: 24px;
     float: none;
+    margin-right: 0;
   }
 }
 
@@ -219,15 +221,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 65%;
-  width: 65vw;
+  margin-right: 10px;
+/*  width: 65%;
+  width: 65vw;*/
   @include breakpoint($bp-on-now) {
     font-size: 18px;
     float: none;
     height: 100%;
     line-height: 50px;
-    width: 50%;
-    width: 50vw;
+/*    width: 50%;
+    width: 50vw;*/
     padding: 1px 0 0 5px;
   }
   .ie9 & {
@@ -243,4 +246,16 @@
     line-height: 44px;
     width: 50%;
   }
+}
+
+#on-now-image {
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 3px;
+}
+
+#show-on-now-watch {
+  position: absolute;
+  left: 34px;
+  top: 220px;
 }

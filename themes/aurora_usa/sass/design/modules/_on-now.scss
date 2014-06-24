@@ -249,9 +249,12 @@
 }
 
 #on-now-image {
-  display: table-cell;
-  vertical-align: middle;
-  padding-top: 3px;
+  display: none;
+  @include breakpoint($bp-on-now) {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 3px;
+  }
 }
 
 #show-on-now-watch {
@@ -259,7 +262,7 @@
   left: 28px;
   top: 158px;
   width: 185px;
-  @include breakpoint($bp-on-now) {
+  @include breakpoint($bp-menu-switch) {
     left: 34px;
     top: 220px;
     width: 100%;

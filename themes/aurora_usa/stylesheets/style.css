@@ -8394,9 +8394,14 @@ body.person-page #main {
 }
 
 #on-now-image {
-  display: table-cell;
-  vertical-align: middle;
-  padding-top: 3px;
+  display: none;
+}
+@media (min-width: 640px) {
+  #on-now-image {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 3px;
+  }
 }
 
 #show-on-now-watch {
@@ -8405,7 +8410,7 @@ body.person-page #main {
   top: 158px;
   width: 185px;
 }
-@media (min-width: 640px) {
+@media (min-width: 769px) {
   #show-on-now-watch {
     left: 34px;
     top: 220px;

@@ -14,37 +14,37 @@ function usanetwork_quiz_theme() {
   return array(
     'usanetwork_quiz' => array(
       'variables' => array('node' => NULL),
-      'template' => 'usanetwork_quiz',
+      'template' => 'usanetwork-quiz',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_splash' => array(
-      'variables' => array('node' => NULL, 'image' => NULL, 'description' => NULL, 'sidebar' => NULL, 'entry_text' => NULL, 'visible' => TRUE),
-      'template' => 'usanetwork_quiz_splash',
+      'variables' => array('node' => NULL, 'image' => NULL, 'description' => NULL, 'sidebar' => NULL, 'entry_text' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-splash',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_questions' => array(
-      'variables' => array('node' => NULL, 'sidebar' => NULL, 'visible' => TRUE),
-      'template' => 'usanetwork_quiz_questions',
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-questions',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_question' => array(
-      'variables' => array('question_id' => NULL, 'delta' => NULL, 'visible' => TRUE),
-      'template' => 'usanetwork_quiz_question',
+      'variables' => array('question_id' => NULL, 'delta' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-question',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_answer' => array(
-      'variables' => array('answer_id' => NULL, 'type' => NULL, 'delta' => NULL),
-      'template' => 'usanetwork_quiz_answer',
+      'variables' => array('answer_id' => NULL, 'type' => NULL, 'delta' => NULL,  'quiz_type' => NULL, 'quiz_theme' => NULL),
+      'template' => 'usanetwork-quiz-answer',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_results' => array(
-      'variables' => array('node' => NULL, 'sidebar' => NULL, 'repeat_text' => NULL, 'visible' => TRUE),
-      'template' => 'usanetwork_quiz_results',
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'repeat_text' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-results',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_result' => array(
-      'variables' => array('result_id' => NULL, 'visible' => TRUE),
-      'template' => 'usanetwork_quiz_result',
+      'variables' => array('result_id' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-result',
       'path' => $module_path . '/templates',
     ),
     'usanetwork_quiz_sidebar' => array(
@@ -103,6 +103,9 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   }
   $node = $vars['node'];
   $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
 
   // add classess and attributes
   $vars['classes_array'][] = 'usanetwork-quiz-type-' . $quiz_type;
@@ -138,6 +141,13 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
       $node->nid => $settings,
     ),
   ), 'setting');
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
 }
 
 /**
@@ -149,6 +159,10 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_splash(&$vars) {
     return;
   }
   $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
 
   // add classes
   $vars['classes_array'][] = 'splash';
@@ -168,6 +182,13 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_splash(&$vars) {
     $vars['entry_text'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_entry_text', 'value');
     $vars['entry_text'] = $vars['entry_text'] ? $vars['entry_text'] : t('Start');
   }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
 }
 
 /**
@@ -179,6 +200,10 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_questions(&$vars) {
     return;
   }
   $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
 
   // add classes
   $vars['classes_array'][] = 'questions';
@@ -194,7 +219,20 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_questions(&$vars) {
   $vars['questions'] = array();
   foreach ($questions as $delta => $question) {
     $visible = $delta == 0 ? TRUE : FALSE;
-    $vars['questions'][] = theme('usanetwork_quiz_question', array('question_id' => $question['value'], 'delta' => $delta, 'visible' => $visible));
+    $vars['questions'][] = theme('usanetwork_quiz_question', array(
+      'question_id' => $question['value'],
+      'delta' => $delta,
+      'quiz_type' => $vars['quiz_type'],
+      'quiz_theme' => $vars['quiz_theme'],
+      'visible' => $visible,
+    ));
+  }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
   }
 }
 
@@ -219,8 +257,22 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
     $answers = field_get_items('field_collection_item', $question, 'field_quiz_answers');
     $vars['answers'] = array();
     foreach ($answers as $delta => $answer) {
-      $vars['answers'][] = theme('usanetwork_quiz_answer', array('type' => $vars['type'], 'answer_id' => $answer['value'], 'delta' => $delta));
+      $vars['answers'][] = theme('usanetwork_quiz_answer', array(
+        'type' => $vars['type'],
+        'answer_id' => $answer['value'],
+        'quiz_type' => $vars['quiz_type'],
+        'quiz_theme' => $vars['quiz_theme'],
+        'delta' => $delta));
     }
+  }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_type'];
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
   }
 }
 
@@ -249,6 +301,15 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_answer(&$vars) {
       $vars['image'] = theme('image', array('path' => $image));
     }
   }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_type'];
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
 }
 
 /**
@@ -260,6 +321,10 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_results(&$vars) {
     return;
   }
   $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
 
   // add classes
   $vars['classes_array'][] = 'results';
@@ -279,7 +344,19 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_results(&$vars) {
   $vars['results'] = array();
   foreach ($results as $delta => $result) {
     $visible = $delta == 0 ? TRUE : FALSE;
-    $vars['results'][] = theme('usanetwork_quiz_result', array('result_id' => $result['value'], 'visible' => $visible));
+    $vars['results'][] = theme('usanetwork_quiz_result', array(
+      'result_id' => $result['value'],
+      'quiz_type' => $vars['quiz_type'],
+      'quiz_theme' => $vars['quiz_theme'],
+      'visible' => $visible,
+    ));
+  }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
   }
 }
 
@@ -305,6 +382,15 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_result(&$vars) {
     if (!$vars['share_text']) {
       $vars['share_text'] = strip_tags($vars['text']);
     }
+  }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_type'];
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
   }
 }
 
@@ -365,4 +451,23 @@ function _usanetwork_quiz_get_field_item_value($entity, $field_name, $key, $delt
   }
 
   return NULL;
+}
+
+/**
+ * Returns list of available quiz themes.
+ */
+function _usanetwork_quiz_themes() {
+  $themes = array();
+  return $themes;
+}
+
+/**
+ * Returns allowed values for quiz theme field.
+ */
+function _usanetwork_quiz_theme_allowed_values($field, $instance, $entity_type, $entity, $cacheable) {
+  $themes = _usanetwork_quiz_themes();
+  return array(
+    '_default' => 'Default',
+    'test' => 'Test',
+  );
 }

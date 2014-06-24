@@ -1053,6 +1053,44 @@ function usanetwork_quiz_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-quiz-field_quiz_theme'
+  $field_instances['node-quiz-field_quiz_theme'] = array(
+    'bundle' => 'quiz',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_quiz_theme',
+    'label' => 'Theme',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-quiz-field_quiz_type'
   $field_instances['node-quiz-field_quiz_type'] = array(
     'bundle' => 'quiz',
@@ -1420,6 +1458,7 @@ function usanetwork_quiz_field_default_field_instances() {
   t('Show Accent Color');
   t('Splash Image');
   t('Text');
+  t('Theme');
   t('Title');
   t('Type');
   t('Value');

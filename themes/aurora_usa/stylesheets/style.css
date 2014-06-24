@@ -8305,6 +8305,7 @@ body.person-page #main {
   float: left;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  margin-right: 10px;
 }
 @media (min-width: 640px) {
   #on-now-show-name {
@@ -8312,6 +8313,7 @@ body.person-page #main {
     display: inline;
     font-size: 24px;
     float: none;
+    margin-right: 0;
   }
 }
 
@@ -8360,8 +8362,9 @@ body.person-page #main {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 65%;
-  width: 65vw;
+  margin-right: 10px;
+  /*  width: 65%;
+    width: 65vw;*/
 }
 @media (min-width: 640px) {
   #on-now-episode {
@@ -8369,8 +8372,8 @@ body.person-page #main {
     float: none;
     height: 100%;
     line-height: 50px;
-    width: 50%;
-    width: 50vw;
+    /*    width: 50%;
+        width: 50vw;*/
     padding: 1px 0 0 5px;
   }
 }
@@ -8388,6 +8391,31 @@ body.person-page #main {
   height: 100%;
   line-height: 44px;
   width: 50%;
+}
+
+#on-now-image {
+  display: none;
+}
+@media (min-width: 640px) {
+  #on-now-image {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 3px;
+  }
+}
+
+#show-on-now-watch {
+  position: absolute;
+  left: 28px;
+  top: 158px;
+  width: 185px;
+}
+@media (min-width: 769px) {
+  #show-on-now-watch {
+    left: 34px;
+    top: 220px;
+    width: 100%;
+  }
 }
 
 .file-video-mpx.view-mode-inline_content iframe {

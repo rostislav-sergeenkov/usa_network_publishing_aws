@@ -188,8 +188,15 @@ function _usanetwork_entity_insert_suggestions($type, $title = '') {
         if (strpos($key, ',') !== FALSE || strpos($key, '"') !== FALSE) {
           $key = '"' . str_replace('"', '""', $key) . '"';
         }
-        if (isset($entity_info['bundles'][$bundle]['label'])) {
-          $label = $entity_info['bundles'][$bundle]['label'] . ': ' . $label;
+        if ($type == 'video') {
+          $show = _usanetwork_entity_insert_get_show_name($entity_type, $entity_id);
+          if (isset($show)) {
+            $label = $show->title . ': ' . $label;
+          }
+        } else {
+          if (isset($entity_info['bundles'][$bundle]['label'])) {
+            $label = $entity_info['bundles'][$bundle]['label'] . ': ' . $label;
+          }
         }
         $suggestions[$key] = $entity_info['label'] . ': ' .  $label;
       }
@@ -262,4 +269,13 @@ function _usanetwork_entity_insert_view_modes($type) {
 function _usanetwork_entity_insert_default_view_mode($type) {
   $view_mode = variable_get(USANETWORK_ENTITY_INSERT_CONFIG_NAMESPACE . $type . '_default_view_mode', '');
   return $view_mode;
+}
+
+function _usanetwork_entity_insert_get_show_name($entity_type, $entity_id){
+  $entity = entity_load($entity_type, array($entity_id));
+  $show_field = reset(field_get_items($entity_type, $entity[$entity_id], 'field_show'));
+  if (isset($show_field)){
+    $show = node_load($show_field['target_id']);
+    return $show;
+  }
 }

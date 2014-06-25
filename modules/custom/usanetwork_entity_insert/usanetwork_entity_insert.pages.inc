@@ -20,6 +20,14 @@ function usanetwork_entity_insert_dialog_form($form, &$form_state, $type) {
       '#options' => _usanetwork_entity_insert_view_modes($type),
       '#default_value' => _usanetwork_entity_insert_default_view_mode($type),
     );
+    if (_usanetwork_entity_insert_is_embed_video($type)) {
+      $form['autoplay'] = array(
+        '#title' => t('Autoplay'),
+        '#description' => t('Autoplay parameter for player.'),
+        '#type' => 'checkbox',
+        '#default_value' => _usanetwork_entity_insert_autoplay_values($type),
+      );
+    }
   }
 
   return $form;

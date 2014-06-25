@@ -5,15 +5,15 @@
     </div>
   <?php endif; ?>
   <div class="content-wrap">
-    <?php if ($sidebar): ?>
-      <div class="sidebar">
-        <?php print $sidebar; ?>
-      </div>
-    <?php endif; ?>
     <div class="center">
       <?php foreach ($questions as $delta => $question): ?>
         <?php print $question; ?>
       <?php endforeach; ?>
     </div>
+    <?php if ($sidebar): ?>
+      <div class="sidebar">
+        <?php print $sidebar; ?>
+      </div>
+    <?php endif; ?>
   </div>
 </div>

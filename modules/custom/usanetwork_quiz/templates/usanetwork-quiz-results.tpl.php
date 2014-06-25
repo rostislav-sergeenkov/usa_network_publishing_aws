@@ -5,16 +5,16 @@
     </div>
   <?php endif; ?>
   <div class="content-wrap">
+    <div class="center">
+      <?php foreach ($results as $result): ?>
+        <?php print $result; ?>
+      <?php endforeach; ?>
+    </div>
     <div class="sidebar">
       <?php if ($sidebar): ?>
         <?php print $sidebar; ?>
       <?php endif; ?>
       <input type="button" value="<?php print $repeat_text; ?>" class="repeat-button">
-    </div>
-    <div class="center">
-      <?php foreach ($results as $result): ?>
-        <?php print $result; ?>
-      <?php endforeach; ?>
     </div>
   </div>
 </div>

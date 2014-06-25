@@ -6,11 +6,6 @@
       </div>
     <?php endif; ?>
     <div class="content-wrap">
-      <?php if ($sidebar): ?>
-        <div class="sidebar">
-          <?php print $sidebar; ?>
-        </div>
-      <?php endif; ?>
       <div class="center">
         <?php if ($description): ?>
           <div class="description">
@@ -19,6 +14,11 @@
         <?php endif; ?>
         <input type="button" value="<?php print $entry_text; ?>" class="entry-button">
       </div>
+      <?php if ($sidebar): ?>
+        <div class="sidebar">
+          <?php print $sidebar; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 <?php endif; ?>

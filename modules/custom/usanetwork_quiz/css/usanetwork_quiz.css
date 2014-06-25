@@ -1,5 +1,6 @@
 .usanetwork-quiz {
   margin: 0 auto;
+  min-width: 300px;
   max-width: 1200px;
 }
 .usanetwork-quiz .content-wrap {
@@ -12,11 +13,13 @@
   height: 0;
 }
 .usanetwork-quiz .content-wrap .sidebar {
-  float: right;
   width: 300px;
+  float: left;
 }
 .usanetwork-quiz .content-wrap .center {
-  margin-right: 340px;
+  width: 780px;
+  float: left;
+  margin-right: 40px;
 }
 .usanetwork-quiz .content-wrap .sidebar {}
 .usanetwork-quiz .content-wrap .sidebar .sharebar {}
@@ -69,4 +72,41 @@
 .usanetwork-quiz-answer .answer-image img:hover {}
 .usanetwork-quiz-answer .answer-text {
   cursor: pointer;
+}
+
+.usanetwork-quiz-result {}
+.usanetwork-quiz-result .result-title {
+  font-size: 2em;
+  margin: 1em 0;
+}
+
+/* Breakpoints */
+@media (max-width: 1334px) {
+  .usanetwork-quiz {
+    width: 930px;
+  }
+  .usanetwork-quiz .content-wrap .center {
+    width: 510px;
+  }
+}
+@media (max-width: 960px) {
+  .node-type-quiz #main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .usanetwork-quiz {
+    width: auto;
+  }
+  .usanetwork-quiz .content-wrap {
+    padding: 10px;
+  }
+  .usanetwork-quiz .content-wrap .center {
+    margin-right: 0;
+    float: none;
+    width: auto;
+  }
+  .usanetwork-quiz .content-wrap .sidebar {
+    float: none;
+    width: auto;
+  }
 }

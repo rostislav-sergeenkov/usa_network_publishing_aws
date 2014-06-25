@@ -513,6 +513,14 @@ function _usanetwork_quiz_themes($theme_name = NULL) {
   _usanetwork_quiz_scan_theme($theme, $quiz_themes);
 
   drupal_alter('usanetwork_quiz_themes', $quiz_themes);
+
+  foreach($quiz_themes as $delta => $quiz_theme) {
+    $path = $quiz_theme['path'];
+    if (empty($path) || !file_exists($path) || !is_dir($path)) {
+      unset($quiz_themes[$delta]);
+    }
+  }
+
   if (empty($theme_name)) {
     return $quiz_themes;
   }

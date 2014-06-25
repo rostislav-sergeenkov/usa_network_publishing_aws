@@ -1312,6 +1312,8 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
       if ($live) {
+        $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
+        $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
         $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
       }
     }

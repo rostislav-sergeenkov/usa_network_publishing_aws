@@ -94,6 +94,9 @@ function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
             drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.' . $quiz_type . '.js',
             drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
           ),
+          'css' => array(
+            drupal_get_path('module', 'usanetwork_quiz') . '/css/usanetwork_quiz.css',
+          ),
         ),
       );
 
@@ -101,7 +104,6 @@ function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
         // attach css
         if (!empty($theme_info['css'])) {
           $theme_info['css'] = is_array($theme_info['css']) ? $theme_info['css'] : array($theme_info['css']);
-          $node->content[$extrafield_name]['#attached']['css'] = isset($node->content[$extrafield_name]['#attached']['css']) ? $node->content[$extrafield_name]['#attached']['css'] : array();
           foreach ($theme_info['css'] as $filename) {
             $node->content[$extrafield_name]['#attached']['css'][] = array(
               'data' => $theme_info['path'] . '/' . $filename,
@@ -115,7 +117,6 @@ function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
         // attach js
         if (!empty($theme_info['js'])) {
           $theme_info['js'] = is_array($theme_info['js']) ? $theme_info['js'] : array($theme_info['js']);
-          $node->content[$extrafield_name]['#attached']['js'] = isset($node->content[$extrafield_name]['#attached']['js']) ? $node->content[$extrafield_name]['#attached']['js'] : array();
           foreach ($theme_info['js'] as $filename) {
             $node->content[$extrafield_name]['#attached']['js'][] = array(
               'data' => $theme_info['path'] . '/' . $filename,

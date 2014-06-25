@@ -526,7 +526,6 @@ function usanetwork_quiz_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'profiler' => 'Profiler',
-        'trivia' => 'Trivia',
       ),
       'allowed_values_function' => '',
     ),

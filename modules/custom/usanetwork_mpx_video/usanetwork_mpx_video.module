@@ -965,7 +965,11 @@ function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
   // inline content
   if ($vars['file']->embedded == TRUE) {
     $vars['pub_mpx_player_parameters'] = isset($vars['pub_mpx_player_parameters']) ? $vars['pub_mpx_player_parameters'] : array();
-    $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
+    if (isset($vars['file']->embedded_autoplay) && ($vars['file']->embedded_autoplay == TRUE)) {  
+      $vars['pub_mpx_player_parameters']['autoPlay'] = 'true';
+    } else {
+      $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
+    }
   }
 }
 
@@ -981,6 +985,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     if ($vars['elements']['#embedded'] == TRUE) {
       if (isset($vars['content']['file'])) {
         $vars['content']['file']['#file']->embedded = TRUE;
+      }
+    }
+    if ($vars['elements']['#embedded_autoplay'] == TRUE) {
+      if (isset($vars['content']['file'])) {
+        $vars['content']['file']['#file']->embedded_autoplay = TRUE;
       }
     }
 

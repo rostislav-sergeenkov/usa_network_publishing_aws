@@ -72,24 +72,61 @@ function usanetwork_quiz_field_extra_fields() {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_node_view().
  */
-function usanetwork_quiz_preprocess_node(&$vars) {
-  $node = $vars['node'];
-
+function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
+  $extrafields = field_extra_fields_get_display('node', $node->type, $view_mode);
+  $extrafield_name = 'quiz';
   if ($node->type == 'quiz') {
-    $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
-    // rebuild the content
-    $vars['content']['quiz'] = array(
-      '#theme' => 'usanetwork_quiz',
-      '#node' => $node,
-      '#attached' => array(
-        'js' => array(
-          drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.' . $quiz_type . '.js',
-          drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+    if (isset($extrafields[$extrafield_name]) && isset($extrafields[$extrafield_name]['visible']) && $extrafields[$extrafield_name]['visible']) {
+      $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+      $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+      if ($quiz_theme && $quiz_theme != '_default') {
+        $theme_info = _usanetwork_quiz_themes($quiz_theme);
+      }
+
+      // build the content
+      $node->content[$extrafield_name] = array(
+        '#theme' => 'usanetwork_quiz',
+        '#node' => $node,
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.' . $quiz_type . '.js',
+            drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+          ),
         ),
-      ),
-    );
+      );
+
+      if (!empty($theme_info)) {
+        // attach css
+        if (!empty($theme_info['css'])) {
+          $theme_info['css'] = is_array($theme_info['css']) ? $theme_info['css'] : array($theme_info['css']);
+          $node->content[$extrafield_name]['#attached']['css'] = isset($node->content[$extrafield_name]['#attached']['css']) ? $node->content[$extrafield_name]['#attached']['css'] : array();
+          foreach ($theme_info['css'] as $filename) {
+            $node->content[$extrafield_name]['#attached']['css'][] = array(
+              'data' => $theme_info['path'] . '/' . $filename,
+              'type' => 'file',
+              'group' => CSS_THEME,
+              'basename' => 'quiz.' . $quiz_theme . '.' . basename($filename),
+            );
+          }
+        }
+
+        // attach js
+        if (!empty($theme_info['js'])) {
+          $theme_info['js'] = is_array($theme_info['js']) ? $theme_info['js'] : array($theme_info['js']);
+          $node->content[$extrafield_name]['#attached']['js'] = isset($node->content[$extrafield_name]['#attached']['js']) ? $node->content[$extrafield_name]['#attached']['js'] : array();
+          foreach ($theme_info['js'] as $filename) {
+            $node->content[$extrafield_name]['#attached']['js'][] = array(
+              'data' => $theme_info['path'] . '/' . $filename,
+              'type' => 'file',
+              'group' => JS_THEME,
+              'basename' => 'quiz.' . $quiz_theme . '.' . basename($filename),
+            );
+          }
+        }
+      }
+    }
   }
 }
 
@@ -456,18 +493,56 @@ function _usanetwork_quiz_get_field_item_value($entity, $field_name, $key, $delt
 /**
  * Returns list of available quiz themes.
  */
-function _usanetwork_quiz_themes() {
-  $themes = array();
-  return $themes;
+function _usanetwork_quiz_themes($theme_name = NULL) {
+  $quiz_themes = array();
+
+  $theme = variable_get('theme_default');
+  $themes = list_themes();
+
+  $base_theme = array();
+  $ancestor = $theme;
+  while ($ancestor && isset($themes[$ancestor]->base_theme)) {
+    $ancestor = $themes[$ancestor]->base_theme;
+    $base_theme[] = $themes[$ancestor];
+  }
+
+  foreach (array_reverse($base_theme) as $base) {
+    _usanetwork_quiz_scan_theme($base->name, $quiz_themes);
+  }
+  _usanetwork_quiz_scan_theme($theme, $quiz_themes);
+
+  drupal_alter('usanetwork_quiz_themes', $quiz_themes);
+  if (empty($theme_name)) {
+    return $quiz_themes;
+  }
+  elseif (isset($quiz_themes[$theme_name])) {
+    return $quiz_themes[$theme_name];
+  }
+}
+
+/**
+ * Search for quiz themes in Drupal theme folder.
+ */
+function _usanetwork_quiz_scan_theme($theme, &$quiz_themes) {
+  $theme_quiz_themes = file_scan_directory(drupal_get_path('theme', $theme) . '/quiz_themes', '/inc$/');
+  foreach ($theme_quiz_themes as $file => $values) {
+    include_once(DRUPAL_ROOT . '/' . $file);
+    $function = 'usanetwork_quiz_theme_' . $values->name;
+    $quiz_themes[$values->name] = $function();
+    $quiz_themes[$values->name]['path'] = str_replace('/' . $values->filename, '', $file);
+  }
 }
 
 /**
  * Returns allowed values for quiz theme field.
  */
 function _usanetwork_quiz_theme_allowed_values($field, $instance, $entity_type, $entity, $cacheable) {
-  $themes = _usanetwork_quiz_themes();
-  return array(
+  $quiz_themes = _usanetwork_quiz_themes();
+  $theme_options = array(
     '_default' => 'Default',
-    'test' => 'Test',
   );
+  foreach ($quiz_themes as $name => $theme) {
+    $theme_options[$name] = $theme['title'];
+  }
+  return $theme_options;
 }

@@ -1022,6 +1022,7 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'post' => 'post',
+        'quiz' => 'quiz',
       ),
       'options' => array(
         'node_form' => '0',

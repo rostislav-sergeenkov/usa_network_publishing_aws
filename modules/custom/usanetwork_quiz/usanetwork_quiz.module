@@ -148,6 +148,9 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   // add classess and attributes
   $vars['classes_array'][] = 'usanetwork-quiz-type-' . $quiz_type;
   $container_id = drupal_html_id('usanetwork-quiz-' . $node->nid);
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] != '_default') {
+    $vars['classes_array'][] = 'usanetwork-quiz-theme-' . $vars['quiz_theme'];
+  }
   $vars['attributes_array']['id'] = $container_id;
 
   // add splash screen

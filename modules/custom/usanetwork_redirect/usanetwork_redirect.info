@@ -1,0 +1,14 @@
+name = usanetwork_redirect
+description = Implements TVE Redirects module hooks.
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_redirect
+dependencies[] = ctools
+dependencies[] = media_theplatform_mpx
+dependencies[] = pub_mpx
+dependencies[] = strongarm
+dependencies[] = tve_redirects
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = tve_redirects

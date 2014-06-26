@@ -1713,7 +1713,9 @@ function usanetwork_tv_shows_field_default_field_bases() {
           ),
         ),
         'sort' => array(
-          'type' => 'none',
+          'type' => 'property',
+          'property' => 'title',
+          'direction' => 'ASC',
         ),
         'target_bundles' => array(
           'tv_show' => 'tv_show',

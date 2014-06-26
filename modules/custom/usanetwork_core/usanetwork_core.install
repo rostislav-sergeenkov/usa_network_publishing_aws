@@ -775,3 +775,14 @@ function usanetwork_core_update_7143() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * Enable video redirects.
+ */
+function usanetwork_core_update_7144() {
+  $modules_en = array(
+    'usanetwork_redirect',
+  );
+  module_enable($modules_en);
+}
+

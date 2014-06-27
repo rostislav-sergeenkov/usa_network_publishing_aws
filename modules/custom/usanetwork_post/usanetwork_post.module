@@ -405,3 +405,46 @@ function _usanetwork_post_get_blog_menu($tid, $vid = 0, $category = NULL) {
 
   return $tree;
 }
+
+/*
+ * Inherited omniture variables for blog
+ */
+function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
+  $inherited_variables = array('s.prop4', 's.prop3');
+  
+  $entity = $context['entity'];
+  $entity_type = $context['entity_type'];
+  if ($entity_type == 'taxonomy_term') {
+    $parents = taxonomy_get_parents($entity->tid);
+    if (!empty($parents)) {
+      $parent = reset($parents);
+      $entity_settings = _usanetwork_ads_entity_settings($parent, $entity_type);
+      foreach ($entity_settings['omniture']['variables'] as $key => $value) {
+        if (in_array($value['key'], $inherited_variables)) {
+          $omniture_variables[$value['key']] = $value['value'];
+        }
+      }  
+    }
+  }
+  
+  if ($entity_type == 'node') {
+    if ($entity->type == 'post') {
+      $field_blog = field_get_items($entity_type, $entity, 'field_blog');
+      $blog_category = reset($field_blog);
+      if (isset($blog_category)) {
+        $parents = taxonomy_get_parents($blog_category['tid']);
+        if (!empty($parents)) {
+          $parent = reset($parents);
+        } else {
+          $parent = taxonomy_term_load($parents['tid']);
+        }
+        $entity_settings = _usanetwork_ads_entity_settings($parent, 'taxonomy_term');
+        foreach ($entity_settings['omniture']['variables'] as $key => $value) {
+          if (in_array($value['key'], $inherited_variables)) {
+            $omniture_variables[$value['key']] = $value['value'];
+          }
+        }   
+      }
+    }
+  }
+}

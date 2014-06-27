@@ -415,36 +415,57 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
   $entity = $context['entity'];
   $entity_type = $context['entity_type'];
   if ($entity_type == 'taxonomy_term') {
-    $parents = taxonomy_get_parents($entity->tid);
-    if (!empty($parents)) {
-      $parent = reset($parents);
-      $entity_settings = _usanetwork_ads_entity_settings($parent, $entity_type);
-      foreach ($entity_settings['omniture']['variables'] as $key => $value) {
-        if (in_array($value['key'], $inherited_variables)) {
-          $omniture_variables[$value['key']] = $value['value'];
-        }
-      }  
-    }
+    $taxonomy_omniture_varibles_setting = _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables);
+    $omniture_variables = $taxonomy_omniture_varibles_setting['omniture_variables'];
   }
   
   if ($entity_type == 'node') {
     if ($entity->type == 'post') {
       $field_blog = field_get_items($entity_type, $entity, 'field_blog');
-      $blog_category = reset($field_blog);
-      if (isset($blog_category)) {
-        $parents = taxonomy_get_parents($blog_category['tid']);
-        if (!empty($parents)) {
-          $parent = reset($parents);
-        } else {
-          $parent = taxonomy_term_load($parents['tid']);
-        }
-        $entity_settings = _usanetwork_ads_entity_settings($parent, 'taxonomy_term');
-        foreach ($entity_settings['omniture']['variables'] as $key => $value) {
-          if (in_array($value['key'], $inherited_variables)) {
-            $omniture_variables[$value['key']] = $value['value'];
+      $field_post_category = reset($field_blog);
+      if (isset($field_post_category)) {
+        $category = taxonomy_term_load($field_post_category['tid']);
+        $category_omniture_settings = _usanetwork_ads_entity_settings($category, 'taxonomy_term');
+        $category_omniture = _usanetwork_ads_get_omniture_variables($category_omniture_settings['omniture']['variables']);       
+        $category_omniture_real_variables = _usanetwork_post_take_taxonomy_omniture_varibles($category, 'taxonomy_term', $category_omniture, $inherited_variables);
+        $show_omniture = $category_omniture_real_variables['show_variables'];
+        foreach ($category_omniture_real_variables['omniture_variables'] as $key => $value) {
+          if (in_array($key, $inherited_variables)){
+            if ($omniture_variables[$key] == $show_omniture[$key]) {
+              //rewrite show setting, if empty category settings
+              $omniture_variables[$key] = $category_omniture_real_variables['omniture_variables'][$key];
+            } 
           }
         }   
       }
     }
   }
 }
+
+/*
+ * Helper for get omniture variables for taxonomy
+ */
+function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables) {
+  $parents = taxonomy_get_parents($entity->tid);
+        if (!empty($parents)) {
+          $parent = reset($parents);
+    $parent_omniture_setting = _usanetwork_ads_entity_settings($parent, $entity_type);
+    $parent_omniture = _usanetwork_ads_get_omniture_variables($parent_omniture_setting['omniture']['variables']);
+    $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
+    $show_omniture_setting = _usanetwork_ads_entity_settings(node_load($tv_show_nid), 'node');
+    $show_omniture = _usanetwork_ads_get_omniture_variables($show_omniture_setting['omniture']['variables']);
+    foreach ($parent_omniture as $key => $value) {
+      if (in_array($key, $inherited_variables)){
+        if (isset($omniture_variables[$key])) {
+          if ($omniture_variables[$key] == $show_omniture[$key]) {
+            //rewrite show setting, if empty category settings
+            $omniture_variables[$key] = $parent_omniture[$key];
+          }
+        } else {
+          $omniture_variables[$key] = $parent_omniture[$key];
+        }
+      }
+    }  
+  }
+  return array('omniture_variables' => $omniture_variables, 'show_variables' => $show_omniture);
+          }

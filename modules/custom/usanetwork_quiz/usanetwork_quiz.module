@@ -468,6 +468,64 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter node edit form.
+ */
+function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
+  // add questions validation
+  $form['field_quiz_questions']['#element_validate'][] = '_usanetwork_quiz_question_validate';
+}
+
+/**
+ * Questions field validate callback.
+ */
+function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
+  $lang = isset($element['#language']) ? $element['#language'] : LANGUAGE_NONE;
+  $questions = $element[$lang];
+  $values = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
+
+  // validate questions
+  foreach (element_children($questions) as $delta) {
+    $question = $questions[$delta];
+    if (isset($question['field_quiz_question_type'])) {
+      $question_values = $values[$lang][$delta];
+      $type = $question_values['field_quiz_question_type'][$lang][0]['value'];
+      $answers = $question['field_quiz_answers'][$lang];
+
+      // validate answers
+      foreach (element_children($answers) as $answer_delta) {
+        $answer = $answers[$answer_delta];
+        $answer_values = drupal_array_get_nested_value($form_state['values'], $answer['#array_parents']);
+        if (is_array($answer_values)) {
+          $answer_text = $answer_values['field_quiz_answer_text'][$lang][0]['value'];
+          $answer_image = $answer_values['field_quiz_answer_image'][$lang][0]['fid'];
+          switch ($type) {
+            case 'text':
+              if (empty($answer_text)) {
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+              }
+              break;
+            case 'image':
+              if (empty($answer_image)) {
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+              }
+              break;
+            case 'image_text':
+              if (empty($answer_text)) {
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+              }
+              if (empty($answer_image)) {
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+              }
+              break;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
  * Returns single field value.
  */
 function _usanetwork_quiz_get_field_item($entity, $field_name, $delta = 0, $entity_type = 'node', $langcode = NULL) {

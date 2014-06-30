@@ -18,6 +18,11 @@ function usanetwork_post_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usanetwork_post_global_header'] = array(
+    'info' => t('Blog Global Header'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
   $blocks['usanetwork_post_banners'] = array(
     'info' => t('Blog Banners'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -36,6 +41,10 @@ function usanetwork_post_block_view($delta = '') {
     case 'usanetwork_post_header':
       $block['subject'] = '';
       $block['content'] = _usanetwork_post_get_blog_header();
+      break;
+    case 'usanetwork_post_global_header':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_post_get_blog_global_header();
       break;
     case 'usanetwork_post_banners':
       $block['subject'] = '';
@@ -320,6 +329,52 @@ function _usanetwork_post_get_blog_header($blog = NULL) {
       $content['menu']['#prefix'] = '<div class="category-menu">';
       $content['menu']['#suffix'] = '</div>';
       $content['menu']['#attached']['js'][] = drupal_get_path('module', 'usanetwork_post') . '/js/usanetwork_post_menu.js';
+    }
+  }
+
+  return $content;
+}
+
+/**
+ * Returns blog global header block content.
+ */
+function _usanetwork_post_get_blog_global_header($blog = NULL) {
+  $content = array();
+
+  if ($blog === NULL) {
+    $entity_type = NULL;
+    $entity = _usanetwork_menu_get_object($entity_type);
+    if ($entity) {
+      switch ($entity_type) {
+        case 'taxonomy_term':
+          $blog = _usanetwork_post_get_blog_by_category($entity);
+          $category = $entity;
+          break;
+        default:
+          if (!empty($entity->{USANETWORK_FIELD_BLOG})) {
+            $category = field_get_items($entity_type, $entity, USANETWORK_FIELD_BLOG);
+            if ($category && $category = reset($category)) {
+              $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+              $category = taxonomy_term_load($category['tid']);
+            }
+          }
+          break;
+      }
+    }
+  }
+  if ($blog) {
+    if (!empty($blog->field_blog_header)) {
+      $banner_content = field_get_items('taxonomy_term', $blog, 'field_blog_header');
+      if ($banner_content = reset($banner_content)) {
+        $content = array(
+          '#prefix' => '<div class="blog-global-header">',
+          '#suffix' => '</div>',
+        );
+
+        $content['banners'] = array(
+          '#markup' => $banner_content['value'],
+        );
+      }
     }
   }
 

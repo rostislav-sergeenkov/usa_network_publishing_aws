@@ -513,7 +513,11 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_episode_credit',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -1814,7 +1818,11 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_show_links',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(

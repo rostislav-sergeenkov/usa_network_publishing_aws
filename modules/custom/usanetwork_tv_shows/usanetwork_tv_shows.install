@@ -3,7 +3,7 @@
 /**
  * Fix field collection field indexes.
  */
-function usanetwork_tv_shows_update_7002() {
+function usanetwork_tv_shows_update_7000() {
   $query = db_select('field_config', 'fc', array('fetch' => PDO::FETCH_ASSOC));
   $query->fields('fc');
   $query->condition('type', 'field_collection');

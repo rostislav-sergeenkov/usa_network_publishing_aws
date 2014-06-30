@@ -182,7 +182,15 @@ function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
 
   $entity = $form_state['entity'];
   $entity_type = $form_state['entity_type'];
-  $entity_id = $form_state['entity_id'];
+  if (isset($form_state['entity_id'])) {
+    $entity_id = $form_state['entity_id'];
+  } else {
+    if (isset($entity->nid)) {
+      $entity_id = $entity->nid;
+    } else {
+      $entity_id = $form_state['entity_id'];
+    }
+  }
   $bundle = $form_state['bundle'];
 
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());

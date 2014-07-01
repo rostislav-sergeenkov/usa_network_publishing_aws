@@ -48,6 +48,16 @@ function aurora_usa_modernizr_load_alter(&$load) {
  */
 
 function aurora_usa_preprocess_html(&$vars) {
+  // Viewport!
+  $viewport = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, minimal-ui',
+    ),
+  );
+  drupal_add_html_head($viewport, 'viewport');
+
   // adding usa-social body class to global and show pages
   if(arg(2) == 'social' || arg(0) == 'social') {
     $vars['classes_array'][] = drupal_html_class('usa-social');

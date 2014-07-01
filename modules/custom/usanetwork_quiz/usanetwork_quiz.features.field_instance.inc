@@ -188,7 +188,11 @@ function usanetwork_quiz_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_quiz_questions-field_quiz_answer_type'
   $field_instances['field_collection_item-field_quiz_questions-field_quiz_answer_type'] = array(
     'bundle' => 'field_quiz_questions',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'text',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -207,17 +211,19 @@ function usanetwork_quiz_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_quiz_answer_type',
     'label' => 'Answer type',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -257,7 +263,7 @@ function usanetwork_quiz_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -333,7 +339,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -385,7 +391,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -493,7 +499,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 

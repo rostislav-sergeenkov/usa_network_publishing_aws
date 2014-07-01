@@ -1444,6 +1444,12 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
     $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
     $file_object = file_load($result->fid);
     $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
+  } else if ($context['menu_item']['path'] == 'videos/live') {
+    $video_variables['s.prop2'] = "Other";
+    $video_variables['s.prop3'] = "Video";
+    $video_variables['s.prop4'] = "Video";
+    $video_variables['s.prop5'] = "Video : USA Live TV";
+    $video_variables['s.prop10'] = "USA Live TV";
   } 
 
   if (!empty($video_variables)) {

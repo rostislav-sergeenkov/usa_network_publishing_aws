@@ -464,6 +464,54 @@
           }
         });
       });
+      
+      //tracking link to Live TV in header
+      $('#block-usanetwork-tv-schedule-usa-on-now-block .content > a, #on-now-image a').once('omniture-tracking', function() {
+        $(this).on('click', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var href = $self.attr('href');
+            
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = href;
+              }, 500);
+            };
+            
+            s.linkTrackVars = 'events,eVar65,prop65'; 
+            s.linkTrackEvents = 'event65'; 
+            s.events = 'event65'; 
+            s.eVar65 = s.prop65 = 'Home Page : Watch Live'; 
+            s.tl(this,'o','Page Item Click'); 
+            s.manageVars('clearVars', s.linkTrackVars, 1);
+          }
+        });
+      });
+      
+      //tracking link to Live TV on "On Now" tab
+      $('#on-now-panel-tab').once('omniture-tracking', function() {
+        $(this).on('click', '.show-on-now-wrapper > figure > a, #show-on-now-watch a', function(e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            e.preventDefault();
+            var $self = $(this);
+            var href = $self.attr('href');
+            
+            s.bcf = function() {
+              setTimeout(function() {
+                window.location = href;
+              }, 500);
+            };
+            
+            s.linkTrackVars = 'events,eVar65,prop65'; 
+            s.linkTrackEvents = 'event65'; 
+            s.events = 'event65'; 
+            s.eVar65 = s.prop65 = 'On Now : Watch Live';            
+            s.tl(this,'o','Page Item Click'); 
+            s.manageVars('clearVars', s.linkTrackVars, 1);
+          }
+        });
+      });
     }
   }
 }(jQuery));

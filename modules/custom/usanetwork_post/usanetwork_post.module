@@ -524,3 +524,106 @@ function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type,
   }
   return array('omniture_variables' => $omniture_variables, 'show_variables' => $show_omniture);
           }
+
+/*
+ * Get css files from categories
+ */
+function _usanetwork_post_entity_blog_get_css_field($entity, $type) { 
+  
+  if ($type == 'taxonomy_term') {
+    $blog = _usanetwork_post_get_blog_by_category($entity);
+    $category = $entity;
+    if ($blog->tid == $category->tid) {
+      $attached_files = _usanetwork_post_get_css_files(array($category));
+      $attached_css_code = _usanetwork_post_get_css_code(array($category));
+    } else {
+      $attached_files = _usanetwork_post_get_css_files(array($blog,$category));
+      $attached_css_code = _usanetwork_post_get_css_code(array($blog,$category));
+    }
+  }
+ 
+  if ($type == 'node') {
+    if ($entity->type == 'post') {
+      $category = field_get_items($type, $entity, USANETWORK_FIELD_BLOG);
+      if ($category && $category = reset($category)) {
+        $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+        $category = taxonomy_term_load($category['tid']);
+        $attached_files = _usanetwork_post_get_css_files(array($blog, $category));
+        $attached_css_code = _usanetwork_post_get_css_code(array($blog, $category));
+      }
+    }
+  }
+  
+  $css_attached_files = array();
+  foreach ($attached_files as $file) {
+    $css_attached_files[] = $file['uri'];
+  }
+  
+  return array('files' => $css_attached_files, 'inline' => $attached_css_code);
+}
+
+/*
+ * Get all css files from hierarchy
+ */
+function _usanetwork_post_get_css_files($entity_array) {
+  $css_files = array();
+  
+  foreach ($entity_array as $entity) {
+    if (!empty($entity->field_blog_css_file)) {
+      $css_file = field_get_items('taxonomy_term', $entity, 'field_blog_css_file');
+      if ($css_file = reset($css_file)) {
+        $css_files[] = $css_file;
+      }
+    } 
+  }
+  return $css_files;
+}
+
+/*
+ * Get all css inline code from hierarchy
+ */
+function _usanetwork_post_get_css_code($entity_array) {
+  $css_code = array();
+  
+  foreach ($entity_array as $entity) {
+    if (!empty($entity->field_usa_css)) {
+      $css_inline = field_get_items('taxonomy_term', $entity, 'field_usa_css');
+      if ($css_inline = reset($css_inline)) {
+        $css_code[] = $css_inline['value'];
+      }
+    } 
+  }
+  return $css_code;
+}
+
+/*
+ * Implements hook_ctools_render_alter().
+ * Set custom css files for blog
+ */
+function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) { 
+  
+  if ($page) {
+    foreach ($context['contexts'] AS $ctools_context) {     
+      foreach ($ctools_context->type as $value) {
+        if (in_array($value, array('taxonomy_term', 'node'))){
+          $entity_type = $value;
+          if ($value == 'taxonomy_term') { 
+            if ($entity = taxonomy_term_load($ctools_context->argument)) {
+              $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
+            }  
+          } else if ($value == 'node') {
+            if ($entity = node_load($ctools_context->argument)) {
+              $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
+            }
+          } 
+        }
+      }
+    }
+  }
+  foreach ($attached_files['files'] as $file) {
+    drupal_add_css($file); 
+  }
+  foreach ($attached_files['inline'] as $inline) {
+    drupal_add_css($inline, array('type' => 'inline')); 
+  }
+}

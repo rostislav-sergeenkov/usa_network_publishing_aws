@@ -803,7 +803,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -837,6 +837,49 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-blog-field_blog_css_file'
+  $field_instances['taxonomy_term-blog-field_blog_css_file'] = array(
+    'bundle' => 'blog',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 5,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_blog_css_file',
+    'label' => 'CSS File',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'css',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-blog-field_blog_header'
   $field_instances['taxonomy_term-blog-field_blog_header'] = array(
     'bundle' => 'blog',
@@ -855,7 +898,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -906,7 +949,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -926,14 +969,68 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-blog-field_usa_css'
+  $field_instances['taxonomy_term-blog-field_usa_css'] = array(
+    'bundle' => 'blog',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_css',
+    'label' => 'Custom CSS',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Banners');
   t('Blog');
   t('Body');
+  t('CSS File');
   t('Categories');
   t('Collection');
   t('Contributor');
+  t('Custom CSS');
   t('Global Header');
   t('Media Gallery');
   t('Post Cover');

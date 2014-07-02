@@ -876,7 +876,7 @@ function usanetwork_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -969,6 +969,74 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-blog-field_usa_catchall_media'
+  $field_instances['taxonomy_term-blog-field_usa_catchall_media'] = array(
+    'bundle' => 'blog',
+    'deleted' => 0,
+    'description' => 'Local and remote image and video files are allowed for this set for Custom CSS and CSS file
+
+File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+      'weight' => 6,
+    ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_catchall_media',
+    'label' => 'Custom Files',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg otf mp3 htf pdf',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media_multiselect',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'mpx' => 0,
+          'private' => 0,
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 'audio',
+          'document' => 'document',
+          'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
+          'video' => 'video',
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 'media_internet',
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
+          'upload' => 'upload',
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_multiselect',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-blog-field_usa_css'
   $field_instances['taxonomy_term-blog-field_usa_css'] = array(
     'bundle' => 'blog',
@@ -1017,7 +1085,7 @@ function usanetwork_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -1031,7 +1099,11 @@ function usanetwork_post_field_default_field_instances() {
   t('Collection');
   t('Contributor');
   t('Custom CSS');
+  t('Custom Files');
   t('Global Header');
+  t('Local and remote image and video files are allowed for this set for Custom CSS and CSS file
+
+File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.');
   t('Media Gallery');
   t('Post Cover');
   t('Short Description');

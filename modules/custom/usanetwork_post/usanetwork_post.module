@@ -621,9 +621,9 @@ function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
     }
   }
   foreach ($attached_files['files'] as $file) {
-    drupal_add_css($file); 
+    drupal_add_css($file, array('weight' => '9998')); 
   }
   foreach ($attached_files['inline'] as $inline) {
-    drupal_add_css($inline, array('type' => 'inline')); 
+    drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => '9999')); 
   }
 }

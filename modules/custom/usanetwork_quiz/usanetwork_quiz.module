@@ -189,7 +189,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   // add questions
   $vars['questions'] = theme('usanetwork_quiz_questions', array(
     'node' => $node,
-    'visible' => FALSE,
+    'visible' => empty($vars['splash']),
     'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'questions')),
   ));
 
@@ -508,7 +508,8 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
   $vars['content']['sharebar'] = $sharebar;
 
   // add ads
-  if ($phase == 'splash') {
+  $splash = theme('usanetwork_quiz_splash');
+  if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
     $block = block_load('dart', 'dart-tag-300x250_ifr_reload');
     $vars['content']['ads'] = _block_get_renderable_array(_block_render_blocks(array($block)));
     $vars['content']['ads']['#prefix'] = '<div class="ad-container">';

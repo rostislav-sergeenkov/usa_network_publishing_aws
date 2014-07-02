@@ -523,15 +523,31 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
  */
 function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
   // add questions validation
-  $form['field_quiz_questions']['#element_validate'][] = '_usanetwork_quiz_question_validate';
+  $lang = $form['field_quiz_questions']['#language'];
+  $form['field_quiz_questions'][$lang]['#element_validate'][] = '_usanetwork_quiz_question_validate';
 }
 
 /**
  * Questions field validate callback.
  */
 function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
+  $validate = false;
+  if (isset($form_state['triggering_element']['#limit_validation_errors']) && !empty($form_state['triggering_element']['#limit_validation_errors'])) {
+    foreach ($form_state['triggering_element']['#limit_validation_errors'] as $validation_array) {
+      if (count(array_intersect_assoc($validation_array, $element['#array_parents'])) == count($validation_array)) {
+        $validate = true;
+        break;
+      }
+    }
+  }
+  else {
+    $validate = true;
+  }
+  if (!$validate) {
+    return;
+  }
   $lang = isset($element['#language']) ? $element['#language'] : LANGUAGE_NONE;
-  $questions = $element[$lang];
+  $questions = $element;
   $values = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
   $quiz_type = $form_state['values']['field_quiz_type'][$lang];
   // validate questions
@@ -703,8 +719,10 @@ function _usanetwork_quiz_scan_theme($theme, &$quiz_themes) {
   foreach ($theme_quiz_themes as $file => $values) {
     include_once(DRUPAL_ROOT . '/' . $file);
     $function = 'usanetwork_quiz_theme_' . $values->name;
-    $quiz_themes[$values->name] = $function();
-    $quiz_themes[$values->name]['path'] = str_replace('/' . $values->filename, '', $file);
+    if (function_exists($function)) {
+      $quiz_themes[$values->name] = $function();
+      $quiz_themes[$values->name]['path'] = str_replace('/' . $values->filename, '', $file);
+    }
   }
 }
 

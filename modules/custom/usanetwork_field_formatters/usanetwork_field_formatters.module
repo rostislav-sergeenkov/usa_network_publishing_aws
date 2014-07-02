@@ -257,7 +257,7 @@ function usanetwork_field_formatters_element_info_alter(&$type) {
  * the file next to the image thumbnail
  */
 function usanetwork_field_formatters_element_process(&$element, &$form_state, $form) {
-  if (isset($element['#file']) && (strpos($form['#id'], 'catchall-page-node-form') === 0 || strpos($form['#id'], 'snipe-node-form') === 0)) {
+  if (isset($element['#file']) && (strpos($form['#id'], 'catchall-page-node-form') === 0 || strpos($form['#id'], 'snipe-node-form') === 0 || strpos($form['#id'], 'taxonomy-form-term') === 0)) {
     $fid = isset($element['#value']['fid']) ? $element['#value']['fid'] : 0;
     $file = $fid ? file_load($fid) : FALSE;
     if (isset($file->uri)) {

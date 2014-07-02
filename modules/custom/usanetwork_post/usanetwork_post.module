@@ -620,10 +620,13 @@ function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
       }
     }
   }
+  $weight = 9990; //weight increament
   foreach ($attached_files['files'] as $file) {
-    drupal_add_css($file, array('weight' => '9998')); 
+    drupal_add_css($file, array('weight' => $weight)); 
+    $weight++;
   }
   foreach ($attached_files['inline'] as $inline) {
-    drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => '9999')); 
+    drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
+    $weight++;
   }
 }

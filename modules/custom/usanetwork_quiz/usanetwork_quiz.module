@@ -490,6 +490,46 @@ function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
     $question = $questions[$delta];
     if (isset($question['field_quiz_question_type'])) {
       $question_values = $values[$lang][$delta];
+      $question_type = $question_values['field_quiz_question_type'][$lang][0]['value'];
+      if (is_array($question_values)) {
+        $question_text = $question_values['field_quiz_question_text'][$lang][0]['value'];
+        $question_image = $question_values['field_quiz_question_image'][$lang][0]['fid'];
+        $question_video = $question_values['field_quiz_question_video'][$lang][0]['fid'];
+        switch ($question_type) {
+          case 'text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            break;
+          case 'image':
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video':
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
+            }
+            break;
+          case 'image_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_image'], t('Question video is required for selected question type.'));
+            }
+            break;
+        }
+      }
+
       $answer_type = $question_values['field_quiz_answer_type'][$lang][0]['value'];
       $answers = $question['field_quiz_answers'][$lang];
 

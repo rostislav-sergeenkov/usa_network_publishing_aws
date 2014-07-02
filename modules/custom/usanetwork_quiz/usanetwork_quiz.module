@@ -51,6 +51,15 @@ function usanetwork_quiz_theme() {
       'variables' => array('node' => NULL, 'phase' => 'spash'),
       'file' => 'usanetwork_quiz.theme.inc',
     ),
+    'usanetwork_quiz_mpx_video' => array(
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+      'file' => 'usanetwork_quiz.theme.inc',
+    ),
   );
 }
 
@@ -294,7 +303,28 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
     $vars['type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_type', 'value', 0, 'field_collection_item');
     $vars['answer_type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_answer_type', 'value', 0, 'field_collection_item');
     $vars['classes_array'][] = 'question-type-' . $vars['type'];
-    $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    if (in_array($vars['type'], array('text', 'image_text', 'video_text'))) {
+      $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    }
+    if (in_array($vars['type'], array('image', 'image_text'))) {
+      $image = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_image', 'uri', 0, 'field_collection_item');
+      if (!empty($image)) {
+        $vars['image'] = theme('image', array('path' => $image));
+      }
+    }
+    if (in_array($vars['type'], array('video', 'video_text'))) {
+      $video = _usanetwork_quiz_get_field_item($question, 'field_quiz_question_video', 0, 'field_collection_item');
+      if (!empty($video)) {
+        $vars['video'] = theme('usanetwork_quiz_mpx_video', array(
+          'file' => $video,
+          'width' => 590,
+          'height' => 332,
+          'pub_mpx_player_parameters' => array(
+            'autoPlay' => 'true',
+          ),
+        ));
+      }
+    }
     // add answers
     $answers = field_get_items('field_collection_item', $question, 'field_quiz_answers');
     $vars['answers'] = array();
@@ -524,7 +554,7 @@ function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
               form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
             }
             if (empty($question_video)) {
-              form_error($question['field_quiz_question_image'], t('Question video is required for selected question type.'));
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
             }
             break;
         }
@@ -555,27 +585,27 @@ function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
           switch ($answer_type) {
             case 'text':
               if (empty($answer_text)) {
-                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
               }
               break;
             case 'image':
               if (empty($answer_image)) {
-                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
               }
               break;
             case 'image_text':
               if (empty($answer_text)) {
-                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
               }
               if (empty($answer_image)) {
-                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
               }
               break;
           }
         }
       }
-      if ($answer_sum != NULL && $answer_sum != 1) {
-        form_error($question, t('Question must have one correct answer'));
+      if ($answer_sum !== NULL && $answer_sum != 1) {
+        form_error($answers, t('Question must have one correct answer.'));
       }
     }
   }

@@ -10,3 +10,24 @@
   width: 615px;
   margin-right: 15px;
 }
+
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer {
+  margin: 10px 0 0 0;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer.odd {
+  padding: 0 7px 0 0;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer.even {
+  padding: 0 0 0 7px;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .inner {
+  max-width: none;
+}
+
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-title {
+  border: none;
+  background: #2d2d2d;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-title:hover {
+  background: #0ab6e8;
+}

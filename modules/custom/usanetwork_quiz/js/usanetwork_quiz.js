@@ -56,7 +56,11 @@
       }
       quiz.settings.onHideQuestion(e, $question);
     });
-    $(quiz).on('onBeforeResult', quiz.settings.onBeforeResult);
+    $(quiz).on('onBeforeResult', function(e, $result) {
+      var $video_player = $questions_container.find('.question-video iframe');
+      $video_player.attr('src', '');
+      quiz.settings.onBeforeResult(e, $result);
+    });
     $(quiz).on('onShowResult', quiz.settings.onShowResult);
 
     // handle the quiz

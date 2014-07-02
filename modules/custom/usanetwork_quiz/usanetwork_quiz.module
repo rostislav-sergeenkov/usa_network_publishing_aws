@@ -51,6 +51,15 @@ function usanetwork_quiz_theme() {
       'variables' => array('node' => NULL, 'phase' => 'spash'),
       'file' => 'usanetwork_quiz.theme.inc',
     ),
+    'usanetwork_quiz_mpx_video' => array(
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+      'file' => 'usanetwork_quiz.theme.inc',
+    ),
   );
 }
 
@@ -292,14 +301,36 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
   $vars['question'] = $question = field_collection_item_load($vars['question_id']);
   if ($question) {
     $vars['type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_type', 'value', 0, 'field_collection_item');
+    $vars['answer_type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_answer_type', 'value', 0, 'field_collection_item');
     $vars['classes_array'][] = 'question-type-' . $vars['type'];
-    $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    if (in_array($vars['type'], array('text', 'image_text', 'video_text'))) {
+      $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    }
+    if (in_array($vars['type'], array('image', 'image_text'))) {
+      $image = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_image', 'uri', 0, 'field_collection_item');
+      if (!empty($image)) {
+        $vars['image'] = theme('image', array('path' => $image));
+      }
+    }
+    if (in_array($vars['type'], array('video', 'video_text'))) {
+      $video = _usanetwork_quiz_get_field_item($question, 'field_quiz_question_video', 0, 'field_collection_item');
+      if (!empty($video)) {
+        $vars['video'] = theme('usanetwork_quiz_mpx_video', array(
+          'file' => $video,
+          'width' => 590,
+          'height' => 332,
+          'pub_mpx_player_parameters' => array(
+            'autoPlay' => 'true',
+          ),
+        ));
+      }
+    }
     // add answers
     $answers = field_get_items('field_collection_item', $question, 'field_quiz_answers');
     $vars['answers'] = array();
     foreach ($answers as $delta => $answer) {
       $vars['answers'][] = theme('usanetwork_quiz_answer', array(
-        'type' => $vars['type'],
+        'type' => $vars['answer_type'],
         'answer_id' => $answer['value'],
         'quiz_type' => $vars['quiz_type'],
         'quiz_theme' => $vars['quiz_theme'],
@@ -483,43 +514,98 @@ function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
   $lang = isset($element['#language']) ? $element['#language'] : LANGUAGE_NONE;
   $questions = $element[$lang];
   $values = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
-
+  $quiz_type = $form_state['values']['field_quiz_type'][$lang];
   // validate questions
   foreach (element_children($questions) as $delta) {
     $question = $questions[$delta];
     if (isset($question['field_quiz_question_type'])) {
       $question_values = $values[$lang][$delta];
-      $type = $question_values['field_quiz_question_type'][$lang][0]['value'];
+      $question_type = $question_values['field_quiz_question_type'][$lang][0]['value'];
+      if (is_array($question_values)) {
+        $question_text = $question_values['field_quiz_question_text'][$lang][0]['value'];
+        $question_image = $question_values['field_quiz_question_image'][$lang][0]['fid'];
+        $question_video = $question_values['field_quiz_question_video'][$lang][0]['fid'];
+        switch ($question_type) {
+          case 'text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            break;
+          case 'image':
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video':
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
+            }
+            break;
+          case 'image_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
+            }
+            break;
+        }
+      }
+
+      $answer_type = $question_values['field_quiz_answer_type'][$lang][0]['value'];
       $answers = $question['field_quiz_answers'][$lang];
 
       // validate answers
+      $answer_sum = 0;
       foreach (element_children($answers) as $answer_delta) {
         $answer = $answers[$answer_delta];
         $answer_values = drupal_array_get_nested_value($form_state['values'], $answer['#array_parents']);
         if (is_array($answer_values)) {
+          if($quiz_type == 'trivia'){
+            $answer_value = $answer_values['field_quiz_answer_value'][$lang][0]['value'];
+            if (in_array($answer_value, array(0, 1))) {
+              if ($answer_sum !== NULL) {
+                $answer_sum += $answer_value;
+              }
+            } else {
+              $answer_sum = NULL;
+              form_error($answer['field_quiz_answer_value'], t('Answer value must be 0 or 1.'));
+            }
+          }
           $answer_text = $answer_values['field_quiz_answer_text'][$lang][0]['value'];
           $answer_image = $answer_values['field_quiz_answer_image'][$lang][0]['fid'];
-          switch ($type) {
+          switch ($answer_type) {
             case 'text':
               if (empty($answer_text)) {
-                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
               }
               break;
             case 'image':
               if (empty($answer_image)) {
-                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
               }
               break;
             case 'image_text':
               if (empty($answer_text)) {
-                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected question type.'));
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
               }
               if (empty($answer_image)) {
-                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected question type.'));
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
               }
               break;
           }
         }
+      }
+      if ($answer_sum !== NULL && $answer_sum != 1) {
+        form_error($answers, t('Question must have one correct answer.'));
       }
     }
   }

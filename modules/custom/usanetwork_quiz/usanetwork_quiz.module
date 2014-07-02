@@ -64,6 +64,24 @@ function usanetwork_quiz_theme() {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_quiz_menu() {
+  $items = array();
+
+  $items['admin/usanetwork/quiz'] = array(
+    'title' => 'Quizzes',
+    'description' => 'Quizzes configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_quiz_config_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'usanetwork_quiz.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_field_extra_fields().
  */
 function usanetwork_quiz_field_extra_fields() {

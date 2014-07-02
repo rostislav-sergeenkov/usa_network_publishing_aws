@@ -101,3 +101,4 @@ features[variable][] = node_options_quiz
 features[variable][] = node_preview_quiz
 features[variable][] = node_submitted_quiz
 features[variable][] = representative_image_field_node_quiz
+features[variable][] = usanetwork_quiz_player

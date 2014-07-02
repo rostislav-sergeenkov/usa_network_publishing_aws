@@ -41,6 +41,8 @@
     $(quiz).on('onRestart', quiz.settings.onRestart);
     $(quiz).on('onReset', quiz.settings.onReset);
     $(quiz).on('onShowQuestion', function(e, $question) {
+      var page_note_text = ($questions.index($question)+1)+' of '+ $questions.length;
+      $questions_container.find('.page-note').text(page_note_text);
       var $video_player = $question.find('.question-video iframe');
       if ($video_player.length > 0) {
         $video_player.attr('src', $video_player.attr('data-src'));
@@ -93,6 +95,7 @@
         quizHandler.answers = {};
         $questions.hide();
         $questions.first().show();
+        $questions_container.find('.page-note').text('');
         $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
           $questions_container.fadeIn(quiz.settings.animationSpeed, function() {
             $(quiz).trigger('onShowQuestion', [$questions.first()]);

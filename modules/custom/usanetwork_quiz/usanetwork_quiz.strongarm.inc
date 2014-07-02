@@ -220,5 +220,15 @@ function usanetwork_quiz_strongarm() {
   $strongarm->value = '';
   $export['representative_image_field_node_quiz'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'usanetwork_quiz_player';
+  $strongarm->value = array(
+    1 => '101',
+    2 => '21',
+  );
+  $export['usanetwork_quiz_player'] = $strongarm;
+
   return $export;
 }

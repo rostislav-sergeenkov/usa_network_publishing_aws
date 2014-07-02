@@ -1,4 +1,5 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?><?php print !$visible ? ' style="display: none;"' : ''; ?>>
+  <div class="page-note"></div>
   <?php if ($header_image): ?>
     <div class="header">
       <?php print $header_image; ?>

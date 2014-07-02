@@ -103,8 +103,19 @@
       reset: function() {
         quizHandler.answers = {};
         $containers.hide();
-        $splash_container.fadeIn(quiz.settings.animationSpeed);
-        $(quiz).trigger('onReset');
+        if ($splash_container.length > 0) {
+          $splash_container.fadeIn(quiz.settings.animationSpeed, function() {
+            $(quiz).trigger('onReset');
+          });
+        }
+        else {
+          $(quiz).trigger('onReset');
+          $questions_container.fadeIn(quiz.settings.animationSpeed, function() {
+            $(quiz).trigger('onReset');
+            $(quiz).trigger('onShowQuestion', [$questions.first()]);
+            $(quiz).trigger('onStart');
+          });
+        }
       },
       selectAnswer: function(question, value) {
         quizHandler.answers[question] = value;

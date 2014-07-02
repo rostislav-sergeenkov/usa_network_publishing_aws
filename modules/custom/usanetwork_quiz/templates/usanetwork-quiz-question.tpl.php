@@ -7,7 +7,7 @@
       <div class="question-video"><div class="video-player"><?php print $video; ?></div></div>
     <?php endif; ?>
     <?php if (!empty($title)): ?>
-    <div class="question-title"><?php print $title; ?></div>
+      <div class="question-title"><?php print $title; ?></div>
     <?php endif; ?>
     <div class="answers">
       <?php foreach($answers as $delta => $answer): ?>

@@ -19,9 +19,10 @@ function theme_usanetwork_quiz_mpx_video($vars) {
   $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
   $mpx_account_pid = $mpx_account->account_pid;
   $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
+  $quiz_players = variable_get('usanetwork_quiz_player', array());
+  $mpx_account_default_player = isset($quiz_players[$mpx_account->id]) ? media_theplatform_mpx_get_mpx_player_by_player_id($quiz_players[$mpx_account->id]) : $mpx_account_default_player;
 
-  $player_id = !empty($vars['player_id']) ? $vars['player_id'] :
-    (!empty($file->mpx_player_data['pid']) ? $file->mpx_player_data['pid'] : $mpx_account_default_player['pid']);
+  $player_id = !empty($vars['player_id']) ? $vars['player_id'] : $mpx_account_default_player['pid'];
 
   $released_file_pid = NULL;
   if (!empty($file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'])) {

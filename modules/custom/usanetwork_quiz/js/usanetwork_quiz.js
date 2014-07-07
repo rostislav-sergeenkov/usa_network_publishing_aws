@@ -10,6 +10,7 @@
 
   $.fn.usaQuiz = function(options) {
     var settings = $.extend({
+      type: 'profiler',
       calculationMethod: 'sum',
       animationSpeed: 400,
       onInit: function() {},
@@ -32,6 +33,8 @@
     var $containers = $container.children('.container');
 
     var quiz = {
+      score: 0,
+      maxScore: 0,
       container: $container,
       settings: settings
     };
@@ -59,6 +62,9 @@
     $(quiz).on('onBeforeResult', function(e, $result) {
       var $video_player = $questions_container.find('.question-video iframe');
       $video_player.attr('src', '');
+      var score = $result.find('.score-container');
+      score.find('.score').text(quiz.score);
+      score.find('.max').text(quiz.maxScore);
       quiz.settings.onBeforeResult(e, $result);
     });
     $(quiz).on('onShowResult', quiz.settings.onShowResult);
@@ -67,6 +73,20 @@
     var quizHandler = {
       answers: {},
       init: function() {
+        // calculate total
+        $questions.each(function() {
+          var $answers = $(this).find('.usanetwork-quiz-answer');
+          var max_value = parseInt($answers.eq(0).attr('value'));
+          $answers.each(function() {
+            var value = parseInt($(this).attr('value'));
+            if (value > max_value) {
+              max_value = value;
+            }
+          });
+
+          quiz.maxScore += max_value;
+        });
+
         quizHandler.reset();
 
         // attach events
@@ -257,6 +277,7 @@
           func = (typeof $.fn[func] !== 'undefined') ? func : 'usaQuiz';
           if (typeof $.fn[func] !== 'undefined') {
             var quiz = $.fn[func].apply($container, [{
+              type: quiz_setting['quizType'],
               calculationMethod: quiz_setting['calculationMethod'],
               onReset: function() {
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);

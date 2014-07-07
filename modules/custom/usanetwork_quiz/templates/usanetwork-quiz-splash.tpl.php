@@ -12,7 +12,7 @@
             <?php print $description; ?>
           </div>
         <?php endif; ?>
-        <input type="button" value="<?php print $entry_text; ?>" class="entry-button">
+        <input type="button" value="<?php print $entry_text; ?>" class="entry-button button">
       </div>
       <?php if ($sidebar): ?>
         <div class="sidebar">

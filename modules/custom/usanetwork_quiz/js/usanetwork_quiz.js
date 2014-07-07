@@ -97,15 +97,17 @@
           quizHandler.restart();
         });
         $questions_container.find('.answer-image img, .answer-title').on('click', function() {
-          var value = $(this).closest('.usanetwork-quiz-answer').attr('value');
+          var value = parseInt($(this).closest('.usanetwork-quiz-answer').attr('value'));
           var $question = $(this).closest('.usanetwork-quiz-question');
-          if (value && $question.length > 0) {
+          if (!isNaN(value) && $question.length > 0) {
             quizHandler.selectAnswer($questions.index($question), value);
           }
         });
         $(quiz).trigger('onInit');
       },
       start: function() {
+        quiz.score = 0;
+        quizHandler.answers = {};
         $questions.hide();
         $questions.first().show();
         $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
@@ -116,6 +118,7 @@
         });
       },
       restart: function() {
+        quiz.score = 0;
         quizHandler.answers = {};
         $questions.hide();
         $questions.first().show();
@@ -128,6 +131,7 @@
         });
       },
       reset: function() {
+        quiz.score = 0;
         quizHandler.answers = {};
         $containers.hide();
         if ($splash_container.length > 0) {
@@ -146,6 +150,7 @@
       },
       selectAnswer: function(question, value) {
         quizHandler.answers[question] = value;
+        quiz.score += value;
         if (Object.size(quizHandler.answers) == $questions.length) {
           // if all questions answered
           // calculate and show result

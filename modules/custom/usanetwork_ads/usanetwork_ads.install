@@ -28,3 +28,18 @@ function usanetwork_ads_update_7100() {
 
   variable_set('usanetwork_ads_site_metric_settings', $settings);
 }
+
+/**
+ * Remove artifacts.
+ */
+function usanetwork_ads_update_7101() {
+  $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  foreach ($settings['node'] as &$type_settings) {
+    foreach ($type_settings as $nid => $setting) {
+      if (empty($nid)) {
+        unset($type_settings[$nid]);
+      }
+    }
+  }
+  variable_set('usanetwork_ads_site_metric_settings', $settings);
+}

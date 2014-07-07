@@ -99,7 +99,7 @@
         $questions_container.find('.answer-image img, .answer-title').on('click', function() {
           var value = parseInt($(this).closest('.usanetwork-quiz-answer').attr('value'));
           var $question = $(this).closest('.usanetwork-quiz-question');
-          if (value && $question.length > 0) {
+          if (!isNaN(value) && $question.length > 0) {
             quizHandler.selectAnswer($questions.index($question), value);
           }
         });

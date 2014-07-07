@@ -32,6 +32,9 @@
   margin-right: 15px;
   position: relative;
 }
+.usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .image {
+  margin-bottom: 18px;
+}
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .description,
 .usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .center .result-description {
   font-family: "Proxima N W01 Reg", Arial, sans-serif;

@@ -514,6 +514,9 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'field_name' => 'field_episode_credit',
     'foreign keys' => array(),
     'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
       'value' => array(
         0 => 'value',
       ),

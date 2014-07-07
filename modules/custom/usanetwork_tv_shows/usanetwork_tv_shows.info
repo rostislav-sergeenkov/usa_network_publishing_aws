@@ -203,6 +203,7 @@ features[field_instance][] = node-tv_show-field_fb_sortorder
 features[field_instance][] = node-tv_show-field_fb_source
 features[field_instance][] = node-tv_show-field_fb_state
 features[field_instance][] = node-tv_show-field_fb_tags
+features[field_instance][] = node-tv_show-field_floodlight_tag
 features[field_instance][] = node-tv_show-field_getglue_show
 features[field_instance][] = node-tv_show-field_getglue_sticker_name
 features[field_instance][] = node-tv_show-field_hide_cast_carousel

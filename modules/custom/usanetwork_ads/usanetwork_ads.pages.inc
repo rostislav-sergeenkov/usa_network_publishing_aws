@@ -191,6 +191,9 @@ function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
       $entity_id = $form_state['entity_id'];
     }
   }
+  if (empty($entity_id)) {
+    return;
+  }
   $bundle = $form_state['bundle'];
 
   $settings = variable_get('usanetwork_ads_site_metric_settings', array());

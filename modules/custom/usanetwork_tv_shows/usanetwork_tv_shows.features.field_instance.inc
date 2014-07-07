@@ -4842,6 +4842,82 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_floodlight_tag'
+  $field_instances['node-tv_show-field_floodlight_tag'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 122,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_floodlight_tag',
+    'label' => 'Floodlight Tag',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 25,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_show-field_getglue_show'
   $field_instances['node-tv_show-field_getglue_show'] = array(
     'bundle' => 'tv_show',
@@ -10907,6 +10983,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Facebook page');
   t('Featured');
   t('Featured Video Promos');
+  t('Floodlight Tag');
   t('Hide from cast carousel');
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');

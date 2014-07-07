@@ -152,3 +152,45 @@ function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) 
   $form['replace_upload']['#access'] = TRUE;
 }
 */
+
+/**
+ * Implements hook_page_build().
+ * Insert Floodlight Tag.
+ */
+function usanetwork_page_build(&$page) {
+  if (drupal_is_front_page()) {
+    $fontpages_select = db_select('node', 'n')
+            ->fields('n', array('nid'))
+            ->condition('type', 'usa_homepage');
+    $fontpages = $fontpages_select->execute()->fetchCol();     
+    if ($fontpages) {
+      $nodes = node_load_multiple($fontpages);
+      foreach ($nodes as $node) {
+        $floodlight_field = field_get_items('node', $node, 'field_floodlight_tag');
+        if ($floodlight_field) {
+          $floodlight_field = reset($floodlight_field);
+          if (!empty($floodlight_field['value'])) {
+            $floodlight_tag = $floodlight_field['value']; 
+          }
+        }
+      }
+    }  
+  } else {
+    $menu_object = _usanetwork_menu_get_object();
+    if ($menu_object->type == 'tv_show'){
+      $floodlight_field = field_get_items('node', $menu_object, 'field_floodlight_tag');
+      if ($floodlight_field) {
+        $floodlight_field = reset($floodlight_field);
+        if (!empty($floodlight_field['value'])) {
+          $floodlight_tag = $floodlight_field['value']; 
+        }
+      }
+    }
+  }
+  if (!empty($floodlight_tag)) {
+    $page['page_top']['floodlight'] = array(
+      '#markup' => $floodlight_tag,
+      '#weight' => -1,
+    );
+  }
+}

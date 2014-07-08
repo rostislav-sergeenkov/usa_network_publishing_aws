@@ -102,9 +102,6 @@ function _usanetwork_post_comment_setting_submit($form, &$form_state) {
       }
     }
   }
-  $test = $form_state;
-  //Check if isset id
-  //check if have nodes
 }
 
 /**

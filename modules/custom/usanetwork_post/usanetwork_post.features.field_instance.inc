@@ -28,7 +28,7 @@ function usanetwork_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -282,7 +282,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -596,9 +596,8 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 19,
       ),
       'inline_content' => array(
@@ -876,7 +875,101 @@ function usanetwork_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 6,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-blog-field_blog_display_author'
+  $field_instances['taxonomy_term-blog-field_blog_display_author'] = array(
+    'bundle' => 'blog',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Enable display Author in posts',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_blog_display_author',
+    'label' => 'Display Author',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-blog-field_blog_gigya_comments'
+  $field_instances['taxonomy_term-blog-field_blog_gigya_comments'] = array(
+    'bundle' => 'blog',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Enable Gigya Comments for blog',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_blog_gigya_comments',
+    'label' => 'Gigya Comments',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 8,
     ),
   );
 
@@ -1033,7 +1126,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_multiselect',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -1085,7 +1178,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -1100,6 +1193,10 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Contributor');
   t('Custom CSS');
   t('Custom Files');
+  t('Display Author');
+  t('Enable Gigya Comments for blog');
+  t('Enable display Author in posts');
+  t('Gigya Comments');
   t('Global Header');
   t('Local and remote image and video files are allowed for this set for Custom CSS and CSS file
 

@@ -66,6 +66,45 @@ function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter post_node_form.
+ */
+function usanetwork_post_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = '_usanetwork_post_comment_setting_submit';
+}
+
+function _usanetwork_post_comment_setting_submit($form, &$form_state) {
+  
+  if (isset($form_state['entity_id'])) {
+    $categories = taxonomy_get_children($form_state['entity_id']);
+    if (!empty($categories) && (isset($form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE]))) {
+      $comments_setting = $form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE][0];
+        $etst1 = array_keys($categories);
+      $blog_posts_select = db_select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('type', 'post');
+      $blog_posts_select->join('field_data_field_blog', 'fdfb', 'fdfb.entity_id = n.nid');
+      $blog_posts_select->condition('fdfb.field_blog_tid', array_keys($categories), 'IN');
+      $blog_posts = $blog_posts_select->execute()->fetchCol();     
+      if ($blog_posts) {
+        $nodes = node_load_multiple($blog_posts);
+        if ( $comments_setting['value'] == 1 ) {
+          foreach ($nodes as $node) {
+            $node->comment = 2;
+            node_save($node);
+          }
+        } else {
+          foreach ($nodes as $node) {
+            $node->comment = 1;
+            node_save($node);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_node_presave().
  */
 function usanetwork_post_node_presave($node) {
@@ -76,6 +115,15 @@ function usanetwork_post_node_presave($node) {
         $blog = taxonomy_term_load($blog['tid']);
         if ($blog) {
           $node->field_show = $blog->field_show;
+        }
+        $blog_value = _usanetwork_post_get_blog_by_category($blog);
+        if ($blog_value) {
+          $blog_gigya_comments = reset(field_get_items('taxonomy_term', $blog_value, 'field_blog_gigya_comments'));
+          if ($blog_gigya_comments['value']  == 1) {
+            $node->comment = 2;
+          } else {
+            $node->comment = 1;
+          }
         }
       }
     }
@@ -158,6 +206,23 @@ function usanetwork_post_preprocess_node(&$vars) {
 
         if (!$show_cover && isset($vars['content']['field_post_cover'])) {
           unset($vars['content']['field_post_cover']);
+        }
+      }
+    }
+    if (isset($vars['content']['author'])) {
+      if (!empty($node->{USANETWORK_FIELD_BLOG})) {
+      $category = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
+        if ($category) {
+          $blog = _usanetwork_post_get_blog_by_category($category);
+          if ($blog) {
+            $blog_display_author = reset(field_get_items('taxonomy_term', $blog, 'field_blog_display_author'));
+            if ($blog_display_author['value'] == 1) {
+              $author = user_load($node->uid);
+              $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author));  
+            } else {
+              unset($vars['content']['author']);
+            } 
+          }
         }
       }
     }
@@ -629,4 +694,26 @@ function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
     drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
     $weight++;
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_post_theme() {
+  return array(
+    'usanetwork_post_author_display' => array(
+      'variables' => array(
+        'author' => null,
+      ),
+    ),
+  );
+}
+
+/*
+ * Displaying author
+ */
+function theme_usanetwork_post_author_display($variables){
+  $author = $variables['author'];
+  $output = '<div class="author">'. $author->name.'</div>';
+  return $output;
 }

@@ -596,8 +596,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'list_default',
         'weight' => 19,
       ),
       'inline_content' => array(

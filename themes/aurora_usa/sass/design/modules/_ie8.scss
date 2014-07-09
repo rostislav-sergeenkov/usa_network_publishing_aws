@@ -455,6 +455,9 @@
     float:none;
     display: inline-block;
   }
+  #utilities-wrap {
+    filter: alpha(opacity=90);
+  }
   .featured-asset .video-player-wrapper img {
     width:100%;
   }

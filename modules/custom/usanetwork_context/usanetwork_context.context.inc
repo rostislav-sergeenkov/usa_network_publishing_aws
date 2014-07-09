@@ -138,12 +138,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_ads-dart_floodlight' => array(
-          'module' => 'usanetwork_ads',
-          'delta' => 'dart_floodlight',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
       ),
     ),
   );

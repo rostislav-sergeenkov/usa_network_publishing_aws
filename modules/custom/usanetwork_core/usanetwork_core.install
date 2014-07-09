@@ -786,3 +786,42 @@ function usanetwork_core_update_7144() {
   module_enable($modules_en);
 }
 
+/**
+ * Change install profile to new publisher profile.
+ */
+function usanetwork_core_update_7145() {
+  drupal_static_reset();
+
+  variable_set('install_profile', 'pub_vanilla'); // REMOVE THIS
+  $old_profile = variable_get('install_profile', '');
+  $new_profile = 'publisher';
+  variable_set('install_profile', $new_profile);
+
+  db_query("UPDATE {system} SET filename = REPLACE(filename, 'profiles/all/', 'profiles/publisher/') WHERE filename LIKE 'profiles/all/%'");
+
+  // Unlike modules, profiles aren't added to the system table just because the
+  // files are added to /profiles.  They are added after they are active.  We
+  // need to add them before that so they are BOTH active and enabled.
+
+  // Cache a fully-built schema.
+  drupal_get_schema(NULL, TRUE);
+  system_rebuild_module_data();
+
+  db_update('system')
+    ->fields(array(
+      'status' => 1,
+      'schema_version' => 0,
+    ))
+    ->condition('name', $new_profile, '=')
+    ->execute();
+
+  db_update('system')
+    ->fields(array(
+      'status' => 0,
+      'schema_version' => -1,
+    ))
+    ->condition('name', $old_profile, '=')
+    ->execute();
+
+  drupal_flush_all_caches();
+}

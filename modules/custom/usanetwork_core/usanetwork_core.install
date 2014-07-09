@@ -824,3 +824,13 @@ function usanetwork_core_update_7145() {
 
   drupal_flush_all_caches();
 }
+
+/**
+ * Enable custom meta tags.
+ */
+function usanetwork_core_update_7146() {
+  $modules_en = array(
+    'usanetwork_custom_metatags',
+  );
+  module_enable($modules_en);
+}

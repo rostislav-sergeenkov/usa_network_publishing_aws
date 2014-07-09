@@ -13950,9 +13950,42 @@ body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .categ
   border: 0;
   clear: none;
   float: left;
+  margin: 26px 0px 0px 50px;
 }
 body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li {
   border: 0;
+  margin: 6px 0 6px 24px;
+  padding: 4px 24px 0 0;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li a {
+  font-size: 36px;
+}
+body.satisfaction-blog .panel-display .panel-col-first .taxonomy-term-description {
+  color: #b21a39;
+  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+body.satisfaction-blog .panel-display .panel-col-first .taxonomy-term-description p {
+  margin: 0;
+}
+body.satisfaction-blog .panel-display .panel-col-first .author {
+  border-bottom: 1px solid #b21a39;
+  color: #909090;
+  font-family: "avalondemi_condensed", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+body.satisfaction-blog .panel-display .panel-col-first .node.node-post .field-name-title h2 {
+  margin: 0;
+}
+body.satisfaction-blog .panel-display .panel-col-first .node.node-post .field-name-body p {
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+body.satisfaction-blog .panel-display .panel-col-first .node.node-post .field-name-post-date {
+  display: none;
 }
 
 [class*="iib"] {

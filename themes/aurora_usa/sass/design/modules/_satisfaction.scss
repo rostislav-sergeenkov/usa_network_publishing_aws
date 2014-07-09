@@ -1,3 +1,6 @@
+//default colors for satisfaction blog
+$satisfaction-blog-red : #b21a39;
+
 body {
   &.satisfaction-blog {
     .panel-display {
@@ -21,12 +24,54 @@ body {
               border: 0;
               clear: none;
               float: left;
+              margin: 26px 0px 0px 50px;
               ul {
                 li {
                   border: 0;
+                  margin: 6px 0 6px 24px;
+                  padding: 4px 24px 0 0;
+                  a {
+                    font-size: 36px;
+                  }
                 }
               }
             }
+          }
+        }
+      }
+      .panel-col-first {
+        .taxonomy-term-description {
+          color: $satisfaction-blog-red;
+          font-family: $headline-bold;
+          font-size: 20px;
+          text-transform: uppercase;
+          p {
+            margin: 0;
+          }
+        }
+        .author {
+          border-bottom: 1px solid $satisfaction-blog-red;
+          color: #909090;
+          font-family: $headline-demi-condensed;
+          font-size: 18px;
+          padding-bottom: 5px;
+          text-transform: uppercase;
+        }
+        .node.node-post {
+          .field-name-title {
+            h2 {
+              margin: 0;
+            }
+          }
+          .field-name-body {
+            p {
+              
+              font-family: $headline-semi;
+              font-size: 18px;
+            }
+          }
+          .field-name-post-date {
+            display: none;
           }
         }
       }

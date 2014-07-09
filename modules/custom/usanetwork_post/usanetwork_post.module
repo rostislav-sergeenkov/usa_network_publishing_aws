@@ -714,6 +714,6 @@ function usanetwork_post_theme() {
  */
 function theme_usanetwork_post_author_display($variables){
   $author = $variables['author'];
-  $output = '<div class="author">'. $author->name.'</div>';
+  $output = '<div class="author">'.t('by ').$author->name.'</div>';
   return $output;
 }

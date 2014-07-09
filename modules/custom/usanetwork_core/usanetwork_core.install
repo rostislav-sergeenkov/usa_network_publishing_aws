@@ -792,7 +792,6 @@ function usanetwork_core_update_7144() {
 function usanetwork_core_update_7145() {
   drupal_static_reset();
 
-  variable_set('install_profile', 'pub_vanilla'); // REMOVE THIS
   $old_profile = variable_get('install_profile', '');
   $new_profile = 'publisher';
   variable_set('install_profile', $new_profile);

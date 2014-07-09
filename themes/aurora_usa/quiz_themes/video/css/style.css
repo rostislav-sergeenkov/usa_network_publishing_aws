@@ -97,6 +97,13 @@
 .usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-title:hover {
   background: #0ab6e8;
 }
+.usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .sidebar .ad-container {
+  margin: 25px 0px;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .content-wrap .sidebar .sharebar .field-label {
+  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+  letter-spacing: 0;
+}
 
 @media (max-width: 960px) {
   .usanetwork-quiz.usanetwork-quiz-theme-video .quiz-title {

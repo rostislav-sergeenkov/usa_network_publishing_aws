@@ -13927,6 +13927,34 @@ body.blog .view-display-id-blog_content .views-row {
   color: #4e99d0;
 }
 
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header {
+  border-bottom: 1px solid #414043;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .blog-logo {
+  display: none;
+  background: url("../images/assets/blog/satisfaction-logo.png") scroll 0 0 no-repeat transparent;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .blog-title {
+  background: url("../images/assets/blog/satisfaction-logo.png") scroll 0 0 no-repeat transparent;
+  float: left;
+  height: 55px;
+  margin: 22px 0px;
+  width: 465px;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .category-menu {
+  border: 0;
+  clear: none;
+  float: left;
+}
+body.satisfaction-blog .panel-display .panel-col-top .inside .blog-header .category-menu ul li {
+  border: 0;
+}
+
 [class*="iib"] {
   background-color: #2d2d2d;
 }

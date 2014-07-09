@@ -1,0 +1,35 @@
+body {
+  &.satisfaction-blog {
+    .panel-display {
+      .panel-col-top {
+        .inside {
+          .blog-header {
+            border-bottom: 1px solid #414043;
+            @include clear();
+            .blog-logo {
+              display: none;
+              background: url("../images/assets/blog/satisfaction-logo.png") scroll 0 0 no-repeat transparent;
+            }
+            .blog-title {
+              background: url("../images/assets/blog/satisfaction-logo.png") scroll 0 0 no-repeat transparent;
+              float: left;
+              height: 55px;
+              margin: 22px 0px;
+              width: 465px;
+            }
+            .category-menu {
+              border: 0;
+              clear: none;
+              float: left;
+              ul {
+                li {
+                  border: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

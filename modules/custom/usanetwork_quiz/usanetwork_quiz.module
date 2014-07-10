@@ -144,6 +144,8 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
   $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
   $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
+  $quiz_show_id = _usanetwork_quiz_get_field_item_value($node, 'field_show', 'target_id');
+  $quiz_show = node_load($quiz_show_id);
 
   // add classess and attributes
   $vars['classes_array'][] = 'usanetwork-quiz-type-' . $quiz_type;
@@ -177,6 +179,8 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   $settings['container'] = '#' . $container_id;
   $settings['quizType'] = $quiz_type;
   $settings['calculationMethod'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_calculation', 'value');
+  $settings['quizShow'] = $quiz_show->title;
+  $settings['quizTitle'] = $node->title;
   drupal_add_js(array(
     'usanetwork_quiz' => array(
       $node->nid => $settings,

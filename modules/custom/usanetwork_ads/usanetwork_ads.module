@@ -1014,80 +1014,6 @@ function usanetwork_ads_preprocess_file_entity(&$variables) {
  * Insert Floodlight Tag.
  */
 function usanetwork_ads_page_build(&$page) {
-  $default_floodlight_parameters = array(
-    'homepage' => array (
-      'type' => '2014b766',
-      'category' => 'usa-h593',
-    ),
-    'burnnotice' => array (
-      'type' => 'burnn832',
-      'category' => 'burnn655',
-    ),
-    'chrisleyknowsbest' => array(
-      'type' => '2014b766',
-      'category' => 'chris342',
-    ),
-    'covertaffairs' => array (
-      'type' => '2010a975',
-      'category' => 'cover674',
-    ),
-    'graceland' => array (
-      'type' => '2012g832',
-      'category' => 'grace041',
-    ),
-    'house' => array (
-      'type' => '2009o386',
-      'category' => 'house033',
-    ),
-    'svu' => array (
-      'type' => '2011d848',
-      'category' => 'losvu379',
-    ),
-    'modernfamily' => array (
-      'type' => '2013i356',
-      'category' => 'moder594',
-    ),
-    'ncis' => array (
-      'type' => '2009o386',
-      'category' => 'ncisv947',
-    ),
-    'necessaryroughness' => array (
-      'type' => '2011d848',
-      'category' => 'neces763',
-    ),
-    'playinghouse' => array(
-      'type' => '2014b766',
-      'category' => 'playi219',
-    ),
-    'psych' => array (
-      'type' => '2011d848',
-      'category' => 'psych222',
-    ),
-    'royalpains' => array (
-      'type' => '2009o386',
-      'category' => 'royal068',
-    ),
-    'sirens' => array(
-      'type' => '2014b766',
-      'category' => 'siren497',
-    ),
-    'suits' => array (
-      'type' => '2011d848',
-      'category' => 'suits889',
-    ),
-    'summercamp' => array (
-      'type' => '2012g832',
-      'category' => 'summe869',
-    ),
-    'whitecollar' => array (
-      'type' => '2009o386',
-      'category' => 'white368',
-    ),
-    'wwe' => array (
-      'type' => 'wwera869',
-      'category' => 'wwera436',
-    ),  
-  );
   
   if (drupal_is_front_page()) {
     $fontpages_select = db_select('node', 'n')
@@ -1112,12 +1038,6 @@ function usanetwork_ads_page_build(&$page) {
           } 
         } 
       }
-      if (empty($floodlight_type)) {
-        $floodlight_type = $default_floodlight_parameters['homepage']['type'];
-      }
-      if (empty($floodlight_category)) {
-        $floodlight_category = $default_floodlight_parameters['homepage']['category'];
-      }
     }  
   } else {
     $menu_object = _usanetwork_menu_get_object();
@@ -1129,20 +1049,12 @@ function usanetwork_ads_page_build(&$page) {
         if (!empty($floodlight_field_type['value'])) {
           $floodlight_type = $floodlight_field_type['value']; 
         }
-      } else {
-        if (isset($show_name['value'])) {
-          $floodlight_type = $default_floodlight_parameters[$show_name['value']]['type'];
-        }
       }
       $floodlight_field_category = field_get_items('node', $menu_object, 'field_floodlight_category');
       if ($floodlight_field_category) {
         $floodlight_field_category = reset($floodlight_field_category);
         if (!empty($floodlight_field_category['value'])) {
           $floodlight_category = $floodlight_field_category['value']; 
-        }
-      } else {
-        if (isset($show_name['value'])) {
-          $floodlight_category = $default_floodlight_parameters[$show_name['value']]['category'];
         }
       }
     }

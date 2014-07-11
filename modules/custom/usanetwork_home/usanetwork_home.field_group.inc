@@ -13,6 +13,34 @@ function usanetwork_home_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_floodlight_tag|node|usa_homepage|form';
+  $field_group->group_name = 'group_floodlight_tag';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Floodlight Tag',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_floodlight_type',
+      1 => 'field_floodlight_category',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-floodlight-tag field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_floodlight_tag|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hp_aspots|node|usa_homepage|form';
   $field_group->group_name = 'group_hp_aspots';
   $field_group->entity_type = 'node';

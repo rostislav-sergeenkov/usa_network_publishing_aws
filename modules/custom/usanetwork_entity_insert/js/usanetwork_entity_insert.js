@@ -18,12 +18,15 @@
         return content;
       }
 
-      var pattern = new RegExp('\\[usa_embed:' + type + ':(\\w+):(\\d+):*(.*)\\]', 'ig');
+      var pattern = new RegExp('\\[usa_embed:' + type + ':(\\w+):(\\d+):(\\w+):*(.*)\\]', 'ig');
       var match;
       while (match = pattern.exec(content)) {
         var token = '[usa_embed:' + type + ':' + match[1] + ':' + match[2];
         if (match[3].length > 0) {
           token += ':' + match[3];
+        }
+        if (match[4].length > 0) {
+          token += ':' + match[4];
         }
         token += ']';
 
@@ -31,6 +34,7 @@
         $token_placeholder.attr('entity_type', match[1]);
         $token_placeholder.attr('entity_id', match[2]);
         $token_placeholder.attr('view_mode', match[3]);
+        $token_placeholder.attr('video_autoplay',  match[4]);
         content = content.replace(new RegExp(escapeRegExp(token), 'ig'), $('<div>').append($token_placeholder.clone()).html());
       }
 
@@ -51,6 +55,9 @@
         var token = '[usa_embed:' + type + ':' + $node.attr('entity_type') + ':' + $node.attr('entity_id');
         if ($node.attr('view_mode').length > 0) {
           token += ':' + $node.attr('view_mode');
+        }
+        if ($node.attr('video_autoplay').length > 0) {
+          token += ':' + $node.attr('video_autoplay');
         }
         token += ']';
 
@@ -91,7 +98,8 @@
             var entity_type = matches[1];
             var entity_id = matches[2];
             var view_mode = $self.find('.form-item-view-mode select').val();
-            var content = '[usa_embed:' + type + ':' + entity_type + ':' + entity_id + (view_mode ? ':' + view_mode : '') + ']';
+            var video_autoplay = $self.find('.form-item-autoplay input').attr('checked');
+            var content = '[usa_embed:' + type + ':' + entity_type + ':' + entity_id + (view_mode ? ':' + view_mode : '') + (video_autoplay ? ':' + 'ap_true' : '') + ']';
           }
           else {
             $self.find('.form-item-entity input').focus();

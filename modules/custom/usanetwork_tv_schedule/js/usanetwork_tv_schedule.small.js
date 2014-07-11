@@ -9,7 +9,6 @@
           slideClass: 'schedule-item',
           onSwiperCreated: function(swiper) {
             var $container = $(swiper.container);
-            console.debug(swiper);
             // swipe to "ON NOW" item
             var onNow = $container.find('.schedule-item').index($container.find('.schedule-item-on-now'));
             swiper.swipeTo(onNow);

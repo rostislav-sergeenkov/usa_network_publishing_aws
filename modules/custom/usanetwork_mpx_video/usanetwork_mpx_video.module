@@ -965,7 +965,11 @@ function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
   // inline content
   if ($vars['file']->embedded == TRUE) {
     $vars['pub_mpx_player_parameters'] = isset($vars['pub_mpx_player_parameters']) ? $vars['pub_mpx_player_parameters'] : array();
-    $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
+    if (isset($vars['file']->embedded_autoplay) && ($vars['file']->embedded_autoplay == TRUE)) {  
+      $vars['pub_mpx_player_parameters']['autoPlay'] = 'true';
+    } else {
+      $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
+    }
   }
 }
 
@@ -981,6 +985,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     if ($vars['elements']['#embedded'] == TRUE) {
       if (isset($vars['content']['file'])) {
         $vars['content']['file']['#file']->embedded = TRUE;
+      }
+    }
+    if ($vars['elements']['#embedded_autoplay'] == TRUE) {
+      if (isset($vars['content']['file'])) {
+        $vars['content']['file']['#file']->embedded_autoplay = TRUE;
       }
     }
 
@@ -1312,6 +1321,8 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
       if ($live) {
+        $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
+        $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
         $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
       }
     }
@@ -1433,6 +1444,12 @@ function usanetwork_mpx_video_usa_omniture_alter(&$omniture_variables, $context)
     $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
     $file_object = file_load($result->fid);
     $video_variables = _usanetwork_mpx_video_file_omniture($file_object, 'file');
+  } else if ($context['menu_item']['path'] == 'videos/live') {
+    $video_variables['s.prop2'] = "Other";
+    $video_variables['s.prop3'] = "Video";
+    $video_variables['s.prop4'] = "Video";
+    $video_variables['s.prop5'] = "Video : USA Live TV";
+    $video_variables['s.prop10'] = "USA Live TV";
   } 
 
   if (!empty($video_variables)) {

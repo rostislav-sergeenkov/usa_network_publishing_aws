@@ -245,19 +245,15 @@ function print_node_delete($node) {
  */
 function print_entity_info_alter(&$info) {
   // Add the 'Print' view mode for nodes.
-  $info['node']['view modes'] += array(
-    PRINT_VIEW_MODE => array(
-      'label' => t('Print'),
-      'custom settings' => FALSE,
-    ),
+  $info['node']['view modes'][PRINT_VIEW_MODE] = array(
+    'label' => t('Print'),
+    'custom settings' => FALSE,
   );
   // Add the 'Print' view mode for field_collections
   if (module_exists('field_collection')) {
-    $info['field_collection_item']['view modes'] += array(
-      PRINT_VIEW_MODE => array(
-        'label' => t('Print'),
-        'custom settings' => FALSE,
-      ),
+    $info['field_collection_item']['view modes'][PRINT_VIEW_MODE] = array(
+      'label' => t('Print'),
+      'custom settings' => FALSE,
     );
   }
 }

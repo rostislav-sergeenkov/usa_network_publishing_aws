@@ -279,7 +279,6 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     NBCUEndShareCard.Debug("[OnMediaStart]");
     if (!NBCUEndShareCard.isMediaSet) {
       var clip = evt.data;
-      console.debug(clip);
       if (!NBCUEndShareCard.IsEmpty(clip.baseClip.guid)) {
         NBCUEndShareCard.setMedia(clip);
       }

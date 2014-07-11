@@ -217,7 +217,12 @@ function usanetwork_post_preprocess_node(&$vars) {
           if ($blog) {
             $blog_display_author = reset(field_get_items('taxonomy_term', $blog, 'field_blog_display_author'));
             if ($blog_display_author['value'] == 1) {
+              $conributor = reset(field_get_items('node', $node, 'field_contributor'));
+              if ($conributor) {
+                $author = user_load($conributor['target_id']);
+              } else {
               $author = user_load($node->uid);
+              }
               $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author));  
             } else {
               unset($vars['content']['author']);
@@ -714,6 +719,16 @@ function usanetwork_post_theme() {
  */
 function theme_usanetwork_post_author_display($variables){
   $author = $variables['author'];
-  $output = '<div class="author">' . $author->name . '</div>';
+  $author_image = reset(field_get_items('user', $author, 'field_profile_image'));
+  if ($author_image) {
+    $image = theme('image_style', array('path' => $author_image['uri'], 'style_name' => 'medium'));
+  } else {
+    $image = '';
+  }
+  $author_info = reset(field_get_items('user', $author, 'field_biography'));
+  $output = '';
+  $output .= '<div class="post-author">' . t('By') . ' ' . $author->name . '</div>';
+  $output .= '<div class="post-author-image">' . $image . '</div>';
+  $output .= '<div class="post-author-info">' . $author_info['value'] . '</div>';
   return $output;
 }

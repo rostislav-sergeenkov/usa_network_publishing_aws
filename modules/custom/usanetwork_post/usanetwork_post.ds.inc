@@ -18,7 +18,7 @@ function usanetwork_post_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -28,7 +28,7 @@ function usanetwork_post_ds_field_settings_info() {
       'format' => 'default',
     ),
     'author' => array(
-      'weight' => '1',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'author',
     ),
@@ -87,8 +87,8 @@ function usanetwork_post_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'field_post_cover',
-        1 => 'author',
-        2 => 'title',
+        1 => 'title',
+        2 => 'author',
         3 => 'body',
         4 => 'field_gigya_share_bar',
         5 => 'post_date',
@@ -97,8 +97,8 @@ function usanetwork_post_ds_layout_settings_info() {
     ),
     'fields' => array(
       'field_post_cover' => 'ds_content',
-      'author' => 'ds_content',
       'title' => 'ds_content',
+      'author' => 'ds_content',
       'body' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
       'post_date' => 'ds_content',

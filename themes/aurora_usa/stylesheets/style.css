@@ -4855,7 +4855,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   width: 100%;
 }
 #utilities #utilities-wrap {
-  background-color: rgba(0, 0, 0, 0.9);
+  background: #000000;
+  opacity: 0.9;
   height: 100%;
 }
 #utilities.utilities-head-show .utilties-main-group {
@@ -8132,6 +8133,9 @@ body.person-page #main {
 .ie8 #utilities .block-usanetwork-showpages .breadcrumb {
   float: none;
   display: inline-block;
+}
+.ie8 #utilities-wrap {
+  filter: alpha(opacity=90);
 }
 .ie8 .featured-asset .video-player-wrapper img {
   width: 100%;

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_redirect feature.
+ */
+
+include_once 'usanetwork_redirect.features.inc';

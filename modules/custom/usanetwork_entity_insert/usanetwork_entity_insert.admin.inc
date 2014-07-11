@@ -61,6 +61,14 @@ function usanetwork_entity_insert_config($form, &$form_state) {
       '#options' => $options,
       '#default_value' => _usanetwork_entity_insert_default_view_mode($type),
     );
+    if (_usanetwork_entity_insert_is_embed_video($type)){
+      $form[$type]['auto_play'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Set default value for autoplay as checked'),
+        '#description' => t('Default Autoplay parameter for player.'),
+        '#default_value' => _usanetwork_entity_insert_autoplay_values($type),
+      );
+    }
   }
 
   $form['actions'] = array('#type' => 'actions');
@@ -119,6 +127,9 @@ function usanetwork_entity_insert_config_validate($form, &$form_state) {
 
       $form_state['config'][$type]['view_modes'] = $selected_view_modes;
       $form_state['config'][$type]['default_view_mode'] = $default_view_mode;
+      if (_usanetwork_entity_insert_is_embed_video($type)) {
+        $form_state['config'][$type]['auto_play'] = $form_state['values'][$type]['auto_play'];
+      }
     }
   }
 }

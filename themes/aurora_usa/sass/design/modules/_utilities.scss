@@ -9,9 +9,9 @@
   width: 100%;
   @extend .clearfix;
   #utilities-wrap {
-    background-color: rgba(0, 0, 0, 0.9);
+    background: #000000;
+    opacity: 0.9;
     height: 100%;
-    
   }
   &.utilities-head-show {
     .utilties-main-group {

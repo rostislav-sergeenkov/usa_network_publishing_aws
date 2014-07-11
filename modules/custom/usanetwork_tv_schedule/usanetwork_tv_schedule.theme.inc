@@ -123,7 +123,8 @@ function theme_usanetwork_tv_schedule_day_small($variables) {
         $classes[] = 'schedule-item-on-now';
       }
       $output .= '<div class="' . implode(' ', $classes) . '"><div class="schedule-item-content">';
-      $output .= '<div class="time">' . format_date($item->start_time, 'custom', 'h:i A', $timezone) . '</div>';
+//      $output .= '<div class="time">' . format_date($item->start_time, 'custom', 'h:i A', $timezone) . '</div>';
+      $output .= '<div class="time">' . format_date($item->start_time, 'custom', 'h:i A') . '</div>';
       if ($link && $item->tv_show) {
         $program = l($item->program, 'node/' . $item->tv_show->nid);
       }

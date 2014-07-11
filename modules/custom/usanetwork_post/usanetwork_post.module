@@ -18,6 +18,11 @@ function usanetwork_post_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usanetwork_post_global_header'] = array(
+    'info' => t('Blog Global Header'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
   $blocks['usanetwork_post_banners'] = array(
     'info' => t('Blog Banners'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -36,6 +41,10 @@ function usanetwork_post_block_view($delta = '') {
     case 'usanetwork_post_header':
       $block['subject'] = '';
       $block['content'] = _usanetwork_post_get_blog_header();
+      break;
+    case 'usanetwork_post_global_header':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_post_get_blog_global_header();
       break;
     case 'usanetwork_post_banners':
       $block['subject'] = '';
@@ -57,6 +66,45 @@ function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter post_node_form.
+ */
+function usanetwork_post_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][] = '_usanetwork_post_comment_setting_submit';
+}
+
+function _usanetwork_post_comment_setting_submit($form, &$form_state) {
+  
+  if (isset($form_state['entity_id'])) {
+    $categories = taxonomy_get_children($form_state['entity_id']);
+    if (!empty($categories) && (isset($form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE]))) {
+      $comments_setting = $form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE][0];
+        $etst1 = array_keys($categories);
+      $blog_posts_select = db_select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('type', 'post');
+      $blog_posts_select->join('field_data_field_blog', 'fdfb', 'fdfb.entity_id = n.nid');
+      $blog_posts_select->condition('fdfb.field_blog_tid', array_keys($categories), 'IN');
+      $blog_posts = $blog_posts_select->execute()->fetchCol();     
+      if ($blog_posts) {
+        $nodes = node_load_multiple($blog_posts);
+        if ( $comments_setting['value'] == 1 ) {
+          foreach ($nodes as $node) {
+            $node->comment = 2;
+            node_save($node);
+          }
+        } else {
+          foreach ($nodes as $node) {
+            $node->comment = 1;
+            node_save($node);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_node_presave().
  */
 function usanetwork_post_node_presave($node) {
@@ -67,6 +115,15 @@ function usanetwork_post_node_presave($node) {
         $blog = taxonomy_term_load($blog['tid']);
         if ($blog) {
           $node->field_show = $blog->field_show;
+        }
+        $blog_value = _usanetwork_post_get_blog_by_category($blog);
+        if ($blog_value) {
+          $blog_gigya_comments = reset(field_get_items('taxonomy_term', $blog_value, 'field_blog_gigya_comments'));
+          if ($blog_gigya_comments['value']  == 1) {
+            $node->comment = 2;
+          } else {
+            $node->comment = 1;
+          }
         }
       }
     }
@@ -149,6 +206,28 @@ function usanetwork_post_preprocess_node(&$vars) {
 
         if (!$show_cover && isset($vars['content']['field_post_cover'])) {
           unset($vars['content']['field_post_cover']);
+        }
+      }
+    }
+    if (isset($vars['content']['author'])) {
+      if (!empty($node->{USANETWORK_FIELD_BLOG})) {
+      $category = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
+        if ($category) {
+          $blog = _usanetwork_post_get_blog_by_category($category);
+          if ($blog) {
+            $blog_display_author = reset(field_get_items('taxonomy_term', $blog, 'field_blog_display_author'));
+            if ($blog_display_author['value'] == 1) {
+              $conributor = reset(field_get_items('node', $node, 'field_contributor'));
+              if ($conributor) {
+                $author = user_load($conributor['target_id']);
+              } else {
+              $author = user_load($node->uid);
+              }
+              $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author));  
+            } else {
+              unset($vars['content']['author']);
+            } 
+          }
         }
       }
     }
@@ -327,6 +406,52 @@ function _usanetwork_post_get_blog_header($blog = NULL) {
 }
 
 /**
+ * Returns blog global header block content.
+ */
+function _usanetwork_post_get_blog_global_header($blog = NULL) {
+  $content = array();
+
+  if ($blog === NULL) {
+    $entity_type = NULL;
+    $entity = _usanetwork_menu_get_object($entity_type);
+    if ($entity) {
+      switch ($entity_type) {
+        case 'taxonomy_term':
+          $blog = _usanetwork_post_get_blog_by_category($entity);
+          $category = $entity;
+          break;
+        default:
+          if (!empty($entity->{USANETWORK_FIELD_BLOG})) {
+            $category = field_get_items($entity_type, $entity, USANETWORK_FIELD_BLOG);
+            if ($category && $category = reset($category)) {
+              $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+              $category = taxonomy_term_load($category['tid']);
+            }
+          }
+          break;
+      }
+    }
+  }
+  if ($blog) {
+    if (!empty($blog->field_blog_header)) {
+      $banner_content = field_get_items('taxonomy_term', $blog, 'field_blog_header');
+      if ($banner_content = reset($banner_content)) {
+        $content = array(
+          '#prefix' => '<div class="blog-global-header">',
+          '#suffix' => '</div>',
+        );
+
+        $content['banners'] = array(
+          '#markup' => $banner_content['value'],
+        );
+      }
+    }
+  }
+
+  return $content;
+}
+
+/**
  * Returns blog header block content.
  */
 function _usanetwork_post_get_blog_banners($blog = NULL) {
@@ -404,4 +529,206 @@ function _usanetwork_post_get_blog_menu($tid, $vid = 0, $category = NULL) {
   }
 
   return $tree;
+}
+
+/*
+ * Inherited omniture variables for blog
+ */
+function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
+  $inherited_variables = array('s.prop4', 's.prop3');
+  
+  $entity = $context['entity'];
+  $entity_type = $context['entity_type'];
+  if ($entity_type == 'taxonomy_term') {
+    $taxonomy_omniture_varibles_setting = _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables);
+    $omniture_variables = $taxonomy_omniture_varibles_setting['omniture_variables'];
+  }
+  
+  if ($entity_type == 'node') {
+    if ($entity->type == 'post') {
+      $field_blog = field_get_items($entity_type, $entity, 'field_blog');
+      $field_post_category = reset($field_blog);
+      if (isset($field_post_category)) {
+        $category = taxonomy_term_load($field_post_category['tid']);
+        $category_omniture_settings = _usanetwork_ads_entity_settings($category, 'taxonomy_term');
+        $category_omniture = _usanetwork_ads_get_omniture_variables($category_omniture_settings['omniture']['variables']);       
+        $category_omniture_real_variables = _usanetwork_post_take_taxonomy_omniture_varibles($category, 'taxonomy_term', $category_omniture, $inherited_variables);
+        $show_omniture = $category_omniture_real_variables['show_variables'];
+        foreach ($category_omniture_real_variables['omniture_variables'] as $key => $value) {
+          if (in_array($key, $inherited_variables)){
+            if ($omniture_variables[$key] == $show_omniture[$key]) {
+              //rewrite show setting, if empty category settings
+              $omniture_variables[$key] = $category_omniture_real_variables['omniture_variables'][$key];
+            } 
+          }
+        }   
+      }
+    }
+  }
+}
+
+/*
+ * Helper for get omniture variables for taxonomy
+ */
+function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables) {
+  $parents = taxonomy_get_parents($entity->tid);
+        if (!empty($parents)) {
+          $parent = reset($parents);
+    $parent_omniture_setting = _usanetwork_ads_entity_settings($parent, $entity_type);
+    $parent_omniture = _usanetwork_ads_get_omniture_variables($parent_omniture_setting['omniture']['variables']);
+    $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
+    $show_omniture_setting = _usanetwork_ads_entity_settings(node_load($tv_show_nid), 'node');
+    $show_omniture = _usanetwork_ads_get_omniture_variables($show_omniture_setting['omniture']['variables']);
+    foreach ($parent_omniture as $key => $value) {
+      if (in_array($key, $inherited_variables)){
+        if (isset($omniture_variables[$key])) {
+          if ($omniture_variables[$key] == $show_omniture[$key]) {
+            //rewrite show setting, if empty category settings
+            $omniture_variables[$key] = $parent_omniture[$key];
+          }
+        } else {
+          $omniture_variables[$key] = $parent_omniture[$key];
+        }
+      }
+    }  
+  }
+  return array('omniture_variables' => $omniture_variables, 'show_variables' => $show_omniture);
+          }
+
+/*
+ * Get css files from categories
+ */
+function _usanetwork_post_entity_blog_get_css_field($entity, $type) { 
+  
+  if ($type == 'taxonomy_term') {
+    $blog = _usanetwork_post_get_blog_by_category($entity);
+    $category = $entity;
+    if ($blog->tid == $category->tid) {
+      $attached_files = _usanetwork_post_get_css_files(array($category));
+      $attached_css_code = _usanetwork_post_get_css_code(array($category));
+    } else {
+      $attached_files = _usanetwork_post_get_css_files(array($blog,$category));
+      $attached_css_code = _usanetwork_post_get_css_code(array($blog,$category));
+    }
+  }
+ 
+  if ($type == 'node') {
+    if ($entity->type == 'post') {
+      $category = field_get_items($type, $entity, USANETWORK_FIELD_BLOG);
+      if ($category && $category = reset($category)) {
+        $blog = _usanetwork_post_get_blog_by_category($category['tid']);
+        $category = taxonomy_term_load($category['tid']);
+        $attached_files = _usanetwork_post_get_css_files(array($blog, $category));
+        $attached_css_code = _usanetwork_post_get_css_code(array($blog, $category));
+      }
+    }
+  }
+  
+  $css_attached_files = array();
+  foreach ($attached_files as $file) {
+    $css_attached_files[] = $file['uri'];
+  }
+  
+  return array('files' => $css_attached_files, 'inline' => $attached_css_code);
+}
+
+/*
+ * Get all css files from hierarchy
+ */
+function _usanetwork_post_get_css_files($entity_array) {
+  $css_files = array();
+  
+  foreach ($entity_array as $entity) {
+    if (!empty($entity->field_blog_css_file)) {
+      $css_file = field_get_items('taxonomy_term', $entity, 'field_blog_css_file');
+      if ($css_file = reset($css_file)) {
+        $css_files[] = $css_file;
+      }
+    } 
+  }
+  return $css_files;
+}
+
+/*
+ * Get all css inline code from hierarchy
+ */
+function _usanetwork_post_get_css_code($entity_array) {
+  $css_code = array();
+  
+  foreach ($entity_array as $entity) {
+    if (!empty($entity->field_usa_css)) {
+      $css_inline = field_get_items('taxonomy_term', $entity, 'field_usa_css');
+      if ($css_inline = reset($css_inline)) {
+        $css_code[] = $css_inline['value'];
+      }
+    } 
+  }
+  return $css_code;
+}
+
+/*
+ * Implements hook_ctools_render_alter().
+ * Set custom css files for blog
+ */
+function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) { 
+  
+  if ($page) {
+    foreach ($context['contexts'] AS $ctools_context) {     
+      foreach ($ctools_context->type as $value) {
+        if (in_array($value, array('taxonomy_term', 'node'))){
+          $entity_type = $value;
+          if ($value == 'taxonomy_term') { 
+            if ($entity = taxonomy_term_load($ctools_context->argument)) {
+              $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
+            }  
+          } else if ($value == 'node') {
+            if ($entity = node_load($ctools_context->argument)) {
+              $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
+            }
+          } 
+        }
+      }
+    }
+  }
+  $weight = 9990; //weight increament
+  foreach ($attached_files['files'] as $file) {
+    drupal_add_css($file, array('weight' => $weight)); 
+    $weight++;
+  }
+  foreach ($attached_files['inline'] as $inline) {
+    drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
+    $weight++;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_post_theme() {
+  return array(
+    'usanetwork_post_author_display' => array(
+      'variables' => array(
+        'author' => null,
+      ),
+    ),
+  );
+}
+
+/*
+ * Displaying author
+ */
+function theme_usanetwork_post_author_display($variables){
+  $author = $variables['author'];
+  $author_image = reset(field_get_items('user', $author, 'field_profile_image'));
+  if ($author_image) {
+    $image = theme('image_style', array('path' => $author_image['uri'], 'style_name' => 'medium'));
+  } else {
+    $image = '';
+  }
+  $author_info = reset(field_get_items('user', $author, 'field_biography'));
+  $output = '';
+  $output .= '<div class="post-author">' . t('By') . ' ' . $author->name . '</div>';
+  $output .= '<div class="post-author-image">' . $image . '</div>';
+  $output .= '<div class="post-author-info">' . $author_info['value'] . '</div>';
+  return $output;
 }

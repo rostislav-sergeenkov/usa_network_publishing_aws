@@ -138,12 +138,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_ads-dart_floodlight' => array(
-          'module' => 'usanetwork_ads',
-          'delta' => 'dart_floodlight',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
       ),
     ),
   );
@@ -1022,6 +1016,7 @@ function usanetwork_context_context_default_contexts() {
         'catchall_page' => 'catchall_page',
         'media_gallery' => 'media_gallery',
         'post' => 'post',
+        'quiz' => 'quiz',
       ),
       'options' => array(
         'node_form' => '0',

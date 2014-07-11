@@ -1,5 +1,4 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?><?php print !$visible ? ' style="display: none;"' : ''; ?>>
-  <div class="page-note"></div>
   <?php if ($header_image): ?>
     <div class="header">
       <?php print $header_image; ?>
@@ -7,14 +6,15 @@
   <?php endif; ?>
   <div class="content-wrap">
     <div class="center">
-      <?php foreach ($questions as $delta => $question): ?>
-        <?php print $question; ?>
+      <?php foreach ($results as $result): ?>
+        <?php print $result; ?>
       <?php endforeach; ?>
+      <input type="button" value="<?php print $repeat_text; ?>" class="repeat-button button">
     </div>
-    <?php if ($sidebar): ?>
-      <div class="sidebar">
+    <div class="sidebar">
+      <?php if ($sidebar): ?>
         <?php print $sidebar; ?>
-      </div>
-    <?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
 </div>

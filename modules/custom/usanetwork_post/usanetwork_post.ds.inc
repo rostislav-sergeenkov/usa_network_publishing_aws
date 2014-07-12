@@ -35,7 +35,7 @@ function usanetwork_post_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '6',
       'label' => 'hidden',
-      'format' => 'ds_post_date_html5_tools_iso8601',
+      'format' => 'ds_post_date_blog_post_date',
     ),
   );
   $export['node|post|default'] = $ds_fieldsetting;

@@ -53,7 +53,6 @@ features[field_instance][] = taxonomy_term-blog-field_blog_css_file
 features[field_instance][] = taxonomy_term-blog-field_blog_display_author
 features[field_instance][] = taxonomy_term-blog-field_blog_gigya_comments
 features[field_instance][] = taxonomy_term-blog-field_blog_header
-features[field_instance][] = taxonomy_term-blog-field_gigya_share_bar
 features[field_instance][] = taxonomy_term-blog-field_show
 features[field_instance][] = taxonomy_term-blog-field_usa_catchall_media
 features[field_instance][] = taxonomy_term-blog-field_usa_css

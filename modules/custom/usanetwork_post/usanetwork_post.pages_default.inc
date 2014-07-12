@@ -17,7 +17,7 @@ function usanetwork_post_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 5;
+  $handler->weight = -25;
   $handler->conf = array(
     'title' => 'Blog Post',
     'no_blocks' => 0,
@@ -214,7 +214,7 @@ function usanetwork_post_default_page_manager_handlers() {
   $handler->task = 'term_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 0;
+  $handler->weight = -29;
   $handler->conf = array(
     'title' => 'Blog',
     'no_blocks' => 0,
@@ -363,6 +363,34 @@ function usanetwork_post_default_page_manager_handlers() {
     $display->panels['right'][1] = 'new-10';
     $pane = new stdClass();
     $pane->pid = 'new-11';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'taxonomy_term:field_gigya_share_bar';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'gigya_sharebar_formatter_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_term_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][2] = 'new-11';
+    $pane = new stdClass();
+    $pane->pid = 'new-12';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_post-usanetwork_post_header';
@@ -380,10 +408,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['top'][0] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['top'][0] = 'new-12';
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-13';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_post-usanetwork_post_global_header';
@@ -401,8 +429,8 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['top'][1] = 'new-12';
+    $display->content['new-13'] = $pane;
+    $display->panels['top'][1] = 'new-13';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

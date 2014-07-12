@@ -28,7 +28,7 @@ function usanetwork_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -77,7 +77,7 @@ function usanetwork_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -98,7 +98,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -159,7 +159,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -219,7 +219,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -282,7 +282,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -422,7 +422,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -573,7 +573,7 @@ function usanetwork_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -596,10 +596,9 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 19,
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -644,7 +643,7 @@ function usanetwork_post_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -665,7 +664,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -709,6 +708,82 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-post-field_sub_title'
+  $field_instances['node-post-field_sub_title'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Field for sub title',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sub_title',
+    'label' => 'Sub title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-post-field_summary'
   $field_instances['node-post-field_summary'] = array(
     'bundle' => 'post',
@@ -726,7 +801,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -781,7 +856,7 @@ function usanetwork_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1026,6 +1101,59 @@ function usanetwork_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-blog-field_gigya_share_bar'
+  $field_instances['taxonomy_term-blog-field_gigya_share_bar'] = array(
+    'bundle' => 'blog',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(
+            'iconsOnly' => 'true',
+          ),
+          'gigya_sharebar_buttons' => 'facebook, twitter, tumblr, pinterest, share',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[node:summary]',
+          'gigya_sharebar_image_behavior' => 'default',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[node:url:absolute]',
+          'gigya_sharebar_override_default' => FALSE,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'none',
+          'gigya_sharebar_title' => '[node:title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 9,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gigya_share_bar',
+    'label' => 'Gigya Share Bar',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'gigya',
+      'settings' => array(),
+      'type' => 'sharebar',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-blog-field_show'
   $field_instances['taxonomy_term-blog-field_show'] = array(
     'bundle' => 'blog',
@@ -1076,8 +1204,8 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-      'weight' => 6,
-    ),
+        'weight' => 6,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1197,7 +1325,9 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Display Author');
   t('Enable Gigya Comments for blog');
   t('Enable display Author in posts');
+  t('Field for sub title');
   t('Gigya Comments');
+  t('Gigya Share Bar');
   t('Global Header');
   t('Local and remote image and video files are allowed for this set for Custom CSS and CSS file
 
@@ -1207,6 +1337,7 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Short Description');
   t('Show');
   t('Show post cover');
+  t('Sub title');
   t('Tags');
 
   return $field_instances;

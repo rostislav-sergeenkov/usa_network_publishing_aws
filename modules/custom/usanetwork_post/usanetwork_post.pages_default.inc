@@ -17,7 +17,7 @@ function usanetwork_post_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 5;
+  $handler->weight = -25;
   $handler->conf = array(
     'title' => 'Blog Post',
     'no_blocks' => 0,
@@ -214,7 +214,7 @@ function usanetwork_post_default_page_manager_handlers() {
   $handler->task = 'term_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = 0;
+  $handler->weight = -29;
   $handler->conf = array(
     'title' => 'Blog',
     'no_blocks' => 0,

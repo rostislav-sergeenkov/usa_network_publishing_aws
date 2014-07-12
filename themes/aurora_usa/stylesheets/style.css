@@ -4848,7 +4848,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities {
   height: 45px;
   opacity: 1;
-  z-index: 11;
+  z-index: 50000;
   /* padding-left: 12px;
   border-bottom: 1px solid $gray-ultra-med; */
   position: fixed;

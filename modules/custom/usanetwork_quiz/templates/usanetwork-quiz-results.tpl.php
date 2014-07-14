@@ -14,7 +14,7 @@
       <?php if ($sidebar): ?>
         <?php print $sidebar; ?>
       <?php endif; ?>
-      <input type="button" value="<?php print $repeat_text; ?>" class="repeat-button">
+      <input type="button" value="<?php print $repeat_text; ?>" class="repeat-button button">
     </div>
   </div>
 </div>

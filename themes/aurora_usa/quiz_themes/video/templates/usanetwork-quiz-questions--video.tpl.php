@@ -1,5 +1,4 @@
 <div class="<?php print $classes; ?>"<?php print $attributes; ?><?php print !$visible ? ' style="display: none;"' : ''; ?>>
-  <div class="page-note"></div>
   <?php if ($header_image): ?>
     <div class="header">
       <?php print $header_image; ?>
@@ -7,6 +6,7 @@
   <?php endif; ?>
   <div class="content-wrap">
     <div class="center">
+      <div class="page-note"></div>
       <?php foreach ($questions as $delta => $question): ?>
         <?php print $question; ?>
       <?php endforeach; ?>

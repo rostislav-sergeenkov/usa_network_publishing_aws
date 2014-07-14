@@ -52,7 +52,36 @@
 }
 
 
-.usanetwork-quiz-question {}
+.usanetwork-quiz-question {
+
+}
+.usanetwork-quiz-questions.questions {
+  position: relative;
+}
+.usanetwork-quiz-questions.questions .page-note {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.usanetwork-quiz-question .question-video {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.usanetwork-quiz-question .question-video .video-player {
+  width: 100%;
+  padding-top: 56.3%;
+  position: relative;
+}
+.usanetwork-quiz-question .question-video .video-player  iframe {
+  position: absolute;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.usanetwork-quiz-question .question-image {
+  text-align: center;
+}
 .usanetwork-quiz-question .question-title {
   font-size: 24px;
   margin: 20px 0;

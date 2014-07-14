@@ -32,8 +32,7 @@ function usanetwork_tv_schedule_menu() {
   );
   $items['accessibility'] = array(
     'title' => t('Accessibility'),
-    'page callback' => 'usanetwork_tv_schedule_schedule_page',
-    'page arguments' => array(TRUE),
+    'page callback' => 'usanetwork_tv_schedule_accessibility',
     'access arguments' => array('access content'),
   );
   $items['usa-on-now-panel-js'] = array(
@@ -434,9 +433,9 @@ function usanetwork_tv_schedule_live_tv() {
 }
 
 /**
- * TV schedule page menu callback
+ * Accessibility page menu callback
  */
-function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
+function usanetwork_tv_schedule_accessibility() {
 
   $output = '';
   // styles moved to theme
@@ -483,11 +482,9 @@ function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
     $day_part = (array) $item->Daypart;
     $audio_desc  = (array) $item->AudioDesc;
 
-    if ($is_accessibility_page) {
       if ($audio_desc[0] == 'N') {
         continue;
       }
-    }
 
     // convert to timestamp to determine on-air / off-air
     $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
@@ -521,10 +518,8 @@ function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
     $rows[] = array('data' => $row, 'class' => $classes);
   }
 
-  if ($is_accessibility_page) {
     $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
     $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
-  }
   
   $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => strtotime($cur_date[0])));
 
@@ -536,6 +531,116 @@ function usanetwork_tv_schedule_schedule_page($is_accessibility_page = FALSE) {
   date_default_timezone_set($orginal_tz);
 
   return $output;
+}
+
+/**
+ * TV schedule page menu callback
+ */
+function usanetwork_tv_schedule_schedule_page() {
+  $output = '';
+  
+  $start_hour = USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR;
+  $timezone = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
+  $_timezone = date_default_timezone_get();
+  date_default_timezone_set($timezone);
+  $request_time = REQUEST_TIME;
+  $sdate = new DateTime(date('Y-m-d ' . $start_hour . ':00:00', $request_time), new DateTimeZone($timezone));
+ 
+  if (isset($_GET['sdate']) && !empty($_GET['sdate'])) {
+    $get_time = str_replace('_', '-', check_plain($_GET['sdate']));
+    $sdate = new DateTime($get_time . $start_hour . ':00:00', new DateTimeZone($timezone));
+  }
+  
+  $tv_schedule = usanetwork_tv_schedule_fetch_program_guid_schedule($sdate->getTimestamp());
+
+  if (empty($tv_schedule['program'])) {
+    // switch back to original server time zone
+    date_default_timezone_set($_timezone);
+    drupal_not_found();
+    return;
+  }
+
+  $header = array(
+    array('data' => t('TIME (ET)'), 'class' => array('show-time')),
+    array('data' => t('PROGRAM'), 'class' => array('program')),
+    array('data' => t('EPISODE'), 'class' => array('episode')),
+    array('data' =>  t('RATING'), 'class' => array('rating')),
+  );
+  $rows = array();
+  $program_guids = array_keys($tv_schedule['program']);
+  $programs = entity_load('program', $program_guids);
+  foreach ($programs as $item) {
+    $classes = array();
+
+    $start_time = $item->start_time;
+    $end_time = $item->end_time;
+    $show = html_entity_decode($item->parent_title);
+    $episode = $item->title;
+    $program = $item->raw;
+    $rating = _usanetwork_tv_schedule_get_program_rating($program['pllisting$contentRatings']);
+    
+//    if (!isset($program['pllisting$airingType'])) {
+//      continue;
+//    }
+
+    // add styles to show hide the row based on on air value
+    $classes[] = (($request_time < $end_time) && ($request_time > $start_time)) ? 'on-air' : 'off-air';
+
+    $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
+    if (empty($nid)) {
+      if (strtoupper($show) == 'USA MOVIE') {
+        $show = l(check_plain($show), 'movies', array('html' => true));
+      } else {
+        $show = check_plain($show);
+      }
+    } else {
+      $path = drupal_get_path_alias('node/'.$nid);
+      $show = l(check_plain($show), $path, array('html' => true));
+    }
+
+    $row = array(
+      array('data' => date('h:i A', $start_time), 'class' => array('show-time')),
+      array('data' => strtoupper($show), 'class' => array('program')),
+      array('data' => strtoupper(html_entity_decode($episode)), 'class' => array('episode')),
+      array('data' => strtoupper($rating), 'class' => array('rating')),
+    );
+    $rows[] = array('data' => $row, 'class' => $classes);
+  }
+
+  if ($is_accessibility_page) {
+    $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
+    $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
+  }
+  
+  $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => ($request_time)));
+
+  $output .= '<div class="schedule-table">';
+  $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
+  $output .= '</div>';
+
+  // switch back to original server time zone
+  date_default_timezone_set($_timezone);
+
+  return $output;
+}
+
+/*
+ * Get rating for program
+ */
+function _usanetwork_tv_schedule_get_program_rating($program_rating) {
+  $rating = '';
+  if (isset($program_rating[0]['pllisting$rating'])) {
+    $rating .= $program_rating[0]['pllisting$rating'];
+    if (isset($program_rating[0]['pllisting$subRatings'])){
+      foreach ($program_rating[0]['pllisting$subRatings'] as $key => $subrating) {
+        if (isset($subrating) && ($subrating != 'none')) {
+          $rating .= '-' . $subrating;
+        }
+      } 
+    }
+  }
+  
+  return $rating;
 }
 
 /**
@@ -577,6 +682,20 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   } else {
     return $tvs->Schedules->Schedule->ScheduleItem;
   }
+}
+
+function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval = 86400) {
+  
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'program')
+    ->propertyCondition('start_time', $sdate, '>=')
+    ->propertyCondition('start_time', $sdate + $interval, '<')
+    ->propertyOrderBy('start_time', 'ASC');
+
+  $result = $query->execute();
+
+  return $result;
 }
 
 /**

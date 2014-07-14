@@ -684,18 +684,26 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   }
 }
 
+/*
+ * Get schedule for date.
+ */
 function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval = 86400) {
   
-  $query = new EntityFieldQuery();
+  if (entity_type_is_fieldable('program')) {
+  
+    $query = new EntityFieldQuery();
 
-  $query->entityCondition('entity_type', 'program')
-    ->propertyCondition('start_time', $sdate, '>=')
-    ->propertyCondition('start_time', $sdate + $interval, '<')
-    ->propertyOrderBy('start_time', 'ASC');
+    $query->entityCondition('entity_type', 'program')
+      ->propertyCondition('start_time', $sdate, '>=')
+      ->propertyCondition('start_time', $sdate + $interval, '<')
+      ->propertyOrderBy('start_time', 'ASC');
 
-  $result = $query->execute();
+    $result = $query->execute();
 
-  return $result;
+    return $result;
+  } else {
+    $result = NULL;
+  }
 }
 
 /**

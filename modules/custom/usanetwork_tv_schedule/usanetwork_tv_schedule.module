@@ -33,6 +33,7 @@ function usanetwork_tv_schedule_menu() {
   $items['accessibility'] = array(
     'title' => t('Accessibility'),
     'page callback' => 'usanetwork_tv_schedule_accessibility',
+    'page arguments' => array(TRUE),
     'access arguments' => array('access content'),
   );
   $items['usa-on-now-panel-js'] = array(
@@ -435,7 +436,7 @@ function usanetwork_tv_schedule_live_tv() {
 /**
  * Accessibility page menu callback
  */
-function usanetwork_tv_schedule_accessibility() {
+function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
   $output = '';
   // styles moved to theme
@@ -482,9 +483,11 @@ function usanetwork_tv_schedule_accessibility() {
     $day_part = (array) $item->Daypart;
     $audio_desc  = (array) $item->AudioDesc;
 
+    if ($is_accessibility_page) {
       if ($audio_desc[0] == 'N') {
         continue;
       }
+    }
 
     // convert to timestamp to determine on-air / off-air
     $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
@@ -518,8 +521,10 @@ function usanetwork_tv_schedule_accessibility() {
     $rows[] = array('data' => $row, 'class' => $classes);
   }
 
+  if ($is_accessibility_page) {
     $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
     $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
+  }
   
   $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => strtotime($cur_date[0])));
 
@@ -556,6 +561,8 @@ function usanetwork_tv_schedule_schedule_page() {
   if (empty($tv_schedule['program'])) {
     // switch back to original server time zone
     date_default_timezone_set($_timezone);
+    //leave for moving on production
+    return usanetwork_tv_schedule_accessibility();
     drupal_not_found();
     return;
   }
@@ -579,10 +586,6 @@ function usanetwork_tv_schedule_schedule_page() {
     $program = $item->raw;
     $rating = _usanetwork_tv_schedule_get_program_rating($program['pllisting$contentRatings']);
     
-//    if (!isset($program['pllisting$airingType'])) {
-//      continue;
-//    }
-
     // add styles to show hide the row based on on air value
     $classes[] = (($request_time < $end_time) && ($request_time > $start_time)) ? 'on-air' : 'off-air';
 
@@ -607,11 +610,6 @@ function usanetwork_tv_schedule_schedule_page() {
     $rows[] = array('data' => $row, 'class' => $classes);
   }
 
-  if ($is_accessibility_page) {
-    $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
-    $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
-  }
-  
   $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => ($request_time)));
 
   $output .= '<div class="schedule-table">';

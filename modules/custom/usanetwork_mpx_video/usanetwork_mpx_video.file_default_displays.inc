@@ -117,6 +117,16 @@ function usanetwork_mpx_video_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
+  $file_display->name = 'mpx_video_1__preview__media_theplatform_mpx_image';
+  $file_display->weight = 0;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'image_style' => 'thumbnail',
+  );
+  $export['mpx_video_1__preview__media_theplatform_mpx_image'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
   $file_display->name = 'mpx_video_1__vid_teaser_episode__media_theplatform_mpx_image';
   $file_display->weight = 0;
   $file_display->status = TRUE;

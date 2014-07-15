@@ -1108,6 +1108,7 @@ function _usanetwork_onnow_upnext_node() {
   $current_time = new DateTime(date('Y-m-d 00:00:00', $request_time), new DateTimeZone($timezone));
   $now = $current_time->getTimestamp();
   $tv_schedule = usanetwork_tv_schedule_fetch_program_guid_schedule($now - 60 *60);
+  date_default_timezone_set($_timezone);
   if (!empty($tv_schedule['program'])) {
     $program_guids = array_keys($tv_schedule['program']);
     $programs = entity_load('program', $program_guids);

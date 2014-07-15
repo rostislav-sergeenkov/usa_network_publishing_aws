@@ -384,6 +384,9 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
       if ($show == 'Law & Order: Special Victims') {
         $show = 'Law & Order: SVU';
       }
+      if ($item->raw['pllisting$program']['plprogram$programType'] == 'movie') {
+        $show = 'USA MOVIE';
+      }
       $episode = html_entity_decode($item->title);
       $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
       $episode_name_clean = check_plain(trim($episode));
@@ -441,6 +444,9 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
     //hardcode for svu
     if ($show == 'Law & Order: Special Victims') {
       $show = 'Law & Order: SVU';
+    }
+    if ($item->raw['pllisting$program']['plprogram$programType'] == 'movie') {
+      $show = 'USA MOVIE';
     }
     $episode = html_entity_decode($item->title);
 
@@ -775,6 +781,12 @@ function usanetwork_tv_schedule_schedule_page() {
     $start_time = $item->start_time;
     $end_time = $item->end_time;
     $show = html_entity_decode($item->parent_title);
+    if ($show == 'Law & Order: Special Victims') {
+      $show = 'Law & Order: SVU';
+    }
+    if ($item->raw['pllisting$program']['plprogram$programType'] == 'movie') {
+      $show = 'USA MOVIE';
+    }
     $episode = $item->title;
     $program = $item->raw;
     $rating = _usanetwork_tv_schedule_get_program_rating($program['pllisting$contentRatings']);
@@ -791,12 +803,12 @@ function usanetwork_tv_schedule_schedule_page() {
       }
     } else {
       $path = drupal_get_path_alias('node/'.$nid);
-      $show = l(check_plain($show), $path, array('html' => true));
+      $show = l(strtoupper(check_plain($show)), $path, array('html' => true));
     }
 
     $row = array(
       array('data' => date('h:i A', $start_time), 'class' => array('show-time')),
-      array('data' => strtoupper($show), 'class' => array('program')),
+      array('data' => $show, 'class' => array('program')),
       array('data' => strtoupper(html_entity_decode($episode)), 'class' => array('episode')),
       array('data' => strtoupper($rating), 'class' => array('rating')),
     );

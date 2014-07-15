@@ -69,7 +69,6 @@
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer {
   margin: 10px 0 0 0;
-  max-height: 56px;
   overflow: hidden;
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer.odd {
@@ -80,6 +79,22 @@
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .inner {
   max-width: none;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-image {
+  height: 300px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 300px;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-image img {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-height: 300px;
+  max-width: 300px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-title {
   border: none;

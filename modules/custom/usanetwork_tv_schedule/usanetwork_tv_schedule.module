@@ -687,7 +687,7 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
  */
 function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval = 86400) {
   
-  if (entity_type_is_fieldable('program')) {
+  if (module_exists('program_guide')) {
   
     $query = new EntityFieldQuery();
 

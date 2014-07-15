@@ -393,7 +393,7 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($show) == 'USA MOVIE') {
@@ -453,7 +453,7 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
       $arrow = 'class="trigger"';
     }
     $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
 
     if (empty($nid)) {
         $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';

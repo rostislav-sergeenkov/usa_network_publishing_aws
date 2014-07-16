@@ -13947,6 +13947,10 @@ body.blog .view-display-id-blog_content .views-row {
   color: #4e99d0;
 }
 
+#admin-menu {
+  z-index: 100000;
+}
+
 [class*="iib"] {
   background-color: #2d2d2d;
 }

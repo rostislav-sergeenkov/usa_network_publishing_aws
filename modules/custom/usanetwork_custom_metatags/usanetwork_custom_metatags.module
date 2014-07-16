@@ -7,7 +7,7 @@
  * Implements hook_theme().
  */
 function usanetwork_custom_metatags_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'tv_show_node_form') {
+  if (in_array($form_id, array('tv_show_node_form', 'catchall_page_node_form'))) {
     if (isset($form['#bundle']) && $form_id == $form['#bundle'] . '_node_form') {
       $entity = isset($form_state['node']) ? $form_state['node'] : FALSE;
       $entity_type = 'node';
@@ -186,7 +186,7 @@ function usanetwork_custom_metatags_preprocess_page(&$variables) {
   
   if (isset($variables['node'])) {
     $node = $variables['node'];
-    if (($node->type == 'tv_show')) {
+    if (in_array($node->type, array('tv_show', 'catchall_page'))) {
       $settings = variable_get('usanetwork_meta_tags_settings', array()); 
       if ($settings['node'][$node->type][$node->nid]) {
         $weight = 50;

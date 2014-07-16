@@ -830,7 +830,18 @@ function usanetwork_core_update_7145() {
  */
 function usanetwork_core_update_7146() {
   $modules_en = array(
+    'usanetwork_quiz',
     'usanetwork_custom_metatags',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable program guide module.
+ */
+function usanetwork_core_update_7147() {
+  $modules_en = array(
+    'usanetwork_program_guide',
   );
   module_enable($modules_en);
 }

@@ -290,7 +290,7 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 1,
-      'nodes_per_page' => '0',
+      'nodes_per_page' => '10',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -301,7 +301,7 @@ function usanetwork_post_default_page_manager_handlers() {
       'url' => '',
       'display' => 'block_latest_content',
       'context' => array(
-        0 => 'argument_term_1.tid',
+        0 => 'argument_term_1.parent',
       ),
       'override_title' => 1,
       'override_title_text' => '',

@@ -301,7 +301,7 @@ function usanetwork_post_default_page_manager_handlers() {
       'url' => '',
       'display' => 'block_latest_content',
       'context' => array(
-        0 => 'argument_term_1.parent',
+        0 => 'argument_term_1.tid',
       ),
       'override_title' => 1,
       'override_title_text' => '',
@@ -318,42 +318,6 @@ function usanetwork_post_default_page_manager_handlers() {
     $display->panels['left'][1] = 'new-8';
     $pane = new stdClass();
     $pane->pid = 'new-9';
-    $pane->panel = 'left';
-    $pane->type = 'views';
-    $pane->subtype = 'blog';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 1,
-      'nodes_per_page' => '0',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'blog_content',
-      'context' => array(
-        0 => 'argument_term_1.tid',
-      ),
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['left'][2] = 'new-9';
-    $pane = new stdClass();
-    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
@@ -374,10 +338,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['right'][0] = 'new-10';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][0] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_post-usanetwork_post_banners';
@@ -395,10 +359,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['right'][1] = 'new-11';
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][1] = 'new-10';
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-11';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_post-usanetwork_post_header';
@@ -416,10 +380,10 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['top'][0] = 'new-12';
+    $display->content['new-11'] = $pane;
+    $display->panels['top'][0] = 'new-11';
     $pane = new stdClass();
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-12';
     $pane->panel = 'top';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_post-usanetwork_post_global_header';
@@ -437,8 +401,8 @@ function usanetwork_post_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['top'][1] = 'new-13';
+    $display->content['new-12'] = $pane;
+    $display->panels['top'][1] = 'new-12';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

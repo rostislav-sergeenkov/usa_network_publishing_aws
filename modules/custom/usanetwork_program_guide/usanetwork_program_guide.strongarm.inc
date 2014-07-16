@@ -21,7 +21,7 @@ function usanetwork_program_guide_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'program_guide_delete_after_interval';
-  $strongarm->value = '7';
+  $strongarm->value = '30';
   $export['program_guide_delete_after_interval'] = $strongarm;
 
   $strongarm = new stdClass();

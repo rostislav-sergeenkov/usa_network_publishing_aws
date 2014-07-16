@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Usanetwork Program Guide feature.
+ */
+
+include_once 'usanetwork_program_guide.features.inc';

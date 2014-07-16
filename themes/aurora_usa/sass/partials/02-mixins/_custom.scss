@@ -71,3 +71,11 @@
   height:32px;
 }
 
+@mixin clear() {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+

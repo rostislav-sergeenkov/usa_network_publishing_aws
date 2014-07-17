@@ -1041,7 +1041,8 @@ function usanetwork_ads_page_build(&$page) {
     }  
   } else {
     $menu_object = _usanetwork_menu_get_object();
-    if ($menu_object->type == 'tv_show'){
+    if ($menu_object) {
+      if (isset($menu_object->type) && ($menu_object->type == 'tv_show')){
       $show_name = reset(field_get_items('node', $menu_object, 'field_pathauto_alias'));
       $floodlight_field_type = field_get_items('node', $menu_object, 'field_floodlight_type');
       if ($floodlight_field_type) {
@@ -1058,6 +1059,7 @@ function usanetwork_ads_page_build(&$page) {
         }
       }
     }
+  }
   }
   
   if (!empty($floodlight_type) && !empty($floodlight_category)) {

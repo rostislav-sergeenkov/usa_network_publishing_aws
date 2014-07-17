@@ -654,8 +654,10 @@ function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
           }
         }
       }
-      if ($answer_sum !== NULL && $answer_sum != 1) {
-        form_error($answers, t('Question must have one correct answer.'));
+      if($quiz_type == 'trivia'){
+        if ($answer_sum !== NULL && $answer_sum != 1) {
+          form_error($answers, t('Question must have one correct answer.'));
+        }
       }
     }
   }

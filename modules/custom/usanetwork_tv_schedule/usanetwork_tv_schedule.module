@@ -892,21 +892,21 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
  */
 function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval = 86400) {
   
-  if (module_exists('program_guide')) {
-  
-    $query = new EntityFieldQuery();
-
-    $query->entityCondition('entity_type', 'program')
-      ->propertyCondition('start_time', $sdate, '>=')
-      ->propertyCondition('start_time', $sdate + $interval, '<')
-      ->propertyOrderBy('start_time', 'ASC');
-
-    $result = $query->execute();
-
-    return $result;
-  } else {
+//  if (module_exists('program_guide') && db_table_exists('programs')) {
+//  
+//    $query = new EntityFieldQuery();
+//
+//    $query->entityCondition('entity_type', 'program')
+//      ->propertyCondition('start_time', $sdate, '>=')
+//      ->propertyCondition('start_time', $sdate + $interval, '<')
+//      ->propertyOrderBy('start_time', 'ASC');
+//
+//    $result = $query->execute();
+//
+//    return $result;
+//  } else {
     $result = NULL;
-  }
+//  }
 }
 
 /**

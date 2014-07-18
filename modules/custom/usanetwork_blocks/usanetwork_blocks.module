@@ -337,13 +337,15 @@ function usanetwork_blocks_tv_show_menu() {
     }
 
     // Extract the field collection item ids
-    $ids = array();
+//    $ids = array();
+    $items = array();
     foreach ($fc_fields as $fc_field) {
-      $ids[] = $fc_field['value'];
+      $items[] = entity_revision_load('field_collection_item', $fc_field['revision_id']); //load current revision of collection
+//      $ids[] = $fc_field['value'];
     }
 
     // Load up the field collection items
-    $items = field_collection_item_load_multiple($ids);
+//    $items = field_collection_item_load_multiple($ids);
     if (empty($items)) {
       return;
     }

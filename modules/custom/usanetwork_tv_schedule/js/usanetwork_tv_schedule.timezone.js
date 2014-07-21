@@ -20,23 +20,24 @@
         usa_offset = daylight_time_offset;
       }
       
-      var usa_time_cookie = jQuery.cookie('usa_time');
-      if (usa_time_cookie) {
+//      var usa_time_cookie = jQuery.cookie('usa_time');
+//      if (usa_time_cookie) {
         $.ajax({ 
           type: "GET",
           url: "/usanetwork_get_user_timezone",
           data: {usa_time: timezone.name(), usa_offset: usa_offset}
         });
-      } else {
-        $.ajax({ 
-          type: "GET",
-          url: "/usanetwork_get_user_timezone",
-          data: {usa_time: timezone.name(), usa_offset: usa_offset},
-          success: function(){
-            location.reload();
-          }
-        });
-      }
+//      } 
+//      else {
+//        $.ajax({ 
+//          type: "GET",
+//          url: "/usanetwork_get_user_timezone",
+//          data: {usa_time: timezone.name(), usa_offset: usa_offset},
+//          success: function(){
+//            location.reload();
+//          }
+//        });
+//      }
     }
   }
 })(jQuery);

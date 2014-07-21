@@ -67,7 +67,7 @@
         print $video;
       ?>
     </div>
-    <div class="tve-help-link signIn" data-ng-if="!global.isAuthN"><div class="tve-help-sign" data-tve-sign-in-button="" ><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div></div>
+    <div class="tve-help-link signIn" ><div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" />Why do I have to sign in?</div></div>
     <div class="tve-help-link signOut <?php print (!$is_live) ? 'not-live' : 'live'?>" data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
   <?php else: ?>
     <div class="video-player-wrapper">

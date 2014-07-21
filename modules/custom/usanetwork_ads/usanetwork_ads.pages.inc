@@ -99,6 +99,7 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
     $mandatory = _usanetwork_ads_mandatory_omniture_variables($entity_type, $bundle);
     if (!empty($mandatory)) {
       $form['usanetwork_ads']['default']['#default_value'] = 0;
+      $form['usanetwork_ads']['#attributes']['class'][] = 'required-fields';
     }
     $variables =& $form['usanetwork_ads']['variables']['omniture']['variables'];
     foreach ($mandatory as $variable_name) {

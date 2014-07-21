@@ -45,7 +45,7 @@ function usanetwork_watchwith_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_watchwith_google_analytics_id';
-  $strongarm->value = 'UA-46727477-1';
+  $strongarm->value = 'UA-43524714-1';
   $export['tve_watchwith_google_analytics_id'] = $strongarm;
 
   $strongarm = new stdClass();

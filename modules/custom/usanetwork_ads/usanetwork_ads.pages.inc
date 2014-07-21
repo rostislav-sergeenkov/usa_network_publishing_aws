@@ -96,6 +96,33 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
 
     $items_count = isset($form_state['usanetwork_ads']['omniture']['items_count']) ? $form_state['usanetwork_ads']['omniture']['items_count'] : count($defaults['omniture']['variables']);
     _usanetwork_ads_omniture_elements($id, $form['usanetwork_ads']['variables']['omniture'], $defaults['omniture'], $items_count);
+    $mandatory = _usanetwork_ads_mandatory_omniture_variables($entity_type, $bundle);
+    if (!empty($mandatory)) {
+      $form['usanetwork_ads']['default']['#default_value'] = 0;
+    }
+    $variables =& $form['usanetwork_ads']['variables']['omniture']['variables'];
+    foreach ($mandatory as $variable_name) {
+      $element_delta = NULL;
+      foreach (element_children($variables) as $delta) {
+        if ($delta !== 'add_more' && $variables[$delta]['key']['#default_value'] == $variable_name) {
+          $element_delta = $delta;
+          break;
+        }
+      }
+
+      if ($element_delta === NULL) {
+        $add_more = $variables['add_more'];
+        unset($variables['add_more']);
+        $variables[] = _usanetwork_ads_omniture_variable_elements(array(
+          'key' => $variable_name,
+        ));
+        $element_delta = key($variables);
+        $variables['add_more'] = $add_more;
+      }
+      $variables[$element_delta]['key']['#attributes']['readonly'] = 'readonly';
+      $variables[$element_delta]['value']['#required'] = TRUE;
+    }
+
     $form_state['usanetwork_ads']['omniture']['items_count'] = $items_count;
     $form['usanetwork_ads']['variables']['omniture']['variables']['#attributes']['id'] = $id . '-omniture-values';
 

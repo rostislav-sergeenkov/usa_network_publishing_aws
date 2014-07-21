@@ -1085,3 +1085,20 @@ function usanetwork_ads_page_build(&$page) {
     );
   }
 }
+
+/**
+ * Returns a list of mandatory omniture variables.
+ */
+function _usanetwork_ads_mandatory_omniture_variables($entity_type = NULL, $bundle = NULL) {
+  $vars = array();
+  switch ($entity_type) {
+    case 'node':
+      switch ($bundle) {
+        case 'tv_show':
+          $vars += array('s.prop2', 's.prop3', 's.prop4', 's.prop10');
+          break;
+      }
+      break;
+  }
+  return $vars;
+}

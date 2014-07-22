@@ -20,6 +20,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|post|default
 features[ds_field_settings][] = node|post|teaser
+features[ds_fields][] = gigya_comment_count
 features[ds_layout_settings][] = node|post|default
 features[ds_layout_settings][] = node|post|teaser
 features[features_api][] = api:2

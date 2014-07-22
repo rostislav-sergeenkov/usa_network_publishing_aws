@@ -190,6 +190,9 @@ function usanetwork_post_preprocess_node(&$vars) {
     if (isset($vars['content']['post_date'])) {
       //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
+        if ($vars['comment'] == 2) { 
+          $vars['content']['gigya_comment_count'][0]['#markup'] = '<div id="usa-gigya-comments-count">'. format_plural($vars['comment_count'], '1 comment', '@count comments') . '</div>';
+        }
         $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
       }
     }

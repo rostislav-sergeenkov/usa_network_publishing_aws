@@ -1077,43 +1077,55 @@
         padding-bottom: 1px;
       }
     }
-    &:after {
+    &:before {
       position: absolute;
-      content: "\0020";
       content: "";
       display: block;
       width: 0;
       height: 0;
-      border: solid 14px;
-      border-color: transparent $black transparent transparent;
+      border: 14px solid transparent;
+      border-right: 14px solid #1f1f1f;
       top: 3px;
-      right: -16px;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
+      right: -2px;
+      z-index: 106;
+      @include breakpoint($bp-video-player-section) {
+        border-bottom: 14px solid #1f1f1f;
+        border-right: 14px solid transparent;
+        top: 158px;
+        left: 50%;
+        margin-left: -14px;
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
+        border-bottom: 14px solid #1f1f1f;
+        border-right: 14px solid transparent;
+        top: 318px;
+        left: 16%;
+      }
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: 14px solid transparent;
+      border-right: 14px solid #4b4b4b;
+      top: 3px;
+      right: 0px;
       z-index: 105;
-      -webkit-filter: drop-shadow($gray-ultra-med -2px 0px);
-      -moz-filter: drop-shadow($gray-ultra-med -2px 0px);
-      filter: drop-shadow($gray-ultra-med -2px 0px);
         @include breakpoint($bp-video-player-section) {
-          border-color: transparent transparent $black transparent;
-          border-top: none;
-          top: 173px;
+          border-bottom: 14px solid #4b4b4b;
+          border-right: 14px solid transparent;
+          top: 156px;
           left: 50%;
-           -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-          -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-          filter: drop-shadow($gray-ultra-med 0 -2px 0);
+          margin-left: -14px;
         }
         @include breakpoint($bp-video-mid-range4-width) {
-          border-color: transparent transparent $black transparent;
-          border-top: none;
-          top: 333px;
+          border-bottom: 14px solid #4b4b4b;
+          border-right: 14px solid transparent;
+          top: 316px;
           left: 16%;
-          -webkit-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-          -moz-filter: drop-shadow($gray-ultra-med 0 -2px 0);
-           filter: drop-shadow($gray-ultra-med 0 -2px 0);
+
         }
       }
     }

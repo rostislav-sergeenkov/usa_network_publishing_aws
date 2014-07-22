@@ -9769,47 +9769,62 @@ body.person-page #main {
   padding-right: 5px;
   padding-bottom: 1px;
 }
-.featured-asset .tve-help:after {
+.featured-asset .tve-help:before {
   position: absolute;
-  content: "\0020";
   content: "";
   display: block;
   width: 0;
   height: 0;
-  border: solid 14px;
-  border-color: transparent #1f1f1f transparent transparent;
+  border: 14px solid transparent;
+  border-right: 14px solid #1f1f1f;
   top: 3px;
-  right: -16px;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  right: -2px;
+  z-index: 106;
+}
+@media (max-width: 644px) {
+  .featured-asset .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 158px;
+    left: 50%;
+    margin-left: -14px;
+  }
+}
+@media (min-width: 645px) and (max-width: 959px) {
+  .featured-asset .tve-help:before {
+    border-bottom: 14px solid #1f1f1f;
+    border-right: 14px solid transparent;
+    top: 318px;
+    left: 16%;
+  }
+}
+.featured-asset .tve-help:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-right: 14px solid #4b4b4b;
+  top: 3px;
+  right: 0px;
   z-index: 105;
-  -webkit-filter: drop-shadow(#4b4b4b -2px 0px);
-  -moz-filter: drop-shadow(#4b4b4b -2px 0px);
-  filter: drop-shadow(#4b4b4b -2px 0px);
 }
 @media (max-width: 644px) {
   .featured-asset .tve-help:after {
-    border-color: transparent transparent #1f1f1f transparent;
-    border-top: none;
-    top: 173px;
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 156px;
     left: 50%;
-    -webkit-filter: drop-shadow(#4b4b4b 0 -2px 0);
-    -moz-filter: drop-shadow(#4b4b4b 0 -2px 0);
-    filter: drop-shadow(#4b4b4b 0 -2px 0);
+    margin-left: -14px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
   .featured-asset .tve-help:after {
-    border-color: transparent transparent #1f1f1f transparent;
-    border-top: none;
-    top: 333px;
+    border-bottom: 14px solid #4b4b4b;
+    border-right: 14px solid transparent;
+    top: 316px;
     left: 16%;
-    -webkit-filter: drop-shadow(#4b4b4b 0 -2px 0);
-    -moz-filter: drop-shadow(#4b4b4b 0 -2px 0);
-    filter: drop-shadow(#4b4b4b 0 -2px 0);
   }
 }
 .featured-asset .meta {

@@ -9,7 +9,10 @@
 
       $slideshow = (settings.homeSlides.slideshow !== null)? settings.homeSlides.slideshow : false;
       $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null)? settings.homeSlides.slideshowSpeed : 7000;
-
+      $touch = true;
+      if ($mainslider.find('li').length <= 1){
+        $touch = false;
+      }
       $(document).ready(function() {
         $mainslider.flexslider({
           animation: 'slide',
@@ -18,6 +21,7 @@
           slideshow: $slideshow,
           slideshowSpeed: $slideshowSpeed,
           pauseOnHover: true,
+          touch: $touch,
           before: function(slider) {
             var target = slider.animatingTo,
               currentSlide = slider.currentSlide;

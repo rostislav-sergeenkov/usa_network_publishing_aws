@@ -23,12 +23,12 @@ function usanetwork_quiz_field_group_info() {
     'label' => 'Additional Information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_quiz_entry_text',
-      1 => 'field_quiz_header_image',
-      2 => 'field_quiz_repeat_text',
-      3 => 'field_quiz_splash_image',
-      4 => 'field_usa_catchall_js',
-      5 => 'field_usa_css',
+      0 => 'field_quiz_repeat_text',
+      1 => 'field_quiz_entry_text',
+      2 => 'field_quiz_splash_image',
+      3 => 'field_quiz_header_image',
+      4 => 'field_usa_css',
+      5 => 'field_usa_catchall_js',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -55,13 +55,13 @@ function usanetwork_quiz_field_group_info() {
     'label' => 'Basic information',
     'weight' => '0',
     'children' => array(
-      0 => 'body',
-      1 => 'field_quiz_theme',
-      2 => 'field_quiz_type',
+      0 => 'field_quiz_type',
+      1 => 'title',
+      2 => 'body',
       3 => 'field_show',
       4 => 'field_usa_tv_show_color',
       5 => 'field_usa_tv_show_hover_color',
-      6 => 'title',
+      6 => 'field_quiz_theme',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -143,8 +143,8 @@ function usanetwork_quiz_field_group_info() {
     'label' => 'USA OG Fields',
     'weight' => '4',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
+      1 => 'field_usa_og_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

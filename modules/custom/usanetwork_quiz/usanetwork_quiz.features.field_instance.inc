@@ -445,9 +445,9 @@ function usanetwork_quiz_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'media_large_icon',
+        'type' => 'file_default',
         'weight' => 5,
       ),
       'inline_content' => array(

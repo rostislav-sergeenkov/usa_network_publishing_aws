@@ -97,7 +97,7 @@
       // tve help messaging
 
       $tve_toggler = $('.tve-help-link');
-    /*$('.tve-help-link').click(function() {*/
+//    $('.tve-help-link').click(function() {
       $tve_toggler.click(function() {
         if($('.tve-help-link').hasClass('selected')) {
           $('.tve-help-link').removeClass('selected');

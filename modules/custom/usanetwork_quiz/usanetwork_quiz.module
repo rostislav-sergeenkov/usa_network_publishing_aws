@@ -7,8 +7,6 @@
 include_once 'usanetwork_quiz.features.inc';
 
 define('USANETWORK_QUIZ_DEFAULT_COLOR', '#0ab6e8');
-define('USANETWORK_QUIZ_DEFAULT_HOVER_COLOR', '#12BEF0');
-
 
 /**
  * Implements hook_theme().
@@ -785,7 +783,7 @@ function _usanetwork_quiz_color_css($node, $theme) {
     $color = empty($color) ? USANETWORK_QUIZ_DEFAULT_COLOR : $color;
     $css = str_replace('$accent-color', $color, $css);
     $color_hover = _usanetwork_quiz_accent_hover_color($node);
-    $color_hover = empty($color_hover) ? USANETWORK_QUIZ_DEFAULT_HOVER_COLOR : $color_hover;
+    $color_hover = empty($color_hover) ? $color : $color_hover;
     $css = str_replace('$accent-hover-color', $color_hover, $css);
   }
 

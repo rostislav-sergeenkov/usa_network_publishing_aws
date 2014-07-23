@@ -6,9 +6,12 @@
       $('body').once('showFlexslider', function () {
         $slideshow_selector = $('#show-aspot ul');
 
-        $slideshow = (settings.showAspot.slideshow !== null) ? settings.showAspot.slideshow : false;
-        $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null) ? settings.showAspot.slideshowSpeed : 7000;
-
+        $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
+        $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
+        $touch = true;
+        if ($slideshow_selector.find('li').length <= 1){
+          $touch = false;
+        }
         $slideshow_selector
           .addClass('slides')
           .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
@@ -19,7 +22,8 @@
             pauseOnHover: true,
             animation: 'slide',
             controlNav: true,
-            directionNav: (!Modernizr.touch)
+            directionNav: (!Modernizr.touch),
+            touch: $touch
           });
         $showSlideshow = $('#show-main-slider');
       });

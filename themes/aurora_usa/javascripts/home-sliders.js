@@ -7,10 +7,14 @@
       $mainslider = $('#main-slider');
       $secondaryslider = $('.secondary-slider');
 
-      $slideshow = (settings.homeSlides.slideshow !== null) ? settings.homeSlides.slideshow : false;
-      $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null) ? settings.homeSlides.slideshowSpeed : 7000;
+      $slideshow = (settings.homeSlides.slideshow !== null)? settings.homeSlides.slideshow : false;
+      $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null)? settings.homeSlides.slideshowSpeed : 7000;
+      $touch = true;
+      if ($mainslider.find('li').length <= 1){
+        $touch = false;
+      }
+      $(document).ready(function() {
 
-      $(document).ready(function () {
         $mainslider.flexslider({
           animation: 'slide',
           controlNav: true,
@@ -18,7 +22,8 @@
           slideshow: $slideshow,
           slideshowSpeed: $slideshowSpeed,
           pauseOnHover: true,
-          before: function (slider) {
+          touch: $touch,
+          before: function(slider) {
             var target = slider.animatingTo,
               currentSlide = slider.currentSlide;
             $secondaryslider.each(function (index, element) {

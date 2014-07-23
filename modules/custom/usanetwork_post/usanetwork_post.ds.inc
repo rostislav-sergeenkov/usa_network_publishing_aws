@@ -47,6 +47,11 @@ function usanetwork_post_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'post';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'gigya_comment_count' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -58,12 +63,32 @@ function usanetwork_post_ds_field_settings_info() {
       ),
     ),
     'post_date' => array(
-      'weight' => '4',
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'ds_post_date_blog_post_date',
     ),
   );
   $export['node|post|teaser'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_custom_fields_info().
+ */
+function usanetwork_post_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'gigya_comment_count';
+  $ds_field->label = 'gigya-comment-count';
+  $ds_field->field_type = 3;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->properties = array();
+  $export['gigya_comment_count'] = $ds_field;
 
   return $export;
 }
@@ -125,14 +150,16 @@ function usanetwork_post_ds_layout_settings_info() {
         0 => 'field_post_cover',
         1 => 'title',
         2 => 'field_summary',
-        3 => 'field_gigya_share_bar',
-        4 => 'post_date',
+        3 => 'gigya_comment_count',
+        4 => 'field_gigya_share_bar',
+        5 => 'post_date',
       ),
     ),
     'fields' => array(
       'field_post_cover' => 'ds_content',
       'title' => 'ds_content',
       'field_summary' => 'ds_content',
+      'gigya_comment_count' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',
       'post_date' => 'ds_content',
     ),

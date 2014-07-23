@@ -501,6 +501,10 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_result(&$vars) {
   // template suggestions
   if ($vars['quiz_type']) {
     $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_type'];
+    $vars['trivia'] = false;
+    if ($vars['quiz_type'] == 'trivia'){
+      $vars['trivia'] = true;
+    }
   }
   if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
     $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_theme'];

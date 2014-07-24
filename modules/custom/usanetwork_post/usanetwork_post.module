@@ -181,6 +181,38 @@ function usanetwork_post_taxonomy_term_presave($term) {
   }
 }
 
+/*
+ * Helper for getting cached comments count
+ */
+function _usanetwork_post_get_comment_count($nid) {
+  $comment_count = FALSE;
+  
+  $call = __FUNCTION__ . '_' . $nid;
+  if ($cache = cache_get($call)) {
+    $comment_count = $cache->data;
+  } else {
+    $parameters = array(
+      'query' => array(
+        'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
+        'streamID' => $nid,
+        'ApiKey' => variable_get('gigya_APIKey', ''),
+      ),
+    );
+    $url = url('http://comments.gigya.com/comments.getComments', $parameters);
+    $result = drupal_http_request($url, array('timeout' => 300));
+    if (!empty($result->data)) {
+      $data = drupal_json_decode($result->data);
+      if ($data['statusCode'] == 200) {
+        if (isset($data['commentCount'])) {
+          $comment_count = $data['commentCount'];
+          cache_set($call, $comment_count, 'cache', CACHE_TEMPORARY);
+        }
+      }
+    }
+  } 
+  return $comment_count;
+}
+
 /**
  * Implements hook_preprocess_node().
  */
@@ -190,27 +222,14 @@ function usanetwork_post_preprocess_node(&$vars) {
     if (isset($vars['content']['post_date'])) {
       //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
-        $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
+        $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);  
       }
     }
     if ($vars['view_mode'] == 'teaser') {
-      if ($vars['comment'] == 2) { 
-        $parameters = array(
-          'query' => array(
-            'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
-            'streamID' => $node->nid,
-            'ApiKey' => variable_get('gigya_APIKey', ''),
-          ),
-        );
-        $url = url('http://comments.gigya.com/comments.getComments', $parameters);
-        $result = drupal_http_request($url, array('timeout' => 300));
-        if (!empty($result->data)) {
-          $data = drupal_json_decode($result->data);
-          if ($data['statusCode'] == 200) {
-            if (isset($data['commentCount'])) {
-              $vars['content']['gigya_comment_count'][0]['#markup'] = '<div class="usa-gigya-comments-count">' . format_plural($data['commentCount'], '1 Comment', '@count Comments') . '</div>';
-            }
-          }
+      if ($vars['comment'] == 2) {
+        $comments_count = _usanetwork_post_get_comment_count($node->nid);
+        if ($comments_count !== FALSE) {
+          $vars['content']['gigya_comment_count'][0]['#markup'] = '<div class="usa-gigya-comments-count">' . format_plural($comments_count, '1 Comment', '@count Comments') . '</div>';
         }
       }
     }

@@ -6708,39 +6708,49 @@ body.front {
   z-index: 100;
   position: relative;
 }
-
-@media (min-width: 881px) {
-  /* desktop wide */
+@media (min-width: 1335px) {
   #aspot-video-container {
     margin-top: -521px;
     width: 1245px;
     height: 506px;
   }
 }
-@media (max-width: 1274px) and (min-width: 960px) {
-  /* tablet landscape */
+@media (min-width: 1020px) and (max-width: 1334px) {
   #aspot-video-container {
     margin-top: -393px;
     width: 930px;
     height: 378px;
   }
 }
-@media (max-width: 959px) and (min-width: 645px) {
-  /* tablet portrait */
+@media (min-width: 710px) and (max-width: 1019px) {
   #aspot-video-container {
     margin-top: -365px;
     width: 615px;
     height: 350px;
   }
 }
-@media (max-width: 644px) {
-  /* smartphone */
+@media (max-width: 709px) {
   #aspot-video-container {
     margin-top: -258px;
     width: 300px;
     height: 250px;
   }
 }
+
+/* tablet portrait */
+  /*#aspot-video-container {
+    margin-top: -365px;
+    width: 615px;
+    height: 350px;
+  }
+}*/
+/* smartphone */
+  /*#aspot-video-container {
+    margin-top: -258px;
+    width: 300px;
+    height: 250px;
+  }
+}*/
 .usa-home-featured {
   margin-top: 12px;
 }

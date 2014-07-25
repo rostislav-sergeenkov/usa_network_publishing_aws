@@ -45,36 +45,41 @@
 #aspot-video-container {
   z-index: 100;
   position: relative;
-}
-@media (min-width: 881px) {
-  /* desktop wide */
-  #aspot-video-container {
+  @include breakpoint($bp-home-widest) {
     margin-top: -521px;
     width: 1245px;
     height: 506px;
   }
-}
-@media (max-width: 1274px) and (min-width: 960px) {
-  /* tablet landscape */
-  #aspot-video-container {
+  @include breakpoint($bp-home-3col ($bp-home-widest - 1)) {
     margin-top: -393px;
     width: 930px;
     height: 378px;
   }
-}
-@media (max-width: 959px) and (min-width: 645px) {
-  /* tablet portrait */
-  #aspot-video-container {
+  @include breakpoint($bp-home-2col ($bp-home-3col - 1)) {
     margin-top: -365px;
     width: 615px;
     height: 350px;
   }
-}
-@media (max-width: 644px) {
-  /* smartphone */
-  #aspot-video-container {
+  @include breakpoint( max-width ($bp-home-2col - 1)) {
     margin-top: -258px;
     width: 300px;
     height: 250px;
   }
 }
+
+//@media (max-width: 1019px) and (min-width: 710px) {
+  /* tablet portrait */
+  /*#aspot-video-container {
+    margin-top: -365px;
+    width: 615px;
+    height: 350px;
+  }
+}*/
+//@media (max-width: 709px) {
+  /* smartphone */
+  /*#aspot-video-container {
+    margin-top: -258px;
+    width: 300px;
+    height: 250px;
+  }
+}*/

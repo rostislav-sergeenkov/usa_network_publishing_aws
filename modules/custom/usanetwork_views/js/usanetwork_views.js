@@ -12,7 +12,7 @@
         $('.views-field-views-bulk-operations input').prop("checked", false);
 
         var text = $(this).text();
-        $(this).append('<input type="text" class="form-text text-box-nid" name="text-box-nid" value="/node/'+ text.replace(/\s+/g, '')+'" >');
+        $(this).append('<input type="text" class="form-text text-box-nid" name="text-box-nid" value="node/'+ text.replace(/\s+/g, '')+'" >');
         $('.text-box-nid').select();
       });
     }

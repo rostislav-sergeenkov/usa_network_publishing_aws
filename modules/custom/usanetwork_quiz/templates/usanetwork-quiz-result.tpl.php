@@ -5,6 +5,9 @@
         <?php print $image; ?>
       </div>
     <?php endif; ?>
+    <?php if ($trivia): ?>
+      <div class="score-container"><?php print t('You got !score right!', array('!score' => '<span class="score"></span>',)); ?></div>
+    <?php endif; ?>
     <div class="result-title"><?php print $title; ?></div>
     <div class="result-description">
       <?php print $text; ?>

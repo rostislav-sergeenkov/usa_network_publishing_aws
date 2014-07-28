@@ -181,6 +181,38 @@ function usanetwork_post_taxonomy_term_presave($term) {
   }
 }
 
+/*
+ * Helper for getting cached comments count
+ */
+function _usanetwork_post_get_comment_count($nid) {
+  $comment_count = FALSE;
+  
+  $call = __FUNCTION__ . '_' . $nid;
+  if ($cache = cache_get($call)) {
+    $comment_count = $cache->data;
+  } else {
+    $parameters = array(
+      'query' => array(
+        'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
+        'streamID' => $nid,
+        'ApiKey' => variable_get('gigya_APIKey', ''),
+      ),
+    );
+    $url = url('http://comments.gigya.com/comments.getComments', $parameters);
+    $result = drupal_http_request($url, array('timeout' => 300));
+    if (!empty($result->data)) {
+      $data = drupal_json_decode($result->data);
+      if ($data['statusCode'] == 200) {
+        if (isset($data['commentCount'])) {
+          $comment_count = $data['commentCount'];
+          cache_set($call, $comment_count, 'cache', CACHE_TEMPORARY);
+        }
+      }
+    }
+  } 
+  return $comment_count;
+}
+
 /**
  * Implements hook_preprocess_node().
  */
@@ -190,7 +222,15 @@ function usanetwork_post_preprocess_node(&$vars) {
     if (isset($vars['content']['post_date'])) {
       //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
-        $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);
+        $vars['content']['post_date'][0]['#markup'] = l($vars['content']['post_date'][0]['#markup'], 'node/' . $vars['nid']);  
+      }
+    }
+    if ($vars['view_mode'] == 'teaser') {
+      if ($vars['comment'] == 2) {
+        $comments_count = _usanetwork_post_get_comment_count($node->nid);
+        if ($comments_count !== FALSE) {
+          $vars['content']['gigya_comment_count'][0]['#markup'] = '<div class="usa-gigya-comments-count">' . format_plural($comments_count, '1 Comment', '@count Comments') . '</div>';
+        }
       }
     }
     if ($vars['view_mode'] != 'teaser') {
@@ -208,7 +248,6 @@ function usanetwork_post_preprocess_node(&$vars) {
           unset($vars['content']['field_post_cover']);
         }
       }
-    }
     if (isset($vars['content']['author'])) {
       if (!empty($node->{USANETWORK_FIELD_BLOG})) {
       $category = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
@@ -227,6 +266,33 @@ function usanetwork_post_preprocess_node(&$vars) {
             } else {
               unset($vars['content']['author']);
             } 
+          }
+        }
+      }
+    }
+      if ($vars['comment'] == 2) { 
+        $parameters = array(
+          'query' => array(
+            'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
+            'streamID' => $node->nid,
+            'ApiKey' => variable_get('gigya_APIKey', ''),
+            'threadLimit' => 10,
+          ),
+        );
+        $url = url('http://comments.gigya.com/comments.getComments', $parameters);
+        $result = drupal_http_request($url, array('timeout' => 300));
+        if (!empty($result->data)) {
+          $data = drupal_json_decode($result->data);
+          if ($data['statusCode'] == 200) {
+            $id = variable_get('gigya_comments_container', 'comments');
+            $vars['content']['comments']['#markup'] = '<div id="' . $id . '">';
+            foreach ($data['comments'] as $comment) {
+              $vars['content']['comments']['#markup'] .= '<div>';
+              $vars['content']['comments']['#markup'] .= '<div>' . $comment['sender']['name'] . '</div>';
+              $vars['content']['comments']['#markup'] .= '<div>' . $comment['commentText'] . '</div>';
+              $vars['content']['comments']['#markup'] .= '</div>';
+            }
+            $vars['content']['comments']['#markup'] .= '</div>';
           }
         }
       }
@@ -572,6 +638,7 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
  */
 function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables) {
   $parents = taxonomy_get_parents($entity->tid);
+  $show_omniture = array();
         if (!empty($parents)) {
           $parent = reset($parents);
     $parent_omniture_setting = _usanetwork_ads_entity_settings($parent, $entity_type);
@@ -600,6 +667,8 @@ function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type,
  */
 function _usanetwork_post_entity_blog_get_css_field($entity, $type) { 
   
+  $attached_css_code = array();
+  
   if ($type == 'taxonomy_term') {
     $blog = _usanetwork_post_get_blog_by_category($entity);
     $category = $entity;
@@ -625,8 +694,10 @@ function _usanetwork_post_entity_blog_get_css_field($entity, $type) {
   }
   
   $css_attached_files = array();
-  foreach ($attached_files as $file) {
-    $css_attached_files[] = $file['uri'];
+  if (isset($attached_files)) {
+    foreach ($attached_files as $file) {
+      $css_attached_files[] = $file['uri'];
+    }
   }
   
   return array('files' => $css_attached_files, 'inline' => $attached_css_code);
@@ -679,8 +750,10 @@ function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
           $entity_type = $value;
           if ($value == 'taxonomy_term') { 
             if ($entity = taxonomy_term_load($ctools_context->argument)) {
-              $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
-            }  
+              if ($entity->vocabulary_machine_name == 'blog') {
+                $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
+              }  
+            }
           } else if ($value == 'node') {
             if ($entity = node_load($ctools_context->argument)) {
               $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
@@ -705,13 +778,17 @@ window._umbel = window._umbel || [];
     }
   }
   $weight = 9990; //weight increament
-  foreach ($attached_files['files'] as $file) {
-    drupal_add_css($file, array('weight' => $weight)); 
-    $weight++;
+  if (isset($attached_files['files'])) {
+    foreach ($attached_files['files'] as $file) {
+      drupal_add_css($file, array('weight' => $weight)); 
+      $weight++;
+    }
   }
-  foreach ($attached_files['inline'] as $inline) {
-    drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
-    $weight++;
+  if (isset($attached_files['inline'])) {
+    foreach ($attached_files['inline'] as $inline) {
+      drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
+      $weight++;
+    }
   }
 }
 

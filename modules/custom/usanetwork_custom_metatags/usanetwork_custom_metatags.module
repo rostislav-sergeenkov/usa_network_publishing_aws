@@ -7,7 +7,7 @@
  * Implements hook_theme().
  */
 function usanetwork_custom_metatags_form_alter(&$form, &$form_state, $form_id) {
-  if (in_array($form_id, array('tv_show_node_form', 'catchall_page_node_form'))) {
+  if (in_array($form_id, array('tv_show_node_form', 'catchall_page_node_form', 'usa_homepage_node_form'))) {
     if (isset($form['#bundle']) && $form_id == $form['#bundle'] . '_node_form') {
       $entity = isset($form_state['node']) ? $form_state['node'] : FALSE;
       $entity_type = 'node';
@@ -187,6 +187,34 @@ function usanetwork_custom_metatags_preprocess_page(&$variables) {
   if (isset($variables['node'])) {
     $node = $variables['node'];
     if (in_array($node->type, array('tv_show', 'catchall_page'))) {
+      $settings = variable_get('usanetwork_meta_tags_settings', array()); 
+      if ($settings['node'][$node->type][$node->nid]) {
+        $weight = 50;
+        foreach ($settings['node'][$node->type][$node->nid] as $key => $value) {
+          $custom_tag = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'name' => $value['usa_metatag_name'],
+              'content' => $value['usa_metatag_value'],
+            ),
+            '#weight' => $weight,
+          );
+          drupal_add_html_head($custom_tag, "usanetwork_{$value['usa_metatag_name']}");
+          $weight++;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Process meta tags for nodes.
+ */
+function usanetwork_custom_metatags_preprocess_node(&$variables) {
+  if (isset($variables['node'])) {
+    $node = $variables['node'];
+    if ($node->type == 'usa_homepage') {
       $settings = variable_get('usanetwork_meta_tags_settings', array()); 
       if ($settings['node'][$node->type][$node->nid]) {
         $weight = 50;

@@ -624,5 +624,25 @@ function usanetwork_quiz_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_usa_tv_show_hover_color'
+  $field_bases['field_usa_tv_show_hover_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_usa_tv_show_hover_color',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'rgb' => array(
+        0 => 'rgb',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'colorfield',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'colorfield',
+  );
+
   return $field_bases;
 }

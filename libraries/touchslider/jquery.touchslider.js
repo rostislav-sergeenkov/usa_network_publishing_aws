@@ -119,11 +119,13 @@ http://touchslider.com
 					});
 
           // add refresh if viewport size changes
-          $(window).resize(function(){
-            if (viewport.innerWidth() !== switching.viewportWidth) {
-              switching.refresh();
-              switching.viewportWidth = viewport.innerWidth();
-            }
+          $(window).load(function(){
+            $(window).resize(function(){
+              if (viewport.innerWidth() !== switching.viewportWidth) {
+                switching.refresh();
+                switching.viewportWidth = viewport.innerWidth();
+              }
+            });
           });
 				},
         refresh: function() {

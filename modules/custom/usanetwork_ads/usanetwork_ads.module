@@ -163,12 +163,11 @@ function usanetwork_ads_block_view($delta) {
 function usanetwork_ads_page_alter(&$page) {
   // Disable omniture if needed
   if (isset($page['page_bottom']['sitecatalyst'])) {
-    $current_path = current_path();
-    $args = explode('/', $current_path);
-    if (count($args) >=2 && $args[0] == 'node' && is_numeric($args[1])) {
-      $node = node_load($args[1]);
-      if (_usanetwork_ads_get_node_omniture_variables($node) == false) {
-        unset($page['page_bottom']['sitecatalyst']);
+    $entity_type = NULL;
+    $current_menu_object = _usanetwork_menu_get_object($entity_type);
+    if (!empty($current_menu_object)) {
+      if (_usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type) === FALSE) {
+        unset($page['page_bottom']['sitecatalyst']['variables']);
       }
     }
   }
@@ -1041,7 +1040,8 @@ function usanetwork_ads_page_build(&$page) {
     }  
   } else {
     $menu_object = _usanetwork_menu_get_object();
-    if ($menu_object->type == 'tv_show'){
+    if ($menu_object) {
+      if (isset($menu_object->type) && ($menu_object->type == 'tv_show')){
       $show_name = reset(field_get_items('node', $menu_object, 'field_pathauto_alias'));
       $floodlight_field_type = field_get_items('node', $menu_object, 'field_floodlight_type');
       if ($floodlight_field_type) {
@@ -1058,6 +1058,7 @@ function usanetwork_ads_page_build(&$page) {
         }
       }
     }
+  }
   }
   
   if (!empty($floodlight_type) && !empty($floodlight_category)) {
@@ -1083,4 +1084,21 @@ function usanetwork_ads_page_build(&$page) {
       '#weight' => -1,
     );
   }
+}
+
+/**
+ * Returns a list of mandatory omniture variables.
+ */
+function _usanetwork_ads_mandatory_omniture_variables($entity_type = NULL, $bundle = NULL) {
+  $vars = array();
+  switch ($entity_type) {
+    case 'node':
+      switch ($bundle) {
+        case 'tv_show':
+          $vars += array('s.prop2', 's.prop3', 's.prop4', 's.prop10');
+          break;
+      }
+      break;
+  }
+  return $vars;
 }

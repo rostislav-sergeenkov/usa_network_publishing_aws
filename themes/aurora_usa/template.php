@@ -832,6 +832,29 @@ function aurora_usa_preprocess_panels_pane(&$vars) {
     $vars['pane_prefix'] = '</aside><aside id="person-image" class="panel-pane">';
     $vars['pane_suffix'] = '</aside></div>';
   }
+  
+  if (($vars['pane']->type == 'entity_view') && ($vars['pane']->subtype == 'node')) {
+    if (isset($vars['display']->args[0])){
+      $node = node_load($vars['display']->args[0]);
+      if ($node->type == 'post') {
+        $category_field = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
+        if ($category_field) {
+          $category = taxonomy_term_load($category_field['tid']);
+          module_load_include('inc', 'pathauto', 'pathauto');
+          $vars['display']->css_id = pathauto_cleanstring($category->name);
+        }
+      }
+    }
+  }
+  if (($vars['pane']->type == 'views') && ($vars['pane']->subtype == 'blog')) {
+    if (isset($vars['display']->args[0])){
+      $term = taxonomy_term_load($vars['display']->args[0]);
+      if ($term) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $vars['display']->css_id = pathauto_cleanstring($term->name);
+      }
+    }
+  }
 }
 
 /**

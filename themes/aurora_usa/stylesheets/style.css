@@ -10273,6 +10273,10 @@ body.person-page #main {
   border: 0;
 }
 
+.errorModal .modalHeader h1 {
+  margin: 0.67em 0 0;
+}
+
 .aspot .show-title, .aspot .show-time {
   font-size: 24px;
 }

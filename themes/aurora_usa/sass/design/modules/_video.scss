@@ -745,15 +745,31 @@
     width: 930px;
   }
   &.file-video-mpx {
-    .video-player-wrapper a:after {
-      position: absolute;
-      left: 50%;
-      top: 55%;
-      width:296px;
-      height:39px;
-      margin-left:-148px;
-      content: " ";
-      background:url('../images/sign_in_key.png') center top no-repeat;
+    .video-player-wrapper {
+      a:after {
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        width:296px;
+        height:39px;
+        margin-left:-148px;
+        content: " ";
+        background:url('../images/sign_in_key.png') center top no-repeat;
+      }
+      &.inactive {
+        a:after {
+          display: none;
+        }
+        &:hover {
+          cursor: default;
+          a:after {
+            display: none;
+          }
+          img {
+            opacity: 1;
+          }
+        }
+      }
     }
     .video-player-wrapper.wrapper-live a:after {
       top: 52%;
@@ -914,6 +930,174 @@
     }
   }
   .video-player-wrapper {
+    overflow: hidden;
+    &.inactive {
+      background: #3D3D3D;
+      padding: 20px;
+      @include breakpoint($bp-video-player-section) {
+        padding: 10px;
+      }
+      & > .asset-img {
+        float: left;
+        margin-bottom: 46px;
+        @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+          margin-bottom: 10px;
+          img {
+            width: 220px;
+          }
+        }
+        @include breakpoint($bp-video-player-section) {
+          display: none;
+        }
+      }
+      .expired-text {
+        float: left;
+        font-size: 24px;
+        margin-left: 50px;
+        margin-top: 65px;
+        @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+          margin-left: 20px;
+          margin-top: 53px;
+        }
+        @include breakpoint($bp-video-player-section) {
+          float: none;
+          font-size: 24px;
+          margin: 0;
+          margin-top: 60px;
+          text-align: center;
+        }
+      }
+      .suggest-text {
+        clear: both;
+        font-size: 20px;
+        margin-bottom: 24px;
+        @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+          margin-bottom: 10px;
+        }
+        @include breakpoint($bp-video-player-section) {
+          display: none;
+        }
+      }
+      .suggest-videos-block {
+        text-align: center;
+        width: 100%;
+        @include breakpoint($bp-video-player-section) {
+          display: none;
+        }
+        .file {
+          &.tve-video-auth {
+            & > a {
+              &:after {
+                font-family: 'usanetwork';
+                speak: none;
+                -webkit-font-feature-settings: "liga","dlig";
+                -moz-font-feature-settings: "liga=1, dlig=1";
+                -moz-font-feature-settings: "liga","dlig";
+                -ms-font-feature-settings: "liga","dlig";
+                -o-font-feature-settings: "liga","dlig";
+                font-feature-settings: "liga","dlig";
+                text-rendering: optimizeLegibility;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                -webkit-font-smoothing: antialiased;
+                background: none;
+                display: block;
+                margin: 0;
+                position: absolute;
+                left: auto;
+                right: 3px;
+                top: 2px;
+                content: "\e002";
+                font-size: 25px;
+                color: white;
+                width: auto;
+                height: auto;
+              }
+            }
+            .asset-img {
+              &:after {
+                content: "";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: solid 50px rgba(0,0,0,0.5);
+                border-left: solid 50px transparent;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+            }
+          }
+          border: 2px solid #2d2d2d;
+          display: inline-block;
+          height: 220px;
+          margin-right: 20px;
+          overflow: hidden;
+          position: relative;
+          width: 252px;
+          @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            height: 140px;
+            margin-right: 12px;
+            width: 165px;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          & > a {
+            display: block;
+            height: 100%;
+            position: relative;
+            width: 100%;
+          }
+          img {
+            height: 140px;
+            width: 100%;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              height: 95px;
+            }
+          }
+          .caption-overlay {
+            bottom: 0px;
+            left: 0px;
+            height: 76px;
+            position: absolute;
+            width: 100%;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              height: 45px;
+            }
+          }
+          .caption-fields-wrapper {
+            background: #1f1f1f;
+            height: 100%;
+            margin: 0;
+            padding: 10px 6px 8px;
+            width: 100%;
+            @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+              padding: 5px;
+            }
+            .title {
+              font-weight: bold;
+              line-height: 1.15;
+              text-align: left;
+              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                font-size: 14px;
+              }
+            }
+            .caption {
+              color: #a7a6a6;
+              font-size: 13px;
+              text-align: left;
+              @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
     position: relative;
     float: left;
     width: 615px;

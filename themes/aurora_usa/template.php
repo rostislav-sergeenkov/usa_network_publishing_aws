@@ -348,11 +348,27 @@ function aurora_usa_form_search_block_form_alter(&$form){
  * @param $hook
  *   The name of the template being rendered ("region" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function aurora_usa_preprocess_region(&$vars, $hook) {
-
+function aurora_usa_preprocess_region(&$vars) {
+  if ($vars['region'] == 'content') {
+    $entity_type = NULL;
+    $current_menu_object = _usanetwork_menu_get_object($entity_type);
+    if ($entity_type == 'node') {
+      if ($current_menu_object && ($current_menu_object->type == 'post')) {
+        $category_field = reset(field_get_items('node', $current_menu_object, USANETWORK_FIELD_BLOG));
+        if ($category_field) {
+          $category = taxonomy_term_load($category_field['tid']);
+          module_load_include('inc', 'pathauto', 'pathauto');
+          $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($category->name);
+        }
+      }
+    } elseif ($entity_type == 'taxonomy_term') {
+      if ($current_menu_object->vocabulary_machine_name == 'blog') {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $vars['classes_array'][] = 'blog-term-' . pathauto_cleanstring($current_menu_object->name);
+      }
+    }
+  }
 }
-// */
 
 /**
  * Override or insert variables into the block templates.
@@ -831,29 +847,6 @@ function aurora_usa_preprocess_panels_pane(&$vars) {
   if($vars['pane']->panel == 'person_image') {
     $vars['pane_prefix'] = '</aside><aside id="person-image" class="panel-pane">';
     $vars['pane_suffix'] = '</aside></div>';
-  }
-  
-  if (($vars['pane']->type == 'entity_view') && ($vars['pane']->subtype == 'node')) {
-    if (isset($vars['display']->args[0])){
-      $node = node_load($vars['display']->args[0]);
-      if ($node->type == 'post') {
-        $category_field = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
-        if ($category_field) {
-          $category = taxonomy_term_load($category_field['tid']);
-          module_load_include('inc', 'pathauto', 'pathauto');
-          $vars['display']->css_id = pathauto_cleanstring($category->name);
-        }
-      }
-    }
-  }
-  if (($vars['pane']->type == 'views') && ($vars['pane']->subtype == 'blog')) {
-    if (isset($vars['display']->args[0])){
-      $term = taxonomy_term_load($vars['display']->args[0]);
-      if ($term) {
-        module_load_include('inc', 'pathauto', 'pathauto');
-        $vars['display']->css_id = pathauto_cleanstring($term->name);
-      }
-    }
   }
 }
 

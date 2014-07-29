@@ -68,10 +68,10 @@
         </a>
       </div>
     </div>
-    <div class="video-player-wrapper<?php if(!$inactive_status){ print ' inactive'; }?>" data-ng-show="global.isAuthN">
+    <div class="video-player-wrapper<?php if($video_status){ print ' inactive'; }?>" data-ng-show="global.isAuthN">
       <?php if($is_live):?>
         <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php elseif(!$video_status):?>
+      <?php elseif($video_status):?>
         <?php $video = $video_inactive;?>
       <?php else:?>
         <?php $video = theme('pub_mpx_video', array(
@@ -89,10 +89,10 @@
     <div class="tve-help-link signOut <?php print (!$is_live) ? 'not-live' : 'live' ?>"
          data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
   <?php else: ?>
-    <div class="video-player-wrapper<?php if(!$inactive_status){ print ' inactive'; }?>">
+    <div class="video-player-wrapper<?php if($video_status){ print ' inactive'; }?>">
       <?php if($is_live):?>
         <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php elseif(!$video_status):?>
+      <?php elseif($video_status):?>
         <?php $video = $video_inactive;?>
       <?php else:?>
         <?php $video = theme('pub_mpx_video', array(

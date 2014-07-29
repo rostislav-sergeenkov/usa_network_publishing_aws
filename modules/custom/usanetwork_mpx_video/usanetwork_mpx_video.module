@@ -981,7 +981,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
     if(isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']){
-      $vars['video_status'] = FALSE;
+      $vars['video_status'] = TRUE;
       $video = theme('pub_mpx_inactive_video', array(
         'file' => $file
       ));

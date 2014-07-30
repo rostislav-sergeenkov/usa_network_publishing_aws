@@ -100,6 +100,13 @@ function nbcu_seo_nbcu_seo_xmpsitemap_link_type($link) {
 }
 
 /**
+ * Implements hook_flush_caches().
+ */
+function nbcu_seo_flush_caches() {
+  return array('cache_xmlsitemap_link');
+}
+
+/**
  * Returns list of xml sitemap types.
  */
 function nbcu_seo_xmlsitemap_types() {

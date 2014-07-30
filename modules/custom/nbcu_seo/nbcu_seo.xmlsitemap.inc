@@ -400,6 +400,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch(array $smids = array()) {
  */
 function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$context) {
   module_load_include('inc', 'xmlsitemap', 'xmlsitemap.generate');
+  $preprocess_count = variable_get('xmlsitemap_batch_limit', NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT);
 
   if (!isset($context['sandbox']['sitemap'])) {
     $context['sandbox']['sitemap'] = xmlsitemap_sitemap_load($smid);
@@ -421,7 +422,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     $query->addTag('nbcu_seo_xmlsitemap_generate');
     $query->addMetaData('sitemap', $sitemap);
     $query->addMetaData('type', $type);
-    $context['sandbox']['max'] = min($query->execute()->rowCount(), NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT);
+    $context['sandbox']['max'] = min($query->execute()->rowCount(), $preprocess_count);
     if ($context['sandbox']['max'] == 0) {
       $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
       $regenerate[$smid][$type] = FALSE;
@@ -458,8 +459,8 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
   $query->addMetaData('sitemap', $sitemap);
   $query->addMetaData('type', $type);
 
-  $offset = $context['sandbox']['chunk'] * NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT;
-  $limit = NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT;
+  $offset = $context['sandbox']['chunk'] * $preprocess_count;
+  $limit = $preprocess_count;
   $query->range($offset, $limit);
   $links = $query->execute();
 

@@ -1,3 +1,9 @@
 .aspot {
   @extend %a-spot;
 }
+#aspot-page-video-container {
+  display: none;
+  height: auto;
+  margin-top: 50px;
+  width: 100%;
+}

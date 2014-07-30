@@ -387,8 +387,6 @@ function nbcu_seo_xmlsitemap_regenerate_batch(array $smids = array()) {
         $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_preprocess', array($smid, $type));
         $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_generate', array($smid, $type));
         $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_generate_index', array($smid, $type));
-        $regenerate[$smid][$type] = FALSE;
-        $batch['operations'][] = array('xmlsitemap_batch_variable_set', array(array('nbcu_seo_xmlsitemap_regenerate_needed' => $regenerate)));
       }
     }
     $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_generate_index', array($smid, NULL));
@@ -425,6 +423,9 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     $query->addMetaData('type', $type);
     $context['sandbox']['max'] = min($query->execute()->rowCount(), NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT);
     if ($context['sandbox']['max'] == 0) {
+      $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
+      $regenerate[$smid][$type] = FALSE;
+      variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
       $context['finished'] = 1;
       return;
     }

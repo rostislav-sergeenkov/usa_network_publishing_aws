@@ -42,37 +42,6 @@ function nbcu_seo_schema() {
  * Implements hook_install().
  */
 function nbcu_seo_install() {
-  // @todo: make this a batch or cron job?
-  drupal_load('module', 'xmlsitemap');
-  $links = xmlsitemap_link_load_multiple();
-  db_delete('xmlsitemap_link_type')
-    ->execute();
-  foreach ($links as $link) {
-    $types = module_invoke_all('nbcu_seo_xmpsitemap_link_type', $link);
-    if (!empty($types)) {
-      foreach ($types as $type) {
-        db_insert('xmlsitemap_link_type')
-          ->fields(array(
-            'id' => $link['id'],
-            'type' => $link['type'],
-            'link_type' => $type,
-          ))
-          ->execute();
-      }
-    }
-  }
-
-  // set regenerate flags
-  $regenerate = array();
-  $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
-  $types = nbcu_seo_xmlsitemap_types();
-  foreach ($smids as $smid) {
-    foreach ($types as $type) {
-      $regenerate[$smid][$type] = TRUE;
-    }
-  }
-  variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
-
   // set module weight
   // so that ncbu_seo hooks where executed before xmlsitemap, but after other modules
   db_update('system')

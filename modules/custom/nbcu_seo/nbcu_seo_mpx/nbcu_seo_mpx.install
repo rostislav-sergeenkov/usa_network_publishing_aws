@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function nbcu_seo_mpx_install() {
+  // @todo: make this a batch or cron job?
+  drupal_load('module', 'xmlsitemap');
+  $links = xmlsitemap_link_load_multiple();
+  db_delete('xmlsitemap_link_type')
+    ->condition('link_type', 'video', '=')
+    ->execute();
+  foreach ($links as $link) {
+    $types = module_invoke('nbcu_seo_mpx', 'nbcu_seo_xmpsitemap_link_type', $link);
+    if (!empty($types)) {
+      foreach ($types as $type) {
+        db_insert('xmlsitemap_link_type')
+          ->fields(array(
+            'id' => $link['id'],
+            'type' => $link['type'],
+            'link_type' => $type,
+          ))
+          ->execute();
+      }
+    }
+  }
+
+  // set regenerate flags
+  $regenerate = array();
+  $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
+  $type = 'video';
+  foreach ($smids as $smid) {
+    $regenerate[$smid][$type] = TRUE;
+  }
+  variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
+}

@@ -1274,9 +1274,7 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
     $full_episode = $result->fetchAssoc();
   }
   $variables['full_episode_view'] = drupal_render(file_view(file_load($full_episode['fid']), 'vid_teaser_show_episode'));
-
-  /**/
-
+  
   //most recent clips
   $query = db_select('mpx_video', 'm');
   $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');

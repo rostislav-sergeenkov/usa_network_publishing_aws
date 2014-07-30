@@ -10478,6 +10478,13 @@ body.person-page #main {
 .errorModal .modalHeader h1 {
   margin: 0.67em 0 0;
 }
+.errorModal .modalContent p {
+  font-size: 15px;
+}
+.errorModal .modalContent a:hover {
+  color: #0ab6e8;
+  text-decoration: underline;
+}
 
 .aspot .show-title, .aspot .show-time {
   font-size: 24px;

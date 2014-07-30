@@ -3,6 +3,6 @@ description = seo module
 core = 7.x
 version = 7.x-1.0
 
-depenedencies[] = xmlsitemap
+dependencies[] = xmlsitemap
 
 files[] = nbcu_seo.xmlsitemap.inc

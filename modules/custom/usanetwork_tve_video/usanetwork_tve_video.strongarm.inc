@@ -43,7 +43,8 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_adobe_pass_body_text';
   $strongarm->value = array(
-    'value' => '<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;any try again.</p>',
+    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
+<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;any try again.</p>',
     'format' => 'wysiwyg_full_html',
   );
   $export['tve_auth_adobe_pass_body_text'] = $strongarm;
@@ -52,7 +53,7 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_adobe_pass_header_title';
-  $strongarm->value = 'Oops! Looks like you need to upgrade your Flash Player.';
+  $strongarm->value = 'Sorry there is a problem';
   $export['tve_auth_adobe_pass_header_title'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -136,7 +137,8 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_flash_body_text';
   $strongarm->value = array(
-    'value' => '<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;any try again.</p>',
+    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
+<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;any try again.</p>',
     'format' => 'wysiwyg_full_html',
   );
   $export['tve_auth_flash_body_text'] = $strongarm;
@@ -145,7 +147,7 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_flash_header_title';
-  $strongarm->value = 'Oops! Looks like you need to upgrade your Flash Player.';
+  $strongarm->value = 'Sorry there is a problem';
   $export['tve_auth_flash_header_title'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -153,7 +155,8 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_generic_section_body_text';
   $strongarm->value = array(
-    'value' => '<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a> any try again.</p>',
+    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
+<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a> any try again.</p>',
     'format' => 'wysiwyg_full_html',
   );
   $export['tve_auth_generic_section_body_text'] = $strongarm;
@@ -162,7 +165,7 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_auth_generic_section_header_title';
-  $strongarm->value = 'Oops! Looks like you need to upgrade your Flash Player.';
+  $strongarm->value = 'Sorry there is a problem';
   $export['tve_auth_generic_section_header_title'] = $strongarm;
 
   $strongarm = new stdClass();

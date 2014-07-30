@@ -9619,8 +9619,15 @@ body.person-page #main {
   .featured-asset .video-player-wrapper.inactive > .asset-img {
     margin-bottom: 10px;
   }
-  .featured-asset .video-player-wrapper.inactive > .asset-img img {
-    width: 220px;
+}
+.featured-asset .video-player-wrapper.inactive > .asset-img > img {
+  max-height: 169px;
+  max-width: 300px;
+}
+@media (min-width: 645px) and (max-width: 1275px) {
+  .featured-asset .video-player-wrapper.inactive > .asset-img > img {
+    max-height: 124px;
+    max-width: 220px;
   }
 }
 @media (max-width: 644px) {

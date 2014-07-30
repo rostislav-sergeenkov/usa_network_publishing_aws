@@ -29,8 +29,11 @@
       <?php endif; ?>
     </div>
   </div>
-
-  <?php if ($lock_video): ?>
+  <?php if ($video_inactive): ?>
+    <div class="video-player-wrapper inactive">
+      <?php print $video_inactive;?>
+    </div>
+  <?php elseif ($lock_video): ?>
     <div class="tve-help">
       <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they
         air! Otherwise you may have to<br/> wait up to 30 days to watch most full episodes.
@@ -68,11 +71,9 @@
         </a>
       </div>
     </div>
-    <div class="video-player-wrapper<?php if($video_status){ print ' inactive'; }?>" data-ng-show="global.isAuthN">
+    <div class="video-player-wrapper" data-ng-show="global.isAuthN">
       <?php if($is_live):?>
         <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php elseif($video_status):?>
-        <?php $video = $video_inactive;?>
       <?php else:?>
         <?php $video = theme('pub_mpx_video', array(
           'file' => $file,
@@ -89,11 +90,9 @@
     <div class="tve-help-link signOut <?php print (!$is_live) ? 'not-live' : 'live' ?>"
          data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
   <?php else: ?>
-    <div class="video-player-wrapper<?php if($video_status){ print ' inactive'; }?>">
+    <div class="video-player-wrapper">
       <?php if($is_live):?>
         <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php elseif($video_status):?>
-        <?php $video = $video_inactive;?>
       <?php else:?>
         <?php $video = theme('pub_mpx_video', array(
           'file' => $file,

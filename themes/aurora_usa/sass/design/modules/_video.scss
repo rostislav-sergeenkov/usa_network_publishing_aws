@@ -942,10 +942,17 @@
         margin-bottom: 46px;
         @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
           margin-bottom: 10px;
-          img {
-            width: 220px;
+        }
+        & > img {
+          max-height: 169px;
+          max-width: 300px;
+          @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            max-height: 124px;
+            max-width: 220px;
           }
         }
+
+
         @include breakpoint($bp-video-player-section) {
           display: none;
         }

@@ -298,7 +298,10 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
     <?php if ($media_tablet_portrait): ?><?php print $media_tablet_portrait; ?><?php endif; ?>
     <?php if ($media_desktop): ?><?php print $media_desktop; ?><?php endif; ?>   
   </div>
-
+  <?php if($aspot_page):?>
+    <?php drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/aspot_page.js'); ?>
+    <div id="aspot-page-video-container"></div>
+  <?php endif; ?>
 <?php if ($link || $link !== '&nbsp;'): ?>
   </a>
 <?php endif; ?>

@@ -60,6 +60,24 @@ function usanetwork_aspot_preprocess_node(&$vars) {
       usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang);
     }
   }
+  if ($vars['type'] == 'usanetwork_aspot') {
+    $current_path = current_path();
+    if ($current_path == 'node/'.$vars['nid']) {
+      $lang = $vars['language'];
+      if ($vars['field_animated_a_spot'][$lang][0]['value']) {
+        $vars['aspot_page'] = TRUE;
+        $show = 'aspot';
+        $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value'];
+        $webm_url = $vars['field_webm_video_url'][$lang][0]['value'];
+        $aspot_settings = array(
+          'show' => $show,
+          'mp4_url' => $mp4_url,
+          'webm_url' => $webm_url
+        );
+        drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
+      }
+    }
+  }
 }
 
 function usanetwork_aspot_aspot_settings($aspot_array, $lang){

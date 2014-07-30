@@ -1722,4 +1722,14 @@
   .modalHeader h1{
     margin: 0.67em 0 0;
   }
+  
+  .modalContent {
+    p {
+      font-size: 15px;
+    }
+    a:hover {
+      color: #0ab6e8;
+      text-decoration: underline;
+    }
+  }
 }

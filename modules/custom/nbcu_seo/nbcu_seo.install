@@ -35,6 +35,8 @@ function nbcu_seo_schema() {
     ),
   );
 
+  $schema['cache_xmlsitemap_link'] = drupal_get_schema_unprocessed('system', 'cache');
+
   return $schema;
 }
 
@@ -42,6 +44,9 @@ function nbcu_seo_schema() {
  * Implements hook_install().
  */
 function nbcu_seo_install() {
+  // set cache class to DrupalDatabaseCache
+  variable_set('cache_class_cache_xmlsitemap_link', 'DrupalDatabaseCache');
+
   // set module weight
   // so that ncbu_seo hooks where executed before xmlsitemap, but after other modules
   db_update('system')

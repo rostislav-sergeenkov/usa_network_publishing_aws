@@ -234,7 +234,7 @@ function usanetwork_showpages_photos($node) {
   $query->entityCondition('bundle', array('media_gallery'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
-  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
+//  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
   $query->propertyOrderBy('created', 'DESC');
   $query->range(0, 1);
   // execute the query

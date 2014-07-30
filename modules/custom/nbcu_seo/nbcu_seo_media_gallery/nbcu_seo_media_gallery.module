@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_types_alter().
+ */
+function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_types_alter(&$types) {
+  $types['image'] = 'image';
+}
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_xml_element_alter().
+ */
+function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context) {
+  $type = isset($context['type']) ? $context['type'] : NULL;
+  $link = $context['link'];
+
+  // Media galleries support
+  if ($type == 'image' && $link['type'] == 'node' && $link['subtype'] == 'media_gallery') {
+    // load images associated with node
+    $query = db_select('file_usage', 'fu')
+      ->fields('fu', array('fid'));
+    $query->leftJoin('file_managed', 'f', 'fu.fid = f.fid');
+    $query->condition('f.type', 'image', '=');
+    $query->condition('fu.type', 'node', '=');
+    $query->condition('fu.id', $link['id'], '=');
+
+    $fids = $query->execute()->fetchCol();
+    $files = file_load_multiple($fids);
+    // add image:image tags
+    foreach ($files as $file) {
+      $delta = 'file_' . $file->fid;
+      $element[$delta] = isset($element[$delta]) ? $element[$delta] : array();
+      $element[$delta] += array(
+        '#tag' => 'image',
+        '#namespace' => 'image',
+      );
+      $element[$delta]['loc'] = file_create_url($file->uri);
+      $caption = field_get_items('file', $file, 'field_caption');  // check if image caption is present
+      if (!empty($caption)) {
+        $caption = reset($caption);
+        if (!empty($caption)) {
+          $element[$delta]['caption'] = strip_tags($caption['safe_value']);
+        }
+      }
+      $title = field_get_items('file', $file, 'field_file_image_title_text');  // check if image title is present
+      if (!empty($title)) {
+        $title = reset($title);
+        if (!empty($title)) {
+          $element[$delta]['title'] = $title['value'];
+        }
+      }
+    }
+  }
+}

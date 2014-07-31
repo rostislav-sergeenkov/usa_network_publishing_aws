@@ -2741,6 +2741,12 @@ input[type="radio"], input[type="checkbox"] {
     padding-bottom: 15px;
   }
 }
+@media (min-width: 320px) and (max-width: 644px) {
+  #main {
+    padding: 0 10px 80px;
+    width: 100%;
+  }
+}
 
 #jPanelMenu-menu {
   background-color: #3d3d3d;
@@ -10132,7 +10138,7 @@ body.person-page #main {
   .featured-asset .description {
     float: none;
     overflow: hidden;
-    margin: 0 auto;
+    margin-left: 10px;
     margin-top: 10px;
     font-size: 14px;
   }

@@ -668,6 +668,11 @@ function usanetwork_mpx_video_file_presave($file) {
     if ((_usanetwork_mpx_video_is_mpx_file_type($file->type) && ($full_episodes[0]['value'] == 0)) ||
       ((!_usanetwork_mpx_video_is_mpx_file_type($file->type)) && ($full_episodes[0]['value'] == 1))) {
       $set_alias = TRUE;
+      $mpx_id = _pub_mpx_get_default_mpx_values('field_mpx_id', $file, 0, 'value');
+      $mpx_video = media_theplatform_mpx_get_mpx_video_by_field('id', $mpx_id);
+      if ( $mpx_video->status == 0 ) {
+        $file->published = 1;
+      }
     }
   
     $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
@@ -1800,19 +1805,3 @@ function _usanetwork_mpx_video_is_video_page() {
   return $is_video_page;
 }
 
-/**
- * Implements hook_media_theplatform_mpx_set_video_inactive().
- */
-function usanetwork_mpx_video_media_theplatform_mpx_set_video_inactive($id, $op) {
-
-  if ($op == 'unpublished') {
-    // Clear the file entity cache for deleted/unpublished media.
-    $media_fid = db_query('SELECT fid FROM {mpx_video} WHERE id = :id', array('id' => $id))->fetchField();
-
-    // Save the file as unpublished.
-    $file = file_load($media_fid);
-    $file->published = 1;
-
-    file_save($file);
-  }
-}

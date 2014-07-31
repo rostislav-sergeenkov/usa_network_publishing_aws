@@ -98,6 +98,21 @@ function usanetwork_settings_form() {
     '#default_value' => variable_get('usanetwork_global_nav_more_title', 'More on USA'),
   );
   
+  /* Global JS settings */
+  $form['global_js'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Global JS Code'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['global_js']['usanetwork_global_js_code'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Global JS Code'),
+    '#description' => t('The Global Js Code that added to all pages of the site'),
+    '#default_value' => variable_get('usanetwork_global_js_code', ''),
+  );
+   
   return system_settings_form($form);
 }
 

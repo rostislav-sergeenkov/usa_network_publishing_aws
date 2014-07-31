@@ -3350,11 +3350,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 #logo {
-  margin-top: 16px;
+  margin-top: 12px;
   margin-right: 8px;
   margin-bottom: 15px;
   margin-left: 15px;
-  padding-right: 25px;
   height: 33px;
   display: -moz-inline-stack;
   display: inline-block;
@@ -5347,7 +5346,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 #utilities #block-usanetwork-blocks-usa-follow-block .top-bar-social {
   position: absolute;
   top: -4px;
-  right: 42px;
+  right: 8px;
   width: 74px;
   /*      top: -7px;
           left: 0px; //without search*/
@@ -8456,8 +8455,8 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .file-video-mpx.view-mode-inline_content iframe {
-    width: 330px;
-    height: 186px;
+    width: 300px;
+    height: 184px;
   }
 }
 @media (min-width: 1275px) {
@@ -8675,7 +8674,7 @@ body.person-page #main {
   border: 2px solid #2d2d2d;
 }
 .ie8 .block-usanetwork-video .view .node {
-  width: 304px;
+  width: 300px;
 }
 .block-usanetwork-video .view .node > a {
   position: relative;
@@ -8758,7 +8757,7 @@ body.person-page #main {
 }
 .ie8 .block-usanetwork-mpx-video .view .file, .ie8
 #block-views-usa-mpx-video-fullepisodes-live .view .file {
-  width: 304px;
+  width: 300px;
 }
 .block-usanetwork-mpx-video .view .file > a,
 #block-views-usa-mpx-video-fullepisodes-live .view .file > a {
@@ -9388,7 +9387,7 @@ body.person-page #main {
 }
 @media (min-width: 320px) and (max-width: 644px) {
   .featured-asset {
-    width: 90%;
+    width: 100%;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -9579,14 +9578,14 @@ body.person-page #main {
 @media (max-width: 644px) {
   .featured-asset .tve-help-link.signOut .item-list ul.ng-scope li a {
     font-size: 14px;
-    width: 304px;
+    width: 300px;
     margin-left: 10px;
   }
 }
 @media (max-width: 644px) {
   .featured-asset .tve-help-sign {
     font-size: 14px;
-    width: 304px;
+    width: 300px;
     margin-left: 10px;
   }
 }
@@ -9800,8 +9799,8 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper {
-    width: 304px;
-    height: 186px;
+    width: 300px;
+    height: 184px;
     margin: 0 auto;
     float: none;
   }
@@ -9828,8 +9827,8 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper iframe {
-    width: 330px;
-    height: 186px;
+    width: 300px;
+    height: 184px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
@@ -9875,7 +9874,7 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .tve-help {
-    width: 330px;
+    width: 310px;
     height: 186px;
     margin: 0 auto;
     float: none;
@@ -10090,6 +10089,11 @@ body.person-page #main {
   margin-right: 15px;
   text-transform: uppercase;
 }
+@media (max-width: 644px) {
+  .featured-asset .meta-head .show-name {
+    font-size: 22px;
+  }
+}
 .featured-asset .meta-head .episode-title,
 .featured-asset .meta-head .details {
   color: #878785;
@@ -10102,6 +10106,11 @@ body.person-page #main {
   font-size: 24px;
   text-transform: none;
   display: inline;
+}
+@media (max-width: 644px) {
+  .featured-asset .meta-head .episode-title {
+    font-size: 20px;
+  }
 }
 .featured-asset .meta-head .episode-title div {
   display: inline;
@@ -10123,10 +10132,8 @@ body.person-page #main {
   .featured-asset .description {
     float: none;
     overflow: hidden;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0 auto;
     margin-top: 10px;
-    margin-right: 0;
     font-size: 14px;
   }
   .featured-asset .description p:last-child {

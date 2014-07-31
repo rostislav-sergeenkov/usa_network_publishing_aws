@@ -596,11 +596,10 @@ you can use the generic selector below, but it's slower:
 }
 
 #logo {
-  margin-top: 16px;
+  margin-top: 12px;
   margin-right: 8px;
   margin-bottom: 15px;
   margin-left: 15px;
-  padding-right: 25px;
   height: 33px;
   display: -moz-inline-stack;
   display: inline-block;

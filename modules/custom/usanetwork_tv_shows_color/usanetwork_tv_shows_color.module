@@ -27,6 +27,7 @@ function usanetwork_tv_shows_color_field_widget_colorfield_unified_textfield_for
     // Load jQuery minicolors if we can't, farbtastic will fallback.
     if (($library = libraries_load('jquery-miniColors')) && !empty($library['loaded'])) {
       $element['rgb']['#post_render'][] = 'usanetwork_tv_shows_color_field_attach_library';
+      $element['#attached']['css'][] = drupal_get_path('module', 'usanetwork_tv_shows_color') . '/usanetwork_tv_show_color_admin.css';
     }
   }
 }

@@ -935,7 +935,12 @@
       background: #3D3D3D;
       padding: 20px;
       @include breakpoint($bp-video-player-section) {
-        padding: 10px;
+        background: transparent;
+        height: auto;
+        margin: 0 auto;
+        max-width: 457px;
+        padding: 0px;
+        width: 100%;
       }
       & > .asset-img {
         float: left;
@@ -950,11 +955,9 @@
             max-height: 124px;
             max-width: 220px;
           }
-        }
-
-
-        @include breakpoint($bp-video-player-section) {
-          display: none;
+          @include breakpoint($bp-video-player-section) {
+            display: none;
+          }
         }
       }
       .expired-text {
@@ -967,11 +970,12 @@
           margin-top: 53px;
         }
         @include breakpoint($bp-video-player-section) {
+          color: #9AE0EB;
           float: none;
-          font-size: 24px;
+          font-size: 18px;
           margin: 0;
-          margin-top: 60px;
-          text-align: center;
+          margin-top: 10px;
+          text-align: left;
         }
       }
       .suggest-text {
@@ -982,15 +986,16 @@
           margin-bottom: 10px;
         }
         @include breakpoint($bp-video-player-section) {
-          display: none;
+          font-size: 16px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          text-align: left;
         }
       }
       .suggest-videos-block {
         text-align: center;
         width: 100%;
-        @include breakpoint($bp-video-player-section) {
-          display: none;
-        }
+
         .file {
           &.tve-video-auth {
             & > a {
@@ -1050,6 +1055,17 @@
             margin-right: 12px;
             width: 165px;
           }
+          @include breakpoint($bp-video-player-section) {
+            height: auto;
+            margin-right: 0px;
+            width: 48.5%;
+            &:last-child {
+              display: none;
+            }
+            &:first-child {
+              margin-right: 1.5%;
+            }
+          }
           &:last-child {
             margin-right: 0;
           }
@@ -1065,6 +1081,9 @@
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               height: 95px;
             }
+            @include breakpoint($bp-video-player-section) {
+              height: auto;
+            }
           }
           .caption-overlay {
             bottom: 0px;
@@ -1074,6 +1093,11 @@
             width: 100%;
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               height: 45px;
+            }
+            @include breakpoint($bp-video-player-section) {
+              height: auto;
+              position: relative;
+              width: 100%;
             }
           }
           .caption-fields-wrapper {
@@ -1085,12 +1109,22 @@
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               padding: 5px;
             }
+            @include breakpoint($bp-video-player-section) {
+              height: 58px;
+              margin: 0;
+              padding: 8px;
+              position: static;
+              width: 100%;
+            }
             .title {
               font-weight: bold;
               line-height: 1.15;
               text-align: left;
               @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
                 font-size: 14px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                font-size: 13px;
               }
             }
             .caption {
@@ -1099,6 +1133,9 @@
               text-align: left;
               @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
                 font-size: 12px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                font-size: 11px;
               }
             }
           }

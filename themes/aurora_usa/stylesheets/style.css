@@ -9607,7 +9607,12 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper.inactive {
-    padding: 10px;
+    background: transparent;
+    height: auto;
+    margin: 0 auto;
+    max-width: 457px;
+    padding: 0px;
+    width: 100%;
   }
 }
 .featured-asset .video-player-wrapper.inactive > .asset-img {
@@ -9630,7 +9635,7 @@ body.person-page #main {
   }
 }
 @media (max-width: 644px) {
-  .featured-asset .video-player-wrapper.inactive > .asset-img {
+  .featured-asset .video-player-wrapper.inactive > .asset-img > img {
     display: none;
   }
 }
@@ -9648,11 +9653,12 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper.inactive .expired-text {
+    color: #9AE0EB;
     float: none;
-    font-size: 24px;
+    font-size: 18px;
     margin: 0;
-    margin-top: 60px;
-    text-align: center;
+    margin-top: 10px;
+    text-align: left;
   }
 }
 .featured-asset .video-player-wrapper.inactive .suggest-text {
@@ -9667,17 +9673,15 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .video-player-wrapper.inactive .suggest-text {
-    display: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: left;
   }
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block {
   text-align: center;
   width: 100%;
-}
-@media (max-width: 644px) {
-  .featured-asset .video-player-wrapper.inactive .suggest-videos-block {
-    display: none;
-  }
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file {
   border: 2px solid #2d2d2d;
@@ -9735,6 +9739,19 @@ body.person-page #main {
     width: 165px;
   }
 }
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file {
+    height: auto;
+    margin-right: 0px;
+    width: 48.5%;
+  }
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file:last-child {
+    display: none;
+  }
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file:first-child {
+    margin-right: 1.5%;
+  }
+}
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file:last-child {
   margin-right: 0;
 }
@@ -9753,6 +9770,11 @@ body.person-page #main {
     height: 95px;
   }
 }
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file img {
+    height: auto;
+  }
+}
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-overlay {
   bottom: 0px;
   left: 0px;
@@ -9763,6 +9785,13 @@ body.person-page #main {
 @media (min-width: 645px) and (max-width: 1275px) {
   .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-overlay {
     height: 45px;
+  }
+}
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-overlay {
+    height: auto;
+    position: relative;
+    width: 100%;
   }
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper {
@@ -9777,6 +9806,15 @@ body.person-page #main {
     padding: 5px;
   }
 }
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper {
+    height: 58px;
+    margin: 0;
+    padding: 8px;
+    position: static;
+    width: 100%;
+  }
+}
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper .title {
   font-weight: bold;
   line-height: 1.15;
@@ -9787,6 +9825,11 @@ body.person-page #main {
     font-size: 14px;
   }
 }
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper .title {
+    font-size: 13px;
+  }
+}
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper .caption {
   color: #a7a6a6;
   font-size: 13px;
@@ -9795,6 +9838,11 @@ body.person-page #main {
 @media (min-width: 645px) and (max-width: 1275px) {
   .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper .caption {
     font-size: 12px;
+  }
+}
+@media (max-width: 644px) {
+  .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file .caption-fields-wrapper .caption {
+    font-size: 11px;
   }
 }
 @media (max-width: 644px) {

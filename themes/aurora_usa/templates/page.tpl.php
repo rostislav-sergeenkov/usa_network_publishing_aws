@@ -75,9 +75,9 @@
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header role="banner" id="page-header">
-    <h1 id="site-name">
+    <span id="site-name">
       <?php print $site_name; ?>
-    </h1>
+    </span>
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <?php print render($page['personalization_trigger']); ?>

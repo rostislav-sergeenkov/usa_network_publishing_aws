@@ -17,7 +17,7 @@
 		<div id="lackOfFeaturesModal-modal-header-main">
 			<div id="lackOfFeaturesModal-modal-header">
 				<div class="group">
-				  <h1 class="lackOfFeaturesModal-modal-head">Sorry! There's a Problem</h1>
+				  <h2 class="lackOfFeaturesModal-modal-head">Sorry! There's a Problem</h2>
 				</div>	    
 			</div>
 		</div>

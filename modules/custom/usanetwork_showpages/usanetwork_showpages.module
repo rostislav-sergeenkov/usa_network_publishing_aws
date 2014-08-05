@@ -521,7 +521,14 @@ function usanetwork_showpages_preprocess_html(&$vars) {
 
   // see if we are on a node page
   if ($node = menu_get_object()) {
-
+    // see if we are on a catchall seo node
+    if ($node->type == 'catchall_seo_page') {
+      if ($node->field_page_title[$lang][0]['value']) {
+        $head_title = t("@title | USA Network", array('@title' => $node->field_page_title[$lang][0]['value']));
+      } else {
+        $head_title = t("@title | USA Network", array('@title' => $node->title));
+      }
+    }
     // see if we are on a show node
     if ($node->type == 'tv_show') {
       $show = $node->nid;

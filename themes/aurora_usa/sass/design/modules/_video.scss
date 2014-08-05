@@ -1433,7 +1433,7 @@
     @include breakpoint($bp-video-player-section) {
       float: none;
       overflow: hidden;
-      margin: 0 auto;
+      margin-left: 10px;
       margin-top: 10px;
       p:last-child {
         margin-bottom: 0;

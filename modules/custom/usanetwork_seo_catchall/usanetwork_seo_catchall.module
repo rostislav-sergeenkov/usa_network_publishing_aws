@@ -7,10 +7,17 @@
 include_once 'usanetwork_seo_catchall.features.inc';
 
 /**
- * Implements hook_theme_registry_alter().
+ * Implements hook_theme().
  */
-function usanetwork_seo_catchall_theme_registry_alter(&$theme_registry) {
-  $theme_registry['call_to_action_collection']['function'] = 'theme_call_to_action_collection';
+function usanetwork_seo_catchall_theme() {
+  return array(
+    'call_to_action_collection' => array(
+      'variables' => array(
+        'call_to_action' => NULL,
+        'language' => NULL
+      ),
+    ),
+  );
 }
 
 /**

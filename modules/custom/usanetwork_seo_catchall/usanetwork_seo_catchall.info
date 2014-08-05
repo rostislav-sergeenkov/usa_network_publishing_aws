@@ -57,4 +57,4 @@ features[variable][] = menu_parent_catchall_seo_page
 features[variable][] = node_options_catchall_seo_page
 features[variable][] = node_preview_catchall_seo_page
 features[variable][] = node_submitted_catchall_seo_page
-
+features[variable][] = pathauto_node_catchall_seo_page_pattern

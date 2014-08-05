@@ -130,7 +130,6 @@ function usanetwork_seo_catchall_preprocess_field(&$variables, $hook) {
 function usanetwork_seo_catchall_form_catchall_seo_page_node_form_alter(&$form, &$form_state, $form_id) {
   $form['#validate'][]= 'usanetwork_seo_catchall_validate';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_seo_catchall').'/js/seo_catchall_form.js';
-  dpm($form);
 }
 
 /**

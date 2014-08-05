@@ -99,8 +99,6 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   $node = menu_get_object();
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
-    dpm($vars);
-    dpm($node);
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {

@@ -600,6 +600,7 @@ you can use the generic selector below, but it's slower:
   margin-right: 8px;
   margin-bottom: 15px;
   margin-left: 15px;
+  padding-right: 0px;
   height: 33px;
   display: -moz-inline-stack;
   display: inline-block;
@@ -615,6 +616,7 @@ you can use the generic selector below, but it's slower:
     float: left;
     font-size: 34px;
     border-right: 1px solid #3d3d3d;
+    padding-right: 25px;
   }
 }
 .no-font-feature-settings #logo a, .ie9 #logo a, .ie8 #logo a, .ie7 #logo a {

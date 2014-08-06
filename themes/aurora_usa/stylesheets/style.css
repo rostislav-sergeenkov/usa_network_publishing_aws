@@ -3376,6 +3376,7 @@ input[type="radio"], input[type="checkbox"] {
     float: left;
     font-size: 34px;
     border-right: 1px solid #3d3d3d;
+    margin-top: 16px;
     padding-right: 25px;
   }
 }

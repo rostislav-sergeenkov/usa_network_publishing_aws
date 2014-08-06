@@ -67,7 +67,8 @@ function usanetwork_seo_catchall_preprocess_node(&$vars) {
         if($video){
           $vars['video'] = theme('pub_mpx_video', array(
             'file' => $video,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html'),
+            'player_id' => '4Dl3P2Df_j5l'
           ));
         }
       }
@@ -124,7 +125,8 @@ function usanetwork_seo_catchall_preprocess_field(&$variables, $hook) {
       if (!empty($video)) {
         $variables['video'] = theme('pub_mpx_video', array(
           'file' => $video,
-          'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
+          'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html'),
+          'player_id' => '4Dl3P2Df_j5l'
         ));
       }
     }

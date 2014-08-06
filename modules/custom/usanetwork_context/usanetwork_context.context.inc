@@ -1014,6 +1014,7 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'catchall_seo_page' => 'catchall_seo_page',
         'media_gallery' => 'media_gallery',
         'post' => 'post',
         'quiz' => 'quiz',
@@ -2128,3 +2129,4 @@ function usanetwork_context_context_default_contexts() {
 
   return $export;
 }
+

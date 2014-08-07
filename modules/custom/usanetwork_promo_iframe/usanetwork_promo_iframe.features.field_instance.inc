@@ -31,6 +31,13 @@ function usanetwork_promo_iframe_field_default_field_instances() {
         'type' => 'link_plain',
         'weight' => 0,
       ),
+      'promo_teaser_large' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_plain',
+        'weight' => 12,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -101,6 +108,12 @@ function usanetwork_promo_iframe_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'promo_teaser_large' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',

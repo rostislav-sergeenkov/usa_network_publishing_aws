@@ -499,6 +499,32 @@ function usanetwork_showpages_video_cats($node) {
     // load the latest episode then go to that page
     if (!empty($result->fid)) {
       drupal_goto('file/' . $result->fid);
+    } else {
+      $show_terms = taxonomy_get_term_by_name($node->title);
+      $show_tids = array();
+      foreach ($show_terms as $tid => $term) {
+        $show_tids[] = $tid;
+      }
+      
+      $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+      $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+      $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+      $query->condition('fdfmfe.field_mpx_full_episode_value', '0');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt.field_usa_video_terms_target_id', $single_tids, 'IN');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt2','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt2.field_usa_video_terms_target_id', $show_tids, 'IN');
+      $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->condition('mv.status', 1);
+      $query->orderBy('mv.airdate', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute()->fetchObject();
+      
+      if (!empty($result->fid)) {
+        drupal_goto('file/' . $result->fid);
+      }
     } 
 //    // find the video containing the terms, sort by most recent airdate
 //    $query = new EntityFieldQuery();

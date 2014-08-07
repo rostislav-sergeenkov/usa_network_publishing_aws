@@ -207,5 +207,12 @@ function usanetwork_seo_catchall_strongarm() {
   $strongarm->value = '[node:field_show]/[node:title]';
   $export['pathauto_node_catchall_seo_page_pattern'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pub_mpx_video_media_browser_view_name';
+  $strongarm->value = 'browser_plugin_for_clips';
+  $export['pub_mpx_video_media_browser_view_name'] = $strongarm;
+
   return $export;
 }

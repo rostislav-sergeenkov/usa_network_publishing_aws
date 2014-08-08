@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_seo_catchall.features.field_instance.inc
+ * usanetwork_seo_page.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function usanetwork_seo_catchall_field_default_field_instances() {
+function usanetwork_seo_page_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'field_collection_item-field_call_to_action-field_cta_image'
@@ -670,4 +670,3 @@ function usanetwork_seo_catchall_field_default_field_instances() {
 
   return $field_instances;
 }
-

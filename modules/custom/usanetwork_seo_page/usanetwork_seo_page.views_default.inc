@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_seo_catchall.views_default.inc
+ * usanetwork_seo_page.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function usanetwork_seo_catchall_views_default_views() {
+function usanetwork_seo_page_views_default_views() {
   $export = array();
 
   $view = new view();

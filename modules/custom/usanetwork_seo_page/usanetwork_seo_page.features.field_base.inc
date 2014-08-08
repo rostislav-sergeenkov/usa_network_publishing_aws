@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_seo_catchall.features.field_base.inc
+ * usanetwork_seo_page.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function usanetwork_seo_catchall_field_default_field_bases() {
+function usanetwork_seo_page_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_call_to_action'
@@ -264,4 +264,3 @@ function usanetwork_seo_catchall_field_default_field_bases() {
 
   return $field_bases;
 }
-

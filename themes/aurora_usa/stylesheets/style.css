@@ -9699,6 +9699,7 @@ body.person-page #main {
   margin-right: 20px;
   overflow: hidden;
   position: relative;
+  vertical-align: top;
   width: 252px;
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file.tve-video-auth > a:after {
@@ -10166,7 +10167,9 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .meta-head .episode-title {
+    display: block;
     font-size: 20px;
+    margin-top: 0px;
   }
 }
 .featured-asset .meta-head .episode-title div {

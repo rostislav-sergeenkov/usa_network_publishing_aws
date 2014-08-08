@@ -851,7 +851,7 @@ function usanetwork_core_update_7147() {
  */
 function usanetwork_core_update_7148() {
   $modules_en = array(
-    'usanetwork_seo_catchall',
+    'usanetwork_seo_page',
   );
   module_enable($modules_en);
 }

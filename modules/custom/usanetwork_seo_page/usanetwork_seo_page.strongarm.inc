@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_seo_catchall.strongarm.inc
+ * usanetwork_seo_page.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function usanetwork_seo_catchall_strongarm() {
+function usanetwork_seo_page_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

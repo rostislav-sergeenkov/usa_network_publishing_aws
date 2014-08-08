@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.usanetwork_seo_catchall = {
+  Drupal.behaviors.usanetwork_seo_page = {
     attach: function(context){
       $("#edit-title").on("change", function() {
         if($("#edit-field-h1 input").val() == ''){

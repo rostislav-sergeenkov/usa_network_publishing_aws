@@ -1,9 +1,9 @@
-name = usanetwork_seo_catchall
-description = Catchall Seo Page Creation
+name = usanetwork_seo_page
+description = Seo Page Creation
 core = 7.x
 package = USA Network
 version = 7.x-1.0
-project = usanetwork_seo_catchall
+project = usanetwork_seo_page
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = entityreference
@@ -62,3 +62,4 @@ features[variable][] = node_submitted_catchall_seo_page
 features[variable][] = pathauto_node_catchall_seo_page_pattern
 features[variable][] = pub_mpx_video_media_browser_view_name
 features[views_view][] = browser_plugin_for_clips
+features_exclude[variable][representative_image_field_node_catchall_seo_page] = representative_image_field_node_catchall_seo_page

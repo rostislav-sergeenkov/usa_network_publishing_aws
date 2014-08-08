@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_seo_catchall.ds.inc
+ * usanetwork_seo_page.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function usanetwork_seo_catchall_ds_field_settings_info() {
+function usanetwork_seo_page_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
@@ -31,7 +31,7 @@ function usanetwork_seo_catchall_ds_field_settings_info() {
 /**
  * Implements hook_ds_custom_fields_info().
  */
-function usanetwork_seo_catchall_ds_custom_fields_info() {
+function usanetwork_seo_page_ds_custom_fields_info() {
   $export = array();
 
   $ds_field = new stdClass();
@@ -54,7 +54,7 @@ function usanetwork_seo_catchall_ds_custom_fields_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function usanetwork_seo_catchall_ds_layout_settings_info() {
+function usanetwork_seo_page_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
@@ -93,4 +93,3 @@ function usanetwork_seo_catchall_ds_layout_settings_info() {
 
   return $export;
 }
-

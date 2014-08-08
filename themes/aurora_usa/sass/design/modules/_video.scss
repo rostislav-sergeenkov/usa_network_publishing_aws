@@ -1049,6 +1049,7 @@
           margin-right: 20px;
           overflow: hidden;
           position: relative;
+          vertical-align: top;
           width: 252px;
           @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
             height: 140px;
@@ -1411,7 +1412,9 @@
       text-transform: none;
       display:inline;
       @include breakpoint($bp-video-player-section) {
+        display: block;
         font-size: 20px;
+        margin-top: 0px;
       }
       div {
         display: inline;

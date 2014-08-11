@@ -300,7 +300,7 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
   </div>
   <?php if($aspot_page):?>
     <?php drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/aspot_page.js'); ?>
-    <div id="aspot-page-video-container"></div>
+    <div id="aspot-video-container"></div>
   <?php endif; ?>
 <?php if ($link || $link !== '&nbsp;'): ?>
   </a>

@@ -55,13 +55,12 @@
           if (!aspotVideoDone) { //  && $('#aspot-video-container').html() !== '') {
             var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
             if (aspotVideoAgent.indexOf('msie') != -1) {
-              var aspotVideoWidth = $('#aspot-page-video-container').width();
-              $('#aspot-page-video-container').height(aspotVideoWidth*0.4);
-              var aspotVideoHeight = $('#aspot-page-video-container').height();
+              var aspotVideoWidth = $('#aspot-video-container').width();
+              var aspotVideoHeight = $('#aspot-video-container').height();
               aspotVideoTag = '<video id="aspot-video" width="' + aspotVideoWidth + '" height="' + aspotVideoHeight + '" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
             }
-            $('#aspot-page-video-container').prev().hide();
-            $('#aspot-page-video-container').html(aspotVideoTag).show();
+            $('#aspot-video-container').prev().hide();
+            $('#aspot-video-container').html(aspotVideoTag).show();
             aspotVideoDone = 1
           }
           else {
@@ -72,7 +71,7 @@
           usa_debug("aspotVideoResumeFlexsliderPlay()");
           $('#aspot-video').bind('ended', function () {
             usa_debug("video ended");
-            $('#aspot-page-video-container').animate({'opacity': 0}, 400, function () {
+            $('#aspot-video-container').animate({'opacity': 0}, 400, function () {
               $(this).hide();
               $(this).prev().show();
             })

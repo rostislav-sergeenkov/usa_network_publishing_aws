@@ -64,11 +64,11 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         }
         $available = $file->mpx_video_data['available_date'];  // add publication date
         if (!empty($available)) {
-          $element[$delta]['publication_date'] = date('r', $available);
+          $element[$delta]['publication_date'] = date('c', $available);
         }
         $expire = $file->mpx_video_data['expiration_date'];  // add expiration date
         if (!empty($expire)) {
-          $element[$delta]['expiration_date'] = date('r', $expire);
+          $element[$delta]['expiration_date'] = date('c', $expire);
         }
         $entitlement = field_get_items('file', $file, 'field_mpx_entitlement'); // check if video needs subscription
         if (!empty($entitlement)) {

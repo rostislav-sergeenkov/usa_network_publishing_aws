@@ -310,7 +310,7 @@ function nbcu_seo_xmlsitemap_generate_chunk(stdClass $sitemap, XMLSitemapWriter 
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
-  $query->rightJoin('cache', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
+  $query->rightJoin('cache_xmlsitemap_link', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
   $query->condition('xlt.link_type', $type, '=');
   $query->orderBy('x.language', 'DESC');
   $query->orderBy('x.loc');
@@ -344,7 +344,7 @@ function nbcu_seo_xmlsitemap_generate_chunk(stdClass $sitemap, XMLSitemapWriter 
     }
 
     $cid = 'nbcu_seo_xmlsitemap:' . $type . ':' . $link['id'] . '_' . $link['type'];
-    $cache = cache_get($cid);
+    $cache = cache_get($cid, 'cache_xmlsitemap_link');
     if ($cache === FALSE) {
       continue;
     }
@@ -400,6 +400,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch(array $smids = array()) {
  */
 function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$context) {
   module_load_include('inc', 'xmlsitemap', 'xmlsitemap.generate');
+  $preprocess_count = variable_get('xmlsitemap_batch_limit', NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT);
 
   if (!isset($context['sandbox']['sitemap'])) {
     $context['sandbox']['sitemap'] = xmlsitemap_sitemap_load($smid);
@@ -413,7 +414,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     $query->condition('x.access', 1);
     $query->condition('x.status', 1);
     $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
-    $query->leftJoin('cache', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
+    $query->leftJoin('cache_xmlsitemap_link', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
     $query->condition('xlt.link_type', $type, '=');
     $query->isNull('cid');
     $query->orderBy('x.language', 'DESC');
@@ -421,7 +422,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     $query->addTag('nbcu_seo_xmlsitemap_generate');
     $query->addMetaData('sitemap', $sitemap);
     $query->addMetaData('type', $type);
-    $context['sandbox']['max'] = min($query->execute()->rowCount(), NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT);
+    $context['sandbox']['max'] = min($query->execute()->rowCount(), $preprocess_count);
     if ($context['sandbox']['max'] == 0) {
       $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
       $regenerate[$smid][$type] = FALSE;
@@ -449,7 +450,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
-  $query->leftJoin('cache', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
+  $query->leftJoin('cache_xmlsitemap_link', 'c', 'c.cid = CONCAT(\'nbcu_seo_xmlsitemap:' . $type . ':\', CONCAT_WS(\'_\', x.id, x.type))');
   $query->condition('xlt.link_type', $type, '=');
   $query->isNull('cid');
   $query->orderBy('x.language', 'DESC');
@@ -458,8 +459,8 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
   $query->addMetaData('sitemap', $sitemap);
   $query->addMetaData('type', $type);
 
-  $offset = $context['sandbox']['chunk'] * NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT;
-  $limit = NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT;
+  $offset = $context['sandbox']['chunk'] * $preprocess_count;
+  $limit = $preprocess_count;
   $query->range($offset, $limit);
   $links = $query->execute();
 
@@ -484,7 +485,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     }
 
     $cid = 'nbcu_seo_xmlsitemap:' . $type . ':' . $link['id'] . '_' . $link['type'];
-    $cache = cache_get($cid);
+    $cache = cache_get($cid, 'cache_xmlsitemap_link');
     if ($cache === FALSE || $cache->expire > REQUEST_TIME) {
       $element = array();
       $element['loc'] = $link_url;
@@ -511,7 +512,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
         'link' => $link,
       );
       drupal_alter('nbcu_seo_xmlsitemap_xml_element', $element, $alter_context);
-      cache_set($cid, $element);
+      cache_set($cid, $element, 'cache_xmlsitemap_link');
     }
     $context['sandbox']['progress']++;
   }
@@ -610,7 +611,7 @@ function nbcu_seo_xmlsitemap_link_update(array $link) {
   $sitemap_types = nbcu_seo_xmlsitemap_types();
   foreach ($sitemap_types as $type) {
     $cid = 'nbcu_seo_xmlsitemap:' . $type . ':' . $link['id'] . '_' . $link['type'];
-    cache_clear_all($cid, 'cache'); // clear cache
+    cache_clear_all($cid, 'cache_xmlsitemap_link'); // clear cache
   }
   $types = module_invoke_all('nbcu_seo_xmpsitemap_link_type', $link);
   db_delete('xmlsitemap_link_type')

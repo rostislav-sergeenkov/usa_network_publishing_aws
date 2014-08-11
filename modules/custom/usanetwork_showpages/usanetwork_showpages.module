@@ -234,7 +234,7 @@ function usanetwork_showpages_photos($node) {
   $query->entityCondition('bundle', array('media_gallery'));
   $query->propertyCondition('status', 1);
   $query->fieldCondition('field_show', 'target_id', $show);
-  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
+//  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
   $query->propertyOrderBy('created', 'DESC');
   $query->range(0, 1);
   // execute the query
@@ -477,33 +477,78 @@ function usanetwork_showpages_video_cats($node) {
   }
   // process the terms so they are easy to eat
   $single_tids = array();
-  foreach ($terms as $term => $tid) {
-    $single_tids[] = $term;
+  foreach ($terms as $tid => $term) {
+    $single_tids[] = $tid;
   }
-  // find the video containing the terms, sort by most recent airdate
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
-  $query->propertyCondition('status', 1);
-  $query->fieldCondition('field_show', 'target_id', $show);
-  $query->fieldCondition('field_usa_video_terms', 'target_id', $single_tids, 'IN');
-  $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
-  $query->range(0, 1);
-  // execute the query
-  $result = $query->execute();
-  // load the latest video with the term match
-  // then go to that page
-  if (!empty($result['node'])) {
-    $nid = array_keys($result['node']);
-    $nid = $nid[0];
-    $vid = node_load($nid);
-    drupal_goto('node/' . $nid);
-  }
-  // final fallback to show videos just in case
-  else {
-    drupal_goto('node/' . $show . '/videos');
-  }
-
+//    select episodes with show and category
+    $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+    $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+    $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
+    $query->condition('fdfs.field_show_target_id', $show);
+    $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '0');
+    $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
+    $query->condition('fdfuvt.field_usa_video_terms_target_id', $single_tids, 'IN');
+    $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+    $query->condition('mv.status', 1);
+    $query->orderBy('mv.airdate', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute()->fetchObject();
+    // load the latest episode then go to that page
+    if (!empty($result->fid)) {
+      drupal_goto('file/' . $result->fid);
+    } else {
+      $show_terms = taxonomy_get_term_by_name($node->title);
+      $show_tids = array();
+      foreach ($show_terms as $tid => $term) {
+        $show_tids[] = $tid;
+      }
+      
+      $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+      $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+      $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+      $query->condition('fdfmfe.field_mpx_full_episode_value', '0');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt.field_usa_video_terms_target_id', $single_tids, 'IN');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt2','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt2.field_usa_video_terms_target_id', $show_tids, 'IN');
+      $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->condition('mv.status', 1);
+      $query->orderBy('mv.airdate', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute()->fetchObject();
+      
+      if (!empty($result->fid)) {
+        drupal_goto('file/' . $result->fid);
+      }
+    } 
+//    // find the video containing the terms, sort by most recent airdate
+//    $query = new EntityFieldQuery();
+//    $query->entityCondition('entity_type', 'node');
+//    $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+//    $query->propertyCondition('status', 1);
+//    $query->fieldCondition('field_show', 'target_id', $show);
+//    $query->fieldCondition('field_usa_video_terms', 'target_id', $single_tids, 'IN');
+//    $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+//    $query->range(0, 1);
+//    // execute the query
+//    $result = $query->execute();
+//    // load the latest video with the term match
+//    // then go to that page
+//    if (!empty($result['node'])) {
+//      $nid = array_keys($result['node']);
+//      $nid = $nid[0];
+//      $vid = node_load($nid);
+//      drupal_goto('node/' . $nid);
+//    }
+//    // final fallback to show videos just in case
+//    else {
+//      drupal_goto('node/' . $show . '/videos');
+//    }
 }
 
 /**
@@ -521,7 +566,14 @@ function usanetwork_showpages_preprocess_html(&$vars) {
 
   // see if we are on a node page
   if ($node = menu_get_object()) {
-
+    // see if we are on a catchall seo node
+    if ($node->type == 'catchall_seo_page') {
+      if ($node->field_page_title[$lang][0]['value']) {
+        $head_title = t("@title | USA Network", array('@title' => $node->field_page_title[$lang][0]['value']));
+      } else {
+        $head_title = t("@title | USA Network", array('@title' => $node->title));
+      }
+    }
     // see if we are on a show node
     if ($node->type == 'tv_show') {
       $show = $node->nid;

@@ -260,7 +260,7 @@ function usanetwork_mpx_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'media_theplatform_mpx__cron_videos_per_run';
-  $strongarm->value = '50';
+  $strongarm->value = '250';
   $export['media_theplatform_mpx__cron_videos_per_run'] = $strongarm;
 
   $strongarm = new stdClass();

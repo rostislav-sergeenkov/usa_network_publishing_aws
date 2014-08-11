@@ -5,8 +5,8 @@
       height: 346px;
       margin: 0;
       @include breakpoint($bp-video-player-section) {
-        width: 330px;
-        height: 186px;
+        width: 300px;
+        height: 184px;
       }
       @include breakpoint($bp-video-very-large-width) {
         width: 930px;
@@ -17,8 +17,7 @@
 }
 
 .node-type-usa-tve-video,
-.node-type-usa-video,
-.page-videos {
+.node-type-usa-video {
   #main {
     padding-left: 0;
     padding-right: 0;
@@ -233,7 +232,7 @@
   .node {
     border: 2px solid $gray-dark;
     .ie8 & {
-      width: 304px;
+      width: 300px;
     }
     > a {
       position: relative;
@@ -305,7 +304,7 @@
   .file {
     border: 2px solid $gray-dark;
     .ie8 & {
-      width: 304px;
+      width: 300px;
     }
     > a {
       position: relative;
@@ -730,7 +729,7 @@
   margin: 0 auto 0;
   position: relative;
   @include breakpoint($bp-video-low-range-width) {
-    width: 90%;
+    width: 100%;
   }
   @include breakpoint($bp-video-mid-range4-width) {
     width: 615px;
@@ -796,6 +795,14 @@
         font-size:10px;
       }
       @include text-shadow(1px 1px 5px $black-true);
+      @include breakpoint($bp-video-player-section) {
+        .first-line {
+          line-height: 1.2;
+        }
+        .second-line {
+          line-height: 1.2;
+        }
+      }
       @include breakpoint($bp-video-mid-range4-width) {
         top: 120px;
         left: 50px;
@@ -909,7 +916,7 @@
               line-height:10px;
               @include breakpoint($bp-video-player-section) {
                 font-size: 14px;
-                width: 304px;
+                width: 300px;
                 margin-left: 10px;
               }
             }
@@ -921,7 +928,7 @@
   .tve-help-sign {
     @include breakpoint($bp-video-player-section) {
       font-size: 14px;
-      width: 304px;
+      width: 300px;
       margin-left: 10px;
     }
     > img {
@@ -935,19 +942,29 @@
       background: #3D3D3D;
       padding: 20px;
       @include breakpoint($bp-video-player-section) {
-        padding: 10px;
+        background: transparent;
+        height: auto;
+        margin: 0 auto;
+        max-width: 457px;
+        padding: 0px;
+        width: 100%;
       }
       & > .asset-img {
         float: left;
         margin-bottom: 46px;
         @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
           margin-bottom: 10px;
-          img {
-            width: 220px;
-          }
         }
-        @include breakpoint($bp-video-player-section) {
-          display: none;
+        & > img {
+          max-height: 169px;
+          max-width: 300px;
+          @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
+            max-height: 124px;
+            max-width: 220px;
+          }
+          @include breakpoint($bp-video-player-section) {
+            display: none;
+          }
         }
       }
       .expired-text {
@@ -960,11 +977,12 @@
           margin-top: 53px;
         }
         @include breakpoint($bp-video-player-section) {
+          color: #9AE0EB;
           float: none;
-          font-size: 24px;
+          font-size: 18px;
           margin: 0;
-          margin-top: 60px;
-          text-align: center;
+          margin-top: 10px;
+          text-align: left;
         }
       }
       .suggest-text {
@@ -975,15 +993,16 @@
           margin-bottom: 10px;
         }
         @include breakpoint($bp-video-player-section) {
-          display: none;
+          font-size: 16px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          text-align: left;
         }
       }
       .suggest-videos-block {
         text-align: center;
         width: 100%;
-        @include breakpoint($bp-video-player-section) {
-          display: none;
-        }
+
         .file {
           &.tve-video-auth {
             & > a {
@@ -1037,11 +1056,23 @@
           margin-right: 20px;
           overflow: hidden;
           position: relative;
+          vertical-align: top;
           width: 252px;
           @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
             height: 140px;
             margin-right: 12px;
             width: 165px;
+          }
+          @include breakpoint($bp-video-player-section) {
+            height: auto;
+            margin-right: 0px;
+            width: 48.5%;
+            &:last-child {
+              display: none;
+            }
+            &:first-child {
+              margin-right: 1.5%;
+            }
           }
           &:last-child {
             margin-right: 0;
@@ -1058,6 +1089,9 @@
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               height: 95px;
             }
+            @include breakpoint($bp-video-player-section) {
+              height: auto;
+            }
           }
           .caption-overlay {
             bottom: 0px;
@@ -1067,6 +1101,11 @@
             width: 100%;
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               height: 45px;
+            }
+            @include breakpoint($bp-video-player-section) {
+              height: auto;
+              position: relative;
+              width: 100%;
             }
           }
           .caption-fields-wrapper {
@@ -1078,12 +1117,22 @@
             @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
               padding: 5px;
             }
+            @include breakpoint($bp-video-player-section) {
+              height: 58px;
+              margin: 0;
+              padding: 8px;
+              position: static;
+              width: 100%;
+            }
             .title {
               font-weight: bold;
               line-height: 1.15;
               text-align: left;
               @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
                 font-size: 14px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                font-size: 13px;
               }
             }
             .caption {
@@ -1092,6 +1141,9 @@
               text-align: left;
               @include breakpoint($bp-aspot-mid-width $bp-aspot-large-width) {
                 font-size: 12px;
+              }
+              @include breakpoint($bp-video-player-section) {
+                font-size: 11px;
               }
             }
           }
@@ -1104,8 +1156,8 @@
     height: 346px;
     margin-right: 15px;
     @include breakpoint($bp-video-player-section) {
-      width: 304px;
-      height: 186px;
+      width: 300px;
+      height: 184px;
       margin: 0 auto;
       float: none;
     }
@@ -1125,8 +1177,8 @@
       width: 615px;
       height: 346px;
       @include breakpoint($bp-video-player-section) {
-        width: 330px;
-        height: 186px;
+        width: 300px;
+        height: 184px;
       }
       @include breakpoint($bp-video-mid-range4-width) {
         float: none;
@@ -1159,6 +1211,11 @@
         }
       }
     }
+    .touch & {
+      img.borealis {
+        opacity: .2;
+      }
+    }
   }
   .tve-help {
     display: none;
@@ -1170,7 +1227,7 @@
     background-color: $black-dark;
     border: 1px solid $gray-ultra-med;
     @include breakpoint($bp-video-player-section) {
-      width: 330px;
+      width: 310px;
       height: 186px;
       margin: 0 auto;
       float: none;
@@ -1350,6 +1407,9 @@
       font-size: 26px;
       margin-right: 15px;
       text-transform: uppercase;
+      @include breakpoint($bp-video-player-section) {
+        font-size: 22px;
+      }
     }
     .episode-title,
     .details {
@@ -1363,6 +1423,11 @@
       font-size: 24px;
       text-transform: none;
       display:inline;
+      @include breakpoint($bp-video-player-section) {
+        display: block;
+        font-size: 20px;
+        margin-top: 0px;
+      }
       div {
         display: inline;
       }
@@ -1384,9 +1449,7 @@
       float: none;
       overflow: hidden;
       margin-left: 10px;
-      margin-right: 10px;
       margin-top: 10px;
-      margin-right: 0;
       p:last-child {
         margin-bottom: 0;
       }

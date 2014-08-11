@@ -20,40 +20,41 @@ function usanetwork_promo_preprocess_node(&$vars) {
 }
 
 /**
- * Implements hook_media_theplatform_mpx_set_video_inactive().
+ * Implements hook_media_theplatform_mpx_import_media().
  */
-function usanetwork_promo_media_theplatform_mpx_set_video_inactive($id, $op) {
-  if ($op == 'unpublished') {
-    // Clear the file entity cache for deleted/unpublished media.
-    $media_fid = db_query('SELECT fid FROM {mpx_video} WHERE id = :id', array('id' => $id))->fetchField();
+function usanetwork_promo_media_theplatform_mpx_import_media($op, $media_item, $account) {
 
+  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid'], $account);
+
+  foreach ($media_files as $file) { 
+    if ($media_item['expiration_date'] && $media_item['expiration_date'] < REQUEST_TIME) {
     
-    $db_select = db_select('field_data_field_promo_assoc_video', 'fdfpav')
-      ->fields('fdfpav', array('entity_id'))
-      ->condition('field_promo_assoc_video_target_id', $media_fid);
-    $promos = $db_select->execute()->fetchCol();
-    
-    if ($promos) {
-      foreach ($promos as $promo) {
-        $db_select_bspot = db_select('field_data_field_usa_hp_brefs', 'fdfuhb')
-          ->fields('fdfuhb', array('entity_id'))
-          ->condition('field_usa_hp_brefs_target_id', $promo);
-        $promo_bspot = $db_select_bspot->execute()->fetchField();
-      
-        if (!$promo_bspot) {
-          $db_select_cspot = db_select('field_data_field_usa_hp_crefs', 'fdfuhc')
-            ->fields('fdfuhc', array('entity_id'))
-            ->condition('field_usa_hp_crefs_target_id', $promo);
-          $promo_cspot = $db_select_cspot->execute()->fetchField();
-        }
-      
-        if (!$promo_bspot && !$promo_cspot) {
-          $promo_node = node_load($promo);
-          $promo_node->status = 0;
-          node_save($promo_node);
+      $db_select = db_select('field_data_field_promo_assoc_video', 'fdfpav')
+        ->fields('fdfpav', array('entity_id'))
+        ->condition('field_promo_assoc_video_target_id', $file->fid);
+      $promos = $db_select->execute()->fetchCol();
+
+      if ($promos) {
+        foreach ($promos as $promo) {
+          $db_select_bspot = db_select('field_data_field_usa_hp_brefs', 'fdfuhb')
+            ->fields('fdfuhb', array('entity_id'))
+            ->condition('field_usa_hp_brefs_target_id', $promo);
+          $promo_bspot = $db_select_bspot->execute()->fetchField();
+
+          if (!$promo_bspot) {
+            $db_select_cspot = db_select('field_data_field_usa_hp_crefs', 'fdfuhc')
+              ->fields('fdfuhc', array('entity_id'))
+              ->condition('field_usa_hp_crefs_target_id', $promo);
+            $promo_cspot = $db_select_cspot->execute()->fetchField();
+          }
+
+          if (!$promo_bspot && !$promo_cspot) {
+            $promo_node = node_load($promo);
+            $promo_node->status = 0;
+            node_save($promo_node);
+          }
         }
       }
     }
   }
 }
-

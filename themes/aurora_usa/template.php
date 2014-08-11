@@ -98,6 +98,9 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/follow-social.js');
   }
   $node = menu_get_object();
+  if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
+    $vars['page']['catchall_seo_title'] = $node->title;
+  }
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
@@ -130,6 +133,10 @@ function aurora_usa_preprocess_page(&$vars) {
   // it may help to know which regions are loading
   $util_regions = array();
   $vars['util_classes'] = '';
+  //unset page title when catchall seo page without show reference
+  if (!empty($vars['page']['catchall_seo_title'])) {
+    $vars['title'] = '';
+  }
   // also unset page title when the show banner loads
   if (!empty($vars['page']['head_show'])) {
     $util_regions[] = 'utilities-head-show';

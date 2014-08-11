@@ -17,8 +17,7 @@
 }
 
 .node-type-usa-tve-video,
-.node-type-usa-video,
-.page-videos {
+.node-type-usa-video {
   #main {
     padding-left: 0;
     padding-right: 0;
@@ -796,6 +795,14 @@
         font-size:10px;
       }
       @include text-shadow(1px 1px 5px $black-true);
+      @include breakpoint($bp-video-player-section) {
+        .first-line {
+          line-height: 1.2;
+        }
+        .second-line {
+          line-height: 1.2;
+        }
+      }
       @include breakpoint($bp-video-mid-range4-width) {
         top: 120px;
         left: 50px;
@@ -1202,6 +1209,11 @@
           opacity: .2;
           transition: opacity 0.3s ease-in-out;
         }
+      }
+    }
+    .touch & {
+      img.borealis {
+        opacity: .2;
       }
     }
   }

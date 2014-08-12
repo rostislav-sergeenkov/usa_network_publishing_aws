@@ -752,7 +752,11 @@ function usanetwork_tv_schedule_schedule_page() {
  
   if (isset($_GET['sdate']) && !empty($_GET['sdate'])) {
     $get_time = str_replace('_', '-', check_plain($_GET['sdate']));
-    $sdate = new DateTime($get_time . $start_hour . ':00:00', new DateTimeZone($timezone));
+    try {
+      $sdate = new DateTime($get_time . $start_hour . ':00:00', new DateTimeZone($timezone));
+    } catch (Exception $e) {
+      $sdate = new DateTime(date('Y-m-d ' . $start_hour . ':00:00', $request_time), new DateTimeZone($timezone));
+    }
   }
   
   $tv_schedule = usanetwork_tv_schedule_fetch_program_guid_schedule($sdate->getTimestamp());

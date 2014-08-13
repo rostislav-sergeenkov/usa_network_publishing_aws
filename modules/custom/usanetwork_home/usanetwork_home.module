@@ -50,7 +50,8 @@ function usanetwork_home_preprocess_block(&$variables) {
   if ($block->bid == 'views-usa_video-front_full_episodes'
      || $block->bid == 'views-usa_mpx_video-front_full_epsds') {
     $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
+    //carousel-promo
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/viewportchecker.js', 'file');
     if (!empty($homepage)) {
       $nid = reset(array_keys($homepage['node']));
       if ($nid && $homepage = node_load($nid)) {

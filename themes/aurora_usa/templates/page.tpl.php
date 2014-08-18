@@ -75,9 +75,9 @@
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header role="banner" id="page-header">
-    <h1 id="site-name">
+    <span id="site-name">
       <?php print $site_name; ?>
-    </h1>
+    </span>
     <div role="navigation" id="mega-nav" class="slide-container" data-module-type="Nav">
       <div class="primary-nav">
         <?php print render($page['personalization_trigger']); ?>
@@ -99,6 +99,7 @@
     <?php endif; ?>
     <?php print render($title_prefix); ?>
     <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+    <?php if ($page['catchall_seo_title']): ?><h2 class="title" id="page-title"><?php print $page['catchall_seo_title']; ?></h2><?php endif; ?>
     <?php print render($title_suffix); ?>
     <?php if ($page['head_show']): ?><div id="head-show"><?php print render($page['head_show']); ?></div><?php endif; ?>
     <?php if ($page['head_general']): ?><div id="head-general"><?php print render($page['head_general']); ?></div><?php endif; ?>

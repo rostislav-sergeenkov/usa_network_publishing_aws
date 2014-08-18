@@ -18,7 +18,7 @@
             console.log($thisHeader);
             $thisTab = '<li class="tab"><a href="#tab-'+ $tabCount +'"><h2>' + $thisHeader.html() + '</h2></a></li>';
            
-            $tabs_ul.append($thisTab);
+            $tabs_ul.append($thisTab); 
           });
         });    
 
@@ -69,6 +69,15 @@
             $drop_elements.addClass("filter-dropdown");
           }
         }
+		
+		// To select correct category on gallery page #985
+		$active_tab = $("li.active").closest(".gallery-tab-group").attr('id');
+		if ( $active_tab != '' ) {
+			$(".gallery-tab-group").hide();
+			$("#"+$active_tab).show();
+			$(".filter-menu li a").removeClass("selected");
+			$('a[href*="#'+$active_tab+'"]' ).addClass("selected");
+		}
       });
 
 

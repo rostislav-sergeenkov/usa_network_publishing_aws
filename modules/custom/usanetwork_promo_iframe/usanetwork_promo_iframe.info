@@ -18,6 +18,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_layout_settings][] = node|usanetwork_promo_iframe|default
 features[ds_layout_settings][] = node|usanetwork_promo_iframe|promo_teaser
+features[ds_layout_settings][] = node|usanetwork_promo_iframe|promo_teaser_large
 features[features_api][] = api:2
 features[field_base][] = field_promo_iframe_src_link
 features[field_group][] = group_promo_iframe_basic|node|usanetwork_promo_iframe|form

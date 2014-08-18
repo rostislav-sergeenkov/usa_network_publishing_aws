@@ -786,7 +786,7 @@ function _usanetwork_quiz_color_css($node, $theme) {
     $color = _usanetwork_quiz_accent_color($node);
     $color = empty($color) ? USANETWORK_QUIZ_DEFAULT_COLOR : $color;
     $css = str_replace('$accent-color', $color, $css);
-    $color_hover = _usanetwork_quiz_accent_hover_color($node);
+    $color_hover = _usanetwork_quiz_get_field_item_value($node, 'field_usa_tv_show_hover_color', 'rgb');
     $color_hover = empty($color_hover) ? $color : $color_hover;
     $css = str_replace('$accent-hover-color', $color_hover, $css);
   }
@@ -803,21 +803,6 @@ function _usanetwork_quiz_accent_color($node) {
     $show_nid = _usanetwork_quiz_get_field_item_value($node, 'field_show', 'target_id');
     if (!empty($show_nid) && $show = node_load($show_nid)) {
       $color = _usanetwork_quiz_get_field_item_value($show, 'field_usa_tv_show_color', 'rgb');
-    }
-  }
-
-  return $color;
-}
-
-/**
- * Returns accent hover color.
- */
-function _usanetwork_quiz_accent_hover_color($node) {
-  $color = _usanetwork_quiz_get_field_item_value($node, 'field_usa_tv_show_hover_color', 'rgb');
-  if (empty($color)) {
-    $show_nid = _usanetwork_quiz_get_field_item_value($node, 'field_show', 'target_id');
-    if (!empty($show_nid) && $show = node_load($show_nid)) {
-      $color = _usanetwork_quiz_get_field_item_value($show, 'field_usa_tv_show_hover_color', 'rgb');
     }
   }
 

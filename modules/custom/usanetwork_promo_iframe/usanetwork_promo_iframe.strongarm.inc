@@ -79,6 +79,9 @@ function usanetwork_promo_iframe_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
+      'promo_teaser_large' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

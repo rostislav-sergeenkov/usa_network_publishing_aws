@@ -179,7 +179,7 @@
       Drupal.behaviors.home_carousel.setCollapsibleContentHeight($content);
     });
   });
-  /*
+
   $(document).ready(function() {
     if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
       $('.carousel .asset-img img').viewportChecker({
@@ -199,5 +199,6 @@
         })
       });
     }
-  });*/
+  });
+
 }(jQuery));

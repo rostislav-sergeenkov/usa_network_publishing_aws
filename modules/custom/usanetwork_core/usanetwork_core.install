@@ -845,3 +845,15 @@ function usanetwork_core_update_7147() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * Enable seo catchall module.
+ */
+function usanetwork_core_update_7148() {
+  $modules_en = array(
+    'usanetwork_seo_page',
+  );
+  module_enable($modules_en);
+}
+
+

@@ -179,4 +179,22 @@
       Drupal.behaviors.home_carousel.setCollapsibleContentHeight($content);
     });
   });
+//  $(document).ready(function() {
+//    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+//      $('.carousel .asset-img img').each( function() {
+//        this.data_src =  this.src;
+//        $(this).attr('src', '');
+//      });
+//      $('.carousel .asset-img img').viewportChecker({
+//        classToAdd: 'visible-image',
+//        offset: 100,
+//        repeat: false,
+//        callbackFunction: function(elem, add){
+//          $(elem).attr({
+//            src: elem[0].data_src
+//          })
+//        }
+//      });
+//    }
+//  });
 }(jQuery));

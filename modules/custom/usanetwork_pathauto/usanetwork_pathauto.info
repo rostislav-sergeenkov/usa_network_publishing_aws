@@ -7,6 +7,7 @@ dependencies[] = pathauto
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+features[variable][] = pathauto_ignore_words
 features[variable][] = pathauto_node_catchall_page_pattern
 features[variable][] = pathauto_node_media_gallery_pattern
 features[variable][] = pathauto_node_person_pattern

@@ -152,3 +152,12 @@ function usanetwork_form_file_entity_edit_alter(&$form, &$form_state, $form_id) 
   $form['replace_upload']['#access'] = TRUE;
 }
 */
+
+/**
+ * Implentation of template_preprocess_page().
+ */
+function usanetwork_preprocess_page(&$variables) {
+//usanetwork global JS code
+  $usanetwork_global_js = variable_get('usanetwork_global_js_code', '') . "\n";
+  drupal_add_js(trim($usanetwork_global_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
+}

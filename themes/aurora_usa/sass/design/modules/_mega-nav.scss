@@ -74,11 +74,11 @@
 }
 #logo {
   @extend %usanetwork-font;
-  margin-top: 16px;
+  margin-top: 12px;
   margin-right: 8px;
   margin-bottom: 15px;
   margin-left: 15px;
-  padding-right: 25px;
+  padding-right: 0px;
   height: 33px;
   @include inline-block;
   font-size: $logo-height-med;
@@ -86,6 +86,8 @@
     @include float-left;
     font-size: $logo-height-large;
     border-right: 1px solid $gray-med;
+    margin-top: 16px;
+    padding-right: 25px;
   }
   .no-font-feature-settings &,
   .ie9 &,

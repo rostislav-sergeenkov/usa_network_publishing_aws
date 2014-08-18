@@ -132,16 +132,30 @@
 
     > div {
       border: 2px solid $gray-dark;
+      height: 100%;
       .ie8 & {
         width: 224px;
       }
       > a {
+        height: 100%;
         position: relative;
         z-index: 1;
         display: block;
       }
       .asset-img {
         line-height: 1em;
+        img {
+          max-height: 194px;
+          @include breakpoint($bp-home-3col ($bp-home-widest - 1)) {
+            max-height: 182px;
+          }
+          @include breakpoint($bp-home-2col ($bp-home-3col - 1)) {
+            max-height: 159px;
+          }
+          @include breakpoint( max-width ($bp-home-2col - 1)) {
+            max-height: 119px;
+          }
+        }
       }
     }
 

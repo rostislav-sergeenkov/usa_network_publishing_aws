@@ -1634,7 +1634,7 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'It\'s required field!',
+    'description' => 'Download URL field value in Advanced Settings in the Files Blade for media item in MPX.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2726,7 +2726,7 @@ Suggested max dimensions 380px x 80px<br/>
     'bundle' => 'usanetwork_aspot',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'It\'s required field!',
+    'description' => 'Download URL field value in Advanced Settings in the Files Blade for media item in MPX.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2796,6 +2796,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Call to Action Text');
   t('Call to Action Type');
   t('Desktop Image');
+  t('Download URL field value in Advanced Settings in the Files Blade for media item in MPX.');
   t('Enter either a full external url or use the \'search\' button to browse links to local pages. If there is NO call to action it is recommended this link back to the show landing page.');
   t('Enter in pixels<br />Recommended is 24');
   t('Enter in pixels<br />Recommended is 30');
@@ -2805,7 +2806,6 @@ Suggested max dimensions 380px x 80px<br/>
   t('If the display requires a Call to Action icon please select the type here.');
   t('If this is related to a show please select that from the list.');
   t('If you have selected a CTA type, please enter the corresponding text here. Example: watch full episode');
-  t('It\'s required field!');
   t('Largest retina image minimum 2490w x 1418h, scales for tablet devices');
   t('Link');
   t('MP4 Video URL');

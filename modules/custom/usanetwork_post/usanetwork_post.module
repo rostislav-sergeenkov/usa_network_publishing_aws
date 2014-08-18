@@ -606,8 +606,10 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
   $entity = $context['entity'];
   $entity_type = $context['entity_type'];
   if ($entity_type == 'taxonomy_term') {
-    $taxonomy_omniture_varibles_setting = _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables);
-    $omniture_variables = $taxonomy_omniture_varibles_setting['omniture_variables'];
+    if ($entity->vocabulary_machine_name == 'blog') {
+      $taxonomy_omniture_varibles_setting = _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables);
+      $omniture_variables = $taxonomy_omniture_varibles_setting['omniture_variables'];
+    }
   }
   
   if ($entity_type == 'node') {
@@ -639,8 +641,8 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
 function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables) {
   $parents = taxonomy_get_parents($entity->tid);
   $show_omniture = array();
-        if (!empty($parents)) {
-          $parent = reset($parents);
+  if (!empty($parents)) {
+    $parent = reset($parents);
     $parent_omniture_setting = _usanetwork_ads_entity_settings($parent, $entity_type);
     $parent_omniture = _usanetwork_ads_get_omniture_variables($parent_omniture_setting['omniture']['variables']);
     $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
@@ -660,7 +662,7 @@ function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type,
     }  
   }
   return array('omniture_variables' => $omniture_variables, 'show_variables' => $show_omniture);
-          }
+}
 
 /*
  * Get css files from categories

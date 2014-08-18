@@ -31,7 +31,7 @@
       }
       .ad {
         @include grid-span(2, 1);
-        height: 50px;
+        height: 250px;
       }
       .b-spot {
         @include grid-span(1, 1);

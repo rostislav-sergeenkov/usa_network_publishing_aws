@@ -1,0 +1,7 @@
+name = USANetwork lazy load
+description = Lazy load images
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+
+

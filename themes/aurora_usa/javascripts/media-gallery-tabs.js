@@ -121,5 +121,25 @@
 
     },
   };
+    /*
+  $(document).ready(function() {
+    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+      var i = 0;
+      $('.view-usa-gallery .cover-image img').each( function() {
+        this.data_src =  this.src;
+        $(this).attr('src', '');
+      });
+      $('.view-usa-gallery .cover-image img').viewportChecker({
+        classToAdd: 'visible-image',
+        offset: 100,
+        repeat: false,
+        callbackFunction: function(elem, add){
+          $(elem).attr({
+            src: elem[0].data_src
+          })
+        }
+      });
+    }
+  });*/
 
 }(jQuery));

@@ -1163,7 +1163,7 @@ input[type="radio"], input[type="checkbox"] {
     margin-left: 0;
     margin-right: 0;
     clear: none;
-    height: 50px;
+    height: 250px;
   }
   .usa-home .b-spot {
     width: 48.82813%;
@@ -5926,7 +5926,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 @media (max-width: 709px) {
   .media-gallery .center-wrapper .panel-col-first {
-    width: 256px;
+    width: 260px;
     float: none;
   }
 }
@@ -6177,6 +6177,10 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   left: 0;
   border: none;
 }
+.media-gallery .panel-col-bottom {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .media-gallery .panel-col-bottom > ul, .media-gallery .panel-col-bottom > section {
   max-width: 1140px;
 }
@@ -6307,6 +6311,12 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     margin: 0 auto 30px;
   }
 }
+@media (max-width: 524px) {
+  .grid-container-small {
+    margin: 0 auto 20px;
+    width: 300px;
+  }
+}
 
 @media (min-width: 1275px) {
   .grid-container-small {
@@ -6314,6 +6324,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .grid-container-small .asset-thumb {
+  background: url("../images/gallery_background_logo_small.png") no-repeat;
+  background-size: 100%;
   border: 2px solid #2d2d2d;
 }
 .grid-container-small .asset-thumb.active {
@@ -6336,7 +6348,34 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .grid-container-small .asset-thumb img {
+  min-height: 111px;
+  min-width: 133px;
   width: 100%;
+}
+@media (min-width: 1020px) {
+  .grid-container-small .asset-thumb img {
+    height: 186px;
+  }
+}
+@media (min-width: 1275px) {
+  .grid-container-small .asset-thumb img {
+    height: 223px;
+  }
+}
+@media (min-width: 772px) and (max-width: 1019px) {
+  .grid-container-small .asset-thumb img {
+    height: 186px;
+  }
+}
+@media (min-width: 525px) and (max-width: 771px) {
+  .grid-container-small .asset-thumb img {
+    height: 186px;
+  }
+}
+@media (max-width: 524px) {
+  .grid-container-small .asset-thumb img {
+    height: 118px;
+  }
 }
 
 .carousel {

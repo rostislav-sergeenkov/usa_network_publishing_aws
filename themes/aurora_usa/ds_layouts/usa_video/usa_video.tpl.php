@@ -92,7 +92,7 @@ if ($node->type == 'usa_tve_video') {
     <?php if ($tve_auth && $tve_auth != "&nbsp;"): ?>
       <div class="tve-help">
         <!-- <img class ="arrow" src="/sites/usanetwork/themes/aurora_usa/images/arrow2.png" /> -->
-        <div class="tve-msg">By signing in with your TV provider you get access to full<br />episodes the day after they air! Otherwise you may have to<br /> wait up to 30 days to watch most full episodes.</div>
+        <div class="tve-msg">By signing in with your TV provider you get access to full<br />episodes the day after they air!</div>
         <div class="tve-download">To unlock full episodes you can select an episode to sign in<br />- or -<br />DOWNLOAD THE USA NOW APP</div>
         <div class="tve-download-link">
           <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png" /></a>

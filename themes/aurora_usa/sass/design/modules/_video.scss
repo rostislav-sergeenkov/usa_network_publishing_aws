@@ -1227,10 +1227,11 @@
     background-color: $black-dark;
     border: 1px solid $gray-ultra-med;
     @include breakpoint($bp-video-player-section) {
-      width: 310px;
-      height: 186px;
-      margin: 0 auto;
+      width: 300px;
       float: none;
+      height: 186px;
+      left: 50%;
+      margin-left: -150px;
     }
     @include breakpoint($bp-video-mid-range4-width) {
       margin-bottom: 15px;

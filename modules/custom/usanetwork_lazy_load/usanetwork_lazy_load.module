@@ -46,7 +46,7 @@ function usanetwork_lazy_load_file_formatter_image_view($file, $display, $langco
 
     $image_style = $display['settings']['image_style'];
     $valid_image_styles = image_style_options(FALSE);
-    if ($current_display = 'front_full_epsds'){
+    if ($current_display == 'front_full_epsds'){
       $element = array(
         '#theme' => 'lazy_load_image',
         '#path' => $wrapper->getLocalThumbnailPath(),

@@ -50,6 +50,8 @@ function usanetwork_tve_video_add_custom_player_variables(&$variables, $type = '
   
   if (!empty($mvpd_id)) {
     $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;
+  } else {
+    $variables['pub_mpx_player_parameters']['MVPDid'] = 'Cablevision';
   }
 }
 

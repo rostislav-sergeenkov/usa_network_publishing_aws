@@ -36,7 +36,7 @@
   <?php elseif ($lock_video): ?>
     <div class="tve-help">
       <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they
-        air! Otherwise you may have to<br/> wait up to 30 days to watch most full episodes.
+        air!
       </div>
       <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE
         USA NOW APP
@@ -56,7 +56,7 @@
         <?php if ($is_live): ?>
           <span class="first-line"><?php print t('Please sign in with your TV provider to unlock live tv viewing.'); ?></span>
         <?php else: ?>
-          <span class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span><span class="second-line"><?php print t('This episode will automatically unlock 30 days after original airdate.'); ?></span>
+          <span class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
         <?php endif; ?>
       </div>
       <div id="player">

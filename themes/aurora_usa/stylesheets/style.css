@@ -9970,10 +9970,11 @@ body.person-page #main {
 }
 @media (max-width: 644px) {
   .featured-asset .tve-help {
-    width: 310px;
-    height: 186px;
-    margin: 0 auto;
+    width: 300px;
     float: none;
+    height: 186px;
+    left: 50%;
+    margin-left: -150px;
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {

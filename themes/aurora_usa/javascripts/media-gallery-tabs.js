@@ -121,25 +121,33 @@
 
     },
   };
-    /*
-  $(document).ready(function() {
+  function change_src() {
     if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
-      var i = 0;
-      $('.view-usa-gallery .cover-image img').each( function() {
-        this.data_src =  this.src;
-        $(this).attr('src', '');
-      });
-      $('.view-usa-gallery .cover-image img').viewportChecker({
+      $('.view-usa-gallery .cover-image img:not(.visible-image)').viewportChecker({
         classToAdd: 'visible-image',
         offset: 100,
         repeat: false,
         callbackFunction: function(elem, add){
           $(elem).attr({
-            src: elem[0].data_src
+            src: $(elem).attr('data-src')
           })
         }
       });
+    } else {
+      $('.view-usa-gallery .cover-image img:not(.visible-image)').each( function() {
+        $(this).attr({
+          src: $(this).attr('data-src')
+        })
+        $(this).addClass('visible-image');
+      });
     }
-  });*/
+  }
+
+  $(document).ready(function() {
+    change_src();
+    $(document).ajaxSuccess(function() {
+      change_src();
+    });
+  });
 
 }(jQuery));

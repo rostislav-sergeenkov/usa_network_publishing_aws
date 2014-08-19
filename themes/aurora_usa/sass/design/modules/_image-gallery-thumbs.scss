@@ -18,6 +18,21 @@
     background: url('../images/gallery_background_logo_small.png') no-repeat;
     background-size: 100%;
     border: 2px solid $gray-dark;
+    @include breakpoint($bp-grid-small-4) {
+      height: 194px;
+    }
+    @include breakpoint($bp-grid-small-wide-4) {
+      height: 231px;
+    }
+    @include breakpoint($bp-grid-small-3-fence) {
+      height: 194px;
+    }
+    @include breakpoint($bp-grid-small-2-fence) {
+      height: 194px;
+    }
+    @include breakpoint($bp-grid-small-2-squish) {
+      height: 126px;
+    }
     &.active {
       border-color: $white;
     }

@@ -6328,6 +6328,31 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   background-size: 100%;
   border: 2px solid #2d2d2d;
 }
+@media (min-width: 1020px) {
+  .grid-container-small .asset-thumb {
+    height: 194px;
+  }
+}
+@media (min-width: 1275px) {
+  .grid-container-small .asset-thumb {
+    height: 231px;
+  }
+}
+@media (min-width: 772px) and (max-width: 1019px) {
+  .grid-container-small .asset-thumb {
+    height: 194px;
+  }
+}
+@media (min-width: 525px) and (max-width: 771px) {
+  .grid-container-small .asset-thumb {
+    height: 194px;
+  }
+}
+@media (max-width: 524px) {
+  .grid-container-small .asset-thumb {
+    height: 126px;
+  }
+}
 .grid-container-small .asset-thumb.active {
   border-color: white;
 }

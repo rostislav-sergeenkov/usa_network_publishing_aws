@@ -228,3 +228,15 @@ function _usanetwork_mpx_video_set_players($insert_accounts){
   drupal_set_message(t('!cron_link to complete the import/update process.',
     array('!cron_link' => l(t('Run cron'), 'admin/config/system/cron'))));
 }
+
+/**
+ * Update 'last_notification' type
+ */
+function usanetwork_mpx_video_update_7001() {
+  db_change_field('mpx_accounts', 'last_notification', 'last_notification', array(
+    'description' => 'Last Notification Request Indicator',
+    'type' => 'int',
+    'not null' => FALSE,
+    'size' => 'big',
+  ));
+}

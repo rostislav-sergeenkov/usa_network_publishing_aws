@@ -15,7 +15,7 @@
   }
   .asset-thumb {
     @extend .title-overlay;
-    background: url('../images/gallery_background_logo_small.png') no-repeat;
+    background: url('../images/gallery_background_logo_small_b.png') no-repeat;
     background-size: 100%;
     border: 2px solid $gray-dark;
     @include breakpoint($bp-grid-small-4) {

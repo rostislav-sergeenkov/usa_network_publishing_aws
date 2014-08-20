@@ -127,7 +127,7 @@
             s.events='event63';
             var menu_name = $self.text();
             s.eVar63=s.prop63=menu_name;
-            if (!$self.hasClass('use-ajax') && $self.attr('href') != '#') {
+            if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
               e.preventDefault();
               s.bcf = function() {
                 setTimeout(function() {

@@ -1163,7 +1163,7 @@ input[type="radio"], input[type="checkbox"] {
     margin-left: 0;
     margin-right: 0;
     clear: none;
-    height: 250px;
+    height: 50px;
   }
   .usa-home .b-spot {
     width: 48.82813%;
@@ -6324,7 +6324,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .grid-container-small .asset-thumb {
-  background: url("../images/gallery_background_logo_small.png") no-repeat;
+  background: url("../images/gallery_background_logo_small_b.png") no-repeat;
   background-size: 100%;
   border: 2px solid #2d2d2d;
 }

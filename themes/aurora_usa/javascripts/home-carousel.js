@@ -173,11 +173,13 @@
 
   // check the collapsible content height one again when page is fully loaded
   $(window).load(function() {
-    $(this).each('.home-carousel-collapsible-processed', function() {
-      var $container = $(this);
-      var $content = $container.children('.carousel-viewport');
-      Drupal.behaviors.home_carousel.setCollapsibleContentHeight($content);
-    });
+    if ($(this).hasClass('.home-carousel-collapsible-processed')) {
+      $(this).each('.home-carousel-collapsible-processed', function() {
+        var $container = $(this);
+        var $content = $container.children('.carousel-viewport');
+        Drupal.behaviors.home_carousel.setCollapsibleContentHeight($content);
+      });
+    }
   });
 
   $(document).ready(function() {

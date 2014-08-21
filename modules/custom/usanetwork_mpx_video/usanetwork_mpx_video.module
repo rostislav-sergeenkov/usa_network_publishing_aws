@@ -393,7 +393,7 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
   $view = views_get_view('usa_mpx_video');
 
   // we need these js files and headers for video player integration
-  $attached['js'][] = drupal_get_path('module', 'usanetwork_mpx_video') . '/js/tpPdkController.js';
+//  $attached['js'][] = drupal_get_path('module', 'usanetwork_mpx_video') . '/js/tpPdkController.js';
   $meta_video_tag = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',

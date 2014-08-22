@@ -12,4 +12,12 @@ Thumbs.db
 #Ignore SASS/Compass cache files
 #Ignore sass cache folders
 .sass-cache
-.livereload
+.livereload/vendor/
+/rb-vendor/
+# ignore composer.phar b/c it's automatically fetched and sorta large
+/bin/composer.phar
+# ignore drush b/c we can re-grab it on demand
+/bin/drush
+/acquia-credentials.yml
+/artifacts/
+/logs/

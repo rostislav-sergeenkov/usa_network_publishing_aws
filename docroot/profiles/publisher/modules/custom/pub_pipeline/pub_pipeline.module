@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Additions and customizations for the Publisher CI Pipeline.
+ */
+
+/**
+ * Implements hook_page_build().
+ */
+function pub_pipeline_page_build(&$page) {
+  pub_pipeline_info($page);
+}
+
+/**
+ * Retrieves Pipeline environment information.
+ *
+ * @see pub_pipeline_page_build().
+ */
+function pub_pipeline_info(&$page) {
+
+  // @todo Move back to hook_admin_menu_page_build()?
+  if (!user_access('access environment indicator')) {
+    return;
+  }
+
+  // This variable is set with Buildkit.
+  $buildkit_info = variable_get('pub_pipeline_info', array());
+
+  if ($buildkit_info && is_array($buildkit_info)) {
+    $pipeline_info = array(
+      // Initially hidden because we display on click with JS.
+      '#attributes' => array('id' => 'pub-pipeline', 'style' => 'display: none;'),
+      '#theme_wrappers' => array('container'),
+      'info' => array(
+        '#theme' => 'item_list',
+        '#type' => 'ul',
+        '#items' => $buildkit_info,
+      ),
+      '#attached' => array(
+        'css' => array(
+          drupal_get_path('module', 'pub_pipeline') . '/pub_pipeline.css',
+        ),
+        'js' => array(
+          drupal_get_path('module', 'pub_pipeline') . '/pub_pipeline.js',
+        ),
+      ),
+    );
+
+    $page['page_bottom']['pub_pipeline'] = $pipeline_info;
+  }
+}

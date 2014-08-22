@@ -1,0 +1,6 @@
+# Include all rake files contained under 'rake' dir
+Dir.glob('rake/*.rake').each { |r| import r }
+
+require 'p7buildkit'
+require_relative 'pipeline'
+

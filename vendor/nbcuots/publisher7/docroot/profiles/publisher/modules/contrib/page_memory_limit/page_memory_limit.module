@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function page_memory_limit_init() {
+  $pages = variable_get('page_memory_limit', array());
+  ksort($pages);
+  foreach ($pages as $page => $memory_limit) {
+    if (drupal_match_path($_GET['q'], $page)) {
+      @ini_set('memory_limit', $memory_limit);
+      // Don't bother continuing through the list if we already found a match.
+      break;
+    }
+  }
+}

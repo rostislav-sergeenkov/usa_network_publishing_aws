@@ -1,0 +1,196 @@
+<?php
+/**
+ * @file
+ * Code for the Pub SSO feature.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function pub_sso_menu() {
+  $items = array();
+
+  if (_simplesamlphp_auth_isEnabled()) {
+    $items['sso'] = array(
+      'title' => 'Logon to the site',
+      'description' => 'Provides a site login page',
+      'page callback' => 'simplesamlphp_auth_loginpage',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function pub_sso_menu_alter(&$items) {
+  if (_simplesamlphp_auth_isEnabled()) {
+    $items['user']['page callback'] = 'simplesamlphp_auth_loginpage';
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function pub_sso_enable() {
+  $cert_directory = _pub_sso_get_cert_directory();
+  if (!file_exists($cert_directory)) {
+    mkdir($cert_directory, 0777);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pub_sso_form_simplesamlphp_auth_settings_alter(&$form, &$form_state) {
+  // This is tough for users to determine, provide the default for them.
+  $simplesamlphp_installdir = str_replace('docroot', 'simplesamlphp', DRUPAL_ROOT);
+  $installdir_title = $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_installdir']['#title'];
+  $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_installdir']['#title'] = str_replace('/var/simplesamlphp', $simplesamlphp_installdir, $installdir_title);
+  $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_installdir']['#default_value'] = $simplesamlphp_installdir;
+
+  // Determine the authentication source for this domain.
+  include_once DRUPAL_ROOT . '/../sso/domains.inc';
+  if (array_key_exists($_SERVER['SERVER_NAME'], $domains)) {
+    $simplesamlphp_authsource = $domains[$_SERVER['SERVER_NAME']];
+    $authsource_title = $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_authsource']['#title'];
+    $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_authsource']['#title'] = str_replace('default-sp', $simplesamlphp_authsource, $authsource_title);
+    $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_authsource']['#default_value'] = $simplesamlphp_authsource;
+  }
+
+  if (file_exists(_pub_sso_get_cert_directory() . '/sso.crt')) {
+    $upload_description = t('A certificate exists for this instance of SimpleSAMLphp.');
+  }
+  else {
+    $upload_description = t('You do not have a certificate applied.');
+  }
+
+  $form['#attributes']['enctype'] = 'multipart/form-data';
+  $form['simplesamlphp_auth_grp_setup']['cert']['file_upload'] = array(
+    '#title' => t('Upload certificate'),
+    '#type'  => 'file',
+    '#description'  => $upload_description,
+  );
+
+  // Move HTTPS checkbox to bottom of section.
+  $form['simplesamlphp_auth_grp_setup']['simplesamlphp_auth_forcehttps']['#weight'] = 10;
+
+  // Set up defaults based upon values passed to us by SSO process.
+  $form['simplesamlphp_auth_grp_user']['simplesamlphp_auth_user_name']['#default_value'] = 'email';
+  $form['simplesamlphp_auth_grp_user']['simplesamlphp_auth_unique_id']['#default_value'] = 'uid';
+  $form['simplesamlphp_auth_grp_user']['simplesamlphp_auth_mailattr']['#default_value'] = 'email';
+
+  // Add the submit handler.
+  $form['#submit'][] = 'pub_sso_simplesamlphp_auth_form_submit';
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function pub_sso_simplesamlphp_auth_form_submit($form, &$form_state) {
+  $cert_directory = _pub_sso_get_cert_directory();
+  $target_path =  $cert_directory . '/sso.crt';
+
+  // If we already have a cert and the user didn't supply another, don't go
+  // through the save process.
+  if (file_exists($target_path) && empty($_FILES['files']['tmp_name']['file_upload'])) {
+    return;
+  }
+
+  $upload_result = move_uploaded_file($_FILES['files']['tmp_name']['file_upload'], $target_path);
+  if(!$upload_result) {
+    form_set_error('simplesamlphp_auth', t("Failed to save the file."));
+  }
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function pub_sso_block_view_alter(&$data, $block) {
+  if (!_simplesamlphp_auth_isEnabled()) {
+    if ($block->module === 'user' && $block->delta === 'login') {
+      $block->visibility = 1;
+    }
+
+    return;
+  }
+
+  if ($block->module === 'user' && $block->delta === 'login') {
+    $block->visibility = 0;
+    $data['content'] = FALSE;
+  }
+  if ($block->module === 'simplesamlphp_auth' && is_array($data)) {
+    if (user_is_logged_in()) {
+       $block->visibility = 0;
+    }
+    else {
+      $data['content'] = '<p><a href="/saml_login">' . t('Log in with your SSO') . '</a></p>';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pub_sso_form_user_profile_form_alter(&$form, &$form_state) {
+  global $user;
+
+  if (!_simplesamlphp_auth_isEnabled()) {
+    // Exit without executing.
+    return;
+  }
+
+  if (isset($user->uid) && $user->uid == 1) {
+    // Don't alter the form for user 1.
+    return;
+  }
+
+  $form['account']['name']['#disabled'] = TRUE;
+  $form['account']['mail']['#disabled'] = TRUE;
+
+  $form['account']['pass']['#access'] = FALSE;
+  $form['account']['current_pass']['#access'] = FALSE;
+  $form['password_policy']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_user_presave().
+ */
+function pub_sso_user_presave(&$edit, $account, $category) {
+  if (!_simplesamlphp_auth_isEnabled()) {
+    // Exit without executing.
+    return;
+  }
+
+  $edit['data'] = array(
+    'pub_sso' => array(),
+  );
+
+  $saml_attributes = simplesamlphp_auth_get_attributes();
+  if (isset($saml_attributes['FirstName'])) {
+    $edit['data']['pub_sso']['FirstName'] = $saml_attributes['FirstName'];
+  }
+  if (isset($saml_attributes['LastName'])) {
+    $edit['data']['pub_sso']['LastName'] = $saml_attributes['LastName'];
+  }
+}
+
+/**
+ * A utility function for returning the directory in which SimpleSAMLphp
+ * certificates are stored.
+ *
+ * @return string
+ */
+function _pub_sso_get_cert_directory() {
+  $files_private_directory = variable_get('file_private_path', conf_path() . '/files-private');
+  // At least for some instances, Acquia reports its files-private without a
+  // directory delimiter slash.
+  if( strpos(variable_get('file_private_path'), '/files-private') === FALSE) {
+    $files_private_directory = str_replace('files-private', '/files-private', variable_get('file_private_path'));
+  }
+
+  return $files_private_directory . '/sso_cert';
+}

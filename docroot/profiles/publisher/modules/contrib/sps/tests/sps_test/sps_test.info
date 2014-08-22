@@ -1,0 +1,7 @@
+name = SPS Test Module
+description = SPS Test Module
+package = "Site Preview System"
+
+core = 7.x
+
+dependencies[] = sps

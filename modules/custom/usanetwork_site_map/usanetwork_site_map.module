@@ -37,7 +37,7 @@ function usanetwork_site_map_make_list($array) {
   $output = '<ul>'; 
   foreach ($array as $key => $value) { 
     $path = ltrim($value['link'],'/');
-    $output .= '<li>'. l($value['title'], url($value['link'])) . usanetwork_site_map_make_list($value['sub_links']) . '</li>'; 
+    $output .= '<li>'. l($value['title'], $path) . usanetwork_site_map_make_list($value['sub_links']) . '</li>'; 
   } 
   $output .= '</ul>'; 
          

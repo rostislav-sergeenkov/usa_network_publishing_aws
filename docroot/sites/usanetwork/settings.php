@@ -14,6 +14,29 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
 }
 
+// Next, determine the environment we're in.  Environment types (qa, acceptance,
+// stage and prod) are defined in project-config.yml.
+
+// Default to 'dev' if there's no env var set. This covers local dev.
+if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
+  $env = 'dev';
+}
+elseif (strpos($_ENV['AH_SITE_ENVIRONMENT'], 'devi') !== FALSE) {
+  $env = 'di';
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('qa1', 'qa2', 'qa3', 'qa4', 'qa5', 'hotfix-qa'))) {
+  $env = 'qa';
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('stage', 'hotfix-stage', 'tmp'))) {
+  $env = 'stage';
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('prod'))) {
+  $env = 'prod';
+
+  // This defaults to a stage URL.
+  $conf['sso_password_reset'] = 'https://sso.external.nbcuni.com/nbcucentral/jsp/pwchange.jsp';
+}
+
 /**
  * Add environment specific settings. These settings must come after the
  * inclusion of environment specific settings file(s) above in order to give the
@@ -274,3 +297,11 @@ $conf['surf_default_library_name'] = 'usanetwork_surf';
 $conf['surf_src_url'] = 'https://stage.surf.nbcuni.com/rdk/surf.js.php';
 $conf['surf_rdk_url'] = '/rdk/';
 $conf['surf_config_key'] = 'usanetwork';
+
+// Finally, include the local settings file if we're on a local machine. This
+// is still included conditionally because Jenkins clones lack a settings.local.
+// $local is populated by settings.p7core.php.
+if ($local && file_exists(dirname(__FILE__) . "/settings.local.php")) {
+  require_once dirname(__FILE__) . "/settings.local.php";
+}
+

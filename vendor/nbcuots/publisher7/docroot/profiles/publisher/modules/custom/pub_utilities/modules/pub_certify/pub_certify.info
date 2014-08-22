@@ -1,7 +1,0 @@
-name = Publisher Certify Utility
-description = Allows certify a branch and submit a github pull request.
-core = 7.x
-package = Publisher
-version = 7.x-1.0
-
-dependencies[] = pub_utilities

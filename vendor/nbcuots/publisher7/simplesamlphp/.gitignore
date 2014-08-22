@@ -1,4 +1,0 @@
-# Ignore log files.
-log/*.log
-cert/*.crt
-

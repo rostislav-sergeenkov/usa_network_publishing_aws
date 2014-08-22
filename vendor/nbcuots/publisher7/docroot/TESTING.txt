@@ -1,3 +1,0 @@
-test3
-
-Hello world ... this file is here for CI testing only. Ignore it.

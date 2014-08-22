@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Post feature.
- */
-
-include_once 'pub_post.features.inc';

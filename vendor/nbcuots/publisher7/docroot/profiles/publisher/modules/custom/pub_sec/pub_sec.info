@@ -1,4 +1,0 @@
-name = Publisher Sec
-description = Disable certain functionality.
-package = Publisher
-core = 7.x

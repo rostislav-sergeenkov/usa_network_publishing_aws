@@ -1,9 +1,0 @@
-{
-  "name": "nbcuots/publisher7",
-  "description": "The base Publisher7 platform.",
-  "license": "GPL-2.0+",
-  "require": {
-    "composer/installers": "dev-master",
-    "drush/drush": "6.2.0"
-  }
-}

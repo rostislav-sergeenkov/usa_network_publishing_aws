@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Site-specific settings file that is included on 'qa'-type environments.
- *
- * See README.settings.php.md for information about how this should be used.
- */

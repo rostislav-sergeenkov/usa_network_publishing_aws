@@ -1,3 +1,0 @@
-name = Email Login
-description = Forces users to login with an e-mail address instead of username.
-core = 7.x

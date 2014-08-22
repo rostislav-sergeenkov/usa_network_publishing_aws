@@ -1,5 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'acapi'
-gem 'p7buildkit', :git => 'git@github.com:NBCUOTS/PubUtils_buildkit.git', :tag => 'v0.5.2'
-gem 'rake'

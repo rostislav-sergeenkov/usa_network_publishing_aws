@@ -1,8 +1,0 @@
-project = "state_flow"
-core = "7.x"
-name = State Flow Schedule
-version = "7.x-3.x"
-description = Scheduling of publishing, unpublishing with State Flow
-dependencies[] = state_flow
-dependencies[] = date_popup
-package = "State Machine"

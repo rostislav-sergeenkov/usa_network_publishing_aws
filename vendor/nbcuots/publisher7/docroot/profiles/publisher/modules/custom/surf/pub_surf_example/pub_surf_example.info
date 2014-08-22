@@ -1,4 +1,0 @@
-name = Pub SURF Example
-description = Example module for SURF Integration.
-core = 7.x
-dependencies[] = surf

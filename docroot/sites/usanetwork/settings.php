@@ -43,7 +43,7 @@ elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('prod'))) {
  */
 
 $conf['environment_indicator_overwrite'] = TRUE;
-switch ($env]) {
+switch ($_ENV['AH_SITE_ENVIRONMENT']) {
   case 'local':
     if (empty($override_defaults)) {
       // Envronment indicator settings.

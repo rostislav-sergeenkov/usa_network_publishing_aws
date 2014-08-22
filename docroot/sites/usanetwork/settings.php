@@ -1,18 +1,15 @@
 <?php
 
-/**
- * Include files that contain the database settings and other environment
- * specific settings. We store the database settings in an external file so they
- * can be different per environment and because they should never exist in a
- * file that exists in a git/svn repository for extra security.
- */
-if (file_exists('../settings.usanetwork.php')) {
-  require('../settings.usanetwork.php');
-}
 
-if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-}
+
+// Set $site to the string shortname of the current multisite.
+$conf['pub_site_shortname'] = 'default';
+
+// Include the environment-agnostic file from Publisher7 core.
+require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
+
+// Next, include the environment-agnostic file owned by this project.
+require_once dirname(__FILE__) . "/settings.site.php";
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.
@@ -46,7 +43,7 @@ elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('prod'))) {
  */
 
 $conf['environment_indicator_overwrite'] = TRUE;
-switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+switch ($env]) {
   case 'local':
     if (empty($override_defaults)) {
       // Envronment indicator settings.

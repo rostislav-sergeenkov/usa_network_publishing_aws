@@ -1,6 +1,0 @@
-name = Video End Card
-description = enables end card functionality for video content
-core = 7.x
-package = USA Network
-
-dependencies[] = usanetwork_mpx_video

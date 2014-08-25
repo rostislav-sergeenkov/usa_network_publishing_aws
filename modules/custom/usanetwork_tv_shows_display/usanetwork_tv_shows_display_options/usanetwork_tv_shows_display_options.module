@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_tv_shows_display_options feature.
- */
-
-include_once 'usanetwork_tv_shows_display_options.features.inc';

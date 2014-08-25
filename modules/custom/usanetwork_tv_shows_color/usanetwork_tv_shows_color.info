@@ -1,8 +1,0 @@
-name = USANetwork TV Shows Color
-description = provides color styling for tv shows
-core = 7.x
-package = USA Network
-version = 7.x-1.0
-
-dependencies[] = usanetwork_tv_shows
-dependencies[] = usanetwork_tv_shows_color_field

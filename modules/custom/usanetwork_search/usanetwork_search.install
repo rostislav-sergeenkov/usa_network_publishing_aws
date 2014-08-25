@@ -1,8 +1,0 @@
-<?php
-
-/**
- * Implements hook_enable().
- */
-function usanetwork_search_enable() {
-  usanetwork_search_setup_acquia_search();
-}

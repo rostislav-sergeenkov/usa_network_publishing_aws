@@ -1,6 +1,0 @@
-name = usanetwork_field_episodic 
-description = Provide new field "Episodic" for A-Spot for editing additional fields.
-package = USA Network
-core = 7.x
-
-dependencies[] = usanetwork_aspot

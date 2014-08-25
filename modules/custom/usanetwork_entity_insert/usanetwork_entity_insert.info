@@ -1,9 +1,0 @@
-name=USA Entity Insert
-description=Add possibility of embedding entities inline with WYSIWYG
-core=7.x
-package=USA Network
-version=7.x-1.0
-
-dependencies[] = wysiwyg
-dependencies[] = entityreference
-dependencies[] = token_filter

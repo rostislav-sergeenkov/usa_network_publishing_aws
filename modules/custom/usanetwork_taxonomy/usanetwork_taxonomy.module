@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_taxonomy feature.
- */
-
-include_once 'usanetwork_taxonomy.features.inc';

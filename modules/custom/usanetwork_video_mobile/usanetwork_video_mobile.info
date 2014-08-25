@@ -1,7 +1,0 @@
-name = USANetwork Mobile Video
-description = defines how videos are displayed on mobile devices
-core = 7.x
-package = USA Network
-
-dependencies[] = pub_mpx
-dependencies[] = usanetwork_mpx_video

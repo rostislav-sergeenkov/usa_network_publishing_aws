@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_catchall_collection feature.
- */
-
-include_once 'usanetwork_catchall_collection.features.inc';

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_addanother feature.
- */
-
-include_once 'usanetwork_addanother.features.inc';

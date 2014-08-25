@@ -1,4 +1,0 @@
-name = USA Network Custom Field Formatters
-description = This module is used for creating custom formatters for CCK fields.
-core = 7.x
-package = "USA Network"

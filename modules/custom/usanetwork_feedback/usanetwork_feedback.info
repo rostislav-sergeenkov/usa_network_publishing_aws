@@ -1,8 +1,0 @@
-name = Usanetwork Feedback
-description = Usanetwork Feedback Form
-package = USA Network
-version = VERSION
-core = 7.x
-dependencies[] = captcha
-dependencies[] = recaptcha
-dependencies[] = usanetwork_webform

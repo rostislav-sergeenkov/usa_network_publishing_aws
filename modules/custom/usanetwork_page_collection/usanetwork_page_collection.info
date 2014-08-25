@@ -1,8 +1,0 @@
-name=USA Network Page Collections
-description=Provides functionality for building micro-sites inside Drupal
-core=7.x
-package=USA Network
-version=7.x-1.0
-
-files[] = usanetwork_page_collection.admin.inc
-files[] = usanetwork_page_collection.field.inc

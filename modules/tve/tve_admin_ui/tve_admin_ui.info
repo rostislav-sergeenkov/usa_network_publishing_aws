@@ -1,5 +1,0 @@
-name = TVE Admin UI (deprecated)
-description = Creates flexible admin user interface for TVE site settings. Provides API for abstract storage using native variables (ie. variable_get/variable_set).
-package = NBCU TVE
-core = 7.x
-version = 7.x-1.1

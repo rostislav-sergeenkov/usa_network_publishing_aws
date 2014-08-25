@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_linkit feature.
- */
-
-include_once 'usanetwork_linkit.features.inc';

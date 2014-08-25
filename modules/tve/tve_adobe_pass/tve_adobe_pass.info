@@ -1,7 +1,0 @@
-name = Adobe Pass
-description = Adobe Pass module. Provides authentication through Adobe Pass service.
-package = NBCU TVE
-core = 7.x
-version = 7.x-2.2
-dependencies[] = pub_analytics
-configure = admin/tve/adobe-pass

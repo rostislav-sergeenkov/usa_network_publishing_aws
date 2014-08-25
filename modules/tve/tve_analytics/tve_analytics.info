@@ -1,7 +1,0 @@
-name = TVE Analytics
-core = 7.x
-package = NBCU TVE
-version = 7.x-1.2
-
-dependencies[] = pub_analytics
-dependencies[] = sitecatalyst

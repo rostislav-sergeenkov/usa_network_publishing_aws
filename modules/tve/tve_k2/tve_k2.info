@@ -1,8 +1,0 @@
-name = TVE K2
-description = K2 Service provides MVPD suggestion by zip code.
-package = NBCU TVE
-core = 7.x
-version = 7.x-2.0
-
-dependencies[] = tve_auth
-configure = admin/tve/k2

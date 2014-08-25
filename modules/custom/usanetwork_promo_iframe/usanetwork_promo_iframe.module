@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the USANetwork Promo iFrame feature.
- */
-
-include_once 'usanetwork_promo_iframe.features.inc';

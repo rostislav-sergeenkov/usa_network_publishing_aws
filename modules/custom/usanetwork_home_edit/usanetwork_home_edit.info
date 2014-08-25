@@ -1,7 +1,0 @@
-name = USANetwork Homepage Edit
-description = adds tweaks on edit page of homepage content type
-core = 7.x
-package = USA Network
-version = 7.x-1.0
-
-dependencies[] = usanetwork_home

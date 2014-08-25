@@ -1,9 +1,0 @@
-name = usanetwork_theme_settings
-core = 7.x
-package = USA Network
-php = 5.2.4
-dependencies[] = ctools
-dependencies[] = strongarm
-features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
-features[variable][] = theme_settings

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_media_gallery feature.
- */
-
-include_once 'usanetwork_media_gallery.features.inc';

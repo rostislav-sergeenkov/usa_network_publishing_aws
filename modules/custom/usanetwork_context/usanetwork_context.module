@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the usanetwork_context feature.
- */
-
-include_once 'usanetwork_context.features.inc';

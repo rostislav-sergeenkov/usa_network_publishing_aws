@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Fix field collection field indexes.
+ */
+function usanetwork_tv_shows_update_7000() {
+  $query = db_select('field_config', 'fc', array('fetch' => PDO::FETCH_ASSOC));
+  $query->fields('fc');
+  $query->condition('type', 'field_collection');
+  $results = $query->execute();
+  foreach ($results as $record) {
+    $field = unserialize($record['data']);
+    $field_data = field_read_field($record['field_name'], array(
+      'id' => $record['id'],
+    ));
+
+    // Populate storage information.
+    module_load_install($field_data['module']);
+    $schema = (array) module_invoke($field_data['module'], 'field_schema', $field_data);
+    $schema += array('columns' => array(), 'indexes' => array());
+
+    $field['indexes'] = $schema['indexes'];
+
+    db_update('field_config')
+    ->fields(array(
+        'data' => serialize($field),
+      ))
+    ->condition('id', $record['id'])
+    ->execute();
+  }
+}

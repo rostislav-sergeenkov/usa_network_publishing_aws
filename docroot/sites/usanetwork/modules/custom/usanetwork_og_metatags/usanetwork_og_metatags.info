@@ -1,0 +1,10 @@
+name = usanetwork_og_metatags
+description = Provides OG metatag configuration
+core = 7.x
+package = USA Network
+dependencies[] = entity_token
+dependencies[] = metatag
+dependencies[] = metatag_opengraph
+features[features_api][] = api:2
+features[metatag][] = global:frontpage
+features[metatag][] = node:usa_homepage

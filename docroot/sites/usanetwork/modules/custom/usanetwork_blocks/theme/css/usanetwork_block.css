@@ -1,0 +1,149 @@
+/*
+css for Footer Message
+*/
+#footer-message {
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  line-height: 1.7em;
+}
+
+/*
+css for Ie browser version detection
+*/
+#lackOfFeaturesModal-main {
+   background-color: black;
+   position: fixed;
+   top: 0px;
+   padding-bottom: 50px;
+   height: 1000px;
+   width: 100%;
+   left: 0px;
+   z-index: 999;
+}
+#lackOfFeaturesModal {
+  margin-top: 85px;
+  margin-bottom: 20px;
+  margin-left: 220px;
+  width: 600px;
+  border: black solid 1px;
+  padding: 0px;
+  background-color: black;
+  position: absolute;
+}
+#lackOfFeaturesModalIE {
+  border-top: solid #D8D8D8 1px;
+  padding-top: 20px;
+  padding-bottom: 0.02em;
+}
+#lackOfFeaturesModal-modal-header-main {
+  background-color: black;
+}
+#lackOfFeaturesModal-modal-header {
+  background-color: #3b3b3b;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 1em;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 0.5em;
+  margin-bottom: -0.5em;
+}
+.lackOfFeaturesModal-modal-head {
+  color: white;
+  display: inline-block;
+  font: 200 1.25em/26px Proxima N W01 Bold, Helvetica, Arial, sans-serif;
+  font-family: Proxima N W01 Bold, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+#lackOfFeaturesModal-modal-footer-main {
+  background-color: black;
+  height: 20px;
+}
+ #lackOfFeaturesModal-modal-footer {
+  background-color: #3b3b3b;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 20px;
+}
+#lackOfFeaturesModal-modal-main-body {
+  font-size: 24px;
+  padding-left: 15px;
+  padding-right: 0px;
+  border: solid black 1px;
+  padding-bottom: 40px;
+  background: url('../images/browserdetectbg.png') repeat 0 0;
+}
+#lackOfFeaturesModal h2 {
+  color: #4F4F4F;
+  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  margin-bottom: 3.6144%;
+  text-transform: none;
+}
+#lackOfFeaturesModal p {
+  color: #4F4F4F;
+  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin-bottom: .5em;
+  text-transform: none;
+}
+#lackOfFeaturesModalIE {
+  color: #4F4F4F;
+  font-family: Proxima N W01 Smbd, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin-bottom: -15px;
+  text-transform: none;
+}
+#bullet-list {
+  margin: 0 -15px;
+}
+#lackOfFeaturesModal-bullet-list1,
+#lackOfFeaturesModal-bullet-list2,
+#lackOfFeaturesModal-bullet-list3 {
+  float: left;
+  margin: 0 0 0 0;
+  padding: 0;
+  font-family: Proxima N W01 Reg, Arial, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+#lackOfFeaturesModal-bullet-list3 {
+  padding-left: 0px;
+  font-family: Proxima N W01 Reg,Arial,sans-serif;
+  border: none;
+  cursor: pointer;
+}
+.lackOfFeaturesModal-ietext {
+  font-size: 12px
+}
+.lackOfFeaturesModal-ietextol {
+  margin-left: 20px
+}
+.lackOfFeaturesModal-close-modal {
+  background-image: url('../images/close.jpg');
+  background-position: 0px -601px;
+  float: right;
+  box-shadow: none;
+  color: black !important;
+  cursor: pointer;
+  direction: ltr;
+  display: block;
+  filter: none !important;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  height: 19px;
+  line-height: inherit;
+  overflow: hidden;
+  text-decoration: none;
+  text-indent: 100%;
+  text-shadow: none;
+  white-space: norap;
+  width: 20px;
+}
+.chromeframe {
+  display: none;
+}

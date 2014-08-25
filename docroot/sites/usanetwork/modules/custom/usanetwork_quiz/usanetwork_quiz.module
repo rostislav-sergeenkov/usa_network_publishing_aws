@@ -1,0 +1,810 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network Quizzes feature.
+ */
+
+include_once 'usanetwork_quiz.features.inc';
+
+define('USANETWORK_QUIZ_DEFAULT_COLOR', '#0ab6e8');
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_quiz_theme() {
+  $module_path = drupal_get_path('module', 'usanetwork_quiz');
+  return array(
+    'usanetwork_quiz' => array(
+      'variables' => array('node' => NULL),
+      'template' => 'usanetwork-quiz',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_splash' => array(
+      'variables' => array('node' => NULL, 'image' => NULL, 'description' => NULL, 'sidebar' => NULL, 'entry_text' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-splash',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_questions' => array(
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-questions',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_question' => array(
+      'variables' => array('question_id' => NULL, 'delta' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-question',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_answer' => array(
+      'variables' => array('answer_id' => NULL, 'type' => NULL, 'delta' => NULL,  'quiz_type' => NULL, 'quiz_theme' => NULL),
+      'template' => 'usanetwork-quiz-answer',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_results' => array(
+      'variables' => array('node' => NULL, 'sidebar' => NULL, 'repeat_text' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-results',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_result' => array(
+      'variables' => array('result_id' => NULL, 'quiz_type' => NULL, 'quiz_theme' => NULL, 'visible' => TRUE),
+      'template' => 'usanetwork-quiz-result',
+      'path' => $module_path . '/templates',
+    ),
+    'usanetwork_quiz_sidebar' => array(
+      'variables' => array('node' => NULL, 'phase' => 'spash'),
+      'file' => 'usanetwork_quiz.theme.inc',
+    ),
+    'usanetwork_quiz_mpx_video' => array(
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+      'file' => 'usanetwork_quiz.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_quiz_menu() {
+  $items = array();
+
+  $items['admin/usanetwork/quiz'] = array(
+    'title' => 'Quizzes',
+    'description' => 'Quizzes configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_quiz_config_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'usanetwork_quiz.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function usanetwork_quiz_field_extra_fields() {
+  $extra['node']['quiz'] = array(
+    'display' => array(
+      'quiz' => array(
+        'label' => t('Quiz'),
+        'description' => t('Rendered quiz content'),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
+  $extrafields = field_extra_fields_get_display('node', $node->type, $view_mode);
+  $extrafield_name = 'quiz';
+  if ($node->type == 'quiz') {
+    if (isset($extrafields[$extrafield_name]) && isset($extrafields[$extrafield_name]['visible']) && $extrafields[$extrafield_name]['visible']) {
+      $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+      $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+      if ($quiz_theme && $quiz_theme != '_default') {
+        $theme_info = _usanetwork_quiz_themes($quiz_theme);
+      }
+
+      // build the content
+      $node->content[$extrafield_name] = array(
+        '#theme' => 'usanetwork_quiz',
+        '#node' => $node,
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.' . $quiz_type . '.js',
+            drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
+          ),
+          'css' => array(
+            drupal_get_path('module', 'usanetwork_quiz') . '/css/usanetwork_quiz.css',
+          ),
+        ),
+      );
+      // add color.css if exists
+      $color = _usanetwork_quiz_color_css($node, $quiz_theme);
+      if (!empty($color)) {
+        $node->content[$extrafield_name]['#attached']['css'][] = array(
+          'type' => 'inline',
+          'data' => $color,
+          'group' => CSS_THEME,
+        );
+      }
+
+      if (!empty($theme_info)) {
+        // attach css
+        if (!empty($theme_info['css'])) {
+          $theme_info['css'] = is_array($theme_info['css']) ? $theme_info['css'] : array($theme_info['css']);
+          foreach ($theme_info['css'] as $filename) {
+            $node->content[$extrafield_name]['#attached']['css'][] = array(
+              'data' => $theme_info['path'] . '/' . $filename,
+              'type' => 'file',
+              'group' => CSS_THEME,
+              'basename' => 'quiz.' . $quiz_theme . '.' . basename($filename),
+            );
+          }
+        }
+        // add color.css if exists
+        $color = _usanetwork_quiz_color_css($node, $quiz_theme);
+        if (!empty($color)) {
+          $node->content[$extrafield_name]['#attached']['css'][] = array(
+            'type' => 'inline',
+            'data' => $color,
+            'group' => CSS_THEME,
+          );
+        }
+
+        // attach js
+        if (!empty($theme_info['js'])) {
+          $theme_info['js'] = is_array($theme_info['js']) ? $theme_info['js'] : array($theme_info['js']);
+          foreach ($theme_info['js'] as $filename) {
+            $node->content[$extrafield_name]['#attached']['js'][] = array(
+              'data' => $theme_info['path'] . '/' . $filename,
+              'type' => 'file',
+              'group' => JS_THEME,
+              'basename' => 'quiz.' . $quiz_theme . '.' . basename($filename),
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
+  $quiz_show_id = _usanetwork_quiz_get_field_item_value($node, 'field_show', 'target_id');
+  $quiz_show = node_load($quiz_show_id);
+
+  // add classess and attributes
+  $vars['classes_array'][] = 'usanetwork-quiz-type-' . $quiz_type;
+  $container_id = drupal_html_id('usanetwork-quiz-' . $node->nid);
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] != '_default') {
+    $vars['classes_array'][] = 'usanetwork-quiz-theme-' . $vars['quiz_theme'];
+  }
+  $vars['attributes_array']['id'] = $container_id;
+
+  // add splash screen
+  $vars['splash'] = theme('usanetwork_quiz_splash', array(
+    'node' => $node,
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'splash')),
+  ));
+
+  // add questions
+  $vars['questions'] = theme('usanetwork_quiz_questions', array(
+    'node' => $node,
+    'visible' => empty($vars['splash']),
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'questions')),
+  ));
+
+  // add results
+  $vars['results'] = theme('usanetwork_quiz_results', array(
+    'node' => $node,
+    'visible' => FALSE,
+    'sidebar' => theme('usanetwork_quiz_sidebar', array('node' => $node, 'phase' => 'results')),
+  ));
+
+  $settings = array();
+  $settings['container'] = '#' . $container_id;
+  $settings['quizType'] = $quiz_type;
+  $settings['calculationMethod'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_calculation', 'value');
+  $settings['quizShow'] = $quiz_show->title;
+  $settings['quizTitle'] = $node->title;
+  drupal_add_js(array(
+    'usanetwork_quiz' => array(
+      $node->nid => $settings,
+    ),
+  ), 'setting');
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_splash template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_splash(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
+
+  // add classes
+  $vars['classes_array'][] = 'splash';
+  $vars['classes_array'][] = 'container';
+
+  // add splash screen variables
+  if (!isset($vars['description'])) {
+    $vars['description'] = _usanetwork_quiz_get_field_item_value($node, 'body', 'value');
+  }
+  if (!isset($vars['splash_image'])) {
+    $splash_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_splash_image', 'uri');
+    if (!empty($splash_image)) {
+      $vars['splash_image'] = theme('image', array('path' => $splash_image));
+    }
+  }
+  if (!isset($vars['entry_text'])) {
+    $vars['entry_text'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_entry_text', 'value');
+    $vars['entry_text'] = $vars['entry_text'] ? $vars['entry_text'] : t('Start');
+  }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_splash__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_questions template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_questions(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
+
+  // add classes
+  $vars['classes_array'][] = 'questions';
+  $vars['classes_array'][] = 'container';
+
+  // add content
+  $header_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_header_image', 'uri');
+  if (!empty($header_image)) {
+    $vars['header_image'] = theme('image', array('path' => $header_image));
+  }
+
+  $questions = field_get_items('node', $node, 'field_quiz_questions');
+  $vars['questions'] = array();
+  foreach ($questions as $delta => $question) {
+    $visible = $delta == 0 ? TRUE : FALSE;
+    $vars['questions'][] = theme('usanetwork_quiz_question', array(
+      'question_id' => $question['value'],
+      'delta' => $delta,
+      'quiz_type' => $vars['quiz_type'],
+      'quiz_theme' => $vars['quiz_theme'],
+      'visible' => $visible,
+    ));
+  }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_questions__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_question template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
+  // add classes
+  $vars['classes_array'][] = 'question';
+  if (isset($vars['delta'])) {
+    $vars['classes_array'][] = 'question-id-' . $vars['delta'];
+  }
+
+  // add content
+  $vars['question'] = $question = field_collection_item_load($vars['question_id']);
+  if ($question) {
+    $vars['type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_type', 'value', 0, 'field_collection_item');
+    $vars['answer_type'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_answer_type', 'value', 0, 'field_collection_item');
+    $vars['classes_array'][] = 'question-type-' . $vars['type'];
+    if (in_array($vars['type'], array('text', 'image_text', 'video_text'))) {
+      $vars['title'] = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_text', 'value', 0, 'field_collection_item');
+    }
+    if (in_array($vars['type'], array('image', 'image_text'))) {
+      $image = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_image', 'uri', 0, 'field_collection_item');
+      if (!empty($image)) {
+        $vars['image'] = theme('image', array('path' => $image));
+      }
+    }
+    if (in_array($vars['type'], array('video', 'video_text'))) {
+      $video = _usanetwork_quiz_get_field_item($question, 'field_quiz_question_video', 0, 'field_collection_item');
+      if (!empty($video)) {
+        $vars['video'] = theme('usanetwork_quiz_mpx_video', array(
+          'file' => $video,
+          'width' => 590,
+          'height' => 332,
+          'pub_mpx_player_parameters' => array(
+            'autoPlay' => 'true',
+          ),
+        ));
+      }
+    }
+    // add answers
+    $answers = field_get_items('field_collection_item', $question, 'field_quiz_answers');
+    $vars['answers'] = array();
+    foreach ($answers as $delta => $answer) {
+      $vars['answers'][] = theme('usanetwork_quiz_answer', array(
+        'type' => $vars['answer_type'],
+        'answer_id' => $answer['value'],
+        'quiz_type' => $vars['quiz_type'],
+        'quiz_theme' => $vars['quiz_theme'],
+        'delta' => $delta));
+    }
+  }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_type'];
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_question__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_answer template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_answer(&$vars) {
+  $vars['type'] = isset($vars['type']) ? $vars['type'] : 'text';
+
+  // add classes
+  $vars['classes_array'][] = 'answer';
+  if (isset($vars['delta'])) {
+    $vars['classes_array'][] = 'answer-id-' . $vars['delta'];
+    $vars['classes_array'][] = ($vars['delta'] % 2 == 0) ? 'odd' : 'even';
+  }
+  $vars['classes_array'][] = 'answer-type-' . $vars['type'];
+
+  // add content
+  $vars['answer'] = $answer = field_collection_item_load($vars['answer_id']);
+  if ($answer) {
+    $vars['title'] = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_text', 'safe_value', 0, 'field_collection_item');
+    $vars['value'] = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_value', 'value', 0, 'field_collection_item');
+    $image = _usanetwork_quiz_get_field_item_value($answer, 'field_quiz_answer_image', 'uri', 0, 'field_collection_item');
+    if (!empty($image)) {
+      $vars['image'] = theme('image', array('path' => $image));
+    }
+  }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_type'];
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_answer__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_results template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_results(&$vars) {
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $quiz_type = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_type', 'value');
+  $vars['quiz_type'] = isset($vars['quiz_type']) ? $vars['quiz_type'] : $quiz_type;
+  $quiz_theme = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_theme', 'value');
+  $vars['quiz_theme'] = isset($vars['quiz_theme']) ? $vars['quiz_theme'] : $quiz_theme;
+
+  // add classes
+  $vars['classes_array'][] = 'results';
+  $vars['classes_array'][] = 'container';
+
+  // add content
+  $header_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_header_image', 'uri');
+  if (!empty($header_image)) {
+    $vars['header_image'] = theme('image', array('path' => $header_image));
+  }
+  if (!isset($vars['repeat_text'])) {
+    $vars['repeat_text'] = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_repeat_text', 'value');
+    $vars['repeat_text'] = $vars['repeat_text'] ? $vars['repeat_text'] : t('Play Again');
+  }
+
+  $results = field_get_items('node', $node, 'field_quiz_results');
+  $vars['results'] = array();
+  foreach ($results as $delta => $result) {
+    $visible = $delta == 0 ? TRUE : FALSE;
+    $vars['results'][] = theme('usanetwork_quiz_result', array(
+      'result_id' => $result['value'],
+      'quiz_type' => $vars['quiz_type'],
+      'quiz_theme' => $vars['quiz_theme'],
+      'visible' => $visible,
+    ));
+  }
+
+  // template suggestions
+  $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_type'];
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_results__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_result template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_result(&$vars) {
+  // add classes
+  $vars['classes_array'][] = 'result';
+
+  // add content
+  $vars['result'] = $result = field_collection_item_load($vars['result_id']);
+  if ($result) {
+    $vars['range'] = _usanetwork_quiz_get_field_item($result, 'field_quiz_result_range', 0, 'field_collection_item');
+    $image = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_image', 'uri', 0, 'field_collection_item');
+    if (!empty($image)) {
+      $vars['image'] = theme('image', array('path' => $image));
+    }
+    $vars['title'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_title', 'safe_value', 0, 'field_collection_item');
+    $vars['text'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_text', 'value', 0, 'field_collection_item');
+    $vars['share_text'] = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_share_text', 'safe_value', 0, 'field_collection_item');
+    if (!$vars['share_text']) {
+      $vars['share_text'] = strip_tags($vars['text']);
+    }
+  }
+
+  // template suggestions
+  if ($vars['quiz_type']) {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_type'];
+    $vars['trivia'] = false;
+    if ($vars['quiz_type'] == 'trivia'){
+      $vars['trivia'] = true;
+    }
+  }
+  if ($vars['quiz_theme'] && $vars['quiz_theme'] !== '_default') {
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_theme'];
+    $vars['theme_hook_suggestions'][] = 'usanetwork_quiz_result__' . $vars['quiz_type'] . '__' . $vars['quiz_theme'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Preprocess callback for usanetwork_quiz_sidebar template.
+ */
+function usanetwork_quiz_preprocess_usanetwork_quiz_sidebar(&$vars) {
+  $vars['content'] = isset($vars['content']) ? $vars['content'] : array();
+  if (!isset($vars['node'])) {
+    return;
+  }
+  $node = $vars['node'];
+  $phase = $vars['phase'];
+
+  // add share bar
+  $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
+  $sharebar['#title'] = t('Share:');
+  if ($phase == 'results') {
+    $sharebar['#title'] = t('Share result:');
+  }
+  $sharebar['#prefix'] = '<div class="sharebar">';
+  $sharebar['#suffix'] = '</div>';
+  unset($sharebar['#weight']);
+  $vars['content']['sharebar'] = $sharebar;
+
+  // add ads
+  $splash = theme('usanetwork_quiz_splash');
+  if (($phase == 'splash' && !empty($splash)) || ($phase == 'questions' && empty($splash))) {
+    $block = block_load('dart', 'dart-tag-300x250_ifr_reload');
+    $vars['content']['ads'] = _block_get_renderable_array(_block_render_blocks(array($block)));
+    $vars['content']['ads']['#prefix'] = '<div class="ad-container">';
+    $vars['content']['ads']['#suffix'] = '</div>';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter node edit form.
+ */
+function usanetwork_quiz_form_quiz_node_form_alter(&$form, &$form_state) {
+  // add questions validation
+  $lang = $form['field_quiz_questions']['#language'];
+  $form['field_quiz_questions'][$lang]['#element_validate'][] = '_usanetwork_quiz_question_validate';
+}
+
+/**
+ * Questions field validate callback.
+ */
+function _usanetwork_quiz_question_validate($element, &$form_state, $form) {
+  $validate = false;
+  if (isset($form_state['triggering_element']['#limit_validation_errors']) && !empty($form_state['triggering_element']['#limit_validation_errors'])) {
+    foreach ($form_state['triggering_element']['#limit_validation_errors'] as $validation_array) {
+      if (count(array_intersect_assoc($validation_array, $element['#array_parents'])) == count($validation_array)) {
+        $validate = true;
+        break;
+      }
+    }
+  }
+  else {
+    $validate = true;
+  }
+  if (!$validate) {
+    return;
+  }
+  $lang = isset($element['#language']) ? $element['#language'] : LANGUAGE_NONE;
+  $questions = $element;
+  $values = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
+  $quiz_type = $form_state['values']['field_quiz_type'][$lang];
+  // validate questions
+  foreach (element_children($questions) as $delta) {
+    $question = $questions[$delta];
+    if (isset($question['field_quiz_question_type'])) {
+      $question_values = $values[$lang][$delta];
+      $question_type = $question_values['field_quiz_question_type'][$lang][0]['value'];
+      if (is_array($question_values)) {
+        $question_text = $question_values['field_quiz_question_text'][$lang][0]['value'];
+        $question_image = $question_values['field_quiz_question_image'][$lang][0]['fid'];
+        $question_video = $question_values['field_quiz_question_video'][$lang][0]['fid'];
+        switch ($question_type) {
+          case 'text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            break;
+          case 'image':
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video':
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
+            }
+            break;
+          case 'image_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_image)) {
+              form_error($question['field_quiz_question_image'], t('Question image is required for selected question type.'));
+            }
+            break;
+          case 'video_text':
+            if (empty($question_text)) {
+              form_error($question['field_quiz_question_text'], t('Question text is required for selected question type.'));
+            }
+            if (empty($question_video)) {
+              form_error($question['field_quiz_question_video'], t('Question video is required for selected question type.'));
+            }
+            break;
+        }
+      }
+
+      $answer_type = $question_values['field_quiz_answer_type'][$lang][0]['value'];
+      $answers = $question['field_quiz_answers'][$lang];
+
+      // validate answers
+      $answer_sum = 0;
+      foreach (element_children($answers) as $answer_delta) {
+        $answer = $answers[$answer_delta];
+        $answer_values = drupal_array_get_nested_value($form_state['values'], $answer['#array_parents']);
+        if (is_array($answer_values)) {
+          if($quiz_type == 'trivia'){
+            $answer_value = $answer_values['field_quiz_answer_value'][$lang][0]['value'];
+            if (in_array($answer_value, array(0, 1))) {
+              if ($answer_sum !== NULL) {
+                $answer_sum += $answer_value;
+              }
+            } else {
+              $answer_sum = NULL;
+              form_error($answer['field_quiz_answer_value'], t('Answer value must be 0 or 1.'));
+            }
+          }
+          $answer_text = $answer_values['field_quiz_answer_text'][$lang][0]['value'];
+          $answer_image = $answer_values['field_quiz_answer_image'][$lang][0]['fid'];
+          switch ($answer_type) {
+            case 'text':
+              if (empty($answer_text)) {
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
+              }
+              break;
+            case 'image':
+              if (empty($answer_image)) {
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
+              }
+              break;
+            case 'image_text':
+              if (empty($answer_text)) {
+                form_error($answer['field_quiz_answer_text'], t('Answer text is required for selected answer type.'));
+              }
+              if (empty($answer_image)) {
+                form_error($answer['field_quiz_answer_image'], t('Answer image is required for selected answer type.'));
+              }
+              break;
+          }
+        }
+      }
+      if($quiz_type == 'trivia'){
+        if ($answer_sum !== NULL && $answer_sum != 1) {
+          form_error($answers, t('Question must have one correct answer.'));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Returns single field value.
+ */
+function _usanetwork_quiz_get_field_item($entity, $field_name, $delta = 0, $entity_type = 'node', $langcode = NULL) {
+  $items = field_get_items($entity_type, $entity, $field_name, $langcode);
+
+  if ($items) {
+    $item = isset($items[$delta]) ? $items[$delta] : NULL;
+    return $item;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns single field property value.
+ */
+function _usanetwork_quiz_get_field_item_value($entity, $field_name, $key, $delta = 0, $entity_type = 'node', $langcode = NULL) {
+  $item = _usanetwork_quiz_get_field_item($entity, $field_name, $delta, $entity_type, $langcode);
+
+  if ($item && isset($item[$key])) {
+    return $item[$key];
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns list of available quiz themes.
+ */
+function _usanetwork_quiz_themes($theme_name = NULL) {
+  $quiz_themes = array();
+
+  $theme = variable_get('theme_default');
+  $themes = list_themes();
+
+  $base_theme = array();
+  $ancestor = $theme;
+  while ($ancestor && isset($themes[$ancestor]->base_theme)) {
+    $ancestor = $themes[$ancestor]->base_theme;
+    $base_theme[] = $themes[$ancestor];
+  }
+
+  foreach (array_reverse($base_theme) as $base) {
+    _usanetwork_quiz_scan_theme($base->name, $quiz_themes);
+  }
+  _usanetwork_quiz_scan_theme($theme, $quiz_themes);
+
+  drupal_alter('usanetwork_quiz_themes', $quiz_themes);
+
+  foreach($quiz_themes as $delta => $quiz_theme) {
+    $path = $quiz_theme['path'];
+    if (empty($path) || !file_exists($path) || !is_dir($path)) {
+      unset($quiz_themes[$delta]);
+    }
+  }
+
+  if (empty($theme_name)) {
+    return $quiz_themes;
+  }
+  elseif (isset($quiz_themes[$theme_name])) {
+    return $quiz_themes[$theme_name];
+  }
+}
+
+/**
+ * Search for quiz themes in Drupal theme folder.
+ */
+function _usanetwork_quiz_scan_theme($theme, &$quiz_themes) {
+  $theme_quiz_themes = file_scan_directory(drupal_get_path('theme', $theme) . '/quiz_themes', '/inc$/');
+  foreach ($theme_quiz_themes as $file => $values) {
+    include_once(DRUPAL_ROOT . '/' . $file);
+    $function = 'usanetwork_quiz_theme_' . $values->name;
+    if (function_exists($function)) {
+      $quiz_themes[$values->name] = $function();
+      $quiz_themes[$values->name]['path'] = str_replace('/' . $values->filename, '', $file);
+    }
+  }
+}
+
+/**
+ * Returns allowed values for quiz theme field.
+ */
+function _usanetwork_quiz_theme_allowed_values($field, $instance, $entity_type, $entity, $cacheable) {
+  $quiz_themes = _usanetwork_quiz_themes();
+  $theme_options = array(
+    '_default' => 'Default',
+  );
+  foreach ($quiz_themes as $name => $theme) {
+    $theme_options[$name] = $theme['title'];
+  }
+  return $theme_options;
+}
+
+/**
+ * Returns processed color.css content.
+ */
+function _usanetwork_quiz_color_css($node, $theme) {
+  $css = '';
+  $theme_info = _usanetwork_quiz_themes($theme);
+  if ($theme_info){
+    $filename = $theme_info['path'] . '/css/color.css';
+  } else {
+    $filename = drupal_get_path('module', 'usanetwork_quiz') . '/css/color.css';
+  }
+  if (file_exists($filename)) {
+    $css = file_get_contents($filename);
+    $color = _usanetwork_quiz_accent_color($node);
+    $color = empty($color) ? USANETWORK_QUIZ_DEFAULT_COLOR : $color;
+    $css = str_replace('$accent-color', $color, $css);
+    $color_hover = _usanetwork_quiz_get_field_item_value($node, 'field_usa_tv_show_hover_color', 'rgb');
+    $color_hover = empty($color_hover) ? $color : $color_hover;
+    $css = str_replace('$accent-hover-color', $color_hover, $css);
+  }
+
+  return $css;
+}
+
+/**
+ * Returns accent color.
+ */
+function _usanetwork_quiz_accent_color($node) {
+  $color = _usanetwork_quiz_get_field_item_value($node, 'field_usa_tv_show_color', 'rgb');
+  if (empty($color)) {
+    $show_nid = _usanetwork_quiz_get_field_item_value($node, 'field_show', 'target_id');
+    if (!empty($show_nid) && $show = node_load($show_nid)) {
+      $color = _usanetwork_quiz_get_field_item_value($show, 'field_usa_tv_show_color', 'rgb');
+    }
+  }
+
+  return $color;
+}

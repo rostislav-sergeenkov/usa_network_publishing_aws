@@ -1,0 +1,8 @@
+@import 'bottom-drawer/extend';
+
+.mega-sub-nav-container {
+  @extend %bottom-drawer
+}
+[id="personalization-drawer"] {
+  @extend %bottom-drawer
+}

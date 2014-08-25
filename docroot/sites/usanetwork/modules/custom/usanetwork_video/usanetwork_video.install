@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork video needs.
+ *
+ * @ingroup USA Network
+ */
+
+/*
+ * Create what's hot video queue
+function usanetwork_video_update_7100() {
+  $entity = entity_create('queues', array('type' =>'video_queue'));
+  $entity->title = "What's Hot";
+  $entity->save();
+
+}
+*/
+
+/**
+ * Add revision to queue
+ */
+function usanetwork_video_update_7100() {
+  $queue = db_select('queues', 'q')
+    ->fields('q')
+    ->condition('title', "What's Hot")
+    ->execute()->fetchObject();
+  db_update('queues')
+    ->fields(array('vid' => $queue->qid))
+    ->condition('qid', 1)
+    ->execute();
+  db_insert('queues_revision')
+    ->fields(array( 
+      'qid' => $queue->qid, 
+      'vid' => 1,
+      'type' => $queue->type,
+      'title' => $queue->title,
+      'status' => $queue->status))
+    ->execute();
+}

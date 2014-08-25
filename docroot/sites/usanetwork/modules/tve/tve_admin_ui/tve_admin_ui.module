@@ -1,0 +1,227 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TVE Admin UI module.
+ *
+ * @ingroup tve_admin_ui
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function tve_admin_ui_menu() {
+  $items = array();
+  // Get all admin UI sections (invokes).
+  $admin_sections = _tve_admin_ui_admin_sections();
+
+  // Register menu callbacks for all sections.
+  foreach ($admin_sections as $section => $info) {
+    _tve_admin_ui_prepare_info($info, $section);
+    $items['admin/' . $info['path']] = array(
+      'title' => $info['title'],
+      'description' => $info['description'],
+      'page callback' => '_tve_admin_ui_section_callback',
+      'page arguments' => array($section),
+      'access arguments' => array('access_' . $section),
+      'weight' => $info['weight'],
+      'type' => $info['type'],
+      'file' => 'tve_admin_ui.pages.inc',
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_admin_ui_permission() {
+  // Base administer permission.
+  $permissions = array(
+    'access_tve_admin_ui' => array(
+      'title' => t('Administer TVE settings'),
+    ),
+  );
+
+  // Get all admin UI sections (invokes).
+  $admin_sections = _tve_admin_ui_admin_sections();
+  foreach ($admin_sections as $section => $info) {
+    _tve_admin_ui_prepare_info($info, $section);
+    // Permission for specific section.
+    $permissions['access_' . $section] = array(
+      'title' => t(
+        'Access TVE administration: !section',
+        array(
+          '!section' => $info['title']
+        )
+      ),
+    );
+  }
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_hook_info().
+ */
+function tve_admin_ui_hook_info() {
+  $hooks['tve_admin_ui_info'] = array(
+    'group' => 'tve_admin_ui',
+  );
+
+  return $hooks;
+}
+
+/**
+ * Prepares section info array from invokation.
+ * Return of a hook_tve_admin_ui_info is "preprocessed" here:
+ *  - set default value for non-mandatory property;
+ *  - set default for an empty property.
+ *
+ * @param array $info
+ *   array of section configuration parameters
+ * @param string $section
+ *   settings section id
+ */
+function _tve_admin_ui_prepare_info(&$info, $section) {
+  if (!isset($info['path'])) {
+    // Path to settings page: admin/[path].
+    $info['path'] = $section;
+  }
+  if (!isset($info['title'])) {
+    // Title.
+    $info['title'] = $section;
+  }
+  if (!isset($info['description'])) {
+    // Description.
+    $info['description'] = t('TVE administration section !section', array('!section' => $section));
+  }
+  if (!isset($info['weight'])) {
+    $info['weight'] = 0;
+  }
+  if (!isset($info['type'])) {
+    // Type of a menu item.
+    $info['type'] = MENU_LOCAL_TASK;
+  }
+  if (!isset($info['variable prefix'])) {
+    $info['variable prefix'] = '';
+  }
+  if (!isset($info['variables'])) {
+    $info['variables'] = array();
+  }
+  if (!isset($info['no submit'])) {
+    $info['no submit'] = FALSE;
+  }
+  if (isset($info['includes']) && is_array($info['includes'])) {
+    // Include files from outer modules.
+    if (function_exists('drupal_get_path')) {
+      foreach ($info['includes'] as $module => $filename) {
+        $file = DRUPAL_ROOT . '/' . drupal_get_path('module', $module) . "/$filename";
+        if (is_file($file)) {
+          require_once $file;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Prepares section values before saving to database.
+ * Skips unwanted elements from form_state/values array.
+ *
+ * @param array $form_state
+ *   form state array
+ *
+ * @return array
+ *   array of prepared key-value pairs
+ */
+function _tve_admin_ui_prepare_values($form_state) {
+  $values = array();
+  $variables = _tve_admin_ui_variables();
+  foreach ($form_state['values'] as $key => $value) {
+    if (!array_key_exists($key, $variables)) {
+      continue;
+    }
+    $values[$key] = $value;
+  }
+
+  return $values;
+}
+
+/**
+ * Get all variable names and its default values.
+ *
+ * @return array of pairs key-value for all invokations.
+ */
+function _tve_admin_ui_variables() {
+  $variables = array();
+  // Get all admin UI sections (invokes).
+  $admin_sections = _tve_admin_ui_admin_sections();
+  foreach ($admin_sections as $section => $info) {
+    _tve_admin_ui_prepare_info($info, $section);
+    foreach ($info['variables'] as $var_name => $default_value) {
+      $variables[$var_name] = $default_value;
+    }
+  }
+
+  return $variables;
+}
+
+/**
+ * Wrapper around standard "variable_set" function.
+ * Adds prefix to variable name.
+ *
+ * @param string $name
+ * @param mixed $value
+ * @param string $prefix
+ */
+function _tve_admin_ui_variable_set($name, $value, $prefix = '') {
+  variable_set($prefix . $name, $value);
+}
+
+/**
+ * Wrapper around standard "variable_get" function.
+ * Adds prefix to variable name.
+ *
+ * @param string $name
+ * @param mixed $default
+ * @param string $prefix
+ *
+ * @return mixed variable value.
+ */
+function _tve_admin_ui_variable_get($name, $default = NULL, $prefix = '') {
+  return variable_get($prefix . $name, $default);
+}
+
+/**
+ * Get all variables (defaults) for admin section.
+ *
+ * @param array $info - admin UI section info.
+ * @return array
+ */
+function _tve_admin_ui_variables_get($info) {
+  if (!isset($info['variables'])) {
+    return array();
+  }
+  $vars = $info['variables'];
+  foreach ($vars as $key => $value) {
+    $vars[$key] = _tve_admin_ui_variable_get($key, $value, $info['variable prefix']);
+  }
+
+  return $vars;
+}
+
+/**
+ * Get all admin UI sections (pages declared by hook_tve_admin_ui_info).
+ */
+function _tve_admin_ui_admin_sections() {
+  $sections = &drupal_static(__FUNCTION__, array());
+  if (empty($sections)) {
+    $sections = module_invoke_all('tve_admin_ui_info');
+    // Allow altering of hook_tve_admin_ui_info.
+    drupal_alter('tve_admin_ui_info', $sections);
+  }
+
+  return $sections;
+}

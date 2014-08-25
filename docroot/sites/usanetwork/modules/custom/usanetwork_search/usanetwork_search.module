@@ -1,0 +1,196 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_search feature.
+ */
+
+include_once 'usanetwork_search.features.inc';
+
+/**
+ * Setup Acquia Search variables and environment.
+ */
+function usanetwork_search_setup_acquia_search() {
+  global $conf;
+  $ret = FALSE;
+  $updates = array();
+
+  // Core Search settings.
+  $table = 'apachesolr_search_page';
+  $page_id = 'core_search';
+  $env_id = variable_get('apachesolr_default_environment', 'solr');
+
+  // Bundles that will be indexed.
+  $bundles = array(
+    'catchall_page',
+    'media_gallery',
+    'person',
+    'tv_episode',
+    'tv_show',
+    'usanetwork_static_page',
+    'usa_tve_video',
+    'usa_video',
+  );
+
+  //allow the above bundles to have per-node exclusion options
+  foreach ($bundles as $bundle) {
+    variable_set('apachesolr_exclude_node_enable_' . $bundle, 1);
+  }
+
+  // We define search boost per content type
+  $apachesolr_search_type_boosts = array(
+    'usanetwork_aspot' => '0',
+    'catchall_page' => '0',
+    'usa_homepage' => '0',
+    'media_gallery' => '0',
+    'movie' => '0',
+    'person' => '0',
+    'usanetwork_promo' => '0',
+    'usanetwork_static_page' => '0',
+    'tv_episode' => '0',
+    'tv_season' => '0',
+    'tv_show' => '13.0',
+    'usa_video' => '5.0',
+    'usa_tve_video' => '5.0',
+    'webform' => '0',
+  );
+  apachesolr_environment_variable_set($env_id, 'apachesolr_search_type_boosts', $apachesolr_search_type_boosts);
+
+  // Set the apachesolr index bundles.
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
+  apachesolr_index_set_bundles($env_id, 'node', $bundles);
+  $updates[] = 'apachesolr_index_set_bundles:' . join(';', $bundles);
+
+  if (count($updates) > 0) {
+    $ret = t('Updated the acquia search environment and variables: @updates', array('@updates' => join(', ', array_values($updates))));
+  }
+  if ($ret) {
+    $ret .= "\n";
+    watchdog('usanetwork_search_setup', $ret);
+    drupal_set_message($ret);
+    return $ret;
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function usanetwork_search_node_update($node) {
+  // if the node was unpublished
+  if (isset($node->original) && $node->original->status == NODE_PUBLISHED && $node->status == NODE_NOT_PUBLISHED) {
+    // remove from index
+    $env_id = apachesolr_default_environment();
+    module_load_include('inc', 'apachesolr', 'apachesolr.index');
+    apachesolr_index_delete_entity_from_index($env_id, 'node', $node->nid);
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_search_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'search_result' || $view_mode == 'search_index') {
+    if (!isset($node->content['field_usa_og_description'])) {
+      $instance = field_info_instance('node', 'field_usa_og_description', $node->type);
+      if ($instance !== null) {
+        // add description fallback
+        $description = _usanetwork_token_og_description($node);
+        $node->field_usa_og_description = array(
+          LANGUAGE_NONE => array(
+            array(
+              'value' => $description,
+              'safe_value' => $description,
+            ),
+          ),
+        );
+        $node->content['field_usa_og_description'] = field_view_field('node', $node, 'field_usa_og_description', $view_mode, $langcode);
+      }
+    }
+
+    if (!isset($node->content['field_usa_og_image'])) {
+      $instance = field_info_instance('node', 'field_usa_og_image', $node->type);
+      if ($instance !== null) {
+        // add image fallback
+        $image = _usanetwork_token_og_image($node);
+        $node->field_usa_og_image = array(
+          LANGUAGE_NONE => array(
+            array(
+              'uri' => $image,
+            ),
+          ),
+        );
+        $node->content['field_usa_og_image'] = field_view_field('node', $node, 'field_usa_og_image', $view_mode, $langcode);
+      }
+    }
+
+    if (isset($node->content['title'])) {
+      // change the title
+      $title_prefix = '';
+      $title_suffix = '';
+      $show = _usanetwork_token_get_node_tv_show($node);
+      if ($show) {
+        $title_prefix .= $show->title . ' ';
+        switch ($node->type) {
+          case 'catchall_page':
+            $title_prefix .= t('Feature') . ' ';
+            break;
+          case 'tv_show':
+            $title_prefix = '';
+            break;
+          case 'media_gallery':
+            $title_prefix .= t('Photos') . ' ';
+            break;
+          case 'person':
+            $title_prefix .= t('Characters & Crew') . ' ';
+            break;
+          case 'usa_video':
+          case 'usa_tve_video':
+            $title_prefix .= t('Videos') . ' ';
+            break;
+        }
+      }
+
+      if (!empty($title_prefix)) {
+        $title_prefix .= '- ';
+      }
+      $title = $title_prefix . check_plain($node->title) . $title_suffix;
+      $node->content['title'][0]['#markup'] = str_replace(check_plain($node->title), $title, $node->content['title'][0]['#markup']);
+    }
+  }
+}
+
+/**
+ * Implements hook_apachesolr_process_results().
+ */
+function usanetwork_search_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+  // if for some reason unpublished content appears in search results remove it
+  foreach ($results as $id => $result) {
+    $entity_type = isset($result['fields']['entity_type']) ? $result['fields']['entity_type'] : false;
+    $entity_id = isset($result['fields']['entity_id']) ? $result['fields']['entity_id'] : false;
+
+    if ($entity_type && $entity_id) {
+      $entity = entity_load_single($entity_type, $entity_id);
+      if ($entity) {
+        $published = true;
+        switch ($entity_type) {
+          case 'node':
+            if ($entity->status == 0) {
+              $published = false;
+            }
+            break;
+          default:
+            if (isset($entity->status) && $entity->status == 0) {
+              $published = false;
+            }
+            if (isset($entity->published) && $entity->published == 0) {
+              $published = false;
+            }
+            break;
+        }
+      }
+
+      if (!$entity || !$published) {
+        unset($results[$id]);
+      }
+    }
+  }
+}

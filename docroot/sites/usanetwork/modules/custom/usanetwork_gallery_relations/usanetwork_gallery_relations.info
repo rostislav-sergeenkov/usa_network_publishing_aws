@@ -1,0 +1,6 @@
+name = usanetwork_gallery_relations
+description = add show, season, episode references to media galleries
+core = 7.x
+package = USA Network
+php = 5.2.4
+version = 7.x-1.0

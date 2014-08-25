@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Code for the USANetwork Promo feature.
+ */
+
+include_once 'usanetwork_promo.features.inc';
+
+/**
+ * Implements template_preprocess_node().
+ */
+function usanetwork_promo_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  
+  if ($node->type == 'usanetwork_promo') {
+    $action_type = field_get_items('node', $node, 'field_call_to_action_type');
+    $action_term = taxonomy_term_load($action_type[0]['tid']);
+    $vars['action_type'] = $action_term->name;
+  }
+}
+
+/**
+ * Implements hook_media_theplatform_mpx_import_media().
+ */
+function usanetwork_promo_media_theplatform_mpx_import_media($op, $media_item, $account) {
+
+  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid'], $account);
+
+  foreach ($media_files as $file) { 
+    if ($media_item['expiration_date'] && $media_item['expiration_date'] < REQUEST_TIME) {
+    
+      $db_select = db_select('field_data_field_promo_assoc_video', 'fdfpav')
+        ->fields('fdfpav', array('entity_id'))
+        ->condition('field_promo_assoc_video_target_id', $file->fid);
+      $promos = $db_select->execute()->fetchCol();
+
+      if ($promos) {
+        foreach ($promos as $promo) {
+          $db_select_bspot = db_select('field_data_field_usa_hp_brefs', 'fdfuhb')
+            ->fields('fdfuhb', array('entity_id'))
+            ->condition('field_usa_hp_brefs_target_id', $promo);
+          $promo_bspot = $db_select_bspot->execute()->fetchField();
+
+          if (!$promo_bspot) {
+            $db_select_cspot = db_select('field_data_field_usa_hp_crefs', 'fdfuhc')
+              ->fields('fdfuhc', array('entity_id'))
+              ->condition('field_usa_hp_crefs_target_id', $promo);
+            $promo_cspot = $db_select_cspot->execute()->fetchField();
+          }
+
+          if (!$promo_bspot && !$promo_cspot) {
+            $promo_node = node_load($promo);
+            $promo_node->status = 0;
+            node_save($promo_node);
+          }
+        }
+      }
+    }
+  }
+}

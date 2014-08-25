@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<layout>
+    <controls>
+        <card id="tpAdvertisementControls">
+            <!-- Ad playback control rack layout goes here. -->
+            <region id="tpBottomFloatRegion">
+            </region>
+        </card>
+        <card id="tpPreviewControls">
+            <!-- Preview image control rack layout goes here. -->
+            <region id="tpBottomFloatRegion" alpha="85" initialHideDelay="20s" autoHideDelay="10s" scale="1.0">
+                <row height="70" verticalAlign="middle">
+                    <group direction="horizontal" verticalAlign="middle" skin="customGroupPreviewSkin">
+                        <control id="tpPlay" verticalAlign="middle" />
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle" percentWidth="100" skin="customGroupPreviewSkin">
+                        <spacer/>
+                        <control id="tpTitle"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle" skin="customGroupPreviewSkin">
+                        <spacer/>
+                        <control id="tpTotalTime"/>
+                        <spacer/>
+                    </group>
+                    <control id='tpInfo' width="82" />
+                </row>
+            </region>
+        </card>
+        <card id="tpNormalControls">
+            <region id="tpBottomFloatRegion" alpha="85" initialHideDelay="400ms" autoHideDelay="5s" scale="1.0">
+                <row height="8">
+                    <control id="tpScrubber" verticalAlign="middle" showTooltip="never" />
+                </row>
+                <row height="30" paddingBottom="3">
+                    <group direction="horizontal" verticalAlign="middle">
+                        <spacer width="10"/>
+                        <control id="tpPlay" verticalAlign="middle"/>
+                        <spacer width="5"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <spacer/>
+                        <control id="tpCurrentTime"/>
+                        <control id="tpTimeDivider"/>
+                        <control id="tpTotalTime"/>
+                        <spacer/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle" percentWidth="100">
+                        <control id="tpMute" />
+                        <control id="tpVolumeSlider" width="100%" />
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpCC" verticalAlign="middle"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpFullScreen" verticalAlign="middle"/>
+                    </group>
+                    <spacer width="15"/>
+                    <control id='tpInfo' verticalAlign="middle" width="58" />
+                    <spacer width="15"/>
+                </row>
+            </region>
+        </card>
+        <card id="tpFullScreenControls">
+            <region id="tpBottomFloatRegion" alpha="85" initialHideDelay="400ms" autoHideDelay="5s" scale="1.0">
+                <row height="8">
+                    <control id="tpScrubber" verticalAlign="middle" showTooltip="never" />
+                </row>
+                <row height="30">
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpPlay" verticalAlign="middle"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <spacer/>
+                        <control id="tpCurrentTime"/>
+                        <control id="tpTimeDivider"/>
+                        <control id="tpTotalTime"/>
+                        <spacer/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle" percentWidth="100">
+                        <control id="tpMute"/>
+                        <control id="tpVolumeSlider" width="100" />
+                        <spacer/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpCC"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpBandwidth" verticalAlign="middle"/>
+                    </group>
+                    <group direction="horizontal" verticalAlign="middle">
+                        <control id="tpFullScreen" verticalAlign="middle"/>
+                    </group>
+                    <group direction='horizontal' verticalAlign='middle' width='80'>
+                        <control id='tpInfo' width='80'/>
+                    </group>
+                </row>
+            </region>
+        </card>
+    </controls>
+</layout>

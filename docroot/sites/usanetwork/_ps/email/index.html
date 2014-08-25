@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Email Test Page</title>
+</head>
+<body>
+
+<script src="/_js/jquery-1.5.1.min.js"></script>
+<script>
+function testEmailSend()
+{
+	$.ajax({
+		type: "POST",
+		dataType: 'json',
+		url: '/videos/email/email.php',
+		data: 	'friendsName=' + $('#friendsName').val() + 
+				'&friendsEmail=' + $('#friendsEmail').val() + 
+				'&yourName=' + $('#yourName').val() + 
+				'&yourEmail=' + $('#yourEmail').val() + 
+				'&message=' + $('#message').val() + 
+				'&link=' + $('#link').val(),
+		success: function (response) {
+			var html = 'success: ' + response.success + '\n';
+			html += 'errors: \n';
+			for (error in response.errors)
+			{
+				html += 'id: ' + response.errors[error].id;
+				html += ', description: ' + response.errors[error].description + '\n';
+			}
+			$('#ajaxResponse pre').html(html);
+		}
+	});
+}
+</script>
+
+<form>
+<div>
+	<label for="link">VIDEO LINK</label>
+	<input type="text" name="link" id="link" value="http://test.usanetwork.com/videos/#/vid:1373324" />
+</div>
+
+<div>
+	<label for="friendsName">Friends Name Testing</label>
+	<input type="text" name="friendsName" id="friendsName" value="" />
+</div>
+<div>
+	<label for="friendsEmail">Friends Email</label>
+	<input type="text" name="friendsEmail" id="friendsEmail" value="" />
+</div>
+<div>
+	<label for="yourName">Your Name</label>
+	<input type="text" name="yourName" id="yourName" value="" />
+</div>
+<div>
+	<label for="yourEmail">Your Email</label>
+	<input type="text" name="yourEmail" id="yourEmail" value="" />
+</div>
+<div>
+	<label for="message">Message</label>
+	<textarea name="message" id="message"></textarea>
+</div>
+<div>
+	<input type="button" name="submit" value="submit" onclick="testEmailSend()" />
+</div>
+</form>
+
+<hr>
+<h3>AJAX Response:</h3>
+<div id="ajaxResponse"><pre></pre></div>
+
+</body>
+</html>

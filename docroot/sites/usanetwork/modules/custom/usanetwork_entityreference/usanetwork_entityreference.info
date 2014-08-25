@@ -1,0 +1,6 @@
+name = usanetwork_entityreference
+description = Enhanced node entity references. For example, this adds formatting and an edit link to homepage a, b and c-spots
+package = USA Network
+core = 7.x
+dependencies[] = field
+dependencies[] = entityreference

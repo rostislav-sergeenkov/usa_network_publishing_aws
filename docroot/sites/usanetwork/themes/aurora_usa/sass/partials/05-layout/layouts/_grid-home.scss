@@ -1,0 +1,162 @@
+%home-grid {
+  width: 300px;
+  margin: 0 auto;
+  .tiles {
+    position: relative;
+    @include pie-clearfix;
+  }
+  .a-spot, .ad, .b-spot, .c-spot {
+    @extend %grid-item;
+    overflow: hidden;
+    @include breakpoint($bp-home-narrowest) {
+      margin-bottom: 8px;
+    }
+  }
+  .c-spot {
+    .media-wide {
+      display: none;
+    }
+  }
+  [class$="-spot"] {
+    a {
+      display: block;
+      position: relative;
+    }
+  }
+  @include breakpoint($bp-home-narrowest) {
+    @include layout(2, .048) {
+      .a-spot {
+        @include grid-span(2, 1);
+        height: 250px;
+      }
+      .ad {
+        @include grid-span(2, 1);
+        height: 50px;
+      }
+      .b-spot {
+        @include grid-span(1, 1);
+        clear: both;
+        .media-wide {
+          display: none;
+        }
+      }
+      .c-spot {
+        @include grid-span(1, 2);
+      }
+    }
+  }
+  @include breakpoint($bp-home-2-fence) {
+    width: 615px;
+    @include layout(2, .048) {
+      .a-spot {
+        @include grid-span(2, 1);
+        height: 350px;
+      }
+      .ad {
+        width: column-span(1, 2);
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .b-spot {
+        @include grid-span(2, 1);
+        clear: both;
+        .media-normal {
+          display: none;
+        }
+      }
+      .c-spot {
+        @include grid-span(1, 1);
+        clear: both;
+      }
+    }
+  }
+  @include breakpoint($bp-home-3-fence) {
+    width: 930px;
+    @include layout(3, .048) {
+      .a-spot {
+        @include grid-span(3, 1);
+        height: 378px;
+      }
+      .ad {
+        width: column-span(1, 3);
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .b-spot {
+        @include grid-span(1, 1);
+        clear: both;
+        .media-wide {
+          display: none;
+        }
+      }
+      .c-spot {
+        @include grid-span(1, 2);
+        width: 300px;
+      }
+    }
+  }
+  @include breakpoint($bp-home-widest) {
+    width: 1245px;
+    padding-top: 0;
+    @include layout(4, .048) {
+      .a-spot {
+        @include grid-span(4, 1);
+        height: 506px;
+      }
+      .ad {
+        width: column-span(1, 4);
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .b-spot {
+        @include grid-span(2, 1);
+        clear: both;
+        .media-normal {
+          display: none;
+        }
+      }
+      .c-spot {
+        @include grid-span(1, 3);
+        width: 300px;
+      }
+    }
+  }
+  .usa-adrails & /* , .ie8 & */ {
+    width: 930px !important;
+    @include layout(3, .048) {
+      .a-spot {
+        @include grid-span(3, 1);
+        height: 378px;
+      }
+      .ad {
+        width: column-span(1, 3);
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .b-spot {
+        @include grid-span(1, 1);
+        clear: both;
+        .media-normal {
+          display: block;
+        }
+        .media-wide {
+          display: none;
+        }
+      }
+      .c-spot {
+        @include grid-span(1, 2);
+        width: 300px;
+      }
+    }
+  }
+
+
+}

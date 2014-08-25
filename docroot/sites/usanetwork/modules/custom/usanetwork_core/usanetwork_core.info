@@ -1,0 +1,4 @@
+name = usanetwork core
+description = Basic functionality for the USA Network site.
+package = USA Network
+core = 7.x

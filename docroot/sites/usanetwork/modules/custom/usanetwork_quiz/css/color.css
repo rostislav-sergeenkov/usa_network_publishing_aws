@@ -1,0 +1,13 @@
+.usanetwork-quiz [type="button"] {
+  background-color: $accent-color;
+}
+.usanetwork-quiz [type="button"]:hover {
+  background-color: $accent-hover-color;
+}
+.usanetwork-quiz-answer.answer-type-text .answer-title {
+  background: $accent-color;
+}
+
+.usanetwork-quiz-answer.answer-type-text .answer-title:hover {
+  background: $accent-hover-color;
+}

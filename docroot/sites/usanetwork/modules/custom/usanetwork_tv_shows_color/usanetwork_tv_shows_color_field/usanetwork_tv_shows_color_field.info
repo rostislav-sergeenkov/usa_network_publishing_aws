@@ -1,0 +1,11 @@
+name = usanetwork_tv_shows_color_field
+description = adds color field to the tv show content type
+core = 7.x
+package = USA Network
+dependencies[] = colorfield
+dependencies[] = colorfield_minicolors
+dependencies[] = features
+dependencies[] = usanetwork_tv_shows
+features[features_api][] = api:2
+features[field_base][] = field_usa_tv_show_color
+features[field_instance][] = node-tv_show-field_usa_tv_show_color

@@ -1,0 +1,14 @@
+name = USANetwork Panels
+description = Panels for USA Network
+core = 7.x
+package = USA Network
+php = 5.2.4
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = strongarm
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[page_manager_handlers][] = node_view_panel_context_2
+features[variable][] = page_manager_node_view_disabled

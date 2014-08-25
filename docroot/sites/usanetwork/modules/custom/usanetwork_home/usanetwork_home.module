@@ -1,0 +1,412 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_home feature.
+ */
+
+include_once 'usanetwork_home.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_home_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_landing',
+    'access arguments' => array('access content'),
+  );
+  $items['home/home_admin/%'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_admin_landing',
+    'access arguments' => array('administer content'),
+    'page arguments' => array(2),
+  );
+  //@ todo: write better fallbacks for the ajax
+  // ajax for global nav more
+  $items['globalnav_more'] = array(
+    'page callback' => 'usanetwork_home_globalnav_more_ajax',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  // ajax for global nav shows
+  $items['globalnav_shows'] = array(
+    'page callback' => 'usanetwork_home_globalnav_shows_ajax',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function usanetwork_home_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->bid == 'views-usa_video-front_full_episodes'
+     || $block->bid == 'views-usa_mpx_video-front_full_epsds') {
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+    //carousel-promo
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/viewportchecker.js', 'file');
+    if (!empty($homepage)) {
+      $nid = reset(array_keys($homepage['node']));
+      if ($nid && $homepage = node_load($nid)) {
+        if (!empty($homepage->field_hp_episodes_block_title)) {
+          $title = reset(field_get_items('node', $homepage, 'field_hp_episodes_block_title'));
+          $block->subject = $title['safe_value'];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_home_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->type == 'usa_homepage') {
+    if (!empty($node->field_hp_promos_block_title)) {
+      $title = reset(field_get_items('node', $node, 'field_hp_promos_block_title'));
+      $variables['featured_title'] = $title['safe_value'];
+    }
+  }
+}
+
+/**
+ * Callback for the USA homepage
+ */
+function usanetwork_home_landing($day = NULL) {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as full
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content available.');
+  }
+  return $render;
+}
+
+/**
+ * Callback for the USA homepage - admin preview pages
+ */
+function usanetwork_home_admin_landing($day = NULL) {
+  $render = array();
+  if (arg(2)) {
+    $day = strtolower(arg(2));
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as teasers
+  // @todo - load fields or make a view mode for this
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content added for @day.', array('@day' => $day));
+  }
+  return $render;
+}
+
+/**
+ * To fetch homepage node by title
+ */
+function usanetwork_home_get_homepage($types, $day = NULL) {
+
+  if ($day === NULL) {
+    $day = _usanetwork_home_get_day();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', $types);
+  $query->propertyCondition('status', 1);
+  $query->propertyCondition('title', $day, '=');
+
+  // execute the query
+  $homepage = $query->execute();
+  return $homepage;
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function usanetwork_home_node_validate($node, $form, &$form_state) {
+  if ($node->type == 'usa_homepage') {
+    $nodeid = '';
+    $home_day = '';
+    $this_home_day = field_get_items('node', $node, 'field_usa_hp_daylist');
+    if (!empty($node->nid)) {
+      //editing content
+      $nodeid = $node->nid;
+    }
+    if (!empty($this_home_day['0']['value'])) {
+      $home_day = $this_home_day['0']['value'];
+    }
+    $query = db_select('field_data_field_usa_hp_daylist', 'day', array('target' => 'slave'));
+    $query->leftjoin('node', 'n', 'n.nid = day.entity_id AND n.type = \'usa_homepage\'');
+    $query->fields('day', array('field_usa_hp_daylist_value'));
+    $query->condition('day.bundle', 'usa_homepage', '=');
+    $query->condition('day.field_usa_hp_daylist_value', $home_day, '=');
+    //check for all other homepage nodes(on editing content) excluding the current content
+    $query->condition('day.entity_id', $nodeid, '<>');
+    //check for showing only published contents
+    $query->condition('n.status', '1', '=');
+
+    $num_of_results = $query->execute()->rowCount();
+    if($num_of_results != 0) {
+      form_set_error('', t('There is already a published homepage present for ' . ucfirst($home_day)));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORD_ID_alter().
+ */
+function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_state) {
+  $form['home'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Homepages'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#tree' => TRUE,
+  );
+
+  $publish_time = variable_get('usanetwork_home_publish_time', '6:00 AM');
+  if (preg_match('|(\d{1,2})\:(\d{2}) ([AMP]{2})|Uis', $publish_time, $matches)) {
+    $hour = (int) $matches[1];
+    $minute = (int) $matches[2];
+    $part = $matches[3];
+  }
+  else {
+    $hour = 6;
+    $minute = 0;
+    $part = 'AM';
+  }
+  $form['home']['publish'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'container-inline'
+      ),
+    ),
+  );
+  $form['home']['publish']['usanetwork_home_publish_time'] = array(
+    '#type' => 'select',
+    '#title' => t('Publish time'),
+    '#default_value' => $hour,
+    '#options' => array_slice(range(0, 12, 1), 1, NULL, TRUE),
+    '#element_validate' => array('_usanetwork_home_publish_validate'),
+    '#tree' => FALSE,
+  );
+  $minutes = range(0, 59, 1);
+  for ($i = 0; $i < 10; $i++) {
+    $minutes[$i] = '0'.$minutes[$i];
+  }
+  $form['home']['publish']['minute'] = array(
+    '#type' => 'select',
+    '#title' => ':',
+    '#default_value' => $minute,
+    '#options' => $minutes,
+  );
+  $form['home']['publish']['part'] = array(
+    '#type' => 'select',
+    '#title' => '',
+    '#default_value' => $part,
+    '#options' => array(
+      'AM' => 'AM',
+      'PM' => 'PM',
+    ),
+  );
+}
+
+/**
+ * Validate callback for publish time.
+ */
+function _usanetwork_home_publish_validate($element, &$form_state, $form) {
+  $values =& $form_state['values'];
+  $publish = $values['usanetwork_home_publish_time'] . ':';
+  if ($values['home']['publish']['minute'] < 10) {
+    $publish .= '0';
+  }
+  $publish .= $values['home']['publish']['minute'] . ' ' . $values['home']['publish']['part'];
+  unset($values['home']['publish']);
+  form_set_value($element, $publish, $form_state);
+}
+
+/**
+ * Block callback for the globalnav shows block
+ * rip of home landing
+ */
+function usanetwork_home_globalnav_shows_block() {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  // return the nodes as global_nav_block_shows
+  if (!empty($homepage['node'])) {
+    $render['globalnav_shows']['#prefix'] = '<div class="globalnav-shows">shows';
+    $render['globalnav_shows']['#suffix'] = '</div>';
+    $render['globalnav_shows']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows');
+  }
+  else {
+    return;
+  }
+  return $render;
+}
+
+/**
+ * Block callback for the globalnav shows block
+ */
+function usanetwork_home_globalnav_more_block() {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  // return the nodes as global_nav_block_more
+  if (!empty($homepage['node'])) {
+    $render['globalnav_shows']['#prefix'] = '<div class="globalnav-more">more';
+    $render['globalnav_shows']['#suffix'] = '</div>';
+    $render['globalnav_shows']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more');
+  }
+  else {
+    return;
+  }
+  return $render;
+}
+
+/**
+ * Retrieve more thingie and place them in the drawer
+ *
+ * @param string $ajax
+ *   Ajax or nojs.
+ *
+ * @return array
+ *   Return an array of ajax commands.
+ */
+function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
+  }
+
+  if ($type == 'ajax') {
+    $commands = array();
+    $content = '<div class="globalnav-content-more" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+    // Replace empty div with content.
+    $commands[] = ajax_command_replace('#globalnav-more', $content);
+
+    $page = array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+    ajax_deliver($page);
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * Retrieve more thingie and place them in the drawer
+ *
+ * @param string $ajax
+ *   Ajax or nojs.
+ *
+ * @return array
+ *   Return an array of ajax commands.
+ */
+function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
+  }
+
+  if ($type == 'ajax') {
+    $commands = array();
+
+    $content = '<div class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+    // Replace empty div with content.
+    $commands[] = ajax_command_replace('#globalnav-shows', $content);
+
+    $page = array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+    ajax_deliver($page);
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_shows_banner() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
+  }
+  
+  $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+
+  return $content;
+ 
+}
+
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_more_banner() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
+  }
+
+  $content = '<div class="globalnav-content-more globalnav-content-replaced" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+
+  return $content;
+
+}
+
+/**
+ * Returns current day according to publish time.
+ */
+function _usanetwork_home_get_day() {
+  $publish = strtotime(variable_get('usanetwork_home_publish_time', '6:00 AM'));
+  if ($publish <= REQUEST_TIME) {
+    $day = strtolower(date('l'));
+  }
+  else {
+    $day = strtolower(date('l', strtotime('yesterday')));
+  }
+
+  return $day;
+}
+

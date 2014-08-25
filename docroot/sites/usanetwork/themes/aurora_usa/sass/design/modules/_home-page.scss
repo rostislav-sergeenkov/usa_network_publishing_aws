@@ -1,0 +1,73 @@
+body {
+  &.front {
+    margin-bottom: 49px;
+  }
+  @include breakpoint($bp-menu-switch) {
+    &.front {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.node-usa-homepage {
+  a {
+    @include link-colors($white, $white, $white, $white, $white);
+  }
+}
+
+.page-home {
+  #main {
+    padding: 0 0 15px;
+    @include breakpoint($bp-home-2col) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+.usa-home {
+  @extend %home-grid;
+}
+
+.promo-metadata {
+  @extend %metadata-holder;
+  height: 77px;
+  padding-top: 17px;
+  padding-bottom: 8px;
+  h2 {
+    @extend %semi-20;
+    line-height: 23px;
+    margin-bottom: 3px;
+  }
+  h3 {
+    @extend %regular-15;
+    line-height: 23px;
+  }
+  @include breakpoint($bp-home-narrowest) {
+    height: 32px;
+    padding: 4px 8px 3px;
+    h2 {
+      font-size: 10px;
+      line-height: 13.5px;
+      margin-bottom: 1px;
+    }
+    h3 {
+      font-size: 8px;
+      line-height: 12px;
+    }
+  }
+  .usa-adrails &, .ie8 & {
+    padding: 17px 15px 8px;
+    h2 {
+      font-size: 20px;
+      line-height: 22.5px;
+      margin-bottom: 3px;
+    }
+    h3 {
+      font-size: 15px;
+    }
+  }
+  .promo-cta {
+    @extend %nested-mini-cta;
+  }
+}

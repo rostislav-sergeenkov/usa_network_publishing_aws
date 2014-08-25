@@ -1,0 +1,464 @@
+.ie8 {
+  img {
+/*    width: inherit; */
+    max-width: 100%;
+    height: auto;
+  }
+  .mega-sub-nav-container {
+    display: none;
+    &.active-item {
+      display: block;
+      background-color:#000;
+      filter: alpha(opacity=90);
+    }
+  }
+  .region-footer {
+    li {
+      float:left;
+    }
+  }
+  .schedule-header {
+    .schedule-header-navigation {
+      .previous-week, .next-week {
+        text-indent: 0px;
+        background-image:none;
+        text-align:center;
+        line-height:38px;
+        font-size:26px;
+        font-weight:bold;
+        color: #878787;
+      }
+    }
+  }
+  #on-now-episode {
+    line-height:62px !important;
+  }
+  .block-usanetwork-video {
+    .grid-item {
+      display: inline-block;
+      float:none;
+      margin: 0 3px 11px 0 !important;
+    }
+  }
+  .expandable-container.promo-ads-panel {
+    .pane-content {
+      ul.field-name-field-usa-tv-promo {
+        li {
+          float:left;
+          clear:none;
+        }
+      }
+    }
+    @include breakpoint($bp-grid-show-2-fence) {
+      li {
+        margin:0 7px 15px 0;
+      }
+      li.odd {
+        margin:0 0 15px 0;
+      }
+      li.nth1 {
+        margin-right:300px;
+      }
+      li.nth3 {
+        margin:0 0 15px 0px;
+      }
+    }
+    @include breakpoint($bp-grid-show-3-fence) {
+      li {
+        float:left;
+        margin:0 9px 15px 0;
+        clear: none;
+      }
+      li.odd {
+        margin:0 9px 15px 0;
+      }
+      li.nth3n5 {
+        float:right !important;
+        margin:0 0 15px 0;
+      }
+      li.nth1 {
+      margin:0 9px 15px 0;
+      }
+      li.nth2 {
+        margin:0 300px 15px 0;
+      }
+    }
+    @include breakpoint($bp-grid-show-4) {
+      overflow:hidden;
+      li {
+        float:left;
+        margin:0 14px 15px 0;
+        clear: none;
+        .asset-img {
+          overflow:hidden;
+          width:300px;
+          img {
+            display:block;
+            width:100%;
+            height: auto;
+            vertical-align:top;
+          }
+        }
+        .asset-img-large {
+          display: block;
+          width: 617px;
+          height: 254px;
+          border: 2px solid $gray-dark;
+          overflow:hidden;
+          img {
+            display:block;
+            width:100%;
+            height: auto;
+            vertical-align:top;
+          }
+        }
+        .caption-fields-wrapper {
+          width:296px;
+        }
+      }
+      li.odd {
+        margin:0 14px 15px 0;
+      }
+      li.nth1 {
+      margin-right:0 14px 15px 0;
+      }
+      li.nth2 {
+        margin:0 300px 15px 0;
+      }
+      /*
+      li.nth3 {
+        margin:0 300px 15px 0px;
+      }
+      */
+      li.nth2n1 {
+        margin:0 14px 15px 0px;
+      }
+      li.nth4n4 {
+        clear:both;
+        margin-left:0;
+      }
+      li.nth4n6 {
+        margin:0 0 15px 0;
+      }
+      li.nth4n7 {
+       /*float:right !important;*/
+        margin:0 14px 15px 0;
+      }
+    }
+  }
+  .mega-sub-nav {
+    .globalnav-promos {
+      .node-global-nav-image {
+        display: inline-block;
+        width: 23%;
+        margin-left:1%;
+        img {
+          width:100%;
+        }
+      }
+      .node-global-nav-image:first-child {
+        margin-left:0;
+      }
+    }
+  }
+  .region-footer {
+    #footer-links {
+      a {
+        width:100px;
+      }
+    }
+  }
+  #tv-show-menu {
+    .parent-item {
+      li {
+        float: left;
+        width: 23%;
+        margin-right: 1em;
+        overflow: hidden;
+      }
+    }
+  }
+  .usa-tv-show {
+    .video-promo-panel {
+      li {
+        display:inline-block;
+        margin:0 1px 11px 0;
+      }
+      @include breakpoint($bp-grid-show-3-fence) {
+        li {
+          margin:0 3px 11px 0;
+        }
+      }
+    }
+    .expandable-toggle-wrap {
+      margin-bottom:10px;
+    }
+  }
+  .panel-five {
+    .view-usa-cast.view-id-usa_cast{
+      width:221px !important;
+    }
+  }
+  .borealis.image-style-episode_wide.borealis-js,
+  .borealis.image-style-video_full.borealis-js {
+    display: none;
+  }
+  .field-name-field-tv-cover-media .field-item {
+    img {
+      width:100%;
+    }
+  }
+  #block-views-usa-shows-block-1 .carousel-item figure {
+    img {
+      width:100%;
+    }
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a .caption-overlay {
+    position:relative;
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a .caption-overlay:after {
+    position:absolute;
+    right:0px;
+    top:-169px;
+    width:54px;
+    height:50px;
+    content : ' ';
+    background:url('../images/locked-video.png') center top no-repeat;
+    z-index:10;
+  }
+  .block-usanetwork-video .view .node.node-usa-tve-video > a:after{
+    content : ' ';
+  }
+  .usa-secondary-menu .shows > li.first > span:after,
+  .usa-secondary-menu .shows > li.first > span:hover:after {
+    @extend .icons-selector_arrows;
+    content: ' ';
+    display: block;
+    width: image-width('icons/selector_arrows.png');
+    height: image-height('icons/selector_arrows.png');
+  }
+  .usa-secondary-menu .item-list .item-list ul > li {
+    display:block;
+  }
+  .featured-asset.node-usa-tve-video .video-player-wrapper a:after {
+    content: ' ';
+  }
+  .featured-asset.node-usa-tve-video .video-player-wrapper .locked-msg {
+    padding-top:100px;
+    background:url('../images/key-in-circle.png') center top no-repeat;
+  }
+  #block-views-usa-cast-block-2 .icons-social a.person-twitter.usasocial-twitter {
+      @include replace-text-with-dimensions('icons/follow-twitter-v2.png');
+      width:image-width('icons/follow-twitter-v2.png');
+      height:image-height('icons/follow-twitter-v2.png');
+    &:hover {
+      @include replace-text-with-dimensions('icons/follow-twitter-hover-v2.png');
+    }
+  }
+  #game-wrap .iframe-container.game {
+    width:994px;
+    height:1008px;
+    margin:0 auto;
+    overflow:hidden;
+    iframe {
+      margin:-2px 0 0 -2px !important;
+    }
+  }
+  .panel-twocol-nested-right-twocol .panel-four {
+    .pane-dart-dart-tag-300x250-scr {
+      margin-bottom: 15px;
+    }
+    @include breakpoint(770px) {
+      width: 300px;
+      .pane-2, .pane-usa-gallery-panel-pane-2 {
+        @include float(none);
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .node-type-catchall-page {
+    .tiles {
+      margin:0 auto;
+      width:300px;
+      .ad {
+        float:left;
+        clear:none;
+        width:300px;
+        height:50%;
+        margin:0 0 8px 0;
+      }
+      .upcoming-movie {
+        float: left;
+        clear: none;
+        width:146px;
+        height:126px;
+        margin:0 4px 8px 0;
+        .meta {
+          padding:4px 8px 3px;
+          h2 {
+            font-size:10px;
+            line-height:13px;
+            margin-bottom:1px;
+          }
+          h3 {
+            font-size:8px;
+            line-height:12px;
+          }
+        }
+      }
+      @include breakpoint($bp-home-2-fence) {
+        width: 615px;
+        @include layout(2, .048) {
+          .a-spot {
+            height: 350px;
+            width: 615px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 2);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth2n3 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth2n4 {
+              @include grid-span(1, 2);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($bp-home-3-fence) {
+        width: 930px;
+        @include layout(3, .048) {
+          .a-spot {
+            width: 930px;
+            height: 378px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 3);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth3 {
+              @include grid-span(1, 2);
+            }
+            &.nth3n4 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth3n5 {
+              @include grid-span(1, 2);
+            }
+            &.nth3n6 {
+              @include grid-span(1, 3);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($bp-home-widest) {
+        width: 1245px;
+        padding-top: 0;
+        @include layout(4, .048) {
+          .a-spot {
+            height: 506px;
+            width: 1245px;
+          }
+          .ad {
+            position: absolute;
+            width: column-span(1, 4);
+            height: 250px;
+            top: 0;
+            right: 0;
+          }
+          .upcoming-movie {
+            height:250px;
+            &.nth2 {
+              @include grid-span(1, 1);
+            }
+            &.nth3 {
+              @include grid-span(1, 2);
+            }
+            &.nth4 {
+              @include grid-span(1, 3);
+            }
+            &.nth4n5 {
+              @include grid-span(1, 1);
+              clear: both;
+            }
+            &.nth4n6 {
+              @include grid-span(1, 2);
+            }
+            &.nth4n7 {
+              @include grid-span(1, 3);
+            }
+            &.nth4n8 {
+              @include grid-span(1, 4);
+            }
+            .meta {
+              padding:17px 15px 8px;
+              h2 {
+                font-size:20px;
+                line-height:23px;
+                margin-bottom:3px;
+              }
+              h3 {
+                font-size:15px;
+                line-height:23px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #utilities .block-usanetwork-showpages .breadcrumb {
+    float:none;
+    display: inline-block;
+  }
+  #utilities-wrap {
+    filter: alpha(opacity=90);
+  }
+  .featured-asset .video-player-wrapper img {
+    width:100%;
+  }
+}

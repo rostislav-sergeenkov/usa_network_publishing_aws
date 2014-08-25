@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Contains install and requirement functions for TVE Redirects module.
+ *
+ * @ingroup tve_redirects
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function tve_redirects_uninstall() {
+  variable_del('tve_redirects');
+}

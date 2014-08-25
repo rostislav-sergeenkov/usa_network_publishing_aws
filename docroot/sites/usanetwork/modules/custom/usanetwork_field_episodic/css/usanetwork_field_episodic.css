@@ -1,0 +1,64 @@
+#edit-field-episodic-1-color-und-0-value, 
+#edit-field-episodic-2-color-und-0-value, 
+#edit-field-episodic-3-color-und-0-value {
+  width: 450px;
+}
+
+#edit-field-episodic-1-title-und-0-value, 
+#edit-field-episodic-2-title-und-0-value,
+#edit-field-episodic-3-title-und-0-value {
+  width: 350px;
+}
+
+#edit-field-episodic-1-fontsize-und-0-value, 
+#edit-field-episodic-2-fontsize-und-0-value,
+#edit-field-episodic-3-fontsize-und-0-value,
+#edit-field-episodic-1-tablan-fontsize-und-0-value,
+#edit-field-episodic-2-tablan-fontsize-und-0-value,
+#edit-field-episodic-3-tablan-fontsize-und-0-value,
+#edit-field-episodic-1-tabpor-fontsize-und-0-value,
+#edit-field-episodic-2-tabpor-fontsize-und-0-value,
+#edit-field-episodic-3-tabpor-fontsize-und-0-value,
+#edit-field-episodic-1-mobile-fontsize-und-0-value,
+#edit-field-episodic-2-mobile-fontsize-und-0-value,
+#edit-field-episodic-3-mobile-fontsize-und-0-value {
+  width: 200px;
+}
+
+#edit-field-episodic-1-title,
+#edit-field-episodic-2-title,
+#edit-field-episodic-3-title,
+#edit-field-episodic-1-fontsize,
+#edit-field-episodic-2-fontsize,
+#edit-field-episodic-3-fontsize,
+#edit-field-episodic-1-tablan-fontsize,
+#edit-field-episodic-2-tablan-fontsize,
+#edit-field-episodic-3-tablan-fontsize,
+#edit-field-episodic-1-tabpor-fontsize,
+#edit-field-episodic-2-tabpor-fontsize,
+#edit-field-episodic-3-tabpor-fontsize,
+#edit-field-episodic-1-mobile-fontsize {
+  float: left;
+  margin-right: 25px;
+}
+
+#edit-field-episodic-1-color {
+  height: 155px;
+}
+
+#edit-field-episodic-1-image {
+  float: right;
+}
+
+#edit-field-episodic-2-color,
+#edit-field-episodic-3-color {
+  clear: left;
+}
+
+#edit-field-call-to-action-type {
+  clear: both;
+}
+
+#edit-field-usa-aspot-txt4 input {
+  width: 30%;
+}

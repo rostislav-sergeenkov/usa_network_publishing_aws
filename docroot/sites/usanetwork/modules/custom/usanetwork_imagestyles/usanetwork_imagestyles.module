@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_imagestyles feature.
+ */
+
+include_once 'usanetwork_imagestyles.features.inc';

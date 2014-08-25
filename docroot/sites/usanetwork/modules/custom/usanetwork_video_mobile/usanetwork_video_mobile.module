@@ -1,0 +1,50 @@
+<?php
+
+define('USANETWORK_USANOW_ITUNES_ID', '661695783');
+define('USANETWORK_USANOW_IOS_URL', 'https://itunes.apple.com/us/app/usa-now/id661695783');
+define('USANETWORK_USANOW_ANDROID_URL', 'https://play.google.com/store/apps/details?id=com.usanetwork.watcher');
+
+/**
+ * Implements hook_entity_view().
+ */
+function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, $langcode) {
+  if ($entity_type == 'file' && in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE)) && $view_mode == 'full') {
+    $full_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_full_episode'));
+    if ($full_episode) {
+      $full_episode = (bool) $full_episode['value'];
+    }
+
+    if ($full_episode) {
+      // add itunes meta
+      $metatag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'apple-itunes-app',
+          'content' => 'app-id=' . USANETWORK_USANOW_ITUNES_ID . ', affiliate-data=, app-argument=/usa',
+        ),
+      );
+      $entity->content['#attached']['drupal_add_html_head'][] = array($metatag, 'itunes_metatag');
+
+      // attach javascript
+      $entity->content['#attached']['js'][] = array(
+        'type' => 'setting',
+        'data' => array(
+          'usanetwork_video_mobile' => array(
+            'url' => array(
+              'iOS' => USANETWORK_USANOW_IOS_URL,
+              'android' => USANETWORK_USANOW_ANDROID_URL,
+            ),
+            'modal' => '<div class="wrap"><h3>' . t('Want to watch episodes of your favorite shows?') . '</h3><hr>'
+            . '<img class="mobile-logo-exp" src="' . url(drupal_get_path('module', 'usanetwork_video_mobile') . '/img/logo-mobile-exp.png') . '">'
+            . '<div id="mobileVideoModalButtons">'
+            . '<input type="button" value="' . t('Download USA NOW app') . '" class="download-app-button">'
+            . '<input type="button" value="' . t('No thanks, keep browsing') . '" class="close-reveal-modal">'. '</div>'
+            . '</div>',
+          ),
+        ),
+      );
+      $entity->content['#attached']['js'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js';
+      $entity->content['#attached']['css'][] = drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css';
+    }
+  }
+}

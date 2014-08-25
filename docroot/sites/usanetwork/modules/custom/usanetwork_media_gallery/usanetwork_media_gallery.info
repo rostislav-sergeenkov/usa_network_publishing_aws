@@ -1,0 +1,15 @@
+name = usanetwork_media_gallery
+core = 7.x
+package = USA Network
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = page_manager
+dependencies[] = views
+dependencies[] = views_content
+dependencies[] = views_load_more
+dependencies[] = views_slideshow
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[page_manager_handlers][] = node_view_panel_context
+features[views_view][] = usa_gallery

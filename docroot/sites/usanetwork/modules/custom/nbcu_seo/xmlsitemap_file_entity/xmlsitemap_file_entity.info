@@ -1,0 +1,10 @@
+name = XML sitemap file entity
+description = Adds file entity links to the sitemap.
+package = XML sitemap
+core = 7.x
+dependencies[] = xmlsitemap
+dependencies[] = file_entity
+files[] = xmlsitemap_file_entity.module
+files[] = xmlsitemap_file_entity.install
+files[] = xmlsitemap_file_entity.test
+

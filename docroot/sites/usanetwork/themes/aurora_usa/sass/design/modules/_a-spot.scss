@@ -1,0 +1,44 @@
+.aspot {
+  @extend %a-spot;
+}
+#aspot-page-video-container {
+  display: none;
+  height: auto;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.page-node.node-type-usanetwork-aspot {
+  .node-usanetwork-aspot {
+    margin: 0 auto;
+    margin-top: 10px;
+    @include breakpoint($bp-home-widest) {
+      width: 1245px;
+      #aspot-video-container {
+        margin-top: 0px;
+      }
+    }
+    @include breakpoint($bp-home-3col ($bp-home-widest - 1)) {
+      width: 930px;
+      #aspot-video-container {
+        margin-top: 0px;
+      }
+    }
+    @include breakpoint($bp-home-2col ($bp-home-3col - 1)) {
+      width: 615px;
+      #aspot-video-container {
+        margin-top: 0px;
+      }
+    }
+    @include breakpoint( max-width ($bp-home-2col - 1)) {
+      width: 300px;
+      #aspot-video-container {
+        margin-top: 0px;
+      }
+    }
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}

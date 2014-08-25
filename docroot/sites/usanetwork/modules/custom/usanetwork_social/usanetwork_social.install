@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork social.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Creating the Ideamelt object type taxonomy terms
+ */
+function usanetwork_social_update_7100() {
+ 
+  $object_type_terms = array(
+    'App', 
+    'Article',
+    'Blog', 
+    'Feature', 
+    'Game', 
+    'Poll',
+    'Quiz', 
+    'Recap', 
+    'Sweepstakes', 
+  );
+
+  _usanetwork_social_populate_vocab('object_type', $object_type_terms);
+}
+
+/**
+ * Generic helper that creates taxonomy terms in given vocabulary
+ * Optionally can set parent term id
+ *
+ * @param type $vocab
+ * @param type $terms
+ * @param type $parents
+ */
+function _usanetwork_social_populate_vocab($vocab, $terms, $parents = 0) {
+
+  static $weight = 0;
+
+  // Get the vocabulary ID of the given vocabulary machine name
+  $vid = db_query("SELECT vid FROM {taxonomy_vocabulary} WHERE machine_name = '$vocab'")->fetchField();
+
+  if (!$vid) {
+    return;
+  }
+
+  foreach ($terms as $parent => $child) {
+
+    // Create parent.
+    if (!is_numeric($parent)) {
+      $term = new stdClass();
+      $term->name = $parent;
+      $term->vid = $vid;
+      $term->weight = ++$weight;
+      $term->parent = $parents;
+      taxonomy_term_save($term);
+    }
+
+    if (is_array($child)) {
+      $parent_term = array_pop(taxonomy_get_term_by_name($parent, $vocab));
+      $child_terms = $child;
+      _usanetwork_social_populate_vocab($vocab, $child_terms, array($parent_term->tid));
+    }
+    else {
+      $term_name = $child;
+
+      $term = new stdClass();
+      $term->name = $term_name;
+      $term->vid = $vid;
+      $term->weight = ++$weight;
+      $term->parent = $parents;
+
+      taxonomy_term_save($term);
+    }
+  }
+
+  // Clear cache to re-populate taxonomies.
+  cache_clear_all();
+}
+

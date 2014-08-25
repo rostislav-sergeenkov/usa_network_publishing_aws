@@ -1,0 +1,75 @@
+.node-catchall-seo-page {
+  width: 100%;
+  max-width: 967px;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  overflow: auto;
+  height: auto !important;
+  .field-name-field-h1 {
+    h1 {
+      max-width: 967px;
+      width: 100%;
+      background-color: #313131;
+      color: #fff;
+      padding: 15px;
+      font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+      font-size: 18px;
+      letter-spacing: 3px;
+    }
+  }
+  .group-left {
+    float: left;
+    position: relative;
+    margin-right: 7px;
+    max-width: 640px;
+    width: 100%;
+    margin-top: 4px;
+    text-align: left;
+    @include breakpoint($bp-catchall-seo-1) {
+      max-width: 967px;
+      width: 100%;
+    }
+    .video-player {
+      iframe {
+        height: 361px;
+        width: 100%;
+      }
+    }
+  }
+  .group-right {
+    float: left;
+    position: relative;
+    margin-top: 4px;
+    width: 300px;
+    @include breakpoint($bp-catchall-seo-1) {
+      max-width: 967px;
+      width: 100%;
+    }
+  }
+  .field-name-field-call-to-action {
+    margin: 20px 0;
+    .cta-item {
+      a {
+        display: block;
+        width: 100%;
+        border: 2px solid #fff;
+        background: #000000;
+        color: #fef200;
+        margin-bottom: 20px;
+      }
+      &.cta-text {
+        a {
+          padding: 10px;
+        }
+      }
+    }
+  }
+  .field-name-dart-for-seo-catchall {
+    margin-top: 20px;
+    position: relative;
+    z-index: 100;
+  }
+}

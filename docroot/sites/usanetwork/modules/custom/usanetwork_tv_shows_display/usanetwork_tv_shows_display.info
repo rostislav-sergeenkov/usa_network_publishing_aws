@@ -1,0 +1,8 @@
+name = USANetwork TV Shows Display
+description = add display options for tv shows content type
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+
+dependencies[] = usanetwork_tv_shows
+dependencies[] = usanetwork_tv_shows_display_options

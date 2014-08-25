@@ -1,0 +1,631 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork_webform_feedback.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Setting the feedback url
+ **/
+function usanetwork_feedback_install() {
+  global $user;
+  $node = array(
+    'uid' => '1',
+    'title' => 'Feedback',
+    'log' => '',
+    'status' => '1',
+    'comment' => '1',
+    'promote' => '0',
+    'sticky' => '0',
+    'type' => 'webform',
+    'language' => LANGUAGE_NONE,
+    'tnid' => '0',
+    'translate' => '0',
+    'revision_uid' => '1',
+    'body' => array(
+      'und' => array(
+        0 => array(
+          'value' => '<p>Feedback form</p>',
+          'summary' => '',
+          'format' => 'wysiwyg_basic',
+          'safe_value' => ' <p>Feedback form</p> ',
+          'safe_summary' => '  ',
+        ),
+      ),
+    ),
+    'metatags' => array(),
+  );
+
+  $entity = entity_create('node', $node);
+  entity_save('node', $entity);
+
+  $node = node_load($entity->nid);
+
+  $node->webform['nid'] = $entity->nid;
+  $node->webform['confirmation'] = '<p>Thank you, your submission has been received.</p>';
+  $node->webform['confirmation_format'] = 'wysiwyg_basic';
+  $node->webform['redirect_url'] = '<none>';
+  $node->webform['status'] = '1';
+  $node->webform['roles'] = array(
+    0 => '1',
+    1 => '2',
+    2 => '3',
+    3 => '4',
+    4 => '5',
+    5 => '6',
+    6 => '7',
+  );
+
+  $node->webform['emails'] = array(
+    1 => array(
+      'nid' => $entity->nid,
+      'eid' => '1',
+      'email' => 'support@usanetwork.com',
+      'subject' => 'Feedback',
+      'from_name' => 'default',
+      'from_address' => '2',
+      'template' => 'default',
+      'excluded_components' => array(
+        0 => '6',
+      ),
+      'html' => '0',
+      'attachments' => '0',
+    ),
+  );
+
+  $node->webform['components'] = array(
+      1 => array(
+        'nid' => $entity->nid,
+        'cid' => '1',
+        'pid' => '0',
+        'form_key' => 'name',
+        'name' => 'Name',
+        'type' => 'textfield',
+        'value' => '',
+        'extra' => array(
+          'title_display' => 'before',
+          'private' => 0,
+          'disabled' => 0,
+          'unique' => 0,
+          'maxlength' => '255',
+          'conditional_operator' => '=',
+          'width' => '',
+          'field_prefix' => '',
+          'field_suffix' => '',
+          'description' => '',
+          'attributes' => array(),
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '0',
+        'page_num' => 1,
+      ),
+      2 => array(
+        'nid' => $entity->nid,
+        'cid' => '2',
+        'pid' => '0',
+        'form_key' => 'email_address',
+        'name' => 'Email Address',
+        'type' => 'email',
+        'value' => '%useremail',
+        'extra' => array(
+          'title_display' => 'before',
+          'private' => 0,
+          'disabled' => 0,
+          'unique' => 0,
+          'conditional_operator' => '=',
+          'width' => '',
+          'description' => '',
+          'attributes' => array(),
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '1',
+        'page_num' => 1,
+      ),
+      3 => array(
+        'nid' => $entity->nid,
+        'cid' => '3',
+        'pid' => '0',
+        'form_key' => 'city_town',
+        'name' => 'City/Town',
+        'type' => 'textfield',
+        'value' => '',
+        'extra' => array(
+          'title_display' => 'before',
+          'private' => 0,
+          'disabled' => 0,
+          'unique' => 0,
+          'maxlength' => '255',
+          'conditional_operator' => '=',
+          'width' => '',
+          'field_prefix' => '',
+          'field_suffix' => '',
+          'description' => '',
+          'attributes' => array(),
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '2',
+        'page_num' => 1,
+      ),
+      4 => array(
+        'nid' => $entity->nid,
+        'cid' => '4',
+        'pid' => '0',
+        'form_key' => 'state',
+        'name' => 'State',
+        'type' => 'select',
+        'value' => '',
+        'extra' => array(
+          'items' => 'Alabama|Alabama
+Alaska|Alaska
+Arizona|Arizona
+Arkansas|Arkansas
+California|California
+Colorado|Colorado
+Connecticut|Connecticut
+Delaware|Delaware
+DC|District of Columbia
+Florida|Florida
+Georgia|Georgia
+Hawaii|Hawai
+Idaho|Idaho
+Illinois|Illinois
+Indiana|Indiana
+Iowa|Iowa
+Kansas|Kansas
+Kentucky|Kentucky
+Louisiana|Louisiana
+Maine|Maine
+Maryland|Maryland
+Massachusetts|Massachusetts
+Michigan|Michigan
+Minnesota|Minnesota
+Mississippi|Mississippi
+Missouri|Missouri
+Montana|Montana
+Nebraska|Nebraska
+Nevada|Nevada
+New Hampshire|New Hampshire
+New Jersey|New Jersey
+New Mexico|New Mexico
+New York|New York
+North Carolina|North Carolina
+North Dakota|North Dakota
+Ohio|Ohio
+Oklahoma|Oklahoma
+Oregon|Oregon
+Pennsylvania|Pennsylvania
+Rhode Island|Rhode Island
+South Carolina|South Carolina
+South Dakota|South Dakota
+Tennessee|Tennessee
+Texas|Texas
+Utah|Utah
+Vermont|Vermont
+Virginia|Virginia
+Washington|Washington
+West Virginia|West Virginia
+Wisconsin|Wisconsin
+Wyoming|Wyoming
+Other|Other/Not in the U.S.',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'conditional_operator' => '=',
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '3',
+        'page_num' => 1,
+      ),
+      5 => array(
+        'nid' => $entity->nid,
+        'cid' => '5',
+        'pid' => '0',
+        'form_key' => 'age_range',
+        'name' => 'Age Range',
+        'type' => 'select',
+        'value' => '',
+        'extra' => array(
+          'items' => '12|Under 13
+13-17|13-17
+18-24|18-24
+25-34|25-34
+35-49|35-49
+50-54|50-54
+55+|55+',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '4',
+        'page_num' => 1,
+      ),
+      6 => array(
+        'nid' => $entity->nid,
+        'cid' => '6',
+        'pid' => '0',
+        'form_key' => 'topic_text',
+        'name' => 'Topic Text',
+        'type' => 'markup',
+        'value' => '<p>Please select a topic from the list below so that your message is directed to the proper department:</p>',
+        'extra' => array(
+          'format' => 'wysiwyg_basic',
+          'private' => 0,
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '0',
+        'weight' => '5',
+        'page_num' => 1,
+      ),
+      7 => array(
+        'nid' => $entity->nid,
+        'cid' => '7',
+        'pid' => '0',
+        'form_key' => 'topic',
+        'name' => 'Topic',
+        'type' => 'select',
+        'value' => '',
+        'extra' => array(
+          'items' => 'USA Network Programming|USA Network Programming (Shows, Movies, Specials)
+USANetwork.com|USA Network Web Site (Video, Games, Mobile)
+Character Initiatives|Characters Unite / Character Approved / Character Project
+USA Network Promos & On-Screen Graphics|USA Network Promos (Ads for USA Programs)
+USA Network: Commercial Advertisements|Paid Advertisements (Commercials & Informercials)
+Technical Difficulties|Technical Difficulties (TV problems only)',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '6',
+        'page_num' => 1,
+      ),
+      8 => array(
+        'nid' => $entity->nid,
+        'cid' => '8',
+        'pid' => '0',
+        'form_key' => 'program',
+        'name' => 'Program',
+        'type' => 'select',
+        'value' => 'program',
+        'extra' => array(
+          'items' => 'program|-Select Program-
+<Series>
+Becker|Becker
+Burn Notice|Burn Notice
+Chrisley Knows Best|Chrisley Knows Best
+Common Law|Common Law
+Covert Affairs|Covert Affairs
+House|House
+In Plain Sight|In Plain Sight
+JAG|JAG
+Law & Order: SVU|Law & Order: SVU
+Law & Order: CI|Law & Order: CI
+Monk|Monk
+NCIS|NCIS
+Necessary Roughness|Necessary Roughness
+Playing House|Playing House
+Psych|Psych
+Royal Pains|Royal Pains
+Sirens|Sirens
+The Starter Wife|The Starter Wife
+Suits|Suits
+Walker, Texas Ranger|Walker, Texas Ranger
+White Coller|White Coller
+Wings|Wings
+WWE Raw|WWE Raw
+Other Series|Former Series (4400, Dead Zone, etc.)
+<Movies & Special Events>
+Movies We\'ve Aired|Movies We\'ve Aired
+Movie Requests|Movie Requests
+Character Fantasy|Character Fantasy
+Westminster Dog Show|Westminster Dog Show
+<General>
+General Feedback/Questions|General Feedback/Questions
+Suggest A Program|Suggest A Program',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'webform_conditional_field_value' => 'USA Network Programming',
+          'webform_conditional_cid' => '7',
+          'webform_conditional_operator' => '=',
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '7',
+        'page_num' => 1,
+      ),
+      9 => array(
+        'nid' => $entity->nid,
+        'cid' => '9',
+        'pid' => '0',
+        'form_key' => 'site_area',
+        'name' => 'Site Area',
+        'type' => 'select',
+        'value' => 'site area',
+        'extra' => array(
+          'items' => 'site area|-Select Site Area-
+Video Player|Video Player (Full Episodes)
+Character Arcade|Character Arcade
+Games, Trivia & Applications|Show Games, Trivia & Applications
+Contests & Sweepstakes|Contests & Sweepstakes
+Message Board|Message Board
+TV Schedule Page|TV Schedule Page
+Text Messaging & USA Mobile|Text Messaging & USA Mobile
+Report a Typo or Broken Link|Report a Typo or Broken Link
+General Feedback/Questions|General Site Feedback/Questions',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'webform_conditional_field_value' => 'USANetwork.com',
+          'webform_conditional_cid' => '7',
+          'webform_conditional_operator' => '=',
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '8',
+        'page_num' => 1,
+      ),
+      10 => array(
+        'nid' => $entity->nid,
+        'cid' => '10',
+        'pid' => '0',
+        'form_key' => 'tv_provider',
+        'name' => 'TV Provider',
+        'type' => 'select',
+        'value' => 'provider',
+        'extra' => array(
+          'items' => 'provider|-Select Provider-
+Bright House|Bright House
+CableOne|CableOne
+Cablevision|Cablevision
+Charter|Charter
+Comcast|Comcast
+Cox|Cox
+DirecTV|DirecTV
+Dish Network|Dish Network
+Insight|Insight
+Mediacom|Mediacom
+RCN|RCN
+Suddenlink|Suddenlink
+Time Warner|Time Warner
+Verizon FIOS|Verizon FIOS
+Other|Other (Not Listed)',
+          'multiple' => 0,
+          'title_display' => 'before',
+          'private' => 0,
+          'aslist' => 1,
+          'optrand' => 0,
+          'webform_conditional_field_value' => 'Technical Difficulties',
+          'webform_conditional_cid' => '7',
+          'webform_conditional_operator' => '=',
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '9',
+        'page_num' => 1,
+      ),
+      11 => array(
+        'nid' => $entity->nid,
+        'cid' => '11',
+        'pid' => '0',
+        'form_key' => 'message',
+        'name' => 'Message',
+        'type' => 'textarea',
+        'value' => '',
+        'extra' => array(
+          'title_display' => 0,
+          'private' => 0,
+          'resizable' => 1,
+          'disabled' => 0,
+          'cols' => '',
+          'rows' => '',
+          'description' => '',
+          'attributes' => array(),
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '1',
+        'weight' => '10',
+        'page_num' => 1,
+      ),
+      12 => array(
+        'nid' => $entity->nid,
+        'cid' => '12',
+        'pid' => '0',
+        'form_key' => 'receive_info',
+        'name' => 'Receive Info',
+        'type' => 'select',
+        'value' => '',
+        'extra' => array(
+          'items' => 'receive info|Check this box if you\'d like to periodically receive information from USA Network. ',
+          'multiple' => 1,
+          'title_display' => 'none',
+          'private' => 0,
+          'aslist' => 0,
+          'optrand' => 0,
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_operator' => '=',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '0',
+        'weight' => '11',
+        'page_num' => 1,
+      ),
+    );
+
+    node_save($node);
+    $node = node_load($entity->nid);
+
+    db_insert('captcha_points')
+      ->fields(array('form_id' => 'webform_client_form_' . $entity->nid,
+        'module' => 'recaptcha',
+        'captcha_type' => 'reCAPTCHA')
+      )
+      ->execute();
+
+    db_update('url_alias')
+      ->fields(array(
+        'alias' => 'feedback',
+      ))
+      ->condition('alias', 'content/feedback', '=')
+      ->execute();
+
+    module_enable(array('webform_validation'));
+    $ruleid = db_insert('webform_validation_rule')
+        ->fields(array('rulename' => 'Minimum age range',
+          'validator' => 'specific_value',
+          'nid' => $entity->nid,
+          'data' => '13-17,18-24,25-34,35-49,50-54,55+',
+          'error_message' => 'Sorry, you must be 13 years or older to use this e-mail form.',
+          'negate' => 0
+          )
+        )
+        ->execute();
+
+    db_insert('webform_validation_rule_components')
+        ->fields(array('ruleid' => $ruleid,
+          'cid' => '5',
+          )
+        )
+        ->execute();
+}
+
+function usanetwork_feedback_uninstall() {
+  $nid = db_select("node", "n")
+      ->fields("n", array("nid"))
+      ->condition("title", "Feedback", '=')
+      ->condition("type", "webform", '=')
+      ->orderBy('nid', 'desc')
+      ->execute()
+      ->fetchField();
+
+  db_delete('node')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('captcha_points')
+    ->condition('form_id', 'webform_client_form_' . $nid)
+    ->execute();
+
+  db_delete('webform_component')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_emails')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_roles')
+    ->condition('nid', $nid)
+    ->execute();
+
+  db_delete('webform_validation_rule')
+    ->condition('nid', $nid)
+    ->execute();
+}
+
+/**
+ * Change email topic settings
+ */
+function usanetwork_feedback_update_7101() {
+  $nid = db_select("node", "n")
+    ->fields("n", array("nid"))
+    ->condition("title", "Feedback", '=')
+    ->condition("type", "webform", '=')
+    ->orderBy('nid', 'desc')
+    ->execute()
+    ->fetchField();
+ 
+  $node = node_load($nid);
+  
+  $node->webform['emails'] = array(
+    1 => array(
+      'nid' => $node->nid,
+      'eid' => '1',
+      'email' => 'usawebmaster@nbcuni.com',
+      'subject' => '7',
+      'from_name' => 'default',
+      'from_address' => '2',
+      'template' => 'default',
+      'excluded_components' => array(
+        0 => '6',
+      ),
+      'html' => '0',
+      'attachments' => '0',
+    ),
+  );
+  
+  node_save($node);
+}

@@ -1,0 +1,6 @@
+name = USA Network Tokens
+description = Provides a set of custom tokens
+core = 7.x
+package = USA Network
+
+dependencies[] = usanetwork_tv_shows

@@ -1,0 +1,21 @@
+// Create the design for your site below
+// If you're using SMACSS, this is where module, state and theme styles go
+// SITE-WIDE DESIGN -------------------------------------------------------------- */
+
+
+// TEMPORARILY HIDE ADMIN STUFFS
+// AND OTHER STUFFS THAT ARE
+// IN THE WAY FOR NOW
+// #admin-menu {
+//   display: none;
+// }
+// html body.admin-menu {
+//   margin-top: auto !important;
+// }
+#admin-menu {
+  z-index: 100000;
+}
+[class*="iib"] {
+  // display: none;
+  background-color: $gray-dark;
+}

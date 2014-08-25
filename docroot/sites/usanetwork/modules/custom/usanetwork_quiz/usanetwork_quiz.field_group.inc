@@ -1,0 +1,162 @@
+<?php
+/**
+ * @file
+ * usanetwork_quiz.field_group.inc
+ */
+
+/**
+ * Implements hook_field_group_info().
+ */
+function usanetwork_quiz_field_group_info() {
+  $export = array();
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_additional_information|node|quiz|form';
+  $field_group->group_name = 'group_additional_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Additional Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_quiz_repeat_text',
+      1 => 'field_quiz_entry_text',
+      2 => 'field_quiz_splash_image',
+      3 => 'field_quiz_header_image',
+      4 => 'field_usa_css',
+      5 => 'field_usa_catchall_js',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-additional-information field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_additional_information|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_basic_information|node|quiz|form';
+  $field_group->group_name = 'group_basic_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Basic information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_quiz_type',
+      1 => 'title',
+      2 => 'body',
+      3 => 'field_show',
+      4 => 'field_usa_tv_show_color',
+      5 => 'field_usa_tv_show_hover_color',
+      6 => 'field_quiz_theme',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-basic-information field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_basic_information|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_quiz_quiestions|node|quiz|form';
+  $field_group->group_name = 'group_quiz_quiestions';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Questions',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_quiz_questions',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-quiz-quiestions field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_quiz_quiestions|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_quiz_result|node|quiz|form';
+  $field_group->group_name = 'group_quiz_result';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Results',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_quiz_calculation',
+      1 => 'field_quiz_results',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-quiz-result field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_quiz_result|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_og_fields|node|quiz|form';
+  $field_group->group_name = 'group_usa_og_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'USA OG Fields',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_usa_og_image',
+      1 => 'field_usa_og_description',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-usa-og-fields field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_usa_og_fields|node|quiz|form'] = $field_group;
+
+  return $export;
+}

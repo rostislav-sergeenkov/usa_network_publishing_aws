@@ -1,0 +1,139 @@
+.snipe-active {
+  #block-usanetwork-blocks-usa-meganav {
+    display: none;
+  }
+  .tv-show-menu-trigger:after {
+    top: -14px;
+  }
+}
+
+.snipe-msg {
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  .snipe-html {
+    overflow: hidden;
+    margin-right: 30px;
+  }
+  @include breakpoint($bp-menu-switch) {
+    background-color: $black-true;
+    float: left;
+    max-width: 730px;
+    position: relative;
+    width: 70%;
+    padding-top: 0;
+    padding-right: 25px;
+    margin-right: 26px;
+    font-size: 22px;
+    &:after {
+      background-color: $gray-med;
+      content: "";
+      display: block;
+      height: 34px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+      z-index: 1;
+    }
+  }
+
+  h2, h3, h4 {
+    margin: 0;
+    line-height: 1em;
+  }
+  h2 {
+    @extend %semi-18;
+    color: $blue;
+    @include breakpoint($bp-menu-switch) {
+      font-size: 22px;
+    }
+  }
+  h3 {
+    @extend %regular-16;
+    @include breakpoint($bp-menu-switch) {
+      font-size: 18px;
+    }
+  }
+  .close {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    cursor: pointer;
+    color: $gray-light;
+    font-size: 16px;
+    @extend %usanetwork-font;
+    @include breakpoint($bp-menu-switch) {
+      top: 0;
+    }
+    .ie9 &, .ie8 &, .no-font-feature-settings & {
+      background: url(../images/svgs/ie_x1.svg) no-repeat top left;
+      height: 20px;
+      width: 20px;
+      text-indent: -9999px;
+    }
+  }
+}
+
+
+.block-usanetwork-snipe {
+  bottom: -30px;
+  width: 100%;
+  display: block;
+  left: 0;
+  padding: 16px;
+  position: absolute;
+  text-align: left;
+  z-index: 1;
+  .snipe-active & {
+    bottom: 50px;
+    background-color: $gray-dark;
+  }
+  @include breakpoint($bp-menu-switch) {
+    #mega-nav .primary-nav & {
+      display: none;
+    }
+    #mega-nav .primary-nav.snipe-active & {
+      display: inline-block;
+    }
+    background-color: transparent;
+    bottom: auto;
+    height: 65px;
+    left: -100%;
+    overflow: hidden;
+    padding-left: 25px;
+    padding-right: 25px;
+    top: 1px;
+    margin-left: 0;
+    .snipe-active & {
+      background-color: $black-true;
+      left: 0;
+      margin-left: 119px;
+      bottom: auto;
+//      transform: translateX(0px);
+//      transition: transform 450ms ease 0s;
+    }
+    .secondary-close {
+      float: left;
+      width: 25px;
+      height: 25px;
+      border: 5px solid $blue;
+      border-width: 5px 0 5px 0;
+      background-color: transparent;
+      cursor: pointer;
+      position: relative;
+      display: block;
+      &:before {
+        content: $space;
+        position: absolute;
+        left: 0;
+        top: 5px;
+        display: block;
+        width: 25px;
+        height: 0px;
+        border-top: 5px solid $blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+name =TVE Error Windows (Generic)
+description = Provides modal windows based on the error encountered to users. Working with not valid browsers.
+package = NBCU TVE
+core = 7.x
+version = 7.x-1.1
+
+dependencies[] = tve_admin_ui
+dependencies[] = tve_errors
+
+configure = admin/tve/errors

@@ -1,0 +1,297 @@
+<?php
+
+define('OG_DESCRIPTION_FIELD', 'field_usa_og_description');
+define('OG_DESCRIPTION_LIMIT', 50);
+define('OG_IMAGE_FIELD', 'field_usa_og_image');
+
+/**
+ * Implements hook_token_info().
+ */
+function usanetwork_token_token_info() {
+  $data = array();
+  $data['tokens']['current-page']['tv-show'] = array(
+    'name' => t('TV Show'),
+    'description' => t('TV Show current page is assigned to.'),
+    'type' => 'node',
+  );
+
+  $entity_types = array('node');
+  if (module_exists('entity_token')) {
+    module_load_include('inc', 'entity_token', 'entity_token.tokens');
+    $entity_types = entity_token_types();
+  }
+
+  foreach ($entity_types as $entity_type) {
+    $data['tokens'][$entity_type]['og-description'] = array(
+      'name' => t('OG Description'),
+      'description' => t('OpenGraph description with fallback.'),
+    );
+    $data['tokens'][$entity_type]['og-image'] = array(
+      'name' => t('OG Image'),
+      'description' => t('OpenGraph image with fallback.'),
+    );
+  }
+
+  return $data;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function usanetwork_token_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
+
+  if ($type == 'current-page') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'tv-show':
+          $show = _usanetwork_tv_show_menu_get_show();
+          $replacements[$original] = $show ? ($sanitize ? check_plain($show->title) : $show->title) : '';
+          break;
+      }
+    }
+
+    if ($show_tokens = token_find_with_prefix($tokens, 'tv-show')) {
+      $show = _usanetwork_tv_show_menu_get_show();
+      $replacements += token_generate('node', $show_tokens, array('node' => $show), $options);
+    }
+  }
+
+  $entity_types = array('node');
+  if (module_exists('entity_token')) {
+    module_load_include('inc', 'entity_token', 'entity_token.tokens');
+    $entity_types = entity_token_types();
+  }
+  if (in_array($type, $entity_types) && !empty($data[$type])) {
+    $entity = $data[$type];
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'og-description':
+          $description = _usanetwork_token_og_description($entity, $type);
+          $replacements[$original] = $sanitize ? htmlspecialchars_decode(check_plain($description)) : $description;
+          break;
+        case 'og-image':
+          $image = file_create_url(_usanetwork_token_og_image($entity, $type));
+          $replacements[$original] = $sanitize ? htmlspecialchars_decode(check_plain($image)) : $image;
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Returns tv show associated with entity.
+ */
+function _usanetwork_token_get_tv_show($entity, $entity_type) {
+  $cache = &drupal_static(__FUNCTION__);
+  list($entity_id,,$bundle) = entity_extract_ids($entity_type, $entity);
+  if (isset($cache[$entity_type][$entity_id])) {
+    return $cache[$entity_type][$entity_id];
+  }
+
+  $show = false;
+  if ($entity_type == 'node' && $bundle == 'tv_show') {
+    $show = $entity;
+  }
+  elseif (isset($entity->field_show) && !empty($entity->field_show)) {
+    $show_nid = field_get_items($entity_type, $entity, 'field_show');
+    if ($show_nid = reset($show_nid)) {
+      $show = node_load($show_nid['target_id']);
+    }
+  }
+
+  $cache[$entity_type][$entity_id] = $show;
+  return $show;
+}
+
+/**
+ * Returns node opengraph description.
+ */
+function _usanetwork_token_og_description($entity, $entity_type) {
+  $result = false;
+  if (is_object($entity)) {
+    list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
+    // check if description is set in CMS
+    if (isset($entity->{OG_DESCRIPTION_FIELD})) {
+      $description = field_get_items($entity_type, $entity, OG_DESCRIPTION_FIELD);
+      if ($description && $description = reset($description)) {
+        $result = (isset($description['safe_value']) && !empty($description['safe_value'])) ? $description['safe_value'] : '';
+      }
+    }
+
+    if ($result === false) {
+      $show = _usanetwork_token_get_tv_show($entity, $entity_type);
+      // add fallback
+      switch ($entity_type) {
+        case 'node':
+          switch ($entity->type) {
+            case 'catchall_page':
+              if ($show) {
+                $result = t('Featured !show_title Content', array(
+                  '!show_title' => $show->title,
+                ));
+              }
+              break;
+            case 'media_gallery':
+              if (isset($entity->field_person) && !empty($entity->field_person)) {
+                // character gallery
+                $person_id = reset(field_get_items('node', $entity, 'field_person'));
+                if ($person_id && $person = node_load($person_id['target_id'])) {
+                  $result = t('!show_name !character_name Character Gallery', array(
+                    '!show_name' => $show ? $show->title : '',
+                    '!character_name' => $person->title,
+                  ));
+                }
+              }
+              elseif (isset($entity->field_episode) && !empty($entity->field_episode)) {
+                // episodic gallery
+                $episode_id = reset(field_get_items('node', $entity, 'field_episode'));
+                if ($episode_id && $episode = node_load($episode_id['target_id'])) {
+                  $result = t('!show_name !episode_title Gallery', array(
+                    '!show_name' => $show ? $show->title : '',
+                    '!episode_title' => $episode->title,
+                  ));
+                }
+              }
+              if ($result === false) {
+                // generic gallery
+                $result = t('!show_name Gallery', array(
+                  '!show_name' => $show ? $show->title : '',
+                ));
+              }
+              break;
+          }
+          break;
+      }
+    }
+  }
+
+  if ($result === false) {
+    $result = _usanetwork_token_og_description_body($entity, $entity_type);
+  }
+
+  return $result ? $result : '';
+}
+
+/**
+ * Returns node opengraph image.
+ */
+function _usanetwork_token_og_image($entity, $entity_type) {
+  $result = false;
+  if (is_object($entity)) {
+    list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
+    // check if image is set in CMS
+    if (isset($entity->{OG_IMAGE_FIELD})) {
+      $image = field_get_items($entity_type, $entity, OG_IMAGE_FIELD);
+      if ($image && $image = reset($image)) {
+        $result = isset($image['uri']) ? $image['uri'] : false;
+      }
+    }
+
+    if ($result === false) {
+      // add fallback
+      switch ($entity_type) {
+        case 'node':
+          switch ($bundle) {
+            case 'media_gallery':
+              $image = field_get_items('node', $entity, 'field_media_items');
+              if ($image && $image = reset($image)) {
+                $result = isset($image['uri']) ? $image['uri'] : false;
+              }
+              break;
+            case 'person':
+              $image = field_get_items('node', $entity, 'field_usa_character_thumb');
+              if ($image && $image = reset($image)) {
+                $result = isset($image['uri']) ? $image['uri'] : false;
+              }
+              break;
+            case 'tv_episode':
+              $gallery_id = db_select('field_data_field_episode', 'fd')
+                ->fields('fd', array(
+                  'entity_id',
+                ))
+                ->condition('bundle', 'media_gallery', '=')
+                ->condition('field_episode_target_id', $entity->nid, '=')
+                ->execute()
+                ->fetchField();
+              if ($gallery_id) {
+                $gallery = node_load($gallery_id);
+                $image = field_get_items('node', $gallery, 'field_media_items');
+                if ($image && $image = reset($image)) {
+                  $result = isset($image['uri']) ? $image['uri'] : false;
+                }
+              }
+              break;
+            case 'tv_show':
+              $image = field_get_items('node', $entity, 'field_logo');
+              if ($image && $image = reset($image)) {
+                $result = isset($image['uri']) ? $image['uri'] : false;
+              }
+              break;
+            case 'usa_video':
+            case 'usa_tve_video':
+              $image = field_get_items('node', $entity, 'field_video_thumbnail');
+              if ($image && $image = reset($image)) {
+                $result = isset($image['uri']) ? $image['uri'] : false;
+              }
+              break;
+          }
+          break;
+        case 'file':
+          if (module_exists('pub_mpx') && in_array($bundle, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+            $wrapper = file_stream_wrapper_get_instance_by_uri($entity->uri);
+            $result = $wrapper->getLocalThumbnailPath();
+          }
+          break;
+      }
+
+      if ($result === false) {
+        $result = variable_get('usanetwork_token_global_og_image', drupal_get_path('module', 'usanetwork_token') . '/images/default.jpg');
+      }
+    }
+  }
+  return $result ? $result : '';
+}
+
+/**
+ *
+ */
+function _usanetwork_token_og_description_body($entity, $entity_type) {
+  $result = false;
+  list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
+  switch ($entity_type) {
+    case 'node':
+      if (isset($entity->body) && !empty($entity->body) && $body = reset(field_get_items('node', $entity, 'body'))) {
+        $result = _usanetwork_token_limit_text(isset($body['safe_value']) ? $body['safe_value'] : $body['value'], OG_DESCRIPTION_LIMIT);
+      }
+      break;
+    case 'file':
+      if (module_exists('pub_mpx') && in_array($bundle, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+        if (isset($entity->field_mpx_description) && !empty($entity->field_mpx_description) && $body = reset(field_get_items($entity_type, $entity, 'field_mpx_description'))) {
+          $result = _usanetwork_token_limit_text(isset($body['safe_value']) ? $body['safe_value'] : $body['value'], OG_DESCRIPTION_LIMIT);
+        }
+      }
+      break;
+  }
+
+  if ($result && function_exists('_filter_htmlcorrector')) {
+    $result = _filter_htmlcorrector($result);
+  };
+
+  return $result;
+}
+
+/**
+ * Returns first $limit words.
+ */
+function _usanetwork_token_limit_text($text, $limit) {
+  if (str_word_count($text, 0) > $limit) {
+    $words = str_word_count($text, 2);
+    $pos = array_keys($words);
+    $text = substr($text, 0, $pos[$limit]) . '...';
+  }
+  return $text;
+}

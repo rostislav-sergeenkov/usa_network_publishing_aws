@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_watchwith feature.
+ */
+
+include_once 'usanetwork_watchwith.features.inc';
+
+module_load_include('module', 'tve_watchwith', 'tve_watchwith');
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_watchwith_menu() {
+  $items = array();
+  $items['admin/usanetwork/watchwith'] = array(
+    'title' => 'WatchWith Settings',
+    'description' => 'Watchwith Sidecar configuration settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_usanetwork_watchwith_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_watchwith.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function usanetwork_watchwith_page_alter(&$page) {
+  if (!_tve_watchwith_is_sidecar_load_required()) {
+    return;
+  }
+
+  $current_menu_item = menu_get_item();
+  $current_menu_item_path = $current_menu_item['path'];
+  $view_watchwith = FALSE;
+  
+  if ($current_menu_item_path == 'videos') {
+    $result = reset(views_get_view_result('usa_mpx_video', 'global_latest_full_episode_video_mpx'));
+    $file = file_load($result->fid);
+    $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+  } else {
+    $file = menu_get_object('file');
+    if (isset($file->type) && (in_array($file->type, _usanetwork_mpx_video_get_all_file_types()))){
+      $view_watchwith = _usanetwork_watchwith_is_watchwith_show_required($file);
+    }
+  }
+  
+  if (!$view_watchwith) {
+    return;
+  }
+  
+  $page['page_bottom']['usanetwork_watchwith']['#attached']['js'][drupal_get_path('module', 'usanetwork_watchwith') . '/js/usanetwork_watchwith.js'] = array(
+    'type' => 'file',
+    'scope' => 'footer',
+  );
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ */
+function usanetwork_watchwith_preprocess_file_entity(&$variables) {
+  $file = $variables['file'];
+  if (in_array($file->type, _usanetwork_mpx_video_get_all_file_types())) {
+    $variables['watchwith_sidecar'] = NULL;
+    if (_tve_watchwith_is_sidecar_load_required() &&  _usanetwork_watchwith_is_watchwith_show_required($file)) {
+
+      // Gets the anvato id from the node object and passes it to sidecar load function.
+      $external_advertiser_id = field_get_items('file', $file, 'field_mpx_external_advertiser_id');
+      $external_advertiser_id = isset($external_advertiser_id[0]['value']) ?
+        $external_advertiser_id[0]['value'] :
+        NULL;
+
+      if ($external_advertiser_id) {
+    
+        $sidecar_url = url('http://api.watchwith.com/v3/airings/' . $external_advertiser_id, array('query' => array('idSource' => 'anvatoAssetId', 'key' => variable_get('tve_watchwith_api_key'))));
+        
+        $result = drupal_http_request($sidecar_url);
+        
+        if (!empty($result->data)) {
+          $result_data = drupal_json_decode($result->data);
+          if (!empty($result_data['uuid'])) {
+            _tve_watchwith_load_sidecar($external_advertiser_id);
+
+            if (isset($result_data['timeline']['events'])) {
+              $variables['watchwith_sidecar'] = _tve_watchwith_get_sidecar_container_html();
+            }
+            $variables['watchwith_hide_sidecar_tabs'] = variable_get('tve_watchwith_hide_sidecar_tabs', 1);
+
+            $default_no_content_message = variable_get('tve_watchwith_default_no_content_message', array());
+            $variables['watchwith_error_message'] = isset($default_no_content_message['value']) ? $default_no_content_message['value'] : '';
+          }
+        }      
+      }
+    }
+  }
+}
+
+/**
+ * Helper function for checking view WatchWith
+ */
+function _usanetwork_watchwith_is_watchwith_show_required($file) {
+  
+  module_load_include('inc', 'pathauto', 'pathauto');
+  
+  $field_show = reset(field_get_items('file', $file, 'field_show'));
+  $show = node_load($field_show['target_id']);
+  $show_name = pathauto_cleanstring($show->title);
+  
+  $full_episode_field = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
+  $full_episode = $full_episode_field ? ($full_episode_field['value'] == '1' ? TRUE : FALSE) : FALSE;
+  
+  return (in_array($show_name, variable_get('usanetwork_watchwith_show_settings', array('playing-house' => 'playing-house', 'graceland' => 'graceland')), TRUE) && $full_episode);
+}

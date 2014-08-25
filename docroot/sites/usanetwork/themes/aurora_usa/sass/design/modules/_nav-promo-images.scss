@@ -1,0 +1,33 @@
+.globalnav-promos {
+  margin: 0 54px 15px 0;
+  @include clearfix;
+  .node-global-nav-image {
+      // padding-right: 15px;
+    > .asset-img {
+      cursor: default;
+    }  
+    @include breakpoint(max-width ($bp-show-four-subnav-images - 1)) {
+      @include layout(3, .06) {
+        &:nth-of-type(1) { @include grid-span(1, 1); }
+        &:nth-of-type(2) { @include grid-span(1, 2); }
+        &:nth-of-type(3) { @include grid-span(1, 3); }
+        &:nth-of-type(4) { display: none; }
+      }
+    }
+    @include breakpoint($bp-show-four-subnav-images) {
+      &:nth-of-type(last) { padding-right: 0; }
+      @include layout(4, .06) {
+        &:nth-of-type(1) { @include grid-span(1, 1); }
+        &:nth-of-type(2) { @include grid-span(1, 2); }
+        &:nth-of-type(3) { @include grid-span(1, 3); }
+        &:nth-of-type(4) { @include grid-span(1, 4); }
+      }
+    }
+  }
+}
+
+.mega-menu-items {
+  .ajax-progress-throbber {
+    display: none;
+  }
+}

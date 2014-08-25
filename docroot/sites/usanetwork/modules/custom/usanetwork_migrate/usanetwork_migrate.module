@@ -1,0 +1,217 @@
+<?php
+
+
+define('USANETWORK_MIGRATE_UNPUBLISH_QUEUE', 'usanetwork_migrate_unpublish_content');
+define('USANETWORK_MIGRATE_STATE_FLOW_FIX_QUEUE', 'usanetwork_migrate_state_flow_fix');
+
+
+/**
+ * Helper that takes a node entity and array of SimpleXMLElement objects and
+ * attaches taxonomy terms to the node preserving hierarchy.
+ */
+function _usanetwork_migrate_attach_video_categories(&$entity, $category_elements) {
+
+  // Ensure an array if given a single SimpleXMLElement object.
+  if (!is_array($category_elements)) {
+    if (is_object($category_elements) && $category_elements instanceof SimpleXMLElement) {
+      $category_elements = array($category_elements);
+    }
+    // Bail if passed an unexpected object.
+    else {
+      return FALSE;
+    }
+  }
+
+  foreach ($category_elements as $element) {
+    if ($element instanceof SimpleXMLElement) {
+      $element_value = (string)$element;
+      // Fetch term ID from the array of term names.
+      $element_term_hierarchy = explode('/', $element_value);
+      _usanetwork_migrate_add_video_term_by_hierarchy($entity, $element_term_hierarchy);
+    }
+  }
+}
+
+/**
+ * Helper that returns the vid for the 'usa_video_terms' vocabulary.
+ */
+function _usanetwork_migrate_get_usa_video_terms_vid() {
+
+  static $vid;
+
+  if (empty($vid)) {
+    $vid = db_query("SELECT vid FROM {taxonomy_vocabulary} WHERE machine_name = :machine_name",
+        array(':machine_name' => 'usa_video_terms'))->fetchField();
+  }
+
+  return $vid;
+}
+
+/**
+ * Helper that returns an array of terms that can be attached to a node entity
+ * given an array of term names in a hierarchical structure.
+ */
+function _usanetwork_migrate_add_video_term_by_hierarchy(&$entity, $term_hierarchy) {
+
+  // Return empty array if $term_hierachy is empty.
+  if (empty($term_hierarchy)) {
+    return array();
+  }
+
+  // Get the vocabulary id for 'usa_video_terms'.
+  $vocabulary_id = _usanetwork_migrate_get_usa_video_terms_vid();
+
+  // Start with the top level of the taxonomy tree.
+  $parent_tid = 0;
+  $parent_children = taxonomy_get_tree($vocabulary_id, $parent_tid, 1);
+
+  foreach ($term_hierarchy as $term_name) {
+    // Check if the term exists by looking through its parent's child terms.
+    $tid = NULL;
+    foreach ($parent_children as $child_term) {
+      if ($term_name == $child_term->name) {
+        $tid = $child_term->tid;
+      }
+    }
+    // Create the term if it does not exist.
+    if (is_null($tid)) {
+      $tid = _usanetwork_migrate_create_term($term_name, $parent_tid);
+      // Abort if we could not save the new term.
+      if ($tid === FALSE) {
+        return FALSE;
+      }
+    }
+    // Reset the parent tid and children array for the next level down.
+    $parent_tid = $tid;
+    $parent_children = taxonomy_get_tree($vocabulary_id, $parent_tid, 1);
+  }
+
+  // Now add the final term in the hierarchy to the node.
+  if ($parent_tid) {
+    $entity->field_usa_video_terms[ LANGUAGE_NONE ][]['target_id'] = $parent_tid;
+  }
+}
+
+
+/**
+ * Helper that creates a new term by name.
+ */
+function _usanetwork_migrate_create_term($term_name, $parent_tid = 0) {
+
+  $new_term = new stdClass();
+  $new_term->vid = _usanetwork_migrate_get_usa_video_terms_vid();
+  $new_term->name = $term_name;
+  $new_term->parent = $parent_tid;
+
+  $result = taxonomy_term_save($new_term);
+
+  if ($result !== SAVED_NEW) {
+    watchdog('usanetwork_migrate',
+        'Failed to create term "@term_name" with parent tid "@parent_tid".',
+        array('@term_name' => $term_name, '@parent_tid' => $parent_tid));
+    drupal_set_message(t('Failed to create term "@term_name" with parent tid "@parent_tid".',
+        array('@term_name' => $term_name, '@parent_tid' => $parent_tid)));
+  }
+
+  return isset($new_term->tid) ? $new_term->tid : FALSE;
+}
+
+/**
+ * Helper that takes an array of video category SimpleXMLElement objects and
+ * attaches the entity reference to the appropriate TV Show.
+ */
+function _usanetwork_migrate_attach_video_tv_show_reference(&$entity, $term_hierarchy) {
+
+  // Return empty array if $term_hierachy is empty.
+  if (empty($term_hierarchy)) {
+    return FALSE;
+  }
+
+  // TV Show names are pulled from a category with the form "Series/[Name]/...".
+  $tv_show_nids = array();
+
+  foreach ($term_hierarchy as $category) {
+    $show_name = trim(preg_replace('|^Series/([^/]*)/?.*$|', '$1', $category));
+    if ($show_name) {
+      $show_query = new EntityFieldQuery();
+      $show_query->entityCondition('entity_type', 'node');
+      $show_query->entityCondition('bundle', 'tv_show');
+      $show_query->propertyCondition('title', $show_name);
+      $show_result = $show_query->execute();
+      if (!empty($show_result['node'])) {
+        foreach ($show_result['node'] as $result) {
+          $tv_show_nids[ $result->nid ] = $result->nid;
+        }
+      }
+    }
+  }
+
+  foreach ($tv_show_nids as $nid) {
+    $entity->field_show[ LANGUAGE_NONE ][]['target_id'] = $nid;
+  }
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function usanetwork_migrate_cron() {
+
+  if (!variable_get('usanetwork_migrate_run_cron', TRUE)) {
+    return;
+  }
+
+  // Run migration to update content.
+  global $usanetwork_migrate_is_cron;
+
+  $usanetwork_migrate_is_cron = TRUE;
+  $machine_names = array('usanetwork_tve_videos', 'usanetwork_mpx_videos');
+
+  foreach ($machine_names as $machine_name) {
+    // Log that we're starting this update.
+    watchdog('usanetwork_migrate', 'Starting @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Starting @migration migration update.',
+        array('@migration' => $machine_name)));
+    $migration = Migration::getInstance($machine_name);
+    // Prepare to Update the contents/data
+    $migration->prepareUpdate();
+    // Trigger the migration
+    $result = $migration->processImport();
+    // Log that we've completed this update.
+    watchdog('usanetwork_migrate', 'Completed @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Completed @migration migration update.',
+        array('@migration' => $machine_name)));
+  }
+  //*/  <-- Up to here.  (Migration Update)
+
+  // Clearing the cache fixes some access issues for newly published nodes.
+  // See @todo below
+  _usanetwork_migrate_cron_cache_clear();
+}
+
+/**
+ * Helper to clear caches on cron.
+ * @TODO note 8.26.13
+ * see if this is necessary with workbench changes
+ * once something becomes scheduled
+ * check anon access to make sure draft status 0 is not stuck
+ */
+function _usanetwork_migrate_cron_cache_clear() {
+
+  $core = array(
+    'cache',
+    'cache_path',
+    'cache_filter',
+    'cache_bootstrap',
+    'cache_page',
+  );
+  $cache_tables = array_merge(module_invoke_all('flush_caches'), $core);
+  foreach ($cache_tables as $table) {
+    cache_clear_all('*', $table, TRUE);
+  }
+// @TODO do we need this after the workbench update?
+  watchdog('usanetwork_migrate', 'Ran custom cache clear on cron.');
+  drupal_set_message(t('Ran custom cache clear on cron.'));
+}

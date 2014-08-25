@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * Implementation of hook_field_attach_form().
+ */
+function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode = NULL, $options = array()) {
+  if (($entity_type == 'node') && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show'))) {
+    foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos', 'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids') as $changed_field) {
+      //Redefine theme for multiple value
+      $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';
+      foreach (element_children($form[$changed_field][$form[$changed_field]['#language']]) as $key) {
+        $form[$changed_field][$form[$changed_field]['#language']][$key]['target_id']['#attributes'] = array('class' => array('field-usanetwork-entityreference-autocomplete'));
+      }
+    }
+    $form['#attached']['css'] = array(
+      drupal_get_path('module', 'usanetwork_entityreference') . '/css/usanetwork_entityreference.css',
+    );
+  }
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function usanetwork_entityreference_theme() {
+  return array(
+    'usanetwork_entityreference_field_multiple_value_form' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Theme for multiple value with edit parameter
+ */
+function theme_usanetwork_entityreference_field_multiple_value_form($variables) {
+  $element = $variables['element'];
+  $output = '';
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+    $header = array(
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Edit Link'),
+      t('Order'),
+    );
+    $rows = array();
+
+    // Sort items according to '_weight' (needed when the form comes back after
+    // preview or failed validation)
+    $items = array();
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+      }
+      else {
+        if (preg_match("/.+\((\d+)\)/", $element[$key]['target_id']['#value'], $matches)) {
+          $value = $matches[1];
+          $link = l('edit', 'node/'. $value . '/edit', array('attributes' => array('target'=>'_blank')));
+        } else {
+          $link = l('edit', '');
+        }
+        $element[$key]['usanetwork_entityreference_edit_link'] =  array(
+          '#type' => 'item',
+          '#markup' => $link,
+        );
+        $items[] = &$element[$key];
+      }
+    }
+    usort($items, '_field_sort_items_value_helper');
+
+    // Add the items as table rows.
+    foreach ($items as $key => $item) {
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $delta_element = drupal_render($item['_weight']);
+      $delta_element_edit_link = drupal_render($item['usanetwork_entityreference_edit_link']);
+      $cells = array(
+        array('data' => '', 'class' => array('field-multiple-drag')),
+        drupal_render($item),
+        array('data' => $delta_element_edit_link, 'class' => array('field-usanetwork-entityreference-edit-link')),
+        array('data' => $delta_element, 'class' => array('delta-order')),
+      );
+      $rows[] = array(
+        'data' => $cells,
+        'class' => array('draggable'),
+      );
+    }
+
+    $output = '<div class="form-item">';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+    drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
+}
+

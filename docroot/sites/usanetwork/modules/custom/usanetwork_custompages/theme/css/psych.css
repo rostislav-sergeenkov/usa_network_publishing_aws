@@ -1,0 +1,66 @@
+
+<style>
+.solid { 
+	background-color:#7bae6e;
+}
+#container {
+	position:relative;
+	background-color:#7bae6e;
+	width:935px;
+	margin:0 auto;
+	overflow:hidden;
+	height:727px;
+}
+#as2Container, #as3Container {
+	position:absolute;
+	width:935px;
+	height:727px;
+	background-color: transparent;
+	top:0px;
+	left:0px;
+}
+#as3Container {
+	left:-935px;
+	background-color: transparent;
+}
+#as3Container .closeBtn {
+	top:190px;
+	left:875px;
+}
+#as3Flash {
+	position:absolute;
+	width:924px;
+	height:480px;
+	left:5px;
+	top:175px;
+}
+.closeBtn {
+	display: block;
+	height: 34px;
+	width:34px;
+	color:#444;
+	text-align:center;
+	float:left;
+	/*positioning*/
+	position:absolute;
+	top:130px;
+	left:-3000px;
+	z-index:6;
+}
+.closeBtn:hover {
+	background-position: 0 -34px;
+}
+.closeBtn span {
+	display:none;
+}
+.closeBtn {
+	background: url(../images/btnClose_hi.gif) repeat-x 0 0;
+}
+.closeBtn a {
+	background: url(../images/btnClose_hi.gif) repeat-x 0 0;
+}
+#usa_body.mod1col #usa_leftColumn .mod {
+		background-color: #7bae6e;
+	}
+  
+</style>

@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall schema and functions for the xmlsitemap_file_entity module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function xmlsitemap_file_entity_uninstall() {
+  drupal_load('module', 'file_entity');
+  drupal_load('module', 'xmlsitemap');
+  $file_types = array_keys(file_type_load_all(TRUE));
+  foreach ($file_types as $file_type) {
+    xmlsitemap_link_bundle_delete('file', $file_type);
+  }
+}

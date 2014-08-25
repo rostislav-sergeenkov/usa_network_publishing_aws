@@ -1,0 +1,241 @@
+%more-triangle {
+  @include cssTriangle(18px, $tan, 'top');
+  border-width: 12px 18px 18px;
+  top: 18px;
+  content: $space;
+  left: 50%;
+  margin-left: -18px;
+  position: absolute;
+}
+
+%less-triangle {
+  @include cssTriangle(18px, $tan, 'bottom');
+  border-width: 18px 18px 12px;
+  bottom: 18px;
+  left: 50%;
+  top: auto;
+  margin-left: -18px;
+  position: absolute;
+}
+
+.expandable-container {
+  .pane-content {
+    @extend %grid-one-two-three-four;
+  }
+  clear: both;
+  margin: 0 0 15px;
+  .panel-col1 {
+    float: none;
+  }
+  .pane-content {
+    overflow: hidden;
+  }
+  .expandable-toggle-wrap {
+    clear: both;
+    margin: 0 auto;
+    padding: 14px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    &:before,
+    &:after {
+      border-color: $gray-ultra-med;
+      border-style: solid;
+      border-width: 0 0 1px;
+      content: $space;
+      position: absolute;
+      top: 50%;
+      width: 50%;
+    }
+    &:before {
+      left: -30px;
+    }
+    &:after {
+      right: -30px;
+    }
+    &.off {
+      display: none;
+    }
+  }
+  .expandable-toggle {
+    color: $tan;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin: 0 auto;
+    position: relative;
+    &:after {
+      @extend %more-triangle;
+    }
+  }
+  &.view .expandable-toggle,
+  &.view.expanded .expandable-toggle {
+    &:after {
+      border: 0;
+    }
+  }
+  .less {
+    display: none;
+  }
+  &.expanded {
+    .more {
+      display: none;
+    }
+    .less {
+      display: block;
+    }
+    .expandable-toggle {
+      &:after {
+        @extend %less-triangle;
+      }
+    }
+  }
+  &.disabled {
+    .expandable-toggle-wrap {
+      display: none;
+    }
+  }
+}
+
+.expandable-container {
+  &.promo-ads-panel {
+    @extend %grid-one-two-three-four-ads;
+    .first-promo-large {
+      .asset-img-large {
+        display: none;
+      }
+      .node-usanetwork-promo-iframe {
+        line-height:0;
+      }
+      @include breakpoint($bp-grid-show-2-fence) {
+        li:nth-of-type(n) {
+          float:left;
+          margin:0 14px 15px 0;
+          clear: none;
+        }
+        li.odd, li:nth-of-type(odd) {
+          margin:0 0 15px 0;
+        }
+        li:nth-of-type(1) {
+          margin-right:315px;
+        }
+      }
+      @include breakpoint($bp-grid-show-3-fence) {
+        li, li:nth-of-type(n) {
+          float:left;
+          margin:0 14px 15px 0;
+          clear: none;
+        }
+        li.odd, li:nth-of-type(odd) {
+          margin:0 14px 15px 0;
+        }
+        li:nth-of-type(3n+5) {
+          margin:0 0 15px 0;
+        }
+        li:first-child, li:nth-of-type(1) {
+        margin-right:14px;
+        }
+        li:nth-of-type(2) {
+          margin:0 314px 15px 0;
+        }
+      }
+      @include breakpoint($bp-grid-show-4) {
+        overflow:hidden;
+        li, li:nth-of-type(n) {
+          float:left;
+          margin:0 14px 15px 0;
+          clear: none;
+        }
+        li.odd, li:nth-of-type(odd) {
+          margin:0 14px 15px 0;
+        }
+        li:nth-of-type(4n+6) {
+          margin:0 0 15px 0;
+        }
+        li:first-child, li:nth-of-type(1) {
+        margin-right:14px;
+        }
+        li:nth-of-type(2) {
+          margin:0 314px 15px 0;
+        }
+        li {
+          float:left;
+          clear: none;
+          .asset-img {
+            overflow:hidden;
+            img {
+              display:block;
+              width:100%;
+              height: auto;
+              vertical-align:top;
+            }
+          }
+          .asset-img-large {
+            display: block;
+            width: 617px;
+            height: 254px;
+            border: 2px solid $gray-dark;
+            overflow:hidden;
+            img {
+              display:block;
+              width:100%;
+              height: auto;
+              vertical-align:top;
+            }
+          }
+        }
+        li:first-child {
+          width: 615px;
+          height: 254px;
+          .asset-img {
+            display: none;
+          }
+          .caption-fields-wrapper {
+            width: 613px;
+          }
+        }
+        li:nth-of-type(2) {
+          margin:0 315px 15px 0;
+        }
+      }
+      .expandable-toggle-wrap {
+        display: none;
+      }
+    }
+  }
+  .view-content {
+    > .item-list {
+      clear: both;
+      overflow: hidden;
+    }
+  }
+}
+
+.view {
+  .ajax-progress, .ajax-progress-throbber {
+    display: none;
+  }
+  .expandable-toggle {
+    li {
+      &.more:after {
+        @extend %more-triangle; 
+      }
+      &.less:after {
+        @extend %less-triangle;
+      }
+    }
+  }  
+  .expandable-toggle  {
+    li {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      a {
+        color: $tan; 
+        &:after {
+          @extend %more-triangle;
+        }
+      }
+    }
+  }
+}

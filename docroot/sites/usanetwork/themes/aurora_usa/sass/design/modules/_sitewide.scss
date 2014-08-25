@@ -1,0 +1,16 @@
+#site-name {
+  @extend %visuallyhidden;
+}
+#main {
+  padding: 0 15px 80px;
+  @include breakpoint($bp-menu-switch) {
+    padding-bottom: 15px;
+  }
+  @include breakpoint($bp-video-low-range-width) {
+    padding: 0 10px 80px;
+    width: 100%;
+  }
+}
+.smaller-header h2 {
+  @extend %h3;
+}

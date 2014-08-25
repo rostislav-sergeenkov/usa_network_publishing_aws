@@ -1,0 +1,10 @@
+name = usanetwork_field_target
+description = Target field for A-Sport and Promo
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_field_target
+dependencies[] = features
+dependencies[] = list
+features[features_api][] = api:2
+features[field_base][] = field_target

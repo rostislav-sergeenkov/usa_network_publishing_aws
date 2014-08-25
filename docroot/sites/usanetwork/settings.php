@@ -22,7 +22,7 @@ require_once dirname(__FILE__) . "/settings.site.php";
 // stage and prod) are defined in project-config.yml.
 
 // Default to 'dev' if there's no env var set. This covers local dev.
-if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
+if (empty($_ENV['AH_SITE_ENVIRONMENT']) || $_ENV['AH_SITE_ENVIRONMENT'] == 'dev') {
   $env = 'dev';
 }
 elseif (strpos($_ENV['AH_SITE_ENVIRONMENT'], 'devi') !== FALSE) {

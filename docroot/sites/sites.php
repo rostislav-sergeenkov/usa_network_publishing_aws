@@ -18,6 +18,7 @@ foreach ($multisites as $sitename => $domain) {
   $sites['publisher.' . $sitename . '.local'] = $sitename;
   $sites[$sitename] = $sitename;
   $sites['dev.' . $domain] = $sitename;
+  $sites[$sitename . 'dev.prod.acquia-sites.com'] = $sitename;
 
   // $domain may have been empty; if so, do not add it.
   if (!empty($domain)) {

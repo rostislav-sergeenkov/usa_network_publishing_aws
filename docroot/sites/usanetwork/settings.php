@@ -22,23 +22,29 @@ require_once dirname(__FILE__) . "/settings.site.php";
 // stage and prod) are defined in project-config.yml.
 
 // Default to 'dev' if there's no env var set. This covers local dev.
-if (empty($_ENV['AH_SITE_ENVIRONMENT']) || $_ENV['AH_SITE_ENVIRONMENT'] == 'dev') {
+if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
+  $env = 'local';
+} else {
+  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+    case 'local':
+	  $env = 'local';
+      break;
+    case 'dev':
   $env = 'dev';
-}
-elseif (strpos($_ENV['AH_SITE_ENVIRONMENT'], 'devi') !== FALSE) {
-  $env = 'di';
-}
-elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('qa1', 'qa2', 'qa3', 'qa4', 'qa5', 'hotfix-qa'))) {
-  $env = 'qa';
-}
-elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('stage', 'hotfix-stage', 'tmp'))) {
+      break;
+    case 'test':
+    case 'stage':
   $env = 'stage';
-}
-elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('prod'))) {
+      break;
+    case 'acceptance':
+	  $env = 'acc';
+      break;
+    case 'prod':
   $env = 'prod';
-
   // This defaults to a stage URL.
   $conf['sso_password_reset'] = 'https://sso.external.nbcuni.com/nbcucentral/jsp/pwchange.jsp';
+      break;
+  }
 }
 
 // Now, include the environment-specific file provided by Publisher7 core, if one exists.

@@ -21,4 +21,4 @@ if (!is_dir("/mnt/tmp/{$_ENV['AH_SITE_GROUP']}")) {
 }
 $conf['file_temporary_path'] = "/mnt/tmp/{$_ENV['AH_SITE_GROUP']}";
 $conf['file_public_path'] = "sites/{$conf['pub_site_shortname']}/files";
-$conf['file_private_path'] = "/mnt/sites/{$_ENV['AH_SITE_GROUP']}/sites/default/files-private";
+$conf['file_private_path'] = "/mnt/files/{$_ENV['AH_SITE_GROUP']}/sites/default/files-private";

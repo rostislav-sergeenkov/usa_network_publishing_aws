@@ -10,7 +10,7 @@
  */
 
 // Set $site to the string shortname of the current multisite.
-$conf['pub_site_shortname'] = 'update';
+$conf['pub_site_shortname'] = 'usanetwork';
 
 // Include the environment-agnostic file from Publisher7 core.
 require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";

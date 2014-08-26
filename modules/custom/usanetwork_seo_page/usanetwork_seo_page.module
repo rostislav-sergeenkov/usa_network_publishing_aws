@@ -137,7 +137,7 @@ function usanetwork_seo_page_preprocess_field(&$variables, $hook) {
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_seo_page_form_catchall_seo_page_node_form_alter(&$form, &$form_state, $form_id) {
-  $form['#validate'][]= 'usanetwork_seo_page_validate';
+  $form['#validate'][] = 'usanetwork_seo_page_validate';
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_seo_page').'/js/seo_page_form.js';
 }
 
@@ -196,8 +196,7 @@ function usanetwork_seo_page_validate(&$form, &$form_state) {
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_seo_page_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  if ($form['#id'] = 'views-exposed-form-browser-plugin-for-clips-default') {
+  if ($form['#id'] == 'views-exposed-form-browser-plugin-for-clips-default') {
     $form['status']['#default_value'] = 'Published';
   }
 }
-

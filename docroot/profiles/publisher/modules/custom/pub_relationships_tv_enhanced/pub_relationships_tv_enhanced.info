@@ -1,0 +1,7 @@
+name = Pub TV Relationships Enhanced
+description = Publisher 7 TV Enhanced Relationships
+core = 7.x
+version = 7.x-1.0
+package = Publisher
+dependencies[] = pub_relationships
+dependencies[] = xautoload

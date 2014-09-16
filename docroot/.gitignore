@@ -1,5 +1,5 @@
 # Ignore local settings files.
-#sites/*/settings.local.php
+sites/*/settings.local.php
 sites/sites.local.php
 
 # Ignore paths that contain user-generated content.

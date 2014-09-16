@@ -1068,6 +1068,7 @@ function media_theplatform_mpx_update_video($video, $fid = NULL, $account = NULL
     'guid' => $video['guid'],
     'description' => $video['description'],
     'thumbnail_url' => $video['thumbnail_url'],
+    'player_id' => !empty($video['player_id']) ? $video['player_id'] : NULL,
     'status' => 1,
     'updated' => REQUEST_TIME,
     'id' => $video['id'],

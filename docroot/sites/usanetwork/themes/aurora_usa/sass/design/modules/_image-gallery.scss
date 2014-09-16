@@ -61,7 +61,7 @@
       height: 100%;
       float: left;
       @include breakpoint($bp-home-narrowest) {
-        width: 260px;
+        width: 256px;
         float: none;
       }
       @include breakpoint($bp-home-2-fence) {
@@ -289,8 +289,6 @@
   .panel-col-bottom {
     @extend %un-margin;
     @extend %mid-gray-top-border;
-    padding-left: 10px;
-    padding-right: 10px;
     > ul, > section {
       max-width: 1140px;
     }

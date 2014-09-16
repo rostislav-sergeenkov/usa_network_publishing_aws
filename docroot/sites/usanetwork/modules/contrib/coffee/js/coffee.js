@@ -35,7 +35,6 @@
     attach: function() {
       $('body').once('coffee', function() {
         var body = $(this);
-
         Drupal.coffee.bg.appendTo(body).hide();
 
         Drupal.coffee.form
@@ -49,10 +48,6 @@
         // Load autocomplete data set, consider implementing
         // caching with local storage.
         Drupal.coffee.dataset = [];
-        
-        var jquery_ui_version = $.ui.version.split('.');
-        var jquery_ui_newer_1_9 = parseInt(jquery_ui_version[0]) >= 1 && parseInt(jquery_ui_version[1]) > 9;
-        var autocomplete_data_element = (jquery_ui_newer_1_9) ? 'ui-autocomplete' : 'autocomplete';
 
         $.ajax({
           url: Drupal.settings.basePath + '?q=admin/coffee/menu',
@@ -61,22 +56,17 @@
             Drupal.coffee.dataset = data;
 
             // Apply autocomplete plugin on show
-            var $autocomplete = $(Drupal.coffee.field).autocomplete({
+            $(Drupal.coffee.field).autocomplete({
               source: Drupal.coffee.dataset,
-              focus: function( event, ui ) {
-                  // Prevents replacing the value of the input field
-                  event.preventDefault();
-              },
               select: function(event, ui) {
                 Drupal.coffee.redirect(ui.item.value, event.metaKey);
                 event.preventDefault();
+
                 return false;
               },
               delay: 0,
               appendTo: Drupal.coffee.results
-           });
-
-           $autocomplete.data(autocomplete_data_element)._renderItem = function(ul, item) {
+            }).data('autocomplete')._renderItem = function(ul, item) {
               return  $('<li></li>')
                       .data('item.autocomplete', item)
                       .append('<a>' + item.label + '<small class="description">' + item.value + '</small></a>')
@@ -85,39 +75,36 @@
 
             // This isn't very nice, there are methods within that we need
             // to alter, so here comes a big wodge of text...
-            var self = Drupal.coffee.field;
-            if (!jquery_ui_newer_1_9){
-                $(Drupal.coffee.field).data(autocomplete_data_element).menu = $('<ol></ol>')
-                    .addClass('ui-autocomplete')
-                    .appendTo(Drupal.coffee.results)
-                    // prevent the close-on-blur in case of a "slow" click on the menu (long mousedown).
-                    .mousedown(function(event) {
-                        event.preventDefault();
-                    })
-                    .menu({
-                        selected: function(event, ui) {
-                            var item = ui.item.data('item.autocomplete');
-                            Drupal.coffee.redirect(item.value, event.metaKey);
-                            event.preventDefault();
-                        }
-                    })
+            var self = Drupal.coffee.field,
+            doc = Drupal.coffee.field.data('autocomplete').element[0].ownerDocument;
 
-                    .hide()
-                    .data('menu');
-            }
+            $(Drupal.coffee.field).data('autocomplete').menu = $('<ol></ol>')
+      			.addClass('ui-autocomplete')
+      			.appendTo(Drupal.coffee.results)
+      			// prevent the close-on-blur in case of a "slow" click on the menu (long mousedown).
+      			.mousedown(function(event) {})
+      			.menu({
+      				focus: function(event, ui) {
+      				},
+      				selected: function(event, ui) {
+      					var item = ui.item.data('item.autocomplete'),
+      						previous = self.previous;
+
+      					Drupal.coffee.redirect(item.value, event.metaKey);
+      					event.preventDefault();
+      				},
+      				blur: function(event, ui) {
+      				}
+      			})
+      			.hide()
+      			.data('menu');
 
             // We want to limit the number of results.
-            $(Drupal.coffee.field).data(autocomplete_data_element)._renderMenu = function(ul, items) {
+            $(Drupal.coffee.field).data('autocomplete')._renderMenu = function(ul, items) {
           		var self = this;
           		items = items.slice(0, 7); // @todo: max should be in Drupal.settings var.
           		$.each( items, function(index, item) {
-                    if (typeof(self._renderItemData) === "undefined"){
-                        self._renderItem(ul, item);
-                    }
-                    else {
-                        self._renderItemData(ul, item);
-                    }
-
+          			self._renderItem(ul, item);
           		});
           	};
 
@@ -168,7 +155,7 @@
     Drupal.coffee.form.removeClass('hide-form');
     Drupal.coffee.bg.show();
     Drupal.coffee.field.focus();
-    $(Drupal.coffee.field).autocomplete({enable: true});
+    $(Drupal.coffee.field).autocomplete('enabled');
   };
 
   /**
@@ -179,7 +166,7 @@
     //Drupal.coffee.results.empty();
     Drupal.coffee.form.addClass('hide-form');
     Drupal.coffee.bg.hide();
-    $(Drupal.coffee.field).autocomplete({enable: false});
+    $(Drupal.coffee.field).autocomplete('disabled');
   };
 
   /**

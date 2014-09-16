@@ -104,7 +104,6 @@ function aurora_usa_preprocess_page(&$vars) {
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
-    drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
@@ -979,11 +978,11 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
   if ((!isset($vars['element']['#object']->field_usa_aspot_tablet_portrait)) || (empty($vars['element']['#object']->field_usa_aspot_tablet_portrait))) {
-    $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 710px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 710px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
   }
-  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 1020px)"></div>';
-  $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 1020px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 960px)"></div>';
+  $output .= '<div data-src="' . image_style_url('2490x1418', $filepath) . '" data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)"></div>';
   $output .= '<!--[if (IE 8) & (!IEMobile)]>';
   $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '"></div>';
   $output .= '<![endif]-->';
@@ -1006,8 +1005,8 @@ function aurora_usa_field__field_usa_aspot_tablet_portrait($vars) {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
-  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 710px)"></div>';
-  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 710px) and (min-device-pixel-ratio: 2.0)"></div>';
+  $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
+  $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
 
   return $output;
 }
@@ -1048,11 +1047,11 @@ function aurora_usa_field__field_promo_wide_image($vars) {
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
 
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px) and (min-device-pixel-ratio: 2.0)"></div>';
 
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1335px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1335px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1275px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1275px) and (min-device-pixel-ratio: 2.0)"></div>';
     $output .= '<!--[if (IE 8) & (!IEMobile)]>';
     $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '"></div>';
     $output .= '<![endif]-->';
@@ -1097,20 +1096,6 @@ function aurora_usa_field__field_promo_regular_image($vars) {
     $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '"  data-media="(min-device-pixel-ratio: 2.0)"></div>';
     $output .= '<noscript>';
     $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
-    $output .= '</noscript>';
-    return $output;
-  }
-
-  // carousel_promo
-  if ($vars['element']['#view_mode'] == 'carousel_promo') {
-    $output = '';
-    $filepath = $vars['items'][0]['#item']['uri'];
-    $alt = $vars['items'][0]['#item']['alt'];
-    $title = $vars['items'][0]['#item']['title'];
-    $data_src = image_style_url('600x500', $filepath);
-    $output .= '<img src="" data-src="' . $data_src . '" alt="' . $alt . '" title="' . $title . '"/>';
-    $output .= '<noscript>';
-    $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => $alt, 'title' => $title));
     $output .= '</noscript>';
     return $output;
   }

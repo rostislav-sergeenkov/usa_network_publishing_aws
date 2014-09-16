@@ -572,10 +572,7 @@
           background-color: $black-trans;
           border: 1px solid $gray-med-dark;
           border-top: 0;
-          margin-bottom: 130px;
-          max-height: 300px;
           min-width: 358px;
-          overflow: auto;
           width: auto;
           z-index: 80;
           padding: 30px 30px 33px;
@@ -1475,10 +1472,8 @@
     }
   }
   .ad {
+    max-height: 60px;
     max-width: 300px;
-    .field-name-video-companion-rectangle-small {
-      max-height: 60px;
-    }
     @include breakpoint($bp-video-mid2_width) {
       display: block;
       float: right;

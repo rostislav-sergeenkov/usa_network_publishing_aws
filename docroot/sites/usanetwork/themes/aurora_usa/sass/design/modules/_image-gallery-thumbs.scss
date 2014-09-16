@@ -3,10 +3,6 @@
   @include breakpoint($bp-grid-small-2) {
     margin: 0 auto 30px;
   }
-  @include breakpoint($bp-grid-small-2-squish) {
-    margin: 0 auto 20px;
-    width: 300px;
-  }
 }
 
 .grid-container-small {
@@ -15,24 +11,7 @@
   }
   .asset-thumb {
     @extend .title-overlay;
-    background: url('../images/gallery_background_logo_small_b.png') no-repeat;
-    background-size: 100%;
     border: 2px solid $gray-dark;
-    @include breakpoint($bp-grid-small-4) {
-      height: 194px;
-    }
-    @include breakpoint($bp-grid-small-wide-4) {
-      height: 231px;
-    }
-    @include breakpoint($bp-grid-small-3-fence) {
-      height: 194px;
-    }
-    @include breakpoint($bp-grid-small-2-fence) {
-      height: 194px;
-    }
-    @include breakpoint($bp-grid-small-2-squish) {
-      height: 126px;
-    }
     &.active {
       border-color: $white;
     }
@@ -49,24 +28,7 @@
       }
     }
     img {
-      min-height: 111px;
-      min-width: 133px;
       width: 100%;
-      @include breakpoint($bp-grid-small-4) {
-        height: 186px;
-      }
-      @include breakpoint($bp-grid-small-wide-4) {
-        height: 223px;
-      }
-      @include breakpoint($bp-grid-small-3-fence) {
-        height: 186px;
-      }
-      @include breakpoint($bp-grid-small-2-fence) {
-        height: 186px;
-      }
-      @include breakpoint($bp-grid-small-2-squish) {
-        height: 118px;
-      }
     }
   }
 }

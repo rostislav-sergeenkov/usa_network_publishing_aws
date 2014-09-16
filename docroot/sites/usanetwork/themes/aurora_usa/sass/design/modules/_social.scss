@@ -449,7 +449,7 @@ body.usa-social {
   line-height: 1em;
   @include breakpoint($bp-social-very-large-width) {
     font-size: 18px;
-  }  
+  }
 }
 
 #chatterToTv {
@@ -470,7 +470,7 @@ body.usa-social {
     @include breakpoint($bp-social-very-large-width) {
       padding-bottom: 15px;
       padding-top: 15px;
-    }  
+    }
     &:first-child {
       padding: 0;
     }
@@ -484,7 +484,7 @@ body.usa-social {
   font-size: 12px;
   @include breakpoint($bp-social-very-large-width) {
     font-size: 13px;
-  }  
+  }
 }
 
 .commentAnnotation {
@@ -999,13 +999,13 @@ input.echo-submit-text {
   height: 32px;
   width: 10px;
     @include breakpoint($bp-show-mid-width) {
-       width: 70px; 
+       width: 70px;
     }
     @media (min-width: 900px) and (max-width: 958px) {
-       width: 10px; 
+       width: 10px;
     }
     @include breakpoint($bp-video-large2-width) {
-       width: 70px; 
+       width: 70px;
     }
 }
 

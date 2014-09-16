@@ -10,7 +10,7 @@
  */
 
 // Set $site to the string shortname of the current multisite.
-$conf['pub_site_shortname'] = 'usanetwork';
+$conf['pub_site_shortname'] = 'update';
 
 // Include the environment-agnostic file from Publisher7 core.
 require_once dirname(__FILE__) . "/../../.p7settings/settings.p7core.php";
@@ -23,28 +23,22 @@ require_once dirname(__FILE__) . "/settings.site.php";
 
 // Default to 'dev' if there's no env var set. This covers local dev.
 if (empty($_ENV['AH_SITE_ENVIRONMENT'])) {
-  $env = 'local';
-} else {
-  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
-    case 'local':
-	  $env = 'local';
-      break;
-    case 'dev':
   $env = 'dev';
-      break;
-    case 'test':
-    case 'stage':
+}
+elseif (strpos($_ENV['AH_SITE_ENVIRONMENT'], 'devi') !== FALSE) {
+  $env = 'di';
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('qa1', 'qa2', 'qa3', 'qa4', 'qa5', 'hotfix-qa'))) {
+  $env = 'qa';
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('stage', 'hotfix-stage', 'tmp'))) {
   $env = 'stage';
-      break;
-    case 'acceptance':
-	  $env = 'acc';
-      break;
-    case 'prod':
+}
+elseif (in_array($_ENV['AH_SITE_ENVIRONMENT'], array('prod'))) {
   $env = 'prod';
+
   // This defaults to a stage URL.
   $conf['sso_password_reset'] = 'https://sso.external.nbcuni.com/nbcucentral/jsp/pwchange.jsp';
-      break;
-  }
 }
 
 // Now, include the environment-specific file provided by Publisher7 core, if one exists.

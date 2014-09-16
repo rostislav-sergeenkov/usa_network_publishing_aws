@@ -86,7 +86,6 @@
   box-shadow: none;
 }
 
-#coffee-results ul,
 #coffee-results ol {
   position: static;
   float: none;
@@ -126,10 +125,7 @@
   border-radius: 0px;
 }
 
-#coffee-results a.ui-state-hover,
-#coffee-results a:focus,
-#coffee-results a:hover,
-#coffee-results .ui-state-focus {
+#coffee-results a.ui-state-hover {
   background: #d1d1d1;
   color: #000;
   margin: 0;

@@ -33,7 +33,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpController = $pdk.controller;
 
   USAEndShareCard = {
-    debugFlag: false,
+    debugFlag: true,
     entries: {},
     filterByCategory: true,
     clip: null,

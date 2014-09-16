@@ -856,4 +856,16 @@ function usanetwork_core_update_7148() {
   module_enable($modules_en);
 }
 
+/**
+ * Enable lazy load module.
+ */
+function usanetwork_core_update_7149() {
+  $modules_en = array(
+    'usanetwork_lazy_load',
+  );
+  module_enable($modules_en);
+}
+
+
+
 

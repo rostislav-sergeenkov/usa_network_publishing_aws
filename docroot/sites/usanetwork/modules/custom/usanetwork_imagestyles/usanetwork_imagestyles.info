@@ -28,6 +28,7 @@ features[image][] = gallery_full_photo
 features[image][] = person_cover
 features[image][] = search_result
 features[image][] = thumb_tiny
+features[image][] = usa_image_focus
 features[image][] = video_full
 features[variable][] = borealis_image_wrap
 features[variable][] = borealis_responsive_builds

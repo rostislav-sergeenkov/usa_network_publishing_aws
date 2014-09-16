@@ -194,12 +194,14 @@
 				jQuery.ajax({
 					url: echoQuery,
 					data: echoQueryParams,
-					success: function(data) { usa_debug('POST SUCCESS'); },
 					dataType: 'text',
 					crossDomain: true,
 					type: 'POST'
 				})
 				.done(function(data){
+					// this method of using a POST with a cross-domain request
+					// returns a string instead of a json object, so we have to clean up
+					// the string a little before parsing it to form an object
 					if (typeof data == 'string') {
 						var newData = data.replace(/(\r\n|\n|\r|\t)/gm, ""); // remove all line breaks and tabs
 						newData = newData.replace(/^\({/, "{"); // replace "({" at the beginning of the string with "{"
@@ -218,26 +220,6 @@
 					usa_debug('error');
 					usa_debug(errorThrown);
 				});
-
-/* COMMENTED ON FEB 12, 2014 BY DV BECAUSE THE QUERY PARAMS STRING WAS
-// NOW TOO LONG TO WORK AS A GET IN CHROME. NEW POST AJAX CODE ABOVE THIS.
-				jQuery.ajax({
-					url: echoQuery,
-					data: echoQueryParams,
-					dataType: "jsonp",
-					showData = processGlobalChatWithFansData(data);
-					var showDataKeys = getKeys(showData);
-					if (showDataKeys.length > 0) {
-						outputGlobalChatWithFans(showData);
-					} else {
-						jQuery('#showList').html("No shows found. Please come back again soon.");
-					}
-				})
-				.fail(function(jqXHR, textStatus, errorThrown) {
-					usa_debug('error');
-					usa_debug(errorThrown);
-				});
-*/
 			}
 
 			// Begin processing the Echo mux query

@@ -97,7 +97,7 @@ if (isset($_ENV['AH_SITE_GROUP'])) {
 /**
  * Start with a reasonable minimum php memory limit.
  */
-ini_set('memory_limit', '160M');
+ini_set('memory_limit', '256M');
 
 /**
  * Use the page_memory_limit module to increase the page memory limit on admin

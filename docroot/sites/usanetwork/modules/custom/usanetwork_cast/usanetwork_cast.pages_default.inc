@@ -189,8 +189,10 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->panel = 'person_main';
     $pane->type = 'page_title';
     $pane->subtype = 'page_title';
-    $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->shown = FALSE;
+    $pane->access = array(
+      'plugins' => array(),
+    );
     $pane->configuration = array(
       'markup' => 'h1',
       'class' => '',
@@ -212,7 +214,7 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'person_main';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_3';
+    $pane->subtype = 'usa_people-panel_pane_5';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -230,7 +232,7 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'person_main';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_2';
+    $pane->subtype = 'usa_people-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -247,15 +249,11 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-5';
     $pane->panel = 'person_main';
-    $pane->type = 'node_body';
-    $pane->subtype = 'node_body';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'usa_people-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => '<none>',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -270,7 +268,7 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->pid = 'new-6';
     $pane->panel = 'person_main';
     $pane->type = 'views_panes';
-    $pane->subtype = 'usa_people-panel_pane_1';
+    $pane->subtype = 'usa_people-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -287,6 +285,46 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-7';
     $pane->panel = 'person_main';
+    $pane->type = 'node_body';
+    $pane->subtype = 'node_body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['person_main'][5] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'person_main';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'usa_people-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 6;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['person_main'][6] = 'new-8';
+    $pane = new stdClass();
+    $pane->pid = 'new-9';
+    $pane->panel = 'person_main';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_scr';
     $pane->shown = TRUE;
@@ -301,12 +339,12 @@ function usanetwork_cast_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 5;
+    $pane->position = 7;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['person_main'][5] = 'new-7';
+    $display->content['new-9'] = $pane;
+    $display->panels['person_main'][7] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-10';
     $pane->panel = 'top';
     $pane->type = 'views';
     $pane->subtype = 'usa_cast';
@@ -342,8 +380,8 @@ function usanetwork_cast_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['top'][0] = 'new-8';
+    $display->content['new-10'] = $pane;
+    $display->panels['top'][0] = 'new-10';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

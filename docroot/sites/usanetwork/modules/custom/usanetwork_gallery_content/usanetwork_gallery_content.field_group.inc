@@ -56,7 +56,8 @@ function usanetwork_gallery_content_field_group_info() {
       0 => 'body',
       1 => 'field_cover_item',
       2 => 'field_media_items',
-      3 => 'title',
+      3 => 'field_seo_h1',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

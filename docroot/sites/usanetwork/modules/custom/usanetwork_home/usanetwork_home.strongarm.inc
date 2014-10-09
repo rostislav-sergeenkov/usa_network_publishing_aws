@@ -105,20 +105,35 @@ function usanetwork_home_strongarm() {
       'global_nav_block_shows' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'page_collection_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'user_ref_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '11',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(),

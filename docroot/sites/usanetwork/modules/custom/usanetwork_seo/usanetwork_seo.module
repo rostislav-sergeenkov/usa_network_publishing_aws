@@ -5,3 +5,13 @@
  */
 
 include_once 'usanetwork_seo.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter node edit form.
+ */
+function usanetwork_seo_form_alter(&$form, &$form_state) {
+  if (isset($form['field_seo_h1'])) {
+    $form['#attached']['js'][] = drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/seo_h1.js');
+  }
+}

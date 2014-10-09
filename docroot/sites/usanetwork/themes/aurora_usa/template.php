@@ -153,6 +153,11 @@ function aurora_usa_preprocess_page(&$vars) {
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';
   }
+  //Assign SEO H1 field value to page variable
+  if (drupal_is_front_page()) {
+    if (module_exists('usanetwork_home'))
+    $vars['page']['seoh1'] = _usanetwork_home_get_field_value('field_seo_h1');
+  }
   $vars['util_classes'] = implode(' ', $util_regions);
 
   // remove headers and footers for ajax callback
@@ -848,7 +853,7 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
  */
 function aurora_usa_preprocess_panels_pane(&$vars) {
 
-  if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
+  if(($vars['pane']->subtype == 'usa_people-panel_pane_4' || $vars['pane']->subtype == 'usa_people-panel_pane_5') && $vars['pane']->panel == 'person_main') {
     $vars['pane_prefix'] = '<div class="person-content-wrapper clearfix"><aside id="person-content" class="panel-pane">';
   }
 

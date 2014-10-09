@@ -1,0 +1,307 @@
+<?php
+
+define('NBCU_SEO_CONTENT_BUFFER_LENGTH', 1000);
+define('NBCU_SEO_CONTENT_BUFFER_NAME', 'content_buffer');
+
+/**
+ * Implements hook_menu().
+ */
+function nbcu_seo_content_buffer_menu() {
+  $items = array();
+
+  $items['admin/config/search/nbcu-sitemap-content-buffer-settings'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('Content Buffer XML Sitemap settings'),
+    'description' => t('Configure Content Buffer XML sitemap'),
+    'access arguments' => array('administer xmlsitemap'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nbcu_seo_content_buffer_settings_form'),
+    'file' => 'nbcu_seo_content_buffer.admin.inc',
+  );
+
+  $items['admin/config/search/nbcu-sitemap-update-content-buffer'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('Regenerate Content Buffer XML file'),
+    'description' => t('Update Content Buffer XML file'),
+    'access arguments' => array('administer xmlsitemap'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nbcu_seo_update_content_buffer_form'),
+    'file' => 'nbcu_seo_content_buffer.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_types_alter().
+ */
+function nbcu_seo_content_buffer_nbcu_seo_xmlsitemap_types_alter(&$types) {
+  $types[NBCU_SEO_CONTENT_BUFFER_NAME] = NBCU_SEO_CONTENT_BUFFER_NAME;
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function nbcu_seo_content_buffer_node_update($node) {
+  if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function nbcu_seo_content_buffer_node_insert($node) {
+  if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_file_insert().
+ */
+function nbcu_seo_content_buffer_file_insert($file) {
+  if (
+    strpos($file->type, 'mpx_video') === 0 &&
+    $file->published == 1 &&
+    variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
+  ) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_file_update().
+ */
+function nbcu_seo_content_buffer_file_update($file) {
+  if (
+    strpos($file->type, 'mpx_video') === 0 &&
+    $file->published == 1 &&
+    variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
+  ) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH) updated nodes.
+ */
+function _nbcu_seo_content_buffer_fetch_nodes() {
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid', 'status', 'changed', 'type'))
+    ->condition('n.status', NODE_PUBLISHED)
+    ->orderBy('n.changed', 'DESC')
+    ->range(0, NBCU_SEO_CONTENT_BUFFER_LENGTH);
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH) updated video files.
+ */
+function _nbcu_seo_content_buffer_fetch_videos() {
+
+  if (!module_exists('pub_mpx')) {
+    return array();
+  }
+
+  $query = db_select('file_managed', 'f')
+    ->fields('f', array('fid', 'status', 'timestamp', 'type'))
+    ->condition('f.status', FILE_STATUS_PERMANENT)
+    ->condition('f.published', NODE_PUBLISHED)
+    ->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN')
+    ->orderBy('f.timestamp', 'DESC')
+    ->range(0, NBCU_SEO_CONTENT_BUFFER_LENGTH);
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Fetchs latest updated content with files and splices newest 1000
+ * (NBCU_SEO_CONTENT_BUFFER_LENGTH) elements.
+ */
+function _nbcu_seo_content_buffer_fetch_updated() {
+  $data = array();
+
+  $nodes = _nbcu_seo_content_buffer_fetch_nodes();
+  $videos = _nbcu_seo_content_buffer_fetch_videos();
+
+  // Fetching nodes
+  if (!empty($nodes)) {
+    foreach ($nodes as $node_data) {
+      $node_data->content_type = $node_data->type;
+      $node_data->type = 'node';
+      $data[] = $node_data;
+    }
+  }
+
+  // Fetching videos
+  if (!empty($videos)) {
+    foreach ($videos as $video_data) {
+      $video_data->profile_type = $video_data->type;
+      $video_data->type = 'video';
+      $video_data->changed = $video_data->timestamp;
+
+      unset($video_data->timestamp);
+
+      $data[] = $video_data;
+    }
+  }
+
+  // Resorting by LAST_CHANGE timestamp
+  if (!empty($data)) {
+    usort($data, function ($a, $b) {
+      if (isset($a->changed, $b->changed)) {
+        if ($a->changed == $b->changed) {
+          return 0;
+        }
+        else {
+          return ($a->changed > $b->changed)
+            ? -1
+            : 1;
+        }
+      }
+
+      return 0;
+    });
+
+    // Restoring array indexes
+    return array_splice(array_values($data), 0, NBCU_SEO_CONTENT_BUFFER_LENGTH);
+  }
+
+  // Return an empty array is nothing to sort
+  return array();
+}
+
+/**
+ * Generates XML element for node.
+ */
+function _nbcu_seo_content_buffer_generate_node_xml_element($data, $sitemap) {
+  return array(
+    'type_info' => array(
+      'loc' => url('node/' . $data->nid, array('absolute' => TRUE)),
+      'lastmod' => gmdate(XMLSITEMAP_LASTMOD_MEDIUM, $data->changed),
+      'priority' => '0.5',
+    ),
+    'alter_context' => array(
+      'sitemap' => $sitemap,
+      'type' => _nbcu_seo_content_buffer_detect_link_type($data->content_type),
+      'link' => array(
+        'type' => 'node',
+        'subtype' => $data->content_type,
+        'id' => $data->nid,
+      ),
+    ),
+  );
+}
+
+/**
+ * Generates XML element for video file.
+ */
+function _nbcu_seo_content_buffer_generate_video_xml_element($data, $sitemap) {
+  return array(
+    'type_info' => array(
+      'loc' => url('file/' . $data->fid, array('absolute' => TRUE)),
+      'lastmod' => gmdate(XMLSITEMAP_LASTMOD_MEDIUM, $data->changed),
+      'priority' => '0.5',
+    ),
+    'alter_context' => array(
+      'sitemap' => $sitemap,
+      'type' => 'video',
+      'link' => array(
+        'type' => 'file',
+        'subtype' => $data->profile_type,
+        'id' => $data->fid,
+      ),
+    ),
+  );
+}
+
+/**
+ * Builds Content Buffer of 1000 latest published items of content.
+ */
+function _nbcu_seo_content_buffer_build_buffer() {
+  require_once drupal_get_path('module', 'nbcu_seo') . '/nbcu_seo.xmlsitemap.inc';
+
+  $data = _nbcu_seo_content_buffer_fetch_updated();
+
+  // Proceeding if catched at least 1 record
+  if (!empty($data)) {
+    $elements = array();
+
+    // Getting a list of available sitemaps
+    $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
+
+    // Walking through all the catched sitemaps
+    foreach ($smids as $smid) {
+      $sitemap_object = xmlsitemap_sitemap_load($smid);
+
+      // Parsing catched content items
+      foreach ($data as $data_item) {
+        $base_element = array();
+
+        switch ($data_item->type) {
+          case 'node': $base_element = _nbcu_seo_content_buffer_generate_node_xml_element($data_item, $sitemap_object); break;
+          case 'video': $base_element = _nbcu_seo_content_buffer_generate_video_xml_element($data_item, $sitemap_object); break;
+          default: $element = array(); break;
+        }
+
+        if (empty($base_element)) {
+          continue;
+        }
+
+        $element = $base_element['type_info'];
+
+        // Altering item for wrapping as content-related XML element
+        drupal_alter('nbcu_seo_xmlsitemap_xml_element', $element, $base_element['alter_context']);
+
+        $elements[] = $element;
+      }
+
+      try {
+        $sitemap = new NBCUSitemapWriter($sitemap_object, 1, NBCU_SEO_CONTENT_BUFFER_NAME);
+        $sitemap->startDocument();
+
+        foreach ($elements as $element) {
+          $sitemap->writeSitemapElement('url', $element);
+        }
+
+        $sitemap->endDocument();
+      }
+      catch (XMLSitemapException $ex) {
+        throw $ex;
+      }
+    }
+  }
+}
+
+/**
+ * Detects link type of content that should be prepared for XML.
+ */
+function _nbcu_seo_content_buffer_detect_link_type($node_type) {
+  // List of content types that can be indexed for detecting images
+  $media_types = array(
+    'image' => array(
+      'media_gallery',
+    ),
+  );
+
+  if (module_exists('pub_mpx')) {
+    // List of types of video files that can be used for indexing videos
+    $video_types = _pub_mpx_get_mpx_account_video_file_types(TRUE);
+
+    if (!empty($video_types)) {
+      $media_types['video'] = array();
+      $media_types['video'] += $video_types;
+    }
+  }
+
+  // Catch media type if it possible. If not - use content as landing page
+  foreach ($media_types as $media_type => $applicable_node_types) {
+    if (in_array($node_type, $applicable_node_types)) {
+      return $media_type;
+    }
+  }
+
+  return $node_type;
+}

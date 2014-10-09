@@ -120,6 +120,7 @@
 
   <!-- MAIN CONTENT -->
   <div id="main" role="main" class="clearfix">
+    <?php if ($page['seoh1']): ?><h1 class="seoh1" id="seoh1"><?php print $page['seoh1']; ?></h1><?php endif; ?>
     <?php if ($page['main_prefix']) :?>
       <?php print render($page['main_prefix']); ?>
     <?php endif; ?>

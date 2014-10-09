@@ -48,7 +48,7 @@ function usanetwork_post_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'gigya_comment_count' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -62,8 +62,13 @@ function usanetwork_post_ds_field_settings_info() {
         'class' => '',
       ),
     ),
+    'author' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'author',
+    ),
     'post_date' => array(
-      'weight' => '5',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'ds_post_date_blog_post_date',
     ),
@@ -149,15 +154,17 @@ function usanetwork_post_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_post_cover',
         1 => 'title',
-        2 => 'field_summary',
-        3 => 'gigya_comment_count',
-        4 => 'field_gigya_share_bar',
-        5 => 'post_date',
+        2 => 'author',
+        3 => 'field_summary',
+        4 => 'gigya_comment_count',
+        5 => 'field_gigya_share_bar',
+        6 => 'post_date',
       ),
     ),
     'fields' => array(
       'field_post_cover' => 'ds_content',
       'title' => 'ds_content',
+      'author' => 'ds_content',
       'field_summary' => 'ds_content',
       'gigya_comment_count' => 'ds_content',
       'field_gigya_share_bar' => 'ds_content',

@@ -36,10 +36,12 @@ function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element,
       );
       $element[$delta]['loc'] = file_create_url($file->uri);
       $caption = field_get_items('file', $file, 'field_caption');  // check if image caption is present
+
+      $element[$delta]['caption'] = '';
       if (!empty($caption)) {
         $caption = reset($caption);
         if (!empty($caption)) {
-          $element[$delta]['caption'] = strip_tags($caption['safe_value']);
+          $element[$delta]['caption'] = trim(strip_tags($caption['value']));
         }
       }
       $title = field_get_items('file', $file, 'field_file_image_title_text');  // check if image title is present

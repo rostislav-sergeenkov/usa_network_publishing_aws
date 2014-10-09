@@ -62,7 +62,7 @@ class NBCUSitemapWriter extends XMLSitemapWriter {
       else {
         $this->startElement($name);
       }
-      if (is_array($content['#attributes'])) {
+      if (isset($content['#attributes']) && is_array($content['#attributes'])) {
         foreach ($content['#attributes'] as $attr_name => $attr_value) {
           $this->startAttribute($attr_name);
           $this->text($attr_value);
@@ -147,7 +147,12 @@ class NBCUSitemapIndexWriter extends NBCUSitemapWriter {
         );
         $types = nbcu_seo_xmlsitemap_types();
         foreach ($types as $type) {
-          $sitemaps[$type . '.xml'] = filemtime(nbcu_seo_xmlsitemap_sitemap_get_file($sitemap, 1, $type));
+          $sitemap_file_name = nbcu_seo_xmlsitemap_sitemap_get_file($sitemap, 1, $type);
+
+          if ($type == NBCU_SEO_CONTENT_BUFFER_NAME && !file_exists($sitemap_file_name)) {
+            continue;
+          }
+          $sitemaps[$type . '.xml'] = filemtime($sitemap_file_name);
         }
       }
       drupal_alter('nbcu_seo_xmlsitemap_sitemaps', $sitemaps);
@@ -381,8 +386,13 @@ function nbcu_seo_xmlsitemap_regenerate_batch(array $smids = array()) {
   $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
   foreach ($smids as $smid) {
     foreach (nbcu_seo_xmlsitemap_types() as $type) {
+      if ($type == NBCU_SEO_CONTENT_BUFFER_NAME) {
+        continue;
+      }
+
       $regenerate[$smid] = isset($regenerate[$smid]) ? $regenerate[$smid] : array();
       $regenerate[$smid][$type] = isset($regenerate[$smid][$type]) ? $regenerate[$smid][$type] : FALSE;
+
       if (isset($regenerate[$smid]) && $regenerate[$smid][$type] === TRUE) {
         $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_preprocess', array($smid, $type));
         $batch['operations'][] = array('nbcu_seo_xmlsitemap_regenerate_batch_generate', array($smid, $type));
@@ -466,6 +476,14 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
 
   $link_elements = $links->fetchAll(PDO::FETCH_ASSOC);
   foreach ($link_elements as $link) {
+    
+    //added opportunity to remove some elements from sitemap 
+    $remove_element = FALSE;
+    drupal_alter('nbcu_seo_xmlsitemap_remove_element', $link, $type, $remove_element);
+    if ($remove_element) {
+      continue;
+    }
+    
     $link['language'] = $link['language'] != LANGUAGE_NONE ? xmlsitemap_language_load($link['language']) : $url_options['language'];
     if ($url_options['alias']) {
       $link['loc'] = xmlsitemap_get_path_alias($link['loc'], $link['language']->language);

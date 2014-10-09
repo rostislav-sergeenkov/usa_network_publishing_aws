@@ -210,7 +210,7 @@
         });
       });
       // Featured and Full Episodes
-      $('.field-name-field-hp-promos .node a, #block-views-usa-mpx-video-front-full-epsds .file a').once('omniture-tracking', function() {
+      $('.field-name-field-hp-promos .node a, #block-views-usa-mpx-video-front-full-epsds .file a, #block-usanetwork-home-usanetwork-home-promo-carousel .node a').once('omniture-tracking', function() {
         var $self = $(this);
         var $items = $self.closest('.carousel').find('.carousel-item > div');
         var $node = $self.closest('.carousel-item').children('div');

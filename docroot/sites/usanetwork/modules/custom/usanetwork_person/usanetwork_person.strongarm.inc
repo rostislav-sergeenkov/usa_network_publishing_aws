@@ -137,20 +137,38 @@ function usanetwork_person_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'page_collection_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'title' => array(
-          'weight' => '16',
+          'weight' => '9',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '8',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),

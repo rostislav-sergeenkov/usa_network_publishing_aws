@@ -866,6 +866,12 @@ function usanetwork_core_update_7149() {
   module_enable($modules_en);
 }
 
-
-
-
+/**
+ * Enable usanetwork MPS module with setting for usanetwork.
+ */
+function usanetwork_core_update_7150() {
+  $modules_en = array(
+    'usanetwork_mps',
+  );
+  module_enable($modules_en);
+}

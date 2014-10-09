@@ -161,6 +161,9 @@ function usanetwork_quiz_strongarm() {
         'redirect' => array(
           'weight' => '5',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'quiz' => array(

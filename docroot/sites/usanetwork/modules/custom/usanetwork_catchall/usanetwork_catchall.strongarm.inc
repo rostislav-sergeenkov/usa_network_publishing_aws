@@ -97,6 +97,9 @@ function usanetwork_catchall_strongarm() {
         'redirect' => array(
           'weight' => '8',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

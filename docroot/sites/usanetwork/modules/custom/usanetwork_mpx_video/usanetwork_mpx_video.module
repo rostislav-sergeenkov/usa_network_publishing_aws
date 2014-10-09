@@ -670,7 +670,7 @@ function usanetwork_mpx_video_file_presave($file) {
       $set_alias = TRUE;
       $mpx_id = _pub_mpx_get_default_mpx_values('field_mpx_id', $file, 0, 'value');
       $mpx_video = media_theplatform_mpx_get_mpx_video_by_field('id', $mpx_id);
-      if ($mpx_video->expiration_date && $mpx_video->expiration_date < REQUEST_TIME) {
+      if ($mpx_video['expiration_date'] && $mpx_video['expiration_date'] < REQUEST_TIME) {
         if ( $mpx_video->status == 0 ) {
           $file->published = 1;
         }
@@ -1805,3 +1805,50 @@ function _usanetwork_mpx_video_is_video_page() {
   return $is_video_page;
 }
 
+/*
+ * Altering nbcu_seo_xmlsitemap_remove_element 
+ */
+function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($link, $type, &$remove_element) {
+  
+  if ($type == 'video' && $link['type'] == 'file' && in_array($link['subtype'], _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    $file = file_load($link['id']);
+    
+    //check if file is not expired
+    $expiration_date = field_get_items('file', $file, 'field_mpx_expiration_date');
+    if (!empty($expiration_date)) {
+      $expiration_date = reset($expiration_date);
+      if (!empty($expiration_date)) {
+        $expiration_date = $expiration_date['value'];
+      }
+    }
+
+    //check if file is from correct account
+    $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+    $mpx_import_account = $mpx_account->import_account;
+    $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
+    if (!empty($full_episode)) {
+      $full_episode = reset($full_episode);
+      if (!empty($full_episode)) {
+        $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+      }
+    }
+
+    //check if file is free
+    $entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+    if (!empty($entitlement)) {
+      $entitlement = reset($entitlement);
+      if (!empty($entitlement)) {
+        $entitlement = ($entitlement['value'] == 'auth') ? TRUE : FALSE;
+      }
+    }
+
+    if ($expiration_date < REQUEST_TIME) {
+      $remove_element = TRUE;
+    } elseif ((($mpx_import_account == rawurlencode('NBCU USA Network')) && ($full_episode == TRUE))
+      || (($mpx_import_account != rawurlencode('NBCU USA Network')) && ($full_episode == FALSE))) {
+        $remove_element = TRUE;
+    } elseif (($full_episode == TRUE) && ($entitlement == TRUE)) {
+      $remove_element = TRUE;
+    }
+  }
+}

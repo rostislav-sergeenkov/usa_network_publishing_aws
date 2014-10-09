@@ -21,10 +21,10 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_floodlight_type',
-      1 => 'field_floodlight_category',
+      0 => 'field_floodlight_category',
+      1 => 'field_floodlight_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -49,7 +49,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'A-spots',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_hp_arefs',
       1 => 'group_slide_settings',
@@ -78,7 +78,7 @@ function usanetwork_home_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'B-spots',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_hp_brefs',
     ),
@@ -107,7 +107,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'C-spots',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_usa_hp_crefs',
     ),
@@ -136,7 +136,7 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Global Nav images',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_hp_nav_img_more',
       1 => 'field_hp_nav_img_shows',
@@ -156,6 +156,36 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_promo_carousel|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_promo_carousel';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo carousel',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_hp_promo_carousel',
+      1 => 'field_hp_promo_carousel_title',
+      2 => 'field_hp_display_promo_carousel',
+      3 => 'field_hp_promo_carousel_display',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-hp-promo-carousel field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hp_promo_carousel|node|usa_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hp_promos|node|usa_homepage|form';
   $field_group->group_name = 'group_hp_promos';
   $field_group->entity_type = 'node';
@@ -164,11 +194,11 @@ On page load, only the first promo in each spot will be displayed.  Additional p
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_hp_promos',
-      1 => 'field_hp_promos_block_title',
-      2 => 'field_hp_episodes_block_title',
+      1 => 'field_hp_episodes_block_title',
+      2 => 'field_hp_promos_block_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

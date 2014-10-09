@@ -291,6 +291,8 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
       drupal_not_found();
     }
 
+    $found_social_icons = array();
+
     $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
     $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
 
@@ -324,6 +326,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
       $eql = str_replace(array_keys($tokens), array_values($tokens), $eql);
 
       $vars .= 'var chatWithFansEQL = "' . $eql . '"; ';
+      $found_social_icons[] = 'showChatPage';
     }
     else {
       $vars .= 'var chatWithFansEQL = ""; ';
@@ -356,6 +359,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
 
       // @TODO: SHOULD WE PULL IN TWITTER ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
       $vars .= 'var twitterEQL = "' . $eql . '"; ';
+      $found_social_icons[] = 'showTwitter';
     }
     else {
       $vars .= 'var twitterEQL = ""; ';
@@ -385,6 +389,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
 
       // @TODO: SHOULD WE PULL IN FACEBOOK ECHO APP KEY, ETC? IF NOT, SHOULD WE MOVE ECHO APP KEY TO A MORE GLOBAL LOCATION AND HAVE JUST ONE OF THEM?
       $vars .= 'var facebookEQL = "' . $eql . '"; ';
+      $found_social_icons[] = 'showFacebook';
     }
     else {
       $vars .= 'var facebookEQL = ""; ';
@@ -397,6 +402,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
       $pinterestUrl = empty($pinterestUrl) ? variable_get('usanetwork_social_pinterest_url', '') : $pinterestUrl;
 
       $vars .= 'var pinterestUrl = "' . $pinterestUrl . '"; ';
+      $found_social_icons[] = 'showPinterest';
     }
     else {
       $vars .= 'var pinterestUrl = ""; ';
@@ -413,6 +419,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
 
       $vars .= 'var getGlueUrl = "' . $getGlueUrl . '"; ';
       $vars .= 'var getGlueShowName = "' . $getGlueShow . '"; '; // $showName . '"; ';
+      $found_social_icons[] = 'showGetGlue';
     }
     else {
       $vars .= 'var getGlueUrl = ""; ';
@@ -426,9 +433,14 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
       $instagramShowId = empty($instagramShowId) ? variable_get('usanetwork_social_instagram_show_id', '') : $instagramShowId;
 
       $vars .= 'var instagramShowId = "' . $instagramShowId . '"; ';
+      $found_social_icons[] = 'showInstagram';
     }
     else {
       $vars .= 'var instagramShowId = ""; ';
+    }
+
+    if (empty($found_social_icons)) {
+      return "";
     }
 
     drupal_add_js($vars, array('type' => 'inline'));

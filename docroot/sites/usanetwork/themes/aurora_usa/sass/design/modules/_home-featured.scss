@@ -6,7 +6,8 @@
 }
 
 #block-views-usa-video-front-full-episodes,
-#block-views-usa-mpx-video-front-full-epsds {
+#block-views-usa-mpx-video-front-full-epsds,
+#block-usanetwork-home-usanetwork-home-promo-carousel {
   margin-top: 3px;
   @include breakpoint($bp-home-2col) {
     margin-top: 30px;
@@ -15,6 +16,7 @@
 
 #block-views-usa-video-front-full-episodes,
 #block-views-usa-mpx-video-front-full-epsds,
+#block-usanetwork-home-usanetwork-home-promo-carousel,
 .usa-home-featured {
   @extend %grid-home-featured;
   position: relative;
@@ -268,7 +270,8 @@
 }
 
 #block-views-usa-video-front-full-episodes,
-#block-views-usa-mpx-video-front-full-epsds {
+#block-views-usa-mpx-video-front-full-epsds,
+#block-usanetwork-home-usanetwork-home-promo-carousel {
   .caption-fields-wrapper:before {
     content: " ";
     width: 20px;

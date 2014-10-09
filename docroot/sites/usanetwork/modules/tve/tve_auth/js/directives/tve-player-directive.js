@@ -192,7 +192,55 @@
 
                     currentHtmlAdContent = currentHtmlAdContent.replace('mrm_default', (Drupal.settings.USA.DART.values.sect + '_' + Drupal.settings.USA.DART.values.sub + tabletSuffix));
                     currentHtmlAdContent = currentHtmlAdContent.replace('sect=default', ('sect=' + Drupal.settings.USA.DART.values.sect + ';sub=' + Drupal.settings.USA.DART.values.sub));
-                    $(targetElem).html(currentHtmlAdContent);
+
+                    // Temporary commented
+                    //$(targetElem).html(currentHtmlAdContent);
+
+                    // Temporary fix begin
+                    if (tabletSuffix != '') {
+                      // tablet detected
+                      // create iframe object
+                      var companionIframe = document.createElement('iframe');
+
+                      // set width and height based on targetId
+                      if (~targetId.indexOf('728')) {
+                        companionIframe.width = '728';
+                        companionIframe.height = '90';
+                      }
+
+                      if (~targetId.indexOf('300')) {
+                        companionIframe.width = '300';
+                        companionIframe.height = '250';
+                      }
+
+                      // set frameborder attribute to prevent iframe border
+                      var attr1 = document.createAttribute("frameborder");
+                      attr1.value="0";
+                      companionIframe.setAttributeNode(attr1);
+
+                      // set scrolling attribute to prevent iframe scrolling
+                      var attr2 = document.createAttribute("scrolling");
+                      attr2.value="no";
+                      companionIframe.setAttributeNode(attr2);
+
+                      // place the iframe inside the target dom element
+                      $(targetElem).html(companionIframe);
+
+                      // open the iframe document
+                      companionIframe.contentWindow.document.open();
+
+                      // format end script tag in document.write that is returned from FW to prevent premature EOF
+                      currentHtmlAdContent = currentHtmlAdContent.replace(/<\\\/script>/, '<\/sc\'+\'ript>');
+
+                      // write the HTML to the iframe
+                      companionIframe.contentWindow.document.write(currentHtmlAdContent);
+
+                      // close the iframe document
+                      companionIframe.contentWindow.document.close();
+                    } else {
+                      $(targetElem).html(currentHtmlAdContent);
+                    }
+                    // End of temporary temporary fix
 
                     if (~targetId.indexOf('728')) {
                       scope.$apply(function() {

@@ -21,7 +21,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_person_birth_date',
       1 => 'field_person_birth_location',
@@ -50,7 +50,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Person\'s Information',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'body',
       1 => 'field_person_cover_photo',
@@ -116,7 +116,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -144,7 +144,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = 'group_usa_custom';
   $field_group->data = array(
     'label' => 'Social',
-    'weight' => '27',
+    'weight' => '6',
     'children' => array(
       0 => 'field_usa_link_facebook',
       1 => 'field_usa_link_pinterest',
@@ -174,15 +174,17 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_role',
       1 => 'field_show',
       2 => 'field_usa_actor_name',
       3 => 'field_usa_character_thumb',
-      4 => 'field_hide_social_follow',
-      5 => 'field_hide_cast_carousel',
-      6 => 'group_social',
+      4 => 'field_hide_cast_carousel',
+      5 => 'field_hide_social_follow',
+      6 => 'field_seo_h1',
+      7 => 'field_seo_page_title',
+      8 => 'group_social',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -207,7 +209,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_usa_og_image',

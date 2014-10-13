@@ -103,13 +103,14 @@ ini_set('memory_limit', '512M');
  * Use the page_memory_limit module to increase the page memory limit on admin
  * pages only.
  */
+ /*
 $conf['page_memory_limit']['admin/*'] = '128M';
 $conf['page_memory_limit']['devel/*'] = '128M';
 $conf['page_memory_limit']['batch'] = '256M';
 if (isset($_SERVER['argv'][0]) && strrpos($_SERVER['argv'][0], 'drush.php') !== FALSE) {
   ini_set('memory_limit', '256M');
 }
-
+*/
 /**
  * Access control for update.php script.
  *

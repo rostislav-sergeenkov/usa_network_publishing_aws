@@ -1808,13 +1808,16 @@ function _usanetwork_mpx_video_is_video_page() {
 /*
  * Altering nbcu_seo_xmlsitemap_remove_element 
  */
-function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($link, $type, &$remove_element) {
+function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized_element, &$remove_element) {
+  $type = $analized_element['type'];
+  $link = $analized_element['link'];
   
   if ($type == 'video' && $link['type'] == 'file' && in_array($link['subtype'], _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    $langcode = $link['language'];
     $file = file_load($link['id']);
     
     //check if file is not expired
-    $expiration_date = field_get_items('file', $file, 'field_mpx_expiration_date');
+    $expiration_date = $file->field_mpx_expiration_date[$langcode];
     if (!empty($expiration_date)) {
       $expiration_date = reset($expiration_date);
       if (!empty($expiration_date)) {
@@ -1822,32 +1825,53 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($link, $t
       }
     }
 
+    if ($expiration_date < REQUEST_TIME) {
+      $remove_element = TRUE;
+      return;
+    }
+    
     //check if file is from correct account
     $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
     $mpx_import_account = $mpx_account->import_account;
-    $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
+    $full_episode = $file->field_mpx_full_episode[$langcode];
     if (!empty($full_episode)) {
       $full_episode = reset($full_episode);
       if (!empty($full_episode)) {
         $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
       }
     }
+    
+    if ((($mpx_import_account == rawurlencode('NBCU USA Network')) && ($full_episode == TRUE))
+      || (($mpx_import_account != rawurlencode('NBCU USA Network')) && ($full_episode == FALSE))) {
+        $remove_element = TRUE;
+        return;
+    }
 
     //check if file is free
-    $entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+    $entitlement = $file->field_mpx_entitlement[$langcode];
     if (!empty($entitlement)) {
       $entitlement = reset($entitlement);
       if (!empty($entitlement)) {
         $entitlement = ($entitlement['value'] == 'auth') ? TRUE : FALSE;
       }
     }
-
-    if ($expiration_date < REQUEST_TIME) {
+    
+    if (($full_episode == TRUE) && ($entitlement == TRUE)) {
       $remove_element = TRUE;
-    } elseif ((($mpx_import_account == rawurlencode('NBCU USA Network')) && ($full_episode == TRUE))
-      || (($mpx_import_account != rawurlencode('NBCU USA Network')) && ($full_episode == FALSE))) {
-        $remove_element = TRUE;
-    } elseif (($full_episode == TRUE) && ($entitlement == TRUE)) {
+      return;
+    }
+    
+    //check if exist show
+    $is_show_exist = FALSE;
+    $show = $file->field_show[$langcode];
+    if (!empty($show)) {
+      $show = reset($show);
+      if (!empty($show)) {
+        $is_show_exist = TRUE;
+      }
+    }
+
+    if ($is_show_exist == FALSE) {
       $remove_element = TRUE;
     }
   }

@@ -149,7 +149,7 @@ class NBCUSitemapIndexWriter extends NBCUSitemapWriter {
         foreach ($types as $type) {
           $sitemap_file_name = nbcu_seo_xmlsitemap_sitemap_get_file($sitemap, 1, $type);
 
-          if ($type == NBCU_SEO_CONTENT_BUFFER_NAME && !file_exists($sitemap_file_name)) {
+          if (module_exists('nbcu_seo_content_buffer') && $type == NBCU_SEO_CONTENT_BUFFER_NAME && !file_exists($sitemap_file_name)) {
             continue;
           }
           $sitemaps[$type . '.xml'] = filemtime($sitemap_file_name);
@@ -386,7 +386,7 @@ function nbcu_seo_xmlsitemap_regenerate_batch(array $smids = array()) {
   $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
   foreach ($smids as $smid) {
     foreach (nbcu_seo_xmlsitemap_types() as $type) {
-      if ($type == NBCU_SEO_CONTENT_BUFFER_NAME) {
+      if (module_exists('nbcu_seo_content_buffer') && $type == NBCU_SEO_CONTENT_BUFFER_NAME) {
         continue;
       }
 
@@ -479,8 +479,13 @@ function nbcu_seo_xmlsitemap_regenerate_batch_preprocess($smid, $type, array &$c
     
     //added opportunity to remove some elements from sitemap 
     $remove_element = FALSE;
-    drupal_alter('nbcu_seo_xmlsitemap_remove_element', $link, $type, $remove_element);
-    if ($remove_element) {
+    $analized_element = array(
+      'link' => $link,
+      'type' => $type,
+    );
+    drupal_alter('nbcu_seo_xmlsitemap_remove_element', $analized_element, $remove_element);
+    if ($remove_element == TRUE) {
+      $context['sandbox']['progress']++;
       continue;
     }
     

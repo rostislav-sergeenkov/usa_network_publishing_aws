@@ -237,7 +237,8 @@ function usanetwork_tv_shows_field_group_info() {
       3 => 'field_show',
       4 => 'field_tv_cover_media',
       5 => 'field_seo_h1',
-      6 => 'title',
+      6 => 'field_seo_page_title',
+      7 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -523,7 +524,8 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_logo',
       3 => 'field_tv_cover_media',
       4 => 'field_seo_h1',
-      5 => 'title',
+      5 => 'field_seo_page_title',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

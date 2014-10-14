@@ -165,13 +165,13 @@ function usanetwork_gallery_content_strongarm() {
           ),
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'redirect' => array(
           'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

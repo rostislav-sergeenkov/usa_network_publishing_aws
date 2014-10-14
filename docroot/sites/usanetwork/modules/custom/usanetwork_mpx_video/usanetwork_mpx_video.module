@@ -1847,20 +1847,6 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized
         return;
     }
 
-    //check if file is free
-    $entitlement = $file->field_mpx_entitlement[$langcode];
-    if (!empty($entitlement)) {
-      $entitlement = reset($entitlement);
-      if (!empty($entitlement)) {
-        $entitlement = ($entitlement['value'] == 'auth') ? TRUE : FALSE;
-      }
-    }
-    
-    if (($full_episode == TRUE) && ($entitlement == TRUE)) {
-      $remove_element = TRUE;
-      return;
-    }
-    
     //check if exist show
     $is_show_exist = FALSE;
     $show = $file->field_show[$langcode];

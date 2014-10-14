@@ -139,6 +139,7 @@ function usanetwork_showpages_showbanner() {
   $show_name = '';
   $show_section = '';
   $show_tunein = '';
+  $show_h1 = '';
   $field_name = "field_show";
 
   // see if we are on a node page
@@ -148,9 +149,18 @@ function usanetwork_showpages_showbanner() {
     // see if we are on a show node
     if ($entity_type == 'node' && $entity->type == 'tv_show') {
       $show = $entity->nid;
-      $show_title = isset($entity->field_display_title[$lang][0]['safe_value']) ? $entity->field_display_title[$lang][0]['safe_value'] : $entity->title;
+      $display_title = field_get_items($entity_type, $entity, 'field_display_title');
+      if (is_array($display_title) && !empty($display_title[0]['value'])) {
+        $show_title = $display_title[0]['value'];
+      }
+      else {
+        $show_title = $entity->title;
+      }
       $show_title = decode_entities($show_title);
-      $show_tunein = isset($entity->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $entity->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $usa_tv_tune_in_date = field_get_items($entity_type, $entity, 'field_usa_tv_tune_in_date');
+      if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
+        $show_tunein = $usa_tv_tune_in_date[0]['value'];
+      }
       $show_url = 'node/' . $entity->nid;
       $show_name = l($show_title, $show_url);
       // see if we are in a show social subsection
@@ -166,15 +176,28 @@ function usanetwork_showpages_showbanner() {
       if (arg(2) == 'quizzes') {
         $show_section = l(t('Quizzes'), $show_url . '/quizzes');
       }
+      $seo_h1 = field_get_items($entity_type, $entity, 'field_seo_h1');
+      if (is_array($seo_h1) && !empty($seo_h1[0]['value'])) {
+        $show_h1 = $seo_h1[0]['value'];
+      }
     }
     // looks for nodes with a value in field_show
     if (!empty($entity->$field_name)) {
       $show_nid = field_get_items($entity_type, $entity, $field_name);
       $show_nid = $show_nid[0]['target_id'];
       $show = node_load($show_nid);
-      $show_title = isset($show->field_display_title[$lang][0]['safe_value']) ? $show->field_display_title[$lang][0]['safe_value'] : $show->title;
+      $display_title = field_get_items('node', $show, 'field_display_title');
+      if (is_array($display_title) && !empty($display_title[0]['safe_value'])) {
+        $show_title = $display_title[0]['safe_value'];
+      }
+      else {
+        $show_title = $show->title;
+      }
       $show_title = decode_entities($show_title);
-      $show_tunein = isset($show->field_usa_tv_tune_in_date[$lang][0]['safe_value']) ? $show->field_usa_tv_tune_in_date[$lang][0]['safe_value'] : '';
+      $usa_tv_tune_in_date = field_get_items('node', $show, 'field_usa_tv_tune_in_date');
+      if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
+        $show_tunein = $usa_tv_tune_in_date[0]['value'];
+      }
       $show_url = 'node/' . $show->nid;
       $show_name = l($show_title, $show_url);
       if ($entity_type == 'node') {
@@ -210,7 +233,7 @@ function usanetwork_showpages_showbanner() {
       }
     }
     // render the theme function
-    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein));
+    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein, 'show_h1' => $show_h1));
   }
 
   return $render;
@@ -615,6 +638,13 @@ function usanetwork_showpages_preprocess_html(&$vars) {
         case 'quizzes':
           $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
           break;
+        // Show Landing Page
+        case '':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $custom_title = $seo_page_title[0]['value'];
+          }
+          $head_title = t("@title | USA Network", array('@title' => $custom_title));
+          break;          
         // overwrite title if arg(2) does not match any of top strings
         default:
           $head_title = t("@title | USA Network", array('@title' => $custom_title));
@@ -654,11 +684,21 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           $season_nid = field_get_items('node', $node, 'field_season');
           $season = $season_nid[0]['target_id'];
           $season = node_load($season);
-          $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $custom_title, '@season' => $season->title));
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $custom_title, '@season' => $season->title));
+          }
           break;
         // GALLERY_TITLE | Photo Galleries | SHOW_NAME | SITE_TITLE
         case 'media_gallery':
-          $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {        
+            $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+          }
           break;
         // VIDEO_TITLE | Videos | SHOW_NAME | SITE_TITLE
         case 'usa_video':

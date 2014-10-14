@@ -82,7 +82,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '24',
+    'weight' => '10',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_send_ideamelt_notification',
@@ -110,7 +110,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -171,7 +171,8 @@ function usanetwork_gallery_content_field_group_info() {
     'children' => array(
       0 => 'field_person',
       1 => 'field_gallery_type',
-      2 => 'group_show_rels',
+      2 => 'field_seo_page_title',
+      3 => 'group_show_rels',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -196,7 +197,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_usa_og_image',

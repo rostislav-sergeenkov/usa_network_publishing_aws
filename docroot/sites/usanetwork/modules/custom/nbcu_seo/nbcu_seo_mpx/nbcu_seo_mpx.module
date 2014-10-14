@@ -70,6 +70,22 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         if (!empty($expire)) {
           $element[$delta]['expiration_date'] = date('c', $expire);
         }
+        $restriction = $file->mpx_video_data['countries'];  // add restriction
+        if (!empty($restriction)) {
+          $restriction_array = unserialize($restriction);
+          $restriction_value = '';
+          foreach ($restriction_array as $country) {
+            $restriction_value .= $country . ' ';
+          }
+          $element[$delta][] = array(
+            '#namespace' => 'video',
+            '#tag' => 'restriction',
+            '#text' => $restriction_value,
+            '#attributes' => array(
+              'relationship' => 'allow',  
+            )
+          );
+        }
         $entitlement = field_get_items('file', $file, 'field_mpx_entitlement'); // check if video needs subscription
         if (!empty($entitlement)) {
           $entitlement = reset($entitlement);

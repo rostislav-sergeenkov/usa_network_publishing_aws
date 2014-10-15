@@ -110,6 +110,7 @@ function _nbcu_seo_content_buffer_build_buffer() {
   if (!empty($data)) {
     // Getting a list of available sitemaps
     $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
+    $lastmod_format = variable_get('xmlsitemap_lastmod_format', XMLSITEMAP_LASTMOD_MEDIUM);
 
     // Walking through all the catched sitemaps
     foreach ($smids as $smid) {
@@ -120,7 +121,7 @@ function _nbcu_seo_content_buffer_build_buffer() {
       foreach ($data as $data_element) {
         $element = array(
           'loc' => url($data_element->loc, array('absolute' => TRUE)),
-          'lastmod' => $data_element->lastmod,
+          'lastmod' => gmdate($lastmod_format, $data_element->lastmod),
           'priority' => $data_element->priority,
         );
 

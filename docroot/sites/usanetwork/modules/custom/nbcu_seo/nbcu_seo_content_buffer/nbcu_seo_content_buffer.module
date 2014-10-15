@@ -130,6 +130,9 @@ function _nbcu_seo_content_buffer_build_buffer() {
           'link' => (array) $data_element,
         );
 
+        // XML elements should be wrapped with additional data.
+        // If the content is file it should be expanded with file metadata.
+        // If it page with images then all the images should be added here.
         drupal_alter('nbcu_seo_xmlsitemap_xml_element', $element, $alter_context);
         $elements[] = $element;
       }

@@ -32,7 +32,7 @@ class NBCUSitemapWriter extends XMLSitemapWriter {
     $attributes = parent::getRootAttributes();
     $attributes['xmlns:image'] = 'http://www.google.com/schemas/sitemap-image/1.1';
     $attributes['xmlns:video'] = 'http://www.google.com/schemas/sitemap-video/1.1';
-    $attributes['xmlns:mobile'] = 'http://www.google.com/schemas/sitemap-video/1.0';
+    $attributes['xmlns:mobile'] = 'http://www.google.com/schemas/sitemap-mobile/1.0';
     $attributes['xmlns:news'] = 'http://www.google.com/schemas/sitemap-news/0.9';
     return $attributes;
   }

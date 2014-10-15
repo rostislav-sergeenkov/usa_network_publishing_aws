@@ -733,6 +733,9 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           break;
         // QUIZ SHOW_NAME - TITLE | SITE_TITLE
         case 'quiz':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $custom_title = $seo_page_title[0]['value'];
+          }        
           $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
           break;
       }

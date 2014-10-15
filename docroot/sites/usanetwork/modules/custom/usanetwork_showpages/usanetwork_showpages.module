@@ -716,24 +716,25 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           else {
             $custompath = drupal_get_path_alias('node/'.$node->nid);
             $path_parts = explode('/', $custompath);
-
-            switch ($path_parts['1']) {
-              // PAGE_TITLE | Feature | SHOW_TITLE | SITE_NAME
-              case 'features':
-                $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
-                break;
-              // PAGE_TITLE | Quizzes | SHOW_TITLE | SITE_NAME
-              case 'quizzes':
-                $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
-                break;
-              // PAGE_TITLE | Games | SHOW_TITLE | SITE_NAME
-              case 'games':
-                $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
-                break;
-              // overwrite title if the second path part does not match any of top strings
-              default:
-                $head_title = t("@title | USA Network", array('@title' => $custom_title));
-                break;
+            if (is_array($path_parts) && !empty($path_parts[1])) {
+              switch ($path_parts[1]) {
+                // PAGE_TITLE | Feature | SHOW_TITLE | SITE_NAME
+                case 'features':
+                  $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  break;
+                // PAGE_TITLE | Quizzes | SHOW_TITLE | SITE_NAME
+                case 'quizzes':
+                  $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  break;
+                // PAGE_TITLE | Games | SHOW_TITLE | SITE_NAME
+                case 'games':
+                  $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  break;
+                // overwrite title if the second path part does not match any of top strings
+                default:
+                  $head_title = t("@title | USA Network", array('@title' => $custom_title));
+                  break;
+              }
             }
           }
           break;

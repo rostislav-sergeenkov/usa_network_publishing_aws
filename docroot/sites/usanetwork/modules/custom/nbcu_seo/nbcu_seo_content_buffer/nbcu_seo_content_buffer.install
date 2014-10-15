@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_install().
+ */
+function nbcu_seo_content_buffer_install() {
+  $query = db_update('system')
+    ->condition('type', 'module')
+    ->condition('name', 'nbcu_seo_content_buffer')
+    ->fields(array('weight' => 25));
+
+  $query->execute();
+}
+
+/**
  * Set-up default variable value for regenerating Content Buffer XML Sitemap on content updating.
  */
 function nbcu_seo_content_buffer_update_7001() {

@@ -52,6 +52,7 @@ features[field_instance][] = node-catchall_page-field_nitro_action_name
 features[field_instance][] = node-catchall_page-field_refresh_time
 features[field_instance][] = node-catchall_page-field_send_ideamelt_notification
 features[field_instance][] = node-catchall_page-field_seo_h1
+features[field_instance][] = node-catchall_page-field_seo_page_title
 features[field_instance][] = node-catchall_page-field_show
 features[field_instance][] = node-catchall_page-field_usa_catchall_fixedwidth
 features[field_instance][] = node-catchall_page-field_usa_catchall_html

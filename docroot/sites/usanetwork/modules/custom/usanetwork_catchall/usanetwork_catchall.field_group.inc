@@ -28,7 +28,8 @@ function usanetwork_catchall_field_group_info() {
       2 => 'field_automatic_refresh',
       3 => 'field_refresh_time',
       4 => 'field_seo_h1',
-      5 => 'title',
+      5 => 'field_seo_page_title',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

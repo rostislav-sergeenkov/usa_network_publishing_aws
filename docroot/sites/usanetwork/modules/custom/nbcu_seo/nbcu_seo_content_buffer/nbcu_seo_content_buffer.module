@@ -86,7 +86,8 @@ function nbcu_seo_content_buffer_file_update($file) {
 /**
  * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH=1000 by default) updated links.
  */
-function _nbcu_seo_content_buffer_fetch_links() {$query = db_select('xmlsitemap', 'x');
+function _nbcu_seo_content_buffer_fetch_links() {
+  $query = db_select('xmlsitemap', 'x');
   $query->fields('x');
   $query->fields('xlt', array('link_type'));
   $query->condition('x.access', 1);

@@ -6,12 +6,12 @@
 
       $quiz_controls.on("change", function() {
         var title = $("#edit-title").val() != ''
-                            ? $("#edit-title").val()
-                            : '';
+                    ? $("#edit-title").val()
+                    : '';
 
         var h1 = $("#edit-field-seo-h1 input").val() != ''
-                          ? $("#edit-field-seo-h1 input").val()
-                          : '';
+                  ? $("#edit-field-seo-h1 input").val()
+                  : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
                     ? $("#edit-field-show select option:selected").text() + ' - '

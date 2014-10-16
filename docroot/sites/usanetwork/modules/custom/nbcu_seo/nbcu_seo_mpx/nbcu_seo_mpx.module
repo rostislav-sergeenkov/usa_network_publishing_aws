@@ -47,7 +47,9 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         if (!empty($description)) {
           $element[$delta]['description'] = strip_tags($description);
         }
-        $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url']; // add thumbnail url
+        if (!empty($file->mpx_video_data['thumbnail_url'])) { // add thumbnail url
+          $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url']; 
+        }
         // add swf player url
         $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/swf/select/' . $released_file_pid;
         $player_parameters = array(

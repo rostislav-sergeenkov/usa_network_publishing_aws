@@ -119,8 +119,15 @@ function _nbcu_seo_content_buffer_build_buffer() {
 
       // Parsing catched content items
       foreach ($data as $data_element) {
+        $url_options = array(
+          'absolute' => TRUE,
+          'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),
+          'language' => language_default(),
+          'alias' => FALSE,
+        );
+
         $element = array(
-          'loc' => url($data_element->loc, array('absolute' => TRUE)),
+          'loc' => url($data_element->loc, $url_options),
           'lastmod' => gmdate($lastmod_format, $data_element->lastmod),
           'priority' => $data_element->priority,
         );

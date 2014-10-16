@@ -87,16 +87,23 @@ function nbcu_seo_content_buffer_file_update($file) {
  * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH=1000 by default) updated links.
  */
 function _nbcu_seo_content_buffer_fetch_links() {
+  // Wraps in variable for sending to drupal_alter()
+  $max_buffer_length = NBCU_SEO_CONTENT_BUFFER_LENGTH;
+
   $query = db_select('xmlsitemap', 'x');
   $query->fields('x');
   $query->fields('xlt', array('link_type'));
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
-  $query->range(0, NBCU_SEO_CONTENT_BUFFER_LENGTH);
+  $query->range(0, $max_buffer_length);
   $query->orderBy('x.lastmod', 'DESC');
 
-  return $query->execute()->fetchAll();
+  $result = $query->execute()->fetchAll();
+
+  drupal_alter('nbcu_seo_xmlsitemap_filter_video_request', $result, $max_buffer_length);
+
+  return $result;
 }
 
 /**

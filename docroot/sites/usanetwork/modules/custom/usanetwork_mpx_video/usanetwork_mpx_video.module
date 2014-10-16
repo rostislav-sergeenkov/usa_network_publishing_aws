@@ -1862,3 +1862,76 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized
     }
   }
 }
+
+/**
+ * Altering nbcu_seo_xmlsitemap_filter_video_request.
+ */
+function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$alter_result, $limit = 1000) {
+  // Ignoring and resetting old request result (actual for USANetwork only)
+  $alter_result = array();
+
+  // Condition for full episodes
+  $full_episode_condition = new DatabaseCondition('AND');
+  $full_episode_condition->condition('field_mpx_full_episode_value', 1);
+  $full_episode_condition->condition('parent_account', 2);
+
+  // Condition for short episodes
+  $short_episode_condition = new DatabaseCondition('AND');
+  $short_episode_condition->condition('field_mpx_full_episode_value', 0);
+  $short_episode_condition->condition('parent_account', 1);
+
+  // OR condition for episodes
+  $episode_length_condition = new DatabaseCondition('OR');
+  $episode_length_condition->condition($full_episode_condition);
+  $episode_length_condition->condition($short_episode_condition);
+
+  // Getting filtered videos
+  $videos_query = db_select('xmlsitemap', 'x');
+  $videos_query->fields('x');
+  $videos_query->fields('xlt', array('link_type'));
+  $videos_query->condition('x.access', 1);
+  $videos_query->condition('x.status', 1);
+  $videos_query->condition($episode_length_condition);
+  $videos_query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
+  $videos_query->leftJoin('field_data_field_mpx_full_episode', 'mfe', 'x.id = mfe.entity_id');
+  $videos_query->leftJoin('mpx_video', 'mv', 'x.id = mv.fid');
+  $videos_query->range(0, $limit);
+  $videos_query->orderBy('x.lastmod', 'DESC');
+
+  $videos_result = $videos_query->execute()->fetchAll();
+
+  // Getting other content except videos
+  $query = db_select('xmlsitemap', 'x');
+  $query->fields('x');
+  $query->fields('xlt', array('link_type'));
+  $query->condition('x.access', 1);
+  $query->condition('x.status', 1);
+  $query->condition('xlt.link_type', 'video', '<>');
+  $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
+  $query->range(0, $limit);
+  $query->orderBy('x.lastmod', 'DESC');
+
+  $result = $query->execute()->fetchAll();
+
+  // Merging arrays
+  $alter_result = array_merge($videos_result, $result);
+
+  // Sorting by last modification date (DESC)
+  usort($alter_result, function($a, $b) {
+    if (isset($a->lastmod) && isset($b->lastmod)) {
+      if ($a->lastmod == $b->lastmod) {
+        return 0;
+      }
+      else {
+        return ($a->lastmod > $b->lastmod)
+          ? -1
+          : 1;
+      }
+    }
+
+    return 0;
+  });
+
+  // Splicing first $limit elements
+  $alter_result = array_splice($alter_result, $limit);
+}

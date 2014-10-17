@@ -39,7 +39,9 @@ function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element,
         'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),
         'language' => language_default(),
       );
-      $element[$delta]['loc'] = url(file_create_url($file->uri), $url_options);
+      $url = parse_url(file_create_url($file->uri));
+      $path = $url['path'];
+      $element[$delta]['loc'] = url($path, $url_options);
 
       // Process caption field (field_get_items does not allow to get clean value if it flooded by WYSIWYG editor)
       $caption_value = _nbcu_seo_media_gallery_strip_caption_field($file->fid, $file->vid);

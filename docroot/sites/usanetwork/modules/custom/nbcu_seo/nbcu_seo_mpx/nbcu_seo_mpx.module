@@ -51,10 +51,16 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         // add swf player url
         $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/swf/select/' . $released_file_pid;
         $player_parameters = array(
-//          'fragment' => 'playerurl=' . rawurlencode(file_create_url($file->uri)),
           'external' => TRUE,
         );
-        $element[$delta]['player_loc'] = url($player_source, $player_parameters);
+        $element[$delta][] = array(
+            '#namespace' => 'video',
+            '#tag' => 'player_loc',
+            '#text' => url($player_source, $player_parameters),
+            '#attributes' => array(
+              'allow_embed' => 'yes',  
+            )
+          );
         $duration = field_get_items('file', $file, 'field_mpx_duration');  // add duration
         if (!empty($duration)) {
           $duration = reset($duration);

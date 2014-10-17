@@ -22,6 +22,9 @@ if ($local && file_exists(dirname(__FILE__) . "/settings.local.php")) {
   require_once dirname(__FILE__) . "/settings.local.php";
 }
 
+// Disable Acquia SA-2014-005 mitigation.  Remove when updated to Drupal 7.32
+$conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
+
 // Next, include the environment-agnostic file owned by this project.
 //require_once dirname(__FILE__) . "/settings.site.php";
 if (file_exists('/var/www/site-php')) {

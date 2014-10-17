@@ -34,16 +34,23 @@ function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element,
         '#tag' => 'image',
         '#namespace' => 'image',
       );
-      $element[$delta]['loc'] = file_create_url($file->uri);
-      $caption = field_get_items('file', $file, 'field_caption');  // check if image caption is present
+      $url_options = array(
+        'absolute' => TRUE,
+        'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),
+        'language' => language_default(),
+      );
+      $url = parse_url(file_create_url($file->uri));
+      $path = $url['path'];
+      $element[$delta]['loc'] = url($path, $url_options);
 
-      $element[$delta]['caption'] = '';
-      if (!empty($caption)) {
-        $caption = reset($caption);
-        if (!empty($caption)) {
-          $element[$delta]['caption'] = trim(strip_tags($caption['value']));
-        }
+      // Process caption field (field_get_items does not allow to get clean value if it flooded by WYSIWYG editor)
+      $caption_value = _nbcu_seo_media_gallery_strip_caption_field($file->fid, $file->vid);
+
+      // Add caption tag only if value exists
+      if (!empty($caption_value)) {
+        $element[$delta]['caption'] = $caption_value;
       }
+
       $title = field_get_items('file', $file, 'field_file_image_title_text');  // check if image title is present
       if (!empty($title)) {
         $title = reset($title);
@@ -53,4 +60,24 @@ function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element,
       }
     }
   }
+}
+
+/**
+ * Returns clean value of field 'field_data_field_caption'. The field can contains a lot of flood from WYSIWYG editor.
+ */
+function _nbcu_seo_media_gallery_strip_caption_field($fid, $vid) {
+  $query = db_select('field_data_field_caption', 'fc')
+    ->fields('fc', array('field_caption_value'))
+    ->condition('entity_id', $fid)
+    ->condition('revision_id', $vid);
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    $caption = $result[0]->field_caption_value;
+
+    return trim(preg_replace("/<!--(.*)-->|&.{0,}?;|<[^.]*>/Uis", "", $caption));
+  }
+
+  return NULL;
 }

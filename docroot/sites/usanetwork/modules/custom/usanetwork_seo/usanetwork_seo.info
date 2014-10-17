@@ -3,6 +3,7 @@ description = Handles all SEO related fucntionality.
 core = 7.x
 package = USA Network
 dependencies[] = nbcu_seo
+dependencies[] = nbcu_seo_content_buffer
 dependencies[] = nbcu_seo_media_gallery
 dependencies[] = nbcu_seo_mpx
 dependencies[] = text

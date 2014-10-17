@@ -750,6 +750,16 @@ function usanetwork_showpages_preprocess_html(&$vars) {
       }
     }
     // end of node types
+  } elseif ($file = menu_get_object('file')) {
+    $show_field = field_get_items('file', $file, 'field_show');
+    if ($show_field) {
+      $show = reset($show_field);
+    }
+    if (isset($show)) {
+      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $file->filename, '@showname' => $show['entity']->title));
+    } else {
+      $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
+    }
   }
 
   // If there are head titles print the new ones

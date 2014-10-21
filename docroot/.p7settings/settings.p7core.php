@@ -438,6 +438,6 @@ $conf['allow_authorize_operations'] = FALSE;
  * Set a memory limit depending on the current page.
  */
 if (arg(0) == 'admin' || arg(0) == 'batch' || arg(0) == 'devel') {
-  ini_set('memory_limit', '256M');
+  ini_set('memory_limit', '512M');
 }
 

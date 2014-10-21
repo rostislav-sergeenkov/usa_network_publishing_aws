@@ -48,17 +48,20 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           $element[$delta]['description'] = strip_tags($description);
         }
         $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url']; // add thumbnail url
-        // add swf player url
-        $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/swf/select/' . $released_file_pid;
-        $player_parameters = array(
-          'external' => TRUE,
-        );
+        $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
+        if (!empty($full_episode)) {
+          $full_episode = reset($full_episode);
+          if (!empty($full_episode)) {
+            $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+          }
+        }
+        // add player url
         $element[$delta][] = array(
             '#namespace' => 'video',
             '#tag' => 'player_loc',
-            '#text' => url($player_source, $player_parameters),
+            '#text' => $element['loc'],
             '#attributes' => array(
-              'allow_embed' => 'yes',  
+              'allow_embed' => $full_episode ? 'no' : 'yes',  
             )
           );
         $duration = field_get_items('file', $file, 'field_mpx_duration');  // add duration
@@ -127,13 +130,6 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           $element[$delta]['tvshow']['show_title'] = $show->title; //set show title
           $video_title = $show->title;
           $video_type = 'clip';
-          $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
-          if (!empty($full_episode)) {
-            $full_episode = reset($full_episode);
-            if (!empty($full_episode)) {
-              $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
-            }
-          }
           if ($full_episode) {
             $video_type = 'full';
           }

@@ -47,7 +47,17 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         if (!empty($description)) {
           $element[$delta]['description'] = strip_tags($description);
         }
-        $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url']; // add thumbnail url
+        // add thumbnail url
+        if (!empty($file->mpx_video_data['thumbnail_url'])) {
+          $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url'];
+        } else {
+          $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+          $local_thumbnail_path = $wrapper->getLocalThumbnailPath();
+          $url = parse_url(file_create_url($local_thumbnail_path));
+          $path = $url['path'];
+          $element[$delta]['thumbnail_loc'] = url($path);   
+        }
+        
         $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
         if (!empty($full_episode)) {
           $full_episode = reset($full_episode);

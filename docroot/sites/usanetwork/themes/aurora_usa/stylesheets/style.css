@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -5788,7 +5788,7 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 .view-id-usa_episodes.view-display-id-panel_pane_4 h1 {
   font-size: 12px;
   color: #878785;
-  margin: 0;
+  margin: 0 0 -1.5em 0;
 }
 
 @media (min-width: 769px) {

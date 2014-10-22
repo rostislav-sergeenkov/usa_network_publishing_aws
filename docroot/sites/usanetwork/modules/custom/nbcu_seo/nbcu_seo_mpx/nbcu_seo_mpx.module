@@ -55,15 +55,30 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
             $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
           }
         }
-        // add player url
+        // add swf player url
+        $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/config/select/mediat/' . $released_file_pid;
+        $player_parameters = array(
+          'query' => array(
+            'form' => 'vars',
+            'component' => 'player',
+          ), 
+        );
+        $swf_player_source = 'http://pdk.theplatform.com/current/pdk/swf/flvPlayer.swf';
+        $swf_player_parameters = array(
+          'query' => array(
+            'id' => 'player',
+            'v' => rawurlencode(url($player_source, $player_parameters)),
+          ),
+          'external' => TRUE,
+        );
         $element[$delta][] = array(
-            '#namespace' => 'video',
-            '#tag' => 'player_loc',
-            '#text' => $element['loc'],
-            '#attributes' => array(
-              'allow_embed' => $full_episode ? 'no' : 'yes',  
-            )
-          );
+          '#namespace' => 'video',
+          '#tag' => 'player_loc',
+          '#text' => url($swf_player_source, $swf_player_parameters),
+          '#attributes' => array(
+          'allow_embed' => $full_episode ? 'no' : 'yes',  
+          )
+        );
         $duration = field_get_items('file', $file, 'field_mpx_duration');  // add duration
         if (!empty($duration)) {
           $duration = reset($duration);

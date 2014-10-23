@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 /**
  * Implements hook_js_alter().
@@ -308,8 +308,8 @@ function usanetwork_core_default_taxonomy_terms() {
  * Altering pathauto_punctuation_chars.
  */
 function usanetwork_core_pathauto_punctuation_chars_alter(&$punctuation) {
-    $punctuation['double_curly_left']  = array('value' => '“', 'name' => t('Double curly left'));
-    $punctuation['double_curly_right'] = array('value' => '”', 'name' => t('Double curly right'));
-    $punctuation['single_curly_left']  = array('value' => '‘', 'name' => t('Single curly left'));
-    $punctuation['single_curly_right'] = array('value' => '’', 'name' => t('Single curly right'));
+    $punctuation['double_curly_left']  = array('value' => 'â€œ', 'name' => t('Double curly left'));
+    $punctuation['double_curly_right'] = array('value' => 'â€', 'name' => t('Double curly right'));
+    $punctuation['single_curly_left']  = array('value' => 'â€˜', 'name' => t('Single curly left'));
+    $punctuation['single_curly_right'] = array('value' => 'â€™', 'name' => t('Single curly right'));
 }

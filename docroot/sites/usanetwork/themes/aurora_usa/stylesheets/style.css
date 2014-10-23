@@ -5015,12 +5015,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   font-size: 18px;
   margin: 15px 0 0 35px;
 }
-#utilities .show-banner h1 {
-  position: absolute;
-  font-size: 10px;
-  bottom: -12px;
-  color: #878785;
-}
 @media (min-width: 0px) and (max-width: 400px) {
   #utilities .breadcrumb {
     margin-top: 4px;
@@ -11419,6 +11413,17 @@ body.person-page #main {
   .usa-tv-show h2 {
     font-size: 26px;
   }
+}
+.usa-tv-show #utilities .show-banner .breadcrumb {
+  float: none;
+}
+.usa-tv-show #utilities .show-banner .breadcrumb > a {
+  line-height: 35px;
+}
+.usa-tv-show #utilities .show-banner h1 {
+  font-size: 13px;
+  color: #464646;
+  margin-top: -8px;
 }
 
 .promo-ads-panel .expandable-content {

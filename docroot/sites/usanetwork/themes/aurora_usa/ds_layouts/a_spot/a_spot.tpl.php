@@ -280,14 +280,14 @@ drupal_add_css($css, array('group' => CSS_THEME, 'type' => 'inline', 'every_page
       <div class="meta">
       <?php if (!$line_1_image || $line_1_image == '&nbsp;'): ?>
         <?php if ($line_1_tite && $line_1_tite !== '&nbsp;'): ?>
-          <h1 class="episodic-show-title"><?php print $line_1_tite; ?></h1>
+          <h2 class="episodic-show-title"><?php print $line_1_tite; ?></h2>
         <?php endif; ?>
       <?php endif; ?>
       <?php if ($line_2_tite && $line_2_tite !== '&nbsp;'): ?>
-        <h2 class="episodic-show-time"><?php print ($line_2_tite); ?></h2>
+        <h3 class="episodic-show-time"><?php print ($line_2_tite); ?></h3>
       <?php endif; ?>
       <?php if ($line_3_tite && $line_3_tite !== '&nbsp;'): ?>
-        <h3 class="episodic-episode-title"><span class="arrow-right">&#9658;</span><?php print ($line_3_tite); ?></h3>
+        <h4 class="episodic-episode-title"><span class="arrow-right">&#9658;</span><?php print ($line_3_tite); ?></h4>
       <?php endif; ?>
       </div>
     </div>

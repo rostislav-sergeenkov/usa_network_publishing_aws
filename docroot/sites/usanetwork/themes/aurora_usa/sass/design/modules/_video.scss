@@ -1407,25 +1407,22 @@
     .episode-title {
       display: inline;
     }
-    .episode-title {
+    .show-name {
       font-size: 26px;
       margin-right: 15px;
       text-transform: uppercase;
       @include breakpoint($bp-video-player-section) {
         font-size: 22px;
       }
-      div {
-        display: inline;
-      }
     }
-    .show-name,
+    .episode-title,
     .details {
       color: $gray-light;
     }
     .details .episode-info div{
       display: inline-block;
     }
-    .show-name {
+    .episode-title {
       margin-top:10px;
       font-size: 24px;
       text-transform: none;

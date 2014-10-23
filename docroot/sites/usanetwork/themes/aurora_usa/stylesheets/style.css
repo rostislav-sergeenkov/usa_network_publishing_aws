@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -10387,6 +10387,8 @@ body.person-page #main {
   /*@include breakpoint($bp-video-large-width) {
     width: 100%;
   }*/
+  /*.show-name {*/
+  /*.episode-title,*/
 }
 @media (max-width: 644px) {
   .featured-asset .meta-head {
@@ -10416,37 +10418,40 @@ body.person-page #main {
 .featured-asset .meta-head .episode-title {
   display: inline;
 }
-.featured-asset .meta-head .show-name {
+.featured-asset .meta-head .episode-title {
   font-size: 26px;
   margin-right: 15px;
   text-transform: uppercase;
 }
 @media (max-width: 644px) {
-  .featured-asset .meta-head .show-name {
+  .featured-asset .meta-head .episode-title {
     font-size: 22px;
   }
 }
-.featured-asset .meta-head .episode-title,
+.featured-asset .meta-head .episode-title div {
+  display: inline;
+}
+.featured-asset .meta-head .show-name,
 .featured-asset .meta-head .details {
   color: #878785;
 }
 .featured-asset .meta-head .details .episode-info div {
   display: inline-block;
 }
-.featured-asset .meta-head .episode-title {
+.featured-asset .meta-head .show-name {
   margin-top: 10px;
   font-size: 24px;
   text-transform: none;
   display: inline;
 }
 @media (max-width: 644px) {
-  .featured-asset .meta-head .episode-title {
+  .featured-asset .meta-head .show-name {
     display: block;
     font-size: 20px;
     margin-top: 0px;
   }
 }
-.featured-asset .meta-head .episode-title div {
+.featured-asset .meta-head .show-name div {
   display: inline;
 }
 .featured-asset .meta-head .details,

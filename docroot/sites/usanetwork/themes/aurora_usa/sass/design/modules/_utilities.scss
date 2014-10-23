@@ -82,14 +82,6 @@
     font-size: 18px;
     margin: 15px 0 0 35px;
   }
-  .show-banner {
-    h1 {
-      position: absolute;
-      font-size: 10px;
-      bottom: -12px;
-      color: #878785;
-    }
-  }
   @include breakpoint(0px 400px) {
     .breadcrumb {
       margin-top: 4px;

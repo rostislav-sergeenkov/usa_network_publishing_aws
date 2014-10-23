@@ -179,6 +179,8 @@ function usanetwork_showpages_showbanner() {
       $seo_h1 = field_get_items($entity_type, $entity, 'field_seo_h1');
       if (is_array($seo_h1) && !empty($seo_h1[0]['value'])) {
         $show_h1 = $seo_h1[0]['value'];
+      } else {
+        $show_h1 = $entity->title;
       }
     }
     // looks for nodes with a value in field_show

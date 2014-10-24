@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -11418,12 +11418,17 @@ body.person-page #main {
   float: none;
 }
 .usa-tv-show #utilities .show-banner .breadcrumb > a {
-  line-height: 35px;
+  line-height: 32px;
 }
 .usa-tv-show #utilities .show-banner h1 {
-  font-size: 13px;
+  font-size: 11px;
   color: #464646;
-  margin-top: -8px;
+  margin-top: -11px;
+}
+@media (min-width: 645px) {
+  .usa-tv-show #utilities .show-banner h1 {
+    margin-top: -8px;
+  }
 }
 
 .promo-ads-panel .expandable-content {

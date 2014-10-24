@@ -469,11 +469,6 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       $vars['aspot_title_image'] = $line_1_image;
       break;
-    case 'media_gallery':
-      if ($vars['view_mode'] == 'teaser') {
-        $vars['theme_hook_suggestions'][] = 'node__media_gallery__' . $vars['view_mode'];
-      }
-      break;
   }
 }
 
@@ -724,6 +719,12 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    case 'field_seo_h1':
+      //change display
+      if ($vars['element']['#object']->type == 'media_gallery')  {
+        $vars['items'][0]['#prefix'] = '<h1>';
+        $vars['items'][0]['#suffix'] = '</h1>';
+      }
   }
 }
 

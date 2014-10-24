@@ -80,13 +80,16 @@
       .breadcrumb {
         float: none;
         > a {
-          line-height: 35px;
+          line-height: 32px;
         }
       }
       h1 {
-        font-size: 13px;
+        font-size: 11px;
         color: #464646;
-        margin-top: -8px;
+        margin-top: -11px;
+        @include breakpoint($bp-show-mid-width) {
+          margin-top: -8px;
+        }
       }
     }
   }

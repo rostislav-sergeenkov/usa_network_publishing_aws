@@ -1416,7 +1416,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'fences_wrapper' => 'div',
+    'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_seo_h1',
     'label' => 'H1',
     'required' => 0,

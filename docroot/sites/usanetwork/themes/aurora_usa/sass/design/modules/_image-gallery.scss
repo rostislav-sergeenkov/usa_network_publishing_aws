@@ -172,28 +172,30 @@
         margin-top: 0;
         font-size: 20px;
       }
-      h1 {
-        font-size: 17px;
-        color: #878785;
+      h2 {
+        font-size: 18px;
+        color: #ffffff;
         margin: 0;
         @include breakpoint($bp-home-narrowest) {
-          font-size: 13px;
+          font-size: 14px;
         }
         @include breakpoint($bp-home-2-fence) {
           font-size: 16px;
         }
       }
     }
-    .pane-usa-gallery {
-      .views-field-field-seo-h1 {
-        font-size: 17px;
-        margin: 0;
-        font-family: $headline-bold;
-      }
+    .pane-entity-field {
       h1 {
-        font-size: 17px;
+        font-size: 15px;
         color: #878785;
         margin: 0;
+				font-family: $headline-bold;
+				@include breakpoint($bp-home-narrowest) {
+					font-size: 12px;
+				}
+				@include breakpoint($bp-home-2-fence) {
+					font-size: 14px;
+				}
       }
       .media-gallery-seo {
         font-size: 12px;

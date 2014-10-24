@@ -6137,32 +6137,38 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
     font-size: 20px;
   }
 }
-.media-gallery .center-wrapper .pane-node-title h1 {
-  font-size: 17px;
-  color: #878785;
+.media-gallery .center-wrapper .pane-node-title h2 {
+  font-size: 18px;
+  color: #ffffff;
   margin: 0;
 }
 @media (max-width: 709px) {
-  .media-gallery .center-wrapper .pane-node-title h1 {
-    font-size: 13px;
+  .media-gallery .center-wrapper .pane-node-title h2 {
+    font-size: 14px;
   }
 }
 @media (min-width: 710px) and (max-width: 1019px) {
-  .media-gallery .center-wrapper .pane-node-title h1 {
+  .media-gallery .center-wrapper .pane-node-title h2 {
     font-size: 16px;
   }
 }
-.media-gallery .center-wrapper .pane-usa-gallery .views-field-field-seo-h1 {
-  font-size: 17px;
+.media-gallery .center-wrapper .pane-entity-field h1 {
+  font-size: 15px;
+  color: #878785;
   margin: 0;
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
-.media-gallery .center-wrapper .pane-usa-gallery h1 {
-  font-size: 17px;
-  color: #878785;
-  margin: 0;
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .pane-entity-field h1 {
+    font-size: 12px;
+  }
 }
-.media-gallery .center-wrapper .pane-usa-gallery .media-gallery-seo {
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .pane-entity-field h1 {
+    font-size: 14px;
+  }
+}
+.media-gallery .center-wrapper .pane-entity-field .media-gallery-seo {
   font-size: 12px;
 }
 .media-gallery .image-caption {

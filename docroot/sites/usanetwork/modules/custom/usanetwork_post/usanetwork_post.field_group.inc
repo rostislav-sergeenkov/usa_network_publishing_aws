@@ -62,6 +62,8 @@ function usanetwork_post_field_group_info() {
       5 => 'field_summary',
       6 => 'field_sub_title',
       7 => 'title',
+      8 => 'group_blog_display_author',
+      9 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -74,6 +76,63 @@ function usanetwork_post_field_group_info() {
     ),
   );
   $export['group_basic_information|node|post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_blog_displaying_author|node|post|form';
+  $field_group->group_name = 'group_blog_displaying_author';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'post';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_basic_information';
+  $field_group->data = array(
+    'label' => 'Displaying Author',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_blog_display_author',
+      1 => 'field_override_display_author',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Displaying Author',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_blog_displaying_author|node|post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_blog_displaying_author|taxonomy_term|blog|form';
+  $field_group->group_name = 'group_blog_displaying_author';
+  $field_group->entity_type = 'taxonomy_term';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Displaying Author',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_blog_display_author',
+      1 => 'field_override_display_author',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-blog-displaying-author field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_blog_displaying_author|taxonomy_term|blog|form'] = $field_group;
 
   return $export;
 }

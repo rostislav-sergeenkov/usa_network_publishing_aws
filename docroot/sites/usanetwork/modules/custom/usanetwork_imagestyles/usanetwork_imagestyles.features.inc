@@ -357,8 +357,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'imagefield_focus',
         'name' => 'imagefield_focus_scale_and_crop',
         'data' => array(
-          'width' => 221,
-          'height' => 184,
+          'width' => 268,
+          'height' => 223,
           'strength' => 'high',
         ),
         'weight' => 1,
@@ -373,8 +373,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 221,
-          'height' => 184,
+          'width' => 268,
+          'height' => 223,
         ),
         'weight' => 2,
       ),
@@ -510,6 +510,29 @@ function usanetwork_imagestyles_image_default_styles() {
           'height' => 42,
         ),
         'weight' => 2,
+      ),
+    ),
+  );
+
+// Exported image style: usa_image_focus.
+  $styles['usa_image_focus'] = array(
+    'name' => 'usa_image_focus',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 600,
+          'height' => 500,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
       ),
     ),
   );

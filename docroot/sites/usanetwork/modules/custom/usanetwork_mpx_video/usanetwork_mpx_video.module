@@ -393,7 +393,7 @@ function usanetwork_mpx_video_views($ajax = false, $arg = null) {
   $view = views_get_view('usa_mpx_video');
 
   // we need these js files and headers for video player integration
-  $attached['js'][] = drupal_get_path('module', 'usanetwork_mpx_video') . '/js/tpPdkController.js';
+//  $attached['js'][] = drupal_get_path('module', 'usanetwork_mpx_video') . '/js/tpPdkController.js';
   $meta_video_tag = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
@@ -670,7 +670,7 @@ function usanetwork_mpx_video_file_presave($file) {
       $set_alias = TRUE;
       $mpx_id = _pub_mpx_get_default_mpx_values('field_mpx_id', $file, 0, 'value');
       $mpx_video = media_theplatform_mpx_get_mpx_video_by_field('id', $mpx_id);
-      if ($mpx_video->expiration_date && $mpx_video->expiration_date < REQUEST_TIME) {
+      if ($mpx_video['expiration_date'] && $mpx_video['expiration_date'] < REQUEST_TIME) {
         if ( $mpx_video->status == 0 ) {
           $file->published = 1;
         }
@@ -1805,3 +1805,133 @@ function _usanetwork_mpx_video_is_video_page() {
   return $is_video_page;
 }
 
+/*
+ * Altering nbcu_seo_xmlsitemap_remove_element 
+ */
+function usanetwork_mpx_video_nbcu_seo_xmlsitemap_remove_element_alter($analized_element, &$remove_element) {
+  $type = $analized_element['type'];
+  $link = $analized_element['link'];
+  
+  if ($type == 'video' && $link['type'] == 'file' && in_array($link['subtype'], _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    $langcode = $link['language'];
+    $file = file_load($link['id']);
+    
+    //check if file is not expired
+    $expiration_date = $file->field_mpx_expiration_date[$langcode];
+    if (!empty($expiration_date)) {
+      $expiration_date = reset($expiration_date);
+      if (!empty($expiration_date)) {
+        $expiration_date = $expiration_date['value'];
+      }
+    }
+
+    if ($expiration_date < REQUEST_TIME) {
+      $remove_element = TRUE;
+      return;
+    }
+    
+    //check if file is from correct account
+    $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+    $mpx_import_account = $mpx_account->import_account;
+    $full_episode = $file->field_mpx_full_episode[$langcode];
+    if (!empty($full_episode)) {
+      $full_episode = reset($full_episode);
+      if (!empty($full_episode)) {
+        $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+      }
+    }
+    
+    if ((($mpx_import_account == rawurlencode('NBCU USA Network')) && ($full_episode == TRUE))
+      || (($mpx_import_account != rawurlencode('NBCU USA Network')) && ($full_episode == FALSE))) {
+        $remove_element = TRUE;
+        return;
+    }
+
+    //check if exist show
+    $is_show_exist = FALSE;
+    $show = $file->field_show[$langcode];
+    if (!empty($show)) {
+      $show = reset($show);
+      if (!empty($show)) {
+        $is_show_exist = TRUE;
+      }
+    }
+
+    if ($is_show_exist == FALSE) {
+      $remove_element = TRUE;
+    }
+  }
+}
+
+/**
+ * Altering nbcu_seo_xmlsitemap_filter_video_request.
+ */
+function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$alter_result, $limit = 1000) {
+  // Ignoring and resetting old request result (actual for USANetwork only)
+  $alter_result = array();
+
+  // Condition for full episodes
+  $full_episode_condition = new DatabaseCondition('AND');
+  $full_episode_condition->condition('field_mpx_full_episode_value', 1);
+  $full_episode_condition->condition('parent_account', 2);
+
+  // Condition for short episodes
+  $short_episode_condition = new DatabaseCondition('AND');
+  $short_episode_condition->condition('field_mpx_full_episode_value', 0);
+  $short_episode_condition->condition('parent_account', 1);
+
+  // OR condition for episodes
+  $episode_length_condition = new DatabaseCondition('OR');
+  $episode_length_condition->condition($full_episode_condition);
+  $episode_length_condition->condition($short_episode_condition);
+
+  // Getting filtered videos
+  $videos_query = db_select('xmlsitemap', 'x');
+  $videos_query->fields('x');
+  $videos_query->fields('xlt', array('link_type'));
+  $videos_query->condition('x.access', 1);
+  $videos_query->condition('x.status', 1);
+  $videos_query->condition($episode_length_condition);
+  $videos_query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
+  $videos_query->leftJoin('field_data_field_mpx_full_episode', 'mfe', 'x.id = mfe.entity_id');
+  $videos_query->leftJoin('mpx_video', 'mv', 'x.id = mv.fid');
+  $videos_query->range(0, $limit);
+  $videos_query->orderBy('x.lastmod', 'DESC');
+
+  $videos_result = $videos_query->execute()->fetchAll();
+
+  // Getting other content except videos
+  $query = db_select('xmlsitemap', 'x');
+  $query->fields('x');
+  $query->fields('xlt', array('link_type'));
+  $query->condition('x.access', 1);
+  $query->condition('x.status', 1);
+  $query->condition('xlt.link_type', 'video', '<>');
+  $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
+  $query->range(0, $limit);
+  $query->orderBy('x.lastmod', 'DESC');
+
+  $result = $query->execute()->fetchAll();
+
+  // Merging arrays
+  $alter_result = array_merge($videos_result, $result);
+
+  // Sorting by last modification date (DESC)
+  usort($alter_result, function($a, $b) {
+    if (isset($a->lastmod) && isset($b->lastmod)) {
+      if ($a->lastmod == $b->lastmod) {
+        return 0;
+      }
+      else {
+        return ($a->lastmod > $b->lastmod)
+          ? -1
+          : 1;
+      }
+    }
+
+    return 0;
+  });
+
+  // Splicing first $limit elements
+  $alter_result = array_splice($alter_result, $limit);
+}

@@ -316,7 +316,7 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->access = array();
     $pane->configuration = array(
       'link' => 0,
-      'markup' => 'h1',
+      'markup' => 'h2',
       'id' => '',
       'class' => '',
       'context' => 'argument_entity_id:node_1',
@@ -338,6 +338,34 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $display->panels['right'][0] = 'new-6';
     $pane = new stdClass();
     $pane->pid = 'new-7';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_seo_h1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][1] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_season';
@@ -362,12 +390,12 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][1] = 'new-7';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][2] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_episode';
@@ -390,12 +418,12 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][2] = 'new-8';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][3] = 'new-9';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-10';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -417,12 +445,12 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
       'css_class' => 'image-caption',
     );
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['right'][3] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][4] = 'new-10';
     $pane = new stdClass();
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-11';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_gigya_share_bar';
@@ -460,12 +488,12 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['right'][4] = 'new-10';
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][5] = 'new-11';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-12';
     $pane->panel = 'right_ad';
     $pane->type = 'block';
     $pane->subtype = 'dart-dart-tag-300x250_ifr_reload';
@@ -486,8 +514,8 @@ function usanetwork_media_gallery_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['right_ad'][0] = 'new-11';
+    $display->content['new-12'] = $pane;
+    $display->panels['right_ad'][0] = 'new-12';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

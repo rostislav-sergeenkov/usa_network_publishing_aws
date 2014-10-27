@@ -2042,6 +2042,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
+        'usanetwork_home-usanetwork_home_promo_carousel' => array(
+          'module' => 'usanetwork_home',
+          'delta' => 'usanetwork_home_promo_carousel',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
         'usanetwork_tv_schedule-usa_on_now_panel' => array(
           'module' => 'usanetwork_tv_schedule',
           'delta' => 'usa_on_now_panel',

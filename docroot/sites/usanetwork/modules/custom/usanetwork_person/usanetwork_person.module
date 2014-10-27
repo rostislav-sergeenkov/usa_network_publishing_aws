@@ -17,3 +17,10 @@ function usanetwork_person_preprocess_page(&$vars) {
     $vars['title'] = '';
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_person_form_person_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_person').'/js/usanetwork_person.js';
+}

@@ -27,7 +27,9 @@ function usanetwork_catchall_field_group_info() {
       1 => 'field_usa_catchall_fixedwidth',
       2 => 'field_automatic_refresh',
       3 => 'field_refresh_time',
-      4 => 'title',
+      4 => 'field_seo_h1',
+      5 => 'field_seo_page_title',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -83,8 +85,8 @@ function usanetwork_catchall_field_group_info() {
     'label' => 'USA IdeaMelt',
     'weight' => '5',
     'children' => array(
-      0 => 'field_ideamelt_object_type',
-      1 => 'field_ideamelt_action_type',
+      0 => 'field_ideamelt_action_type',
+      1 => 'field_ideamelt_object_type',
       2 => 'field_send_ideamelt_notification',
     ),
     'format_type' => 'tab',

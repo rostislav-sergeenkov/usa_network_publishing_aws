@@ -47,19 +47,56 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         if (!empty($description)) {
           $element[$delta]['description'] = strip_tags($description);
         }
-        $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url']; // add thumbnail url
+        // add thumbnail url
+        if (!empty($file->mpx_video_data['thumbnail_url'])) {
+          $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url'];
+        } else {
+          $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+          $local_thumbnail_path = $wrapper->getLocalThumbnailPath();
+          $url = parse_url(file_create_url($local_thumbnail_path));
+          $path = $url['path'];
+          $element[$delta]['thumbnail_loc'] = url($path);   
+        }
+        
+        $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
+        if (!empty($full_episode)) {
+          $full_episode = reset($full_episode);
+          if (!empty($full_episode)) {
+            $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+          }
+        }
         // add swf player url
-        $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/swf/select/' . $released_file_pid;
+        $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/config/select/mediat/' . $released_file_pid;
         $player_parameters = array(
-          'fragment' => 'playerurl=' . rawurlencode(file_create_url($file->uri)),
+          'query' => array(
+            'form' => 'vars',
+            'component' => 'player',
+          ), 
+        );
+        $swf_player_source = 'http://pdk.theplatform.com/current/pdk/swf/flvPlayer.swf';
+        $swf_player_parameters = array(
+          'query' => array(
+            'id' => 'player',
+            'v' => rawurlencode(url($player_source, $player_parameters)),
+          ),
           'external' => TRUE,
         );
-        $element[$delta]['player_loc'] = url($player_source, $player_parameters);
+        $element[$delta][] = array(
+          '#namespace' => 'video',
+          '#tag' => 'player_loc',
+          '#text' => url($swf_player_source, $swf_player_parameters),
+          '#attributes' => array(
+          'allow_embed' => $full_episode ? 'no' : 'yes',  
+          )
+        );
         $duration = field_get_items('file', $file, 'field_mpx_duration');  // add duration
         if (!empty($duration)) {
           $duration = reset($duration);
           if (!empty($duration)) {
-            $element[$delta]['duration'] = strip_tags($duration['value']);
+            $duration = strip_tags($duration['value']);
+            if (!empty($duration)) {
+              $element[$delta]['duration'] = strip_tags($duration['value']);
+            }
           }
         }
         $available = $file->mpx_video_data['available_date'];  // add publication date
@@ -69,6 +106,22 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
         $expire = $file->mpx_video_data['expiration_date'];  // add expiration date
         if (!empty($expire)) {
           $element[$delta]['expiration_date'] = date('c', $expire);
+        }
+        $restriction = $file->mpx_video_data['countries'];  // add restriction
+        if (!empty($restriction)) {
+          $restriction_array = unserialize($restriction);
+          $restriction_value = '';
+          foreach ($restriction_array as $country) {
+            $restriction_value .= $country . ' ';
+          }
+          $element[$delta][] = array(
+            '#namespace' => 'video',
+            '#tag' => 'restriction',
+            '#text' => $restriction_value,
+            '#attributes' => array(
+              'relationship' => 'allow',  
+            )
+          );
         }
         $entitlement = field_get_items('file', $file, 'field_mpx_entitlement'); // check if video needs subscription
         if (!empty($entitlement)) {
@@ -102,13 +155,6 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           $element[$delta]['tvshow']['show_title'] = $show->title; //set show title
           $video_title = $show->title;
           $video_type = 'clip';
-          $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
-          if (!empty($full_episode)) {
-            $full_episode = reset($full_episode);
-            if (!empty($full_episode)) {
-              $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
-            }
-          }
           if ($full_episode) {
             $video_type = 'full';
           }

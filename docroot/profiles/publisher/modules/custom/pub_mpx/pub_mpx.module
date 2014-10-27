@@ -3153,7 +3153,7 @@ function _pub_mpx_enforce_field_length_limits($field_info, $field_value) {
  */
 function pub_mpx_media_theplatform_mpx_import_media($op, $media_item, $account) {
 
-  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid']);
+  $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid'], $account);
 
   foreach ($media_files as $file) {
 

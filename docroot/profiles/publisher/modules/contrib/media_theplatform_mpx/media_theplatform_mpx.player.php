@@ -310,47 +310,35 @@ function media_theplatform_mpx_import_player($player, $account = NULL) {
     ),
     WATCHDOG_INFO);
 
-  try {
-    $uri = 'mpx://p/' . $player['id'] . '/a/' . basename($account->account_id);
-    $fid = db_select('file_managed', 'f')
-      ->fields('f', array('fid'))
-      ->condition('uri', $uri, '=')
-      ->execute()
-      ->fetchField();
+  $uri = 'mpx://p/' . $player['id'] . '/a/' . basename($account->account_id);
+  $fid = db_select('file_managed', 'f')
+    ->fields('f', array('fid'))
+    ->condition('uri', $uri, '=')
+    ->execute()
+    ->fetchField();
 
-    // If fid exists:
-    if ($fid) {
-      // Check if record already exists in mpx_player.
-      $existing_player = db_select('mpx_player', 'p')
-        ->fields('p')
-        ->condition('fid', $fid, '=')
-        ->condition('parent_account', $account->id, '=')
-        ->execute()
-        ->fetchAll();
-      $existing_player = (array) reset($existing_player);
-      // If mpx_player record exists, then update record.
-      if (!empty($existing_player)) {
-        return media_theplatform_mpx_update_player($player, $fid, $existing_player, $account);
-      }
-      // Else insert new mpx_player record with existing $fid.
-      else {
-        return media_theplatform_mpx_insert_player($player, $fid, $account);
-      }
+  // If fid exists:
+  if ($fid) {
+    // Check if record already exists in mpx_player.
+    $existing_player = db_select('mpx_player', 'p')
+      ->fields('p')
+      ->condition('fid', $fid, '=')
+      ->condition('parent_account', $account->id, '=')
+      ->execute()
+      ->fetchAll();
+    $existing_player = (array) reset($existing_player);
+    // If mpx_player record exists, then update record.
+    if (!empty($existing_player)) {
+      return media_theplatform_mpx_update_player($player, $fid, $existing_player, $account);
     }
-    // Create new mpx_player and create new file.
+    // Else insert new mpx_player record with existing $fid.
     else {
-      return media_theplatform_mpx_insert_player($player, NULL, $account);
+      return media_theplatform_mpx_insert_player($player, $fid, $account);
     }
   }
-  catch (Exception $e) {
-
-    watchdog_exception('media_theplatform_mpx', $e,
-      'ERROR occurred while creating/updating player @pid -- @title -- for @account.',
-      array(
-        '@pid' => $player['pid'],
-        '@title' => $player['title'],
-        '@account' => _media_theplatform_mpx_account_log_string($account),
-      ));
+  // Create new mpx_player and create new file.
+  else {
+    return media_theplatform_mpx_insert_player($player, NULL, $account);
   }
 }
 

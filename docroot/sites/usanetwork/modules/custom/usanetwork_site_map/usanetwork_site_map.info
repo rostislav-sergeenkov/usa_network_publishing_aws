@@ -1,0 +1,12 @@
+name = Usanetwork Site Map
+description = Custom Site Map for USA
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usa_network_site_map
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = dart
+features[context][] = usanetwork_site_map
+features[ctools][] = context:context:3
+features[features_api][] = api:2

@@ -856,4 +856,32 @@ function usanetwork_core_update_7148() {
   module_enable($modules_en);
 }
 
+/**
+ * Enable lazy load module.
+ */
+function usanetwork_core_update_7149() {
+  $modules_en = array(
+    'usanetwork_lazy_load',
+  );
+  module_enable($modules_en);
+}
 
+/**
+ * Enable usanetwork MPS module with setting for usanetwork.
+ */
+function usanetwork_core_update_7150() {
+  $modules_en = array(
+    'usanetwork_mps',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable usanetwork MPS module with setting for usanetwork.
+ */
+function usanetwork_core_update_7151() {
+  $modules_en = array(
+    'usanetwork_seo',
+  );
+  module_enable($modules_en);
+}

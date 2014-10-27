@@ -121,5 +121,33 @@
 
     },
   };
+  function change_src() {
+    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+      $('.view-usa-gallery .cover-image img:not(.visible-image)').viewportChecker({
+        classToAdd: 'visible-image',
+        offset: 100,
+        repeat: false,
+        callbackFunction: function(elem, add){
+          $(elem).attr({
+            src: $(elem).attr('data-src')
+          })
+        }
+      });
+    } else {
+      $('.view-usa-gallery .cover-image img:not(.visible-image)').each( function() {
+        $(this).attr({
+          src: $(this).attr('data-src')
+        })
+        $(this).addClass('visible-image');
+      });
+    }
+  }
+
+  $(document).ready(function() {
+    change_src();
+    $(document).ajaxSuccess(function() {
+      change_src();
+    });
+  });
 
 }(jQuery));

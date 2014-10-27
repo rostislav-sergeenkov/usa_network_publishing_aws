@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_lazy_load_theme() {
+  return array(
+    'lazy_load_image' => array(
+      'variables' => array(
+        'style_name' => NULL,
+        'path' => NULL,
+        'file' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function usanetwork_lazy_load_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->bid == 'views-usa_mpx_video-front_full_epsds') {
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/viewportchecker.js', 'file');
+  }
+}
+
+/**
+ * Implements hook_file_formatter_info_alter().
+ */
+function usanetwork_lazy_load_file_formatter_info_alter(&$info) {
+  if (isset($info['media_theplatform_mpx_image'])) {
+    $info['media_theplatform_mpx_image']['view callback'] = 'usanetwork_lazy_load_file_formatter_image_view';
+  }
+}
+
+/**
+ * Implements hook_file_formatter_FORMATTER_view().
+ */
+function usanetwork_lazy_load_file_formatter_image_view($file, $display, $langcode) {
+  $scheme = file_uri_scheme($file->uri);
+  $current_display = $file->view->current_display;
+  if ($scheme == 'mpx') {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    $parts = $wrapper->get_parameters();
+
+    $image_style = $display['settings']['image_style'];
+    $valid_image_styles = image_style_options(FALSE);
+    if ($current_display == 'front_full_epsds'){
+      $element = array(
+        '#theme' => 'lazy_load_image',
+        '#path' => $wrapper->getLocalThumbnailPath(),
+        '#style_name' => $image_style,
+        '#file' => $file,
+      );
+    }
+    elseif (empty($image_style) || !isset($valid_image_styles[$image_style])) {
+      $element = array(
+        '#theme' => 'image',
+        '#path' => $wrapper->getOriginalThumbnailPath(),
+      );
+    }
+    else {
+      $element = array(
+        '#theme' => 'image_style',
+        '#style_name' => $image_style,
+        '#path' => $wrapper->getLocalThumbnailPath(),
+      );
+    }
+    return $element;
+  }
+}
+
+/**
+ * Theme callback call_to_action_collection
+ */
+function theme_lazy_load_image($variables) {
+
+  $output = '';
+  $filepath = image_style_url('300x250', $variables['path']);
+  $alt = $variables['file']->alt;
+  $title = $variables['file']->title;
+  $data_src = file_create_url($filepath);
+  $output .= '<img src="" data-src="' . $data_src . '" alt="' . $alt . '" title="' . $title . '"/>';
+  $output .= '<noscript>';
+  $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => $alt, 'title' => $title));
+  $output .= '</noscript>';
+  return $output;
+
+}
+

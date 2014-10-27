@@ -104,6 +104,7 @@ function aurora_usa_preprocess_page(&$vars) {
   if ($node && $node->type == "media_gallery") {
     drupal_add_js($theme_path . '/javascripts/flexslider-gallery.js');
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
+    drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
@@ -151,6 +152,11 @@ function aurora_usa_preprocess_page(&$vars) {
   }
   if (!empty($vars['page']['search'])) {
     $util_regions[] = 'utilities-search';
+  }
+  //Assign SEO H1 field value to page variable
+  if (drupal_is_front_page()) {
+    if (module_exists('usanetwork_home'))
+    $vars['page']['seoh1'] = _usanetwork_home_get_field_value('field_seo_h1');
   }
   $vars['util_classes'] = implode(' ', $util_regions);
 
@@ -713,6 +719,12 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
           }
         }
       break;
+    case 'field_seo_h1':
+      //change display
+      if ($vars['element']['#object']->type == 'media_gallery')  {
+        $vars['items'][0]['#prefix'] = '<h1>';
+        $vars['items'][0]['#suffix'] = '</h1>';
+      }
   }
 }
 
@@ -847,7 +859,7 @@ function aurora_usa_views_pre_render_usa_episodes__panel_pane_3(&$view) {
  */
 function aurora_usa_preprocess_panels_pane(&$vars) {
 
-  if($vars['pane']->type == 'page_title' && $vars['pane']->panel == 'person_main') {
+  if(($vars['pane']->subtype == 'usa_people-panel_pane_4' || $vars['pane']->subtype == 'usa_people-panel_pane_5') && $vars['pane']->panel == 'person_main') {
     $vars['pane_prefix'] = '<div class="person-content-wrapper clearfix"><aside id="person-content" class="panel-pane">';
   }
 
@@ -1047,11 +1059,11 @@ function aurora_usa_field__field_promo_wide_image($vars) {
     $output = '';
     $filepath = $vars['items'][0]['#item']['uri'];
 
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 645px) and (max-width: 959px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 710px) and (max-width: 1019px) and (min-device-pixel-ratio: 2.0)"></div>';
 
-    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1275px)"></div>';
-    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1275px) and (min-device-pixel-ratio: 2.0)"></div>';
+    $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '" data-media="(min-width: 1335px)"></div>';
+    $output .= '<div data-src="' . image_style_url('1230x500', $filepath) . '" data-media="(min-width: 1335px) and (min-device-pixel-ratio: 2.0)"></div>';
     $output .= '<!--[if (IE 8) & (!IEMobile)]>';
     $output .= '<div data-src="' . image_style_url('615x250', $filepath) . '"></div>';
     $output .= '<![endif]-->';
@@ -1096,6 +1108,20 @@ function aurora_usa_field__field_promo_regular_image($vars) {
     $output .= '<div data-src="' . image_style_url('600x500', $filepath) . '"  data-media="(min-device-pixel-ratio: 2.0)"></div>';
     $output .= '<noscript>';
     $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => '', 'title' => ''));
+    $output .= '</noscript>';
+    return $output;
+  }
+
+  // carousel_promo
+  if ($vars['element']['#view_mode'] == 'carousel_promo') {
+    $output = '';
+    $filepath = $vars['items'][0]['#item']['uri'];
+    $alt = $vars['items'][0]['#item']['alt'];
+    $title = $vars['items'][0]['#item']['title'];
+    $data_src = image_style_url('600x500', $filepath);
+    $output .= '<img src="" data-src="' . $data_src . '" alt="' . $alt . '" title="' . $title . '"/>';
+    $output .= '<noscript>';
+    $output .= theme('image_style', array('style_name' => '600x500', 'path' => $filepath, 'alt' => $alt, 'title' => $title));
     $output .= '</noscript>';
     return $output;
   }

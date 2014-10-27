@@ -6197,23 +6197,23 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   }
 }
 .media-gallery .image-caption .gallery-image-caption {
-  font-size: 20px;
+  font-size: 14px;
 }
 @media (max-width: 709px) {
   .media-gallery .image-caption .gallery-image-caption {
-    font-size: 12px;
+    font-size: 11px;
     clear: left;
     line-height: 1.3em;
   }
 }
 @media (min-width: 710px) and (max-width: 1019px) {
   .media-gallery .image-caption .gallery-image-caption {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 @media (min-width: 1020px) and (max-width: 1334px) {
   .media-gallery .image-caption .gallery-image-caption {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 .media-gallery .image-caption .gallery-image-caption p {

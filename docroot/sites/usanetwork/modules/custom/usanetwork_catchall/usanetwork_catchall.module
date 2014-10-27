@@ -32,3 +32,10 @@ function usanetwork_catchall_preprocess_page(&$vars) {
   }
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Alter node edit form.
+ */
+function usanetwork_catchall_form_catchall_page_node_form_alter(&$form, &$form_state) {
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_catchall').'/js/usanetwork_catchall.js';
+}

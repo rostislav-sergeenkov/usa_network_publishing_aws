@@ -75,6 +75,24 @@
       font-size: 26px;
     }
   }
+  #utilities {
+    .show-banner {
+      .breadcrumb {
+        float: none;
+        > a {
+          line-height: 32px;
+        }
+      }
+      h1 {
+        font-size: 11px;
+        color: #464646;
+        margin-top: -11px;
+        @include breakpoint($bp-show-mid-width) {
+          margin-top: -8px;
+        }
+      }
+    }
+  }
 }
 
 

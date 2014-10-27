@@ -60,3 +60,10 @@ function nbcu_seo_install() {
     ->condition('name', 'xmlsitemap')
     ->execute();
 }
+
+/**
+ * Set-up default variable value for pinging Google on cron running for generating XML Sitemap.
+ */
+function nbcu_seo_update_7001() {
+  variable_set('nbcu_seo_ping_google_after_cron', 1);
+}

@@ -72,7 +72,7 @@ usa_outputAdTag = function(tag) {
   var processed_tag = ($ !== undefined) ? $(document).triggerHandler('dart_tag_process', [tag]) : undefined;
   tag = processed_tag !== undefined ? processed_tag : tag;
 
-
+  
   if (usa_deviceInfo.smartphone) {
     // SMARTPHONE
     tag.key_vals.sz[0] = {'val' : '300x50', 'eval': false};
@@ -264,7 +264,7 @@ body {
 	<script>
 	// get dart ad tag from query string
 	usa_debug(usa_deviceInfo);
-
+	
 	var tagKey = getUrlVars()['key'];
 	usa_debug('IFRAME: tagKey: ' + tagKey);
 
@@ -276,3 +276,4 @@ body {
 	</script>
 </body>
 </html>
+

@@ -235,6 +235,21 @@ function usanetwork_tv_shows_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'page_collection_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -249,6 +264,9 @@ function usanetwork_tv_shows_strongarm() {
         ),
         'redirect' => array(
           'weight' => '8',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -394,6 +412,21 @@ function usanetwork_tv_shows_strongarm() {
       'vid_teaser_show_general' => array(
         'custom_settings' => FALSE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'page_collection_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'global_nav_block_more' => array(
+        'custom_settings' => FALSE,
+      ),
+      'global_nav_block_shows' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo_teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -411,6 +444,9 @@ function usanetwork_tv_shows_strongarm() {
         ),
         'redirect' => array(
           'weight' => '10',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

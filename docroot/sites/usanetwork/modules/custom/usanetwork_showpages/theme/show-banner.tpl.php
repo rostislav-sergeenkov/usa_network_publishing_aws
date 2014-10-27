@@ -26,4 +26,8 @@
     <?php print $show_tunein; ?>
   </aside>
   <?php endif; ?>
+
+  <?php if ($show_h1): ?>
+  <h1><?php print $show_h1; ?></h1>
+  <?php endif; ?>  
 </div>

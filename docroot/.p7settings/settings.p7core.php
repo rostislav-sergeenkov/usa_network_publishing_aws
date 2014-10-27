@@ -97,19 +97,20 @@ if (isset($_ENV['AH_SITE_GROUP'])) {
 /**
  * Start with a reasonable minimum php memory limit.
  */
-ini_set('memory_limit', '160M');
+ini_set('memory_limit', '512M');
 
 /**
  * Use the page_memory_limit module to increase the page memory limit on admin
  * pages only.
  */
+ /*
 $conf['page_memory_limit']['admin/*'] = '128M';
 $conf['page_memory_limit']['devel/*'] = '128M';
 $conf['page_memory_limit']['batch'] = '256M';
 if (isset($_SERVER['argv'][0]) && strrpos($_SERVER['argv'][0], 'drush.php') !== FALSE) {
   ini_set('memory_limit', '256M');
 }
-
+*/
 /**
  * Access control for update.php script.
  *
@@ -437,6 +438,6 @@ $conf['allow_authorize_operations'] = FALSE;
  * Set a memory limit depending on the current page.
  */
 if (arg(0) == 'admin' || arg(0) == 'batch' || arg(0) == 'devel') {
-  ini_set('memory_limit', '256M');
+  ini_set('memory_limit', '512M');
 }
 

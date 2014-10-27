@@ -1,0 +1,171 @@
+<?php
+
+define('NBCU_SEO_CONTENT_BUFFER_LENGTH', 1000);
+define('NBCU_SEO_CONTENT_BUFFER_NAME', 'content_buffer');
+
+/**
+ * Implements hook_menu().
+ */
+function nbcu_seo_content_buffer_menu() {
+  $items = array();
+
+  $items['admin/config/search/nbcu-sitemap-content-buffer-settings'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('Content Buffer XML Sitemap settings'),
+    'description' => t('Configure Content Buffer XML sitemap'),
+    'access arguments' => array('administer xmlsitemap'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nbcu_seo_content_buffer_settings_form'),
+    'file' => 'nbcu_seo_content_buffer.admin.inc',
+  );
+
+  $items['admin/config/search/nbcu-sitemap-update-content-buffer'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('Regenerate Content Buffer XML file'),
+    'description' => t('Update Content Buffer XML file'),
+    'access arguments' => array('administer xmlsitemap'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nbcu_seo_update_content_buffer_form'),
+    'file' => 'nbcu_seo_content_buffer.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_types_alter().
+ */
+function nbcu_seo_content_buffer_nbcu_seo_xmlsitemap_types_alter(&$types) {
+  $types[NBCU_SEO_CONTENT_BUFFER_NAME] = NBCU_SEO_CONTENT_BUFFER_NAME;
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function nbcu_seo_content_buffer_node_update($node) {
+  if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function nbcu_seo_content_buffer_node_insert($node) {
+  if ($node->status == NODE_PUBLISHED && variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_file_insert().
+ */
+function nbcu_seo_content_buffer_file_insert($file) {
+  if (
+    strpos($file->type, 'mpx_video') === 0 &&
+    $file->published == 1 &&
+    variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
+  ) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Implements hook_file_update().
+ */
+function nbcu_seo_content_buffer_file_update($file) {
+  if (
+    strpos($file->type, 'mpx_video') === 0 &&
+    $file->published == 1 &&
+    variable_get('nbcu_seo_content_buffer_generate_after_updating', 1) != 0
+  ) {
+    _nbcu_seo_content_buffer_build_buffer();
+  }
+}
+
+/**
+ * Catches latest 1000 (NBCU_SEO_CONTENT_BUFFER_LENGTH=1000 by default) updated links.
+ */
+function _nbcu_seo_content_buffer_fetch_links() {
+  // Wraps in variable for sending to drupal_alter()
+  $max_buffer_length = NBCU_SEO_CONTENT_BUFFER_LENGTH;
+
+  $query = db_select('xmlsitemap', 'x');
+  $query->fields('x');
+  $query->fields('xlt', array('link_type'));
+  $query->condition('x.access', 1);
+  $query->condition('x.status', 1);
+  $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
+  $query->range(0, $max_buffer_length);
+  $query->orderBy('x.lastmod', 'DESC');
+
+  $result = $query->execute()->fetchAll();
+
+  drupal_alter('nbcu_seo_xmlsitemap_filter_video_request', $result, $max_buffer_length);
+
+  return $result;
+}
+
+/**
+ * Builds Content Buffer of 1000 latest published items of content.
+ */
+function _nbcu_seo_content_buffer_build_buffer() {
+  require_once drupal_get_path('module', 'nbcu_seo') . '/nbcu_seo.xmlsitemap.inc';
+
+  $data = _nbcu_seo_content_buffer_fetch_links();
+
+  if (!empty($data)) {
+    // Getting a list of available sitemaps
+    $smids = db_query("SELECT smid FROM {xmlsitemap_sitemap}")->fetchCol();
+    $lastmod_format = variable_get('xmlsitemap_lastmod_format', XMLSITEMAP_LASTMOD_MEDIUM);
+
+    // Walking through all the catched sitemaps
+    foreach ($smids as $smid) {
+      $elements = array();
+      $sitemap_object = xmlsitemap_sitemap_load($smid);
+
+      // Parsing catched content items
+      foreach ($data as $data_element) {
+        $url_options = array(
+          'absolute' => TRUE,
+          'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),
+          'language' => language_default(),
+          'alias' => FALSE,
+        );
+
+        $element = array(
+          'loc' => url($data_element->loc, $url_options),
+          'lastmod' => gmdate($lastmod_format, $data_element->lastmod),
+          'priority' => $data_element->priority,
+        );
+
+        $alter_context = array(
+          'sitemap' => $sitemap_object,
+          'type' => $data_element->link_type,
+          'link' => (array) $data_element,
+        );
+
+        // XML elements should be wrapped with additional data.
+        // If the content is file it should be expanded with file metadata.
+        // If it page with images then all the images should be added here.
+        drupal_alter('nbcu_seo_xmlsitemap_xml_element', $element, $alter_context);
+        $elements[] = $element;
+      }
+
+      // Writting sitemap
+      try {
+        $sitemap = new NBCUSitemapWriter($sitemap_object, 1, NBCU_SEO_CONTENT_BUFFER_NAME);
+        $sitemap->startDocument();
+
+        foreach ($elements as $element) {
+          $sitemap->writeSitemapElement('url', $element);
+        }
+
+        $sitemap->endDocument();
+      }
+      catch (XMLSitemapException $ex) {
+        throw $ex;
+      }
+    }
+  }
+}

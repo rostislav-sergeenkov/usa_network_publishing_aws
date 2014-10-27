@@ -91,6 +91,10 @@ body.person-page {
 		 	.pane-page-title + .pane-views-panes + .pane-views-panes {
 				float: left;
 			}
+		 	.pane-views-panes + .pane-views-panes,
+      .pane-views-panes + .pane-views-panes + .pane-views-panes {
+				float: left;
+			}      
 			@include breakpoint($bp-person-medium-width) {
 				width: 51%;
 			}

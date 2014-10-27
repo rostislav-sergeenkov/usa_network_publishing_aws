@@ -49,12 +49,16 @@
     <?php endif; ?>
      <?php if($content['five'] || $content['six']) : ?>
     <div class="inner-wrapper panel-row last-row social-panel <?php print $class; ?>">
-      <div class="panel-panel panel-five panel-col1">
-        <?php print $content['five']; ?>
-      </div>
-      <div class="panel-panel panel-six panel-col2">
-        <?php print $content['six']; ?>
-      </div>
+      <?php if ($content['five']): ?>
+        <div class="panel-panel panel-five panel-col1">
+          <?php print $content['five']; ?>
+        </div>
+      <?php endif; ?>
+      <?php if ($content['six']): ?>
+        <div class="panel-panel panel-six panel-col2">
+          <?php print $content['six']; ?>
+        </div>
+      <?php endif; ?>
     </div>
   <?php endif; ?>
   </div>

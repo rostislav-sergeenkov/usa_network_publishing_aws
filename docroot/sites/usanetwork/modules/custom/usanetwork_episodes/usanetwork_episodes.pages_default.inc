@@ -316,19 +316,11 @@ function usanetwork_episodes_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-8';
     $pane->panel = 'two';
-    $pane->type = 'node_title';
-    $pane->subtype = 'node_title';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'usa_episodes-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'link' => 0,
-      'markup' => 'h1',
-      'id' => '',
-      'class' => '',
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -341,6 +333,32 @@ function usanetwork_episodes_default_page_manager_handlers() {
     $display->panels['two'][0] = 'new-8';
     $pane = new stdClass();
     $pane->pid = 'new-9';
+    $pane->panel = 'two';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 0,
+      'markup' => 'h2',
+      'id' => '',
+      'class' => '',
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['two'][1] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
     $pane->panel = 'two';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_tv_cover_media';
@@ -365,10 +383,10 @@ function usanetwork_episodes_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['two'][1] = 'new-9';
+    $display->content['new-10'] = $pane;
+    $display->panels['two'][2] = 'new-10';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

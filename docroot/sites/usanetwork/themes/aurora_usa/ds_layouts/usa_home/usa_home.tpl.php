@@ -58,7 +58,7 @@ function video_build() {
   jQuery('#wall2').remove();
   var aspotVideoWidth = jQuery("#main-slider").width();
   var aspotVideoHeight = jQuery("#main-slider").height();
-  //var aspotVideoTag = '<video width="100%" autoplay><source src="http://link.theplatform.com/s/OyMl-B/e2Ld8aaORA5c?mbr=true&feed=Feed%20for%â€¦Psych%20Ultimate%20Fan%20Episode%20v2.1&switch=progressive&format=redirect" type="video/mp4">Your browser does not support the video tag.</video>';
+  //var aspotVideoTag = '<video width="100%" autoplay><source src="http://link.theplatform.com/s/OyMl-B/e2Ld8aaORA5c?mbr=true&feed=Feed%20for%…Psych%20Ultimate%20Fan%20Episode%20v2.1&switch=progressive&format=redirect" type="video/mp4">Your browser does not support the video tag.</video>';
   var aspotVideoTag = '<video width="100%" autoplay><source src="http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/video/NBCU_USA_Network/730/714/140224_2748054_Promo__Talk_About_Todd_1696.mp4" type="video/mp4">Your browser does not support the video tag.</video>';
   jQuery('.jPanelMenu-panel')
     .append('<div id="wall2" data-module-type="wall2"></div><div id="aspot-video-container"><div id="aspot-video" style="width: ' + aspotVideoWidth + 'px; height: ' + aspotVideoHeight + 'px; margin: 0 -' + (Math.floor(aspotVideoWidth/2)) + 'px"><span id="aspot-video-close" class="mega-nav-close">close</span>' + aspotVideoTag + '</div></div>');

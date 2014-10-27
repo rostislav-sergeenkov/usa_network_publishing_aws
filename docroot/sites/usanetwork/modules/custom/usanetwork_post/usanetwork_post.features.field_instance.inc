@@ -46,7 +46,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 14,
       ),
       'user_ref_preview' => array(
         'label' => 'hidden',
@@ -116,7 +116,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 16,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -139,6 +139,77 @@ function usanetwork_post_field_default_field_instances() {
       'settings' => array(),
       'type' => 'post_blog',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_blog_display_author'
+  $field_instances['node-post-field_blog_display_author'] = array(
+    'bundle' => 'post',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_blog_display_author',
+    'label' => 'Display Author',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
     ),
   );
 
@@ -177,7 +248,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 19,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -237,7 +308,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 20,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -300,7 +371,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 21,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -364,7 +435,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 18,
       ),
       'user_ref_preview' => array(
         'label' => 'hidden',
@@ -440,7 +511,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 15,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -470,6 +541,77 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_override_display_author'
+  $field_instances['node-post-field_override_display_author'] = array(
+    'bundle' => 'post',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'For post default value is value of category or blog.  ',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_override_display_author',
+    'label' => 'Override default value',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
     ),
   );
 
@@ -515,7 +657,7 @@ function usanetwork_post_field_default_field_instances() {
           'image_style' => 'post_cover',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -616,7 +758,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -682,7 +824,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 17,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -744,7 +886,7 @@ function usanetwork_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -820,7 +962,7 @@ function usanetwork_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'user_ref_preview' => array(
         'label' => 'above',
@@ -998,7 +1140,7 @@ function usanetwork_post_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 16,
     ),
   );
 
@@ -1098,6 +1240,100 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-blog-field_display_latest_posts'
+  $field_instances['taxonomy_term-blog-field_display_latest_posts'] = array(
+    'bundle' => 'blog',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 9,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_display_latest_posts',
+    'label' => 'Display "Latest Posts" block',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-blog-field_override_display_author'
+  $field_instances['taxonomy_term-blog-field_override_display_author'] = array(
+    'bundle' => 'blog',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'For blog default value is false, for category default value is value of blog',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+      'weight' => 10,
+    ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_override_display_author',
+    'label' => 'Override default value',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 15,
     ),
   );
 
@@ -1269,16 +1505,20 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('Contributor');
   t('Custom CSS');
   t('Custom Files');
+  t('Display "Latest Posts" block');
   t('Display Author');
   t('Enable Gigya Comments for blog');
   t('Enable display Author in posts');
   t('Field for sub title');
+  t('For blog default value is false, for category default value is value of blog');
+  t('For post default value is value of category or blog.  ');
   t('Gigya Comments');
   t('Global Header');
   t('Local and remote image and video files are allowed for this set for Custom CSS and CSS file
 
 File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.');
   t('Media Gallery');
+  t('Override default value');
   t('Post Cover');
   t('Short Description');
   t('Show');

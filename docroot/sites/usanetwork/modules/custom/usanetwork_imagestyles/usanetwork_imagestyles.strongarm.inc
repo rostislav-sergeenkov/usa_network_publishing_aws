@@ -233,5 +233,12 @@ function usanetwork_imagestyles_strongarm() {
   $strongarm->value = 'imagemagick';
   $export['image_toolkit'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'imagefield_focus_image_style';
+  $strongarm->value = 'usa_image_focus';
+  $export['imagefield_focus_image_style'] = $strongarm;
+
   return $export;
 }

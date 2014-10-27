@@ -249,17 +249,17 @@
       padding-right: 10px;
     }
     .gallery-image-caption {
-      font-size: 20px;
+      font-size: 14px;
       @include breakpoint($bp-home-narrowest) {
-        font-size: 12px;
+        font-size: 11px;
         clear: left;
         line-height: 1.3em;
       }
       @include breakpoint($bp-home-2-fence) {
-        font-size: 15px;
+        font-size: 13px;
       }
       @include breakpoint($bp-home-3-fence) {
-        font-size: 18px;
+        font-size: 14px;
       }
       p {
         margin-bottom: 0;

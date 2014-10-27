@@ -296,6 +296,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'twc' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'verizon' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -313,6 +317,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cablevision' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'brighthouse' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -360,6 +368,14 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'spl010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'all070' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'alpine' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -380,11 +396,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'nttcash010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'astound' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'dix030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'ara010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -400,6 +424,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'bay030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'baycreek' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -412,11 +440,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'vol040-01' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'bend' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'www-websso-mybrctv-com' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bte010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -468,11 +504,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'car030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'canbytel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'crt020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'car050' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -516,6 +560,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'cha060' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'dur010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -548,6 +596,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'cla010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'clearcreek' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -556,11 +608,31 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'cli030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'cml010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cns' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'coa030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'col090' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'col070' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'com020' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -640,11 +712,15 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'sun045' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'mid030' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'hickorytech-auth-gateway-net' => array(
+    'enventis-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -653,6 +729,14 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'fbc-tele' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'fal010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'fid010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -676,6 +760,14 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'gardenvalley' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'gbt010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'gci-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -688,7 +780,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'gle010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'gra060' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'goldenwest' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'googlefiber-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -796,6 +900,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'itv-bitwise' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'jea' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -841,6 +949,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'weh010-longview' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'lns010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -912,6 +1024,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'med040' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'musfiber' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -928,11 +1044,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'nem010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'nwcable-auth-gateway-net' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'nextech-auth-gateway-net' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'nor240' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1008,6 +1132,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'mck010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'phonoscope' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -1032,6 +1160,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'psc010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'rai030' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -1044,6 +1176,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'riv030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'rma' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -1053,6 +1189,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'rtc' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'sav010' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1073,6 +1213,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'she010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'she030' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1156,6 +1300,10 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'uis010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'unitedtel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
@@ -1165,6 +1313,14 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'cab060' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'she005' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'val025' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1184,11 +1340,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'vis070' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'volcanotel' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'bci010' => array(
+    'vol040-02' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bci010-02' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1228,11 +1392,19 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
+    'win090' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
     'wcta' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
     'wtc010' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'wil040' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
@@ -1244,7 +1416,27 @@ function usanetwork_tve_video_strongarm() {
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),
-    'charter' => array(
+    'col080' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'res020' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'bra050' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'val030' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'wal005' => array(
+      'mvpd_logo' => 'field_mvpd_logo_dark',
+      'mvpd_color' => 'field_mvpd_light_color',
+    ),
+    'cit230' => array(
       'mvpd_logo' => 'field_mvpd_logo_dark',
       'mvpd_color' => 'field_mvpd_light_color',
     ),

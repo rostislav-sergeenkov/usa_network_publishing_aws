@@ -449,7 +449,7 @@ function usanetwork_social_show_landing($node = null, $items_per_page=3) {
     drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js', 'external');
   //  drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/show-homepage-social-chatter.js');
     drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
-    drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+//    drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
     drupal_add_js('http://cdn.echoenabled.com/sdk/v3/loader.js', 'external');
     drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
     drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
@@ -940,7 +940,7 @@ function usanetwork_social_global_twitter() {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
-  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+//  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');
@@ -1033,7 +1033,7 @@ function usanetwork_social_twitter($node) {
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/jquery-plugins.js', 'external');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/stream.js');
   drupal_add_js('http://cdn.echoenabled.com/clientapps/v2/plugins/twitter-intents.js');
-  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
+//  drupal_add_js('http://cdn.realtidbits.com/libs/v1/inlinemedia.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/fbimages.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/links.plugin.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_social') . '/js/twitter-page.js');

@@ -1,0 +1,77 @@
+////////////////////////
+// Variables Partials
+//
+// All of your variables should go in this file.
+////////////////////////
+//header styles
+//color variables
+$usa-logo-back : #d42027;
+$footer-back : #a9a9a9;
+$bottom-footer-back : #757575;
+$footer-links : #dcddde;
+$footer-link-separator : #9d9d9d;
+$header-tab-text : #666666;
+$header-tab-back : #e1e1e1;
+$header-tab-back-hover : #a9a9a9;
+$header-show-caption : #3a3a3a;
+$schedule-tonight : #2c2c2c;
+$schedule-on-now : #474747;
+$schedule-pm-color : #727272;
+$poll-back : #e9eaeb;
+$poll-color : #545454;
+$social-twitter-back : #3a3a3a;
+$schedule-view-back : #222221;
+$show-info-block : #9094a0;
+$full-episodes-light-back : #b4b4b4;
+$show-card-back : #beb8b8;
+$consup-border : #363636;
+$consum-carousel-back : #262626;
+$consum-also-back : #181818;
+//shows colors
+$show-rush : #2665aa;
+$show-rush-dark: #0b4c7c;
+$show-rush-light: #5d8dc6;
+$show-dig : #e98e11;
+$show-benched : #962e8d;
+$show-bridesmaids : #ff68be;
+$show-covert : #d52f2f;
+$show-graceland : #6fa0d5;
+$show-rp : #409dbe;
+$show-suits : #3a3f5d;
+$show-suits-dark : #0a1b41;
+$show-suits-light : #52556e;
+$show-chrisley : #f5be56;
+$show-chrisley-dark : #f2ad2c;
+$show-chrisley-light : #f6cc7c;
+$show-ph : #79b365;
+$show-law-and-order : #80a677;
+$show-satisfaction : #f83a3a;
+//breakpoints
+$bp-1600-width: max-width 1600px;
+$bp-1400-width: max-width 1400px;
+$bp-1280-width: max-width 1280px;
+$bp-1024-width: max-width 1024px;
+$bp-768-width: max-width 768px;
+$bp-640-width: max-width 640px;
+$bp-480-width: max-width 480px;
+$bp-320-width: max-width 320px;
+$bp-240-width: max-width 240px;
+
+$bp-min-481-width: 481px;
+$bp-min-769-width: 769px;
+$bp-min-1025-width: 1025px;
+$bp-min-1281-width: 1281px;
+$bp-min-1601-width: 1601px;
+
+$between-641-768: 641px 768px;
+$between-641-1024: 641px 1024px;
+$between-641-1280: 641px 1280px;
+$between-769-990: 769px 990px;
+$between-769-1024: 769px 1024px;
+$between-769-1280: 769px 1280px;
+$between-1025-1280: 1025px 1280px;
+$between-1281-1600: 1281px 1600px;
+
+//sprites/
+$sprites: sprite-map("sprites/*.png");
+$sprites-retina: sprite-map("sprites-retina/*.png");

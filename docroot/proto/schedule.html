@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>Schedule | Prototype</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<link href="stylesheets/ie.css" rel="stylesheet" media="all"/>
+	<![endif]-->
+	<link href="stylesheets/style.css" rel="stylesheet" media="all"/>
+	<script src="javascripts/jquery.js"></script>
+	<script src="javascripts/jquery.touchSwipe.min.js"></script>
+	<script src="javascripts/jquery.jcarousel.min.js"></script>
+	<script src="javascripts/jquery.jcarousel-scrollintoview.min.js"></script>
+	<script src="javascripts/jquery.jcarousel-control.min.js"></script>
+	<!--script src="javascripts/jquery.flexslider-min.js"></script-->
+	<script src="javascripts/iscroll.js"></script>
+	<script src="javascripts/jquery.carouFredSel-6.2.1.js"></script>
+	<script src="javascripts/script.js"></script>
+	<!--script src="http://10.6.186.19:8080/target/target-script-min.js#windows"></script-->
+</head>
+<body class="schedule-page">
+	<header>
+		<div class="ad ad-728x90">
+			<a href="#">
+				<img src="images/ad_lexus728x90.png" alt=""/>
+			</a>
+		</div>
+		<div class="header-nav-bar">
+			<div class="usa-logo"><a href="home.html"></a></div>
+			<div class="nav-bar-tabs">
+				<div class="tab first shows"><a href="#" class="no-refresh">Shows</a></div>
+				<div class="tab episodes"><a href="#" class="no-refresh">Full Episodes</a></div>
+				<div class="tab last schedule"><a href="#" class="no-refresh">Schedule</a></div>
+			</div>
+			<div class="search-input-block">
+				<input type="text" id="search-input"/>
+			</div>
+			<div class="tab user-profile">
+				<a href="#" class="no-refresh"><span>1</span></a>
+			</div>
+			<div class="search">
+				<a href="#"></a>
+				<div class="search-result"></div>
+			</div>
+			<div class="main-menu-open"><a href="#"></a></div>
+		</div>
+		<ul class="header-small-menu menu">
+			<li class="expanded"><a href="#">Shows</a>
+				<ul class="menu">
+					<li class="menu-item first"><a href="#">Burn Notice</a></li>
+					<li class="menu-item"><a href="#">Chrisley Knows Best</a></li>
+					<li class="menu-item"><a href="#">Covert Affairs</a></li>
+					<li class="menu-item"><a href="#">CSI</a></li>
+					<li class="menu-item"><a href="#">Daytime</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Dig</a></li>
+					<li class="menu-item"><a href="#">Graceland</a></li>
+					<li class="menu-item"><a href="#">House</a></li>
+					<li class="menu-item"><a href="#">Law & Order: Criminal Intent</a></li>
+					<li class="menu-item"><a href="#">Law & Order: SVU</a></li>
+					<li class="menu-item"><a href="#">Modern Family</a></li>
+					<li class="menu-item"><a href="#">The Moment</a></li>
+					<li class="menu-item"><a href="#">NCIS</a></li>
+					<li class="menu-item"><a href="#">NCIS: Los Angeles</a></li>
+					<li class="menu-item"><a href="#">Necessary Roughness</a></li>
+					<li class="menu-item"><a href="#">Playing House</a></li>
+					<li class="menu-item"><a href="#">Psych</a></li>
+					<li class="menu-item"><a href="#">Royal Pains</a></li>
+					<li class="menu-item"><a href="new-show.html"><span>New!</span> Rush</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Satisfaction</a></li>
+					<li class="menu-item"><a href="#">Sirens</a></li>
+					<li class="menu-item"><a href="show.html">Suits</a></li>
+					<li class="menu-item"><a href="#">Summer Camp</a></li>
+					<li class="menu-item"><a href="#">White Collar</a></li>
+					<li class="menu-item"><a href="#">WWE Raw</a></li>
+					<li class="menu-item last"><a href="#">Westminster Kennel Club Dog Show</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Full episodes</a></li>
+			<li><a href="#">Live tv</a></li>
+			<li><a href="#">Schedule</a></li>
+			<li><a href="#">Games</a></li>
+			<li><a href="#" class="log-on"><span class="show-color">1</span>Log on</a></li>
+		</ul>
+		<div class="tab-item shows-tab">
+			<div class="featured-view">
+				<h2>Featured</h2>
+				<div class="node node-usanetwork-promo">
+					<a href="#" class="play-icon">
+						<div class="asset-img show-color-border show-rush">
+							<img src="images/rush-image.png" alt=""/>
+						</div>
+					</a>
+					<div class="title-overlay meta">
+						<div class="title">Rush</div>
+						<div class="type-and-time"><span>Pilot</span>  43:15</div>
+						<div class="caption">Series premiere!</div>
+					</div>
+				</div>
+				<div class="node node-usanetwork-promo">
+					<a href="#" class="play-icon">
+						<div class="asset-img show-color-border show-dig">
+							<img src="images/dig-image.png" alt=""/>
+						</div>
+					</a>
+					<div class="title-overlay meta">
+						<div class="title">Dig</div>
+						<div class="type-and-time"><span>Trailer</span>  3:45</div>
+						<div class="caption">Coming this fall</div>
+					</div>
+				</div>
+				<div class="node node-usanetwork-promo">
+					<a href="#" class="play-icon">
+						<div class="asset-img show-color-border show-bridesmaids">
+							<img src="images/bridesmaids-image.png" alt=""/>
+						</div>
+					</a>
+					<div class="title-overlay meta">
+						<div class="title">Bridesmaids</div>
+						<div class="type-and-time"><span>Movie</span>  2:12:00</div>
+						<div class="caption">Airs this saturday</div>
+					</div>
+				</div>
+			</div>
+			<div class="originals-shows-menu">
+				<h2 class="menu-title originals-menu-title">Usa originals</h2>
+				<ul class="menu">
+					<li class="menu-item first"><a href="#">Burn Notice</a></li>
+					<li class="menu-item"><a href="#">Chrisley Knows Best</a></li>
+					<li class="menu-item"><a href="#">Covert Affairs</a></li>
+					<li class="menu-item"><a href="#">Daytime</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Dig</a></li>
+					<li class="menu-item"><a href="#">Graceland</a></li>
+					<li class="menu-item"><a href="#">The Moment</a></li>
+					<li class="menu-item"><a href="#">Necessary Roughness</a></li>
+					<li class="menu-item"><a href="#">Playing House</a></li>
+					<li class="menu-item"><a href="#">Psych</a></li>
+					<li class="menu-item"><a href="#">Royal Pains</a></li>
+					<li class="menu-item"><a href="new-show.html"><span>New!</span> Rush</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Satisfaction</a></li>
+					<li class="menu-item"><a href="#">Sirens</a></li>
+					<li class="menu-item"><a href="show.html">Suits</a></li>
+					<li class="menu-item"><a href="#">Summer Camp</a></li>
+					<li class="menu-item"><a href="#">White Collar</a></li>
+				</ul>
+			</div>
+			<div class="syndicated-shows-menu">
+				<h2 class="menu-title syndicated-menu-title">Syndicated shows</h2>
+				<ul class="menu">
+					<li class="menu-item"><a href="#">CSI</a></li>
+					<li class="menu-item"><a href="#">House</a></li>
+					<li class="menu-item"><a href="#">Law & Order: Criminal Intent</a></li>
+					<li class="menu-item"><a href="#">Law & Order: SVU</a></li>
+					<li class="menu-item"><a href="#">Modern Family</a></li>
+					<li class="menu-item"><a href="#">NCIS</a></li>
+					<li class="menu-item"><a href="#">NCIS: Los Angeles</a></li>
+					<li class="menu-item"><a href="#">WWE Raw</a></li>
+					<li class="menu-item last"><a href="#">Westminster Kennel Club Dog Show</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="tab-item full-episode-tab">
+			<div class="full-episode-tab-wrapper">
+				<div class="watch-live">
+					<h2>
+						Watch live!
+					</h2>
+					<div class="node node-usanetwork-promo">
+						<a href="#">
+							<div class="asset-img">
+								<img src="images/suit-menu.jpg" alt="">
+							</div>
+						</a>
+						<div class="meta-wrapper">
+							<div class="meta-icon play-icon-half"></div>
+							<div class="title-overlay meta">
+								<div class="title">Suit</div>
+								<div class="type-and-time"><span>S5 episode 5</span></div>
+							</div>
+							<div class="sign-in-link">
+								<a href="#">Sign in</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="latest-full-episodes">
+					<h2>
+						Latest full episodes
+					</h2>
+					<ul>
+						<li>
+							<div class="node node-usanetwork-promo">
+								<a href="#">
+									<div class="asset-img show-color-border show-benched">
+										<img src="images/benched.jpg" alt="">
+									</div>
+									<div class="meta-wrapper">
+										<div class="meta-icon play-icon"></div>
+										<div class="title-overlay meta">
+											<div class="title">Benched</div>
+											<div class="caption">Full episode 1</div>
+											<div class="type-and-time"><span>S5 episode 3</span> 44:04</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="node node-usanetwork-promo">
+								<a href="#">
+									<div class="asset-img show-color-border show-satisfaction">
+										<img src="images/satisfaction.jpg" alt="">
+									</div>
+									<div class="meta-wrapper">
+										<div class="meta-icon play-icon"></div>
+										<div class="title-overlay meta">
+											<div class="title">Satisfaction</div>
+											<div class="caption">Full episode 1</div>
+											<div class="type-and-time"><span>S5 episode 3</span> 44:04</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="node node-usanetwork-promo">
+								<a href="#">
+									<div class="asset-img show-color-border show-rush">
+										<img src="images/rush-menu.jpg" alt="">
+									</div>
+									<div class="meta-wrapper">
+										<div class="meta-icon play-icon"></div>
+										<div class="title-overlay meta">
+											<div class="title">Rush</div>
+											<div class="caption">Full episode 1</div>
+											<div class="type-and-time"><span>S5 episode 3</span> 44:04</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="node node-usanetwork-promo">
+								<a href="#">
+									<div class="asset-img show-color-border show-graceland">
+										<img src="images/graceland-menu.jpg" alt="">
+									</div>
+									<div class="meta-wrapper">
+										<div class="meta-icon play-icon"></div>
+										<div class="title-overlay meta">
+											<div class="title">Graceland</div>
+											<div class="caption">Full episode 1</div>
+											<div class="type-and-time"><span>S5 episode 3</span> 44:04</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+					<div class="more-link">
+						<a href="full-episodes.html" class="hover-avail">
+							More full episodes
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-item schedule-tab">
+			<div class="on-now-panel">
+				<div class="node node-usanetwork-promo on-now show-law-and-order">
+					<div class="on-now-panel-title">
+						<h2>On now</h2>
+					</div>
+					<a href="#">
+						<div class="asset-img show-color-border">
+							<img src="images/dig-image.png" alt=""/>
+						</div>
+					</a>
+					<div class="title-overlay meta">
+						<div class="title">Law & Order: SVU</div>
+						<div class="caption">Persona</div>
+						<div class="description">Detective Benson struggles with the
+							trauma from her sexual assault as she
+							tries to fi nd the man who murdered a
+							pregnant female marine.
+						</div>
+					</div>
+					<div class="icons-block">
+						<a class="episode-description icon" href="#"></a>
+						<a class="calendar-reminder icon" href="#"></a>
+					</div>
+				</div>
+				<div class="node node-usanetwork-promo up-next show-law-and-order">
+					<div class="on-now-panel-title">
+						<h2>Up next</h2><div class="episode-airtime"><span>7:00</span> PM ET</div>
+					</div>
+					<a href="#">
+						<div class="asset-img show-color-border">
+							<img src="images/rush-image.png" alt=""/>
+						</div>
+					</a>
+					<div class="title-overlay meta">
+						<div class="title">Law & Order: SVU</div>
+						<div class="caption">PTSD</div>
+						<div class="description">Detective Benson struggles with the
+							trauma from her sexual assault as she
+							tries to fi nd the man who murdered a
+							pregnant female marine.
+						</div>
+					</div>
+					<div class="icons-block">
+						<a class="episode-description icon" href="#"></a>
+						<a class="calendar-reminder icon" href="#"></a>
+					</div>
+				</div>
+			</div>
+			<div class="primetime-panel">
+				<h2 class="primetime-panel-title">Primetime tonight</h2>
+				<div class="schedule">
+					<div class="schedule-item show-color-border show-chrisley first">
+						<div class="time"><span>8:00</span>PM ET</div>
+						<div class="episode-info">
+							<div class="episode-show">Chrisley knows best</div>
+							<div class="episode-title">Jugs and ammo</div>
+						</div>
+						<div class="icons-block">
+							<a class="episode-description icon" href="#"></a>
+							<a class="calendar-reminder icon" href="#"></a>
+						</div>
+					</div>
+					<div class="schedule-item show-color-border show-rush">
+						<div class="time"><span>9:00</span>PM ET</div>
+						<div class="episode-info">
+							<div class="episode-show">Rush</div>
+							<div class="episode-title">Don’t Ask Me Why</div>
+						</div>
+						<div class="icons-block">
+							<a class="episode-description icon" href="#"></a>
+							<a class="calendar-reminder icon" href="#"></a>
+						</div>
+					</div>
+					<div class="schedule-item show-color-border show-satisfaction">
+						<div class="time"><span>10:00</span>PM ET</div>
+						<div class="episode-info">
+							<div class="episode-show">Satisfaction</div>
+							<div class="episode-title">“...Through Admission”</div>
+						</div>
+						<div class="icons-block">
+							<a class="episode-description icon" href="#"></a>
+							<a class="calendar-reminder icon" href="#"></a>
+						</div>
+					</div>
+					<div class="schedule-item show-color-border show-law-and-order last">
+						<div class="time"><span>11:00</span>PM ET</div>
+						<div class="episode-info">
+							<div class="episode-show">Law & Order SVU</div>
+							<div class="episode-title">Learning Curve</div>
+						</div>
+						<div class="icons-block">
+							<a class="episode-description icon" href="#"></a>
+							<a class="calendar-reminder icon" href="#"></a>
+						</div>
+					</div>
+				</div>
+				<a class="more" href="schedule.html">View full schedule</a>
+			</div>
+
+		</div>
+		<div class="tab-item user-profile-tab"></div>
+	</header>
+	<!--todo-->
+	<div class="main">
+		<div class="page-title">
+			<h2>Schedule</h2>
+			<div class="shows-filters">
+				<div class="all-shows filter-button">
+					<span>All shows</span>
+					<ul>
+						<li>Demo 1</li>
+						<li>Demo 2</li>
+						<li>Demo 3</li>
+						<li>Demo 4</li>
+					</ul>
+				</div>
+				<div class="primetime filter-button">
+					<span>Primetime</span>
+					<ul>
+						<li>Demo 1</li>
+						<li>Demo 2</li>
+						<li>Demo 3</li>
+						<li>Demo 4</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="schedule-wrapper">
+			<div class="schedule-navigation">
+				<div class="nav-prev"></div>
+					<ul>
+						<li class="active">
+							<a href="#"><span class="week-day">Sun</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Mon</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Tue</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Wed</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Thu</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Fri</span><span class="date">10/31</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="week-day">Sat</span><span class="date">10/31</span></a>
+						</li>
+					</ul>
+				<div class="nav-next"></div>
+			</div>
+			<div class="time-zone"><a href="">Change Time Zone</a></div>
+			<!--<div class="schedule-table carousel carousel-vertical">-->
+			<div class="schedule-table">
+				<ul>
+					<li class="first">
+						<div class="schedule-item show-color-border show-suits">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>8:00</span>PM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-covert-affairs">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>9:00</span>PM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-rush">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>10:00</span>PM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-suits">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>11:00</span>PM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-covert-affairs">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>12:00</span>AM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-rush">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>1:00</span>AM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="schedule-item show-color-border show-rush">
+							<div class="time-wrapper">
+								<div class="time">
+									<span>2:00</span>AM ET
+								</div>
+							</div>
+							<div class="episode-info">
+								<div class="episode-show">Chrisley knows best</div>
+								<div class="episode-title">Jugs and ammo</div>
+							</div>
+							<div class="icons-block">
+								<div class="icons-schedule">
+									<a class="calendar-reminder icon" href="#"></a>
+									<a class="episode-description icon" href="#"></a>
+								</div>
+								<div class="rating">TV-14-D-L-S-V</div>
+								<a class="open-close icon" href="#"></a>
+							</div>
+							<div class="hidden-block">
+								<div class="node node-usanetwork-promo">
+									<a href="#">
+										<div class="asset-img">
+											<img src="images/suit_recap_harvey.png" alt="">
+										</div>
+									</a>
+									<div class="title-overlay meta">
+										<div class="description">
+											&ldquo;Promising, rewarding, unpredictable...&rdquo;
+											<span>- TV guide review</span>
+										</div>
+										<div class="caption">
+											<a href="#" class="show-trailer-link">Show trailer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!--<li>-->
+						<!--<div class="schedule-item show-color-border show-rush">-->
+							<!--<div class="time-wrapper">-->
+								<!--<div class="time">-->
+									<!--<span>3:00</span>AM ET-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="episode-info">-->
+								<!--<div class="episode-show">Chrisley knows best</div>-->
+								<!--<div class="episode-title">Jugs and ammo</div>-->
+							<!--</div>-->
+							<!--<div class="icons-block">-->
+								<!--<div class="icons-schedule">-->
+									<!--<a class="calendar-reminder icon" href="#"></a>-->
+									<!--<a class="episode-description icon" href="#"></a>-->
+								<!--</div>-->
+								<!--<div class="rating">TV-14-D-L-S-V</div>-->
+								<!--<a class="open-close icon" href="#"></a>-->
+							<!--</div>-->
+							<!--<div class="hidden-block">-->
+								<!--<div class="node node-usanetwork-promo">-->
+									<!--<a href="#">-->
+										<!--<div class="asset-img">-->
+											<!--<img src="images/suit_recap_harvey.png" alt="">-->
+										<!--</div>-->
+									<!--</a>-->
+									<!--<div class="title-overlay meta">-->
+										<!--<div class="description">-->
+											<!--&ldquo;Promising, rewarding, unpredictable...&rdquo;-->
+											<!--<span>- TV guide review</span>-->
+										<!--</div>-->
+										<!--<div class="caption">-->
+											<!--<a href="#" class="show-trailer-link">Show trailer</a>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<div class="schedule-item show-color-border show-rush">-->
+							<!--<div class="time-wrapper">-->
+								<!--<div class="time">-->
+									<!--<span>4:00</span>AM ET-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="episode-info">-->
+								<!--<div class="episode-show">Chrisley knows best</div>-->
+								<!--<div class="episode-title">Jugs and ammo</div>-->
+							<!--</div>-->
+							<!--<div class="icons-block">-->
+								<!--<div class="icons-schedule">-->
+									<!--<a class="calendar-reminder icon" href="#"></a>-->
+									<!--<a class="episode-description icon" href="#"></a>-->
+								<!--</div>-->
+								<!--<div class="rating">TV-14-D-L-S-V</div>-->
+								<!--<a class="open-close icon" href="#"></a>-->
+							<!--</div>-->
+							<!--<div class="hidden-block">-->
+								<!--<div class="node node-usanetwork-promo">-->
+									<!--<a href="#">-->
+										<!--<div class="asset-img">-->
+											<!--<img src="images/suit_recap_harvey.png" alt="">-->
+										<!--</div>-->
+									<!--</a>-->
+									<!--<div class="title-overlay meta">-->
+										<!--<div class="description">-->
+											<!--&ldquo;Promising, rewarding, unpredictable...&rdquo;-->
+											<!--<span>- TV guide review</span>-->
+										<!--</div>-->
+										<!--<div class="caption">-->
+											<!--<a href="#" class="show-trailer-link">Show trailer</a>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<div class="schedule-item show-color-border show-rush">-->
+							<!--<div class="time-wrapper">-->
+								<!--<div class="time">-->
+									<!--<span>5:00</span>AM ET-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="episode-info">-->
+								<!--<div class="episode-show">Chrisley knows best</div>-->
+								<!--<div class="episode-title">Jugs and ammo</div>-->
+							<!--</div>-->
+							<!--<div class="icons-block">-->
+								<!--<div class="icons-schedule">-->
+									<!--<a class="calendar-reminder icon" href="#"></a>-->
+									<!--<a class="episode-description icon" href="#"></a>-->
+								<!--</div>-->
+								<!--<div class="rating">TV-14-D-L-S-V</div>-->
+								<!--<a class="open-close icon" href="#"></a>-->
+							<!--</div>-->
+							<!--<div class="hidden-block">-->
+								<!--<div class="node node-usanetwork-promo">-->
+									<!--<a href="#">-->
+										<!--<div class="asset-img">-->
+											<!--<img src="images/suit_recap_harvey.png" alt="">-->
+										<!--</div>-->
+									<!--</a>-->
+									<!--<div class="title-overlay meta">-->
+										<!--<div class="description">-->
+											<!--&ldquo;Promising, rewarding, unpredictable...&rdquo;-->
+											<!--<span>- TV guide review</span>-->
+										<!--</div>-->
+										<!--<div class="caption">-->
+											<!--<a href="#" class="show-trailer-link">Show trailer</a>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<div class="schedule-item show-color-border show-rush">-->
+							<!--<div class="time-wrapper">-->
+								<!--<div class="time">-->
+									<!--<span>6:00</span>AM ET-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="episode-info">-->
+								<!--<div class="episode-show">Chrisley knows best</div>-->
+								<!--<div class="episode-title">Jugs and ammo</div>-->
+							<!--</div>-->
+							<!--<div class="icons-block">-->
+								<!--<div class="icons-schedule">-->
+									<!--<a class="calendar-reminder icon" href="#"></a>-->
+									<!--<a class="episode-description icon" href="#"></a>-->
+								<!--</div>-->
+								<!--<div class="rating">TV-14-D-L-S-V</div>-->
+								<!--<a class="open-close icon" href="#"></a>-->
+							<!--</div>-->
+							<!--<div class="hidden-block">-->
+								<!--<div class="node node-usanetwork-promo">-->
+									<!--<a href="#">-->
+										<!--<div class="asset-img">-->
+											<!--<img src="images/suit_recap_harvey.png" alt="">-->
+										<!--</div>-->
+									<!--</a>-->
+									<!--<div class="title-overlay meta">-->
+										<!--<div class="description">-->
+											<!--&ldquo;Promising, rewarding, unpredictable...&rdquo;-->
+											<!--<span>- TV guide review</span>-->
+										<!--</div>-->
+										<!--<div class="caption">-->
+											<!--<a href="#" class="show-trailer-link">Show trailer</a>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</li>-->
+				</ul>
+				<a href="#" class="jcarousel-control-next"></a>
+				<a href="#" class="jcarousel-control-prev"></a>
+			</div>
+		</div>
+		<div class="ad ad-728x90">
+			<a href="#">
+				<img src="images/ad_lexus728x90.png" alt=""/>
+			</a>
+		</div>
+	</div>
+	<!--todo-->
+	<footer>
+		<div class="footer-menu-wrapper">
+			<div class="shows-menu">
+				<h2 class="menu-title shows-menu-title">shows</h2>
+				<ul class="menu">
+					<li class="menu-item first"><a href="#">Burn Notice</a></li>
+					<li class="menu-item"><a href="#">Chrisley Knows Best</a></li>
+					<li class="menu-item"><a href="#">Covert Affairs</a></li>
+					<li class="menu-item"><a href="#">CSI</a></li>
+					<li class="menu-item"><a href="#">Daytime</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Dig</a></li>
+					<li class="menu-item"><a href="#">Graceland</a></li>
+					<li class="menu-item"><a href="#">House</a></li>
+					<li class="menu-item"><a href="#">Law & Order: Criminal Intent</a></li>
+					<li class="menu-item"><a href="#">Law & Order: SVU</a></li>
+					<li class="menu-item"><a href="#">Modern Family</a></li>
+					<li class="menu-item"><a href="#">The Moment</a></li>
+					<li class="menu-item"><a href="#">NCIS</a></li>
+					<li class="menu-item"><a href="#">NCIS: Los Angeles</a></li>
+					<li class="menu-item"><a href="#">Necessary Roughness</a></li>
+					<li class="menu-item"><a href="#">Playing House</a></li>
+					<li class="menu-item"><a href="#">Psych</a></li>
+					<li class="menu-item"><a href="#">Royal Pains</a></li>
+					<li class="menu-item"><a href="new-show.html"><span>New!</span> Rush</a></li>
+					<li class="menu-item"><a href="#"><span>New!</span> Satisfaction</a></li>
+					<li class="menu-item"><a href="#">Sirens</a></li>
+					<li class="menu-item"><a href="show.html">Suits</a></li>
+					<li class="menu-item"><a href="#">Summer Camp</a></li>
+					<li class="menu-item"><a href="#">White Collar</a></li>
+					<li class="menu-item"><a href="#">WWE Raw</a></li>
+					<li class="menu-item last"><a href="#">Westminster Kennel Club Dog Show</a></li>
+				</ul>
+			</div>
+			<div class="app-and-services-menu">
+				<h2 class="menu-title apps-services-menu-title">apps & services</h2>
+				<ul class="menu">
+					<li class="menu-item first"><a href="#">Viewing Schedule</a></li>
+					<li class="menu-item"><a href="#">Live TV</a></li>
+					<li class="menu-item"><a href="#">Shop</a></li>
+					<li class="menu-item"><a href="#">USA NOW Viewing Apps</a></li>
+					<li class="menu-item"><a href="#">Featured Show apps</a></li>
+					<li class="menu-item"><a href="#">USA Sync</a></li>
+					<li class="menu-item last"><a href="#">USA on Social Media</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="legal-and-social">
+			<ul class="menu legal-menu">
+				<li class="menu-item first"><a href="#">Independent Programming Report</a></li>
+				<li class="menu-item"><a href="#">NBCU Research Panel</a></li>
+				<li class="menu-item"><a href="#">Closed Captioning</a></li>
+				<li class="menu-item"><a href="#">Terms of Service</a></li>
+				<li class="menu-item"><a href="#">Privacy Policy</a></li>
+				<li class="menu-item"><a href="#">Help</a></li>
+				<li class="menu-item last"><a href="#">AdChoices</a></li>
+			</ul>
+			<div class="footer-social-bar">
+				<a class="facebook" href="#"></a>
+				<a class="twitter" href="#"></a>
+				<a class="instagram" href="#"></a>
+			</div>
+			<div class="copyright">©2014 NBCUniversal, Inc. All Rights Reserved. A Division of NBC Universal</div>
+		</div>
+	</footer>
+</body>
+</html>

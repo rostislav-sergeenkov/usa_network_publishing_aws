@@ -1,0 +1,299 @@
+.poll-block{
+	@include clear();
+	background: $poll-back;
+	padding: 85px 10px;
+	position: relative;
+	width: 100%;
+	@include breakpoint($between-1025-1280){
+		padding: 40px 10px;
+	}
+	.poll-block-wrapper {
+		@include clear;
+		margin: 0 auto;
+		max-width: 1600px;
+		position: relative;
+		@include breakpoint($between-1025-1280){
+			height: 250px;
+		}
+		@include breakpoint($bp-1024-width){
+			max-width: 750px;
+		}
+		.poll-description {
+			left: 0;
+			top: 0;
+			position: absolute;
+			padding-top: 20px;
+			width: 300px;
+			@include breakpoint($bp-1280-width) {
+				margin: 25px auto 15px;
+				padding-top: 30px;
+				position: relative;
+				width: 100%;
+			}
+			@include breakpoint($between-769-1024){
+				margin: 0 310px 10px 0;
+				padding-top: 0;
+				width: auto;
+			}
+			&:before {
+				@include sprite-background(poll-icon-big);
+				bottom: -62px;
+				content: '';
+				display: block;
+				left: 50%;
+				margin-left: -14.5px;
+				position: absolute;
+				@include breakpoint($bp-1600-width) {
+					@include sprite-background(poll-icon);
+				}
+				@include breakpoint($bp-1280-width) {
+					margin-left: -10px;
+					bottom: auto;
+					top: 0;
+				}
+				@include breakpoint($between-769-1024) {
+					margin-left: -50px;
+					margin-top: -13px;
+				}
+			}
+			h2, .poll-vs {
+				color: $poll-color;
+				font-family: $cent-725BT-italic;
+				font-size: 23px;
+				font-style: italic;
+				text-align: center;
+				text-transform: uppercase;
+				@include breakpoint($bp-1600-width) {
+					font-size: 14px;
+				}
+			}
+			.poll-title {
+				color: $poll-color;
+				font-family: $avantgarde-demi;
+				font-size: 37px;
+				line-height: 43px;
+				margin: 10px auto;
+				max-width: 220px;
+				text-align: center;
+				text-transform: uppercase;
+				@include breakpoint($bp-1600-width) {
+					font-size: 20px;
+					line-height: 25px;
+					margin: 15px auto 10px;
+					max-width: 160px;
+				}
+				@include breakpoint($bp-1280-width) {
+					max-width: 100%;
+				}
+				@include breakpoint($between-769-1024) {
+					margin: 10px auto 5px;
+				}
+			}
+			.poll-vs {
+				span {
+					text-transform: lowercase;
+				}
+			}
+		}
+		.poll-items-wrapper{
+			@include clear;
+			margin: 0 auto;
+			position: relative;
+			@include breakpoint($bp-1280-width){
+				max-width: 965px;
+			}
+			@include breakpoint($bp-1024-width){
+				max-width: 100%;
+				position: static;
+			}
+			.poll-items{
+				@include clear;
+				margin-left: 310px;
+				margin-right: 320px;
+				position: relative;
+				max-width: 900px;
+				@include breakpoint($bp-1280-width){
+					float: left;
+					margin: 0;
+					max-width: 625px;
+					height: 250px;
+				}
+				@include breakpoint($between-769-1024){
+					float: none;
+					height: auto;
+					margin-right: 310px;
+					max-width: 440px;
+				}
+				@include breakpoint($bp-768-width){
+					max-width: 100%;
+				}
+				.poll-item{
+					float: left;
+					margin-right: 2%;
+					height: 100%;
+					position: relative;
+					width: 49%;
+					&.last, &:last-child {
+						margin-right: 0px;
+						&:before, &:after {
+							display: none;
+						}
+					}
+					a{
+						.asset-img{
+							@include breakpoint($between-769-1024) {
+								height: 120px;
+								overflow: hidden;
+							}
+						}
+					}
+					img {
+						width: 100%;
+					}
+					.meta-wrapper {
+						background: $header-tab-back-hover;
+						bottom: 0px;
+						height: 78px;
+						position: relative;
+						width: 100%;
+						@include breakpoint($between-769-1024) {
+							height: 56px;
+						}
+						.meta-icon {
+							border-right: 1px solid #ffffff;
+							height: 100%;
+							position: absolute;
+							width: 76px;
+							@include breakpoint($between-769-1024) {
+								width: 56px;
+							}
+							&:before {
+								left: 50%;
+								margin-left: -18px;
+								margin-top: -18px;
+								top: 50%;
+							}
+						}
+					}
+
+					.meta {
+						margin-top: -23px;
+						position: absolute;
+						top: 50%;
+						width: 100%;
+						.title, .caption {
+							color: #ffffff;
+							font-family: $avantgarde-demi;
+							margin-left: 76px;
+							text-align: center;
+							text-transform: uppercase;
+							@include breakpoint($between-769-1024) {
+								margin-left: 56px;
+							}
+						}
+						.title {
+							font-size: 20px;
+							line-height: 28px;
+						}
+						.caption {
+							font-size: 12px;
+							line-height: 18px;
+						}
+					}
+				}
+				.poll-or{
+					position: absolute;
+					margin-left: -40px;
+					margin-top: -40px;
+					left: 50%;
+					top: 50%;
+					@include breakpoint($between-769-1024){
+						margin-left: -29px;
+						margin-top: -29px;
+					}
+					@include breakpoint($bp-640-width){
+						top: 35%;
+					}
+					span{
+						display: block;
+						height: 80px;
+						position: relative;
+						width: 80px;
+						@include breakpoint($between-769-1024){
+							height: 58px;
+							width: 58px;
+						}
+						&:before{
+							background: #ffffff;
+							border: 1px solid $full-episodes-light-back;
+							border-radius: 50%;
+							color: $poll-color;
+							content: 'Or';
+							display: block;
+							font-family: $avantgarde-demi;
+							font-size: 16px;
+							height: 70px;
+							line-height: 68px;
+							margin-left: -35px;
+							margin-top: -35px;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							text-align: center;
+							text-transform: uppercase;
+							width: 70px;
+							z-index: 2;
+							@include breakpoint($between-769-1024){
+								line-height: 48px;
+								margin-left: -24px;
+								margin-top: -24px;
+								height: 48px;
+								width: 48px;
+							}
+						}
+						&:after{
+							background: #ffffff;
+							border-radius: 50%;
+							content: '';
+							display: block;
+							height: 80px;
+							margin-left: -40px;
+							margin-top: -40px;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							width: 80px;
+							z-index: 1;
+							@include breakpoint($between-769-1024){
+								margin-left: -29px;
+								margin-top: -29px;
+								height: 58px;
+								width: 58px;
+							}
+						}
+					}
+				}
+			}
+			.ad {
+				float: right;
+				height: 250px;
+				width: 300px;
+				@include breakpoint($bp-min-1281-width){
+					right: 0;
+					margin-top: -125px;
+					position: absolute;
+					top: 50%;
+				}
+				@include breakpoint($bp-1024-width){
+					float: none;
+					position: absolute;
+					right: 0;
+					top: 0;
+				}
+				@include breakpoint($bp-768-width){
+					display: none;
+				}
+			}
+		}
+	}
+}

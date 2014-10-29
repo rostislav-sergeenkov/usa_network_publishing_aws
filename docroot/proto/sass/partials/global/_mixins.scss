@@ -1,0 +1,120 @@
+////////////////////////
+// Mixins Partials
+//
+// All of your mixins should go in this file.
+////////////////////////
+@mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangleSize;
+  @if ($triangleDirection == top) {
+    border-color: $triangleColor transparent transparent transparent;
+  }
+  @if ($triangleDirection == bottom) {
+    border-color: transparent transparent $triangleColor transparent;
+  }
+  @if ($triangleDirection == left) {
+    border-color: transparent transparent transparent $triangleColor;
+  }
+  @if ($triangleDirection == right) {
+    border-color: transparent $triangleColor transparent transparent;
+  }
+  // .example { @include cssTriangle(5px, #fff, bottom); }
+}
+
+@mixin clear() {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+@mixin blockPosition() {
+  margin: 0 auto;
+  position: relative;
+  width: 990px;
+}
+
+@mixin inputStyle() {
+  background-color: #d9e5e8;
+  -webkit-box-shadow: inset 1px 1px rgba(59,92,150,.27);
+  -moz-box-shadow: inset 1px 1px rgba(59,92,150,.27);
+  box-shadow: inset 1px 1px rgba(59,92,150,.27);
+  border: solid 1px rgba(0,0,0,.09);
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,.04), rgba(255,255,255,.04));
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,.04), rgba(255,255,255,.04));
+  background-image: -o-linear-gradient(top, rgba(0,0,0,.04), rgba(255,255,255,.04));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.04), rgba(255,255,255,.04));
+  color: $input-text;
+  font-family: $lato-reg;
+  font-size: 14px;
+}
+@mixin button() {
+  background-color:  #2e94e3;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.21);
+  box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.21);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: $lato-bold;
+  font-size: 16px;
+  text-align: center;
+  &:hover {
+    -webkit-box-shadow: inset -1px -1px 10px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: inset -1px -1px 10px rgba(0, 0, 0, 0.21);
+    box-shadow: inset -1px -1px 10px rgba(0, 0, 0, 0.21);
+  }
+}
+
+@mixin linksSeparator($separator-font-size, $separator-left, $separator-color) {
+  &:after {
+    color: $separator-color;
+    content: "|";
+    display: inline-block;
+    font-size: $separator-font-size;
+    margin-left: $separator-left;
+  }
+}
+
+@mixin blocksSeparator() {
+  &:after {
+    border-right: 1px solid $report-separator;
+    content: "";
+    display: block;
+    height: 75%;
+    position: absolute;
+    right: 0px;
+    top: 12.5%;
+  }
+}
+
+@mixin sprite-background($sprite) {
+  background-image: sprite-url($sprites);
+  background-position: sprite-position($sprites, $sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: image-height(sprite-file($sprites, $sprite));
+  width: image-width(sprite-file($sprites, $sprite));
+
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (-o-min-device-pixel-ratio: 3/2),
+  (min--moz-device-pixel-ratio: 2),
+  (min-device-pixel-ratio: 2),
+  (min-resolution: 144dppx) {
+    background-image: sprite-url($sprites-retina);
+    background-size: (image-width(sprite-path($sprites-retina)) / 2) (image-height(sprite-path($sprites-retina)) / 2);
+    background-position: round(nth(sprite-position($sprites-retina, $sprite), 1) / 2) round(nth(sprite-position($sprites-retina, $sprite), 2) / 2);
+    height: image-height(sprite-file($sprites-retina, $sprite)) / 2;
+    width: image-width(sprite-file($sprites-retina, $sprite)) / 2;
+  }
+}
+

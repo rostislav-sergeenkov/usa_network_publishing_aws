@@ -1,0 +1,265 @@
+////////////////////////
+// Base Partials
+//
+// These files will be shared across all three of your output CSS files. Generally included here are only Compass Extension imports and imports for variables, functions, mixins, and extendables.
+//
+// Toolkit imports all of Compass, so there is no need to import it separately.
+////////////////////////
+////////////////////////
+// Compass Extensions
+////////////////////////
+@import 'singularitygs';
+@import 'toolkit';
+////////////////////////
+// Private Imports
+////////////////////////
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'extendables';
+@import 'fonts';
+@import 'colors';
+
+ol, ul, li {
+  list-style: none;
+}
+
+body {
+	background-color: $poll-back;
+  width: 100%;
+}
+
+#main {
+  min-width: 300px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.asset-img {
+  line-height: 0;
+}
+
+.play-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(play-icon);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(play-icon-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(play-icon-small);
+      }
+    }
+  }
+}
+
+.play-icon-half {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(play-icon-half);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(play-icon-half-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(play-icon-half-small);
+      }
+    }
+  }
+}
+
+.article-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(article-icon);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(article-icon-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(article-icon-small);
+      }
+    }
+  }
+}
+
+.game-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(game-icon);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(game-icon-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(game-icon-small);
+      }
+    }
+  }
+}
+
+.photo-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(photo-icon);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(photo-icon-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(photo-icon-small);
+      }
+    }
+  }
+}
+
+.poll-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(poll-icon-2);
+  }
+}
+
+.social-usa {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -18px;
+    position: absolute;
+    @include sprite-background(usa-icon);
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:after {
+        @include sprite-background(usa-icon-small);
+      }
+    }
+  }
+}
+
+.social-insta {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-insta-icon);
+  }
+}
+
+.social-twitter {
+  &:after {
+    bottom: 8%;
+    content: '';
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    position: absolute;
+    @include sprite-background(social-twitter-icon);
+  }
+}
+
+.icons-block {
+  display: block;
+  a {
+    color: #ffffff;
+    display: block;
+    float: left;
+    height: auto;
+    margin-right: 27px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+    &:last-child, .last {
+      margin-right: 0px;
+    }
+    &:before {
+      display: block;
+      font-family: $ico-font;
+      font-size: 16px;
+    }
+    &.episode-description {
+      &:before {
+        content: '\e600';
+      }
+    }
+    &.calendar-reminder {
+      &:before {
+        content: '\e601';
+      }
+    }
+    &.facebook {
+      &:before {
+        content: "\e602";
+      }
+    }
+    &.twitter {
+      &:before {
+        content: "\e603";
+      }
+    }
+    &.tumblr {
+      &:before {
+        content: "\e604";
+      }
+    }
+    &.pinterest {
+      &:before {
+        content: "\e605";
+      }
+    }
+    &.plus-icon {
+      &:before {
+        content: "\e606";
+      }
+    }
+  }
+}

@@ -1,0 +1,272 @@
+.show-color-border {
+  position: relative;
+  &:before {
+    background: $usa-logo-back;
+    display: block;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    z-index: 1;
+  }
+}
+
+.show-color {
+  background: $usa-logo-back;
+  &.dark {
+    background: adjust-color($usa-logo-back, $saturation: 30, $lightness: -10);
+  }
+  &.hover-avail {
+    &:hover {
+      background: lighten($usa-logo-back, 15%);
+    }
+  }
+}
+
+//=====================full
+
+.show-rush {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-rush;
+    }
+  }
+  .icons-block {
+    a {
+      color: $show-rush!important;
+    }
+  }
+  .show-color {
+    background: $show-rush;
+    &.dark {
+      background: $show-rush-dark;
+      &:before {
+        background: $show-rush-light;
+      }
+    }
+    &.light {
+      background: $show-rush-light;
+      &:before {
+        background: $show-rush-dark;
+      }
+    }
+    &.hover-avail {
+      &:hover {
+        background: lighten($show-rush, 15%);
+      }
+    }
+  }
+  .show-border {
+    border-color: $show-rush !important;
+    &.dark {
+      border-color: $show-rush-dark !important;
+    }
+    &.light {
+      border-color: $show-rush-light !important;
+    }
+  }
+}
+
+//=====================full
+
+.show-suits {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-suits;
+    }
+  }
+  .icons-block {
+    a {
+      color: $show-suits!important;
+    }
+  }
+  .show-color {
+    background: $show-suits;
+    &.dark {
+      background: $show-suits-dark;
+      &:before {
+        background: $show-suits-light;
+      }
+    }
+    &.light {
+      background: $show-suits-light;
+      &:before {
+        background: $show-suits-dark;
+      }
+    }
+    &.hover-avail {
+      &:hover {
+        background: $show-suits-light;
+      }
+    }
+  }
+  .show-border {
+    border-color: $show-suits !important;
+    &.dark {
+      border-color: $show-suits-dark !important;
+    }
+    &.light {
+      border-color: $show-suits-light !important;
+    }
+  }
+}
+
+//=====================
+.show-dig {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-dig;
+    }
+  }
+  .show-color {
+    background: $show-dig;
+  }
+}
+
+.show-benched {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-benched;
+    }
+  }
+  .show-color {
+    background: $show-benched;
+  }
+}
+
+.show-bridesmaids {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-bridesmaids;
+    }
+  }
+  .show-color {
+    background: $show-bridesmaids;
+  }
+}
+
+.show-covert-affairs {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-covert;
+    }
+  }
+	.icons-block {
+		a {
+			color: $show-covert !important;
+		}
+	}
+  .show-color {
+    background: $show-covert;
+  }
+}
+
+.show-graceland {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-graceland;
+    }
+  }
+  .icons-block {
+    a {
+      color: $show-graceland!important;
+    }
+  }
+  .show-color {
+    background: $show-graceland;
+  }
+}
+
+.show-royal-pains {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-rp;
+    }
+  }
+  .show-color {
+    background: $show-rp;
+  }
+}
+
+//=====================full
+.show-chrisley {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-chrisley;
+    }
+  }
+  .icons-block {
+    a {
+      color: $show-chrisley!important;
+    }
+  }
+  .show-color {
+    background: $show-chrisley;
+    &.dark {
+      background: $show-chrisley-dark;
+      &:before {
+        background: $show-chrisley-light;
+      }
+    }
+    &.light {
+      background: $show-chrisley-light;
+      &:before {
+        background: $show-chrisley-dark;
+      }
+    }
+    &.hover-avail {
+      &:hover {
+        background: $show-chrisley-light;
+      }
+    }
+  }
+  .show-border {
+    border-color: $show-chrisley !important;
+    &.dark {
+      border-color: $show-chrisley-dark !important;
+    }
+    &.light {
+      border-color: $show-chrisley-light !important;
+    }
+  }
+}
+
+.show-playing-house {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-ph;
+    }
+  }
+  .show-color {
+    background: $show-ph;
+  }
+}
+
+.show-law-and-order {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-law-and-order;
+    }
+  }
+  .icons-block {
+    a {
+      color: $show-law-and-order!important;
+    }
+  }
+  .show-color {
+    background: $show-law-and-order;
+  }
+}
+
+.show-satisfaction {
+  .show-color-border, &.show-color-border {
+    &:before {
+      background: $show-satisfaction;
+    }
+  }
+  .show-color {
+    background: $show-satisfaction;
+  }
+}

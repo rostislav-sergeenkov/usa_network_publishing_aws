@@ -78,7 +78,7 @@
   #utilities {
     .show-banner {
       .breadcrumb {
-        float: none;
+        margin-top: 0px;
         > a {
           line-height: 32px;
         }
@@ -88,10 +88,9 @@
             letter-spacing: normal;
             @include breakpoint($bp-on-now) {
               font-size: 24px;
-              line-height: 50px;
             }
             font-size: 18px;
-            line-height: 46px;
+            line-height: 63px;
             color: $white;
             margin: 0px;
           }
@@ -112,12 +111,14 @@
           }
         }
       }
-      > h1 {
-        font-size: 11px;
-        color: #464646;
-        margin-top: -9px;
-        @include breakpoint($bp-on-now) {
-          margin-top: -8px;
+      .titles-block {
+        > h1 {
+          font-size: 11px;
+          color: #464646;
+          margin-top: -9px;
+          @include breakpoint($bp-on-now) {
+            margin-top: -8px;
+          }
         }
       }
     }

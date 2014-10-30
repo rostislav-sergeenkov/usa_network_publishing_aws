@@ -526,7 +526,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #block-s
 #on-now-panel .tab-wrapper, #utilities .breadcrumb .show-section, #block-views-usa-video-front-full-episodes h2,
 #block-views-usa-mpx-video-front-full-epsds h2,
 #block-usanetwork-home-usanetwork-home-promo-carousel h2,
-.usa-home-featured h2, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post, body.blog .panel-display .panel-col-top h1 {
+.usa-home-featured h2, .usa-tv-show #utilities .show-banner .breadcrumb h1 a, .usa-tv-show #utilities .show-banner .breadcrumb h2 a, body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, .node.node-post, body.blog .panel-display .panel-col-top h1 {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
@@ -11426,13 +11426,42 @@ body.person-page #main {
 .usa-tv-show #utilities .show-banner .breadcrumb > a {
   line-height: 32px;
 }
-.usa-tv-show #utilities .show-banner h1 {
+.usa-tv-show #utilities .show-banner .breadcrumb h1 a {
+  letter-spacing: normal;
+  font-size: 18px;
+  line-height: 46px;
+  color: white;
+  margin: 0px;
+}
+@media (min-width: 640px) {
+  .usa-tv-show #utilities .show-banner .breadcrumb h1 a {
+    font-size: 24px;
+    line-height: 50px;
+  }
+}
+.usa-tv-show #utilities .show-banner .breadcrumb h2 {
+  line-height: 1;
+}
+.usa-tv-show #utilities .show-banner .breadcrumb h2 a {
+  letter-spacing: normal;
+  font-size: 18px;
+  line-height: 28px;
+  color: white;
+  margin: 0px;
+}
+@media (min-width: 640px) {
+  .usa-tv-show #utilities .show-banner .breadcrumb h2 a {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+.usa-tv-show #utilities .show-banner > h1 {
   font-size: 11px;
   color: #464646;
-  margin-top: -11px;
+  margin-top: -9px;
 }
-@media (min-width: 645px) {
-  .usa-tv-show #utilities .show-banner h1 {
+@media (min-width: 640px) {
+  .usa-tv-show #utilities .show-banner > h1 {
     margin-top: -8px;
   }
 }

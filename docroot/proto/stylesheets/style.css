@@ -175,37 +175,37 @@ img, video {
 }
 
 .show-suits .show-color-border:before, .show-suits.show-color-border:before {
-  background: #3a3f5d;
+  background: #d42027;
 }
 .show-suits .icons-block a {
-  color: #3a3f5d !important;
+  color: #d42027 !important;
 }
 .show-suits .show-color {
-  background: #3a3f5d;
+  background: #d42027;
 }
 .show-suits .show-color.dark {
-  background: #0a1b41;
+  background: #e83939;
 }
 .show-suits .show-color.dark:before {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-color.light {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-color.light:before {
-  background: #0a1b41;
+  background: #e83939;
 }
 .show-suits .show-color.hover-avail:hover {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-border {
-  border-color: #3a3f5d !important;
+  border-color: #d42027 !important;
 }
 .show-suits .show-border.dark {
-  border-color: #0a1b41 !important;
+  border-color: #e83939 !important;
 }
 .show-suits .show-border.light {
-  border-color: #52556e !important;
+  border-color: #be1c23 !important;
 }
 
 .show-dig .show-color-border:before, .show-dig.show-color-border:before {
@@ -230,64 +230,64 @@ img, video {
 }
 
 .show-covert-affairs .show-color-border:before, .show-covert-affairs.show-color-border:before {
-  background: #d52f2f;
+  background: #c50504;
 }
 .show-covert-affairs .icons-block a {
-  color: #d52f2f !important;
+  color: #c50504 !important;
 }
 .show-covert-affairs .show-color {
-  background: #d52f2f;
+  background: #c50504;
 }
 
 .show-graceland .show-color-border:before, .show-graceland.show-color-border:before {
-  background: #6fa0d5;
+  background: #0d3b6e;
 }
 .show-graceland .icons-block a {
-  color: #6fa0d5 !important;
+  color: #0d3b6e !important;
 }
 .show-graceland .show-color {
-  background: #6fa0d5;
+  background: #0d3b6e;
 }
 
 .show-royal-pains .show-color-border:before, .show-royal-pains.show-color-border:before {
-  background: #409dbe;
+  background: #7cd7fd;
 }
 .show-royal-pains .show-color {
-  background: #409dbe;
+  background: #7cd7fd;
 }
 
-.show-chrisley .show-color-border:before, .show-chrisley.show-color-border:before {
-  background: #f5be56;
+.show-chrisley.show-color-border:before {
+  background: #f2ad2c;
 }
 .show-chrisley .icons-block a {
-  color: #f5be56 !important;
+  color: #f2ad2c !important;
 }
 .show-chrisley .show-color {
-  background: #f5be56;
+  background: #f2ad2c;
 }
 .show-chrisley .show-color.dark {
-  background: #f2ad2c;
+  background: #f5be56;
 }
 .show-chrisley .show-color.dark:before {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-color.light {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-color.light:before {
-  background: #f2ad2c;
+  background: #f5be56;
 }
 .show-chrisley .show-color.hover-avail:hover {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-border {
-  border-color: #f5be56 !important;
-}
-.show-chrisley .show-border.dark {
   border-color: #f2ad2c !important;
 }
+.show-chrisley .show-border.dark {
+  border-color: #f5be56 !important;
+}
 .show-chrisley .show-border.light {
-  border-color: #f6cc7c !important;
+  border-color: #ebb249 !important;
 }
 
 .show-playing-house .show-color-border:before, .show-playing-house.show-color-border:before {

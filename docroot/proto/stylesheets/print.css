@@ -119,37 +119,37 @@ img, video {
 }
 
 .show-suits .show-color-border:before, .show-suits.show-color-border:before {
-  background: #3a3f5d;
+  background: #d42027;
 }
 .show-suits .icons-block a {
-  color: #3a3f5d !important;
+  color: #d42027 !important;
 }
 .show-suits .show-color {
-  background: #3a3f5d;
+  background: #d42027;
 }
 .show-suits .show-color.dark {
-  background: #0a1b41;
+  background: #e83939;
 }
 .show-suits .show-color.dark:before {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-color.light {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-color.light:before {
-  background: #0a1b41;
+  background: #e83939;
 }
 .show-suits .show-color.hover-avail:hover {
-  background: #52556e;
+  background: #be1c23;
 }
 .show-suits .show-border {
-  border-color: #3a3f5d !important;
+  border-color: #d42027 !important;
 }
 .show-suits .show-border.dark {
-  border-color: #0a1b41 !important;
+  border-color: #e83939 !important;
 }
 .show-suits .show-border.light {
-  border-color: #52556e !important;
+  border-color: #be1c23 !important;
 }
 
 .show-dig .show-color-border:before, .show-dig.show-color-border:before {
@@ -174,64 +174,64 @@ img, video {
 }
 
 .show-covert-affairs .show-color-border:before, .show-covert-affairs.show-color-border:before {
-  background: #d52f2f;
+  background: #c50504;
 }
 .show-covert-affairs .icons-block a {
-  color: #d52f2f !important;
+  color: #c50504 !important;
 }
 .show-covert-affairs .show-color {
-  background: #d52f2f;
+  background: #c50504;
 }
 
 .show-graceland .show-color-border:before, .show-graceland.show-color-border:before {
-  background: #6fa0d5;
+  background: #0d3b6e;
 }
 .show-graceland .icons-block a {
-  color: #6fa0d5 !important;
+  color: #0d3b6e !important;
 }
 .show-graceland .show-color {
-  background: #6fa0d5;
+  background: #0d3b6e;
 }
 
 .show-royal-pains .show-color-border:before, .show-royal-pains.show-color-border:before {
-  background: #409dbe;
+  background: #7cd7fd;
 }
 .show-royal-pains .show-color {
-  background: #409dbe;
+  background: #7cd7fd;
 }
 
-.show-chrisley .show-color-border:before, .show-chrisley.show-color-border:before {
-  background: #f5be56;
+.show-chrisley.show-color-border:before {
+  background: #f2ad2c;
 }
 .show-chrisley .icons-block a {
-  color: #f5be56 !important;
+  color: #f2ad2c !important;
 }
 .show-chrisley .show-color {
-  background: #f5be56;
+  background: #f2ad2c;
 }
 .show-chrisley .show-color.dark {
-  background: #f2ad2c;
+  background: #f5be56;
 }
 .show-chrisley .show-color.dark:before {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-color.light {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-color.light:before {
-  background: #f2ad2c;
+  background: #f5be56;
 }
 .show-chrisley .show-color.hover-avail:hover {
-  background: #f6cc7c;
+  background: #ebb249;
 }
 .show-chrisley .show-border {
-  border-color: #f5be56 !important;
-}
-.show-chrisley .show-border.dark {
   border-color: #f2ad2c !important;
 }
+.show-chrisley .show-border.dark {
+  border-color: #f5be56 !important;
+}
 .show-chrisley .show-border.light {
-  border-color: #f6cc7c !important;
+  border-color: #ebb249 !important;
 }
 
 .show-playing-house .show-color-border:before, .show-playing-house.show-color-border:before {
@@ -282,7 +282,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -896px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -292,16 +292,16 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .play-icon:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -896px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -980px;
     height: 37px;
     width: 37px;
   }
 }
 @media (max-width: 1024px) {
   .play-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -866px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -312,9 +312,9 @@ body {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .play-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -866px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -950px;
     height: 30px;
     width: 30px;
   }
@@ -322,7 +322,7 @@ body {
 
 @media (max-width: 480px) {
   .play-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -866px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -333,9 +333,9 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .play-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -866px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -950px;
     height: 30px;
     width: 30px;
   }
@@ -345,7 +345,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -829px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -355,16 +355,16 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .play-icon-half:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -829px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -913px;
     height: 37px;
     width: 37px;
   }
 }
 @media (max-width: 1024px) {
   .play-icon-half.resize-avail-1024:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -799px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -375,9 +375,9 @@ body {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .play-icon-half.resize-avail-1024:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -799px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -883px;
     height: 30px;
     width: 30px;
   }
@@ -385,7 +385,7 @@ body {
 
 @media (max-width: 480px) {
   .play-icon-half.resize-avail-480:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -799px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -396,9 +396,9 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .play-icon-half.resize-avail-480:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -799px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -883px;
     height: 30px;
     width: 30px;
   }
@@ -408,7 +408,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -30px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -418,8 +418,8 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .article-icon:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
     background-position: 0 -30px;
     height: 37px;
     width: 37px;
@@ -427,7 +427,7 @@ body {
 }
 @media (max-width: 1024px) {
   .article-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 0;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -438,8 +438,8 @@ body {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .article-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
     background-position: 0 0;
     height: 30px;
     width: 30px;
@@ -448,7 +448,7 @@ body {
 
 @media (max-width: 480px) {
   .article-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 0;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -459,8 +459,8 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .article-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
     background-position: 0 0;
     height: 30px;
     width: 30px;
@@ -471,7 +471,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -443px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -481,16 +481,16 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .game-icon:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -443px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -527px;
     height: 37px;
     width: 37px;
   }
 }
 @media (max-width: 1024px) {
   .game-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -413px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -501,9 +501,9 @@ body {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .game-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -413px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -497px;
     height: 30px;
     width: 30px;
   }
@@ -511,7 +511,7 @@ body {
 
 @media (max-width: 480px) {
   .game-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -413px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -522,9 +522,9 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .game-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -413px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -497px;
     height: 30px;
     width: 30px;
   }
@@ -534,7 +534,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -718px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -544,16 +544,16 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .photo-icon:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -718px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -802px;
     height: 37px;
     width: 37px;
   }
 }
 @media (max-width: 1024px) {
   .photo-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -688px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -564,9 +564,9 @@ body {
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1024px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 1024px) and (min--moz-device-pixel-ratio: 2), (max-width: 1024px) and (min-device-pixel-ratio: 2), (max-width: 1024px) and (min-resolution: 144dppx) {
   .photo-icon.resize-avail-1024:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -688px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -772px;
     height: 30px;
     width: 30px;
   }
@@ -574,7 +574,7 @@ body {
 
 @media (max-width: 480px) {
   .photo-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
+    background-image: url('/images/sprites-s85701fd58e.png');
     background-position: 0 -688px;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -585,9 +585,9 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .photo-icon.resize-avail-480:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -688px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -772px;
     height: 30px;
     width: 30px;
   }
@@ -597,7 +597,7 @@ body {
   content: '';
   display: block;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
+  background-image: url('/images/sprites-s85701fd58e.png');
   background-position: 0 -980px;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -607,9 +607,9 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .poll-icon:before {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -980px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -1064px;
     height: 37px;
     width: 37px;
   }
@@ -622,8 +622,8 @@ body {
   left: 50%;
   margin-left: -18px;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
-  background-position: 0 -1460px;
+  background-image: url('/images/sprites-s85701fd58e.png');
+  background-position: 0 -1495px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -632,17 +632,17 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-usa:after {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -1459px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -1578px;
     height: 21px;
     width: 47px;
   }
 }
 @media (max-width: 480px) {
   .social-usa.resize-avail-480:after {
-    background-image: url('/images/sprites-sf1d3ec1e34.png');
-    background-position: 0 -1446px;
+    background-image: url('/images/sprites-s85701fd58e.png');
+    background-position: 0 -1481px;
     background-repeat: no-repeat;
     overflow: hidden;
     display: block;
@@ -652,9 +652,9 @@ body {
 }
 @media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
   .social-usa.resize-avail-480:after {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -1446px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -1565px;
     height: 13px;
     width: 30px;
   }
@@ -667,8 +667,8 @@ body {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
-  background-position: 0 -1300px;
+  background-image: url('/images/sprites-s85701fd58e.png');
+  background-position: 0 -1335px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -677,9 +677,9 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-insta:after {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -1300px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -1419px;
     height: 26px;
     width: 26px;
   }
@@ -692,8 +692,8 @@ body {
   left: 50%;
   margin-left: -8px;
   position: absolute;
-  background-image: url('/images/sprites-sf1d3ec1e34.png');
-  background-position: 0 -1326px;
+  background-image: url('/images/sprites-s85701fd58e.png');
+  background-position: 0 -1361px;
   background-repeat: no-repeat;
   overflow: hidden;
   display: block;
@@ -702,9 +702,9 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
   .social-twitter:after {
-    background-image: url('/images/sprites-retina-s4f4f64a7fa.png');
-    background-size: 65px 1579.5px;
-    background-position: 0 -1326px;
+    background-image: url('/images/sprites-retina-sd28c3ad361.png');
+    background-size: 150px 1699px;
+    background-position: 0 -1445px;
     height: 22px;
     width: 26px;
   }

@@ -11421,7 +11421,7 @@ body.person-page #main {
   }
 }
 .usa-tv-show #utilities .show-banner .breadcrumb {
-  float: none;
+  margin-top: 0px;
 }
 .usa-tv-show #utilities .show-banner .breadcrumb > a {
   line-height: 32px;
@@ -11429,14 +11429,13 @@ body.person-page #main {
 .usa-tv-show #utilities .show-banner .breadcrumb h1 a {
   letter-spacing: normal;
   font-size: 18px;
-  line-height: 46px;
+  line-height: 63px;
   color: white;
   margin: 0px;
 }
 @media (min-width: 640px) {
   .usa-tv-show #utilities .show-banner .breadcrumb h1 a {
     font-size: 24px;
-    line-height: 50px;
   }
 }
 .usa-tv-show #utilities .show-banner .breadcrumb h2 {
@@ -11455,13 +11454,13 @@ body.person-page #main {
     line-height: 32px;
   }
 }
-.usa-tv-show #utilities .show-banner > h1 {
+.usa-tv-show #utilities .show-banner .titles-block > h1 {
   font-size: 11px;
   color: #464646;
   margin-top: -9px;
 }
 @media (min-width: 640px) {
-  .usa-tv-show #utilities .show-banner > h1 {
+  .usa-tv-show #utilities .show-banner .titles-block > h1 {
     margin-top: -8px;
   }
 }

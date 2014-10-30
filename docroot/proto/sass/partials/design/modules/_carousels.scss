@@ -15,9 +15,9 @@
       margin: 20px 10px 20px 0px;
       position: relative;
       width: 300px;
-			@include breakpoint($bp-min-1601-width){
-				margin-right: 15px;
-			}
+      @include breakpoint($bp-min-1601-width) {
+        margin-right: 15px;
+      }
       &.odd {
         .meta-wrap {
           background: $social-twitter-back;
@@ -127,61 +127,64 @@
           }
         }
       }
-			&.poll{
-				a{
-					height: 115px;
-				}
-			}
-			.poll-items{
-				@include clear;
-				background-color: $header-show-caption;
-				height: 135px;
-				position: relative;
-				.poll-item{
-					border-right: 1px solid $header-tab-back-hover;
-					float: left;
-					height: 100%;
-					width: 33.33333%;
-					&:last-child{
-						border-right: none;
-					}
-					.node{
-						.asset-img{
-							img{
-								width: 100%;
-							}
-						}
-						.meta-wrapper{
-							.meta{
-								color: #ffffff;
-								position: static;
-								padding: 20px 0 0;
-								margin: 0;
-								.title{
-									font-family: $avantgarde-demi;
-									font-size: 20px;
-									line-height: 28px;
-									overflow: hidden;
-									text-transform: uppercase;
-									text-align: center;
-									text-overflow: ellipsis;
-									white-space: nowrap;
-								}
-								.caption{
-									font-family: $avantgarde-medium;
-									font-size: 12px;
-									line-height: 18px;
-									overflow: hidden;
-									text-transform: uppercase;
-									text-align: center;
-									text-overflow: ellipsis;
-									white-space: nowrap;
-								}
-							}
-						}
-					}
-				}
-			}
+      &.poll {
+        a {
+          height: 115px;
+        }
+      }
+      .poll-items {
+        @include clear;
+        background-color: $header-show-caption;
+        height: 135px;
+        position: relative;
+        .poll-item {
+          border-right: 1px solid $header-tab-back-hover;
+          float: left;
+          height: 100%;
+          width: 33.33333%;
+          &:last-child {
+            border-right: none;
+          }
+          a {
+            text-decoration: none;
+          }
+          .node {
+            .asset-img {
+              img {
+                width: 100%;
+              }
+            }
+            .meta-wrapper {
+              .meta {
+                color: #ffffff;
+                position: static;
+                padding: 20px 0 0;
+                margin: 0;
+                .title {
+                  font-family: $avantgarde-demi;
+                  font-size: 20px;
+                  line-height: 28px;
+                  overflow: hidden;
+                  text-transform: uppercase;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                .caption {
+                  font-family: $avantgarde-medium;
+                  font-size: 12px;
+                  line-height: 18px;
+                  overflow: hidden;
+                  text-transform: uppercase;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   .carousel-btns {
@@ -211,6 +214,7 @@
     }
   }
 }
+
 .catch-up-explore-carousel {
   & > div {
     float: left;
@@ -221,6 +225,7 @@
     }
   }
 }
+
 .latest-block, .carousel-block {
   @include clear();
   background: $footer-links;
@@ -229,6 +234,7 @@
   position: relative;
   width: 100%;
 }
+
 .catch-up-explore-carousel {
   .carousel-block {
     @include breakpoint($bp-480-width) {
@@ -252,15 +258,16 @@
   transition-timing-function: ease;
 
   width: 100%;
-	&.start {
-		@include breakpoint($bp-min-481-width) {
-		margin-left: 240px;
-		}
-		@include breakpoint($bp-min-1601-width){
-			margin-left: 400px;
-		}
+  &.start {
+    @include breakpoint($bp-min-481-width) {
+      margin-left: 240px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      margin-left: 400px;
+    }
   }
 }
+
 .carousel-right {
   -webkit-transition-property: margin;
   -moz-transition-property: margin;
@@ -287,16 +294,17 @@
       }
     }
   }
-	&.start {
-  	@include breakpoint($bp-min-481-width) {
+  &.start {
+    @include breakpoint($bp-min-481-width) {
       margin-left: -240px;
       overflow: hidden;
     }
-  	@include breakpoint($bp-min-1601-width) {
+    @include breakpoint($bp-min-1601-width) {
       margin-left: -400px;
     }
   }
 }
+
 .carousel-block-right {
   background: $poll-back;
   .carousel-description-item {
@@ -326,9 +334,9 @@
   height: 100%;
   position: absolute;
   top: 0px;
-	@include breakpoint($bp-min-1601-width) {
-		left: -250px;
-	}
+  @include breakpoint($bp-min-1601-width) {
+    left: -250px;
+  }
   &.start {
     left: 75px;
   }
@@ -355,9 +363,9 @@
     transition-timing-function: ease;
     left: auto;
     right: -150px;
-		@include breakpoint($bp-min-1601-width) {
-			right: -250px;
-		}
+    @include breakpoint($bp-min-1601-width) {
+      right: -250px;
+    }
     &.start {
       right: 75px;
     }
@@ -367,9 +375,9 @@
     height: 100%;
     float: right;
     width: 150px;
-		@include breakpoint($bp-min-1601-width){
-			width: 250px;
-		}
+    @include breakpoint($bp-min-1601-width) {
+      width: 250px;
+    }
   }
   .description-block {
     display: table-cell;
@@ -383,9 +391,9 @@
     font-style: italic;
     text-align: left;
     text-transform: uppercase;
-		@include breakpoint($bp-min-1601-width){
-			font-size: 23px;
-		}
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 23px;
+    }
   }
   .title {
     color: $poll-color;
@@ -395,10 +403,10 @@
     margin: 20px 0;
     text-align: left;
     text-transform: uppercase;
-		@include breakpoint($bp-min-1601-width){
-			font-size: 37px;
-			line-height: 43px;
-		}
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 37px;
+      line-height: 43px;
+    }
   }
 }
 
@@ -434,7 +442,7 @@
         display: none;
       }
       &.active {
-        box-shadow: inset 0px -6px 5px -2px rgba(1,1,1,0.3);
+        box-shadow: inset 0px -6px 5px -2px rgba(1, 1, 1, 0.3);
         .carousel {
           display: block;
         }
@@ -487,6 +495,7 @@
     }
   }
 }
+
 .consumptionator-full-episodes {
   @include breakpoint($bp-480-width) {
     padding: 10px 0;

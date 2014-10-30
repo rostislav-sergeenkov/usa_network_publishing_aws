@@ -82,12 +82,41 @@
         > a {
           line-height: 32px;
         }
+        h1 {
+          a {
+            @extend %semi-headline;
+            letter-spacing: normal;
+            @include breakpoint($bp-on-now) {
+              font-size: 24px;
+              line-height: 50px;
+            }
+            font-size: 18px;
+            line-height: 46px;
+            color: $white;
+            margin: 0px;
+          }
+        }
+        h2 {
+          line-height: 1;
+          a {
+            @extend %semi-headline;
+            letter-spacing: normal;
+            @include breakpoint($bp-on-now) {
+              font-size: 24px;
+              line-height: 32px;
+            }
+            font-size: 18px;
+            line-height: 28px;
+            color: $white;
+            margin: 0px;
+          }
+        }
       }
-      h1 {
+      > h1 {
         font-size: 11px;
         color: #464646;
-        margin-top: -11px;
-        @include breakpoint($bp-show-mid-width) {
+        margin-top: -9px;
+        @include breakpoint($bp-on-now) {
           margin-top: -8px;
         }
       }
@@ -95,16 +124,15 @@
   }
 }
 
-
 .promo-ads-panel {
   .expandable-content {
     position: relative;
     .ie9 &,
     .ie8 & {
-      overflow:hidden;
+      overflow: hidden;
     }
   }
-  .panel-col2  {
+  .panel-col2 {
     position: static;
     display: none;
     @include breakpoint($bp-show-mid-width) {
@@ -116,13 +144,11 @@
   }
 }
 
-
 .video-promo-ads-panel {
   .panel-col2 {
     height: 250px;
   }
 }
-
 
 .usa-adrails.usa-tv-show {
   .flexslider {

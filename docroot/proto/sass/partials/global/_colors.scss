@@ -192,7 +192,7 @@
 
 //=====================full
 .show-chrisley {
-  .show-color-border, &.show-color-border {
+  &.show-color-border {
     &:before {
       background: $show-chrisley;
     }

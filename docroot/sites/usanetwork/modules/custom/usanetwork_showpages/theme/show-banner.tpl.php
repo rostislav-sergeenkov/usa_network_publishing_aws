@@ -13,9 +13,18 @@
 ?>
 <div class="show-banner">
   <nav role="navigation" class="show-name breadcrumb">
+    <div class="titles-block">
     <?php if ($show_name): ?>
-      <?php print $show_name; ?>
+      <?php if ($show_h1): ?>
+        <h2><?php print $show_name; ?></h2>
+      <?php else : ?>
+        <h1><?php print $show_name; ?></h1>
+      <?php endif; ?>
     <?php endif; ?>
+    <?php if ($show_h1): ?>
+      <h1><?php print $show_h1; ?></h1>
+    <?php endif; ?>
+    </div>
     <?php if ($show_section): ?>
       <span class="separator"></span><span class="show-section"><?php print $show_section; ?></span>
     <?php endif; ?>
@@ -26,8 +35,4 @@
     <?php print $show_tunein; ?>
   </aside>
   <?php endif; ?>
-
-  <?php if ($show_h1): ?>
-  <h1><?php print $show_h1; ?></h1>
-  <?php endif; ?>  
 </div>

@@ -13,7 +13,7 @@
 ?>
 <div class="show-banner">
   <nav role="navigation" class="show-name breadcrumb">
-    <?php if ($is_tv_show): ?>
+    <?php if (($is_tv_show) && !($show_section)): ?>
       <div class="titles-block">
         <?php if ($show_name): ?>
           <?php if ($show_h1): ?>

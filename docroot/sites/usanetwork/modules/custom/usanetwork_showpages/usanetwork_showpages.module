@@ -162,7 +162,7 @@ function usanetwork_showpages_showbanner() {
         $show_tunein = $usa_tv_tune_in_date[0]['value'];
       }
       $show_url = 'node/' . $entity->nid;
-
+      $show_name = l($show_title, $show_url);
       // see if we are in a show social subsection
       if (arg(2) == 'social') {
         $show_section = l(t('Social'), $show_url . '/social');
@@ -179,10 +179,6 @@ function usanetwork_showpages_showbanner() {
       $seo_h1 = field_get_items($entity_type, $entity, 'field_seo_h1');
       if (is_array($seo_h1) && !empty($seo_h1[0]['value'])) {
         $show_h1 = $seo_h1[0]['value'];
-        $show_name = l('<h2>'.$show_title.'</h2>', $show_url, array('html' => true));
-      }
-      else {
-        $show_name = l('<h1>'.$show_title.'</h1>', $show_url, array('html' => true));
       }
     }
     // looks for nodes with a value in field_show

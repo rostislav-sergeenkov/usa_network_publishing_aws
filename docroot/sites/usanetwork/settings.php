@@ -272,3 +272,5 @@ function default_site_request_handler() {
     exit;
   }
 }
+
+$conf['admin_menu_cache_client'] = FALSE;

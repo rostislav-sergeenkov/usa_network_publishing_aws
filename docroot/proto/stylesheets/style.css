@@ -6658,6 +6658,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .carousel ul li .poll-items .poll-item:last-child {
   border-right: none;
 }
+.carousel ul li .poll-items .poll-item a {
+  text-decoration: none;
+}
 .carousel ul li .poll-items .poll-item .node .asset-img img {
   width: 100%;
 }

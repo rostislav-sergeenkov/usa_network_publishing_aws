@@ -25,248 +25,175 @@
   }
 }
 
+//shows colors
+//Suits
+$suits: (
+        show: suits,
+        primary: #d42027,
+        secondary: #e83939,
+        tertiary: #be1c23
+);
+//Chrisley Knows Best
+$chrisley: (
+        show: chrisley,
+        primary: #f2ad2c,
+        secondary: #f5be56,
+        tertiary: #ebb249
+);
+//Graceland
+$graceland: (
+        show: graceland,
+        primary: #0d3b6e,
+        secondary: #1b4c83,
+        tertiary: #113359
+);
+//Covert Affairs:
+$covert-affairs: (
+        show: covert-affairs,
+        primary: #c50504,
+        secondary: #d60302,
+        tertiary: #b10808
+);
+//Royal Pains:
+$royal-pains: (
+        show: royal-pains,
+        primary: #7cd7fd,
+        secondary: #9bdffc,
+        tertiary: #68c5ec
+);
+
+//_____OLD COLORS SHOWS_________
+//Rush:
+$rush: (
+        show: rush,
+        primary: #2665aa,
+        secondary: #0b4c7c,
+        tertiary: #5d8dc6
+);
+//Dig:
+$dig: (
+        show: dig,
+        primary: #e98e11,
+        secondary: #e98e11,
+        tertiary: #e98e11
+);
+//Benched:
+$benched: (
+        show: benched,
+        primary: #962e8d,
+        secondary: #962e8d,
+        tertiary: #962e8d
+);
+//Bridesmaids:
+$bridesmaids: (
+        show: bridesmaids,
+        primary: #ff68be,
+        secondary: #ff68be,
+        tertiary: #ff68be
+);
+//Playing house:
+$playing-house: (
+        show: playing-house,
+        primary: #79b365,
+        secondary: #79b365,
+        tertiary: #79b365
+);
+//Law and Order:
+$law-and-order: (
+        show: law-and-order,
+        primary: #80a677,
+        secondary: #80a677,
+        tertiary: #80a677
+);
+//Satisfaction:
+$satisfaction: (
+        show: satisfaction,
+        primary: #f83a3a,
+        secondary: #f83a3a,
+        tertiary: #f83a3a
+);
+
+/*
+$show-burnnotice : #fef200;
+//csi
+$show-csi : #0ab6e8;
+//usadaytime
+$show-usadaytime : #e16e1a;
+//house
+$show-house : #0ab6e8;
+//svu
+$show-svu : #a5e2ff;
+//modernfamily
+$show-modernfamily : #ee991a;
+//themoment
+$show-themoment : #3c6fad;
+//ncis
+$show-ncis : #0ab6e8;
+//ncisla
+$show-ncisla : #ed8606;
+//necessaryroughness
+$show-necessaryroughness : #2fc2f6;
+//partnersincrime
+$show-partnersincrime : #acbade;
+//psych
+$show-psych : #8ec23f;
+//sirens
+$show-sirens : #b72730;
+//summercamp
+$show-summercamp : #fd4833;
+//vanderbiltmds
+$show-vanderbiltmds : #41afdb;
+//whitecollar
+$show-whitecollar : #00b9e6;
+//wwe
+$show-wwe : #bd0c12;
+//westminsterkennelclub
+$show-westminsterkennelclub : #f6b91a;
+*/
+
+
+$show-collection: ($suits, $chrisley, $graceland, $covert-affairs, $royal-pains, $rush, $dig, $benched, $bridesmaids, $playing-house, $law-and-order, $satisfaction);
 //=====================full
-
-.show-rush {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-rush;
-    }
-  }
-  .icons-block {
-    a {
-      color: $show-rush!important;
-    }
-  }
-  .show-color {
-    background: $show-rush;
-    &.dark {
-      background: $show-rush-dark;
+@for $i from 0 to length($show-collection) {
+  .show-#{map-get(nth($show-collection, $i+1), show)} {
+    .show-color-border, &.show-color-border {
       &:before {
-        background: $show-rush-light;
+        background: #{map-get(nth($show-collection, $i+1), primary)};
       }
     }
-    &.light {
-      background: $show-rush-light;
-      &:before {
-        background: $show-rush-dark;
+    .icons-block {
+      a {
+        color: #{map-get(nth($show-collection, $i+1), primary)}!important;
       }
     }
-    &.hover-avail {
-      &:hover {
-        background: lighten($show-rush, 15%);
+    .show-color {
+      background: #{map-get(nth($show-collection, $i+1), primary)};
+      &.dark {
+        background: #{map-get(nth($show-collection, $i+1), secondary)};
+        &:before {
+          background: #{map-get(nth($show-collection, $i+1), tertiary)};
+        }
+      }
+      &.light {
+        background: #{map-get(nth($show-collection, $i+1), tertiary)};
+        &:before {
+          background: #{map-get(nth($show-collection, $i+1), secondary)};
+        }
+      }
+      &.hover-avail {
+        &:hover {
+          background: #{map-get(nth($show-collection, $i+1), tertiary)};
+        }
       }
     }
-  }
-  .show-border {
-    border-color: $show-rush !important;
-    &.dark {
-      border-color: $show-rush-dark !important;
-    }
-    &.light {
-      border-color: $show-rush-light !important;
-    }
-  }
-}
-
-//=====================full
-
-.show-suits {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-suits;
-    }
-  }
-  .icons-block {
-    a {
-      color: $show-suits!important;
-    }
-  }
-  .show-color {
-    background: $show-suits;
-    &.dark {
-      background: $show-suits-dark;
-      &:before {
-        background: $show-suits-light;
+    .show-border {
+      border-color: #{map-get(nth($show-collection, $i+1), primary)} !important;
+      &.dark {
+        border-color: #{map-get(nth($show-collection, $i+1), secondary)} !important;
+      }
+      &.light {
+        border-color: #{map-get(nth($show-collection, $i+1), tertiary)} !important;
       }
     }
-    &.light {
-      background: $show-suits-light;
-      &:before {
-        background: $show-suits-dark;
-      }
-    }
-    &.hover-avail {
-      &:hover {
-        background: $show-suits-light;
-      }
-    }
-  }
-  .show-border {
-    border-color: $show-suits !important;
-    &.dark {
-      border-color: $show-suits-dark !important;
-    }
-    &.light {
-      border-color: $show-suits-light !important;
-    }
-  }
-}
-
-//=====================
-.show-dig {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-dig;
-    }
-  }
-  .show-color {
-    background: $show-dig;
-  }
-}
-
-.show-benched {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-benched;
-    }
-  }
-  .show-color {
-    background: $show-benched;
-  }
-}
-
-.show-bridesmaids {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-bridesmaids;
-    }
-  }
-  .show-color {
-    background: $show-bridesmaids;
-  }
-}
-
-.show-covert-affairs {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-covert;
-    }
-  }
-	.icons-block {
-		a {
-			color: $show-covert !important;
-		}
-	}
-  .show-color {
-    background: $show-covert;
-  }
-}
-
-.show-graceland {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-graceland;
-    }
-  }
-  .icons-block {
-    a {
-      color: $show-graceland!important;
-    }
-  }
-  .show-color {
-    background: $show-graceland;
-  }
-}
-
-.show-royal-pains {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-rp;
-    }
-  }
-  .show-color {
-    background: $show-rp;
-  }
-}
-
-//=====================full
-.show-chrisley {
-  &.show-color-border {
-    &:before {
-      background: $show-chrisley;
-    }
-  }
-  .icons-block {
-    a {
-      color: $show-chrisley!important;
-    }
-  }
-  .show-color {
-    background: $show-chrisley;
-    &.dark {
-      background: $show-chrisley-dark;
-      &:before {
-        background: $show-chrisley-light;
-      }
-    }
-    &.light {
-      background: $show-chrisley-light;
-      &:before {
-        background: $show-chrisley-dark;
-      }
-    }
-    &.hover-avail {
-      &:hover {
-        background: $show-chrisley-light;
-      }
-    }
-  }
-  .show-border {
-    border-color: $show-chrisley !important;
-    &.dark {
-      border-color: $show-chrisley-dark !important;
-    }
-    &.light {
-      border-color: $show-chrisley-light !important;
-    }
-  }
-}
-
-.show-playing-house {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-ph;
-    }
-  }
-  .show-color {
-    background: $show-ph;
-  }
-}
-
-.show-law-and-order {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-law-and-order;
-    }
-  }
-  .icons-block {
-    a {
-      color: $show-law-and-order!important;
-    }
-  }
-  .show-color {
-    background: $show-law-and-order;
-  }
-}
-
-.show-satisfaction {
-  .show-color-border, &.show-color-border {
-    &:before {
-      background: $show-satisfaction;
-    }
-  }
-  .show-color {
-    background: $show-satisfaction;
   }
 }

@@ -39,4 +39,3 @@ features[variable][] = borealis_ri_lazyload
 features[variable][] = borealis_ri_min_size
 features[variable][] = borealis_ri_parents
 features[variable][] = image_toolkit
-features[variable][] = imagefield_focus_media_settings

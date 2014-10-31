@@ -1847,7 +1847,7 @@ function usanetwork_person_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 1,
     ),
   );
 
@@ -2582,7 +2582,7 @@ function usanetwork_person_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 38,
+      'weight' => 2,
     ),
   );
 

@@ -872,7 +872,7 @@ function usanetwork_quiz_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1339,7 +1339,7 @@ function usanetwork_quiz_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_seo_h1',
     'label' => 'H1',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -1413,7 +1413,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 12,
     ),
   );
 
@@ -1605,7 +1605,7 @@ function usanetwork_quiz_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 

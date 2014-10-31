@@ -2,7 +2,7 @@
   Drupal.behaviors.usanetwork_catchall = {
     attach: function(context){
 
-      $catchall_controls = $("#edit-title, #edit-path-alias");
+      $catchall_controls = $("#edit-title, #edit-path-alias, #edit-field-show select");
 
       $catchall_controls.on("change", function() {
         var title = $("#edit-title").val() != ''

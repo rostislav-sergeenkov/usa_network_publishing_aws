@@ -27,9 +27,6 @@ function usanetwork_catchall_field_group_info() {
       1 => 'field_usa_catchall_fixedwidth',
       2 => 'field_automatic_refresh',
       3 => 'field_refresh_time',
-      4 => 'field_seo_h1',
-      5 => 'field_seo_page_title',
-      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -54,7 +51,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Catchall Code',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_usa_catchall_html',
       1 => 'field_usa_catchall_js',
@@ -83,7 +80,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_ideamelt_object_type',
@@ -113,7 +110,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Catchall Files',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_catchall_media',
     ),
@@ -140,7 +137,7 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -160,6 +157,35 @@ function usanetwork_catchall_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|catchall_page|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'catchall_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_page_title',
+      2 => 'title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|catchall_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_usa_og_fields|node|catchall_page|form';
   $field_group->group_name = 'group_usa_og_fields';
   $field_group->entity_type = 'node';
@@ -168,10 +194,9 @@ function usanetwork_catchall_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG Fields',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -257,16 +257,16 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'metatags' => array(
-          'weight' => '6',
-        ),
-        'redirect' => array(
           'weight' => '8',
         ),
+        'redirect' => array(
+          'weight' => '10',
+        ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -437,7 +437,7 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'flag' => array(
           'weight' => '9',
@@ -446,7 +446,7 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

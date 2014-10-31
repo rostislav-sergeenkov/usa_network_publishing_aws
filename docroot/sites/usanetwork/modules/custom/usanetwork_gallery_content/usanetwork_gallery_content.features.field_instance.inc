@@ -1530,7 +1530,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 24,
+      'weight' => 3,
     ),
   );
 
@@ -1812,7 +1812,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 

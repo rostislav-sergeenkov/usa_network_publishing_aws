@@ -59,6 +59,7 @@ features[field_group][] = group_person_additional|node|person|form
 features[field_group][] = group_person_basic|node|person|form
 features[field_group][] = group_person_legal_name|node|person|form
 features[field_group][] = group_person_nitro|node|person|form
+features[field_group][] = group_seo|node|person|form
 features[field_group][] = group_social|node|person|form
 features[field_group][] = group_usa_custom|node|person|form
 features[field_group][] = group_usa_og_fields|node|person|form

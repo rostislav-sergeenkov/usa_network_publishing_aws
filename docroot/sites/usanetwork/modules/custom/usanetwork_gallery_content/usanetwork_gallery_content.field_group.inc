@@ -21,7 +21,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '1',
+    'weight' => '3',
     'children' => array(
       0 => 'field_categories',
       1 => 'field_collection',
@@ -56,8 +56,6 @@ function usanetwork_gallery_content_field_group_info() {
       0 => 'body',
       1 => 'field_cover_item',
       2 => 'field_media_items',
-      3 => 'field_seo_h1',
-      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -82,7 +80,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_send_ideamelt_notification',
@@ -110,7 +108,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_enable_nitro',
       1 => 'field_nitro_action_name',
@@ -126,6 +124,36 @@ function usanetwork_gallery_content_field_group_info() {
     ),
   );
   $export['group_media_gallery_nitro|node|media_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|media_gallery|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'media_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_h1',
+      2 => 'field_seo_page_title',
+      3 => 'title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|media_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -167,12 +195,11 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_person',
       1 => 'field_gallery_type',
-      2 => 'field_seo_page_title',
-      3 => 'group_show_rels',
+      2 => 'group_show_rels',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -197,10 +224,9 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

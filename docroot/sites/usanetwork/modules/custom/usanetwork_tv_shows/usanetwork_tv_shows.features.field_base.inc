@@ -1720,9 +1720,9 @@ function usanetwork_tv_shows_field_default_field_bases() {
           ),
         ),
         'sort' => array(
-          'type' => 'property',
-          'property' => 'title',
           'direction' => 'ASC',
+          'property' => 'title',
+          'type' => 'property',
         ),
         'target_bundles' => array(
           'tv_show' => 'tv_show',

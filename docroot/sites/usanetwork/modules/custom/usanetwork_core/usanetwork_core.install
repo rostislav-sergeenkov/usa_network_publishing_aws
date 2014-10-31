@@ -7,7 +7,7 @@
  * @ingroup USA Network
  */
 
- /**
+/**
  *  Implements hook_install().
  */
 function usanetwork_core_install() {
@@ -192,10 +192,10 @@ function usanetwork_core_set_theme() {
 
   // Enable the aurora_usanetwork theme and set it as the site default.
   db_update('system')
-    ->fields(array('status' => 1))
-    ->condition('type', 'theme')
-    ->condition('name', $theme)
-    ->execute();
+      ->fields(array('status' => 1))
+      ->condition('type', 'theme')
+      ->condition('name', $theme)
+      ->execute();
 
   variable_set('theme_default', $theme);
 
@@ -740,9 +740,9 @@ function usanetwork_core_update_7139() {
  */
 function usanetwork_core_update_7140() {
   $modules_en = array(
-	  'usanetwork_video_endcard',
-	);
-	module_enable($modules_en);
+    'usanetwork_video_endcard',
+  );
+  module_enable($modules_en);
 }
 
 /**
@@ -801,26 +801,25 @@ function usanetwork_core_update_7145() {
   // Unlike modules, profiles aren't added to the system table just because the
   // files are added to /profiles.  They are added after they are active.  We
   // need to add them before that so they are BOTH active and enabled.
-
   // Cache a fully-built schema.
   drupal_get_schema(NULL, TRUE);
   system_rebuild_module_data();
 
   db_update('system')
-    ->fields(array(
-      'status' => 1,
-      'schema_version' => 0,
-    ))
-    ->condition('name', $new_profile, '=')
-    ->execute();
+      ->fields(array(
+        'status' => 1,
+        'schema_version' => 0,
+      ))
+      ->condition('name', $new_profile, '=')
+      ->execute();
 
   db_update('system')
-    ->fields(array(
-      'status' => 0,
-      'schema_version' => -1,
-    ))
-    ->condition('name', $old_profile, '=')
-    ->execute();
+      ->fields(array(
+        'status' => 0,
+        'schema_version' => -1,
+      ))
+      ->condition('name', $old_profile, '=')
+      ->execute();
 
   drupal_flush_all_caches();
 }
@@ -884,4 +883,43 @@ function usanetwork_core_update_7151() {
     'usanetwork_seo',
   );
   module_enable($modules_en);
+}
+
+/**
+ * Disable imagefield_focus and enable focal_point module with setting for usanetwork.
+ */
+function usanetwork_core_update_7152() {
+  $modules_dis = array(
+    'imagefield_focus',
+  );
+  module_disable($modules_dis);
+
+  $modules_en = array(
+    'focal_point',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Move settings for files from imagefield_focus to focal_point table.
+ */
+function usanetwork_core_update_7153() {
+  $image_points = db_select('imagefield_focus_file', 'iff')
+      ->fields('iff', array('fid', 'focus_rect'))
+      ->execute()
+      ->fetchAll();
+  foreach ($image_points as $row) {
+
+    if ($row->focus_rect == "")
+      continue;
+
+    list($x, $y,, ) = explode(',', $row->focus_rect);
+
+    db_merge('focal_point')
+        ->key(array('fid' => $row->fid))
+        ->fields(array(
+          'fid' => $row->fid,
+          'focal_point' => "$x,$y",
+        ))->execute();
+  }
 }

@@ -140,6 +140,43 @@ img, video {
   background: #e65a60;
 }
 
+/*
+$show-burnnotice : #fef200;
+//csi
+$show-csi : #0ab6e8;
+//usadaytime
+$show-usadaytime : #e16e1a;
+//house
+$show-house : #0ab6e8;
+//svu
+$show-svu : #a5e2ff;
+//modernfamily
+$show-modernfamily : #ee991a;
+//themoment
+$show-themoment : #3c6fad;
+//ncis
+$show-ncis : #0ab6e8;
+//ncisla
+$show-ncisla : #ed8606;
+//necessaryroughness
+$show-necessaryroughness : #2fc2f6;
+//partnersincrime
+$show-partnersincrime : #acbade;
+//psych
+$show-psych : #8ec23f;
+//sirens
+$show-sirens : #b72730;
+//summercamp
+$show-summercamp : #fd4833;
+//vanderbiltmds
+$show-vanderbiltmds : #41afdb;
+//whitecollar
+$show-whitecollar : #00b9e6;
+//wwe
+$show-wwe : #bd0c12;
+//westminsterkennelclub
+$show-westminsterkennelclub : #f6b91a;
+*/
 .show-suits .show-color-border:before, .show-suits.show-color-border:before {
   background: #d42027;
 }

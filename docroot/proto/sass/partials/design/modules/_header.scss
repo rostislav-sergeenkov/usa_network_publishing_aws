@@ -157,19 +157,22 @@ header {
       }
     }
     span {
-      background: $usa-logo-back;
+      background: $schedule-tonight;
       border-radius: 50%;
       color: #ffffff;
       display: block;
       font-family: $avantgarde-demi;
       font-size: 12px;
-      height: 14px;
-      line-height: 14px;
+      height: 18px;
+      line-height: 18px;
       position: absolute;
-      right: 24%;
+			margin-right: -30px;
+      right: 50%;
+			padding: 0 2px;
       text-align: center;
       top: 24%;
-      width: 14px;
+			min-width: 18px;
+      width: auto;
       @include breakpoint($bp-1024-width) {
         height: 11px;
         right: 15%;
@@ -340,6 +343,7 @@ header {
     background: $bottom-footer-back;
     border-top: 1px solid transparent;
     display: none;
+		letter-spacing: 0.5px;
     height: auto;
     padding: 40px;
     position: relative;
@@ -375,6 +379,7 @@ header {
             color: $footer-links;
             font-family: $avantgarde-medium;
             font-size: 12px;
+						letter-spacing: 0.5px;
             text-decoration: none;
             text-transform: uppercase;
             span {
@@ -1214,7 +1219,7 @@ header {
 							height: 100%;
 							width: 100%;
 							a {
-								margin: 25px 20px 0 0;
+								margin: 25px 19px 0 0;
 								&:last-child{
 									margin-right: 0;
 								}

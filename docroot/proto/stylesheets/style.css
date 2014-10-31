@@ -1192,19 +1192,22 @@ header .user-profile a.active, header .search a.active {
   background: #757575;
 }
 header .user-profile span, header .search span {
-  background: #d42027;
+  background: #2c2c2c;
   border-radius: 50%;
   color: #ffffff;
   display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
-  height: 14px;
-  line-height: 14px;
+  height: 18px;
+  line-height: 18px;
   position: absolute;
-  right: 24%;
+  margin-right: -30px;
+  right: 50%;
+  padding: 0 2px;
   text-align: center;
   top: 24%;
-  width: 14px;
+  min-width: 18px;
+  width: auto;
 }
 @media (max-width: 1024px) {
   header .user-profile span, header .search span {
@@ -1501,6 +1504,7 @@ header .tab-item {
   background: #757575;
   border-top: 1px solid transparent;
   display: none;
+  letter-spacing: 0.5px;
   height: auto;
   padding: 40px;
   position: relative;
@@ -1546,6 +1550,7 @@ header .tab-item.shows-tab > div li a {
   color: #dcddde;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  letter-spacing: 0.5px;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -2527,7 +2532,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .show-info-social .icons-block a {
-  margin: 25px 20px 0 0;
+  margin: 25px 19px 0 0;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .show-info-social .icons-block a:last-child {
   margin-right: 0;

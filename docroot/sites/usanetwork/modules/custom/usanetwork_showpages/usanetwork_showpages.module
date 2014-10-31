@@ -147,7 +147,9 @@ function usanetwork_showpages_showbanner() {
   $entity = _usanetwork_menu_get_object($entity_type);
   if ($entity) {
     // see if we are on a show node
+    $is_tv_show = FALSE;
     if ($entity_type == 'node' && $entity->type == 'tv_show') {
+      $is_tv_show = TRUE;
       $show = $entity->nid;
       $display_title = field_get_items($entity_type, $entity, 'field_display_title');
       if (is_array($display_title) && !empty($display_title[0]['value'])) {
@@ -179,8 +181,6 @@ function usanetwork_showpages_showbanner() {
       $seo_h1 = field_get_items($entity_type, $entity, 'field_seo_h1');
       if (is_array($seo_h1) && !empty($seo_h1[0]['value'])) {
         $show_h1 = $seo_h1[0]['value'];
-      } else {
-        $show_h1 = $entity->title;
       }
     }
     // looks for nodes with a value in field_show
@@ -235,7 +235,7 @@ function usanetwork_showpages_showbanner() {
       }
     }
     // render the theme function
-    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein, 'show_h1' => $show_h1));
+    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein, 'show_h1' => $show_h1, 'is_tv_show' => $is_tv_show));
   }
 
   return $render;

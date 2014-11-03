@@ -112,45 +112,132 @@ $satisfaction: (
         secondary: #f83a3a,
         tertiary: #f83a3a
 );
-
-/*
-$show-burnnotice : #fef200;
-//csi
-$show-csi : #0ab6e8;
-//usadaytime
-$show-usadaytime : #e16e1a;
-//house
-$show-house : #0ab6e8;
-//svu
-$show-svu : #a5e2ff;
-//modernfamily
-$show-modernfamily : #ee991a;
-//themoment
-$show-themoment : #3c6fad;
-//ncis
-$show-ncis : #0ab6e8;
-//ncisla
-$show-ncisla : #ed8606;
-//necessaryroughness
-$show-necessaryroughness : #2fc2f6;
-//partnersincrime
-$show-partnersincrime : #acbade;
-//psych
-$show-psych : #8ec23f;
-//sirens
-$show-sirens : #b72730;
-//summercamp
-$show-summercamp : #fd4833;
-//vanderbiltmds
-$show-vanderbiltmds : #41afdb;
-//whitecollar
-$show-whitecollar : #00b9e6;
-//wwe
-$show-wwe : #bd0c12;
-//westminsterkennelclub
-$show-westminsterkennelclub : #f6b91a;
-*/
-
+//Burn Notice
+$burn-notice: (
+        show: burn-notice,
+        primary: #fef200,
+        secondary: #fef200,
+        tertiary: #fef200
+);
+//CSI
+$csi: (
+        show: csi,
+        primary: #0ab6e8,
+        secondary: #0ab6e8,
+        tertiary: #0ab6e8
+);
+//Usa Daytime
+$usa-daytime: (
+        show: usa-daytime,
+        primary: #e16e1a,
+        secondary: #e16e1a,
+        tertiary: #e16e1a
+);
+//House
+$house: (
+        show: house,
+        primary: #0ab6e8,
+        secondary: #0ab6e8,
+        tertiary: #0ab6e8
+);
+//SVU
+$svu: (
+        show: svu,
+        primary: #a5e2ff,
+        secondary: #a5e2ff,
+        tertiary: #a5e2ff
+);
+//Modernfamily
+$modernfamily: (
+        show: modernfamily,
+        primary: #ee991a,
+        secondary: #ee991a,
+        tertiary: #ee991a
+);
+//The moment
+$the-moment: (
+        show: the-moment,
+        primary: #3c6fad,
+        secondary: #3c6fad,
+        tertiary: #3c6fad
+);
+//NCIS
+$ncis: (
+        show: ncis,
+        primary: #0ab6e8,
+        secondary: #0ab6e8,
+        tertiary: #0ab6e8
+);
+//NCIS LA
+$ncis-la: (
+        show: ncis-la,
+        primary: #ed8606,
+        secondary: #ed8606,
+        tertiary: #ed8606
+);
+//Necessary roughness
+$necessary-roughness: (
+        show: necessary-roughness,
+        primary: #2fc2f6,
+        secondary: #2fc2f6,
+        tertiary: #2fc2f6
+);
+//Partners in crime
+$partners-in-crime: (
+        show: partners-in-crime,
+        primary: #acbade,
+        secondary: #acbade,
+        tertiary: #acbade
+);
+//Psych
+$psych: (
+        show: psych,
+        primary: #8ec23f,
+        secondary: #8ec23f,
+        tertiary: #8ec23f
+);
+//Sirens
+$sirens: (
+        show: sirens,
+        primary: #b72730,
+        secondary: #b72730,
+        tertiary: #b72730
+);
+//Summer camp
+$summer-camp: (
+        show: summer-camp,
+        primary: #fd4833,
+        secondary: #fd4833,
+        tertiary: #fd4833
+);
+//Vanderbilt MDs
+$vanderbilt-mds: (
+        show: vanderbilt-mds,
+        primary: #41afdb,
+        secondary: #41afdb,
+        tertiary: #41afdb
+);
+//White collar
+$white-collar: (
+        show: white-collar,
+        primary: #00b9e6,
+        secondary: #00b9e6,
+        tertiary: #00b9e6
+);
+//WWE
+$wwe: (
+        show: wwe,
+        primary: #bd0c12,
+        secondary: #bd0c12,
+        tertiary: #bd0c12
+);
+//Westminster Kennel Club
+$westminster-kennel-club: (
+        show: westminster-kennel-club,
+        primary: #f6b91a,
+        secondary: #f6b91a,
+        tertiary: #f6b91a
+);
 
 $show-collection: ($suits, $chrisley, $graceland, $covert-affairs, $royal-pains, $rush, $dig, $benched, $bridesmaids, $playing-house, $law-and-order, $satisfaction);
 //=====================full

@@ -149,3 +149,279 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows').'/js/usanetwork_tv_shows.js';
 }
+
+/**
+ * Selects content related with show content.
+ *
+ * @param integer $limit - limits query items, 0 means that all the available
+ * pieces of content should be pulled.
+ *
+ * @param string $sort - sorting order
+ *
+ * @param string $sort_by - sorting field name
+ *
+ * @param array $filters - consists of filters for query
+ * (you may ignore this param if you want to select all the content):
+ * array(
+ *   'bundle' => array(
+ *     'values' => array('media_gallery', 'post'),
+ *     // OR 'values' => 'media_gallery',
+ *     'operator' => 'IN', // default 'IN' if array and default '=' if not array
+ *   ),
+ * );
+ */
+function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 'DESC', $sort_by = 'entity_id', $filters = array()) {
+  // Apply sorter alias for nodes
+  $node_sorter = _usanetwork_tv_shows_detect_related_content_node_sorter($sort_by);
+
+  // Apply sorter alias for files
+  $file_sorter = _usanetwork_tv_shows_detect_related_content_file_sorter($sort_by);
+
+  // Pull nodes
+  $nodes = _usanetwork_tv_shows_pull_related_nodes($show_id, $limit, $sort, $node_sorter, $filters);
+
+  // Pull files
+  $files = _usanetwork_tv_shows_pull_related_files($show_id, $limit, $sort, $file_sorter, $filters);
+
+  // Merge nodes and files
+  $content_items = array_merge($nodes, $files);
+
+  // Sort items according sorter alias
+  usort($content_items, function($a, $b) use ($node_sorter, $file_sorter, $sort) {
+    $a_sorter = $a->entity_type == 'node'
+      ? $node_sorter
+      : $file_sorter;
+
+    $b_sorter = $b->entity_type == 'node'
+      ? $node_sorter
+      : $file_sorter;
+
+    if ($a->$a_sorter == $b->$b_sorter) {
+      return 0;
+    }
+
+    else {
+      if ($a->$a_sorter > $b->$b_sorter) {
+        return $sort == 'ASC' ? 1 : -1;
+      }
+      return $sort == 'ASC' ? -1 : 1;
+    }
+  });
+die('<pre>'.print_r($content_items, true).'</pre>');
+  // Crop extra elements
+  array_splice($content_items, $limit);
+
+  return $content_items;
+}
+
+/**
+ * Alters node filters
+ */
+function _usanetwork_tv_shows_detect_related_content_node_sorter($sort_by) {
+  // There are no available aliases at the moment.
+  return $sort_by;
+}
+
+/**
+ * Alters file filters
+ */
+function _usanetwork_tv_shows_detect_related_content_file_sorter($sort_by) {
+  $filter_aliases = array(
+    'changed' => 'timestamp',
+  );
+
+  if (isset($filter_aliases[$sort_by])) {
+    return $filter_aliases[$sort_by];
+  }
+
+  return $sort_by;
+}
+
+/**
+ * Pulls nodes related with show content.
+ *
+ * @param integer $limit - limits query items, 0 means that all the available
+ * pieces of content should be pulled.
+ *
+ * @param string $sort - sorting order
+ *
+ * @param string $sort_by - sorting field name
+ *
+ * @param array $filters - consists of filters for query
+ * (you may ignore this param if you want to select all the content):
+ * array(
+ *   'bundle' => array(
+ *     'values' => array('media_gallery', 'post'),
+ *     // OR 'values' => 'media_gallery',
+ *     'operator' => 'IN', // default 'IN' if array and default '=' if not array
+ *   ),
+ * );
+ */
+function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'changed', $filters = array()) {
+  $query = db_select('field_data_field_show', 'fshow');
+  $query->join('node', 'n', 'fshow.entity_id=n.nid');
+  $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
+  $query->fields('n', array('created', 'changed'));
+  $query->condition('fshow.field_show_target_id', $show_id);
+  $query->condition('fshow.deleted', 0);
+  $query->condition('n.status', 1);
+  $query->condition('fshow.entity_type', 'node');
+
+  $query->orderBy($sort_by, $direction);
+
+  if ($limit > 0) {
+    $query->range(0, $limit);
+  }
+
+  if (!empty($filters)) {
+    foreach ($filters as $filter_field_name => $filter_value) {
+      $value = !empty($filter_value['value'])
+        ? $filter_value['value']
+        : NULL;
+
+      if (!empty($value)) {
+        $operator = !empty($filter_value['operator'])
+          ? $filter_value['operator']
+          : (is_array($value)
+            ? 'IN'
+            : '='
+          );
+
+        $query->condition($filter_field_name, $value, $operator);
+      }
+    }
+  }
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Pulls files related with show content.
+ *
+ * @param integer $limit - limits query items, 0 means that all the available
+ * pieces of content should be pulled.
+ *
+ * @param string $sort - sorting order
+ *
+ * @param string $sort_by - sorting field name
+ *
+ * @param array $filters - consists of filters for query
+ * (you may ignore this param if you want to select all the content):
+ * array(
+ *   'bundle' => array(
+ *     'values' => array('media_gallery', 'post'),
+ *     // OR 'values' => 'media_gallery',
+ *     'operator' => 'IN', // default 'IN' if array and default '=' if not array
+ *   ),
+ * );
+ */
+function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
+  $query = db_select('field_data_field_show', 'fshow');
+  $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
+  $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
+  $query->fields('f', array('created', 'timestamp'));
+  $query->condition('fshow.field_show_target_id', $show_id);
+  $query->condition('fshow.deleted', 0);
+  $query->condition('fshow.entity_type', 'file');
+
+  $query->orderBy($sort_by, $direction);
+
+  if ($limit > 0) {
+    $query->range(0, $limit);
+  }
+
+  if (!empty($filters)) {
+    foreach ($filters as $filter_field_name => $filter_value) {
+      $value = !empty($filter_value['value'])
+        ? $filter_value['value']
+        : NULL;
+
+      if (!empty($value)) {
+        $operator = !empty($filter_value['operator'])
+          ? $filter_value['operator']
+          : (is_array($value)
+            ? 'IN'
+            : '='
+          );
+
+        $query->condition($filter_field_name, $value, $operator);
+      }
+    }
+  }
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Renders content from returned settings array of "_usanetwork_tv_shows_get_related_content()".
+ *
+ * @param array $query_result - the result of "_usanetwork_tv_shows_get_related_content()"
+ * @param array $content_view_modes - array of applicable view modes for content:
+ * array(
+ *   'view_mode_name' => array(
+ *     'node' => array(           // applies only for listed nodes
+ *       'node_bundle_name1',
+ *       'node_bundle_name2'
+ *     ),
+ *   ),
+ *   'view_mode_name2' => array(
+ *     'node' => array(),         // applies for all listed nodes
+ *     'file' => array('image'),  // applies for files with type "image"
+ *   ),
+ * );
+ */
+function _usanetwork_tv_shows_render_related_content($query_result, $content_view_modes) {
+  $content = array();
+
+  if (!empty($query_result) && !empty($content_view_modes)) {
+    foreach ($query_result as $query_item) {
+      $view_mode = _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $content_view_modes);
+
+      if (!empty($view_mode)) {
+        $content[] = _usanetwork_tv_shows_render_related_content_item($query_item,$view_mode);
+      }
+    }
+  }
+
+  return $content;
+}
+
+/**
+ * Renders related content item from db_select array.
+ */
+function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mode) {
+  $content_item = array();
+
+  switch ($query_item->entity_type) {
+    case 'node':
+      $content_item = node_view(node_load($query_item->entity_id), $view_mode);
+      break;
+
+    case 'file':
+      $content_item = file_view(file_load($query_item->entity_id), $view_mode);
+  }
+
+  return !empty($content_item)
+    ? render($content_item)
+    : '';
+}
+
+/**
+ * Detects first available view mode for related content item.
+ */
+function _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $content_view_modes) {
+  foreach ($content_view_modes as $view_mode_name => $view_mode_elements) {
+    if (isset($view_mode_elements[$query_item->entity_type])) {
+      if (empty($view_mode_elements[$query_item->entity_type])) {
+        return $view_mode_name;
+      }
+      else {
+        if (in_array($query_item->bundle, $view_mode_elements[$query_item->entity_type])) {
+          return $view_mode_name;
+        }
+      }
+    }
+
+    return NULL;
+  }
+}

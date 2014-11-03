@@ -20,6 +20,13 @@ function usanetwork_ads_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'sitecatalyst_report_suite_id';
+  $strongarm->value = 'nbcutve';
+  $export['sitecatalyst_report_suite_id'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_ads_adobe_tagloader_settings';
   $strongarm->value = array(
     'tag_container_dc' => 'd2',

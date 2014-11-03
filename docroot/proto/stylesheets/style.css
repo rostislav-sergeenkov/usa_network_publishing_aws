@@ -10316,3 +10316,110 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   margin: 10px auto;
   width: 728px;
 }
+
+.search-page .search-results {
+  margin: 20px 10px 10px 20px;
+  min-width: 300px;
+}
+@media (min-width: 1281px) {
+  .search-page .search-results {
+    margin: 50px 30px 30px 50px;
+  }
+}
+@media (max-width: 768px) {
+  .search-page .search-results {
+    margin: 10px 0 0 10px;
+  }
+}
+@media (max-width: 480px) {
+  .search-page .search-results {
+    margin: 5px 0 0 5px;
+  }
+}
+.search-page .search-results ul:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.search-page .search-results ul li {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 10px 10px 0px;
+  position: relative;
+  max-height: 500px;
+  width: 300px;
+  max-width: 600px;
+}
+@media (min-width: 1281px) {
+  .search-page .search-results ul li {
+    padding: 0 20px 20px 0;
+    width: 25%;
+  }
+}
+@media (max-width: 1280px) {
+  .search-page .search-results ul li {
+    width: 33.33333%;
+  }
+}
+@media (max-width: 768px) {
+  .search-page .search-results ul li {
+    width: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .search-page .search-results ul li {
+    padding: 0 5px 5px 0;
+  }
+}
+.search-page .search-results ul li .node {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.search-page .search-results ul li .node a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.search-page .search-results ul li .node a .asset-img {
+  padding-bottom: 27%;
+  height: 100%;
+  width: 100%;
+}
+.search-page .search-results ul li .node a .asset-img img {
+  height: auto;
+  width: 100%;
+}
+.search-page .search-results ul li .node a .meta-wrap {
+  background-color: #a9a9a9;
+  bottom: 0px;
+  height: 33%;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.search-page .search-results ul li .node a .meta-wrap .meta {
+  left: 20px;
+  margin-top: -19px;
+  padding-right: 25px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+.search-page .search-results ul li .node a .meta-wrap .meta .title, .search-page .search-results ul li .node a .meta-wrap .meta .caption {
+  color: #ffffff;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 19px;
+  margin-left: 45px;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-page .search-results ul li .node a .meta-wrap .meta-icon:before {
+  margin-top: -18.5px;
+  left: 18.5px;
+  top: 50%;
+}

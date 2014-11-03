@@ -1,0 +1,94 @@
+.search-page{
+  .search-results{
+    margin: 20px 10px 10px 20px;
+    min-width: 300px;
+    @include breakpoint($bp-min-1281-width){
+      margin: 50px 30px 30px 50px;
+    }
+    @include breakpoint($bp-768-width){
+      margin: 10px 0 0 10px;
+    }
+    @include breakpoint($bp-480-width){
+      margin: 5px 0 0 5px;
+    }
+    ul{
+      @include clear;
+      li{
+        box-sizing: border-box;
+        float: left;
+        padding: 0 10px 10px 0px;
+        position: relative;
+        max-height: 500px;
+        width: 300px;
+        max-width: 600px;
+        @include breakpoint($bp-min-1281-width){
+          padding: 0 20px 20px 0;
+          width: 25%;
+        }
+        @include breakpoint($bp-1280-width){
+          width: 33.33333%;
+        }
+        @include breakpoint($bp-768-width){
+          width: 50%;
+        }
+        @include breakpoint($bp-480-width){
+          padding: 0 5px 5px 0;
+        }
+        .node{
+          height: 100%;
+          position: relative;
+          width: 100%;
+          a{
+            display: block;
+            height: 100%;
+            width: 100%;
+            .asset-img{
+              padding-bottom: 27%;
+              height: 100%;
+              width: 100%;
+              img{
+                height: auto;
+                width: 100%;
+              }
+            }
+            .meta-wrap{
+              background-color: $footer-back;
+              bottom: 0px;
+              height: 33%;
+              position: absolute;
+              width: 100%;
+              z-index: 2;
+              .meta{
+                left: 20px;
+                margin-top: -19px;
+                padding-right: 25px;
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                .title, .caption{
+                  color: #ffffff;
+                  font-family: $avantgarde-medium;
+                  font-size: 12px;
+                  line-height: 19px;
+                  margin-left: 45px;
+                  overflow: hidden;
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+              }
+              .meta-icon{
+                &:before{
+                  margin-top: -18.5px;
+                  left: 18.5px;
+                  top: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

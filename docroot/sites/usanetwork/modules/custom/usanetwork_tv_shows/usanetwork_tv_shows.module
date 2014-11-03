@@ -207,7 +207,7 @@ function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 
       return $sort == 'ASC' ? -1 : 1;
     }
   });
-die('<pre>'.print_r($content_items, true).'</pre>');
+
   // Crop extra elements
   array_splice($content_items, $limit);
 

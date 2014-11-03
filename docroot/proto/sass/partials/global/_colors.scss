@@ -239,7 +239,10 @@ $westminster-kennel-club: (
         tertiary: #f6b91a
 );
 
-$show-collection: ($suits, $chrisley, $graceland, $covert-affairs, $royal-pains, $rush, $dig, $benched, $bridesmaids, $playing-house, $law-and-order, $satisfaction);
+$show-collection: ($suits, $chrisley, $graceland, $covert-affairs, $royal-pains, $rush, $dig, $benched, $bridesmaids,
+$playing-house, $law-and-order, $satisfaction, $burn-notice, $csi, $usa-daytime, $house, $svu, $modernfamily, $the-moment,
+$ncis, $ncis-la, $necessary-roughness, $partners-in-crime, $psych, $sirens, $summer-camp, $vanderbilt-mds, $white-collar,
+$wwe, $westminster-kennel-club);
 //=====================full
 @for $i from 0 to length($show-collection) {
   .show-#{map-get(nth($show-collection, $i+1), show)} {

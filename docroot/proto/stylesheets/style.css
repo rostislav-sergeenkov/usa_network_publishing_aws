@@ -115,10 +115,10 @@ img, video {
   font-weight: normal;
   font-style: normal;
 }
-.show-color-border {
+.show-color-border, .asset-img.show {
   position: relative;
 }
-.show-color-border:before {
+.show-color-border:before, .asset-img.show:before {
   background: #d42027;
   display: block;
   content: '';
@@ -140,7 +140,7 @@ img, video {
   background: #e65a60;
 }
 
-.show-suits .show-color-border:before, .show-suits.show-color-border:before {
+.show-suits.show-color-border:before, .show-suits.asset-img.show:before {
   background: #d42027;
 }
 .show-suits .icons-block a {
@@ -174,7 +174,7 @@ img, video {
   border-color: #be1c23 !important;
 }
 
-.show-chrisley .show-color-border:before, .show-chrisley.show-color-border:before {
+.show-chrisley.show-color-border:before, .show-chrisley.asset-img.show:before {
   background: #f2ad2c;
 }
 .show-chrisley .icons-block a {
@@ -208,7 +208,7 @@ img, video {
   border-color: #ebb249 !important;
 }
 
-.show-graceland .show-color-border:before, .show-graceland.show-color-border:before {
+.show-graceland.show-color-border:before, .show-graceland.asset-img.show:before {
   background: #0d3b6e;
 }
 .show-graceland .icons-block a {
@@ -242,7 +242,7 @@ img, video {
   border-color: #113359 !important;
 }
 
-.show-covert-affairs .show-color-border:before, .show-covert-affairs.show-color-border:before {
+.show-covert-affairs.show-color-border:before, .show-covert-affairs.asset-img.show:before {
   background: #c50504;
 }
 .show-covert-affairs .icons-block a {
@@ -276,7 +276,7 @@ img, video {
   border-color: #b10808 !important;
 }
 
-.show-royal-pains .show-color-border:before, .show-royal-pains.show-color-border:before {
+.show-royal-pains.show-color-border:before, .show-royal-pains.asset-img.show:before {
   background: #7cd7fd;
 }
 .show-royal-pains .icons-block a {
@@ -310,7 +310,7 @@ img, video {
   border-color: #68c5ec !important;
 }
 
-.show-rush .show-color-border:before, .show-rush.show-color-border:before {
+.show-rush.show-color-border:before, .show-rush.asset-img.show:before {
   background: #2665aa;
 }
 .show-rush .icons-block a {
@@ -344,7 +344,7 @@ img, video {
   border-color: #5d8dc6 !important;
 }
 
-.show-dig .show-color-border:before, .show-dig.show-color-border:before {
+.show-dig.show-color-border:before, .show-dig.asset-img.show:before {
   background: #e98e11;
 }
 .show-dig .icons-block a {
@@ -378,7 +378,7 @@ img, video {
   border-color: #e98e11 !important;
 }
 
-.show-benched .show-color-border:before, .show-benched.show-color-border:before {
+.show-benched.show-color-border:before, .show-benched.asset-img.show:before {
   background: #962e8d;
 }
 .show-benched .icons-block a {
@@ -412,7 +412,7 @@ img, video {
   border-color: #962e8d !important;
 }
 
-.show-bridesmaids .show-color-border:before, .show-bridesmaids.show-color-border:before {
+.show-bridesmaids.show-color-border:before, .show-bridesmaids.asset-img.show:before {
   background: #ff68be;
 }
 .show-bridesmaids .icons-block a {
@@ -446,7 +446,7 @@ img, video {
   border-color: #ff68be !important;
 }
 
-.show-playing-house .show-color-border:before, .show-playing-house.show-color-border:before {
+.show-playing-house.show-color-border:before, .show-playing-house.asset-img.show:before {
   background: #79b365;
 }
 .show-playing-house .icons-block a {
@@ -480,7 +480,7 @@ img, video {
   border-color: #79b365 !important;
 }
 
-.show-law-and-order .show-color-border:before, .show-law-and-order.show-color-border:before {
+.show-law-and-order.show-color-border:before, .show-law-and-order.asset-img.show:before {
   background: #80a677;
 }
 .show-law-and-order .icons-block a {
@@ -514,7 +514,7 @@ img, video {
   border-color: #80a677 !important;
 }
 
-.show-satisfaction .show-color-border:before, .show-satisfaction.show-color-border:before {
+.show-satisfaction.show-color-border:before, .show-satisfaction.asset-img.show:before {
   background: #f83a3a;
 }
 .show-satisfaction .icons-block a {
@@ -548,7 +548,7 @@ img, video {
   border-color: #f83a3a !important;
 }
 
-.show-burn-notice .show-color-border:before, .show-burn-notice.show-color-border:before {
+.show-burn-notice.show-color-border:before, .show-burn-notice.asset-img.show:before {
   background: #fef200;
 }
 .show-burn-notice .icons-block a {
@@ -582,7 +582,7 @@ img, video {
   border-color: #fef200 !important;
 }
 
-.show-csi .show-color-border:before, .show-csi.show-color-border:before {
+.show-csi.show-color-border:before, .show-csi.asset-img.show:before {
   background: #0ab6e8;
 }
 .show-csi .icons-block a {
@@ -616,7 +616,7 @@ img, video {
   border-color: #0ab6e8 !important;
 }
 
-.show-usa-daytime .show-color-border:before, .show-usa-daytime.show-color-border:before {
+.show-usa-daytime.show-color-border:before, .show-usa-daytime.asset-img.show:before {
   background: #e16e1a;
 }
 .show-usa-daytime .icons-block a {
@@ -650,7 +650,7 @@ img, video {
   border-color: #e16e1a !important;
 }
 
-.show-house .show-color-border:before, .show-house.show-color-border:before {
+.show-house.show-color-border:before, .show-house.asset-img.show:before {
   background: #0ab6e8;
 }
 .show-house .icons-block a {
@@ -684,7 +684,7 @@ img, video {
   border-color: #0ab6e8 !important;
 }
 
-.show-svu .show-color-border:before, .show-svu.show-color-border:before {
+.show-svu.show-color-border:before, .show-svu.asset-img.show:before {
   background: #a5e2ff;
 }
 .show-svu .icons-block a {
@@ -718,41 +718,41 @@ img, video {
   border-color: #a5e2ff !important;
 }
 
-.show-modernfamily .show-color-border:before, .show-modernfamily.show-color-border:before {
+.show-modern-family.show-color-border:before, .show-modern-family.asset-img.show:before {
   background: #ee991a;
 }
-.show-modernfamily .icons-block a {
+.show-modern-family .icons-block a {
   color: #ee991a!important;
 }
-.show-modernfamily .show-color {
+.show-modern-family .show-color {
   background: #ee991a;
 }
-.show-modernfamily .show-color.secondary {
+.show-modern-family .show-color.secondary {
   background: #ee991a;
 }
-.show-modernfamily .show-color.secondary:before {
+.show-modern-family .show-color.secondary:before {
   background: #ee991a;
 }
-.show-modernfamily .show-color.tertiary {
+.show-modern-family .show-color.tertiary {
   background: #ee991a;
 }
-.show-modernfamily .show-color.tertiary:before {
+.show-modern-family .show-color.tertiary:before {
   background: #ee991a;
 }
-.show-modernfamily .show-color.hover-avail:hover {
+.show-modern-family .show-color.hover-avail:hover {
   background: #ee991a;
 }
-.show-modernfamily .show-border {
+.show-modern-family .show-border {
   border-color: #ee991a !important;
 }
-.show-modernfamily .show-border.secondary {
+.show-modern-family .show-border.secondary {
   border-color: #ee991a !important;
 }
-.show-modernfamily .show-border.tertiary {
+.show-modern-family .show-border.tertiary {
   border-color: #ee991a !important;
 }
 
-.show-the-moment .show-color-border:before, .show-the-moment.show-color-border:before {
+.show-the-moment.show-color-border:before, .show-the-moment.asset-img.show:before {
   background: #3c6fad;
 }
 .show-the-moment .icons-block a {
@@ -786,7 +786,7 @@ img, video {
   border-color: #3c6fad !important;
 }
 
-.show-ncis .show-color-border:before, .show-ncis.show-color-border:before {
+.show-ncis.show-color-border:before, .show-ncis.asset-img.show:before {
   background: #0ab6e8;
 }
 .show-ncis .icons-block a {
@@ -820,7 +820,7 @@ img, video {
   border-color: #0ab6e8 !important;
 }
 
-.show-ncis-la .show-color-border:before, .show-ncis-la.show-color-border:before {
+.show-ncis-la.show-color-border:before, .show-ncis-la.asset-img.show:before {
   background: #ed8606;
 }
 .show-ncis-la .icons-block a {
@@ -854,7 +854,7 @@ img, video {
   border-color: #ed8606 !important;
 }
 
-.show-necessary-roughness .show-color-border:before, .show-necessary-roughness.show-color-border:before {
+.show-necessary-roughness.show-color-border:before, .show-necessary-roughness.asset-img.show:before {
   background: #2fc2f6;
 }
 .show-necessary-roughness .icons-block a {
@@ -888,7 +888,7 @@ img, video {
   border-color: #2fc2f6 !important;
 }
 
-.show-partners-in-crime .show-color-border:before, .show-partners-in-crime.show-color-border:before {
+.show-partners-in-crime.show-color-border:before, .show-partners-in-crime.asset-img.show:before {
   background: #acbade;
 }
 .show-partners-in-crime .icons-block a {
@@ -922,7 +922,7 @@ img, video {
   border-color: #acbade !important;
 }
 
-.show-psych .show-color-border:before, .show-psych.show-color-border:before {
+.show-psych.show-color-border:before, .show-psych.asset-img.show:before {
   background: #8ec23f;
 }
 .show-psych .icons-block a {
@@ -956,7 +956,7 @@ img, video {
   border-color: #8ec23f !important;
 }
 
-.show-sirens .show-color-border:before, .show-sirens.show-color-border:before {
+.show-sirens.show-color-border:before, .show-sirens.asset-img.show:before {
   background: #b72730;
 }
 .show-sirens .icons-block a {
@@ -990,7 +990,7 @@ img, video {
   border-color: #b72730 !important;
 }
 
-.show-summer-camp .show-color-border:before, .show-summer-camp.show-color-border:before {
+.show-summer-camp.show-color-border:before, .show-summer-camp.asset-img.show:before {
   background: #fd4833;
 }
 .show-summer-camp .icons-block a {
@@ -1024,7 +1024,7 @@ img, video {
   border-color: #fd4833 !important;
 }
 
-.show-vanderbilt-mds .show-color-border:before, .show-vanderbilt-mds.show-color-border:before {
+.show-vanderbilt-mds.show-color-border:before, .show-vanderbilt-mds.asset-img.show:before {
   background: #41afdb;
 }
 .show-vanderbilt-mds .icons-block a {
@@ -1058,7 +1058,7 @@ img, video {
   border-color: #41afdb !important;
 }
 
-.show-white-collar .show-color-border:before, .show-white-collar.show-color-border:before {
+.show-white-collar.show-color-border:before, .show-white-collar.asset-img.show:before {
   background: #00b9e6;
 }
 .show-white-collar .icons-block a {
@@ -1092,7 +1092,7 @@ img, video {
   border-color: #00b9e6 !important;
 }
 
-.show-wwe .show-color-border:before, .show-wwe.show-color-border:before {
+.show-wwe.show-color-border:before, .show-wwe.asset-img.show:before {
   background: #bd0c12;
 }
 .show-wwe .icons-block a {
@@ -1126,7 +1126,7 @@ img, video {
   border-color: #bd0c12 !important;
 }
 
-.show-westminster-kennel-club .show-color-border:before, .show-westminster-kennel-club.show-color-border:before {
+.show-westminster-kennel-club.show-color-border:before, .show-westminster-kennel-club.asset-img.show:before {
   background: #f6b91a;
 }
 .show-westminster-kennel-club .icons-block a {

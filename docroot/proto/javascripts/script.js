@@ -58,12 +58,12 @@
   //move h1 tag for show page
   function showTitleMove() {
     if (window.innerWidth < 769 && !($('.show-title-block').hasClass('inner'))) {
-      $('.show-title-block').removeClass('secondary');
+      $('.show-title-block').addClass('secondary');
       $('.show-title-block').addClass('inner');
       $('.show-title-block').appendTo('.show-title-wrapper');
     }
     else if(window.innerWidth >= 769 && ($('.show-title-block').hasClass('inner'))) {
-      $('.show-title-block').addClass('secondary');
+      $('.show-title-block').removeClass('secondary');
       $('.show-title-block').removeClass('inner');
       $('.show-title-block').appendTo('.show-title-block-wrapper');
       if ($(".main-menu-open a").hasClass('active')) {

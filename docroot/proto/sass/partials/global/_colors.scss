@@ -1,4 +1,4 @@
-.show-color-border {
+.show-color-border, .asset-img.show {
   position: relative;
   &:before {
     background: $usa-logo-back;
@@ -148,8 +148,8 @@ $svu: (
         tertiary: #a5e2ff
 );
 //Modernfamily
-$modernfamily: (
-        show: modernfamily,
+$modern-family: (
+        show: modern-family,
         primary: #ee991a,
         secondary: #ee991a,
         tertiary: #ee991a
@@ -240,13 +240,13 @@ $westminster-kennel-club: (
 );
 
 $show-collection: ($suits, $chrisley, $graceland, $covert-affairs, $royal-pains, $rush, $dig, $benched, $bridesmaids,
-$playing-house, $law-and-order, $satisfaction, $burn-notice, $csi, $usa-daytime, $house, $svu, $modernfamily, $the-moment,
+$playing-house, $law-and-order, $satisfaction, $burn-notice, $csi, $usa-daytime, $house, $svu, $modern-family, $the-moment,
 $ncis, $ncis-la, $necessary-roughness, $partners-in-crime, $psych, $sirens, $summer-camp, $vanderbilt-mds, $white-collar,
 $wwe, $westminster-kennel-club);
 //=====================full
 @for $i from 0 to length($show-collection) {
   .show-#{map-get(nth($show-collection, $i+1), show)} {
-    .show-color-border, &.show-color-border {
+    &.show-color-border, &.asset-img.show {
       &:before {
         background: #{map-get(nth($show-collection, $i+1), primary)};
       }

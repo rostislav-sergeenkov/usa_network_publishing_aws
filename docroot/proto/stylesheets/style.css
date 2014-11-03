@@ -4252,6 +4252,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (max-width: 1280px) {
   .aspot-and-episodes .episodes-list ul li .meta {
     left: 10px;
+    padding-right: 140px;
+    width: 100%;
   }
 }
 .aspot-and-episodes .episodes-list ul li .meta .episode-title, .aspot-and-episodes .episodes-list ul li .meta .caption {
@@ -4290,7 +4292,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 .aspot-and-episodes .episodes-list ul .episode-image {
   float: right;
   height: 100%;
-  max-width: 35%;
+  max-width: 30.5%;
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes .episodes-list ul .episode-image {
+    max-width: 124px;
+  }
 }
 .aspot-and-episodes .episodes-list ul .episode-image img {
   width: 100%;
@@ -4456,8 +4463,18 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     display: block;
   }
 }
+@media (max-width: 640px) {
+  .new-show-page .aspot-and-episodes .episodes-list ul li {
+    height: 70px;
+  }
+}
 .new-show-page .aspot-and-episodes .episodes-list ul li .episode-image {
   max-width: 50%;
+}
+@media (max-width: 640px) {
+  .new-show-page .aspot-and-episodes .episodes-list ul li .episode-image {
+    max-width: 124px;
+  }
 }
 .new-show-page .aspot-and-episodes .episodes-list ul.open li {
   display: block;

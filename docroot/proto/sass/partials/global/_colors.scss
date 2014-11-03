@@ -15,7 +15,7 @@
 
 .show-color {
   background: $usa-logo-back;
-  &.dark {
+  &.secondary {
     background: adjust-color($usa-logo-back, $saturation: 30, $lightness: -10);
   }
   &.hover-avail {
@@ -258,13 +258,13 @@ $wwe, $westminster-kennel-club);
     }
     .show-color {
       background: #{map-get(nth($show-collection, $i+1), primary)};
-      &.dark {
+      &.secondary {
         background: #{map-get(nth($show-collection, $i+1), secondary)};
         &:before {
           background: #{map-get(nth($show-collection, $i+1), tertiary)};
         }
       }
-      &.light {
+      &.tertiary {
         background: #{map-get(nth($show-collection, $i+1), tertiary)};
         &:before {
           background: #{map-get(nth($show-collection, $i+1), secondary)};
@@ -278,10 +278,10 @@ $wwe, $westminster-kennel-club);
     }
     .show-border {
       border-color: #{map-get(nth($show-collection, $i+1), primary)} !important;
-      &.dark {
+      &.secondary {
         border-color: #{map-get(nth($show-collection, $i+1), secondary)} !important;
       }
-      &.light {
+      &.tertiary {
         border-color: #{map-get(nth($show-collection, $i+1), tertiary)} !important;
       }
     }

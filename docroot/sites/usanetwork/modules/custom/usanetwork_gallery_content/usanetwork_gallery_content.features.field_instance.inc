@@ -106,7 +106,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -500,7 +500,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -980,7 +980,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_multiselect',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 

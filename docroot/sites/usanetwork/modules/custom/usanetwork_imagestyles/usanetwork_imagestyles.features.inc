@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function usanetwork_imagestyles_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function usanetwork_imagestyles_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -40,6 +39,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '1230x500',
   );
 
   // Exported image style: 1245x709.
@@ -62,6 +62,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '1245x709',
   );
 
   // Exported image style: 1400_wide.
@@ -85,6 +86,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '1400_wide',
   );
 
   // Exported image style: 146x122.
@@ -107,6 +109,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '146x122',
   );
 
   // Exported image style: 221x124_video.
@@ -129,6 +132,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '221x124_video',
   );
 
   // Exported image style: 2490x1418.
@@ -151,6 +155,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '2490x1418',
   );
 
   // Exported image style: 300x169_video.
@@ -173,6 +178,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '300x169_video',
   );
 
   // Exported image style: 300x250.
@@ -195,6 +201,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '300x250',
   );
 
   // Exported image style: 300x250_on_now.
@@ -217,6 +224,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '300x250_on_now',
   );
 
   // Exported image style: 450x183_globalnav.
@@ -239,6 +247,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '450x183_globalnav',
   );
 
   // Exported image style: 600x500.
@@ -261,6 +270,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '600x500',
   );
 
   // Exported image style: 615x250.
@@ -283,6 +293,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => '615x250',
   );
 
   // Exported image style: 615x350.
@@ -305,28 +316,30 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => '615x350',
   );
 
   // Exported image style: block_cover_title_lg.
   $styles['block_cover_title_lg'] = array(
     'name' => 'block_cover_title_lg',
+    'label' => 'block_cover_title_lg',
     'effects' => array(
-      1 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      13 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 300,
           'height' => 250,
-          'strength' => 'high',
         ),
-        'weight' => 1,
+        'weight' => -10,
       ),
-      2 => array(
+      6 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -339,7 +352,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => 300,
           'height' => 250,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
@@ -347,23 +360,24 @@ function usanetwork_imagestyles_image_default_styles() {
   // Exported image style: gallery_block_cover.
   $styles['gallery_block_cover'] = array(
     'name' => 'gallery_block_cover',
+    'label' => 'gallery_block_cover',
     'effects' => array(
-      6 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      17 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 268,
           'height' => 223,
-          'strength' => 'high',
         ),
-        'weight' => 1,
+        'weight' => -10,
       ),
-      7 => array(
+      16 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -376,7 +390,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => 268,
           'height' => 223,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
@@ -384,23 +398,24 @@ function usanetwork_imagestyles_image_default_styles() {
   // Exported image style: gallery_full_photo.
   $styles['gallery_full_photo'] = array(
     'name' => 'gallery_full_photo',
+    'label' => 'gallery_full_photo',
     'effects' => array(
-      13 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      20 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 1024,
           'height' => 767,
-          'strength' => 'low',
         ),
-        'weight' => -9,
+        'weight' => -10,
       ),
-      14 => array(
+      19 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -413,7 +428,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => 1024,
           'height' => 767,
         ),
-        'weight' => -8,
+        'weight' => -9,
       ),
     ),
   );
@@ -421,23 +436,24 @@ function usanetwork_imagestyles_image_default_styles() {
   // Exported image style: person_cover.
   $styles['person_cover'] = array(
     'name' => 'person_cover',
+    'label' => 'person_cover',
     'effects' => array(
-      1 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      23 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 760,
           'height' => 879,
-          'strength' => 'high',
         ),
-        'weight' => 1,
+        'weight' => -10,
       ),
-      2 => array(
+      22 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -450,7 +466,7 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => 760,
           'height' => 879,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
@@ -475,28 +491,30 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'search_result',
   );
 
   // Exported image style: thumb_tiny.
   $styles['thumb_tiny'] = array(
     'name' => 'thumb_tiny',
+    'label' => 'thumb_tiny',
     'effects' => array(
-      1 => array(
-        'label' => 'Focus Scale And Crop',
-        'help' => 'Scale and crop based on data provided by <em>ImageField Focus</em>.',
-        'effect callback' => 'imagefield_focus_scale_and_crop_effect',
-        'form callback' => 'imagefield_focus_scale_and_crop_form',
-        'summary theme' => 'imagefield_focus_scale_and_crop_summary',
-        'module' => 'imagefield_focus',
-        'name' => 'imagefield_focus_scale_and_crop',
+      26 => array(
+        'label' => 'Focal Point Scale And Crop',
+        'help' => 'Scale and crop based on data provided by <em>Focal Point</em>.',
+        'effect callback' => 'focal_point_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'focal_point',
+        'name' => 'focal_point_scale_and_crop',
         'data' => array(
           'width' => 42,
           'height' => 42,
-          'strength' => 'high',
         ),
-        'weight' => 1,
+        'weight' => -10,
       ),
-      2 => array(
+      25 => array(
         'label' => 'Scale and crop',
         'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
         'effect callback' => 'image_scale_and_crop_effect',
@@ -509,12 +527,12 @@ function usanetwork_imagestyles_image_default_styles() {
           'width' => 42,
           'height' => 42,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
 
-// Exported image style: usa_image_focus.
+  // Exported image style: usa_image_focus.
   $styles['usa_image_focus'] = array(
     'name' => 'usa_image_focus',
     'effects' => array(
@@ -535,6 +553,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'usa_image_focus',
   );
 
   // Exported image style: video_full.
@@ -558,6 +577,7 @@ function usanetwork_imagestyles_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'video_full',
   );
 
   return $styles;

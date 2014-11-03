@@ -6656,11 +6656,9 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .view-usa-cast .carousel-item img {
   display: block;
-}
-@media (min-width: 330px) {
-  .view-usa-cast .carousel-item img {
+  /*@include breakpoint($bp-carousel-smallest) {
     max-width: none;
-  }
+  }*/
 }
 .view-usa-cast .carousel-item a.article-link {
   display: block;

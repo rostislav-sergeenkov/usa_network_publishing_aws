@@ -78,9 +78,9 @@
     img {
 //      max-width: 169px;
       display: block;
-      @include breakpoint($bp-carousel-smallest) {
+      /*@include breakpoint($bp-carousel-smallest) {
         max-width: none;
-      }
+      }*/
     }
     a.article-link {
       display: block;

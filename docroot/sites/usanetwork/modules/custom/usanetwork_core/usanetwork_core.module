@@ -8,6 +8,25 @@ function usanetwork_core_js_alter(&$javascript) {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_core_menu() {
+  $items = array();
+
+  $items['admin/structure/content-type-aliases'] = array(
+    'title' => t('Content type aliases'),
+    'description' => t('Allows to create human-readable aliases for content types'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_core_ct_alias_form'),
+    'access arguments' => array('administer content types'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'usanetwork_core.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Helper function. Creates the menu items.
  * invoked on install
  */
@@ -312,4 +331,84 @@ function usanetwork_core_pathauto_punctuation_chars_alter(&$punctuation) {
     $punctuation['double_curly_right'] = array('value' => '”', 'name' => t('Double curly right'));
     $punctuation['single_curly_left']  = array('value' => '‘', 'name' => t('Single curly left'));
     $punctuation['single_curly_right'] = array('value' => '’', 'name' => t('Single curly right'));
+}
+
+/**
+ * Returns node content type name alias by machine readable name.
+ * If alias does not exist it returns human readable name.
+ */
+function usanetwork_core_get_content_type_alias($content_type_name) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  $alias = variable_get($ctalias_variable_name, NULL);
+
+  if (!empty($alias)) {
+    return $alias;
+  }
+
+  $content_types = node_type_get_types();
+
+  if (isset($content_types[$content_type_name]->name)) {
+    return $content_types[$content_type_name]->name;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns file type name alias by machine readable name.
+ * If alias does not exist it returns human readable name.
+ */
+function usanetwork_core_get_file_type_alias($file_type_name) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  $alias = variable_get($ftalias_variable_name, NULL);
+
+  if (!empty($alias)) {
+    return $alias;
+  }
+
+  $file_types = file_type_get_enabled_types();
+
+  if (isset($file_types[$file_type_name]->label)) {
+    return $file_types[$file_type_name]->label;
+  }
+
+  return NULL;
+}
+
+/**
+ * Sets node content type name alias.
+ */
+function usanetwork_core_set_content_type_alias($content_type_name, $alias) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  variable_set($ctalias_variable_name, $alias);
+}
+
+/**
+ * Sets file type name alias.
+ */
+function usanetwork_core_set_file_type_alias($file_type_name, $alias) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  variable_set($ftalias_variable_name, $alias);
+}
+
+/**
+ * Deletes node content type name alias.
+ */
+function usanetwork_core_delete_content_type_alias($content_type_name) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  variable_del($ctalias_variable_name);
+}
+
+/**
+ * Deletes file type name alias.
+ */
+function usanetwork_core_delete_file_type_alias($file_type_name) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  variable_del($ftalias_variable_name);
 }

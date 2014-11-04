@@ -909,9 +909,10 @@ function usanetwork_tv_shows_field_group_info() {
       3 => 'field_pathauto_alias',
       4 => 'field_usa_tv_show_color',
       5 => 'field_facebook_tracking_enabled',
-      6 => 'group_usa_tv_promo_vids',
-      7 => 'group_usa_tv_promo',
-      8 => 'group_show_aspots',
+      6 => 'field_usa_tv_related_shows',
+      7 => 'group_usa_tv_promo_vids',
+      8 => 'group_usa_tv_promo',
+      9 => 'group_show_aspots',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

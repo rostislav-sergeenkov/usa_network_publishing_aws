@@ -41,23 +41,37 @@ function usanetwork_tv_shows_update_7015() {
 }
 
 /**
+ * Function that contain tv_show node titles.
+ */
+function usanetwork_tv_shows_syndicated() {
+  return array(
+    'CSI',
+    'House',
+    'Law & Order: Criminal Intent',
+    'Law & Order: SVU',
+    'Modern Family',
+    'NCIS',
+    'NCIS: Los Angeles',
+    'WWE Raw',
+    'Westminster Kennel Club Dog Show',
+  );
+}
+
+/**
  * Moving settings related to syndicated/not syndicated shows
  */
 function usanetwork_tv_shows_update_7016() {
-  module_load_include('inc', 'usanetwork_tv_shows', 'usanetwork_tv_shows.features.syndicated');
-  if (function_exists('usanetwork_tv_shows_syndicated_state') && $settings = usanetwork_tv_shows_syndicated_state()) {
+  if (function_exists('usanetwork_tv_shows_syndicated') && $settings = usanetwork_tv_shows_syndicated()) {
     $query = db_select('node', 'n');
     $query->fields('n', array('nid', 'title'));
     $query->condition('n.type', 'tv_show');
     $query->condition('n.status', 1);
-    $query->condition('n.title', array_keys($settings));
+    $query->condition('n.title', array_values($settings));
     $result = $query->execute()->fetchAll();
-    foreach ($result as $value) {
-      if ($settings[$value->title]['syndicated'] == TRUE) {
-        $node = node_load($value->nid);
-        $node->field_syndicated[$node->language][0]['value'] = 1;
-        node_save($node);
-      }
+    foreach ($result as $row) {
+      $node = node_load($row->nid);
+      $node->field_syndicated[$node->language][0]['value'] = 1;
+      node_save($node);
     }
   }
 }

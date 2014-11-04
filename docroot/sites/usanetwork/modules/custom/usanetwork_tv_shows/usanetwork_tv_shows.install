@@ -31,15 +31,21 @@ function usanetwork_tv_shows_update_7000() {
 }
 
 /**
- * Revert feature with moving settings related to syndicated/not syndicated shows
+ * Revert feature related to syndicated/not syndicated shows
  */
-function usanetwork_tv_shows_update_7007() {
+function usanetwork_tv_shows_update_7015() {
   $field = field_info_instance('node', 'field_syndicated', 'tv_show');
   if (is_null($field)) {
     features_revert_module('usanetwork_tv_shows');
   }
-  if (function_exists('usanetwork_blocks_usanetwork_blocks_defaults') && $settings = usanetwork_blocks_usanetwork_blocks_defaults()) {
+}
 
+/**
+ * Moving settings related to syndicated/not syndicated shows
+ */
+function usanetwork_tv_shows_update_7016() {
+  module_load_include('inc', 'usanetwork_tv_shows', 'usanetwork_tv_shows.features.syndicated');
+  if (function_exists('usanetwork_tv_shows_syndicated_state') && $settings = usanetwork_tv_shows_syndicated_state()) {
     $query = db_select('node', 'n');
     $query->fields('n', array('nid', 'title'));
     $query->condition('n.type', 'tv_show');
@@ -47,9 +53,9 @@ function usanetwork_tv_shows_update_7007() {
     $query->condition('n.title', array_keys($settings));
     $result = $query->execute()->fetchAll();
     foreach ($result as $value) {
-      $node = node_load($value->nid);
-      if ($node->field_syndicated['und'][0]['value'] != $settings[$node->title]['syndicated']) {
-        $node->field_syndicated['und'][0]['value'] = $settings[$node->title]['syndicated'];
+      if ($settings[$value->title]['syndicated'] == TRUE) {
+        $node = node_load($value->nid);
+        $node->field_syndicated[$node->language][0]['value'] = 1;
         node_save($node);
       }
     }

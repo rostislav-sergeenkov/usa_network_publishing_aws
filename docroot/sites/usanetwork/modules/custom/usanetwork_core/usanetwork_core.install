@@ -923,3 +923,12 @@ function usanetwork_core_update_7153() {
         ))->execute();
   }
 }
+
+/**
+ * Enables 'program_guide' module if it disabled.
+ */
+function usanetwork_core_update_7154() {
+  if (!module_exists('program_guide')) {
+    module_enable(array('program_guide'));
+  }
+}

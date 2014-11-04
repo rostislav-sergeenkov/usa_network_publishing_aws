@@ -619,3 +619,60 @@ function _usanetwork_home_show_menu_featured_block() {
 
   return '';
 }
+
+/**
+ * Returns show by period type.
+ * @param string $period = 'now' || 'next'
+ */
+function _usanetwork_home_get_running_show($period = 'now') {
+  if (!module_exists('program_guide')) {
+    return;
+  }
+
+  $period_callbacks = array(
+    'now' => '_usanetwork_home_get_running_now_show',
+    'next' => '_usanetwork_home_get_running_next_show',
+  );
+
+  if (!empty($period) && isset($period_callbacks[$period])) {
+    $program_object = $period_callbacks[$period]();
+
+    if (!empty($program_object)) {
+      $program_entity = entity_load('program', array($program_object->guid));
+
+      if (!empty($program_entity) && isset($program_entity[$program_object->guid])) {
+        return reset($program_entity);
+      }
+
+      return $program_entity;
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns query object with current running show.
+ */
+function _usanetwork_home_get_running_now_show() {;
+  $query = db_select('programs', 'p');
+  $query->fields('p', array());
+  $query->condition('p.start_time', REQUEST_TIME, '<');
+  $query->condition('p.end_time', REQUEST_TIME, '>');
+  $query->range(0, 1);
+
+  return $query->execute()->fetch();
+}
+
+/**
+ * Returns query object with next running show.
+ */
+function _usanetwork_home_get_running_next_show() {
+  $query = db_select('programs', 'p');
+  $query->fields('p', array());
+  $query->condition('p.start_time', REQUEST_TIME, '>');
+  $query->orderBy('p.start_time', 'ASC');
+  $query->range(0, 1);
+
+  return $query->execute()->fetch();
+}

@@ -1777,7 +1777,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 22,
+      'weight' => 74,
     ),
   );
 
@@ -4223,7 +4223,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 24,
+      'weight' => 76,
     ),
   );
 
@@ -4310,7 +4310,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 85,
+      'weight' => 75,
     ),
   );
 
@@ -7192,7 +7192,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 63,
+      'weight' => 72,
     ),
   );
 
@@ -7350,7 +7350,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 73,
     ),
   );
 
@@ -8902,6 +8902,77 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_syndicated'
+  $field_instances['node-tv_show-field_syndicated'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 127,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_syndicated',
+    'label' => 'Syndicated',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 71,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_show-field_trend_base_url'
   $field_instances['node-tv_show-field_trend_base_url'] = array(
     'bundle' => 'tv_show',
@@ -9354,7 +9425,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'urls_search' => 'start',
       ),
       'type' => 'advanced_link',
-      'weight' => 23,
+      'weight' => 75,
     ),
   );
 
@@ -9431,7 +9502,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 40,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 72,
     ),
   );
 
@@ -11808,7 +11879,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 87,
+      'weight' => 77,
     ),
   );
 
@@ -11899,7 +11970,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 71,
+      'weight' => 72,
     ),
   );
 
@@ -12063,7 +12134,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'soft_length_minimum' => '',
       ),
       'type' => 'text_textfield',
-      'weight' => 86,
+      'weight' => 76,
     ),
   );
 
@@ -12247,6 +12318,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL  (e.g. Twitter, Facebook).');
   t('Start Time');
   t('Sticker Name');
+  t('Syndicated');
   t('Synopsis');
   t('TAGS');
   t('Tags');

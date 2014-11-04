@@ -22,10 +22,56 @@ function usanetwork_tv_shows_update_7000() {
     $field['indexes'] = $schema['indexes'];
 
     db_update('field_config')
-    ->fields(array(
-        'data' => serialize($field),
-      ))
-    ->condition('id', $record['id'])
-    ->execute();
+        ->fields(array(
+          'data' => serialize($field),
+        ))
+        ->condition('id', $record['id'])
+        ->execute();
+  }
+}
+
+/**
+ * Revert feature related to syndicated/not syndicated shows
+ */
+function usanetwork_tv_shows_update_7015() {
+  $field = field_info_instance('node', 'field_syndicated', 'tv_show');
+  if (is_null($field)) {
+    features_revert_module('usanetwork_tv_shows');
+  }
+}
+
+/**
+ * Function that contain tv_show node titles.
+ */
+function usanetwork_tv_shows_syndicated() {
+  return array(
+    'CSI',
+    'House',
+    'Law & Order: Criminal Intent',
+    'Law & Order: SVU',
+    'Modern Family',
+    'NCIS',
+    'NCIS: Los Angeles',
+    'WWE Raw',
+    'Westminster Kennel Club Dog Show',
+  );
+}
+
+/**
+ * Moving settings related to syndicated/not syndicated shows
+ */
+function usanetwork_tv_shows_update_7016() {
+  if (function_exists('usanetwork_tv_shows_syndicated') && $settings = usanetwork_tv_shows_syndicated()) {
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title'));
+    $query->condition('n.type', 'tv_show');
+    $query->condition('n.status', 1);
+    $query->condition('n.title', array_values($settings));
+    $result = $query->execute()->fetchAll();
+    foreach ($result as $row) {
+      $node = node_load($row->nid);
+      $node->field_syndicated[$node->language][0]['value'] = 1;
+      node_save($node);
+    }
   }
 }

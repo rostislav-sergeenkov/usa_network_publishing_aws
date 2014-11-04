@@ -28,7 +28,8 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_primary_genre',
       3 => 'field_tv_external_links',
       4 => 'field_tv_show_marquee',
-      5 => 'group_floodlight_tag',
+      5 => 'field_syndicated',
+      6 => 'group_floodlight_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -331,7 +332,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_additional_information';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '26',
+    'weight' => '77',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -608,7 +609,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'A-SPOTS',
-    'weight' => '88',
+    'weight' => '78',
     'children' => array(
       0 => 'field_usa_tv_a_spot',
       1 => 'group_slide_settings',

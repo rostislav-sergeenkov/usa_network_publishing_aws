@@ -598,15 +598,23 @@ function _usanetwork_home_show_menu_featured_block() {
           $image_url = NULL;
           $image_field = field_get_items('node', $reference_node, 'field_gobal_nav_image');
 
+          $cta_text = NULL;
+          $cta_field = field_get_items('node', $reference_node, 'field_global_nav_cta_text');
+
           if (!empty($image_field)) {
             $image_field = reset($image_field);
             $image_url = file_create_url($image_field['uri']);
           }
 
+          if (!empty($cta_field)) {
+            $cta_field = reset($cta_field);
+            $cta_text = $cta_field['value'];
+          }
+
           $output[] = theme('usanetwork_home_smnav_img_show', array(
             'title' => $reference_node->title,
             'image' => $image_url,
-            'cta_text' => 'Not Applicable',
+            'cta_text' => $cta_text,
           ));
         }
       }

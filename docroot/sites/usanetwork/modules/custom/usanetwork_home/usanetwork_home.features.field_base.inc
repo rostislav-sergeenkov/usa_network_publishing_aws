@@ -183,6 +183,7 @@ function usanetwork_home_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+
   // Exported field_base: 'field_hp_promo_carousel'
   $field_bases['field_hp_promo_carousel'] = array(
     'active' => 1,

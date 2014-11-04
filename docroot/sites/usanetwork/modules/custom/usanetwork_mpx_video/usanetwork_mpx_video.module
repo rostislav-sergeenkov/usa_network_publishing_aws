@@ -1892,8 +1892,10 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   $videos_query->condition('x.access', 1);
   $videos_query->condition('x.status', 1);
   $videos_query->condition($episode_length_condition);
+  $videos_query->isNotNull('fdfs.field_show_target_id');
   $videos_query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
   $videos_query->leftJoin('field_data_field_mpx_full_episode', 'mfe', 'x.id = mfe.entity_id');
+  $videos_query->leftJoin('field_data_field_show', 'fdfs', 'x.id = fdfs.entity_id');
   $videos_query->leftJoin('mpx_video', 'mv', 'x.id = mv.fid');
   $videos_query->range(0, $limit);
   $videos_query->orderBy('x.lastmod', 'DESC');

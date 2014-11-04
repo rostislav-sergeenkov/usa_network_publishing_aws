@@ -46,8 +46,15 @@ function usanetwork_home_menu() {
  * Implements hook_block_info().
  */
 function usanetwork_home_block_info() {
+  $blocks = array();
+
   $blocks['usanetwork_home_promo_carousel'] = array(
     'info' => t('Homepage: Promo Carousel'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usanetwork_home_sm_featured'] = array(
+    'info' => t('Homepage: Show Menu, featured items'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   
@@ -65,8 +72,35 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_promo_carousel();
       break;
+
+    case 'usanetwork_home_sm_featured':
+      $block['subject'] = t('Featured');
+      $block['content'] = _usanetwork_home_show_menu_featured_block();
+      break;
   }
   return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_home_theme() {
+  return array(
+    'usanetwork_home_smnav_img_show' => array(
+      'variables' => array(
+        'title' => NULL,
+        'image' => NULL,
+        'cta_text' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-smnav-img-show',
+    ),
+    'usanetwork_home_smnav_img_show_container' => array(
+      'variables' => array(
+        'elements' => NULL
+      ),
+      'template' => 'templates/usanetwork-home-smnav-img-show-container',
+    ),
+  );
 }
 
 function _usanetwork_home_promo_carousel() {
@@ -199,21 +233,27 @@ function usanetwork_home_admin_landing($day = NULL) {
 /**
  * To fetch homepage node by title
  */
-function usanetwork_home_get_homepage($types, $day = NULL) {
-
+function usanetwork_home_get_homepage($types = array(), $day = NULL) {
+//@TODO: remove $types
   if ($day === NULL) {
     $day = _usanetwork_home_get_day();
   }
 
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', $types);
-  $query->propertyCondition('status', 1);
-  $query->propertyCondition('title', $day, '=');
+  $query = db_select('node', 'n');
+  $query->join('field_data_field_usa_hp_daylist', 'fd', 'fd.entity_id=n.nid');
+  $query->fields('n', array('nid', 'vid', 'type'));
+  $query->condition('fd.field_usa_hp_daylist_value', $day);
 
-  // execute the query
-  $homepage = $query->execute();
-  return $homepage;
+  $result = $query->execute()->fetchAllAssoc('nid');
+
+  // Wrap result for maximal compatibility with old features
+  if (!empty($result)) {
+    return array(
+      'node' => $result,
+    );
+  }
+
+  return array();
 }
 
 /**
@@ -534,4 +574,48 @@ function usanetwork_home_preprocess_html(&$vars) {
     if ($head_title != '')
     $vars['head_title'] = $head_title;
   }  
+}
+
+/**
+ * Renders featured content block.
+ * The callback is only FOR TESTING and POC!
+ */
+function _usanetwork_home_show_menu_featured_block() {
+  $output = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if (!empty($homepage['node'])) {
+    $node_data = reset($homepage['node']);
+    $node = node_load($node_data->nid);
+
+    $field_hp_nav_img_shows = field_get_items('node', $node, 'field_hp_nav_img_shows');
+
+    if (!empty($field_hp_nav_img_shows)) {
+      foreach ($field_hp_nav_img_shows as $field_reference) {
+        $reference_node = node_load($field_reference['target_id']);
+
+        if ($reference_node) {
+          $image_url = NULL;
+          $image_field = field_get_items('node', $reference_node, 'field_gobal_nav_image');
+
+          if (!empty($image_field)) {
+            $image_field = reset($image_field);
+            $image_url = file_create_url($image_field['uri']);
+          }
+
+          $output[] = theme('usanetwork_home_smnav_img_show', array(
+            'title' => $reference_node->title,
+            'image' => $image_url,
+            'cta_text' => 'Not Applicable',
+          ));
+        }
+      }
+    }
+  }
+
+  if (!empty($output)) {
+    return theme('usanetwork_home_smnav_img_show_container', array('elements' => $output));
+  }
+
+  return '';
 }

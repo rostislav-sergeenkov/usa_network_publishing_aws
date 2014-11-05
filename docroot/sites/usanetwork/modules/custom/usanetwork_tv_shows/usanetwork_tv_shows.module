@@ -1,17 +1,17 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_tv_shows feature.
  */
-
 include_once 'usanetwork_tv_shows.features.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 
 /**
-  * Implements hook_form_FORM_ID_alter
-  * this is a straight rip from pub_tv old relations fields
-  */
+ * Implements hook_form_FORM_ID_alter
+ * this is a straight rip from pub_tv old relations fields
+ */
 function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_state) {
 
   // Add AJAX handling to the the show field so that users only see seasons for
@@ -90,7 +90,7 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
     $form['field_season'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
 
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows').'/js/usanetwork_tv_episode.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_episode.js';
 
   // Add a form validator.
   $form['#validate'][] = 'usanetwork_tv_shows_episode_form_validate';
@@ -128,7 +128,7 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
   $show = false;
   $entity = _usanetwork_menu_get_object($entity_type, $position, $path);
   if ($entity) {
-    list(,,$bundle) = entity_extract_ids($entity_type, $entity);
+    list(,, $bundle) = entity_extract_ids($entity_type, $entity);
     if ($entity_type == 'node' && $bundle == 'tv_show') {
       $show = $entity;
     }
@@ -147,7 +147,7 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
  * Implements hook_form_FORM_ID_alter().
  */
 function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows').'/js/usanetwork_tv_shows.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows.js';
 }
 
 /**
@@ -188,18 +188,13 @@ function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 
 
   // Sort items according sorter alias
   usort($content_items, function($a, $b) use ($node_sorter, $file_sorter, $sort) {
-    $a_sorter = $a->entity_type == 'node'
-      ? $node_sorter
-      : $file_sorter;
+    $a_sorter = $a->entity_type == 'node' ? $node_sorter : $file_sorter;
 
-    $b_sorter = $b->entity_type == 'node'
-      ? $node_sorter
-      : $file_sorter;
+    $b_sorter = $b->entity_type == 'node' ? $node_sorter : $file_sorter;
 
     if ($a->$a_sorter == $b->$b_sorter) {
       return 0;
     }
-
     else {
       if ($a->$a_sorter > $b->$b_sorter) {
         return $sort == 'ASC' ? 1 : -1;
@@ -275,17 +270,11 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
 
   if (!empty($filters)) {
     foreach ($filters as $filter_field_name => $filter_value) {
-      $value = !empty($filter_value['value'])
-        ? $filter_value['value']
-        : NULL;
+      $value = !empty($filter_value['value']) ? $filter_value['value'] : NULL;
 
       if (!empty($value)) {
-        $operator = !empty($filter_value['operator'])
-          ? $filter_value['operator']
-          : (is_array($value)
-            ? 'IN'
-            : '='
-          );
+        $operator = !empty($filter_value['operator']) ? $filter_value['operator'] : (is_array($value) ? 'IN' : '='
+            );
 
         $query->condition($filter_field_name, $value, $operator);
       }
@@ -332,17 +321,11 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
 
   if (!empty($filters)) {
     foreach ($filters as $filter_field_name => $filter_value) {
-      $value = !empty($filter_value['value'])
-        ? $filter_value['value']
-        : NULL;
+      $value = !empty($filter_value['value']) ? $filter_value['value'] : NULL;
 
       if (!empty($value)) {
-        $operator = !empty($filter_value['operator'])
-          ? $filter_value['operator']
-          : (is_array($value)
-            ? 'IN'
-            : '='
-          );
+        $operator = !empty($filter_value['operator']) ? $filter_value['operator'] : (is_array($value) ? 'IN' : '='
+            );
 
         $query->condition($filter_field_name, $value, $operator);
       }
@@ -378,7 +361,7 @@ function _usanetwork_tv_shows_render_related_content($query_result, $content_vie
       $view_mode = _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $content_view_modes);
 
       if (!empty($view_mode)) {
-        $content[] = _usanetwork_tv_shows_render_related_content_item($query_item,$view_mode);
+        $content[] = _usanetwork_tv_shows_render_related_content_item($query_item, $view_mode);
       }
     }
   }
@@ -402,9 +385,7 @@ function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mod
       break;
   }
 
-  return !empty($content_item)
-    ? render($content_item)
-    : '';
+  return !empty($content_item) ? render($content_item) : '';
 }
 
 /**
@@ -425,4 +406,42 @@ function _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $con
 
     return NULL;
   }
+}
+
+/**
+ * Render shows menu items
+ */
+function usanetwork_tv_shows_footer_links() {
+
+  $query_result = views_get_view_result('usa_nav', 'block');
+  $links = array();
+  $query_result_count = count($query_result);
+  $i = 0;
+  foreach ($query_result as $row) {
+    $i++;
+    if ($row->flag_content_node_timestamp) {
+      $row->node_title = '<span>' . t('New!') . '</span> ' . $row->node_title;
+    }
+    if ($i == 1) {
+      $row->class = 'first';
+    }
+    else if ($i == $query_result_count) {
+      $row->class = 'last';
+    }
+    $links[] = $row;
+  }
+  return theme('usanetwork_footer_menu', array('links' => $links));
+}
+
+/**
+ * Implements hook_theme()
+ */
+function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_footer_menu' => array(
+      'variables' => array('links' => NULL),
+      'path' => $path . '/theme',
+      'template' => 'usanetwork-footer-menu'
+    )
+  );
 }

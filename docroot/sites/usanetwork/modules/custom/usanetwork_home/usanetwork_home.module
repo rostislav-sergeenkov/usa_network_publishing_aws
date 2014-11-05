@@ -4,6 +4,10 @@
  * Code for the usanetwork_home feature.
  */
 
+define('USANETWORK_HOME_PRIMETIME_START_HOUR', 20);
+define('USANETWORK_HOME_PRIMETIME_END_HOUR', 23);
+define('USANETWORK_HOME_PRIMETIME_ITEMS_LENGTH', 4);
+
 include_once 'usanetwork_home.features.inc';
 
 /**
@@ -67,6 +71,11 @@ function usanetwork_home_block_info() {
     'info' => t('Homepage: Show Menu, featured items'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
+
+  $blocks['usanetwork_home_sm_primetime'] = array(
+    'info' => t('Homepage: Show Menu, primetime tonight'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
   
   return $blocks;
 }
@@ -87,6 +96,10 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = t('Featured');
       $block['content'] = _usanetwork_home_show_menu_featured_block();
       break;
+
+    case 'usanetwork_home_sm_primetime':
+      $block['subject'] = t('Primetime tonight');
+      $block['content'] = _usanetwork_home_show_menu_primetime_block();
   }
   return $block;
 }
@@ -109,6 +122,21 @@ function usanetwork_home_theme() {
         'elements' => NULL
       ),
       'template' => 'templates/usanetwork-home-smnav-img-show-container',
+    ),
+    'usanetwork_home_smnav_primetime_item' => array(
+      'variables' => array(
+        'time' => NULL,
+        'show_title' => NULL,
+        'show_episode' => NULL,
+        'data' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-smnav-primetime-item',
+    ),
+    'usanetwork_home_smnav_primetime_container' => array(
+      'variables' => array(
+        'elements' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-smnav-primetime-container',
     ),
   );
 }
@@ -751,4 +779,45 @@ function _usanetwork_home_get_user_timezome_correlation($user_timezone, $timesta
   catch (Exception $e) {}
 
   return 0;
+}
+
+function _usanetwork_home_show_menu_primetime_block() {
+  $elements = array();
+  $programs = _usanetwork_home_show_menu_get_primetime_items();
+
+  if (!empty($programs)) {
+    foreach ($programs as $program) {
+      $elements[] = theme('usanetwork_home_smnav_primetime_item', array(
+        'time' => array(
+          'value' => date('g:i', $program->start_time),
+          'interval' => date('A', $program->start_time),
+        ),
+        'show_title' => $program->parent_title,
+        'show_episode' => $program->title,
+      ));
+    }
+  }
+
+  if (!empty($elements)) {
+    return theme('usanetwork_home_smnav_primetime_container', array(
+      'elements' => $elements,
+    ));
+  }
+
+  return '';
+}
+
+function _usanetwork_home_show_menu_get_primetime_items() {
+  $dateTime = new DateTime('now');
+  $primeTimeStart = $dateTime->setTime(USANETWORK_HOME_PRIMETIME_START_HOUR, 0)->getTimestamp();
+  $primeTimeEnd = $dateTime->setTime(USANETWORK_HOME_PRIMETIME_END_HOUR, 0)->getTimestamp();
+
+  $query = db_select('programs', 'p');
+  $query->fields('p', array());
+  $query->condition('p.start_time', $primeTimeStart, '>=');
+  $query->condition('p.end_time', $primeTimeEnd, '<=');
+  $query->range(0, USANETWORK_HOME_PRIMETIME_ITEMS_LENGTH);
+  $query->orderBy('p.start_time', 'ASC');
+
+  return $query->execute()->fetchAll();
 }

@@ -38,6 +38,16 @@ function usanetwork_home_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  // Ajax for getting running now or next show. Pass user timezone string value
+  // as the first parameter. Divide it by '-' character. For example: "Europe-Minsk".
+  // Next parameter is running show order ('now', 'next', or 'now,next'.
+  $items['ajax/get-running-show/%/%'] = array(
+    'title' => 'Running show',
+    'page callback' => 'usanetwork_home_get_running_show_ajax',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -626,4 +636,119 @@ function _usanetwork_home_show_menu_featured_block() {
   }
 
   return '';
+}
+
+/**
+ * Implamants callback for ajax/get-running-show/%.
+ *
+ * @param string $user_timezone - Pass user timezone string value as parameter.
+ * Divide it by '-' character. For example: "Europe-Minsk".
+ *
+ * @param string $periods - Pass string for getting show by period of time.
+ * You can pass 'now', 'next' or 'now,next'
+ */
+function usanetwork_home_get_running_show_ajax($user_timezone, $periods = 'now,next') {
+  $user_timezone_correlation = _usanetwork_home_get_user_timezome_correlation($user_timezone);
+  $data = array(
+    'timezone_correlation' => $user_timezone_correlation,
+  );
+
+  // Remove whitespaces if it exist and explode by comma character
+  $show_periods = explode(',', str_replace(' ', '', $periods));
+
+  if (!empty($show_periods)) {
+    foreach ($show_periods as $show_period) {
+      // Get item of show period. It can be empty if period is not defined
+      $show_period_item = _usanetwork_home_get_running_show($show_period, $user_timezone_correlation);
+
+      // Filter empty results
+      if (!empty($show_period_item)) {
+        $data[$show_period] = $show_period_item;
+      }
+    }
+  }
+
+  return drupal_json_output($data);
+}
+
+/**
+ * Returns show by period type.
+ * @param string $period = 'now' || 'next'
+ */
+function _usanetwork_home_get_running_show($period = 'now', $user_timezone_correlation = 0) {
+  if (!module_exists('program_guide')) {
+    return;
+  }
+
+  $period_callbacks = array(
+    'now' => '_usanetwork_home_get_running_now_show',
+    'next' => '_usanetwork_home_get_running_next_show',
+  );
+
+  if (!empty($period) && isset($period_callbacks[$period])) {
+    $program_object = $period_callbacks[$period]($user_timezone_correlation);
+
+    if (!empty($program_object)) {
+      $program_entity = entity_load('program', array($program_object->guid));
+
+      if (!empty($program_entity) && isset($program_entity[$program_object->guid])) {
+        return reset($program_entity);
+      }
+
+      return $program_entity;
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns query object with current running show.
+ */
+function _usanetwork_home_get_running_now_show($user_timezone_correlation = 0) {
+  $request_time = REQUEST_TIME + $user_timezone_correlation;
+
+  $query = db_select('programs', 'p');
+  $query->fields('p', array());
+  $query->condition('p.start_time', $request_time, '<');
+  $query->condition('p.end_time', $request_time, '>');
+  $query->range(0, 1);
+
+  return $query->execute()->fetch();
+}
+
+/**
+ * Returns query object with next running show.
+ */
+function _usanetwork_home_get_running_next_show($user_timezone_correlation = 0) {
+  $request_time = REQUEST_TIME + $user_timezone_correlation;
+
+  $query = db_select('programs', 'p');
+  $query->fields('p', array());
+  $query->condition('p.start_time', $request_time, '>');
+  $query->orderBy('p.start_time', 'ASC');
+  $query->range(0, 1);
+
+  return $query->execute()->fetch();
+}
+
+/**
+ * Ajusts $timestamp with $user_timezone correlation.
+ */
+function _usanetwork_home_get_user_timezome_correlation($user_timezone, $timestamp = REQUEST_TIME) {
+  $dateTime = new DateTime();
+  $dateTime->setTimestamp($timestamp);
+
+  $user_timezone = str_replace('-', '/', $user_timezone);
+
+  try {
+    $dateTimeZone = new DateTimeZone($user_timezone);
+
+    if ($dateTimeZone) {
+      return $dateTimeZone->getOffset($dateTime);
+    }
+  }
+  catch (Exception $e) {}
+
+  return 0;
 }

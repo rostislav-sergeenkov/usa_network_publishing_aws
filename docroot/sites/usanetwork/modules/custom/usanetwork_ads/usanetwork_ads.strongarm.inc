@@ -14,15 +14,8 @@ function usanetwork_ads_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sitecatalyst_js_file_location';
-  $strongarm->value = '/sites/usanetwork/modules/tve/tve_analytics/js/s_code.js';
+  $strongarm->value = '/sites/usanetwork/modules/custom/usanetwork_ads/js/usanetwork_ads.s_code.js';
   $export['sitecatalyst_js_file_location'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'sitecatalyst_report_suite_id';
-  $strongarm->value = 'nbcutve';
-  $export['sitecatalyst_report_suite_id'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

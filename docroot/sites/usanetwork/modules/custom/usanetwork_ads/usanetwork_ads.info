@@ -21,5 +21,4 @@ features[dart_tags][] = 728x90_ifr_reload
 features[dart_tags][] = 728x90_scr_vid
 features[features_api][] = api:1
 features[variable][] = sitecatalyst_js_file_location
-features[variable][] = sitecatalyst_report_suite_id
 features[variable][] = usanetwork_ads_adobe_tagloader_settings

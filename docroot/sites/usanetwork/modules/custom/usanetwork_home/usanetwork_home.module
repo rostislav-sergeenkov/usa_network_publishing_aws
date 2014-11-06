@@ -76,7 +76,12 @@ function usanetwork_home_block_info() {
     'info' => t('Homepage: Show Menu, primetime tonight'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  
+
+  $blocks['usanetwork_home_sm_upcoming'] = array(
+    'info' => t('Homepage: Show Menu, upcoming show episodes'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -100,6 +105,12 @@ function usanetwork_home_block_view($delta = '') {
     case 'usanetwork_home_sm_primetime':
       $block['subject'] = t('Primetime tonight');
       $block['content'] = _usanetwork_home_show_menu_primetime_block();
+      break;
+
+    case 'usanetwork_home_sm_upcoming':
+      $block['subject'] = t('Upcoming show episodes');
+      $block['content'] = _usanetwork_home_show_menu_upcoming_episodes();
+      break;
   }
   return $block;
 }
@@ -138,6 +149,25 @@ function usanetwork_home_theme() {
       ),
       'template' => 'templates/usanetwork-home-smnav-primetime-container',
     ),
+    'usanetwork_home_smnav_upcoming_element' => array(
+      'variables' => array(
+        'image_url' => NULL,
+        'image' => NULL,
+        'show_name' => NULL,
+        'episode_title' => NULL,
+        'episode_day' => NULL,
+        'episode_time' => NULL,
+        'episode_interval' => NULL,
+        'episode_description' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-smnav-upcoming-element',
+    ),
+    'usanetwork_home_smnav_upcoming_element_container' => array(
+      'variables' => array(
+        'elements' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-smnav-upcoming-element-container',
+    )
   );
 }
 
@@ -219,6 +249,28 @@ function usanetwork_home_preprocess_node(&$variables) {
       $variables['featured_title'] = $title['safe_value'];
     }
   }
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_home_image_default_styles() {
+  $styles = array();
+
+  $styles['episode_preview_temp'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 143,
+          'height' => 81,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -781,6 +833,9 @@ function _usanetwork_home_get_user_timezome_correlation($user_timezone, $timesta
   return 0;
 }
 
+/**
+ * Renders primetime block.
+ */
 function _usanetwork_home_show_menu_primetime_block() {
   $elements = array();
   $programs = _usanetwork_home_show_menu_get_primetime_items();
@@ -807,6 +862,9 @@ function _usanetwork_home_show_menu_primetime_block() {
   return '';
 }
 
+/**
+ * Returns primetime items.
+ */
 function _usanetwork_home_show_menu_get_primetime_items() {
   $dateTime = new DateTime('now');
   $primeTimeStart = $dateTime->setTime(USANETWORK_HOME_PRIMETIME_START_HOUR, 0)->getTimestamp();
@@ -817,6 +875,86 @@ function _usanetwork_home_show_menu_get_primetime_items() {
   $query->condition('p.start_time', $primeTimeStart, '>=');
   $query->condition('p.end_time', $primeTimeEnd, '<=');
   $query->range(0, USANETWORK_HOME_PRIMETIME_ITEMS_LENGTH);
+  $query->orderBy('p.start_time', 'ASC');
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Renders block of upcoming episodes.
+ */
+function _usanetwork_home_show_menu_upcoming_episodes() {
+  $elements = array();
+  $node = _usanetwork_home_show_menu_get_current_show_node();
+
+  if (!empty($node)) {
+    $episodes = _usanetwork_home_show_menu_get_upcomming_episodes($node);
+
+    if (!empty($episodes)) {
+      foreach ($episodes as $episode) {
+        $preview_image = NULL;
+
+        if (empty($episode->thumbnail_url) || empty($episode->description)) {
+          continue;
+        }
+
+        $preview_image = theme('image_style', array(
+          'style_name' => 'episode_preview_temp',
+          'path' => $episode->thumbnail_url,
+        ));
+
+        $elements[] = theme('usanetwork_home_smnav_upcoming_element', array(
+          'image_url' => $episode->thumbnail_url,
+          'image' => $preview_image,
+          'show_name' => $episode->parent_title,
+          'episode_title' => $episode->title,
+          'episode_day' => date('l', $episode->start_time),
+          'episode_time' => date('g:i', $episode->start_time),
+          'episode_interval' => date('A', $episode->start_time),
+          'episode_description' => $episode->description,
+        ));
+      }
+    }
+  }
+
+  if (!empty($elements)) {
+    return theme('usanetwork_home_smnav_upcoming_element_container', array(
+      'elements' => $elements,
+    ));
+  }
+
+  return '';
+}
+
+/**
+ * Returns current Show node.
+ */
+function _usanetwork_home_show_menu_get_current_show_node() {
+  $menu_item = menu_get_item();
+
+  if (!empty($menu_item['page_arguments'])) {
+    $node = reset($menu_item['page_arguments']);
+
+    if (isset($node->type) && $node->type == 'tv_show') {
+      return $node;
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Selects from program $length (default=2) upcoming episodes using title of Show node.
+ */
+function _usanetwork_home_show_menu_get_upcomming_episodes($show_node, $length = 2) {
+  $query = db_select('programs', 'p');
+  $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
+  $query->fields('p', array());
+  $query->fields('v', array('fid', 'video_id', 'title', 'description', 'thumbnail_url'));
+  // $show_node->title - is only one relation between shows in programs and nodes
+  $query->condition('p.parent_title', $show_node->title);
+  $query->condition('p.start_time',REQUEST_TIME, '>');
+  $query->range(0, $length);
   $query->orderBy('p.start_time', 'ASC');
 
   return $query->execute()->fetchAll();

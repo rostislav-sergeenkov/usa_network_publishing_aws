@@ -1,6 +1,8 @@
 (function ($) {
   Drupal.behaviors.usanetwork_person = {
     attach: function(context){
+      /* Trigger this function on page load to display text annotation for edit page */
+      getPersonDetails('pageload');
 
       $person_controls = $("#edit-field-person-prefix input, #edit-field-person-first-name input," + 
                             " #edit-field-person-middle-name input, #edit-field-person-last-name input," + 
@@ -8,6 +10,13 @@
                             " #edit-field-show select, #edit-field-role select");
 
       $person_controls.on("change", function() {
+        getPersonDetails('event');
+      });
+      $("#edit-field-seo-page-title input, #edit-field-seo-h1 input").on("change", function() {
+        getPersonDetails('pageload');
+      });
+
+      function getPersonDetails(t) {
         var person_prefix = $("#edit-field-person-prefix input").val() != ''
                             ? $("#edit-field-person-prefix input").val() + ' '
                             : '';
@@ -33,14 +42,68 @@
           person_playedby = 'played by '+person_actor_name;
         }
 
+        var h1 = person_prefix + person_first_name + person_middle_name + person_last_name + person_suffix;
         var person_title = person_prefix + person_first_name + person_middle_name + person_last_name + person_suffix + person_playedby;
 
         var show = ($("#edit-field-show select").val() != '_none')
                     ? $("#edit-field-show select option:selected").text() + ' | '
                     : '';
 
-        $("#edit-field-seo-page-title input").val(person_title.trim() + ' | Characters & Crew | ' + show + 'USA Network');
-      });
+        var page_title = '';
+        if (person_title != '') {
+          page_title = Drupal.t('@person | Characters & Crew | @showUSA Network', {
+            '@person' : person_title.trim(),
+            '@show' : show
+          });
+        }
+        if (t == 'event') {
+          $("#edit-field-seo-page-title input").val(page_title);
+          $("#edit-field-seo-h1 input").val(h1);
+        }
+
+        /* Display default value for h1 field */
+        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '') {
+          if ($('#edit-field-seo-h1 .description').length == 0) {
+            $("#edit-field-seo-h1 input").after('<div class="description">' + 
+                                                Drupal.t('DEFAULT: @h1', {'@h1' : h1}) + 
+                                                '</div>');
+          }
+          else {
+            $("#edit-field-seo-h1 .description").html(Drupal.t('DEFAULT: @h1', {'@h1' : h1}));
+          }
+        }
+        else {
+          if ($('#edit-field-seo-h1 .description').length > 0) {
+            $("#edit-field-seo-h1 .description").html('');
+          }
+        }
+
+        /* Display default value for page title field */
+        var seo_page_title = $("#edit-field-seo-page-title input").val();
+        if (seo_page_title == '') {
+          if (person_title != '' || show != '') {
+            if ($('#edit-field-seo-page-title .description').length == 0) {
+              $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                                Drupal.t('DEFAULT: ') + page_title + 
+                                                                '</div>');
+            }
+            else {
+              $("#edit-field-seo-page-title .description").html(Drupal.t('DEFAULT: ') + page_title);
+            }
+          }
+          else {
+            if ($('#edit-field-seo-page-title .description').length > 0) {
+              $("#edit-field-seo-page-title .description").html('');
+            }
+          }          
+        }
+        else {
+          if ($('#edit-field-seo-page-title .description').length > 0) {
+            $("#edit-field-seo-page-title .description").html('');
+          }
+        }
+        
+      }
     }
   }
 })(jQuery);

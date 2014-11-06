@@ -10,8 +10,8 @@
       $("#edit-field-h1 input, #edit-field-page-title input").on("change", function() {
         getSeoPageDetails('pageload');
       });      
-      function getSeoPageDetails(t) {
-        if (t == 'event') {
+      function getSeoPageDetails(argument) {
+        if (argument == 'event') {
           if($("#edit-field-h1 input").val() == ''){
             $("#edit-field-h1 input").val($("#edit-title").val());
           }
@@ -25,11 +25,13 @@
         if (title != '' && h1 == '') {
           if ($('#edit-field-h1 .description').length == 0) {
             $("#edit-field-h1 input").after('<div class="description">' + 
-                                            Drupal.t('DEFAULT: @h1', {'@h1' : title}) + 
+                                            Drupal.t('DEFAULT').toUpperCase() + ': ' +
+                                            Drupal.t('@h1', {'@h1' : title}) + 
                                             '</div>');
           }
           else {
-            $("#edit-field-h1 .description").html(Drupal.t('DEFAULT: @h1', {'@h1' : title}));
+            $("#edit-field-h1 .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' +
+                                                  Drupal.t('@h1', {'@h1' : title}));
           }
         }
         else {
@@ -44,11 +46,11 @@
           if (title != '') {
             if ($('#edit-field-page-title .description').length == 0) {
               $("#edit-field-page-title .form-item").append('<div class="description">' + 
-                                                            Drupal.t('DEFAULT: ') + title + 
+                                                            Drupal.t('DEFAULT').toUpperCase() + ': ' + title +
                                                             '</div>');
             }
             else {
-              $("#edit-field-page-title .description").html(Drupal.t('DEFAULT: ') + title);
+              $("#edit-field-page-title .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' + title);
             }
           }
           else {

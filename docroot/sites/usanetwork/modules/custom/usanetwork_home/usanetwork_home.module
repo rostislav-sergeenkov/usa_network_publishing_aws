@@ -715,6 +715,8 @@ function _usanetwork_home_show_menu_featured_block() {
             'title' => $reference_node->title,
             'image' => $image_url,
             'cta_text' => $cta_text,
+            'type' => NULL,
+            'time' => NULL,
           ));
         }
       }

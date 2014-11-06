@@ -932,3 +932,19 @@ function usanetwork_core_update_7154() {
     module_enable(array('program_guide'));
   }
 }
+
+/**
+ * Enables 'panels_mini' and 'page_manager' modules.
+ */
+function usanetwork_core_update_7155() {
+  $to_be_enabled = array(
+    'panels_mini',
+    'page_manager',
+  );
+
+  foreach ($to_be_enabled as $new_module) {
+    if (!module_exists($new_module)) {
+      module_enable(array($new_module));
+    }
+  }
+}

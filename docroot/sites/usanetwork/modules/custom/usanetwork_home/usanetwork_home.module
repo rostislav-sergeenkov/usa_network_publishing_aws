@@ -82,6 +82,11 @@ function usanetwork_home_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_show_menu'] = array(
+    'info' => t('Usanetwork Show Menu'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -110,6 +115,11 @@ function usanetwork_home_block_view($delta = '') {
     case 'usanetwork_home_sm_upcoming':
       $block['subject'] = t('Upcoming show episodes');
       $block['content'] = _usanetwork_home_show_menu_upcoming_episodes();
+      break;
+
+    case 'usanetwork_show_menu':
+      $block['subject'] = t('Show menu');
+      $block['content'] = _usanetwork_home_render_show_menu();
       break;
   }
   return $block;
@@ -958,4 +968,19 @@ function _usanetwork_home_show_menu_get_upcomming_episodes($show_node, $length =
   $query->orderBy('p.start_time', 'ASC');
 
   return $query->execute()->fetchAll();
+}
+
+/**
+ * Renders Show Menu.
+ */
+function _usanetwork_home_render_show_menu() {
+  $output = '';
+
+  $panel = panels_mini_load('usanetwork_show_menu');
+
+  if ($panel) {
+    $output = panels_render_display($panel->display);
+  }
+
+  return $output;
 }

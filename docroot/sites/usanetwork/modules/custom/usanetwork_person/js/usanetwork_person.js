@@ -12,9 +12,6 @@
       $person_controls.on("change", function() {
         getPersonDetails('event');
       });
-      $("#edit-field-seo-page-title input, #edit-field-seo-h1 input").on("change", function() {
-        getPersonDetails('pageload');
-      });
 
       function getPersonDetails(argument) {
         var person_prefix = $("#edit-field-person-prefix input").val() != ''
@@ -62,49 +59,31 @@
         }
 
         /* Display default value for h1 field */
-        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '') {
+        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && argument != 'event') {
           if ($('#edit-field-seo-h1 .description').length == 0) {
             $("#edit-field-seo-h1 input").after('<div class="description">' + 
                                                 Drupal.t('DEFAULT').toUpperCase() + ': ' +
-                                                Drupal.t('@h1', {'@h1' : h1}) + 
+                                                Drupal.t('@h1', {'@h1' : h1.trim()}) + 
                                                 '</div>');
           }
           else {
             $("#edit-field-seo-h1 .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' +
-                                                      Drupal.t('@h1', {'@h1' : h1}));
-          }
-        }
-        else {
-          if ($('#edit-field-seo-h1 .description').length > 0) {
-            $("#edit-field-seo-h1 .description").html('');
+                                                      Drupal.t('@h1', {'@h1' : h1.trim()}));
           }
         }
 
         /* Display default value for page title field */
         var seo_page_title = $("#edit-field-seo-page-title input").val();
-        if (seo_page_title == '') {
-          if (person_title != '' || show != '') {
-            if ($('#edit-field-seo-page-title .description').length == 0) {
-              $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
-                                                                Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title +
-                                                                '</div>');
-            }
-            else {
-              $("#edit-field-seo-page-title .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title);
-            }
+        if (page_title != '' && seo_page_title == '' && argument != 'event') {
+          if ($('#edit-field-seo-page-title .description').length == 0) {
+            $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                              Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title +
+                                                              '</div>');
           }
           else {
-            if ($('#edit-field-seo-page-title .description').length > 0) {
-              $("#edit-field-seo-page-title .description").html('');
-            }
-          }          
-        }
-        else {
-          if ($('#edit-field-seo-page-title .description').length > 0) {
-            $("#edit-field-seo-page-title .description").html('');
+            $("#edit-field-seo-page-title .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title);
           }
         }
-        
       }
     }
   }

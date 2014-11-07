@@ -23,19 +23,19 @@
 
           if (path_array.length > 1 && path_array[1] !== undefined) {
             if (path_array[1] == 'features') {
-              catchall_type = '| Features | @show ';
+              catchall_type = Drupal.t('| Features | @show ', {'@show' : show});
             }
             else if (path_array[1] == 'quizzes') {
-              catchall_type = '| Quizzes | @show ';
+              catchall_type = Drupal.t('| Quizzes | @show ', {'@show' : show});
             }
             else if (path_array[1] == 'games') {
-              catchall_type = '| Games | @show ';
+              catchall_type = Drupal.t('| Games | @show ', {'@show' : show});
             }          
           }
         }
-        $("#edit-field-seo-page-title input").val(Drupal.t('@title ' + catchall_type + '| USA Network', {
+        $("#edit-field-seo-page-title input").val(Drupal.t('@title @catchall_type | USA Network', {
           '@title' : title.trim(),
-          '@show' : show
+          '@catchall_type' : catchall_type
         }));
       });
     }

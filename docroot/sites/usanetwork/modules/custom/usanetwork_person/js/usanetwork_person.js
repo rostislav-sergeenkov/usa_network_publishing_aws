@@ -43,12 +43,12 @@
         var person_title = person_prefix + person_first_name + person_middle_name + person_last_name + person_suffix + person_playedby;
 
         var show = ($("#edit-field-show select").val() != '_none')
-                    ? $("#edit-field-show select option:selected").text() + ' | '
+                    ? ' ' + $("#edit-field-show select option:selected").text() + ' |'
                     : '';
 
         var page_title = '';
         if (person_title != '') {
-          page_title = Drupal.t('@person | Characters & Crew | @showUSA Network', {
+          page_title = Drupal.t('@person | Characters & Crew |@show USA Network', {
             '@person' : person_title.trim(),
             '@show' : show
           });

@@ -33,7 +33,7 @@
             }          
           }
         }
-        $("#edit-field-seo-page-title input").val(Drupal.t('@title @catchall_type | USA Network', {
+        $("#edit-field-seo-page-title input").val(Drupal.t('@title @catchall_type| USA Network', {
           '@title' : title.trim(),
           '@catchall_type' : catchall_type
         }));

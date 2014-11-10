@@ -13,6 +13,24 @@ function usanetwork_menu_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_menu_menu() {
+  $items = array();
+
+  // Used for rendering ajax block
+  $items['ajax/render-running-show/%/%'] = array(
+    'title' => 'Running show',
+    'page callback' => 'usanetwork_menu_render_running_show_ajax',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function usanetwork_menu_block_info() {
@@ -30,6 +48,11 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_upcoming'] = array(
     'info' => t('Homepage Menu: Upcoming show episodes'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_sm_now_and_next'] = array(
+    'info' => t('Homepage Menu: On now and Up next'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -61,6 +84,11 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_upcoming':
       $block['subject'] = t('Upcoming show episodes');
       $block['content'] = _usanetwork_menu_show_menu_upcoming_episodes_block();
+      break;
+
+    case 'usanetwork_menu_sm_now_and_next':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_show_menu_now_and_next_block();
       break;
 
     case 'usanetwork_menu_sm_menu':
@@ -124,7 +152,14 @@ function usanetwork_menu_theme() {
         'elements' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-upcoming-element-container',
-    )
+    ),
+    'usanetwork_menu_smnav_now_next' => array(
+      'variables' => array(
+        'on_now' => array(),
+        'up_next' => array(),
+      ),
+      'template' => 'templates/usanetwork-smnav-now-next',
+    ),
   );
 }
 
@@ -309,4 +344,82 @@ function _usanetwork_menu_show_menu_get_current_show_node() {
   }
 
   return NULL;
+}
+
+/**
+ * Renders "On now & Up next" block.
+ */
+function _usanetwork_menu_show_menu_now_and_next_block() {
+  $block_form = array();
+
+  $spinner_options = array(
+    'path' => drupal_get_path('theme', 'aurora_usa') . '/images/ajax-loader.gif',
+    'alt' => t('Please wait...'),
+    'title' => t('Please wait'),
+    'attributes' => array('class' => 'spinner'),
+  );
+
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.main.js';
+  $block_form['test'] = array(
+    '#type' => 'item',
+    '#markup' => theme('image', $spinner_options),
+  );
+
+  return render($block_form);
+}
+
+/**
+ * Renders AJAX block using users timezone
+ */
+function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'now,next') {
+  $data = usanetwork_tv_schedule_get_running_show_ajax($user_timezone, $periods, FALSE);
+
+  if ($data) {
+    $theme_variables = array(
+      'on_now' => array(
+        'image' => !empty($data['now']->object_data->thumbnail_url)
+          ? theme('image', array(
+            'path' => $data['now']->object_data->thumbnail_url,
+            'alt' => !empty($data['now']->title) ? $data['now']->title : '',
+            'title' => !empty($data['now']->title) ? $data['now']->title : '',
+          ))
+          : '',
+        'title' => !empty($data['now']->title) ? $data['now']->title : '',
+        'caption' => !empty($data['now']->raw['pllisting$program']['plprogram$programType'])
+          ? ucfirst($data['now']->raw['pllisting$program']['plprogram$programType'])
+          : '',
+        'description' => !empty($data['now']->object_data->description)
+          ? $data['now']->object_data->description
+          : '',
+      ),
+      'up_next' => array(
+        'image' => !empty($data['next']->object_data->thumbnail_url)
+          ? theme('image', array(
+            'path' => $data['next']->object_data->thumbnail_url,
+            'alt' => !empty($data['next']->title) ? $data['next']->title : '',
+            'title' => !empty($data['next']->title) ? $data['next']->title : '',
+          ))
+          : '',
+        'title' => !empty($data['next']->title) ? $data['next']->title : '',
+        'caption' => !empty($data['next']->raw['pllisting$program']['plprogram$programType'])
+          ? ucfirst($data['next']->raw['pllisting$program']['plprogram$programType'])
+          : '',
+        'description' => !empty($data['next']->object_data->description)
+          ? $data['next']->object_data->description
+          : '',
+        'time' => !empty($data['next']->start_time)
+          ? date('h:i', $data['next']->start_time)
+          : '',
+        'time_daypart' => !empty($data['next']->start_time)
+          ? date('A', $data['next']->start_time)
+          : '',
+      ),
+    );
+
+    return drupal_json_output(array(
+      'html' => theme('usanetwork_menu_smnav_now_next', $theme_variables),
+    ));
+  }
+
+  return drupal_json_output(NULL);
 }

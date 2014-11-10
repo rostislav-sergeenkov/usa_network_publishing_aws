@@ -112,16 +112,13 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-4';
   $pane->panel = 'reg_tab_schedule';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_now_and_next';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'On Now, Up Next',
-    'title' => 'On Now, Up Next',
-    'body' => '<p>On Now, Up Next</p>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_title' => 1,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(

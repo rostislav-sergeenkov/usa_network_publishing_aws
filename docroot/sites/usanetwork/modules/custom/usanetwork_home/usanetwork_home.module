@@ -534,7 +534,9 @@ function _usanetwork_home_get_field_value($field) {
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   if (!empty($homepage['node'])) {
-    $nid = reset(array_keys($homepage['node']));
+    // Avoiding warnings
+    $node_keys = array_keys($homepage['node']);
+    $nid = reset($node_keys);
     $node_obj = node_load($nid);
     $field_datas = field_get_items('node', $node_obj, $field);
     if (is_array($field_datas)) {

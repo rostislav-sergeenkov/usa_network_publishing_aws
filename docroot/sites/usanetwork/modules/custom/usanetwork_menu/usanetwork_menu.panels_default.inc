@@ -1,6 +1,6 @@
 <?php
 
-function usanetwork_home_default_panels_mini() {
+function usanetwork_menu_default_panels_mini() {
   $export = array();
 
   $mini = new stdClass();

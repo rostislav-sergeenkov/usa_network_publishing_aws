@@ -14,7 +14,7 @@
                   : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
-                    ? $("#edit-field-show select option:selected").text() + ' -'
+                    ? $("#edit-field-show select option:selected").text() + ' - '
                     : '';
 
         var quiz_title = '';
@@ -25,10 +25,7 @@
           quiz_title = h1;
         }
 
-        $("#edit-field-seo-page-title input").val(Drupal.t('@show @title | USA Network', {
-          '@title' : quiz_title.trim(),
-          '@show' : show
-        }).trim());
+        $("#edit-field-seo-page-title input").val(show + quiz_title + ' | ' + Drupal.t('USA Network'));
       });
     }
   }

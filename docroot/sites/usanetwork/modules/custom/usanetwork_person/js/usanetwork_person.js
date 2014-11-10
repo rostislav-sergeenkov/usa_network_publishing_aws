@@ -48,10 +48,7 @@
 
         var page_title = '';
         if (person_title != '') {
-          page_title = Drupal.t('@person | Characters & Crew |@show USA Network', {
-            '@person' : person_title.trim(),
-            '@show' : show
-          });
+          page_title = person_title.trim() + ' | ' +  Drupal.t('Characters & Crew') + ' |' + show + ' ' + Drupal.t('USA Network');
         }
         if (argument == 'event') {
           $("#edit-field-seo-page-title input").val(page_title);
@@ -62,13 +59,11 @@
         if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && argument != 'event') {
           if ($('#edit-field-seo-h1 .description').length == 0) {
             $("#edit-field-seo-h1 input").after('<div class="description">' + 
-                                                Drupal.t('DEFAULT').toUpperCase() + ': ' +
-                                                Drupal.t('@h1', {'@h1' : h1.trim()}) + 
+                                                Drupal.t('default').toUpperCase() + ': ' + h1.trim() +
                                                 '</div>');
           }
           else {
-            $("#edit-field-seo-h1 .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' +
-                                                      Drupal.t('@h1', {'@h1' : h1.trim()}));
+            $("#edit-field-seo-h1 .description").html(Drupal.t('default').toUpperCase() + ': ' + h1.trim());
           }
         }
 
@@ -77,11 +72,11 @@
         if (page_title != '' && seo_page_title == '' && argument != 'event') {
           if ($('#edit-field-seo-page-title .description').length == 0) {
             $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
-                                                              Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title +
+                                                              Drupal.t('default').toUpperCase() + ': ' + page_title +
                                                               '</div>');
           }
           else {
-            $("#edit-field-seo-page-title .description").html(Drupal.t('DEFAULT').toUpperCase() + ': ' + page_title);
+            $("#edit-field-seo-page-title .description").html(Drupal.t('default').toUpperCase() + ': ' + page_title);
           }
         }
       }

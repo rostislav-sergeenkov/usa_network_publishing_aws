@@ -59,11 +59,11 @@
         if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && event_type != 'event') {
           if ($('#edit-field-seo-h1 .description').length == 0) {
             $("#edit-field-seo-h1 input").after('<div class="description">' + 
-                                                Drupal.t('default').toUpperCase() + ': ' + h1.trim() +
+                                                Drupal.t('Default').toUpperCase() + ': ' + h1.trim() +
                                                 '</div>');
           }
           else {
-            $("#edit-field-seo-h1 .description").html(Drupal.t('default').toUpperCase() + ': ' + h1.trim());
+            $("#edit-field-seo-h1 .description").html(Drupal.t('Default').toUpperCase() + ': ' + h1.trim());
           }
         }
 
@@ -72,11 +72,11 @@
         if (page_title != '' && seo_page_title == '' && event_type != 'event') {
           if ($('#edit-field-seo-page-title .description').length == 0) {
             $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
-                                                              Drupal.t('default').toUpperCase() + ': ' + page_title +
+                                                              Drupal.t('Default').toUpperCase() + ': ' + page_title +
                                                               '</div>');
           }
           else {
-            $("#edit-field-seo-page-title .description").html(Drupal.t('default').toUpperCase() + ': ' + page_title);
+            $("#edit-field-seo-page-title .description").html(Drupal.t('Default').toUpperCase() + ': ' + page_title);
           }
         }
       }

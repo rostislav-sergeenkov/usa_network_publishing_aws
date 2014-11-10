@@ -38,24 +38,24 @@
           if (title != '' && h1 == '' && event_type != 'event' && $("#edit-field-seo-h1 input").length > 0 && $("#edit-title").length > 0) {
             if ($('#edit-field-seo-h1 .description').length == 0) {
               $("#edit-field-seo-h1 input").after('<div class="description">' + 
-                                                  Drupal.t('default').toUpperCase() + ': ' +
+                                                  Drupal.t('Default').toUpperCase() + ': ' +
                                                   title.trim() +
                                                   '</div>');
             }
             else {
-              $("#edit-field-seo-h1 .description").html(Drupal.t('default').toUpperCase() + ': ' + title.trim());
+              $("#edit-field-seo-h1 .description").html(Drupal.t('Default').toUpperCase() + ': ' + title.trim());
             }
           }
           /* Display default value for page title field */
           if (title != '' && page_title == '' && event_type != 'event') {
             if ($('#edit-field-seo-page-title .description').length == 0) {
               $("#edit-field-seo-page-title input").after('<div class="description">' + 
-                                                                Drupal.t('default').toUpperCase() + ': ' + 
+                                                                Drupal.t('Default').toUpperCase() + ': ' + 
                                                                 document_title + 
                                                                 '</div>');
             }
             else {
-              $("#edit-field-seo-page-title .description").html(Drupal.t('default').toUpperCase() + ': ' + document_title);
+              $("#edit-field-seo-page-title .description").html(Drupal.t('Default').toUpperCase() + ': ' + document_title);
             }
           }
           if($("#edit-field-seo-h1").length > 0 && $("#edit-title").length > 0 && event_type == 'event' && h1 == ''){

@@ -7,7 +7,7 @@
       $("#edit-title").on("change", function() {
         getAnnonation('event');
       });
-      function getAnnonation(argument) {
+      function getAnnonation(event_type) {
         var title = $("#edit-title").val();
         var h1 = $("#edit-field-seo-h1 input").val();
         var page_title = $("#edit-field-seo-page-title input").val();
@@ -35,7 +35,7 @@
           }
 
           /* Display default value for h1 field */
-          if (title != '' && h1 == '' && argument != 'event' && $("#edit-field-seo-h1 input").length > 0 && $("#edit-title").length > 0) {
+          if (title != '' && h1 == '' && event_type != 'event' && $("#edit-field-seo-h1 input").length > 0 && $("#edit-title").length > 0) {
             if ($('#edit-field-seo-h1 .description').length == 0) {
               $("#edit-field-seo-h1 input").after('<div class="description">' + 
                                                   Drupal.t('default').toUpperCase() + ': ' +
@@ -47,7 +47,7 @@
             }
           }
           /* Display default value for page title field */
-          if (title != '' && page_title == '' && argument != 'event') {
+          if (title != '' && page_title == '' && event_type != 'event') {
             if ($('#edit-field-seo-page-title .description').length == 0) {
               $("#edit-field-seo-page-title input").after('<div class="description">' + 
                                                                 Drupal.t('default').toUpperCase() + ': ' + 
@@ -58,7 +58,7 @@
               $("#edit-field-seo-page-title .description").html(Drupal.t('default').toUpperCase() + ': ' + document_title);
             }
           }
-          if($("#edit-field-seo-h1").length > 0 && $("#edit-title").length > 0 && argument == 'event' && h1 == ''){
+          if($("#edit-field-seo-h1").length > 0 && $("#edit-title").length > 0 && event_type == 'event' && h1 == ''){
             $("#edit-field-seo-h1 input").val(title);
           }
         }

@@ -13,7 +13,7 @@
         getPersonDetails('event');
       });
 
-      function getPersonDetails(argument) {
+      function getPersonDetails(event_type) {
         var person_prefix = $("#edit-field-person-prefix input").val() != ''
                             ? $("#edit-field-person-prefix input").val() + ' '
                             : '';
@@ -50,13 +50,13 @@
         if (person_title != '') {
           page_title = person_title.trim() + ' | ' +  Drupal.t('Characters & Crew') + ' |' + show + ' ' + Drupal.t('USA Network');
         }
-        if (argument == 'event') {
+        if (event_type == 'event') {
           $("#edit-field-seo-page-title input").val(page_title);
           $("#edit-field-seo-h1 input").val(h1);
         }
 
         /* Display default value for h1 field */
-        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && argument != 'event') {
+        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && event_type != 'event') {
           if ($('#edit-field-seo-h1 .description').length == 0) {
             $("#edit-field-seo-h1 input").after('<div class="description">' + 
                                                 Drupal.t('default').toUpperCase() + ': ' + h1.trim() +
@@ -69,7 +69,7 @@
 
         /* Display default value for page title field */
         var seo_page_title = $("#edit-field-seo-page-title input").val();
-        if (page_title != '' && seo_page_title == '' && argument != 'event') {
+        if (page_title != '' && seo_page_title == '' && event_type != 'event') {
           if ($('#edit-field-seo-page-title .description').length == 0) {
             $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
                                                               Drupal.t('default').toUpperCase() + ': ' + page_title +

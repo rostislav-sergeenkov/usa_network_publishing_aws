@@ -1,7 +1,4 @@
 <div class="panel-display usanetwork-show-menu-panel clearfix" <?php if (!empty($css_id)): print "id=\"$css_id\""; endif; ?>>
-  <div class="ad ad-728x90">
-    <?php print $content['reg_ad']; ?>
-  </div>
   <div class="header-nav-bar">
     <?php print $content['reg_menu']; ?>
   </div>

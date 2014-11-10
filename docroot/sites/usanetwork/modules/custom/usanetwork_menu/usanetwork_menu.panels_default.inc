@@ -19,7 +19,6 @@ function usanetwork_menu_default_panels_mini() {
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
-      'reg_ag' => NULL,
       'reg_menu' => NULL,
       'reg_mobile_menu' => NULL,
       'reg_tab_shows' => NULL,

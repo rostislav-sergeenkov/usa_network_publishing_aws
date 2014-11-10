@@ -1,9 +1,5 @@
 <?php
 
-define('USANETWORK_MENU_PRIMETIME_START_HOUR', 20);
-define('USANETWORK_MENU_PRIMETIME_END_HOUR', 23);
-define('USANETWORK_MENU_PRIMETIME_ITEMS_LENGTH', 4);
-
 /**
  * Implements hook_ctools_plugin_api().
  */
@@ -14,26 +10,6 @@ function usanetwork_menu_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == 'page_manager' && $api == 'pages_default') {
     return array('version' => 1);
   }
-}
-
-/**
- * Implements hook_menu()
- */
-function usanetwork_menu_menu() {
-  $items = array();
-
-  // Ajax for getting running now or next show. Pass user timezone string value
-  // as the first parameter. Divide it by '-' character. For example: "Europe-Minsk".
-  // Next parameter is running show order ('now', 'next', or 'now,next'.
-  $items['ajax/get-running-show/%/%'] = array(
-    'title' => 'Running show',
-    'page callback' => 'usanetwork_menu_get_running_show_ajax',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
 }
 
 /**
@@ -229,126 +205,11 @@ function _usanetwork_menu_show_menu_featured_block() {
 }
 
 /**
- * Implamants callback for ajax/get-running-show/%.
- *
- * @param string $user_timezone - Pass user timezone string value as parameter.
- * Divide it by '-' character. For example: "Europe-Minsk".
- *
- * @param string $periods - Pass string for getting show by period of time.
- * You can pass 'now', 'next' or 'now,next'
- */
-function usanetwork_menu_get_running_show_ajax($user_timezone, $periods = 'now,next') {
-  $user_timezone_correlation = _usanetwork_menu_get_user_timezome_correlation($user_timezone);
-  $data = array(
-    'timezone_correlation' => $user_timezone_correlation,
-  );
-
-  // Remove whitespaces if it exist and explode by comma character
-  $show_periods = explode(',', str_replace(' ', '', $periods));
-
-  if (!empty($show_periods)) {
-    foreach ($show_periods as $show_period) {
-      // Get item of show period. It can be empty if period is not defined
-      $show_period_item = _usanetwork_menu_get_running_show($show_period, $user_timezone_correlation);
-
-      // Filter empty results
-      if (!empty($show_period_item)) {
-        $data[$show_period] = $show_period_item;
-      }
-    }
-  }
-
-  return drupal_json_output($data);
-}
-
-/**
- * Returns show by period type.
- * @param string $period = 'now' || 'next'
- */
-function _usanetwork_menu_get_running_show($period = 'now', $user_timezone_correlation = 0) {
-  if (!module_exists('program_guide')) {
-    return NULL;
-  }
-
-  $period_callbacks = array(
-    'now' => '_usanetwork_menu_get_running_now_show',
-    'next' => '_usanetwork_menu_get_running_next_show',
-  );
-
-  if (!empty($period) && isset($period_callbacks[$period])) {
-    $program_object = $period_callbacks[$period]($user_timezone_correlation);
-
-    if (!empty($program_object)) {
-      $program_entity = entity_load('program', array($program_object->guid));
-
-      if (!empty($program_entity) && isset($program_entity[$program_object->guid])) {
-        return reset($program_entity);
-      }
-
-      return $program_entity;
-    }
-  }
-
-  return NULL;
-}
-
-/**
- * Returns query object with current running show.
- */
-function _usanetwork_menu_get_running_now_show($user_timezone_correlation = 0) {
-  $request_time = REQUEST_TIME + $user_timezone_correlation;
-
-  $query = db_select('programs', 'p');
-  $query->fields('p', array());
-  $query->condition('p.start_time', $request_time, '<');
-  $query->condition('p.end_time', $request_time, '>');
-  $query->range(0, 1);
-
-  return $query->execute()->fetch();
-}
-
-/**
- * Returns query object with next running show.
- */
-function _usanetwork_menu_get_running_next_show($user_timezone_correlation = 0) {
-  $request_time = REQUEST_TIME + $user_timezone_correlation;
-
-  $query = db_select('programs', 'p');
-  $query->fields('p', array());
-  $query->condition('p.start_time', $request_time, '>');
-  $query->orderBy('p.start_time', 'ASC');
-  $query->range(0, 1);
-
-  return $query->execute()->fetch();
-}
-
-/**
- * Ajusts $timestamp with $user_timezone correlation.
- */
-function _usanetwork_menu_get_user_timezome_correlation($user_timezone, $timestamp = REQUEST_TIME) {
-  $dateTime = new DateTime();
-  $dateTime->setTimestamp($timestamp);
-
-  $user_timezone = str_replace('-', '/', $user_timezone);
-
-  try {
-    $dateTimeZone = new DateTimeZone($user_timezone);
-
-    if ($dateTimeZone) {
-      return $dateTimeZone->getOffset($dateTime);
-    }
-  }
-  catch (Exception $e) {}
-
-  return 0;
-}
-
-/**
  * Renders primetime block.
  */
 function _usanetwork_menu_show_menu_primetime_block() {
   $elements = array();
-  $programs = _usanetwork_menu_show_menu_get_primetime_items();
+  $programs = _usanetwork_tv_schedule_get_primetime_items();
 
   if (!empty($programs)) {
     foreach ($programs as $program) {
@@ -373,24 +234,6 @@ function _usanetwork_menu_show_menu_primetime_block() {
 }
 
 /**
- * Returns primetime items.
- */
-function _usanetwork_menu_show_menu_get_primetime_items() {
-  $dateTime = new DateTime('now');
-  $primeTimeStart = $dateTime->setTime(USANETWORK_MENU_PRIMETIME_START_HOUR, 0)->getTimestamp();
-  $primeTimeEnd = $dateTime->setTime(USANETWORK_MENU_PRIMETIME_END_HOUR, 0)->getTimestamp();
-
-  $query = db_select('programs', 'p');
-  $query->fields('p', array());
-  $query->condition('p.start_time', $primeTimeStart, '>=');
-  $query->condition('p.end_time', $primeTimeEnd, '<=');
-  $query->range(0, USANETWORK_MENU_PRIMETIME_ITEMS_LENGTH);
-  $query->orderBy('p.start_time', 'ASC');
-
-  return $query->execute()->fetchAll();
-}
-
-/**
  * Renders block of upcoming episodes.
  */
 function _usanetwork_menu_show_menu_upcoming_episodes_block() {
@@ -398,7 +241,7 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
   $node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($node)) {
-    $episodes = _usanetwork_menu_show_menu_get_upcomming_episodes($node);
+    $episodes = _usanetwork_tv_schedule_get_upcomming_episodes($node);
 
     if (!empty($episodes)) {
       foreach ($episodes as $episode) {
@@ -437,6 +280,21 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
 }
 
 /**
+ * Renders Show Menu.
+ */
+function _usanetwork_menu_render_show_menu_block() {
+  $output = '';
+
+  $panel = panels_mini_load('usanetwork_show_menu');
+
+  if ($panel) {
+    $output = panels_render_display($panel->display);
+  }
+
+  return $output;
+}
+
+/**
  * Returns current Show node.
  */
 function _usanetwork_menu_show_menu_get_current_show_node() {
@@ -451,42 +309,4 @@ function _usanetwork_menu_show_menu_get_current_show_node() {
   }
 
   return NULL;
-}
-
-/**
- * Selects from program $length (default=2) upcoming episodes using title of Show node.
- */
-function _usanetwork_menu_show_menu_get_upcomming_episodes($show_node, $length = 2) {
-  $query = db_select('programs', 'p');
-
-  $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
-  $query->leftJoin('field_data_field_show', 's', 'f.fid=s.entity_id');
-  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
-
-  $query->fields('p', array());
-  $query->fields('v', array('fid', 'video_id', 'title', 'description', 'thumbnail_url'));
-  $query->fields('s', array('field_show_target_id'));
-  $query->fields('n', array('title'));
-
-  $query->condition('n.nid', $show_node->nid);
-  $query->condition('p.start_time', REQUEST_TIME, '>');
-  $query->range(0, $length);
-  $query->orderBy('p.start_time', 'ASC');
-
-  return $query->execute()->fetchAll();
-}
-
-/**
- * Renders Show Menu.
- */
-function _usanetwork_menu_render_show_menu_block() {
-  $output = '';
-
-  $panel = panels_mini_load('usanetwork_show_menu');
-
-  if ($panel) {
-    $output = panels_render_display($panel->display);
-  }
-
-  return $output;
 }

@@ -10,3 +10,4 @@ dependencies[] = panels_mini
 dependencies[] = page_manager
 dependencies[] = usanetwork
 dependencies[] = usanetwork_home
+dependencies[] = usanetwork_tv_schedule

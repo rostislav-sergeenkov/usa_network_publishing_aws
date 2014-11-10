@@ -12,7 +12,6 @@ $plugin = array(
 
 function usanetwork_pl_show_menu_render() {
   $regions = array(
-    'reg_ag' => t('Ad'),
     'reg_menu' => t('Menu'),
     'reg_mobile_menu' => t('Mobile menu'),
     'reg_tab_shows' => t('TAB: Shows'),

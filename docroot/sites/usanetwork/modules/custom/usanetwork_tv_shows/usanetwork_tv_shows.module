@@ -274,11 +274,11 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
 
       if (!empty($value)) {
         $operator = !empty($filter_value['operator'])
-          ? $filter_value['operator']
-          : (is_array($value)
-            ? 'IN'
-            : '='
-          );
+            ? $filter_value['operator']
+            : (is_array($value)
+                ? 'IN'
+                : '='
+            );
 
         $query->condition($filter_field_name, $value, $operator);
       }
@@ -328,12 +328,12 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
       $value = !empty($filter_value['value']) ? $filter_value['value'] : NULL;
 
       if (!empty($value)) {
-        $operator = !empty($filter_value['operator']) 
-          ? $filter_value['operator']
-          : (is_array($value) 
-            ? 'IN' 
-            : '='
-          );
+        $operator = !empty($filter_value['operator'])
+            ? $filter_value['operator']
+            : (is_array($value)
+                ? 'IN'
+                : '='
+            );
 
         $query->condition($filter_field_name, $value, $operator);
       }
@@ -420,36 +420,41 @@ function _usanetwork_tv_shows_detect_related_content_view_mode($query_item, $con
  * Render shows menu items
  */
 function usanetwork_tv_shows_footer_links() {
-
   $query_result = views_get_view_result('usa_nav', 'block');
   $links = array();
-  $query_result_count = count($query_result);
-  $i = 0;
   foreach ($query_result as $row) {
-    $i++;
+    $new = '';
     if ($row->flag_content_node_timestamp) {
-      $row->node_title = '<span>' . t('New!') . '</span> ' . $row->node_title;
+      $new = '<span>' . t('New!') . '</span> ';
     }
-    if ($i == 1) {
-      $row->class = 'first';
-    }
-    else if ($i == $query_result_count) {
-      $row->class = 'last';
-    }
-    $links[] = $row;
+    $links[] = array(
+      'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+        ),
+    );
   }
-  return theme('usanetwork_footer_menu', array('links' => $links));
-}
-
-/**
- * Implements hook_theme()
- */
-function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
-  return array(
-    'usanetwork_footer_menu' => array(
-      'variables' => array('links' => NULL),
-      'path' => $path . '/theme',
-      'template' => 'usanetwork-footer-menu'
+  return theme('usanetwork_item_list', array(
+      'warpper_attributes' => array(
+        'class' => array(
+          'shows-menu',
+        ),
+      ),
+      'title_tag' => 'h2',
+      'title_attributes' => array(
+        'class' => array(
+          'menu-title',
+          'shows-menu-title',
+        ),
+      ),
+      'title' => t('shows'),
+      'items' => $links,
+      'type' => 'ul',
+      'attributes' => array(
+        'class' => array(
+          'menu'
+        )
+      ),
     )
   );
 }

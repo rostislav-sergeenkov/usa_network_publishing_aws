@@ -69,11 +69,25 @@ function usanetwork_settings_form() {
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   );
+  
+  /*
+   * @TODO remove after finish redesign
+   */
   $form['more_menu']['usanetwork_more_menu_links'] = array(
     '#type' => 'textarea',
     '#title' => t('More Menu Raw HTML'),
     '#description' => t('The HTML to include in the "more" link on the primary navigation (Eg. ul, li tags)'),
     '#default_value' => variable_get('usanetwork_more_menu_links', ''),
+  );
+  /*
+   * @TODO remove after finish redesign END
+   */  
+  
+  $form['more_menu']['usanetwork_social_links'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Social network bar'),
+    '#description' => t('The HTML to include list of links to social network pages (Eg. ul, li tags)'),
+    '#default_value' => variable_get('usanetwork_social_links', ''),
   );
 
     /* more menu settings */

@@ -1422,6 +1422,7 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
       $subsubquery->join('field_data_field_mpx_full_episode', 'sub_fdfmfe', 'fm.fid = sub_fdfmfe.entity_id');
       $subsubquery->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
       $subsubquery->condition('sub_fdfmfe.field_mpx_full_episode_value', '1');
+      $subsubquery->condition('mv.status', '1');
       $subsubquery->addExpression('MAX(mv.airdate)', 'max_data');
       $subsubquery->groupBy('sub_fdfs.field_show_target_id');
       $subsubquery->orderBy('mv.airdate', 'DESC');

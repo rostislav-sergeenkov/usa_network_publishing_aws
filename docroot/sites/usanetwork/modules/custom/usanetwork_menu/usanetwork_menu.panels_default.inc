@@ -62,16 +62,13 @@ function usanetwork_menu_default_panels_mini() {
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_tab_full_episodes';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_watch_live';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'Watch Live',
-    'title' => 'Watch Live',
-    'body' => '<p>Item</p>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(

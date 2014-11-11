@@ -2036,12 +2036,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-usa_mpx_video-front_full_epsds' => array(
-          'module' => 'views',
-          'delta' => 'usa_mpx_video-front_full_epsds',
-          'region' => 'content',
-          'weight' => '-9',
-        ),
         'usanetwork_home-usanetwork_home_promo_carousel' => array(
           'module' => 'usanetwork_home',
           'delta' => 'usanetwork_home_promo_carousel',

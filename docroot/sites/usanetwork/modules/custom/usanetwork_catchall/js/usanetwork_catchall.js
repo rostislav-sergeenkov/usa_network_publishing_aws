@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.usanetwork_catchall = {
     attach: function(context){
-
+      var titleSuffix = Drupal.t('USA Network');
       $catchall_controls = $("#edit-title, #edit-path-alias, #edit-field-show select");
 
       $catchall_controls.on("change", function() {
@@ -10,30 +10,37 @@
                     : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
-                    ? $("#edit-field-show select option:selected").text()
+                    ? ' | ' + $("#edit-field-show select option:selected").text()
                     : '';
                     
         var path = $("#edit-path-alias").val() != ''
                   ? $("#edit-path-alias").val()
                   : '';
 
-        var catchall_type = '';
+        var catchallType = '';
+        var catchallString = '';
         if (path != '') {
-          var path_array = path.split("/");
-
-          if (path_array.length > 1 && path_array[1] !== undefined) {
-            if (path_array[1] == 'features') {
-              catchall_type = '| ' + Drupal.t('Features') + ' | ' + show + ' ';
+          var pathArray = path.split("/");
+                                
+          if (pathArray.length > 1 && typeof pathArray[1] != undefined) {
+            switch (pathArray[1]) {
+              case 'features':
+                catchallType = Drupal.t('Features')
+                break;
+              case 'quizzes':
+                catchallType = Drupal.t('Quizzes')
+                break;
+              case 'games':
+                catchallType = Drupal.t('Games')
+                break;                
             }
-            else if (path_array[1] == 'quizzes') {
-              catchall_type = '| ' + Drupal.t('Quizzes') + ' | ' + show + ' ';
+            if (catchallType != '') {
+              catchallString = '| ' + catchallType + show + ' ';
             }
-            else if (path_array[1] == 'games') {
-              catchall_type = '| ' + Drupal.t('Games') + ' | ' + show + ' ';
-            }          
           }
         }
-        $("#edit-field-seo-page-title input").val(title.trim() + ' ' + catchall_type + '| ' + Drupal.t('USA Network'));
+        var inputDefaultValue = title.trim() + ' ' + catchallString + '| ' + titleSuffix;
+        $("#edit-field-seo-page-title input").val(inputDefaultValue);
       });
     }
   }

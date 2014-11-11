@@ -76,27 +76,36 @@ function usanetwork_tv_shows_color_theme() {
 function usanetwork_tv_shows_color_node_presave($node) {
   if (!isset($node->op) &&
       $node->state_flow_node_set_published &&
-      $node->type == 'tv_show' &&
-      isset($node->field_pathauto_alias[$node->language][0]['value']) &&
-      isset($node->field_usa_tv_show_color[$node->language][0]['rgb']) &&
-      isset($node->field_usa_tv_show_color_second[$node->language][0]['rgb']) &&
-      isset($node->field_usa_tv_show_color_tertiary[$node->language][0]['rgb'])) {
+      $node->type == 'tv_show') {
 
-    $node_code = $node->field_pathauto_alias[$node->language][0]['value'];
-    $primary_color_code = $node->field_usa_tv_show_color[$node->language][0]['rgb'];
-    $secondary_color_code = $node->field_usa_tv_show_color_second[$node->language][0]['rgb'];
-    $tertiary_color_code = $node->field_usa_tv_show_color_tertiary[$node->language][0]['rgb'];
+    $node_code = field_get_items('node', $node, 'field_pathauto_alias');
+    $primary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color');
+    $secondary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_second');
+    $tertiary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_tertiary');
 
+    if (!$node_code ||
+        !$primary_color_code ||
+        !$secondary_color_code ||
+        !$tertiary_color_code) {
+      return;
+    }
+    else {
+      $node_code = reset($node_code);
+      $primary_color_code = reset($primary_color_code);
+      $secondary_color_code = reset($secondary_color_code);
+      $tertiary_color_code = reset($tertiary_color_code);
+    }
+    
     $node_css = theme('usanetwork_tv_show_color_css', array(
-      'node_code' => $node_code,
-      'primary_color_code' => $primary_color_code,
-      'secondary_color_code' => $secondary_color_code,
-      'tertiary_color_code' => $tertiary_color_code,
+      'node_code' => $node_code['value'],
+      'primary_color_code' => $primary_color_code['rgb'],
+      'secondary_color_code' => $secondary_color_code['rgb'],
+      'tertiary_color_code' => $tertiary_color_code['rgb'],
     ));
     $tv_show_css_dir = 'public://tv_show_color/nodes';
     $tv_show_css = 'public://tv_show_color/tv_show_color_schema.css';
     if (file_prepare_directory($tv_show_css_dir, FILE_CREATE_DIRECTORY)) {
-      $saved = file_unmanaged_save_data($node_css, $tv_show_css_dir . '/' . $node_code . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
+      $saved = file_unmanaged_save_data($node_css, $tv_show_css_dir . '/' . $node_code['value'] . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
       if ($saved) {
         $files = file_scan_directory($tv_show_css_dir, '/\.css/');
         $css = '';

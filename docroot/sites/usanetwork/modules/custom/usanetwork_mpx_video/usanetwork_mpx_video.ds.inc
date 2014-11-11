@@ -516,19 +516,25 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'media' => array(
         0 => 'file',
       ),
-      'caption' => array(
-        0 => 'field_mpx_title',
-        1 => 'field_mpx_airdate',
-      ),
       'title' => array(
         0 => 'field_show',
+      ),
+      'caption' => array(
+        0 => 'field_mpx_title',
+      ),
+      'meta' => array(
+        0 => 'field_mpx_episode_number',
+        1 => 'field_mpx_season_number',
+        2 => 'field_mpx_duration',
       ),
     ),
     'fields' => array(
       'file' => 'media',
-      'field_mpx_title' => 'caption',
-      'field_mpx_airdate' => 'caption',
       'field_show' => 'title',
+      'field_mpx_title' => 'caption',
+      'field_mpx_episode_number' => 'meta',
+      'field_mpx_season_number' => 'meta',
+      'field_mpx_duration' => 'meta',
     ),
     'classes' => array(),
   );

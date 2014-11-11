@@ -447,7 +447,7 @@ function usanetwork_tv_shows_footer_links() {
           'shows-menu-title',
         ),
       ),
-      'title' => t('shows'),
+      'title' => t('Shows'),
       'items' => $links,
       'type' => 'ul',
       'attributes' => array(

@@ -74,6 +74,21 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_fm_shows'] = array(
+    'info' => t('Usanetwork Footer: Shows'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_fm_social_links'] = array(
+    'info' => t('Usanetwork Footer: Social links'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_fm_menu'] = array(
+    'info' => t('Usanetwork Footer: Footer block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -112,6 +127,21 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_menu':
       $block['subject'] = t('Show menu');
       $block['content'] = _usanetwork_menu_render_show_menu_block();
+      break;
+
+    case 'usanetwork_menu_fm_shows':
+      $block['subject'] = t('Shows');
+      $block['content'] = usanetwork_tv_shows_footer_links();
+      break;
+
+    case 'usanetwork_menu_fm_social_links':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_bottom_footer();
+      break;
+
+    case 'usanetwork_menu_fm_menu':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_render_footer_menu_block();
       break;
   }
 
@@ -350,6 +380,21 @@ function _usanetwork_menu_render_show_menu_block() {
   $output = '';
 
   $panel = panels_mini_load('usanetwork_show_menu');
+
+  if ($panel) {
+    $output = panels_render_display($panel->display);
+  }
+
+  return $output;
+}
+
+/**
+ * Renders Footer Menu.
+ */
+function _usanetwork_menu_render_footer_menu_block() {
+  $output = '';
+
+  $panel = panels_mini_load('usanetwork_footer');
 
   if ($panel) {
     $output = panels_render_display($panel->display);

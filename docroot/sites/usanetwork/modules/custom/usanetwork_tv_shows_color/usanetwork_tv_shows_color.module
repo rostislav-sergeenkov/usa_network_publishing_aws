@@ -45,72 +45,61 @@ function usanetwork_tv_shows_color_field_attach_library($children, $elements) {
  */
 function usanetwork_tv_shows_color_add_css($show) {
   if (isset($show)) {
-    $color = field_get_items('node', $show, 'field_usa_tv_show_color');
-    if (isset($color[0]['rgb'])) {
-      $color = $color[0]['rgb'];
-      $palette = array(
-        'nav-menu-link' => $color,
-        'show-title-bar' => $color,
-      );
-      $style = _usanetwork_tv_shows_color_process_css($palette);
-      if ($style) {
-        drupal_add_css($style, array('type' => 'inline', 'group' => CSS_THEME));
-      }
+    if (file_exists('public://tv_show_color/tv_show_color_schema.css')) {
+      drupal_add_css('public://tv_show_color/tv_show_color_schema.css', array('type' => 'file', 'group' => CSS_THEME));
     }
   }
 }
 
 /**
- * Returns processed css string
+ * Implements hook_theme().
  */
-function _usanetwork_tv_shows_color_process_css($palette) {
-  // Read css content from file
-  $style = file_get_contents(drupal_get_path('module', 'usanetwork_tv_shows_color') . '/usanetwork_tv_shows_color.css');
-  if ($style) {
-    $conversion = $palette;
-    foreach ($conversion as $k => $v) {
-      $conversion[$k] = drupal_strtolower($v);
-    }
-    $default = _usanetwork_tv_shows_color_map();
-
-    // Split off the "Don't touch" section of the stylesheet.
-    $split = "TV Show specific colors: Don't touch";
-    if (strpos($style, $split) !== FALSE) {
-      list($fixed, $style) = explode($split, $style);
-    }
-
-    // Find all colors in the stylesheet and the chunks in between.
-    $style = preg_split('/(#[0-9a-f]{6}|#[0-9a-f]{3})/i', $style, -1, PREG_SPLIT_DELIM_CAPTURE);
-    $is_color = FALSE;
-    $output = '';
-
-    // Iterate over all the parts.
-    foreach ($style as $chunk) {
-      if ($is_color) {
-        $chunk = drupal_strtolower($chunk);
-        // Check if this is one of the colors in the default palette.
-        if ($key = array_search($chunk, $default)) {
-          $chunk = $conversion[$key];
-        }
-      }
-      $output .= $chunk;
-      $is_color = !$is_color;
-    }
-    // Prepend fixed colors segment.
-    if (isset($fixed)) {
-      $output = $fixed . $output;
-    }
-    $style = $output;
-  }
-  return $style;
-}
-
-/**
- * Returns color map
- */
-function _usanetwork_tv_shows_color_map() {
+function usanetwork_tv_shows_color_theme() {
+  $module_path = drupal_get_path('module', 'usanetwork_tv_shows_color');
   return array(
-    'nav-menu-link' => '#0ab6e8',
-    'show-title-bar' => '#000000',
+    'usanetwork_tv_show_color_css' => array(
+      'variables' => array(
+        'node_code' => NULL,
+        'primary_color_code' => NULL,
+        'secondary_color_code' => NULL,
+        'tertiary_color_code' => NULL,
+      ),
+      'path' => $module_path . '/theme',
+      'template' => 'tv-show-color-css',
+    ),
   );
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function usanetwork_tv_shows_color_node_presave($node) {
+  if (!isset($node->op) &&
+      $node->state_flow_node_set_published &&
+      $node->type == 'tv_show' &&
+      isset($node->field_pathauto_alias[LANGUAGE_NONE][0]['value']) &&
+      isset($node->field_usa_tv_show_color[LANGUAGE_NONE][0]['rgb']) &&
+      isset($node->field_usa_tv_show_color_second[LANGUAGE_NONE][0]['rgb']) &&
+      isset($node->field_usa_tv_show_color_tertiary[LANGUAGE_NONE][0]['rgb'])) {
+
+    $node_css = theme('usanetwork_tv_show_color_css', array(
+      'node_code' => $node->field_pathauto_alias[LANGUAGE_NONE][0]['value'],
+      'primary_color_code' => $node->field_usa_tv_show_color[LANGUAGE_NONE][0]['rgb'],
+      'secondary_color_code' => $node->field_usa_tv_show_color_second[LANGUAGE_NONE][0]['rgb'],
+      'tertiary_color_code' => $node->field_usa_tv_show_color_tertiary[LANGUAGE_NONE][0]['rgb'],
+    ));
+    $tv_show_css_dir = 'public://tv_show_color/nodes';
+    $tv_show_css = 'public://tv_show_color/tv_show_color_schema.css';
+    if (file_prepare_directory($tv_show_css_dir, FILE_CREATE_DIRECTORY)) {
+      $saved = file_unmanaged_save_data($node_css, $tv_show_css_dir . '/' . $node->field_pathauto_alias[LANGUAGE_NONE][0]['value'] . '_' . $node->nid . '.css', FILE_EXISTS_REPLACE);
+      if ($saved) {
+        $files = file_scan_directory($tv_show_css_dir, '/\.css/');
+        $css = '';
+        foreach ($files as $file) {
+          $css .= file_get_contents($file->uri);
+        }
+        file_unmanaged_save_data($css, $tv_show_css, FILE_EXISTS_REPLACE);
+      }
+    }
+  }
 }

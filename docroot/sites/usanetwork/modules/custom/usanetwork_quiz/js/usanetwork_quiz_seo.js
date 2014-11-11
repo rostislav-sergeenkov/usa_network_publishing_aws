@@ -2,9 +2,9 @@
   Drupal.behaviors.usanetwork_quiz_seo = {
     attach: function(context){
 
-      $quizControls = $("#edit-title, #edit-field-seo-h1 input, #edit-field-show select");
+      $quiz_controls = $("#edit-title, #edit-field-seo-h1 input, #edit-field-show select");
 
-      $quizControls.on("change", function() {
+      $quiz_controls.on("change", function() {
         var titleSuffix = Drupal.t('USA Network');
         var title = $("#edit-title").val() != ''
                     ? $("#edit-title").val()

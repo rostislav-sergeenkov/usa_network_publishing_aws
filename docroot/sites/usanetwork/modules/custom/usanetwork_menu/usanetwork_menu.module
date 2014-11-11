@@ -158,6 +158,7 @@ function usanetwork_menu_theme() {
         'title' => NULL,
         'image' => NULL,
         'cta_text' => NULL,
+        'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-img-show-item',
     ),
@@ -173,6 +174,7 @@ function usanetwork_menu_theme() {
         'show_title' => NULL,
         'show_episode' => NULL,
         'data' => NULL,
+        'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-primetime-item',
     ),
@@ -192,6 +194,7 @@ function usanetwork_menu_theme() {
         'episode_time' => NULL,
         'episode_interval' => NULL,
         'episode_description' => NULL,
+        'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-upcoming-element-item',
     ),
@@ -215,7 +218,7 @@ function usanetwork_menu_theme() {
         'season' => NULL,
         'episode' => NULL,
         'season_and_episode' => NULL,
-        'show_url' => NULL,
+        'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-smnav-watch-live',
     ),
@@ -285,6 +288,7 @@ function _usanetwork_menu_show_menu_featured_block() {
             'cta_text' => $cta_text,
             'type' => NULL,
             'time' => NULL,
+            'node_url' => NULL,
           ));
         }
       }
@@ -314,6 +318,7 @@ function _usanetwork_menu_show_menu_primetime_block() {
         ),
         'show_title' => $program->parent_title,
         'show_episode' => $program->title,
+        'node_url' => NULL,
       ));
     }
   }
@@ -359,6 +364,7 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
           'episode_time' => date('g:i', $episode->start_time),
           'episode_interval' => date('A', $episode->start_time),
           'episode_description' => $episode->description,
+          'node_url' => '',
         ));
       }
     }
@@ -451,33 +457,44 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   if ($data) {
     $theme_variables = array(
       'on_now' => array(
+        /*'image' => !empty($data['now']->object_data->thumbnail_url)
+          ? theme('image_style', array(
+              'style_name' => 'episode_preview_temp',
+              'path' => $data['now']->object_data->thumbnail_url,
+          ))
+          : '',*/
         'image' => !empty($data['now']->object_data->thumbnail_url)
           ? theme('image', array(
-            'path' => $data['now']->object_data->thumbnail_url,
-            'alt' => !empty($data['now']->title) ? $data['now']->title : '',
-            'title' => !empty($data['now']->title) ? $data['now']->title : '',
+            'path' => $data['next']->object_data->thumbnail_url,
+            'width' => 143,
+            'height' => 81,
           ))
           : '',
-        'title' => !empty($data['now']->title) ? $data['now']->title : '',
-        'caption' => !empty($data['now']->raw['pllisting$program']['plprogram$programType'])
-          ? ucfirst($data['now']->raw['pllisting$program']['plprogram$programType'])
-          : '',
+        'title' => !empty($data['now']->parent_title) ? $data['now']->parent_title : '',
+        'caption' => !empty($data['now']->title) ? $data['now']->title : '',
         'description' => !empty($data['now']->object_data->description)
           ? $data['now']->object_data->description
           : '',
+        'node_url' => !empty($data['now']->object_data->nid)
+          ? (url('node/' . $data['now']->object_data->nid))
+          : '',
       ),
       'up_next' => array(
+        /*'image' => !empty($data['next']->object_data->thumbnail_url)
+          ? theme('image_style', array(
+              'style_name' => 'episode_preview_temp',
+              'path' => $data['next']->object_data->thumbnail_url,
+          ))
+          : '',*/
         'image' => !empty($data['next']->object_data->thumbnail_url)
           ? theme('image', array(
             'path' => $data['next']->object_data->thumbnail_url,
-            'alt' => !empty($data['next']->title) ? $data['next']->title : '',
-            'title' => !empty($data['next']->title) ? $data['next']->title : '',
+            'width' => 143,
+            'height' => 81,
           ))
           : '',
-        'title' => !empty($data['next']->title) ? $data['next']->title : '',
-        'caption' => !empty($data['next']->raw['pllisting$program']['plprogram$programType'])
-          ? ucfirst($data['next']->raw['pllisting$program']['plprogram$programType'])
-          : '',
+        'title' => !empty($data['next']->parent_title) ? $data['next']->parent_title : '',
+        'caption' => !empty($data['next']->title) ? $data['next']->title : '',
         'description' => !empty($data['next']->object_data->description)
           ? $data['next']->object_data->description
           : '',
@@ -486,6 +503,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
           : '',
         'time_daypart' => !empty($data['next']->start_time)
           ? date('A', $data['next']->start_time)
+          : '',
+        'node_url' => !empty($data['now']->object_data->nid)
+          ? (url('node/' . $data['now']->object_data->nid))
           : '',
       ),
     );
@@ -506,11 +526,18 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
 
   if ($data) {
     $theme_variables = array(
-      'image' => !empty($data['now']->object_data->thumbnail_url)
+      /*'image' => !empty($data['now']->object_data->thumbnail_url)
         ? theme('image', array(
           'path' => $data['now']->object_data->thumbnail_url,
           'alt' => !empty($data['now']->title) ? $data['now']->title : '',
           'title' => !empty($data['now']->title) ? $data['now']->title : '',
+        ))
+        : '',*/
+      'image' => !empty($data['next']->object_data->thumbnail_url)
+        ? theme('image', array(
+          'path' => $data['next']->object_data->thumbnail_url,
+          'width' => 143,
+          'height' => 81,
         ))
         : '',
       'title' => !empty($data['now']->title) ? $data['now']->title : '',
@@ -523,7 +550,7 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
       'season_and_episode' => (!empty($data['now']->season_number) && !empty($data['now']->season_episode_number))
         ? ('S' . $data['now']->season_number . ' ' . t('Episode') . ' ' . $data['now']->season_episode_number)
         : '',
-      'show_url' => !empty($data['now']->object_data->nid)
+      'node_url' => !empty($data['now']->object_data->nid)
         ? url('node/' . $data['now']->object_data->nid, array(
           'alias' => TRUE,
         ))

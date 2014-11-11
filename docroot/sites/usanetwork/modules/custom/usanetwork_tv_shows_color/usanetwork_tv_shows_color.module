@@ -13,7 +13,6 @@ function usanetwork_tv_shows_color_init() {
 /*
  * Implements hook_usanetwork_widget_style().
  */
-
 function usanetwork_tv_shows_color_usanetwork_widget_style($show) {
   usanetwork_tv_shows_color_add_css($show);
 }

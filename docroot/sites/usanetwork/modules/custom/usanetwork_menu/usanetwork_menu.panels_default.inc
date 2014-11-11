@@ -3,6 +3,8 @@
 function usanetwork_menu_default_panels_mini() {
   $export = array();
 
+  // Main menu panel
+
   $mini = new stdClass();
   $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
   $mini->api_version = 1;
@@ -13,6 +15,7 @@ function usanetwork_menu_default_panels_mini() {
   $mini->requiredcontexts = array();
   $mini->contexts = array();
   $mini->relationships = array();
+
   $display = new panels_display();
   $display->layout = 'usanetwork-show-menu';
   $display->layout_settings = array();
@@ -31,6 +34,7 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
+
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_menu';
@@ -59,6 +63,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_menu'][0] = 'new-1';
+
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_tab_full_episodes';
@@ -80,6 +85,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_tab_full_episodes'][0] = 'new-2';
+
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_tab_full_episodes';
@@ -106,6 +112,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-3'] = $pane;
   $display->panels['reg_tab_full_episodes'][1] = 'new-3';
+
   $pane = new stdClass();
   $pane->pid = 'new-4';
   $pane->panel = 'reg_tab_schedule';
@@ -127,6 +134,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-4'] = $pane;
   $display->panels['reg_tab_schedule'][0] = 'new-4';
+
   $pane = new stdClass();
   $pane->pid = 'new-5';
   $pane->panel = 'reg_tab_schedule';
@@ -148,6 +156,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-5'] = $pane;
   $display->panels['reg_tab_schedule'][1] = 'new-5';
+
   $pane = new stdClass();
   $pane->pid = 'new-6';
   $pane->panel = 'reg_tab_shows';
@@ -169,6 +178,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-6'] = $pane;
   $display->panels['reg_tab_shows'][0] = 'new-6';
+
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
@@ -198,6 +208,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-7'] = $pane;
   $display->panels['reg_tab_shows'][1] = 'new-7';
+
   $pane = new stdClass();
   $pane->pid = 'new-8';
   $pane->panel = 'reg_tab_shows';
@@ -225,6 +236,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->extras = array();
   $pane->position = 2;
   $pane->locks = array();
+
   $display->content['new-8'] = $pane;
   $display->panels['reg_tab_shows'][2] = 'new-8';
   $display->hide_title = PANELS_TITLE_NONE;
@@ -232,6 +244,104 @@ function usanetwork_menu_default_panels_mini() {
   $mini->display = $display;
 
   $export['usanetwork_show_menu'] = $mini;
+
+  // Footer panel
+
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'usanetwork_footer';
+  $mini->category = 'Custom USA';
+  $mini->admin_title = 'Usanetwork: footer';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array();
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'usanetwork-footer';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'reg_footer_menu' => NULL,
+      'reg_legal_and_social' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+
+  $pane = new stdClass();
+  $pane->pid = 'new-1';
+  $pane->panel = 'reg_footer_menu';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_fm_shows';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-1'] = $pane;
+  $display->panels['reg_footer_menu'][0] = 'new-1';
+
+  $pane = new stdClass();
+  $pane->pid = 'new-2';
+  $pane->panel = 'reg_footer_menu';
+  $pane->type = 'block';
+  $pane->subtype = 'menu-menu-apps-services';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $display->content['new-2'] = $pane;
+  $display->panels['reg_footer_menu'][1] = 'new-2';
+
+  $pane = new stdClass();
+  $pane->pid = 'new-3';
+  $pane->panel = 'reg_legal_and_social';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_fm_social_links';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-3'] = $pane;
+  $display->panels['reg_legal_and_social'][0] = 'new-3';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $mini->display = $display;
+
+  $export['usanetwork_footer'] = $mini;
 
   return $export;
 }

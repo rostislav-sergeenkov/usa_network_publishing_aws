@@ -27,6 +27,14 @@ function usanetwork_menu_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/render-watch-live/%'] = array(
+    'title' => 'Running show',
+    'page callback' => 'usanetwork_menu_render_watch_live_show_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -53,6 +61,11 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_now_and_next'] = array(
     'info' => t('Homepage Menu: On now and Up next'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_sm_watch_live'] = array(
+    'info' => t('Homepage Menu: Watch live'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -89,6 +102,11 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_now_and_next':
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_show_menu_now_and_next_block();
+      break;
+
+    case 'usanetwork_menu_sm_watch_live':
+      $block['subject'] = t('Watch live!');
+      $block['content'] = _usanetwork_menu_show_menu_watch_live_block();
       break;
 
     case 'usanetwork_menu_sm_menu':
@@ -159,6 +177,17 @@ function usanetwork_menu_theme() {
         'up_next' => array(),
       ),
       'template' => 'templates/usanetwork-smnav-now-next',
+    ),
+    'usanetwork_menu_smnav_watch_live' => array(
+      'variables' => array(
+        'image' => NULL,
+        'title' => NULL,
+        'season' => NULL,
+        'episode' => NULL,
+        'season_and_episode' => NULL,
+        'show_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-smnav-watch-live',
     ),
   );
 }
@@ -359,7 +388,7 @@ function _usanetwork_menu_show_menu_now_and_next_block() {
     'attributes' => array('class' => 'spinner'),
   );
 
-  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.main.js';
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.now_and_next.js';
   $block_form['test'] = array(
     '#type' => 'item',
     '#markup' => theme('image', $spinner_options),
@@ -422,4 +451,66 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   }
 
   return drupal_json_output(NULL);
+}
+
+/**
+ * Renders AJAX block using users timezone
+ */
+function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
+  $data = usanetwork_tv_schedule_get_running_show_ajax($user_timezone, 'now', FALSE);
+
+  if ($data) {
+    $theme_variables = array(
+      'image' => !empty($data['now']->object_data->thumbnail_url)
+        ? theme('image', array(
+          'path' => $data['now']->object_data->thumbnail_url,
+          'alt' => !empty($data['now']->title) ? $data['now']->title : '',
+          'title' => !empty($data['now']->title) ? $data['now']->title : '',
+        ))
+        : '',
+      'title' => !empty($data['now']->title) ? $data['now']->title : '',
+      'season' => !empty($data['now']->season_number)
+        ? $data['now']->season_number
+        : '',
+      'episode' => !empty($data['now']->season_episode_number)
+        ? $data['now']->season_episode_number
+        : '',
+      'season_and_episode' => (!empty($data['now']->season_number) && !empty($data['now']->season_episode_number))
+        ? ('S' . $data['now']->season_number . ' ' . t('Episode') . ' ' . $data['now']->season_episode_number)
+        : '',
+      'show_url' => !empty($data['now']->object_data->nid)
+        ? url('node/' . $data['now']->object_data->nid, array(
+          'alias' => TRUE,
+        ))
+        : '',
+    );
+
+    return drupal_json_output(array(
+      'html' => theme('usanetwork_menu_smnav_watch_live', $theme_variables),
+    ));
+  }
+
+  return drupal_json_output(NULL);
+}
+
+/**
+ * Renders "Watch Live" block.
+ */
+function _usanetwork_menu_show_menu_watch_live_block() {
+  $block_form = array();
+
+  $spinner_options = array(
+    'path' => drupal_get_path('theme', 'aurora_usa') . '/images/ajax-loader.gif',
+    'alt' => t('Please wait...'),
+    'title' => t('Please wait'),
+    'attributes' => array('class' => 'spinner'),
+  );
+
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.watch_live.js';
+  $block_form['test'] = array(
+    '#type' => 'item',
+    '#markup' => theme('image', $spinner_options),
+  );
+
+  return render($block_form);
 }

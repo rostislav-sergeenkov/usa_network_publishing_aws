@@ -934,12 +934,13 @@ function usanetwork_core_update_7154() {
 }
 
 /**
- * Enables 'panels_mini' and 'page_manager' modules.
+ * Enables 'panels_mini', 'page_manager' and 'usanetwork_menu' modules.
  */
 function usanetwork_core_update_7155() {
   $to_be_enabled = array(
     'panels_mini',
     'page_manager',
+    'usanetwork_menu',
   );
 
   foreach ($to_be_enabled as $new_module) {

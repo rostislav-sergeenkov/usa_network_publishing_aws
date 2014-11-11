@@ -2,7 +2,7 @@ name = "USA Network Menu"
 description = "Renders main navigation menu on the website"
 core = 7.x
 package = "USA Network"
-version = "7.x-1.0.2"
+version = "7.x-1.0.3"
 project = usanetwork_menu
 
 dependencies[] = panels
@@ -11,3 +11,4 @@ dependencies[] = page_manager
 dependencies[] = usanetwork
 dependencies[] = usanetwork_home
 dependencies[] = usanetwork_tv_schedule
+dependencies[] = usanetwork_tv_shows

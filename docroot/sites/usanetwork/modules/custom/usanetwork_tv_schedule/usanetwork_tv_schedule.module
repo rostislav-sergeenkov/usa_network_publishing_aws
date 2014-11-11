@@ -1525,9 +1525,12 @@ function _usanetwork_tv_schedule_get_running_next_show($user_timezone_correlatio
 
   $query = db_select('programs', 'p');
   $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
+  $query->leftJoin('field_data_field_show', 's', 'v.fid=s.entity_id');
+  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
   $query->fields('p', array());
   $query->fields('v', array('description', 'thumbnail_url'));
   $query->addField('v', 'title', 'video_title');
+  $query->fields('n', array('nid'));
   $query->condition('p.start_time', $request_time, '>');
   $query->orderBy('p.start_time', 'ASC');
   $query->range(0, 1);

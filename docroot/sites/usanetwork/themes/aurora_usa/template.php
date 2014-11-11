@@ -565,7 +565,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     case 'field_mpx_title':
       if (isset($vars['element']['#view_mode'])) {
         switch($vars['element']['#view_mode']) {
-          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             unset($vars['items'][0]);
             break;
@@ -608,7 +607,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // AIRDATE IN VIDEOS
-    case 'field_video_air_date':
     case 'field_mpx_airdate':
       // change display
       if (isset($vars['element']['#view_mode'])) {
@@ -618,7 +616,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
             $air_custom = date('n/d/Y', $airtime);
             $vars['items'][0]['#markup'] = '(' . $air_custom . ')';
             break;
-          case 'vid_teaser_front':
           case 'vid_teaser_episode':
             if (strpos($vars['element']['#object']->type, 'mpx_video') === 0) {
               $title = $vars['element']['#object']->field_mpx_title['und'][0]['safe_value'];
@@ -634,10 +631,9 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // episode num IN VIDEOS
-    case 'field_episode_number':
     case 'field_mpx_episode_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
+      if ((strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
@@ -646,23 +642,30 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
               $episode = $vars['element']['#items'][0]['safe_value'];
               $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
               break;
+            case 'vid_teaser_front':
+              $episode = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $episode ? t('Episode ') . $episode : '';
+              break;
             }
           }
         }
       break;
     // season num IN VIDEOS
-    case 'field_season_id':
     case 'field_mpx_season_number':
       // change display
-      if (($vars['element']['#object']->type == 'usa_video') || ($vars['element']['#object']->type == 'usa_tve_video') || (strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
+      if ((strpos($vars['element']['#object']->type, 'mpx_video') === 0)) {
         if (isset($vars['element']['#view_mode'])) {
           switch($vars['element']['#view_mode']) {
             case 'full' :
             case 'vid_teaser_show_episode':
             case 'vid_teaser_show_general':
               $season = $vars['element']['#items'][0]['safe_value'];
-                $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
-                break;
+              $vars['items'][0]['#markup'] = $season ? t('Season ') . $season : '';
+              break;
+            case 'vid_teaser_front':
+              $season = $vars['element']['#items'][0]['safe_value'];
+              $vars['items'][0]['#markup'] = $season ? t('S') . $season : '';
+              break;
             }
           }
         }
@@ -681,11 +684,10 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
         }
       break;
     // DURATION WITHIN VIDEO TEASERS
-    case 'field_video_duration':
     case 'field_mpx_duration':
       // change display
       $duration = $vars['element']['#items'][0]['value'];
-      $duration_custom = gmdate("H:i:s", $duration);
+      $duration_custom = gmdate("i:s", $duration);
       $vars['items'][0]['#markup'] = $duration_custom;
       break;
     // PROMO line 1 text on

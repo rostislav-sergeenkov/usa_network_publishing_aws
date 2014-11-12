@@ -563,16 +563,20 @@ function _usanetwork_mpx_video_full_episodes_exist($show_nid) {
   if (empty($show_nid)) {
     return false;
   }
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'file');
-  $query->entityCondition('bundle',  _usanetwork_mpx_video_get_all_file_types(), 'IN');
-  $query->propertyCondition('published', 1);
-  $query->fieldCondition('field_show', 'target_id', $show_nid);
-  $query->fieldCondition('field_mpx_full_episode', 'value', '1', '=');
-  $query->count();
+  
+  $query = db_select('file_managed', 'fm')
+      ->fields('fm', array('fid'))
+      ->condition('type', _pub_mpx_get_mpx_account_video_file_types(TRUE));
+  $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+  $query->condition('mv.status', '1');
+  $query->leftJoin('field_data_field_show', 'fdfs', 'fm.fid = fdfs.entity_id');
+  $query->condition('fdfs.field_show_target_id', $show_nid);
+  $query->leftJoin('field_data_field_mpx_full_episode', 'fdfmfe', 'fm.fid = fdfmfe.entity_id');
+  $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+  $query->countQuery();
   
   // execute the query
-  $count = intval($query->execute());
+  $count = $query->execute()->fetchField();
 
   return  $count > 0 ? true : false;
 }

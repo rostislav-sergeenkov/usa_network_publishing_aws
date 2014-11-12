@@ -465,7 +465,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
           : '',*/
         'image' => !empty($data['now']->object_data->thumbnail_url)
           ? theme('image', array(
-            'path' => $data['next']->object_data->thumbnail_url,
+            'path' => $data['now']->object_data->thumbnail_url,
             'width' => 143,
             'height' => 81,
           ))

@@ -79,6 +79,11 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_fm_apps_services'] = array(
+    'info' => t('Usanetwork Footer: Apps & Services'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  
   $blocks['usanetwork_menu_fm_social_links'] = array(
     'info' => t('Usanetwork Footer: Social links'),
     'cache' => DRUPAL_NO_CACHE,
@@ -134,6 +139,11 @@ function usanetwork_menu_block_view($delta = '') {
       $block['content'] = usanetwork_tv_shows_footer_links();
       break;
 
+    case 'usanetwork_menu_fm_apps_services':
+      $block['subject'] = t('Apps & Services');
+      $block['content'] = _usanetwork_menu_footer_apps_services();
+      break;
+    
     case 'usanetwork_menu_fm_social_links':
       $block['subject'] = '';
       $block['content'] = usanetwork_bottom_footer();
@@ -585,4 +595,40 @@ function _usanetwork_menu_show_menu_watch_live_block() {
   );
 
   return render($block_form);
+}
+
+/**
+ * Render button footer block for Apps & Services
+ */
+function _usanetwork_menu_footer_apps_services() {
+
+  $menu = menu_load('menu-apps-services');
+  if (!$menu) {
+    return;
+  }
+  $menu_links = menu_load_links($menu['menu_name']);
+  foreach ($menu_links as $item) {
+    $items[] = array(
+      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+
+  return  theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'app-and-services-menu',
+      ),
+    ),
+    'title' => NULL,
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu',
+      )
+    ),
+  ));
 }

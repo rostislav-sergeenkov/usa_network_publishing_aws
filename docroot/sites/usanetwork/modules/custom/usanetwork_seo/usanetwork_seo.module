@@ -12,6 +12,6 @@ include_once 'usanetwork_seo.features.inc';
  */
 function usanetwork_seo_form_alter(&$form, &$form_state) {
   if (isset($form['field_seo_h1']) || isset($form['field_seo_page_title'])) {
-    $form['#attached']['js'][] = drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/seo.js');
+    $form['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/seo.js';
   }
 }

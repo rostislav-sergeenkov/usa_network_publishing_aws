@@ -8,7 +8,7 @@
 
 <div class="node node-usanetwork-promo">
   <?php if (!empty($image)): ?>
-    <a href="#" class="play-icon">
+    <a href="<?php print !empty($node_url) ? $node_url : '#'; ?>" class="play-icon">
       <div class="asset-img show-color-border show-rush">
         <img src="<?php print $image; ?>" alt="">
       </div>

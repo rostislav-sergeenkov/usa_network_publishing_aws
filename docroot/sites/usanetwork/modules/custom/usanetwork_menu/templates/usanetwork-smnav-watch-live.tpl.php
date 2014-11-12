@@ -3,12 +3,12 @@
  * @var $image - Rendered image
  * @var $title - The title of the show
  * @var $season_and_episode - The season and episode number
- * @var $show_url - The URL to Show page
+ * @var $node_url - The URL to Show page
  */
 ?>
 <div class="node node-usanetwork-promo">
-  <?php if (!empty($image) && !empty($show_url)): ?>
-    <a href="<?php print $show_url; ?>">
+  <?php if (!empty($image)): ?>
+    <a href="<?php print !empty($node_url) ? $node_url : '#'; ?>">
       <div class="asset-img">
         <?php print $image; ?>
       </div>

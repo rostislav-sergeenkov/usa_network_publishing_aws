@@ -1525,14 +1525,19 @@ function _usanetwork_tv_schedule_get_running_next_show($user_timezone_correlatio
 
   $query = db_select('programs', 'p');
   $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
+  $query->leftJoin('field_data_field_show', 's', 'v.fid=s.entity_id');
+  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
   $query->fields('p', array());
   $query->fields('v', array('description', 'thumbnail_url'));
-  $query->addField('v', 'title', 'video_title');
+  $query->fields('n', array('nid'));
   $query->condition('p.start_time', $request_time, '>');
   $query->orderBy('p.start_time', 'ASC');
   $query->range(0, 1);
 
-  return $query->execute()->fetch();
+  $result = $query->execute()->fetch();
+  _usanetwork_tv_schedule_get_program_item_missed_data($result);
+
+  return $result;
 }
 
 /**
@@ -1553,7 +1558,96 @@ function _usanetwork_tv_schedule_get_running_now_show($user_timezone_correlation
   $query->condition('p.end_time', $request_time, '>');
   $query->range(0, 1);
 
-  return $query->execute()->fetch();
+  $result = $query->execute()->fetch();
+  _usanetwork_tv_schedule_get_program_item_missed_data($result);
+
+  return $result;
+}
+
+function _usanetwork_tv_schedule_get_program_item_missed_data(&$program_result) {
+  $keys_to_search = array(
+    'nid',
+    'description',
+    'thumbnail_url',
+  );
+
+  foreach ($keys_to_search as $key_to_search) {
+    $result_callback = '_usanetwork_tv_schedule_get_pe_' . $key_to_search . '_data';
+
+    if (empty($program_result->$key_to_search) && is_callable($result_callback)) {
+      $program_result->$key_to_search = $result_callback($program_result);
+    }
+  }
+}
+
+function _usanetwork_tv_schedule_get_pe_description_data(&$program_result) {
+  $target_nid = $program_result->nid;
+
+  if (empty($target_nid)) {
+    $program_result->nid = _usanetwork_tv_schedule_get_pe_nid_data($program_result);
+    $target_nid = $program_result->nid;
+  }
+
+  if (empty($target_nid)) {
+    return;
+  }
+
+  $query = db_select('field_data_body', 'fb');
+  $query->fields('fb', array('body_value'));
+  $query->condition('fb.entity_id', $target_nid);
+  $query->orderBy('fb.entity_id', 'DESC');
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if (!empty($result)) {
+    return strip_tags($result->body_value);
+  }
+
+  return '';
+}
+
+function _usanetwork_tv_schedule_get_pe_thumbnail_url_data(&$program_result) {
+  $target_nid = $program_result->nid;
+
+  if (empty($target_nid)) {
+    $program_result->nid = _usanetwork_tv_schedule_get_pe_nid_data($program_result);
+    $target_nid = $program_result->nid;
+  }
+
+  if (empty($target_nid)) {
+    return;
+  }
+
+  $query = db_select('field_data_field_logo', 'fl');
+  $query->fields('fl', array('field_logo_fid'));
+  $query->condition('fl.entity_id', $target_nid);
+  $query->orderBy('fl.entity_id', 'DESC');
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if (!empty($result->field_logo_fid)) {
+    $file = file_load($result->field_logo_fid);
+
+    return file_create_url($file->uri);
+  }
+}
+
+function _usanetwork_tv_schedule_get_pe_nid_data(&$program_result) {
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid'));
+  $query->condition('n.title', $program_result->parent_title, 'LIKE');
+  $query->orderBy('n.nid', 'DESC');
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if (!empty($result->nid)) {
+    return $result->nid;
+  }
+
+  return 0;
 }
 
 /**

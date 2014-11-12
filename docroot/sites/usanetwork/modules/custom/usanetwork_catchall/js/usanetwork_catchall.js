@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.usanetwork_catchall = {
     attach: function(context){
-
+      var titleSuffix = Drupal.t('USA Network');
       $catchall_controls = $("#edit-title, #edit-path-alias, #edit-field-show select");
 
       $catchall_controls.on("change", function() {
@@ -17,26 +17,30 @@
                   ? $("#edit-path-alias").val()
                   : '';
 
-        var catchall_type = '';
+        var catchallType = '';
+        var catchallString = '';
         if (path != '') {
-          var path_array = path.split("/");
-
-          if (path_array.length > 1 && path_array[1] !== undefined) {
-            if (path_array[1] == 'features') {
-              catchall_type = '| Features | @show ';
+          var pathArray = path.split("/");
+                                
+          if (pathArray.length > 1 && typeof pathArray[1] != undefined) {
+            switch (pathArray[1]) {
+              case 'features':
+                catchallType = Drupal.t('Features')
+                break;
+              case 'quizzes':
+                catchallType = Drupal.t('Quizzes')
+                break;
+              case 'games':
+                catchallType = Drupal.t('Games')
+                break;                
             }
-            else if (path_array[1] == 'quizzes') {
-              catchall_type = '| Quizzes | @show ';
+            if (catchallType != '' && show != '') {
+              catchallString = '| ' + catchallType + ' | ' + show + ' ';
             }
-            else if (path_array[1] == 'games') {
-              catchall_type = '| Games | @show ';
-            }          
           }
         }
-        $("#edit-field-seo-page-title input").val(Drupal.t('@title ' + catchall_type + '| USA Network', {
-          '@title' : title.trim(),
-          '@show' : show
-        }));
+        var inputDefaultValue = title.trim() + ' ' + catchallString + '| ' + titleSuffix;
+        $("#edit-field-seo-page-title input").val(inputDefaultValue);
       });
     }
   }

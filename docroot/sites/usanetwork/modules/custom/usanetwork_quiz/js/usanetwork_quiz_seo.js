@@ -5,6 +5,7 @@
       $quiz_controls = $("#edit-title, #edit-field-seo-h1 input, #edit-field-show select");
 
       $quiz_controls.on("change", function() {
+        var titleSuffix = Drupal.t('USA Network');
         var title = $("#edit-title").val() != ''
                     ? $("#edit-title").val()
                     : '';
@@ -17,18 +18,16 @@
                     ? $("#edit-field-show select option:selected").text() + ' - '
                     : '';
 
-        var quiz_title = '';
+        var quizTitle = '';
         if (title != '' && h1 == '') {
-          quiz_title = title;
+          quizTitle = title;
         }
         else {
-          quiz_title = h1;
+          quizTitle = h1;
         }
 
-        $("#edit-field-seo-page-title input").val(Drupal.t('@show@title | USA Network', {
-          '@title' : quiz_title.trim(),
-          '@show' : show
-        }));
+        var quizDefaultValue = show + quizTitle + ' | ' + titleSuffix;
+        $("#edit-field-seo-page-title input").val(quizDefaultValue);
       });
     }
   }

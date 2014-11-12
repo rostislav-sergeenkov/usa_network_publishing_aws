@@ -125,7 +125,7 @@ function usanetwork_menu_block_view($delta = '') {
       break;
 
     case 'usanetwork_menu_sm_menu':
-      $block['subject'] = t('Show menu');
+      $block['subject'] = '';
       $block['content'] = _usanetwork_menu_render_show_menu_block();
       break;
 

@@ -2,6 +2,31 @@
   font-weight: bold;
 }
 
+.show-color-border, .asset-img.show {
+  position: relative;
+}
+.show-color-border:before, .asset-img.show:before {
+  background: #2c2c2c;
+  display: block;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  z-index: 1;
+}
+
+.show-color {
+  background: #2c2c2c;
+}
+.show-color.secondary {
+  background: #180d0d;
+}
+.show-color.hover-avail:hover {
+  background: #525252;
+}
+
 @font-face {
   font-family: "Proxima N W01 Thin Reg";
   src: url("../fonts/37994fca-b67e-41db-94b3-44077c62810a.eot?iefix") format("eot");
@@ -816,12 +841,6 @@ you can use the generic selector below, but it's slower:
 }
 #logo a:active {
   color: white;
-}
-
-@media (min-width: 769px) {
-  .menu-title {
-    display: none;
-  }
 }
 
 #jPanelMenu-menu.state-menu {

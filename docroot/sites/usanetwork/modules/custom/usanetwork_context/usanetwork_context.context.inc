@@ -2075,22 +2075,10 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_snipe-usa_snipe' => array(
-          'module' => 'usanetwork_snipe',
-          'delta' => 'usa_snipe',
+        'usanetwork_menu-usanetwork_menu_sm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_sm_menu',
           'region' => 'header',
-          'weight' => '-10',
-        ),
-        'usanetwork_blocks-usa_meganav' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_meganav',
-          'region' => 'header',
-          'weight' => '-9',
-        ),
-        'search-form' => array(
-          'module' => 'search',
-          'delta' => 'form',
-          'region' => 'search',
           'weight' => '-10',
         ),
         'usanetwork_blocks-usa_follow_block' => array(
@@ -2105,17 +2093,11 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'main_suffix',
           'weight' => '-10',
         ),
-        'usanetwork_blocks-usa_footer_links' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_footer_links',
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
           'region' => 'footer',
-          'weight' => '-16',
-        ),
-        'usanetwork_blocks-usa_footer_message' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_footer_message',
-          'region' => 'footer',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -2129,4 +2111,3 @@ function usanetwork_context_context_default_contexts() {
 
   return $export;
 }
-

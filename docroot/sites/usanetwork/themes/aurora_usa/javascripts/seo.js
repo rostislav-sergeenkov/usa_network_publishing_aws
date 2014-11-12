@@ -9,11 +9,14 @@
       });
       function getAnnonation(event_type) {
         var defaultString = Drupal.t('Default').toUpperCase();
-        var title = $("#edit-title").val();
+        var title = $("#edit-title").val().trim();
         var h1 = $("#edit-field-seo-h1 input").val();
         var pageTitle = $("#edit-field-seo-page-title input").val();
         var formId = $("input[name=form_id]").val();
         var documentTitle = document.title;
+        var contentType = formId.replace(/_/g, " ").replace(/node form/i, "");
+        var contentTypeMode = new RegExp('edit '+contentType, 'gi');
+        documentTitle = documentTitle.replace(contentTypeMode,"");
         if (formId != 'person_node_form') {
           /* Display default value of title field */
           if (title != '' && $("#edit-title").length > 0) {
@@ -23,12 +26,12 @@
                 $wrapper = $("#edit-field-seo-page-title");
               }
               $wrapper.prepend('<div class="form-item" id="display_readonly_title">' + 
-                                                '<label>Title</label><div class="readonly_title">' + 
-                                                title.trim() + 
+                                                '<label>' + Drupal.t('Title') + '</label><div class="readonly_title">' + 
+                                                title + 
                                                 '</div></div>');
             }
             else {
-              $("#display_readonly_title .readonly_title").html(title.trim());
+              $("#display_readonly_title .readonly_title").html(title);
             }
           }
           else {
@@ -40,11 +43,11 @@
             if ($('#edit-field-seo-h1 .description').length == 0) {
               $("#edit-field-seo-h1 input").after('<div class="description">' + 
                                                   defaultString + ': ' +
-                                                  title.trim() +
+                                                  title +
                                                   '</div>');
             }
             else {
-              $("#edit-field-seo-h1 .description").html(defaultString + ': ' + title.trim());
+              $("#edit-field-seo-h1 .description").html(defaultString + ': ' + title);
             }
           }
           /* Display default value for page title field */

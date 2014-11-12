@@ -10,7 +10,7 @@
                     : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
-                    ? ' | ' + $("#edit-field-show select option:selected").text()
+                    ? $("#edit-field-show select option:selected").text()
                     : '';
                     
         var path = $("#edit-path-alias").val() != ''
@@ -34,8 +34,8 @@
                 catchallType = Drupal.t('Games')
                 break;                
             }
-            if (catchallType != '') {
-              catchallString = '| ' + catchallType + show + ' ';
+            if (catchallType != '' && show != '') {
+              catchallString = '| ' + catchallType + ' | ' + show + ' ';
             }
           }
         }

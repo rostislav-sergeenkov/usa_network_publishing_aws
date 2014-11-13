@@ -207,13 +207,13 @@
         font-size: 15px;
         color: #878785;
         margin: 0;
-				font-family: $headline-bold;
-				@include breakpoint($bp-home-narrowest) {
-					font-size: 12px;
-				}
-				@include breakpoint($bp-home-2-fence) {
-					font-size: 14px;
-				}
+        font-family: $headline-bold;
+        @include breakpoint($bp-home-narrowest) {
+          font-size: 12px;
+        }
+        @include breakpoint($bp-home-2-fence) {
+          font-size: 14px;
+        }
         span {
           font-size: 18px;
           color: #ffffff;

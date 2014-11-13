@@ -26,11 +26,11 @@
 ?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if ($id == 'field_seo_h1' && !empty(strip_tags($field->content))): ?>
-    <?php $output = $field->content; ?>
+    <?php $h1 = $field->content; ?>
   <?php endif; ?>
-  <?php if ($id == 'title' && empty($output)): ?>
+  <?php if ($id == 'title' && empty($h1)): ?>
     <h1><span><?php print $field->content; ?></span></h1>
-  <?php elseif ($id == 'title' && !empty($output)): ?>
-    <?php print $output; ?><h2><?php print $field->content; ?></h2>
+  <?php elseif ($id == 'title' && !empty($h1)): ?>
+    <?php print $h1; ?><h2><?php print $field->content; ?></h2>
   <?php endif; ?>
 <?php endforeach; ?>

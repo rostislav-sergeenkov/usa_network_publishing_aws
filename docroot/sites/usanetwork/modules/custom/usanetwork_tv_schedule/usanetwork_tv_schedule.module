@@ -893,7 +893,6 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   $tvs = simplexml_load_file($xml_feed);
   //$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml','SimpleXMLElement',LIBXML_NOCDATA);
 
-
   if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
     return NULL;
   } else {
@@ -1449,43 +1448,20 @@ function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
 /**
  * Selects from program $length (default=2) upcoming episodes using title of Show node.
  */
-function _usanetwork_tv_schedule_get_upcomming_episodes($show_node, $length = 2) {
-  $query = db_select('programs', 'p');
-
-  $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
-  $query->leftJoin('field_data_field_show', 's', 'v.fid=s.entity_id');
-  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
-
-  $query->fields('p', array());
-  $query->fields('v', array('fid', 'video_id', 'description', 'thumbnail_url'));
-  $query->addField('v', 'title', 'video_title');
-  $query->fields('s', array('field_show_target_id'));
-  $query->addField('n', 'title', 'node_title');
-
-  $query->condition('n.nid', $show_node->nid);
-  $query->condition('p.start_time', REQUEST_TIME, '>');
-  $query->range(0, $length);
-  $query->orderBy('p.start_time', 'ASC');
-
-  return $query->execute()->fetchAll();
+function _usanetwork_tv_schedule_get_upcoming_episodes($show_node, $length = 2) {
+  return usanetwork_schedule_pull_upcoming_episodes($show_node->nid, $length, 0);
 }
 
 /**
  * Returns primetime items.
  */
 function _usanetwork_tv_schedule_get_primetime_items() {
-  $dateTime = new DateTime('now');
-  $primeTimeStart = $dateTime->setTime(USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR, 0)->getTimestamp();
-  $primeTimeEnd = $dateTime->setTime(USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR, 0)->getTimestamp();
-
-  $query = db_select('programs', 'p');
-  $query->fields('p', array());
-  $query->condition('p.start_time', $primeTimeStart, '>=');
-  $query->condition('p.end_time', $primeTimeEnd, '<=');
-  $query->range(0, USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH);
-  $query->orderBy('p.start_time', 'ASC');
-
-  return $query->execute()->fetchAll();
+  return usanetwork_schedule_pull_by_timerange(
+    USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR,
+    USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR,
+    USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH,
+    0
+  );
 }
 
 /**
@@ -1495,8 +1471,13 @@ function _usanetwork_tv_schedule_get_primetime_items() {
  * The last integer value can be used if you already calculated timezone correlation in JS.
  */
 function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $timestamp = REQUEST_TIME) {
+  global $user;
+
+  $drupal_timezone_corellation = _usanetwork_tv_schedule_get_user_profile_tzcorellation();
+  $drupal_timezone_corellation = 0;
+
   if (preg_match('/^\-?\d/', $user_timezone)) {
-    return $user_timezone;
+    return $user_timezone + $drupal_timezone_corellation;
   }
   else {
     $dateTime = new DateTime();
@@ -1506,6 +1487,27 @@ function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $
 
     try {
       $dateTimeZone = new DateTimeZone($user_timezone);
+
+      if ($dateTimeZone) {
+        return $dateTimeZone->getOffset($dateTime) + $drupal_timezone_corellation;
+      }
+    }
+    catch (Exception $e) {}
+  }
+
+  return 0;
+}
+
+function _usanetwork_tv_schedule_get_user_profile_tzcorellation() {
+  global $user;
+
+  if ($user->uid) {
+    $dateTime = new DateTime();
+    //$dateTime->setTimezone('Europe/London');
+    $dateTime->setTimestamp(REQUEST_TIME);
+
+    try {
+      $dateTimeZone = new DateTimeZone($user->timezone);
 
       if ($dateTimeZone) {
         return $dateTimeZone->getOffset($dateTime);
@@ -1520,22 +1522,11 @@ function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $
 /**
  * Returns query object with next running show.
  */
-function _usanetwork_tv_schedule_get_running_next_show($user_timezone_correlation = 0) {
-  $request_time = REQUEST_TIME + $user_timezone_correlation;
+function _usanetwork_tv_schedule_get_running_next_show($user_timezone_corellation = 0) {
+  //$user_timezone_corellation = 0;
 
-  $query = db_select('programs', 'p');
-  $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
-  $query->leftJoin('field_data_field_show', 's', 'v.fid=s.entity_id');
-  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
-  $query->fields('p', array());
-  $query->fields('v', array('description', 'thumbnail_url'));
-  $query->fields('n', array('nid'));
-  $query->condition('p.start_time', $request_time, '>');
-  $query->orderBy('p.start_time', 'ASC');
-  $query->range(0, 1);
-
-  $result = $query->execute()->fetch();
-  _usanetwork_tv_schedule_get_program_item_missed_data($result);
+  $result = usanetwork_schedule_pull_up_next_item($user_timezone_corellation);
+  //die('<pre>'.print_r($_POST, true).'</pre>');
 
   return $result;
 }
@@ -1543,111 +1534,13 @@ function _usanetwork_tv_schedule_get_running_next_show($user_timezone_correlatio
 /**
  * Returns query object with current running show.
  */
-function _usanetwork_tv_schedule_get_running_now_show($user_timezone_correlation = 0) {
-  $request_time = REQUEST_TIME + $user_timezone_correlation;
+function _usanetwork_tv_schedule_get_running_now_show($user_timezone_corellation = 0) {
+  //$user_timezone_corellation = 0;
 
-  $query = db_select('programs', 'p');
-  $query->leftJoin('mpx_video', 'v', 'p.guid=v.id');
-  $query->leftJoin('field_data_field_show', 's', 'v.fid=s.entity_id');
-  $query->leftJoin('node', 'n', 's.field_show_target_id=n.nid');
-  $query->fields('p', array());
-  $query->fields('v', array('description', 'thumbnail_url'));
-  $query->addField('v', 'title', 'video_title');
-  $query->fields('n', array('nid'));
-  $query->condition('p.start_time', $request_time, '<');
-  $query->condition('p.end_time', $request_time, '>');
-  $query->range(0, 1);
-
-  $result = $query->execute()->fetch();
-  _usanetwork_tv_schedule_get_program_item_missed_data($result);
+  $result = usanetwork_schedule_pull_on_now_item($user_timezone_corellation);
+  //die('<pre>'.print_r($result, true).'</pre>');
 
   return $result;
-}
-
-function _usanetwork_tv_schedule_get_program_item_missed_data(&$program_result) {
-  $keys_to_search = array(
-    'nid',
-    'description',
-    'thumbnail_url',
-  );
-
-  foreach ($keys_to_search as $key_to_search) {
-    $result_callback = '_usanetwork_tv_schedule_get_pe_' . $key_to_search . '_data';
-
-    if (empty($program_result->$key_to_search) && is_callable($result_callback)) {
-      $program_result->$key_to_search = $result_callback($program_result);
-    }
-  }
-}
-
-function _usanetwork_tv_schedule_get_pe_description_data(&$program_result) {
-  $target_nid = $program_result->nid;
-
-  if (empty($target_nid)) {
-    $program_result->nid = _usanetwork_tv_schedule_get_pe_nid_data($program_result);
-    $target_nid = $program_result->nid;
-  }
-
-  if (empty($target_nid)) {
-    return;
-  }
-
-  $query = db_select('field_data_body', 'fb');
-  $query->fields('fb', array('body_value'));
-  $query->condition('fb.entity_id', $target_nid);
-  $query->orderBy('fb.entity_id', 'DESC');
-  $query->range(0, 1);
-
-  $result = $query->execute()->fetch();
-
-  if (!empty($result)) {
-    return strip_tags($result->body_value);
-  }
-
-  return '';
-}
-
-function _usanetwork_tv_schedule_get_pe_thumbnail_url_data(&$program_result) {
-  $target_nid = $program_result->nid;
-
-  if (empty($target_nid)) {
-    $program_result->nid = _usanetwork_tv_schedule_get_pe_nid_data($program_result);
-    $target_nid = $program_result->nid;
-  }
-
-  if (empty($target_nid)) {
-    return;
-  }
-
-  $query = db_select('field_data_field_logo', 'fl');
-  $query->fields('fl', array('field_logo_fid'));
-  $query->condition('fl.entity_id', $target_nid);
-  $query->orderBy('fl.entity_id', 'DESC');
-  $query->range(0, 1);
-
-  $result = $query->execute()->fetch();
-
-  if (!empty($result->field_logo_fid)) {
-    $file = file_load($result->field_logo_fid);
-
-    return file_create_url($file->uri);
-  }
-}
-
-function _usanetwork_tv_schedule_get_pe_nid_data(&$program_result) {
-  $query = db_select('node', 'n');
-  $query->fields('n', array('nid'));
-  $query->condition('n.title', $program_result->parent_title, 'LIKE');
-  $query->orderBy('n.nid', 'DESC');
-  $query->range(0, 1);
-
-  $result = $query->execute()->fetch();
-
-  if (!empty($result->nid)) {
-    return $result->nid;
-  }
-
-  return 0;
 }
 
 /**
@@ -1668,16 +1561,12 @@ function _usanetwork_tv_schedule_get_running_show($period = 'now', $user_timezon
     $program_object = $period_callbacks[$period]($user_timezone_correlation);
 
     if (!empty($program_object)) {
-      $program_entity = entity_load('program', array($program_object->guid));
-
-      if (!empty($program_entity) && isset($program_entity[$program_object->guid])) {
-        $program_entity = $program_entity[$program_object->guid];
-        $program_entity->object_data = $program_object;
-
-        return $program_entity;
+      if (is_array($program_object) && count($program_object) > 0) {
+        return reset($program_object);
       }
-
-      return $program_entity;
+      else {
+        return $program_object;
+      }
     }
   }
 
@@ -1694,6 +1583,7 @@ function _usanetwork_tv_schedule_get_running_show($period = 'now', $user_timezon
  * You can pass 'now', 'next' or 'now,next'
  */
 function usanetwork_tv_schedule_get_running_show_ajax($user_timezone, $periods = 'now,next', $wrap_with_json = TRUE) {
+
   $user_timezone_correlation = _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone);
   $data = array(
     'timezone_correlation' => $user_timezone_correlation,

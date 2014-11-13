@@ -1,0 +1,222 @@
+<?php
+
+define('USANETWORK_SCHEDULE_SERVICE_DEFAULT_URL', 'http://feed.entertainment.tv.theplatform.com/f/HNK2IC/prod_usa_listing?form=json&range=1-*&sort=startTime');
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_schedule_menu() {
+  $items = array();
+
+  $items['admin/config/services/usanetwork-schedule'] = array(
+    'title' => 'Usanetwork Schedule',
+    'description' => 'Settings for Usanetwork Schedule service.',
+    'access arguments' => array('administer site configuration'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_schedule_settings_form'),
+    'file' => 'usanetwork_schedule.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_cron().
+ */
+function usanetwork_schedule_cron() {
+  $interval = variable_get('usanetwork_schedule_update_interval', 24) * 60 * 60;
+  $last_run = variable_get('usanetwork_schedule_last_update', 0);
+
+  if (REQUEST_TIME - $last_run >= $interval) {
+    usanetwork_schedule_pull();
+  }
+
+  if ($interval) {
+    $query = db_delete('usanetwork_schedule', array());
+    $query->condition('start_time', time() - $interval, '<=');
+    $query->execute();
+  }
+}
+
+/**
+ * Pulls data from service and puts it to datatable.
+ */
+function usanetwork_schedule_pull() {
+  $feed_url = variable_get('usanetwork_schedule_data_url', '');
+
+  if ($feed_url) {
+    $data = @json_decode(file_get_contents($feed_url));
+
+    if (empty($data) || (!empty($data) && empty($data->entries))) {
+      return;
+    }
+
+    foreach ($data->entries as $data_item) {
+      $data_item = (array) $data_item;
+      $item_rating = !empty($data_item['pllisting$contentRatings'][0])
+        ? ((array) $data_item['pllisting$contentRatings'][0])
+        : array();
+      $program = (array) $data_item['pllisting$program'];
+      $program_rating = (isset($program['plprogram$ratings'][0])
+        ? (array) $program['plprogram$ratings'][0]
+        : array());
+
+      $record = array(
+        'guid' => $data_item['guid'],
+        'airing_type' => !empty($data_item['pllisting$airingType'])
+          ? $data_item['pllisting$airingType']
+          : '',
+        'rating_scheme' => !empty($item_rating['pllisting$scheme'])
+          ? $item_rating['pllisting$scheme']
+          : '',
+        'rating_type' => !empty($item_rating['pllisting$rating'])
+          ? $item_rating['pllisting$rating']
+          : '',
+        'start_time' => !empty($data_item['pllisting$startTime'])
+          ? ($data_item['pllisting$startTime'] / 1000) // The service returns it in milliseconds. LOL...
+          : 0,
+        'end_time' => !empty($data_item['pllisting$endTime'])
+          ? ($data_item['pllisting$endTime'] / 1000) // The service returns it in milliseconds. LOL...
+          : 0,
+        'title' => $program['pl$title'],
+        'show_title' => $program['plprogram$shortTitle'],
+        'program_guid' => !empty($program['pl$guid'])
+          ? $program['pl$guid']
+          : '',
+        'program_description' => !empty($program['pl$description'])
+          ? $program['pl$description']
+          : '',
+        'program_genre' => !empty($program['plprogram$displayGenre'])
+          ? $program['plprogram$displayGenre']
+          : '',
+        'program_type' => !empty($program['plprogram$programType'])
+          ? $program['plprogram$programType']
+          : '',
+        'program_rating_scheme' => !empty($program_rating['plprogram$scheme'])
+          ? $program_rating['plprogram$scheme']
+          : '',
+        'program_rating_type' => !empty($program_rating['plprogram$rating'])
+          ? $program_rating['plprogram$rating']
+          : '',
+        'program_secondary_title' => !empty($program['plprogram$secondaryTitle'])
+          ? $program['plprogram$secondaryTitle']
+          : '',
+        'series_episode_number' => !empty($program['plprogram$seriesEpisodeNumber'])
+          ? $program['plprogram$seriesEpisodeNumber']
+          : 0,
+        'season_episode_number' => !empty($program['plprogram$tvSeasonEpisodeNumber'])
+          ? $program['plprogram$tvSeasonEpisodeNumber']
+          : 0,
+        'season_number' => !empty($program['plprogram$tvSeasonNumber'])
+          ? $program['plprogram$tvSeasonNumber']
+          : 0,
+      );
+
+      if (usanetwork_schedule_is_item_exists($record['guid'])) {
+        drupal_write_record('usanetwork_schedule', $record, 'guid');
+      }
+      else {
+        drupal_write_record('usanetwork_schedule', $record);
+      }
+    }
+  }
+}
+
+/**
+ * Removes several items using list of guids.
+ */
+function usanetwork_schedule_remove_items(array $guids = array()) {
+  if (!empty($guids)) {
+    $query = db_delete('usanetwork_schedule');
+    $query->condition('guid', $guids, 'IN');
+    $result = $query->execute();
+
+    return $result->rowCount();
+  }
+}
+
+/**
+ * Removes item by guid.
+ */
+function usanetwork_schedule_remove_item($guid) {
+  usanetwork_schedule_remove_items(array($guid));
+}
+
+function usanetwork_schedule_is_item_exists($guid) {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s');
+  $query->condition('s.guid', $guid);
+
+  $result = $query->execute();
+
+  return $result->rowCount();
+}
+
+function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->leftJoin('node', 'n', 's.show_title=n.title');
+  $query->fields('s', array());
+  $query->fields('n', array('nid'));
+  $query->condition('s.start_time', $time, '<=');
+  $query->condition('s.end_time', $time, '>');
+  $query->orderBy('s.start_time', $order);
+  $query->range(0, $limit);
+
+  return $query->execute()->fetchAll();
+}
+
+function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1, $time_corellation = 0) {
+  $dateTime = new DateTime('now');
+  $primeTimeStart = $dateTime->setTime($time_from, 0)->getTimestamp();
+  $primeTimeEnd = $dateTime->setTime($time_to, 0)->getTimestamp();
+
+  $query = db_select('usanetwork_schedule', 's');
+  $query->leftJoin('node', 'n', 's.show_title=n.title');
+  $query->fields('s', array());
+  $query->fields('n', array('nid'));
+  $query->condition('s.start_time', $primeTimeStart, '>=');
+  $query->condition('s.end_time', $primeTimeEnd, '<=');
+  $query->range(0, $limit);
+  $query->orderBy('s.start_time', 'ASC');
+
+  return $query->execute()->fetchAll();
+}
+
+function usanetwork_schedule_pull_on_now_item($time_corellation = 0) {
+  $time = REQUEST_TIME + $time_corellation;
+
+  return usanetwork_schedule_pull_by_time($time, 1, 'DESC');
+}
+
+function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
+  $time = REQUEST_TIME + $time_corellation;
+
+  $query = db_select('usanetwork_schedule', 's');
+  $query->leftJoin('node', 'n', 's.show_title=n.title');
+  $query->fields('s', array());
+  $query->fields('n', array('nid'));
+  $query->condition('s.start_time', $time, '>');
+  $query->orderBy('s.start_time', 'ASC');
+  $query->range(0, 1);
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Pulls upcoming episodes.
+ */
+function usanetwork_schedule_pull_upcoming_episodes($show_node_id, $length = 2, $time_corellation = 0) {
+  $time = REQUEST_TIME + $time_corellation;
+
+  $query = db_select('usanetwork_schedule', 's');
+  $query->join('node', 'n', 's.show_title=n.title');
+  $query->fields('s', array());
+  $query->fields('n', array('nid'));
+  $query->condition('n.type', 'tv_episode');
+  $query->condition('s.start_time', $time, '>');
+  $query->orderBy('s.start_time', 'ASC');
+  $query->range(0, $length);
+
+  return $query->execute()->fetchAll();
+}

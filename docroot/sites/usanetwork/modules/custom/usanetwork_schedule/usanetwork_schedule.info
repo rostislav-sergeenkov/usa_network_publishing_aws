@@ -1,0 +1,7 @@
+name = 'Usanetwork TV Schedule'
+description = 'Imports schedule from external service'
+package = 'Usanetwork'
+core = 7.x
+version = 7.x-1.0.0
+
+configure = admin/config/services/usanetwork-schedule

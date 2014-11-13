@@ -44,6 +44,11 @@ function usanetwork_menu_menu() {
 function usanetwork_menu_block_info() {
   $blocks = array();
 
+  $blocks['usanetwork_menu_sm_main'] = array(
+    'info' => t('Homepage Menu: Main menu'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
   $blocks['usanetwork_menu_sm_featured'] = array(
     'info' => t('Homepage Menu: Featured items'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -79,6 +84,11 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_fm_apps_services'] = array(
+    'info' => t('Usanetwork Footer: Apps & Services'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  
   $blocks['usanetwork_menu_fm_social_links'] = array(
     'info' => t('Usanetwork Footer: Social links'),
     'cache' => DRUPAL_NO_CACHE,
@@ -99,6 +109,11 @@ function usanetwork_menu_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
+    case 'usanetwork_menu_sm_main':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_main_menu_block();
+      break;
+    
     case 'usanetwork_menu_sm_featured':
       $block['subject'] = t('Featured');
       $block['content'] = _usanetwork_menu_show_menu_featured_block();
@@ -125,8 +140,15 @@ function usanetwork_menu_block_view($delta = '') {
       break;
 
     case 'usanetwork_menu_sm_menu':
-      $block['subject'] = t('Show menu');
-      $block['content'] = _usanetwork_menu_render_show_menu_block();
+      $block['subject'] = '';
+      $block['content'] = array(
+        '#markup' => _usanetwork_menu_render_show_menu_block(),
+        '#attached' => array(
+          'js' => array(
+              path_to_theme('aurora_usa') . '/javascripts/menu-dropdown.js',
+          ),
+        ),
+      );
       break;
 
     case 'usanetwork_menu_fm_shows':
@@ -134,6 +156,11 @@ function usanetwork_menu_block_view($delta = '') {
       $block['content'] = usanetwork_tv_shows_footer_links();
       break;
 
+    case 'usanetwork_menu_fm_apps_services':
+      $block['subject'] = t('Apps & Services');
+      $block['content'] = _usanetwork_menu_footer_apps_services();
+      break;
+    
     case 'usanetwork_menu_fm_social_links':
       $block['subject'] = '';
       $block['content'] = usanetwork_bottom_footer();
@@ -245,6 +272,36 @@ function usanetwork_menu_image_default_styles() {
   );
 
   return $styles;
+}
+
+/**
+ * Render header main menu block
+ */
+function _usanetwork_menu_main_menu_block() {
+  $menu = menu_load('main-menu');
+  if (!$menu) {
+    return;
+  }
+  $menu_links = menu_load_links($menu['menu_name']);
+  foreach ($menu_links as $item) {
+    $items[] = array(
+      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('class' => array('no-refresh'), 'data-state' => array('')))),
+      'class' => array(
+        'tab',
+      ),
+    );
+  }
+
+  return  theme('usanetwork_item_list', array(
+    'title' => NULL,
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu',
+      )
+    ),
+  ));
 }
 
 /**
@@ -585,4 +642,40 @@ function _usanetwork_menu_show_menu_watch_live_block() {
   );
 
   return render($block_form);
+}
+
+/**
+ * Render button footer block for Apps & Services
+ */
+function _usanetwork_menu_footer_apps_services() {
+
+  $menu = menu_load('menu-apps-services');
+  if (!$menu) {
+    return;
+  }
+  $menu_links = menu_load_links($menu['menu_name']);
+  foreach ($menu_links as $item) {
+    $items[] = array(
+      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
+      'class' => array(
+        'menu-item'
+      ),
+    );
+  }
+
+  return  theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'app-and-services-menu',
+      ),
+    ),
+    'title' => NULL,
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu',
+      )
+    ),
+  ));
 }

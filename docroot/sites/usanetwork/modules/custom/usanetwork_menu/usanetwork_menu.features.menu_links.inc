@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * usa_network_menu.features.menu_links.inc
+ * usanetwork_menu.features.menu_links.inc
  */
 
 /**
@@ -10,81 +10,61 @@
 function usanetwork_menu_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_full-episodes:<front>
-  $menu_links['main-menu_full-episodes:<front>'] = array(
+  // Exported menu link: main-menu_full-episodes:<nolink>
+  $menu_links['main-menu_full-episodes:<nolink>'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
+    'link_path' => '<nolink>',
+    'router_path' => '<nolink>',
     'link_title' => 'Full episodes',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_full-episodes:<front>',
+      'identifier' => 'main-menu_full-episodes:<nolink>',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_home:<front>
-  $menu_links['main-menu_home:<front>'] = array(
+  // Exported menu link: main-menu_schedule:<nolink>
+  $menu_links['main-menu_schedule:<nolink>'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Home',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_home:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_schedule:<front>
-  $menu_links['main-menu_schedule:<front>'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
+    'link_path' => '<nolink>',
+    'router_path' => '<nolink>',
     'link_title' => 'Schedule',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_schedule:<front>',
+      'identifier' => 'main-menu_schedule:<nolink>',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_show:<front>
-  $menu_links['main-menu_show:<front>'] = array(
+  // Exported menu link: main-menu_show:<nolink>
+  $menu_links['main-menu_show:<nolink>'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
+    'link_path' => '<nolink>',
+    'router_path' => '<nolink>',
     'link_title' => 'Show',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_show:<front>',
+      'identifier' => 'main-menu_show:<nolink>',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -49,
@@ -93,7 +73,6 @@ function usanetwork_menu_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Full episodes');
-  t('Home');
   t('Schedule');
   t('Show');
 

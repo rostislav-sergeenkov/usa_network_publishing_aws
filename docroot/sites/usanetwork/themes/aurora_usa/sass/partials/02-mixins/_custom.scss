@@ -79,3 +79,15 @@
   }
 }
 
+@mixin linksSeparator($separator-font-size, $separator-left, $separator-right, $separator-color) {
+  &:after {
+    color: $separator-color;
+    content: "|";
+    display: inline-block;
+    font-size: $separator-font-size;
+    margin-left: $separator-left;
+    margin-right: $separator-right;
+  }
+}
+
+

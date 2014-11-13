@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "IBM437";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -6170,6 +6170,56 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .media-gallery .center-wrapper .pane-entity-field .media-gallery-seo {
   font-size: 12px;
+}
+.media-gallery .center-wrapper .media-gallery-title {
+  margin: 3px 0 0;
+}
+.media-gallery .center-wrapper .media-gallery-title h1 {
+  font-size: 15px;
+  color: #878785;
+  margin: 0;
+  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 {
+    font-size: 12px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 {
+    font-size: 14px;
+  }
+}
+.media-gallery .center-wrapper .media-gallery-title h1 span {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+  display: inline-block;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 span {
+    font-size: 14px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 span {
+    font-size: 16px;
+  }
+}
+.media-gallery .center-wrapper .media-gallery-title h2 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h2 {
+    font-size: 14px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h2 {
+    font-size: 16px;
+  }
 }
 .media-gallery .image-caption {
   font-family: "Proxima N W01 Reg",Arial,sans-serif;

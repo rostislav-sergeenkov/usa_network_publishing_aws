@@ -15,7 +15,6 @@ function usanetwork_menu_default_panels_mini() {
   $mini->requiredcontexts = array();
   $mini->contexts = array();
   $mini->relationships = array();
-
   $display = new panels_display();
   $display->layout = 'usanetwork-show-menu';
   $display->layout_settings = array();
@@ -39,11 +38,11 @@ function usanetwork_menu_default_panels_mini() {
   $pane->pid = 'new-1';
   $pane->panel = 'reg_menu';
   $pane->type = 'block';
-  $pane->subtype = 'system-main-menu';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_main';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_title' => 1,
+    'override_title' => 0,
     'override_title_text' => '',
   );
   $pane->cache = array();
@@ -112,6 +111,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-3'] = $pane;
   $display->panels['reg_tab_full_episodes'][1] = 'new-3';
+  
   $pane = new stdClass();
   $pane->pid = 'new-4';
   $pane->panel = 'reg_tab_schedule';

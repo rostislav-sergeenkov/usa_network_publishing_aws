@@ -1,22 +1,20 @@
-name = "USA Network Menu"
-description = "Renders main navigation menu on the website"
+name = USA Network Menu
+description = Renders main navigation menu on the website
 core = 7.x
-package = "USA Network"
-version = "7.x-1.0.4"
+package = USA Network
+version = 7.x-2.0
 project = usanetwork_menu
-
 dependencies[] = features
 dependencies[] = menu
+dependencies[] = page_manager
 dependencies[] = panels
 dependencies[] = panels_mini
-dependencies[] = page_manager
 dependencies[] = usanetwork
 dependencies[] = usanetwork_home
 dependencies[] = usanetwork_tv_schedule
 dependencies[] = usanetwork_tv_shows
 features[features_api][] = api:2
 features[menu_links][] = main-menu_full-episodes:<front>
-features[menu_links][] = main-menu_home:<front>
 features[menu_links][] = main-menu_schedule:<front>
 features[menu_links][] = main-menu_show:<front>
 features_exclude[menu_custom][main-menu] = main-menu

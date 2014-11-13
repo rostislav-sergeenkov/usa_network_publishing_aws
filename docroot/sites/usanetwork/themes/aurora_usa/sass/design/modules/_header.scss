@@ -119,6 +119,7 @@ header {
       border-left: 1px solid $header-tab-back;
       border-right: 1px solid $header-tab-back;
       color: $header-tab-text;
+      cursor: pointer;
       display: block;
       font-family: $avantgarde-demi;
       font-size: 15px;
@@ -493,6 +494,11 @@ header {
         }
       }
     }
+  }
+  .tab-content {
+    @include clear();
+    position: relative;
+    width: 100%;
   }
   .tab-item {
     @include clear();
@@ -1466,7 +1472,7 @@ header {
       }
       @include breakpoint($bp-480-width) {
         margin-left: 50px;
-        margin-right: 120px;
+        margin-right: 80px;
         overflow: hidden;
       }
     }

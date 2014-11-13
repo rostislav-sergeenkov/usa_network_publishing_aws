@@ -3125,6 +3125,7 @@ header .nav-bar-tabs a {
   border-left: 1px solid #e1e1e1;
   border-right: 1px solid #e1e1e1;
   color: #666666;
+  cursor: pointer;
   display: block;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -3631,6 +3632,15 @@ header .search-input-block .search-result.active .more-link a:before {
   position: absolute;
   right: 0;
   top: 50%;
+}
+header .tab-content {
+  position: relative;
+  width: 100%;
+}
+header .tab-content:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 header .tab-item {
   background: #757575;
@@ -4774,7 +4784,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 @media (max-width: 480px) {
   .consumptionator-page header .show-title-wrapper {
     margin-left: 50px;
-    margin-right: 120px;
+    margin-right: 80px;
     overflow: hidden;
   }
 }

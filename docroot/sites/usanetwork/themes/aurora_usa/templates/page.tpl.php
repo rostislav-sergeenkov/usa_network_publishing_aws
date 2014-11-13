@@ -81,13 +81,10 @@
     <!-- leaderboard ad -->
     <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
     <!-- /leaderboard -->
-    <div class="header-nav-bar">
-      <?php print render($page['personalization_trigger']); ?>
-      <div class="usa-logo show-color hover-avail">
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"></a>
-      </div>
-      <?php print render($page['header']); ?>
-    </div>
+    <?php print render($page['personalization_trigger']); ?>
+    <!-- header -->
+    <?php print render($page['header']); ?>
+    <!-- /header -->
   </header>
 
   <!-- TOP TITLE AND TOOLS BAR -->

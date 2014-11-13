@@ -555,8 +555,25 @@ header {
       }
       .featured-view {
         width: 36%;
+        @include breakpoint($bp-1280-width) {
+          width: 38%;
+        }
         @include breakpoint($between-769-1024) {
-          width: 26%;
+          @include clear;
+          float: none;
+          width: 100%;
+        }
+        .node {
+          @include breakpoint($between-769-1024) {
+            float: left;
+            padding-right: 10px;
+            margin-bottom: 40px;
+            width: (100% / 3);
+          }
+          img {
+            height: 81px;
+            width: 143px;
+          }
         }
         h2 {
           margin-bottom: 30px;
@@ -565,7 +582,7 @@ header {
       .originals-shows-menu {
         width: 36%;
         @include breakpoint($between-769-1024) {
-          width: 46%;
+          width:(100% * (2/3));
         }
         ul {
           -webkit-column-count: 2;
@@ -582,6 +599,12 @@ header {
       }
       .syndicated-shows-menu {
         width: 28%;
+        @include breakpoint($bp-1280-width) {
+          width: 26%;
+        }
+        @include breakpoint($between-769-1024) {
+          width:(100% * (1/3));
+        }
       }
     }
     //todo full episodes
@@ -1084,6 +1107,11 @@ header {
     position: relative;
     width: 100%;
   }
+  &.panel-pane {
+    .node {
+      margin-bottom: 23px;
+    }
+  }
   a {
     &:before {
       left: 159px;
@@ -1109,6 +1137,9 @@ header {
     }
     > div {
       margin-bottom: 5px;
+      @include breakpoint($between-1025-1280) {
+        width: 144px;
+      }
     }
     .title {
       color: #ffffff;

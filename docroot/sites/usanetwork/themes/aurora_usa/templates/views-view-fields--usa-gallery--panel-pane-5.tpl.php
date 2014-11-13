@@ -24,20 +24,13 @@
  * @ingroup views_templates
  */
 ?>
-<?php
-$output = '';
-$h1 = '';
-foreach ($fields as $id => $field):
-  if ($id == 'field_seo_h1' && strip_tags($field->content) != ''):
-    $h1 = $field->content;
-  endif;
-  if ($id == 'title'):
-    if ($h1 == ''):
-      $output = '<h1><span>' . $field->content . '</span></h1>';
-    else:
-      $output = '<h2>' . $field->content . '</h2>' . $h1;
-    endif;    
-  endif;
-endforeach;
-print $output;
-?>
+<?php foreach ($fields as $id => $field): ?>
+  <?php if ($id == 'field_seo_h1' && !empty(strip_tags($field->content))): ?>
+    <?php $h1 = $field->content; ?>
+  <?php endif; ?>
+  <?php if ($id == 'title' && empty($h1)): ?>
+    <h1><span><?php print $field->content; ?></span></h1>
+  <?php elseif ($id == 'title' && !empty($h1)): ?>
+    <h2><?php print $field->content; ?></h2><?php print $h1; ?>
+  <?php endif; ?>
+<?php endforeach; ?>

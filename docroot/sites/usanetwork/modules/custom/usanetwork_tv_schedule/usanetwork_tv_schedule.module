@@ -1473,11 +1473,8 @@ function _usanetwork_tv_schedule_get_primetime_items() {
 function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $timestamp = REQUEST_TIME) {
   global $user;
 
-  $drupal_timezone_corellation = _usanetwork_tv_schedule_get_user_profile_tzcorellation();
-  $drupal_timezone_corellation = 0;
-
   if (preg_match('/^\-?\d/', $user_timezone)) {
-    return $user_timezone + $drupal_timezone_corellation;
+    return $user_timezone;
   }
   else {
     $dateTime = new DateTime();
@@ -1487,27 +1484,6 @@ function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $
 
     try {
       $dateTimeZone = new DateTimeZone($user_timezone);
-
-      if ($dateTimeZone) {
-        return $dateTimeZone->getOffset($dateTime) + $drupal_timezone_corellation;
-      }
-    }
-    catch (Exception $e) {}
-  }
-
-  return 0;
-}
-
-function _usanetwork_tv_schedule_get_user_profile_tzcorellation() {
-  global $user;
-
-  if ($user->uid) {
-    $dateTime = new DateTime();
-    //$dateTime->setTimezone('Europe/London');
-    $dateTime->setTimestamp(REQUEST_TIME);
-
-    try {
-      $dateTimeZone = new DateTimeZone($user->timezone);
 
       if ($dateTimeZone) {
         return $dateTimeZone->getOffset($dateTime);
@@ -1523,10 +1499,7 @@ function _usanetwork_tv_schedule_get_user_profile_tzcorellation() {
  * Returns query object with next running show.
  */
 function _usanetwork_tv_schedule_get_running_next_show($user_timezone_corellation = 0) {
-  //$user_timezone_corellation = 0;
-
   $result = usanetwork_schedule_pull_up_next_item($user_timezone_corellation);
-  //die('<pre>'.print_r($_POST, true).'</pre>');
 
   return $result;
 }
@@ -1535,10 +1508,7 @@ function _usanetwork_tv_schedule_get_running_next_show($user_timezone_corellatio
  * Returns query object with current running show.
  */
 function _usanetwork_tv_schedule_get_running_now_show($user_timezone_corellation = 0) {
-  //$user_timezone_corellation = 0;
-
   $result = usanetwork_schedule_pull_on_now_item($user_timezone_corellation);
-  //die('<pre>'.print_r($result, true).'</pre>');
 
   return $result;
 }

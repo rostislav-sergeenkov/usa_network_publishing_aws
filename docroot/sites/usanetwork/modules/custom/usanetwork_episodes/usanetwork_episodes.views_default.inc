@@ -57,7 +57,7 @@ function usanetwork_episodes_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_season']['field_api_classes'] = TRUE;
-  /* Field: Content: Show */
+  /* Field: Field: Show */
   $handler->display->display_options['fields']['field_show']['id'] = 'field_show';
   $handler->display->display_options['fields']['field_show']['table'] = 'field_data_field_show';
   $handler->display->display_options['fields']['field_show']['field'] = 'field_show';
@@ -225,7 +225,7 @@ function usanetwork_episodes_views_default_views() {
   $handler->display->display_options['sorts']['field_original_air_date_value']['field'] = 'field_original_air_date_value';
   $handler->display->display_options['sorts']['field_original_air_date_value']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Show (field_show) */
+  /* Contextual filter: Field: Show (field_show) */
   $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -281,6 +281,14 @@ function usanetwork_episodes_views_default_views() {
   $handler->display->display_options['fields']['field_seo_h1']['element_type'] = 'h1';
   $handler->display->display_options['fields']['field_seo_h1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_seo_h1']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
@@ -313,11 +321,7 @@ function usanetwork_episodes_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'tv_episode' => 'tv_episode',
   );
-  /* Filter criterion: Field: H1 (field_seo_h1) */
-  $handler->display->display_options['filters']['field_seo_h1_value']['id'] = 'field_seo_h1_value';
-  $handler->display->display_options['filters']['field_seo_h1_value']['table'] = 'field_data_field_seo_h1';
-  $handler->display->display_options['filters']['field_seo_h1_value']['field'] = 'field_seo_h1_value';
-  $handler->display->display_options['filters']['field_seo_h1_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['argument_input'] = array(
     'field_show_target_id' => array(
       'type' => 'context',

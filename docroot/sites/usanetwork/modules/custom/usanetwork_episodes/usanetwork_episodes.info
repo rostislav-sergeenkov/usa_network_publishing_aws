@@ -1,7 +1,6 @@
 name = usanetwork_episodes
 core = 7.x
 package = USA Network
-php = 5.2.4
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = file_entity

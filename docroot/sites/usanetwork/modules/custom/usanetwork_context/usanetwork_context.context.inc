@@ -61,7 +61,8 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'entity_field' => array(
       'values' => array(
-        'entity_type' => 'a:13:{s:4:"node";s:4:"node";s:13:"taxonomy_term";s:13:"taxonomy_term";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:4:"file";s:4:"file";s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;}',
+        'entity_type' => 'a:16:{s:4:"node";s:4:"node";s:4:"file";s:4:"file";s:13:"taxonomy_term";s:13:"taxonomy_term";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"module";i:0;s:7:"program";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;s:9:"menu_link";i:0;}',
+        'view_mode' => 'a:36:{s:14:"inline_content";i:0;s:4:"full";i:0;s:13:"diff_standard";i:0;s:5:"token";i:0;s:5:"print";i:0;s:6:"teaser";i:0;s:3:"rss";i:0;s:25:"page_collection_resources";i:0;s:16:"user_ref_preview";i:0;s:23:"admin_reference_preview";i:0;s:17:"block_cover_title";i:0;s:20:"block_cover_title_lg";i:0;s:14:"carousel_promo";i:0;s:13:"cast_carousel";i:0;s:13:"follow_social";i:0;s:21:"global_nav_block_more";i:0;s:22:"global_nav_block_shows";i:0;s:10:"home_promo";i:0;s:16:"home_promo_bspot";i:0;s:12:"promo_teaser";i:0;s:18:"vid_teaser_episode";i:0;s:18:"vid_teaser_general";i:0;s:23:"vid_teaser_show_episode";i:0;s:23:"vid_teaser_show_general";i:0;s:18:"promo_teaser_large";i:0;s:7:"preview";i:0;s:28:"entityreference_live_preview";i:0;s:6:"figure";i:0;s:18:"gallery_flexslider";i:0;s:18:"person_cover_image";i:0;s:19:"search_result_files";i:0;s:10:"thumb_tiny";i:0;s:11:"cover_image";i:0;s:16:"vid_teaser_front";i:0;s:13:"usa_term_icon";i:0;s:18:"user_image_preview";i:0;}',
         'field_name' => 'field_show',
         'field_value' => '0',
         'field_empty' => 0,
@@ -90,12 +91,6 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_blocks-usa_tv_show_menu' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_tv_show_menu',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
         'usanetwork_showpages-show_banner' => array(
           'module' => 'usanetwork_showpages',
           'delta' => 'show_banner',
@@ -129,18 +124,7 @@ function usanetwork_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'usanetwork_blocks-usa_tv_show_menu' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_tv_show_menu',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
 
   // Translatables

@@ -7118,7 +7118,6 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   z-index: 50000;
   /* padding-left: 12px;
   border-bottom: 1px solid $gray-ultra-med; */
-  position: fixed;
   width: 100%;
 }
 #utilities #utilities-wrap {

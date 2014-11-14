@@ -116,6 +116,11 @@ header {
     .tab {
       display: table-cell;
       height: 100%;
+      .item-list {
+        @include breakpoint($bp-min-769-width) {
+          display: none;
+        }
+      }
     }
     a {
       background: $header-tab-back;

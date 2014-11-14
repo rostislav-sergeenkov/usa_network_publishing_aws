@@ -3597,6 +3597,11 @@ header .nav-bar-tabs .tab {
   display: table-cell;
   height: 100%;
 }
+@media (min-width: 769px) {
+  header .nav-bar-tabs .tab .item-list {
+    display: none;
+  }
+}
 header .nav-bar-tabs a {
   background: #e1e1e1;
   border-left: 1px solid #e1e1e1;

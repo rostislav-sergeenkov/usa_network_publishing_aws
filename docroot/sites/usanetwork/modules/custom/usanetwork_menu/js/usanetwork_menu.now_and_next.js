@@ -5,7 +5,7 @@
 
       function usanetworkMenuGetNNBlockInfo() {
         var periods = 'now,next';
-        var timezoneOffset = new Date().getTimezoneOffset() * 60;
+        var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
 
         $.ajax({
           type: 'POST',
@@ -14,7 +14,7 @@
           url: 'ajax/render-running-show/' + timezoneOffset + '/' + periods,
           success: function(message) {
             var nowNextBlock = $('.pane-usanetwork-menu-usanetwork-menu-sm-now-and-next .pane-content');
-console.log(message);
+
             if (typeof message.html != undefined) {
               nowNextBlock.html(message.html);
             }

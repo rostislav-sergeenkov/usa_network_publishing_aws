@@ -950,3 +950,10 @@ function usanetwork_core_update_7155() {
     }
   }
 }
+
+/**
+ * Enables usanetwork_schedule module.
+ */
+function usanetwork_core_update_7156() {
+  module_enable(array('usanetwork_schedule'));
+}

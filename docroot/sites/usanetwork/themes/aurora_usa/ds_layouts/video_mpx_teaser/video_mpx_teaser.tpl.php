@@ -1,7 +1,7 @@
 <div class="<?php print $classes . ' ' . (($lock_video) ? 'tve-video-auth' : ''); ?>"<?php print $attributes; ?>>
   <a href="<?php print $file_url; ?>">
     <?php if ($media): ?>
-      <div class="asset-img show-color-border show-benched">
+    <div class="asset-img show-color-border <?php print $show_css_class?>">
         <?php print $media;?>
       </div>
     <?php endif; ?>

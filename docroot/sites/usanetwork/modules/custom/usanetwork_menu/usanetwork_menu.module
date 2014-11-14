@@ -400,31 +400,37 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
   $node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($node)) {
-    $episodes = _usanetwork_tv_schedule_get_upcomming_episodes($node);
+    $episodes = _usanetwork_tv_schedule_get_upcoming_episodes($node);
 
     if (!empty($episodes)) {
       foreach ($episodes as $episode) {
         $preview_image = NULL;
+        $image_uri = _usanetwork_menu_show_menu_get_image_preview_url($episode->episode_nid, 'tv_episode');
 
-        if (empty($episode->thumbnail_url) || empty($episode->description)) {
-          continue;
+        if (!empty($image_uri)) {
+          $preview_image = theme('image', array(
+            'path' => $image_uri,
+            'attributes' => array(
+              'class' => array(
+                'upcoming-episodes-preview-image'
+              ),
+            ),
+          ));
         }
 
-        $preview_image = theme('image_style', array(
-          'style_name' => 'episode_preview_temp',
-          'path' => $episode->thumbnail_url,
-        ));
-
         $elements[] = theme('usanetwork_menu_smnav_upcoming_element_item', array(
-          'image_url' => $episode->thumbnail_url,
+          'image_url' => $image_uri,
           'image' => $preview_image,
-          'show_name' => $episode->parent_title,
+          'show_name' => $episode->show_title,
           'episode_title' => $episode->title,
           'episode_day' => date('l', $episode->start_time),
           'episode_time' => date('g:i', $episode->start_time),
           'episode_interval' => date('A', $episode->start_time),
-          'episode_description' => $episode->description,
-          'node_url' => '',
+          'episode_description' => $episode->program_description,
+          'node_url' => !empty($episode->episode_nid)
+            ? url('node/' . $episode->episode_nid)
+            : '',
+          'show_nid' => $episode->show_nid,
         ));
       }
     }
@@ -499,6 +505,8 @@ function _usanetwork_menu_show_menu_now_and_next_block() {
     'attributes' => array('class' => 'spinner'),
   );
 
+  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.now_and_next.js';
   $block_form['test'] = array(
     '#type' => 'item',
@@ -517,46 +525,40 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   if ($data) {
     $theme_variables = array(
       'on_now' => array(
-        /*'image' => !empty($data['now']->object_data->thumbnail_url)
-          ? theme('image_style', array(
-              'style_name' => 'episode_preview_temp',
-              'path' => $data['now']->object_data->thumbnail_url,
-          ))
-          : '',*/
-        'image' => !empty($data['now']->object_data->thumbnail_url)
+        'image' => !empty($data['now']->nid)
           ? theme('image', array(
-            'path' => $data['now']->object_data->thumbnail_url,
-            'width' => 143,
-            'height' => 81,
+            'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
+            'attributes' => array(
+              'class' => array(
+                'running-now-show-preview-image'
+              ),
+            ),
           ))
           : '',
-        'title' => !empty($data['now']->parent_title) ? $data['now']->parent_title : '',
+        'title' => !empty($data['now']->show_title) ? $data['now']->show_title : '',
         'caption' => !empty($data['now']->title) ? $data['now']->title : '',
-        'description' => !empty($data['now']->object_data->description)
-          ? $data['now']->object_data->description
+        'description' => !empty($data['now']->program_description)
+          ? $data['now']->program_description
           : '',
-        'node_url' => !empty($data['now']->object_data->nid)
-          ? (url('node/' . $data['now']->object_data->nid))
+        'node_url' => !empty($data['now']->nid)
+          ? (url('node/' . $data['now']->nid))
           : '',
       ),
       'up_next' => array(
-        /*'image' => !empty($data['next']->object_data->thumbnail_url)
-          ? theme('image_style', array(
-              'style_name' => 'episode_preview_temp',
-              'path' => $data['next']->object_data->thumbnail_url,
-          ))
-          : '',*/
-        'image' => !empty($data['next']->object_data->thumbnail_url)
+        'image' => !empty($data['next']->nid)
           ? theme('image', array(
-            'path' => $data['next']->object_data->thumbnail_url,
-            'width' => 143,
-            'height' => 81,
+            'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid),
+            'attributes' => array(
+              'class' => array(
+                'running-next-show-preview-image'
+              ),
+            ),
           ))
           : '',
-        'title' => !empty($data['next']->parent_title) ? $data['next']->parent_title : '',
+        'title' => !empty($data['next']->show_title) ? $data['next']->show_title : '',
         'caption' => !empty($data['next']->title) ? $data['next']->title : '',
-        'description' => !empty($data['next']->object_data->description)
-          ? $data['next']->object_data->description
+        'description' => !empty($data['next']->program_description)
+          ? $data['next']->program_description
           : '',
         'time' => !empty($data['next']->start_time)
           ? date('h:i', $data['next']->start_time)
@@ -564,8 +566,8 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'time_daypart' => !empty($data['next']->start_time)
           ? date('A', $data['next']->start_time)
           : '',
-        'node_url' => !empty($data['now']->object_data->nid)
-          ? (url('node/' . $data['now']->object_data->nid))
+        'node_url' => !empty($data['next']->nid)
+          ? (url('node/' . $data['next']->nid))
           : '',
       ),
     );
@@ -586,18 +588,14 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
 
   if ($data) {
     $theme_variables = array(
-      /*'image' => !empty($data['now']->object_data->thumbnail_url)
+      'image' => !empty($data['now']->nid)
         ? theme('image', array(
-          'path' => $data['now']->object_data->thumbnail_url,
-          'alt' => !empty($data['now']->title) ? $data['now']->title : '',
-          'title' => !empty($data['now']->title) ? $data['now']->title : '',
-        ))
-        : '',*/
-      'image' => !empty($data['next']->object_data->thumbnail_url)
-        ? theme('image', array(
-          'path' => $data['next']->object_data->thumbnail_url,
-          'width' => 143,
-          'height' => 81,
+          'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
+          'attributes' => array(
+            'class' => array(
+              'watch-live-show-preview-image'
+            ),
+          ),
         ))
         : '',
       'title' => !empty($data['now']->title) ? $data['now']->title : '',
@@ -610,8 +608,8 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
       'season_and_episode' => (!empty($data['now']->season_number) && !empty($data['now']->season_episode_number))
         ? ('S' . $data['now']->season_number . ' ' . t('Episode') . ' ' . $data['now']->season_episode_number)
         : '',
-      'node_url' => !empty($data['now']->object_data->nid)
-        ? url('node/' . $data['now']->object_data->nid, array(
+      'node_url' => !empty($data['now']->nid)
+        ? url('node/' . $data['now']->nid, array(
           'alias' => TRUE,
         ))
         : '',
@@ -638,6 +636,8 @@ function _usanetwork_menu_show_menu_watch_live_block() {
     'attributes' => array('class' => 'spinner'),
   );
 
+  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.watch_live.js';
   $block_form['test'] = array(
     '#type' => 'item',
@@ -647,6 +647,50 @@ function _usanetwork_menu_show_menu_watch_live_block() {
   return render($block_form);
 }
 
+/**
+<<<<<<< HEAD
+ * Returns preview image URL.
+ */
+function _usanetwork_menu_show_menu_get_image_preview_url($nid, $type = 'tv_show') {
+  switch ($type) {
+    case 'tv_show':
+      return _usanetwork_menu_show_menu_show_get_image_preview_url($nid);
+    case 'tv_episode':
+      return _usanetwork_menu_show_menu_episode_get_image_preview_url($nid);
+  }
+}
+
+function _usanetwork_menu_show_menu_show_get_image_preview_url($nid) {
+  $query = db_select('field_data_field_logo', 'fl');
+  $query->fields('fl', array('field_logo_fid'));
+  $query->condition('fl.entity_id', $nid);
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if ($result) {
+    $file = file_load($result->field_logo_fid);
+    return $file->uri;
+  }
+
+  return;
+}
+
+function _usanetwork_menu_show_menu_episode_get_image_preview_url($nid) {
+  $query = db_select('field_data_field_tv_cover_media', 'fm');
+  $query->fields('fm', array('field_cover_media_fid'));
+  $query->condition('fm.entity_id', $nid);
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if ($result) {
+    $file = file_load($result->field_cover_media_fid);
+    return $file->uri;
+  }
+
+  return;
+}
 /**
  * Render button footer block for Apps & Services
  */

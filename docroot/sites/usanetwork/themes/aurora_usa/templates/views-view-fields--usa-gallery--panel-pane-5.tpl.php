@@ -25,7 +25,8 @@
  */
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <?php if ($id == 'field_seo_h1' && !empty(strip_tags($field->content))): ?>
+  <?php $field_content_raw = strip_tags($field->content); ?>
+  <?php if ($id == 'field_seo_h1' && !empty($field_content_raw)): ?>
     <?php $h1 = $field->content; ?>
   <?php endif; ?>
   <?php if ($id == 'title' && empty($h1)): ?>

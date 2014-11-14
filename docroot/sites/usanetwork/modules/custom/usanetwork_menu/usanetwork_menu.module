@@ -445,7 +445,7 @@ function _usanetwork_menu_show_menu_now_and_next_block() {
     'attributes' => array('class' => 'spinner'),
   );
 
-  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/_jstz-1.0.4.min.js';
+  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.now_and_next.js';
   $block_form['test'] = array(
@@ -576,7 +576,7 @@ function _usanetwork_menu_show_menu_watch_live_block() {
     'attributes' => array('class' => 'spinner'),
   );
 
-  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/_jstz-1.0.4.min.js';
+  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.watch_live.js';
   $block_form['test'] = array(

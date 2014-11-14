@@ -3474,6 +3474,9 @@ header ul, header li, header ol {
   margin: 0;
   padding: 0;
 }
+header h2 {
+  margin: 0;
+}
 header .ad-728x90 {
   margin: 0 auto;
   padding: 10px 0;
@@ -4464,6 +4467,7 @@ header .tab-item.full-episode-tab .latest-full-episodes ul:after {
 header .tab-item.full-episode-tab .latest-full-episodes ul li {
   float: left;
   margin-right: 20px;
+  position: relative;
   width: 275px;
 }
 @media (max-width: 1600px) {
@@ -4488,84 +4492,81 @@ header .tab-item.full-episode-tab .latest-full-episodes ul li {
 header .tab-item.full-episode-tab .latest-full-episodes ul li:last-child {
   margin-right: 0;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node {
-  position: relative;
-}
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a {
   color: #ffffff;
   display: block;
   text-decoration: none;
   text-transform: uppercase;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a:after {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a:after {
   clear: both;
   content: '';
   display: table;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .asset-img {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
   margin-bottom: 10px;
   overflow: hidden;
   max-height: 146px;
 }
 @media (min-width: 1281px) and (max-width: 1600px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .asset-img {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
     max-height: 110px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .asset-img {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img {
     max-height: 91px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .asset-img img {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .asset-img img {
   width: 100%;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper {
   position: relative;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta-icon:before {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta-icon:before {
   margin-top: -18.5px;
   top: 50%;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta-icon:before {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta-icon:before {
     left: 5px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta {
   padding-left: 45px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .title {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 15px;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .caption {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .caption {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .type-and-time {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 15px;
 }
-header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .type-and-time span {
+header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time span {
   font-family: "texgyrescholaregular", Times, serif;
   font-style: italic;
 }
 @media (max-width: 1280px) {
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .title {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .title {
     font-size: 10px;
   }
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .caption {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .caption {
     font-size: 10px;
   }
-  header .tab-item.full-episode-tab .latest-full-episodes ul li .node a .meta-wrapper .meta .type-and-time {
+  header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time {
     font-size: 10px;
   }
 }

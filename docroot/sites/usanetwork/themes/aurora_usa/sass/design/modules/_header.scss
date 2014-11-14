@@ -8,6 +8,9 @@ header {
     margin: 0;
     padding: 0;
   }
+  h2 {
+    margin: 0;
+  }
   .ad-728x90 {
     margin: 0 auto;
     padding: 10px 0;
@@ -776,6 +779,7 @@ header {
           li {
             float: left;
             margin-right: 20px;
+            position: relative;
             width: 275px;
             @include breakpoint($bp-1600-width) {
               margin-right: 25px;
@@ -793,74 +797,71 @@ header {
             &:last-child {
               margin-right: 0;
             }
-            .node {
-              position: relative;
-              a {
-                @include clear;
-                color: #ffffff;
-                display: block;
-                text-decoration: none;
-                text-transform: uppercase;
-                .asset-img {
-                  margin-bottom: 10px;
-                  overflow: hidden;
-                  max-height: 146px;
-                  @include breakpoint($between-1281-1600) {
-                    max-height: 110px;
-                  }
-                  @include breakpoint($between-1025-1280) {
-                    max-height: 91px;
-                  }
-                  img {
-                    width: 100%;
+            a {
+              @include clear;
+              color: #ffffff;
+              display: block;
+              text-decoration: none;
+              text-transform: uppercase;
+              .asset-img {
+                margin-bottom: 10px;
+                overflow: hidden;
+                max-height: 146px;
+                @include breakpoint($between-1281-1600) {
+                  max-height: 110px;
+                }
+                @include breakpoint($between-1025-1280) {
+                  max-height: 91px;
+                }
+                img {
+                  width: 100%;
+                }
+              }
+              .meta-wrapper {
+                position: relative;
+                .meta-icon {
+                  &:before {
+                    margin-top: -18.5px;
+                    top: 50%;
+                    @include breakpoint($between-769-1280) {
+                      left: 5px;
+                    }
                   }
                 }
-                .meta-wrapper {
-                  position: relative;
-                  .meta-icon {
-                    &:before {
-                      margin-top: -18.5px;
-                      top: 50%;
-                      @include breakpoint($between-769-1280) {
-                        left: 5px;
-                      }
+                .meta {
+                  padding-left: 45px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  width: 100%;
+                  .title {
+                    font-family: $avantgarde-medium;
+                    font-size: 12px;
+                    line-height: 15px;
+                  }
+                  .caption {
+                    font-family: $avantgarde-demi;
+                    font-size: 12px;
+                    line-height: 18px;
+                  }
+                  .type-and-time {
+                    font-family: $avantgarde-medium;
+                    font-size: 12px;
+                    line-height: 15px;
+                    span {
+                      font-family: $cent-725BT-italic;
+                      font-style: italic;
                     }
                   }
-                  .meta {
-                    padding-left: 45px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    width: 100%;
+                  @include breakpoint($bp-1280-width){
                     .title {
-                      font-family: $avantgarde-medium;
-                      font-size: 12px;
-                      line-height: 15px;
+                      font-size: 10px;
                     }
                     .caption {
-                      font-family: $avantgarde-demi;
-                      font-size: 12px;
-                      line-height: 18px;
+                      font-size: 10px;
                     }
                     .type-and-time {
-                      font-family: $avantgarde-medium;
-                      font-size: 12px;
-                      line-height: 15px;
-                      span {
-                        font-family: $cent-725BT-italic;
-                        font-style: italic;
-                      }
-                    }
-                    @include breakpoint($bp-1280-width){
-                      .title {
-                        font-size: 10px;
-                      }
-                      .caption {
-                        font-size: 10px;
-                      }
-                      .type-and-time {
-                        font-size: 10px;
-                      }
+                      font-size: 10px;
                     }
                   }
                 }

@@ -33,7 +33,6 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-    
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_menu';
@@ -55,7 +54,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_menu'][0] = 'new-1';
-  
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_tab_full_episodes';
@@ -71,13 +69,15 @@ function usanetwork_menu_default_panels_mini() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'watch-live',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_tab_full_episodes'][0] = 'new-2';
-  
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_tab_full_episodes';
@@ -105,13 +105,15 @@ function usanetwork_menu_default_panels_mini() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'latest-full-episodes',
+  );
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
   $display->content['new-3'] = $pane;
   $display->panels['reg_tab_full_episodes'][1] = 'new-3';
-  
   $pane = new stdClass();
   $pane->pid = 'new-4';
   $pane->panel = 'reg_tab_schedule';
@@ -133,7 +135,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-4'] = $pane;
   $display->panels['reg_tab_schedule'][0] = 'new-4';
-
   $pane = new stdClass();
   $pane->pid = 'new-5';
   $pane->panel = 'reg_tab_schedule';
@@ -155,7 +156,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-5'] = $pane;
   $display->panels['reg_tab_schedule'][1] = 'new-5';
-   
   $pane = new stdClass();
   $pane->pid = 'new-6';
   $pane->panel = 'reg_tab_shows';
@@ -180,7 +180,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-6'] = $pane;
   $display->panels['reg_tab_shows'][0] = 'new-6';
-  
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
@@ -217,7 +216,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-7'] = $pane;
   $display->panels['reg_tab_shows'][1] = 'new-7';
-  
   $pane = new stdClass();
   $pane->pid = 'new-8';
   $pane->panel = 'reg_tab_shows';

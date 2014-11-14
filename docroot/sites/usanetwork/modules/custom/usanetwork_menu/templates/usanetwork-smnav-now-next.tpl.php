@@ -25,7 +25,7 @@
           <h2><?php print t('On now'); ?></h2>
         </div>
         <?php if (!empty($on_now['image'])): ?>
-          <a href="<?php print !empty($node_url) ? $node_url : '#'; ?>">
+          <a href="<?php print !empty($on_now['node_url']) ? $on_now['node_url'] : '#'; ?>">
             <div class="asset-img show-color-border">
               <?php print $on_now['image']; ?>
             </div>
@@ -57,7 +57,7 @@
           <?php endif; ?>
         </div>
         <?php if (!empty($up_next['image'])): ?>
-          <a href="<?php print !empty($node_url) ? $node_url : '#'; ?>">
+          <a href="<?php print !empty($up_next['node_url']) ? $up_next['node_url'] : '#'; ?>">
             <div class="asset-img show-color-border">
               <?php print $up_next['image']; ?>
             </div>

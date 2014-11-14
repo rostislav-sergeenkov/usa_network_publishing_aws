@@ -5,7 +5,7 @@
 
       function usanetworkMenuGetWLBlockInfo() {
         var periods = 'now';
-        var timezoneOffset = new Date().getTimezoneOffset() * 60;
+        var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
 
         $.ajax({
           type: 'POST',

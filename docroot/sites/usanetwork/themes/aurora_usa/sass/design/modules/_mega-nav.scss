@@ -107,11 +107,6 @@
     @include link-colors($white, $white, $white, $white, $white);
   }
 }
-.menu-title {
-  @include breakpoint($bp-menu-switch) {
-    display: none;
-  }
-}
 
 #jPanelMenu-menu {
   &.state-menu {

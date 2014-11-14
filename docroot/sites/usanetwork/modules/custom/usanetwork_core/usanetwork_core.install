@@ -941,6 +941,7 @@ function usanetwork_core_update_7155() {
     'panels_mini',
     'page_manager',
     'usanetwork_menu',
+    'special_menu_items',
   );
 
   foreach ($to_be_enabled as $new_module) {

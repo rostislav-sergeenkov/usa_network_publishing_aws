@@ -15,7 +15,6 @@ function usanetwork_menu_default_panels_mini() {
   $mini->requiredcontexts = array();
   $mini->contexts = array();
   $mini->relationships = array();
-
   $display = new panels_display();
   $display->layout = 'usanetwork-show-menu';
   $display->layout_settings = array();
@@ -34,24 +33,17 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-
+    
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_menu';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_main';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'MOCK Menu',
-    'title' => 'MOCK Menu',
-    'body' => '<ul>
-<li>Link 1</li>
-<li>Link 2</li>
-<li>Link 3</li>
-</ul>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -63,7 +55,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_menu'][0] = 'new-1';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_tab_full_episodes';
@@ -85,22 +77,29 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_tab_full_episodes'][0] = 'new-2';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_tab_full_episodes';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'views';
+  $pane->subtype = 'usa_mpx_video';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'Latest Full Episodes',
-    'title' => 'Latest Full Episodes',
-    'body' => '<p>Item 1</p>
-<p>Item 2</p>
-<p>Item 3</p>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'front_full_epsds',
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -112,7 +111,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-3'] = $pane;
   $display->panels['reg_tab_full_episodes'][1] = 'new-3';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-4';
   $pane->panel = 'reg_tab_schedule';
@@ -139,7 +138,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->pid = 'new-5';
   $pane->panel = 'reg_tab_schedule';
   $pane->type = 'block';
-  $pane->subtype = 'usanetwork_home-usanetwork_home_sm_primetime';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_sm_primetime';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -156,7 +155,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-5'] = $pane;
   $display->panels['reg_tab_schedule'][1] = 'new-5';
-
+   
   $pane = new stdClass();
   $pane->pid = 'new-6';
   $pane->panel = 'reg_tab_shows';
@@ -178,25 +177,29 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-6'] = $pane;
   $display->panels['reg_tab_shows'][0] = 'new-6';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-7';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'views';
+  $pane->subtype = 'usa_nav';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'USA Originals',
-    'title' => 'USA Originals',
-    'body' => '<ul>
-<li>Link 1</li>
-<li>Link 2</li>
-<li>Link 3</li>
-<li>Link 4</li>
-</ul>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'originals_show',
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -208,25 +211,29 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-7'] = $pane;
   $display->panels['reg_tab_shows'][1] = 'new-7';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-8';
   $pane->panel = 'reg_tab_shows';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
+  $pane->type = 'views';
+  $pane->subtype = 'usa_nav';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'admin_title' => 'Syndicated Shows',
-    'title' => 'Syndicated Shows',
-    'body' => '<ul>
-<li>Link 1</li>
-<li>Link 2</li>
-<li>Link 3</li>
-<li>Link 4</li>
-</ul>',
-    'format' => 'wysiwyg_basic',
-    'substitute' => TRUE,
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'syndicated_shows',
+    'override_title' => 0,
+    'override_title_text' => '',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -236,7 +243,6 @@ function usanetwork_menu_default_panels_mini() {
   $pane->extras = array();
   $pane->position = 2;
   $pane->locks = array();
-
   $display->content['new-8'] = $pane;
   $display->panels['reg_tab_shows'][2] = 'new-8';
   $display->hide_title = PANELS_TITLE_NONE;
@@ -271,7 +277,7 @@ function usanetwork_menu_default_panels_mini() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_footer_menu';
@@ -293,12 +299,12 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-1'] = $pane;
   $display->panels['reg_footer_menu'][0] = 'new-1';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-2';
   $pane->panel = 'reg_footer_menu';
   $pane->type = 'block';
-  $pane->subtype = 'menu-menu-apps-services';
+  $pane->subtype = 'usanetwork_menu-usanetwork_menu_fm_apps_services';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -315,7 +321,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->locks = array();
   $display->content['new-2'] = $pane;
   $display->panels['reg_footer_menu'][1] = 'new-2';
-
+  
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_legal_and_social';

@@ -341,7 +341,7 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
 
   if (!empty($node)) {
     $episodes = _usanetwork_tv_schedule_get_upcoming_episodes($node);
-    die('<pre>'.print_r($episodes, true).'</pre>');
+
     if (!empty($episodes)) {
       foreach ($episodes as $episode) {
         $preview_image = NULL;
@@ -366,7 +366,7 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
           'episode_day' => date('l', $episode->start_time),
           'episode_time' => date('g:i', $episode->start_time),
           'episode_interval' => date('A', $episode->start_time),
-          'episode_description' => $episode->description,
+          'episode_description' => $episode->program_description,
           'node_url' => !empty($episode->episode_nid)
             ? url('node/' . $episode->episode_nid)
             : '',

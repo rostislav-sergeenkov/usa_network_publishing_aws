@@ -994,7 +994,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     if ($field_show && $field_show = reset($field_show)) {
       $show = $field_show['entity'];
     }
-    
+    if ($show) {
+      $vars['show_css_class'] = usanetwork_tv_shows_color_show_css_class($show);
+    } else {
+      $vars['show_css_class'] = 'show-default';
+    }   
     if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
       // inline content
       if ($vars['elements']['#embedded'] == TRUE) {

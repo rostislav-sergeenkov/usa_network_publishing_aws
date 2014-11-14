@@ -74,10 +74,10 @@ function usanetwork_schedule_pull() {
           ? $item_rating['pllisting$rating']
           : '',
         'start_time' => !empty($data_item['pllisting$startTime'])
-          ? ($data_item['pllisting$startTime'] / 1000) // The service returns it in milliseconds. LOL...
+          ? ($data_item['pllisting$startTime'] / 1000)
           : 0,
         'end_time' => !empty($data_item['pllisting$endTime'])
-          ? ($data_item['pllisting$endTime'] / 1000) // The service returns it in milliseconds. LOL...
+          ? ($data_item['pllisting$endTime'] / 1000)
           : 0,
         'title' => $program['pl$title'],
         'show_title' => $program['plprogram$shortTitle'],
@@ -153,6 +153,9 @@ function usanetwork_schedule_is_item_exists($guid) {
   return $result->rowCount();
 }
 
+/**
+ * Pulls schedule items that are running in TIME.
+ */
 function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query = db_select('usanetwork_schedule', 's');
   $query->leftJoin('node', 'n', 's.show_title=n.title');
@@ -166,6 +169,9 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   return $query->execute()->fetchAll();
 }
 
+/**
+ * Pulls items from schedule according FROM and TO timestamps.
+ */
 function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1, $time_corellation = 0) {
   $dateTime = new DateTime('now');
   $primeTimeStart = $dateTime->setTime($time_from, 0)->getTimestamp();
@@ -183,12 +189,18 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   return $query->execute()->fetchAll();
 }
 
+/**
+ * Pulls current item from schedule.
+ */
 function usanetwork_schedule_pull_on_now_item($time_corellation = 0) {
   $time = REQUEST_TIME + $time_corellation;
 
   return usanetwork_schedule_pull_by_time($time, 1, 'DESC');
 }
 
+/**
+ * Pulls next item from schedule.
+ */
 function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
   $time = REQUEST_TIME + $time_corellation;
 
@@ -210,11 +222,15 @@ function usanetwork_schedule_pull_upcoming_episodes($show_node_id, $length = 2, 
   $time = REQUEST_TIME + $time_corellation;
 
   $query = db_select('usanetwork_schedule', 's');
-  $query->join('node', 'n', 's.show_title=n.title');
+  $query->join('node', 'en', 's.title=en.title');
+  $query->join('node', 'sn', 's.show_title=sn.title');
   $query->fields('s', array());
-  $query->fields('n', array('nid'));
-  $query->condition('n.type', 'tv_episode');
-  $query->condition('s.start_time', $time, '>');
+  $query->addField('en', 'nid', 'episode_nid');
+  $query->addField('sn', 'nid', 'show_nid');
+  $query->condition('sn.nid', $show_node_id);
+  $query->condition('en.type', 'tv_episode');
+  $query->condition('sn.type', 'tv_show');
+  $query->condition('s.start_time', $time. '>');
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, $length);
 

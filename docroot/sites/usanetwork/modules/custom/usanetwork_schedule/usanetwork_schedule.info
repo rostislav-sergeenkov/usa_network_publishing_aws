@@ -1,6 +1,6 @@
 name = 'Usanetwork TV Schedule'
 description = 'Imports schedule from external service'
-package = 'Usanetwork'
+package = 'USA Network'
 core = 7.x
 version = 7.x-1.0.0
 

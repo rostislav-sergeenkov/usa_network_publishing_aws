@@ -341,17 +341,11 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
 
   if (!empty($node)) {
     $episodes = _usanetwork_tv_schedule_get_upcoming_episodes($node);
-
+    die('<pre>'.print_r($episodes, true).'</pre>');
     if (!empty($episodes)) {
       foreach ($episodes as $episode) {
         $preview_image = NULL;
-
-        if (empty($episode->thumbnail_url) || empty($episode->description)) {
-          continue;
-        }
-
-        $preview_image = NULL;
-        $image_uri = _usanetwork_menu_show_menu_get_image_preview_url($episode->nid);
+        $image_uri = _usanetwork_menu_show_menu_get_image_preview_url($episode->episode_nid, 'tv_episode');
 
         if (!empty($image_uri)) {
           $preview_image = theme('image', array(
@@ -373,9 +367,10 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
           'episode_time' => date('g:i', $episode->start_time),
           'episode_interval' => date('A', $episode->start_time),
           'episode_description' => $episode->description,
-          'node_url' => !empty($episode->nid)
-            ? url('node/' . $episode->nid)
+          'node_url' => !empty($episode->episode_nid)
+            ? url('node/' . $episode->episode_nid)
             : '',
+          'show_nid' => $episode->show_nid,
         ));
       }
     }
@@ -593,9 +588,18 @@ function _usanetwork_menu_show_menu_watch_live_block() {
 }
 
 /**
- * Returns show image URL.
+ * Returns preview image URL.
  */
-function _usanetwork_menu_show_menu_get_image_preview_url($nid) {
+function _usanetwork_menu_show_menu_get_image_preview_url($nid, $type = 'tv_show') {
+  switch ($type) {
+    case 'tv_show':
+      return _usanetwork_menu_show_menu_show_get_image_preview_url($nid);
+    case 'tv_episode':
+      return _usanetwork_menu_show_menu_episode_get_image_preview_url($nid);
+  }
+}
+
+function _usanetwork_menu_show_menu_show_get_image_preview_url($nid) {
   $query = db_select('field_data_field_logo', 'fl');
   $query->fields('fl', array('field_logo_fid'));
   $query->condition('fl.entity_id', $nid);
@@ -605,6 +609,22 @@ function _usanetwork_menu_show_menu_get_image_preview_url($nid) {
 
   if ($result) {
     $file = file_load($result->field_logo_fid);
+    return $file->uri;
+  }
+
+  return;
+}
+
+function _usanetwork_menu_show_menu_episode_get_image_preview_url($nid) {
+  $query = db_select('field_data_field_tv_cover_media', 'fm');
+  $query->fields('fm', array('field_cover_media_fid'));
+  $query->condition('fm.entity_id', $nid);
+  $query->range(0, 1);
+
+  $result = $query->execute()->fetch();
+
+  if ($result) {
+    $file = file_load($result->field_cover_media_fid);
     return $file->uri;
   }
 

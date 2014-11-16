@@ -71,13 +71,11 @@ function usanetwork_tv_shows_color_theme() {
 }
 
 /**
- * Implements hook_entity_presave().
+ * Implements hook_node_presave().
  */
 function usanetwork_tv_shows_color_node_presave($node) {
-  if (!isset($node->op) &&
-      $node->state_flow_node_set_published &&
-      $node->type == 'tv_show') {
-
+  if (!isset($node->op) && $node->type == 'tv_show') {
+    
     $node_code = field_get_items('node', $node, 'field_pathauto_alias');
     $primary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color');
     $secondary_color_code = field_get_items('node', $node, 'field_usa_tv_show_color_second');
@@ -95,7 +93,7 @@ function usanetwork_tv_shows_color_node_presave($node) {
       $secondary_color_code = reset($secondary_color_code);
       $tertiary_color_code = reset($tertiary_color_code);
     }
-    
+
     $node_css = theme('usanetwork_tv_show_color_css', array(
       'node_code' => $node_code['value'],
       'primary_color_code' => $primary_color_code['rgb'],

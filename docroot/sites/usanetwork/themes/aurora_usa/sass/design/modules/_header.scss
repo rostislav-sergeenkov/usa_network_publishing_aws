@@ -680,7 +680,6 @@ header {
     padding: 40px;
     position: relative;
     width: 100%;
-    //todo
     @include breakpoint($bp-768-width) {
       padding: 20px;
     }
@@ -777,7 +776,6 @@ header {
         }
       }
     }
-    //todo full episodes
     &.full-episode-tab {
       @include breakpoint($bp-1024-width) {
         padding: 70px 55px 70px 70px;
@@ -1096,8 +1094,11 @@ header {
               float: left;
             }
           }
-          .asset-img {
+          .asset-img{
             float: left;
+            overflow: hidden;
+            max-height: 81px;
+            width: 143px;
           }
           .meta {
             margin-left: 155px;
@@ -1125,12 +1126,15 @@ header {
         }
         .on-now-panel-title {
           color: $footer-links;
-          font-family: $avantgarde-demi;
           font-size: 20px;
+          font-family: $avantgarde-demi;
           left: 0;
           position: absolute;
           top: -30px;
           text-transform: uppercase;
+          h2{
+            font-size: 20px;
+          }
           .episode-airtime {
             float: left;
             margin-left: 40px;
@@ -1191,7 +1195,7 @@ header {
             top: 50%;
           }
         }
-        .primetime-panel-title {
+        .pane-title {
           color: $footer-links;
           font-family: $avantgarde-demi;
           font-size: 20px;

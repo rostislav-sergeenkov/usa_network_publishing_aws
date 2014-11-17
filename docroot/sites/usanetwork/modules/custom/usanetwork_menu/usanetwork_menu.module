@@ -102,6 +102,16 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_aspot_ot'] = array(
+    'info' => t('Usanetwork A-Spot: On now, tonight'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_consumptionator'] = array(
+    'info' => t('Usanetwork Consumptionator: Upper menu'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -173,6 +183,15 @@ function usanetwork_menu_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_render_footer_menu_block();
       break;
+
+    case 'usanetwork_menu_aspot_ot':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
+      break;
+
+    case 'usanetwork_menu_consumptionator':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_consumptionator_block();
   }
 
   return $block;
@@ -251,6 +270,56 @@ function usanetwork_menu_theme() {
         'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-smnav-watch-live',
+    ),
+    'usanetwork_menu_aspot_onnow_tonight' => array(
+      'variables' => array(
+        'on_now_block_item' => array(
+          'on_now' => array(
+            'show_title' => NULL,
+            'episode_title' => NULL,
+          ),
+          'up_next' => array(
+            'show_title' => NULL,
+            'episode_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+        ),
+        'tonight_block_items' => array(
+          0 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+          1 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+          2 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-aspot-onnow-tonight',
+    ),
+    'usanetwork_menu_consumptionator' => array(
+      'variables' => array(
+        'show_url' => NULL,
+        'show_name' => NULL,
+        'episode' => array(
+          'caption' => NULL,
+          'image_url' => NULL,
+          'title' => NULL,
+          'season_number' => NULL,
+          'episode_number' => NULL,
+          'running_time' => NULL,
+          'description' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-menu-consumptionator',
     ),
   );
 }
@@ -376,7 +445,7 @@ function _usanetwork_menu_show_menu_primetime_block() {
           'value' => date('g:i', $program->start_time),
           'interval' => date('A', $program->start_time),
         ),
-        'show_title' => $program->parent_title,
+        'show_title' => $program->show_title,
         'show_episode' => $program->title,
         'node_url' => NULL,
       ));
@@ -485,6 +554,23 @@ function _usanetwork_menu_show_menu_get_current_show_node() {
     $node = reset($menu_item['page_arguments']);
 
     if (isset($node->type) && $node->type == 'tv_show') {
+      return $node;
+    }
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns current Episode node.
+ */
+function _usanetwork_menu_show_menu_get_current_episode_node() {
+  $menu_item = menu_get_item();
+
+  if (!empty($menu_item['page_arguments'])) {
+    $node = reset($menu_item['page_arguments']);
+
+    if (isset($node->type) && $node->type == 'tv_episode') {
       return $node;
     }
   }
@@ -648,7 +734,6 @@ function _usanetwork_menu_show_menu_watch_live_block() {
 }
 
 /**
-<<<<<<< HEAD
  * Returns preview image URL.
  */
 function _usanetwork_menu_show_menu_get_image_preview_url($nid, $type = 'tv_show') {
@@ -660,6 +745,9 @@ function _usanetwork_menu_show_menu_get_image_preview_url($nid, $type = 'tv_show
   }
 }
 
+/**
+ * Loads previewing image for show.
+ */
 function _usanetwork_menu_show_menu_show_get_image_preview_url($nid) {
   $query = db_select('field_data_field_logo', 'fl');
   $query->fields('fl', array('field_logo_fid'));
@@ -676,6 +764,9 @@ function _usanetwork_menu_show_menu_show_get_image_preview_url($nid) {
   return;
 }
 
+/**
+ * Loads previewing image for episode.
+ */
 function _usanetwork_menu_show_menu_episode_get_image_preview_url($nid) {
   $query = db_select('field_data_field_tv_cover_media', 'fm');
   $query->fields('fm', array('field_cover_media_fid'));
@@ -725,4 +816,97 @@ function _usanetwork_menu_footer_apps_services() {
       )
     ),
   ));
+}
+
+/**
+ * Renders Consumtionator Menu block.
+ */
+function _usanetwork_menu_consumptionator_block() {
+  $episode_node = _usanetwork_menu_show_menu_get_current_episode_node();
+
+  if ($episode_node) {
+    $episode_node_wrapper = entity_metadata_wrapper('node', $episode_node);
+
+    if (!empty($episode_node_wrapper)) {
+      $body_meta_data = $episode_node_wrapper->body->value();
+      $episode_caption = $episode_node_wrapper->field_tv_episode_type->name->label();
+
+      if (empty($episode_caption)) {
+        $episode_caption = t('Full episode');
+      }
+
+      return theme('usanetwork_menu_consumptionator', array(
+        'show_url' => url('node/' . $episode_node_wrapper->field_show->value()->nid),
+        'show_name' => $episode_node_wrapper->field_show->value()->title,
+        'episode' => array(
+          'caption' => $episode_caption,
+          'image_url' => $episode_node_wrapper->field_tv_cover_media->file->value()->uri,
+          'title' => $episode_node_wrapper->title->value(),
+          'season_number' => $episode_node_wrapper->field_season->field_season_id->value(),
+          'episode_number' => $episode_node_wrapper->field_episode_number->value(),
+          'running_time' => gmdate('H:i:s', $episode_node_wrapper->field_original_air_date->duration->value()),
+          'description' => !empty($body_meta_data) ? $body_meta_data['value'] : '',
+        ),
+      ));
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Renders OnNow, Tonight at the bottom of the A-Spot carousel.
+ */
+function _usanetwork_menu_aspot_onnow_tonight_block() {
+  $on_now = usanetwork_schedule_pull_on_now_item();
+  $up_next = usanetwork_schedule_pull_up_next_item();
+  $tonight = _usanetwork_tv_schedule_get_primetime_items(3);
+
+  $on_now_block = array();
+  $up_next_block = array();
+  $tonight_block = array();
+
+  if (!empty($on_now)) {
+    if (is_array($on_now)) {
+      $on_now = reset($on_now);
+    }
+
+    $on_now_block = array(
+      'show_title' => $on_now->show_title,
+      'episode_title' => $on_now->title,
+    );
+  }
+
+  if (!empty($up_next)) {
+    if (is_array($up_next)) {
+      $up_next = reset($up_next);
+    }
+
+    $up_next_block = array(
+      'show_title' => $up_next->show_title,
+      'episode_title' => $up_next->title,
+      'time' => date('H:i', $up_next->start_time),
+      'day_part' => date('A', $up_next->start_time),
+    );
+  }
+
+  if (!empty($tonight)) {
+    foreach ($tonight as $tonight_item) {
+      $tonight_block[] = array(
+        'show_title' => $tonight_item->show_title,
+        'time' => date('H:i', $tonight_item->start_time),
+        'day_part' => date('A', $tonight_item->start_time),
+      );
+    }
+  }
+  
+  $theme_data = array(
+    'on_now_block_item' => array(
+      'on_now' => $on_now_block,
+      'up_next' => $up_next_block,
+    ),
+    'tonight_block_items' => $tonight_block,
+  );
+
+  return theme('usanetwork_menu_aspot_onnow_tonight', $theme_data);
 }

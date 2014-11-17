@@ -182,7 +182,6 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   $query->fields('s', array());
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $primeTimeStart, '>=');
-  $query->condition('s.end_time', $primeTimeEnd, '<=');
   $query->range(0, $limit);
   $query->orderBy('s.start_time', 'ASC');
 

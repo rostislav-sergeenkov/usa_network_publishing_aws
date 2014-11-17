@@ -4,7 +4,7 @@
  * Implements hook_init().
  */
 function usanetwork_tv_shows_color_init() {
-    usanetwork_tv_shows_color_add_css();
+  usanetwork_tv_shows_color_add_css();
 }
 
 /*
@@ -79,9 +79,41 @@ function usanetwork_tv_shows_color_node_presave($node) {
 
     if (!$node_code ||
         !$primary_color_code ||
+        count($primary_color_code) == 0 ||
         !$secondary_color_code ||
-        !$tertiary_color_code) {
-      return;
+        count($secondary_color_code) == 0 ||
+        !$tertiary_color_code ||
+        count($tertiary_color_code) == 0) {
+
+      if (!$node_code) {
+        return;
+      }
+      else {
+        $node_code = reset($node_code);
+      }
+
+      $default_colors = usanetwork_tv_shows_color_default_codes();
+      $node_colors = isset($default_colors[$node_code['value']])
+          ? $default_colors[$node_code['value']]
+          : FALSE;
+
+      if ($primary_color_code) {
+        $primary_color_code = reset($primary_color_code);
+      }
+
+      if (!$node_colors && $primary_color_code) {
+        $tertiary_color_code = $secondary_color_code = $primary_color_code = $primary_color_code;
+      }
+      else if ($node_colors) {
+        $primary_color_code['rgb'] = $primary_color_code
+            ? $primary_color_code['rgb'] 
+            : $node_colors[0];
+        $secondary_color_code['rgb'] = $node_colors[1];
+        $tertiary_color_code['rgb'] = $node_colors[2];
+      }
+      else {
+        return;
+      }
     }
     else {
       $node_code = reset($node_code);

@@ -83,42 +83,16 @@ function usanetwork_tv_shows_color_default_codes() {
 /**
  * Generate common tv shows color schema file for all nodes
  */
-function usanetwork_tv_shows_color_update_7022() {
+function usanetwork_tv_shows_color_update_7029() {
   features_revert_module('usanetwork_tv_shows_color_field');
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', 'tv_show');
   $query->propertyCondition('status', NODE_PUBLISHED);
   $tv_shows_ids = $query->execute();
-  $default_colors = usanetwork_tv_shows_color_default_codes();
   if (isset($tv_shows_ids['node'])) {
     foreach (array_keys($tv_shows_ids['node']) as $nid) {
       $node = node_load($nid);
-      $node_code = reset(field_get_items('node', $node, 'field_pathauto_alias'));
-      $node_colors = isset($default_colors[$node_code['value']])
-          ? $default_colors[$node_code['value']]
-          : FALSE;
-
-      if (!$node_colors) {
-        return;
-      }
-
-      $primary_color = field_get_items('node', $node, 'field_usa_tv_show_color');
-      $primary_color_code = FALSE;
-      if ($primary_color) {
-        $primary_color_code = reset($primary_color);
-      }
-
-
-      $primary_color_code = $primary_color_code
-          ? $primary_color_code['rgb']
-          : $node_colors[0];
-      $secondary_color_code = $node_colors[1];
-      $tertiary_color_code = $node_colors[2];
-
-      $node->field_usa_tv_show_color[$node->language][0]['rgb'] = $primary_color_code;
-      $node->field_usa_tv_show_color_second[$node->language][0]['rgb'] = $secondary_color_code;
-      $node->field_usa_tv_show_color_tertiary[$node->language][0]['rgb'] = $tertiary_color_code;
       module_invoke('usanetwork_tv_shows_color', 'node_presave', $node);
     }
   }

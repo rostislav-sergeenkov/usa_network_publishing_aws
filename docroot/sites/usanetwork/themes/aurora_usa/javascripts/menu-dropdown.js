@@ -9,7 +9,8 @@
             tab_containers = $('header .tab-item'),
             tab_container_act = $('header .tab-item.active'),
             index = $(".tab .no-refresh").index(tab),
-            animation_speed = 350;
+            animation_speed = 350,
+            window_size = 769;
 
         var openTab = function() {
           $(".tab .no-refresh").unbind('click');
@@ -27,7 +28,8 @@
           // HIDE SEARCH BLOCK
           $('.search-input-block, .search a').removeClass('active');
         };
-        if (window.innerWidth >= 769) {
+
+        if (window.innerWidth >= window_size) {
           if (tab.attr('data-state') == 'active') {
             tab.removeClass('active').attr('data-state', '');
             tab_containers.eq(index).slideUp(animation_speed).removeClass('active');
@@ -43,7 +45,8 @@
             }
           }
         }
-        if (window.innerWidth < 769 && $(this).parent().hasClass('expanded')) {
+        
+        if (window.innerWidth < window_size && $(this).parent().hasClass('expanded')) {
           if (!$(this).hasClass('active')) {
             $(this).parent().addClass('active');
             $(this).addClass('active');

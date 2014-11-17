@@ -1455,11 +1455,11 @@ function _usanetwork_tv_schedule_get_upcoming_episodes($show_node, $length = 2) 
 /**
  * Returns primetime items.
  */
-function _usanetwork_tv_schedule_get_primetime_items() {
+function _usanetwork_tv_schedule_get_primetime_items($limit = USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH) {
   return usanetwork_schedule_pull_by_timerange(
     USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR,
     USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR,
-    USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH,
+    $limit,
     0
   );
 }

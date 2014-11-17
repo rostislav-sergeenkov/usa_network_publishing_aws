@@ -241,6 +241,7 @@ function theme_usanetwork_item_list($variables) {
         $query_result = views_get_view_result('usa_nav', 'block');
 
         if (!empty($query_result)) {
+          $attributes['class'][] = 'expanded';
           $links = array();
 
           foreach ($query_result as $row) {

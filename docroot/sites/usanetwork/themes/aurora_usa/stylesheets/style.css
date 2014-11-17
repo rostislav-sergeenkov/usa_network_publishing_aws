@@ -4819,6 +4819,9 @@ header .tab-item.schedule-tab .on-now-panel .node.up-next h2 {
 }
 header .tab-item.schedule-tab .on-now-panel .node .asset-img {
   float: left;
+  overflow: hidden;
+  max-height: 81px;
+  width: 143px;
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta {
   margin-left: 155px;
@@ -4845,12 +4848,15 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .description {
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title {
   color: #dcddde;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   left: 0;
   position: absolute;
   top: -30px;
   text-transform: uppercase;
+}
+header .tab-item.schedule-tab .on-now-panel .on-now-panel-title h2 {
+  font-size: 20px;
 }
 header .tab-item.schedule-tab .on-now-panel .on-now-panel-title .episode-airtime {
   float: left;
@@ -4913,7 +4919,7 @@ header .tab-item.schedule-tab .primetime-panel .more:before {
   right: -14px;
   top: 50%;
 }
-header .tab-item.schedule-tab .primetime-panel .primetime-panel-title {
+header .tab-item.schedule-tab .primetime-panel .pane-title {
   color: #dcddde;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;

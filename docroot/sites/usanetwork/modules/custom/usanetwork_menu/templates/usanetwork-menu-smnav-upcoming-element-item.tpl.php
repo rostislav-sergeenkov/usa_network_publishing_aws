@@ -44,32 +44,10 @@
     <div class="empty"></div>
   <?php endif; ?>
   <div class="icons-block">
-    <?php print l('', '', array(
-      'attributes' => array(
-        'class' => array(
-          'live',
-          'icon'
-        ),
-        'fragment' => '',
-      ),
-    )); ?>
-    <?php print l('', '', array(
-      'attributes' => array(
-        'class' => array(
-          'episode-description',
-          'icon'
-        ),
-        'fragment' => '',
-      ),
-    )); ?>
-    <?php print l('', '', array(
-      'attributes' => array(
-        'class' => array(
-          'calendar-reminder',
-          'icon'
-        ),
-        'fragment' => '',
-      ),
-    )); ?>
+    <a class="live icon" href="#"></a>
+    <?php if (!empty($syndicated_url)): ?>
+      <a class="episode-description icon" href="<?php print $syndicated_url; ?>" target="_blank"></a>
+    <?php endif; ?>
+    <a class="calendar-reminder icon" href="#"></a>
   </div>
 </div>

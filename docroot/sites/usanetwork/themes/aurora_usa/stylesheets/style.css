@@ -5789,6 +5789,8 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   font-size: 2.04em;
   margin: 0.83em 0;
   display: inline-block;
+  display: inline;
+  float: left;
 }
 
 @media (min-width: 769px) {

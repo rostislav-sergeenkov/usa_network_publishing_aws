@@ -2,16 +2,20 @@
   Drupal.behaviors.usanetwork_person = {
     attach: function(context){
       /* Trigger this function on page load to display text annotation for edit page */
-      getPersonDetails('pageload');
+      $(".node-form").once('personform', function() {
+        getPersonDetails('pageload');
+      });
 
       $person_controls = $("#edit-field-person-prefix input, #edit-field-person-first-name input," + 
                             " #edit-field-person-middle-name input, #edit-field-person-last-name input," + 
                             " #edit-field-person-suffix input, #edit-field-usa-actor-name input," + 
                             " #edit-field-show select, #edit-field-role select");
 
-      $person_controls.on("change", function() {
-        getPersonDetails('event');
-      });
+      if ($("input[name=changed]").val() == '') {
+        $person_controls.on("change", function() {
+          getPersonDetails('event');
+        });
+      }
 
       function getPersonDetails(event_type) {
         var defaultString = Drupal.t('Default').toUpperCase();
@@ -58,28 +62,17 @@
         }
 
         /* Display default value for h1 field */
-        if ($("#edit-field-seo-h1 input").val() == '' && h1 != '' && event_type != 'event') {
-          if ($('#edit-field-seo-h1 .description').length == 0) {
-            $("#edit-field-seo-h1 input").after('<div class="description">' + 
-                                                defaultString + ': ' + h1.trim() +
-                                                '</div>');
-          }
-          else {
-            $("#edit-field-seo-h1 .description").html(defaultString + ': ' + h1.trim());
-          }
+        if (h1 != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+          $("#edit-field-seo-h1 input").after('<div class="description">' + 
+                                              defaultString + ': ' + h1.trim() +
+                                              '</div>');
         }
 
         /* Display default value for page title field */
-        var seoPageTitle = $("#edit-field-seo-page-title input").val();
-        if (pageTitle != '' && seoPageTitle == '' && event_type != 'event') {
-          if ($('#edit-field-seo-page-title .description').length == 0) {
-            $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
-                                                              defaultString + ': ' + pageTitle +
-                                                              '</div>');
-          }
-          else {
-            $("#edit-field-seo-page-title .description").html(defaultString + ': ' + pageTitle);
-          }
+        if (pageTitle != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+          $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                            defaultString + ': ' + pageTitle +
+                                                            '</div>');
         }
       }
     }

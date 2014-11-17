@@ -159,19 +159,19 @@ function usanetwork_gallery_content_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '8',
           'metatags' => array(
             'weight' => '8',
           ),
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

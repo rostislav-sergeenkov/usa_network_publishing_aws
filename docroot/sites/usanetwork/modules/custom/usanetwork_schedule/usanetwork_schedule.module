@@ -28,8 +28,10 @@ function usanetwork_schedule_cron() {
   $interval = variable_get('usanetwork_schedule_update_interval', 24) * 60 * 60;
   $last_run = variable_get('usanetwork_schedule_last_update', 0);
 
-  if (REQUEST_TIME - $last_run >= $interval) {
+  if (REQUEST_TIME - $last_run >= $interval || $last_run == 0) {
     usanetwork_schedule_pull();
+
+    variable_set('usanetwork_schedule_last_update', REQUEST_TIME);
   }
 
   if ($interval) {

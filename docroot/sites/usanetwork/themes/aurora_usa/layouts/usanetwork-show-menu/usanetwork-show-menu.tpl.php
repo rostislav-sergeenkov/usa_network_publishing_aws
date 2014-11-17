@@ -7,6 +7,7 @@
     <div class="nav-bar-tabs">
       <?php print $content['reg_menu']; ?>
     </div>
+    <div class="main-menu-open"><a href="#"></a></div>
   </div>
   <div class="header-small-menu menu">
     <?php print $content['reg_mobile_menu']; ?>

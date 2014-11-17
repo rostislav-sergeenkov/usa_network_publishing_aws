@@ -21,7 +21,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(
       0 => 'field_person_birth_date',
       1 => 'field_person_birth_location',
@@ -144,7 +144,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '1',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_seo_h1',
@@ -203,7 +203,7 @@ function usanetwork_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_role',
       1 => 'field_show',

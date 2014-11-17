@@ -1,31 +1,35 @@
 (function ($) {
   Drupal.behaviors.usanetwork_tv_shows = {
     attach: function(context){
-
-      $tv_shows_controls = $("#edit-title, #edit-field-seo-h1 input");
-
-      $tv_shows_controls.on("change", function() {
-        var tv_shows_title = $("#edit-title").val() != ''
-                            ? $("#edit-title").val()
-                            : '';
-        var tv_shows_h1 = $("#edit-field-seo-h1 input").val() != ''
-                          ? $("#edit-field-seo-h1 input").val()
-                          : '';
-
-        if (tv_shows_title != '' && tv_shows_h1 == '') {
-          $("#edit-field-seo-page-title input").val(Drupal.t('@title | USA Network', {
-            '@title' : tv_shows_title.trim()
-          }));
-        }
-        else if (tv_shows_h1 != '') {
-          $("#edit-field-seo-page-title input").val(Drupal.t('@title | USA Network', {
-            '@title' : tv_shows_h1.trim()
-          }));
-        }
-        else {
-          $("#edit-field-seo-page-title input").val('');
-        }
+      /* Trigger this function on page load to display text annotation for edit page */
+      $(".node-form").once('tvshowform', function() {
+        getTvShowDetails('pageload');
       });
+
+      if ($("input[name=changed]").val() == '') {
+        $("#edit-title").on("change", function() {
+          getTvShowDetails('event');
+        });
+      }
+
+      function getTvShowDetails(event_type) {
+        var defaultString = Drupal.t('Default').toUpperCase();
+        var titleSuffix = Drupal.t('USA Network');        
+        var title = $("#edit-title").val() != ''
+                    ? $("#edit-title").val()
+                    : '';
+
+        var inputDefaultValue = title.trim() + ' | ' + titleSuffix;
+        if (event_type == 'event') {
+          $("#edit-field-seo-page-title input").val(inputDefaultValue);
+        }
+        /* Display default value for page title field */
+        if (inputDefaultValue != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+          $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                            defaultString + ': ' + inputDefaultValue +
+                                                            '</div>');
+        }
+      }
     }
   }
 })(jQuery);

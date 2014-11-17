@@ -1,10 +1,22 @@
 (function ($) {
   Drupal.behaviors.usanetwork_catchall = {
     attach: function(context){
-      var titleSuffix = Drupal.t('USA Network');
+      /* Trigger this function on page load to display text annotation for edit page */
+      $(".node-form").once('catchallform', function() {
+        getCatchallDetails('pageload');
+      });
+      
       $catchall_controls = $("#edit-title, #edit-path-alias, #edit-field-show select");
 
-      $catchall_controls.on("change", function() {
+      if ($("input[name=changed]").val() == '') {
+        $catchall_controls.on("change", function() {
+          getCatchallDetails('event');
+        });
+      }
+
+      function getCatchallDetails(event_type) {
+        var defaultString = Drupal.t('Default').toUpperCase();
+        var titleSuffix = Drupal.t('USA Network');
         var title = $("#edit-title").val() != ''
                     ? $("#edit-title").val()
                     : '';
@@ -40,8 +52,16 @@
           }
         }
         var inputDefaultValue = title.trim() + ' ' + catchallString + '| ' + titleSuffix;
-        $("#edit-field-seo-page-title input").val(inputDefaultValue);
-      });
+        if (event_type == 'event') {
+          $("#edit-field-seo-page-title input").val(inputDefaultValue);
+        }
+        /* Display default value for page title field */
+        if (inputDefaultValue != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+            $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                              defaultString + ': ' + inputDefaultValue +
+                                                              '</div>');
+        }        
+      }
     }
   }
 })(jQuery);

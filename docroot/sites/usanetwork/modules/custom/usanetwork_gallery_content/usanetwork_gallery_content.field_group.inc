@@ -21,7 +21,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'field_categories',
       1 => 'field_collection',
@@ -81,7 +81,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_ideamelt_action_type',
       1 => 'field_send_ideamelt_notification',
@@ -137,7 +137,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '1',
+    'weight' => '3',
     'children' => array(
       0 => 'field_usa_og_description',
       1 => 'field_seo_h1',
@@ -195,7 +195,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(
       0 => 'field_person',
       1 => 'field_gallery_type',
@@ -224,7 +224,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_usa_og_image',
     ),

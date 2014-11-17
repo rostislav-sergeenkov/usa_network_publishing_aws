@@ -1,25 +1,29 @@
 (function ($) {
   Drupal.behaviors.usanetwork_tv_episode = {
     attach: function(context){
-
-      $tv_episode_controls = $("#edit-title, #edit-field-seo-h1 input, #edit-field-show select, #edit-field-season select");
-
-      $tv_episode_controls.on("change", function() {
-        getPageTitle();
+      /* Trigger this function on page load to display text annotation for edit page */
+      $(".node-form").once('episodeform', function() {
+        getEpisodeDetails('pageload');
       });
 
-      $("#edit-field-season select").on("blur", function() {
-        getPageTitle();
-      });
+      $tv_episode_controls = $("#edit-title, #edit-field-show select, #edit-field-season select");
+
+      if ($("input[name=changed]").val() == '') {
+        $tv_episode_controls.on("change", function() {
+          getEpisodeDetails('event');
+        });
+
+        $("#edit-field-season select").on("blur", function() {
+          getEpisodeDetails('event');
+        });
+      }
       
-      function getPageTitle() {
-        var tv_episode_title = $("#edit-title").val() != ''
-                            ? $("#edit-title").val()
-                            : '';
-
-        var tv_episode_h1 = $("#edit-field-seo-h1 input").val() != ''
-                          ? $("#edit-field-seo-h1 input").val()
-                          : '';
+      function getEpisodeDetails(event_type) {
+        var defaultString = Drupal.t('Default').toUpperCase();
+        var titleSuffix = Drupal.t('USA Network');      
+        var title = $("#edit-title").val() != ''
+                    ? $("#edit-title").val()
+                    : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
                     ? ' ' + $("#edit-field-show select option:selected").text() + ' |'
@@ -29,19 +33,16 @@
                     ? '- ' + $("#edit-field-season select option:selected").text() + ' '
                     : '';
 
-        var episode_title = '';
-        if (tv_episode_title != '' && tv_episode_h1 == '') {
-          episode_title = tv_episode_title;
-        }
-        else {
-          episode_title = tv_episode_h1;
-        }
-
-        $("#edit-field-seo-page-title input").val(Drupal.t('@title @season| Episode Guide |@show USA Network', {
-          '@title' : episode_title.trim(),
-          '@season' : season,
-          '@show' : show
-        }));        
+        var inputDefaultValue = title.trim() + ' ' + season + '| Episode Guide |' + show + ' ' + titleSuffix;
+        if (event_type == 'event') {
+          $("#edit-field-seo-page-title input").val(inputDefaultValue);
+        }        
+        /* Display default value for page title field */
+        if (inputDefaultValue != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+            $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                              defaultString + ': ' + inputDefaultValue +
+                                                              '</div>');
+        }       
       }
     }
   }

@@ -1,36 +1,41 @@
 (function ($) {
   Drupal.behaviors.usanetwork_gallery = {
     attach: function(context){
+      /* Trigger this function on page load to display text annotation for edit page */
+      $(".node-form").once('galleryform', function() {
+        getGalleryDetails('pageload');
+      });
 
-      $gallery_controls = $("#edit-title, #edit-field-seo-h1 input, #edit-field-show select");
+      $gallery_controls = $("#edit-title, #edit-field-show select");
 
-      $gallery_controls.on("change", function() {
+      if ($("input[name=changed]").val() == '') {
+        $gallery_controls.on("change", function() {
+          getGalleryDetails('event');
+        });
+      }
 
+      function getGalleryDetails(event_type) {
+        var defaultString = Drupal.t('Default').toUpperCase();
+        var titleSuffix = Drupal.t('USA Network');
         var title = $("#edit-title").val() != ''
                     ? $("#edit-title").val()
                     : '';
-
-        var h1 = $("#edit-field-seo-h1 input").val() != ''
-                  ? $("#edit-field-seo-h1 input").val()
-                  : '';
 
         var show = ($("#edit-field-show select").val() != '_none')
                     ? ' ' + $("#edit-field-show select option:selected").text() + ' |'
                     : '';
 
-        var gallery_title = '';
-        if (title != '' && h1 == '') {
-          gallery_title = title;
+        var inputDefaultValue = title.trim() + ' | ' + Drupal.t('Photo Galleries') + ' |' + show + ' ' + titleSuffix;
+        if (event_type == 'event') {
+          $("#edit-field-seo-page-title input").val(inputDefaultValue);
         }
-        else {
-          gallery_title = h1;
-        }
-
-        $("#edit-field-seo-page-title input").val(Drupal.t('@title | Photo Galleries |@show USA Network', {
-          '@title' : gallery_title.trim(),
-          '@show' : show
-        }));
-      });
+        /* Display default value for page title field */
+        if (inputDefaultValue != '' && event_type != 'event' && $("input[name=changed]").val() != '') {
+            $("#edit-field-seo-page-title .form-item").append('<div class="description">' + 
+                                                              defaultString + ': ' + inputDefaultValue +
+                                                              '</div>');
+        }        
+      }
     }
   }
 })(jQuery);

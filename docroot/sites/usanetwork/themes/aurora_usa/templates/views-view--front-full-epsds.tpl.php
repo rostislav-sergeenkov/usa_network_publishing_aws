@@ -91,4 +91,8 @@
     </div>
   <?php endif; ?>
 
+  <div class="more-link">
+    <?php print l(t('More full episodes'), 'videos', array('attributes' => array('class' => 'hover-avail')))?>
+  </div>
+  
 </div><?php /* class view */ ?>

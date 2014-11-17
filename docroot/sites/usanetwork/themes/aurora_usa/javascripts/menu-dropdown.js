@@ -2,7 +2,6 @@
   Drupal.behaviors.usanetwork_menu_dropdown = {
     attach: function(context){
       var tabNavHandler = function (e) {
-        console.log(1);
         e.preventDefault();
 
         var tab = $(this),

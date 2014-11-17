@@ -41,6 +41,7 @@ header {
     }
     @include breakpoint($bp-768-width) {
       background: $footer-links;
+      height: auto;
     }
     .no-refresh {
       position: relative;
@@ -71,6 +72,7 @@ header {
       background: lighten($usa-logo-back, 15%);
     }
     @include breakpoint($bp-768-width) {
+      height: 50px;
       &.active {
         display: none;
       }
@@ -108,47 +110,204 @@ header {
     }
     @include breakpoint($bp-768-width) {
       display: none;
-    }
-    ul {
-      display: table;
+      float: none;
       width: 100%;
-    }
-    .tab {
-      display: table-cell;
-      height: 100%;
-      .item-list {
-        @include breakpoint($bp-min-769-width) {
-          display: none;
-        }
-      }
-    }
-    a {
-      background: $header-tab-back;
-      border-left: 1px solid $header-tab-back;
-      border-right: 1px solid $header-tab-back;
-      color: $header-tab-text;
-      cursor: pointer;
-      display: block;
-      font-family: $avantgarde-demi;
-      font-size: 15px;
-      height: 100%;
-      line-height: 90px;
-      letter-spacing: 0.5px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      @include breakpoint($bp-1024-width) {
-        line-height: 50px;
-      }
       &.active {
-        background: $bottom-footer-back;
-        color: #ffffff;
-        &:hover {
-          background: $bottom-footer-back;
+        display: block;
+      }
+      ul {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        li {
+          padding: 0;
+          &.expanded {
+            &.active {
+              height: auto;
+              > ul.menu {
+                display: block;
+              }
+              > .item-list {
+                > ul.menu {
+                  display: block;
+                  margin: 0;
+                }
+              }
+            }
+            > a {
+              &:after {
+                display: block;
+                content: '';
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                @include sprite-background(plus-icon);
+              }
+              &.active {
+                &:after {
+                  @include sprite-background(minus-icon);
+                }
+              }
+            }
+          }
+        }
+        > li {
+          height: 50px;
+          position: relative;
+          width: 100%;
+          a {
+            background: $bottom-footer-back;
+            border-bottom: 2px solid $header-tab-back-hover;
+            color: $footer-links;
+            cursor: pointer;
+            display: block;
+            font-family: $avantgarde-demi;
+            font-size: 14px;
+            height: 100%;
+            line-height: 50px;
+            padding-left: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 100%;
+            &.log-on {
+              background: $header-tab-back-hover;
+              padding-left: 60px;
+              &:before {
+                content: '';
+                display: block;
+                left: 15px;
+                margin-top: -15px;
+                position: absolute;
+                top: 50%;
+                @include sprite-background(profile-icon);
+              }
+              span {
+                background: $usa-logo-back;
+                border-radius: 50%;
+                color: #ffffff;
+                display: block;
+                font-family: $avantgarde-demi;
+                font-size: 11px;
+                height: 11px;
+                left: 40px;
+                line-height: 12px;
+                position: absolute;
+                text-align: center;
+                top: 5px;
+                width: 11px;
+              }
+            }
+          }
+          ul.menu {
+            display: none;
+            position: relative;
+            width: 100%;
+            li {
+              height: 30px;
+              position: relative;
+              width: 100%;
+              &.expanded {
+                > a {
+                  &:after {
+                    top: 10px;
+                  }
+                }
+              }
+              a {
+                background: $header-tab-back-hover;
+                border-bottom: 1px solid $footer-links;
+                line-height: 30px;
+                padding-left: 40px;
+              }
+              ul.menu {
+                a {
+                  padding-left: 50px;
+                }
+              }
+            }
+          }
+          &.show-menu-header {
+            a {
+              border-bottom: 0 !important;
+            }
+            ul.menu {
+              > li {
+                > a {
+                  &:before {
+                    bottom: 0px;
+                    content: '';
+                    height: 1px;
+                    left: 0px;
+                    display: block;
+                    width: 100%;
+                    position: absolute;
+                  }
+                }
+                li {
+                  a {
+                    &:before {
+                      left: 60px;
+                    }
+                  }
+                }
+                &:last-child {
+                  a {
+                    &:before {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
-      &:hover {
-        background: $header-tab-back-hover;
+    }
+    @include breakpoint($bp-min-769-width) {
+      ul {
+        display: table;
+        width: 100%;
+      }
+      .tab {
+        display: table-cell;
+        height: 100%;
+        padding: 0;
+        .item-list {
+          display: none;
+          ul {
+            margin: 0;
+          }
+        }
+      }
+      a {
+        background: $header-tab-back;
+        border-left: 1px solid $header-tab-back;
+        border-right: 1px solid $header-tab-back;
+        color: $header-tab-text;
+        cursor: pointer;
+        display: block;
+        font-family: $avantgarde-demi;
+        font-size: 15px;
+        height: 100%;
+        line-height: 90px;
+        letter-spacing: 0.5px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include breakpoint($bp-1024-width) {
+          line-height: 50px;
+        }
+        &.active {
+          background: $bottom-footer-back;
+          color: #ffffff;
+          &:hover {
+            background: $bottom-footer-back;
+          }
+        }
+        &:hover {
+          background: $header-tab-back-hover;
+        }
       }
     }
   }
@@ -507,6 +666,9 @@ header {
     @include clear();
     position: relative;
     width: 100%;
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
   }
   .tab-item {
     @include clear();
@@ -1171,153 +1333,6 @@ header {
       font-size: 12px;
       line-height: 16px;
       text-transform: uppercase;
-    }
-  }
-}
-
-.header-small-menu {
-  display: none;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  @include breakpoint($bp-768-width) {
-    display: none;
-    &.active {
-      display: block;
-    }
-  }
-  li {
-    &.expanded {
-      &.active {
-        height: auto;
-        > ul.menu {
-          display: block;
-        }
-      }
-      > a {
-        &:after {
-          display: block;
-          content: '';
-          position: absolute;
-          right: 20px;
-          top: 20px;
-          @include sprite-background(plus-icon);
-        }
-        &.active {
-          &:after {
-            @include sprite-background(minus-icon);
-          }
-        }
-      }
-    }
-  }
-  > li {
-    height: 50px;
-    position: relative;
-    width: 100%;
-    a {
-      background: $bottom-footer-back;
-      border-bottom: 2px solid $header-tab-back-hover;
-      color: $footer-links;
-      display: block;
-      font-family: $avantgarde-demi;
-      font-size: 14px;
-      height: 100%;
-      line-height: 50px;
-      padding-left: 30px;
-      text-decoration: none;
-      text-transform: uppercase;
-      width: 100%;
-      &.log-on {
-        background: $header-tab-back-hover;
-        padding-left: 60px;
-        &:before {
-          content: '';
-          display: block;
-          left: 15px;
-          margin-top: -15px;
-          position: absolute;
-          top: 50%;
-          @include sprite-background(profile-icon);
-        }
-        span {
-          background: $usa-logo-back;
-          border-radius: 50%;
-          color: #ffffff;
-          display: block;
-          font-family: $avantgarde-demi;
-          font-size: 11px;
-          height: 11px;
-          left: 40px;
-          line-height: 12px;
-          position: absolute;
-          text-align: center;
-          top: 5px;
-          width: 11px;
-        }
-      }
-    }
-    ul.menu {
-      display: none;
-      position: relative;
-      width: 100%;
-      li {
-        height: 30px;
-        position: relative;
-        width: 100%;
-        &.expanded {
-          > a {
-            &:after {
-              top: 10px;
-            }
-          }
-        }
-        a {
-          background: $header-tab-back-hover;
-          border-bottom: 1px solid $footer-links;
-          line-height: 30px;
-          padding-left: 40px;
-        }
-        ul.menu {
-          a {
-            padding-left: 50px;
-          }
-        }
-      }
-    }
-    &.show-menu-header {
-      a {
-        border-bottom: 0 !important;
-      }
-      ul.menu {
-        > li {
-          > a {
-            &:before {
-              bottom: 0px;
-              content: '';
-              height: 1px;
-              left: 0px;
-              display: block;
-              width: 100%;
-              position: absolute;
-            }
-          }
-          li {
-            a {
-              &:before {
-                left: 60px;
-              }
-            }
-          }
-          &:last-child {
-            a {
-              &:before {
-                display: none;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

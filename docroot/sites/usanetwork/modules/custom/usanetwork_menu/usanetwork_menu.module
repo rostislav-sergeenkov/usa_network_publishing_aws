@@ -935,9 +935,13 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
 
   if (!empty($syndicated_field)) {
     if ($syndicated_field[0]['value'] == 1) {
-      $prepared_title = strtolower(trim(preg_replace("/\s+/", '-', $node->title)));
+      $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
 
-      return url('https://see.it/' . urlencode($prepared_title) . '/remind');
+      if (!empty($url_alias_field)) {
+        $alias = $url_alias_field[0]['value'];
+
+        return url('https://see.it/' . $alias . '/remind');
+      }
     }
   }
 

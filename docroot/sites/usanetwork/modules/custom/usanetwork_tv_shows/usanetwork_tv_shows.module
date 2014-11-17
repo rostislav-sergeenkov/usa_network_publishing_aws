@@ -123,6 +123,7 @@ function usanetwork_tv_shows_episode_form_validate($form, &$form_state) {
 
 /**
  * Returns show assosiated with current page.
+ * TODO may be depricated
  */
 function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, $path = NULL) {
   $show = false;

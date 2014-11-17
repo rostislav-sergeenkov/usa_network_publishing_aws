@@ -43,7 +43,9 @@
           <?php endif; ?>
         </div>
         <div class="icons-block">
-          <a class="episode-description icon" href="#"></a>
+          <?php if (!empty($on_now['syndicated_url'])): ?>
+            <a class="episode-description icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
+          <?php endif; ?>
           <a class="calendar-reminder icon" href="#"></a>
         </div>
       </div>
@@ -75,7 +77,9 @@
           <?php endif; ?>
         </div>
         <div class="icons-block">
-          <a class="episode-description icon" href="#"></a>
+          <?php if (!empty($up_next['syndicated_url'])): ?>
+            <a class="episode-description icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
+          <?php endif; ?>
           <a class="calendar-reminder icon" href="#"></a>
         </div>
       </div>

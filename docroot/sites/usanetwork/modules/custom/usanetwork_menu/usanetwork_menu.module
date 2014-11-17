@@ -102,6 +102,11 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_aspot_ot'] = array(
+    'info' => t('Usanetwork A-Spot: On now, tonight'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_menu_consumptionator'] = array(
     'info' => t('Usanetwork Consumptionator: Upper menu'),
     'cache' => DRUPAL_NO_CACHE,
@@ -177,6 +182,11 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_fm_menu':
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_render_footer_menu_block();
+      break;
+
+    case 'usanetwork_menu_aspot_ot':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
       break;
 
     case 'usanetwork_menu_consumptionator':
@@ -260,6 +270,40 @@ function usanetwork_menu_theme() {
         'node_url' => NULL,
       ),
       'template' => 'templates/usanetwork-smnav-watch-live',
+    ),
+    'usanetwork_menu_aspot_onnow_tonight' => array(
+      'variables' => array(
+        'on_now_block_item' => array(
+          'on_now' => array(
+            'show_title' => NULL,
+            'episode_title' => NULL,
+          ),
+          'up_next' => array(
+            'show_title' => NULL,
+            'episode_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+        ),
+        'tonight_block_items' => array(
+          0 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+          1 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+          2 => array(
+            'show_title' => NULL,
+            'time' => NULL,
+            'day_part' => NULL,
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-aspot-onnow-tonight',
     ),
     'usanetwork_menu_consumptionator' => array(
       'variables' => array(
@@ -808,4 +852,61 @@ function _usanetwork_menu_consumptionator_block() {
   }
 
   return '';
+}
+
+/**
+ * Renders OnNow, Tonight at the bottom of the A-Spot carousel.
+ */
+function _usanetwork_menu_aspot_onnow_tonight_block() {
+  $on_now = usanetwork_schedule_pull_on_now_item();
+  $up_next = usanetwork_schedule_pull_up_next_item();
+  $tonight = _usanetwork_tv_schedule_get_primetime_items(3);
+
+  $on_now_block = array();
+  $up_next_block = array();
+  $tonight_block = array();
+
+  if (!empty($on_now)) {
+    if (is_array($on_now)) {
+      $on_now = reset($on_now);
+    }
+
+    $on_now_block = array(
+      'show_title' => $on_now->show_title,
+      'episode_title' => $on_now->title,
+    );
+  }
+
+  if (!empty($up_next)) {
+    if (is_array($up_next)) {
+      $up_next = reset($up_next);
+    }
+
+    $up_next_block = array(
+      'show_title' => $up_next->show_title,
+      'episode_title' => $up_next->title,
+      'time' => date('H:i', $up_next->start_time),
+      'day_part' => date('A', $up_next->start_time),
+    );
+  }
+
+  if (!empty($tonight)) {
+    foreach ($tonight as $tonight_item) {
+      $tonight_block[] = array(
+        'show_title' => $tonight_item->show_title,
+        'time' => date('H:i', $tonight_item->start_time),
+        'day_part' => date('A', $tonight_item->start_time),
+      );
+    }
+  }
+  
+  $theme_data = array(
+    'on_now_block_item' => array(
+      'on_now' => $on_now_block,
+      'up_next' => $up_next_block,
+    ),
+    'tonight_block_items' => $tonight_block,
+  );
+
+  return theme('usanetwork_menu_aspot_onnow_tonight', $theme_data);
 }

@@ -1,6 +1,11 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
     attach: function(context){
+      var window_size_tablet_portrait = 769;
+      var tablet = false;
+      if (window.innerWidth < window_size_tablet_portrait) {
+        tablet = true;
+      }
       var tabNavHandler = function (e) {
         e.preventDefault();
 
@@ -9,8 +14,7 @@
             tab_containers = $('header .tab-item'),
             tab_container_act = $('header .tab-item.active'),
             index = $(".tab .no-refresh").index(tab),
-            animation_speed = 350,
-            window_size = 769;
+            animation_speed = 350;
 
         var openTab = function() {
           $(".tab .no-refresh").unbind('click');
@@ -29,7 +33,7 @@
           $('.search-input-block, .search a').removeClass('active');
         };
 
-        if (window.innerWidth >= window_size) {
+        if (window.innerWidth >= window_size_tablet_portrait) {
           if (tab.attr('data-state') == 'active') {
             tab.removeClass('active').attr('data-state', '');
             tab_containers.eq(index).slideUp(animation_speed).removeClass('active');
@@ -45,8 +49,8 @@
             }
           }
         }
-        
-        if (window.innerWidth < window_size && $(this).parent().hasClass('expanded')) {
+
+        if (window.innerWidth < window_size_tablet_portrait && $(this).parent().hasClass('expanded')) {
           if (!$(this).hasClass('active')) {
             $(this).parent().addClass('active');
             $(this).addClass('active');
@@ -55,13 +59,16 @@
             $(this).removeClass('active');
           }
         }
+
       };
 
       var menuOpenHandler = function (e) {
-        e.preventDefault();
+        if (e) {
+          e.preventDefault();
+        }
 
-        var menu_link = $(this),
-            menu_link_container = $(this).parent(),
+        var menu_link = $(".main-menu-open a"),
+            menu_link_container = $(".main-menu-open"),
             usa_logo = $('.usa-logo'),
             search_container = $('.search'),
             search_link = $('.search a'),
@@ -106,6 +113,26 @@
       $(".tab .no-refresh").bind('click', tabNavHandler);
       $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
       $(".main-menu-open a").bind('click', menuOpenHandler);
+
+      $(window).bind('resize', function () {
+        if (window.innerWidth < window_size_tablet_portrait && !tablet) {
+          if ($('body').hasClass('page-home') || $('body').hasClass('usa-tv-show')) {
+            $('header .tab-item.active').removeClass('active').removeAttr('style');
+            $(".tab .no-refresh.active").removeClass('active').attr('data-state', '');
+          }
+          tablet = true;
+        }
+        if (window.innerWidth >= window_size_tablet_portrait && tablet) {
+          if ($('body').hasClass('page-home') || $('body').hasClass('usa-tv-show')) {
+            if($(".main-menu-open").hasClass('active')) {
+              menuOpenHandler();
+              $('.nav-bar-tabs .expanded.active').removeClass('active');
+              $('.nav-bar-tabs .expanded > a.active').removeClass('active');
+            }
+          }
+          tablet = false;
+        }
+      });
 
     }
   }

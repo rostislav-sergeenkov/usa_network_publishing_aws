@@ -401,7 +401,7 @@ function _usanetwork_menu_show_menu_primetime_block() {
           'value' => date('g:i', $program->start_time),
           'interval' => date('A', $program->start_time),
         ),
-        'show_title' => $program->parent_title,
+        'show_title' => $program->show_title,
         'show_episode' => $program->title,
         'node_url' => NULL,
       ));

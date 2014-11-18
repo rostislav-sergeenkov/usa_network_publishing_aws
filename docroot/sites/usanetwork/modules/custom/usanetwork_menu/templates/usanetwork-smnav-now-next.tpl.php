@@ -53,7 +53,7 @@
       </div>
     <?php endif; ?>
     <?php if (!empty($up_next)): ?>
-      <div class="node node-usanetwork-promo up-next <?php print $on_now['show_class']; ?>">
+      <div class="node node-usanetwork-promo up-next <?php print $up_next['show_class']; ?>">
         <div class="on-now-panel-title">
           <h2><?php print t('Up next'); ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>

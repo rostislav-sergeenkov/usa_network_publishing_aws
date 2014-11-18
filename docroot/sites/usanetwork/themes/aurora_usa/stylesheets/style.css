@@ -1668,10 +1668,10 @@ input[type="radio"], input[type="checkbox"] {
   font-family: "ico-font";
   font-size: 16px;
 }
-.icons-block a.episode-description:before {
+.icons-block a.calendar-reminder:before {
   content: '\e600';
 }
-.icons-block a.calendar-reminder:before {
+.icons-block a.episode-description:before {
   content: '\e601';
 }
 .icons-block a.facebook:before {
@@ -4894,29 +4894,34 @@ header .tab-item.schedule-tab .primetime-panel:before {
   position: absolute;
   width: 1px;
 }
-header .tab-item.schedule-tab .primetime-panel .more {
-  bottom: -14px;
-  color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  display: block;
+header .tab-item.schedule-tab .primetime-panel .more-link {
+  bottom: -25px;
+  right: 0px;
+  padding-right: 20px;
   position: absolute;
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .primetime-panel .more-link {
+    margin-right: 15px;
+  }
+}
+header .tab-item.schedule-tab .primetime-panel .more-link a {
+  color: #ffffff;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
   text-decoration: none;
   text-transform: uppercase;
-  right: 0px;
 }
-header .tab-item.schedule-tab .primetime-panel .more:hover {
-  text-decoration: underline;
-}
-header .tab-item.schedule-tab .primetime-panel .more:before {
+header .tab-item.schedule-tab .primetime-panel .more-link a:after {
   color: #ffffff;
   content: "\e608";
   display: block;
   font-family: "ico-font";
   font-size: 10px;
-  margin-top: -4px;
+  right: 0;
+  margin-top: -8px;
   position: absolute;
-  right: -14px;
   top: 50%;
 }
 header .tab-item.schedule-tab .primetime-panel .pane-title {

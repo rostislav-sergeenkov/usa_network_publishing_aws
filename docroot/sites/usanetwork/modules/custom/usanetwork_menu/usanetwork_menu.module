@@ -398,7 +398,7 @@ function _usanetwork_menu_main_menu_block() {
 function _usanetwork_menu_show_menu_featured_block() {
   $output = array();
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-  
+
   if (!empty($homepage['node'])) {
     $node_data = reset($homepage['node']);
     $node = node_load($node_data->nid);
@@ -464,11 +464,7 @@ function _usanetwork_menu_show_menu_primetime_block() {
         'show_episode' => $program->title,
         'node_url' => NULL,
         'syndicated_url' => _usanetwork_menu_get_reminder_url($program->nid),
-        'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-          $program->nid,
-          $program->season_number,
-          $program->season_episode_number
-        ),*/
+        'episode_full_url' => '#',
         'show_class' => !empty($program->nid)
           ? usanetwork_tv_shows_color_show_css_class($program->nid)
           : 'show-undefined',
@@ -525,11 +521,7 @@ function _usanetwork_menu_show_menu_upcoming_episodes_block() {
             : '',
           'show_nid' => $episode->show_nid,
           'syndicated_url' => _usanetwork_menu_get_reminder_url($episode->show_nid),
-          'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-            $episode->nid,
-            $episode->season_number,
-            $episode->season_episode_number
-          ),*/
+          'episode_full_url' => '#',
         ));
       }
     }
@@ -660,11 +652,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
           ? (url('node/' . $data['now']->nid))
           : '',
         'syndicated_url' => _usanetwork_menu_get_reminder_url($data['now']->nid),
-        'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-          $data['now']->nid,
-          $data['now']->season_number,
-          $data['now']->season_episode_number
-        ),*/
+        'episode_full_url' => '#',
         'show_class' => !empty($data['now']->nid)
           ? usanetwork_tv_shows_color_show_css_class($data['now']->nid)
           : 'show-undefined',
@@ -695,11 +683,7 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
           ? (url('node/' . $data['next']->nid))
           : '',
         'syndicated_url' => _usanetwork_menu_get_reminder_url($data['next']->nid),
-        'episode_full_url' => '#',/*_usanetwork_menu_get_episode_page_url(
-          $data['next']->nid,
-          $data['next']->season_number,
-          $data['next']->season_episode_number
-        ),*/
+        'episode_full_url' => '#',
         'show_class' => !empty($data['next']->nid)
           ? usanetwork_tv_shows_color_show_css_class($data['next']->nid)
           : 'show-undefined',
@@ -923,11 +907,7 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
       'show_title' => $on_now->show_title,
       'episode_title' => $on_now->title,
       'syndicated_url' => _usanetwork_menu_get_reminder_url($on_now->nid),
-      'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-        $on_now->nid,
-        $on_now->season_number,
-        $on_now->season_episode_number
-      ),*/
+      'episode_full_url' => '#',
     );
   }
 
@@ -942,11 +922,7 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
       'time' => date('h:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
       'syndicated_url' => _usanetwork_menu_get_reminder_url($up_next->nid),
-      'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-        $up_next->nid,
-        $up_next->season_number,
-        $up_next->season_episode_number
-      ),*/
+      'episode_full_url' => '#',
     );
   }
 
@@ -957,11 +933,7 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
         'time' => date('h:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
         'syndicated_url' => _usanetwork_menu_get_reminder_url($tonight_item->nid),
-        'episode_full_url' => '#', /*_usanetwork_menu_get_episode_page_url(
-          $tonight_item->nid,
-          $tonight_item->season_number,
-          $tonight_item->season_episode_number
-        ),*/
+        'episode_full_url' => '#',
       );
     }
   }
@@ -996,45 +968,6 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
         $alias = $url_alias_field[0]['value'];
 
         return url('https://see.it/' . $alias . '/remind');
-      }
-    }
-  }
-
-  return NULL;
-}
-
-/**
- * Returns full episode page url.
- */
-function _usanetwork_menu_get_episode_page_url($field_show, $season_number, $episode_number) {
-  $pattern = variable_get('pathauto_node_tv_episode_pattern', NULL);
-
-  if (empty($pattern)) {
-    return NULL;
-  }
-
-  $show_node = node_load($field_show);
-
-  if ($show_node) {
-    $show_alias = field_get_items('node', $show_node, 'field_pathauto_alias');
-
-    if (!empty($show_alias)) {
-      $destination = str_replace(
-        array(
-          '[node:field_show]',
-          '[node:field_season_id]',
-          '[node:field_episode_number]'
-        ),
-        array(
-          $show_alias[0]['value'],
-          $season_number,
-          $episode_number
-        ),
-        $pattern
-      );
-
-      if (!empty($destination)) {
-        return url($destination);
       }
     }
   }

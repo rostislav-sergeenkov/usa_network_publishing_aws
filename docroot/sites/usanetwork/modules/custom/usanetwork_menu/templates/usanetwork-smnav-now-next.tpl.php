@@ -44,10 +44,10 @@
         </div>
         <div class="icons-block">
           <?php if (!empty($on_now['syndicated_url'])): ?>
-            <a class="episode-description icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
+            <a class="calendar-reminder icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
           <?php if (!empty($on_now['episode_full_url'])): ?>
-            <a class="calendar-reminder icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
+            <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
           <?php endif; ?>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <div class="on-now-panel-title">
           <h2><?php print t('Up next'); ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
-            <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?> <?php print t('ET'); ?></div>
+            <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?></div>
           <?php endif; ?>
         </div>
         <?php if (!empty($up_next['image'])): ?>
@@ -80,10 +80,10 @@
         </div>
         <div class="icons-block">
           <?php if (!empty($up_next['syndicated_url'])): ?>
-            <a class="episode-description icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
+            <a class="calendar-reminder icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
           <?php if (!empty($up_next['episode_full_url'])): ?>
-            <a class="calendar-reminder icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
+            <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
           <?php endif; ?>
         </div>
       </div>

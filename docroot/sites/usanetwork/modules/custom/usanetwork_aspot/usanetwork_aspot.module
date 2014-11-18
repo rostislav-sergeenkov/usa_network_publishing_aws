@@ -80,6 +80,42 @@ function usanetwork_aspot_preprocess_node(&$vars) {
   }
 }
 
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_aspot_theme() {
+  return array(
+    'usanetwork_aspot_carousel_slide' => array(
+      'variables' => array(
+        'show_class' => NULL,
+        'show_poster_url' => NULL,
+        'show_title_prefix' => NULL,
+        'show_title' => NULL,
+        'show_timer_prefix' => NULL,
+        'show_timer_value' => NULL,
+        'cta_buttons' => array(
+          0 => array(
+            'url' => NULL,
+            'text' => NULL,
+          ),
+        ),
+        'social_meter' => array(
+          'value' => NULL,
+          'multiplier' => NULL,
+          'tag' => NULL,
+          'hot' => NULL,
+          'link' => array(
+            'url' => NULL,
+            'link' => NULL,
+            'class' => NULL,
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-aspot-carousel-slide',
+    ),
+  );
+}
+
 function usanetwork_aspot_aspot_settings($aspot_array, $lang){
   foreach($aspot_array as $aspot){
     $node = node_load($aspot['target_id']);

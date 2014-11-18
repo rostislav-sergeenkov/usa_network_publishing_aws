@@ -190,7 +190,12 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   $query->fields('s', array());
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $primeTimeStart, '>=');
-  $query->condition('n.type', 'tv_show');
+
+  $db_or = db_or();
+  $db_or->condition('n.type', 'tv_show');
+  $db_or->condition('n.type', NULL, 'IS NULL');
+
+  $query->condition($db_or);
   $query->range(0, $limit);
   $query->orderBy('s.start_time', 'ASC');
 
@@ -218,6 +223,11 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '>');
 
+  $db_or = db_or();
+  $db_or->condition('n.type', 'tv_show');
+  $db_or->condition('n.type', NULL, 'IS NULL');
+
+  $query->condition($db_or);
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, 1);
 
@@ -238,7 +248,12 @@ function usanetwork_schedule_pull_upcoming_episodes($show_node_id, $length = 2, 
   $query->addField('sn', 'nid', 'show_nid');
   $query->condition('sn.nid', $show_node_id);
   $query->condition('en.type', 'tv_episode');
-  $query->condition('sn.type', 'tv_show');
+
+  $db_or = db_or();
+  $db_or->condition('sn.type', 'tv_show');
+  $db_or->condition('sn.type', NULL, 'IS NULL');
+
+  $query->condition($db_or);
   $query->condition('s.start_time', $time. '>');
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, $length);

@@ -11,3 +11,4 @@
     <?php endforeach; ?>
   </div>
 <?php endif; ?>
+<a class="more" href="<?php print url('schedule'); ?>"><?php print t('View full schedule'); ?></a>

@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Fix pathauto_node_tv_episode_pattern value.
+ */
+function usanetwork_pathauto_update_7102() {
+  variable_set('pathauto_node_tv_episode_pattern', '[node:field_show]/episodes/[node:field_season_id]-[node:field_episode_number]');
+}

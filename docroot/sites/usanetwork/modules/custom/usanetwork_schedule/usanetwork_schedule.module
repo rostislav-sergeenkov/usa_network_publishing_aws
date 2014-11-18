@@ -165,6 +165,7 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '<=');
   $query->condition('s.end_time', $time, '>');
+  $query->condition('n.type', 'tv_show');
   $query->orderBy('s.start_time', $order);
   $query->range(0, $limit);
 
@@ -184,6 +185,7 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   $query->fields('s', array());
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $primeTimeStart, '>=');
+  $query->condition('n.type', 'tv_show');
   $query->range(0, $limit);
   $query->orderBy('s.start_time', 'ASC');
 
@@ -210,6 +212,7 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
   $query->fields('s', array());
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '>');
+  $query->condition('n.type', 'tv_show');
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, 1);
 

@@ -19,7 +19,7 @@
       <div class="title"><?php print $title; ?></div>
     <?php endif; ?>
     <?php if (!empty($type) && !empty($time)): ?>
-      <div class="type-and-time"><span><?php print $type; ?></span> <?php print $time; ?></div>
+      <div class="type-and-time"><span><?php print $type; ?></span> <?php print $time; ?> <?php print t('ET'); ?></div>
     <?php endif; ?>
     <?php if (!empty($cta_text)): ?>
        <div class="caption"><?php print $cta_text; ?></div>

@@ -46,7 +46,9 @@
           <?php if (!empty($on_now['syndicated_url'])): ?>
             <a class="episode-description icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
-          <a class="calendar-reminder icon" href="#"></a>
+          <?php if (!empty($on_now['episode_full_url'])): ?>
+            <a class="calendar-reminder icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
+          <?php endif; ?>
         </div>
       </div>
     <?php endif; ?>
@@ -55,7 +57,7 @@
         <div class="on-now-panel-title">
           <h2><?php print t('Up next'); ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
-            <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?></div>
+            <div class="episode-airtime"><span><?php print $up_next['time']; ?></span> <?php print $up_next['time_daypart']; ?> <?php print t('ET'); ?></div>
           <?php endif; ?>
         </div>
         <?php if (!empty($up_next['image'])): ?>
@@ -80,7 +82,9 @@
           <?php if (!empty($up_next['syndicated_url'])): ?>
             <a class="episode-description icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
-          <a class="calendar-reminder icon" href="#"></a>
+          <?php if (!empty($up_next['episode_full_url'])): ?>
+            <a class="calendar-reminder icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
+          <?php endif; ?>
         </div>
       </div>
     <?php endif; ?>

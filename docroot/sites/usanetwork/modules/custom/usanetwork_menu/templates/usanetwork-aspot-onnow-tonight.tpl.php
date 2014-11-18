@@ -4,14 +4,16 @@
       <?php if (!empty($tonight_block_items)): ?>
         <?php foreach ($tonight_block_items as $tonight_block_item): ?>
           <div class="schedule-item">
-            <div class="time"><span><?php print $tonight_block_item['time']; ?></span><br><?php print $tonight_block_item['day_part']; ?></div>
+            <div class="time"><span><?php print $tonight_block_item['time']; ?></span><br><?php print $tonight_block_item['day_part']; ?> <?php print t('ET'); ?></div>
             <div class="episode-info">
               <div class="episode-show"><?php print $tonight_block_item['show_title']; ?></div>
               <div class="icons-block">
                 <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
                   <a class="episode-description icon" href="<?php print $tonight_block_item['syndicated_url']; ?>" target="_blank"></a>
                 <?php endif; ?>
-                <a class="calendar-reminder icon" href="#"></a>
+                <?php if (!empty($tonight_block_item['episode_full_url'])): ?>
+                  <a class="calendar-reminder icon" href="<?php print $tonight_block_item['episode_full_url']; ?>"></a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -31,7 +33,9 @@
                 <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
                   <a class="episode-description icon" href="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>" target="_blank"></a>
                 <?php endif; ?>
-                <a class="calendar-reminder icon" href="#"></a>
+                <?php if (!empty($on_now_block_item['on_now']['episode_full_url'])): ?>
+                  <a class="calendar-reminder icon" href="<?php print $on_now_block_item['on_now']['episode_full_url']; ?>"></a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -41,7 +45,7 @@
             <?php if (!empty($on_now_block_item['up_next']['time']) && !empty($on_now_block_item['up_next']['day_part'])): ?>
               <div class="time"><span><?php print t('Up next'); ?></span><br>
                 <span class="time-color"><?php print $on_now_block_item['up_next']['time'];?></span>
-                <?php print $on_now_block_item['up_next']['day_part']; ?>
+                <?php print $on_now_block_item['up_next']['day_part']; ?> <?php print t('ET'); ?>
               </div>
             <?php endif; ?>
             <div class="episode-info">
@@ -52,7 +56,9 @@
                 <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
                   <a class="episode-description icon" href="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>" target="_blank"></a>
                 <?php endif; ?>
-                <a class="calendar-reminder icon" href="#"></a>
+                <?php if (!empty($on_now_block_item['up_next']['episode_full_url'])): ?>
+                  <a class="calendar-reminder icon" href="<?php print $on_now_block_item['up_next']['episode_full_url']; ?>"></a>
+                <?php endif; ?>
               </div>
             </div>
           </div>

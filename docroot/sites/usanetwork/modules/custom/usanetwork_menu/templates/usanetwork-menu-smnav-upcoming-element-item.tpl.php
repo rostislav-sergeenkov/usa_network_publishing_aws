@@ -32,7 +32,7 @@
         <div class="caption"><?php print $episode_day; ?>
           <span class="time">
             <span><?php print $episode_time; ?></span>
-            <?php print $episode_interval; ?>
+            <?php print $episode_interval; ?> <?php print t('ET'); ?>
           </span>
         </div>
       <?php endif; ?>
@@ -48,6 +48,8 @@
     <?php if (!empty($syndicated_url)): ?>
       <a class="episode-description icon" href="<?php print $syndicated_url; ?>" target="_blank"></a>
     <?php endif; ?>
-    <a class="calendar-reminder icon" href="#"></a>
+    <?php if (!empty($episode_full_url)): ?>
+      <a class="calendar-reminder icon" href="<?php print $episode_full_url; ?>"></a>
+    <?php endif; ?>
   </div>
 </div>

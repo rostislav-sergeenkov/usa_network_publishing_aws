@@ -21,7 +21,67 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       ":input[name=\"field_animated_a_spot[$lang]\"]" => array('checked' => TRUE),
     ),
   );
-  $form['#validate'][]= 'usanetwork_aspot_validate';
+  $airdate = NULL;
+  $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
+  if ($show_nid) {
+    $airdate = _usanetwork_aspot_get_nearest_episode_airtime($show_nid);
+  }
+  $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
+  if (!empty($draggable_items_data)) {
+    $draggable_items_data = json_decode($draggable_items_data);
+  }
+  $previewing_settings = array(
+    'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_bg_offset', $lang, 0),
+    'bg_offset_width' => 370,
+    'bg_offset_height' => 500,
+    'bg_offset_image_url' => file_create_url($form_state['node']->field_usa_aspot_desktop[$lang][0]['uri']),
+    'aspot_elements' => array(
+      'title_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title_prefix', $lang, t('Title prefix')),
+      ),
+      'title' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_title', $lang, $form_state['node']->title),
+      ),
+      'countdown_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_cd_prefix', $lang, t('Countdown prefix')),
+      ),
+      'countdown' => array(
+        'value' => t('Countdown'),
+      ),
+      'social_meter' => array(
+        'value' => t('Social Meter'),
+      ),
+    ),
+    'airdate' => $airdate,
+  );
+  foreach ($draggable_items_data as $element_name => $element) {
+    if (isset($previewing_settings['aspot_elements'][$element_name]['value'])) {
+      $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
+    }
+    $previewing_settings['aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+    $previewing_settings['aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_gi, $lang, $element_name);
+  }
+  if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
+    _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['aspot_elements']);
+  }
+
+  // Adding states to form
+  _usanetwork_aspot_form_add_draggable_elements_states($form, $lang);
+  $form['aspot_draggable_items_data'] = array(
+    '#type' => 'hidden',
+    '#value' => '',
+  );
+  $form['#attached']['js'][] = libraries_get_path('draggable_background') . '/draggable_background.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot.giui.js';
+  $form['#attached']['js'][] = array(
+    'data' => array(
+      'giui_settings' => $previewing_settings
+    ),
+    'type' => 'setting',
+  );
+  $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_aspot') . '/css/usanetwork_aspot.main.css';
+  $form['#validate'][] = 'usanetwork_aspot_validate';
+  $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
 }
 
 /**
@@ -36,33 +96,45 @@ function usanetwork_aspot_validate(&$form, &$form_state) {
     if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && $form_state['values']['field_webm_video_url'][$lang][0]['value'] == '') {
       form_error($form['field_webm_video_url'], t('Webm Video URL is required field when "This is an Animated A-Spot" checked.'));
     }
-    if (isset($form_state['values']['field_mp4_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_mp4_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)){
+    if (isset($form_state['values']['field_mp4_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_mp4_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)) {
       form_error($form['field_mp4_video_url'], t('This is not a correct URL in MP4 Video URL field'));
     }
-    if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_webm_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)){
+    if (isset($form_state['values']['field_webm_video_url'][$lang][0]['value']) && !filter_var($form_state['values']['field_webm_video_url'][$lang][0]['value'], FILTER_VALIDATE_URL)) {
       form_error($form['field_webm_video_url'], t('This is not a correct URL in Webm Video URL field'));
     }
   }
 }
+
+/**
+ * Implements submitting callback for A-Spot page settings.
+ */
+function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state) {
+  $draggable_items_data = !empty($form_state['input']['aspot_draggable_items_data'])
+    ? $form_state['input']['aspot_draggable_items_data']
+    : array();
+  // @TODO: Detect language in correct way
+  $form_state['values']['field_aspot_gi_draggable_data'][LANGUAGE_NONE][0]['value'] = $draggable_items_data;
+}
+
 /**
  * Implements hook_preprocess_node().
  */
 function usanetwork_aspot_preprocess_node(&$vars) {
-  if ($vars['type'] == 'usa_homepage'){
+  if ($vars['type'] == 'usa_homepage') {
     $lang = $vars['language'];
-    if (isset($vars['field_usa_hp_arefs'])){
+    if (isset($vars['field_usa_hp_arefs'])) {
       usanetwork_aspot_aspot_settings($vars['field_usa_hp_arefs'], $lang);
     }
   }
-  if ($vars['type'] == 'tv_show'){
+  if ($vars['type'] == 'tv_show') {
     $lang = $vars['language'];
-    if (isset($vars['field_usa_tv_a_spot'][$lang])){
+    if (isset($vars['field_usa_tv_a_spot'][$lang])) {
       usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang);
     }
   }
   if ($vars['type'] == 'usanetwork_aspot') {
     $current_path = current_path();
-    if ($current_path == 'node/'.$vars['nid']) {
+    if ($current_path == 'node/' . $vars['nid']) {
       $lang = $vars['language'];
       if ($vars['field_animated_a_spot'][$lang][0]['value']) {
         $vars['aspot_page'] = TRUE;
@@ -155,13 +227,14 @@ function usanetwork_aspot_theme() {
   );
 }
 
-function usanetwork_aspot_aspot_settings($aspot_array, $lang){
-  foreach($aspot_array as $aspot){
+function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
+  foreach ($aspot_array as $aspot) {
     $node = node_load($aspot['target_id']);
     if ($node->field_animated_a_spot[$lang][0]['value']) {
-      if(drupal_is_front_page()){
+      if (drupal_is_front_page()) {
         $show = 'home';
-      } else {
+      }
+      else {
         $show = drupal_get_path_alias();
       }
       $mp4_url = $node->field_mp4_video_url[$lang][0]['value'];
@@ -183,12 +256,15 @@ function _usanetwork_aspot_carousel_block() {
 
   if (!empty($carousel_nodes)) {
     foreach ($carousel_nodes as $carousel_node) {
+      $aspot_link_field = field_get_items('node', $carousel_node['aspot_node'], 'field_usa_aspot_link');
+      $aspot_image_field = field_get_items('node', $carousel_node['aspot_node'], 'field_usa_aspot_desktop');
+
       $theme_array = array(
-        'show_url' => url('node/' . $carousel_node->nid),
-        'show_class' => 'show-undefined',
-        'show_poster_url' => 'http://placehold.it/666x444',
+        'show_url' => url($aspot_link_field[0]['url']),
+        'show_class' => usanetwork_tv_shows_color_show_css_class($carousel_node['show_node']),
+        'show_poster_url' => file_create_url($aspot_image_field[0]['uri']),
         'show_title_prefix' => t('HC title prefix'),
-        'show_title' => $carousel_node->title,
+        'show_title' => $carousel_node['show_node']->title,
       );
 
       // @TODO: Add logic for timer
@@ -237,9 +313,210 @@ function _usanetwork_aspot_carousel_block() {
 
 function _usanetwork_aspot_get_homepage_aspot_nodes() {
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+  $found_nodes = array();
 
   if (!empty($homepage['node'])) {
     $homepage_nids = array_keys($homepage['node']);
     $homepage_node = node_load($homepage_nids[0]);
+
+    $arefs = field_get_items('node', $homepage_node, 'field_usa_hp_arefs');
+
+    if (!empty($arefs)) {
+      foreach ($arefs as $aref) {
+        $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
+        $aspot_node = $aref['entity'];
+        $show_node = node_load($show_node_field[0]['target_id']);
+
+        $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(
+          'aspot_node' => $aspot_node,
+          'show_node' => $show_node,
+        );
+      }
+    }
   }
+
+  return $found_nodes;
+}
+
+/**
+ * Returns value of form field on node altering.
+ */
+function _usanetwork_aspot_get_form_state_field_value(
+  $form_state, $field_name, $language, $default = ''
+) {
+  $field_item = !empty($form_state['node']->$field_name)
+    ? $form_state['node']->$field_name
+    : array();
+  if (!empty($field_item)) {
+    return reset(reset($field_item[$language]));
+  }
+  return $default;
+}
+
+/**
+ * Returns default settings for draggable UI element.
+ */
+function _usanetwork_aspot_get_draggable_ui_default_settings_element() {
+  return array(
+    'value' => NULL,
+    'enabled' => FALSE,
+    'percentX' => NULL,
+    'percentY' => NULL,
+    'invertX' => NULL,
+    'inverY' => NULL,
+  );
+}
+
+/**
+ * Fills draggable UI element from settings array. The list of default fields
+ * are presented in "_usanetwork_aspot_get_draggable_ui_default_settings_element()".
+ */
+function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
+  if (is_array($setting)) {
+    $setting = (object) $setting;
+  }
+  $element = _usanetwork_aspot_get_draggable_ui_default_settings_element();
+  if (!empty($setting->value)) {
+    $element['value'] = $setting->value;
+  }
+  foreach ($setting as $setting_attribute => $value) {
+    if (!empty($setting_attribute)) {
+      $element[$setting_attribute] = $value;
+    }
+  }
+  return $element;
+}
+
+/**
+ * Checks if draggable element is enabled in administrative panel.
+ */
+function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $language, $element_name) {
+  foreach ($element_field[$language] as $element_field_setting) {
+    if (!empty($element_field_setting['value']) && $element_field_setting['value'] == $element_name) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Fills call to action buttons with multiple items supporting.
+ */
+function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
+  if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
+    $cta_buttons = $form_node->field_aspot_gi_cta[$language];
+    foreach ($cta_buttons as $cta_button_index => $cta_button) {
+      $new_button_id = 'cta_button_' . $cta_button_index;
+      $new_button_title = 'CTA ' . $cta_button['title'];
+      $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_gi, $language, 'cta_button');
+      if (isset($aspot_elements[$new_button_id])) {
+        $aspot_elements[$new_button_id]['value'] = $new_button_title;
+        $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
+      }
+      else {
+        $aspot_elements[$new_button_id] = _usanetwork_aspot_fill_draggable_ui_settings_element(array(
+          'value' => 'CTA ' . $new_button_title,
+          'enabled' => $new_button_enabled,
+          'percentX' => 'auto',
+          'percentY' => 'auto',
+          'invertX' => NULL,
+          'inverY' => NULL,
+        ));
+      }
+    }
+  }
+}
+
+/**
+ * Returns number of CTA buttons that are presented in administrative panel.
+ */
+function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $language) {
+  if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
+    return count($form_node->field_aspot_gi_cta[$language]);
+  }
+  return 0;
+}
+
+/**
+ * Generates UI input name for forms with #TREE = TRUE.
+ */
+function _usanetwork_aspot_form_get_generated_multiple_field_name($field_name, $field_item_name = NULL, $language = LANGUAGE_NONE) {
+  return ':input[name="' . $field_name . '[' . $language . '][' . $field_item_name . ']"]';
+}
+
+/**
+ * Provides altering rules for draggable items.
+ */
+function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
+  return array(
+    'field_aspot_gi_title_prefix' => array(
+      'altering_element' => 'field_aspot_gi_title_prefix',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'title_prefix',
+    ),
+    'field_aspot_gi_title' => array(
+      'altering_element' => 'field_aspot_gi_title',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'title',
+    ),
+    'field_aspot_gi_cd_prefix' => array(
+      'altering_element' => 'field_aspot_gi_cd_prefix',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'countdown_prefix',
+    ),
+    'field_aspot_gi_cta' => array(
+      'altering_element' => 'field_aspot_gi_cta',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'cta_button',
+    ),
+  );
+}
+
+/**
+ * Adds states for draggable items.
+ */
+function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language = LANGUAGE_NONE) {
+  $altering_elements_rules = _usanetwork_aspot_form_get_draggable_elements_states_rules();
+  if (!empty($altering_elements_rules)) {
+    foreach ($altering_elements_rules as $altering_elements_rule) {
+      $ae_name = $altering_elements_rule['altering_element'];
+      $ae_state_name = $altering_elements_rule['state_name'];
+      $ae_field_name = $altering_elements_rule['field_name'];
+      $ae_field_item_name = $altering_elements_rule['field_item_name'];
+      $ae_generated_field_name = _usanetwork_aspot_form_get_generated_multiple_field_name($ae_field_name, $ae_field_item_name, $language);
+      $form[$ae_name]['#states'][$ae_state_name][$ae_generated_field_name] = array(
+        'checked' => TRUE,
+      );
+    }
+  }
+}
+
+function _usanetwork_aspot_get_show_nid($node) {
+  $field_show = field_get_items('node', $node, 'field_show');
+  if (!empty($field_show)) {
+    return reset(reset($field_show));
+  }
+  return NULL;
+}
+
+function _usanetwork_aspot_get_nearest_episode_airtime($show_nid) {
+  $query = db_select('field_data_field_show', 's');
+  $query->fields('f', array('fid'));
+  $query->fields('v', array('airdate'));
+  $query->leftJoin('file_managed', 'f', 's.entity_id=f.fid');
+  $query->leftJoin('mpx_video', 'v', 'f.fid=v.fid');
+  $query->condition('s.field_show_target_id', $show_nid);
+  $query->condition('s.entity_type', 'file');
+  $query->condition('v.airdate', REQUEST_TIME, '>');
+  $query->orderBy('v.airdate', 'ASC');
+  $query->range(0, 1);
+  $result = $query->execute()->fetch();
+  if ($result) {
+    return $result->airdate;
+  }
+  return NULL;
 }

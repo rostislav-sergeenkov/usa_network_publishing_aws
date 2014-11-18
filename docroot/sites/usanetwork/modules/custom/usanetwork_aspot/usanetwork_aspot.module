@@ -81,18 +81,51 @@ function usanetwork_aspot_preprocess_node(&$vars) {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function usanetwork_aspot_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_aspot_carousel'] = array(
+    'info' => t('ASpot: carousel'),
+    'cache' => DRUPAL_NO_CACHE, // @TODO: change to cacheable
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_aspot_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_aspot_carousel':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_aspot_carousel_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
  * Implements hook_theme().
  */
 function usanetwork_aspot_theme() {
   return array(
     'usanetwork_aspot_carousel_slide' => array(
       'variables' => array(
+        'show_url' => NULL,
         'show_class' => NULL,
         'show_poster_url' => NULL,
         'show_title_prefix' => NULL,
         'show_title' => NULL,
-        'show_timer_prefix' => NULL,
-        'show_timer_value' => NULL,
+        'show_timer' => array(
+          'title_prefix' => NULL,
+          'value' => '',
+        ),
         'cta_buttons' => array(
           0 => array(
             'url' => NULL,
@@ -112,6 +145,12 @@ function usanetwork_aspot_theme() {
         ),
       ),
       'template' => 'templates/usanetwork-aspot-carousel-slide',
+    ),
+    'usanetwork_aspot_carousel' => array(
+      'variables' => array(
+        'slides' => array(),
+      ),
+      'template' => 'templates/usanetwork-aspot-carousel',
     ),
   );
 }
@@ -135,5 +174,72 @@ function usanetwork_aspot_aspot_settings($aspot_array, $lang){
       drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
       break(1);
     }
+  }
+}
+
+function _usanetwork_aspot_carousel_block() {
+  $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes();
+  $output_array = array();
+
+  if (!empty($carousel_nodes)) {
+    foreach ($carousel_nodes as $carousel_node) {
+      $theme_array = array(
+        'show_url' => url('node/' . $carousel_node->nid),
+        'show_class' => 'show-undefined',
+        'show_poster_url' => 'http://placehold.it/666x444',
+        'show_title_prefix' => t('HC title prefix'),
+        'show_title' => $carousel_node->title,
+      );
+
+      // @TODO: Add logic for timer
+      if (TRUE) {
+        $theme_array['show_timer'] = array(
+          'title_prefix' => t('Starts in'),
+          'value' => 10000,
+        );
+      }
+
+      // @TODO: Add logic for call to action buttons
+      if (TRUE) {
+        $theme_array['cta_buttons'] = array(
+          0 => array(
+            'url' => 'http://google.ru?q=How+does+cost+IS-6',
+            'text' => t('Try with google!'),
+          ),
+        );
+      }
+
+      // @TODO: Add logic for social meter
+      if (FALSE) {
+        $theme_array['social_meter'] = array(
+          'value' => NULL,
+          'multiplier' => NULL,
+          'tag' => NULL,
+          'hot' => NULL,
+          'link' => array(
+            'url' => NULL,
+            'link' => NULL,
+            'class' => NULL,
+          ),
+        );
+      }
+
+      $output_array[] = theme('usanetwork_aspot_carousel_slide', $theme_array);
+    }
+  }
+
+  if (!empty($output_array)) {
+    return theme('usanetwork_aspot_carousel', array('slides' => $output_array));
+  }
+
+  return '';
+}
+
+function _usanetwork_aspot_get_homepage_aspot_nodes() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if (!empty($homepage['node'])) {
+    $homepage_nids = array_keys($homepage['node']);
+    $homepage_node = node_load($homepage_nids[0]);
   }
 }

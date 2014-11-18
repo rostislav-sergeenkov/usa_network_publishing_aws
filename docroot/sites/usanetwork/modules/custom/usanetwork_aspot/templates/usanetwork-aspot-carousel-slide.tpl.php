@@ -6,7 +6,7 @@
 <div class="slide">
   <div class="wrp">
     <div class="node usanetwork-aspot <?php print $show_class; ?>">
-      <a href="show.html" target="_self">
+      <a href="<?php print $show_url; ?>" target="_self">
         <img src="<?php print $show_poster_url; ?>">
       </a>
       <div class="slide-content">
@@ -14,10 +14,12 @@
           <div class="meta">
             <div class="new-episode"><?php print $show_title_prefix; ?></div>
             <div class="show-title"><?php print $show_title; ?></div>
-            <!--div class="show-timer">
-                <div class="start"><?php print $show_timer_prefix; ?></div>
-                <div class="timer" data-timer="<?php print $show_timer_value; ?>"></div>
-            </div-->
+            <?php if (!empty($show_timer)): ?>
+              <div class="show-timer">
+                <div class="start"><?php print $show_timer['title_prefix']; ?></div>
+                <div class="timer" data-timer="<?php print $show_timer['value']; ?>"></div>
+              </div>
+            <?php endif; ?>
             <?php if (!empty($cta_buttons)): ?>
               <?php foreach ($cta_buttons as $cta_button): ?>
                 <div class="cta-link"><a href="<?php print $cta_button['url']; ?>" class="show-color hover-avail"><?php print $cta_button['text']; ?></a></div>

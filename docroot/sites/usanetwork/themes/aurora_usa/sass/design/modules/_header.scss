@@ -1049,6 +1049,9 @@ header {
             line-height: 18px;
             text-decoration: none;
             text-transform: uppercase;
+            &:hover{
+              text-decoration: underline;
+            }
             &:after {
               color: #ffffff;
               content: "\e608";
@@ -1060,6 +1063,7 @@ header {
               position: absolute;
               top: 50%;
             }
+            
           }
         }
       }
@@ -1185,6 +1189,9 @@ header {
             line-height: 18px;
             text-decoration: none;
             text-transform: uppercase;
+            &:hover{
+              text-decoration: underline;
+            }
             &:after {
               color: #ffffff;
               content: "\e608";

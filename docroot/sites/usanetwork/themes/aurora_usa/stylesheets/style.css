@@ -4775,6 +4775,9 @@ header .tab-item.full-episode-tab .latest-full-episodes .more-link a {
   text-decoration: none;
   text-transform: uppercase;
 }
+header .tab-item.full-episode-tab .latest-full-episodes .more-link a:hover {
+  text-decoration: underline;
+}
 header .tab-item.full-episode-tab .latest-full-episodes .more-link a:after {
   color: #ffffff;
   content: "\e608";
@@ -4912,6 +4915,9 @@ header .tab-item.schedule-tab .primetime-panel .more-link a {
   line-height: 18px;
   text-decoration: none;
   text-transform: uppercase;
+}
+header .tab-item.schedule-tab .primetime-panel .more-link a:hover {
+  text-decoration: underline;
 }
 header .tab-item.schedule-tab .primetime-panel .more-link a:after {
   color: #ffffff;

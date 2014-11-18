@@ -1044,11 +1044,14 @@ header {
           }
           a {
             color: #ffffff;
-            font-family: $avantgarde-demi;
+            font-family: $avantgarde-medium;
             font-size: 12px;
             line-height: 18px;
             text-decoration: none;
             text-transform: uppercase;
+            &:hover{
+              text-decoration: underline;
+            }
             &:after {
               color: #ffffff;
               content: "\e608";
@@ -1060,6 +1063,7 @@ header {
               position: absolute;
               top: 50%;
             }
+
           }
         }
       }
@@ -1170,29 +1174,35 @@ header {
           position: absolute;
           width: 1px;
         }
-        .more {
-          bottom: -14px;
-          color: #ffffff;
-          font-family: $avantgarde-medium;
-          font-size: 12px;
-          display: block;
-          position: absolute;
-          text-decoration: none;
-          text-transform: uppercase;
+        .more-link {
+          bottom: -25px;
           right: 0px;
-          &:hover {
-            text-decoration: underline;
+          padding-right: 20px;
+          position: absolute;
+          @include breakpoint($bp-1024-width) {
+            margin-right: 15px;
           }
-          &:before {
+          a {
             color: #ffffff;
-            content: "\e608";
-            display: block;
-            font-family: $ico-font;
-            font-size: 10px;
-            margin-top: -4px;
-            position: absolute;
-            right: -14px;
-            top: 50%;
+            font-family: $avantgarde-medium;
+            font-size: 12px;
+            line-height: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            &:hover{
+              text-decoration: underline;
+            }
+            &:after {
+              color: #ffffff;
+              content: "\e608";
+              display: block;
+              font-family: $ico-font;
+              font-size: 10px;
+              right: 0;
+              margin-top: -8px;
+              position: absolute;
+              top: 50%;
+            }
           }
         }
         .pane-title {

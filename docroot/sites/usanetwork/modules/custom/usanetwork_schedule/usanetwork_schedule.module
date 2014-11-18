@@ -165,7 +165,12 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '<=');
   $query->condition('s.end_time', $time, '>');
-  $query->condition('n.type', 'tv_show');
+
+  $db_or = db_or();
+  $db_or->condition('n.type', 'tv_show');
+  $db_or->condition('n.type', NULL, 'IS NULL');
+
+  $query->condition($db_or);
   $query->orderBy('s.start_time', $order);
   $query->range(0, $limit);
 
@@ -212,7 +217,7 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
   $query->fields('s', array());
   $query->fields('n', array('nid'));
   $query->condition('s.start_time', $time, '>');
-  $query->condition('n.type', 'tv_show');
+
   $query->orderBy('s.start_time', 'ASC');
   $query->range(0, 1);
 

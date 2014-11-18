@@ -4769,7 +4769,7 @@ header .tab-item.full-episode-tab .latest-full-episodes .more-link {
 }
 header .tab-item.full-episode-tab .latest-full-episodes .more-link a {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
   text-decoration: none;
@@ -4910,7 +4910,7 @@ header .tab-item.schedule-tab .primetime-panel .more-link {
 }
 header .tab-item.schedule-tab .primetime-panel .more-link a {
   color: #ffffff;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 18px;
   text-decoration: none;

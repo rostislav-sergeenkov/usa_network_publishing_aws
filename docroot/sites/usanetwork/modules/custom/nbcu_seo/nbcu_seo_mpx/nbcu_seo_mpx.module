@@ -95,7 +95,7 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           if (!empty($duration)) {
             $duration = strip_tags($duration['value']);
             if (!empty($duration)) {
-              $element[$delta]['duration'] = strip_tags($duration['value']);
+              $element[$delta]['duration'] = $duration;
             }
           }
         }

@@ -398,7 +398,7 @@ function _usanetwork_menu_main_menu_block() {
 function _usanetwork_menu_show_menu_featured_block() {
   $output = array();
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-  //usanetwork_tv_shows_color_show_css_class
+  
   if (!empty($homepage['node'])) {
     $node_data = reset($homepage['node']);
     $node = node_load($node_data->nid);

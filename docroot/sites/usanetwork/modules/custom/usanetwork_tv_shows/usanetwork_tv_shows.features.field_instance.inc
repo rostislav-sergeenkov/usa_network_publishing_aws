@@ -11020,6 +11020,164 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
+      'weight' => 61,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_usa_link_googleplus'
+  $field_instances['node-tv_show-field_usa_link_googleplus'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 133,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_link_googleplus',
+    'label' => 'Google+ page',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'urlwidget',
+      'weight' => 66,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_usa_link_instagram'
+  $field_instances['node-tv_show-field_usa_link_instagram'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 131,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_link_instagram',
+    'label' => 'Instagram page',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'urlwidget',
       'weight' => 63,
     ),
   );
@@ -11114,7 +11272,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 61,
+      'weight' => 64,
     ),
   );
 
@@ -11303,6 +11461,85 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'settings' => array(),
       'type' => 'urlwidget',
       'weight' => 62,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_usa_link_youtube'
+  $field_instances['node-tv_show-field_usa_link_youtube'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 132,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_link_youtube',
+    'label' => 'Youtube page',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'urlwidget',
+      'weight' => 65,
     ),
   );
 
@@ -12264,12 +12501,14 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Featured Video Promos');
   t('Floodlight Category');
   t('Floodlight Type');
+  t('Google+ page');
   t('H1');
   t('Hide from cast carousel');
   t('Hide from social follow block');
   t('IDENTITYMANAGERURL');
   t('ITEMSPERPAGE');
   t('IdeaMelt action type');
+  t('Instagram page');
   t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Logo');
@@ -12332,6 +12571,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('URL Params');
   t('Use Eastern time and a 24-hour clock.');
   t('Used in show carousels.');
+  t('Youtube page');
   t('show_links');
   t('slideshowSpeed');
   t('Related shows');

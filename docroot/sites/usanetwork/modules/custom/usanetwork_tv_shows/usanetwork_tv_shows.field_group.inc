@@ -1002,6 +1002,9 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_usa_link_pinterest',
       3 => 'field_usa_link_tumblr',
       4 => 'field_usa_link_twitter',
+      5 => 'field_usa_link_instagram',
+      6 => 'field_usa_link_youtube',
+      7 => 'field_usa_link_googleplus',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

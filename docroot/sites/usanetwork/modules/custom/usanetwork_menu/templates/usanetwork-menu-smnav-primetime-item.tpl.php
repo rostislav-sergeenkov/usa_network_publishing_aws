@@ -14,11 +14,11 @@
  */
 ?>
 
-<div class="schedule-item show-color-border <?php print !empty($show_title) ? (' show-' . strtolower($show_title)) : ''; ?>">
+<div class="schedule-item show-color-border <?php print $show_class; ?>">
   <?php if (!empty($time)): ?>
     <div class="time">
       <span><?php print $time['value']; ?></span>
-      <?php print $time['interval']; ?>
+      <?php print $time['interval']; ?> <?php print t('ET'); ?>
     </div>
   <?php endif; ?>
   <div class="episode-info">
@@ -32,8 +32,10 @@
   <div class="icons-block">
     <a class="live icon" href="#"></a>
     <?php if (!empty($syndicated_url)): ?>
-      <a class="episode-description icon" href="<?php print $syndicated_url; ?>" target="_blank"></a>
+      <a class="calendar-reminder icon" href="<?php print $syndicated_url; ?>" target="_blank"></a>
     <?php endif; ?>
-    <a class="calendar-reminder icon" href="#"></a>
+    <?php if (!empty($episode_full_url)): ?>
+      <a class="episode-description icon" href="<?php print $episode_full_url; ?>"></a>
+    <?php endif; ?>
   </div>
 </div>

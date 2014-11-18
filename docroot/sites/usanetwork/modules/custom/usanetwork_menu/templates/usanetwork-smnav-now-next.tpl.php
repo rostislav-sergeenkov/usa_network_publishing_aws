@@ -20,7 +20,7 @@
 <?php if (!empty($on_now) && !empty($up_next)): ?>
   <div class="on-now-panel">
     <?php if (!empty($on_now)): ?>
-      <div class="node node-usanetwork-promo on-now show-law-and-order">
+      <div class="node node-usanetwork-promo on-now <?php print $on_now['show_class']; ?>">
         <div class="on-now-panel-title">
           <h2><?php print t('On now'); ?></h2>
         </div>
@@ -44,14 +44,16 @@
         </div>
         <div class="icons-block">
           <?php if (!empty($on_now['syndicated_url'])): ?>
-            <a class="episode-description icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
+            <a class="calendar-reminder icon" href="<?php print $on_now['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
-          <a class="calendar-reminder icon" href="#"></a>
+          <?php if (!empty($on_now['episode_full_url'])): ?>
+            <a class="episode-description icon" href="<?php print $on_now['episode_full_url']; ?>"></a>
+          <?php endif; ?>
         </div>
       </div>
     <?php endif; ?>
     <?php if (!empty($up_next)): ?>
-      <div class="node node-usanetwork-promo up-next show-law-and-order">
+      <div class="node node-usanetwork-promo up-next <?php print $on_now['show_class']; ?>">
         <div class="on-now-panel-title">
           <h2><?php print t('Up next'); ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>
@@ -78,9 +80,11 @@
         </div>
         <div class="icons-block">
           <?php if (!empty($up_next['syndicated_url'])): ?>
-            <a class="episode-description icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
+            <a class="calendar-reminder icon" href="<?php print $up_next['syndicated_url']; ?>" target="_blank"></a>
           <?php endif; ?>
-          <a class="calendar-reminder icon" href="#"></a>
+          <?php if (!empty($up_next['episode_full_url'])): ?>
+            <a class="episode-description icon" href="<?php print $up_next['episode_full_url']; ?>"></a>
+          <?php endif; ?>
         </div>
       </div>
     <?php endif; ?>

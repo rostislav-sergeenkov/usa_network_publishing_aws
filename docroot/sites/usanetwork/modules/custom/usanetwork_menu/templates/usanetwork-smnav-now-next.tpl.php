@@ -20,7 +20,7 @@
 <?php if (!empty($on_now) && !empty($up_next)): ?>
   <div class="on-now-panel">
     <?php if (!empty($on_now)): ?>
-      <div class="node node-usanetwork-promo on-now show-law-and-order">
+      <div class="node node-usanetwork-promo on-now <?php print $on_now['show_class']; ?>">
         <div class="on-now-panel-title">
           <h2><?php print t('On now'); ?></h2>
         </div>
@@ -53,7 +53,7 @@
       </div>
     <?php endif; ?>
     <?php if (!empty($up_next)): ?>
-      <div class="node node-usanetwork-promo up-next show-law-and-order">
+      <div class="node node-usanetwork-promo up-next <?php print $on_now['show_class']; ?>">
         <div class="on-now-panel-title">
           <h2><?php print t('Up next'); ?></h2>
           <?php if (!empty($up_next['time']) && !empty($up_next['time_daypart'])): ?>

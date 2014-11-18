@@ -14,7 +14,7 @@
  */
 ?>
 
-<div class="schedule-item show-color-border <?php print !empty($show_title) ? (' show-' . strtolower($show_title)) : ''; ?>">
+<div class="schedule-item show-color-border <?php print $show_class; ?>">
   <?php if (!empty($time)): ?>
     <div class="time">
       <span><?php print $time['value']; ?></span>

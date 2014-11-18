@@ -631,8 +631,10 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
   $data = usanetwork_tv_schedule_get_running_show_ajax($user_timezone, $periods, FALSE);
 
   if ($data) {
-    $theme_variables = array(
-      'on_now' => array(
+    $theme_variables = array();
+
+    if (!empty($data['now'])) {
+      $theme_variables['on_now'] = array(
         'image' => !empty($data['now']->nid)
           ? theme('image', array(
             'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['now']->nid),
@@ -656,8 +658,10 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'show_class' => !empty($data['now']->nid)
           ? usanetwork_tv_shows_color_show_css_class($data['now']->nid)
           : 'show-undefined',
-      ),
-      'up_next' => array(
+      );
+    }
+    if (!empty($data['next'])) {
+      $theme_variables['up_next'] = array(
         'image' => !empty($data['next']->nid)
           ? theme('image', array(
             'path' => _usanetwork_menu_show_menu_get_image_preview_url($data['next']->nid),
@@ -687,8 +691,8 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'show_class' => !empty($data['next']->nid)
           ? usanetwork_tv_shows_color_show_css_class($data['next']->nid)
           : 'show-undefined',
-      ),
-    );
+      );
+    }
 
     return drupal_json_output(array(
       'html' => theme('usanetwork_menu_smnav_now_next', $theme_variables),
@@ -703,8 +707,9 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
  */
 function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
   $data = usanetwork_tv_schedule_get_running_show_ajax($user_timezone, 'now', FALSE);
+  $theme_variables = array();
 
-  if ($data) {
+  if ($data && isset($data['now'])) {
     $theme_variables = array(
       'image' => !empty($data['now']->nid)
         ? theme('image', array(
@@ -732,11 +737,11 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
         ))
         : '',
     );
-
-    return drupal_json_output(array(
-      'html' => theme('usanetwork_menu_smnav_watch_live', $theme_variables),
-    ));
   }
+
+  return drupal_json_output(array(
+    'html' => theme('usanetwork_menu_smnav_watch_live', $theme_variables),
+  ));
 
   return drupal_json_output(NULL);
 }

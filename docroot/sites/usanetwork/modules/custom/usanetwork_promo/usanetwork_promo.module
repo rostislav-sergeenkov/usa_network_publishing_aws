@@ -58,3 +58,37 @@ function usanetwork_promo_media_theplatform_mpx_import_media($op, $media_item, $
     }
   }
 }
+
+/**
+ * Helper for getting associated content for promo
+ * @param type $promo - promo id or object
+ * @return array with type of associated content and content
+ */
+function _usanetwork_promo_return_associated_content($promo) {
+  if (!is_object($promo)) {
+    $promo = node_load($promo);
+  }
+  
+  $assoc_content = reset(field_get_items('node', $promo, 'field_promo_assoc_content')); 
+  if ($assoc_content) {
+    $assoc_content_node = node_load($assoc_content['target_id']);
+    $assoc_content_type = $assoc_content_node->type;
+    $assoc_content_value = $assoc_content_node;
+  } else {
+    $assoc_video = reset(field_get_items('node', $promo, 'field_promo_assoc_video'));
+    if ($assoc_video) {
+      $assoc_video_file = file_load($assoc_video['target_id']);
+      $assoc_content_type = $assoc_video_file->filemime;
+      $assoc_content_value = $assoc_video_file;
+    } else {
+      //if no associated content, returns the same promo
+      $assoc_content_type = 'default_promo';
+      $assoc_content_value = $promo;
+    }
+  } 
+  
+  return array(
+    'type' => $assoc_content_type,
+    'content' => $assoc_content_value,
+  );
+}

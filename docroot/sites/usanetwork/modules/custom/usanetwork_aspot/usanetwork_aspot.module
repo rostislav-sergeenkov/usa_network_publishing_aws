@@ -393,6 +393,10 @@ function _usanetwork_aspot_get_homepage_aspot_nodes() {
 
     if (!empty($arefs)) {
       foreach ($arefs as $aref) {
+        if (empty($aref['entity'])) {
+          $aref['entity'] = node_load($aref['target_id']);
+        }
+        
         $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
         $aspot_node = $aref['entity'];
 

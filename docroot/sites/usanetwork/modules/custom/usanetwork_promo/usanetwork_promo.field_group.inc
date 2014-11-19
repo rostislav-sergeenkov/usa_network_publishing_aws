@@ -27,7 +27,8 @@ function usanetwork_promo_field_group_info() {
       1 => 'field_show',
       2 => 'field_target',
       3 => 'field_promo_assoc_video',
-      4 => 'title',
+      4 => 'field_promo_assoc_content',
+      5 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

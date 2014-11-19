@@ -202,8 +202,12 @@ function usanetwork_tv_shows_display_block_view($delta) {
   $block = array();
   switch ($delta) {
     case 'usanetwork_tv_shows_submenu':
-
-      $show = node_load(arg(1));
+      
+      $show = menu_get_object();
+      
+      if (!isset($show->type) && $show->type != 'tv_show') {
+        return '';
+      }      
 
       $display_title = field_get_items('node', $show, 'field_display_title');
       if (is_array($display_title) && !empty($display_title[0]['safe_value'])) {

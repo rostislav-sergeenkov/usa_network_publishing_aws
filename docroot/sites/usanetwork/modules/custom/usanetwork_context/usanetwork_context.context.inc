@@ -124,18 +124,7 @@ function usanetwork_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'usanetwork_tv_shows_display-usanetwork_tv_shows_submenu' => array(
-          'module' => 'usanetwork_tv_shows_display',
-          'delta' => 'usanetwork_tv_shows_submenu',
-          'region' => 'header',
-          'weight' => '10',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
 
   // Translatables

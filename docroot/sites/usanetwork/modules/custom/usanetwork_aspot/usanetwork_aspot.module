@@ -267,6 +267,10 @@ function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
 }
 
 function _usanetwork_aspot_carousel_block() {
+  if (arg(0) && arg(0) == 'admin') {
+    return '';
+  }
+
   $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes();
   $output_array = array();
 
@@ -308,16 +312,6 @@ function _usanetwork_aspot_carousel_block() {
             : '',
         );
       }
-
-      // @TODO: Add logic for call to action buttons
-      /*if (TRUE) {
-        $theme_array['cta_buttons'] = array(
-          0 => array(
-            'url' => 'http://google.ru?q=How+does+cost+IS-6',
-            'text' => t('Try with google!'),
-          ),
-        );
-      }*/
 
       $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
 
@@ -388,6 +382,11 @@ function _usanetwork_aspot_get_homepage_aspot_nodes() {
 
   if (!empty($homepage['node'])) {
     $homepage_nids = array_keys($homepage['node']);
+
+    if (empty($homepage_nids[0])) {
+      return array();
+    }
+
     $homepage_node = node_load($homepage_nids[0]);
 
     $arefs = field_get_items('node', $homepage_node, 'field_usa_hp_arefs');
@@ -396,6 +395,11 @@ function _usanetwork_aspot_get_homepage_aspot_nodes() {
       foreach ($arefs as $aref) {
         $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
         $aspot_node = $aref['entity'];
+
+        if (empty($show_node_field[0]['target_id'])) {
+          continue;
+        }
+
         $show_node = node_load($show_node_field[0]['target_id']);
 
         $found_nodes['S' . $show_node->nid . '_A' . $aspot_node->nid] = array(

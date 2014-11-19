@@ -604,6 +604,10 @@ function _usanetwork_menu_show_menu_get_current_episode_node() {
  * Renders "On now & Up next" block.
  */
 function _usanetwork_menu_show_menu_now_and_next_block() {
+  if (arg(0) && arg(0) == 'admin') {
+    return '';
+  }
+
   $block_form = array();
 
   $spinner_options = array(
@@ -750,6 +754,10 @@ function usanetwork_menu_render_watch_live_show_ajax($user_timezone) {
  * Renders "Watch Live" block.
  */
 function _usanetwork_menu_show_menu_watch_live_block() {
+  if (arg(0) && arg(0) == 'admin') {
+    return '';
+  }
+
   $block_form = array();
 
   $spinner_options = array(

@@ -23,13 +23,16 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   );
   $airdate = NULL;
   $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
+
   if ($show_nid) {
     $airdate = _usanetwork_aspot_get_nearest_episode_airtime($show_nid);
   }
+
   $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
   if (!empty($draggable_items_data)) {
     $draggable_items_data = json_decode($draggable_items_data);
   }
+
   $previewing_settings = array(
     'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_bg_offset', $lang, 0),
     'bg_offset_width' => 370,
@@ -54,6 +57,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     ),
     'airdate' => $airdate,
   );
+
   foreach ($draggable_items_data as $element_name => $element) {
     if (isset($previewing_settings['aspot_elements'][$element_name]['value'])) {
       $element->value = $previewing_settings['aspot_elements'][$element_name]['value'];
@@ -109,11 +113,15 @@ function usanetwork_aspot_validate(&$form, &$form_state) {
  * Implements submitting callback for A-Spot page settings.
  */
 function usanetwork_aspot_submit_draggable_ui_items_submit(&$form, &$form_state) {
+  $form_language = isset($form_state['values']['language'])
+    ? $form_state['values']['language']
+    : LANGUAGE_NONE;
+
   $draggable_items_data = !empty($form_state['input']['aspot_draggable_items_data'])
     ? $form_state['input']['aspot_draggable_items_data']
     : array();
-  // @TODO: Detect language in correct way
-  $form_state['values']['field_aspot_gi_draggable_data'][LANGUAGE_NONE][0]['value'] = $draggable_items_data;
+
+  $form_state['values']['field_aspot_gi_draggable_data'][$form_language][0]['value'] = $draggable_items_data;
 }
 
 /**
@@ -158,6 +166,7 @@ function usanetwork_aspot_preprocess_node(&$vars) {
 function usanetwork_aspot_block_info() {
   $blocks = array();
 
+  // Looks like this block only for testing.
   $blocks['usanetwork_aspot_carousel'] = array(
     'info' => t('ASpot: carousel'),
     'cache' => DRUPAL_NO_CACHE, // @TODO: change to cacheable
@@ -173,6 +182,7 @@ function usanetwork_aspot_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
+    // Looks like this block only for testing.
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = _usanetwork_aspot_carousel_block();
@@ -193,11 +203,16 @@ function usanetwork_aspot_theme() {
         'show_class' => NULL,
         'show_poster_url' => NULL,
         'show_title_prefix' => NULL,
+        'show_title_prefix_style' => NULL,
         'show_title' => NULL,
+        'show_title_style' => NULL,
         'show_timer' => array(
           'title_prefix' => NULL,
+          'title_prefix_style' => NULL,
           'value' => '',
+          'countdown_style' => NULL,
         ),
+        'show_image_bg_offset' => NULL,
         'cta_buttons' => array(
           0 => array(
             'url' => NULL,
@@ -213,6 +228,7 @@ function usanetwork_aspot_theme() {
             'url' => NULL,
             'link' => NULL,
             'class' => NULL,
+            'style' => NULL,
           ),
         ),
       ),
@@ -256,47 +272,69 @@ function _usanetwork_aspot_carousel_block() {
 
   if (!empty($carousel_nodes)) {
     foreach ($carousel_nodes as $carousel_node) {
-      $aspot_link_field = field_get_items('node', $carousel_node['aspot_node'], 'field_usa_aspot_link');
-      $aspot_image_field = field_get_items('node', $carousel_node['aspot_node'], 'field_usa_aspot_desktop');
+      $aspot_node_wrapper = entity_metadata_wrapper('node', $carousel_node['aspot_node']);
+      $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
+      $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
+
+      if (!empty($draggable_data)) {
+        $draggable_data = json_decode($draggable_data);
+      }
 
       $theme_array = array(
-        'show_url' => url($aspot_link_field[0]['url']),
+        'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
         'show_class' => usanetwork_tv_shows_color_show_css_class($carousel_node['show_node']),
-        'show_poster_url' => file_create_url($aspot_image_field[0]['uri']),
-        'show_title_prefix' => t('HC title prefix'),
-        'show_title' => $carousel_node['show_node']->title,
+        'show_poster_url' => $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value(),
+        'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
+        'show_title_prefix_style' => isset($draggable_data->title_prefix)
+          ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
+          : '',
+        'show_title' => $aspot_node_wrapper->field_aspot_gi_title->value(),
+        'show_title_style' => isset($draggable_data->title_prefix)
+          ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title)
+          : '',
+        'show_image_bg_offset' => $aspot_node_wrapper->field_aspot_preview_bg_offset->value(),
+        'show_draggable_data' => $aspot_node_wrapper->field_aspot_gi_draggable_data->value(),
       );
 
-      // @TODO: Add logic for timer
-      if (TRUE) {
+      if (in_array('countdown', $enabled_elements)) {
         $theme_array['show_timer'] = array(
-          'title_prefix' => t('Starts in'),
+          'title_prefix' => $aspot_node_wrapper->field_aspot_gi_cd_prefix->value(),
+          'title_prefix_style' => isset($draggable_data->countdown_prefix)
+            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown_prefix)
+            : '',
           'value' => 10000,
+          'countdown_style' => isset($draggable_data->countdown)
+            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown)
+            : '',
         );
       }
 
       // @TODO: Add logic for call to action buttons
-      if (TRUE) {
+      /*if (TRUE) {
         $theme_array['cta_buttons'] = array(
           0 => array(
             'url' => 'http://google.ru?q=How+does+cost+IS-6',
             'text' => t('Try with google!'),
           ),
         );
-      }
+      }*/
 
-      // @TODO: Add logic for social meter
-      if (FALSE) {
+      $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
+
+      if (in_array('social_meter', $enabled_elements)) {
         $theme_array['social_meter'] = array(
-          'value' => NULL,
-          'multiplier' => NULL,
-          'tag' => NULL,
-          'hot' => NULL,
+          'value' => 50,
+          'multiplier' => 'k',
+          'tag' => 'Test',
+          'hot' => 1,
           'link' => array(
-            'url' => NULL,
-            'link' => NULL,
-            'class' => NULL,
+            'url' => 'http://google.ru?q=WAT',
+            'text' => t('Google'),
+            'class' => 'some-class',
           ),
+          'style' => isset($draggable_data->social_meter)
+            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter)
+            : '',
         );
       }
 
@@ -309,6 +347,39 @@ function _usanetwork_aspot_carousel_block() {
   }
 
   return '';
+}
+
+function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
+  $output = "";
+
+  $output .= 'top: ' . $draggable_data_element->top . '; ' .
+    'left: ' . $draggable_data_element->left . '; ';
+
+  return $output;
+}
+
+function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data) {
+  $cta_buttons_theme_data = array();
+
+  if (!empty($aspot_node_wrapper)) {
+    $cta_index = 0;
+
+    foreach ($aspot_node_wrapper->field_aspot_gi_cta as $cta_wrapper_element) {
+      $cta_draggable_name = 'cta_button_' . $cta_index;
+
+      if (!empty($draggable_data->$cta_draggable_name)) {
+        $cta_buttons_theme_data[$cta_index] = array(
+          'url' => $cta_wrapper_element->url->value(),
+          'text' => $cta_wrapper_element->title->value(),
+          'style' => _usanetwork_aspot_get_draggable_style_data($draggable_data->$cta_draggable_name),
+        );
+      }
+
+      $cta_index++;
+    }
+  }
+
+  return $cta_buttons_theme_data;
 }
 
 function _usanetwork_aspot_get_homepage_aspot_nodes() {
@@ -347,9 +418,11 @@ function _usanetwork_aspot_get_form_state_field_value(
   $field_item = !empty($form_state['node']->$field_name)
     ? $form_state['node']->$field_name
     : array();
+
   if (!empty($field_item)) {
     return reset(reset($field_item[$language]));
   }
+
   return $default;
 }
 
@@ -375,15 +448,19 @@ function _usanetwork_aspot_fill_draggable_ui_settings_element($setting) {
   if (is_array($setting)) {
     $setting = (object) $setting;
   }
+
   $element = _usanetwork_aspot_get_draggable_ui_default_settings_element();
+
   if (!empty($setting->value)) {
     $element['value'] = $setting->value;
   }
+
   foreach ($setting as $setting_attribute => $value) {
     if (!empty($setting_attribute)) {
       $element[$setting_attribute] = $value;
     }
   }
+
   return $element;
 }
 
@@ -396,6 +473,7 @@ function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $lang
       return TRUE;
     }
   }
+
   return FALSE;
 }
 
@@ -405,10 +483,12 @@ function _usanetwork_aspot_is_ui_draggable_element_enabled($element_field, $lang
 function _usanetwork_aspot_fill_ui_draggable_cta_buttons($form_node, $language, &$aspot_elements) {
   if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
     $cta_buttons = $form_node->field_aspot_gi_cta[$language];
+
     foreach ($cta_buttons as $cta_button_index => $cta_button) {
       $new_button_id = 'cta_button_' . $cta_button_index;
       $new_button_title = 'CTA ' . $cta_button['title'];
       $new_button_enabled = _usanetwork_aspot_is_ui_draggable_element_enabled($form_node->field_aspot_enabled_gi, $language, 'cta_button');
+
       if (isset($aspot_elements[$new_button_id])) {
         $aspot_elements[$new_button_id]['value'] = $new_button_title;
         $aspot_elements[$new_button_id]['enabled'] = $new_button_enabled;
@@ -434,6 +514,7 @@ function _usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_node, $langu
   if (isset($form_node->field_aspot_gi_cta[$language]) && !empty($form_node->field_aspot_gi_cta[$language])) {
     return count($form_node->field_aspot_gi_cta[$language]);
   }
+
   return 0;
 }
 
@@ -481,6 +562,7 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
  */
 function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language = LANGUAGE_NONE) {
   $altering_elements_rules = _usanetwork_aspot_form_get_draggable_elements_states_rules();
+
   if (!empty($altering_elements_rules)) {
     foreach ($altering_elements_rules as $altering_elements_rule) {
       $ae_name = $altering_elements_rule['altering_element'];
@@ -497,9 +579,11 @@ function _usanetwork_aspot_form_add_draggable_elements_states(&$form, $language 
 
 function _usanetwork_aspot_get_show_nid($node) {
   $field_show = field_get_items('node', $node, 'field_show');
+
   if (!empty($field_show)) {
     return reset(reset($field_show));
   }
+
   return NULL;
 }
 
@@ -515,8 +599,10 @@ function _usanetwork_aspot_get_nearest_episode_airtime($show_nid) {
   $query->orderBy('v.airdate', 'ASC');
   $query->range(0, 1);
   $result = $query->execute()->fetch();
+
   if ($result) {
     return $result->airdate;
   }
+
   return NULL;
 }

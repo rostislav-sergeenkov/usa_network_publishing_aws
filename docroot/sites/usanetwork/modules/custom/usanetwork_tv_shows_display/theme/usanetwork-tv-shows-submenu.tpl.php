@@ -14,6 +14,7 @@
   </div>
 </div>
 <div class="show-menu-tab" style="display: none;">
+  <?php if ($show_menu_video_url): ?>
   <div class="show-menu-video">
     <div class="node node-usanetwork-promo">
       <a href="<?php print $show_menu_video_url; ?>" class="play-icon">
@@ -28,6 +29,7 @@
       </div>
     </div>
   </div>
+  <?php endif; ?>
   <ul class="show-menu menu">
     <?php $i = 0; 
     foreach ($show_menu_tab_items as $show_menu_tab_item): ?>

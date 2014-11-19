@@ -70,8 +70,12 @@ function usanetwork_tv_shows_display_field_formatter_settings_summary($field, $i
 
   if ($display['type'] == 'usanetwork_tv_shows_display_entity_view') {
     $entity_info = entity_get_info($field['settings']['target_type']);
-    $summary[] = t('Rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode']]['label']) ? $entity_info['view modes'][$settings['view_mode']]['label'] : $settings['view_mode']));
-    $summary[] = !empty($settings['links']) ? t('Display links') : t('Do not display links');
+    $summary[] = t('Rendered as @mode', array('@mode' => isset($entity_info['view modes'][$settings['view_mode']]['label'])
+          ? $entity_info['view modes'][$settings['view_mode']]['label']
+          : $settings['view_mode']));
+    $summary[] = !empty($settings['links'])
+        ? t('Display links')
+        : t('Do not display links');
   }
 
   return implode('<br />', $summary);
@@ -101,7 +105,9 @@ function usanetwork_tv_shows_display_field_formatter_view($entity_type, $entity,
 
   // Check if first promo should be large
   $promo_large = reset(field_get_items($entity_type, $entity, 'field_usa_tv_promo_large'));
-  $promo_large = (isset($promo_large['value']) && $promo_large['value']) ? true : false;
+  $promo_large = (isset($promo_large['value']) && $promo_large['value'])
+      ? true
+      : false;
 
   switch ($display['type']) {
     case 'usanetwork_tv_shows_display_entity_view':
@@ -116,7 +122,9 @@ function usanetwork_tv_shows_display_field_formatter_view($entity_type, $entity,
         $entity = clone $item['entity'];
         unset($entity->content);
         // Select view mode according promo large option and item delta
-        $view_mode = ($promo_large && $delta == 0) ? $settings['view_mode_large'] : $settings['view_mode'];
+        $view_mode = ($promo_large && $delta == 0)
+            ? $settings['view_mode_large']
+            : $settings['view_mode'];
         $result[$delta] = entity_view($field['settings']['target_type'], array($item['target_id'] => $entity), $view_mode, $langcode, FALSE);
 
         if (empty($settings['links']) && isset($result[$delta][$field['settings']['target_type']][$item['target_id']]['links'])) {
@@ -145,7 +153,9 @@ function usanetwork_tv_shows_display_preprocess_field(&$variables, $hook) {
 
     // Check if first promo should be large
     $promo_large = reset(field_get_items($field['#entity_type'], $entity, 'field_usa_tv_promo_large'));
-    $promo_large = (isset($promo_large['value']) && $promo_large['value']) ? true : false;
+    $promo_large = (isset($promo_large['value']) && $promo_large['value'])
+        ? true
+        : false;
     if ($promo_large) {
       // Add class to the field
       $variables['classes_array'][] = 'first-promo-large';
@@ -207,7 +217,7 @@ function usanetwork_tv_shows_display_block_view($delta) {
       if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
         $show_tunein = explode(' ', $usa_tv_tune_in_date[0]['value']);
         $show_weekday = array_shift($show_tunein);
-        $show_time = implode(' ', $show_tunein);        
+        $show_time = implode(' ', $show_tunein);
       }
 
       $social_links = array();
@@ -220,7 +230,7 @@ function usanetwork_tv_shows_display_block_view($delta) {
         $social_links[] = l('', $social_url, array('attributes' => array('class' => $social_network)));
       }
 
-      $promo_target = field_get_items('node', $show, 'field_usa_tv_promo_vids');
+      $promo_target = field_get_items('node', $show, 'field_featured_in_menu');
       if ($promo_target) {
         $promo_item = node_load($promo_target[0]['target_id']);
         $promo_image = field_get_items('node', $promo_item, 'field_promo_regular_image');
@@ -246,23 +256,23 @@ function usanetwork_tv_shows_display_block_view($delta) {
         if ($promo_text_line2) {
           $promo_text_caption = $promo_text_line2[0]['value'];
         }
+      }
 
-        $promo_menu_links = field_get_items('node', $show, 'field_show_links');
-        if ($promo_menu_links) {
-          $show_menus = array();
-          foreach ($promo_menu_links as $key => $link) {
-            $show_menu_item = entity_load('field_collection_item', array($link['value']));
-            $show_menu_item_child = field_get_items('field_collection_item', reset($show_menu_item), 'field_child_link');
-            if ($show_menu_item_child) {
-              $show_menus[$key]['child'] = array();
-              foreach ($show_menu_item_child as $child_link) {
-                $show_menus[$key]['child'][] = l($child_link['title'], $base_url . $child_link['url']);
-              }
+      $show_menus = array();
+      $promo_menu_links = field_get_items('node', $show, 'field_show_links');
+      if ($promo_menu_links) {
+        foreach ($promo_menu_links as $key => $link) {
+          $show_menu_item = entity_load('field_collection_item', array($link['value']));
+          $show_menu_item_child = field_get_items('field_collection_item', reset($show_menu_item), 'field_child_link');
+          if ($show_menu_item_child) {
+            $show_menus[$key]['child'] = array();
+            foreach ($show_menu_item_child as $child_link) {
+              $show_menus[$key]['child'][] = l($child_link['title'], $base_url . $child_link['url']);
             }
-            $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
-            if ($show_menu_item_main_link) {
-              $show_menus[$key]['main_link'] = l($show_menu_item_main_link[0]['title'], $base_url . $show_menu_item_main_link[0]['url']);
-            }
+          }
+          $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
+          if ($show_menu_item_main_link) {
+            $show_menus[$key]['main_link'] = l(drupal_ucfirst($show_menu_item_main_link[0]['title']), $base_url . $show_menu_item_main_link[0]['url']);
           }
         }
       }
@@ -276,10 +286,18 @@ function usanetwork_tv_shows_display_block_view($delta) {
         'weekday' => $show_weekday,
         'time' => $show_time,
         'social_icons' => $social_links,
-        'show_menu_video_url' => $promo_link_url,
-        'show_menu_video_img' => $preview_image,
-        'show_menu_video_title' => $promo_text_title,
-        'show_menu_video_caption' => $promo_text_caption,
+        'show_menu_video_url' => isset($promo_link_url)
+            ? $promo_link_url
+            : NULL,
+        'show_menu_video_img' => isset($preview_image)
+            ? $preview_image
+            : NULL,
+        'show_menu_video_title' => isset($promo_text_title)
+            ? $promo_text_title
+            : NULL,
+        'show_menu_video_caption' => isset($promo_text_caption)
+            ? $promo_text_caption
+            : NULL,
         'show_menu_tab_items' => $show_menus,
       ));
       break;

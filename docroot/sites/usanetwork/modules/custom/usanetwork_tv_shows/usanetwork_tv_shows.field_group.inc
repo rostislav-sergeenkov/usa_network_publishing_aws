@@ -641,6 +641,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_show_links',
+      1 => 'field_featured_in_menu',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

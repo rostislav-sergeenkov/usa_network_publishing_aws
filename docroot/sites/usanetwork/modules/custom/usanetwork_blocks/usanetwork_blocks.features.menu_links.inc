@@ -10,15 +10,20 @@
 function usanetwork_blocks_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-apps-services_featured-show-apps:user
-  $menu_links['menu-apps-services_featured-show-apps:user'] = array(
+  // Exported menu link: menu-apps-services_featured-show-apps:node/37016
+  $menu_links['menu-apps-services_featured-show-apps:node/37016'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'node/37016',
+    'router_path' => 'node/%',
     'link_title' => 'Featured Show apps',
     'options' => array(
+      'identifier' => 'menu-apps-services_featured-show-apps:node/37016',
       'attributes' => array(),
-      'identifier' => 'menu-apps-services_featured-show-apps:user',
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -28,15 +33,20 @@ function usanetwork_blocks_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-apps-services_live-tv:user
-  $menu_links['menu-apps-services_live-tv:user'] = array(
+  // Exported menu link: menu-apps-services_live-tv:videos/live
+  $menu_links['menu-apps-services_live-tv:videos/live'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'videos/live',
+    'router_path' => 'videos/live',
     'link_title' => 'Live TV',
     'options' => array(
+      'identifier' => 'menu-apps-services_live-tv:videos/live',
       'attributes' => array(),
-      'identifier' => 'menu-apps-services_live-tv:user',
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -46,33 +56,43 @@ function usanetwork_blocks_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-apps-services_shop:user
-  $menu_links['menu-apps-services_shop:user'] = array(
+  // Exported menu link: menu-apps-services_shop:http://www.nbcuniversalstore.com/?v=usa
+  $menu_links['menu-apps-services_shop:http://www.nbcuniversalstore.com/?v=usa'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'http://www.nbcuniversalstore.com/?v=usa',
+    'router_path' => '',
     'link_title' => 'Shop',
     'options' => array(
+      'identifier' => 'menu-apps-services_shop:http://www.nbcuniversalstore.com/?v=usa',
       'attributes' => array(),
-      'identifier' => 'menu-apps-services_shop:user',
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 0,
+    'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-apps-services_usa-now-viewing-apps:user
-  $menu_links['menu-apps-services_usa-now-viewing-apps:user'] = array(
+  // Exported menu link: menu-apps-services_usa-now-viewing-apps:node/37016
+  $menu_links['menu-apps-services_usa-now-viewing-apps:node/37016'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'node/37016',
+    'router_path' => 'node/%',
     'link_title' => 'USA NOW Viewing Apps',
     'options' => array(
+      'identifier' => 'menu-apps-services_usa-now-viewing-apps:node/37016',
       'attributes' => array(),
-      'identifier' => 'menu-apps-services_usa-now-viewing-apps:user',
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -118,15 +138,20 @@ function usanetwork_blocks_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-apps-services_viewing-schedule:user
-  $menu_links['menu-apps-services_viewing-schedule:user'] = array(
+  // Exported menu link: menu-apps-services_viewing-schedule:schedule
+  $menu_links['menu-apps-services_viewing-schedule:schedule'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
+    'link_path' => 'schedule',
+    'router_path' => 'schedule',
     'link_title' => 'Viewing Schedule',
     'options' => array(
+      'identifier' => 'menu-apps-services_viewing-schedule:schedule',
       'attributes' => array(),
-      'identifier' => 'menu-apps-services_viewing-schedule:user',
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,

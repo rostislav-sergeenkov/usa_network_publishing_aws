@@ -53,6 +53,11 @@ function usanetwork_home_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usanetwork_home_shows_queue'] = array(
+    'info' => t('Homepage: Shows block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -66,6 +71,11 @@ function usanetwork_home_block_view($delta = '') {
     case 'usanetwork_home_promo_carousel':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_promo_carousel();
+      break;
+
+    case 'usanetwork_home_shows_queue':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_home_shows_queue_block();
       break;
   }
 
@@ -150,6 +160,97 @@ function usanetwork_home_preprocess_node(&$variables) {
       $variables['featured_title'] = $title['safe_value'];
     }
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_home_theme() {
+  return array(
+    // The global template
+    'usanetwork_home_shows_queue' => array(
+      'variables' => array(
+        'description' => array(
+          'caption' => NULL,
+          'title' => NULL,
+          'additional_text' => NULL,
+        ),
+        'slides' => array(
+          0 => array(
+            'class' => NULL,
+            'content' => NULL, // Pre-rendered content
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue',
+    ),
+    'usanetwork_home_shows_queue_slide' => array(
+      'variables' => array(
+        'show_class' => NULL,
+        'show_title' => NULL,
+        'show_url' => NULL,
+        'show_schedule_day' => NULL,
+        'show_schedule_time' => NULL,
+        'desktop_image_url' => NULL,
+        'mobile_image_url' => NULL,
+        'top_info' => NULL, // Pre-rendered content
+        'central_info' => NULL, // Pre-rendered content
+        'bottom_info' => NULL, // Pre-rendered content
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-slide',
+    ),
+    'usanetwork_home_shows_queue_top_info' => array(
+      'variables' => array(
+        'show_title' => NULL,
+        'schedule_day' => NULL,
+        'schedule_time' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-top-info',
+    ),
+    'usanetwork_home_shows_queue_central_info' => array(
+      'variables' => array(
+        'promo' => NULL, // Pre-rendered content
+        'advert' => NULL, // Pre-rendered content
+        'social' => NULL, // Pre-rendered content
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-central-info',
+    ),
+    'usanetwork_home_shows_queue_promo' => array(
+      'variables' => array(
+        'show_class' => NULL,
+        'latet_episode_image_url' => NULL,
+        'episode_title' => NULL,
+        'episode_day' => NULL,
+        'episode_time' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-promo',
+    ),
+    'usanetwork_home_shows_queue_advert' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-home-shows-queue-advert',
+    ),
+    'usanetwork_home_shows_queue_social' => array(
+      'variables' => array(
+        'show_class' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-social',
+    ),
+    'usanetwork_home_shows_queue_bottom_info' => array(
+      'variables' => array(
+        'inner_carousel_elements' => array(), // Array of pre-rendered content
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-bottom-info',
+    ),
+    'usanetwork_home_shows_queue_show_inner_slide' => array(
+      'variables' => array(
+        'title' => NULL,
+        'show_class' => NULL,
+        'episode_title' => NULL,
+        'image_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-home-shows-queue-show-inner-slide',
+    ),
+  );
 }
 
 /**
@@ -338,6 +439,38 @@ function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_stat
       'AM' => 'AM',
       'PM' => 'PM',
     ),
+  );
+
+  $form['shows_queue'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Shows queue'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t('Shows queue appears on homepage near the poll block'),
+  );
+
+  $form['shows_queue']['usanetwork_home_shows_queue_caption'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Caption'),
+    '#description' => t('The first caption of description block.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
+  );
+
+  $form['shows_queue']['usanetwork_home_shows_queue_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#description' => t('The main title of description block.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
+  );
+
+  $form['shows_queue']['usanetwork_home_shows_queue_addtext'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Additional text'),
+    '#description' => t('The additional text of description block. The <strong>"@number"</strong> will automatically changed to the actual value.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
   );
 }
 
@@ -546,4 +679,155 @@ function _usanetwork_home_get_field_value($field) {
   }
 
   return '';
+}
+
+/**
+ * Renders Shows Queue block on main page.
+ */
+function _usanetwork_home_shows_queue_block() {
+  $shows_queue = entity_load('queues', FALSE, array(
+    'type' => 'tv_shows_queue',
+    'title' => 'Homepage Shows'
+  ));
+
+  if (!empty($shows_queue) && is_array($shows_queue)) {
+    $shows_queue = reset($shows_queue);
+  }
+
+  $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
+
+  if (!empty($shows_queue)) {
+    $slide_index = 0;
+
+    $theme_variables = array(
+      'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
+      'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
+      'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
+      'slides' => array(),
+    );
+
+    foreach ($shows_wrapper->field_qt_tv_shows_queue as $show_node_wrapper) {
+      $slide_li_class = '';
+
+      if ($slide_index == 0) {
+        $slide_li_class = 'first';
+      }
+
+      $slide = array(
+        'class' => $slide_li_class,
+        'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+      );
+
+      $theme_variables['slides'][] = $slide;
+
+      $slide_index++;
+    }
+  }
+
+  return theme('usanetwork_home_shows_queue', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper) {
+  $show_nid = $show_node_wrapper->nid->value();
+
+  // Fields 'field_tvs_desktop_cimage' and 'field_tvs_mobile_cimage' are new.
+  // Normal using generates fatal error because the default data of the fields
+  // are not exists.
+  $show_desktop_image_field = $show_node_wrapper->field_tvs_desktop_cimage->value();
+  $show_mobile_image_field = $show_node_wrapper->field_tvs_mobile_cimage->value();
+
+  $theme_variables = array(
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+    'show_title' => $show_node_wrapper->title->value(),
+    'show_url' => url('node/' . $show_nid),
+    'show_schedule_day' => NULL, //@TODO: find schedule day
+    'show_schedule_time' => NULL, //@TODO: find schedule time
+    'desktop_image_url' => !empty($show_desktop_image_field)
+      ? '' //@TODO: get image url
+      : '',
+    'mobile_image_url' => !empty($show_mobile_image_field)
+      ? '' //@TODO: get image url
+      : '',
+    'top_info' => _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper),
+    'central_info' => _usanetwork_home_shows_queue_get_central_info_content($show_node_wrapper),
+    'bottom_info' => _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper),
+  );
+
+  return theme('usanetwork_home_shows_queue_slide', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper) {
+  $theme_variables = array(
+    'show_title' => $show_node_wrapper->title->value(),
+    'schedule_day' => NULL, //@TODO: find schedule day
+    'schedule_time' => NULL, //@TODO: find schedule time
+  );
+
+  return theme('usanetwork_home_shows_queue_top_info', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_central_info_content($show_node_wrapper) {
+  $theme_variables = array(
+    'promo' => _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper),
+    'advert' => _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper),
+    'social' => _usanetwork_home_shows_queue_get_social_content($show_node_wrapper),
+  );
+
+  return theme('usanetwork_home_shows_queue_central_info', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper) {
+  $theme_variables = array(
+    'inner_carousel_elements' => _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wrapper),
+  );
+
+  return theme('usanetwork_home_shows_queue_bottom_info', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
+  $show_nid = $show_node_wrapper->nid->value();
+  $latest_episode = new stdClass();
+  $latest_episode_title = 'Test title'; // @TODO: get episode title
+  $latest_episode_date = REQUEST_TIME; // @TODO: get episode date
+
+  $theme_variables = array(
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+    'latet_episode_image_url' => NULL, // @TODO: get image
+    'episode_title' => $latest_episode_title,
+    'episode_day' => date('D', $latest_episode_date),
+    'episode_time' => date('H:i', $latest_episode_date),
+  );
+
+  return theme('usanetwork_home_shows_queue_promo', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper) {
+  $theme_variables = array();
+
+  return theme('usanetwork_home_shows_queue_advert', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_social_content($show_node_wrapper) {
+  $show_nid = $show_node_wrapper->nid->value();
+
+  $theme_variables = array(
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+  );
+
+  return theme('usanetwork_home_shows_queue_social', $theme_variables);
+}
+
+function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wrapper) {
+  $show_nid = $show_node_wrapper->nid->value();
+
+  // foreach () {}
+
+  $theme_variables = array(
+    'title' => $show_node_wrapper->title->value(),
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+    'episode_title' => 'test', // @TODO: get episode title
+    'image_url' => NULL, //@TODO: get image url
+  );
+
+  return theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
 }

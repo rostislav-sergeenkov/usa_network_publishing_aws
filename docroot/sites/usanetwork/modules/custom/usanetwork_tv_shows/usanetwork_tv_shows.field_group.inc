@@ -1020,5 +1020,33 @@ function usanetwork_tv_shows_field_group_info() {
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tvs_queue_tab|node|tv_show|form';
+  $field_group->group_name = 'group_tvs_queue_tab';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Shows Queue Block',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_tvs_desktop_cimage',
+      1 => 'field_tvs_mobile_cimage',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tvs_queue_tab|node|tv_show|form'] = $field_group;
+
   return $export;
 }

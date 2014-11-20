@@ -144,7 +144,6 @@ function _usanetwork_promo_featured_content($promo) {
       if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
         $episode_number = reset($episode_number_field);
       }
-      dpm($file);
       
       $featutred_content = array(
         'url' => url('file/' . $file->fid),

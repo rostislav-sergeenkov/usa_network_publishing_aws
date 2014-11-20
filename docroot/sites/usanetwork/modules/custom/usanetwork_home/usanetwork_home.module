@@ -234,9 +234,11 @@ function usanetwork_home_preprocess_node(&$variables) {
 
 /**
  * Callback for the USA homepage
+ * DEPRICATED FOR NOW.
  */
 function usanetwork_home_landing($day = NULL) {
   $render = array();
+  return $render;
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 
   // return the nodes as full

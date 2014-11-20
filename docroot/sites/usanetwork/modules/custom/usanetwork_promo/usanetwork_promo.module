@@ -100,7 +100,6 @@ function _usanetwork_promo_return_associated_content($promo) {
  * @return array of featured content
  */
 function _usanetwork_promo_featured_content($promo) {
-  
   $associated = _usanetwork_promo_return_associated_content($promo);
   
   $promo = $associated['promo'];
@@ -199,7 +198,6 @@ function _usanetwork_promo_featured_content($promo) {
         'published' => ($node->status == 1) ? TRUE : FALSE,
       );
       break ;
-      
   }
   
   return $featutred_content;

@@ -204,12 +204,14 @@ function usanetwork_menu_theme() {
   return array(
     'usanetwork_menu_smnav_img_show_item' => array(
       'variables' => array(
-        'title' => NULL,
-        'image' => NULL,
-        'cta_text' => NULL,
-        'subtitle' => NULL,
-        'node_url' => NULL,
         'url' => NULL,
+        'title' => NULL,
+        'subtitle' => NULL,
+        'type' => NULL,
+        'time' => NULL,
+        'cta_text' => NULL,
+        'show_class' => NULL,
+        'icon_type' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-img-show-item',
     ),

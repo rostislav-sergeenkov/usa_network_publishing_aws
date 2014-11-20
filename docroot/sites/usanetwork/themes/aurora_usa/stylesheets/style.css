@@ -4595,7 +4595,7 @@ header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .type-an
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .type-and-time span {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .sign-in-link {

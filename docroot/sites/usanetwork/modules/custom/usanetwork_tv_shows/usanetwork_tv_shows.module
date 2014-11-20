@@ -90,8 +90,6 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
     $form['field_season'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
 
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows').'/js/usanetwork_tv_episode.js';
-
   // Add a form validator.
   $form['#validate'][] = 'usanetwork_tv_shows_episode_form_validate';
 }
@@ -141,11 +139,4 @@ function _usanetwork_tv_show_menu_get_show(&$entity_type = NULL, $position = 1, 
   }
 
   return $show;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, $form_id) {
-  $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows').'/js/usanetwork_tv_shows.js';
 }

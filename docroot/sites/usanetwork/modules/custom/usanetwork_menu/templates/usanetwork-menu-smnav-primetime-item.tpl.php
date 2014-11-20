@@ -30,7 +30,6 @@
     <?php endif; ?>
   </div>
   <div class="icons-block">
-    <a class="live icon" href="#"></a>
     <?php if (!empty($syndicated_url)): ?>
       <a class="calendar-reminder icon" href="<?php print $syndicated_url; ?>" target="_blank"></a>
     <?php endif; ?>

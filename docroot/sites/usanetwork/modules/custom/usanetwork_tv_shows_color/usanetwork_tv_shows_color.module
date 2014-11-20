@@ -1,6 +1,89 @@
 <?php
 
 /**
+ * Default colors for tv show content type
+ */
+function usanetwork_tv_shows_color_default_codes() {
+  return array(
+    'benched' => array(
+      '#282b45',
+      '#3c4067',
+      '#1b1d2e'
+    ),
+    'burnnotice' => array(
+      '#ff6c2b',
+      '#ff8a2b',
+      '#ff532b'
+    ),
+    'usadaytime' => array(
+      '#3ea1d3',
+      '#48b9f2',
+      '#358ab5'
+    ),
+    'dig' => array(
+      '#ed1c24',
+      '#fe2d2d',
+      '#d41a21'
+    ),
+    'playinghouse' => array(
+      '#1ca2c7',
+      '#1fb4dd',
+      '#188bab'
+    ),
+    'rush' => array(
+      '#28439b',
+      '#3355c1',
+      '#1f3478'
+    ),
+    'satisfaction' => array(
+      '#9b1c38',
+      '#b32242',
+      '#81182f'
+    ),
+    'sirens' => array(
+      '#d2232a',
+      '#e6272e',
+      '#b31f25'
+    ),
+    'whitecollar' => array(
+      '#03afd9',
+      '#04c3f2',
+      '#0195b9'
+    ),
+    'wwe' => array(
+      '#cb0e16',
+      '#e60f18',
+      '#a70c12'
+    ),
+    'suits' => array(
+      '#d42027',
+      '#e83939',
+      '#be1c23'
+    ),
+    'chrisleyknowsbest' => array(
+      '#f2ad2c',
+      '#f5be56',
+      '#ebb249'
+    ),
+    'graceland' => array(
+      '#0d3b6e',
+      '#1b4c83',
+      '#113359'
+    ),
+    'covertaffairs' => array(
+      '#c50504',
+      '#d60302',
+      '#b10808'
+    ),
+    'royalpains' => array(
+      '#7cd7fd',
+      '#9bdffc',
+      '#68c5ec'
+    ),
+  );
+}
+
+/**
  * Implements hook_init().
  */
 function usanetwork_tv_shows_color_init() {
@@ -160,4 +243,73 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
   }
   
   return $show_css_class;
+}
+
+/**
+ * Page callback for configuring page
+ */
+function usanetwork_tv_shows_color_config() {
+
+  $form['description'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Regenerate color schema for all published TV Shows '),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Regenerate'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler.
+ *
+ * @param array $form
+ *   Form API form.
+ * @param array $form_state
+ *   Form API form.
+ */
+function usanetwork_tv_shows_color_config_submit($form, &$form_state) {
+  $function = 'usanetwork_tv_shows_color_butch_op';
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'tv_show');
+  $query->propertyCondition('status', NODE_PUBLISHED);
+  $tv_shows_ids = $query->execute();
+
+  if (isset($tv_shows_ids['node'])) {
+    $operations = array();
+    foreach (array_keys($tv_shows_ids['node']) as $nid) {
+      $operations[] = array(
+        $function,
+        array(
+          $nid,
+        ),
+      );
+    }
+    batch_set(array(
+      'operations' => $operations
+        )
+    );
+  }
+}
+
+/**
+ * Batch operation for batch.
+ * 
+ */
+function usanetwork_tv_shows_color_butch_op($nid, &$context) {
+  $node = node_load($nid);
+  if ($node) {
+    $result = module_invoke('usanetwork_tv_shows_color', 'node_presave', $node);
+    if ($result) {
+      $context['message'] = t('Generating css for node "@title" color schema', array('@title' => $node->title));
+    }
+    else {
+      drupal_set_message(t('Generating css for node "@title" color schema Failed', array('@title' => $node->title)));
+    }
+  }
 }

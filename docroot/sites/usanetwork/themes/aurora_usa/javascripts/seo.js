@@ -6,6 +6,8 @@
       // Trigger on pageload once, to display default values
       $(".node-form").once('nodeform', function() {
         getAnnonation(this, formId);
+        getCounter($("#edit-field-seo-page-title input"), 'pageload');
+        getCounter($("#edit-field-usa-og-description textarea"), 'pageload');
       });
 
       $annotationcontrols = $("#edit-title, #edit-field-show select, #edit-field-season select, #edit-path-alias," + 
@@ -20,6 +22,12 @@
       $("#edit-field-season select").on("blur", function() {
         getAnnonation(this, formId);
       });
+      
+      $countercontrol = $("#edit-field-seo-page-title input, #edit-field-usa-og-description textarea");
+      $countercontrol.on("keydown keyup", function() {
+        getCounter(this, 'keypress');
+      });
+      
       function getAnnonation(controlObject, formId) {
         var defaultString = Drupal.t('Default').toUpperCase();
         var titleSuffix = Drupal.t('USA Network'); 
@@ -168,6 +176,46 @@
             }
           }
         }
+      }
+
+      function getCounter(elementObject, eventType) {
+        if (eventType == 'pageload')
+          var elementName = elementObject.attr('name');
+        else
+          var elementName = elementObject.name;
+
+        if (elementName.indexOf('field_seo_page_title') != -1) {
+          var elementDefaultLength = 62;
+          var elementLength = $(elementObject).val().length;
+          var wrapper = '#edit-field-seo-page-title';
+          var elementClass = 'counter_description_title';
+        }
+        else {
+          var elementDefaultLength = 150;
+          var elementLength = $(elementObject).val().length;
+          var wrapper = '#edit-field-usa-og-description';
+          var elementClass = 'counter_description_og';
+        }
+
+        if ($(wrapper+' .'+elementClass).length == 0) {
+          $(wrapper+' .form-item').append('<em class="'+elementClass+'"></em>');
+        }
+
+        var info = Drupal.t('Remaining');
+        var remaining = elementDefaultLength - elementLength;
+
+        $("."+elementClass).removeClass('warning');
+        if (elementLength > elementDefaultLength) {
+          info = Drupal.t('Limit Exceeded to');
+          remaining = elementLength;
+          $("."+elementClass).addClass('warning');
+        }
+        var helpText1 = Drupal.t('Recommended characters @length', {
+                                  '@length' : elementDefaultLength
+                                });
+        var helpText2 = info + ' ' + remaining;
+
+        $(wrapper+' .'+elementClass).html(helpText1 + ' - ' + helpText2);
       }
     }
   }

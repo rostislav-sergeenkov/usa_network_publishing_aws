@@ -326,7 +326,7 @@ function usanetwork_home_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'no_wrapper',
     'field_name' => 'field_hp_nav_img_more',
-    'label' => 'Global Nav Images - More drawer',
+    'label' => 'Global Nav Promos',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -335,6 +335,11 @@ function usanetwork_home_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -427,7 +432,7 @@ function usanetwork_home_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1532,8 +1537,8 @@ function usanetwork_home_field_default_field_instances() {
   t('Featured Promos');
   t('Floodlight Category');
   t('Floodlight Type');
-  t('Global Nav Images - More drawer');
   t('Global Nav Images - Show drawer');
+  t('Global Nav Promos');
   t('H1');
   t('Page Title');
   t('Promo carousel');

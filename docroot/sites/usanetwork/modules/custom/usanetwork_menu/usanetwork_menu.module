@@ -207,7 +207,9 @@ function usanetwork_menu_theme() {
         'title' => NULL,
         'image' => NULL,
         'cta_text' => NULL,
+        'subtitle' => NULL,
         'node_url' => NULL,
+        'url' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-img-show-item',
     ),
@@ -396,6 +398,10 @@ function _usanetwork_menu_main_menu_block() {
  * The callback is only FOR TESTING and POC!
  */
 function _usanetwork_menu_show_menu_featured_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+  
   $output = array();
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
@@ -403,36 +409,24 @@ function _usanetwork_menu_show_menu_featured_block() {
     $node_data = reset($homepage['node']);
     $node = node_load($node_data->nid);
 
-    $field_hp_nav_img_shows = field_get_items('node', $node, 'field_hp_nav_img_shows');
-
-    if (!empty($field_hp_nav_img_shows)) {
-      foreach ($field_hp_nav_img_shows as $field_reference) {
-        $reference_node = node_load($field_reference['target_id']);
-
-        if ($reference_node) {
-          $image_url = NULL;
-          $image_field = field_get_items('node', $reference_node, 'field_gobal_nav_image');
-
-          $cta_text = NULL;
-          $cta_field = field_get_items('node', $reference_node, 'field_global_nav_cta_text');
-
-          if (!empty($image_field)) {
-            $image_field = reset($image_field);
-            $image_url = file_create_url($image_field['uri']);
-          }
-
-          if (!empty($cta_field)) {
-            $cta_field = reset($cta_field);
-            $cta_text = $cta_field['value'];
-          }
-
+    $featured_header_elements = field_get_items('node', $node, 'field_hp_nav_img_more');
+    if (!empty($featured_header_elements)) {
+      foreach ($featured_header_elements as $featured_header_element) {
+        $associated_content = _usanetwork_promo_featured_content($featured_header_element['target_id']);
+        if ($associated_content['published']) {
           $output[] = theme('usanetwork_menu_smnav_img_show_item', array(
-            'title' => $reference_node->title,
-            'image' => $image_url,
-            'cta_text' => $cta_text,
-            'type' => NULL,
-            'time' => NULL,
-            'node_url' => NULL,
+            'url' => $associated_content['url'],
+            'image' => theme('image_style', array(
+                'path' => $associated_content['image_url'],
+                'style_name' => '300x169_video',
+              )),
+            'title' => $associated_content['title'],
+            'subtitle' => $associated_content['subtitle'],
+            'type' => $associated_content['type'],
+            'time' => $associated_content['time'],
+            'cta_text' => $associated_content['cta_text'],
+            'show_class' => $associated_content['show_class'],
+            'icon_type' => $associated_content['icon_type'],
           ));
         }
       }

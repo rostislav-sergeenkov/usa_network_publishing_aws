@@ -5006,8 +5006,8 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info > di
   }
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .episode-title {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
   margin-top: 5px;
 }
 
@@ -5171,9 +5171,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   letter-spacing: 1px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .episode-rate .title-rate {
-  font-family: "texgyrescholaregular", Times, serif;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
   font-size: 10px;
-  font-style: italic;
   line-height: 16px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .episode-rate .stars-rate ul li {

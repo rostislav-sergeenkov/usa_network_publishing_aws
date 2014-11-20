@@ -1273,8 +1273,8 @@ header {
               }
             }
             .episode-title {
-              font-family: $cent-725BT-italic;
-              font-style: italic;
+              font-family: $tex-gyreschola-italic;
+              letter-spacing: 1px;
               margin-top: 5px;
             }
           }
@@ -1428,9 +1428,9 @@ header {
               }
               .episode-rate {
                 .title-rate {
-                  font-family: $cent-725BT-italic;
+                  font-family: $tex-gyreschola-italic;
+                  letter-spacing: 1px;
                   font-size: 10px;
-                  font-style: italic;
                   line-height: 16px;
                 }
                 .stars-rate {

@@ -4231,9 +4231,9 @@ header .search-input-block .search-result.active ul li.search-promo a .meta-wrap
   top: 50%;
 }
 header .search-input-block .search-result.active ul li.search-promo a .meta-wrapper .meta .title {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 15px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   line-height: 22px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -4245,9 +4245,9 @@ header .search-input-block .search-result.active ul li.search-promo a .meta-wrap
   }
 }
 header .search-input-block .search-result.active ul li.search-promo a .meta-wrapper .meta .caption {
-  font-family: "texgyrescholaregular", Times, serif;
+  font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
-  font-style: italic;
+  letter-spacing: 1px;
   line-height: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -4570,7 +4570,8 @@ header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta {
 }
 header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .title {
   font-size: 14px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
   line-height: 18px;
   text-transform: uppercase;
 }
@@ -4587,8 +4588,8 @@ header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .title {
 }
 header .tab-item.full-episode-tab .watch-live .node .meta-wrapper .meta .type-and-time span {
   font-size: 12px;
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
   line-height: 16px;
   text-transform: uppercase;
 }
@@ -4742,8 +4743,8 @@ header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .m
   line-height: 15px;
 }
 header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .type-and-time span {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
 }
 @media (max-width: 1280px) {
   header .tab-item.full-episode-tab .latest-full-episodes ul li a .meta-wrapper .meta .title {
@@ -4833,13 +4834,14 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   color: #ffffff;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 20px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
   color: #dcddde;
-  font-family: "texgyrescholaregular", Times, serif;
+  font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
-  font-style: italic;
+  letter-spacing: 1px;
   line-height: 20px;
   text-transform: uppercase;
 }
@@ -5060,8 +5062,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .featured-view .meta .title, .show-menu-video .meta .title {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  letter-spacing: 1px;
   line-height: 16px;
   text-transform: uppercase;
 }
@@ -5069,12 +5072,13 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  letter-spacing: 1px;
   line-height: 16px;
   text-transform: uppercase;
 }
 .featured-view .meta .type-and-time span, .show-menu-video .meta .type-and-time span {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
 }
 .featured-view .meta .caption, .show-menu-video .meta .caption {
   color: #3a3a3a;
@@ -5145,22 +5149,26 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .caption {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 10px;
+  letter-spacing: 0.75px;
   line-height: 16px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .title {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-size: 16px;
+  letter-spacing: 1px;
   line-height: 22px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .type-and-time {
-  font-family: "texgyrescholaregular", Times, serif;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 10px;
+  letter-spacing: 1px;
   line-height: 16px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .type-and-time span {
-  font-style: italic;
+  font-family: "texgyrescholaitalic", Times, serif;
+  letter-spacing: 1px;
 }
 .consumptionator-page header .tab-item.info-tab .show-info .node .meta .episode-rate .title-rate {
   font-family: "texgyrescholaregular", Times, serif;

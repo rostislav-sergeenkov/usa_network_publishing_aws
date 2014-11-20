@@ -88,7 +88,117 @@ function _usanetwork_promo_return_associated_content($promo) {
   } 
   
   return array(
+    'promo' => $promo,
     'type' => $assoc_content_type,
     'content' => $assoc_content_value,
   );
+}
+
+/**
+ * Helper for return array of featured content with needed values
+ * @param type $promo - promo id or object
+ * @return array of featured content
+ */
+function _usanetwork_promo_featured_content($promo) {
+  $associated = _usanetwork_promo_return_associated_content($promo);
+  
+  $promo = $associated['promo'];
+  $type = $associated['type'];
+  $content = $associated['content'];
+  
+  $field_promo_text_line_1 = reset(field_get_items('node', $promo, 'field_promo_text_line_1'));
+  if ($field_promo_text_line_1) {
+    $promo_text_line_1 = $field_promo_text_line_1['value'];
+  } 
+  
+  $icon_type_field = reset(field_get_items('node', $promo, 'field_call_to_action_type'));
+  if ($icon_type_field) {
+    $icon = taxonomy_term_load($icon_type_field['tid']);
+    $icon_type = $icon->name . '-icon';
+  }
+  
+  switch ($type) {
+    case 'video/mpx':
+      $file = $content;
+      $show_field = reset(field_get_items('file', $file, 'field_show'));
+      if ($show_field) {
+        $show = node_load($show_field['target_id']);
+        $title = $show->title;
+        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+      } 
+      $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $duration_field = reset(field_get_items('file', $file, 'field_mpx_duration'));
+      if ($duration_field) {
+        $duration = gmdate("H:i:s", $duration_field['value']);
+      } 
+      $featutred_content = array(
+        'url' => url('file/' . $file->fid),
+        'image_url' => $wrapper->getLocalThumbnailPath(),
+        'title' => isset($title) ? $title : NULL,
+        'subtitle' => NULL,
+        'type' => $file->filename,
+        'time' => isset($duration) ? $duration : NULL,
+        'cta_text' => isset($promo_text_line_1) ? $promo_text_line_1 : NULL,
+        'show_class' => isset($show_class) ? $show_class : '',
+        'icon_type' => isset($icon_type) ? $icon_type : '',
+        'published' => ($file->mpx_video_data['status'] == 1) ? TRUE : FALSE,
+      );
+      break ;
+    case 'media_gallery':
+      $node = $content;
+      $show_field = reset(field_get_items('node', $node, 'field_show'));
+      if ($show_field) {
+        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+      } 
+      $field_cover_item = reset(field_get_items('node', $node, 'field_cover_item'));
+      if ($field_cover_item) {
+        $image = $field_cover_item['uri'];
+      }
+      $field_promo_text_line_2 = reset(field_get_items('node', $promo, 'field_promo_text_line_2'));
+      if ($field_promo_text_line_2) {
+        $subtitle = $field_promo_text_line_2['value'];
+      }
+      $featutred_content = array(
+        'url' => url('node/' . $node->nid),
+        'image_url' => isset($image) ? $image : NULL,
+        'title' => $node->title,
+        'subtitle' => isset($promo_text_line_1) ? $promo_text_line_1 : NULL,
+        'type' => NULL,
+        'time' => NULL,
+        'cta_text' => isset($subtitle) ? $subtitle : NULL,
+        'show_class' => isset($show_class) ? $show_class : '',
+        'icon_type' => isset($icon_type) ? $icon_type : '',
+        'published' => ($node->status == 1) ? TRUE : FALSE,
+      );
+      break ;
+    case 'default_promo':
+      $node = $content;
+      $show_field = reset(field_get_items('node', $node, 'field_show'));
+      if ($show_field) {
+        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+      } 
+      $field_promo_regular_image = reset(field_get_items('node', $node, 'field_promo_regular_image'));
+      if ($field_promo_regular_image) {
+        $image = $field_promo_regular_image['uri'];
+      }
+      $field_promo_text_line_2 = reset(field_get_items('node', $promo, 'field_promo_text_line_2'));
+      if ($field_promo_text_line_2) {
+        $subtitle = $field_promo_text_line_2['value'];
+      }
+      $featutred_content = array(
+        'url' => url('node/' . $node->nid),
+        'image_url' => isset($image) ? $image : NULL,
+        'title' => $node->title,
+        'subtitle' => isset($promo_text_line_1) ? $promo_text_line_1 : NULL,
+        'type' => NULL,
+        'time' => NULL,
+        'cta_text' => isset($subtitle) ? $subtitle : NULL,
+        'show_class' => isset($show_class) ? $show_class : '',
+        'icon_type' => isset($icon_type) ? $icon_type : '',
+        'published' => ($node->status == 1) ? TRUE : FALSE,
+      );
+      break ;
+  }
+  
+  return $featutred_content;
 }

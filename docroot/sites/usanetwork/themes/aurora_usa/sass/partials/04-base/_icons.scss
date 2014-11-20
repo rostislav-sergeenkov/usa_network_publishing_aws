@@ -21,6 +21,29 @@
   }
 }
 
+.video-icon {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    @include sprite-background(play-icon);
+  }
+  &.resize-avail-1024 {
+    @include breakpoint($bp-1024-width) {
+      &:before {
+        @include sprite-background(play-icon-small);
+      }
+    }
+  }
+  &.resize-avail-480 {
+    @include breakpoint($bp-480-width) {
+      &:before {
+        @include sprite-background(play-icon-small);
+      }
+    }
+  }
+}
+
 .play-icon-half {
   &:before {
     content: '';
@@ -90,7 +113,7 @@
   }
 }
 
-.photo-icon {
+.gallery-icon {
   &:before {
     content: '';
     display: block;

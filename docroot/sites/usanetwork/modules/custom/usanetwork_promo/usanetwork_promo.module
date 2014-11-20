@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the USANetwork Promo feature.
  */
-
 include_once 'usanetwork_promo.features.inc';
 
 /**
@@ -11,7 +11,7 @@ include_once 'usanetwork_promo.features.inc';
  */
 function usanetwork_promo_preprocess_node(&$vars) {
   $node = $vars['node'];
-  
+
   if ($node->type == 'usanetwork_promo') {
     $action_type = field_get_items('node', $node, 'field_call_to_action_type');
     $action_term = taxonomy_term_load($action_type[0]['tid']);
@@ -26,25 +26,25 @@ function usanetwork_promo_media_theplatform_mpx_import_media($op, $media_item, $
 
   $media_files = media_theplatform_mpx_get_files_by_guid($media_item['guid'], $account);
 
-  foreach ($media_files as $file) { 
+  foreach ($media_files as $file) {
     if ($media_item['expiration_date'] && $media_item['expiration_date'] < REQUEST_TIME) {
-    
+
       $db_select = db_select('field_data_field_promo_assoc_video', 'fdfpav')
-        ->fields('fdfpav', array('entity_id'))
-        ->condition('field_promo_assoc_video_target_id', $file->fid);
+          ->fields('fdfpav', array('entity_id'))
+          ->condition('field_promo_assoc_video_target_id', $file->fid);
       $promos = $db_select->execute()->fetchCol();
 
       if ($promos) {
         foreach ($promos as $promo) {
           $db_select_bspot = db_select('field_data_field_usa_hp_brefs', 'fdfuhb')
-            ->fields('fdfuhb', array('entity_id'))
-            ->condition('field_usa_hp_brefs_target_id', $promo);
+              ->fields('fdfuhb', array('entity_id'))
+              ->condition('field_usa_hp_brefs_target_id', $promo);
           $promo_bspot = $db_select_bspot->execute()->fetchField();
 
           if (!$promo_bspot) {
             $db_select_cspot = db_select('field_data_field_usa_hp_crefs', 'fdfuhc')
-              ->fields('fdfuhc', array('entity_id'))
-              ->condition('field_usa_hp_crefs_target_id', $promo);
+                ->fields('fdfuhc', array('entity_id'))
+                ->condition('field_usa_hp_crefs_target_id', $promo);
             $promo_cspot = $db_select_cspot->execute()->fetchField();
           }
 
@@ -68,25 +68,26 @@ function _usanetwork_promo_return_associated_content($promo) {
   if (!is_object($promo)) {
     $promo = node_load($promo);
   }
-  
-  $assoc_content = reset(field_get_items('node', $promo, 'field_promo_assoc_content')); 
-  if ($assoc_content) {
+
+  if ($assoc_content_field = field_get_items('node', $promo, 'field_promo_assoc_content')) {
+    $assoc_content = reset($assoc_content_field);
     $assoc_content_node = node_load($assoc_content['target_id']);
     $assoc_content_type = $assoc_content_node->type;
     $assoc_content_value = $assoc_content_node;
-  } else {
-    $assoc_video = reset(field_get_items('node', $promo, 'field_promo_assoc_video'));
-    if ($assoc_video) {
-      $assoc_video_file = file_load($assoc_video['target_id']);
-      $assoc_content_type = $assoc_video_file->filemime;
-      $assoc_content_value = $assoc_video_file;
-    } else {
-      //if no associated content, returns the same promo
-      $assoc_content_type = 'default_promo';
-      $assoc_content_value = $promo;
-    }
-  } 
-  
+  }
+  else if ($assoc_video_field = field_get_items('node', $promo, 'field_promo_assoc_video')) {
+    $assoc_video = reset($assoc_video_field);
+    $assoc_video_file = file_load($assoc_video['target_id']);
+    $assoc_content_type = $assoc_video_file->filemime;
+    $assoc_content_value = $assoc_video_file;
+  }
+  else {
+    //if no associated content, returns the same promo
+    $assoc_content_type = 'default_promo';
+    $assoc_content_value = $promo;
+  }
+
+
   return array(
     'promo' => $promo,
     'type' => $assoc_content_type,
@@ -131,11 +132,26 @@ function _usanetwork_promo_featured_content($promo) {
       if ($duration_field) {
         $duration = gmdate("H:i:s", $duration_field['value']);
       } 
+      
+      if (!isset($icon_type)) {
+        $icon_type = isset($icon_type) ? $icon_type : 'play';
+      }
+      
+      if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
+        $season_number = reset($season_number_field);
+      }
+
+      if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
+        $episode_number = reset($episode_number_field);
+      }
+      
       $featutred_content = array(
         'url' => url('file/' . $file->fid),
         'image_url' => $wrapper->getLocalThumbnailPath(),
         'title' => isset($title) ? $title : NULL,
         'subtitle' => NULL,
+        'season_number' => isset($season_number['value']) ? $season_number['value'] : NULL,
+        'episode_number' => isset($episode_number['value']) ? $episode_number['value'] : NULL,
         'type' => $file->filename,
         'time' => isset($duration) ? $duration : NULL,
         'cta_text' => isset($promo_text_line_1) ? $promo_text_line_1 : NULL,

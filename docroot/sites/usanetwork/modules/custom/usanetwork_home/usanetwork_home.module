@@ -138,68 +138,25 @@ function _usanetwork_home_bspot_cspot() {
         continue;
       }
       if (isset($spot_reference[0]['target_id']) && $promo = node_load($spot_reference[0]['target_id'])) {
-        $spot_associated_content = _usanetwork_promo_return_associated_content($promo);
-
-        $variables = array(
+        $promo_data = _usanetwork_promo_featured_content($promo);
+        
+        $type = t('S@season_num episode @episode_num', array(
+            '@season_num' => isset($promo_data['season_number']) ? $promo_data['season_number'] : '', 
+            '@episode_num' => isset($promo_data['episode_number']) ? $promo_data['episode_number'] : '')
+          );
+        
+        $spots_vars = array(
           'spot_class' => $spot,
-          'show_code' => NULL,
-          'url' => NULL,
-          'spot_image' => NULL,
-          'icon_type' => NULL,
-          'title' => NULL,
-          'caption' => NULL,
-          'type' => NULL,
-          'time' => NULL,
+          'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class'] : NULL,
+          'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
+          'spot_image' => isset($promo_data['image_url']) ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array())) : NULL,
+          'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
+          'title' => isset($promo_data['title']) ? $promo_data['title'] : NULL,
+          'caption' => $promo_data['title'],
+          'type' => $type,
+          'time' => $promo_data['time'],
         );
-        switch ($spot_associated_content['type']) {
-          case 'video/mpx':
-            $icon_type = 'play';
-            $content = $spot_associated_content['content'];
-
-            $file_wrapper = entity_metadata_wrapper('file', $content);
-            $show_code = $file_wrapper->field_show->field_pathauto_alias->value();
-            if ($show_code) {
-              $variables['show_code'] = $show_code;
-            }
-            $promo_wrapper = entity_metadata_wrapper('node', $promo);
-            
-            // get image from promo content. Also available url of image in video (but thumbnail in remote server)
-            $spot_image = theme_image(array('path' => $promo_wrapper->field_promo_regular_image->value()['uri'], 'attributes' => array()));
-            if ($spot_image) {
-              $variables['spot_image'] = $spot_image;
-            }
-            
-            // get url from promo content. But we could generate url to video page dirrectly 
-            $url = $promo_wrapper->field_promo_link->value()['url'];
-            if ($url) {
-              $variables['url'] = $url;
-            }
-            
-            // get title from tv_show content
-            $title = $file_wrapper->field_show->title->value();
-            if ($title) {
-              $variables['title'] = $title;
-            }
-            
-            // get caption from title of video. title also available in promo content
-            $caption = $file_wrapper->field_mpx_title->value();
-            if ($caption) {
-              $variables['caption'] = $caption;
-            }
-            
-            // get information from video content type
-            $variables['type'] = 'S' . $file_wrapper->field_mpx_season_number->value() . ' episode ' . $file_wrapper->field_mpx_full_episode->value();
-
-            //is this value on seconds? Am I right?
-            $time = $file_wrapper->field_mpx_duration->value();
-            $variables['time'] = gmdate("i:s", $time);
-
-            $spots[] = theme('usanetwork_home_bcspots', $variables);
-            break;
-
-          default:
-            break;
-        }
+        $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
       }
     }
 
@@ -259,7 +216,7 @@ function usanetwork_home_preprocess_block(&$variables) {
         }
       }
     }
-  }  
+  }
 }
 
 /**

@@ -132,11 +132,27 @@ function _usanetwork_promo_featured_content($promo) {
       if ($duration_field) {
         $duration = gmdate("H:i:s", $duration_field['value']);
       } 
+      
+      if (!isset($icon_type)) {
+        $icon_type = isset($icon_type) ? $icon_type : 'play';
+      }
+      
+      if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
+        $season_number = reset($season_number_field);
+      }
+
+      if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
+        $episode_number = reset($episode_number_field);
+      }
+      dpm($file);
+      
       $featutred_content = array(
         'url' => url('file/' . $file->fid),
         'image_url' => $wrapper->getLocalThumbnailPath(),
         'title' => isset($title) ? $title : NULL,
         'subtitle' => NULL,
+        'season_number' => isset($season_number['value']) ? $season_number['value'] : NULL,
+        'episode_number' => isset($episode_number['value']) ? $episode_number['value'] : NULL,
         'type' => $file->filename,
         'time' => isset($duration) ? $duration : NULL,
         'cta_text' => isset($promo_text_line_1) ? $promo_text_line_1 : NULL,

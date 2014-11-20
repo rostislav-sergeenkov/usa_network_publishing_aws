@@ -107,14 +107,14 @@ function _usanetwork_promo_featured_content($promo) {
   $type = $associated['type'];
   $content = $associated['content'];
   
-  $field_promo_text_line_1 = reset(field_get_items('node', $promo, 'field_promo_text_line_1'));
-  if ($field_promo_text_line_1) {
+  if ($field_promo_text_line_1_field = field_get_items('node', $promo, 'field_promo_text_line_1')) {
+    $field_promo_text_line_1 = reset($field_promo_text_line_1_field);
     $promo_text_line_1 = $field_promo_text_line_1['value'];
   } 
   
-  $icon_type_field = reset(field_get_items('node', $promo, 'field_call_to_action_type'));
-  if ($icon_type_field) {
-    $icon = taxonomy_term_load($icon_type_field['tid']);
+  if ($icon_type_field = field_get_items('node', $promo, 'field_call_to_action_type')) {
+    $icon_type_value = reset($icon_type_field);
+    $icon = taxonomy_term_load($icon_type_value['tid']);
     $icon_type = $icon->name . '-icon';
   }
   
@@ -128,13 +128,13 @@ function _usanetwork_promo_featured_content($promo) {
         $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       } 
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-      $duration_field = reset(field_get_items('file', $file, 'field_mpx_duration'));
-      if ($duration_field) {
+      if ($duration_field_value = field_get_items('file', $file, 'field_mpx_duration')) {
+        $duration_field = reset($duration_field_value);
         $duration = gmdate("H:i:s", $duration_field['value']);
       } 
       
       if (!isset($icon_type)) {
-        $icon_type = isset($icon_type) ? $icon_type : 'play';
+        $icon_type = isset($icon_type) ? $icon_type : 'play-icon';
       }
       
       if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
@@ -189,16 +189,16 @@ function _usanetwork_promo_featured_content($promo) {
       break ;
     case 'default_promo':
       $node = $content;
-      $show_field = reset(field_get_items('node', $node, 'field_show'));
-      if ($show_field) {
-        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+      if ($show_field = field_get_items('node', $node, 'field_show')) {
+        $show_value = reset($show_field);
+        $show_class = usanetwork_tv_shows_color_show_css_class($show_value['target_id']);
       } 
-      $field_promo_regular_image = reset(field_get_items('node', $node, 'field_promo_regular_image'));
-      if ($field_promo_regular_image) {
+      if ($field_promo_regular_image_field = field_get_items('node', $node, 'field_promo_regular_image')) {
+        $field_promo_regular_image = reset($field_promo_regular_image_field);
         $image = $field_promo_regular_image['uri'];
       }
-      $field_promo_text_line_2 = reset(field_get_items('node', $promo, 'field_promo_text_line_2'));
-      if ($field_promo_text_line_2) {
+      if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
+        $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
         $subtitle = $field_promo_text_line_2['value'];
       }
       $featutred_content = array(

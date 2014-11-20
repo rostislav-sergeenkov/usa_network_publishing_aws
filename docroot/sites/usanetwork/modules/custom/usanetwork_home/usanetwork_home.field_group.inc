@@ -60,7 +60,7 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'No more than 3 A-spots are recommended for this region',
+        'description' => 'Unlimited A-spots',
       ),
       'formatter' => 'collapsible',
     ),
@@ -88,8 +88,8 @@ function usanetwork_home_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br />
-On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
+        'description' => 'A maximum of 1 promo for this region.<br />
+On page load, only the first promo in each spot will be displayed.',
       ),
       'formatter' => 'collapsible',
     ),
@@ -117,8 +117,8 @@ On page load, only the first promo in each spot will be displayed.  Additional p
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'A maximum of 3 promos recommended for this region.<br />
-On page load, only the first promo in each spot will be displayed.  Additional promos will be displayed in sets that users can page through using the A-spot\'s previous/next arrows.',
+        'description' => 'A maximum of 1 promo for this region.<br />
+On page load, only the first promo in each spot will be displayed.',
       ),
       'formatter' => 'collapsible',
     ),

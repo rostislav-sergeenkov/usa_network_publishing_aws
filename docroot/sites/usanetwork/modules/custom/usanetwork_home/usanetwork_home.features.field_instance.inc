@@ -1256,6 +1256,11 @@ function usanetwork_home_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
@@ -1345,6 +1350,11 @@ function usanetwork_home_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,

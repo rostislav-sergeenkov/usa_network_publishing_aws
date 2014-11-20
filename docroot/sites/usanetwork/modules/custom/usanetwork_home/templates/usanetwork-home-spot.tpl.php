@@ -12,12 +12,12 @@
 ?>
 
 <div class="usa-home-<?php print $spot_class; ?>">
-  <div class="node node-usanetwork-promo show-color-border show-<?php print $show_code; ?>">
+  <div class="node node-usanetwork-promo show-color-border <?php print $show_code; ?>">
     <a href="<?php print $url; ?>">
       <div class="asset-img"><?php print $spot_image; ?></div>
       <div class="meta-back"></div>
       <div class="meta-wrapper">
-        <div class="meta-icon <?php print $icon_type; ?>-icon"></div>
+        <div class="meta-icon <?php print $icon_type; ?>"></div>
         <div class="title-overlay meta">
           <div class="title"><?php print $title; ?></div>
           <div class="caption"><?php print $caption; ?></div>

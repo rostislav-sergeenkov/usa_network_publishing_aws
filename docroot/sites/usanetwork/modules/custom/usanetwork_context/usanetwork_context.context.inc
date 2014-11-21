@@ -2008,18 +2008,6 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_tv_schedule-usa_on_now_block' => array(
-          'module' => 'usanetwork_tv_schedule',
-          'delta' => 'usa_on_now_block',
-          'region' => 'head_general',
-          'weight' => '-10',
-        ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'usanetwork_aspot-usanetwork_aspot_carousel' => array(
           'module' => 'usanetwork_aspot',
           'delta' => 'usanetwork_aspot_carousel',

@@ -239,6 +239,7 @@ function usanetwork_home_preprocess_node(&$variables) {
 function usanetwork_home_landing($day = NULL) {
   $render = array();
   return $render;
+  /**
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 
   // return the nodes as full
@@ -252,6 +253,7 @@ function usanetwork_home_landing($day = NULL) {
     $render['status']['#markup'] = t('No Homepage content available.');
   }
   return $render;
+  */
 }
 
 /**

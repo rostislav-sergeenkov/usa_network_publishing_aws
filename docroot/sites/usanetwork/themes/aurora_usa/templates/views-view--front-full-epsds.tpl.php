@@ -92,7 +92,7 @@
   <?php endif; ?>
 
   <div class="more-link">
-    <?php print l(t('More full episodes'), 'videos', array('attributes' => array('class' => 'more')))?>
+    <?php print l(t('More full episodes'), 'videos', array('attributes' => array('class' => array('more'))))?>
   </div>
   
 </div><?php /* class view */ ?>

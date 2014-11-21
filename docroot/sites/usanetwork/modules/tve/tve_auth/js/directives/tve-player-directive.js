@@ -172,6 +172,7 @@
                  * @private
                  */
                 function _companionAd(pdkEvent) {
+                  console.info('_companionAd event fired');
                   var targetId   = pdkEvent.data.holderId,
                       targetElem = document.getElementById(targetId);
 

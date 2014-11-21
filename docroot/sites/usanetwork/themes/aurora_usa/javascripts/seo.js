@@ -5,9 +5,12 @@
 
       // Trigger on pageload once, to display default values
       $(".node-form").once('nodeform', function() {
-        getAnnonation(this, formId);
-        getCounter($("#edit-field-seo-page-title input"), 'pageload');
-        getCounter($("#edit-field-usa-og-description textarea"), 'pageload');
+        if ($("#edit-field-seo-h1").length > 0 || $("#edit-field-seo-page-title").length > 0)
+          setAnnonation(this, formId);
+        if ($("#edit-field-seo-page-title").length > 0)
+          setCounter($("#edit-field-seo-page-title input"), 'pageload');
+        if ($("#edit-field-usa-og-description").length > 0)
+          setCounter($("#edit-field-usa-og-description textarea"), 'pageload');
       });
 
       $annotationcontrols = $("#edit-title, #edit-field-show select, #edit-field-season select, #edit-path-alias," + 
@@ -17,18 +20,18 @@
                     " #edit-field-show select, #edit-field-role select");
 
       $annotationcontrols.on("change", function() {
-        getAnnonation(this, formId);
+        setAnnonation(this, formId);
       });
       $("#edit-field-season select").on("blur", function() {
-        getAnnonation(this, formId);
+        setAnnonation(this, formId);
       });
       
       $countercontrol = $("#edit-field-seo-page-title input, #edit-field-usa-og-description textarea");
       $countercontrol.on("keydown keyup", function() {
-        getCounter(this, 'keypress');
+        setCounter(this, 'keypress');
       });
       
-      function getAnnonation(controlObject, formId) {
+      function setAnnonation(controlObject, formId) {
         var defaultString = Drupal.t('Default').toUpperCase();
         var titleSuffix = Drupal.t('USA Network'); 
         var title = $("#edit-title").val();
@@ -178,27 +181,28 @@
         }
       }
 
-      function getCounter(elementObject, eventType) {
+      function setCounter(elementObject, eventType) {
         if (eventType == 'pageload')
           var elementName = elementObject.attr('name');
         else
           var elementName = elementObject.name;
 
+        var elementLength = $(elementObject).val().length;      
         if (elementName.indexOf('field_seo_page_title') != -1) {
           var elementDefaultLength = 62;
-          var elementLength = $(elementObject).val().length;
           var wrapper = '#edit-field-seo-page-title';
           var elementClass = 'counter_description_title';
+          var elementType = 'form-type-textfield';
         }
         else {
           var elementDefaultLength = 150;
-          var elementLength = $(elementObject).val().length;
           var wrapper = '#edit-field-usa-og-description';
           var elementClass = 'counter_description_og';
+          var elementType = 'form-type-textarea';
         }
 
         if ($(wrapper+' .'+elementClass).length == 0) {
-          $(wrapper+' .form-item').append('<em class="'+elementClass+'"></em>');
+          $(wrapper+' .'+elementType).append('<em class="'+elementClass+'"></em>');
         }
 
         var info = Drupal.t('Remaining');

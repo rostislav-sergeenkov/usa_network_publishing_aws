@@ -2008,23 +2008,23 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_tv_schedule-usa_on_now_block' => array(
-          'module' => 'usanetwork_tv_schedule',
-          'delta' => 'usa_on_now_block',
-          'region' => 'head_general',
-          'weight' => '-10',
-        ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
+        'usanetwork_aspot-usanetwork_aspot_carousel' => array(
+          'module' => 'usanetwork_aspot',
+          'delta' => 'usanetwork_aspot_carousel',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
-        'usanetwork_home-usanetwork_home_promo_carousel' => array(
-          'module' => 'usanetwork_home',
-          'delta' => 'usanetwork_home_promo_carousel',
+        'usanetwork_menu-usanetwork_menu_aspot_ot' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_aspot_ot',
           'region' => 'content',
           'weight' => '-8',
+        ),
+        'usanetwork_home-usanetwork_home_bspot_cspot' => array(
+          'module' => 'usanetwork_home',
+          'delta' => 'usanetwork_home_bspot_cspot',
+          'region' => 'content',
+          'weight' => '-7',
         ),
         'usanetwork_tv_schedule-usa_on_now_panel' => array(
           'module' => 'usanetwork_tv_schedule',

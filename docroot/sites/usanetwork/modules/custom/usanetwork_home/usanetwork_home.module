@@ -780,7 +780,7 @@ function _usanetwork_home_get_field_value($field) {
 function _usanetwork_home_shows_queue_block() {
   $shows_queue = entity_load('queues', FALSE, array(
     'type' => 'tv_shows_queue',
-    'title' => 'Homepage Shows'
+    'title' => 'Homepage Shows',
   ));
 
   if (!empty($shows_queue) && is_array($shows_queue)) {

@@ -273,7 +273,18 @@ function theme_usanetwork_item_list($variables) {
 function usanetwork_theme($existing, $type, $theme, $path) {
   return array(
     'usanetwork_item_list' => array(
-      'variables' => array('warpper_attributes' => array(), 'title_tag' => 'h2', 'title_attributes' => array('class' => 'menu-title'), 'title' => NULL, 'items' => array(), 'type' => 'ul', 'attributes' => array(), 'suffix' => array()),
+      'variables' => array(
+        'warpper_attributes' => array(), 
+        'title_tag' => 'h2', 
+        'title_attributes' => array(
+          'class' => 'menu-title'
+          ), 
+        'title' => NULL, 
+        'items' => array(), 
+        'type' => 'ul', 
+        'attributes' => array(), 
+        'suffix' => array()
+        ),
     ),
   );
 }

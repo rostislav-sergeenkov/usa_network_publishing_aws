@@ -48,12 +48,13 @@ function usanetwork_home_menu() {
 function usanetwork_home_block_info() {
   $blocks = array();
 
-  $blocks['usanetwork_home_promo_carousel'] = array(
-    'info' => t('Homepage: Promo Carousel'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
   $blocks['usanetwork_home_bspot_cspot'] = array(
     'info' => t('Homepage: BC Spot'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['usanetwork_home_featured_promos'] = array(
+    'info' => t('Homepage: Featured Carousel'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
@@ -67,53 +68,134 @@ function usanetwork_home_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usanetwork_home_promo_carousel':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_home_promo_carousel();
-      break;
     case 'usanetwork_home_bspot_cspot':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_bspot_cspot();
+      break;
+
+    case 'usanetwork_home_featured_promos':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_home_featured_carousel();
       break;
   }
 
   return $block;
 }
 
-function _usanetwork_home_promo_carousel() {
+function _usanetwork_home_featured_carousel() {
   $content = array();
 
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   if ($homepage) {
-    $nid = reset(array_keys($homepage['node']));
-    $homepage_node = node_load($nid);
-    $display_carousel = reset(field_get_items('node', $homepage_node, 'field_hp_promo_carousel_display'));
-    if ($display_carousel['value'] == 1) {
-      $db_select = db_select('node', 'n')
-          ->fields('n', array('nid', 'title'));
-      $db_select->condition('n.status', '1');
-      $db_select->condition('n.type', 'usanetwork_promo');
-      $db_select->leftJoin('field_data_field_hp_promo_carousel', 'fdfhpc', 'n.nid=fdfhpc.field_hp_promo_carousel_target_id');
-      $db_select->condition('fdfhpc.entity_id', $nid);
-      $db_select->orderBy('fdfhpc.delta');
+    $homepage_node = usanetwork_home_get_homepage_node($homepage);
 
-      $db_result = $db_select->execute()->fetchAll();
-      if ($db_result) {
-        $promo_carousel = '';
-        foreach ($db_result as $promo) {
-          $promo_carousel .= '<li class="carousel-item">' . drupal_render(node_view(node_load($promo->nid), 'carousel_promo')) . '</li>';
+    $description_vars = array(
+      'caption' => t('all new'),
+      'title' => t('More out what you want'),
+      'additional_text' => t('Episodes, clips & photos'),
+    );
+
+    foreach (array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text') as $target => $field_name) {
+
+      $field_value = field_get_items('node', $homepage_node, $field_name);
+      if ($field_value) {
+        $field = reset($field_value);
+
+        switch ($target) {
+          case 'title':
+            $description_vars['title'] = $field['value'];
+            break;
+          case 'caption':
+            $description_vars['caption'] = $field['value'];
+            break;
+          case 'additional_text':
+            $description_vars['additional_text'] = $field['value'];
+            break;
+          default:
+            break;
         }
-
-        $promo_carousel = '<div class="carousel clearfix"><div class="carousel-viewport"><div class="home-carousel"><ul>' . $promo_carousel . '</ul></div></div></div>';
-
-        $content['promo_carousel'] = array(
-          '#markup' => $promo_carousel,
-        );
       }
     }
+
+    $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
+
+
+
+    $field_hp_promos = field_get_items('node', $homepage_node, 'field_hp_promos');
+    if ($field_hp_promos) {
+      $i = 0;
+      foreach ($field_hp_promos as $delta => $promo) {
+        $promo_data = _usanetwork_promo_featured_content($promo);
+        if ($promo_data === FALSE || $promo_data['published'] === FALSE) {
+          continue;
+        }
+
+        if (isset($promo_data['more_link_title']) && isset($promo_data['more_link_url'])) {
+          $more_link = l($promo_data['more_link_title'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
+        }
+
+        $featured_vars = array(
+          'show_code' => isset($promo_data['show_class'])
+              ? $promo_data['show_class']
+              : NULL,
+          'url' => isset($promo_data['url'])
+              ? $promo_data['url']
+              : NULL,
+          'image' => isset($promo_data['image_url'])
+              ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array()))
+              : NULL,
+          'icon_type' => $promo_data['icon_type']
+              ? $promo_data['icon_type']
+              : NULL,
+          'caption' => isset($promo_data['title'])
+              ? $promo_data['title']
+              : NULL,
+          'title' => $promo_data['cta_text'],
+          'more_link' => isset($more_link) ? $more_link : NULL,
+        );
+        $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
+        $i++;
+        if ($i % 2 == 0) {
+          $featured_promo_items[] = implode(PHP_EOL, $list_item_promo);
+          $list_item_promo = array();
+        }
+      }
+
+      if (count($list_item_promo) == 1) {
+        $featured_promo_items[] = $list_item_promo[0];
+      }
+
+      $output['carousel'] = theme('usanetwork_item_list', array(
+        'warpper_attributes' => array(
+          'class' => array(
+            'featured-carousel',
+            'carousel',
+            'carousel-right',
+            'start',
+          ),
+          'dir' => 'rtl',
+          'data-carousel-id' => 1,
+        ),
+        'title_tag' => 'h2',
+        'title_attributes' => array(
+          'class' => NULL
+        ),
+        'title' => NULL,
+        'items' => $featured_promo_items,
+        'type' => 'ul',
+        'attributes' => array(
+          'class' => array(
+            'slides',
+          ),
+        ),
+        'suffix' => array()
+      ));
+
+      return implode(PHP_EOL, $output);
+    }
   }
-  return $content;
+  return array();
 }
 
 /**
@@ -125,13 +207,7 @@ function _usanetwork_home_bspot_cspot() {
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   if ($homepage) {
-    $homepage_node = &drupal_static('homepage_node', FALSE);
-    if (!$homepage_node) {
-      $node_ids = array_keys($homepage['node']);
-      $nid = reset($node_ids);
-      $homepage_node = node_load($nid);
-    }
-
+    $homepage_node = usanetwork_home_get_homepage_node($homepage);
     foreach (array('bspot' => 'field_usa_hp_brefs', 'cspot' => 'field_usa_hp_crefs') as $spot => $field_name) {
       $spot_reference = field_get_items('node', $homepage_node, $field_name);
       if (!$spot_reference) {
@@ -139,20 +215,38 @@ function _usanetwork_home_bspot_cspot() {
       }
       if (isset($spot_reference[0]['target_id']) && $promo = node_load($spot_reference[0]['target_id'])) {
         $promo_data = _usanetwork_promo_featured_content($promo);
-        
+
+        if ($promo_data === FALSE) {
+          continue;
+        }
+
         $type = t('S@season_num episode @episode_num', array(
-            '@season_num' => isset($promo_data['season_number']) ? $promo_data['season_number'] : '', 
-            '@episode_num' => isset($promo_data['episode_number']) ? $promo_data['episode_number'] : '')
-          );
-        
+          '@season_num' => isset($promo_data['season_number'])
+              ? $promo_data['season_number']
+              : '',
+          '@episode_num' => isset($promo_data['episode_number'])
+              ? $promo_data['episode_number']
+              : '')
+        );
+
         $spots_vars = array(
           'spot_class' => $spot,
-          'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class'] : NULL,
-          'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
-          'spot_image' => isset($promo_data['image_url']) ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array())) : NULL,
-          'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
-          'title' => isset($promo_data['title']) ? $promo_data['title'] : NULL,
-          'caption' => $promo_data['title'],
+          'show_code' => isset($promo_data['show_class'])
+              ? $promo_data['show_class']
+              : NULL,
+          'url' => isset($promo_data['url'])
+              ? $promo_data['url']
+              : NULL,
+          'spot_image' => isset($promo_data['image_url'])
+              ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array()))
+              : NULL,
+          'icon_type' => $promo_data['icon_type']
+              ? $promo_data['icon_type']
+              : NULL,
+          'title' => isset($promo_data['title'])
+              ? $promo_data['title']
+              : NULL,
+          'caption' => $promo_data['cta_text'],
           'type' => $type,
           'time' => $promo_data['time'],
         );
@@ -183,6 +277,28 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-home-spot'
+    ),
+    'usanetwork_home_featured_promo' => array(
+      'variables' => array(
+        'show_code' => NULL,
+        'url' => NULL,
+        'image' => NULL,
+        'icon_type' => NULL,
+        'title' => NULL,
+        'caption' => NULL,
+        'more_link' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-home-featured-promo'
+    ),
+    'usanetwork_home_carousel_description_item' => array(
+      'variables' => array(
+        'caption' => NULL,
+        'title' => NULL,
+        'additional_text' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-home-carousel-description-item'
     ),
   );
 }
@@ -240,20 +356,20 @@ function usanetwork_home_landing($day = NULL) {
   $render = array();
   return $render;
   /**
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 
-  // return the nodes as full
-  if (!empty($homepage['node'])) {
+    // return the nodes as full
+    if (!empty($homepage['node'])) {
 
     $render['homepage']['#prefix'] = '<div class="homepage-content">';
     $render['homepage']['#suffix'] = '</div>';
     $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
-  }
-  else {
+    }
+    else {
     $render['status']['#markup'] = t('No Homepage content available.');
-  }
-  return $render;
-  */
+    }
+    return $render;
+   */
 }
 
 /**
@@ -284,8 +400,26 @@ function usanetwork_home_admin_landing($day = NULL) {
 /**
  * To fetch homepage node by title
  */
+function usanetwork_home_get_homepage_node($homepage) {
+  $homepage_node = &drupal_static(__FUNCTION__, FALSE);
+  if (!$homepage_node) {
+    $node_ids = array_keys($homepage['node']);
+    $nid = reset($node_ids);
+    $homepage_node = node_load($nid);
+  }
+  return $homepage_node;
+}
+
+/**
+ * To fetch homepage node by title
+ */
 function usanetwork_home_get_homepage($types = array(), $day = NULL) {
 //@TODO: remove $types
+  $homepage = &drupal_static(__FUNCTION__, FALSE);
+  if ($homepage) {
+    return $homepage;
+  }
+
   if ($day === NULL) {
     $day = _usanetwork_home_get_day();
   }

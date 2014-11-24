@@ -10,6 +10,178 @@
 function usanetwork_home_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-usa_homepage-field_additional_text'
+  $field_instances['node-usa_homepage-field_additional_text'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Episodes, clips & photos',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_additional_text',
+    'label' => 'Additional text',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'node-usa_homepage-field_caption_text'
+  $field_instances['node-usa_homepage-field_caption_text'] = array(
+    'bundle' => 'usa_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 'More out what you want',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_caption_text',
+    'label' => 'Caption text',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-usa_homepage-field_floodlight_category'
   $field_instances['node-usa_homepage-field_floodlight_category'] = array(
     'bundle' => 'usa_homepage',
@@ -253,7 +425,7 @@ function usanetwork_home_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 21,
+      'weight' => 23,
     ),
   );
 
@@ -511,7 +683,7 @@ function usanetwork_home_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
@@ -670,7 +842,7 @@ function usanetwork_home_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 28,
+      'weight' => 29,
     ),
   );
 
@@ -757,7 +929,7 @@ function usanetwork_home_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 22,
     ),
   );
 
@@ -766,7 +938,7 @@ function usanetwork_home_field_default_field_instances() {
     'bundle' => 'usa_homepage',
     'default_value' => array(
       0 => array(
-        'value' => 'Featured',
+        'value' => 'All new',
       ),
     ),
     'deleted' => 0,
@@ -819,7 +991,7 @@ function usanetwork_home_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_hp_promos_block_title',
-    'label' => 'Block title',
+    'label' => 'Title',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -834,6 +1006,9 @@ function usanetwork_home_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
         'size' => 60,
         'soft_length_limit' => '',
         'soft_length_minimum' => '',
@@ -1537,10 +1712,11 @@ function usanetwork_home_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A-spot references');
+  t('Additional text');
   t('Autoscroll A-spot carousel');
   t('B-spot references');
-  t('Block title');
   t('C-spot references');
+  t('Caption text');
   t('Day');
   t('Display Promo carousel');
   t('Episodes block title');
@@ -1554,6 +1730,7 @@ function usanetwork_home_field_default_field_instances() {
   t('Promo carousel');
   t('Promo carousel title');
   t('Set the speed of the slideshow cycling, in milliseconds, example: 7000');
+  t('Title');
   t('slideshowSpeed');
 
   return $field_instances;

@@ -16548,10 +16548,6 @@ a[class*="day"] {
   }
 }
 
-#main {
-  padding: 0 !important;
-}
-
 .schedule-on-tonight {
   background: #2c2c2c;
   height: 120px;

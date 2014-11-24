@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.usanetwork_menu_dropdown = {
+  Drupal.behaviors.schedule_tonight = {
     attach: function (context) {
 
       // Init schedule carousel

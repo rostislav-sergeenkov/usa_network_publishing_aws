@@ -235,8 +235,8 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
     $show_node = node_load($show_node);
   }
   
-  $node_alias = reset(field_get_items('node', $show_node, 'field_pathauto_alias'));
-  if ($node_alias) {
+  if ($node_alias_field = field_get_items('node', $show_node, 'field_pathauto_alias')) {
+    $node_alias = reset($node_alias_field);
     $show_css_class = 'show-' . $node_alias['value'];
   } else {
     $show_css_class = drupal_clean_css_identifier($show_node->title);

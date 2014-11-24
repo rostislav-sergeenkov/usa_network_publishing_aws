@@ -233,30 +233,3 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
 
   return $query->execute()->fetchAll();
 }
-
-/**
- * Pulls upcoming episodes.
- */
-function usanetwork_schedule_pull_upcoming_episodes($show_node_id, $length = 2, $time_corellation = 0) {
-  $time = REQUEST_TIME + $time_corellation;
-
-  $query = db_select('usanetwork_schedule', 's');
-  $query->join('node', 'en', 's.title=en.title');
-  $query->join('node', 'sn', 's.show_title=sn.title');
-  $query->fields('s', array());
-  $query->addField('en', 'nid', 'episode_nid');
-  $query->addField('sn', 'nid', 'show_nid');
-  $query->condition('sn.nid', $show_node_id);
-  $query->condition('en.type', 'tv_episode');
-
-  $db_or = db_or();
-  $db_or->condition('sn.type', 'tv_show');
-  $db_or->condition('sn.type', NULL, 'IS NULL');
-
-  $query->condition($db_or);
-  $query->condition('s.start_time', $time. '>');
-  $query->orderBy('s.start_time', 'ASC');
-  $query->range(0, $length);
-
-  return $query->execute()->fetchAll();
-}

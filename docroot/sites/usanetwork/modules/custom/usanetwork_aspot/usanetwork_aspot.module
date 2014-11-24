@@ -280,14 +280,44 @@ function _usanetwork_aspot_carousel_block() {
       $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
       $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
 
+      $banner_desktop = '';
+      $banner_mobile = '';
+      $banner_tablet = '';
+
       if (!empty($draggable_data)) {
         $draggable_data = json_decode($draggable_data);
+      }
+
+      if (!empty($carousel_node['aspot_node']->field_usa_aspot_desktop)) {
+        $banner_desktop = $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value();
+      }
+
+      if (!empty($carousel_node['aspot_node']->field_usa_aspot_mobile)) {
+        $banner_mobile = $aspot_node_wrapper->field_usa_aspot_mobile->file->url->value();
+      }
+
+      if (!empty($carousel_node['aspot_node']->field_usa_aspot_tablet_portrait)) {
+        $banner_tablet = $aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->url->value();
+      }
+
+      if (empty($banner_tablet)) {
+        $banner_tablet = $banner_desktop;
+      }
+
+      if (empty($banner_mobile)) {
+        $banner_mobile = $banner_desktop;
       }
 
       $theme_array = array(
         'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
         'show_class' => usanetwork_tv_shows_color_show_css_class($carousel_node['show_node']),
-        'show_poster_url' => $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value(),
+        'show_poster' => array(
+          '300x250' => image_style_url('300x250', $banner_mobile),
+          '600x500' => image_style_url('600x500', $banner_mobile),
+          '615x350' => image_style_url('615x350', $banner_mobile),
+          '1245x709' => image_style_url('1245x709', $banner_tablet),
+          '2490x1418' => image_style_url('2490x1418', $banner_desktop),
+        ),
         'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
         'show_title_prefix_style' => isset($draggable_data->title_prefix)
           ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)

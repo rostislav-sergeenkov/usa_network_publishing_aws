@@ -8,11 +8,11 @@
     <div class="meta-wrap">
       <div class="meta">
         <?php if (!empty($show_title)): ?>
-          <div class="meta-show"><?php print $how_title; ?></div>
+          <div class="meta-show"><?php print $show_title; ?></div>
         <?php endif; ?>
         <?php if (!empty($show_schedule_day) && !empty($show_schedule_time)): ?>
           <div class="meta-show-schedule">
-            <span><?php print $show_schedule_day; ?></span><?php print $schedule_time; ?>
+            <span><?php print $show_schedule_day; ?></span><?php print $show_schedule_time; ?>
           </div>
         <?php endif ;?>
       </div>
@@ -34,14 +34,28 @@
       <?php if (!empty($show_url)): ?>
         <a class="show-color<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?> hover-avail" href="<?php print $show_url; ?>"><?php print t('Show Page'); ?></a>
       <?php endif; ?>
-      <div class="social-icons">
-        <a class="facebook" href="#"></a>
-        <a class="twitter" href="#"></a>
-        <a class="instagram" href="#"></a>
-        <a class="pinterest" href="#"></a>
-        <a class="youtube" href="#"></a>
-        <a class="googleplus" href="#"></a>
-      </div>
+      <?php if (!empty($social_icons_data)): ?>
+        <div class="social-icons">
+          <?php if (!empty($social_icons['facebook'])): ?>
+            <a class="facebook" href="<?php print $social_icons['facebook']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['twitter'])): ?>
+            <a class="twitter" href="<?php print $social_icons['twitter']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['instagram'])): ?>
+            <a class="instagram" href="<?php print $social_icons['instagram']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['pinterest'])): ?>
+            <a class="pinterest" href="<?php print $social_icons['pinterest']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['youtube'])): ?>
+            <a class="youtube" href="<?php print $social_icons['youtube']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['googleplus'])): ?>
+            <a class="googleplus" href="<?php print $social_icons['googleplus']['url']; ?>"></a>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
       <div class="show-info-block-wrapper">
         <?php if (!empty($top_info)): ?>
           <?php print $top_info; ?>

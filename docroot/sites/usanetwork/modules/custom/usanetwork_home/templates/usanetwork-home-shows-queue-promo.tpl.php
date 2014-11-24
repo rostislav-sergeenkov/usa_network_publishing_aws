@@ -16,11 +16,11 @@
         <div class="meta-icon play-icon"></div>
         <div class="title-overlay meta">
           <?php if (!empty($episode_title)): ?>
-            <div class="caption"><?php print $episode_title; ?></div>
+            <div class="title"><?php print $episode_title; ?></div>
           <?php endif; ?>
-          <?php if (!empty($episode_day) && !empty($episode_time)): ?>
-            <div class="type-and-time">
-              <span><?php print $episode_day; ?></span><?php print $episode_time; ?>
+          <?php if (!empty($episode_duration) && !empty($episode_duration)): ?>
+            <div class="additional">
+              <span><?php print t('Latest full episode'); ?></span><?php print $episode_duration; ?>
             </div>
           <?php endif; ?>
         </div>

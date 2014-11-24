@@ -245,7 +245,7 @@ function theme_usanetwork_item_list($variables) {
           $links = array();
 
           foreach ($query_result as $row) {
-            $links[] =l($row->node_title, 'node/' . $row->nid, array('html' => TRUE));
+            $links[] = l($row->node_title, 'node/' . $row->nid, array('html' => TRUE));
           }
 
           $data .= theme_item_list(array(
@@ -261,7 +261,7 @@ function theme_usanetwork_item_list($variables) {
     $output .= "</$type>";
   }
   if (isset($suffix) && $suffix !== '') {
-      $output .= implode(PHP_EOL, $suffix);
+    $output .= implode(PHP_EOL, $suffix);
   }
   $output .= '</div>';
   return $output;
@@ -293,31 +293,31 @@ function usanetwork_app_and_services_footer_links() {
       'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
       'class' => array(
         'menu-item'
-        ),
+      ),
     );
   }
-  return  theme('usanetwork_item_list', array(
-      'warpper_attributes' => array(
-        'class' => array(
-          'app-and-services-menu',
-        ),
+  return theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'app-and-services-menu',
       ),
-      'title_tag' => 'h2',
-      'title_attributes' => array(
-        'class' => array(
-          'menu-title',
-          'app-and-services-menu',
-        ),
+    ),
+    'title_tag' => 'h2',
+    'title_attributes' => array(
+      'class' => array(
+        'menu-title',
+        'app-and-services-menu',
       ),
-      'title' => t('apps & services'),
-      'items' => $items,
-      'type' => 'ul',
-      'attributes' => array(
-        'class' => array(
-          'menu'
-        )
-      ),
-    )
+    ),
+    'title' => t('apps & services'),
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu'
+      )
+    ),
+      )
   );
 }
 
@@ -332,33 +332,45 @@ function usanetwork_bottom_footer() {
   }
   $menu_links = menu_load_links($menu['menu_name']);
   foreach ($menu_links as $item) {
+    if ($item['hidden'] == 1) {
+      continue;
+    }
     $items[] = array(
       'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
       'class' => array(
         'menu-item'
-        ),
+      ),
     );
   }
 
-  return  theme('usanetwork_item_list', array(
-      'warpper_attributes' => array(
-        'class' => array(
-          'legal-and-social',
-        ),
+  if ($adchoice = variable_get('usanetwork_footer_ad_choices_text', FALSE)) {
+    $items[] = array(
+      'data' => $adchoice,
+      'class' => array(
+        'menu-item'
       ),
-      'title' => NULL,
-      'items' => $items,
-      'type' => 'ul',
-      'attributes' => array(
-        'class' => array(
-          'menu',
-          'legal-menu',
-        )
+    );
+  }
+
+  return theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'legal-and-social',
       ),
+    ),
+    'title' => NULL,
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu',
+        'legal-menu',
+      )
+    ),
     'suffix' => array(
       variable_get('usanetwork_social_links', ''),
       '<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>',
     ),
-    )
+      )
   );
 }

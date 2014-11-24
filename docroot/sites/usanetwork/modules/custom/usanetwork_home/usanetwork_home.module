@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_home feature.
  */
-
 include_once 'usanetwork_home.features.inc';
 
 /**
@@ -58,6 +58,11 @@ function usanetwork_home_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_home_bspot_cspot'] = array(
+    'info' => t('Homepage: BC Spot'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   return $blocks;
 }
 
@@ -77,6 +82,11 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_shows_queue_block();
       break;
+
+    case 'usanetwork_home_bspot_cspot':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_home_bspot_cspot();
+      break;
   }
 
   return $block;
@@ -84,16 +94,16 @@ function usanetwork_home_block_view($delta = '') {
 
 function _usanetwork_home_promo_carousel() {
   $content = array();
-  
+
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-  
+
   if ($homepage) {
     $nid = reset(array_keys($homepage['node']));
     $homepage_node = node_load($nid);
     $display_carousel = reset(field_get_items('node', $homepage_node, 'field_hp_promo_carousel_display'));
     if ($display_carousel['value'] == 1) {
       $db_select = db_select('node', 'n')
-        ->fields('n', array('nid', 'title'));
+          ->fields('n', array('nid', 'title'));
       $db_select->condition('n.status', '1');
       $db_select->condition('n.type', 'usanetwork_promo');
       $db_select->leftJoin('field_data_field_hp_promo_carousel', 'fdfhpc', 'n.nid=fdfhpc.field_hp_promo_carousel_target_id');
@@ -103,11 +113,11 @@ function _usanetwork_home_promo_carousel() {
       $db_result = $db_select->execute()->fetchAll();
       if ($db_result) {
         $promo_carousel = '';
-        foreach ($db_result as $promo){
+        foreach ($db_result as $promo) {
           $promo_carousel .= '<li class="carousel-item">' . drupal_render(node_view(node_load($promo->nid), 'carousel_promo')) . '</li>';
         }
 
-        $promo_carousel = '<div class="carousel clearfix"><div class="carousel-viewport"><div class="home-carousel"><ul>'.$promo_carousel.'</ul></div></div></div>';
+        $promo_carousel = '<div class="carousel clearfix"><div class="carousel-viewport"><div class="home-carousel"><ul>' . $promo_carousel . '</ul></div></div></div>';
 
         $content['promo_carousel'] = array(
           '#markup' => $promo_carousel,
@@ -116,6 +126,54 @@ function _usanetwork_home_promo_carousel() {
     }
   }
   return $content;
+}
+
+/**
+ * Function for rendering BC spots
+ */
+function _usanetwork_home_bspot_cspot() {
+  $content = array();
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  if ($homepage) {
+    $homepage_node = &drupal_static('homepage_node', FALSE);
+    if (!$homepage_node) {
+      $node_ids = array_keys($homepage['node']);
+      $nid = reset($node_ids);
+      $homepage_node = node_load($nid);
+    }
+
+    foreach (array('bspot' => 'field_usa_hp_brefs', 'cspot' => 'field_usa_hp_crefs') as $spot => $field_name) {
+      $spot_reference = field_get_items('node', $homepage_node, $field_name);
+      if (!$spot_reference) {
+        continue;
+      }
+      if (isset($spot_reference[0]['target_id']) && $promo = node_load($spot_reference[0]['target_id'])) {
+        $promo_data = _usanetwork_promo_featured_content($promo);
+        
+        $type = t('S@season_num episode @episode_num', array(
+            '@season_num' => isset($promo_data['season_number']) ? $promo_data['season_number'] : '', 
+            '@episode_num' => isset($promo_data['episode_number']) ? $promo_data['episode_number'] : '')
+          );
+        
+        $spots_vars = array(
+          'spot_class' => $spot,
+          'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class'] : NULL,
+          'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
+          'spot_image' => isset($promo_data['image_url']) ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array())) : NULL,
+          'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
+          'title' => isset($promo_data['title']) ? $promo_data['title'] : NULL,
+          'caption' => $promo_data['title'],
+          'type' => $type,
+          'time' => $promo_data['time'],
+        );
+        $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
+      }
+    }
+
+    return implode(PHP_EOL, $spots);
+  }
 }
 
 /**
@@ -136,8 +194,9 @@ function usanetwork_home_preprocess_block(&$variables) {
           if (!empty($homepage->field_hp_promo_carousel_title)) {
             $title = reset(field_get_items('node', $homepage, 'field_hp_promo_carousel_title'));
             $block->subject = $title['safe_value'];
-          } 
-        } else {
+          }
+        }
+        else {
           drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/viewportchecker.js', 'file');
           if (!empty($homepage->field_hp_episodes_block_title)) {
             $title = reset(field_get_items('node', $homepage, 'field_hp_episodes_block_title'));
@@ -165,7 +224,7 @@ function usanetwork_home_preprocess_node(&$variables) {
 /**
  * Implements hook_theme().
  */
-function usanetwork_home_theme() {
+function usanetwork_home_theme($existing, $type, $theme, $path) {
   return array(
     // The global template
     'usanetwork_home_shows_queue' => array(
@@ -270,14 +329,32 @@ function usanetwork_home_theme() {
       ),
       'template' => 'templates/usanetwork-home-shows-queue-show-inner-slide',
     ),
+    'usanetwork_home_bcspots' => array(
+      'variables' => array(
+        'spot_class' => NULL,
+        'show_code' => NULL,
+        'url' => NULL,
+        'spot_image' => NULL,
+        'icon_type' => NULL,
+        'title' => NULL,
+        'caption' => NULL,
+        'type' => NULL,
+        'time' => NULL,
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-home-spot'
+    ),
   );
 }
 
 /**
  * Callback for the USA homepage
+ * DEPRICATED FOR NOW.
  */
 function usanetwork_home_landing($day = NULL) {
   $render = array();
+  return $render;
+  /**
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
 
   // return the nodes as full
@@ -286,12 +363,12 @@ function usanetwork_home_landing($day = NULL) {
     $render['homepage']['#prefix'] = '<div class="homepage-content">';
     $render['homepage']['#suffix'] = '</div>';
     $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
-
   }
   else {
     $render['status']['#markup'] = t('No Homepage content available.');
   }
   return $render;
+  */
 }
 
 /**
@@ -312,7 +389,6 @@ function usanetwork_home_admin_landing($day = NULL) {
     $render['homepage']['#prefix'] = '<div class="homepage-content">';
     $render['homepage']['#suffix'] = '</div>';
     $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
-
   }
   else {
     $render['status']['#markup'] = t('No Homepage content added for @day.', array('@day' => $day));
@@ -372,7 +448,7 @@ function usanetwork_home_node_validate($node, $form, &$form_state) {
     $query->condition('n.status', '1', '=');
 
     $num_of_results = $query->execute()->rowCount();
-    if($num_of_results != 0) {
+    if ($num_of_results != 0) {
       form_set_error('', t('There is already a published homepage present for ' . ucfirst($home_day)));
     }
   }
@@ -386,18 +462,18 @@ function usanetwork_home_form_usa_homepage_node_form_alter(&$form, &$form_state)
   $form['field_hp_promo_carousel_title']['#states'] = array(
     'visible' => array(
       ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
-      )
-    );
+    )
+  );
 
   $form['field_hp_promo_carousel']['#states'] = array(
     'visible' => array(
       ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
-      )
-    );
+    )
+  );
 
   $seo_page_title_language = $form['field_seo_page_title']['#language'];
-  if (!isset($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value']) || 
-    empty($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value'])) {
+  if (!isset($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value']) ||
+      empty($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value'])) {
     $form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value'] = variable_get('site_name', '');
   }
 }
@@ -443,7 +519,7 @@ function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_stat
   );
   $minutes = range(0, 59, 1);
   for ($i = 0; $i < 10; $i++) {
-    $minutes[$i] = '0'.$minutes[$i];
+    $minutes[$i] = '0' . $minutes[$i];
   }
   $form['home']['publish']['minute'] = array(
     '#type' => 'select',
@@ -498,7 +574,7 @@ function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_stat
  * Validate callback for publish time.
  */
 function _usanetwork_home_publish_validate($element, &$form_state, $form) {
-  $values =& $form_state['values'];
+  $values = & $form_state['values'];
   $publish = $values['usanetwork_home_publish_time'] . ':';
   if ($values['home']['publish']['minute'] < 10) {
     $publish .= '0';
@@ -628,13 +704,11 @@ function usanetwork_home_globalnav_shows_banner() {
   if (!empty($homepage['node'])) {
     $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
   }
-  
+
   $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
 
   return $content;
- 
 }
-
 
 /**
  * Retrieve more thingie and place them in the syndicate drawer
@@ -650,7 +724,6 @@ function usanetwork_home_globalnav_more_banner() {
   $content = '<div class="globalnav-content-more globalnav-content-replaced" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
 
   return $content;
-
 }
 
 /**
@@ -669,15 +742,15 @@ function _usanetwork_home_get_day() {
 }
 
 /**
-  * Implements hook_preprocess_html()
-  * custom titles for home pages
-  */
+ * Implements hook_preprocess_html()
+ * custom titles for home pages
+ */
 function usanetwork_home_preprocess_html(&$vars) {
   if (drupal_is_front_page()) {
     $head_title = _usanetwork_home_get_field_value('field_seo_page_title');
     if ($head_title != '')
-    $vars['head_title'] = $head_title;
-  }  
+      $vars['head_title'] = $head_title;
+  }
 }
 
 /**
@@ -705,7 +778,6 @@ function _usanetwork_home_get_field_value($field) {
  * Renders Shows Queue block on main page.
  */
 function _usanetwork_home_shows_queue_block() {
-
   $shows_queue = entity_load('queues', FALSE, array(
     'type' => 'tv_shows_queue',
     'title' => 'Homepage Shows'
@@ -989,18 +1061,28 @@ function _usanetwork_home_get_content_default_image($node_wrapper) {
 
 function _usanetwork_home_get_episode_dates($episode_node_wrapper) {
   $episode_node = $episode_node_wrapper->value();
+  $promoted_data = array();
+  $data = array();
+
+  if (!empty($episode_node->nid)) {
+    $promoted_data = _usanetwork_promo_featured_content($episode_node->nid);
+  }
 
   if (!empty($episode_node->field_original_air_date)) {
     $start_date = $episode_node_wrapper->field_original_air_date->value->value();
     $end_date = $episode_node_wrapper->field_original_air_date->value2->value();
     $duration = $end_date - $start_date;
 
-    return array(
+    $data = array(
       'start_date' => $start_date,
       'end_date' => $end_date,
       'duration' => $duration,
     );
   }
 
-  return array();
+  if (!empty($promoted_data['time'])) {
+    $data['duration'] = $promoted_data['time'];
+  }
+
+  return $data;
 }

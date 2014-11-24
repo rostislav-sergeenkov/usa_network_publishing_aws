@@ -100,7 +100,7 @@ function usanetwork_home_field_default_field_bases() {
   // Exported field_base: 'field_hp_nav_img_more'
   $field_bases['field_hp_nav_img_more'] = array(
     'active' => 1,
-    'cardinality' => 4,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_hp_nav_img_more',
@@ -131,7 +131,7 @@ function usanetwork_home_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'global_nav_image' => 'global_nav_image',
+          'usanetwork_promo' => 'usanetwork_promo',
         ),
       ),
       'target_type' => 'node',
@@ -226,7 +226,7 @@ function usanetwork_home_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-// Exported field_base: 'field_hp_promo_carousel_display'
+  // Exported field_base: 'field_hp_promo_carousel_display'
   $field_bases['field_hp_promo_carousel_display'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -399,7 +399,7 @@ function usanetwork_home_field_default_field_bases() {
   // Exported field_base: 'field_usa_hp_brefs'
   $field_bases['field_usa_hp_brefs'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_hp_brefs',
@@ -442,7 +442,7 @@ function usanetwork_home_field_default_field_bases() {
   // Exported field_base: 'field_usa_hp_crefs'
   $field_bases['field_usa_hp_crefs'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_hp_crefs',

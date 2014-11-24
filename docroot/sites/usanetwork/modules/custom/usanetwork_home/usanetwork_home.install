@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Disable usanetwork_home_edit module
+ */
+function usanetwork_home_update_7000() {
+  module_disable(array('usanetwork_home_edit'));
+}

@@ -5,7 +5,8 @@
  */
 function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode = NULL, $options = array()) {
   if (($entity_type == 'node') && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show'))) {
-    foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos', 'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids') as $changed_field) {
+    foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos', 
+        'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more') as $changed_field) {
       //Redefine theme for multiple value
       $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';
       foreach (element_children($form[$changed_field][$form[$changed_field]['#language']]) as $key) {

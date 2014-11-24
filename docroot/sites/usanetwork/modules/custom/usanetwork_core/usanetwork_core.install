@@ -957,3 +957,30 @@ function usanetwork_core_update_7155() {
 function usanetwork_core_update_7156() {
   module_enable(array('usanetwork_schedule'));
 }
+
+/**
+ *  Enables images lazyloading.
+ */
+function usanetwork_core_update_7157() {
+  $to_be_enabled = array(
+    'lazyloader',
+    'context_mobile_detect',
+    'usanetwork_lazyloader',
+  );
+
+  $to_be_disabled = array(
+    'usanetwork_lazy_load',
+  );
+
+  foreach ($to_be_enabled as $new_module) {
+    if (!module_exists($new_module)) {
+      module_enable(array($new_module));
+    }
+  }
+
+  foreach ($to_be_disabled as $old_module) {
+    if (module_exists($old_module)) {
+      module_disable(array($old_module));
+    }
+  }
+}

@@ -7,9 +7,30 @@
   <div class="wrp">
     <div class="node usanetwork-aspot <?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" target="_self">
-        <div class="asset-img">
-          <img src="<?php print $show_poster_url; ?>">
+      <?php if (!empty($show_poster)): ?>
+        <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+          <?php if (!empty($show_poster['300x250'])): ?>
+            <div data-src="<?php print $show_poster['300x250']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['600x500'])): ?>
+            <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['600x500']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['615x350'])): ?>
+            <div data-media="(min-width: 645px)" data-src="<?php print $show_poster['615x350']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['1245x709'])): ?>
+            <div data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['1245x709']; ?>"></div>
+            <div data-media="(min-width: 960px)" data-src="<?php print $show_poster['1245x709']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['2490x1418'])): ?>
+            <div data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['2490x1418']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['1245x709'])): ?>
+            <noscript><img src="<?php print $show_poster['1245x709']; ?>" width="1245" height="709" alt="" title="" /></noscript>
+            <img class="tile-img" alt="" src="<?php print $show_poster['1245x709']; ?>">
+          <?php endif; ?>
         </div>
+      <?php endif; ?>
       </a>
       <div class="slide-content">
         <div class="meta-wrap">

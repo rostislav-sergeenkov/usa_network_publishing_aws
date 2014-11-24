@@ -446,21 +446,6 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'usanetwork-home-spot'
     ),
-    'usanetwork_home_bcspots' => array(
-      'variables' => array(
-        'spot_class' => NULL,
-        'show_code' => NULL,
-        'url' => NULL,
-        'spot_image' => NULL,
-        'icon_type' => NULL,
-        'title' => NULL,
-        'caption' => NULL,
-        'type' => NULL,
-        'time' => NULL,
-      ),
-      'path' => $path . '/templates',
-      'template' => 'usanetwork-home-spot'
-    ),
     'usanetwork_home_featured_promo' => array(
       'variables' => array(
         'show_code' => NULL,

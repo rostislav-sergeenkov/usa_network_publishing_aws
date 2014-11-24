@@ -2569,12 +2569,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'media_gallery' => 'media_gallery',
-          'person' => 'person',
-          'post' => 'post',
-          'tv_episode' => 'tv_episode',
           'usanetwork_promo' => 'usanetwork_promo',
-          'usanetwork_promo_iframe' => 'usanetwork_promo_iframe',
         ),
       ),
       'target_type' => 'node',
@@ -2661,7 +2656,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'tv_episode' => 'tv_episode',
           'usanetwork_promo' => 'usanetwork_promo',
         ),
       ),
@@ -2705,9 +2699,6 @@ function usanetwork_tv_shows_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'media_gallery' => 'media_gallery',
-          'tv_episode' => 'tv_episode',
-          'tv_show' => 'tv_show',
           'usanetwork_promo' => 'usanetwork_promo',
         ),
       ),

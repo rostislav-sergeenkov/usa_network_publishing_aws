@@ -62,11 +62,6 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
-  $blocks['usanetwork_menu_sm_upcoming'] = array(
-    'info' => t('Homepage Menu: Upcoming show episodes'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-
   $blocks['usanetwork_menu_sm_now_and_next'] = array(
     'info' => t('Homepage Menu: On now and Up next'),
     'cache' => DRUPAL_NO_CACHE,
@@ -135,11 +130,6 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_primetime':
       $block['subject'] = t('Primetime tonight');
       $block['content'] = _usanetwork_menu_show_menu_primetime_block();
-      break;
-
-    case 'usanetwork_menu_sm_upcoming':
-      $block['subject'] = t('Upcoming show episodes');
-      $block['content'] = _usanetwork_menu_show_menu_upcoming_episodes_block();
       break;
 
     case 'usanetwork_menu_sm_now_and_next':
@@ -239,28 +229,6 @@ function usanetwork_menu_theme() {
         'elements' => NULL,
       ),
       'template' => 'templates/usanetwork-menu-smnav-primetime-container',
-    ),
-    'usanetwork_menu_smnav_upcoming_element_item' => array(
-      'variables' => array(
-        'image_url' => NULL,
-        'image' => NULL,
-        'show_name' => NULL,
-        'episode_title' => NULL,
-        'episode_day' => NULL,
-        'episode_time' => NULL,
-        'episode_interval' => NULL,
-        'episode_description' => NULL,
-        'node_url' => NULL,
-        'syndicated_url' => NULL,
-        'episode_full_url' => NULL,
-      ),
-      'template' => 'templates/usanetwork-menu-smnav-upcoming-element-item',
-    ),
-    'usanetwork_menu_smnav_upcoming_element_container' => array(
-      'variables' => array(
-        'elements' => NULL,
-      ),
-      'template' => 'templates/usanetwork-menu-smnav-upcoming-element-container',
     ),
     'usanetwork_menu_smnav_now_next' => array(
       'variables' => array(

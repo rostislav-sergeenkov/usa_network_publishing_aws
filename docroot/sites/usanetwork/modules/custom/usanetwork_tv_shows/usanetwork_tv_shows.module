@@ -9,6 +9,66 @@ include_once 'usanetwork_tv_shows.features.inc';
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 
 /**
+ *  Implements hook_block_info().
+ */
+function usanetwork_tv_shows_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_tv_shows_aspot'] = array(
+    'info' => t('TV Shows: A-Spot'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_tv_shows_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_tv_shows_aspot':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_aspot_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_tv_shows_aspot' => array(
+      'variables' => array(
+        'show' => array(
+          'image_url' => NULL,
+          'title_prefix' => NULL,
+          'title' => NULL,
+          'cta' => array(
+            'text' => NULL,
+          ),
+        ),
+        'episodes' => array(
+          0 => array(
+            'url' => NULL,
+            'title' => NULL,
+            'series_and_number' => NULL,
+            'duration' => NULL,
+            'image_url' => NULL,
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-aspot',
+    ),
+  );
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  * this is a straight rip from pub_tv old relations fields
  */
@@ -458,4 +518,62 @@ function usanetwork_tv_shows_footer_links() {
       ),
     )
   );
+}
+
+/**
+ * Renders A-Spot block for Show.
+ */
+function _usanetwork_tv_shows_aspot_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+
+  if (!empty($show_node)) {
+    $title_prefix = t('New episode');
+    $title_prefix_field = field_get_items('node', $show_node, 'field_usa_tv_tune_in_date');
+    $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
+
+    if (!empty($title_prefix_field)) {
+      $title_prefix = reset(reset($title_prefix_field));
+    }
+
+
+
+    $theme_variables = array(
+      'show' => array(
+        'image_url' => NULL,
+        'title_prefix' => $title_prefix,
+        'title' => NULL,
+        'cta' => array(
+          'text' => NULL,
+        ),
+      ),
+      'episodes' => array(
+        0 => array(
+          'url' => NULL,
+          'title' => NULL,
+          'series_and_number' => NULL,
+          'duration' => NULL,
+          'image_url' => NULL,
+        ),
+      ),
+    );
+
+    if (!empty($show_episodes)) {
+      foreach ($show_episodes as $episode_data) {
+        $episode_related = _usanetwork_promo_featured_content($episode_data->nid);
+        //die('<pre>'.print_r($episode_related, true).'</pre>');
+        $episode_duration = ($episode_data->end_time - $episode_data->start_time) / 1000;
+        $episode_theme_variables = array(
+          'url' => !empty($episode_data->nid)
+            ? url('node/' . $episode_data->nid)
+            : '',
+          'title' => $episode_data->title,
+          'series_and_number' => 'S' . $episode_data->season_number . ' ' . t('Episode') . ' ' . $episode_data->season_episode_number,
+          'duration' => NULL,
+          'image_url' => NULL,
+        );
+      }
+    }
+  }
+
+  return '';
 }

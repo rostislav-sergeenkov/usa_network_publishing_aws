@@ -233,3 +233,14 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
 
   return $query->execute()->fetchAll();
 }
+
+function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 5) {
+  $query = db_select('usanetwork_schedule', 's');
+  $query->join('node', 'n', 's.title=n.title');
+  $query->fields('s', array());
+  $query->fields('n', array('nid'));
+  $query->orderBy('s.start_time', 'DESC');
+  $query->range(0, $limit);
+
+  return $query->execute()->fetchAll();
+}

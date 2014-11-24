@@ -10,9 +10,9 @@
         <?php if (!empty($show_title)): ?>
           <div class="meta-show"><?php print $show_title; ?></div>
         <?php endif; ?>
-        <?php if (!empty($show_schedule_day) && !empty($show_schedule_time)): ?>
+        <?php if (!empty($show_schedule_date) && !empty($show_schedule_date)): ?>
           <div class="meta-show-schedule">
-            <span><?php print $show_schedule_day; ?></span><?php print $show_schedule_time; ?>
+            <span><?php print $show_schedule_date; ?></span>
           </div>
         <?php endif ;?>
       </div>
@@ -53,6 +53,9 @@
           <?php endif; ?>
           <?php if (!empty($social_icons['googleplus'])): ?>
             <a class="googleplus" href="<?php print $social_icons['googleplus']['url']; ?>"></a>
+          <?php endif; ?>
+          <?php if (!empty($social_icons['tumblr'])): ?>
+            <a class="tumblr" href="<?php print $social_icons['tumblr']['url']; ?>"></a>
           <?php endif; ?>
         </div>
       <?php endif; ?>

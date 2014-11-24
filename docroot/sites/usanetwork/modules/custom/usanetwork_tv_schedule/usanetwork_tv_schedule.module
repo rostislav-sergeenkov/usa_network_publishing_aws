@@ -1446,13 +1446,6 @@ function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
 }
 
 /**
- * Selects from program $length (default=2) upcoming episodes using title of Show node.
- */
-function _usanetwork_tv_schedule_get_upcoming_episodes($show_node, $length = 2) {
-  return usanetwork_schedule_pull_upcoming_episodes($show_node->nid, $length, 0);
-}
-
-/**
  * Returns primetime items.
  */
 function _usanetwork_tv_schedule_get_primetime_items($limit = USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH) {

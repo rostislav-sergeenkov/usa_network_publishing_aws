@@ -478,61 +478,6 @@ function _usanetwork_menu_show_menu_primetime_block() {
 }
 
 /**
- * Renders block of upcoming episodes.
- */
-function _usanetwork_menu_show_menu_upcoming_episodes_block() {
-  $elements = array();
-  $node = _usanetwork_menu_show_menu_get_current_show_node();
-
-  if (!empty($node)) {
-    $episodes = _usanetwork_tv_schedule_get_upcoming_episodes($node);
-
-    if (!empty($episodes)) {
-      foreach ($episodes as $episode) {
-        $preview_image = NULL;
-        $image_uri = _usanetwork_menu_show_menu_get_image_preview_url($episode->episode_nid, 'tv_episode');
-
-        if (!empty($image_uri)) {
-          $preview_image = theme('image', array(
-            'path' => $image_uri,
-            'attributes' => array(
-              'class' => array(
-                'upcoming-episodes-preview-image'
-              ),
-            ),
-          ));
-        }
-
-        $elements[] = theme('usanetwork_menu_smnav_upcoming_element_item', array(
-          'image_url' => $image_uri,
-          'image' => $preview_image,
-          'show_name' => $episode->show_title,
-          'episode_title' => $episode->title,
-          'episode_day' => date('l', $episode->start_time),
-          'episode_time' => date('g:i', $episode->start_time),
-          'episode_interval' => date('A', $episode->start_time),
-          'episode_description' => $episode->program_description,
-          'node_url' => !empty($episode->episode_nid)
-            ? url('node/' . $episode->episode_nid)
-            : '',
-          'show_nid' => $episode->show_nid,
-          'syndicated_url' => _usanetwork_menu_get_reminder_url($episode->show_nid),
-          'episode_full_url' => '#',
-        ));
-      }
-    }
-  }
-
-  if (!empty($elements)) {
-    return theme('usanetwork_menu_smnav_upcoming_element_container', array(
-      'elements' => $elements,
-    ));
-  }
-
-  return '';
-}
-
-/**
  * Renders Show Menu.
  */
 function _usanetwork_menu_render_show_menu_block() {

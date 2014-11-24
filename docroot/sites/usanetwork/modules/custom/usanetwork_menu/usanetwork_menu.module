@@ -176,7 +176,15 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_aspot_ot':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_menu_aspot_onnow_tonight_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/jquery.carouFredSel.min.js',
+            path_to_theme('aurora_usa') . '/javascripts/schedule-tonight.js',
+          ),
+        ),
+      );
       break;
 
     case 'usanetwork_menu_consumptionator':

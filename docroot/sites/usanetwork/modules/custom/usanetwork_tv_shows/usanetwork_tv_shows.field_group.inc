@@ -1035,6 +1035,10 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
       1 => 'field_tvs_mobile_cimage',
+      2 => 'field_tvs_promoted_content',
+      3 => 'field_tvs_inside_the_episode',
+      4 => 'field_tvs_what_is_next',
+      5 => 'field_tvs_ymal',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -7,7 +7,9 @@
   <div class="wrp">
     <div class="node usanetwork-aspot <?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" target="_self">
-        <img src="<?php print $show_poster_url; ?>">
+        <div class="asset-img">
+          <img src="<?php print $show_poster_url; ?>">
+        </div>
       </a>
       <div class="slide-content">
         <div class="meta-wrap">
@@ -34,7 +36,7 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php if (!empty($social_meter)): ?>
+        <?php /*if (!empty($social_meter)): ?>
           <div class="social-meter"<?php if (!empty($social_meter['style'])): print ' style="' . $social_meter['style'] . '"'; endif; ?>>
             <div class="subscribe-and-hot">
               <div class="subscribe show-color show-border">
@@ -53,7 +55,7 @@
               <a href="<?php print $social_meter['link']['url']; ?>" class="<?php $social_meter['link']['class']; ?>"><?php print $social_meter['link']['text']; ?></a>
             <?php endif; ?>
           </div>
-        <?php endif; ?>
+        <?php endif; */?>
       </div>
     </div>
   </div>

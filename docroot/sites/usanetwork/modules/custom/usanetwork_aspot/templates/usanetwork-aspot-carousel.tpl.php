@@ -9,4 +9,5 @@
       <?php print $slide; ?>
     <?php endforeach; ?>
   </div>
+  <div class="next-button"></div>
 <?php endif; ?>

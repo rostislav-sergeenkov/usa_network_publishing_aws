@@ -311,7 +311,6 @@ function _usanetwork_aspot_carousel_block() {
       $theme_array = array(
         'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
         'show_class' => usanetwork_tv_shows_color_show_css_class($carousel_node['show_node']),
-        //'show_poster_url' => $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value(),
         'show_poster' => array(
           '300x250' => image_style_url('300x250', $banner_mobile),
           '600x500' => image_style_url('600x500', $banner_mobile),

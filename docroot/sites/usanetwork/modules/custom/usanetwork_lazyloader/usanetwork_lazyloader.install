@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function usanetwork_lazyloader_install() {
+  db_query("UPDATE {system} SET weight = 2900 WHERE name = 'usanetwork_lazyloader'");
+}

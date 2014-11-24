@@ -185,7 +185,16 @@ function usanetwork_aspot_block_view($delta = '') {
     // Looks like this block only for testing.
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_aspot_carousel_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_aspot_carousel_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
+            path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+            path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
+          ),
+        ),
+      );
       break;
   }
 
@@ -426,7 +435,7 @@ function _usanetwork_aspot_get_homepage_aspot_nodes() {
         if (empty($aref['entity'])) {
           $aref['entity'] = node_load($aref['target_id']);
         }
-        
+
         $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
         $aspot_node = $aref['entity'];
 

@@ -16548,6 +16548,272 @@ a[class*="day"] {
   }
 }
 
+#main {
+  padding: 0 !important;
+}
+
+.schedule-on-tonight {
+  background: #2c2c2c;
+  height: 120px;
+  margin-right: 120px;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .schedule-on-tonight {
+    display: none;
+  }
+}
+.schedule-on-tonight .view-schedule {
+  height: 120px;
+  position: absolute;
+  right: -120px;
+  top: 0;
+  width: 120px;
+  z-index: 1;
+}
+.schedule-on-tonight .view-schedule a {
+  background: #222221;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  width: 100%;
+}
+.schedule-on-tonight .view-schedule a span {
+  color: #ffffff;
+  display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 auto;
+  padding-top: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 70px;
+}
+.schedule-on-tonight .schedule-buttons {
+  position: absolute;
+  top: 0;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+.schedule-on-tonight .schedule-buttons.on-tonight {
+  left: 0;
+}
+.schedule-on-tonight .schedule-buttons.on-now {
+  left: 100%;
+  margin-left: -240px;
+}
+.schedule-on-tonight .schedule-buttons a {
+  background: #474747;
+  color: #ffffff;
+  display: block;
+  float: left;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  height: 120px;
+  line-height: 80px;
+  letter-spacing: 2px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 120px;
+}
+.schedule-on-tonight .schedule-buttons a.disabled {
+  background: transparent;
+  cursor: default;
+}
+.schedule-on-tonight .schedule-buttons a:after {
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  top: 50%;
+}
+.schedule-on-tonight .schedule-buttons a.on-now:after {
+  content: "\e607";
+}
+.schedule-on-tonight .schedule-buttons a.on-tonight:after {
+  content: "\e608";
+}
+.schedule-on-tonight .schedule-block {
+  float: left;
+  height: 120px;
+}
+.schedule-on-tonight .schedule-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.schedule-on-tonight .schedule-block.on-tonight {
+  margin-left: 240px;
+}
+.schedule-on-tonight .schedule-block.on-tonight .schedule-item {
+  float: left;
+  margin-top: 25px;
+  max-width: 400px;
+  width: 30%;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
+    width: 33%;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
+    width: 50%;
+  }
+  .schedule-on-tonight .schedule-block.on-tonight .schedule-item:nth-child(3) {
+    display: none;
+  }
+}
+.schedule-on-tonight .schedule-block.on-tonight .schedule-item:first-child {
+  margin-left: 10%;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-tonight .schedule-item:first-child {
+    margin-left: 0;
+  }
+}
+@media (min-width: 769px) and (max-width: 990px) {
+  .schedule-on-tonight .schedule-block.on-tonight .episode-show {
+    max-width: 100px;
+  }
+}
+.schedule-on-tonight .schedule-block.on-now {
+  margin-right: 240px;
+}
+.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper {
+  text-align: right;
+}
+.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 25px;
+  padding-right: 10px;
+  max-width: 400px;
+  text-align: left;
+  vertical-align: top;
+  width: 49%;
+}
+.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
+    margin-top: 5px;
+  }
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item:first-child {
+    margin-left: 0;
+  }
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+    float: none;
+  }
+  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+    float: none;
+  }
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block.on-now .episode-show {
+    max-width: 226px;
+  }
+}
+.schedule-on-tonight .schedule-block .time {
+  color: #606060;
+  float: left;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  margin-right: 25px;
+  text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block .time {
+    margin-right: 15px;
+  }
+}
+.schedule-on-tonight .schedule-block .time span {
+  color: #ffffff;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 3px;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block .time span {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+.schedule-on-tonight .schedule-block .time span.time-color {
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+.schedule-on-tonight .schedule-block .episode-info {
+  color: #ffffff;
+  float: left;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-top: 9px;
+  text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block .episode-info {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 1024px) {
+  .schedule-on-tonight .schedule-block .episode-info {
+    line-height: 14px;
+  }
+}
+.schedule-on-tonight .schedule-block .episode-show {
+  height: 30px;
+  line-height: 1.2;
+  max-width: 130px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 1280px) {
+  .schedule-on-tonight .schedule-block .episode-show {
+    margin-bottom: 5px;
+  }
+}
+.schedule-on-tonight .schedule-block .icons-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.schedule-on-tonight .schedule-block .icons-block a {
+  color: #606060;
+}
+
 .snipe-active #block-usanetwork-blocks-usa-meganav {
   display: none;
 }

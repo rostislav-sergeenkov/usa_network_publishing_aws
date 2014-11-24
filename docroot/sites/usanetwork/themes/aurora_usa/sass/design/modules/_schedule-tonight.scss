@@ -1,0 +1,234 @@
+#main{
+  padding: 0!important;
+}
+.schedule-on-tonight {
+  background: $schedule-tonight;
+  height: 120px;
+  margin-right: 120px;
+  position: relative;
+  @include breakpoint($bp-768-width) {
+    display: none;
+  }
+  .view-schedule {
+    height: 120px;
+    position: absolute;
+    right: -120px;
+    top: 0;
+    width: 120px;
+    z-index: 1;
+    a {
+      background: $schedule-view-back;
+      display: block;
+      height: 100%;
+      text-decoration: none;
+      width: 100%;
+      span {
+        color: #ffffff;
+        display: block;
+        font-family: $avalon-medium;
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 0 auto;
+        padding-top: 45px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 70px;
+      }
+    }
+  }
+  .schedule-buttons {
+    position: absolute;
+    top: 0;
+    -webkit-transition-property: left;
+    -moz-transition-property: left;
+    -o-transition-property: left;
+    transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease;
+    -moz-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+    &.on-tonight {
+      left: 0;
+    }
+    &.on-now {
+      left: 100%;
+      margin-left: -240px;
+    }
+    a {
+      background: $schedule-on-now;
+      color: #ffffff;
+      display: block;
+      float: left;
+      font-family: $avalon-medium;
+      font-size: 12px;
+      height: 120px;
+      line-height: 80px;
+      letter-spacing: 2px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 120px;
+      &.disabled {
+        background: transparent;
+        cursor: default;
+      }
+      &:after {
+        color: #ffffff;
+        display: block;
+        font-family: $ico-font;
+        font-size: 20px;
+        line-height: 20px;
+        left: 50%;
+        margin-left: -10px;
+        position: absolute;
+        top: 50%;
+      }
+      &.on-now {
+        &:after {
+          content: "\e607";
+        }
+      }
+      &.on-tonight {
+        &:after {
+          content: "\e608";
+        }
+      }
+    }
+  }
+  .schedule-block {
+    float: left;
+    height: 120px;
+    @include clear();
+    &.on-tonight {
+      margin-left: 240px;
+      .schedule-item {
+        float: left;
+        margin-top: 25px;
+        max-width: 400px;
+        width: 30%;
+        @include breakpoint($bp-1280-width) {
+          width: 33%;
+        }
+        @include breakpoint($bp-1024-width) {
+          width: 50%;
+          &:nth-child(3) {
+            display: none;
+          }
+        }
+        &:first-child {
+          margin-left: 10%;
+          @include breakpoint($bp-1280-width) {
+            margin-left: 0;
+          }
+        }
+      }
+      .episode-show {
+        @include breakpoint($between-769-990) {
+          max-width: 100px;
+        }
+      }
+    }
+    &.on-now {
+      margin-right: 240px;
+      .schedule-item-wrapper {
+        @include clear;
+        text-align: right;
+        .schedule-item {
+          @include clear;
+          display: inline-block;
+          box-sizing: border-box;
+          margin-top: 25px;
+          padding-right: 10px;
+          max-width: 400px;
+          text-align: left;
+          vertical-align: top;
+          width: 49%;
+          @include breakpoint($bp-1280-width) {
+            margin-top: 5px;
+            &:first-child {
+              margin-left: 0;
+            }
+            .time {
+              float: none;
+            }
+            .episode-info {
+              float: none;
+            }
+          }
+        }
+      }
+      .episode-show {
+        @include breakpoint($bp-1280-width) {
+          max-width: 226px;
+        }
+      }
+    }
+    .time {
+      color: $schedule-pm-color;
+      float: left;
+      font-family: $avalon-demi;
+      font-size: 12px;
+      line-height: 12px;
+      letter-spacing: 0.5px;
+      margin-right: 25px;
+      text-transform: uppercase;
+      @include breakpoint($bp-1280-width) {
+        margin-right: 15px;
+      }
+      span {
+        color: #ffffff;
+        font-family: $avalon-demi;
+        font-size: 36px;
+        line-height: 48px;
+        letter-spacing: 3px;
+        @include breakpoint($bp-1280-width) {
+          font-size: 28px;
+          line-height: 36px;
+        }
+        &.time-color {
+          font-family: $avalon-demi;
+          font-size: 12px;
+          line-height: 12px;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .episode-info {
+      color: #ffffff;
+      float: left;
+      font-family: $avalon-medium;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      margin-top: 9px;
+      text-transform: uppercase;
+      @include breakpoint($bp-1280-width) {
+        margin-top: 6px;
+      }
+      @include breakpoint($bp-1024-width) {
+        line-height: 14px;
+      }
+    }
+    .episode-show {
+      height: 30px;
+      line-height: 1.2;
+      max-width: 130px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include breakpoint($bp-1280-width) {
+        margin-bottom: 5px;
+      }
+    }
+    .icons-block {
+      @include clear;
+      a {
+        color: $schedule-pm-color;
+      }
+    }
+  }
+}

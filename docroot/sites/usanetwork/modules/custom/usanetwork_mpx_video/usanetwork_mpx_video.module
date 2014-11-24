@@ -1443,6 +1443,8 @@ function usanetwork_mpx_video_views_query_alter(&$view, &$query) {
         ->condition('type', array('audio', 'document', 'image', 'mpx_player', 'video'), 'NOT IN')
         ->condition('published', '1');
       $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = fs.fid');
+      $subquery->join('field_data_field_mpx_full_episode', 'fdfmfe', 'fdfmfe.entity_id = fs.fid');
+      $subquery->condition('fdfmfe.field_mpx_full_episode_value', '1');
       $subquery->leftJoin('mpx_video', 'mv', 'fs.fid = mv.fid');
       $subquery->join($subsubquery, 'subsub', 'subsub.max_data = mv.airdate and fdfs.field_show_target_id = subsub.field_show_target_id');
       $subquery->addExpression('MAX(fs.fid)', 'max_fid');
@@ -1867,8 +1869,10 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   $videos_query->condition('x.access', 1);
   $videos_query->condition('x.status', 1);
   $videos_query->condition($episode_length_condition);
+  $videos_query->isNotNull('fdfs.field_show_target_id');
   $videos_query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
   $videos_query->leftJoin('field_data_field_mpx_full_episode', 'mfe', 'x.id = mfe.entity_id');
+  $videos_query->leftJoin('field_data_field_show', 'fdfs', 'x.id = fdfs.entity_id');
   $videos_query->leftJoin('mpx_video', 'mv', 'x.id = mv.fid');
   $videos_query->range(0, $limit);
   $videos_query->orderBy('x.lastmod', 'DESC');

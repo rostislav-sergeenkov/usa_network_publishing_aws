@@ -15,14 +15,14 @@
     </a>
   <?php endif; ?>
   <div class="title-overlay meta">
+    <?php if (!empty($caption)): ?>
+      <div class="title"><?php print $caption; ?></div>
+    <?php endif; ?>
     <?php if (!empty($title)): ?>
-      <div class="title"><?php print $title; ?></div>
-    <?php endif; ?>
-    <?php if (!empty($type) && !empty($time)): ?>
-      <div class="type-and-time"><span><?php print $type; ?></span> <?php print $time; ?></div>
-    <?php endif; ?>
-    <?php if (!empty($subtitle)): ?>
-      <div class="type-and-time"><?php print $subtitle; ?></div>
+      <div class="type-and-time"><span><?php print $title; ?></span>
+      <?php if (!empty($time)): ?>
+        <?php print $time; ?></div>
+      <?php endif; ?>
     <?php endif; ?>
     <?php if (!empty($cta_text)): ?>
        <div class="caption"><?php print $cta_text; ?></div>

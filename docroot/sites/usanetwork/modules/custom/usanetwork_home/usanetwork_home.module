@@ -48,11 +48,6 @@ function usanetwork_home_menu() {
 function usanetwork_home_block_info() {
   $blocks = array();
 
-  $blocks['usanetwork_home_promo_carousel'] = array(
-    'info' => t('Homepage: Promo Carousel'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   $blocks['usanetwork_home_shows_queue'] = array(
     'info' => t('Homepage: Shows block'),
     'cache' => DRUPAL_NO_CACHE,
@@ -78,11 +73,6 @@ function usanetwork_home_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usanetwork_home_promo_carousel':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_home_promo_carousel();
-      break;
-
     case 'usanetwork_home_shows_queue':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_shows_queue_block();

@@ -166,9 +166,10 @@ function _usanetwork_promo_featured_content($promo) {
       $featutred_content = array(
         'url' => url('file/' . $file->fid),
         'image_url' => $wrapper->getLocalThumbnailPath(),
-        'title' => isset($title)
+        'caption' => isset($title)
             ? $title
             : NULL,
+        'title' => $file->filename,
         'subtitle' => NULL,
         'season_number' => isset($season_number['value'])
             ? $season_number['value']
@@ -176,7 +177,6 @@ function _usanetwork_promo_featured_content($promo) {
         'episode_number' => isset($episode_number['value'])
             ? $episode_number['value']
             : NULL,
-        'type' => $file->filename,
         'time' => isset($duration)
             ? $duration
             : NULL,
@@ -223,7 +223,6 @@ function _usanetwork_promo_featured_content($promo) {
         'subtitle' => isset($promo_text_line_1)
             ? $promo_text_line_1
             : NULL,
-        'type' => NULL,
         'time' => NULL,
         'cta_text' => isset($subtitle)
             ? $subtitle
@@ -266,15 +265,15 @@ function _usanetwork_promo_featured_content($promo) {
         'image_url' => isset($image)
             ? $image
             : NULL,
-        'title' => $node->title,
-        'subtitle' => isset($promo_text_line_1)
+        'caption' => isset($promo_text_line_1)
             ? $promo_text_line_1
             : NULL,
-        'type' => NULL,
-        'time' => NULL,
-        'cta_text' => isset($subtitle)
+        'title' => isset($subtitle)
             ? $subtitle
             : NULL,
+        'subtitle' => NULL,
+        'time' => NULL,
+        'cta_text' => NULL,
         'show_class' => isset($show_class)
             ? $show_class
             : '',

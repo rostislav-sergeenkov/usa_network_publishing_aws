@@ -237,7 +237,7 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
 /**
  * Pulls latest episodes from show $show_nid with limit $limit items using mpx_file data.
  */
-function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 5) {
+function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
   $query = db_select('file_managed', 'f')->fields('f', array('fid'));
   $query->condition('f.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
   $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
@@ -254,7 +254,10 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 5) {
   $query->fields('v', array('title'));
   $query->condition('v.status', 1);
   $query->orderBy('v.airdate', 'DESC');
-  $query->range(0, $limit);
+
+  if ($limit > 0) {
+    $query->range(0, $limit);
+  }
 
   return $query->execute()->fetchAll();
 }

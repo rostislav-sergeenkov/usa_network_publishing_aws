@@ -325,19 +325,9 @@ function usanetwork_tv_shows_display_block_view($delta) {
   return $block;
 }
 
-function _usanetwork_tv_shows_display_latest($show) {
-  $related_to_show = _usanetwork_tv_shows_get_related_content($show->nid, 20);
-
-
-
-  $description_vars = array(
-    'caption' => t('All new!'),
-    'title' => t('Latest'),
-    'additional_text' => t('Photos, polls & more'),
-  );
-
-  foreach (array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text') as $target => $field_name) {
-
+function _usanetwork_tv_shows_display_discription_item($show, $field_list, &$description_vars) {
+  
+  foreach ($field_list as $target => $field_name) {
     $field_value = field_get_items('node', $show, $field_name);
     if ($field_value) {
       $field = reset($field_value);
@@ -357,6 +347,18 @@ function _usanetwork_tv_shows_display_latest($show) {
       }
     }
   }
+}
+
+function _usanetwork_tv_shows_display_latest($show) {
+  $related_to_show = _usanetwork_tv_shows_get_related_content($show->nid, 20);
+
+  $description_vars = array(
+    'caption' => t('All new!'),
+    'title' => t('Latest'),
+    'additional_text' => t('Photos, polls & more'),
+  );
+  
+  _usanetwork_tv_shows_display_discription_item($show, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
 
   $output[] = theme('usanetwork_home_carousel_description_item', $description_vars);
 
@@ -365,66 +367,45 @@ function _usanetwork_tv_shows_display_latest($show) {
     $entity = entity_load_single($entity_data->entity_type, $entity_data->entity_id);
 
     if ($entity_data->entity_type == 'node') {
-      switch ($entity_data->bundle) {
-        case 'media_gallery':
-
-          break;
-        default:
-          break;
-      }
+      $type = $entity_data->bundle;
     }
     else if ($entity_data->entity_type == 'file') {
-      switch ($entity->filemime) {
-        case 'video/mpx':
-          $wrapper = file_stream_wrapper_get_instance_by_uri($entity->uri);
-          $image = theme_image_style(array(
-            'style_name' => '300x250',
-            'path' => $wrapper->getLocalThumbnailPath(),
-            'width' => 300,
-            'height' => 250,
-          ));
-
-          if ($duration_field_value = field_get_items('file', $entity, 'field_mpx_duration')) {
-            $duration_field = reset($duration_field_value);
-            $duration = gmdate("H:i:s", $duration_field['value']);
-          }
-
-          if ($season_number_field = field_get_items('file', $entity, 'field_mpx_season_number')) {
-            $season_number = reset($season_number_field);
-          }
-
-          if ($episode_number_field = field_get_items('file', $entity, 'field_mpx_full_episode')) {
-            $episode_number = reset($episode_number_field);
-          }
-
-          if (isset($season_number) && isset($episode_number)) {
-            $additional = t('S@season_num episode @episode_num', array(
-              '@season_num' => isset($season_number)
-                  ? $season_number
-                  : '',
-              '@episode_num' => isset($episode_number)
-                  ? $episode_number
-                  : '')
-            );
-          }
-
-          $latest_items[] = theme('usanetwork_tv_shows_latest_item', array(
-            'item_title' => NULL,
-            'show_class' => NULL,
-            'url' => url('file/' . $entity->fid),
-            'show_title' => $show->title,
-            'additional' => isset($additional) ? $additional : NULL,
-            'duration' => $duration,
-            'icon_type' => 'play-icon',
-            'image' => $image,
-              )
-          );
-
-          break;
-        default:
-          break;
-      }
+      $type = $entity->filemime;
     }
+    else {
+      continue;
+    }
+
+    $related_content_data = _usanetwork_related_content($type, $entity, FALSE);
+
+    if ($related_content_data['season_number'] && $related_content_data['episode_number']) {
+      $additional = t('S@season_num episode @episode_num', array(
+        '@season_num' => $related_content_data['season_number']['value'],
+        '@episode_num' => $related_content_data['episode_number']['value']
+          )
+      );
+    }
+
+    $image = theme_image_style(array(
+      'style_name' => '300x250',
+      'path' => $related_content_data['image_url'],
+      'width' => 300,
+      'height' => 250,
+    ));
+
+    $latest_items[] = theme('usanetwork_tv_shows_latest_item', array(
+      'item_title' => NULL,
+      'show_class' => NULL,
+      'url' => $related_content_data['url'],
+      'show_title' => $show->title,
+      'additional' => isset($additional)
+          ? $additional
+          : NULL,
+      'duration' => $related_content_data['time'],
+      'icon_type' => $related_content_data['icon_type'],
+      'image' => $image,
+        )
+    );
   }
   $output[] = theme('usanetwork_item_list', array(
     'warpper_attributes' => array(

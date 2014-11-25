@@ -282,10 +282,6 @@ function _usanetwork_aspot_carousel_block() {
 
       $banner_images = array();
 
-      $banner_desktop = '';
-      $banner_mobile = '';
-      $banner_tablet = '';
-
       if (!empty($draggable_data)) {
         $draggable_data = json_decode($draggable_data);
       }

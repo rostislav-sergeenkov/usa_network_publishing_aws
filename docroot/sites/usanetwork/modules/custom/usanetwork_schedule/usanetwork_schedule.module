@@ -263,11 +263,11 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 5) {
  * Pulls nearest episode from show $show_nid.
  */
 function usanetwork_schedule_get_nearest_episode_airtime($show_nid) {
-  $query = db_select('field_data_field_show', 's');
+  $query = db_select('file_managed', 'f');
   $query->fields('f', array('fid'));
+  $query->leftJoin('field_data_field_show', 's', 's.entity_id=f.fid');
+  $query->leftJoin('mpx_video', 'v', 'v.fid=f.fid');
   $query->fields('v', array('airdate'));
-  $query->leftJoin('file_managed', 'f', 's.entity_id=f.fid');
-  $query->leftJoin('mpx_video', 'v', 'f.fid=v.fid');
   $query->condition('s.field_show_target_id', $show_nid);
   $query->condition('s.entity_type', 'file');
   $query->condition('v.airdate', REQUEST_TIME, '>');

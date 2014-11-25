@@ -205,8 +205,8 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
 /**
  * Pulls current item from schedule.
  */
-function usanetwork_schedule_pull_on_now_item($time_corellation = 0) {
-  $time = REQUEST_TIME + $time_corellation;
+function usanetwork_schedule_pull_on_now_item($time_correlation = 0) {
+  $time = REQUEST_TIME + $time_correlation;
 
   return usanetwork_schedule_pull_by_time($time, 1, 'DESC');
 }
@@ -214,8 +214,8 @@ function usanetwork_schedule_pull_on_now_item($time_corellation = 0) {
 /**
  * Pulls next item from schedule.
  */
-function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
-  $time = REQUEST_TIME + $time_corellation;
+function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
+  $time = REQUEST_TIME + $time_correlation;
 
   $query = db_select('usanetwork_schedule', 's');
   $query->leftJoin('node', 'n', 's.show_title=n.title');

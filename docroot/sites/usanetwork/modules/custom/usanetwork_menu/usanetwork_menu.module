@@ -38,6 +38,14 @@ function usanetwork_menu_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/render-onnow-tonight/%'] = array(
+    'title' => 'On now / Tonight',
+    'page callback' => '_usanetwork_menu_aspot_onnow_tonight_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -181,7 +189,6 @@ function usanetwork_menu_block_view($delta = '') {
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/jquery.carouFredSel.min.js',
-            path_to_theme('aurora_usa') . '/javascripts/schedule-tonight.js',
           ),
         ),
       );
@@ -819,8 +826,34 @@ function _usanetwork_menu_consumptionator_block() {
  * Renders OnNow, Tonight at the bottom of the A-Spot carousel.
  */
 function _usanetwork_menu_aspot_onnow_tonight_block() {
-  $on_now = usanetwork_schedule_pull_on_now_item();
-  $up_next = usanetwork_schedule_pull_up_next_item();
+
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $block_form = array();
+
+  $spinner_options = array(
+    'path' => drupal_get_path('theme', 'aurora_usa') . '/images/ajax-loader.gif',
+    'alt' => t('Please wait...'),
+    'title' => t('Please wait'),
+    'attributes' => array('class' => 'spinner'),
+  );
+
+  $block_form['#attached']['js'][] = libraries_get_path('jstz') . '/jstz-1.0.4.min.js';
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.common.js';
+  $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.onnow_tonight.js';
+  $block_form['test'] = array(
+    '#type' => 'item',
+    '#markup' => theme('image', $spinner_options),
+  );
+
+  return render($block_form);
+}
+
+function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
+  $on_now = usanetwork_schedule_pull_on_now_item($time_correlation);
+  $up_next = usanetwork_schedule_pull_up_next_item($time_correlation);
   $tonight = _usanetwork_tv_schedule_get_primetime_items(3);
 
   $on_now_block = array();
@@ -866,7 +899,7 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
       );
     }
   }
-  
+
   $theme_data = array(
     'on_now_block_item' => array(
       'on_now' => $on_now_block,
@@ -875,7 +908,9 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
     'tonight_block_items' => $tonight_block,
   );
 
-  return theme('usanetwork_menu_aspot_onnow_tonight', $theme_data);
+  return drupal_json_output(array(
+    'html' => theme('usanetwork_menu_aspot_onnow_tonight', $theme_data),
+  ));
 }
 
 /**

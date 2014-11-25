@@ -113,25 +113,58 @@ function _usanetwork_promo_featured_content($promo) {
   $type = $associated['type'];
   $content = $associated['content'];
 
-  if ($field_promo_text_line_1_field = field_get_items('node', $promo, 'field_promo_text_line_1')) {
-    $field_promo_text_line_1 = reset($field_promo_text_line_1_field);
-    $promo_text_line_1 = $field_promo_text_line_1['value'];
-  }
+  return _usanetwork_related_content($type, $content, $promo);
+}
 
-  if ($icon_type_field = field_get_items('node', $promo, 'field_call_to_action_type')) {
-    $icon_type_value = reset($icon_type_field);
-    $icon = taxonomy_term_load($icon_type_value['tid']);
-    $icon_type = $icon->name . '-icon';
-  }
 
-  if ($promo_call_to_action_text_field = field_get_items('node', $promo, 'field_promo_call_to_action_text')) {
-    $promo_call_to_action_text = reset($promo_call_to_action_text_field);
-    $more_link_text = $promo_call_to_action_text['value'];
-  }
+/**
+ * Helper for return array of unified content data with needed values
+ * @param type $type - type of content. Possible values: video/mpx (mimetype of file), media_gallery (bundle of node), default_promo
+ * @param type $content - content for getting required fields
+ * @param type $basic_content - parent content. Usually promo entity. By default FALSE
+ * @return array of fields of related content
+ */
+function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
 
-  if ($field_promo_link_field = field_get_items('node', $promo, 'field_promo_link')) {
-    $field_promo_link = reset($field_promo_link_field);
-    $more_link_url = $field_promo_link['url'];
+  $featutred_content = array(
+    'url' => NULL,
+    'image_url' => NULL,
+    'title' => $content->title,
+    'subtitle' => NULL,
+    'season_number' => FALSE,
+    'episode_number' => FALSE,
+    'type' => NULL,
+    'time' => NULL,
+    'cta_text' => NULL,
+    'show_class' => '',
+    'icon_type' => '',
+    'more_link_text' => FALSE,
+    'more_link_url' => FALSE,
+    'published' => FALSE,
+  );
+
+  if ($basic_content) {
+    $promo = $basic_content;
+    if ($field_promo_text_line_1_field = field_get_items('node', $promo, 'field_promo_text_line_1')) {
+      $field_promo_text_line_1 = reset($field_promo_text_line_1_field);
+      $promo_text_line_1 = $field_promo_text_line_1['value'];
+    }
+
+    if ($icon_type_field = field_get_items('node', $promo, 'field_call_to_action_type')) {
+      $icon_type_value = reset($icon_type_field);
+      $icon = taxonomy_term_load($icon_type_value['tid']);
+      $icon_type = $icon->name . '-icon';
+    }
+
+    if ($promo_call_to_action_text_field = field_get_items('node', $promo, 'field_promo_call_to_action_text')) {
+      $promo_call_to_action_text = reset($promo_call_to_action_text_field);
+      $featutred_content['more_link_text'] = $promo_call_to_action_text['value'];
+    }
+
+    if ($field_promo_link_field = field_get_items('node', $promo, 'field_promo_link')) {
+      $field_promo_link = reset($field_promo_link_field);
+      $featutred_content['more_link_url'] = $field_promo_link['url'];
+    }
   }
 
   switch ($type) {
@@ -140,158 +173,95 @@ function _usanetwork_promo_featured_content($promo) {
       if ($show_field_value = field_get_items('file', $file, 'field_show')) {
         $show_field = reset($show_field_value);
         $show = node_load($show_field['target_id']);
-        $title = $show->title;
-        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+        $featutred_content['title'] = $show->title;
+        $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
+
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $featutred_content['image_url'] = $wrapper->getLocalThumbnailPath();
+      $featutred_content['url'] = url('file/' . $file->fid);
+
       if ($duration_field_value = field_get_items('file', $file, 'field_mpx_duration')) {
         $duration_field = reset($duration_field_value);
-        $duration = gmdate("H:i:s", $duration_field['value']);
+        $featutred_content['time'] = gmdate("H:i:s", $duration_field['value']);
       }
 
       if (!isset($icon_type)) {
-        $icon_type = isset($icon_type)
-            ? $icon_type
-            : 'play-icon';
+        $icon_type = 'play-icon';
       }
+      $featutred_content['icon_type'] = $icon_type;
 
       if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
-        $season_number = reset($season_number_field);
+        $featutred_content['season_number'] = reset($season_number_field);
       }
 
       if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
-        $episode_number = reset($episode_number_field);
+        $featutred_content['episode_number'] = reset($episode_number_field);
       }
 
-      $featutred_content = array(
-        'url' => url('file/' . $file->fid),
-        'image_url' => $wrapper->getLocalThumbnailPath(),
-        'caption' => isset($title)
-            ? $title
-            : NULL,
-        'title' => $file->filename,
-        'subtitle' => NULL,
-        'season_number' => isset($season_number['value'])
-            ? $season_number['value']
-            : NULL,
-        'episode_number' => isset($episode_number['value'])
-            ? $episode_number['value']
-            : NULL,
-        'time' => isset($duration)
-            ? $duration
-            : NULL,
-        'cta_text' => isset($promo_text_line_1)
-            ? $promo_text_line_1
-            : NULL,
-        'show_class' => isset($show_class)
-            ? $show_class
-            : '',
-        'icon_type' => isset($icon_type)
-            ? $icon_type
-            : '',
-        'more_link_text' => isset($more_link_text)
-            ? $more_link_text
-            : NULL,
-        'more_link_url' => isset($more_link_url)
-            ? $more_link_url
-            : NULL,
-        'published' => ($file->mpx_video_data['status'] == 1)
-            ? TRUE
-            : FALSE,
-      );
+      $featutred_content['type'] = $file->filename;
+      $featutred_content['cta_text'] = isset($promo_text_line_1)
+          ? $promo_text_line_1
+          : NULL;
+      $featutred_content['published'] = ($file->mpx_video_data['status'] == 1)
+          ? TRUE
+          : FALSE;
       break;
     case 'media_gallery':
       $node = $content;
-      $show_field = reset(field_get_items('node', $node, 'field_show'));
-      if ($show_field) {
-        $show_class = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
+      if ($show_field_value = field_get_items('node', $node, 'field_show')) {
+        $show_field = reset($show_field_value);
+        $featutred_content['title'] = $node->title;
+        $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
-      $field_cover_item = reset(field_get_items('node', $node, 'field_cover_item'));
-      if ($field_cover_item) {
-        $image = $field_cover_item['uri'];
+
+      if ($field_cover_item_items = field_get_items('node', $node, 'field_cover_item')) {
+        $field_cover_item = reset($field_cover_item_items);
+        $featutred_content['image_url'] = $field_cover_item['uri'];
       }
-      $field_promo_text_line_2 = reset(field_get_items('node', $promo, 'field_promo_text_line_2'));
-      if ($field_promo_text_line_2) {
-        $subtitle = $field_promo_text_line_2['value'];
+      if ($field_promo_text_line_2_items = field_get_items('node', $promo, 'field_promo_text_line_2')) {
+        $field_promo_text_line_2 = reset($field_promo_text_line_2_items);
+        $featutred_content['cta_text'] = $field_promo_text_line_2['value'];
       }
-      $featutred_content = array(
-        'url' => url('node/' . $node->nid),
-        'image_url' => isset($image)
-            ? $image
-            : NULL,
-        'title' => $node->title,
-        'subtitle' => isset($promo_text_line_1)
-            ? $promo_text_line_1
-            : NULL,
-        'time' => NULL,
-        'cta_text' => isset($subtitle)
-            ? $subtitle
-            : NULL,
-        'show_class' => isset($show_class)
-            ? $show_class
-            : '',
-        'icon_type' => isset($icon_type)
-            ? $icon_type
-            : '',
-        'more_link_text' => isset($more_link_text)
-            ? $more_link_text
-            : NULL,
-        'more_link_url' => isset($more_link_url)
-            ? $more_link_url
-            : NULL,
-        'published' => ($node->status == 1)
-            ? TRUE
-            : FALSE,
-      );
+
+      $featutred_content['url'] = url('node/' . $node->nid);
+      $featutred_content['subtitle'] = $promo_text_line_1;
+      $featutred_content['icon_type'] = $icon_type;
+      $featutred_content['published'] = ($node->status == 1)
+          ? TRUE
+          : FALSE;
       break;
     case 'default_promo':
       $node = $content;
-      if ($show_field = field_get_items('node', $node, 'field_show')) {
-        $show_value = reset($show_field);
-        $show_class = usanetwork_tv_shows_color_show_css_class($show_value['target_id']);
+
+      $featutred_content['url'] = $featutred_content['more_link_url'];
+
+      if ($show_field_value = field_get_items('node', $node, 'field_show')) {
+        $show_field = reset($show_field_value);
+        $featutred_content['title'] = $node->title;
+        $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
+
+      $featutred_content['subtitle'] = isset($promo_text_line_1)
+          ? $promo_text_line_1
+          : NULL;
+
       if ($field_promo_regular_image_field = field_get_items('node', $node, 'field_promo_regular_image')) {
         $field_promo_regular_image = reset($field_promo_regular_image_field);
-        $image = $field_promo_regular_image['uri'];
+        $featutred_content['image_url'] = $field_promo_regular_image['uri'];
       }
+
       if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
         $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
-        $subtitle = $field_promo_text_line_2['value'];
+        $featutred_content['cta_text'] = $field_promo_text_line_2['value'];
       }
-      $featutred_content = array(
-        'url' => isset($more_link_url)
-            ? $more_link_url
-            : NULL,
-        'image_url' => isset($image)
-            ? $image
-            : NULL,
-        'caption' => isset($promo_text_line_1)
-            ? $promo_text_line_1
-            : NULL,
-        'title' => isset($subtitle)
-            ? $subtitle
-            : NULL,
-        'subtitle' => NULL,
-        'time' => NULL,
-        'cta_text' => NULL,
-        'show_class' => isset($show_class)
-            ? $show_class
-            : '',
-        'icon_type' => isset($icon_type)
-            ? $icon_type
-            : '',
-        'more_link_text' => isset($more_link_text)
-            ? $more_link_text
-            : NULL,
-        'more_link_url' => isset($more_link_url)
-            ? $more_link_url
-            : NULL,
-        'published' => ($node->status == 1)
-            ? TRUE
-            : FALSE,
-      );
+      $featutred_content['icon_type'] = $icon_type;
+      $featutred_content['published'] = ($node->status == 1)
+          ? TRUE
+          : FALSE;
       break;
   }
-
+  
   return $featutred_content;
+  
 }

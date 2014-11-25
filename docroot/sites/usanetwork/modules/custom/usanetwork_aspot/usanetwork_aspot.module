@@ -25,7 +25,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
 
   if ($show_nid) {
-    $airdate = _usanetwork_aspot_get_nearest_episode_airtime($show_nid);
+    $airdate = usanetwork_schedule_get_nearest_episode_airtime($show_nid);
   }
 
   $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
@@ -185,7 +185,18 @@ function usanetwork_aspot_block_view($delta = '') {
     // Looks like this block only for testing.
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_aspot_carousel_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_aspot_carousel_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/matchmedia.js',
+            path_to_theme('aurora_usa') . '/javascripts/picturefill.js',
+            path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
+            path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
+            path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
+          ),
+        ),
+      );
       break;
   }
 
@@ -276,98 +287,122 @@ function _usanetwork_aspot_carousel_block() {
 
   if (!empty($carousel_nodes)) {
     foreach ($carousel_nodes as $carousel_node) {
-      $aspot_node_wrapper = entity_metadata_wrapper('node', $carousel_node['aspot_node']);
-      $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
-      $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
-
-      $banner_desktop = '';
-      $banner_mobile = '';
-      $banner_tablet = '';
-
-      if (!empty($draggable_data)) {
-        $draggable_data = json_decode($draggable_data);
-      }
-
-      if (!empty($carousel_node['aspot_node']->field_usa_aspot_desktop)) {
-        $banner_desktop = $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value();
-      }
-
-      if (!empty($carousel_node['aspot_node']->field_usa_aspot_mobile)) {
-        $banner_mobile = $aspot_node_wrapper->field_usa_aspot_mobile->file->url->value();
-      }
-
-      if (!empty($carousel_node['aspot_node']->field_usa_aspot_tablet_portrait)) {
-        $banner_tablet = $aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->url->value();
-      }
-
-      if (empty($banner_tablet)) {
-        $banner_tablet = $banner_desktop;
-      }
-
-      if (empty($banner_mobile)) {
-        $banner_mobile = $banner_desktop;
-      }
-
-      $theme_array = array(
-        'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
-        'show_class' => usanetwork_tv_shows_color_show_css_class($carousel_node['show_node']),
-        'show_poster' => array(
-          '300x250' => image_style_url('300x250', $banner_mobile),
-          '600x500' => image_style_url('600x500', $banner_mobile),
-          '615x350' => image_style_url('615x350', $banner_mobile),
-          '1245x709' => image_style_url('1245x709', $banner_tablet),
-          '2490x1418' => image_style_url('2490x1418', $banner_desktop),
-        ),
-        'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
-        'show_title_prefix_style' => isset($draggable_data->title_prefix)
-          ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
-          : '',
-        'show_title' => $aspot_node_wrapper->field_aspot_gi_title->value(),
-        'show_title_style' => isset($draggable_data->title_prefix)
-          ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title)
-          : '',
-        'show_image_bg_offset' => $aspot_node_wrapper->field_aspot_preview_bg_offset->value(),
-        'show_draggable_data' => $aspot_node_wrapper->field_aspot_gi_draggable_data->value(),
-      );
-
-      if (in_array('countdown', $enabled_elements)) {
-        $theme_array['show_timer'] = array(
-          'title_prefix' => $aspot_node_wrapper->field_aspot_gi_cd_prefix->value(),
-          'title_prefix_style' => isset($draggable_data->countdown_prefix)
-            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown_prefix)
-            : '',
-          'value' => 10000,
-          'countdown_style' => isset($draggable_data->countdown)
-            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown)
-            : '',
-        );
-      }
-
-      $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
-
-      if (in_array('social_meter', $enabled_elements)) {
-        $theme_array['social_meter'] = array(
-          'value' => 50,
-          'multiplier' => 'k',
-          'tag' => 'Test',
-          'hot' => 1,
-          'link' => array(
-            'url' => 'http://google.ru?q=WAT',
-            'text' => t('Google'),
-            'class' => 'some-class',
-          ),
-          'style' => isset($draggable_data->social_meter)
-            ? _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter)
-            : '',
-        );
-      }
-
-      $output_array[] = theme('usanetwork_aspot_carousel_slide', $theme_array);
+      $output_array[] = _usanetwork_aspot_render_carousel_node($carousel_node['aspot_node'], $carousel_node['show_node']);
     }
   }
 
   if (!empty($output_array)) {
     return theme('usanetwork_aspot_carousel', array('slides' => $output_array));
+  }
+
+  return '';
+}
+
+function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
+  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
+  $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
+  $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
+
+  $banner_images = array();
+
+  if (!empty($draggable_data)) {
+    $draggable_data = json_decode($draggable_data);
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_desktop)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_desktop->file->fid->value());
+    $banner_images['desktop'] = $file->uri;
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_mobile)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_mobile->file->fid->value());
+    $banner_images['mobile'] = $file->uri;
+  }
+  else {
+    // Preventing situation when mobile image is empty. Filling it with desktop
+    $banner_images['mobile'] = $banner_images['desktop'];
+  }
+
+  if (!empty($aspot_node->field_usa_aspot_tablet_portrait)) {
+    $file = file_load($aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->fid->value());
+    $banner_images['tablet'] = $file->uri;
+  }
+  else {
+    // Preventing situation when tablet image is empty. Filling it with desktop
+    $banner_images['tablet'] = $banner_images['desktop'];
+  }
+
+  $theme_array = array(
+    'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
+    'show_poster' => array(
+      '300x250' => image_style_url('300x250', $banner_images['mobile']),
+      '600x500' => image_style_url('600x500', $banner_images['mobile']),
+      '615x350' => image_style_url('615x350', $banner_images['mobile']),
+      '1245x709' => image_style_url('1245x709', $banner_images['tablet']),
+      '2490x1418' => image_style_url('2490x1418', $banner_images['desktop']),
+    ),
+    'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
+    'show_title_prefix_style' => isset($draggable_data->title_prefix)
+      ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
+      : '',
+    'show_title' => $aspot_node_wrapper->field_aspot_gi_title->value(),
+    'show_title_style' => isset($draggable_data->title_prefix)
+      ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title)
+      : '',
+    'show_image_bg_offset' => $aspot_node_wrapper->field_aspot_preview_bg_offset->value(),
+    'show_draggable_data' => $aspot_node_wrapper->field_aspot_gi_draggable_data->value(),
+  );
+
+  if (empty($theme_array['show_title'])) {
+    $theme_array['show_title'] = $aspot_node_wrapper->title->value();
+  }
+
+  if (in_array('countdown', $enabled_elements)) {
+    $theme_array['show_timer'] = array(
+      'title_prefix' => $aspot_node_wrapper->field_aspot_gi_cd_prefix->value(),
+      'title_prefix_style' => isset($draggable_data->countdown_prefix)
+        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown_prefix)
+        : '',
+      'value' => 10000,
+      'countdown_style' => isset($draggable_data->countdown)
+        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown)
+        : '',
+    );
+  }
+
+  $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data);
+
+  if (in_array('social_meter', $enabled_elements)) {
+    $theme_array['social_meter'] = array(
+      'value' => 50,
+      'multiplier' => 'k',
+      'tag' => 'Test',
+      'hot' => 1,
+      'link' => array(
+        'url' => 'http://google.ru?q=WAT',
+        'text' => t('Google'),
+        'class' => 'some-class',
+      ),
+      'style' => isset($draggable_data->social_meter)
+        ? _usanetwork_aspot_get_draggable_style_data($draggable_data->social_meter)
+        : '',
+    );
+  }
+
+  return theme('usanetwork_aspot_carousel_slide', $theme_array);
+}
+
+function usanetwork_aspot_render($show_node) {
+  // Temporary connects with ASpot that exists on homepage
+  $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes();
+
+  if (!empty($carousel_nodes)) {
+    foreach ($carousel_nodes as $carousel_node) {
+      if ($carousel_node['show_node']->nid == $show_node->nid) {
+        return _usanetwork_aspot_render_carousel_node($carousel_node['aspot_node'], $show_node);
+      }
+    }
   }
 
   return '';
@@ -426,7 +461,7 @@ function _usanetwork_aspot_get_homepage_aspot_nodes() {
         if (empty($aref['entity'])) {
           $aref['entity'] = node_load($aref['target_id']);
         }
-        
+
         $show_node_field = field_get_items('node', $aref['entity'], 'field_show');
         $aspot_node = $aref['entity'];
 
@@ -620,26 +655,6 @@ function _usanetwork_aspot_get_show_nid($node) {
 
   if (!empty($field_show)) {
     return reset(reset($field_show));
-  }
-
-  return NULL;
-}
-
-function _usanetwork_aspot_get_nearest_episode_airtime($show_nid) {
-  $query = db_select('field_data_field_show', 's');
-  $query->fields('f', array('fid'));
-  $query->fields('v', array('airdate'));
-  $query->leftJoin('file_managed', 'f', 's.entity_id=f.fid');
-  $query->leftJoin('mpx_video', 'v', 'f.fid=v.fid');
-  $query->condition('s.field_show_target_id', $show_nid);
-  $query->condition('s.entity_type', 'file');
-  $query->condition('v.airdate', REQUEST_TIME, '>');
-  $query->orderBy('v.airdate', 'ASC');
-  $query->range(0, 1);
-  $result = $query->execute()->fetch();
-
-  if ($result) {
-    return $result->airdate;
   }
 
   return NULL;

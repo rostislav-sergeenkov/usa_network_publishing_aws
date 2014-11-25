@@ -48,11 +48,6 @@ function usanetwork_home_menu() {
 function usanetwork_home_block_info() {
   $blocks = array();
 
-  $blocks['usanetwork_home_promo_carousel'] = array(
-    'info' => t('Homepage: Promo Carousel'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   $blocks['usanetwork_home_shows_queue'] = array(
     'info' => t('Homepage: Shows block'),
     'cache' => DRUPAL_NO_CACHE,
@@ -78,11 +73,6 @@ function usanetwork_home_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usanetwork_home_promo_carousel':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_home_promo_carousel();
-      break;
-
     case 'usanetwork_home_shows_queue':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_shows_queue_block();
@@ -240,7 +230,7 @@ function _usanetwork_home_bspot_cspot() {
           continue;
         }
 
-        $type = t('S@season_num episode @episode_num', array(
+        $additional = t('S@season_num episode @episode_num', array(
           '@season_num' => isset($promo_data['season_number'])
               ? $promo_data['season_number']
               : '',
@@ -266,8 +256,8 @@ function _usanetwork_home_bspot_cspot() {
           'title' => isset($promo_data['title'])
               ? $promo_data['title']
               : NULL,
-          'caption' => $promo_data['cta_text'],
-          'type' => $type,
+          'caption' => $promo_data['caption'],
+          'additional' => $additional,
           'time' => $promo_data['time'],
         );
         $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
@@ -440,7 +430,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'icon_type' => NULL,
         'title' => NULL,
         'caption' => NULL,
-        'type' => NULL,
+        'additional' => NULL,
         'time' => NULL,
       ),
       'path' => $path . '/templates',

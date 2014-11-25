@@ -130,48 +130,4 @@
   }
 }
 
-.b-spot {
-.promo-metadata {
-  .meta-head-wide,
-  .meta-subhead-wide {
-    display: block;
-    @include breakpoint($bp-home-narrowest) {
-      display:none;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      display:block;
-    }
-    @include breakpoint($bp-home-3-fence) {
-      display:none;
-    }
-    @include breakpoint($bp-home-widest) {
-      display:block;
-    }
-  }
-  .meta-head,
-  .meta-subhead {
-    display: none;
-    @include breakpoint($bp-home-narrowest) {
-      display:block;
-    }
-    @include breakpoint($bp-home-2-fence) {
-      display:none;
-    }
-    @include breakpoint($bp-home-3-fence) {
-      display:block;
-    }
-    @include breakpoint($bp-home-widest) {
-      display:none;
-    }
-  }
-}
-}
-.c-spot {
-  .promo-metadata {
-    .meta-head-wide,
-    .meta-subhead-wide {
-      display: none;
-    }
-  }
-}
 

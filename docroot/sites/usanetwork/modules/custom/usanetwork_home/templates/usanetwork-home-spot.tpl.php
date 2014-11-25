@@ -19,9 +19,9 @@
       <div class="meta-wrapper">
         <div class="meta-icon <?php print $icon_type; ?>"></div>
         <div class="title-overlay meta">
-          <div class="title"><?php print $title; ?></div>
           <div class="caption"><?php print $caption; ?></div>
-          <div class="type-and-time"><span><?php print $type; ?></span> <?php print $time; ?></div>
+          <div class="title"><?php print $title; ?></div>
+          <div class="additional"><span><?php print $additional; ?></span> <?php print $time; ?></div>
           <div class="interset-indicator">
             <div class="indicator"></div>
             <div class="indicator-text"></div>

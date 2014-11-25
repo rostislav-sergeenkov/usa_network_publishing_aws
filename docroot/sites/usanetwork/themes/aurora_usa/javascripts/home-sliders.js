@@ -3,51 +3,112 @@
   Drupal.behaviors.homeSlides = {
     attach: function (context, settings) {
 
+      USAN = {};
+      USAN.aspot = (function () {
 
-      $mainslider = $('#main-slider');
-      $secondaryslider = $('.secondary-slider');
+        var hideContent = function(selector) {
+          $(selector).css({
+            'opacity': 0
+          });
+        };
 
-      $slideshow = (settings.homeSlides.slideshow !== null)? settings.homeSlides.slideshow : false;
-      $slideshowSpeed = (settings.homeSlides.slideshowSpeed !== null)? settings.homeSlides.slideshowSpeed : 7000;
-      $touch = true;
-      if ($mainslider.find('li').length <= 1){
-        $touch = false;
-      }
-      $(document).ready(function() {
+        var animateContent = function(element) {
+          $(element).animate({
+            'opacity': '+=1'
+          }, 500)
+        };
 
-        $mainslider.flexslider({
-          animation: 'slide',
-          controlNav: true,
-          directionNav: (!Modernizr.touch),
-          slideshow: $slideshow,
-          slideshowSpeed: $slideshowSpeed,
-          pauseOnHover: true,
-          touch: $touch,
-          before: function(slider) {
-            var target = slider.animatingTo,
-              currentSlide = slider.currentSlide;
-            $secondaryslider.each(function (index, element) {
-              var flexslider = $(element).data('flexslider');
-              // Setting the animation direction of the secondary slider to be the
-              // same as the primary slider.
-              // but ONLY if we have more than one list item
-              // else the main slider breaks
-              if ($(this).find('li').length > 1) {
-                flexslider.direction = slider.direction;
-                flexslider.flexAnimate(target, true);
-              }
+        var showFocusSlide = function(el, slide, old, active) {
+          var index = active + 1,
+              nextSlideInner = el.get(0).children[index].children[0],
+              nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
+
+          setTimeout(function() {
+            animateContent(nextSlideContent);
+          }, 600);
+
+          var moveIt = function(index) {
+            var nextSlideInner = el.get(0).children[index + 1].children[0],
+                nextSlideImg = $(nextSlideInner).find('img').get(0),
+                shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
+
+            shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
+
+            $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
+            $(nextSlideInner).css('width', parseInt($(window).width())).animate({
+              'margin-left': '-=10%'
+            }, 600, 'easeOutBack', function() {
+              $('.next-button').fadeIn(500).removeClass('disabled');
             });
+          };
+
+          setTimeout(function() {
+            moveIt(index);
+          }, 4000);
+        };
+
+        var hideFocusSlide = function(el, slide, old, active) {
+          var index = old + 1,
+              nextSlideInner = el.get(0).children[index + 1].children[0],
+              nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
+
+          hideContent(nextSlideContent);
+
+          var moveIt = function(index) {
+            var nextSlideInner = el.get(0).children[index + 1].children[0],
+                nextSlideImg = $(nextSlideInner).find('img').get(0);
+
+            $(nextSlideImg).animate({
+              'margin-left': '0'
+            }, 800, null);
+            $(nextSlideInner).css('width', parseInt($(window).width())).animate({
+              'margin-left': '0'
+            }, 800, null);
+
+            $('.next-button').fadeOut(200).addClass('disabled');
+          };
+
+          moveIt(index);
+        };
+
+        var options = {
+          pager: false,
+          controls: false,
+          auto: true,
+          autoHover: true,
+          speed: 1000,
+          pause: 10000,
+          useCSS: false,
+          onSlideBefore: hideFocusSlide,
+          onSlideAfter: showFocusSlide,
+          onSliderLoad: showFocusSlide
+        };
+
+        var init = function (selector) {
+          if ($(selector).length) {
+            return $(selector).bxSlider(options);
           }
+
+          return 0;
+        };
+
+        return {
+          init: init
+        }
+      })();
+
+      $(window).load(function(){
+        var aspot = USAN.aspot.init('.slider');
+
+        $('.next-button').click(function() {
+          aspot.goToNextSlide();
         });
-        $secondaryslider.flexslider({
-          animation: 'slide',
-          controlNav: false,
-          directionNav: false,
-          slideshow: false,
-          touch: false
-        });
+
+        $('.next-button').hide().addClass('disabled');
+
       });
 
+      //old code
       // A-SPOT VIDEOS
       var isIE8 = 0;
       var isSafari5 = 0;

@@ -176,7 +176,15 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_aspot_ot':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_menu_aspot_onnow_tonight_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/jquery.carouFredSel.min.js',
+            path_to_theme('aurora_usa') . '/javascripts/schedule-tonight.js',
+          ),
+        ),
+      );
       break;
 
     case 'usanetwork_menu_consumptionator':
@@ -197,7 +205,7 @@ function usanetwork_menu_theme() {
         'url' => NULL,
         'title' => NULL,
         'subtitle' => NULL,
-        'type' => NULL,
+        'caption' => NULL,
         'time' => NULL,
         'cta_text' => NULL,
         'show_class' => NULL,
@@ -390,9 +398,8 @@ function _usanetwork_menu_show_menu_featured_block() {
                 'path' => $associated_content['image_url'],
                 'style_name' => '300x169_video',
               )),
+            'caption' => $associated_content['caption'],
             'title' => $associated_content['title'],
-            'subtitle' => $associated_content['subtitle'],
-            'type' => $associated_content['type'],
             'time' => $associated_content['time'],
             'cta_text' => $associated_content['cta_text'],
             'show_class' => $associated_content['show_class'],

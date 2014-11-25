@@ -45,14 +45,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
   return array(
     'usanetwork_tv_shows_aspot' => array(
       'variables' => array(
-        'show' => array(
-          'image_url' => NULL,
-          'title_prefix' => NULL,
-          'title' => NULL,
-          'cta' => array(
-            'text' => NULL,
-          ),
-        ),
+        'show' => NULL,
         'episodes' => array(
           0 => array(
             'url' => NULL,
@@ -538,20 +531,13 @@ function _usanetwork_tv_shows_aspot_block() {
     }
 
     if (!empty($show_image_field)) {
-      $show_image_url = file_create_url($show_image_field[0]->uri);
+      $show_image_url = file_create_url($show_image_field[0]['uri']);
     }
 
     $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
 
     $theme_variables = array(
-      'show' => array(
-        'image_url' => $show_image_url,
-        'title_prefix' => $title_prefix,
-        'title' => $show_node->title,
-        'cta' => array(
-          'text' => t('Not implemented yet'),
-        ),
-      ),
+      'show' => usanetwork_aspot_render($show_node),
       'episodes' => array(),
     );
 

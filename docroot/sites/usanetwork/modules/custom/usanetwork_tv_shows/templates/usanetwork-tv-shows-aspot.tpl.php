@@ -5,26 +5,9 @@
 ?>
 <div class="aspot-and-episodes">
   <div class="node usanetwork-aspot">
-    <?php if (!empty($show['image_url'])): ?>
-      <a href="javascript:void(0)" target="_self">
-        <div class="asset-img">
-          <img src="<?php print $show['image_url']; ?>" alt="">
-        </div>
-      </a>
+    <?php if (!empty($show)): ?>
+      <?php print $show ?>
     <?php endif; ?>
-    <div class="meta-wrap">
-      <div class="meta">
-        <?php if (!empty($show['title_prefix'])): ?>
-          <div class="new-episode"><?php print $show['title_prefix']; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($show['title'])): ?>
-          <div class="show-title"><?php print $show['title']; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($show['cta'])): ?>
-          <div class="cta-link"><a href="javascript:void(0)" class="show-color hover-avail"><?php print $show['cta']['text']; ?></a></div>
-        <?php endif; ?>
-      </div>
-    </div>
   </div>
   <?php if (!empty($episodes)): ?>
     <div class="episodes-list">

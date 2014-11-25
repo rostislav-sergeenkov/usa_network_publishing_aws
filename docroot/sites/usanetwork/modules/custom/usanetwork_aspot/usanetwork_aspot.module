@@ -189,6 +189,8 @@ function usanetwork_aspot_block_view($delta = '') {
         '#markup' => _usanetwork_aspot_carousel_block(),
         '#attached' => array(
           'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/matchmedia.js',
+            path_to_theme('aurora_usa') . '/javascripts/picturefill.js',
             path_to_theme('aurora_usa') . '/javascripts/jquery.bxslider.js',
             path_to_theme('aurora_usa') . '/javascripts/jquery.easing.1.3.js',
             path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',

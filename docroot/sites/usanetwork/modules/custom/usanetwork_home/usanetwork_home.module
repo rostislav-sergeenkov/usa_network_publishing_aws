@@ -230,7 +230,7 @@ function _usanetwork_home_bspot_cspot() {
           continue;
         }
 
-        $type = t('S@season_num episode @episode_num', array(
+        $additional = t('S@season_num episode @episode_num', array(
           '@season_num' => isset($promo_data['season_number'])
               ? $promo_data['season_number']
               : '',
@@ -256,8 +256,8 @@ function _usanetwork_home_bspot_cspot() {
           'title' => isset($promo_data['title'])
               ? $promo_data['title']
               : NULL,
-          'caption' => $promo_data['cta_text'],
-          'type' => $type,
+          'caption' => $promo_data['caption'],
+          'additional' => $additional,
           'time' => $promo_data['time'],
         );
         $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
@@ -430,7 +430,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'icon_type' => NULL,
         'title' => NULL,
         'caption' => NULL,
-        'type' => NULL,
+        'additional' => NULL,
         'time' => NULL,
       ),
       'path' => $path . '/templates',

@@ -760,32 +760,32 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.aspot-and-episodes .episodes-list ul li .meta {
+.aspot-and-episodes .episodes-list ul li .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   color: #ffffff;
 }
-.aspot-and-episodes .episodes-list ul li .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .title, .aspot-and-episodes .episodes-list ul li .meta .additional {
+.aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.aspot-and-episodes .episodes-list ul li .meta .caption {
+.aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.aspot-and-episodes .episodes-list ul li .meta .title {
+.aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list ul li .meta .additional {
+.aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.aspot-and-episodes .episodes-list ul li .meta .additional span {
+.aspot-and-episodes .episodes-list ul li .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -1876,7 +1876,7 @@ input[type="radio"], input[type="checkbox"] {
   clear: both;
 }
 
-.usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot, #block-views-usa-video-front-full-episodes .carousel .carousel-item,
+#block-views-usa-video-front-full-episodes .carousel .carousel-item,
 #block-views-usa-mpx-video-front-full-epsds .carousel .carousel-item,
 #block-usanetwork-home-usanetwork-home-promo-carousel .carousel .carousel-item,
 .usa-home-featured .carousel .carousel-item, .grid-container-small .grid-item, .block-usanetwork-video .grid-item,
@@ -1897,30 +1897,7 @@ input[type="radio"], input[type="checkbox"] {
   display: table;
   clear: both;
 }
-.usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot {
-  overflow: hidden;
-}
 @media (max-width: 709px) {
-  .usa-home .a-spot, .usa-home .ad, .usa-home .b-spot, .usa-home .c-spot {
-    margin-bottom: 8px;
-  }
-}
-.usa-home .c-spot .media-wide {
-  display: none;
-}
-.usa-home [class$="-spot"] a {
-  display: block;
-  position: relative;
-}
-@media (max-width: 709px) {
-  .usa-home .a-spot {
-    width: 100%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    height: 250px;
-  }
   .usa-home .ad {
     width: 100%;
     float: right;
@@ -1929,36 +1906,10 @@ input[type="radio"], input[type="checkbox"] {
     clear: none;
     height: 50px;
   }
-  .usa-home .b-spot {
-    width: 48.82813%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .usa-home .b-spot .media-wide {
-    display: none;
-  }
-  .usa-home .c-spot {
-    width: 48.82813%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-  }
 }
 @media (min-width: 710px) and (max-width: 1019px) {
   .usa-home {
     width: 615px;
-  }
-  .usa-home .a-spot {
-    width: 100%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    height: 350px;
   }
   .usa-home .ad {
     width: 48.82813%;
@@ -1966,64 +1917,18 @@ input[type="radio"], input[type="checkbox"] {
     position: absolute;
     bottom: 0;
     right: 0;
-  }
-  .usa-home .b-spot {
-    width: 100%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    clear: both;
-  }
-  .usa-home .b-spot .media-normal {
-    display: none;
-  }
-  .usa-home .c-spot {
-    width: 48.82813%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
   }
 }
 @media (min-width: 1020px) and (max-width: 1334px) {
   .usa-home {
     width: 930px;
   }
-  .usa-home .a-spot {
-    width: 100%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    height: 378px;
-  }
   .usa-home .ad {
     width: 32.29974%;
     height: 250px;
     position: absolute;
     bottom: 0;
     right: 0;
-  }
-  .usa-home .b-spot {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .usa-home .b-spot .media-wide {
-    display: none;
-  }
-  .usa-home .c-spot {
-    width: 32.29974%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 33.85013%;
-    clear: none;
-    width: 300px;
   }
 }
 @media (min-width: 1335px) {
@@ -2031,14 +1936,6 @@ input[type="radio"], input[type="checkbox"] {
     width: 1245px;
     padding-top: 0;
   }
-  .usa-home .a-spot {
-    width: 100%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-    height: 506px;
-  }
   .usa-home .ad {
     width: 24.13127%;
     height: 250px;
@@ -2046,36 +1943,9 @@ input[type="radio"], input[type="checkbox"] {
     bottom: 0;
     right: 0;
   }
-  .usa-home .b-spot {
-    width: 49.42085%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0%;
-    clear: none;
-    clear: both;
-  }
-  .usa-home .b-spot .media-normal {
-    display: none;
-  }
-  .usa-home .c-spot {
-    width: 24.13127%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 50.57915%;
-    clear: none;
-    width: 300px;
-  }
 }
 .usa-adrails .usa-home {
   width: 930px !important;
-}
-.usa-adrails .usa-home .a-spot {
-  width: 100%;
-  float: right;
-  margin-left: 0;
-  margin-right: 0;
-  clear: none;
-  height: 378px;
 }
 .usa-adrails .usa-home .ad {
   width: 32.29974%;
@@ -2083,28 +1953,6 @@ input[type="radio"], input[type="checkbox"] {
   position: absolute;
   bottom: 0;
   right: 0;
-}
-.usa-adrails .usa-home .b-spot {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 0%;
-  clear: none;
-  clear: both;
-}
-.usa-adrails .usa-home .b-spot .media-normal {
-  display: block;
-}
-.usa-adrails .usa-home .b-spot .media-wide {
-  display: none;
-}
-.usa-adrails .usa-home .c-spot {
-  width: 32.29974%;
-  float: left;
-  margin-right: -100%;
-  margin-left: 33.85013%;
-  clear: none;
-  width: 300px;
 }
 
 #block-views-usa-video-front-full-episodes,
@@ -5854,90 +5702,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 
 .view-mode-promo_teaser .caption-overlay .title-wide,
 .view-mode-promo_teaser .caption-overlay .caption-wide {
-  display: none;
-}
-
-.b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
-.b-spot .promo-metadata .meta-subhead-wide,
-.b-spot .upcoming-movie .meta .meta-subhead-wide,
-.upcoming-movie .b-spot .meta .meta-subhead-wide {
-  display: block;
-}
-@media (max-width: 709px) {
-  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
-  .b-spot .promo-metadata .meta-subhead-wide,
-  .b-spot .upcoming-movie .meta .meta-subhead-wide,
-  .upcoming-movie .b-spot .meta .meta-subhead-wide {
-    display: none;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
-  .b-spot .promo-metadata .meta-subhead-wide,
-  .b-spot .upcoming-movie .meta .meta-subhead-wide,
-  .upcoming-movie .b-spot .meta .meta-subhead-wide {
-    display: block;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
-  .b-spot .promo-metadata .meta-subhead-wide,
-  .b-spot .upcoming-movie .meta .meta-subhead-wide,
-  .upcoming-movie .b-spot .meta .meta-subhead-wide {
-    display: none;
-  }
-}
-@media (min-width: 1335px) {
-  .b-spot .promo-metadata .meta-head-wide, .b-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .b-spot .meta .meta-head-wide,
-  .b-spot .promo-metadata .meta-subhead-wide,
-  .b-spot .upcoming-movie .meta .meta-subhead-wide,
-  .upcoming-movie .b-spot .meta .meta-subhead-wide {
-    display: block;
-  }
-}
-.b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
-.b-spot .promo-metadata .meta-subhead,
-.b-spot .upcoming-movie .meta .meta-subhead,
-.upcoming-movie .b-spot .meta .meta-subhead {
-  display: none;
-}
-@media (max-width: 709px) {
-  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
-  .b-spot .promo-metadata .meta-subhead,
-  .b-spot .upcoming-movie .meta .meta-subhead,
-  .upcoming-movie .b-spot .meta .meta-subhead {
-    display: block;
-  }
-}
-@media (min-width: 710px) and (max-width: 1019px) {
-  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
-  .b-spot .promo-metadata .meta-subhead,
-  .b-spot .upcoming-movie .meta .meta-subhead,
-  .upcoming-movie .b-spot .meta .meta-subhead {
-    display: none;
-  }
-}
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
-  .b-spot .promo-metadata .meta-subhead,
-  .b-spot .upcoming-movie .meta .meta-subhead,
-  .upcoming-movie .b-spot .meta .meta-subhead {
-    display: block;
-  }
-}
-@media (min-width: 1335px) {
-  .b-spot .promo-metadata .meta-head, .b-spot .upcoming-movie .meta .meta-head, .upcoming-movie .b-spot .meta .meta-head,
-  .b-spot .promo-metadata .meta-subhead,
-  .b-spot .upcoming-movie .meta .meta-subhead,
-  .upcoming-movie .b-spot .meta .meta-subhead {
-    display: none;
-  }
-}
-
-.c-spot .promo-metadata .meta-head-wide, .c-spot .upcoming-movie .meta .meta-head-wide, .upcoming-movie .c-spot .meta .meta-head-wide,
-.c-spot .promo-metadata .meta-subhead-wide,
-.c-spot .upcoming-movie .meta .meta-subhead-wide,
-.upcoming-movie .c-spot .meta .meta-subhead-wide {
   display: none;
 }
 
@@ -15442,6 +15206,9 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
     margin-right: -33px;
   }
 }
+#block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  width: 100%;
+}
 
 @media (min-width: 1601px) {
   .usanetwork-aspot.show-chrisley .meta-wrap .show-title, .usanetwork-aspot.show-graceland .meta-wrap .show-title {
@@ -16181,6 +15948,201 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
 }
 .new-show-page .aspot-and-episodes .episodes-list ul.open li {
   display: block;
+}
+
+.bspot-cspot {
+  background: #dcddde;
+  overflow: hidden;
+  padding: 45px 10px;
+  position: relative;
+  width: 100%;
+}
+.bspot-cspot:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 768px) {
+  .bspot-cspot {
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .bspot-cspot {
+    padding: 20px 0px;
+  }
+}
+.bspot-cspot .ad-728x90 {
+  display: none;
+  margin: 20px auto 0px;
+  max-width: 728px;
+}
+.bspot-cspot .ad-728x90 a {
+  display: block;
+  max-height: 90px;
+}
+@media (max-width: 768px) {
+  .bspot-cspot .ad-728x90 {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  .bspot-cspot .ad-728x90 img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.bspot-cspot-wrapper {
+  margin: 0 auto;
+  max-width: 1700px;
+  position: relative;
+}
+.bspot-cspot-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.usa-home-bspot, .usa-home-cspot {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: 49%;
+}
+@media (max-width: 768px) {
+  .usa-home-bspot, .usa-home-cspot {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-home-bspot, .usa-home-cspot {
+    float: none;
+    width: 100%;
+  }
+}
+.usa-home-bspot img, .usa-home-cspot img {
+  height: auto;
+  width: 100%;
+}
+.usa-home-bspot .meta-back, .usa-home-cspot .meta-back {
+  background: #000000;
+  bottom: 0px;
+  height: 33%;
+  margin-left: 10px;
+  opacity: 0.6;
+  position: absolute;
+  width: 100%;
+}
+.usa-home-bspot .meta-wrapper, .usa-home-cspot .meta-wrapper {
+  bottom: 0px;
+  height: 33%;
+  position: absolute;
+  width: 100%;
+}
+.usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 40%;
+  left: 5%;
+  position: absolute;
+  top: 32%;
+  width: 7.375%;
+  z-index: 1;
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
+    left: 6%;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
+    left: 6%;
+  }
+}
+.usa-home-bspot .meta-wrapper .meta-icon:before, .usa-home-cspot .meta-wrapper .meta-icon:before {
+  left: 50%;
+  margin-left: -18px;
+  margin-top: -18px;
+  top: 50%;
+}
+.usa-home-bspot .meta, .usa-home-cspot .meta {
+  margin-top: -32px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .usa-home-bspot .meta, .usa-home-cspot .meta {
+    margin-top: -50px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .usa-home-bspot .meta, .usa-home-cspot .meta {
+    margin-top: -22px;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-bspot .meta, .usa-home-cspot .meta {
+    margin-top: -22px;
+  }
+}
+.usa-home-bspot .meta .title, .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .title, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional {
+  margin-left: 19.25%;
+}
+.usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional, .usa-home-cspot .meta .additional span {
+  line-height: 18px;
+}
+@media (min-width: 1601px) {
+  .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional, .usa-home-cspot .meta .additional span {
+    font-size: 21px;
+    line-height: 29px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional, .usa-home-cspot .meta .additional span {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional, .usa-home-cspot .meta .additional span {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+.usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+  font-size: 20px;
+  line-height: 28px;
+}
+@media (min-width: 1601px) {
+  .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.usa-home-cspot {
+  float: right;
+}
+@media (max-width: 640px) {
+  .usa-home-cspot {
+    float: none;
+  }
 }
 
 .schedule-header {

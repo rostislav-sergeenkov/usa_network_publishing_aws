@@ -608,12 +608,23 @@ function _usanetwork_tv_shows_catchup_explore_block() {
 
     $theme_variables = array(
       'catch_up' => array(
+        2 => array(
+          'caption' => t('Watch now!'),
+          'title' => t('Videos'),
+          'elements' => array(),
+          'additional_text' =>
+        ),
         1 => array(
           'caption' => t('Watch now!'),
           'title' => t('Latest full episodes'),
-          'additional_text' => '@ full episodes',
+          'additional_text' => t('@num full episodes', array('@num' => 5)),
           'elements' => $latest_full_episodes,
         ),
+        3 => array(
+          'caption' => t('Season @season_number', array('@season_number' => 2)),
+          'title' => t('The season in @show_name', array('@show_name' => 'Suits')),
+          'additional_text' => t('@num features', array('@num' => 13)),
+        )
       ),
     );
 

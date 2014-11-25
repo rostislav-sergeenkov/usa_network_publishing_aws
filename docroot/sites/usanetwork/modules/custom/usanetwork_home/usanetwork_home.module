@@ -81,6 +81,7 @@ function usanetwork_home_block_view($delta = '') {
     case 'usanetwork_home_bspot_cspot':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_bspot_cspot();
+
       break;
 
     case 'usanetwork_home_featured_promos':

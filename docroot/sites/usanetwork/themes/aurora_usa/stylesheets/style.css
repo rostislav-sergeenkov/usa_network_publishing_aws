@@ -15206,6 +15206,9 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
     margin-right: -33px;
   }
 }
+#block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  width: 100%;
+}
 
 @media (min-width: 1601px) {
   .usanetwork-aspot.show-chrisley .meta-wrap .show-title, .usanetwork-aspot.show-graceland .meta-wrap .show-title {
@@ -15947,44 +15950,44 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   display: block;
 }
 
-#block-usanetwork-home-usanetwork-home-bspot-cspot {
+.bspot-cspot {
   background: #dcddde;
   overflow: hidden;
   padding: 45px 10px;
   position: relative;
   width: 100%;
 }
-#block-usanetwork-home-usanetwork-home-bspot-cspot:after {
+.bspot-cspot:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (max-width: 768px) {
-  #block-usanetwork-home-usanetwork-home-bspot-cspot {
+  .bspot-cspot {
     padding-bottom: 20px;
   }
 }
 @media (max-width: 640px) {
-  #block-usanetwork-home-usanetwork-home-bspot-cspot {
+  .bspot-cspot {
     padding: 20px 0px;
   }
 }
-#block-usanetwork-home-usanetwork-home-bspot-cspot .ad-728x90 {
+.bspot-cspot .ad-728x90 {
   display: none;
   margin: 20px auto 0px;
   max-width: 728px;
 }
-#block-usanetwork-home-usanetwork-home-bspot-cspot .ad-728x90 a {
+.bspot-cspot .ad-728x90 a {
   display: block;
   max-height: 90px;
 }
 @media (max-width: 768px) {
-  #block-usanetwork-home-usanetwork-home-bspot-cspot .ad-728x90 {
+  .bspot-cspot .ad-728x90 {
     display: block;
     height: 100%;
     width: 100%;
   }
-  #block-usanetwork-home-usanetwork-home-bspot-cspot .ad-728x90 img {
+  .bspot-cspot .ad-728x90 img {
     height: auto;
     width: 100%;
   }

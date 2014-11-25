@@ -97,13 +97,16 @@
         }
       })();
 
-      var aspot = USAN.aspot.init('.slider');
+      $(window).load(function(){
+        var aspot = USAN.aspot.init('.slider');
 
-      $('.next-button').click(function() {
-        aspot.goToNextSlide();
+        $('.next-button').click(function() {
+          aspot.goToNextSlide();
+        });
+
+        $('.next-button').hide().addClass('disabled');
+
       });
-
-      $('.next-button').hide().addClass('disabled');
 
       //old code
       // A-SPOT VIDEOS

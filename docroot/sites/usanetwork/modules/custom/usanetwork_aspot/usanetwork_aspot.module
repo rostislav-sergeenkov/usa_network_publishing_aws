@@ -25,7 +25,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   $show_nid = _usanetwork_aspot_get_show_nid($form_state['node']);
 
   if ($show_nid) {
-    $airdate = _usanetwork_aspot_get_nearest_episode_airtime($show_nid);
+    $airdate = usanetwork_schedule_get_nearest_episode_airtime($show_nid);
   }
 
   $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
@@ -653,26 +653,6 @@ function _usanetwork_aspot_get_show_nid($node) {
 
   if (!empty($field_show)) {
     return reset(reset($field_show));
-  }
-
-  return NULL;
-}
-
-function _usanetwork_aspot_get_nearest_episode_airtime($show_nid) {
-  $query = db_select('field_data_field_show', 's');
-  $query->fields('f', array('fid'));
-  $query->fields('v', array('airdate'));
-  $query->leftJoin('file_managed', 'f', 's.entity_id=f.fid');
-  $query->leftJoin('mpx_video', 'v', 'f.fid=v.fid');
-  $query->condition('s.field_show_target_id', $show_nid);
-  $query->condition('s.entity_type', 'file');
-  $query->condition('v.airdate', REQUEST_TIME, '>');
-  $query->orderBy('v.airdate', 'ASC');
-  $query->range(0, 1);
-  $result = $query->execute()->fetch();
-
-  if ($result) {
-    return $result->airdate;
   }
 
   return NULL;

@@ -9,6 +9,59 @@ include_once 'usanetwork_tv_shows.features.inc';
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 
 /**
+ *  Implements hook_block_info().
+ */
+function usanetwork_tv_shows_block_info() {
+  $blocks = array();
+
+  $blocks['usanetwork_tv_shows_aspot'] = array(
+    'info' => t('TV Shows: A-Spot'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ *  Implements hook_block_view().
+ */
+function usanetwork_tv_shows_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_tv_shows_aspot':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_aspot_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_tv_shows_aspot' => array(
+      'variables' => array(
+        'show' => NULL,
+        'episodes' => array(
+          0 => array(
+            'url' => NULL,
+            'title' => NULL,
+            'series_and_number' => NULL,
+            'duration' => NULL,
+            'image_url' => NULL,
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-aspot',
+    ),
+  );
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  * this is a straight rip from pub_tv old relations fields
  */
@@ -458,4 +511,49 @@ function usanetwork_tv_shows_footer_links() {
       ),
     )
   );
+}
+
+/**
+ * Renders A-Spot block for Show.
+ */
+function _usanetwork_tv_shows_aspot_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+
+  if (!empty($show_node)) {
+    $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
+
+    $theme_variables = array(
+      'show' => usanetwork_aspot_render($show_node),
+      'episodes' => array(),
+    );
+
+    if (!empty($show_episodes)) {
+      foreach ($show_episodes as $episode_data) {
+        $episode_file = file_load($episode_data->fid);
+        $episode_image_uri = '';
+
+        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($episode_file->uri);
+
+        if ($episode_image_uri_wrapper) {
+          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
+        }
+
+        $episode_theme_variables = array(
+          'url' => url('file/' . $episode_data->fid),
+          'title' => $episode_data->title,
+          'series_and_number' => 'S' . $episode_data->field_mpx_season_number_value . ' ' . t('Episode') . ' ' . $episode_data->field_mpx_episode_number_value,
+          'duration' => gmdate('H:i:s', $episode_data->field_mpx_duration_value),
+          'image_url' => image_style_url('300x169_video', $episode_image_uri),
+        );
+
+        $theme_variables['episodes'][] = $episode_theme_variables;
+      }
+    }
+
+    if (!empty($theme_variables)) {
+      return theme('usanetwork_tv_shows_aspot', $theme_variables);
+    }
+  }
+
+  return '';
 }

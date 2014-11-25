@@ -233,3 +233,54 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
 
   return $query->execute()->fetchAll();
 }
+
+/**
+ * Pulls latest episodes from show $show_nid with limit $limit items using mpx_file data.
+ */
+function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
+  $query = db_select('file_managed', 'f')->fields('f', array('fid'));
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->leftJoin('field_data_field_mpx_full_episode','full_episode_field','full_episode_field.entity_id = f.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  $query->leftJoin('field_data_field_mpx_duration', 'duration_field', 'duration_field.entity_id = f.fid');
+  $query->fields('duration_field', array('field_mpx_duration_value'));
+  $query->leftJoin('field_data_field_mpx_season_number', 'season_field', 'season_field.entity_id = f.fid');
+  $query->fields('season_field', array('field_mpx_season_number_value'));
+  $query->leftJoin('field_data_field_mpx_episode_number', 'field_episode_number', 'field_episode_number.entity_id = f.fid');
+  $query->fields('field_episode_number', array('field_mpx_episode_number_value'));
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->fields('v', array('title'));
+  $query->condition('v.status', 1);
+  $query->orderBy('v.airdate', 'DESC');
+
+  if ($limit > 0) {
+    $query->range(0, $limit);
+  }
+
+  return $query->execute()->fetchAll();
+}
+
+/**
+ * Pulls nearest episode from show $show_nid.
+ */
+function usanetwork_schedule_get_nearest_episode_airtime($show_nid) {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->leftJoin('field_data_field_show', 's', 's.entity_id=f.fid');
+  $query->leftJoin('mpx_video', 'v', 'v.fid=f.fid');
+  $query->fields('v', array('airdate'));
+  $query->condition('s.field_show_target_id', $show_nid);
+  $query->condition('s.entity_type', 'file');
+  $query->condition('v.airdate', REQUEST_TIME, '>');
+  $query->orderBy('v.airdate', 'ASC');
+  $query->range(0, 1);
+  $result = $query->execute()->fetch();
+
+  if ($result) {
+    return $result->airdate;
+  }
+
+  return NULL;
+}

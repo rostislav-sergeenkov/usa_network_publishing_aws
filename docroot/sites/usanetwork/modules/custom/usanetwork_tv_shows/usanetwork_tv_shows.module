@@ -528,50 +528,58 @@ function _usanetwork_tv_shows_aspot_block() {
 
   if (!empty($show_node)) {
     $title_prefix = t('New episode');
+    $show_image_url = '';
+
     $title_prefix_field = field_get_items('node', $show_node, 'field_usa_tv_tune_in_date');
-    $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
+    $show_image_field = field_get_items('node', $show_node, 'field_logo');
 
     if (!empty($title_prefix_field)) {
       $title_prefix = reset(reset($title_prefix_field));
     }
 
+    if (!empty($show_image_field)) {
+      $show_image_url = file_create_url($show_image_field[0]->uri);
+    }
 
+    $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
 
     $theme_variables = array(
       'show' => array(
-        'image_url' => NULL,
+        'image_url' => $show_image_url,
         'title_prefix' => $title_prefix,
-        'title' => NULL,
+        'title' => $show_node->title,
         'cta' => array(
-          'text' => NULL,
+          'text' => t('Not implemented yet'),
         ),
       ),
-      'episodes' => array(
-        0 => array(
-          'url' => NULL,
-          'title' => NULL,
-          'series_and_number' => NULL,
-          'duration' => NULL,
-          'image_url' => NULL,
-        ),
-      ),
+      'episodes' => array(),
     );
 
     if (!empty($show_episodes)) {
       foreach ($show_episodes as $episode_data) {
-        $episode_related = _usanetwork_promo_featured_content($episode_data->nid);
-        //die('<pre>'.print_r($episode_related, true).'</pre>');
-        $episode_duration = ($episode_data->end_time - $episode_data->start_time) / 1000;
+        $episode_file = file_load($episode_data->fid);
+        $episode_image_uri = '';
+
+        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($episode_file->uri);
+
+        if ($episode_image_uri_wrapper) {
+          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
+        }
+
         $episode_theme_variables = array(
-          'url' => !empty($episode_data->nid)
-            ? url('node/' . $episode_data->nid)
-            : '',
+          'url' => url('file/' . $episode_data->fid),
           'title' => $episode_data->title,
-          'series_and_number' => 'S' . $episode_data->season_number . ' ' . t('Episode') . ' ' . $episode_data->season_episode_number,
-          'duration' => NULL,
-          'image_url' => NULL,
+          'series_and_number' => 'S' . $episode_data->field_mpx_season_number_value . ' ' . t('Episode') . ' ' . $episode_data->field_mpx_episode_number_value,
+          'duration' => gmdate('H:i:s', $episode_data->field_mpx_duration_value),
+          'image_url' => file_create_url($episode_image_uri),
         );
+
+        $theme_variables['episodes'][] = $episode_theme_variables;
       }
+    }
+
+    if (!empty($theme_variables)) {
+      return theme('usanetwork_tv_shows_aspot', $theme_variables);
     }
   }
 

@@ -235,11 +235,22 @@ function usanetwork_schedule_pull_up_next_item($time_corellation = 0) {
 }
 
 function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 5) {
-  $query = db_select('usanetwork_schedule', 's');
-  $query->join('node', 'n', 's.title=n.title');
-  $query->fields('s', array());
-  $query->fields('n', array('nid'));
-  $query->orderBy('s.start_time', 'DESC');
+  $query = db_select('file_managed', 'f')->fields('f', array('fid'));
+  $query->condition('f.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+  $query->leftJoin('field_data_field_show','show_field','show_field.entity_id = f.fid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->leftJoin('field_data_field_mpx_full_episode','full_episode_field','full_episode_field.entity_id = f.fid');
+  $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  $query->leftJoin('field_data_field_mpx_duration', 'duration_field', 'duration_field.entity_id = f.fid');
+  $query->fields('duration_field', array('field_mpx_duration_value'));
+  $query->leftJoin('field_data_field_mpx_season_number', 'season_field', 'season_field.entity_id = f.fid');
+  $query->fields('season_field', array('field_mpx_season_number_value'));
+  $query->leftJoin('field_data_field_mpx_episode_number', 'field_episode_number', 'field_episode_number.entity_id = f.fid');
+  $query->fields('field_episode_number', array('field_mpx_episode_number_value'));
+  $query->leftJoin('mpx_video','v','v.fid = f.fid');
+  $query->fields('v', array('title'));
+  $query->condition('v.status', 1);
+  $query->orderBy('v.airdate', 'DESC');
   $query->range(0, $limit);
 
   return $query->execute()->fetchAll();

@@ -1,6 +1,26 @@
-(function ($) {
-  Drupal.behaviors.schedule_tonight = {
-    attach: function (context) {
+(function($) {
+  Drupal.behaviors.usanetwork_menu_onnow_tonight = {
+    attach: function (context, settings) {
+      usanetworkMenuGetOTBlockInfo();
+
+      function usanetworkMenuGetOTBlockInfo() {
+        var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
+
+        $.ajax({
+          type: 'POST',
+          dataType: 'JSON',
+          data: {},
+          url: 'ajax/render-onnow-tonight/' + timezoneOffset,
+          success: function(message) {
+            var onnowTonightBlock = $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .content');
+
+            if (typeof message.html != undefined) {
+              onnowTonightBlock.html(message.html);
+              scheduleInit();
+            }
+          }
+        });
+      }
 
       // Init schedule carousel
       function scheduleInit() {
@@ -21,10 +41,8 @@
             duration: 300,
             pauseOnHover: true
           }
-
         });
       }
-      scheduleInit();
 
       // Changed class schedule carousel
       $(".schedule-buttons a").click(function (e) {
@@ -39,7 +57,6 @@
           $(this).addClass('active');
         }
       });
-
     }
-  }
+  };
 })(jQuery);

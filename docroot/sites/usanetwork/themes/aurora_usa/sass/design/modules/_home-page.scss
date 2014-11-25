@@ -15,16 +15,6 @@ body {
   }
 }
 
-.page-home {
-  #main {
-    padding: 0 0 15px;
-    @include breakpoint($bp-home-2col) {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  }
-}
-
 .usa-home {
   @extend %home-grid;
 }

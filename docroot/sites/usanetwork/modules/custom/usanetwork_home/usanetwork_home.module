@@ -48,10 +48,11 @@ function usanetwork_home_menu() {
 function usanetwork_home_block_info() {
   $blocks = array();
 
-  $blocks['usanetwork_home_promo_carousel'] = array(
+  // Who removed '_usanetwork_home_promo_carousel()' callback?
+  /*$blocks['usanetwork_home_promo_carousel'] = array(
     'info' => t('Homepage: Promo Carousel'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
+  );*/
 
   $blocks['usanetwork_home_shows_queue'] = array(
     'info' => t('Homepage: Shows block'),
@@ -78,10 +79,11 @@ function usanetwork_home_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
-    case 'usanetwork_home_promo_carousel':
+    // Who removed '_usanetwork_home_promo_carousel()' callback?
+    /*case 'usanetwork_home_promo_carousel':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_promo_carousel();
-      break;
+      break;*/
 
     case 'usanetwork_home_shows_queue':
       $block['subject'] = '';

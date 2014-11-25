@@ -289,15 +289,27 @@ function _usanetwork_aspot_carousel_block() {
       }
 
       if (!empty($carousel_node['aspot_node']->field_usa_aspot_desktop)) {
-        $banner_desktop = $aspot_node_wrapper->field_usa_aspot_desktop->file->url->value();
+        $banner_desktop_fid = $aspot_node_wrapper->field_usa_aspot_desktop->file->fid->value();
+
+        if ($banner_desktop_fid) {
+          $banner_desktop = file_load($banner_desktop_fid)->uri;
+        }
       }
 
       if (!empty($carousel_node['aspot_node']->field_usa_aspot_mobile)) {
-        $banner_mobile = $aspot_node_wrapper->field_usa_aspot_mobile->file->url->value();
+        $banner_mobile_fid = $aspot_node_wrapper->field_usa_aspot_mobile->file->fid->value();
+
+        if ($banner_mobile_fid) {
+          $banner_mobile = file_load($banner_mobile_fid)->uri;
+        }
       }
 
       if (!empty($carousel_node['aspot_node']->field_usa_aspot_tablet_portrait)) {
-        $banner_tablet = $aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->url->value();
+        $banner_tablet_fid = $aspot_node_wrapper->field_usa_aspot_tablet_portrait->file->fid->value();
+
+        if ($banner_tablet_fid) {
+          $banner_tablet = file_load($banner_tablet_fid)->uri;
+        }
       }
 
       if (empty($banner_tablet)) {

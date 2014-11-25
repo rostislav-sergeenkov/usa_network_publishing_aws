@@ -30,7 +30,7 @@
             <?php endif; ?>
             <div class="episode-info">
               <?php if (!empty($on_now_block_item['up_next']['show_title']) && !empty($on_now_block_item['up_next']['episode_title'])): ?>
-                <div class="episode-show"><?php print $on_now_block_item['up_next']['show_title']; ?></div>
+                <div class="episode-show"><?php print $on_now_block_item['up_next']['show_title']; ?><br><?php print $on_now_block_item['up_next']['epidose_title']; ?></div>
               <?php endif; ?>
               <div class="icons-block">
                 <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>

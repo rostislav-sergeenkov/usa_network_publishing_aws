@@ -81,7 +81,6 @@ function usanetwork_home_block_view($delta = '') {
     case 'usanetwork_home_bspot_cspot':
       $block['subject'] = '';
       $block['content'] = _usanetwork_home_bspot_cspot();
-
       break;
 
     case 'usanetwork_home_featured_promos':
@@ -257,7 +256,7 @@ function _usanetwork_home_bspot_cspot() {
           'title' => isset($promo_data['title'])
               ? $promo_data['title']
               : NULL,
-          'caption' => $promo_data['cta_text'],
+          'caption' => $promo_data['caption'],
           'additional' => $additional,
           'time' => $promo_data['time'],
         );

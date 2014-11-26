@@ -237,7 +237,7 @@ function _usanetwork_home_bspot_cspot() {
               ? $promo_data['title']
               : NULL,
           'caption' => $promo_data['caption'],
-          'additional' => $additional,
+          'additional' => isset($additional) ? $additional : '',
           'time' => $promo_data['time'],
         );
         $spots[] = theme('usanetwork_home_bcspots', $spots_vars);

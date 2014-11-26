@@ -27,7 +27,6 @@
           <?php endif; ?>
           <?php if (!empty($show_poster['1245x709'])): ?>
             <noscript><img src="<?php print $show_poster['1245x709']; ?>" width="1245" height="709" alt="" title="" /></noscript>
-            <img class="tile-img" alt="" src="<?php print $show_poster['1245x709']; ?>">
           <?php endif; ?>
         </div>
       <?php endif; ?>

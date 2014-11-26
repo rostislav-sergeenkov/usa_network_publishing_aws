@@ -106,27 +106,7 @@ function _usanetwork_home_featured_carousel() {
       'additional_text' => t('Episodes, clips & photos'),
     );
 
-    foreach (array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text') as $target => $field_name) {
-
-      $field_value = field_get_items('node', $homepage_node, $field_name);
-      if ($field_value) {
-        $field = reset($field_value);
-
-        switch ($target) {
-          case 'title':
-            $description_vars['title'] = $field['value'];
-            break;
-          case 'caption':
-            $description_vars['caption'] = $field['value'];
-            break;
-          case 'additional_text':
-            $description_vars['additional_text'] = $field['value'];
-            break;
-          default:
-            break;
-        }
-      }
-    }
+    _usanetwork_tv_shows_display_discription_item($homepage_node, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
 
     $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
 
@@ -141,7 +121,7 @@ function _usanetwork_home_featured_carousel() {
           continue;
         }
 
-        if (isset($promo_data['more_link_title']) && isset($promo_data['more_link_url'])) {
+        if ($promo_data['more_link_title'] && $promo_data['more_link_url']) {
           $more_link = l($promo_data['more_link_title'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
         }
 
@@ -162,7 +142,9 @@ function _usanetwork_home_featured_carousel() {
               ? $promo_data['title']
               : NULL,
           'title' => $promo_data['cta_text'],
-          'more_link' => isset($more_link) ? $more_link : NULL,
+          'more_link' => isset($more_link)
+              ? $more_link
+              : NULL,
         );
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
         $i++;
@@ -229,15 +211,13 @@ function _usanetwork_home_bspot_cspot() {
         if ($promo_data === FALSE) {
           continue;
         }
-
-        $type = t('S@season_num episode @episode_num', array(
-          '@season_num' => isset($promo_data['season_number'])
-              ? $promo_data['season_number']
-              : '',
-          '@episode_num' => isset($promo_data['episode_number'])
-              ? $promo_data['episode_number']
-              : '')
-        );
+        if ($promo_data['season_number'] && $promo_data['episode_number']) {
+          $additional = t('S@season_num episode @episode_num', array(
+            '@season_num' => $promo_data['season_number']['value'],
+            '@episode_num' => $promo_data['episode_number']['value']
+              )
+          );
+        }
 
         $spots_vars = array(
           'spot_class' => $spot,
@@ -256,8 +236,8 @@ function _usanetwork_home_bspot_cspot() {
           'title' => isset($promo_data['title'])
               ? $promo_data['title']
               : NULL,
-          'caption' => $promo_data['cta_text'],
-          'type' => $type,
+          'caption' => $promo_data['caption'],
+          'additional' => $additional,
           'time' => $promo_data['time'],
         );
         $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
@@ -273,9 +253,7 @@ function _usanetwork_home_bspot_cspot() {
  */
 function usanetwork_home_preprocess_block(&$variables) {
   $block = $variables['block'];
-  if ($block->bid == 'views-usa_video-front_full_episodes'
-     || $block->bid == 'views-usa_mpx_video-front_full_epsds' 
-     || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel') {
+  if ($block->bid == 'views-usa_video-front_full_episodes' || $block->bid == 'views-usa_mpx_video-front_full_epsds' || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel') {
     $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
     //carousel-promo
 
@@ -430,7 +408,7 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
         'icon_type' => NULL,
         'title' => NULL,
         'caption' => NULL,
-        'type' => NULL,
+        'additional' => NULL,
         'time' => NULL,
       ),
       'path' => $path . '/templates',
@@ -1032,11 +1010,11 @@ function _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper) {
   $theme_variables = array(
     'show_title' => $show_node_wrapper->title->value(),
     'schedule_day' => !empty($episode_dates['start_date'])
-      ? date('D', $episode_dates['start_date'])
-      : '',
+        ? date('D', $episode_dates['start_date'])
+        : '',
     'schedule_time' => !empty($episode_dates['start_date'])
-      ? date('h:i A', $episode_dates['start_date'])
-      : '',
+        ? date('h:i A', $episode_dates['start_date'])
+        : '',
   );
 
   return theme('usanetwork_home_shows_queue_top_info', $theme_variables);
@@ -1078,16 +1056,16 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   $theme_variables = array(
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
     'latet_episode_image_url' => !empty($promoted_content_item->field_tvs_promoted_content)
-      ? _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_promoted_content)
-      : '',
+        ? _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_promoted_content)
+        : '',
     'episode_title' => $promoted_content_item->title,
     'episode_url' => url('node/' . $promoted_content_item->nid),
     'episode_duration' => !empty($episode_dates['duration'])
-      ? ($episode_dates['duration'] >= 3600
-        ? gmdate('H:i:s', $episode_dates['duration'])
-        : gmdate('i:s', $episode_dates['duration'])
-      )
-      : '',
+        ? ($episode_dates['duration'] >= 3600
+            ? gmdate('H:i:s', $episode_dates['duration'])
+            : gmdate('i:s', $episode_dates['duration'])
+        )
+        : '',
   );
 
   return theme('usanetwork_home_shows_queue_promo', $theme_variables);

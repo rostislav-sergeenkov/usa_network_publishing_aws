@@ -404,11 +404,16 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
 function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
   $query = db_select('field_data_field_show', 'fshow');
   $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
+  $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
   $query->fields('f', array('created', 'timestamp'));
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
   $query->condition('fshow.entity_type', 'file');
+  $db_or = db_or();
+  $db_or->condition('mpx_video_data.status', 1);
+  $db_or->isNull('mpx_video_data.status');
+  $query->condition($db_or);
 
   $query->orderBy($sort_by, $direction);
 
@@ -486,7 +491,9 @@ function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mod
       break;
   }
 
-  return !empty($content_item) ? render($content_item) : '';
+  return !empty($content_item)
+      ? render($content_item)
+      : '';
 }
 
 /**
@@ -524,31 +531,31 @@ function usanetwork_tv_shows_footer_links() {
       'data' => l($new . $row->node_title, 'node/' . $row->nid, array('html' => TRUE)),
       'class' => array(
         'menu-item'
-        ),
+      ),
     );
   }
   return theme('usanetwork_item_list', array(
-      'warpper_attributes' => array(
-        'class' => array(
-          'shows-menu',
-        ),
+    'warpper_attributes' => array(
+      'class' => array(
+        'shows-menu',
       ),
-      'title_tag' => 'h2',
-      'title_attributes' => array(
-        'class' => array(
-          'menu-title',
-          'shows-menu-title',
-        ),
+    ),
+    'title_tag' => 'h2',
+    'title_attributes' => array(
+      'class' => array(
+        'menu-title',
+        'shows-menu-title',
       ),
-      'title' => t('Shows'),
-      'items' => $links,
-      'type' => 'ul',
-      'attributes' => array(
-        'class' => array(
-          'menu'
-        )
-      ),
-    )
+    ),
+    'title' => t('Shows'),
+    'items' => $links,
+    'type' => 'ul',
+    'attributes' => array(
+      'class' => array(
+        'menu'
+      )
+    ),
+      )
   );
 }
 

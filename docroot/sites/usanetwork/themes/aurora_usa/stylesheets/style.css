@@ -16851,6 +16851,9 @@ a[class*="day"] {
   background: transparent;
   cursor: default;
 }
+.schedule-on-tonight .schedule-buttons a:focus {
+  outline: none;
+}
 .schedule-on-tonight .schedule-buttons a:after {
   color: #ffffff;
   display: block;

@@ -1,6 +1,7 @@
 (function($) {
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
+      var window_size_tablet_portrait = 769;
       usanetworkMenuGetOTBlockInfo();
 
       function usanetworkMenuGetOTBlockInfo() {
@@ -62,7 +63,7 @@
       };
 
       $(window).bind('resize', function () {
-        if (window.innerWidth >= 769) {
+        if (window.innerWidth >= window_size_tablet_portrait) {
           if ($('.schedule-carousel').hasClass('destroy')) {
             scheduleInit();
             $('.schedule-carousel').removeClass('destroy');
@@ -76,7 +77,7 @@
       });
 
       $(window).load(function () {
-        if (window.innerWidth < 769) {
+        if (window.innerWidth < window_size_tablet_portrait) {
           $('.schedule-carousel').addClass('destroy');
         } else {
           scheduleInit();

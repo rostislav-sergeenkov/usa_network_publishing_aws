@@ -43,13 +43,12 @@ function usanetwork_promo_views_default_views() {
   $handler->display->display_options['fields']['field_display_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_display_title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_display_title']['type'] = 'text_plain';
-  /* Field: File: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
-  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Field: thePlatform MPX Video: thePlatform MPX Account */
+  $handler->display->display_options['fields']['account']['id'] = 'account';
+  $handler->display->display_options['fields']['account']['table'] = 'mpx_video';
+  $handler->display->display_options['fields']['account']['field'] = 'account';
+  $handler->display->display_options['fields']['account']['label'] = '';
+  $handler->display->display_options['fields']['account']['element_label_colon'] = FALSE;
   /* Field: File: Name */
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
@@ -75,8 +74,8 @@ function usanetwork_promo_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
-    'type' => 'type',
     'filename' => 'filename',
+    'account' => 'account',
     'field_display_title' => 0,
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -84,8 +83,8 @@ function usanetwork_promo_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'field_display_title' => 'field_display_title',
-    'type' => 'type',
     'filename' => 'filename',
+    'account' => 'account',
   );
   $handler->display->display_options['row_options']['separator'] = ': ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;

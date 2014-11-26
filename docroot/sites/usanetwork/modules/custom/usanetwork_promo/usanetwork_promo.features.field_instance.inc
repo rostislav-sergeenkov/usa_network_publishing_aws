@@ -355,6 +355,7 @@ function usanetwork_promo_field_default_field_instances() {
         'entityreference_live_preview' => array(
           'enabled' => 0,
           'mode' => 'default',
+          'preview_type' => 'field',
         ),
         'match_operator' => 'CONTAINS',
         'path' => '',

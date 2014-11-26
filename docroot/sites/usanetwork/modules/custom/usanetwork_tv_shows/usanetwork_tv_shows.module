@@ -19,6 +19,12 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  // Catch up & Explore
+  $blocks['usanetwork_tv_shows_coex'] = array(
+    'info' => t('TV Shows: Catch up, Explore'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -32,6 +38,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_aspot':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_aspot_block();
+      break;
+
+    case 'usanetwork_tv_shows_coex':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
       break;
   }
 
@@ -57,6 +68,35 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         ),
       ),
       'template' => 'templates/usanetwork-tv-shows-aspot',
+    ),
+    'usanetwork_tv_shows_catchup_explore' => array(
+      'variables' => array(
+        'catch_up' => array( // Carousel lines
+          0 => array(
+            'caption' => NULL,
+            'title' => NULL,
+            'additional_text' => NULL,
+            'elements' => array(), // Array of pre-rendered 'usanetwork_tv_shows_catchup_explore_content_element' elements
+          )
+        ),
+        'explore' => array(
+
+        ),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-catchup-explore',
+    ),
+    'usanetwork_tv_shows_catchup_explore_content_element' => array(
+      'variables' => array(
+        'class' => NULL,
+        'node_classes' => array(),
+        'title' => NULL,
+        'additional' => array(
+          'normal' => NULL,
+          'span' => NULL,
+        ),
+        'media_player_icon' => TRUE,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-catchup-explore-content-element',
     ),
   );
 }
@@ -563,4 +603,98 @@ function _usanetwork_tv_shows_aspot_block() {
   }
 
   return '';
+}
+
+/**
+ * Renders "Catch up, Explore block".
+ */
+function _usanetwork_tv_shows_catchup_explore_block() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+
+  if (!empty($show_node)) {
+    $latest_full_episodes = _usanetwork_tv_shows_wrap_latest_episodes($show_node->nid);
+
+    $theme_variables = array(
+      'catch_up' => array(
+        2 => array(
+          'caption' => t('Watch now!'), //@TODO: Is configurable?
+          'title' => t('Videos'), //@TODO: Is configurable?
+          'additional_text' => t('Clips, interviews & more'), //@TODO: Is configurable?
+          'elements' => array(), //@TODO: Is configurable?
+        ),
+        1 => array(
+          'caption' => t('Watch now!'), //@TODO: Is configurable?
+          'title' => t('Latest full episodes'), //@TODO: Is configurable?
+          'additional_text' => t('@num full episodes', array('@num' => 5)), //@TODO: Is configurable?
+          'elements' => $latest_full_episodes, //@TODO: Is configurable?
+        ),
+        3 => array(
+          'caption' => t('Season @season_number', array('@season_number' => 2)), //@TODO: Is configurable?
+          'title' => t('The season in @show_name', array('@show_name' => 'Suits')), //@TODO: Is configurable?
+          'additional_text' => t('@num features', array('@num' => 13)), //@TODO: Is configurable?
+          'elements' => array(), //@TODO: Is configurable?
+        ),
+      ),
+      'explore' => array(
+        4 => array(
+          'caption' => t('Key players'), //@TODO: Is configurable?
+          'title' => t('Meet the cast'), //@TODO: Is configurable?
+          'additional_text' => t('@num characters', array('@num' => 6)), //@TODO: Is configurable?
+          'elements' => array(), //@TODO: Is configurable?
+        ),
+        2 => array(
+          'caption' => '', //@TODO: Is configurable?
+          'title' => t('Explore the show'), //@TODO: Is configurable?
+          'additional_text' => t('@num features', array('@num' => 27)), //@TODO: Is configurable?
+          'elements' => array(), //@TODO: Is configurable?
+        ),
+        5 => array(
+          'caption' => t('2011 - now'), //@TODO: Is configurable?
+          'title' => t('Past seasons'), //@TODO: Is configurable?
+          'additional_text' => t('@num seasons', array('@num' => 4)), //@TODO: Is configurable?
+          'elements' => array(), //@TODO: Is configurable?
+        ),
+      ),
+    );
+
+    return theme('usanetwork_tv_shows_catchup_explore', $theme_variables);
+  }
+
+  return '';
+}
+
+/**
+ * Wraps last episodes for "Catch Up" block carousel.
+ */
+function _usanetwork_tv_shows_wrap_latest_episodes($show_nid) {
+  $items = array();
+  $latest_episodes = usanetwork_schedule_pull_latest_episodes($show_nid, 5);
+
+  if (!empty($latest_episodes)) {
+    foreach ($latest_episodes as $show_number => $latest_episode) {
+      $episode_class = NULL;
+
+      if ($show_number == 0) {
+        $episode_class = 'first';
+      }
+
+      if ($show_number == count($latest_episodes) - 1) {
+        $episode_class = 'last';
+      }
+
+      $theme_variables = array(
+        'class' => $episode_class,
+        'title' => $latest_episode->title,
+        'additional' => array(
+          'normal' => NULL,
+          'span' => NULL,
+        ),
+        'media_player_icon' => TRUE,
+      );
+
+      $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
+    }
+  }
+
+  return $items;
 }

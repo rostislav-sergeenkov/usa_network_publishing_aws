@@ -227,8 +227,8 @@ function _usanetwork_home_bspot_cspot() {
           'url' => isset($promo_data['url'])
               ? $promo_data['url']
               : NULL,
-          'spot_image' => isset($promo_data['image_url'])
-              ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array()))
+          'spot_image' => isset($promo_data['image_url_wide'])
+              ? theme('image_style', array('style_name' => 'bc833x469', 'path' => $promo_data['image_url_wide']))
               : NULL,
           'icon_type' => $promo_data['icon_type']
               ? $promo_data['icon_type']

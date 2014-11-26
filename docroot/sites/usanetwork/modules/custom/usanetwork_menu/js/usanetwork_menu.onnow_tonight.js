@@ -1,6 +1,7 @@
 (function($) {
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
+      var window_size_tablet_portrait = 769;
       usanetworkMenuGetOTBlockInfo();
 
       function usanetworkMenuGetOTBlockInfo() {
@@ -40,12 +41,15 @@
             items: 1,
             duration: 300,
             pauseOnHover: true
+          },
+          onCreate: function () {
+            $(".schedule-buttons a").click(scheduleBtnClick);
           }
         });
       }
 
       // Changed class schedule carousel
-      $(".schedule-buttons a").click(function (e) {
+      var scheduleBtnClick = function (e) {
         e.preventDefault();
 
         if (!$(this).hasClass('active')) {
@@ -56,7 +60,30 @@
           $(this).parent().addClass(current_class);
           $(this).addClass('active');
         }
+      };
+
+      $(window).bind('resize', function () {
+        if (window.innerWidth >= window_size_tablet_portrait) {
+          if ($('.schedule-carousel').hasClass('destroy')) {
+            scheduleInit();
+            $('.schedule-carousel').removeClass('destroy');
+          }
+        } else {
+          if (!$('.schedule-carousel').hasClass('destroy')) {
+            $('.schedule-carousel').trigger('_cfs_triggerEvent', ['destroy', true]);
+            $('.schedule-carousel').addClass('destroy');
+          }
+        }
       });
+
+      $(window).load(function () {
+        if (window.innerWidth < window_size_tablet_portrait) {
+          $('.schedule-carousel').addClass('destroy');
+        } else {
+          scheduleInit();
+        }
+      });
+
     }
   };
 })(jQuery);

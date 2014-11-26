@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * usanetwork_imagestyles.strongarm.inc

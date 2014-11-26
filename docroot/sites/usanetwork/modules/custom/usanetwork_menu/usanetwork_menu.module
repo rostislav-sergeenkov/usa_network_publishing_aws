@@ -463,6 +463,10 @@ function _usanetwork_menu_show_menu_primetime_block() {
  * Renders Show Menu.
  */
 function _usanetwork_menu_render_show_menu_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+  
   $output = '';
 
   $panel = panels_mini_load('usanetwork_show_menu');

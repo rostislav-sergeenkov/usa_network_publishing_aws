@@ -74,6 +74,9 @@
         background: transparent;
         cursor: default;
       }
+      &:focus{
+        outline: none;
+      }
       &:after {
         color: #ffffff;
         display: block;

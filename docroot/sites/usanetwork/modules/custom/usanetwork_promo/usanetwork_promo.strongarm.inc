@@ -89,7 +89,7 @@ function usanetwork_promo_strongarm() {
             'visible' => FALSE,
           ),
           'promo_teaser_large' => array(
-            'weight' => '-10',
+            'weight' => -10,
             'visible' => FALSE,
           ),
           'home_promo' => array(

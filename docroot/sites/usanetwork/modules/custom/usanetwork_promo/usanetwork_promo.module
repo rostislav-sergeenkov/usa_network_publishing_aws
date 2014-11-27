@@ -130,10 +130,8 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     'url' => NULL,
     'image_url' => NULL,
     'title' => $content->title,
-    'subtitle' => NULL,
     'season_number' => FALSE,
     'episode_number' => FALSE,
-    'type' => NULL,
     'time' => NULL,
     'cta_text' => NULL,
     'show_class' => '',
@@ -141,6 +139,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     'more_link_text' => FALSE,
     'more_link_url' => FALSE,
     'published' => FALSE,
+    'image_url_wide' => FALSE,
   );
 
   if ($basic_content) {
@@ -173,12 +172,14 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       if ($show_field_value = field_get_items('file', $file, 'field_show')) {
         $show_field = reset($show_field_value);
         $show = node_load($show_field['target_id']);
-        $featutred_content['title'] = $show->title;
+        $featutred_content['caption'] = $show->title;
         $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
 
+      $featutred_content['title'] = $file->filename;
+
       $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-      $featutred_content['image_url'] = $wrapper->getLocalThumbnailPath();
+      $featutred_content['image_url'] = $featutred_content['image_url_wide'] = $wrapper->getLocalThumbnailPath();
       $featutred_content['url'] = url('file/' . $file->fid);
 
       if ($duration_field_value = field_get_items('file', $file, 'field_mpx_duration')) {
@@ -186,10 +187,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $featutred_content['time'] = gmdate("H:i:s", $duration_field['value']);
       }
 
-      if (!isset($icon_type)) {
-        $icon_type = 'play-icon';
-      }
-      $featutred_content['icon_type'] = $icon_type;
+      $featutred_content['icon_type'] = isset($icon_type) ? $icon_type : 'play-icon';
 
       if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
         $featutred_content['season_number'] = reset($season_number_field);
@@ -199,7 +197,6 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $featutred_content['episode_number'] = reset($episode_number_field);
       }
 
-      $featutred_content['type'] = $file->filename;
       $featutred_content['cta_text'] = isset($promo_text_line_1)
           ? $promo_text_line_1
           : NULL;
@@ -211,13 +208,14 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       $node = $content;
       if ($show_field_value = field_get_items('node', $node, 'field_show')) {
         $show_field = reset($show_field_value);
-        $featutred_content['title'] = $node->title;
         $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
 
+      $featutred_content['caption'] = $promo_text_line_1;
+        $featutred_content['title'] = $node->title;
       if ($field_cover_item_items = field_get_items('node', $node, 'field_cover_item')) {
         $field_cover_item = reset($field_cover_item_items);
-        $featutred_content['image_url'] = $field_cover_item['uri'];
+        $featutred_content['image_url'] = $featutred_content['image_url_wide'] = $field_cover_item['uri'];
       }
       if ($field_promo_text_line_2_items = field_get_items('node', $promo, 'field_promo_text_line_2')) {
         $field_promo_text_line_2 = reset($field_promo_text_line_2_items);
@@ -225,7 +223,6 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       }
 
       $featutred_content['url'] = url('node/' . $node->nid);
-      $featutred_content['subtitle'] = $promo_text_line_1;
       $featutred_content['icon_type'] = $icon_type;
       $featutred_content['published'] = ($node->status == 1)
           ? TRUE
@@ -236,26 +233,32 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
 
       $featutred_content['url'] = $featutred_content['more_link_url'];
 
+      $featutred_content['caption'] = $promo_text_line_1;
+      if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
+        $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
+        $featutred_content['title'] = $field_promo_text_line_2['value'];
+      }
+      
       if ($show_field_value = field_get_items('node', $node, 'field_show')) {
         $show_field = reset($show_field_value);
-        $featutred_content['title'] = $node->title;
         $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
-
-      $featutred_content['subtitle'] = isset($promo_text_line_1)
-          ? $promo_text_line_1
-          : NULL;
 
       if ($field_promo_regular_image_field = field_get_items('node', $node, 'field_promo_regular_image')) {
         $field_promo_regular_image = reset($field_promo_regular_image_field);
         $featutred_content['image_url'] = $field_promo_regular_image['uri'];
       }
 
-      if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
-        $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
-        $featutred_content['cta_text'] = $field_promo_text_line_2['value'];
+      if ($field_promo_wide_image_field = field_get_items('node', $node, 'field_promo_wide_image')) {
+        $field_promo_wide_image = reset($field_promo_wide_image_field);
+        $featutred_content['image_url_wide'] = $field_promo_wide_image['uri'];
       }
-      $featutred_content['icon_type'] = $icon_type;
+
+      $featutred_content['cta_text'] = isset($featutred_content['more_link_text'])
+          ? $featutred_content['more_link_text']
+          : NULL;
+      
+      $featutred_content['icon_type'] = isset($icon_type) ?  $icon_type : NULL;
       $featutred_content['published'] = ($node->status == 1)
           ? TRUE
           : FALSE;

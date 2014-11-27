@@ -319,6 +319,29 @@ function usanetwork_imagestyles_image_default_styles() {
     'label' => '615x350',
   );
 
+  // Exported image style: bc833x469.
+  $styles['bc833x469'] = array(
+    'name' => 'bc833x469',
+    'label' => 'bc833x469',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 833,
+          'height' => 469,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: block_cover_title_lg.
   $styles['block_cover_title_lg'] = array(
     'name' => 'block_cover_title_lg',

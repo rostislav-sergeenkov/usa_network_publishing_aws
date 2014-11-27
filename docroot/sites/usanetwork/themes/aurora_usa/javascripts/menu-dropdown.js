@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
     attach: function(context){
-      var window_size_tablet_portrait = 769;
+
       var tablet = false;
       if (window.innerWidth < window_size_tablet_portrait) {
         tablet = true;

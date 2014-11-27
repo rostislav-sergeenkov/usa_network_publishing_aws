@@ -1,127 +1,153 @@
-<div class="<?php print $classes; ?> video usa-video featured-asset premium-asset clearfix" data-tve-player>
-  <div class="companionContainer">
-    <?php if ($ad_dart && $ad_dart != "&nbsp;"): ?>
-      <div class="ad_dart" data-ng-show="isDartReq"><?php print $ad_dart; ?></div>
-    <?php endif; ?>
-    <?php if ($ad_lead && $ad_lead != "&nbsp;"): ?>
-      <div class="ad_lead" data-ng-show="isFreeWheelReq"><?php print $ad_lead; ?></div>
-    <?php endif; ?>
-  </div>
-  <div class="meta">
-    <div class="meta-head">
-      <?php if ($is_live): ?>
-        <div class="show-title clearfix">
-          <?php if ($on_now_show): ?><h1 class="show-name"><?php print $on_now_show; ?></h1><?php endif; ?>
-          <?php if ($on_now_tune_in): ?><h2 class="tune-in"><?php print $on_now_tune_in; ?></h2><?php endif; ?>
+<div id="main">
+  <div class="video-block">
+    <div class="player-wrapper">
+      <div class="node usanetwork-aspot player">
+<?php if ($video_inactive): ?>
+          <div class="video-player-wrapper inactive">
+  <?php print $video_inactive; ?>
+          </div>
+<?php elseif ($lock_video): ?>
+          <div class="tve-help">
+            <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they
+              air!
+            </div>
+            <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE
+              USA NOW APP
+            </div>
+            <div class="tve-download-link">
+              <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
+                  src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png" alt=""/></a>
+              <a href="http://www.usanetwork.com/usanow"><img
+                  src="/sites/usanetwork/themes/aurora_usa/images/usanow.png" alt=""/></a>
+              <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
+                  src="/sites/usanetwork/themes/aurora_usa/images/appstore.png" alt=""/></a>
+            </div>
+            <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
+          </div>
+          <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
+            <div class="locked-msg">
+                   <?php if ($is_live): ?>
+                <span class="first-line"><?php print t('Please sign in with your TV provider to unlock live tv viewing.'); ?></span>
+                   <?php else: ?>
+                <span class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+                <?php endif; ?>
+            </div>
+            <div id="player">
+              <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN"
+                 data-ng-click="openLoginWindow()" data-ng-cloak="">
+            <?php if (!$is_live): ?>
+              <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+              print drupal_render($image);
+              ?>
+            <?php else: ?>
+                  <img src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>" alt=""/>
+            <?php endif; ?>
+              </a>
+            </div>
+          </div>
+          <div class="video-player-wrapper" data-ng-show="global.isAuthN">
+  <?php if ($is_live): ?>
+    <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
+  <?php else: ?>
+    <?php
+    $video = theme('pub_mpx_video', array(
+      'file' => $file,
+      'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
+    ));
+    ?>
+            <?php endif; ?>
+            <?php print $video; ?>
+          </div>
+          <div class="tve-help-link signIn">
+            <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img
+                src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>Why do I have to sign in?
+            </div>
+          </div>
+          <div class="tve-help-link signOut <?php print (!$is_live)
+                  ? 'not-live'
+                  : 'live'  ?>"
+               data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
+<?php else: ?>
+          <div class="video-player-wrapper">
+  <?php if ($is_live): ?>
+    <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
+  <?php else: ?>
+    <?php
+    $video = theme('pub_mpx_video', array(
+      'file' => $file,
+      'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
+    ));
+    ?>
+  <?php endif; ?>
+  <?php print $video; ?>
+          </div>
+<?php endif; ?>
+      </div>
+      <div class="coming-up-next">
+        <div class="prev-video">
+          <div class="video-title">Up next</div>
+          <div class="asset-img">
+            <img src="/proto/images/video_coming_up_next.jpg" alt="">
+
+            <div class="img-shadow"></div>
+            <div class="starts-in">Starts in</div>
+          </div>
         </div>
-      <?php else: ?>
-        <?php if ($show && $show != "&nbsp;"): ?><h2 class="show-name"><?php print $show; ?></h2><?php endif; ?>
-        <?php if ($video_title && $video_title != "&nbsp;"): ?><h1
-          class="episode-title"><?php print strip_tags($video_title); ?></h1><?php endif; ?>
-        <div class="details">
-          <?php if ($season && $season != "&nbsp;"): ?><span
-            class="season-info"><?php print $season; ?></span><?php endif; ?>
-          <?php if ($episode && $episode != "&nbsp;"): ?><span
-            class="episode-info"><?php print $episode; ?></span><?php endif; ?>
-          <?php if ($airdate && $airdate != "&nbsp;"): ?><span
-            class="episode-info"><?php print $airdate; ?></span><?php endif; ?>
+        <div class="prev-disc">
+          <div class="node node-usanetwork-promo show-suits">
+            <div class="meta-wrap">
+              <div class="meta">
+                <div class="caption">Suits</div>
+                <div class="title">Laveraged</div>
+                <div class="additional"><span>S4 Episode 4</span> 44:31</div>
+                <div class="description">
+                  Mike moves to a hostile takeover of Gillis Industries. On the other side, Harvey and Louis pull out all
+                  the stops to make sure they win this takeover fight, and things takea personal turn.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      <?php endif; ?>
+      </div>
+      <div class="video-chat">
+      </div>
     </div>
-  </div>
-  <?php if ($video_inactive): ?>
-    <div class="video-player-wrapper inactive">
-      <?php print $video_inactive;?>
-    </div>
-  <?php elseif ($lock_video): ?>
-    <div class="tve-help">
-      <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they
-        air!
+    <div class="consum-sidebar">
+      <div class="node-wrapper advert">
+        <div class="advertisement">
+          <a href="javascript:void(0)">
+            <img src="/proto/images/ad_lexus_309x258.png" alt="">
+          </a>
+        </div>
       </div>
-      <div class="tve-download">To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE
-        USA NOW APP
+      <div class="social">
+        <div class="asset-img">
+          <img src="/proto/images/consum_social-block_2500.png">
+        </div>
       </div>
-      <div class="tve-download-link">
-        <a href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
-            src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png" alt=""/></a>
-        <a href="http://www.usanetwork.com/usanow"><img
-            src="/sites/usanetwork/themes/aurora_usa/images/usanow.png" alt=""/></a>
-        <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
-            src="/sites/usanetwork/themes/aurora_usa/images/appstore.png" alt=""/></a>
-      </div>
-      <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
-    </div>
-    <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
-      <div class="locked-msg">
-        <?php if ($is_live): ?>
-          <span class="first-line"><?php print t('Please sign in with your TV provider to unlock live tv viewing.'); ?></span>
-        <?php else: ?>
-          <span class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
-        <?php endif; ?>
-      </div>
-      <div id="player">
-        <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN"
-           data-ng-click="openLoginWindow()" data-ng-cloak="">
-          <?php if (!$is_live): ?>
-            <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-            print drupal_render($image); ?>
-          <?php else: ?>
-            <img src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>" alt=""/>
-          <?php endif; ?>
+      <div class="social-more">
+        <a href="javascript:void(0)" alt="">
+          Join the conversation
         </a>
       </div>
-    </div>
-    <div class="video-player-wrapper" data-ng-show="global.isAuthN">
-      <?php if($is_live):?>
-        <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php else:?>
-        <?php $video = theme('pub_mpx_video', array(
-          'file' => $file,
-          'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
-        )); ?>
-      <?php endif; ?>
-      <?php print $video; ?>
-    </div>
-    <div class="tve-help-link signIn">
-      <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN"><img
-          src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>Why do I have to sign in?
+      <div class="node-wrapper promo video-link">
+        <div class="node node-usanetwork-promo <?php print $show_css_class; ?>">
+          <a href="<?php print $url; ?>">
+            <div class="asset-img"><?php print $video_image; ?></div>
+            <div class="meta-back"></div>
+            <div class="meta-wrapper">
+              <div class="meta-icon play-icon"></div>
+              <div class="title-overlay meta">
+                <div class="title"><?php print $file->filename; ?></div>
+                <?php if (isset($season_number) && isset($episode_number)): ?>
+                <div class="additional"><span>S<?php print $season_number; ?> Episode <?php print $episode_number; ?></span> <?php print $time; ?></div>
+                <?php endif; ?>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="tve-help-link signOut <?php print (!$is_live) ? 'not-live' : 'live' ?>"
-         data-ng-if="global.isAuthN"><?php print drupal_render($links); ?></div>
-  <?php else: ?>
-    <div class="video-player-wrapper">
-      <?php if($is_live):?>
-        <?php $video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
-      <?php else:?>
-        <?php $video = theme('pub_mpx_video', array(
-          'file' => $file,
-          'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html')
-        )); ?>
-      <?php endif; ?>
-      <?php print $video; ?>
-    </div>
-  <?php endif; ?>
-
-  <?php if ($is_live): ?>
-    <div class="description">
-      <?php if ($on_now_title): ?><h3 class="title"><?php print $on_now_title; ?></h3><?php endif; ?>
-      <?php if ($on_now_description): ?><?php print $on_now_description; ?><?php endif; ?>
-      <?php if ($on_now_rating): ?>
-        <div class="rating"><?php print $on_now_rating; ?></div><?php endif; ?>
-      <?php if ($description && $description != "&nbsp;"): ?><?php print $description; ?><?php endif; ?>
-    </div>
-  <?php else: ?>
-    <?php if (!empty($watchwith_sidecar)): ?>
-      <div class="sidecarSection" data-ng-show="!isMobile <?php if ($lock_video) {
-        print '&& global.isAuthN';
-      } ?>">
-        <?php print $watchwith_sidecar; ?>
-      </div>
-    <?php endif; ?>
-    <?php if ($description && $description != "&nbsp;"): ?>
-      <div class="description"><?php print $description; ?></div><?php endif; ?>
-  <?php endif; ?>
-  <?php if ($ad_comp && $ad_comp != "&nbsp;"): ?>
-    <div class="ad"><?php print $ad_comp; ?></div><?php endif; ?>
+    <a href="javascript:void(0)" class="resize-video-button resize-button"></a>
+  </div>
 </div>

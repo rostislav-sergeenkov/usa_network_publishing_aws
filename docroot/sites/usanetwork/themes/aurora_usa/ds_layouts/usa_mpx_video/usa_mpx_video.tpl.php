@@ -110,59 +110,6 @@
         </div>
       </div>
       <div class="video-chat">
-        <div class="node node-usanetwork-promo <?php print $show_css_class; ?> social-usa">
-          <div class="join">join the conversation</div>
-          <a href="javascript:void(0)">
-            <div class="meta-wrap">
-              <div class="meta">
-                <div class="meta-text">Does Harvey owe Mike a warning?</div>
-                <div class="meta-additional">2,954 fans talking</div>
-              </div>
-            </div>
-          </a>
-
-          <div class="bottom-spoiler"></div>
-        </div>
-        <div class="form-wrapper">
-          <form action="#" method="post" class="form-promo">
-            <div class="text-item">
-              <input type="text" class="form-text">
-            </div>
-            <div class="submit-item">
-              <input type="submit" value="submit" class="form-submit">
-            </div>
-          </form>
-        </div>
-        <div class="carousel-vertical chat">
-          <ul>
-            <li class="first">
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Adam bernstein</div>
-                    <div class="meta-comment time">1 minute ago</div>
-                    <div class="meta-text">@ShawnMendes #TeamMike or #TeamHarvey? @Suits_USA</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_1.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Eric Olsen</div>
-                    <div class="meta-comment time">10 minute ago</div>
-                    <div class="meta-text">@HarveyS_Suits if Mike ever surpassed you, I'll be overly disappointed.... #suits
-                      #teamharvey
-                    </div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_2.png" alt="">
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
     <div class="consum-sidebar">
@@ -174,19 +121,6 @@
         </div>
       </div>
       <div class="social">
-        <div class="node node-usanetwork-promo <?php print $show_css_class; ?> social-usa">
-          <a href="javascript:void(0)">
-            <div class="meta-wrap">
-              <div class="meta">
-                <div class="meta-comment time">15 minutes ago</div>
-                <div class="meta-social-title">@usa_network</div>
-                <div class="meta-additional">2,954 fans talking</div>
-                <div class="meta-text">Does Harvey owe Mike a warning?</div>
-                <div class="meta-icon"></div>
-              </div>
-            </div>
-          </a>
-        </div>
         <div class="asset-img">
           <img src="/proto/images/consum_social-block_2500.png">
         </div>

@@ -726,7 +726,7 @@ function usanetwork_video_data_ajax() {
 function _usanetwork_video_get_term_depth($tid, $limit = 10) {
   $depth = 0;
   while ($parent = db_select('taxonomy_term_hierarchy', 't')->condition('tid', $tid, '=')->fields('t')->execute()->fetchAssoc()) {
-    $depth ++;
+    $depth++;
     $tid = $parent['parent'];
     if ($depth > $limit) {
       break;

@@ -1431,7 +1431,7 @@ function theme_usanetwork_mpx_video($variables) {
 function _usanetwork_mpx_video_get_term_depth($tid, $limit = 10) {
   $depth = 0;
   while ($parent = db_select('taxonomy_term_hierarchy', 't')->condition('tid', $tid, '=')->fields('t')->execute()->fetchAssoc()) {
-    $depth ++;
+    $depth++;
     $tid = $parent['parent'];
     if ($depth > $limit) {
       break;
@@ -1657,7 +1657,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
       );
     }
     // Update progress information.
-    $context['sandbox']['progress'] ++;
+    $context['sandbox']['progress']++;
     $context['sandbox']['current_file'] = $file->fid;
   }
 
@@ -1683,7 +1683,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
 
           foreach ($entries as $video) {
             if (empty($video)) {
-              $context['results']['failed'] ++;
+              $context['results']['failed']++;
               continue;
             }
             $id = basename($video['id']);
@@ -1706,7 +1706,7 @@ function usanetwork_mpx_video_sync_batch_operation($types, &$context) {
                 ))
                 ->condition('fid', $file->fid, '=')
                 ->execute();
-            $context['results']['updated'] ++;
+            $context['results']['updated']++;
           }
         }
         else {

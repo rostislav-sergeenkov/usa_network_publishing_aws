@@ -1,0 +1,92 @@
+<?php
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_overlay_menu() {
+  $items = array();
+
+  $items['usanetwork-ajax-page/%'] = array(
+    'title' => t('AJAX page'),
+    'type' => MENU_CALLBACK,
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_overlay_get_ajax',
+    'delivery callback' => 'usanetwork_overlay_ajax_callback',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_page_alter().
+ */
+function usanetwork_overlay_page_alter(&$page) {
+  $get = drupal_get_query_parameters();
+
+  // Add consumptionator container and script if it's needed.
+  if (!isset($get['excludeConsumptionator']) || (isset($get['excludeConsumptionator']) && $get['excludeConsumptionator'] == FALSE)) {
+    $page['page_bottom']['consumptionator'] = array(
+      '#markup' => '<div id="consumptionator"></div>',
+    );
+
+    drupal_add_css(drupal_get_path('module', 'usanetwork_overlay') . '/css/usanetwork_overlay.main.css');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_overlay') . '/js/usanetwork_overlay.main.js');
+  }
+}
+
+/**
+ * Page callback. Detects and builds content that could be displayed in consumptionator container.
+ */
+function usanetwork_overlay_get_ajax($display) {
+  $path = '<front>';
+  $path_arguments = drupal_get_query_parameters();
+
+  if (!empty($path_arguments['url'])) {
+    $path = $path_arguments['url'];
+  }
+
+  // Cut extra-slash from the end
+  if ($path[strlen($path) - 1] == '/') {
+    $path = substr($path, 0, -1);
+  }
+
+  // Detect path without $_GET values. The menu_get_item does not work correct
+  // if URL looks in the next way: address-to-page?arg1=val1
+  $normal_path = parse_url(drupal_get_normal_path($path));
+  $menu_item = menu_get_item($normal_path['path']);
+
+  $result = array();
+
+  if (!empty($menu_item['page_callback'])) {
+    if (!empty($menu_item["include_file"])) {
+      require_once(DRUPAL_ROOT . "/" . $menu_item["include_file"]);
+    }
+
+    $result = call_user_func_array($menu_item['page_callback'], $menu_item['page_arguments']);
+  }
+
+  if (!empty($result)) {
+    if (is_array($result)) {
+      return $result;
+    }
+    else {
+      return array(
+        '#markup' => $result,
+      );
+    }
+  }
+
+  return array();
+}
+
+/**
+ * AJAX delivery callback.
+ */
+function usanetwork_overlay_ajax_callback($page_result) {
+  $content = render($page_result);
+
+  print $content;
+
+  return drupal_page_footer();
+}

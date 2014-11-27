@@ -1,0 +1,5 @@
+name = "USA Network Overlay"
+description = "Allows open pages in additional overlay using AJAX"
+core = 7.x
+version = "7.x-1.58.1"
+project = "usanetwork_overlay"

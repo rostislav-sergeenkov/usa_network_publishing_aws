@@ -4129,8 +4129,19 @@ header .tab-item.schedule-tab .on-now-panel .node .asset-img {
   max-height: 81px;
   width: 143px;
 }
-header .tab-item.schedule-tab .on-now-panel .node .meta {
+header .tab-item.schedule-tab .on-now-panel .node > a ~ .meta {
   margin-left: 155px;
+}
+@media (max-width: 1024px) {
+  header .tab-item.schedule-tab .on-now-panel .node > a ~ .icons-block {
+    left: 10px;
+    margin-top: 0px;
+    right: auto;
+    top: 90px;
+  }
+}
+header .tab-item.schedule-tab .on-now-panel .node .meta {
+  margin-left: 0px;
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .title {
   color: #ffffff;
@@ -4173,14 +4184,6 @@ header .tab-item.schedule-tab .on-now-panel .icons-block {
   position: absolute;
   top: 0px;
   right: -15%;
-}
-@media (max-width: 1024px) {
-  header .tab-item.schedule-tab .on-now-panel .icons-block {
-    left: 10px;
-    margin-top: 0px;
-    right: auto;
-    top: 90px;
-  }
 }
 header .tab-item.schedule-tab .on-now-panel .icons-block a {
   color: #ffffff !important;

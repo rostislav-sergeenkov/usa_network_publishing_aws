@@ -110,7 +110,7 @@
         </div>
       </div>
       <div class="video-chat">
-        <div class="node node-usanetwork-promo show-suits social-usa">
+        <div class="node node-usanetwork-promo <?php print $show_css_class; ?> social-usa">
           <div class="join">join the conversation</div>
           <a href="javascript:void(0)">
             <div class="meta-wrap">
@@ -161,110 +161,6 @@
                 <img src="/proto/images/avatars/avatar_2.png" alt="">
               </div>
             </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Martina Cambalova</div>
-                    <div class="meta-comment time">30 minute ago</div>
-                    <div class="meta-text">DON’T DO IT, HARVEY!!</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_3.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Mike Stone</div>
-                    <div class="meta-comment time">1 hour ago</div>
-                    <div class="meta-text">No way. Harvey doesn’t owe Mike anything. #teamhavey</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_4.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Anna-marie</div>
-                    <div class="meta-comment time">2 hours ago</div>
-                    <div class="meta-text">
-                      Thank you @LifetimeSA for making my dream come true! I always wanted to be
-                      a lawyer #LifetimeLaunchParty #teamharvey pic.twitter.com/FzIkFI8C6Z
-                    </div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_5.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Adam bernstein</div>
-                    <div class="meta-comment time">3 hours ago</div>
-                    <div class="meta-text">@ShawnMendes #TeamMike or #TeamHarvey? @Suits_USA</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_1.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Eric Olsen</div>
-                    <div class="meta-comment time">4 hours ago</div>
-                    <div class="meta-text">@HarveyS_Suits if Mike ever surpassed you, I'll be overly disappointed.... #suits
-                      #teamharvey
-                    </div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_2.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Martina Cambalova</div>
-                    <div class="meta-comment time">6 hours ago</div>
-                    <div class="meta-text">DON’T DO IT, HARVEY!!</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_3.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Mike Stone</div>
-                    <div class="meta-comment time">7 hours ago</div>
-                    <div class="meta-text">No way. Harvey doesn’t owe Mike anything. #teamhavey</div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_4.png" alt="">
-              </div>
-            </li>
-            <li>
-              <div class="chat-comment">
-                <div class="meta-wrap">
-                  <div class="meta">
-                    <div class="meta-name">Anna-marie</div>
-                    <div class="meta-comment time">8 hours ago</div>
-                    <div class="meta-text">
-                      Thank you @LifetimeSA for making my dream come true! I always wanted to be
-                      a lawyer #LifetimeLaunchParty #teamharvey pic.twitter.com/FzIkFI8C6Z
-                    </div>
-                  </div>
-                </div>
-                <img src="/proto/images/avatars/avatar_5.png" alt="">
-              </div>
-            </li>
           </ul>
         </div>
       </div>
@@ -278,7 +174,7 @@
         </div>
       </div>
       <div class="social">
-        <div class="node node-usanetwork-promo show-suits social-usa">
+        <div class="node node-usanetwork-promo <?php print $show_css_class; ?> social-usa">
           <a href="javascript:void(0)">
             <div class="meta-wrap">
               <div class="meta">
@@ -301,15 +197,17 @@
         </a>
       </div>
       <div class="node-wrapper promo video-link">
-        <div class="node node-usanetwork-promo show-suits">
-          <a href="javascript:void(0)">
-            <div class="asset-img"><img src="/proto/images/consum-head-video_clear.jpg" alt=""></div>
+        <div class="node node-usanetwork-promo <?php print $show_css_class; ?>">
+          <a href="<?php print $url; ?>">
+            <div class="asset-img"><?php print $video_image; ?></div>
             <div class="meta-back"></div>
             <div class="meta-wrapper">
               <div class="meta-icon play-icon"></div>
               <div class="title-overlay meta">
-                <div class="title">Two in the knees</div>
-                <div class="additional"><span>S4 Episode 3</span> 19:20</div>
+                <div class="title"><?php print $file->filename; ?></div>
+                <?php if (isset($season_number) && isset($episode_number)): ?>
+                <div class="additional"><span>S<?php print $season_number; ?> Episode <?php print $episode_number; ?></span> <?php print $time; ?></div>
+                <?php endif; ?>
               </div>
             </div>
           </a>

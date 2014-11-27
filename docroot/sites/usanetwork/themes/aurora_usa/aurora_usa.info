@@ -3,6 +3,10 @@ description =  aurora_usa theme based on the Aurora base theme.
 core = 7.x
 base theme = aurora
 
+; Javascripts
+scripts[] = javascripts/variables.js
+scripts[] = javascripts/global-carousels.js
+
 ; Stylesheets
 stylesheets[all][] = stylesheets/style.css
 stylesheets[all][] = static-stylesheets/static-style.css

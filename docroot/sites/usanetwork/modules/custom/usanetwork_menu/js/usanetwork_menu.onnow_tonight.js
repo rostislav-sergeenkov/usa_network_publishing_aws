@@ -1,7 +1,7 @@
 (function($) {
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
-      var window_size_tablet_portrait = 769;
+
       usanetworkMenuGetOTBlockInfo();
 
       function usanetworkMenuGetOTBlockInfo() {
@@ -67,6 +67,9 @@
           if ($('.schedule-carousel').hasClass('destroy')) {
             scheduleInit();
             $('.schedule-carousel').removeClass('destroy');
+            $('.schedule-buttons').removeClass('on-tonight on-now').addClass('on-tonight');
+            $('.schedule-buttons a').removeClass('active');
+            $('.schedule-buttons a.on-tonight').addClass('active');
           }
         } else {
           if (!$('.schedule-carousel').hasClass('destroy')) {

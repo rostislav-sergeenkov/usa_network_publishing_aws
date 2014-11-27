@@ -85,7 +85,14 @@ function usanetwork_home_block_view($delta = '') {
 
     case 'usanetwork_home_featured_promos':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_home_featured_carousel();
+      $block['content'] = array(
+        '#markup' => _usanetwork_home_featured_carousel(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/featured-carousel.js',
+          ),
+        ),
+      );
       break;
   }
 
@@ -181,7 +188,10 @@ function _usanetwork_home_featured_carousel() {
             'slides',
           ),
         ),
-        'suffix' => array()
+        'suffix' => array(
+          '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
+           <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>'
+        )
       ));
 
       return implode(PHP_EOL, $output);
@@ -444,6 +454,9 @@ function usanetwork_home_theme($existing, $type, $theme, $path) {
  * DEPRICATED FOR NOW.
  */
 function usanetwork_home_landing($day = NULL) {
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   $render = array();
   return $render;
   /**

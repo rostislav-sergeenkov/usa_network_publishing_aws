@@ -1,44 +1,15 @@
-.play-icon {
+.play-icon, .video-icon {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(play-icon);
+    @extend %meta-icon;
+    content: '\e60f';
   }
-  &.resize-avail-1024 {
+  &.resize-avail-1024, &.resize-avail-480 {
     @include breakpoint($bp-1024-width) {
       &:before {
-        @include sprite-background(play-icon-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(play-icon-small);
-      }
-    }
-  }
-}
-
-.video-icon {
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(play-icon);
-  }
-  &.resize-avail-1024 {
-    @include breakpoint($bp-1024-width) {
-      &:before {
-        @include sprite-background(play-icon-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(play-icon-small);
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
       }
     }
   }
@@ -46,22 +17,19 @@
 
 .play-icon-half {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(play-icon-half);
+    @extend %meta-icon;
+    background: none !important;
+    color: #ffffff !important;
+    font-size: 37px !important;
+    content: '\e60e';
   }
-  &.resize-avail-1024 {
+  &.resize-avail-1024, &.resize-avail-480 {
     @include breakpoint($bp-1024-width) {
       &:before {
-        @include sprite-background(play-icon-half-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(play-icon-half-small);
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
       }
     }
   }
@@ -69,22 +37,16 @@
 
 .article-icon {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(article-icon);
+    @extend %meta-icon;
+    content: '\e612';
   }
-  &.resize-avail-1024 {
+  &.resize-avail-1024, &.resize-avail-480 {
     @include breakpoint($bp-1024-width) {
       &:before {
-        @include sprite-background(article-icon-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(article-icon-small);
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
       }
     }
   }
@@ -92,45 +54,33 @@
 
 .game-icon {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(game-icon);
+    @extend %meta-icon;
+    content: '\e611';
   }
-  &.resize-avail-1024 {
+  &.resize-avail-1024, &.resize-avail-480 {
     @include breakpoint($bp-1024-width) {
       &:before {
-        @include sprite-background(game-icon-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(game-icon-small);
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
       }
     }
   }
 }
 
-.gallery-icon {
+.photo-icon {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(photo-icon);
+    @extend %meta-icon;
+    content: '\e610';
   }
-  &.resize-avail-1024 {
+  &.resize-avail-1024, &.resize-avail-480 {
     @include breakpoint($bp-1024-width) {
       &:before {
-        @include sprite-background(photo-icon-small);
-      }
-    }
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:before {
-        @include sprite-background(photo-icon-small);
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
       }
     }
   }
@@ -138,13 +88,10 @@
 
 .poll-icon {
   &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    @include sprite-background(poll-icon-2);
+    @extend %meta-icon;
+    content: '\e60d';
   }
 }
-
 .social-usa {
   &:after {
     bottom: 8%;
@@ -177,6 +124,7 @@
 }
 
 .social-twitter {
+
   &:after {
     bottom: 8%;
     content: '';
@@ -207,14 +155,14 @@
       font-family: $ico-font;
       font-size: 16px;
     }
-    &.calendar-reminder {
-      &:before {
-        content: '\e600';
-      }
-    }
     &.episode-description {
       &:before {
         content: '\e601';
+      }
+    }
+    &.calendar-reminder {
+      &:before {
+        content: '\e600';
       }
     }
     &.facebook {

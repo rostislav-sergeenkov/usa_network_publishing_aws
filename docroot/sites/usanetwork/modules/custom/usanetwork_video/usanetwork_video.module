@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_video feature.
  */
-
 include_once 'usanetwork_video.features.inc';
 
 define('USANETWORK_TWITTER_CARD_HEIGHT', 338);
@@ -114,7 +114,7 @@ function usanetwork_video_block_view($delta) {
         '#markup' => usanetwork_video_show_nav(),
         '#attached' => array(
           'js' => array(
-              drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_ajax.js',
+            drupal_get_path('module', 'usanetwork_video') . '/js/usanetwork_video_ajax.js',
           ),
         ),
       );
@@ -145,9 +145,9 @@ function usanetwork_video_global_nav() {
 
   // Fetch all the video node associated with any show
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
-    ->propertyCondition('status', 1)
-    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+      ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
 
   $result = $query->execute();
 
@@ -163,8 +163,8 @@ function usanetwork_video_global_nav() {
 
         // Add all the published tv show nodes
         if (isset($show[0]) && !empty($show[0])) {
-          $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
-          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
+          $title = '<span>' . $show[0]->field_display_title[$lang][0]['value'] . '</span>';
+          $path = drupal_get_path_alias('node/' . $video->field_show[$lang][0]['target_id'] . '/videos');
           $items[0]['children'][] = l($title, $path, array('html' => true));
         }
       }
@@ -178,10 +178,11 @@ function usanetwork_video_global_nav() {
   $items = array();
 
   if (($arg[0] == 'videos' && !isset($arg[1])) || (isset($arg[1]) && $arg[1] == 'full-episodes') ||
-    (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value']))) {
+      (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value']))) {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes', 'active'));
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot'));
-  } else {
+  }
+  else {
     $items[] = array('data' => l('<span>full episodes</span>', 'videos/full-episodes', array('html' => true)), 'class' => array('full-episodes'));
     $items[] = array('data' => l("<span>what's hot</span>", 'videos/whats-hot', array('html' => true)), 'class' => array('whats-hot', 'active'));
   }
@@ -215,9 +216,9 @@ function usanetwork_video_show_nav() {
 
   // Fetch all the video node associated with any show
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
-    ->propertyCondition('status', 1)
-    ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
+      ->entityCondition('bundle', array('usa_video', 'usa_tve_video'))
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_show', 'target_id', 'NULL', '!=');
 
   $result = $query->execute();
 
@@ -233,13 +234,14 @@ function usanetwork_video_show_nav() {
 
         // Add all the published tv show nodes
         if (isset($show[0]) && !empty($show[0])) {
-          $title = '<span>'.$show[0]->field_display_title[$lang][0]['value'].'</span>';
-          $path = drupal_get_path_alias('node/'.$video->field_show[$lang][0]['target_id'].'/videos');
+          $title = '<span>' . $show[0]->field_display_title[$lang][0]['value'] . '</span>';
+          $path = drupal_get_path_alias('node/' . $video->field_show[$lang][0]['target_id'] . '/videos');
           if ($node->field_show[$lang][0]['target_id'] == $video->field_show[$lang][0]['target_id']) {
             $items[0]['data'] = $title;
             $items[0]['class'] = array(str_replace(' ', '-', strtolower($show[0]->field_display_title[$lang][0]['value'])));
             $items[0]['children'][] = l($title, $path, array('html' => true));
-          } else  {
+          }
+          else {
             $items[0]['children'][] = l($title, $path, array('html' => true));
           }
         }
@@ -255,13 +257,13 @@ function usanetwork_video_show_nav() {
 
   $classes = array('full-episodes');
   if (empty($tid) && ((isset($arg[2]) && $arg[2] == 'full-episodes') ||
-    (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
+      (isset($node->field_full_episode[$lang][0]['value']) && !empty($node->field_full_episode[$lang][0]['value'])))) {
     $classes[] = 'active';
   }
 
   // show the full episodes links iff there are full episodes for that tv show
   if (_usanetwork_video_full_episodes_exist($node->field_show[$lang][0]['target_id'])) {
-    $items[] = array('data' => l('<span>full episodes</span>', $cpath.'/full-episodes', array('html' => true)), 'class' => $classes);
+    $items[] = array('data' => l('<span>full episodes</span>', $cpath . '/full-episodes', array('html' => true)), 'class' => $classes);
   }
 
   $active_tids = array();
@@ -278,7 +280,7 @@ function usanetwork_video_show_nav() {
       $parents = array_values(taxonomy_get_parents_all($node->field_usa_video_terms[$lang][0]['target_id']));
       foreach ($parents as $i => $pterm) {
         if (isset($pterm->name) && $pterm->name == 'Series') {
-          $term = $parents[$i-1];
+          $term = $parents[$i - 1];
           break;
         }
       }
@@ -286,7 +288,7 @@ function usanetwork_video_show_nav() {
 
     if (isset($term->tid)) {
       $terms = taxonomy_get_children($term->tid, $term->vid);
-      $i=1;
+      $i = 1;
       foreach ($terms as $term1) {
         $class = array(str_replace(' ', '-', strtolower($term1->name)));
         if (!in_array('active', $classes) && (($tid == $term1->tid) || in_array($term1->tid, $active_tids))) {
@@ -297,23 +299,24 @@ function usanetwork_video_show_nav() {
           $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
         }
         if ($i >= 4) {
-          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+          $items[4]['children'][$i - 4] = array('data' => l('<span>' . $term1->name . '</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+            $items[4]['children'][$i - 4]['children'][] = array('data' => l('<span>' . $term2->name . '</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
           }
-        } else {
-          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
+        }
+        else {
+          $items[$i] = array('data' => l('<span>' . $term1->name . '</span>', $cpath, array('query' => array('tid' => $term1->tid), 'html' => true)), 'class' => $class);
           $first = true;
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
+            $items[$i]['children'][] = array('data' => l('<span>' . $term2->name . '</span>', $cpath, array('query' => array('tid' => $term2->tid), 'html' => true)), 'class' => $class);
             if ($first) {
               $first = false;
               $items[$i]['class'][] = 'more';
@@ -342,11 +345,11 @@ function usanetwork_video_views($arg = null) {
 
   // we need these js files and headers for video player integration
   drupal_add_js(drupal_get_path('module', 'usanetwork_video') . '/js/tpPdkController.js');
-   $meta_video_tag = array(
+  $meta_video_tag = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
-      'name' =>  'tp:EnableExternalController',
+      'name' => 'tp:EnableExternalController',
       'content' => 'true',
     )
   );
@@ -355,13 +358,16 @@ function usanetwork_video_views($arg = null) {
 
   if (!empty($tid)) {
     $output = views_embed_view('usa_video', 'category_videos', $tid);
-  } else if ($arg[0] == 'videos') {
+  }
+  else if ($arg[0] == 'videos') {
     if (!isset($arg[1]) || (isset($arg[1]) && $arg[1] == 'full-episodes')) {
       $output = views_embed_view('usa_video', 'global_full_episode');
-    } else if ($arg[1] == 'whats-hot') {
+    }
+    else if ($arg[1] == 'whats-hot') {
       $output = views_embed_view('whats_hot', 'whats_hot');
     }
-  } else if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
+  }
+  else if ($arg[0] == 'node' && isset($arg[1]) && is_numeric($arg[1])) {
     $node = node_load($arg[1]);
 
     // video node with a show association
@@ -370,7 +376,8 @@ function usanetwork_video_views($arg = null) {
       $full_episode = isset($node->field_full_episode[$lang][0]['value']) ? $node->field_full_episode[$lang][0]['value'] : 0;
       if ($full_episode || (isset($arg[2]) && $arg[2] == 'full-episodes')) {
         $output = views_embed_view('usa_video', 'show_full_episode', $show_nid);
-      } else {
+      }
+      else {
         $deepest_term = null;
         $deepest_term_depth = 0;
         foreach ($node->field_usa_video_terms[$lang] as $tids) {
@@ -388,29 +395,30 @@ function usanetwork_video_views($arg = null) {
 
         // the last term is the correct term id of the category
         $count = count($node->field_usa_video_terms[$lang]);
-        if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
-          $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
+        if (empty($output) && isset($node->field_usa_video_terms[$lang][$count - 1]['target_id'])) {
+          $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count - 1]['target_id']);
         }
       }
-    } else {
+    }
+    else {
       $query = new EntityFieldQuery();
 
       // Fetch the what's hot queue id
       $query->entityCondition('entity_type', 'queues')
-        ->entityCondition('bundle', array('video_queue'))
-        ->propertyCondition('title', "What's Hot")
-        ->range(0, 1);
+          ->entityCondition('bundle', array('video_queue'))
+          ->propertyCondition('title', "What's Hot")
+          ->range(0, 1);
 
       $result = $query->execute();
       if (isset($result['queues'])) {
         $qid = array_keys($result['queues']);
 
         $queue = db_select('field_data_field_qt_node', 'q')
-          ->fields('q', array('entity_id'))
-          ->condition('entity_id', $qid[0], '=')
-          ->condition('field_qt_node_target_id', $node->nid, '=')
-          ->execute()
-          ->fetchField();
+            ->fields('q', array('entity_id'))
+            ->condition('entity_id', $qid[0], '=')
+            ->condition('field_qt_node_target_id', $node->nid, '=')
+            ->execute()
+            ->fetchField();
 
         if (!empty($queue)) {
           $output = views_embed_view('whats_hot', 'whats_hot');
@@ -421,8 +429,8 @@ function usanetwork_video_views($arg = null) {
     if (isset($node->field_usa_video_terms[$lang])) {
       // the last term is the correct term id of the category
       $count = count($node->field_usa_video_terms[$lang]);
-      if (empty($output) && isset($node->field_usa_video_terms[$lang][$count-1]['target_id'])) {
-        $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count-1]['target_id']);
+      if (empty($output) && isset($node->field_usa_video_terms[$lang][$count - 1]['target_id'])) {
+        $output = views_embed_view('usa_video', 'category_videos', $node->field_usa_video_terms[$lang][$count - 1]['target_id']);
       }
     }
   }
@@ -440,7 +448,7 @@ function usanetwork_video_views_ajax() {
     $arg = explode('/', $path);
     $commands[] = ajax_command_replace('#block-usanetwork-video-usa-video-views .ajax-content', usanetwork_video_views($arg));
   }
-  return  array('#type' => 'ajax', '#commands' => $commands);
+  return array('#type' => 'ajax', '#commands' => $commands);
 }
 
 /**
@@ -449,7 +457,6 @@ function usanetwork_video_views_ajax() {
 function usanetwork_video_global_videos_page() {
   return views_embed_view('usa_video', 'global_latest_full_episode_video');
 }
-
 
 /**
  * Helper function that will load file IDs from a video node item's GUID.
@@ -468,45 +475,46 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url, $highest_bitra
   $file_info = $api->addField('media:content')->setID($guid)->execute();
 
   //  Handle error conditions, we may have nothing come back.
-  if(!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
+  if (!is_array($file_info) || empty($file_info) || !is_object($file_info[0]) || !isset($file_info[0]->{'media$content'}))
     return False;
 
   $file_info = $file_info[0]->{'media$content'};
 
   if ($highest_bitrate) {
-  // Run through everything and grab the MPEG4 video with the highest bit rate from the feed.
-  $highest_bit_rate = 0;
-  $selected_video = $file_info[0];
-  foreach($file_info as $file) {
-    if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate) {
-      $highest_bit_rate = $file->{'plfile$bitrate'};
-      $selected_video = $file;
+    // Run through everything and grab the MPEG4 video with the highest bit rate from the feed.
+    $highest_bit_rate = 0;
+    $selected_video = $file_info[0];
+    foreach ($file_info as $file) {
+      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+          isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate) {
+        $highest_bit_rate = $file->{'plfile$bitrate'};
+        $selected_video = $file;
+      }
+      // our feed does not have this
+      //if(in_array('Video', $file->{'plfile$assetTypes'}))
+      //  break;
     }
-    // our feed does not have this
-    //if(in_array('Video', $file->{'plfile$assetTypes'}))
-    //  break;
   }
-  } else {
+  else {
     // Run through everything and grab the MPEG4 video with the bit rate not moew than 600k from the feed.
     $sixh_bit_rate = 600000;
     $highest_bit_rate = 0;
     $selected_video = $file_info[0];
-    foreach($file_info as $file) {
-      if ( isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-        isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && 
-        isset($file->{'plfile$height'}) && $file->{'plfile$height'} == USANETWORK_TWITTER_CARD_HEIGHT &&
-        isset($file->{'plfile$width'}) && $file->{'plfile$width'} == USANETWORK_TWITTER_CARD_WIDTH ) {
+    foreach ($file_info as $file) {
+      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+          isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate &&
+          isset($file->{'plfile$height'}) && $file->{'plfile$height'} == USANETWORK_TWITTER_CARD_HEIGHT &&
+          isset($file->{'plfile$width'}) && $file->{'plfile$width'} == USANETWORK_TWITTER_CARD_WIDTH) {
         $highest_bit_rate = $file->{'plfile$bitrate'};
         $selected_video = $file;
       }
     }
     if ($highest_bit_rate == 0) {
-      foreach($file_info as $file) {
-      if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
-          isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} <= $sixh_bit_rate) {
-            $highest_bit_rate = $file->{'plfile$bitrate'};
-            $selected_video = $file;
+      foreach ($file_info as $file) {
+        if (isset($file->{'plfile$format'}) && $file->{'plfile$format'} == 'MPEG4' &&
+            isset($file->{'plfile$bitrate'}) && $file->{'plfile$bitrate'} > $highest_bit_rate && $file->{'plfile$bitrate'} <= $sixh_bit_rate) {
+          $highest_bit_rate = $file->{'plfile$bitrate'};
+          $selected_video = $file;
         }
       }
     }
@@ -516,9 +524,10 @@ function _usanetwork_video_platform_get_file_id($guid, $feed_url, $highest_bitra
   $file_id = explode('/', $file_url);  //  Get the parts of the url.
   $file_id = array_pop($file_id); //  And just last part of the URL's path.
 
-  if ($highest_bitrate) { 
-  return $file_id;
-  } else {
+  if ($highest_bitrate) {
+    return $file_id;
+  }
+  else {
     return array($file_id, $file_url);
   }
 }
@@ -551,7 +560,7 @@ function usanetwork_video_admin_debug_titles() {
   $render = array();
   $type = 'tv_show';
   $nodes = node_load_multiple(array(), array('type' => $type));
-  foreach($nodes as $shows) {
+  foreach ($nodes as $shows) {
     $showtitles[] = '<tr><td>' . $shows->title . '</td>';
   }
   asort($showtitles);
@@ -586,7 +595,6 @@ function usanetwork_video_admin_debug_titles() {
 
   return $render;
 }
-
 
 /**
  * Menu callback of video feed debug helpers
@@ -636,14 +644,12 @@ function usanetwork_video_admin_debug_feeds() {
     '#prefix' => '<h3>' . t('filter by show') . '</h3>',
     '#markup' => l($mpx_url_test, $mpx_url_test),
     '#suffix' => '<p>' . t('added &byCategories=Series/Graceland to the end of the url to filter by "Graceland" shows') . '</p>',
-
   );
   $render['debug']['mpx']['examples_more'] = array(
     '#type' => 'markup',
     '#prefix' => '<h3>' . t('filter by title') . '</h3>',
     '#markup' => l($mpx_url_test2, $mpx_url_test2),
     '#suffix' => '<p>' . t('added "&byTitle=Commentary: Hair Of The Dog" to the end of the url to filter by a specific title') . '</p>',
-
   );
 
   $render['debug']['tve'] = array(
@@ -667,9 +673,9 @@ function usanetwork_video_admin_debug_feeds() {
 }
 
 /**
-  * Implements hook_form_alter
-  * disable the delete button for videos
-  */
+ * Implements hook_form_alter
+ * disable the delete button for videos
+ */
 function usanetwork_video_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'usa_tve_video_node_form':
@@ -679,8 +685,8 @@ function usanetwork_video_form_alter(&$form, &$form_state, $form_id) {
         '#disabled' => true,
         '#type' => 'button',
         '#value' => t('Delete'),
-        );
-    break;
+      );
+      break;
   }
 }
 
@@ -696,11 +702,11 @@ function usanetwork_video_data_ajax() {
   $bundles = array('usa_video');
   foreach ($guids as $guid) {
     $data = db_select('field_data_' . $guid_field, 'fd')
-      ->fields('fd')
-      ->condition($guid_field . '_value', $guid)
-      ->condition('bundle', $bundles, 'IN')
-      ->execute()
-      ->fetchAssoc();
+        ->fields('fd')
+        ->condition($guid_field . '_value', $guid)
+        ->condition('bundle', $bundles, 'IN')
+        ->execute()
+        ->fetchAssoc();
 
     if ($data) {
       $entity = entity_load_single($data['entity_type'], $data['entity_id']);
@@ -719,7 +725,7 @@ function usanetwork_video_data_ajax() {
 
 function _usanetwork_video_get_term_depth($tid, $limit = 10) {
   $depth = 0;
-  while ($parent = db_select('taxonomy_term_hierarchy', 't') ->condition('tid', $tid, '=') ->fields('t') ->execute() ->fetchAssoc()) {
+  while ($parent = db_select('taxonomy_term_hierarchy', 't')->condition('tid', $tid, '=')->fields('t')->execute()->fetchAssoc()) {
     $depth ++;
     $tid = $parent['parent'];
     if ($depth > $limit) {
@@ -734,33 +740,33 @@ function _usanetwork_video_get_term_depth($tid, $limit = 10) {
  */
 function usanetwork_video_views_query_alter(&$view, &$query) {
   if ($view->name == 'usa_video' && $view->current_display == 'front_full_episodes') {
-    
-      $subsubquery = db_select('node', 'nd')
-        ->fields('sub_fdfs',array('field_show_target_id'))
+
+    $subsubquery = db_select('node', 'nd')
+        ->fields('sub_fdfs', array('field_show_target_id'))
         ->condition('nd.type', array('usa_video', 'usa_tve_video'), 'IN')
-        ->condition('nd.status', '1');   
-      $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = nd.nid'); 
-      $subsubquery->join('field_data_field_full_episode', 'sub_fdffe', 'nd.nid = sub_fdffe.entity_id');
-      $subsubquery->leftJoin('field_data_field_video_air_date', 'sub_fdfvad', 'nd.nid = sub_fdfvad.entity_id');
-      $subsubquery->condition('sub_fdffe.field_full_episode_value', '1');
-      $subsubquery->addExpression('MAX(sub_fdfvad.field_video_air_date_value)', 'max_data');
-      $subsubquery->groupBy('sub_fdfs.field_show_target_id');
-      $subsubquery->range(0, 10);
-    
-      $subquery = db_select('node', 'ns')
-        ->fields('ns',array('nid'))
-        ->fields('fdfs',array('field_show_target_id'))
+        ->condition('nd.status', '1');
+    $subsubquery->join('field_data_field_show', 'sub_fdfs', 'sub_fdfs.entity_id = nd.nid');
+    $subsubquery->join('field_data_field_full_episode', 'sub_fdffe', 'nd.nid = sub_fdffe.entity_id');
+    $subsubquery->leftJoin('field_data_field_video_air_date', 'sub_fdfvad', 'nd.nid = sub_fdfvad.entity_id');
+    $subsubquery->condition('sub_fdffe.field_full_episode_value', '1');
+    $subsubquery->addExpression('MAX(sub_fdfvad.field_video_air_date_value)', 'max_data');
+    $subsubquery->groupBy('sub_fdfs.field_show_target_id');
+    $subsubquery->range(0, 10);
+
+    $subquery = db_select('node', 'ns')
+        ->fields('ns', array('nid'))
+        ->fields('fdfs', array('field_show_target_id'))
         ->condition('type', array('usa_video', 'usa_tve_video'), 'IN')
         ->condition('status', '1');
-      $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = ns.nid');
-      $subquery->leftJoin('field_data_field_video_air_date', 'fdfvad', 'ns.nid = fdfvad.entity_id');
-      $subquery->join($subsubquery, 'subsub', 'subsub.max_data = fdfvad.field_video_air_date_value and fdfs.field_show_target_id = subsub.field_show_target_id');
-      $subquery->addExpression('MAX(ns.nid)', 'max_nid');
-      $subquery->groupBy('field_show_target_id');
-      
-      $join = new views_join();
-      $join->construct($subquery, 'node', 'nid', 'max_nid', array(), 'INNER');
-      $query->add_relationship('field_data_field_dependens_show', $join, 'node');
+    $subquery->join('field_data_field_show', 'fdfs', 'fdfs.entity_id = ns.nid');
+    $subquery->leftJoin('field_data_field_video_air_date', 'fdfvad', 'ns.nid = fdfvad.entity_id');
+    $subquery->join($subsubquery, 'subsub', 'subsub.max_data = fdfvad.field_video_air_date_value and fdfs.field_show_target_id = subsub.field_show_target_id');
+    $subquery->addExpression('MAX(ns.nid)', 'max_nid');
+    $subquery->groupBy('field_show_target_id');
+
+    $join = new views_join();
+    $join->construct($subquery, 'node', 'nid', 'max_nid', array(), 'INNER');
+    $query->add_relationship('field_data_field_dependens_show', $join, 'node');
   }
 }
 
@@ -771,33 +777,33 @@ function usanetwork_video_preprocess_node(&$variables) {
 
   $node = $variables['node'];
 
-  if ((($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) && ($variables['view_mode'] == 'full')) {    
-    if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0'){
-      
+  if ((($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) && ($variables['view_mode'] == 'full')) {
+    if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {
+
       //twitter card
       $tag_card = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:card', 
-          'content' => 'player', 
+          'name' => 'twitter:card',
+          'content' => 'player',
         ),
         '#weight' => 1,
       );
       drupal_add_html_head($tag_card, 'usanetwork_twitter:card');
-      
+
       //twitter site
       $tag_site = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:site', 
-          'content' => '@USA_Network', 
+          'name' => 'twitter:site',
+          'content' => '@USA_Network',
         ),
         '#weight' => 2,
       );
       drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
-      
+
       //twitter creator
       $show = $node->field_show[LANGUAGE_NONE][0]['entity'];
       $creator = basename($show->field_usa_link_twitter[LANGUAGE_NONE][0]['url']);
@@ -805,27 +811,27 @@ function usanetwork_video_preprocess_node(&$variables) {
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:creator', 
-          'content' => '@' . $creator, 
+          'name' => 'twitter:creator',
+          'content' => '@' . $creator,
         ),
         '#weight' => 3,
       );
       drupal_add_html_head($tag_creator, 'usanetwork_twitter:creator');
-      
-      
+
+
       //twitter thumbnail
       $thumbnail = file_create_url($node->field_video_thumbnail[LANGUAGE_NONE][0]['uri']);
       $tag_thumbnail = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:image:src', 
-          'content' => $thumbnail, 
+          'name' => 'twitter:image:src',
+          'content' => $thumbnail,
         ),
         '#weight' => 6,
       );
       drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
-      
+
       //twitter player
       $platform_file = _usanetwork_video_platform_get_file_id($node->field_video_guid[LANGUAGE_NONE][0]['value'], variable_get('usanetwork_theplatform_mpx_feed_url'), FALSE);
       $platform_file_id = $platform_file[0];
@@ -835,13 +841,13 @@ function usanetwork_video_preprocess_node(&$variables) {
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player', 
-          'content' => $player, 
+          'name' => 'twitter:player',
+          'content' => $player,
         ),
         '#weight' => 7,
       );
       drupal_add_html_head($tag_player, 'usanetwork_twitter:player');
-      
+
       //twitter stream
       $account_id = explode('/', $player);
       $player_stream_url = str_replace('http:', 'https:', $platform_file[1]);
@@ -849,55 +855,55 @@ function usanetwork_video_preprocess_node(&$variables) {
         'query' => array(
           'switch' => 'progressive',
           'format' => 'redirect',
-         ),
-         '#weight' => 8,
+        ),
+        '#weight' => 8,
       ));
       $tag_stream = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player:stream', 
-          'content' => $player_stream, 
+          'name' => 'twitter:player:stream',
+          'content' => $player_stream,
         ),
         '#weight' => 9,
       );
       drupal_add_html_head($tag_stream, 'usanetwork_twitter:player:stream');
-      
+
       //twitter player content type
       $tag_content_type = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player:stream:content_type', 
-          'content' => 'video/mp4', 
+          'name' => 'twitter:player:stream:content_type',
+          'content' => 'video/mp4',
         ),
         '#weight' => 10,
       );
       drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
-      
+
       //twitter player height
       $tag_height = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player:height', 
-          'content' => USANETWORK_TWITTER_CARD_HEIGHT, 
+          'name' => 'twitter:player:height',
+          'content' => USANETWORK_TWITTER_CARD_HEIGHT,
         ),
         '#weight' => 11,
       );
       drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
-      
+
       //twitter player width
       $tag_width = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'twitter:player:width', 
-          'content' => USANETWORK_TWITTER_CARD_WIDTH, 
+          'name' => 'twitter:player:width',
+          'content' => USANETWORK_TWITTER_CARD_WIDTH,
         ),
         '#weight' => 12,
       );
-      drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');     
+      drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
     }
   }
 }

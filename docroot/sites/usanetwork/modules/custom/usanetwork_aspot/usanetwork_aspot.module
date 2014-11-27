@@ -355,7 +355,7 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   );
 
   if (empty($theme_array['show_title'])) {
-    $theme_array['show_title'] = $aspot_node_wrapper->title->value();
+    $theme_array['show_title'] = $show_node->title;
   }
 
   if (in_array('countdown', $enabled_elements)) {

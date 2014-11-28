@@ -513,7 +513,7 @@ function _usanetwork_menu_show_menu_get_current_show_node() {
 }
 
 /**
- * Returns current MPX video entity.
+ * Returns current entity.
  */
 function _usanetwork_menu_get_current_entity() {
   $menu_item = menu_get_item();

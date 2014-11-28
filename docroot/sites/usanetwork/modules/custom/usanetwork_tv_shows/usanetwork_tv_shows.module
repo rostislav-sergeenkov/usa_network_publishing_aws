@@ -25,6 +25,12 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  // Consumptionator: related content
+  $blocks['uasnetwork_tv_shows_cons_rel'] = array(
+    'info' => t('Consumptionator: related content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -43,6 +49,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_coex':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
+      break;
+
+    case 'uasnetwork_tv_shows_cons_rel':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_consumptionator_relcontent_block();
       break;
   }
 

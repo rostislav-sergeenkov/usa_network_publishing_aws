@@ -1,6 +1,7 @@
 name = USANetwork Panels
 description = Panels for USA Network
 core = 7.x
+version = 7.x-1.0.1
 package = USA Network
 php = 5.2.4
 dependencies[] = ctools

@@ -907,39 +907,40 @@ function _usanetwork_home_shows_queue_block() {
 
   if (!empty($shows_queue) && is_array($shows_queue)) {
     $shows_queue = reset($shows_queue);
-  }
+    $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
 
-  $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
+    if (!empty($shows_queue) && !empty($shows_queue->field_qt_tv_shows_queue)) {
+      $slide_index = 0;
 
-  if (!empty($shows_queue) && !empty($shows_queue->field_qt_tv_shows_queue)) {
-    $slide_index = 0;
-
-    $theme_variables = array(
-      'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
-      'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
-      'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
-      'slides' => array(),
-    );
-
-    foreach ($shows_wrapper->field_qt_tv_shows_queue as $show_node_wrapper) {
-      $slide_li_class = '';
-
-      if ($slide_index == 0) {
-        $slide_li_class = 'first';
-      }
-
-      $slide = array(
-        'class' => $slide_li_class,
-        'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+      $theme_variables = array(
+        'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
+        'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
+        'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
+        'slides' => array(),
       );
 
-      $theme_variables['slides'][] = $slide;
+      foreach ($shows_wrapper->field_qt_tv_shows_queue as $show_node_wrapper) {
+        $slide_li_class = '';
 
-      $slide_index++;
+        if ($slide_index == 0) {
+          $slide_li_class = 'first';
+        }
+
+        $slide = array(
+          'class' => $slide_li_class,
+          'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+        );
+
+        $theme_variables['slides'][] = $slide;
+
+        $slide_index++;
+      }
+
+      return theme('usanetwork_home_shows_queue', $theme_variables);
     }
   }
 
-  return theme('usanetwork_home_shows_queue', $theme_variables);
+  return '';
 }
 
 /**

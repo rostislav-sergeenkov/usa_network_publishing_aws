@@ -994,3 +994,19 @@ function usanetwork_core_update_7158() {
     module_enable(array('usanetwork_overlay'));
   }
 }
+
+/**
+ * Disable 'usanetwork_lazyloader' and 'context_mobile_detect' modules.
+ */
+function usanetwork_core_update_7159() {
+  $to_be_disabled = array(
+    'usanetwork_lazyloader',
+    'context_mobile_detect',
+  );
+
+  foreach ($to_be_disabled as $old_module) {
+    if (module_exists($old_module)) {
+      module_disable(array($old_module));
+    }
+  }
+}

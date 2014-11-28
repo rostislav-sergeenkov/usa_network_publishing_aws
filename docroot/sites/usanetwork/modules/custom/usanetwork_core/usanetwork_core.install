@@ -994,3 +994,13 @@ function usanetwork_core_update_7158() {
     module_enable(array('usanetwork_overlay'));
   }
 }
+
+/**
+ * Enables module usanetwork_overlay.
+ * Incrementing version of the module to 7.x-1.59.1.
+ */
+function usanetwork_core_update_7159() {
+  if (!module_exists('usanetwork_consumptionator_carousel')) {
+    module_enable(array('usanetwork_consumptionator_carousel'));
+  }
+}

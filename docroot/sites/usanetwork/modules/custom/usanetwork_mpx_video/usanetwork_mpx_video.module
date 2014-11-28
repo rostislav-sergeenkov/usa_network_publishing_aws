@@ -69,11 +69,6 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('USA: video MPX views'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  $blocks['usa_mpx_full_episodes'] = array(
-    'info' => t('USA: Consumptionator full episodes'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   return $blocks;
 }
 
@@ -109,10 +104,6 @@ function usanetwork_mpx_video_block_view($delta) {
     case 'usa_mpx_video_views':
       $block['subject'] = '';
       $block['content'] = usanetwork_mpx_video_views();
-      break;
-    case 'usa_mpx_full_episodes':
-      $block['subject'] = '';
-      $block['content'] = usanetwork_mpx_full_episodes();
       break;
   }
 
@@ -1976,113 +1967,4 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
 
   // Splicing first $limit elements
   $alter_result = array_splice($alter_result, $limit);
-}
-
-/**
- *  Implements hook_theme().
- */
-function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
-  return array(
-    'usanetwork_mpx_video_full_episodes' => array(
-      'variables' => array(
-        'caption' => NULL,
-        'title' => NULL,
-        'additional_text' => NULL,
-        'elements' => NULL, // see 'usanetwork_tv_shows_catchup_explore_content_element' theme
-      ),
-      'template' => 'templates/usanetwork-mpx-video-full-episodes',
-    ),
-    'usanetwork_mpx_video_full_episodes_element' => array(
-      'variables' => array(
-        'class' => NULL,
-        'node_classes' => array(),
-        'title' => NULL,
-        'additional' => array(
-          'normal' => NULL,
-          'span' => NULL,
-        ),
-        'locked_video' => FALSE,
-      ),
-      'template' => 'templates/usanetwork-mpx-video-full-episodes-element',
-    ),
-  );
-}
-
-/*
- * Rendering Consumtionator full episodes block
- */
-
-function usanetwork_mpx_full_episodes() {
-  $file = _usanetwork_menu_show_menu_get_current_video_entity();
-  if ($file && $show_field = field_get_items('file', $file, 'field_show')) {
-    $show_value = reset($show_field);
-    $show = $show_value['entity'];
-    $show_episodes = usanetwork_schedule_pull_latest_episodes($show->nid, 20);
-
-    if (!empty($show_episodes)) {
-      foreach ($show_episodes as $key => $episode_data) {
-        $episode_file = file_load($episode_data->fid);
-        $episode_image_uri = '';
-
-        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($episode_file->uri);
-
-        if ($episode_image_uri_wrapper) {
-          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-        }
-        
-        if ($episode_data->field_mpx_entitlement_value === 'auth') {
-          $locked_video = TRUE;
-        }
-        else {
-          $locked_video = FALSE;
-        }
-
-        $episode_theme_variables = array(
-          'url' => url('file/' . $episode_data->fid),
-          'title' => $episode_data->title,
-          'series_and_number' => 'S' . $episode_data->field_mpx_season_number_value . ' ' . t('Episode') . ' ' . $episode_data->field_mpx_episode_number_value,
-          'duration' => gmdate('H:i:s', $episode_data->field_mpx_duration_value),
-          'image' => theme_image_style(array('style_name' => '300x169_video', 'path' => $episode_image_uri)),
-          'locked_video' => $locked_video,
-        );
-        $parity_class = (($key + 1) % 2 === 0) ? 'even' : 'odd';
-        $episode_item[] = array(
-          'data' => theme('usanetwork_mpx_video_full_episodes_element', $episode_theme_variables),
-          'class' => array(
-            $parity_class,
-          )
-        );
-      }
-
-      $episodes = theme('usanetwork_item_list', array(
-        'warpper_attributes' => array(
-          'class' => array(
-            'carousel',
-            'carousel-left',
-            'start',
-          ),
-        ),
-        'title' => NULL,
-        'items' => $episode_item,
-        'type' => 'ul',
-        'attributes' => array(
-          'class' => array(
-            'slides',
-          ),
-        ),
-        'suffix' => array(
-          '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>',
-          '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>',
-          '<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>'
-        ),
-      ));
-
-      return theme('usanetwork_mpx_video_full_episodes', array(
-        'caption' => t('New!'),
-        'title' => t('Full Episodes'),
-        'additional_text' => t('Available'),
-        'elements' => $episodes,
-      ));
-    }
-  }
 }

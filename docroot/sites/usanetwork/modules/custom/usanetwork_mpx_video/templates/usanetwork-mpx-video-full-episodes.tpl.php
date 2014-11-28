@@ -4,7 +4,7 @@
  * @see usanetwork_mpx_full_episodes()
  */
 ?>
-<div class="consumptionator-full-episodeconsumptionator-full-episodess carousel-block carousel-block-left">
+<div class="consumptionator-full-episode carousel-block carousel-block-left">
   <div class="carousel-description-item start">
     <a href="javascript:void(0)" class="description-button"></a>
     <div class="description-wrapper">

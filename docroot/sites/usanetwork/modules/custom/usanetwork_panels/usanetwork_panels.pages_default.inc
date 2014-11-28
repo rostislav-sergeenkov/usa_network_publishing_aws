@@ -44,6 +44,7 @@ function usanetwork_panels_default_page_manager_handlers() {
       ),
     ),
   );
+
   $display = new panels_display();
   $display->layout = 'usa_showlanding';
   $display->layout_settings = array(
@@ -119,195 +120,280 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-1';
-    $pane->panel = 'five';
-    $pane->type = 'block';
-    $pane->subtype = 'usanetwork_social-usa_show_landing_social';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['five'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'four';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_usa_tv_promo';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'entityreference_entity_view',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(
-        'view_mode' => 'promo_teaser',
-        'links' => 0,
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => 'The Latest',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'pane-expandable',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['four'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'one';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_usa_tv_a_spot';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'entityreference_entity_view',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(
-        'view_mode' => 'full',
-        'links' => 0,
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'show-aspot',
-      'css_class' => 'show-aspot',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['one'][0] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'six';
-    $pane->type = 'block';
-    $pane->subtype = 'usanetwork_lyris-newsletter_subscription';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'lyris',
-      'css_class' => 'lyris',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['six'][0] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'six';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'usa_cast-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'social-follow-block',
-    );
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['six'][1] = 'new-5';
-    $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'three';
-    $pane->type = 'block';
-    $pane->subtype = 'dart-dart-tag-300x250_scr';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '<none>',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['three'][0] = 'new-6';
-    $pane = new stdClass();
-    $pane->pid = 'new-7';
-    $pane->panel = 'two';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_usa_tv_promo_vids';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'entityreference_entity_view',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(
-        'view_mode' => 'promo_teaser',
-        'links' => 0,
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['two'][0] = 'new-7';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-1';
+  $pane->panel = 'five';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_social-usa_show_landing_social';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-1'] = $pane;
+  $display->panels['five'][0] = 'new-1';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-2';
+  $pane->panel = 'four';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_tv_shows_display-usanetwork_tv_shows_latest';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-2'] = $pane;
+  $display->panels['four'][0] = 'new-2';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-3';
+  $pane->panel = 'four';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_usa_tv_promo';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'usanetwork_tv_shows_display_entity_view',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(
+      'view_mode' => 'promo_teaser',
+      'links' => 0,
+      'view_mode_large' => 'promo_teaser_large',
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => 'The Latest',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'pane-expandable',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $display->content['new-3'] = $pane;
+  $display->panels['four'][1] = 'new-3';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-4';
+  $pane->panel = 'one';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_usa_tv_a_spot';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'entityreference_entity_view',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(
+      'view_mode' => 'full',
+      'links' => 0,
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => 'show-aspot',
+    'css_class' => 'show-aspot',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-4'] = $pane;
+  $display->panels['one'][0] = 'new-4';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-5';
+  $pane->panel = 'one';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_tv_shows_display-usanetwork_tv_shows_submenu';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $display->content['new-5'] = $pane;
+  $display->panels['one'][1] = 'new-5';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-6';
+  $pane->panel = 'one';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $display->content['new-6'] = $pane;
+  $display->panels['one'][2] = 'new-6';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-7';
+  $pane->panel = 'six';
+  $pane->type = 'block';
+  $pane->subtype = 'usanetwork_lyris-newsletter_subscription';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => 'lyris',
+    'css_class' => 'lyris',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-7'] = $pane;
+  $display->panels['six'][0] = 'new-7';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-8';
+  $pane->panel = 'six';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'usa_cast-panel_pane_2';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'social-follow-block',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $display->content['new-8'] = $pane;
+  $display->panels['six'][1] = 'new-8';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-9';
+  $pane->panel = 'three';
+  $pane->type = 'block';
+  $pane->subtype = 'dart-dart-tag-300x250_scr';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '<none>',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-9'] = $pane;
+  $display->panels['three'][0] = 'new-9';
+
+  // Pane
+  $pane = new stdClass();
+  $pane->pid = 'new-10';
+  $pane->panel = 'two';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_usa_tv_promo_vids';
+  $pane->shown = FALSE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'entityreference_entity_view',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(
+      'view_mode' => 'promo_teaser',
+      'links' => 0,
+    ),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 1,
+    'override_title_text' => '%node:field_usa_tv_promo_vids_label',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $display->content['new-10'] = $pane;
+  $display->panels['two'][0] = 'new-10';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
+
   $export['node_view_panel_context_2'] = $handler;
 
   return $export;

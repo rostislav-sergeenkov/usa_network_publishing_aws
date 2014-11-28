@@ -802,23 +802,43 @@ function _usanetwork_menu_consumptionator_block() {
     $episode_node_wrapper = entity_metadata_wrapper('node', $episode_node);
 
     if (!empty($episode_node_wrapper)) {
-      $body_meta_data = $episode_node_wrapper->body->value();
-      $episode_caption = $episode_node_wrapper->field_tv_episode_type->name->label();
+      $body_meta_data = array();
+      $episode_caption = array();
+
+      if (!empty($episode_node->body)) {
+        $body_meta_data = $episode_node_wrapper->body->value();
+      }
+
+      if (!empty($episode_node->field_tv_episode_type)) {
+        $episode_caption = $episode_node_wrapper->field_tv_episode_type->name->label();
+      }
 
       if (empty($episode_caption)) {
         $episode_caption = t('Full episode');
       }
 
       return theme('usanetwork_menu_consumptionator', array(
-        'show_url' => url('node/' . $episode_node_wrapper->field_show->value()->nid),
-        'show_name' => $episode_node_wrapper->field_show->value()->title,
+        'show_url' => !empty($episode_node->field_show)
+          ? url('node/' . $episode_node_wrapper->field_show->value()->nid)
+          : '',
+        'show_name' => !empty($episode_node->field_show)
+          ? $episode_node_wrapper->field_show->value()->title
+          : '',
         'episode' => array(
           'caption' => $episode_caption,
-          'image_url' => $episode_node_wrapper->field_tv_cover_media->file->value()->uri,
-          'title' => $episode_node_wrapper->title->value(),
-          'season_number' => $episode_node_wrapper->field_season->field_season_id->value(),
-          'episode_number' => $episode_node_wrapper->field_episode_number->value(),
-          'running_time' => gmdate('H:i:s', $episode_node_wrapper->field_original_air_date->duration->value()),
+          'image_url' => !empty($episode_node->field_tv_cover_media)
+            ? $episode_node_wrapper->field_tv_cover_media->file->value()->uri
+            : '',
+          'title' => $episode_node->title,
+          'season_number' => !empty($episode_node->field_season)
+            ? $episode_node_wrapper->field_season->field_season_id->value()
+            : '',
+          'episode_number' => !empty($episode_node->field_episode_number)
+            ? $episode_node_wrapper->field_episode_number->value()
+            : '',
+          'running_time' => !empty($episode_node->field_original_air_date)
+            ? gmdate('H:i:s', $episode_node_wrapper->field_original_air_date->duration->value())
+            : '',
           'description' => !empty($body_meta_data) ? $body_meta_data['value'] : '',
         ),
       ));

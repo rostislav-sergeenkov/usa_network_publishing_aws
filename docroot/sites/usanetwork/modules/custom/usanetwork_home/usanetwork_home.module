@@ -101,9 +101,9 @@ function usanetwork_home_block_view($delta = '') {
 
 function _usanetwork_home_featured_carousel() {
   $content = array();
-
+  
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
+  
   if ($homepage) {
     $homepage_node = usanetwork_home_get_homepage_node($homepage);
 
@@ -117,13 +117,12 @@ function _usanetwork_home_featured_carousel() {
 
     $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
 
-
-
     $field_hp_promos = field_get_items('node', $homepage_node, 'field_hp_promos');
     if ($field_hp_promos) {
       $i = 0;
       foreach ($field_hp_promos as $delta => $promo) {
-        $promo_data = _usanetwork_promo_featured_content($promo);
+        $promo_data = _usanetwork_promo_featured_content($promo['target_id']);
+        
         if ($promo_data === FALSE || $promo_data['published'] === FALSE) {
           continue;
         }
@@ -906,41 +905,49 @@ function _usanetwork_home_shows_queue_block() {
     'title' => 'Homepage Shows',
   ));
 
-  if (!empty($shows_queue) && is_array($shows_queue)) {
-    $shows_queue = reset($shows_queue);
+  if (empty($shows_queue)) {
+    $shows_queue = _usanetwork_home_create_homepage_shows_queue();
   }
 
-  $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
-
   if (!empty($shows_queue)) {
-    $slide_index = 0;
+    if (is_array($shows_queue)) {
+      $shows_queue = reset($shows_queue);
+    }
 
-    $theme_variables = array(
-      'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
-      'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
-      'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
-      'slides' => array(),
-    );
+    $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
 
-    foreach ($shows_wrapper->field_qt_tv_shows_queue as $show_node_wrapper) {
-      $slide_li_class = '';
+    if (!empty($shows_queue) && !empty($shows_queue->field_qt_tv_shows_queue)) {
+      $slide_index = 0;
 
-      if ($slide_index == 0) {
-        $slide_li_class = 'first';
-      }
-
-      $slide = array(
-        'class' => $slide_li_class,
-        'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+      $theme_variables = array(
+        'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
+        'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
+        'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
+        'slides' => array(),
       );
 
-      $theme_variables['slides'][] = $slide;
+      foreach ($shows_wrapper->field_qt_tv_shows_queue as $show_node_wrapper) {
+        $slide_li_class = '';
 
-      $slide_index++;
+        if ($slide_index == 0) {
+          $slide_li_class = 'first';
+        }
+
+        $slide = array(
+          'class' => $slide_li_class,
+          'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+        );
+
+        $theme_variables['slides'][] = $slide;
+
+        $slide_index++;
+      }
+
+      return theme('usanetwork_home_shows_queue', $theme_variables);
     }
   }
 
-  return theme('usanetwork_home_shows_queue', $theme_variables);
+  return '';
 }
 
 /**
@@ -1018,7 +1025,12 @@ function _usanetwork_home_get_show_social_icons($show_node_wrapper) {
  * Theme function for getting 'usanetwork_home_shows_queue_top_info'.
  */
 function _usanetwork_home_shows_queue_get_top_info_content($show_node_wrapper) {
-  $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+  $show_node = $show_node_wrapper->value();
+  $episode_dates = array();
+
+  if (!empty($show_node->field_tvs_promoted_content)) {
+    $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+  }
 
   $theme_variables = array(
     'show_title' => $show_node_wrapper->title->value(),
@@ -1061,13 +1073,19 @@ function _usanetwork_home_shows_queue_get_bottom_info_content($show_node_wrapper
  * Theme function for getting 'usanetwork_home_shows_queue_promo'.
  */
 function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
-  $show_nid = $show_node_wrapper->nid->value();
-  $promoted_content_item = $show_node_wrapper->field_tvs_promoted_content->value();
+  $show_node = $show_node_wrapper->value();
+  $promoted_content_item = array();
+  $episode_dates = array();
 
-  $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+  if (!empty($show_node->field_tvs_promoted_content)) {
+    $promoted_content_item = $show_node_wrapper->field_tvs_promoted_content->value();
+    $episode_dates = $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);
+  }
+
+
 
   $theme_variables = array(
-    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+    'show_class' => usanetwork_tv_shows_color_show_css_class($show_node->nid),
     'latet_episode_image_url' => !empty($promoted_content_item->field_tvs_promoted_content)
         ? _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_promoted_content)
         : '',
@@ -1097,10 +1115,12 @@ function _usanetwork_home_shows_queue_get_advert_content($show_node_wrapper) {
  * Theme function for getting 'usanetwork_home_shows_queue_social'.
  */
 function _usanetwork_home_shows_queue_get_social_content($show_node_wrapper) {
-  $show_nid = $show_node_wrapper->nid->value();
+  $show_node = $show_node_wrapper->value();
 
   $theme_variables = array(
-    'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
+    'show_class' => !empty($show_node->nid)
+      ? usanetwork_tv_shows_color_show_css_class($show_node->nid)
+      : '',
   );
 
   return theme('usanetwork_home_shows_queue_social', $theme_variables);
@@ -1154,11 +1174,11 @@ function _usanetwork_home_get_content_default_image($node_wrapper) {
     'tv_show' => 'field_logo',
   );
 
-  $node_type = $node_wrapper->type->value();
+  $node = $node_wrapper->value();
 
-  if (isset($image_fields[$node_type])) {
-    $image_field_name = $image_fields[$node_type];
-    $node = $node_wrapper->value();
+  if (isset($image_fields[$node->type])) {
+    $image_field_name = $image_fields[$node->type];
+
 
     if (!empty($node->$image_field_name) && is_array($node->$image_field_name) && count($node->$image_field_name) > 0) {
       return $node_wrapper->$image_field_name->file->url->value();
@@ -1194,4 +1214,20 @@ function _usanetwork_home_get_episode_dates($episode_node_wrapper) {
   }
 
   return $data;
+}
+
+/**
+ * Creates the default queue for shows block on home page.
+ */
+function _usanetwork_home_create_homepage_shows_queue() {
+  $shows_queue = entity_create('queues', array(
+    'type' => 'tv_shows_queue',
+    'title' => 'Homepage Shows',
+    'status' => 1,
+    'is_new_revision' => 1,
+  ));
+
+  $shows_queue->save();
+
+  return $shows_queue;
 }

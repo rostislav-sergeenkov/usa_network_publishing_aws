@@ -10,18 +10,21 @@ function usanetwork_home_update_7000() {
 /**
  * Create shows queue.
  */
-function usanetwork_home_update_7210() {
+function usanetwork_home_update_7212() {
   $shows_queue = entity_load('queues', FALSE, array(
     'type' => 'tv_shows_queue',
     'title' => 'Homepage Shows'
   ));
 
   if (empty($shows_queue)) {
-    $shows_queue = entity_create('queues', array(
-      'type' => 'tv_shows_queue',
-      'title' => 'Homepage Shows',
-      'status' => 1,
-      'is_new_revision' => 1,
-    ));
+    $create_callback_name = '_usanetwork_home_create_homepage_shows_queue';
+
+    if (!is_callable($create_callback_name)) {
+      require_once drupal_get_path('module', 'usanetwork_home') . '/usanetwork_home.module';
+    }
+
+    if (is_callable($create_callback_name)) {
+      $create_callback_name();
+    }
   }
 }

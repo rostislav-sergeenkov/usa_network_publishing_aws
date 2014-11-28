@@ -10,24 +10,41 @@
 function usanetwork_blocks_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-apps-services_featured-show-apps:node/37016
-  $menu_links['menu-apps-services_featured-show-apps:node/37016'] = array(
+  // Exported menu link: menu-apps-services_character-arcade:http://www.characterarcade.com
+  $menu_links['menu-apps-services_character-arcade:http://www.characterarcade.com'] = array(
     'menu_name' => 'menu-apps-services',
-    'link_path' => 'node/37016',
-    'router_path' => 'node/%',
-    'link_title' => 'Featured Show apps',
+    'link_path' => 'http://www.characterarcade.com',
+    'router_path' => '',
+    'link_title' => 'Character Arcade',
     'options' => array(
-      'identifier' => 'menu-apps-services_featured-show-apps:node/37016',
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
+      'attributes' => array(
+        'title' => '',
       ),
+      'identifier' => 'menu-apps-services_character-arcade:http://www.characterarcade.com',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-apps-services_characters-unite:http://www.charactersunite.com
+  $menu_links['menu-apps-services_characters-unite:http://www.charactersunite.com'] = array(
+    'menu_name' => 'menu-apps-services',
+    'link_path' => 'http://www.charactersunite.com',
+    'router_path' => '',
+    'link_title' => 'Characters Unite',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-apps-services_characters-unite:http://www.charactersunite.com',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
@@ -47,6 +64,26 @@ function usanetwork_blocks_menu_default_menu_links() {
         'class' => '',
         'style' => '',
       ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-apps-services_movies:node/51
+  $menu_links['menu-apps-services_movies:node/51'] = array(
+    'menu_name' => 'menu-apps-services',
+    'link_path' => 'node/51',
+    'router_path' => 'node/%',
+    'link_title' => 'Movies',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-apps-services_movies:node/51',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -102,42 +139,6 @@ function usanetwork_blocks_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-apps-services_usa-on-social-media:user
-  $menu_links['menu-apps-services_usa-on-social-media:user'] = array(
-    'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'USA on Social Media',
-    'options' => array(
-      'attributes' => array(),
-      'identifier' => 'menu-apps-services_usa-on-social-media:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-apps-services_usa-sync:user
-  $menu_links['menu-apps-services_usa-sync:user'] = array(
-    'menu_name' => 'menu-apps-services',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'USA Sync',
-    'options' => array(
-      'attributes' => array(),
-      'identifier' => 'menu-apps-services_usa-sync:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
   // Exported menu link: menu-apps-services_viewing-schedule:schedule
   $menu_links['menu-apps-services_viewing-schedule:schedule'] = array(
     'menu_name' => 'menu-apps-services',
@@ -163,12 +164,12 @@ function usanetwork_blocks_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Featured Show apps');
+  t('Character Arcade');
+  t('Characters Unite');
   t('Live TV');
+  t('Movies');
   t('Shop');
   t('USA NOW Viewing Apps');
-  t('USA Sync');
-  t('USA on Social Media');
   t('Viewing Schedule');
 
 

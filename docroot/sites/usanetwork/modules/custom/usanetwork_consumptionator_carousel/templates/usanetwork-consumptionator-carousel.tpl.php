@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * @see usanetwork_mpx_full_episodes()
+ * @see usanetwork_consumptionator_carousel_block()
  */
 ?>
 <div class="consumptionator-full-episode carousel-block carousel-block-left">

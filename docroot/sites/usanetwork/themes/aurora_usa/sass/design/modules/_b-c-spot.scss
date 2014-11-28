@@ -30,6 +30,7 @@
     }
   }
 }
+
 .bspot-cspot-wrapper {
   @include clear;
   margin: 0 auto;
@@ -68,14 +69,14 @@
     position: absolute;
     width: 100%;
     .meta-icon {
-      border-radius: 50%;
       content: '';
       display: block;
-      height: 40%;
+      height: 37px;
       left: 5%;
+      margin-top: -18px;
       position: absolute;
-      top: 32%;
-      width: 7.375%;
+      top: 50%;
+      width: 37px;
       z-index: 1;
       @include breakpoint($between-641-1024) {
         left: 6%;
@@ -88,26 +89,48 @@
         margin-left: -18px;
         margin-top: -18px;
         top: 50%;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 30px;
+          height: 50px;
+          line-height: 50px;
+          margin-left: -25px;
+          margin-top: -25px;
+          width: 50px;
+        }
+      }
+      ~ .meta {
+        .title, .caption, .additional {
+          margin-left: 19.25%;
+          @include breakpoint($bp-min-1601-width) {
+            margin-left: 15%;
+          }
+        }
       }
     }
   }
   @extend %meta;
   .meta {
-    margin-top: -32px;
+    margin-top: -22px;
     position: absolute;
     top: 50%;
     width: 100%;
-		@include breakpoint($bp-min-1601-width) {
-			margin-top: -50px;
-		}
+    @include breakpoint($bp-min-1601-width) {
+      margin-top: -34px;
+    }
     @include breakpoint($between-641-1024) {
-      margin-top: -22px;
+      margin-top: -16px;
     }
     @include breakpoint($bp-480-width) {
-      margin-top: -22px;
+      margin-top: -16px;
     }
     .title, .caption, .additional {
-      margin-left: 19.25%;
+      margin-left: 5%;
+      @include breakpoint($between-641-1024) {
+        left: 6%;
+      }
+      @include breakpoint($bp-480-width) {
+        left: 6%;
+      }
     }
     .caption, .additional, .additional span {
       line-height: 18px;
@@ -127,10 +150,10 @@
     .title {
       font-size: 20px;
       line-height: 28px;
-			@include breakpoint($bp-min-1601-width) {
-				font-size: 36px;
-				line-height: 40px;
-			}
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 36px;
+        line-height: 40px;
+      }
       @include breakpoint($between-641-1024) {
         font-size: 16px;
         line-height: 20px;

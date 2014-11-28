@@ -15568,14 +15568,14 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   width: 100%;
 }
 .usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
-  border-radius: 50%;
   content: '';
   display: block;
-  height: 40%;
+  height: 37px;
   left: 5%;
+  margin-top: -18px;
   position: absolute;
-  top: 32%;
-  width: 7.375%;
+  top: 50%;
+  width: 37px;
   z-index: 1;
 }
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -15594,29 +15594,57 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   margin-top: -18px;
   top: 50%;
 }
+@media (min-width: 1601px) {
+  .usa-home-bspot .meta-wrapper .meta-icon:before, .usa-home-cspot .meta-wrapper .meta-icon:before {
+    font-size: 30px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    width: 50px;
+  }
+}
+.usa-home-bspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .additional, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .additional {
+  margin-left: 19.25%;
+}
+@media (min-width: 1601px) {
+  .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-bspot .meta-wrapper .meta-icon ~ .meta .additional, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .title, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .caption, .usa-home-cspot .meta-wrapper .meta-icon ~ .meta .additional {
+    margin-left: 15%;
+  }
+}
 .usa-home-bspot .meta, .usa-home-cspot .meta {
-  margin-top: -32px;
+  margin-top: -22px;
   position: absolute;
   top: 50%;
   width: 100%;
 }
 @media (min-width: 1601px) {
   .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -50px;
+    margin-top: -34px;
   }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
   .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -22px;
+    margin-top: -16px;
   }
 }
 @media (max-width: 480px) {
   .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -22px;
+    margin-top: -16px;
   }
 }
 .usa-home-bspot .meta .title, .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .title, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional {
-  margin-left: 19.25%;
+  margin-left: 5%;
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .usa-home-bspot .meta .title, .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .title, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional {
+    left: 6%;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-bspot .meta .title, .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .title, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional {
+    left: 6%;
+  }
 }
 .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional, .usa-home-cspot .meta .additional span {
   line-height: 18px;

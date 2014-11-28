@@ -709,3 +709,7 @@ function _usanetwork_tv_shows_wrap_latest_episodes($show_nid) {
 
   return $items;
 }
+
+function _usanetwork_tv_shows_consumptionator_relcontent_block() {
+  
+}

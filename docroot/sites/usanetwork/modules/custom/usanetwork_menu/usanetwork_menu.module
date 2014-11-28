@@ -358,12 +358,14 @@ function _usanetwork_menu_main_menu_block() {
   }
   $menu_links = menu_load_links($menu['menu_name']);
   foreach ($menu_links as $item) {
-    $items[] = array(
-      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('class' => array('no-refresh'), 'data-state' => array('')))),
-      'class' => array(
-        'tab',
-      ),
-    );
+    if (!$item['hidden']) {
+      $items[] = array(
+        'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('class' => array('no-refresh'), 'data-state' => array('')))),
+        'class' => array(
+          'tab',
+        ),
+      );
+    }
   }
 
   return  theme('usanetwork_item_list', array(

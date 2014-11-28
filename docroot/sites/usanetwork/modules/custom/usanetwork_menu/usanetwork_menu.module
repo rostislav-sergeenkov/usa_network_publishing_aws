@@ -513,6 +513,23 @@ function _usanetwork_menu_show_menu_get_current_show_node() {
 }
 
 /**
+ * Returns current MPX video entity.
+ */
+function _usanetwork_menu_show_menu_get_current_video_entity() {
+  $menu_item = menu_get_item();
+  
+  if (!empty($menu_item['page_arguments'])) {
+    $file = reset($menu_item['page_arguments']);
+
+    if (isset($file->filemime) && $file->filemime == 'video/mpx') {
+      return $file;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
  * Returns current Episode node.
  */
 function _usanetwork_menu_show_menu_get_current_episode_node() {

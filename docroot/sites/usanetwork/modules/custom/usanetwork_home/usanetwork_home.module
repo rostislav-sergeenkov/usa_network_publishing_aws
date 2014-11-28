@@ -906,8 +906,15 @@ function _usanetwork_home_shows_queue_block() {
     'title' => 'Homepage Shows',
   ));
 
-  if (!empty($shows_queue) && is_array($shows_queue)) {
-    $shows_queue = reset($shows_queue);
+  if (empty($shows_queue)) {
+    $shows_queue = _usanetwork_home_create_homepage_shows_queue();
+  }
+
+  if (!empty($shows_queue)) {
+    if (is_array($shows_queue)) {
+      $shows_queue = reset($shows_queue);
+    }
+
     $shows_wrapper = entity_metadata_wrapper('queues', $shows_queue);
 
     if (!empty($shows_queue) && !empty($shows_queue->field_qt_tv_shows_queue)) {
@@ -1208,4 +1215,20 @@ function _usanetwork_home_get_episode_dates($episode_node_wrapper) {
   }
 
   return $data;
+}
+
+/**
+ * Creates the default queue for shows block on home page.
+ */
+function _usanetwork_home_create_homepage_shows_queue() {
+  $shows_queue = entity_create('queues', array(
+    'type' => 'tv_shows_queue',
+    'title' => 'Homepage Shows',
+    'status' => 1,
+    'is_new_revision' => 1,
+  ));
+
+  $shows_queue->save();
+
+  return $shows_queue;
 }

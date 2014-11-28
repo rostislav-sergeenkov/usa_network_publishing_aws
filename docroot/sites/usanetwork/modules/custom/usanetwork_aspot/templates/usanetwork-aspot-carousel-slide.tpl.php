@@ -9,24 +9,26 @@
       <a href="<?php print $show_url; ?>" target="_self">
       <?php if (!empty($show_poster)): ?>
         <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-          <?php if (!empty($show_poster['300x250'])): ?>
-            <div data-src="<?php print $show_poster['300x250']; ?>"></div>
+          <?php if (!empty($show_poster['mobile'])): ?>
+            <div data-src="<?php print $show_poster['mobile']; ?>"></div>
           <?php endif; ?>
-          <?php if (!empty($show_poster['600x500'])): ?>
-            <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['600x500']; ?>"></div>
+          <?php if (!empty($show_poster['mobile_retina'])): ?>
+            <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['mobile_retina']; ?>"></div>
           <?php endif; ?>
-          <?php if (!empty($show_poster['615x350'])): ?>
-            <div data-media="(min-width: 645px)" data-src="<?php print $show_poster['615x350']; ?>"></div>
+          <?php if (!empty($show_poster['tablet'])): ?>
+            <div data-media="(min-width: 645px)" data-src="<?php print $show_poster['tablet']; ?>"></div>
           <?php endif; ?>
-          <?php if (!empty($show_poster['1245x709'])): ?>
-            <div data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['1245x709']; ?>"></div>
-            <div data-media="(min-width: 960px)" data-src="<?php print $show_poster['1245x709']; ?>"></div>
+          <?php if (!empty($show_poster['tablet_retina'])): ?>
+            <div data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['tablet_retina']; ?>"></div>
           <?php endif; ?>
-          <?php if (!empty($show_poster['2490x1418'])): ?>
-            <div data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['2490x1418']; ?>"></div>
+          <?php if (!empty($show_poster['desktop'])): ?>
+            <div data-media="(min-width: 960px)" data-src="<?php print $show_poster['desktop']; ?>"></div>
           <?php endif; ?>
-          <?php if (!empty($show_poster['1245x709'])): ?>
-            <noscript><img src="<?php print $show_poster['1245x709']; ?>" width="1245" height="709" alt="" title="" /></noscript>
+          <?php if (!empty($show_poster['desktop_retina'])): ?>
+            <div data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['desktop_retina']; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($show_poster['desktop'])): ?>
+            <noscript><img src="<?php print $show_poster['desktop']; ?>" width="1245" height="709" alt="" title="" /></noscript>
           <?php endif; ?>
         </div>
       <?php endif; ?>

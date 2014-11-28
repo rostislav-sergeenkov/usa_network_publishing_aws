@@ -212,7 +212,14 @@ function usanetwork_aspot_theme() {
       'variables' => array(
         'show_url' => NULL,
         'show_class' => NULL,
-        'show_poster_url' => NULL,
+        'show_poster' => array(
+          'mobile' => NULL,
+          'mobile_retina' => NULL,
+          'tablet' => NULL,
+          'tablet_retina' => NULL,
+          'desktop' => NULL,
+          'desktop_retina' => NULL,
+        ),
         'show_title_prefix' => NULL,
         'show_title_prefix_style' => NULL,
         'show_title' => NULL,
@@ -252,6 +259,153 @@ function usanetwork_aspot_theme() {
       'template' => 'templates/usanetwork-aspot-carousel',
     ),
   );
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_aspot_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: Desktop 2500x1407.
+  $styles['2500x1407'] = array(
+    'name' => '2500x1407',
+    'label' => '2500x1407',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2500,
+          'height' => 1407,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Desktop retina 5000x2814.
+  $styles['5000x2814'] = array(
+    'name' => '5000x2814',
+    'label' => '5000x2814',
+    'effects' => array(
+      2 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 5000,
+          'height' => 2814,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Tablet 1024px x 576px.
+  $styles['1024x576'] = array(
+    'name' => '1024x576',
+    'label' => '1024x576',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1024,
+          'height' => 576,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Tablet retina 2048x1152.
+  $styles['2048x1152'] = array(
+    'name' => '2048x1152',
+    'label' => '2048x1152',
+    'effects' => array(
+      4 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 2048,
+          'height' => 1152,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Mobile 640x640.
+  $styles['640x640'] = array(
+    'name' => '640x640',
+    'label' => '640x640',
+    'effects' => array(
+      5 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 640,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: Mobile retina 1280x1280.
+  $styles['1280x1280'] = array(
+    'name' => '1280x1280',
+    'label' => '1280x1280',
+    'effects' => array(
+      6 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 1280,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
@@ -336,11 +490,12 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
     'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
     'show_poster' => array(
-      '300x250' => image_style_url('300x250', $banner_images['mobile']),
-      '600x500' => image_style_url('600x500', $banner_images['mobile']),
-      '615x350' => image_style_url('615x350', $banner_images['mobile']),
-      '1245x709' => image_style_url('1245x709', $banner_images['tablet']),
-      '2490x1418' => image_style_url('2490x1418', $banner_images['desktop']),
+      'mobile' => image_style_url('640x640', $banner_images['mobile']),
+      'mobile_retina' => image_style_url('1280x1280', $banner_images['mobile']),
+      'tablet' => image_style_url('1024x576', $banner_images['tablet']),
+      'tablet_retina' => image_style_url('2048x1152', $banner_images['tablet']),
+      'desktop' => image_style_url('2500x1407', $banner_images['desktop']),
+      'desktop_retina' => image_style_url('5000x2814', $banner_images['desktop']),
     ),
     'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
     'show_title_prefix_style' => isset($draggable_data->title_prefix)

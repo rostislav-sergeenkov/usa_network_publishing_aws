@@ -71,7 +71,7 @@
             }
           }
         }
-        .meta-wrap {
+        .meta-wrapper {
           background: none;
           bottom: 0;
           height: 40%;
@@ -79,6 +79,11 @@
           width: 100%;
           @include breakpoint($bp-480-width) {
             height: 42%;
+          }
+          .meta-wrapper-inner {
+            height: 100%;
+            display: table;
+            width: 100%;
           }
         }
         .meta-back {
@@ -96,57 +101,66 @@
         }
         @extend %meta;
         .meta {
-          height: 46px;
+          display: table-cell;
           margin-left: 10px;
-          margin-top: -23px;
           overflow: hidden;
-          position: absolute;
-          top: 50%;
+          position: relative;
+          vertical-align: middle;
           width: 100%;
           @include breakpoint($bp-480-width) {
             margin-left: 0px;
-            top: 36%;
+            bottom: 16px;
           }
           .meta-icon {
             display: block;
             height: 37px;
-            left: 0px;
+            left: 20px;
             margin-top: -19px;
             position: absolute;
             top: 50%;
             width: 37px;
+            ~ .caption, ~ .title {
+              margin-left: 10%;
+              width: 411px;
+              @include breakpoint($bp-1024-width) {
+                margin-left: 45px;
+                width: 305px;
+              }
+              @include breakpoint($bp-768-width) {
+                width: 235px;
+              }
+            }
+          }
+          .caption, .title {
+            width: 456px;
+            @include breakpoint($bp-1024-width) {
+              width: 350px;
+            }
+            @include breakpoint($bp-768-width) {
+              width: 280px;
+            }
           }
           .caption {
             font-size: 12px;
-            line-height: 20px;
-            margin-left: 10%;
-            @include breakpoint($bp-1024-width) {
-              margin-left: 45px;
-            }
+            line-height: 16px;
+            margin-left: 0;
             @include breakpoint($bp-768-width) {
               font-size: 10px;
               line-height: 14px;
-              margin-top: 6px;
             }
             @include breakpoint($bp-480-width) {
               font-size: 12px;
               line-height: 16px;
-              margin-left: 45px;
-
             }
           }
           .title {
             font-size: 20px;
-            margin-left: 10%;
-            @include breakpoint($bp-1024-width) {
-              margin-left: 45px;
-            }
+            margin-left: 0;
             @include breakpoint($bp-768-width) {
               font-size: 16px;
             }
             @include breakpoint($bp-480-width) {
               font-size: 18px;
-              margin-left: 45px;
             }
           }
         }

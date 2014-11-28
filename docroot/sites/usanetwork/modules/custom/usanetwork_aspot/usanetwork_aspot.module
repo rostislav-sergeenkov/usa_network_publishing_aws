@@ -453,11 +453,19 @@ function _usanetwork_aspot_carousel_block() {
 }
 
 function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
-  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
-  $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
-  $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
-
+  $enabled_elements = array();
+  $draggable_data = array();
   $banner_images = array();
+
+  $aspot_node_wrapper = entity_metadata_wrapper('node', $aspot_node);
+
+  if (!empty($aspot_node->field_aspot_enabled_gi)) {
+    $enabled_elements = $aspot_node_wrapper->field_aspot_enabled_gi->value();
+  }
+
+  if (!empty($aspot_node->field_aspot_gi_draggable_data)) {
+    $draggable_data = $aspot_node_wrapper->field_aspot_gi_draggable_data->value();
+  }
 
   if (!empty($draggable_data)) {
     $draggable_data = json_decode($draggable_data);
@@ -487,7 +495,9 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   }
 
   $theme_array = array(
-    'show_url' => url($aspot_node_wrapper->field_usa_aspot_link->url->value()),
+    'show_url' => !empty($aspot_node->field_usa_aspot_link)
+      ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
+      : '',
     'show_class' => usanetwork_tv_shows_color_show_css_class($show_node),
     'show_poster' => array(
       'mobile' => image_style_url('640x640', $banner_images['mobile']),
@@ -497,25 +507,31 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
       'desktop' => image_style_url('2500x1407', $banner_images['desktop']),
       'desktop_retina' => image_style_url('5000x2814', $banner_images['desktop']),
     ),
-    'show_title_prefix' => $aspot_node_wrapper->field_aspot_gi_title_prefix->value(),
+    'show_title_prefix' => !empty($aspot_node->field_aspot_gi_title_prefix)
+      ? $aspot_node_wrapper->field_aspot_gi_title_prefix->value()
+      : '',
     'show_title_prefix_style' => isset($draggable_data->title_prefix)
       ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title_prefix)
       : '',
-    'show_title' => $aspot_node_wrapper->field_aspot_gi_title->value(),
+    'show_title' => !empty($aspot_node->field_aspot_gi_title)
+      ? $aspot_node_wrapper->field_aspot_gi_title->value()
+      : '',
     'show_title_style' => isset($draggable_data->title_prefix)
       ? _usanetwork_aspot_get_draggable_style_data($draggable_data->title)
       : '',
-    'show_image_bg_offset' => $aspot_node_wrapper->field_aspot_preview_bg_offset->value(),
-    'show_draggable_data' => $aspot_node_wrapper->field_aspot_gi_draggable_data->value(),
+    'show_image_bg_offset' => !empty($aspot_node->field_aspot_preview_bg_offset)
+      ? $aspot_node_wrapper->field_aspot_preview_bg_offset->value()
+      : '',
+    'show_draggable_data' => !empty($aspot_node->field_aspot_gi_draggable_data)
+      ? $aspot_node_wrapper->field_aspot_gi_draggable_data->value()
+      : '',
   );
-
-  if (empty($theme_array['show_title'])) {
-    $theme_array['show_title'] = $show_node->title;
-  }
 
   if (in_array('countdown', $enabled_elements)) {
     $theme_array['show_timer'] = array(
-      'title_prefix' => $aspot_node_wrapper->field_aspot_gi_cd_prefix->value(),
+      'title_prefix' => !empty($aspot_node->field_aspot_gi_cd_prefix)
+        ? $aspot_node_wrapper->field_aspot_gi_cd_prefix->value()
+        : '',
       'title_prefix_style' => isset($draggable_data->countdown_prefix)
         ? _usanetwork_aspot_get_draggable_style_data($draggable_data->countdown_prefix)
         : '',
@@ -574,8 +590,9 @@ function _usanetwork_aspot_get_draggable_style_data($draggable_data_element) {
 
 function _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper, $draggable_data) {
   $cta_buttons_theme_data = array();
+  $aspot_node = $aspot_node_wrapper->value();
 
-  if (!empty($aspot_node_wrapper)) {
+  if (!empty($aspot_node_wrapper) && !empty($aspot_node->field_aspot_gi_cta)) {
     $cta_index = 0;
 
     foreach ($aspot_node_wrapper->field_aspot_gi_cta as $cta_wrapper_element) {

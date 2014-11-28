@@ -8746,17 +8746,23 @@ body.front {
     width: 100%;
   }
 }
-.featured-block .carousel ul li .meta-wrap {
+.featured-block .carousel ul li .meta-wrapper {
   background: none;
   bottom: 0;
   height: 40%;
   position: absolute;
   width: 100%;
+  z-index: 1;
 }
 @media (max-width: 480px) {
-  .featured-block .carousel ul li .meta-wrap {
+  .featured-block .carousel ul li .meta-wrapper {
     height: 42%;
   }
+}
+.featured-block .carousel ul li .meta-wrapper .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  width: 100%;
 }
 .featured-block .carousel ul li .meta-back {
   background: #000000;
@@ -8774,61 +8780,76 @@ body.front {
   }
 }
 .featured-block .carousel ul li .meta {
-  height: 46px;
+  display: table-cell;
   margin-left: 10px;
-  margin-top: -23px;
   overflow: hidden;
-  position: absolute;
-  top: 50%;
+  position: relative;
+  vertical-align: middle;
   width: 100%;
 }
 @media (max-width: 480px) {
   .featured-block .carousel ul li .meta {
     margin-left: 0px;
-    top: 36%;
+    bottom: 16px;
   }
 }
 .featured-block .carousel ul li .meta .meta-icon {
   display: block;
   height: 37px;
-  left: 0px;
+  left: 20px;
   margin-top: -19px;
   position: absolute;
   top: 50%;
   width: 37px;
 }
-.featured-block .carousel ul li .meta .caption {
-  font-size: 12px;
-  line-height: 20px;
+.featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
   margin-left: 10%;
+  width: 411px;
 }
 @media (max-width: 1024px) {
-  .featured-block .carousel ul li .meta .caption {
+  .featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
     margin-left: 45px;
+    width: 305px;
   }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
+    width: 235px;
+  }
+}
+.featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
+  width: 456px;
+}
+@media (max-width: 1024px) {
+  .featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
+    width: 350px;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
+    width: 280px;
+  }
+}
+.featured-block .carousel ul li .meta .caption {
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 0;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .caption {
     font-size: 10px;
     line-height: 14px;
-    margin-top: 6px;
   }
 }
 @media (max-width: 480px) {
   .featured-block .carousel ul li .meta .caption {
     font-size: 12px;
     line-height: 16px;
-    margin-left: 45px;
   }
 }
 .featured-block .carousel ul li .meta .title {
   font-size: 20px;
-  margin-left: 10%;
-}
-@media (max-width: 1024px) {
-  .featured-block .carousel ul li .meta .title {
-    margin-left: 45px;
-  }
+  margin-left: 0;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .title {
@@ -8838,7 +8859,6 @@ body.front {
 @media (max-width: 480px) {
   .featured-block .carousel ul li .meta .title {
     font-size: 18px;
-    margin-left: 45px;
   }
 }
 .featured-block .carousel ul li .more {
@@ -9674,11 +9694,8 @@ body.person-page #main {
   top: -48px;
 }
 .carousel ul li .meta {
-  left: 20px;
-  margin-top: -19px;
-  padding-right: 25px;
+  padding-left: 20px;
   position: absolute;
-  top: 50%;
   width: 100%;
 }
 .carousel ul li .meta .title, .carousel ul li .meta .additional {
@@ -9913,6 +9930,7 @@ body.person-page #main {
   left: 75px;
 }
 .carousel-description-item .description-button {
+  color: transparent;
   display: block;
   left: -40px;
   margin-top: -16px;
@@ -10103,6 +10121,7 @@ body.person-page #main {
 }
 .consumptionator-full-episodes .carousel-description-item .description-button {
   background: none;
+  color: transparent;
   left: -25px;
   margin-top: -8px;
   text-decoration: none;
@@ -15567,12 +15586,17 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   position: absolute;
   width: 100%;
 }
+.usa-home-bspot .meta-wrapper .meta-wrapper-inner, .usa-home-cspot .meta-wrapper .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  width: 100%;
+}
 .usa-home-bspot .meta-wrapper .meta-icon, .usa-home-cspot .meta-wrapper .meta-icon {
   content: '';
   display: block;
   height: 37px;
   left: 5%;
-  margin-top: -18px;
+  margin-top: -19px;
   position: absolute;
   top: 50%;
   width: 37px;
@@ -15613,25 +15637,10 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   }
 }
 .usa-home-bspot .meta, .usa-home-cspot .meta {
-  margin-top: -22px;
-  position: absolute;
-  top: 50%;
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
   width: 100%;
-}
-@media (min-width: 1601px) {
-  .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -34px;
-  }
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -16px;
-  }
-}
-@media (max-width: 480px) {
-  .usa-home-bspot .meta, .usa-home-cspot .meta {
-    margin-top: -16px;
-  }
 }
 .usa-home-bspot .meta .title, .usa-home-bspot .meta .caption, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .title, .usa-home-cspot .meta .caption, .usa-home-cspot .meta .additional {
   margin-left: 5%;

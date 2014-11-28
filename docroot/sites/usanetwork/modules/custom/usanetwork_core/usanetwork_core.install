@@ -959,13 +959,12 @@ function usanetwork_core_update_7156() {
 }
 
 /**
- *  Enables images lazyloading.
+ *  Changing lazyloader module and enabling usanetwork overlay.
  */
-function usanetwork_core_update_7157() {
+function usanetwork_core_update_7160() {
   $to_be_enabled = array(
     'lazyloader',
-    'context_mobile_detect',
-    'usanetwork_lazyloader',
+    'usanetwork_overlay',
   );
 
   $to_be_disabled = array(
@@ -987,19 +986,9 @@ function usanetwork_core_update_7157() {
 
 /**
  * Enables module usanetwork_overlay.
- * Incrementing version of the module to 7.x-1.58.1.
+ * Incrementing version of the module to 7.x-1.61.4.
  */
-function usanetwork_core_update_7158() {
-  if (!module_exists('usanetwork_overlay')) {
-    module_enable(array('usanetwork_overlay'));
-  }
-}
-
-/**
- * Enables module usanetwork_overlay.
- * Incrementing version of the module to 7.x-1.59.1.
- */
-function usanetwork_core_update_7159() {
+function usanetwork_core_update_7161() {
   if (!module_exists('usanetwork_consumptionator_carousel')) {
     module_enable(array('usanetwork_consumptionator_carousel'));
   }

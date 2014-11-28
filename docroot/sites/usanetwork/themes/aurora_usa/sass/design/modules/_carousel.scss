@@ -185,11 +185,8 @@
       }
       @extend %meta;
       .meta {
-        left: 20px;
-        margin-top: -19px;
-        padding-right: 25px;
+        padding-left: 20px;
         position: absolute;
-        top: 50%;
         width: 100%;
         .title, .additional {
           line-height: 19px;
@@ -441,6 +438,7 @@
     left: 75px;
   }
   .description-button {
+    color: transparent;
     display: block;
     left: -40px;
     margin-top: -16px;
@@ -641,6 +639,7 @@
     }
     .description-button {
       background: none;
+      color: transparent;
       left: -25px;
       margin-top: -8px;
       text-decoration: none;

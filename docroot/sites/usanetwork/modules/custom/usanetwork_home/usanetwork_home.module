@@ -1110,46 +1110,29 @@ function _usanetwork_home_shows_queue_get_social_content($show_node_wrapper) {
  * Theme function for getting 'usanetwork_home_shows_queue_show_inner_slide'.
  */
 function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wrapper) {
+  $promo_slides_count = 4; // The number of promo slides in Show carousel element
+
   $output_array = array();
   $show_node = $show_node_wrapper->value();
   $show_nid = $show_node_wrapper->nid->value();
 
-  if (!empty($show_node->field_tvs_inside_the_episode)) {
-    foreach ($show_node_wrapper->field_tvs_inside_the_episode as $inside_the_episode_element) {
+  for ($promo_slide_index = 1; $promo_slide_index <= $promo_slides_count; $promo_slide_index++) {
+    $title_field_name = 'field_tvs_promo_title_' . $promo_slide_index;
+    $content_field_name = 'field_tvs_promo_content_' . $promo_slide_index;
+
+    if (!empty($show_node->$content_field_name)) {
       $theme_variables = array(
-        'title' => $show_node_wrapper->title->value(),
+        'title' => !empty($show_node->$title_field_name)
+          ? $show_node_wrapper->$title_field_name->value()
+          : '',
         'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
-        'episode_title' => $inside_the_episode_element->title->value(),
-        'episode_url' => url('node/' . $inside_the_episode_element->nid->value()),
-        'image_url' => _usanetwork_home_get_content_default_image($inside_the_episode_element),
+        'episode_title' => $show_node_wrapper->$content_field_name->title->value(),
+        'episode_url' => url('node/' . $show_node_wrapper->$content_field_name->nid->value()),
+        'image_url' => _usanetwork_home_get_content_default_image($show_node_wrapper->$content_field_name),
       );
 
       $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
     }
-  }
-
-  if (!empty($show_node->field_tvs_what_is_next)) {
-    $theme_variables = array(
-      'title' => $show_node_wrapper->title->value(),
-      'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
-      'episode_title' => $show_node_wrapper->field_tvs_what_is_next->title->value(),
-      'episode_url' => url('node/' . $show_node_wrapper->field_tvs_what_is_next->nid->value()),
-      'image_url' => _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_what_is_next),
-    );
-
-    $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
-  }
-
-  if (!empty($show_node->field_tvs_ymal)) {
-    $theme_variables = array(
-      'title' => $show_node_wrapper->title->value(),
-      'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
-      'episode_title' => $show_node_wrapper->field_tvs_ymal->title->value(),
-      'episode_url' => url('node/' . $show_node_wrapper->field_tvs_ymal->nid->value()),
-      'image_url' => _usanetwork_home_get_content_default_image($show_node_wrapper->field_tvs_ymal),
-    );
-
-    $output_array[] = theme('usanetwork_home_shows_queue_show_inner_slide', $theme_variables);
   }
 
   return $output_array;

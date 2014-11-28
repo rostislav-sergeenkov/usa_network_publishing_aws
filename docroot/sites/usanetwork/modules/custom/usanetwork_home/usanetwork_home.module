@@ -128,8 +128,8 @@ function _usanetwork_home_featured_carousel() {
           continue;
         }
 
-        if ($promo_data['more_link_title'] && $promo_data['more_link_url']) {
-          $more_link = l($promo_data['more_link_title'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
+        if ($promo_data['more_link_text'] && $promo_data['more_link_url']) {
+          $more_link = l($promo_data['more_link_text'], $promo_data['more_link_url'], array('attributes' => array('class' => array('more'))));
         }
 
         $featured_vars = array(
@@ -139,16 +139,16 @@ function _usanetwork_home_featured_carousel() {
           'url' => isset($promo_data['url'])
               ? $promo_data['url']
               : NULL,
-          'image' => isset($promo_data['image_url'])
-              ? theme_image(array('path' => $promo_data['image_url'], 'attributes' => array()))
+          'image' => isset($promo_data['image_url_wide'])
+              ? theme('image_style', array('style_name' => 'fh476x268', 'path' => $promo_data['image_url_wide']))
               : NULL,
           'icon_type' => $promo_data['icon_type']
               ? $promo_data['icon_type']
               : NULL,
-          'caption' => isset($promo_data['title'])
-              ? $promo_data['title']
+          'caption' => isset($promo_data['caption'])
+              ? $promo_data['caption']
               : NULL,
-          'title' => $promo_data['cta_text'],
+          'title' => $promo_data['title'],
           'more_link' => isset($more_link)
               ? $more_link
               : NULL,

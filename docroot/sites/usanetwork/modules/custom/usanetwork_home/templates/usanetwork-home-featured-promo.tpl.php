@@ -12,7 +12,9 @@
     <div class="meta-wrap">
       <div class="meta-back"></div>
       <div class="meta">
-        <div class="meta-icon <?php print $icon_type; ?>"></div>
+        <?php if ($icon_type): ?>
+          <div class="meta-icon <?php print $icon_type; ?>"></div>
+        <?php endif; ?>
         <div class="caption"><?php print $caption; ?></div>
         <div class="title"><?php print $title; ?></div>
       </div>
@@ -21,9 +23,10 @@
       <?php print $image; ?>
     </div>
   </a>
-  <?php print $more_link; ?>
+  <?php if ($more_link): ?>
+    <?php print $more_link; ?>
+  <?php endif; ?>
 </div>
-
 
 
 

@@ -211,7 +211,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $featutred_content['show_class'] = usanetwork_tv_shows_color_show_css_class($show_field['target_id']);
       }
 
-      $featutred_content['caption'] = $promo_text_line_1;
+      $featutred_content['caption'] = isset($promo_text_line_1)? $promo_text_line_1 : NULL;
         $featutred_content['title'] = $node->title;
       if ($field_cover_item_items = field_get_items('node', $node, 'field_cover_item')) {
         $field_cover_item = reset($field_cover_item_items);
@@ -233,7 +233,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
 
       $featutred_content['url'] = $featutred_content['more_link_url'];
 
-      $featutred_content['caption'] = $promo_text_line_1;
+      $featutred_content['caption'] = isset($promo_text_line_1) ? $promo_text_line_1 : NULL;
       if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
         $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
         $featutred_content['title'] = $field_promo_text_line_2['value'];

@@ -67,7 +67,7 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_primetime'] = array(
     'info' => t('Homepage Menu: Primetime tonight'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   $blocks['usanetwork_menu_sm_now_and_next'] = array(

@@ -106,3 +106,13 @@ function usanetwork_schedule_schema() {
     ),
   );
 }
+
+/**
+ * Update schedule and remove duplicates.
+ */
+function usanetwork_schedule_update_7110() {
+  require_once drupal_get_path('module', 'usanetwork_schedule') . '/usanetwork_schedule.module';
+
+  variable_set('usanetwork_schedule_last_update', 0);
+  usanetwork_schedule_cron();
+}

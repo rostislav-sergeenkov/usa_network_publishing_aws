@@ -22,10 +22,10 @@
           <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $spot_image['mobile_retina']; ?>"></div>
         <?php endif; ?>
         <?php if (!empty($spot_image['desktop'])): ?>
-          <div data-media="(min-width: 960px)" data-src="<?php print $spot_image['desktop']; ?>"></div>
+          <div data-media="(min-width: 481px)" data-src="<?php print $spot_image['desktop']; ?>"></div>
         <?php endif; ?>
         <?php if (!empty($spot_image['desktop_retina'])): ?>
-          <div data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $spot_image['desktop_retina']; ?>"></div>
+          <div data-media="(min-width: 481px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $spot_image['desktop_retina']; ?>"></div>
         <?php endif; ?>
         <?php if (!empty($spot_image['desktop'])): ?>
           <noscript><img src="<?php print $spot_image['desktop']; ?>" width="833" height="469" alt="" title="" /></noscript>

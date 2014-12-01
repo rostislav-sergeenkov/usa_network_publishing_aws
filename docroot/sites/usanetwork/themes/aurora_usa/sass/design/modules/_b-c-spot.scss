@@ -116,6 +116,7 @@
   @extend %meta;
   .meta {
     display: table-cell;
+    max-width: 300px;
     position: relative;
     vertical-align: middle;
     width: 100%;

@@ -16,19 +16,19 @@
             <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['mobile_retina']; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($show_poster['tablet'])): ?>
-            <div data-media="(min-width: 645px)" data-src="<?php print $show_poster['tablet']; ?>"></div>
+            <div data-media="(min-width: 641px)" data-src="<?php print $show_poster['tablet']; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($show_poster['tablet_retina'])): ?>
-            <div data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['tablet_retina']; ?>"></div>
+            <div data-media="(min-width: 641px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['tablet_retina']; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($show_poster['desktop'])): ?>
-            <div data-media="(min-width: 960px)" data-src="<?php print $show_poster['desktop']; ?>"></div>
+            <div data-media="(min-width: 1025px)" data-src="<?php print $show_poster['desktop']; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($show_poster['desktop_retina'])): ?>
-            <div data-media="(min-width: 960px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['desktop_retina']; ?>"></div>
+            <div data-media="(min-width: 1025px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['desktop_retina']; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($show_poster['desktop'])): ?>
-            <noscript><img src="<?php print $show_poster['desktop']; ?>" width="1245" height="709" alt="" title="" /></noscript>
+            <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2500" height="1407" alt="" title="" /></noscript>
           <?php endif; ?>
         </div>
       <?php endif; ?>

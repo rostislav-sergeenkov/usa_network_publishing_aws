@@ -67,7 +67,7 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   position: absolute;
   top: 0;
   width: 10px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .show-color {
@@ -1136,6 +1136,10 @@ img {
 
 .asset-img {
   line-height: 0;
+}
+.asset-img .lazyloader-icon {
+  height: 24px !important;
+  width: 24px !important;
 }
 
 small {
@@ -15638,6 +15642,7 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
 }
 .usa-home-bspot .meta, .usa-home-cspot .meta {
   display: table-cell;
+  max-width: 300px;
   position: relative;
   vertical-align: middle;
   width: 100%;

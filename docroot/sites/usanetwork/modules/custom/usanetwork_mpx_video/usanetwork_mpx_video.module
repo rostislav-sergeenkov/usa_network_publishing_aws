@@ -69,7 +69,6 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('USA: video MPX views'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-
   return $blocks;
 }
 

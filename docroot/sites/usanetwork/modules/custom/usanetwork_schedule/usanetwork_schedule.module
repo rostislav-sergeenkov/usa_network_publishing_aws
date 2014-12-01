@@ -252,6 +252,8 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
   $query->fields('field_episode_number', array('field_mpx_episode_number_value'));
   $query->leftJoin('mpx_video','v','v.fid = f.fid');
   $query->fields('v', array('title'));
+  $query->leftJoin('field_data_field_mpx_entitlement','locked_video','locked_video.entity_id = f.fid');
+  $query->fields('locked_video', array('field_mpx_entitlement_value'));
   $query->condition('v.status', 1);
   $query->orderBy('v.airdate', 'DESC');
 

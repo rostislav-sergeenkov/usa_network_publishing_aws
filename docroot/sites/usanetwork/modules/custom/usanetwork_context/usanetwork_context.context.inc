@@ -2038,12 +2038,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-5',
         ),
-        'usanetwork_tv_schedule-usa_on_now_panel' => array(
-          'module' => 'usanetwork_tv_schedule',
-          'delta' => 'usa_on_now_panel',
-          'region' => 'on_now',
-          'weight' => '-10',
-        ),
       ),
     ),
   );
@@ -2076,12 +2070,6 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usanetwork_menu_sm_menu',
           'region' => 'header',
           'weight' => '-10',
-        ),
-        'usanetwork_blocks-usa_follow_block' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_follow_block',
-          'region' => 'search',
-          'weight' => '-9',
         ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',

@@ -2071,12 +2071,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_blocks-usa_follow_block' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_follow_block',
-          'region' => 'search',
-          'weight' => '-9',
-        ),
         'usanetwork_blocks-usa_detect_ieversion' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_detect_ieversion',

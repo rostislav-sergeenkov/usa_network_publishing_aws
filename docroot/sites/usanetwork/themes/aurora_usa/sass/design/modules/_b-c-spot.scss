@@ -68,12 +68,17 @@
     height: 33%;
     position: absolute;
     width: 100%;
+    .meta-wrapper-inner {
+      height: 100%;
+      display: table;
+      width: 100%;
+    }
     .meta-icon {
       content: '';
       display: block;
       height: 37px;
       left: 5%;
-      margin-top: -18px;
+      margin-top: -19px;
       position: absolute;
       top: 50%;
       width: 37px;
@@ -110,19 +115,11 @@
   }
   @extend %meta;
   .meta {
-    margin-top: -22px;
-    position: absolute;
-    top: 50%;
+    display: table-cell;
+    max-width: 300px;
+    position: relative;
+    vertical-align: middle;
     width: 100%;
-    @include breakpoint($bp-min-1601-width) {
-      margin-top: -34px;
-    }
-    @include breakpoint($between-641-1024) {
-      margin-top: -16px;
-    }
-    @include breakpoint($bp-480-width) {
-      margin-top: -16px;
-    }
     .title, .caption, .additional {
       margin-left: 5%;
       @include breakpoint($between-641-1024) {

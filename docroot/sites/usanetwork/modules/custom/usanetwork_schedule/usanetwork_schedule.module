@@ -122,6 +122,8 @@ function usanetwork_schedule_pull() {
         drupal_write_record('usanetwork_schedule', $record);
       }
     }
+
+    usanetwork_schedule_remove_duplicates();
   }
 }
 
@@ -252,6 +254,8 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
   $query->fields('field_episode_number', array('field_mpx_episode_number_value'));
   $query->leftJoin('mpx_video','v','v.fid = f.fid');
   $query->fields('v', array('title'));
+  $query->leftJoin('field_data_field_mpx_entitlement','locked_video','locked_video.entity_id = f.fid');
+  $query->fields('locked_video', array('field_mpx_entitlement_value'));
   $query->condition('v.status', 1);
   $query->orderBy('v.airdate', 'DESC');
 
@@ -283,4 +287,52 @@ function usanetwork_schedule_get_nearest_episode_airtime($show_nid) {
   }
 
   return NULL;
+}
+
+/**
+ * Finds and removes duplicates using 'start_time' as key. The GUID can differs without a reason.
+ */
+function usanetwork_schedule_remove_duplicates() {
+  $found_records = array();
+  $found_dups = array();
+
+  $query = db_select('usanetwork_schedule', 's');
+  $query->fields('s', array('guid', 'start_time'));
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    // Walkin through all found records for detecting duplicates
+    foreach ($result as $result_record) {
+      if (!isset($found_records[$result_record->start_time])) {
+        $found_records[$result_record->start_time] = $result_record;
+      }
+      else {
+        // Only newest duplicates should be ignored. The list of programs is not
+        // ordered when it returns from service.
+        if ($result_record->guid > $found_records[$result_record->start_time]->guid) {
+          $outdatted_record = $found_records[$result_record->start_time];
+
+          $found_dups[$outdatted_record->guid] = $outdatted_record;
+          $found_records[$result_record->start_time] = $result_record;
+        }
+        else {
+          $found_dups[$result_record->guid] = $result_record;
+        }
+      }
+    }
+  }
+
+  if (!empty($found_dups)) {
+    // Removing duplicates.
+    $query = db_delete('usanetwork_schedule');
+    $query->condition('guid', array_keys($found_dups), 'IN');
+    $result = $query->execute();
+
+    $found_records_count = count($found_dups);
+    drupal_set_message(t('@number records @article marked as duplicate'), array(
+      '@number' => $found_records_count,
+      '@article' => $found_records_count > 1 ? t('are') : t('is')
+    ));
+  }
 }

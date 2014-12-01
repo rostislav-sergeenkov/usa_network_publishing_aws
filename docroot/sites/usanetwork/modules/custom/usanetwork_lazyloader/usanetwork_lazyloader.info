@@ -1,7 +1,0 @@
-name = Usanetwork Lazyloader
-description = Allows to control lazyloading for different devices
-package = Usanetwork
-core = 7.x
-
-dependencies[] = lazyloader
-dependencies[] = context_mobile_detect

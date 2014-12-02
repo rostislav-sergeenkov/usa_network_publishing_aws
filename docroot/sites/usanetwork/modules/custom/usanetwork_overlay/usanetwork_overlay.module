@@ -67,14 +67,15 @@ function usanetwork_overlay_get_ajax($display) {
   }
 
   if (!empty($result)) {
-    if (is_array($result)) {
-      return $result;
-    }
-    else {
-      return array(
-        '#markup' => $result,
+    $result_entity = $result;
+
+    if (!is_array($result_entity)) {
+      $result_entity = array(
+        '#markup' => $result_entity,
       );
     }
+
+    return $result_entity;
   }
 
   return array();
@@ -84,7 +85,7 @@ function usanetwork_overlay_get_ajax($display) {
  * AJAX delivery callback.
  */
 function usanetwork_overlay_ajax_callback($page_result) {
-  $content = render($page_result);
+  $content = drupal_render($page_result);
 
   print $content;
 

@@ -25,6 +25,12 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  // Consumptionator: related content
+  $blocks['uasnetwork_tv_shows_cons_rel'] = array(
+    'info' => t('Consumptionator: related content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -43,6 +49,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_coex':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
+      break;
+
+    case 'uasnetwork_tv_shows_cons_rel':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_consumptionator_relcontent_block();
       break;
   }
 
@@ -97,6 +108,31 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'media_player_icon' => TRUE,
       ),
       'template' => 'templates/usanetwork-tv-shows-catchup-explore-content-element',
+    ),
+    // Consumptionator: related content
+    'usanetwork_tv_shows_cons_related_container' => array(
+      'variables' => array(
+        'related_items' => array(
+          0 => array(
+            'li_class' => 'first',
+            'content' => array(), // Pre-rendered array of displayable content
+          ),
+        ),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-cons-related-container',
+    ),
+    // Consumptionator: related content item (not form)
+    'usanetwork_tv_shows_cons_related_item' => array(
+      'variables' => array(
+        'image_url' => NULL,
+        'caption' => NULL,
+        'title' => NULL,
+        'additional' => array(
+          'left' => NULL,
+          'right' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-tv-shows-cons-related-item',
     ),
   );
 }
@@ -190,6 +226,13 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
 }
 
 /**
+ * Implements hook_usanetwork_overlay_prerender().
+ */
+function usanetwork_tv_shows_usanetwork_overlay_prerender() {
+
+}
+
+/**
  * AJAX callback function that populates the "season" entity reference field
  * with seasons for the user specifid show.
  *
@@ -265,6 +308,8 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
  * );
  */
 function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 'DESC', $sort_by = 'entity_id', $filters = array()) {
+  $content_items = array();
+
   // Apply sorter alias for nodes
   $node_sorter = _usanetwork_tv_shows_detect_related_content_node_sorter($sort_by);
 
@@ -278,7 +323,15 @@ function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 
   $files = _usanetwork_tv_shows_pull_related_files($show_id, $limit, $sort, $file_sorter, $filters);
 
   // Merge nodes and files
-  $content_items = array_merge($nodes, $files);
+  if (!empty($nodes) && !empty($files)) {
+    $content_items = array_merge($nodes, $files);
+  }
+  elseif (!empty($nodes)) {
+    $content_items = $nodes;
+  }
+  elseif (!empty($files)) {
+    $content_items = $files;
+  }
 
   // Sort items according sorter alias
   usort($content_items, function($a, $b) use ($node_sorter, $file_sorter, $sort) {
@@ -298,7 +351,9 @@ function _usanetwork_tv_shows_get_related_content($show_id, $limit = 0, $sort = 
   });
 
   // Crop extra elements
-  array_splice($content_items, $limit);
+  if ($limit > 0) {
+    array_splice($content_items, $limit);
+  }
 
   return $content_items;
 }
@@ -348,9 +403,26 @@ function _usanetwork_tv_shows_detect_related_content_file_sorter($sort_by) {
  */
 function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'changed', $filters = array()) {
   $query = db_select('field_data_field_show', 'fshow');
-  $query->join('node', 'n', 'fshow.entity_id=n.nid');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
-  $query->fields('n', array('created', 'changed'));
+  // Attach content node
+  $query->join('node', 'n', 'fshow.entity_id=n.nid');
+  $query->fields('n', array('title', 'created', 'changed'));
+  // Attach show node
+  $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
+  $query->addField('sn', 'title', 'show_title');
+  // Attach associated videos for promos
+  $query->leftJoin('field_data_field_promo_assoc_video', 'assoc', 'assoc.entity_id=n.nid');
+  $query->addField('assoc', 'field_promo_assoc_video_target_id', 'assoc_fid');
+  // Attach promo season number
+  $query->leftJoin('field_data_field_mpx_season_number', 'fvp_season', 'fvp_season.entity_id=assoc.field_promo_assoc_video_target_id');
+  $query->addField('fvp_season', 'field_mpx_season_number_value', 'promo_season');
+  // Attach promo episode number
+  $query->leftJoin('field_data_field_mpx_episode_number', 'fvp_episode', 'fvp_episode.entity_id=assoc.field_promo_assoc_video_target_id');
+  $query->addField('fvp_episode', 'field_mpx_episode_number_value', 'promo_episode');
+  // Attach promo duration value
+  $query->leftJoin('field_data_field_mpx_duration', 'fvp_duration', 'fvp_duration.entity_id=assoc.field_promo_assoc_video_target_id');
+  $query->addField('fvp_duration', 'field_mpx_duration_value', 'promo_duration');
+
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
   $query->condition('n.status', 1);
@@ -378,7 +450,7 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
       }
     }
   }
-
+//die('<pre>'.print_r($query->execute()->fetchAll(), true).'</pre>');
   return $query->execute()->fetchAll();
 }
 
@@ -404,10 +476,13 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
  */
 function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
   $query = db_select('field_data_field_show', 'fshow');
-  $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
-  $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
+  $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
   $query->fields('f', array('created', 'timestamp'));
+  $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
+  $query->addField('mpx_video_data', 'title', 'title');
+  $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
+  $query->addField('sn', 'title', 'show_title');
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
   $query->condition('fshow.entity_type', 'file');
@@ -438,7 +513,7 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
       }
     }
   }
-
+  //die('<pre>'.print_r($query->execute()->fetchAll(), true).'</pre>');
   return $query->execute()->fetchAll();
 }
 
@@ -697,4 +772,110 @@ function _usanetwork_tv_shows_wrap_latest_episodes($show_nid) {
   }
 
   return $items;
+}
+
+function _usanetwork_tv_shows_consumptionator_relcontent_block() {
+  $rendered_items = array();
+  $query = drupal_get_query_parameters();
+
+  if (!empty($query['url'])) {
+    $normal_path = parse_url(drupal_get_normal_path($query['url']));
+    $menu_item = menu_get_item($normal_path['path']);
+
+    if (!empty($menu_item['page_arguments'][0])) {
+      $file = $menu_item['page_arguments'][0];
+
+      if (!empty($file)) {
+        $show_field = field_get_items('file', $file, 'field_show');
+
+        if (!empty($show_field)) {
+          $show_nid = $show_field[0]['target_id'];
+
+          $related_items = _usanetwork_tv_shows_get_related_content($show_nid, 6);
+
+          if (!empty($related_items)) {
+            $item_index = 0;
+            $item_class = '';
+            $items_count = count($related_items);
+
+            foreach ($related_items as $related_item) {
+              if ($item_index == 0) {
+                $item_class = 'first';
+              }
+              elseif ($item_index == $items_count - 1) {
+                $item_class = 'last';
+              }
+              else {
+                $item_index = '';
+              }
+
+              $additional_text = array(
+                'left' => '',
+                'right' => '',
+              );
+
+              if (!empty($related_item->promo_season) && !empty($related_item->promo_episode)) {
+                $additional_text['left'] = t('S@season episode @episode', array(
+                  '@season' => $related_item->promo_season,
+                  '@episode' => $related_item->promo_episode,
+                ));
+              }
+
+              if ($related_item->bundle == 'media_gallery') {
+                $media_items_count = _usanetwork_tv_shows_get_media_items_count($related_item->entity_id);
+
+                $additional_text['right'] = t('@number photos', array('@number' => $media_items_count));
+              }
+
+              // Featured: use more bundles for adding timestamp
+              if (in_array($related_item->bundle, array(
+                'usanetwork_promo',
+              ))) {
+                $additional_text['right'] = gmdate('H:m:i', $related_item->promo_duration);
+              }
+
+              $theme_variables = array(
+                'image_url' => url($related_item->entity_type . '/' . $related_item->entity_id),
+                'caption' => $related_item->show_title,
+                'title' => $related_item->title,
+                'additional' => array(
+                  'left' => $additional_text['left'],
+                  'right' => $additional_text['right'],
+                ),
+              );
+
+              $rendered_items[] = array(
+                'li_class' => $item_class,
+                'content' => theme('usanetwork_tv_shows_cons_related_item', $theme_variables),
+              );
+
+              $item_index++;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (!empty($rendered_items)) {
+    return theme('usanetwork_tv_shows_cons_related_container', array(
+      'related_items' => $rendered_items,
+    ));
+  }
+
+  return '';
+}
+
+function _usanetwork_tv_shows_get_media_items_count($node_nid) {
+  $query = db_select('field_data_field_media_items', 'fmi');
+  $query->condition('fmi.entity_id', $node_nid);
+  $query->addExpression('COUNT(*)');
+
+  $result = $query->execute()->fetchCol();
+
+  if (is_array($result)) {
+    return reset($result);
+  }
+
+  return $result;
 }

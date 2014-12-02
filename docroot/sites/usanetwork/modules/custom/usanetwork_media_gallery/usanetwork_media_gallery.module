@@ -1,7 +1,84 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_media_gallery feature.
  */
 
 include_once 'usanetwork_media_gallery.features.inc';
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
+
+  if ($node->type == 'media_gallery' && $view_mode == 'full') {
+    if ($field_media_items = field_get_items('node', $node, 'field_media_items')) {
+      $slides = array();
+      foreach ($field_media_items as $key => $media_item) {
+        $file = file_load($media_item['fid']);
+        if ($field_caption_items = field_get_items('file', $file, 'field_caption')) {
+          $caption = reset($field_caption_items);
+        }
+
+        $image = theme_image(array(
+          'path' => $file->uri,
+          'attributes' => array(),
+        ));
+
+        $slides[] = theme('usanetwork_media_gallery_slide', array(
+          'image' => $image,
+          'info' => array(
+            'description' => isset($caption['value']) ? $caption['value'] : NULL,
+            'social_links' => NULL,
+        )));
+      }
+      $node->slides = $slides;
+    }
+    if ($field_show_items = field_get_items('node', $node, 'field_show')) {
+      $field_show = reset($field_show_items);
+      $show_class = usanetwork_tv_shows_color_show_css_class($field_show['target_id']);
+
+      $episodes_gallery = views_get_view_result('usa_gallery', 'episodes_galleries', $field_show['target_id']);
+      $episodes_gallery_items = array();
+      foreach ($episodes_gallery as $episodes_gallery_item) {
+        $episodes_gallery_items[] = l($episodes_gallery_item->node_title, 'node/' . $episodes_gallery_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
+      }
+      $node->episodes_gallery_items = $episodes_gallery_items;
+
+
+      $character_galleries = views_get_view_result('usa_gallery', 'character_galleries', $field_show['target_id']);
+      $character_galleries_items = array();
+      foreach ($character_galleries as $character_galleries_item) {
+        $character_galleries_items[] = l($character_galleries_item->node_title, 'node/' . $character_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
+      }
+      $node->character_galleries_items = $character_galleries_items;
+
+      $other_show_galleries = views_get_view_result('usa_gallery', 'other_show_galleries', $field_show['target_id']);
+      $other_show_galleries_items = array();
+      foreach ($other_show_galleries as $other_show_galleries_item) {
+        $other_show_galleries_items[] = l($other_show_galleries_item->node_title, 'node/' . $other_show_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
+      }
+      $node->other_show_galleries_items = $other_show_galleries_items;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_media_gallery_slide' => array(
+      'variables' => array(
+        'image' => NULL,
+        'info' => array(
+          'description' => NULL,
+          'social_links' => NULL,
+        ),
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-slide',
+    ),
+  );
+}

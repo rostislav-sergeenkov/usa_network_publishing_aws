@@ -4,16 +4,22 @@
  */
 ?>
 <div class="catch-up-explore show-color catch-up">
-  <h2 class="explore-title"><?php print t('Explore'); ?></h2>
-  <h2 class="catch-up-title"><?php print t('Catch up'); ?></h2>
-  <div class="catch-up-explore-buttons catch-up">
-    <a class="catch-up show-color disabled active" data-class="catch-up" href="javascript:void(0)"><?php print t('Catch up'); ?></a>
-    <a class="explore show-color secondary" data-class="explore" href="javascript:void(0)"><?php print t('Explore'); ?></a>
-  </div>
+  <?php if ($is_explore) : ?>
+    <h2 class="explore-title"><?php print t('Explore'); ?></h2>
+  <?php endif; ?>
+  <?php if ($is_catch_up) : ?>
+    <h2 class="catch-up-title"><?php print t('Catch up'); ?></h2>
+  <?php  endif; ?>
+  <?php if ($is_explore && $is_catch_up): ?>
+    <div class="catch-up-explore-buttons catch-up">
+      <a class="catch-up show-color disabled active" data-class="catch-up" href="javascript:void(0)"><?php print t('Catch up'); ?></a>
+      <a class="explore show-color secondary" data-class="explore" href="javascript:void(0)"><?php print t('Explore'); ?></a>
+    </div>
+  <?php  endif; ?>
 </div>
 <div class="caroufredsel_wrapper">
   <div class="catch-up-explore-carousel">
-    <?php if (!empty($catch_up)): ?><!-- Catch Up block start -->
+    <?php if ($is_catch_up): ?><!-- Catch Up block start -->
       <div class="catch-up-block">
         <?php foreach ($catch_up as $block_id => $catch_up_item): ?>
           <div class="carousel-block carousel-block-left">
@@ -50,7 +56,7 @@
         <?php endforeach; ?>
       </div>
     <?php endif; ?> <!-- Catch Up block end -->
-    <?php if (!empty($explore)): ?> <!-- Explore block start -->
+    <?php if ($is_explore): ?> <!-- Explore block start -->
       <div class="explore-block">
         <?php foreach ($explore as $block_id => $explore_item): ?>
           <div class="carousel-block carousel-block-left">

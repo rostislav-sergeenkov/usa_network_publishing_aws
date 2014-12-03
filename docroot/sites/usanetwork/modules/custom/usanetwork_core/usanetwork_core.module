@@ -412,3 +412,27 @@ function usanetwork_core_delete_file_type_alias($file_type_name) {
 
   variable_del($ftalias_variable_name);
 }
+
+/**
+ * Returns the field value in the language they currently would be displayed.
+ *
+ * @param $entity_type
+ *   The type of $entity; e.g., 'node' or 'user'.
+ * @param $entity
+ *   The entity containing the data to be displayed.
+ * @param $field_name
+ *   The field to be displayed.
+ * @param $field_value
+ *   The name of field  
+ *
+ * @return
+ *   Value of field items, FALSE otherwise.
+ */
+function _usanetwork_get_field_item($entity_type, $entity, $field_name, $field_value) {
+  $field = field_get_items($entity_type, $entity, $field_name);
+  if ($field = reset($field)) {
+    return $field[$field_value];
+  } else {
+    return FALSE;
+  }
+}

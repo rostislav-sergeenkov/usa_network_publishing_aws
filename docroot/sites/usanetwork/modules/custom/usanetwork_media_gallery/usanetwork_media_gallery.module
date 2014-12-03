@@ -57,7 +57,7 @@ function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
             'description' => isset($caption['value']) ? $caption['value'] : NULL,
         )));
       }
-      
+
       drupal_add_js(array('gigyaSharebars' => $settings), 'setting');
       $node->slides = $slides;
     }
@@ -72,7 +72,7 @@ function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
       $episodes_gallery = views_get_view_result('usa_gallery', 'episodes_galleries', $field_show['target_id']);
       $episodes_gallery_items = array();
       foreach ($episodes_gallery as $episodes_gallery_item) {
-        if ($next !== TRUE && !is_int($next) && $node->nid == $episodes_gallery_item->nid) {
+        if ($next !== TRUE && !is_numeric($next) && $node->nid == $episodes_gallery_item->nid) {
           $next = TRUE;
         }
         else if ($next === TRUE) {
@@ -88,11 +88,11 @@ function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
       $character_galleries_items = array();
       foreach ($character_galleries as $character_galleries_item) {
 
-        if ($next !== TRUE && !is_int($next) && $node->nid == $episodes_gallery_item->nid) {
+        if ($next !== TRUE && !is_numeric($next) && $node->nid == $character_galleries_item->nid) {
           $next = TRUE;
         }
         else if ($next === TRUE) {
-          $next = $episodes_gallery_item->nid;
+          $next = $character_galleries_item->nid;
         }
 
         $character_galleries_items[] = l($character_galleries_item->node_title, 'node/' . $character_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
@@ -103,11 +103,11 @@ function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
       $other_show_galleries = views_get_view_result('usa_gallery', 'other_show_galleries', $field_show['target_id']);
       $other_show_galleries_items = array();
       foreach ($other_show_galleries as $other_show_galleries_item) {
-        if ($next !== TRUE && !is_int($next) && $node->nid == $episodes_gallery_item->nid) {
+        if ($next !== TRUE && !is_numeric($next) && $node->nid == $other_show_galleries_item->nid) {
           $next = TRUE;
         }
         else if ($next === TRUE) {
-          $next = $episodes_gallery_item->nid;
+          $next = $other_show_galleries_item->nid;
         }
 
         $other_show_galleries_items[] = l($other_show_galleries_item->node_title, 'node/' . $other_show_galleries_item->nid, array('attributes' => array('class' => array('show-color-border', $show_class))));
@@ -115,23 +115,27 @@ function usanetwork_media_gallery_node_view($node, $view_mode, $langcode) {
 
       $node->other_show_galleries_items = $other_show_galleries_items;
 
-      if (is_int($next)) {
-        $file = file_load($media_item['fid']);
-        if ($field_caption_items = field_get_items('file', $file, 'field_caption')) {
-          $caption = reset($field_caption_items);
+      if (is_numeric($next)) {
+        $next_node = node_load($next);
+        if ($field_media_items = field_get_items('node', $next_node, 'field_media_items')) {
+          $media_item = reset($field_media_items);
+          $file = file_load($media_item['fid']);
+          if ($field_caption_items = field_get_items('file', $file, 'field_caption')) {
+            $caption = reset($field_caption_items);
+          }
+
+          $image = theme_image(array(
+            'path' => $file->uri,
+            'attributes' => array(),
+          ));
+
+          $node->slides[] = theme('usanetwork_media_gallery_slide', array(
+            'gigya_id' => FALSE,
+            'image' => $image,
+            'info' => array(
+              'description' => isset($caption['value']) ? $caption['value'] : NULL,
+          )));
         }
-
-        $image = theme_image(array(
-          'path' => $file->uri,
-          'attributes' => array(),
-        ));
-
-        $node->slides = theme('usanetwork_media_gallery_slide', array(
-          'gigya_id' => FALSE,
-          'image' => $image,
-          'info' => array(
-            'description' => isset($caption['value']) ? $caption['value'] : NULL,
-        )));
       }
     }
   }

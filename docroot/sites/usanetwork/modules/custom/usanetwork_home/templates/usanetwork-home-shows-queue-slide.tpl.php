@@ -5,16 +5,18 @@
 ?>
 <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
   <a class="show-open" href="#">
-    <div class="meta-wrap">
-      <div class="meta">
-        <?php if (!empty($show_title)): ?>
-          <div class="meta-show"><?php print $show_title; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($show_schedule_date) && !empty($show_schedule_date)): ?>
-          <div class="meta-show-schedule">
-            <span><?php print $show_schedule_date; ?></span>
-          </div>
-        <?php endif ;?>
+    <div class="meta-wrapper">
+      <div class="meta-wrapper-inner">
+        <div class="meta">
+          <?php if (!empty($show_title)): ?>
+            <div class="title"><?php print $show_title; ?></div>
+          <?php endif; ?>
+          <?php if (!empty($show_schedule_date) && !empty($show_schedule_date)): ?>
+            <div class="additional">
+              <span><?php print $show_schedule_date; ?></span>
+            </div>
+          <?php endif ;?>
+        </div>
       </div>
     </div>
     <?php if (!empty($desktop_image_url) || !empty($mobile_image_url)): ?>

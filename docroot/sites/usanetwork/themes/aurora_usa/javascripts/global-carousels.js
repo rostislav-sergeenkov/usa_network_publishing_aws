@@ -1,16 +1,6 @@
 (function ($) {
   Drupal.behaviors.global_carousels = {
-    attach: function (context) {
-
-      function swipeHideDescription(element) {
-        element.removeClass('start');
-        element.next().removeClass('start');
-      }
-
-      function swipeShowDescription(element) {
-        element.addClass('start');
-        element.next().addClass('start');
-      }
+    attach: function (context, settings) {
 
       //count swipe item
       function swipeItems(carousel) {
@@ -188,11 +178,11 @@
                               if ($container.hasClass('start')) {
                                 swipeHideDescription($container.prev());
                                 setTimeout(function () {
-                                  showOpen(target, false);
+                                  showOpen($(target), false);
                                 }, 600);
                               }
                               else {
-                                showOpen(target, false);
+                                showOpen($(target), false);
                               }
                             }
                           }
@@ -206,11 +196,11 @@
                               if ($container.hasClass('start')) {
                                 swipeHideDescription($container.prev());
                                 setTimeout(function () {
-                                  showOpen(target, false);
+                                  showOpen($(target), false);
                                 }, 600);
                               }
                               else {
-                                showOpen(target, false);
+                                showOpen($(target), false);
                               }
                             }
                           }

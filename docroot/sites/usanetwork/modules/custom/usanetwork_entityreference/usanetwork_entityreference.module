@@ -6,11 +6,13 @@
 function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode = NULL, $options = array()) {
   if (($entity_type == 'node') && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show'))) {
     foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos',
-  'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more') as $changed_field) {
+        'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more') as $changed_field) {
       //Redefine theme for multiple value
-      $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';
-      foreach (element_children($form[$changed_field][$form[$changed_field]['#language']]) as $key) {
-        $form[$changed_field][$form[$changed_field]['#language']][$key]['target_id']['#attributes'] = array('class' => array('field-usanetwork-entityreference-autocomplete'));
+      if (isset($form[$changed_field])) {
+        $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';
+        foreach (element_children($form[$changed_field][$form[$changed_field]['#language']]) as $key) {
+          $form[$changed_field][$form[$changed_field]['#language']][$key]['target_id']['#attributes'] = array('class' => array('field-usanetwork-entityreference-autocomplete'));
+        }
       }
     }
     $form['#attached']['css'] = array(
@@ -37,7 +39,7 @@ function theme_usanetwork_entityreference_field_multiple_value_form($variables) 
   $element = $variables['element'];
   $output = '';
 
-  if ($element['#cardinality'] >= 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+  if (isset($element['#cardinality']) && ($element['#cardinality'] >= 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED)) {
     $table_id = drupal_html_id($element['#field_name'] . '_values');
     $order_class = $element['#field_name'] . '-delta-order';
     $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';

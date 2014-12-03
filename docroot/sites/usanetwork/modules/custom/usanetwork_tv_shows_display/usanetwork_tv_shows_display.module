@@ -314,7 +314,7 @@ function usanetwork_tv_shows_display_block_view($delta) {
     case 'usanetwork_tv_shows_latest':
 
       $show = menu_get_object();
-      if (!isset($show->type) && $show->type != 'tv_show') {
+      if (!is_object($show) || (!isset($show->type) && $show->type != 'tv_show')) {
         return '';
       }
 

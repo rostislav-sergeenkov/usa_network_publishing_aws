@@ -11,11 +11,22 @@
         });
       };
 
+      var changeLogoColor = function(element) {
+        var logo = $('.home-logo');
+        var show = $(element).closest('.node').attr('data-show');
+        var old_show = logo.attr('data-show');
+        if (old_show) {
+          logo.removeClass(old_show).addClass(show).attr('data-show', show);
+        } else {
+          logo.addClass(show).attr('data-show', show);
+        }
+      };
+
       var animateContent = function(element) {
         console.debug('animateContent');
-
+        changeLogoColor(element);
         $(element).animate({
-          'opacity': '+=1'
+          'opacity': 1
         }, 500)
       };
 
@@ -85,7 +96,11 @@
           useCSS: false,
           onSlideBefore: hideFocusSlide,
           onSlideAfter: showFocusSlide,
-          onSliderLoad: showFocusSlide
+          onSliderLoad: function(el, slide, old, active){
+            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+            changeLogoColor($(first_slide).find('.slide-content'));
+            showFocusSlide(el, slide, old, active);
+          }
         }, options);
 
         clearTimeout(USAN.aspotSlider.showTimeout);
@@ -93,8 +108,13 @@
 
         if (window.innerWidth <= 640) {
           delete settings.onSlideBefore;
-          delete settings.onSlideAfter;
-          delete settings.onSliderLoad;
+          settings.onSlideAfter = function (el, slide) {
+            changeLogoColor(slide.find('.slide-content'));
+          };
+          settings.onSliderLoad = function () {
+            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+            changeLogoColor($(first_slide).find('.slide-content'));
+          };
         }
 
         return $('.slider').bxSlider(settings);

@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="featured-block carousel-block carousel-block-right">
+<div class="shows-block">
   <div class="carousel-description-item start">
     <a href="#" class="description-button"></a>
 
@@ -22,7 +22,7 @@
     </div>
   </div>
   <?php if (!empty($slides)): ?>
-    <div data-jcarousel="true" class="featured-carousel carousel carousel-right start" dir="rtl" data-carousel-id="1">
+    <div data-jcarousel="true" class="show-carousel carousel carousel-left start" data-carousel-id="1">
       <ul class="slides">
         <?php foreach ($slides as $slide): ?>
           <li<?php if (!empty($slide['class'])): print ' class="' . $slide['class'] . '"'; endif;?>>

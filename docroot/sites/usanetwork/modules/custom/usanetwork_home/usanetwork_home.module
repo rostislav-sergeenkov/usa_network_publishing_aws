@@ -75,7 +75,14 @@ function usanetwork_home_block_view($delta = '') {
   switch ($delta) {
     case 'usanetwork_home_shows_queue':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_home_shows_queue_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_home_shows_queue_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/show-carousel.js',
+          ),
+        ),
+      );
       break;
 
     case 'usanetwork_home_bspot_cspot':
@@ -163,7 +170,7 @@ function _usanetwork_home_featured_carousel() {
             'start',
           ),
           'dir' => 'rtl',
-          'data-carousel-id' => 1,
+          'data-carousel-id' => 2,
         ),
         'title_tag' => 'h2',
         'title_attributes' => array(

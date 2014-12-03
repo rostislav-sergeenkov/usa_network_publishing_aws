@@ -5,7 +5,7 @@
 ?>
 <div class="slide">
   <div class="wrp">
-    <div class="node usanetwork-aspot <?php print $show_class; ?>">
+    <div class="node usanetwork-aspot <?php print $show_class; ?>" data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" target="_self">
       <?php if (!empty($show_poster)): ?>
         <div class="asset-img" data-picture data-alt="" data-class="tile-img">

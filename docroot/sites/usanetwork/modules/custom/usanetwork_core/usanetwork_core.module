@@ -136,25 +136,24 @@ function usanetwork_core_create_menu_items() {
   // Add items that require a plid below.
   // if we need to add child links this is how we do it
   /*
-  $menu_links_child_items = array(
+    $menu_links_child_items = array(
     'games' => array(
-      'link_path' => 'games-child',
-      'link_title' => st('games child link'),
-      'options' => array('attributes' => array('title' => st('games-child'))),
-      'menu_name' => 'sprout-header',
-      'hidden' => '0',
-      'expanded' => '0',
-      'weight' => '0',
-      'plid' => $menu_links['more_link']['mlid'],
+    'link_path' => 'games-child',
+    'link_title' => st('games child link'),
+    'options' => array('attributes' => array('title' => st('games-child'))),
+    'menu_name' => 'sprout-header',
+    'hidden' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+    'plid' => $menu_links['more_link']['mlid'],
     ),
-  );
-  */
+    );
+   */
   // save the menu links
   foreach ($menu_links_child_items as $key => $menu_link) {
     $mlid = menu_link_save($menu_link);
     $menu_links_child_items[$key]['mlid'] = $mlid;
   }
-
 }
 
 /**
@@ -220,7 +219,6 @@ function usanetwork_core_deploy_taxonomy() {
     // Upsert the vocabulary.
     $result = taxonomy_vocabulary_save($vocab);
   }
-
 }
 
 /**
@@ -268,8 +266,7 @@ function usanetwork_core_deploy_terms() {
     // Load the vocabulary object.
     $vocab = taxonomy_vocabulary_machine_name_load($machine_name);
     if (!$vocab) {
-      drupal_set_message(st('Vocabulary !vocab is missing',
-        array('!vocab' => $machine_name)), 'error');
+      drupal_set_message(st('Vocabulary !vocab is missing', array('!vocab' => $machine_name)), 'error');
       continue;
     }
 
@@ -327,10 +324,10 @@ function usanetwork_core_default_taxonomy_terms() {
  * Altering pathauto_punctuation_chars.
  */
 function usanetwork_core_pathauto_punctuation_chars_alter(&$punctuation) {
-    $punctuation['double_curly_left']  = array('value' => '“', 'name' => t('Double curly left'));
-    $punctuation['double_curly_right'] = array('value' => '”', 'name' => t('Double curly right'));
-    $punctuation['single_curly_left']  = array('value' => '‘', 'name' => t('Single curly left'));
-    $punctuation['single_curly_right'] = array('value' => '’', 'name' => t('Single curly right'));
+  $punctuation['double_curly_left'] = array('value' => '“', 'name' => t('Double curly left'));
+  $punctuation['double_curly_right'] = array('value' => '”', 'name' => t('Double curly right'));
+  $punctuation['single_curly_left'] = array('value' => '‘', 'name' => t('Single curly left'));
+  $punctuation['single_curly_right'] = array('value' => '’', 'name' => t('Single curly right'));
 }
 
 /**
@@ -429,10 +426,10 @@ function usanetwork_core_delete_file_type_alias($file_type_name) {
  *   Value of field items, FALSE otherwise.
  */
 function _usanetwork_get_field_item($entity_type, $entity, $field_name, $field_value) {
-  $field = field_get_items($entity_type, $entity, $field_name);
-  if ($field = reset($field)) {
-    return $field[$field_value];
-  } else {
-    return FALSE;
+  if ($field = field_get_items($entity_type, $entity, $field_name)) {
+    if (is_array($field)) {
+      return isset($field[0][$field_value]) ? $field[0][$field_value]: FALSE;
+    }
   }
+  return FALSE;
 }

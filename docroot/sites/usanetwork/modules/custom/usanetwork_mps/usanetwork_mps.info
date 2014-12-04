@@ -1,0 +1,12 @@
+name = USA Network MPS
+description = Functionality for 
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_mps
+dependencies[] = ctools
+dependencies[] = mps
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = mps_site_override

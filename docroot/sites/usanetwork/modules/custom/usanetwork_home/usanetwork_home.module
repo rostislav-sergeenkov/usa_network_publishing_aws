@@ -1,0 +1,537 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_home feature.
+ */
+
+include_once 'usanetwork_home.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_home_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_landing',
+    'access arguments' => array('access content'),
+  );
+  $items['home/home_admin/%'] = array(
+    'title' => 'USA Network',
+    'page callback' => 'usanetwork_home_admin_landing',
+    'access arguments' => array('administer content'),
+    'page arguments' => array(2),
+  );
+  //@ todo: write better fallbacks for the ajax
+  // ajax for global nav more
+  $items['globalnav_more'] = array(
+    'page callback' => 'usanetwork_home_globalnav_more_ajax',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  // ajax for global nav shows
+  $items['globalnav_shows'] = array(
+    'page callback' => 'usanetwork_home_globalnav_shows_ajax',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_home_block_info() {
+  $blocks['usanetwork_home_promo_carousel'] = array(
+    'info' => t('Homepage: Promo Carousel'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_home_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'usanetwork_home_promo_carousel':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_home_promo_carousel();
+      break;
+  }
+  return $block;
+}
+
+function _usanetwork_home_promo_carousel() {
+  $content = array();
+  
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+  
+  if ($homepage) {
+    $nid = reset(array_keys($homepage['node']));
+    $homepage_node = node_load($nid);
+    $display_carousel = reset(field_get_items('node', $homepage_node, 'field_hp_promo_carousel_display'));
+    if ($display_carousel['value'] == 1) {
+      $db_select = db_select('node', 'n')
+        ->fields('n', array('nid', 'title'));
+      $db_select->condition('n.status', '1');
+      $db_select->condition('n.type', 'usanetwork_promo');
+      $db_select->leftJoin('field_data_field_hp_promo_carousel', 'fdfhpc', 'n.nid=fdfhpc.field_hp_promo_carousel_target_id');
+      $db_select->condition('fdfhpc.entity_id', $nid);
+      $db_select->orderBy('fdfhpc.delta');
+
+      $db_result = $db_select->execute()->fetchAll();
+      if ($db_result) {
+        $promo_carousel = '';
+        foreach ($db_result as $promo){
+          $promo_carousel .= '<li class="carousel-item">' . drupal_render(node_view(node_load($promo->nid), 'carousel_promo')) . '</li>';
+        }
+
+        $promo_carousel = '<div class="carousel clearfix"><div class="carousel-viewport"><div class="home-carousel"><ul>'.$promo_carousel.'</ul></div></div></div>';
+
+        $content['promo_carousel'] = array(
+          '#markup' => $promo_carousel,
+        );
+      }
+    }
+  }
+  return $content;
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function usanetwork_home_preprocess_block(&$variables) {
+  $block = $variables['block'];
+  if ($block->bid == 'views-usa_video-front_full_episodes'
+     || $block->bid == 'views-usa_mpx_video-front_full_epsds' 
+     || $block->bid == 'usanetwork_home-usanetwork_home_promo_carousel') {
+    $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+    //carousel-promo
+
+    if (!empty($homepage)) {
+      $nid = reset(array_keys($homepage['node']));
+      if ($nid && $homepage = node_load($nid)) {
+        if ($block->bid == 'usanetwork_home-usanetwork_home_promo_carousel') {
+          if (!empty($homepage->field_hp_promo_carousel_title)) {
+            $title = reset(field_get_items('node', $homepage, 'field_hp_promo_carousel_title'));
+            $block->subject = $title['safe_value'];
+          } 
+        } else {
+          drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/viewportchecker.js', 'file');
+          if (!empty($homepage->field_hp_episodes_block_title)) {
+            $title = reset(field_get_items('node', $homepage, 'field_hp_episodes_block_title'));
+            $block->subject = $title['safe_value'];
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_home_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->type == 'usa_homepage') {
+    if (!empty($node->field_hp_promos_block_title)) {
+      $title = reset(field_get_items('node', $node, 'field_hp_promos_block_title'));
+      $variables['featured_title'] = $title['safe_value'];
+    }
+  }
+}
+
+/**
+ * Callback for the USA homepage
+ */
+function usanetwork_home_landing($day = NULL) {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as full
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content available.');
+  }
+  return $render;
+}
+
+/**
+ * Callback for the USA homepage - admin preview pages
+ */
+function usanetwork_home_admin_landing($day = NULL) {
+  $render = array();
+  if (arg(2)) {
+    $day = strtolower(arg(2));
+  }
+
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  // return the nodes as teasers
+  // @todo - load fields or make a view mode for this
+  if (!empty($homepage['node'])) {
+
+    $render['homepage']['#prefix'] = '<div class="homepage-content">';
+    $render['homepage']['#suffix'] = '</div>';
+    $render['homepage']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'full');
+
+  }
+  else {
+    $render['status']['#markup'] = t('No Homepage content added for @day.', array('@day' => $day));
+  }
+  return $render;
+}
+
+/**
+ * To fetch homepage node by title
+ */
+function usanetwork_home_get_homepage($types, $day = NULL) {
+
+  if ($day === NULL) {
+    $day = _usanetwork_home_get_day();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', $types);
+  $query->propertyCondition('status', 1);
+  $query->propertyCondition('title', $day, '=');
+
+  // execute the query
+  $homepage = $query->execute();
+  return $homepage;
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function usanetwork_home_node_validate($node, $form, &$form_state) {
+  if ($node->type == 'usa_homepage') {
+    $nodeid = '';
+    $home_day = '';
+    $this_home_day = field_get_items('node', $node, 'field_usa_hp_daylist');
+    if (!empty($node->nid)) {
+      //editing content
+      $nodeid = $node->nid;
+    }
+    if (!empty($this_home_day['0']['value'])) {
+      $home_day = $this_home_day['0']['value'];
+    }
+    $query = db_select('field_data_field_usa_hp_daylist', 'day', array('target' => 'slave'));
+    $query->leftjoin('node', 'n', 'n.nid = day.entity_id AND n.type = \'usa_homepage\'');
+    $query->fields('day', array('field_usa_hp_daylist_value'));
+    $query->condition('day.bundle', 'usa_homepage', '=');
+    $query->condition('day.field_usa_hp_daylist_value', $home_day, '=');
+    //check for all other homepage nodes(on editing content) excluding the current content
+    $query->condition('day.entity_id', $nodeid, '<>');
+    //check for showing only published contents
+    $query->condition('n.status', '1', '=');
+
+    $num_of_results = $query->execute()->rowCount();
+    if($num_of_results != 0) {
+      form_set_error('', t('There is already a published homepage present for ' . ucfirst($home_day)));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORD_ID_alter().
+ */
+function usanetwork_home_form_usa_homepage_node_form_alter(&$form, &$form_state) {
+
+  $form['field_hp_promo_carousel_title']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
+      )
+    );
+
+  $form['field_hp_promo_carousel']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_hp_promo_carousel_display[und]"]' => array('checked' => true)
+      )
+    );
+
+  $seo_page_title_language = $form['field_seo_page_title']['#language'];
+  if (!isset($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value']) || 
+    empty($form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value'])) {
+    $form['field_seo_page_title'][$seo_page_title_language][0]['value']['#default_value'] = variable_get('site_name', '');
+  }
+}
+
+/**
+ * Implements hook_form_FORD_ID_alter().
+ */
+function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_state) {
+  $form['home'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Homepages'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#tree' => TRUE,
+  );
+
+  $publish_time = variable_get('usanetwork_home_publish_time', '6:00 AM');
+  if (preg_match('|(\d{1,2})\:(\d{2}) ([AMP]{2})|Uis', $publish_time, $matches)) {
+    $hour = (int) $matches[1];
+    $minute = (int) $matches[2];
+    $part = $matches[3];
+  }
+  else {
+    $hour = 6;
+    $minute = 0;
+    $part = 'AM';
+  }
+  $form['home']['publish'] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => array(
+        'container-inline'
+      ),
+    ),
+  );
+  $form['home']['publish']['usanetwork_home_publish_time'] = array(
+    '#type' => 'select',
+    '#title' => t('Publish time'),
+    '#default_value' => $hour,
+    '#options' => array_slice(range(0, 12, 1), 1, NULL, TRUE),
+    '#element_validate' => array('_usanetwork_home_publish_validate'),
+    '#tree' => FALSE,
+  );
+  $minutes = range(0, 59, 1);
+  for ($i = 0; $i < 10; $i++) {
+    $minutes[$i] = '0'.$minutes[$i];
+  }
+  $form['home']['publish']['minute'] = array(
+    '#type' => 'select',
+    '#title' => ':',
+    '#default_value' => $minute,
+    '#options' => $minutes,
+  );
+  $form['home']['publish']['part'] = array(
+    '#type' => 'select',
+    '#title' => '',
+    '#default_value' => $part,
+    '#options' => array(
+      'AM' => 'AM',
+      'PM' => 'PM',
+    ),
+  );
+}
+
+/**
+ * Validate callback for publish time.
+ */
+function _usanetwork_home_publish_validate($element, &$form_state, $form) {
+  $values =& $form_state['values'];
+  $publish = $values['usanetwork_home_publish_time'] . ':';
+  if ($values['home']['publish']['minute'] < 10) {
+    $publish .= '0';
+  }
+  $publish .= $values['home']['publish']['minute'] . ' ' . $values['home']['publish']['part'];
+  unset($values['home']['publish']);
+  form_set_value($element, $publish, $form_state);
+}
+
+/**
+ * Block callback for the globalnav shows block
+ * rip of home landing
+ */
+function usanetwork_home_globalnav_shows_block() {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  // return the nodes as global_nav_block_shows
+  if (!empty($homepage['node'])) {
+    $render['globalnav_shows']['#prefix'] = '<div class="globalnav-shows">shows';
+    $render['globalnav_shows']['#suffix'] = '</div>';
+    $render['globalnav_shows']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows');
+  }
+  else {
+    return;
+  }
+  return $render;
+}
+
+/**
+ * Block callback for the globalnav shows block
+ */
+function usanetwork_home_globalnav_more_block() {
+  $render = array();
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  // return the nodes as global_nav_block_more
+  if (!empty($homepage['node'])) {
+    $render['globalnav_shows']['#prefix'] = '<div class="globalnav-more">more';
+    $render['globalnav_shows']['#suffix'] = '</div>';
+    $render['globalnav_shows']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more');
+  }
+  else {
+    return;
+  }
+  return $render;
+}
+
+/**
+ * Retrieve more thingie and place them in the drawer
+ *
+ * @param string $ajax
+ *   Ajax or nojs.
+ *
+ * @return array
+ *   Return an array of ajax commands.
+ */
+function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
+  }
+
+  if ($type == 'ajax') {
+    $commands = array();
+    $content = '<div class="globalnav-content-more" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+    // Replace empty div with content.
+    $commands[] = ajax_command_replace('#globalnav-more', $content);
+
+    $page = array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+    ajax_deliver($page);
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * Retrieve more thingie and place them in the drawer
+ *
+ * @param string $ajax
+ *   Ajax or nojs.
+ *
+ * @return array
+ *   Return an array of ajax commands.
+ */
+function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
+  drupal_add_library('system', 'drupal.ajax');
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
+  }
+
+  if ($type == 'ajax') {
+    $commands = array();
+
+    $content = '<div class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+    // Replace empty div with content.
+    $commands[] = ajax_command_replace('#globalnav-shows', $content);
+
+    $page = array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+    ajax_deliver($page);
+  }
+  else {
+    return '';
+  }
+}
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_shows_banner() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
+  }
+  
+  $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
+
+  return $content;
+ 
+}
+
+
+/**
+ * Retrieve more thingie and place them in the syndicate drawer
+ */
+function usanetwork_home_globalnav_more_banner() {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
+
+  $data = array();
+  if (!empty($homepage['node'])) {
+    $data['globalnav_more'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_more'));
+  }
+
+  $content = '<div class="globalnav-content-more globalnav-content-replaced" id="globalnav-more-replaced">' . $data['globalnav_more'] . '</div>';
+
+  return $content;
+
+}
+
+/**
+ * Returns current day according to publish time.
+ */
+function _usanetwork_home_get_day() {
+  $publish = strtotime(variable_get('usanetwork_home_publish_time', '6:00 AM'));
+  if ($publish <= REQUEST_TIME) {
+    $day = strtolower(date('l'));
+  }
+  else {
+    $day = strtolower(date('l', strtotime('yesterday')));
+  }
+
+  return $day;
+}
+
+/**
+ * Render a field value
+ */
+function _usanetwork_home_get_field_value($field) {
+  $homepage = usanetwork_home_get_homepage(array('usa_homepage'), $day);
+
+  if (!empty($homepage['node'])) {
+    $nid = reset(array_keys($homepage['node']));
+    $node_obj = node_load($nid);
+    $field_datas = field_get_items('node', $node_obj, $field);
+    if (is_array($field_datas)) {
+      $field_data = reset($field_datas);
+      return check_plain($field_data['value']);
+    }
+  }
+  return '';
+}
+
+/**
+  * Implements hook_preprocess_html()
+  * custom titles for home pages
+  */
+function usanetwork_home_preprocess_html(&$vars) {
+  if (drupal_is_front_page()) {
+    $head_title = _usanetwork_home_get_field_value('field_seo_page_title');
+    if ($head_title != '')
+    $vars['head_title'] = $head_title;
+  }  
+}

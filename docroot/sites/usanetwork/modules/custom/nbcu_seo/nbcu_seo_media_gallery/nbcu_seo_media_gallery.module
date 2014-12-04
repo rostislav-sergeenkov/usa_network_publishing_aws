@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_types_alter().
+ */
+function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_types_alter(&$types) {
+  $types['image'] = 'image';
+}
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_xml_element_alter().
+ */
+function nbcu_seo_media_gallery_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context) {
+  $type = isset($context['type']) ? $context['type'] : NULL;
+  $link = $context['link'];
+
+  // Media galleries support
+  if ($type == 'image' && $link['type'] == 'node' && $link['subtype'] == 'media_gallery') {
+    // load images associated with node
+    $query = db_select('file_usage', 'fu')
+      ->fields('fu', array('fid'));
+    $query->leftJoin('file_managed', 'f', 'fu.fid = f.fid');
+    $query->condition('f.type', 'image', '=');
+    $query->condition('fu.type', 'node', '=');
+    $query->condition('fu.id', $link['id'], '=');
+
+    $fids = $query->execute()->fetchCol();
+    $files = file_load_multiple($fids);
+    // add image:image tags
+    foreach ($files as $file) {
+      $delta = 'file_' . $file->fid;
+      $element[$delta] = isset($element[$delta]) ? $element[$delta] : array();
+      $element[$delta] += array(
+        '#tag' => 'image',
+        '#namespace' => 'image',
+      );
+      $url_options = array(
+        'absolute' => TRUE,
+        'base_url' => variable_get('xmlsitemap_base_url', $GLOBALS['base_url']),
+        'language' => language_default(),
+      );
+      $url = parse_url(file_create_url($file->uri));
+      $path = $url['path'];
+      $element[$delta]['loc'] = url($path, $url_options);
+
+      // Process caption field (field_get_items does not allow to get clean value if it flooded by WYSIWYG editor)
+      $caption_value = _nbcu_seo_media_gallery_strip_caption_field($file->fid, $file->vid);
+
+      // Add caption tag only if value exists
+      if (!empty($caption_value)) {
+        $element[$delta]['caption'] = $caption_value;
+      }
+
+      $title = field_get_items('file', $file, 'field_file_image_title_text');  // check if image title is present
+      if (!empty($title)) {
+        $title = reset($title);
+        if (!empty($title)) {
+          $element[$delta]['title'] = $title['value'];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Returns clean value of field 'field_data_field_caption'. The field can contains a lot of flood from WYSIWYG editor.
+ */
+function _nbcu_seo_media_gallery_strip_caption_field($fid, $vid) {
+  $query = db_select('field_data_field_caption', 'fc')
+    ->fields('fc', array('field_caption_value'))
+    ->condition('entity_id', $fid)
+    ->condition('revision_id', $vid);
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    $caption = $result[0]->field_caption_value;
+
+    return trim(preg_replace("/<!--(.*)-->|&.{0,}?;|<[^.]*>/Uis", "", $caption));
+  }
+
+  return NULL;
+}

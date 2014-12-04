@@ -1,0 +1,45 @@
+<?php
+
+
+/**
+ * Implements hook_field_schema().
+ *
+ * @param $field
+ * @return array
+ */
+function pub_relationships_tv_enhanced_field_schema($field) {
+  switch($field['type']) {
+    case 'pub_tv_relationship_field':
+      $columns = array(
+        'show' => array(
+          'description' => 'The nid of the show node.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'season' => array(
+          'description' => 'The nid of the season node.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+        'episode' => array(
+          'description' => 'The nid of the episode node.',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+        ),
+      );
+
+      return array(
+        'columns' => $columns,
+        'indexes' => array(
+          'shows' => array('show','season', 'episode'),
+        ),
+      );
+    break;
+  }
+}

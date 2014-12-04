@@ -1,0 +1,16 @@
+name = Webform Validation
+description = "Add validation rules to webforms"
+core = 7.x
+dependencies[] = webform
+package = Webform
+files[] = webform_validation.admin.inc
+files[] = webform_validation.install
+files[] = webform_validation.module
+files[] = webform_validation.rules.inc
+files[] = webform_validation.validators.inc
+
+version = "7.x-1.5"
+core = "7.x"
+project = "webform_validation"
+
+

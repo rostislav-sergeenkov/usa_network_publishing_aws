@@ -1,0 +1,195 @@
+<?php
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_types_alter().
+ */
+function nbcu_seo_mpx_nbcu_seo_xmlsitemap_types_alter(&$types) {
+  $types['video'] = 'video';
+}
+
+/**
+ * Implements hook_nbcu_seo_xmlsitemap_xml_element_alter().
+ */
+function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context) {
+  $type = isset($context['type']) ? $context['type'] : NULL;
+  $link = $context['link'];
+
+  // MPX video support
+  if (module_exists('pub_mpx')) {
+    if ($type == 'video' && $link['type'] == 'file' && in_array($link['subtype'], _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+      $file = file_load($link['id']);
+      $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+      $mpx_account_pid = $mpx_account->account_pid;
+      $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
+
+      $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+        (!empty($file->mpx_player_data['pid']) ? $file->mpx_player_data['pid'] : $mpx_account_default_player['pid']);
+
+      $released_file_pid = NULL;
+      if (!empty($file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'])) {
+        $released_file_pid = $file->field_mpx_main_released_file_pid[ LANGUAGE_NONE ][0]['value'];
+      }
+      elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
+        $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
+      }
+
+      if ($released_file_pid && $mpx_account_pid && $player_id) {
+        $delta = 'file_' . $file->fid;
+        $element[$delta] = isset($element[$delta]) ? $element[$delta] : array();
+        $element[$delta] += array(
+          '#tag' => 'video',
+          '#namespace' => 'video',
+        );
+
+        $title = $file->mpx_video_data['title'];
+        $element[$delta]['title'] = $file->mpx_video_data['title']; // add title
+        $description = $file->mpx_video_data['description'];  // add description
+        if (!empty($description)) {
+          $element[$delta]['description'] = strip_tags($description);
+        }
+        // add thumbnail url
+        if (!empty($file->mpx_video_data['thumbnail_url'])) {
+          $element[$delta]['thumbnail_loc'] = $file->mpx_video_data['thumbnail_url'];
+        } else {
+          $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+          $local_thumbnail_path = $wrapper->getLocalThumbnailPath();
+          $url = parse_url(file_create_url($local_thumbnail_path));
+          $path = $url['path'];
+          $element[$delta]['thumbnail_loc'] = url($path);   
+        }
+        
+        $full_episode = field_get_items('file', $file, 'field_mpx_full_episode');
+        if (!empty($full_episode)) {
+          $full_episode = reset($full_episode);
+          if (!empty($full_episode)) {
+            $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
+          }
+        }
+        // add swf player url
+        $player_source = 'http://player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/config/select/mediat/' . $released_file_pid;
+        $player_parameters = array(
+          'query' => array(
+            'form' => 'vars',
+            'component' => 'player',
+          ), 
+        );
+        $swf_player_source = 'http://pdk.theplatform.com/current/pdk/swf/flvPlayer.swf';
+        $swf_player_parameters = array(
+          'query' => array(
+            'id' => 'player',
+            'v' => rawurlencode(url($player_source, $player_parameters)),
+          ),
+          'external' => TRUE,
+        );
+        $element[$delta][] = array(
+          '#namespace' => 'video',
+          '#tag' => 'player_loc',
+          '#text' => url($swf_player_source, $swf_player_parameters),
+          '#attributes' => array(
+          'allow_embed' => $full_episode ? 'no' : 'yes',  
+          )
+        );
+        $duration = field_get_items('file', $file, 'field_mpx_duration');  // add duration
+        if (!empty($duration)) {
+          $duration = reset($duration);
+          if (!empty($duration)) {
+            $duration = strip_tags($duration['value']);
+            if (!empty($duration)) {
+              $element[$delta]['duration'] = $duration;
+            }
+          }
+        }
+        $available = $file->mpx_video_data['available_date'];  // add publication date
+        if (!empty($available)) {
+          $element[$delta]['publication_date'] = date('c', $available);
+        }
+        $expire = $file->mpx_video_data['expiration_date'];  // add expiration date
+        if (!empty($expire)) {
+          $element[$delta]['expiration_date'] = date('c', $expire);
+        }
+        $restriction = $file->mpx_video_data['countries'];  // add restriction
+        if (!empty($restriction)) {
+          $restriction_array = unserialize($restriction);
+          $restriction_value = '';
+          foreach ($restriction_array as $country) {
+            $restriction_value .= $country . ' ';
+          }
+          $element[$delta][] = array(
+            '#namespace' => 'video',
+            '#tag' => 'restriction',
+            '#text' => $restriction_value,
+            '#attributes' => array(
+              'relationship' => 'allow',  
+            )
+          );
+        }
+        $entitlement = field_get_items('file', $file, 'field_mpx_entitlement'); // check if video needs subscription
+        if (!empty($entitlement)) {
+          $entitlement = reset($entitlement);
+          if (!empty($entitlement) && $entitlement['value'] == 'auth') {
+            $element[$delta]['requires_subscription'] = 'yes';
+          }
+        }
+        // add tags; maximum 32 tags allowed
+        $tags = !empty($file->mpx_video_data['keywords']) ? explode(',', $file->mpx_video_data['keywords']) : array();
+        $count = 0;
+        while ($count < 32 && $tag = current($tags)) {
+          $element[$delta][] = array(
+            '#tag' => 'tag',
+            '#text' => $tag,
+          );
+          $count++;
+          next($tags);
+        }
+
+        // tv show info
+        $show_id = field_get_items('file', $file, 'field_show');
+        if (!empty($show_id)) {
+          $show_id = reset($show_id);
+          if (!empty($show_id)) {
+            $show = node_load($show_id['target_id']);
+          }
+        }
+        if (!empty($show)) {
+          // content is show related
+          $element[$delta]['tvshow']['show_title'] = $show->title; //set show title
+          $video_title = $show->title;
+          $video_type = 'clip';
+          if ($full_episode) {
+            $video_type = 'full';
+          }
+          elseif (preg_match('/promo|preview/Ui', $title)) {
+            $video_type = 'preview';
+          }
+          elseif (preg_match('/interview/Ui', $title)) {
+            $video_type = 'interview';
+          }
+          $element[$delta]['tvshow']['video_type'] = $video_type; // set video type
+          if ($video_type == 'full') {
+            $element[$delta]['tvshow']['episode_title'] = $title; // set episode title
+          }
+          $season_number = field_get_items('file', $file, 'field_mpx_season_number'); // set season number
+          if (!empty($season_number)) {
+            $season_number = reset($season_number);
+            if (!empty($season_number)) {
+              $video_title .= ', Season ' . $season_number['value'];
+              $element[$delta]['tvshow']['season_number'] = $season_number['value'];
+            }
+          }
+          $episode_number = field_get_items('file', $file, 'field_mpx_episode_number'); // set episode number
+          if (!empty($episode_number)) {
+            $episode_number = reset($episode_number);
+            if (!empty($episode_number)) {
+              $video_title .= ', Episode ' . $episode_number['value'];
+              $element[$delta]['tvshow']['episode_number'] = $episode_number['value'];
+            }
+          }
+          // format video title
+          if ($video_type == 'full') {
+            $element[$delta]['title'] = $video_title . ': ' . $title;
+          }
+        }
+      }
+    }
+  }
+}

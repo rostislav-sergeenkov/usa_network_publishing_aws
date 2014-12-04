@@ -1,0 +1,208 @@
+<?php
+
+define('NBCU_SEO_XMLSITEMAP_PATH', 'nbcu_xmlsitemap');
+define('NBCU_SEO_XMLSITEMAP_PREPROCESS_COUNT', 500);
+define('NBCU_SEO_XMLSITEMAP_GOOGLE_PING_PATH', 'http://www.google.com/webmasters/tools/ping');
+
+/**
+ * Implements hook_menu().
+ */
+function nbcu_seo_menu() {
+  $items = array();
+
+  $types = nbcu_seo_xmlsitemap_types();
+  foreach ($types as $type) {
+    $items[$type . '.xml'] = array(
+      'page callback' => 'nbcu_seo_xmlsitemap_output',
+      'page arguments' => array($type),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+      'file' => 'nbcu_seo.xmlsitemap.inc',
+    );
+  }
+
+  $items['sitemapindex.xml'] = array(
+    'page callback' => 'nbcu_seo_xmlsitemap_index',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'nbcu_seo.xmlsitemap.inc',
+  );
+
+  $items['admin/config/search/nbcu-sitemap-settings'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => t('NBC Universal custom Sitemap settings'),
+    'description' => t('Configure cron reaction of updating XML Sitemap and robots.txt updating.'),
+    'access arguments' => array('administer xmlsitemap'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nbcu_seo_sitemap_settings_form'),
+    'file' => 'nbcu_seo.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function nbcu_seo_cron() {
+  module_load_include('xmlsitemap.inc', 'nbcu_seo');
+  module_load_include('generate.inc', 'xmlsitemap');
+
+  // If there were no new or changed links, skip.
+  $need_regenerate = FALSE;
+  $regenerate = variable_get('nbcu_seo_xmlsitemap_regenerate_needed', array());
+  foreach ($regenerate as $smid => &$types) {
+    $sitemap = xmlsitemap_sitemap_load($smid);
+    foreach ($types as $type => &$flag) {
+      $file = nbcu_seo_xmlsitemap_sitemap_get_file($sitemap, 1, $type);
+      if (!file_exists($file)) {
+        $flag = TRUE;
+      }
+      $need_regenerate |= $flag;
+    }
+  }
+  variable_set('nbcu_seo_xmlsitemap_regenerate_needed', $regenerate);
+  if (!$need_regenerate) {
+    return;
+  }
+
+  // If the minimum sitemap lifetime hasn't been passed, skip.
+  $lifetime = REQUEST_TIME - variable_get('xmlsitemap_generated_last', 0);
+  if ($lifetime < variable_get('xmlsitemap_minimum_lifetime', 0)) {
+    return;
+  }
+
+  // Regenerate the sitemap XML files.
+  xmlsitemap_run_unprogressive_batch('nbcu_seo_xmlsitemap_regenerate_batch');
+
+  // Ping Google with updated XML Sitemap if it possible
+  nbcu_seo_ping_google_with_update();
+}
+
+/**
+ * Implements hook_nbcu_seo_xmpsitemap_link_type().
+ */
+function nbcu_seo_nbcu_seo_xmpsitemap_link_type($link) {
+  $types = array();
+  // check if link has images
+  if ($link['type'] == 'node' && $link['subtype'] == 'media_gallery') {
+    // load images associated with node
+    $query = db_select('file_usage', 'fu')
+      ->fields('fu', array('fid'));
+    $query->leftJoin('file_managed', 'f', 'fu.fid = f.fid');
+    $query->condition('f.type', 'image', '=');
+    $query->condition('fu.type', 'node', '=');
+    $query->condition('fu.id', $link['id'], '=');
+
+    $fids = $query->execute()->fetchCol();
+    $files = file_load_multiple($fids);
+
+    if (!empty($files)) {
+      $types['image'] = 'image';
+    }
+  }
+
+  // check if link has videos
+  if (module_exists('pub_mpx')) {
+    if ($link['type'] == 'file' && in_array($link['subtype'], _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+      $types['video'] = 'video';
+    }
+  }
+
+  return $types;
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function nbcu_seo_flush_caches() {
+  return array('cache_xmlsitemap_link');
+}
+
+/**
+ * Returns list of xml sitemap types.
+ */
+function nbcu_seo_xmlsitemap_types() {
+  $types =& drupal_static(__FUNCTION__, NULL);
+  if ($types == NULL) {
+    $types = array();
+    drupal_alter('nbcu_seo_xmlsitemap_types', $types);
+  }
+  return $types;
+}
+
+/**
+ * Pings Google for reindexing sitemaps
+ */
+function nbcu_seo_ping_google_with_update() {
+  if (variable_get('nbcu_seo_ping_google_after_cron', 1) == 0) {
+    return;
+  }
+
+  // Initialize cURL
+  $ch = _nbcu_seo_init_ping_google();
+
+  if (empty($ch)) {
+    return NULL;
+  }
+
+  // Load index-sitemap
+  $sitemap = xmlsitemap_sitemap_load_by_context();
+  $chunk = 'index';
+
+  // Getting full realpath of index-sitemap file
+  $sitemap_url = drupal_realpath(nbcu_seo_xmlsitemap_sitemap_get_file($sitemap, $chunk));
+
+  // Prepare cURL options
+  curl_setopt_array($ch, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_FOLLOWLOCATION => 0,
+    CURLOPT_URL => NBCU_SEO_XMLSITEMAP_GOOGLE_PING_PATH . '?' . http_build_query(array('sitemap' => $sitemap_url)),
+    CURLOPT_USERAGENT => 'NBC Universal Drupal cURL Request',
+  ));
+
+  // Executing cURL request
+  $response = curl_exec($ch);
+  $message = "";
+
+  // Detecting empty response
+  if (!$response) {
+    $message = t('cURL execution error: @error_message with code @error_code.', array('@error_message' => curl_error($ch), '@error_code' => curl_errno($ch)));
+  }
+  else {
+    // Detecting error code if response has been returned
+    $info = curl_getinfo($ch);
+
+    if (empty($info['http_code'])) {
+      $message = t('No HTTP code was returned.');
+    }
+    else {
+      $message = t('Google has been pinged for updating XML Sitemap: received @http_code HTTP code.', array('@http_code' => $info['http_code']));
+    }
+  }
+
+  // Logging status if database logging enabled
+  if (module_exists('dblog')) {
+    watchdog('nbcu_seo', "Pinging Google with sitemap update<br>" . $message);
+  }
+
+  curl_close($ch);
+}
+
+/**
+ * Initializes cURL for pinging Google with new XML Sitemaps.
+ */
+function _nbcu_seo_init_ping_google() {
+  try {
+    $ch = curl_init();
+
+    if ($ch) {
+      return $ch;
+    }
+  }
+  catch (Exception $ex) {
+    throw $ex;
+  }
+
+  return NULL;
+}

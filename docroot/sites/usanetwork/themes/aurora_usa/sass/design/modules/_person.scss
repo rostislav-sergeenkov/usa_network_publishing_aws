@@ -1,0 +1,135 @@
+body.person-page {
+	overflow-x: hidden;
+	#main {
+		padding-left: 0;
+		padding-right: 0;
+		background-color: $black-true;
+	}
+}
+
+
+[id='person-content'] {
+	width: auto;
+	position: relative;
+	min-height: 750px;
+	h1 {
+		text-transform: none;
+		font-size: 24px;
+		margin-top: 0;
+		@include breakpoint($bp-person-medium-width) {
+			font-size: 26px;
+		}
+	}
+	h4 {
+		@extend %regular-14;
+		text-transform: none;
+		margin: 5px 30px 5px 0;
+	  position: relative;
+		@include breakpoint($bp-person-medium-width) {
+			font-size: 18px;
+		}
+	}
+	.person-content-wrapper {
+		max-width: 1319px;
+		width:300px;
+		position: relative;
+		margin: 0 auto;
+		padding: 26px 0 0;
+		@include breakpoint($bp-person-mid-two-width) {
+			padding: 40px 45px 0;
+			max-width: 1335px;
+			width: auto;
+		}
+		@include breakpoint($bp-menu-switch) {
+			padding-bottom: 40px;
+		}	
+		.usa-adrails & {
+			max-width: 880px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	aside {
+		position: relative;
+		z-index: 2;
+		.field-name-body {
+			clear: both;
+			&:before {
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+				overflow: hidden;
+				visibility: hidden;
+			}
+		}
+		&#person-image {
+			display: none;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+			@include breakpoint($bp-person-medium-width) {
+				display: block;
+			}
+			img {
+				max-width: 55%;
+				position: absolute;
+				right: -50px;
+				&:after {
+					content: "\0020";
+					display: block;
+					height: 0;
+					clear: both;
+					overflow: hidden;
+					visibility: hidden;
+				}
+			}
+		}
+		&#person-content {
+		 	.pane-page-title + .pane-views-panes,
+		 	.pane-page-title + .pane-views-panes + .pane-views-panes {
+				float: left;
+			}
+		 	.pane-views-panes + .pane-views-panes,
+      .pane-views-panes + .pane-views-panes + .pane-views-panes {
+				float: left;
+			}      
+			@include breakpoint($bp-person-medium-width) {
+				width: 51%;
+			}
+		}
+	}
+	.node-media-gallery {
+		width: 300px;
+		position: relative;
+		border: 2px solid $gray-dark;
+		margin: 0 auto 15px;
+		@include breakpoint($bp-person-gall-width) {
+			height: 252px;
+			margin-left: 0;
+			margin-right: 15px;
+			float: left;
+		}
+		.field-name-title {
+			@extend .title-overlay;
+			h2 {
+				margin-bottom: 2px;
+			}
+		}
+	}
+	.dart-tag {
+		width: 300px;
+		margin: 0 auto 15px;
+		@include breakpoint($bp-person-small-width) {
+			margin-bottom: 0;
+		}
+		@include breakpoint($bp-person-gall-width) {
+			margin-left: 0;
+			margin-right: 15px;
+			width: auto;
+			float: left;
+		}
+
+	}
+}

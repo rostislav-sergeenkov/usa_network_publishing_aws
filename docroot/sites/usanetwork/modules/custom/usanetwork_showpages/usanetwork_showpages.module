@@ -1,0 +1,787 @@
+<?php
+
+/**
+ * @file
+ * Code for the usanetwork_showpages feature.
+ * this manages the landing or section pages per show
+ */
+
+include_once 'usanetwork_showpages.features.inc';
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_showpages_menu() {
+  // tv show photos landing page
+  $items['node/%node/photos'] = array(
+    'title' => t('Photos'),
+    'page callback' => 'usanetwork_showpages_photos',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show episodes landing page
+  $items['node/%node/episodes'] = array(
+    'title' => t('Episodes'),
+    'page callback' => 'usanetwork_showpages_episodes',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show cast landing page
+  $items['node/%node/cast'] = array(
+    'title' => t('Cast'),
+    'page callback' => 'usanetwork_showpages_cast',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show videos landing page
+  $items['node/%node/videos'] = array(
+    'title' => t('Videos'),
+    'page callback' => 'usanetwork_showpages_videos',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  // tv show videos category pages
+  $items['node/%node/video-categories'] = array(
+    'title' => t('Video categories'),
+    'page callback' => 'usanetwork_showpages_video_cats',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/video-categories/%'] = array(
+    'title' => t('Video categories'),
+    'page callback' => 'usanetwork_showpages_video_cats',
+    'page arguments' => array(1),
+    'access callback' => 'usanetwork_showpages_menu_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%node/%'] = array(
+    'title' => t('Show page'),
+    'page callback' => 'usanetwork_showpages_filter_page',
+    'page arguments' => array(1, 2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Show pages menu access callback to restrict only tv_show nodes
+ */
+function usanetwork_showpages_menu_access($node) {
+  return $node->type == 'tv_show' && user_access('access content');
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_showpages_block_info() {
+  $blocks = array();
+  $blocks['show_banner'] = array(
+    'info' => t('Show banner: title, section, tune-in date'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_showpages_block_view($delta) {
+  $block = array();
+  //The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'show_banner':
+      $block['subject'] = '';
+      $block['content'] = usanetwork_showpages_showbanner();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_showpages_theme($existing, $type, $theme, $path) {
+  return array(
+   'show_banner' => array(
+      'variables' => array(
+        'show_name' => NULL,
+        'show_section' => NULL,
+        'show_tunein' => NULL
+        ),
+      'path' => $path . '/theme',
+      'template' => 'show-banner',
+    ),
+  );
+}
+
+/**
+ * Block callback for show banner
+ * @todo: clean up the code to work with any entity type
+ */
+function usanetwork_showpages_showbanner() {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+  // for our logic, this will be the show nid
+  $show = '';
+  // these are for the theme function
+  $show_name = '';
+  $show_section = '';
+  $show_tunein = '';
+  $show_h1 = '';
+  $field_name = "field_show";
+
+  // see if we are on a node page
+  $entity_type = null;
+  $entity = _usanetwork_menu_get_object($entity_type);
+  if ($entity) {
+    // see if we are on a show node
+    $is_tv_show = FALSE;
+    if ($entity_type == 'node' && $entity->type == 'tv_show') {
+      $is_tv_show = TRUE;
+      $show = $entity->nid;
+      $display_title = field_get_items($entity_type, $entity, 'field_display_title');
+      if (is_array($display_title) && !empty($display_title[0]['value'])) {
+        $show_title = $display_title[0]['value'];
+      }
+      else {
+        $show_title = $entity->title;
+      }
+      $show_title = decode_entities($show_title);
+      $usa_tv_tune_in_date = field_get_items($entity_type, $entity, 'field_usa_tv_tune_in_date');
+      if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
+        $show_tunein = $usa_tv_tune_in_date[0]['value'];
+      }
+      $show_url = 'node/' . $entity->nid;
+      $show_name = l($show_title, $show_url);
+      // see if we are in a show social subsection
+      if (arg(2) == 'social') {
+        $show_section = l(t('Social'), $show_url . '/social');
+      }
+      if (arg(2) == 'games') {
+        $show_section = l(t('Games'), $show_url . '/games');
+      }
+      if (arg(2) == 'features') {
+        $show_section = l(t('Features'), $show_url . '/features');
+      }
+      if (arg(2) == 'quizzes') {
+        $show_section = l(t('Quizzes'), $show_url . '/quizzes');
+      }
+      $seo_h1 = field_get_items($entity_type, $entity, 'field_seo_h1');
+      if (is_array($seo_h1) && !empty($seo_h1[0]['value'])) {
+        $show_h1 = $seo_h1[0]['value'];
+      }
+    }
+    // looks for nodes with a value in field_show
+    if (!empty($entity->$field_name)) {
+      $show_nid = field_get_items($entity_type, $entity, $field_name);
+      $show_nid = $show_nid[0]['target_id'];
+      $show = node_load($show_nid);
+      $display_title = field_get_items('node', $show, 'field_display_title');
+      if (is_array($display_title) && !empty($display_title[0]['safe_value'])) {
+        $show_title = $display_title[0]['safe_value'];
+      }
+      else {
+        $show_title = $show->title;
+      }
+      $show_title = decode_entities($show_title);
+      $usa_tv_tune_in_date = field_get_items('node', $show, 'field_usa_tv_tune_in_date');
+      if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
+        $show_tunein = $usa_tv_tune_in_date[0]['value'];
+      }
+      $show_url = 'node/' . $show->nid;
+      $show_name = l($show_title, $show_url);
+      if ($entity_type == 'node') {
+        switch ($entity->type) {
+          case 'person':
+            $show_section = l(t('Characters & Crew'), $show_url . '/cast');
+            break;
+          case 'tv_episode':
+            $show_section = l(t('Episode Guide'), $show_url . '/episodes');
+            break;
+          case 'media_gallery':
+            $show_section = l(t('Photos'), $show_url . '/photos');
+            break;
+          case 'usa_video':
+          case 'usa_tve_video':
+            $show_section = l(t('Videos'), $show_url . '/videos');
+            break;
+          case 'usanetwork_static_page':
+          case 'catchall_page':
+            $custompath = drupal_get_path_alias('node/'.$entity->nid);
+            $path_parts = explode('/', $custompath);
+            if ($path_parts['1'] == 'features') {
+              $show_section = l(t('Features'), $show_url . '/features');
+            }
+            if ($path_parts['1'] == 'quizzes') {
+              $show_section = l(t('Quizzes'), $show_url . '/quizzes');
+            }
+            if ($path_parts['1'] == 'games') {
+              $show_section = l(t('Games'), $show_url . '/games');
+            }
+            break;
+        }
+      }
+    }
+    // render the theme function
+    $render['show_banner']['#markup'] = theme('show_banner', array('show_name' => $show_name, 'show_section' => $show_section, 'show_tunein' => $show_tunein, 'show_h1' => $show_h1, 'is_tv_show' => $is_tv_show));
+  }
+
+  return $render;
+}
+
+/**
+ * Menu callback of show photos page
+ * load the panel page for the most recently posted gallery
+ * associated with a show
+ */
+function usanetwork_showpages_photos($node) {
+  $render = array();
+
+  // if there is no show NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  $show = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('media_gallery'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show);
+//  $query->fieldCondition('field_episode', 'target_id', 'NULL', '!=');
+  $query->propertyOrderBy('created', 'DESC');
+  $query->range(0, 1);
+  // execute the query
+  $result = $query->execute();
+  // load the related gallery
+  // then go to that page
+  if (!empty($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+    drupal_goto('node/' . $nid);
+  }
+  // or go back to the show node
+  drupal_goto('node/' . $show);
+}
+
+/**
+ * Menu callback of show episodes page
+ * load the panel page for the most recently aired episode
+ * associated with a show
+ */
+function usanetwork_showpages_episodes($node) {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+
+  // if there is no show NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  $show = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_episode'));
+  $query->propertyCondition('status', 1);
+  $query->fieldCondition('field_show', 'target_id', $show);
+  $query->fieldCondition('field_original_air_date', 'value', 'NULL', '!=');
+  $query->fieldOrderBy('field_original_air_date', 'value', 'DESC');
+  $query->range(0, 1);
+  // execute the query
+  $result = $query->execute();
+  // load the latest episode
+  // then go to that page
+  if (!empty($result['node'])) {
+    $nid = array_keys($result['node']);
+    $nid = $nid[0];
+    drupal_goto('node/' . $nid);
+  }
+  // or go back to the show node
+  drupal_goto('node/' . $show);
+}
+
+/**
+ * Menu callback of show cast page
+ * load the panel page for the first member listed in the draggable cast view
+ * associated with a show
+ */
+function usanetwork_showpages_cast($node) {
+  $render = array();
+  $lang = LANGUAGE_NONE;
+
+  // if there is no NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+
+  // grab the first element from the draggable view
+  $view = views_get_view('usa_cast');
+  $view->set_display('block_1');
+  $view->args = array($node->nid);
+  $view->pre_execute();
+  $view->execute();
+
+  if (!empty($view->result)) {
+    $cast_nid = $view->result[0]->nid;
+  }
+  $view->destroy();
+
+  // then go to that page
+  if (isset($cast_nid)) {
+    drupal_goto('node/' . $cast_nid);
+  }
+
+  // or go back to the show node
+  drupal_goto('node/' . $show);
+}
+
+/**
+ * Menu callback of show videos page
+ * Redirect the user to the video Page of the most-recently-published Full Episode Video associated with the show
+ */
+function usanetwork_showpages_videos($node) {
+  $lang = LANGUAGE_NONE;
+
+  // if there is no show NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  $show = $node->nid;
+  if (module_exists('usanetwork_mpx_video')) {
+//    select full episodes with show
+    $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+    $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+    $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
+    $query->condition('fdfs.field_show_target_id', $show);
+    $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+    $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+    $query->condition('mv.status', 1);
+    $query->orderBy('mv.airdate', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute()->fetchObject();
+    // load the latest episode
+    // then go to that page
+    if (!empty($result->fid)) {
+      drupal_goto('file/' . $result->fid);
+  } else {
+//      select all full episodes
+      $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+      $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+      $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+      $query->condition('fdfmfe.field_mpx_full_episode_value', '1');
+      $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->condition('mv.status', 1);
+      $query->orderBy('mv.airdate', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute();
+      // load the latest episode
+      // then go to that page
+      if (!empty($result->fid)) {
+        drupal_goto('file/' . $result->fid);
+  } else {
+//        select short episodes for show
+        $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+        $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+        $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
+        $query->condition('fdfs.field_show_target_id', $show);
+        $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+        $query->condition('mv.status', 1);
+        $query->orderBy('mv.airdate', 'desc');
+        $query->range(0, 1);
+        // execute the query
+        $result = $query->execute()->fetchObject();  
+        
+        if (!empty($result->fid)) {
+          drupal_goto('file/' . $result->fid);
+        } else {
+//        select all short episodes
+          $query = db_select('file_managed', 'fm')
+            ->fields('fm', array('fid'));
+          $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+          $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+          $query->condition('mv.status', 1);
+          $query->orderBy('mv.airdate', 'desc');
+          $query->range(0, 1);
+          // execute the query
+          $result = $query->execute()->fetchObject(); 
+        }
+      }
+      // or go back to the show node
+      drupal_goto('node/' . $show);
+    }
+  } else {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+    $query->propertyCondition('status', 1);
+    $query->fieldCondition('field_show', 'target_id', $show);
+    $query->fieldCondition('field_full_episode', 'value', '1', '=');
+    $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute();
+    // load the latest episode
+    // then go to that page
+    if (!empty($result['node'])) {
+      $nid = array_keys($result['node']);
+      $nid = $nid[0];
+      drupal_goto('node/' . $nid);
+    } else {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node');
+      $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+      $query->propertyCondition('status', 1);
+      $query->fieldCondition('field_show', 'target_id', $show);
+      $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute();
+      // load the latest episode
+      // then go to that page
+      if (!empty($result['node'])) {
+        $nid = array_keys($result['node']);
+        $nid = $nid[0];
+        drupal_goto('node/' . $nid);
+      }
+      // or go back to the show node
+      drupal_goto('node/' . $show);
+    }
+  }
+}
+
+/**
+ * Menu callback of show videos page
+ * Redirect the user to the video Page of CATEGORY the most-recently-published
+ * CATEGORY Video associated with the show
+ */
+function usanetwork_showpages_video_cats($node) {
+  $lang = LANGUAGE_NONE;
+  // if there is no show NID get out of there
+  if (!isset($node->nid)) {
+    return;
+  }
+  // define the show
+  $show = $node->nid;
+  // if arg 3 is missing  but we have a show nid
+  // load that show videos page
+  if ($node->nid && !arg(3)) {
+    drupal_goto('node/' . $show . '/videos');
+  }
+  /* test with these terms/paths
+  showname/video-categories/behind-the-scenes
+  showname/video-categories/clips
+  showname/video-categories/web-exclusives
+  showname/video-categories/full-episodes
+  showname/video-categories/promos
+  */
+  // add the basic logic for finding terms
+  $termname = arg(3);
+  $term_from_path = str_replace('-', ' ' , arg(3));
+  $terms = taxonomy_get_term_by_name($term_from_path);
+  // if no terms resolve go to the main show video page
+  // if full episodes is entered as the arg
+  // go to the main show video page
+  if (empty($terms) || arg(3) == 'full-episodes') {
+    drupal_goto('node/' . $show . '/videos');
+  }
+  // process the terms so they are easy to eat
+  $single_tids = array();
+  foreach ($terms as $tid => $term) {
+    $single_tids[] = $tid;
+  }
+//    select episodes with show and category
+    $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+    $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+    $query->leftJoin('field_data_field_show','fdfs','%alias.entity_id = fm.fid');
+    $query->condition('fdfs.field_show_target_id', $show);
+    $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+    $query->condition('fdfmfe.field_mpx_full_episode_value', '0');
+    $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
+    $query->condition('fdfuvt.field_usa_video_terms_target_id', $single_tids, 'IN');
+    $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+    $query->condition('mv.status', 1);
+    $query->orderBy('mv.airdate', 'desc');
+    $query->range(0, 1);
+    // execute the query
+    $result = $query->execute()->fetchObject();
+    // load the latest episode then go to that page
+    if (!empty($result->fid)) {
+      drupal_goto('file/' . $result->fid);
+    } else {
+      $show_terms = taxonomy_get_term_by_name($node->title);
+      $show_tids = array();
+      foreach ($show_terms as $tid => $term) {
+        $show_tids[] = $tid;
+      }
+      
+      $query = db_select('file_managed', 'fm')
+          ->fields('fm', array('fid'));
+      $query->condition('fm.type', _usanetwork_mpx_video_get_all_file_types(), 'IN');
+      $query->leftJoin('field_data_field_mpx_full_episode','fdfmfe','%alias.entity_id = fm.fid');
+      $query->condition('fdfmfe.field_mpx_full_episode_value', '0');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt.field_usa_video_terms_target_id', $single_tids, 'IN');
+      $query->leftJoin('field_data_field_usa_video_terms','fdfuvt2','%alias.entity_id = fm.fid');
+      $query->condition('fdfuvt2.field_usa_video_terms_target_id', $show_tids, 'IN');
+      $query->leftJoin('mpx_video','mv','%alias.fid = fm.fid');
+      $query->condition('mv.status', 1);
+      $query->orderBy('mv.airdate', 'desc');
+      $query->range(0, 1);
+      // execute the query
+      $result = $query->execute()->fetchObject();
+      
+      if (!empty($result->fid)) {
+        drupal_goto('file/' . $result->fid);
+      }
+    } 
+//    // find the video containing the terms, sort by most recent airdate
+//    $query = new EntityFieldQuery();
+//    $query->entityCondition('entity_type', 'node');
+//    $query->entityCondition('bundle', array('usa_video', 'usa_tve_video'));
+//    $query->propertyCondition('status', 1);
+//    $query->fieldCondition('field_show', 'target_id', $show);
+//    $query->fieldCondition('field_usa_video_terms', 'target_id', $single_tids, 'IN');
+//    $query->fieldOrderBy('field_video_air_date', 'value', 'desc');
+//    $query->range(0, 1);
+//    // execute the query
+//    $result = $query->execute();
+//    // load the latest video with the term match
+//    // then go to that page
+//    if (!empty($result['node'])) {
+//      $nid = array_keys($result['node']);
+//      $nid = $nid[0];
+//      $vid = node_load($nid);
+//      drupal_goto('node/' . $nid);
+//    }
+//    // final fallback to show videos just in case
+//    else {
+//      drupal_goto('node/' . $show . '/videos');
+//    }
+}
+
+/**
+  * Implements hook_preprocess_html()
+  * custom titles for show related pages
+  * where we do not want the code in a feature override module
+  * or the theme
+  */
+function usanetwork_showpages_preprocess_html(&$vars) {
+  $head_title = NULL;
+
+  // see if we are on a node page
+  if ($node = menu_get_object()) {
+    $seo_page_title = field_get_items('node', $node, 'field_seo_page_title');
+    // see if we are on a catchall seo node
+    if ($node->type == 'catchall_seo_page') {
+      $field_page_title = field_get_items('node', $node, 'field_page_title');
+      $field_page_title = !empty($field_page_title[0]['value'])
+        ? $field_page_title[0]['value']
+        : '';
+
+      if (!empty($field_page_title)) {
+        $head_title = t("@title | USA Network", array('@title' => $field_page_title));
+      }
+      else {
+        $field_h1 = field_get_items('node', $node, 'field_h1');
+        $field_h1 = !empty($field_h1[0]['value'])
+          ? $field_h1[0]['value']
+          : '';
+
+        if (!empty($field_h1)) {
+          $head_title = t("@title | USA Network", array('@title' => $field_h1));
+        }
+        else {
+          $head_title = t("@title | USA Network", array('@title' => $node->title));
+        }
+      }
+    }
+    // see if we are on a show node
+    if ($node->type == 'tv_show') {
+      $show = $node->nid;
+      // see if we are in a show subsection
+      // custom module or dynamic based on path
+      switch (arg(2)) {
+       // video landing
+       case 'videos':
+          $headtitle = t("@show Videos", array('@show' => $node->title));
+          $vars['title'] = $headtitle;
+          break;
+        // GAME_TITLE | Games | SHOW_NAME | SITE_TITLE
+        case 'games':
+          $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // FEATURE_TITLE | Features | SHOW_NAME | SITE_TITLE
+        case 'features':
+          $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // quiz_TITLE | Quizzes | SHOW_NAME | SITE_TITLE
+        case 'quizzes':
+          $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          break;
+        // Show Landing Page
+        case '':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@title | USA Network", array('@title' => $node->title));
+          }
+          break;          
+        // overwrite title if arg(2) does not match any of top strings
+        default:
+          $head_title = t("@title | USA Network", array('@title' => $node->title));
+          break;
+      }
+    }
+    // looks for nodes with a value in field_show
+    if (!empty($node->field_show)) {
+      $show_nid = field_get_items('node', $node, 'field_show');
+      $show_nid = $show_nid[0]['target_id'];
+      $show = node_load($show_nid);
+      switch ($node->type) {
+      // person pages have 2 cases
+        case 'person':
+          $role = array();
+          $actor = array();
+          $role = field_get_items('node', $node, 'field_role');
+          $actor = field_get_items('node', $node, 'field_usa_actor_name');
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            // check for role and actor field
+            // CHARACTER_NAME played by ACTOR_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
+            if (!empty($role) && $role[0]['taxonomy_term']->name == 'Character' && !empty($actor)) {
+              $head_title = t("@person played by @actor | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title, '@actor' => $actor[0]['safe_value']));
+            }
+            // everyone else
+            // CHARACTER_NAME | Characters & Crew | SHOW_NAME | SITE_TITLE
+            else {
+              $head_title = t("@person | Characters & Crew | @showname | USA Network", array('@showname' => $show->title, '@person' => $node->title));
+            }
+          }
+          break;
+        // EPISODE_TITLE - Season SEASON_NUMBER | Episode Guide | SHOW_NAME | SITE_TITLE
+        case 'tv_episode':
+          $season_nid = field_get_items('node', $node, 'field_season');
+          $season = $season_nid[0]['target_id'];
+          $season = node_load($season);
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $node->title, '@season' => $season->title));
+          }
+          break;
+        // GALLERY_TITLE | Photo Galleries | SHOW_NAME | SITE_TITLE
+        case 'media_gallery':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {        
+            $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          }
+          break;
+        // VIDEO_TITLE | Videos | SHOW_NAME | SITE_TITLE
+        case 'usa_video':
+        case 'usa_tve_video':
+          $head_title = t("@video | Videos | @showname | USA Network", array('@showname' => $show->title, '@video' => $node->title));
+          break;
+        // SAME LOGIC AS CUSTOM PATHS ABOVE
+        case 'usanetwork_static_page':
+        case 'catchall_page':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $custompath = drupal_get_path_alias('node/'.$node->nid);
+            $path_parts = explode('/', $custompath);
+            if (is_array($path_parts) && !empty($path_parts[1])) {
+              switch ($path_parts[1]) {
+                // PAGE_TITLE | Feature | SHOW_TITLE | SITE_NAME
+                case 'features':
+                  $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  break;
+                // PAGE_TITLE | Quizzes | SHOW_TITLE | SITE_NAME
+                case 'quizzes':
+                  $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  break;
+                // PAGE_TITLE | Games | SHOW_TITLE | SITE_NAME
+                case 'games':
+                  $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+                  break;
+                // overwrite title if the second path part does not match any of top strings
+                default:
+                  $head_title = t("@title | USA Network", array('@title' => $node->title));
+                  break;
+              }
+            }
+          }
+          break;
+        // QUIZ SHOW_NAME - TITLE | SITE_TITLE
+        case 'quiz':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $node->title));
+          }
+          break;
+      }
+    }
+    // end of node types
+  } elseif ($file = menu_get_object('file')) {
+    $show_field = field_get_items('file', $file, 'field_show');
+    if ($show_field) {
+      $show = reset($show_field);
+    }
+    if (isset($show)) {
+      $head_title = t("@video | Videos | @showname | USA Network", array('@video' => $file->filename, '@showname' => $show['entity']->title));
+    } else {
+      $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
+    }
+  }
+
+  // If there are head titles print the new ones
+  if (!empty($head_title)) {
+    $vars['head_title'] = $head_title;
+  }
+
+}
+
+/**
+ * Check if system path or alias is exist for show
+ */
+function usanetwork_showpages_filter_page($node, $path_part) {
+  $path = 'node/' . $node->nid . '/' . $path_part;
+  
+  if ($node->type == 'tv_show') {
+    $path_exist = drupal_lookup_path('alias', $path) || drupal_lookup_path('source', $path);
+    if (!$path_exist) {    
+      drupal_not_found();
+    } else {
+      $url = drupal_lookup_path('alias', $path);
+      drupal_goto($url);
+    }
+  } else {
+    $url = drupal_lookup_path('alias', $path);
+    drupal_goto($url);
+  }
+}

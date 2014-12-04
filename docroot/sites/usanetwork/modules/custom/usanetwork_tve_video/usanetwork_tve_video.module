@@ -1,0 +1,142 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_tve_video feature.
+ */
+
+include_once 'usanetwork_tve_video.features.inc';
+
+function usanetwork_tve_video_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['tve_auth_welcome_window'])) {
+    $theme_registry['tve_auth_welcome_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/tve_auth_welcome_window';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_tve_video_preprocess_pub_mpx_video(&$variables, $hook) {
+  usanetwork_tve_video_add_custom_player_variables($variables, 'vod');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_tve_video_preprocess_usanetwork_tve_live_video(&$variables, $hook) {
+  usanetwork_tve_video_add_custom_player_variables($variables, 'live');
+}
+
+/**
+ * Adds the extra advertisement/other custom parameters to the player iframe src.
+ *
+ * @param $variables
+ * @param string $type
+ */
+function usanetwork_tve_video_add_custom_player_variables(&$variables, $type = 'vod') {
+  if (empty($variables)) {
+    $variables['pub_mpx_player_parameters'] = array();
+  }
+  $mvpd_id = '';
+  if (isset($_COOKIE['nbcu_user_settings']) && is_string($_COOKIE['nbcu_user_settings'])) {
+    // Gets the logged in user mvpd provider and passes it to player for freewheel ads.
+    $cookie_value = (array) drupal_json_decode($_COOKIE['nbcu_user_settings']);
+    // Validate variable.
+    if ($cookie_value) {
+      $mvpd_id = isset($cookie_value['selectedProvider']) ? $cookie_value['selectedProvider'] : '';
+    }
+  }
+  
+  $variables['pub_mpx_player_parameters']['mbr'] = 'true';
+  
+  if (!empty($mvpd_id)) {
+    $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
+  return array(
+    'usanetwork_tve_live_video' => array(
+    'variables' => array(
+      'file' => NULL,
+      'player_id' => NULL,
+      'width' => NULL,
+      'height' => NULL,
+    ),
+    ),
+  );
+}
+
+/**
+ * Theme function to render live video.
+ */
+function theme_usanetwork_tve_live_video($variables) {
+
+  $file = (object) $variables['file'];
+
+  $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+  $mpx_account_pid = $mpx_account->account_pid;
+  $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
+
+  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+      (!empty($file->mpx_player_data['pid']) ? $file->mpx_player_data['pid'] : $mpx_account_default_player['pid']);
+
+  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+  $player_parameters = array(
+    'query' => (isset($variables['pub_mpx_player_parameters']) ? $variables['pub_mpx_player_parameters'] : array()),
+    'external' => true,
+  );
+  $iframe_tag = array();
+  $iframe_tag['element']['#tag'] = 'iframe';
+  $iframe_tag['element']['#value'] = 'Your browser does not support iframes.';
+  $iframe_tag['element']['#attributes'] = array(
+    'src' => url($player_source, $player_parameters),
+    'frameborder' => 0,
+    'allowfullscreen' => '',
+    'id' => 'pdk-player',
+  );
+
+  if (!empty($variables['width'])) {
+    $iframe_tag['element']['#attributes']['width'] = $variables['width'];
+  }
+  if (!empty($variables['height'])) {
+    $iframe_tag['element']['#attributes']['height'] = $variables['height'];
+  }
+
+  return theme('html_tag', $iframe_tag);
+}
+
+/*
+ * Implements hook_js_alter().
+ */
+function usanetwork_tve_video_js_alter(&$javascript) {
+  $view_tve_script = _usanetwork_mpx_video_is_video_page();
+  if (!$view_tve_script) {
+    $tve_analytics_js_path = drupal_get_path('module', 'pub_analytics') . '/js/tve-analytics.js';
+    if (isset($javascript[$tve_analytics_js_path])) {
+      unset($javascript[$tve_analytics_js_path]);
+    }
+  }
+}
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Trying fix more button issue 
+ */
+function usanetwork_tve_video_page_alter(&$page) { 
+  $view_tve_script = _usanetwork_mpx_video_is_video_page();
+  if (!$view_tve_script) {
+    if (isset($page['page_bottom']['tve_adobe_pass'])) {
+      unset($page['page_bottom']['tve_adobe_pass']);
+    }
+    if (isset($page['page_bottom']['tve_auth_modal_windows'])) {
+      unset($page['page_bottom']['tve_auth_modal_windows']);
+    }
+    if (isset($page['page_bottom']['tve_auth'])) {
+      unset($page['page_bottom']['tve_auth']);
+    }
+  }
+}

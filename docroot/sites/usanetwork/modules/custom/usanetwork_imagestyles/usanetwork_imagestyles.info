@@ -25,6 +25,7 @@ features[image][] = 600x500
 features[image][] = 615x250
 features[image][] = 615x350
 features[image][] = bc1666x938
+features[image][] = 100x56
 features[image][] = bc480x270
 features[image][] = bc833x469
 features[image][] = bc960x540

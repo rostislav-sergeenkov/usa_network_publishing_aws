@@ -608,6 +608,29 @@ function usanetwork_imagestyles_image_default_styles() {
     ),
     'label' => 'search_result',
   );
+  
+    // Exported image style: search_result.
+  $styles['100x56'] = array(
+    'name' => '100x56',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 100,
+          'height' => 56,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => '100x56',
+  );
 
   // Exported image style: thumb_tiny.
   $styles['thumb_tiny'] = array(

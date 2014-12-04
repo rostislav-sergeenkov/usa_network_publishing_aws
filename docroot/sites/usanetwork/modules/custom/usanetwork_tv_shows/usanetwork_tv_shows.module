@@ -85,7 +85,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       'variables' => array(
         'is_catch_up' => NULL,
         'is_explore' => NULL,
-        'catch_up' => array( // Carousel lines
+        'catch_up' => array(// Carousel lines
           0 => array(
             'caption' => NULL,
             'title' => NULL,
@@ -94,7 +94,6 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
           )
         ),
         'explore' => array(
-
         ),
       ),
       'template' => 'templates/usanetwork-tv-shows-catchup-explore',
@@ -232,7 +231,7 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
  * Implements hook_usanetwork_overlay_prerender().
  */
 function usanetwork_tv_shows_usanetwork_overlay_prerender() {
-
+  
 }
 
 /**
@@ -442,11 +441,8 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
       $value = !empty($filter_value['value']) ? $filter_value['value'] : NULL;
 
       if (!empty($value)) {
-        $operator = !empty($filter_value['operator'])
-            ? $filter_value['operator']
-            : (is_array($value)
-                ? 'IN'
-                : '='
+        $operator = !empty($filter_value['operator']) ? $filter_value['operator']
+              : (is_array($value) ? 'IN' : '='
             );
 
         $query->condition($filter_field_name, $value, $operator);
@@ -477,7 +473,7 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $limit = 0, $directio
  *   ),
  * );
  */
-function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
+function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array(), $season_num = FALSE, $episode_num = FALSE) {
   $query = db_select('field_data_field_show', 'fshow');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
   $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
@@ -485,6 +481,19 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
   $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->addField('mpx_video_data', 'title', 'title');
   $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
+
+  if ($season_num) {
+    $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
+    $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
+    $query->condition('season_num.field_mpx_season_number_value', $season_num);
+  }
+  
+  if ($episode_num) {
+    $query->leftJoin('field_data_field_mpx_episode_number', 'episode_num', 'f.fid=episode_num.entity_id');
+    $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
+    $query->condition('episode_num.field_mpx_episode_number_value', $episode_num);
+  }
+
   $query->addField('sn', 'title', 'show_title');
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
@@ -505,11 +514,8 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
       $value = !empty($filter_value['value']) ? $filter_value['value'] : NULL;
 
       if (!empty($value)) {
-        $operator = !empty($filter_value['operator'])
-            ? $filter_value['operator']
-            : (is_array($value)
-                ? 'IN'
-                : '='
+        $operator = !empty($filter_value['operator']) ? $filter_value['operator']
+              : (is_array($value) ? 'IN' : '='
             );
 
         $query->condition($filter_field_name, $value, $operator);
@@ -570,9 +576,7 @@ function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mod
       break;
   }
 
-  return !empty($content_item)
-      ? render($content_item)
-      : '';
+  return !empty($content_item) ? render($content_item) : '';
 }
 
 /**
@@ -697,26 +701,28 @@ function _usanetwork_tv_shows_catchup_explore_block() {
     for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
       $field_ctchup_carousel = field_get_items('node', $show_node, "field_ctchup_carousel_$i");
       if ($field_ctchup_carousel) {
-        $theme_variables['is_catch_up'] = TRUE;    
+        $theme_variables['is_catch_up'] = TRUE;
         $theme_variables['catch_up'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_ctchup_carousel);
         $theme_variables['catch_up'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_pretitle_$i", 'value');
         $theme_variables['catch_up'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_title_$i", 'value');
-        $theme_variables['catch_up'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_posttitle_$i", 'value'); 
-        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right' : 'left';
+        $theme_variables['catch_up'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_posttitle_$i", 'value');
+        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
+              : 'left';
       }
     }
-    
+
     //Analyze explore carousel
     $theme_variables['is_explore'] = FALSE;
     for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
       $field_explr_carousel = field_get_items('node', $show_node, "field_explr_carousel_$i");
       if ($field_explr_carousel) {
-        $theme_variables['is_explore'] = TRUE;    
+        $theme_variables['is_explore'] = TRUE;
         $theme_variables['explore'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_explr_carousel);
         $theme_variables['explore'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_explr_pretitle_$i", 'value');
         $theme_variables['explore'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_explr_title_$i", 'value');
-        $theme_variables['explore'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_explr_posttitle_$i", 'value'); 
-        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right' : 'left';
+        $theme_variables['explore'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_explr_posttitle_$i", 'value');
+        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
+              : 'left';
       }
     }
 
@@ -735,32 +741,32 @@ function _usanetwork_tv_shows_catchup_explore_block() {
 function _usanetwork_tv_shows_get_cuexcarousel($carousel) {
   $items = array();
 
-    foreach ($carousel as $show_number => $carousel_item) {
-      $episode_class = NULL;
+  foreach ($carousel as $show_number => $carousel_item) {
+    $episode_class = NULL;
 
-      if ($show_number == 0) {
-        $episode_class = 'first';
-      }
-
-      if ($show_number == count($carousel) - 1) {
-        $episode_class = 'last';
-      }
-
-      $promo = _usanetwork_promo_featured_content($carousel_item['target_id']);
-      
-      $theme_variables = array(
-        'class' => $promo['show_class'],
-        'title' => $promo['caption'],
-        'title' => $promo['title'],
-        'additional' => array(
-          'normal' => NULL,
-          'span' => NULL,
-        ),
-        'media_player_icon' => $promo['icon-type'],
-      );
-
-      $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
+    if ($show_number == 0) {
+      $episode_class = 'first';
     }
+
+    if ($show_number == count($carousel) - 1) {
+      $episode_class = 'last';
+    }
+
+    $promo = _usanetwork_promo_featured_content($carousel_item['target_id']);
+
+    $theme_variables = array(
+      'class' => $promo['show_class'],
+      'title' => $promo['caption'],
+      'title' => $promo['title'],
+      'additional' => array(
+        'normal' => NULL,
+        'span' => NULL,
+      ),
+      'media_player_icon' => $promo['icon-type'],
+    );
+
+    $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
+  }
 
   return $items;
 }
@@ -820,8 +826,8 @@ function _usanetwork_tv_shows_consumptionator_relcontent_block() {
 
               // Featured: use more bundles for adding timestamp
               if (in_array($related_item->bundle, array(
-                'usanetwork_promo',
-              ))) {
+                    'usanetwork_promo',
+                  ))) {
                 $additional_text['right'] = gmdate('H:m:i', $related_item->promo_duration);
               }
 

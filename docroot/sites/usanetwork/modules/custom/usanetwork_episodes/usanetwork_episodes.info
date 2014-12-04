@@ -1,5 +1,6 @@
 name = usanetwork_episodes
 core = 7.x
+version = "7.x-1.1.1"
 package = USA Network
 php = 5.2.4
 dependencies[] = ctools

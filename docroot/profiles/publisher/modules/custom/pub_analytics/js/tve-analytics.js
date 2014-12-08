@@ -2,7 +2,7 @@
  * TVE Analytics implementation
  */
 ;
-(function($, s, window) {
+(function($, window) {
   'use strict';
 
   var NONE = 'None',
@@ -143,7 +143,7 @@
     _setPageName(adobePassConfig.adobePassRequestorId + ':' + platform + ':' + document.title);
 
     s.linkInternalFilters = "javascript:," + document.domain;
-    s.contextData['tve.minute']   = timeEST.getHours() + ':' + timeEST.getMinutes();
+    s.contextData['tve.minute']   = timeEST.getMinutes();
     s.contextData['tve.hour']     = timeEST.getHours();
     s.contextData['tve.day']      = days[timeEST.getDay()];
     s.contextData['tve.date']     = mm + '-' + dd + '-' + yyyy;
@@ -251,7 +251,4 @@
     trackStreamAuthorization: trackStreamAuthorization
   };
 
-  //initialization
-  setup();
-
-})(jQuery, s, this);
+})(jQuery, this);

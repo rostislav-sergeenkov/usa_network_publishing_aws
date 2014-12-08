@@ -87,7 +87,7 @@ function usanetwork_overlay_get_ajax($display) {
 function usanetwork_overlay_ajax_callback($page_result) {
   $content = drupal_render($page_result);
 
-  print $content;
+  print $content . _usanetwork_tv_shows_consumptionator_relcontent_block();
 
   return drupal_page_footer();
 }

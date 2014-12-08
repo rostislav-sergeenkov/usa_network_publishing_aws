@@ -10,7 +10,7 @@
       <div class="show-list-wrapper">
         <ul>
           <?php foreach ($related_items as $related_item): ?>
-            <li<?php if (!empty($related_item['li_class'])): print ' class="' . $related_item['li_class']; endif; ?>>
+            <li<?php if (!empty($related_item['li_class'])): print ' class="' . $related_item['li_class'] . '"'; endif; ?>>
               <?php print $related_item['content']; ?>
             </li>
           <?php endforeach; ?>>

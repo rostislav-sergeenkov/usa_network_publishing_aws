@@ -4,7 +4,7 @@
  */
 ?>
 <div class="node node-usanetwork-promo">
-  <a href="javascript:void(0)">
+  <a href="<?php print !empty($content_url) ? $content_url : 'javascript:void(0)'; ?>">
     <?php if (!empty($image_url)): ?>
       <div class="asset-img">
         <img alt="" src="<?php print $image_url; ?>">

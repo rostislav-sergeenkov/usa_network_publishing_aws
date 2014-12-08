@@ -500,11 +500,10 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
         }
 
         $query->condition($filter_field_name, $values, $operator);
-        //die('<pre>'.print_r($query->execute()->fetchAll(), true).'</pre>');
       }
     }
   }
-  //die('<pre>'.print_r($query->execute()->fetchAll(), true).'</pre>');
+
   return $query->execute()->fetchAll();
 }
 
@@ -567,7 +566,7 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
       }
     }
   }
-  //die('<pre>'.print_r($query->execute()->fetchAll(), true).'</pre>');
+
   return $query->execute()->fetchAll();
 }
 

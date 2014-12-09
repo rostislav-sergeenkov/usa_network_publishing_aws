@@ -319,6 +319,52 @@ function usanetwork_imagestyles_image_default_styles() {
     'label' => '615x350',
   );
 
+  // Exported image style: bc1666x938.
+  $styles['bc1666x938'] = array(
+    'name' => 'bc1666x938',
+    'label' => 'bc1666x938',
+    'effects' => array(
+      29 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1666,
+          'height' => 938,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: bc480x270.
+  $styles['bc480x270'] = array(
+    'name' => 'bc480x270',
+    'label' => 'bc480x270',
+    'effects' => array(
+      28 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 480,
+          'height' => 270,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: bc833x469.
   $styles['bc833x469'] = array(
     'name' => 'bc833x469',
@@ -336,6 +382,29 @@ function usanetwork_imagestyles_image_default_styles() {
         'data' => array(
           'width' => 833,
           'height' => 469,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: bc960x540.
+  $styles['bc960x540'] = array(
+    'name' => 'bc960x540',
+    'label' => 'bc960x540',
+    'effects' => array(
+      30 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 960,
+          'height' => 540,
         ),
         'weight' => 1,
       ),
@@ -538,6 +607,29 @@ function usanetwork_imagestyles_image_default_styles() {
       ),
     ),
     'label' => 'search_result',
+  );
+  
+    // Exported image style: search_result.
+  $styles['100x56'] = array(
+    'name' => '100x56',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 100,
+          'height' => 56,
+        ),
+        'weight' => 1,
+      ),
+    ),
+    'label' => '100x56',
   );
 
   // Exported image style: thumb_tiny.

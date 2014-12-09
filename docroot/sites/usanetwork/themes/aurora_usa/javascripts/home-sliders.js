@@ -3,75 +3,90 @@
   Drupal.behaviors.homeSlides = {
     attach: function (context, settings) {
 
-      USAN = {};
-      USAN.aspot = (function () {
+      USAN.aspotSlider = {};
 
-        var hideContent = function(selector) {
-          $(selector).css({
-            'opacity': 0
+      var hideContent = function(selector) {
+        $(selector).css({
+          'opacity': 0
+        });
+      };
+
+      var changeLogoColor = function(element) {
+        var logo = $('.home-logo');
+        var show = $(element).closest('.node').attr('data-show');
+        var old_show = logo.attr('data-show');
+        if (old_show) {
+          logo.removeClass(old_show).addClass(show).attr('data-show', show);
+        } else {
+          logo.addClass(show).attr('data-show', show);
+        }
+      };
+
+      var animateContent = function(element) {
+        console.debug('animateContent');
+        changeLogoColor(element);
+        $(element).animate({
+          'opacity': 1
+        }, 500)
+      };
+
+      var showFocusSlide = function(el, slide, old, active) {
+        var index = active + 1,
+            nextSlideInner = el.get(0).children[index].children[0],
+            nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
+
+        USAN.aspotSlider.animateTimeout = setTimeout(function() {
+          animateContent(nextSlideContent);
+        }, 600);
+
+        var moveIt = function(index) {
+          var nextSlideInner = el.get(0).children[index + 1].children[0],
+              nextSlideImg = $(nextSlideInner).find('img').get(0),
+              shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
+          shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
+
+          console.debug('moveIt: show');
+
+          $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
+          $(nextSlideInner).css('width', parseInt($(window).width())).animate({
+            'margin-left': '-=10%'
+          }, 600, 'easeOutBack', function() {
+            $('.next-button').fadeIn(500).removeClass('disabled');
           });
         };
 
-        var animateContent = function(element) {
-          $(element).animate({
-            'opacity': '+=1'
-          }, 500)
-        };
-
-        var showFocusSlide = function(el, slide, old, active) {
-          var index = active + 1,
-              nextSlideInner = el.get(0).children[index].children[0],
-              nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
-
-          setTimeout(function() {
-            animateContent(nextSlideContent);
-          }, 600);
-
-          var moveIt = function(index) {
-            var nextSlideInner = el.get(0).children[index + 1].children[0],
-                nextSlideImg = $(nextSlideInner).find('img').get(0),
-                shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
-
-            shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
-
-            $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
-            $(nextSlideInner).css('width', parseInt($(window).width())).animate({
-              'margin-left': '-=10%'
-            }, 600, 'easeOutBack', function() {
-              $('.next-button').fadeIn(500).removeClass('disabled');
-            });
-          };
-
-          setTimeout(function() {
-            moveIt(index);
-          }, 4000);
-        };
-
-        var hideFocusSlide = function(el, slide, old, active) {
-          var index = old + 1,
-              nextSlideInner = el.get(0).children[index + 1].children[0],
-              nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
-
-          hideContent(nextSlideContent);
-
-          var moveIt = function(index) {
-            var nextSlideInner = el.get(0).children[index + 1].children[0],
-                nextSlideImg = $(nextSlideInner).find('img').get(0);
-
-            $(nextSlideImg).animate({
-              'margin-left': '0'
-            }, 800, null);
-            $(nextSlideInner).css('width', parseInt($(window).width())).animate({
-              'margin-left': '0'
-            }, 800, null);
-
-            $('.next-button').fadeOut(200).addClass('disabled');
-          };
-
+        USAN.aspotSlider.showTimeout = setTimeout(function() {
           moveIt(index);
+        }, 4000);
+      };
+
+      var hideFocusSlide = function(el, slide, old, active) {
+        var index = old + 1,
+            nextSlideInner = el.get(0).children[index + 1].children[0],
+            nextSlideContent = $(nextSlideInner).find('.slide-content').get(0);
+
+        var moveIt = function(index) {
+          var nextSlideInner = el.get(0).children[index + 1].children[0],
+              nextSlideImg = $(nextSlideInner).find('img').get(0);
+
+          console.debug('moveIt: hide');
+
+          $(nextSlideImg).animate({
+            'margin-left': '0'
+          }, 800, null);
+          $(nextSlideInner).animate({
+            'margin-left': '0'
+          }, 800, null).css('width', parseInt($(window).width()));
+
+          $('.next-button').fadeOut(200).addClass('disabled');
         };
 
-        var options = {
+        hideContent(nextSlideContent);
+        moveIt(index);
+      };
+
+      var initSlider = function(options) {
+        var settings = $.extend({
           pager: false,
           controls: false,
           auto: true,
@@ -81,31 +96,61 @@
           useCSS: false,
           onSlideBefore: hideFocusSlide,
           onSlideAfter: showFocusSlide,
-          onSliderLoad: showFocusSlide
-        };
-
-        var init = function (selector) {
-          if ($(selector).length) {
-            return $(selector).bxSlider(options);
+          onSliderLoad: function(el, slide, old, active){
+            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+            changeLogoColor($(first_slide).find('.slide-content'));
+            showFocusSlide(el, slide, old, active);
           }
+        }, options);
 
-          return 0;
-        };
+        clearTimeout(USAN.aspotSlider.showTimeout);
+        clearTimeout(USAN.aspotSlider.animateTimeout);
 
-        return {
-          init: init
+        if (window.innerWidth <= 640) {
+          delete settings.onSlideBefore;
+          settings.onSlideAfter = function (el, slide) {
+            changeLogoColor(slide.find('.slide-content'));
+          };
+          settings.onSliderLoad = function () {
+            var first_slide = $('#main-slider-wrapper .slide').not($( '.slide.bx-clone')).get(0);
+            changeLogoColor($(first_slide).find('.slide-content'));
+          };
         }
-      })();
+
+        return $('.slider').bxSlider(settings);
+      };
+
+      var aspotSlider = null;
 
       $(window).load(function(){
-        var aspot = USAN.aspot.init('.slider');
 
-        $('.next-button').click(function() {
-          aspot.goToNextSlide();
-        });
+        aspotSlider = initSlider();
 
+        $('.next-button')
+            .hide()
+            .addClass('disabled')
+            .click(function() {
+              aspotSlider.goToNextSlide();
+            });
+
+      });
+
+      $(window).bind('resize', function() {
         $('.next-button').hide().addClass('disabled');
+        aspotSlider.stopAuto();
 
+        waitForFinalEvent(function() {
+          var currentSlide = aspotSlider.getCurrentSlide();
+
+          aspotSlider.destroySlider();
+          $('.slider .wrp, .slider .full-image').stop().css({'margin-left': '0'});
+
+          aspotSlider = initSlider({
+            startSlide: currentSlide
+          });
+        }, 500, 'aspotSlide:id');
+
+        $('.slider .wrp').attr('style', '');
       });
 
       //old code

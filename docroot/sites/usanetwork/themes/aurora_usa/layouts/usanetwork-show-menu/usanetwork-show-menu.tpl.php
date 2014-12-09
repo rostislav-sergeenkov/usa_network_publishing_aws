@@ -1,6 +1,6 @@
 <div class="panel-display usanetwork-show-menu-panel clearfix" <?php if (!empty($css_id)): print "id=\"$css_id\""; endif; ?>>
   <div class="header-nav-bar">
-    <div class="usa-logo show-color hover-avail">
+    <div class="usa-logo show-color hover-avail <?php if ($is_front): print "home-logo"; endif; ?>">
       <a href="/" title="<?php print t('Home'); ?>" rel="home"></a>
     </div>
     <div class="show-title-wrapper show-border tertiary"></div>

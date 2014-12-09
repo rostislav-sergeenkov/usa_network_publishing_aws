@@ -7,6 +7,7 @@
 include_once 'usanetwork_tv_shows.features.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
+define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
 
 /**
  * Implements hook_menu().
@@ -99,7 +100,9 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_tv_shows_catchup_explore' => array(
       'variables' => array(
-        'catch_up' => array( // Carousel lines
+        'is_catch_up' => NULL,
+        'is_explore' => NULL,
+        'catch_up' => array(// Carousel lines
           0 => array(
             'caption' => NULL,
             'title' => NULL,
@@ -108,7 +111,6 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
           )
         ),
         'explore' => array(
-
         ),
       ),
       'template' => 'templates/usanetwork-tv-shows-catchup-explore',
@@ -270,7 +272,7 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
  * Implements hook_usanetwork_overlay_prerender().
  */
 function usanetwork_tv_shows_usanetwork_overlay_prerender() {
-
+  
 }
 
 /**
@@ -527,7 +529,7 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
  *   ),
  * );
  */
-function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
+function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array(), $season_num = FALSE, $episode_num = FALSE) {
   $query = db_select('field_data_field_show', 'fshow');
   $query->fields('fshow', array('entity_type', 'bundle', 'entity_id'));
   $query->join('file_managed', 'f', 'fshow.entity_id=f.fid');
@@ -535,6 +537,19 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
   $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->addField('mpx_video_data', 'title', 'title');
   $query->join('node', 'sn', 'fshow.field_show_target_id=sn.nid');
+
+  if ($season_num) {
+    $query->leftJoin('field_data_field_mpx_season_number', 'season_num', 'f.fid=season_num.entity_id');
+    $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
+    $query->condition('season_num.field_mpx_season_number_value', $season_num);
+  }
+  
+  if ($episode_num) {
+    $query->leftJoin('field_data_field_mpx_episode_number', 'episode_num', 'f.fid=episode_num.entity_id');
+    $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
+    $query->condition('episode_num.field_mpx_episode_number_value', $episode_num);
+  }
+
   $query->addField('sn', 'title', 'show_title');
   $query->condition('fshow.field_show_target_id', $show_id);
   $query->condition('fshow.deleted', 0);
@@ -620,9 +635,7 @@ function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mod
       break;
   }
 
-  return !empty($content_item)
-      ? render($content_item)
-      : '';
+  return !empty($content_item) ? render($content_item) : '';
 }
 
 /**
@@ -740,88 +753,78 @@ function _usanetwork_tv_shows_catchup_explore_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($show_node)) {
-    $latest_full_episodes = _usanetwork_tv_shows_wrap_latest_episodes($show_node->nid);
 
-    $theme_variables = array(
-      'catch_up' => array(
-        2 => array(
-          'caption' => t('Watch now!'), //@TODO: Is configurable?
-          'title' => t('Videos'), //@TODO: Is configurable?
-          'additional_text' => t('Clips, interviews & more'), //@TODO: Is configurable?
-          'elements' => array(), //@TODO: Is configurable?
-        ),
-        1 => array(
-          'caption' => t('Watch now!'), //@TODO: Is configurable?
-          'title' => t('Latest full episodes'), //@TODO: Is configurable?
-          'additional_text' => t('@num full episodes', array('@num' => 5)), //@TODO: Is configurable?
-          'elements' => $latest_full_episodes, //@TODO: Is configurable?
-        ),
-        3 => array(
-          'caption' => t('Season @season_number', array('@season_number' => 2)), //@TODO: Is configurable?
-          'title' => t('The season in @show_name', array('@show_name' => 'Suits')), //@TODO: Is configurable?
-          'additional_text' => t('@num features', array('@num' => 13)), //@TODO: Is configurable?
-          'elements' => array(), //@TODO: Is configurable?
-        ),
-      ),
-      'explore' => array(
-        4 => array(
-          'caption' => t('Key players'), //@TODO: Is configurable?
-          'title' => t('Meet the cast'), //@TODO: Is configurable?
-          'additional_text' => t('@num characters', array('@num' => 6)), //@TODO: Is configurable?
-          'elements' => array(), //@TODO: Is configurable?
-        ),
-        2 => array(
-          'caption' => '', //@TODO: Is configurable?
-          'title' => t('Explore the show'), //@TODO: Is configurable?
-          'additional_text' => t('@num features', array('@num' => 27)), //@TODO: Is configurable?
-          'elements' => array(), //@TODO: Is configurable?
-        ),
-        5 => array(
-          'caption' => t('2011 - now'), //@TODO: Is configurable?
-          'title' => t('Past seasons'), //@TODO: Is configurable?
-          'additional_text' => t('@num seasons', array('@num' => 4)), //@TODO: Is configurable?
-          'elements' => array(), //@TODO: Is configurable?
-        ),
-      ),
-    );
+    $theme_variables = array();
+    //Analyze catch-up carousel
+    $theme_variables['is_catch_up'] = FALSE;
+    for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
+      $field_ctchup_carousel = field_get_items('node', $show_node, "field_ctchup_carousel_$i");
+      if ($field_ctchup_carousel) {
+        $theme_variables['is_catch_up'] = TRUE;
+        $theme_variables['catch_up'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_ctchup_carousel);
+        $theme_variables['catch_up'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_pretitle_$i", 'value');
+        $theme_variables['catch_up'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_title_$i", 'value');
+        $theme_variables['catch_up'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_ctchup_posttitle_$i", 'value');
+        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
+              : 'left';
+      }
+    }
 
-    return theme('usanetwork_tv_shows_catchup_explore', $theme_variables);
+    //Analyze explore carousel
+    $theme_variables['is_explore'] = FALSE;
+    for ($i = 1; $i <= USANETWORK_TV_SHOWS_CAROUSEL_NUMBER; $i++) {
+      $field_explr_carousel = field_get_items('node', $show_node, "field_explr_carousel_$i");
+      if ($field_explr_carousel) {
+        $theme_variables['is_explore'] = TRUE;
+        $theme_variables['explore'][$i]['elements'] = _usanetwork_tv_shows_get_cuexcarousel($field_explr_carousel);
+        $theme_variables['explore'][$i]['caption'] = _usanetwork_get_field_item('node', $show_node, "field_explr_pretitle_$i", 'value');
+        $theme_variables['explore'][$i]['title'] = _usanetwork_get_field_item('node', $show_node, "field_explr_title_$i", 'value');
+        $theme_variables['explore'][$i]['additional_text'] = _usanetwork_get_field_item('node', $show_node, "field_explr_posttitle_$i", 'value');
+        $theme_variables['catch_up'][$i]['carousel_position'] = ($i % 2 == 0) ? 'right'
+              : 'left';
+      }
+    }
+
+    if (!empty($theme_variables)) {
+      $tets = theme('usanetwork_tv_shows_catchup_explore', $theme_variables);
+      return $tets;
+    }
   }
 
   return '';
 }
 
 /**
- * Wraps last episodes for "Catch Up" block carousel.
+ * Wraps elements for "Catch Up - Explore" block carousel.
  */
-function _usanetwork_tv_shows_wrap_latest_episodes($show_nid) {
+function _usanetwork_tv_shows_get_cuexcarousel($carousel) {
   $items = array();
-  $latest_episodes = usanetwork_schedule_pull_latest_episodes($show_nid, 5);
 
-  if (!empty($latest_episodes)) {
-    foreach ($latest_episodes as $show_number => $latest_episode) {
-      $episode_class = NULL;
+  foreach ($carousel as $show_number => $carousel_item) {
+    $episode_class = NULL;
 
-      if ($show_number == 0) {
-        $episode_class = 'first';
-      }
-
-      if ($show_number == count($latest_episodes) - 1) {
-        $episode_class = 'last';
-      }
-
-      $theme_variables = array(
-        'class' => $episode_class,
-        'title' => $latest_episode->title,
-        'additional' => array(
-          'normal' => NULL,
-          'span' => NULL,
-        ),
-        'media_player_icon' => TRUE,
-      );
-
-      $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
+    if ($show_number == 0) {
+      $episode_class = 'first';
     }
+
+    if ($show_number == count($carousel) - 1) {
+      $episode_class = 'last';
+    }
+
+    $promo = _usanetwork_promo_featured_content($carousel_item['target_id']);
+
+    $theme_variables = array(
+      'class' => $promo['show_class'],
+      'title' => $promo['caption'],
+      'title' => $promo['title'],
+      'additional' => array(
+        'normal' => NULL,
+        'span' => NULL,
+      ),
+      'media_player_icon' => $promo['icon-type'],
+    );
+
+    $items[] = theme('usanetwork_tv_shows_catchup_explore_content_element', $theme_variables);
   }
 
   return $items;

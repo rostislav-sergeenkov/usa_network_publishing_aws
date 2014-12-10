@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the Post feature.
  */
-
 include_once 'usanetwork_post.features.inc';
 include_once 'usanetwork_post.field.inc';
 
@@ -22,7 +22,7 @@ function usanetwork_post_block_info() {
     'info' => t('Blog Global Header'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  
+
   $blocks['usanetwork_post_banners'] = array(
     'info' => t('Blog Banners'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -32,7 +32,7 @@ function usanetwork_post_block_info() {
     'info' => t('Blog Latest Posts'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  
+
   return $blocks;
 }
 
@@ -81,41 +81,44 @@ function usanetwork_post_form_post_node_form_alter(&$form, &$form_state) {
  */
 function usanetwork_post_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
   if ($form['#vocabulary']->name == 'Blog') {
-  $form['#submit'][] = '_usanetwork_post_comment_setting_submit';
+    $form['#submit'][] = '_usanetwork_post_comment_setting_submit';
     if (isset($form['#term']['tid'])) {
       $parents = taxonomy_get_parents($form['#term']['tid']);
       if (!empty($parents)) {
         $form['field_blog_display_author']['#states'] = array('visible' => array(':input[name="field_override_display_author[und]"]' => array('checked' => true)));
-      } else {
+      }
+      else {
         $form['field_override_display_author']['#type'] = 'hidden';
       }
-    } else {
+    }
+    else {
       $form['field_blog_display_author']['#states'] = array('visible' => array(':input[name="field_override_display_author[und]"]' => array('checked' => true)));
     }
   }
 }
 
 function _usanetwork_post_comment_setting_submit($form, &$form_state) {
-  
+
   if (isset($form_state['entity_id'])) {
     $categories = taxonomy_get_children($form_state['entity_id']);
     if (!empty($categories) && (isset($form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE]))) {
       $comments_setting = $form_state['values']['field_blog_gigya_comments'][LANGUAGE_NONE][0];
-        $etst1 = array_keys($categories);
+      $etst1 = array_keys($categories);
       $blog_posts_select = db_select('node', 'n')
-        ->fields('n', array('nid'))
-        ->condition('type', 'post');
+          ->fields('n', array('nid'))
+          ->condition('type', 'post');
       $blog_posts_select->join('field_data_field_blog', 'fdfb', 'fdfb.entity_id = n.nid');
       $blog_posts_select->condition('fdfb.field_blog_tid', array_keys($categories), 'IN');
-      $blog_posts = $blog_posts_select->execute()->fetchCol();     
+      $blog_posts = $blog_posts_select->execute()->fetchCol();
       if ($blog_posts) {
         $nodes = node_load_multiple($blog_posts);
-        if ( $comments_setting['value'] == 1 ) {
+        if ($comments_setting['value'] == 1) {
           foreach ($nodes as $node) {
             $node->comment = 2;
             node_save($node);
           }
-        } else {
+        }
+        else {
           foreach ($nodes as $node) {
             $node->comment = 1;
             node_save($node);
@@ -141,9 +144,10 @@ function usanetwork_post_node_presave($node) {
         $blog_value = _usanetwork_post_get_blog_by_category($blog);
         if ($blog_value) {
           $blog_gigya_comments = reset(field_get_items('taxonomy_term', $blog_value, 'field_blog_gigya_comments'));
-          if ($blog_gigya_comments['value']  == 1) {
+          if ($blog_gigya_comments['value'] == 1) {
             $node->comment = 2;
-          } else {
+          }
+          else {
             $node->comment = 1;
           }
         }
@@ -163,27 +167,14 @@ function usanetwork_post_taxonomy_term_update($term) {
   if ($term->vocabulary_machine_name == 'blog') {
     $query = new EntityFieldQuery('node');
     $nodes = $query->entityCondition('bundle', 'post', '=')
-      ->fieldCondition(USANETWORK_FIELD_BLOG, 'tid', $term->tid, '=')
-      ->execute();
+        ->fieldCondition(USANETWORK_FIELD_BLOG, 'tid', $term->tid, '=')
+        ->execute();
     if (!empty($nodes)) {
       $nodes = node_load_multiple(array_keys($nodes['node']));
       foreach ($nodes as $node) {
         $node->taxonomy_term_update = TRUE;
         $node->field_show = $term->field_show;
         node_save($node);
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_node_load().
- */
-function usanetwork_post_node_load($nodes, $types) {
-  if (in_array('post', $types)) {
-    foreach ($nodes as $node) {
-      if ($node->type == 'node') {
-
       }
     }
   }
@@ -206,13 +197,15 @@ function usanetwork_post_taxonomy_term_presave($term) {
 /*
  * Helper for getting cached comments count
  */
+
 function _usanetwork_post_get_comment_count($nid) {
   $comment_count = FALSE;
-  
+
   $call = __FUNCTION__ . '_' . $nid;
   if ($cache = cache_get($call)) {
     $comment_count = $cache->data;
-  } else {
+  }
+  else {
     $parameters = array(
       'query' => array(
         'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
@@ -231,7 +224,7 @@ function _usanetwork_post_get_comment_count($nid) {
         }
       }
     }
-  } 
+  }
   return $comment_count;
 }
 
@@ -244,20 +237,25 @@ function usanetwork_post_preprocess_node(&$vars) {
     if (isset($vars['content']['post_date'])) {
       //$vars['content']['post_date'][0]['#markup'] .= ' ' . format_plural($vars['comment_count'], 'with 1 comment', 'with @count comments');
       if ($vars['view_mode'] == 'teaser') {
-        $vars['content']['post_date'][0]['#markup'] = $vars['content']['post_date'][0]['#markup'];  
+        $vars['content']['post_date'][0]['#markup'] = $vars['content']['post_date'][0]['#markup'];
       }
     }
-    
+    else {
+      $vars['content']['post_date'][0]['#markup'] = '';
+    }
+
     if (isset($vars['content']['author'])) {
       $override_default_author = reset(field_get_items('node', $node, 'field_override_display_author'));
       if ($override_default_author['value'] == 1) {
         $field_display_author = reset(field_get_items('node', $node, 'field_blog_display_author'));
         if ($field_display_author['value'] == 1) {
           $display_author = TRUE;
-        } else {
+        }
+        else {
           $display_author = FALSE;
         }
-      } else {
+      }
+      else {
         $field_category = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
         if ($field_category) {
           $category = taxonomy_term_load($field_category['tid']);
@@ -267,16 +265,19 @@ function usanetwork_post_preprocess_node(&$vars) {
               $field_category_display_author = reset(field_get_items('taxonomy_term', $category, 'field_blog_display_author'));
               if ($field_category_display_author['value'] == 1) {
                 $display_author = TRUE;
-              } else {
+              }
+              else {
                 $display_author = FALSE;
               }
-            } else {
+            }
+            else {
               $blog = _usanetwork_post_get_blog_by_category($category);
               if ($blog) {
                 $blog_display_author = reset(field_get_items('taxonomy_term', $blog, 'field_blog_display_author'));
                 if ($blog_display_author['value'] == 1) {
                   $display_author = TRUE;
-                } else {
+                }
+                else {
                   $display_author = FALSE;
                 }
               }
@@ -288,15 +289,18 @@ function usanetwork_post_preprocess_node(&$vars) {
         $conributor = reset(field_get_items('node', $node, 'field_contributor'));
         if ($conributor) {
           $author = user_load($conributor['target_id']);
-        } else {
+        }
+        else {
           $author = user_load($node->uid);
         }
         if ($vars['view_mode'] == 'teaser') {
-          $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author, 'display_full' => FALSE));  
-        } else {
-          $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author, 'display_full' => TRUE));  
+          $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author, 'post_date' => $vars['content']['post_date'][0]['#markup'], 'display_full' => FALSE));
         }
-      } else {
+        else {
+          $vars['content']['author'][0]['#markup'] = theme('usanetwork_post_author_display', array('author' => $author, 'display_full' => TRUE));
+        }
+      }
+      else {
         unset($vars['content']['author']);
       }
     }
@@ -307,7 +311,16 @@ function usanetwork_post_preprocess_node(&$vars) {
           $vars['content']['gigya_comment_count'][0]['#markup'] = '<div class="usa-gigya-comments-count">' . format_plural($comments_count, '1 Comment', '@count Comments') . '</div>';
         }
       }
-    }
+
+      if (isset($vars['content']['field_post_cover'])) {
+        $vars['post_image'] = theme_image(array('path' => $vars['content']['field_post_cover']['#items'][0]['uri']));
+      }
+      
+      if (isset($vars['content']['field_summary'])) {
+        $vars['summary'] = render($vars['content']['field_summary'][0]);
+      }
+    } 
+    
     if ($vars['view_mode'] != 'teaser') {
       $show_cover = field_get_items('node', $node, 'field_post_cover_toggle');
       if ($show_cover) {
@@ -323,7 +336,7 @@ function usanetwork_post_preprocess_node(&$vars) {
           unset($vars['content']['field_post_cover']);
         }
       }
-      if ($vars['comment'] == 2) { 
+      if ($vars['comment'] == 2) {
         $parameters = array(
           'query' => array(
             'categoryID' => variable_get('gigya_comments_categoryid', 'USA Blogs'),
@@ -430,8 +443,7 @@ function _usanetwork_post_get_blog_by_category($category) {
         elseif ($tid != $original_tid) {
           $blog = taxonomy_term_load($tid);
         }
-
-      } while(!empty($tids));
+      } while (!empty($tids));
 
       if ($tid == $original_tid) {
         $blog = is_object($category) ? $category : taxonomy_term_load($category);
@@ -572,6 +584,7 @@ function _usanetwork_post_get_blog_global_header($blog = NULL) {
 
 /**
  * Returns blog header block content.
+ * @TODO - may be remove this function
  */
 function _usanetwork_post_get_blog_banners($blog = NULL) {
   $content = array();
@@ -618,6 +631,7 @@ function _usanetwork_post_get_blog_banners($blog = NULL) {
 
 /**
  * Returns block for latest posts for blog.
+ * @TODO - may be remove this function
  */
 function _usanetwork_post_get_latest_posts($blog = NULL) {
   $content = array();
@@ -646,10 +660,10 @@ function _usanetwork_post_get_latest_posts($blog = NULL) {
     if ($display_latest_posts && $display_latest_posts = reset($display_latest_posts)) {
 
       if ($display_latest_posts['value'] == 1) {
-        $blog_terms = array_keys (taxonomy_get_children($blog->tid, $blog->vid));
+        $blog_terms = array_keys(taxonomy_get_children($blog->tid, $blog->vid));
 
         $db_select = db_select('node', 'n')
-                ->fields('n', array('nid', 'title'));
+            ->fields('n', array('nid', 'title'));
         $db_select->condition('n.status', '1');
         $db_select->condition('n.type', 'post');
         $db_select->leftJoin('field_data_field_blog', 'fdfb', 'n.nid=fdfb.entity_id');
@@ -676,7 +690,7 @@ function _usanetwork_post_get_latest_posts($blog = NULL) {
     }
   }
 
-  
+
   return $content;
 }
 
@@ -717,10 +731,11 @@ function _usanetwork_post_get_blog_menu($tid, $vid = 0, $category = NULL) {
 
 /*
  * Inherited omniture variables for blog
+ * @TODO - may be remove this function
  */
 function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
   $inherited_variables = array('s.prop4', 's.prop3');
-  
+
   $entity = $context['entity'];
   $entity_type = $context['entity_type'];
   if ($entity_type == 'taxonomy_term') {
@@ -729,7 +744,7 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
       $omniture_variables = $taxonomy_omniture_varibles_setting['omniture_variables'];
     }
   }
-  
+
   if ($entity_type == 'node') {
     if ($entity->type == 'post') {
       $field_blog = field_get_items($entity_type, $entity, 'field_blog');
@@ -737,17 +752,17 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
       if (isset($field_post_category)) {
         $category = taxonomy_term_load($field_post_category['tid']);
         $category_omniture_settings = _usanetwork_ads_entity_settings($category, 'taxonomy_term');
-        $category_omniture = _usanetwork_ads_get_omniture_variables($category_omniture_settings['omniture']['variables']);       
+        $category_omniture = _usanetwork_ads_get_omniture_variables($category_omniture_settings['omniture']['variables']);
         $category_omniture_real_variables = _usanetwork_post_take_taxonomy_omniture_varibles($category, 'taxonomy_term', $category_omniture, $inherited_variables);
         $show_omniture = $category_omniture_real_variables['show_variables'];
         foreach ($category_omniture_real_variables['omniture_variables'] as $key => $value) {
-          if (in_array($key, $inherited_variables)){
+          if (in_array($key, $inherited_variables)) {
             if ($omniture_variables[$key] == $show_omniture[$key]) {
               //rewrite show setting, if empty category settings
               $omniture_variables[$key] = $category_omniture_real_variables['omniture_variables'][$key];
-            } 
+            }
           }
-        }   
+        }
       }
     }
   }
@@ -755,6 +770,7 @@ function usanetwork_post_usa_omniture_alter(&$omniture_variables, $context) {
 
 /*
  * Helper for get omniture variables for taxonomy
+ * @TODO - may be remove this function
  */
 function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type, $omniture_variables, $inherited_variables) {
   $parents = taxonomy_get_parents($entity->tid);
@@ -767,40 +783,43 @@ function _usanetwork_post_take_taxonomy_omniture_varibles($entity, $entity_type,
     $show_omniture_setting = _usanetwork_ads_entity_settings(node_load($tv_show_nid), 'node');
     $show_omniture = _usanetwork_ads_get_omniture_variables($show_omniture_setting['omniture']['variables']);
     foreach ($parent_omniture as $key => $value) {
-      if (in_array($key, $inherited_variables)){
+      if (in_array($key, $inherited_variables)) {
         if (isset($omniture_variables[$key])) {
           if ($omniture_variables[$key] == $show_omniture[$key]) {
             //rewrite show setting, if empty category settings
             $omniture_variables[$key] = $parent_omniture[$key];
           }
-        } else {
+        }
+        else {
           $omniture_variables[$key] = $parent_omniture[$key];
         }
       }
-    }  
+    }
   }
   return array('omniture_variables' => $omniture_variables, 'show_variables' => $show_omniture);
 }
 
 /*
  * Get css files from categories
+ * @TODO - may be remove this function
  */
-function _usanetwork_post_entity_blog_get_css_field($entity, $type) { 
-  
+function _usanetwork_post_entity_blog_get_css_field($entity, $type) {
+
   $attached_css_code = array();
-  
+
   if ($type == 'taxonomy_term') {
     $blog = _usanetwork_post_get_blog_by_category($entity);
     $category = $entity;
     if ($blog->tid == $category->tid) {
       $attached_files = _usanetwork_post_get_css_files(array($category));
       $attached_css_code = _usanetwork_post_get_css_code(array($category));
-    } else {
-      $attached_files = _usanetwork_post_get_css_files(array($blog,$category));
-      $attached_css_code = _usanetwork_post_get_css_code(array($blog,$category));
+    }
+    else {
+      $attached_files = _usanetwork_post_get_css_files(array($blog, $category));
+      $attached_css_code = _usanetwork_post_get_css_code(array($blog, $category));
     }
   }
- 
+
   if ($type == 'node') {
     if ($entity->type == 'post') {
       $category = field_get_items($type, $entity, USANETWORK_FIELD_BLOG);
@@ -812,14 +831,14 @@ function _usanetwork_post_entity_blog_get_css_field($entity, $type) {
       }
     }
   }
-  
+
   $css_attached_files = array();
   if (isset($attached_files)) {
     foreach ($attached_files as $file) {
       $css_attached_files[] = $file['uri'];
     }
   }
-  
+
   return array('files' => $css_attached_files, 'inline' => $attached_css_code);
 }
 
@@ -828,31 +847,32 @@ function _usanetwork_post_entity_blog_get_css_field($entity, $type) {
  */
 function _usanetwork_post_get_css_files($entity_array) {
   $css_files = array();
-  
+
   foreach ($entity_array as $entity) {
     if (!empty($entity->field_blog_css_file)) {
       $css_file = field_get_items('taxonomy_term', $entity, 'field_blog_css_file');
       if ($css_file = reset($css_file)) {
         $css_files[] = $css_file;
       }
-    } 
+    }
   }
   return $css_files;
 }
 
 /*
  * Get all css inline code from hierarchy
+ * @TODO - may be remove this function
  */
 function _usanetwork_post_get_css_code($entity_array) {
   $css_code = array();
-  
+
   foreach ($entity_array as $entity) {
     if (!empty($entity->field_usa_css)) {
       $css_inline = field_get_items('taxonomy_term', $entity, 'field_usa_css');
       if ($css_inline = reset($css_inline)) {
         $css_code[] = $css_inline['value'];
       }
-    } 
+    }
   }
   return $css_code;
 }
@@ -860,21 +880,23 @@ function _usanetwork_post_get_css_code($entity_array) {
 /*
  * Implements hook_ctools_render_alter().
  * Set custom css files for blog
+ * @TODO - may be remove this function
  */
-function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) { 
-  
+function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
+
   if ($page) {
-    foreach ($context['contexts'] AS $ctools_context) {     
+    foreach ($context['contexts'] as $ctools_context) {
       foreach ($ctools_context->type as $value) {
-        if (in_array($value, array('taxonomy_term', 'node'))){
+        if (in_array($value, array('taxonomy_term', 'node'))) {
           $entity_type = $value;
-          if ($value == 'taxonomy_term') { 
+          if ($value == 'taxonomy_term') {
             if ($entity = taxonomy_term_load($ctools_context->argument)) {
               if ($entity->vocabulary_machine_name == 'blog') {
                 $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
-              }  
+              }
             }
-          } else if ($value == 'node') {
+          }
+          else if ($value == 'node') {
             if ($entity = node_load($ctools_context->argument)) {
               $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
               //add umbel code to page with comments
@@ -892,7 +914,7 @@ window._umbel = window._umbel || [];
                 drupal_add_js($umbel_code, 'inline');
               }
             }
-          } 
+          }
         }
       }
     }
@@ -900,13 +922,13 @@ window._umbel = window._umbel || [];
   $weight = 9990; //weight increament
   if (isset($attached_files['files'])) {
     foreach ($attached_files['files'] as $file) {
-      drupal_add_css($file, array('weight' => $weight)); 
+      drupal_add_css($file, array('weight' => $weight));
       $weight++;
     }
   }
   if (isset($attached_files['inline'])) {
     foreach ($attached_files['inline'] as $inline) {
-      drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight)); 
+      drupal_add_css($inline, array('type' => 'inline', 'preprocess' => FALSE, 'weight' => $weight));
       $weight++;
     }
   }
@@ -919,6 +941,7 @@ function usanetwork_post_theme() {
   return array(
     'usanetwork_post_author_display' => array(
       'variables' => array(
+        'post_date' => null,
         'author' => null,
         'display_full' => null,
       ),
@@ -929,39 +952,25 @@ function usanetwork_post_theme() {
 /*
  * Displaying author
  */
-function theme_usanetwork_post_author_display($variables){
+function theme_usanetwork_post_author_display($variables) {
   $author = $variables['author'];
+  $post_date = $variables['post_date'];
   $display_full = $variables['display_full'];
   $author_image = reset(field_get_items('user', $author, 'field_profile_image'));
   if ($author_image) {
     $image = theme('image_style', array('path' => $author_image['uri'], 'style_name' => 'medium'));
-  } else {
+  }
+  else {
     $image = '';
   }
   $author_info = reset(field_get_items('user', $author, 'field_biography'));
   $output = '';
   $output .= '<div class="post-author">' . t('By') . ' ' . $author->name . '</div>';
-  $output .= '<div class="post-author-image">' . $image . '</div>';
+  $output .= '<div class="post-date">' . $post_date . '</div>';
+  $output .= '<div class="post-author-image show-border">' . $image . '</div>';
   if ($display_full) {
     $output .= '<div class="post-author-info">' . $author_info['value'] . '</div>';
   }
   return $output;
 }
 
-/**
- * Implements hook_preprocess_views_view_unformatted
- * Add class with taxanomy category to view element 
- */
-function usanetwork_post_preprocess_views_view_unformatted(&$vars) {
-  if ($vars['view']->name == 'blog') {
-    foreach ($vars['view']->result as $key => $value) {
-      $node = node_load($value->nid);
-      $category_field = reset(field_get_items('node', $node, USANETWORK_FIELD_BLOG));
-      if ($category_field) {
-        $category = taxonomy_term_load($category_field['tid']);
-        module_load_include('inc', 'pathauto', 'pathauto');
-        $vars['classes_array'][$key] .= ' blog-term-' . pathauto_cleanstring($category->name);
-      }
-    }
-  }
-}

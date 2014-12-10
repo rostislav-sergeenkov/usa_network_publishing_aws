@@ -6,6 +6,7 @@
 <div class="node node-usanetwork-promo show-color-border<?php if (!empty($show_class)): print ' ' . $show_class; endif; ?>">
   <a class="show-open" href="javascript:void(0)">
     <div class="meta-wrapper">
+      <div class="meta-back"></div>
       <div class="meta-wrapper-inner">
         <div class="meta">
           <?php if (!empty($show_title)): ?>

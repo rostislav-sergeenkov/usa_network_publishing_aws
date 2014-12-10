@@ -688,9 +688,9 @@ function usanetwork_home_form_usanetwork_settings_form_alter(&$form, &$form_stat
   $form['shows_queue']['usanetwork_home_shows_queue_addtext'] = array(
     '#type' => 'textfield',
     '#title' => t('Additional text'),
-    '#description' => t('The additional text of description block. The <strong>"@number"</strong> will automatically changed to the actual value.'),
+    '#description' => t('The additional text of description block.'),
     '#required' => TRUE,
-    '#default_value' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
+    '#default_value' => variable_get('usanetwork_home_shows_queue_addtext', t('2 Original shows added')),
   );
 }
 
@@ -924,7 +924,7 @@ function _usanetwork_home_shows_queue_block() {
       $theme_variables = array(
         'caption' => variable_get('usanetwork_home_shows_queue_caption', t('All new')),
         'title' => variable_get('usanetwork_home_shows_queue_title', t('Explore, catch up & discover.')),
-        'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('@number Original shows added')),
+        'additional_text' => variable_get('usanetwork_home_shows_queue_addtext', t('2 Original shows added')),
         'slides' => array(),
       );
 

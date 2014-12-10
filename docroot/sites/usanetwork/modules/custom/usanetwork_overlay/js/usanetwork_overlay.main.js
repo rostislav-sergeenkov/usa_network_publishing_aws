@@ -39,8 +39,10 @@
           $('#consumptionator').html('<div class="ajax-loading"><div class="huge-text">' + Drupal.t('Please wait...') + '</div></div>');
         },
         success: function(response) {
-          if (typeof response != undefined && response.length > 0) {
-            $('#consumptionator').html(response);
+          if (typeof response.html != undefined && response.html.length > 0) {
+            $('#consumptionator').html(response.html);
+            Drupal.settings.consumptionatorDynamicData = response.data;
+
             wrapConsumptionatorLinks();
           }
           else {
@@ -64,33 +66,36 @@
       $.each($('#consumptionator a'), function(index, item) {
         var externalLink = false;
         var pageLocationTemp = pageLocation;
+        var itemAttr = $(item).attr('name');
 
-        var linkHref = $(item).attr('href').trim();
+        //if (typeof itemAttr !== typeof undefined && itemAttr !== false) {
+          var linkHref = $(item).attr('href').trim();
 
-        // Remove HOST from internal links
-        if(!isLinkExternal(linkHref)){
-          linkHref = linkHref.replace(/^.*\/\/[^\/]+/, '');
-        }
-        else {
-          externalLink = true;
-        }
-
-        // Remove the first '/' symbol from page address that should be opened in consumptionator
-        if (linkHref.substring(0, 1) == '/' && !externalLink) {
-          linkHref = linkHref.substring(1);
-        }
-
-        // Remove the last '/' symbol from page address that should be a host of consumptionator
-        if (linkHref && !externalLink) {
-          if (pageLocationTemp.substr(-1) == '/') {
-            pageLocationTemp = pageLocationTemp.substring(0, pageLocation.length - 1);
+          // Remove HOST from internal links
+          if (!isLinkExternal(linkHref)) {
+            linkHref = linkHref.replace(/^.*\/\/[^\/]+/, '');
+          }
+          else {
+            externalLink = true;
           }
 
-          $(item).attr('href', pageLocationTemp + '#consumptionator=' + linkHref);
-        }
-        else if (!linkHref && !externalLink) {
-          $(item).attr('href', '#');
-        }
+          // Remove the first '/' symbol from page address that should be opened in consumptionator
+          if (linkHref.substring(0, 1) == '/' && !externalLink) {
+            linkHref = linkHref.substring(1);
+          }
+
+          // Remove the last '/' symbol from page address that should be a host of consumptionator
+          if (linkHref && !externalLink) {
+            if (pageLocationTemp.substr(-1) == '/') {
+              pageLocationTemp = pageLocationTemp.substring(0, pageLocation.length - 1);
+            }
+
+            $(item).attr('href', pageLocationTemp + '#consumptionator=' + linkHref);
+          }
+          else if (!linkHref && !externalLink) {
+            $(item).attr('href', '#');
+          }
+        //}
       });
     }
 

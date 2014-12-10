@@ -524,7 +524,7 @@ function _usanetwork_menu_get_current_entity() {
     if (isset($entity->filemime)) {
       $entity->entity_type = 'file';
     }
-    else if (isset($node->type) && isset($node->nid)) {
+    else if (isset($node->type) && isset($node->nid)) { // $node is undefined, am I right?
       $entity->entity_type = 'node';
     }
     return $entity;
@@ -828,54 +828,62 @@ function _usanetwork_menu_footer_apps_services() {
  * Renders Consumtionator Menu block.
  */
 function _usanetwork_menu_consumptionator_block() {
-  $episode_node = _usanetwork_menu_show_menu_get_current_episode_node();
+  $query = drupal_get_query_parameters();
+  if (!empty($query['url'])) {
+    $normal_path = parse_url(drupal_get_normal_path($query['url']));
+    $menu_item = menu_get_item($normal_path['path']);
 
-  if ($episode_node) {
-    $episode_node_wrapper = entity_metadata_wrapper('node', $episode_node);
+    if (!empty($menu_item['page_arguments'][0])) {
+      $file = $menu_item['page_arguments'][0];
 
-    if (!empty($episode_node_wrapper)) {
-      $body_meta_data = array();
-      $episode_caption = array();
+      if ($file) {
+        $episode_image_uri = '';
 
-      if (!empty($episode_node->body)) {
-        $body_meta_data = $episode_node_wrapper->body->value();
-      }
+        $file_wrapper = entity_metadata_wrapper('file', $file);
 
-      if (!empty($episode_node->field_tv_episode_type)) {
-        $episode_caption = $episode_node_wrapper->field_tv_episode_type->name->label();
-      }
+        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
 
-      if (empty($episode_caption)) {
-        $episode_caption = t('Full episode');
-      }
+        if ($episode_image_uri_wrapper) {
+          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
+        }
 
-      return theme('usanetwork_menu_consumptionator', array(
-        'show_url' => !empty($episode_node->field_show)
-            ? url('node/' . $episode_node_wrapper->field_show->value()->nid)
+        $theme_variables = array(
+          'show_url' => url('file/' . $file->fid),
+          'show_name' => !empty($file->field_show)
+            ? $file_wrapper->field_show->value()->title
             : '',
-        'show_name' => !empty($episode_node->field_show)
-            ? $episode_node_wrapper->field_show->value()->title
-            : '',
-        'episode' => array(
-          'caption' => $episode_caption,
-          'image_url' => !empty($episode_node->field_tv_cover_media)
-              ? $episode_node_wrapper->field_tv_cover_media->file->value()->uri
+          'episode' => array(
+            'caption' => !empty($file->field_mpx_full_episode)
+              ? (
+                $file_wrapper->field_mpx_full_episode->value() == 0
+                  ? t('Full episode')
+                  : t('Promo')
+              )
               : '',
-          'title' => $episode_node->title,
-          'season_number' => !empty($episode_node->field_season)
-              ? $episode_node_wrapper->field_season->field_season_id->value()
+            'image_url' => !empty($episode_image_uri)
+              ? image_style_url('300x250', $episode_image_uri)
               : '',
-          'episode_number' => !empty($episode_node->field_episode_number)
-              ? $episode_node_wrapper->field_episode_number->value()
+            'full_title' => !empty($file->field_mpx_title)
+              ? $file_wrapper->field_mpx_title->value()
               : '',
-          'running_time' => !empty($episode_node->field_original_air_date)
-              ? gmdate('H:i:s', $episode_node_wrapper->field_original_air_date->duration->value())
+            'title' => $file_wrapper->name->value(),
+            'season_number' => !empty($file->field_mpx_season_number)
+              ? $file_wrapper->field_mpx_season_number->value()
               : '',
-          'description' => !empty($body_meta_data)
-              ? $body_meta_data['value']
+            'episode_number' => !empty($file->field_mpx_episode_number)
+              ? $file_wrapper->field_mpx_episode_number->value()
               : '',
-        ),
-      ));
+            'running_time' => !empty($file->field_mpx_duration)
+              ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value())
+              : '',
+            'description' => !empty($file->field_mpx_description)
+              ? $file_wrapper->field_mpx_description->value()
+              : '',
+          ),
+        );
+
+        return theme('usanetwork_menu_consumptionator', $theme_variables);
+      }
     }
   }
 

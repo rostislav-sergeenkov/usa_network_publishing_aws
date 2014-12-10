@@ -2,4 +2,4 @@ name = Usanetwork consumptionator carousel
 description = Functionality related to Consumptionator carousel for video page, gallery and some other pages. Contain implementation of block.
 package = USA Network
 core = 7.x
-version = "7.x-1.1.1"
+version = "7.x-1.1.2"

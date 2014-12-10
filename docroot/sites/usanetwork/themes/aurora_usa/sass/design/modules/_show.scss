@@ -304,6 +304,7 @@
         display: block;
         font-family: $avalon-demi;
         color: #fff;
+        line-height: 16px;
         padding: 10px 25px 10px 10px;
         position: relative;
         text-decoration: none;
@@ -315,7 +316,7 @@
           font-family: $ico-font;
           font-size: 12px;
           position: absolute;
-          margin-top: -6px;
+          margin-top: -8px;
           right: 10px;
           top: 50%;
         }

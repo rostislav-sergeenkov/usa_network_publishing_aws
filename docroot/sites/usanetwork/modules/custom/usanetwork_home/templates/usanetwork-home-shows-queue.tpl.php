@@ -9,14 +9,14 @@
 
     <div class="description-wrapper">
       <div class="description-block">
-        <?php if (!empty($description['caption'])): ?>
-          <div class="caption"><?php print $description['caption']; ?></div>
+        <?php if (!empty($caption)): ?>
+          <div class="caption"><?php print $caption; ?></div>
         <?php endif; ?>
-        <?php if (!empty($description['title'])): ?>
-          <div class="title"><?php print $description['title']; ?></div>
+        <?php if (!empty($title)): ?>
+          <div class="title"><?php print $title; ?></div>
         <?php endif; ?>
-        <?php if (!empty($description['additional_text'])): ?>
-          <div class="additional-text"><?php print $description['additional_text']; ?></div>
+        <?php if (!empty($additional_text)): ?>
+          <div class="additional-text"><?php print $additional_text; ?></div>
         <?php endif; ?>
       </div>
     </div>

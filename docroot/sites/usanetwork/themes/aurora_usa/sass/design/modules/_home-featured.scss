@@ -18,7 +18,7 @@
     }
     @include breakpoint($bp-min-1025-width) {
       &.start {
-        margin-left: -415px;
+        margin-left: -355px;
         overflow: hidden;
       }
     }
@@ -234,9 +234,8 @@
     .caption, .additional-text {
       clear: both;
       color: $poll-color;
-      font-family: $cent-725BT-italic;
+      font-family: $tex-gyreschola-italic;
       font-size: 20px;
-      font-style: italic;
       text-align: left;
       text-transform: uppercase;
     }
@@ -258,19 +257,17 @@
       margin-left: 0;
       margin-bottom: 0px;
       margin-top: 20px;
-      padding-left: 20px;
     }
     .carousel-description-item {
-      .description-button {
-        display: none;
-      }
       left: 0px;
-      padding-left: 20px;
       position: relative;
       top: 0;
       width: 100%;
       &.start {
         left: 0px;
+      }
+      .description-button {
+        display: none!important;
       }
       .description-wrapper {
         display: block;

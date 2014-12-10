@@ -23,7 +23,6 @@
       };
 
       var animateContent = function(element) {
-        console.debug('animateContent');
         changeLogoColor(element);
         $(element).animate({
           'opacity': 1
@@ -44,8 +43,6 @@
               nextSlideImg = $(nextSlideInner).find('img').get(0),
               shiftPercent = parseInt($(nextSlideImg).attr('data-shift-percent'));
           shiftPercent = ((shiftPercent != 'undefined') || (shiftPercent != '')) ? shiftPercent : 0;
-
-          console.debug('moveIt: show');
 
           $(nextSlideImg).css('margin-left', '-' + shiftPercent + '%');
           $(nextSlideInner).css('width', parseInt($(window).width())).animate({
@@ -68,8 +65,6 @@
         var moveIt = function(index) {
           var nextSlideInner = el.get(0).children[index + 1].children[0],
               nextSlideImg = $(nextSlideInner).find('img').get(0);
-
-          console.debug('moveIt: hide');
 
           $(nextSlideImg).animate({
             'margin-left': '0'

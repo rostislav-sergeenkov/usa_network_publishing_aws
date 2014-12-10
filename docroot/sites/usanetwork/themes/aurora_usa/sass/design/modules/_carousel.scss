@@ -1,33 +1,18 @@
 .carousel {
   position: relative;
-  @include breakpoint($bp-768-width){
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding-left: 20px;
-  }
-  &.start, &.start:hover {
+  &.start {
     .jcarousel-controls{
-      display: none;
-    }
-  }
-  &:hover{
-    .jcarousel-controls{
-      display: block;
-      width: 6%;
-      @include breakpoint($bp-min-1281-width){
-        width: 75px;
-      }
-      &:after{
-        opacity: 1;
-      }
-      @include breakpoint($bp-480-width){
-        display: none;
+      width: 0px;
+      &:after {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
   .jcarousel-controls {
+    display: block;
     position: absolute;
-    width: 0;
+    width: 60px;
     top: 0;
     -webkit-transition: width 0.5s ease-out 0.3s;
     -moz-transition: width 0.5s ease-out 0.3s;
@@ -36,6 +21,9 @@
     height: 100%;
     z-index: 9;
     background: rgba(255, 255, 255, .6);
+    @include breakpoint($bp-1024-width) {
+      width: 40px;
+    }
     @include breakpoint($bp-480-width){
       display: none;
     }
@@ -47,7 +35,7 @@
       left: 50%;
       margin-left: -16px;
       margin-top: -16px;
-      opacity: 0;
+      opacity: 1;
       position: absolute;
       -webkit-transition: opacity 0.5s ease-out 0.3s;
       -moz-transition: opacity 0.5s ease-out 0.3s;
@@ -59,16 +47,20 @@
       background: rgba(255, 255, 255, .8);
     }
     &.jcarousel-control-prev {
-      left: 0px;
-
+      left: -60px;
+      @include breakpoint($bp-1024-width) {
+        left: -40px;
+      }
       &:after {
         content: "\e607";
 
       }
     }
     &.jcarousel-control-next {
-      right: 0px;
-
+      right: -60px;
+      @include breakpoint($bp-1024-width) {
+        right: -40px;
+      }
       &:after {
         content: "\e608";
       }
@@ -110,9 +102,8 @@
       &.other-show {
         h3 {
           color: $poll-color;
-          font-family: $cent-725BT-italic;
+          font-family: $tex-gyreschola-italic;
           font-size: 12px;
-          font-style: italic;
           position: absolute;
           text-transform: uppercase;
           top: -20px;
@@ -152,7 +143,7 @@
         }
       }
       .meta-wrap {
-        background: $footer-back;
+        background: $promo-dark-back;
         bottom: 0;
         height: 82px;
         position: absolute;
@@ -304,16 +295,23 @@
 .latest-block, .carousel-block {
   @include clear();
   background: $footer-links;
-  padding: 40px 0px;
+  padding: 40px 60px;
   overflow: hidden;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 0px 40px 20px;
+  }
 }
 
 .catch-up-explore-carousel {
   .carousel-block {
     @include breakpoint($bp-480-width) {
       padding: 0;
+      padding-left: 20px;
     }
   }
 }
@@ -333,11 +331,17 @@
   transition-timing-function: ease;
   width: 100%;
   &.start {
-    @include breakpoint($bp-min-481-width) {
-      margin-left: 240px;
+    @include breakpoint($bp-1024-width) {
+      margin-left: 200px;
+    }
+    @include breakpoint($bp-480-width) {
+      margin-left: 0px;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: 180px;
     }
     @include breakpoint($bp-min-1601-width) {
-      margin-left: 400px;
+      margin-left: 340px;
     }
   }
   .jcarousel-controls {
@@ -372,7 +376,7 @@
       .meta {
         text-align: left;
         .meta-icon {
-          left: 37px;
+          left: 0px;
           position: absolute;
           top: 0;
         }
@@ -380,12 +384,17 @@
     }
   }
   &.start {
-    @include breakpoint($bp-min-481-width) {
-      margin-left: -240px;
-      overflow: hidden;
+    @include breakpoint($bp-1024-width) {
+      margin-left: -200px;
+    }
+    @include breakpoint($bp-480-width) {
+      margin-left: 0px;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: -180px;
     }
     @include breakpoint($bp-min-1601-width) {
-      margin-left: -400px;
+      margin-left: -340px;
     }
   }
   .jcarousel-controls {
@@ -407,6 +416,7 @@
       display: block;
       left: auto;
       right: 0px;
+      text-decoration: none;
       &:before {
         content: "\e608";
       }
@@ -443,6 +453,7 @@
     left: -40px;
     margin-top: -16px;
     position: absolute;
+    text-decoration: none;
     top: 50%;
     &:before {
       color: $poll-color;
@@ -492,10 +503,7 @@
     clear: both;
     color: $poll-color;
     font-family: $tex-gyreschola-italic;
-    //font-family: $cent-725BT-italic;
     font-size: 12px;
-    //font-style: italic;
-
     text-transform: uppercase;
     @include breakpoint($bp-min-1601-width) {
       font-size: 23px;
@@ -521,17 +529,16 @@
       margin-bottom: 20px;
       position: relative;
       width: 100%;
+      .description-button {
+        display: none;
+      }
       .description-wrapper {
         display: block;
         float: none;
-        margin-left: 20px;
       }
       .title {
         margin: 10px 0;
       }
-    }
-    .carousel {
-      //margin-left: 20px;
     }
   }
 }
@@ -568,13 +575,13 @@
     }
     .carousel {
       margin-left: 0;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      padding-left: 20px;
+      margin-bottom: 40px;
+      margin-top: 40px;
     }
     .carousel-description-item {
       height: 86px;
       left: 0;
+      margin-left: -20px;
       position: relative;
       top: 0;
       .description-button {

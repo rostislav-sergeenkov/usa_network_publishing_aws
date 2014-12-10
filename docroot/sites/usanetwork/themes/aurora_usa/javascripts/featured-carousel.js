@@ -28,6 +28,10 @@
         $('.featured-carousel').removeClass('mobile');
       }
 
+      if (window.innerWidth < window_size_tablet_portrait) {
+        $('.carousel-right').addClass('carousel-left').removeClass('carousel-right').removeAttr('dir');
+      }
+
       if (window.innerWidth < window_size_mobile && !$('.featured-carousel').hasClass('mobile')) {
         featuredRebuiltTwoOne();
       }

@@ -17,9 +17,8 @@
       color: #ffffff;
       content: "Coming next";
       display: block;
-      font-family: "Times New Roman", Times, serif;
+      font-family: $tex-gyreschola-italic;
       font-size: 20px;
-      font-style: italic;
       left: 50%;
       line-height: 1.5;
       margin-left: -50px;
@@ -88,9 +87,8 @@
     }
     .new-episode, .start {
       color: #ffffff;
-      font-family: $cent-725BT-italic;
+      font-family: $tex-gyreschola-italic;
       font-size: 12px;
-      font-style: italic;
       text-transform: uppercase;
       @include breakpoint($bp-min-1601-width) {
         font-size: 20px;
@@ -274,7 +272,6 @@
         margin-left: 20px;
         overflow: hidden;
         word-wrap: break-word;
-        //text-align: center;
         @include breakpoint($bp-640-width) {
           margin-left: 10px;
           font-size: 12px;
@@ -429,17 +426,16 @@
     width: 37%;
     @include breakpoint($bp-768-width) {
       @include clear();
-      background: $footer-back;
+      background: $full-episodes-dark-back;
       left: 0px;
       position: relative;
       width: 100%
     }
     > .title {
-      background: $footer-back;
+      background: $full-episodes-dark-back;
       color: #ffffff;
-      font-family: $cent-725BT-italic;
+      font-family: $tex-gyreschola-italic;
       font-size: 12px;
-      font-style: italic;
       height: 10%;
       position: relative;
       text-transform: uppercase;
@@ -490,7 +486,7 @@
           height: 70px;
         }
         &:nth-child(2n) {
-          background: $footer-back;
+          background: $full-episodes-dark-back;
         }
         a {
           display: block;

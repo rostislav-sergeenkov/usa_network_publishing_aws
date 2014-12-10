@@ -148,9 +148,9 @@
 
                   $container.swipe({
                     excludedElements: "button, input, select, textarea, .noSwipe",
-                    swipeRight: function () {
+                    swipeRight: function() {
                       if (!$carousel.hasClass('stop')) {
-                        var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
+                        var visible_item = (!$container.hasClass('inner-carousel'))? $container.jcarousel('visible').index($container.find('li.first')):-1;
                         if (visible_item >= 0 && !$container.hasClass('start')) {
                           swipeShowDescription($container.prev());
                         }
@@ -158,13 +158,14 @@
                         $container.jcarousel('scroll', swipeElements);
                       }
                     },
-                    swipeLeft: function () {
+                    swipeLeft: function() {
                       if (!$carousel.hasClass('stop')) {
-                        if ($container.hasClass('start')) {
+                        if ($container.hasClass('start')){
                           swipeHideDescription($container.prev());
+                          var count = (swipeItems($carousel) <= 1)? 1: swipeItems($carousel) - 1;
+                          $container.jcarousel('scroll', '+=' + count);
                         } else {
-                          var swipeElements = '+=' + swipeItems($carousel);
-                          $container.jcarousel('scroll', swipeElements);
+                          $container.jcarousel('scroll', '+=' + swipeItems($carousel));
                         }
                       }
                     },
@@ -221,8 +222,8 @@
                     e.preventDefault();
                   });
                 })
-                .on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
-                  if (!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
+                .on('jcarousel:firstin', 'li.first', function(event, carousel) {
+                  if(!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
                     swipeShowDescription($container.prev());
                   }
                 })
@@ -255,20 +256,21 @@
                 $carousel.css('left', '0px');
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
-                  swipeLeft: function () {
-                    var visible_item = (!$container.hasClass('inner-carousel')) ? $container.jcarousel('visible').index($container.find('li.first')) : -1;
+                  swipeLeft: function() {
+                    var visible_item = (!$container.hasClass('inner-carousel'))? $container.jcarousel('visible').index($container.find('li.first')):-1;
                     if (visible_item >= 0 && !$container.hasClass('start')) {
                       swipeShowDescription($container.prev());
                     }
                     var swipeElements = '-=' + swipeItems($carousel);
                     $container.jcarousel('scroll', swipeElements);
                   },
-                  swipeRight: function () {
-                    if ($container.hasClass('start')) {
+                  swipeRight: function() {
+                    if ($container.hasClass('start')){
                       swipeHideDescription($container.prev());
+                      var count = (swipeItems($carousel) <= 1)? 1: swipeItems($carousel) - 1;
+                      $container.jcarousel('scroll', '+=' + count);
                     } else {
-                      var swipeElements = '+=' + swipeItems($carousel);
-                      $container.jcarousel('scroll', swipeElements);
+                      $container.jcarousel('scroll', '+=' + swipeItems($carousel));
                     }
                   },
                   tap: function (event, target) {
@@ -295,7 +297,7 @@
 
                 $carousel.css('left', '0px');
               })
-              .on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
+              .on('jcarousel:firstin', 'li.first', function(event, carousel) {
                 swipeShowDescription($container.prev());
               })
               .jcarousel({
@@ -328,8 +330,18 @@
         carouselInit();
 
         $(".description-button").click(function (e) {
+          var carousel = $(this).parent().parent().find('.carousel'),
+              count = null;
+
+          if (carousel.length > 1) {
+            carousel = $(carousel.get(0));
+          }
+
           e.preventDefault();
           swipeHideDescription($(this).parent());
+
+          count = (swipeItems($(carousel).find('ul')) <= 1)? 1: swipeItems($(carousel).find('ul')) - 1;
+          carousel.jcarousel('scroll', '+=' + count);
         });
 
       });

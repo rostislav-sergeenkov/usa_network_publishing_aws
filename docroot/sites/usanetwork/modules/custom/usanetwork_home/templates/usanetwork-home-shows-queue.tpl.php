@@ -32,6 +32,8 @@
           </li>
         <?php endforeach; ?>
       </ul>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>
     </div>
   <?php endif; ?>
 </div>

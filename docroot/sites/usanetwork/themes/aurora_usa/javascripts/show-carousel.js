@@ -67,8 +67,9 @@
 
       $(window).load(function () {
         //!!!!!!
-        if (window.innerWidth < window_size_tablet_portrait) {
-          $('.show-open').click(function (e) {
+        //click show-open when carousel destroy
+        $('.show-open').click(function (e) {
+          if (window_size_tablet_portrait < 769) {
             e.preventDefault();
 
             if (!$(this).closest('li').hasClass('active')) {
@@ -76,9 +77,8 @@
             } else {
               showClose($(this).closest('li'), true);
             }
-
-          });
-        }
+          }
+        });
 
         // Show carousel more-button click
         $('.shows-block a.more').click(function(e) {

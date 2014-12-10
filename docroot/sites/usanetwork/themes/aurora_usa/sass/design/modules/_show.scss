@@ -1,15 +1,18 @@
 .shows-block {
   background: $footer-links;
-  padding: 40px 0px;
+  padding: 40px 60px;
   overflow: hidden;
   position: relative;
   width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
   @include breakpoint($bp-768-width) {
     padding: 37px 0px 0px;
   }
   .carousel {
     &.start {
-      margin-left: 425px;
+      margin-left: 365px;
       .jcarousel-controls{
         display: none;
       }
@@ -222,15 +225,15 @@
       }
     }
     .carousel-description-item {
-      margin-bottom: 10px;
-      .description-button {
-        display: none;
-      }
+      margin-bottom: 30px;
       left: 0px;
       padding-left: 20px;
       position: relative;
       top: 0;
       width: 100%;
+      .description-button {
+        display: none;
+      }
       &.start {
         left: 0px;
       }
@@ -401,8 +404,7 @@
           text-transform: uppercase;
           span {
             display: block;
-            font-family: $cent-725BT-italic;
-            font-style: italic;
+            font-family: $tex-gyreschola-italic
           }
         }
       }
@@ -537,7 +539,7 @@
             .meta {
               color: $poll-color;
               height: auto;
-              left: -15px;
+              left: -10px;
               overflow: hidden;
               position: relative;
               margin: 0 auto;
@@ -548,8 +550,7 @@
               }
             }
             .time, .meta-additional {
-              font-family: $cent-725BT-italic;
-              font-style: italic;
+              font-family: $tex-gyreschola-italic;
               font-size: 12px;
               line-height: 35px;
             }
@@ -583,6 +584,7 @@
       .carousel-block{
         background: none;
         height: auto;
+        padding: 10px 0px;
         @include breakpoint($bp-768-width) {
           padding: 0px;
         }
@@ -660,7 +662,7 @@
                 .meta {
                   color: $poll-color;
                   height: auto;
-                  left: -15px;
+                  left: -10px;
                   overflow: hidden;
                   position: relative;
                   margin: 0 auto;
@@ -671,8 +673,7 @@
                   }
                 }
                 .time, .meta-additional {
-                  font-family: $cent-725BT-italic;
-                  font-style: italic;
+                  font-family: $tex-gyreschola-italic;
                   font-size: 12px;
                   line-height: 35px;
                 }
@@ -697,9 +698,8 @@
           h3 {
             left: 0;
             color: #545454;
-            font-family: $cent-725BT-italic;
+            font-family: $tex-gyreschola-italic;
             font-size: 12px;
-            font-style: italic;
             position: absolute;
             text-transform: uppercase;
             top: -20px;
@@ -741,6 +741,13 @@
         }
       }
     }
+  }
+}
+
+.show-title-block-wrapper {
+  border: 0;
+  &.fixed {
+    border-bottom: 1px solid;
   }
 }
 
@@ -840,8 +847,7 @@
       }
       span {
         display: block;
-        font-family: $cent-725BT-italic;
-        font-style: italic;
+        font-family: $tex-gyreschola-italic;
       }
     }
   }
@@ -912,6 +918,12 @@
   padding: 20px 40px;
   position: relative;
   width: 100%;
+  &.fixed {
+    top: 67px;
+    @include breakpoint($bp-1024-width) {
+      top: 50px;
+    }
+  }
   &.active {
     display: block;
     @include breakpoint($bp-768-width) {

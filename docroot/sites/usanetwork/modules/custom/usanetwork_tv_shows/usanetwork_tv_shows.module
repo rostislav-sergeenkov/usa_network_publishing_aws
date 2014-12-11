@@ -1140,7 +1140,10 @@ function _usanetwork_tv_shows_latest($show) {
     'items' => $latest_items,
     'type' => 'ul',
     'attributes' => array(),
-    'suffix' => array()
+    'suffix' => array(
+      '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev"></a>
+      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next"></a>'
+    )
   ));
   return implode(PHP_EOL, $output);
 }

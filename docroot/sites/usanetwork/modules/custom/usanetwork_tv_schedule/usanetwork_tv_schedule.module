@@ -147,6 +147,47 @@ function usanetwork_tv_schedule_theme() {
         'link' => false,
       ),
     ),
+    'usanetwork_tv_schedule_table' => array(
+      'file' => 'templates/usanetwork-tv-schedule-table',
+      'variables' => array(
+        'filter' => array(
+          'show_name' => array(
+            'selected' => array(
+              'nid' => NULL,
+              'title' => NULL,
+            ),
+            'list' => array(
+              // $show_nid => $show_title,
+            )
+          ),
+          'show_time' => array(
+            'selected' => array(
+              'value' => NULL,
+            ),
+            'list' => array(
+              // $machine_readable_name => $human_readable_name,
+            ),
+          ),
+        ),
+      ),
+    ),
+    'usanetwork_tv_schedule_table_element' => array(
+      'file' => 'templates/usanetwork-tv-schedule-table-element',
+      'variables' => array(
+        'link_name' => NULL,
+        'link_class' => NULL,
+        'show_class' => NULL,
+        'time' => NULL,
+        'day_part' => NULL,
+        'episode_show' => NULL,
+        'episode_title' => NULL,
+        'icon_reminder_url' => NULL,
+        'rating' => NULL,
+        'episode_url' => NULL,
+        'image_url' => NULL,
+        'description' => NULL,
+      ),
+    ),
   );
 }
 

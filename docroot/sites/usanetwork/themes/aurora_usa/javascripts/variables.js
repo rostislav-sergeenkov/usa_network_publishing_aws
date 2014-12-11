@@ -1,6 +1,7 @@
 var $ = jQuery;
 var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
+var window_size_tablet = 1025;
 var window_size_mobile = 481;
 var show_carousel_item_width = 310;
 var desktop_show_open_width = 1470;

@@ -10153,6 +10153,7 @@ body.front {
   font-size: 24px;
   letter-spacing: 3px;
   line-height: 67px;
+  margin: 0;
   margin-right: 27px;
   text-transform: uppercase;
 }

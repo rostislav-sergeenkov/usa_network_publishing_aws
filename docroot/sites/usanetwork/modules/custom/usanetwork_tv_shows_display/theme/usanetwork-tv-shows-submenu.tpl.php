@@ -1,6 +1,6 @@
 <div class="show-title-block-wrapper">
   <div class="show-title-block show-color">
-    <div class="menu-open show-border secondary"><a href="#"></a></div>
+    <div class="menu-open show-border secondary"><a href="javascript:void(0)"></a></div>
     <div class="schedule">
       <h1 class="title"><?php print $show_title; ?></h1>
 

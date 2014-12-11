@@ -15,11 +15,21 @@ define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
 function usanetwork_tv_shows_block_info() {
   $blocks = array();
 
+  $blocks['usanetwork_tv_shows_submenu'] = array(
+    'info' => t('TV Show: submenu block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   $blocks['usanetwork_tv_shows_aspot'] = array(
     'info' => t('TV Shows: A-Spot'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_tv_shows_latest'] = array(
+    'info' => t('TV Show: latest block'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  
   // Catch up & Explore
   $blocks['usanetwork_tv_shows_coex'] = array(
     'info' => t('TV Shows: Catch up, Explore'),
@@ -36,6 +46,11 @@ function usanetwork_tv_shows_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
+    case 'usanetwork_tv_shows_submenu':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_submenu();
+      break;
+    
     case 'usanetwork_tv_shows_aspot':
       $block['subject'] = '';
       $block['content'] = array(
@@ -48,6 +63,15 @@ function usanetwork_tv_shows_block_view($delta = '') {
           ),
         ),
       );
+      break;
+
+   case 'usanetwork_tv_shows_latest':
+      $show = menu_get_object();
+      if (!is_object($show) || (!isset($show->type) && $show->type != 'tv_show')) {
+        return '';
+      }
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_latest($show);
       break;
 
     case 'usanetwork_tv_shows_coex':
@@ -108,6 +132,33 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'media_player_icon' => TRUE,
       ),
       'template' => 'templates/usanetwork-tv-shows-catchup-explore-content-element',
+    ),
+    'usanetwork_tv_shows_submenu' => array(
+      'variables' => array(
+        'show_title' => NULL,
+        'weekday' => NULL,
+        'time' => NULL,
+        'social_icons' => array(),
+        'show_menu_video_url' => NULL,
+        'show_menu_video_img' => NULL,
+        'show_menu_video_title' => NULL,
+        'show_menu_video_caption' => NULL,
+        'show_menu_tab_items' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-submenu',
+    ),
+    'usanetwork_tv_shows_latest_item' => array(
+      'variables' => array(
+        'item_title' => NULL,
+        'show_class' => NULL,
+        'url' => NULL,
+        'show_title' => NULL,
+        'additional' => NULL,
+        'duration' => NULL,
+        'icon_type' => NULL,
+        'image' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-latest-item',
     ),
   );
 }
@@ -891,4 +942,205 @@ function _usanetwork_tv_shows_get_content_image_url($node) {
   }
 
   return '';
+}
+
+function _usanetwork_tv_shows_submenu() {
+  $show = menu_get_object();
+
+  if (!is_object($show) || (!isset($show->type) && $show->type != 'tv_show')) {
+    return '';
+  }
+
+  $display_title = field_get_items('node', $show, 'field_display_title');
+  if (is_array($display_title) && !empty($display_title[0]['safe_value'])) {
+    $show_title = $display_title[0]['safe_value'];
+  }
+  else {
+    $show_title = $show->title;
+  }
+  $show_title = decode_entities($show_title);
+  $usa_tv_tune_in_date = field_get_items('node', $show, 'field_usa_tv_tune_in_date');
+  if (is_array($usa_tv_tune_in_date) && !empty($usa_tv_tune_in_date[0]['value'])) {
+    $show_tunein = explode(' ', $usa_tv_tune_in_date[0]['value']);
+    $show_weekday = array_shift($show_tunein);
+    $show_time = implode(' ', $show_tunein);
+  }
+
+  $social_links = array();
+  foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
+    $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
+    if ($social_bar_link_field) {
+      $social_links[] = l('', $social_bar_link_field[0]['url'], array('attributes' => array('class' => $social_network)));
+    }
+  }
+
+  $promo_target = field_get_items('node', $show, 'field_featured_in_menu');
+  if ($promo_target) {
+    $promo_item = node_load($promo_target[0]['target_id']);
+    $promo_image = field_get_items('node', $promo_item, 'field_promo_regular_image');
+    $promo_link = field_get_items('node', $promo_item, 'field_promo_link');
+    $promo_text_line1 = field_get_items('node', $promo_item, 'field_promo_text_line_1');
+    $promo_text_line2 = field_get_items('node', $promo_item, 'field_promo_text_line_2');
+
+    if ($promo_image) {
+      $preview_image = theme('image_style', array(
+        'style_name' => 'episode_preview_temp',
+        'path' => $promo_image[0]['uri'],
+      ));
+    }
+
+    if ($promo_link) {
+      $promo_link_url = $promo_link[0]['url'];
+    }
+
+    if ($promo_text_line1) {
+      $promo_text_title = $promo_text_line1[0]['value'];
+    }
+
+    if ($promo_text_line2) {
+      $promo_text_caption = $promo_text_line2[0]['value'];
+    }
+  }
+
+  $show_menus = array();
+  $promo_menu_links = field_get_items('node', $show, 'field_show_links');
+  if ($promo_menu_links) {
+    foreach ($promo_menu_links as $key => $link) {
+      $show_menu_item = entity_load('field_collection_item', array($link['value']));
+      $show_menu_item_child = field_get_items('field_collection_item', reset($show_menu_item), 'field_child_link');
+      if ($show_menu_item_child) {
+        $show_menus[$key]['child'] = array();
+        foreach ($show_menu_item_child as $child_link) {
+          $show_menus[$key]['child'][] = l($child_link['title'], $child_link['url']);
+        }
+      }
+      $show_menu_item_main_link = field_get_items('field_collection_item', reset($show_menu_item), 'field_main_link');
+      if ($show_menu_item_main_link) {
+        $show_menus[$key]['main_link'] = l(drupal_ucfirst($show_menu_item_main_link[0]['title']), $show_menu_item_main_link[0]['url']);
+      }
+    }
+  }
+
+  return theme('usanetwork_tv_shows_submenu', array(
+    'show_title' => $show_title,
+    'weekday' => $show_weekday,
+    'time' => $show_time,
+    'social_icons' => $social_links,
+    'show_menu_video_url' => isset($promo_link_url)
+      ? $promo_link_url
+      : NULL,
+    'show_menu_video_img' => isset($preview_image)
+      ? $preview_image
+      : NULL,
+    'show_menu_video_title' => isset($promo_text_title)
+      ? $promo_text_title
+      : NULL,
+    'show_menu_video_caption' => isset($promo_text_caption)
+      ? $promo_text_caption
+      : NULL,
+    'show_menu_tab_items' => $show_menus,
+  ));
+}
+
+function _usanetwork_tv_shows_discription_item($show, $field_list, &$description_vars) {
+  
+  foreach ($field_list as $target => $field_name) {
+    $field_value = field_get_items('node', $show, $field_name);
+    if ($field_value) {
+      $field = reset($field_value);
+
+      switch ($target) {
+        case 'title':
+          $description_vars['title'] = $field['value'];
+          break;
+        case 'caption':
+          $description_vars['caption'] = $field['value'];
+          break;
+        case 'additional_text':
+          $description_vars['additional_text'] = $field['value'];
+          break;
+        default:
+          break;
+      }
+    }
+  }
+}
+
+function _usanetwork_tv_shows_latest($show) {
+  $related_to_show = _usanetwork_tv_shows_get_related_content($show->nid, 20);
+
+  $description_vars = array(
+    'caption' => t('All new!'),
+    'title' => t('Latest'),
+    'additional_text' => t('Photos, polls & more'),
+  );
+  
+  _usanetwork_tv_shows_discription_item($show, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
+
+  $output[] = theme('usanetwork_home_carousel_description_item', $description_vars);
+
+
+  foreach ($related_to_show as $entity_data) {
+    $entity = entity_load_single($entity_data->entity_type, $entity_data->entity_id);
+
+    if ($entity_data->entity_type == 'node') {
+      $type = $entity_data->bundle;
+    }
+    else if ($entity_data->entity_type == 'file') {
+      $type = $entity->filemime;
+    }
+    else {
+      continue;
+    }
+
+    $related_content_data = _usanetwork_related_content($type, $entity, FALSE);
+
+    if ($related_content_data['season_number'] && $related_content_data['episode_number']) {
+      $additional = t('S@season_num episode @episode_num', array(
+        '@season_num' => $related_content_data['season_number']['value'],
+        '@episode_num' => $related_content_data['episode_number']['value']
+          )
+      );
+    }
+
+    $image = theme_image_style(array(
+      'style_name' => '300x250',
+      'path' => $related_content_data['image_url'],
+      'width' => 300,
+      'height' => 250,
+    ));
+
+    $latest_items[] = theme('usanetwork_tv_shows_latest_item', array(
+      'item_title' => NULL,
+      'show_class' => NULL,
+      'url' => $related_content_data['url'],
+      'show_title' => $show->title,
+      'additional' => isset($additional)
+          ? $additional
+          : NULL,
+      'duration' => $related_content_data['time'],
+      'icon_type' => $related_content_data['icon_type'],
+      'image' => $image,
+        )
+    );
+  }
+  $output[] = theme('usanetwork_item_list', array(
+    'warpper_attributes' => array(
+      'class' => array(
+        'carousel',
+        'carousel-left',
+        'start',
+      ),
+    ),
+    'title_tag' => 'h2',
+    'title_attributes' => array(
+      'class' => NULL
+    ),
+    'title' => NULL,
+    'items' => $latest_items,
+    'type' => 'ul',
+    'attributes' => array(),
+    'suffix' => array()
+  ));
+  return implode(PHP_EOL, $output);
 }

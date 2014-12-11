@@ -59,7 +59,7 @@ function usanetwork_menu_default_panels_mini() {
   $pane->pid = 'new-2';
   $pane->panel = 'reg_show_menu';
   $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows_display-usanetwork_tv_shows_submenu';
+  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_submenu';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -70,7 +70,10 @@ function usanetwork_menu_default_panels_mini() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => '',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();

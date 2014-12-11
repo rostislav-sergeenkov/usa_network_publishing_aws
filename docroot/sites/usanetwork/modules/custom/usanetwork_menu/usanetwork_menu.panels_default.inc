@@ -5,35 +5,35 @@ function usanetwork_menu_default_panels_mini() {
 
   // Main menu panel
 
-$mini = new stdClass();
-$mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
-$mini->api_version = 1;
-$mini->name = 'usanetwork_show_menu';
-$mini->category = 'Custom USA';
-$mini->admin_title = 'Usanetwork: show menu';
-$mini->admin_description = '';
-$mini->requiredcontexts = array();
-$mini->contexts = array();
-$mini->relationships = array();
-$display = new panels_display();
-$display->layout = 'usanetwork-show-menu';
-$display->layout_settings = array();
-$display->panel_settings = array(
-  'style_settings' => array(
-    'default' => NULL,
-    'reg_menu' => NULL,
-    'reg_mobile_menu' => NULL,
-    'reg_tab_shows' => NULL,
-    'reg_tab_full_episodes' => NULL,
-    'reg_tab_schedule' => NULL,
-    'reg_tab_user_profile' => NULL,
-    'reg_show_menu' => NULL,
-  ),
-);
-$display->cache = array();
-$display->title = '';
-$display->content = array();
-$display->panels = array();
+  $mini = new stdClass();
+  $mini->disabled = FALSE; /* Edit this to true to make a default mini disabled initially */
+  $mini->api_version = 1;
+  $mini->name = 'usanetwork_show_menu';
+  $mini->category = 'Custom USA';
+  $mini->admin_title = 'Usanetwork: show menu';
+  $mini->admin_description = '';
+  $mini->requiredcontexts = array();
+  $mini->contexts = array();
+  $mini->relationships = array();
+  $display = new panels_display();
+  $display->layout = 'usanetwork-show-menu';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'reg_menu' => NULL,
+      'reg_mobile_menu' => NULL,
+      'reg_tab_shows' => NULL,
+      'reg_tab_full_episodes' => NULL,
+      'reg_tab_schedule' => NULL,
+      'reg_tab_user_profile' => NULL,
+      'reg_show_menu' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
   $pane = new stdClass();
   $pane->pid = 'new-1';
   $pane->panel = 'reg_menu';

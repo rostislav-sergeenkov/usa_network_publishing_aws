@@ -10,23 +10,6 @@ define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
 
 /**
- * Implements hook_menu().
- */
-function usanetwork_tv_shows_menu() {
-  $items = array();
-
-  $items['ajax/consumptionator/get-related-items/%'] = array(
-    'title' => 'Related items',
-    'page callback' => 'usanetwork_tv_shows_consumptionator_get_related_items',
-    'page arguments' => array(3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
-
-/**
  *  Implements hook_block_info().
  */
 function usanetwork_tv_shows_block_info() {
@@ -40,12 +23,6 @@ function usanetwork_tv_shows_block_info() {
   // Catch up & Explore
   $blocks['usanetwork_tv_shows_coex'] = array(
     'info' => t('TV Shows: Catch up, Explore'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-
-  // Consumptionator: related content
-  $blocks['uasnetwork_tv_shows_cons_rel'] = array(
-    'info' => t('Consumptionator: Related content'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -67,11 +44,6 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_coex':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_catchup_explore_block();
-      break;
-
-    case 'uasnetwork_tv_shows_cons_rel':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_tv_shows_consumptionator_relcontent_block();
       break;
   }
 
@@ -127,32 +99,6 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'media_player_icon' => TRUE,
       ),
       'template' => 'templates/usanetwork-tv-shows-catchup-explore-content-element',
-    ),
-    // Consumptionator: related content
-    'usanetwork_tv_shows_cons_related_container' => array(
-      'variables' => array(
-        'related_items' => array(
-          0 => array(
-            'li_class' => 'first',
-            'content' => array(), // Pre-rendered array of displayable content
-          ),
-        ),
-      ),
-      'template' => 'templates/usanetwork-tv-shows-cons-related-container',
-    ),
-    // Consumptionator: related content item (not form)
-    'usanetwork_tv_shows_cons_related_item' => array(
-      'variables' => array(
-        'content_url' => NULL,
-        'image_url' => NULL,
-        'caption' => NULL,
-        'title' => NULL,
-        'additional' => array(
-          'left' => NULL,
-          'right' => NULL,
-        ),
-      ),
-      'template' => 'templates/usanetwork-tv-shows-cons-related-item',
     ),
   );
 }
@@ -620,6 +566,54 @@ function _usanetwork_tv_shows_render_related_content($query_result, $content_vie
 }
 
 /**
+ * Pulls related video from all shows instead $ignore_show_nids.
+ */
+function _usanetwork_tv_shows_pull_videos($ignore_show_nids = array(), $start_from = 0, $limit = 0) {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f', array('fid'));
+  $query->addField('f', 'uri', 'image_uri'); // URI should be returned with alias
+  // Join show IDs
+  $query->leftJoin('field_data_field_show', 'field_show', 'f.fid=field_show.entity_id');
+  $query->addField('field_show', 'field_show_target_id', 'show_nid');
+  // Join show node
+  $query->leftJoin('node', 'show_node', 'field_show.field_show_target_id=show_node.nid');
+  $query->addField('show_node', 'title', 'show_title');
+  // Join full episode flag
+  $query->leftJoin('field_data_field_mpx_full_episode', 'field_full', 'f.fid=field_full.entity_id');
+  $query->addField('field_full', 'field_mpx_full_episode_value', 'is_full');
+  // Join video duration
+  $query->leftJoin('field_data_field_mpx_duration', 'field_duration', 'f.fid=field_duration.entity_id');
+  $query->addField('field_duration', 'field_mpx_duration_value', 'duration');
+  // Join season number
+  $query->leftJoin('field_data_field_mpx_season_number', 'field_season', 'f.fid=field_season.entity_id');
+  $query->addField('field_season', 'field_mpx_season_number_value', 'season_number');
+  // Join episode number
+  $query->leftJoin('field_data_field_mpx_episode_number', 'field_episode', 'f.fid=field_episode.entity_id');
+  $query->addField('field_episode', 'field_mpx_episode_number_value', 'episode_number');
+  // Join mpx_video data
+  $query->leftJoin('mpx_video', 'v', 'f.fid=v.fid');
+  $query->addField('v', 'title', 'video_title');
+
+  $query->condition('v.status', 1);
+  $query->orderBy('v.airdate', 'DESC');
+
+  if (!empty($ignore_show_nids)) {
+    if (count($ignore_show_nids) == 1) {
+      $query->condition('field_show.field_show_target_id', reset($ignore_show_nids), '<>');
+    }
+    else {
+      $query->condition('field_show.field_show_target_id', $ignore_show_nids, 'NOT IN');
+    }
+  }
+
+  if ($limit > 0) {
+    $query->range($start_from, $limit);
+  }
+
+  return $query->execute()->fetchAll();
+}
+
+/**
  * Renders related content item from db_select array.
  */
 function _usanetwork_tv_shows_render_related_content_item($query_item, $view_mode) {
@@ -831,44 +825,6 @@ function _usanetwork_tv_shows_get_cuexcarousel($carousel) {
 }
 
 /**
- * Renders consumptionator page block with related items.
- */
-function _usanetwork_tv_shows_consumptionator_relcontent_block($show_nid = 0, $start_from = 0, $limit = 6) {
-  $rendered_items = array();
-  $query = drupal_get_query_parameters();
-
-  if (empty($show_nid) && !empty($query['url'])) {
-    $normal_path = parse_url(drupal_get_normal_path($query['url']));
-    $menu_item = menu_get_item($normal_path['path']);
-
-    if (!empty($menu_item['page_arguments'][0])) {
-      $file = $menu_item['page_arguments'][0];
-
-      if (!empty($file)) {
-        $show_field = field_get_items('file', $file, 'field_show');
-
-        if (!empty($show_field)) {
-          $show_nid = $show_field[0]['target_id'];
-        }
-      }
-    }
-  }
-
-  if (!empty($show_nid)) {
-    // Load and render first 6 items only
-    $rendered_items = _usanetwork_tv_shows_consumptionator_load_related_content($show_nid, $start_from, $limit, TRUE);
-  }
-
-  if (!empty($rendered_items)) {
-    return theme('usanetwork_tv_shows_cons_related_container', array(
-      'related_items' => $rendered_items,
-    ));
-  }
-
-  return '';
-}
-
-/**
  * Counts number of images in media gallery with nid=$node_nid.
  */
 function _usanetwork_tv_shows_get_media_items_count($node_nid) {
@@ -893,102 +849,6 @@ function _usanetwork_tv_shows_get_content_type_aliases() {
     'media_gallery' => t('Gallery'),
     'usanetwork_promo' => t('Promo'),
   );
-}
-
-/**
- * @param int $show_nid - node id of the show
- * @param int $start_from - the number of items from the beginning that should be ignored
- * @param int $limit - the limit of items that should be loaded
- * @param bool $render - rendering flag (if TRUE - returns themed HTML, if FALSE - returns associative array of data)
- *
- * @return mixed
- *
- * Returns related content items.
- */
-function _usanetwork_tv_shows_consumptionator_load_related_content($show_nid, $start_from = 0, $limit = 10, $render = TRUE) {
-  $result_items = array();
-  $content_type_aliases = _usanetwork_tv_shows_get_content_type_aliases();
-
-  $related_items = _usanetwork_tv_shows_pull_related_nodes($show_nid, $start_from, $limit, 'DESC', 'changed', array(
-    'fshow.bundle' => array(
-      'values' => array_keys($content_type_aliases),
-    ),
-  ));
-
-  if (!empty($related_items)) {
-    $item_index = 0;
-    $item_class = '';
-    $items_count = count($related_items);
-
-    foreach ($related_items as $related_item) {
-      $caption_prefix = '';
-
-      if ($item_index == 0) {
-        $item_class = 'first';
-      }
-      elseif ($item_index == $items_count - 1) {
-        $item_class = 'last';
-      }
-      else {
-        $item_index = '';
-      }
-
-      if (isset($related_item->bundle) && isset($content_type_aliases[$related_item->bundle])) {
-        $caption_prefix = $content_type_aliases[$related_item->bundle];
-      }
-
-      $additional_text = array(
-        'left' => '',
-        'right' => '',
-      );
-
-      if (!empty($related_item->promo_season) && !empty($related_item->promo_episode)) {
-        $additional_text['left'] = t('S@season episode @episode', array(
-          '@season' => $related_item->promo_season,
-          '@episode' => $related_item->promo_episode,
-        ));
-      }
-
-      if ($related_item->bundle == 'media_gallery') {
-        $media_items_count = _usanetwork_tv_shows_get_media_items_count($related_item->entity_id);
-
-        $additional_text['right'] = t('@number photos', array('@number' => $media_items_count));
-      }
-
-      // Featured: use more bundles for adding timestamp
-      if (in_array($related_item->bundle, array(
-        'usanetwork_promo',
-      ))) {
-        $additional_text['right'] = gmdate('H:i:s', $related_item->promo_duration);
-      }
-
-      $theme_variables = array(
-        'content_url' => url('node/' . $related_item->nid),
-        'image_url' => _usanetwork_tv_shows_get_content_image_url($related_item->entity_id),
-        'caption' => !empty($caption_prefix)
-          ? $caption_prefix . ': ' . $related_item->show_title
-          : $related_item->show_title,
-        'title' => !empty($related_item->promo_title)
-          ? $related_item->promo_title
-          : $related_item->title,
-        'additional' => array(
-          'left' => $additional_text['left'],
-          'right' => $additional_text['right'],
-        ),
-      );
-
-      $result_items[] = array(
-        'li_class' => $item_class,
-        'content' => $render
-          ? theme('usanetwork_tv_shows_cons_related_item', $theme_variables)
-          : $theme_variables,
-      );
-
-      $item_index++;
-    }
-  }
-
-  return $result_items;
 }
 
 function _usanetwork_tv_shows_get_content_image_url($node) {
@@ -1018,32 +878,8 @@ function _usanetwork_tv_shows_get_content_image_url($node) {
       }
     }
 
-    if (!empty($image_uri)) {
-      return image_style_url('634x349', $image_uri);
-    }
+    return $image_uri;
   }
 
   return '';
-}
-
-/**
- * Returns related show items using ajax.
- * @param $show_nid
- */
-function usanetwork_tv_shows_consumptionator_get_related_items($show_nid) {
-  $query = drupal_get_query_parameters();
-
-  $start_from = isset($query['start_from'])
-    ? $query['start_from']
-    : 0;
-
-  $limit = isset($query['limit'])
-    ? $query['limit']
-    : 0;
-
-  $output = array(
-    'html' => _usanetwork_tv_shows_consumptionator_relcontent_block($show_nid, $start_from, $limit),
-  );
-
-  return drupal_json_output($output);
 }

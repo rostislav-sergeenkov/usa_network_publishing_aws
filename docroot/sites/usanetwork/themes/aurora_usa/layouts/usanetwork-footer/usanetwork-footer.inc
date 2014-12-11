@@ -5,7 +5,7 @@ $plugin = array(
   'category' => t('Custom: USA'),
   'icon' => 'uasnetwork-footer.png',
   'theme' => 'usanetwork-footer',
-  'admin css' => 'uasnetwork-footer.css',
+  'admin css' => 'usanetwork-footer.css',
   'regions function' => 'usanetwork_pl_footer_render',
   'weight' => 5,
 );

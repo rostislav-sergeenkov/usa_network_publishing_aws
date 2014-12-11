@@ -35,7 +35,7 @@
       <div class="more-button">
         <a href="javascript:void(0)" class="more"></a>
       </div>
-      <!-- ************ CURRENTLY UNUSED ************
+      <!--
       <div class="advertisement">
         <a href="javascript:void(0)">
           <img src="images/ad_lexus600x500_2.png" alt="">

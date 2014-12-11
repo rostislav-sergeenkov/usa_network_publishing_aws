@@ -63,6 +63,13 @@ function aurora_usa_preprocess_html(&$vars) {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
   drupal_add_library('system', 'drupal.ajax');
+  
+  if ($node = menu_get_object()) {
+    if ($node->type == 'tv_show') {
+      $show_title = _usanetwork_get_field_item('node', $node, 'field_pathauto_alias', 'value');
+      $vars['classes_array'][] = drupal_html_class('show-' . $show_title);
+    }
+  }
 }
 
 /**

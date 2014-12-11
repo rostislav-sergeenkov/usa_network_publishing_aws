@@ -28,4 +28,5 @@
       <?php print $content['reg_tab_user_profile']; ?>
     </div>
   </div>
+  <?php print $content['reg_show_menu']; ?>
 </div>

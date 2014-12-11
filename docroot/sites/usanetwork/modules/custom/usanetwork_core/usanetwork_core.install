@@ -993,3 +993,12 @@ function usanetwork_core_update_7161() {
     module_enable(array('usanetwork_consumptionator_carousel'));
   }
 }
+
+/**
+ * Enables module usanetwork_consumptionator.
+ */
+function usanetwork_core_update_7162() {
+  if (!module_exists('usanetwork_consumptionator')) {
+    module_enable(array('usanetwork_consumptionator'));
+  }
+}

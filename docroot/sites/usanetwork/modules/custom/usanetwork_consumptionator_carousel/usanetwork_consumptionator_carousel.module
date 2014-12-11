@@ -6,7 +6,7 @@
 function usanetwork_consumptionator_carousel_block_info() {
   $blocks = array();
   $blocks['usa_consumptionator_carousel'] = array(
-    'info' => t('USA: Consumptionator carousel block'),
+    'info' => t('Consumptionator: Latest episodes carousel'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
@@ -63,7 +63,19 @@ function usanetwork_consumptionator_carousel_theme($existing, $type, $theme, $pa
  */
 
 function usanetwork_consumptionator_carousel_block() {
-  $entity = _usanetwork_menu_get_current_entity();
+  // First of all detect consumptionator entity
+  $entity = _usanetwork_consumptionator_get_menu_entity();
+
+  if (!empty($entity) && is_array($entity)) {
+    // It returns as array
+    $entity = (object) $entity;
+  }
+
+  // If there is no consumptionator entity the entity from URL should be used
+  if (!$entity) {
+    $entity = _usanetwork_menu_get_current_entity();
+  }
+
   if ($entity) {
     switch ($entity->entity_type) {
       case 'node':
@@ -90,7 +102,6 @@ function usanetwork_consumptionator_carousel_block() {
       default:
         break;
     }
-
 
     if (!empty($show_episodes)) {
       foreach ($show_episodes as $key => $episode_data) {

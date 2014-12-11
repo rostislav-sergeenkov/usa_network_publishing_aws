@@ -32,6 +32,7 @@ function usanetwork_overlay_page_alter(&$page) {
 
     drupal_add_css(drupal_get_path('module', 'usanetwork_overlay') . '/css/usanetwork_overlay.main.css');
     drupal_add_js(drupal_get_path('module', 'usanetwork_overlay') . '/js/usanetwork_overlay.main.js');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator') . '/js/usanetwork_consumptionator.autoloader.js');
   }
 }
 
@@ -75,6 +76,14 @@ function usanetwork_overlay_get_ajax($display) {
       );
     }
 
+    if (isset($menu_item['page_arguments'][0])) {
+      $show_field = field_get_items('file', $menu_item['page_arguments'][0], 'field_show');
+
+      if (!empty($show_field)) {
+        $result_entity['#hidden']['show_nid'] = $show_field[0]['target_id'];
+      }
+    }
+
     return $result_entity;
   }
 
@@ -85,9 +94,19 @@ function usanetwork_overlay_get_ajax($display) {
  * AJAX delivery callback.
  */
 function usanetwork_overlay_ajax_callback($page_result) {
-  $content = drupal_render($page_result);
+  $content = '';
 
-  print $content . _usanetwork_tv_shows_consumptionator_relcontent_block();
+  if (module_exists('usanetwork_consumptionator')) {
+    $content = usanetwork_consumptionator_render_block();
+  }
+  else {
+    $content = drupal_render($page_result);
+  }
+
+  print drupal_json_output(array(
+    'html' => $content,
+    'data' => $page_result['#hidden'],
+  ));
 
   return drupal_page_footer();
 }

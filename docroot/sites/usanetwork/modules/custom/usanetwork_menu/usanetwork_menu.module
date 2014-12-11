@@ -357,6 +357,19 @@ function _usanetwork_menu_main_menu_block() {
     return;
   }
   $menu_links = menu_load_links($menu['menu_name']);
+  
+  //menu element for mobile menu on Show Page
+  $show = menu_get_object();
+  if (isset($show->type) && $show->type == 'tv_show') {
+    $items[] = array(
+      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border')))),
+      'class' => array(
+        'expanded',
+        'header-show-menu',
+      ),
+    );
+  }
+  
   foreach ($menu_links as $item) {
     if (!$item['hidden']) {
       $items[] = array(

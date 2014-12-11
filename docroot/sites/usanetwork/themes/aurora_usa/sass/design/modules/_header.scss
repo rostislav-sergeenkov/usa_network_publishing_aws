@@ -337,7 +337,7 @@ header {
       }
     }
     span {
-      background: $usa-logo-back;
+      background: red;
       border-radius: 50%;
       color: #ffffff;
       display: block;
@@ -501,13 +501,15 @@ header {
       background: $bottom-footer-back;
       border: none;
       color: $footer-links;
-      float: right;
       font-family: $avalon-demi;
       font-size: 37px;
+      left: 0;
       outline: none;
       padding: 22.5px 95px 0 15px;
+      position: absolute;
       text-align: right;
       text-transform: uppercase;
+      top: 0;
       width: 100%;
       @include breakpoint($bp-1024-width) {
         font-size: 15px;
@@ -608,7 +610,7 @@ header {
                         line-height: 18px;
                       }
                     }
-                    .caption {
+                    .additional {
                       font-family: $tex-gyreschola-italic;
                       font-size: 12px;
                       letter-spacing: 1px;
@@ -1328,9 +1330,11 @@ header {
     }
     > div {
       margin-bottom: 5px;
+      //?????
       @include breakpoint($between-1025-1280) {
         width: 144px;
       }
+      //???????
     }
     .title {
       color: #ffffff;
@@ -1362,13 +1366,13 @@ header {
   }
 }
 
-.consumptionator-page {
+.consumptionator-page, .search-show {
   header {
     .tab-item {
       &.active {
         border-top: 0px;
       }
-      &.info-tab {
+      &.share-tab {
         .show-info {
           position: relative;
           .node {
@@ -1423,10 +1427,10 @@ header {
                 letter-spacing: 1px;
                 line-height: 22px;
               }
-              .type-and-time {
+              .additional {
                 font-family: $avalon-medium;
-                font-size: 10px;
                 letter-spacing: 1px;
+                font-size: 10px;
                 line-height: 16px;
                 span {
                   font-family: $tex-gyreschola-italic;
@@ -1435,9 +1439,9 @@ header {
               }
               .episode-rate {
                 .title-rate {
-                  font-family: $tex-gyreschola-italic;
-                  letter-spacing: 1px;
+                  font-family: $cent-725BT-italic;
                   font-size: 10px;
+                  font-style: italic;
                   line-height: 16px;
                 }
                 .stars-rate {
@@ -1469,7 +1473,7 @@ header {
                 font-size: 14px;
                 font-family: $avalon-medium;
                 line-height: 20px;
-                margin-left: 200px;
+                margin-left: 210px;
                 margin-right: 310px;
                 @include breakpoint($bp-1280-width) {
                   margin: 20px 0 0;
@@ -1477,12 +1481,22 @@ header {
               }
             }
           }
-          .show-info-social {
+          .social-bar {
             right: 0;
             position: absolute;
             top: 0;
             width: 240px;
-            @include breakpoint($bp-640-width) {
+            @include breakpoint($bp-1024-width) {
+              width: 170px;
+            }
+            @include breakpoint($bp-768-width) {
+              bottom: 0;
+              left: 0;
+              right: auto;
+              top: auto;
+            }
+            @include breakpoint($bp-480-width) {
+              display: none;
             }
             .social-title {
               color: $poll-back;
@@ -1490,6 +1504,10 @@ header {
               font-family: $avalon-medium;
               line-height: 28px;
               text-transform: uppercase;
+              @include breakpoint($bp-1024-width) {
+                font-size: 18px;
+                line-height: 24px;
+              }
             }
             .icons-block {
               @include clear;
@@ -1505,6 +1523,14 @@ header {
                   font-size: 32px;
                 }
               }
+              @include breakpoint($bp-1024-width) {
+                a {
+                  margin: 0 10px 0 0;
+                  &:before {
+                    font-size: 25px;
+                  }
+                }
+              }
             }
           }
         }
@@ -1514,7 +1540,7 @@ header {
       background: $schedule-tonight;
       height: 90px !important;
       position: relative;
-      @include breakpoint($bp-640-width) {
+      @include breakpoint($bp-1024-width) {
         height: 50px !important;
       }
       @include breakpoint($bp-480-width) {
@@ -1537,76 +1563,147 @@ header {
           }
         }
       }
-    }
-    .show-title-wrapper {
-      border-left: 0;
-      border-right: 1px solid $consup-border;
-      display: block;
-      float: left;
-      height: 100%;
-      margin: 0;
-      @include breakpoint($bp-640-width) {
-        float: none;
-        margin-left: 100px;
-        margin-right: 100px;
-        width: auto;
-      }
-      @include breakpoint($bp-480-width) {
-        margin-left: 50px;
-        margin-right: 80px;
-        overflow: hidden;
-      }
-    }
-    .show-title-block {
-      display: table;
-      height: 100%;
-      position: relative;
-      .tab {
-        border-left: 1px solid $schedule-tonight;
-        display: table-cell;
-        height: 100%;
-        color: #ffffff;
-        font-family: $avalon-demi;
-        font-size: 20px;
-        line-height: 90px;
-        text-transform: uppercase;
-        @include breakpoint($bp-640-width) {
-          line-height: 50px;
+      .search-input-block{
+        @include breakpoint($bp-768-width) {
+          margin-left: 100px;
         }
         @include breakpoint($bp-480-width) {
-          line-height: 1;
-          font-size: 12px;
+          margin-left: 50px;
+          height: 40px;
         }
-        a, h1 {
-          color: #ffffff;
-          display: block;
-          height: 100%;
-          max-width: 290px;
-          padding: 0px 30px;
-          text-decoration: none;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-          width: 100%;
-          @include breakpoint($bp-640-width) {
-            padding: 0;
-            max-width: none;
-          }
+        input{
           @include breakpoint($bp-480-width) {
-            display: table;
-            span {
-              display: table-cell;
-              padding: 0px 5px;
-              vertical-align: middle;
-              white-space: normal;
-            }
+            padding-right: 35px;
+            padding-top: 10px;
           }
         }
       }
-      .video-title {
-        background: $schedule-tonight;
-        @include breakpoint($bp-1024-width) {
-          display: none;
+      .show-title-wrapper {
+        border-left: 0;
+        border-right: 1px solid $consup-border;
+        display: block;
+        float: left;
+        height: 100%;
+        position: static;
+        margin: 0;
+        @include breakpoint($bp-640-width) {
+          float: none;
+          margin-left: 100px;
+          margin-right: 148px;
+          width: auto;
+        }
+        @include breakpoint($bp-480-width) {
+          margin-left: 50px;
+          margin-right: 118px;
+          overflow: hidden;
+        }
+        .show-title-block {
+          display: table;
+          height: 100%;
+          position: static;
+          .tab {
+            border-left: 1px solid $schedule-tonight;
+            display: table-cell;
+            height: 100%;
+            color: #ffffff;
+            font-family: $avalon-demi;
+            font-size: 20px;
+            line-height: 90px;
+            text-transform: uppercase;
+            @include breakpoint($bp-1024-width) {
+              line-height: 50px;
+            }
+            @include breakpoint($bp-480-width) {
+              line-height: 1;
+              font-size: 12px;
+            }
+            a, h1 {
+              color: #ffffff;
+              display: block;
+              height: 100%;
+              max-width: 320px;
+              padding: 0px 30px;
+              text-decoration: none;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 100%;
+              @include breakpoint($bp-640-width) {
+                padding: 0;
+                max-width: none;
+              }
+              @include breakpoint($bp-480-width) {
+                display: table;
+                span {
+                  display: table-cell;
+                  padding: 0px 5px;
+                  vertical-align: middle;
+                  white-space: normal;
+                }
+              }
+            }
+            &.share {
+              @include breakpoint($bp-1024-width){
+                border-left: none;
+                background-color: $schedule-on-now;
+                right: 100px;
+                position: absolute;
+                top: 0;
+              }
+              @include breakpoint($bp-480-width) {
+                right: 80px;
+              }
+              h1{
+                padding: 0;
+                a {
+                  display: block;
+                  position: relative;
+                  padding-right: 70px;
+                  @include breakpoint($bp-1024-width){
+                    border-left: 1px solid $consup-border;
+                    padding: 0;
+                    text-indent: 110%;
+                    width: 50px;
+                  }
+                  @include breakpoint($bp-768-width){
+                    border-left: none;
+                  }
+                  @include breakpoint($bp-480-width){
+                    width: 40px;
+                  }
+                  &:hover {
+                    background: $consup-border;
+                  }
+                  &:after {
+                    @include sprite-background(share);
+                    content: '';
+                    display: block;
+                    right: 30px;
+                    margin-top: -10px;
+                    position: absolute;
+                    top: 50%;
+                    @include breakpoint($bp-1024-width){
+                      right: 15px;
+                    }
+                    @include breakpoint($bp-768-width){
+                      margin-right: -10px;
+                      right: 50%;
+                    }
+                  }
+                  &.no-refresh.active {
+                    background: $bottom-footer-back;
+                  }
+                }
+              }
+
+            }
+          }
+          .show-title {
+            background: $schedule-tonight;
+            @include breakpoint($bp-1024-width) {
+              //display: none;
+            }
+          }
         }
       }
     }
@@ -1624,53 +1721,27 @@ header {
       }
       & a {
         background: none;
-        border-left: 0;
-        border-right: 1px solid $consup-border;
+        border-right: 0;
+        border-left: 1px solid $consup-border;
         color: #ffffff;
         &:hover {
           background: $consup-border;
         }
       }
-      .info, .share, .back-to-show {
-        a {
+      .search{
+        background-color: $schedule-on-now;
+        @include breakpoint($bp-768-width){
           display: block;
-          position: relative;
-          width: 90px;
-          @include breakpoint($bp-640-width) {
-            width: 50px;
-          }
-          @include breakpoint($bp-480-width) {
-            width: 40px;
-          }
-          &:after {
-            content: '';
-            display: block;
-            left: 50%;
-            margin-top: -10px;
-            margin-left: -10px;
-            position: absolute;
-            top: 50%;
-          }
+          left: inherit;
         }
-      }
-      .info, .share {
-        a {
-          &.no-refresh.active {
-            background: $bottom-footer-back;
-          }
+        @include breakpoint($bp-480-width) {
+          height: 40px;
+          width: 40px;
+          right: 40px;
         }
-      }
-      .info {
-        a {
-          &:after {
-            @include sprite-background(share);
-            margin-top: -13px;
-            margin-left: -13px;
-            @include breakpoint($bp-480-width) {
-              @include sprite-background(share-small);
-              margin-top: -10px;
-              margin-left: -10px;
-            }
+        a{
+          &:hover {
+            background: $consup-border;
           }
         }
       }
@@ -1682,10 +1753,30 @@ header {
         @include breakpoint($bp-640-width) {
           float: left;
           position: relative;
+          height: 50px;
+        }
+        @include breakpoint($bp-480-width) {
+          height: 40px;
         }
         a {
+          display: block;
+          position: relative;
+          width: 90px;
+          @include breakpoint($bp-1024-width) {
+            width: 50px;
+          }
+          @include breakpoint($bp-480-width) {
+            width: 40px;
+          }
           &:after {
             @include sprite-background(x-icon);
+            content: '';
+            display: block;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+            position: absolute;
+            top: 50%;
             @include breakpoint($bp-480-width) {
               @include sprite-background(x-icon-small);
               margin-top: -7px;

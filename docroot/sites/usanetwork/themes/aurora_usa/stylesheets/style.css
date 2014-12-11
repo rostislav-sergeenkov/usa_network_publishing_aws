@@ -16569,31 +16569,31 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   content: '';
   display: table;
 }
-.aspot-and-episodes .usanetwork-aspot {
+.aspot-and-episodes .show-aspot {
   float: left;
   position: relative;
   width: 63%;
 }
 @media (max-width: 768px) {
-  .aspot-and-episodes .usanetwork-aspot {
+  .aspot-and-episodes .show-aspot {
     float: none;
     width: 100%;
   }
 }
-.aspot-and-episodes .usanetwork-aspot .asset-img img {
+.aspot-and-episodes .show-aspot .asset-img img {
   width: 100%;
 }
-.aspot-and-episodes .usanetwork-aspot .meta-wrap {
+.aspot-and-episodes .show-aspot .meta-wrap {
   bottom: 5%;
   left: 2%;
   top: auto;
 }
-.aspot-and-episodes .usanetwork-aspot .meta-wrap .show-title {
+.aspot-and-episodes .show-aspot .meta-wrap .show-title {
   font-size: 40px;
   margin-bottom: 20px;
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .usanetwork-aspot .meta-wrap .show-title {
+  .aspot-and-episodes .show-aspot .meta-wrap .show-title {
     font-size: 30px;
     margin-bottom: 10px;
   }
@@ -16619,12 +16619,8 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
 }
 .aspot-and-episodes .episodes-list > .title {
   background: #7a7a7a;
-  color: #ffffff;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
   height: 10%;
   position: relative;
-  text-transform: uppercase;
   width: 100%;
 }
 @media (max-width: 768px) {
@@ -16633,9 +16629,15 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   }
 }
 .aspot-and-episodes .episodes-list > .title h2 {
+  color: #ffffff;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 12px;
   left: 20px;
+  line-height: 12px;
   margin-top: -6px;
+  margin-bottom: 0;
   position: absolute;
+  text-transform: uppercase;
   top: 50%;
 }
 .aspot-and-episodes .episodes-list ul {
@@ -16691,6 +16693,7 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   left: 20px;
   margin-top: -19px;
   position: absolute;
+  text-align: left;
   top: 50%;
   width: 57%;
 }
@@ -16804,55 +16807,29 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   top: 50%;
 }
 .aspot-and-episodes .episodes-list .more-button a:after {
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
   content: '';
   display: block;
   left: 50%;
   margin-left: 26px;
-  margin-top: -8px;
+  margin-top: -3px;
   position: absolute;
   top: 50%;
+  height: 0;
+  width: 0;
 }
 .aspot-and-episodes .episodes-list .more-button a.more:before {
   content: 'More';
 }
 .aspot-and-episodes .episodes-list .more-button a.more:after {
-  background-image: url('../images/sprites-s363474d61b.png');
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 15px;
-  width: 18px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .aspot-and-episodes .episodes-list .more-button a.more:after {
-    background-image: url('../images/sprites-retina-sa3e2ba3f30.png');
-    background-size: 65px 1425.5px;
-    background-position: 0 -1226px;
-    height: 15px;
-    width: 18px;
-  }
+  border-top: 15px solid #ffffff;
 }
 .aspot-and-episodes .episodes-list .more-button a.less:before {
   content: 'Less';
 }
 .aspot-and-episodes .episodes-list .more-button a.less:after {
-  background-image: url('../images/sprites-s363474d61b.png');
-  background-position: 0 -1242px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 15px;
-  width: 18px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .aspot-and-episodes .episodes-list .more-button a.less:after {
-    background-image: url('../images/sprites-retina-sa3e2ba3f30.png');
-    background-size: 65px 1425.5px;
-    background-position: 0 -1241px;
-    height: 15px;
-    width: 18px;
-  }
+  border-bottom: 15px solid #ffffff;
 }
 
 .new-show-page .aspot-and-episodes .usanetwork-aspot .meta-wrap .new-episode {

@@ -4,7 +4,7 @@
  */
 ?>
 <div class="aspot-and-episodes">
-  <div class="node usanetwork-aspot">
+  <div class="show-aspot">
     <?php if (!empty($show)): ?>
       <?php print $show ?>
     <?php endif; ?>
@@ -32,9 +32,10 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <!-- ************ CURRENTLY UNUSED ************ <div class="more-button">
+      <div class="more-button">
         <a href="javascript:void(0)" class="more"></a>
       </div>
+      <!--
       <div class="advertisement">
         <a href="javascript:void(0)">
           <img src="images/ad_lexus600x500_2.png" alt="">

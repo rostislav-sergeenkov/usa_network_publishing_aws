@@ -63,6 +63,13 @@ function aurora_usa_preprocess_html(&$vars) {
     $vars['classes_array'][] = drupal_html_class('usa-social');
   }
   drupal_add_library('system', 'drupal.ajax');
+  
+  if ($node = menu_get_object()) {
+    if ($node->type == 'tv_show') {
+      $show_title = _usanetwork_get_field_item('node', $node, 'field_pathauto_alias', 'value');
+      $vars['classes_array'][] = drupal_html_class('show-' . $show_title);
+    }
+  }
 }
 
 /**
@@ -107,16 +114,9 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
   if ($node && $node->type == "tv_show" && !arg(2)) {
-    $language = $node->language;
-    $slideshow = (!empty($node->field_usa_autoscroll) && $node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
-    $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;
-    $js_settings = array(
-      'slideshow' => $slideshow,
-      'slideshowSpeed' => $slideshowSpeed
-    );
-    drupal_add_js(array('showAspot' => $js_settings), array('type' => 'setting'));
-    drupal_add_js($theme_path . '/javascripts/show-toggle.js');
-    drupal_add_js($theme_path . '/javascripts/show-flexslider.js');
+    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
+    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
+    drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   }
   // add ios touch icon
   $ios_icon = array(

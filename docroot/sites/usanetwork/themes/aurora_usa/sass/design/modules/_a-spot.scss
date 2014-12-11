@@ -392,7 +392,7 @@
   @include clear();
   position: relative;
   width: 100%;
-  .usanetwork-aspot {
+  .show-aspot {
     float: left;
     position: relative;
     width: 63%;
@@ -433,20 +433,22 @@
     }
     > .title {
       background: $full-episodes-dark-back;
-      color: #ffffff;
-      font-family: $tex-gyreschola-italic;
-      font-size: 12px;
       height: 10%;
       position: relative;
-      text-transform: uppercase;
       width: 100%;
       @include breakpoint($bp-768-width) {
         height: 50px;
       }
       h2 {
+        color: #ffffff;
+        font-family: $tex-gyreschola-italic;
+        font-size: 12px;
         left: 20px;
+        line-height: 12px;
         margin-top: -6px;
+        margin-bottom: 0;
         position: absolute;
+        text-transform: uppercase;
         top: 50%;
       }
     }
@@ -498,6 +500,7 @@
           left: 20px;
           margin-top: -19px;
           position: absolute;
+          text-align: left;
           top: 50%;
           width: 57%;
           @include breakpoint($bp-1280-width) {
@@ -597,20 +600,24 @@
           top: 50%;
         }
         &:after {
+          border-left: 9px solid transparent;
+          border-right: 9px solid transparent;
           content: '';
           display: block;
           left: 50%;
           margin-left: 26px;
-          margin-top: -8px;
+          margin-top: -3px;
           position: absolute;
           top: 50%;
+          height: 0;
+          width: 0;
         }
         &.more {
           &:before {
             content: 'More';
           }
           &:after {
-            @include sprite-background(more-icon);
+            border-top: 15px solid #ffffff;
           }
         }
         &.less {
@@ -618,15 +625,13 @@
             content: 'Less';
           }
           &:after {
-            @include sprite-background(less-icon);
+            border-bottom: 15px solid #ffffff;
           }
         }
       }
     }
-
   }
 }
-
 .new-show-page {
   .aspot-and-episodes {
     .usanetwork-aspot {

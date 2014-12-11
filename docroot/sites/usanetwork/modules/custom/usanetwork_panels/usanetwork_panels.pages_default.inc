@@ -123,22 +123,21 @@ function usanetwork_panels_default_page_manager_handlers() {
   $pane->pid = 'new-1';
   $pane->panel = 'four';
   $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows_display-usanetwork_tv_shows_latest';
+    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_latest';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',
-    'formatter' => 'usanetwork_tv_shows_display_entity_view',
-    'formatter_settings' => array(
-      'view_mode_large' => 'promo_teaser_large',
-    ),
   );
   $pane->cache = array();
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'latest-block',
+    );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();

@@ -133,7 +133,7 @@
           search_input_block.addClass('active');
           //usa_logo.addClass('active');
           menu.addClass('active');
-          if ($('body').hasClass('show-page')) {
+          if ($('body').hasClass('usa-tv-show')) {
             menu_link.addClass('show-color');
           }
           title_wrapper.toggle();

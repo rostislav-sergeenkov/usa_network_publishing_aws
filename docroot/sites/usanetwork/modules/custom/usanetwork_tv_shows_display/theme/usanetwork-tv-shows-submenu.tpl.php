@@ -1,4 +1,4 @@
-<div class="show-title-block-wrapper">
+<div class="show-title-block-wrapper show-border secondary">
   <div class="show-title-block show-color">
     <div class="menu-open show-border secondary"><a href="javascript:void(0)"></a></div>
     <div class="schedule">

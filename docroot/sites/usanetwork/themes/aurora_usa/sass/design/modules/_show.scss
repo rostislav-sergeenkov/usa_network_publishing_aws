@@ -750,6 +750,9 @@
 
 .show-title-block-wrapper {
   border: 0;
+  @include breakpoint($bp-768-width) {
+    display: none;
+  }
   &.fixed {
     border-bottom: 1px solid;
   }

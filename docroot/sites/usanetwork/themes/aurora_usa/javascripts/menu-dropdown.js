@@ -8,19 +8,28 @@
       }
 
       function getShowTitleOffset(){
-        if ($('body').hasClass('show-page')) {
+        if ($('body').hasClass('usa-tv-show')) {
           if ($('.tab-item').hasClass('active')) {
             show_title_offset = $('.show-title-block-wrapper').offset().top;
-          } else if (window.innerWidth < window_size_tablet){
-            show_title_offset = 160;
-          } else {
-            show_title_offset = 200;
           }
         }
       }
 
+      function showTitleMove() {
+        if (window.innerWidth < 769 && !($('.show-title-block-wrapper .show-title-block').hasClass('inner'))) {
+          $('.show-title-block-wrapper .show-title-block').addClass('secondary');
+          $('.show-title-block-wrapper .show-title-block').addClass('inner');
+          $('.show-title-block-wrapper .show-title-block').appendTo('.header-nav-bar .show-title-wrapper');
+        }
+        else if(window.innerWidth >= 769 && ($('.header-nav-bar .show-title-block').hasClass('inner'))) {
+          $('.header-nav-bar .show-title-block').removeClass('secondary');
+          $('.header-nav-bar .show-title-block').removeClass('inner');
+          $('.header-nav-bar .show-title-block').appendTo('.show-title-block-wrapper');
+        }
+      }
+
       function setShowTitleOffset(){
-        if ($('body').hasClass('show-page')) {
+        if ($('body').hasClass('usa-tv-show')) {
           if ($(window).scrollTop() > show_title_offset) {
             $('.show-title-block-wrapper').addClass('fixed');
             $('.show-menu-tab').addClass('fixed');
@@ -163,6 +172,8 @@
         }
       };
 
+      showTitleMove();
+
       $(".tab .no-refresh").bind('click', tabNavHandler);
       $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
       $(".main-menu-open a").bind('click', menuOpenHandler);
@@ -175,6 +186,9 @@
       });
 
       $(window).bind('resize', function () {
+
+        showTitleMove();
+
         if (window.innerWidth < window_size_tablet_portrait && !tablet) {
           if ($('body').hasClass('page-home') || $('body').hasClass('usa-tv-show')) {
             $('header .tab-item.active').removeClass('active').removeAttr('style');
@@ -195,6 +209,13 @@
         if (window.innerWidth >= window_size_tablet_portrait) {
           getShowTitleOffset();
           setShowTitleOffset();
+        }
+        if (window.innerWidth < window_size_tablet_portrait) {
+          if ($('body').hasClass('usa-tv-show')){
+            $('.show-menu-tab.active').removeClass('active').removeAttr('style');
+            $(".menu-open a").parent().removeClass('active');
+            $(".menu-open a").removeClass('active');
+          }
         }
         if (window.innerWidth < window_size_tablet_portrait && $('.show-title-block-wrapper').hasClass('fixed')) {
           $('.show-title-block-wrapper').removeClass('fixed');

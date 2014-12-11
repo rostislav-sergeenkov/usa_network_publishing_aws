@@ -10017,6 +10017,11 @@ body.front {
 .show-title-block-wrapper {
   border: 0;
 }
+@media (max-width: 768px) {
+  .show-title-block-wrapper {
+    display: none;
+  }
+}
 .show-title-block-wrapper.fixed {
   border-bottom: 1px solid;
 }

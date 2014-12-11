@@ -16,12 +16,12 @@
       }
 
       function showTitleMove() {
-        if (window.innerWidth < 769 && !($('.show-title-block-wrapper .show-title-block').hasClass('inner'))) {
+        if (window.innerWidth < window_size_tablet_portrait && !($('.show-title-block-wrapper .show-title-block').hasClass('inner'))) {
           $('.show-title-block-wrapper .show-title-block').addClass('secondary');
           $('.show-title-block-wrapper .show-title-block').addClass('inner');
           $('.show-title-block-wrapper .show-title-block').appendTo('.header-nav-bar .show-title-wrapper');
         }
-        else if(window.innerWidth >= 769 && ($('.header-nav-bar .show-title-block').hasClass('inner'))) {
+        else if(window.innerWidth >= window_size_tablet_portrait && ($('.header-nav-bar .show-title-block').hasClass('inner'))) {
           $('.header-nav-bar .show-title-block').removeClass('secondary');
           $('.header-nav-bar .show-title-block').removeClass('inner');
           $('.header-nav-bar .show-title-block').appendTo('.show-title-block-wrapper');
@@ -224,7 +224,7 @@
       });
 
       $(window).on("scroll", function() {
-        if (window.innerWidth >= 769) {
+        if (window.innerWidth >= window_size_tablet_portrait) {
           setShowTitleOffset();
         }
       });

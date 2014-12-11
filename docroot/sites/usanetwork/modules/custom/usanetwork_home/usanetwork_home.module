@@ -120,7 +120,7 @@ function _usanetwork_home_featured_carousel() {
       'additional_text' => t('Episodes, clips & photos'),
     );
 
-    _usanetwork_tv_shows_display_discription_item($homepage_node, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
+    _usanetwork_tv_shows_discription_item($homepage_node, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
 
     $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
 
@@ -1077,7 +1077,7 @@ function _usanetwork_home_shows_queue_get_promo_content($show_node_wrapper) {
   $theme_variables = array();
   $promoted_content_item = array();
   $episode_dates = array();
-  
+
   if (!empty($show_node->field_tvs_promoted_content)) {
     $promoted_content_item = $show_node_wrapper->field_tvs_promoted_content->value();
     $episode_dates = $episode_dates = _usanetwork_home_get_episode_dates($show_node_wrapper->field_tvs_promoted_content);

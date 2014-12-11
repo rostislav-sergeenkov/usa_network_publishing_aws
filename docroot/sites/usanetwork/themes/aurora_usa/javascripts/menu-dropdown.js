@@ -15,6 +15,18 @@
         }
       }
 
+      function setShowTitleOffset(){
+        if ($('body').hasClass('usa-tv-show')) {
+          if ($(window).scrollTop() > show_title_offset) {
+            $('.show-title-block-wrapper').addClass('fixed');
+            $('.show-menu-tab').addClass('fixed');
+          } else {
+            $('.show-title-block-wrapper').removeClass('fixed');
+            $('.show-menu-tab').removeClass('fixed');
+          }
+        }
+      }
+
       function showTitleMove() {
         if (window.innerWidth < window_size_tablet_portrait && !($('.show-title-block-wrapper .show-title-block').hasClass('inner'))) {
           $('.show-title-block-wrapper .show-title-block').addClass('secondary');
@@ -28,15 +40,14 @@
         }
       }
 
-      function setShowTitleOffset(){
-        if ($('body').hasClass('usa-tv-show')) {
-          if ($(window).scrollTop() > show_title_offset) {
-            $('.show-title-block-wrapper').addClass('fixed');
-            $('.show-menu-tab').addClass('fixed');
-          } else {
-            $('.show-title-block-wrapper').removeClass('fixed');
-            $('.show-menu-tab').removeClass('fixed');
-          }
+      function showMenuMove() {
+        if (window.innerWidth < window_size_tablet_portrait && !($('.show-menu-tab .show-menu').hasClass('inner'))) {
+          $('.show-menu-tab .show-menu').addClass('inner');
+          $('.show-menu-tab .show-menu').appendTo('.header-show-menu');
+        }
+        else if(window.innerWidth >= window_size_tablet_portrait && ($('.header-show-menu .show-menu').hasClass('inner'))) {
+          $('.header-show-menu .show-menu').removeClass('inner');
+          $('.header-show-menu .show-menu').appendTo('.show-menu-tab');
         }
       }
 
@@ -173,6 +184,7 @@
       };
 
       showTitleMove();
+      showMenuMove();
 
       $(".tab .no-refresh").bind('click', tabNavHandler);
       $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
@@ -188,6 +200,7 @@
       $(window).bind('resize', function () {
 
         showTitleMove();
+        showMenuMove();
 
         if (window.innerWidth < window_size_tablet_portrait && !tablet) {
           if ($('body').hasClass('page-home') || $('body').hasClass('usa-tv-show')) {

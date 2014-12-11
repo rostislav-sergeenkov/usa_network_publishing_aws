@@ -3081,6 +3081,9 @@ header .nav-bar-tabs {
     display: table;
     width: 100%;
   }
+  header .nav-bar-tabs .header-show-menu {
+    display: none;
+  }
   header .nav-bar-tabs .tab {
     display: table-cell;
     height: 100%;

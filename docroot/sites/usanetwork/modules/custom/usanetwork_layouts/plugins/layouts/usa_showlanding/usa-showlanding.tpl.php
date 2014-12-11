@@ -15,7 +15,7 @@
     </div>
   <?php endif; ?>
     <?php if($content['four'] || $content['three']) : ?>
-    <div class="inner-wrapper panel-row promo-ads-panel expandable-container">
+    <div class="inner-wrapper panel-row promo-ads-panel">
       <div class="expandable-content">
         <div class="panel-panel panel-two panel-col1">
           <?php print $content['four']; ?>

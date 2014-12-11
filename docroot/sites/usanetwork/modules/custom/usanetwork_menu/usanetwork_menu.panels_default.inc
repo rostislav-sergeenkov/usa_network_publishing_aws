@@ -27,6 +27,7 @@ function usanetwork_menu_default_panels_mini() {
       'reg_tab_full_episodes' => NULL,
       'reg_tab_schedule' => NULL,
       'reg_tab_user_profile' => NULL,
+      'reg_show_menu' => NULL,
     ),
   );
   $display->cache = array();
@@ -56,7 +57,7 @@ function usanetwork_menu_default_panels_mini() {
   $display->panels['reg_menu'][0] = 'new-1';
   $pane = new stdClass();
   $pane->pid = 'new-2';
-  $pane->panel = 'reg_menu';
+  $pane->panel = 'reg_show_menu';
   $pane->type = 'block';
   $pane->subtype = 'usanetwork_tv_shows_display-usanetwork_tv_shows_submenu';
   $pane->shown = TRUE;
@@ -71,10 +72,10 @@ function usanetwork_menu_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 0;
   $pane->locks = array();
   $display->content['new-2'] = $pane;
-  $display->panels['reg_menu'][1] = 'new-2';
+  $display->panels['reg_show_menu'][0] = 'new-2';
   $pane = new stdClass();
   $pane->pid = 'new-3';
   $pane->panel = 'reg_tab_full_episodes';

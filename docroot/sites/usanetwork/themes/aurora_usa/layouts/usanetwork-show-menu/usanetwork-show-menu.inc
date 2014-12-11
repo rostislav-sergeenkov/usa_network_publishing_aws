@@ -18,6 +18,7 @@ function usanetwork_pl_show_menu_render() {
     'reg_tab_full_episodes' => t('TAB: Full Episodes'),
     'reg_tab_schedule' => t('TAB: Schedule'),
     'reg_tab_user_profile' => t('TAB: User Profile'),
+    'reg_show_menu' => t('Show Menu'),
   );
 
   return $regions;

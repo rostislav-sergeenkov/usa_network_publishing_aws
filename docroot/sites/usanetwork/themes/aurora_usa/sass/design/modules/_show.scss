@@ -28,7 +28,7 @@
         position: relative;
         width: 310px;
         &.active {
-          .meta {
+          .meta-wrapper {
             &:after {
               content: "\e607";
               @include breakpoint($bp-768-width) {
@@ -59,6 +59,22 @@
           @include breakpoint($bp-768-width) {
             height: 25%;
           }
+          &:after {
+            color: #ffffff;
+            content: "\e608";
+            display: block;
+            font-family: $ico-font;
+            font-size: 12px;
+            margin-top: -12px;
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            @include breakpoint($bp-768-width) {
+              content: "\e609";
+              margin-top: -3px;
+              right: 18px;
+            }
+          }
         }
         .meta-wrapper-inner {
           display: table;
@@ -87,22 +103,6 @@
           @include breakpoint($bp-480-width) {
             margin-top: -18px;
             padding-left: 10px;
-          }
-          &:after {
-            color: #ffffff;
-            content: "\e608";
-            display: block;
-            font-family: $ico-font;
-            font-size: 12px;
-            margin-top: -12px;
-            position: absolute;
-            right: 22px;
-            top: 50%;
-            @include breakpoint($bp-768-width) {
-              content: "\e609";
-              margin-top: -3px;
-              right: 18px;
-            }
           }
           .title {
             font-size: 20px;
@@ -463,6 +463,9 @@
               height: 33%;
               position: absolute;
               width: 100%;
+              &:after {
+                display: none;
+              }
               @include breakpoint($bp-1280-width) {
                 height: 81px;
               }
@@ -747,6 +750,9 @@
 
 .show-title-block-wrapper {
   border: 0;
+  @include breakpoint($bp-768-width) {
+    display: none;
+  }
   &.fixed {
     border-bottom: 1px solid;
   }
@@ -826,6 +832,7 @@
       font-size: 24px;
       letter-spacing: 3px;
       line-height: 67px;
+      margin: 0;
       margin-right: 27px;
       text-transform: uppercase;
       @include breakpoint($bp-1024-width) {

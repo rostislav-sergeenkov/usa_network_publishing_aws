@@ -1,10 +1,14 @@
 var $ = jQuery;
 var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
+var window_size_tablet = 1025;
 var window_size_mobile = 481;
 var show_carousel_item_width = 310;
 var desktop_show_open_width = 1470;
 var small_desktop_show_open_width = 990;
+var show_title_offset_desktop = 200;
+var show_title_offset_tablet = 160;
+var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
 
 var USAN = USAN || {};
 

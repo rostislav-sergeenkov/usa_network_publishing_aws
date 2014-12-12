@@ -12265,6 +12265,9 @@ body.person-page #main {
 .ie8 .featured-asset .video-player-wrapper img {
   width: 100%;
 }
+.ie8 .meta-back {
+  filter: alpha(opacity=60);
+}
 
 #block-usanetwork-tv-schedule-usa-on-now-block {
   height: 45px;

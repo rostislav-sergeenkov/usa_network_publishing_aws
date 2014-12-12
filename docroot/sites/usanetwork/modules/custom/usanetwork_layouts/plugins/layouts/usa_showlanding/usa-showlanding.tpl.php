@@ -14,7 +14,7 @@
     </div>
   <?php endif; ?>
   <?php if($content['four'] || $content['three']) : ?>
-    <div class="inner-wrapper panel-row promo-ads-panel">
+    <div class="inner-wrapper panel-row latest-panel">
       <div class="panel-panel panel-two panel-col1">
         <?php print $content['four']; ?>
       </div>
@@ -24,10 +24,8 @@
     </div>
   <?php endif; ?>
     <?php if($content['two']) : ?>
-    <div class="panel-panel panel-four panel-row video-promo-panel">
-      <div class="expandable-content">
-          <?php print $content['two']; ?>
-      </div>
+    <div class="panel-panel panel-four panel-row catch-up-explore-panel">
+      <?php print $content['two']; ?>
     </div>
     <?php endif; ?>
      <?php if($content['five'] || $content['six']) : ?>

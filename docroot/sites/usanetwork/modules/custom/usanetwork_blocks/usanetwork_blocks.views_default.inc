@@ -449,7 +449,10 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
   $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
   $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_syndicated_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_syndicated_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['block_description'] = 'USA Originals';
 
   /* Display: Syndicated Shows */
@@ -533,7 +536,9 @@ function usanetwork_blocks_views_default_views() {
   $handler->display->display_options['filters']['field_syndicated_value']['id'] = 'field_syndicated_value';
   $handler->display->display_options['filters']['field_syndicated_value']['table'] = 'field_data_field_syndicated';
   $handler->display->display_options['filters']['field_syndicated_value']['field'] = 'field_syndicated_value';
-  $handler->display->display_options['filters']['field_syndicated_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_syndicated_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['block_description'] = 'Syndicated Shows';
   $export['usa_nav'] = $view;
 

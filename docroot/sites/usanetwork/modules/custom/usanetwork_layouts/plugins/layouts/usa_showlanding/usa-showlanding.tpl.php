@@ -11,40 +11,23 @@
       <div id="main-slider">
         <?php print $content['one']; ?>
       </div>
-      <div id="aspot-video-container" style="display: none"></div>
     </div>
   <?php endif; ?>
-    <?php if($content['four'] || $content['three']) : ?>
+  <?php if($content['four'] || $content['three']) : ?>
     <div class="inner-wrapper panel-row promo-ads-panel">
-      <div class="expandable-content">
-        <div class="panel-panel panel-two panel-col1">
-          <?php print $content['four']; ?>
-        </div>
-        <div class="panel-panel panel-three panel-col2">
-          <?php print $content['three']; ?>
-        </div>
-       </div>
-       <?php if($content['four']): ?>
-       <div class="expandable-toggle-wrap">
-        <div class="expandable-toggle">
-              <div class="more">more</div>
-              <div class="less">close</div>
-          </div>
-        </div>
-       <?php endif; ?>
+      <div class="panel-panel panel-two panel-col1">
+        <?php print $content['four']; ?>
+      </div>
+      <div class="panel-panel panel-three panel-col2">
+        <?php print $content['three']; ?>
+      </div>
     </div>
-    <?php endif; ?>
+  <?php endif; ?>
     <?php if($content['two']) : ?>
-    <div class="panel-panel panel-four panel-row video-promo-panel expandable-container">
+    <div class="panel-panel panel-four panel-row video-promo-panel">
       <div class="expandable-content">
           <?php print $content['two']; ?>
       </div>
-      <div class="expandable-toggle-wrap">
-        <div class="expandable-toggle">
-              <div class="more">more</div>
-              <div class="less">close</div>
-          </div>
-        </div>
     </div>
     <?php endif; ?>
      <?php if($content['five'] || $content['six']) : ?>

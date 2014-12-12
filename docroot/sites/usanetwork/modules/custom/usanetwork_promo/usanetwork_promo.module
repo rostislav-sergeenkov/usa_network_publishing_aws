@@ -164,6 +164,10 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       $field_promo_link = reset($field_promo_link_field);
       $featutred_content['more_link_url'] = $field_promo_link['url'];
     }
+    if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
+      $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
+      $promo_text_line_2 = $field_promo_text_line_2['value'];
+    }
   }
 
   switch ($type) {
@@ -217,10 +221,8 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
         $field_cover_item = reset($field_cover_item_items);
         $featutred_content['image_url'] = $featutred_content['image_url_wide'] = $field_cover_item['uri'];
       }
-      if ($field_promo_text_line_2_items = field_get_items('node', $promo, 'field_promo_text_line_2')) {
-        $field_promo_text_line_2 = reset($field_promo_text_line_2_items);
-        $featutred_content['cta_text'] = $field_promo_text_line_2['value'];
-      }
+      
+      $featutred_content['cta_text'] = isset($promo_text_line_2) ? $promo_text_line_2 : '';
 
       $featutred_content['url'] = url('node/' . $node->nid);
       $featutred_content['icon_type'] = $icon_type;
@@ -234,10 +236,8 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       $featutred_content['url'] = $featutred_content['more_link_url'];
 
       $featutred_content['caption'] = isset($promo_text_line_1) ? $promo_text_line_1 : NULL;
-      if ($field_promo_text_line_2_field = field_get_items('node', $promo, 'field_promo_text_line_2')) {
-        $field_promo_text_line_2 = reset($field_promo_text_line_2_field);
-        $featutred_content['title'] = $field_promo_text_line_2['value'];
-      }
+      
+      $featutred_content['title'] = isset($promo_text_line_2) ? $promo_text_line_2 : '';
       
       if ($show_field_value = field_get_items('node', $node, 'field_show')) {
         $show_field = reset($show_field_value);

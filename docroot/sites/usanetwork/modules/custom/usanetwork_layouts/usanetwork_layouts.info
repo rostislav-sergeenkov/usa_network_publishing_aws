@@ -2,6 +2,7 @@ name = USA Network Layouts
 description = Additional layouts for the Panels module.
 package = USA Network
 php = 5.2
+version = 7.x-1.0.1
 core = 7.x
 dependencies[] = panels
 files[] = usanetwork_layouts.module

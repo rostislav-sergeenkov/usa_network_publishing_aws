@@ -225,10 +225,8 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
       $featutred_content['cta_text'] = isset($promo_text_line_2) ? $promo_text_line_2 : '';
 
       $featutred_content['url'] = url('node/' . $node->nid);
-      $featutred_content['icon_type'] = $icon_type;
-      $featutred_content['published'] = ($node->status == 1)
-          ? TRUE
-          : FALSE;
+      $featutred_content['icon_type'] = isset($icon_type) ? $icon_type : NULL;
+      $featutred_content['published'] = ($node->status == 1) ? TRUE : FALSE;
       break;
     case 'default_promo':
       $node = $content;

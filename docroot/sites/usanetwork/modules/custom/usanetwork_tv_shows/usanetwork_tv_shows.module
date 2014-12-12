@@ -1131,6 +1131,7 @@ function _usanetwork_tv_shows_latest($show) {
         'carousel-left',
         'start',
       ),
+      'data-carousel-id' => 'show-page-latest',
     ),
     'title_tag' => 'h2',
     'title_attributes' => array(

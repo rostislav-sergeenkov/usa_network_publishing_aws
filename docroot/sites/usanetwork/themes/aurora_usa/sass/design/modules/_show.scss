@@ -944,6 +944,15 @@
     @include breakpoint($between-769-1280) {
       width: 200px;
     }
+    & ~ .show-menu {
+      border-left: 1px solid $footer-links;
+      float: left;
+      @include breakpoint($between-769-1280) {
+        float: none;
+        margin-left: 200px;
+        width: 70%;
+      }
+    }
     .node {
       margin-bottom: 0px;
     }
@@ -968,18 +977,11 @@
     }
   }
   .show-menu {
-    border-left: 1px solid $footer-links;
-    float: left;
     display: table;
     height: 100%;
     padding-left: 30px;
     position: relative;
     width: 70%;
-    @include breakpoint($between-769-1280) {
-      float: none;
-      margin-left: 200px;
-      width: 70%;
-    }
     > li {
       display: table-cell;
       height: 30px;

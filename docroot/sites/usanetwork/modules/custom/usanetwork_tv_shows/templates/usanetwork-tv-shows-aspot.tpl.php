@@ -33,7 +33,7 @@
         <?php endforeach; ?>
       </ul>
       <div class="more-button">
-        <a href="javascript:void(0)" class="more"></a>
+        <a href="javascript:void(0)" class="more link-color-reset"></a>
       </div>
       <!--
       <div class="advertisement">

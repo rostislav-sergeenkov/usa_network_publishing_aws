@@ -466,4 +466,10 @@
   .meta-back {
     filter:alpha(opacity=60);
   }
+
+  .meta-icon{
+    &:before{
+      background: url("../images/sprites/circle.png") no-repeat transparent;
+    }
+  }
 }

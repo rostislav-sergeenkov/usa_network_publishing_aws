@@ -41,13 +41,20 @@
       }
 
       function showMenuMove() {
-        if (window.innerWidth < window_size_tablet_portrait && !($('.show-menu-tab .show-menu').hasClass('inner'))) {
+        if (window.innerWidth < window_size_tablet_portrait && !($('.show-menu').hasClass('inner'))) {
           $('.show-menu-tab .show-menu').addClass('inner');
           $('.show-menu-tab .show-menu').appendTo('.header-show-menu');
+          $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
+          $(".show-menu > li > a").unbind('hover');
+          $('.show-menu > li, .show-menu > li > a').removeClass('active');
         }
-        else if(window.innerWidth >= window_size_tablet_portrait && ($('.header-show-menu .show-menu').hasClass('inner'))) {
+        else if(window.innerWidth >= window_size_tablet_portrait && ($('.show-menu').hasClass('inner'))) {
           $('.header-show-menu .show-menu').removeClass('inner');
+          $('.nav-bar-tabs .expanded > a:not(.no-refresh)').unbind('click');
           $('.header-show-menu .show-menu').appendTo('.show-menu-tab');
+          $(".show-menu > li > a").bind('hover', showMenuHoverItem);
+          $('.show-menu > li, .show-menu > li > a').removeClass('active');
+          $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
       }
 
@@ -183,17 +190,24 @@
         }
       };
 
+      var showMenuHoverItem = function () {
+        $('.show-menu > li, .show-menu > li > a').removeClass('active');
+        $(this).parent().addClass('active');
+        $(this).addClass('active');
+      };
+
+
       showTitleMove();
       showMenuMove();
 
       $(".tab .no-refresh").bind('click', tabNavHandler);
-      $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
       $(".main-menu-open a").bind('click', menuOpenHandler);
       $(".menu-open a").bind('click', showMenuOpenHandler);
 
       $(window).load(function () {
         if ($('body').hasClass('usa-tv-show') && window.innerWidth >= window_size_tablet_portrait) {
           getShowTitleOffset();
+          $(".show-menu > li > a").bind('hover', showMenuHoverItem);
         }
       });
 

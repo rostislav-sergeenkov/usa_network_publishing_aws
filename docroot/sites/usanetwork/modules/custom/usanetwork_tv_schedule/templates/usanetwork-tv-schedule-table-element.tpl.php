@@ -35,15 +35,15 @@
     </div>
     <div class="hidden-block">
       <div class="node node-usanetwork-promo">
-        <a href="<?php print $episode_url; ?>">
-          <?php if (!empty($image_url)): ?>
+        <a href="<?php print !empty($episode_url) ? $episode_url : $show_url; ?>">
+          <?php if (!empty($episode_image_url) || !empty($show_image_url)): ?>
             <div class="asset-img">
-              <img alt="" src="<?php print $image_url; ?>">
+              <img alt="" src="<?php print !empty($episode_image_url) ? $episode_image_url : $show_image_url; ?>">
             </div>
           <?php endif; ?>
-          <?php if (!empty($description)): ?>
+          <?php if (!empty($episode_description) || !empty($show_description)): ?>
             <div class="meta">
-              <div class="description"><?php print $description; ?></div>
+              <div class="description"><?php print !empty($episode_description) ? $episode_description : $show_description; ?></div>
             </div>
           <?php endif; ?>
         </a>

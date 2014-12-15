@@ -392,6 +392,60 @@
   @include clear();
   position: relative;
   width: 100%;
+  &.episodes-empty{
+    .show-aspot{
+      float: none;
+      width: 100%;
+    }
+    .episodes-list{
+      display: none;
+    }
+  }
+  &.episodes-3{
+    .episodes-list{
+      ul{
+        li{
+          height: 33.33333%;
+          .meta{
+            padding-right: 55%;
+          }
+          .asset-img {
+            max-width: 50%;
+          }
+        }
+      }
+    }
+  }
+  &.episodes-4{
+    .episodes-list{
+      ul{
+        li{
+          height: 25%;
+          .meta{
+            padding-right: 40%;
+          }
+          .asset-img {
+            max-width: 35%;
+          }
+        }
+      }
+    }
+  }
+  &.episodes-5{
+    .episodes-list{
+      ul{
+        li{
+          height: 20%;
+          .meta{
+            padding-right: 40%;
+          }
+          .asset-img {
+            max-width: 30.5%;
+          }
+        }
+      }
+    }
+  }
   .show-aspot {
     float: left;
     position: relative;
@@ -484,9 +538,6 @@
         overflow: hidden;
         position: relative;
         width: 100%;
-        @include breakpoint($bp-768-width) {
-          height: 70px;
-        }
         &:nth-child(2n) {
           background: $full-episodes-dark-back;
         }
@@ -502,11 +553,9 @@
           position: absolute;
           text-align: left;
           top: 50%;
-          width: 57%;
+          width: 100%;
           @include breakpoint($bp-1280-width) {
             left: 10px;
-            padding-right: 140px;
-            width: 100%;
           }
           .title, .additional{
             font-size: 14px;
@@ -530,10 +579,9 @@
           }
         }
       }
-      .episode-image {
+      .asset-img {
         float: right;
         height: 100%;
-        max-width: 30.5%;
         @include breakpoint($bp-768-width) {
           max-width: 124px;
         }

@@ -173,21 +173,39 @@
             }
           }
         }
+        .meta-wrapper-inner {
+          height: 100%;
+          display: table;
+          width: 100%;
+        }
+      }
+      .meta-icon {
+        display: block;
+        height: 37px;
+        left: 10px;
+        margin-top: -19px;
+        position: absolute;
+        top: 50%;
+        width: 37px;
+        ~ .meta {
+          .caption, .title, .additional {
+            margin-left: 55px;
+            width: 245px;
+          }
+        }
       }
       @extend %meta;
       .meta {
-        padding-left: 20px;
-        position: absolute;
+        display: table-cell;
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
         width: 100%;
-        .title, .additional {
-          line-height: 19px;
-          margin-left: 45px;
+        .title, .additional, .caption {
+          margin-left: 10px;
+          line-height: 18px;
         }
-        .meta-icon {
-          &:before {
-            top: 0px;
-          }
-        }
+
       }
       &.poll {
         a {
@@ -375,11 +393,11 @@
       float: right;
       .meta {
         text-align: left;
-        .meta-icon {
-          left: 0px;
-          position: absolute;
-          top: 0;
-        }
+      }
+      .meta-icon {
+        left: 0px;
+        position: absolute;
+        top: 0;
       }
     }
   }

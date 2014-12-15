@@ -1104,6 +1104,22 @@ a:active {
   color: white;
 }
 
+.link-color-reset {
+  color: transparent;
+}
+.link-color-reset:visited {
+  color: transparent;
+}
+.link-color-reset:focus {
+  color: transparent;
+}
+.link-color-reset:hover {
+  color: transparent;
+}
+.link-color-reset:active {
+  color: transparent;
+}
+
 p {
   margin-bottom: 1.5em;
 }
@@ -8901,9 +8917,37 @@ body.front {
     margin-left: 0px;
   }
 }
+.featured-block .carousel ul li .meta-icon {
+  display: block;
+  height: 37px;
+  left: 20px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
+}
+@media (max-width: 480px) {
+  .featured-block .carousel ul li .meta-icon {
+    margin-top: -35px;
+  }
+}
+.featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
+  margin-left: 65px;
+  width: 411px;
+}
+@media (max-width: 1024px) {
+  .featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
+    margin-left: 65px;
+    width: 305px;
+  }
+}
+@media (max-width: 768px) {
+  .featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
+    width: 235px;
+  }
+}
 .featured-block .carousel ul li .meta {
   display: table-cell;
-  margin-left: 10px;
   overflow: hidden;
   position: relative;
   vertical-align: middle;
@@ -8913,30 +8957,6 @@ body.front {
   .featured-block .carousel ul li .meta {
     margin-left: 0px;
     bottom: 16px;
-  }
-}
-.featured-block .carousel ul li .meta .meta-icon {
-  display: block;
-  height: 37px;
-  left: 20px;
-  margin-top: -19px;
-  position: absolute;
-  top: 50%;
-  width: 37px;
-}
-.featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
-  margin-left: 10%;
-  width: 411px;
-}
-@media (max-width: 1024px) {
-  .featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
-    margin-left: 45px;
-    width: 305px;
-  }
-}
-@media (max-width: 768px) {
-  .featured-block .carousel ul li .meta .meta-icon ~ .caption, .featured-block .carousel ul li .meta .meta-icon ~ .title {
-    width: 235px;
   }
 }
 .featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
@@ -8955,7 +8975,7 @@ body.front {
 .featured-block .carousel ul li .meta .caption {
   font-size: 12px;
   line-height: 16px;
-  margin-left: 0;
+  margin-left: 20px;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .caption {
@@ -8971,7 +8991,7 @@ body.front {
 }
 .featured-block .carousel ul li .meta .title {
   font-size: 20px;
-  margin-left: 0;
+  margin-left: 20px;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .title {
@@ -11267,17 +11287,34 @@ body.person-page #main {
   margin-left: -19px;
   top: -48px;
 }
-.carousel ul li .meta {
-  padding-left: 20px;
-  position: absolute;
+.carousel ul li .meta-wrap .meta-wrapper-inner {
+  height: 100%;
+  display: table;
   width: 100%;
 }
-.carousel ul li .meta .title, .carousel ul li .meta .additional {
-  line-height: 19px;
-  margin-left: 45px;
+.carousel ul li .meta-icon {
+  display: block;
+  height: 37px;
+  left: 10px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
 }
-.carousel ul li .meta .meta-icon:before {
-  top: 0px;
+.carousel ul li .meta-icon ~ .meta .caption, .carousel ul li .meta-icon ~ .meta .title, .carousel ul li .meta-icon ~ .meta .additional {
+  margin-left: 55px;
+  width: 245px;
+}
+.carousel ul li .meta {
+  display: table-cell;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+}
+.carousel ul li .meta .title, .carousel ul li .meta .additional, .carousel ul li .meta .caption {
+  margin-left: 10px;
+  line-height: 18px;
 }
 .carousel ul li.poll a {
   height: 115px;
@@ -11463,7 +11500,7 @@ body.person-page #main {
 .carousel-right ul li .meta {
   text-align: left;
 }
-.carousel-right ul li .meta .meta-icon {
+.carousel-right ul li .meta-icon {
   left: 0px;
   position: absolute;
   top: 0;

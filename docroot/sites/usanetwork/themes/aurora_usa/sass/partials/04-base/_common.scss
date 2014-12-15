@@ -63,6 +63,10 @@ a {
   text-decoration: none;
 }
 
+.link-color-reset {
+  @include link-colors(transparent, transparent, transparent, transparent, transparent);
+}
+
 em {
   @extend %italic;
 }

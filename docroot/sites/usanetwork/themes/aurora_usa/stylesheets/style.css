@@ -10488,6 +10488,17 @@ body.front {
     width: 200px;
   }
 }
+.show-menu-tab .show-menu-video ~ .show-menu {
+  border-left: 1px solid #dcddde;
+  float: left;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .show-menu-tab .show-menu-video ~ .show-menu {
+    float: none;
+    margin-left: 200px;
+    width: 70%;
+  }
+}
 .show-menu-tab .show-menu-video .node {
   margin-bottom: 0px;
 }
@@ -10511,20 +10522,11 @@ body.front {
   }
 }
 .show-menu-tab .show-menu {
-  border-left: 1px solid #dcddde;
-  float: left;
   display: table;
   height: 100%;
   padding-left: 30px;
   position: relative;
   width: 70%;
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .show-menu-tab .show-menu {
-    float: none;
-    margin-left: 200px;
-    width: 70%;
-  }
 }
 .show-menu-tab .show-menu > li {
   display: table-cell;

@@ -970,7 +970,7 @@ function _usanetwork_tv_shows_submenu() {
   foreach (array('facebook', 'twitter', 'instagram', 'pinterest', 'youtube', 'googleplus') as $social_network) {
     $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
     if ($social_bar_link_field) {
-      $social_links[] = l('', $social_bar_link_field[0]['url'], array('attributes' => array('class' => $social_network)));
+      $social_links[] = l('', $social_bar_link_field[0]['url'], array('attributes' => array('class' => $social_network, 'target' => '_blank')));
     }
   }
 
@@ -1131,6 +1131,7 @@ function _usanetwork_tv_shows_latest($show) {
         'carousel-left',
         'start',
       ),
+      'data-carousel-id' => 'show-page-latest',
     ),
     'title_tag' => 'h2',
     'title_attributes' => array(

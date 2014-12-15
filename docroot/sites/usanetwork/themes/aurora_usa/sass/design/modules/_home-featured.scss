@@ -100,10 +100,34 @@
             margin-left: 0px;
           }
         }
+        .meta-icon {
+          display: block;
+          height: 37px;
+          left: 20px;
+          margin-top: -19px;
+          position: absolute;
+          top: 50%;
+          width: 37px;
+          @include breakpoint($bp-480-width) {
+            margin-top: -35px;
+          }
+          ~ .meta {
+            .caption, .title {
+              margin-left: 65px;
+              width: 411px;
+              @include breakpoint($bp-1024-width) {
+                margin-left: 65px;
+                width: 305px;
+              }
+              @include breakpoint($bp-768-width) {
+                width: 235px;
+              }
+            }
+          }
+        }
         @extend %meta;
         .meta {
           display: table-cell;
-          margin-left: 10px;
           overflow: hidden;
           position: relative;
           vertical-align: middle;
@@ -111,26 +135,6 @@
           @include breakpoint($bp-480-width) {
             margin-left: 0px;
             bottom: 16px;
-          }
-          .meta-icon {
-            display: block;
-            height: 37px;
-            left: 20px;
-            margin-top: -19px;
-            position: absolute;
-            top: 50%;
-            width: 37px;
-            ~ .caption, ~ .title {
-              margin-left: 10%;
-              width: 411px;
-              @include breakpoint($bp-1024-width) {
-                margin-left: 45px;
-                width: 305px;
-              }
-              @include breakpoint($bp-768-width) {
-                width: 235px;
-              }
-            }
           }
           .caption, .title {
             width: 456px;
@@ -144,7 +148,7 @@
           .caption {
             font-size: 12px;
             line-height: 16px;
-            margin-left: 0;
+            margin-left: 20px;
             @include breakpoint($bp-768-width) {
               font-size: 10px;
               line-height: 14px;
@@ -156,7 +160,7 @@
           }
           .title {
             font-size: 20px;
-            margin-left: 0;
+            margin-left: 20px;
             @include breakpoint($bp-768-width) {
               font-size: 16px;
             }

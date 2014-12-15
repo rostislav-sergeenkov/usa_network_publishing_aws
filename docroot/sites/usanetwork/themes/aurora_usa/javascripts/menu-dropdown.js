@@ -208,6 +208,7 @@
         if ($('body').hasClass('usa-tv-show') && window.innerWidth >= window_size_tablet_portrait) {
           getShowTitleOffset();
           $(".show-menu > li > a").bind('hover', showMenuHoverItem);
+          $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
       });
 

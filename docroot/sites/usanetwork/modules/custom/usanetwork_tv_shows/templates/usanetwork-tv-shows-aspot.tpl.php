@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="aspot-and-episodes">
+<div class="aspot-and-episodes <?php print !empty($episodes)? 'episodes-'.count($episodes): 'episodes-empty'; ?>">
   <div class="show-aspot">
     <?php if (!empty($show)): ?>
       <?php print $show ?>
@@ -26,7 +26,7 @@
                 <div class="meta-icon play-icon resize-avail-1024"></div>
               </div>
               <?php if (!empty($episode['image_url'])): ?>
-                <div class="episode-image"><img src="<?php print $episode['image_url']; ?>" alt=""></div>
+                <div class="asset-img"><img src="<?php print $episode['image_url']; ?>" alt=""></div>
               <?php endif; ?>
             </a>
           </li>

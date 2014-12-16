@@ -11631,7 +11631,9 @@ body.person-page #main {
   clear: both;
   color: #545454;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
@@ -11642,15 +11644,16 @@ body.person-page #main {
 .carousel-description-item .title {
   color: #545454;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 25px;
-  margin: 20px 0;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  margin: 18px 0;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
   .carousel-description-item .title {
     font-size: 37px;
-    line-height: 43px;
+    line-height: 37px;
   }
 }
 

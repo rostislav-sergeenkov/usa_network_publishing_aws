@@ -521,7 +521,9 @@
     clear: both;
     color: $poll-color;
     font-family: $tex-gyreschola-italic;
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 1px;
     text-transform: uppercase;
     @include breakpoint($bp-min-1601-width) {
       font-size: 23px;
@@ -530,13 +532,14 @@
   .title {
     color: $poll-color;
     font-family: $avalon-demi;
-    font-size: 22px;
-    line-height: 25px;
-    margin: 20px 0;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    margin: 18px 0;
     text-transform: uppercase;
     @include breakpoint($bp-min-1601-width) {
       font-size: 37px;
-      line-height: 43px;
+      line-height: 37px;
     }
   }
 }

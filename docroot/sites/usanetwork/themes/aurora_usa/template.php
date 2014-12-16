@@ -70,6 +70,14 @@ function aurora_usa_preprocess_html(&$vars) {
       $vars['classes_array'][] = drupal_html_class('show-' . $show_title);
     }
   }
+  if ($file = menu_get_object('file')) {
+    if ($file->filemime == 'video/mpx') {
+      $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+      $show_title = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+      $vars['classes_array'][] =  usanetwork_tv_shows_color_show_css_class($show_title);
+      $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+    }
+  }
 }
 
 /**

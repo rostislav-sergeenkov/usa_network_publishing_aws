@@ -1015,6 +1015,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $vars['show_css_class'] = 'show-default';
     }
     if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+
+      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
       // inline content
       if ($vars['elements']['#embedded'] == TRUE) {
         if (isset($vars['content']['file'])) {

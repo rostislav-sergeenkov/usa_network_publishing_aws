@@ -9164,6 +9164,9 @@ body.front {
     margin-right: 0;
   }
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper {
+  line-height: 1;
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe {
   width: 100%;
 }

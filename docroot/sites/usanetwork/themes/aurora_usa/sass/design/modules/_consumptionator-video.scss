@@ -14,8 +14,9 @@
       @include breakpoint($bp-1024-width) {
         margin-right: 0;
       }
-      .video-player-wrapper{
-        iframe{
+      .video-player-wrapper {
+        line-height: 1;
+        iframe {
           width: 100%;
         }
       }

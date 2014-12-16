@@ -11,7 +11,11 @@
   </div>
   <?php if (!empty($episodes)): ?>
     <div class="episodes-list">
-      <div class="title show-color"><h2><?php print t('Latest full episodes'); ?></h2></div>
+      <?php if (!empty($episodes_block_title)): ?>
+        <div class="title show-color">
+          <h2><?php print $episodes_block_title; ?></h2>
+        </div>
+      <?php endif; ?>
       <ul>
         <?php foreach ($episodes as $episode): ?>
           <li>

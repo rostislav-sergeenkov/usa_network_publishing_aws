@@ -91,6 +91,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     'usanetwork_tv_shows_aspot' => array(
       'variables' => array(
         'show' => NULL,
+        'episodes_block_title' => NULL,
         'episodes' => array(
           0 => array(
             'url' => NULL,
@@ -756,45 +757,93 @@ function usanetwork_tv_shows_footer_links() {
 }
 
 /**
+ * @param $file_fid
+ */
+function _usanetwork_tv_shows_get_video_file_info($associated_video) {
+  $result = array(
+    'season' => NULL,
+    'episode' => NULL,
+    'duration' => NULL,
+    'title' => NULL,
+  );
+
+  if ($associated_video) {
+    $field_names = array(
+      'season' => 'field_mpx_season_number',
+      'episode' => 'field_mpx_episode_number',
+      'duration' => 'field_mpx_duration',
+      'title' => 'field_mpx_title',
+    );
+
+    foreach ($field_names as $result_name => $field_name) {
+      $field_data_field = field_get_items('file', $associated_video, $field_name);
+
+      if (!empty($field_data_field[0]['value'])) {
+        $result[$result_name] = $field_data_field[0]['value'];
+      }
+    }
+  }
+
+  return $result;
+}
+
+/**
  * Renders A-Spot block for Show.
  */
 function _usanetwork_tv_shows_aspot_block() {
+  $theme_variables = array();
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
+  $episodes_block_title_field = field_get_items('node', $show_node, 'field_tvs_aspot_promo_btitle');
+
+  $theme_variables['episodes_block_title'] = !empty($episodes_block_title_field)
+    ? $episodes_block_title_field[0]['value']
+    : t('Latest full episodes');
+
   if (!empty($show_node)) {
-    $show_episodes = usanetwork_schedule_pull_latest_episodes($show_node->nid, 5);
+    $featured_items_field = field_get_items('node', $show_node, 'field_usa_tv_promo');
 
-    $theme_variables = array(
-      'show' => usanetwork_aspot_render($show_node),
-      'episodes' => array(),
-    );
+    if (!empty($featured_items_field)) {
+      foreach ($featured_items_field as $featured_items_field_item) {
+        $related_nid = $featured_items_field_item['target_id'];
+        $related_node = node_load($related_nid);
 
-    if (!empty($show_episodes)) {
-      foreach ($show_episodes as $episode_data) {
-        $episode_file = file_load($episode_data->fid);
-        $episode_image_uri = '';
+        if ($related_node) {
+          $associated_video_field = field_get_items('node', $related_node, 'field_promo_assoc_video');
 
-        $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($episode_file->uri);
+          if (!empty($associated_video_field)) {
+            $video_file = file_load($associated_video_field[0]['target_id']);
+            $episode_image_uri = $video_file->uri;
 
-        if ($episode_image_uri_wrapper) {
-          $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
+            $video_info = _usanetwork_tv_shows_get_video_file_info($video_file);
+            $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($video_file->uri);
+
+            if ($episode_image_uri_wrapper) {
+              $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
+            }
+
+            $episode_theme_variables = array(
+              'url' => url('file/' . $video_file->fid),
+              'title' => $video_info['title'],
+              'series_and_number' => 'S' . $video_info['season'] . ' ' . t('Episode') . ' ' . $video_info['episode'],
+              'duration' => gmdate('H:i:s', $video_info['duration']),
+              'image_url' => image_style_url('300x169_video', $episode_image_uri),
+              'series_and_number' => NULL,
+            );
+
+            if (!empty($video_info['season']) && !empty($video_info['episode'])) {
+              $episode_theme_variables['series_and_number'] = 'S' . $video_info['season'] . ' ' . t('Episode') . ' ' . $video_info['episode'];
+            }
+
+            $theme_variables['episodes'][] = $episode_theme_variables;
+          }
         }
-
-        $episode_theme_variables = array(
-          'url' => url('file/' . $episode_data->fid),
-          'title' => $episode_data->title,
-          'series_and_number' => 'S' . $episode_data->field_mpx_season_number_value . ' ' . t('Episode') . ' ' . $episode_data->field_mpx_episode_number_value,
-          'duration' => gmdate('H:i:s', $episode_data->field_mpx_duration_value),
-          'image_url' => image_style_url('300x169_video', $episode_image_uri),
-        );
-
-        $theme_variables['episodes'][] = $episode_theme_variables;
       }
     }
+  }
 
-    if (!empty($theme_variables)) {
-      return theme('usanetwork_tv_shows_aspot', $theme_variables);
-    }
+  if (!empty($theme_variables)) {
+    return theme('usanetwork_tv_shows_aspot', $theme_variables);
   }
 
   return '';

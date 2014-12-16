@@ -1,0 +1,752 @@
+.consumptionator-page {
+  .video-block {
+    @include clear;
+    margin: 0 auto 10px;
+    max-width: 2260px;
+    padding: 10px 10px 0;
+    position: relative;
+    @include breakpoint($bp-min-1025-width) {
+      .player-wrapper {
+        -webkit-transition-property: margin;
+        -moz-transition-property: margin;
+        -o-transition-property: margin;
+        transition-property: margin;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+        -moz-transition-timing-function: ease;
+        -o-transition-timing-function: ease;
+        transition-timing-function: ease;
+      }
+      .consum-sidebar {
+        -webkit-transition-property: right;
+        -moz-transition-property: right;
+        -o-transition-property: right;
+        transition-property: right;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+        -moz-transition-timing-function: ease;
+        -o-transition-timing-function: ease;
+        transition-timing-function: ease;
+      }
+      &.full-size {
+        .player-wrapper {
+          margin-right: 0px;
+        }
+        .consum-sidebar {
+          right: -300px;
+        }
+      }
+    }
+    @include breakpoint($bp-1024-width) {
+      margin-bottom: 10px;
+    }
+    .player-wrapper {
+      margin-right: 310px;
+      position: relative;
+      @include breakpoint($bp-1024-width) {
+        margin-right: 0;
+
+      }
+      .node.player {
+        position: relative;
+        width: 100%;
+        .asset-img {
+          width: 100%;
+          & img {
+            width: 100%;
+          }
+        }
+      }
+      .coming-up-next {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #ffffff;
+        left: 0;
+        height: 100%;
+        padding: 40px 40px;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        width: 100%;
+        @include breakpoint($bp-768-width) {
+          padding: 20px;
+        }
+        @include breakpoint($bp-640-width) {
+          padding: 10px;
+        }
+        .prev-video {
+          margin-right: 245px;
+          @include breakpoint($bp-640-width) {
+            margin-right: 0;
+          }
+          .video-title {
+            font-family: $cent-725BT-italic;
+            font-size: 12px;
+            font-style: italic;
+            line-height: 18px;
+            text-transform: uppercase;
+          }
+          .asset-img {
+            position: relative;
+            @include breakpoint($bp-640-width) {
+              display: none;
+            }
+            .img-shadow {
+              background-color: rgba(0, 0, 0, 0.6);
+              left: 0;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              width: 100%;
+            }
+            .starts-in {
+              font-family: $cent-725BT-italic;
+              font-size: 12px;
+              font-style: italic;
+              line-height: 18px;
+              right: 105px;
+              position: absolute;
+              top: 45px;
+              text-transform: uppercase;
+              &:after {
+                display: block;
+                content: '';
+                @include sprite-background(countdown);
+                position: absolute;
+                top: -25px;
+                margin-top: 0;
+                right: -90px;
+                margin-right: 0;
+              }
+            }
+            & img {
+              width: 100%;
+            }
+          }
+        }
+        .prev-disc {
+          right: 0;
+          position: absolute;
+          top: 0;
+          width: 215px;
+          padding: 40px 40px 40px 0;
+          @include breakpoint($bp-768-width) {
+            padding: 20px 20px 20px 0;
+          }
+          @include breakpoint($bp-640-width) {
+            padding: 10px 10px 10px 0;
+            position: relative;
+            width: 100%;
+          }
+          @include breakpoint($bp-480-width) {
+            padding: 10px 0;
+          }
+          .node {
+            .meta-wrap{
+              @extend %meta;
+              .meta{
+                .caption {
+                  font-size: 12px;
+                  line-height: 18px;
+                  @include breakpoint($bp-480-width) {
+                    font-size: 10px;
+                    line-height: 16px;
+                  }
+                }
+                .title {
+                  font-size: 20px;
+                  line-height: 28px;
+                  @include breakpoint($bp-480-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                }
+                .additional {
+                  font-size: 12px;
+                  line-height: 18px;
+                  @include breakpoint($bp-480-width) {
+                    font-size: 10px;
+                    line-height: 16px;
+                  }
+                  span {
+                    font-size: 12px;
+                    font-family: $tex-gyreschola-italic;
+                    line-height: 16px;
+                  }
+                }
+                .description {
+                  font-family: $avalon-medium;
+                  font-size: 12px;
+                  line-height: 16px;
+                  margin-top: 25px;
+                  @include breakpoint($bp-480-width) {
+                    margin-top: 15px;
+                  }
+                  @include breakpoint($bp-1280-width) {
+                    font-size: 10px;
+                    line-height: 16px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 8px;
+                    line-height: 14px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .video-chat {
+        display: none;
+        color: #ffffff;
+        height: 535px;
+        margin-right: 310px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-640-width) {
+          height: 400px;
+        }
+        .node {
+          background-color: $social-twitter-back;
+          padding: 35px;
+          text-align: center;
+          @include breakpoint($bp-1024-width) {
+            padding: 10px;
+          }
+          @include breakpoint($bp-768-width) {
+            padding: 5px;
+          }
+          .join {
+            font-family: $cent-725BT-italic;
+            font-style: italic;
+            font-size: 12px;
+            line-height: 18px;
+            text-transform: uppercase;
+            @include breakpoint($bp-480-width) {
+              font-size: 10px;
+              line-height: 15px;
+            }
+          }
+          & a {
+            color: #ffffff;
+            text-decoration: none;
+            .meta-text {
+              font-family: $avalon-medium;
+              font-size: 25px;
+              line-height: 50px;
+              @include breakpoint($bp-1280-width) {
+                line-height: 35px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 20px;
+                line-height: 28px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: 18px;
+                line-height: 25px;
+              }
+              @include breakpoint($bp-480-width) {
+                font-size: 14px;
+                line-height: 20px;
+              }
+            }
+            .meta-additional {
+              font-family: $tex-gyreschola-italic;
+              //font-family: $cent-725BT-italic;
+              //font-style: italic;
+              font-size: 12px;
+              line-height: 18px;
+              text-transform: uppercase;
+              @include breakpoint($bp-480-width) {
+                font-size: 10px;
+                line-height: 15px;
+              }
+            }
+          }
+          .bottom-spoiler {
+            background-color: $social-twitter-back;
+            left: 0;
+            bottom: 0;
+            height: 40px;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+          }
+          &:after {
+            bottom: 9px;
+            z-index: 2;
+          }
+        }
+        .form-wrapper {
+          bottom: 0px;
+          left: 0;
+          height: 40px;
+          overflow: hidden;
+          //position: absolute;
+          width: 100%;
+          @include breakpoint($bp-640-width) {
+            height: 25px;
+          }
+          form {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            input {
+              border: 0;
+              border-radius: 0;
+              height: 100%;
+              outline: none;
+              padding: 0;
+              width: 100%;
+            }
+          }
+          .text-item {
+            height: 100%;
+            margin-right: 112px;
+            position: relative;
+            @include breakpoint($bp-640-width) {
+              margin-right: 70px;
+            }
+            @include breakpoint($bp-480-width) {
+              margin-right: 45px;
+            }
+            input {
+              border: 1px solid $full-episodes-light-back;
+              border-radius: 0;
+              font-family: $avalon-demi;
+              font-size: 14px;
+              padding-left: 20px;
+              text-transform: uppercase;
+              @include breakpoint($bp-640-width) {
+                font-size: 10px;
+                padding-left: 10px;
+              }
+            }
+          }
+          .submit-item {
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 112px;
+            @include breakpoint($bp-640-width) {
+              width: 70px;
+            }
+            @include breakpoint($bp-480-width) {
+              width: 45px;
+            }
+            input {
+              background: $footer-back;
+              border-radius: 0;
+              color: #ffffff;
+              cursor: pointer;
+              font-family: $avalon-demi;
+              font-size: 12px;
+              line-height: 40px;
+              text-align: center;
+              text-transform: uppercase;
+              @include breakpoint($bp-640-width) {
+                font-size: 10px;
+                line-height: 25px;
+              }
+              &:hover {
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+        .carousel-vertical {
+          position: relative;
+          width: 100%;
+          height: 315px;
+          overflow: hidden;
+
+          /* Prevent native touch events on Windows */
+          -ms-touch-action: none;
+
+          /* Prevent the callout on tap-hold and text selection */
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+
+          /* Prevent text resize on orientation change, useful for web-apps */
+          -webkit-text-size-adjust: none;
+          -moz-text-size-adjust: none;
+          -ms-text-size-adjust: none;
+          -o-text-size-adjust: none;
+          text-size-adjust: none;
+
+          @include breakpoint($between-641-1024) {
+            height: 385px;
+          }
+
+          @include breakpoint($bp-640-width) {
+            height: 275px;
+          }
+          ul {
+            width: 100%;
+            position: absolute;
+
+            /* Prevent elements to be highlighted on tap */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+            /* Put the scroller into the HW Compositing layer right from the start */
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+
+            li {
+              float: none;
+              height: auto;
+              margin: 0;
+              width: 100%;
+              .chat-comment {
+                background-color: $consum-carousel-back;
+                border-bottom: 1px solid #090909; //todo correct color
+                padding: 20px 0;
+                position: relative;
+                @include breakpoint($bp-640-width) {
+                  padding: 7px 0;
+                }
+                .meta-wrap {
+                  background: none;
+                  height: auto;
+                  padding-left: 75px;
+                  padding-right: 10px;
+                  position: static;
+                  @include breakpoint($bp-640-width) {
+                    padding-left: 60px;
+                  }
+                  .meta {
+                    margin-top: 0;
+                    padding-right: 0;
+                    position: static;
+                    width: 100%;
+                    .meta-name {
+                      font-family: $avalon-medium;
+                      font-size: 10px;
+                      line-height: 16px;
+                      text-transform: uppercase;
+                      @include breakpoint($bp-480-width) {
+                        font-size: 10px;
+                        line-height: 15px;
+                      }
+                    }
+                    .meta-comment.time {
+                      font-family: $avalon-medium;
+                      color: $footer-back;
+                      font-size: 10px;
+                      font-style: italic;
+                      line-height: 20px;
+                      text-transform: uppercase;
+                      @include breakpoint($bp-480-width) {
+                        font-size: 9px;
+                        line-height: 16px;
+                      }
+                    }
+                    .meta-text {
+                      font-family: $avalon-medium;
+                      font-size: 12px;
+                      line-height: 18px;
+                      @include breakpoint($bp-480-width) {
+                        font-size: 10px;
+                        line-height: 16px;
+                      }
+                    }
+                  }
+                }
+                & img {
+                  left: 17px;
+                  position: absolute;
+                  margin-top: -20px;
+                  top: 50%;
+                  width: 41px;
+                  @include breakpoint($bp-640-width) {
+                    left: 9px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .consum-sidebar {
+      background: none;
+      width: 300px;
+      padding: 10px 0px 0;
+      overflow: hidden;
+      position: absolute;
+      height: 100%;
+      right: 10px;
+      top: 0;
+      @include breakpoint($bp-1024-width) {
+        position: static;
+        width: 100%;
+      }
+      .advert {
+        @include breakpoint($bp-1024-width) {
+          float: left;
+        }
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+        .advertisement {
+          & a {
+            display: block;
+            width: 300px;
+            img {
+              max-height: 250px;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .social {
+        display: block;
+        border: 2px solid #262626;
+        margin-top: 10px;
+        height: 100%;
+        position: relative;
+        @include breakpoint($bp-1024-width) {
+          margin-left: 310px;
+          margin-top: 0;
+        }
+        @include breakpoint($bp-640-width) {
+          margin-left: 0;
+        }
+        .social-usa:after {
+          display: block;
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
+        }
+        .node {
+          position: relative;
+          min-height: 210px;
+          a {
+            display: block;
+            overflow: hidden;
+            text-decoration: none;
+            width: 100%;
+            @include breakpoint($between-1025-1280) {
+              margin: 30px auto;
+            }
+            .meta-wrap {
+              color: #ffffff;
+              height: 100%;
+              text-align: center;
+              text-transform: uppercase;
+              .meta {
+                margin: 0 auto;
+                width: 80%;
+                .time {
+                  font-family: $cent-725BT-italic;
+                  font-style: italic;
+                  font-size: 12px;
+                  line-height: 50px;
+                  @include breakpoint($between-1025-1280) {
+                    display: none;
+                  }
+                }
+                .meta-social-title {
+                  font-family: $avalon-demi;
+                  font-size: 20px;
+                  line-height: 20px;
+                  @include breakpoint($between-1025-1280) {
+                    display: none;
+                  }
+                }
+                .meta-additional {
+                  font-family: $cent-725BT-italic;
+                  font-style: italic;
+                  font-size: 12px;
+                  line-height: 50px;
+                  @include breakpoint($between-1025-1280) {
+                    display: none;
+                  }
+                }
+                .meta-text {
+                  font-family: $avalon-medium;
+                  font-size: 15px;
+                  @include breakpoint($bp-1280-width) {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+        .asset-img {
+          margin: 0 auto;
+          width: 274px;
+          & img {
+            width: 100%;
+            display: block;
+            @include breakpoint($bp-1400-width) {
+              display: none;
+            }
+          }
+        }
+      }
+      .social-more {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        @include breakpoint($bp-1024-width) {
+          right: 10px;
+          margin-left: 320px;
+          width: auto;
+        }
+        @include breakpoint($bp-640-width) {
+          right: 0;
+          margin: 0 10px;
+          width: auto;
+        }
+        & a {
+          background-color: #a9a9a9;
+          color: #ffffff;
+          display: block;
+          font-family: $avalon-demi;
+          font-size: 12px;
+          line-height: 40px;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+          @include breakpoint($bp-640-width) {
+            font-size: 18px;
+          }
+          &:after {
+            color: #ffffff;
+            content: "\e608";
+            display: block;
+            font-family: $ico-font;
+            font-size: 10px;
+            line-height: 10px;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            right: 50%;
+            margin-right: -85px;
+            @include breakpoint($bp-640-width) {
+              margin-right: -125px;
+            }
+          }
+        }
+      }
+      .video-link {
+        background: $social-twitter-back;
+        bottom: 0;
+        display: none;
+        position: absolute;
+        width: 100%;
+        @include breakpoint($bp-1024-width) {
+          margin-left: 310px;
+          position: static;
+          width: auto;
+        }
+        @include breakpoint($bp-640-width) {
+          margin-left: 0;
+        }
+        .node {
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          @include breakpoint($bp-1024-width) {
+            min-height: 250px;
+            max-height: 250px;
+          }
+          @include breakpoint($bp-640-width) {
+            height: auto;
+          }
+          & a {
+            color: #ffffff;
+            display: block;
+            height: 100%;
+            padding-top: 25px;
+            width: 100%;
+            @include breakpoint($bp-1024-width) {
+              padding-top: 0;
+            }
+            .asset-img {
+              & img {
+                width: 100%;
+              }
+            }
+            .meta-back {
+              background: $social-twitter-back;
+              bottom: 0px;
+              left: 0;
+              height: 82px;
+              position: absolute;
+              width: 100%;
+              @include breakpoint($between-769-1024) {
+                background-color: rgba(0, 0, 0, 0.6);
+              }
+              @include breakpoint($bp-640-width) {
+                background-color: rgba(0, 0, 0, 0.6);
+              }
+              @include breakpoint($bp-480-width) {
+                background: $social-twitter-back;
+              }
+
+            }
+            .meta-wrapper {
+              height: 82px;
+              position: relative;
+              width: 100%;
+              @include breakpoint($bp-1024-width) {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+              }
+              .meta-icon {
+                position: absolute;
+                margin-top: -18.5px;
+                margin-left: -18.5px;
+                top: 50%;
+                left: 40px;
+              }
+              @extend %meta;
+              .meta {
+                font-family: Helvetica, Arial, sans-serif;
+                margin-top: -19px;
+                margin-left: 70px;
+                padding-left: 0px;
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                .title {
+                  font-size: 12px;
+                  line-height: 18px;
+                }
+                .additional {
+                  font-size: 12px;
+                  line-height: 18px;
+                  span {
+                    font-size: 12px;
+                    line-height: 18px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,5 +1,8 @@
 .consumptionator-page {
   background-color: $consum-back;
+  .usa-wrap{
+    background: none;
+  }
 }
 .consumptionator-page.consumptionator-guide,
 .consumptionator-page.consumptionator-blog {

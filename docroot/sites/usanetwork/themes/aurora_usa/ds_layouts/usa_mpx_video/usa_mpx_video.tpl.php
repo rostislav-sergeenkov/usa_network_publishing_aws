@@ -107,35 +107,36 @@
       <?php endif; ?>
     </div>
     <div class="coming-up-next">
-      <div class="prev-video">
-        <div class="video-title">Up next</div>
-        <div class="asset-img">
-          <img src="/proto/images/video_coming_up_next.jpg" alt="">
-
-          <div class="img-shadow"></div>
-          <div class="starts-in">Starts in</div>
-        </div>
-      </div>
-      <div class="prev-disc">
-        <div class="node node-usanetwork-promo show-suits">
-          <div class="meta-wrap">
-            <div class="meta">
-              <div class="caption">Suits</div>
-              <div class="title">Laveraged</div>
-              <div class="additional"><span>S4 Episode 4</span> 44:31</div>
-              <div class="description">
-                Mike moves to a hostile takeover of Gillis Industries. On the
-                other side, Harvey and Louis pull out all
-                the stops to make sure they win this takeover fight, and things
-                takea personal turn.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--      <div class="prev-video">-->
+<!--        <div class="video-title">Up next</div>-->
+<!--        <div class="asset-img">-->
+<!--          <img src="/proto/images/video_coming_up_next.jpg" alt="">-->
+<!---->
+<!--          <div class="img-shadow"></div>-->
+<!--          <div class="starts-in">Starts in</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="prev-disc">-->
+<!--        <div class="node node-usanetwork-promo show-suits">-->
+<!--          <div class="meta-wrap">-->
+<!--            <div class="meta">-->
+<!--              <div class="caption">Suits</div>-->
+<!--              <div class="title">Laveraged</div>-->
+<!--              <div class="additional"><span>S4 Episode 4</span> 44:31</div>-->
+<!--              <div class="description">-->
+<!--                Mike moves to a hostile takeover of Gillis Industries. On the-->
+<!--                other side, Harvey and Louis pull out all-->
+<!--                the stops to make sure they win this takeover fight, and things-->
+<!--                takea personal turn.-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
     <div class="video-chat">
     </div>
+
   </div>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">

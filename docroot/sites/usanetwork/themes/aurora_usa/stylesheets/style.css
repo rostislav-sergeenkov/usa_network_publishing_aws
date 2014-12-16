@@ -729,33 +729,33 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
 }
 
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .aspot-and-episodes .episodes-list ul li .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta, .consumptionator-content-block .show-content ul li .meta, .consumptionator-content-block .see-also-content ul li .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta, .aspot-and-episodes .episodes-list ul li .meta, .usa-home-bspot .meta, .usa-home-cspot .meta {
   direction: ltr;
   color: #ffffff;
 }
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .caption, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .caption, .consumptionator-content-block .show-content ul li .meta .caption, .consumptionator-content-block .see-also-content ul li .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .aspot-and-episodes .episodes-list ul li .meta .caption, .usa-home-bspot .meta .caption, .usa-home-cspot .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .title, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .title, .consumptionator-content-block .show-content ul li .meta .title, .consumptionator-content-block .see-also-content ul li .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .aspot-and-episodes .episodes-list ul li .meta .title, .usa-home-bspot .meta .title, .usa-home-cspot .meta .title {
   font-size: 16px;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional, .consumptionator-content-block .show-content ul li .meta .additional, .consumptionator-content-block .see-also-content ul li .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .aspot-and-episodes .episodes-list ul li .meta .additional, .usa-home-bspot .meta .additional, .usa-home-cspot .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional span, .consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .consumptionator-content-block .show-content ul li .meta .additional span, .consumptionator-content-block .see-also-content ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .aspot-and-episodes .episodes-list ul li .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
+.consumptionator-page .video-block .consum-sidebar .video-link .node a .meta-wrapper .meta .additional span, .consumptionator-content-block .show-content ul li .meta .additional span, .consumptionator-content-block .see-also-content ul li .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info .inner-carousel li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span, .aspot-and-episodes .episodes-list ul li .meta .additional span, .usa-home-bspot .meta .additional span, .usa-home-cspot .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -9150,42 +9150,6 @@ body.front {
   content: '';
   display: table;
 }
-@media (min-width: 1025px) {
-  .consumptionator-page .video-block .player-wrapper {
-    -webkit-transition-property: margin;
-    -moz-transition-property: margin;
-    -o-transition-property: margin;
-    transition-property: margin;
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease;
-    -moz-transition-timing-function: ease;
-    -o-transition-timing-function: ease;
-    transition-timing-function: ease;
-  }
-  .consumptionator-page .video-block .consum-sidebar {
-    -webkit-transition-property: right;
-    -moz-transition-property: right;
-    -o-transition-property: right;
-    transition-property: right;
-    -webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease;
-    -moz-transition-timing-function: ease;
-    -o-transition-timing-function: ease;
-    transition-timing-function: ease;
-  }
-  .consumptionator-page .video-block.full-size .player-wrapper {
-    margin-right: 0px;
-  }
-  .consumptionator-page .video-block.full-size .consum-sidebar {
-    right: -300px;
-  }
-}
 @media (max-width: 1024px) {
   .consumptionator-page .video-block {
     margin-bottom: 10px;
@@ -9200,504 +9164,8 @@ body.front {
     margin-right: 0;
   }
 }
-.consumptionator-page .video-block .player-wrapper .node.player {
-  position: relative;
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe {
   width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .node.player .asset-img {
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .node.player .asset-img img {
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next {
-  display: none;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #ffffff;
-  left: 0;
-  height: 100%;
-  padding: 40px 40px;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next {
-    padding: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next {
-    padding: 10px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video {
-  margin-right: 245px;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video {
-    margin-right: 0;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .video-title {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-size: 12px;
-  font-style: italic;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img {
-  position: relative;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img {
-    display: none;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img .img-shadow {
-  background-color: rgba(0, 0, 0, 0.6);
-  left: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img .starts-in {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-size: 12px;
-  font-style: italic;
-  line-height: 18px;
-  right: 105px;
-  position: absolute;
-  top: 45px;
-  text-transform: uppercase;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img .starts-in:after {
-  display: block;
-  content: '';
-  background-image: url('../images/sprites-seef14b3c82.png');
-  background-position: 0 -276px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 65px;
-  width: 65px;
-  position: absolute;
-  top: -25px;
-  margin-top: 0;
-  right: -90px;
-  margin-right: 0;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img .starts-in:after {
-    background-image: url('../images/sprites-retina-s8a084e9f88.png');
-    background-size: 65px 1462.5px;
-    background-position: 0 -37px;
-    height: 65px;
-    width: 65px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-video .asset-img img {
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc {
-  right: 0;
-  position: absolute;
-  top: 0;
-  width: 215px;
-  padding: 40px 40px 40px 0;
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc {
-    padding: 20px 20px 20px 0;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc {
-    padding: 10px 10px 10px 0;
-    position: relative;
-    width: 100%;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc {
-    padding: 10px 0;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .caption {
-  font-size: 12px;
-  line-height: 18px;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .caption {
-    font-size: 10px;
-    line-height: 16px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .title {
-  font-size: 20px;
-  line-height: 28px;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .title {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional {
-  font-size: 12px;
-  line-height: 18px;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional {
-    font-size: 10px;
-    line-height: 16px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .additional span {
-  font-size: 12px;
-  font-family: "texgyrescholaitalic", Times, serif;
-  line-height: 16px;
-}
-.consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .description {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  margin-top: 25px;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .description {
-    margin-top: 15px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .description {
-    font-size: 10px;
-    line-height: 16px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .coming-up-next .prev-disc .node .meta-wrap .meta .description {
-    font-size: 8px;
-    line-height: 14px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat {
-  display: none;
-  color: #ffffff;
-  height: 535px;
-  margin-right: 310px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat {
-    height: 400px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node {
-  background-color: #3a3a3a;
-  padding: 35px;
-  text-align: center;
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node {
-    padding: 10px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node {
-    padding: 5px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node .join {
-  font-family: "texgyrescholaregular", Times, serif;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node .join {
-    font-size: 10px;
-    line-height: 15px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node a {
-  color: #ffffff;
-  text-decoration: none;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-text {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 25px;
-  line-height: 50px;
-}
-@media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-text {
-    line-height: 35px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-text {
-    font-size: 20px;
-    line-height: 28px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-text {
-    font-size: 18px;
-    line-height: 25px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-text {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-additional {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .node a .meta-additional {
-    font-size: 10px;
-    line-height: 15px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node .bottom-spoiler {
-  background-color: #3a3a3a;
-  left: 0;
-  bottom: 0;
-  height: 40px;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .node:after {
-  bottom: 9px;
-  z-index: 2;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper {
-  bottom: 0px;
-  left: 0;
-  height: 40px;
-  overflow: hidden;
-  width: 100%;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper {
-    height: 25px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper form {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper form input {
-  border: 0;
-  border-radius: 0;
-  height: 100%;
-  outline: none;
-  padding: 0;
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .text-item {
-  height: 100%;
-  margin-right: 112px;
-  position: relative;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .text-item {
-    margin-right: 70px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .text-item {
-    margin-right: 45px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .text-item input {
-  border: 1px solid #8f8f8f;
-  border-radius: 0;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  padding-left: 20px;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .text-item input {
-    font-size: 10px;
-    padding-left: 10px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item {
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 112px;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item {
-    width: 70px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item {
-    width: 45px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item input {
-  background: darkgrey;
-  border-radius: 0;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 40px;
-  text-align: center;
-  text-transform: uppercase;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item input {
-    font-size: 10px;
-    line-height: 25px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .form-wrapper .submit-item input:hover {
-  opacity: 0.7;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical {
-  position: relative;
-  width: 100%;
-  height: 315px;
-  overflow: hidden;
-  /* Prevent native touch events on Windows */
-  -ms-touch-action: none;
-  /* Prevent the callout on tap-hold and text selection */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  /* Prevent text resize on orientation change, useful for web-apps */
-  -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  -ms-text-size-adjust: none;
-  -o-text-size-adjust: none;
-  text-size-adjust: none;
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical {
-    height: 385px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical {
-    height: 275px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul {
-  width: 100%;
-  position: absolute;
-  /* Prevent elements to be highlighted on tap */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /* Put the scroller into the HW Compositing layer right from the start */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li {
-  float: none;
-  height: auto;
-  margin: 0;
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment {
-  background-color: #262626;
-  border-bottom: 1px solid #090909;
-  padding: 20px 0;
-  position: relative;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment {
-    padding: 7px 0;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap {
-  background: none;
-  height: auto;
-  padding-left: 75px;
-  padding-right: 10px;
-  position: static;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap {
-    padding-left: 60px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta {
-  margin-top: 0;
-  padding-right: 0;
-  position: static;
-  width: 100%;
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-name {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  line-height: 16px;
-  text-transform: uppercase;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-name {
-    font-size: 10px;
-    line-height: 15px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-comment.time {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  color: darkgrey;
-  font-size: 10px;
-  font-style: italic;
-  line-height: 20px;
-  text-transform: uppercase;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-comment.time {
-    font-size: 9px;
-    line-height: 16px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-text {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 18px;
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment .meta-wrap .meta .meta-text {
-    font-size: 10px;
-    line-height: 16px;
-  }
-}
-.consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment img {
-  left: 17px;
-  position: absolute;
-  margin-top: -20px;
-  top: 50%;
-  width: 41px;
-}
-@media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-chat .carousel-vertical ul li .chat-comment img {
-    left: 9px;
-  }
 }
 .consumptionator-page .video-block .consum-sidebar {
   background: none;
@@ -10004,6 +9472,9 @@ body.front {
 
 .consumptionator-page {
   background-color: #121212;
+}
+.consumptionator-page .usa-wrap {
+  background: none;
 }
 
 .consumptionator-page.consumptionator-guide header, .consumptionator-page.consumptionator-guide .blog-block, .consumptionator-page.consumptionator-guide .guide-block,
@@ -13379,7 +12850,9 @@ body.person-page #main {
   clear: both;
   color: #545454;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
@@ -13390,15 +12863,16 @@ body.person-page #main {
 .carousel-description-item .title {
   color: #545454;
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 25px;
-  margin: 20px 0;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 24px;
+  margin: 18px 0;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
   .carousel-description-item .title {
     font-size: 37px;
-    line-height: 43px;
+    line-height: 37px;
   }
 }
 
@@ -18392,14 +17866,36 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
 .aspot-and-episodes.episodes-empty .episodes-list {
   display: none;
 }
+.aspot-and-episodes.episodes-3 .episodes-list ul.open li {
+  display: block;
+}
 .aspot-and-episodes.episodes-3 .episodes-list ul li {
   height: 33.33333%;
+}
+@media (max-width: 768px) {
+  .aspot-and-episodes.episodes-3 .episodes-list ul li {
+    display: none;
+    height: 105px;
+  }
+  .aspot-and-episodes.episodes-3 .episodes-list ul li:nth-child(1), .aspot-and-episodes.episodes-3 .episodes-list ul li:nth-child(2) {
+    display: block;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes.episodes-3 .episodes-list ul li {
+    height: 70px;
+  }
 }
 .aspot-and-episodes.episodes-3 .episodes-list ul li .meta {
   padding-right: 55%;
 }
 .aspot-and-episodes.episodes-3 .episodes-list ul li .asset-img {
   max-width: 50%;
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes.episodes-3 .episodes-list ul li .asset-img {
+    max-width: 124px;
+  }
 }
 .aspot-and-episodes.episodes-4 .episodes-list ul li {
   height: 25%;
@@ -18703,34 +18199,6 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
     font-size: 24px;
     line-height: 30px;
   }
-}
-.new-show-page .aspot-and-episodes .episodes-list ul li {
-  height: 33.33333%;
-}
-@media (max-width: 768px) {
-  .new-show-page .aspot-and-episodes .episodes-list ul li {
-    display: none;
-    height: 105px;
-  }
-  .new-show-page .aspot-and-episodes .episodes-list ul li:nth-child(1), .new-show-page .aspot-and-episodes .episodes-list ul li:nth-child(2) {
-    display: block;
-  }
-}
-@media (max-width: 640px) {
-  .new-show-page .aspot-and-episodes .episodes-list ul li {
-    height: 70px;
-  }
-}
-.new-show-page .aspot-and-episodes .episodes-list ul li .episode-image {
-  max-width: 50%;
-}
-@media (max-width: 640px) {
-  .new-show-page .aspot-and-episodes .episodes-list ul li .episode-image {
-    max-width: 124px;
-  }
-}
-.new-show-page .aspot-and-episodes .episodes-list ul.open li {
-  display: block;
 }
 
 .bspot-cspot {

@@ -404,13 +404,31 @@
   &.episodes-3{
     .episodes-list{
       ul{
+        &.open {
+          li {
+            display: block;
+          }
+        }
         li{
           height: 33.33333%;
+          @include breakpoint($bp-768-width) {
+            display: none;
+            height: 105px;
+            &:nth-child(1), &:nth-child(2) {
+              display: block;
+            }
+          }
+          @include breakpoint($bp-640-width) {
+            height: 70px;
+          }
           .meta{
             padding-right: 55%;
           }
           .asset-img {
             max-width: 50%;
+            @include breakpoint($bp-640-width) {
+              max-width: 124px;
+            }
           }
         }
       }
@@ -708,34 +726,6 @@
               font-size: 24px;
               line-height: 30px;
             }
-          }
-        }
-      }
-    }
-    .episodes-list {
-      ul {
-        li {
-          height: 33.33333%;
-          @include breakpoint($bp-768-width) {
-            display: none;
-            height: 105px;
-            &:nth-child(1), &:nth-child(2) {
-              display: block;
-            }
-          }
-          @include breakpoint($bp-640-width) {
-            height: 70px;
-          }
-          .episode-image {
-            max-width: 50%;
-            @include breakpoint($bp-640-width) {
-              max-width: 124px;
-            }
-          }
-        }
-        &.open {
-          li {
-            display: block;
           }
         }
       }

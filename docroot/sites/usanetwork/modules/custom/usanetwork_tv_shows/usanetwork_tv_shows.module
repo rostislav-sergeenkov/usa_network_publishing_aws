@@ -801,6 +801,7 @@ function _usanetwork_tv_shows_aspot_block() {
     : t('Latest full episodes');
 
   if (!empty($show_node)) {
+    $theme_variables['show'] = usanetwork_aspot_render($show_node);
     $featured_items_field = field_get_items('node', $show_node, 'field_usa_tv_promo');
 
     if (!empty($featured_items_field)) {

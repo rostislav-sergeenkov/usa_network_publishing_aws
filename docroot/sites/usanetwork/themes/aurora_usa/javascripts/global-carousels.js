@@ -92,7 +92,6 @@
                   $container.swipe({
                     excludedElements: "button, input, select, textarea, .noSwipe",
                     swipeUp: function () {
-                      console.log('up');
                       if (!$carousel.hasClass('stop')) {
                         if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
                           $('.carousel-vert li').removeClass('active');
@@ -101,7 +100,6 @@
                       }
                     },
                     swipeDown: function () {
-                      console.log('down');
                       if (!$carousel.hasClass('stop')) {
                         if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
                           $('.carousel-vert li').removeClass('active');
@@ -170,40 +168,41 @@
                       }
                     },
                     tap: function (event, target) {
-                      if ((event instanceof TouchEvent) || event.button == 0){
-                        if (!$carousel.hasClass('stop')) {
-                          if (target.href) {
-                            if (!$(target).hasClass('show-open')) {
-                              window.location = target.href;
-                            } else {
-                              if (window.innerWidth >= window_size_tablet_portrait) {
-                                if ($container.hasClass('start')) {
-                                  swipeHideDescription($container.prev());
-                                  setTimeout(function () {
-                                    showOpen($(target), false);
-                                  }, 600);
-                                }
-                                else {
+                      if ((event instanceof MouseEvent) && event.button != 0){
+                        return false;
+                      }
+                      if (!$carousel.hasClass('stop')) {
+                        if (target.href) {
+                          if (!$(target).hasClass('show-open')) {
+                            window.location = target.href;
+                          } else {
+                            if (window.innerWidth >= window_size_tablet_portrait) {
+                              if ($container.hasClass('start')) {
+                                swipeHideDescription($container.prev());
+                                setTimeout(function () {
                                   showOpen($(target), false);
-                                }
+                                }, 600);
+                              }
+                              else {
+                                showOpen($(target), false);
                               }
                             }
-                          } else {
-                            var link = $(target).closest('a');
-                            if (!link.hasClass('show-open')) {
-                              window.location = link.attr('href');
-                            }
-                            else {
-                              if (window.innerWidth >= window_size_tablet_portrait) {
-                                if ($container.hasClass('start')) {
-                                  swipeHideDescription($container.prev());
-                                  setTimeout(function () {
-                                    showOpen($(target), false);
-                                  }, 600);
-                                }
-                                else {
+                          }
+                        } else {
+                          var link = $(target).closest('a');
+                          if (!link.hasClass('show-open')) {
+                            window.location = link.attr('href');
+                          }
+                          else {
+                            if (window.innerWidth >= window_size_tablet_portrait) {
+                              if ($container.hasClass('start')) {
+                                swipeHideDescription($container.prev());
+                                setTimeout(function () {
                                   showOpen($(target), false);
-                                }
+                                }, 600);
+                              }
+                              else {
+                                showOpen($(target), false);
                               }
                             }
                           }
@@ -276,12 +275,13 @@
                     }
                   },
                   tap: function (event, target) {
-                    if ((event instanceof TouchEvent) || event.button == 0) {
-                      if (target.href) {
-                        window.location = target.href;
-                      } else {
-                        window.location = $(target).closest('a').attr('href');
-                      }
+                    if ((event instanceof MouseEvent) && event.button != 0){
+                      return false;
+                    }
+                    if (target.href) {
+                      window.location = target.href;
+                    } else {
+                      window.location = $(target).closest('a').attr('href');
                     }
                   }
                 });

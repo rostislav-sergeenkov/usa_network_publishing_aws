@@ -1428,7 +1428,9 @@ input[type="radio"], input[type="checkbox"] {
   color: #ffffff;
   display: block;
   float: left;
+  font-weight: normal;
   height: auto;
+  margin: 0;
   margin-right: 27px;
   position: relative;
   text-decoration: none;
@@ -1441,9 +1443,13 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   font-family: "ico-font";
   font-size: 16px;
+  width: auto;
 }
 .icons-block a.episode-description:before {
   content: '\e601';
+}
+.icons-block a.calendar-reminder span {
+  display: none;
 }
 .icons-block a.calendar-reminder:before {
   content: '\e600';

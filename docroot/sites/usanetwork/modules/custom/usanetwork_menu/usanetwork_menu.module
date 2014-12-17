@@ -1012,7 +1012,7 @@ function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
       if (!empty($url_alias_field)) {
         $alias = $url_alias_field[0]['value'];
 
-        return url('https://see.it/' . $alias . '/remind');
+        return url('https://see.it/' . $alias);
       }
     }
   }

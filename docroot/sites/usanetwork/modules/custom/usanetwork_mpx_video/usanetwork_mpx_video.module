@@ -49,6 +49,22 @@ function usanetwork_mpx_video_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
   );
+  
+  // admin area
+  $items['admin/usanetwork/full-episode-page'] = array(
+    'title' => 'Full Episode Page settings',
+    'page callback' => 'usanetwork_mpx_video_full_episode_page_form',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+  $items['admin/usanetwork/full-episode-page/%/delete'] = array(
+    'title' => 'Full Episode Page settings',
+    'page callback' => 'usanetwork_mpx_video_full_episode_videos_form_delete',
+    'page arguments' => array(3),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+
   return $items;
 }
 
@@ -1970,3 +1986,23 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   // Splicing first $limit elements
   $alter_result = array_splice($alter_result, $limit);
 }
+
+/*
+ * Implements hook_theme
+ */
+function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'usanework_full_episodes_draggable' => array(
+      'render element' => 'element',
+      'file' => 'usanetwork_mpx_video.admin.inc',
+    ),
+    'usanetwork_mpx_video_full_episodes_page' => array(
+      'variables' => array(
+        'schedule_table' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-full-episodes-page',
+    ),
+  );
+  return $themes;
+}
+

@@ -1,5 +1,7 @@
 <?php
 
+define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
+
 /**
  * Implementation of hook_permission().
  */

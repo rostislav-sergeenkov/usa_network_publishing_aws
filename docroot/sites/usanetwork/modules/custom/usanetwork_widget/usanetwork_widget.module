@@ -187,12 +187,55 @@ function usanetwork_widget_theme($existing, $type, $theme, $path) {
 function usanetwork_widget_navbar() {
   global $base_root;
 
-  $site_base_url = $base_root . '/';
-  $widget_js_path = $site_base_url . drupal_get_path('module', 'usanetwork_widget') . '/js/usanetwork_widget_styled.js?';
-  $library_js_path = $site_base_url . drupal_get_path('theme', 'aurora_usa') . '/javascripts/main-navigation-syndicate.js?';
-  // get collected styles
-  $styles = _usanetwork_widget_styles();
-  print theme('usanetwork_widget_navbar', array('styles' => $styles, 'library_js_path' => $library_js_path, 'widget_js_path' => $widget_js_path, 'environment' => _usanetwork_widget_get_environment()));
+  // Invoking menu block
+  $block = module_invoke('usanetwork_menu', 'block_view', 'usanetwork_menu_sm_menu');
+
+  if ($block) {
+    $site_base_url = $base_root . '/';
+
+    $paths = array(
+      'module_usanetwork_menu' => drupal_get_path('module', 'usanetwork_menu'),
+      'theme_aurora_usa' => drupal_get_path('theme', 'aurora_usa'),
+    );
+
+    // Get default jQuery scripts (it returns just a rendered string)
+    $scripts = drupal_get_js();
+    $styles = '';
+
+    // Add custom JS with USA Network Menu features
+    $custom_script_urls = array(
+      $paths['theme_aurora_usa'] . '/javascripts/menu-dropdown.js',
+      libraries_get_path('jstz') . '/jstz-1.0.4.min.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.common.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.now_and_next.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.onnow_tonight.js',
+      $paths['module_usanetwork_menu'] . '/js/usanetwork_menu.watch_live.js',
+    );
+
+    // Conatinate it into 1 string
+    foreach ($custom_script_urls as $custom_script_url) {
+      $scripts .= "\n" . '<script src="' . $site_base_url . $custom_script_url . '"></script>';
+    }
+
+    // Add custom CSS with USA Network Menu features
+    $custom_style_urls = array(
+      file_create_url(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/style.css'),
+      file_create_url('public://tv_show_color/tv_show_color_schema.css'),
+    );
+
+    // Conatinate it into 1 string
+    foreach ($custom_style_urls as $custom_style_url) {
+      $styles .= '<style>@import url("' . $custom_style_url . '");</style>';
+    }
+
+    print theme('usanetwork_widget_navbar', array(
+      'menu' => render($block['content']),
+      'styles' => explode("\n", $styles),
+      'scripts' => explode("\n", $scripts),
+    ));
+  }
+
+  drupal_page_footer();
 }
 
 /**

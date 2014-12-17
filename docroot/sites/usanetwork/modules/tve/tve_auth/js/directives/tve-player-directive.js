@@ -101,8 +101,6 @@
                  */
                 function _onMediaStart(pdkEvent) {
                   var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
-                  var targetId   = pdkEvent.data.holderId,
-                      targetElem = document.getElementById(targetId);
 
                   if (!baseClip.isAd && resuming) {
                     resuming = false;
@@ -115,14 +113,8 @@
                   else {
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
-                        if ($(targetElem).is(':empty')) {
-                          scope.isFreeWheelReq = false;
-                          scope.isDartReq = true;
-                        }
-                        else {
-                          scope.isFreeWheelReq = true;
-                          scope.isDartReq = false;
-                        }
+                        scope.isFreeWheelReq = true;
+                        scope.isDartReq = false;
                       });
                     }
                     scope.$apply(function() {

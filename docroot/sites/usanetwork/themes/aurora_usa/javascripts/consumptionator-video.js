@@ -10,7 +10,9 @@
       $(window).bind('resize', function () {
         iframe_height = current_iframe.width()*9/16;
         current_iframe.height(iframe_height);
-        current_iframe.src = current_iframe.src;
+        var current_src = current_iframe.attr('src');
+        current_iframe.attr('src', '');
+        current_iframe.attr('src', current_src);
       });
 
     }

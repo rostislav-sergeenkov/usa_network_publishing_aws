@@ -238,33 +238,6 @@ function usanetwork_widget_navbar() {
   drupal_page_footer();
 }
 
-function _usanetwork_widget_navbar_get_styles() {
-  /*
-   *  $css_filename = ($show == null) ? 'navbar' : 'navbar_' . $show->nid;
-  $css_filename = 'public://css/css_' . hash('sha256', $css_filename) . '.css';
-  $copy_css = '';
-  if (!file_exists($css_filename) || $recreate) {
-    $css = &drupal_static('drupal_add_css', array());
-    $copy_css = $css;
-    // Empty all styles
-    $css = array();
-    // Add initial styles
-    drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/navbar.css');
-    drupal_add_css('//usanetwork.com/stylesheets/navbar.css', 'external');
-    // Get styling info from other modules
-    module_invoke_all('usanetwork_widget_style', $show);
-    $content = _usanetwork_widget_aggregate_css($css);
-    file_unmanaged_save_data($content, $css_filename, FILE_EXISTS_REPLACE);
-  }
-  $output = '<style>@import url("' . file_create_url($css_filename) . '");</style>';
-  $css = $copy_css;
-  return $output;
-   */
-
-  $a = drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/stylesheets/style.css');
-  die('<pre>'.print_r($a, true).'</pre>');
-}
-
 /**
  * Helper to generate and output the main menu bar in styled html
  */

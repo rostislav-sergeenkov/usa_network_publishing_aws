@@ -11,7 +11,7 @@
               <?php endif; ?>
               <div class="icons-block">
                 <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
-                  <a class="calendar-reminder icon" href="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>" target="_blank"></a>
+                  <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>"></a>
                 <?php endif; ?>
                 <?php if (!empty($on_now_block_item['on_now']['episode_full_url'])): ?>
                   <a class="episode-description icon" href="<?php print $on_now_block_item['on_now']['episode_full_url']; ?>"></a>
@@ -34,7 +34,7 @@
               <?php endif; ?>
               <div class="icons-block">
                 <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
-                  <a class="calendar-reminder icon" href="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>" target="_blank"></a>
+                  <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>"></a>
                 <?php endif; ?>
                 <?php if (!empty($on_now_block_item['up_next']['episode_full_url'])): ?>
                   <a class="episode-description icon" href="<?php print $on_now_block_item['up_next']['episode_full_url']; ?>"></a>
@@ -54,7 +54,7 @@
               <div class="episode-show"><?php print $tonight_block_item['show_title']; ?></div>
               <div class="icons-block">
                 <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
-                  <a class="calendar-reminder icon" href="<?php print $tonight_block_item['syndicated_url']; ?>" target="_blank"></a>
+                  <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $tonight_block_item['syndicated_url']; ?>"></a>
                 <?php endif; ?>
                 <?php if (!empty($tonight_block_item['episode_full_url'])): ?>
                   <a class="episode-description icon" href="<?php print $tonight_block_item['episode_full_url']; ?>"></a>

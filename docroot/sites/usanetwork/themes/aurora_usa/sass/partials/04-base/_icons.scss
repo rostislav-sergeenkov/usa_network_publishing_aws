@@ -142,7 +142,9 @@
     color: #ffffff;
     display: block;
     float: left;
+    font-weight: normal;
     height: auto;
+    margin: 0;
     margin-right: 27px;
     position: relative;
     text-decoration: none;
@@ -154,6 +156,7 @@
       display: block;
       font-family: $ico-font;
       font-size: 16px;
+      width: auto;
     }
     &.episode-description {
       &:before {
@@ -161,6 +164,10 @@
       }
     }
     &.calendar-reminder {
+
+      span {
+        display: none;
+      }
       &:before {
         content: '\e600';
       }

@@ -91,6 +91,21 @@ function usanetwork_settings_form() {
     '#description' => t('The Global Js Code that added to all pages of the site'),
     '#default_value' => variable_get('usanetwork_global_js_code', ''),
   );
+
+  $form['see_it'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('See.it settings'),
+    '#description' => t('The global settings for See.it service'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['see_it']['usanetwork_seeit_script_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Reminder JS URL'),
+    '#description' => t('The URL to reminders URL'),
+    '#default_value' => variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL),
+  );
    
   return system_settings_form($form);
 }

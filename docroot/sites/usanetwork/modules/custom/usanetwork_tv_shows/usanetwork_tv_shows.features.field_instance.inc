@@ -14344,7 +14344,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 72,
+      'weight' => 120,
     ),
   );
 
@@ -15429,6 +15429,86 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_tvs_aspot_promo_btitle'
+  $field_instances['node-tv_show-field_tvs_aspot_promo_btitle'] = array(
+    'bundle' => 'tv_show',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Latest full episodes',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The block consists of related videos and appears on A-Spot region when show viewed.',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 169,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_tvs_aspot_promo_btitle',
+    'label' => 'Block title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 119,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('"On Now" Image');
@@ -15583,6 +15663,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Promo annotation content 3');
   t('Promo annotation title 4');
   t('Promo annotation content 4');
+  t('Block title');
+  t('The block consists of related videos and appears on A-Spot region when show viewed.');
 
   return $field_instances;
 }

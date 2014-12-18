@@ -1,586 +1,597 @@
-.schedule-header {
-  @extend %semi;
-  width: auto;
-  margin: 0 -15px 6px -15px;
-  padding: 10px 0 2px 0;
-  overflow:hidden;
-  text-align: center;
-  vertical-align: middle;
-  background-color:#434343;
-  @include box-shadow(rgba(0,0,0,.7) 0 17px 24px -12px inset);
-  .schedule-header-navigation {
-    float:left;
-    white-space: nowrap;
-    .previous-week,
-    .next-week {
-      display: none;
-      width: 35px;
-      margin:9px 11px 0;
-      height: 38px;
-      vertical-align:top;
-      background-color: #2b2b2b;
-      cursor:pointer;
-      &.disabled {
-        pointer-events: none;
-      }
+.page-schedule {
+  color: $poll-color;
+  background-color: $poll-back;
+  .page-title {
+    @include clear;
+    padding: 30px;
+    h2 {
+      float: left;
     }
-    .previous-week {
-        @include replace-text('icons/arrow-prev.png');
-        background-position:45% 50%;
-        background-size:30% auto;
-    }
-    .next-week {
-        @include replace-text('icons/arrow-next.png');
-        background-position:55% 50%;
-        background-size:30% auto;
-    }
-    .schedule-header-navigation-weeks {
-      display: inline-block;
-      width:320px;
-      height: 35px!important;
-      overflow:hidden;
-      .touchslider-item {
-          float:left;
-        ul {
-          list-style:none;
-          margin:0;
-          padding:0;
-        }
-        &.current-week,
-        & .schedule-header-navigation-week li {
-          float:left;
-        }
-        & .schedule-header-navigation-week li {
-          height: 35px;
-          padding:4px 9px 0;
-          &.active {
-            background:url('../images/bg_current_day.png') center top no-repeat transparent;
-            background-size: auto 100%;
-            span {
-              color: #2d2d2d;
-            }
-          }
-          a, span {
-            display: block;
-            color: white;
-            font-family: "Proxima N W01 Bold";
-          }
-          .week-day {
-            font-size:13px;
-            line-height:11px;
-            text-transform:uppercase;
-          }
-          .date {
-            font-size:9px;
-            line-height:11px;
-          }
-        }
-      }
-    }
-  }
-  @include breakpoint($bp-schedule-mobile-small) {
-    margin: 0 -15px 8px -15px;
-    padding: 11px 0 2px 0;
-    .schedule-header-navigation {
-      .schedule-header-navigation-weeks {
-        display: inline-block;
-        width:360px;
-        height: 39px!important;
-        .touchslider-item {
-          & .schedule-header-navigation-week li {
-            height: 39px;
-            padding:4px 9px 0;
-            &.active {
-              background-size: auto 100%;
-            }
-            .week-day {
-              font-size:15px;
-              line-height:12px;
-            }
-            .date {
-              font-size:11px;
-              line-height:12px;
-            }
-          }
-        }
-      }
-    }
-  }
-  @include breakpoint($bp-schedule-mobile-mid) {
-    margin: 0 -15px 10px -15px;
-    padding: 15px 0 3px 0;
-    .schedule-header-navigation {
-      .schedule-header-navigation-weeks {
-        display: inline-block;
-        width:480px;
-        height: 52px!important;
-        .touchslider-item {
-          & .schedule-header-navigation-week li {
-            height: 52px;
-            padding:6px 16px 0;
-            &.active {
-              background-size: auto 100%;
-            }
-            .week-day {
-              font-size:18px;
-              line-height:16px;
-            }
-            .date {
-              font-size:12px;
-              line-height:16px;
-            }
-          }
-        }
-      }
-    }
-  }
-  @include breakpoint($bp-schedule-date-wide) {
-    margin: 0 -15px 13px -15px;
-    padding: 19px 0 4px 0;
-    .schedule-header-navigation {
-      .schedule-header-navigation-weeks {
-        display: inline-block;
-        width:624px;
-        height: 70px!important;
-        .touchslider-item {
-          & .schedule-header-navigation-week li {
-            height: 70px;
-            padding:8px 19px 0 19px;
-            &.active {
-              background-size: auto;
-            }
-            .week-day {
-              font-size:25px;
-              line-height:22px;
-            }
-            .date {
-              font-size:16px;
-              line-height:22px;
-            }
-          }
-        }
-      }
-    }
-  }
-  @include breakpoint($bp-schedule-table-wide) {
-    margin: 0 auto;
-    border: 0;
-    box-shadow: none;
-  }
-  @include breakpoint($bp-person-medium-width) {
-    max-width: 1245px;
-    .schedule-header-navigation {
-      .previous-week,
-      .next-week {
-        display: inline-block;
-      }
-    }
-  }
-}
-.schedule-date {
-  text-transform: uppercase;
-  @include breakpoint($bp-schedule-date-wide) {
-    font-size: 36px;
-  }
-}
-a[class*="day"] {
-  @extend %usanetwork-font;
-  padding: 0 .5em 1em .5em;
-  font-size: 12px;
-  display: inline-block;
-  @include breakpoint($bp-schedule-date-wide) {
-    @include transform3d( translateY(-30%) );
-  }
-  .no-font-feature-settings & {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    padding-top: 6px;
-    background-size: 14px 14px;
-  }
-}
-a.next-day {
-  .no-font-feature-settings & {
-    margin-left: 1em;
-    @include replace-text('svgs/arrow3.svg');
-  }
-}
-a.prev-day {
-  .no-font-feature-settings & {
-    margin-right: 1em;
-    @include replace-text('svgs/arrow3-left.svg');
-  }
-}
-// table {
-//   .show-time {
-//     // white-space: nowrap;
-//     // padding-left: .5em;
-//   }
-// }
-
-.schedule-table {
-  margin: 0 -15px;
-  table {
-    table-layout: fixed;
-    border-top: $gray-med solid 1px;
-  }
-  thead {
-    background-color: $gray-dark;
-    tr {
-      display: none;
-      @include breakpoint($bp-schedule-table-wide) {
-        display: table-row;
-      }
-    }
-    th {
-      padding-top: 6px;
-      padding-bottom: 5px;
-      padding-left: 4px;
-      border-bottom: $gray-med solid 1px;
-      border-right: $gray-med solid 1px;
-      color: white;
-      font-size: 9px;
-      /* @include box-sizing(content-box); */
-    }
-  }
-  tbody {
-    border-width:0;
-  }
-  a {
-    color: $gray-light-gamma;
-    &:hover {
-      color: white;
-    }
-  }
-  td {
-    padding-top: 6px;
-    padding-bottom: 5px;
-    padding-left: 4px;
-    border-bottom: $gray-med solid 1px;
-    border-right: $gray-med solid 1px;
-    color: $gray-light-gamma;
-    font-size: 9px;
-  }
-  tr {
-    background: $gray-dark;
-    border: none;
-  }
-  .show-time {
-    white-space: nowrap;
-    padding-left: .5em;
-    width: 23%;
-    color: white;
-  }
-  .program {
-    padding-right: 2%;
-    width: 55%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .rating {
-    border-right-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .episode {
-    display: none;
-  }
-  @include breakpoint($bp-schedule-mobile-small) {
-    thead {
-      th {
-        padding-top: 7px;
-        padding-bottom: 6px;
-        padding-left: 5px;
-        font-size: 11px;
-      }
-    }
-    td {
-      padding-top: 7px;
-      padding-bottom: 6px;
-      padding-left: 5px;
-      font-size: 11px;
-    }
-  }
-  @include breakpoint($bp-schedule-mobile-mid) {
-    thead {
-      th {
-        padding-top: 9px;
-        padding-bottom: 8px;
-        padding-left: 7px;
-        font-size: 13px;
-      }
-    }
-    td {
-      padding-top: 9px;
-      padding-bottom: 8px;
-      padding-left: 7px;
-      font-size: 13px;
-    }
-  }
-  @include breakpoint($bp-schedule-date-wide) {
-    thead {
-      th {
-        padding-top: 12px;
-        padding-bottom: 10px;
-        padding-left: 8px;
-        font-size: 16px;
-      }
-    }
-    td {
-      padding-top: 12px;
-      padding-bottom: 10px;
-      padding-left: 8px;
-      font-size: 16px;
-    }
-}
-  @include breakpoint($bp-schedule-table-wide) {
-    max-width: 1245px;
-    margin: 0 auto;
-    border:0;
-    table {
-      table-layout: auto;
-      border-top-width: 0;
-    }
-    .program {
-      width: 40%;
-      padding-right: 0;
-      overflow: inherit;
-      white-space: normal;
-      .episode-suffix {
+    .shows-filters {
+      float: right;
+      margin-top: (25px / 2);
+      @include breakpoint($bp-768-width) {
         display: none;
       }
-    }
-    .show-time {
-      width: auto;
-    }
-    .episode {
-      display: table-cell;
-      width: 40%;
-    }
-    .rating {
-      overflow: inherit;
-      white-space: normal;
-    }
-  }
-}
-
-.schedule-day-small {
-  height: 109px;
-  .schedule-viewport {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .schedule-items {
-    width: 10000px;
-    height: 109px;
-    margin: 0;
-    padding: 0;
-    .schedule-item {
-      @include breakpoint($bp-grid-small-wide-small) {
-        width: 274px;
-      }
-      @include breakpoint($bp-grid-small-wide-2-fence) {
-        width: 274px;
-      }
-      @include breakpoint($bp-grid-small-wide-3-fence) {
-        width: 243px;
-      }
-      @include breakpoint($bp-video-large-width) {
-        width: 243px;
-      }
-      @include breakpoint($bp-grid-small-wide-4) {
-        width: 243px;
-      }
-      float:left;
-      height: 100%;
-      @extend %schedule-gradient;
-      font-size: 14px;
-      line-height: 16px;
-      .schedule-item-content {
-        border-right: 1px solid #1f1f1f;
-        padding: 20px;
-        .time {
-          @extend %semi;
-          font-size: 18px;
-          color: #878785;
-          margin-bottom: 15px;
-          @include breakpoint($bp-video-large-width) {
-            font-size: 22px;
+      .item-filter {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+        vertical-align: middle;
+        &:last-child {
+          margin-right: 0;
+        }
+        &.open {
+          .filter-label {
+            border-color: transparent;
+            background: $footer-back;
+            &:after {
+              content: "\e60a";
+            }
           }
-          @include breakpoint($bp-grid-small-wide-4) {
-            font-size: 22px;
+          .filter-menu {
+            display: block;
           }
         }
-        .program, .title {
-          height: 20px;
-          text-transform: uppercase;
-          white-space: nowrap;
+        .filter-label {
+          border: 1px solid $footer-back;
+          cursor: pointer;
+          font-size: 20px;
+          font-family: $avalon-demi;
+          line-height: 40px;
           overflow: hidden;
-          text-overflow: ellipsis;
-          a {
-            color: #fff;
-            text-decoration: none;
-            &:hover {
-              text-decoration: underline;
+          position: relative;
+          padding: 0 50px 0 20px;
+          text-transform: uppercase;
+          &:after {
+            content: "\e609";
+            color: $poll-color;
+            font-family: $ico-font;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            margin-right: -8px;
+            right: 25px;
+            top: 0;
+            z-index: 3;
+          }
+        }
+        .filter-menu {
+          background: $footer-back;
+          top: 1px;
+          display: none;
+          max-height: 200px;
+          overflow-y: auto;
+          position: absolute;
+          width: 100%;
+          z-index: 2;
+          li {
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            a {
+              color: #ffffff;
+              display: block;
+              font-size: 20px;
+              font-family: $avalon-demi;
+              height: 100%;
+              line-height: 40px;
+              padding-left: 20px;
+              text-decoration: none;
+              text-transform: uppercase;
+              width: 100%;
+              &:hover, &.active {
+                color: $poll-color;
+              }
             }
           }
         }
       }
-      &.schedule-item-on-now {
-        background-image: none;
-        background-color: #000;
-        .time {
-          &:after {
-            margin-left: 10px;
-            font-family: "Proxima N W01 Bold",Helvetica,Arial,sans-serif;
-            color: #0AB6E8;
-            content: "ON NOW";
+    }
+  }
+  .schedule-wrapper {
+    margin: 0 auto 40px;
+    max-width: 2500px;
+    min-width: 300px;
+    .schedule-navigation {
+      display: table;
+      background-color: $footer-back;
+      margin-bottom: 40px;
+      position: relative;
+      width: 100%;
+      .nav-prev {
+        display: table-cell;
+        cursor: pointer;
+        height: 90px;
+        width: 90px;
+        position: relative;
+        vertical-align: middle;
+        @include breakpoint($bp-640-width) {
+          height: 45px;
+          width: 45px;
+        }
+        &:after {
+          content: '\e607';
+          color: #ffffff;
+          display: block;
+          font-family: $ico-font;
+          font-size: 20px;
+          line-height: 20px;
+          left: 50%;
+          margin-left: -10px;
+          margin-top: -10px;
+          position: absolute;
+          top: 50%;
+        }
+        &:hover {
+          background-color: $bottom-footer-back;
+        }
+      }
+      .nav-next {
+        display: table-cell;
+        cursor: pointer;
+        height: 90px;
+        width: 90px;
+        position: relative;
+        vertical-align: middle;
+        @include breakpoint($bp-640-width) {
+          height: 45px;
+          width: 45px;
+        }
+        &:after {
+          content: '\e608';
+          color: #ffffff;
+          display: block;
+          font-family: $ico-font;
+          font-size: 20px;
+          line-height: 20px;
+          left: 50%;
+          margin-left: -10px;
+          margin-top: -10px;
+          position: absolute;
+          top: 50%;
+        }
+        &:hover {
+          background-color: $bottom-footer-back;
+        }
+      }
+      ul {
+        display: table-cell;
+        vertical-align: middle;
+        @include clear;
+        li {
+          border-right: 1px solid $poll-back;
+          height: 90px;
+          float: left;
+          width: (100% / 7);
+          @include breakpoint($bp-768-width) {
+            display: none;
+            &:first-child, &:nth-child(2) {
+              display: block;
+              width: 50%;
+            }
+          }
+          @include breakpoint($bp-640-width) {
+            height: 45px;
+          }
+          &:first-child {
+            border-left: 1px solid $poll-back;
+          }
+
+          &:hover, &.active {
+            background-color: $bottom-footer-back;
+            a {
+              color: #ffffff;
+            }
+          }
+          a {
+            color: $header-tab-back;
+            display: block;
+            height: 100%;
+            padding-top: 13px;
+            text-decoration: none;
+            text-align: center;
+            @include breakpoint($bp-640-width) {
+              padding-top: 0;
+            }
+            span {
+              display: block;
+              @include breakpoint($bp-640-width) {
+                display: inline;
+              }
+              &.week-day {
+                font-size: 40px;
+                font-family: $avalon-demi;
+                line-height: 40px;
+                @include breakpoint($bp-640-width) {
+                  font-size: 20px;
+                  line-height: 45px;
+                  margin-right: 10px;
+                }
+              }
+              &.date {
+                font-size: 20px;
+                font-family: $avalon-medium;
+                line-height: 28px;
+                @include breakpoint($bp-640-width) {
+                  font-size: 20px;
+                  line-height: 45px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .time-zone {
+      padding: 0 30px;
+      @include breakpoint($bp-480-width){
+        text-align: center;
+      }
+      a {
+        font-size: 18px;
+        color: $schedule-pm-color;
+        font-family: $avalon-demi;
+        text-decoration: none;
+      }
+    }
+    .schedule-table {
+      margin-top: 20px;
+      position: relative;
+      padding: 10px 0;
+      .carousel-vert{
+        overflow: hidden;
+        position: static;
+        margin: 0;
+        padding: 0;
+        max-height: 770px;
+        //          @include breakpoint($bp-1024-width){
+        //            max-height: 476px;
+        //          }
+        //          @include breakpoint($bp-640-width){
+        //            max-height: 385px;
+        //          }
+      }
+      .jcarousel-control-next {
+        display: block;
+        height: 19px;
+        line-height: 19px;
+        margin-left: -9.5px;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        &:before {
+          content: "\e60a";
+          color: $poll-color;
+          font-family: $ico-font;
+          font-size: 32px;
+          display: block;
+        }
+      }
+      .jcarousel-control-prev {
+        display: block;
+        height: 19px;
+        line-height: 19px;
+        margin-left: -9.5px;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        text-decoration: none;
+        &:before {
+          content: "\e609";
+          color: $poll-color;
+          font-family: $ico-font;
+          font-size: 32px;
+          display: block;
+        }
+      }
+      ul {
+        height: 100%;
+        width: 100%;
+        li {
+          float: none;
+          margin: 0;
+          height: auto;
+          width: 100%;
+          &:nth-child(odd) {
+            background-color: $footer-links;
+          }
+          .schedule-item {
+            box-sizing: border-box;
+            padding: 20px 0 20px 10px;
+            width: 100%;
+            @include breakpoint($bp-1024-width) {
+              padding-left: 30px;
+            }
+            @include breakpoint($bp-640-width) {
+              padding-right: 30px;
+            }
+            @include breakpoint($bp-480-width) {
+              padding: 20px 10px 20px 15px;
+            }
+            .visible-block {
+              display: table;
+              width: 100%;
+              .time-wrapper {
+                display: table-cell;
+                vertical-align: middle;
+                width: 10%;
+                @include breakpoint($bp-1024-width) {
+                  width: 20%;
+                  min-width: 100px;
+                }
+                .time {
+                  margin: 0 auto;
+                  font-size: 20px;
+                  color: $schedule-pm-color;
+                  font-family: $avalon-medium;
+                  line-height: 28px;
+                  width: 90px;
+                  @include breakpoint($bp-1024-width) {
+                    width: auto;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                  span {
+                    color: $poll-color;
+                    font-size: 36px;
+                    font-family: $avalon-demi;
+                    letter-spacing: 3px;
+                    line-height: 42px;
+                    display: block;
+                    @include breakpoint($bp-1024-width) {
+                      font-size: 20px;
+                      line-height: 28px;
+                      display: inline;
+                    }
+                    @include breakpoint($bp-640-width) {
+                      font-size: 16px;
+                      line-height: 22px;
+                    }
+                    @include breakpoint($bp-480-width) {
+                      font-size: 14px;
+                      line-height: 20px;
+                    }
+                  }
+                }
+              }
+              .episode-info {
+                display: table-cell;
+                vertical-align: middle;
+                text-transform: uppercase;
+                padding-left: 10px;
+                padding-right: 20px;
+                width: 60%;
+                @include breakpoint($bp-1024-width) {
+                  width: auto;
+                }
+                .episode-show {
+                  font-size: 20px;
+                  font-family: $avalon-demi;
+                  float: left;
+                  width: 50%;
+                  @include breakpoint($bp-1024-width) {
+                    width: 100%;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  @include breakpoint($bp-480-width) {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                }
+                .episode-title {
+                  font-size: 20px;
+                  font-family: $cent-725BT-italic;
+                  font-style: italic;
+                  float: left;
+                  width: 50%;
+                  @include breakpoint($bp-1024-width) {
+                    display: none;
+                  }
+                }
+              }
+              .icons-block {
+                display: table-cell;
+                vertical-align: middle;
+                padding-right: 100px;
+                width: 30%;
+                position: relative;
+                @include breakpoint($bp-640-width) {
+                  padding: 0;
+                  height: 37px;
+                  width: 37px;
+                }
+                .open-description {
+                  @include sprite-background(plus-icon-round);
+                  display: block;
+                  position: absolute;
+                  margin-left: -18.5px;
+                  margin-top: -18.5px;
+                  right: 50px;
+                  top: 50%;
+                  @include breakpoint($bp-640-width) {
+                    right: 0;
+                  }
+                }
+                .icons-schedule {
+                  @include clear;
+                  float: left;
+                  @include breakpoint($bp-640-width) {
+                    display: none;
+                  }
+                  .icon {
+                    display: block;
+                    float: left;
+                    height: auto;
+                    margin-right: 27px;
+                    position: relative;
+                    text-decoration: none;
+                    width: auto;
+                    @include breakpoint($bp-768-width) {
+                      margin-right: 20px;
+                    }
+                  }
+                }
+                .rating {
+                  font-family: $avalon-medium;
+                  font-size: 14px;
+                  float: left;
+                  @include breakpoint($bp-1024-width) {
+                    display: none;
+                  }
+                }
+              }
+            }
+            .hidden-block {
+              display: none;
+              padding-top: 20px;
+              width: 100%;
+              .node {
+                margin-right: 50px;
+                @include breakpoint($bp-640-width) {
+                  margin-right: 0;
+                }
+                a {
+                  @include clear;
+                  color: #ffffff;
+                  display: block;
+                  padding-left: 10%;
+                  padding-right: 30%;
+                  text-decoration: none;
+                  @include breakpoint($bp-1024-width) {
+                    padding: 0;
+                  }
+                  .asset-img {
+                    float: left;
+                    width: 50%;
+                    @include breakpoint($bp-1024-width) {
+                      width: 300px;
+                    }
+                    @include breakpoint($bp-640-width) {
+                      float: none;
+                      width: 100%;
+                    }
+                    img {
+                      max-width: 300px;
+                      width: 100%;
+                      @include breakpoint($bp-min-1601-width) {
+                        max-width: 440px;
+                      }
+                      @include breakpoint($bp-640-width) {
+                        max-width: 100%;
+                      }
+                    }
+                  }
+                  .meta {
+                    float: left;
+                    font-size: 16px;
+                    font-family: $avalon-medium;
+                    line-height: 22px;
+                    padding-left: 20px;
+                    margin: 0;
+                    position: static;
+                    width: 50%;
+                    max-width: 450px;
+                    @include breakpoint($bp-1024-width) {
+                      font-size: 14px;
+                      line-height: 20px;
+                    }
+                    @include breakpoint($bp-768-width) {
+                      float: none;
+                      padding-left: 0;
+                      margin-left: 320px;
+                      width: auto;
+                    }
+                    @include breakpoint($bp-640-width) {
+                      font-size: 12px;
+                      line-height: 18px;
+                      margin-left: 0;
+                      max-width: 100%;
+                    }
+                    .episode-info {
+                      display: none;
+                      padding: 5px 0;
+                      position: relative;
+                      @include breakpoint($bp-1024-width) {
+                        display: block;
+                      }
+                      @include breakpoint($bp-768-width) {
+                        margin-top: 20px;
+                      }
+                      .episode-title {
+                        font-size: 16px;
+                        line-height: 22px;
+                        font-family: $cent-725BT-italic;
+                        font-style: italic;
+                        margin-right: 100px;
+                        @include breakpoint($bp-480-width){
+                          font-size: 14px;
+                        }
+                      }
+                      .rating {
+                        font-size: 12px;
+                        line-height: 22px;
+                        right: 0;
+                        position: absolute;
+                        top: 5px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.active {
+            background-color: $bottom-footer-back;
+            color: #ffffff;
+            .hidden-block {
+              display: block;
+            }
+            .schedule-item {
+              .visible-block {
+                .time-wrapper {
+                  .time, .time span {
+                    color: #ffffff;
+                  }
+                }
+                .open-description {
+                  @include sprite-background(minus-icon-round);
+                }
+              }
+            }
           }
         }
       }
     }
   }
-  .schedule-navigation {
-    float: right;
-    width: 30px;
-    height: 109px;
-    background-color: #0c0c0c;
+  .ad-728x90 {
+    margin: 0 auto;
+    padding: 10px 0;
+    max-width: 728px;
     a {
       display: block;
-      height: 50%;
-      width: 100%;
-      text-align: center;
-      &.schedule-navigation-prev {
-        @include replace-text('icons/arrow-prev.png');
-        background-position:45% 50%;
-        background-size:30% auto;
+      max-height: 90px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: 100%;
+      a {
+        height: auto;
       }
-      &.schedule-navigation-next {
-        @include replace-text('icons/arrow-next.png');
-        background-position:55% 50%;
-        background-size:30% auto;
+      img {
+        width: 100%;
       }
-    }
-  }
-  &.no-scroll {
-    .schedule-navigation {
-      display: none;
-    }
-  }
-}
-
-//accessibility page
-.page-accessibility {
-  .usa-wrap {
-    background-color: #ffffff;
-  }
-  .schedule-header{
-    clear: left;
-    background-color: #000000;
-  }
-  .schedule-table {
-    table {
-      border: #3d3d3d solid 1px;
-    }
-    thead th {
-      font-family: "Proxima N W01 Smbd", Arial, sans-serif;
-      color: #000000;
-      border-bottom-width: 3px;
-      border-right-width: 3px;
-      @include breakpoint($bp-home-3col) {
-        
-        font-family: avalon_mediumbold,"Proxima N W01 xBold", Arial, sans-serif;
-      }
-    }
-    .show-time {
-      color: #000000;
-      border-bottom-width: 3px;
-      border-right-width: 3px;
-    }
-    tr {
-      background: #ffffff;
-    }
-    td {
-      border-bottom-width: 3px;
-      border-right-width: 3px;
-      color: #000000;
-    }
-    .rating {
-      border-right-width: 1px;
-    }
-    a {
-      color: #000000;
-    }
-    td {
-      &.program, &.episode, &.rating {
-        font-family: "Proxima N W01 Reg", Arial, sans-serif;
-        @include breakpoint($bp-home-3col) {
-          font-family: avalonbold,"Proxima N W01 Smbd", Arial, sans-serif;
-        }
-      }
-      &.show-time {
-        font-family: "Proxima N W01 Reg", Arial, sans-serif;
-        @include breakpoint($bp-home-3col) {
-          font-family: avalonregular,"Proxima N W01 Smbd", Arial, sans-serif;
-        }
-      }
-    }
-  }
-}
-
-.accesibility-header {
-  margin: 70px auto 0;
-  color: #000000;
-  line-height: 1.3em;
-  width: 100%;
-  font-size: 14px;
-  .accessibility-left {
-    width: 100%;
-    float: none;
-    margin-bottom: 40px;
-  }
-  .accessibility-right {
-    width: 100%;
-    float: none;
-    margin-bottom: 70px;
-  }
-  h1 {
-    font-size: 16px;
-  }
-  @include breakpoint($bp-schedule-date-wide) {
-    font-size: 18px;
-    h1 {
-      font-size: 20px;
-    }
-  }
-  @include breakpoint($bp-home-3-fence) {
-    width: 925px;
-    .accessibility-left {
-      width: 48%;
-      float: left;
-      margin-bottom: 70px;
-    }
-    .accessibility-right {
-      width: 48%;
-      float: right;
-      margin-bottom: 70px;
-    }
-  }
-  @include breakpoint($bp-home-widest) {
-    width: 1248px;
-    .accessibility-left {
-      width: 48%;
-      float: left;
-      margin-bottom: 70px;
-    }
-    .accessibility-right {
-      width: 48%;
-      float: right;
-      margin-bottom: 70px;
     }
   }
 }

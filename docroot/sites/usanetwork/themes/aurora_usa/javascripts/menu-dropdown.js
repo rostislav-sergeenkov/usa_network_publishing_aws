@@ -196,6 +196,10 @@
         $(this).addClass('active');
       };
 
+      var seeitClose = function () {
+        $('.seeit-iframe-wrapper').remove();
+      };
+
 
       showTitleMove();
       showMenuMove();
@@ -210,6 +214,13 @@
           $(".show-menu > li > a").bind('hover', showMenuHoverItem);
           $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
+        $('.calendar-reminder').click(function() {
+          if(getInternetExplorerVersion()!==-1){
+            $('.seeit-icon-close').bind('click', seeitClose);
+          }
+        });
+
+
       });
 
       $(window).bind('resize', function () {

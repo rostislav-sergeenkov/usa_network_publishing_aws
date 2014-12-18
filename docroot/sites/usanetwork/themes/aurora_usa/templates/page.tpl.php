@@ -108,7 +108,7 @@
       </div>
     <?php endif; ?>
     <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
-  </div>
+    </div>
   </div>
 <?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->

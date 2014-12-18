@@ -1,0 +1,5 @@
+name = usanetwork_microsite
+description = Set up a microsite for a TV show or other content.
+core = 7.x
+version = 0.2-dev
+dependencies[] = block

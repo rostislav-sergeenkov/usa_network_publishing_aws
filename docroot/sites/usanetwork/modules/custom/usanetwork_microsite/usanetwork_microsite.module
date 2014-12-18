@@ -1,0 +1,249 @@
+<?php
+if (!defined('USA_PREFIX')) define('USA_PREFIX', '<h2>');
+if (!defined('USA_SUFFIX')) define('USA_SUFFIX', '</h2>');
+function usa_print($msg) {
+  return USA_PREFIX . $msg . USA_SUFFIX;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_microsite_menu() {
+//echo usa_print('usanetwork_microsite_menu');
+  $items = array();
+/*
+  $items['node/%/#section=%/%'] = array(
+    'title' => 'Microsite Page',
+    'page callback' => 'usanetwork_dig_show_page_process',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+  );
+*/
+// @TODO: SET THE FOLLOWING SO IT DOESN'T LOOK AT EVERY NODE!!!
+//  $items['node/%'] = array(
+  $items['node/54203'] = array(
+    'title' => 'Microsite Page',
+    'page callback' => 'usanetwork_dig_show_page',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_preprocess_node()
+ */
+function _usanetwork_aspot_preprocess_node($nid) {
+  $vars = (array)node_load($nid);
+//dpm($vars);
+  if ($vars['type'] == 'usa_homepage'){
+    $lang = $vars['language'];
+    if (isset($vars['field_usa_hp_arefs'])){
+      usanetwork_aspot_aspot_settings($vars['field_usa_hp_arefs'], $lang);
+    }
+  }
+  if ($vars['type'] == 'tv_show'){
+    $lang = $vars['language'];
+    if (isset($vars['field_usa_tv_a_spot'][$lang])){
+      usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang);
+    }
+  }
+  if ($vars['type'] == 'usanetwork_aspot') {
+    $current_path = current_path();
+//    if ($current_path == 'node/'.$vars['nid']) {
+      $lang = $vars['language'];
+      if ($vars['field_animated_a_spot'][$lang][0]['value']) {
+        $vars['aspot_page'] = TRUE;
+        $show = 'aspot';
+        $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value'];
+        $webm_url = $vars['field_webm_video_url'][$lang][0]['value'];
+        $aspot_settings = array(
+          'show' => $show,
+          'mp4_url' => $mp4_url,
+          'webm_url' => $webm_url
+        );
+        drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
+      }
+//    }
+  }
+}
+
+function _usanetwork_microsite_get_info($nid) {
+  $params = array();
+  $node = node_load($nid);
+//dpm($node);
+  if ($node->type == 'usanetwork_microsite') {
+//echo PRE_ECHO_TAG . 'usanetwork_microsite_node_view' . POST_ECHO_TAG;
+
+    // set variables
+    $lang = (!empty($node->language)) ? $node->language : 'und';
+    $params['show'] = (!empty($node->field_show[$lang][0]['target_id'])) ? $node->field_show[$lang][0]['target_id'] : '';
+    $params['theme'] = (!empty($node->field_ms_theme[$lang][0]['value'])) ? $node->field_ms_theme[$lang][0]['value'] : '';
+    $params['profile_image'] = (!empty($node->field_ms_small_logo[$lang][0]['filename'])) ? $node->field_ms_small_logo[$lang][0]['filename'] : '';
+    $params['tune_in'] = (!empty($node->field_ms_tune_in[$lang][0]['value'])) ? $node->field_ms_tune_in[$lang][0]['value'] : '';
+    $params['section_separator'] = (!empty($node->field_ms_section_separator[$lang][0]['value'])) ? $node->field_ms_section_separator[$lang][0]['value'] : '';
+    $section = array();
+    foreach($node->field_ms_section[$lang] as $key => $array) {
+      //$s_node = node_load($s_node->field_ms_section[$lang][$key]['value']);
+      $s_node_id = $node->field_ms_section[$lang][$key]['value'];
+      $s_node = entity_load('field_collection_item', array($s_node_id));
+//dpm($s_node_id);
+//dpm($s_node);
+      $section = array();
+      $section['section_enabled'] = $s_node[$s_node_id]->field_ms_section_enabled[$lang][0]['value'];
+      if ($section['section_enabled']) {
+        $section['title'] = (!empty($s_node[$s_node_id]->field_ms_section_title[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_title[$lang][0]['value'] : '';
+        $section['bg_image'] = (!empty($s_node[$s_node_id]->field_ms_section_bg_image[$lang][0]['filename'])) ? $s_node[$s_node_id]->field_ms_section_bg_image[$lang][0]['filename'] : '';
+        $section['type'] = (!empty($s_node[$s_node_id]->field_ms_section_type[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_type[$lang][0]['value'] : '';
+        $aspots = array();
+        foreach($s_node[$s_node_id]->field_usa_hp_arefs[$lang] as $key2 => $array2) {
+          $aspot_node_id = $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'];
+          $aspot_node = (array)node_load($aspot_node_id);
+//          _usanetwork_aspot_preprocess_node($aspot_node_id);
+//          $aspots[$key2] = $aspot[$aspot_node_id];
+//dpm($aspot_node_id);
+//dpm($aspot_node);
+//          $aspots[$key2] = (!empty($s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'])) ? $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'] : '';
+          // add aspot info to javascript
+          //_usanetwork_aspot_preprocess_node($section['aspot']);
+          $aspots[$key2] = $aspot_node;
+        }
+        $section['aspot'] = $aspots;
+        $section['bspot'] = (!empty($s_node[$s_node_id]->field_usa_hp_brefs[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_usa_hp_brefs[$lang][0]['target_id']) : '';
+        $section['cspot'] = (!empty($s_node[$s_node_id]->field_usa_hp_crefs[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_usa_hp_crefs[$lang][0]['target_id']) : '';
+        $section['media_gallery'] = (!empty($s_node[$s_node_id]->field_media_gallery[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_media_gallery[$lang][0]['target_id']) : '';
+        $section['description'] = (!empty($s_node[$s_node_id]->field_ms_section_text[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_text[$lang][0]['value'] : '';
+        $section['person'] = (!empty($s_node[$s_node_id]->field_person[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_person[$lang][0]['target_id']) : '';
+        $section['character'] = (!empty($s_node[$s_node_id]->field_episode_credit_character[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_episode_credit_character[$lang][0]['target_id']) : '';
+        $section['promo_carousel'] = (!empty($s_node[$s_node_id]->field_hp_promo_carousel[$lang][0]['target_id'])) ? $s_node[$s_node_id]->field_hp_promo_carousel[$lang][0]['target_id'] : '';
+        $section['featured_promo'] = (!empty($s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'])) ? $s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'] : '';
+      }
+      $params['section'][$key] = $section;
+    }
+//dpm($params);
+
+    // set paths
+    $params['theme_path'] = drupal_get_path('module', 'usanetwork_microsite') . '/themes/' . $params['theme'];
+  }
+
+  return $params;
+}
+
+/**
+ * usanetwork_dig_show_page
+ * Sets $params array containing all content
+ */
+function usanetwork_dig_show_page($nid) {
+//echo usa_print('usanetwork_dig_show_page(' . $nid . ')');
+  //if (arg(0) != 'admin') {
+  $node = node_load($nid);
+  if (!path_is_admin(current_path()) && $node->type == 'usanetwork_microsite') {
+    $params = _usanetwork_microsite_get_info($nid);
+
+    // add css
+    drupal_add_css($params['theme_path'] . '/css/ms_style.css');
+    drupal_add_css($params['theme_path'] . '/css/trivia.css');
+
+    // add js
+    drupal_add_js($params['theme_path'] . '/js/microsite_global.js');
+    return theme('usanetwork_dig_show_page', $params);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * This determines what fields to display for each section type
+ */
+function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, &$form_state, $form_id) {
+//  dsm($form);  // pretty print array using Krumo to messages
+  $i = 0;
+  while(is_array($form['field_ms_section']['und'][$i])) {
+    // section_type = 'home'
+    $form['field_ms_section']['und'][$i]['field_usa_hp_arefs']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['field_usa_hp_brefs']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['field_usa_hp_crefs']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['field_hp_promo_carousel']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['field_hp_promos']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+
+    // section_type = 'about'
+    $form['field_ms_section']['und'][$i]['field_ms_section_text']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
+      ),
+    );
+
+    // section_type = 'galleries'
+    $form['field_ms_section']['und'][$i]['field_media_gallery']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'galleries'),
+      ),
+    );
+
+    // section_type = 'characters'
+    $form['field_ms_section']['und'][$i]['field_person']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['field_episode_credit_character']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
+      ),
+    );
+
+    $i++;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function usanetwork_microsite_theme() {
+usa_print('usanetwork_microsite_theme');
+  $module_path = drupal_get_path('module', 'usanetwork_microsite');
+  $themes = array(
+    'usanetwork_dig_show_page' => array(
+      'template' => 'usanetwork_microsite',
+      'path' => $module_path . '/themes/dig/templates',
+    ),
+  );
+  return $themes;
+}
+
+/**
+ * Implements hook_permission
+ */
+function usanetwork_microsite_permission() {
+  $perm = array(
+    'view microsites' => array(
+      'title' => t('View microsites'),
+    ),
+    'create microsites' => array(
+      'title' => t('Create microsites'),
+    ),
+    'manage microsites' => array(
+      'title' => t('Manage microsites'),
+    )
+  );
+  return $perm;
+}

@@ -846,6 +846,7 @@ function usanetwork_tv_schedule_schedule_page() {
       $episode_title = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'TitleName');
       $rating = _usanetwork_tv_schedule_get_service_object_value($tv_schedule_item, 'Rating');
       $episode_image_uri = '';
+      $filter_show_node = NULL;
 
       _usanetwork_tv_schedule_correct_show_title($show_name);
 
@@ -951,16 +952,20 @@ function usanetwork_tv_schedule_schedule_page() {
     }
   }
 
+  if (!empty($filter_show_nid)) {
+    $filter_show_node = node_load($filter_show_nid);
+  }
+
   $theme_variables = array(
     'filter' => array(
       'show_name' => array(
         'selected' => array(
-          'nid' => !empty($show_nid)
-            ? $show_nid
+          'nid' => !empty($filter_show_nid)
+            ? $filter_show_nid
             : 0,
-          'title' => !empty($show_node)
-            ? $show_node->title
-            : t('All shows'),
+          'title' => !empty($filter_show_nid)
+            ? $filter_show_node->title
+            : t('Show all'),
         ),
         'list' => _usanetwork_tv_schedule_get_shows_list(TRUE),
       ),
@@ -970,7 +975,7 @@ function usanetwork_tv_schedule_schedule_page() {
             ? 'all_time'
             : $filter_show_time,
           'title' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
-            ? 'all_time'
+            ? $filter_show_time_values['all_time']
             : $filter_show_time_values[$filter_show_time],
         ),
         'list' => $filter_show_time_values,

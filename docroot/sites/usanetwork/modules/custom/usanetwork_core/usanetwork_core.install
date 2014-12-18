@@ -1011,3 +1011,10 @@ function usanetwork_core_update_7163() {
     module_enable(array('usanetwork_dynamic_entity_reference'));
   }
 }
+
+/**
+ * Enables module usanetwork_overlay.
+ */
+function usanetwork_core_update_7164() {
+  if (!module_exists('usanetwork_search')) {
+    module_enable(array('usanetwork_search'));

@@ -1,5 +1,0 @@
-name = usanetwork_show_microsite
-description = Set up a microsite for a TV show.
-core = 7.x
-version = 0.2-dev
-dependencies[] = block

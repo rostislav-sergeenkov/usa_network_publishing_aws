@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains main module functionality.
+ */
+
+require_once __DIR__ . '/usanetwork_dynamic_entity_reference.field.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_dynamic_entity_reference_menu() {
+  $items = array();
+  $items['usanetwork_dynamic_entity_reference/autocomplete/%/%/%/%/%'] = array(
+    'page callback' => 'usanetwork_dynamic_entity_reference_autocomplete',
+    'page arguments' => array(2, 3, 4, 5, 6),
+    'access callback' => TRUE,
+    'file' => 'usanetwork_dynamic_entity_reference.pages.inc',
+  );
+  return $items;
+}

@@ -7,7 +7,7 @@
   <h2>Schedule</h2>
   <div class="shows-filters">
     <div class="item-filter show-filter">
-      <div class="filter-label"><?php dpm($filter); print $filter['show_name']['selected']['title']; ?></div>
+      <div class="filter-label"><?php print $filter['show_name']['selected']['title']; ?></div>
       <?php if (!empty($filter['show_name']['list'])): ?>
         <ul class="filter-menu">
           <?php foreach ($filter['show_name']['list'] as $node_nid => $node_title): ?>

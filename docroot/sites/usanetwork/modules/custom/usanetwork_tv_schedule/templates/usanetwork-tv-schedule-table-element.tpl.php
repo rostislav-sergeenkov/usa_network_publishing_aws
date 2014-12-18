@@ -3,7 +3,7 @@
  *
  */
 ?>
-<a name="<?php print $link_name; ?>"></a>
+<!--<a name="--><?php //print $link_name; ?><!--"></a>-->
 <li<?php if (!empty($link_class)): print ' class="' . $link_class . '"'; endif; ?>>
   <div class="schedule-item show-color-border<?php if (!empty($show_class)): print ' '. $show_class; endif; ?>">
     <div class="visible-block">

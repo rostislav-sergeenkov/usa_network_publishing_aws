@@ -219,8 +219,6 @@
             $('.seeit-icon-close').bind('click', seeitClose);
           }
         });
-
-
       });
 
       $(window).bind('resize', function () {

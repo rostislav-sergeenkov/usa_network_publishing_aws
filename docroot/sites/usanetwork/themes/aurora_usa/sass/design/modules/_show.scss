@@ -13,8 +13,13 @@
   .carousel {
     &.start {
       margin-left: 365px;
-      .jcarousel-controls{
-        display: none;
+      &:hover {
+        .jcarousel-control-next {
+          right: 305px;
+          @include breakpoint($bp-1024-width) {
+            right: 325px;
+          }
+        }
       }
     }
     ul {

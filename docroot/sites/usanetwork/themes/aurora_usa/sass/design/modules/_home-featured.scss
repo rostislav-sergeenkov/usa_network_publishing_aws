@@ -8,18 +8,33 @@
     @include breakpoint($bp-768-width) {
       &.start {
         margin-left: 0;
+        &:hover {
+          .jcarousel-control-next {
+            right: -40px;
+          }
+        }
       }
     }
-    @include breakpoint($bp-min-769-width) {
+    @include breakpoint($between-769-1024) {
       &.start {
         margin-left: -370px;
         overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            left: 330px;
+          }
+        }
       }
     }
     @include breakpoint($bp-min-1025-width) {
       &.start {
         margin-left: -355px;
         overflow: hidden;
+        &:hover {
+          .jcarousel-control-next {
+            left: 295px;
+          }
+        }
       }
     }
     ul {

@@ -21,7 +21,7 @@ function usanetwork_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_version';
-  $strongarm->value = '7.x-2.12';
+  $strongarm->value = '7.x-2.14';
   $export['acquia_search_version'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -106,6 +106,13 @@ function usanetwork_search_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_search_default_search_page';
+  $strongarm->value = 'core_search';
+  $export['apachesolr_search_default_search_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_search_mlt_blocks';
   $strongarm->value = array(
     'mlt-001' => array(
@@ -140,11 +147,8 @@ function usanetwork_search_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
-    'apachesolr_search' => 'apachesolr_search',
     'ds_search' => 0,
-    'file_entity' => 0,
-    'node' => 0,
-    'user' => 0,
+    0 => 'apachesolr_search',
   );
   $export['search_active_modules'] = $strongarm;
 

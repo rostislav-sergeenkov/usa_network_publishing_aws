@@ -10,7 +10,7 @@
       function getShowTitleOffset(){
         if ($('body').hasClass('usa-tv-show')) {
           if ($('.tab-item').hasClass('active')) {
-            show_title_offset = $('.show-title-block-wrapper').offset().top;
+            show_title_offset = $('.show-title-block-wrapper').offset.top;
           }
         }
       }

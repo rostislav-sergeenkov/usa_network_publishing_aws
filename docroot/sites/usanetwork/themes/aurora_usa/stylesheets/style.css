@@ -8825,17 +8825,26 @@ body.front {
   .featured-block .carousel.start {
     margin-left: 0;
   }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    right: -40px;
+  }
 }
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .featured-block .carousel.start {
     margin-left: -370px;
     overflow: hidden;
+  }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    left: 330px;
   }
 }
 @media (min-width: 1025px) {
   .featured-block .carousel.start {
     margin-left: -355px;
     overflow: hidden;
+  }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    left: 295px;
   }
 }
 .featured-block .carousel ul {
@@ -10398,8 +10407,13 @@ body.front {
 .shows-block .carousel.start {
   margin-left: 365px;
 }
-.shows-block .carousel.start .jcarousel-controls {
-  display: none;
+.shows-block .carousel.start:hover .jcarousel-control-next {
+  right: 305px;
+}
+@media (max-width: 1024px) {
+  .shows-block .carousel.start:hover .jcarousel-control-next {
+    right: 325px;
+  }
 }
 .shows-block .carousel ul {
   position: relative;
@@ -12331,7 +12345,6 @@ body.person-page #main {
 }
 .carousel.start .jcarousel-controls:after {
   opacity: 0;
-  visibility: hidden;
 }
 .carousel .jcarousel-controls {
   display: block;
@@ -12396,6 +12409,12 @@ body.person-page #main {
 }
 .carousel .jcarousel-controls.jcarousel-control-next:after {
   content: "\e608";
+}
+.carousel .jcarousel-controls.inactive {
+  width: 0px;
+}
+.carousel .jcarousel-controls.inactive:after {
+  opacity: 0;
 }
 .carousel .stop ~ .jcarousel-controls {
   width: 0px;
@@ -12711,11 +12730,27 @@ body.person-page #main {
     margin-left: 340px;
   }
 }
-.carousel-left .jcarousel-controls.jcarousel-control-prev.inactive {
-  width: 0px;
+.carousel-left.start:hover .jcarousel-control-next {
+  width: 60px;
 }
-.carousel-left .jcarousel-controls.jcarousel-control-prev.inactive:after {
-  opacity: 0;
+@media (max-width: 1024px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 160px;
+    width: 40px;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 120px;
+  }
+}
+@media (min-width: 1601px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 280px;
+  }
+}
+.carousel-left.start:hover .jcarousel-control-next:after {
+  opacity: 1;
 }
 
 .carousel-right {
@@ -12744,6 +12779,30 @@ body.person-page #main {
   position: absolute;
   top: 0;
 }
+.carousel-right .jcarousel-controls.jcarousel-control-next {
+  left: -60px;
+  right: auto;
+}
+@media (max-width: 1024px) {
+  .carousel-right .jcarousel-controls.jcarousel-control-next {
+    left: -40px;
+  }
+}
+.carousel-right .jcarousel-controls.jcarousel-control-next:after {
+  content: "\e607";
+}
+.carousel-right .jcarousel-controls.jcarousel-control-prev {
+  left: auto;
+  right: -60px;
+}
+@media (max-width: 1024px) {
+  .carousel-right .jcarousel-controls.jcarousel-control-prev {
+    right: -40px;
+  }
+}
+.carousel-right .jcarousel-controls.jcarousel-control-prev:after {
+  content: "\e608";
+}
 @media (max-width: 1024px) {
   .carousel-right.start {
     margin-left: -200px;
@@ -12764,11 +12823,27 @@ body.person-page #main {
     margin-left: -340px;
   }
 }
-.carousel-right .jcarousel-controls.jcarousel-control-next.inactive {
-  width: 0px;
+.carousel-right.start:hover .jcarousel-control-next {
+  width: 60px;
 }
-.carousel-right .jcarousel-controls.jcarousel-control-next.inactive:after {
-  opacity: 0;
+@media (max-width: 1024px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 160px;
+    width: 40px;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 120px;
+  }
+}
+@media (min-width: 1601px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 280px;
+  }
+}
+.carousel-right.start:hover .jcarousel-control-next:after {
+  opacity: 1;
 }
 
 .carousel-block-right {
@@ -12812,6 +12887,7 @@ body.person-page #main {
 }
 .carousel-description-item .description-button {
   color: transparent;
+  cursor: default;
   display: block;
   left: -40px;
   margin-top: -12px;

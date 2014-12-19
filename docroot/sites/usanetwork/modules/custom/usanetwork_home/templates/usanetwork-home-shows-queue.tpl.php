@@ -5,7 +5,7 @@
 ?>
 <div class="shows-block">
   <div class="carousel-description-item start">
-    <a href="#" class="description-button"></a>
+    <a href="javascript:void(0)" class="description-button"></a>
 
     <div class="description-wrapper">
       <div class="description-block">

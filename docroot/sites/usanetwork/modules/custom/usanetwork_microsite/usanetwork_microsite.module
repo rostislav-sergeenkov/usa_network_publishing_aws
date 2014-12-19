@@ -5,6 +5,8 @@ function usa_print($msg) {
   return USA_PREFIX . $msg . USA_SUFFIX;
 }
 
+include 'usanetwork_microsite.admin.inc';
+
 /**
  * Implements hook_menu().
  */
@@ -21,18 +23,20 @@ function usanetwork_microsite_menu() {
 */
 // @TODO: SET THE FOLLOWING SO IT DOESN'T LOOK AT EVERY NODE!!!
 //  $items['node/%'] = array(
-  $items['node/54203'] = array(
-    'title' => 'Microsite Page',
+  $items['node/54204'] = array(
+    'title' => 'Dig',
     'page callback' => 'usanetwork_dig_show_page',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
   );
+
   return $items;
 }
 
 /**
  * Implements hook_preprocess_node()
  */
+/*
 function _usanetwork_aspot_preprocess_node($nid) {
   $vars = (array)node_load($nid);
 //dpm($vars);
@@ -67,13 +71,15 @@ function _usanetwork_aspot_preprocess_node($nid) {
 //    }
   }
 }
+*/
 
 function _usanetwork_microsite_get_info($nid) {
+//echo USA_PREFIX . '_usanetwork_microsite_get_info()' . USA_SUFFIX;
   $params = array();
   $node = node_load($nid);
-//dpm($node);
   if ($node->type == 'usanetwork_microsite') {
-//echo PRE_ECHO_TAG . 'usanetwork_microsite_node_view' . POST_ECHO_TAG;
+//dpm($vars);
+//dpm($node);
 
     // set variables
     $lang = (!empty($node->language)) ? $node->language : 'und';
@@ -84,7 +90,6 @@ function _usanetwork_microsite_get_info($nid) {
     $params['section_separator'] = (!empty($node->field_ms_section_separator[$lang][0]['value'])) ? $node->field_ms_section_separator[$lang][0]['value'] : '';
     $section = array();
     foreach($node->field_ms_section[$lang] as $key => $array) {
-      //$s_node = node_load($s_node->field_ms_section[$lang][$key]['value']);
       $s_node_id = $node->field_ms_section[$lang][$key]['value'];
       $s_node = entity_load('field_collection_item', array($s_node_id));
 //dpm($s_node_id);
@@ -99,13 +104,8 @@ function _usanetwork_microsite_get_info($nid) {
         foreach($s_node[$s_node_id]->field_usa_hp_arefs[$lang] as $key2 => $array2) {
           $aspot_node_id = $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'];
           $aspot_node = (array)node_load($aspot_node_id);
-//          _usanetwork_aspot_preprocess_node($aspot_node_id);
-//          $aspots[$key2] = $aspot[$aspot_node_id];
-//dpm($aspot_node_id);
-//dpm($aspot_node);
-//          $aspots[$key2] = (!empty($s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'])) ? $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'] : '';
           // add aspot info to javascript
-          //_usanetwork_aspot_preprocess_node($section['aspot']);
+          //_usanetwork_aspot_preprocess_node($aspot_node_id);
           $aspots[$key2] = $aspot_node;
         }
         $section['aspot'] = $aspots;
@@ -121,9 +121,9 @@ function _usanetwork_microsite_get_info($nid) {
       $params['section'][$key] = $section;
     }
 //dpm($params);
-
     // set paths
-    $params['theme_path'] = drupal_get_path('module', 'usanetwork_microsite') . '/themes/' . $params['theme'];
+    $params['theme_path'] = drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/' . $params['theme'];
+    usanetwork_dig_show_page($params);
   }
 
   return $params;
@@ -133,98 +133,35 @@ function _usanetwork_microsite_get_info($nid) {
  * usanetwork_dig_show_page
  * Sets $params array containing all content
  */
+//function usanetwork_dig_show_page($nid) {
 function usanetwork_dig_show_page($nid) {
-//echo usa_print('usanetwork_dig_show_page(' . $nid . ')');
-  //if (arg(0) != 'admin') {
-  $node = node_load($nid);
-  if (!path_is_admin(current_path()) && $node->type == 'usanetwork_microsite') {
+  //if (!path_is_admin(current_path())) {
     $params = _usanetwork_microsite_get_info($nid);
 
     // add css
-    drupal_add_css($params['theme_path'] . '/css/ms_style.css');
-    drupal_add_css($params['theme_path'] . '/css/trivia.css');
+    drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/ms_style.css');
+    drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/trivia.css');
 
     // add js
-    drupal_add_js($params['theme_path'] . '/js/microsite_global.js');
+    drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
+    //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-flexslider.js');
+
     return theme('usanetwork_dig_show_page', $params);
-  }
+  //}
 }
 
-/**
- * Implements hook_form_FORM_ID_alter()
- * This determines what fields to display for each section type
- */
-function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, &$form_state, $form_id) {
-//  dsm($form);  // pretty print array using Krumo to messages
-  $i = 0;
-  while(is_array($form['field_ms_section']['und'][$i])) {
-    // section_type = 'home'
-    $form['field_ms_section']['und'][$i]['field_usa_hp_arefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_usa_hp_brefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_usa_hp_crefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_hp_promo_carousel']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_hp_promos']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-
-    // section_type = 'about'
-    $form['field_ms_section']['und'][$i]['field_ms_section_text']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
-      ),
-    );
-
-    // section_type = 'galleries'
-    $form['field_ms_section']['und'][$i]['field_media_gallery']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'galleries'),
-      ),
-    );
-
-    // section_type = 'characters'
-    $form['field_ms_section']['und'][$i]['field_person']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_episode_credit_character']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
-      ),
-    );
-
-    $i++;
-  }
-}
 
 /**
  * Implements hook_theme().
  */
 function usanetwork_microsite_theme() {
 usa_print('usanetwork_microsite_theme');
-  $module_path = drupal_get_path('module', 'usanetwork_microsite');
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+// @TODO: FIND A WAY TO PASS $params['theme'] TO THE FILE TEMPLATE PATH
   $themes = array(
     'usanetwork_dig_show_page' => array(
       'template' => 'usanetwork_microsite',
-      'path' => $module_path . '/themes/dig/templates',
+      'path' => $theme_path . '/usanetwork_microsite_themes/dig/templates',
     ),
   );
   return $themes;

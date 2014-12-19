@@ -303,7 +303,7 @@ you can use the generic selector below, but it's slower:
   margin: 0 auto;
 }
 .dig #home {
-  background-image: url("/sites/usanetwork/modules/custom/usanetwork_show_microsite/themes/dig/images/dig_bg_home.jpg");
+  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
 }
 .dig #about {
   background-image: url("../images/dig_bg_about.jpg");

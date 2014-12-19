@@ -117,7 +117,7 @@
       for (var elem, maxLength = scrollToList.length, i=0; i < maxLength; i++) {
         elem = scrollToList[i];
         //usa_debug('isScrolledIntoView -- elem: scroll-to-' + elem);
-        if ($('section #' + elem).length < 10) {
+        if ($('section #' + elem).hasClass('clearfix') && $('section #' + elem).length < 10) {
           var elemTop = $('#scroll-to-' + elem).offset().top;
           if ((elemTop <= docViewBottom) && (elemTop >= docViewTop)) {
             loadSection(elem);
@@ -130,40 +130,43 @@
       for (var elem, maxLength = sectionList.length, i=0; i < maxLength; i++) {
         elem = sectionList[i];
         //usa_debug('checking for section in view -- elem: ' + elem);
-        var elemBottom = $('#' + elem).offset().top + $('#' + elem).height();
-//usa_debug('elemBottom: ' + elemBottom + '\ndocViewBottom: ' + docViewBottom + '\ndocViewTop: ' + docViewTop + '\nyOffset: ' + yOffset + '\ncurrentSection: ' + currentSection + '\nelem: ' + elem);
-        if (elemBottom <= docViewBottom && elemBottom >= docViewTop && currentSection != elem) {
-          //usa_debug('isScrolledIntoView: ' + elem);
-          updateNav(elem);
+        if ($('section #' + elem).hasClass('clearfix')) {
+          var elemBottom = $('#' + elem).offset().top + $('#' + elem).height();
+  //usa_debug('elemBottom: ' + elemBottom + '\ndocViewBottom: ' + docViewBottom + '\ndocViewTop: ' + docViewTop + '\nyOffset: ' + yOffset + '\ncurrentSection: ' + currentSection + '\nelem: ' + elem);
+          if (elemBottom <= docViewBottom && elemBottom >= docViewTop && currentSection != elem) {
+            //usa_debug('isScrolledIntoView: ' + elem);
+            updateNav(elem);
 
-          // animate captions
-          captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
-/*
-          switch(elem) {
-            case 'about':
-              numAboutCaptions = $('.caption li').length;
-              if (numAboutCaptions > 1) {
-                // animate captions
-                setTimeout(function(){
-                  captionReplaceAnimation('.caption li');
-                }, captionReplaceSpeed);
-              }
-              break;
-            case 'characters':
-              numCharCaptions = $('.caption li').length;
-              if (numCharCaptions > 1) {
-                // animate captions
-                setTimeout(function(){
-                  captionReplaceAnimation();
-                }, captionReplaceSpeed);
-              }
-              break;
+            // animate captions
+            captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
+  /*
+            switch(elem) {
+              case 'about':
+                numAboutCaptions = $('.caption li').length;
+                if (numAboutCaptions > 1) {
+                  // animate captions
+                  setTimeout(function(){
+                    captionReplaceAnimation('.caption li');
+                  }, captionReplaceSpeed);
+                }
+                break;
+              case 'characters':
+                numCharCaptions = $('.caption li').length;
+                if (numCharCaptions > 1) {
+                  // animate captions
+                  setTimeout(function(){
+                    captionReplaceAnimation();
+                  }, captionReplaceSpeed);
+                }
+                break;
+            }
+  */
           }
-*/
         }
       }
 
       // show / hide Dig logo above left nav
+usa_debug('yOffset: ' + yOffset);
       if (yOffset > 500) {
         showDigLogo();
       }

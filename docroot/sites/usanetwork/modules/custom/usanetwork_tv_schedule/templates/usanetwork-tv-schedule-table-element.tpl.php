@@ -30,7 +30,7 @@
         <?php if (!empty($rating)): ?>
           <div class="rating"><?php print $rating; ?></div>
         <?php endif; ?>
-        <a class="open-description icon" href="javascript:void(0)"></a>
+        <a class="open-description link-color-reset icon" href="javascript:void(0)"></a>
       </div>
     </div>
     <div class="hidden-block">

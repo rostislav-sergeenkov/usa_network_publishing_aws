@@ -661,7 +661,7 @@ you can use the generic selector below, but it's slower:
   top: 115px;
   /* 194px; */
   left: 50px;
-  width: 200px;
+  width: 250px;
   color: white;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -712,20 +712,40 @@ you can use the generic selector below, but it's slower:
 .dig #left-nav #left-nav-social a:hover {
   opacity: 0.7;
 }
+.dig #left-nav #left-nav-links ul {
+  padding: 0;
+  margin: 0 0 0 24px;
+}
 .dig #left-nav #left-nav-links li {
   list-style: none;
-  pointer: cursor;
+  cursor: pointer;
+}
+.dig #left-nav #left-nav-links li:hover {
+  color: #e5ce96;
 }
 .dig #left-nav #left-nav-links li:after {
   clear: both;
   content: '';
   display: table;
 }
-.dig #left-nav #left-nav-links li.active {
+.dig #left-nav #left-nav-links > ul > li.active {
   list-style: square url("../images/nav_selector.png");
   color: #e5ce96;
 }
-.dig #left-nav #left-nav-links li li {
-  margin-left: 10px;
-  display: none;
+/* sub-nav */
+.dig #left-nav #left-nav-links ul ul {
+  display:none;
+  margin-left: 16px;
+}
+.dig #left-nav #left-nav-links ul ul li {
+  font-size: 0.8em;
+  width: 200px;
+  color: #FFF;
+}
+.dig #left-nav #left-nav-links li.active ul {
+  display: block;
+}
+.dig #left-nav #left-nav-links li.active li.active {
+  color: #e5ce96;
+  list-style: none;
 }

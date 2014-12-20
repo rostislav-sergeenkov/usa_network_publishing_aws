@@ -60,6 +60,12 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
       ),
     );
 
+    // section_type = 'games'
+    $form['field_ms_section']['und'][$i]['field_ms_catchall_page']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'games'),
+      ),
+    );
     $i++;
   }
 }

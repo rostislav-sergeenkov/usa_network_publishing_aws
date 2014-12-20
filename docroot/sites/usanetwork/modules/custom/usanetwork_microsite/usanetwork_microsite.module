@@ -83,6 +83,7 @@ function _usanetwork_microsite_get_info($nid) {
 
     // set variables
     $lang = (!empty($node->language)) ? $node->language : 'und';
+    $params['lang'] = $lang;
     $params['show'] = (!empty($node->field_show[$lang][0]['target_id'])) ? $node->field_show[$lang][0]['target_id'] : '';
     $params['theme'] = (!empty($node->field_ms_theme[$lang][0]['value'])) ? $node->field_ms_theme[$lang][0]['value'] : '';
     $params['profile_image'] = (!empty($node->field_ms_small_logo[$lang][0]['filename'])) ? $node->field_ms_small_logo[$lang][0]['filename'] : '';
@@ -100,29 +101,58 @@ function _usanetwork_microsite_get_info($nid) {
         $section['title'] = (!empty($s_node[$s_node_id]->field_ms_section_title[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_title[$lang][0]['value'] : '';
         $section['bg_image'] = (!empty($s_node[$s_node_id]->field_ms_section_bg_image[$lang][0]['filename'])) ? $s_node[$s_node_id]->field_ms_section_bg_image[$lang][0]['filename'] : '';
         $section['type'] = (!empty($s_node[$s_node_id]->field_ms_section_type[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_type[$lang][0]['value'] : '';
+
+        // aspots
         $aspots = array();
         foreach($s_node[$s_node_id]->field_usa_hp_arefs[$lang] as $key2 => $array2) {
-          $aspot_node_id = $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'];
-          $aspot_node = (array)node_load($aspot_node_id);
-          // add aspot info to javascript
-          //_usanetwork_aspot_preprocess_node($aspot_node_id);
-          $aspots[$key2] = $aspot_node;
+//          if ($array2['state_flow']->current == 'published') {
+            $aspot_node_id = $s_node[$s_node_id]->field_usa_hp_arefs[$lang][$key2]['target_id'];
+            $aspots[] = (array)node_load($aspot_node_id);
+            // add aspot info to javascript
+            //_usanetwork_aspot_preprocess_node($aspot_node_id);
+//          }
         }
         $section['aspot'] = $aspots;
+
+        // bspot -- there should be only 1
         $section['bspot'] = (!empty($s_node[$s_node_id]->field_usa_hp_brefs[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_usa_hp_brefs[$lang][0]['target_id']) : '';
+
+        // cspot -- there should be only 1
         $section['cspot'] = (!empty($s_node[$s_node_id]->field_usa_hp_crefs[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_usa_hp_crefs[$lang][0]['target_id']) : '';
+
+        // media gallery
         $section['media_gallery'] = (!empty($s_node[$s_node_id]->field_media_gallery[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_media_gallery[$lang][0]['target_id']) : '';
+
+        // about description
         $section['description'] = (!empty($s_node[$s_node_id]->field_ms_section_text[$lang][0]['value'])) ? $s_node[$s_node_id]->field_ms_section_text[$lang][0]['value'] : '';
+
+        // people
         $section['person'] = (!empty($s_node[$s_node_id]->field_person[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_person[$lang][0]['target_id']) : '';
         $section['character'] = (!empty($s_node[$s_node_id]->field_episode_credit_character[$lang][0]['target_id'])) ? (array)node_load($s_node[$s_node_id]->field_episode_credit_character[$lang][0]['target_id']) : '';
+
+        // carousels
         $section['promo_carousel'] = (!empty($s_node[$s_node_id]->field_hp_promo_carousel[$lang][0]['target_id'])) ? $s_node[$s_node_id]->field_hp_promo_carousel[$lang][0]['target_id'] : '';
+
+        // promo
+        $section['featured_promo'] = (!empty($s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'])) ? $s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'] : '';
+
+
+        // catch all
+        $catchalls = array();
+        foreach($s_node[$s_node_id]->field_ms_catchall_page[$lang] as $key3 => $array3) {
+//          if ($array3['state_flow']->current == 'published') {
+            $catchall_node_id = $s_node[$s_node_id]->field_ms_catchall_page[$lang][$key3]['target_id'];
+            $catchalls[] = (array)node_load($catchall_node_id);
+//          }
+        }
+        $section['catchalls'] = $catchalls;
         $section['featured_promo'] = (!empty($s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'])) ? $s_node[$s_node_id]->field_hp_promos[$lang][0]['target_id'] : '';
       }
       $params['section'][$key] = $section;
     }
-//dpm($params);
     // set paths
     $params['theme_path'] = drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/' . $params['theme'];
+//dpm($params);
     usanetwork_dig_show_page($params);
   }
 
@@ -138,15 +168,24 @@ function usanetwork_dig_show_page($nid) {
   //if (!path_is_admin(current_path())) {
     $params = _usanetwork_microsite_get_info($nid);
 
-    // add css
-    drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/ms_style.css');
-    drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/trivia.css');
+    if (count($params) > 0) {
+      // add css
+      drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/ms_style.css');
+      drupal_add_css(drupal_get_path('theme', 'aurora_usa') . '/usanetwork_microsite_themes/dig/css/trivia.css');
 
-    // add js
-    drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
-    //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-flexslider.js');
+      // add js
+      drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
+      drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
+      drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
+      //drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-flexslider.js');
 
-    return theme('usanetwork_dig_show_page', $params);
+      return theme('usanetwork_dig_show_page', $params);
+    }
+    else {
+      // do nothing here
+      // for some reason this function is being called more than once!!
+      //echo('params not set yet');
+    }
   //}
 }
 

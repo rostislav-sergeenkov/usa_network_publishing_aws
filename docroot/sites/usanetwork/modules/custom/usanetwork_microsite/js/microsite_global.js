@@ -1,4 +1,6 @@
-// Lazy load next section on scroll
+// Global microsite functions
+var activeSection,
+    activeItem;
 (function($) {
   // config
   var sectionList = ['home', 'about', 'characters', 'galleries', 'games'],
@@ -101,7 +103,7 @@
 
   function loadSection(elem) {
     //usa_debug('loadSection(' + elem + ')');
-    ajaxCall('http://apps_usa/dig/' + elem + '.php', elem);
+    ajaxCall('http://' + window.location.hostname + '/dig/' + elem + '.php', elem);
   }
 
   // monitor scroll position
@@ -120,7 +122,7 @@
         if ($('section #' + elem).hasClass('clearfix') && $('section #' + elem).length < 10) {
           var elemTop = $('#scroll-to-' + elem).offset().top;
           if ((elemTop <= docViewBottom) && (elemTop >= docViewTop)) {
-            loadSection(elem);
+            //loadSection(elem);
           }
         }
       }
@@ -166,13 +168,15 @@
       }
 
       // show / hide Dig logo above left nav
-usa_debug('yOffset: ' + yOffset);
+//usa_debug('yOffset: ' + yOffset);
+/*
       if (yOffset > 500) {
         showDigLogo();
       }
       else {
         hideDigLogo();
       }
+*/
       $('.dig #characters li').css('height', (wHeight - bottomOffset) + 'px');
 
       initialPageLoad = 0;
@@ -183,16 +187,74 @@ usa_debug('yOffset: ' + yOffset);
     }
   }
 
+  // updateWindowContents
+  function updateWindowContents(elem, direction) {
+    // after scrolling to selected section,
+    // reset activeSection,
+    // remove #visible and rename the selected section #visible,
+    // then re-add the appropriate hidden section div
+    // and re-initialize the scroll button
+    activeSection = elem;
+    $('#visible').remove();
+    $('#hidden-' + direction).removeClass('hidden-section').attr('id', 'visible');
+    if (direction == 'next') {
+      $('#activeContent').append('<div id="hidden-next" class="hidden-section"></div>');
+    }
+    else {
+      $('#activeContent').prepend('<div id="hidden-prev" class="hidden-section"></div>');
+    }
+    $('#microsite .hidden-section').html('').hide();
+
+    // re-initialize scroll button clicks
+    $('.scroll').on('click', function(){
+      var elem = $(this).attr('id').replace('scroll-to-', '');
+      if (sectionList.indexOf(elem) >= 0) {
+        scrollTo(elem);
+      }
+    });
+  }
+
   // actively scroll to an item on click
   function scrollTo(elem) {
-    //usa_debug('scrollTo(' + elem + ')');
-		if (window.navigator.userAgent.indexOf('Firefox') != -1) {
-			window.location.href = '#' + elem;
-		} else {
-			jQuery('html body').animate({
-        scrollTop: $('#' + elem).offset().top - topOffset
-      }, 1000);
-			window.location.hash = elem;
+    usa_debug('scrollTo(' + elem + ')');
+    var currentLocation = sectionList.indexOf(activeSection),
+        nextLocation = sectionList.indexOf(elem);
+    if (currentLocation != nextLocation) {
+      var direction = (currentLocation < nextLocation) ? 'next' : 'prev',
+          newHtml = $('#section-' + elem).html();
+  usa_debug('currentLocation: ' + currentLocation + '\nnextLocation: ' + nextLocation + '\ndirection: ' + direction);
+      $('#hidden-' + direction).html(newHtml).show();
+
+      // if Firefox
+      if (window.navigator.userAgent.indexOf('Firefox') != -1) {
+        window.location.href = '#/' + elem;
+        if (elem == 'home') {
+          hideDigLogo();
+        }
+        else {
+          showDigLogo();
+        }
+        updateWindowContents(elem, direction);
+      }
+      // else not Firefox
+      else {
+        if (elem == 'home') {
+          hideDigLogo();
+        }
+        else {
+          showDigLogo();
+        }
+        jQuery('html body').animate({
+          scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top // - topOffset
+        }, 2000, 'easeInOutCubic', function(){
+  //        window.location.href = '/dig/#/' + elem;
+          window.location.hash = '/' + elem;
+          updateWindowContents(elem, direction);
+        });
+      }
+
+      $('#left-nav-links > ul > li').removeClass('active');
+      $('#nav-' + elem).addClass('active');
 		}
   }
 
@@ -212,12 +274,50 @@ usa_debug('yOffset: ' + yOffset);
   }
 */
 
+  function parseHash() {
+    var hash = window.location.hash;
+    if (hash != '') {
+      var parse = hash.split('/');
+      activeSection = parse[1];
+      activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+    }
+    else {
+      activeSection = 'home';
+      activeItem = '';
+    }
+  }
+
+  function showInitialContent() {
+    var visible = '';
+    if (activeSection != '' && activeItem != '') {
+      visible = $('#section-' + activeSection + '-' + activeItem).html();
+    }
+    else if (activeSection != '') {
+      visible = $('#section-' + activeSection).html();
+    }
+    if (visible != '') {
+      $('#microsite #visible').html(visible);
+      $('#left-nav-links > ul > li').remove('active');
+      $('#nav-' + activeSection).addClass('active');
+    }
+    if (activeSection == 'home') {
+      hideDigLogo();
+    }
+    else {
+      showDigLogo();
+    }
+  }
+
   // on page load
   window.onscroll = isScrolledIntoView;
 
   $(document).ready(function(){
     wHeight = $(window).height();
     $('section').css('height', (wHeight - bottomOffset) + 'px');
+
+    parseHash();
+usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
+    showInitialContent();
 
     setTimeout(isScrolledIntoView, 3000);
 
@@ -241,5 +341,6 @@ usa_debug('yOffset: ' + yOffset);
         scrollTo(elem);
       }
     });
+
   });
 })(jQuery);

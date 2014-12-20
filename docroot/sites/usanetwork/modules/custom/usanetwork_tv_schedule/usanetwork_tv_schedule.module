@@ -1058,6 +1058,7 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
 
   if ($start_date == 0) {
     $start_date = strtotime('-3 days', REQUEST_TIME);
+    $current_day = strtotime('midnight', REQUEST_TIME);
   }
 
   $date_array = array();
@@ -1075,8 +1076,19 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
       $date_url .= '/?' . http_build_query($date_query);
     }
 
+    $active = FALSE;
+    if (isset($query_params['sdate'])) {
+      if ($query_params['sdate'] == $new_day) {
+        $active = TRUE;
+      }
+    } else {
+      if ($current_day == $new_day) {
+        $active = TRUE;
+      }
+    }
+    
     $date_array[$day_number] = array(
-      'active' => FALSE,
+      'active' => $active,
       'week_day' => date('D', $new_day),
       'date' => date('m/d', $new_day),
       'sdate_value' => $new_day,

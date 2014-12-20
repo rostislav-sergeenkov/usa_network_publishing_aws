@@ -12345,6 +12345,7 @@ body.person-page #main {
 }
 .carousel.start .jcarousel-controls:after {
   opacity: 0;
+  visibility: hidden;
 }
 .carousel .jcarousel-controls {
   display: block;
@@ -12751,6 +12752,7 @@ body.person-page #main {
 }
 .carousel-left.start:hover .jcarousel-control-next:after {
   opacity: 1;
+  visibility: visible;
 }
 
 .carousel-right {
@@ -12844,6 +12846,7 @@ body.person-page #main {
 }
 .carousel-right.start:hover .jcarousel-control-next:after {
   opacity: 1;
+  visibility: visible;
 }
 
 .carousel-block-right {

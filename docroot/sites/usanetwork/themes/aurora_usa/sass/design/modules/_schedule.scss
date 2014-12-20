@@ -179,11 +179,13 @@
           &:first-child {
             border-left: 1px solid $poll-back;
           }
-          a {
-            &:hover, &:active {
-              background-color: $bottom-footer-back;
+          &:hover, &.active {
+            background-color: $bottom-footer-back;
+            a {
               color: #ffffff;
             }
+          }
+          a {
             color: $header-tab-back;
             display: block;
             height: 100%;

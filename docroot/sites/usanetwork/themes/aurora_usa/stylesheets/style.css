@@ -20367,6 +20367,12 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
   border-left: 1px solid #e9eaeb;
 }
+.page-schedule .schedule-wrapper .schedule-navigation ul li:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li.active {
+  background-color: #757575;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li:hover a, .page-schedule .schedule-wrapper .schedule-navigation ul li.active a {
+  color: #ffffff;
+}
 .page-schedule .schedule-wrapper .schedule-navigation ul li a {
   color: #e1e1e1;
   display: block;
@@ -20374,10 +20380,6 @@ yx-axis
   padding-top: 13px;
   text-decoration: none;
   text-align: center;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li a:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li a:active {
-  background-color: #757575;
-  color: #ffffff;
 }
 @media (max-width: 640px) {
   .page-schedule .schedule-wrapper .schedule-navigation ul li a {

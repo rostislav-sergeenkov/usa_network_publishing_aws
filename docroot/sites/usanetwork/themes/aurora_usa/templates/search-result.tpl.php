@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation for displaying a single search result.
@@ -64,9 +63,21 @@
  * @ingroup themeable
  */
 ?>
-<?php
-  $entity_info = $result['node'];
-  $entity = entity_load($entity_info->entity_type, array($entity_info->entity_id));
-  $view = entity_view($entity_info->entity_type, $entity, 'search_result');
-  print render($view);
-?>
+<?php if(isset($entity_data)): ?>
+<div class="node node-usanetwork-promo">
+  <a href="<?php print $entity_data['url']; ?>">
+    <div class="asset-img">
+      <?php print $entity_data['image']; ?>
+    </div>
+    <div class="meta-wrap">
+      <div class="meta">
+        <div class="title"><?php print $entity_data['title']; ?></div>
+        <div class="additional"><span><?php print $entity_data['additional_text']; ?></span> <?php print $entity_data['additional_duration']; ?></div>
+      </div>
+      <div class="meta-icon <?php print $entity_data['icon_class']; ?> resize-avail-480"></div>
+    </div>
+  </a>
+</div>
+<?php endif; ?>
+
+

@@ -399,6 +399,7 @@ function usanetwork_dynamic_entity_reference_field_settings_form($field, $instan
     '#options' => $entity_type_options,
     '#default_value' => $field['settings']['entity_type_ids'],
     '#disabled' => $has_data,
+    '#size' => 10,
     '#multiple' => TRUE,
   );
 
@@ -406,6 +407,7 @@ function usanetwork_dynamic_entity_reference_field_settings_form($field, $instan
     '#type' => 'select',
     '#title' => t('Select bundles'),
     '#disabled' => $has_data,
+    '#size' => 15,
     '#options' => _usanetwork_dynamic_entity_reference_get_full_bundles_list($available_entity_bundles),
     '#multiple' => TRUE,
     '#prefix' => '<div id="entity-bundles-replace">',

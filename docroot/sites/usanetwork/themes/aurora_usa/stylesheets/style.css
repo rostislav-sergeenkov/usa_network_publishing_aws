@@ -767,7 +767,7 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   color: #000000;
   display: block;
   font-family: "ico-font";
-  font-size: 18px;
+  font-size: 21px;
   line-height: 37px;
   height: 37px;
   position: absolute;
@@ -19729,6 +19729,7 @@ yx-axis
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
   left: 20px;
+  letter-spacing: 1px;
   line-height: 12px;
   margin-top: -6px;
   margin-bottom: 0;
@@ -20366,12 +20367,6 @@ yx-axis
 .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
   border-left: 1px solid #e9eaeb;
 }
-.page-schedule .schedule-wrapper .schedule-navigation ul li:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li.active {
-  background-color: #757575;
-}
-.page-schedule .schedule-wrapper .schedule-navigation ul li:hover a, .page-schedule .schedule-wrapper .schedule-navigation ul li.active a {
-  color: #ffffff;
-}
 .page-schedule .schedule-wrapper .schedule-navigation ul li a {
   color: #e1e1e1;
   display: block;
@@ -20379,6 +20374,10 @@ yx-axis
   padding-top: 13px;
   text-decoration: none;
   text-align: center;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li a:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li a:active {
+  background-color: #757575;
+  color: #ffffff;
 }
 @media (max-width: 640px) {
   .page-schedule .schedule-wrapper .schedule-navigation ul li a {

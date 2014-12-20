@@ -5,6 +5,7 @@
       width: 0px;
       &:after {
         opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -381,6 +382,7 @@
         }
         &:after {
           opacity: 1;
+          visibility: visible;
         }
       }
     }
@@ -466,6 +468,7 @@
         }
         &:after {
           opacity: 1;
+          visibility: visible;
         }
       }
     }

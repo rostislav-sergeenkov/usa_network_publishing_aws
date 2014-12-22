@@ -65,6 +65,12 @@
         content: "\e608";
       }
     }
+    &.inactive {
+      width: 0px;
+      &:after {
+        opacity: 0;
+      }
+    }
   }
   .stop {
     ~ .jcarousel-controls {
@@ -361,13 +367,22 @@
     @include breakpoint($bp-min-1601-width) {
       margin-left: 340px;
     }
-  }
-  .jcarousel-controls {
-    &.jcarousel-control-prev {
-      &.inactive {
-        width: 0px;
+    &:hover {
+      .jcarousel-control-next {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          right: 160px;
+          width: 40px;
+        }
+        @include breakpoint($bp-min-1025-width) {
+          right: 120px;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 280px;
+        }
         &:after {
-          opacity: 0;
+          opacity: 1;
+          visibility: visible;
         }
       }
     }
@@ -401,6 +416,30 @@
       }
     }
   }
+  .jcarousel-controls {
+    &.jcarousel-control-next {
+      left: -60px;
+      right: auto;
+      @include breakpoint($bp-1024-width) {
+        left: -40px;
+      }
+      &:after {
+        content: "\e607";
+
+      }
+    }
+    &.jcarousel-control-prev {
+      left: auto;
+      right: -60px;
+      @include breakpoint($bp-1024-width) {
+        right: -40px;
+      }
+      &:after {
+        content: "\e608";
+      }
+    }
+  }
+
   &.start {
     @include breakpoint($bp-1024-width) {
       margin-left: -200px;
@@ -414,13 +453,22 @@
     @include breakpoint($bp-min-1601-width) {
       margin-left: -340px;
     }
-  }
-  .jcarousel-controls {
-    &.jcarousel-control-next {
-      &.inactive {
-        width: 0px;
+    &:hover {
+      .jcarousel-control-next {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          left: 160px;
+          width: 40px;
+        }
+        @include breakpoint($bp-min-1025-width) {
+          left: 120px;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          left: 280px;
+        }
         &:after {
-          opacity: 0;
+          opacity: 1;
+          visibility: visible;
         }
       }
     }
@@ -467,9 +515,10 @@
   }
   .description-button {
     color: transparent;
+    cursor: default;
     display: block;
     left: -40px;
-    margin-top: -16px;
+    margin-top: -12px;
     position: absolute;
     text-decoration: none;
     top: 50%;

@@ -19,13 +19,15 @@
             first = carousel, second = carousel;
 
         if ((carousel_id) && (!$(carousel).hasClass('destroy'))) {
-          if ((direction === 'left') || (direction === 'vert')) {
+          /*if ((direction === 'left') || (direction === 'vert')) {
             first += prev_control;
             second += next_control;
           } else {
             first += next_control;
             second += prev_control;
-          }
+          }*/
+          first += prev_control;
+          second += next_control;
 
           $(first + ', ' + second)
               .on('jcarouselcontrol:active', function () {
@@ -36,17 +38,17 @@
               })
 
           $(first).jcarouselControl({
-            target: '+=' + swipeItems($carousel)
+            target: '-=' + swipeItems($carousel)
           });
 
           $(second)
               .on('click', function () {
-                if ($(this).hasClass('inactive')) {
+                if ($(this).hasClass('inactive') && $(this).hasClass('jcarousel-control-prev')) {
                   swipeShowDescription($container.prev());
                 }
               })
               .jcarouselControl({
-                target: '-=' + swipeItems($carousel)
+                target: '+=' + swipeItems($carousel)
               });
         }
       }
@@ -92,7 +94,6 @@
                   $container.swipe({
                     excludedElements: "button, input, select, textarea, .noSwipe",
                     swipeUp: function () {
-                      console.log('up');
                       if (!$carousel.hasClass('stop')) {
                         if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
                           $('.carousel-vert li').removeClass('active');
@@ -101,7 +102,6 @@
                       }
                     },
                     swipeDown: function () {
-                      console.log('down');
                       if (!$carousel.hasClass('stop')) {
                         if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
                           $('.carousel-vert li').removeClass('active');
@@ -170,6 +170,9 @@
                       }
                     },
                     tap: function (event, target) {
+                      if ((event instanceof MouseEvent) && event.button != 0){
+                        return false;
+                      }
                       if (!$carousel.hasClass('stop')) {
                         if (target.href) {
                           if (!$(target).hasClass('show-open')) {
@@ -274,12 +277,14 @@
                     }
                   },
                   tap: function (event, target) {
+                    if ((event instanceof MouseEvent) && event.button != 0){
+                      return false;
+                    }
                     if (target.href) {
                       window.location = target.href;
                     } else {
                       window.location = $(target).closest('a').attr('href');
                     }
-
                   }
                 });
               })
@@ -329,8 +334,8 @@
       $(window).load(function () {
         carouselInit();
 
-        $(".description-button").click(function (e) {
-          var carousel = $(this).parent().parent().find('.carousel'),
+        $(".carousel.start .jcarousel-control-next").click(function (e) {
+          var carousel = $(this).closest('.carousel'),
               count = null;
 
           if (carousel.length > 1) {
@@ -338,7 +343,7 @@
           }
 
           e.preventDefault();
-          swipeHideDescription($(this).parent());
+          swipeHideDescription($(this).parent().parent().find('.carousel-description-item'));
 
           count = (swipeItems($(carousel).find('ul')) <= 1)? 1: swipeItems($(carousel).find('ul')) - 1;
           carousel.jcarousel('scroll', '+=' + count);

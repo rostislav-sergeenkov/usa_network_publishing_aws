@@ -29,7 +29,7 @@ function usanetwork_tv_shows_block_info() {
     'info' => t('TV Show: latest block'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
-  
+
   // Catch up & Explore
   $blocks['usanetwork_tv_shows_coex'] = array(
     'info' => t('TV Shows: Catch up, Explore'),
@@ -50,7 +50,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_submenu();
       break;
-    
+
     case 'usanetwork_tv_shows_aspot':
       $block['subject'] = '';
       $block['content'] = array(
@@ -65,7 +65,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
       );
       break;
 
-   case 'usanetwork_tv_shows_latest':
+    case 'usanetwork_tv_shows_latest':
       $show = menu_get_object();
       if (!is_object($show) || (!isset($show->type) && $show->type != 'tv_show')) {
         return '';
@@ -163,7 +163,6 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     ),
   );
 }
-
 
 /**
  * Implements hook_image_default_styles().
@@ -550,7 +549,7 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
     $query->addField('season_num', 'field_mpx_season_number_value', 'season_number');
     $query->condition('season_num.field_mpx_season_number_value', $season_num);
   }
-  
+
   if ($episode_num) {
     $query->leftJoin('field_data_field_mpx_episode_number', 'episode_num', 'f.fid=episode_num.entity_id');
     $query->addField('episode_num', 'field_mpx_episode_number_value', 'episode_number');
@@ -801,6 +800,7 @@ function _usanetwork_tv_shows_aspot_block() {
     : t('Latest full episodes');
 
   if (!empty($show_node)) {
+    $theme_variables['show'] = usanetwork_aspot_render($show_node);
     $featured_items_field = field_get_items('node', $show_node, 'field_usa_tv_promo');
 
     if (!empty($featured_items_field)) {
@@ -1077,7 +1077,7 @@ function _usanetwork_tv_shows_submenu() {
     'social_icons' => $social_links,
     'show_menu_video_url' => isset($promo_link_url)
       ? $promo_link_url
-      : NULL,
+          : NULL,
     'show_menu_video_img' => isset($preview_image)
       ? $preview_image
       : NULL,
@@ -1092,7 +1092,7 @@ function _usanetwork_tv_shows_submenu() {
 }
 
 function _usanetwork_tv_shows_discription_item($show, $field_list, &$description_vars) {
-  
+
   foreach ($field_list as $target => $field_name) {
     $field_value = field_get_items('node', $show, $field_name);
     if ($field_value) {
@@ -1115,25 +1115,46 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
   }
 }
 
+/**
+ * Get latest content from field_latest_carousel field of tv_show content type
+ */
+function _usanetwork_tv_shows_get_latest_content($show) {
+  $show_latests_entities = field_get_items('node', $show, 'field_latest_carousel');
+
+  $items = FALSE;
+  if ($show_latests_entities) {
+    foreach ($show_latests_entities as $value) {
+      $items[] = (object) array(
+            'entity_id' => $value['target_id'],
+            'entity_type' => $value['target_type'],
+      );
+    }
+  }
+  return $items;
+}
+
 function _usanetwork_tv_shows_latest($show) {
-  $related_to_show = _usanetwork_tv_shows_get_related_content($show->nid, 20);
+  $show_latest = _usanetwork_tv_shows_get_latest_content($show);
+  
+  if ($show_latest === FALSE) {
+    return '';
+  }
 
   $description_vars = array(
     'caption' => t('All new!'),
     'title' => t('Latest'),
     'additional_text' => t('Photos, polls & more'),
   );
-  
+
   _usanetwork_tv_shows_discription_item($show, array('title' => 'field_hp_promos_block_title', 'caption' => 'field_caption_text', 'additional_text' => 'field_additional_text'), $description_vars);
 
   $output[] = theme('usanetwork_home_carousel_description_item', $description_vars);
 
-
-  foreach ($related_to_show as $entity_data) {
+  foreach ($show_latest as $entity_data) {
     $entity = entity_load_single($entity_data->entity_type, $entity_data->entity_id);
 
     if ($entity_data->entity_type == 'node') {
-      $type = $entity_data->bundle;
+      $type = $entity->type;
     }
     else if ($entity_data->entity_type == 'file') {
       $type = $entity->filemime;
@@ -1164,9 +1185,7 @@ function _usanetwork_tv_shows_latest($show) {
       'show_class' => NULL,
       'url' => $related_content_data['url'],
       'show_title' => $show->title,
-      'additional' => isset($additional)
-          ? $additional
-          : NULL,
+      'additional' => isset($additional) ? $additional : NULL,
       'duration' => $related_content_data['time'],
       'icon_type' => $related_content_data['icon_type'],
       'image' => $image,

@@ -100,6 +100,12 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
   drupal_add_js($theme_path . '/javascripts/tableheader.js');
+  drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
+  drupal_add_js(variable_get('usanetwork_seeit_script_url', USANETWORK_SEEIT_DEFAULT_URL), array(
+    'type' => 'external',
+    'scope' => 'footer',
+  ));
+
   $icomoon_ie_fix = array(
     '#tag' => 'script',
     '#attributes' => array(

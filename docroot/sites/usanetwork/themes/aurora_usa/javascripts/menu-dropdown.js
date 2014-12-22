@@ -10,7 +10,7 @@
       function getShowTitleOffset(){
         if ($('body').hasClass('usa-tv-show')) {
           if ($('.tab-item').hasClass('active')) {
-            show_title_offset = $('.show-title-block-wrapper').offset().top;
+            show_title_offset = $('.show-title-block-wrapper').offset.top;
           }
         }
       }
@@ -196,6 +196,10 @@
         $(this).addClass('active');
       };
 
+      var seeitClose = function () {
+        $('.seeit-iframe-wrapper').remove();
+      };
+
 
       showTitleMove();
       showMenuMove();
@@ -210,6 +214,11 @@
           $(".show-menu > li > a").bind('hover', showMenuHoverItem);
           $('.show-menu > li.expanded:eq(0)').addClass('active').children().addClass('active');
         }
+        $('.calendar-reminder').click(function() {
+          if(getInternetExplorerVersion()!==-1){
+            $('.seeit-icon-close').bind('click', seeitClose);
+          }
+        });
       });
 
       $(window).bind('resize', function () {

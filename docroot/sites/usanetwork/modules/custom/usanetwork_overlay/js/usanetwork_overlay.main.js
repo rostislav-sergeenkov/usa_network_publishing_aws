@@ -115,9 +115,15 @@
     /**
      * Listening window for changing hashtag.
      */
-    window.addEventListener("hashchange", function(actionName) {
-      detectOverlayPage();
-    }, false);
+    if(window.addEventListener){
+      window.addEventListener("hashchange", function(actionName) {
+        detectOverlayPage();
+      }, false);
+    }else{
+      window.attachEvent("onhashchange", function(actionName) {
+        detectOverlayPage();
+      });
+    }
 
     detectOverlayPage();
   }

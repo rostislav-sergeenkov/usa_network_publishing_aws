@@ -3,7 +3,7 @@
  *
  */
 ?>
-<a name="<?php print $link_name; ?>"></a>
+<!--<a name="--><?php //print $link_name; ?><!--"></a>-->
 <li<?php if (!empty($link_class)): print ' class="' . $link_class . '"'; endif; ?>>
   <div class="schedule-item show-color-border<?php if (!empty($show_class)): print ' '. $show_class; endif; ?>">
     <div class="visible-block">
@@ -30,7 +30,7 @@
         <?php if (!empty($rating)): ?>
           <div class="rating"><?php print $rating; ?></div>
         <?php endif; ?>
-        <a class="open-description icon" href="javascript:void(0)"></a>
+        <a class="open-description link-color-reset icon" href="javascript:void(0)"></a>
       </div>
     </div>
     <div class="hidden-block">

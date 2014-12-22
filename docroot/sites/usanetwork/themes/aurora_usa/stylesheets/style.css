@@ -510,7 +510,7 @@ you can use the generic selector below, but it's slower:
 #logo, .usa-secondary-menu .shows > li.first > span:after, .usa-secondary-menu .shows > li.first > span:hover:after, .block-usanetwork-personalization .close, .search-active #block-search-form .form-reset:after, #block-search-form .form-type-searchfield label, .flex-direction-nav a, #on-now, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after,
 #block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after, .block-usanetwork-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after,
 .block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:after,
-.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .icons-social a, .social-follow-block .icons-social a, a[class*="day"], .snipe-msg .close, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
+.block-usanetwork-mpx-video.usa-secondary-menu .filter-dropdown_v2 .menu-label:hover:after, .icons-social a, .social-follow-block .icons-social a, .snipe-msg .close, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -687,7 +687,7 @@ body, .mega-sub-nav-link, .usa-secondary-menu .shows > li.first > span, #block-s
   font-size: 30px;
 }
 
-.mega-sub-nav .more-title, #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title, .schedule-header, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
+.mega-sub-nav .more-title, #block-views-usa-mpx-video-latest-live-video .view-mode-full .description h3.title {
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
 
@@ -767,7 +767,7 @@ h1, h2, .mega-sub-nav .more-title, h3, h4, h5, h6, strong, dfn, b, #block-usanet
   color: #000000;
   display: block;
   font-family: "ico-font";
-  font-size: 18px;
+  font-size: 21px;
   line-height: 37px;
   height: 37px;
   position: absolute;
@@ -1154,6 +1154,28 @@ ul.menu li {
   z-index: 100;
 }
 
+.page-title {
+  padding: 20px;
+  position: relative;
+}
+.page-title h2 {
+  color: #545454;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 70px;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .page-title h2 {
+    font-size: 37px;
+    line-height: 70px;
+  }
+}
+@media (max-width: 480px) {
+  .page-title h2 {
+    font-size: 20px;
+  }
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;
@@ -1428,7 +1450,9 @@ input[type="radio"], input[type="checkbox"] {
   color: #ffffff;
   display: block;
   float: left;
+  font-weight: normal;
   height: auto;
+  margin: 0;
   margin-right: 27px;
   position: relative;
   text-decoration: none;
@@ -1441,9 +1465,13 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   font-family: "ico-font";
   font-size: 16px;
+  width: auto;
 }
 .icons-block a.episode-description:before {
   content: '\e601';
+}
+.icons-block a.calendar-reminder span {
+  display: none;
 }
 .icons-block a.calendar-reminder:before {
   content: '\e600';
@@ -7838,17 +7866,6 @@ footer h2 {
   padding-left: 56px;
 }
 
-.schedule-day-small .schedule-items .schedule-item {
-  background-color: rgba(0, 0, 0, 0.85);
-  background: -moz-linear-gradient(top, #2a2a2a 0%, black 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2a2a2a), color-stop(100%, black));
-  background: -webkit-linear-gradient(top, #2a2a2a 0%, black 100%);
-  background: -o-linear-gradient(top, #2a2a2a 0%, black 100%);
-  background: -ms-linear-gradient(top, #2a2a2a 0%, black 100%);
-  background: linear-gradient(to bottom, #2a2a2a 0%, #000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2A2A2A', endColorstr='#000000',GradientType=0 );
-}
-
 @media (min-width: 769px) {
   .view-id-usa_episodes.view-display-id-panel_pane_1 {
     font-size: 16px;
@@ -8808,17 +8825,26 @@ body.front {
   .featured-block .carousel.start {
     margin-left: 0;
   }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    right: -40px;
+  }
 }
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .featured-block .carousel.start {
     margin-left: -370px;
     overflow: hidden;
+  }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    left: 330px;
   }
 }
 @media (min-width: 1025px) {
   .featured-block .carousel.start {
     margin-left: -355px;
     overflow: hidden;
+  }
+  .featured-block .carousel.start:hover .jcarousel-control-next {
+    left: 295px;
   }
 }
 .featured-block .carousel ul {
@@ -10381,8 +10407,13 @@ body.front {
 .shows-block .carousel.start {
   margin-left: 365px;
 }
-.shows-block .carousel.start .jcarousel-controls {
-  display: none;
+.shows-block .carousel.start:hover .jcarousel-control-next {
+  right: 305px;
+}
+@media (max-width: 1024px) {
+  .shows-block .carousel.start:hover .jcarousel-control-next {
+    right: 325px;
+  }
 }
 .shows-block .carousel ul {
   position: relative;
@@ -12380,6 +12411,12 @@ body.person-page #main {
 .carousel .jcarousel-controls.jcarousel-control-next:after {
   content: "\e608";
 }
+.carousel .jcarousel-controls.inactive {
+  width: 0px;
+}
+.carousel .jcarousel-controls.inactive:after {
+  opacity: 0;
+}
 .carousel .stop ~ .jcarousel-controls {
   width: 0px;
 }
@@ -12694,11 +12731,28 @@ body.person-page #main {
     margin-left: 340px;
   }
 }
-.carousel-left .jcarousel-controls.jcarousel-control-prev.inactive {
-  width: 0px;
+.carousel-left.start:hover .jcarousel-control-next {
+  width: 60px;
 }
-.carousel-left .jcarousel-controls.jcarousel-control-prev.inactive:after {
-  opacity: 0;
+@media (max-width: 1024px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 160px;
+    width: 40px;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 120px;
+  }
+}
+@media (min-width: 1601px) {
+  .carousel-left.start:hover .jcarousel-control-next {
+    right: 280px;
+  }
+}
+.carousel-left.start:hover .jcarousel-control-next:after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .carousel-right {
@@ -12727,6 +12781,30 @@ body.person-page #main {
   position: absolute;
   top: 0;
 }
+.carousel-right .jcarousel-controls.jcarousel-control-next {
+  left: -60px;
+  right: auto;
+}
+@media (max-width: 1024px) {
+  .carousel-right .jcarousel-controls.jcarousel-control-next {
+    left: -40px;
+  }
+}
+.carousel-right .jcarousel-controls.jcarousel-control-next:after {
+  content: "\e607";
+}
+.carousel-right .jcarousel-controls.jcarousel-control-prev {
+  left: auto;
+  right: -60px;
+}
+@media (max-width: 1024px) {
+  .carousel-right .jcarousel-controls.jcarousel-control-prev {
+    right: -40px;
+  }
+}
+.carousel-right .jcarousel-controls.jcarousel-control-prev:after {
+  content: "\e608";
+}
 @media (max-width: 1024px) {
   .carousel-right.start {
     margin-left: -200px;
@@ -12747,11 +12825,28 @@ body.person-page #main {
     margin-left: -340px;
   }
 }
-.carousel-right .jcarousel-controls.jcarousel-control-next.inactive {
-  width: 0px;
+.carousel-right.start:hover .jcarousel-control-next {
+  width: 60px;
 }
-.carousel-right .jcarousel-controls.jcarousel-control-next.inactive:after {
-  opacity: 0;
+@media (max-width: 1024px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 160px;
+    width: 40px;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 120px;
+  }
+}
+@media (min-width: 1601px) {
+  .carousel-right.start:hover .jcarousel-control-next {
+    left: 280px;
+  }
+}
+.carousel-right.start:hover .jcarousel-control-next:after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .carousel-block-right {
@@ -12795,9 +12890,10 @@ body.person-page #main {
 }
 .carousel-description-item .description-button {
   color: transparent;
+  cursor: default;
   display: block;
   left: -40px;
-  margin-top: -16px;
+  margin-top: -12px;
   position: absolute;
   text-decoration: none;
   top: 50%;
@@ -17400,6 +17496,1660 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   color: #ffffff;
 }
 
+/*
+== malihu jquery custom scrollbar plugin ==
+Plugin URI: http://manos.malihu.gr/jquery-custom-content-scroller
+*/
+/*
+CONTENTS:
+	1. BASIC STYLE - Plugin's basic/essential CSS properties (normally, should not be edited).
+	2. VERTICAL SCROLLBAR - Positioning and dimensions of vertical scrollbar.
+	3. HORIZONTAL SCROLLBAR - Positioning and dimensions of horizontal scrollbar.
+	4. VERTICAL AND HORIZONTAL SCROLLBARS - Positioning and dimensions of 2-axis scrollbars.
+	5. TRANSITIONS - CSS3 transitions for hover events, auto-expanded and auto-hidden scrollbars.
+	6. SCROLLBAR COLORS, OPACITY AND BACKGROUNDS
+		6.1 THEMES - Scrollbar colors, opacity, dimensions, backgrounds etc. via ready-to-use themes.
+*/
+/*
+------------------------------------------------------------------------------------------------------------------------
+1. BASIC STYLE
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCustomScrollbar {
+  -ms-touch-action: none;
+  touch-action: none;
+  /* MSPointer events - direct all pointer events to js */
+}
+
+.mCustomScrollbar.mCS_no_scrollbar {
+  -ms-touch-action: auto;
+  touch-action: auto;
+}
+
+.mCustomScrollBox {
+  /* contains plugin's markup */
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  outline: none;
+  direction: ltr;
+}
+
+.mCSB_container {
+  /* contains the original content */
+  overflow: hidden;
+  width: auto;
+  height: auto;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+2. VERTICAL SCROLLBAR
+y-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_inside > .mCSB_container {
+  margin-right: 0;
+}
+
+.mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-right: 0;
+}
+
+/* non-visible scrollbar */
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container {
+  /* RTL direction/left-side scrollbar */
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-left: 0;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCSB_scrollTools {
+  /* contains scrollbar markup (draggable element, dragger rail, buttons etc.) */
+  position: absolute;
+  width: 16px;
+  height: auto;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.mCSB_outside + .mCSB_scrollTools {
+  right: -26px;
+}
+
+/* scrollbar position: outside */
+.mCS-dir-rtl > .mCSB_inside > .mCSB_scrollTools,
+.mCS-dir-rtl > .mCSB_outside + .mCSB_scrollTools {
+  /* RTL direction/left-side scrollbar */
+  right: auto;
+  left: 0;
+}
+
+.mCS-dir-rtl > .mCSB_outside + .mCSB_scrollTools {
+  left: -26px;
+}
+
+/* RTL direction/left-side scrollbar (scrollbar position: outside) */
+.mCSB_scrollTools .mCSB_draggerContainer {
+  /* contains the draggable element and dragger rail markup */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+}
+
+.mCSB_scrollTools a + .mCSB_draggerContainer {
+  margin: 20px 0;
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+  width: 2px;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+.mCSB_scrollTools .mCSB_dragger {
+  /* the draggable element */
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  /* minimum dragger height */
+  z-index: 1;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  /* the dragger element */
+  position: relative;
+  width: 4px;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  width: 12px;
+  /* auto-expanded scrollbar */
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 8px;
+  /* auto-expanded scrollbar */
+}
+
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown {
+  display: block;
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.mCSB_scrollTools .mCSB_buttonDown {
+  bottom: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+3. HORIZONTAL SCROLLBAR
+x-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+  margin-right: 0;
+  margin-bottom: 30px;
+}
+
+.mCSB_horizontal.mCSB_outside > .mCSB_container {
+  min-height: 100%;
+}
+
+.mCSB_horizontal > .mCSB_container.mCS_no_scrollbar_x.mCS_x_hidden {
+  margin-bottom: 0;
+}
+
+/* non-visible scrollbar */
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  width: auto;
+  height: 16px;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.mCustomScrollBox + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  bottom: -26px;
+}
+
+/* scrollbar position: outside */
+.mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {
+  margin: 0 20px;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 2px;
+  margin: 7px 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 30px;
+  /* minimum dragger width */
+  height: 100%;
+  left: 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 4px;
+  margin: 6px auto;
+}
+
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  height: 12px;
+  /* auto-expanded scrollbar */
+  margin: 2px auto;
+}
+
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 8px;
+  /* auto-expanded scrollbar */
+  margin: 4px 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft,
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
+  left: 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
+  right: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+4. VERTICAL AND HORIZONTAL SCROLLBARS
+yx-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_container_wrapper {
+  position: absolute;
+  height: auto;
+  width: auto;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.mCSB_container_wrapper > .mCSB_container {
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.mCSB_vertical_horizontal > .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  bottom: 20px;
+}
+
+.mCSB_vertical_horizontal > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  right: 20px;
+}
+
+/* non-visible horizontal scrollbar */
+.mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden + .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  bottom: 0;
+}
+
+/* non-visible vertical scrollbar/RTL direction/left-side scrollbar */
+.mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden + .mCSB_scrollTools ~ .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  right: 0;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  left: 20px;
+}
+
+/* non-visible scrollbar/RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden + .mCSB_scrollTools ~ .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  left: 0;
+}
+
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container_wrapper {
+  /* RTL direction/left-side scrollbar */
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden > .mCSB_container {
+  padding-right: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden > .mCSB_container {
+  padding-bottom: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-right: 0;
+  /* non-visible scrollbar */
+  margin-left: 0;
+}
+
+/* non-visible horizontal scrollbar */
+.mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden {
+  margin-bottom: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+5. TRANSITIONS
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_scrollTools,
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight {
+  -webkit-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger_bar,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger_bar,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail {
+  -webkit-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -moz-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -o-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+6. SCROLLBAR COLORS, OPACITY AND BACKGROUNDS
+------------------------------------------------------------------------------------------------------------------------
+*/
+/*
+----------------------------------------
+6.1 THEMES
+----------------------------------------
+*/
+/* default theme ("light") */
+.mCSB_scrollTools {
+  opacity: 0.75;
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCS-autoHide > .mCustomScrollBox > .mCSB_scrollTools,
+.mCS-autoHide > .mCustomScrollBox ~ .mCSB_scrollTools {
+  opacity: 0;
+  filter: "alpha(opacity=0)";
+  -ms-filter: "alpha(opacity=0)";
+}
+
+.mCustomScrollbar > .mCustomScrollBox > .mCSB_scrollTools.mCSB_scrollTools_onDrag,
+.mCustomScrollbar > .mCustomScrollBox ~ .mCSB_scrollTools.mCSB_scrollTools_onDrag,
+.mCustomScrollBox:hover > .mCSB_scrollTools,
+.mCustomScrollBox:hover ~ .mCSB_scrollTools,
+.mCS-autoHide:hover > .mCustomScrollBox > .mCSB_scrollTools,
+.mCS-autoHide:hover > .mCustomScrollBox ~ .mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=100)";
+  -ms-filter: "alpha(opacity=100)";
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.4);
+  filter: "alpha(opacity=40)";
+  -ms-filter: "alpha(opacity=40)";
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+  filter: "alpha(opacity=85)";
+  -ms-filter: "alpha(opacity=85)";
+}
+
+.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  filter: "alpha(opacity=90)";
+  -ms-filter: "alpha(opacity=90)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight {
+  background-image: url(mCSB_buttons.png);
+  /* css sprites */
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  filter: "alpha(opacity=40)";
+  -ms-filter: "alpha(opacity=40)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: 0 0;
+  /*
+  sprites locations
+  light: 0 0, -16px 0, -32px 0, -48px 0, 0 -72px, -16px -72px, -32px -72px
+  dark: -80px 0, -96px 0, -112px 0, -128px 0, -80px -72px, -96px -72px, -112px -72px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: 0 -20px;
+  /*
+  sprites locations
+  light: 0 -20px, -16px -20px, -32px -20px, -48px -20px, 0 -92px, -16px -92px, -32px -92px
+  dark: -80px -20px, -96px -20px, -112px -20px, -128px -20px, -80px -92px, -96px -92px, -112 -92px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: 0 -40px;
+  /*
+  sprites locations
+  light: 0 -40px, -20px -40px, -40px -40px, -60px -40px, 0 -112px, -20px -112px, -40px -112px
+  dark: -80px -40px, -100px -40px, -120px -40px, -140px -40px, -80px -112px, -100px -112px, -120px -112px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: 0 -56px;
+  /*
+  sprites locations
+  light: 0 -56px, -20px -56px, -40px -56px, -60px -56px, 0 -128px, -20px -128px, -40px -128px
+  dark: -80px -56px, -100px -56px, -120px -56px, -140px -56px, -80px -128px, -100px -128px, -120px -128px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonUp:hover,
+.mCSB_scrollTools .mCSB_buttonDown:hover,
+.mCSB_scrollTools .mCSB_buttonLeft:hover,
+.mCSB_scrollTools .mCSB_buttonRight:hover {
+  opacity: 0.75;
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp:active,
+.mCSB_scrollTools .mCSB_buttonDown:active,
+.mCSB_scrollTools .mCSB_buttonLeft:active,
+.mCSB_scrollTools .mCSB_buttonRight:active {
+  opacity: 0.9;
+  filter: "alpha(opacity=90)";
+  -ms-filter: "alpha(opacity=90)";
+}
+
+/* theme: "dark" */
+.mCS-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px 0;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -20px;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -40px;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-2", "dark-2" */
+.mCS-light-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-light-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-light-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 4px;
+  margin: 6px auto;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px 0;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -20px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -40px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -56px;
+}
+
+/* theme: "dark-2" */
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px 0;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -20px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -40px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-thick", "dark-thick" */
+.mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-light-thick.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-thick.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 4px;
+  margin: 6px 0;
+}
+
+.mCS-light-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 6px;
+  margin: 5px auto;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -16px 0;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -16px -20px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -20px -40px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -20px -56px;
+}
+
+/* theme: "dark-thick" */
+.mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -96px 0;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -96px -20px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -100px -40px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -100px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-thin", "dark-thin" */
+.mCS-light-thin.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mCS-light-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 2px;
+}
+
+.mCS-light-thin.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-thin.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+}
+
+.mCS-light-thin.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 2px;
+  margin: 7px auto;
+}
+
+/* theme "dark-thin" */
+.mCS-dark-thin.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px 0;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -20px;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -40px;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme "rounded", "rounded-dark", "rounded-dots", "rounded-dots-dark" */
+.mCS-rounded.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger {
+  height: 14px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 14px;
+  margin: 0 1px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 14px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 14px;
+  margin: 1px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  width: 16px;
+  /* auto-expanded scrollbar */
+  height: 16px;
+  margin: -1px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 4px;
+  /* auto-expanded scrollbar */
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  height: 16px;
+  /* auto-expanded scrollbar */
+  width: 16px;
+  margin: 0 -1px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 4px;
+  /* auto-expanded scrollbar */
+  margin: 6px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: 0 -72px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: 0 -92px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: 0 -112px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: 0 -128px;
+}
+
+/* theme "rounded-dark", "rounded-dots-dark" */
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px -72px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -92px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -112px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -128px;
+}
+
+/* theme "rounded-dots", "rounded-dots-dark" */
+.mCS-rounded-dots.mCSB_scrollTools_vertical .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_vertical .mCSB_draggerRail {
+  width: 4px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  background-color: transparent;
+  background-position: center;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAANElEQVQYV2NkIAAYiVbw//9/Y6DiM1ANJoyMjGdBbLgJQAX/kU0DKgDLkaQAvxW4HEvQFwCRcxIJK1XznAAAAABJRU5ErkJggg==");
+  background-repeat: repeat-y;
+  opacity: 0.3;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  height: 4px;
+  margin: 6px 0;
+  background-repeat: repeat-x;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -16px -72px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -16px -92px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -20px -112px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -20px -128px;
+}
+
+/* theme "rounded-dots-dark" */
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAALElEQVQYV2NkIAAYSVFgDFR8BqrBBEifBbGRTfiPZhpYjiQFBK3A6l6CvgAAE9kGCd1mvgEAAAAASUVORK5CYII=");
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -96px -72px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -96px -92px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -100px -112px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -100px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme "3d", "3d-dark", "3d-thick", "3d-thick-dark" */
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-repeat: repeat-y;
+  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* theme "3d", "3d-dark" */
+.mCS-3d.mCSB_scrollTools_vertical .mCSB_dragger,
+.mCS-3d-dark.mCSB_scrollTools_vertical .mCSB_dragger {
+  height: 70px;
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 70px;
+}
+
+.mCS-3d.mCSB_scrollTools,
+.mCS-3d-dark.mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail {
+  width: 8px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.5), inset -1px 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #555;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 8px;
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 8px;
+  margin: 4px 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 8px;
+  margin: 4px auto;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "3d-dark" */
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme: "3d-thick", "3d-thick-dark" */
+.mCS-3d-thick.mCSB_scrollTools,
+.mCS-3d-thick-dark.mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-3d-thick.mCSB_scrollTools,
+.mCS-3d-thick-dark.mCSB_scrollTools,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerContainer,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerContainer {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.mCSB_inside + .mCS-3d-thick.mCSB_scrollTools_vertical,
+.mCSB_inside + .mCS-3d-thick-dark.mCSB_scrollTools_vertical {
+  right: 1px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_vertical,
+.mCS-3d-thick-dark.mCSB_scrollTools_vertical {
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.5);
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal {
+  bottom: 1px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.5);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+  width: 12px;
+  margin: 2px;
+  position: absolute;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #555;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 12px;
+  width: auto;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerContainer {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme: "3d-thick-dark" */
+.mCS-3d-thick-dark.mCSB_scrollTools {
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4), inset -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #777;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerContainer {
+  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme: "minimal", "minimal-dark" */
+.mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical,
+.mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
+  right: 0;
+  margin: 12px 0;
+}
+
+.mCustomScrollBox.mCS-minimal + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal-dark + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal-dark + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  bottom: 0;
+  margin: 0 12px;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical,
+.mCS-dir-rtl > .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
+  left: 0;
+  right: auto;
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-minimal.mCSB_scrollTools_vertical .mCSB_dragger,
+.mCS-minimal-dark.mCSB_scrollTools_vertical .mCSB_dragger {
+  height: 50px;
+}
+
+.mCS-minimal.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-minimal-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 50px;
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  filter: "alpha(opacity=20)";
+  -ms-filter: "alpha(opacity=20)";
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  filter: "alpha(opacity=50)";
+  -ms-filter: "alpha(opacity=50)";
+}
+
+/* theme: "minimal-dark" */
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+  filter: "alpha(opacity=20)";
+  -ms-filter: "alpha(opacity=20)";
+}
+
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: "alpha(opacity=50)";
+  -ms-filter: "alpha(opacity=50)";
+}
+
+/* ---------------------------------------- */
+/* theme "light-3", "dark-3" */
+.mCS-light-3.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+  width: 6px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+}
+
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 6px;
+  margin: 5px 0;
+}
+
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 12px;
+}
+
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 12px;
+  margin: 2px 0;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "dark-3" */
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme "inset", "inset-dark", "inset-2", "inset-2-dark", "inset-3", "inset-3-dark" */
+.mCS-inset.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  width: 12px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+  margin: 3px 5px;
+  position: absolute;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-inset.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 6px;
+  margin: 5px 3px;
+  position: absolute;
+  width: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-inset.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-3.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 12px;
+  margin: 2px 0;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "inset-dark", "inset-2-dark", "inset-3-dark" */
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* theme "inset-2", "inset-2-dark" */
+.mCS-inset-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+  border-color: #000;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* theme "inset-3", "inset-3-dark" */
+.mCS-inset-3.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------------------------------------- */
 #block-usanetwork-aspot-usanetwork-aspot-carousel {
   position: relative;
 }
@@ -17982,6 +19732,7 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 12px;
   left: 20px;
+  letter-spacing: 1px;
   line-height: 12px;
   margin-top: -6px;
   margin-bottom: 0;
@@ -18417,628 +20168,719 @@ body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-button
   }
 }
 
-.schedule-header {
-  width: auto;
-  margin: 0 -15px 6px -15px;
-  padding: 10px 0 2px 0;
-  overflow: hidden;
-  text-align: center;
-  vertical-align: middle;
-  background-color: #434343;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 17px 24px -12px inset;
-  -moz-box-shadow: rgba(0, 0, 0, 0.7) 0 17px 24px -12px inset;
-  box-shadow: rgba(0, 0, 0, 0.7) 0 17px 24px -12px inset;
+.page-schedule {
+  color: #545454;
+  background-color: #e9eaeb;
 }
-.schedule-header .schedule-header-navigation {
-  float: left;
-  white-space: nowrap;
+.page-schedule .page-title {
+  padding: 30px;
 }
-.schedule-header .schedule-header-navigation .previous-week,
-.schedule-header .schedule-header-navigation .next-week {
-  display: none;
-  width: 35px;
-  margin: 9px 11px 0;
-  height: 38px;
-  vertical-align: top;
-  background-color: #2b2b2b;
-  cursor: pointer;
+.page-schedule .page-title:after {
+  clear: both;
+  content: '';
+  display: table;
 }
-.schedule-header .schedule-header-navigation .previous-week.disabled,
-.schedule-header .schedule-header-navigation .next-week.disabled {
-  pointer-events: none;
-}
-.schedule-header .schedule-header-navigation .previous-week {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/arrow-prev.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-position: 45% 50%;
-  background-size: 30% auto;
-}
-.schedule-header .schedule-header-navigation .next-week {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/arrow-next.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-position: 55% 50%;
-  background-size: 30% auto;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks {
-  display: inline-block;
-  width: 320px;
-  height: 35px !important;
-  overflow: hidden;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item {
+.page-schedule .page-title h2 {
   float: left;
 }
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.page-schedule .page-title .shows-filters {
+  float: right;
+  margin-top: 12.5px;
 }
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item.current-week, .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li {
-  float: left;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li {
-  height: 35px;
-  padding: 4px 9px 0;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li.active {
-  background: url("../images/bg_current_day.png") center top no-repeat transparent;
-  background-size: auto 100%;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li.active span {
-  color: #2d2d2d;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li a, .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li span {
-  display: block;
-  color: white;
-  font-family: "Proxima N W01 Bold";
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .week-day {
-  font-size: 13px;
-  line-height: 11px;
-  text-transform: uppercase;
-}
-.schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .date {
-  font-size: 9px;
-  line-height: 11px;
-}
-@media (min-width: 359px) and (max-width: 479px) {
-  .schedule-header {
-    margin: 0 -15px 8px -15px;
-    padding: 11px 0 2px 0;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks {
-    display: inline-block;
-    width: 360px;
-    height: 39px !important;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li {
-    height: 39px;
-    padding: 4px 9px 0;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li.active {
-    background-size: auto 100%;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .week-day {
-    font-size: 15px;
-    line-height: 12px;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .date {
-    font-size: 11px;
-    line-height: 12px;
-  }
-}
-@media (min-width: 480px) and (max-width: 639px) {
-  .schedule-header {
-    margin: 0 -15px 10px -15px;
-    padding: 15px 0 3px 0;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks {
-    display: inline-block;
-    width: 480px;
-    height: 52px !important;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li {
-    height: 52px;
-    padding: 6px 16px 0;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li.active {
-    background-size: auto 100%;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .week-day {
-    font-size: 18px;
-    line-height: 16px;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .date {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-@media (min-width: 640px) {
-  .schedule-header {
-    margin: 0 -15px 13px -15px;
-    padding: 19px 0 4px 0;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks {
-    display: inline-block;
-    width: 624px;
-    height: 70px !important;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li {
-    height: 70px;
-    padding: 8px 19px 0 19px;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li.active {
-    background-size: auto;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .week-day {
-    font-size: 25px;
-    line-height: 22px;
-  }
-  .schedule-header .schedule-header-navigation .schedule-header-navigation-weeks .touchslider-item .schedule-header-navigation-week li .date {
-    font-size: 16px;
-    line-height: 22px;
-  }
-}
-@media (min-width: 719px) {
-  .schedule-header {
-    margin: 0 auto;
-    border: 0;
-    box-shadow: none;
-  }
-}
-@media (min-width: 768px) {
-  .schedule-header {
-    max-width: 1245px;
-  }
-  .schedule-header .schedule-header-navigation .previous-week,
-  .schedule-header .schedule-header-navigation .next-week {
-    display: inline-block;
-  }
-}
-
-.schedule-date {
-  text-transform: uppercase;
-}
-@media (min-width: 640px) {
-  .schedule-date {
-    font-size: 36px;
-  }
-}
-
-a[class*="day"] {
-  padding: 0 .5em 1em .5em;
-  font-size: 12px;
-  display: inline-block;
-}
-@media (min-width: 640px) {
-  a[class*="day"] {
-    -webkit-transform: translateY(-30%);
-    -moz-transform: translateY(-30%);
-    -ms-transform: translateY(-30%);
-    -o-transform: translateY(-30%);
-    transform: translateY(-30%);
-  }
-}
-.no-font-feature-settings a[class*="day"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  padding-top: 6px;
-  background-size: 14px 14px;
-}
-
-.no-font-feature-settings a.next-day {
-  margin-left: 1em;
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/svgs/arrow3.svg');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-
-.no-font-feature-settings a.prev-day {
-  margin-right: 1em;
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/svgs/arrow3-left.svg');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-
-.schedule-table {
-  margin: 0 -15px;
-}
-.schedule-table table {
-  table-layout: fixed;
-  border-top: #3d3d3d solid 1px;
-}
-.schedule-table thead {
-  background-color: #2d2d2d;
-}
-.schedule-table thead tr {
-  display: none;
-}
-@media (min-width: 719px) {
-  .schedule-table thead tr {
-    display: table-row;
-  }
-}
-.schedule-table thead th {
-  padding-top: 6px;
-  padding-bottom: 5px;
-  padding-left: 4px;
-  border-bottom: #3d3d3d solid 1px;
-  border-right: #3d3d3d solid 1px;
-  color: white;
-  font-size: 9px;
-  /* @include box-sizing(content-box); */
-}
-.schedule-table tbody {
-  border-width: 0;
-}
-.schedule-table a {
-  color: #959595;
-}
-.schedule-table a:hover {
-  color: white;
-}
-.schedule-table td {
-  padding-top: 6px;
-  padding-bottom: 5px;
-  padding-left: 4px;
-  border-bottom: #3d3d3d solid 1px;
-  border-right: #3d3d3d solid 1px;
-  color: #959595;
-  font-size: 9px;
-}
-.schedule-table tr {
-  background: #2d2d2d;
-  border: none;
-}
-.schedule-table .show-time {
-  white-space: nowrap;
-  padding-left: .5em;
-  width: 23%;
-  color: white;
-}
-.schedule-table .program {
-  padding-right: 2%;
-  width: 55%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.schedule-table .rating {
-  border-right-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.schedule-table .episode {
-  display: none;
-}
-@media (min-width: 359px) and (max-width: 479px) {
-  .schedule-table thead th {
-    padding-top: 7px;
-    padding-bottom: 6px;
-    padding-left: 5px;
-    font-size: 11px;
-  }
-  .schedule-table td {
-    padding-top: 7px;
-    padding-bottom: 6px;
-    padding-left: 5px;
-    font-size: 11px;
-  }
-}
-@media (min-width: 480px) and (max-width: 639px) {
-  .schedule-table thead th {
-    padding-top: 9px;
-    padding-bottom: 8px;
-    padding-left: 7px;
-    font-size: 13px;
-  }
-  .schedule-table td {
-    padding-top: 9px;
-    padding-bottom: 8px;
-    padding-left: 7px;
-    font-size: 13px;
-  }
-}
-@media (min-width: 640px) {
-  .schedule-table thead th {
-    padding-top: 12px;
-    padding-bottom: 10px;
-    padding-left: 8px;
-    font-size: 16px;
-  }
-  .schedule-table td {
-    padding-top: 12px;
-    padding-bottom: 10px;
-    padding-left: 8px;
-    font-size: 16px;
-  }
-}
-@media (min-width: 719px) {
-  .schedule-table {
-    max-width: 1245px;
-    margin: 0 auto;
-    border: 0;
-  }
-  .schedule-table table {
-    table-layout: auto;
-    border-top-width: 0;
-  }
-  .schedule-table .program {
-    width: 40%;
-    padding-right: 0;
-    overflow: inherit;
-    white-space: normal;
-  }
-  .schedule-table .program .episode-suffix {
+@media (max-width: 768px) {
+  .page-schedule .page-title .shows-filters {
     display: none;
   }
-  .schedule-table .show-time {
-    width: auto;
-  }
-  .schedule-table .episode {
-    display: table-cell;
-    width: 40%;
-  }
-  .schedule-table .rating {
-    overflow: inherit;
-    white-space: normal;
-  }
 }
-
-.schedule-day-small {
-  height: 109px;
+.page-schedule .page-title .shows-filters .item-filter {
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+  vertical-align: middle;
 }
-.schedule-day-small .schedule-viewport {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.page-schedule .page-title .shows-filters .item-filter:last-child {
+  margin-right: 0;
 }
-.schedule-day-small .schedule-items {
-  width: 10000px;
-  height: 109px;
-  margin: 0;
-  padding: 0;
+.page-schedule .page-title .shows-filters .item-filter.open .filter-label {
+  border-color: transparent;
+  background: darkgrey;
 }
-.schedule-day-small .schedule-items .schedule-item {
-  float: left;
-  height: 100%;
-  font-size: 14px;
-  line-height: 16px;
+.page-schedule .page-title .shows-filters .item-filter.open .filter-label:after {
+  content: "\e60a";
 }
-@media (max-width: 486px) {
-  .schedule-day-small .schedule-items .schedule-item {
-    width: 274px;
-  }
-}
-@media (min-width: 487px) and (max-width: 722px) {
-  .schedule-day-small .schedule-items .schedule-item {
-    width: 274px;
-  }
-}
-@media (min-width: 723px) and (max-width: 958px) {
-  .schedule-day-small .schedule-items .schedule-item {
-    width: 243px;
-  }
-}
-@media (min-width: 959px) {
-  .schedule-day-small .schedule-items .schedule-item {
-    width: 243px;
-  }
-}
-@media (min-width: 1275px) {
-  .schedule-day-small .schedule-items .schedule-item {
-    width: 243px;
-  }
-}
-.schedule-day-small .schedule-items .schedule-item .schedule-item-content {
-  border-right: 1px solid #1f1f1f;
-  padding: 20px;
-}
-.schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
-  font-size: 18px;
-  color: #878785;
-  margin-bottom: 15px;
-}
-@media (min-width: 959px) {
-  .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
-    font-size: 22px;
-  }
-}
-@media (min-width: 1275px) {
-  .schedule-day-small .schedule-items .schedule-item .schedule-item-content .time {
-    font-size: 22px;
-  }
-}
-.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title {
-  height: 20px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program a, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title a {
-  color: #fff;
-  text-decoration: none;
-}
-.schedule-day-small .schedule-items .schedule-item .schedule-item-content .program a:hover, .schedule-day-small .schedule-items .schedule-item .schedule-item-content .title a:hover {
-  text-decoration: underline;
-}
-.schedule-day-small .schedule-items .schedule-item.schedule-item-on-now {
-  background-image: none;
-  background-color: #000;
-}
-.schedule-day-small .schedule-items .schedule-item.schedule-item-on-now .time:after {
-  margin-left: 10px;
-  font-family: "Proxima N W01 Bold",Helvetica,Arial,sans-serif;
-  color: #0AB6E8;
-  content: "ON NOW";
-}
-.schedule-day-small .schedule-navigation {
-  float: right;
-  width: 30px;
-  height: 109px;
-  background-color: #0c0c0c;
-}
-.schedule-day-small .schedule-navigation a {
+.page-schedule .page-title .shows-filters .item-filter.open .filter-menu {
   display: block;
-  height: 50%;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-label {
+  border: 1px solid darkgrey;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 40px;
+  overflow: hidden;
+  position: relative;
+  padding: 0 50px 0 20px;
+  text-transform: uppercase;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-label:after {
+  content: "\e609";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 16px;
+  display: block;
+  position: absolute;
+  margin-right: -8px;
+  right: 25px;
+  top: 0;
+  z-index: 3;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-menu {
+  background: darkgrey;
+  top: 1px;
+  display: none;
+  margin-top: 40px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
   width: 100%;
+  z-index: 2;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-menu li {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-menu li a {
+  color: #ffffff;
+  display: block;
+  font-size: 20px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  height: 100%;
+  line-height: 40px;
+  padding-left: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+.page-schedule .page-title .shows-filters .item-filter .filter-menu li a:hover, .page-schedule .page-title .shows-filters .item-filter .filter-menu li a.active {
+  color: #545454;
+}
+.page-schedule .schedule-wrapper {
+  margin: 0 auto 40px;
+  max-width: 2500px;
+  min-width: 300px;
+}
+.page-schedule .schedule-wrapper .schedule-navigation {
+  display: table;
+  background-color: darkgrey;
+  margin-bottom: 40px;
+  position: relative;
+  width: 100%;
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-prev {
+  display: table-cell;
+  cursor: pointer;
+  height: 90px;
+  width: 90px;
+  position: relative;
+  vertical-align: middle;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation .nav-prev {
+    height: 45px;
+    width: 45px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-prev:after {
+  content: '\e607';
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-prev:hover {
+  background-color: #757575;
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-next {
+  display: table-cell;
+  cursor: pointer;
+  height: 90px;
+  width: 90px;
+  position: relative;
+  vertical-align: middle;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation .nav-next {
+    height: 45px;
+    width: 45px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-next:after {
+  content: '\e608';
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+}
+.page-schedule .schedule-wrapper .schedule-navigation .nav-next:hover {
+  background-color: #757575;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul {
+  display: table-cell;
+  vertical-align: middle;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li {
+  border-right: 1px solid #e9eaeb;
+  height: 90px;
+  float: left;
+  width: 14.28571%;
+}
+@media (max-width: 768px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li {
+    display: none;
+  }
+  .page-schedule .schedule-wrapper .schedule-navigation ul li:first-child, .page-schedule .schedule-wrapper .schedule-navigation ul li:nth-child(2) {
+    display: block;
+    width: 50%;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li {
+    height: 45px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li:first-child {
+  border-left: 1px solid #e9eaeb;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li:hover, .page-schedule .schedule-wrapper .schedule-navigation ul li.active {
+  background-color: #757575;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li:hover a, .page-schedule .schedule-wrapper .schedule-navigation ul li.active a {
+  color: #ffffff;
+}
+.page-schedule .schedule-wrapper .schedule-navigation ul li a {
+  color: #e1e1e1;
+  display: block;
+  height: 100%;
+  padding-top: 13px;
+  text-decoration: none;
   text-align: center;
 }
-.schedule-day-small .schedule-navigation a.schedule-navigation-prev {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/arrow-prev.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-position: 45% 50%;
-  background-size: 30% auto;
-}
-.schedule-day-small .schedule-navigation a.schedule-navigation-next {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/arrow-next.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-position: 55% 50%;
-  background-size: 30% auto;
-}
-.schedule-day-small.no-scroll .schedule-navigation {
-  display: none;
-}
-
-.page-accessibility .usa-wrap {
-  background-color: #ffffff;
-}
-.page-accessibility .schedule-header {
-  clear: left;
-  background-color: #000000;
-}
-.page-accessibility .schedule-table table {
-  border: #3d3d3d solid 1px;
-}
-.page-accessibility .schedule-table thead th {
-  font-family: "Proxima N W01 Smbd", Arial, sans-serif;
-  color: #000000;
-  border-bottom-width: 3px;
-  border-right-width: 3px;
-}
-@media (min-width: 1020px) {
-  .page-accessibility .schedule-table thead th {
-    font-family: avalon_mediumbold,"Proxima N W01 xBold", Arial, sans-serif;
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li a {
+    padding-top: 0;
   }
 }
-.page-accessibility .schedule-table .show-time {
-  color: #000000;
-  border-bottom-width: 3px;
-  border-right-width: 3px;
+.page-schedule .schedule-wrapper .schedule-navigation ul li a span {
+  display: block;
 }
-.page-accessibility .schedule-table tr {
-  background: #ffffff;
-}
-.page-accessibility .schedule-table td {
-  border-bottom-width: 3px;
-  border-right-width: 3px;
-  color: #000000;
-}
-.page-accessibility .schedule-table .rating {
-  border-right-width: 1px;
-}
-.page-accessibility .schedule-table a {
-  color: #000000;
-}
-.page-accessibility .schedule-table td.program, .page-accessibility .schedule-table td.episode, .page-accessibility .schedule-table td.rating {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
-}
-@media (min-width: 1020px) {
-  .page-accessibility .schedule-table td.program, .page-accessibility .schedule-table td.episode, .page-accessibility .schedule-table td.rating {
-    font-family: avalonbold,"Proxima N W01 Smbd", Arial, sans-serif;
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li a span {
+    display: inline;
   }
 }
-.page-accessibility .schedule-table td.show-time {
-  font-family: "Proxima N W01 Reg", Arial, sans-serif;
+.page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day {
+  font-size: 40px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  line-height: 40px;
 }
-@media (min-width: 1020px) {
-  .page-accessibility .schedule-table td.show-time {
-    font-family: avalonregular,"Proxima N W01 Smbd", Arial, sans-serif;
-  }
-}
-
-.accesibility-header {
-  margin: 70px auto 0;
-  color: #000000;
-  line-height: 1.3em;
-  width: 100%;
-  font-size: 14px;
-}
-.accesibility-header .accessibility-left {
-  width: 100%;
-  float: none;
-  margin-bottom: 40px;
-}
-.accesibility-header .accessibility-right {
-  width: 100%;
-  float: none;
-  margin-bottom: 70px;
-}
-.accesibility-header h1 {
-  font-size: 16px;
-}
-@media (min-width: 640px) {
-  .accesibility-header {
-    font-size: 18px;
-  }
-  .accesibility-header h1 {
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.week-day {
     font-size: 20px;
+    line-height: 45px;
+    margin-right: 10px;
   }
 }
-@media (min-width: 1020px) and (max-width: 1334px) {
-  .accesibility-header {
-    width: 925px;
-  }
-  .accesibility-header .accessibility-left {
-    width: 48%;
-    float: left;
-    margin-bottom: 70px;
-  }
-  .accesibility-header .accessibility-right {
-    width: 48%;
-    float: right;
-    margin-bottom: 70px;
+.page-schedule .schedule-wrapper .schedule-navigation ul li a span.date {
+  font-size: 20px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 28px;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-navigation ul li a span.date {
+    font-size: 20px;
+    line-height: 45px;
   }
 }
-@media (min-width: 1335px) {
-  .accesibility-header {
-    width: 1248px;
+.page-schedule .schedule-wrapper .time-zone {
+  padding: 0 30px;
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .time-zone {
+    text-align: center;
   }
-  .accesibility-header .accessibility-left {
-    width: 48%;
-    float: left;
-    margin-bottom: 70px;
+}
+.page-schedule .schedule-wrapper .time-zone a {
+  font-size: 18px;
+  color: #606060;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+.page-schedule .schedule-wrapper .schedule-table {
+  margin-top: 20px;
+  position: relative;
+  padding: 10px 0;
+}
+.page-schedule .schedule-wrapper .schedule-table .carousel-vert {
+  overflow: hidden;
+  position: static;
+  margin: 0;
+  padding: 0;
+  max-height: 770px;
+}
+.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-next {
+  display: block;
+  height: 19px;
+  line-height: 19px;
+  margin-left: -9.5px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-next:before {
+  content: "\e60a";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 32px;
+  display: block;
+}
+.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-prev {
+  display: block;
+  height: 19px;
+  line-height: 19px;
+  margin-left: -9.5px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  text-decoration: none;
+}
+.page-schedule .schedule-wrapper .schedule-table .jcarousel-control-prev:before {
+  content: "\e609";
+  color: #545454;
+  font-family: "ico-font";
+  font-size: 32px;
+  display: block;
+}
+.page-schedule .schedule-wrapper .schedule-table ul {
+  height: 100%;
+  width: 100%;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li {
+  float: none;
+  margin: 0;
+  height: auto;
+  width: 100%;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li:nth-child(odd) {
+  background-color: #dcddde;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item {
+  box-sizing: border-box;
+  padding: 20px 0 20px 10px;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding-left: 30px;
   }
-  .accesibility-header .accessibility-right {
-    width: 48%;
-    float: right;
-    margin-bottom: 70px;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding-right: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item {
+    padding: 20px 10px 20px 15px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block {
+  display: table;
+  width: 100%;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  width: 10%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper {
+    width: 20%;
+    min-width: 100px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+  margin: 0 auto;
+  font-size: 20px;
+  color: #606060;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 28px;
+  width: 90px;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+  color: #545454;
+  font-size: 36px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  letter-spacing: 3px;
+  line-height: 42px;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 20px;
+    line-height: 28px;
+    display: inline;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .time-wrapper .time span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info {
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 60%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info {
+    width: auto;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+  font-size: 20px;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+  font-size: 20px;
+  font-family: "texgyrescholaregular", Times, serif;
+  font-style: italic;
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+    display: none;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 100px;
+  width: 30%;
+  position: relative;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block {
+    padding: 0;
+    height: 37px;
+    width: 37px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .open-description {
+  background-image: url('../images/sprites-seef14b3c82.png');
+  background-position: 0 -341px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: 37px;
+  width: 37px;
+  display: block;
+  position: absolute;
+  margin-left: -18.5px;
+  margin-top: -18.5px;
+  right: 50px;
+  top: 50%;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .open-description {
+    background-image: url('../images/sprites-retina-s8a084e9f88.png');
+    background-size: 65px 1462.5px;
+    background-position: 0 -102px;
+    height: 37px;
+    width: 37px;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .open-description {
+    right: 0;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
+  float: left;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule {
+    display: none;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
+  display: block;
+  float: left;
+  height: auto;
+  margin-right: 27px;
+  position: relative;
+  text-decoration: none;
+  width: auto;
+}
+@media (max-width: 768px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .icons-schedule .icon {
+    margin-right: 20px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  float: left;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .icons-block .rating {
+    display: none;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block {
+  display: none;
+  padding-top: 20px;
+  width: 100%;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
+  margin-right: 50px;
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node {
+    margin-right: 0;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
+  color: #ffffff;
+  display: block;
+  padding-left: 10%;
+  padding-right: 30%;
+  text-decoration: none;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a {
+    padding: 0;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+  float: left;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+    width: 300px;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img {
+    float: none;
+    width: 100%;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+  max-width: 300px;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+    max-width: 440px;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .asset-img img {
+    max-width: 100%;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+  float: left;
+  font-size: 16px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: 22px;
+  padding-left: 20px;
+  margin: 0;
+  position: static;
+  width: 50%;
+  max-width: 450px;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    float: none;
+    padding-left: 0;
+    margin-left: 320px;
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta {
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+  display: none;
+  padding: 5px 0;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info {
+    margin-top: 20px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "texgyrescholaregular", Times, serif;
+  font-style: italic;
+  margin-right: 100px;
+}
+@media (max-width: 480px) {
+  .page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .episode-title {
+    font-size: 14px;
+  }
+}
+.page-schedule .schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .episode-info .rating {
+  font-size: 12px;
+  line-height: 22px;
+  right: 0;
+  position: absolute;
+  top: 5px;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.active {
+  background-color: #757575;
+  color: #ffffff;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.active .hidden-block {
+  display: block;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time, .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .time-wrapper .time span {
+  color: #ffffff;
+}
+.page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
+  background-image: url('../images/sprites-seef14b3c82.png');
+  background-position: 0 -589px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  height: 37px;
+  width: 37px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
+  .page-schedule .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description {
+    background-image: url('../images/sprites-retina-s8a084e9f88.png');
+    background-size: 65px 1462.5px;
+    background-position: 0 -363px;
+    height: 37px;
+    width: 37px;
+  }
+}
+.page-schedule .ad-728x90 {
+  margin: 0 auto;
+  padding: 10px 0;
+  max-width: 728px;
+}
+.page-schedule .ad-728x90 a {
+  display: block;
+  max-height: 90px;
+}
+@media (max-width: 768px) {
+  .page-schedule .ad-728x90 {
+    height: 100%;
+  }
+  .page-schedule .ad-728x90 a {
+    height: auto;
+  }
+  .page-schedule .ad-728x90 img {
+    width: 100%;
   }
 }
 

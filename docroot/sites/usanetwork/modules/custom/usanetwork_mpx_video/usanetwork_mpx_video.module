@@ -569,7 +569,115 @@ function usanetwork_mpx_video_views_ajax() {
  * Renders the global video page
  */
 function usanetwork_mpx_video_global_videos_page() {
-  return views_embed_view('usa_mpx_video', 'global_latest_full_episode_video_mpx');
+  //get featured elements
+  $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
+
+  if (!empty($usanework_full_episodes_aspot)) {
+    ksort($usanework_full_episodes_aspot);
+    $i = 0;
+    $featured_carousel = array();
+    foreach($usanework_full_episodes_aspot as $aspot_element) {
+      $file = file_load($aspot_element);
+      if ($file) {
+        $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+        $video_image = theme('image_style', array(
+          'path' => $wrapper->getLocalThumbnailPath(),
+          'style_name' => '300x169_video',
+        ));
+        
+        if ($show_field = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id')) {
+          $show = node_load($show_field);
+          $video_caption = $show->title;
+        }
+
+        $video_title = $file->filename;
+        $video_season = _usanetwork_get_field_item('file', $file, 'field_mpx_field_season', 'value');
+        $video_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_field_episode', 'value');
+        $video_additional = t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode));
+        $video_duration = _usanetwork_get_field_item('file', $file, 'field_mpx_field_duration', 'value');
+
+        if ($i == 0) {
+          $aspot_image = $video_image;
+          $aspot_caption = isset($video_caption) ? $video_caption : '';
+          $aspot_title = $video_title;
+          $aspot_additional = $video_additional;
+          $aspot_duration = $video_duration;
+        } else {
+          $featured_carousel[] = array(
+            'video_image' => $video_image,
+            'video_caption' => $video_caption,
+            'video_title' => $video_title,
+            'video_additional' => $video_additional,
+            'video_duration' => $video_duration,
+          );
+        }
+      }
+      $i++;
+    }
+  }
+
+  $shows_carousels = _usanetwork_mpx_video_shows_full_episodes();
+
+  $theme_variables = array(
+    'aspot_image' => $aspot_image,
+    'aspot_caption' => $aspot_caption,
+    'aspot_title' => $aspot_title,
+    'aspot_additional' => $aspot_additional,
+    'aspot_duration' => $aspot_duration,
+    'features_full_episodes' => $featured_carousel,
+    'shows_carousels' => $shows_carousels,
+  );
+  return theme('usanetwork_mpx_video_full_episodes_page', $theme_variables);
+}
+
+/*
+ * Full Episodes Page Carousels
+ */
+function _usanetwork_mpx_video_shows_full_episodes() {
+
+  $output = '';
+
+  $query = db_select('node', 'n');
+  $query->fields('n', array('nid', 'title'));
+  $query->condition('n.type', 'tv_show');
+
+  $result = $query->execute()->fetchAll();
+
+  if (!empty($result)) {
+    foreach ($result as $result_item) {
+      $videos = usanetwork_schedule_pull_latest_episodes($result_item->nid);
+      $count = t('@number available', array('@number' => count($videos)));
+      
+      if (!empty($videos)) {
+        $carousel_items = '';
+        foreach ($videos as $video) {
+          $file = file_load($video->fid);
+          $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+          $video_image = theme('image_style', array(
+            'path' => $wrapper->getLocalThumbnailPath(),
+            'style_name' => '300x169_video',
+          ));
+          $theme_item_variables = array(
+            'video_url' => url('file/' . $video->fid),
+            'video_title' => $video->title,
+            'video_additional' => t('S@season episodes @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
+            'video_image' => $video_image,
+          );
+          $carousel_items .= theme('usanetwork_mpx_video_show_full_episode_item', $theme_item_variables);
+        }
+
+        $theme_variables = array(
+          'show_title' => $result_item->title,
+          'videos_count' => $count,
+          'carousel_items' => $carousel_items,
+        );
+
+        $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);
+      }
+    }
+  }
+
+  return $output;
 }
 
 /**
@@ -1998,9 +2106,32 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_mpx_video_full_episodes_page' => array(
       'variables' => array(
-        'schedule_table' => array(),
+        'aspot_image' => NULL,
+        'aspot_caption' => NULL,
+        'aspot_title' => NULL,
+        'aspot_additional' => NULL,
+        'aspot_duration' => NULL,
+        'features_full_episodes' => array(),
+        'shows_caroysels' => NULL,        
       ),
       'template' => 'templates/usanetwork-mpx-video-full-episodes-page',
+    ),
+    'usanetwork_mpx_video_shows_full_episodes' => array(
+      'variables' => array(
+        'show_title' => NULL,
+        'videos_count' => NULL,
+        'carousel_items' => array(),
+      ),
+      'template' => 'templates/usanetwork-mpx-video-show-full-episodes-carousel',
+    ),
+    'usanetwork_mpx_video_show_full_episode_item' => array(
+      'variables' => array(
+        'video_url' => NULL,
+        'video_title' => NULL,
+        'video_additional' => NULL,
+        'video_image' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-show-full-episode-item',
     ),
   );
   return $themes;

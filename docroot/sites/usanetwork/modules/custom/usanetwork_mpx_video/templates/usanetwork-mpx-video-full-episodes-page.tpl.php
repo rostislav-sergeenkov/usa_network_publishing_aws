@@ -29,8 +29,8 @@
           <div class="meta">
             <div class="meta-icon play-icon"></div>
             <div class="caption"><?php print $aspot_caption; ?></div>
-            <div class="title">><?php print $aspot_title; ?></div>
-            <div class="additional">><?php print $aspot_cadditional; ?></span> ><?php print $aspot_duration; ?></div>
+            <div class="title"><?php print $aspot_title; ?></div>
+            <div class="additional"><span><?php print $aspot_additional; ?></span> <?php print $aspot_duration; ?></div>
           </div>
         </div>
       </a>
@@ -38,20 +38,19 @@
     <div class="episodes-list">
       <ul>
         <?php foreach ($features_full_episodes as $featured_element): ?>
-
         <li>
           <a href="javascript:void(0)">
-              <div class="asset-img"><img src="images/full-episode-1.png" alt=""></div>
-              <div class="meta-wrapper">
-                <div class="meta">
-                  <div class="caption">Suits</div>
-                  <div class="title">Two in the knees</div>
-                  <div class="additional"><span>S2 episode 3</span> 43:04</div>
-                  <div class="meta-icon play-icon resize-avail-1024"></div>
-                </div>
+            <div class="asset-img"><?php print $featured_element['video_image']; ?></div>
+            <div class="meta-wrapper">
+              <div class="meta">
+                <div class="caption"><?php print $featured_element['video_caption']; ?></div>
+                <div class="title"><?php print $featured_element['video_title']; ?></div>
+                <div class="additional"><span><?php print $featured_element['video_additional']; ?></span> <?php print $featured_element['video_duration']; ?></div>
+                <div class="meta-icon play-icon resize-avail-1024"></div>
               </div>
-            </a>
-          </li>
+            </div>
+          </a>
+        </li>
         <?php endforeach; ?>
       </ul>
       <div class="more-button">
@@ -59,6 +58,9 @@
       </div>
     </div>
   </div>
-  <div class="ad ad-728x90">
+  <div class="ad ad-728x90"></div>
+
+  <div class="carousel-wrapper">
+    <?php print $shows_carousels; ?>
   </div>
 </div>

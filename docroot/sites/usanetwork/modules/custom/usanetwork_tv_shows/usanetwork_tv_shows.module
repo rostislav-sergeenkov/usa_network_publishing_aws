@@ -495,8 +495,11 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0, $lim
       $values = !empty($filter_value['values']) ? $filter_value['values'] : NULL;
 
       if (!empty($values)) {
-        $operator = !empty($filter_value['operator']) ? $filter_value['operator']
-              : (is_array($values) ? 'IN' : '='
+        $operator = !empty($filter_value['operator'])
+            ? $filter_value['operator']
+            : (is_array($values)
+                ? 'IN'
+                : '='
             );
 
         if (is_array($values) && count($values) == 1) {
@@ -573,8 +576,11 @@ function _usanetwork_tv_shows_pull_related_files($show_id, $limit = 0, $directio
       $values = !empty($filter_value['values']) ? $filter_value['values'] : NULL;
 
       if (!empty($values)) {
-        $operator = !empty($filter_value['operator']) ? $filter_value['operator']
-              : (is_array($values) ? 'IN' : '='
+        $operator = !empty($filter_value['operator'])
+            ? $filter_value['operator']
+            : (is_array($values)
+                ? 'IN'
+                : '='
             );
 
         $query->condition($filter_field_name, $values, $operator);
@@ -790,7 +796,8 @@ function _usanetwork_tv_shows_aspot_block() {
   $episodes_block_title_field = field_get_items('node', $show_node, 'field_tvs_aspot_promo_btitle');
 
   $theme_variables['episodes_block_title'] = !empty($episodes_block_title_field)
-        ? $episodes_block_title_field[0]['value'] : t('Latest full episodes');
+    ? $episodes_block_title_field[0]['value']
+    : t('Latest full episodes');
 
   if (!empty($show_node)) {
     $theme_variables['show'] = usanetwork_aspot_render($show_node);
@@ -1068,11 +1075,18 @@ function _usanetwork_tv_shows_submenu() {
     'weekday' => $show_weekday,
     'time' => $show_time,
     'social_icons' => $social_links,
-    'show_menu_video_url' => isset($promo_link_url) ? $promo_link_url : NULL,
-    'show_menu_video_img' => isset($preview_image) ? $preview_image : NULL,
-    'show_menu_video_title' => isset($promo_text_title) ? $promo_text_title : NULL,
-    'show_menu_video_caption' => isset($promo_text_caption) ? $promo_text_caption
+    'show_menu_video_url' => isset($promo_link_url)
+      ? $promo_link_url
           : NULL,
+    'show_menu_video_img' => isset($preview_image)
+      ? $preview_image
+      : NULL,
+    'show_menu_video_title' => isset($promo_text_title)
+      ? $promo_text_title
+      : NULL,
+    'show_menu_video_caption' => isset($promo_text_caption)
+      ? $promo_text_caption
+      : NULL,
     'show_menu_tab_items' => $show_menus,
   ));
 }
@@ -1121,6 +1135,10 @@ function _usanetwork_tv_shows_get_latest_content($show) {
 
 function _usanetwork_tv_shows_latest($show) {
   $show_latest = _usanetwork_tv_shows_get_latest_content($show);
+  
+  if ($show_latest === FALSE) {
+    return '';
+  }
 
   $description_vars = array(
     'caption' => t('All new!'),

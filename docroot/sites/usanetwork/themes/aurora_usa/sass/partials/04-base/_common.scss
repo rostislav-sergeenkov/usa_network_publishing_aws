@@ -65,6 +65,7 @@ a {
 
 .link-color-reset {
   @include link-colors(transparent, transparent, transparent, transparent, transparent);
+  outline: none!important;
 }
 
 em {

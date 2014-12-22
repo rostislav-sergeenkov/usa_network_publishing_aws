@@ -123,7 +123,8 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
       $element += array(
         '#type' => 'textfield',
         '#maxlength' => 1024,
-        '#default_value' => $item ? $item['entity']->label() . ' (' . $item['entity']->getIdentifier() . ')' : '',
+        '#default_value' => $item ? $item['entity']->label() . ' (' . $item['entity']->getIdentifier() . ')'
+              : '',
         '#autocomplete_path' => 'usanetwork_dynamic_entity_reference/autocomplete/' . implode('/', $autocomplete_path_parameters),
         '#element_validate' => array('usanetwork_dynamic_entity_reference_field_widget_form_validate'),
         '#autocreate_uid' => isset($entity->uid) ? $entity->uid : $user->uid,
@@ -140,9 +141,9 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
       }
 
       $entity_type_ids = $field['settings']['entity_type_ids'];
-      $available = array_intersect_key($options, $entity_type_ids ?: array());
+      $available = array_intersect_key($options, $entity_type_ids ? : array());
       $keys = array_keys($options);
-      
+
       $entity_type = array(
         '#type' => 'select',
         '#options' => $available,
@@ -167,6 +168,11 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
               // This has to run after default autocomplete.
               'weight' => 1000,
               'scope' => 'footer',
+            ),
+          ),
+          'css' => array(
+            drupal_get_path('module', 'usanetwork_dynamic_entity_reference') . '/css/usanetwork_dynamic_entity_reference.css' => array(
+              'weight' => 1000,
             ),
           ),
         ),
@@ -229,7 +235,6 @@ function usanetwork_dynamic_entity_reference_field_formatter_settings_form($fiel
       );
 
       break;
-
   }
 
   return $element;
@@ -247,7 +252,6 @@ function usanetwork_dynamic_entity_reference_field_formatter_settings_summary($f
     case 'usanetwork_dynamic_entity_reference_default':
       $return[] = $settings['link'] ? t('Link to the referenced entity') : t('No link');
       break;
-
   }
 
   return implode('<br />', $return);
@@ -302,7 +306,8 @@ function usanetwork_dynamic_entity_reference_field_formatter_prepare_view($entit
     foreach ($entity_items as $key => $items) {
       foreach ($items as $delta => $item) {
         // If we have a revision ID, the key uses it as well.
-        $identifier = !empty($item['revision_id']) ? $item['target_id'] . ':' . $item['revision_id'] : $item['target_id'];
+        $identifier = !empty($item['revision_id']) ? $item['target_id'] . ':' . $item['revision_id']
+              : $item['target_id'];
         if ($item['target_id'] !== 0) {
           if (!isset($item['target_type']) || !isset($target_entities[$item['target_type']][$identifier])) {
             // The entity no longer exists, so empty the item.
@@ -329,8 +334,8 @@ function usanetwork_dynamic_entity_reference_field_formatter_prepare_view($entit
       // Rekey the items array if needed.
       if ($rekey) {
         $items = array_values(array_filter($items, function ($item) {
-          return isset($item) && isset($item['entity']) && !empty($item['access']);
-        }));
+              return isset($item) && isset($item['entity']) && !empty($item['access']);
+            }));
       }
       $entity_items[$key] = $items;
     }
@@ -372,7 +377,6 @@ function usanetwork_dynamic_entity_reference_field_formatter_view($entity_type, 
 
       return $elements;
       break;
-
   }
 
   return $element;

@@ -929,19 +929,19 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Latest Block',
-    'weight' => '75',
+    'weight' => '74',
     'children' => array(
       0 => 'field_additional_text',
       1 => 'field_caption_text',
       2 => 'field_hp_promos_block_title',
-      3 => 'field_latest_carousel',
+      3 => 'field_latest_carousel_items',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1051,6 +1051,7 @@ function usanetwork_tv_shows_field_group_info() {
       6 => 'group_usa_tv_promo_vids',
       7 => 'group_usa_tv_promo',
       8 => 'group_show_aspots',
+      9 => 'group_tv_shows_latest',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

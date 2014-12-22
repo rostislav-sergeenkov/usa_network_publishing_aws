@@ -11,7 +11,7 @@ function usanetwork_mpx_video_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_global_mpx_videos';
   $context->description = '';
@@ -57,7 +57,7 @@ function usanetwork_mpx_video_context_default_contexts() {
   $export['usa_global_mpx_videos'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_mpx_videos_live';
   $context->description = '';
@@ -101,7 +101,7 @@ function usanetwork_mpx_video_context_default_contexts() {
   $export['usa_mpx_videos_live'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_show_mpx_videos';
   $context->description = '';

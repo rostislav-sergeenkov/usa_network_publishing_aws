@@ -39,18 +39,18 @@ var activeSection,
   }
 
   function captionReplaceAnimation() {
-    if (captionTimer != 'undefined') clearTimeout(captionTimer);
-    $('.caption > ul').each(function(index, list){
-      var parent = $(list).parent('section'),
-          parentId = parent.context.offsetParent.id;
-      if (parentId == '') parentId = parent.context.offsetParent.offsetParent.id;
-      //usa_debug('parentSection: ', parent);
-      //usa_debug('parentId: ' + parentId);
+    if (typeof captionTimer != 'undefined') clearTimeout(captionTimer);
+    $('#visible .caption > ul').each(function(index, list){
+      var parentSection = $(list).parent('section'),
+          parentId = (typeof parentSection != 'undefined' && parentSection.context.offsetParent.hasOwnProperty('id')) ? parentSection.context.offsetParent.id : '';
+      if (parentId == '') parentId = parentSection.context.offsetParent.offsetParent.id;
+      usa_debug('parentSection: ', parentSection);
+      usa_debug('parentId: ' + parentId);
       var elem = '#' + parentId + ' .caption li',
           numItems = $(elem).length,
           activeItemNum = getActiveItemNum(elem),
           nextItemNum = ((activeItemNum + 1) < numItems) ? (activeItemNum + 1) : 0;
-      //usa_debug('captionReplaceAnimation(' + elem + ')\nnumItems: ' + numItems + '\nactiveItemNum: ' + activeItemNum + '\nnextItemNum: ' + nextItemNum);
+      usa_debug('captionReplaceAnimation(' + elem + ')\nnumItems: ' + numItems + '\nactiveItemNum: ' + activeItemNum + '\nnextItemNum: ' + nextItemNum);
       if (numItems > 1) {
         $(elem + '.active').fadeOut(fadeInOutSpeed, function(){
           $(this).hide().removeClass('active');
@@ -106,6 +106,7 @@ var activeSection,
     ajaxCall('http://' + window.location.hostname + '/dig/' + elem + '.php', elem);
   }
 
+/*
   // monitor scroll position
   var scrolledIntoViewCount = 0;
   function isScrolledIntoView() {
@@ -141,7 +142,7 @@ var activeSection,
 
             // animate captions
             captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
-  /*
+  *//*
             switch(elem) {
               case 'about':
                 numAboutCaptions = $('.caption li').length;
@@ -162,21 +163,21 @@ var activeSection,
                 }
                 break;
             }
-  */
+  *//*
           }
         }
       }
 
       // show / hide Dig logo above left nav
 //usa_debug('yOffset: ' + yOffset);
-/*
+*//*
       if (yOffset > 500) {
         showDigLogo();
       }
       else {
         hideDigLogo();
       }
-*/
+*//*
       $('.dig #characters li').css('height', (wHeight - bottomOffset) + 'px');
 
       initialPageLoad = 0;
@@ -186,6 +187,7 @@ var activeSection,
       scrolledIntoViewCount++;
     }
   }
+*/
 
   // updateWindowContents
   function updateWindowContents(elem, direction) {
@@ -212,6 +214,15 @@ var activeSection,
         scrollTo(elem);
       }
     });
+
+    // if about or characters sections
+    // re-animate quotations
+    if (elem == 'about' || elem == 'characters') {
+      captionReplaceAnimation();
+    }
+    else {
+      if (typeof captionTimer != 'undefined') clearTimeout(captionTimer);
+    }
   }
 
   // actively scroll to an item on click
@@ -306,10 +317,13 @@ var activeSection,
     else {
       showDigLogo();
     }
+
+    // animate captions
+    captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
   }
 
   // on page load
-  window.onscroll = isScrolledIntoView;
+//  window.onscroll = isScrolledIntoView;
 
   $(document).ready(function(){
     wHeight = $(window).height();
@@ -319,7 +333,7 @@ var activeSection,
 usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
     showInitialContent();
 
-    setTimeout(isScrolledIntoView, 3000);
+//    setTimeout(isScrolledIntoView, 3000);
 
     // initialize logo click
     $('#left-nav-logo').on('click', function() {

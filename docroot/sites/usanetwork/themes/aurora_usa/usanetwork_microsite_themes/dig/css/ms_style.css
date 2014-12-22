@@ -415,7 +415,7 @@ you can use the generic selector below, but it's slower:
   width: 10%;
   overflow: hidden;
 }
-.dig #characters #character-nav {
+.dig #characters .character-nav {
   width: 104px;
   height: 2em;
   margin: 30px auto;
@@ -424,8 +424,8 @@ you can use the generic selector below, but it's slower:
   left: 0;
   float: left;
 }
-.dig #characters #character-nav .prev,
-.dig #characters #character-nav .next {
+.dig #characters .character-nav .prev,
+.dig #characters .character-nav .next {
   float: left;
   margin: 0;
   padding: 0;
@@ -433,11 +433,11 @@ you can use the generic selector below, but it's slower:
   font-size: 1.5em;
   line-height: 1.5em;
 }
-.dig #characters #character-nav ul {
+.dig #characters .character-nav ul {
   left: 0;
   /* -100% per line item */
 }
-.dig #characters #character-nav li {
+.dig #characters .character-nav li {
   list-style: square url("../images/nav_selector.png");
   width: 15px;
   line-height: 2em;
@@ -447,7 +447,7 @@ you can use the generic selector below, but it's slower:
   left: 15px;
   overflow: visible;
 }
-.dig #characters #character-nav li .tooltip {
+.dig #characters .character-nav li .tooltip {
   display: none;
   position: absolute;
   top: -80px;
@@ -456,17 +456,17 @@ you can use the generic selector below, but it's slower:
   height: 80px;
   text-align: center;
 }
-.dig #characters #character-nav li .tooltip div {
+.dig #characters .character-nav li .tooltip div {
   line-height: 1em;
   text-transform: uppercase;
 }
-.dig #characters #character-nav li .tooltip img {
+.dig #characters .character-nav li .tooltip img {
   border: 2px solid #FFF;
   width: 59px;
   height: 60px;
   margin: 0 auto;
 }
-.dig #characters #character-nav li:hover .tooltip {
+.dig #characters .character-nav li:hover .tooltip {
   display: block;
 }
 .dig #galleries h3 {

@@ -40,6 +40,11 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
         ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
       ),
     );
+    $form['field_ms_section']['und'][$i]['field_quotation']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
+      ),
+    );
 
     // section_type = 'galleries'
     $form['field_ms_section']['und'][$i]['field_media_gallery']['#states'] = array(
@@ -50,11 +55,6 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
 
     // section_type = 'characters'
     $form['field_ms_section']['und'][$i]['field_person']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_episode_credit_character']['#states'] = array(
       'visible' => array(
         ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
       ),

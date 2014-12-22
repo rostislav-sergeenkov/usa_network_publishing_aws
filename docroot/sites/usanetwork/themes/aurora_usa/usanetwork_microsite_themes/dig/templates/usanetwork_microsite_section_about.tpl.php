@@ -1,14 +1,14 @@
 <div class="left-pane">
   <div class="caption">
     <ul>
-      <li class="active" style="display: block;">
-        <div class="quote">"...keeps you on the edge of your seat..."</div>
-        <div class="quote-source">- Variety</div>
-      </li>
-      <li class="" style="display: none;">
-        <div class="quote">"We're looking forward to this!"</div>
-        <div class="quote-source">- USA Network Digital Team</div>
-      </li>
+<?php
+if (count($array['about_quotations'] > 0)) {
+  foreach ($array['about_quotations'] as $about_quote_key => $about_quote_array) {
+    $class = ($about_quote_key == 0) ? ' class="active"' : '';
+    print '     <li' . $class. '><div class="quote">' . $about_quote_array['quote'] . '</div><div class="quote-source">- ' . $about_quote_array['source'] . '</div></li>';
+  }
+}
+?>
     </ul>
   </div>
 </div>

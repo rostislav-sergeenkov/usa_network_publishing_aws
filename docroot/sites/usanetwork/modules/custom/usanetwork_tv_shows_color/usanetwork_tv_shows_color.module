@@ -176,9 +176,8 @@ function usanetwork_tv_shows_color_node_presave($node) {
       }
 
       $default_colors = usanetwork_tv_shows_color_default_codes();
-      $node_colors = isset($default_colors[$node_code['value']])
-          ? $default_colors[$node_code['value']]
-          : FALSE;
+      $node_colors = isset($default_colors[$node_code['value']]) ? $default_colors[$node_code['value']]
+            : FALSE;
 
       if ($primary_color_code) {
         $primary_color_code = reset($primary_color_code);
@@ -188,9 +187,8 @@ function usanetwork_tv_shows_color_node_presave($node) {
         $tertiary_color_code = $secondary_color_code = $primary_color_code = $primary_color_code;
       }
       else if ($node_colors) {
-        $primary_color_code['rgb'] = $primary_color_code
-            ? $primary_color_code['rgb'] 
-            : $node_colors[0];
+        $primary_color_code['rgb'] = $primary_color_code ? $primary_color_code['rgb']
+              : $node_colors[0];
         $secondary_color_code['rgb'] = $node_colors[1];
         $tertiary_color_code['rgb'] = $node_colors[2];
       }
@@ -232,16 +230,39 @@ function usanetwork_tv_shows_color_node_presave($node) {
  */
 function usanetwork_tv_shows_color_show_css_class($show_node) {
   if (!is_object($show_node)) {
+    $show_id = $show_node;
+    $show_css_class = &drupal_static('show_css_class_' . $show_node, FALSE);
+    if ($show_css_class) {
+      // get show css class from static variable
+      return $show_css_class;
+    }
     $show_node = node_load($show_node);
   }
-  
-  if ($node_alias_field = field_get_items('node', $show_node, 'field_pathauto_alias')) {
-    $node_alias = reset($node_alias_field);
-    $show_css_class = 'show-' . $node_alias['value'];
-  } else {
+  else {
+    $show_id = $show_node->nid;
+    $show_css_class = &drupal_static('show_css_class_' . $show_node->nid, FALSE);
+    if ($show_css_class) {
+      return $show_css_class;
+    }
+  }
+
+  // get show css class from static variable
+  if ($show_class_cache = cache_get('show_id_' . $show_id, 'show_class')) {
+    $show_css_class = $show_class_cache->data;
+    return $show_class_cache->data;
+  }
+
+
+  if ($node_alias_field = _usanetwork_get_field_item('node', $show_node, 'field_pathauto_alias', 'value')) {
+    $show_css_class = 'show-' . $node_alias_field;
+  }
+  else {
     $show_css_class = drupal_clean_css_identifier($show_node->title);
   }
-  
+
+  //set show css class from show in cache
+  cache_set('show_id_' . $show_id, $show_css_class, 'show_class');
+
   return $show_css_class;
 }
 

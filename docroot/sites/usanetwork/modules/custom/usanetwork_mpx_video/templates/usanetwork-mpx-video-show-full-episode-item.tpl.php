@@ -1,4 +1,4 @@
-<li class="first">
+<li class="<?php print ($is_first) ? 'first' : ''; ?>">
   <div class="node node-usanetwork-promo">
     <a href="<?php $video_url; ?>">
       <div class="meta-wrap">

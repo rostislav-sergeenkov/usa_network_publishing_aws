@@ -5904,6 +5904,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   height: auto;
   margin: 40px auto;
 }
+@media (max-width: 1600px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item {
+    left: 50px;
+  }
+}
 @media (max-width: 480px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item {
     height: 86px;
@@ -5915,6 +5920,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper {
   display: block;
+}
+@media (max-width: 1600px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper {
+    width: 175px;
+  }
 }
 @media (max-width: 480px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper {

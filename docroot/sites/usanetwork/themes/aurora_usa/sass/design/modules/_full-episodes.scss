@@ -48,7 +48,7 @@
       }
     }
   }
-  .main{
+  .main {
     padding-bottom: 20px;
     .tab-item {
       &.log-in {
@@ -138,46 +138,46 @@
               height: auto;
             }
           }
-          .meta-wrapper{
+          .meta-wrapper {
             bottom: 10%;
             left: 5%;
             position: absolute;
             @extend %meta;
-            .meta{
+            .meta {
               padding-left: 70px;
               position: relative;
-              .caption{
+              .caption {
                 font-size: 20px;
                 line-height: 26px;
               }
-              .title{
+              .title {
                 font-size: 40px;
                 line-height: 46px;
               }
-              .additional{
+              .additional {
                 font-size: 17px;
                 line-height: 25px;
                 span {
                   font-size: 17px;
                 }
               }
-              .play-icon{
-                &:before{
+              .play-icon {
+                &:before {
                   left: 0;
                   margin-top: -18.5px;
                   top: 50%;
                 }
               }
-              @include breakpoint($bp-768-width){
-                .title{
+              @include breakpoint($bp-768-width) {
+                .title {
                   font-size: 16px;
                   line-height: 22px;
                 }
-                .caption{
+                .caption {
                   font-size: 28px;
                   line-height: 34px;
                 }
-                .additional{
+                .additional {
                   font-size: 14px;
                   line-height: 20px;
                 }
@@ -219,16 +219,16 @@
             height: 20%;
             padding-left: 2px;
             padding-bottom: 2px;
-            @include breakpoint($between-641-1024){
+            @include breakpoint($between-641-1024) {
               float: left;
               margin-bottom: 10px;
               padding: 0;
               width: 49%;
-              &:nth-child(2n+1){
+              &:nth-child(2n+1) {
                 margin-right: 2%;
               }
             }
-            @include breakpoint($bp-640-width){
+            @include breakpoint($bp-640-width) {
               padding: 0;
               display: none;
               &:nth-child(1), &:nth-child(2) {
@@ -255,14 +255,14 @@
                 height: 48px;
                 position: absolute;
                 width: 100%;
-                @include breakpoint($bp-min-1601-width){
+                @include breakpoint($bp-min-1601-width) {
                   height: 70px;
                 }
-                @include breakpoint($bp-640-width){
+                @include breakpoint($bp-640-width) {
                   height: 70px;
                 }
                 @extend %meta;
-                .meta{
+                .meta {
                   padding-left: 55px;
                   padding-right: 20px;
                   margin-top: -25px;
@@ -270,19 +270,19 @@
                   left: 0;
                   top: 50%;
                   width: 100%;
-                  .caption{
+                  .caption {
                     font-size: 9px;
                     line-height: 14px;
                     margin: 0;
                   }
-                  .title{
+                  .title {
                     background: none;
                     font-size: 14px;
                     font-style: normal;
                     line-height: 20px;
                     margin: 0;
                   }
-                  .additional{
+                  .additional {
                     font-size: 11px;
                     line-height: 14px;
                     margin: 0;
@@ -290,8 +290,8 @@
                       font-size: 9px;
                     }
                   }
-                  .play-icon{
-                    &:before{
+                  .play-icon {
+                    &:before {
                       left: 10px;
                       margin-top: -15px;
                       top: 50%;
@@ -381,18 +381,17 @@
     }
   }
 
-
-  .latest-block{
+  .latest-block {
     background: $free-full-episodes;
-    .carousel-description-item{
+    .carousel-description-item {
       height: auto;
       margin: 40px auto;
-      @include breakpoint($bp-480-width){
+      @include breakpoint($bp-480-width) {
         margin: 0 0 20px 0;
       }
-      .description-wrapper{
+      .description-wrapper {
         display: block;
-        @include breakpoint($bp-480-width){
+        @include breakpoint($bp-480-width) {
           width: 100%;
         }
         .description-block {
@@ -400,33 +399,33 @@
           height: 250px;
           padding: 40px 0;
           position: relative;
-          @include breakpoint($bp-480-width){
+          @include breakpoint($bp-480-width) {
             display: block;
             height: auto;
             padding: 0;
           }
-          .title{
+          .title {
             display: table-cell;
             font-size: 22px;
             line-height: 25px;
             margin: 0;
             vertical-align: middle;
             width: 100%;
-            @include breakpoint($bp-480-width){
+            @include breakpoint($bp-480-width) {
               display: block;
               margin: 10px 0;
             }
           }
-          .additional-text{
+          .additional-text {
             font-size: 12px;
             bottom: 0;
             left: 0;
             line-height: 40px;
             position: absolute;
-            @include breakpoint ($bp-min-1601-width){
+            @include breakpoint($bp-min-1601-width) {
               font-size: 14px;
             }
-            @include breakpoint($bp-480-width){
+            @include breakpoint($bp-480-width) {
               line-height: 18px;
               position: static;
             }
@@ -437,7 +436,7 @@
   }
   .carousel-wrapper {
     .carousel-block {
-      @include breakpoint($bp-480-width){
+      @include breakpoint($bp-480-width) {
         margin-bottom: 1px;
         padding: 0;
       }
@@ -445,29 +444,29 @@
         .carousel-description-item {
           .description-wrapper {
             .description-block {
-              .title{
+              .title {
                 background: none;
               }
             }
           }
         }
       }
-      &.active{
+      &.active {
         .carousel {
           @include breakpoint($bp-480-width) {
             display: block;
-            ul{
-              li{
+            ul {
+              li {
                 margin-bottom: 55px;
                 margin-top: 20px;
               }
             }
           }
         }
-        .carousel-left{
+        .carousel-left {
           margin-left: 20px;
         }
-        .get-app{
+        .get-app {
           @include breakpoint($bp-480-width) {
             display: block;
           }
@@ -478,7 +477,7 @@
           display: none;
         }
       }
-      .get-app{
+      .get-app {
         display: none;
         color: $poll-color;
         font-family: $avalon-demi;
@@ -491,15 +490,15 @@
         text-decoration: none;
       }
     }
-    .carousel-block-left{
+    .carousel-block-left {
       position: relative;
-      &:nth-child(2n-1){
+      &:nth-child(2n-1) {
         background: $footer-links;
       }
-      &:nth-child(2n){
+      &:nth-child(2n) {
         background: $poll-back;
       }
-      .more-episodes{
+      .more-episodes {
         color: $poll-color;
         font-family: $avalon-demi;
         font-size: 14px;
@@ -511,13 +510,13 @@
         top: 20px;
         text-transform: uppercase;
         text-decoration: none;
-        @include breakpoint($bp-480-width){
+        @include breakpoint($bp-480-width) {
           display: none;
         }
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
-        &:after{
+        &:after {
           content: "\e608";
           display: block;
           font-family: "ico-font";
@@ -527,19 +526,19 @@
           top: 50%;
         }
       }
-      .carousel-description-item{
+      .carousel-description-item {
         height: auto;
         margin: 40px auto;
-        @include breakpoint($bp-480-width){
+        @include breakpoint($bp-480-width) {
           height: 86px;
           left: 0;
           margin: 0;
           position: relative;
           top: 0;
         }
-        .description-wrapper{
+        .description-wrapper {
           display: block;
-          @include breakpoint($bp-480-width){
+          @include breakpoint($bp-480-width) {
             background: $schedule-tonight;
             float: none;
             height: 100%;
@@ -551,35 +550,35 @@
             padding: 40px 0;
             position: relative;
             text-align: right;
-            @include breakpoint($bp-480-width){
+            @include breakpoint($bp-480-width) {
               display: block;
               height: auto;
               padding: 0;
               text-align: left;
             }
-            .caption{
+            .caption {
               font-size: 9px;
               right: 0;
               line-height: 40px;
               position: absolute;
               white-space: nowrap;
               top: 0;
-              @include breakpoint ($bp-min-1601-width){
+              @include breakpoint($bp-min-1601-width) {
                 font-size: 14px;
               }
-              @include breakpoint($bp-480-width){
+              @include breakpoint($bp-480-width) {
                 display: none;
               }
             }
-            .title{
+            .title {
               display: table-cell;
               margin: 0;
               vertical-align: middle;
               width: 100%;
-              @include breakpoint($bp-min-481-width){
+              @include breakpoint($bp-min-481-width) {
                 background: none;
               }
-              @include breakpoint($bp-480-width){
+              @include breakpoint($bp-480-width) {
                 cursor: pointer;
                 color: #ffffff;
                 display: block;
@@ -589,22 +588,22 @@
                 margin: 0;
                 padding-left: 30px;
               }
-              &:before{
-                @include breakpoint($bp-min-481-width){
+              &:before {
+                @include breakpoint($bp-min-481-width) {
                   display: none;
                 }
               }
             }
-            .additional-text{
+            .additional-text {
               font-size: 12px;
               bottom: 0;
               right: 0;
               line-height: 40px;
               position: absolute;
-              @include breakpoint ($bp-min-1601-width){
+              @include breakpoint($bp-min-1601-width) {
                 font-size: 14px;
               }
-              @include breakpoint($bp-480-width){
+              @include breakpoint($bp-480-width) {
                 display: none;
               }
             }

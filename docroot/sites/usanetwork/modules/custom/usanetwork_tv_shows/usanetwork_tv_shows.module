@@ -1075,18 +1075,11 @@ function _usanetwork_tv_shows_submenu() {
     'weekday' => $show_weekday,
     'time' => $show_time,
     'social_icons' => $social_links,
-    'show_menu_video_url' => isset($promo_link_url)
-      ? $promo_link_url
+    'show_menu_video_url' => isset($promo_link_url) ? $promo_link_url : NULL,
+    'show_menu_video_img' => isset($preview_image) ? $preview_image : NULL,
+    'show_menu_video_title' => isset($promo_text_title) ? $promo_text_title : NULL,
+    'show_menu_video_caption' => isset($promo_text_caption) ? $promo_text_caption
           : NULL,
-    'show_menu_video_img' => isset($preview_image)
-      ? $preview_image
-      : NULL,
-    'show_menu_video_title' => isset($promo_text_title)
-      ? $promo_text_title
-      : NULL,
-    'show_menu_video_caption' => isset($promo_text_caption)
-      ? $promo_text_caption
-      : NULL,
     'show_menu_tab_items' => $show_menus,
   ));
 }
@@ -1119,15 +1112,34 @@ function _usanetwork_tv_shows_discription_item($show, $field_list, &$description
  * Get latest content from field_latest_carousel field of tv_show content type
  */
 function _usanetwork_tv_shows_get_latest_content($show) {
-  $show_latests_entities = field_get_items('node', $show, 'field_latest_carousel');
+  $show_latests_items = field_get_items('node', $show, 'field_latest_carousel_items');
 
   $items = FALSE;
-  if ($show_latests_entities) {
-    foreach ($show_latests_entities as $value) {
-      $items[] = (object) array(
-            'entity_id' => $value['target_id'],
-            'entity_type' => $value['target_type'],
-      );
+  if ($show_latests_items) {
+    foreach ($show_latests_items as $item) {
+      $item_object = field_collection_item_load($item);
+
+      $show_latest_entity_target_id = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_id');
+      $show_latest_entity_target_type = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_type');
+      $show_latest_entity_is_ymal = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_is_ymal', 'value');
+      if ($show_latest_entity_is_ymal) {
+        $show_latest_entity_ymal_title = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_ymal_block_title', 'value');
+      }
+
+      if ($show_latest_entity_target_id && $show_latest_entity_target_type) {
+        $item = array(
+          'entity_id' => $show_latest_entity_target_id,
+          'entity_type' => $show_latest_entity_target_type,
+        );
+
+        if ($show_latest_entity_is_ymal && $show_latest_entity_ymal_title) {
+          $item['ymal'] = $show_latest_entity_ymal_title;
+        }
+        else if ($show_latest_entity_is_ymal) {
+          $item['ymal'] = t('You might also like');
+        }
+        $items[] = (object) $item;
+      }
     }
   }
   return $items;
@@ -1135,7 +1147,7 @@ function _usanetwork_tv_shows_get_latest_content($show) {
 
 function _usanetwork_tv_shows_latest($show) {
   $show_latest = _usanetwork_tv_shows_get_latest_content($show);
-  
+
   if ($show_latest === FALSE) {
     return '';
   }
@@ -1181,8 +1193,8 @@ function _usanetwork_tv_shows_latest($show) {
     ));
 
     $latest_items[] = theme('usanetwork_tv_shows_latest_item', array(
-      'item_title' => NULL,
-      'show_class' => NULL,
+      'block_title' => isset($entity_data->ymal) ? $entity_data->ymal : NULL,
+      'show_class' => isset($entity_data->ymal) ? $related_content_data['show_class'] : NULL,
       'url' => $related_content_data['url'],
       'show_title' => $show->title,
       'additional' => isset($additional) ? $additional : NULL,
@@ -1215,4 +1227,17 @@ function _usanetwork_tv_shows_latest($show) {
     )
   ));
   return implode(PHP_EOL, $output);
+}
+
+/**
+ *  Implements hook_field_widget_form_alter().
+ */
+function usanetwork_tv_shows_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'field_collection' && $context['field']['field_name'] == 'field_latest_carousel_items') {
+    $element['field_ymal_block_title'][$element['field_ymal_block_title']['#language']][0]['value']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_latest_carousel_items[und][' . $element['#delta'] . '][field_is_ymal][und]"]' => array('checked' => TRUE),
+      ),
+    );
+  }
 }

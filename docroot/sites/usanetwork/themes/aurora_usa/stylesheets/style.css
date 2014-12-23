@@ -1282,7 +1282,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 1024px) {
   .play-icon.resize-avail-1024:before, .play-icon.resize-avail-480:before, .video-icon.resize-avail-1024:before, .video-icon.resize-avail-480:before {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 30px;
     height: 30px;
     width: 30px;
@@ -1297,7 +1297,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 1024px) {
   .play-icon-half.resize-avail-1024:before, .play-icon-half.resize-avail-480:before {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 30px;
     height: 30px;
     width: 30px;
@@ -1309,7 +1309,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 1024px) {
   .article-icon.resize-avail-1024:before, .article-icon.resize-avail-480:before {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 30px;
     height: 30px;
     width: 30px;
@@ -1321,7 +1321,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 1024px) {
   .game-icon.resize-avail-1024:before, .game-icon.resize-avail-480:before {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 30px;
     height: 30px;
     width: 30px;
@@ -1333,7 +1333,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 @media (max-width: 1024px) {
   .photo-icon.resize-avail-1024:before, .photo-icon.resize-avail-480:before {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 30px;
     height: 30px;
     width: 30px;
@@ -5628,6 +5628,16 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     height: 70px;
   }
 }
+.page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-icon:before {
+  left: 10px;
+  margin-top: -18.5px;
+  top: 50%;
+}
+@media (max-width: 1024px) {
+  .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-icon:before {
+    margin-top: -15px;
+  }
+}
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta {
   padding-left: 55px;
   padding-right: 20px;
@@ -5636,6 +5646,9 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   left: 0;
   top: 50%;
   width: 100%;
+}
+.page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional {
+  max-width: 100%;
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption {
   font-size: 9px;
@@ -5656,11 +5669,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span {
   font-size: 9px;
-}
-.page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .play-icon:before {
-  left: 10px;
-  margin-top: -15px;
-  top: 50%;
 }
 .page-videos .main .aspot-and-episodes .episodes-list .more-button {
   display: none;
@@ -5943,11 +5951,16 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: table-cell;
   margin: 0;
   vertical-align: middle;
-  width: 100%;
 }
 @media (min-width: 481px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper .description-block .title {
     background: none;
+    width: 175px;
+  }
+}
+@media (min-width: 1601px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item .description-wrapper .description-block .title {
+    width: 250px;
   }
 }
 @media (max-width: 480px) {
@@ -5960,6 +5973,7 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     position: relative;
     margin: 0;
     padding-left: 30px;
+    width: 100%;
   }
 }
 @media (min-width: 481px) {

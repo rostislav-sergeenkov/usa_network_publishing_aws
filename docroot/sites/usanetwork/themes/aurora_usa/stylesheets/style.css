@@ -5576,6 +5576,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     margin-right: 2%;
   }
 }
+@media (max-width: 768px) {
+  .page-videos .main .aspot-and-episodes .episodes-list ul li {
+    display: block;
+  }
+}
 @media (max-width: 640px) {
   .page-videos .main .aspot-and-episodes .episodes-list ul li {
     padding: 0;
@@ -5592,6 +5597,14 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   display: block;
   overflow: hidden;
   position: relative;
+}
+.page-videos .main .aspot-and-episodes .episodes-list ul li a .asset-img {
+  float: none;
+}
+@media (max-width: 768px) {
+  .page-videos .main .aspot-and-episodes .episodes-list ul li a .asset-img {
+    max-width: 100%;
+  }
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .asset-img img {
   width: 100%;
@@ -5681,57 +5694,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   text-transform: uppercase;
   text-decoration: none;
   top: 50%;
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a:after {
-  content: '';
-  display: block;
-  left: 50%;
-  margin-left: 26px;
-  margin-top: -8px;
-  position: absolute;
-  top: 50%;
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a.more:before {
-  content: 'More';
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a.more:after {
-  background-image: url('../images/sprites-seef14b3c82.png');
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 15px;
-  width: 18px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .page-videos .main .aspot-and-episodes .episodes-list .more-button a.more:after {
-    background-image: url('../images/sprites-retina-s8a084e9f88.png');
-    background-size: 65px 1462.5px;
-    background-position: 0 -1263px;
-    height: 15px;
-    width: 18px;
-  }
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a.less:before {
-  content: 'Less';
-}
-.page-videos .main .aspot-and-episodes .episodes-list .more-button a.less:after {
-  background-image: url('../images/sprites-seef14b3c82.png');
-  background-position: 0 -1279px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 15px;
-  width: 18px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .page-videos .main .aspot-and-episodes .episodes-list .more-button a.less:after {
-    background-image: url('../images/sprites-retina-s8a084e9f88.png');
-    background-size: 65px 1462.5px;
-    background-position: 0 -1278px;
-    height: 15px;
-    width: 18px;
-  }
 }
 .page-videos .main .ad-728x90 {
   display: none;
@@ -5906,7 +5868,17 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 @media (max-width: 1600px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item {
+    left: -175px;
+  }
+}
+@media (max-width: 1600px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item.start {
     left: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item.start {
+    left: 0;
   }
 }
 @media (max-width: 480px) {

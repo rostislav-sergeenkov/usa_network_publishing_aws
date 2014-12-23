@@ -529,6 +529,9 @@
       .carousel-description-item {
         height: auto;
         margin: 40px auto;
+        @include breakpoint($bp-1600-width) {
+          left: 50px;
+        }
         @include breakpoint($bp-480-width) {
           height: 86px;
           left: 0;
@@ -538,6 +541,9 @@
         }
         .description-wrapper {
           display: block;
+          @include breakpoint($bp-1600-width) {
+            width: 175px;
+          }
           @include breakpoint($bp-480-width) {
             background: $schedule-tonight;
             float: none;

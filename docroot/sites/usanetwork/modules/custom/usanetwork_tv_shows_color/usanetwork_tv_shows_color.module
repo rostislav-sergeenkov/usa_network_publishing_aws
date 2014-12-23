@@ -84,6 +84,22 @@ function usanetwork_tv_shows_color_default_codes() {
 }
 
 /**
+ * Implementation of hook_menu().
+ */
+function usanetwork_tv_shows_color_menu() {
+  // admin pages
+  $items['admin/usanetwork/shows/color'] = array(
+    'title' => t('Shows color'),
+    'description' => t('Show color regenerate page'),
+    'access arguments' => array('administer usanetwork'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_tv_shows_color_config')
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_init().
  */
 function usanetwork_tv_shows_color_init() {

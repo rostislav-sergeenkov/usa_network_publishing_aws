@@ -89,8 +89,8 @@ function usanetwork_tv_shows_color_default_codes() {
 function usanetwork_tv_shows_color_menu() {
   // admin pages
   $items['admin/usanetwork/shows/color'] = array(
-    'title' => t('Administer USA Shows'),
-    'description' => t('Show color'),
+    'title' => t('Shows color'),
+    'description' => t('Show color regenerate page'),
     'access arguments' => array('administer usanetwork'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_tv_shows_color_config')

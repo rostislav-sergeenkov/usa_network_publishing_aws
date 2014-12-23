@@ -217,6 +217,10 @@
   background-color: #000;
 }
 
+.dig li {
+  list-style: none;
+}
+
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
   font-family: 'usanetwork';

@@ -314,6 +314,7 @@
             }
             .visible-block {
               display: table;
+              position: relative;
               width: 100%;
               .time-wrapper {
                 display: table-cell;
@@ -413,18 +414,6 @@
                   height: 37px;
                   width: 37px;
                 }
-                .open-description {
-                  @include sprite-background(plus-icon-round);
-                  display: block;
-                  position: absolute;
-                  margin-left: -18.5px;
-                  margin-top: -18.5px;
-                  right: 50px;
-                  top: 50%;
-                  @include breakpoint($bp-640-width) {
-                    right: 0;
-                  }
-                }
                 .icons-schedule {
                   @include clear;
                   float: left;
@@ -451,6 +440,18 @@
                   @include breakpoint($bp-1024-width) {
                     display: none;
                   }
+                }
+              }
+              .open-description {
+                @include sprite-background(plus-icon-round);
+                display: block;
+                position: absolute;
+                margin-left: -18.5px;
+                margin-top: -18.5px;
+                right: 50px;
+                top: 50%;
+                @include breakpoint($bp-640-width) {
+                  right: 0;
                 }
               }
             }

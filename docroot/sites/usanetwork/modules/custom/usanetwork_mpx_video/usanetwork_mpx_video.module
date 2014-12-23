@@ -570,6 +570,10 @@ function usanetwork_mpx_video_views_ajax() {
  */
 function usanetwork_mpx_video_global_videos_page() {
   //get featured elements
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/full-episodes.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
+  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
 
   if (!empty($usanework_full_episodes_aspot)) {

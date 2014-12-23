@@ -18,6 +18,20 @@
         }
       });
 
+      $('.more-button a').click(function (e) {
+        e.preventDefault();
+
+        if ($(this).hasClass('more')) {
+          $(this).removeClass('more');
+          $(this).addClass('less');
+          $('.episodes-list ul').addClass('open');
+        } else {
+          $(this).removeClass('less');
+          $(this).addClass('more');
+          $('.episodes-list ul').removeClass('open');
+        }
+      });
+
       // TODO: spoilers active for shows carousels
       $('.page-videos .carousel-wrapper .carousel-description-item .title')
           .click(function (e) {

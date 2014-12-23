@@ -228,6 +228,9 @@ var activeSection,
   // actively scroll to an item on click
   function scrollTo(elem) {
     usa_debug('scrollTo(' + elem + ')');
+    // set height of characters line items
+    if (elem == 'characters') $('.dig #characters > ul > li').css('height', (wHeight - bottomOffset) + 'px');
+
     var currentLocation = sectionList.indexOf(activeSection),
         nextLocation = sectionList.indexOf(elem);
     if (currentLocation != nextLocation) {

@@ -1,11 +1,19 @@
 <?php
+/**
+ * @file
+ * Code for the usanetwork_microsite feature.
+ */
+
+include_once 'usanetwork_microsite.features.inc';
+
+
 if (!defined('USA_PREFIX')) define('USA_PREFIX', '<h2>');
 if (!defined('USA_SUFFIX')) define('USA_SUFFIX', '</h2>');
 function usa_print($msg) {
   return USA_PREFIX . $msg . USA_SUFFIX;
 }
 
-include 'usanetwork_microsite.admin.inc';
+include_once 'usanetwork_microsite.admin.inc';
 
 /**
  * Implements hook_menu().
@@ -23,7 +31,7 @@ function usanetwork_microsite_menu() {
 */
 // @TODO: SET THE FOLLOWING SO IT DOESN'T LOOK AT EVERY NODE!!!
 //  $items['node/%'] = array(
-  $items['node/54204'] = array(
+  $items['node/54211'] = array(
     'title' => 'Dig',
     'page callback' => 'usanetwork_dig_show_page',
     'page arguments' => array(1),
@@ -33,53 +41,12 @@ function usanetwork_microsite_menu() {
   return $items;
 }
 
-/**
- * Implements hook_preprocess_node()
- */
-/*
-function _usanetwork_aspot_preprocess_node($nid) {
-  $vars = (array)node_load($nid);
-//dpm($vars);
-  if ($vars['type'] == 'usa_homepage'){
-    $lang = $vars['language'];
-    if (isset($vars['field_usa_hp_arefs'])){
-      usanetwork_aspot_aspot_settings($vars['field_usa_hp_arefs'], $lang);
-    }
-  }
-  if ($vars['type'] == 'tv_show'){
-    $lang = $vars['language'];
-    if (isset($vars['field_usa_tv_a_spot'][$lang])){
-      usanetwork_aspot_aspot_settings($vars['field_usa_tv_a_spot'][$lang], $lang);
-    }
-  }
-  if ($vars['type'] == 'usanetwork_aspot') {
-    $current_path = current_path();
-//    if ($current_path == 'node/'.$vars['nid']) {
-      $lang = $vars['language'];
-      if ($vars['field_animated_a_spot'][$lang][0]['value']) {
-        $vars['aspot_page'] = TRUE;
-        $show = 'aspot';
-        $mp4_url = $vars['field_mp4_video_url'][$lang][0]['value'];
-        $webm_url = $vars['field_webm_video_url'][$lang][0]['value'];
-        $aspot_settings = array(
-          'show' => $show,
-          'mp4_url' => $mp4_url,
-          'webm_url' => $webm_url
-        );
-        drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
-      }
-//    }
-  }
-}
-*/
-
 function _usanetwork_microsite_get_info($nid) {
 //echo USA_PREFIX . '_usanetwork_microsite_get_info()' . USA_SUFFIX;
   $params = array();
   $node = node_load($nid);
   if ($node->type == 'usanetwork_microsite') {
 //dpm($node);
-//die();
 
     // set variables
     $lang = (!empty($node->language)) ? $node->language : 'und';

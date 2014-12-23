@@ -616,7 +616,10 @@ function usanetwork_mpx_video_global_videos_page() {
             'aspot_link' => url('file/' . $file->fid),
           );
         } else {
-          $video_image = image_style_url('300x169_video', $wrapper->getLocalThumbnailPath());
+          $video_image = $video_image = theme('image_style', array(
+            'path' => $wrapper->getLocalThumbnailPath(),
+            'style_name' => '300x169_video',
+          ));
           $featured_carousel[] = array(
             'video_image' => $video_image,
             'video_caption' => isset($video_caption) ? $video_caption : '',

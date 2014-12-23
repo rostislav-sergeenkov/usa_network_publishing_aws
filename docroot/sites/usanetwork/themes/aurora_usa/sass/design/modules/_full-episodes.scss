@@ -228,6 +228,9 @@
                 margin-right: 2%;
               }
             }
+            @include breakpoint($bp-768-width){
+              display: block;
+            }
             @include breakpoint($bp-640-width) {
               padding: 0;
               display: none;
@@ -243,6 +246,10 @@
               overflow: hidden;
               position: relative;
               .asset-img {
+                float: none;
+                @include breakpoint($bp-768-width){
+                  max-width: 100%;
+                }
                 img {
                   width: 100%;
                 }
@@ -330,31 +337,6 @@
               text-transform: uppercase;
               text-decoration: none;
               top: 50%;
-            }
-            &:after {
-              content: '';
-              display: block;
-              left: 50%;
-              margin-left: 26px;
-              margin-top: -8px;
-              position: absolute;
-              top: 50%;
-            }
-            &.more {
-              &:before {
-                content: 'More';
-              }
-              &:after {
-                @include sprite-background(more-icon);
-              }
-            }
-            &.less {
-              &:before {
-                content: 'Less';
-              }
-              &:after {
-                @include sprite-background(less-icon);
-              }
             }
           }
         }
@@ -530,7 +512,15 @@
         height: auto;
         margin: 40px auto;
         @include breakpoint($bp-1600-width) {
-          left: 50px;
+          left: -175px;
+        }
+        &.start{
+          @include breakpoint($bp-1600-width) {
+            left: 50px;
+          }
+          @include breakpoint($bp-480-width) {
+                       left: 0;
+                     }
         }
         @include breakpoint($bp-480-width) {
           height: 86px;

@@ -654,7 +654,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
       
       if (!empty($videos)) {
         $carousel_items = '';
-        foreach ($videos as $video) {
+        foreach ($videos as $id => $video) {
           $file = file_load($video->fid);
           $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
           $video_image = theme('image_style', array(
@@ -662,6 +662,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
             'style_name' => '300x169_video',
           ));
           $theme_item_variables = array(
+            'is_first' => ($id === 0) ? TRUE : FALSE,
             'video_url' => url('file/' . $video->fid),
             'video_title' => $video->title,
             'video_additional' => t('S@season episodes @episode', array('@season' => $video->field_mpx_season_number_value, '@episode' => $video->field_mpx_episode_number_value)),
@@ -674,6 +675,8 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           'show_title' => $result_item->title,
           'videos_count' => $count,
           'carousel_items' => $carousel_items,
+          'carousel_id' => 'carousel-' . drupal_clean_css_identifier(strtolower($result_item->title)),
+          'carousel_border' => usanetwork_tv_shows_color_show_css_class($result_item->nid),
         );
 
         $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);

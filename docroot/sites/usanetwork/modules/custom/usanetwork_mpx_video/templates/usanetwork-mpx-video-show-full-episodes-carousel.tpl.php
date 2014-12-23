@@ -6,12 +6,12 @@
     <div class="description-wrapper">
       <div class="description-block">
         <div class="caption">access all full episodes</div>
-        <div class="title show-color show-color-border"><?php print $show_title; ?></div>
+        <div class="title show-color show-color-border <?php print $carousel_border; ?>"><?php print $show_title; ?></div>
         <div class="additional-text"><?php print $videos_count; ?></div>
       </div>
     </div>
   </div>
-  <div class="carousel carousel-left start" data-carousel-id="2">
+  <div class="carousel carousel-left start" data-carousel-id="<?php print $carousel_id; ?>">
     <ul>
       <?php print $carousel_items; ?>
     </ul>

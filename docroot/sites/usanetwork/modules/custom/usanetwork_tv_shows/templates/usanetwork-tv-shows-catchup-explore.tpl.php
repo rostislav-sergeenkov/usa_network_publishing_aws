@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel carousel-<?php print $catch_up_item['carousel_position']; ?> start" data-carousel-id="<?php print $block_id; ?>" data-jcarousel="true">
+          <div class="carousel carousel-<?php print $catch_up_item['carousel_position']; ?> start" data-carousel-id="<?php print $block_id; ?>">
             <?php if (!empty($catch_up_item['elements'])): ?>
               <ul>
                 <?php foreach ($catch_up_item['elements'] as $catch_up_item_element): ?>
@@ -50,8 +50,8 @@
                 <?php endforeach; ?>
               </ul>
             <?php endif; ?>
-            <a class="jcarousel-controls jcarousel-control-prev inactive" href="javascript:void(0)" data-jcarouselcontrol="true"></a>
-            <a class="jcarousel-controls jcarousel-control-next inactive" href="javascript:void(0)" data-jcarouselcontrol="true"></a>
+            <a class="jcarousel-controls jcarousel-control-prev inactive" href="javascript:void(0)"></a>
+            <a class="jcarousel-controls jcarousel-control-next inactive" href="javascript:void(0)"></a>
           </div>
         <?php endforeach; ?>
       </div>
@@ -77,7 +77,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel carousel-<?php print $explore_item['carousel_position']; ?> start" data-carousel-id="<?php print $block_id; ?>" data-jcarousel="true">
+          <div class="carousel carousel-<?php print $explore_item['carousel_position']; ?> start" data-carousel-id="<?php print $block_id; ?>">
             <?php if (!empty($explore_item['elements'])): ?>
               <ul>
                 <?php foreach ($explore_item['elements'] as $explore_item_element): ?>
@@ -87,8 +87,8 @@
                 <?php endforeach; ?>
               </ul>
             <?php endif; ?>
-            <a class="jcarousel-controls jcarousel-control-prev inactive" href="javascript:void(0)" data-jcarouselcontrol="true"></a>
-            <a class="jcarousel-controls jcarousel-control-next inactive" href="javascript:void(0)" data-jcarouselcontrol="true"></a>
+            <a class="jcarousel-controls jcarousel-control-prev inactive" href="javascript:void(0)"></a>
+            <a class="jcarousel-controls jcarousel-control-next inactive" href="javascript:void(0)"></a>
           </div>
         <?php endforeach; ?>
       </div>

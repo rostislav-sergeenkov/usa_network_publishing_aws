@@ -22,7 +22,7 @@
     </div>
   </div>
   <?php if (!empty($slides)): ?>
-    <div data-jcarousel="true" class="show-carousel carousel carousel-left start" data-carousel-id="1">
+    <div class="show-carousel carousel carousel-left start" data-carousel-id="1">
       <ul class="slides">
         <?php foreach ($slides as $slide): ?>
           <li<?php if (!empty($slide['class'])): print ' class="' . $slide['class'] . '"'; endif;?>>

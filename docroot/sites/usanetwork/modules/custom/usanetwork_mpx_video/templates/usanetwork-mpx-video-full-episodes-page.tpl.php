@@ -1,7 +1,7 @@
 <div class="main">
   <div class="page-title">
     <h2>Latest full episodes</h2>
-    <a href="javascript:void(0)" class="sign-in-link">Sign in <span>All access</span></a>
+    <a href="javascript:void(0)" class="sign-in-link link-color-reset">Sign in <span>All access</span></a>
   </div>
   <div class="tab-item log-in">
     <div class="discription">

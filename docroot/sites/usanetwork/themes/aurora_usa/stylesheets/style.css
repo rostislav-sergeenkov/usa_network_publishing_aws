@@ -5485,6 +5485,12 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   bottom: 10%;
   left: 5%;
   position: absolute;
+  width: 90%;
+}
+.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta-icon:before {
+  left: 0;
+  margin-top: -18.5px;
+  top: 50%;
 }
 .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta {
   padding-left: 70px;
@@ -5504,11 +5510,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
 }
 .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span {
   font-size: 17px;
-}
-.page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .play-icon:before {
-  left: 0;
-  margin-top: -18.5px;
-  top: 50%;
 }
 @media (max-width: 768px) {
   .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title {
@@ -5635,6 +5636,11 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
     height: 70px;
   }
 }
+.page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-wrapper-inner {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta-icon:before {
   left: 10px;
   margin-top: -18.5px;
@@ -5646,12 +5652,13 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .episode-info .epi
   }
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta {
-  padding-left: 55px;
-  padding-right: 20px;
-  margin-top: -25px;
-  position: absolute;
+  display: table-cell;
   left: 0;
-  top: 50%;
+  max-width: 100px;
+  padding-left: 55px;
+  position: relative;
+  top: auto;
+  vertical-align: middle;
   width: 100%;
 }
 .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional {
@@ -8957,24 +8964,14 @@ body.front {
     margin-top: -35px;
   }
 }
-.featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
-  margin-left: 65px;
-  width: 411px;
-}
-@media (max-width: 1024px) {
-  .featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
-    margin-left: 65px;
-    width: 305px;
-  }
-}
-@media (max-width: 768px) {
-  .featured-block .carousel ul li .meta-icon ~ .meta .caption, .featured-block .carousel ul li .meta-icon ~ .meta .title {
-    width: 235px;
-  }
+.featured-block .carousel ul li .meta-icon ~ .meta {
+  padding-left: 65px;
 }
 .featured-block .carousel ul li .meta {
   display: table-cell;
+  max-width: 100px;
   overflow: hidden;
+  padding-left: 20px;
   position: relative;
   vertical-align: middle;
   width: 100%;
@@ -8985,23 +8982,9 @@ body.front {
     bottom: 16px;
   }
 }
-.featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
-  width: 456px;
-}
-@media (max-width: 1024px) {
-  .featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
-    width: 350px;
-  }
-}
-@media (max-width: 768px) {
-  .featured-block .carousel ul li .meta .caption, .featured-block .carousel ul li .meta .title {
-    width: 280px;
-  }
-}
 .featured-block .carousel ul li .meta .caption {
   font-size: 12px;
   line-height: 16px;
-  margin-left: 20px;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .caption {
@@ -9017,7 +9000,6 @@ body.front {
 }
 .featured-block .carousel ul li .meta .title {
   font-size: 20px;
-  margin-left: 20px;
 }
 @media (max-width: 768px) {
   .featured-block .carousel ul li .meta .title {
@@ -12560,19 +12542,19 @@ body.person-page #main {
   top: 50%;
   width: 37px;
 }
-.carousel ul li .meta-icon ~ .meta .caption, .carousel ul li .meta-icon ~ .meta .title, .carousel ul li .meta-icon ~ .meta .additional {
-  margin-left: 55px;
-  width: 245px;
+.carousel ul li .meta-icon ~ .meta {
+  padding-left: 55px;
 }
 .carousel ul li .meta {
   display: table-cell;
+  max-width: 100px;
   overflow: hidden;
+  padding-left: 10px;
   position: relative;
   vertical-align: middle;
   width: 100%;
 }
 .carousel ul li .meta .title, .carousel ul li .meta .additional, .carousel ul li .meta .caption {
-  margin-left: 10px;
   line-height: 18px;
 }
 .carousel ul li.poll a {

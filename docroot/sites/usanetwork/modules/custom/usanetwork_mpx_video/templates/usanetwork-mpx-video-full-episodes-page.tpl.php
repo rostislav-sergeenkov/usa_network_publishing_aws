@@ -47,8 +47,8 @@
             <?php endif; ?>
           </div>
           <div class="meta-wrapper">
+            <div class="meta-icon play-icon"></div>
             <div class="meta">
-              <div class="meta-icon play-icon"></div>
               <div class="caption"><?php print $featured_aspot['aspot_caption']; ?></div>
               <div class="title"><?php print $featured_aspot['aspot_title']; ?></div>
               <?php if ($featured_aspot['aspot_additional']) : ?>
@@ -65,13 +65,15 @@
             <a href="<?php print $featured_element['video_link']; ?>">
               <div class="asset-img"><?php print $featured_element['video_image']; ?></div>
               <div class="meta-wrapper">
-                <div class="meta-icon play-icon resize-avail-1024"></div>
-                <div class="meta">
-                  <div class="caption"><?php print $featured_element['video_caption']; ?></div>
-                  <div class="title"><?php print $featured_element['video_title']; ?></div>
-                  <?php if ($featured_element['video_additional']) : ?>
-                    <div class="additional"><span><?php print $featured_element['video_additional']; ?></span> <?php print $featured_element['video_duration']; ?></div>
-                  <?php endif; ?>
+                <div class="meta-wrapper-inner">
+                  <div class="meta-icon play-icon resize-avail-1024"></div>
+                  <div class="meta">
+                    <div class="caption"><?php print $featured_element['video_caption']; ?></div>
+                    <div class="title"><?php print $featured_element['video_title']; ?></div>
+                    <?php if ($featured_element['video_additional']) : ?>
+                      <div class="additional"><span><?php print $featured_element['video_additional']; ?></span> <?php print $featured_element['video_duration']; ?></div>
+                    <?php endif; ?>
+                  </div>
                 </div>
               </div>
             </a>

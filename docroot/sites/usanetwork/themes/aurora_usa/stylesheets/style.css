@@ -1162,9 +1162,14 @@ ul.menu li {
   margin: 0;
   text-transform: uppercase;
 }
+@media (max-width: 1024px) {
+  .page-title h2 {
+    font-size: 60px;
+  }
+}
 @media (max-width: 768px) {
   .page-title h2 {
-    font-size: 37px;
+    font-size: 34px;
     line-height: 70px;
   }
 }

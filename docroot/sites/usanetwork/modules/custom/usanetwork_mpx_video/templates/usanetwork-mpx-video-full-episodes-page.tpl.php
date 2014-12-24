@@ -1,7 +1,7 @@
 <div class="main">
   <div class="page-title">
     <h2>Latest full episodes</h2>
-    <a href="javascript:void(0)" class="sign-in-link">Sign in <span>All access</span></a>
+    <a href="javascript:void(0)" class="sign-in-link link-color-reset">Sign in <span>All access</span></a>
   </div>
   <div class="tab-item log-in">
     <div class="discription">
@@ -38,6 +38,9 @@
             <?php endif; ?>
             <?php if (!empty($featured_aspot['aspot_image']['desktop'])): ?>
               <div data-media="(min-width: 1025px)" data-src="<?php print $featured_aspot['aspot_image']['desktop']; ?>"></div>
+              <!--[if (IE 8) & (!IEMobile)]><!-->
+              <div data-src="<?php print $featured_aspot['aspot_image']['desktop']; ?>"></div>
+              <!--<![endif]-->
             <?php endif; ?>
             <?php if (!empty($featured_aspot['aspot_image']['desktop_retina'])): ?>
               <div data-media="(min-width: 1025px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $featured_aspot['aspot_image']['desktop_retina']; ?>"></div>

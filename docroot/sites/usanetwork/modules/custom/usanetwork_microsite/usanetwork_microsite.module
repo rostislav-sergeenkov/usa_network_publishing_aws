@@ -21,24 +21,7 @@ include_once 'usanetwork_microsite.admin.inc';
  * Implements hook_menu().
  */
 function usanetwork_microsite_menu() {
-//echo usa_print('usanetwork_microsite_menu');
   $items = array();
-/*
-  $items['node/%/#section=%/%'] = array(
-    'title' => 'Microsite Page',
-    'page callback' => 'usanetwork_dig_show_page_process',
-    'page arguments' => array(1),
-    'access arguments' => array('access content'),
-  );
-*/
-// @TODO: SET THE FOLLOWING SO IT DOESN'T LOOK AT EVERY NODE!!!
-//  $items['node/%'] = array(
-  //$items['node/55077'] = array(
-  //  'title' => 'Dig',
-  //  'page callback' => 'usanetwork_dig_show_page',
-  //  'page arguments' => array(1),
-  //  'access arguments' => array('access content'),
-  //);
 
   $items['node/%node/microsite'] = array(
     'title' => 'Test',
@@ -443,9 +426,10 @@ function usanetwork_dig_show_page($nid) {
  * Implements hook_theme().
  */
 function usanetwork_microsite_theme() {
-usa_print('usanetwork_microsite_theme');
+  // Never use 'print' or 'echo' in hook_hookname() functions. It could crash Drupal!
+  //usa_print('usanetwork_microsite_theme');
   $theme_path = drupal_get_path('theme', 'aurora_usa');
-// @TODO: FIND A WAY TO PASS $params['theme'] TO THE FILE TEMPLATE PATH
+  // @TODO: FIND A WAY TO PASS $params['theme'] TO THE FILE TEMPLATE PATH
   $themes = array(
     'usanetwork_dig_show_page' => array(
       'template' => 'usanetwork_microsite',

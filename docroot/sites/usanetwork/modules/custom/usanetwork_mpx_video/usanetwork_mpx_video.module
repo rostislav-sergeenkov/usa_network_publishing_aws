@@ -576,20 +576,16 @@ function usanetwork_mpx_video_global_videos_page() {
   drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
   $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
 
+  $featured_aspot= $featured_carousel= array();
   if (!empty($usanework_full_episodes_aspot)) {
     drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/matchmedia.js', 'file');
     drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/picturefill.js', 'file');
     ksort($usanework_full_episodes_aspot);
     $i = 0;
-    $featured_carousel = array();
     foreach($usanework_full_episodes_aspot as $aspot_element) {
       $file = file_load($aspot_element);
       if ($file) {
         $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
-        $video_image = theme('image_style', array(
-          'path' => $wrapper->getLocalThumbnailPath(),
-          'style_name' => '300x169_video',
-        ));
         
         if ($show_field = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id')) {
           $show = node_load($show_field);
@@ -599,22 +595,38 @@ function usanetwork_mpx_video_global_videos_page() {
         $video_title = $file->filename;
         $video_season = _usanetwork_get_field_item('file', $file, 'field_mpx_field_season', 'value');
         $video_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_field_episode', 'value');
-        $video_additional = t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode));
+        $video_additional = ($video_season) ? t('S@season episodes @episode', array('@season' => $video_season, '@episode' => $video_episode)) : FALSE;
         $video_duration = _usanetwork_get_field_item('file', $file, 'field_mpx_field_duration', 'value');
 
         if ($i == 0) {
-          $aspot_image = $video_image;
-          $aspot_caption = isset($video_caption) ? $video_caption : '';
-          $aspot_title = $video_title;
-          $aspot_additional = $video_additional;
-          $aspot_duration = $video_duration;
+          $video_image = array(
+            'mobile' => image_style_url('640x640', $wrapper->getLocalThumbnailPath()),
+            'mobile_retina' => image_style_url('1280x1280', $wrapper->getLocalThumbnailPath()),
+            'tablet' => image_style_url('1024x576', $wrapper->getLocalThumbnailPath()),
+            'tablet_retina' => image_style_url('2048x1152', $wrapper->getLocalThumbnailPath()),
+            'desktop' => image_style_url('2500x1407', $wrapper->getLocalThumbnailPath()),
+            'desktop_retina' => image_style_url('5000x2814', $wrapper->getLocalThumbnailPath()),
+          );
+          $featured_aspot = array(
+            'aspot_image' => $video_image,
+            'aspot_caption' => isset($video_caption) ? $video_caption : '',
+            'aspot_title' => $video_title,
+            'aspot_additional' => $video_additional,
+            'aspot_duration' => $video_duration,
+            'aspot_link' => url('file/' . $file->fid),
+          );
         } else {
+          $video_image = $video_image = theme('image_style', array(
+            'path' => $wrapper->getLocalThumbnailPath(),
+            'style_name' => '300x169_video',
+          ));
           $featured_carousel[] = array(
             'video_image' => $video_image,
-            'video_caption' => $video_caption,
+            'video_caption' => isset($video_caption) ? $video_caption : '',
             'video_title' => $video_title,
             'video_additional' => $video_additional,
             'video_duration' => $video_duration,
+            'video_link' => url('file/' . $file->fid),
           );
         }
       }
@@ -625,11 +637,7 @@ function usanetwork_mpx_video_global_videos_page() {
   $shows_carousels = _usanetwork_mpx_video_shows_full_episodes();
 
   $theme_variables = array(
-    'aspot_image' => $aspot_image,
-    'aspot_caption' => $aspot_caption,
-    'aspot_title' => $aspot_title,
-    'aspot_additional' => $aspot_additional,
-    'aspot_duration' => $aspot_duration,
+    'featured_aspot' => $featured_aspot,
     'features_full_episodes' => $featured_carousel,
     'shows_carousels' => $shows_carousels,
   );

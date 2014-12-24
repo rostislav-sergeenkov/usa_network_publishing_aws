@@ -158,9 +158,14 @@ address {
     color: $poll-color;
     font-family: $avalon-medium;
     font-size: 70px;
+    line-height: 70px;
+    margin: 0;
     text-transform: uppercase;
+    @include breakpoint($bp-1024-width) {
+      font-size: 60px;
+    }
     @include breakpoint($bp-768-width) {
-      font-size: 37px;
+      font-size: 34px;
       line-height: 70px;
     }
     @include breakpoint($bp-480-width) {

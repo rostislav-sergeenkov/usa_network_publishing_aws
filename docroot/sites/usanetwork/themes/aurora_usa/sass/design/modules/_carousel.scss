@@ -194,21 +194,19 @@
         top: 50%;
         width: 37px;
         ~ .meta {
-          .caption, .title, .additional {
-            margin-left: 55px;
-            width: 245px;
-          }
+          padding-left: 55px;
         }
       }
       @extend %meta;
       .meta {
         display: table-cell;
+        max-width: 100px;
         overflow: hidden;
+        padding-left: 10px;
         position: relative;
         vertical-align: middle;
         width: 100%;
         .title, .additional, .caption {
-          margin-left: 10px;
           line-height: 18px;
         }
 

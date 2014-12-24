@@ -65,13 +65,13 @@
             <a href="<?php print $featured_element['video_link']; ?>">
               <div class="asset-img"><?php print $featured_element['video_image']; ?></div>
               <div class="meta-wrapper">
+                <div class="meta-icon play-icon resize-avail-1024"></div>
                 <div class="meta">
                   <div class="caption"><?php print $featured_element['video_caption']; ?></div>
                   <div class="title"><?php print $featured_element['video_title']; ?></div>
                   <?php if ($featured_element['video_additional']) : ?>
                     <div class="additional"><span><?php print $featured_element['video_additional']; ?></span> <?php print $featured_element['video_duration']; ?></div>
                   <?php endif; ?>
-                  <div class="meta-icon play-icon resize-avail-1024"></div>
                 </div>
               </div>
             </a>

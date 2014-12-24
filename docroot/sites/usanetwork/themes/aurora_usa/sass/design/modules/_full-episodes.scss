@@ -268,6 +268,16 @@
                 @include breakpoint($bp-640-width) {
                   height: 70px;
                 }
+                .meta-icon {
+                  &:before {
+                    left: 10px;
+                    margin-top: -18.5px;
+                    top: 50%;
+                    @include breakpoint($bp-1024-width) {
+                      margin-top: -15px;
+                    }
+                  }
+                }
                 @extend %meta;
                 .meta {
                   padding-left: 55px;
@@ -277,6 +287,9 @@
                   left: 0;
                   top: 50%;
                   width: 100%;
+                  .caption, .title, .additional {
+                    max-width: 100%;
+                  }
                   .caption {
                     font-size: 9px;
                     line-height: 14px;
@@ -295,13 +308,6 @@
                     margin: 0;
                     span {
                       font-size: 9px;
-                    }
-                  }
-                  .play-icon {
-                    &:before {
-                      left: 10px;
-                      margin-top: -15px;
-                      top: 50%;
                     }
                   }
                 }
@@ -519,8 +525,8 @@
             left: 50px;
           }
           @include breakpoint($bp-480-width) {
-                       left: 0;
-                     }
+            left: 0;
+          }
         }
         @include breakpoint($bp-480-width) {
           height: 86px;
@@ -570,9 +576,12 @@
               display: table-cell;
               margin: 0;
               vertical-align: middle;
-              width: 100%;
               @include breakpoint($bp-min-481-width) {
                 background: none;
+                width: 175px;
+              }
+              @include breakpoint($bp-min-1601-width) {
+                width: 250px;
               }
               @include breakpoint($bp-480-width) {
                 cursor: pointer;
@@ -583,6 +592,7 @@
                 position: relative;
                 margin: 0;
                 padding-left: 30px;
+                width: 100%;
               }
               &:before {
                 @include breakpoint($bp-min-481-width) {

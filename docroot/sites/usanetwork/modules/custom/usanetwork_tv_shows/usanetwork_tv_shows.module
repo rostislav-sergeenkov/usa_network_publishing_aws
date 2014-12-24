@@ -808,35 +808,22 @@ function _usanetwork_tv_shows_aspot_block() {
         $related_nid = $featured_items_field_item['target_id'];
         $related_node = node_load($related_nid);
 
+        
         if ($related_node) {
-          $associated_video_field = field_get_items('node', $related_node, 'field_promo_assoc_video');
+          $promo_content = _usanetwork_promo_featured_content($related_node);
 
-          if (!empty($associated_video_field)) {
-            $video_file = file_load($associated_video_field[0]['target_id']);
-            $episode_image_uri = $video_file->uri;
+          $episode_theme_variables = array(
+            'url' => $promo_content['url'],
+            'title' => $promo_content['title'],
+            'additional' => $promo_content['caption'],
+            'image_url' => image_style_url('300x169_video', $promo_content['image_url']),
+          );
 
-            $video_info = _usanetwork_tv_shows_get_video_file_info($video_file);
-            $episode_image_uri_wrapper = file_stream_wrapper_get_instance_by_uri($video_file->uri);
-
-            if ($episode_image_uri_wrapper) {
-              $episode_image_uri = $episode_image_uri_wrapper->getLocalThumbnailPath();
-            }
-
-            $episode_theme_variables = array(
-              'url' => url('file/' . $video_file->fid),
-              'title' => $video_info['title'],
-              'series_and_number' => 'S' . $video_info['season'] . ' ' . t('Episode') . ' ' . $video_info['episode'],
-              'duration' => gmdate('H:i:s', $video_info['duration']),
-              'image_url' => image_style_url('300x169_video', $episode_image_uri),
-              'series_and_number' => NULL,
-            );
-
-            if (!empty($video_info['season']) && !empty($video_info['episode'])) {
-              $episode_theme_variables['series_and_number'] = 'S' . $video_info['season'] . ' ' . t('Episode') . ' ' . $video_info['episode'];
-            }
-
-            $theme_variables['episodes'][] = $episode_theme_variables;
+          if (!empty($promo_content['season_number']) && !empty($promo_content['episode_number'])) {
+            $episode_theme_variables['series_and_number'] = 'S' . $promo_content['season_number'] . ' ' . t('Episode') . ' ' . $promo_content['episode_number'];
           }
+
+          $theme_variables['episodes'][] = $episode_theme_variables;
         }
       }
     }

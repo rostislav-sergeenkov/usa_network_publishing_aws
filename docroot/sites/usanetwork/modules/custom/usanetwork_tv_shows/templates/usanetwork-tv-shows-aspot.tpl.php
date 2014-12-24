@@ -26,6 +26,8 @@
                 <?php endif; ?>
                 <?php if (!empty($episode['series_and_number']) && !empty($episode['duration'])): ?>
                   <div class="additional"><span><?php print $episode['series_and_number']; ?></span> <?php print $episode['duration']; ?></div>
+                <?php elseif (!empty($episode['additional'])) : ?>
+                  <div class="additional"><span><?php print $episode['additional']; ?></span></div>
                 <?php endif; ?>
                 <div class="meta-icon play-icon resize-avail-1024"></div>
               </div>

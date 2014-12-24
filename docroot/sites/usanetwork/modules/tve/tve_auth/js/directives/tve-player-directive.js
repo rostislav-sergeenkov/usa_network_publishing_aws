@@ -113,8 +113,8 @@
                   else {
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
-                        scope.isFreeWheelReq = false;
-                        scope.isDartReq = true;
+                        scope.isFreeWheelReq = true;
+                        scope.isDartReq = false;
                       });
                     }
                     scope.$apply(function() {

@@ -11,10 +11,14 @@
 
         if ($(this).hasClass('active')) {
           $(this).removeClass('active');
-          $('.tab-item.log-in').removeClass('active');
+          $('.tab-item.log-in').slideUp(350).removeClass('active');
         } else {
+          // HIDE MAIN NAVIGATION TABS
+          $('header .tab .no-refresh').removeClass('active').attr('data-state', '');
+          $('header .tab-item.active').removeClass('active').slideUp(450);
+
           $(this).addClass('active');
-          $('.tab-item.log-in').addClass('active');
+          $('.tab-item.log-in').slideDown(350).addClass('active');
         }
       });
 

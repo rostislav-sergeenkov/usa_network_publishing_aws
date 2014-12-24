@@ -127,23 +127,15 @@
             margin-top: -35px;
           }
           ~ .meta {
-            .caption, .title {
-              margin-left: 65px;
-              width: 411px;
-              @include breakpoint($bp-1024-width) {
-                margin-left: 65px;
-                width: 305px;
-              }
-              @include breakpoint($bp-768-width) {
-                width: 235px;
-              }
-            }
+            padding-left: 65px;
           }
         }
         @extend %meta;
         .meta {
           display: table-cell;
+          max-width: 100px;
           overflow: hidden;
+          padding-left: 20px;
           position: relative;
           vertical-align: middle;
           width: 100%;
@@ -151,19 +143,9 @@
             margin-left: 0px;
             bottom: 16px;
           }
-          .caption, .title {
-            width: 456px;
-            @include breakpoint($bp-1024-width) {
-              width: 350px;
-            }
-            @include breakpoint($bp-768-width) {
-              width: 280px;
-            }
-          }
           .caption {
             font-size: 12px;
             line-height: 16px;
-            margin-left: 20px;
             @include breakpoint($bp-768-width) {
               font-size: 10px;
               line-height: 14px;
@@ -175,7 +157,6 @@
           }
           .title {
             font-size: 20px;
-            margin-left: 20px;
             @include breakpoint($bp-768-width) {
               font-size: 16px;
             }

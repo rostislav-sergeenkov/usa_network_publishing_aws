@@ -21,6 +21,7 @@ var activeSection,
     topOffset = 0;
   }
 
+  //@TODO: change to other method name, "remove" already exists!
   Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
     while (L && this.length) {

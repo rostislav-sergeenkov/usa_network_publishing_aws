@@ -1158,6 +1158,8 @@ ul.menu li {
   color: #545454;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 70px;
+  line-height: 70px;
+  margin: 0;
   text-transform: uppercase;
 }
 @media (max-width: 768px) {

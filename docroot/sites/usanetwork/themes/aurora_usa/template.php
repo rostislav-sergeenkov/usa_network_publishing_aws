@@ -118,6 +118,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/follow-social.js');
   }
   $node = menu_get_object();
+  $vars['page']['catchall_seo_title'] = '';
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }

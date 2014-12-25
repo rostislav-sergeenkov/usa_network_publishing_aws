@@ -33,8 +33,7 @@
   <ul class="show-menu menu">
     <?php
     $i = 0;
-    foreach ($show_menu_tab_items as $show_menu_tab_item):
-      ?>
+    foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
       <li class="<?php if (isset($show_menu_tab_item['child']) && count($show_menu_tab_item['child']) > 0): ?>expanded<?php endif; ?> <?php if ($i == 0): ?> active<?php endif; ?>"><?php print $show_menu_tab_item['main_link']; ?>
           <?php if (isset($show_menu_tab_item['child']) && $show_menu_tab_item['child']): ?>
           <ul class="menu<?php if ($i == 0): ?> active<?php endif; ?>">

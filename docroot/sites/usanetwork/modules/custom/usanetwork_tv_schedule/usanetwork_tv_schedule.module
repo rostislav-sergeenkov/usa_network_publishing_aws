@@ -26,7 +26,7 @@ function usanetwork_tv_schedule_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('usanetwork_tv_schedule_settings_form'),
     'access arguments' => array('administer usanetwork'),
-    'file' =>  'usanetwork_tv_schedule.admin.inc',
+    'file' => 'usanetwork_tv_schedule.admin.inc',
   );
   $items['schedule'] = array(
     'title' => t('Schedule'),
@@ -47,7 +47,7 @@ function usanetwork_tv_schedule_menu() {
     'page callback' => 'usanetwork_on_now_social_block',
     'access arguments' => array('access content'),
   );
-   $items['usanetwork_get_user_timezone'] = array(
+  $items['usanetwork_get_user_timezone'] = array(
     'page callback' => 'usanetwork_tv_schedule_set_user_timezone',
     'access arguments' => array('access content'),
   );
@@ -156,7 +156,7 @@ function usanetwork_tv_schedule_theme() {
               'title' => NULL,
             ),
             'list' => array(
-              // $show_nid => $show_title,
+            // $show_nid => $show_title,
             )
           ),
           'show_time' => array(
@@ -164,7 +164,7 @@ function usanetwork_tv_schedule_theme() {
               'value' => NULL,
             ),
             'list' => array(
-              // $machine_readable_name => $human_readable_name,
+            // $machine_readable_name => $human_readable_name,
             ),
           ),
         ),
@@ -241,10 +241,10 @@ function usanetwork_tv_schedule_on_now_block() {
 
   $full_tv_schedule = array();
   // get the tv schedule from 00:00 AM till 5:59 AM
-  
+
   $on_now_image = theme('image', array('path' => drupal_get_path('module', 'usanetwork_tv_schedule') . '/images/USA_watchlive_btn.png',
-                          'attributes' => array('width' => '63')));
-  
+    'attributes' => array('width' => '63')));
+
   foreach ($tv_schedule_prev_day as $item) {
     $cal_date = (array) $item->CalendarScheduleDate;
 
@@ -262,12 +262,13 @@ function usanetwork_tv_schedule_on_now_block() {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($tv_show_name) == 'USA MOVIE') {
           $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-        } else {
+        }
+        else {
           $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . l($tv_show_name, 'videos/live') . '</span></div><span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
@@ -280,20 +281,21 @@ function usanetwork_tv_schedule_on_now_block() {
             $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
           }
           else {
-            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
           }
 
           // link things up
-          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-        } else {
-          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+        }
+        else {
+          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
 
       $full_tv_schedule[] = array(
         'date' => $cal_date[0],
         'time' => $end_time[0],
-        'ts' => strtotime($cal_date[0] .' '. $end_time[0]),
+        'ts' => strtotime($cal_date[0] . ' ' . $end_time[0]),
         'show_name' => check_plain($program[0]),
         'episode_name' => check_plain($episode[0]),
         'link' => $tv_show,
@@ -320,15 +322,16 @@ function usanetwork_tv_schedule_on_now_block() {
       $arrow = 'class="trigger"';
     }
     $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($tv_show) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
 
     if (empty($nid)) {
 //      if (strtoupper($tv_show_name) == 'USA MOVIE') {
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+      $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
 //      } else {
 //        $tv_show = $on_now_icon . $tv_show . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
 //      }
-    } else {
+    }
+    else {
 //      $path = drupal_get_path_alias('node/'.$nid);
       $show_node = node_load($nid);
       if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
@@ -337,20 +340,21 @@ function usanetwork_tv_schedule_on_now_block() {
           $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
         }
         else {
-          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
         }
 
         // link things up
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-      } else {
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+      }
+      else {
+        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       }
     }
 
     $full_tv_schedule[] = array(
       'date' => $cal_date[0],
       'time' => $end_time[0],
-      'ts' => strtotime($cal_date[0] .' '. $end_time[0]),
+      'ts' => strtotime($cal_date[0] . ' ' . $end_time[0]),
       'show_name' => check_plain($program[0]),
       'episode_name' => check_plain($episode[0]),
       'link' => $tv_show,
@@ -408,7 +412,7 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
 
   // JS to determine the current timezone from the user browser
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/jstz-1.0.4.min.js');
-  
+
   $start_hour = USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR;
   $timezone = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
   $_timezone = date_default_timezone_get();
@@ -422,7 +426,7 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
   // fetch yesterday's schedule to load the schedule from 00:00 AM till 5:59 AM
   $pdate = new DateTime(date('Y-m-d 00:00:00', $request_time), new DateTimeZone($timezone));
   $tv_schedule_prev_day = usanetwork_tv_schedule_fetch_program_guid_schedule($pdate->getTimestamp(), 60 * 60 * 6);
- 
+
   // return empty block if the tv schedule is empty
   if (empty($tv_schedule['program']) || empty($tv_schedule_prev_day['program'])) {
     // switch back to original server time zone
@@ -433,8 +437,8 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
   }
 
   $on_now_image = theme('image', array('path' => drupal_get_path('module', 'usanetwork_tv_schedule') . '/images/USA_watchlive_btn.png',
-                          'attributes' => array('width' => '63')));
-  
+    'attributes' => array('width' => '63')));
+
   $full_tv_schedule = array();
   // get the tv schedule from 00:00 AM till 5:59 AM
   $program_guids = array_keys($tv_schedule_prev_day['program']);
@@ -461,12 +465,13 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
         $arrow = 'class="trigger"';
       }
       $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+      $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
 
       if (empty($nid)) {
         if (strtoupper($show) == 'USA MOVIE') {
           $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-        } else {
+        }
+        else {
           $tv_show = $on_now_icon . '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . l($show, 'videos/live') . '</span></div><span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
@@ -478,13 +483,14 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
             $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
           }
           else {
-            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+            $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
           }
 
           // link things up
-          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-        } else {
-          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+        }
+        else {
+          $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
         }
       }
 
@@ -502,7 +508,7 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
   // get the tv schedule from 6:00 AM till end of the day
   $program_guids = array_keys($tv_schedule['program']);
   $tv_schedule_items = entity_load('program', $program_guids);
-  foreach ($tv_schedule_items as $item) {  
+  foreach ($tv_schedule_items as $item) {
     $cal_date = date('Y-m-d', $item->start_time);
     $end_time = $item->end_time;
     $show = html_entity_decode($item->parent_title);
@@ -524,11 +530,12 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
       $arrow = 'class="trigger"';
     }
     $on_now_icon = '<span id="on-now" ' . $arrow . '>onnow</span>';
-    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+    $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
 
     if (empty($nid)) {
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-    } else {
+      $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+    }
+    else {
       $show_node = node_load($nid);
       if (isset($show_node->field_display_title[$lang][0]['value']) && !empty($show_node->field_display_title[$lang][0]['value'])) {
         // check for identical program and episode name, if they match hide the episode
@@ -536,13 +543,14 @@ function usanetwork_tv_schedule_rovi_tv_on_now_block() {
           $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">&nbsp;</span></div>';
         }
         else {
-          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">'. $episode_name_clean . '</span></div>';
+          $tv_show = '<div id="on-now-show-episode"><span id="on-now-show-name" class="on-now-show-name">' . check_plain($show_node->field_display_title[$lang][0]['value']) . '</span> <span id="on-now-episode" class="on-now-episode">' . $episode_name_clean . '</span></div>';
         }
 
         // link things up
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
-      } else {
-        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)). '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
+      }
+      else {
+        $tv_show = $on_now_icon . l($tv_show, 'videos/live', array('html' => true)) . '<span id="on-now-image" class="on-now-image">' . l($on_now_image, 'videos/live', array('html' => TRUE)) . '</span>';
       }
     }
 
@@ -616,7 +624,7 @@ function usanetwork_tv_schedule_on_now_panel() {
 
   $output = theme('item_list', array('items' => $links));
 
-  return '<div id="inner-on-now-panel">'. $output .'</div>';
+  return '<div id="inner-on-now-panel">' . $output . '</div>';
 }
 
 /*
@@ -624,26 +632,27 @@ function usanetwork_tv_schedule_on_now_panel() {
  */
 function usanetwork_tv_schedule_set_user_timezone() {
   if (isset($_GET['usa_time'])) {
-    
-    $ny_time_offset = array('America/New_York' => 0, 'America/Chicago' => 0, 'America/Denver' => 0, 'America/Phoenix' => 3600, 
-        'America/Los_Angeles' => 10800, 'America/Anchorage' => 10800, 'Pacific/Honolulu' => 10800);
-    
+
+    $ny_time_offset = array('America/New_York' => 0, 'America/Chicago' => 0, 'America/Denver' => 0, 'America/Phoenix' => 3600,
+      'America/Los_Angeles' => 10800, 'America/Anchorage' => 10800, 'Pacific/Honolulu' => 10800);
+
     $usa_timezones = array_keys($ny_time_offset);
-    
-    if (in_array($_GET['usa_time'],$usa_timezones)) {
+
+    if (in_array($_GET['usa_time'], $usa_timezones)) {
       $_COOKIE['usa_time'] = $_GET['usa_time'];
       $_COOKIE['usa_offset'] = $_GET['usa_offset'];
       $_COOKIE['usa_ny_offset'] = $ny_time_offset[$_GET['usa_time']];
       setcookie('usa_time', $_GET['usa_time'], 0, '/', '.usanetwork.com');
       setcookie('usa_offset', $_GET['usa_offset'], 0, '/', '.usanetwork.com');
       setcookie('usa_ny_offset', $ny_time_offset[$_GET['usa_time']], 0, '/', '.usanetwork.com');
-    } else {
+    }
+    else {
       $_COOKIE['usa_time'] = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
       $_COOKIE['usa_offset'] = USANETWORK_TV_SCHEDULE_DEFAULT_TIME_OFFSET;
       $_COOKIE['usa_ny_offset'] = USANETWORK_TV_SCHEDULE_DEFAULT_NY_TIME_OFFSET;
       setcookie('usa_time', USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE, 0, '/', '.usanetwork.com');
-      setcookie('usa_offset', USANETWORK_TV_SCHEDULE_DEFAULT_TIME_OFFSET, 0, '/', '.usanetwork.com');       
-      setcookie('usa_ny_offset', USANETWORK_TV_SCHEDULE_DEFAULT_NY_TIME_OFFSET, 0, '/', '.usanetwork.com');       
+      setcookie('usa_offset', USANETWORK_TV_SCHEDULE_DEFAULT_TIME_OFFSET, 0, '/', '.usanetwork.com');
+      setcookie('usa_ny_offset', USANETWORK_TV_SCHEDULE_DEFAULT_NY_TIME_OFFSET, 0, '/', '.usanetwork.com');
     }
   }
 }
@@ -651,11 +660,13 @@ function usanetwork_tv_schedule_set_user_timezone() {
 /*
  * Helper for getting user request time for timezone
  */
+
 function usanetwork_tv_schedule_get_user_request_time() {
   if (isset($_COOKIE['usa_offset'])) {
     $time_ny_offset = $_COOKIE['usa_offset'];
     $request_time = REQUEST_TIME + ($time_ny_offset * 3600);
-  } else {
+  }
+  else {
     $request_time = REQUEST_TIME;
   }
   return $request_time;
@@ -667,7 +678,8 @@ function usanetwork_tv_schedule_get_user_request_time() {
 function usanetwork_tv_schedule_get_ny_user_request_time() {
   if (isset($_COOKIE['usa_ny_offset'])) {
     $request_time = REQUEST_TIME - $_COOKIE['usa_ny_offset'];
-  } else {
+  }
+  else {
     $request_time = REQUEST_TIME;
   }
   return $request_time;
@@ -681,7 +693,8 @@ function usanetwork_tv_schedule_live_tv() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.timezone.js', array('scope' => 'header', 'every_page' => true));
   if (isset($_COOKIE['usa_time'])) {
     $timezone = $_COOKIE['usa_time'];
-  } else {
+  }
+  else {
     $timezone = USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE;
   }
   $start_hour = USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR;
@@ -706,7 +719,6 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
   // styles moved to theme
   //@TODO clean this up
   //drupal_add_css(drupal_get_path('module', 'usanetwork_tv_schedule') . '/css/usanetwork_tv_schedule.css');
-
   // switch to ET timezone to perform calculations and then switch back to original timezone
   $orginal_tz = date_default_timezone_get();
   date_default_timezone_set('America/New_York');
@@ -731,7 +743,7 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     array('data' => t('TIME (ET)'), 'class' => array('show-time')),
     array('data' => t('PROGRAM'), 'class' => array('program')),
     array('data' => t('EPISODE'), 'class' => array('episode')),
-    array('data' =>  t('RATING'), 'class' => array('rating')),
+    array('data' => t('RATING'), 'class' => array('rating')),
   );
   $rows = array();
   foreach ($tv_schedule as $item) {
@@ -745,7 +757,7 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     $cur_date = (array) $item->ScheduleDate;
     $cal_date = (array) $item->CalendarScheduleDate;
     $day_part = (array) $item->Daypart;
-    $audio_desc  = (array) $item->AudioDesc;
+    $audio_desc = (array) $item->AudioDesc;
 
     if ($is_accessibility_page) {
       if ($audio_desc[0] == 'N') {
@@ -754,7 +766,7 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     }
 
     // convert to timestamp to determine on-air / off-air
-    $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
+    $show_time = strtotime($cal_date[0] . ' ' . $end_time[0]);
 
     // add styles to show hide the row based on on air value
     $classes[] = ($et_time >= $show_time) ? 'off-air' : 'on-air';
@@ -764,15 +776,18 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
 
     $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
     $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
-    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>' : '';
+    $episode_suffix = trim(check_plain($episode[0])) != '' ? '<span class="episode-suffix"> - ' . check_plain($episode[0]) . '</span>'
+          : '';
     if (empty($nid)) {
       if (strtoupper($show) == 'USA MOVIE') {
         $show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
-      } else {
+      }
+      else {
         $show = check_plain($program[0]) . $episode_suffix;
       }
-    } else {
-      $path = drupal_get_path_alias('node/'.$nid);
+    }
+    else {
+      $path = drupal_get_path_alias('node/' . $nid);
       $show = l(check_plain($program[0]) . $episode_suffix, $path, array('html' => true));
     }
 
@@ -789,11 +804,11 @@ function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
     $acessibility_text = variable_get('usanetwork_tv_schedule_accessibility_text');
     $output .= '<div class="accesibility-header">' . $acessibility_text['value'] . '</div>';
   }
-  
+
   $output .= theme('usanetwork_tv_schedule_navigation', array('timestamp' => strtotime($cur_date[0])));
 
   $output .= '<div class="schedule-table">';
-  $output .= empty($rows) ? '' : theme('table',array('header' =>  $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
+  $output .= empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('width' => '100%')));
   $output .= '</div>';
 
   // switch back to original server time zone
@@ -824,13 +839,11 @@ function usanetwork_tv_schedule_schedule_page() {
     //$et_time = strtotime(str_replace('_', '-', $sdate) . date(' H:i:s'));
   }
 
-  $filter_show_nid = !empty($query_params['show_nid'])
-    ? $query_params['show_nid']
-    : NULL;
+  $filter_show_nid = !empty($query_params['show_nid']) ? $query_params['show_nid']
+        : NULL;
 
-  $filter_show_time = !empty($query_params['show_time'])
-    ? $query_params['show_time']
-    : NULL;
+  $filter_show_time = !empty($query_params['show_time']) ? $query_params['show_time']
+        : NULL;
 
   $filter_show_time_values = array(
     'all_time' => t('All time'),
@@ -858,9 +871,7 @@ function usanetwork_tv_schedule_schedule_page() {
         $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
       }
 
-      $show_node = !empty($show_nid)
-        ? node_load($show_nid)
-        : NULL;
+      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
 
       if (empty($show_node)) {
         continue;
@@ -919,32 +930,20 @@ function usanetwork_tv_schedule_schedule_page() {
         'show_url' => url('node/' . $show_nid),
         'link_name' => $link_name,
         'link_class' => NULL, // Should not be active anyway
-        'show_class' => !empty($show_node)
-          ? usanetwork_tv_shows_color_show_css_class($show_node)
-          : '',
+        'show_class' => !empty($show_node) ? usanetwork_tv_shows_color_show_css_class($show_node)
+              : '',
         'time' => date('g:i', $start_time),
         'day_part' => date('A', $start_time),
-        'episode_show' => !empty($show_node->title)
-          ? $show_node->title
-          : $show_name,
-        'episode_title' => !empty($tv_episode)
-          ? $tv_episode->title
-          : $episode_title,
-        'episode_fid' => !empty($tv_episode)
-          ? $tv_episode->fid
-          : '',
-        'icon_reminder_url' => !empty($show_nid)
-          ? _usanetwork_menu_get_reminder_url($show_nid)
-          : '',
+        'episode_show' => !empty($show_node->title) ? $show_node->title : $show_name,
+        'episode_title' => !empty($tv_episode) ? $tv_episode->title : $episode_title,
+        'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
+        'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
+              : '',
         'rating' => $rating,
-        'episode_url' => !empty($tv_episode)
-          ? url('file/' . $tv_episode->fid)
-          : '',
+        'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $episode_image_uri,
         'show_image_url' => $show_logo_url,
-        'episode_description' => !empty($tv_episode)
-          ? $tv_episode->description
-          : '',
+        'episode_description' => !empty($tv_episode) ? $tv_episode->description : '',
         'show_description' => $show_description,
       );
 
@@ -960,23 +959,17 @@ function usanetwork_tv_schedule_schedule_page() {
     'filter' => array(
       'show_name' => array(
         'selected' => array(
-          'nid' => !empty($filter_show_nid)
-            ? $filter_show_nid
-            : 0,
-          'title' => !empty($filter_show_nid)
-            ? $filter_show_node->title
-            : t('Show all'),
+          'nid' => !empty($filter_show_nid) ? $filter_show_nid : 0,
+          'title' => !empty($filter_show_nid) ? $filter_show_node->title : t('Show all'),
         ),
         'list' => _usanetwork_tv_schedule_get_shows_list(TRUE),
       ),
       'show_time' => array(
         'selected' => array(
           'tid' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
-            ? 'all_time'
-            : $filter_show_time,
+                ? 'all_time' : $filter_show_time,
           'title' => (empty($filter_show_time) || (!empty($filter_show_time) && $filter_show_time == 'all_time'))
-            ? $filter_show_time_values['all_time']
-            : $filter_show_time_values[$filter_show_time],
+                ? $filter_show_time_values['all_time'] : $filter_show_time_values[$filter_show_time],
         ),
         'list' => $filter_show_time_values,
       ),
@@ -1066,7 +1059,7 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
 
   for ($day_number = 0; $day_number < 7; $day_number++) {
     $date_url = $schedule_page_url;
-    $new_day = strtotime('+'.$day_number.' days', $day_date);
+    $new_day = strtotime('+' . $day_number . ' days', $day_date);
 
     $date_query = $query_params;
 
@@ -1081,12 +1074,13 @@ function _usanetwork_tv_schedule_get_week_navigation($start_date = 0) {
       if ($query_params['sdate'] == $new_day) {
         $active = TRUE;
       }
-    } else {
+    }
+    else {
       if ($current_day == $new_day) {
         $active = TRUE;
       }
     }
-    
+
     $date_array[$day_number] = array(
       'active' => $active,
       'week_day' => date('D', $new_day),
@@ -1106,22 +1100,22 @@ function _usanetwork_tv_schedule_get_program_rating($program_rating) {
   $rating = '';
   if (isset($program_rating[0]['pllisting$rating'])) {
     $rating .= $program_rating[0]['pllisting$rating'];
-    if (isset($program_rating[0]['pllisting$subRatings'])){
+    if (isset($program_rating[0]['pllisting$subRatings'])) {
       foreach ($program_rating[0]['pllisting$subRatings'] as $key => $subrating) {
         if (isset($subrating) && ($subrating != 'none')) {
           $rating .= '-' . $subrating;
         }
-      } 
+      }
     }
   }
-  
+
   return $rating;
 }
 
 /**
  * Fetch TV schedule from compass xml feed
  */
-function usanetwork_tv_schedule_fetch_schedule($sdate='') {
+function usanetwork_tv_schedule_fetch_schedule($sdate = '') {
   $xml_feed = variable_get('usanetwork_tv_schedule_xml_feed', '');
 
   if (empty($xml_feed) || empty($sdate)) {
@@ -1131,7 +1125,13 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   // replace the tokens in the Compass XML URL
   $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
 
-  $result = drupal_http_request($xml_feed);
+  if (!$cache = cache_get('schedule_fetch_schedule')) {
+    $result = drupal_http_request($xml_feed);
+    cache_set('schedule_fetch_schedule', $result, 'cache', time() + 600);
+  } else {
+    $result = $cache->data;
+  }
+
   if (!isset($result->headers['content-type']) || $result->headers['content-type'] != 'application/xml') {
     return NULL;
   }
@@ -1139,21 +1139,22 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
   $proxy = variable_get('pub_utilities_proxy', '');
   if (!empty($proxy)) {
     $default_context = stream_context_get_default(
-      array('http' =>
-      array(
-        'proxy' => $proxy,
-        'request_fulluri' => true,
-      ),
-      )
+        array('http' =>
+          array(
+            'proxy' => $proxy,
+            'request_fulluri' => true,
+          ),
+        )
     );
     libxml_set_streams_context($default_context);
   }
-  $tvs = simplexml_load_file($xml_feed);
+  $tvs = simplexml_load_string($result->data);
   //$tvs = simplexml_load_file(drupal_get_path('module', 'usanetwork_tv_schedule') . '/test.xml','SimpleXMLElement',LIBXML_NOCDATA);
 
   if (!isset($tvs->Schedules->Schedule->ScheduleItem) || empty($tvs->Schedules->Schedule->ScheduleItem)) {
     return NULL;
-  } else {
+  }
+  else {
     return $tvs->Schedules->Schedule->ScheduleItem;
   }
 }
@@ -1161,8 +1162,9 @@ function usanetwork_tv_schedule_fetch_schedule($sdate='') {
 /*
  * Get schedule for date.
  */
-function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval = 86400) {
-  
+
+function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate = '', $interval = 86400) {
+
 //  if (module_exists('program_guide') && db_table_exists('programs')) {
 //  
 //    $query = new EntityFieldQuery();
@@ -1176,7 +1178,7 @@ function usanetwork_tv_schedule_fetch_program_guid_schedule($sdate='', $interval
 //
 //    return $result;
 //  } else {
-    $result = NULL;
+  $result = NULL;
 //  }
 }
 
@@ -1189,9 +1191,9 @@ function _usanetwork_tv_schedule_get_nid_by_title($title, $type) {
   $query = new EntityFieldQuery();
 
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $type)
-    ->propertyCondition('status', 1)
-    ->range(0, 1);
+      ->entityCondition('bundle', $type)
+      ->propertyCondition('status', 1)
+      ->range(0, 1);
 
   /**
    * add fix for WWE
@@ -1242,7 +1244,6 @@ function usanetwork_on_now_panel_js() {
   exit;
 }
 
-
 function usanetwork_on_now_social_block() {
   $arg = arg();
   $output = '&nbsp;';
@@ -1255,7 +1256,7 @@ function usanetwork_on_now_social_block() {
 
   if (!empty($arg[1]) && !empty($arg[2])) {
     $on_now = node_load($arg[1]);
-    $output = usanetwork_on_now_social_block_content($on_now,$arg[2]);
+    $output = usanetwork_on_now_social_block_content($on_now, $arg[2]);
   }
   echo $output;
   exit;
@@ -1263,18 +1264,17 @@ function usanetwork_on_now_social_block() {
 
 function usanetwork_on_now_social_block_content($node, $tab) {
   $output = '';
-  if($tab == 'twitter'){
+  if ($tab == 'twitter') {
     $output .= usanetwork_social_show_on_now_twitter_response($node, 3);
   }
-  if($tab == 'chatter'){
+  if ($tab == 'chatter') {
     $output .= usanetwork_social_show_on_now_chatter_response($node, 3);
   }
-  if($tab == 'facebook'){
+  if ($tab == 'facebook') {
     $output .= usanetwork_social_show_on_now_facebook_response($node, 3);
   }
   return $output;
 }
-
 
 /**
  * On now panel content given the tv show node
@@ -1294,18 +1294,20 @@ function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
     'title' => $image['title'],
   );
 
-  $path = drupal_get_path_alias('node/'.$node->nid);
+  $path = drupal_get_path_alias('node/' . $node->nid);
 
   $watch_now_image = theme('image', array('path' => drupal_get_path('module', 'usanetwork_tv_schedule') . '/images/USA_watchlive_onnow_btn.png',
-                          'attributes' => array('width' => '278')));
-  
+    'attributes' => array('width' => '278')));
+
   if (isset($node->field_show_sync[$lang][0]['value']) && !empty($node->field_show_sync[$lang][0]['value'])) {
     // link image to show sync page
-    $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path.'/social/sync', array('html' => true)) . '</figure></div>';
-  } else {
+    $output .= '<div class="show-on-now-wrapper"><div class="show-on-sync"><figure>' . l(theme('image_style', $on_now_image) . '<span>sync now</span>', $path . '/social/sync', array('html' => true)) . '</figure></div>';
+  }
+  else {
     if ($is_on_now) {
       $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), 'videos/live', array('html' => true)) . '<span id="show-on-now-watch">' . l($watch_now_image, 'videos/live', array('html' => TRUE)) . '</span></figure> ';
-    } else {
+    }
+    else {
       $output .= '<div class="show-on-now-wrapper"><figure>' . l(theme('image_style', $on_now_image), $path, array('html' => true)) . '</figure>';
     }
   }
@@ -1317,7 +1319,8 @@ function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
   // show name
   if (isset($node->field_display_title[$lang][0]['value']) && !empty($node->field_display_title[$lang][0]['value'])) {
     $output .= '<div class="show-title">' . l($node->field_display_title[$lang][0]['value'], $path) . '</div>';
-  } else {
+  }
+  else {
     $output .= '<div class="show-title">' . l($node->title, $path) . '</div>';
   }
 
@@ -1329,33 +1332,28 @@ function usanetwork_on_now_panel_node_content($node, $text, $is_on_now) {
   // social icons
   $output .= '<div class="icons-social icons-inline">';
   if (isset($node->field_usa_link_facebook[$lang][0]['url']) && !empty($node->field_usa_link_facebook[$lang][0]['url'])) {
-    $output .= l('facebook', $node->field_usa_link_facebook[$lang][0]['url'],
-      array('attributes' => array('class' => array('show-facebook', 'usasocial-facebook'))));
+    $output .= l('facebook', $node->field_usa_link_facebook[$lang][0]['url'], array('attributes' => array('class' => array('show-facebook', 'usasocial-facebook'))));
   }
   if (isset($node->field_usa_link_twitter[$lang][0]['url']) && !empty($node->field_usa_link_twitter[$lang][0]['url'])) {
-    $output .= l('twitter', $node->field_usa_link_twitter[$lang][0]['url'],
-      array('attributes' => array('class' => array('show-twitter', 'usasocial-twitter'))));
+    $output .= l('twitter', $node->field_usa_link_twitter[$lang][0]['url'], array('attributes' => array('class' => array('show-twitter', 'usasocial-twitter'))));
   }
   if (isset($node->field_usa_link_pinterest[$lang][0]['url']) && !empty($node->field_usa_link_pinterest[$lang][0]['url'])) {
-    $output .= l('pinterest', $node->field_usa_link_pinterest[$lang][0]['url'],
-      array('attributes' => array('class' => array('show-pinterest', 'usasocial-pinterest'))));
+    $output .= l('pinterest', $node->field_usa_link_pinterest[$lang][0]['url'], array('attributes' => array('class' => array('show-pinterest', 'usasocial-pinterest'))));
   }
   if (isset($node->field_usa_link_tumblr[$lang][0]['url']) && !empty($node->field_usa_link_tumblr[$lang][0]['url'])) {
-    $output .= l('tumblr', $node->field_usa_link_tumblr[$lang][0]['url'],
-      array('attributes' => array('class' => array('show-tumblr', 'usasocial-tumblr'))));
+    $output .= l('tumblr', $node->field_usa_link_tumblr[$lang][0]['url'], array('attributes' => array('class' => array('show-tumblr', 'usasocial-tumblr'))));
   }
   $output .= '</div>';
 
   $output .= '</div>';
 
   // schedule page
-  $output .= '<div class="full-schedule-link">'. l(t('View full schedule'), 'schedule') . '</div>';
+  $output .= '<div class="full-schedule-link">' . l(t('View full schedule'), 'schedule') . '</div>';
 
   $output .= '</div>';
 
   // chat with fans block
   //$output .= usanetwork_social_server_side_chatter_box($node, 2);
-
   // Social Show block
   $output .= usanetwork_social_show_on_now_box($node, 3);
 
@@ -1378,7 +1376,7 @@ function _usanetwork_onnow_upnext_node() {
   $request_time = REQUEST_TIME;
   $current_time = new DateTime(date('Y-m-d 00:00:00', $request_time), new DateTimeZone($timezone));
   $now = $current_time->getTimestamp();
-  $tv_schedule = usanetwork_tv_schedule_fetch_program_guid_schedule($now - 60 *60);
+  $tv_schedule = usanetwork_tv_schedule_fetch_program_guid_schedule($now - 60 * 60);
   date_default_timezone_set($_timezone);
   if (!empty($tv_schedule['program'])) {
     $program_guids = array_keys($tv_schedule['program']);
@@ -1386,36 +1384,37 @@ function _usanetwork_onnow_upnext_node() {
 
     foreach ($programs as $item) {
       $start_time = new DateTime(date('Y-m-d h:i:s A', $item->start_time), new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
-    $start_time = $start_time->getTimestamp();
+      $start_time = $start_time->getTimestamp();
       $end_time = new DateTime(date('Y-m-d h:i:s A', $item->end_time), new DateTimeZone(USANETWORK_TV_SCHEDULE_DEFAULT_TIMEZONE));
-    $end_time = $end_time->getTimestamp();
+      $end_time = $end_time->getTimestamp();
       $show_name = html_entity_decode($item->parent_title);
 
       if ($start_time <= $request_time && $end_time >= $request_time) {
-      // get onnow node
+        // get onnow node
         if ($show_name == 'Law & Order: Special Victims') {
           $show_name = 'Law & Order: SVU';
         }
-      $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
-      if ($nid) {
-        $result['on_now'] = node_load($nid);
+        $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+        if ($nid) {
+          $result['on_now'] = node_load($nid);
+        }
       }
-    }
 
       if ($start_time > $request_time) {
-      // get upnext node
+        // get upnext node
         if ($show_name == 'Law & Order: Special Victims') {
           $show_name = 'Law & Order: SVU';
         }
-      $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
-      if ($nid) {
-        $result['up_next'] = node_load($nid);
+        $nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+        if ($nid) {
+          $result['up_next'] = node_load($nid);
+        }
+        break;
       }
-      break;
     }
   }
-  } else {
-    
+  else {
+
     $tv_schedule = usanetwork_tv_schedule_fetch_schedule(date('Y_m_d'));
     if (empty($tv_schedule)) {
       return false;
@@ -1496,7 +1495,8 @@ function _usanetwork_tv_schedule_synchronize($feed_id = null) {
   // synchronize each feed
   foreach ($feeds as $_feed_id => $feed) {
     $last_updated = isset($feed['last_updated']) ? $feed['last_updated'] : 0;
-    $update_interval = isset($feed['update_interval']) ? $feed['update_interval'] : 21600; // 6 hours by default
+    $update_interval = isset($feed['update_interval']) ? $feed['update_interval']
+          : 21600; // 6 hours by default
 
     if (REQUEST_TIME - $last_updated > $update_interval) {
       $schedule_data = _usanetwork_tv_schedule_get_schedule_data_from_feed($feed['url']);
@@ -1504,25 +1504,25 @@ function _usanetwork_tv_schedule_synchronize($feed_id = null) {
         if ($first = reset($schedule_data)) {
           // delete old data
           db_delete('usanetwork_tv_schedule_items')
-            ->condition('feed', $_feed_id, '=')
-            ->condition('start_time', $first['start_time'], '>=')
-            ->execute();
+              ->condition('feed', $_feed_id, '=')
+              ->condition('start_time', $first['start_time'], '>=')
+              ->execute();
         }
 
         // insert new data
         foreach ($schedule_data as $item) {
           db_insert('usanetwork_tv_schedule_items')
-            ->fields(
-              array(
-                'feed' => $_feed_id,
-                'start_time' => $item['start_time'],
-                'end_time' => $item['end_time'],
-                'ratings' => '|' . implode('||', $item['program_ratings']) . '|',
-                'snid' => _usanetwork_tv_schedule_get_nid_by_title($item['short_title'], 'tv_show'),
-                'info' => serialize($item),
+              ->fields(
+                  array(
+                    'feed' => $_feed_id,
+                    'start_time' => $item['start_time'],
+                    'end_time' => $item['end_time'],
+                    'ratings' => '|' . implode('||', $item['program_ratings']) . '|',
+                    'snid' => _usanetwork_tv_schedule_get_nid_by_title($item['short_title'], 'tv_show'),
+                    'info' => serialize($item),
+                  )
               )
-            )
-            ->execute();
+              ->execute();
         }
         _usanetwork_tv_schedule_save_feed_config($_feed_id, array(
           'last_updated' => REQUEST_TIME,
@@ -1538,12 +1538,12 @@ function _usanetwork_tv_schedule_synchronize($feed_id = null) {
  */
 function _usanetwork_tv_schedule_get_by_date($feed_id, $date, $interval = 86400) {
   $items = db_select('usanetwork_tv_schedule_items', 's')
-    ->fields('s')
-    ->condition('feed', $feed_id, '=')
-    ->condition('start_time', $date, '>=')
-    ->condition('start_time', $date + $interval, '<')
-    ->execute()
-    ->fetchAll(PDO::FETCH_OBJ);
+      ->fields('s')
+      ->condition('feed', $feed_id, '=')
+      ->condition('start_time', $date, '>=')
+      ->condition('start_time', $date + $interval, '<')
+      ->execute()
+      ->fetchAll(PDO::FETCH_OBJ);
 
   return _usanetwork_tv_schedule_prepare($items);
 }
@@ -1553,14 +1553,14 @@ function _usanetwork_tv_schedule_get_by_date($feed_id, $date, $interval = 86400)
  */
 function _usanetwork_tv_schedule_get_on_now($feed_id) {
   $user_request_time = usanetwork_tv_schedule_get_ny_user_request_time();
-  
+
   $item = db_select('usanetwork_tv_schedule_items', 's')
-    ->fields('s')
-    ->condition('feed', $feed_id, '=')
-    ->condition('start_time', $user_request_time, '<=')
-    ->condition('end_time', $user_request_time, '>')
-    ->execute()
-    ->fetch(PDO::FETCH_OBJ);
+      ->fields('s')
+      ->condition('feed', $feed_id, '=')
+      ->condition('start_time', $user_request_time, '<=')
+      ->condition('end_time', $user_request_time, '>')
+      ->execute()
+      ->fetch(PDO::FETCH_OBJ);
 
   return _usanetwork_tv_schedule_prepare_item($item);
 }
@@ -1597,7 +1597,7 @@ function _usanetwork_tv_schedule_prepare_item($row) {
   }
 
   $request_time = usanetwork_tv_schedule_get_ny_user_request_time();
-  
+
   if ($item->start_time < $request_time && $item->end_time > $request_time) {
     $item->on_now = true;
   }
@@ -1678,8 +1678,7 @@ function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
 
     $program_ratings = array();
 
-    if (isset($entry['pllisting$program']['plprogram$ratings'])
-      && is_array($entry['pllisting$program']['plprogram$ratings'])) {
+    if (isset($entry['pllisting$program']['plprogram$ratings']) && is_array($entry['pllisting$program']['plprogram$ratings'])) {
       foreach ($entry['pllisting$program']['plprogram$ratings'] as $rating) {
         $program_rating = $rating['plprogram$rating'];
         if (count($rating['plprogram$subRatings'])) {
@@ -1708,10 +1707,7 @@ function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
  */
 function _usanetwork_tv_schedule_get_primetime_items($limit = USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH) {
   return usanetwork_schedule_pull_by_timerange(
-    USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR,
-    USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR,
-    $limit,
-    0
+      USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR, USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR, $limit, 0
   );
 }
 
@@ -1740,7 +1736,9 @@ function _usanetwork_tv_schedule_get_user_timezome_correlation($user_timezone, $
         return $dateTimeZone->getOffset($dateTime);
       }
     }
-    catch (Exception $e) {}
+    catch (Exception $e) {
+      
+    }
   }
 
   return 0;
@@ -1825,7 +1823,5 @@ function usanetwork_tv_schedule_get_running_show_ajax($user_timezone, $periods =
     }
   }
 
-  return $wrap_with_json
-    ? drupal_json_output($data)
-    : $data;
+  return $wrap_with_json ? drupal_json_output($data) : $data;
 }

@@ -1127,7 +1127,7 @@ function usanetwork_tv_schedule_fetch_schedule($sdate = '') {
 
   if (!$cache = cache_get('schedule_fetch_schedule')) {
     $result = drupal_http_request($xml_feed);
-    cache_set('schedule_fetch_schedule', $result, 'cache', time() + 600);
+    cache_set('schedule_fetch_schedule', $result, 'cache', time() + 900);
   } else {
     $result = $cache->data;
   }

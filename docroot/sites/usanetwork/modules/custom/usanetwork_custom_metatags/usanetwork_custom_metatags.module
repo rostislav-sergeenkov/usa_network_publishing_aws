@@ -188,7 +188,7 @@ function usanetwork_custom_metatags_preprocess_page(&$variables) {
     $node = $variables['node'];
     if (in_array($node->type, array('tv_show', 'catchall_page'))) {
       $settings = variable_get('usanetwork_meta_tags_settings', array()); 
-      if ($settings['node'][$node->type][$node->nid]) {
+      if (isset($settings['node'][$node->type][$node->nid]) && $settings['node'][$node->type][$node->nid]) {
         $weight = 50;
         foreach ($settings['node'][$node->type][$node->nid] as $key => $value) {
           $custom_tag = array(

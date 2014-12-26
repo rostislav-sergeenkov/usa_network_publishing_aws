@@ -130,6 +130,7 @@ function _usanetwork_related_content($type, $content, $basic_content = FALSE) {
     'url' => NULL,
     'image_url' => NULL,
     'title' => $content->title,
+    'caption' => FALSE,
     'season_number' => FALSE,
     'episode_number' => FALSE,
     'time' => NULL,

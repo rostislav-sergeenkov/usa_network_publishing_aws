@@ -21,18 +21,6 @@ var activeSection,
     topOffset = 0;
   }
 
-  //@TODO: change to other method name, "remove" already exists!
-  Array.prototype.remove = function() {
-    var what, a = arguments, L = a.length, ax;
-    while (L && this.length) {
-      what = a[--L];
-      while ((ax = this.indexOf(what)) !== -1) {
-        this.splice(ax, 1);
-      }
-    }
-    return this;
-  };
-
   // caption animations
   function getActiveItemNum(elem) {
     var activeItem = $(elem + '.active');

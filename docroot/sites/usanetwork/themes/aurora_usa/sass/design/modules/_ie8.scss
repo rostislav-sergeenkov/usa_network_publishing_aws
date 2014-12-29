@@ -460,4 +460,48 @@
       background: url("../images/sprites/circle.png") no-repeat transparent;
     }
   }
+  .carousel {
+    .jcarousel-controls {
+      background:transparent;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
+      &:hover{
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80ffffff,endColorstr=#80ffffff);
+      }
+    }
+  }
+  .aspot-and-episodes {
+    .episodes-list {
+      ul {
+        li {
+          .asset-img {
+            img {
+              height: auto!important;
+            }
+          }
+          .meta-wrapper {
+            background:transparent;
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+            zoom: 1;
+            .meta {
+              margin-top: -19px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
+        @include clear;
+        li{
+          float: left;
+          width: 33.33333%;
+          @include breakpoint($bp-768-width) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
 }

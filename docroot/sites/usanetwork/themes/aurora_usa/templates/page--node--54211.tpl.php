@@ -1,4 +1,8 @@
 <?php
+/**
+ * DIG MICROSITE PAGE TEMPLATE
+ * BE SURE TO NAME THIS FILE WITH THE CORRECT NODE ID FOR THE MICROSITE!!
+ */
 
 /**
  * @file
@@ -72,7 +76,10 @@
  * @see template_preprocess_page()
  * @see template_process()
  */
+//<h2>usanetwork/themes/aurora_usa/templates/page--node--54202.tpl.php</h2>
 ?>
+
+
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header role="banner" id="page-header">
     <span id="site-name">
@@ -92,6 +99,7 @@
   </header>
 
   <!-- TOP TITLE AND TOOLS BAR -->
+  <?php if (false): // DO NOT DISPLAY THE UTILITIES BAR (TOP BAR) HERE!! ?>
   <div id="utilities" class="clearfix <?php print $util_classes; ?>">
     <div id="utilities-wrap" class="clearfix">
     <?php if ($page['search']) : ?>
@@ -108,8 +116,9 @@
       </div>
     <?php endif; ?>
     <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
-    </div>
   </div>
+  </div>
+  <?php endif; ?>
 <?php endif; ?>
 <!-- /TOP TITLE AND TOOLS BAR -->
 

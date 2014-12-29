@@ -1,0 +1,15 @@
+#visible {
+    display: block;
+}
+#hidden-prev,
+#hidden-next,
+#microsite .hidden-section {
+    display: none;
+}
+#microsite .section-info {
+    display: none !important;
+}
+#activeContent > a[name] {
+    height: 130px;
+    display: block;
+}

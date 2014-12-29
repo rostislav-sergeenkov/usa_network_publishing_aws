@@ -1,3 +1,39 @@
+/**
+ * Maksim's remarks start
+ *
+ * 1. Never use this start point in Drupal JS files. It must looks next:
+ *
+ * (function ($) {
+ *  Drupal.behaviors.module_name_and_js_feature_name = {
+ *    attach: function (context, settings) {
+ *      ... // Put your code here
+ *    }
+ *  }
+ * })(jQuery);
+ *
+ * 2. Never use global variables in JS
+ *
+ * 3. Never leave debug functions in your code. The usa_debug uses "console.log()" method. It will flood in clients console
+ * and will break JS on old IE. For example IE 7 do not know what is "console.log" and this call will crash JS on the website.
+ *
+ * 4. Never overwrite standard JS functions like Array.prototype.remove(). After your redefinition the remove() method will
+ * remove array elements by value. It must remove by key. All other calls of this method after your code will incorrect.
+ * It's almost impossible to debug.
+ *
+ * 5. Always remove comma characters from latest array elements of object properties. If you leave a comma symbol after the
+ * last element old IE will crash JS running:
+ *
+ * var foo = {
+ *  bar1: 'foo-bar',
+ *  bar2: 'foo-bar2', <-- this comma will crash JS on old IE.
+ * };
+ *
+ * 6. Drupal's router does not know what is *.php file like in loadSection(). You need just put a full URL to page or use
+ * $.ajax({}) call.
+ *
+ * Maksim's remarks end
+ */
+
 // Global microsite functions
 var activeSection,
     activeItem;

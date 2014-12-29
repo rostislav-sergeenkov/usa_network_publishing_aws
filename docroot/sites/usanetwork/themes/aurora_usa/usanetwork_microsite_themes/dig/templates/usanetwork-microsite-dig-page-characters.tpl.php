@@ -1,8 +1,22 @@
 <?php
 /**
+ * Template of Characters page
  *
+ * Variables:
+ * - $people - array of people:
+ * -  - $people[n]['id'] - machine-readable id of person
+ * -  - $people[n]['quotes'] - array of person quotes:
+ * -  -  - $people[n]['quotes'][m]['quote'] - string value of quote field
+ * -  -  - $people[n]['quotes'][m]['source'] - string value of source field
+ * -  - $people[n]['title'] - the title of the person
+ * -  - $people[n]['description'] - the description of the person
+ * - $characters_navigation - pre-rendered list of navigation links
+ * - $background_url - the URL of page background
  */
 ?>
+<?php if (!empty($background_url)): ?>
+<div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
+  <?php endif; ?>
 <?php if (!empty($people)): ?>
   <ul>
     <?php foreach ($people as $person_key => $person): ?>
@@ -58,4 +72,7 @@
       </li>
     <?php endforeach; ?>
   </ul>
+<?php endif; ?>
+<?php if (!empty($background_url)): ?>
+  </div>
 <?php endif; ?>

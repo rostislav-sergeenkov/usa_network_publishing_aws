@@ -1,20 +1,25 @@
 <?php
 /**
+ * Games page template
  *
+ * Variables:
+ * - $pages - array of games pages data:
+ * -  - $pages['html'] - pre-rendered HTML of game page
+ * - $background_url - the URL of page background
  */
 ?>
-<?php if (!empty($html)): ?>
+<?php if (!empty($background_url)): ?>
+  <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
+<?php endif; ?>
+<?php if (!empty($pages['html'])): ?>
 <div id="viewport">
   <ul>
     <li>
-      <?php if (!empty($css)): ?>
-        <style><?php print $css; ?></style>
-      <?php endif; ?>
-      <?php print $html; ?>
-      <?php if (!empty($js)): ?>
-        <script><?php print $js; ?></script>
-      <?php endif; ?>
+      <?php print $pages['html']; ?>
     </li>
   </ul>
 </div>
+<?php endif; ?>
+<?php if (!empty($background_url)): ?>
+  </div>
 <?php endif; ?>

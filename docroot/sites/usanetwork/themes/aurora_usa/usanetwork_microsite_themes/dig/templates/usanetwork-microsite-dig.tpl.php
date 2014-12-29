@@ -1,9 +1,21 @@
 <?php
 /**
+ * Global tempalte of Dig theme
  *
+ * Variables:
+ * - $classes - a string list of classes that should be added to microsite template
+ * - $sections - array of sections items:
+ * -  - $sections[n]['content'] - pre-rendered content for displaying
+ * -  - $sections[n]['type'] - machine-readable name of a section
+ * -  - $sections[n]['name'] - human-readable name of a section
+ * -  - $sections[n]['is_last'] - flag of the latest section (appears only on the latest)
+ * - $sections_separator - pre-rendered sections separator
+ * - $tune_in - pre-rendered content of Tune In field
+ * - $sections_navlinks - pre-rendered array of navigation items:
+ * -  - $sections_navlinks[n][] = '<li><a>Name</a></li>
  */
 ?>
-<div id='microsite' class="<?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>">
+<div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
   <div id="activeContent">
     <div id="hidden-prev" class="hidden-section"></div>
     <div id="visible"></div>
@@ -17,6 +29,9 @@
           <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="clearfix">
             <?php print $section['content']; ?>
           </section>
+          <?php if (empty($section['is_last'])): ?>
+            <?php print $section_separator; ?>
+          <?php endif; ?>
         </div>
       <?php endif; ?>
     <?php endforeach; ?>

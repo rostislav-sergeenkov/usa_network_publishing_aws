@@ -1,8 +1,19 @@
 <?php
 /**
+ * Template of About page
  *
+ * Variables:
+ * - $about_quotations - array of quotations:
+ * -  - $about_quotations[n]['quote'] - string value of quote
+ * -  - $about_quotations[n]['source'] - string value of source
+ * - $title - string value of page title
+ * - $description - string value of page description
+ * - $background_url - the URL of page background
  */
 ?>
+<?php if (!empty($background_url)): ?>
+  <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
+<?php endif; ?>
 <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
 <div class="left-pane">
   <div class="caption">
@@ -35,5 +46,8 @@
       <?php endif; ?>
     </div>
     <div class="ad300x250"><center>Ad goes here!</center></div><!-- Maksim: <center></center> - IS DEPRECATED TAG! -->
+  </div>
+<?php endif; ?>
+<?php if (!empty($background_url)): ?>
   </div>
 <?php endif; ?>

@@ -25,6 +25,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'bspots' => NULL,
         'cspots' => NULL,
         'promo_carousel' => array(),
+        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_about' => array(
@@ -39,6 +40,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'source' => NULL,
           ),
         ),
+        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_characters' => array(
@@ -56,6 +58,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
                 'source' => NULL,
               ),
             ),
+            'background_url' => NULL,
           ),
         ),
         'characters_navigation' => NULL,
@@ -65,18 +68,41 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-dig-page-galleries',
       'path' => $subtheme_path,
       'variables' => array(
-
+        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_games' => array(
       'template' => 'usanetwork-microsite-dig-page-games',
       'path' => $subtheme_path,
-      'variables' => array(),
+      'variables' => array(
+        'pages' => array(
+          'html' => NULL,
+        ),
+        'background_url' => NULL,
+      ),
     ),
     'usanetwork_microsite_dig_page_videos' => array(
       'template' => 'usanetwork-microsite-dig-page-videos',
       'path' => $subtheme_path,
-      'variables' => array(),
+      'variables' => array(
+        'background_url' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Returns a list of theme-oriented JS and CSS files. The function name should be next:
+ * usanetwork_microsite_MICROSITE_SUB_THEME_NAME_get_theme_includes().
+ */
+function usanetwork_microsite_dig_get_theme_includes() {
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+
+  return array(
+    'js' => array(),
+    'css' => array(
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),
   );
 }

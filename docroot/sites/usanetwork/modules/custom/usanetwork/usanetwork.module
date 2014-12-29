@@ -252,6 +252,7 @@ function theme_usanetwork_item_list($variables) {
 
           $data .= theme_item_list(array(
             'items' => $links,
+            'title' => NULL,
             'type' => 'ul',
             'attributes' => array('class' => 'menu')
           ));

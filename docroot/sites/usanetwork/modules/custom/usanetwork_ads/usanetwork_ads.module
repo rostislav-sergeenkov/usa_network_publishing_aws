@@ -1,9 +1,9 @@
 <?php
+
 /**
  * @file
  * Code for the usanetwork_ads feature.
  */
-
 include_once 'usanetwork_ads.features.inc';
 include_once 'usanetwork_ads.pages.inc';
 
@@ -24,7 +24,7 @@ function usanetwork_ads_init() {
       'usanetwork_ads' => array(
         'onnow_upnext' => $props,
       ),
-    ), 'setting');
+        ), 'setting');
   }
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
@@ -37,21 +37,19 @@ function _usanetwork_ads_get_entity_tv_show($entity, $entity_type) {
   $tv_show_nid = NULL;
 
   if ($entity) {
-    list($entity_id,,$bundle) = entity_extract_ids($entity_type, $entity);
+    list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
     if ($entity_type == 'node' && $bundle == 'tv_show') {
       $tv_show_nid = $entity_id;
     }
     elseif (!empty($entity->field_show)) {
-      $show_ref = reset(field_get_items($entity_type, $entity, 'field_show'));
-      if ($show_ref) {
-        $tv_show_nid = $show_ref['target_id'];
+      if ($show_ref = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id')) {
+        $tv_show_nid = $show_ref;
       }
     }
   }
 
   return $tv_show_nid;
 }
-
 
 /**
  * Helper that converts menu item router paths to a more easily understood form.
@@ -64,7 +62,6 @@ function _usanetwork_ads_clean_menu_item_path($path) {
 
   return $path;
 }
-
 
 /**
  * Helper that returns menu paths (from hook_menu() implementations) for all
@@ -81,7 +78,7 @@ function _usanetwork_ads_get_usanetwork_menu_paths() {
       $module_menu_items = $function_name();
       foreach ($module_menu_items as $item_path => $item_data) {
         if (strpos($item_path, 'admin') === FALSE && $item_path != 'home') {
-          $menu_paths[ $item_path ] = _usanetwork_ads_clean_menu_item_path($item_path);
+          $menu_paths[$item_path] = _usanetwork_ads_clean_menu_item_path($item_path);
         }
       }
     }
@@ -91,7 +88,6 @@ function _usanetwork_ads_get_usanetwork_menu_paths() {
 
   return $menu_paths;
 }
-
 
 /**
  * Implements hook_permission().
@@ -106,7 +102,6 @@ function usanetwork_ads_permission() {
 
   return $permissions;
 }
-
 
 /**
  * Implements hook_menu().
@@ -178,17 +173,16 @@ function usanetwork_ads_page_alter(&$page) {
  */
 function usanetwork_ads_custom_dart_iframe() {
   global $base_url;
-  $jquery_path = $base_url .'/'. drupal_get_path('module', 'jquery_update') . '/replace/jquery/1.7/jquery.min.js?v=1.7.1';
+  $jquery_path = $base_url . '/' . drupal_get_path('module', 'jquery_update') . '/replace/jquery/1.7/jquery.min.js?v=1.7.1';
   $file_path = $base_url . '/' . drupal_get_path('module', 'usanetwork_ads') . '/usa_files/custom_dart_iframe.html';
   $file = file_get_contents($file_path);
-  $output  = '';
+  $output = '';
 
-  $output .= str_replace('<title>Ad Iframe | USA Network</title>', '<title>Ad Iframe | USA Network</title>'."\n".'<script src="'.$jquery_path.'"></script>', $file);
+  $output .= str_replace('<title>Ad Iframe | USA Network</title>', '<title>Ad Iframe | USA Network</title>' . "\n" . '<script src="' . $jquery_path . '"></script>', $file);
 
   echo $output;
   exit;
 }
-
 
 /**
  * Helper that returns nodes of a given type.
@@ -206,13 +200,12 @@ function _usanetwork_ads_get_nodes($node_type) {
 
   if (isset($tv_show_nodes_result['node'])) {
     foreach ($tv_show_nodes_result['node'] as $result) {
-      $tv_show_nodes[ $result->nid ] = node_load($result->nid, $result->vid);
+      $tv_show_nodes[$result->nid] = node_load($result->nid, $result->vid);
     }
   }
 
   return $tv_show_nodes;
 }
-
 
 /**
  * Helper for adding omniture settings form elements.
@@ -230,7 +223,7 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
   if ($clean_empty_values) {
     foreach ($existing_values as $delta => $values) {
       if (!$values['key'] && !$values['value']) {
-        unset($existing_values[ $delta ]);
+        unset($existing_values[$delta]);
       }
     }
     $existing_values = array_values($existing_values);
@@ -241,16 +234,16 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
 
   // Now add all of the elements.
   foreach ($existing_values as $delta => $values) {
-    $parent_element['omniture'][ $delta ] = array(
+    $parent_element['omniture'][$delta] = array(
       '#type' => 'fieldset',
       '#tree' => TRUE,
     );
-    $parent_element['omniture'][ $delta ]['key'] = array(
+    $parent_element['omniture'][$delta]['key'] = array(
       '#type' => 'textfield',
       '#title' => t('Variable Name'),
       '#default_value' => $values['key'],
     );
-    $parent_element['omniture'][ $delta ]['value'] = array(
+    $parent_element['omniture'][$delta]['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Value'),
       '#default_value' => $values['value'],
@@ -268,7 +261,6 @@ function _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, &$
     ),
   );
 }
-
 
 /**
  * Helper that adds "sect", "sub" and "sub2" form elements.
@@ -301,7 +293,6 @@ function _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, &$base_
         $default_settings['sub2'] : '',
   );
 }
-
 
 /**
  * Helper that returns the ad/tracking settings form elements for the homepage.
@@ -337,7 +328,6 @@ function _usanetwork_ads_adobe_tagloader_site_metric_form_elements(&$parent_elem
   );
 }
 
-
 /**
  * Helper that returns the ad/tracking settings form elements for the homepage.
  */
@@ -350,10 +340,10 @@ function _usanetwork_ads_homepage_site_metric_form_elements(&$parent_element, &$
   _usanetwork_ads_dart_site_metric_form_elements(t('Homepage Settings'), $parent_element['home'], $default_settings);
 
   // Omniture unlimited value form.
-  $form_state['storage']['default_settings']['home']['omniture'] = isset($form_state['storage']['default_settings']['home']['omniture']) ?
+  $form_state['storage']['default_settings']['home']['omniture'] = isset($form_state['storage']['default_settings']['home']['omniture'])
+        ?
       $form_state['storage']['default_settings']['home']['omniture'] : array();
-  _usanetwork_ads_omniture_site_metric_form_elements('homepage', t('Homepage'), $parent_element['home'],
-      $form_state['storage']['default_settings']['home']['omniture'], $form_state['new_form']);
+  _usanetwork_ads_omniture_site_metric_form_elements('homepage', t('Homepage'), $parent_element['home'], $form_state['storage']['default_settings']['home']['omniture'], $form_state['new_form']);
 }
 
 /**
@@ -370,31 +360,33 @@ function _usanetwork_ads_custom_path_site_metric_form_elements(&$parent_element,
 
   foreach (_usanetwork_ads_get_usanetwork_menu_paths() as $path => $clean_path) {
     // Set the base form element for this path.
-    $parent_element['path'][ $path ] = array();
+    $parent_element['path'][$path] = array();
     // Add DART form elements.
     $fieldset_title = t('Path:  %path', array('%path' => $clean_path));
-    $default_settings = isset($form_state['storage']['default_settings']['path'][ $path ]) ?
-        $form_state['storage']['default_settings']['path'][ $path ] : array();
-    _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['path'][ $path ], $default_settings);
+    $default_settings = isset($form_state['storage']['default_settings']['path'][$path])
+          ?
+        $form_state['storage']['default_settings']['path'][$path] : array();
+    _usanetwork_ads_dart_site_metric_form_elements($fieldset_title, $parent_element['path'][$path], $default_settings);
     // "Is Sponsored" checkbox.
-    $parent_element['path'][ $path ]['is_sponsored'] = array(
+    $parent_element['path'][$path]['is_sponsored'] = array(
       '#type' => 'checkbox',
       '#title' => t('Is Sponsored'),
-      '#default_value' => isset($form_state['storage']['default_settings']['path'][ $path ]['is_sponsored']) ?
-          $form_state['storage']['default_settings']['path'][ $path ]['is_sponsored'] : FALSE,
+      '#default_value' => isset($form_state['storage']['default_settings']['path'][$path]['is_sponsored'])
+            ?
+          $form_state['storage']['default_settings']['path'][$path]['is_sponsored']
+            : FALSE,
       '#weight' => -10,
     );
     // Omniture unlimited value form.
     $id_clean_path = preg_replace('|[^a-zA-Z0-9]+|', '-', $path);
     $id = 'custom-path-' . strtolower($id_clean_path);
     $display_id = t('@path', array('@path' => $clean_path));
-    $form_state['storage']['default_settings']['path'][ $path ]['omniture'] = isset($form_state['storage']['default_settings']['path'][ $path ]['omniture']) ?
-        $form_state['storage']['default_settings']['path'][ $path ]['omniture'] : array();
-    _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['path'][ $path ],
-        $form_state['storage']['default_settings']['path'][ $path ]['omniture'], $form_state['new_form']);
+    $form_state['storage']['default_settings']['path'][$path]['omniture'] = isset($form_state['storage']['default_settings']['path'][$path]['omniture'])
+          ?
+        $form_state['storage']['default_settings']['path'][$path]['omniture'] : array();
+    _usanetwork_ads_omniture_site_metric_form_elements($id, $display_id, $parent_element['path'][$path], $form_state['storage']['default_settings']['path'][$path]['omniture'], $form_state['new_form']);
   }
 }
-
 
 /**
  * Form definition / page callback for ad settings admin page.
@@ -403,7 +395,8 @@ function _usanetwork_ads_site_metric_settings_form($form, $form_state) {
 
   $form = array();
   $default_settings = variable_get('usanetwork_ads_site_metric_settings', array());
-  $form_state['storage']['default_settings'] = isset($form_state['storage']['default_settings']) ?
+  $form_state['storage']['default_settings'] = isset($form_state['storage']['default_settings'])
+        ?
       $form_state['storage']['default_settings'] : $default_settings;
   $form_state['new_form'] = isset($form_state['new_form']) ? FALSE : TRUE;
 
@@ -445,27 +438,26 @@ function _usanetwork_ads_add_omniture_value($form, $form_state) {
   // Ge the form element of the button that was clicked.
   $clicked_button_parents = $form_state['triggering_element']['#parents'];
   array_pop($clicked_button_parents);
-  $container = $form[ array_shift($clicked_button_parents) ];
+  $container = $form[array_shift($clicked_button_parents)];
   foreach ($clicked_button_parents as $element) {
-    $container = $container[ $element ];
+    $container = $container[$element];
   }
   $container = $container['omniture'];
 
   // Clean empty sets beyond the first.
   $skipped_first_empty_set = FALSE;
   foreach (element_children($container) as $delta) {
-    if (!$container[ $delta ]['key']['#value'] && !$container[ $delta ]['value']['#value']) {
+    if (!$container[$delta]['key']['#value'] && !$container[$delta]['value']['#value']) {
       if (!$skipped_first_empty_set) {
         $skipped_first_empty_set = TRUE;
         continue;
       }
-      unset($container[ $delta ]);
+      unset($container[$delta]);
     }
   }
 
   return $container;
 }
-
 
 /**
  * Implements hook_admin_paths().
@@ -477,7 +469,6 @@ function usanetwork_ads_admin_paths() {
 
   return $paths;
 }
-
 
 /**
  * Helper that returns DART ad settings for a given node.
@@ -495,7 +486,7 @@ function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
   $entity_settings = _usanetwork_ads_entity_settings($entity, $entity_type);
   $entity_dart_settings = array('sect' => NULL, 'sub' => NULL, 'sub2' => NULL);
   $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
-  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+  list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
 
   if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
     // node has page collection parent
@@ -525,7 +516,7 @@ function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
   }
 
   // override parent settings
-  foreach(array_keys($entity_dart_settings) as $variable) {
+  foreach (array_keys($entity_dart_settings) as $variable) {
     if (!empty($entity_settings[$variable])) {
       $entity_dart_settings[$variable] = $entity_settings[$variable];
     }
@@ -540,10 +531,12 @@ function _usanetwork_ads_get_entity_dart_settings($entity, $entity_type) {
 function _usanetwork_ads_get_node_refresh_settings($node) {
   $node_refresh_settings = array('isAutomaticRefresh' => NULL, 'refreshTime' => NULL);
 
-  $node_refresh_settings['isAutomaticRefresh'] = !empty($node->field_automatic_refresh[$node->language]['0']['value']) ?
-    $node->field_automatic_refresh[$node->language]['0']['value'] : '0';
-  $node_refresh_settings['refreshTime'] = !empty($node->field_refresh_time[$node->language]['0']['value']) ?
-    $node->field_refresh_time[$node->language]['0']['value'] : '';
+  $node_refresh_settings['isAutomaticRefresh'] = !empty($node->field_automatic_refresh[$node->language]['0']['value'])
+        ?
+      $node->field_automatic_refresh[$node->language]['0']['value'] : '0';
+  $node_refresh_settings['refreshTime'] = !empty($node->field_refresh_time[$node->language]['0']['value'])
+        ?
+      $node->field_refresh_time[$node->language]['0']['value'] : '';
 
   return $node_refresh_settings;
 }
@@ -563,12 +556,9 @@ function _usanetwork_ads_is_entity_sponsored($entity, $entity_type) {
   $entity_is_sponsored = FALSE;
   $tv_show_nid = _usanetwork_ads_get_entity_tv_show($entity, $entity_type);
 
-  if (empty($entity_settings)
-    || $entity_settings['default']
-    || !isset($entity_settings['is_sponsored'])
-    || $entity_settings['is_sponsored'] == -1
+  if (empty($entity_settings) || $entity_settings['default'] || !isset($entity_settings['is_sponsored']) || $entity_settings['is_sponsored'] == -1
   ) {
-    list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+    list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
 
     if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
       // entity has page collection parent
@@ -583,7 +573,7 @@ function _usanetwork_ads_is_entity_sponsored($entity, $entity_type) {
     $entity_is_sponsored = $entity_settings['is_sponsored'];
   }
 
-  return (bool)$entity_is_sponsored;
+  return (bool) $entity_is_sponsored;
 }
 
 /**
@@ -594,12 +584,12 @@ function _usanetwork_ads_is_path_sponsored($path) {
   $current_menu_item = menu_get_item();
   $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
 
-  $path_is_sponsored = isset($site_metric_settings['path'][ $current_menu_item['path'] ]['is_sponsored']) ?
-      $site_metric_settings['path'][ $current_menu_item['path'] ]['is_sponsored'] : FALSE;
+  $path_is_sponsored = isset($site_metric_settings['path'][$current_menu_item['path']]['is_sponsored'])
+        ?
+      $site_metric_settings['path'][$current_menu_item['path']]['is_sponsored'] : FALSE;
 
-  return (bool)$path_is_sponsored;
+  return (bool) $path_is_sponsored;
 }
-
 
 /**
  * Helper that returns whether or not a page is sponsored given a page variables array.
@@ -624,9 +614,8 @@ function _usanetwork_ads_is_page_sponsored($page_variables = array()) {
     $page_is_sponsored = _usanetwork_ads_is_path_sponsored($current_menu_item_path);
   }
 
-  return (bool)$page_is_sponsored;
+  return (bool) $page_is_sponsored;
 }
-
 
 /**
  * Implements hook_preprocess_page().
@@ -643,12 +632,15 @@ function usanetwork_ads_preprocess_page(&$variables) {
 
   // Homepage specific settings.
   if (drupal_is_front_page()) {
-    $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($site_metric_settings['home']['sect']) ?
-      $site_metric_settings['home']['sect'] : 'home';
-    $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($site_metric_settings['home']['sub']) ?
-      $site_metric_settings['home']['sub'] : '';
-    $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($site_metric_settings['home']['sub2']) ?
-      $site_metric_settings['home']['sub2'] : '';
+    $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($site_metric_settings['home']['sect'])
+          ?
+        $site_metric_settings['home']['sect'] : 'home';
+    $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($site_metric_settings['home']['sub'])
+          ?
+        $site_metric_settings['home']['sub'] : '';
+    $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($site_metric_settings['home']['sub2'])
+          ?
+        $site_metric_settings['home']['sub2'] : '';
   }
   // Entity page based settings.
   else {
@@ -662,20 +654,26 @@ function usanetwork_ads_preprocess_page(&$variables) {
     // Match current path to how it is made available by the custom modules.
     $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);
 
-    $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($site_metric_settings['path'][ $current_menu_item_path ]['sect']) ?
-      $site_metric_settings['path'][ $current_menu_item_path ]['sect'] : $usa_dart_js_settings['USA']['DART']['values']['sect'];
-    $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($site_metric_settings['path'][ $current_menu_item_path ]['sub']) ?
-      $site_metric_settings['path'][ $current_menu_item_path ]['sub'] : $usa_dart_js_settings['USA']['DART']['values']['sub'];
-    $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($site_metric_settings['path'][ $current_menu_item_path ]['sub2']) ?
-      $site_metric_settings['path'][ $current_menu_item_path ]['sub2'] : $usa_dart_js_settings['USA']['DART']['values']['sub2'];
+    $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($site_metric_settings['path'][$current_menu_item_path]['sect'])
+          ?
+        $site_metric_settings['path'][$current_menu_item_path]['sect'] : $usa_dart_js_settings['USA']['DART']['values']['sect'];
+    $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($site_metric_settings['path'][$current_menu_item_path]['sub'])
+          ?
+        $site_metric_settings['path'][$current_menu_item_path]['sub'] : $usa_dart_js_settings['USA']['DART']['values']['sub'];
+    $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($site_metric_settings['path'][$current_menu_item_path]['sub2'])
+          ?
+        $site_metric_settings['path'][$current_menu_item_path]['sub2'] : $usa_dart_js_settings['USA']['DART']['values']['sub2'];
   }
 
   // Ensure DART JS settings values.
-  $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sect']) ?
+  $usa_dart_js_settings['USA']['DART']['values']['sect'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sect'])
+        ?
       $usa_dart_js_settings['USA']['DART']['values']['sect'] : 'other';
-  $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub']) ?
+  $usa_dart_js_settings['USA']['DART']['values']['sub'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub'])
+        ?
       $usa_dart_js_settings['USA']['DART']['values']['sub'] : '';
-  $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2']) ?
+  $usa_dart_js_settings['USA']['DART']['values']['sub2'] = !empty($usa_dart_js_settings['USA']['DART']['values']['sub2'])
+        ?
       $usa_dart_js_settings['USA']['DART']['values']['sub2'] : '';
 
   // Set "is_sponsored" variable.
@@ -683,11 +681,14 @@ function usanetwork_ads_preprocess_page(&$variables) {
 
   // Add Adobe TagLoader variables and script.
   $adobe_tagloader_settings = variable_get('usanetwork_ads_adobe_tagloader_settings', array());
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($adobe_tagloader_settings['tag_container_dc']) ?
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerDC'] = !empty($adobe_tagloader_settings['tag_container_dc'])
+        ?
       $adobe_tagloader_settings['tag_container_dc'] : '';
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerNamespace'] = !empty($adobe_tagloader_settings['tag_container_namespace']) ?
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerNamespace'] = !empty($adobe_tagloader_settings['tag_container_namespace'])
+        ?
       $adobe_tagloader_settings['tag_container_namespace'] : '';
-  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($adobe_tagloader_settings['tag_container_name']) ?
+  $usa_dart_js_settings['USA']['adobeTagLoader']['tagContainerName'] = !empty($adobe_tagloader_settings['tag_container_name'])
+        ?
       $adobe_tagloader_settings['tag_container_name'] : '';
   #drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/usanetwork_ads.s_code.js', array('scope' => 'footer', 'preprocess' => FALSE));
 
@@ -698,8 +699,8 @@ function usanetwork_ads_preprocess_page(&$variables) {
   );
   drupal_alter('usa_dart', $usa_dart_js_settings, $context);
 
-	// Set the JS device detection code
-	drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/device-detect.js', array('type' => 'file', 'scope' => 'header', 'every_page' => true, 'preprocess' => true));
+  // Set the JS device detection code
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/device-detect.js', array('type' => 'file', 'scope' => 'header', 'every_page' => true, 'preprocess' => true));
 
   // Set the JS settings for ads.
   drupal_add_js($usa_dart_js_settings, 'setting');
@@ -710,10 +711,8 @@ function usanetwork_ads_preprocess_page(&$variables) {
  */
 function usanetwork_ads_form_sitecatalyst_admin_settings_alter(&$form, &$form_state) {
 
-  $form['general']['sitecatalyst_js_file_location']['#description'] =
-      t('USANETWORK NOTE: This is the path to the custom version of this file that exists in the usanetwork_ads directory.');
+  $form['general']['sitecatalyst_js_file_location']['#description'] = t('USANETWORK NOTE: This is the path to the custom version of this file that exists in the usanetwork_ads directory.');
 }
-
 
 /**
  * Helper tha returns omniture variables given an array of omniture settings.
@@ -730,13 +729,12 @@ function _usanetwork_ads_get_omniture_variables($omniture_settings) {
     $key = trim(check_plain($setting['key']));
     $value = trim(check_plain($setting['value']));
     if ($key && $value) {
-      $omniture_variables[ $key ] = $value;
+      $omniture_variables[$key] = $value;
     }
   }
 
   return $omniture_variables;
 }
-
 
 /**
  * Helper that returns omniture variables for a given node.
@@ -752,7 +750,7 @@ function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
   $entity_settings = _usanetwork_ads_entity_settings($entity, $entity_type);
   $entity_omniture_variables = array();
   $variables = array();
-  list($entity_id, , $bundle) = entity_extract_ids($entity_type, $entity);
+  list($entity_id,, $bundle) = entity_extract_ids($entity_type, $entity);
 
   // Omniture disabled
   if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
@@ -768,7 +766,8 @@ function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
 
   // load content type defaults
   $type_settings = _usanetwork_ads_bundle_settings($entity_type, $bundle);
-  $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables']) ? $type_settings['omniture']['variables'] : array());
+  $variables[] = _usanetwork_ads_get_omniture_variables(isset($type_settings['omniture']['variables'])
+            ? $type_settings['omniture']['variables'] : array());
 
   // node has page collection parent
   if ($entity_type == 'node' && isset($entity->page_collection_parent)) {
@@ -831,8 +830,9 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
       // Match current path to how it is made available by the custom modules.
       $current_menu_item_path = str_replace('node/%/', 'node/%node/', $current_menu_item_path);
       // Now over-ride node omniture variables with path variables.
-      $path_omniture_settings = isset($site_metric_settings['path'][ $current_menu_item_path ]['omniture']) ?
-        $site_metric_settings['path'][ $current_menu_item_path ]['omniture'] : array();
+      $path_omniture_settings = isset($site_metric_settings['path'][$current_menu_item_path]['omniture'])
+            ?
+          $site_metric_settings['path'][$current_menu_item_path]['omniture'] : array();
       $path_omniture_variables = _usanetwork_ads_get_omniture_variables($path_omniture_settings);
       $omniture_variables = $path_omniture_variables + $omniture_variables;
     }
@@ -864,8 +864,8 @@ function usanetwork_ads_dart_floodlight() {
 
   // array of show paths with floodlight settings
   // not all shows have these
-  $flooded_shows = array (
-    'burnnotice' => array (
+  $flooded_shows = array(
+    'burnnotice' => array(
       'flood_type' => 'burnn832',
       'flood_cat' => 'burnn655',
     ),
@@ -873,31 +873,31 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => '2014b766',
       'flood_cat' => 'chris342',
     ),
-    'covertaffairs' => array (
+    'covertaffairs' => array(
       'flood_type' => '2010a975',
       'flood_cat' => 'cover674',
     ),
-    'graceland' => array (
+    'graceland' => array(
       'flood_type' => '2012g832',
       'flood_cat' => 'grace041',
     ),
-    'house' => array (
+    'house' => array(
       'flood_type' => '2009o386',
       'flood_cat' => 'house033',
     ),
-    'svu' => array (
+    'svu' => array(
       'flood_type' => '2011d848',
       'flood_cat' => 'losvu379',
     ),
-    'modernfamily' => array (
+    'modernfamily' => array(
       'flood_type' => '2013i356',
       'flood_cat' => 'moder594',
     ),
-    'ncis' => array (
+    'ncis' => array(
       'flood_type' => '2009o386',
       'flood_cat' => 'ncisv947',
     ),
-    'necessaryroughness' => array (
+    'necessaryroughness' => array(
       'flood_type' => '2011d848',
       'flood_cat' => 'neces763',
     ),
@@ -905,11 +905,11 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => '2014b766',
       'flood_cat' => 'playi219',
     ),
-    'psych' => array (
+    'psych' => array(
       'flood_type' => '2011d848',
       'flood_cat' => 'psych222',
     ),
-    'royalpains' => array (
+    'royalpains' => array(
       'flood_type' => '2009o386',
       'flood_cat' => 'royal068',
     ),
@@ -917,19 +917,19 @@ function usanetwork_ads_dart_floodlight() {
       'flood_type' => '2014b766',
       'flood_cat' => 'siren497',
     ),
-    'suits' => array (
+    'suits' => array(
       'flood_type' => '2011d848',
       'flood_cat' => 'suits889',
     ),
-    'summercamp' => array (
+    'summercamp' => array(
       'flood_type' => '2012g832',
       'flood_cat' => 'summe869',
     ),
-    'whitecollar' => array (
+    'whitecollar' => array(
       'flood_type' => '2009o386',
       'flood_cat' => 'white368',
     ),
-    'wwe' => array (
+    'wwe' => array(
       'flood_type' => 'wwera869',
       'flood_cat' => 'wwera436',
     ),
@@ -937,7 +937,7 @@ function usanetwork_ads_dart_floodlight() {
 
   // see if we are on a tv show node landing page
   if ($node && $node->type == 'tv_show' && arg(2) == '') {
-    $custompath = drupal_get_path_alias('node/'.$node->nid);
+    $custompath = drupal_get_path_alias('node/' . $node->nid);
     $path_parts = explode('/', $custompath);
 
     // if the show is not in our array
@@ -963,7 +963,6 @@ function usanetwork_ads_dart_floodlight() {
     $output[] = '<noscript>';
     $output[] = '<iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $show['flood_type'] . ';cat=' . $show['flood_cat'] . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>';
     $output[] = '</noscript>';
-
   }
   // exit if not a show landing
   else {
@@ -1013,12 +1012,12 @@ function usanetwork_ads_preprocess_file_entity(&$variables) {
  * Insert Floodlight Tag.
  */
 function usanetwork_ads_page_build(&$page) {
-  
+
   if (drupal_is_front_page()) {
     $fontpages_select = db_select('node', 'n')
-            ->fields('n', array('nid'))
-            ->condition('type', 'usa_homepage');
-    $fontpages = $fontpages_select->execute()->fetchCol();     
+        ->fields('n', array('nid'))
+        ->condition('type', 'usa_homepage');
+    $fontpages = $fontpages_select->execute()->fetchCol();
     if ($fontpages) {
       $nodes = node_load_multiple($fontpages);
       foreach ($nodes as $node) {
@@ -1026,43 +1025,44 @@ function usanetwork_ads_page_build(&$page) {
         if ($floodlight_field_type) {
           $floodlight_field_type = reset($floodlight_field_type);
           if (!empty($floodlight_field_type['value'])) {
-            $floodlight_type = $floodlight_field_type['value']; 
+            $floodlight_type = $floodlight_field_type['value'];
           }
         }
         $floodlight_field_category = field_get_items('node', $node, 'field_floodlight_category');
         if ($floodlight_field_category) {
           $floodlight_field_category = reset($floodlight_field_category);
           if (!empty($floodlight_field_category['value'])) {
-            $floodlight_category = $floodlight_field_category['value']; 
-          } 
-        } 
-      }
-    }  
-  } else {
-    $menu_object = _usanetwork_menu_get_object();
-    if ($menu_object) {
-      if (isset($menu_object->type) && ($menu_object->type == 'tv_show')){
-      $floodlight_field_type = field_get_items('node', $menu_object, 'field_floodlight_type');
-      if ($floodlight_field_type) {
-        $floodlight_field_type = reset($floodlight_field_type);
-        if (!empty($floodlight_field_type['value'])) {
-          $floodlight_type = $floodlight_field_type['value']; 
-        }
-      }
-      $floodlight_field_category = field_get_items('node', $menu_object, 'field_floodlight_category');
-      if ($floodlight_field_category) {
-        $floodlight_field_category = reset($floodlight_field_category);
-        if (!empty($floodlight_field_category['value'])) {
-          $floodlight_category = $floodlight_field_category['value']; 
+            $floodlight_category = $floodlight_field_category['value'];
+          }
         }
       }
     }
   }
+  else {
+    $menu_object = _usanetwork_menu_get_object();
+    if ($menu_object) {
+      if (isset($menu_object->type) && ($menu_object->type == 'tv_show')) {
+        $floodlight_field_type = field_get_items('node', $menu_object, 'field_floodlight_type');
+        if ($floodlight_field_type) {
+          $floodlight_field_type = reset($floodlight_field_type);
+          if (!empty($floodlight_field_type['value'])) {
+            $floodlight_type = $floodlight_field_type['value'];
+          }
+        }
+        $floodlight_field_category = field_get_items('node', $menu_object, 'field_floodlight_category');
+        if ($floodlight_field_category) {
+          $floodlight_field_category = reset($floodlight_field_category);
+          if (!empty($floodlight_field_category['value'])) {
+            $floodlight_category = $floodlight_field_category['value'];
+          }
+        }
+      }
+    }
   }
-  
+
   if (!empty($floodlight_type) && !empty($floodlight_category)) {
-    
-     // code for the block
+
+    // code for the block
     $floodlight_js = '
     (function ($) {
       $(document).ready(function(){
@@ -1073,7 +1073,7 @@ function usanetwork_ads_page_build(&$page) {
     })(jQuery);
     ';
     drupal_add_js($floodlight_js, 'inline');
-    
+
     $page['page_top']['floodlight'] = array(
       '#markup' => '
 <noscript>

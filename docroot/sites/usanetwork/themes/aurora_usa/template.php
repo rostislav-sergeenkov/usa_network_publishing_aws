@@ -118,6 +118,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/follow-social.js');
   }
   $node = menu_get_object();
+  $vars['page']['catchall_seo_title'] = '';
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
@@ -167,6 +168,7 @@ function aurora_usa_preprocess_page(&$vars) {
     $util_regions[] = 'utilities-search';
   }
   //Assign SEO H1 field value to page variable
+  $vars['page']['seoh1'] = '';
   if (drupal_is_front_page()) {
     if (module_exists('usanetwork_home'))
     $vars['page']['seoh1'] = _usanetwork_home_get_field_value('field_seo_h1');

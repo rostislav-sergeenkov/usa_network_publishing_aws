@@ -55,20 +55,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->data = array(
     'label' => 'Catch-Up Carousel',
     'weight' => '95',
-    'children' => array(
-      0 => 'field_ctchup_carousel_2',
-      1 => 'field_ctchup_carousel_1',
-      2 => 'field_ctchup_carousel_3',
-      3 => 'field_ctchup_title_1',
-      4 => 'field_ctchup_title_2',
-      5 => 'field_ctchup_title_3',
-      6 => 'field_ctchup_pretitle_1',
-      7 => 'field_ctchup_pretitle_2',
-      8 => 'field_ctchup_pretitle_3',
-      9 => 'field_ctchup_posttitle_1',
-      10 => 'field_ctchup_posttitle_2',
-      11 => 'field_ctchup_posttitle_3',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Catch-Up Carousel',
@@ -365,15 +352,15 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_explr_carousel_1',
       1 => 'field_explr_carousel_2',
       2 => 'field_explr_carousel_3',
-      3 => 'field_explr_title_1',
-      4 => 'field_explr_title_2',
-      5 => 'field_explr_title_3',
+      3 => 'field_explr_posttitle_1',
+      4 => 'field_explr_posttitle_2',
+      5 => 'field_explr_posttitle_3',
       6 => 'field_explr_pretitle_1',
       7 => 'field_explr_pretitle_2',
       8 => 'field_explr_pretitle_3',
-      9 => 'field_explr_posttitle_1',
-      10 => 'field_explr_posttitle_2',
-      11 => 'field_explr_posttitle_3',
+      9 => 'field_explr_title_1',
+      10 => 'field_explr_title_2',
+      11 => 'field_explr_title_3',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -716,7 +703,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'A-SPOTS',
-    'weight' => '78',
+    'weight' => '75',
     'children' => array(
       0 => 'field_usa_tv_a_spot',
       1 => 'group_slide_settings',
@@ -932,7 +919,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_usa_custom_tab';
   $field_group->data = array(
     'label' => 'Latest Block',
-    'weight' => '74',
+    'weight' => '77',
     'children' => array(
       0 => 'field_additional_text',
       1 => 'field_caption_text',
@@ -950,6 +937,43 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_tv_shows_latest|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tvs_queue_tab|node|tv_show|form';
+  $field_group->group_name = 'group_tvs_queue_tab';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Shows Queue Block',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_tvs_desktop_cimage',
+      1 => 'field_tvs_mobile_cimage',
+      2 => 'field_tvs_promoted_content',
+      3 => 'field_tvs_promo_title_1',
+      4 => 'field_tvs_promo_content_1',
+      5 => 'field_tvs_promo_title_2',
+      6 => 'field_tvs_promo_content_2',
+      7 => 'field_tvs_promo_title_3',
+      8 => 'field_tvs_promo_content_3',
+      9 => 'field_tvs_promo_title_4',
+      10 => 'field_tvs_promo_content_4',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tvs_queue_tab|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1048,10 +1072,10 @@ function usanetwork_tv_shows_field_group_info() {
       3 => 'field_pathauto_alias',
       4 => 'field_facebook_tracking_enabled',
       5 => 'field_usa_tv_related_shows',
-      6 => 'group_usa_tv_promo_vids',
-      7 => 'group_usa_tv_promo',
-      8 => 'group_show_aspots',
-      9 => 'group_tv_shows_latest',
+      6 => 'group_show_aspots',
+      7 => 'group_tv_shows_latest',
+      8 => 'group_usa_tv_promo_vids',
+      9 => 'group_usa_tv_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1141,9 +1165,9 @@ function usanetwork_tv_shows_field_group_info() {
       2 => 'field_usa_link_pinterest',
       3 => 'field_usa_link_tumblr',
       4 => 'field_usa_link_twitter',
-      5 => 'field_usa_link_instagram',
-      6 => 'field_usa_link_youtube',
-      7 => 'field_usa_link_googleplus',
+      5 => 'field_usa_link_googleplus',
+      6 => 'field_usa_link_instagram',
+      7 => 'field_usa_link_youtube',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1157,43 +1181,6 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_tvs_queue_tab|node|tv_show|form';
-  $field_group->group_name = 'group_tvs_queue_tab';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Shows Queue Block',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_tvs_desktop_cimage',
-      1 => 'field_tvs_mobile_cimage',
-      2 => 'field_tvs_promoted_content',
-      3 => 'field_tvs_promo_title_1',
-      4 => 'field_tvs_promo_content_1',
-      5 => 'field_tvs_promo_title_2',
-      6 => 'field_tvs_promo_content_2',
-      7 => 'field_tvs_promo_title_3',
-      8 => 'field_tvs_promo_content_3',
-      9 => 'field_tvs_promo_title_4',
-      10 => 'field_tvs_promo_content_4',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_tvs_queue_tab|node|tv_show|form'] = $field_group;
 
   return $export;
 }

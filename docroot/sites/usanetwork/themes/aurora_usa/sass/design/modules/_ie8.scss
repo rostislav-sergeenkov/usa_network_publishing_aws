@@ -490,4 +490,18 @@
       }
     }
   }
+  footer{
+    .shows-menu, .app-and-services-menu{
+      ul.menu{
+        @include clear;
+        li{
+          float: left;
+          width: 33.33333%;
+          @include breakpoint($bp-768-width){
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
 }

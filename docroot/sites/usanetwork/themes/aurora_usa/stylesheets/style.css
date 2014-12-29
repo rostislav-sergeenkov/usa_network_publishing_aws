@@ -13601,6 +13601,38 @@ body.person-page #main {
 .ie8 .meta-icon:before {
   background: url("../images/sprites/circle.png") no-repeat transparent;
 }
+.ie8 .carousel .jcarousel-controls {
+  background: transparent;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
+}
+.ie8 .carousel .jcarousel-controls:hover {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80ffffff,endColorstr=#80ffffff);
+}
+.ie8 .aspot-and-episodes .episodes-list ul li .asset-img img {
+  height: auto !important;
+}
+.ie8 .aspot-and-episodes .episodes-list ul li .meta-wrapper {
+  background: transparent;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+  zoom: 1;
+}
+.ie8 .aspot-and-episodes .episodes-list ul li .meta-wrapper .meta {
+  margin-top: -19px !important;
+}
+.ie8 footer .shows-menu ul.menu:after, .ie8 footer .app-and-services-menu ul.menu:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.ie8 footer .shows-menu ul.menu li, .ie8 footer .app-and-services-menu ul.menu li {
+  float: left;
+  width: 33.33333%;
+}
+@media (max-width: 768px) {
+  .ie8 footer .shows-menu ul.menu li, .ie8 footer .app-and-services-menu ul.menu li {
+    width: 50%;
+  }
+}
 
 .ie9 footer .shows-menu ul.menu:after, .ie9 footer .app-and-services-menu ul.menu:after {
   clear: both;

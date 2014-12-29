@@ -460,8 +460,8 @@
       background: url("../images/sprites/circle.png") no-repeat transparent;
     }
   }
-  .carousel{
-    .jcarousel-controls{
+  .carousel {
+    .jcarousel-controls {
       background:transparent;
       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
       &:hover{
@@ -469,20 +469,20 @@
       }
     }
   }
-  .aspot-and-episodes{
-    .episodes-list{
-      ul{
-        li{
-          .asset-img{
-            img{
+  .aspot-and-episodes {
+    .episodes-list {
+      ul {
+        li {
+          .asset-img {
+            img {
               height: auto!important;
             }
           }
-          .meta-wrapper{
+          .meta-wrapper {
             background:transparent;
             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
             zoom: 1;
-            .meta{
+            .meta {
               margin-top: -19px!important;
             }
           }
@@ -490,14 +490,14 @@
       }
     }
   }
-  footer{
-    .shows-menu, .app-and-services-menu{
-      ul.menu{
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
         @include clear;
         li{
           float: left;
           width: 33.33333%;
-          @include breakpoint($bp-768-width){
+          @include breakpoint($bp-768-width) {
             width: 50%;
           }
         }

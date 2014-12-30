@@ -91,8 +91,7 @@ function usanetwork_watchwith_preprocess_file_entity(&$variables) {
             $variables['watchwith_hide_sidecar_tabs'] = variable_get('tve_watchwith_hide_sidecar_tabs', 1);
 
             $default_no_content_message = variable_get('tve_watchwith_default_no_content_message', array());
-            $variables['watchwith_error_message'] = isset($default_no_content_message['value'])
-                  ? $default_no_content_message['value'] : '';
+            $variables['watchwith_error_message'] = isset($default_no_content_message['value']) ? $default_no_content_message['value'] : '';
           }
         }
       }

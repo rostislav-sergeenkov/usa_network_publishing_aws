@@ -1059,8 +1059,8 @@ function _usanetwork_tv_shows_submenu() {
 
   return theme('usanetwork_tv_shows_submenu', array(
     'show_title' => $show_title,
-    'weekday' => $show_weekday,
-    'time' => $show_time,
+    'weekday' => isset($show_weekday) ? $show_weekday : NULL,
+    'time' => isset($show_time) ? $show_time : NULL,
     'social_icons' => $social_links,
     'show_menu_video_url' => isset($promo_link_url) ? $promo_link_url : NULL,
     'show_menu_video_img' => isset($preview_image) ? $preview_image : NULL,

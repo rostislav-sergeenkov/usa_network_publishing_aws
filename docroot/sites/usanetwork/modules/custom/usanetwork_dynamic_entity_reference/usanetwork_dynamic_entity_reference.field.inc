@@ -123,7 +123,7 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
       $element += array(
         '#type' => 'textfield',
         '#maxlength' => 1024,
-        '#default_value' => $item ? $item['entity']->label() . ' (' . $item['entity']->getIdentifier() . ')'
+        '#default_value' => $item ? $item['entity']->label() . ' (' . $item['entity']->getBundle() . ') (' . $item['entity']->getIdentifier() . ')'
               : '',
         '#autocomplete_path' => 'usanetwork_dynamic_entity_reference/autocomplete/' . implode('/', $autocomplete_path_parameters),
         '#element_validate' => array('usanetwork_dynamic_entity_reference_field_widget_form_validate'),

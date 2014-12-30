@@ -12,7 +12,6 @@
  *
  * @ingroup tve_mvpd
  */
-
 // MVPD fields (properties).
 define('TVE_MVPD_COLOR_DARK', 'field_mvpd_dark_color');
 define('TVE_MVPD_COLOR_LIGHT', 'field_mvpd_light_color');
@@ -162,13 +161,13 @@ function _tve_mvpd_get_mvpd() {
     else {
       // Default type of a logo (grid or header/footer).
       $mvpd_logo = (0 === $provider->{TVE_MVPD_LOGO_LIGHT}) ?
-        TVE_MVPD_LOGO_DARK :
-        TVE_MVPD_LOGO_LIGHT;
+          TVE_MVPD_LOGO_DARK :
+          TVE_MVPD_LOGO_LIGHT;
 
       // Default type of a color (dark/light).
       $mvpd_color = (0 === $provider->{TVE_MVPD_COLOR_LIGHT}) ?
-        TVE_MVPD_COLOR_DARK :
-        TVE_MVPD_COLOR_LIGHT;
+          TVE_MVPD_COLOR_DARK :
+          TVE_MVPD_COLOR_LIGHT;
     }
 
     // Determine order for an item.
@@ -190,8 +189,10 @@ function _tve_mvpd_get_mvpd() {
     ksort($mvpd[TVE_MVPD_TYPE_FEATURED]);
   }
 
-  $mvpd[TVE_MVPD_TYPE_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_FEATURED]) : array();
-  $mvpd[TVE_MVPD_TYPE_NOT_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) : array();
+  $mvpd[TVE_MVPD_TYPE_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_FEATURED])
+        : array();
+  $mvpd[TVE_MVPD_TYPE_NOT_FEATURED] = !empty($mvpd[TVE_MVPD_TYPE_NOT_FEATURED]) ? array_values($mvpd[TVE_MVPD_TYPE_NOT_FEATURED])
+        : array();
 
   // Add "success" status.
   $mvpd['status'] = TVE_MVPD_STATUS_SUCCESS;
@@ -231,9 +232,7 @@ function _tve_mvpd_get_mvpd_item($provider, $mvpd_logo, $mvpd_color) {
   );
 
   // Logo.
-  if (isset($provider->{TVE_MVPD_LOGO_ALT}->{$mvpd_logo})
-    && substr_count($mvpd_logo, 'img_') > 0
-  ) {
+  if (isset($provider->{TVE_MVPD_LOGO_ALT}->{$mvpd_logo}) && substr_count($mvpd_logo, 'img_') > 0) {
     $item['mvpd_logo'] = $provider->{TVE_MVPD_LOGO_ALT}->{$mvpd_logo};
   }
   else {
@@ -290,14 +289,18 @@ function _tve_mvpd_get_providers_from_service($service_url) {
     return NULL;
   }
 
-  // Process http request to the service.
-  $response = drupal_http_request($service_url);
+  if (!$cache = cache_get(md5(__FUNCTION__ . $service_url))) {
+    // Process http request to the service.
+    $response = drupal_http_request($service_url);
+  } else {
+    $response = $cache->data;
+  }
 
   if (isset($response->error)) {
     watchdog('tve_mvpd', 'Http request error for !url: !error.', array('!error' => $response->error, '!url' => $service_url), WATCHDOG_ERROR);
     return NULL;
   }
-
+  cache_set(md5(__FUNCTION__ . $service_url), $response, 'cache', time() + 600);
   $data = json_decode($response->data);
 
   if ('error' == $data) {

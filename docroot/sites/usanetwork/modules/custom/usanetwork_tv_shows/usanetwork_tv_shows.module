@@ -1104,7 +1104,7 @@ function _usanetwork_tv_shows_get_latest_content($show) {
   $items = FALSE;
   if ($show_latests_items) {
     foreach ($show_latests_items as $item) {
-      $item_object = field_collection_item_load($item);
+      $item_object = field_collection_item_load($item['value']);
 
       $show_latest_entity_target_id = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_id');
       $show_latest_entity_target_type = _usanetwork_get_field_item('field_collection_item', $item_object, 'field_latest_carousel', 'target_type');

@@ -9799,6 +9799,11 @@ footer h2 {
     padding: 37px 0px 0px;
   }
 }
+@media (max-width: 768px) {
+  .shows-block .carousel .jcarousel-controls {
+    display: none;
+  }
+}
 .shows-block .carousel.start {
   margin-left: 365px;
 }

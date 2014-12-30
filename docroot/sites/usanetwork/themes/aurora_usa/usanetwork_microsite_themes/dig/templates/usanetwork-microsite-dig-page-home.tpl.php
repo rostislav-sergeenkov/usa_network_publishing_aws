@@ -42,6 +42,11 @@
   <?php endif; ?>
   </ul>
 <?php endif; ?>
+<?php if (!empty($characters_cast)): ?>
+  <div class="characters-cast">
+    <?php print $characters_cast; ?>
+  </div>
+<?php endif; ?>
 <?php if (!empty($promo_carousel)): ?>
   <ul>
     <?php foreach ($promo_carousel as $carousel_item): ?>

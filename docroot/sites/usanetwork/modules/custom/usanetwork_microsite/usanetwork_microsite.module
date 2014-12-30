@@ -3,6 +3,7 @@
 define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 
 include_once 'usanetwork_microsite.features.inc';
+include_once 'usanetwork_microsite.admin.inc';
 
 /**
  * Implements hook_menu().
@@ -211,6 +212,24 @@ function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapp
 function _usanetwork_microsite_render_page_home($section_wrapper) {
   $section_object = $section_wrapper->value();
 
+  $field_collection_entity_id = $section_object->item_id;
+  $show_nid = NULL;
+
+  if (!empty($field_collection_entity_id)) {
+    $query = db_select('field_data_field_ms_section', 'sf');
+    $query->join('field_data_field_show', 's', 'sf.entity_id=s.entity_id');
+    $query->addField('s', 'field_show_target_id', 'show_nid');
+    $query->fields('sf', array('entity_id'));
+    $query->condition('field_ms_section_value', $field_collection_entity_id);
+    $query->range(0, 1);
+
+    $result = $query->execute()->fetch();
+
+    if ($result) {
+      $show_nid = $result->show_nid;
+    }
+  }
+
   $theme_variables = array(
     'aspots' => array(),
     'bspots' => NULL,
@@ -230,9 +249,9 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   if (!empty($section_object->field_usa_hp_crefs)) {
     $theme_variables['cspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_crefs, 'promo_teaser');
   }
-
-  if (!empty($section_object->field_hp_promo_carousel)) {
-    $theme_variables['promo_carousel'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_hp_promo_carousel, 'teaser');
+  
+  if (!empty($show_nid)) {
+    $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
   }
 
   return $theme_variables;
@@ -313,12 +332,39 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
  * Renders gallery page.
  */
 function _usanetwork_microsite_render_page_galleries($section_wrapper) {
-  // Uncomment next line if you will use values of section fields
-  //$section_object = $section_wrapper->value();
+  $section_object = $section_wrapper->value();
 
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
+
+  if (!empty($section_object->field_media_gallery)) {
+    $gallery_node = $section_wrapper->field_media_gallery->value();
+    $gallery_view = node_view($gallery_node, 'inline_content');
+
+    $body_value = NULL;
+    $body_field = field_get_items('node', $gallery_node, 'body');
+
+    $show_nid = NULL;
+    $show_field = field_get_items('node', $gallery_node, 'field_show');
+
+    if (!empty($body_field)) {
+      $body_value = reset(reset($body_field));
+    }
+
+    if (!empty($show_field)) {
+      $show_nid = reset(reset($show_field));
+    }
+
+    $theme_variables['gallery'] = array(
+      'title' => $gallery_node->title,
+      'description' => $body_value,
+      'rendered' => drupal_render($gallery_view),
+    );
+
+    $theme_variables['episodic_galleries'] = views_embed_view('usa_gallery', 'panel_pane_1', $show_nid);
+    $theme_variables['character_galleries'] = views_embed_view('usa_gallery', 'panel_pane_3', $show_nid);
+  }
 
   return $theme_variables;
 }

@@ -13108,6 +13108,12 @@ body.person-page #main {
   }
 }
 
+.ie8 header .originals-shows-menu ul li {
+  float: left;
+  margin-left: 0;
+  padding-left: 1.5em;
+  width: 50%;
+}
 .ie8 img {
   /*    width: inherit; */
   max-width: 100%;
@@ -13634,6 +13640,12 @@ body.person-page #main {
   }
 }
 
+.ie9 header .originals-shows-menu ul li {
+  float: left;
+  margin-left: 0;
+  padding-left: 1.5em;
+  width: 50%;
+}
 .ie9 footer .shows-menu ul.menu:after, .ie9 footer .app-and-services-menu ul.menu:after {
   clear: both;
   content: '';

@@ -25,6 +25,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'bspots' => NULL,
         'cspots' => NULL,
         'promo_carousel' => array(),
+        'characters_cast' => NULL,
         'background_url' => NULL,
       ),
     ),
@@ -69,6 +70,9 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'path' => $subtheme_path,
       'variables' => array(
         'background_url' => NULL,
+        'gallery' => array(),
+        'episodic_galleries' => NULL,
+        'character_galleries' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_games' => array(

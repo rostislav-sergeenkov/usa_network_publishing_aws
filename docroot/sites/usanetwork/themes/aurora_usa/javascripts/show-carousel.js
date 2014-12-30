@@ -69,7 +69,8 @@
         //!!!!!!
         //click show-open when carousel destroy
         $('.show-open').click(function (e) {
-          if (window_size_tablet_portrait < 769) {
+          console.log('click');
+          if (window.innerWidth < window_size_tablet_portrait) {
             e.preventDefault();
 
             if (!$(this).closest('li').hasClass('active')) {

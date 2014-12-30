@@ -11,6 +11,11 @@
     padding: 37px 0px 0px;
   }
   .carousel {
+    .jcarousel-controls {
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+    }
     &.start {
       margin-left: 365px;
       &:hover {

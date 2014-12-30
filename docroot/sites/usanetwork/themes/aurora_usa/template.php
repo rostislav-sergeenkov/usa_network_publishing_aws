@@ -365,7 +365,6 @@ function aurora_usa_form_search_block_form_alter(&$form){
     $form['#action'] = '/' . implode('/', $parts);
   }
 
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/search.js');
 }
 
 /**

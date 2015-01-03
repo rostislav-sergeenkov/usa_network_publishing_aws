@@ -101,10 +101,16 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
  */
 function usanetwork_microsite_dig_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $module_path = drupal_get_path('module', 'usanetwork_microsite');
 
   return array(
-    'js' => array(),
+    'js' => array(
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
+      $theme_path . '/javascripts/flexslider-gallery.js',
+      $module_path . '/js/microsite_global.js'
+    ),
     'css' => array(
+      $module_path . '/css/usanetwork_microsite.common.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),

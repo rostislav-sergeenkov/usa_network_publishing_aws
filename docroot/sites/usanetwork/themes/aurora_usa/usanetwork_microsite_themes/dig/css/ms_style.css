@@ -213,11 +213,11 @@
 }
 
 .usa-wrap,
-.dig {
+#microsite {
   background-color: #000;
 }
 
-.dig li {
+#microsite li {
   list-style: none;
 }
 
@@ -277,17 +277,17 @@ you can use the generic selector below, but it's slower:
   z-index: 10;
 }
 
-#main.dig {
+#main {
   width: 100%;
 }
 
-.dig h2 {
+#microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
   text-align: left;
   font-size: 2.4em;
 }
-.dig section {
+#microsite section {
   background-image: none;
   background-position: center;
   background-repeat: no-repeat;
@@ -302,124 +302,124 @@ you can use the generic selector below, but it's slower:
   overflow-y: auto;
   overflow-x: hidden;
 }
-.dig section > div {
+#microsite section > div {
   width: 930px;
   margin: 0 auto;
 }
-.dig #home {
+#microsite #home {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
 }
-.dig #about {
+#microsite #about {
   background-image: url("../images/dig_bg_about.jpg");
 }
-.dig #characters li {
+#microsite #characters li {
   background-image: none;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
 }
-.dig #characters li#jason-isaacs {
+#microsite #characters li#jason-isaacs {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-.dig #characters li#emma-wilson {
+#microsite #characters li#emma-wilson {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-.dig #characters li#donna-vaughan {
+#microsite #characters li#donna-vaughan {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-.dig #galleries {
+#microsite #galleries {
   background-image: url("../images/dig_bg_gallery.jpg");
 }
-.dig #games {
+#microsite #games {
   background-image: url("../images/dig_bg_games.jpg");
 }
-.dig .pane-title {
+#microsite .pane-title {
   text-transform: uppercase;
   font-size: 2em;
   margin: 30px 0 10px;
 }
-.dig .scroll {
+#microsite .scroll {
   width: 4em;
   margin: 0 auto;
   cursor: pointer;
 }
-.dig .scroll div {
+#microsite .scroll div {
   text-align: center;
   line-height: 1.25em;
   border: 1px solid white;
 }
-.dig .scroll img {
+#microsite .scroll img {
   width: 14px;
   height: 29px;
   margin: 0 auto;
 }
-.dig .left-pane {
+#microsite .left-pane {
   width: 55%;
   float: left;
 }
-.dig .left-pane .caption {
+#microsite .left-pane .caption {
   text-transform: uppercase;
   text-align: center;
 }
-.dig .left-pane .caption li {
+#microsite .left-pane .caption li {
   display: none;
 }
-.dig .left-pane .caption li.active {
+#microsite .left-pane .caption li.active {
   display: block;
 }
-.dig .left-pane .caption .quote-source {
+#microsite .left-pane .caption .quote-source {
   color: #e5ce96;
   font-size: 0.6em;
 }
-.dig .right-pane {
+#microsite .right-pane {
   width: 45%;
   float: right;
 }
-.dig .right-pane h2 {
+#microsite .right-pane h2 {
   text-align: center;
 }
-.dig .right-pane > div,
-.dig .right-pane > h3 {
+#microsite .right-pane > div,
+#microsite .right-pane > h3 {
   width: 80%;
   margin: 0 auto;
 }
-.dig .right-pane h3 {
+#microsite .right-pane h3 {
   clear: left;
   text-transform: uppercase;
   font-size: 1.2em;
   margin-top: 30px;
 }
-.dig .right-pane .underline {
+#microsite .right-pane .underline {
   border-bottom: 1px solid #FFF;
 }
-.dig .right-pane .text {
+#microsite .right-pane .text {
   font-size: 0.8em;
   line-height: 1.7em;
 }
-.dig .right-pane .ad300x250 {
+#microsite .right-pane .ad300x250 {
   margin-bottom: 30px;
 }
-.dig #about .caption {
+#microsite #about .caption {
   margin-top: 3em;
 }
-.dig #characters {
+#microsite #characters {
   position: relative;
   top: 0;
   left: 0;
 }
-.dig #characters ul {
+#microsite #characters ul {
   width: 1000%;
   position: relative;
   top: 0;
   left: 0;
 }
-.dig #characters li {
+#microsite #characters li {
   float: left;
   width: 10%;
   overflow: hidden;
 }
-.dig #characters .character-nav {
+#microsite #characters .character-nav {
   width: 104px;
   height: 2em;
   margin: 30px auto;
@@ -428,8 +428,8 @@ you can use the generic selector below, but it's slower:
   left: 0;
   float: left;
 }
-.dig #characters .character-nav .prev,
-.dig #characters .character-nav .next {
+#microsite #characters .character-nav .prev,
+#microsite #characters .character-nav .next {
   float: left;
   margin: 0;
   padding: 0;
@@ -437,11 +437,11 @@ you can use the generic selector below, but it's slower:
   font-size: 1.5em;
   line-height: 1.5em;
 }
-.dig #characters .character-nav ul {
+#microsite #characters .character-nav ul {
   left: 0;
   /* -100% per line item */
 }
-.dig #characters .character-nav li {
+#microsite #characters .character-nav li {
   list-style: square url("../images/nav_selector.png");
   width: 15px;
   line-height: 2em;
@@ -451,7 +451,7 @@ you can use the generic selector below, but it's slower:
   left: 15px;
   overflow: visible;
 }
-.dig #characters .character-nav li .tooltip {
+#microsite #characters .character-nav li .tooltip {
   display: none;
   position: absolute;
   top: -80px;
@@ -460,43 +460,43 @@ you can use the generic selector below, but it's slower:
   height: 80px;
   text-align: center;
 }
-.dig #characters .character-nav li .tooltip div {
+#microsite #characters .character-nav li .tooltip div {
   line-height: 1em;
   text-transform: uppercase;
 }
-.dig #characters .character-nav li .tooltip img {
+#microsite #characters .character-nav li .tooltip img {
   border: 2px solid #FFF;
   width: 59px;
   height: 60px;
   margin: 0 auto;
 }
-.dig #characters .character-nav li:hover .tooltip {
+#microsite #characters .character-nav li:hover .tooltip {
   display: block;
 }
-.dig #galleries h3 {
+#microsite #galleries h3 {
   margin-bottom: 12px;
 }
-.dig #galleries .left-pane {
+#microsite #galleries .left-pane {
   padding-left: 200px;
   width: 70%;
 }
-.dig #galleries .left-pane .flexslider .slides > li {
+#microsite #galleries .left-pane .flexslider .slides > li {
   height: 479px;
 }
-.dig #galleries .right-pane {
+#microsite #galleries .right-pane {
   width: calc(30% - 130px);
   margin-right: 100px;
   margin-left: 30px;
 }
-.dig #galleries .right-pane .gallery-list {
+#microsite #galleries .right-pane .gallery-list {
   width: 100%;
 }
-.dig #galleries .right-pane .gallery-list .outer {
+#microsite #galleries .right-pane .gallery-list .outer {
   width: 100%;
   height: 126px;
   background-color: #002525;
 }
-.dig #galleries .right-pane .gallery-list .outer .viewport {
+#microsite #galleries .right-pane .gallery-list .outer .viewport {
   float: left;
   width: calc(100% - 28px);
   overflow: hidden;
@@ -504,14 +504,14 @@ you can use the generic selector below, but it's slower:
   top: 0;
   left: 0;
 }
-.dig #galleries .right-pane .gallery-list .outer .viewport ul {
+#microsite #galleries .right-pane .gallery-list .outer .viewport ul {
   width: 2000%;
   position: relative;
   top: 0;
   left: 0;
   /* -100% per 2 line items */
 }
-.dig #galleries .right-pane .gallery-list .outer .viewport li {
+#microsite #galleries .right-pane .gallery-list .outer .viewport li {
   float: left;
   margin: 0 2px;
   width: calc(2.5% - 4px);
@@ -519,7 +519,7 @@ you can use the generic selector below, but it's slower:
   top: 4px;
   left: 2px;
 }
-.dig #galleries .right-pane .gallery-list .outer .viewport li .meta {
+#microsite #galleries .right-pane .gallery-list .outer .viewport li .meta {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -531,58 +531,58 @@ you can use the generic selector below, but it's slower:
   font-size: 0.8em;
   line-height: 1em;
 }
-.dig #galleries .right-pane .gallery-list .outer .viewport li .meta .season-episode {
+#microsite #galleries .right-pane .gallery-list .outer .viewport li .meta .season-episode {
   display: none;
 }
-.dig #galleries .right-pane .gallery-list .outer #prev,
-.dig #galleries .right-pane .gallery-list .outer #next {
+#microsite #galleries .right-pane .gallery-list .outer #prev,
+#microsite #galleries .right-pane .gallery-list .outer #next {
   float: left;
   width: 10px;
   margin: 0 2px;
   line-height: 126px;
 }
-.dig #galleries .right-pane .gallery-list .ad300x250 {
+#microsite #galleries .right-pane .gallery-list .ad300x250 {
   float: left;
   margin-left: 0;
 }
-.dig .carousel {
+#microsite .carousel {
   position: relative;
 }
 @media (min-width: 330px) {
-  .dig .carousel {
+  #microsite .carousel {
     margin-left: auto !important;
     margin-right: auto !important;
   }
 }
-.dig .carousel .carousel-item-wrapper {
+#microsite .carousel .carousel-item-wrapper {
   position: relative;
 }
-.dig .carousel .item-list {
+#microsite .carousel .item-list {
   height: 188px;
   overflow: hidden;
 }
-.dig .carousel li {
+#microsite .carousel li {
   margin-right: 5px;
 }
-.dig .carousel li.carousel-item {
+#microsite .carousel li.carousel-item {
   padding: 0;
   margin: 0 15px 0 0;
 }
-.dig #cast-carousel {
+#microsite #cast-carousel {
   background-color: #002525;
   padding: 5px;
 }
-.dig #cast-carousel .view-content {
+#microsite #cast-carousel .view-content {
   width: 300px;
   height: 184px;
 }
 @media (min-width: 330px) {
-  .dig #cast-carousel .view-content {
+  #microsite #cast-carousel .view-content {
     width: auto;
     height: auto;
   }
 }
-.dig .view-usa-cast {
+#microsite .view-usa-cast {
   background: none;
   border: none;
   box-shadow: none;
@@ -592,10 +592,10 @@ you can use the generic selector below, but it's slower:
   position: relative;
   padding: 0;
 }
-.dig .view-usa-cast .active.carousel-item {
+#microsite .view-usa-cast .active.carousel-item {
   border-color: white;
 }
-.dig .view-usa-cast .carousel-item {
+#microsite .view-usa-cast .carousel-item {
   border: 2px solid #2d2d2d;
   width: 221px;
   height: 184px;
@@ -604,19 +604,19 @@ you can use the generic selector below, but it's slower:
   display: block;
   overflow: hidden;
 }
-.dig .view-usa-cast .carousel-item a.article-link {
+#microsite .view-usa-cast .carousel-item a.article-link {
   display: block;
   height: 184px;
 }
-.dig .view-usa-cast .carousel-item h4 {
+#microsite .view-usa-cast .carousel-item h4 {
   margin: 0;
   font-family: "Proxima N W01 Smbd",Helvetica,Arial,sans-serif;
   font-size: 14px;
 }
-.dig .view-usa-cast .carousel-item img {
+#microsite .view-usa-cast .carousel-item img {
   display: block;
 }
-.dig .view-usa-cast .carousel-item .item-content {
+#microsite .view-usa-cast .carousel-item .item-content {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -637,17 +637,17 @@ you can use the generic selector below, but it's slower:
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000',endColorstr='#000000',GradientType=0);
 }
-.dig .view-usa-cast .carousel-item .item-content > div {
+#microsite .view-usa-cast .carousel-item .item-content > div {
   overflow: hidden;
   white-space: nowrap;
   line-height: 1.5em;
   font-size: 12px;
 }
-.dig .item-list ul li {
+#microsite .item-list ul li {
   margin: 0 0 0.25em 1.5em;
   padding: 0;
 }
-.dig [id='person-content'] h4 {
+#microsite [id='person-content'] h4 {
   text-transform: none;
   margin: 5px 30px 5px 0;
   position: relative;
@@ -655,12 +655,12 @@ you can use the generic selector below, but it's slower:
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  .dig [id='person-content'] h4 {
+  #microsite [id='person-content'] h4 {
     font-size: 18px;
   }
 }
 
-.dig #left-nav {
+.page-node-microsite #left-nav {
   position: fixed;
   top: 115px;
   /* 194px; */
@@ -673,83 +673,105 @@ you can use the generic selector below, but it's slower:
   text-transform: uppercase;
   overflow: hidden;
 }
-.dig #left-nav #left-nav-inner {
+.page-node-microsite #left-nav #left-nav-inner {
   position: relative;
   top: -140px;
   padding-left: 17px;
 }
-.dig #left-nav #left-nav-inner #left-nav-logo {
+.page-node-microsite #left-nav #left-nav-inner #left-nav-logo {
   width: 130px;
   height: 82px;
   background-image: url("../images/dig_logo.png");
   cursor: pointer;
   opacity: 0;
 }
-.dig #left-nav #left-nav-inner #left-nav-tunein {
+.page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   opacity: 0;
 }
-.dig #left-nav #left-nav-social {
+.page-node-microsite #left-nav #left-nav-social {
   position: relative;
   top: 0;
   left: 0;
   height: 80px;
 }
-.dig #left-nav #left-nav-social a {
+.page-node-microsite #left-nav #left-nav-social a {
   float: left;
   display: block;
   margin-left: 6px;
   width: 26px;
   height: 26px;
 }
-.dig #left-nav #left-nav-social a.instagram {
+.page-node-microsite #left-nav #left-nav-social a.instagram {
   /* @include sprite-background(insta-icon); */
   background-image: url("../images/icons/icon_instagram.png");
 }
-.dig #left-nav #left-nav-social a.twitter {
+.page-node-microsite #left-nav #left-nav-social a.twitter {
   /* @include sprite-background(twitter-icon); */
   background-image: url("../images/icons/icon_twitter.png");
 }
-.dig #left-nav #left-nav-social a.facebook {
+.page-node-microsite #left-nav #left-nav-social a.facebook {
   /* @include sprite-background(fb-icon); */
   background-image: url("../images/icons/icon_fb.png");
 }
-.dig #left-nav #left-nav-social a:hover {
+.page-node-microsite #left-nav #left-nav-social a:hover {
   opacity: 0.7;
 }
-.dig #left-nav #left-nav-links ul {
+.page-node-microsite #left-nav #left-nav-links ul {
   padding: 0;
   margin: 0 0 0 24px;
 }
-.dig #left-nav #left-nav-links li {
+.page-node-microsite #left-nav #left-nav-links li {
   list-style: none;
   cursor: pointer;
 }
-.dig #left-nav #left-nav-links li:hover {
+.page-node-microsite #left-nav #left-nav-links li:hover {
   color: #e5ce96;
 }
-.dig #left-nav #left-nav-links li:after {
+.page-node-microsite #left-nav #left-nav-links li:after {
   clear: both;
   content: '';
   display: table;
 }
-.dig #left-nav #left-nav-links > ul > li.active {
+.page-node-microsite #left-nav #left-nav-links > ul > li.active {
   list-style: square url("../images/nav_selector.png");
   color: #e5ce96;
 }
 /* sub-nav */
-.dig #left-nav #left-nav-links ul ul {
+.page-node-microsite #left-nav #left-nav-links ul ul {
   display:none;
   margin-left: 16px;
 }
-.dig #left-nav #left-nav-links ul ul li {
+.page-node-microsite #left-nav #left-nav-links ul ul li {
   font-size: 0.8em;
   width: 200px;
   color: #FFF;
 }
-.dig #left-nav #left-nav-links li.active ul {
+.page-node-microsite #left-nav #left-nav-links li.active ul {
   display: block;
 }
-.dig #left-nav #left-nav-links li.active li.active {
+.page-node-microsite #left-nav #left-nav-links li.active li.active {
   color: #e5ce96;
   list-style: none;
+}
+
+
+
+
+
+/* ADDED OUTSIDE OF SASS */
+#microsite ul {
+  margin: 0;
+  padding: 0;
+}
+.slides .clone {
+  width: 930px;
+  float: left;
+  display: block;
+}
+/* A-SPOT */
+@media (max-width: 1274px) and (min-width: 959px) {
+#microsite .a-spot {
+  width: 930px;
+  height: 378px;
+}
 }

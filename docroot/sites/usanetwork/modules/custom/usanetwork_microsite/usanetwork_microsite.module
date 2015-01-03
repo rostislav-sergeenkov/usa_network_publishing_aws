@@ -34,7 +34,7 @@ function usanetwork_microsite_menu() {
  * Implements hook_theme().
  */
 function usanetwork_microsite_theme() {
-  $found_theme_names = _usaetnwork_microsite_include_themes_info();
+  $found_theme_names = _usanetwork_microsite_include_themes_info();
 
   $theme = array();
 
@@ -76,9 +76,8 @@ function usanetwork_microsite_permission() {
 function usanetwork_microsite_page_callback($entity_type, $node) {
   if (!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     $theme_name_field = field_get_items('node', $node, 'field_ms_theme');
-
     if ($theme_name_field) {
-      _usaetnwork_microsite_include_themes_info();
+      _usanetwork_microsite_include_themes_info();
       _usanetwork_microsite_include_default_css();
       _usanetwork_microsite_include_default_js();
 
@@ -145,7 +144,7 @@ function usanetwork_microsite_page_ajax_callback($microsite_node, $page_name) {
 /**
  * Includes 'theme.inc' file of each subtheme of microsite.
  */
-function _usaetnwork_microsite_include_themes_info() {
+function _usanetwork_microsite_include_themes_info() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $dir_path = $theme_path . '/usanetwork_microsite_themes';
   $found_theme_names = array();
@@ -232,6 +231,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
 
   $theme_variables = array(
     'aspots' => array(),
+    'featured' => array(),
     'bspots' => NULL,
     'cspots' => NULL,
     'promo_carousel' => array(),
@@ -242,6 +242,10 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
     $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_hp_arefs, 'full');
   }
 
+  if (!empty($section_object->field_usa_tv_promo)) {
+    $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser');
+  }
+
   if (!empty($section_object->field_usa_hp_brefs)) {
     $theme_variables['bspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_brefs, 'promo_teaser');
   }
@@ -249,7 +253,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   if (!empty($section_object->field_usa_hp_crefs)) {
     $theme_variables['cspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_crefs, 'promo_teaser');
   }
-  
+
   if (!empty($show_nid)) {
     $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
   }
@@ -589,6 +593,9 @@ function _usanetwork_microsite_theme_get_section_base_variables($section_wrapper
       ? file_create_url($section_wrapper->field_ms_section_bg_image->file->value()->uri)
       : NULL,
     'type' => !empty($section_node->field_ms_section_type)
+      ? $section_wrapper->field_ms_section_type->value()
+      : NULL,
+    'name' => !empty($section_node->field_ms_section_type)
       ? $section_wrapper->field_ms_section_type->value()
       : NULL,
   );

@@ -57,6 +57,17 @@ var activeSection,
     topOffset = 0;
   }
 
+  Array.prototype.removeItem = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+      what = a[--L];
+      while ((ax = this.indexOf(what)) !== -1) {
+        this.splice(ax, 1);
+      }
+    }
+    return this;
+  };
+
   // caption animations
   function getActiveItemNum(elem) {
     var activeItem = $(elem + '.active');
@@ -122,7 +133,7 @@ var activeSection,
       //usa_debug( "Sample of data:", data.slice( 0, 100 ) );
       //usa_debug('data: ' + data);
       $('#' + elem).html(data).addClass('loaded');
-      scrollToList.remove(elem);
+      scrollToList.removeItem(elem);
     });
   }
 
@@ -254,7 +265,7 @@ var activeSection,
   function scrollTo(elem) {
     usa_debug('scrollTo(' + elem + ')');
     // set height of characters line items
-    if (elem == 'characters') $('.dig #characters > ul > li').css('height', (wHeight - bottomOffset) + 'px');
+    if (elem == 'characters') $('#microsite #characters > ul > li').css('height', (wHeight - bottomOffset) + 'px');
 
     var currentLocation = sectionList.indexOf(activeSection),
         nextLocation = sectionList.indexOf(elem);
@@ -381,6 +392,18 @@ usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
       var elem = $(this).attr('id').replace('nav-', '');
       if (sectionList.indexOf(elem) >= 0) {
         scrollTo(elem);
+      }
+    });
+
+    // initialize sub-nav clicks
+    $('#left-nav-links li li').on('click', function(){
+      var elem = $(this).attr('id').replace('nav-', ''),
+          currentLocationGames = (elem.indexOf('games') > -1) ? 1 : 0;
+      if (currentLocationGames) {
+
+      }
+      else {
+
       }
     });
 

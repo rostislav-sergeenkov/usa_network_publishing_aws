@@ -153,13 +153,13 @@ function usanetwork_microsite_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '5',
         ),
         'redirect' => array(
-          'weight' => '2',
+          'weight' => '6',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

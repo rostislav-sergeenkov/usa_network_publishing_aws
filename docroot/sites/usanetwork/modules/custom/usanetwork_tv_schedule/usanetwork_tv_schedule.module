@@ -910,7 +910,7 @@ function usanetwork_tv_schedule_schedule_page() {
       $show_body_field = field_get_items('node', $show_node, 'body');
 
       if (!empty($on_now_field)) {
-        $show_logo_url = image_style_url('634x349', $on_now_field[0]->uri);
+        $show_logo_url = image_style_url('634x349', $on_now_field[0]['uri']);
       }
 
       if (empty($show_logo_url)) {

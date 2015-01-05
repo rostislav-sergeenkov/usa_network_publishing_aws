@@ -1720,8 +1720,8 @@ function _usanetwork_mpx_video_file_omniture($entity, $entity_type) {
     $full_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_full_episode', 'value');
     if ($full_episode == '1') {
       if (!empty($entity->field_mpx_entitlement)) {        
-        $entitlement_episode = reset(field_get_items($entity_type, $entity, 'field_mpx_entitlement'));
-        if ($entitlement_episode['value'] == 'auth') {
+        $entitlement_episode = _usanetwork_get_field_item($entity_type, $entity, 'field_mpx_entitlement', 'value');
+        if ($entitlement_episode == 'auth') {
           $video_variables['s.prop5'] = "Video : Full Episodes : Authenticated";
         }
         else {

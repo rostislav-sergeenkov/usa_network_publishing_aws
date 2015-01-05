@@ -759,10 +759,10 @@ function _usanetwork_ads_get_entity_omniture_variables($entity, $entity_type) {
   // add s.prop5 for media galleries
   if ($entity_type == 'node' && $bundle == 'media_gallery') {
     if (!empty($entity->field_gallery_type)) {
-      $gallery_type = reset(field_get_items($entity_type, $entity, 'field_gallery_type'));
-      if ($gallery_type && $gallery_type['value'] != '0') {
+      $gallery_type = _usanetwork_get_field_item($entity_type, $entity, 'field_gallery_type', 'value');
+      if ($gallery_type && $gallery_type != '0') {
         $variables[] = array(
-          's.prop5' => $gallery_type['value'],
+          's.prop5' => $gallery_type,
         );
       }
     }

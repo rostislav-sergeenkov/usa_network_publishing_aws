@@ -26,59 +26,6 @@ var waitForFinalEvent = function () {
   };
 };
 
-function swipeHideDescription(element) {
-  element.removeClass('start');
-  element.next().removeClass('start');
-}
-
-function swipeShowDescription(element) {
-  element.addClass('start');
-  element.next().addClass('start');
-}
-
-//open show-card block
-function showOpen(target, mobile) {
-  var current_item = target.closest('li');
-  if (mobile) {
-    current_item.addClass('active');
-    Drupal.behaviors.global_carousels.carouselInit();
-    return false;
-  }
-  var carousel = target.closest('ul');
-  var current_left = parseInt(carousel.css('left'));
-  var width = desktop_show_open_width;
-  if (window.innerWidth <= window_size_desktop){
-    width = small_desktop_show_open_width;
-  }
-  var width_block = width - show_carousel_item_width;
-  var left =  (window.innerWidth - width_block)/2 - show_carousel_item_width - current_item.offset()['left'] + current_left;
-  carousel.animate({left: left}, 500);
-  current_item.animate({width: width}, 500, 'easeInCubic');
-  current_item.addClass('active');
-  setTimeout(function ()
-  {
-    current_item.find('.social-icons').toggle();
-  }, 500);
-  current_item.attr('data-left', current_left);
-  carousel.addClass('stop');
-}
-
-//close show-card-block
-function showClose(item, mobile) {
-  if (mobile) {
-    item.removeClass('active');
-    return false;
-  }
-  var carousel = item.closest('ul');
-  var left = parseInt(item.attr('data-left'));
-  carousel.animate({left: left}, 500);
-  item.animate({width: show_carousel_item_width}, 500, 'easeOutQuint');
-  item.removeClass('active');
-  item.find('.social-icons').toggle();
-  item.removeAttr('data-left');
-  carousel.removeClass('stop');
-}
-
 function getInternetExplorerVersion()
 {
   var rv = -1;

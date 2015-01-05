@@ -44,6 +44,7 @@ header {
       height: auto;
     }
     .no-refresh {
+      outline: none;
       position: relative;
       &.active {
         &:before {

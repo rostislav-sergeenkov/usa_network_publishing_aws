@@ -121,6 +121,10 @@
           }
         }
 
+        if (window.innerWidth < window_size_tablet_portrait && $(this).hasClass('no-refresh') && this.href) {
+          window.location = this.href;
+        }
+
       };
 
       var menuOpenHandler = function (e) {
@@ -210,7 +214,7 @@
       showTitleMove();
       showMenuMove();
 
-      $(".tab .no-refresh").bind('click', tabNavHandler);
+      $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
       $(".main-menu-open a").bind('click', menuOpenHandler);
       $(".menu-open a").bind('click', showMenuOpenHandler);
 

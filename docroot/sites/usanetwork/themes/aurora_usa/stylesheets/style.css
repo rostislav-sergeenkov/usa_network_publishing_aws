@@ -2780,6 +2780,7 @@ header .header-nav-bar {
   }
 }
 header .header-nav-bar .no-refresh {
+  outline: none;
   position: relative;
 }
 header .header-nav-bar .no-refresh.active:before {

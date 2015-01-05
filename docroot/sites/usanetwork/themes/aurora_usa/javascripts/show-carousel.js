@@ -44,7 +44,7 @@
             mobile = true;
           }
 
-          showClose($(this), mobile);
+          Drupal.behaviors.global_carousels.showClose($(this), mobile);
         });
 
         if (window.innerWidth >= window_size_tablet_portrait){
@@ -69,14 +69,13 @@
         //!!!!!!
         //click show-open when carousel destroy
         $('.show-open').click(function (e) {
-          console.log('click');
           if (window.innerWidth < window_size_tablet_portrait) {
             e.preventDefault();
 
             if (!$(this).closest('li').hasClass('active')) {
-              showOpen($(this).closest('li'), true);
+              Drupal.behaviors.global_carousels.showOpen($(this).closest('li'), true);
             } else {
-              showClose($(this).closest('li'), true);
+              Drupal.behaviors.global_carousels.showClose($(this).closest('li'), true);
             }
           }
         });
@@ -99,7 +98,7 @@
         $('.show-info-block .close-button').click(function() {
           var item = $(this).closest('li');
 
-          showClose(item);
+          Drupal.behaviors.global_carousels.showClose(item);
         });
 
         // Click to link when show-info-block open

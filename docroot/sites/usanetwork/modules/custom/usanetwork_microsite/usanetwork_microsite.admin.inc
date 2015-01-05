@@ -4,7 +4,7 @@
  * This determines what fields to display for each section type
  */
 function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, &$form_state, $form_id) {
-//  dsm($form);  // pretty print array using Krumo to messages
+//echo '<pre>form: ' . print_r($form, true) . '</pre><br>';  // pretty print array using Krumo to messages
   $i = 0;
   while(is_array($form['field_ms_section']['und'][$i])) {
     // section_type = 'home'
@@ -23,6 +23,7 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
         ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
       ),
     );
+/*
     $form['field_ms_section']['und'][$i]['field_hp_promo_carousel']['#states'] = array(
       'visible' => array(
         ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
@@ -33,6 +34,17 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
         ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
       ),
     );
+    $form['field_ms_section']['und'][$i]['groups']['group_show_aspots']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+    $form['field_ms_section']['und'][$i]['groups']['group_ms_featured']['#states'] = array(
+      'visible' => array(
+        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
+      ),
+    );
+*/
 
     // section_type = 'about'
     $form['field_ms_section']['und'][$i]['field_ms_section_text']['#states'] = array(

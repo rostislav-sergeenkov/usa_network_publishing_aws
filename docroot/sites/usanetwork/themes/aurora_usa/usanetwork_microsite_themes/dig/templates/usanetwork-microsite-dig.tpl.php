@@ -24,8 +24,8 @@
   <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content'])): ?>
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section-info">
-          <a name="<?php print $section['name']; ?>"></a>
+        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section-info" style="display:none">
+          <a name="/<?php print $section['type']; ?>"></a>
           <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="clearfix">
             <?php print $section['content']; ?>
           </section>
@@ -53,9 +53,8 @@
             <?php foreach ($sections_navlinks as $sections_navlink): ?>
               <?php print $sections_navlink; ?>
             <?php endforeach; ?>
-            <li>Sample link 1</li>
-            <li>Sample link 2</li>
-            <li>Sample link 3</li>
+            <li>Dig Decoded</li>
+            <li>Wattpad</li>
           </ul>
         </div>
       <?php endif; ?>

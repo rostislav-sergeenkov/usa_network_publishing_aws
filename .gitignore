@@ -1,6 +1,7 @@
 files
 files_private
 private
+settings.local.php
 
 #Ignore OS generated files
 .DS_Store

@@ -72,25 +72,6 @@
         </div>
         <?php endif; ?>
 
-        <?php if (!empty($bspots) || !empty($cspots)): ?>
-        <ul>
-          <?php if (!empty($bspots)): ?>
-          <li>
-            <div class="bspot">
-              <?php print $bspots; ?>
-            </div>
-          </li>
-          <?php endif; ?>
-          <?php if (!empty($cspots)): ?>
-          <li>
-            <div class="cspot">
-              <?php print $cspots; ?>
-            </div>
-          </li>
-          <?php endif; ?>
-        </ul>
-        <?php endif; ?>
-
         <?php if (!empty($characters_cast)): ?>
         <div class="characters-cast">
           <?php print $characters_cast; ?>

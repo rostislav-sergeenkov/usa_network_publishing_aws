@@ -22,10 +22,11 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'path' => $subtheme_path,
       'variables' => array(
         'aspots' => array(),
-        'bspots' => NULL,
-        'cspots' => NULL,
-        'promo_carousel' => array(),
-        'characters_cast' => NULL,
+        'featured' => array(),
+//        'bspots' => NULL,
+//        'cspots' => NULL,
+//        'promo_carousel' => array(),
+//        'characters_cast' => NULL,
         'background_url' => NULL,
       ),
     ),
@@ -53,12 +54,14 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'id' => NULL,
             'title' => NULL,
             'description' => NULL,
+/*
             'quotes' => array(
               0 => array(
                 'quote' => NULL,
                 'source' => NULL,
               ),
             ),
+*/
             'background_url' => NULL,
           ),
         ),

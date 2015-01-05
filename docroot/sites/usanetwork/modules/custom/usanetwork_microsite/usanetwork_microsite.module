@@ -232,31 +232,28 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   $theme_variables = array(
     'aspots' => array(),
     'featured' => array(),
+/*
     'bspots' => NULL,
     'cspots' => NULL,
     'promo_carousel' => array(),
+*/
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
 
-  if (!empty($section_object->field_usa_hp_arefs)) {
-    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_hp_arefs, 'full');
+  if (!empty($section_object->field_usa_tv_a_spot)) {
+    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
   }
 
+  $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
   if (!empty($section_object->field_usa_tv_promo)) {
-    $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser');
+    $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser', $featured_promo_first_view_mode);
   }
 
-  if (!empty($section_object->field_usa_hp_brefs)) {
-    $theme_variables['bspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_brefs, 'promo_teaser');
-  }
-
-  if (!empty($section_object->field_usa_hp_crefs)) {
-    $theme_variables['cspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_crefs, 'promo_teaser');
-  }
-
+/*
   if (!empty($show_nid)) {
     $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
   }
+*/
 
   return $theme_variables;
 }
@@ -297,12 +294,11 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     'characters_navigation' => NULL,
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
-
   if (!empty($section_object->field_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
     $person_nodes = $section_wrapper->field_person->value();
 
-    // The first value is object. If there is more that one node it will send like array. Wrapping in array if it has only 1 value.
+    // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
@@ -337,34 +333,38 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
  */
 function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   $section_object = $section_wrapper->value();
-
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
 
   if (!empty($section_object->field_media_gallery)) {
-    $gallery_node = $section_wrapper->field_media_gallery->value();
-    $gallery_view = node_view($gallery_node, 'inline_content');
-
-    $body_value = NULL;
-    $body_field = field_get_items('node', $gallery_node, 'body');
-
-    $show_nid = NULL;
-    $show_field = field_get_items('node', $gallery_node, 'field_show');
-
-    if (!empty($body_field)) {
-      $body_value = reset(reset($body_field));
+    $gallery_nodes = $section_wrapper->field_media_gallery->value();
+    if (!is_array($gallery_nodes)) {
+      $gallery_nodes = array($gallery_nodes);
     }
 
-    if (!empty($show_field)) {
-      $show_nid = reset(reset($show_field));
-    }
+    foreach ($gallery_nodes as $current_gallery_node) {
+      $gallery_view = node_view($current_gallery_node, 'inline_content');
 
-    $theme_variables['gallery'] = array(
-      'title' => $gallery_node->title,
-      'description' => $body_value,
-      'rendered' => drupal_render($gallery_view),
-    );
+      $body_value = NULL;
+      $body_field = field_get_items('node', $current_gallery_node, 'body');
+      $show_nid = NULL;
+      $show_field = field_get_items('node', $current_gallery_node, 'field_show');
+
+      if (!empty($body_field)) {
+        $body_value = reset(reset($body_field));
+      }
+
+      if (!empty($show_field)) {
+        $show_nid = reset(reset($show_field));
+      }
+
+      $theme_variables['gallery'][] = array(
+        'title' => $current_gallery_node->title,
+        'description' => $body_value,
+        'rendered' => drupal_render($gallery_view),
+      );
+    }
 
     $theme_variables['episodic_galleries'] = views_embed_view('usa_gallery', 'panel_pane_1', $show_nid);
     $theme_variables['character_galleries'] = views_embed_view('usa_gallery', 'panel_pane_3', $show_nid);
@@ -438,8 +438,8 @@ function _usanetwork_microsite_get_quotations($quotation_field_wrapper) {
       'quote' => !empty($quotation_object->field_quote)
         ? $quotation_wrapper->field_quote->value()
         : NULL,
-      'source' => !empty($quotation_object->field_usanetwork_source)
-        ? $quotation_wrapper->field_usanetwork_source->value()
+      'source' => !empty($quotation_object->field_quote_source)
+        ? $quotation_wrapper->field_quote_source->value()
         : NULL,
     );
   }
@@ -609,10 +609,11 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
   $section_node = $section_wrapper->value();
 
   // Render all A-Spots
-  if (!empty($section_node->field_usa_hp_arefs)) {
-    $section_base_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_hp_arefs, 'teaser');
+  if (!empty($section_node->field_usa_tv_a_spot)) {
+    $section_base_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'teaser');
   }
 
+/*
   // Render B-Spot
   if (!empty($section_node->field_usa_hp_brefs)) {
     $section_base_variables['bspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_brefs, 'promo_teaser');
@@ -622,7 +623,7 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
   if (!empty($section_node->field_usa_hp_crefs)) {
     $section_base_variables['cspots'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_usa_hp_crefs, 'promo_teaser');
   }
-
+*/
   // Render Media Gallery
   if (!empty($section_node->field_media_gallery)) {
     $section_base_variables['media_gallery'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_media_gallery, 'full');
@@ -660,6 +661,7 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
     $section_base_variables['people'] = $persons;
   }
 
+/*
   // Rendering Promo Carousel
   if (!empty($section_node->field_hp_promo_carousel)) {
     $section_base_variables['promo_carousel'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_hp_promo_carousel, 'teaser');
@@ -669,6 +671,7 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
   if (!empty($section_node->field_hp_promos)) {
     $section_base_variables['featured_promo'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_hp_promos, 'teaser');
   }
+*/
 
   // Render quotations
   if (!empty($section_node->field_quotation)) {
@@ -681,8 +684,8 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
         'quote' => !empty($quotation_entity->field_quote)
           ? $quotation_wrapper->field_quote->value()
           : NULL,
-        'source' => !empty($quotation_entity->field_usanetwork_source)
-          ? $quotation_wrapper->field_usanetwork_source->value()
+        'source' => !empty($quotation_entity->field_quote_source)
+          ? $quotation_wrapper->field_quote_source->value()
           : NULL,
       );
 
@@ -698,7 +701,7 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
 
     foreach ($section_wrapper->field_ms_catchall_page as $catchall_wrapper) {
       $catchall_node = $catchall_wrapper->value();
-      $catchall_view = node_view($catchall_node, 'teaser');
+      $catchall_view = node_view($catchall_node, 'full_content'); //'teaser');
 
       $catchalls[] = drupal_render($catchall_view);
     }
@@ -712,12 +715,15 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
 /**
  * Renders all elements of node field.
  */
-function _usanetwork_microsite_theme_render_multiple_node_items($node_wrapper_field, $view_mode = 'teaser') {
+function _usanetwork_microsite_theme_render_multiple_node_items($node_wrapper_field, $view_mode = 'teaser', $first_view_mode = '') {
   $rendered_items = array();
 
+  $count = 0;
   foreach ($node_wrapper_field as $field_wrapper) {
-    $field_view = node_view($field_wrapper->value(), $view_mode);
+    $current_view_mode = ($count == 0 && $first_view_mode != '') ? $first_view_mode : $view_mode;
+    $field_view = node_view($field_wrapper->value(), $current_view_mode);
     $rendered_items[] = drupal_render($field_view);
+    $count++;
   }
 
   return $rendered_items;

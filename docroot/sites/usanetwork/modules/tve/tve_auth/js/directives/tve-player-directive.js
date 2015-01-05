@@ -20,7 +20,7 @@
                     currentAsset, previouslyWatched, lastSave;
 
                 scope.showCompanionAdd = false;
-                scope.isDartReq = true;
+                scope.isDartReq = false;
                 scope.openLoginWindow = tveModal.openLoginModal;
                 scope.isMobile = helper.device.isMobile;
 

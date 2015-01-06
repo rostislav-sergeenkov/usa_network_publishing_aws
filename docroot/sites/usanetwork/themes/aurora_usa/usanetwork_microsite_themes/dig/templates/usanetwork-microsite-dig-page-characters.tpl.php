@@ -12,6 +12,7 @@
  * -  - $people[n]['description'] - the description of the person
  * - $characters_navigation - pre-rendered list of navigation links
  * - $background_url - the URL of page background
+ * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
 <?php if (!empty($background_url)): ?>
@@ -67,7 +68,7 @@
               <?php print $person['description']; ?>
             </div>
           <?php endif; ?>
-          <div class="ad300x250"><center>Ad goes here!</center></div><!-- Maksim: <center></center> - IS DEPRECATED TAG! -->
+          <div class="ad300x250"><?php print render($ad300x250); ?></div>
         </div>
       </li>
     <?php endforeach; ?>

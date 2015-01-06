@@ -9,6 +9,7 @@
  * - $title - string value of page title
  * - $description - string value of page description
  * - $background_url - the URL of page background
+ * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
 <?php if (!empty($background_url)): ?>
@@ -45,7 +46,7 @@
         <?php print $description ?>
       <?php endif; ?>
     </div>
-    <div class="ad300x250"><center>Ad goes here!</center></div><!-- Maksim: <center></center> - IS DEPRECATED TAG! -->
+    <div class="ad300x250"><?php print render($ad300x250); ?></div>
   </div>
 <?php endif; ?>
 <?php if (!empty($background_url)): ?>

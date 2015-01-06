@@ -33,11 +33,14 @@
         float: left;
         height: 666px;
         margin: 0;
-        max-width: 1470px;
+        max-width: 1490px;
         overflow: hidden;
         position: relative;
         width: 310px;
         &.active {
+          .show-info-block {
+            display: block;
+          }
           .meta-wrapper {
             &:after {
               content: "\e607";
@@ -202,7 +205,7 @@
         > li {
           float: none;
           height: auto;
-          width: 100%!important;
+          width: 100% !important;
           &.hidden {
             display: none;
           }
@@ -270,15 +273,15 @@
   }
   .show-info-block {
     background: $show-info-block;
-    display: block;
+    display: none;
     left: 310px;
     height: 100%;
     position: absolute;
     top: 0px;
-    width: 1160px;
+    width: auto;
     z-index: 1; //temp value
     @include breakpoint($bp-1280-width) {
-      width: 680px;
+      width: calc(100% - #{$show-carousel-item-width});
     }
     @include breakpoint($bp-768-width) {
       background: $show-card-back;
@@ -299,7 +302,7 @@
         display: none;
       }
     }
-    .show-link{
+    .show-link {
       right: 40px;
       position: absolute;
       top: 40px;
@@ -333,7 +336,7 @@
       }
     }
     .social-icons {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       display: none;
       position: absolute;
       height: 100%;
@@ -431,19 +434,19 @@
       @include breakpoint($bp-768-width) {
         display: none;
       }
-      .node-wrapper{
+      .node-wrapper {
         float: left;
       }
       .promo {
         height: 250px;
         position: relative;
-        margin-right: 30px;
+        margin-right: 40px;
         width: 460px;
         @include breakpoint($bp-1280-width) {
-          margin-right: 40px;
+          margin-right: 0px;
           width: 300px;
         }
-        .node{
+        .node {
           height: 100%;
           overflow: hidden;
           position: relative;
@@ -452,11 +455,11 @@
             color: #ffffff;
             height: 100%;
             width: 100%;
-            img{
+            img {
               height: 100%;
               width: 100%;
             }
-            .meta-back{
+            .meta-back {
               background: #000000;
               bottom: 0px;
               left: 0;
@@ -468,7 +471,7 @@
                 height: 81px;
               }
             }
-            .meta-wrapper{
+            .meta-wrapper {
               bottom: 0px;
               height: 33%;
               position: absolute;
@@ -479,7 +482,7 @@
               @include breakpoint($bp-1280-width) {
                 height: 81px;
               }
-              .meta-icon{
+              .meta-icon {
                 position: absolute;
                 margin-top: -18.5px;
                 margin-left: -18.5px;
@@ -487,7 +490,7 @@
                 left: 40px;
               }
               @extend %meta;
-              .meta{
+              .meta {
                 margin-top: -21px;
                 margin-left: 70px;
                 padding-left: 0px;
@@ -497,12 +500,12 @@
                 &:after {
                   display: none;
                 }
-                .title{
+                .title {
                   font-size: 20px;
                   line-height: 26px;
                   margin-left: 0;
                 }
-                .additional{
+                .additional {
                   font-size: 12px;
                   margin-left: 0;
                 }
@@ -511,11 +514,12 @@
           }
         }
       }
-      .advert{
+      .advert {
         height: 250px;
-        margin-right: 30px;
+        margin-right: 40px;
         width: 300px;
         @include breakpoint($bp-1280-width) {
+          float: right;
           margin-right: 0px;
         }
         .advertisement {
@@ -531,56 +535,62 @@
           }
         }
       }
-      .social .node{
-        background-color: $poll-back;
-        text-align: center;
-        position: relative;
-        height: 250px;
-        width: 260px;
-        & a{
-          display: block;
-          height: 100%;
-          text-decoration: none;
-          width: 100%;
-          .meta-wrap {
-            background: none;
-            bottom: auto;
-            color: $poll-color;
+      .social {
+        @include breakpoint($bp-1280-width) {
+          display: none;
+        }
+        .node {
+          background-color: $poll-back;
+          text-align: center;
+          position: relative;
+          height: 250px;
+          width: 260px;
+          & a {
+            display: block;
             height: 100%;
-            margin-left: 10px;
-            position: absolute;
-            text-transform: uppercase;
-            .meta {
+            text-decoration: none;
+            width: 100%;
+            .meta-wrap {
+              background: none;
+              bottom: auto;
               color: $poll-color;
-              height: auto;
-              left: -10px;
-              overflow: hidden;
-              position: relative;
-              margin: 0 auto;
-              top: auto;
-              width: 85%;
-              &:after {
-                display: none;
+              height: 100%;
+              margin-left: 10px;
+              position: absolute;
+              text-transform: uppercase;
+              .meta {
+                color: $poll-color;
+                height: auto;
+                left: -10px;
+                overflow: hidden;
+                position: relative;
+                margin: 0 auto;
+                top: auto;
+                width: 85%;
+                &:after {
+                  display: none;
+                }
               }
-            }
-            .time, .meta-additional {
-              font-family: $tex-gyreschola-italic;
-              font-size: 12px;
-              line-height: 35px;
-            }
-            .meta-social-title {
-              font-family: $avalon-demi;
-              font-size: 20px;
-              line-height: 20px;
-            }
-            .meta-text {
-              font-family: $avalon-medium;
-              font-size: 15px;
-            }
+              .time, .meta-additional {
+                font-family: $tex-gyreschola-italic;
+                font-size: 12px;
+                line-height: 35px;
+              }
+              .meta-social-title {
+                font-family: $avalon-demi;
+                font-size: 20px;
+                line-height: 20px;
+              }
+              .meta-text {
+                font-family: $avalon-medium;
+                font-size: 15px;
+              }
 
+            }
           }
         }
       }
+
     }
 
     .show-bottom-info {
@@ -595,7 +605,7 @@
         margin-top: 0px;
       }
 
-      .carousel-block{
+      .carousel-block {
         background: none;
         height: auto;
         padding: 10px 0px;
@@ -628,7 +638,7 @@
               position: absolute;
               width: 100%;
             }
-            .meta-icon{
+            .meta-icon {
               position: absolute;
               margin-top: -18.5px;
               margin-left: -18.5px;
@@ -636,7 +646,7 @@
               left: 40px;
             }
             @extend %meta;
-            .meta{
+            .meta {
               margin-top: -21px;
               margin-left: 70px;
               padding-left: 0px;
@@ -646,16 +656,16 @@
               &:after {
                 display: none;
               }
-              .caption{
+              .caption {
                 font-size: 20px;
                 line-height: 26px;
               }
-              .additional{
+              .additional {
                 font-size: 12px;
               }
             }
           }
-          &.social-item{
+          &.social-item {
             background-color: $poll-back;
             text-align: center;
             position: relative;
@@ -794,7 +804,7 @@
     }
     &.active {
       background: $bottom-footer-back;
-      border-color: transparent!important;
+      border-color: transparent !important;
     }
     a {
       display: block;
@@ -928,6 +938,7 @@
     }
   }
 }
+
 .show-menu-tab {
   @include clear();
   background: $bottom-footer-back;

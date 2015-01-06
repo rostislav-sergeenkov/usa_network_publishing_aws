@@ -345,7 +345,7 @@
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
       if (window.innerWidth <= window_size_desktop) {
-        width = small_desktop_show_open_width;
+        width = window.innerWidth - 2*show_carousel_margin + show_carousel_item_width;
       }
       var width_block = width - show_carousel_item_width;
       var left = (window.innerWidth - width_block) / 2 - show_carousel_item_width - current_item.offset()['left'] + current_left;
@@ -358,7 +358,6 @@
       current_item.attr('data-left', current_left);
       carousel.addClass('stop');
     },
-    //close show-card-block
     showClose: function (item, mobile) {
       if (mobile) {
         item.removeClass('active');
@@ -368,7 +367,9 @@
       var left = parseInt(item.attr('data-left'));
       carousel.animate({left: left}, 500);
       item.animate({width: show_carousel_item_width}, 500, 'easeOutQuint');
-      item.removeClass('active');
+      setTimeout(function () {
+        item.removeClass('active');
+      }, 300);
       item.find('.social-icons').toggle();
       item.removeAttr('data-left');
       carousel.removeClass('stop');

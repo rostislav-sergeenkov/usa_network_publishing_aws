@@ -49,11 +49,6 @@
               }
             }
           }
-          @include breakpoint($bp-768-width) {
-            .show-info-block {
-              display: block;
-            }
-          }
         }
         a {
           &.show-open {
@@ -280,7 +275,8 @@
     top: 0px;
     width: auto;
     z-index: 1; //temp value
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($between-769-1280) {
+      min-width: 670px;
       width: calc(100% - #{$show-carousel-item-width});
     }
     @include breakpoint($bp-768-width) {

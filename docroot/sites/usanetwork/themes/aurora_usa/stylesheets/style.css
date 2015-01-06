@@ -9839,11 +9839,6 @@ footer h2 {
     content: "\e60a";
   }
 }
-@media (max-width: 768px) {
-  .shows-block .carousel ul li.active .show-info-block {
-    display: block;
-  }
-}
 .shows-block .carousel ul li a.show-open {
   height: 100%;
   overflow: hidden;
@@ -10074,8 +10069,9 @@ footer h2 {
   width: auto;
   z-index: 1;
 }
-@media (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .shows-block .show-info-block {
+    min-width: 670px;
     width: calc(100% - 310px);
   }
 }

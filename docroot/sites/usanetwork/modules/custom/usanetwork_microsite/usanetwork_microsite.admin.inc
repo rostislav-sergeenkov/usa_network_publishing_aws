@@ -1,83 +1,84 @@
 <?php
 /**
  * Implements hook_form_FORM_ID_alter()
- * This determines what fields to display for each section type
  */
 function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, &$form_state, $form_id) {
-//echo '<pre>form: ' . print_r($form, true) . '</pre><br>';  // pretty print array using Krumo to messages
-  $i = 0;
-  while(is_array($form['field_ms_section']['und'][$i])) {
-    // section_type = 'home'
-    $form['field_ms_section']['und'][$i]['field_usa_hp_arefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_usa_hp_brefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_usa_hp_crefs']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-/*
-    $form['field_ms_section']['und'][$i]['field_hp_promo_carousel']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_hp_promos']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['groups']['group_show_aspots']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['groups']['group_ms_featured']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'home'),
-      ),
-    );
-*/
+  $lang = $form['#node']->language;
+  $form['field_ms_section'][$lang]['#after_build'][] = '_usanetwork_microsite_section_after_build';
+}
 
-    // section_type = 'about'
-    $form['field_ms_section']['und'][$i]['field_ms_section_text']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
-      ),
-    );
-    $form['field_ms_section']['und'][$i]['field_quotation']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'about'),
-      ),
-    );
+// This determines what fields to display for each section type
+function _usanetwork_microsite_section_after_build($form, &$form_state) {
+  $lang = $form['#language'];
+  foreach($form as $k => $v) {
+    if(is_numeric($k) && isset($v['#entity_type']) && $v['#entity_type']=='field_collection_item'){
+      
+      //home section
+      $form[$k]['field_usa_tv_a_spot']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      $form[$k]['field_usa_autoscroll']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      $form[$k]['field_usa_slide_speed']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      $form[$k]['field_usa_tv_promo_large']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      $form[$k]['field_usa_tv_promo_rows']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      $form[$k]['field_usa_tv_promo']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'home'),
+        ),
+      );
+      
+      // section_type = 'about'
+      $form[$k]['field_ms_section_text']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'about'),
+        ),
+      );
+      $form[$k]['field_quotation']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'about'),
+        ),
+      );
+      
+      //gallery
+      $form[$k]['field_media_gallery']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'galleries'),
+        ),
+      );
+      
+      //characters
+      $form[$k]['field_person']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'characters'),
+        ),
+      );
+      
+      //games
+      $form[$k]['field_ms_catchall_page']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'games'),
+        ),
+      );
 
-    // section_type = 'galleries'
-    $form['field_ms_section']['und'][$i]['field_media_gallery']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'galleries'),
-      ),
-    );
-
-    // section_type = 'characters'
-    $form['field_ms_section']['und'][$i]['field_person']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'characters'),
-      ),
-    );
-
-    // section_type = 'games'
-    $form['field_ms_section']['und'][$i]['field_ms_catchall_page']['#states'] = array(
-      'visible' => array(
-        ':input[id="edit-field-ms-section-und-' . $i . '-field-ms-section-type-und"]' => array('value' => 'games'),
-      ),
-    );
-    $i++;
+    }
   }
+  return $form;
 }

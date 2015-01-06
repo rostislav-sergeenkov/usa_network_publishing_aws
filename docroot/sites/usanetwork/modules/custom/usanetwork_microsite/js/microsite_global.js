@@ -39,8 +39,8 @@ var activeSection,
     activeItem;
 (function($) {
   // config
-  var sectionList = ['home', 'about', 'characters', 'galleries', 'games'],
-      scrollToList = ['about', 'characters', 'galleries', 'games'],
+  var sectionList = ['home', 'about', 'videos', 'characters', 'galleries', 'games'],
+      scrollToList = ['about', 'videos', 'characters', 'galleries', 'games'],
       topOffset = 130, // height in pixels of top header items
       bottomOffset = 175, // height in pixels of bottom nav items
       leftNavAnimationSpeed = 1500, // in msecs

@@ -4,6 +4,7 @@ var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;
 var window_size_mobile = 481;
 var show_carousel_item_width = 310;
+var show_carousel_margin = 50;
 var desktop_show_open_width = 1490;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;

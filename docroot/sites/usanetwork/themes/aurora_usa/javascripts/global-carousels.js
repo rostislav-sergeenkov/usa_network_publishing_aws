@@ -345,7 +345,7 @@
       var current_left = parseInt(carousel.css('left'));
       var width = desktop_show_open_width;
       if (window.innerWidth <= window_size_desktop) {
-        width = window.innerWidth - 100 + show_carousel_item_width;
+        width = window.innerWidth - 2*show_carousel_margin + show_carousel_item_width;
       }
       var width_block = width - show_carousel_item_width;
       var left = (window.innerWidth - width_block) / 2 - show_carousel_item_width - current_item.offset()['left'] + current_left;

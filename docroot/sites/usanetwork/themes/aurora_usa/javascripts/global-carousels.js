@@ -121,9 +121,9 @@
                       return false;
                     }
                     if (!$carousel.hasClass('stop')) {
-                      if (target.href) {
+                      if ($(target).attr('href')) {
                         if (!$(target).hasClass('show-open')) {
-                          window.location = target.href;
+                          window.location = $(target).attr('href');
                         } else {
                           if (window.innerWidth >= window_size_tablet_portrait) {
                             if ($container.hasClass('start')) {
@@ -230,8 +230,8 @@
                   if ((event instanceof MouseEvent) && event.button != 0) {
                     return false;
                   }
-                  if (target.href) {
-                    window.location = target.href;
+                  if ($(target).attr('href')) {
+                    window.location = $(target).attr('href');
                   } else {
                     var link = $(target).closest('a');
                     if (link.length == 0) {

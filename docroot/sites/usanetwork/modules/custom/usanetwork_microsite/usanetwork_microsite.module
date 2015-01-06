@@ -273,6 +273,7 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
       : '',
     'about_quotations' => array(),
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
+    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
 
   if (!empty($section_object->field_quotation)) {
@@ -293,6 +294,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     'people' => array(),
     'characters_navigation' => NULL,
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
+    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
   if (!empty($section_object->field_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
@@ -335,17 +337,19 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   $section_object = $section_wrapper->value();
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
+    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
 
   if (!empty($section_object->field_media_gallery)) {
     $gallery_nodes = $section_wrapper->field_media_gallery->value();
+
+    // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($gallery_nodes)) {
       $gallery_nodes = array($gallery_nodes);
     }
 
     foreach ($gallery_nodes as $current_gallery_node) {
       $gallery_view = node_view($current_gallery_node, 'inline_content');
-
       $body_value = NULL;
       $body_field = field_get_items('node', $current_gallery_node, 'body');
       $show_nid = NULL;
@@ -359,7 +363,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
         $show_nid = reset(reset($show_field));
       }
 
-      $theme_variables['gallery'][] = array(
+      $theme_variables['galleries'][] = array(
         'title' => $current_gallery_node->title,
         'description' => $body_value,
         'rendered' => drupal_render($gallery_view),

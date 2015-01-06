@@ -28,6 +28,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
 //        'promo_carousel' => array(),
 //        'characters_cast' => NULL,
         'background_url' => NULL,
+        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_about' => array(
@@ -43,6 +44,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'background_url' => NULL,
+        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_characters' => array(
@@ -66,6 +68,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'characters_navigation' => NULL,
+        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_galleries' => array(
@@ -73,9 +76,10 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'path' => $subtheme_path,
       'variables' => array(
         'background_url' => NULL,
-        'gallery' => array(),
+        'galleries' => array(),
         'episodic_galleries' => NULL,
         'character_galleries' => NULL,
+        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_games' => array(

@@ -5,7 +5,7 @@
 
 //      function initMicrositeAspot() {
       $('body').once('micrositeFlexslider', function () {
-        $slideshow_selector = $('.microsite-section-container #show-aspot ul');
+        $slideshow_selector = $('.microsite-section-container #show-aspot-test ul');
 usa_debug('slideshow_selector: ');
 usa_debug($slideshow_selector);
         $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;

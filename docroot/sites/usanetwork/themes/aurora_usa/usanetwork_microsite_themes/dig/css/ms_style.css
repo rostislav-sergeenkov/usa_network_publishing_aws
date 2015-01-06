@@ -770,8 +770,8 @@ you can use the generic selector below, but it's slower:
 }
 /* A-SPOT */
 @media (max-width: 1274px) and (min-width: 959px) {
-#microsite .a-spot {
-  width: 930px;
-  height: 378px;
-}
+  #microsite .a-spot {
+    width: 930px;
+    height: 378px;
+  }
 }

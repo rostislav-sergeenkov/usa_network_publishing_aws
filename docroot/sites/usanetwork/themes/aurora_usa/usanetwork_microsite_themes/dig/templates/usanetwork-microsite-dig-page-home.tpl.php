@@ -22,7 +22,7 @@
         <?php if (!empty($aspots)): ?>
         <div class="panel-panel panel-one panel-row first-row a-spot-panel tiles">
           <div id="main-slider">
-            <div id="show-aspot" class="panel-pane pane-entity-field pane-node-field-usa-tv-a-spot show-aspot">
+            <div id="show-aspot-test" class="panel-pane pane-entity-field pane-node-field-usa-tv-a-spot show-aspot">
               <div class="pane-content">
                 <ul>
                   <?php foreach ($aspots as $aspot): ?>

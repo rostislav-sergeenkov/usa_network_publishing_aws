@@ -127,7 +127,7 @@ var activeSection,
     //usa_debug('ajaxCall(' + url + ')');
     $.ajax({
       dataType: 'html',
-      url: url,
+      url: url
     })
     .done(function( data ) {
       //usa_debug( "Sample of data:", data.slice( 0, 100 ) );

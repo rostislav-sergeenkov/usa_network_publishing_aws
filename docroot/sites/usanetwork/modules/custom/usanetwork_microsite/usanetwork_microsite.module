@@ -416,15 +416,63 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
 }
 
 /**
+ * Provides suggested video url path value
+ */
+function _usanetwork_microsite_get_suggested_video_url($video_filename) {
+  // make filename lowercase and remove any extra space from the beginning and end
+  $video_filename = strtolower(trim($video_filename));
+  // remove any characters that are not letters, numbers or whitespace
+  $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
+  // replace spaces with '-'
+  $suggested_url = str_replace(' ', '-', $suggested_url);
+  return $suggested_url;
+}
+
+/**
  * Renders videos page.
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper) {
-  // Uncomment next line if you will use values of section fields
-  //$section_object = $section_wrapper->value();
-
+  $lang = 'und';
+  $section_object = $section_wrapper->value();
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
+
+  if (!empty($section_object->field_ms_videos)) {
+    $video_nodes = $section_wrapper->field_ms_videos->value();
+    // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
+    if (!is_array($video_nodes)) {
+      $video_nodes = array($video_nodes);
+    }
+
+    $video_count = 0;
+    $show_in_player = 0;
+    $video_for_player = (arg(4) !== null) ? arg(4) : null; // gets name of video from url, if present
+    foreach ($video_nodes as $v_key => $current_video_node) {
+      $filename = $current_video_node->filename;
+      $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($filename);
+      // if there's a video listed in the url, set it as the video to show in the player
+      if (!empty($video_for_player) && $video_for_player == $suggested_video_url) {
+        $show_in_player = $v_key;
+      }
+      else {
+        $theme_variables['videos'][] = array(
+          'url' => $suggested_video_url,
+          'rendered' => drupal_render(file_view(file_load($current_video_node->fid), 'vid_teaser_show_general')),
+        );
+      }
+      $video_count++;
+    }
+    $theme_variables['in_player'] = array(
+      'url' => _usanetwork_microsite_get_suggested_video_url($video_nodes[$show_in_player]->filename),
+      'title' => $video_nodes[$show_in_player]->field_mpx_title[$lang][0]['value'],
+      'description' => $video_nodes[$show_in_player]->field_mpx_description[$lang][0]['value'],
+      'airdate' => strftime('%b %e, %G', $video_nodes[$show_in_player]->field_mpx_airdate[$lang][0]['value']),
+      'season_number' => $video_nodes[$show_in_player]->field_mpx_season_number[$lang][0]['value'],
+      'episode_number' => $video_nodes[$show_in_player]->field_mpx_episode_number[$lang][0]['value'],
+      'rendered' => drupal_render(file_view(file_load($video_nodes[$show_in_player]->fid), 'inline_content')),
+    );
+  }
 
   return $theme_variables;
 }

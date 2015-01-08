@@ -28,9 +28,9 @@
         <div id="left-nav-tunein"><?php print $tune_in; ?></div>
       <?php endif; ?>
       <div id="left-nav-social" class="clearfix">
-        <a class="facebook" href="https://www.facebook.com/USANetwork"></a>
-        <a class="twitter" href="https://twitter.com/usa_network"></a>
-        <a class="instagram" href="http://instagram.com/USANetwork"></a>
+        <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+        <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+        <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
       </div>
       <?php if (!empty($sections_navlinks)): ?>
         <div id="left-nav-links">
@@ -38,8 +38,8 @@
             <?php foreach ($sections_navlinks as $sections_navlink): ?>
               <?php print $sections_navlink; ?>
             <?php endforeach; ?>
-            <li>Dig Decoded</li>
-            <li>Wattpad</li>
+            <li><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
+            <li><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
             <li id="tour-israel">Tour Isreal
               <ul>
                 <li>Link 1</li>

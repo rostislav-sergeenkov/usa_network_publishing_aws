@@ -721,6 +721,7 @@ you can use the generic selector below, but it's slower:
   margin-left: 6px;
   width: 26px;
   height: 26px;
+  outline: none;
 }
 .page-node-microsite #left-nav #left-nav-social a.instagram {
   /* @include sprite-background(insta-icon); */

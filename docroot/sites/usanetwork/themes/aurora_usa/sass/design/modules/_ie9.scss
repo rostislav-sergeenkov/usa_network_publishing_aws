@@ -18,7 +18,7 @@
         li {
           float: left;
           width: 33.33333%;
-          @include breakpoint($bp-768-width){
+          @include breakpoint($bp-768-width) {
             width: 50%;
           }
         }

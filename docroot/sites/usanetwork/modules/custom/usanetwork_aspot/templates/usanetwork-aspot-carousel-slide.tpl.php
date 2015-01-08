@@ -23,9 +23,9 @@
           <?php endif; ?>
           <?php if (!empty($show_poster['desktop'])): ?>
             <div data-media="(min-width: 1025px)" data-src="<?php print $show_poster['desktop']; ?>"></div>
-            <!--[if (IE 8) & (!IEMobile)]><!-->
+            <!--[if (IE 8) & (!IEMobile)]>
             <div data-src="<?php print $show_poster['desktop']; ?>"></div>
-            <!--<![endif]-->
+            <![endif]-->
           <?php endif; ?>
           <?php if (!empty($show_poster['desktop_retina'])): ?>
             <div data-media="(min-width: 1025px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['desktop_retina']; ?>"></div>

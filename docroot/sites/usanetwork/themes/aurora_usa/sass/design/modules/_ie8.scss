@@ -516,4 +516,13 @@
       }
     }
   }
+  .show-menu-tab {
+    .show-menu li.active ul.menu {
+      @include clear;
+      li {
+        float: left;
+        width: 33.33333%;
+      }
+    }
+  }
 }

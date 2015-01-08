@@ -13,21 +13,6 @@
  *
  * 2. Never use global variables in JS
  *
- * 3. Never leave debug functions in your code. The usa_debug uses "console.log()" method. It will flood in clients console
- * and will break JS on old IE. For example IE 7 do not know what is "console.log" and this call will crash JS on the website.
- *
- * 4. Never overwrite standard JS functions like Array.prototype.remove(). After your redefinition the remove() method will
- * remove array elements by value. It must remove by key. All other calls of this method after your code will incorrect.
- * It's almost impossible to debug.
- *
- * 5. Always remove comma characters from latest array elements of object properties. If you leave a comma symbol after the
- * last element old IE will crash JS running:
- *
- * var foo = {
- *  bar1: 'foo-bar',
- *  bar2: 'foo-bar2', <-- this comma will crash JS on old IE.
- * };
- *
  * 6. Drupal's router does not know what is *.php file like in loadSection(). You need just put a full URL to page or use
  * $.ajax({}) call.
  *
@@ -36,7 +21,7 @@
 
 // Global microsite functions
 var activeSection,
-	activeItem;
+    activeItem;
 (function($) {
 	// config
 	var sectionList = ['home', 'about', 'videos', 'characters', 'galleries', 'games'],
@@ -142,92 +127,10 @@ var activeSection,
 		ajaxCall('http://' + window.location.hostname + '/dig/' + elem + '.php', elem);
 	}
 
-	/*
-	 // monitor scroll position
-	 var scrolledIntoViewCount = 0;
-	 function isScrolledIntoView() {
-	 if (initialPageLoad || scrolledIntoViewCount >= 20) {
-	 var docViewTop = $(window).scrollTop(),
-	 docViewBottom = docViewTop + $(window).height(),
-	 yOffset = window.pageYOffset, // vertical scroll position
-	 currentSection = ($('#left-nav-links .active').length > 0) ? $('#left-nav-links .active').attr('id').replace('nav-', '') : 'home';
-
-	 // load additional sections, if needed
-	 for (var elem, maxLength = scrollToList.length, i=0; i < maxLength; i++) {
-	 elem = scrollToList[i];
-	 //usa_debug('isScrolledIntoView -- elem: scroll-to-' + elem);
-	 if ($('section #' + elem).hasClass('clearfix') && $('section #' + elem).length < 10) {
-	 var elemTop = $('#scroll-to-' + elem).offset().top;
-	 if ((elemTop <= docViewBottom) && (elemTop >= docViewTop)) {
-	 //loadSection(elem);
-	 }
-	 }
-	 }
-
-	 // determine which section is being viewed and set the left nav
-	 // also if needed, set-up other animations
-	 for (var elem, maxLength = sectionList.length, i=0; i < maxLength; i++) {
-	 elem = sectionList[i];
-	 //usa_debug('checking for section in view -- elem: ' + elem);
-	 if ($('section #' + elem).hasClass('clearfix')) {
-	 var elemBottom = $('#' + elem).offset().top + $('#' + elem).height();
-	 //usa_debug('elemBottom: ' + elemBottom + '\ndocViewBottom: ' + docViewBottom + '\ndocViewTop: ' + docViewTop + '\nyOffset: ' + yOffset + '\ncurrentSection: ' + currentSection + '\nelem: ' + elem);
-	 if (elemBottom <= docViewBottom && elemBottom >= docViewTop && currentSection != elem) {
-	 //usa_debug('isScrolledIntoView: ' + elem);
-	 updateNav(elem);
-
-	 // animate captions
-	 captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
-	 *//*
-	 switch(elem) {
-	 case 'about':
-	 numAboutCaptions = $('.caption li').length;
-	 if (numAboutCaptions > 1) {
-	 // animate captions
-	 setTimeout(function(){
-	 captionReplaceAnimation('.caption li');
-	 }, captionReplaceSpeed);
-	 }
-	 break;
-	 case 'characters':
-	 numCharCaptions = $('.caption li').length;
-	 if (numCharCaptions > 1) {
-	 // animate captions
-	 setTimeout(function(){
-	 captionReplaceAnimation();
-	 }, captionReplaceSpeed);
-	 }
-	 break;
-	 }
-	 *//*
-	 }
-	 }
-	 }
-
-	 // show / hide Dig logo above left nav
-	 //usa_debug('yOffset: ' + yOffset);
-	 *//*
-	 if (yOffset > 500) {
-	 showDigLogo();
-	 }
-	 else {
-	 hideDigLogo();
-	 }
-	 *//*
-	 $('.dig #characters li').css('height', (wHeight - bottomOffset) + 'px');
-
-	 initialPageLoad = 0;
-	 scrolledIntoViewCount = 0;
-	 }
-	 else {
-	 scrolledIntoViewCount++;
-	 }
-	 }
-	 */
 
 	// updateWindowContents
 	function updateWindowContents(elem, direction) {
-		console.log('update');
+		usa_debug('update');
 		// after scrolling to selected section,
 		// reset activeSection,
 		// remove #visible and rename the selected section #visible,
@@ -260,7 +163,7 @@ var activeSection,
 		else {
 			if (typeof captionTimer != 'undefined') clearTimeout(captionTimer);
 		}
-		InitCarousels();
+		initCarousels();
 	}
 
 	// actively scroll to an item on click
@@ -277,34 +180,28 @@ var activeSection,
 			usa_debug('currentLocation: ' + currentLocation + '\nnextLocation: ' + nextLocation + '\ndirection: ' + direction);
 			$('#hidden-' + direction).html(newHtml).show();
 
-			// if Firefox
-			if (window.navigator.userAgent.indexOf('Firefox') != -1) {
-				window.location.href = '#/' + elem;
-				if (elem == 'home') {
-					hideDigLogo();
-				}
-				else {
-					showDigLogo();
-				}
-				updateWindowContents(elem, direction);
-			}
-			// else not Firefox
-			else {
-				if (elem == 'home') {
-					hideDigLogo();
-				}
-				else {
-					showDigLogo();
-				}
-				jQuery('html body').animate({
-					scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top // - topOffset
-				}, 2000, 'easeInOutCubic', function(){
-					//        window.location.href = '/dig/#/' + elem;
-					window.location.hash = '/' + elem;
-
-				});
-				updateWindowContents(elem, direction);
-			}
+      if (elem == 'home') {
+        hideDigLogo();
+      }
+      else {
+        showDigLogo();
+      }
+      if (elem == 'videos') {
+        setTimeout(function(){
+          $('#visible .video-player iframe').attr('id', 'pdk-player-active');
+//          $('#section-videos .video-player iframe').remove();
+          $pdk.bind('pdk-player');
+          setTimeout(function(){
+            $pdk.controller.pause(false);
+          }, 2000);
+        }, 5000);
+      }
+      jQuery('html body').animate({
+        scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top - topOffset
+      }, 2000, 'easeInOutCubic', function(){
+//					window.location.hash = '/' + elem;
+      });
+      updateWindowContents(elem, direction);
 
 			$('#left-nav-links > ul > li').removeClass('active');
 			$('#nav-' + elem).addClass('active');
@@ -327,10 +224,25 @@ var activeSection,
 	 }
 	 */
 
-	function parseHash() {
-		var hash = window.location.hash;
-		if (hash != '') {
-			var parse = hash.split('/');
+// 	function parseHash() {
+// 		var hash = window.location.hash;
+// 		if (hash != '') {
+// 			var parse = hash.split('/');
+// 			activeSection = parse[1];
+// 			activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+// 		}
+// 		else {
+// 			activeSection = 'home';
+// 			activeItem = '';
+// 		}
+// 	}
+
+	function parseUrl() {
+		var urlPath = window.location.pathname,
+		    sectionLocation = urlPath.replace('/dig', '');
+		usa_debug('parseUrl()\nsectionLocation: ' + sectionLocation);
+		if (sectionLocation != '') {
+			var parse = sectionLocation.split('/');
 			activeSection = parse[1];
 			activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
 		}
@@ -341,32 +253,33 @@ var activeSection,
 	}
 
 	function showInitialContent() {
-		console.log("g1");
-		var visible = '';
-		if (activeSection != '' && activeItem != '') {
-			visible = $('#section-' + activeSection + '-' + activeItem).html();
-		}
-		else if (activeSection != '') {
-			visible = $('#section-' + activeSection).html();
-		}
-		if (visible != '') {
-			$('#microsite #visible').html(visible);
-			$('#left-nav-links > ul > li').remove('active');
-			$('#nav-' + activeSection).addClass('active');
-		}
-		if (activeSection == 'home') {
-			hideDigLogo();
-		}
-		else {
-			showDigLogo();
-		}
+		usa_debug("g1");
+      var visible = '';
+//       if (activeSection != '' && activeItem != '') {
+//         visible = $('#section-' + activeSection + '-' + activeItem).html();
+//       }
+//       else
+      if (activeSection != '') {
+        visible = $('#section-' + activeSection).html();
+      }
+      if (visible != '') {
+        $('#microsite #visible').html(visible);
+        $('#left-nav-links > ul > li').remove('active');
+        $('#nav-' + activeSection).addClass('active');
+      }
+      if (activeSection == 'home') {
+        hideDigLogo();
+      }
+      else {
+        showDigLogo();
+      }
 
-		// animate captions
-		captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
+      // animate captions
+      captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
 	}
 
-	function InitCarousels(){
-		console.log('init1');
+	function initCarousels(){
+		usa_debug('init1');
 		//todo
 		$slideshow_selector = $('#microsite #visible .microsite-carousel ul');
 		$slideshow_selector
@@ -375,38 +288,63 @@ var activeSection,
 			.parent()
 			.flexslider({
 				slideshow: true,
-				slideshowSpeed: 2000,
+				slideshowSpeed: 7000,
 				pauseOnHover: true,
 				animation: 'slide',
 				controlNav: true,
 				directionNav: (!Modernizr.touch),
 				touch: false
 			});
-
-
 	}
 
-	//MicroSite.carousel =
 
+  function toTitleCase(str)
+  {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
 
+  function updateWindowState(elem) {
+    var title = toTitleCase(elem),
+        newState = (elem == 'home') ? '/dig' : '/dig/' + elem;
+    usa_debug('updateWindowState(' + elem + ')\ntitle: ' + title);
+    window.history.pushState({state:elem}, title, newState);
+    scrollTo(elem);
+  }
+
+  function updateVideoAndWindowState(videoUrl) {
+    var title = toTitleCase(videoUrl),
+        newState = '/dig/videos/' + videoUrl;
+    usa_debug('updateVideoAndWindowState(' + videoUrl + ')\ntitle: ' + title);
+    window.history.pushState({state:videoUrl}, title, newState);
+  }
+
+  function initVideoSection() {
+    var inactivePlayer = $('#section-videos #pdk-player'),
+        inactivePlayerSrc = inactivePlayer.attr('src'),
+        updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false')
+        activeVideoUrl = $('#section-videos .video-player').attr('data-video-url');
+usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupdatedPlayerSrc: ' + updatedPlayerSrc);
+    // update video player src
+    $('#section-videos #pdk-player').attr('src', updatedPlayerSrc);
+
+    // hide the active video in the list
+    $('#section-videos li[data-video-url=' + activeVideoUrl + ']').addClass('active');
+  }
 
 	// on page load
-//  window.onscroll = isScrolledIntoView;
-
 	$(document).ready(function(){
 		wHeight = $(window).height();
 		$('section').css('height', (wHeight - bottomOffset) + 'px');
 
-		parseHash();
+		parseUrl();
 		usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
+    initVideoSection(); // needs to happen before showInitialContent
 		showInitialContent();
-		InitCarousels();
-
-//    setTimeout(isScrolledIntoView, 3000);
+		initCarousels(); // needs to happen after showInitialContent
 
 		// initialize logo click
 		$('#left-nav-logo').on('click', function() {
-			scrollTo('home');
+			updateWindowState('home');
 		});
 
 		// initialize scroll clicks
@@ -421,7 +359,7 @@ var activeSection,
 		$('#left-nav-links li').on('click', function(){
 			var elem = $(this).attr('id').replace('nav-', '');
 			if (sectionList.indexOf(elem) >= 0) {
-				scrollTo(elem);
+        updateWindowState(elem);
 			}
 		});
 

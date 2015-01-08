@@ -14,6 +14,7 @@
 <?php if (!empty($background_url)): ?>
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
+  <div class="ad-leaderboard"></div>
   <?php if (!empty($galleries) && count($galleries) > 0): ?>
   <div class="left-pane">
     <?php foreach ($galleries as $gallery): ?>

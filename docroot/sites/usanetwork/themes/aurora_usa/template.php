@@ -173,6 +173,8 @@ function aurora_usa_preprocess_page(&$vars) {
   // if microsite, don't display the top utilities section
   if ($node && $node->type == 'usanetwork_microsite') {
     $vars['page']['no_utilities'] = true;
+    $vars['page']['no_footer'] = true;
+    $vars['page']['no_leaderboard'] = true;
   }
 }
 

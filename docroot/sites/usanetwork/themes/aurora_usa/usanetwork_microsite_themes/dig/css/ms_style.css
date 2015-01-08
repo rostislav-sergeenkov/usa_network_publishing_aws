@@ -270,12 +270,6 @@ you can use the generic selector below, but it's slower:
   background-color: #000;
   padding-top: 0;
 }
-.usa-wrap .ad-leaderboard {
-  position: fixed;
-  top: 10px;
-  left: 20%;
-  z-index: 10;
-}
 
 #main {
   width: 100%;
@@ -334,6 +328,9 @@ you can use the generic selector below, but it's slower:
 #microsite #games {
   background-image: url("../images/dig_bg_games.jpg");
 }
+#microsite #videos {
+  background-image: url("../images/dig_bg_videos.jpg");
+}
 #microsite .pane-title {
   text-transform: uppercase;
   font-size: 2em;
@@ -343,6 +340,10 @@ you can use the generic selector below, but it's slower:
   width: 4em;
   margin: 0 auto;
   cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  margin-left: calc(-50% - 2em);
 }
 #microsite .scroll div {
   text-align: center;
@@ -353,6 +354,9 @@ you can use the generic selector below, but it's slower:
   width: 14px;
   height: 29px;
   margin: 0 auto;
+}
+#microsite .full-pane {
+  width: 100%;
 }
 #microsite .left-pane {
   width: 55%;
@@ -396,6 +400,18 @@ you can use the generic selector below, but it's slower:
 #microsite .right-pane .text {
   font-size: 0.8em;
   line-height: 1.7em;
+}
+#microsite .ad-leaderboard {
+  width: 720px;
+  height: 90px;
+  background-color: grey;
+  margin: 0 auto;
+}
+#microsite .ad300x250,
+#microsite .right-pane .ad300x250 {
+  background-color: grey;
+  width: 300px;
+  height: 250px;
 }
 #microsite .right-pane .ad300x250 {
   margin-bottom: 30px;
@@ -664,7 +680,7 @@ you can use the generic selector below, but it's slower:
   position: fixed;
   top: 115px;
   /* 194px; */
-  left: 50px;
+  left: 15px;
   width: 250px;
   color: white;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -687,6 +703,11 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   opacity: 0;
+  line-height: 22px;
+  width: 130px;
+  text-align: center;
+  letter-spacing: 2.7px;
+  padding-top: 5px;
 }
 .page-node-microsite #left-nav #left-nav-social {
   position: relative;
@@ -718,7 +739,7 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav #left-nav-links ul {
   padding: 0;
-  margin: 0 0 0 24px;
+  margin: 0 0 0 17px;
 }
 .page-node-microsite #left-nav #left-nav-links li {
   list-style: none;
@@ -741,6 +762,9 @@ you can use the generic selector below, but it's slower:
   display:none;
   margin-left: 16px;
 }
+.page-node-microsite #left-nav #left-nav-links ul #tour-israel ul {
+  display:block;
+}
 .page-node-microsite #left-nav #left-nav-links ul ul li {
   font-size: 0.8em;
   width: 200px;
@@ -759,24 +783,28 @@ you can use the generic selector below, but it's slower:
 
 
 /* ADDED OUTSIDE OF SASS */
+.page-node-microsite .usa-wrap {
+  background-color: #000;
+  padding-top: 0;
+}
 #microsite ul {
   margin: 0;
   padding: 0;
+}
+#activeContent {
+  height: 300%;
+}
+#activeContent > div {
+  height: 100%;
 }
 .slides .clone {
   width: 930px;
   float: left;
   display: block;
 }
-/* A-SPOT
-@media (max-width: 1274px) and (min-width: 959px) {
-  #microsite #show-main-slider {
-    width: 930px;
-    height: 378px;
-  }
-} */
 
-/* STYLEs */
+
+/* STYLES */
 #main {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -785,6 +813,19 @@ you can use the generic selector below, but it's slower:
   margin-left: auto;
   margin-right: auto;
 }
+#microsite .video-container {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  }
+  #microsite .video-title {
+    font-size: 2em;
+  }
+  #microsite .video-description {
+    font-size: 1.2em;
+  }
+  #microsite .video-info {
+    font-size: 1.2em;
+    color: #e5ce96;
+  }
 @media (max-width: 1335px) and (min-width: 1020px) {
   #microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child,
   #microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper{

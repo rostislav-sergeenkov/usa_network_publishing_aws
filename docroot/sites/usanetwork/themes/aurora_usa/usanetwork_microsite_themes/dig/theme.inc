@@ -23,12 +23,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'variables' => array(
         'aspots' => array(),
         'featured' => array(),
-//        'bspots' => NULL,
-//        'cspots' => NULL,
-//        'promo_carousel' => array(),
-//        'characters_cast' => NULL,
         'background_url' => NULL,
-        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_about' => array(
@@ -44,7 +39,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'background_url' => NULL,
-        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_characters' => array(
@@ -68,7 +62,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'characters_navigation' => NULL,
-        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_galleries' => array(
@@ -79,7 +72,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'galleries' => array(),
         'episodic_galleries' => NULL,
         'character_galleries' => NULL,
-        'ad300x250' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_games' => array(
@@ -96,6 +88,21 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'template' => 'usanetwork-microsite-dig-page-videos',
       'path' => $subtheme_path,
       'variables' => array(
+        'videos' => array(
+          0 => array(
+            'url' => NULL,
+            'rendered' => NULL,
+          ),
+        ),
+        'in_player' => array(
+          'url' => NULL,
+          'title' => NULL,
+          'description' => NULL,
+          'airdate' => NULL,
+          'season_number' => NULL,
+          'episode_number' => NULL,
+          'rendered' => NULL,
+        ),
         'background_url' => NULL,
       ),
     ),
@@ -109,9 +116,13 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
 function usanetwork_microsite_dig_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
+  $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
   return array(
     'js' => array(
+        'http://pdk.theplatform.com/pdk/tpPdkController.js',
+//      $theme_path . '/javascripts/video-dropdowns.js',
+//      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/javascripts/flexslider-gallery.js',
       $module_path . '/js/microsite_global.js'

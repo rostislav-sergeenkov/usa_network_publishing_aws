@@ -117,7 +117,7 @@
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
   <!-- leaderboard ad -->
-    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+    <?php if (!isset($page['no_leaderboard']) && $page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
   <!-- /leaderboard -->
 
   <!-- MAIN CONTENT -->
@@ -169,9 +169,11 @@
   </aside>
   <!-- /PERSONALIZATION -->
 
+  <?php if (!isset($page['no_footer'])): ?>
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo" class="clearfix">
     <?php print render($page['footer']); ?>
   </footer>
   <!-- /FOOTER -->
+  <?php endif; ?>
 </div>

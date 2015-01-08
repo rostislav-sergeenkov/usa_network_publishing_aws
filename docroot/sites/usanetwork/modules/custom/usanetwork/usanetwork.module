@@ -239,7 +239,7 @@ function theme_usanetwork_item_list($variables) {
         $attributes['class'][] = 'last';
       }
 
-      if (strtolower(strip_tags($data)) == 'show') {
+      if (strtolower(strip_tags($data)) == 'shows') {
         $query_result = views_get_view_result('usa_nav', 'block');
 
         if (!empty($query_result)) {

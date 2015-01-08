@@ -70,17 +70,17 @@ function usanetwork_menu_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_show:<nolink>
-  $menu_links['main-menu_show:<nolink>'] = array(
+  // Exported menu link: main-menu_shows:<nolink>
+  $menu_links['main-menu_shows:<nolink>'] = array(
     'menu_name' => 'main-menu',
     'link_path' => '<nolink>',
     'router_path' => '<nolink>',
-    'link_title' => 'Show',
+    'link_title' => 'Shows',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_show:<nolink>',
+      'identifier' => 'main-menu_shows:<nolink>',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -95,7 +95,7 @@ function usanetwork_menu_menu_default_menu_links() {
   t('Full episodes');
   t('Home');
   t('Schedule');
-  t('Show');
+  t('Shows');
 
 
   return $menu_links;

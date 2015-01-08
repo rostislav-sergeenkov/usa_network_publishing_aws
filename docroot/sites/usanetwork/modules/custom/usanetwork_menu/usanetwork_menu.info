@@ -2,7 +2,7 @@ name = USA Network Menu
 description = Renders main navigation menu on the website
 core = 7.x
 package = "USA Network"
-version = 7.x-1.1.20
+version = 7.x-1.1.21
 
 project = usanetwork_menu
 dependencies[] = features
@@ -19,7 +19,7 @@ features[features_api][] = api:2
 features[menu_links][] = main-menu_full-episodes:<nolink>
 features[menu_links][] = main-menu_home:<front>
 features[menu_links][] = main-menu_schedule:<nolink>
-features[menu_links][] = main-menu_show:<nolink>
+features[menu_links][] = main-menu_shows:<nolink>
 features[variable][] = special_menu_items_nolink_tag
 features_exclude[menu_custom][main-menu] = main-menu
 features_exclude[dependencies][ctools] = ctools

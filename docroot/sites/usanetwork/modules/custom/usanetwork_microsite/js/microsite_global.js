@@ -341,7 +341,6 @@ var activeSection,
 	}
 
 	function showInitialContent() {
-		console.log("g1");
 		var visible = '';
 		if (activeSection != '' && activeItem != '') {
 			visible = $('#section-' + activeSection + '-' + activeItem).html();
@@ -366,8 +365,8 @@ var activeSection,
 	}
 
 	function InitCarousels(){
-		console.log('init1');
 		//todo
+		console.log('home');
 		$slideshow_selector = $('#microsite #visible .microsite-carousel ul');
 		$slideshow_selector
 			.addClass('slides')
@@ -382,8 +381,6 @@ var activeSection,
 				directionNav: (!Modernizr.touch),
 				touch: false
 			});
-
-
 	}
 
 	//MicroSite.carousel =

@@ -2,7 +2,6 @@
 (function ($) {
   Drupal.behaviors.micrositeAspot = {
     attach: function (context, settings) {
-      console.log("f1");
 
 ////      function initMicrositeAspot() {
 //      $('body').once('micrositeFlexslider', function () {

@@ -21,21 +21,6 @@
     <div id="visible"></div>
     <div id="hidden-next" class="hidden-section"></div>
   </div>
-  <?php if (!empty($sections)): ?>
-    <?php foreach ($sections as $section): ?>
-      <?php if (!empty($section['content'])): ?>
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section-info" style="display:none">
-          <a name="/<?php print $section['type']; ?>"></a>
-          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="clearfix">
-            <?php print $section['content']; ?>
-          </section>
-          <?php if (empty($section['is_last'])): ?>
-            <?php print $section_separator; ?>
-          <?php endif; ?>
-        </div>
-      <?php endif; ?>
-    <?php endforeach; ?>
-  <?php endif; ?>
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-logo"></div>
@@ -55,9 +40,42 @@
             <?php endforeach; ?>
             <li>Dig Decoded</li>
             <li>Wattpad</li>
+            <li id="tour-israel">Tour Isreal
+              <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+              </ul>
+            </li>
           </ul>
         </div>
       <?php endif; ?>
     </div>
+  </div>
+  <div class="hidden">
+    <div id="ad-leaderboard"><?php print dart_tag('728x90_970x66_ifr_rel'); ?></div>
+    <div id="ad300x250"><?php print dart_tag('300x250_scr'); ?></div>
+  <?php if (!empty($sections)): ?>
+    <?php foreach ($sections as $section): ?>
+      <?php if (!empty($section['content'])): ?>
+        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section-info" style="display:none">
+          <a name="/<?php print $section['type']; ?>"></a>
+          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="clearfix">
+            <?php print $section['content']; ?>
+          <?php if (empty($section['is_last'])): ?>
+            <?php print $section_separator; ?>
+          <?php endif; ?>
+          </section>
+          <?php if (empty($section['is_last'])): ?>
+          <!-- FOOTER -->
+          <footer id="footer" role="contentinfo" class="clearfix">
+            <?php print render($footer); ?>
+          </footer>
+          <!-- /FOOTER -->
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  <?php endif; ?>
   </div>
 </div>

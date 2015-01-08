@@ -273,7 +273,6 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
       : '',
     'about_quotations' => array(),
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
 
   if (!empty($section_object->field_quotation)) {
@@ -294,7 +293,6 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     'people' => array(),
     'characters_navigation' => NULL,
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
   if (!empty($section_object->field_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
@@ -337,7 +335,6 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   $section_object = $section_wrapper->value();
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-    'ad300x250' => usanetwork_blocks_block_view('fpo_ad_rectangle'),
   );
 
   if (!empty($section_object->field_media_gallery)) {
@@ -445,32 +442,46 @@ function _usanetwork_microsite_render_page_videos($section_wrapper) {
       $video_nodes = array($video_nodes);
     }
 
-    $video_count = 0;
     $show_in_player = 0;
     $video_for_player = (arg(4) !== null) ? arg(4) : null; // gets name of video from url, if present
     foreach ($video_nodes as $v_key => $current_video_node) {
-      $filename = $current_video_node->filename;
-      $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($filename);
+      $filename = !empty($current_video_node->filename) ? $current_video_node->filename : NULL;
+      $published = !empty($current_video_node->published) ? $current_video_node->published : NULL;
+      $suggested_video_url = !empty($filename) ? _usanetwork_microsite_get_suggested_video_url($filename) : '';
       // if there's a video listed in the url, set it as the video to show in the player
       if (!empty($video_for_player) && $video_for_player == $suggested_video_url) {
         $show_in_player = $v_key;
       }
-      else {
+      if ($published) {
         $theme_variables['videos'][] = array(
           'url' => $suggested_video_url,
           'rendered' => drupal_render(file_view(file_load($current_video_node->fid), 'vid_teaser_show_general')),
         );
       }
-      $video_count++;
     }
+    $node = $video_nodes[$show_in_player];
     $theme_variables['in_player'] = array(
-      'url' => _usanetwork_microsite_get_suggested_video_url($video_nodes[$show_in_player]->filename),
-      'title' => $video_nodes[$show_in_player]->field_mpx_title[$lang][0]['value'],
-      'description' => $video_nodes[$show_in_player]->field_mpx_description[$lang][0]['value'],
-      'airdate' => strftime('%b %e, %G', $video_nodes[$show_in_player]->field_mpx_airdate[$lang][0]['value']),
-      'season_number' => $video_nodes[$show_in_player]->field_mpx_season_number[$lang][0]['value'],
-      'episode_number' => $video_nodes[$show_in_player]->field_mpx_episode_number[$lang][0]['value'],
-      'rendered' => drupal_render(file_view(file_load($video_nodes[$show_in_player]->fid), 'inline_content')),
+      'url' => !empty($node->filename)
+        ? _usanetwork_microsite_get_suggested_video_url($node->filename)
+        : NULL,
+      'title' => !empty($node->field_mpx_title)
+        ? $node->field_mpx_title[$lang][0]['value']
+        : NULL,
+      'description' => !empty($node->field_mpx_description)
+        ? $node->field_mpx_description[$lang][0]['value']
+        : NULL,
+      'airdate' => !empty($node->field_mpx_airdate)
+        ? strftime('%b %e, %G', $node->field_mpx_airdate[$lang][0]['value'])
+        : NULL,
+      'season_number' => !empty($node->field_mpx_season_number)
+        ? $node->field_mpx_season_number[$lang][0]['value']
+        : NULL,
+      'episode_number' => !empty($node->field_mpx_episode_number)
+        ? $node->field_mpx_episode_number[$lang][0]['value']
+        : NULL,
+      'rendered' => !empty($node->fid)
+        ? drupal_render(file_view(file_load($node->fid), 'inline_content'))
+        : NULL
     );
   }
 

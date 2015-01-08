@@ -13063,6 +13063,15 @@ body.person-page #main {
     width: 50%;
   }
 }
+.ie8 .show-menu-tab .show-menu li.active ul.menu:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.ie8 .show-menu-tab .show-menu li.active ul.menu li {
+  float: left;
+  width: 33.33333%;
+}
 
 .ie9 header .originals-shows-menu ul li {
   float: left;
@@ -13083,6 +13092,15 @@ body.person-page #main {
   .ie9 footer .shows-menu ul.menu li, .ie9 footer .app-and-services-menu ul.menu li {
     width: 50%;
   }
+}
+.ie9 .show-menu-tab .show-menu li.active ul.menu:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.ie9 .show-menu-tab .show-menu li.active ul.menu li {
+  float: left;
+  width: 33.33333%;
 }
 
 #block-usanetwork-tv-schedule-usa-on-now-block {

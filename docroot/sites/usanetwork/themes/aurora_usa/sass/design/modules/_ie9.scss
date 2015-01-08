@@ -11,17 +11,26 @@
       }
     }
   }
-  footer{
-    .shows-menu, .app-and-services-menu{
-      ul.menu{
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
         @include clear;
-        li{
+        li {
           float: left;
           width: 33.33333%;
-          @include breakpoint($bp-768-width){
+          @include breakpoint($bp-768-width) {
             width: 50%;
           }
         }
+      }
+    }
+  }
+  .show-menu-tab {
+    .show-menu li.active ul.menu {
+      @include clear;
+      li {
+        float: left;
+        width: 33.33333%;
       }
     }
   }

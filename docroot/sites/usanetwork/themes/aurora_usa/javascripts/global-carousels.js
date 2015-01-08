@@ -169,16 +169,16 @@
                     Drupal.behaviors.global_carousels.showClose($(v), false);
                   }
                 });
+                $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
+                  if (!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
+                    Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+                  }
+                })
               })
               .on('jcarousel:reloadend', function (event, carousel) {
                 $carousel.find('a').click(function (e) {
                   e.preventDefault();
                 });
-              })
-              .on('jcarousel:firstin', 'li.first', function (event, carousel) {
-                if (!$carousel.hasClass('stop') && !$container.hasClass('inner-carousel')) {
-                  Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
-                }
               })
               .jcarousel({
                 animation: {
@@ -248,6 +248,9 @@
                   Drupal.behaviors.global_carousels.showClose($(v), false);
                 }
               });
+              $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
+                Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
+              })
             })
             .on('jcarousel:reloadend', function (event, carousel) {
               $carousel.find('a').click(function (e) {
@@ -255,9 +258,6 @@
               });
 
               $carousel.css('left', '0px');
-            })
-            .on('jcarousel:firstin', 'li.first', function (event, carousel) {
-              Drupal.behaviors.global_carousels.swipeShowDescription($container.prev());
             })
             .jcarousel({
               animation: {

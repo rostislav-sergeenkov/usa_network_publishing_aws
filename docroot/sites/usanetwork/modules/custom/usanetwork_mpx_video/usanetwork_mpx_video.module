@@ -654,6 +654,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'title'));
   $query->condition('n.type', 'tv_show');
+  $query->orderBy('title');
 
   $result = $query->execute()->fetchAll();
 

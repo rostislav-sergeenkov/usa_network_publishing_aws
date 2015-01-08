@@ -537,7 +537,7 @@ function _usanetwork_menu_get_current_entity() {
     if (isset($entity->filemime)) {
       $entity->entity_type = 'file';
     }
-    else if (isset($node->type) && isset($node->nid)) { // $node is undefined, am I right?
+    else if (isset($entity->type) && isset($entity->nid)) {
       $entity->entity_type = 'node';
     }
     return $entity;

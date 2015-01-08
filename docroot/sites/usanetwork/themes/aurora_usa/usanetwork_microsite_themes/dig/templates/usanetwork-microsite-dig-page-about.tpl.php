@@ -13,29 +13,30 @@
  */
 ?>
 <?php if (!empty($background_url)): ?>
-  <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
+<div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
-<?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
-<div class="left-pane">
-  <div class="caption">
-    <ul>
-      <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
-        <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
-          <li<?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
-            <?php if (!empty($about_quotation['quote'])): ?>
-              <div class="quote"><?php print $about_quotation['quote']; ?></div>
-            <?php endif; ?>
-            <?php if (!empty($about_quotation['source'])): ?>
-              <div class="quote-source"><?php $about_quotation['source']; ?></div>
-            <?php endif; ?>
-          </li>
-        <?php endif; ?>
-      <?php endforeach; ?>
-    </ul>
+  <div class="ad-leaderboard"></div>
+  <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
+  <div class="left-pane">
+    <div class="caption">
+      <ul>
+        <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
+          <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
+            <li<?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
+              <?php if (!empty($about_quotation['quote'])): ?>
+                <div class="quote"><?php print $about_quotation['quote']; ?></div>
+              <?php endif; ?>
+              <?php if (!empty($about_quotation['source'])): ?>
+                <div class="quote-source"><?php $about_quotation['source']; ?></div>
+              <?php endif; ?>
+            </li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
   </div>
-</div>
-<?php endif; ?>
-<?php if (!empty($title) || !empty($description)): ?>
+  <?php endif; ?>
+  <?php if (!empty($title) || !empty($description)): ?>
   <div class="right-pane">
     <?php if (!empty($title)): ?>
       <h2><?php print $title; ?></h2>
@@ -48,7 +49,7 @@
     </div>
     <div class="ad300x250"><?php print render($ad300x250); ?></div>
   </div>
-<?php endif; ?>
+  <?php endif; ?>
 <?php if (!empty($background_url)): ?>
-  </div>
+</div>
 <?php endif; ?>

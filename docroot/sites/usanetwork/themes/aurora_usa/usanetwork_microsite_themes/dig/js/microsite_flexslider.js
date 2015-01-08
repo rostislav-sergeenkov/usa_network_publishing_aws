@@ -2,6 +2,7 @@
 (function ($) {
   Drupal.behaviors.micrositeAspot = {
     attach: function (context, settings) {
+      usa_debug("f1");
 
 ////      function initMicrositeAspot() {
 //      $('body').once('micrositeFlexslider', function () {
@@ -10,7 +11,7 @@
 //usa_debug('slideshow_selector: ');
 //usa_debug($slideshow_selector);
 //        $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
-//        $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
+        $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
 //        $touch = true;
 //        if ($slideshow_selector.find('li').length <= 1){
 //          $touch = false;
@@ -81,7 +82,7 @@
       if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
 
         var showAspotVideoPauseFlexslider = function () {
-          console.log('v2');
+          usa_debug('v2');
           usa_debug('showAspotVideoPauseFlexslider()');
           if (typeof $showSlideshow.flexslider === 'function') {
             // if we don't put a timeout here, the flexslider control
@@ -111,7 +112,7 @@
 
         var showAspotVideoDone = 0;
         var showAspotVideoShow = function () {
-          console.log("v1");
+          usa_debug("v1");
           usa_debug('showAspotVideoShow()');
           if (!showAspotVideoDone) {
             var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';

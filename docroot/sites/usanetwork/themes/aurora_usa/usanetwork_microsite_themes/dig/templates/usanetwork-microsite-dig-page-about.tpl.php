@@ -12,10 +12,10 @@
  * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
+<div class="ad-leaderboard"></div>
 <?php if (!empty($background_url)): ?>
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
-  <div class="ad-leaderboard"></div>
   <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
   <div class="left-pane">
     <div class="caption">

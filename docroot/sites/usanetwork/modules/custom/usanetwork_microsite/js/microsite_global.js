@@ -130,7 +130,7 @@ var activeSection,
 
 	// updateWindowContents
 	function updateWindowContents(elem, direction) {
-		console.log('update');
+		usa_debug('update');
 		// after scrolling to selected section,
 		// reset activeSection,
 		// remove #visible and rename the selected section #visible,
@@ -163,7 +163,7 @@ var activeSection,
 		else {
 			if (typeof captionTimer != 'undefined') clearTimeout(captionTimer);
 		}
-		InitCarousels();
+		initCarousels();
 	}
 
 	// actively scroll to an item on click
@@ -180,7 +180,28 @@ var activeSection,
 			usa_debug('currentLocation: ' + currentLocation + '\nnextLocation: ' + nextLocation + '\ndirection: ' + direction);
 			$('#hidden-' + direction).html(newHtml).show();
 
-					window.location.hash = '/' + elem;
+			if (elem == 'home') {
+				hideDigLogo();
+			}
+			else {
+				showDigLogo();
+			}
+			if (elem == 'videos') {
+				setTimeout(function(){
+					$('#visible .video-player iframe').attr('id', 'pdk-player-active');
+//          $('#section-videos .video-player iframe').remove();
+					$pdk.bind('pdk-player');
+					setTimeout(function(){
+						$pdk.controller.pause(false);
+					}, 2000);
+				}, 5000);
+			}
+			jQuery('html body').animate({
+				scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top - topOffset
+			}, 2000, 'easeInOutCubic', function(){
+//					window.location.hash = '/' + elem;
+			});
+			updateWindowContents(elem, direction);
 
 			$('#left-nav-links > ul > li').removeClass('active');
 			$('#nav-' + elem).addClass('active');
@@ -203,7 +224,25 @@ var activeSection,
 	 }
 	 */
 
-			var parse = hash.split('/');
+// 	function parseHash() {
+// 		var hash = window.location.hash;
+// 		if (hash != '') {
+// 			var parse = hash.split('/');
+// 			activeSection = parse[1];
+// 			activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+// 		}
+// 		else {
+// 			activeSection = 'home';
+// 			activeItem = '';
+// 		}
+// 	}
+
+	function parseUrl() {
+		var urlPath = window.location.pathname,
+			sectionLocation = urlPath.replace('/dig', '');
+		usa_debug('parseUrl()\nsectionLocation: ' + sectionLocation);
+		if (sectionLocation != '') {
+			var parse = sectionLocation.split('/');
 			activeSection = parse[1];
 			activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
 		}
@@ -215,26 +254,27 @@ var activeSection,
 
 	function showInitialContent() {
 		usa_debug("g1");
-      var visible = '';
+		var visible = '';
 //       if (activeSection != '' && activeItem != '') {
 //         visible = $('#section-' + activeSection + '-' + activeItem).html();
 //       }
 //       else
-      if (activeSection != '') {
-        visible = $('#section-' + activeSection).html();
-      }
-      if (visible != '') {
-        $('#microsite #visible').html(visible);
-        $('#left-nav-links > ul > li').remove('active');
-        $('#nav-' + activeSection).addClass('active');
-      }
-      if (activeSection == 'home') {
-        hideDigLogo();
-      }
-      else {
-        showDigLogo();
-      }
+		if (activeSection != '') {
+			visible = $('#section-' + activeSection).html();
+		}
+		if (visible != '') {
+			$('#microsite #visible').html(visible);
+			$('#left-nav-links > ul > li').remove('active');
+			$('#nav-' + activeSection).addClass('active');
+		}
+		if (activeSection == 'home') {
+			hideDigLogo();
+		}
+		else {
+			showDigLogo();
+		}
 
+		// animate captions
 		captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
 	}
 
@@ -248,7 +288,7 @@ var activeSection,
 			.parent()
 			.flexslider({
 				slideshow: true,
-				slideshowSpeed: 2000,
+				slideshowSpeed: 7000,
 				pauseOnHover: true,
 				animation: 'slide',
 				controlNav: true,
@@ -258,22 +298,53 @@ var activeSection,
 	}
 
 
+	function toTitleCase(str)
+	{
+		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	}
 
-	//MicroSite.carousel =
+	function updateWindowState(elem) {
+		var title = toTitleCase(elem),
+			newState = (elem == 'home') ? '/dig' : '/dig/' + elem;
+		usa_debug('updateWindowState(' + elem + ')\ntitle: ' + title);
+		window.history.pushState({state:elem}, title, newState);
+		scrollTo(elem);
+	}
+
+	function updateVideoAndWindowState(videoUrl) {
+		var title = toTitleCase(videoUrl),
+			newState = '/dig/videos/' + videoUrl;
+		usa_debug('updateVideoAndWindowState(' + videoUrl + ')\ntitle: ' + title);
+		window.history.pushState({state:videoUrl}, title, newState);
+	}
+
+	function initVideoSection() {
+		var inactivePlayer = $('#section-videos #pdk-player'),
+			inactivePlayerSrc = inactivePlayer.attr('src'),
+			updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false')
+		activeVideoUrl = $('#section-videos .video-player').attr('data-video-url');
+		usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupdatedPlayerSrc: ' + updatedPlayerSrc);
+		// update video player src
+		$('#section-videos #pdk-player').attr('src', updatedPlayerSrc);
+
+		// hide the active video in the list
+		$('#section-videos li[data-video-url=' + activeVideoUrl + ']').addClass('active');
+	}
+
 	// on page load
 	$(document).ready(function(){
 		wHeight = $(window).height();
 		$('section').css('height', (wHeight - bottomOffset) + 'px');
 
-		parseHash();
+		parseUrl();
 		usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
+		initVideoSection(); // needs to happen before showInitialContent
 		showInitialContent();
-		InitCarousels();
+		initCarousels(); // needs to happen after showInitialContent
 
 		// initialize logo click
 		$('#left-nav-logo').on('click', function() {
-			scrollTo('home');
+			updateWindowState('home');
 		});
 
 		// initialize scroll clicks
@@ -288,7 +359,7 @@ var activeSection,
 		$('#left-nav-links li').on('click', function(){
 			var elem = $(this).attr('id').replace('nav-', '');
 			if (sectionList.indexOf(elem) >= 0) {
-				scrollTo(elem);
+				updateWindowState(elem);
 			}
 		});
 

@@ -10,12 +10,12 @@
  * - $background_url - the URL of page background
  */
 ?>
+<div class="ad-leaderboard"></div>
 <?php if (!empty($background_url)): ?>
   <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php else: ?>
   <div class="microsite-section-container" data-bg-url="">
 <?php endif; ?>
-  <div class="ad-leaderboard"></div>
   <div class="region region-content">
     <div class="panel-display panel-onecol-stacked clearfix">
       <div class="panel-wrapper">

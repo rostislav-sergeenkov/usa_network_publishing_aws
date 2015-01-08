@@ -15,11 +15,11 @@
  * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
+<div class="ad-leaderboard"></div>
 <?php if (!empty($background_url)): ?>
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
 <?php if (!empty($people)): ?>
-  <div class="ad-leaderboard"></div>
   <ul>
     <?php foreach ($people as $person_key => $person): ?>
       <li id="<?php print !empty($person['id']) ? $person['id'] : 'undefined'; ?>">

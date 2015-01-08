@@ -21,7 +21,7 @@
 
 // Global microsite functions
 var activeSection,
-    activeItem;
+	activeItem;
 (function($) {
 	// config
 	var sectionList = ['home', 'about', 'videos', 'characters', 'galleries', 'games'],
@@ -180,28 +180,28 @@ var activeSection,
 			usa_debug('currentLocation: ' + currentLocation + '\nnextLocation: ' + nextLocation + '\ndirection: ' + direction);
 			$('#hidden-' + direction).html(newHtml).show();
 
-      if (elem == 'home') {
-        hideDigLogo();
-      }
-      else {
-        showDigLogo();
-      }
-      if (elem == 'videos') {
-        setTimeout(function(){
-          $('#visible .video-player iframe').attr('id', 'pdk-player-active');
+			if (elem == 'home') {
+				hideDigLogo();
+			}
+			else {
+				showDigLogo();
+			}
+			if (elem == 'videos') {
+				setTimeout(function(){
+					$('#visible .video-player iframe').attr('id', 'pdk-player-active');
 //          $('#section-videos .video-player iframe').remove();
-          $pdk.bind('pdk-player');
-          setTimeout(function(){
-            $pdk.controller.pause(false);
-          }, 2000);
-        }, 5000);
-      }
-      jQuery('html body').animate({
-        scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top - topOffset
-      }, 2000, 'easeInOutCubic', function(){
+					$pdk.bind('pdk-player');
+					setTimeout(function(){
+						$pdk.controller.pause(false);
+					}, 2000);
+				}, 5000);
+			}
+			jQuery('html body').animate({
+				scrollTop: $('#activeContent a[name="/' + elem + '"]').offset().top - topOffset
+			}, 2000, 'easeInOutCubic', function(){
 //					window.location.hash = '/' + elem;
-      });
-      updateWindowContents(elem, direction);
+			});
+			updateWindowContents(elem, direction);
 
 			$('#left-nav-links > ul > li').removeClass('active');
 			$('#nav-' + elem).addClass('active');
@@ -239,7 +239,7 @@ var activeSection,
 
 	function parseUrl() {
 		var urlPath = window.location.pathname,
-		    sectionLocation = urlPath.replace('/dig', '');
+			sectionLocation = urlPath.replace('/dig', '');
 		usa_debug('parseUrl()\nsectionLocation: ' + sectionLocation);
 		if (sectionLocation != '') {
 			var parse = sectionLocation.split('/');
@@ -254,28 +254,28 @@ var activeSection,
 
 	function showInitialContent() {
 		usa_debug("g1");
-      var visible = '';
+		var visible = '';
 //       if (activeSection != '' && activeItem != '') {
 //         visible = $('#section-' + activeSection + '-' + activeItem).html();
 //       }
 //       else
-      if (activeSection != '') {
-        visible = $('#section-' + activeSection).html();
-      }
-      if (visible != '') {
-        $('#microsite #visible').html(visible);
-        $('#left-nav-links > ul > li').remove('active');
-        $('#nav-' + activeSection).addClass('active');
-      }
-      if (activeSection == 'home') {
-        hideDigLogo();
-      }
-      else {
-        showDigLogo();
-      }
+		if (activeSection != '') {
+			visible = $('#section-' + activeSection).html();
+		}
+		if (visible != '') {
+			$('#microsite #visible').html(visible);
+			$('#left-nav-links > ul > li').remove('active');
+			$('#nav-' + activeSection).addClass('active');
+		}
+		if (activeSection == 'home') {
+			hideDigLogo();
+		}
+		else {
+			showDigLogo();
+		}
 
-      // animate captions
-      captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
+		// animate captions
+		captionTimer = setTimeout(captionReplaceAnimation, captionReplaceSpeed);
 	}
 
 	function initCarousels(){
@@ -298,38 +298,38 @@ var activeSection,
 	}
 
 
-  function toTitleCase(str)
-  {
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-  }
+	function toTitleCase(str)
+	{
+		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	}
 
-  function updateWindowState(elem) {
-    var title = toTitleCase(elem),
-        newState = (elem == 'home') ? '/dig' : '/dig/' + elem;
-    usa_debug('updateWindowState(' + elem + ')\ntitle: ' + title);
-    window.history.pushState({state:elem}, title, newState);
-    scrollTo(elem);
-  }
+	function updateWindowState(elem) {
+		var title = toTitleCase(elem),
+			newState = (elem == 'home') ? '/dig' : '/dig/' + elem;
+		usa_debug('updateWindowState(' + elem + ')\ntitle: ' + title);
+		window.history.pushState({state:elem}, title, newState);
+		scrollTo(elem);
+	}
 
-  function updateVideoAndWindowState(videoUrl) {
-    var title = toTitleCase(videoUrl),
-        newState = '/dig/videos/' + videoUrl;
-    usa_debug('updateVideoAndWindowState(' + videoUrl + ')\ntitle: ' + title);
-    window.history.pushState({state:videoUrl}, title, newState);
-  }
+	function updateVideoAndWindowState(videoUrl) {
+		var title = toTitleCase(videoUrl),
+			newState = '/dig/videos/' + videoUrl;
+		usa_debug('updateVideoAndWindowState(' + videoUrl + ')\ntitle: ' + title);
+		window.history.pushState({state:videoUrl}, title, newState);
+	}
 
-  function initVideoSection() {
-    var inactivePlayer = $('#section-videos #pdk-player'),
-        inactivePlayerSrc = inactivePlayer.attr('src'),
-        updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false')
-        activeVideoUrl = $('#section-videos .video-player').attr('data-video-url');
-usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupdatedPlayerSrc: ' + updatedPlayerSrc);
-    // update video player src
-    $('#section-videos #pdk-player').attr('src', updatedPlayerSrc);
+	function initVideoSection() {
+		var inactivePlayer = $('#section-videos #pdk-player'),
+			inactivePlayerSrc = inactivePlayer.attr('src'),
+			updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false')
+		activeVideoUrl = $('#section-videos .video-player').attr('data-video-url');
+		usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupdatedPlayerSrc: ' + updatedPlayerSrc);
+		// update video player src
+		$('#section-videos #pdk-player').attr('src', updatedPlayerSrc);
 
-    // hide the active video in the list
-    $('#section-videos li[data-video-url=' + activeVideoUrl + ']').addClass('active');
-  }
+		// hide the active video in the list
+		$('#section-videos li[data-video-url=' + activeVideoUrl + ']').addClass('active');
+	}
 
 	// on page load
 	$(document).ready(function(){
@@ -338,7 +338,7 @@ usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupda
 
 		parseUrl();
 		usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
-    initVideoSection(); // needs to happen before showInitialContent
+		initVideoSection(); // needs to happen before showInitialContent
 		showInitialContent();
 		initCarousels(); // needs to happen after showInitialContent
 
@@ -359,7 +359,7 @@ usa_debug('initVideoPlayer()\ninactivePlayerSrc: ' + inactivePlayerSrc + '\nupda
 		$('#left-nav-links li').on('click', function(){
 			var elem = $(this).attr('id').replace('nav-', '');
 			if (sectionList.indexOf(elem) >= 0) {
-        updateWindowState(elem);
+				updateWindowState(elem);
 			}
 		});
 

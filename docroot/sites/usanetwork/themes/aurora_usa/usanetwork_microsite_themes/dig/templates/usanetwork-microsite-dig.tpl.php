@@ -40,7 +40,7 @@
             <?php endforeach; ?>
             <li><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
             <li><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
-            <li id="tour-israel">Tour Isreal
+            <li id="tour-israel">Tour Israel
               <ul>
                 <li>Link 1</li>
                 <li>Link 2</li>

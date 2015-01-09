@@ -49,7 +49,8 @@
             <div class="view-content">
               <div class="item-list">
                 <ul>
-                <?php foreach ($videos as $key => $video): ?>
+                <?php foreach ($videos as $v_key => $video): ?>
+                  <?php if ($v_key == 2): ?><li class="ad300x250 views-row grid-item"></li><?php endif; ?>
                   <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
                   <li class="views-row grid-item" data-video-url="<?php print $video['url']; ?>">
                     <?php print $video['rendered']; ?>
@@ -57,7 +58,6 @@
                   <?php endif; ?>
                 <?php endforeach; ?>
                 </ul>
-                <div class="ad300x250"></div>
               </div>
             </div>
           </div>

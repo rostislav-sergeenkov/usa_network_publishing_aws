@@ -77,23 +77,41 @@ function usanetwork_mpx_video_full_episode_load_form() {
     '#type' => 'submit',
     '#value' => t('Add'),
     '#submit' => array('usanetwork_mpx_video_full_episode_load_form_submit'),
+    '#validate' => array('usanetwork_mpx_video_full_episode_load_form_validate'),
   );
 
   return $form;
 }
-
+/*
+ * Validate form for adding featured elements
+ */
+function usanetwork_mpx_video_full_episode_load_form_validate($form, &$form_state) {
+  if ($form_state['values']['usa_upload_video']) {
+    $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
+    if (count($usanework_full_episodes_aspot) >= USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS) {
+      form_set_error('usa_upload_video', t('Maximum @max elements.', array('@max' => USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS)));
+    }
+    preg_match('/\[(\w+)\:(\d+)\]/', $form_state['values']['usa_upload_video'], $matches);
+    if (empty($matches[2])) {
+      form_set_error('usa_upload_video', t('Incorrect input.'));
+    }
+    if (FALSE !== array_search($matches[2], $usanework_full_episodes_aspot)) {
+      form_set_error('usa_upload_video', t('Video already added.'));
+    }
+  }
+  else {
+    form_set_error('usa_upload_video', t('Empty input.'));
+  }
+}
 /*
  * Submit form for adding featured elements
  */
 function usanetwork_mpx_video_full_episode_load_form_submit($form, &$form_state) {
-  if ($form_state['values']['usa_upload_video']) {
-    preg_match('/\[(\w+)\:(\d+)\]/', $form_state['values']['usa_upload_video'], $matches);
-    $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
-    $usanework_full_episodes_aspot[] = $matches[2];
-    variable_set('usanework_full_episodes_aspot', $usanework_full_episodes_aspot);
-  }
+  preg_match('/\[(\w+)\:(\d+)\]/', $form_state['values']['usa_upload_video'], $matches);
+  $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
+  $usanework_full_episodes_aspot[] = $matches[2];
+  variable_set('usanework_full_episodes_aspot', $usanework_full_episodes_aspot);
 }
-
 /*
  * Draggable form for sort features elements
  */

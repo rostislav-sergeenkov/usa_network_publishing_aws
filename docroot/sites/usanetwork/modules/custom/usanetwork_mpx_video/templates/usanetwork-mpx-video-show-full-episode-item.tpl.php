@@ -1,6 +1,6 @@
 <li class="<?php print ($is_first) ? 'first' : ''; ?>">
   <div class="node node-usanetwork-promo">
-    <a href="<?php $video_url; ?>">
+    <a href="<?php print $video_url; ?>">
       <div class="meta-wrap">
         <div class="meta-wrapper-inner">
           <div class="meta-icon play-icon"></div>

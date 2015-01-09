@@ -811,10 +811,6 @@ you can use the generic selector below, but it's slower:
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-#microsite #show-main-slider {
-  margin-left: auto;
-  margin-right: auto;
-}
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   }
@@ -845,13 +841,24 @@ you can use the generic selector below, but it's slower:
   max-width: 1527px;
   width: 100%;
 }
+#microsite .a-spot-panel #show-main-slider{
+  overflow: hidden;
+  max-height: 506px;
+}
 #microsite .a-spot-panel img{
   width: 100%;
+}
+#microsite .a-spot-panel.tiles .flex-control-paging{
+  bottom: 30px;
+  margin-left: -24px;
+  position: absolute;
+  top: auto;
 }
 #microsite .scroll {
   width: 4em;
   margin: 0 auto;
   cursor: pointer;
+  padding: 0;
 }
 
 /* media breakpoints*/
@@ -867,8 +874,15 @@ you can use the generic selector below, but it's slower:
 @media (min-width: 1281px) and (max-width: 1600px){
 
 }
-@media (min-width: 769px) and (max-width: 1280px){
-
+@media (min-width: 1025px) and (max-width: 1280px){
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 378px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px){
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 350px;
+  }
 }
 @media (min-width: 769px) and (max-width: 990px){
   #microsite section > div {
@@ -905,83 +919,9 @@ you can use the generic selector below, but it's slower:
 @media (max-width: 320px){
 
 }
-
-
-
-  /*_________________*/
-
-
-
-
-/*@media (min-width: 1355px) {*/
-  /*#microsite section > div {*/
-    /*width: 1245px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 506px;*/
-  /*}*/
-/*}*/
-
-
-/*@media (max-width: 1335px){*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child,*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper{*/
-    /*width: 300px;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {*/
-    /*display: none;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img {*/
-    /*display: block;*/
-  /*}*/
-  /*#microsite #visible #show-main-slider {*/
-    /*height: 378px;*/
-    /*width: 930px;*/
-  /*}*/
-/*}*/
-/*@media (max-width: 1019px) and (min-width: 710px){*/
-  /*#microsite .promo-ads-panel .panel-col2 {*/
-    /*bottom: 0;*/
-    /*margin-bottom: 13px;*/
-    /*top: auto;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child,*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper {*/
-    /*width: 615px;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {*/
-    /*display: block;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .asset-img {*/
-    /*display: none;*/
-  /*}*/
-  /*#microsite section > div {*/
-    /*width: 615px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 350px;*/
-    /*width: 100%;*/
-  /*}*/
-/*}*/
-/*@media (max-width: 709px){*/
-  /*#microsite section > div {*/
-    /*width: 300px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 250px;*/
-    /*width: 100%;*/
-  /*}*/
-  /*#microsite .promo-ads-panel .panel-col2 {*/
-    /*display: block;*/
-    /*margin-bottom: 0;*/
-  /*}*/
-/*}*/
-
+/*_________________*/
 
 /* FEATURE PROMO OVERRIDES */
-/*#microsite section > div {*/
-  /*max-width: 942px;*/
-/*}*/
 #microsite .microsite-section-container .promo-ads-panel li {
   list-style: none;
   overflow: hidden;

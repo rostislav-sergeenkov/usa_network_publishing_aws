@@ -12160,6 +12160,29 @@ body.person-page #main {
   opacity: 1;
   visibility: visible;
 }
+.carousel-left:not(.start):hover .jcarousel-control-prev.inactive {
+  width: 60px;
+}
+@media (max-width: 1024px) {
+  .carousel-left:not(.start):hover .jcarousel-control-prev.inactive {
+    right: 160px;
+    width: 40px;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-left:not(.start):hover .jcarousel-control-prev.inactive {
+    right: 120px;
+  }
+}
+@media (min-width: 1601px) {
+  .carousel-left:not(.start):hover .jcarousel-control-prev.inactive {
+    right: 280px;
+  }
+}
+.carousel-left:not(.start):hover .jcarousel-control-prev.inactive:after {
+  opacity: 1;
+  visibility: visible;
+}
 
 .carousel-right {
   -webkit-transition-property: margin;
@@ -12251,6 +12274,18 @@ body.person-page #main {
   }
 }
 .carousel-right.start:hover .jcarousel-control-next:after {
+  opacity: 1;
+  visibility: visible;
+}
+.carousel-right:not(.start):hover .jcarousel-control-prev.inactive {
+  width: 60px;
+}
+@media (max-width: 1024px) {
+  .carousel-right:not(.start):hover .jcarousel-control-prev.inactive {
+    width: 40px;
+  }
+}
+.carousel-right:not(.start):hover .jcarousel-control-prev.inactive:after {
   opacity: 1;
   visibility: visible;
 }

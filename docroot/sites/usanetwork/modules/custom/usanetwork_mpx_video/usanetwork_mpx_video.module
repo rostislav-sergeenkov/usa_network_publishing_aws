@@ -18,6 +18,7 @@ define('USA_MPX_VIDEO_PROD_ACCOUNT', '2304992029');
 define('USA_MPX_VIDEO_USA_ACCOUNT_ID', '2140458126');
 define('USA_MPX_VIDEO_MENU_VIDEOS_FULL_COUNT', 4);
 
+define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 /**
  * Implementation of hook_menu().
  */
@@ -574,7 +575,7 @@ function usanetwork_mpx_video_global_videos_page() {
   drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
   drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel.min.js');
   drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/jquery.jcarousel-control.min.js');
-  $usanework_full_episodes_aspot = variable_get('usanework_full_episodes_aspot', array());
+  $usanework_full_episodes_aspot = array_slice(variable_get('usanework_full_episodes_aspot', array()), 0, USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS);
 
   $featured_aspot= $featured_carousel= array();
   if (!empty($usanework_full_episodes_aspot)) {

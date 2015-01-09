@@ -429,7 +429,6 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
  * Renders videos page.
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper) {
-  $lang = 'und';
   $section_object = $section_wrapper->value();
   $theme_variables = array(
     'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
@@ -459,33 +458,47 @@ function _usanetwork_microsite_render_page_videos($section_wrapper) {
         );
       }
     }
-    $node = $video_nodes[$show_in_player];
-    $theme_variables['in_player'] = array(
-      'url' => !empty($node->filename)
-        ? _usanetwork_microsite_get_suggested_video_url($node->filename)
-        : NULL,
-      'title' => !empty($node->field_mpx_title)
-        ? $node->field_mpx_title[$lang][0]['value']
-        : NULL,
-      'description' => !empty($node->field_mpx_description)
-        ? $node->field_mpx_description[$lang][0]['value']
-        : NULL,
-      'airdate' => !empty($node->field_mpx_airdate)
-        ? strftime('%b %e, %G', $node->field_mpx_airdate[$lang][0]['value'])
-        : NULL,
-      'season_number' => !empty($node->field_mpx_season_number)
-        ? $node->field_mpx_season_number[$lang][0]['value']
-        : NULL,
-      'episode_number' => !empty($node->field_mpx_episode_number)
-        ? $node->field_mpx_episode_number[$lang][0]['value']
-        : NULL,
-      'rendered' => !empty($node->fid)
-        ? drupal_render(file_view(file_load($node->fid), 'inline_content'))
-        : NULL
-    );
-  }
 
+    $node = $video_nodes[$show_in_player];
+    unset($video_nodes[$show_in_player]);
+    $theme_variables['players']['in_player'] = _usanetwork_microsite_set_variables_for_player_show($node);
+    foreach ($video_nodes as $v_key => $current_video_node) {
+      $theme_variables['players'][] = _usanetwork_microsite_set_variables_for_player_show($current_video_node);
+    }
+  }
   return $theme_variables;
+}
+
+/**
+ * Set in player variables.
+ *
+ * @param $file
+ * @return array
+ */
+function _usanetwork_microsite_set_variables_for_player_show($file) {
+  return array(
+    'url' => !empty($file->filename)
+      ? _usanetwork_microsite_get_suggested_video_url($file->filename)
+      : NULL,
+    'title' => !empty($file->field_mpx_title)
+      ? $file->field_mpx_title[LANGUAGE_NONE][0]['value']
+      : NULL,
+    'description' => !empty($file->field_mpx_description)
+      ? $file->field_mpx_description[LANGUAGE_NONE][0]['value']
+      : NULL,
+    'airdate' => !empty($file->field_mpx_airdate)
+      ? strftime('%b %e, %G', $file->field_mpx_airdate[LANGUAGE_NONE][0]['value'])
+      : NULL,
+    'season_number' => !empty($file->field_mpx_season_number)
+      ? $file->field_mpx_season_number[LANGUAGE_NONE][0]['value']
+      : NULL,
+    'episode_number' => !empty($file->field_mpx_episode_number)
+      ? $file->field_mpx_episode_number[LANGUAGE_NONE][0]['value']
+      : NULL,
+    'rendered' => !empty($file->fid)
+      ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
+      : NULL
+  );
 }
 
 /**

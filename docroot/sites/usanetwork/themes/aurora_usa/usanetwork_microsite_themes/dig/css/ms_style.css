@@ -283,7 +283,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite section {
   background-image: none;
-  background-position: top left;
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
@@ -696,6 +696,7 @@ you can use the generic selector below, but it's slower:
   background-image: url("../images/dig_logo.png");
   cursor: pointer;
   opacity: 0;
+  margin-left: 17px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   opacity: 0;
@@ -704,6 +705,7 @@ you can use the generic selector below, but it's slower:
   text-align: center;
   letter-spacing: 2.7px;
   padding-top: 5px;
+  margin-left: 17px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
   letter-spacing: 13px;
@@ -711,7 +713,7 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social {
   position: relative;
   top: 0;
-  left: 0;
+  left: 17px;
   height: 80px;
 }
 .page-node-microsite #left-nav #left-nav-social a {
@@ -837,13 +839,14 @@ you can use the generic selector below, but it's slower:
 
 /*add styles*/
 #microsite section > div {
-  margin: 0 auto 0 265px;
-  max-width: 930px;
-  width: auto;
-}
-#microsite section > div {
   clear: both;
-  margin-top: 25px;
+  padding: 0 17px 0 265px;
+  margin: 25px auto 0;
+  max-width: 1527px;
+  width: 100%;
+}
+#microsite .a-spot-panel img{
+  width: 100%;
 }
 #microsite .scroll {
   width: 4em;
@@ -852,16 +855,54 @@ you can use the generic selector below, but it's slower:
 }
 
 /* media breakpoints*/
-@media (min-width: 1600px) {
+@media (min-width: 1601px) {
   #microsite section > div {
-    max-width: 1245px;
+
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;
   }
 }
-@media (max-width: 1600px) and (min-width: 959px){
+@media (min-width: 1281px) and (max-width: 1600px){
+
+}
+@media (min-width: 769px) and (max-width: 1280px){
+
+}
+@media (min-width: 769px) and (max-width: 990px){
+  #microsite section > div {
+    padding-left: 154px;
+    padding-right: 0;
+  }
+  .page-node-microsite #left-nav{
+    left: 5px;
+    width: 150px;
+  }
+  .page-node-microsite #left-nav #left-nav-inner{
+    padding-left: 0;
+  }
+}
+@media (max-width: 768px){
+  #microsite section > div {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* hide left nav when hamburger appears */
+  #microsite #left-nav {
+    display: none;
+  }
+  #microsite section > div {
+    margin-left: auto;
+  }
+}
+@media (max-width: 640px){
+
+}
+@media (max-width: 480px){
+
+}
+@media (max-width: 320px){
 
 }
 
@@ -938,9 +979,9 @@ you can use the generic selector below, but it's slower:
 
 
 /* FEATURE PROMO OVERRIDES */
-#microsite section > div {
-  max-width: 942px;
-}
+/*#microsite section > div {*/
+  /*max-width: 942px;*/
+/*}*/
 #microsite .microsite-section-container .promo-ads-panel li {
   list-style: none;
   overflow: hidden;
@@ -963,17 +1004,17 @@ you can use the generic selector below, but it's slower:
   width: 614px;
 }
 }
-@media (max-width: 1209px) {
-#microsite section > div {
-  max-width: 628px;
-  margin-left: 265px;
-}
-}
-@media (max-width: 923px) {
-#microsite section > div {
-  margin-left: 215px; /* auto; */
-}
-}
+/*@media (max-width: 1209px) {*/
+/*#microsite section > div {*/
+  /*max-width: 628px;*/
+  /*margin-left: 265px;*/
+/*}*/
+/*}*/
+/*@media (max-width: 923px) {*/
+/*#microsite section > div {*/
+  /*margin-left: 215px; *//* auto; */
+/*}*/
+/*}*/
 
 
 /* SHOW GLOBAL NAV OVERRIDES -- we don't want to see any of the show
@@ -981,39 +1022,39 @@ you can use the generic selector below, but it's slower:
  * We DO want to see the show nav in the hamburger menu though!
  */
 /* remove hamburger, show name and sub menu area */
-body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
-  display: none;
-}
-body.page-node-microsite .mobi-menu-icon {
-  display: none;
-}
+/*body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {*/
+  /*display: none;*/
+/*}*/
+/*body.page-node-microsite .mobi-menu-icon {*/
+  /*display: none;*/
+/*}*/
 /* restore link color to global menu items */
-@media (min-width: 875px) {
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
-  color: #0ab6e8;
-}
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
-  color: #0ab6e8;
-}
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
-  color: #ffffff;
-}
-}
+/*@media (min-width: 875px) {*/
+/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {*/
+  /*color: #0ab6e8;*/
+/*}*/
+/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {*/
+  /*color: #0ab6e8;*/
+/*}*/
+/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {*/
+  /*color: #ffffff;*/
+/*}*/
+/*}*/
 
 /* display hamburger and show menu */
-@media (max-width: 874px) {
-body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
-  display: block;
-}
-body.page-node-microsite .mobi-menu-icon {
-  display: block;
-}
+/*@media (max-width: 874px) {*/
+/*body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {*/
+  /*display: block;*/
+/*}*/
+/*body.page-node-microsite .mobi-menu-icon {*/
+  /*display: block;*/
+/*}*/
 /* hide left nav when hamburger appears */
-#microsite #left-nav {
-  display: none;
-}
-#microsite section > div {
-  margin-left: auto;
-}
-}
+/*#microsite #left-nav {*/
+  /*display: none;*/
+/*}*/
+/*#microsite section > div {*/
+  /*margin-left: auto;*/
+/*}*/
+/*}*/
 

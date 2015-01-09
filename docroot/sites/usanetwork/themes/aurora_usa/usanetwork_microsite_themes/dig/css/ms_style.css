@@ -351,9 +351,6 @@ you can use the generic selector below, but it's slower:
   height: 29px;
   margin: 0 auto;
 }
-#microsite .full-pane {
-  width: 100%;
-}
 #microsite .left-pane {
   width: 55%;
   float: left;
@@ -674,7 +671,7 @@ you can use the generic selector below, but it's slower:
 
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 175px;
+  top: 185px;
   /* 194px; */
   left: 15px;
   width: 250px;
@@ -780,10 +777,6 @@ you can use the generic selector below, but it's slower:
   list-style: none;
 }
 
-
-
-
-
 /* ADDED OUTSIDE OF SASS */
 .page-node-microsite .usa-wrap {
   background-color: #000;
@@ -860,12 +853,20 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   padding: 0;
 }
+#microsite .video-container{
+  display: none;
+}
+#microsite .video-container.in-player{
+  display: block;
+}
+#microsite .full-pane {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
 
 /* media breakpoints*/
 @media (min-width: 1601px) {
-  #microsite section > div {
-
-  }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;

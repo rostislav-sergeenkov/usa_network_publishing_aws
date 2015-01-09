@@ -10,17 +10,17 @@
 function usanetwork_menu_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_full-episodes:<nolink>
-  $menu_links['main-menu_full-episodes:<nolink>'] = array(
+  // Exported menu link: main-menu_full-episodes:videos
+  $menu_links['main-menu_full-episodes:videos'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'videos',
+    'router_path' => 'videos',
     'link_title' => 'Full episodes',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_full-episodes:<nolink>',
+      'identifier' => 'main-menu_full-episodes:videos',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -50,17 +50,17 @@ function usanetwork_menu_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_schedule:<nolink>
-  $menu_links['main-menu_schedule:<nolink>'] = array(
+  // Exported menu link: main-menu_schedule:schedule
+  $menu_links['main-menu_schedule:schedule'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'schedule',
+    'router_path' => 'schedule',
     'link_title' => 'Schedule',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_schedule:<nolink>',
+      'identifier' => 'main-menu_schedule:schedule',
     ),
     'module' => 'menu',
     'hidden' => 0,

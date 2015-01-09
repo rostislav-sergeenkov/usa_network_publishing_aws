@@ -400,6 +400,14 @@
           carousel.jcarousel('scroll', '+=' + count);
         });
 
+        $(".carousel .jcarousel-control-prev").click(function (e) {
+          if($(this).hasClass('inactive') && !$(this).closest('.carousel').hasClass('start')){
+            var carousel = $(this).closest('.carousel');
+            Drupal.behaviors.global_carousels.swipeShowDescription(carousel.prev());
+          }
+
+        });
+
       });
 
     }

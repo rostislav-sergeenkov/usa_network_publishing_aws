@@ -20,9 +20,9 @@
  */
 
 // Global microsite functions
-var activeSection,
-	activeItem;
 (function($) {
+var activeSection,
+	  activeItem;
 	// config
 	var sectionList = ['home', 'about', 'videos', 'characters', 'galleries', 'games'],
 		scrollToList = ['about', 'videos', 'characters', 'galleries', 'games'],
@@ -95,7 +95,7 @@ var activeSection,
 		//usa_debug('hideDigLogo()');
 		if (!$('#left-nav-inner').hasClass('hide')) {
 			$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, leftNavAnimationSpeed);
-			$('#left-nav-inner').animate({'top': '-140px'}, leftNavAnimationSpeed, function(){
+			$('#left-nav-inner').animate({'top': '-130px'}, leftNavAnimationSpeed, function(){
 				$(this).addClass('hide');
 			});
 		}

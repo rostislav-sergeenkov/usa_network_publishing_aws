@@ -44,19 +44,13 @@
               <div class="panel-pane pane-entity-field pane-node-field-usa-tv-promo pane-expandable">
                 <div class="pane-content">
                   <ul class="field field-name-field-usa-tv-promo field-type-entityreference field-label-hidden first-promo-large">
-                  <?php foreach ($featured as $feature): ?>
+                  <?php foreach ($featured as $f_key => $feature): ?>
+                    <?php if ($f_key == 1): ?><li class="ad300x250"></li><?php endif; ?>
                     <li>
                       <?php print $feature; ?>
                     </li>
                   <?php endforeach; ?>
                   </ul>
-                </div>
-              </div>
-            </div>
-            <div class="panel-panel panel-three panel-col2">
-              <div class="panel-pane pane-block pane-dart-dart-tag-300x250-scr">
-                <div class="pane-content">
-                  <div class="ad300x250 dart-tag dart-name-300x250_scr"></div>
                 </div>
               </div>
             </div>

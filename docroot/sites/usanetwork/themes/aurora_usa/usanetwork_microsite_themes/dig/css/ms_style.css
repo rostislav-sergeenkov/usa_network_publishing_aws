@@ -283,9 +283,9 @@ you can use the generic selector below, but it's slower:
 }
 #microsite section {
   background-image: none;
-  background-position: center;
+  background-position: top left;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-color: transparent;
   width: 100%;
   position: relative;
@@ -687,7 +687,7 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav #left-nav-inner {
   position: relative;
-  top: -140px;
+  top: -130px;
   padding-left: 17px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-logo {
@@ -705,6 +705,9 @@ you can use the generic selector below, but it's slower:
   letter-spacing: 2.7px;
   padding-top: 5px;
 }
+.page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
+  letter-spacing: 13px;
+}
 .page-node-microsite #left-nav #left-nav-social {
   position: relative;
   top: 0;
@@ -714,7 +717,7 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social a {
   float: left;
   display: block;
-  margin-left: 6px;
+  margin-right: 6px;
   width: 26px;
   height: 26px;
   outline: none;
@@ -932,4 +935,85 @@ you can use the generic selector below, but it's slower:
     /*margin-bottom: 0;*/
   /*}*/
 /*}*/
+
+
+/* FEATURE PROMO OVERRIDES */
+#microsite section > div {
+  max-width: 942px;
+}
+#microsite .microsite-section-container .promo-ads-panel li {
+  list-style: none;
+  overflow: hidden;
+  clear: none;
+  float: left;
+  margin: 0 14px 15px 0;
+  position: relative;
+  width: 300px;
+  height: 250px;
+}
+@media (max-width: 1274px) and (min-width: 959px) {
+/*
+  #microsite .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
+    margin: 0 14px 15px 0;
+  }
+*/
+}
+@media (min-width: 1275px) {
+#microsite .microsite-section-container .promo-ads-panel li:first-child {
+  width: 614px;
+}
+}
+@media (max-width: 1209px) {
+#microsite section > div {
+  max-width: 628px;
+  margin-left: 265px;
+}
+}
+@media (max-width: 923px) {
+#microsite section > div {
+  margin-left: 215px; /* auto; */
+}
+}
+
+
+/* SHOW GLOBAL NAV OVERRIDES -- we don't want to see any of the show
+ * subnav in the bottom global navigation.
+ * We DO want to see the show nav in the hamburger menu though!
+ */
+/* remove hamburger, show name and sub menu area */
+body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
+  display: none;
+}
+body.page-node-microsite .mobi-menu-icon {
+  display: none;
+}
+/* restore link color to global menu items */
+@media (min-width: 875px) {
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
+  color: #0ab6e8;
+}
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
+  color: #0ab6e8;
+}
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
+  color: #ffffff;
+}
+}
+
+/* display hamburger and show menu */
+@media (max-width: 874px) {
+body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
+  display: block;
+}
+body.page-node-microsite .mobi-menu-icon {
+  display: block;
+}
+/* hide left nav when hamburger appears */
+#microsite #left-nav {
+  display: none;
+}
+#microsite section > div {
+  margin-left: auto;
+}
+}
 

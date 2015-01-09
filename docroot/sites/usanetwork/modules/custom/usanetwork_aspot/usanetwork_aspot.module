@@ -570,9 +570,10 @@ function usanetwork_aspot_render($show_node) {
   if (!empty($aspot_field) && !empty($aspot_field[0]['target_id'])) {
     $aspot_node = node_load($aspot_field[0]['target_id']);
 
-    return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
+    if ($aspot_node) {
+      return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
+    }
   }
-
   return '';
 }
 

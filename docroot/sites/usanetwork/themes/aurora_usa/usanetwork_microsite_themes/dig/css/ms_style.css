@@ -866,6 +866,9 @@ you can use the generic selector below, but it's slower:
 }
 
 /* media breakpoints*/
+/*
+We use this breakpoints for redesign and
+*/
 @media (min-width: 1601px) {
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
@@ -888,7 +891,7 @@ you can use the generic selector below, but it's slower:
 @media (min-width: 769px) and (max-width: 990px){
   #microsite section > div {
     padding-left: 154px;
-    padding-right: 0;
+    padding-right: 15px;
   }
   .page-node-microsite #left-nav{
     left: 5px;

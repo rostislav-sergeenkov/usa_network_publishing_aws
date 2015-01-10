@@ -341,6 +341,7 @@ var activeSection,
 		initVideoSection(); // needs to happen before showInitialContent
 		showInitialContent();
 		initCarousels(); // needs to happen after showInitialContent
+		initVideo(); //activate video
 
 		// initialize logo click
 		$('#left-nav-logo').on('click', function() {

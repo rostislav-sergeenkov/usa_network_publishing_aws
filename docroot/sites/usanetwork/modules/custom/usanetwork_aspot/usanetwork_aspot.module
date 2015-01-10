@@ -566,13 +566,16 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
 
 function usanetwork_aspot_render($show_node) {
   $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
-
-  if (!empty($aspot_field) && !empty($aspot_field[0]['target_id'])) {
-    $aspot_node = node_load($aspot_field[0]['target_id']);
-
-    return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
+  if (!empty($aspot_field) && is_array($aspot_field)) {
+    foreach ($aspot_field as $aspot) {
+      if (!empty($aspot['target_id'])) {
+        $aspot_node = node_load($aspot['target_id']);
+        if ($aspot_node) {
+          return _usanetwork_aspot_render_carousel_node($aspot_node, $show_node);
+        }
+      }
+    }
   }
-
   return '';
 }
 

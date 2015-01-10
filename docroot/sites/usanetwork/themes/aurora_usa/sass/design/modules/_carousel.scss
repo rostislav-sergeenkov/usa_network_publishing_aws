@@ -386,23 +386,21 @@
     }
   }
   &:not(.start) {
-    &:hover {
-      .jcarousel-control-prev.inactive {
-        width: 60px;
-        @include breakpoint($bp-1024-width) {
-          right: 160px;
-          width: 40px;
-        }
-        @include breakpoint($bp-min-1025-width) {
-          right: 120px;
-        }
-        @include breakpoint($bp-min-1601-width) {
-          right: 280px;
-        }
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
+    .jcarousel-control-prev.inactive {
+      width: 60px;
+      @include breakpoint($bp-1024-width) {
+        right: 160px;
+        width: 40px;
+      }
+      @include breakpoint($bp-min-1025-width) {
+        right: 120px;
+      }
+      @include breakpoint($bp-min-1601-width) {
+        right: 280px;
+      }
+      &:after {
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -493,16 +491,14 @@
     }
   }
   &:not(.start) {
-    &:hover {
-      .jcarousel-control-prev.inactive {
-        width: 60px;
-        @include breakpoint($bp-1024-width) {
-          width: 40px;
-        }
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
+    .jcarousel-control-prev.inactive {
+      width: 60px;
+      @include breakpoint($bp-1024-width) {
+        width: 40px;
+      }
+      &:after {
+        opacity: 1;
+        visibility: visible;
       }
     }
   }

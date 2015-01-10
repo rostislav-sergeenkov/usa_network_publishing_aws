@@ -331,6 +331,7 @@ var activeSection,
 		$('#section-videos li[data-video-url=' + activeVideoUrl + ']').addClass('active');
 	}
 
+
 	// on page load
 	$(document).ready(function(){
 		wHeight = $(window).height();
@@ -338,10 +339,9 @@ var activeSection,
 
 		parseUrl();
 		usa_debug('activeSection: ' + activeSection + '\nactiveItem: ' + activeItem);
-		initVideoSection(); // needs to happen before showInitialContent
 		showInitialContent();
 		initCarousels(); // needs to happen after showInitialContent
-		initVideo(); //activate video
+		initVideoSection(); // needs to happen before showInitialContent
 
 		// initialize logo click
 		$('#left-nav-logo').on('click', function() {

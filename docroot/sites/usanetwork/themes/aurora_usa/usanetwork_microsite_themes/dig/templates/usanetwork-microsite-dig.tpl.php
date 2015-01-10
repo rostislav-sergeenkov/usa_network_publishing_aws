@@ -38,15 +38,18 @@
             <?php foreach ($sections_navlinks as $sections_navlink): ?>
               <?php print $sections_navlink; ?>
             <?php endforeach; ?>
-            <li><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
-            <li><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
-            <li id="tour-israel">Tour Israel
+
+            <li class="separator first">....</li>
+            <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
+            <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
+            <li class="external">Tour Israel
               <ul>
                 <li>Link 1</li>
                 <li>Link 2</li>
                 <li>Link 3</li>
               </ul>
             </li>
+            <li class="separator last">....</li>
           </ul>
         </div>
       <?php endif; ?>

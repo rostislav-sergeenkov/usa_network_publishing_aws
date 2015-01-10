@@ -355,6 +355,13 @@ var activeSection,
 			}
 		});
 
+    // initialize left nav hover with subnav {
+    $('#left-nav-links ul li').hover(function(){
+      $(this).addClass('hover');
+    }, function(){
+      $(this).removeClass('hover');
+    });
+
 		// initialize nav clicks
 		$('#left-nav-links li').on('click', function(){
 			var elem = $(this).attr('id').replace('nav-', '');

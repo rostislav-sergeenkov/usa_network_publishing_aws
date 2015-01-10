@@ -283,7 +283,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite section {
   background-image: none;
-  background-position: top center;
+  background-position: top left; /* please don't change this! */
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
@@ -714,7 +714,7 @@ you can use the generic selector below, but it's slower:
   position: relative;
   top: 0;
   left: 17px;
-  height: 80px;
+  height: 58px;
 }
 .page-node-microsite #left-nav #left-nav-social a {
   float: left;
@@ -747,6 +747,18 @@ you can use the generic selector below, but it's slower:
   list-style: none;
   cursor: pointer;
 }
+.page-node-microsite #left-nav #left-nav-links li,
+.page-node-microsite #left-nav #left-nav-links a {
+  color: #FFF;
+  line-height: 20px;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+}
+.page-node-microsite #left-nav #left-nav-links li.external,
+.page-node-microsite #left-nav #left-nav-links .external a {
+  color: #CCC;
+}
+.page-node-microsite #left-nav #left-nav-links li a:hover,
 .page-node-microsite #left-nav #left-nav-links li:hover {
   color: #e5ce96;
 }
@@ -759,25 +771,42 @@ you can use the generic selector below, but it's slower:
   list-style: square url("../images/nav_selector.png");
   color: #e5ce96;
 }
+.page-node-microsite #left-nav #left-nav-links .separator {
+  cursor: default;
+}
+.page-node-microsite #left-nav #left-nav-links .separator.first {
+  margin-top: 20px;
+}
+.page-node-microsite #left-nav #left-nav-links .separator.last {
+  line-height: 2px;
+}
+.page-node-microsite #left-nav #left-nav-links .separator,
+.page-node-microsite #left-nav #left-nav-links .separator:hover {
+  color: #CCC;
+}
 /* sub-nav */
 .page-node-microsite #left-nav #left-nav-links ul ul {
-  display:none;
+  display: none;
   margin-left: 16px;
-}
-.page-node-microsite #left-nav #left-nav-links ul #tour-israel ul {
-  display:block;
 }
 .page-node-microsite #left-nav #left-nav-links ul ul li {
   font-size: 0.8em;
   width: 200px;
   color: #FFF;
 }
+.page-node-microsite #left-nav #left-nav-links ul ul li:first-child {
+  padding-top: 20px;
+}
+.page-node-microsite #left-nav #left-nav-links li.hover ul,
 .page-node-microsite #left-nav #left-nav-links li.active ul {
   display: block;
 }
 .page-node-microsite #left-nav #left-nav-links li.active li.active {
   color: #e5ce96;
   list-style: none;
+}
+#left-nav #left-nav-link .separator.first {
+  margin-top: 20px;
 }
 
 
@@ -853,6 +882,7 @@ you can use the generic selector below, but it's slower:
   margin: 0 auto;
   cursor: pointer;
 }
+
 
 /* media breakpoints*/
 @media (min-width: 1601px) {
@@ -1021,40 +1051,42 @@ you can use the generic selector below, but it's slower:
  * subnav in the bottom global navigation.
  * We DO want to see the show nav in the hamburger menu though!
  */
+/* PLEASE DON'T CHANGE THE FOLLOWING! */
 /* remove hamburger, show name and sub menu area */
-/*body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {*/
-  /*display: none;*/
-/*}*/
-/*body.page-node-microsite .mobi-menu-icon {*/
-  /*display: none;*/
-/*}*/
+body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
+  display: none;
+}
+body.page-node-microsite .mobi-menu-icon {
+  display: none;
+}
 /* restore link color to global menu items */
-/*@media (min-width: 875px) {*/
-/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {*/
-  /*color: #0ab6e8;*/
-/*}*/
-/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {*/
-  /*color: #0ab6e8;*/
-/*}*/
-/*body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {*/
-  /*color: #ffffff;*/
-/*}*/
-/*}*/
+@media (min-width: 875px) {
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
+  color: #0ab6e8;
+}
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
+  color: #0ab6e8;
+}
+body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
+  color: #ffffff;
+}
+}
 
 /* display hamburger and show menu */
-/*@media (max-width: 874px) {*/
-/*body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {*/
-  /*display: block;*/
-/*}*/
-/*body.page-node-microsite .mobi-menu-icon {*/
-  /*display: block;*/
-/*}*/
+@media (max-width: 874px) {
+body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
+  display: block;
+}
+body.page-node-microsite .mobi-menu-icon {
+  display: block;
+}
 /* hide left nav when hamburger appears */
-/*#microsite #left-nav {*/
-  /*display: none;*/
-/*}*/
-/*#microsite section > div {*/
-  /*margin-left: auto;*/
-/*}*/
-/*}*/
+#microsite #left-nav {
+  display: none;
+}
+#microsite section > div {
+  margin-left: auto;
+}
+}
+/* OK! YOU CAN CHANGE STUFF BELOW HERE! THANKS! */
 

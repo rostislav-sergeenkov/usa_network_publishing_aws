@@ -211,7 +211,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 .usa-wrap,
 #microsite {
   background-color: #000;
@@ -296,10 +295,10 @@ you can use the generic selector below, but it's slower:
   overflow-y: auto;
   overflow-x: hidden;
 }
-#microsite #home {
+#microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
 }
-#microsite #about {
+#microsite #about-content {
   background-image: url("../images/dig_bg_about.jpg");
 }
 #microsite #characters li {
@@ -309,22 +308,22 @@ you can use the generic selector below, but it's slower:
   background-size: cover;
   background-color: transparent;
 }
-#microsite #characters li#jason-isaacs {
+#microsite #characters-content li#jason-isaacs {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters li#emma-wilson {
+#microsite #characters-content li#emma-wilson {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters li#donna-vaughan {
+#microsite #characters-content li#donna-vaughan {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #galleries {
+#microsite #galleries-content {
   background-image: url("../images/dig_bg_gallery.jpg");
 }
-#microsite #games {
+#microsite #games-content {
   background-image: url("../images/dig_bg_games.jpg");
 }
-#microsite #videos {
+#microsite #videos-content {
   background-image: url("../images/dig_bg_videos.jpg");
 }
 #microsite .pane-title {
@@ -333,13 +332,13 @@ you can use the generic selector below, but it's slower:
   margin: 30px 0 10px;
 }
 /*#microsite .scroll {*/
-  /*width: 4em;*/
-  /*margin: 0 auto;*/
-  /*cursor: pointer;*/
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*left: 100%;*/
-  /*margin-left: calc(-50% - 2em);*/
+/*width: 4em;*/
+/*margin: 0 auto;*/
+/*cursor: pointer;*/
+/*position: absolute;*/
+/*bottom: 0;*/
+/*left: 100%;*/
+/*margin-left: calc(-50% - 2em);*/
 /*}*/
 #microsite .scroll div {
   text-align: center;
@@ -369,9 +368,9 @@ you can use the generic selector below, but it's slower:
   color: #e5ce96;
   font-size: 0.6em;
 }
-#microsite .right-pane {
+#microsite section .microsite-section-container .right-pane {
   width: 45%;
-  float: right;
+  margin-left: auto;
 }
 #microsite .right-pane h2 {
   text-align: center;
@@ -683,18 +682,33 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   z-index: 10;
 }
-.page-node-microsite #left-nav #left-nav-inner {
+.page-node-microsite #left-nav #left-nav-inner.hide{
   position: relative;
   top: -130px;
   padding-left: 17px;
 }
+.page-node-microsite #left-nav #left-nav-inner{
+  position: relative;
+  top: auto;
+  padding-left: 17px;
+  -webkit-transition: top 1s ease-out 0.5s;
+  -moz-transition: top 1s ease-out 0.5s;
+  -o-transition: top 1s ease-out 0.5s;
+  transition: top 1s ease-out 0.5s;
+}
+.page-node-microsite #left-nav #left-nav-inner #nav-home > a{
+  display: block;
+}
+/*.page-node-microsite #left-nav #left-nav-inner.hide #left-nav-logo,*/
+/*.page-node-microsite #left-nav #left-nav-inner.hide #left-nav-tunein{*/
+  /*opacity: 0;*/
+/*}*/
 .page-node-microsite #left-nav #left-nav-inner #left-nav-logo {
   width: 130px;
   height: 82px;
   background-image: url("../images/dig_logo.png");
   cursor: pointer;
   opacity: 0;
-  margin-left: 17px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   opacity: 0;
@@ -703,7 +717,6 @@ you can use the generic selector below, but it's slower:
   text-align: center;
   letter-spacing: 2.7px;
   padding-top: 5px;
-  margin-left: 17px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
   letter-spacing: 13px;
@@ -711,7 +724,7 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social {
   position: relative;
   top: 0;
-  left: 17px;
+  left: 0;
   height: 58px;
 }
 .page-node-microsite #left-nav #left-nav-social a {
@@ -769,6 +782,9 @@ you can use the generic selector below, but it's slower:
   list-style: square url("../images/nav_selector.png");
   color: #e5ce96;
 }
+.page-node-microsite #left-nav #left-nav-links > ul > li#nav-home.active {
+  list-style: none;
+}
 .page-node-microsite #left-nav #left-nav-links .separator {
   cursor: default;
 }
@@ -816,17 +832,11 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 0;
 }
-#activeContent {
-  height: 300%;
-}
-#activeContent > div {
-  height: 100%;
-}
-.slides .clone {
-  width: 930px;
-  float: left;
-  display: block;
-}
+/*.slides .clone {*/
+  /*width: 930px;*/
+  /*float: left;*/
+  /*display: block;*/
+/*}*/
 
 /* STYLES */
 #main {
@@ -835,32 +845,30 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  }
-  /*add styles*/
-  #microsite .video-container iframe {
-    display: block;
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-  #microsite .video-title {
-    font-size: 2em;
-  }
-  #microsite .video-description {
-    font-size: 1.2em;
-  }
-  #microsite .video-info {
-    font-size: 1.2em;
-    color: #e5ce96;
-  }
-
-  /*corrected styles*/
-
+}
 /*add styles*/
-#microsite section > div {
-  clear: both;
-  padding: 0 17px 0 265px;
-  margin: 25px auto 0;
-  max-width: 1527px;
+#microsite .video-container iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+#microsite .video-title {
+  font-size: 2em;
+}
+#microsite .video-description {
+  font-size: 1.2em;
+}
+#microsite .video-info {
+  font-size: 1.2em;
+  color: #e5ce96;
+}
+
+/*corrected & add styles*/
+#microsite section .microsite-section-container{
+  margin: 25px  17px 0 265px;
+  max-width: 1500px;
+}
+#microsite section .microsite-section-container > div{
   width: 100%;
 }
 #microsite .a-spot-panel #show-main-slider{
@@ -882,9 +890,6 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   padding: 0;
 }
-/*#microsite .video-container{*/
-  /*display: none;*/
-/*}*/
 #microsite .video-container.in-player{
   display: block;
 }
@@ -893,6 +898,15 @@ you can use the generic selector below, but it's slower:
   max-width: 1000px;
   width: 100%;
 }
+#microsite .expandable-container .expandable-toggle-wrap {
+  display: none;
+}
+#microsite #main-slider {
+  margin: 0 auto;
+  width: 930px;
+}
+
+/*global nav*/
 body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
@@ -910,9 +924,21 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 /* media breakpoints*/
 @media (min-width: 1601px) {
+  #microsite #main-slider {
+    height: 506px;
+    width: 1245px;
+  }
+}
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;
+  }
+}
+@media (min-width: 1401px){
+  #microsite section .microsite-section-container{
+    margin: 25px  auto 0;
+    padding-left: 265px;
+    max-width: 1500px;
   }
 }
 @media (min-width: 1281px) and (max-width: 1600px){
@@ -939,9 +965,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #left-nav {
     display: none;
   }
-  #microsite section > div {
-    padding-left: 15px;
-    padding-right: 15px;
+  #microsite section .microsite-section-container {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){

@@ -16,11 +16,11 @@
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-  <div id="activeContent">
-    <div id="hidden-prev" class="hidden-section"></div>
-    <div id="visible"></div>
-    <div id="hidden-next" class="hidden-section"></div>
-  </div>
+<!--  <div id="activeContent">-->
+<!--    <div id="hidden-prev" class="hidden-section"></div>-->
+<!--    <div id="visible"></div>-->
+<!--    <div id="hidden-next" class="hidden-section"></div>-->
+<!--  </div>-->
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-logo"></div>
@@ -34,7 +34,10 @@
       </div>
       <?php if (!empty($sections_navlinks)): ?>
         <div id="left-nav-links">
-          <ul>
+          <ul id="left-nav-links-list">
+
+<!--            <li id="nav-home" data-menuanchor="home"><a href="#home">Home</a></li>-->
+
             <?php foreach ($sections_navlinks as $sections_navlink): ?>
               <?php print $sections_navlink; ?>
             <?php endforeach; ?>
@@ -55,15 +58,15 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="hidden">
-    <div id="ad-leaderboard"><?php print dart_tag('728x90_970x66_ifr_rel'); ?></div>
-    <div id="ad300x250"><?php print dart_tag('300x250_scr'); ?></div>
+  <div id="sections">
+<!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
+<!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
   <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content'])): ?>
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section-info" style="display:none">
-          <a name="/<?php print $section['type']; ?>"></a>
-          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="clearfix">
+        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+<!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
+          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
             <?php print $section['content']; ?>
           <?php if (empty($section['is_last'])): ?>
             <?php print $section_separator; ?>

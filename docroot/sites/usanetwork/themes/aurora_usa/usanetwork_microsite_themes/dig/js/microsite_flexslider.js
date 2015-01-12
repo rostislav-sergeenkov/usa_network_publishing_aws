@@ -2,36 +2,35 @@
 (function ($) {
   Drupal.behaviors.micrositeAspot = {
     attach: function (context, settings) {
-      usa_debug("f1");
 
-////      function initMicrositeAspot() {
-//      $('body').once('micrositeFlexslider', function () {
-//        console.log("f2");
-//        $slideshow_selector = $('.microsite-section-container #show-aspot-test ul');
+//      function initMicrositeAspot() {
+      $('body').once('micrositeFlexslider', function () {
+        console.log("flexslider_a-spot");
+        $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');
 //usa_debug('slideshow_selector: ');
 //usa_debug($slideshow_selector);
-//        $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
+        $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
         $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
-//        $touch = true;
-//        if ($slideshow_selector.find('li').length <= 1){
-//          $touch = false;
-//        }
-//        $slideshow_selector
-//          .addClass('slides')
-//          .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
-//          .parent()
-//          .flexslider({
-//            slideshow: $slideshow,
-//            slideshowSpeed: $slideshowSpeed,
-//            pauseOnHover: true,
-//            animation: 'slide',
-//            controlNav: true,
-//            directionNav: (!Modernizr.touch),
-//            touch: $touch
-//          });
-//        $showSlideshow = $('#show-main-slider');
-//      });
-////      }
+        $touch = true;
+        if ($slideshow_selector.find('li').length <= 1){
+          $touch = false;
+        }
+        $slideshow_selector
+          .addClass('slides')
+          .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
+          .parent()
+          .flexslider({
+            slideshow: $slideshow,
+            slideshowSpeed: $slideshowSpeed,
+            pauseOnHover: true,
+            animation: 'slide',
+            controlNav: true,
+            directionNav: (!Modernizr.touch),
+            touch: $touch
+          });
+        $showSlideshow = $('#show-main-slider');
+      });
+//      }
 
 
       // A-SPOT VIDEOS

@@ -351,9 +351,6 @@ you can use the generic selector below, but it's slower:
   height: 29px;
   margin: 0 auto;
 }
-#microsite .full-pane {
-  width: 100%;
-}
 #microsite .left-pane {
   width: 55%;
   float: left;
@@ -674,7 +671,7 @@ you can use the generic selector below, but it's slower:
 
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 175px;
+  top: 185px;
   /* 194px; */
   left: 15px;
   width: 250px;
@@ -684,6 +681,7 @@ you can use the generic selector below, but it's slower:
   line-height: 30px;
   text-transform: uppercase;
   overflow: hidden;
+  z-index: 10;
 }
 .page-node-microsite #left-nav #left-nav-inner {
   position: relative;
@@ -809,10 +807,6 @@ you can use the generic selector below, but it's slower:
   margin-top: 20px;
 }
 
-
-
-
-
 /* ADDED OUTSIDE OF SASS */
 .page-node-microsite .usa-wrap {
   background-color: #000;
@@ -834,15 +828,10 @@ you can use the generic selector below, but it's slower:
   display: block;
 }
 
-
 /* STYLES */
 #main {
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
-#microsite #show-main-slider {
-  margin-left: auto;
-  margin-right: auto;
 }
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -874,144 +863,40 @@ you can use the generic selector below, but it's slower:
   max-width: 1527px;
   width: 100%;
 }
+#microsite .a-spot-panel #show-main-slider{
+  overflow: hidden;
+  max-height: 506px;
+}
 #microsite .a-spot-panel img{
   width: 100%;
+}
+#microsite .a-spot-panel.tiles .flex-control-paging{
+  bottom: 30px;
+  margin-left: -24px;
+  position: absolute;
+  top: auto;
 }
 #microsite .scroll {
   width: 4em;
   margin: 0 auto;
   cursor: pointer;
+  padding: 0;
 }
-
-
-/* media breakpoints*/
-@media (min-width: 1601px) {
-  #microsite section > div {
-
-  }
-  #microsite section .file-video-mpx.view-mode-inline_content iframe {
-    width: 1000px;
-    height: 563px;
-  }
-}
-@media (min-width: 1281px) and (max-width: 1600px){
-
-}
-@media (min-width: 769px) and (max-width: 1280px){
-
-}
-@media (min-width: 769px) and (max-width: 990px){
-  #microsite section > div {
-    padding-left: 154px;
-    padding-right: 0;
-  }
-  .page-node-microsite #left-nav{
-    left: 5px;
-    width: 150px;
-  }
-  .page-node-microsite #left-nav #left-nav-inner{
-    padding-left: 0;
-  }
-}
-@media (max-width: 768px){
-  #microsite section > div {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  /* hide left nav when hamburger appears */
-  #microsite #left-nav {
-    display: none;
-  }
-  #microsite section > div {
-    margin-left: auto;
-  }
-}
-@media (max-width: 640px){
-
-}
-@media (max-width: 480px){
-
-}
-@media (max-width: 320px){
-
-}
-
-
-
-  /*_________________*/
-
-
-
-
-/*@media (min-width: 1355px) {*/
-  /*#microsite section > div {*/
-    /*width: 1245px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 506px;*/
-  /*}*/
+/*#microsite .video-container{*/
+  /*display: none;*/
 /*}*/
-
-
-/*@media (max-width: 1335px){*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child,*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper{*/
-    /*width: 300px;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {*/
-    /*display: none;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img {*/
-    /*display: block;*/
-  /*}*/
-  /*#microsite #visible #show-main-slider {*/
-    /*height: 378px;*/
-    /*width: 930px;*/
-  /*}*/
-/*}*/
-/*@media (max-width: 1019px) and (min-width: 710px){*/
-  /*#microsite .promo-ads-panel .panel-col2 {*/
-    /*bottom: 0;*/
-    /*margin-bottom: 13px;*/
-    /*top: auto;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child,*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .caption-fields-wrapper {*/
-    /*width: 615px;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large .asset-img-large {*/
-    /*display: block;*/
-  /*}*/
-  /*#microsite .expandable-container.promo-ads-panel .first-promo-large li:first-child .asset-img {*/
-    /*display: none;*/
-  /*}*/
-  /*#microsite section > div {*/
-    /*width: 615px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 350px;*/
-    /*width: 100%;*/
-  /*}*/
-/*}*/
-/*@media (max-width: 709px){*/
-  /*#microsite section > div {*/
-    /*width: 300px;*/
-  /*}*/
-  /*#microsite #show-main-slider {*/
-    /*height: 250px;*/
-    /*width: 100%;*/
-  /*}*/
-  /*#microsite .promo-ads-panel .panel-col2 {*/
-    /*display: block;*/
-    /*margin-bottom: 0;*/
-  /*}*/
-/*}*/
-
-
+#microsite .video-container.in-player{
+  display: block;
+}
+#microsite .full-pane {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
+body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
+  display: none;
+}
 /* FEATURE PROMO OVERRIDES */
-/*#microsite section > div {*/
-  /*max-width: 942px;*/
-/*}*/
 #microsite .microsite-section-container .promo-ads-panel li {
   list-style: none;
   overflow: hidden;
@@ -1022,71 +907,160 @@ you can use the generic selector below, but it's slower:
   width: 300px;
   height: 250px;
 }
-@media (max-width: 1274px) and (min-width: 959px) {
-/*
-  #microsite .expandable-container.promo-ads-panel .first-promo-large li:nth-of-type(2) {
-    margin: 0 14px 15px 0;
+
+/* media breakpoints*/
+@media (min-width: 1601px) {
+  #microsite section .file-video-mpx.view-mode-inline_content iframe {
+    width: 1000px;
+    height: 563px;
   }
-*/
 }
-@media (min-width: 1275px) {
-#microsite .microsite-section-container .promo-ads-panel li:first-child {
-  width: 614px;
+@media (min-width: 1281px) and (max-width: 1600px){
+
 }
+@media (min-width: 1025px) and (max-width: 1280px){
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 378px;
+  }
 }
-/*@media (max-width: 1209px) {*/
-/*#microsite section > div {*/
-  /*max-width: 628px;*/
-  /*margin-left: 265px;*/
-/*}*/
-/*}*/
-/*@media (max-width: 923px) {*/
-/*#microsite section > div {*/
-  /*margin-left: 215px; *//* auto; */
-/*}*/
-/*}*/
+@media (min-width: 875px){
+  body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
+    color: #0ab6e8;
+  }
+  body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
+    color: #0ab6e8;
+  }
+  body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
+    color: #ffffff;
+  }
+}
+@media (max-width: 874px){
+  /* hide left nav when hamburger appears */
+  #microsite #left-nav {
+    display: none;
+  }
+  #microsite section > div {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@media (min-width: 769px) and (max-width: 874px){
+  .page-node-microsite .mobi-menu-icon {
+    display: inline;
+  }
+  .page-node-microsite #mega-nav .block {
+    position: relative;
+    z-index: 10;
+  }
+  .page-node-microsite .mega-menu-items{
+    display: none;
+  }
+  .page-node-microsite #mega-nav{
+    text-align: center;
+    height: 50px;
+  }
+  .page-node-microsite #logo {
+    border: none;
+    float: none;
+    margin-top: 12px;
+    margin-right: 8px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    padding-right: 0px;
+    height: 33px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    font-size: 28px;
+  }
+
+  .page-node-microsite #tv-show-menu h2,
+  .page-node-microsite #menu-wrapper h2{
+    display: block;
+  }
+  .page-node-microsite #tv-show-menu h2 a:visited{
+    color: #0ab6e8;
+  }
+  .page-node-microsite #tv-show-menu h2 a{
+    font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .page-node-microsite #tv-show-menu {
+    box-shadow: none;
+    display: block;
+    position: static;
+    width: 100%;
+    background: none;
+    border-top: none;
+    height: auto;
+    padding-left: 0;
+    white-space: nowrap;
+  }
+  .page-node-microsite #tv-show-menu ul{
+    display: block;
+  }
+  .page-node-microsite #tv-show-menu li{
+    display: block;
+  }
+  .page-node-microsite #tv-show-menu .item-list .slide-panel-link {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+    border-style: solid;
+    border-width: 0 0 1px;
+    color: #d0d0d0;
+    display: block;
+    font-family: "avalonregular","Proxima N W01 Reg",Arial,sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 10px 12px 8px;
+    line-height: 1;
+    position: relative;
+    text-transform: lowercase;
+  }
+  .page-node-microsite #tv-show-menu .item-list .slide-panel-link:hover{
+    color: #ffffff;
+  }
+  .page-node-microsite #tv-show-menu li.parent-item:hover > a:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 5px;
+    border-color: transparent transparent transparent white;
+    margin-top: -3px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    left: auto;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px){
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 350px;
+  }
+}
+@media (min-width: 769px) and (max-width: 990px){
+
+}
+@media (max-width: 768px){
+
+}
+@media (max-width: 640px){
+
+}
+@media (max-width: 480px){
+
+}
+@media (max-width: 320px){
+
+}
+/*_________________*/
 
 
-/* SHOW GLOBAL NAV OVERRIDES -- we don't want to see any of the show
- * subnav in the bottom global navigation.
- * We DO want to see the show nav in the hamburger menu though!
- */
-/* PLEASE DON'T CHANGE THE FOLLOWING! */
-/* remove hamburger, show name and sub menu area */
-body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
-  display: none;
-}
-body.page-node-microsite .mobi-menu-icon {
-  display: none;
-}
-/* restore link color to global menu items */
-@media (min-width: 875px) {
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
-  color: #0ab6e8;
-}
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
-  color: #0ab6e8;
-}
-body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
-  color: #ffffff;
-}
-}
-
-/* display hamburger and show menu */
-@media (max-width: 874px) {
-body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
-  display: block;
-}
-body.page-node-microsite .mobi-menu-icon {
-  display: block;
-}
-/* hide left nav when hamburger appears */
-#microsite #left-nav {
-  display: none;
-}
-#microsite section > div {
-  margin-left: auto;
-}
-}
-/* OK! YOU CAN CHANGE STUFF BELOW HERE! THANKS! */
 

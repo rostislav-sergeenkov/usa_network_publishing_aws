@@ -29,8 +29,12 @@
 				scrollBar: true,
 				scrollOverflow: true,
 				scrollingSpeed: 1000,
+				afterLoad: function(anchorLink, index){
+					$('.section.active').addClass('visible');
+				},
 				afterRender: function(){
-					alert("The resulting DOM structure is ready");
+					console.log("The resulting DOM structure is ready");
+
 				}
 			});
 

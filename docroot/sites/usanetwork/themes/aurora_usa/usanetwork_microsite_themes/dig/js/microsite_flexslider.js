@@ -59,13 +59,16 @@
         }
 
         var aspotVideos = {};
-        if (Drupal.settings.aspotSettings) {
-          var show = Drupal.settings.aspotSettings.show;
-          var mp4_url = Drupal.settings.aspotSettings.mp4_url;
-          var webm_url = Drupal.settings.aspotSettings.webm_url;
+        //if (Drupal.settings.aspotSettings) {
+          var show = 'dig';
+          //var show = Drupal.settings.aspotSettings.show;
+          //var mp4_url = Drupal.settings.aspotSettings.mp4_url;
+          //var webm_url = Drupal.settings.aspotSettings.webm_url;
+          var mp4_url = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/video/NBCU_USA_Network/697/791/SUITS_RM_SUMMER_FINALE.mp4';
+          var webm_url = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/mezzanine/NBCU_USA_Network/697/791/SUITS_RM_SUMMER_FINALE.webmhd.webm';
           aspotVideos[show] = {};
           aspotVideos[show] = AspotVideo(mp4_url, webm_url);
-        }
+        //}
         var aspotVideoBeingShown = '';
         if (aspotVideos.hasOwnProperty(show)) {
           var avTemp = aspotVideos[show];
@@ -81,7 +84,6 @@
       if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
 
         var showAspotVideoPauseFlexslider = function () {
-          usa_debug('v2');
           usa_debug('showAspotVideoPauseFlexslider()');
           if (typeof $showSlideshow.flexslider === 'function') {
             // if we don't put a timeout here, the flexslider control
@@ -111,7 +113,6 @@
 
         var showAspotVideoDone = 0;
         var showAspotVideoShow = function () {
-          usa_debug("v1");
           usa_debug('showAspotVideoShow()');
           if (!showAspotVideoDone) {
             var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';

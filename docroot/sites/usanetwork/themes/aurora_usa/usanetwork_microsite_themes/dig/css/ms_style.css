@@ -211,7 +211,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 .usa-wrap,
 #microsite {
   background-color: #000;
@@ -296,10 +295,10 @@ you can use the generic selector below, but it's slower:
   overflow-y: auto;
   overflow-x: hidden;
 }
-#microsite #home {
+#microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
 }
-#microsite #about {
+#microsite #about-content {
   background-image: url("../images/dig_bg_about.jpg");
 }
 #microsite #characters li {
@@ -309,22 +308,22 @@ you can use the generic selector below, but it's slower:
   background-size: cover;
   background-color: transparent;
 }
-#microsite #characters li#jason-isaacs {
+#microsite #characters-content li#jason-isaacs {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters li#emma-wilson {
+#microsite #characters-content li#emma-wilson {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters li#donna-vaughan {
+#microsite #characters-content li#donna-vaughan {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #galleries {
+#microsite #galleries-content {
   background-image: url("../images/dig_bg_gallery.jpg");
 }
-#microsite #games {
+#microsite #games-content {
   background-image: url("../images/dig_bg_games.jpg");
 }
-#microsite #videos {
+#microsite #videos-content {
   background-image: url("../images/dig_bg_videos.jpg");
 }
 #microsite .pane-title {
@@ -333,13 +332,13 @@ you can use the generic selector below, but it's slower:
   margin: 30px 0 10px;
 }
 /*#microsite .scroll {*/
-  /*width: 4em;*/
-  /*margin: 0 auto;*/
-  /*cursor: pointer;*/
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*left: 100%;*/
-  /*margin-left: calc(-50% - 2em);*/
+/*width: 4em;*/
+/*margin: 0 auto;*/
+/*cursor: pointer;*/
+/*position: absolute;*/
+/*bottom: 0;*/
+/*left: 100%;*/
+/*margin-left: calc(-50% - 2em);*/
 /*}*/
 #microsite .scroll div {
   text-align: center;
@@ -816,17 +815,11 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 0;
 }
-#activeContent {
-  height: 300%;
-}
-#activeContent > div {
-  height: 100%;
-}
-.slides .clone {
-  width: 930px;
-  float: left;
-  display: block;
-}
+/*.slides .clone {*/
+  /*width: 930px;*/
+  /*float: left;*/
+  /*display: block;*/
+/*}*/
 
 /* STYLES */
 #main {
@@ -835,32 +828,29 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  }
-  /*add styles*/
-  #microsite .video-container iframe {
-    display: block;
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-  #microsite .video-title {
-    font-size: 2em;
-  }
-  #microsite .video-description {
-    font-size: 1.2em;
-  }
-  #microsite .video-info {
-    font-size: 1.2em;
-    color: #e5ce96;
-  }
-
-  /*corrected styles*/
-
+}
 /*add styles*/
-#microsite section > div {
-  clear: both;
-  padding: 0 17px 0 265px;
-  margin: 25px auto 0;
-  max-width: 1527px;
+#microsite .video-container iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+#microsite .video-title {
+  font-size: 2em;
+}
+#microsite .video-description {
+  font-size: 1.2em;
+}
+#microsite .video-info {
+  font-size: 1.2em;
+  color: #e5ce96;
+}
+
+/*corrected & add styles*/
+#microsite section .microsite-section-container{
+  margin: 25px  17px 0 265px;
+}
+#microsite section .microsite-section-container > div{
   width: 100%;
 }
 #microsite .a-spot-panel #show-main-slider{
@@ -882,9 +872,6 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   padding: 0;
 }
-/*#microsite .video-container{*/
-  /*display: none;*/
-/*}*/
 #microsite .video-container.in-player{
   display: block;
 }
@@ -893,6 +880,7 @@ you can use the generic selector below, but it's slower:
   max-width: 1000px;
   width: 100%;
 }
+/*global nav*/
 body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
@@ -939,9 +927,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #left-nav {
     display: none;
   }
-  #microsite section > div {
-    padding-left: 15px;
-    padding-right: 15px;
+  #microsite section .microsite-section-container {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){

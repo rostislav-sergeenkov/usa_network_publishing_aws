@@ -20,21 +20,42 @@
  */
 
 (function ($) {
+
 	Drupal.behaviors.microsite_scroll= {
 	  attach: function (context, settings) {
 
 			$('#sections').fullpage({
 				anchors: ['home', 'videos', 'about', 'galleries'],
 				menu: '#left-nav-links-list',
-				scrollBar: true,
 				scrollOverflow: true,
-				scrollingSpeed: 1000,
-				afterLoad: function(anchorLink, index){
-					$('.section.active').addClass('visible');
-				},
-				afterRender: function(){
-					console.log("The resulting DOM structure is ready");
+				scrollingSpeed: 500,
+				onLeave: function (index, nextIndex, direction) {
 
+					if(index == 1){
+						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
+						$('#left-nav-inner').animate({'top': '0'}, 500);
+					}else if(nextIndex == 1){
+						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 700);
+						$('#left-nav-inner').animate({'top': '-130px'}, 500);
+					}
+
+
+					if (Math.abs(index - nextIndex) > 1) {
+						var sections = $('section'),
+							leaveSection = $(sections[index - 1]),
+							nextSection = $(sections[nextIndex - 1]);
+
+						$.fn.fullpage.setScrollingSpeed(0);
+
+						leaveSection.css('margin-top', '0');
+						if (index < nextIndex) {
+							nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
+						} else {
+							nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
+						}
+					} else {
+						$.fn.fullpage.setScrollingSpeed(1000);
+					}
 				}
 			});
 

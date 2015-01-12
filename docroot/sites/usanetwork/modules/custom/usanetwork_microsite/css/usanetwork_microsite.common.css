@@ -7,7 +7,7 @@
   display: none;
 }
 #microsite .section-info {
-  display: none !important;
+  /*display: none !important;*/
 }
 #activeContent > a[name] {
   height: 130px;

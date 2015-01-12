@@ -33,6 +33,7 @@
                 </ul>
               </div>
             </div>
+            <div id="aspot-video-container"></div>
           </div>
         </div>
         <?php endif; ?>

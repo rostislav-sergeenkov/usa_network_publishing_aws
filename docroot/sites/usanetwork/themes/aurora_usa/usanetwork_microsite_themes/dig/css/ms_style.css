@@ -681,6 +681,7 @@ you can use the generic selector below, but it's slower:
   line-height: 30px;
   text-transform: uppercase;
   overflow: hidden;
+  z-index: 10;
 }
 .page-node-microsite #left-nav #left-nav-inner {
   position: relative;

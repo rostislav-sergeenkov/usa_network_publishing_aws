@@ -194,8 +194,10 @@ function theme_usanework_full_episodes_draggable($vars){
  */
 function usanetwork_mpx_video_full_episode_videos_form_submit($form, &$form_state) {
   $usanework_full_episodes_aspot = array();
-  foreach ($form_state['values']['table'] as $id => $item) {
-    $usanework_full_episodes_aspot[$item['weight']] = $id;
+  $temporary_table_array = $form_state['values']['table'];
+  asort($temporary_table_array);
+  foreach ($temporary_table_array as $id => $item) {
+    $usanework_full_episodes_aspot[] = $id;
   }
   variable_set('usanework_full_episodes_aspot', $usanework_full_episodes_aspot);
 }

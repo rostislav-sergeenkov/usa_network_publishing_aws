@@ -11,37 +11,9 @@
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
   <div class="full-pane">
-    <?php foreach ($players as $v_key => $player): ?>
-      <div class="video-container <?php print ((string) $v_key == 'in_player' ? 'in-player' : ''); ?>">
-        <?php if (!empty($player['rendered']) && !empty($player['url'])): ?>
-        <div class="video-player" data-video-url="<?php print $player['url']; ?>">
-          <?php print $player['rendered']; ?>
-        </div>
-        <?php endif; ?>
-
-        <?php if (!empty($player['title'])): ?>
-        <div class="video-title"><?php print $player['title']; ?></div>
-        <?php endif; ?>
-
-        <?php if (!empty($player['description'])): ?>
-        <div class="video-description"><?php print $player['description']; ?></div>
-        <?php endif; ?>
-
-        <?php if (!empty($player['season_number']) || !empty($player['episode_number']) || !empty($player['airdate'])): ?>
-        <div class="video-info">
-          <?php if (!empty($player['season_number'])): ?>
-          <span class="video-season">S<?php print $player['season_number']; ?></span>
-          <?php endif; ?>
-          <?php if (!empty($player['episode_number'])): ?>
-          <span class="video-episode">E<?php print $player['episode_number']; ?></span>
-          <?php endif; ?>
-          <?php if (!empty($player['airdate'])): ?>
-          <span class="video-airdate">Air Date: <?php print $player['airdate']; ?></span>
-          <?php endif; ?>
-        </div>
-        <?php endif; ?>
-      </div>
-    <?php endforeach; ?>
+    <?php if (!empty($in_player)):  ?>
+      <?php print $in_player; ?>
+    <?php endif; ?>
     <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">
       <div class="content">
@@ -53,7 +25,7 @@
                 <?php foreach ($videos as $v_key => $video): ?>
                   <?php if ($v_key == 2): ?><li class="ad300x250 views-row grid-item"></li><?php endif; ?>
                   <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
-                  <li class="views-row grid-item" data-video-url="<?php print $video['url']; ?>">
+                  <li class="views-row grid-item" data-video-url="<?php print $video['url']; ?>"fid="<?php print $video['fid']; ?>">
                     <?php print $video['rendered']; ?>
                   </li>
                   <?php endif; ?>
@@ -66,11 +38,7 @@
       </div>
     </div>
     <?php endif; ?>
-
-
   </div>
-
-
 <?php if (!empty($background_url)): ?>
 </div>
 <?php endif; ?>

@@ -11824,10 +11824,10 @@ body.person-page #main {
   opacity: 0;
 }
 .carousel .stop ~ .jcarousel-controls {
-  width: 0px;
+  width: 0px !important;
 }
 .carousel .stop ~ .jcarousel-controls:after {
-  opacity: 0;
+  opacity: 0 !important;
 }
 .carousel.destroy > ul {
   width: auto;

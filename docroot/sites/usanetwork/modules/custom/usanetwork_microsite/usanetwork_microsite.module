@@ -602,12 +602,11 @@ function _usanetwork_microsite_get_theme_variables($node) {
   // Detect sections availability
   if (!empty($node->field_ms_section)) {
     $pages = array();
-
+    $games = array();
     // Walk through connected sections
     foreach ($node_wrapper->field_ms_section as $section_wrapper) {
       // Fill base section values
       $section_base_variables = _usanetwork_microsite_theme_get_section_base_variables($section_wrapper);
-      $link = '';
 
       if (empty($section_base_variables)) {
         continue;
@@ -616,44 +615,22 @@ function _usanetwork_microsite_get_theme_variables($node) {
       $pages[$section_base_variables['type']] = array(
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
+        'link' => l($section_base_variables['title'], '#' . $section_base_variables['type'], array('external' => TRUE)),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
 
-      if ($section_base_variables['type'] != 'home') {
-        $link = '<li id="nav-' . $section_base_variables['type'] . '" data-menuanchor="' . $section_base_variables['type'] . '"><a href="#' . $section_base_variables['type'] . '">' . $section_base_variables['title'];
-
-        if ($section_base_variables['type'] == 'games') {
-          $section_object = $section_wrapper->value();
-
-          if (!empty($section_object->field_ms_catchall_page)) {
-            $subgame_page_index = 0;
-            $link .= '<ul id="nav-games-sub">';
-
-            foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
-              $game_nid = $games_page_wrapper->nid->value();
-              $game_title = $games_page_wrapper->title->value();
-              $class = $subgame_page_index == 0
-                ? ' class="active" '
-                : '';
-
-              $link .= '<li id="nav-games-' .  $game_nid . '"' . $class . ' data-nid="' . $game_nid . '">' . $game_title . '</li>';
-
-              $subgame_page_index++;
-            }
-
-            $link .= '</ul>';
-          }
+      if ($section_base_variables['type'] == 'games') {
+        foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
+          $games = array(
+            'nid' => $games_page_wrapper->nid->value(),
+            'title' => $games_page_wrapper->title->value(),
+          );
         }
-
-        $link .= '</a></li>';
-      }
-
-      if (!empty($link)) {
-        $navigation_links[] = $link;
       }
     }
 
     $theme_variables['sections'] = $pages;
+    $theme_variables['games'] = $games;
 
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);

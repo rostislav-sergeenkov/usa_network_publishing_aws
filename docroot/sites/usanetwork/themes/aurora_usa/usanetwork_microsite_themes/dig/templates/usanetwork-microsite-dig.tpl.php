@@ -23,39 +23,43 @@
 <!--  </div>-->
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
-      <div id="left-nav-logo"></div>
-      <?php if (!empty($tune_in)): ?>
-        <div id="left-nav-tunein"><?php print $tune_in; ?></div>
-      <?php endif; ?>
-      <div id="left-nav-social" class="clearfix">
-        <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-        <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
-        <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
-      </div>
-      <?php if (!empty($sections_navlinks)): ?>
-        <div id="left-nav-links">
-          <ul id="left-nav-links-list">
+      <div id="left-nav-links">
+        <ul id="left-nav-links-list">
+          <li>
+            <div id="left-nav-logo"></div>
+            <?php if (!empty($tune_in)): ?>
+              <div id="left-nav-tunein"><?php print $tune_in; ?></div>
+            <?php endif; ?>
+            <div id="left-nav-social" class="clearfix">
+              <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+              <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+              <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+            </div>
+          </li>
 
-<!--            <li id="nav-home" data-menuanchor="home"><a href="#home">Home</a></li>-->
-
-            <?php foreach ($sections_navlinks as $sections_navlink): ?>
-              <?php print $sections_navlink; ?>
+<!--      <li id="nav-home" data-menuanchor="home"><a href="#home">Home</a></li>-->
+          <?php if (!empty($sections)): ?>
+            <?php foreach ($sections as $section): ?>
+              <?php if ($section['type'] != 'home'): ?>
+                <li id="nav-<?php print $section['type']; ?>" data-menuanchor="<?php print $section['type']; ?>">
+                  <?php print $section['link']; ?>
+                </li>
+              <?php endif; ?>
             <?php endforeach; ?>
-
-            <li class="separator first">....</li>
-            <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
-            <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
-            <li class="external">Tour Israel
-              <ul>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
-              </ul>
-            </li>
-            <li class="separator last">....</li>
-          </ul>
-        </div>
-      <?php endif; ?>
+          <?php endif; ?>
+          <li class="separator first">....</li>
+          <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
+          <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
+          <li class="external">Tour Israel
+            <ul>
+              <li>Link 1</li>
+              <li>Link 2</li>
+              <li>Link 3</li>
+            </ul>
+          </li>
+          <li class="separator last">....</li>
+        </ul>
+      </div>
     </div>
   </div>
   <div id="sections">

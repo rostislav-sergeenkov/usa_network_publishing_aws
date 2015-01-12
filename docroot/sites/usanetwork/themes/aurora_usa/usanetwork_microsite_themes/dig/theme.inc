@@ -94,6 +94,14 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'rendered' => NULL,
           ),
         ),
+        'in_player' => NULL,
+        'background_url' => NULL,
+      ),
+    ),
+    'usanetwork_microsite_dig_videos_player' => array(
+      'template' => 'usanetwork-microsite-dig-videos-player',
+      'path' => $subtheme_path,
+      'variables' => array(
         'in_player' => array(
           'url' => NULL,
           'title' => NULL,
@@ -103,7 +111,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           'episode_number' => NULL,
           'rendered' => NULL,
         ),
-        'background_url' => NULL,
       ),
     ),
   );

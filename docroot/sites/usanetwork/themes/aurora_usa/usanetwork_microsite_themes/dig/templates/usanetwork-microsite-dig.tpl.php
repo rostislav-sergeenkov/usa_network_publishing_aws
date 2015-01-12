@@ -25,11 +25,13 @@
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
-          <li>
-            <div id="left-nav-logo"></div>
-            <?php if (!empty($tune_in)): ?>
-              <div id="left-nav-tunein"><?php print $tune_in; ?></div>
-            <?php endif; ?>
+          <li id="nav-home" data-menuanchor="home">
+            <a href="#home">
+              <div id="left-nav-logo"></div>
+              <?php if (!empty($tune_in)): ?>
+                <div id="left-nav-tunein"><?php print $tune_in; ?></div>
+              <?php endif; ?>
+            </a>
             <div id="left-nav-social" class="clearfix">
               <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
               <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>

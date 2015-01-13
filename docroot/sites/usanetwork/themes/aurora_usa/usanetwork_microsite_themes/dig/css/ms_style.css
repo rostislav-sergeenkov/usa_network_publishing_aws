@@ -572,7 +572,7 @@ you can use the generic selector below, but it's slower:
 #microsite .carousel li {
   margin-right: 5px;
 }
-#microsite .carousel li.carousel-item {
+#microsite .carousel li {
   padding: 0;
   margin: 0 15px 0 0;
 }
@@ -921,6 +921,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
+/*microsite carousel*/
+/*.usa-microsite-featured {*/
+  /*margin: 0 auto;*/
+  /*width: 930px;*/
+/*}*/
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
+  margin: 0 -7px;
+  height: auto;
+}
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.disabled {
+  visibility: hidden;
+}
+#microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item,
+#microsite .usa-microsite-featured .microsite-carousel-processed li.carousel-item {
+  float: left;
+  margin: 0 5px;
+  height: 250px;
+  width: 300px;
+}
 
 /* media breakpoints*/
 @media (min-width: 1601px) {
@@ -928,7 +947,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 506px;
     width: 1245px;
   }
-}
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;

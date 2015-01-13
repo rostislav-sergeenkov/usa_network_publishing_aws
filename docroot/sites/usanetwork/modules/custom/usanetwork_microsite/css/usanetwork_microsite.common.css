@@ -1,0 +1,21 @@
+#visible {
+  display: block;
+}
+#hidden-prev,
+#hidden-next,
+#microsite .hidden-section {
+  display: none;
+}
+#microsite .section-info {
+  /*display: none !important;*/
+}
+#activeContent > a[name] {
+  height: 130px;
+  display: block;
+}
+
+/* Microsite admin edit page */
+#field-ms-section-values > tr {
+  border: 2px solid black;
+  margin-bottom: 20px;
+}

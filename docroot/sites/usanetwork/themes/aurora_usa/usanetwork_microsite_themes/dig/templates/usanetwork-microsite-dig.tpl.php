@@ -25,7 +25,7 @@
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
-          <li id="nav-home" data-menuanchor="home">
+          <li id="nav-home" class="internal" data-menuanchor="home">
             <a href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
               <?php if (!empty($tune_in)): ?>
@@ -41,7 +41,7 @@
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
-                <li id="nav-<?php print $section['type']; ?>" data-menuanchor="<?php print $section['type']; ?>">
+                <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
                   <?php print $section['link']; ?>
                 </li>
               <?php endif; ?>
@@ -52,9 +52,9 @@
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external">Tour Israel
             <ul>
-              <li>Link 1</li>
-              <li>Link 2</li>
-              <li>Link 3</li>
+              <li><a href="http://testlink1.com" target="_blank">Link 1</a></li>
+              <li><a href="http://testlink2.com" target="_blank">Link 2</a></li>
+              <li><a href="http://testlink3.com" target="_blank">Link 3</a></li>
             </ul>
           </li>
           <li class="separator last">....</li>

@@ -885,3 +885,13 @@ function usanetwork_core_update_7151() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * Enable usanetwork_microsite module
+ */
+function usanetwork_core_update_7152() {
+  $modules_en = array(
+    'usanetwork_microsite',
+  );
+  module_enable($modules_en);
+}

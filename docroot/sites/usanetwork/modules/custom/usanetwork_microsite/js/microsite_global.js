@@ -25,7 +25,14 @@
   Drupal.behaviors.microsite_scroll = {
     attach: function (context, settings) {
 
+
+
       // set defaults
+      // @TODO: If we put the following Dig default variables in a js file in
+      // the dig theme directory
+      // (ex: usanetwork_microsite_themes/dig/js/microsite_config.js),
+      // can we be sure they'd load before this javascript file? Or should we
+      // declare these variables as part of the Drupal.settings object?
       var siteName = 'Dig', // @TODO: Pull this from the database
           basePath = '/dig', // @TODO: Pull this from database or generate this from a database field (title?)
           basePageName = siteName + ' | USA Network';
@@ -61,7 +68,7 @@
           activeSection = 'home';
           activeItem = '';
         }
-        usa_debug('parseUrl()\nactiveSection: ' + activeSection + '\nactiveItem: ' + activeItem);
+
         return { 'section' : activeSection, 'item' : activeItem };
       }
 
@@ -90,13 +97,15 @@
 				  pageName = itemTitle + ' | ' + pageName;
 				  usa_pageTitleFinal += ' : ' + itemTitle;
 				}
-				s.pageName = usa_pageTitleFinal;
 				$('title').text(pageName);
+				s.pageName = usa_pageTitleFinal;
+        //s.prop5=prop5; s.prop3=prop3;
+        void(s.t()); // omniture update
 usa_debug('setOmnitureData(' + anchor + ')\nusa_pageTitleFinal: ' + usa_pageTitleFinal + '\ns.pageName: ' + s.pageName);
 			}
 
 
-			setOmnitureData();
+//			setOmnitureData();
 
 
 			$('#sections').fullpage({
@@ -143,7 +152,15 @@ usa_debug('setOmnitureData(' + anchor + ')\nusa_pageTitleFinal: ' + usa_pageTitl
 				}
 			});
 
-			$('#left-nav-links-list li a').click(function(e) {
+      // initialize left nav hover to display subnav
+      $('#left-nav-links-list li').hover(function(){
+        $(this).addClass('hover');
+      }, function(){
+        $(this).removeClass('hover');
+      });
+
+      // initialize left nav clicks
+			$('#left-nav-links-list li.internal a').click(function(e) {
 				e.preventDefault();
 
 				var anchor = $(this).parent().data('menuanchor'),
@@ -153,6 +170,9 @@ usa_debug('setOmnitureData(' + anchor + ')\nusa_pageTitleFinal: ' + usa_pageTitl
 //				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
 			});
+
+
+
     }
   }
 })(jQuery);

@@ -333,6 +333,49 @@ function usanetwork_microsite_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_ms_videos'
+  $field_bases['field_ms_videos'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ms_videos',
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'target_id' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'mpx_video_1' => 'mpx_video_1',
+        ),
+      ),
+      'target_type' => 'file',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_quotation'
   $field_bases['field_quotation'] = array(
     'active' => 1,

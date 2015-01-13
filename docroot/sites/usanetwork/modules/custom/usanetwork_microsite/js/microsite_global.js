@@ -26,13 +26,37 @@
 	Drupal.behaviors.microsite_scroll= {
 	  attach: function (context, settings) {
 
+			// write functions here //
+			// for example
+
+			function myFunction(){
+				$('title').text('My title');
+			}
+
+			// finish //
+
+
+			// if you want call function early //
+
+			myFunction();
+
+			// finish //
+
+
 			$('#sections').fullpage({
 				scrollOverflow: true,
 				scrollingSpeed: 500,
 				onLeave: function (index, nextIndex, direction) {
+
+					//each time when change section, will be change page title//
+
+					myFunction();
+
+					// finish //
+
 					var menu_items = $('#left-nav-links-list li');
 
-					var sections = $('.section'),
+					var sections = $('section'),
 						leaveSection = $(sections[index - 1]),
 						nextSection = $(sections[nextIndex - 1]);
 

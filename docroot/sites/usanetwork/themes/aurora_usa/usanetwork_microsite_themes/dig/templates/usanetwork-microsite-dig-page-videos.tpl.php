@@ -11,9 +11,9 @@
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
   <div class="full-pane">
-    <?php if (!empty($in_player)):  ?>
-      <?php print $in_player; ?>
-    <?php endif; ?>
+    <div class="video-container">
+
+    </div>
     <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">
       <div class="content">

@@ -921,6 +921,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
+/*microsite carousel*/
+.usa-microsite-featured {
+  margin: 0 auto;
+  max-width: 1245px;
+}
+
 
 /* media breakpoints*/
 @media (min-width: 1601px) {

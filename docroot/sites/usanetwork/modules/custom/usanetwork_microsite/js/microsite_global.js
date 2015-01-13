@@ -20,39 +20,89 @@
  */
 
 (function ($) {
+  var urlPath = window.location.pathname;
 
-	var urlPath = window.location.pathname;
+  Drupal.behaviors.microsite_scroll = {
+    attach: function (context, settings) {
 
-	Drupal.behaviors.microsite_scroll= {
-	  attach: function (context, settings) {
+      // set defaults
+      var siteName = 'Dig', // @TODO: Pull this from the database
+          basePath = '/dig', // @TODO: Pull this from database or generate this from a database field (title?)
+          basePageName = siteName + ' | USA Network';
+          activeSection = 'home',
+          activeItem = '';
 
-			// write functions here //
-			// for example
+      // usa_debug
+      var hostname = window.location.hostname,
+          usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
+      function usa_debug(msg, obj) {
+        if (usa_debugFlag && typeof console != 'undefined') {
+          console.log(msg);
+          if (typeof obj != 'undefined') {
+            console.log(obj);
+          }
+        }
+      }
 
-			function myFunction(){
-				$('title').text('My title');
+      function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      }
+
+      // parseUrl
+      function parseUrl() {
+        urlPath = window.location.pathname;
+        var sectionLocation = urlPath.replace(basePath, '');
+        if (sectionLocation != '') {
+          var parse = sectionLocation.split('/');
+          activeSection = parse[1];
+          activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+        }
+        else {
+          activeSection = 'home';
+          activeItem = '';
+        }
+        usa_debug('parseUrl()\nactiveSection: ' + activeSection + '\nactiveItem: ' + activeItem);
+        return { 'section' : activeSection, 'item' : activeItem };
+      }
+
+      // getItemTitle
+      // item = the item info from the url pathname
+      // @TODO: work out how to get the item title based on the url
+      function getItemTitle(item) {
+        return '';
+      }
+
+      // setOmnitureData
+			function setOmnitureData(anchor){
+				var anchor = anchor || null,
+				    itemTitle = '';
+				if (!anchor) {
+				  var sectionData = parseUrl();
+				  anchor = sectionData['section'];
+				  if (sectionData['item'] != '') itemTitle = getItemTitle(sectionData['item']);
+				}
+				var sectionTitle = toTitleCase(anchor),
+				    pageName = basePageName;
+				usa_pageTitleFinal = siteName;
+				pageName = sectionTitle + ' | ' + pageName;
+				usa_pageTitleFinal += ' : ' + sectionTitle;
+				if (itemTitle != '') {
+				  pageName = itemTitle + ' | ' + pageName;
+				  usa_pageTitleFinal += ' : ' + itemTitle;
+				}
+				s.pageName = usa_pageTitleFinal;
+				$('title').text(pageName);
+usa_debug('setOmnitureData(' + anchor + ')\nusa_pageTitleFinal: ' + usa_pageTitleFinal + '\ns.pageName: ' + s.pageName);
 			}
 
-			// finish //
 
-
-			// if you want call function early //
-
-			myFunction();
-
-			// finish //
+			setOmnitureData();
 
 
 			$('#sections').fullpage({
 				scrollOverflow: true,
 				scrollingSpeed: 500,
 				onLeave: function (index, nextIndex, direction) {
-
-					//each time when change section, will be change page title//
-
-					myFunction();
-
-					// finish //
 
 					var menu_items = $('#left-nav-links-list li');
 
@@ -61,8 +111,9 @@
 						nextSection = $(sections[nextIndex - 1]);
 
 					var anchor = $(menu_items[nextIndex - 1]).data('menuanchor'),
-						anchorFull = urlPath + '/' + anchor;
+						anchorFull = basePath + '/' + anchor;
 
+					setOmnitureData(anchor);
 
 					menu_items.removeClass('active');
 					$(menu_items[nextIndex - 1]).addClass('active');
@@ -93,19 +144,17 @@
 			});
 
 			$('#left-nav-links-list li a').click(function(e) {
-				var anchor = $(this).parent().data('menuanchor'),
-					anchorFull = urlPath + '/' + anchor;
+				e.preventDefault();
 
-					console.log(urlPath);
+				var anchor = $(this).parent().data('menuanchor'),
+					anchorFull = basePath + '/' + anchor;
 
 				$.fn.fullpage.moveTo($(this).data('menuitem'));
-				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+//				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
-				e.preventDefault();
 			});
-
-		}
-	}
+    }
+  }
 })(jQuery);
 
 // Global microsite functions

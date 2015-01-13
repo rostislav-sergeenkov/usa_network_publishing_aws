@@ -21,15 +21,29 @@
 
 (function ($) {
 
+	var urlPath = window.location.pathname;
+
 	Drupal.behaviors.microsite_scroll= {
 	  attach: function (context, settings) {
 
 			$('#sections').fullpage({
-				anchors: ['home', 'videos', 'about', 'galleries'],
-				menu: '#left-nav-links-list',
 				scrollOverflow: true,
 				scrollingSpeed: 500,
 				onLeave: function (index, nextIndex, direction) {
+					var menu_items = $('#left-nav-links-list li');
+
+					var sections = $('.section'),
+						leaveSection = $(sections[index - 1]),
+						nextSection = $(sections[nextIndex - 1]);
+
+					var anchor = $(menu_items[nextIndex - 1]).data('menuanchor'),
+						anchorFull = urlPath + '/' + anchor;
+
+
+					menu_items.removeClass('active');
+					$(menu_items[nextIndex - 1]).addClass('active');
+
+					history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
 					if(index == 1){
 						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
@@ -39,12 +53,7 @@
 						$('#left-nav-inner').animate({'top': '-130px'}, 500);
 					}
 
-
 					if (Math.abs(index - nextIndex) > 1) {
-						var sections = $('section'),
-							leaveSection = $(sections[index - 1]),
-							nextSection = $(sections[nextIndex - 1]);
-
 						$.fn.fullpage.setScrollingSpeed(0);
 
 						leaveSection.css('margin-top', '0');
@@ -57,6 +66,18 @@
 						$.fn.fullpage.setScrollingSpeed(1000);
 					}
 				}
+			});
+
+			$('#left-nav-links-list li a').click(function(e) {
+				var anchor = $(this).parent().data('menuanchor'),
+					anchorFull = urlPath + '/' + anchor;
+
+					console.log(urlPath);
+
+				$.fn.fullpage.moveTo($(this).data('menuitem'));
+				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+
+				e.preventDefault();
 			});
 
 		}

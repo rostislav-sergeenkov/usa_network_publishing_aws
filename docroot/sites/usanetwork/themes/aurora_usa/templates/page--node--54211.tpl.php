@@ -1,4 +1,8 @@
 <?php
+/**
+ * DIG MICROSITE PAGE TEMPLATE
+ * BE SURE TO NAME THIS FILE WITH THE CORRECT NODE ID FOR THE MICROSITE!!
+ */
 
 /**
  * @file
@@ -72,7 +76,10 @@
  * @see template_preprocess_page()
  * @see template_process()
  */
+//<h2>usanetwork/themes/aurora_usa/templates/page--node--54202.tpl.php</h2>
 ?>
+
+
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header role="banner" id="page-header">
     <span id="site-name">
@@ -91,8 +98,8 @@
     </div>
   </header>
 
-  <?php if (!isset($page['no_utilities'])): ?>
   <!-- TOP TITLE AND TOOLS BAR -->
+  <?php if (false): // DO NOT DISPLAY THE UTILITIES BAR (TOP BAR) HERE!! ?>
   <div id="utilities" class="clearfix <?php print $util_classes; ?>">
     <div id="utilities-wrap" class="clearfix">
     <?php if ($page['search']) : ?>
@@ -109,7 +116,7 @@
       </div>
     <?php endif; ?>
     <?php if ($page['search']): ?><div id="head-search"><?php print render($page['search']); ?></div><?php endif; ?>
-    </div>
+  </div>
   </div>
   <?php endif; ?>
 <?php endif; ?>
@@ -117,7 +124,7 @@
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
   <!-- leaderboard ad -->
-    <?php if (!isset($page['no_leaderboard']) && $page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
   <!-- /leaderboard -->
 
   <!-- MAIN CONTENT -->
@@ -169,11 +176,9 @@
   </aside>
   <!-- /PERSONALIZATION -->
 
-  <?php if (!isset($page['no_footer'])): ?>
   <!-- FOOTER -->
   <footer id="footer" role="contentinfo" class="clearfix">
     <?php print render($page['footer']); ?>
   </footer>
   <!-- /FOOTER -->
-  <?php endif; ?>
 </div>

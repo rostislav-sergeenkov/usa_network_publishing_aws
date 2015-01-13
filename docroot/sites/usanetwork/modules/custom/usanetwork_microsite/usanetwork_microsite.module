@@ -847,3 +847,40 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
 
   return $node;
 }
+
+function usanetwork_microsite_preprocess_html(&$vars) {
+  $head_title = NULL;
+  $node = menu_get_object();
+  $nodeId = $node->nid;
+  $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
+  $path = str_replace('node/' . $nodeId . '/microsite', '', $_GET['q']);
+  switch ($path) {
+    case '':
+    case '/':
+      $head_title = t($title . ' | USA Network');
+      break;
+    case '/home':
+      $head_title = t('Home | ' . $title . ' | USA Network');
+      break;
+    case '/videos':
+      $head_title = t('Videos | ' . $title . ' | USA Network');
+      break;
+    case '/galleries':
+      $head_title = t('Galleries | ' . $title . ' | USA Network');
+      break;
+    case '/about':
+      $head_title = t('About | ' . $title . ' | USA Network');
+      break;
+    case '/games':
+      $head_title = t('Games | ' . $title . ' | USA Network');
+      break;
+    default:
+      $head_title = t($title . ' | USA Network');
+      break;
+  }
+
+  // If there are head titles print the new ones
+  if (!empty($head_title)) {
+    $vars['head_title'] = $head_title;
+  }
+}

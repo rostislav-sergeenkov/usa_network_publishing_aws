@@ -70,7 +70,7 @@ function usanetwork_mpx_video_full_episode_load_form() {
     '#title' => t('Video file'),
     '#description' => t('Type the first words of the title of the content that you want to insert.'),
     '#type' => 'textfield',
-    '#autocomplete_path' => 'usanetwork_entity_insert/insert/video/autocomplete',
+    '#autocomplete_path' => 'usanetwork_mpx_video/full_video/autocomplete',
   );
 
   $form['test'] = array(

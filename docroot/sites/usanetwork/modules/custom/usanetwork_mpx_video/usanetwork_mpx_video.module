@@ -42,7 +42,15 @@ function usanetwork_mpx_video_menu() {
     'access arguments' => array('access content'),
   );
 
-  // admin area
+  // Full video autocompliter.
+  $items['usanetwork_mpx_video/full_video/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_mpx_video_full_video_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+ // admin area
   $items['admin/usanetwork/video'] = array(
     'title' => 'Video settings',
     'page callback' => 'drupal_get_form',
@@ -697,6 +705,33 @@ function _usanetwork_mpx_video_shows_full_episodes() {
   }
 
   return $output;
+}
+
+/**
+ * Full video autocompliter callback.
+ */
+function usanetwork_mpx_video_full_video_autocomplete($title = '') {
+  $query = db_select('file_managed', 'f');
+  $query->fields('f',array('fid','filename'));
+  $query->condition('f.filename', '%' . $title . '%' ,'LIKE');
+  $query->condition('f.type', 'mpx_video_2' ,'=');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->filename = check_plain($row->filename);
+      $key = $row->filename . ' [file:' . $row->fid . ']';
+      $show = _usanetwork_entity_insert_get_show_name('file', $row->fid);
+      if (!empty($show)) {
+        $output[$key] = $show->title . ': ' . $row->filename;
+      }
+      else {
+        $output[$key] = 'File: ' . $row->filename;
+      }
+    }
+  }
+  drupal_json_output($output);
 }
 
 /**

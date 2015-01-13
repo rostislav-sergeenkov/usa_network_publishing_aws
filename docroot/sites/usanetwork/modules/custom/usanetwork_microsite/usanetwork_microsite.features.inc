@@ -37,15 +37,6 @@ function usanetwork_microsite_field_default_field_bases_alter(&$data) {
 }
 
 /**
- * Implements hook_node_info_alter().
- */
-function usanetwork_microsite_node_info_alter(&$data) {
-  if (isset($data['usanetwork_microsite'])) {
-    $data['usanetwork_microsite']['description'] = 'Use existing content to create a "single page" microsite.'; /* WAS: 'Use existing content to create a "single page" microsite. Each section of the microsite can also open as it\'s own page with specific content loaded.' */
-  }
-}
-
-/**
  * Implements hook_node_info().
  */
 function usanetwork_microsite_node_info() {

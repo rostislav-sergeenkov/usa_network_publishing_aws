@@ -23,8 +23,5 @@ function usanetwork_microsite_features_override_default_overrides() {
   $overrides["field_base.field_media_gallery.settings|handler_settings|view"]["DELETED"] = TRUE;
   $overrides["field_base.field_person.cardinality"] = -1;
 
-  // Exported overrides for: node
-  $overrides["node.usanetwork_microsite.description"] = 'Use existing content to create a "single page" microsite.';
-
  return $overrides;
 }

@@ -26,7 +26,7 @@
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
           <li id="nav-home" data-menuanchor="home">
-            <a href="#home">
+            <a href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
               <?php if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
@@ -38,8 +38,6 @@
               <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
             </div>
           </li>
-
-<!--      <li id="nav-home" data-menuanchor="home"><a href="#home">Home</a></li>-->
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
@@ -70,7 +68,7 @@
   <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content'])): ?>
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+        <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
 <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
           <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
             <?php print $section['content']; ?>

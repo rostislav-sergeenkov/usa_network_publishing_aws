@@ -649,6 +649,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $pages = array();
     $games = array();
     // Walk through connected sections
+    $i = 1;
     foreach ($node_wrapper->field_ms_section as $section_wrapper) {
       // Fill base section values
       $section_base_variables = _usanetwork_microsite_theme_get_section_base_variables($section_wrapper);
@@ -660,9 +661,10 @@ function _usanetwork_microsite_get_theme_variables($node) {
       $pages[$section_base_variables['type']] = array(
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
-        'link' => l($section_base_variables['title'], '#' . $section_base_variables['type'], array('external' => TRUE)),
+        'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i))),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
+      $i++;
 
       if ($section_base_variables['type'] == 'games') {
         foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {

@@ -280,6 +280,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
     $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
+    _usanetwork_microsite_add_promo_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
@@ -296,6 +297,22 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   return $theme_variables;
 }
 
+function _usanetwork_microsite_add_promo_data_to_js($a_spot_field) {
+  $show = 'aspot';
+  foreach ($a_spot_field as $field_wrapper) {
+    $mp4_url = $field_wrapper->field_mp4_video_url->value();
+    $webm_url = $field_wrapper->field_webm_video_url->value();
+    if(!empty($mp4_url) && !empty($webm_url)) {
+      $aspot_settings = array(
+        'show' => $show,
+        'mp4_url' => $mp4_url,
+        'webm_url' => $webm_url,
+      );
+      drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
+      break;
+    }
+  }
+}
 /**
  * Renders About page.
  */

@@ -27,6 +27,9 @@
       <?php if (!empty($gallery['title'])): ?>
         <h2><?php print $gallery['title']; ?></h2>
       <?php endif; ?>
+      <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
+        <div id="gigya-share"></div>
+      </div>
       <?php if (!empty($gallery['description'])): ?>
         <div class="description">
           <?php print $gallery['description']; ?>
@@ -48,7 +51,7 @@
         <?php print $character_galleries; ?>
       </div>
     <?php endif; ?>
-    <div class="ad300x250"><?php print render($ad300x250); ?></div>
+    <div class="ad300x250"></div>
   </div>
 <?php if (!empty($background_url)): ?>
 </div>

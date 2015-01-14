@@ -3,12 +3,9 @@
   Drupal.behaviors.micrositeAspot = {
     attach: function (context, settings) {
 
-//      function initMicrositeAspot() {
       $('body').once('micrositeFlexslider', function () {
         console.log("flexslider_a-spot");
         $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');
-//usa_debug('slideshow_selector: ');
-//usa_debug($slideshow_selector);
         $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
         $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
         $touch = true;
@@ -25,13 +22,11 @@
             pauseOnHover: true,
             animation: 'slide',
             controlNav: true,
-            directionNav: (!Modernizr.touch),
+            directionNav: false,
             touch: $touch
           });
         $showSlideshow = $('#show-main-slider');
       });
-//      }
-
 
       // A-SPOT VIDEOS
       var isIE8 = 0;
@@ -79,17 +74,14 @@
             aspotVideoBeingShown = show;
           }
         }
-        usa_debug('aspotVideoEnabled: ' + aspotVideoEnabled + '\naspotVideoBeingShown: ' + aspotVideoBeingShown + '\naspotVideoMp4VideoUrl: ' + aspotVideoMp4VideoUrl + '\naspotVideoWebmVideoUrl: ' + aspotVideoWebmVideoUrl);
       }
       if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
 
         var showAspotVideoPauseFlexslider = function () {
-          usa_debug('showAspotVideoPauseFlexslider()');
           if (typeof $showSlideshow.flexslider === 'function') {
             // if we don't put a timeout here, the flexslider control
             // nav ("the dots") never appear
             setTimeout(function () {
-              usa_debug("pausing flexslider");
               $showSlideshow.flexslider("pause");
               showAspotVideoResumeFlexsliderPlay();
             }, 1000);
@@ -100,9 +92,7 @@
         }
 
         var showAspotVideoResumeFlexsliderPlay = function () {
-          usa_debug("showAspotVideoResumeFlexsliderPlay()");
           $('#aspot-video').bind('ended', function () {
-            usa_debug("video ended");
             $('#main-slider').css('opacity', 1);
             $('#aspot-video-container').animate({'opacity': 0}, 400, function () {
               $showSlideshow.flexslider('play');
@@ -113,7 +103,6 @@
 
         var showAspotVideoDone = 0;
         var showAspotVideoShow = function () {
-          usa_debug('showAspotVideoShow()');
           if (!showAspotVideoDone) {
             var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
             if (aspotVideoAgent.indexOf('msie') != -1) {
@@ -130,10 +119,12 @@
         }
 
         $(document).ready(function () {
-//          initMicrositeAspot();
 //          $('#activeContent #main-slider').css('opacity', 0);
-          showAspotVideoShow();
-          showAspotVideoPauseFlexslider();
+         // showAspotVideoShow();
+         // showAspotVideoPauseFlexslider();
+
+          $('#aspot-video-container').css('display', 'none');
+
         });
       } // A-SPOT VIDEOS
     }

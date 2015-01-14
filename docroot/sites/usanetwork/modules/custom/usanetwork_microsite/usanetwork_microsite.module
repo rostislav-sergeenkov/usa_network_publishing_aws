@@ -280,6 +280,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
     $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
+    _usanetwork_microsite_add_promo_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
@@ -296,6 +297,22 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   return $theme_variables;
 }
 
+function _usanetwork_microsite_add_promo_data_to_js($a_spot_field) {
+  $show = 'aspot';
+  foreach ($a_spot_field as $field_wrapper) {
+    $mp4_url = $field_wrapper->field_mp4_video_url->value();
+    $webm_url = $field_wrapper->field_webm_video_url->value();
+    if(!empty($mp4_url) && !empty($webm_url)) {
+      $aspot_settings = array(
+        'show' => $show,
+        'mp4_url' => $mp4_url,
+        'webm_url' => $webm_url,
+      );
+      drupal_add_js(array('aspotSettings' => $aspot_settings), 'setting');
+      break;
+    }
+  }
+}
 /**
  * Renders About page.
  */
@@ -632,6 +649,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $pages = array();
     $games = array();
     // Walk through connected sections
+    $i = 1;
     foreach ($node_wrapper->field_ms_section as $section_wrapper) {
       // Fill base section values
       $section_base_variables = _usanetwork_microsite_theme_get_section_base_variables($section_wrapper);
@@ -643,9 +661,10 @@ function _usanetwork_microsite_get_theme_variables($node) {
       $pages[$section_base_variables['type']] = array(
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
-        'link' => l($section_base_variables['title'], '#' . $section_base_variables['type'], array('external' => TRUE)),
+        'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i))),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
+      $i++;
 
       if ($section_base_variables['type'] == 'games') {
         foreach ($section_wrapper->field_ms_catchall_page as $games_page_wrapper) {
@@ -880,4 +899,46 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
   }
 
   return $node;
+}
+
+/**
+ * Implements hook_preprocess_html
+ * The following is needed for robots that crawl the page,
+ * like the Facebook robots
+ */
+function usanetwork_microsite_preprocess_html(&$vars) {
+  $head_title = NULL;
+  $node = menu_get_object();
+  $nodeId = $node->nid;
+  $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
+  $path = str_replace('node/' . $nodeId . '/microsite', '', $_GET['q']);
+  switch ($path) {
+    case '':
+    case '/':
+      $head_title = t($title . ' | USA Network');
+      break;
+    case '/home':
+      $head_title = t('Home | ' . $title . ' | USA Network');
+      break;
+    case '/videos':
+      $head_title = t('Videos | ' . $title . ' | USA Network');
+      break;
+    case '/galleries':
+      $head_title = t('Galleries | ' . $title . ' | USA Network');
+      break;
+    case '/about':
+      $head_title = t('About | ' . $title . ' | USA Network');
+      break;
+    case '/games':
+      $head_title = t('Games | ' . $title . ' | USA Network');
+      break;
+    default:
+      $head_title = t($title . ' | USA Network');
+      break;
+  }
+
+  // If there are head titles print the new ones
+  if (!empty($head_title)) {
+    $vars['head_title'] = $head_title;
+  }
 }

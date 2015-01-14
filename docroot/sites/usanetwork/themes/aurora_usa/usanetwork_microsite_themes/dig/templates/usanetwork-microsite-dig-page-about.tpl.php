@@ -47,7 +47,7 @@
         <?php print $description ?>
       <?php endif; ?>
     </div>
-    <div class="ad300x250"><?php print render($ad300x250); ?></div>
+    <div class="ad300x250"></div>
   </div>
   <?php endif; ?>
 <?php if (!empty($background_url)): ?>

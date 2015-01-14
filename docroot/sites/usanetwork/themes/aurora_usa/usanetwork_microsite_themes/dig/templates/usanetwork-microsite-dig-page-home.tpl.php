@@ -39,27 +39,19 @@
         <?php endif; ?>
 
         <?php if (!empty($featured)): ?>
-        <div class="inner-wrapper panel-row promo-ads-panel expandable-container show-toggle-processed">
-          <div class="expandable-content" style="overflow: hidden;">
-            <div class="panel-panel panel-two panel-col1">
-              <div class="panel-pane pane-entity-field pane-node-field-usa-tv-promo pane-expandable">
-                <div class="pane-content">
-                  <ul class="field field-name-field-usa-tv-promo field-type-entityreference field-label-hidden first-promo-large">
-                  <?php foreach ($featured as $f_key => $feature): ?>
-                    <?php if ($f_key == 1): ?><li class="ad300x250"></li><?php endif; ?>
-                    <li>
-                      <?php print $feature; ?>
-                    </li>
-                  <?php endforeach; ?>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="expandable-toggle-wrap omniture-tracking-processed" style="display: none;">
-            <div class="expandable-toggle">
-              <div class="more">more</div>
-              <div class="less">close</div>
+        <div class="usa-microsite-featured clearfix">
+          <div class="carousel clearfix">
+            <div class="carousel-viewport">
+              <ul>
+                <?php foreach ($featured as $f_key => $feature): ?>
+                  <?php if ($f_key == 1): ?>
+                  <li class="ad300x250 carousel-item"></li>
+                  <?php endif; ?>
+                  <li class="carousel-item">
+                    <?php print $feature; ?>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
             </div>
           </div>
         </div>

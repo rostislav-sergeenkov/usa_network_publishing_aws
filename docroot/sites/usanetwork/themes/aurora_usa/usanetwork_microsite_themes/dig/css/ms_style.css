@@ -572,7 +572,7 @@ you can use the generic selector below, but it's slower:
 #microsite .carousel li {
   margin-right: 5px;
 }
-#microsite .carousel li.carousel-item {
+#microsite .carousel li {
   padding: 0;
   margin: 0 15px 0 0;
 }
@@ -696,8 +696,11 @@ you can use the generic selector below, but it's slower:
   -o-transition: top 1s ease-out 0.5s;
   transition: top 1s ease-out 0.5s;
 }
-.page-node-microsite #left-nav #left-nav-inner #nav-home > a{
+.page-node-microsite #left-nav #left-nav-inner #nav-home > a {
   display: block;
+}
+.page-node-microsite #left-nav #left-nav-inner #nav-home > a:hover {
+  color: #FFF;
 }
 /*.page-node-microsite #left-nav #left-nav-inner.hide #left-nav-logo,*/
 /*.page-node-microsite #left-nav #left-nav-inner.hide #left-nav-tunein{*/
@@ -736,15 +739,12 @@ you can use the generic selector below, but it's slower:
   outline: none;
 }
 .page-node-microsite #left-nav #left-nav-social a.instagram {
-  /* @include sprite-background(insta-icon); */
   background-image: url("../images/icons/icon_instagram.png");
 }
 .page-node-microsite #left-nav #left-nav-social a.twitter {
-  /* @include sprite-background(twitter-icon); */
   background-image: url("../images/icons/icon_twitter.png");
 }
 .page-node-microsite #left-nav #left-nav-social a.facebook {
-  /* @include sprite-background(fb-icon); */
   background-image: url("../images/icons/icon_fb.png");
 }
 .page-node-microsite #left-nav #left-nav-social a:hover {
@@ -764,6 +764,7 @@ you can use the generic selector below, but it's slower:
   line-height: 20px;
   letter-spacing: 1px;
   padding-bottom: 20px;
+  outline: none;
 }
 .page-node-microsite #left-nav #left-nav-links li.external,
 .page-node-microsite #left-nav #left-nav-links .external a {
@@ -921,6 +922,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
+/*microsite carousel*/
+/*.usa-microsite-featured {*/
+  /*margin: 0 auto;*/
+  /*width: 930px;*/
+/*}*/
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
+  margin: 0 -7px;
+  height: auto;
+}
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.disabled {
+  visibility: hidden;
+}
+#microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item,
+#microsite .usa-microsite-featured .microsite-carousel-processed li.carousel-item {
+  float: left;
+  margin: 0 5px;
+  height: 250px;
+  width: 300px;
+}
 
 /* media breakpoints*/
 @media (min-width: 1601px) {
@@ -928,7 +948,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 506px;
     width: 1245px;
   }
-}
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;

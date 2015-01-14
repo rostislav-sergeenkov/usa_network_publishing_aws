@@ -20,16 +20,148 @@
  */
 
 (function ($) {
+  var urlPath = window.location.pathname;
 
-	Drupal.behaviors.microsite_scroll= {
-	  attach: function (context, settings) {
+  Drupal.behaviors.microsite_scroll = {
+    attach: function (context, settings) {
+
+
+
+      // set defaults
+      // @TODO: If we put the following Dig default variables in a js file in
+      // the dig theme directory
+      // (ex: usanetwork_microsite_themes/dig/js/microsite_config.js),
+      // can we be sure they'd load before this javascript file? Or should we
+      // declare these variables as part of the Drupal.settings object?
+      var siteName = 'Dig', // @TODO: Pull this from the database
+          basePath = '/dig', // @TODO: Pull this from database or generate this from a database field (title?)
+          shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
+          shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
+          shareBarTitle = 'Dig Gallery Testing Sharebar Title',
+          basePageName = siteName + ' | USA Network';
+          activeSection = 'home',
+          activeItem = '';
+
+      // usa_debug
+      var hostname = window.location.hostname,
+          usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
+      function usa_debug(msg, obj) {
+        if (usa_debugFlag && typeof console != 'undefined') {
+          console.log(msg);
+          if (typeof obj != 'undefined') {
+            console.log(obj);
+          }
+        }
+      }
+
+
+      // SHARE BAR
+      yepnope.injectJs("/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js", function () {
+        yepnope.injectCss("/sites/usanetwork/modules/contrib/gigya/css/gigya.css", function () {
+
+          var url = window.location.href;
+
+          sharebar = new Object();
+          sharebar.gigyaSharebar = {
+            containerID: "gigya-share",
+            iconsOnly: true,
+            layout: "horizontal",
+            shareButtons: "facebook, twitter, tumblr, pinterest, share",
+            shortURLs: "never",
+            showCounts: "none"
+          }
+          sharebar.gigyaSharebar.ua = {
+            description: shareBarDescription,
+            imageBhev: "url",
+            imageUrl: shareBarImageUrl,
+            linkBack: url,
+            title: shareBarTitle
+          }
+          if (Drupal.gigya) {
+            Drupal.gigya.showSharebar(sharebar);
+          }
+
+        });
+      });
+
+
+      // toTitleCase
+      function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      }
+
+      // parseUrl
+      function parseUrl() {
+        urlPath = window.location.pathname;
+        var sectionLocation = urlPath.replace(basePath, '');
+        if (sectionLocation != '') {
+          var parse = sectionLocation.split('/');
+          activeSection = parse[1];
+          activeItem = (parse.hasOwnProperty(2)) ? parse[2] : '';
+        }
+        else {
+          activeSection = 'home';
+          activeItem = '';
+        }
+
+        return { 'section' : activeSection, 'item' : activeItem };
+      }
+
+      // getItemTitle
+      // item = the item info from the url pathname
+      // @TODO: work out how to get the item title based on the url
+      function getItemTitle(item) {
+        return '';
+      }
+
+      // setOmnitureData
+      function setOmnitureData(anchor){
+        var anchor = anchor || null,
+        itemTitle = '';
+        if (!anchor) {
+          var sectionData = parseUrl();
+          anchor = sectionData['section'];
+          if (sectionData['item'] != '') itemTitle = getItemTitle(sectionData['item']);
+        }
+        var sectionTitle = toTitleCase(anchor),
+        pageName = basePageName;
+        s.pageName = siteName;
+        pageName = sectionTitle + ' | ' + pageName;
+        s.pageName += ' : ' + sectionTitle;
+        if (itemTitle != '') {
+          pageName = itemTitle + ' | ' + pageName;
+          s.pageName += ' : ' + itemTitle;
+        }
+        $('title').text(pageName);
+        //s.prop5=prop5; s.prop3=prop3;
+        void(s.t()); // omniture update
+usa_debug('setOmnitureData(' + anchor + ')\ns.pageName: ' + s.pageName);
+      }
+
+
+//			setOmnitureData();
+
 
 			$('#sections').fullpage({
-				anchors: ['home', 'videos', 'about', 'galleries'],
-				menu: '#left-nav-links-list',
 				scrollOverflow: true,
 				scrollingSpeed: 500,
 				onLeave: function (index, nextIndex, direction) {
+
+					var menu_items = $('#left-nav-links-list li');
+
+					var sections = $('section'),
+						leaveSection = $(sections[index - 1]),
+						nextSection = $(sections[nextIndex - 1]);
+
+					var anchor = $(menu_items[nextIndex - 1]).data('menuanchor'),
+						anchorFull = basePath + '/' + anchor;
+
+					setOmnitureData(anchor);
+
+					menu_items.removeClass('active');
+					$(menu_items[nextIndex - 1]).addClass('active');
+
+					history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
 					if(index == 1){
 						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
@@ -39,12 +171,7 @@
 						$('#left-nav-inner').animate({'top': '-130px'}, 500);
 					}
 
-
 					if (Math.abs(index - nextIndex) > 1) {
-						var sections = $('section'),
-							leaveSection = $(sections[index - 1]),
-							nextSection = $(sections[nextIndex - 1]);
-
 						$.fn.fullpage.setScrollingSpeed(0);
 
 						leaveSection.css('margin-top', '0');
@@ -59,8 +186,29 @@
 				}
 			});
 
-		}
-	}
+      // initialize left nav hover to display subnav
+      $('#left-nav-links-list li').hover(function(){
+        $(this).addClass('hover');
+      }, function(){
+        $(this).removeClass('hover');
+      });
+
+      // initialize left nav clicks
+			$('#left-nav-links-list li.internal a').click(function(e) {
+
+				var anchor = $(this).parent().data('menuanchor'),
+					anchorFull = basePath + '/' + anchor;
+
+				$.fn.fullpage.moveTo($(this).data('menuitem'));
+//				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+
+				e.preventDefault();
+			});
+
+
+
+    }
+  }
 })(jQuery);
 
 // Global microsite functions

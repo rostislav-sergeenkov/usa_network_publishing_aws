@@ -349,6 +349,55 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_videos'
+  $field_instances['field_collection_item-field_ms_section-field_ms_videos'] = array(
+    'bundle' => 'field_ms_section',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 23,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_ms_videos',
+    'label' => 'Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_ms_section-field_person'
   $field_instances['field_collection_item-field_ms_section-field_person'] = array(
     'bundle' => 'field_ms_section',
@@ -1555,6 +1604,7 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Tumblr Page');
   t('Tune-in');
   t('Twitter page');
+  t('Video');
   t('slideshowSpeed');
 
   return $field_instances;

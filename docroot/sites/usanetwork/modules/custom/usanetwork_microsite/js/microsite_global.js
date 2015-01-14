@@ -35,6 +35,9 @@
       // declare these variables as part of the Drupal.settings object?
       var siteName = 'Dig', // @TODO: Pull this from the database
           basePath = '/dig', // @TODO: Pull this from database or generate this from a database field (title?)
+          shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
+          shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
+          shareBarTitle = 'Dig Gallery Testing Sharebar Title',
           basePageName = siteName + ' | USA Network';
           activeSection = 'home',
           activeItem = '';
@@ -68,11 +71,11 @@
             showCounts: "none"
           }
           sharebar.gigyaSharebar.ua = {
-            description: 'Here Litty Litty... 2048 Just Got Litt Up!', //should be changed
+            description: shareBarDescription,
             imageBhev: "url",
-            imageUrl: 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
+            imageUrl: shareBarImageUrl,
             linkBack: url,
-            title: 'Here Litty Litty... 2048 Just Got Litt Up!' //should be changed
+            title: shareBarTitle
           }
           if (Drupal.gigya) {
             Drupal.gigya.showSharebar(sharebar);

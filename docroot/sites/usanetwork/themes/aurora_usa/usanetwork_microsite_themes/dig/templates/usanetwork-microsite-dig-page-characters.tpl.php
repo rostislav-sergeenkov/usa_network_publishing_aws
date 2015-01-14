@@ -69,7 +69,7 @@
               <?php print $person['description']; ?>
             </div>
           <?php endif; ?>
-          <div class="ad300x250"><?php print render($ad300x250); ?></div>
+          <div class="ad300x250"></div>
         </div>
       </li>
     <?php endforeach; ?>

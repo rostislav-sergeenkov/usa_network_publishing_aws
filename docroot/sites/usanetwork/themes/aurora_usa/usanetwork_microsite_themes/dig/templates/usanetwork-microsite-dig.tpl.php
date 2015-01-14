@@ -78,8 +78,8 @@
           </section>
           <?php if (!empty($section['is_last'])): ?>
           <!-- FOOTER -->
-          <footer id="footer" role="contentinfo" class="clearfix">
-            <div class="region region-footer usa-showmenu-loaded">
+          <footer id="footer-microsite" role="contentinfo" class="clearfix">
+            <div class="region region-footer">
               <?php print $footer; ?>
             </div>
           </footer>

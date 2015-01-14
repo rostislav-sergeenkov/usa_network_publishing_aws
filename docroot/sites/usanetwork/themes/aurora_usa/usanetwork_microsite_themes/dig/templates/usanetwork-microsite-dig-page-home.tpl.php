@@ -37,7 +37,7 @@
           </div>
         </div>
         <?php endif; ?>
-
+        <div class="ad-mobile"></div>
         <?php if (!empty($featured)): ?>
         <div class="usa-microsite-featured clearfix">
           <div class="carousel clearfix">
@@ -45,7 +45,7 @@
               <ul>
                 <?php foreach ($featured as $f_key => $feature): ?>
                   <?php if ($f_key == 1): ?>
-                  <li class="ad300x250 carousel-item"></li>
+                  <li class="ad ad300x250 carousel-item"><div class="temp-item"></div></li>
                   <?php endif; ?>
                   <li class="carousel-item">
                     <?php print $feature; ?>

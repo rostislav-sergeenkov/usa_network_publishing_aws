@@ -41,9 +41,15 @@
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
-                <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
-                  <?php print $section['link']; ?>
-                </li>
+                <?php if ($section['type'] == $current_section): ?>
+                  <li id="nav-<?php print $section['type']; ?>" class="internal active" data-menuanchor="<?php print $section['type']; ?>">
+                    <?php print $section['link']; ?>
+                  </li>
+                <?php else: ?>
+                  <li id="nav-<?php print $section['type']; ?>" class="internal" data-menuanchor="<?php print $section['type']; ?>">
+                    <?php print $section['link']; ?>
+                  </li>
+                <?php endif; ?>
               <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
@@ -68,7 +74,11 @@
   <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content'])): ?>
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+        <?php if ($section['type'] == $current_section): ?>
+          <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
+        <?php else: ?>
+          <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+        <?php endif; ?>
 <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
           <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
             <?php print $section['content']; ?>

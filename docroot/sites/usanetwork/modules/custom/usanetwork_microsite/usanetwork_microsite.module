@@ -123,6 +123,11 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         }
       }
 
+      $microsites_settings = array(
+        'nid' => $node->nid,
+      );
+      drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
+
       return theme($theme_registry_name, $theme_variables);
     }
   }

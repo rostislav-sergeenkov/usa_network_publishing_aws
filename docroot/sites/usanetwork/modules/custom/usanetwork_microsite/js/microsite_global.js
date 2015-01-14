@@ -206,6 +206,57 @@ usa_debug('setOmnitureData(' + anchor + ')\ns.pageName: ' + s.pageName);
 				e.preventDefault();
 			});
 
+      //====================================================//
+      // AJAX request for video section
+      // ajax/get-video-in-player/[node] - for default video
+      // ajax/get-video-in-player/[node]/[fid]- for video
+
+      var currentNid = Drupal.settings.microsites_settings.nid,
+        defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
+        previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
+
+
+      //change src for player & stop auto play
+      function stopAutoPlay(){
+        var inactivePlayer = $('#video-container').find('iframe'),
+          inactivePlayerSrc = inactivePlayer.attr('src'),
+          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false');
+        // update video player src
+        inactivePlayer.attr('src', updatedPlayerSrc);
+      };
+
+      //ajax request
+      function getVideo(url){
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'html',
+          success: function (data) {
+            console.log('end ajax');
+            $('#video-container').html(data);
+            stopAutoPlay();
+          }
+        });
+      };
+
+      //start default player
+      getVideo(defaultUrl);
+
+
+      //change video on click to preview elements
+      previewItem.click(function(e){
+
+        e.preventDefault();
+
+        var url = defaultUrl + '/' + $(this).data('fid');
+        $(this).addClass('active');
+
+
+        getVideo(url);
+      });
+
+      // end AJAX request //
+
 
 
     }

@@ -11,7 +11,7 @@
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
   <div class="full-pane">
-    <div class="video-container">
+    <div id="video-container">
 
     </div>
     <?php if (!empty($videos)): ?>
@@ -25,7 +25,7 @@
                 <?php foreach ($videos as $v_key => $video): ?>
                   <?php if ($v_key == 2): ?><li class="ad300x250 views-row grid-item"></li><?php endif; ?>
                   <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
-                  <li class="views-row grid-item" data-video-url="<?php print $video['url']; ?>"fid="<?php print $video['fid']; ?>">
+                  <li class="views-row grid-item" data-video-url="<?php print $video['url']; ?>"data-fid="<?php print $video['fid']; ?>">
                     <?php print $video['rendered']; ?>
                   </li>
                   <?php endif; ?>

@@ -94,6 +94,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'rendered' => NULL,
           ),
         ),
+        'in_player' => NULL,
         'background_url' => NULL,
       ),
     ),

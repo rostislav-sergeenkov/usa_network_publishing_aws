@@ -681,13 +681,19 @@ function _usanetwork_microsite_get_theme_variables($node) {
 
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);
-
+    $theme_variables['footer'] = _usanetwork_microsite_get_footer();
     $theme_variables['sections'][$last_section_key]['is_last'] = TRUE;
   }
 
   $theme_variables['sections_navlinks'] = $navigation_links;
 
   return $theme_variables;
+}
+
+function _usanetwork_microsite_get_footer() {
+  $block_links = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_links');
+  $block_message = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_message');
+  return render($block_links['content']) . render($block_message['content']);
 }
 
 /**

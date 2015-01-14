@@ -145,6 +145,7 @@ usa_debug('setOmnitureData(' + anchor + ')\ns.pageName: ' + s.pageName);
 			$('#sections').fullpage({
 				scrollOverflow: true,
 				scrollingSpeed: 500,
+        //autoScrolling: false,
 				onLeave: function (index, nextIndex, direction) {
 
 					var menu_items = $('#left-nav-links-list li');

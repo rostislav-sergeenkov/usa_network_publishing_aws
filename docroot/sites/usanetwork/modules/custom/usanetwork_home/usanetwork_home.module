@@ -117,6 +117,7 @@ function usanetwork_home_preprocess_block(&$variables) {
     //carousel-promo
 
     if (!empty($homepage)) {
+      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/home-carousel.js', 'file');
       $nid = reset(array_keys($homepage['node']));
       if ($nid && $homepage = node_load($nid)) {
         if ($block->bid == 'usanetwork_home-usanetwork_home_promo_carousel') {

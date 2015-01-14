@@ -11,7 +11,7 @@
  * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
-<div class="ad-leaderboard"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>
 <?php if (!empty($background_url)): ?>
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>
@@ -51,7 +51,7 @@
         <?php print $character_galleries; ?>
       </div>
     <?php endif; ?>
-    <div class="ad300x250"></div>
+    <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div>
   </div>
 <?php if (!empty($background_url)): ?>
 </div>

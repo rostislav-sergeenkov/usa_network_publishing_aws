@@ -6,7 +6,7 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div class="ad-leaderboard"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
 <?php if (!empty($background_url)): ?>
 <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php endif; ?>

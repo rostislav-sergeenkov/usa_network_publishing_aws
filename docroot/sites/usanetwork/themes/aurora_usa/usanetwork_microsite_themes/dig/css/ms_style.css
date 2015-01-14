@@ -927,12 +927,23 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   /*margin: 0 auto;*/
   /*width: 930px;*/
 /*}*/
+#microsite .usa-microsite-featured {
+  margin: 0 auto 100px;
+}
+
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
-  margin: 0 -7px;
+  margin: 15px -7px;
   height: auto;
 }
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.disabled {
   visibility: hidden;
+}
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns {
+  left: -35px
+}
+#microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.next {
+  left: auto;
+  right: -35px
 }
 #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item,
 #microsite .usa-microsite-featured .microsite-carousel-processed li.carousel-item {
@@ -961,11 +972,37 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 1281px) and (max-width: 1600px){
-
+  #microsite .usa-microsite-featured {
+    width: 930px;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
   #microsite .a-spot-panel #show-main-slider{
     max-height: 378px;
+  }
+  #microsite .usa-microsite-featured {
+    width: 930px;
+  }
+}
+@media (max-width: 1200px){
+  .page-node-microsite #left-nav {
+    left: 0px;
+    width: 190px;
+  }
+  .page-node-microsite #left-nav #left-nav-inner {
+    padding-left: 10px;
+  }
+  .page-node-microsite #left-nav #left-nav-links ul {
+    margin: 0 0 0 10px;
+  }
+  #microsite #main-slider {
+    width: 615px;
+  }
+  #microsite .usa-microsite-featured {
+    width: 615px;
+  }
+  #microsite section .microsite-section-container {
+    margin: 25px 17px 0 190px;
   }
 }
 @media (min-width: 875px){
@@ -1093,8 +1130,18 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (min-width: 769px) and (max-width: 990px){
 
 }
+@media (min-width: 641px) and (max-width: 768px){
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
+    margin: 0px 15px 0px 0;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
+    margin-right: 0;
+  }
+}
 @media (max-width: 768px){
-
+  #microsite .usa-microsite-featured {
+    margin: 0 auto 130px;
+  }
 }
 @media (max-width: 640px){
 

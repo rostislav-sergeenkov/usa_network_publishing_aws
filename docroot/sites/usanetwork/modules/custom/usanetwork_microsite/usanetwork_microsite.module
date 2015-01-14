@@ -688,6 +688,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $last_section_key = key($theme_variables['sections']);
     $theme_variables['footer'] = _usanetwork_microsite_get_footer();
     $theme_variables['sections'][$last_section_key]['is_last'] = TRUE;
+    $theme_variables['current_section'] = arg(3);
   }
 
   $theme_variables['sections_navlinks'] = $navigation_links;

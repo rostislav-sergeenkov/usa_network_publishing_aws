@@ -76,10 +76,12 @@
             <?php print $section_separator; ?>
           <?php endif; ?>
           </section>
-          <?php if (empty($section['is_last'])): ?>
+          <?php if (!empty($section['is_last'])): ?>
           <!-- FOOTER -->
-          <footer id="footer" role="contentinfo" class="clearfix">
-            <?php print render($footer); ?>
+          <footer id="footer-microsite" role="contentinfo" class="clearfix">
+            <div class="region region-footer">
+              <?php print $footer; ?>
+            </div>
           </footer>
           <!-- /FOOTER -->
           <?php endif; ?>

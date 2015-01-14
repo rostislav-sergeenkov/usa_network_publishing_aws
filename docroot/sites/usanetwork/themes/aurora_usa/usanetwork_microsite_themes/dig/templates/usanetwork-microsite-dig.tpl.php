@@ -74,15 +74,11 @@
   <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
       <?php if (!empty($section['content'])): ?>
-<<<<<<< Updated upstream
-        <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
-=======
         <?php if ($section['type'] == $current_section): ?>
           <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
         <?php else: ?>
           <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
         <?php endif; ?>
->>>>>>> Stashed changes
 <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
           <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
             <?php print $section['content']; ?>

@@ -44,7 +44,9 @@
             <div class="carousel-viewport">
               <ul>
                 <?php foreach ($featured as $f_key => $feature): ?>
-                  <?php if ($f_key == 1): ?><li class="ad300x250 carousel-item"></li><?php endif; ?>
+                  <?php if ($f_key == 1): ?>
+                  <li class="ad300x250 carousel-item"></li>
+                  <?php endif; ?>
                   <li class="carousel-item">
                     <?php print $feature; ?>
                   </li>

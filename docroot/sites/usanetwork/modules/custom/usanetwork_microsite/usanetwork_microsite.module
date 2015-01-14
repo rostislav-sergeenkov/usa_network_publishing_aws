@@ -895,6 +895,11 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
   return $node;
 }
 
+/**
+ * Implements hook_preprocess_html
+ * The following is needed for robots that crawl the page,
+ * like the Facebook robots
+ */
 function usanetwork_microsite_preprocess_html(&$vars) {
   $head_title = NULL;
   $node = menu_get_object();

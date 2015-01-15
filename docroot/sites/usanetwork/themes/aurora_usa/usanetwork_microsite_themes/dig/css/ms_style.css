@@ -406,12 +406,10 @@ you can use the generic selector below, but it's slower:
 #microsite .ad-leaderboard {
   width: 720px;
   height: 90px;
-  background-color: grey;
   margin: 0 auto;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
-  background-color: grey;
   width: 300px;
   height: 250px;
 }
@@ -775,6 +773,9 @@ you can use the generic selector below, but it's slower:
   letter-spacing: 1px;
   padding-bottom: 20px;
   outline: none;
+}
+.page-node-microsite #left-nav #left-nav-links li.active a {
+  color: #e5ce96;
 }
 .page-node-microsite #left-nav #left-nav-links li.external,
 .page-node-microsite #left-nav #left-nav-links .external a {

@@ -7,10 +7,12 @@
 
       $('.aspot-node-55161 .aspot-link').click(function(e){
         e.preventDefault();
-        $('#show-aspot-microsite').css('opacity', 0);
-        var showAspotVideoDone = 0;
-        showAspotVideoShow(showAspotVideoDone);
-        showAspotVideoPauseFlexslider();
+        if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
+          $('#show-aspot-microsite').css('opacity', 0);
+          var showAspotVideoDone = 0;
+          showAspotVideoShow(showAspotVideoDone);
+          showAspotVideoPauseFlexslider();
+        }
       });
 
       $('body').once('micrositeFlexslider', function () {
@@ -79,43 +81,42 @@
           }
         }
       }
-      if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
-        var showAspotVideoPauseFlexslider = function () {
-          if (typeof $showSlideshow.flexslider === 'function') {
-            setTimeout(function () {
-              $showSlideshow.flexslider("pause");
-              showAspotVideoResumeFlexsliderPlay();
-            }, 1000);
-          }
-          else {
-            setTimeout(showAspotVideoPauseFlexslider, 500);
-          }
-        }
 
-        var showAspotVideoResumeFlexsliderPlay = function () {
-          $('#aspot-video').bind('ended', function () {
-            $('#show-aspot-microsite').css('opacity', 1);
-            $('#aspot-video-container').hide().html('');
-            $showSlideshow.flexslider('play');
-          });
+      var showAspotVideoPauseFlexslider = function () {
+        if (typeof $showSlideshow.flexslider === 'function') {
+          setTimeout(function () {
+            $showSlideshow.flexslider("pause");
+            showAspotVideoResumeFlexsliderPlay();
+          }, 1000);
         }
+        else {
+          setTimeout(showAspotVideoPauseFlexslider, 500);
+        }
+      }
 
-        var showAspotVideoShow = function (showAspotVideoDone) {
-          if (!showAspotVideoDone) {
-            var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
-            if (aspotVideoAgent.indexOf('msie') != -1) {
-              var aspotVideoWidth = $('#main-slider').width();
-              var aspotVideoHeight = $('#main-slider').height();
-              aspotVideoTag = '<video id="aspot-video" width="' + aspotVideoWidth + '" height="' + aspotVideoHeight + '" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
-            }
-            $('#aspot-video-container').html(aspotVideoTag).show();
-            showAspotVideoDone = 1
+      var showAspotVideoResumeFlexsliderPlay = function () {
+        $('#aspot-video').bind('ended', function () {
+          $('#show-aspot-microsite').css('opacity', 1);
+          $('#aspot-video-container').hide().html('');
+          $showSlideshow.flexslider('play');
+        });
+      }
+
+      var showAspotVideoShow = function (showAspotVideoDone) {
+        if (!showAspotVideoDone) {
+          var aspotVideoTag = '<video id="aspot-video" width="100%" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
+          if (aspotVideoAgent.indexOf('msie') != -1) {
+            var aspotVideoWidth = $('#main-slider').width();
+            var aspotVideoHeight = $('#main-slider').height();
+            aspotVideoTag = '<video id="aspot-video" width="' + aspotVideoWidth + '" height="' + aspotVideoHeight + '" autoplay><source src="' + aspotVideoMp4VideoUrl + '" type="video/mp4"><source src="' + aspotVideoWebmVideoUrl + '" type="video/webm">Your browser does not support the video tag.</video>';
           }
-          else {
-            setTimeout(showAspotVideoShow, 500);
-          }
+          $('#aspot-video-container').html(aspotVideoTag).show();
+          showAspotVideoDone = 1
         }
-      } // A-SPOT VIDEOS
+        else {
+          setTimeout(showAspotVideoShow, 500);
+        }
+      }
     }
   };
 }(jQuery));

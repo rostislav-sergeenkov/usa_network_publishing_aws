@@ -288,6 +288,7 @@ you can use the generic selector below, but it's slower:
   background-color: transparent;
   width: 100%;
   position: relative;
+  height: 100%;
   top: 0;
   left: 0;
   margin: 20px 0;
@@ -1136,6 +1137,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
   }
+}
+.page-node-microsite #left-nav #left-nav-social{
+  z-index: 15;
 }
 @media (min-width: 769px) and (max-width: 1024px){
   #microsite .a-spot-panel #show-main-slider{

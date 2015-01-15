@@ -4,7 +4,6 @@
     attach: function (context, settings) {
 
       $('body').once('micrositeFlexslider', function () {
-        console.log("flexslider_a-spot");
         $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');
         $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
         $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;

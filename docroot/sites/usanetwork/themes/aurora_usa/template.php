@@ -106,10 +106,7 @@ function aurora_usa_preprocess_page(&$vars) {
     drupal_add_js($theme_path . '/javascripts/media-gallery-tabs.js');
     drupal_add_js($theme_path . '/javascripts/viewportchecker.js');
   }
-  if ($node
-    && (($node->type == "tv_show" && !arg(2))
-        || $node->type == 'usanetwork_microsite')
-  ) {
+  if ($node && $node->type == "tv_show" && !arg(2)) {
     $language = $node->language;
     $slideshow = (!empty($node->field_usa_autoscroll) && $node->field_usa_autoscroll[$language][0]['value'] == 1)? true : null;
     $slideshowSpeed = (isset($node->field_usa_slide_speed[$language][0]['value']))? $node->field_usa_slide_speed[$language][0]['value']: null;

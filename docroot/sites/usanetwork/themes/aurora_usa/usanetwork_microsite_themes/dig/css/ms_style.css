@@ -338,15 +338,13 @@ you can use the generic selector below, but it's slower:
   font-size: 2em;
   margin: 30px 0 10px;
 }
-/*#microsite .scroll {*/
-/*width: 4em;*/
-/*margin: 0 auto;*/
-/*cursor: pointer;*/
-/*position: absolute;*/
-/*bottom: 0;*/
-/*left: 100%;*/
-/*margin-left: calc(-50% - 2em);*/
-/*}*/
+#microsite .scroll {
+  width: 4em;
+  margin: 0 auto 200px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
 #microsite .scroll div {
   text-align: center;
   line-height: 1.25em;
@@ -893,12 +891,6 @@ you can use the generic selector below, but it's slower:
   position: absolute;
   top: auto;
 }
-#microsite .scroll {
-  width: 4em;
-  margin: 0 auto;
-  cursor: pointer;
-  padding: 0;
-}
 #microsite .video-container.in-player{
   display: block;
 }
@@ -906,6 +898,50 @@ you can use the generic selector below, but it's slower:
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
+}
+#microsite .full-pane #video-container {
+  margin-bottom: 20px;
+}
+
+#microsite .full-pane #video-container .video-title {
+  font-size: 32px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+#microsite .full-pane #video-container .video-description {
+  font-size: 18px;
+}
+#microsite .full-pane #video-container .video-info {
+  font-size: 18px;
+  color: #e5ce96;
+}
+#microsite .block-usanetwork-mpx-video {
+  margin: 0;
+  width: 930px;
+}
+#microsite .block-usanetwork-mpx-video:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  float: left;
+  height: 250px;
+  margin: 0px 15px 15px 0px;
+  width: 300px;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .file {
+  border: 0;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
+  height: 81px;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
+  color: #e5ce96;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item img {
+  height: 169px;
+  width: 300px;
 }
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
@@ -997,12 +1033,23 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 1000px;
     height: 563px;
   }
+  #microsite .block-usanetwork-mpx-video {
+    width: 1000px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item {
+    margin-right: 50px;
+  }
 }
 @media (min-width: 1401px){
   #microsite section .microsite-section-container{
     margin: 25px  auto 0;
     padding-left: 265px;
     max-width: 1500px;
+  }
+}
+@media (min-width: 1281px) {
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
+    margin-right: 0px;
   }
 }
 @media (min-width: 1281px) and (max-width: 1600px){
@@ -1032,6 +1079,24 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin: 25px 17px 0 190px;
   }
+  #microsite .full-pane {
+    max-width: 615px;
+  }
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 615px;
+    height: 346px;
+    margin: 0;
+  }
+  #microsite .block-usanetwork-mpx-video {
+    width: 615px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item {
+    margin-right: 15px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
+    margin-right: 0px;
+  }
+
 }
 
 @media (max-width: 1200px){
@@ -1219,6 +1284,38 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite #home-content .ad-mobile {
     display: block;
+  }
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 300px;
+    height: 184px;
+  }
+  #microsite .full-pane #video-container .video-title {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+  #microsite .full-pane #video-container {
+    margin-bottom: 10px;
+  }
+  #microsite .full-pane #video-container .video-description, #microsite .full-pane #video-container .video-info {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item {
+    height: 121px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 145px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
+    margin-right: 0px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item img {
+    height: 82px;
+    width: 145px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
+    height: 39px;
+    padding: 5px;
   }
 }
 @media (max-width: 480px){

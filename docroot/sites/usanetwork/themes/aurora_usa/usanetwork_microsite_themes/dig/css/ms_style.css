@@ -898,7 +898,6 @@ you can use the generic selector below, but it's slower:
   margin: 0 auto;
   cursor: pointer;
   padding: 0;
-  z-index: 111111;
 }
 #microsite .video-container.in-player{
   display: block;

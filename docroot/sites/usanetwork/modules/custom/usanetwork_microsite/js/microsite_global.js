@@ -245,6 +245,8 @@
       createAds(activeSection);
 
 
+      //=========== Init one page scroll for microsite ===============//
+
 			$('#sections').fullpage({
 				scrollOverflow: true,
 				scrollingSpeed: 500,
@@ -268,13 +270,9 @@
 
 					history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
-					if(index == 1){
-						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
-						$('#left-nav-inner').animate({'top': '0'}, 500);
-					}else if(nextIndex == 1){
-						$('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 700);
-						$('#left-nav-inner').animate({'top': '-130px'}, 500);
-					}
+          // Animation for logo in left nav.
+          logoAnim();
+
 
 					if (Math.abs(index - nextIndex) > 1) {
 						$.fn.fullpage.setScrollingSpeed(0);
@@ -290,6 +288,19 @@
 					}
 				}
 			});
+
+      // Animation for logo in left nav.
+      function logoAnim(){
+        var sectionItem = $('#sections .section').eq(0);
+
+        if(!sectionItem.hasClass('active')){
+          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
+          $('#left-nav-inner').animate({'top': '0'}, 500);
+        }else{
+          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 700);
+          $('#left-nav-inner').animate({'top': '-130px'}, 500);
+        }
+      }logoAnim();
 
       // initialize left nav hover to display subnav
       $('#left-nav-links-list li').hover(function(){
@@ -309,6 +320,60 @@
 
 				e.preventDefault();
 			});
+      // end one page scroll//
+
+      //============ AJAX request for video section ===============//
+
+      // ajax/get-video-in-player/[node] - for default video
+      // ajax/get-video-in-player/[node]/[fid]- for video
+
+      var currentNid = Drupal.settings.microsites_settings.nid,
+        defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
+        previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
+
+
+      //change src for player & stop auto play
+      function stopAutoPlay(){
+        var inactivePlayer = $('#video-container').find('iframe'),
+          inactivePlayerSrc = inactivePlayer.attr('src'),
+          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false');
+        // update video player src
+        inactivePlayer.attr('src', updatedPlayerSrc);
+      }stopAutoPlay();
+
+      //change video on click to preview elements
+      previewItem.click(function(e){
+        e.preventDefault();
+
+        var url = defaultUrl + '/' + $(this).data('fid'),
+          anchor = $('#left-nav-links-list li.internal.active').data('menuanchor'),
+          anchorFull = basePath + '/' + anchor + '/' + $(this).attr('data-video-url');
+
+        if(!$(this).hasClass('active')){
+          previewItem.removeClass('active');
+          $(this).addClass('active');
+        }
+
+
+        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+
+        getVideo(url);
+      });
+
+      //ajax request
+      function getVideo(url){
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'html',
+          success: function (data) {
+            $('#video-container').html(data);
+            stopAutoPlay();
+          }
+        });
+      };
+
+      // end AJAX request //
 
 
 

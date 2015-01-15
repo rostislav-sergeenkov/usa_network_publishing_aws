@@ -284,8 +284,8 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   );
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
-    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
-    _usanetwork_microsite_add_promo_data_to_js($section_wrapper->field_usa_tv_a_spot);
+    $theme_variables['aspots'] = _usanetwork_microsite_theme_render_videos_node_items($section_wrapper->field_usa_tv_a_spot, 'full');
+    _usanetwork_microsite_add_intro_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
@@ -302,7 +302,8 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   return $theme_variables;
 }
 
-function _usanetwork_microsite_add_promo_data_to_js($a_spot_field) {
+
+function _usanetwork_microsite_add_intro_data_to_js($a_spot_field) {
   $show = 'aspot';
   foreach ($a_spot_field as $field_wrapper) {
     $mp4_url = $field_wrapper->field_mp4_video_url->value();
@@ -318,6 +319,24 @@ function _usanetwork_microsite_add_promo_data_to_js($a_spot_field) {
     }
   }
 }
+
+/**
+ * Get a-spot with intro.
+ *
+ * @param $a_spot_field
+ * @return null
+ */
+function  _usanetwork_microsite_get_aspot_with_intro($a_spot_field) {
+  foreach ($a_spot_field as $a_spot_wrapper) {
+    $mp4_url = $a_spot_wrapper->field_mp4_video_url->value();
+    $webm_url = $a_spot_wrapper->field_webm_video_url->value();
+    if (!empty($mp4_url) && !empty($webm_url)) {
+      return $a_spot_wrapper;
+    }
+  }
+  return NULL;
+}
+
 /**
  * Renders About page.
  */
@@ -799,7 +818,7 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
 
   // Render all A-Spots
   if (!empty($section_node->field_usa_tv_a_spot)) {
-    $section_base_variables['aspots'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_a_spot, 'teaser');
+    $section_base_variables['aspots'] = _usanetwork_microsite_theme_render_videos_node_items($section_wrapper->field_usa_tv_a_spot, 'teaser');
   }
 
 /*
@@ -916,6 +935,32 @@ function _usanetwork_microsite_theme_render_multiple_node_items($node_wrapper_fi
   }
 
   return $rendered_items;
+}
+
+/**
+ * Renders all videos of node field.
+ */
+function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_field, $view_mode = 'teaser', $first_view_mode = '') {
+  $items = array();
+
+  $count = 0;
+  foreach ($node_wrapper_field as $field_wrapper) {
+    $mp4_url = $field_wrapper->field_mp4_video_url->value();
+    $webm_url = $field_wrapper->field_webm_video_url->value();
+    $a_spot_with_intro = FALSE;
+    if(!empty($mp4_url) && !empty($webm_url)) {
+      $a_spot_with_intro = TRUE;
+    }
+    $current_view_mode = ($count == 0 && $first_view_mode != '') ? $first_view_mode : $view_mode;
+    $field_view = node_view($field_wrapper->value(), $current_view_mode);
+    $items[] = array(
+      'rendered_item' => drupal_render($field_view),
+      'a_spot_with_intro' => $a_spot_with_intro,
+    );
+    $count++;
+  }
+
+  return $items;
 }
 
 /**

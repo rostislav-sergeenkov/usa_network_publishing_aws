@@ -58,9 +58,9 @@
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external">Tour Israel
             <ul>
-              <li><a href="http://missiontravel.usanetwork.com" target="_blank">Mission Travel</a></li>
-              <li><a href="http://safehouse.usanetwork.com" target="_blank">Safe House</a></li>
-              <li><a href="http://meettomellis.usanetwork.com" target="_blank">Meet Tom Ellis</a></li>
+              <li><a href="http://www.goisrael.com" target="_blank">Go Israel</a></li>
+              <li><a href="http://www.itraveljerusalem.com" target="_blank">Official Tourism</a></li>
+              <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film & TV Fund</a></li>
             </ul>
           </li>
           <li class="separator last">....</li>

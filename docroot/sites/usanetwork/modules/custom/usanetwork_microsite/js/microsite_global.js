@@ -259,7 +259,7 @@
 						leaveSection = $(sections[index - 1]),
 						nextSection = $(sections[nextIndex - 1]);
 
-					var anchor = $(menu_items[nextIndex - 1]).data('menuanchor'),
+					var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
 						anchorFull = basePath + '/' + anchor;
 
           createAds(anchor);
@@ -310,15 +310,15 @@
       });
 
       // initialize left nav clicks
-			$('#left-nav-links-list li.internal a').click(function(e) {
+			$('#left-nav-links-list li.internal a.scroll-link').click(function(e) {
 
-				var anchor = $(this).parent().data('menuanchor'),
+        e.preventDefault();
+
+				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;
 
-				$.fn.fullpage.moveTo($(this).data('menuitem'));
+				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
 //				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
-				e.preventDefault();
 			});
       // end one page scroll//
 
@@ -345,15 +345,14 @@
       previewItem.click(function(e){
         e.preventDefault();
 
-        var url = defaultUrl + '/' + $(this).data('fid'),
-          anchor = $('#left-nav-links-list li.internal.active').data('menuanchor'),
+        var url = defaultUrl + '/' + $(this).attr('data-fid'),
+          anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
           anchorFull = basePath + '/' + anchor + '/' + $(this).attr('data-video-url');
 
         if(!$(this).hasClass('active')){
           previewItem.removeClass('active');
           $(this).addClass('active');
         }
-
 
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 

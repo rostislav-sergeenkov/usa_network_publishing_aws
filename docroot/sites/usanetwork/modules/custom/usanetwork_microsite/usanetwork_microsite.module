@@ -697,7 +697,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
       $pages[$section_base_variables['type']] = array(
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
-        'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i))),
+        'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
       $i++;

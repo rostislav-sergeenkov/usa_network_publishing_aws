@@ -4,10 +4,7 @@
     attach: function (context, settings) {
 
       $('body').once('micrositeFlexslider', function () {
-        console.log("flexslider_a-spot");
         $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');
-        $slideshow = (settings.showAspot.slideshow !== null)? settings.showAspot.slideshow : false;
-        $slideshowSpeed = (settings.showAspot.slideshowSpeed !== null)? settings.showAspot.slideshowSpeed : 7000;
         $touch = true;
         if ($slideshow_selector.find('li').length <= 1){
           $touch = false;
@@ -17,8 +14,8 @@
           .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
           .parent()
           .flexslider({
-            slideshow: $slideshow,
-            slideshowSpeed: $slideshowSpeed,
+            slideshow: true,
+            slideshowSpeed: 7000,
             pauseOnHover: true,
             animation: 'slide',
             controlNav: true,
@@ -54,16 +51,15 @@
         }
 
         var aspotVideos = {};
-        //if (Drupal.settings.aspotSettings) {
-          var show = 'dig';
-          //var show = Drupal.settings.aspotSettings.show;
-          //var mp4_url = Drupal.settings.aspotSettings.mp4_url;
-          //var webm_url = Drupal.settings.aspotSettings.webm_url;
+        if (Drupal.settings.aspotSettings) {
+          var show = Drupal.settings.aspotSettings.show;
+          var mp4_url = Drupal.settings.aspotSettings.mp4_url;
+          var webm_url = Drupal.settings.aspotSettings.webm_url;
           var mp4_url = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/video/NBCU_USA_Network/697/791/SUITS_RM_SUMMER_FINALE.mp4';
           var webm_url = 'http://a248.g.akamai.net/7/1697/141550/0s/usavideo1.download.akamai.com/141550/mezzanine/NBCU_USA_Network/697/791/SUITS_RM_SUMMER_FINALE.webmhd.webm';
           aspotVideos[show] = {};
           aspotVideos[show] = AspotVideo(mp4_url, webm_url);
-        //}
+        }
         var aspotVideoBeingShown = '';
         if (aspotVideos.hasOwnProperty(show)) {
           var avTemp = aspotVideos[show];

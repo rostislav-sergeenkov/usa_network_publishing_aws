@@ -1,6 +1,22 @@
 // using fred carousel
 (function ($) {
   Drupal.behaviors.microsite_carousel = {
+    replaceAd: function (){
+      if ($(window).width() < 641) {
+        if(!$('#home-content .ad-mobile').hasClass('mobile')) {
+          $('.usa-microsite-featured .carousel li.ad').children().appendTo($('#home-content .ad-mobile'));
+          $('#home-content .ad-mobile').addClass('mobile');
+          $('.usa-microsite-featured .carousel li.ad').remove();
+        }
+      }
+      else {
+        if($('#home-content .ad-mobile').hasClass('mobile')) {
+          $('<li class="ad ad300x250 carousel-item"></li>').insertAfter($('.usa-microsite-featured .carousel li').eq(0));
+          $('#home-content .ad-mobile').children().appendTo($('.usa-microsite-featured .carousel li.ad'));
+          $('#home-content .ad-mobile').removeClass('mobile');
+        }
+      }
+    },
     setCollapsibleContentHeight: function($content) {
       var $container = $content.closest('.expandable-container');
       var $toggle = $content.parent().children('.expandable-toggle-wrap');
@@ -60,7 +76,6 @@
       }
     },
     initCarousel: function() {
-
       $('.microsite-carousel-processed').each(function() {
         var $self = $(this);
         $self.find('.carousel-btns').remove();
@@ -156,7 +171,7 @@
       }
     },
     attach: function (context, settings) {
-      Drupal.behaviors.microsite_carousel.initCarousel();
+      Drupal.behaviors.microsite_carousel.replaceAd();
     }
   };
 
@@ -164,6 +179,7 @@
   $(window).resize(function() {
     if (doit == null) {
       doit = setTimeout(function() {
+        Drupal.behaviors.microsite_carousel.replaceAd();
         Drupal.behaviors.microsite_carousel.initCarousel();
         clearTimeout(doit);
         doit = null
@@ -173,13 +189,7 @@
 
   // check the collapsible content height one again when page is fully loaded
   $(window).load(function() {
-    if ($(this).hasClass('.microsite-carousel-collapsible-processed')) {
-      $(this).each('.microsite-carousel-collapsible-processed', function() {
-        var $container = $(this);
-        var $content = $container.children('.carousel-viewport');
-        Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($content);
-      });
-    }
+    Drupal.behaviors.microsite_carousel.initCarousel();
   });
 
 }(jQuery));

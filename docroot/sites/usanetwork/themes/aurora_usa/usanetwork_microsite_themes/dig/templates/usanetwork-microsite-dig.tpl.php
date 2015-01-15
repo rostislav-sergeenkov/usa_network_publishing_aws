@@ -16,28 +16,23 @@
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-<!--  <div id="activeContent">-->
-<!--    <div id="hidden-prev" class="hidden-section"></div>-->
-<!--    <div id="visible"></div>-->
-<!--    <div id="hidden-next" class="hidden-section"></div>-->
-<!--  </div>-->
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
           <li id="nav-home" class="internal" data-menuanchor="home">
-            <a href="#section-home" data-menuitem="1">
+            <a class="scroll-link" href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
               <?php if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
               <?php endif; ?>
             </a>
+            <div id="left-nav-social" class="clearfix">
+              <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+              <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+              <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+            </div>
           </li>
-          <div id="left-nav-social" class="clearfix">
-            <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-            <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
-            <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
-          </div>
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
@@ -69,24 +64,24 @@
     </div>
   </div>
   <div id="sections">
-<!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
-<!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
-  <?php if (!empty($sections)): ?>
+    <!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
+    <!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
+    <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
-      <?php if (!empty($section['content'])): ?>
-        <?php if ($section['type'] == $current_section): ?>
-          <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
-        <?php else: ?>
-          <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+    <?php if (!empty($section['content'])): ?>
+    <?php if ($section['type'] == $current_section): ?>
+    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
+      <?php else: ?>
+      <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
         <?php endif; ?>
-<!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
-          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
-            <?php print $section['content']; ?>
+        <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
+        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
+          <?php print $section['content']; ?>
           <?php if (empty($section['is_last'])): ?>
             <?php print $section_separator; ?>
           <?php endif; ?>
-          </section>
-          <?php if (!empty($section['is_last'])): ?>
+        </section>
+        <?php if (!empty($section['is_last'])): ?>
           <!-- FOOTER -->
           <footer id="footer-microsite" role="contentinfo" class="clearfix">
             <div class="region region-footer">
@@ -94,10 +89,10 @@
             </div>
           </footer>
           <!-- /FOOTER -->
-          <?php endif; ?>
-        </div>
+        <?php endif; ?>
+      </div>
       <?php endif; ?>
-    <?php endforeach; ?>
-  <?php endif; ?>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
   </div>
-</div>

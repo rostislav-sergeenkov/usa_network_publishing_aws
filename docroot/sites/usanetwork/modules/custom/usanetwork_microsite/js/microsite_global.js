@@ -250,6 +250,7 @@
 			$('#sections').fullpage({
 				scrollOverflow: true,
 				scrollingSpeed: 500,
+        verticalCentered: false,
         //autoScrolling: false,
 				onLeave: function (index, nextIndex, direction) {
 

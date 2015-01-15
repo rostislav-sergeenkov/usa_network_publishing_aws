@@ -298,6 +298,16 @@ you can use the generic selector below, but it's slower:
 #microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
 }
+#microsite #home-content .ad-mobile {
+  background: #808080;
+  display: none;
+  height: 50px;
+  margin: 15px 0;
+  width: 300px;
+}
+#microsite #home-content .ad-mobile.mobile {
+  display: block;
+}
 #microsite #about-content {
   background-image: url("../images/dig_bg_about.jpg");
 }
@@ -985,7 +995,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 930px;
   }
 }
-@media (max-width: 1200px){
+@media (max-width: 1280px){
   .page-node-microsite #left-nav {
     left: 0px;
     width: 190px;
@@ -996,16 +1006,20 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   .page-node-microsite #left-nav #left-nav-links ul {
     margin: 0 0 0 10px;
   }
+  #microsite section .microsite-section-container {
+    margin: 25px 17px 0 190px;
+  }
+}
+
+@media (max-width: 1200px){
   #microsite #main-slider {
     width: 615px;
   }
   #microsite .usa-microsite-featured {
     width: 615px;
   }
-  #microsite section .microsite-section-container {
-    margin: 25px 17px 0 190px;
-  }
 }
+
 @media (min-width: 875px){
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
     color: #0ab6e8;
@@ -1133,7 +1147,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (min-width: 641px) and (max-width: 768px){
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
-    margin: 0px 15px 0px 0;
+    margin: 15px 15px 0px 0;
   }
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
     margin-right: 0;
@@ -1145,7 +1159,46 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 640px){
-
+  #microsite section .microsite-section-container {
+    margin: 0 auto;
+    width: 300px;
+  }
+  #microsite #main-slider {
+    width: 300px;
+  }
+  #microsite .usa-microsite-featured {
+    width: 300px;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
+    margin: 0 2% 10px 0px;
+    max-height: 123px;
+    width: 49%;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
+    margin-right: 0;
+  }
+  .carousel-item .view-mode-promo_teaser .asset-img, .view-mode-promo_teaser_large .asset-img {
+    border: 0;
+    width: auto;
+    height: auto;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item img {
+    max-height: 119px;
+  }
+  .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
+    height: 40px;
+    width: 147px;
+    padding: 5px 6px 5px;
+    margin: 0;
+  }
+  .usa-microsite-featured .caption-overlay .caption-fields-wrapper h3 {
+    line-height: 10.5px;
+    font-size: 12px;
+  }
+  .usa-microsite-featured .caption-overlay .caption-fields-wrapper .caption, .promo-metadata h3, .upcoming-movie .meta h3 {
+    font-size: 10px;
+    line-height: 12px;
+  }
 }
 @media (max-width: 480px){
 

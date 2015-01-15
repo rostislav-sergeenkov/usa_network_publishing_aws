@@ -293,8 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 20px 0;
   padding: 20px 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 #microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
@@ -339,15 +338,13 @@ you can use the generic selector below, but it's slower:
   font-size: 2em;
   margin: 30px 0 10px;
 }
-/*#microsite .scroll {*/
-/*width: 4em;*/
-/*margin: 0 auto;*/
-/*cursor: pointer;*/
-/*position: absolute;*/
-/*bottom: 0;*/
-/*left: 100%;*/
-/*margin-left: calc(-50% - 2em);*/
-/*}*/
+#microsite .scroll {
+  width: 4em;
+  margin: 0 auto 200px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
 #microsite .scroll div {
   text-align: center;
   line-height: 1.25em;
@@ -893,12 +890,6 @@ you can use the generic selector below, but it's slower:
   margin-left: -24px;
   position: absolute;
   top: auto;
-}
-#microsite .scroll {
-  width: 4em;
-  margin: 0 auto;
-  cursor: pointer;
-  padding: 0;
 }
 #microsite .video-container.in-player{
   display: block;

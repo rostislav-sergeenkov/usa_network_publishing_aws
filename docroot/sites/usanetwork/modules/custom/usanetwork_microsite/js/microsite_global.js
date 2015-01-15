@@ -241,7 +241,6 @@
 
 
 //			setOmnitureData();
-      s.prop2 = 'Drama';
       parseUrl();
       createAds(activeSection);
 

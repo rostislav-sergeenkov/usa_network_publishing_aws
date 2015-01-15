@@ -1143,9 +1143,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     -o-transform: translateX(0);
   }
 }
-.page-node-microsite #left-nav #left-nav-social{
-  z-index: 15;
-}
 @media (min-width: 769px) and (max-width: 1024px){
   #microsite .a-spot-panel #show-main-slider{
     max-height: 350px;

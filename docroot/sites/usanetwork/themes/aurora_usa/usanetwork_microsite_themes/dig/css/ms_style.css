@@ -293,8 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 20px 0;
   padding: 20px 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 #microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
@@ -899,6 +898,7 @@ you can use the generic selector below, but it's slower:
   margin: 0 auto;
   cursor: pointer;
   padding: 0;
+  z-index: 111111;
 }
 #microsite .video-container.in-player{
   display: block;
@@ -979,6 +979,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite #aspot-video-container #aspot-video {
   height: 100%;
+}
+#microsite .slimScrollBar{
+  background: #ffffff !important;
 }
 
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {

@@ -320,22 +320,6 @@ function _usanetwork_microsite_add_intro_data_to_js($a_spot_field) {
   }
 }
 
-/**
- * Get a-spot with intro.
- *
- * @param $a_spot_field
- * @return null
- */
-function  _usanetwork_microsite_get_aspot_with_intro($a_spot_field) {
-  foreach ($a_spot_field as $a_spot_wrapper) {
-    $mp4_url = $a_spot_wrapper->field_mp4_video_url->value();
-    $webm_url = $a_spot_wrapper->field_webm_video_url->value();
-    if (!empty($mp4_url) && !empty($webm_url)) {
-      return $a_spot_wrapper;
-    }
-  }
-  return NULL;
-}
 
 /**
  * Renders About page.

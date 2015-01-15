@@ -26,8 +26,12 @@
               <div class="pane-content">
                 <ul>
                   <?php foreach ($aspots as $aspot): ?>
-                    <li>
-                      <?php print $aspot; ?>
+                    <?php if($aspot['a_spot_with_intro']): ?>
+                      <li class="aspot-trailer">
+                    <?php else: ?>
+                      <li>
+                    <?php endif; ?>
+                      <?php print $aspot['rendered_item']; ?>
                     </li>
                   <?php endforeach; ?>
                 </ul>

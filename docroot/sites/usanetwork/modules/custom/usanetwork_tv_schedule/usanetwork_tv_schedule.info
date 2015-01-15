@@ -3,4 +3,4 @@ description = Provides the TV Schedule Page from compass feed.
 package = USA Network
 core = 7.x
 scripts[] = js/usanetwork_social_on_now.js
-version = 7.x-1.0.3
+version = 7.x-1.0.4

@@ -1125,9 +1125,10 @@ function usanetwork_tv_schedule_fetch_schedule($sdate = '') {
   // replace the tokens in the Compass XML URL
   $xml_feed = str_replace('YYYY_MM_DD', $sdate, $xml_feed);
 
-  if (!$cache = cache_get('schedule_fetch_schedule')) {
+  $cache_name = 'schedule_fetch_schedule_' . $sdate;
+  if (!$cache = cache_get($cache_name)) {
     $result = drupal_http_request($xml_feed);
-    cache_set('schedule_fetch_schedule', $result, 'cache', time() + 900);
+    cache_set($cache_name, $result, 'cache', time() + 900);
   } else {
     $result = $cache->data;
   }

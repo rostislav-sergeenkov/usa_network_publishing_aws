@@ -21,6 +21,7 @@
 
 (function ($) {
   var urlPath = window.location.pathname;
+  var testData;
 
   Drupal.behaviors.microsite_scroll = {
     attach: function (context, settings) {
@@ -347,14 +348,15 @@
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
 
 
-      //change src for player & stop auto play
-      function stopAutoPlay(){
+      // change src for player & set autoplay
+      function setAutoPlay(autoPlay){
+        autoPlay = autoPlay || 'false';
         var inactivePlayer = $('#video-container').find('iframe'),
           inactivePlayerSrc = inactivePlayer.attr('src'),
-          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=false');
+          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=' + autoPlay);
         // update video player src
         inactivePlayer.attr('src', updatedPlayerSrc);
-      }stopAutoPlay();
+      }setAutoPlay();
 
       //change video on click to preview elements
       previewItem.click(function(e){
@@ -379,19 +381,52 @@
       });
 
       //ajax request
-      function getVideo(url){
+      function getVideo(url, autoPlay){
+        autoPlay = autoPlay || 'false';
         $.ajax({
           type: 'GET',
           url: url,
           dataType: 'html',
           success: function (data) {
             $('#video-container').html(data);
-            stopAutoPlay();
+            setAutoPlay(autoPlay);
           }
         });
       };
 
       // end AJAX request //
+
+
+      // a-spot clicks
+      // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
+      // SO THAT IT IS NOT SPECIFIC TO "DIG"
+      $('#show-aspot-microsite .aspot-link').click(function(e) {
+        var anchorFull = this.href;
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct video
+        if (anchorFull.indexOf('/dig/') != -1) {
+          e.preventDefault();
+
+          anchor = 'videos';
+          anchorSection = 'Videos';
+          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+
+          previewItem.removeClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
+          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
+
+          // change active video content
+          changeTitle(itemTitle, anchorSection);
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+
+          getVideo(url, 'true');
+
+          // trigger scroll to videos section
+				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
+				}
+      });
 
 
 

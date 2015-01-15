@@ -38,7 +38,8 @@
           shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
           shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
           shareBarTitle = 'Dig Gallery Testing Sharebar Title',
-          basePageName = siteName + ' | USA Network';
+          basePageName = siteName + ' | USA Network',
+          sectionPageTitle = $(document).find("title").text();
           activeSection = 'home',
           activeItem = '';
 
@@ -242,7 +243,7 @@
 
 //			setOmnitureData();
       parseUrl();
-      createAds(activeSection);
+//      createAds(activeSection);
 
 
       //=========== Init one page scroll for microsite ===============//
@@ -287,7 +288,10 @@
 					} else {
 						$.fn.fullpage.setScrollingSpeed(1000);
 					}
-				}
+				},
+        afterRender: function(){
+          createAds(activeSection);
+        }
 			});
 
       // Animation for logo in left nav.
@@ -321,7 +325,17 @@
 				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
 //				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 			});
+
+        $('#sections .section .scroll-to-next').click(function() {
+          $.fn.fullpage.moveSectionDown();
+        });
+
       // end one page scroll//
+
+      //change page title current section item
+      function changeTitle(item, section){
+        $('title').text(item + ' | '+ section + ' | ' + basePageName);
+      }
 
       //============ AJAX request for video section ===============//
 
@@ -348,12 +362,16 @@
 
         var url = defaultUrl + '/' + $(this).attr('data-fid'),
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
+          anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
+          itemTitle = $(this).find('.title').text(),
           anchorFull = basePath + '/' + anchor + '/' + $(this).attr('data-video-url');
 
         if(!$(this).hasClass('active')){
           previewItem.removeClass('active');
           $(this).addClass('active');
         }
+
+        changeTitle(itemTitle, anchorSection);
 
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 

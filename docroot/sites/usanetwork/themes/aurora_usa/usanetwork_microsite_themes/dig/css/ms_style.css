@@ -1015,6 +1015,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite #aspot-video-container #aspot-video {
   height: 100%;
 }
+#microsite .slimScrollBar{
+  background: #ffffff !important;
+}
 
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
   margin: 0 0px 2px;

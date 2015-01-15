@@ -946,12 +946,14 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
 function usanetwork_microsite_preprocess_html(&$vars) {
   $head_title = NULL;
   $node = menu_get_object();
+  if(!isset($node->type) || $node->type != 'usanetwork_microsite') {
+    return;
+  }
   $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
   $args = arg();
-  $path = $args[3];
+  $path = isset($args[3]) ? $args[3] : '';
   switch ($path) {
     case '':
-    case '/':
       $head_title = t($title . ' | USA Network');
       break;
     case 'home':

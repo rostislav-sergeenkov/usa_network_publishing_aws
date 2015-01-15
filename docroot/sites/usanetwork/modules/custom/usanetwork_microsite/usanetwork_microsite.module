@@ -568,15 +568,46 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
     $file = file_load($fid);
   }
   else {
-    //@todo Sections name to constant or other way that would hold it.
-    $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, 'videos');
-    $video_files = $section_wrapper->field_ms_videos->value();
+    $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
     $file = reset($video_files);
   }
   $in_player = _usanetwork_microsite_set_variables_for_player_show($file);
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_videos_player';
   return theme($theme_registry_name, array('in_player' => $in_player));
+}
+
+/**
+ * Get array of content objects related with node.
+ *
+ * @param $node
+ * @return mixed
+ */
+function _usanetwork_microsite_get_related_content_from_node($node, $type) {
+  // @todo May be necessary use static cash.
+  $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, $type);
+  // @todo necessary use relationship array with main fields for section types. For example array('video' => 'field_ms_videos').
+  if($type == 'videos') {
+    return $section_wrapper->field_ms_videos->value();
+  }
+  return NULL;
+}
+
+/**
+ * Get video file object by url parameter.
+ *
+ * @param $node
+ * @return mixed
+ */
+function _usanetwork_microsite_get_video_file_by_url($node, $param) {
+  //@todo Sections name to constant or other way that would hold it.
+  $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  foreach($files as $file) {
+    if ($param == _usanetwork_microsite_get_suggested_video_url($file->filename)) {
+      return $file;
+    }
+  }
+  return NULL;
 }
 
 function usanetwork_microsite_get_video_in_player_ajax_callback($output) {
@@ -915,27 +946,33 @@ function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
 function usanetwork_microsite_preprocess_html(&$vars) {
   $head_title = NULL;
   $node = menu_get_object();
-  $nodeId = $node->nid;
   $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
-  $path = str_replace('node/' . $nodeId . '/microsite', '', $_GET['q']);
+  $args = arg();
+  $path = $args[3];
   switch ($path) {
     case '':
     case '/':
       $head_title = t($title . ' | USA Network');
       break;
-    case '/home':
+    case 'home':
       $head_title = t('Home | ' . $title . ' | USA Network');
       break;
-    case '/videos':
+    case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
+        if(isset($video_file) && !empty($video_file->filename)) {
+          $head_title = $video_file->filename . ' | ' . $head_title;
+        }
+      }
       break;
-    case '/galleries':
+    case 'galleries':
       $head_title = t('Galleries | ' . $title . ' | USA Network');
       break;
-    case '/about':
+    case 'about':
       $head_title = t('About | ' . $title . ' | USA Network');
       break;
-    case '/games':
+    case 'games':
       $head_title = t('Games | ' . $title . ' | USA Network');
       break;
     default:

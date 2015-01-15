@@ -288,6 +288,7 @@ you can use the generic selector below, but it's slower:
   background-color: transparent;
   width: 100%;
   position: relative;
+  height: 100%;
   top: 0;
   left: 0;
   margin: 20px 0;

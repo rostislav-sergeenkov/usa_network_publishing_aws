@@ -16,28 +16,23 @@
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
-  <!--  <div id="activeContent">-->
-  <!--    <div id="hidden-prev" class="hidden-section"></div>-->
-  <!--    <div id="visible"></div>-->
-  <!--    <div id="hidden-next" class="hidden-section"></div>-->
-  <!--  </div>-->
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
           <li id="nav-home" class="internal" data-menuanchor="home">
-            <a href="#section-home" data-menuitem="1">
+            <a class="scroll-link" href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
               <?php if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
               <?php endif; ?>
             </a>
+            <div id="left-nav-social" class="clearfix">
+              <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+              <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+              <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+            </div>
           </li>
-          <div id="left-nav-social" class="clearfix">
-            <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-            <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
-            <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
-          </div>
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>

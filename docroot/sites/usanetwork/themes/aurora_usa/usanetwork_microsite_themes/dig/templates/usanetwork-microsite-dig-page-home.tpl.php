@@ -10,7 +10,7 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div class="ad-leaderboard"></div>
+<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
 <?php if (!empty($background_url)): ?>
   <div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
 <?php else: ?>
@@ -38,6 +38,8 @@
         </div>
         <?php endif; ?>
 
+        <div class="ad300x50 dart-tag dart-name-300x50_ifr_reload_home"></div>
+
         <?php if (!empty($featured)): ?>
         <div class="usa-microsite-featured clearfix">
           <div class="carousel clearfix">
@@ -45,7 +47,7 @@
               <ul>
                 <?php foreach ($featured as $f_key => $feature): ?>
                   <?php if ($f_key == 1): ?>
-                  <li class="ad300x250 carousel-item"></li>
+                  <li class="ad300x250 dart-tag dart-name-300x250_ifr_reload_home carousel-item"></li>
                   <?php endif; ?>
                   <li class="carousel-item">
                     <?php print $feature; ?>

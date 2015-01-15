@@ -32,12 +32,12 @@
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
               <?php endif; ?>
             </a>
-            <div id="left-nav-social" class="clearfix">
-              <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
-              <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
-              <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
-            </div>
           </li>
+          <div id="left-nav-social" class="clearfix">
+            <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
+            <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
+            <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+          </div>
           <?php if (!empty($sections)): ?>
             <?php foreach ($sections as $section): ?>
               <?php if ($section['type'] != 'home'): ?>
@@ -58,9 +58,9 @@
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external">Tour Israel
             <ul>
-              <li><a href="http://testlink1.com" target="_blank">Link 1</a></li>
-              <li><a href="http://testlink2.com" target="_blank">Link 2</a></li>
-              <li><a href="http://testlink3.com" target="_blank">Link 3</a></li>
+              <li><a href="http://missiontravel.usanetwork.com" target="_blank">Mission Travel</a></li>
+              <li><a href="http://safehouse.usanetwork.com" target="_blank">Safe House</a></li>
+              <li><a href="http://meettomellis.usanetwork.com" target="_blank">Meet Tom Ellis</a></li>
             </ul>
           </li>
           <li class="separator last">....</li>
@@ -75,9 +75,9 @@
     <?php foreach ($sections as $section): ?>
     <?php if (!empty($section['content'])): ?>
     <?php if ($section['type'] == $current_section): ?>
-    <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
+    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
       <?php else: ?>
-      <div id="section<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+      <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
         <?php endif; ?>
         <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
         <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">

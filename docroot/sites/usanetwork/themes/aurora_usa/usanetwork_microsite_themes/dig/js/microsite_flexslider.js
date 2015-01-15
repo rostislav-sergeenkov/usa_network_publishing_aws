@@ -4,9 +4,10 @@
     attach: function (context, settings) {
 
       $('#aspot-video-container').hide();
-
-      $('.aspot-node-55161 .aspot-link').click(function(e){
+      $('#show-aspot-microsite .aspot-link').click(function (e) {
         e.preventDefault();
+      });
+      $('.aspot-node-55161 .aspot-link').click(function (e) {
         if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
           $('#show-aspot-microsite').css('opacity', 0);
           var showAspotVideoDone = 0;

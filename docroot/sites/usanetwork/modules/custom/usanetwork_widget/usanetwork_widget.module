@@ -110,6 +110,19 @@ function usanetwork_widget_flush_caches() {
 }
 
 /**
+ * Implements hook_js_alter().
+ */
+function usanetwork_widget_js_alter(&$javascript) {
+  // Remove tve_mvpd settings from js on navbar pages.
+  if (FALSE !== array_search('navbar', arg())) {
+    foreach ($javascript['settings']['data'] as $key => $setting_data) {
+      if (array_key_exists('tve_mvpd', $setting_data)) {
+        unset($javascript['settings']['data'][$key]);
+      }
+    }
+  }
+}
+/**
  * Helper to generate an env value based on base root to be used for JS
  */
 function _usanetwork_widget_get_environment() {

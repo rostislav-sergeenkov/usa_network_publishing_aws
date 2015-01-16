@@ -265,36 +265,33 @@
             var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
                 anchorFull = basePath + '/' + anchor;
 
+            changeUrl(anchor, anchorFull);
             createAds(anchor);
             setOmnitureData(anchor);
 
             menu_items.removeClass('active');
             $(menu_items[nextIndex - 1]).addClass('active');
 
-            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
             // Animation for logo in left nav.
             logoAnim();
 
-
-            //if (Math.abs(index - nextIndex) > 1) {
-            //	$.fn.fullpage.setScrollingSpeed(0);
-            //
-            //	leaveSection.css('margin-top', '0');
-            //	if (index < nextIndex) {
-            //		nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
-            //	} else {
-            //		nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
-            //	}
-            //} else {
-            //	$.fn.fullpage.setScrollingSpeed(1000);
-            //}
           },
           afterRender: function(){
             createAds(activeSection);
           }
         });
       });
+
+      // init change url address
+      function changeUrl(anchor, anchorFull){
+
+        if(anchor != 'home'){
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }else{
+          history.pushState({"state": basePath}, basePath, basePath);
+        }
+
+      }
 
       // Animation for logo in left nav.
       function logoAnim(){
@@ -318,19 +315,19 @@
 
       // initialize left nav clicks
 			$('#left-nav-links-list li.internal a.scroll-link').click(function(e) {
-
         e.preventDefault();
 
 				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;
 
+        changeUrl(anchor, anchorFull);
+
 				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
-//				history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 			});
 
-        $('#sections .section .scroll-to-next').click(function() {
-          $.fn.fullpage.moveSectionDown();
-        });
+      $('#sections .section .scroll-to-next').click(function() {
+        $.fn.fullpage.moveSectionDown();
+      });
 
       // end one page scroll//
 
@@ -340,7 +337,6 @@
       }
 
       //============ AJAX request for video section ===============//
-
       // ajax/get-video-in-player/[node] - for default video
       // ajax/get-video-in-player/[node]/[fid]- for video
 

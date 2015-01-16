@@ -4,6 +4,13 @@
     attach: function (context, settings) {
 
       $('#aspot-video-container').hide();
+
+/* DV COMMMENTED THIS ON JAN 15, 2015
+ * Because a-spot videos are not generating Omniture calls, we must show
+ * the trailer in the video section for launch!
+ * I've made changes to the a-spot in the CMS and have
+ * added code to the microsite_global.js file to make this happen.
+ * You don't need to make any code changes for this!
       $('#show-aspot-microsite .aspot-link').click(function (e) {
         e.preventDefault();
       });
@@ -15,6 +22,7 @@
           showAspotVideoPauseFlexslider();
         }
       });
+*/
 
       $('body').once('micrositeFlexslider', function () {
         $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');

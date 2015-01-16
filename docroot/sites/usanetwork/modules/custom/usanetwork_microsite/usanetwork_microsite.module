@@ -277,7 +277,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
     'cspots' => NULL,
     'promo_carousel' => array(),
 */
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
 
   if (!empty($section_object->field_usa_tv_a_spot)) {
@@ -332,7 +331,6 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
       ? $section_wrapper->field_ms_section_text->value->value()
       : '',
     'about_quotations' => array(),
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
 
   if (!empty($section_object->field_quotation)) {
@@ -352,7 +350,6 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
   $theme_variables = array(
     'people' => array(),
     'characters_navigation' => NULL,
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
   if (!empty($section_object->field_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
@@ -393,9 +390,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
  */
 function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   $section_object = $section_wrapper->value();
-  $theme_variables = array(
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-  );
+  $theme_variables = array();
 
   if (!empty($section_object->field_media_gallery)) {
     $gallery_nodes = $section_wrapper->field_media_gallery->value();
@@ -442,7 +437,6 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
 
   $theme_variables = array(
     'pages' => array(),
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
   );
 
   if (!empty($section_object->field_ms_catchall_page)) {
@@ -698,6 +692,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
+        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
       $i++;

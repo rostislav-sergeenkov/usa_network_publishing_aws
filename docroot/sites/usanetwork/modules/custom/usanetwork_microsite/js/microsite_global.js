@@ -248,52 +248,53 @@
 
 
       //=========== Init one page scroll for microsite ===============//
+      $(window).load(function(){
+        $('#sections').fullpage({
+          scrollOverflow: true,
+          scrollingSpeed: 1000,
+          //verticalCentered: false,
+          //autoScrolling: false,
+          onLeave: function (index, nextIndex, direction) {
 
-			$('#sections').fullpage({
-				scrollOverflow: true,
-				scrollingSpeed: 1000,
-        //verticalCentered: false,
-        //autoScrolling: false,
-				onLeave: function (index, nextIndex, direction) {
+            var menu_items = $('#left-nav-links-list li');
 
-					var menu_items = $('#left-nav-links-list li');
+            var sections = $('section'),
+                leaveSection = $(sections[index - 1]),
+                nextSection = $(sections[nextIndex - 1]);
 
-					var sections = $('section'),
-						leaveSection = $(sections[index - 1]),
-						nextSection = $(sections[nextIndex - 1]);
+            var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
+                anchorFull = basePath + '/' + anchor;
 
-					var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
-						anchorFull = basePath + '/' + anchor;
+            createAds(anchor);
+            setOmnitureData(anchor);
 
-          createAds(anchor);
-					setOmnitureData(anchor);
+            menu_items.removeClass('active');
+            $(menu_items[nextIndex - 1]).addClass('active');
 
-					menu_items.removeClass('active');
-					$(menu_items[nextIndex - 1]).addClass('active');
+            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
-					history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
-          // Animation for logo in left nav.
-          logoAnim();
+            // Animation for logo in left nav.
+            logoAnim();
 
 
-					//if (Math.abs(index - nextIndex) > 1) {
-					//	$.fn.fullpage.setScrollingSpeed(0);
-					//
-					//	leaveSection.css('margin-top', '0');
-					//	if (index < nextIndex) {
-					//		nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
-					//	} else {
-					//		nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
-					//	}
-					//} else {
-					//	$.fn.fullpage.setScrollingSpeed(1000);
-					//}
-				},
-        afterRender: function(){
-          createAds(activeSection);
-        }
-			});
+            //if (Math.abs(index - nextIndex) > 1) {
+            //	$.fn.fullpage.setScrollingSpeed(0);
+            //
+            //	leaveSection.css('margin-top', '0');
+            //	if (index < nextIndex) {
+            //		nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
+            //	} else {
+            //		nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
+            //	}
+            //} else {
+            //	$.fn.fullpage.setScrollingSpeed(1000);
+            //}
+          },
+          afterRender: function(){
+            createAds(activeSection);
+          }
+        });
+      });
 
       // Animation for logo in left nav.
       function logoAnim(){

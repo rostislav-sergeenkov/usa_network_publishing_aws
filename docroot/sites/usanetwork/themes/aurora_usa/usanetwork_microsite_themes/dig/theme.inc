@@ -23,7 +23,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'variables' => array(
         'aspots' => array(),
         'featured' => array(),
-        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_about' => array(
@@ -38,7 +37,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'source' => NULL,
           ),
         ),
-        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_characters' => array(
@@ -58,7 +56,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
               ),
             ),
 */
-            'background_url' => NULL,
           ),
         ),
         'characters_navigation' => NULL,
@@ -81,7 +78,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'pages' => array(
           'html' => NULL,
         ),
-        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_videos' => array(
@@ -95,7 +91,6 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'in_player' => NULL,
-        'background_url' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_videos_player' => array(

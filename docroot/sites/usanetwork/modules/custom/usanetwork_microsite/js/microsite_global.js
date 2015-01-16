@@ -244,7 +244,7 @@
 
 //			setOmnitureData();
       parseUrl();
-      createAds(activeSection);
+//      createAds(activeSection);
 
 
       //=========== Init one page scroll for microsite ===============//

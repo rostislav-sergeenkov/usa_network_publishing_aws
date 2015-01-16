@@ -13,43 +13,37 @@
  */
 ?>
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_about"></div>
-<?php if (!empty($background_url)): ?>
-<div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
+<?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
+<div class="left-pane">
+  <div class="caption">
+    <ul>
+      <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
+        <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
+          <li<?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
+            <?php if (!empty($about_quotation['quote'])): ?>
+              <div class="quote"><?php print $about_quotation['quote']; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($about_quotation['source'])): ?>
+              <div class="quote-source"><?php $about_quotation['source']; ?></div>
+            <?php endif; ?>
+          </li>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+</div>
 <?php endif; ?>
-  <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
-  <div class="left-pane">
-    <div class="caption">
-      <ul>
-        <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
-          <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
-            <li<?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
-              <?php if (!empty($about_quotation['quote'])): ?>
-                <div class="quote"><?php print $about_quotation['quote']; ?></div>
-              <?php endif; ?>
-              <?php if (!empty($about_quotation['source'])): ?>
-                <div class="quote-source"><?php $about_quotation['source']; ?></div>
-              <?php endif; ?>
-            </li>
-          <?php endif; ?>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-  </div>
+<?php if (!empty($title) || !empty($description)): ?>
+<div class="right-pane">
+  <?php if (!empty($title)): ?>
+    <h2><?php print $title; ?></h2>
   <?php endif; ?>
-  <?php if (!empty($title) || !empty($description)): ?>
-  <div class="right-pane">
-    <?php if (!empty($title)): ?>
-      <h2><?php print $title; ?></h2>
+  <div class="underline"></div>
+  <div class="text">
+    <?php if (!empty($description)): ?>
+      <?php print $description ?>
     <?php endif; ?>
-    <div class="underline"></div>
-    <div class="text">
-      <?php if (!empty($description)): ?>
-        <?php print $description ?>
-      <?php endif; ?>
-    </div>
-    <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
   </div>
-  <?php endif; ?>
-<?php if (!empty($background_url)): ?>
+  <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
 </div>
 <?php endif; ?>

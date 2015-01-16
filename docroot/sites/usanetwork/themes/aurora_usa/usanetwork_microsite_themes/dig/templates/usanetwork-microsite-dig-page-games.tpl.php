@@ -9,18 +9,12 @@
  */
 ?>
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_games"></div>
-<?php if (!empty($background_url)): ?>
-<div class="microsite-section-container" data-bg-url="<?php print $background_url; ?>">
-<?php endif; ?>
-  <?php if (!empty($pages['html'])): ?>
-  <div id="viewport">
-    <ul>
-      <li>
-        <?php print $pages['html']; ?>
-      </li>
-    </ul>
-  </div>
-  <?php endif; ?>
-<?php if (!empty($background_url)): ?>
+<?php if (!empty($pages['html'])): ?>
+<div id="viewport">
+  <ul>
+    <li>
+      <?php print $pages['html']; ?>
+    </li>
+  </ul>
 </div>
 <?php endif; ?>

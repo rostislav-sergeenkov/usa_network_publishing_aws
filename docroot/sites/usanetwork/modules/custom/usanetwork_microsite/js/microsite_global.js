@@ -251,8 +251,8 @@
 
 			$('#sections').fullpage({
 				scrollOverflow: true,
-				scrollingSpeed: 500,
-        verticalCentered: false,
+				scrollingSpeed: 1000,
+        //verticalCentered: false,
         //autoScrolling: false,
 				onLeave: function (index, nextIndex, direction) {
 
@@ -277,18 +277,18 @@
           logoAnim();
 
 
-					if (Math.abs(index - nextIndex) > 1) {
-						$.fn.fullpage.setScrollingSpeed(0);
-
-						leaveSection.css('margin-top', '0');
-						if (index < nextIndex) {
-							nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
-						} else {
-							nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
-						}
-					} else {
-						$.fn.fullpage.setScrollingSpeed(1000);
-					}
+					//if (Math.abs(index - nextIndex) > 1) {
+					//	$.fn.fullpage.setScrollingSpeed(0);
+					//
+					//	leaveSection.css('margin-top', '0');
+					//	if (index < nextIndex) {
+					//		nextSection.css('margin-top', '300px').animate({'margin-top': '0'}, 600);
+					//	} else {
+					//		nextSection.css('margin-top', '-300px').animate({'margin-top': '0'}, 600);
+					//	}
+					//} else {
+					//	$.fn.fullpage.setScrollingSpeed(1000);
+					//}
 				},
         afterRender: function(){
           createAds(activeSection);

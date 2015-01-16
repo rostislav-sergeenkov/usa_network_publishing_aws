@@ -133,10 +133,10 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
-      $module_path . '/js/microsite_global.js'
+      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.slimscroll.min.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
     ),
     'css' => array(
-      $module_path . '/css/usanetwork_microsite.common.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),

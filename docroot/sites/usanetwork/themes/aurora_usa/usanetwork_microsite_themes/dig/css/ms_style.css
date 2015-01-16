@@ -678,7 +678,7 @@ you can use the generic selector below, but it's slower:
 
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 150px;
+  top: 120px;
   left: 15px;
   width: 250px;
   color: white;
@@ -881,8 +881,8 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .a-spot-panel #show-main-slider{
   overflow: hidden;
-  margin-bottom: 20px;
-  max-height: 506px;
+  margin-bottom: 0px;
+  max-height: 378px;
 }
 #microsite .a-spot-panel img{
   width: 100%;
@@ -950,7 +950,7 @@ you can use the generic selector below, but it's slower:
   display: none;
 }
 #microsite #main-slider {
-  margin: 0 auto;
+  margin: 0 auto 20px;
   position: relative;
   width: 930px;
 }
@@ -1035,6 +1035,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 506px;
     width: 1245px;
   }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 506px;
+  }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
     height: 563px;
@@ -1061,6 +1064,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (min-width: 1281px) and (max-width: 1600px){
   #microsite .usa-microsite-featured {
     width: 930px;
+  }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 378px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -1111,6 +1117,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .usa-microsite-featured {
     width: 615px;
+  }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 250px;
   }
 }
 
@@ -1232,9 +1241,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px){
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 350px;
-  }
+
 }
 @media (min-width: 769px) and (max-width: 990px){
 

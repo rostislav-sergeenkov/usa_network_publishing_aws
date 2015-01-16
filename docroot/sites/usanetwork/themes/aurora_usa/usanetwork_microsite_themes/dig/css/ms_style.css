@@ -379,7 +379,7 @@ you can use the generic selector below, but it's slower:
   font-size: 0.6em;
 }
 #microsite section .microsite-section-container .right-pane {
-  width: 45%;
+  width: 50%;
   margin-left: auto;
 }
 #microsite .right-pane h2 {
@@ -400,8 +400,8 @@ you can use the generic selector below, but it's slower:
   border-bottom: 1px solid #FFF;
 }
 #microsite .right-pane .text {
-  font-size: 0.8em;
-  line-height: 1.7em;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 #microsite .ad-leaderboard {
   width: 720px;
@@ -767,7 +767,7 @@ you can use the generic selector below, but it's slower:
   color: #FFF;
   line-height: 20px;
   letter-spacing: 1px;
-  padding-bottom: 20px;
+  margin-bottom: 15px;
   outline: none;
 }
 .page-node-microsite #left-nav #left-nav-links li.active a {
@@ -881,6 +881,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .a-spot-panel #show-main-slider{
   overflow: hidden;
+  margin-bottom: 20px;
   max-height: 506px;
 }
 #microsite .a-spot-panel img{
@@ -905,15 +906,15 @@ you can use the generic selector below, but it's slower:
 }
 
 #microsite .full-pane #video-container .video-title {
-  font-size: 32px;
-  margin: 10px 0;
+  font-size: 26px;
+  margin: 7px 0;
   text-transform: uppercase;
 }
 #microsite .full-pane #video-container .video-description {
-  font-size: 18px;
+  font-size: 16px;
 }
 #microsite .full-pane #video-container .video-info {
-  font-size: 18px;
+  font-size: 14px;
   color: #e5ce96;
 }
 #microsite .block-usanetwork-mpx-video {
@@ -1023,6 +1024,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
   margin: 0 0px 2px;
+}
+.microsite-gallery-meta h2 {
+  font-size: 26px;
 }
 
 /* media breakpoints*/
@@ -1318,6 +1322,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
     height: 39px;
     padding: 5px;
+  }
+  #microsite section .microsite-section-container .right-pane {
+    width: 100%;
   }
 }
 @media (max-width: 480px){

@@ -48,7 +48,7 @@
               <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
-          <li class="separator first">....</li>
+          <li class="separator"></li>
           <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external">Tour Israel
@@ -58,7 +58,6 @@
               <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film & TV Fund</a></li>
             </ul>
           </li>
-          <li class="separator last">....</li>
         </ul>
       </div>
     </div>

@@ -37,7 +37,6 @@
         </div>
       </div>
       <?php endif; ?>
-      <div class="ad-mobile ad300x50 dart-tag dart-name-300x50_ifr_reload_home"></div>
       <?php if (!empty($featured)): ?>
       <div class="usa-microsite-featured clearfix">
         <div class="carousel clearfix">

@@ -92,14 +92,6 @@
       function usa_refreshMicrositeAdsBySection(adContainer) {
         usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
         jQuery(adContainer + ' iframe').attr('src', jQuery(adContainer + ' iframe').attr('src'));
-
-/*
-        // omniture
-        if (typeof s_gi != 'undefined')
-        {
-          void (s.t());
-        }
-*/
       }
 
 
@@ -206,6 +198,7 @@
         return '';
       }
 
+      // OMNITURE
       // setOmnitureData
       function setOmnitureData(anchor){
         var anchor = anchor || null,

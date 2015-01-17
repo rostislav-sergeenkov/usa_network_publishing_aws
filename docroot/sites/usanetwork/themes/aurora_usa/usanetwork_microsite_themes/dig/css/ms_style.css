@@ -794,16 +794,10 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav #left-nav-links .separator {
   cursor: default;
-}
-.page-node-microsite #left-nav #left-nav-links .separator.first {
-  margin-top: 20px;
-}
-.page-node-microsite #left-nav #left-nav-links .separator.last {
-  line-height: 2px;
-}
-.page-node-microsite #left-nav #left-nav-links .separator,
-.page-node-microsite #left-nav #left-nav-links .separator:hover {
-  color: #CCC;
+  background-image: url("../images/divider.png");
+  width: 46px;
+  height: 1px;
+  margin: 48px 0 20px;
 }
 /* sub-nav */
 .page-node-microsite #left-nav #left-nav-links ul ul {
@@ -825,9 +819,6 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-links li.active li.active {
   color: #e5ce96;
   list-style: none;
-}
-#left-nav #left-nav-link .separator.first {
-  margin-top: 20px;
 }
 
 /* ADDED OUTSIDE OF SASS */
@@ -1027,6 +1018,41 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .microsite-gallery-meta h2 {
   font-size: 26px;
 }
+
+/* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
+ * ONE GALLERY AT LAUNCH
+ */
+#microsite #galleries-content .left-pane {
+  width: calc(100% - 320px);
+}
+#microsite #galleries-content h2 {
+  font-size: 1.7em;
+  line-height: 1.1em;
+  margin: 0 0 1.5em;
+  width: calc(100% - 216px);
+  float: left;
+}
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 20px;
+}
+#microsite .photo-caption {
+  width: 100%;
+  font-size: 1em;
+  line-height: 0.8em;
+  clear: both;
+}
+#microsite section#galleries-content .right-pane {
+  width: 300px;
+  margin-left: 20px;
+  float: right;
+}
+#microsite .episodic-galleries,
+.character-galleries {
+  display: none;
+}
+
 
 /* media breakpoints*/
 @media (min-width: 1601px) {

@@ -765,7 +765,7 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-links li,
 .page-node-microsite #left-nav #left-nav-links a {
   color: #FFF;
-  line-height: 20px;
+  line-height: 0.8em;
   letter-spacing: 1px;
   margin-bottom: 15px;
   outline: none;
@@ -968,6 +968,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 /*}*/
 #microsite .usa-microsite-featured {
   margin: 0 auto 100px;
+  max-width: 1245px;
 }
 
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
@@ -1060,6 +1061,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 
 /* media breakpoints*/
+@media (min-width: 1601px) and (max-width: 1840px){
+  #microsite #section-home .microsite-section-container {
+    padding-left: calc(1600px - 84%);
+  }
+}
+@media (min-width: 1401px) and (max-width: 1600px){
+  #microsite #section-videos .microsite-section-container {
+    padding-left: calc(1400px - 84%);
+  }
+}
 @media (min-width: 1601px) {
   #microsite #main-slider {
     height: 506px;
@@ -1082,7 +1093,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (min-width: 1401px){
   #microsite section .microsite-section-container{
     margin: 0 auto;
-    padding-left: 265px;
     max-width: 1500px;
   }
 }
@@ -1097,6 +1107,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .a-spot-panel #show-main-slider{
     max-height: 378px;
+  }
+  #microsite #section-home .microsite-section-container {
+    margin: 0 auto;
+    padding-left: calc(1400px - 91%);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -1140,7 +1154,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 
 }
-
+@media (min-width: 1025px) and (max-width: 1200px){
+  #microsite #section-home .microsite-section-container {
+    margin: 0 auto;
+    padding-left: 30px;
+  }
+}
 @media (max-width: 1200px){
   #microsite #main-slider {
     width: 615px;

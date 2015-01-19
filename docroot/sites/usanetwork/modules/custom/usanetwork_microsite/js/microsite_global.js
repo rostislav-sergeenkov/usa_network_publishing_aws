@@ -241,54 +241,56 @@
 
 
       //=========== Init one page scroll for microsite ===============//
-      $(window).load(function(){
-        $('#sections').fullpage({
-          scrollOverflow: true,
-          scrollingSpeed: 1000,
-          //scrollBar: true,
-          //normalScrollElements: '.section',
-          //verticalCentered: false,
-          //autoScrolling: false,
-          onLeave: function (index, nextIndex, direction) {
+      $('#sections').fullpage({
+        //touchSensitivity: 1000,
+        scrollingSpeed: 1000,
+        onLeave: function (index, nextIndex, direction) {
 
-            var menu_items = $('#left-nav-links-list li');
+          var menu_items = $('#left-nav-links-list li');
 
-            var sections = $('section'),
-                leaveSection = $(sections[index - 1]),
-                nextSection = $(sections[nextIndex - 1]);
+          var sections = $('section'),
+            leaveSection = $(sections[index - 1]),
+            nextSection = $(sections[nextIndex - 1]);
 
-            var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
-                anchorFull = basePath + '/' + anchor;
+          var anchor = $(menu_items[nextIndex - 1]).attr('data-menuanchor'),
+            anchorFull = basePath + '/' + anchor;
 
-            changeUrl(anchor, anchorFull);
-            createAds(anchor);
-            setOmnitureData(anchor);
+          changeUrl(anchor, anchorFull);
+          createAds(anchor);
+          setOmnitureData(anchor);
 
-            menu_items.removeClass('active');
-            $(menu_items[nextIndex - 1]).addClass('active');
+          menu_items.removeClass('active');
+          $(menu_items[nextIndex - 1]).addClass('active');
 
-            // Animation for logo in left nav.
-            logoAnim();
+          // Animation for logo in left nav.
+          logoAnim();
 
-          },
-          afterRender: function(){
-            createAds(activeSection);
-          }
-        });
+        },
+        afterRender: function(){
+          createAds(activeSection);
+          //$('.fp-tableCell').each(function () {
+          //  var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
+          //  $(this).slimScroll({
+          //    color: '#ffffff',
+          //    size: '10px',
+          //    height: Height,
+          //    alwaysVisible: true,
+          //    wheelStep: 5
+          //  });
+          //});
+          $('section').each(function () {
+            var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
+
+            $(this).height(Height);
+
+            $(this).mCustomScrollbar({
+              theme:"3d"
+            });
+          });
+
+        }
       });
 
-      // test init slimscroll
-      //$(document).ready(function(){
-      //  $('section.clearfix').each(function(){
-      //      console.log('section scroll');
-      //    $(this).slimScroll({
-      //      color: '#ffffff',
-      //      size: '10px',
-      //      height: '100%',
-      //      alwaysVisible: true
-      //    });
-      //  })
-      //});
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -437,8 +439,6 @@
   $(document).ready(function() {
     if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
       $('.scroll-to-next').css('display', 'none');
-    } else {
-      $('.scroll-to-next').css('display', 'block');
     }
   });
 })(jQuery);

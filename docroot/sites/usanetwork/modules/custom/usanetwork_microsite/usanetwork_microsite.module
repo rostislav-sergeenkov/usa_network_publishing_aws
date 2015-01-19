@@ -484,9 +484,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper) {
   $section_object = $section_wrapper->value();
-  $theme_variables = array(
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-  );
+  $theme_variables = array();
 
   if (!empty($section_object->field_ms_videos)) {
     $video_files = $section_wrapper->field_ms_videos->value();
@@ -692,7 +690,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
-        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
+//        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
       $i++;

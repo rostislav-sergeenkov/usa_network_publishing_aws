@@ -75,11 +75,7 @@
         <?php endif; ?>
         <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
         <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
-          <?php if (!empty($section['background_url'])): ?>
-          <div class="microsite-section-container" data-bg-url="<?php print $section['background_url']; ?>">
-          <?php else: ?>
-          <div class="microsite-section-container" data-bg-url="">
-          <?php endif; ?>
+          <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
             <?php print $section['content']; ?>
           <?php if (empty($section['is_last'])): ?>
             <?php print $section_separator; ?>

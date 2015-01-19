@@ -972,7 +972,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
-  margin: 15px -7px;
+  margin: 15px 0px;
   height: auto;
 }
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.disabled {
@@ -988,7 +988,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item,
 #microsite .usa-microsite-featured .microsite-carousel-processed li.carousel-item {
   float: left;
-  margin: 0 5px;
+  margin: 0 15px 0 0;
   height: 250px;
   width: 300px;
 }
@@ -1019,6 +1019,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 .microsite-gallery-meta h2 {
   font-size: 26px;
+}
+
+.usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
+  border: 0;
+  outline: none;
+}
+.usa-microsite-featured .flex-direction-nav a.flex-prev {
+  left: -35px;
+}
+.usa-microsite-featured .flex-direction-nav a.flex-next {
+  right: -35px;
 }
 
 /* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE

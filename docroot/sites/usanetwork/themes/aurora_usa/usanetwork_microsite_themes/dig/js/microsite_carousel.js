@@ -17,6 +17,23 @@
         }
       }
     },
+    flexDestroy: function (selector) {
+    var el = $(selector);
+    var elClean = el.clone();
+
+    elClean.find('.flex-viewport').children().unwrap();
+    elClean
+        .find('.clone, .flex-direction-nav, .flex-control-nav')
+        .remove()
+        .end()
+        .find('*').removeAttr('style').removeClass (function (index, css) {
+      return (css.match (/\bflex\S+/g) || []).join(' ');
+    });
+
+    elClean.insertBefore(el);
+    elClean.next().remove();
+
+  },
     setCollapsibleContentHeight: function($content) {
       var $container = $content.closest('.expandable-container');
       var $toggle = $content.parent().children('.expandable-toggle-wrap');
@@ -76,11 +93,6 @@
       }
     },
     initCarousel: function() {
-      $('.microsite-carousel-processed').each(function() {
-        var $self = $(this);
-        $self.find('.carousel-btns').remove();
-        $self.removeClass('microsite-carousel-processed');
-      });
 
       if ($(window).width() < 769) {
         // items should collapse
@@ -88,13 +100,15 @@
           $(this).once('microsite-carousel-collapsible', function() {
             var $container = $(this);
             var $content = $container.children('.carousel-viewport');
-            var $carousel = $container.find('ul').eq(0);
+            var $carousel = $container.find('.microsite-carousel');
             // destroy carousel
-            $carousel.triggerHandler('_cfs_triggerEvent', ['destroy', true]);
+            Drupal.behaviors.microsite_carousel.flexDestroy($carousel);
 
-            $container.addClass('expandable-container');
+            $container.addClass('expandable-container').removeClass('microsite-carousel-processed');
             $content.addClass('expandable-content');
-
+            if ($(window).width() < 641) {
+              $content.addClass('mobile');
+            }
             // Force overflow: hidden;
             $content.css({
               overflow: 'hidden'
@@ -142,31 +156,30 @@
         });
 
         $('.carousel').each(function() {
-          $(this).once('microsite-carousel', function() {
-            var $container = $(this);
-            // append controls
-            $('<div class="carousel-btns"><div class="prev btns">Previous</div><div class="next btns">Next</div></div>').appendTo($container);
+          if(!$(this).hasClass('microsite-carousel-processed')){
+            $(this).once('microsite-carousel', function() {
 
-            // init carousel
-            var $carousel = $container.find('ul').eq(0);
-            $carousel.carouFredSel({
-                  auto: false,
-                  circular: false,
-                  infinite: false,
-                  align: 'left',
-                  prev: $container.find('.carousel-btns .prev'),
-                  next: $container.find('.carousel-btns .next'),
-                  swipe: {
-                    onTouch: true,
-                    onMouse: true
-                  }
-                },
-                {
-                  wrapper: {
-                    classname: "microsite-carousel"
-                  }
-                });
-          });
+              $carousel_selector = $('.usa-microsite-featured ul');
+              $touch = true;
+              if ($carousel_selector.find('li').length <= 1){
+                $touch = false;
+              }
+              $carousel_selector
+                  .parent()
+                  .flexslider({
+                    animationLoop: false,
+                    animation: 'slide',
+                    slideshow: false,
+                    controlNav: true,
+                    itemWidth: 300,
+                    itemMargin: 15,
+                    directionNav: true,
+                    touch: $touch
+                  });
+
+            });
+          }
+
         });
       }
     },
@@ -181,6 +194,19 @@
       doit = setTimeout(function() {
         Drupal.behaviors.microsite_carousel.replaceAd();
         Drupal.behaviors.microsite_carousel.initCarousel();
+        if ($(window).width() < 641) {
+          $('.expandable-content').each(function() {
+            if(!$(this).hasClass('mobile')){
+              Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($(this));
+              $(this).addClass('mobile');
+            }
+          });
+        } else {
+          $('.expandable-content.mobile').each(function() {
+            Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($(this));
+            $(this).removeClass('mobile');
+          });
+        }
         clearTimeout(doit);
         doit = null
       }, 50);

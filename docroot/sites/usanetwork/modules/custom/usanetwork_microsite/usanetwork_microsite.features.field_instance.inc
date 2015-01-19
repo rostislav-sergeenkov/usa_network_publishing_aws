@@ -1183,6 +1183,70 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_microsite-field_pathauto_alias'
+  $field_instances['node-usanetwork_microsite-field_pathauto_alias'] = array(
+    'bundle' => 'usanetwork_microsite',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_pathauto_alias',
+    'label' => 'Base Path',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_microsite-field_show'
   $field_instances['node-usanetwork_microsite-field_show'] = array(
     'bundle' => 'usanetwork_microsite',
@@ -1575,6 +1639,7 @@ function usanetwork_microsite_field_default_field_instances() {
   t('A Spot');
   t('Autoscroll A-spot carousel');
   t('Background Image');
+  t('Base Path');
   t('Catchall Page');
   t('Description');
   t('Enabled');

@@ -34,8 +34,8 @@
       // (ex: usanetwork_microsite_themes/dig/js/microsite_config.js),
       // can we be sure they'd load before this javascript file? Or should we
       // declare these variables as part of the Drupal.settings object?
-      var siteName = 'Dig', // @TODO: Pull this from the database
-          basePath = '/dig', // @TODO: Pull this from database or generate this from a database field (title?)
+      var siteName = Drupal.settings.microsites_settings.title, // @TODO: Pull this from the database
+          basePath = Drupal.settings.microsites_settings.base_path, // @TODO: Pull this from database or generate this from a database field (title?)
           shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
           shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
           shareBarTitle = 'Dig Gallery Testing Sharebar Title',
@@ -58,33 +58,33 @@
 
 
       // SHARE BAR
-      yepnope.injectJs("/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js", function () {
-        yepnope.injectCss("/sites/usanetwork/modules/contrib/gigya/css/gigya.css", function () {
-
-          var url = window.location.href;
-
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gigya-share",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          }
-          sharebar.gigyaSharebar.ua = {
-            description: shareBarDescription,
-            imageBhev: "url",
-            imageUrl: shareBarImageUrl,
-            linkBack: url,
-            title: shareBarTitle
-          }
-          if (Drupal.gigya) {
-            Drupal.gigya.showSharebar(sharebar);
-          }
-
-        });
-      });
+//      yepnope.injectJs("/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js", function () {
+//        yepnope.injectCss("/sites/usanetwork/modules/contrib/gigya/css/gigya.css", function () {
+//
+//          var url = window.location.href;
+//
+//          sharebar = new Object();
+//          sharebar.gigyaSharebar = {
+//            containerID: "gigya-share",
+//            iconsOnly: true,
+//            layout: "horizontal",
+//            shareButtons: "facebook, twitter, tumblr, pinterest, share",
+//            shortURLs: "never",
+//            showCounts: "none"
+//          }
+//          sharebar.gigyaSharebar.ua = {
+//            description: shareBarDescription,
+//            imageBhev: "url",
+//            imageUrl: shareBarImageUrl,
+//            linkBack: url,
+//            title: shareBarTitle
+//          }
+//          if (Drupal.gigya) {
+//            Drupal.gigya.showSharebar(sharebar);
+//          }
+//
+//        });
+//      });
 
 
       // ADS

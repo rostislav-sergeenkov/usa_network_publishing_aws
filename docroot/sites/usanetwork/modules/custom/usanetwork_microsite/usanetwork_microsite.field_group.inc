@@ -55,6 +55,7 @@ function usanetwork_microsite_field_group_info() {
       1 => 'field_ms_theme',
       2 => 'field_ms_tune_in',
       3 => 'field_show',
+      4 => 'field_pathauto_alias',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

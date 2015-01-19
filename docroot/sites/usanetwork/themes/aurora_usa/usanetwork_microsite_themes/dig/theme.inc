@@ -131,6 +131,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.slimscroll.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.mCustomScrollbar.concat.min.js'
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
     ),
     'css' => array(
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',

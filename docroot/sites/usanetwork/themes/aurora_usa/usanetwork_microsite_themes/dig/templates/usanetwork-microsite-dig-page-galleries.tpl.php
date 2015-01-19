@@ -27,11 +27,6 @@
     <div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden">
       <div id="gigya-share"></div>
     </div>
-    <?php if (!empty($gallery['description'])): ?>
-      <div class="description">
-        <?php print $gallery['description']; ?>
-      </div>
-    <?php endif; ?>
   </div>
   <?php endforeach; ?>
 </div>

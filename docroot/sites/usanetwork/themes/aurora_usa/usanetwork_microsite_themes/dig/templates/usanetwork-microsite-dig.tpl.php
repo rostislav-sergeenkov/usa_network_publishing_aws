@@ -48,7 +48,7 @@
               <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
-          <li class="separator first">....</li>
+          <li class="separator"></li>
           <li class="external"><a href="http://digdecoded.usanetwork.com" target="_blank">Dig Decoded</a></li>
           <li class="external"><a href="http://www.usanetwork.com/dig/wattpad" target="_blank">Wattpad</a></li>
           <li class="external">Tour Israel
@@ -58,7 +58,6 @@
               <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film & TV Fund</a></li>
             </ul>
           </li>
-          <li class="separator last">....</li>
         </ul>
       </div>
     </div>
@@ -76,11 +75,7 @@
         <?php endif; ?>
         <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
         <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
-          <?php if (!empty($section['background_url'])): ?>
-          <div class="microsite-section-container" data-bg-url="<?php print $section['background_url']; ?>">
-          <?php else: ?>
-          <div class="microsite-section-container" data-bg-url="">
-          <?php endif; ?>
+          <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
             <?php print $section['content']; ?>
           <?php if (empty($section['is_last'])): ?>
             <?php print $section_separator; ?>

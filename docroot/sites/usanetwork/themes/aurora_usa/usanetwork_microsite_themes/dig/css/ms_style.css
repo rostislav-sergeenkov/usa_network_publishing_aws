@@ -293,6 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 0;
   padding: 5px 0 0;
+  /*overflow-y: auto;*/
 }
 #microsite .section{
   opacity: 0;
@@ -343,9 +344,9 @@ you can use the generic selector below, but it's slower:
   font-size: 2em;
   margin: 30px 0 10px;
 }
-#microsite .scroll {
+#microsite section .microsite-section-container div.scroll {
   width: 4em;
-  margin: 0 auto 100px;
+  margin: 0 auto 130px;
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -404,8 +405,7 @@ you can use the generic selector below, but it's slower:
   line-height: 1.5em;
 }
 #microsite .ad-leaderboard {
-  width: 720px;
-  height: 90px;
+  min-height: 90px;
   margin: 0 auto;
 }
 #microsite .ad300x250,
@@ -678,7 +678,7 @@ you can use the generic selector below, but it's slower:
 
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 150px;
+  top: 120px;
   left: 15px;
   width: 250px;
   color: white;
@@ -795,16 +795,10 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav #left-nav-links .separator {
   cursor: default;
-}
-.page-node-microsite #left-nav #left-nav-links .separator.first {
-  margin-top: 20px;
-}
-.page-node-microsite #left-nav #left-nav-links .separator.last {
-  line-height: 2px;
-}
-.page-node-microsite #left-nav #left-nav-links .separator,
-.page-node-microsite #left-nav #left-nav-links .separator:hover {
-  color: #CCC;
+  background-image: url("../images/divider.png");
+  width: 46px;
+  height: 1px;
+  margin: 48px 0 20px;
 }
 /* sub-nav */
 .page-node-microsite #left-nav #left-nav-links ul ul {
@@ -826,9 +820,6 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-links li.active li.active {
   color: #e5ce96;
   list-style: none;
-}
-#left-nav #left-nav-link .separator.first {
-  margin-top: 20px;
 }
 
 /* ADDED OUTSIDE OF SASS */
@@ -873,7 +864,7 @@ you can use the generic selector below, but it's slower:
 
 /*corrected & add styles*/
 #microsite section .microsite-section-container{
-  margin: 25px  17px 0 265px;
+  margin: 0 17px 0 265px;
   max-width: 1500px;
 }
 #microsite section .microsite-section-container > div{
@@ -881,8 +872,8 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .a-spot-panel #show-main-slider{
   overflow: hidden;
-  margin-bottom: 20px;
-  max-height: 506px;
+  margin-bottom: 0px;
+  max-height: 378px;
 }
 #microsite .a-spot-panel img{
   width: 100%;
@@ -950,7 +941,7 @@ you can use the generic selector below, but it's slower:
   display: none;
 }
 #microsite #main-slider {
-  margin: 0 auto;
+  margin: 0 auto 20px;
   position: relative;
   width: 930px;
 }
@@ -1029,11 +1020,53 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   font-size: 26px;
 }
 
+/* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
+ * ONE GALLERY AT LAUNCH
+ */
+#microsite #galleries-content .left-pane {
+  width: calc(100% - 320px);
+}
+#microsite #galleries-content h2 {
+  font-size: 1.7em;
+  line-height: 1.1em;
+  margin: 0 0 1.5em;
+  width: calc(100% - 216px);
+  float: left;
+}
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 20px;
+  clear: none;
+}
+#microsite .photo-caption {
+  width: 100%;
+  font-size: 1em;
+  line-height: 0.8em;
+  clear: both;
+}
+#microsite section#galleries-content .right-pane {
+  width: 300px;
+  margin-left: 20px;
+  float: right;
+}
+#microsite .episodic-galleries,
+.character-galleries {
+  display: none;
+}
+.region-footer {
+  clear: both;
+}
+
+
 /* media breakpoints*/
 @media (min-width: 1601px) {
   #microsite #main-slider {
     height: 506px;
     width: 1245px;
+  }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 506px;
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px;
@@ -1048,7 +1081,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (min-width: 1401px){
   #microsite section .microsite-section-container{
-    margin: 25px  auto 0;
+    margin: 0 auto;
     padding-left: 265px;
     max-width: 1500px;
   }
@@ -1061,6 +1094,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (min-width: 1281px) and (max-width: 1600px){
   #microsite .usa-microsite-featured {
     width: 930px;
+  }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 378px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -1083,7 +1119,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 0 0 10px;
   }
   #microsite section .microsite-section-container {
-    margin: 25px 17px 0 190px;
+    margin: 0 17px 0 190px;
   }
   #microsite .full-pane {
     max-width: 615px;
@@ -1111,6 +1147,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .usa-microsite-featured {
     width: 615px;
+  }
+  #microsite .a-spot-panel #show-main-slider{
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 1120px) {
+  #microsite #galleries-content h2 {
+    width: 100%;
+  }
+  #microsite #gigya-share {
+    clear: left;
+    margin-left: 0;
   }
 }
 
@@ -1232,9 +1281,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px){
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 350px;
-  }
+
 }
 @media (min-width: 769px) and (max-width: 990px){
 
@@ -1248,13 +1295,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 768px){
+  #microsite section .microsite-section-container{
+    margin-bottom: 150px;
+  }
   #microsite .usa-microsite-featured {
     margin: 0 auto 130px;
+  }
+  #microsite section .microsite-section-container div.scroll{
+    display: none;
   }
 }
 @media (max-width: 640px){
   #microsite section .microsite-section-container {
-    margin: 0 auto;
+    margin: 0 auto 150px;
     width: 300px;
   }
   #microsite #main-slider {
@@ -1325,6 +1378,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite section .microsite-section-container .right-pane {
     width: 100%;
+  }
+  #microsite #galleries-content .left-pane,
+  #microsite section#galleries-content .right-pane {
+    width: 100%;
+    clear: left;
+    float: left;
+  }
+  #microsite .episodic-galleries,
+  .character-galleries {
+    display: none;
   }
 }
 @media (max-width: 480px){

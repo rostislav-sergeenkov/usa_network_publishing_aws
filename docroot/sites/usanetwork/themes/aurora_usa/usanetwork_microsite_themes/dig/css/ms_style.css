@@ -866,7 +866,6 @@ you can use the generic selector below, but it's slower:
 #microsite section .microsite-section-container{
   margin: 0 17px 0 265px;
   max-width: 1500px;
-  position: relative;
 }
 #microsite section .microsite-section-container > div{
   width: 100%;

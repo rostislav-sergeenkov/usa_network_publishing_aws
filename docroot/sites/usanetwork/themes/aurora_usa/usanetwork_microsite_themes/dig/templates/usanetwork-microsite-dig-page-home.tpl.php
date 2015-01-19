@@ -41,16 +41,18 @@
       <div class="usa-microsite-featured clearfix">
         <div class="carousel clearfix">
           <div class="carousel-viewport">
-            <ul>
-              <?php foreach ($featured as $f_key => $feature): ?>
-                <?php if ($f_key == 1): ?>
-                <li class="ad ad300x250 dart-tag dart-name-300x250_ifr_reload_home carousel-item"></li>
-                <?php endif; ?>
-                <li class="carousel-item">
-                  <?php print $feature; ?>
-                </li>
-              <?php endforeach; ?>
-            </ul>
+            <div class="microsite-carousel">
+              <ul class="slides">
+                <?php foreach ($featured as $f_key => $feature): ?>
+                  <?php if ($f_key == 1): ?>
+                    <li class="ad ad300x250 dart-tag dart-name-300x250_ifr_reload_home carousel-item"></li>
+                  <?php endif; ?>
+                  <li class="carousel-item">
+                    <?php print $feature; ?>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

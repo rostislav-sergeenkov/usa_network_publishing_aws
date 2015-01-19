@@ -245,6 +245,8 @@
         $('#sections').fullpage({
           scrollOverflow: true,
           scrollingSpeed: 1000,
+          //scrollBar: true,
+          //normalScrollElements: '.section',
           //verticalCentered: false,
           //autoScrolling: false,
           onLeave: function (index, nextIndex, direction) {
@@ -274,6 +276,19 @@
           }
         });
       });
+
+      // test init slimscroll
+      //$(document).ready(function(){
+      //  $('section.clearfix').each(function(){
+      //      console.log('section scroll');
+      //    $(this).slimScroll({
+      //      color: '#ffffff',
+      //      size: '10px',
+      //      height: '100%',
+      //      alwaysVisible: true
+      //    });
+      //  })
+      //});
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -417,11 +432,15 @@
 				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
 				}
       });
-
-
-
     }
   }
+  $(document).ready(function() {
+    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+      $('.scroll-to-next').css('display', 'none');
+    } else {
+      $('.scroll-to-next').css('display', 'block');
+    }
+  });
 })(jQuery);
 
 // Global microsite functions

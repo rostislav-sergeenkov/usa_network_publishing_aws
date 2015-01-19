@@ -293,6 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 0;
   padding: 5px 0 0;
+  /*overflow-y: auto;*/
 }
 #microsite .section{
   opacity: 0;
@@ -345,7 +346,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite section .microsite-section-container div.scroll {
   width: 4em;
-  margin: 0 auto 100px;
+  margin: 0 auto 130px;
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -1054,6 +1055,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .character-galleries {
   display: none;
 }
+.region-footer {
+  clear: both;
+}
 
 
 /* media breakpoints*/
@@ -1310,13 +1314,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 768px){
+  #microsite section .microsite-section-container{
+    margin-bottom: 150px;
+  }
   #microsite .usa-microsite-featured {
     margin: 0 auto 130px;
+  }
+  #microsite section .microsite-section-container div.scroll{
+    display: none;
   }
 }
 @media (max-width: 640px){
   #microsite section .microsite-section-container {
-    margin: 0 auto;
+    margin: 0 auto 150px;
     width: 300px;
   }
   #microsite #main-slider {

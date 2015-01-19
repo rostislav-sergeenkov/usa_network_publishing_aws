@@ -484,9 +484,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
  */
 function _usanetwork_microsite_render_page_videos($section_wrapper) {
   $section_object = $section_wrapper->value();
-  $theme_variables = array(
-    'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-  );
+  $theme_variables = array();
 
   if (!empty($section_object->field_ms_videos)) {
     $video_files = $section_wrapper->field_ms_videos->value();
@@ -692,7 +690,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
         'type' => $section_base_variables['type'],
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
-        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
+//        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
         'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
       );
       $i++;
@@ -918,8 +916,10 @@ function _usanetwork_microsite_theme_render_multiple_node_items($node_wrapper_fi
  */
 function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_field, $view_mode = 'teaser', $first_view_mode = '') {
   $items = array();
-
+  $aspot_video_fid = NULL;
+  $video_url_param = '';
   $count = 0;
+  $node = menu_get_object();
   foreach ($node_wrapper_field as $field_wrapper) {
     $mp4_url = $field_wrapper->field_mp4_video_url->value();
     $webm_url = $field_wrapper->field_webm_video_url->value();
@@ -927,16 +927,33 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
     if(!empty($mp4_url) && !empty($webm_url)) {
       $a_spot_with_intro = TRUE;
     }
+    $a_spot_link = $field_wrapper->field_usa_aspot_link->value();
+    if(!empty($a_spot_link['url'])) {
+      $video_url_param = _usanetwork_microsite_get_video_parameter_by_url($a_spot_link['url']);
+      $file = _usanetwork_microsite_get_video_file_by_url($node, $video_url_param);
+      $aspot_video_fid = $file->fid;
+    }
     $current_view_mode = ($count == 0 && $first_view_mode != '') ? $first_view_mode : $view_mode;
     $field_view = node_view($field_wrapper->value(), $current_view_mode);
     $items[] = array(
       'rendered_item' => drupal_render($field_view),
       'a_spot_with_intro' => $a_spot_with_intro,
+      'video_param' => $video_url_param,
+      'fid' => $aspot_video_fid,
     );
     $count++;
   }
 
   return $items;
+}
+
+function _usanetwork_microsite_get_video_parameter_by_url($url) {
+  $parts = explode('videos/', $url);
+  if(isset($parts[1])) {
+    $parts_with_param = explode('/', $parts[1]);
+    return $parts_with_param[0];
+  }
+  return NULL;
 }
 
 /**

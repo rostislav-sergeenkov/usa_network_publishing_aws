@@ -1036,6 +1036,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 196px;
   float: left;
   margin-left: 20px;
+  clear: none;
 }
 #microsite .photo-caption {
   width: 100%;
@@ -1145,6 +1146,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .a-spot-panel #show-main-slider{
     max-height: 250px;
+  }
+}
+
+@media (max-width: 1120px) {
+  #microsite #galleries-content h2 {
+    width: 100%;
+  }
+  #microsite #gigya-share {
+    clear: left;
+    margin-left: 0;
   }
 }
 
@@ -1357,6 +1368,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite section .microsite-section-container .right-pane {
     width: 100%;
+  }
+  #microsite #galleries-content .left-pane,
+  #microsite section#galleries-content .right-pane {
+    width: 100%;
+    clear: left;
+    float: left;
+  }
+  #microsite .episodic-galleries,
+  .character-galleries {
+    display: none;
   }
 }
 @media (max-width: 480px){

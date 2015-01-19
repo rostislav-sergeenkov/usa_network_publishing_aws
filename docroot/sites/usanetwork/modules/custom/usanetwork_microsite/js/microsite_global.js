@@ -278,7 +278,7 @@
           //    wheelStep: 5
           //  });
           //});
-          $('section').each(function () {
+          $('.fp-tableCell').each(function () {
             var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
 
             $(this).height(Height);

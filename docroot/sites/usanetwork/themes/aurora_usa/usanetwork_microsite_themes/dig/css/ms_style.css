@@ -1225,7 +1225,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     color: #ffffff;
   }
   #microsite section .microsite-section-container {
-    max-height: 800px;
+    mix-height: 800px;
   }
 }
 @media (max-width: 874px){

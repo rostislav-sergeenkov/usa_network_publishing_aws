@@ -885,6 +885,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .a-spot-panel.tiles .flex-control-paging{
   bottom: 30px;
+  left: 50%;
   margin-left: -24px;
   position: absolute;
   top: auto;
@@ -1029,6 +1030,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
   outline: none;
+  opacity: 1;
 }
 .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;
@@ -1074,7 +1076,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .region-footer {
   clear: both;
 }
-
+#microsite .mCSB_inside > .mCSB_container {
+  margin-right: 0px;
+}
 
 /* media breakpoints*/
 @media (min-width: 1601px) and (max-width: 1840px){
@@ -1219,6 +1223,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
     color: #ffffff;
+  }
+  #microsite section .microsite-section-container {
+    max-height: 800px;
   }
 }
 @media (max-width: 874px){

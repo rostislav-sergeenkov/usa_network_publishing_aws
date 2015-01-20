@@ -28,7 +28,7 @@
                         <?php print $video['rendered']; ?>
                       </li>
                     <?php endif; ?>
-                    <?php if ($v_key == 1): ?><li class="views-row grid-item"><div id="ad_300x250_1"></div></li><?php endif; ?>
+                    <?php if ($v_key == 1): ?><li class="views-row grid-item ad"><div id="ad_300x250_1"></div></li><?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               </div>

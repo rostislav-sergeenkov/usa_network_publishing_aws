@@ -1020,3 +1020,12 @@ function usanetwork_core_update_7164() {
     module_enable(array('usanetwork_search'));
   }
 }
+
+/**
+ * Enables module usanetwork_dynamic_entity_reference.
+ */
+function usanetwork_core_update_7165() {
+  if (!module_exists('usanetwork_dynamic_entity_reference')) {
+    module_enable(array('usanetwork_dynamic_entity_reference'));
+  }
+}

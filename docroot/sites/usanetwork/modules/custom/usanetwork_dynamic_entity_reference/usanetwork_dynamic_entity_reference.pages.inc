@@ -69,6 +69,7 @@ function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $t
   }
 
   $entity_info = entity_get_info($target_type);
+
   if (isset($match) && isset($entity_info['entity keys']['label']) && $label_key = $entity_info['entity keys']['label']) {
     $query->propertyCondition($label_key, $match, $match_operator);
     $query->propertyOrderBy($label_key, 'ASC');
@@ -97,6 +98,8 @@ function usanetwork_dynamic_entity_reference_build_entity_query($target_type, $t
  *   Array of entity labels keyed by bundle and ID.
  */
 function usanetwork_dynamic_entity_reference_get_referenceable_entities($target_type, $target_bundles, $match, $match_operator, $limit) {
+  $target_bundles = _usanetwork_dynamic_entity_reference_filter_bundles($target_type, $target_bundles);
+
   $query = usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match, $match_operator);
   $query->range(0, $limit);
 
@@ -116,4 +119,24 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($target_
     $options[$bundle][$entity_id] = check_plain($wrapper->label() . ' (' . $wrapper->type() . ' of ' . $bundle . ')');
   }
   return $options;
+}
+
+/**
+ * Removes bundles of other entities for current query.
+ */
+function _usanetwork_dynamic_entity_reference_filter_bundles($entity_type, $bundles) {
+  $entity_info = entity_get_info($entity_type);
+  $filtred_bundles = array();
+
+  if (!empty($entity_info['bundles'])) {
+    $available_bundles = array_keys($entity_info['bundles']);
+
+    foreach ($bundles as $bundle) {
+      if (in_array($bundle, $available_bundles)) {
+        $filtred_bundles[$bundle] = $bundle;
+      }
+    }
+  }
+
+  return $filtred_bundles;
 }

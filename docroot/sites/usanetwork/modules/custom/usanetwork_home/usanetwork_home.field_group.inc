@@ -244,5 +244,33 @@ If more than 4 are added a carousel will be triggered on page load so content ca
   );
   $export['group_slide_settings|node|usa_homepage|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hp_content_carousels|node|usa_homepage|form';
+  $field_group->group_name = 'group_hp_content_carousels';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usa_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content carousels',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_hp_content_carousel',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Content carousels',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-hp-content-carousels field-group-fieldset',
+        'description' => 'This carousels display below the show card carousel on the homepage.',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_hp_content_carousels|node|usa_homepage|form'] = $field_group;
+
   return $export;
 }

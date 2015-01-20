@@ -1,7 +1,7 @@
 name = 'USA Network Dynamic Entity Reference'
 description = 'Provides an entity reference field that can reference multiple entity types.'
 package = 'USA Network'
-version = '7.x-1.0-1'
+version = '7.x-1.0.2'
 core = '7.x'
 project = "usanetwork_dynamic_entity_reference"
 dependencies[] = entityreference

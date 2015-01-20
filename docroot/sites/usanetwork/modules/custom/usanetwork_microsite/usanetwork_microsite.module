@@ -132,8 +132,33 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         }
       }
 
+      
+      $base_path_field = field_get_items('node', $node, 'field_pathauto_alias');
+      if ($base_path_field) {
+        $base_path_field = reset($base_path_field);
+      }
+//      $share_title_field = field_get_items('node', $node, 'field_share_title');
+//      if ($share_title_field) {
+//        $share_title_field = reset($share_title_field);
+//      }
+//      $share_description_field = field_get_items('node', $node, 'field_share_description');
+//      if ($share_description_field) {
+//        $share_description_field = reset($share_description_field);
+//      }
+//      $share_image_field = field_get_items('node', $node, 'field_share_image');
+//      if ($share_image_field) {
+//        $share_image_field = reset($share_image_field);
+//        if ($share_image_field) {
+//          $image_path = file_create_url($share_image_field['uri']);
+//        }
+//      }
       $microsites_settings = array(
         'nid' => $node->nid,
+        'title' => $node->title,
+        'base_path' => ($base_path_field) ? '/' . $base_path_field['value'] : '/dig',
+//        'share_title' => ($share_title_field) ? $share_title_field['value'] : 'Dig Gallery Testing Sharebar Title',
+//        'share_description' => ($share_description_field) ? $share_description_field['value'] : 'Dig Gallery Testing Sharebar: This is the description',
+//        'share_image' => ($image_path) ? $image_path : 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
@@ -400,6 +425,9 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
 function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
+
+  drupal_add_js((drupal_get_path('module', 'gigya') . '/js/gigya_sharebar.js'));
+  drupal_add_css((drupal_get_path('module', 'gigya') . '/css/gigya.css'));
 
   if (!empty($section_object->field_media_gallery)) {
     $gallery_nodes = $section_wrapper->field_media_gallery->value();

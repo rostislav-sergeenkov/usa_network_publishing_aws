@@ -138,6 +138,16 @@
         return { 'section' : activeSection, 'item' : activeItem };
       }
 
+      // getUrlPath
+      // url: (string) url to parse
+      function getUrlPath(url) {
+        var pathArray = url.replace('http://', '').replace('https://', '');
+        pathArray = pathArray.split('/');
+        if (pathArray[0].indexOf(window.location.hostname) >= 0
+          || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
+        return pathArray;
+      }
+
       // getItemTitle
       // item = the item info from the url pathname
       // @TODO: work out how to get the item title based on the url
@@ -352,16 +362,19 @@
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
       $('#show-aspot-microsite .aspot-link').click(function(e) {
-        var anchorFull = this.href;
+        var anchorFull = this.href,
+            anchorPathParts = getUrlPath(anchorFull);
+
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct video
-        if (anchorFull.indexOf('/dig/') != -1) {
+        if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
 
           anchor = 'videos';
           anchorSection = 'Videos';
-          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+          itemTitle = anchorPathParts[2];
+//          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
 
           previewItem.removeClass('active');
           $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
@@ -381,20 +394,11 @@
 
 
       // PROMO CLICKS
-      function getUrlPath(url) {
-        var pathArray = url.replace('http://', '').replace('https://', '');
-        pathArray = pathArray.split('/');
-        if (pathArray[0].indexOf(window.location.hostname) >= 0
-          || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
-        return pathArray;
-      }
-
-
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
       $('#microsite .node-usanetwork-promo a').click(function(e) {
-        var anchorFull = this.href;
-        var anchorPathParts = getUrlPath(anchorFull);
+        var anchorFull = this.href,
+            anchorPathParts = getUrlPath(anchorFull);
 
         // if this is an internal microsite url
         // prevent the default action

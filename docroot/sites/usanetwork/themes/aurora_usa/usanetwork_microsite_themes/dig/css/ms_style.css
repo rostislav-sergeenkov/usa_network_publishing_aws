@@ -867,6 +867,11 @@ you can use the generic selector below, but it's slower:
   margin: 0 17px 0 265px;
   max-width: 1500px;
 }
+#microsite section .microsite-section-container:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 #microsite section .microsite-section-container > div{
   width: 100%;
 }
@@ -1076,10 +1081,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #section-home .microsite-section-container {
     padding-left: calc(1600px - 84%);
   }
+  #microsite #section-galleries .microsite-section-container {
+    padding-left: 39px;
+  }
 }
 @media (min-width: 1401px) and (max-width: 1600px){
   #microsite #section-videos .microsite-section-container {
     padding-left: calc(1400px - 84%);
+  }
+  #microsite #section-galleries .microsite-section-container {
+    margin: 0px 17px 0 265px;
   }
 }
 @media (min-width: 1601px) {
@@ -1100,11 +1111,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
   }
+  #microsite #section-galleries .microsite-section-container {
+    margin: 0px auto;
+  }
 }
 @media (min-width: 1401px){
   #microsite section .microsite-section-container{
     margin: 0 auto;
     max-width: 1500px;
+  }
+  #microsite #section-galleries .microsite-section-container {
+    max-width: 1120px;
   }
 }
 @media (min-width: 1281px) {
@@ -1414,6 +1431,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 100%;
     clear: left;
     float: left;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  #microsite section#galleries-content .flexslider {
+    margin: 0;
+  }
+  #microsite #galleries-content h2 {
+    margin: 0 0 1em;
   }
   #microsite .episodic-galleries,
   .character-galleries {

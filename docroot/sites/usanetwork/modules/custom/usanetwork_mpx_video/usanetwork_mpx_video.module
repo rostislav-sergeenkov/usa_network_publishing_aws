@@ -801,7 +801,8 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
       if ($field['field_name'] == 'field_mpx_full_episode') {
         $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
       } else if ($field['field_name'] == 'field_mpx_duration') {
-        $media_item['field_data'][$field['field_name']] = round($value[0]);
+        $duration_value = _usanetwork_mpx_video_parse_data($field_pattern, $media_data);
+        $media_item['field_data'][$field['field_name']] = round($duration_value[0]);
       } else {
         $media_item['field_data'][$field['field_name']] = $value;
       }

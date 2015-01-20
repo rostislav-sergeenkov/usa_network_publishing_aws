@@ -43,6 +43,15 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/microcite/endcard/related/%node/%'] = array(
+    'title' => 'Related items',
+    'page callback' => 'usanetwork_microsite_endcard_related_items',
+    'page arguments' => array(4, 5),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -1052,4 +1061,34 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+/**
+ * Menu callback for related items.
+ *
+ */
+function  usanetwork_microsite_endcard_related_items($node, $guid) {
+  $items = array();
+  $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if ($files) {
+    foreach ($files as $related_file) {
+      if($related_file->mpx_video_data['guid'] != $guid) {
+        $url_param = _usanetwork_microsite_get_suggested_video_url($related_file->filename);
+        $item = array(
+          'fid' => $related_file->fid,
+          'guid' => $related_file->mpx_video_data['guid'],
+          'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
+          'title' => $related_file->filename,
+          'url_param' => $url_param,
+          'media$thumbnails' => array(
+            array(
+              'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
+            ),
+          ),
+        );
+        $items[] = $item;
+      }
+    }
+  }
+  return $items;
 }

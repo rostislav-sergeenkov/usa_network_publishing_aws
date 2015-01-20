@@ -55,7 +55,7 @@
             <ul>
               <li><a href="http://www.goisrael.com" target="_blank">Go Israel</a></li>
               <li><a href="http://www.itraveljerusalem.com" target="_blank">Official Tourism</a></li>
-              <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film & TV Fund</a></li>
+              <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film<br>& TV Fund</a></li>
             </ul>
           </li>
         </ul>

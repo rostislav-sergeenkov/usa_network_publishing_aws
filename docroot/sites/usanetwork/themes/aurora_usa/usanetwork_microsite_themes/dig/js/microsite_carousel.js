@@ -3,18 +3,8 @@
   Drupal.behaviors.microsite_carousel = {
     replaceAd: function (){
       if ($(window).width() < 641) {
-        if(!$('#home-content .ad-mobile').hasClass('mobile')) {
-          $('.usa-microsite-featured .carousel li.ad').children().appendTo($('#home-content .ad-mobile'));
-          $('#home-content .ad-mobile').addClass('mobile');
-          $('.usa-microsite-featured .carousel li.ad').remove();
-        }
-      }
-      else {
-        if($('#home-content .ad-mobile').hasClass('mobile')) {
-          $('<li class="ad ad300x250 carousel-item"></li>').insertAfter($('.usa-microsite-featured .carousel li').eq(0));
-          $('#home-content .ad-mobile').children().appendTo($('.usa-microsite-featured .carousel li.ad'));
-          $('#home-content .ad-mobile').removeClass('mobile');
-        }
+        $('.usa-microsite-featured .carousel li.ad').remove();
+        $('#videos-content #block-usanetwork-mpx-video-usa-mpx-video-views li.ad').remove();
       }
     },
     flexDestroy: function (selector) {

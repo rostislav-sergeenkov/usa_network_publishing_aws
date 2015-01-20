@@ -1370,6 +1370,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured {
     width: 300px;
   }
+  #microsite .block-usanetwork-mpx-video {
+    width: 300px;
+  }
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
     margin: 0 2% 10px 0px;
     max-height: 123px;

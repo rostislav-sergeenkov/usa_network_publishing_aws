@@ -32,6 +32,14 @@
         } 
       }
     },
+    refreshBannerAd: function() {
+      jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src'));
+      jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src'));
+      // omniture
+      if (typeof s_gi != 'undefined') {
+        void (s.t());
+      }
+    },
     attach: function(settings, context) {
       $('.microsite-gallery .flexslider').once('gallery_carousel', function() {
         $(this).on('start', function() {
@@ -41,6 +49,7 @@
         $(this).on('after', function() {
           var $slider = $(this);
           Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebar($slider);
+          Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
         });
       });
     }

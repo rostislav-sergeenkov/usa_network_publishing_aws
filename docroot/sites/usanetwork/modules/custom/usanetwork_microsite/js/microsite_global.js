@@ -336,9 +336,9 @@
 
         changeTitle(itemTitle, anchorSection);
 
-        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
         getVideo(url);
+
+        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
       });
 
       //ajax request
@@ -383,9 +383,9 @@
           // change active video content
           changeTitle(itemTitle, anchorSection);
 
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
           getVideo(url, 'true');
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
           // trigger scroll to videos section
 				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
@@ -410,10 +410,10 @@
           anchorSection = toTitleCase(anchor);
           itemTitle = anchorPathParts[2];
 
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
           // trigger scroll to correct section
 				  $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 				}
       });
 

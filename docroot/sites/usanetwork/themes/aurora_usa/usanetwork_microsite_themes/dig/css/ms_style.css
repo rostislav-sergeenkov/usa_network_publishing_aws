@@ -933,8 +933,12 @@ you can use the generic selector below, but it's slower:
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
 }
+#microsite .block-usanetwork-mpx-video li.grid-item .caption-overlay {
+  background-color: #000;
+}
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;
+  background-color: #000;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
   color: #e5ce96;
@@ -1042,13 +1046,22 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 /* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
  * ONE GALLERY AT LAUNCH
  */
+#microsite #galleries-content .full-pane {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 1120px;
+}
+#microsite #galleries-content .microsite-gallery-meta {
+  width: calc(100% - 320px);
+}
 #microsite #galleries-content .left-pane {
   width: calc(100% - 320px);
 }
 #microsite #galleries-content h2 {
   font-size: 1.7em;
   line-height: 1.1em;
-  margin: 0 0 1.5em;
+  margin: 0 0 0.3em;
   width: calc(100% - 216px);
   float: left;
 }
@@ -1440,6 +1453,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     padding-left: 35px;
   }
   #microsite section .microsite-section-container .right-pane {
+    width: 100%;
+  }
+  #microsite #galleries-content .microsite-gallery-meta {
     width: 100%;
   }
   #microsite #galleries-content .left-pane,

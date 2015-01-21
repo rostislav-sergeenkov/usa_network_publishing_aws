@@ -128,9 +128,9 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.slimscroll.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.mCustomScrollbar.concat.min.js',
+      $theme_path . '/javascripts/jquery.touchSwipe.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
     ),
     'css' => array(

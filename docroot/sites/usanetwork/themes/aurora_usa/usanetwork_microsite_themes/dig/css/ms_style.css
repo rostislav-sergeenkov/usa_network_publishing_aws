@@ -293,7 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 0;
   padding: 5px 0 0;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
 }
 #microsite .section{
   opacity: 0;

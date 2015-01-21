@@ -406,6 +406,7 @@ you can use the generic selector below, but it's slower:
 #microsite .ad-leaderboard {
   min-height: 90px;
   margin: 0 auto;
+  padding-top: 0;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
@@ -1521,6 +1522,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 320px){
 
+}
+@media (max-height: 850px) {
+  #microsite #left-nav {
+    font-size: 16px;
+    top: 5px;
+  }
 }
 /*_________________*/
 

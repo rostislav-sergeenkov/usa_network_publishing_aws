@@ -1,6 +1,7 @@
 (function($) {
   Drupal.behaviors.microsite_gallery_carousel = {
-    updateGigyaSharebarOmniture: function($slider) {
+    updateGigyaSharebarOmniture: function($slider, initialPageLoad) {
+      initialPageLoad = initialPageLoad || 0;
       if (typeof Drupal.gigya != 'undefined') {
         var slider = $slider.data('flexslider');
         currentSlide = slider.currentSlide + 1;
@@ -31,17 +32,19 @@
           Drupal.gigya.showSharebar(sharebar);
 
           // omniture
-          var siteName = Drupal.settings.microsites_settings.title,
-              basePath = Drupal.settings.microsites_settings.base_path,
-              basePageName = siteName + ' | USA Network';
+          if (!initialPageLoad) {
+            var siteName = Drupal.settings.microsites_settings.title,
+                basePath = Drupal.settings.microsites_settings.base_path,
+                basePageName = siteName + ' | USA Network';
 
-          s.prop3 = 'Gallery';
-          s.prop4 = siteName + ' : Gallery';
-          s.prop5 = siteName + ' : Gallery : ' + $title;
-          s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-          document.title = $title + ' | Galleries | ' + basePageName;
-          if (typeof s_gi != 'undefined') {
-            void (s.t());
+            s.prop3 = 'Gallery';
+            s.prop4 = siteName + ' : Gallery';
+            s.prop5 = siteName + ' : Gallery : ' + $title;
+            s.pageName = s.prop5 + ' : Photo ' + currentSlide;
+            document.title = $title + ' | Galleries | ' + basePageName;
+            if (typeof s_gi != 'undefined') {
+              void (s.t());
+            }
           }
         }
       }
@@ -54,7 +57,7 @@
       $('.microsite-gallery .flexslider').once('gallery_carousel', function() {
         $(this).on('start', function() {
           var $slider = $(this);
-          Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+          Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
         });
         $(this).on('after', function() {
           var $slider = $(this);

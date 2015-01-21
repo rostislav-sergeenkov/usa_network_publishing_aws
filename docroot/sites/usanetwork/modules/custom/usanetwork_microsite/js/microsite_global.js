@@ -178,6 +178,8 @@
             break;
           case 'galleries':
             s.prop3 = 'Gallery';
+            s.prop5 = siteName + ' : Gallery : ' + $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            s.pageName = s.prop5 + ' : Photo 1';
             break;
           case 'characters':
             s.prop3 = 'Bio';

@@ -1813,45 +1813,6 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_hp_content_carousel-field_hpcc_items'
-  $field_instances['field_collection_item-field_hp_content_carousel-field_hpcc_items'] = array(
-    'bundle' => 'field_hp_content_carousel',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => NULL,
-        'settings' => array(),
-        'type' => 'usanetwork_dynamic_entity_reference_label',
-        'weight' => 3,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_hpcc_items',
-    'label' => 'Items',
-    'required' => 1,
-    'settings' => array(
-      'handler' => 'default',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'usanetwork_dynamic_entity_reference',
-      'settings' => array(),
-      'type' => 'usanetwork_dynamic_entity_reference_default',
-      'weight' => 34,
-    ),
-  );
-
   // Exported field_instance: 'field_collection_item-field_hp_content_carousel-field_hpcc_title'
   $field_instances['field_collection_item-field_hp_content_carousel-field_hpcc_title'] = array(
     'bundle' => 'field_hp_content_carousel',
@@ -2024,6 +1985,46 @@ function usanetwork_home_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_hp_content_carousel-field_hpcc_citems'
+  $field_instances['field_collection_item-field_hp_content_carousel-field_hpcc_citems'] = array(
+    'bundle' => 'field_hp_content_carousel',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_hpcc_citems',
+    'label' => 'Carousel items',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 35,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A-spot references');
@@ -2054,6 +2055,10 @@ function usanetwork_home_field_default_field_instances() {
   t('The additional text of carousel');
   t('The title of carousel');
   t('The upper text on the carousel tab');
+  t('Carousel items');
+  t('Slide');
+  t('Type');
+  t('Carousel items');
 
   return $field_instances;
 }

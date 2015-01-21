@@ -5,6 +5,7 @@
  * $description['title'] - the middle line of description (Title)
  * $description['additional_text'] - the bottom line of description (Additional text)
  * $slides - array of carousel slides
+ * $slides[]['slide_type'] - the type of slide (sets manually on homepage configuring)
  * $slides[]['content_type'] - the type of slide content
  * $slides[]['show_class'] - the class of TV show that connected with the content ('undefined' if there are no connected shows)
  * $slides[]['caption'] - the show name
@@ -36,7 +37,7 @@
     <div class="show-carousel carousel carousel-left start">
       <ul class="slides">
         <?php foreach ($slides as $slide): ?>
-          <li class="slide-type slide-type-<?php print $slide['content_type']; ?>">
+          <li class="slide content-type-<?php print $slide['content_type']; ?> slide-type-<?php print $slide['slide_type']; ?>">
             <div class="node node-usanetwork-promo show-color-border <?php print $slide['show_class']; ?>">
               <a href="<?php print $slide['content_url']; ?>">
                 <div class="meta-wrapper">

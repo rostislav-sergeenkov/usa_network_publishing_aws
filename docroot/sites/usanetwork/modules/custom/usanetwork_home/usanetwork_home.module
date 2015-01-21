@@ -243,22 +243,48 @@ function _usanetwork_home_content_carousel_render($node) {
         ),
         'slides' => array(),
       );
+      //die('<pre>'.print_r($carousel_content, true).'</pre>');
 
-      $slides_field = field_get_items('field_collection_item', $carousel_content, 'field_hpcc_items');
+      $slides_field = field_get_items('field_collection_item', $carousel_content, 'field_hpcc_citems');
 
       if (!empty($slides_field)) {
-        foreach ($slides_field as $slide_data) {
+        foreach ($slides_field as $slide_field_data) {
+          $slide_field_item = field_collection_item_load($slide_field_data['value']);
+
+          if (empty($slide_field_item)) {
+            continue;
+          }
+
+          $slide_field = field_get_items('field_collection_item', $slide_field_item, 'field_hpcc_slide');
+
+          if (empty($slide_field)) {
+            continue;
+          }
+          else {
+            $slide_field = reset($slide_field);
+          }
+
+          $slide_type_field = field_get_items('field_collection_item', $slide_field_item, 'field_hpcc_slide_type');
+
+          if (empty($slide_type_field)) {
+            $slide_type_field = 'default';
+          }
+          else {
+            $slide_type_field = $slide_type_field[0]['value'];
+          }
+
           $slide_variables = array(
             'content_type' => NULL,
+            'slide_type' => $slide_type_field,
             'show_class' => NULL,
-            'content_url' => url($slide_data['target_type'] . '/' . $slide_data['target_id']),
+            'content_url' => url($slide_field['target_type'] . '/' . $slide_field['target_id']),
             'caption' => NULL,
             'title' => NULL,
             'additional_text' => NULL,
             'image_url' => NULL,
           );
 
-          _usanetwork_home_content_carousel_fill_slide($slide_variables, $slide_data['target_type'], $slide_data['target_id']);
+          _usanetwork_home_content_carousel_fill_slide($slide_variables, $slide_field['target_type'], $slide_field['target_id']);
 
           $theme_variables['slides'][] = $slide_variables;
         }

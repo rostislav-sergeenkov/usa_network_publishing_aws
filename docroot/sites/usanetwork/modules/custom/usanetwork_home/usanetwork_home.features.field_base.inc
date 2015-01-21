@@ -652,32 +652,6 @@ function usanetwork_home_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hpcc_items'
-  $field_bases['field_hpcc_items'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_hpcc_items',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'usanetwork_dynamic_entity_reference',
-    'settings' => array(
-      'entity_bundles' => '',
-      'entity_type_ids' => array(
-        'file' => 'file',
-        'node' => 'node',
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'usanetwork_dynamic_entity_reference',
-  );
-
   // Exported field_base: 'field_hpcc_title'
   $field_bases['field_hpcc_title'] = array(
     'active' => 1,

@@ -230,7 +230,7 @@
 
             $(this).mCustomScrollbar({
               theme:"3d",
-              scrollInertia: 0,
+              scrollInertia: 200,
               callbacks:{
                 whileScrolling: function(){
                   return this.mcs.topPct;
@@ -319,7 +319,6 @@
       $('#sections .section .scroll-to-next').click(function() {
         $.fn.fullpage.moveSectionDown();
       });
-
       // end one page scroll//
 
       //change page title current section item
@@ -330,7 +329,6 @@
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
       // ajax/get-video-in-player/[node]/[fid]- for video
-
       var currentNid = Drupal.settings.microsites_settings.nid,
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
@@ -381,7 +379,6 @@
           }
         });
       };
-
       // end AJAX request //
 
 
@@ -419,7 +416,6 @@
 				}
       });
 
-
       // PROMO CLICKS
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
@@ -443,9 +439,6 @@
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 				}
       });
-
-
-
     }
   };
 })(jQuery);

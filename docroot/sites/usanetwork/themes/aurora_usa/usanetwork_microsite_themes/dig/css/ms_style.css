@@ -1381,11 +1381,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured {
     margin: 0 auto 130px;
   }
-/*
   #microsite section .microsite-section-container div.scroll{
     display: none;
   }
-*/
 }
 @media (max-width: 640px){
   #microsite section .microsite-section-container {

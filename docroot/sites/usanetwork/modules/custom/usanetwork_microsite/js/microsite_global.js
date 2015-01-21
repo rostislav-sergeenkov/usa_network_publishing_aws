@@ -1,24 +1,6 @@
 /**
- * Maksim's remarks start
- *
- * 1. Never use this start point in Drupal JS files. It must looks next:
- *
- * (function ($) {
- *  Drupal.behaviors.module_name_and_js_feature_name = {
- *    attach: function (context, settings) {
- *      ... // Put your code here
- *    }
- *  }
- * })(jQuery);
- *
- * 2. Never use global variables in JS
- *
- * 6. Drupal's router does not know what is *.php file like in loadSection(). You need just put a full URL to page or use
- * $.ajax({}) call.
- *
- * Maksim's remarks end
+ * Global js functions for microsites
  */
-
 (function ($) {
   var urlPath = window.location.pathname;
   var testData;
@@ -29,18 +11,9 @@
 
 
       // set defaults
-      // @TODO: If we put the following Dig default variables in a js file in
-      // the dig theme directory
-      // (ex: usanetwork_microsite_themes/dig/js/microsite_config.js),
-      // can we be sure they'd load before this javascript file? Or should we
-      // declare these variables as part of the Drupal.settings object?
-      var siteName = Drupal.settings.microsites_settings.title, // @TODO: Pull this from the database
-          basePath = Drupal.settings.microsites_settings.base_path, // @TODO: Pull this from database or generate this from a database field (title?)
-          shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
-          shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
-          shareBarTitle = 'Dig Gallery Testing Sharebar Title',
+      var siteName = Drupal.settings.microsites_settings.title,
+          basePath = Drupal.settings.microsites_settings.base_path,
           basePageName = siteName + ' | USA Network',
-          sectionPageTitle = $(document).find("title").text();
           activeSection = 'home',
           activeItem = '';
 
@@ -55,36 +28,6 @@
           }
         }
       }
-
-
-      // SHARE BAR
-//      yepnope.injectJs("/sites/usanetwork/modules/contrib/gigya/js/gigya_sharebar.js", function () {
-//        yepnope.injectCss("/sites/usanetwork/modules/contrib/gigya/css/gigya.css", function () {
-//
-//          var url = window.location.href;
-//
-//          sharebar = new Object();
-//          sharebar.gigyaSharebar = {
-//            containerID: "gigya-share",
-//            iconsOnly: true,
-//            layout: "horizontal",
-//            shareButtons: "facebook, twitter, tumblr, pinterest, share",
-//            shortURLs: "never",
-//            showCounts: "none"
-//          }
-//          sharebar.gigyaSharebar.ua = {
-//            description: shareBarDescription,
-//            imageBhev: "url",
-//            imageUrl: shareBarImageUrl,
-//            linkBack: url,
-//            title: shareBarTitle
-//          }
-//          if (Drupal.gigya) {
-//            Drupal.gigya.showSharebar(sharebar);
-//          }
-//
-//        });
-//      });
 
 
       // ADS
@@ -191,6 +134,16 @@
         return { 'section' : activeSection, 'item' : activeItem };
       }
 
+      // getUrlPath
+      // url: (string) url to parse
+      function getUrlPath(url) {
+        var pathArray = url.replace('http://', '').replace('https://', '');
+        pathArray = pathArray.split('/');
+        if (pathArray[0].indexOf(window.location.hostname) >= 0
+          || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
+        return pathArray;
+      }
+
       // getItemTitle
       // item = the item info from the url pathname
       // @TODO: work out how to get the item title based on the url
@@ -225,24 +178,25 @@
             break;
           case 'galleries':
             s.prop3 = 'Gallery';
+            s.prop5 = siteName + ' : Gallery : ' + $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            s.pageName = s.prop5 + ' : Photo 1';
             break;
           case 'characters':
             s.prop3 = 'Bio';
             break;
         }
         $('title').text(pageName);
-        void(s.t()); // omniture page call
+
+        if (typeof s_gi != 'undefined') {
+          void(s.t()); // omniture page call
+        }
       }
 
-
-//			setOmnitureData();
       parseUrl();
-//      createAds(activeSection);
 
 
       //=========== Init one page scroll for microsite ===============//
       $('#sections').fullpage({
-        //touchSensitivity: 1000,
         scrollingSpeed: 1000,
         onLeave: function (index, nextIndex, direction) {
 
@@ -268,29 +222,56 @@
         },
         afterRender: function(){
           createAds(activeSection);
-          //$('.fp-tableCell').each(function () {
-          //  var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
-          //  $(this).slimScroll({
-          //    color: '#ffffff',
-          //    size: '10px',
-          //    height: Height,
-          //    alwaysVisible: true,
-          //    wheelStep: 5
-          //  });
-          //});
-          $('.fp-tableCell').each(function () {
-            var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
 
+          $('.fp-tableCell').each(function () {
+
+            var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
             $(this).height(Height);
 
             $(this).mCustomScrollbar({
-              theme:"3d"
+              theme:"3d",
+              scrollInertia: 200,
+              callbacks:{
+                whileScrolling: function(){
+                  return this.mcs.topPct;
+                }
+              }
             });
           });
 
+          if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+
+            var elemScroll;
+
+            $('.scroll-to-next').hide();
+
+            $('.mcs-scroll').swipe({
+              excludedElements: "button, input, select, textarea, .noSwipe",
+              allowPageScroll : "vertical",
+              swipeUp : function(event, phase, direction, distance){
+
+                elemScroll = $('.section.active .mCustomScrollbar')[0].mcs.topPct;
+                console.log('swipeUP' , elemScroll);
+
+                if(elemScroll == 100){
+                  $.fn.fullpage.moveSectionDown();
+                }
+              },
+              swipeDown : function(event, phase, direction, distance){
+
+                elemScroll = $('.section.active .mCustomScrollbar')[0].mcs.topPct;
+                console.log('swipeDown' , elemScroll);
+
+                if(elemScroll == 0){
+                  $.fn.fullpage.moveSectionUp();
+                }
+              }
+            });
+          }else{
+            $('.scroll-to-next').show();
+          }
         }
       });
-
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -338,7 +319,6 @@
       $('#sections .section .scroll-to-next').click(function() {
         $.fn.fullpage.moveSectionDown();
       });
-
       // end one page scroll//
 
       //change page title current section item
@@ -349,7 +329,6 @@
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
       // ajax/get-video-in-player/[node]/[fid]- for video
-
       var currentNid = Drupal.settings.microsites_settings.nid,
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
@@ -382,9 +361,9 @@
 
         changeTitle(itemTitle, anchorSection);
 
-        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
         getVideo(url);
+
+        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
       });
 
       //ajax request
@@ -400,7 +379,6 @@
           }
         });
       };
-
       // end AJAX request //
 
 
@@ -408,16 +386,19 @@
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
       $('#show-aspot-microsite .aspot-link').click(function(e) {
-        var anchorFull = this.href;
+        var anchorFull = this.href,
+            anchorPathParts = getUrlPath(anchorFull);
+
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct video
-        if (anchorFull.indexOf('/dig/') != -1) {
+        if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
 
           anchor = 'videos';
           anchorSection = 'Videos';
-          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+          itemTitle = anchorPathParts[2];
+//          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
 
           previewItem.removeClass('active');
           $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
@@ -426,21 +407,40 @@
           // change active video content
           changeTitle(itemTitle, anchorSection);
 
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
           getVideo(url, 'true');
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 
           // trigger scroll to videos section
 				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
 				}
       });
+
+      // PROMO CLICKS
+      // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
+      // SO THAT IT IS NOT SPECIFIC TO "DIG"
+      $('#microsite .node-usanetwork-promo a').click(function(e) {
+        var anchorFull = this.href,
+            anchorPathParts = getUrlPath(anchorFull);
+
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct microsite item without a page reload
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = anchorPathParts[1];
+          anchorSection = toTitleCase(anchor);
+          itemTitle = anchorPathParts[2];
+
+          // trigger scroll to correct section
+				  $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+				}
+      });
     }
-  }
-  $(document).ready(function() {
-    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
-      $('.scroll-to-next').css('display', 'none');
-    }
-  });
+  };
 })(jQuery);
 
 // Global microsite functions

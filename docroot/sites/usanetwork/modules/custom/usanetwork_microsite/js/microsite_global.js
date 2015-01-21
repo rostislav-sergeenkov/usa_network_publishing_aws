@@ -198,7 +198,10 @@
       //=========== Init one page scroll for microsite ===============//
       $('#sections').fullpage({
         scrollingSpeed: 1000,
+        recordHistory: true,
         onLeave: function (index, nextIndex, direction) {
+
+          scrollToTop();
 
           var menu_items = $('#left-nav-links-list li');
 
@@ -225,12 +228,12 @@
 
           $('.fp-tableCell').each(function () {
 
-            var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
+            var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
             $(this).height(Height);
 
             $(this).mCustomScrollbar({
               theme:"3d",
-              scrollInertia: 200,
+              scrollInertia: 0,
               callbacks:{
                 whileScrolling: function(){
                   return this.mcs.topPct;
@@ -272,6 +275,15 @@
           }
         }
       });
+
+
+      //scroll to top
+      function scrollToTop(){
+        var container = $('sections'),
+          activeSection = container.find('.section.active');
+
+        activeSection.mCustomScrollbar('scrollTo',['top',null]);
+      }
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -347,6 +359,8 @@
       //change video on click to preview elements
       previewItem.click(function(e){
         e.preventDefault();
+
+        scrollToTop();
 
         var url = defaultUrl + '/' + $(this).attr('data-fid'),
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),

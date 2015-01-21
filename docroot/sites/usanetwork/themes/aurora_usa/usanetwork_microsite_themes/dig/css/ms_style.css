@@ -1165,11 +1165,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     max-width: 1120px;
   }
 }
-@media (min-width: 1281px) {
-  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
-    margin-right: 0px;
-  }
-}
 @media (min-width: 1281px) and (max-width: 1600px){
   #microsite .usa-microsite-featured {
     width: 930px;
@@ -1180,6 +1175,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #section-home .microsite-section-container {
     margin: 0 auto;
     padding-left: calc(1400px - 91%);
+  }
+}
+@media (min-width: 1201px) {
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 930px;
+    height: 523px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
+    margin-right: 0px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
@@ -1204,24 +1208,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin: 0 17px 0 190px;
   }
-  #microsite .full-pane {
-    max-width: 615px;
-  }
-  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
-    width: 615px;
-    height: 346px;
-    margin: 0;
-  }
-  #microsite .block-usanetwork-mpx-video {
-    width: 615px;
-  }
-  #microsite .block-usanetwork-mpx-video li.grid-item {
-    margin-right: 15px;
-  }
-  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
-    margin-right: 0px;
-  }
-
 }
 @media (min-width: 1025px) and (max-width: 1200px){
   #microsite #section-home .microsite-section-container {
@@ -1238,6 +1224,23 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .a-spot-panel #show-main-slider{
     max-height: 250px;
+  }
+  #microsite .full-pane {
+    max-width: 615px;
+  }
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 615px;
+    height: 346px;
+    margin: 0;
+  }
+  #microsite .block-usanetwork-mpx-video {
+    width: 615px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item {
+    margin-right: 15px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
+    margin-right: 0px;
   }
 }
 
@@ -1372,7 +1375,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px){
-
+  #microsite #galleries-content .flexslider .counter {
+    padding: 5px;
+  }
 }
 @media (min-width: 769px) and (max-width: 990px){
 
@@ -1399,6 +1404,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite section .microsite-section-container div.scroll{
     display: none;
+  }
+  #microsite #galleries-content .flexslider .counter {
+    padding: 0px;
   }
 }
 @media (max-width: 640px){

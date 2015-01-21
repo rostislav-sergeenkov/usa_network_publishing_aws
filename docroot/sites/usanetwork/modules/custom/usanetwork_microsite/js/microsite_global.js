@@ -340,6 +340,29 @@
 				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
 			});
 
+      //
+      // Switch section on history prev/forward button
+      //
+      window.onpopstate = function(event) {
+        var section_num = null,
+          splited = null;
+
+        if (event.state != null) {
+          splited = event.state.state.split('/');
+
+          if (splited[1] == 'dig') {
+            section_num = $('#left-nav-links-list [data-menuanchor=' + splited[2] + ']').find('a').attr('data-menuitem');
+            if (section_num == undefined) {
+              section_num = 1;
+            }
+          }
+        } else {
+          section_num = 1;
+        }
+
+        $.fn.fullpage.moveTo(section_num);
+      };
+
       $('#sections .section .scroll-to-next').click(function() {
         $.fn.fullpage.moveSectionDown();
       });

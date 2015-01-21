@@ -7,7 +7,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpconfig = tpconfig || {};
 
   NBCUEndShareCard.initialized = false;
-  NBCUEndShareCard.Feed = 'http://qa.usanetwork.com/ajax/microcite/endcard/related';
+  NBCUEndShareCard.Feed = 'http://www.usanetwork.com/ajax/microcite/endcard/related';
   var playerurl = window.location.hash.match(/#playerurl=(.*)/);
   if (playerurl) {
     NBCUEndShareCard.ShareURL = decodeURIComponent(playerurl[1]);
@@ -152,12 +152,16 @@ if (typeof NBCUEndShareCard !== 'undefined') {
 
   NBCUEndShareCard.GetYouMayAlsoLike = function(){
     NBCUEndShareCard.Debug("[GetYouMayAlsoLike]");
+    var feedAnnex = '';
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
     var url = NBCUEndShareCard.Feed + '/' + currentGuid;
+    if (!NBCUEndShareCard.IsEmpty(NBCUEndShareCard.ShareURL)) {
+      feedAnnex += "?url=" + encodeURIComponent(NBCUEndShareCard.ShareURL);
+    }
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",
-        url: url,
+        url: url + feedAnnex,
         dataType: 'json',
         success: function(data) {
           NBCUEndShareCard.ParseYouMayAlsoLikeNew(data);

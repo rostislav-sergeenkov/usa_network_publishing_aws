@@ -351,7 +351,7 @@
         autoPlay = autoPlay || 'false';
         var inactivePlayer = $('#video-container').find('iframe'),
           inactivePlayerSrc = inactivePlayer.attr('src'),
-          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=' + autoPlay);
+          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'microsites_usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=' + autoPlay);
         // update video player src
         inactivePlayer.attr('src', updatedPlayerSrc);
       }setAutoPlay();

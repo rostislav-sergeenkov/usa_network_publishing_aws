@@ -248,8 +248,6 @@
 
             var elemScroll;
 
-            $('.scroll-to-next').hide();
-
             $('.mcs-scroll').swipe({
               excludedElements: "button, input, select, textarea, .noSwipe",
               allowPageScroll : "vertical",
@@ -272,8 +270,6 @@
                 }
               }
             });
-          }else{
-            $('.scroll-to-next').show();
           }
         }
       });

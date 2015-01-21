@@ -1059,14 +1059,23 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 /* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
  * ONE GALLERY AT LAUNCH
  */
+#microsite #galleries-content .flexslider .counter {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+#microsite #galleries-content .flexslider .field-name-field-caption {
+  display: none;
+}
+#microsite #galleries-content .microsite-gallery .description-block {
+  padding: 0 10px;
+  text-align: left;
+}
 #microsite #galleries-content .full-pane {
   width: 100%;
   margin: 0;
   padding: 0;
   max-width: 1120px;
-}
-#microsite #galleries-content .microsite-gallery-meta {
-  width: calc(100% - 320px);
 }
 #microsite #galleries-content .left-pane {
   width: calc(100% - 320px);

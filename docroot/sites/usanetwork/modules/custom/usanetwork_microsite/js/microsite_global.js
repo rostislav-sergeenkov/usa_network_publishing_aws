@@ -13,11 +13,7 @@
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
           basePath = Drupal.settings.microsites_settings.base_path,
-          shareBarDescription = 'Dig Gallery Testing Sharebar: This is the description', // @TODO: Update all share bar info
-          shareBarImageUrl = 'http://www.usanetwork.com/sites/usanetwork/files/og_image/suits_2048_OG_0.jpg',
-          shareBarTitle = 'Dig Gallery Testing Sharebar Title',
           basePageName = siteName + ' | USA Network',
-          sectionPageTitle = $(document).find("title").text();
           activeSection = 'home',
           activeItem = '';
 
@@ -188,7 +184,10 @@
             break;
         }
         $('title').text(pageName);
-        void(s.t()); // omniture page call
+
+        if (typeof s_gi != 'undefined') {
+          void(s.t()); // omniture page call
+        }
       }
 
       parseUrl();

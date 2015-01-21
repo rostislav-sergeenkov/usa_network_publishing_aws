@@ -152,9 +152,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
 
   NBCUEndShareCard.GetYouMayAlsoLike = function(){
     NBCUEndShareCard.Debug("[GetYouMayAlsoLike]");
-    var currentNid = Drupal.settings.microsites_settings.nid;
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
-    var url = NBCUEndShareCard.Feed + '/' +  currentNid + '/' +  currentGuid;
+    var url = NBCUEndShareCard.Feed + '/' + currentGuid;
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

@@ -3,7 +3,7 @@
 /**
  * USA Network settings form
  */
-function usanetwork_settings_form() {
+function usanetwork_settings_form($form, $form_state) {
   $form = array();
   /* video related settings */
   $form['video'] = array(

@@ -197,7 +197,6 @@
 
       //=========== Init one page scroll for microsite ===============//
       $('#sections').fullpage({
-        //touchSensitivity: 1000,
         scrollingSpeed: 1000,
         onLeave: function (index, nextIndex, direction) {
 
@@ -223,29 +222,56 @@
         },
         afterRender: function(){
           createAds(activeSection);
-          //$('.fp-tableCell').each(function () {
-          //  var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
-          //  $(this).slimScroll({
-          //    color: '#ffffff',
-          //    size: '10px',
-          //    height: Height,
-          //    alwaysVisible: true,
-          //    wheelStep: 5
-          //  });
-          //});
-          $('.fp-tableCell').each(function () {
-            var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
 
+          $('.fp-tableCell').each(function () {
+
+            var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
             $(this).height(Height);
 
             $(this).mCustomScrollbar({
-              theme:"3d"
+              theme:"3d",
+              scrollInertia: 200,
+              callbacks:{
+                whileScrolling: function(){
+                  return this.mcs.topPct;
+                }
+              }
             });
           });
 
+          if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+
+            var elemScroll;
+
+            $('.scroll-to-next').hide();
+
+            $('.mcs-scroll').swipe({
+              excludedElements: "button, input, select, textarea, .noSwipe",
+              allowPageScroll : "vertical",
+              swipeUp : function(event, phase, direction, distance){
+
+                elemScroll = $('.section.active .mCustomScrollbar')[0].mcs.topPct;
+                console.log('swipeUP' , elemScroll);
+
+                if(elemScroll == 100){
+                  $.fn.fullpage.moveSectionDown();
+                }
+              },
+              swipeDown : function(event, phase, direction, distance){
+
+                elemScroll = $('.section.active .mCustomScrollbar')[0].mcs.topPct;
+                console.log('swipeDown' , elemScroll);
+
+                if(elemScroll == 0){
+                  $.fn.fullpage.moveSectionUp();
+                }
+              }
+            });
+          }else{
+            $('.scroll-to-next').show();
+          }
         }
       });
-
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -293,7 +319,6 @@
       $('#sections .section .scroll-to-next').click(function() {
         $.fn.fullpage.moveSectionDown();
       });
-
       // end one page scroll//
 
       //change page title current section item
@@ -304,7 +329,6 @@
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
       // ajax/get-video-in-player/[node]/[fid]- for video
-
       var currentNid = Drupal.settings.microsites_settings.nid,
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
@@ -355,7 +379,6 @@
           }
         });
       };
-
       // end AJAX request //
 
 
@@ -393,7 +416,6 @@
 				}
       });
 
-
       // PROMO CLICKS
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
@@ -417,16 +439,8 @@
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 				}
       });
-
-
-
     }
-  }
-  $(document).ready(function() {
-    if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
-      $('.scroll-to-next').css('display', 'none');
-    }
-  });
+  };
 })(jQuery);
 
 // Global microsite functions

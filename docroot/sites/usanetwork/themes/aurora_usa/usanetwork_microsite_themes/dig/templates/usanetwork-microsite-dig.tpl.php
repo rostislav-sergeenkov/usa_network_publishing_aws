@@ -75,23 +75,25 @@
       <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
         <?php endif; ?>
         <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
-        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
-          <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
-            <?php print $section['content']; ?>
-          <?php if (empty($section['is_last'])): ?>
-            <?php print $section_separator; ?>
-          <?php endif; ?>
-          </div>
-        </section>
-        <?php if (!empty($section['is_last'])): ?>
-          <!-- FOOTER -->
-          <footer id="footer-microsite" role="contentinfo" class="clearfix">
-            <div class="region region-footer">
-              <?php print $footer; ?>
+        <div class="mcs-scroll">
+          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
+            <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
+              <?php print $section['content']; ?>
+            <?php if (empty($section['is_last'])): ?>
+              <?php print $section_separator; ?>
+            <?php endif; ?>
             </div>
-          </footer>
-          <!-- /FOOTER -->
-        <?php endif; ?>
+          </section>
+          <?php if (!empty($section['is_last'])): ?>
+            <!-- FOOTER -->
+            <footer id="footer-microsite" role="contentinfo" class="clearfix">
+              <div class="region region-footer">
+                <?php print $footer; ?>
+              </div>
+            </footer>
+            <!-- /FOOTER -->
+          <?php endif; ?>
+        </div>
       </div>
       <?php endif; ?>
       <?php endforeach; ?>

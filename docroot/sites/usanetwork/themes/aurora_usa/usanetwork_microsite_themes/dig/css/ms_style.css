@@ -717,6 +717,15 @@ you can use the generic selector below, but it's slower:
   opacity: 0;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
+  width: 130px;
+  height: 30px;
+  background-image: url("../images/dig_tunein.png");
+  cursor: pointer;
+  opacity: 0;
+  margin-top: 7px;
+}
+/*
+.page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   opacity: 0;
   line-height: 22px;
   width: 130px;
@@ -725,6 +734,7 @@ you can use the generic selector below, but it's slower:
   padding-top: 5px;
   white-space: nowrap;
 }
+*/
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
   letter-spacing: 13px;
 }
@@ -769,6 +779,9 @@ you can use the generic selector below, but it's slower:
   letter-spacing: 1px;
   margin-bottom: 15px;
   outline: none;
+}
+.page-node-microsite #left-nav #left-nav-links ul ul a {
+  line-height: 1.2em;
 }
 .page-node-microsite #left-nav #left-nav-links li.active a {
   color: #e5ce96;
@@ -885,6 +898,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .a-spot-panel.tiles .flex-control-paging{
   bottom: 30px;
+  left: 50%;
   margin-left: -24px;
   position: absolute;
   top: auto;
@@ -932,8 +946,12 @@ you can use the generic selector below, but it's slower:
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
 }
+#microsite .block-usanetwork-mpx-video li.grid-item .caption-overlay {
+  background-color: #000;
+}
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;
+  background-color: #000;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
   color: #e5ce96;
@@ -1029,6 +1047,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
   outline: none;
+  opacity: 1;
 }
 .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;
@@ -1040,13 +1059,22 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 /* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
  * ONE GALLERY AT LAUNCH
  */
+#microsite #galleries-content .full-pane {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 1120px;
+}
+#microsite #galleries-content .microsite-gallery-meta {
+  width: calc(100% - 320px);
+}
 #microsite #galleries-content .left-pane {
   width: calc(100% - 320px);
 }
 #microsite #galleries-content h2 {
   font-size: 1.7em;
   line-height: 1.1em;
-  margin: 0 0 1.5em;
+  margin: 0 0 0.3em;
   width: calc(100% - 216px);
   float: left;
 }
@@ -1074,7 +1102,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .region-footer {
   clear: both;
 }
-
+#microsite .mCSB_inside > .mCSB_container {
+  margin-right: 0px;
+}
 
 /* media breakpoints*/
 @media (min-width: 1601px) and (max-width: 1840px){
@@ -1220,6 +1250,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
     color: #ffffff;
   }
+  #microsite section .microsite-section-container {
+    min-height: 800px;
+  }
 }
 @media (max-width: 874px){
   /* hide left nav when hamburger appears */
@@ -1348,9 +1381,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured {
     margin: 0 auto 130px;
   }
+/*
   #microsite section .microsite-section-container div.scroll{
     display: none;
   }
+*/
 }
 @media (max-width: 640px){
   #microsite section .microsite-section-container {
@@ -1361,6 +1396,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
   }
   #microsite .usa-microsite-featured {
+    width: 300px;
+  }
+  #microsite .block-usanetwork-mpx-video {
     width: 300px;
   }
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
@@ -1423,7 +1461,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 39px;
     padding: 5px;
   }
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
+    width: 29px;
+  }
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title {
+    padding-left: 35px;
+  }
   #microsite section .microsite-section-container .right-pane {
+    width: 100%;
+  }
+  #microsite #galleries-content .microsite-gallery-meta {
     width: 100%;
   }
   #microsite #galleries-content .left-pane,
@@ -1446,7 +1493,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 480px){
-
+  #microsite section {
+    background-image: none!important;
+  }
 }
 @media (max-width: 320px){
 

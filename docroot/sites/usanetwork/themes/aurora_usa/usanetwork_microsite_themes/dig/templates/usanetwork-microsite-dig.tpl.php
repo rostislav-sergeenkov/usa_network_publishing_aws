@@ -23,9 +23,10 @@
           <li id="nav-home" class="internal" data-menuanchor="home">
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
-              <?php if (!empty($tune_in)): ?>
+              <?php /* if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
-              <?php endif; ?>
+              <?php endif; */ ?>
+              <div id="left-nav-tunein"></div>
             </a>
             <div id="left-nav-social" class="clearfix">
               <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
@@ -55,7 +56,7 @@
             <ul>
               <li><a href="http://www.goisrael.com" target="_blank">Go Israel</a></li>
               <li><a href="http://www.itraveljerusalem.com" target="_blank">Official Tourism</a></li>
-              <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film & TV Fund</a></li>
+              <li><a href="http://www.jerusalemfilmfund.com/EnglishPage.aspx" target="_blank">Jerusalem Film<br>& TV Fund</a></li>
             </ul>
           </li>
         </ul>

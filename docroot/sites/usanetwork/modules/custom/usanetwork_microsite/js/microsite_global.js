@@ -198,10 +198,10 @@
       //=========== Init one page scroll for microsite ===============//
       $('#sections').fullpage({
         scrollingSpeed: 1000,
-        recordHistory: true,
         onLeave: function (index, nextIndex, direction) {
 
           scrollToTop();
+          setVideo();
 
           var menu_items = $('#left-nav-links-list li');
 
@@ -275,6 +275,20 @@
           }
         }
       });
+
+      // pauseVideo
+      function setVideo(){
+
+        $pdk.controller.pause(true);
+
+      };
+
+      //console.log(tveConfig);
+
+     // $pdk.controller.addEventListener('OnMediaStart', function(){alert(222);});
+
+     //$pdk.controller.listeners.OnMediaStart(function(){alert(222);});
+
 
 
       //scroll to top
@@ -370,7 +384,7 @@
       // change src for player & set autoplay
       function setAutoPlay(autoPlay){
         autoPlay = autoPlay || 'false';
-        var inactivePlayer = $('#video-container').find('iframe'),
+        var inactivePlayer = $('#video-container').find('#pdk-player'),
           inactivePlayerSrc = inactivePlayer.attr('src'),
           updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'microsites_usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=' + autoPlay);
         // update video player src

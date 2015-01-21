@@ -567,27 +567,29 @@ function _usanetwork_microsite_render_page_videos($section_wrapper) {
  * @return array
  */
 function _usanetwork_microsite_set_variables_for_player_show($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+
   return array(
     'url' => !empty($file->filename)
       ? _usanetwork_microsite_get_suggested_video_url($file->filename)
       : NULL,
     'title' => !empty($file->field_mpx_title)
-      ? $file->field_mpx_title[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_title->value()
       : NULL,
     'description' => !empty($file->field_mpx_description)
-      ? $file->field_mpx_description[LANGUAGE_NONE][0]['value']
-      : NULL,
-    'airdate' => !empty($file->field_mpx_airdate)
-      ? strftime('%b %e, %G', $file->field_mpx_airdate[LANGUAGE_NONE][0]['value'])
+      ? $file_wrapper->field_mpx_description->value()
       : NULL,
     'season_number' => !empty($file->field_mpx_season_number)
-      ? $file->field_mpx_season_number[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_season_number->value()
       : NULL,
     'episode_number' => !empty($file->field_mpx_episode_number)
-      ? $file->field_mpx_episode_number[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_episode_number->value()
       : NULL,
     'rendered' => !empty($file->fid)
       ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
+      : NULL,
+    'duration' => !empty($file->field_mpx_duration)
+      ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
       : NULL,
   );
 }

@@ -105,6 +105,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           'season_number' => NULL,
           'episode_number' => NULL,
           'rendered' => NULL,
+          'duration' => NULL,
         ),
       ),
     ),

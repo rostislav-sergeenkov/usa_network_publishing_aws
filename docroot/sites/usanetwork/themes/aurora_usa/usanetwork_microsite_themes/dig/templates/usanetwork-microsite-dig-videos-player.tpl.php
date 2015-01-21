@@ -17,7 +17,7 @@
   <div class="video-description"><?php print $in_player['description']; ?></div>
 <?php endif; ?>
 
-<?php if (!empty($in_player['season_number']) || !empty($in_player['episode_number']) || !empty($in_player['airdate'])): ?>
+<?php if (!empty($in_player['season_number']) || !empty($in_player['episode_number'])): ?>
   <div class="video-info">
     <?php if (!empty($in_player['season_number'])): ?>
       <span class="video-season">S<?php print $in_player['season_number']; ?></span>
@@ -26,7 +26,10 @@
       <span class="video-episode">E<?php print $in_player['episode_number']; ?></span>
     <?php endif; ?>
     <?php if (!empty($in_player['airdate'])): ?>
-      <span class="video-airdate">Air Date: <?php print $in_player['airdate']; ?></span>
+      <span class="video-airdate"><?php print t('Air Date'); ?>: <?php print $in_player['airdate']; ?></span>
     <?php endif; ?>
   </div>
+<?php endif; ?>
+<?php if (!empty($in_player['duration'])): ?>
+  <span class="video-duration"><?php print t('Duration'); ?>: <?php print $in_player['duration']; ?></span>
 <?php endif; ?>

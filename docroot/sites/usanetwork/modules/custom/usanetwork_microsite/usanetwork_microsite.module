@@ -43,10 +43,10 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/microcite/endcard/related/%node/%'] = array(
+  $items['ajax/microcite/endcard/related/%'] = array(
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
-    'page arguments' => array(4, 5),
+    'page arguments' => array(4),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -132,7 +132,7 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         }
       }
 
-      
+
       $base_path_field = field_get_items('node', $node, 'field_pathauto_alias');
       if ($base_path_field) {
         $base_path_field = reset($base_path_field);
@@ -1067,7 +1067,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
  * Menu callback for related items.
  *
  */
-function  usanetwork_microsite_endcard_related_items($node, $guid) {
+function  usanetwork_microsite_endcard_related_items($guid) {
+  $node = node_load(55216);
   $items = array();
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   if ($files) {

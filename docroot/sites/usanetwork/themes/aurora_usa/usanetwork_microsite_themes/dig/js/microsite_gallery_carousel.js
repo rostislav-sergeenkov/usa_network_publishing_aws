@@ -70,7 +70,7 @@
       current_gallery.find('.description-block').html(current_description);
     },
     attach: function(settings, context) {
-      $('.microsite-gallery .flexslider').once('gallery_carousel', function() {
+      $('.microsite-gallery .flexslider').once('microsite-gallery-carousel', function() {
         $(this).on('start', function() {
           var $slider = $(this);
           Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);

@@ -1096,3 +1096,40 @@ function  usanetwork_microsite_endcard_related_items($guid) {
   }
   return $items;
 }
+
+/**
+ * Alter sitecatalyst variables variables.
+ */
+function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']){
+    $entity = $context['entity'];
+    if ($entity->type == 'usanetwork_microsite') {
+      $args = arg();
+      $path = isset($args[3]) ? $args[3] : '';
+      switch ($path) {
+        case '':
+        case 'home':
+          $omniture_prop4 = t($entity->title . ' : Home');
+          break;
+        case 'videos':
+          $omniture_prop4 = t($entity->title . ' : Videos');
+          break;
+        case 'galleries':
+          $omniture_prop4 = t($entity->title . ' : Galleries');
+          break;
+        case 'about':
+          $omniture_prop4 = t($entity->title . ' : About');
+          break;
+        case 'games':
+          $omniture_prop4 = t($entity->title . ' : Games');
+          break;
+        default:
+          $omniture_prop4 = t($entity->title);
+          break;
+      }
+      if (!empty($omniture_prop4)) {
+        $omniture_variables['s.prop4'] = $omniture_prop4;
+      }
+    }   
+  }
+}

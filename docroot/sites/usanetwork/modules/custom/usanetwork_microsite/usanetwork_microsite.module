@@ -1046,10 +1046,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'galleries':
-      $head_title = t('Galleries | ' . $title . ' | USA Network');
+      $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-        $head_title = t('Dig: A First Look | Galleries | ' . $title . ' | USA Network');
+        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
       }
       break;
     case 'about':
@@ -1131,11 +1131,11 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'galleries':
-          $omniture_prop3 = 'Galleries';
+          $omniture_prop3 = 'Gallery';
           if(isset($args[4])) {
             // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-            $omniture_prop5 = t($entity->title . ' : Galleries : Dig: A First Look');
-            $omniture_pagename = t($entity->title . ' : Galleries : Dig: A First Look : Photo 1');
+            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
+            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
           }
           break;
         case 'about':
@@ -1171,8 +1171,8 @@ function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
         foreach ($node->content['#attached']['js'] as $key => $value) {
           if (strpos($value, 'usanetwork_gallery_content.js') !== FALSE) {
             unset($node->content['#attached']['js'][$key]);
-          } 
-        } 
+          }
+        }
       }
     }
   }

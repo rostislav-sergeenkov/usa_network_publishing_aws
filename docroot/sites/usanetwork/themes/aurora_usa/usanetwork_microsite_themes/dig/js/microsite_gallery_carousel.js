@@ -41,7 +41,7 @@
             s.prop4 = siteName + ' : Gallery';
             s.prop5 = siteName + ' : Gallery : ' + $title;
             s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-            document.title = $title + ' | Galleries | ' + basePageName;
+            document.title = $title + ' | Gallery | ' + basePageName;
             if (typeof s_gi != 'undefined') {
               void (s.t());
             }

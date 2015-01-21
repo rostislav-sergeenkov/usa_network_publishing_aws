@@ -1068,8 +1068,11 @@ function usanetwork_microsite_preprocess_html(&$vars) {
  *
  */
 function  usanetwork_microsite_endcard_related_items($guid) {
-  $node = node_load(55216);
   $items = array();
+  $params = drupal_get_query_parameters();
+  $url = $params['url'];
+  $url = preg_replace('|https?:\/\/.*\/|Uis', '', $url);
+  $node = menu_get_object('node', 2, $url);
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   if ($files) {
     foreach ($files as $related_file) {

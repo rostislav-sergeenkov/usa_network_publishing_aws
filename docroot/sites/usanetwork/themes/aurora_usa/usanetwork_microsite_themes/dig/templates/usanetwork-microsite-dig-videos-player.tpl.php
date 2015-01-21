@@ -25,9 +25,6 @@
     <?php if (!empty($in_player['episode_number'])): ?>
       <span class="video-episode">E<?php print $in_player['episode_number']; ?></span>
     <?php endif; ?>
-    <?php if (!empty($in_player['airdate'])): ?>
-      <span class="video-airdate"><?php print t('Air Date'); ?>: <?php print $in_player['airdate']; ?></span>
-    <?php endif; ?>
   </div>
 <?php endif; ?>
 <?php if (!empty($in_player['duration'])): ?>

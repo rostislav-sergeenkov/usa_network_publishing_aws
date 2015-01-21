@@ -7,10 +7,6 @@
         $('#videos-content #block-usanetwork-mpx-video-usa-mpx-video-views li.ad').remove();
       }
     },
-    changeGalleryDescription: function (current_gallery){
-      var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
-      current_gallery.find('.description-block').html(current_description);
-    },
     flexDestroy: function (selector) {
     var el = $(selector);
     var elClean = el.clone();
@@ -210,17 +206,6 @@
   // check the collapsible content height one again when page is fully loaded
   $(window).load(function() {
     Drupal.behaviors.microsite_carousel.initCarousel();
-    $('#galleries-content .microsite-gallery').each(function(){
-      var current_gallery = $(this);
-      var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
-      if (current_description) {
-        current_gallery.find('.description-block').html();
-      }
-    });
-    $('#galleries-content .microsite-gallery .flex-direction-nav a').click(function(){
-      var current_gallery = $(this).closest('.microsite-gallery');
-      Drupal.behaviors.microsite_carousel.changeGalleryDescription(current_gallery);
-    });
   });
 
 }(jQuery));

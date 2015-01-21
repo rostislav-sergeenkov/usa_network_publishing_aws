@@ -16,7 +16,7 @@
   <div class="left-pane">
     <div class="microsite-gallery">
       <div class="center-wrapper clearfix">
-        <?php if (!empty($galleries) && count($galleries) > 0): ?>
+        <?php if (!empty($galleries)): ?>
           <?php foreach ($galleries as $gallery): ?>
             <div class="microsite-gallery-meta clearfix">
               <?php if (!empty($gallery['title'])): ?>

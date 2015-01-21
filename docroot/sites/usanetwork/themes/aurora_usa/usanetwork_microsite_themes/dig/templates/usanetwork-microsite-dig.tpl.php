@@ -23,7 +23,7 @@
           <li id="nav-home" class="internal" data-menuanchor="home">
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
-              <?php /* if (!empty($tune_in) && !empty($path)): ?>
+              <?php /* if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
               <?php endif; */ ?>
               <div id="left-nav-tunein"></div>

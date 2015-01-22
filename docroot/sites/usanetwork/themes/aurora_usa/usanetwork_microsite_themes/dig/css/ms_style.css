@@ -1196,9 +1196,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 378px;
-  }
   #microsite .usa-microsite-featured {
     width: 930px;
   }
@@ -1232,7 +1229,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 615px;
   }
   #microsite .a-spot-panel #show-main-slider{
-    max-height: 250px;
+    max-height: 350px;
   }
   #microsite .full-pane {
     max-width: 615px;
@@ -1428,6 +1425,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite #main-slider {
     width: 300px;
+  }
+  #microsite .a-spot-panel #show-main-slider {
+    max-height: 250px;
   }
   #microsite .usa-microsite-featured {
     width: 300px;

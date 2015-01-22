@@ -274,6 +274,16 @@ you can use the generic selector below, but it's slower:
   width: 100%;
 }
 
+#microsite {
+  width: 100%;
+  height: calc(100% - 65px);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
 #microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
@@ -284,7 +294,7 @@ you can use the generic selector below, but it's slower:
   background-image: none;
   background-position: top left; /* please don't change this! */
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-color: transparent;
   width: 100%;
   position: relative;
@@ -294,11 +304,22 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 5px 0 0;
 }
-#microsite .section{
+#microsite .section {
   opacity: 0;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: calc(100% - 65px);
 }
-#microsite .section.active{
+#microsite .mcs-scroll {
+  height: 100%;
+}
+#microsite .section.active {
   opacity: 1;
+  display: block;
 }
 #microsite #home-content {
   background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
@@ -1121,6 +1142,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite .mCSB_inside > .mCSB_container {
   margin-right: 0px;
+  min-height: 100%;
 }
 #microsite .mCSB_scrollTools .mCSB_draggerContainer {
   z-index: 51;
@@ -1274,7 +1296,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     color: #ffffff;
   }
   #microsite section .microsite-section-container {
-    min-height: 800px;
+    min-height: 100%; /* 800px; */
   }
 }
 @media (max-width: 874px){

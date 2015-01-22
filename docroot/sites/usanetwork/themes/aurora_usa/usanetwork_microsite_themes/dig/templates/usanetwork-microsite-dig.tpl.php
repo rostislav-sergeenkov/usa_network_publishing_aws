@@ -16,6 +16,41 @@
  */
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
+  <div id="sections">
+    <!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
+    <!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
+    <?php if (!empty($sections)): ?>
+    <?php foreach ($sections as $section): ?>
+    <?php if (!empty($section['content'])): ?>
+    <?php if ($section['type'] == $current_section): ?>
+    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
+    <?php else: ?>
+    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+    <?php endif; ?>
+      <div class="mcs-scroll">
+        <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
+          <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
+            <?php print $section['content']; ?>
+          <?php if (empty($section['is_last'])): ?>
+            <?php print $section_separator; ?>
+          <?php endif; ?>
+          </div>
+        </section>
+        <?php if (!empty($section['is_last'])): ?>
+          <!-- FOOTER -->
+          <footer id="footer-microsite" role="contentinfo" class="clearfix">
+            <div class="region region-footer">
+              <?php print $footer; ?>
+            </div>
+          </footer>
+          <!-- /FOOTER -->
+        <?php endif; ?>
+      </div>
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    <?php endif; ?>
+  </div>
   <div id="left-nav">
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
@@ -63,40 +98,4 @@
       </div>
     </div>
   </div>
-  <div id="sections">
-    <!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
-    <!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
-    <?php if (!empty($sections)): ?>
-    <?php foreach ($sections as $section): ?>
-    <?php if (!empty($section['content'])): ?>
-    <?php if ($section['type'] == $current_section): ?>
-    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
-      <?php else: ?>
-      <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
-        <?php endif; ?>
-        <!--          <a name="/--><?php //print $section['type']; ?><!--"></a>-->
-        <div class="mcs-scroll">
-          <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
-            <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
-              <?php print $section['content']; ?>
-            <?php if (empty($section['is_last'])): ?>
-              <?php print $section_separator; ?>
-            <?php endif; ?>
-            </div>
-          </section>
-          <?php if (!empty($section['is_last'])): ?>
-            <!-- FOOTER -->
-            <footer id="footer-microsite" role="contentinfo" class="clearfix">
-              <div class="region region-footer">
-                <?php print $footer; ?>
-              </div>
-            </footer>
-            <!-- /FOOTER -->
-          <?php endif; ?>
-        </div>
-      </div>
-      <?php endif; ?>
-      <?php endforeach; ?>
-      <?php endif; ?>
-    </div>
-  </div>
+</div>

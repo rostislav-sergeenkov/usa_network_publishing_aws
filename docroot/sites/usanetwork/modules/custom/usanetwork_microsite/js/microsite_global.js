@@ -199,7 +199,6 @@
         normalScrollElements: '#left-nav, .mcs-scroll',
         scrollingSpeed: 1000,
         onLeave: function (index, nextIndex, direction) {
-
           scrollToTop();
           //setVideo();
 
@@ -219,9 +218,6 @@
           menu_items.removeClass('active');
 
           $(menu_items[nextIndex - 1]).addClass('active');
-
-          // Animation for logo in left nav.
-          logoAnim();
 
         },
         afterRender: function(){
@@ -309,17 +305,24 @@
       }
 
       // Animation for logo in left nav.
-      function logoAnim(){
-        var sectionItem = $('#sections .section').eq(0);
+      function logoAnim(show_logo){
 
-        if(!sectionItem.hasClass('active')){
-          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 700);
-          $('#left-nav-inner').animate({'top': '0'}, 500);
+        if(show_logo){
+          $('#left-nav-inner').animate({'top': '0'}, 400);
+          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
+
         }else{
-          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 700);
-          $('#left-nav-inner').animate({'top': '-130px'}, 500);
+          $('#left-nav-inner').animate({'top': '-130px'}, 400);
+          $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
+
         }
-      }logoAnim();
+      }
+      if($('#sections .section').eq(0).hasClass('active')){
+        logoAnim(false);
+      } else {
+        logoAnim(true);
+      }
+
 
       // initialize left nav hover to display subnav
       $('#left-nav-links-list li').hover(function(){
@@ -338,6 +341,11 @@
 				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;
 
+        if($(this).attr('data-menuitem') == 1){
+          logoAnim(false);
+        } else {
+          logoAnim(true);
+        }
 				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
 			});
 
@@ -360,11 +368,18 @@
         } else {
           section_num = 1;
         }
-
+        if(section_num == 1){
+          logoAnim(false);
+        } else {
+          logoAnim(true);
+        }
         $.fn.fullpage.moveTo(section_num);
       };
 
       $('#sections .section .scroll-to-next').click(function() {
+        if($('#sections .section').eq(0).hasClass('active')){
+          logoAnim(true);
+        }
         $.fn.fullpage.moveSectionDown();
       });
       // end one page scroll//

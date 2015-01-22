@@ -345,7 +345,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite section .microsite-section-container div.scroll {
   width: 4em;
-  margin: 0 auto 130px;
+  margin: 0 auto 30px;
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -698,10 +698,10 @@ you can use the generic selector below, but it's slower:
   position: relative;
   top: auto;
   padding-left: 17px;
-  -webkit-transition: top 1s ease-out 0.5s;
-  -moz-transition: top 1s ease-out 0.5s;
-  -o-transition: top 1s ease-out 0.5s;
-  transition: top 1s ease-out 0.5s;
+  -webkit-transition: top 0.8s ease-out 0s;
+  -moz-transition: top 0.8s ease-out 0s;
+  -o-transition: top 0.8s ease-out 0s;
+  transition: top 0.8s ease-out 0s;
 }
 .page-node-microsite #left-nav #left-nav-inner #nav-home > a {
   display: block;

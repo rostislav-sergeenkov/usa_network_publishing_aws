@@ -43,6 +43,8 @@
       // and the 300x250 at about the same time, so we create the 728x90
       // first and then create the 300x250
       function createAds(section) {
+        section = section || 'home';
+
         usa_debug('createAds(' + section + ')');
 
         // check to see if there is an ad already there

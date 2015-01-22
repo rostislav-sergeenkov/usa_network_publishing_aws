@@ -1,6 +1,7 @@
 // using fred carousel
 (function ($) {
   Drupal.behaviors.microsite_carousel = {
+    carousel_inited: false,
     replaceAd: function (){
       if ($(window).width() < 641) {
         $('.usa-microsite-featured .carousel li.ad').remove();
@@ -172,6 +173,8 @@
 
         });
       }
+      Drupal.behaviors.microsite_scroll.create300x250Ad('home');
+      Drupal.behaviors.microsite_carousel.carousel_inited = true;
     },
     attach: function (context, settings) {
       Drupal.behaviors.microsite_carousel.replaceAd();

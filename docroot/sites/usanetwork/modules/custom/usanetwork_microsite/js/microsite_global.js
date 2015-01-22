@@ -166,6 +166,7 @@
         s.pageName = siteName;
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
+        s.prop5 = s.prop4;
         pageName = sectionTitle + ' | ' + pageName;
         s.pageName += ' : ' + sectionTitle;
         if (itemTitle != '') {
@@ -175,6 +176,7 @@
         switch(anchor) {
           case 'videos':
             s.prop3 = 'Video';
+            s.prop5 = siteName + ' : Video : ' + $('#microsite #videos-content .video-title').text();
             break;
           case 'galleries':
             s.prop3 = 'Gallery';
@@ -246,8 +248,6 @@
 
             var elemScroll;
 
-            $('.scroll-to-next').hide();
-
             $('.mcs-scroll').swipe({
               excludedElements: "button, input, select, textarea, .noSwipe",
               allowPageScroll : "vertical",
@@ -270,8 +270,6 @@
                 }
               }
             });
-          }else{
-            $('.scroll-to-next').show();
           }
         }
       });

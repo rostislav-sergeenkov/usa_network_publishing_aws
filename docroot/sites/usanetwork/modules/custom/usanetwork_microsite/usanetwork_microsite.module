@@ -1046,7 +1046,11 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'galleries':
-      $head_title = t('Galleries | ' . $title . ' | USA Network');
+      $head_title = t('Gallery | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
+        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+      }
       break;
     case 'about':
       $head_title = t('About | ' . $title . ' | USA Network');
@@ -1106,33 +1110,51 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
   if ($context['entity']){
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
+      $node = menu_get_object();
+      if(!isset($node->type) || $node->type != 'usanetwork_microsite') {
+        return;
+      }
       $args = arg();
       $path = isset($args[3]) ? $args[3] : '';
       switch ($path) {
         case '':
         case 'home':
-          $omniture_prop4 = t($entity->title . ' : Home');
+          $omniture_prop3 = 'Home';
           break;
         case 'videos':
-          $omniture_prop4 = t($entity->title . ' : Videos');
+          $omniture_prop3 = 'Videos';
+          if(isset($args[4])) {
+            $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
+            if(isset($video_file) && !empty($video_file->filename)) {
+              $omniture_prop5 = t($entity->title . ' : Videos : ' + $video_file->filename);
+            }
+          }
           break;
         case 'galleries':
-          $omniture_prop4 = t($entity->title . ' : Galleries');
+          $omniture_prop3 = 'Gallery';
+          if(isset($args[4])) {
+            // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
+            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
+            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
+          }
           break;
         case 'about':
-          $omniture_prop4 = t($entity->title . ' : About');
+          $omniture_prop3 = 'About';
           break;
         case 'games':
-          $omniture_prop4 = t($entity->title . ' : Games');
-          break;
-        default:
-          $omniture_prop4 = t($entity->title);
+          $omniture_prop3 = 'Games';
           break;
       }
-      if (!empty($omniture_prop4)) {
-        $omniture_variables['s.prop4'] = $omniture_prop4;
+      if (!empty($omniture_prop3)) {
+        $omniture_variables['s.prop3'] = t($omniture_prop3);
+        $omniture_variables['s.prop4'] = t($entity->title . ' : ' . $omniture_prop3);
+        $omniture_variables['s.prop5'] = t($entity->title . ' : ' . $omniture_prop3);
       }
-    }   
+      if (!empty($omniture_prop5)) {
+        $omniture_variables['s.prop5'] = $omniture_prop5;
+        $omniture_variables['s.pageName'] = $omniture_pagename;
+      }
+    }
   }
 }
 
@@ -1149,8 +1171,8 @@ function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
         foreach ($node->content['#attached']['js'] as $key => $value) {
           if (strpos($value, 'usanetwork_gallery_content.js') !== FALSE) {
             unset($node->content['#attached']['js'][$key]);
-          } 
-        } 
+          }
+        }
       }
     }
   }

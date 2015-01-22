@@ -185,6 +185,7 @@
           },
           after: function() {
             $(window).trigger('resize.drupal-tableheader');
+            $('#main-menu-toggle').removeClass('active');
           },
           beforeOn: function() {
             remove_dart();
@@ -253,6 +254,12 @@
 
         // TURN ON 'MENU' PANEL
         $('#main-menu-toggle').click(function() {
+          if (!$(this).hasClass('active')){
+            $(this).addClass('active');
+          }
+          else {
+            return false;
+          }
           jpm_on_menu();
         });
 

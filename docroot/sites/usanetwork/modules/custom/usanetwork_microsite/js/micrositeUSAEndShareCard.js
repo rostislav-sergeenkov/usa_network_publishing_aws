@@ -154,8 +154,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     NBCUEndShareCard.Debug("[GetYouMayAlsoLike]");
     var feedAnnex = '';
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
-    var currentNid = 55216; // @todo
-    var url = NBCUEndShareCard.Feed + '/' + currentGuid + '/' + currentNid;
+    var currentNid = tpconfig.nid;
+    var url = NBCUEndShareCard.Feed + '/' + currentNid + '/' + currentGuid;
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

@@ -41,12 +41,24 @@
             s.prop4 = siteName + ' : Gallery';
             s.prop5 = siteName + ' : Gallery : ' + $title;
             s.pageName = s.prop5 + ' : Photo ' + currentSlide;
-            document.title = $title + ' | Galleries | ' + basePageName;
+            document.title = $title + ' | Gallery | ' + basePageName;
             if (typeof s_gi != 'undefined') {
               void (s.t());
             }
           }
         }
+      }
+    },
+    updateCounter: function($slider) {
+      var slider = $slider.data('flexslider');
+      var $counter = $slider.children('.counter');
+      if (slider) {
+        var current = slider.currentSlide + 1;
+        var total = slider.slides.length;
+        $counter.html(Drupal.t('!current of !total', {
+          '!current' : current,
+          '!total' : total
+        }));
       }
     },
     refreshBannerAd: function() {
@@ -58,7 +70,7 @@
       current_gallery.find('.description-block').html(current_description);
     },
     attach: function(settings, context) {
-      $('.microsite-gallery .flexslider').once('gallery_carousel', function() {
+      $('.microsite-gallery .flexslider').once('microsite-gallery-carousel', function() {
         $(this).on('start', function() {
           var $slider = $(this);
           Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
@@ -67,12 +79,15 @@
           if (current_description) {
             current_gallery.find('.description-block').html(current_description);
           }
+          $slider.append('<div class="counter"></div>');
+          Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
         });
         $(this).on('after', function() {
           var $slider = $(this);
           Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
           Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
           Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
+          Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
         });
       });
     }

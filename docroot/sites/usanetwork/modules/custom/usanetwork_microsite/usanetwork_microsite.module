@@ -567,27 +567,29 @@ function _usanetwork_microsite_render_page_videos($section_wrapper) {
  * @return array
  */
 function _usanetwork_microsite_set_variables_for_player_show($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+
   return array(
     'url' => !empty($file->filename)
       ? _usanetwork_microsite_get_suggested_video_url($file->filename)
       : NULL,
     'title' => !empty($file->field_mpx_title)
-      ? $file->field_mpx_title[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_title->value()
       : NULL,
     'description' => !empty($file->field_mpx_description)
-      ? $file->field_mpx_description[LANGUAGE_NONE][0]['value']
-      : NULL,
-    'airdate' => !empty($file->field_mpx_airdate)
-      ? strftime('%b %e, %G', $file->field_mpx_airdate[LANGUAGE_NONE][0]['value'])
+      ? $file_wrapper->field_mpx_description->value()
       : NULL,
     'season_number' => !empty($file->field_mpx_season_number)
-      ? $file->field_mpx_season_number[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_season_number->value()
       : NULL,
     'episode_number' => !empty($file->field_mpx_episode_number)
-      ? $file->field_mpx_episode_number[LANGUAGE_NONE][0]['value']
+      ? $file_wrapper->field_mpx_episode_number->value()
       : NULL,
     'rendered' => !empty($file->fid)
       ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
+      : NULL,
+    'duration' => !empty($file->field_mpx_duration)
+      ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
       : NULL,
   );
 }
@@ -1044,7 +1046,11 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'galleries':
-      $head_title = t('Galleries | ' . $title . ' | USA Network');
+      $head_title = t('Gallery | ' . $title . ' | USA Network');
+      if(isset($args[4])) {
+        // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
+        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+      }
       break;
     case 'about':
       $head_title = t('About | ' . $title . ' | USA Network');
@@ -1100,31 +1106,69 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
   if ($context['entity']){
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
+      $node = menu_get_object();
+      if(!isset($node->type) || $node->type != 'usanetwork_microsite') {
+        return;
+      }
       $args = arg();
       $path = isset($args[3]) ? $args[3] : '';
       switch ($path) {
         case '':
         case 'home':
-          $omniture_prop4 = t($entity->title . ' : Home');
+          $omniture_prop3 = 'Home';
           break;
         case 'videos':
-          $omniture_prop4 = t($entity->title . ' : Videos');
+          $omniture_prop3 = 'Videos';
+          if(isset($args[4])) {
+            $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
+            if(isset($video_file) && !empty($video_file->filename)) {
+              $omniture_prop5 = t($entity->title . ' : Videos : ' + $video_file->filename);
+            }
+          }
           break;
         case 'galleries':
-          $omniture_prop4 = t($entity->title . ' : Galleries');
+          $omniture_prop3 = 'Gallery';
+          if(isset($args[4])) {
+            // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
+            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
+            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
+          }
           break;
         case 'about':
-          $omniture_prop4 = t($entity->title . ' : About');
+          $omniture_prop3 = 'About';
           break;
         case 'games':
-          $omniture_prop4 = t($entity->title . ' : Games');
-          break;
-        default:
-          $omniture_prop4 = t($entity->title);
+          $omniture_prop3 = 'Games';
           break;
       }
-      if (!empty($omniture_prop4)) {
-        $omniture_variables['s.prop4'] = $omniture_prop4;
+      if (!empty($omniture_prop3)) {
+        $omniture_variables['s.prop3'] = t($omniture_prop3);
+        $omniture_variables['s.prop4'] = t($entity->title . ' : ' . $omniture_prop3);
+        $omniture_variables['s.prop5'] = t($entity->title . ' : ' . $omniture_prop3);
+      }
+      if (!empty($omniture_prop5)) {
+        $omniture_variables['s.prop5'] = $omniture_prop5;
+        $omniture_variables['s.pageName'] = $omniture_pagename;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ * Remove usanetwork_gallery_content.js from microsite. Two remove double omniture click.
+ * @TODO Should be removed after launch!
+ */
+function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'media_gallery') {
+    if ($view_mode == 'inline_content') {
+      $args = arg();
+      if ((isset($args[2])) && ($args[2] == 'microsite')) {
+        foreach ($node->content['#attached']['js'] as $key => $value) {
+          if (strpos($value, 'usanetwork_gallery_content.js') !== FALSE) {
+            unset($node->content['#attached']['js'][$key]);
+          }
+        }
       }
     }
   }

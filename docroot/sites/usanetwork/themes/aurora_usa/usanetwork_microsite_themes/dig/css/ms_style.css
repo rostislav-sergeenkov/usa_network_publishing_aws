@@ -293,6 +293,7 @@ you can use the generic selector below, but it's slower:
   left: 0;
   margin: 0;
   padding: 5px 0 0;
+  overflow-y: auto;
 }
 #microsite .section{
   opacity: 0;
@@ -406,6 +407,7 @@ you can use the generic selector below, but it's slower:
 #microsite .ad-leaderboard {
   min-height: 90px;
   margin: 0 auto;
+  padding-top: 0;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
@@ -1072,19 +1074,27 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite #galleries-content .full-pane {
   width: 100%;
-  margin: 0;
+  margin: 40px 0 0;
   padding: 0;
   max-width: 1120px;
 }
+#microsite #galleries-content .microsite-gallery-meta {
+  position: absolute;
+  bottom: 100%;
+  max-height: 70px;
+  width: 100%;
+}
 #microsite #galleries-content .left-pane {
+  position: relative;
   width: calc(100% - 320px);
 }
-#microsite #galleries-content h2 {
+#microsite #galleries-content .microsite-gallery h2 {
+  float: left;
   font-size: 1.7em;
   line-height: 1.1em;
-  margin: 0 0 0.3em;
+  margin: 0 0 0.2em;
+  overflow: hidden;
   width: calc(100% - 216px);
-  float: left;
 }
 #microsite #gigya-share {
   width: 196px;
@@ -1143,8 +1153,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     max-height: 506px;
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
-    width: 1000px;
-    height: 563px;
+    width: 1000px!important;
+    height: 563px!important;
   }
   #microsite .block-usanetwork-mpx-video {
     width: 1000px;
@@ -1187,9 +1197,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 378px;
-  }
   #microsite .usa-microsite-featured {
     width: 930px;
   }
@@ -1223,7 +1230,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 615px;
   }
   #microsite .a-spot-panel #show-main-slider{
-    max-height: 250px;
+    max-height: 350px;
   }
   #microsite .full-pane {
     max-width: 615px;
@@ -1245,8 +1252,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 
 @media (max-width: 1120px) {
-  #microsite #galleries-content h2 {
+  #microsite #galleries-content .microsite-gallery h2 {
     width: 100%;
+  }
+  #microsite #galleries-content .full-pane {
+    margin-top: 70px;
   }
   #microsite #gigya-share {
     clear: left;
@@ -1402,9 +1412,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .usa-microsite-featured {
     margin: 0 auto 130px;
   }
-  #microsite section .microsite-section-container div.scroll{
-    display: none;
-  }
+  /*#microsite section .microsite-section-container div.scroll{*/
+    /*display: none;*/
+  /*}*/
   #microsite #galleries-content .flexslider .counter {
     padding: 0px;
   }
@@ -1416,6 +1426,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite #main-slider {
     width: 300px;
+  }
+  #microsite .a-spot-panel #show-main-slider {
+    max-height: 250px;
   }
   #microsite .usa-microsite-featured {
     width: 300px;
@@ -1506,12 +1519,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section#galleries-content .flexslider {
     margin: 0;
   }
-  #microsite #galleries-content h2 {
+  #microsite #galleries-content .microsite-gallery h2 {
     margin: 0 0 1em;
+    overflow: hidden;
+    white-space: normal;
+    width: 100%;
   }
   #microsite .episodic-galleries,
   .character-galleries {
     display: none;
+  }
+  #microsite #galleries-content .full-pane {
+    margin-top: 0px;
+  }
+  #microsite #galleries-content .microsite-gallery-meta {
+    white-space: normal;
+    position: relative;
+    bottom: auto;
+    max-height: none;
+    width: 100%;
   }
 }
 @media (max-width: 480px){
@@ -1521,6 +1547,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 320px){
 
+}
+@media (max-height: 850px) {
+  #microsite #left-nav {
+    font-size: 16px;
+    top: 5px;
+  }
 }
 /*_________________*/
 

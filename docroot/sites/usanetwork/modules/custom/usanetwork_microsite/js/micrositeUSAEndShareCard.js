@@ -154,10 +154,8 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     NBCUEndShareCard.Debug("[GetYouMayAlsoLike]");
     var feedAnnex = '';
     var currentGuid = encodeURIComponent(NBCUEndShareCard.NowPlaying.guid);
-    var url = NBCUEndShareCard.Feed + '/' + currentGuid;
-    if (!NBCUEndShareCard.IsEmpty(NBCUEndShareCard.ShareURL)) {
-      feedAnnex += "?url=" + encodeURIComponent(NBCUEndShareCard.ShareURL);
-    }
+    var currentNid = 55216; // @todo
+    var url = NBCUEndShareCard.Feed + '/' + currentGuid + '/' + currentNid;
     if (!NBCUEndShareCard.AppearsToBeIE) {
       $.ajax({
         type: "GET",

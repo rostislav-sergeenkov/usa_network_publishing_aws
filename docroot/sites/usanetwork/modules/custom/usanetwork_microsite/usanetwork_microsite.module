@@ -43,10 +43,10 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/microcite/endcard/related/%'] = array(
+  $items['ajax/microcite/endcard/related/%node/%'] = array(
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
-    'page arguments' => array(4),
+    'page arguments' => array(4, 5),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -513,7 +513,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
   $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
   // replace spaces with '-'
   $suggested_url = str_replace(' ', '-', $suggested_url);
-  return $suggested_url;
+  return 'clip-' . $suggested_url;
 }
 
 /**
@@ -1073,12 +1073,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
  * Menu callback for related items.
  *
  */
-function  usanetwork_microsite_endcard_related_items($guid) {
+function  usanetwork_microsite_endcard_related_items($node, $guid) {
   $items = array();
-  $params = drupal_get_query_parameters();
-  $url = $params['url'];
-  $url = preg_replace('|https?:\/\/.*\/|Uis', '', $url);
-  $node = menu_get_object('node', 2, $url);
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   if ($files) {
     foreach ($files as $related_file) {

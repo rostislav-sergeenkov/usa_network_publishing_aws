@@ -199,7 +199,7 @@
 
       //=========== Init one page scroll for microsite ===============//
       $('#sections').fullpage({
-        normalScrollElements: '.section',
+        normalScrollElements: '#left-nav, .mcs-scroll',
         scrollingSpeed: 1000,
         onLeave: function (index, nextIndex, direction) {
 
@@ -229,19 +229,14 @@
         afterRender: function(){
           createAds(activeSection);
 
-          $('.fp-tableCell').each(function () {
+          $('.mcs-scroll').each(function () {
 
-            var Height = $(this).innerHeight() - $('#mega-nav').innerHeight();
+            var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
             $(this).height(Height);
 
             $(this).mCustomScrollbar({
               theme:"3d",
-              scrollInertia: 0,
-              callbacks:{
-                whileScrolling: function(){
-                  return this.mcs.topPct;
-                }
-              }
+              scrollInertia: 0
             });
           });
 
@@ -281,8 +276,11 @@
 
       // pauseVideo
       function setVideo(){
+
+        console.log('pause');
+        //$pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
-        $pdk.controller.nextClip(true);
+        //$pdk.controller.nextClip(true);
       };
 
       //scroll to top

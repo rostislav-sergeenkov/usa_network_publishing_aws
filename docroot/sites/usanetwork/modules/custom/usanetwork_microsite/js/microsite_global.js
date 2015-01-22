@@ -201,7 +201,7 @@
         onLeave: function (index, nextIndex, direction) {
 
           scrollToTop();
-          setVideo();
+          //setVideo();
 
           var menu_items = $('#left-nav-links-list li');
 
@@ -217,6 +217,7 @@
           setOmnitureData(anchor);
 
           menu_items.removeClass('active');
+
           $(menu_items[nextIndex - 1]).addClass('active');
 
           // Animation for logo in left nav.
@@ -276,9 +277,18 @@
 
         console.log('pause');
         //$pdk.controller.clickPlayButton(false);
+
         $pdk.controller.pause(true);
-        //$pdk.controller.nextClip(true);
+
+        $pdk.controller.nextClip(true);
       };
+			//
+      //$('#pdk-player').load(function(){
+			//
+      //  $pdk.onMediaStart(e)
+			//
+      //});
+
 
       //scroll to top
       function scrollToTop(){
@@ -321,6 +331,9 @@
       // initialize left nav clicks
 			$('#left-nav-links-list li.internal a.scroll-link').click(function(e) {
         e.preventDefault();
+
+       // $('#left-nav-links-list li').removeClass('active');
+       // $(this).parent().addClass('active');
 
 				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;

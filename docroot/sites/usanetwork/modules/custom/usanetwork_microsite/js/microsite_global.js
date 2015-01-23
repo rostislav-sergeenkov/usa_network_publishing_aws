@@ -205,8 +205,8 @@
             currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
             direction = (anchorNum > currentSectionNum) ? '' : '-';
             otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
-usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
-usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
+//usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
+//usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'easeOutSine', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
@@ -431,16 +431,26 @@ usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' +
         $('title').text(item + ' | '+ section + ' | ' + basePageName);
       }
 
-      $('.mcs-scroll').each(function () {
-        var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
-        $(this).height(Height);
-        $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
+      // set scroll and section height
+      function setSectionHeight() {
+        $('.mcs-scroll').each(function () {
+//          var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
+//          $(this).height(Height);
+//          $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
 
-        $(this).mCustomScrollbar({
-          theme:"3d",
-          scrollInertia: 0
+          var msHeight = $('#microsite').innerHeight() - $('#admin-menu-wrapper').innerHeight();
+          $(this).height(msHeight);
+          $('#microsite .section').css('height', msHeight + 'px');
+          $('#microsite section').css('min-height', '100%');
+
+          $(this).mCustomScrollbar({
+            theme:"3d",
+            scrollInertia: 0
+          });
         });
-      });
+      }
+      setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
+
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -500,6 +510,11 @@ usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' +
       };
       // end AJAX request //
 
+
+      window.onresize = function(event) {
+        setSectionHeight();
+      }
+      window.addEventListener('orientationchange', setSectionHeight);
 
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING

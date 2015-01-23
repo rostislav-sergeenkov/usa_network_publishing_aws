@@ -17,8 +17,6 @@
 ?>
 <div id="microsite" <?php if (!empty($classes)): print 'class="' . $classes . '"'; endif; ?>>
   <div id="sections">
-    <!--    <div id="ad-leaderboard">--><?php //print dart_tag('728x90_970x66_ifr_rel'); ?><!--</div>-->
-    <!--    <div id="ad300x250">--><?php //print dart_tag('300x250_scr'); ?><!--</div>-->
     <?php if (!empty($sections)): ?>
     <?php foreach ($sections as $section): ?>
     <?php if (!empty($section['content'])): ?>
@@ -55,7 +53,11 @@
     <div id="left-nav-inner" class="hide">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
+          <?php if ($current_section == 'home'): ?>
+          <li id="nav-home" class="internal active" data-menuanchor="home">
+          <?php else: ?>
           <li id="nav-home" class="internal" data-menuanchor="home">
+          <?php endif; ?>
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <div id="left-nav-logo"></div>
               <?php /* if (!empty($tune_in)): ?>

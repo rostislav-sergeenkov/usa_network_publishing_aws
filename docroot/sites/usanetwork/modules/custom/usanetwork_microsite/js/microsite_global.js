@@ -196,14 +196,22 @@
 
       //=========== Init one page scroll for microsite ===============//
       function sectionScroll(elemId) {
-        var anchor = $('#' + elemId).attr('data-menuanchor'),
+        var anchorItem = $('#' + elemId),
+            anchor = anchorItem.attr('data-menuanchor'),
+            anchorNum = anchorItem.find('a').attr('data-menuitem'),
             anchorFull = basePath + '/' + anchor,
             nextSection = '#section-' + anchor,
-            sectionHeight = window.innerHeight;
-        usa_debug('sectionScroll(' + elemId + ')\nanchor: ' + anchor + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight);
-        $(nextSection).addClass('transition').css({'top': sectionHeight + 'px', 'z-index': 10}).show().animate({'top': '0', 'opacity': 1}, 1700, 'easeInOutCubic', function(){
+            sectionHeight = window.innerHeight,
+            currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
+            direction = (anchorNum > currentSectionNum) ? '' : '-';
+            otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
+usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
+usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
+        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'easeOutSine', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
+
+          scrollToTop();
 
           changeUrl(anchor, anchorFull);
           createAds(anchor);
@@ -212,7 +220,7 @@
           $('#left-nav-links-list li').removeClass('active');
           $('#nav-' + anchor).addClass('active');
         });
-        $('.active').css({'z-index': 0}).animate({'top' : '-' + sectionHeight + 'px'}, 4000, 'easeInOutCubic');
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 2000, 'easeOutSine');
       }
 
 
@@ -377,33 +385,44 @@
       //
       window.onpopstate = function(event) {
         var section_num = null,
-          splited = null;
+            section = null,
+            splited = null;
 
         if (event.state != null) {
           splited = event.state.state.split('/');
 
           if (splited[1] == 'dig') {
             section_num = $('#left-nav-links-list [data-menuanchor=' + splited[2] + ']').find('a').attr('data-menuitem');
+            section = splited[2];
             if (section_num == undefined) {
               section_num = 1;
+              section = 'home';
             }
           }
-        } else {
-          section_num = 1;
         }
-        if(section_num == 1){
+        else {
+          section_num = 1;
+          section = 'home';
+        }
+        if (section_num == 1) {
           logoAnim(false);
-        } else {
+        }
+        else {
           logoAnim(true);
         }
-        $.fn.fullpage.moveTo(section_num);
+        //$.fn.fullpage.moveTo(section_num);
+        sectionScroll('nav-' + section);
       };
 
       $('#sections .section .scroll-to-next').click(function() {
         if($('#sections .section').eq(0).hasClass('active')){
           logoAnim(true);
         }
-        $.fn.fullpage.moveSectionDown();
+//        $.fn.fullpage.moveSectionDown();
+        var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
+            nextSection = thisSection++,
+            nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('id');
+        sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
 
@@ -411,6 +430,17 @@
       function changeTitle(item, section){
         $('title').text(item + ' | '+ section + ' | ' + basePageName);
       }
+
+      $('.mcs-scroll').each(function () {
+        var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
+        $(this).height(Height);
+        $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
+
+        $(this).mCustomScrollbar({
+          theme:"3d",
+          scrollInertia: 0
+        });
+      });
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video

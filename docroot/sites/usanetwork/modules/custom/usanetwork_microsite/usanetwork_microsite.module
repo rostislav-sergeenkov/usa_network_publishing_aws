@@ -1076,7 +1076,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   if ($files) {
     foreach ($files as $related_file) {
-      if($related_file->mpx_video_data['guid'] != $guid) {
+      if($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
         $url_param = _usanetwork_microsite_get_suggested_video_url($related_file->filename);
         $item = array(
           'fid' => $related_file->fid,

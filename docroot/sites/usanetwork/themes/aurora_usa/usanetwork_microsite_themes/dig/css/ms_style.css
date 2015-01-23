@@ -371,11 +371,9 @@ you can use the generic selector below, but it's slower:
   margin: 30px 0 10px;
 }
 #microsite section .microsite-section-container div.scroll {
-  position: absolute;
-  bottom: 10px;
-  left: 100%;
+  position: relative;
   width: 4em;
-  margin: 0 0 0 calc(-50% + 2em);
+  margin: 0 auto 45px;
   cursor: pointer;
   padding: 0;
 }
@@ -436,9 +434,6 @@ you can use the generic selector below, but it's slower:
   min-height: 90px;
   margin: 0 auto;
   padding-top: 0;
-}
-#microsite .ad-leaderboard + div {
-  padding-bottom: 80px;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
@@ -1113,6 +1108,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   padding: 0;
   max-width: 1120px;
 }
+#microsite #galleries-content .full-pane:after {
+  content: '';
+  display: table;
+  clear: both;
+}
 #microsite #galleries-content .microsite-gallery-meta {
   position: absolute;
   bottom: 100%;
@@ -1311,7 +1311,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     color: #ffffff;
   }
   #microsite section .microsite-section-container {
-    min-height: 100%; /* 800px; */
+    min-height: 800px;
   }
 }
 @media (max-width: 874px){
@@ -1322,6 +1322,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin-left: 15px;
     margin-right: 15px;
+  }
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 auto 30px;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){
@@ -1442,22 +1445,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 768px){
-  #microsite section .microsite-section-container{
-    margin-bottom: 150px;
-  }
   #microsite .usa-microsite-featured {
-    margin: 0 auto 130px;
+    margin: 0 auto 50px;
   }
-  /*#microsite section .microsite-section-container div.scroll{*/
-    /*display: none;*/
-  /*}*/
   #microsite #galleries-content .flexslider .counter {
     padding: 0px;
   }
 }
 @media (max-width: 640px){
   #microsite section .microsite-section-container {
-    margin: 0 auto 150px;
+    margin: 0 auto;
     width: 300px;
   }
   #microsite #main-slider {

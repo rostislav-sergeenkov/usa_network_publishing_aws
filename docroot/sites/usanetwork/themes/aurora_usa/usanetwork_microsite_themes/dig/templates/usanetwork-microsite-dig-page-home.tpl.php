@@ -37,6 +37,7 @@
         </div>
       </div>
       <?php endif; ?>
+
       <?php if (!empty($featured)): ?>
       <div class="usa-microsite-featured clearfix">
         <div class="carousel clearfix">

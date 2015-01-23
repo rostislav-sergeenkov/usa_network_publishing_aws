@@ -269,30 +269,11 @@
           $('#left-nav-links-list li').removeClass('active');
           $('#nav-' + anchor).addClass('active');
         });
-        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 2000, 'easeOutSine');
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1500, 'easeOutSine', function(){
+          $('.section-info').css({'top': '0'});
+          $('#left-nav').removeClass('stop');
+        });
       }
-			//
-      //$(document).ready(function() {
-      //  function cloneMicrositeMenu() {
-      //    $('#ms-left-nav-links-list').remove();
-      //    $('#tv-show-menu').remove();
-      //    var navMenu = $('#left-nav-links-list');
-			//
-      //    navMenu.attr('id', 'ms-left-nav-links-list');
-      //    $('#jPanelMenu-menu').prepend(navMenu);
-			//
-      //    //
-			//
-      //    $('#ms-left-nav-links-list ul li>a').text('Home');
-			//
-      //    $('#ms-left-nav-links-list a').click(function(clickEvent) {
-      //      clickEvent.preventDefault();
-      //    });
-      //  }
-			//
-      //  cloneMicrositeMenu();
-      //});
-
 
       // pauseVideo
       function setVideo(){
@@ -304,13 +285,6 @@
 
         $pdk.controller.nextClip(true);
       };
-			//
-      //$('#pdk-player').load(function(){
-			//
-      //  $pdk.onMediaStart(e)
-			//
-      //});
-
 
       //scroll to top
       function scrollToTop(){
@@ -356,11 +330,13 @@
       });
 
       // initialize left nav clicks
-			$('#left-nav-links-list li.internal a.scroll-link').click(function(e) {
+			$('.internal a.scroll-link').click(function(e) {
         e.preventDefault();
-
-       // $('#left-nav-links-list li').removeClass('active');
-       // $(this).parent().addClass('active');
+        if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
+          return false
+        } else {
+          $('#left-nav').addClass('stop');
+        }
 
 				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;
@@ -371,7 +347,6 @@
         else {
           logoAnim(true);
         }
-				//$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
 				sectionScroll($(this).parent().attr('id'));
 			});
 
@@ -405,7 +380,6 @@
         else {
           logoAnim(true);
         }
-        //$.fn.fullpage.moveTo(section_num);
         sectionScroll('nav-' + section);
       };
 

@@ -1129,6 +1129,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   line-height: 1.1em;
   margin: 0 0 0.2em;
   overflow: hidden;
+  white-space: nowrap;
   width: calc(100% - 216px);
 }
 #microsite #gigya-share {
@@ -1154,6 +1155,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 .region-footer {
   clear: both;
+}
+#footer-microsite li, #footer-microsite ul {
+  padding: 0;
+  margin: 0;
 }
 #microsite .mCSB_inside > .mCSB_container {
   margin-right: 0px;

@@ -21,9 +21,9 @@
     <?php foreach ($sections as $section): ?>
     <?php if (!empty($section['content'])): ?>
     <?php if ($section['type'] == $current_section): ?>
-    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
+    <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info active">
     <?php else: ?>
-    <div id="section-<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
+    <div id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>" class="section section-info">
     <?php endif; ?>
       <div class="mcs-scroll">
         <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">

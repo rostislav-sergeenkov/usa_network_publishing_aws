@@ -516,6 +516,7 @@ you can use the generic selector below, but it's slower:
 #microsite #characters .character-nav li:hover .tooltip {
   display: block;
 }
+/*
 #microsite #galleries h3 {
   margin-bottom: 12px;
 }
@@ -553,7 +554,7 @@ you can use the generic selector below, but it's slower:
   top: 0;
   left: 0;
   /* -100% per 2 line items */
-}
+/*}
 #microsite #galleries .right-pane .gallery-list .outer .viewport li {
   float: left;
   margin: 0 2px;
@@ -587,7 +588,7 @@ you can use the generic selector below, but it's slower:
 #microsite #galleries .right-pane .gallery-list .ad300x250 {
   float: left;
   margin-left: 0;
-}
+}*/
 #microsite .carousel {
   position: relative;
 }

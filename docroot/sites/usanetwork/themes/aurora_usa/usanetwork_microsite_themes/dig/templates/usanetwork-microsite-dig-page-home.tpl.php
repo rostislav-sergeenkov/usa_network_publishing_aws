@@ -43,7 +43,7 @@
         <div class="carousel clearfix">
           <div class="carousel-viewport">
             <div class="microsite-carousel">
-              <ul class="slides">
+              <ul class="slides carousel">
                 <?php foreach ($featured as $f_key => $feature): ?>
                   <?php if ($f_key == 1): ?>
                     <li class="ad ad300x250 dart-tag dart-name-300x250_ifr_reload_home carousel-item"></li>

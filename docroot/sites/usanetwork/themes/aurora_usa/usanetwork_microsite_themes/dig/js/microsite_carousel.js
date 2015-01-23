@@ -3,9 +3,21 @@
   Drupal.behaviors.microsite_carousel = {
     carousel_inited: false,
     replaceAd: function (){
+      var home_carousel_ad = $('.usa-microsite-featured .carousel li.ad');
       if ($(window).width() < 641) {
-        $('.usa-microsite-featured .carousel li.ad').remove();
         $('#videos-content #block-usanetwork-mpx-video-usa-mpx-video-views li.ad').remove();
+        home_carousel_ad.hide();
+        if (!$('.usa-microsite-featured .carousel li:last').hasClass('ad')) {
+          $('.usa-microsite-featured .carousel li:last').after(home_carousel_ad.clone());
+          home_carousel_ad.remove();
+        }
+      }
+      else {
+        home_carousel_ad.show();
+        if ($('.usa-microsite-featured .carousel li:last').hasClass('ad')) {
+          $('.usa-microsite-featured .carousel li').eq(0).after(home_carousel_ad.clone());
+          home_carousel_ad.remove();
+        }
       }
     },
     flexDestroy: function (selector) {

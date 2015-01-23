@@ -10,7 +10,6 @@
 
     //create mobile menu for microsite
     micrositeCreateMobileMenu : function createMobileMenu(){
-
       var leftNav = $('#left-nav-links-list'),
         leftNavItem = leftNav.find('li.internal'),
         mobileMenu = $('#jPanelMenu-menu #tv-show-menu');
@@ -18,7 +17,6 @@
       i = 0; j = 0;
 
       leftNavItem.each(function(){
-
         if(i == 0){
           var attrHome = leftNavItem.eq(i).attr('data-menuanchor'),
             attrHomeLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
@@ -98,7 +96,6 @@
     },
 
     attach: function (context, settings) {
-
 
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
@@ -266,7 +263,9 @@
           setOmnitureData(anchor);
 
           $('#left-nav-links-list li').removeClass('active');
+          $('#tv-show-menu .internal').removeClass('active');
           $('#nav-' + anchor).addClass('active');
+          $('#tv-show-menu .internal[data-menuanchor=' + anchor +']').addClass('active');
         });
         $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'easeInSine', function(){
           $('.section-info').css({'top': '0'});
@@ -301,7 +300,25 @@
           history.pushState({"state": basePath}, basePath, basePath);
         }
       }
+      // initialize left nav clicks
+      $('.internal a.scroll-link').click(function(e) {
+        e.preventDefault();
+        if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
+          return false
+        } else {
+          $('#left-nav').addClass('stop');
+        }
 
+        var anchor = $(this).parent().attr('data-menuanchor');
+
+        if ($(this).attr('data-menuitem') == 1) {
+          logoAnim(false);
+        }
+        else {
+          logoAnim(true);
+        }
+        sectionScroll(anchor);
+      });
       // Animation for logo in left nav.
       function logoAnim(show_logo){
         if (show_logo) {
@@ -327,26 +344,6 @@
       }, function(){
         $(this).removeClass('hover');
       });
-
-      // initialize left nav clicks
-			$('.internal a.scroll-link').click(function(e) {
-        e.preventDefault();
-        if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
-          return false
-        } else {
-          $('#left-nav').addClass('stop');
-        }
-
-				var anchor = $(this).parent().attr('data-menuanchor');
-
-        if ($(this).attr('data-menuitem') == 1) {
-          logoAnim(false);
-        }
-        else {
-          logoAnim(true);
-        }
-				sectionScroll(anchor);
-			});
 
       //
       // Switch section on history prev/forward button
@@ -385,11 +382,9 @@
         if($('#sections .section').eq(0).hasClass('active')){
           logoAnim(true);
         }
-//        $.fn.fullpage.moveSectionDown();
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
             nextSection = thisSection++,
             nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
-            console.log(nextSectionNavElem);
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
@@ -482,6 +477,28 @@
         setSectionHeight();
       });
 
+      $(window).load(function(){
+        $('#tv-show-menu .internal a.scroll-link').click(function(e) {
+          e.preventDefault();
+          if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
+            return false
+          } else {
+            $('#left-nav').addClass('stop');
+          }
+
+          var anchor = $(this).parent().attr('data-menuanchor');
+
+          if ($(this).attr('data-menuitem') == 1) {
+            logoAnim(false);
+          }
+          else {
+            logoAnim(true);
+          }
+          $('#main-menu-toggle').click();
+          sectionScroll(anchor);
+        });
+      });
+
       window.addEventListener('orientationchange', setSectionHeight);
 
       // a-spot clicks
@@ -545,16 +562,10 @@
       // initialize left nav clicks
     }
   };
-
   $(document).ready(function(){
-
     Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
-
   });
-
   $(window).load(function(){
-
-
 
   });
 })(jQuery);

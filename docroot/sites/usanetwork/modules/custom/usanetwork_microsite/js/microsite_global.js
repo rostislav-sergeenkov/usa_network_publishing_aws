@@ -8,45 +8,94 @@
   var activeSection = 'home';
   Drupal.behaviors.microsite_scroll = {
 
+    //create mobile menu for microsite
+    micrositeCreateMobileMenu : function createMobileMenu(){
 
+      var leftNav = $('#left-nav-links-list'),
+        leftNavItem = leftNav.find('li.internal'),
+        mobileMenu = $('#jPanelMenu-menu #tv-show-menu');
 
-  // Usa_refreshMicrositeAdsBySection.
-  usa_refreshMicrositeAdsBySection: function (adContainer) {
-    usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
-    jQuery(adContainer + ' iframe').attr('src', jQuery(adContainer + ' iframe').attr('src'));
-  },
+      i = 0; j = 0;
 
-  // 300x250 -- not for video companion ads!!
-  create300x250Ad: function(section) {
-    usa_debug('create300x250Ad(' + section + ')');
-    if (activeSection != 'videos') {
+      leftNavItem.each(function(){
 
-      // check to see if there's already an ad
-      if (jQuery('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
-        Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection('.dart-name-300x250_ifr_reload_' + section);
-      }
-      else if (jQuery('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
-        Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection('.dart-name-220x60_ifr_reload_' + section);
-      }
-      else {
-        iframeQueue = [];
-        Drupal.DART.tag('{"machinename":"300x250_ifr_reload_' + section + '","name":"300x250 script","pos":"7","sz":"300x250","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"300x250","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord='+ord+'?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord='+ord+'?"}}');
-        // write iframe ad units to page
-        if (iframeQueue.length) {
-          for (var i=0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
-            // 300x250 second
-            if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
-              jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-            }
-            // 220x60 last
-            if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
-              jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+        if(i == 0){
+          var attrHome = leftNavItem.eq(i).attr('data-menuanchor'),
+            attrHomeLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
+            mobileMenuTitle = mobileMenu.find('h2.menu-title'),
+            mobileMenuTitleLink = mobileMenu.find('h2.menu-title a.slide-panel-link');
+
+          mobileMenuTitle.attr('data-menuanchor', attrHome);
+          mobileMenuTitle.addClass('internal');
+          mobileMenuTitleLink.addClass('scroll-link');
+          mobileMenuTitleLink.attr('href', '#');
+          mobileMenuTitleLink.attr('data-menuitem', attrHomeLink);
+
+          if(leftNavItem.eq(i).hasClass('active')){
+            mobileMenuTitle.addClass('active');
+          }
+        }
+        if(i != 0){
+          var attrSection = leftNavItem.eq(i).attr('data-menuanchor'),
+            attrSectionLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
+            mobileMenuList = mobileMenu.find('.item-list ul').eq(0),
+            mobileMenuListItem = mobileMenuList.find('li').eq(j),
+            mobileMenuListItemLink = mobileMenuListItem.find('a.slide-panel-link');
+
+          mobileMenuList.attr('id', 'ms-left-nav');
+          mobileMenuListItem.attr('data-menuanchor', attrSection);
+          mobileMenuListItem.addClass('internal');
+          mobileMenuListItemLink.addClass('scroll-link');
+          mobileMenuListItemLink.attr('href', '#');
+          mobileMenuListItemLink.attr('data-menuitem', attrSectionLink);
+
+            if(leftNavItem.eq(i).hasClass('active')){
+            mobileMenuListItem.addClass('active');
+          }
+
+          j = j + 1;
+        }
+        i = i + 1;
+      })
+    },// end create mobile menu //
+
+    // Usa_refreshMicrositeAdsBySection.
+    usa_refreshMicrositeAdsBySection: function (adContainer) {
+      usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
+      jQuery(adContainer + ' iframe').attr('src', jQuery(adContainer + ' iframe').attr('src'));
+    },
+
+    // 300x250 -- not for video companion ads!!
+    create300x250Ad: function(section) {
+      usa_debug('create300x250Ad(' + section + ')');
+      if (activeSection != 'videos') {
+
+        // check to see if there's already an ad
+        if (jQuery('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
+          Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection('.dart-name-300x250_ifr_reload_' + section);
+        }
+        else if (jQuery('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
+          Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection('.dart-name-220x60_ifr_reload_' + section);
+        }
+        else {
+          iframeQueue = [];
+          Drupal.DART.tag('{"machinename":"300x250_ifr_reload_' + section + '","name":"300x250 script","pos":"7","sz":"300x250","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"300x250","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord='+ord+'?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord='+ord+'?"}}');
+          // write iframe ad units to page
+          if (iframeQueue.length) {
+            for (var i=0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
+              // 300x250 second
+              if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
+                jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+              }
+              // 220x60 last
+              if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
+                jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+              }
             }
           }
         }
       }
-    }
-  },
+    },
 
     attach: function (context, settings) {
 
@@ -235,13 +284,6 @@
 
         $pdk.controller.nextClip(true);
       };
-			//
-      //$('#pdk-player').load(function(){
-			//
-      //  $pdk.onMediaStart(e)
-			//
-      //});
-
 
       //scroll to top
       function scrollToTop(){
@@ -499,6 +541,20 @@
       //    history.pushState({"state": anchorFull}, anchorFull, anchorFull);
 				//}
       //});
+
+      // initialize left nav clicks
     }
   };
+
+  $(document).ready(function(){
+
+    Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
+
+  });
+
+  $(window).load(function(){
+
+
+
+  });
 })(jQuery);

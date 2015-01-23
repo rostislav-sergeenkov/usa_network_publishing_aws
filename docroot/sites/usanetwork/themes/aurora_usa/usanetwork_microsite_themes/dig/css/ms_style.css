@@ -274,34 +274,61 @@ you can use the generic selector below, but it's slower:
   width: 100%;
 }
 
+#microsite {
+  width: 100%;
+  height: calc(100% - 65px);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
 #microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
   text-align: left;
   font-size: 2.4em;
 }
+#microsite .section {
+  opacity: 0;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}
+#microsite .mcs-scroll {
+  height: 100%;
+}
+#microsite .section.active {
+  opacity: 1;
+  display: block;
+  z-index: 5;
+}
+#microsite .section.transition {
+  z-index: 10;
+  opacity: 1;
+}
 #microsite section {
   background-image: none;
   background-position: top left; /* please don't change this! */
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-color: transparent;
   width: 100%;
   position: relative;
-  height: 100%;
   top: 0;
   left: 0;
+  min-height: 100%;
   margin: 0;
   padding: 5px 0 0;
 }
-#microsite .section{
-  opacity: 0;
-}
-#microsite .section.active{
-  opacity: 1;
-}
 #microsite #home-content {
-  background-image: url("/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg");
+  background-image: url("../images/dig_bg_home.jpg");
 }
 #microsite #home-content .ad-mobile {
   background: #808080;
@@ -344,11 +371,13 @@ you can use the generic selector below, but it's slower:
   margin: 30px 0 10px;
 }
 #microsite section .microsite-section-container div.scroll {
+  position: absolute;
+  bottom: 10px;
+  left: 100%;
   width: 4em;
-  margin: 0 auto 30px;
+  margin: 0 0 0 calc(-50% + 2em);
   cursor: pointer;
   padding: 0;
-  position: relative;
 }
 #microsite .scroll div {
   text-align: center;
@@ -407,6 +436,9 @@ you can use the generic selector below, but it's slower:
   min-height: 90px;
   margin: 0 auto;
   padding-top: 0;
+}
+#microsite .ad-leaderboard + div {
+  padding-bottom: 80px;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
@@ -687,7 +719,7 @@ you can use the generic selector below, but it's slower:
   line-height: 30px;
   text-transform: uppercase;
   overflow: hidden;
-  z-index: 10;
+  z-index: 20;
 }
 .page-node-microsite #left-nav #left-nav-inner.hide{
   position: relative;
@@ -836,6 +868,10 @@ you can use the generic selector below, but it's slower:
 }
 
 /* ADDED OUTSIDE OF SASS */
+.jPanelMenu,
+body.page-node-microsite {
+  overflow: hidden;
+}
 .page-node-microsite .usa-wrap {
   background-color: #000;
   padding-top: 0;
@@ -1121,6 +1157,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite .mCSB_inside > .mCSB_container {
   margin-right: 0px;
+  min-height: 100%;
 }
 #microsite .mCSB_scrollTools .mCSB_draggerContainer {
   z-index: 51;
@@ -1274,7 +1311,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     color: #ffffff;
   }
   #microsite section .microsite-section-container {
-    min-height: 800px;
+    min-height: 100%; /* 800px; */
   }
 }
 @media (max-width: 874px){

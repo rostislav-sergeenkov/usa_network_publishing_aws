@@ -195,6 +195,36 @@
       parseUrl();
 
       //=========== Init one page scroll for microsite ===============//
+      function sectionScroll(elemId) {
+        var anchorItem = $('#' + elemId),
+            anchor = anchorItem.attr('data-menuanchor'),
+            anchorNum = anchorItem.find('a').attr('data-menuitem'),
+            anchorFull = basePath + '/' + anchor,
+            nextSection = '#section-' + anchor,
+            sectionHeight = window.innerHeight,
+            currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
+            direction = (anchorNum > currentSectionNum) ? '' : '-';
+            otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
+//usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
+//usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
+        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'easeOutSine', function(){
+          $('.section-info').removeClass('active');
+          $(nextSection).addClass('active').removeClass('transition');
+
+          scrollToTop();
+
+          changeUrl(anchor, anchorFull);
+          createAds(anchor);
+          setOmnitureData(anchor);
+
+          $('#left-nav-links-list li').removeClass('active');
+          $('#nav-' + anchor).addClass('active');
+        });
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 2000, 'easeOutSine');
+      }
+
+
+/*
       $('#sections').fullpage({
         normalScrollElements: '#left-nav, .mcs-scroll',
         scrollingSpeed: 1000,
@@ -267,6 +297,7 @@
           //}
         }
       });
+*/
 
       // pauseVideo
       function setVideo(){
@@ -295,34 +326,32 @@
 
       // init change url address
       function changeUrl(anchor, anchorFull){
-
-        if(anchor != 'home'){
+        if (anchor != 'home') {
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }else{
+        }
+        else {
           history.pushState({"state": basePath}, basePath, basePath);
         }
-
       }
 
       // Animation for logo in left nav.
       function logoAnim(show_logo){
-
-        if(show_logo){
+        if (show_logo) {
           $('#left-nav-inner').animate({'top': '0'}, 400);
           $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-
-        }else{
+        }
+        else{
           $('#left-nav-inner').animate({'top': '-130px'}, 400);
           $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-
         }
       }
-      if($('#sections .section').eq(0).hasClass('active')){
+
+      if ($('#sections .section').eq(0).hasClass('active')) {
         logoAnim(false);
-      } else {
+      }
+      else {
         logoAnim(true);
       }
-
 
       // initialize left nav hover to display subnav
       $('#left-nav-links-list li').hover(function(){
@@ -341,12 +370,14 @@
 				var anchor = $(this).parent().attr('data-menuanchor'),
 					anchorFull = basePath + '/' + anchor;
 
-        if($(this).attr('data-menuitem') == 1){
+        if ($(this).attr('data-menuitem') == 1) {
           logoAnim(false);
-        } else {
+        }
+        else {
           logoAnim(true);
         }
-				$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
+				//$.fn.fullpage.moveTo($(this).attr('data-menuitem'));
+				sectionScroll($(this).parent().attr('id'));
 			});
 
       //
@@ -354,33 +385,44 @@
       //
       window.onpopstate = function(event) {
         var section_num = null,
-          splited = null;
+            section = null,
+            splited = null;
 
         if (event.state != null) {
           splited = event.state.state.split('/');
 
           if (splited[1] == 'dig') {
             section_num = $('#left-nav-links-list [data-menuanchor=' + splited[2] + ']').find('a').attr('data-menuitem');
+            section = splited[2];
             if (section_num == undefined) {
               section_num = 1;
+              section = 'home';
             }
           }
-        } else {
-          section_num = 1;
         }
-        if(section_num == 1){
+        else {
+          section_num = 1;
+          section = 'home';
+        }
+        if (section_num == 1) {
           logoAnim(false);
-        } else {
+        }
+        else {
           logoAnim(true);
         }
-        $.fn.fullpage.moveTo(section_num);
+        //$.fn.fullpage.moveTo(section_num);
+        sectionScroll('nav-' + section);
       };
 
       $('#sections .section .scroll-to-next').click(function() {
         if($('#sections .section').eq(0).hasClass('active')){
           logoAnim(true);
         }
-        $.fn.fullpage.moveSectionDown();
+//        $.fn.fullpage.moveSectionDown();
+        var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
+            nextSection = thisSection++,
+            nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('id');
+        sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
 
@@ -388,6 +430,27 @@
       function changeTitle(item, section){
         $('title').text(item + ' | '+ section + ' | ' + basePageName);
       }
+
+      // set scroll and section height
+      function setSectionHeight() {
+        $('.mcs-scroll').each(function () {
+//          var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
+//          $(this).height(Height);
+//          $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
+
+          var msHeight = $('#microsite').innerHeight() - $('#admin-menu-wrapper').innerHeight();
+          $(this).height(msHeight);
+          $('#microsite .section').css('height', msHeight + 'px');
+          $('#microsite section').css('min-height', '100%');
+
+          $(this).mCustomScrollbar({
+            theme:"3d",
+            scrollInertia: 0
+          });
+        });
+      }
+      setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
+
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -447,6 +510,11 @@
       };
       // end AJAX request //
 
+
+      window.onresize = function(event) {
+        setSectionHeight();
+      }
+      window.addEventListener('orientationchange', setSectionHeight);
 
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING

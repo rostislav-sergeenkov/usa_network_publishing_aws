@@ -195,12 +195,11 @@
       parseUrl();
 
       //=========== Init one page scroll for microsite ===============//
-      function sectionScroll(elemId) {
-        var anchorItem = $('#' + elemId),
-            anchor = anchorItem.attr('data-menuanchor'),
+      function sectionScroll(anchor) {
+        var anchorItem = $('#nav-' + anchor),
             anchorNum = anchorItem.find('a').attr('data-menuitem'),
             anchorFull = basePath + '/' + anchor,
-            nextSection = '#section-' + anchor,
+            nextSection = '#' + anchor,
             sectionHeight = window.innerHeight,
             currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
             direction = (anchorNum > currentSectionNum) ? '' : '-';
@@ -220,7 +219,7 @@
           $('#left-nav-links-list li').removeClass('active');
           $('#nav-' + anchor).addClass('active');
         });
-        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1500, 'easeOutSine', function(){
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'easeInSine', function(){
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
         });
@@ -296,8 +295,7 @@
           $('#left-nav').addClass('stop');
         }
 
-				var anchor = $(this).parent().attr('data-menuanchor'),
-					anchorFull = basePath + '/' + anchor;
+				var anchor = $(this).parent().attr('data-menuanchor');
 
         if ($(this).attr('data-menuitem') == 1) {
           logoAnim(false);
@@ -305,7 +303,7 @@
         else {
           logoAnim(true);
         }
-				sectionScroll($(this).parent().attr('id'));
+				sectionScroll(anchor);
 			});
 
       //
@@ -338,7 +336,7 @@
         else {
           logoAnim(true);
         }
-        sectionScroll('nav-' + section);
+        sectionScroll(section);
       };
 
       $('#sections .section .scroll-to-next').click(function() {
@@ -348,7 +346,8 @@
 //        $.fn.fullpage.moveSectionDown();
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
             nextSection = thisSection++,
-            nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('id');
+            nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
+            console.log(nextSectionNavElem);
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
@@ -437,10 +436,10 @@
       };
       // end AJAX request //
 
-
-      window.onresize = function(event) {
+      $(window).bind('resize', function () {
         setSectionHeight();
-      }
+      });
+
       window.addEventListener('orientationchange', setSectionHeight);
 
       // a-spot clicks

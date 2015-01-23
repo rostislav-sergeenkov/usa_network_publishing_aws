@@ -433,15 +433,15 @@
 
       // set scroll and section height
       function setSectionHeight() {
-        $('.mcs-scroll').each(function () {
+        $('.section').each(function () {
 //          var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
 //          $(this).height(Height);
 //          $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
 
-          var msHeight = $('#microsite').innerHeight() - $('#admin-menu-wrapper').innerHeight();
+          var msHeight = $('#microsite').innerHeight() - $('#mega-nav').innerHeight();
           $(this).height(msHeight);
-          $('#microsite .section').css('height', msHeight + 'px');
-          $('#microsite section').css('min-height', '100%');
+          /*$('#microsite .section').css('height', msHeight + 'px');
+          $('#microsite section').css('min-height', '100%');*/
 
           $(this).mCustomScrollbar({
             theme:"3d",

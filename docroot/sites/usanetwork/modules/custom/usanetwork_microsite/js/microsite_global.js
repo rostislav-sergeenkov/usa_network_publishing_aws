@@ -131,7 +131,14 @@
           }
         }
       }
-      if (Drupal.behaviors.microsite_carousel.carousel_inited) {
+      // if home section, make sure the flexslider carousel has been
+      // initialized before loading the 300x250 ad
+      if (section == 'home') {
+        if (Drupal.behaviors.microsite_carousel.carousel_inited) {
+          Drupal.behaviors.microsite_scroll.create300x250Ad(section);
+        }
+      }
+      else {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },
@@ -398,14 +405,15 @@
       // set scroll and section height
       function setSectionHeight() {
         $('.section').each(function () {
-//          var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
-//          $(this).height(Height);
-//          $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
 
-          var msHeight = $('#microsite').innerHeight() - $('#mega-nav').innerHeight();
+          // #microsite has already had the height of the bottom nav bar
+          // #mega-nav removed, so we don't need to remove it again
+          var msHeight = $('#microsite').innerHeight();
           $(this).height(msHeight);
-          /*$('#microsite .section').css('height', msHeight + 'px');
-          $('#microsite section').css('min-height', '100%');*/
+
+          // force the section height to be equal to the #microsite height
+          // we want the section to fill the height of the page
+          $('#microsite section').css('min-height', msHeight + 'px');
 
           $(this).mCustomScrollbar({
             theme:"3d",
@@ -415,6 +423,9 @@
       }
       setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 
+      // make the top of the gallery 300x250 ad align with the top of
+      // the gallery carousel
+      $('#galleries .right-pane').css('padding-top', $('#galleries .left-pane .microsite-gallery-meta h2').outerHeight() + 22 + 'px');
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -566,8 +577,5 @@
   $(document).ready(function(){
     Drupal.behaviors.microsite_scroll.create728x90();
     Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
-  });
-  $(window).load(function(){
-
   });
 })(jQuery);

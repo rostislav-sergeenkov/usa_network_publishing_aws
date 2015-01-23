@@ -21,22 +21,22 @@
       }
     },
     flexDestroy: function (selector) {
-    var el = $(selector);
-    var elClean = el.clone();
+      var el = $(selector);
+      var elClean = el.clone();
 
-    elClean.find('.flex-viewport').children().unwrap();
-    elClean
-        .find('.clone, .flex-direction-nav, .flex-control-nav')
-        .remove()
-        .end()
-        .find('*').removeAttr('style').removeClass (function (index, css) {
-      return (css.match (/\bflex\S+/g) || []).join(' ');
-    });
+      elClean.find('.flex-viewport').children().unwrap();
+      elClean
+          .find('.clone, .flex-direction-nav, .flex-control-nav')
+          .remove()
+          .end()
+          .find('*').removeAttr('style').removeClass (function (index, css) {
+        return (css.match (/\bflex\S+/g) || []).join(' ');
+      });
 
-    elClean.insertBefore(el);
-    elClean.next().remove();
+      elClean.insertBefore(el);
+      elClean.next().remove();
 
-  },
+    },
     setCollapsibleContentHeight: function($content) {
       var $container = $content.closest('.expandable-container');
       var $toggle = $content.parent().children('.expandable-toggle-wrap');

@@ -21,22 +21,23 @@
       }
     },
     flexDestroy: function (selector) {
-    var el = $(selector);
-    var elClean = el.clone();
+      var el = $(selector);
+      var elClean = el.clone();
 
-    elClean.find('.flex-viewport').children().unwrap();
-    elClean
-        .find('.clone, .flex-direction-nav, .flex-control-nav')
-        .remove()
-        .end()
-        .find('*').removeAttr('style').removeClass (function (index, css) {
-      return (css.match (/\bflex\S+/g) || []).join(' ');
-    });
+      elClean.find('.flex-viewport').children().unwrap();
+      elClean
+          .find('.clone, .flex-direction-nav, .flex-control-nav')
+          .remove()
+          .end()
+          .find('*').removeAttr('style').removeClass (function (index, css) {
+        return (css.match (/\bflex\S+/g) || []).join(' ');
+      });
 
-    elClean.insertBefore(el);
-    elClean.next().remove();
+      elClean.insertBefore(el);
+      elClean.next().remove();
 
-  },
+    },
+/*
     setCollapsibleContentHeight: function($content) {
       var $container = $content.closest('.expandable-container');
       var $toggle = $content.parent().children('.expandable-toggle-wrap');
@@ -95,10 +96,11 @@
         $toggle.show();
       }
     },
+*/
     initCarousel: function() {
 
       if ($(window).width() < 769) {
-        // items should collapse
+        // don't show a carousel
         $('.carousel').each(function() {
           $(this).once('microsite-carousel-collapsible', function() {
             var $container = $(this);
@@ -117,6 +119,8 @@
               overflow: 'hidden'
             });
 
+
+/*
             var $toggle = $('<div class="expandable-toggle-wrap"><div class="expandable-toggle"><div class="more" style="">more</div><div class="less" style="display: none;">close</div></div></div>').appendTo($container);
 
             Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($content);
@@ -140,10 +144,12 @@
                 $(this).children('.less').show();
               }
             });
+*/
           });
         });
       }
       else {
+
         // items should slide
         $('.microsite-carousel-collapsible-processed').each(function() {
           // switch from collapsible
@@ -195,10 +201,12 @@
 
   var doit;
   $(window).resize(function() {
+    usa_debug('window resize called');
     if (doit == null) {
       doit = setTimeout(function() {
         Drupal.behaviors.microsite_carousel.replaceAd();
         Drupal.behaviors.microsite_carousel.initCarousel();
+/*
         if ($(window).width() < 641) {
           $('.expandable-content').each(function() {
             if(!$(this).hasClass('mobile')){
@@ -206,15 +214,19 @@
               $(this).addClass('mobile');
             }
           });
-        } else {
+        }
+*//*
+
+        else {
           $('.expandable-content.mobile').each(function() {
             Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($(this));
             $(this).removeClass('mobile');
           });
         }
+*/
         clearTimeout(doit);
         doit = null
-      }, 50);
+      }, 1000);
     }
   });
 

@@ -131,7 +131,14 @@
           }
         }
       }
-      if (Drupal.behaviors.microsite_carousel.carousel_inited) {
+      // if home section, make sure the flexslider carousel has been
+      // initialized before loading the 300x250 ad
+      if (section == 'home') {
+        if (Drupal.behaviors.microsite_carousel.carousel_inited) {
+          Drupal.behaviors.microsite_scroll.create300x250Ad(section);
+        }
+      }
+      else {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },
@@ -213,8 +220,10 @@
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
         s.prop5 = s.prop4;
-        pageName = sectionTitle + ' | ' + pageName;
-        s.pageName += ' : ' + sectionTitle;
+        if (anchor != 'home') {
+          pageName = sectionTitle + ' | ' + pageName;
+          s.pageName += ' : ' + sectionTitle;
+        }
         if (itemTitle != '') {
           pageName = itemTitle + ' | ' + pageName;
           s.pageName += ' : ' + itemTitle;
@@ -253,7 +262,7 @@
             otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
 //usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
 //usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
-        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'easeOutSine', function(){
+        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 
@@ -268,7 +277,7 @@
           $('#nav-' + anchor).addClass('active');
           $('#tv-show-menu .internal[data-menuanchor=' + anchor +']').addClass('active');
         });
-        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'easeInSine', function(){
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'jswing', function(){
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
         });
@@ -301,6 +310,7 @@
           history.pushState({"state": basePath}, basePath, basePath);
         }
       }
+
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function(e) {
         e.preventDefault();
@@ -398,14 +408,15 @@
       // set scroll and section height
       function setSectionHeight() {
         $('.section').each(function () {
-//          var Height = $(this).parent().innerHeight() - $('#mega-nav').innerHeight();
-//          $(this).height(Height);
-//          $('#microsite section').css({'min-height': $('.mcs-scroll').height() + 'px'});
 
-          var msHeight = $('#microsite').innerHeight() - $('#mega-nav').innerHeight();
+          // #microsite has already had the height of the bottom nav bar
+          // #mega-nav removed, so we don't need to remove it again
+          var msHeight = $('#microsite').innerHeight();
           $(this).height(msHeight);
-          /*$('#microsite .section').css('height', msHeight + 'px');
-          $('#microsite section').css('min-height', '100%');*/
+
+          // force the section height to be equal to the #microsite height
+          // we want the section to fill the height of the page
+          $('#microsite section').css('min-height', msHeight + 'px');
 
           $(this).mCustomScrollbar({
             theme:"3d",
@@ -415,6 +426,9 @@
       }
       setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 
+      // make the top of the gallery 300x250 ad align with the top of
+      // the gallery carousel
+      $('#galleries .right-pane').css('padding-top', $('#galleries .left-pane .microsite-gallery-meta h2').outerHeight() + 22 + 'px');
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -502,72 +516,70 @@
 
       window.addEventListener('orientationchange', setSectionHeight);
 
+/* @TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
-//      $('#show-aspot-microsite .aspot-link').click(function(e) {
-//        var anchorFull = this.href,
-//            anchorPathParts = getUrlPath(anchorFull);
-//
-//        // if this is an internal microsite url
-//        // prevent the default action
-//        // and show the correct video
-//        if (anchorPathParts[0] == 'dig') {
-//          e.preventDefault();
-//
-//          anchor = 'videos';
-//          anchorSection = 'Videos';
-//          itemTitle = anchorPathParts[2];
-////          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
-//
-//          previewItem.removeClass('active');
-//          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
-//          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
-//
-//          // change active video content
-//          changeTitle(itemTitle, anchorSection);
-//
-//          getVideo(url, 'true');
-//
-//          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-//
-//          // trigger scroll to videos section
-//				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
-//				}
-//      });
+      $('#show-aspot-microsite .aspot-link').click(function(e) {
+        var anchorFull = this.href,
+        anchorPathParts = getUrlPath(anchorFull);
 
-      // PROMO CLICKS
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct video
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = 'videos';
+          anchorSection = 'Videos';
+          itemTitle = anchorPathParts[2];
+          // itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+
+          previewItem.removeClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
+          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
+
+          // change active video content
+          changeTitle(itemTitle, anchorSection);
+
+          getVideo(url, 'true');
+
+          // trigger scroll to videos section
+          $('#left-nav-links-list li#nav-videos a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+*/
+
+      // PROMO CLICKS - DON'T REMOVE THIS!!!!
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
-      //$('#microsite .node-usanetwork-promo a').click(function(e) {
-      //  var anchorFull = this.href,
-      //      anchorPathParts = getUrlPath(anchorFull);
-			//
-      //  // if this is an internal microsite url
-      //  // prevent the default action
-      //  // and show the correct microsite item without a page reload
-      //  if (anchorPathParts[0] == 'dig') {
-      //    e.preventDefault();
-			//
-      //    anchor = anchorPathParts[1];
-      //    anchorSection = toTitleCase(anchor);
-      //    itemTitle = anchorPathParts[2];
-			//
-      //    // trigger scroll to correct section
-				//  $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
-			//
-      //    history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-				//}
-      //});
+      $('#microsite .node-usanetwork-promo a').click(function(e) {
+        var anchorFull = this.href,
+        anchorPathParts = getUrlPath(anchorFull);
 
-      // initialize left nav clicks
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct microsite item without a page reload
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = anchorPathParts[1];
+          anchorSection = toTitleCase(anchor);
+          itemTitle = anchorPathParts[2];
+
+          // trigger scroll to correct section
+          $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+
     }
   };
   $(document).ready(function(){
     Drupal.behaviors.microsite_scroll.create728x90();
     Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
-  });
-  $(window).load(function(){
-
   });
 })(jQuery);

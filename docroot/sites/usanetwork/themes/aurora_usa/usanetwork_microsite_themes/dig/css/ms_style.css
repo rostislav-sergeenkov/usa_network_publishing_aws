@@ -276,7 +276,7 @@ you can use the generic selector below, but it's slower:
 
 #microsite {
   width: 100%;
-  height: calc(100% - 65px);
+  height: calc(100% - 65px); /* 65px is height of bottom nav */
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -370,10 +370,13 @@ you can use the generic selector below, but it's slower:
   font-size: 2em;
   margin: 30px 0 10px;
 }
+/* position the next button at the absolute bottom of the content area */
 #microsite section .microsite-section-container div.scroll {
-  position: relative;
+  position: absolute;
+  bottom: 35px;
+  left: 100%;
+  margin: 0 0 0 calc(-50% + 2em);
   width: 4em;
-  margin: 0 auto 45px;
   cursor: pointer;
   padding: 0;
 }
@@ -434,6 +437,11 @@ you can use the generic selector below, but it's slower:
   min-height: 90px;
   margin: 0 auto;
   padding-top: 0;
+  overflow: hidden;
+}
+/* add some padding to prevent the next button from sitting on top of content */
+#microsite .ad-leaderboard + div {
+  padding-bottom: 95px;
 }
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
@@ -604,9 +612,6 @@ you can use the generic selector below, but it's slower:
 #microsite .carousel .item-list {
   height: 188px;
   overflow: hidden;
-}
-#microsite .carousel li {
-  margin-right: 5px;
 }
 #microsite .carousel li {
   padding: 0;
@@ -1105,7 +1110,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite #galleries-content .full-pane {
   width: 100%;
-  margin: 40px 0 0;
+  margin: 40px auto 0;
   padding: 0;
   max-width: 1120px;
 }
@@ -1115,9 +1120,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   clear: both;
 }
 #microsite #galleries-content .microsite-gallery-meta {
-  position: absolute;
-  bottom: 100%;
-  max-height: 70px;
   width: 100%;
 }
 #microsite #galleries-content .left-pane {
@@ -1130,7 +1132,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   line-height: 1.1em;
   margin: 0 0 0.2em;
   overflow: hidden;
-  white-space: nowrap;
   width: calc(100% - 216px);
 }
 #microsite #gigya-share {
@@ -1329,8 +1330,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 15px;
     margin-right: 15px;
   }
+  .carousel-item {
+    float: left;
+    width: 45%;
+  }
   #microsite section .microsite-section-container div.scroll {
-    margin: 0 auto 30px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 2em);
+    margin: 0;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){
@@ -1587,12 +1595,36 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (max-width: 320px){
 
 }
+
+/* height media queries */
 @media (max-height: 850px) {
   #microsite #left-nav {
     font-size: 16px;
     top: 5px;
   }
 }
+
+
+/* BEGIN MOBILE SPECIFIC DEVICES */
+/* ========== BEGIN TABLET (iPad Retina) =========== */
+@media only screen (orientation: landscape) and (max-device-width: 1024px),
+(orientation: portrait) and (max-device-width: 768px) {
+
+}
+
+
+/* ========== BEGIN SMARTPHONES =========== */
+@media only screen
+and (min-device-width : 200px)
+and (max-device-width : 568px) {
+
+#microsite .ad-leaderboard {
+  width: 300px;
+  min-height: 50px;
+}
+}
+
+
 /*_________________*/
 
 

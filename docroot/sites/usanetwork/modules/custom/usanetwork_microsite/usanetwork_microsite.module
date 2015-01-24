@@ -1032,7 +1032,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   switch ($path) {
     case '':
     case 'home':
-      $head_title = t('Home | ' . $title . ' | USA Network');
+      $head_title = t($title . ' | USA Network');
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');

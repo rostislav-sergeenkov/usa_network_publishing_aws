@@ -310,6 +310,7 @@
           history.pushState({"state": basePath}, basePath, basePath);
         }
       }
+
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function(e) {
         e.preventDefault();
@@ -515,65 +516,66 @@
 
       window.addEventListener('orientationchange', setSectionHeight);
 
+/* @TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
-//      $('#show-aspot-microsite .aspot-link').click(function(e) {
-//        var anchorFull = this.href,
-//            anchorPathParts = getUrlPath(anchorFull);
-//
-//        // if this is an internal microsite url
-//        // prevent the default action
-//        // and show the correct video
-//        if (anchorPathParts[0] == 'dig') {
-//          e.preventDefault();
-//
-//          anchor = 'videos';
-//          anchorSection = 'Videos';
-//          itemTitle = anchorPathParts[2];
-////          itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
-//
-//          previewItem.removeClass('active');
-//          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
-//          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
-//
-//          // change active video content
-//          changeTitle(itemTitle, anchorSection);
-//
-//          getVideo(url, 'true');
-//
-//          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-//
-//          // trigger scroll to videos section
-//				  $('#left-nav-links-list li#nav-videos a.scroll-link').click();
-//				}
-//      });
+      $('#show-aspot-microsite .aspot-link').click(function(e) {
+        var anchorFull = this.href,
+        anchorPathParts = getUrlPath(anchorFull);
 
-      // PROMO CLICKS
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct video
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = 'videos';
+          anchorSection = 'Videos';
+          itemTitle = anchorPathParts[2];
+          // itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+
+          previewItem.removeClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
+          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
+
+          // change active video content
+          changeTitle(itemTitle, anchorSection);
+
+          getVideo(url, 'true');
+
+          // trigger scroll to videos section
+          $('#left-nav-links-list li#nav-videos a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+*/
+
+      // PROMO CLICKS - DON'T REMOVE THIS!!!!
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
-      //$('#microsite .node-usanetwork-promo a').click(function(e) {
-      //  var anchorFull = this.href,
-      //      anchorPathParts = getUrlPath(anchorFull);
-			//
-      //  // if this is an internal microsite url
-      //  // prevent the default action
-      //  // and show the correct microsite item without a page reload
-      //  if (anchorPathParts[0] == 'dig') {
-      //    e.preventDefault();
-			//
-      //    anchor = anchorPathParts[1];
-      //    anchorSection = toTitleCase(anchor);
-      //    itemTitle = anchorPathParts[2];
-			//
-      //    // trigger scroll to correct section
-				//  $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
-			//
-      //    history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-				//}
-      //});
+      $('#microsite .node-usanetwork-promo a').click(function(e) {
+        var anchorFull = this.href,
+        anchorPathParts = getUrlPath(anchorFull);
 
-      // initialize left nav clicks
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct microsite item without a page reload
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = anchorPathParts[1];
+          anchorSection = toTitleCase(anchor);
+          itemTitle = anchorPathParts[2];
+
+          // trigger scroll to correct section
+          $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+
     }
   };
   $(document).ready(function(){

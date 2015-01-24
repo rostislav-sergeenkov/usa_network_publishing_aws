@@ -220,8 +220,10 @@
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
         s.prop5 = s.prop4;
-        pageName = sectionTitle + ' | ' + pageName;
-        s.pageName += ' : ' + sectionTitle;
+        if (anchor != 'home') {
+          pageName = sectionTitle + ' | ' + pageName;
+          s.pageName += ' : ' + sectionTitle;
+        }
         if (itemTitle != '') {
           pageName = itemTitle + ' | ' + pageName;
           s.pageName += ' : ' + itemTitle;
@@ -260,7 +262,7 @@
             otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
 //usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
 //usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
-        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'easeOutSine', function(){
+        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 
@@ -275,7 +277,7 @@
           $('#nav-' + anchor).addClass('active');
           $('#tv-show-menu .internal[data-menuanchor=' + anchor +']').addClass('active');
         });
-        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'easeInSine', function(){
+        $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'jswing', function(){
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
         });

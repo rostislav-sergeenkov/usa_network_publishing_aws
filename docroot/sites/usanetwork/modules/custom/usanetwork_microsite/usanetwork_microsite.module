@@ -609,10 +609,11 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
     $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
     $file = reset($video_files);
   }
-  $in_player = _usanetwork_microsite_set_variables_for_video_description($file);
+  $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
-  $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_videos_player';
-  return theme($theme_registry_name, array('in_player' => $in_player));
+
+  $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
+  return theme($theme_registry_name, array('in_player' => $video_desc));;
 }
 
 /**

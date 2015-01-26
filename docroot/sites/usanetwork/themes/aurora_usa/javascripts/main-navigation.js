@@ -260,7 +260,7 @@
           else {
             return false;
           }
-          setTimeout(jpm_on_menu(), 50);
+          jpm_on_menu();
 
         });
 

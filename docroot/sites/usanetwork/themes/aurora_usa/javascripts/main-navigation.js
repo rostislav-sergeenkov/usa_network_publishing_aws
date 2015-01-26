@@ -254,6 +254,7 @@
 
         // TURN ON 'MENU' PANEL
         $('#main-menu-toggle').click(function() {
+          alert('click');
           if (!$(this).hasClass('active')){
             $(this).addClass('active');
           }

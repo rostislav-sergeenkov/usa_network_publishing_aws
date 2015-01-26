@@ -515,8 +515,7 @@
       });
 
       window.addEventListener('orientationchange', setSectionHeight);
-
-/* @TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
+      //@TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
@@ -532,7 +531,8 @@
 
           anchor = 'videos';
           anchorSection = 'Videos';
-          itemTitle = anchorPathParts[2];
+          itemTitle = 'clip-' + anchorPathParts[2];
+
           // itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
 
           previewItem.removeClass('active');
@@ -550,7 +550,7 @@
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
       });
-*/
+
 
       // PROMO CLICKS - DON'T REMOVE THIS!!!!
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING

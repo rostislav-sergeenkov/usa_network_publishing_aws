@@ -479,23 +479,22 @@
 
         changeTitle(itemTitle, anchorSection);
 
-        //getVideo(url);
+        //getVideo(url); // comment for test  
 
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
       });
 
       //ajax request
       function getVideo(url, autoPlay){
-        //autoPlay = autoPlay || 'false';
-        //$.ajax({
-        //  type: 'GET',
-        //  url: url,
-        //  dataType: 'html',
-        //  success: function (data) {
-        //    $('#video-container').html(data);
-        //    setAutoPlay(autoPlay);
-        //  }
-        //});
+        autoPlay = autoPlay || 'false';
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'html',
+          success: function (data) {
+            $('#video-container').html(data);
+          }
+        });
       };
       // end AJAX request //
 

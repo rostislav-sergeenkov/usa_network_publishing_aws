@@ -191,7 +191,7 @@
 
         });
       }
-      Drupal.behaviors.microsite_scroll.create300x250Ad('home');
+      Drupal.behaviors.microsite_scroll.create300x250Ad('home', true);
       Drupal.behaviors.microsite_carousel.carousel_inited = true;
     },
     attach: function (context, settings) {

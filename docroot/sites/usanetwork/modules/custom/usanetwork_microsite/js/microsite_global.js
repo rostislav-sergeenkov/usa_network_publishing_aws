@@ -64,10 +64,7 @@
     },
 
     // 300x250 -- not for video companion ads!!
-    create300x250Ad: function(section, detectSection) {
-      if (detectSection) {
-        section = activeSection;
-      }
+    create300x250Ad: function(section) {
       
       usa_debug('create300x250Ad(' + section + ')');
       if (activeSection != 'videos') {

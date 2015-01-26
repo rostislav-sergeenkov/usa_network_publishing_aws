@@ -191,7 +191,6 @@
 
         });
       }
-      Drupal.behaviors.microsite_scroll.create300x250Ad('home');
       Drupal.behaviors.microsite_carousel.carousel_inited = true;
     },
     attach: function (context, settings) {
@@ -233,6 +232,7 @@
   // check the collapsible content height one again when page is fully loaded
   $(window).load(function() {
     Drupal.behaviors.microsite_carousel.initCarousel();
+    Drupal.behaviors.microsite_scroll.create300x250Ad('home');
   });
 
 }(jQuery));

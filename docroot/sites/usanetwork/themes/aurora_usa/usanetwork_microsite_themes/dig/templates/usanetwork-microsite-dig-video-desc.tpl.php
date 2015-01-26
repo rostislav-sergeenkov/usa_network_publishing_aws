@@ -3,11 +3,6 @@
  * Videos player template
  */
 ?>
-<?php if (!empty($in_player['rendered']) && !empty($in_player['url'])): ?>
-  <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
-    <?php print $in_player['rendered']; ?>
-  </div>
-<?php endif; ?>
 
 <?php if (!empty($in_player['title'])): ?>
   <div class="video-title"><?php print $in_player['title']; ?></div>

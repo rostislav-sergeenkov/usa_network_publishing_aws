@@ -254,14 +254,14 @@
 
         // TURN ON 'MENU' PANEL
         $('#main-menu-toggle').click(function() {
-          alert('click');
           if (!$(this).hasClass('active')){
             $(this).addClass('active');
           }
           else {
             return false;
           }
-          jpm_on_menu();
+          setTimeout(jpm_on_menu(), 50);
+
         });
 
 

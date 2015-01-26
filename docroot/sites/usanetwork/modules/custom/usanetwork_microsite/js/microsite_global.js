@@ -498,18 +498,6 @@
 
       $(window).load(function(){
 
-        setTimeout(function(){
-          // Hide the address bar!
-          window.scrollTo(0, 1);
-        }, 0);
-
-        $('#main-menu-toggle').click(function() {
-          setTimeout(function(){
-            // show the address bar!
-            window.scrollTo(0, 0);
-          }, 0);
-        });
-
         $('#tv-show-menu .internal a.scroll-link').click(function(e) {
           e.preventDefault();
           if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
@@ -529,6 +517,7 @@
           $('#main-menu-toggle').click();
           sectionScroll(anchor);
         });
+
       });
 
       window.addEventListener('orientationchange', setSectionHeight);

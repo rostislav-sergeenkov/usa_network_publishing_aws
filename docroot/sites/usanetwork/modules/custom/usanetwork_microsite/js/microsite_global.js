@@ -442,31 +442,16 @@
       }setAutoPlay();
 
 
-      function setVideoPlayer() {
-
-        console.log('set video player');
-
-        var inactivePlayer = $('#video-container').find('#pdk-player');
-
-
-        //inactivePlayer.attr('src', updatedPlayerSrc);
-        var videoUrl = 'http://link.theplatform.com/s/OyMl-B/cObA3iDQJmTp';
-
-        $pdk.bind(inactivePlayer);
-        $pdk.controller.setReleaseURL(videoUrl, true);
-      }
-
-
 
       //change video on click to preview elements
       previewItem.click(function(e){
         e.preventDefault();
 
-        setVideoPlayer();
-
         scrollToTop();
 
-        var url = defaultUrl + '/' + $(this).attr('data-fid'),
+        var inactivePlayer = $('#video-container').find('#pdk-player'),
+          url = defaultUrl + '/' + $(this).attr('data-fid'),
+          videoUrl = 'http://link.theplatform.com/s/' + $(this).attr('data-account-id') + '/' + $(this).attr('data-player-id'),
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
           anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
           itemTitle = $(this).find('.title').text(),
@@ -479,14 +464,31 @@
 
         changeTitle(itemTitle, anchorSection);
 
-        //getVideo(url); // comment for test  
+        getVideoDesc(url); // comment for test
 
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+
+        $pdk.bind(inactivePlayer);
+        $pdk.controller.setReleaseURL(videoUrl, true);
+        $pdk.controller.clickPlayButton(true);
+
       });
 
-      //ajax request
-      function getVideo(url, autoPlay){
-        autoPlay = autoPlay || 'false';
+      ////ajax request
+      function getVideoDesc(url){
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'html',
+          success: function (data) {
+            $('#video-container .video-player-desc').html(data);
+          }
+        });
+      };
+
+
+      ////ajax request
+      function getVideo(url){
         $.ajax({
           type: 'GET',
           url: url,

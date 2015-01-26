@@ -9,14 +9,18 @@
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
 <div class="full-pane" data-tve-player>
   <div id="video-container">
-    <?php if (!empty($in_player['rendered']) && !empty($in_player['url'])): ?>
-      <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
-        <?php print $in_player['rendered']; ?>
-      </div>
-    <?php endif; ?>
-    <?php if (!empty($video_desc)): ?>
-      <?php print $video_desc; ?>
-    <?php endif; ?>
+    <div class="video-player-wrapper">
+      <?php if (!empty($in_player['rendered']) && !empty($in_player['url'])): ?>
+        <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
+          <?php print $in_player['rendered']; ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    <div class="video-player-desc">
+      <?php if (!empty($video_desc)): ?>
+        <?php print $video_desc; ?>
+      <?php endif; ?>
+    </div>
     <div id="ad_300x60_1"></div>
   </div>
   <?php if (!empty($videos)): ?>

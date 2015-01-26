@@ -22,11 +22,14 @@
             <div class="pane-content">
               <ul>
                 <?php foreach ($aspots as $aspot): ?>
-                  <?php if($aspot['a_spot_with_intro']): ?>
-                    <li class="aspot-trailer" data-fid="<?php print $aspot['fid']; ?>" data-video-url="<?php print $aspot['video_param']; ?>">
-                  <?php else: ?>
-                    <li data-fid="<?php print $aspot['fid']; ?>" data-video-url="<?php print $aspot['video_param']; ?>">
-                  <?php endif; ?>
+                  <li
+                    <?php if($aspot['a_spot_with_intro']): ?>
+                      class="aspot-trailer"
+                    <?php endif; ?>
+                    data-fid="<?php print $aspot['fid']; ?>"
+                    data-video-url="<?php print $aspot['video_param']; ?>"
+                    data-account-id="<?php print $aspot['account_id']; ?>"
+                    data-player-id="<?php print $aspot['player_id']; ?>">
                     <?php print $aspot['rendered_item']; ?>
                   </li>
                 <?php endforeach; ?>

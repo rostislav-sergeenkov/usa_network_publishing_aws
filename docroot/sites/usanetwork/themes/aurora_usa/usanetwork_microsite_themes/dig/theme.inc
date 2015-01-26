@@ -93,18 +93,16 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'in_player' => NULL,
       ),
     ),
-    'usanetwork_microsite_dig_videos_player' => array(
-      'template' => 'usanetwork-microsite-dig-videos-player',
+    'usanetwork_microsite_dig_video_desc' => array(
+      'template' => 'usanetwork-microsite-dig-video-desc',
       'path' => $subtheme_path,
       'variables' => array(
-        'in_player' => array(
-          'url' => NULL,
+        'video_desc' => array(
           'title' => NULL,
           'description' => NULL,
           'airdate' => NULL,
           'season_number' => NULL,
           'episode_number' => NULL,
-          'rendered' => NULL,
           'duration' => NULL,
         ),
       ),

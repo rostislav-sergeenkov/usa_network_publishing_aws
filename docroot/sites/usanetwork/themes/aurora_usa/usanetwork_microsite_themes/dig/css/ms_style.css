@@ -932,10 +932,14 @@ body.page-node-microsite {
 #microsite section .microsite-section-container > div{
   width: 100%;
 }
-#microsite .a-spot-panel #show-main-slider{
+#microsite section .microsite-section-container div.scroll {
+  margin: 0 0 0 calc(-50% - 2em + 124px);
+}
+#microsite .a-spot-panel #show-main-slider {
   overflow: hidden;
   margin-bottom: 0px;
-  max-height: 378px;
+  max-height: 506px;
+  width: 1245px;
 }
 #microsite .a-spot-panel img{
   width: 100%;
@@ -1010,10 +1014,10 @@ body.page-node-microsite {
 #microsite #main-slider {
   margin: 0 auto 20px;
   position: relative;
-  width: 930px;
+  width: 1245px;
 }
 
-/*global nav*/
+/* global nav */
 body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
@@ -1028,13 +1032,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
-/*microsite carousel*/
-/*.usa-microsite-featured {*/
-  /*margin: 0 auto;*/
-  /*width: 930px;*/
-/*}*/
 #microsite .usa-microsite-featured {
-  margin: 0 auto 100px;
+  margin: 0 auto;
   max-width: 1245px;
 }
 
@@ -1100,9 +1099,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   right: -35px;
 }
 
-/* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
- * ONE GALLERY AT LAUNCH
- */
+/* GALLERIES */
 #microsite #galleries-content .flexslider .counter {
   position: absolute;
   right: 10px;
@@ -1188,30 +1185,20 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   z-index: 51;
 }
 
-/* media breakpoints*/
-@media (min-width: 1601px) and (max-width: 1840px){
-  #microsite #section-home .microsite-section-container {
-    padding-left: calc(1600px - 84%);
+
+
+/* BEGIN MEDIA BREAKPOINTS */
+@media (min-width: 1780px) {
+  #microsite section .microsite-section-container {
+    margin: 0 auto;
+    max-width: 1500px;
   }
-  #microsite #section-galleries .microsite-section-container {
-    padding-left: 39px;
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em);
   }
-}
-@media (min-width: 1401px) and (max-width: 1600px){
-  #microsite #section-videos .microsite-section-container {
-    padding-left: calc(1400px - 84%);
-  }
-  #microsite #section-galleries .microsite-section-container {
-    margin: 0px 17px 0 265px;
-  }
-}
-@media (min-width: 1601px) {
   #microsite #main-slider {
     height: 506px;
     width: 1245px;
-  }
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 506px;
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px!important;
@@ -1223,51 +1210,18 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
   }
-  #microsite #section-galleries .microsite-section-container {
-    margin: 0px auto;
-  }
 }
-@media (min-width: 1401px){
-  #microsite section .microsite-section-container {
-    margin: 0 auto;
-    max-width: 1500px;
-  }
-  #microsite #section-galleries .microsite-section-container {
-    max-width: 1120px;
-  }
-}
-@media (max-width: 1400px) {
-  #microsite section .microsite-section-container div.scroll {
-    margin: 0 0 0 calc(-50% - 2em + 124px);
-  }
-}
-@media (min-width: 1281px) and (max-width: 1600px){
-  #microsite .usa-microsite-featured {
+@media (max-width: 1580px){
+  #microsite #main-slider {
     width: 930px;
   }
-  #microsite .a-spot-panel #show-main-slider{
+  #microsite .a-spot-panel #show-main-slider {
+    width: 930px;
     max-height: 378px;
   }
-  #microsite #section-home .microsite-section-container {
-    margin: 0 auto;
-    padding-left: calc(1400px - 91%);
-  }
-}
-@media (min-width: 1201px) {
-  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
-    width: 930px;
-    height: 523px;
-  }
-  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
-    margin-right: 0px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px){
   #microsite .usa-microsite-featured {
     width: 930px;
   }
-}
-@media (max-width: 1280px){
   .page-node-microsite #left-nav {
     left: 0px;
     width: 190px;
@@ -1281,21 +1235,26 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin: 0 17px 0 190px;
   }
-}
-@media (min-width: 1025px) and (max-width: 1200px){
-  #microsite #section-home .microsite-section-container {
-    margin: 0 auto;
-    padding-left: 30px;
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em + 86px);
   }
 }
-@media (max-width: 1200px){
+@media (max-width: 1200px) {
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 930px;
+    height: 523px;
+  }
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
+    margin-right: 0px;
+  }
   #microsite #main-slider {
     width: 615px;
   }
   #microsite .usa-microsite-featured {
     width: 615px;
   }
-  #microsite .a-spot-panel #show-main-slider{
+  #microsite .a-spot-panel #show-main-slider {
+    width: 615px;
     max-height: 350px;
   }
   #microsite .full-pane {
@@ -1371,15 +1330,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 15px;
     margin-right: 15px;
   }
-  .carousel-item {
-    float: left;
-    width: 45%;
-  }
   #microsite section .microsite-section-container div.scroll {
     position: absolute;
     bottom: 0;
     left: calc(50% - 2em);
     margin: 0;
+  }
+  .carousel-item {
+    float: left;
+    width: 45%;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){
@@ -1483,11 +1442,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     padding: 5px;
   }
 }
-@media (min-width: 769px) and (max-width: 990px){
-
-}
 @media (min-width: 769px){
-  #microsite .region-footer.usa-showmenu-loaded{
+  #microsite .region-footer.usa-showmenu-loaded {
     padding-bottom: 20px;
   }
 }
@@ -1501,7 +1457,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 768px){
   #microsite .usa-microsite-featured {
-    margin: 0 auto 50px;
+    margin: 0 auto;
   }
   #microsite #galleries-content .flexslider .counter {
     padding: 0px;
@@ -1525,6 +1481,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
   }
   #microsite .a-spot-panel #show-main-slider {
+    width: 300px;
     max-height: 250px;
   }
   #microsite .usa-microsite-featured {

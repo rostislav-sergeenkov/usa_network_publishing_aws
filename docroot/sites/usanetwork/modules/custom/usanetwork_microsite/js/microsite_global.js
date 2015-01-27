@@ -1,12 +1,11 @@
 /**
- * Global js functions for microsites
- */
+* Global js functions for microsites
+*/
 (function ($) {
 
   var urlPath = window.location.pathname;
-  var testData;
-
   var activeSection = 'home';
+
   Drupal.behaviors.microsite_scroll = {
 
     //create mobile menu for microsite
@@ -48,7 +47,7 @@
           mobileMenuListItemLink.attr('href', '#');
           mobileMenuListItemLink.attr('data-menuitem', attrSectionLink);
 
-            if(leftNavItem.eq(i).hasClass('active')){
+          if(leftNavItem.eq(i).hasClass('active')){
             mobileMenuListItem.addClass('active');
           }
 
@@ -56,12 +55,46 @@
         }
         i = i + 1;
       })
-    },// end create mobile menu //
+    },
+
+    //ajax request
+    micrositeGetVideoDesc : function getVideoDesc(url){
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'html',
+        success: function (data) {
+          $('#video-container .video-player-desc').html(data);
+        }
+      });
+    },
+
+    // set video player on click thumbnail
+    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId){
+
+      var Player = $('#video-container #pdk-player'),
+        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
+
+      $pdk.bind(Player);
+      $pdk.controller.setReleaseURL(videoUrl, true);
+    },
+
+    //scroll to top
+    micrositeScrollToTop : function scrollToTop(){
+      var container = $('sections'),
+        activeSection = container.find('.section.active');
+      activeSection.mCustomScrollbar('scrollTo',['top',null]);
+    },
 
     //Usa_refreshMicrositeAdsBySection.
     usa_refreshMicrositeAdsBySection: function (adContainer) {
       usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
-      $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
+      //$(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
+    },
+
+    //change page title current section item
+    micrositeChangeTitle : function changeTitle(item, section, basePageName){
+      $('title').text(item + ' | '+ section + ' | ' + basePageName);
     },
 
     // 300x250 -- not for video companion ads!!
@@ -142,19 +175,18 @@
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },
-
     attach: function (context, settings) {
 
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
-          basePath = Drupal.settings.microsites_settings.base_path,
-          basePageName = siteName + ' | USA Network',
-          activeItem = '',
-          self = this;
+        basePath = Drupal.settings.microsites_settings.base_path,
+        basePageName = siteName + ' | USA Network',
+        activeItem = '',
+        self = this;
 
       // usa_debug
       var hostname = window.location.hostname,
-          usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
+        usa_debugFlag = (hostname == 'www.usanetwork.com') ? false : true;
       function usa_debug(msg, obj) {
         if (usa_debugFlag && typeof console != 'undefined') {
           console.log(msg);
@@ -185,19 +217,8 @@
         }
 
         return { 'section' : activeSection, 'item' : activeItem };
-      }
-
-      // getUrlPath
-      // url: (string) url to parse
-      function getUrlPath(url) {
-        var pathArray = url.replace('http://', '').replace('https://', '');
-        pathArray = pathArray.split('/');
-        if (pathArray[0].indexOf(window.location.hostname) >= 0
-          || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
-        return pathArray;
-      }
-
-      // getItemTitle
+      };
+// getItemTitle
       // item = the item info from the url pathname
       // @TODO: work out how to get the item title based on the url
       function getItemTitle(item) {
@@ -208,14 +229,14 @@
       // setOmnitureData
       function setOmnitureData(anchor){
         var anchor = anchor || null,
-        itemTitle = '';
+          itemTitle = '';
         if (!anchor) {
           var sectionData = parseUrl();
           anchor = sectionData['section'];
           if (sectionData['item'] != '') itemTitle = getItemTitle(sectionData['item']);
         }
         var sectionTitle = toTitleCase(anchor),
-        pageName = basePageName;
+          pageName = basePageName;
         s.pageName = siteName;
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
@@ -247,28 +268,29 @@
         if (typeof s_gi != 'undefined') {
           void(s.t()); // omniture page call
         }
-      }
+      };
       parseUrl();
 
       //=========== Init one page scroll for microsite ===============//
       function sectionScroll(anchor) {
         var anchorItem = $('#nav-' + anchor),
-            anchorNum = anchorItem.find('a').attr('data-menuitem'),
-            anchorFull = basePath + '/' + anchor,
-            nextSection = '#' + anchor,
-            sectionHeight = window.innerHeight,
-            currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
-            direction = (anchorNum > currentSectionNum) ? '' : '-';
-            otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
+          anchorNum = anchorItem.find('a').attr('data-menuitem'),
+          anchorFull = basePath + '/' + anchor,
+          nextSection = '#' + anchor,
+          sectionHeight = window.innerHeight,
+          currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
+          direction = (anchorNum > currentSectionNum) ? '' : '-';
+        otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
 //usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
 //usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 
-          scrollToTop();
+          Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
 
           changeUrl(anchor, anchorFull);
+
           Drupal.behaviors.microsite_scroll.create728x90(anchor);
           setOmnitureData(anchor);
 
@@ -281,14 +303,7 @@
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
         });
-      }
-
-      //scroll to top
-      function scrollToTop(){
-        var container = $('sections'),
-          activeSection = container.find('.section.active');
-        activeSection.mCustomScrollbar('scrollTo',['top',null]);
-      }
+      };
 
       // init change url address
       function changeUrl(anchor, anchorFull){
@@ -303,7 +318,7 @@
             history.pushState({"state": basePath}, basePath, basePath);
           }
         }
-      }
+      };
 
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function(e) {
@@ -322,8 +337,17 @@
         else {
           logoAnim(true);
         }
+        stopVideo();
         sectionScroll(anchor);
       });
+
+      function stopVideo(){
+
+        $pdk.controller.pause(true);
+
+
+      }
+
       // Animation for logo in left nav.
       function logoAnim(show_logo){
         if (show_logo) {
@@ -356,8 +380,8 @@
       window.onpopstate = function(event) {
         usa_debug('window.onpopstate()');
         var section_num = null,
-            section = null,
-            splited = null;
+          section = null,
+          splited = null;
 
         if (event.state != null) {
           splited = event.state.state.split('/');
@@ -390,16 +414,11 @@
           logoAnim(true);
         }
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
-            nextSection = thisSection++,
-            nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
+          nextSection = thisSection++,
+          nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
-
-      //change page title current section item
-      function changeTitle(item, section){
-        $('title').text(item + ' | '+ section + ' | ' + basePageName);
-      }
 
       // set scroll and section height
       function setSectionHeight() {
@@ -420,7 +439,9 @@
           });
         });
       }
-      setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
+     // setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
+      setSectionHeight();
+
 
 
       //============ AJAX request for video section ===============//
@@ -429,28 +450,6 @@
       var currentNid = Drupal.settings.microsites_settings.nid,
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
-
-      // set video player on click thumbnail
-      function setVideoPlayer(dataAccountId, dataPlayerId){
-        var Player = $('#video-container #pdk-player'),
-        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
-
-        $pdk.bind(Player);
-        $pdk.controller.setReleaseURL(videoUrl, true);
-
-        //if(!$pdk.controller.clickPlayButton(true)){
-        //  $pdk.controller.clickPlayButton(true);
-        //}else if($pdk.controller.clickPlayButton(false)) {
-        //  $pdk.controller.clickPlayButton(true);
-        //}
-      }
-
-      $('#video-container #pdk-player').load(function() {
-
-        Drupal.behaviors.microsite_scroll.create728x90();
-
-      });
-
 
       //change video on click to preview elements
       previewItem.click(function(e){
@@ -465,41 +464,96 @@
           dataAccountId = activeVideoItem.attr('data-account-id'),
           dataPlayerId = activeVideoItem.attr('data-player-id'),
           dataVideoUrl = activeVideoItem.attr('data-video-url'),
-          dataMenuAnchor = activeVideoItem.attr('data-menuanchor'),
-          dataFid= activeVideoItem.attr('data-fid'),
+          dataFid = activeVideoItem.attr('data-fid'),
           url = defaultUrl + '/' + dataFid,
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
           anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
           itemTitle = activeVideoItem.find('.title').text(),
           anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
-        scrollToTop();
-
-        changeTitle(itemTitle, anchorSection);
-
-        setVideoPlayer(dataAccountId, dataPlayerId);
-
-        getVideoDesc(url);
-
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+        Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId);
+        Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
       });
 
-      ////ajax request
-      function getVideoDesc(url){
-        $.ajax({
-          type: 'GET',
-          url: url,
-          dataType: 'html',
-          success: function (data) {
-            $('#video-container .video-player-desc').html(data);
-          }
-        });
-      };
-      // end AJAX request //
+      window.addEventListener('orientationchange', setSectionHeight);
+      //@TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
+      // a-spot clicks
+      // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
+      // SO THAT IT IS NOT SPECIFIC TO "DIG"
+      $('#show-aspot-microsite .aspot-link').click(function(e) {
+        var anchorFull = this.href,
+          anchorPathParts = getUrlPath(anchorFull);
+
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct video
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = 'videos';
+          anchorSection = 'Videos';
+          itemTitle = 'clip-' + anchorPathParts[2];
+
+          // itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
+
+          previewItem.removeClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
+          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid'),
+            dataAccountId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-account-id'),
+            dataPlayerId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-player-id');
+
+          Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+          Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId);
+          Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+
+          // trigger scroll to videos section
+          $('#left-nav-links-list li#nav-videos a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+
+
+      // PROMO CLICKS - DON'T REMOVE THIS!!!!
+      // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
+      // SO THAT IT IS NOT SPECIFIC TO "DIG"
+      $('#microsite .node-usanetwork-promo a').click(function(e) {
+        var anchorFull = this.href,
+          anchorPathParts = getUrlPath(anchorFull);
+
+        // if this is an internal microsite url
+        // prevent the default action
+        // and show the correct microsite item without a page reload
+        if (anchorPathParts[0] == 'dig') {
+          e.preventDefault();
+
+          anchor = anchorPathParts[1];
+          anchorSection = toTitleCase(anchor);
+          itemTitle = anchorPathParts[2];
+
+          // trigger scroll to correct section
+          $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        }
+      });
+
 
       $(window).bind('resize', function () {
         setSectionHeight();
+      });
+
+      $(document).ready(function(){
+        Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
+        Drupal.behaviors.microsite_carousel.initCarousel();
+      });
+
+      $('#video-container #pdk-player').load(function(){
+        Drupal.behaviors.microsite_scroll.create728x90();
       });
 
       $(window).load(function(){
@@ -523,80 +577,7 @@
           $('#main-menu-toggle').click();
           sectionScroll(anchor);
         });
-
       });
-
-      window.addEventListener('orientationchange', setSectionHeight);
-      //@TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
-      // a-spot clicks
-      // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
-      // SO THAT IT IS NOT SPECIFIC TO "DIG"
-      $('#show-aspot-microsite .aspot-link').click(function(e) {
-        var anchorFull = this.href,
-        anchorPathParts = getUrlPath(anchorFull);
-
-        // if this is an internal microsite url
-        // prevent the default action
-        // and show the correct video
-        if (anchorPathParts[0] == 'dig') {
-          e.preventDefault();
-
-          anchor = 'videos';
-          anchorSection = 'Videos';
-          itemTitle = 'clip-' + anchorPathParts[2];
-
-          // itemTitle = anchorFull.replace(window.location.protocol + '//' + window.location.hostname + '/dig/videos/', '');
-
-          previewItem.removeClass('active');
-          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
-          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid'),
-            dataAccountId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-account-id'),
-            dataPlayerId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-player-id');
-
-          // change active video content
-          changeTitle(itemTitle, anchorSection);
-
-          getVideoDesc(url);
-
-          setVideoPlayer(dataAccountId, dataPlayerId);
-          //getVideo(url, 'true');
-
-          // trigger scroll to videos section
-          $('#left-nav-links-list li#nav-videos a.scroll-link').click();
-
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }
-      });
-
-
-      // PROMO CLICKS - DON'T REMOVE THIS!!!!
-      // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
-      // SO THAT IT IS NOT SPECIFIC TO "DIG"
-      $('#microsite .node-usanetwork-promo a').click(function(e) {
-        var anchorFull = this.href,
-        anchorPathParts = getUrlPath(anchorFull);
-
-        // if this is an internal microsite url
-        // prevent the default action
-        // and show the correct microsite item without a page reload
-        if (anchorPathParts[0] == 'dig') {
-          e.preventDefault();
-
-          anchor = anchorPathParts[1];
-          anchorSection = toTitleCase(anchor);
-          itemTitle = anchorPathParts[2];
-
-          // trigger scroll to correct section
-          $('#left-nav-links-list li#nav-' + anchor + ' a.scroll-link').click();
-
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-        }
-      });
-
     }
   };
-  $(document).ready(function(){
-    Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
-  });
-
 })(jQuery);

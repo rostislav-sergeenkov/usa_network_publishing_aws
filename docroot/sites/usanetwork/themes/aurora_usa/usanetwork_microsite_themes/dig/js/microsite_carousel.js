@@ -228,13 +228,4 @@
       }, 1000);
     }
   });
-
-  // check the collapsible content height one again when page is fully loaded
-  //$(window).load(function() {
-  //  Drupal.behaviors.microsite_carousel.initCarousel();
-  //});
-  $(document).ready(function() {
-    Drupal.behaviors.microsite_carousel.initCarousel();
-  });
-
 }(jQuery));

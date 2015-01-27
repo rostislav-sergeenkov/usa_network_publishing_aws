@@ -216,6 +216,12 @@
   background-color: #000;
 }
 
+#microsite a:link,
+#microsite a:visited,
+#microsite a:hover,
+#microsite a:active {
+  outline: none;
+}
 #microsite li {
   list-style: none;
 }
@@ -375,7 +381,7 @@ you can use the generic selector below, but it's slower:
   position: absolute;
   bottom: 35px;
   left: 100%;
-  margin: 0 0 0 calc(-50% + 2em);
+  margin: 0 0 0 calc(-50% - 2em);
   width: 4em;
   cursor: pointer;
   padding: 0;
@@ -414,6 +420,7 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .right-pane h2 {
   text-align: center;
+  margin-top: 0;
 }
 #microsite .right-pane > div,
 #microsite .right-pane > h3 {
@@ -711,7 +718,7 @@ you can use the generic selector below, but it's slower:
 
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 120px;
+  top: 134px;
   left: 15px;
   width: 250px;
   color: white;
@@ -913,7 +920,7 @@ body.page-node-microsite {
 }
 
 /*corrected & add styles*/
-#microsite section .microsite-section-container{
+#microsite section .microsite-section-container {
   margin: 0 17px 0 265px;
   max-width: 1500px;
 }
@@ -1105,14 +1112,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
 #microsite #galleries-content .microsite-gallery .description-block {
-  padding: 0 10px;
+  padding: 0;
   text-align: left;
+}
+#microsite #galleries-content .microsite-gallery .description-block p {
+  margin: 0;
 }
 #microsite #galleries-content .full-pane {
   width: 100%;
-  margin: 40px auto 0;
+  margin: 0 auto;
   padding: 0;
-  max-width: 1120px;
 }
 #microsite #galleries-content .full-pane:after {
   content: '';
@@ -1120,13 +1129,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   clear: both;
 }
 #microsite #galleries-content .microsite-gallery-meta {
-  width: 100%;
-}
-#microsite #galleries-content .left-pane {
-  position: relative;
   width: calc(100% - 320px);
+  position: relative;
+  top: 0;
+  left: 0;
 }
-#microsite #galleries-content .microsite-gallery h2 {
+#microsite #galleries-content .microsite-gallery-meta h2 {
   float: left;
   font-size: 1.7em;
   line-height: 1.1em;
@@ -1134,11 +1142,21 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   overflow: hidden;
   width: calc(100% - 216px);
 }
+#microsite .field-type-gigya-sharebar {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  right: -16px;
+}
 #microsite #gigya-share {
   width: 196px;
   float: left;
   margin-left: 20px;
   clear: none;
+}
+#microsite #galleries-content .left-pane {
+  position: relative;
+  width: calc(100% - 320px);
 }
 #microsite .photo-caption {
   width: 100%;
@@ -1210,12 +1228,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (min-width: 1401px){
-  #microsite section .microsite-section-container{
+  #microsite section .microsite-section-container {
     margin: 0 auto;
     max-width: 1500px;
   }
   #microsite #section-galleries .microsite-section-container {
     max-width: 1120px;
+  }
+}
+@media (max-width: 1400px) {
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em + 124px);
   }
 }
 @media (min-width: 1281px) and (max-width: 1600px){
@@ -1292,6 +1315,21 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
     margin-right: 0px;
   }
+  #microsite #galleries-content .left-pane {
+    width: 100%;
+  }
+  #microsite #galleries-content .microsite-gallery-meta {
+    width: 100%;
+  }
+  #microsite section#galleries-content .right-pane {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+    float: left;
+  }
+  #microsite #galleries-content .ad300x250 {
+    float: left;
+  }
 }
 
 @media (max-width: 1120px) {
@@ -1322,6 +1360,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 874px){
+  #microsite {
+    height: calc(100% - 50px); /* 50px is height of bottom nav */
+  }
   /* hide left nav when hamburger appears */
   #microsite #left-nav {
     display: none;
@@ -1466,6 +1507,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     padding: 0px;
   }
 }
+@media (max-width: 709px) {
+  #microsite #galleries-content .microsite-gallery-meta h2 {
+    width: calc(100% - 178px);
+  }
+  #microsite #gigya-share {
+    width: 158px;
+    margin-left: 20px;
+  }
+}
 @media (max-width: 640px){
   #microsite section .microsite-section-container {
     margin: 0 auto;
@@ -1552,25 +1602,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container .right-pane {
     width: 100%;
   }
-  #microsite #galleries-content .microsite-gallery-meta {
-    width: 100%;
-  }
-  #microsite #galleries-content .left-pane,
-  #microsite section#galleries-content .right-pane {
-    width: 100%;
-    clear: left;
-    float: left;
-    margin-left: 0;
-    margin-top: 15px;
-  }
   #microsite section#galleries-content .flexslider {
     margin: 0;
-  }
-  #microsite #galleries-content .microsite-gallery h2 {
-    margin: 0 0 1em;
-    overflow: hidden;
-    white-space: normal;
-    width: 100%;
   }
   #microsite .episodic-galleries,
   .character-galleries {
@@ -1585,6 +1618,24 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     bottom: auto;
     max-height: none;
     width: 100%;
+  }
+  #microsite #galleries-content .microsite-gallery-meta h2 {
+    float: left;
+    font-size: 1.4em;
+    line-height: 1.1em;
+    margin: 0 0 0.2em;
+    width: 100%;
+  }
+  #microsite .field-type-gigya-sharebar {
+    margin-bottom: 0;
+    position: relative;
+    bottom: 0;
+    right: 0;
+  }
+  #microsite #gigya-share {
+    float: left;
+    margin-left: 0;
+    clear: left;
   }
 }
 @media (max-width: 480px){

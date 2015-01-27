@@ -1,6 +1,6 @@
 <?php
 /**
- * Global tempalte of Dig theme
+ * Global template of Dig theme
  *
  * Variables:
  * - $classes - a string list of classes that should be added to microsite template

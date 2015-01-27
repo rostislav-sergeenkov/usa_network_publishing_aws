@@ -106,7 +106,7 @@
         section = $('#sections .section.active').attr('id').replace('section-', '') || 'home';
       }
 
-      usa_debug('createAds(' + section + ')');
+      usa_debug('create728x90(' + section + ')');
 
       // check to see if there is an ad already there
       if (jQuery('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
@@ -295,11 +295,16 @@
 
       // init change url address
       function changeUrl(anchor, anchorFull){
-        if (anchor != 'home') {
-          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        if ($('html.ie9').length > 0) {
+          // ie9, so do something different because it doesn't support history.pushState
         }
         else {
-          history.pushState({"state": basePath}, basePath, basePath);
+          if (anchor != 'home') {
+            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+          }
+          else {
+            history.pushState({"state": basePath}, basePath, basePath);
+          }
         }
       }
 
@@ -352,6 +357,7 @@
       // Switch section on history prev/forward button
       //
       window.onpopstate = function(event) {
+        usa_debug('window.onpopstate()');
         var section_num = null,
             section = null,
             splited = null;
@@ -381,6 +387,7 @@
         sectionScroll(section);
       };
 
+      // initialize next button click
       $('#sections .section .scroll-to-next').click(function() {
         if($('#sections .section').eq(0).hasClass('active')){
           logoAnim(true);
@@ -418,9 +425,6 @@
       }
       setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 
-      // make the top of the gallery 300x250 ad align with the top of
-      // the gallery carousel
-      $('#galleries .right-pane').css('padding-top', $('#galleries .left-pane .microsite-gallery-meta h2').outerHeight() + 22 + 'px');
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -595,7 +599,6 @@
     }
   };
   $(document).ready(function(){
-    //Drupal.behaviors.microsite_scroll.create728x90();
     Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
   });
 })(jQuery);

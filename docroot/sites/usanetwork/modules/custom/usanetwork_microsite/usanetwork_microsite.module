@@ -571,7 +571,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         : NULL,
       'rendered' => theme('pub_mpx_video', array(
             'file' => $file,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->nid),
+            'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
             'player_id' => 'microsites_usa_player_endcard',
           )),
     );

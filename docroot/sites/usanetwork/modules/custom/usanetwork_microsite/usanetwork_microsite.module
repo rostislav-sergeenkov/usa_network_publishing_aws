@@ -270,13 +270,13 @@ function _usanetwork_microsite_get_current_theme_name($node = NULL) {
 /**
  * Common page renderer for theme.
  */
-function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapper) {
+function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapper, $node) {
   $section_name = $section_wrapper->field_ms_section_type->value();
   $page_callback_name = '_usanetwork_microsite_render_page_' . $section_name;
 
   if (is_callable($page_callback_name)) {
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_page_' . $section_name;
-    $theme_variables = $page_callback_name($section_wrapper);
+    $theme_variables = $page_callback_name($section_wrapper, $node);
 
     return theme($theme_registry_name, $theme_variables);
   }
@@ -522,7 +522,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
 /**
  * Renders videos page.
  */
-function _usanetwork_microsite_render_page_videos($section_wrapper) {
+function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
 
@@ -566,9 +566,14 @@ function _usanetwork_microsite_render_page_videos($section_wrapper) {
       'url' => !empty($file->filename)
         ? _usanetwork_microsite_get_suggested_video_url($file->filename)
         : NULL,
-      'rendered' => !empty($file->fid)
+      'rendered_test' => !empty($file->fid)
         ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
         : NULL,
+      'rendered' => theme('pub_mpx_video', array(
+            'file' => $file,
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->nid),
+            'player_id' => 'microsites_usa_player_endcard',
+          )),
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
     $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
@@ -741,7 +746,7 @@ function _usanetwork_microsite_get_theme_variables($node) {
         'name' => $section_base_variables['title'],
         'link' => l($section_base_variables['title'], '#', array('external' => TRUE, 'attributes' => array('data-menuitem' => $i, 'class' => 'scroll-link'))),
 //        'background_url' => _usanetwork_microsite_get_section_background_image($section_wrapper),
-        'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper),
+        'content' => _usanetwork_microsite_render_page($node_wrapper->field_ms_theme->value(), $section_wrapper, $node),
       );
       $i++;
 

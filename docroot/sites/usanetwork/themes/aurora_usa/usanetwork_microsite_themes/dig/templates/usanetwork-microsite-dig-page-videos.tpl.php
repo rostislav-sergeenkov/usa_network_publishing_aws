@@ -12,7 +12,9 @@
     <div class="video-player-wrapper">
       <?php if (!empty($in_player['rendered']) && !empty($in_player['url'])): ?>
         <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
-          <?php print $in_player['rendered']; ?>
+          <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix "></div>
+            <?php print $in_player['rendered']; ?>
+          </div>
         </div>
       <?php endif; ?>
     </div>

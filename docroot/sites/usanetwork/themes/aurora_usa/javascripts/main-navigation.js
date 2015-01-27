@@ -155,6 +155,7 @@
             .addClass('state-menu');
           jPM.direction('left');
           $('body').attr('data-menu-direction', 'left');
+          alert('open');
           // note: no need to call jPM.trigger() because this is the default menu trigger in jPM init
         }
 
@@ -261,7 +262,6 @@
             return false;
           }
           jpm_on_menu();
-
         });
 
 

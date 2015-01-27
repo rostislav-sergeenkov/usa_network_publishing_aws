@@ -149,14 +149,12 @@
         function jpm_on_menu() {
           // set the panel 'state' to 'menu'
           // and trigger panel
-          alert('jpm_on_menu_in');
           $('#jPanelMenu-menu')
             .removeClass('state-on-now')
             .removeClass('state-personalization')
             .addClass('state-menu');
           jPM.direction('left');
           $('body').attr('data-menu-direction', 'left');
-          alert('jpm_on_menu_end');
           // note: no need to call jPM.trigger() because this is the default menu trigger in jPM init
         }
 
@@ -188,7 +186,6 @@
           after: function() {
             $(window).trigger('resize.drupal-tableheader');
             $('#main-menu-toggle').removeClass('active');
-            alert('after_in');
           },
           beforeOn: function() {
             remove_dart();
@@ -257,16 +254,13 @@
 
         // TURN ON 'MENU' PANEL
         $('#main-menu-toggle').click(function() {
-          alert('click_start');
           if (!$(this).hasClass('active')){
             $(this).addClass('active');
           }
           else {
             return false;
           }
-          alert('click_before_jump');
           jpm_on_menu();
-          alert('click_end');
         });
 
 

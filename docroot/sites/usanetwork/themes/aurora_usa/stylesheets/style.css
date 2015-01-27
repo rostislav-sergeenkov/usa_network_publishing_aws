@@ -3484,7 +3484,6 @@ input[type="radio"], input[type="checkbox"] {
   border-width: 5px 0 5px 0;
   background-color: transparent;
   cursor: pointer;
-  z-index: 1000000;
 }
 @media (min-width: 769px) {
   .mobi-menu-icon {

@@ -443,7 +443,7 @@ you can use the generic selector below, but it's slower:
 #microsite .ad-leaderboard {
   min-height: 90px;
   margin: 0 auto;
-  padding-top: 0;
+  padding: 0 0 34px;
   overflow: hidden;
 }
 /* add some padding to prevent the next button from sitting on top of content */
@@ -888,11 +888,6 @@ body.page-node-microsite {
   margin: 0;
   padding: 0;
 }
-/*.slides .clone {*/
-  /*width: 930px;*/
-  /*float: left;*/
-  /*display: block;*/
-/*}*/
 
 /* STYLES */
 #main {
@@ -902,7 +897,6 @@ body.page-node-microsite {
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
-/*add styles*/
 #microsite .video-container iframe {
   display: block;
   margin: 0 auto;
@@ -918,8 +912,10 @@ body.page-node-microsite {
   font-size: 1.2em;
   color: #e5ce96;
 }
-
-/*corrected & add styles*/
+#microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
+  background-image: none;
+}
+/* corrected & add styles */
 #microsite section .microsite-section-container {
   margin: 0 17px 0 265px;
   max-width: 1500px;
@@ -977,7 +973,7 @@ body.page-node-microsite {
 }
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
-  width: 930px;
+  width: 945px;
 }
 #microsite .block-usanetwork-mpx-video:after {
   clear: both;
@@ -990,6 +986,9 @@ body.page-node-microsite {
   height: 250px;
   margin: 0px 15px 15px 0px;
   width: 300px;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item.ad {
+  background-color: #1F1F1F;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
@@ -1205,7 +1204,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 563px!important;
   }
   #microsite .block-usanetwork-mpx-video {
-    width: 1000px;
+    width: 1050px;
   }
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
@@ -1235,18 +1234,35 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin: 0 17px 0 190px;
   }
-  #microsite section .microsite-section-container div.scroll {
-    margin: 0 0 0 calc(-50% - 2em + 86px);
+  #microsite #videos-content .full-pane {
+    width: 930px;
   }
-}
-@media (max-width: 1200px) {
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
     width: 930px;
     height: 523px;
   }
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em + 86px);
+  }
+}
+@media (max-width: 1280px) {
+  #microsite #videos-content .full-pane {
+    width: 615px;
+  }
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 615px;
+    height: 346px;
+  }
+  #microsite .block-usanetwork-mpx-video {
+    width: 630px;
+  }
+}
+@media (max-width: 1200px) {
+/*
   #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
     margin-right: 0px;
   }
+*/
   #microsite #main-slider {
     width: 615px;
   }
@@ -1259,11 +1275,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .full-pane {
     max-width: 615px;
-  }
-  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
-    width: 615px;
-    height: 346px;
-    margin: 0;
   }
   #microsite .block-usanetwork-mpx-video {
     width: 615px;

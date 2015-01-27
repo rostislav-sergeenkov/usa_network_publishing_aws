@@ -1082,10 +1082,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
   margin: 0 0px 2px;
 }
-.microsite-gallery-meta h2 {
-  font-size: 26px;
-}
-
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
   outline: none;
@@ -1305,9 +1301,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (max-width: 1120px) {
   #microsite #galleries-content .microsite-gallery h2 {
     width: 100%;
-  }
-  #microsite #galleries-content .full-pane {
-    margin-top: 70px;
   }
   #microsite #gigya-share {
     clear: left;

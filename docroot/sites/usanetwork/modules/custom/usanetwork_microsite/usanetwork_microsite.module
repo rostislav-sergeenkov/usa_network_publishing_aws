@@ -100,7 +100,10 @@ function usanetwork_microsite_permission() {
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {
   if (!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    _usanetwork_microsite_validate_section($node);
+
     $theme_name_field = field_get_items('node', $node, 'field_ms_theme');
+
     if ($theme_name_field) {
       _usanetwork_microsite_include_themes_info();
       _usanetwork_microsite_include_default_css();
@@ -1183,6 +1186,55 @@ function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
           }
         }
       }
+    }
+  }
+}
+
+/**
+ * Returns value of field_collection_item. If $reset is true it returns single value.
+ */
+function _usanetwork_microsite_get_field_collection_item($field_collection_object, $field_name, $reset = FALSE) {
+  $item = field_get_items('field_collection_item', $field_collection_object, $field_name);
+
+  if (!empty($item)) {
+    return $reset
+      ? reset(reset($item))
+      : $item;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns an array of section names of microsite.
+ */
+function _usanetwork_microsite_get_section_names($microsite_node) {
+  $sections_field = field_get_items('node', $microsite_node, 'field_ms_section');
+  $section_names = array();
+
+  if (!empty($sections_field)) {
+    foreach ($sections_field as $section_data) {
+      $section = field_collection_item_load($section_data['value']);
+
+      if ($section && isset($section->field_ms_section_type)) {
+        $section_names[] = _usanetwork_microsite_get_field_collection_item($section, 'field_ms_section_type', TRUE);
+      }
+    }
+  }
+
+  return $section_names;
+}
+
+/**
+ * Validates URL with current microsite. If section name is incorrect redirects to PAGE_404.
+ */
+function _usanetwork_microsite_validate_section($microsite_node) {
+  if (arg(2) && arg(2) == 'microsite' && arg(3)) {
+    $target_section_name = arg(3);
+    $section_names = _usanetwork_microsite_get_section_names($microsite_node);
+
+    if (!in_array($target_section_name, $section_names)) {
+      drupal_not_found();
     }
   }
 }

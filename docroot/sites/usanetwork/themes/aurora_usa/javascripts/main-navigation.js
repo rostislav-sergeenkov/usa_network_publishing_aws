@@ -261,7 +261,6 @@
             return false;
           }
           jpm_on_menu();
-
         });
 
 

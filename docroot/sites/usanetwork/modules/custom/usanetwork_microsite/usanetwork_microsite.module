@@ -96,6 +96,16 @@ function usanetwork_microsite_permission() {
 }
 
 /**
+ * Implements hook_js_alter().
+ */
+function usanetwork_microsite_js_alter(&$javascript) {
+  $node = menu_get_object();
+  if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
+  }
+}
+
+/**
  * Microsite node rendering callback.
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {

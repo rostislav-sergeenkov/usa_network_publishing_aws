@@ -2,6 +2,7 @@
  * Global js functions for microsites
  */
 (function ($) {
+
   var urlPath = window.location.pathname;
   var testData;
 
@@ -60,7 +61,7 @@
     //Usa_refreshMicrositeAdsBySection.
     usa_refreshMicrositeAdsBySection: function (adContainer) {
       usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
-      jQuery(adContainer + ' iframe').attr('src', jQuery(adContainer + ' iframe').attr('src'));
+      $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
     },
 
     // 300x250 -- not for video companion ads!!
@@ -68,12 +69,13 @@
 
       usa_debug('create300x250Ad(' + section + ')');
       if (section != 'videos') {
+        console.log(section + 'videos 728');
         // check to see if there's already an ad
-        if (jQuery('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
+        if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
           adBlock = '.dart-name-300x250_ifr_reload_' + section;
           Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection(adBlock);
         }
-        else if (jQuery('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
+        else if ($('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
           adBlock = '.dart-name-220x60_ifr_reload_' + section;
           Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection(adBlock);
         }
@@ -85,11 +87,11 @@
             for (var i=0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
               // 300x250 second
               if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
-                jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
               }
               // 220x60 last
               if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
-                jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+                $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
               }
             }
           }
@@ -109,7 +111,7 @@
       usa_debug('create728x90(' + section + ')');
 
       // check to see if there is an ad already there
-      if (jQuery('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
+      if ($('.dart-name-728x90_ifr_reload_' + section + ' iframe').length) {
         adBlock = '.dart-name-728x90_ifr_reload_' + section;
         Drupal.behaviors.microsite_scroll.usa_refreshMicrositeAdsBySection(adBlock);
       }
@@ -129,19 +131,14 @@
           for (var i=0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
             // 728x90
             if (iframeQueue[i].tag.indexOf('728x90') != '-1') {
-              jQuery('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
+              $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
             }
           }
         }
       }
       // if home section, make sure the flexslider carousel has been
       // initialized before loading the 300x250 ad
-      if (section == 'home') {
-        if (Drupal.behaviors.microsite_carousel.carousel_inited) {
-          Drupal.behaviors.microsite_scroll.create300x250Ad(section);
-        }
-      }
-      else {
+      if (section != 'videos') {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
     },
@@ -433,48 +430,58 @@
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + currentNid,
         previewItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li');
 
+      // set video player on click thumbnail
+      function setVideoPlayer(dataAccountId, dataPlayerId){
+        var Player = $('#video-container #pdk-player'),
+        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
 
-      // change src for player & set autoplay
-      function setAutoPlay(autoPlay){
-        autoPlay = autoPlay || 'false';
-        var inactivePlayer = $('#video-container').find('#pdk-player'),
-          inactivePlayerSrc = inactivePlayer.attr('src'),
-          updatedPlayerSrc = inactivePlayerSrc.replace('4Dl3P2Df_j5l', 'microsites_usa_player_endcard').replace('?mbr=true', '?mbr=true&autoPlay=' + autoPlay);
-          updatedPlayerSrc += '&nid=' + currentNid;
-        // update video player src
-        inactivePlayer.attr('src', updatedPlayerSrc);
-      }setAutoPlay();
+        $pdk.bind(Player);
+        $pdk.controller.setReleaseURL(videoUrl, true);
 
+        //if(!$pdk.controller.clickPlayButton(true)){
+        //  $pdk.controller.clickPlayButton(true);
+        //}else if($pdk.controller.clickPlayButton(false)) {
+        //  $pdk.controller.clickPlayButton(true);
+        //}
+      }
+
+      $('#video-container #pdk-player').load(function() {
+
+        Drupal.behaviors.microsite_scroll.create728x90();
+
+      });
 
 
       //change video on click to preview elements
       previewItem.click(function(e){
         e.preventDefault();
 
-        scrollToTop();
-
-        var inactivePlayer = $('#video-container').find('#pdk-player'),
-          url = defaultUrl + '/' + $(this).attr('data-fid'),
-          videoUrl = 'http://link.theplatform.com/s/' + $(this).attr('data-account-id') + '/' + $(this).attr('data-player-id'),
-          anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
-          anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
-          itemTitle = $(this).find('.title').text(),
-          anchorFull = basePath + '/' + anchor + '/' + $(this).attr('data-video-url');
-
         if(!$(this).hasClass('active')){
           previewItem.removeClass('active');
           $(this).addClass('active');
         }
 
+        var activeVideoItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
+          dataAccountId = activeVideoItem.attr('data-account-id'),
+          dataPlayerId = activeVideoItem.attr('data-player-id'),
+          dataVideoUrl = activeVideoItem.attr('data-video-url'),
+          dataMenuAnchor = activeVideoItem.attr('data-menuanchor'),
+          dataFid= activeVideoItem.attr('data-fid'),
+          url = defaultUrl + '/' + dataFid,
+          anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
+          anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
+          itemTitle = activeVideoItem.find('.title').text(),
+          anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+
+        scrollToTop();
+
         changeTitle(itemTitle, anchorSection);
 
-        getVideoDesc(url); // comment for test
+        setVideoPlayer(dataAccountId, dataPlayerId);
+
+        getVideoDesc(url);
 
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-
-        $pdk.bind(inactivePlayer);
-        $pdk.controller.setReleaseURL(videoUrl, true);
-        $pdk.controller.clickPlayButton(true);
 
       });
 
@@ -489,19 +496,6 @@
           }
         });
       };
-
-
-      ////ajax request
-      function getVideo(url){
-        $.ajax({
-          type: 'GET',
-          url: url,
-          dataType: 'html',
-          success: function (data) {
-            $('#video-container').html(data);
-          }
-        });
-      };
       // end AJAX request //
 
       $(window).bind('resize', function () {
@@ -509,8 +503,6 @@
       });
 
       $(window).load(function(){
-
-        Drupal.behaviors.microsite_scroll.create728x90();
 
         $('#tv-show-menu .internal a.scroll-link').click(function(e) {
           e.preventDefault();
@@ -557,12 +549,17 @@
 
           previewItem.removeClass('active');
           $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + itemTitle + '"]').addClass('active');
-          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid');
+          var url = defaultUrl + '/' + $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-fid'),
+            dataAccountId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-account-id'),
+            dataPlayerId = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').attr('data-player-id');
 
           // change active video content
           changeTitle(itemTitle, anchorSection);
 
-          getVideo(url, 'true');
+          getVideoDesc(url);
+
+          setVideoPlayer(dataAccountId, dataPlayerId);
+          //getVideo(url, 'true');
 
           // trigger scroll to videos section
           $('#left-nav-links-list li#nav-videos a.scroll-link').click();
@@ -601,4 +598,5 @@
   $(document).ready(function(){
     Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
   });
+
 })(jQuery);

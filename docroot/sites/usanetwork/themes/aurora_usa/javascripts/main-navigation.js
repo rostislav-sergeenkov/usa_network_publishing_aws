@@ -185,7 +185,7 @@
           },
           after: function() {
             $(window).trigger('resize.drupal-tableheader');
-            $('#main-menu-toggle').removeClass('active');
+            //$('#main-menu-toggle').removeClass('active');
           },
           beforeOn: function() {
             remove_dart();
@@ -201,6 +201,7 @@
           }
         });
         jPM.on();
+        $('#main-menu-toggle').click();
 
         // WIDE NAVIGATION
         $drawers = $('[data-drawer]')
@@ -254,12 +255,12 @@
 
         // TURN ON 'MENU' PANEL
         $('#main-menu-toggle').click(function() {
-          if (!$(this).hasClass('active')){
+          /*if (!$(this).hasClass('active')){
             $(this).addClass('active');
           }
           else {
             return false;
-          }
+          }*/
           jpm_on_menu();
 
         });

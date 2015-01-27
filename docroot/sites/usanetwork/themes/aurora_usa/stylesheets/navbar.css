@@ -672,6 +672,7 @@ you can use the generic selector below, but it's slower:
   border-width: 5px 0 5px 0;
   background-color: transparent;
   cursor: pointer;
+  z-index: 1000000;
 }
 @media (min-width: 769px) {
   .mobi-menu-icon {

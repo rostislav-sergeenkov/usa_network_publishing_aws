@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "IBM866";
 .clearfix, #utilities, .panel-twocol-nested-right-twocol .panel-five, .lyris .pane-content, .usa-secondary-menu ul, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -3484,6 +3484,7 @@ input[type="radio"], input[type="checkbox"] {
   border-width: 5px 0 5px 0;
   background-color: transparent;
   cursor: pointer;
+  z-index: 1000000;
 }
 @media (min-width: 769px) {
   .mobi-menu-icon {

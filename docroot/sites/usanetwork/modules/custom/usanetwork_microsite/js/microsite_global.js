@@ -540,6 +540,36 @@
         if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
 
+          previewItem.removeClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="clip-' + anchorPathParts[2] + '"]').addClass('active');
+          $('#left-nav-links-list li#nav-videos a.scroll-link').click();
+
+          var activeVideoItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
+            dataAccountId = activeVideoItem.attr('data-account-id'),
+            dataPlayerId = activeVideoItem.attr('data-player-id'),
+            dataVideoUrl = activeVideoItem.attr('data-video-url'),
+            dataFid = activeVideoItem.attr('data-fid'),
+            url = defaultUrl + '/' + dataFid,
+            anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
+            anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
+            itemTitle = activeVideoItem.find('.title').text(),
+            anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+
+          // if this is IE9, reload the correct page
+          if ($('html.ie9').length > 0) {
+            window.location.href = anchorFull;
+            return false;
+          }
+
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+          Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+          Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+          Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId);
+          Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+
+          Drupal.behaviors.microsite_scroll.create728x90Ad();
+          setOmnitureData(anchor, itemTitle);
+/*
           // if this is IE9, reload the correct page
           if ($('html.ie9').length > 0) {
             window.location.href = anchorFull;
@@ -566,6 +596,7 @@
           $('#left-nav-links-list li#nav-videos a.scroll-link').click();
 
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+*/
         }
       });
 

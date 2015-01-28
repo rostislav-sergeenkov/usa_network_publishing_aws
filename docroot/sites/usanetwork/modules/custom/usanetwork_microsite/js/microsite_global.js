@@ -299,6 +299,13 @@
           otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
 //usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
 //usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
+
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull.replace('/home', '');
+          return false;
+        }
+
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
@@ -323,29 +330,32 @@
 
       // init change url address
       function changeUrl(anchor, anchorFull){
-        if ($('html.ie9').length > 0) {
-          // ie9, so do something different because it doesn't support history.pushState
+        if (anchor != 'home') {
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
         else {
-          if (anchor != 'home') {
-            history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-          }
-          else {
-            history.pushState({"state": basePath}, basePath, basePath);
-          }
+          history.pushState({"state": basePath}, basePath, basePath);
         }
       };
 
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function(e) {
         e.preventDefault();
+
         if ($('#left-nav').hasClass('stop') || $(this).parent().hasClass('active')) {
-          return false
+          return false;
         } else {
           $('#left-nav').addClass('stop');
         }
 
         var anchor = $(this).parent().attr('data-menuanchor');
+            anchorFull = basePath + '/' + anchor;
+
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull.replace('/home', '');
+          return false;
+        }
 
         if ($(this).attr('data-menuitem') == 1) {
           logoAnim(false);
@@ -358,10 +368,7 @@
       });
 
       function stopVideo(){
-
         $pdk.controller.pause(true);
-
-
       }
 
       // Animation for logo in left nav.
@@ -488,6 +495,12 @@
           itemTitle = activeVideoItem.find('.title').text(),
           anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull;
+          return false;
+        }
+
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
@@ -501,6 +514,8 @@
       });
 
       window.addEventListener('orientationchange', setSectionHeight);
+
+
       //@TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
@@ -514,6 +529,12 @@
         // and show the correct video
         if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
+
+          // if this is IE9, reload the correct page
+          if ($('html.ie9').length > 0) {
+            window.location.href = anchorFull;
+            return false;
+          }
 
           anchor = 'videos';
           anchorSection = 'Videos';
@@ -551,6 +572,12 @@
         // and show the correct microsite item without a page reload
         if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
+
+          // if this is IE9, reload the correct page
+          if ($('html.ie9').length > 0) {
+            window.location.href = anchorFull;
+            return false;
+          }
 
           anchor = anchorPathParts[1];
           anchorSection = toTitleCase(anchor);

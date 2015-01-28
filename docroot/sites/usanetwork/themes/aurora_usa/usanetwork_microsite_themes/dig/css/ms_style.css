@@ -1111,10 +1111,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite #galleries-content .microsite-gallery .description-block p {
   margin: 0;
 }
+#microsite .field-type-gigya-sharebar {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  right: -16px;
+}
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 20px;
+  clear: none;
+}
 #microsite #galleries-content .full-pane {
   width: 100%;
   margin: 0 auto;
   padding: 0;
+  width: 1720px;
+  max-width: 1720px;
+  min-height: 830px;
 }
 #microsite #galleries-content .full-pane:after {
   content: '';
@@ -1135,25 +1150,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   overflow: hidden;
   width: calc(100% - 216px);
 }
-#microsite .field-type-gigya-sharebar {
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
-  right: -16px;
-}
-#microsite #gigya-share {
-  width: 196px;
-  float: left;
-  margin-left: 20px;
-  clear: none;
-}
 #microsite #galleries-content .left-pane {
   position: relative;
   width: calc(100% - 320px);
-}
-#microsite #galleries-content .full-pane {
-  width: 1720px;
-  min-height: 830px;
 }
 #microsite #galleries-content .flexslider {
   width: 1400px;
@@ -1203,6 +1202,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container div.scroll {
     margin: 0 0 0 calc(-50% - 2em);
   }
+  #microsite #galleries-content .microsite-section-container {
+    max-width: 1720px;
+  }
   #microsite #videos-content .full-pane {
     width: 1000px;
   }
@@ -1221,7 +1223,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-right: 50px;
   }
 }
-@media (max-width: 2030px) {
+@media (max-width: 2200px) {
   #microsite #galleries-content .full-pane {
     width: 1220px;
     min-height: 548px;

@@ -305,8 +305,14 @@
           window.location.href = anchorFull.replace('/home', '');
           return false;
         }
+        if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+          alert('before_scroll');
+        }
 
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
+          if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+            alert('start_scroll');
+          }
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 

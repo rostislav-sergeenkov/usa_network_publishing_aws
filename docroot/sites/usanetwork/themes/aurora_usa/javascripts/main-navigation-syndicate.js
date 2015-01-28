@@ -734,7 +734,7 @@ function menu_init(){
     }
 
     $('[data-drawer-id]')
-      .css('cursor', 'default')
+      //.css('cursor', 'default')
       .click(function () {
         manage_wide_subnav($(this));
         return false;

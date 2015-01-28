@@ -550,8 +550,8 @@
             dataVideoUrl = activeVideoItem.attr('data-video-url'),
             dataFid = activeVideoItem.attr('data-fid'),
             url = defaultUrl + '/' + dataFid,
-            anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
-            anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
+            anchor = 'videos',
+            anchorSection = 'Videos',
             itemTitle = activeVideoItem.find('.title').text(),
             anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 

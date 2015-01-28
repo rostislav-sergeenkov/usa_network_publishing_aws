@@ -406,12 +406,14 @@
       });
 
 
-      // Switch section on history prev/forward button
       window.onpopstate = function(event) {
+        if(window.history.state == null) {
+          return false;
+        }
         usa_debug('window.onpopstate()');
         var section_num = null,
-          section = null,
-          splited = null;
+            section = null,
+            splited = null;
 
         if (event.state != null) {
           splited = event.state.state.split('/');
@@ -437,6 +439,7 @@
         }
         sectionScroll(section);
       };
+
 
       // initialize next button click
       $('#sections .section .scroll-to-next').click(function() {
@@ -687,6 +690,7 @@
           sectionScroll(anchor);
         });
       });
+
     }
   };
 })(jQuery);

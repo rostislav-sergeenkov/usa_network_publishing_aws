@@ -370,6 +370,9 @@
           logoAnim(true);
         }
         stopVideo();
+        if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+          alert('left nav click');
+        }
         sectionScroll(anchor);
       });
 
@@ -433,6 +436,9 @@
         else {
           logoAnim(true);
         }
+        if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+          alert('history prev/forward button click');
+        }
         sectionScroll(section);
       };
 
@@ -444,6 +450,9 @@
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
           nextSection = thisSection++,
           nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
+        if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+          alert('scroll to next button click');
+        }
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
@@ -673,6 +682,9 @@
             logoAnim(true);
           }
           $('#main-menu-toggle').click();
+          if (usa_deviceInfo.smartphone && usa_deviceInfo.mobileDevice) {
+            alert('mobile left nav click');
+          }
           sectionScroll(anchor);
         });
       });

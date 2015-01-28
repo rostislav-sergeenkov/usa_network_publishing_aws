@@ -516,13 +516,23 @@
       window.addEventListener('orientationchange', setSectionHeight);
 
 
+      // getUrlPath
+      // url: (string) url to parse
+      function getUrlPath(url) {
+        var pathArray = url.replace('http://', '').replace('https://', '');
+        pathArray = pathArray.split('/');
+        if (pathArray[0].indexOf(window.location.hostname) >= 0
+          || pathArray[0].indexOf('usanetwork.com') >= 0) pathArray.shift();
+        return pathArray;
+      }
+
       //@TODO: GET THIS WORKING AGAIN WHEN VIDEOS ARE WORKING AGAIN!!
       // a-spot clicks
       // @TODO: AFTER LAUNCH, AND IF NEEDED, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
       $('#show-aspot-microsite .aspot-link').click(function(e) {
         var anchorFull = this.href,
-          anchorPathParts = getUrlPath(anchorFull);
+            anchorPathParts = getUrlPath(anchorFull);
 
         // if this is an internal microsite url
         // prevent the default action
@@ -565,7 +575,7 @@
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
       $('#microsite .node-usanetwork-promo a').click(function(e) {
         var anchorFull = this.href,
-          anchorPathParts = getUrlPath(anchorFull);
+            anchorPathParts = getUrlPath(anchorFull);
 
         // if this is an internal microsite url
         // prevent the default action

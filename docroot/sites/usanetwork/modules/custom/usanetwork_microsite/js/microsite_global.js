@@ -86,15 +86,23 @@
         }
       });
     },
-
     // set video player on click thumbnail
     micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId){
+
+      //$pdk.controller.pause(true);
 
       var Player = $('#video-container #pdk-player'),
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
 
-      $pdk.bind(Player);
       $pdk.controller.setReleaseURL(videoUrl, true);
+
+      $pdk.controller.addEventListener('OnMediaStart', function(){
+        if(!$pdk.controller.clickPlayButton(true)){
+          $pdk.controller.clickPlayButton(true);
+          $pdk.controller.pause(false);
+        }
+      });
+
     },
 
     // set initial active video thumbnail
@@ -432,6 +440,9 @@
 
       // initialize next button click
       $('#sections .section .scroll-to-next').click(function() {
+
+        stopVideo();
+
         if($('#sections .section').eq(0).hasClass('active')){
           logoAnim(true);
         }
@@ -636,17 +647,23 @@
         setSectionHeight();
       });
 
+      // create video 728x90 ad and
+      // set initial active video thumbnail on video load
+      // test for video palyer load ad
       $(document).ready(function(){
+        Drupal.behaviors.microsite_scroll.create728x90Ad();
+        Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
       });
 
+
       // create video 728x90 ad and
       // set initial active video thumbnail on video load
-      $('#video-container #pdk-player').load(function(){
-        Drupal.behaviors.microsite_scroll.create728x90Ad();
-        Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
-      });
+      //$('#video-container #pdk-player').load(function(){
+      //  Drupal.behaviors.microsite_scroll.create728x90Ad();
+      //  Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
+      //});
 
       $(window).load(function(){
 

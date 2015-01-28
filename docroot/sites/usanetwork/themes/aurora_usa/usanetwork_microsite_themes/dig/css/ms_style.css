@@ -1225,6 +1225,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 2200px) {
   #microsite #galleries-content .full-pane {
+    width: 1370px;
+    min-height: 633px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 1050px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 1050px;
+    max-height: 591px;
+  }
+}
+@media (max-width: 1950px) {
+  #microsite #galleries-content .full-pane {
     width: 1220px;
     min-height: 548px;
   }

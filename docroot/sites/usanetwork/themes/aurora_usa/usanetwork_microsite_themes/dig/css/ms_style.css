@@ -390,6 +390,7 @@ you can use the generic selector below, but it's slower:
   text-align: center;
   line-height: 1.25em;
   border: 1px solid white;
+  padding-top: 3px;
 }
 #microsite .scroll img {
   width: 14px;
@@ -1057,8 +1058,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 250px;
   width: 300px;
 }
-.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img, .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
-  border: 0;
+.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img,
+.usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
   width: auto;
   height: auto;
 }

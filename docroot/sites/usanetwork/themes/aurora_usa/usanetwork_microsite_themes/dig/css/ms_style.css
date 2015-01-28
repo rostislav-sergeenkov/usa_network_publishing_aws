@@ -1338,15 +1338,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-right: 0px;
   }
   #microsite #galleries-content .full-pane {
-    width: 700px;
-    min-height: 436px;
+    width: 600px;
+    min-height: 380px;
   }
   #microsite #galleries-content .flexslider {
-    width: 700px;
+    width: 600px;
   }
   #microsite #galleries .flexslider img {
-    max-width: 700px;
-    max-height: 394px;
+    max-width: 600px;
+    max-height: 337px;
   }
   #microsite #galleries-content .left-pane {
     width: 100%;

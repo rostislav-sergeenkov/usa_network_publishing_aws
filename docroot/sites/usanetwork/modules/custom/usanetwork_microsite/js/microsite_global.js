@@ -541,7 +541,7 @@
           e.preventDefault();
 
           previewItem.removeClass('active');
-          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="clip-' + anchorPathParts[2] + '"]').addClass('active');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]').addClass('active');
           $('#left-nav-links-list li#nav-videos a.scroll-link').click();
 
           var activeVideoItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),

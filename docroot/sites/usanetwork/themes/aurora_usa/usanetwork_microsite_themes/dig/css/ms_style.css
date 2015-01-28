@@ -1455,6 +1455,13 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .region-footer.usa-showmenu-loaded {
     padding-bottom: 20px;
   }
+  #microsite .usa-microsite-featured .microsite-carousel {
+    visibility: hidden;
+  }
+  #microsite .usa-microsite-featured .microsite-carousel-processed .microsite-carousel {
+    visibility: visible;
+  }
+
 }
 @media (min-width: 641px) and (max-width: 768px){
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {

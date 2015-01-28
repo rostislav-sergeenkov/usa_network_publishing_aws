@@ -1,6 +1,7 @@
 <?php
 
 define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
+define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -526,7 +527,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
   $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
   // replace spaces with '-'
   $suggested_url = str_replace(' ', '-', $suggested_url);
-  return 'clip-' . $suggested_url;
+  return USANETWORK_MICROSITE_VIDEO_PREFIX . $suggested_url;
 }
 
 /**
@@ -576,9 +577,9 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       'url' => !empty($file->filename)
         ? _usanetwork_microsite_get_suggested_video_url($file->filename)
         : NULL,
-      'rendered_test' => !empty($file->fid)
-        ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
-        : NULL,
+//      'rendered_test' => !empty($file->fid)
+//        ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
+//        : NULL,
       'rendered' => theme('pub_mpx_video', array(
             'file' => $file,
             'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
@@ -656,11 +657,16 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
  * @param $node
  * @return mixed
  */
-function _usanetwork_microsite_get_video_file_by_url($node, $param) {
+function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = TRUE) {
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if ($clean_url) {
+    $prefix = USANETWORK_MICROSITE_VIDEO_PREFIX;
+  } else {
+    $prefix = '';
+  }
   foreach($files as $file) {
-    if ('clip-' . $param == _usanetwork_microsite_get_suggested_video_url($file->filename)) {
+    if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file->filename)) {
       return $file;
     }
   }
@@ -1151,9 +1157,9 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
         case 'videos':
           $omniture_prop3 = 'Videos';
           if(isset($args[4])) {
-            $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
+            $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
             if(isset($video_file) && !empty($video_file->filename)) {
-              $omniture_prop5 = t($entity->title . ' : Videos : ' + $video_file->filename);
+              $omniture_prop5 = t('!entity_title : Videos : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
             }
           }
           break;

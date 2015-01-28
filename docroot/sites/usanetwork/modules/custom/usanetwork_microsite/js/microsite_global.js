@@ -139,7 +139,7 @@
     create300x250Ad: function(section) {
 
       usa_debug('create300x250Ad(' + section + ')');
-      if (section != 'videos') {
+      if (section != 'videos' && section != 'home') {
         // check to see if there's already an ad
         if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
           adBlock = '.dart-name-300x250_ifr_reload_' + section;

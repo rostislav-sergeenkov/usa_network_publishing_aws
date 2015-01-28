@@ -443,7 +443,7 @@ you can use the generic selector below, but it's slower:
 #microsite .ad-leaderboard {
   min-height: 90px;
   margin: 0 auto;
-  padding-top: 0;
+  padding: 0 0 34px;
   overflow: hidden;
 }
 /* add some padding to prevent the next button from sitting on top of content */
@@ -888,11 +888,6 @@ body.page-node-microsite {
   margin: 0;
   padding: 0;
 }
-/*.slides .clone {*/
-  /*width: 930px;*/
-  /*float: left;*/
-  /*display: block;*/
-/*}*/
 
 /* STYLES */
 #main {
@@ -902,7 +897,6 @@ body.page-node-microsite {
 #microsite .video-container {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
-/*add styles*/
 #microsite .video-container iframe {
   display: block;
   margin: 0 auto;
@@ -918,8 +912,10 @@ body.page-node-microsite {
   font-size: 1.2em;
   color: #e5ce96;
 }
-
-/*corrected & add styles*/
+#microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
+  background-image: none;
+}
+/* corrected & add styles */
 #microsite section .microsite-section-container {
   margin: 0 17px 0 265px;
   max-width: 1500px;
@@ -929,13 +925,17 @@ body.page-node-microsite {
   content: '';
   display: table;
 }
-#microsite section .microsite-section-container > div{
+#microsite section .microsite-section-container > div {
   width: 100%;
 }
-#microsite .a-spot-panel #show-main-slider{
+#microsite section .microsite-section-container div.scroll {
+  margin: 0 0 0 calc(-50% - 2em + 124px);
+}
+#microsite .a-spot-panel #show-main-slider {
   overflow: hidden;
   margin-bottom: 0px;
-  max-height: 378px;
+  max-height: 506px;
+  width: 1245px;
 }
 #microsite .a-spot-panel img{
   width: 100%;
@@ -973,7 +973,7 @@ body.page-node-microsite {
 }
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
-  width: 930px;
+  width: 945px;
 }
 #microsite .block-usanetwork-mpx-video:after {
   clear: both;
@@ -986,6 +986,9 @@ body.page-node-microsite {
   height: 250px;
   margin: 0px 15px 15px 0px;
   width: 300px;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item.ad {
+  background-color: #1F1F1F;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
@@ -1010,10 +1013,10 @@ body.page-node-microsite {
 #microsite #main-slider {
   margin: 0 auto 20px;
   position: relative;
-  width: 930px;
+  width: 1245px;
 }
 
-/*global nav*/
+/* global nav */
 body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: none;
 }
@@ -1028,13 +1031,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
-/*microsite carousel*/
-/*.usa-microsite-featured {*/
-  /*margin: 0 auto;*/
-  /*width: 930px;*/
-/*}*/
 #microsite .usa-microsite-featured {
-  margin: 0 auto 100px;
+  margin: 0 auto;
   max-width: 1245px;
 }
 
@@ -1084,10 +1082,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
   margin: 0 0px 2px;
 }
-.microsite-gallery-meta h2 {
-  font-size: 26px;
-}
-
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
   outline: none;
@@ -1100,9 +1094,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   right: -35px;
 }
 
-/* GALLERIES -- SOME OF THIS IS JUST FOR LAUNCH, SINCE WE'LL ONLY HAVE
- * ONE GALLERY AT LAUNCH
- */
+/* GALLERIES */
 #microsite #galleries-content .flexslider .counter {
   position: absolute;
   right: 10px;
@@ -1188,86 +1180,55 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   z-index: 51;
 }
 
-/* media breakpoints*/
-@media (min-width: 1601px) and (max-width: 1840px){
-  #microsite #section-home .microsite-section-container {
-    padding-left: calc(1600px - 84%);
+
+
+/* BEGIN MEDIA BREAKPOINTS */
+@media (min-width: 1780px) {
+  #microsite section .microsite-section-container {
+    margin: 0 auto;
+    max-width: 1500px;
   }
-  #microsite #section-galleries .microsite-section-container {
-    padding-left: 39px;
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em);
   }
-}
-@media (min-width: 1401px) and (max-width: 1600px){
-  #microsite #section-videos .microsite-section-container {
-    padding-left: calc(1400px - 84%);
+  #microsite #videos-content .full-pane {
+    width: 1000px;
   }
-  #microsite #section-galleries .microsite-section-container {
-    margin: 0px 17px 0 265px;
-  }
-}
-@media (min-width: 1601px) {
   #microsite #main-slider {
     height: 506px;
     width: 1245px;
-  }
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 506px;
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px!important;
     height: 563px!important;
   }
   #microsite .block-usanetwork-mpx-video {
-    width: 1000px;
+    width: 1050px;
   }
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
   }
-  #microsite #section-galleries .microsite-section-container {
-    margin: 0px auto;
-  }
 }
-@media (min-width: 1401px){
-  #microsite section .microsite-section-container {
-    margin: 0 auto;
-    max-width: 1500px;
-  }
-  #microsite #section-galleries .microsite-section-container {
-    max-width: 1120px;
-  }
-}
-@media (max-width: 1400px) {
-  #microsite section .microsite-section-container div.scroll {
-    margin: 0 0 0 calc(-50% - 2em + 124px);
-  }
-}
-@media (min-width: 1281px) and (max-width: 1600px){
-  #microsite .usa-microsite-featured {
+@media (max-width: 1779px) {
+  #microsite #videos-content .full-pane {
     width: 930px;
   }
-  #microsite .a-spot-panel #show-main-slider{
-    max-height: 378px;
-  }
-  #microsite #section-home .microsite-section-container {
-    margin: 0 auto;
-    padding-left: calc(1400px - 91%);
-  }
-}
-@media (min-width: 1201px) {
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
     width: 930px;
     height: 523px;
   }
-  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
-    margin-right: 0px;
-  }
 }
-@media (min-width: 1025px) and (max-width: 1280px){
+@media (max-width: 1580px){
+  #microsite #main-slider {
+    width: 930px;
+  }
+  #microsite .a-spot-panel #show-main-slider {
+    width: 930px;
+    max-height: 378px;
+  }
   #microsite .usa-microsite-featured {
     width: 930px;
   }
-}
-@media (max-width: 1280px){
   .page-node-microsite #left-nav {
     left: 0px;
     width: 190px;
@@ -1281,30 +1242,40 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container {
     margin: 0 17px 0 190px;
   }
-}
-@media (min-width: 1025px) and (max-width: 1200px){
-  #microsite #section-home .microsite-section-container {
-    margin: 0 auto;
-    padding-left: 30px;
+  #microsite section .microsite-section-container div.scroll {
+    margin: 0 0 0 calc(-50% - 2em + 86px);
   }
 }
-@media (max-width: 1200px){
+@media (max-width: 1280px) {
+  #microsite #videos-content .full-pane {
+    width: 615px;
+  }
+  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
+    width: 615px;
+    height: 346px;
+  }
+  #microsite .block-usanetwork-mpx-video {
+    width: 630px;
+  }
+}
+@media (max-width: 1200px) {
+/*
+  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
+    margin-right: 0px;
+  }
+*/
   #microsite #main-slider {
     width: 615px;
   }
   #microsite .usa-microsite-featured {
     width: 615px;
   }
-  #microsite .a-spot-panel #show-main-slider{
+  #microsite .a-spot-panel #show-main-slider {
+    width: 615px;
     max-height: 350px;
   }
   #microsite .full-pane {
     max-width: 615px;
-  }
-  #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
-    width: 615px;
-    height: 346px;
-    margin: 0;
   }
   #microsite .block-usanetwork-mpx-video {
     width: 615px;
@@ -1335,9 +1306,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (max-width: 1120px) {
   #microsite #galleries-content .microsite-gallery h2 {
     width: 100%;
-  }
-  #microsite #galleries-content .full-pane {
-    margin-top: 70px;
   }
   #microsite #gigya-share {
     clear: left;
@@ -1371,15 +1339,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 15px;
     margin-right: 15px;
   }
-  .carousel-item {
-    float: left;
-    width: 45%;
-  }
   #microsite section .microsite-section-container div.scroll {
     position: absolute;
     bottom: 0;
     left: calc(50% - 2em);
     margin: 0;
+  }
+  .carousel-item {
+    float: left;
+    width: 45%;
   }
 }
 @media (min-width: 769px) and (max-width: 874px){
@@ -1483,11 +1451,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     padding: 5px;
   }
 }
-@media (min-width: 769px) and (max-width: 990px){
-
-}
 @media (min-width: 769px){
-  #microsite .region-footer.usa-showmenu-loaded{
+  #microsite .region-footer.usa-showmenu-loaded {
     padding-bottom: 20px;
   }
 }
@@ -1501,7 +1466,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 768px){
   #microsite .usa-microsite-featured {
-    margin: 0 auto 50px;
+    margin: 0 auto;
   }
   #microsite #galleries-content .flexslider .counter {
     padding: 0px;
@@ -1525,6 +1490,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
   }
   #microsite .a-spot-panel #show-main-slider {
+    width: 300px;
     max-height: 250px;
   }
   #microsite .usa-microsite-featured {

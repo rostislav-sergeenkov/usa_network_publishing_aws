@@ -390,6 +390,7 @@ you can use the generic selector below, but it's slower:
   text-align: center;
   line-height: 1.25em;
   border: 1px solid white;
+  padding-top: 3px;
 }
 #microsite .scroll img {
   width: 14px;
@@ -1057,8 +1058,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 250px;
   width: 300px;
 }
-.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img, .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
-  border: 0;
+.usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img,
+.usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
   width: auto;
   height: auto;
 }
@@ -1110,10 +1111,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite #galleries-content .microsite-gallery .description-block p {
   margin: 0;
 }
+#microsite .field-type-gigya-sharebar {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  right: -16px;
+}
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 20px;
+  clear: none;
+}
 #microsite #galleries-content .full-pane {
   width: 100%;
   margin: 0 auto;
   padding: 0;
+  width: 1720px;
+  max-width: 1720px;
+  min-height: 830px;
 }
 #microsite #galleries-content .full-pane:after {
   content: '';
@@ -1134,21 +1150,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   overflow: hidden;
   width: calc(100% - 216px);
 }
-#microsite .field-type-gigya-sharebar {
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
-  right: -16px;
-}
-#microsite #gigya-share {
-  width: 196px;
-  float: left;
-  margin-left: 20px;
-  clear: none;
-}
 #microsite #galleries-content .left-pane {
   position: relative;
   width: calc(100% - 320px);
+}
+#microsite #galleries-content .flexslider {
+  width: 1400px;
+}
+#microsite #galleries .flexslider img {
+  max-width: 1400px;
+  max-height: 788px;
 }
 #microsite .photo-caption {
   width: 100%;
@@ -1191,6 +1202,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite section .microsite-section-container div.scroll {
     margin: 0 0 0 calc(-50% - 2em);
   }
+  #microsite #galleries-content .microsite-section-container {
+    max-width: 1720px;
+  }
   #microsite #videos-content .full-pane {
     width: 1000px;
   }
@@ -1207,6 +1221,32 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
+  }
+}
+@media (max-width: 2200px) {
+  #microsite #galleries-content .full-pane {
+    width: 1370px;
+    min-height: 633px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 1050px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 1050px;
+    max-height: 591px;
+  }
+}
+@media (max-width: 1950px) {
+  #microsite #galleries-content .full-pane {
+    width: 1220px;
+    min-height: 548px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 900px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 900px;
+    max-height: 506px;
   }
 }
 @media (max-width: 1779px) {
@@ -1244,6 +1284,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite section .microsite-section-container div.scroll {
     margin: 0 0 0 calc(-50% - 2em + 86px);
+  }
+  #microsite #galleries-content .full-pane {
+    width: 920px;
+    min-height: 380px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 600px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 600px;
+    max-height: 338px;
   }
 }
 @media (max-width: 1280px) {
@@ -1285,6 +1336,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
     margin-right: 0px;
+  }
+  #microsite #galleries-content .full-pane {
+    width: 600px;
+    min-height: 380px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 600px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 600px;
+    max-height: 337px;
   }
   #microsite #galleries-content .left-pane {
     width: 100%;
@@ -1478,6 +1540,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #galleries-content .flexslider .counter {
     padding: 0px;
   }
+  #microsite #galleries-content .full-pane {
+    width: 600px;
+    min-height: 380px;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 600px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 600px;
+    max-height: 338px;
+  }
 }
 @media (max-width: 709px) {
   #microsite #galleries-content .microsite-gallery-meta h2 {
@@ -1534,6 +1607,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #home-content .ad-mobile {
     display: block;
   }
+  #microsite #videos-content .full-pane {
+    width: 300px;
+  }
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
     width: 300px;
     height: 184px;
@@ -1583,7 +1659,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     display: none;
   }
   #microsite #galleries-content .full-pane {
-    margin-top: 0px;
+    width: 300px;
+    min-height: 210px;
+    margin-top: 0;
+  }
+  #microsite #galleries-content .flexslider {
+    width: 300px;
+  }
+  #microsite #galleries .flexslider img {
+    max-width: 300px;
+    max-height: 169px;
   }
   #microsite #galleries-content .microsite-gallery-meta {
     white-space: normal;
@@ -1616,9 +1701,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     background: #000000;
     background-image: none!important;
   }
-}
-@media (max-width: 320px){
-
 }
 
 /* height media queries */

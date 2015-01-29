@@ -82,7 +82,7 @@
         > a {
           line-height: 32px;
         }
-      h1 {
+        h1 {
           a {
             @extend %semi-headline;
             letter-spacing: normal;
@@ -113,16 +113,16 @@
       }
       .titles-block {
         > h1 {
-        font-size: 11px;
-        color: #464646;
+          font-size: 11px;
+          color: #464646;
           margin-top: -9px;
           @include breakpoint($bp-on-now) {
-          margin-top: -8px;
+            margin-top: -8px;
+          }
         }
       }
     }
   }
-}
 }
 
 .promo-ads-panel {
@@ -133,7 +133,7 @@
       overflow: hidden;
     }
   }
-  .panel-col2  {
+  .panel-col2 {
     position: static;
     display: none;
     @include breakpoint($bp-show-mid-width) {

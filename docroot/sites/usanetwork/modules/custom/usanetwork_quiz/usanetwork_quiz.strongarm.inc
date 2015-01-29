@@ -150,19 +150,19 @@ function usanetwork_quiz_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '10',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '10',
         ),
       ),
       'display' => array(

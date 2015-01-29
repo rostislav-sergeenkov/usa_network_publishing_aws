@@ -50,6 +50,7 @@ features[field_group][] = group_gallery_additional|node|media_gallery|form
 features[field_group][] = group_gallery_basic|node|media_gallery|form
 features[field_group][] = group_gallery_ideamelt|node|media_gallery|form
 features[field_group][] = group_media_gallery_nitro|node|media_gallery|form
+features[field_group][] = group_seo|node|media_gallery|form
 features[field_group][] = group_show_rels|node|media_gallery|form
 features[field_group][] = group_usa_custom|node|media_gallery|form
 features[field_group][] = group_usa_og_fields|node|media_gallery|form

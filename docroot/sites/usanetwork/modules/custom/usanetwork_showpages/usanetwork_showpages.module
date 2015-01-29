@@ -492,8 +492,12 @@ function usanetwork_showpages_video_cats($node) {
   */
   // add the basic logic for finding terms
   $termname = arg(3);
-  $term_from_path = str_replace('-', ' ' , arg(3));
+  $term_from_path = str_replace('_', ' ' , arg(3));
   $terms = taxonomy_get_term_by_name($term_from_path);
+  if (empty($terms)) {
+    $term_from_path = str_replace('-', ' ' , arg(3));
+    $terms = taxonomy_get_term_by_name($term_from_path);
+  }
   // if no terms resolve go to the main show video page
   // if full episodes is entered as the arg
   // go to the main show video page
@@ -587,11 +591,6 @@ function usanetwork_showpages_preprocess_html(&$vars) {
 
   // see if we are on a node page
   if ($node = menu_get_object()) {
-    // override page title from 'field_seo_h1'. If the value is not found - use default node title.
-    $custom_title = field_get_items('node', $node, 'field_seo_h1');
-    $custom_title = !empty($custom_title[0]['value'])
-      ? $custom_title[0]['value']
-      : $node->title;
     $seo_page_title = field_get_items('node', $node, 'field_seo_page_title');
     // see if we are on a catchall seo node
     if ($node->type == 'catchall_seo_page') {
@@ -613,7 +612,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           $head_title = t("@title | USA Network", array('@title' => $field_h1));
         }
         else {
-          $head_title = t("@title | USA Network", array('@title' => $custom_title));
+          $head_title = t("@title | USA Network", array('@title' => $node->title));
         }
       }
     }
@@ -625,20 +624,20 @@ function usanetwork_showpages_preprocess_html(&$vars) {
       switch (arg(2)) {
        // video landing
        case 'videos':
-          $headtitle = t("@show Videos", array('@show' => $custom_title));
+          $headtitle = t("@show Videos", array('@show' => $node->title));
           $vars['title'] = $headtitle;
           break;
         // GAME_TITLE | Games | SHOW_NAME | SITE_TITLE
         case 'games':
-          $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+          $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
         // FEATURE_TITLE | Features | SHOW_NAME | SITE_TITLE
         case 'features':
-          $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+          $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
         // quiz_TITLE | Quizzes | SHOW_NAME | SITE_TITLE
         case 'quizzes':
-          $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+          $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           break;
         // Show Landing Page
         case '':
@@ -646,12 +645,12 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@title | USA Network", array('@title' => $custom_title));
+            $head_title = t("@title | USA Network", array('@title' => $node->title));
           }
           break;          
         // overwrite title if arg(2) does not match any of top strings
         default:
-          $head_title = t("@title | USA Network", array('@title' => $custom_title));
+          $head_title = t("@title | USA Network", array('@title' => $node->title));
           break;
       }
     }
@@ -692,7 +691,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $custom_title, '@season' => $season->title));
+            $head_title = t("@episode - @season | Episode Guide | @showname | USA Network", array('@showname' => $show->title, '@episode' => $node->title, '@season' => $season->title));
           }
           break;
         // GALLERY_TITLE | Photo Galleries | SHOW_NAME | SITE_TITLE
@@ -701,13 +700,13 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {        
-            $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+            $head_title = t("@title | Photo Galleries | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           }
           break;
         // VIDEO_TITLE | Videos | SHOW_NAME | SITE_TITLE
         case 'usa_video':
         case 'usa_tve_video':
-          $head_title = t("@video | Videos | @showname | USA Network", array('@showname' => $show->title, '@video' => $custom_title));
+          $head_title = t("@video | Videos | @showname | USA Network", array('@showname' => $show->title, '@video' => $node->title));
           break;
         // SAME LOGIC AS CUSTOM PATHS ABOVE
         case 'usanetwork_static_page':
@@ -722,19 +721,19 @@ function usanetwork_showpages_preprocess_html(&$vars) {
               switch ($path_parts[1]) {
                 // PAGE_TITLE | Feature | SHOW_TITLE | SITE_NAME
                 case 'features':
-                  $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  $head_title = t("@title | Features | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
                   break;
                 // PAGE_TITLE | Quizzes | SHOW_TITLE | SITE_NAME
                 case 'quizzes':
-                  $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  $head_title = t("@title | Quizzes | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
                   break;
                 // PAGE_TITLE | Games | SHOW_TITLE | SITE_NAME
                 case 'games':
-                  $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+                  $head_title = t("@title | Games | @showname | USA Network", array('@showname' => $show->title, '@title' => $node->title));
                   break;
                 // overwrite title if the second path part does not match any of top strings
                 default:
-                  $head_title = t("@title | USA Network", array('@title' => $custom_title));
+                  $head_title = t("@title | USA Network", array('@title' => $node->title));
                   break;
               }
             }
@@ -746,7 +745,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $custom_title));
+            $head_title = t("@showname - @title | USA Network", array('@showname' => $show->title, '@title' => $node->title));
           }
           break;
       }

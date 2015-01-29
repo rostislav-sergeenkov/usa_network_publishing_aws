@@ -21,7 +21,7 @@ function usanetwork_quiz_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_quiz_entry_text',
       1 => 'field_quiz_header_image',
@@ -61,9 +61,7 @@ function usanetwork_quiz_field_group_info() {
       3 => 'field_show',
       4 => 'field_usa_tv_show_color',
       5 => 'field_usa_tv_show_hover_color',
-      6 => 'field_seo_h1',
-      7 => 'field_seo_page_title',
-      8 => 'title',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -88,7 +86,7 @@ function usanetwork_quiz_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Questions',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_quiz_questions',
     ),
@@ -115,7 +113,7 @@ function usanetwork_quiz_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Results',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_quiz_calculation',
       1 => 'field_quiz_results',
@@ -135,6 +133,35 @@ function usanetwork_quiz_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|quiz|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'quiz';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_usa_og_description',
+      1 => 'field_seo_h1',
+      2 => 'field_seo_page_title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|quiz|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_usa_og_fields|node|quiz|form';
   $field_group->group_name = 'group_usa_og_fields';
   $field_group->entity_type = 'node';
@@ -143,10 +170,9 @@ function usanetwork_quiz_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG Fields',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_usa_og_description',
-      1 => 'field_usa_og_image',
+      0 => 'field_usa_og_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

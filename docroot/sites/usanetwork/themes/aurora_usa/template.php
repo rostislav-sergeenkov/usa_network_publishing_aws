@@ -167,6 +167,12 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['ajax'] = true;
   }
 
+  // if microsite, don't display the top utilities section
+  if ($node && $node->type == 'usanetwork_microsite') {
+    $vars['page']['no_utilities'] = true;
+    $vars['page']['no_footer'] = true;
+    $vars['page']['no_leaderboard'] = true;
+  }
 }
 
 /**
@@ -758,7 +764,7 @@ function append_cover_to_media(&$vars) {
   $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
   $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
   $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
-  
+
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';
   // $vars['items'][0]['field_caption']['#items'][0]['value'] = $new_caption;
@@ -1219,7 +1225,7 @@ function _aurora_usa_search_keywords() {
 * Implements hook_html_head_alter().
 */
 function aurora_usa_html_head_alter(&$head_elements) {
-  
+
   if ($node = menu_get_object()) {
     if (($node->type == 'usa_video') || ($node->type == 'usa_tve_video')) {
       if ($node->field_full_episode[LANGUAGE_NONE][0]['value'] == '0') {

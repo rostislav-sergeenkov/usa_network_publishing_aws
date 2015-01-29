@@ -227,6 +227,8 @@ function _usanetwork_mpx_video_get_current_terms($terms){
       ->fields('fm', array('fid'))
         ->condition('type', _usanetwork_mpx_video_get_all_file_types(), 'IN')
         ->condition('published', '1');
+    $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $query->condition('mv.status', '1');
     $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
     $query->condition('fdfuvt.field_usa_video_terms_target_id', $term_check->tid);
     $query_result = $query->execute()->fetchAll();
@@ -346,23 +348,23 @@ function usanetwork_mpx_video_show_nav() {
           $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
         }
         if ($i >= 4) {
-          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term1->name))), array('html' => true)), 'class' => $class);
+          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term1->name))), array('html' => true)), 'class' => $class);
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term2->name))), array('html' => true)), 'class' => $class);
+            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term2->name))), array('html' => true)), 'class' => $class);
           }
         } else {
-          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term1->name))), array('html' => true)), 'class' => $class);
+          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term1->name))), array('html' => true)), 'class' => $class);
           $first = true;
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term2->name))), array('html' => true)), 'class' => $class);
+            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term2->name))), array('html' => true)), 'class' => $class);
             if ($first) {
               $first = false;
               $items[$i]['class'][] = 'more';
@@ -801,7 +803,8 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
       if ($field['field_name'] == 'field_mpx_full_episode') {
         $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
       } else if ($field['field_name'] == 'field_mpx_duration') {
-        $media_item['field_data'][$field['field_name']] = round($value[0]);
+        $duration_value = _usanetwork_mpx_video_parse_data($field_pattern, $media_data);
+        $media_item['field_data'][$field['field_name']] = round($duration_value[0]);
       } else {
         $media_item['field_data'][$field['field_name']] = $value;
       }
@@ -1257,42 +1260,42 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
 
   //most recent full episode
   $show_id = $file->field_show['und'][0]['target_id'];
-  $query = db_select('mpx_video', 'm');
-  $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
-  $query->innerJoin('field_data_field_show', 's', 'm.fid = s.entity_id');
-  $query->fields('m', array('fid'))
-    ->condition('m.status', 1, '=')
-    ->condition('f.field_mpx_full_episode_value', 1, '=');
-  $query->addExpression("s.field_show_target_id = $show_id", 'order_col');
-  $query->orderBy('order_col', 'DESC')
-    ->orderBy('m.airdate', 'DESC')
-    ->range(0, 1);
-  $result = $query->execute();
-  $full_episode = $result->fetchAssoc();
-  if ($full_episode) {
-    $variables['full_episode_view'] = drupal_render(file_view(file_load($full_episode['fid']), 'vid_teaser_show_episode'));
-  }
+  if (!empty($show_id) && is_numeric($show_id)) {
+    $query = db_select('mpx_video', 'm');
+    $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
+    $query->innerJoin('field_data_field_show', 's', 'm.fid = s.entity_id');
+    $query->fields('m', array('fid'))
+      ->condition('m.status', 1, '=')
+      ->condition('f.field_mpx_full_episode_value', 1, '=');
+    $query->addExpression("s.field_show_target_id = $show_id", 'order_col');
+    $query->orderBy('order_col', 'DESC')
+      ->orderBy('m.airdate', 'DESC')
+      ->range(0, 1);
+    $result = $query->execute();
+    $full_episode = $result->fetchAssoc();
+    if ($full_episode) {
+      $variables['full_episode_view'] = drupal_render(file_view(file_load($full_episode['fid']), 'vid_teaser_show_episode'));
+    }
 
-  //most recent clips
-  $query = db_select('mpx_video', 'm');
-  $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
-  $query->innerJoin('field_data_field_show', 's', 'm.fid = s.entity_id');
-  $query->fields('m', array('fid'))
-    ->condition('m.status', 1, '=')
-    ->condition('f.field_mpx_full_episode_value', 0, '=');
-  $query->addExpression("s.field_show_target_id = $show_id", 'order_col');
-  $query->orderBy('order_col', 'DESC')
-    ->orderBy('m.airdate', 'DESC')
-    ->range(0, 2);
-  $result = $query->execute();
-  $clip = $result->fetchAll();
-  if ($clip) {
-    foreach ($clip as $value){
-      $variables['clip_view'][] = drupal_render(file_view(file_load($value->fid), 'vid_teaser_show_episode'));
+    //most recent clips
+    $query = db_select('mpx_video', 'm');
+    $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
+    $query->innerJoin('field_data_field_show', 's', 'm.fid = s.entity_id');
+    $query->fields('m', array('fid'))
+      ->condition('m.status', 1, '=')
+      ->condition('f.field_mpx_full_episode_value', 0, '=');
+    $query->addExpression("s.field_show_target_id = $show_id", 'order_col');
+    $query->orderBy('order_col', 'DESC')
+      ->orderBy('m.airdate', 'DESC')
+      ->range(0, 2);
+    $result = $query->execute();
+    $clip = $result->fetchAll();
+    if ($clip) {
+      foreach ($clip as $value){
+        $variables['clip_view'][] = drupal_render(file_view(file_load($value->fid), 'vid_teaser_show_episode'));
+      }
     }
   }
-
-
 }
 
 /**
@@ -1795,7 +1798,7 @@ function _usanetwork_mpx_video_is_video_page() {
   $current_menu_item = menu_get_item();
   $current_menu_item_path = $current_menu_item['path'];
   
-  if (($current_menu_item_path == 'videos') || ($current_menu_item_path == 'videos/live')) {  
+  if (($current_menu_item_path == 'videos') || ($current_menu_item_path == 'videos/live') || ($current_menu_item_path == 'node/%/microsite')) {  
     $is_video_page = TRUE;
   } else {
     $file = menu_get_object('file');

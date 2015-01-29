@@ -5784,6 +5784,14 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
   color: #878785;
   margin: 0 0 -1.5em 0;
 }
+.view-id-usa_episodes.view-display-id-panel_pane_4 h1 span {
+  color: white;
+  font-size: 2.04em;
+  margin: 0.83em 0;
+  display: inline-block;
+  display: inline;
+  float: left;
+}
 
 @media (min-width: 769px) {
   .panel-twocol-nested-right-twocol .panel-one {
@@ -6170,6 +6178,56 @@ body[data-menu-direction="right"][data-menu-position="open"] #jPanelMenu-menu.st
 }
 .media-gallery .center-wrapper .pane-entity-field .media-gallery-seo {
   font-size: 12px;
+}
+.media-gallery .center-wrapper .media-gallery-title {
+  margin: 3px 0 0;
+}
+.media-gallery .center-wrapper .media-gallery-title h1 {
+  font-size: 15px;
+  color: #878785;
+  margin: 0;
+  font-family: "avalonbold", "Proxima N W01 Bold", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 {
+    font-size: 12px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 {
+    font-size: 14px;
+  }
+}
+.media-gallery .center-wrapper .media-gallery-title h1 span {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+  display: inline-block;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 span {
+    font-size: 14px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h1 span {
+    font-size: 16px;
+  }
+}
+.media-gallery .center-wrapper .media-gallery-title h2 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+}
+@media (max-width: 709px) {
+  .media-gallery .center-wrapper .media-gallery-title h2 {
+    font-size: 14px;
+  }
+}
+@media (min-width: 710px) and (max-width: 1019px) {
+  .media-gallery .center-wrapper .media-gallery-title h2 {
+    font-size: 16px;
+  }
 }
 .media-gallery .image-caption {
   font-family: "Proxima N W01 Reg",Arial,sans-serif;

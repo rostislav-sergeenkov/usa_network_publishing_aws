@@ -95,13 +95,18 @@
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
 
       $pdk.controller.setReleaseURL(videoUrl, true);
+      $pdk.controller.setVolume(74);
 
       $pdk.controller.addEventListener('OnMediaStart', function(){
+        $pdk.controller.setVolume(75);
         if(!$pdk.controller.clickPlayButton(true)){
           $pdk.controller.clickPlayButton(true);
           $pdk.controller.pause(false);
         }
       });
+      //$pdk.controller.addEventListener('OnMediaPlaying', function(){
+      //  $pdk.controller.setVolume(75);
+      //});
 
     },
 

@@ -113,8 +113,8 @@
                   else {
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
-                        scope.isFreeWheelReq = false;
-                        scope.isDartReq = true;
+                        scope.isFreeWheelReq = true;
+                        scope.isDartReq = false;
                       });
                     }
                     scope.$apply(function() {
@@ -172,6 +172,7 @@
                  * @private
                  */
                 function _companionAd(pdkEvent) {
+                  console.info('_companionAd event fired');
                   var targetId   = pdkEvent.data.holderId,
                       targetElem = document.getElementById(targetId);
 

@@ -54,6 +54,7 @@ features[field_group][] = group_additional_information|node|quiz|form
 features[field_group][] = group_basic_information|node|quiz|form
 features[field_group][] = group_quiz_quiestions|node|quiz|form
 features[field_group][] = group_quiz_result|node|quiz|form
+features[field_group][] = group_seo|node|quiz|form
 features[field_group][] = group_usa_og_fields|node|quiz|form
 features[field_instance][] = field_collection_item-field_quiz_answers-field_quiz_answer_image
 features[field_instance][] = field_collection_item-field_quiz_answers-field_quiz_answer_text

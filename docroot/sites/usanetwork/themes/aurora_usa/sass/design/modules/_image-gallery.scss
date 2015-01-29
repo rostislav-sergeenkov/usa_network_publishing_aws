@@ -201,6 +201,44 @@
         font-size: 12px;
       }      
     }
+    .media-gallery-title {
+      margin: 3px 0 0;
+      h1 {
+        font-size: 15px;
+        color: #878785;
+        margin: 0;
+        font-family: $headline-bold;
+        @include breakpoint($bp-home-narrowest) {
+          font-size: 12px;
+        }
+        @include breakpoint($bp-home-2-fence) {
+          font-size: 14px;
+        }
+        span {
+          font-size: 18px;
+          color: #ffffff;
+          margin: 0;
+          display: inline-block;
+          @include breakpoint($bp-home-narrowest) {
+            font-size: 14px;
+          }
+          @include breakpoint($bp-home-2-fence) {
+            font-size: 16px;
+          }        
+        }
+      }
+      h2 {
+        font-size: 18px;
+        color: #ffffff;
+        margin: 0;
+        @include breakpoint($bp-home-narrowest) {
+          font-size: 14px;
+        }
+        @include breakpoint($bp-home-2-fence) {
+          font-size: 16px;
+        }
+      }      
+    }
 /*    .pane-node-field-season {
       float: left;
       font-size: 14px;

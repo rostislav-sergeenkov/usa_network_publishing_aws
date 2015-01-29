@@ -44,6 +44,7 @@ features[field_group][] = group_catchall_code|node|catchall_page|form
 features[field_group][] = group_catchall_ideamelt|node|catchall_page|form
 features[field_group][] = group_catchall_media|node|catchall_page|form
 features[field_group][] = group_catchall_nitro|node|catchall_page|form
+features[field_group][] = group_seo|node|catchall_page|form
 features[field_group][] = group_usa_og_fields|node|catchall_page|form
 features[field_instance][] = node-catchall_page-field_automatic_refresh
 features[field_instance][] = node-catchall_page-field_enable_nitro

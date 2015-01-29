@@ -5,6 +5,9 @@
 
   var urlPath = window.location.pathname;
   var activeSection = 'home';
+  var minWidthForNav = 875;
+  var heightForHomeLogoAnim = 700;
+  var scrollTopForLogoAnim = 200;
 
   Drupal.behaviors.microsite_scroll = {
 
@@ -440,7 +443,6 @@
         sectionScroll(section);
       };
 
-
       // initialize next button click
       $('#sections .section .scroll-to-next').click(function() {
 
@@ -469,16 +471,38 @@
           // we want the section to fill the height of the page
           $('#microsite section').css('min-height', msHeight + 'px');
 
-          $(this).mCustomScrollbar({
-            theme:"3d",
-            scrollInertia: 0
-          });
+          if ($(this).attr('id') == 'home') {
+            $(this).mCustomScrollbar({
+              theme: "3d",
+              scrollInertia: 0,
+              callbacks: {
+                onScroll: function () {
+                  logoAnimHome(this);
+                }
+              }
+            });
+          }
+          else {
+            $(this).mCustomScrollbar({
+              theme: "3d",
+              scrollInertia: 0
+            });
+          }
         });
       }
      // setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
       setSectionHeight();
 
-
+      function logoAnimHome(e){
+        if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(e).hasClass('active')) {
+          if (e.mcs.top < -scrollTopForLogoAnim){
+            logoAnim(true);
+          }
+          else {
+            logoAnim(false);
+          }
+        }
+      }
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video

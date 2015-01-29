@@ -1645,7 +1645,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
     width: 29px;
   }
-  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title {
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title,
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption {
     padding-left: 35px;
   }
   #microsite section .microsite-section-container .right-pane {
@@ -1708,6 +1709,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #left-nav {
     font-size: 16px;
     top: 5px;
+  }
+}
+@media (max-height: 700px) {
+  .page-node-microsite #left-nav #left-nav-inner{
+    -webkit-transition: top 0.5s ease-out 0s;
+    -moz-transition: top 0.5s ease-out 0s;
+    -o-transition: top 0.5s ease-out 0s;
+    transition: top 0.5s ease-out 0s;
   }
 }
 

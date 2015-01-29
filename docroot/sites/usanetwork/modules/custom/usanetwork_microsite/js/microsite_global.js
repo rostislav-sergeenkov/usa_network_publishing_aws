@@ -89,14 +89,14 @@
     // set video player on click thumbnail
     micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId){
 
-      //$pdk.controller.pause(true);
-
       var Player = $('#video-container #pdk-player'),
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
 
       $pdk.controller.setReleaseURL(videoUrl, true);
+      $pdk.controller.setVolume(74);
 
       $pdk.controller.addEventListener('OnMediaStart', function(){
+        $pdk.controller.setVolume(75);
         if(!$pdk.controller.clickPlayButton(true)){
           $pdk.controller.clickPlayButton(true);
           $pdk.controller.pause(false);

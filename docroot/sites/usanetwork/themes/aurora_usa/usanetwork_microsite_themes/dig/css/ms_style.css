@@ -1577,7 +1577,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
   }
   #microsite .block-usanetwork-mpx-video {
-    width: 300px;
+    width: 310px;
   }
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
     margin: 0 2% 10px 0px;
@@ -1628,11 +1628,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video li.grid-item {
     height: 121px;
     margin-bottom: 10px;
-    margin-right: 10px;
+    margin-right: 10px!important;
     width: 145px;
   }
-  #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
-    margin-right: 0px;
+  #microsite .block-usanetwork-mpx-video li.grid-item.ad {
+    display: none;
   }
   #microsite .block-usanetwork-mpx-video li.grid-item img {
     height: 82px;

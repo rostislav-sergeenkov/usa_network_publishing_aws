@@ -2,24 +2,6 @@
 (function ($) {
   Drupal.behaviors.microsite_carousel = {
     carousel_inited: false,
-    replaceAd: function (){
-      var home_carousel_ad = $('.usa-microsite-featured .carousel li.ad');
-      if ($(window).width() < 641) {
-        $('#videos-content #block-usanetwork-mpx-video-usa-mpx-video-views li.ad').remove();
-        home_carousel_ad.hide();
-        if (!$('.usa-microsite-featured .carousel li:last').hasClass('ad')) {
-          $('.usa-microsite-featured .carousel li:last').after(home_carousel_ad.clone());
-          home_carousel_ad.remove();
-        }
-      }
-      else {
-        home_carousel_ad.show();
-        if ($('.usa-microsite-featured .carousel li:last').hasClass('ad')) {
-          $('.usa-microsite-featured .carousel li').eq(0).after(home_carousel_ad.clone());
-          home_carousel_ad.remove();
-        }
-      }
-    },
     flexDestroy: function (selector) {
       var el = $(selector);
       var elClean = el.clone();
@@ -194,7 +176,7 @@
       Drupal.behaviors.microsite_carousel.carousel_inited = true;
     },
     attach: function (context, settings) {
-      Drupal.behaviors.microsite_carousel.replaceAd();
+
     }
   };
 
@@ -203,26 +185,7 @@
     usa_debug('window resize called');
     if (doit == null) {
       doit = setTimeout(function() {
-        Drupal.behaviors.microsite_carousel.replaceAd();
         Drupal.behaviors.microsite_carousel.initCarousel();
-/*
-        if ($(window).width() < 641) {
-          $('.expandable-content').each(function() {
-            if(!$(this).hasClass('mobile')){
-              Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($(this));
-              $(this).addClass('mobile');
-            }
-          });
-        }
-*//*
-
-        else {
-          $('.expandable-content.mobile').each(function() {
-            Drupal.behaviors.microsite_carousel.setCollapsibleContentHeight($(this));
-            $(this).removeClass('mobile');
-          });
-        }
-*/
         clearTimeout(doit);
         doit = null
       }, 1000);

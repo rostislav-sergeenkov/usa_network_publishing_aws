@@ -508,39 +508,40 @@
         $(this).removeClass('hover');
       });
 
-
-      window.onpopstate = function(event) {
-        if(window.history.state == null) {
-          return false;
-        }
-        usa_debug('window.onpopstate()');
-        var section_num = null,
+      window.onpopstate = function() {
+        window.onpopstate = function(event) {
+          if(window.history.state == null) {
+            return false;
+          }
+          usa_debug('window.onpopstate()');
+          var section_num = null,
             section = null,
             splited = null;
 
-        if (event.state != null) {
-          splited = event.state.state.split('/');
+          if (event.state != null) {
+            splited = event.state.state.split('/');
 
-          if (splited[1] == 'dig') {
-            section_num = $('#left-nav-links-list [data-menuanchor=' + splited[2] + ']').find('a').attr('data-menuitem');
-            section = splited[2];
-            if (section_num == undefined) {
-              section_num = 1;
-              section = 'home';
+            if (splited[1] == 'dig') {
+              section_num = $('#left-nav-links-list [data-menuanchor=' + splited[2] + ']').find('a').attr('data-menuitem');
+              section = splited[2];
+              if (section_num == undefined) {
+                section_num = 1;
+                section = 'home';
+              }
             }
           }
-        }
-        else {
-          section_num = 1;
-          section = 'home';
-        }
-        if (section_num == 1) {
-          logoAnim(false);
-        }
-        else {
-          logoAnim(true);
-        }
-        sectionScroll(section);
+          else {
+            section_num = 1;
+            section = 'home';
+          }
+          if (section_num == 1) {
+            logoAnim(false);
+          }
+          else {
+            logoAnim(true);
+          }
+          sectionScroll(section);
+        };
       };
 
       // initialize next button click

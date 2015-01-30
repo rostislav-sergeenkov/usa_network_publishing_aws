@@ -89,11 +89,96 @@
     // set video player on click thumbnail
     micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl){
 
-      var Player = $('#video-container #pdk-player'),
+      var Player = $('#video-container iframe'),
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId,
-        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid=55216&mbr=true#playerurl=http%3A%2F%2Fusanetwork.local.usanetwork.com%2Fdig%2Fvideos%2F' + dataVideoUrl
+        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid=55216&mbr=true#playerurl=http%3A%2F%2Fusanetwork.local.usanetwork.com%2Fdig%2Fvideos%2F' + dataVideoUrl;
+
+      Player.attr('id', dataVideoUrl);
+
+      $pdk.bind(dataVideoUrl);
 
       Player.attr('src', src);
+
+      $pdk.controller.addEventListener("companion_ad", function(e) {
+        $pdk.handle_companionAd(e);
+      });
+
+      $pdk.handle_companionAd = function (e) {
+        console.info('cust_companionAd event fired');
+        //var targetId   = 'ad_300x250_1',
+        var targetId   = e.data.holderId,
+          targetElem = document.getElementById(targetId);
+
+        if (targetElem) {
+          // override FW default ad tag as it's not the correct format and we're not sure how to set this correctly
+          // e.g. http://ad.doubleclick.net/adj/nbcu.usa/mrm_default;sect=default;site=usa;!category=usa;!category=videoplayer;sz=300x250;pos=7;tile=7;ord=5182
+          var currentHtmlAdContent = e.data.message;
+
+          console.info(currentHtmlAdContent);
+          var tabletSuffix = '';
+          if (typeof usa_deviceInfo !== 'undefined') {
+            if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
+              if (Drupal.settings.USA.DART.values.sub != '') {
+                tabletSuffix = '_tablet';
+              } else {
+                tabletSuffix = 'tablet';
+              }
+            }
+          }
+
+          currentHtmlAdContent = currentHtmlAdContent.replace('mrm_default', (Drupal.settings.USA.DART.values.sect + '_' + Drupal.settings.USA.DART.values.sub + tabletSuffix));
+          currentHtmlAdContent = currentHtmlAdContent.replace('sect=default', ('sect=' + Drupal.settings.USA.DART.values.sect + ';sub=' + Drupal.settings.USA.DART.values.sub));
+
+          // Temporary commented
+          //$(targetElem).html(currentHtmlAdContent);
+
+          ////Temporary fix begin
+          if (tabletSuffix != '') {
+            // tablet detected
+            // create iframe object
+            var companionIframe = document.createElement('iframe');
+
+            // set width and height based on targetId
+            if (~targetId.indexOf('728')) {
+              companionIframe.width = '728';
+              companionIframe.height = '90';
+            }
+
+            if (~targetId.indexOf('300')) {
+              companionIframe.width = '300';
+              companionIframe.height = '250';
+            }
+
+            // set frameborder attribute to prevent iframe border
+            var attr1 = document.createAttribute("frameborder");
+            attr1.value="0";
+            companionIframe.setAttributeNode(attr1);
+
+            // set scrolling attribute to prevent iframe scrolling
+            var attr2 = document.createAttribute("scrolling");
+            attr2.value="no";
+            companionIframe.setAttributeNode(attr2);
+
+            // place the iframe inside the target dom element
+            $(targetElem).html(companionIframe);
+
+            // open the iframe document
+            companionIframe.contentWindow.document.open();
+
+            // format end script tag in document.write that is returned from FW to prevent premature EOF
+            currentHtmlAdContent = currentHtmlAdContent.replace(/<\\\/script>/, '<\/sc\'+\'ript>');
+
+            // write the HTML to the iframe
+            companionIframe.contentWindow.document.write(currentHtmlAdContent);
+
+            // close the iframe document
+            companionIframe.contentWindow.document.close();
+          } else {
+            $(targetElem).html(currentHtmlAdContent);
+          }
+
+        }
+      };
 
       //$pdk.controller.setReleaseURL(videoUrl, true);
       //$pdk.controller.setVolume(74);

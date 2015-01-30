@@ -418,8 +418,6 @@
 
           Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
 
-          changeUrl(anchor, anchorFull);
-
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
           setOmnitureData(anchor, itemTitle);
 
@@ -455,7 +453,7 @@
           $('#left-nav').addClass('stop');
         }
 
-        var anchor = $(this).parent().attr('data-menuanchor');
+        var anchor = $(this).parent().attr('data-menuanchor'),
             anchorFull = basePath + '/' + anchor;
 
         // if this is IE9, reload the correct page
@@ -473,6 +471,7 @@
         }
 */
         stopVideo();
+        changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
       });
 
@@ -707,6 +706,9 @@
 
 
       $(window).load(function(){
+        // Turn off the popstate/hashchange tve-core.js event listeners
+        $(window).off('popstate');
+        $(window).off('hashchange');
 
         $('#tv-show-menu .internal a.scroll-link').click(function(e) {
           e.preventDefault();

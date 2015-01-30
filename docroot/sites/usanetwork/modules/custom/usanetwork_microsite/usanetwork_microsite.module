@@ -1155,11 +1155,11 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           $omniture_prop3 = 'Home';
           break;
         case 'videos':
-          $omniture_prop3 = 'Videos';
+          $omniture_prop3 = 'Video';
           if(isset($args[4])) {
             $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
             if(isset($video_file) && !empty($video_file->filename)) {
-              $omniture_prop5 = t('!entity_title : Videos : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
+              $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
               $omniture_pagename = $omniture_prop5;
             }
           }

@@ -1729,6 +1729,12 @@ and (max-device-width : 568px) {
   width: 300px;
   min-height: 50px;
 }
+#microsite .ad300x250,
+#microsite .right-pane .ad300x250 {
+  width: 0;
+  height: 0;
+  margin: 0;
+}
 }
 
 

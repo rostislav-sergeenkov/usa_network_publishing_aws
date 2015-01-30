@@ -87,21 +87,24 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId){
+    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl){
 
       var Player = $('#video-container #pdk-player'),
-        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId;
+        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId,
+        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid=55216&mbr=true#playerurl=http%3A%2F%2Fusanetwork.local.usanetwork.com%2Fdig%2Fvideos%2F' + dataVideoUrl
 
-      $pdk.controller.setReleaseURL(videoUrl, true);
-      $pdk.controller.setVolume(74);
+      Player.attr('src', src);
 
-      $pdk.controller.addEventListener('OnMediaStart', function(){
-        $pdk.controller.setVolume(75);
-        if(!$pdk.controller.clickPlayButton(true)){
-          $pdk.controller.clickPlayButton(true);
-          $pdk.controller.pause(false);
-        }
-      });
+      //$pdk.controller.setReleaseURL(videoUrl, true);
+      //$pdk.controller.setVolume(74);
+			//
+      //$pdk.controller.addEventListener('OnMediaStart', function(){
+      //  $pdk.controller.setVolume(75);
+      //  if(!$pdk.controller.clickPlayButton(true)){
+      //    $pdk.controller.clickPlayButton(true);
+      //    $pdk.controller.pause(false);
+      //  }
+      //});
 
     },
 
@@ -531,7 +534,7 @@
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId);
+        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
         Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
@@ -592,7 +595,7 @@
 
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId);
+            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
           }

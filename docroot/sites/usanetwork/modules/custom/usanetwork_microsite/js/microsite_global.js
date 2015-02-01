@@ -210,9 +210,12 @@
 
     //scroll to top
     micrositeScrollToTop : function scrollToTop(){
-      var container = $('sections'),
-        activeSection = container.find('.section.active');
+//      var container = $('sections'),
+//        activeSection = container.find('.section.active');
 //      activeSection.mCustomScrollbar('scrollTo',['top',null]);
+      $('.section.active').animate({
+        scrollTop: 0
+      }, 2000);
     },
 
     //Usa_refreshMicrositeAdsBySection.

@@ -210,9 +210,12 @@
 
     //scroll to top
     micrositeScrollToTop : function scrollToTop(){
-      var container = $('sections'),
-        activeSection = container.find('.section.active');
-      activeSection.mCustomScrollbar('scrollTo',['top',null]);
+//      var container = $('sections'),
+//        activeSection = container.find('.section.active');
+//      activeSection.mCustomScrollbar('scrollTo',['top',null]);
+      $('.section.active').animate({
+        scrollTop: 0
+      }, 2000);
     },
 
     //Usa_refreshMicrositeAdsBySection.
@@ -573,6 +576,8 @@
           $('#microsite section').css('min-height', msHeight + 'px');
 
           if ($(this).attr('id') == 'home') {
+                  logoAnimHome(this);
+/*
             $(this).mCustomScrollbar({
               theme: "3d",
               scrollInertia: 0,
@@ -588,6 +593,7 @@
               theme: "3d",
               scrollInertia: 0
             });
+*/
           }
         });
       }

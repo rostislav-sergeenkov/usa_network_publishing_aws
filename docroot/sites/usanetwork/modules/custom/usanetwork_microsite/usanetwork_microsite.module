@@ -2,6 +2,7 @@
 
 define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
+define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -185,6 +186,8 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 }
 
 /**
+ * @todo I think this function and relate callback can delete.
+ *
  * Microsite page rendering ajax callback.
  */
 function usanetwork_microsite_page_ajax_callback($microsite_node, $page_name) {
@@ -521,13 +524,19 @@ function _usanetwork_microsite_render_page_games($section_wrapper) {
 /**
  * Provides suggested video url path value
  */
-function _usanetwork_microsite_get_suggested_video_url($video_filename) {
+function _usanetwork_microsite_get_suggested_video_url($video_file) {
   // make filename lowercase and remove any extra space from the beginning and end
-  $video_filename = strtolower(trim($video_filename));
+  $video_filename = strtolower(trim($video_file->filename));
   // remove any characters that are not letters, numbers or whitespace
   $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
   // replace spaces with '-'
   $suggested_url = str_replace(' ', '-', $suggested_url);
+  $file_wrapper = entity_metadata_wrapper('file', $video_file);
+  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  if($full_episode) {
+    return USANETWORK_MICROSITE_FULL_VIDEO_PREFIX . $suggested_url;
+  }
+
   return USANETWORK_MICROSITE_VIDEO_PREFIX . $suggested_url;
 }
 
@@ -537,7 +546,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_filename) {
 function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
-
+  $rendered_player = '';
   if (!empty($section_object->field_ms_videos)) {
     $video_files = $section_wrapper->field_ms_videos->value();
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
@@ -548,9 +557,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $show_in_player = 0;
     $video_for_player = (arg(4) !== null) ? arg(4) : null; // gets name of video from url, if present
     foreach ($video_files as $v_key => $current_video_file) {
-      $filename = !empty($current_video_file->filename) ? $current_video_file->filename : NULL;
       $published = !empty($current_video_file->published) ? $current_video_file->published : NULL;
-      $suggested_video_url = !empty($filename) ? _usanetwork_microsite_get_suggested_video_url($filename) : '';
+      $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($current_video_file);
       // if there's a video listed in the url, set it as the video to show in the player
       if (!empty($video_for_player) && $video_for_player == $suggested_video_url) {
         $show_in_player = $v_key;
@@ -574,18 +582,31 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    if($full_episode) {
+      $rendered_player = theme('pub_mpx_video', array(
+        'file' => $file,
+        'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
+        'player_id' => 'microsite_vod_noauth_endcard',
+      ));
+    }
+    else {
+      $rendered_player = theme('pub_mpx_video', array(
+        'file' => $file,
+        'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
+        'player_id' => 'microsites_usa_player_endcard',
+      ));
+    }
+
     $theme_variables['in_player'] = array(
       'url' => !empty($file->filename)
-        ? _usanetwork_microsite_get_suggested_video_url($file->filename)
+        ? _usanetwork_microsite_get_suggested_video_url($file)
         : NULL,
 //      'rendered_test' => !empty($file->fid)
 //        ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
 //        : NULL,
-      'rendered' => theme('pub_mpx_video', array(
-            'file' => $file,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
-            'player_id' => 'microsites_usa_player_endcard',
-          )),
+      'rendered' => $rendered_player,
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
     $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
@@ -661,13 +682,20 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
 function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = TRUE) {
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
-  if ($clean_url) {
-    $prefix = USANETWORK_MICROSITE_VIDEO_PREFIX;
-  } else {
-    $prefix = '';
-  }
   foreach($files as $file) {
-    if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file->filename)) {
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    if ($clean_url) {
+      if($full_episode) {
+        $prefix = USANETWORK_MICROSITE_FULL_VIDEO_PREFIX;
+      }
+      else {
+        $prefix = USANETWORK_MICROSITE_VIDEO_PREFIX;
+      }
+    } else {
+      $prefix = '';
+    }
+    if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file)) {
       return $file;
     }
   }
@@ -1126,7 +1154,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
   if ($files) {
     foreach ($files as $related_file) {
       if($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
-        $url_param = _usanetwork_microsite_get_suggested_video_url($related_file->filename);
+        $url_param = _usanetwork_microsite_get_suggested_video_url($related_file);
         $item = array(
           'fid' => $related_file->fid,
           'guid' => $related_file->mpx_video_data['guid'],

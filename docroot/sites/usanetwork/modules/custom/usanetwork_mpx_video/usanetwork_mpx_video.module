@@ -227,6 +227,8 @@ function _usanetwork_mpx_video_get_current_terms($terms){
       ->fields('fm', array('fid'))
         ->condition('type', _usanetwork_mpx_video_get_all_file_types(), 'IN')
         ->condition('published', '1');
+    $query->leftJoin('mpx_video', 'mv', 'fm.fid = mv.fid');
+    $query->condition('mv.status', '1');
     $query->leftJoin('field_data_field_usa_video_terms','fdfuvt','%alias.entity_id = fm.fid');
     $query->condition('fdfuvt.field_usa_video_terms_target_id', $term_check->tid);
     $query_result = $query->execute()->fetchAll();
@@ -346,23 +348,23 @@ function usanetwork_mpx_video_show_nav() {
           $items[$i] = array('data' => '<span>more</span>', 'class' => array('more'));
         }
         if ($i >= 4) {
-          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term1->name))), array('html' => true)), 'class' => $class);
+          $items[4]['children'][$i-4] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term1->name))), array('html' => true)), 'class' => $class);
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term2->name))), array('html' => true)), 'class' => $class);
+            $items[4]['children'][$i-4]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term2->name))), array('html' => true)), 'class' => $class);
           }
         } else {
-          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term1->name))), array('html' => true)), 'class' => $class);
+          $items[$i] = array('data' => l('<span>'.$term1->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term1->name))), array('html' => true)), 'class' => $class);
           $first = true;
           foreach ($terms1 as $term2) {
             if ($tid == $term2->tid || in_array($term2->tid, $active_tids)) {
               $class[] = 'active';
             }
             $class = array(str_replace(' ', '-', strtolower($term2->name)));
-            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '-', strtolower($term2->name))), array('html' => true)), 'class' => $class);
+            $items[$i]['children'][] = array('data' => l('<span>'.$term2->name.'</span>', drupal_get_path_alias('node/'.$file->field_show[$lang][0]['target_id'].'/video-categories/' . str_replace(' ', '_', strtolower($term2->name))), array('html' => true)), 'class' => $class);
             if ($first) {
               $first = false;
               $items[$i]['class'][] = 'more';

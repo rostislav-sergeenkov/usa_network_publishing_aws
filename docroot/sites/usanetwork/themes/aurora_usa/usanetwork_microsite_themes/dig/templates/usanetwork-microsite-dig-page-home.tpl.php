@@ -22,11 +22,14 @@
             <div class="pane-content">
               <ul>
                 <?php foreach ($aspots as $aspot): ?>
-                  <?php if($aspot['a_spot_with_intro']): ?>
-                    <li class="aspot-trailer" data-fid="<?php print $aspot['fid']; ?>" data-video-url="<?php print $aspot['video_param']; ?>">
-                  <?php else: ?>
-                    <li data-fid="<?php print $aspot['fid']; ?>" data-video-url="<?php print $aspot['video_param']; ?>">
-                  <?php endif; ?>
+                  <li
+                    <?php if($aspot['a_spot_with_intro']): ?>
+                      class="aspot-trailer"
+                    <?php endif; ?>
+                    data-fid="<?php print $aspot['fid']; ?>"
+                    data-video-url="<?php print $aspot['video_param']; ?>"
+                    data-account-id="<?php print $aspot['account_id']; ?>"
+                    data-player-id="<?php print $aspot['player_id']; ?>">
                     <?php print $aspot['rendered_item']; ?>
                   </li>
                 <?php endforeach; ?>
@@ -37,6 +40,7 @@
         </div>
       </div>
       <?php endif; ?>
+
       <?php if (!empty($featured)): ?>
       <div class="usa-microsite-featured clearfix">
         <div class="carousel clearfix">
@@ -44,9 +48,9 @@
             <div class="microsite-carousel">
               <ul class="slides">
                 <?php foreach ($featured as $f_key => $feature): ?>
-                  <?php if ($f_key == 1): ?>
+                  <?php /* if ($f_key == 1): ?>
                     <li class="ad ad300x250 dart-tag dart-name-300x250_ifr_reload_home carousel-item"></li>
-                  <?php endif; ?>
+                  <?php endif; */ ?>
                   <li class="carousel-item">
                     <?php print $feature; ?>
                   </li>

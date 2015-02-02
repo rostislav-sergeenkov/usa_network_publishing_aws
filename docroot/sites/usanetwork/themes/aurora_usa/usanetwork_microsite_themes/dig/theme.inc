@@ -93,18 +93,16 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'in_player' => NULL,
       ),
     ),
-    'usanetwork_microsite_dig_videos_player' => array(
-      'template' => 'usanetwork-microsite-dig-videos-player',
+    'usanetwork_microsite_dig_video_desc' => array(
+      'template' => 'usanetwork-microsite-dig-video-desc',
       'path' => $subtheme_path,
       'variables' => array(
-        'in_player' => array(
-          'url' => NULL,
+        'video_desc' => array(
           'title' => NULL,
           'description' => NULL,
           'airdate' => NULL,
           'season_number' => NULL,
           'episode_number' => NULL,
-          'rendered' => NULL,
           'duration' => NULL,
         ),
       ),
@@ -123,16 +121,18 @@ function usanetwork_microsite_dig_get_theme_includes() {
 
   return array(
     'js' => array(
-        'http://pdk.theplatform.com/pdk/tpPdkController.js',
+        'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
+        //'http://pdk.theplatform.com/pdk/tpPdkController.js',
 //      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
-      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
+//      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
+//      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.mCustomScrollbar.concat.min.js',
-      $theme_path . '/javascripts/jquery.touchSwipe.min.js',
+//      $theme_path . '/javascripts/jquery.touchSwipe.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
+      $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',

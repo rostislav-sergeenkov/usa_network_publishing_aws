@@ -492,8 +492,12 @@ function usanetwork_showpages_video_cats($node) {
   */
   // add the basic logic for finding terms
   $termname = arg(3);
-  $term_from_path = str_replace('-', ' ' , arg(3));
+  $term_from_path = str_replace('_', ' ' , arg(3));
   $terms = taxonomy_get_term_by_name($term_from_path);
+  if (empty($terms)) {
+    $term_from_path = str_replace('-', ' ' , arg(3));
+    $terms = taxonomy_get_term_by_name($term_from_path);
+  }
   // if no terms resolve go to the main show video page
   // if full episodes is entered as the arg
   // go to the main show video page

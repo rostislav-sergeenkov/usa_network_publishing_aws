@@ -531,8 +531,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
   $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
   // replace spaces with '-'
   $suggested_url = str_replace(' ', '-', $suggested_url);
-  $file_wrapper = entity_metadata_wrapper('file', $video_file);
-  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  $full_episode = _usanetwork_microsite_define_full_episode($video_file);
   if($full_episode) {
     return USANETWORK_MICROSITE_FULL_VIDEO_PREFIX . $suggested_url;
   }
@@ -565,6 +564,11 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       }
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
+      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $is_full_episode = 'no';
+      if($full_episode) {
+        $is_full_episode = 'yes';
+      }
       if ($published) {
         $theme_variables['videos'][] = array(
           'fid' => $current_video_file->fid,
@@ -572,6 +576,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
           'account_id' => $account_id,
           'player_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+          'is_full_episode' => $is_full_episode,
         );
       }
     }
@@ -582,8 +587,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
-    $file_wrapper = entity_metadata_wrapper('file', $file);
-    $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    $full_episode = _usanetwork_microsite_define_full_episode($file);
     if($full_episode) {
       $rendered_player = theme('pub_mpx_video', array(
         'file' => $file,
@@ -683,8 +687,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   foreach($files as $file) {
-    $file_wrapper = entity_metadata_wrapper('file', $file);
-    $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    $full_episode = _usanetwork_microsite_define_full_episode($file);
     if ($clean_url) {
       if($full_episode) {
         $prefix = USANETWORK_MICROSITE_FULL_VIDEO_PREFIX;
@@ -1297,4 +1300,16 @@ function _usanetwork_microsite_validate_section($microsite_node) {
       drupal_not_found();
     }
   }
+}
+
+/**
+ * Define full episode or not.
+ */
+function _usanetwork_microsite_define_full_episode($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  if($full_episode == 1) {
+    return TRUE;
+  }
+  return FALSE;
 }

@@ -484,7 +484,7 @@
           $('#left-nav-inner').animate({'top': '0'}, 400);
           $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
         }
-        else{
+        else {
           $('#left-nav-inner').animate({'top': '-130px'}, 400);
           $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
         }
@@ -637,7 +637,8 @@
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct microsite item without a page reload
-        if (anchorPathParts[0] == 'dig') {
+        if (anchorPathParts[0] == 'dig'
+          && anchorFull != window.location.protocol + '//' + window.location.hostname + '/dig/videos/the-making-of-dig') {
           e.preventDefault();
 
           // if this is IE9, reload the correct page

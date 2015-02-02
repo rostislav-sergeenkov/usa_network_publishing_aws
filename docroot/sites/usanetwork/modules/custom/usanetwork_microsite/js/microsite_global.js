@@ -94,7 +94,7 @@
 
       var Player = $('#video-container iframe'),
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId,
-        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=http%3A%2F%2Fusanetwork.local.usanetwork.com%2Fdig%2Fvideos%2F' + dataVideoUrl;
+        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
 
       Player.attr('id', dataVideoUrl);
 

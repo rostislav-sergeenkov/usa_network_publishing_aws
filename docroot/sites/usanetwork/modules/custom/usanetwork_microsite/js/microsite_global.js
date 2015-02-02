@@ -215,7 +215,7 @@
 //      activeSection.mCustomScrollbar('scrollTo',['top',null]);
       $('.section.active').animate({
         scrollTop: 0
-      }, 0);
+      }, 2000);
     },
 
     //Usa_refreshMicrositeAdsBySection.
@@ -421,8 +421,6 @@
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function(){
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
-
-          Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
 
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
           setOmnitureData(anchor, itemTitle);

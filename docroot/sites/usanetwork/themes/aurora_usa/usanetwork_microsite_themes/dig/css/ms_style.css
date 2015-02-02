@@ -1085,6 +1085,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
+  display: block;
   outline: none;
   opacity: 1;
 }
@@ -1214,7 +1215,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px!important;
-    height: 563px!important;
+    height: 559px!important;
   }
   #microsite .block-usanetwork-mpx-video {
     width: 1050px;
@@ -1645,7 +1646,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
     width: 29px;
   }
-  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title {
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title,
+  #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption {
     padding-left: 35px;
   }
   #microsite section .microsite-section-container .right-pane {
@@ -1708,6 +1710,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #left-nav {
     font-size: 16px;
     top: 5px;
+  }
+}
+@media (max-height: 700px) {
+  .page-node-microsite #left-nav #left-nav-inner{
+    -webkit-transition: top 0.5s ease-out 0s;
+    -moz-transition: top 0.5s ease-out 0s;
+    -o-transition: top 0.5s ease-out 0s;
+    transition: top 0.5s ease-out 0s;
   }
 }
 

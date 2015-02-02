@@ -368,6 +368,7 @@ function usanetwork_microsite_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'mpx_video_1' => 'mpx_video_1',
+          'mpx_video_2' => 'mpx_video_2',
         ),
       ),
       'target_type' => 'file',

@@ -469,14 +469,6 @@
           return false;
         }
 
-/*
-        if ($(this).attr('data-menuitem') == 1) {
-          logoAnim(false);
-        }
-        else {
-          logoAnim(true);
-        }
-*/
         stopVideo();
         changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
@@ -538,12 +530,6 @@
             section_num = 1;
             section = 'home';
           }
-          if (section_num == 1) {
-            logoAnim(false);
-          }
-          else {
-            logoAnim(true);
-          }
           sectionScroll(section);
         };
       };
@@ -553,12 +539,11 @@
 
         stopVideo();
 
-        if($('#sections .section').eq(0).hasClass('active')){
-          logoAnim(true);
-        }
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
           nextSection = thisSection++,
-          nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
+          nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor'),
+            anchorFull = basePath + '/' + nextSectionNavElem;
+        changeUrl(nextSectionNavElem, anchorFull);
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
@@ -678,13 +663,15 @@
               itemTitle = activeVideoItem.find('.title').text(),
               anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
+            changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
             Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
-
           }
           else if (anchor == 'galleries') {
+            var anchorFull = basePath + '/' + anchor;
+            changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item);
           }
         }
@@ -731,15 +718,11 @@
             $('#left-nav').addClass('stop');
           }
 
-          var anchor = $(this).parent().attr('data-menuanchor');
+          var anchor = $(this).parent().attr('data-menuanchor'),
+            anchorFull = basePath + '/' + anchor;
 
-          if ($(this).attr('data-menuitem') == 1) {
-            logoAnim(false);
-          }
-          else {
-            logoAnim(true);
-          }
           $('#main-menu-toggle').click();
+          changeUrl(anchor, anchorFull);
           sectionScroll(anchor);
         });
       });

@@ -94,7 +94,7 @@
 
       var Player = $('#video-container iframe'),
         videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId,
-        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=http%3A%2F%2Fusanetwork.local.usanetwork.com%2Fdig%2Fvideos%2F' + dataVideoUrl;
+        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
 
       Player.attr('id', dataVideoUrl);
 
@@ -422,8 +422,6 @@
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 
-          Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
-
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
           setOmnitureData(anchor, itemTitle);
 
@@ -436,6 +434,9 @@
         $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'jswing', function(){
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
+          $(this).animate({
+            scrollTop: 0
+          }, 0);
         });
       };
 
@@ -468,14 +469,6 @@
           return false;
         }
 
-/*
-        if ($(this).attr('data-menuitem') == 1) {
-          logoAnim(false);
-        }
-        else {
-          logoAnim(true);
-        }
-*/
         stopVideo();
         changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
@@ -537,12 +530,6 @@
             section_num = 1;
             section = 'home';
           }
-          if (section_num == 1) {
-            logoAnim(false);
-          }
-          else {
-            logoAnim(true);
-          }
           sectionScroll(section);
         };
       };
@@ -552,12 +539,11 @@
 
         stopVideo();
 
-        if($('#sections .section').eq(0).hasClass('active')){
-          logoAnim(true);
-        }
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
           nextSection = thisSection++,
-          nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor');
+          nextSectionNavElem = $('#left-nav li').eq(nextSection).attr('data-menuanchor'),
+            anchorFull = basePath + '/' + nextSectionNavElem;
+        changeUrl(nextSectionNavElem, anchorFull);
         sectionScroll(nextSectionNavElem);
       });
       // end one page scroll//
@@ -575,41 +561,10 @@
           // we want the section to fill the height of the page
           $('#microsite section').css('min-height', msHeight + 'px');
 
-          if ($(this).attr('id') == 'home') {
-                  logoAnimHome(this);
-/*
-            $(this).mCustomScrollbar({
-              theme: "3d",
-              scrollInertia: 0,
-              callbacks: {
-                onScroll: function () {
-                  logoAnimHome(this);
-                }
-              }
-            });
-          }
-          else {
-            $(this).mCustomScrollbar({
-              theme: "3d",
-              scrollInertia: 0
-            });
-*/
-          }
         });
       }
      // setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
       setSectionHeight();
-
-      function logoAnimHome(e){
-        if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(e).hasClass('active')) {
-          if (e.mcs.top < -scrollTopForLogoAnim){
-            logoAnim(true);
-          }
-          else {
-            logoAnim(false);
-          }
-        }
-      }
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -708,13 +663,15 @@
               itemTitle = activeVideoItem.find('.title').text(),
               anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
+            changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
             Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
-
           }
           else if (anchor == 'galleries') {
+            var anchorFull = basePath + '/' + anchor;
+            changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item);
           }
         }
@@ -735,6 +692,18 @@
         Drupal.behaviors.microsite_carousel.initCarousel();
       });
 
+      $('.section').on("scroll", function() {
+        if ($(this).attr('id') == 'home') {
+          if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
+            if ($(this).scrollTop() > scrollTopForLogoAnim){
+              logoAnim(true);
+            }
+            else {
+              logoAnim(false);
+            }
+          }
+        }
+      });
 
       $(window).load(function(){
         // Turn off the popstate/hashchange tve-core.js event listeners
@@ -749,15 +718,11 @@
             $('#left-nav').addClass('stop');
           }
 
-          var anchor = $(this).parent().attr('data-menuanchor');
+          var anchor = $(this).parent().attr('data-menuanchor'),
+            anchorFull = basePath + '/' + anchor;
 
-          if ($(this).attr('data-menuitem') == 1) {
-            logoAnim(false);
-          }
-          else {
-            logoAnim(true);
-          }
           $('#main-menu-toggle').click();
+          changeUrl(anchor, anchorFull);
           sectionScroll(anchor);
         });
       });

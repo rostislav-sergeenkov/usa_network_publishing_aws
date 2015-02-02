@@ -772,6 +772,15 @@ function _usanetwork_microsite_get_theme_variables($node) {
   $theme_variables = _usanetwork_microsite_theme_get_base_variables($node_wrapper);
   $navigation_links = array();
 
+  // Add metatags with metatag module.
+  $instance = "{node}:{usanetwork_microsite}";
+  $options = array(
+    'entity' => $node,
+    'entity_type' => 'node',
+    'view_mode' => 'full',
+  );
+  $output = metatag_metatags_view($instance, $node->metatags, $options);
+  metatag_page_set_metatags($instance, $output);
   // Detect sections availability
   if (!empty($node->field_ms_section)) {
     $pages = array();

@@ -1085,6 +1085,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
+  display: block;
   outline: none;
   opacity: 1;
 }

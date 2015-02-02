@@ -215,7 +215,7 @@
 //      activeSection.mCustomScrollbar('scrollTo',['top',null]);
       $('.section.active').animate({
         scrollTop: 0
-      }, 2000);
+      }, 0);
     },
 
     //Usa_refreshMicrositeAdsBySection.
@@ -436,6 +436,9 @@
         $('.section-info.active').animate({'top' : otherDirection + Math.ceil(sectionHeight/2) + 'px'}, 1000, 'jswing', function(){
           $('.section-info').css({'top': '0'});
           $('#left-nav').removeClass('stop');
+          $(this).animate({
+            scrollTop: 0
+          }, 0);
         });
       };
 
@@ -575,41 +578,10 @@
           // we want the section to fill the height of the page
           $('#microsite section').css('min-height', msHeight + 'px');
 
-          if ($(this).attr('id') == 'home') {
-                  logoAnimHome(this);
-/*
-            $(this).mCustomScrollbar({
-              theme: "3d",
-              scrollInertia: 0,
-              callbacks: {
-                onScroll: function () {
-                  logoAnimHome(this);
-                }
-              }
-            });
-          }
-          else {
-            $(this).mCustomScrollbar({
-              theme: "3d",
-              scrollInertia: 0
-            });
-*/
-          }
         });
       }
      // setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
       setSectionHeight();
-
-      function logoAnimHome(e){
-        if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(e).hasClass('active')) {
-          if (e.mcs.top < -scrollTopForLogoAnim){
-            logoAnim(true);
-          }
-          else {
-            logoAnim(false);
-          }
-        }
-      }
 
       //============ AJAX request for video section ===============//
       // ajax/get-video-in-player/[node] - for default video
@@ -735,6 +707,18 @@
         Drupal.behaviors.microsite_carousel.initCarousel();
       });
 
+      $('.section').on("scroll", function() {
+        if ($(this).attr('id') == 'home') {
+          if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
+            if ($(this).scrollTop() > scrollTopForLogoAnim){
+              logoAnim(true);
+            }
+            else {
+              logoAnim(false);
+            }
+          }
+        }
+      });
 
       $(window).load(function(){
         // Turn off the popstate/hashchange tve-core.js event listeners

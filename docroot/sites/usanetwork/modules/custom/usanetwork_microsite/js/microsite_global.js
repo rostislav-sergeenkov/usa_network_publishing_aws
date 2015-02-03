@@ -552,14 +552,8 @@
       function setSectionHeight() {
         $('.section').each(function () {
 
-          // #microsite has already had the height of the bottom nav bar
-          // #mega-nav removed, so we don't need to remove it again
-          var msHeight = $('#microsite').innerHeight();
+          var msHeight = $(window).height() - $('#mega-nav').height();
           $(this).height(msHeight);
-
-          // force the section height to be equal to the #microsite height
-          // we want the section to fill the height of the page
-          $('#microsite section').css('min-height', msHeight + 'px');
 
         });
       }

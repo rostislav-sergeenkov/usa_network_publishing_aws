@@ -90,11 +90,11 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl){
+    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId){
 
       var Player = $('#video-container iframe'),
         currentId = Player.attr('id'),
-        src = '//player.theplatform.com/p/' + dataAccountId + '/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
+        src = '//player.theplatform.com/p/' + dataAccountId + '/' + dataPlayerId + '/select/' + dataVideoId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
 
       Player.attr('id', dataVideoUrl);
 
@@ -107,7 +107,9 @@
       $pdk.bindPlayerEvents(dataVideoUrl, currentId);
 
     },
-
+    micrositeInitVideoPlayer : function(){
+      $pdk.bindPlayerEvents();
+    },
     // set initial active video thumbnail
     micrositeSetInitialActiveVideoThumbnail : function setInitialActiveVideoThumbnail(){
       var urlPath = Drupal.behaviors.microsite_scroll.micrositeParseUrl(),
@@ -494,6 +496,7 @@
           dataAccountId = activeVideoItem.attr('data-account-id'),
           dataPlayerId = activeVideoItem.attr('data-player-id'),
           dataVideoUrl = activeVideoItem.attr('data-video-url'),
+            dataVideoId = activeVideoItem.attr('data-video-id'),
           dataFid = activeVideoItem.attr('data-fid'),
           url = defaultUrl + '/' + dataFid,
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
@@ -510,7 +513,7 @@
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
+        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
         Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
@@ -562,9 +565,10 @@
             $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]').addClass('active');
 
             var activeVideoItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
-              dataAccountId = activeVideoItem.attr('data-account-id'),
-              dataPlayerId = activeVideoItem.attr('data-player-id'),
-              dataVideoUrl = activeVideoItem.attr('data-video-url'),
+                dataAccountId = activeVideoItem.attr('data-account-id'),
+                dataPlayerId = activeVideoItem.attr('data-player-id'),
+                dataVideoUrl = activeVideoItem.attr('data-video-url'),
+                dataVideoId = activeVideoItem.attr('data-video-id'),
               dataFid = activeVideoItem.attr('data-fid'),
               url = defaultUrl + '/' + dataFid,
               itemTitle = activeVideoItem.find('.title').text(),
@@ -573,7 +577,7 @@
             changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
+            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
           }
           else if (anchor == 'galleries') {

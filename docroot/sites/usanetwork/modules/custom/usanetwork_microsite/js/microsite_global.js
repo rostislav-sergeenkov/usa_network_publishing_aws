@@ -90,112 +90,29 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl){
+    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId){
 
       var Player = $('#video-container iframe'),
-        videoUrl = 'http://link.theplatform.com/s/' + dataAccountId + '/' + dataPlayerId,
-        src = '//player.theplatform.com/p/OyMl-B/microsites_usa_player_endcard/select/' + dataPlayerId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
+        currentId = Player.attr('id'),
+        src = '//player.theplatform.com/p/' + dataAccountId + '/' + dataPlayerId + '/select/' + dataVideoId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
 
       Player.attr('id', dataVideoUrl);
 
-      $pdk.bind(dataVideoUrl);
-
       Player.attr('src', src);
 
-      $pdk.controller.addEventListener("companion_ad", function(e) {
-        $pdk.handle_companionAd(e);
-      });
+      for(key in $pdk.controller.listeners){
+        delete $pdk.controller.listeners[key];
+      }
 
-      $pdk.handle_companionAd = function (e) {
-        console.info('cust_companionAd event fired');
-        //var targetId   = 'ad_300x250_1',
-        var targetId   = e.data.holderId,
-          targetElem = document.getElementById(targetId);
-
-        if (targetElem) {
-          // override FW default ad tag as it's not the correct format and we're not sure how to set this correctly
-          // e.g. http://ad.doubleclick.net/adj/nbcu.usa/mrm_default;sect=default;site=usa;!category=usa;!category=videoplayer;sz=300x250;pos=7;tile=7;ord=5182
-          var currentHtmlAdContent = e.data.message;
-
-          console.info(currentHtmlAdContent);
-          var tabletSuffix = '';
-          if (typeof usa_deviceInfo !== 'undefined') {
-            if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
-              if (Drupal.settings.USA.DART.values.sub != '') {
-                tabletSuffix = '_tablet';
-              } else {
-                tabletSuffix = 'tablet';
-              }
-            }
-          }
-
-          currentHtmlAdContent = currentHtmlAdContent.replace('mrm_default', (Drupal.settings.USA.DART.values.sect + '_' + Drupal.settings.USA.DART.values.sub + tabletSuffix));
-          currentHtmlAdContent = currentHtmlAdContent.replace('sect=default', ('sect=' + Drupal.settings.USA.DART.values.sect + ';sub=' + Drupal.settings.USA.DART.values.sub));
-
-          // Temporary commented
-          //$(targetElem).html(currentHtmlAdContent);
-
-          ////Temporary fix begin
-          if (tabletSuffix != '') {
-            // tablet detected
-            // create iframe object
-            var companionIframe = document.createElement('iframe');
-
-            // set width and height based on targetId
-            if (~targetId.indexOf('728')) {
-              companionIframe.width = '728';
-              companionIframe.height = '90';
-            }
-
-            if (~targetId.indexOf('300')) {
-              companionIframe.width = '300';
-              companionIframe.height = '250';
-            }
-
-            // set frameborder attribute to prevent iframe border
-            var attr1 = document.createAttribute("frameborder");
-            attr1.value="0";
-            companionIframe.setAttributeNode(attr1);
-
-            // set scrolling attribute to prevent iframe scrolling
-            var attr2 = document.createAttribute("scrolling");
-            attr2.value="no";
-            companionIframe.setAttributeNode(attr2);
-
-            // place the iframe inside the target dom element
-            $(targetElem).html(companionIframe);
-
-            // open the iframe document
-            companionIframe.contentWindow.document.open();
-
-            // format end script tag in document.write that is returned from FW to prevent premature EOF
-            currentHtmlAdContent = currentHtmlAdContent.replace(/<\\\/script>/, '<\/sc\'+\'ript>');
-
-            // write the HTML to the iframe
-            companionIframe.contentWindow.document.write(currentHtmlAdContent);
-
-            // close the iframe document
-            companionIframe.contentWindow.document.close();
-          } else {
-            $(targetElem).html(currentHtmlAdContent);
-          }
-
-        }
-      };
-
-      //$pdk.controller.setReleaseURL(videoUrl, true);
-      //$pdk.controller.setVolume(74);
-			//
-      //$pdk.controller.addEventListener('OnMediaStart', function(){
-      //  $pdk.controller.setVolume(75);
-      //  if(!$pdk.controller.clickPlayButton(true)){
-      //    $pdk.controller.clickPlayButton(true);
-      //    $pdk.controller.pause(false);
-      //  }
-      //});
+      $pdk.bindPlayerEvents(dataVideoUrl, currentId);
 
     },
-
+    micrositeInitVideoPlayer : function(){
+      var Player = $('#video-container iframe'),
+        currentId = Player.attr('id');
+      alert(currentId);
+      $pdk.bindPlayerEvents(currentId);
+    },
     // set initial active video thumbnail
     micrositeSetInitialActiveVideoThumbnail : function setInitialActiveVideoThumbnail(){
       var urlPath = Drupal.behaviors.microsite_scroll.micrositeParseUrl(),
@@ -438,6 +355,7 @@
             scrollTop: 0
           }, 0);
         });
+
       };
 
       // init change url address
@@ -552,14 +470,8 @@
       function setSectionHeight() {
         $('.section').each(function () {
 
-          // #microsite has already had the height of the bottom nav bar
-          // #mega-nav removed, so we don't need to remove it again
-          var msHeight = $('#microsite').innerHeight();
+          var msHeight = $(window).height() - $('#mega-nav').height();
           $(this).height(msHeight);
-
-          // force the section height to be equal to the #microsite height
-          // we want the section to fill the height of the page
-          $('#microsite section').css('min-height', msHeight + 'px');
 
         });
       }
@@ -588,6 +500,7 @@
           dataAccountId = activeVideoItem.attr('data-account-id'),
           dataPlayerId = activeVideoItem.attr('data-player-id'),
           dataVideoUrl = activeVideoItem.attr('data-video-url'),
+          dataVideoId = activeVideoItem.attr('data-video-id'),
           dataFid = activeVideoItem.attr('data-fid'),
           url = defaultUrl + '/' + dataFid,
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
@@ -604,7 +517,7 @@
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
+        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
         Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
@@ -656,9 +569,10 @@
             $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]').addClass('active');
 
             var activeVideoItem = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
-              dataAccountId = activeVideoItem.attr('data-account-id'),
-              dataPlayerId = activeVideoItem.attr('data-player-id'),
-              dataVideoUrl = activeVideoItem.attr('data-video-url'),
+                dataAccountId = activeVideoItem.attr('data-account-id'),
+                dataPlayerId = activeVideoItem.attr('data-player-id'),
+                dataVideoUrl = activeVideoItem.attr('data-video-url'),
+                dataVideoId = activeVideoItem.attr('data-video-id'),
               dataFid = activeVideoItem.attr('data-fid'),
               url = defaultUrl + '/' + dataFid,
               itemTitle = activeVideoItem.find('.title').text(),
@@ -667,7 +581,7 @@
             changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl);
+            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
           }
           else if (anchor == 'galleries') {
@@ -691,6 +605,9 @@
         Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
+        //if($('#videos').hasClass('active')){
+        //  Drupal.behaviors.microsite_scroll.micrositeInitVideoPlayer();
+        //}
       });
 
       $('.section').on("scroll", function() {

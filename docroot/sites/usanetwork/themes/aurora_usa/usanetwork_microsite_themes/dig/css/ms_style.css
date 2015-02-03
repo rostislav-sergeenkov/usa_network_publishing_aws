@@ -296,6 +296,9 @@ you can use the generic selector below, but it's slower:
   text-align: left;
   font-size: 2.4em;
 }
+#microsite #characters h2 {
+  line-height: 0.9em;
+}
 #microsite .section {
   opacity: 0;
   display: block;
@@ -346,21 +349,29 @@ you can use the generic selector below, but it's slower:
 #microsite #about-content {
   background-image: url("../images/dig_bg_about.jpg");
 }
+#microsite #characters .microsite-section-container {
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
 #microsite #characters li {
   background-image: none;
-  background-position: center;
+  background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
 }
-#microsite #characters-content li#jason-isaacs {
+#microsite #characters-content li#todd-chrisley {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters-content li#emma-wilson {
+#microsite #characters-content li#lindsie-chrisley-campbell {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
 }
-#microsite #characters-content li#donna-vaughan {
+#microsite #characters-content li#chase-chrisley {
   background-image: url("../images/dig_bg_jasonisaacs.jpg");
+}
+#microsite #characters .microsite-characters-section-container {
+  margin: 0 17px 0 190px;
 }
 #microsite #galleries-content {
   background-image: url("../images/dig_bg_gallery.jpg");
@@ -485,7 +496,6 @@ you can use the generic selector below, but it's slower:
   position: relative;
   top: 0;
   left: 0;
-  float: left;
 }
 #microsite #characters .character-nav .prev,
 #microsite #characters .character-nav .next {
@@ -513,9 +523,9 @@ you can use the generic selector below, but it's slower:
 #microsite #characters .character-nav li .tooltip {
   display: none;
   position: absolute;
-  top: -80px;
-  left: -100px;
-  width: 200px;
+  bottom: 30px;
+  left: -160px;
+  width: 300px;
   height: 80px;
   text-align: center;
 }

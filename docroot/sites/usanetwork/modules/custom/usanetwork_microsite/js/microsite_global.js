@@ -518,7 +518,7 @@
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
-        //Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+        Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
           Drupal.behaviors.microsite_scroll.create728x90Ad();

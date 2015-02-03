@@ -546,8 +546,7 @@
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct microsite item without a page reload
-        if (anchorPathParts[0] == 'dig'
-          && anchorFull != window.location.protocol + '//' + window.location.hostname + '/dig/videos/the-making-of-dig') {
+        if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
 
           // if this is IE9, reload the correct page

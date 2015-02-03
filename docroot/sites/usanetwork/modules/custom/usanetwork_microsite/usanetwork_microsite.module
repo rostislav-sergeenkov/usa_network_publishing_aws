@@ -839,6 +839,11 @@ function _usanetwork_microsite_get_theme_variables($node) {
   return $theme_variables;
 }
 
+/**
+ * Render footer blocks and return them.
+ *
+ * @return string
+ */
 function _usanetwork_microsite_get_footer() {
   $block_links = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_links');
   $block_message = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_message');
@@ -1073,6 +1078,12 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
   return $items;
 }
 
+/**
+ * Parse url and get current video parameter.
+ *
+ * @param $url
+ * @return null
+ */
 function _usanetwork_microsite_get_video_parameter_by_url($url) {
   $parts = explode('videos/', $url);
   if(isset($parts[1])) {
@@ -1092,6 +1103,12 @@ function _usanetwork_microsite_theme_render_single_node_item($node_wrapper_field
   return drupal_render($node_view);
 }
 
+/**
+ * Get first node by node wrapper field.
+ *
+ * @param $node_wrapper_field
+ * @return array|mixed
+ */
 function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
   $node = $node_wrapper_field->value();
 

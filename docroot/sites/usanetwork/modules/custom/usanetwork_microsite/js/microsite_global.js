@@ -108,7 +108,10 @@
 
     },
     micrositeInitVideoPlayer : function(){
-      $pdk.bindPlayerEvents();
+      var Player = $('#video-container iframe'),
+        currentId = Player.attr('id');
+      alert(currentId);
+      $pdk.bindPlayerEvents(currentId);
     },
     // set initial active video thumbnail
     micrositeSetInitialActiveVideoThumbnail : function setInitialActiveVideoThumbnail(){
@@ -352,6 +355,7 @@
             scrollTop: 0
           }, 0);
         });
+
       };
 
       // init change url address
@@ -496,7 +500,7 @@
           dataAccountId = activeVideoItem.attr('data-account-id'),
           dataPlayerId = activeVideoItem.attr('data-player-id'),
           dataVideoUrl = activeVideoItem.attr('data-video-url'),
-            dataVideoId = activeVideoItem.attr('data-video-id'),
+          dataVideoId = activeVideoItem.attr('data-video-id'),
           dataFid = activeVideoItem.attr('data-fid'),
           url = defaultUrl + '/' + dataFid,
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
@@ -514,7 +518,7 @@
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
-        Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+        //Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
           Drupal.behaviors.microsite_scroll.create728x90Ad();
@@ -600,6 +604,9 @@
         Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
+        //if($('#videos').hasClass('active')){
+        //  Drupal.behaviors.microsite_scroll.micrositeInitVideoPlayer();
+        //}
       });
 
       $('.section').on("scroll", function() {

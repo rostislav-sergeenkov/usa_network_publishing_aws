@@ -39,7 +39,8 @@
                           data-video-url="<?php print $video['url']; ?>"
                           data-fid="<?php print $video['fid']; ?>"
                           data-account-id="<?php print $video['account_id']; ?>"
-                          data-player-id="<?php print $video['player_id']; ?>">
+                          data-player-id="<?php print $video['player_id']; ?>"
+                          data-full-episode="<?php print $video['is_full_episode']; ?>">
                         <?php print $video['rendered']; ?>
                       </li>
                     <?php endif; ?>

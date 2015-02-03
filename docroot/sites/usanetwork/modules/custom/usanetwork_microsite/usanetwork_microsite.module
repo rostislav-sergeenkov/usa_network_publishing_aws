@@ -3,6 +3,8 @@
 define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
+define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
+define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -581,9 +583,9 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
-      $is_full_episode = 'no';
+      $is_full_episode = 'false';
       if($full_episode) {
-        $is_full_episode = 'yes';
+        $is_full_episode = 'true';
       }
       if ($published) {
         $theme_variables['videos'][] = array(
@@ -591,7 +593,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'url' => $suggested_video_url,
           'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
           'account_id' => $account_id,
-          'player_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+          'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
           'is_full_episode' => $is_full_episode,
         );
       }
@@ -608,14 +611,14 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $rendered_player = theme('pub_mpx_video', array(
         'file' => $file,
         'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
-        'player_id' => 'microsite_vod_noauth_endcard',
+        'player_id' => USANETWORK_MICROSITE_NOAUTH_PLAYER,
       ));
     }
     else {
       $rendered_player = theme('pub_mpx_video', array(
         'file' => $file,
         'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
-        'player_id' => 'microsites_usa_player_endcard',
+        'player_id' => USANETWORK_MICROSITE_USA_PLAYER,
       ));
     }
 
@@ -1252,26 +1255,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       if (!empty($omniture_prop5)) {
         $omniture_variables['s.prop5'] = $omniture_prop5;
         $omniture_variables['s.pageName'] = $omniture_pagename;
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_node_view().
- * Remove usanetwork_gallery_content.js from microsite. Two remove double omniture click.
- * @TODO Should be removed after launch!
- */
-function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
-  if ($node->type == 'media_gallery') {
-    if ($view_mode == 'inline_content') {
-      $args = arg();
-      if ((isset($args[2])) && ($args[2] == 'microsite')) {
-        foreach ($node->content['#attached']['js'] as $key => $value) {
-          if (strpos($value, 'usanetwork_gallery_content.js') !== FALSE) {
-            unset($node->content['#attached']['js'][$key]);
-          }
-        }
       }
     }
   }

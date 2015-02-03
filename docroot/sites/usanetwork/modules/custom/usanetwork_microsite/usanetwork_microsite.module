@@ -113,8 +113,10 @@ function usanetwork_microsite_js_alter(&$javascript) {
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {
   if (!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
-    _usanetwork_microsite_validate_section($node);
 
+    if (_usanetwork_microsite_validate_section($node)) {
+      return drupal_not_found();
+    }
     $theme_name_field = field_get_items('node', $node, 'field_ms_theme');
 
     if ($theme_name_field) {
@@ -178,6 +180,19 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
+      // Add metatags with metatag module.
+      $instance = "{node}:{usanetwork_microsite}";
+      $options = array(
+        'entity' => $node,
+        'entity_type' => 'node',
+        'view_mode' => 'full',
+      );
+      $all_metatags = metatag_metatags_load('node', $node->nid);
+      if (!empty($all_metatags[$node->vid])) {
+        $metatags = $all_metatags[$node->vid];
+        $output = metatag_metatags_view($instance, $metatags, $options);
+        metatag_page_set_metatags($instance, $output);
+      }
       return theme($theme_registry_name, $theme_variables);
     }
   }
@@ -773,15 +788,6 @@ function _usanetwork_microsite_get_theme_variables($node) {
   $theme_variables = _usanetwork_microsite_theme_get_base_variables($node_wrapper);
   $navigation_links = array();
 
-  // Add metatags with metatag module.
-  $instance = "{node}:{usanetwork_microsite}";
-  $options = array(
-    'entity' => $node,
-    'entity_type' => 'node',
-    'view_mode' => 'full',
-  );
-  $output = metatag_metatags_view($instance, $node->metatags, $options);
-  metatag_page_set_metatags($instance, $output);
   // Detect sections availability
   if (!empty($node->field_ms_section)) {
     $pages = array();
@@ -1295,7 +1301,8 @@ function _usanetwork_microsite_validate_section($microsite_node) {
     $section_names = _usanetwork_microsite_get_section_names($microsite_node);
 
     if (!in_array($target_section_name, $section_names)) {
-      drupal_not_found();
+      return TRUE;
     }
   }
+  return FALSE;
 }

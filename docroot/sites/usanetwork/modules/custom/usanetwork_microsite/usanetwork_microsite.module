@@ -426,7 +426,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       );
 
       $person_preview_image_url = url($theme_path . '/images/characters/char_' . $person_id . '.jpg');
-      $theme_variables['characters_navigation'][] = '<li>&nbsp;<div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
+      $theme_variables['characters_navigation'][] = '<li><a href=
+      "/dig/characters/' . $person_id . '">&nbsp;</a><div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
     }
   }
 

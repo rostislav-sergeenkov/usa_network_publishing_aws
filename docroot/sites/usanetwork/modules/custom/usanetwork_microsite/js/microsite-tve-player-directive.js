@@ -24,10 +24,10 @@
 							scope.openLoginWindow = tveModal.openLoginModal;
 							scope.isMobile = helper.device.isMobile;
 
-							setTimeout(function() {
-								var iframeId = 'pdk-player';
-								_bindPlayerEvents(iframeId);
-							}, 0);
+							//setTimeout(function() {
+							//	var iframeId = 'pdk-player';
+							//	_bindPlayerEvents(iframeId);
+							//}, 0);
 							/**
 							 * Bind Player Events
 							 * @private

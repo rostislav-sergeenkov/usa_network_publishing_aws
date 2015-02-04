@@ -1018,6 +1018,10 @@ body.page-node-microsite {
   height: 169px;
   width: 300px;
 }
+#microsite .block-usanetwork-mpx-video li.ad img {
+  height: auto;
+  width: 300px;
+}
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
 }

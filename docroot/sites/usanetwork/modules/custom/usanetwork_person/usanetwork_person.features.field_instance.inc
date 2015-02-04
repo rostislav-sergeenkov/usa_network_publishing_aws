@@ -879,7 +879,7 @@ function usanetwork_person_field_default_field_instances() {
         'soft_length_style_select' => 0,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 35,
     ),
   );
 
@@ -1532,13 +1532,14 @@ function usanetwork_person_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 39,
+      'weight' => 42,
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_ms_small_photo'
-  $field_instances['node-person-field_person_ms_small_photo'] = array(
+  // Exported field_instance: 'node-person-field_person_ms_character_bio'
+  $field_instances['node-person-field_person_ms_character_bio'] = array(
     'bundle' => 'person',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1550,10 +1551,10 @@ function usanetwork_person_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 35,
+        'type' => 'text_default',
+        'weight' => 37,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1582,24 +1583,26 @@ function usanetwork_person_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_person_ms_small_photo',
-    'label' => 'Small photo',
+    'field_name' => 'field_person_ms_character_bio',
+    'label' => 'Character bio',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'microsite/small_photo',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
+      'display_summary' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'file',
+      'module' => 'text',
       'settings' => array(
-        'progress_indicator' => 'throbber',
+        'rows' => 20,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+        'summary_rows' => 5,
       ),
-      'type' => 'file_generic',
-      'weight' => 38,
+      'type' => 'text_textarea_with_summary',
+      'weight' => 41,
     ),
   );
 
@@ -1817,7 +1820,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 40,
+      'weight' => 43,
     ),
   );
 
@@ -2902,6 +2905,7 @@ function usanetwork_person_field_default_field_instances() {
   t('Biography');
   t('Birth Date');
   t('Birth Location');
+  t('Character bio');
   t('Cover Photo');
   t('Different Legal Name?');
   t('Enable Nitro');
@@ -2931,7 +2935,6 @@ function usanetwork_person_field_default_field_instances() {
   t('Quotation');
   t('Role');
   t('Show');
-  t('Small photo');
   t('Specify the title to be displayed in place of the promotional URL (required). If any, enter a promotional URL (e.g. Twitter, Facebook).');
   t('Tumblr Page');
   t('Twitter page');

@@ -24,8 +24,8 @@ function usanetwork_person_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_person_ms_background',
-      1 => 'field_person_ms_small_photo',
-      2 => 'field_quotation',
+      1 => 'field_quotation',
+      2 => 'field_person_ms_character_bio',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

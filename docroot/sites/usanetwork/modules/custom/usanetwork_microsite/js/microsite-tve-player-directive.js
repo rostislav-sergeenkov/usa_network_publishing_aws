@@ -115,8 +115,10 @@
 
 								if (baseClip && pdkEvent.data.baseClip.isAd) {
 									// Functionality for ad playing event
+									$('#video-container .video-player iframe').attr('data-ad-start', 'true');
 								}
 								else {
+									$('#video-container .video-player iframe').removeAttr('data-ad-start');
 									if($('.dart-tag').length) {
 										scope.$apply(function() {
 											scope.isFreeWheelReq = true;

@@ -7895,6 +7895,29 @@ body.person-page #main {
   overflow: hidden;
   visibility: hidden;
 }
+[id='person-content'] aside .field-name-body .file-video-mpx iframe {
+  height: 168px;
+  width: 300px;
+}
+@media (min-width: 390px) {
+  [id='person-content'] aside .field-name-body .file-video-mpx iframe {
+    height: calc((100vw - 107px) * 0.5625);
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  [id='person-content'] aside .field-name-body .file-video-mpx iframe {
+    height: calc((100vw - 107px) * 0.51 * 0.5625);
+    min-height: 190px;
+    width: 100%;
+  }
+}
+@media (min-width: 1335px) {
+  [id='person-content'] aside .field-name-body .file-video-mpx iframe {
+    height: 358px;
+    width: 635px;
+  }
+}
 [id='person-content'] aside#person-image {
   display: none;
   position: absolute;

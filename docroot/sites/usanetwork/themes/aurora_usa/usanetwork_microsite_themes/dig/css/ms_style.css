@@ -1102,6 +1102,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: block;
   outline: none;
   opacity: 1;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;

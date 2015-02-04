@@ -527,35 +527,31 @@ function usanetwork_person_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_person_ms_small_photo'
-  $field_bases['field_person_ms_small_photo'] = array(
+  // Exported field_base: 'field_person_ms_character_bio'
+  $field_bases['field_person_ms_character_bio'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_person_ms_small_photo',
+    'field_name' => 'field_person_ms_character_bio',
     'foreign keys' => array(
-      'fid' => array(
+      'format' => array(
         'columns' => array(
-          'fid' => 'fid',
+          'format' => 'format',
         ),
-        'table' => 'file_managed',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'file',
-    'settings' => array(
-      'display_default' => 0,
-      'display_field' => 1,
-      'uri_scheme' => 'public',
-    ),
+    'module' => 'text',
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'file',
+    'type' => 'text_with_summary',
   );
 
   // Exported field_base: 'field_person_prefix'

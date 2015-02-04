@@ -59,6 +59,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
           ),
         ),
         'characters_navigation' => NULL,
+        'section_title' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_galleries' => array(

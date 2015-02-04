@@ -629,6 +629,7 @@
             sectionScroll(anchor, item);
           }
         }
+        tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
       });
 
 

@@ -90,14 +90,12 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId){
-
-      var Player = $('#video-container iframe'),
+    micrositeSetVideoPlayer : function setVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId, autoplay){
+      var Player = $('#video-container .video-player iframe'),
         currentId = Player.attr('id'),
-        src = '//player.theplatform.com/p/' + dataAccountId + '/' + dataPlayerId + '/select/' + dataVideoId + '?autoPlay=true&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
+        src = '//player.theplatform.com/p/' + dataAccountId + '/' + dataPlayerId + '/select/' + dataVideoId + '?autoPlay=' + autoplay + '&form=html&nid='+ Drupal.settings.microsites_settings.nid +'&mbr=true#playerurl=' + window.location.href;
 
       Player.attr('id', dataVideoUrl);
-
       Player.attr('src', src);
 
       for(key in $pdk.controller.listeners){
@@ -105,12 +103,10 @@
       }
 
       $pdk.bindPlayerEvents(dataVideoUrl, currentId);
-
     },
     micrositeInitVideoPlayer : function(){
-      var Player = $('#video-container iframe'),
+      var Player = $('#video-container .video-player iframe'),
         currentId = Player.attr('id');
-      alert(currentId);
       $pdk.bindPlayerEvents(currentId);
     },
     // set initial active video thumbnail
@@ -339,6 +335,14 @@
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
 
+          if($(nextSection).attr('id') == 'videos'){
+            if($('#video-container .video-player iframe').attr('id') == 'pdk-player'){
+              $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').once(function(){
+                $(this).attr('data-autoplay', 'false');
+                $(this).click();
+              })
+            }
+          }
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
           setOmnitureData(anchor, itemTitle);
 
@@ -506,7 +510,20 @@
           anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
           anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
           itemTitle = activeVideoItem.find('.title').text(),
-          anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+          anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl,
+          autoplay;
+
+        if(activeVideoItem.attr('data-autoplay')){
+          autoplay = 'false';
+          activeVideoItem.removeAttr('data-autoplay');
+        }else{
+          autoplay = 'true';
+        }
+        if(activeVideoItem.attr('data-full-episode') == 'true'){
+          $('#ad_300x60_1').show();
+        }else{
+          $('#ad_300x60_1').hide();
+        }
 
         // if this is IE9, reload the correct page
         if ($('html.ie9').length > 0) {
@@ -517,7 +534,7 @@
         history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
+        Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId, autoplay);
         Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
 
         if (refreshAdsOmniture) {
@@ -576,12 +593,25 @@
               dataFid = activeVideoItem.attr('data-fid'),
               url = defaultUrl + '/' + dataFid,
               itemTitle = activeVideoItem.find('.title').text(),
-              anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+              anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl,
+              autoplay;
+
+            if(activeVideoItem.attr('data-autoplay')){
+              autoplay = 'false';
+              activeVideoItem.removeAttr('data-autoplay');
+            }else{
+              autoplay = 'true';
+            }
+            if(activeVideoItem.attr('data-full-episode') == 'true'){
+              $('#ad_300x60_1').show();
+            }else{
+              $('#ad_300x60_1').hide();
+            }
 
             changeUrl(anchor, anchorFull);
             sectionScroll(anchor, item, itemTitle);
             Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId);
+            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(dataAccountId, dataPlayerId, dataVideoUrl, dataVideoId, autoplay);
             Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
           }
           else if (anchor == 'galleries') {
@@ -605,9 +635,11 @@
         Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
-        //if($('#videos').hasClass('active')){
-        //  Drupal.behaviors.microsite_scroll.micrositeInitVideoPlayer();
-        //}
+        if($('#videos').hasClass('active')){
+          Drupal.behaviors.microsite_scroll.micrositeInitVideoPlayer();
+        }else{
+          $('#video-container .video-player iframe').attr('src', '');
+        }
       });
 
       $('.section').on("scroll", function() {

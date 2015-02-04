@@ -445,19 +445,32 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     }
 
     foreach ($person_nodes as $current_person_node) {
+      $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_title = $current_person_node->title;
       $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_title)));
-
+      $image_field = $person_node_wrapper->field_person_ms_background->value();
+      $file_image = file_load($image_field['fid']);
+      //$background_img = drupal_render(file_view($file_image, 'cover_image'));
+      $background_img = variable_get('file_public_path', conf_path() . '/files'). '/microsite/backgrounds/' . $file_image->filename;
+      // @todo need use other way for getting background and preview image. I should make it later.
+      $image_field = $person_node_wrapper->field_person_ms_background->value();
+      $file_image = file_load($image_field['fid']);
+      //$person_preview_image_url = drupal_render(file_view($file_image, 'person_cover_image'));
+      $person_preview_image_url = variable_get('file_public_path', conf_path() . '/files'). '/microsite/small_photo/' . $file_image->filename;;
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_title,
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
-        'quotes' => array(), // The Person content type currently does not have QUOTATION field.
+        'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation), // The Person content type currently does not have QUOTATION field.
+        'person_id' => $person_id,
+        'person_background_img' => $background_img,
+        'person_preview_image_url' => $person_preview_image_url,
       );
 
       $person_preview_image_url = url($theme_path . '/images/characters/char_' . $person_id . '.jpg');
+      //@todo we should write html only in templates. We ca get this variables from template.
       $theme_variables['characters_navigation'][] = '<li><a href=
       "/dig/characters/' . $person_id . '">&nbsp;</a><div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
     }

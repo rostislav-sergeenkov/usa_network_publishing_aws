@@ -143,9 +143,15 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     }
     if (NBCUEndShareCard.currentCountdown == 0) {
       clearInterval(NBCUEndShareCard.countdownTimer);
-      var next_url = $('.ymalitemnext').attr('href');
-      if (next_url) {
-        tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
+      var data = {};
+
+      data.next_url = $('.ymalitemnext').attr('href');
+      data.account_id = $('.ymalitemnext').attr('data-account-id');
+      data.video_id = $('.ymalitemnext').attr('data-video-id');
+      data.player_id = $('.ymalitemnext').attr('data-player-id');
+
+      if (data.next_url) {
+        tpController.dispatchEvent("OnEndcardCountdownEnd", data);
       }
     }
   }

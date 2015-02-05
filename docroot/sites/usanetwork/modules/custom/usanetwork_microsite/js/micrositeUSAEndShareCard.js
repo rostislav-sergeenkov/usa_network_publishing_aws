@@ -7,7 +7,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpconfig = tpconfig || {};
 
   NBCUEndShareCard.initialized = false;
-  NBCUEndShareCard.Feed = 'http://www.usanetwork.com/ajax/microcite/endcard/related';
+  NBCUEndShareCard.Feed = 'http://qa.usanetwork.com/ajax/microcite/endcard/related';
   var playerurl = window.location.hash.match(/#playerurl=(.*)/);
   if (playerurl) {
     NBCUEndShareCard.ShareURL = decodeURIComponent(playerurl[1]);

@@ -104,7 +104,7 @@
         src;
 
       if(videoPlayer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
-        $(this).attr('data-video-url', activeVideoThumb.attr('data-video-url'));
+        videoPlayer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
       }
 
       if(Player.attr('data-autoplay') == 'false'){
@@ -129,6 +129,18 @@
       }
 
       $pdk.bindPlayerEvents(dataVideoUrl, currentId);
+    },
+    micrositeStopPlayer : function stopVideo(){
+      if(!$pdk.controller.clickPlayButton(true)){
+        $pdk.controller.clickPlayButton(false);
+      }else{
+        $pdk.controller.clickPlayButton(false);
+      }
+      if(!$pdk.controller.pause(true)){
+        $pdk.controller.pause(true);
+      }else{
+        $pdk.controller.pause(true);
+      }
     },
     //scroll to top
     micrositeScrollToTop : function scrollToTop(){
@@ -345,13 +357,18 @@
           $(nextSection).addClass('active').removeClass('transition');
 
           if($(nextSection).attr('id') == 'videos'){
-            if($('#video-container .video-player iframe').attr('id') == 'base-frame'){
-              $(this).once(function(){
-                $(this).attr('data-autoplay', 'false');
+            var Player = $('#video-container .video-player iframe');
+            if(Player.attr('id') == 'base-frame'){
+              Player.once(function(){
+                Player.attr('data-autoplay', 'false');
                 Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
               })
             }
           }
+          if($(nextSection).attr('id') != 'videos'){
+            Drupal.behaviors.microsite_scroll.micrositeStopPlayer();
+          }
+
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
           setOmnitureData(anchor, itemTitle);
 
@@ -400,23 +417,9 @@
           return false;
         }
 
-        stopVideo();
         changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
       });
-
-      function stopVideo(){
-        if(!$pdk.controller.clickPlayButton(false)){
-          $pdk.controller.clickPlayButton(false);
-        }else{
-          $pdk.controller.clickPlayButton(false);
-        }
-        if(!$pdk.controller.pause(true)){
-          $pdk.controller.pause(true);
-        }else{
-          $pdk.controller.pause(true);
-        }
-      }
 
       // Animation for logo in left nav.
       function logoAnim(show_logo){
@@ -476,8 +479,6 @@
 
       // initialize next button click
       $('#sections .section .scroll-to-next').click(function() {
-
-        stopVideo();
 
         var thisSection = $('#left-nav li.active a').attr('data-menuitem'),
           nextSection = thisSection++,
@@ -631,6 +632,7 @@
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
         if($('#videos').hasClass('active')){
+          $('#video-container .video-player iframe').attr('data-autoplay', 'false');
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
         }
       });

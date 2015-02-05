@@ -10,13 +10,11 @@
 <div class="full-pane" data-tve-player>
   <div id="video-container">
     <div class="video-player-wrapper">
-      <?php if (!empty($in_player['rendered']) && !empty($in_player['url'])): ?>
-        <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
-          <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
-            <iframe src="" frameborder="0" allowfullscreen="" id="base-frame" >Your browser does not support iframes.</iframe>
-          </div>
+      <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
+        <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
+          <iframe src="" frameborder="0" allowfullscreen="" id="base-frame" >Your browser does not support iframes.</iframe>
         </div>
-      <?php endif; ?>
+      </div>
     </div>
     <div class="video-player-desc">
       <?php if (!empty($video_desc)): ?>
@@ -35,7 +33,7 @@
                 <ul>
                   <?php foreach ($videos as $v_key => $video): ?>
                     <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
-                      <li class="views-row grid-item"
+                      <li class="views-row grid-item <?php print $video['state']; ?>"
                           data-video-url="<?php print $video['url']; ?>"
                           data-fid="<?php print $video['fid']; ?>"
                           data-account-id="<?php print $video['account_id']; ?>"

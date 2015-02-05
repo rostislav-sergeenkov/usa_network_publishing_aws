@@ -130,24 +130,6 @@
 
       $pdk.bindPlayerEvents(dataVideoUrl, currentId);
     },
-    //init video player
-    micrositeInitVideoPlayer : function(){
-      var Player = $('#video-container .video-player iframe'),
-        currentId = Player.attr('id');
-      $pdk.bindPlayerEvents(currentId);
-    },
-    // set initial active video thumbnail
-    micrositeSetInitialActiveVideoThumbnail : function setInitialActiveVideoThumbnail(){
-      var urlPath = Drupal.behaviors.microsite_scroll.micrositeParseUrl(),
-          section = urlPath['section'],
-          item = urlPath['item'];
-      if (section == 'videos' && item != '') {
-        $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + item + '"]').addClass('active');
-        return;
-      }
-      $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li').eq(0).addClass('active');
-    },
-
     //scroll to top
     micrositeScrollToTop : function scrollToTop(){
 //      var container = $('sections'),
@@ -365,9 +347,6 @@
           if($(nextSection).attr('id') == 'videos'){
             if($('#video-container .video-player iframe').attr('id') == 'base-frame'){
               $(this).once(function(){
-                if($('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li').attr('data-video-url') == $('#video-container .video-player').attr('data-video-url')) {
-                  $(this).addClass('active');
-                }
                 $(this).attr('data-autoplay', 'false');
                 Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
               })
@@ -649,16 +628,11 @@
       // test for video player load ad
       $(document).ready(function(){
         Drupal.behaviors.microsite_scroll.create728x90Ad();
-        Drupal.behaviors.microsite_scroll.micrositeSetInitialActiveVideoThumbnail();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
         if($('#videos').hasClass('active')){
-          //Drupal.behaviors.microsite_scroll.micrositeInitVideoPlayer();
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
         }
-        //else{
-        //  $('#video-container .video-player iframe').attr('src', '');
-        //}
       });
 
       $('.section').on("scroll", function() {

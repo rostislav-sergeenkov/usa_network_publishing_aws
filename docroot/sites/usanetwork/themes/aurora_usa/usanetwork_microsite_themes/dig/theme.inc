@@ -131,10 +131,12 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
       $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),
   );

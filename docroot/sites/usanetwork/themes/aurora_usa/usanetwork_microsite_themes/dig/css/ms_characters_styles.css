@@ -1,0 +1,221 @@
+#microsite #characters {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#microsite #characters li {
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #characters .microsite-section-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+#microsite #characters #character-inner-container {
+  width: calc(100% - 190px);
+  position: relative;
+  margin: 0 0 0 190px;
+  max-width: 1500px;
+}
+#microsite #characters #character-background {
+  width: 100%;
+}
+#microsite #characters #character-background li {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 1200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #characters #character-background li.active {
+  display: block;
+}
+@media(min-width: 875px) {
+  #microsite #characters #character-background li#bg-todd-chrisley {
+    background-image: url("../images/dig_bg_jasonisaacs.jpg");
+  }
+  #microsite #characters #character-background li#bg-lindsie-chrisley-campbell {
+    background-image: url("../images/dig_bg_videos.jpg");
+  }
+/*
+  #microsite #characters #character-background li#bg-chase-chrisley {
+    background-image: url("../images/dig_bg_jasonisaacs.jpg");
+  }
+*/
+}
+#microsite #characters #character-background li.next {
+  left: 100%;
+  display: block;
+}
+#microsite #characters #character-background li.prev {
+  left: -100%;
+  display: block;
+}
+#microsite #characters .right-pane,
+#microsite #characters .right-pane-content {
+  width: 45%;
+  margin-left: 55%;
+}
+#microsite #characters #right-pane-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-height: 1200px;
+  background: rgb(0, 0, 0) transparent;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: calc((100% - 190px) * .45);
+}
+#microsite #characters .ad-leaderboard {
+  position: relative;
+}
+#microsite #characters h2 {
+  line-height: 0.9em;
+  position: relative;
+  text-align: center;
+}
+#microsite #characters .content {
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  width: 82%;
+}
+#microsite #characters .underline {
+  border-bottom: 1px solid #FFF;
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+#microsite #characters .character-nav {
+  width: 104px;
+  height: 2em;
+  margin: 30px auto;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#microsite #characters .character-nav #nav-prev,
+#microsite #characters .character-nav #nav-next {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  cursor: pointer;
+}
+#microsite #characters .character-nav #nav-prev:hover,
+#microsite #characters .character-nav #nav-next:hover {
+  color: #e5ce96;
+}
+#microsite #characters .character-nav ul {
+  left: 0;
+  /* -100% per line item */
+}
+#microsite #characters .character-nav li {
+  float: left;
+  list-style: square url("../images/nav_selector_white.png");
+  width: 15px;
+  line-height: 2em;
+  margin: 0 3px;
+  position: relative;
+  top: 0;
+  left: 15px;
+  overflow: visible;
+  cursor: pointer;
+}
+#microsite #characters .character-nav li.active,
+#microsite #characters .character-nav li:hover {
+  list-style: square url("../images/nav_selector.png");
+}
+#microsite #characters .character-nav li .tooltip {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: -160px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+}
+#microsite #characters .character-nav li .tooltip div {
+  line-height: 1em;
+  text-transform: uppercase;
+}
+#microsite #characters .character-nav li .tooltip img {
+  border: 2px solid #FFF;
+  width: 59px;
+  height: 60px;
+  margin: 0 auto;
+}
+#microsite #characters .character-nav li:hover .tooltip {
+  display: block;
+}
+#microsite #characters #character-info-container {
+  position: relative;
+  min-height: 500px;
+}
+#microsite #characters #character-info li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#microsite #characters #character-info li.active {
+  display: block;
+  opacity: 1;
+}
+#microsite #characters #character-info li.next,
+#microsite #characters #character-info li.prev {
+  display: block;
+  height: 0;
+  opacity: 0;
+  top: -40px;
+}
+#microsite #characters h3 {
+  display: inline-block;
+  margin: 0;
+}
+#microsite #characters .character-social {
+  display: inline-block;
+  margin-left: 15px;
+}
+#microsite #characters .character-social div {
+  float: left;
+  padding-right: 8px;
+}
+#microsite #characters .character-role {
+  color: #e5ce96;
+  font-style: italic;
+}
+#microsite #characters #character-bio-tabs div {
+  float: left;
+  display: block;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #FFF;
+  text-transform: uppercase;
+  padding: 3px 8px;
+}
+#microsite #characters #character-bio-tabs div.active {
+  background-color: #FFF;
+  color: #000;
+}
+#microsite #characters .text {
+  height: 500px;
+  overflow-y: auto;
+  display: none;
+}
+#microsite #characters .text.active {
+  display: block;
+}

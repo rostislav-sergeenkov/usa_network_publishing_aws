@@ -3,6 +3,7 @@
  * Template of Characters page
  *
  * Variables:
+ * - $section_title - title of section
  * - $people - array of people:
  * -  - $people[n]['id'] - machine-readable id of person
  * -  - $people[n]['url'] - machine-readable title for part of url.
@@ -25,69 +26,108 @@
  * - $section_title - Title of section.
  */
 ?>
+
+<!-- backgrounds -->
 <?php if (!empty($people)): ?>
-<ul>
+<ul id="character-background">
   <?php foreach ($people as $person_key => $person): ?>
-    <li id="<?php print !empty($person['id']) ? $person['id'] : 'undefined'; ?>" data-bg-url="<?php isset($person['background_url']) ? print $person['background_url'] : ''; ?>">
-      <div class="microsite-characters-section-container">
-        <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
-        <?php if (!empty($person['quotes'])): ?>
-          <div class="left-pane">
-            <div class="caption">
-              <ul>
-                <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
-                  <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-                    <li<?php if ($quotation_key == 0): print ' class="active"'; endif; ?>>
-                      <?php if (!empty($quotation['quote'])): ?>
-                        <div class="quote">
-                          <?php print $quotation['quote']; ?>
-                        </div>
-                      <?php endif; ?>
-                      <?php if (!empty($quotation['source'])): ?>
-                        <div class="quote-source">
-                          <?php print $quotation['source']; ?>
-                        </div>
-                      <?php endif; ?>
-                    </li>
-                  <?php endif; ?>
-                <?php endforeach; ?>
-              </ul>
-            </div>
-          </div>
-        <?php endif; ?>
-        <div class="right-pane">
-          <?php if (!empty($person['title'])): ?>
-            <h2><?php print $person['title']; ?></h2>
-          <?php endif; ?>
-          <?php if (!empty($person['social'])): ?>
-            <div class="social"><?php print $person['social']; ?></div>
-          <?php endif; ?>
-          <div class="underline"></div>
-          <?php if (!empty($characters_navigation)): ?>
-            <div class="character-nav">
-              <div class="prev"><span>&lt;</span></div>
-              <ul>
-                <?php print $characters_navigation; ?>
-              </ul>
-              <div class="next"><span>&gt;</span></div>
-            </div>
-          <?php endif; ?>
-          <?php if (!empty($person['title'])): ?>
-            <h3><?php print $person['title']; ?></h3>
-          <?php endif; ?>
-          <?php if (!empty($person['description'])): ?>
-            <div class="text">
-              <?php print $person['description']; ?>
-            </div>
-          <?php endif; ?>
-          <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_characters"></div>
-        </div>
-        <?php if (empty($is_last)): ?>
-        <?php print $section_separator; ?>
-        <?php endif; ?>
-      </div>
-    </li>
+  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
   <?php endforeach; ?>
 </ul>
-<?php endif; ?>
+<!-- end backgounds -->
 
+<div id="character-inner-container">
+  <!-- quotes -->
+  <ul id="quotes">
+    <?php foreach ($people as $person_key => $person): ?>
+    <?php if (!empty($person['quotes'])): ?>
+    <div class="caption">
+      <ul>
+        <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
+          <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
+            <li class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($quotation_key == 0) print ' active'; ?>">
+              <?php if (!empty($quotation['quote'])): ?>
+                <div class="quote">
+                  <?php print $quotation['quote']; ?>
+                </div>
+              <?php endif; ?>
+              <?php if (!empty($quotation['source'])): ?>
+                <div class="quote-source">
+                  <?php print $quotation['source']; ?>
+                </div>
+              <?php endif; ?>
+            </li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+  </ul>
+  <?php endif; ?>
+  <!-- end quotes -->
+
+  <!-- right pane -->
+  <div id="right-pane-bg"></div>
+
+  <!-- 728x90 ad -->
+  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+
+  <!-- characters title and navigation -->
+  <div class="right-pane-content">
+    <?php if (!empty($section_title)): ?>
+      <h2 class="right-pane content"><?php print $section_title; ?></h2>
+    <?php endif; ?>
+    <div class="underline right-pane content"></div>
+    <?php if (!empty($characters_navigation)): ?>
+      <div class="character-nav right-pane content">
+        <div id="nav-prev"><span>&lt;</span></div>
+        <ul>
+          <?php print $characters_navigation; ?>
+        </ul>
+        <div id="nav-next"><span>&gt;</span></div>
+      </div>
+    <?php endif; ?>
+
+    <!-- character info -->
+    <?php if (!empty($people)): ?>
+    <div id="character-info-container" class="clearfix">
+      <ul id="character-info" class="right-pane content">
+      <?php foreach ($people as $person_key => $person): ?>
+        <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>">
+            <?php if (!empty($person['title'])): ?>
+              <h3><?php print $person['title']; ?></h3>
+            <?php endif; ?>
+            <?php if (!empty($person['social'])): ?>
+              <div class="character-social"><?php print $person['social']; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($person['role'])): ?>
+              <div class="character-role"><?php print $person['role']; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($person['description']) && !empty($person['character_bio'])): ?>
+              <div id="character-bio-tabs">
+                <div class="actor-bio active">Actor Bio</div>
+                <div class="character-bio">Character Bio</div>
+              </div>
+            <?php endif; ?>
+            <?php if (!empty($person['description'])): ?>
+              <div class="text actor active">
+                <?php print $person['description']; ?>
+              </div>
+            <?php endif; ?>
+            <?php if (!empty($person['character_bio'])): ?>
+              <div class="text character">
+                <?php print $person['character_bio']; ?>
+              </div>
+            <?php endif; ?>
+        </li>
+      <?php endforeach; ?>
+      </ul>
+    </div>
+    <?php endif; ?>
+    <!-- end character info -->
+
+    <!-- 300x250 ad -->
+    <div class="ad300x250 right-pane content dart-tag dart-name-300x250_ifr_reload_characters"></div>
+  </div>
+</div>

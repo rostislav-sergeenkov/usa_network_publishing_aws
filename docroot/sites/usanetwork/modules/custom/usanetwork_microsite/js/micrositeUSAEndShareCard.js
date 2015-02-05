@@ -7,7 +7,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
   var tpconfig = tpconfig || {};
 
   NBCUEndShareCard.initialized = false;
-  NBCUEndShareCard.Feed = 'http://qa.usanetwork.com/ajax/microcite/endcard/related';
+  NBCUEndShareCard.Feed = 'http://www.usanetwork.com/ajax/microcite/endcard/related';
   var playerurl = window.location.hash.match(/#playerurl=(.*)/);
   if (playerurl) {
     NBCUEndShareCard.ShareURL = decodeURIComponent(playerurl[1]);
@@ -143,15 +143,9 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     }
     if (NBCUEndShareCard.currentCountdown == 0) {
       clearInterval(NBCUEndShareCard.countdownTimer);
-      var data = {};
-
-      data.next_url = $('.ymalitemnext').attr('href');
-      data.account_id = $('.ymalitemnext').attr('data-account-id');
-      data.video_id = $('.ymalitemnext').attr('data-video-id');
-      data.player_id = $('.ymalitemnext').attr('data-player-id');
-
-      if (data.next_url) {
-        tpController.dispatchEvent("OnEndcardCountdownEnd", data);
+      var next_url = $('.ymalitemnext').attr('href');
+      if (next_url) {
+        tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
       }
     }
   }
@@ -206,10 +200,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         // Show the first one.
         var nr = '';
         nr += '<div class="ymalitemwrapnext">';
-        nr += '<a class="ymalitemnext" href="#" id="ymal-' + selectedItems[startingIndex].guid + '" data-guid="' + selectedItems[startingIndex].guid +
-        '" data-account-id="' + selectedItems[startingIndex].account_id +
-        '" data-video-id="' + selectedItems[startingIndex].video_id +
-        '" data-player-id="' + selectedItems[startingIndex].player_id + '">';
+        nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid + '" data-guid="' + selectedItems[startingIndex].guid + '">';
         nr += '<img class="ymalthumbnext" src="' + NBCUEndShareCard.GetDefaultThumbnail(selectedItems[startingIndex]) + '" alt="" /><span class="ymalplay"></span>';
         nr += '</a>';
         nr += '<a class="ymaltitlenext" target="_parent" href="' + selectedItems[startingIndex].url + '" data-guid="' + selectedItems[startingIndex].guid + '">' + selectedItems[startingIndex].title + '</a>';

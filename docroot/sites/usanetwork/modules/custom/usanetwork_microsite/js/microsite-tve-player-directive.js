@@ -107,7 +107,22 @@
 							 * Media Start event callback so that we can show the metadata section
 							 */
 							function _onMediaStart(pdkEvent) {
+
 								var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
+
+								if(!$('#videos').hasClass('active')){
+									if(!$pdk.controller.clickPlayButton(false)){
+										$pdk.controller.clickPlayButton(false);
+									}else{
+										$pdk.controller.clickPlayButton(false);
+									}
+									if(!$pdk.controller.pause(true)){
+										$pdk.controller.pause(true);
+									}else{
+										$pdk.controller.pause(true);
+									}
+								}
+
 								if (!baseClip.isAd && resuming) {
 									resuming = false;
 									$pdk.controller.seekToPercentage(previouslyWatched.percentComplete);

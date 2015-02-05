@@ -206,7 +206,10 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         // Show the first one.
         var nr = '';
         nr += '<div class="ymalitemwrapnext">';
-        nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid + '" data-guid="' + selectedItems[startingIndex].guid + '">';
+        nr += '<a class="ymalitemnext" href="#" id="ymal-' + selectedItems[startingIndex].guid + '" data-guid="' + selectedItems[startingIndex].guid +
+        '" data-account-id="' + selectedItems[startingIndex].account_id +
+        '" data-video-id="' + selectedItems[startingIndex].video_id +
+        '" data-player-id="' + selectedItems[startingIndex].player_id + '">';
         nr += '<img class="ymalthumbnext" src="' + NBCUEndShareCard.GetDefaultThumbnail(selectedItems[startingIndex]) + '" alt="" /><span class="ymalplay"></span>';
         nr += '</a>';
         nr += '<a class="ymaltitlenext" target="_parent" href="' + selectedItems[startingIndex].url + '" data-guid="' + selectedItems[startingIndex].guid + '">' + selectedItems[startingIndex].title + '</a>';

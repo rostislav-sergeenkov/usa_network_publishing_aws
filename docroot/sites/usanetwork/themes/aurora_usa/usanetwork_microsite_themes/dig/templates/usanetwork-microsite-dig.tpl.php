@@ -29,7 +29,7 @@
         <section id="<?php print !empty($section['type']) ? $section['type'] : 'undefined'; ?>-content" class="clearfix">
           <div class="microsite-section-container" data-bg-url="<?php isset($section['background_url']) ? print $section['background_url'] : ''; ?>">
             <?php print $section['content']; ?>
-          <?php if (empty($section['is_last']) && $section['type'] != 'characters'): ?>
+          <?php if (empty($section['is_last'])): ?>
             <?php print $section_separator; ?>
           <?php endif; ?>
           </div>

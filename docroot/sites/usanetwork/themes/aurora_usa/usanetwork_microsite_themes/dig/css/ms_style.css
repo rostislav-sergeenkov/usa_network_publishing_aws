@@ -296,9 +296,6 @@ you can use the generic selector below, but it's slower:
   text-align: left;
   font-size: 2.4em;
 }
-#microsite #characters h2 {
-  line-height: 0.9em;
-}
 #microsite .section {
   opacity: 0;
   display: block;
@@ -348,30 +345,6 @@ you can use the generic selector below, but it's slower:
 }
 #microsite #about-content {
   background-image: url("../images/dig_bg_about.jpg");
-}
-#microsite #characters .microsite-section-container {
-  width:100%;
-  margin: 0;
-  padding: 0;
-}
-#microsite #characters li {
-  background-image: none;
-  background-position: top left;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-}
-#microsite #characters-content li#todd-chrisley {
-  background-image: url("../images/dig_bg_jasonisaacs.jpg");
-}
-#microsite #characters-content li#lindsie-chrisley-campbell {
-  background-image: url("../images/dig_bg_jasonisaacs.jpg");
-}
-#microsite #characters-content li#chase-chrisley {
-  background-image: url("../images/dig_bg_jasonisaacs.jpg");
-}
-#microsite #characters .microsite-characters-section-container {
-  margin: 0 17px 0 190px;
 }
 #microsite #galleries-content {
   background-image: url("../images/dig_bg_gallery.jpg");
@@ -472,75 +445,6 @@ you can use the generic selector below, but it's slower:
 }
 #microsite #about .caption {
   margin-top: 3em;
-}
-#microsite #characters {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-#microsite #characters ul {
-  width: 1000%;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-#microsite #characters li {
-  float: left;
-  width: 10%;
-  overflow: hidden;
-}
-#microsite #characters .character-nav {
-  width: 104px;
-  height: 2em;
-  margin: 30px auto;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-#microsite #characters .character-nav .prev,
-#microsite #characters .character-nav .next {
-  float: left;
-  margin: 0;
-  padding: 0;
-  width: 20px;
-  font-size: 1.5em;
-  line-height: 1.5em;
-}
-#microsite #characters .character-nav ul {
-  left: 0;
-  /* -100% per line item */
-}
-#microsite #characters .character-nav li {
-  list-style: square url("../images/nav_selector.png");
-  width: 15px;
-  line-height: 2em;
-  margin: 0 3px;
-  position: relative;
-  top: 0;
-  left: 15px;
-  overflow: visible;
-}
-#microsite #characters .character-nav li .tooltip {
-  display: none;
-  position: absolute;
-  bottom: 30px;
-  left: -160px;
-  width: 300px;
-  height: 80px;
-  text-align: center;
-}
-#microsite #characters .character-nav li .tooltip div {
-  line-height: 1em;
-  text-transform: uppercase;
-}
-#microsite #characters .character-nav li .tooltip img {
-  border: 2px solid #FFF;
-  width: 59px;
-  height: 60px;
-  margin: 0 auto;
-}
-#microsite #characters .character-nav li:hover .tooltip {
-  display: block;
 }
 /*
 #microsite #galleries h3 {
@@ -1018,10 +922,6 @@ body.page-node-microsite {
   height: 169px;
   width: 300px;
 }
-#microsite .block-usanetwork-mpx-video li.ad img {
-  height: auto;
-  width: 300px;
-}
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
 }
@@ -1102,11 +1002,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   display: block;
   outline: none;
   opacity: 1;
-  -moz-user-select: -moz-none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;

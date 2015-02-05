@@ -6,6 +6,7 @@
  * - $section_title - title of section
  * - $people - array of people:
  * -  - $people[n]['id'] - machine-readable id of person
+ * -  - $people[n]['url'] - machine-readable title for part of url.
  * -  - $people[n]['background_url'] - url for the person's background image
  * -  - $people[n]['quotes'] - array of person quotes:
  * -  -  - $people[n]['quotes'][m]['quote'] - string value of quote field
@@ -13,9 +14,16 @@
  * -  - $people[n]['title'] - the title of the person
  * -  - $people[n]['social'] - pre-rendered list of social follow icons
  * -  - $people[n]['description'] - the description of the person
+ * -  - $people[n]['role'] - role of the person
+ * -  - $people[n]['character_bio_summary'] - Summary of the character bio
+ * -  - $people[n]['character_bio'] - character bio
+ * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
+ * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
+ * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
  * - $characters_navigation - pre-rendered list of navigation links
  * - $is_last - flag of the latest section (appears only on the latest)
  * - $section_separator - pre-rendered section separator
+ * - $section_title - Title of section.
  */
 ?>
 

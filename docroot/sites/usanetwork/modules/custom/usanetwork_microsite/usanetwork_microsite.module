@@ -482,7 +482,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation), // The Person content type currently does not have QUOTATION field.
         'person_id' => $person_id,
         'status' => $status,
-        'person_background_img' => $background_img,
+        'background_url' => $background_img,
         'person_preview_image_url' => $person_preview_image_url,
         'sotial_links' => $sotial_links,
       );

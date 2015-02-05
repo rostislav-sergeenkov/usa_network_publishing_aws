@@ -444,7 +444,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
-
+    $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
     foreach ($person_nodes as $current_person_node) {
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_title = $current_person_node->title;
@@ -465,6 +465,11 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'pinterest' => $person_node_wrapper->field_usa_link_pinterest->value(),
         'tumblr' => $person_node_wrapper->field_usa_link_tumblr->value(),
       );
+      $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
+      $status = '';
+      if(!empty($current_character) && $current_character == $character_url) {
+        $status = 'active';
+      }
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_title,
@@ -477,6 +482,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'character_bio' => $character_bio['value'],
         'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation), // The Person content type currently does not have QUOTATION field.
         'person_id' => $person_id,
+        'status' => $status,
         'person_background_img' => $background_img,
         'person_preview_image_url' => $person_preview_image_url,
         'sotial_links' => $sotial_links,

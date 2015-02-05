@@ -428,7 +428,6 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
  * Renders Characters page.
  */
 function _usanetwork_microsite_render_page_characters($section_wrapper) {
-  module_load_include('inc', 'pathauto', 'pathauto');
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $section_object = $section_wrapper->value();
 
@@ -473,7 +472,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_title,
-        'url' => pathauto_cleanstring($person_title),
+        'url' => _usanetwork_microsite_get_suggested_caracter_url($current_person_node),
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -1359,4 +1358,9 @@ function _usanetwork_microsite_define_full_episode($file) {
     return TRUE;
   }
   return FALSE;
+}
+
+function _usanetwork_microsite_get_suggested_caracter_url($person_node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  return pathauto_cleanstring($person_node->title);
 }

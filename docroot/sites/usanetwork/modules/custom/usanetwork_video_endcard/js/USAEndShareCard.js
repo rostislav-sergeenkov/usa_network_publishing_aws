@@ -144,7 +144,6 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     if (NBCUEndShareCard.currentCountdown == 0) {
       clearInterval(NBCUEndShareCard.countdownTimer);
       var next_url = $('.ymalitemnext').attr('href');
-      alert(next_url);
       if (next_url) {
         tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
       }

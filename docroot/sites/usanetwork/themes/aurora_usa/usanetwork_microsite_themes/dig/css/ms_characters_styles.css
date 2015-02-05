@@ -44,13 +44,13 @@
   display: block;
 }
 @media(min-width: 875px) {
+/*
   #microsite #characters #character-background li#bg-todd-chrisley {
     background-image: url("../images/dig_bg_jasonisaacs.jpg");
   }
   #microsite #characters #character-background li#bg-lindsie-chrisley-campbell {
     background-image: url("../images/dig_bg_videos.jpg");
   }
-/*
   #microsite #characters #character-background li#bg-chase-chrisley {
     background-image: url("../images/dig_bg_jasonisaacs.jpg");
   }
@@ -198,18 +198,33 @@
   color: #e5ce96;
   font-style: italic;
 }
-#microsite #characters #character-bio-tabs div {
+#microsite #characters .character-bio-tabs {
+  height: 28px;
+  margin-bottom: 15px;
+}
+#microsite #characters .character-bio-tabs div {
   float: left;
   display: block;
   background-color: #000;
   color: #FFF;
   border: 1px solid #FFF;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 6px 8px 4px;
+  line-height: 1em;
+  cursor: pointer;
 }
-#microsite #characters #character-bio-tabs div.active {
+#microsite #characters .character-bio-tabs div:first-child {
+  margin-right: 20px;
+}
+#microsite #characters .character-bio-tabs div.active {
   background-color: #FFF;
   color: #000;
+}
+#microsite .character-bios-container {
+  height: 500px;
+  position: relative;
+  display: block;
+  width: 100%;
 }
 #microsite #characters .text {
   height: 500px;

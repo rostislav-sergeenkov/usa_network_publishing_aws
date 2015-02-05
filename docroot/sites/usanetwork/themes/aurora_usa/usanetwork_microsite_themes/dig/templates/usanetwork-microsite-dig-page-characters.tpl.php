@@ -30,13 +30,14 @@
 <!-- backgrounds -->
 <?php if (!empty($people)): ?>
 <ul id="character-background">
-  <?php foreach ($people as $person_key => $person): ?>
-  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
+  <?php foreach ($people as $person): ?>
+  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
   <?php endforeach; ?>
 </ul>
 <!-- end backgounds -->
 
 <div id="character-inner-container">
+<?php /* @TODO: COMMENTING QUOTES FOR NOW ?>
   <!-- quotes -->
   <ul id="quotes">
     <?php foreach ($people as $person_key => $person): ?>
@@ -64,6 +65,7 @@
     <?php endif; ?>
     <?php endforeach; ?>
   </ul>
+<?php */ ?>
   <?php endif; ?>
   <!-- end quotes -->
 
@@ -94,7 +96,7 @@
     <div id="character-info-container" class="clearfix">
       <ul id="character-info" class="right-pane content">
       <?php foreach ($people as $person_key => $person): ?>
-        <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>">
+        <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>">
             <?php if (!empty($person['title'])): ?>
               <h3><?php print $person['title']; ?></h3>
             <?php endif; ?>
@@ -105,11 +107,12 @@
               <div class="character-role"><?php print $person['role']; ?></div>
             <?php endif; ?>
             <?php if (!empty($person['description']) && !empty($person['character_bio'])): ?>
-              <div id="character-bio-tabs">
-                <div class="actor-bio active">Actor Bio</div>
-                <div class="character-bio">Character Bio</div>
+              <div class="character-bio-tabs" class="clearfix">
+                <div class="actor active">Actor Bio</div>
+                <div class="character">Character Bio</div>
               </div>
             <?php endif; ?>
+            <div class="character-bios-container clearfix">
             <?php if (!empty($person['description'])): ?>
               <div class="text actor active">
                 <?php print $person['description']; ?>
@@ -120,6 +123,7 @@
                 <?php print $person['character_bio']; ?>
               </div>
             <?php endif; ?>
+            </div>
         </li>
       <?php endforeach; ?>
       </ul>

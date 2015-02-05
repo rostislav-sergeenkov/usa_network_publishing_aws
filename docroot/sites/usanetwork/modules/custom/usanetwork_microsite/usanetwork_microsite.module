@@ -444,14 +444,13 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $person_nodes = array($person_nodes);
     }
     $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
-    foreach ($person_nodes as $current_person_node) {
+    foreach ($person_nodes as $person_node_key => $current_person_node) {
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_title = $current_person_node->title;
       $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_title)));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
-
       $image_field = $person_node_wrapper->field_usa_character_thumb->value();
       $resize_image_uri = $image_for_sizing = image_style_path('media_thumbnail', $image_field['uri']);
       $person_preview_image_url =  file_create_url($resize_image_uri);
@@ -466,7 +465,10 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       );
       $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
       $status = '';
-      if(!empty($current_character) && $current_character == $character_url) {
+      if (empty($current_character) && $person_node_key == 0) {
+        $status = 'active';
+      }
+      elseif (!empty($current_character) && $current_character == $character_url) {
         $status = 'active';
       }
       $theme_variables['people'][] = array(
@@ -489,7 +491,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
 
       $person_preview_image_url = url($theme_path . '/images/characters/char_' . $person_id . '.jpg');
       //@todo we should write html only in templates. We can get this variables from template.
-      $theme_variables['characters_navigation'][] = '<li id="nav-' . $person_id . '"><a href="/dig/characters/' . $person_id . '">&nbsp;</a><div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
+      $theme_variables['characters_navigation'][] = '<li id="nav-' . $person_id . '" class="' . $status . '"><a href="' . $character_url . '"></a><div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
     }
   }
 

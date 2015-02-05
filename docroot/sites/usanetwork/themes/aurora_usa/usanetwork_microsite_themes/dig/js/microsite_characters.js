@@ -12,11 +12,16 @@
       itemsToSet.height(sectionHeight);
     },
 
-    micrositeSetCharBackground: function setCharBackground(nextCharId) {
-      var nextBgId = 'bg-' + nextCharId,
+    micrositeGetActiveCharacter: function getActiveCharacter() {
+      // return the active character
+      return $('#characters #character-info li.active').attr('id');
+    },
+
+    micrositeSetCharBackground: function setCharBackground(charId) {
+      var nextBgId = 'bg-' + charId,
           nextItemBg = $('#' + nextBgId).attr('data-bg-url');
       if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
-//usa_debug('micrositeSetCharBackground(' + nextCharId + ')\nnextItemBg: ' + nextItemBg);
+//usa_debug('micrositeSetCharBackground(' + charId + ')\nnextItemBg: ' + nextItemBg);
       $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
     },
 
@@ -126,9 +131,11 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
 
     attach: function (context, settings) {
       Drupal.behaviors.microsite_characters.micrositeSetSectionHeight();
+//      var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter();
 
       var characters = $('#microsite #character-info'),
           activeCharacter = characters.find('li.active').attr('id');
+      Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
 /*
 usa_debug('******************************\n$characters: ');
 usa_debug(characters);
@@ -142,6 +149,7 @@ usa_debug('activeCharacter: ' + activeCharacter);
         var nextItemId = $(this).attr('id');
         Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
       });
+
       // init next / prev character nav clicks
       $('#microsite #characters .character-nav #nav-next, #microsite #characters .character-nav #nav-prev').on('click', function(){
         var clickedId = $(this).attr('id'),
@@ -155,6 +163,15 @@ usa_debug('activeCharacter: ' + activeCharacter);
         var nextItemId = $('#characters .character-nav li').eq(nextItemNum).attr('id');
 //usa_debug('************************\nclicked: ' + $(this).attr('id') + '\nnumNavItems: ' + numNavItems + '\ncurrentItemNum: ' + currentItemNum + '\nnextItemNum: ' + nextItemNum + '\nnextItemId: ' + nextItemId + '\ncurrentItem: ');
         Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
+      });
+
+      // init bio tab clicks
+      $('#microsite #characters .character-bio-tabs div').on('click', function(){
+        var clickedItem = ($(this).hasClass('character')) ? '.character' : '.actor',
+            characterId = $(this).parent().parent().attr('id');
+        $('#characters #character-info li#' + characterId).find('.actor, .character').removeClass('active');
+        $('#characters #character-info li#' + characterId + ' ' + clickedItem).addClass('active');
+//usa_debug('************************\nclicked: ' + $(this).attr('class') + '\ncharacterId: ' + characterId);
       });
 
 

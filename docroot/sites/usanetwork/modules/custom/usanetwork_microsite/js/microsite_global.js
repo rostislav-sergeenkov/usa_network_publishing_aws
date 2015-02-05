@@ -90,12 +90,16 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(){
+    micrositeSetVideoPlayer : function setVideoPlayer(selector){
+
+      if(!selector){
+        selector = '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active';
+      }
 
       var videoPlayer = $('#video-container .video-player'),
         Player = $('#video-container .video-player iframe'),
         currentId = Player.attr('id'),
-        activeVideoThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
+        activeVideoThumb = $(selector),
         dataAccountId = activeVideoThumb.attr('data-account-id'),
         dataPlayerId = activeVideoThumb.attr('data-player-id'),
         dataVideoUrl = activeVideoThumb.attr('data-video-url'),
@@ -133,12 +137,14 @@
     micrositeStopPlayer : function stopVideo(){
       if(!$pdk.controller.clickPlayButton(true)){
         $pdk.controller.clickPlayButton(false);
-      }else{
-        $pdk.controller.clickPlayButton(false);
       }
       if(!$pdk.controller.pause(true)){
         $pdk.controller.pause(true);
-      }else{
+      }
+      if(!$pdk.controller.clickPlayButton(false)){
+        $pdk.controller.clickPlayButton(false);
+      }
+      if(!$pdk.controller.pause(false)){
         $pdk.controller.pause(true);
       }
     },

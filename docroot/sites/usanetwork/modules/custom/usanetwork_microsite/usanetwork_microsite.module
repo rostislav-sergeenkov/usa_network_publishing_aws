@@ -1204,6 +1204,15 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         }
       }
       break;
+    case 'characters':
+      $head_title = t('Characters | ' . $title . ' | USA Network');
+      if (isset($args[4])) {
+        $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+        if(!empty($character_node)) {
+          $head_title = $character_node->title . ' | ' . $head_title;
+        }
+      }
+      break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {

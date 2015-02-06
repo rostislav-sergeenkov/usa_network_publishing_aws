@@ -48,17 +48,27 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'id' => NULL,
             'title' => NULL,
             'description' => NULL,
-/*
+            'role' => NULL,
+            'character_bio_summary' => NULL,
+            'character_bio' => NULL,
             'quotes' => array(
               0 => array(
                 'quote' => NULL,
                 'source' => NULL,
               ),
             ),
-*/
+            'status' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'social' => array(
+              'facebook' => NULL,
+              'twitter' => NULL,
+              'pinterest' => NULL,
+              'tumblr' => NULL
+            ),
           ),
         ),
-        'characters_navigation' => NULL,
+//        'characters_navigation' => NULL,
         'section_title' => NULL,
       ),
     ),

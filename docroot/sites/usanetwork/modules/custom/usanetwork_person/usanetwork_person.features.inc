@@ -20,6 +20,15 @@ function usanetwork_person_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function usanetwork_person_field_default_field_instances_alter(&$data) {
+  if (isset($data['node-person-field_person_ms_background'])) {
+    $data['node-person-field_person_ms_background']['settings']['file_extensions'] = 'jpg jpeg png gif'; /* WAS: 'txt' */
+  }
+}
+
+/**
  * Implements hook_node_info().
  */
 function usanetwork_person_node_info() {

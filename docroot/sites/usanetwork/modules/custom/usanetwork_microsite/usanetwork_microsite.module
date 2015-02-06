@@ -444,29 +444,32 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $person_nodes = array($person_nodes);
     }
     $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
-    foreach ($person_nodes as $current_person_node) {
+    foreach ($person_nodes as $person_node_key => $current_person_node) {
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_title = $current_person_node->title;
       $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_title)));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
-
       $image_field = $person_node_wrapper->field_usa_character_thumb->value();
       $resize_image_uri = $image_for_sizing = image_style_path('media_thumbnail', $image_field['uri']);
       $person_preview_image_url =  file_create_url($resize_image_uri);
 
       $role_term = $person_node_wrapper->field_role->value();
       $character_bio = $person_node_wrapper->field_person_ms_character_bio->value();
-      $sotial_links = array(
+      $social_links = array(
         'facebook' => $person_node_wrapper->field_usa_link_facebook->value(),
         'twitter' => $person_node_wrapper->field_usa_link_twitter->value(),
         'pinterest' => $person_node_wrapper->field_usa_link_pinterest->value(),
         'tumblr' => $person_node_wrapper->field_usa_link_tumblr->value(),
       );
+//die('<pre>social_links: ' . print_r($social_links, true) . '</pre>');
       $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
       $status = '';
-      if(!empty($current_character) && $current_character == $character_url) {
+      if (empty($current_character) && $person_node_key == 0) {
+        $status = 'active';
+      }
+      elseif (!empty($current_character) && $current_character == $character_url) {
         $status = 'active';
       }
       $theme_variables['people'][] = array(
@@ -479,17 +482,12 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'role' => $role_term->name,
         'character_bio_summary' => $character_bio['summary'],
         'character_bio' => $character_bio['value'],
-        'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation), // The Person content type currently does not have QUOTATION field.
-        'person_id' => $person_id,
+        'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation),
         'status' => $status,
         'background_url' => $background_img,
-        'person_preview_image_url' => $person_preview_image_url,
-        'sotial_links' => $sotial_links,
+        'preview_image_url' => $person_preview_image_url,
+        'social' => $social_links,
       );
-
-      $person_preview_image_url = url($theme_path . '/images/characters/char_' . $person_id . '.jpg');
-      //@todo we should write html only in templates. We can get this variables from template.
-      $theme_variables['characters_navigation'][] = '<li id="nav-' . $person_id . '"><a href="/dig/characters/' . $person_id . '">&nbsp;</a><div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
     }
   }
 
@@ -1271,7 +1269,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
-
           if (isset($args[4])) {
             $character_name = $args[4]; // @TODO: Get character name based on the url and set it here
             $omniture_prop5 = t($entity->title . ' : Bio : ' . $character_name);

@@ -3,7 +3,6 @@
  * Template of Characters page
  *
  * Variables:
- * - $section_title - title of section
  * - $people - array of people:
  * -  - $people[n]['id'] - machine-readable id of person
  * -  - $people[n]['url'] - machine-readable title for part of url.
@@ -18,9 +17,7 @@
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
  * -  - $people[n]['character_bio'] - character bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
- * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
- * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
- * - $characters_navigation - pre-rendered list of navigation links
+ * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
  * - $is_last - flag of the latest section (appears only on the latest)
  * - $section_separator - pre-rendered section separator
  * - $section_title - Title of section.
@@ -30,13 +27,14 @@
 <!-- backgrounds -->
 <?php if (!empty($people)): ?>
 <ul id="character-background">
-  <?php foreach ($people as $person_key => $person): ?>
-  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
+  <?php foreach ($people as $person): ?>
+  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
   <?php endforeach; ?>
 </ul>
 <!-- end backgounds -->
 
 <div id="character-inner-container">
+<?php /* @TODO: COMMENTING QUOTES FOR NOW ?>
   <!-- quotes -->
   <ul id="quotes">
     <?php foreach ($people as $person_key => $person): ?>
@@ -64,6 +62,7 @@
     <?php endif; ?>
     <?php endforeach; ?>
   </ul>
+<?php */ ?>
   <?php endif; ?>
   <!-- end quotes -->
 
@@ -76,40 +75,65 @@
   <!-- characters title and navigation -->
   <div class="right-pane-content">
     <?php if (!empty($section_title)): ?>
-      <h2 class="right-pane content"><?php print $section_title; ?></h2>
+      <h2 class="content"><?php print $section_title; ?></h2>
     <?php endif; ?>
-    <div class="underline right-pane content"></div>
-    <?php if (!empty($characters_navigation)): ?>
-      <div class="character-nav right-pane content">
-        <div id="nav-prev"><span>&lt;</span></div>
-        <ul>
-          <?php print $characters_navigation; ?>
-        </ul>
-        <div id="nav-next"><span>&gt;</span></div>
-      </div>
+    <div class="underline content"></div>
+    <?php if (!empty($people)): ?>
+    <div class="character-nav content">
+      <center>
+      <div id="nav-prev" class="prev btns"><span>&lt;</span></div>
+      <ul>
+        <?php foreach ($people as $person): ?>
+        <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
+          <div class="tooltip">
+            <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
+            <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
+          </div>
+        </li>
+        <?php endforeach; ?>
+      </ul>
+      <div id="nav-next" class="next btns"><span>&gt;</span></div>
+      </center>
+    </div>
     <?php endif; ?>
 
     <!-- character info -->
     <?php if (!empty($people)): ?>
     <div id="character-info-container" class="clearfix">
-      <ul id="character-info" class="right-pane content">
+      <ul id="character-info" class="content">
       <?php foreach ($people as $person_key => $person): ?>
-        <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person_key == 0) print ' active'; ?>">
+        <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>">
+            <?php if (!empty($person['preview_image_url'])): ?>
+            <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>">
+            <?php endif; ?>
             <?php if (!empty($person['title'])): ?>
               <h3><?php print $person['title']; ?></h3>
             <?php endif; ?>
             <?php if (!empty($person['social'])): ?>
-              <div class="character-social"><?php print $person['social']; ?></div>
+              <div class="character-social">
+                <div class="view view-usa-people view-id-usa_people view-display-id-panel_pane_2 icons-social icons-inline view-dom-id-7189625a5498dc298003c3cbd958797d">
+                  <div class="view-content">
+                    <div>
+                      <?php foreach ($person['social'] as $provider => $link): ?>
+                      <?php if (!empty($link['url'])): ?>
+                      <a href="<?php print $link['url']; ?>" class="person-<?php print $provider; ?> usasocial-<?php print $provider; ?>" target="_blank"><?php print $provider; ?></a>
+                      <?php endif; ?>
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <?php endif; ?>
             <?php if (!empty($person['role'])): ?>
               <div class="character-role"><?php print $person['role']; ?></div>
             <?php endif; ?>
             <?php if (!empty($person['description']) && !empty($person['character_bio'])): ?>
-              <div id="character-bio-tabs">
-                <div class="actor-bio active">Actor Bio</div>
-                <div class="character-bio">Character Bio</div>
+              <div class="character-bio-tabs" class="clearfix">
+                <div class="actor active">Actor Bio</div>
+                <div class="character">Character Bio</div>
               </div>
             <?php endif; ?>
+            <div class="character-bios-container clearfix">
             <?php if (!empty($person['description'])): ?>
               <div class="text actor active">
                 <?php print $person['description']; ?>
@@ -120,6 +144,7 @@
                 <?php print $person['character_bio']; ?>
               </div>
             <?php endif; ?>
+            </div>
         </li>
       <?php endforeach; ?>
       </ul>
@@ -128,6 +153,6 @@
     <!-- end character info -->
 
     <!-- 300x250 ad -->
-    <div class="ad300x250 right-pane content dart-tag dart-name-300x250_ifr_reload_characters"></div>
+    <div class="ad300x250 content dart-tag dart-name-300x250_ifr_reload_characters"></div>
   </div>
 </div>

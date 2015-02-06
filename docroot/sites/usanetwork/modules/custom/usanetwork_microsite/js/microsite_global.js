@@ -599,21 +599,33 @@
           item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
           if (anchor == 'videos') {
-            previewItem.removeClass('active');
-            $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]').addClass('active');
+            var currentThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]');
+            if (currentThumb.length > 0) {
+              var withInit = true;
+              if (currentThumb.hasClass('active')){
+                withInit = false;
+              } else {
+                previewItem.removeClass('active');
+                currentThumb.addClass('active');
+              }
 
-            var activeVideoThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
-              dataVideoUrl = activeVideoThumb.attr('data-video-url'),
-              dataFid = activeVideoThumb.attr('data-fid'),
-              url = defaultUrl + '/' + dataFid,
-              itemTitle = activeVideoThumb.find('.title').text(),
-              anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+              var activeVideoThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
+                  dataVideoUrl = activeVideoThumb.attr('data-video-url'),
+                  dataFid = activeVideoThumb.attr('data-fid'),
+                  url = defaultUrl + '/' + dataFid,
+                  itemTitle = activeVideoThumb.find('.title').text(),
+                  anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
 
-            changeUrl(anchor, anchorFull);
-            sectionScroll(anchor, item, itemTitle);
-            Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-            Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
-            Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+              changeUrl(anchor, anchorFull);
+              sectionScroll(anchor, item, itemTitle);
+              Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+
+              if (withInit) {
+                Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
+                Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+              }
+
+            }
           }
           else if (anchor == 'galleries') {
             var anchorFull = basePath + '/' + anchor;

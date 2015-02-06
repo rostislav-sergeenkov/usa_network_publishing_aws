@@ -1349,3 +1349,55 @@ function _usanetwork_microsite_define_full_episode($file) {
   }
   return FALSE;
 }
+
+/**
+ * Implements hook_page_build().
+ * Insert Floodlight Tag.
+ */
+function usanetwork_microsite_page_build(&$page) {
+  // Add floodlight to microsite.
+  $menu_object = _usanetwork_menu_get_object();
+  if ($menu_object) {
+    if (isset($menu_object->type) && ($menu_object->type == 'usanetwork_microsite')) {
+      $show_field = field_get_items('node', $menu_object, 'field_show');
+      if (!empty($show_field)) {
+        $show_nid = reset(reset($show_field));
+        $show_node = node_load($show_nid);
+        $floodlight_field_type = field_get_items('node', $show_node, 'field_floodlight_type');
+        if (!empty($floodlight_field_type)) {
+          $floodlight_field_type = reset($floodlight_field_type);
+          if (!empty($floodlight_field_type['value'])) {
+            $floodlight_type = $floodlight_field_type['value'];
+          }
+        }
+        $floodlight_field_category = field_get_items('node', $show_node, 'field_floodlight_category');
+        if ($floodlight_field_category) {
+          $floodlight_field_category = reset($floodlight_field_category);
+          if (!empty($floodlight_field_category['value'])) {
+            $floodlight_category = $floodlight_field_category['value'];
+          }
+        }
+      }
+      if (!empty($floodlight_type) && !empty($floodlight_category)) {
+        $floodlight_js = '
+          (function ($) {
+          $(document).ready(function(){
+          var axel = Math.random() + "";
+          var a = axel * 10000000000000;
+          $(\'body\').prepend(\'<iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $floodlight_type . ';cat=' . $floodlight_category . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+          });
+          })(jQuery);
+        ';
+        drupal_add_js($floodlight_js, 'inline');
+        $page['page_top']['floodlight'] = array(
+          '#markup' => '
+          <noscript>
+            <iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $floodlight_type . ';cat=' . $floodlight_category . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+          </noscript>
+        ',
+          '#weight' => -1,
+        );
+      }
+    }
+  }
+}

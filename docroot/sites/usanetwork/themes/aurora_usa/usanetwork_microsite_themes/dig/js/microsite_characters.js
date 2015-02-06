@@ -6,10 +6,25 @@
     basePageName: 'Dig | USA Network',
     defaultCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
 
-    micrositeSetSectionHeight: function setSectionHeight() {
-      var sectionHeight = $(window).height() - $('#mega-nav').height()
-          itemsToSet = $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg');
-      itemsToSet.height(sectionHeight);
+    micrositeSetNavNextPrevState: function setNavNextPreState() {
+      var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter(),
+          charactersNav = $('#characters .character-nav'),
+          activeCharacterNum = charactersNav.find('li.active').index(),
+          numCharacters = charactersNav.find('li').length;
+      charactersNav.find('#nav-prev, #nav-next').removeClass('disabled');
+      if (activeCharacterNum == 0) {
+        charactersNav.find('#nav-prev').addClass('disabled');
+      }
+      else if (activeCharacterNum == (numCharacters - 1)) {
+        charactersNav.find('#nav-next').addClass('disabled');
+      }
+    },
+
+    micrositeSetHeights: function setHeights() {
+      var sectionHeight = $(window).height() - $('#mega-nav').height(),
+          characterTextHeight = Math.ceil(sectionHeight * 0.277);
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
+      $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {
@@ -25,15 +40,14 @@
       $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
     },
 
-    // URL HANDLING
     // toTitleCase
     micrositeToTitleCase: function toTitleCase(str) {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     },
 
-    // OMNITURE
     // setOmnitureData
     micrositeSetOmnitureData: function setOmnitureData(itemTitle){
+//usa_debug('************************\nmicrositeSetOmnitureData(' + itemTitle + ')');
       var anchor = 'characters',
           itemTitle = itemTitle || '',
           siteName = Drupal.behaviors.microsite_characters.siteName,
@@ -120,6 +134,7 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
 
               Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
               Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
+              Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
@@ -130,55 +145,63 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
     },
 
     attach: function (context, settings) {
-      Drupal.behaviors.microsite_characters.micrositeSetSectionHeight();
+      if ($('#characters').length > 0) {
+        Drupal.behaviors.microsite_characters.micrositeSetHeights();
 //      var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter();
 
-      var characters = $('#microsite #character-info'),
-          activeCharacter = characters.find('li.active').attr('id');
-      Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
+        var characters = $('#microsite #character-info'),
+            activeCharacter = characters.find('li.active').attr('id');
+        Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
+        Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
 /*
 usa_debug('******************************\n$characters: ');
 usa_debug(characters);
 usa_debug('activeCharacter: ' + activeCharacter);
 */
-      // init active character nav item
-      $('#nav-' + activeCharacter).addClass('active');
+        // init active character nav item
+        $('#nav-' + activeCharacter).addClass('active');
 
-      // init character-nav clicks
-      $('#microsite #characters .character-nav li').on('click', function(){
-        var nextItemId = $(this).attr('id');
-        Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
-      });
+        // init character-nav clicks
+        $('#microsite #characters .character-nav li').on('click', function(){
+          var nextItemId = $(this).attr('id');
+          Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
+        });
 
-      // init next / prev character nav clicks
-      $('#microsite #characters .character-nav #nav-next, #microsite #characters .character-nav #nav-prev').on('click', function(){
-        var clickedId = $(this).attr('id'),
-            navItems = $('#characters .character-nav'),
-            numNavItems = navItems.find('li').length,
-            currentItem = navItems.find('li.active'),
-            currentItemNum = currentItem.index(),
-            nextItemNum = (clickedId == 'nav-next') ? currentItemNum + 1 : currentItemNum - 1;
-        if (nextItemNum >= numNavItems) nextItemNum = 0;
-        if (nextItemNum < 0) nextItemNum = numNavItems - 1;
-        var nextItemId = $('#characters .character-nav li').eq(nextItemNum).attr('id');
+        // init next / prev character nav clicks
+        $('#microsite #characters .character-nav #nav-next, #microsite #characters .character-nav #nav-prev').on('click', function(){
+            if ($(this).hasClass('disabled')) {
+              // do nothing
+            }
+            else {
+            var clickedId = $(this).attr('id'),
+                navItems = $('#characters .character-nav'),
+                numNavItems = navItems.find('li').length,
+                currentItem = navItems.find('li.active'),
+                currentItemNum = currentItem.index(),
+                nextItemNum = (clickedId == 'nav-next') ? currentItemNum + 1 : currentItemNum - 1;
+            if (nextItemNum >= numNavItems) nextItemNum = 0;
+            if (nextItemNum < 0) nextItemNum = numNavItems - 1;
+            var nextItemId = $('#characters .character-nav li').eq(nextItemNum).attr('id');
 //usa_debug('************************\nclicked: ' + $(this).attr('id') + '\nnumNavItems: ' + numNavItems + '\ncurrentItemNum: ' + currentItemNum + '\nnextItemNum: ' + nextItemNum + '\nnextItemId: ' + nextItemId + '\ncurrentItem: ');
-        Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
-      });
+            Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
+          }
+        });
 
-      // init bio tab clicks
-      $('#microsite #characters .character-bio-tabs div').on('click', function(){
-        var clickedItem = ($(this).hasClass('character')) ? '.character' : '.actor',
-            characterId = $(this).parent().parent().attr('id');
-        $('#characters #character-info li#' + characterId).find('.actor, .character').removeClass('active');
-        $('#characters #character-info li#' + characterId + ' ' + clickedItem).addClass('active');
+        // init bio tab clicks
+        $('#microsite #characters .character-bio-tabs div').on('click', function(){
+          var clickedItem = ($(this).hasClass('character')) ? '.character' : '.actor',
+              characterId = $(this).parent().parent().attr('id');
+          $('#characters #character-info li#' + characterId).find('.actor, .character').removeClass('active');
+          $('#characters #character-info li#' + characterId + ' ' + clickedItem).addClass('active');
 //usa_debug('************************\nclicked: ' + $(this).attr('class') + '\ncharacterId: ' + characterId);
-      });
+        });
 
 
-      window.addEventListener('orientationchange', Drupal.behaviors.microsite_characters.micrositeSetSectionHeight());
-      $(window).bind('resize', function () {
-        Drupal.behaviors.microsite_characters.micrositeSetSectionHeight();
-      });
+        window.addEventListener('orientationchange', Drupal.behaviors.microsite_characters.micrositeSetHeights());
+        $(window).bind('resize', function () {
+          setTimeout(Drupal.behaviors.microsite_characters.micrositeSetHeights, 500);
+        });
+      }
 
 
     }

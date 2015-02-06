@@ -3,7 +3,6 @@
  * Template of Characters page
  *
  * Variables:
- * - $section_title - title of section
  * - $people - array of people:
  * -  - $people[n]['id'] - machine-readable id of person
  * -  - $people[n]['url'] - machine-readable title for part of url.
@@ -18,9 +17,7 @@
  * -  - $people[n]['character_bio_summary'] - Summary of the character bio
  * -  - $people[n]['character_bio'] - character bio
  * -  - $people[n]['status'] - if character active is set. We can use it as class. Just insert this string to html tag.
- * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
- * -  - $people[n]['person_preview_image_url'] - Image preview for a hover action.
- * - $characters_navigation - pre-rendered list of navigation links
+ * -  - $people[n]['preview_image_url'] - Image preview for a hover action.
  * - $is_last - flag of the latest section (appears only on the latest)
  * - $section_separator - pre-rendered section separator
  * - $section_title - Title of section.
@@ -81,13 +78,20 @@
       <h2 class="right-pane content"><?php print $section_title; ?></h2>
     <?php endif; ?>
     <div class="underline right-pane content"></div>
-    <?php if (!empty($characters_navigation)): ?>
+    <?php if (!empty($people)): ?>
       <div class="character-nav right-pane content">
-        <div id="nav-prev"><span>&lt;</span></div>
+        <div id="nav-prev" class="prev btn icon-arrow2-left"><span>&lt;</span></div>
         <ul>
-          <?php print $characters_navigation; ?>
+          <?php foreach ($people as $person): ?>
+          <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
+            <div class="tooltip">
+              <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
+              <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
+            </div>
+          </li>
+          <?php endforeach; ?>
         </ul>
-        <div id="nav-next"><span>&gt;</span></div>
+        <div id="nav-next" class="next btn icon-arrow2"><span>&gt;</span></div>
       </div>
     <?php endif; ?>
 
@@ -101,7 +105,19 @@
               <h3><?php print $person['title']; ?></h3>
             <?php endif; ?>
             <?php if (!empty($person['social'])): ?>
-              <div class="character-social"><?php print $person['social']; ?></div>
+              <div class="character-social">
+                <div class="view view-usa-people view-id-usa_people view-display-id-panel_pane_2 icons-social icons-inline view-dom-id-7189625a5498dc298003c3cbd958797d">
+                  <div class="view-content">
+                    <div>
+                      <?php foreach ($person['social'] as $provider => $link): ?>
+                      <?php if (!empty($link['url'])): ?>
+                      <a href="<?php print $link['url']; ?>" class="person-<?php print $provider; ?> usasocial-<?php print $provider; ?>" target="_blank"><?php print $provider; ?></a>
+                      <?php endif; ?>
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <?php endif; ?>
             <?php if (!empty($person['role'])): ?>
               <div class="character-role"><?php print $person['role']; ?></div>

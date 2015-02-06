@@ -75,11 +75,11 @@
   <!-- characters title and navigation -->
   <div class="right-pane-content">
     <?php if (!empty($section_title)): ?>
-      <h2 class="right-pane content"><?php print $section_title; ?></h2>
+      <h2 class="content"><?php print $section_title; ?></h2>
     <?php endif; ?>
-    <div class="underline right-pane content"></div>
+    <div class="underline content"></div>
     <?php if (!empty($people)): ?>
-    <div class="character-nav right-pane content">
+    <div class="character-nav content">
       <center>
       <div id="nav-prev" class="prev btns"><span>&lt;</span></div>
       <ul>
@@ -100,9 +100,12 @@
     <!-- character info -->
     <?php if (!empty($people)): ?>
     <div id="character-info-container" class="clearfix">
-      <ul id="character-info" class="right-pane content">
+      <ul id="character-info" class="content">
       <?php foreach ($people as $person_key => $person): ?>
         <li id ="<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>">
+            <?php if (!empty($person['preview_image_url'])): ?>
+            <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>">
+            <?php endif; ?>
             <?php if (!empty($person['title'])): ?>
               <h3><?php print $person['title']; ?></h3>
             <?php endif; ?>
@@ -150,6 +153,6 @@
     <!-- end character info -->
 
     <!-- 300x250 ad -->
-    <div class="ad300x250 right-pane content dart-tag dart-name-300x250_ifr_reload_characters"></div>
+    <div class="ad300x250 content dart-tag dart-name-300x250_ifr_reload_characters"></div>
   </div>
 </div>

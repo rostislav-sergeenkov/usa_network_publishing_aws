@@ -20,7 +20,7 @@
   width: calc(100% - 190px);
   position: relative;
   margin: 0 0 0 190px;
-  max-width: 1500px;
+  max-width: none;
 }
 #microsite #characters #character-background {
   width: 100%;
@@ -64,7 +64,6 @@
   left: -100%;
   display: block;
 }
-#microsite #characters .right-pane,
 #microsite #characters .right-pane-content {
   width: 45%;
   margin-left: 55%;
@@ -195,13 +194,12 @@
 }
 #microsite #characters h3 {
   display: inline-block;
-  margin: 0;
+  margin: 0 15px 0 0;
   font-size: 1.6em;
   letter-spacing: 3px;
 }
 #microsite #characters .character-social {
   display: inline-block;
-  margin-left: 15px;
   line-height: 0.6em;
 }
 #microsite #characters .character-social div {
@@ -212,7 +210,6 @@
   color: #FFF;
   background-color: #0ab6e8;
   font-size: 1em;
-/* */
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -223,7 +220,6 @@
   width: 22px;
   display: inline-block;
   margin-left: 5px;
-/* */
 }
 #microsite #characters .icons-social a.person-facebook {
   padding-left: 6px;
@@ -235,6 +231,7 @@
   margin-bottom: 1em;
 }
 #microsite #characters .character-bio-tabs {
+  clear: left;
   height: 28px;
   margin-bottom: 15px;
 }
@@ -257,16 +254,107 @@
   color: #000;
 }
 #microsite .character-bios-container {
-  height: 500px;
   position: relative;
   display: block;
   width: 100%;
 }
 #microsite #characters .text {
-  height: 500px;
   overflow-y: auto;
+  overflow-x: hidden;
   display: none;
 }
 #microsite #characters .text.active {
   display: block;
+}
+#microsite #characters .ad300x250 {
+  height: 250px;
+}
+#microsite #characters .mobile {
+  display: none;
+}
+
+
+/* BEGIN BREAKPOINTS */
+@media (max-width: 1168px) {
+#microsite #characters #right-pane-bg {
+  width: calc((100% - 190px) * .60);
+}
+#microsite #characters .right-pane-content {
+  width: 60%;
+  margin-left: 40%;
+}
+}
+
+@media (max-width: 1020px) {
+#microsite #characters #right-pane-bg {
+  width: calc((100% - 190px) * .70);
+}
+#microsite #characters .right-pane-content {
+  width: 70%;
+  margin-left: 30%;
+}
+}
+
+@media (max-width: 874px) {
+#microsite #characters #character-inner-container {
+  width: 100%;
+  margin: 0 auto;
+}
+#microsite #characters #right-pane-bg {
+  background-color: transparent;
+}
+#microsite #characters .right-pane-content {
+  width: 75%;
+  margin: 0 auto;
+}
+#microsite #characters .character-nav li:hover .tooltip {
+  display: none;
+}
+#microsite #characters #character-info li {
+  position: absolute;
+}
+#microsite #characters .mobile {
+  display: block;
+  width: 25%;
+  float: left;
+  margin-right: 12px;
+}
+#microsite #characters h3 {
+  margin: 0;
+  font-size: 1.2em;
+  letter-spacing: 3px;
+  float: left;
+  width: calc(75% - 12px);
+}
+#microsite #characters .character-social {
+  line-height: 0.6em;
+  float: left;
+  width: calc(75% - 12px);
+}
+#microsite #characters .character-role {
+  margin-top: 0.1em;
+  margin-bottom: 1em;
+  clear: left;
+}
+}
+
+@media (max-width: 542px) {
+#microsite #characters #character-inner-container {
+  width: 100%;
+  margin: 0 auto;
+}
+#microsite #characters #right-pane-bg {
+  background-color: transparent;
+}
+#microsite #characters .right-pane-content {
+  width: 90%;
+  margin: 0 auto;
+}
+#microsite #characters #character-info li {
+  position: relative;
+}
+#microsite #characters .text {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 }

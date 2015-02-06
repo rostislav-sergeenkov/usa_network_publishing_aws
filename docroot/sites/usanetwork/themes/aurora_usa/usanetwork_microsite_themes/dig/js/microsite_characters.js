@@ -5,6 +5,7 @@
     basePath: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig',
     basePageName: 'Dig | USA Network',
     defaultCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
+    defaultMobileCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
       var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter(),
@@ -23,8 +24,11 @@
     micrositeSetHeights: function setHeights() {
       var sectionHeight = $(window).height() - $('#mega-nav').height(),
           characterTextHeight = Math.ceil(sectionHeight * 0.277);
-      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
+      if (characterTextHeight < 200) characterTextHeight = 200;
+      else if ($(window).width() < 542) characterTextHeight = 800;
       $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
+      $('#microsite #characters #character-info-container').css('min-height', (characterTextHeight + 172) + 'px');
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {
@@ -33,11 +37,16 @@
     },
 
     micrositeSetCharBackground: function setCharBackground(charId) {
-      var nextBgId = 'bg-' + charId,
-          nextItemBg = $('#' + nextBgId).attr('data-bg-url');
-      if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
+      if ($(window).width() < 874) {
+        $('#microsite #characters #character-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_characters.defaultMobileCharBg + '")');
+      }
+      else {
+        var nextBgId = 'bg-' + charId,
+            nextItemBg = $('#' + nextBgId).attr('data-bg-url');
+        if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
 //usa_debug('micrositeSetCharBackground(' + charId + ')\nnextItemBg: ' + nextItemBg);
-      $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
+        $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
+      }
     },
 
     // toTitleCase
@@ -112,16 +121,14 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
 
         // prepare next or previous background and character-info
         $('#microsite #characters .' + nextCharacterId).addClass(direction);
-        $('#microsite #characters #character-info-container').height(characterInfoHeight + 'px');
+//        $('#microsite #characters #character-info-container').css('min-height', characterInfoHeight + 'px');
 
         // refresh ads
         Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
 
         // animate active character-info
         $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, 600, 'jswing', function(){
-          // animate backgrounds
-          $('#character-background li.active').animate({'left': sign + '100%'}, 800, 'jswing');
-          $('#character-background li.' + direction).animate({'left': '0'}, 800, 'jswing', function(){
+          if ($(window).width() < 874) {
             // animate next character-info
             $('#microsite #characters #character-info-container').animate({'height': nextCharacterInfoHeight + 'px'}, 600, 'jswing');
             $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
@@ -141,7 +148,32 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
               navItems.find('li.disabled').removeClass('disabled');
               $('#characters-content').css('overflow', 'auto');
             });
-          });
+          }
+          else {
+            // animate backgrounds
+            $('#character-background li.active').animate({'left': sign + '100%'}, 800, 'jswing');
+            $('#character-background li.' + direction).animate({'left': '0'}, 800, 'jswing', function(){
+              // animate next character-info
+              $('#microsite #characters #character-info-container').animate({'height': nextCharacterInfoHeight + 'px'}, 600, 'jswing');
+              $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
+                // update classes
+                $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
+                $('#microsite #characters .' + currentCharacterId).removeClass('active ');
+
+                // update active nav item
+                navItems.find('li.active').removeClass('active');
+                nextItem.addClass('active');
+
+                Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
+                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
+                Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+
+                // remove disabled
+                navItems.find('li.disabled').removeClass('disabled');
+                $('#characters-content').css('overflow', 'auto');
+              });
+            });
+          }
         });
       }
     },

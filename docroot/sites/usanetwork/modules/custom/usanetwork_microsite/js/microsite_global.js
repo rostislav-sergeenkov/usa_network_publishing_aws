@@ -12,7 +12,7 @@
   Drupal.behaviors.microsite_scroll = {
 
     //create mobile menu for microsite
-    micrositeCreateMobileMenu : function createMobileMenu(){
+    micrositeCreateMobileMenu : function (){
       var leftNav = $('#left-nav-links-list'),
         leftNavItem = leftNav.find('li.internal'),
         mobileMenu = $('#jPanelMenu-menu #tv-show-menu');
@@ -79,7 +79,7 @@
 
 
     //ajax request
-    micrositeGetVideoDesc : function getVideoDesc(url){
+    micrositeGetVideoDesc : function (url){
       $.ajax({
         type: 'GET',
         url: url,
@@ -90,13 +90,14 @@
       });
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer : function setVideoPlayer(selector){
+    micrositeSetVideoPlayer : function (selector){
 
       if(!selector){
         selector = '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active';
       }
 
-      var videoPlayer = $('#video-container .video-player'),
+      var videoContainer = $('#video-container'),
+        videoPlayer = $('#video-container .video-player'),
         Player = $('#video-container .video-player iframe'),
         currentId = Player.attr('id'),
         activeVideoThumb = $(selector),
@@ -133,20 +134,23 @@
       }
 
       $pdk.bindPlayerEvents(dataVideoUrl, currentId);
+
     },
-    micrositeStopPlayer : function stopVideo(){
-      if(!$pdk.controller.clickPlayButton(true)){
-        $pdk.controller.clickPlayButton(false);
+    // SetPausePlayer
+    micrositeSetPausePlayer : function (){
+
+      var videoContainer = $('#video-container');
+
+      if (videoContainer.hasClass('start')){
+        if(videoContainer.hasClass('pause')){
+          return false;
+        }else if(videoContainer.hasClass('play')){
+          $pdk.controller.clickPlayButton(false);
+          $pdk.controller.pause(true);
+        }
       }
-      if(!$pdk.controller.pause(true)){
-        $pdk.controller.pause(true);
-      }
-      if(!$pdk.controller.clickPlayButton(false)){
-        $pdk.controller.clickPlayButton(false);
-      }
-      if(!$pdk.controller.pause(false)){
-        $pdk.controller.pause(true);
-      }
+
+
     },
     //scroll to top
     micrositeScrollToTop : function scrollToTop(){
@@ -372,7 +376,7 @@
             }
           }
           if($(nextSection).attr('id') != 'videos'){
-            Drupal.behaviors.microsite_scroll.micrositeStopPlayer();
+            Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
           }
 
           Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -519,7 +523,8 @@
         e.preventDefault();
 
           var refreshAdsOmniture = 0,
-            Player = $('#video-container .video-player iframe');
+            Player = $('#video-container .video-player iframe'),
+            videoContainer = $('#video-container');
 
           if (!$(this).hasClass('active')) {
             previewItem.removeClass('active');
@@ -527,7 +532,7 @@
             refreshAdsOmniture = 1;
           }else{
             Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
-            if(Player.attr('data-ad-start') == 'true'){
+            if(videoContainer.hasClass('pause')){
               $pdk.controller.clickPlayButton(true);
               $pdk.controller.pause(false);
             }

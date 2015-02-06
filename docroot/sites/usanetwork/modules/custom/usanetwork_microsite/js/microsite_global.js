@@ -554,7 +554,6 @@
           Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
           Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
-
           if (refreshAdsOmniture) {
             Drupal.behaviors.microsite_scroll.create728x90Ad();
             setOmnitureData(anchor, itemTitle);
@@ -637,6 +636,11 @@
         Drupal.behaviors.microsite_scroll.create728x90Ad();
         Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();
+        if($('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active').length == 0 ){
+          var videoUrl = $('#video-container .video-player').attr('data-video-url');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + videoUrl + '"]').addClass('active');
+        }
+
         if($('#videos').hasClass('active')){
           $('#video-container .video-player iframe').attr('data-autoplay', 'false');
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();

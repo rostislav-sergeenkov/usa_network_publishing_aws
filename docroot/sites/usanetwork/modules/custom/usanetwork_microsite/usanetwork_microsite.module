@@ -617,9 +617,13 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     }
 
     $show_in_player = 0;
-    $video_for_player = (arg(4) !== null) ? arg(4) : null; // gets name of video from url, if present
+    $first_output_id = NULL;
+    $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->published) ? $current_video_file->published : NULL;
+      if ($first_output_id === NULL && $published) {
+        $first_output_id = $v_key;
+      }
       $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($current_video_file);
       // if there's a video listed in the url, set it as the video to show in the player
       $state = '';
@@ -627,8 +631,9 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $show_in_player = $v_key;
         $state = 'active';
       }
-      if(empty($video_for_player) && $v_key == 0) {
+      elseif(empty($video_for_player) && $first_output_id == $v_key) {
         $state = 'active';
+        $show_in_player = $first_output_id;
       }
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;

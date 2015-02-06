@@ -79,20 +79,22 @@
     <?php endif; ?>
     <div class="underline right-pane content"></div>
     <?php if (!empty($people)): ?>
-      <div class="character-nav right-pane content">
-        <div id="nav-prev" class="prev btn icon-arrow2-left"><span>&lt;</span></div>
-        <ul>
-          <?php foreach ($people as $person): ?>
-          <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
-            <div class="tooltip">
-              <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
-              <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
-            </div>
-          </li>
-          <?php endforeach; ?>
-        </ul>
-        <div id="nav-next" class="next btn icon-arrow2"><span>&gt;</span></div>
-      </div>
+    <div class="character-nav right-pane content">
+      <center>
+      <div id="nav-prev" class="prev btns"><span>&lt;</span></div>
+      <ul>
+        <?php foreach ($people as $person): ?>
+        <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
+          <div class="tooltip">
+            <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
+            <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
+          </div>
+        </li>
+        <?php endforeach; ?>
+      </ul>
+      <div id="nav-next" class="next btns"><span>&gt;</span></div>
+      </center>
+    </div>
     <?php endif; ?>
 
     <!-- character info -->

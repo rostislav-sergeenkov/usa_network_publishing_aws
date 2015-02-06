@@ -85,6 +85,7 @@
         // do nothing
       }
       else {
+        $('#characters-content').css('overflow', 'hidden');
         nextItem.addClass('disabled');
         var navItems = $('#characters .character-nav'),
             currentItem = navItems.find('li.active'),
@@ -138,6 +139,7 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
+              $('#characters-content').css('overflow', 'auto');
             });
           });
         });

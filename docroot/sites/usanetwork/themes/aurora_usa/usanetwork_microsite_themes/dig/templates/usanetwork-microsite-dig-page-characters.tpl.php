@@ -128,7 +128,7 @@
               <div class="character-role"><?php print $person['role']; ?></div>
             <?php endif; ?>
             <?php if (!empty($person['description']) && !empty($person['character_bio'])): ?>
-              <div class="character-bio-tabs" class="clearfix">
+              <div class="character-bio-tabs clearfix">
                 <div class="actor active">Actor Bio</div>
                 <div class="character">Character Bio</div>
               </div>

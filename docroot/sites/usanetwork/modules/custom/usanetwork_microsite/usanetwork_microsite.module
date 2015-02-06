@@ -727,6 +727,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   if($type == 'videos') {
     return $section_wrapper->field_ms_videos->value();
   }
+  elseif($type == 'characters') {
+    return $section_wrapper->field_person->value();
+  }
   return NULL;
 }
 
@@ -753,6 +756,23 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
     }
     if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file)) {
       return $file;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get person node by url parameter.
+ *
+ * @param $node
+ * @return mixed
+ */
+function _usanetwork_microsite_get_person_by_url($node, $param) {
+  //@todo Sections name to constant or other way that would hold it.
+  $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
+  foreach($characters as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_caracter_url($node)) {
+      return $node;
     }
   }
   return NULL;
@@ -1275,9 +1295,11 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
         case 'characters':
           $omniture_prop3 = 'Bio';
           if (isset($args[4])) {
-            $character_name = $args[4]; // @TODO: Get character name based on the url and set it here
-            $omniture_prop5 = t($entity->title . ' : Bio : ' . $character_name);
-            $omniture_pagename = t($entity->title . ' : Bio : ' . $character_name);
+            $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = t($entity->title . ' : Bio : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : Bio : ' . $node->title);
+            }
           }
           break;
         case 'galleries':

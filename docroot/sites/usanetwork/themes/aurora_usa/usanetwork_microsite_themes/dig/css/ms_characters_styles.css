@@ -1,3 +1,36 @@
+/* IE scrollbars */
+body{
+  scrollbar-base-color: #000;
+  scrollbar-face-color: #333;
+  scrollbar-3dlight-color: #333;
+  scrollbar-highlight-color: #333;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #000;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: #000;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #333;
+  background: rgba(255,255,255,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,255,255,0.8);
+}
 #microsite #characters {
   position: relative;
   top: 0;
@@ -22,15 +55,11 @@
   margin: 0 0 0 190px;
   max-width: none;
 }
-#microsite #characters #character-background {
-  width: 100%;
-}
 #microsite #characters #character-background li {
   display: none;
   width: 100%;
   margin: 0;
   padding: 0;
-  min-height: 1200px;
   position: absolute;
   top: 0;
   left: 0;
@@ -42,19 +71,6 @@
 }
 #microsite #characters #character-background li.active {
   display: block;
-}
-@media(min-width: 875px) {
-/*
-  #microsite #characters #character-background li#bg-todd-chrisley {
-    background-image: url("../images/dig_bg_jasonisaacs.jpg");
-  }
-  #microsite #characters #character-background li#bg-lindsie-chrisley-campbell {
-    background-image: url("../images/dig_bg_videos.jpg");
-  }
-  #microsite #characters #character-background li#bg-chase-chrisley {
-    background-image: url("../images/dig_bg_jasonisaacs.jpg");
-  }
-*/
 }
 #microsite #characters #character-background li.next {
   left: 100%;
@@ -72,10 +88,10 @@
   position: fixed;
   top: 0;
   right: 0;
-  min-height: 1200px;
   background: rgb(0, 0, 0) transparent;
   background-color: rgba(0, 0, 0, 0.75);
-  width: calc((100% - 190px) * .45);
+  width: calc((100% - 190px) * 0.45);
+  margin-left: calc(((100% - 190px) * 0.55) + 190px);
 }
 #microsite #characters .ad-leaderboard {
   position: relative;
@@ -115,9 +131,8 @@
   margin: 0 10px;
   overflow: visible;
   position: relative;
-  top: 4px;
+  top: 5px;
   left: 0;
-  overflow: visible;
   cursor: pointer;
 }
 #microsite #characters .character-nav li.active,
@@ -125,17 +140,22 @@
   background: #e5ce96;
 }
 #microsite #characters .character-nav li .tooltip {
-  display: none;
   position: absolute;
   bottom: 21px;
   left: -148px;
   width: 300px;
   height: 80px;
   text-align: center;
+  font-size: 0.8em;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
 }
 #microsite #characters .character-nav li .tooltip div {
   line-height: 1em;
   text-transform: uppercase;
+  margin-top: 3px;
 }
 #microsite #characters .character-nav li .tooltip img {
   border: 2px solid #FFF;
@@ -144,7 +164,7 @@
   margin: 0 auto;
 }
 #microsite #characters .character-nav li:hover .tooltip {
-  display: block;
+  opacity: 1;
 }
 #microsite #characters .btns {
   color: #FFF;
@@ -160,6 +180,21 @@
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 #microsite #characters .character-nav #nav-prev:hover,
 #microsite #characters .character-nav #nav-next:hover {
@@ -173,13 +208,14 @@
 }
 #microsite #characters #character-info-container {
   position: relative;
-  min-height: 500px;
+  min-height: 200px;
 }
 #microsite #characters #character-info li {
   position: absolute;
   top: 0;
   left: 0;
   display: none;
+  width: 100%;
 }
 #microsite #characters #character-info li.active {
   display: block;
@@ -195,8 +231,9 @@
 #microsite #characters h3 {
   display: inline-block;
   margin: 0 15px 0 0;
-  font-size: 1.6em;
-  letter-spacing: 3px;
+  font-size: 1.4em;
+  letter-spacing: .05em;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 #microsite #characters .character-social {
   display: inline-block;
@@ -259,12 +296,22 @@
   width: 100%;
 }
 #microsite #characters .text {
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  display: none;
+  width: 100%;
+  padding-right: 10px;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+  z-index: 10;
 }
 #microsite #characters .text.active {
-  display: block;
+  opacity: 1;
+  z-index: 20;
 }
 #microsite #characters .ad300x250 {
   height: 250px;
@@ -275,23 +322,13 @@
 
 
 /* BEGIN BREAKPOINTS */
-@media (max-width: 1168px) {
-#microsite #characters #right-pane-bg {
-  width: calc((100% - 190px) * .60);
-}
-#microsite #characters .right-pane-content {
-  width: 60%;
-  margin-left: 40%;
-}
-}
-
 @media (max-width: 1020px) {
 #microsite #characters #right-pane-bg {
-  width: calc((100% - 190px) * .70);
+  width: calc(100% - 190px);
 }
 #microsite #characters .right-pane-content {
-  width: 70%;
-  margin-left: 30%;
+  width: 100%;
+  margin-left: 0;
 }
 }
 
@@ -309,9 +346,6 @@
 }
 #microsite #characters .character-nav li:hover .tooltip {
   display: none;
-}
-#microsite #characters #character-info li {
-  position: absolute;
 }
 #microsite #characters .mobile {
   display: block;
@@ -349,12 +383,5 @@
 #microsite #characters .right-pane-content {
   width: 90%;
   margin: 0 auto;
-}
-#microsite #characters #character-info li {
-  position: relative;
-}
-#microsite #characters .text {
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 }

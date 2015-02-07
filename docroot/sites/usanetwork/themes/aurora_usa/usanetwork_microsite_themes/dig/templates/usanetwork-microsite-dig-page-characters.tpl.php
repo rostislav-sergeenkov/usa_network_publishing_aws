@@ -81,7 +81,7 @@
     <?php if (!empty($people)): ?>
     <div class="character-nav content">
       <center>
-      <div id="nav-prev" class="prev btns"><span>&lt;</span></div>
+      <div id="nav-prev" class="prev btns">Previous</div>
       <ul>
         <?php foreach ($people as $person): ?>
         <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
@@ -92,7 +92,7 @@
         </li>
         <?php endforeach; ?>
       </ul>
-      <div id="nav-next" class="next btns"><span>&gt;</span></div>
+      <div id="nav-next" class="next btns">Next</div>
       </center>
     </div>
     <?php endif; ?>

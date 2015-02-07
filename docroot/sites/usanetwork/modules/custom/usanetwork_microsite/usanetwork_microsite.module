@@ -444,8 +444,14 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $person_nodes = array($person_nodes);
     }
     $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+// *************************************
+// @TODO: Check the url to see if it points to a valid person.
+// For example, if the url is something like this: /dig/characters/wrong-person-url-path
+// then show a 404 error.
+// *************************************
+    $character_count = 0;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
-      if($current_person_node->current_state != 'published' || empty($current_person_node->status)) {
+      if ($current_person_node->current_state != 'published' || empty($current_person_node->status)) {
         continue;
       }
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
@@ -473,7 +479,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       );
       $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
       $status = '';
-      if (empty($current_character) && $person_node_key == 0) {
+      if (empty($current_character) && $character_count == 0) {
         $status = 'active';
       }
       elseif (!empty($current_character) && $current_character == $character_url) {
@@ -495,6 +501,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'preview_image_url' => $person_preview_image_url,
         'social' => $social_links,
       );
+      $character_count++;
     }
   }
 

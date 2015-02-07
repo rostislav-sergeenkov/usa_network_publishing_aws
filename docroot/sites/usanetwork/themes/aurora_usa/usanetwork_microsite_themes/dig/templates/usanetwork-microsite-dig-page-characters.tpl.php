@@ -28,7 +28,7 @@
 <?php if (!empty($people)): ?>
 <ul id="character-background">
   <?php foreach ($people as $person): ?>
-  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>"></li>
+  <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>">&nbsp;</li>
   <?php endforeach; ?>
 </ul>
 <!-- end backgounds -->

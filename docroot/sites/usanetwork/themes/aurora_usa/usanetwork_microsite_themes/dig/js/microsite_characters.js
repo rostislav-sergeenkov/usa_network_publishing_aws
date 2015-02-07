@@ -47,7 +47,7 @@
         var nextBgId = 'bg-' + charId,
             nextItemBg = $('#' + nextBgId).attr('data-bg-url');
         if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
-        $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
+        if ($('#' + nextBgId).length > 0) $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
       }
     },
 

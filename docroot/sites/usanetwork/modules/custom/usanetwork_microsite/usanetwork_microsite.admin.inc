@@ -58,14 +58,14 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       );
       
       //gallery
-      $form[$k]['field_media_gallery']['#states'] = array(
+      $form[$k]['field_ms_media_gallery']['#states'] = array(
         'visible' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'galleries'),
         ),
       );
       
       //characters
-      $form[$k]['field_person']['#states'] = array(
+      $form[$k]['field_ms_person']['#states'] = array(
         'visible' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'characters'),
         ),

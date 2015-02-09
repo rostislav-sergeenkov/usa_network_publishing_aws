@@ -745,7 +745,7 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
     return $section_wrapper->field_ms_videos->value();
   }
   elseif($type == 'characters') {
-    return $section_wrapper->field_person->value();
+    return $section_wrapper->field_ms_person->value();
   }
   return NULL;
 }

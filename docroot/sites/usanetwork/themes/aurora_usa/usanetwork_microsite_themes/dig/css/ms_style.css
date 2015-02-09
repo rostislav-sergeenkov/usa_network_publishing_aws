@@ -463,9 +463,6 @@ you can use the generic selector below, but it's slower:
   max-width: 728px;
   width: 100%;
 }
-#microsite .ad-leaderboard iframe img {
-  max-width: 100%;
-}
 /* add some padding to prevent the next button from sitting on top of content */
 #microsite .ad-leaderboard + div {
   padding-bottom: 95px;

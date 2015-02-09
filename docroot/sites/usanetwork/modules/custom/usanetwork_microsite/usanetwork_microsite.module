@@ -332,7 +332,7 @@ function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapp
 /**
  * Renders Home page.
  */
-function _usanetwork_microsite_render_page_home($section_wrapper) {
+function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
 
   $field_collection_entity_id = $section_object->item_id;
@@ -349,6 +349,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
     $result = $query->execute()->fetch();
 
     if ($result) {
+      //@todo this variable do not use. May by we should delete this code.
       $show_nid = $result->show_nid;
     }
   }
@@ -371,6 +372,12 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
   if (!empty($section_object->field_usa_tv_promo)) {
     $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser', $featured_promo_first_view_mode);
+  }
+
+  $characters_section_wrapper =_usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+  $characters_section_object = $characters_section_wrapper->value();
+  if (!empty($characters_section_object->field_ms_person)) {
+    $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
   }
 
 /*
@@ -1145,6 +1152,24 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
 }
 
 /**
+ * Renders all videos of node field.
+ */
+function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
+  $items = array();
+  foreach ($node_wrapper_field as $field_wrapper) {
+    $person_node = $field_wrapper->value();
+    $person_title = _usanetwork_microsite_get_person_title_and_role_name($person_node);
+    $image_field = $field_wrapper->field_usa_character_thumb->value();
+    $image_url = file_create_url($image_field['uri']);
+    $items[] = array(
+      'title' => $person_title['person_title'],
+      'image_url' => $image_url,
+    );
+  }
+  return $items;
+}
+
+/**
  * Parse url and get current video parameter.
  *
  * @param $url
@@ -1438,6 +1463,16 @@ function _usanetwork_microsite_get_person_title_and_role_name($person_node) {
     $person_names['person_title'] = $actor_full_name;
   }
   return $person_names;
+}
+
+function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type) {
+  $microsite_node_wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($microsite_node_wrapper->field_ms_section as $section_wrapper) {
+    if($section_wrapper->field_ms_section_type->value() == $section_type) {
+      return $section_wrapper;
+    }
+  }
+  return NULL;
 }
 
 /**

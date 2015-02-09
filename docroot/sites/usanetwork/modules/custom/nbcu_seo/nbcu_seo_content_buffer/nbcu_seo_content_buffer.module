@@ -154,7 +154,9 @@ function _nbcu_seo_content_buffer_build_buffer() {
 
       // Writting sitemap
       try {
-        $sitemap = new NBCUSitemapWriter($sitemap_object, 1, NBCU_SEO_CONTENT_BUFFER_NAME);
+        module_load_include('inc', 'xmlsitemap', 'xmlsitemap.pages');
+        $chunk = xmlsitemap_get_current_chunk($sitemap_object);
+        $sitemap = new NBCUSitemapWriter($sitemap_object, $chunk, NBCU_SEO_CONTENT_BUFFER_NAME);
         $sitemap->startDocument();
 
         foreach ($elements as $element) {

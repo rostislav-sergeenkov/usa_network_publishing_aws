@@ -451,23 +451,14 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         continue;
       }
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
-      $person_title = $current_person_node->title;
-      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_title)));
+      $person_names = _usanetwork_microsite_get_person_title_and_role_name($current_person_node);
+      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_names['person_title'])));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
       $image_field = $person_node_wrapper->field_usa_character_thumb->value();
       $person_preview_image_url =  image_style_url('media_thumbnail', $image_field['uri']);
 
-      $role_term = $person_node_wrapper->field_role->value();
-      $role_term_name = $role_term->name;
-      $actor_full_name = $person_node_wrapper->field_usa_actor_name->value();
-      // If a person's role is Character, then the person_title is actually
-      // the actor's full name and their role is the person_title.
-      if ($role_term_name == 'Character' && !empty($actor_full_name)) {
-        $role_term_name = $person_title;
-        $person_title = $actor_full_name;
-      }
       $character_bio = $person_node_wrapper->field_person_ms_character_bio->value();
       $social_links = array(
         'facebook' => $person_node_wrapper->field_usa_link_facebook->value(),
@@ -487,12 +478,12 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       }
       $theme_variables['people'][] = array(
         'id' => $person_id,
-        'title' => $person_title,
+        'title' => $person_names['person_title'],
         'url' => _usanetwork_microsite_get_suggested_caracter_url($current_person_node),
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
-        'role' => $role_term_name,
+        'role' => $person_names['role_name'],
         'character_bio_summary' => $character_bio['summary'],
         'character_bio' => $character_bio['value'],
         'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation),
@@ -1421,7 +1412,32 @@ function _usanetwork_microsite_define_full_episode($file) {
 
 function _usanetwork_microsite_get_suggested_caracter_url($person_node) {
   module_load_include('inc', 'pathauto', 'pathauto');
-  return pathauto_cleanstring($person_node->title);
+  $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
+  return pathauto_cleanstring($person_names['person_title']);
+}
+
+/**
+ * If a person's role is Character, then the person_title is actually
+ * the actor's full name and their role is the person_title.
+ *
+ * @param $person_node
+ * @return array
+ */
+function _usanetwork_microsite_get_person_title_and_role_name($person_node) {
+  $person_names = array(
+    'role_name' => NULL,
+    'person_title' => NULL,
+  );
+  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+  $person_names['person_title'] = $person_node->title;
+  $role_term = $person_node_wrapper->field_role->value();
+  $person_names['role_name'] = $role_term->name;
+  $actor_full_name = $person_node_wrapper->field_usa_actor_name->value();
+  if ($person_names['role_name'] == 'Character' && !empty($actor_full_name)) {
+    $person_names['role_name'] = $person_names['person_title'];
+    $person_names['person_title'] = $actor_full_name;
+  }
+  return $person_names;
 }
 
 /**

@@ -450,6 +450,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
 // then show a 404 error.
 // *************************************
     $character_count = 0;
+    $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
       if ($current_person_node->current_state != 'published' || empty($current_person_node->status)) {
         continue;
@@ -481,11 +482,13 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       );
       $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
       $status = '';
-      if (empty($current_character) && $character_count == 0) {
+      if (empty($current_character) && $character_count == 0 && !$is_active_slide) {
         $status = 'active';
+        $is_active_slide = TRUE;
       }
-      elseif (!empty($current_character) && $current_character == $character_url) {
+      elseif (!empty($current_character) && $current_character == $character_url && !$is_active_slide) {
         $status = 'active';
+        $is_active_slide = TRUE;
       }
       $theme_variables['people'][] = array(
         'id' => $person_id,
@@ -505,6 +508,10 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       );
       $character_count++;
     }
+  }
+
+  if (!$is_active_slide) {
+    drupal_not_found();
   }
 
   if (!empty($theme_variables['characters_navigation'])) {

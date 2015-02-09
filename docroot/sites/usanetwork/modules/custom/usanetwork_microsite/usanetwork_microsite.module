@@ -436,9 +436,9 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     'people' => array(),
     'characters_navigation' => NULL,
   );
-  if (!empty($section_object->field_person)) {
+  if (!empty($section_object->field_ms_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
-    $person_nodes = $section_wrapper->field_person->value();
+    $person_nodes = $section_wrapper->field_ms_person->value();
 
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($person_nodes)) {
@@ -497,8 +497,8 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
   drupal_add_js((drupal_get_path('module', 'gigya') . '/js/gigya_sharebar.js'));
   drupal_add_css((drupal_get_path('module', 'gigya') . '/css/gigya.css'));
 
-  if (!empty($section_object->field_media_gallery)) {
-    $gallery_nodes = $section_wrapper->field_media_gallery->value();
+  if (!empty($section_object->field_ms_media_gallery)) {
+    $gallery_nodes = $section_wrapper->field_ms_media_gallery->value();
 
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
     if (!is_array($gallery_nodes)) {
@@ -956,8 +956,8 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
   }
 */
   // Render Media Gallery
-  if (!empty($section_node->field_media_gallery)) {
-    $section_base_variables['media_gallery'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_media_gallery, 'full');
+  if (!empty($section_node->field_ms_media_gallery)) {
+    $section_base_variables['media_gallery'] = _usanetwork_microsite_theme_render_single_node_item($section_wrapper->field_ms_media_gallery, 'full');
   }
 
   // Render Description
@@ -966,11 +966,11 @@ function _usanetwork_microsite_theme_get_section_theme_variables($section_base_v
   }
 
   // Render Persons
-  if (!empty($section_node->field_person)) {
+  if (!empty($section_node->field_ms_person)) {
     $persons = array();
 
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
-    $person_nodes = $section_wrapper->field_person->value();
+    $person_nodes = $section_wrapper->field_ms_person->value();
 
     // 1 value is object, more that 1 is arra
     if (!is_array($person_nodes)) {

@@ -210,7 +210,7 @@
     // first and then create the 300x250
     create728x90Ad: function (section) {
       if (!section) {
-        section = $('#sections .section.active').attr('id').replace('section-', '') || 'home';
+        section = $('#sections .section.active').attr('id') || 'home';
       }
 
       usa_debug('create728x90Ad(' + section + ')');
@@ -241,6 +241,11 @@
           }
         }
       }
+      // add styles for iframe
+      $('#'+ section +' .ad-leaderboard iframe').load(function (){
+        $('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+      });
+
       // if home section, make sure the flexslider carousel has been
       // initialized before loading the 300x250 ad
       if (section != 'videos') {

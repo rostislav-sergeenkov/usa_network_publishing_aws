@@ -968,8 +968,8 @@ body.page-node-microsite {
 }
 #microsite .full-pane #video-container {
   margin-bottom: 20px;
+  position: relative;
 }
-
 #microsite .full-pane #video-container .video-title {
   font-size: 26px;
   margin: 7px 0;
@@ -1210,7 +1210,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite .mCSB_scrollTools .mCSB_draggerContainer {
   z-index: 51;
 }
-
 
 
 /* BEGIN MEDIA BREAKPOINTS */

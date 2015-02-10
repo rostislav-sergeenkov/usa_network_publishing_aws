@@ -80,7 +80,6 @@
     <div class="underline content"></div>
     <?php if (!empty($people)): ?>
     <div class="character-nav content">
-      <center>
       <div id="nav-prev" class="prev btns">Previous</div>
       <ul>
         <?php foreach ($people as $person): ?>
@@ -93,7 +92,6 @@
         <?php endforeach; ?>
       </ul>
       <div id="nav-next" class="next btns">Next</div>
-      </center>
     </div>
     <?php endif; ?>
 

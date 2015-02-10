@@ -400,6 +400,12 @@
 
       // init change url address
       function changeUrl(anchor, anchorFull) {
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull.replace('/home', '');
+          return false;
+        }
+
         if (anchor != 'home') {
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
@@ -420,12 +426,6 @@
 
         var anchor = $(this).parent().attr('data-menuanchor'),
             anchorFull = basePath + '/' + anchor;
-
-        // if this is IE9, reload the correct page
-        if ($('html.ie9').length > 0) {
-          window.location.href = anchorFull.replace('/home', '');
-          return false;
-        }
 
         changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
@@ -554,7 +554,8 @@
           return false;
         }
 
-        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        //history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        changeUrl(anchor, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();

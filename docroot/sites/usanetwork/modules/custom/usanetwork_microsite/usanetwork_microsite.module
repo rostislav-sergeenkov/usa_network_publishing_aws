@@ -440,7 +440,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
 
   $theme_variables = array(
     'people' => array(),
-    'characters_navigation' => NULL,
+    'characters_navigation' => NULL
   );
   if (!empty($section_object->field_ms_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
@@ -473,20 +473,20 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
         'pinterest' => $person_node_wrapper->field_usa_link_pinterest->value(),
         'tumblr' => $person_node_wrapper->field_usa_link_tumblr->value(),
       );
-      $character_url = _usanetwork_microsite_get_suggested_caracter_url($current_person_node);
+      $character_url = _usanetwork_microsite_get_suggested_character_url($current_person_node);
       $status = '';
-      if (empty($current_character) && $character_count == 0 && !$is_active_slide) {
+      if (empty($current_character) && $character_count == 0) {
         $status = 'active';
         $is_active_slide = TRUE;
       }
-      elseif (!empty($current_character) && $current_character == $character_url && !$is_active_slide) {
+      elseif (!empty($current_character) && $current_character == $character_url) {
         $status = 'active';
         $is_active_slide = TRUE;
       }
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_caracter_url($current_person_node),
+        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node),
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -787,7 +787,7 @@ function _usanetwork_microsite_get_person_by_url($node, $param) {
   //@todo Sections name to constant or other way that would hold it.
   $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
   foreach($characters as $node) {
-    if ($param == _usanetwork_microsite_get_suggested_caracter_url($node)) {
+    if ($param == _usanetwork_microsite_get_suggested_character_url($node)) {
       return $node;
     }
   }
@@ -1435,7 +1435,7 @@ function _usanetwork_microsite_define_full_episode($file) {
   return FALSE;
 }
 
-function _usanetwork_microsite_get_suggested_caracter_url($person_node) {
+function _usanetwork_microsite_get_suggested_character_url($person_node) {
   module_load_include('inc', 'pathauto', 'pathauto');
   $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
   return pathauto_cleanstring($person_names['person_title']);

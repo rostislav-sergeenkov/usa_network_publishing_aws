@@ -113,33 +113,44 @@ body{
   margin-bottom: 28px;
 }
 #microsite #characters .character-nav {
-  width: 136px;
-  height: 2em;
+  width: 220px;
+  height: 24px;
   margin: 30px auto;
   position: relative;
   top: 0;
   left: 0;
   color: #FFF;
+  opacity: 0;
 }
 #microsite #characters .character-nav ul {
+  float: left;
+  width: 180px;
 }
 #microsite #characters .character-nav li {
   float: left;
   background: #FFF;
   width: 12px;
   height: 12px;
-  margin: 0 10px;
+  margin: 0 10px 6px;
   overflow: visible;
   position: relative;
   top: 5px;
   left: 0;
   cursor: pointer;
 }
-#microsite #characters .character-nav li.active,
 #microsite #characters .character-nav li:hover {
   background: #e5ce96;
 }
+#microsite #characters .character-nav li.active {
+  background: #e5ce96;
+}
 #microsite #characters .character-nav li .tooltip {
+  display: none;
+}
+
+@media (min-width: 875px) {
+#microsite #characters .character-nav li .tooltip {
+  display: block;
   position: absolute;
   bottom: 21px;
   left: -148px;
@@ -166,6 +177,9 @@ body{
 #microsite #characters .character-nav li:hover .tooltip {
   opacity: 1;
 }
+}
+
+
 #microsite #characters .btns {
   color: #FFF;
   font-size: 1.5em;
@@ -174,9 +188,11 @@ body{
 }
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  float: left;
   margin: 0;
   padding: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;
@@ -196,12 +212,20 @@ body{
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
+#microsite #characters .character-nav #nav-prev {
+  float: left;
+}
+#microsite #characters .character-nav #nav-next {
+  float: right;
+}
+#microsite #characters .character-nav #nav-prev.disabled,
+#microsite #characters .character-nav #nav-next.disabled {
+  color: #333;
+}
 #microsite #characters .character-nav #nav-prev:hover,
 #microsite #characters .character-nav #nav-next:hover {
   color: #e5ce96;
 }
-#microsite #characters .character-nav #nav-prev.disabled,
-#microsite #characters .character-nav #nav-next.disabled,
 #microsite #characters .character-nav #nav-prev.disabled:hover,
 #microsite #characters .character-nav #nav-next.disabled:hover {
   color: #333;

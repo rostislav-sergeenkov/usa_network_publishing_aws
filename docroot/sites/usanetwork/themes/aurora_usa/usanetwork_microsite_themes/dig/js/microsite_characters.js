@@ -7,6 +7,28 @@
     defaultCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_bg_home.jpg',
     defaultMobileCharBg: '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_mobile_bg.jpg',
 
+    micrositeSetCharNavWidthHeight: function setCharNavWidth() {
+      var charactersNav = $('#characters .character-nav'),
+          numCharacters = charactersNav.find('li').length,
+          nextPrevWidth = $('#characters #nav-prev').outerWidth(true),
+          navElemWidth = charactersNav.find('li').outerWidth(true),
+          charNavListWidth = (numCharacters * navElemWidth),
+          charNavWidth = charNavListWidth + (nextPrevWidth * 2),
+          maxCharNavWidth = $('#characters #character-info').width(),
+          nextPrevHeight = charactersNav.find('#nav-prev').outerHeight(true),
+          navElemHeight = charactersNav.find('li').outerHeight(true),
+          navHeight = (navElemHeight > nextPrevHeight) ? nextPrevHeight : navElemHeight;
+      if (charNavWidth > maxCharNavWidth) {
+        charNavListWidth = Math.ceil(numCharacters/2) * navElemWidth;
+        charNavWidth = charNavListWidth + (nextPrevWidth * 2);
+        navHeight = (navHeight * 2) + 6;
+      }
+      charactersNav.find('ul').width(charNavListWidth).height(navHeight);
+      charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
+//      charactersNav.find('.btns').height(navHeight);
+//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
+    },
+
     micrositeSetNavNextPrevState: function setNavNextPreState() {
       var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter(),
           charactersNav = $('#characters .character-nav'),
@@ -110,15 +132,7 @@
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '';
 
-//usa_debug('nextCharacterId.css(background-image): ' + $('#bg-' + nextCharacterId).css('background-image'));
         if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
-/*
-usa_debug('currentItem: ');
-usa_debug(currentItem);
-usa_debug('nextItem: ');
-usa_debug(nextItem);
-usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + currentItemId + ', ' + currentCharacterId + '\nnext: ' + nextItemNum + ', ' + nextItemId + ', ' + nextCharacterId + '\ndirection: ' + direction + ', sign: ' + sign);
-*/
 
         // prepare next or previous background and character-info
         $('#microsite #characters .' + nextCharacterId).addClass(direction);
@@ -183,17 +197,12 @@ usa_debug('****************************\ncurrent: ' + currentItemNum + ', ' + cu
 
     attach: function (context, settings) {
       if ($('#characters').length > 0) {
-//      var activeCharacter = Drupal.behaviors.microsite_characters.micrositeGetActiveCharacter();
-
+        Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         var characters = $('#microsite #character-info'),
             activeCharacter = characters.find('li.active').attr('id');
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-/*
-usa_debug('******************************\n$characters: ');
-usa_debug(characters);
-usa_debug('activeCharacter: ' + activeCharacter);
-*/
+
         // init active character nav item
         $('#nav-' + activeCharacter).addClass('active');
 
@@ -218,7 +227,7 @@ usa_debug('activeCharacter: ' + activeCharacter);
             if (nextItemNum >= numNavItems) nextItemNum = 0;
             if (nextItemNum < 0) nextItemNum = numNavItems - 1;
             var nextItemId = $('#characters .character-nav li').eq(nextItemNum).attr('id');
-//usa_debug('************************\nclicked: ' + $(this).attr('id') + '\nnumNavItems: ' + numNavItems + '\ncurrentItemNum: ' + currentItemNum + '\nnextItemNum: ' + nextItemNum + '\nnextItemId: ' + nextItemId + '\ncurrentItem: ');
+
             Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
           }
         });
@@ -229,15 +238,38 @@ usa_debug('activeCharacter: ' + activeCharacter);
               characterId = $(this).parent().parent().attr('id');
           $('#characters #character-info li#' + characterId).find('.actor, .character').removeClass('active');
           $('#characters #character-info li#' + characterId + ' ' + clickedItem).addClass('active');
-//usa_debug('************************\nclicked: ' + $(this).attr('class') + '\ncharacterId: ' + characterId);
         });
 
         setTimeout(Drupal.behaviors.microsite_characters.micrositeSetHeights, 500);
 
-        window.addEventListener('orientationchange', Drupal.behaviors.microsite_characters.micrositeSetHeights());
-        $(window).bind('resize', function () {
-          setTimeout(Drupal.behaviors.microsite_characters.micrositeSetHeights, 500);
+        window.addEventListener('orientationchange', function() {
+          Drupal.behaviors.microsite_characters.micrositeSetHeights();
+          Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
         });
+        $(window).bind('resize', function () {
+          setTimeout(function() {
+            Drupal.behaviors.microsite_characters.micrositeSetHeights();
+            Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
+          }, 500);
+        });
+
+        // character image pre-loading on desktop only
+        if ($(window).width() > 874) {
+          $(window).bind("load", function() {
+            var preload = new Array();
+            $('#characters #character-background li').each(function() {
+              //s = $(this).attr('data-bg-url').replace(/\.(.+)$/i, "_on.$1");
+              bgUrl = $(this).attr('data-bg-url');
+              preload.push(bgUrl)
+            });
+            var img = document.createElement('img');
+            $(img).bind('load', function() {
+              if (preload[0]) {
+                  this.src = preload.shift();
+              }
+            }).trigger('load');
+          });
+        }
       }
 
 

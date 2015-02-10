@@ -26,7 +26,7 @@
       charactersNav.find('ul').width(charNavListWidth).height(navHeight);
       charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
 //      charactersNav.find('.btns').height(navHeight);
-//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
+//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemWidth: ' + navElemWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -204,7 +204,6 @@
             activeCharacter = characters.find('li.active').attr('id');
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-        Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
 
         // init active character nav item
         $('#nav-' + activeCharacter).addClass('active');
@@ -252,6 +251,7 @@
         $(window).bind('resize', function () {
           setTimeout(function() {
             Drupal.behaviors.microsite_characters.micrositeSetHeights();
+            Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
           }, 500);
         });
 

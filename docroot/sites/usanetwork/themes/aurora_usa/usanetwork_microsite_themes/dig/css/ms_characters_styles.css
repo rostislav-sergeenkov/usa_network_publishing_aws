@@ -370,7 +370,8 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 /* BEGIN BREAKPOINTS */
 @media (max-width: 1020px) {
 #microsite #characters #right-pane-bg {
-  width: calc(100% - 190px);
+  width: 100%;
+  margin-left: 0;
 }
 #microsite #characters .right-pane-content {
   width: 100%;

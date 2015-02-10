@@ -1152,7 +1152,7 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
 }
 
 /**
- * Renders all videos of node field.
+ * Renders all person of node field.
  */
 function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
   $items = array();
@@ -1160,7 +1160,7 @@ function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_fiel
     $person_node = $field_wrapper->value();
     $person_title = _usanetwork_microsite_get_person_title_and_role_name($person_node);
     $image_field = $field_wrapper->field_usa_character_thumb->value();
-    $image_url = file_create_url($image_field['uri']);
+    $image_url = image_style_url('meet_the_cast_carousel', $image_field['uri']);
     $items[] = array(
       'title' => $person_title['person_title'],
       'image_url' => $image_url,

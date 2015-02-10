@@ -430,9 +430,14 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .ad-leaderboard {
   min-height: 90px;
-  margin: 0 auto;
-  padding: 0 0 34px;
+  margin: 0 auto 34px;
+  padding: 0;
   overflow: hidden;
+  position: relative;
+}
+#microsite .ad-leaderboard iframe {
+  max-width: 728px;
+  width: 100%;
 }
 /* add some padding to prevent the next button from sitting on top of content */
 #microsite .ad-leaderboard + div {
@@ -1631,6 +1636,13 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     float: left;
     margin-left: 0;
     clear: left;
+  }
+  #microsite .ad-leaderboard {
+    min-height: 50px;
+  }
+  #microsite .ad-leaderboard iframe {
+    height: 50px;
+    width: 300px;
   }
 }
 @media (max-width: 480px){

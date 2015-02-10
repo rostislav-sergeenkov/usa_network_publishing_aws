@@ -440,7 +440,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
 
   $theme_variables = array(
     'people' => array(),
-    'characters_navigation' => NULL
+    'characters_navigation' => NULL,
   );
   if (!empty($section_object->field_ms_person)) {
     // Content type is broken, it's impossible to walk in it using EntityMetadataWrapper.
@@ -503,7 +503,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     }
   }
 
-  if (!$is_active_slide) {
+  if (!empty($current_character) && !$is_active_slide) {
     drupal_not_found();
   }
 

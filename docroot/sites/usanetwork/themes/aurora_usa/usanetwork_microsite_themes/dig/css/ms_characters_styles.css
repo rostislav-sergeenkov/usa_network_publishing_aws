@@ -11,7 +11,7 @@ body{
 }
 /* Webkit scrollbars - Safari, Chrome */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background-color: #000;
@@ -43,6 +43,9 @@ body{
   background-size: cover;
   background-color: transparent;
 }
+#microsite #characters section {
+  overflow-x: hidden !important;
+}
 #microsite #characters .microsite-section-container {
   width: 100%;
   margin: 0;
@@ -60,7 +63,7 @@ body{
   width: 100%;
   margin: 0;
   padding: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-image: none;
@@ -80,18 +83,20 @@ body{
   left: -100%;
   display: block;
 }
+#microsite #characters #right-pane-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-height: 100%;
+  background: rgb(0, 0, 0) transparent;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 45%;
+  margin-left: 55%; /* calc(((100% - 190px) * 0.55) + 190px); */
+}
 #microsite #characters .right-pane-content {
   width: 45%;
   margin-left: 55%;
-}
-#microsite #characters #right-pane-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: rgb(0, 0, 0) transparent;
-  background-color: rgba(0, 0, 0, 0.75);
-  width: calc((100% - 190px) * 0.45);
-  margin-left: calc(((100% - 190px) * 0.55) + 190px);
 }
 #microsite #characters .ad-leaderboard {
   position: relative;
@@ -188,7 +193,7 @@ body{
 }
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  margin: 0;
+  margin: 2px 0 0;
   padding: 0;
   position: relative;
   top: 50%;
@@ -262,6 +267,9 @@ body{
 #microsite #characters .character-social {
   display: inline-block;
   line-height: 0.6em;
+  position: relative;
+  top: 2px;
+  left: 0;
 }
 #microsite #characters .character-social div {
   float: left;
@@ -310,6 +318,7 @@ body{
 #microsite #characters .character-bio-tabs div:first-child {
   margin-right: 20px;
 }
+#microsite #characters .character-bio-tabs div:hover,
 #microsite #characters .character-bio-tabs div.active {
   background-color: #FFF;
   color: #000;

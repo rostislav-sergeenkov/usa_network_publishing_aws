@@ -362,6 +362,10 @@
         else {
           logoAnim(true);
         }
+        // prep character section background for move
+        if ($('#microsite #characters #character-background li').length > 0) {
+          $('#microsite #characters #character-background li').css('position', 'absolute');
+        }
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
@@ -387,6 +391,12 @@
           $('#tv-show-menu .internal').removeClass('active');
           $('#nav-' + anchor).addClass('active');
           $('#tv-show-menu .internal[data-menuanchor=' + anchor + ']').addClass('active');
+
+          // return character section background to fixed
+          if ($('#microsite #characters #character-background li').length > 0) {
+            $('#microsite #characters #character-background li').css('position', 'fixed');
+          }
+
         });
         $('.section-info.active').animate({'top': otherDirection + Math.ceil(sectionHeight / 2) + 'px'}, 1000, 'jswing', function () {
           $('.section-info').css({'top': '0'});

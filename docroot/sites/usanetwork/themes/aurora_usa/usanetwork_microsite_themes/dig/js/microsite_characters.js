@@ -52,8 +52,8 @@
       else if (wwidth < 542) characterTextHeight = 800;
       $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
       $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
-      $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 50) + 'px');
-      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(contentHeight);
+      $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {
@@ -68,7 +68,7 @@
       else {
         var nextBgId = 'bg-' + charId,
             nextItemBg = $('#' + nextBgId).attr('data-bg-url');
-        if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
+        if (nextItemBg == '' || nextItemBg == window.location.protocol + '//' + window.location.hostname + '/') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
         if ($('#' + nextBgId).length > 0) $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
       }
     },
@@ -160,7 +160,7 @@
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
-              $('#characters-content').css('overflow', 'auto');
+              $('#characters-content').css('overflow-y', 'auto');
             });
           });
         }
@@ -187,7 +187,7 @@
 
                 // remove disabled
                 navItems.find('li.disabled').removeClass('disabled');
-                $('#characters-content').css('overflow', 'auto');
+                $('#characters-content').css('overflow-y', 'auto');
               });
             });
           });
@@ -202,6 +202,7 @@
             activeCharacter = characters.find('li.active').attr('id');
         Drupal.behaviors.microsite_characters.micrositeSetCharBackground(activeCharacter);
         Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+        Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
 
         // init active character nav item
         $('#nav-' + activeCharacter).addClass('active');
@@ -249,7 +250,6 @@
         $(window).bind('resize', function () {
           setTimeout(function() {
             Drupal.behaviors.microsite_characters.micrositeSetHeights();
-            Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
           }, 500);
         });
 

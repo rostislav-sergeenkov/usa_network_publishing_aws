@@ -130,7 +130,8 @@
             nextCharacterId = nextItemId.replace('nav-', ''),
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
-            sign = (direction == 'next') ? '-' : '';
+            sign = (direction == 'next') ? '-' : '',
+            oppositeSign = (direction == 'next') ? '' : '-';
 
         if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
@@ -170,9 +171,10 @@
           $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, 600, 'jswing', function(){
             // animate backgrounds
             $('#character-background li.active').animate({'left': sign + '100%'}, 800, 'jswing');
-            $('#character-background li.' + direction).animate({'left': '0'}, 800, 'jswing', function(){
+            $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, 800, 'jswing', function(){
               // animate next character-info
               $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
+
                 // update classes
                 $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
                 $('#microsite #characters .' + currentCharacterId).removeClass('active ');

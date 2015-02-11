@@ -1245,10 +1245,14 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $videos_section_object = $videos_section_wrapper->value();
 
           if (!empty($videos_section_object->field_ms_videos)) {
-            $attached_videos = $videos_section_wrapper->field_ms_videos->value();
+            $attached_video = $videos_section_wrapper->field_ms_videos->value();
 
-            if (!empty($attached_videos)) {
-              $head_title = $attached_videos[0]->filename . ' | ' . $head_title;
+            if (!empty($attached_video)) {
+              if (is_array($attached_video)) {
+                $attached_video = reset($attached_video);
+              }
+
+              $head_title = $attached_video->filename . ' | ' . $head_title;
             }
           }
         }
@@ -1280,6 +1284,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
 
             if (!empty($attached_gallery)) {
+              if (is_array($attached_gallery)) {
+                $attached_gallery = reset($attached_gallery);
+              }
+
               $head_title = $attached_gallery->title . ' | ' . $head_title;
             }
           }

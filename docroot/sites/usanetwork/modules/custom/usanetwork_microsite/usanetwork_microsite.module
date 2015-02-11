@@ -435,7 +435,7 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
 /**
  * Renders Characters page.
  */
-function _usanetwork_microsite_render_page_characters($section_wrapper) {
+function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $section_object = $section_wrapper->value();
 
@@ -451,7 +451,9 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
-    $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+    }
     $character_count = 0;
     $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
@@ -487,7 +489,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node),
+        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -633,7 +635,9 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-    $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
+    }
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
@@ -1238,6 +1242,25 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
       }
+      else {
+        $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
+
+        if (!empty($videos_section_wrapper)) {
+          $videos_section_object = $videos_section_wrapper->value();
+
+          if (!empty($videos_section_object->field_ms_videos)) {
+            $attached_video = $videos_section_wrapper->field_ms_videos->value();
+
+            if (!empty($attached_video)) {
+              if (is_array($attached_video)) {
+                $attached_video = reset($attached_video);
+              }
+
+              $head_title = $attached_video->filename . ' | ' . $head_title;
+            }
+          }
+        }
+      }
       break;
     case 'characters':
       $head_title = t('Characters | ' . $title . ' | USA Network');
@@ -1254,6 +1277,25 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(isset($args[4])) {
         // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
         $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+      }
+      else {
+        $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
+
+        if (!empty($galleries_section_wrapper)) {
+          $galleries_section_object = $galleries_section_wrapper->value();
+
+          if (!empty($galleries_section_object->field_media_gallery)) {
+            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+
+            if (!empty($attached_gallery)) {
+              if (is_array($attached_gallery)) {
+                $attached_gallery = reset($attached_gallery);
+              }
+
+              $head_title = $attached_gallery->title . ' | ' . $head_title;
+            }
+          }
+        }
       }
       break;
     case 'about':

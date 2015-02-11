@@ -1247,7 +1247,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           if (!empty($videos_section_object->field_ms_videos)) {
             $attached_videos = $videos_section_wrapper->field_ms_videos->value();
 
-            if (!empty($attached_videos) && is_array($attached_videos)) {
+            if (!empty($attached_videos)) {
               $head_title = $attached_videos[0]->filename . ' | ' . $head_title;
             }
           }
@@ -1269,6 +1269,21 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(isset($args[4])) {
         // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
         $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+      }
+      else {
+        $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
+
+        if (!empty($galleries_section_wrapper)) {
+          $galleries_section_object = $galleries_section_wrapper->value();
+
+          if (!empty($galleries_section_object->field_media_gallery)) {
+            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+
+            if (!empty($attached_gallery)) {
+              $head_title = $attached_gallery->title . ' | ' . $head_title;
+            }
+          }
+        }
       }
       break;
     case 'about':

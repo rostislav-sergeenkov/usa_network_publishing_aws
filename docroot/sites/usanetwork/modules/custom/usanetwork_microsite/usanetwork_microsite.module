@@ -635,7 +635,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $first_output_id = NULL;
     $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
     foreach ($video_files as $v_key => $current_video_file) {
-      $published = !empty($current_video_file->published) ? $current_video_file->published : NULL;
+      $published = !empty($current_video_file->status) ? $current_video_file->published : NULL;
       if ($first_output_id === NULL && $published) {
         $first_output_id = $v_key;
       }

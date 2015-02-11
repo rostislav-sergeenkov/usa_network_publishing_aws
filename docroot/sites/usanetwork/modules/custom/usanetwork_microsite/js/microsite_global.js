@@ -317,8 +317,8 @@
           case 'videos':
             s.prop3 = 'Video';
             s.prop4 = siteName + ' : Video';
-            // if (itemTitle == '') {itemTitle = $('#microsite #videos-content .video-title').text();
-            s.prop5 = itemTitle.length ? siteName + ' : Video : ' + itemTitle : s.prop4;
+            if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
+            s.prop5 = siteName + ' : Video : ' + itemTitle;
             s.pageName = s.prop5;
             break;
           case 'galleries':

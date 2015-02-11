@@ -88,8 +88,8 @@
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = s.prop4;
+      s.prop4 = 'Profile Page';
+      s.prop5 = siteName + ' : ' + sectionTitle;
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;

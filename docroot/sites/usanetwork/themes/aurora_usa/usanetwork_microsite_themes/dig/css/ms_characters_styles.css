@@ -432,3 +432,14 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   margin: 0 auto;
 }
 }
+
+/* Smartphone */
+@media only screen
+and (min-device-width : 200px)
+and (max-device-width : 568px) {
+#microsite #characters .text {
+  overflow: auto;
+  max-height: 100%;
+  min-height: 100%;
+}
+}

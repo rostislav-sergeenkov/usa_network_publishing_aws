@@ -28,7 +28,6 @@ dependencies[] = text
 dependencies[] = usanetwork_microsite
 dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_opengraph
-dependencies[] = usanetwork_person
 dependencies[] = usanetwork_social
 dependencies[] = usanetwork_taxonomy
 dependencies[] = usanetwork_tv_shows

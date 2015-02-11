@@ -216,6 +216,10 @@
           Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
         });
 
+        if ($(window).width() < 875) {
+          $('#microsite #character-background').addClass('mobile');
+        }
+
         // init next / prev character nav clicks
         $('#microsite #characters .character-nav #nav-next, #microsite #characters .character-nav #nav-prev').on('click', function(){
             if ($(this).hasClass('disabled')) {

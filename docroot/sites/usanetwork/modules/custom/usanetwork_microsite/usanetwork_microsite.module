@@ -1271,6 +1271,19 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $head_title = $person_names['person_title'] . ' | ' . $head_title;
         }
       }
+      else {
+        $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+
+        if (!empty($characters_section_wrapper)) {
+          $characters_section_object = $characters_section_wrapper->value();
+
+          if (!empty($characters_section_object->field_ms_person)) {
+            $characters_nodes = $characters_section_wrapper->field_ms_person->value();
+            $person_names = _usanetwork_microsite_get_person_title_and_role_name($characters_nodes[0]);
+            $head_title = $person_names['person_title'] . ' | ' . $head_title;
+          }
+        }
+      }
       break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');

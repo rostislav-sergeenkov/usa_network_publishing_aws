@@ -1244,7 +1244,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if (isset($args[4])) {
         $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
         if(!empty($character_node)) {
-          $head_title = $character_node->title . ' | ' . $head_title;
+          $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+          $head_title = $person_names['person_title'] . ' | ' . $head_title;
         }
       }
       break;
@@ -1342,8 +1343,9 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {
-              $omniture_prop5 = t($entity->title . ' : Bio : ' . $node->title);
-              $omniture_pagename = t($entity->title . ' : Bio : ' . $node->title);
+              $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+              $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+              $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
             }
           }
           break;

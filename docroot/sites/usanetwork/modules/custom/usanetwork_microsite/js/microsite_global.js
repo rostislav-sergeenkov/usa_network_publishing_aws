@@ -305,7 +305,7 @@
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
         s.prop5 = s.prop4;
-        if (anchor != 'home') {
+        if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
           pageName = sectionTitle + ' | ' + pageName;
           s.pageName += ' : ' + sectionTitle;
         }
@@ -320,15 +320,23 @@
             if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
             s.prop5 = siteName + ' : Video : ' + itemTitle;
             s.pageName = s.prop5;
+            pageName = itemTitle + ' | Video | ' + pageName;
             break;
           case 'galleries':
             s.prop3 = 'Gallery';
             s.prop4 = siteName + ' : Gallery';
-            s.prop5 = siteName + ' : Gallery : ' + $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            s.prop5 = siteName + ' : Gallery : ' + itemTitle;
             s.pageName = s.prop5 + ' : Photo 1';
+            pageName = itemTitle + ' | Gallery | ' + pageName;
             break;
           case 'characters':
             s.prop3 = 'Bio';
+            s.prop4 = siteName + ' : Bio';
+            if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active h3').text();
+            s.prop5 = siteName + ' : Bio : ' + itemTitle;
+            s.pageName = s.prop5;
+            pageName = itemTitle + ' | Bio | ' + pageName;
             break;
         }
         $('title').text(pageName);

@@ -435,7 +435,7 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
 /**
  * Renders Characters page.
  */
-function _usanetwork_microsite_render_page_characters($section_wrapper) {
+function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $section_object = $section_wrapper->value();
 
@@ -451,7 +451,9 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
-    $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+    }
     $character_count = 0;
     $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
@@ -487,7 +489,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node),
+        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -633,7 +635,9 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-    $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
+    }
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {

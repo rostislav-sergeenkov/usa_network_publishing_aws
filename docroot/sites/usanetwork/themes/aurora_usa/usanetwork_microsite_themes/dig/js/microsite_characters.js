@@ -25,7 +25,6 @@
       }
       charactersNav.find('ul').width(charNavListWidth).height(navHeight);
       charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
-//      charactersNav.find('.btns').height(navHeight);
 //usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemWidth: ' + navElemWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
     },
 
@@ -50,9 +49,13 @@
           wwidth = $(window).width();
       if (characterTextHeight < 200) characterTextHeight = 200;
       else if (wwidth < 542) characterTextHeight = 800;
-      $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
-      $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
-      $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
+
+      // if not smartphone
+//      if (!usa_deviceInfo.smartphone) {
+        $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
+        $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
+        $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
+//      }
       $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 

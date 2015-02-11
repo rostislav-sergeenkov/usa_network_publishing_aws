@@ -381,43 +381,47 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 
 @media (max-width: 874px) {
-#microsite #characters #character-inner-container {
-  width: 100%;
-  margin: 0 auto;
-}
-#microsite #characters #right-pane-bg {
-  background-color: transparent;
-}
-#microsite #characters .right-pane-content {
-  width: 75%;
-  margin: 0 auto;
-}
-#microsite #characters .character-nav li:hover .tooltip {
-  display: none;
-}
-#microsite #characters .mobile {
-  display: block;
-  width: 25%;
-  float: left;
-  margin-right: 12px;
-}
-#microsite #characters h3 {
-  margin: 0;
-  font-size: 1.2em;
-  letter-spacing: 3px;
-  float: left;
-  width: calc(75% - 12px);
-}
-#microsite #characters .character-social {
-  line-height: 0.6em;
-  float: left;
-  width: calc(75% - 12px);
-}
-#microsite #characters .character-role {
-  margin-top: 0.1em;
-  margin-bottom: 1em;
-  clear: left;
-}
+  #microsite #characters #character-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #characters #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #characters .right-pane-content {
+    width: 75%;
+    margin: 0 auto;
+  }
+  #microsite #characters .character-nav li:hover .tooltip {
+    display: none;
+  }
+  #microsite #characters .mobile {
+    display: block;
+    width: 25%;
+    float: left;
+    margin-right: 12px;
+  }
+  #microsite #characters h3 {
+    margin: 0;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #characters .character-social {
+    line-height: 0.6em;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #characters .character-role {
+    margin-top: 0.1em;
+    margin-bottom: 1em;
+    clear: left;
+  }
+  /*hot fix for Hamburger menu not working on smartphone*/
+  body[data-menu-position=open] #jPanelMenu-menu {
+    z-index: 2!important;
+  }
 }
 
 @media (max-width: 542px) {

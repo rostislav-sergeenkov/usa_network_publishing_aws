@@ -75,7 +75,6 @@
         if ($('#' + nextBgId).length > 0) $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
       }
     },
-
     // toTitleCase
     micrositeToTitleCase: function toTitleCase(str) {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -255,6 +254,21 @@
           setTimeout(function() {
             Drupal.behaviors.microsite_characters.micrositeSetHeights();
             Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
+            if ($(window).width() < 875) {
+              if (!$('#microsite #character-background').hasClass('mobile')){
+                $('#microsite #characters #character-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_characters.defaultMobileCharBg + '")');
+                $('#microsite #character-background').addClass('mobile');
+              }
+            }
+            else {
+              if ($('#microsite #character-background').hasClass('mobile')){
+                $('#characters #character-background li').each(function() {
+                  var bgUrl = $(this).attr('data-bg-url');
+                  $(this).css('background-image', 'url("' + bgUrl + '")');
+                });
+                $('#microsite #character-background').removeClass('mobile');
+              }
+            }
           }, 500);
         });
 
@@ -264,8 +278,8 @@
             var preload = new Array();
             $('#characters #character-background li').each(function() {
               //s = $(this).attr('data-bg-url').replace(/\.(.+)$/i, "_on.$1");
-              bgUrl = $(this).attr('data-bg-url');
-              preload.push(bgUrl)
+              var bgUrl = $(this).attr('data-bg-url');
+              preload.push(bgUrl);
             });
             var img = document.createElement('img');
             $(img).bind('load', function() {

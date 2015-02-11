@@ -435,7 +435,6 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 
 /* Smartphone */
-/*
 @media only screen
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
@@ -446,6 +445,7 @@ and (max-device-width : 568px) {
 #microsite #characters .character-bio-tabs {
   font-size: 0.84em;
 }
+/*
 #microsite #characters .text {
   overflow: visible;
   max-height: 100%;
@@ -457,5 +457,5 @@ and (max-device-width : 568px) {
 #microsite #characters .text.active {
   display: block;
 }
-}
 */
+}

@@ -26,7 +26,7 @@
       charactersNav.find('ul').width(charNavListWidth).height(navHeight);
       charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
 //      charactersNav.find('.btns').height(navHeight);
-//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
+//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemWidth: ' + navElemWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -52,8 +52,8 @@
       else if (wwidth < 542) characterTextHeight = 800;
       $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
       $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
-      $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 50) + 'px');
-      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(contentHeight);
+      $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {
@@ -68,7 +68,7 @@
       else {
         var nextBgId = 'bg-' + charId,
             nextItemBg = $('#' + nextBgId).attr('data-bg-url');
-        if (nextItemBg == '') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
+        if (nextItemBg == '' || nextItemBg == window.location.protocol + '//' + window.location.hostname + '/') nextItemBg = Drupal.behaviors.microsite_characters.defaultCharBg;
         if ($('#' + nextBgId).length > 0) $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
       }
     },
@@ -88,8 +88,8 @@
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
-      s.prop4 = siteName + ' : ' + sectionTitle;
-      s.prop5 = s.prop4;
+      s.prop4 = 'Profile Page';
+      s.prop5 = siteName + ' : ' + sectionTitle;
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;
@@ -130,7 +130,8 @@
             nextCharacterId = nextItemId.replace('nav-', ''),
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
-            sign = (direction == 'next') ? '-' : '';
+            sign = (direction == 'next') ? '-' : '',
+            oppositeSign = (direction == 'next') ? '' : '-';
 
         if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
@@ -160,7 +161,7 @@
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
-              $('#characters-content').css('overflow', 'auto');
+              $('#characters-content').css('overflow-y', 'auto');
             });
           });
         }
@@ -170,9 +171,10 @@
           $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, 600, 'jswing', function(){
             // animate backgrounds
             $('#character-background li.active').animate({'left': sign + '100%'}, 800, 'jswing');
-            $('#character-background li.' + direction).animate({'left': '0'}, 800, 'jswing', function(){
+            $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, 800, 'jswing', function(){
               // animate next character-info
               $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
+
                 // update classes
                 $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
                 $('#microsite #characters .' + currentCharacterId).removeClass('active ');
@@ -187,7 +189,7 @@
 
                 // remove disabled
                 navItems.find('li.disabled').removeClass('disabled');
-                $('#characters-content').css('overflow', 'auto');
+                $('#characters-content').css('overflow-y', 'auto');
               });
             });
           });

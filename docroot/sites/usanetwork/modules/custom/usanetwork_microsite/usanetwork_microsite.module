@@ -1337,6 +1337,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
+          $omniture_prop4 = 'Profile Page';
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {
@@ -1362,7 +1363,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       }
       if (!empty($omniture_prop3)) {
         $omniture_variables['s.prop3'] = t($omniture_prop3);
-        $omniture_variables['s.prop4'] = t($entity->title . ' : ' . $omniture_prop3);
+        $omniture_variables['s.prop4'] = (!empty($omniture_prop4)) ? t($omniture_prop4) : t($entity->title . ' : ' . $omniture_prop3);
         $omniture_variables['s.prop5'] = t($entity->title . ' : ' . $omniture_prop3);
       }
       if (!empty($omniture_prop5)) {

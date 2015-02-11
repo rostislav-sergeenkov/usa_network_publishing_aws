@@ -84,8 +84,11 @@
       <ul>
         <?php foreach ($people as $person): ?>
         <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="<?php if(!empty($person['status'])) print $person['status']; ?>">
+          <div class="character-nav-link"></div>
           <div class="tooltip">
+            <?php if(!empty($person['preview_image_url'])): ?>
             <img src="<?php if(!empty($person['preview_image_url'])) print $person['preview_image_url']; ?>">
+            <?php endif; ?>
             <div><?php if(!empty($person['title'])) print $person['title']; ?></div>
           </div>
         </li>

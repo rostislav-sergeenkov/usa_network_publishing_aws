@@ -243,7 +243,7 @@
       }
       // add styles for iframe
       $('#'+ section +' .ad-leaderboard iframe').load(function (){
-        $('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+        $('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
       });
 
       // if home section, make sure the flexslider carousel has been

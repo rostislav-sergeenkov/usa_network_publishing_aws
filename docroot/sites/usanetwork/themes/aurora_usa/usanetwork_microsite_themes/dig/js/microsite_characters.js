@@ -65,7 +65,7 @@
     },
 
     micrositeSetCharBackground: function setCharBackground(charId) {
-      if ($(window).width() < 874) {
+      if ($(window).width() < 875) {
         $('#microsite #characters #character-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_characters.defaultMobileCharBg + '")');
       }
       else {
@@ -144,7 +144,7 @@
         // refresh ads
         Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
 
-        if ($(window).width() < 874) {
+        if ($(window).width() < 875) {
           $('#character-info li.' + direction).css('top', '0');
           // animate active character-info
           $('#character-info li.active').animate({'top': '0', 'opacity': 0}, 600, 'jswing', function(){
@@ -259,7 +259,7 @@
         });
 
         // character image pre-loading on desktop only
-        if ($(window).width() > 874) {
+        if ($(window).width() >= 875) {
           $(window).bind("load", function() {
             var preload = new Array();
             $('#characters #character-background li').each(function() {

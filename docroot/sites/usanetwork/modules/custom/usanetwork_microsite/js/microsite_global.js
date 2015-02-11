@@ -367,6 +367,10 @@
         else {
           logoAnim(true);
         }
+        // prep character section background for move
+        if ($('#microsite #characters #character-background li').length > 0) {
+          $('#microsite #characters #character-background li').css('position', 'absolute');
+        }
         $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
           $('.section-info').removeClass('active');
           $(nextSection).addClass('active').removeClass('transition');
@@ -392,6 +396,12 @@
           $('#tv-show-menu .internal').removeClass('active');
           $('#nav-' + anchor).addClass('active');
           $('#tv-show-menu .internal[data-menuanchor=' + anchor + ']').addClass('active');
+
+          // return character section background to fixed
+          if ($('#microsite #characters #character-background li').length > 0) {
+            $('#microsite #characters #character-background li').css('position', 'fixed');
+          }
+
         });
         $('.section-info.active').animate({'top': otherDirection + Math.ceil(sectionHeight / 2) + 'px'}, 1000, 'jswing', function () {
           $('.section-info').css({'top': '0'});
@@ -405,6 +415,12 @@
 
       // init change url address
       function changeUrl(anchor, anchorFull) {
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull.replace('/home', '');
+          return false;
+        }
+
         if (anchor != 'home') {
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
@@ -425,12 +441,6 @@
 
         var anchor = $(this).parent().attr('data-menuanchor'),
             anchorFull = basePath + '/' + anchor;
-
-        // if this is IE9, reload the correct page
-        if ($('html.ie9').length > 0) {
-          window.location.href = anchorFull.replace('/home', '');
-          return false;
-        }
 
         changeUrl(anchor, anchorFull);
         sectionScroll(anchor);
@@ -559,7 +569,8 @@
           return false;
         }
 
-        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        //history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+        changeUrl(anchor, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();

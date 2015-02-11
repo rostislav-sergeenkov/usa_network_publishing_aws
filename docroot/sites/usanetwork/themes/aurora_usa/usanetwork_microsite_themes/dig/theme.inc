@@ -48,17 +48,27 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'id' => NULL,
             'title' => NULL,
             'description' => NULL,
-/*
+            'role' => NULL,
+            'character_bio_summary' => NULL,
+            'character_bio' => NULL,
             'quotes' => array(
               0 => array(
                 'quote' => NULL,
                 'source' => NULL,
               ),
             ),
-*/
+            'status' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'social' => array(
+              'facebook' => NULL,
+              'twitter' => NULL,
+              'pinterest' => NULL,
+              'tumblr' => NULL
+            ),
           ),
         ),
-        'characters_navigation' => NULL,
+//        'characters_navigation' => NULL,
         'section_title' => NULL,
       ),
     ),
@@ -131,10 +141,12 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
       $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),
   );

@@ -48,17 +48,28 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
             'id' => NULL,
             'title' => NULL,
             'description' => NULL,
-/*
+            'role' => NULL,
+            'character_bio_summary' => NULL,
+            'character_bio' => NULL,
             'quotes' => array(
               0 => array(
                 'quote' => NULL,
                 'source' => NULL,
               ),
             ),
-*/
+            'status' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'social' => array(
+              'facebook' => NULL,
+              'twitter' => NULL,
+              'pinterest' => NULL,
+              'tumblr' => NULL
+            ),
           ),
         ),
-        'characters_navigation' => NULL,
+//        'characters_navigation' => NULL,
+        'section_title' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_galleries' => array(
@@ -121,22 +132,21 @@ function usanetwork_microsite_dig_get_theme_includes() {
 
   return array(
     'js' => array(
-        'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
+       // 'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
+        'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
         //'http://pdk.theplatform.com/pdk/tpPdkController.js',
 //      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
 //      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
-//      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.fullPage.js',
-      $theme_path . '/usanetwork_microsite_themes/dig/js/jquery.mCustomScrollbar.concat.min.js',
-//      $theme_path . '/javascripts/jquery.touchSwipe.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
       $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
-      $theme_path . '/usanetwork_microsite_themes/dig/css/jquery.mCustomScrollbar.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),
   );

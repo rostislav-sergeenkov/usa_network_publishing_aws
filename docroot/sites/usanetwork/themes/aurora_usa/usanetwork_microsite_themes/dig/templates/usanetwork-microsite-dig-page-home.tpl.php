@@ -6,6 +6,7 @@
  * - $aspots - array of pre-rendered A-Spot elements
  * - $bspots - pre-rendered B-Spot element
  * - $cspots - pre-rendered C-Spot element
+ * - $characters - characters variables
  * - $promo_carousel - array of pre-rendered promo-carousel items
  * - $background_url - the URL of page background
  */

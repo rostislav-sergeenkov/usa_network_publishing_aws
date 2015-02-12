@@ -62,6 +62,26 @@ body.person-page {
 				overflow: hidden;
 				visibility: hidden;
 			}
+            .file-video-mpx {
+                iframe {
+                    height: 168px;
+                    width: 300px;
+                    @include breakpoint($bp-person-mid-two-width) {
+                        height: calc((100vw - 107px) * 0.5625);
+                        width: 100%;
+                    }
+                    @include breakpoint($bp-person-medium-width) {
+                        height: calc((100vw - 107px) * 0.51 * 0.5625);
+                        min-height: 190px;
+                        width: 100%;
+                    }
+                    @include breakpoint($bp-home-widest) {
+                        height: 358px;
+                        width: 635px;
+                    }
+
+                }
+            }
 		}
 		&#person-image {
 			display: none;

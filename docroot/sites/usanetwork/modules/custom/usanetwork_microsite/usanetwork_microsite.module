@@ -1256,17 +1256,6 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             if (!empty($attached_video)) {
               $head_title = $attached_video->filename . ' | ' . $head_title;
             }
-
-
-            /*$attached_video = $videos_section_wrapper->field_ms_videos->value();
-
-            if (!empty($attached_video)) {
-              if (is_array($attached_video)) {
-                $attached_video = reset($attached_video);
-              }
-
-              $head_title = $attached_video->filename . ' | ' . $head_title;
-            }*/
           }
         }
       }

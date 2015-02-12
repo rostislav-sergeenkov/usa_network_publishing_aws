@@ -1014,11 +1014,11 @@ body.page-node-microsite {
 }
 
 #microsite .block-usanetwork-mpx-video li.grid-item img {
-  height: 100%;
+  height: 169px;
   width: 300px;
 }
 #microsite .block-usanetwork-mpx-video li.ad img{
-
+  height: 100%;
 }
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;

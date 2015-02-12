@@ -333,27 +333,12 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 5px 0 0;
 }
-#microsite #home-content {
-  background-image: url("../images/dig_bg_home.jpg");
-}
 #microsite #home-content .ad-mobile {
   background: #808080;
   display: none;
   height: 50px;
   margin: 15px 0;
   width: 300px;
-}
-#microsite #about-content {
-  background-image: url("../images/dig_bg_about.jpg");
-}
-#microsite #galleries-content {
-  background-image: url("../images/dig_bg_gallery.jpg");
-}
-#microsite #games-content {
-  background-image: url("../images/dig_bg_games.jpg");
-}
-#microsite #videos-content {
-  background-image: url("../images/dig_bg_videos.jpg");
 }
 #microsite .pane-title {
   text-transform: uppercase;
@@ -375,6 +360,10 @@ you can use the generic selector below, but it's slower:
   line-height: 1.25em;
   border: 1px solid white;
   padding-top: 3px;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
+  text-shadow: 2px 2px 2px #000;
 }
 #microsite .scroll img {
   width: 14px;
@@ -1645,15 +1634,34 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 300px;
   }
 }
-@media (max-width: 480px){
-  #microsite section {
-    background: #000000;
-    background-image: none!important;
-  }
-}
 @media (max-width: 542px) {
 #microsite #about section .microsite-section-container .right-pane {
   width: 90%;
+}
+}
+@media(min-width: 481px) {
+#microsite #home-content {
+  background-image: url("../images/dig_bg_home.jpg");
+}
+#microsite #about-content {
+  background-image: url("../images/dig_bg_about.jpg");
+}
+#microsite #galleries-content {
+  background-image: url("../images/dig_bg_gallery.jpg");
+}
+#microsite #games-content {
+  background-image: url("../images/dig_bg_games.jpg");
+}
+#microsite #videos-content {
+  background-image: url("../images/dig_bg_videos.jpg");
+}
+}
+@media (max-width: 480px) {
+#microsite #about-content,
+#microsite #galleries-content,
+#microsite #games-content,
+#microsite #videos-content {
+  background-image: url("../images/dig_mobile_bg.jpg");
 }
 }
 

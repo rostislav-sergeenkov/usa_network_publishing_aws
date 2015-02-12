@@ -51,11 +51,12 @@
       else if (wwidth < 542) characterTextHeight = 800;
 
       // if not smartphone
-//      if (!usa_deviceInfo.smartphone) {
+      if (!usa_deviceInfo.smartphone) {
         $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
         $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
         $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
-//      }
+      }
+      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container').height((sectionHeight - 5));
       $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 

@@ -254,6 +254,12 @@
     },
     attach: function (context, settings) {
 
+      // Custom Play Button
+      $('#custom-play').click(function() {
+        $pdk.controller.clickPlayButton(true);
+        $pdk.controller.pause(false);
+      });
+
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
           basePath = Drupal.settings.microsites_settings.base_path,

@@ -378,6 +378,11 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   width: 100%;
   margin-left: 0;
 }
+#microsite #about .right-pane > div,
+#microsite #about .right-pane > h3,
+#microsite #characters .content {
+  width: 86%;
+}
 }
 
 @media (max-width: 874px) {
@@ -442,24 +447,35 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 @media only screen
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
+#microsite #about section .microsite-section-container .right-pane {
+  width: 98%;
+}
+#microsite #characters .right-pane-content {
+  width: 98%;
+}
+#microsite #characters #character-info li {
+  position: relative;
+}
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  top: 14%;
+  top: 40%;
 }
 #microsite #characters .character-bio-tabs {
   font-size: 0.84em;
 }
-/*
 #microsite #characters .text {
   overflow: visible;
-  max-height: 100%;
+  max-height: unset;
   min-height: 100%;
   height: 100%;
   position: relative;
   display: none;
+  float: left;
 }
 #microsite #characters .text.active {
   display: block;
 }
-*/
+#microsite #characters .ad300x250 {
+  height: 0;
+}
 }

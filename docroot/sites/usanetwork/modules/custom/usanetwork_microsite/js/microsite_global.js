@@ -630,7 +630,7 @@
           if (anchor == 'videos') {
             var currentThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]');
             var withInit = true;
-            if (currentThumb.hasClass('active')) {
+            if (currentThumb.hasClass('active') && $('#video-container').hasClass('start')) {
               withInit = false;
             } else {
               previewItem.removeClass('active');

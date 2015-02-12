@@ -92,7 +92,6 @@
     },
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (selector) {
-
       if (!selector) {
         selector = '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active';
       }
@@ -637,6 +636,10 @@
               currentThumb.addClass('active');
             }
 
+            if ($('#video-container .video-player iframe').attr('id') == 'base-frame'){
+              $('#video-container .video-player iframe').attr('id', 'aspot-frame');
+            }
+
             var activeVideoThumb = $('#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active'),
                 dataVideoUrl = activeVideoThumb.attr('data-video-url'),
                 dataFid = activeVideoThumb.attr('data-fid'),
@@ -651,6 +654,9 @@
             if (withInit) {
               Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
               Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
+            } else {
+              $pdk.controller.clickPlayButton(true);
+              $pdk.controller.pause(false);
             }
           }
           else if (anchor == 'galleries') {

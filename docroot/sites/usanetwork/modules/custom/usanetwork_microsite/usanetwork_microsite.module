@@ -23,14 +23,6 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/get-microsite-page/%node/%'] = array(
-    'title' => t('USA Network microsite page'),
-    'page callback' => 'usanetwork_microsite_page_ajax_callback',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
   $items['ajax/get-video-in-player/%node'] = array(
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
@@ -214,35 +206,6 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
   }
 
   return drupal_not_found();
-}
-
-/**
- * @todo I think this function and relate callback can delete.
- *
- * Microsite page rendering ajax callback.
- */
-function usanetwork_microsite_page_ajax_callback($microsite_node, $page_name) {
-  if ($microsite_node && $microsite_node->type == USANETWORK_MICROSITE_NODE_TYPE && !empty($microsite_node->field_ms_section)) {
-    $microsite_node_wrapper = entity_metadata_wrapper('node', $microsite_node);
-
-    foreach ($microsite_node_wrapper->field_ms_section as $section_wrapper) {
-      $section_object = $section_wrapper->value();
-
-      if (!empty($section_object->field_ms_section_type)) {
-        if ($page_name == $section_wrapper->field_ms_section_type->value()) {
-          $theme_name = $microsite_node_wrapper->field_ms_theme->value();
-
-          return drupal_json_output(
-            array(
-              'html' => _usanetwork_microsite_render_page($theme_name, $section_wrapper),
-            )
-          );
-        }
-      }
-    }
-  }
-
-  return drupal_json_output(array(NULL));
 }
 
 /**

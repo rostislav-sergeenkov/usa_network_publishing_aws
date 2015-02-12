@@ -28,6 +28,13 @@ function usanetwork_ads_init() {
   }
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
+  //DTM Implementation
+  if (_usanetwork_widget_get_environment() == 'prod') {
+    drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
+  } else {
+    drupal_add_js('//assets.adobedtm.com/5ed6cf59538a2045d9fe4799a3f70da302c83d5a/satelliteLib-24e397569ca85a58d3963043838c6696e85c5e9a-staging.js', array('scope' => 'header', 'every_page' => TRUE, 'cache' => FALSE));
+  }
+  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE));
 }
 
 /**

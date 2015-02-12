@@ -3,6 +3,8 @@
 define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
+define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
+define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -109,12 +111,28 @@ function usanetwork_microsite_js_alter(&$javascript) {
 }
 
 /**
+ * Implements hook_library_alter().
+ *
+ * Remove tve-player-directive.js from page
+ */
+function usanetwork_microsite_library_alter(&$libraries, $module) {
+  $node = menu_get_object();
+  if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
+    if ($module == 'tve_auth') {
+      unset($libraries['tve_auth']['js'][drupal_get_path('module', 'tve_auth') . '/js/directives/tve-player-directive.js']);
+    }
+  }
+}
+
+/**
  * Microsite node rendering callback.
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {
   if (!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
-    _usanetwork_microsite_validate_section($node);
 
+    if (_usanetwork_microsite_validate_section($node)) {
+      return drupal_not_found();
+    }
     $theme_name_field = field_get_items('node', $node, 'field_ms_theme');
 
     if ($theme_name_field) {
@@ -178,6 +196,19 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
       );
       drupal_add_js(array('microsites_settings' => $microsites_settings), 'setting');
 
+      // Add metatags with metatag module.
+      $instance = "{node}:{usanetwork_microsite}";
+      $options = array(
+        'entity' => $node,
+        'entity_type' => 'node',
+        'view_mode' => 'full',
+      );
+      $all_metatags = metatag_metatags_load('node', $node->nid);
+      if (!empty($all_metatags[$node->vid])) {
+        $metatags = $all_metatags[$node->vid];
+        $output = metatag_metatags_view($instance, $metatags, $options);
+        metatag_page_set_metatags($instance, $output);
+      }
       return theme($theme_registry_name, $theme_variables);
     }
   }
@@ -261,6 +292,7 @@ function _usanetwork_microsite_include_default_js() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite-tve-player-directive.js', array('scope' => 'footer', 'weight' => -1));
 }
 
 /**
@@ -300,7 +332,7 @@ function _usanetwork_microsite_render_page($microsite_theme_name, $section_wrapp
 /**
  * Renders Home page.
  */
-function _usanetwork_microsite_render_page_home($section_wrapper) {
+function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
 
   $field_collection_entity_id = $section_object->item_id;
@@ -317,6 +349,7 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
     $result = $query->execute()->fetch();
 
     if ($result) {
+      //@todo this variable do not use. May by we should delete this code.
       $show_nid = $result->show_nid;
     }
   }
@@ -341,6 +374,13 @@ function _usanetwork_microsite_render_page_home($section_wrapper) {
     $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser', $featured_promo_first_view_mode);
   }
 
+  $characters_section_wrapper =_usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+  if (!empty($characters_section_wrapper)) {
+    $characters_section_object = $characters_section_wrapper->value();
+    if (!empty($characters_section_object->field_ms_person)) {
+      $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
+    }
+  }
 /*
   if (!empty($show_nid)) {
     $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
@@ -395,7 +435,7 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
 /**
  * Renders Characters page.
  */
-function _usanetwork_microsite_render_page_characters($section_wrapper) {
+function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $section_object = $section_wrapper->value();
 
@@ -411,29 +451,70 @@ function _usanetwork_microsite_render_page_characters($section_wrapper) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
+    }
+    $character_count = 0;
+    $is_active_slide = FALSE;
+    foreach ($person_nodes as $person_node_key => $current_person_node) {
+      if ($current_person_node->current_state != 'published' || empty($current_person_node->status)) {
+        continue;
+      }
+      $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
+      $person_names = _usanetwork_microsite_get_person_title_and_role_name($current_person_node);
+      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_names['person_title'])));
 
-    foreach ($person_nodes as $current_person_node) {
-      $person_title = $current_person_node->title;
-      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_title)));
+      $image_field = $person_node_wrapper->field_person_ms_background->value();
+      $background_img = file_create_url($image_field['uri']);
+      $image_field = $person_node_wrapper->field_usa_character_thumb->value();
+      $person_preview_image_url =  image_style_url('media_thumbnail', $image_field['uri']);
 
+      $character_bio = $person_node_wrapper->field_person_ms_character_bio->value();
+      $social_links = array(
+        'facebook' => $person_node_wrapper->field_usa_link_facebook->value(),
+        'twitter' => $person_node_wrapper->field_usa_link_twitter->value(),
+        'pinterest' => $person_node_wrapper->field_usa_link_pinterest->value(),
+        'tumblr' => $person_node_wrapper->field_usa_link_tumblr->value(),
+      );
+      $character_url = _usanetwork_microsite_get_suggested_character_url($current_person_node);
+      $status = '';
+      if (empty($current_character) && $character_count == 0) {
+        $status = 'active';
+        $is_active_slide = TRUE;
+      }
+      elseif (!empty($current_character) && $current_character == $character_url) {
+        $status = 'active';
+        $is_active_slide = TRUE;
+      }
       $theme_variables['people'][] = array(
         'id' => $person_id,
-        'title' => $person_title,
+        'title' => $person_names['person_title'],
+        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
-        'quotes' => array(), // The Person content type currently does not have QUOTATION field.
+        'role' => $person_names['role_name'],
+        'character_bio_summary' => $character_bio['summary'],
+        'character_bio' => $character_bio['value'],
+        'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation),
+        'status' => $status,
+        'background_url' => $background_img,
+        'preview_image_url' => $person_preview_image_url,
+        'social' => $social_links,
       );
-
-      $person_preview_image_url = url($theme_path . '/images/characters/char_' . $person_id . '.jpg');
-      $theme_variables['characters_navigation'][] = '<li>&nbsp;<div class="tooltip"><img src="'.$person_preview_image_url.'"><div>'.$person_title.'</div></div></li>';
+      $character_count++;
     }
+  }
+
+  if (!empty($current_character) && !$is_active_slide) {
+    drupal_not_found();
   }
 
   if (!empty($theme_variables['characters_navigation'])) {
     $theme_variables['characters_navigation'] = implode('', $theme_variables['characters_navigation']);
   }
 
+  $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
   return $theme_variables;
 }
 
@@ -531,8 +612,7 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
   $suggested_url = preg_replace('/[^a-z0-9 ]/', "", $video_filename);
   // replace spaces with '-'
   $suggested_url = str_replace(' ', '-', $suggested_url);
-  $file_wrapper = entity_metadata_wrapper('file', $video_file);
-  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  $full_episode = _usanetwork_microsite_define_full_episode($video_file);
   if($full_episode) {
     return USANETWORK_MICROSITE_FULL_VIDEO_PREFIX . $suggested_url;
   }
@@ -546,7 +626,6 @@ function _usanetwork_microsite_get_suggested_video_url($video_file) {
 function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
   $section_object = $section_wrapper->value();
   $theme_variables = array();
-  $rendered_player = '';
   if (!empty($section_object->field_ms_videos)) {
     $video_files = $section_wrapper->field_ms_videos->value();
     // The first value is object. If there is more than one node it will send like array. Wrapping in array if it has only 1 value.
@@ -555,23 +634,43 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     }
 
     $show_in_player = 0;
-    $video_for_player = (arg(4) !== null) ? arg(4) : null; // gets name of video from url, if present
+    $first_output_id = NULL;
+    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+      $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
+    }
     foreach ($video_files as $v_key => $current_video_file) {
-      $published = !empty($current_video_file->published) ? $current_video_file->published : NULL;
+      $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
+      if ($first_output_id === NULL && $published) {
+        $first_output_id = $v_key;
+      }
       $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($current_video_file);
       // if there's a video listed in the url, set it as the video to show in the player
+      $state = '';
       if (!empty($video_for_player) && $video_for_player == $suggested_video_url) {
         $show_in_player = $v_key;
+        $state = 'active';
+      }
+      elseif(empty($video_for_player) && $first_output_id == $v_key) {
+        $state = 'active';
+        $show_in_player = $first_output_id;
       }
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
+      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $is_full_episode = 'false';
+      if($full_episode) {
+        $is_full_episode = 'true';
+      }
       if ($published) {
         $theme_variables['videos'][] = array(
           'fid' => $current_video_file->fid,
           'url' => $suggested_video_url,
           'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
           'account_id' => $account_id,
-          'player_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+          'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+          'is_full_episode' => $is_full_episode,
+          'state' => $state,
         );
       }
     }
@@ -582,31 +681,10 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
-    $file_wrapper = entity_metadata_wrapper('file', $file);
-    $full_episode = $file_wrapper->field_mpx_full_episode->value();
-    if($full_episode) {
-      $rendered_player = theme('pub_mpx_video', array(
-        'file' => $file,
-        'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
-        'player_id' => 'microsite_vod_noauth_endcard',
-      ));
-    }
-    else {
-      $rendered_player = theme('pub_mpx_video', array(
-        'file' => $file,
-        'pub_mpx_player_parameters' => array('autoPlay' => 'false', 'form' => 'html', 'nid' => $node->nid),
-        'player_id' => 'microsites_usa_player_endcard',
-      ));
-    }
-
     $theme_variables['in_player'] = array(
       'url' => !empty($file->filename)
         ? _usanetwork_microsite_get_suggested_video_url($file)
         : NULL,
-//      'rendered_test' => !empty($file->fid)
-//        ? drupal_render(file_view(file_load($file->fid), 'inline_content'))
-//        : NULL,
-      'rendered' => $rendered_player,
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
     $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
@@ -670,6 +748,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   if($type == 'videos') {
     return $section_wrapper->field_ms_videos->value();
   }
+  elseif($type == 'characters') {
+    return $section_wrapper->field_ms_person->value();
+  }
   return NULL;
 }
 
@@ -683,8 +764,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   foreach($files as $file) {
-    $file_wrapper = entity_metadata_wrapper('file', $file);
-    $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    $full_episode = _usanetwork_microsite_define_full_episode($file);
     if ($clean_url) {
       if($full_episode) {
         $prefix = USANETWORK_MICROSITE_FULL_VIDEO_PREFIX;
@@ -697,6 +777,23 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
     }
     if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file)) {
       return $file;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get person node by url parameter.
+ *
+ * @param $node
+ * @return mixed
+ */
+function _usanetwork_microsite_get_person_by_url($node, $param) {
+  //@todo Sections name to constant or other way that would hold it.
+  $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
+  foreach($characters as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_character_url($node)) {
+      return $node;
     }
   }
   return NULL;
@@ -772,15 +869,6 @@ function _usanetwork_microsite_get_theme_variables($node) {
   $theme_variables = _usanetwork_microsite_theme_get_base_variables($node_wrapper);
   $navigation_links = array();
 
-  // Add metatags with metatag module.
-  $instance = "{node}:{usanetwork_microsite}";
-  $options = array(
-    'entity' => $node,
-    'entity_type' => 'node',
-    'view_mode' => 'full',
-  );
-  $output = metatag_metatags_view($instance, $node->metatags, $options);
-  metatag_page_set_metatags($instance, $output);
   // Detect sections availability
   if (!empty($node->field_ms_section)) {
     $pages = array();
@@ -829,6 +917,11 @@ function _usanetwork_microsite_get_theme_variables($node) {
   return $theme_variables;
 }
 
+/**
+ * Render footer blocks and return them.
+ *
+ * @return string
+ */
 function _usanetwork_microsite_get_footer() {
   $block_links = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_links');
   $block_message = module_invoke('usanetwork_blocks', 'block_view', 'usa_footer_message');
@@ -1063,6 +1156,30 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
   return $items;
 }
 
+/**
+ * Renders all person of node field.
+ */
+function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
+  $items = array();
+  foreach ($node_wrapper_field as $field_wrapper) {
+    $person_node = $field_wrapper->value();
+    $person_title = _usanetwork_microsite_get_person_title_and_role_name($person_node);
+    $image_field = $field_wrapper->field_usa_character_thumb->value();
+    $image_url = image_style_url('meet_the_cast_carousel', $image_field['uri']);
+    $items[] = array(
+      'title' => $person_title['person_title'],
+      'image_url' => $image_url,
+    );
+  }
+  return $items;
+}
+
+/**
+ * Parse url and get current video parameter.
+ *
+ * @param $url
+ * @return null
+ */
 function _usanetwork_microsite_get_video_parameter_by_url($url) {
   $parts = explode('videos/', $url);
   if(isset($parts[1])) {
@@ -1082,6 +1199,12 @@ function _usanetwork_microsite_theme_render_single_node_item($node_wrapper_field
   return drupal_render($node_view);
 }
 
+/**
+ * Get first node by node wrapper field.
+ *
+ * @param $node_wrapper_field
+ * @return array|mixed
+ */
 function _usanetwork_microsite_get_first_emwrapper_node($node_wrapper_field) {
   $node = $node_wrapper_field->value();
 
@@ -1119,12 +1242,73 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
       }
+      else {
+        $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
+
+        if (!empty($videos_section_wrapper)) {
+          $videos_section_object = $videos_section_wrapper->value();
+
+          if (!empty($videos_section_object->field_ms_videos)) {
+            $attached_video = $videos_section_wrapper->field_ms_videos->value();
+
+            if (!empty($attached_video)) {
+              if (is_array($attached_video)) {
+                $attached_video = reset($attached_video);
+              }
+
+              $head_title = $attached_video->filename . ' | ' . $head_title;
+            }
+          }
+        }
+      }
+      break;
+    case 'characters':
+      $head_title = t('Characters | ' . $title . ' | USA Network');
+      if (isset($args[4])) {
+        $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+        if(!empty($character_node)) {
+          $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+          $head_title = $person_names['person_title'] . ' | ' . $head_title;
+        }
+      }
+      else {
+        $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+
+        if (!empty($characters_section_wrapper)) {
+          $characters_section_object = $characters_section_wrapper->value();
+
+          if (!empty($characters_section_object->field_ms_person)) {
+            $characters_nodes = $characters_section_wrapper->field_ms_person->value();
+            $person_names = _usanetwork_microsite_get_person_title_and_role_name($characters_nodes[0]);
+            $head_title = $person_names['person_title'] . ' | ' . $head_title;
+          }
+        }
+      }
       break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
         $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+      }
+      else {
+        $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
+
+        if (!empty($galleries_section_wrapper)) {
+          $galleries_section_object = $galleries_section_wrapper->value();
+
+          if (!empty($galleries_section_object->field_media_gallery)) {
+            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+
+            if (!empty($attached_gallery)) {
+              if (is_array($attached_gallery)) {
+                $attached_gallery = reset($attached_gallery);
+              }
+
+              $head_title = $attached_gallery->title . ' | ' . $head_title;
+            }
+          }
+        }
       }
       break;
     case 'about':
@@ -1154,9 +1338,15 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
   if ($files) {
     foreach ($files as $related_file) {
       if($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
+        $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
+        $account_id = $video_account->account_pid;
+        $full_episode = _usanetwork_microsite_define_full_episode($related_file);
         $url_param = _usanetwork_microsite_get_suggested_video_url($related_file);
         $item = array(
           'fid' => $related_file->fid,
+          'account_id' => $account_id,
+          'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
+          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
           'guid' => $related_file->mpx_video_data['guid'],
           'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
           'title' => $related_file->filename,
@@ -1202,6 +1392,18 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             }
           }
           break;
+        case 'characters':
+          $omniture_prop3 = 'Bio';
+          $omniture_prop4 = 'Profile Page';
+          if (isset($args[4])) {
+            $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+              $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+              $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+            }
+          }
+          break;
         case 'galleries':
           $omniture_prop3 = 'Gallery';
 //          if(isset($args[4])) {
@@ -1219,32 +1421,12 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       }
       if (!empty($omniture_prop3)) {
         $omniture_variables['s.prop3'] = t($omniture_prop3);
-        $omniture_variables['s.prop4'] = t($entity->title . ' : ' . $omniture_prop3);
+        $omniture_variables['s.prop4'] = (!empty($omniture_prop4)) ? t($omniture_prop4) : t($entity->title . ' : ' . $omniture_prop3);
         $omniture_variables['s.prop5'] = t($entity->title . ' : ' . $omniture_prop3);
       }
       if (!empty($omniture_prop5)) {
         $omniture_variables['s.prop5'] = $omniture_prop5;
         $omniture_variables['s.pageName'] = $omniture_pagename;
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_node_view().
- * Remove usanetwork_gallery_content.js from microsite. Two remove double omniture click.
- * @TODO Should be removed after launch!
- */
-function usanetwork_microsite_node_view($node, $view_mode, $langcode) {
-  if ($node->type == 'media_gallery') {
-    if ($view_mode == 'inline_content') {
-      $args = arg();
-      if ((isset($args[2])) && ($args[2] == 'microsite')) {
-        foreach ($node->content['#attached']['js'] as $key => $value) {
-          if (strpos($value, 'usanetwork_gallery_content.js') !== FALSE) {
-            unset($node->content['#attached']['js'][$key]);
-          }
-        }
       }
     }
   }
@@ -1294,7 +1476,112 @@ function _usanetwork_microsite_validate_section($microsite_node) {
     $section_names = _usanetwork_microsite_get_section_names($microsite_node);
 
     if (!in_array($target_section_name, $section_names)) {
-      drupal_not_found();
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Define full episode or not.
+ */
+function _usanetwork_microsite_define_full_episode($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $full_episode = $file_wrapper->field_mpx_full_episode->value();
+  if($full_episode == 1) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function _usanetwork_microsite_get_suggested_character_url($person_node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
+  return pathauto_cleanstring($person_names['person_title']);
+}
+
+/**
+ * If a person's role is Character, then the person_title is actually
+ * the actor's full name and their role is the person_title.
+ *
+ * @param $person_node
+ * @return array
+ */
+function _usanetwork_microsite_get_person_title_and_role_name($person_node) {
+  $person_names = array(
+    'role_name' => NULL,
+    'person_title' => NULL,
+  );
+  $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
+  $person_names['person_title'] = $person_node->title;
+  $role_term = $person_node_wrapper->field_role->value();
+  $person_names['role_name'] = $role_term->name;
+  $actor_full_name = $person_node_wrapper->field_usa_actor_name->value();
+  if ($person_names['role_name'] == 'Character' && !empty($actor_full_name)) {
+    $person_names['role_name'] = $person_names['person_title'];
+    $person_names['person_title'] = $actor_full_name;
+  }
+  return $person_names;
+}
+
+function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type) {
+  $microsite_node_wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($microsite_node_wrapper->field_ms_section as $section_wrapper) {
+    if($section_wrapper->field_ms_section_type->value() == $section_type) {
+      return $section_wrapper;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_page_build().
+ * Insert Floodlight Tag.
+ */
+function usanetwork_microsite_page_build(&$page) {
+  // Add floodlight to microsite.
+  $menu_object = _usanetwork_menu_get_object();
+  if ($menu_object) {
+    if (isset($menu_object->type) && ($menu_object->type == 'usanetwork_microsite')) {
+      $show_field = field_get_items('node', $menu_object, 'field_show');
+      if (!empty($show_field)) {
+        $show_nid = reset(reset($show_field));
+        $show_node = node_load($show_nid);
+        $floodlight_field_type = field_get_items('node', $show_node, 'field_floodlight_type');
+        if (!empty($floodlight_field_type)) {
+          $floodlight_field_type = reset($floodlight_field_type);
+          if (!empty($floodlight_field_type['value'])) {
+            $floodlight_type = $floodlight_field_type['value'];
+          }
+        }
+        $floodlight_field_category = field_get_items('node', $show_node, 'field_floodlight_category');
+        if ($floodlight_field_category) {
+          $floodlight_field_category = reset($floodlight_field_category);
+          if (!empty($floodlight_field_category['value'])) {
+            $floodlight_category = $floodlight_field_category['value'];
+          }
+        }
+      }
+      if (!empty($floodlight_type) && !empty($floodlight_category)) {
+        $floodlight_js = '
+          (function ($) {
+          $(document).ready(function(){
+          var axel = Math.random() + "";
+          var a = axel * 10000000000000;
+          $(\'body\').prepend(\'<iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $floodlight_type . ';cat=' . $floodlight_category . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+          });
+          })(jQuery);
+        ';
+        drupal_add_js($floodlight_js, 'inline');
+        $page['page_top']['floodlight'] = array(
+          '#markup' => '
+          <noscript>
+            <iframe src="http://1445917.fls.doubleclick.net/activityi;src=1445917;type=' . $floodlight_type . ';cat=' . $floodlight_category . ';ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+          </noscript>
+        ',
+          '#weight' => -1,
+        );
+      }
     }
   }
 }

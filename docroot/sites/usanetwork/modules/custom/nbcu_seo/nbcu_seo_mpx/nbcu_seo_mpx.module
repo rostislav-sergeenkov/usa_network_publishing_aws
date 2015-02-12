@@ -172,16 +172,20 @@ function nbcu_seo_mpx_nbcu_seo_xmlsitemap_xml_element_alter(&$element, $context)
           if (!empty($season_number)) {
             $season_number = reset($season_number);
             if (!empty($season_number)) {
-              $video_title .= ', Season ' . $season_number['value'];
-              $element[$delta]['tvshow']['season_number'] = $season_number['value'];
+              if (!empty($season_number['value'])) {
+                $video_title .= ', Season ' . $season_number['value'];
+                $element[$delta]['tvshow']['season_number'] = $season_number['value'];
+              }
             }
           }
           $episode_number = field_get_items('file', $file, 'field_mpx_episode_number'); // set episode number
           if (!empty($episode_number)) {
             $episode_number = reset($episode_number);
             if (!empty($episode_number)) {
-              $video_title .= ', Episode ' . $episode_number['value'];
-              $element[$delta]['tvshow']['episode_number'] = $episode_number['value'];
+              if (!empty($episode_number['value'])) {
+                $video_title .= ', Episode ' . $episode_number['value'];
+                $element[$delta]['tvshow']['episode_number'] = $episode_number['value'];
+              }
             }
           }
           // format video title

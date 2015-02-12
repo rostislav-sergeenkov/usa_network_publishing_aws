@@ -1249,7 +1249,16 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $videos_section_object = $videos_section_wrapper->value();
 
           if (!empty($videos_section_object->field_ms_videos)) {
-            $attached_video = $videos_section_wrapper->field_ms_videos->value();
+
+
+            $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
+
+            if (!empty($attached_video)) {
+              $head_title = $attached_video->filename . ' | ' . $head_title;
+            }
+
+
+            /*$attached_video = $videos_section_wrapper->field_ms_videos->value();
 
             if (!empty($attached_video)) {
               if (is_array($attached_video)) {
@@ -1257,7 +1266,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
               }
 
               $head_title = $attached_video->filename . ' | ' . $head_title;
-            }
+            }*/
           }
         }
       }
@@ -1298,13 +1307,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $galleries_section_object = $galleries_section_wrapper->value();
 
           if (!empty($galleries_section_object->field_media_gallery)) {
-            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
 
             if (!empty($attached_gallery)) {
-              if (is_array($attached_gallery)) {
-                $attached_gallery = reset($attached_gallery);
-              }
-
               $head_title = $attached_gallery->title . ' | ' . $head_title;
             }
           }
@@ -1326,6 +1331,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+/**
+ * Returns a first published item from field with multiple data
+ *
+ * @param $entity_wrapper - EntityMetadataWrapper object of target field.
+ */
+function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
+  if (empty($entity_wrapper)) {
+    return NULL;
+  }
+
+  $entity = $entity_wrapper->value();
+
+  if (!is_array($entity) && $entity->status == NODE_PUBLISHED) {
+    return $entity;
+  }
+  else {
+    foreach ($entity as $entity_object) {
+      if ($entity_object->status == NODE_PUBLISHED) {
+        return $entity_object;
+      }
+    }
+  }
+
+  return NULL;
 }
 
 /**

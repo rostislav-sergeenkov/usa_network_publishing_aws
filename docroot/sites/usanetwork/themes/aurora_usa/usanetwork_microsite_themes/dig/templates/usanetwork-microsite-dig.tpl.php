@@ -9,7 +9,7 @@
  * -  - $sections[n]['type'] - machine-readable name of a section
  * -  - $sections[n]['name'] - human-readable name of a section
  * -  - $sections[n]['is_last'] - flag of the latest section (appears only on the latest)
- * - $sections_separator - pre-rendered sections separator
+ * - $section_separator - pre-rendered sections separator
  * - $tune_in - pre-rendered content of Tune In field
  * - $sections_navlinks - pre-rendered array of navigation items:
  * -  - $sections_navlinks[n][] = '<li><a>Name</a></li>

@@ -133,7 +133,7 @@ function tve_auth_library() {
         'scope' => 'footer',
         'weight' => -1,
       ),
-      'http://pdk.theplatform.com/pdk/tpPdkController.js' => array(
+      'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js' => array(
         'scope' => 'header',
         'weight' => -1,
       ),

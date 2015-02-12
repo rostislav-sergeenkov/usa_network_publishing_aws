@@ -13,6 +13,7 @@
       <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
         <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
           <iframe src="" frameborder="0" allowfullscreen="" id="base-frame" >Your browser does not support iframes.</iframe>
+          <div id="custom-play"></div>
         </div>
       </div>
     </div>

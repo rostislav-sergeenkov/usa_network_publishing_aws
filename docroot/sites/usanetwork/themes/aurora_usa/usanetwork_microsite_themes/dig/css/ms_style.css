@@ -1017,7 +1017,9 @@ body.page-node-microsite {
   height: 169px;
   width: 300px;
 }
-
+#microsite .block-usanetwork-mpx-video li.ad img{
+  height: 100%;
+}
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
 }
@@ -1234,6 +1236,24 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 #microsite .mCSB_scrollTools .mCSB_draggerContainer {
   z-index: 51;
+}
+/* custom play button */
+#microsite #video-container .video-player {
+  position: relative;
+}
+#microsite #video-container .video-player #custom-play {
+  background-image: url("../images/icons/playOverlay.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  display: none;
+  cursor: pointer;
+  margin-left: -50px;
+  margin-top: -50px;
+  height: 100px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 100px;
 }
 
 /* BEGIN MEDIA BREAKPOINTS */

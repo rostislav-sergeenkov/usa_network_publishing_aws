@@ -243,7 +243,7 @@
       }
       // add styles for iframe
       $('#'+ section +' .ad-leaderboard iframe').load(function (){
-        $('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+        $('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
       });
 
       // if home section, make sure the flexslider carousel has been
@@ -305,7 +305,7 @@
         s.prop3 = sectionTitle;
         s.prop4 = siteName + ' : ' + sectionTitle;
         s.prop5 = s.prop4;
-        if (anchor != 'home') {
+        if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
           pageName = sectionTitle + ' | ' + pageName;
           s.pageName += ' : ' + sectionTitle;
         }
@@ -317,18 +317,26 @@
           case 'videos':
             s.prop3 = 'Video';
             s.prop4 = siteName + ' : Video';
-            // if (itemTitle == '') {itemTitle = $('#microsite #videos-content .video-title').text();
-            s.prop5 = itemTitle.length ? siteName + ' : Video : ' + itemTitle : s.prop4;
+            if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
+            s.prop5 = siteName + ' : Video : ' + itemTitle;
             s.pageName = s.prop5;
+            pageName = itemTitle + ' | Video | ' + pageName;
             break;
           case 'galleries':
             s.prop3 = 'Gallery';
             s.prop4 = siteName + ' : Gallery';
-            s.prop5 = siteName + ' : Gallery : ' + $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+            s.prop5 = siteName + ' : Gallery : ' + itemTitle;
             s.pageName = s.prop5 + ' : Photo 1';
+            pageName = itemTitle + ' | Gallery | ' + pageName;
             break;
           case 'characters':
             s.prop3 = 'Bio';
+            s.prop4 = siteName + ' : Bio';
+            if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active h3').text();
+            s.prop5 = siteName + ' : Bio : ' + itemTitle;
+            s.pageName = s.prop5;
+            pageName = itemTitle + ' | Bio | ' + pageName;
             break;
         }
         $('title').text(pageName);

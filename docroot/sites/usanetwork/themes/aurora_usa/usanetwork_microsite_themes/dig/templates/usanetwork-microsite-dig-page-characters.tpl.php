@@ -136,12 +136,12 @@
             <?php endif; ?>
             <div class="character-bios-container clearfix">
             <?php if (!empty($person['description'])): ?>
-              <div class="text actor active">
+              <div class="text actor active clearfix">
                 <?php print $person['description']; ?>
               </div>
             <?php endif; ?>
             <?php if (!empty($person['character_bio'])): ?>
-              <div class="text character">
+              <div class="text character clearfix">
                 <?php print $person['character_bio']; ?>
               </div>
             <?php endif; ?>

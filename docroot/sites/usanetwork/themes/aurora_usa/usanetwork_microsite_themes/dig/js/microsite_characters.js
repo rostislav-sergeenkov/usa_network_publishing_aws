@@ -51,11 +51,12 @@
       else if (wwidth < 542) characterTextHeight = 800;
 
       // if not smartphone
-//      if (!usa_deviceInfo.smartphone) {
+      if (!usa_deviceInfo.smartphone) {
         $('#microsite #characters .character-bios-container .text').css('max-height', characterTextHeight + 'px');
         $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
         $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
-//      }
+      }
+      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container').height((sectionHeight - 5));
       $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
     },
 
@@ -65,7 +66,7 @@
     },
 
     micrositeSetCharBackground: function setCharBackground(charId) {
-      if ($(window).width() < 874) {
+      if ($(window).width() < 875) {
         $('#microsite #characters #character-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_characters.defaultMobileCharBg + '")');
       }
       else {
@@ -75,7 +76,6 @@
         if ($('#' + nextBgId).length > 0) $('#' + nextBgId).attr('data-bg-url', nextItemBg).css('background-image', 'url("' + nextItemBg + '")');
       }
     },
-
     // toTitleCase
     micrositeToTitleCase: function toTitleCase(str) {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -144,7 +144,7 @@
         // refresh ads
         Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
 
-        if ($(window).width() < 874) {
+        if ($(window).width() < 875) {
           $('#character-info li.' + direction).css('top', '0');
           // animate active character-info
           $('#character-info li.active').animate({'top': '0', 'opacity': 0}, 600, 'jswing', function(){
@@ -217,6 +217,10 @@
           Drupal.behaviors.microsite_characters.micrositeSwitchCharacters(nextItemId);
         });
 
+        if ($(window).width() < 875) {
+          $('#microsite #character-background').addClass('mobile');
+        }
+
         // init next / prev character nav clicks
         $('#microsite #characters .character-nav #nav-next, #microsite #characters .character-nav #nav-prev').on('click', function(){
             if ($(this).hasClass('disabled')) {
@@ -255,17 +259,32 @@
           setTimeout(function() {
             Drupal.behaviors.microsite_characters.micrositeSetHeights();
             Drupal.behaviors.microsite_characters.micrositeSetCharNavWidthHeight();
+            if ($(window).width() < 875) {
+              if (!$('#microsite #character-background').hasClass('mobile')){
+                $('#microsite #characters #character-background li').css('background-image', 'url("' + Drupal.behaviors.microsite_characters.defaultMobileCharBg + '")');
+                $('#microsite #character-background').addClass('mobile');
+              }
+            }
+            else {
+              if ($('#microsite #character-background').hasClass('mobile')){
+                $('#characters #character-background li').each(function() {
+                  var bgUrl = $(this).attr('data-bg-url');
+                  $(this).css('background-image', 'url("' + bgUrl + '")');
+                });
+                $('#microsite #character-background').removeClass('mobile');
+              }
+            }
           }, 500);
         });
 
         // character image pre-loading on desktop only
-        if ($(window).width() > 874) {
+        if ($(window).width() >= 875) {
           $(window).bind("load", function() {
             var preload = new Array();
             $('#characters #character-background li').each(function() {
               //s = $(this).attr('data-bg-url').replace(/\.(.+)$/i, "_on.$1");
-              bgUrl = $(this).attr('data-bg-url');
-              preload.push(bgUrl)
+              var bgUrl = $(this).attr('data-bg-url');
+              preload.push(bgUrl);
             });
             var img = document.createElement('img');
             $(img).bind('load', function() {

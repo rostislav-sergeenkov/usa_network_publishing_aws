@@ -344,11 +344,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
       $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
     }
   }
-/*
-  if (!empty($show_nid)) {
-    $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
-  }
-*/
 
   return $theme_variables;
 }

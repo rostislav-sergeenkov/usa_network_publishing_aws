@@ -31,6 +31,40 @@ body{
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255,255,255,0.8);
 }
+
+/* HOME PEOPLE CAROUSEL */
+#microsite #home .characters-cast {
+  width: 615px;
+  margin: 0 auto;
+}
+#microsite #home .characters-cast h2 {
+  color: #FFF;
+  font-size: 1.8em;
+}
+#microsite #home .characters-cast .bx-wrapper .bx-viewport {
+  background-color: #000;
+  border-color: #000;
+  -mox-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a:hover,
+#microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a.active {
+  background-color: #FFF;
+}
+#microsite #home .characters-cast li {
+  background-color: #1F1F1F;
+}
+#microsite #home .characters-cast li a .person-title,
+#microsite #home .characters-cast li .person-title {
+  height: 60px;
+  padding: 5px;
+  color: #FFF;
+  text-align: center;
+  line-height: 1.2em;
+}
+
+/* CHARACTERS SECTION */
 #microsite #characters {
   position: relative;
   top: 0;

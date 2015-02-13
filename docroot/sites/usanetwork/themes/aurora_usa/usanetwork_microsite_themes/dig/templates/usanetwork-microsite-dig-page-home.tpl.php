@@ -63,12 +63,20 @@
       </div>
       <?php endif; ?>
 
-      <?php if (!empty($characters_cast)): ?>
+      <?php if (!empty($characters)): ?>
       <div class="characters-cast">
-        <?php print $characters_cast; ?>
+        <h2>Meet the Cast & Crew</h2>
+        <ul id="characters-cast-list" class="characters-cast-bxslider">
+        <?php foreach ($characters as $character): ?>
+          <?php if (!empty($character['title']) && !empty($character['image_url'])): ?>
+          <li><a href="/dig/characters/<?php print str_replace(' ', '-', strtolower($character['title'])); ?>"><img src="/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_crew_timkring.jpg" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
       </div>
       <?php endif; ?>
 
+      <?php /* @TODO: DO WE STILL NEED THIS? ?>
       <?php if (!empty($promo_carousel)): ?>
       <ul>
         <?php foreach ($promo_carousel as $carousel_item): ?>
@@ -78,6 +86,7 @@
         <?php endforeach; ?>
       </ul>
       <?php endif; ?>
+      <?php */ ?>
     </div>
   </div>
 </div>

@@ -447,7 +447,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
+        'url' => $character_url,
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -1125,6 +1125,7 @@ function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_fiel
     $image_field = $field_wrapper->field_usa_character_thumb->value();
     $image_url = image_style_url('meet_the_cast_carousel', $image_field['uri']);
     $items[] = array(
+      'url' => _usanetwork_microsite_get_suggested_character_url($person_node),
       'title' => $person_title['person_title'],
       'image_url' => $image_url,
     );

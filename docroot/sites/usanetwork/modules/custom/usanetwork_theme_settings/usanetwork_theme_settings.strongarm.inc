@@ -28,7 +28,7 @@ function usanetwork_theme_settings_strongarm() {
     'logo_path' => '',
     'logo_upload' => '',
     'default_favicon' => 0,
-    'favicon_path' => 'sites/usanetwork/themes/aurora_usa/images/favicon.ico',
+    'favicon_path' => 'sites/usanetwork/favicon.ico',
     'favicon_upload' => '',
     'favicon_mimetype' => 'image/vnd.microsoft.icon',
   );

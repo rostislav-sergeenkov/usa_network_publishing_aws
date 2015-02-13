@@ -1128,7 +1128,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_seo_h1',
     'label' => 'H1',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',
@@ -2483,7 +2483,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_seo_h1',
     'label' => 'H1',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'linkit' => array(
         'button_text' => 'Search',

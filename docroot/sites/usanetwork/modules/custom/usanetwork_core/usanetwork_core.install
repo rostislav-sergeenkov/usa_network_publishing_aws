@@ -895,14 +895,3 @@ function usanetwork_core_update_7152() {
   );
   module_enable($modules_en);
 }
-
-/**
- * Enable favicon module.
- */
-function usanetwork_core_update_7153() {
-  $modules_en = array(
-    'favicon',
-  );
-  module_enable($modules_en);
-  variable_set('favicon_delivery_callback', 'DrupalFavicon::deliverFileRedirect');
-}

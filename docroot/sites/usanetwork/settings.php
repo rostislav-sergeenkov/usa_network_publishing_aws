@@ -180,6 +180,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 //  require_once $site_env_file;
 //}
 
+// Remove ico from disallowed list.
+$conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 // Trigger the fast 404 logic.
 drupal_fast_404();
 

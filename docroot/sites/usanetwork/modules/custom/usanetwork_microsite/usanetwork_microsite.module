@@ -23,14 +23,6 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/get-microsite-page/%node/%'] = array(
-    'title' => t('USA Network microsite page'),
-    'page callback' => 'usanetwork_microsite_page_ajax_callback',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
   $items['ajax/get-video-in-player/%node'] = array(
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
@@ -217,35 +209,6 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
 }
 
 /**
- * @todo I think this function and relate callback can delete.
- *
- * Microsite page rendering ajax callback.
- */
-function usanetwork_microsite_page_ajax_callback($microsite_node, $page_name) {
-  if ($microsite_node && $microsite_node->type == USANETWORK_MICROSITE_NODE_TYPE && !empty($microsite_node->field_ms_section)) {
-    $microsite_node_wrapper = entity_metadata_wrapper('node', $microsite_node);
-
-    foreach ($microsite_node_wrapper->field_ms_section as $section_wrapper) {
-      $section_object = $section_wrapper->value();
-
-      if (!empty($section_object->field_ms_section_type)) {
-        if ($page_name == $section_wrapper->field_ms_section_type->value()) {
-          $theme_name = $microsite_node_wrapper->field_ms_theme->value();
-
-          return drupal_json_output(
-            array(
-              'html' => _usanetwork_microsite_render_page($theme_name, $section_wrapper),
-            )
-          );
-        }
-      }
-    }
-  }
-
-  return drupal_json_output(array(NULL));
-}
-
-/**
  * Includes 'theme.inc' file of each subtheme of microsite.
  */
 function _usanetwork_microsite_include_themes_info() {
@@ -381,11 +344,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
       $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
     }
   }
-/*
-  if (!empty($show_nid)) {
-    $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
-  }
-*/
 
   return $theme_variables;
 }
@@ -1249,13 +1207,11 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $videos_section_object = $videos_section_wrapper->value();
 
           if (!empty($videos_section_object->field_ms_videos)) {
-            $attached_video = $videos_section_wrapper->field_ms_videos->value();
+
+
+            $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
 
             if (!empty($attached_video)) {
-              if (is_array($attached_video)) {
-                $attached_video = reset($attached_video);
-              }
-
               $head_title = $attached_video->filename . ' | ' . $head_title;
             }
           }
@@ -1298,13 +1254,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $galleries_section_object = $galleries_section_wrapper->value();
 
           if (!empty($galleries_section_object->field_media_gallery)) {
-            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
 
             if (!empty($attached_gallery)) {
-              if (is_array($attached_gallery)) {
-                $attached_gallery = reset($attached_gallery);
-              }
-
               $head_title = $attached_gallery->title . ' | ' . $head_title;
             }
           }
@@ -1326,6 +1278,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+/**
+ * Returns a first published item from field with multiple data
+ *
+ * @param $entity_wrapper - EntityMetadataWrapper object of target field.
+ */
+function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
+  if (empty($entity_wrapper)) {
+    return NULL;
+  }
+
+  $entity = $entity_wrapper->value();
+
+  if (!is_array($entity) && $entity->status == NODE_PUBLISHED) {
+    return $entity;
+  }
+  else {
+    foreach ($entity as $entity_object) {
+      if ($entity_object->status == NODE_PUBLISHED) {
+        return $entity_object;
+      }
+    }
+  }
+
+  return NULL;
 }
 
 /**

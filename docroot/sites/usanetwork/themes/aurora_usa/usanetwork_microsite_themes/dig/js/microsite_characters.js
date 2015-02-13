@@ -114,7 +114,8 @@
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
 
-    micrositeSwitchCharacters: function switchCharacters(clickedId) {
+    micrositeSwitchCharacters: function switchCharacters(clickedId, refreshAdsNOmniture) {
+      refreshAdsNOmniture = refreshAdsNOmniture || 1;
       var nextItem = $('#' + clickedId);
       if (nextItem.hasClass('active') || $('#characters .character-nav li').hasClass('disabled')) {
         // do nothing
@@ -141,9 +142,6 @@
         // prepare next or previous background and character-info
         $('#microsite #characters .' + nextCharacterId).addClass(direction);
 
-        // refresh ads
-        Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
-
         if ($(window).width() < 875) {
           $('#character-info li.' + direction).css('top', '0');
           // animate active character-info
@@ -159,8 +157,11 @@
               nextItem.addClass('active');
 
               Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-              Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
               Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+              if (refreshAdsNOmniture) {
+                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
+                Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+              }
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
@@ -187,8 +188,11 @@
                 nextItem.addClass('active');
 
                 Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
                 Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+                if (refreshAdsNOmniture) {
+                  Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
+                  Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                }
 
                 // remove disabled
                 navItems.find('li.disabled').removeClass('disabled');

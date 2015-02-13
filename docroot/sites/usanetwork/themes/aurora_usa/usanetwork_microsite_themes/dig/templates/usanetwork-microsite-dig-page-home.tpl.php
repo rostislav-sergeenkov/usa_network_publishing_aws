@@ -65,7 +65,7 @@
 
       <?php if (!empty($characters)): ?>
       <div class="characters-cast">
-        <h2>Meet the Cast & Crew</h2>
+        <h2>Meet the Cast &amp; Crew</h2>
         <ul id="characters-cast-list" class="characters-cast-bxslider">
         <?php foreach ($characters as $character): ?>
           <?php if (!empty($character['title']) && !empty($character['image_url'])): ?>

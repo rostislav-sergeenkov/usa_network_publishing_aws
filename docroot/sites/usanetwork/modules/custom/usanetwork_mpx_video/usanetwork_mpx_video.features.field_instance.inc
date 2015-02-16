@@ -1127,7 +1127,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'entity_type' => 'file',
     'fences_wrapper' => 'div',
     'field_name' => 'field_seo_h1',
-    'label' => 'H1',
+    'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
       'linkit' => array(
@@ -2482,7 +2482,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'entity_type' => 'file',
     'fences_wrapper' => 'div',
     'field_name' => 'field_seo_h1',
-    'label' => 'H1',
+    'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
       'linkit' => array(

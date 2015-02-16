@@ -522,10 +522,41 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
     }
 
     $theme_variables['episodic_galleries'] = views_embed_view('usa_gallery', 'panel_pane_1', $show_nid);
-    $theme_variables['character_galleries'] = views_embed_view('usa_gallery', 'panel_pane_3', $show_nid);
+    $gallery_types = array(
+      'Character Gallery',
+      'GIF Gallery',
+      0,
+    );
+    $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
   }
 
   return $theme_variables;
+}
+
+/**
+ * Render gallery navigation and set theme variables.
+ *
+ * @param $gallery_nodes
+ * @param array $gallery_types
+ */
+function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types = array()) {
+  $items = array();
+  foreach($gallery_nodes as $node) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $gallery_type = $node_wrapper->field_gallery_type->value();
+    $image_field = $node_wrapper->field_cover_item->value();
+    $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
+    if($node->status == 1 && in_array($gallery_type, $gallery_types)) {
+      $title = $node->title;
+      $cover_img = $gallery_preview_image;
+      $items[] = array(
+        'url' => _usanetwork_microsite_get_suggested_gallery_url($node),
+        'title' => $title,
+        'cover_img' => $cover_img,
+      );
+    }
+  }
+  return $items;
 }
 
 /**
@@ -1477,10 +1508,27 @@ function _usanetwork_microsite_define_full_episode($file) {
   return FALSE;
 }
 
+/**
+ * Get url part for characters.
+ *
+ * @param $person_node
+ * @return mixed|string
+ */
 function _usanetwork_microsite_get_suggested_character_url($person_node) {
   module_load_include('inc', 'pathauto', 'pathauto');
   $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
   return pathauto_cleanstring($person_names['person_title']);
+}
+
+/**
+ * Get url part for gallery.
+ *
+ * @param $gallery_node
+ * @return mixed|string
+ */
+function _usanetwork_microsite_get_suggested_gallery_url($gallery_node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  return pathauto_cleanstring($gallery_node->title);
 }
 
 /**

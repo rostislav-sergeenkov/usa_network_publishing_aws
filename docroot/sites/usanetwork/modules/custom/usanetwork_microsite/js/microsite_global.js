@@ -114,7 +114,7 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
         case 'characters':
           s.prop3 = 'Bio';
           s.prop4 = siteName + ' : Bio';
-          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Bio | ' + pageName;
@@ -176,6 +176,7 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
           Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
         }
 
+usa_debug('**********************\nsection scroll, and setting omniture and ads');
         Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 
@@ -610,9 +611,6 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
         }
       });
 
-      window.addEventListener('orientationchange', setSectionHeight);
-
-
       // A-SPOT AND PROMO CLICKS - DON'T REMOVE THIS!!!!
       // @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING
       // SO THAT IT IS NOT SPECIFIC TO "DIG"
@@ -683,6 +681,7 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
       $(window).bind('resize', function () {
         setSectionHeight();
       });
+      window.addEventListener('orientationchange', setSectionHeight);
 
       // create video 728x90 ad and
       // set initial active video thumbnail on video load

@@ -13,8 +13,7 @@
 ?>
 <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_galleries"></div>
 <div class="full-pane">
-  <?php if (!empty($galleries)): ?>
-  <?php foreach ($galleries as $gallery): ?>
+  <?php if (!empty($gallery)): ?>
   <div class="microsite-gallery-meta clearfix">
     <?php if (!empty($gallery['title'])): ?>
     <h2><?php print $gallery['title']; ?></h2>
@@ -31,7 +30,6 @@
       </div>
     </div>
   </div>
-  <?php endforeach; ?>
   <?php endif; ?>
 
   <div class="right-pane">

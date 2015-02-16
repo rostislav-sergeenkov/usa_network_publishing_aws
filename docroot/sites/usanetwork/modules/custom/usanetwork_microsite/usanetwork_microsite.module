@@ -48,6 +48,14 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/get-gallery/%node'] = array(
+    'page callback' => 'usanetwork_microsite_get_rendered_gallery',
+    'page arguments' => array(2, 3),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -414,9 +422,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
-    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
-      $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
-    }
+
+    $current_character = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     $character_count = 0;
     $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
@@ -499,29 +506,24 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       $gallery_nodes = array($gallery_nodes);
     }
 
+    $gallery_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($gallery_nodes as $current_gallery_node) {
-      $gallery_view = node_view($current_gallery_node, 'inline_content');
-      $body_value = NULL;
-      $body_field = field_get_items('node', $current_gallery_node, 'body');
-      $show_nid = NULL;
-      $show_field = field_get_items('node', $current_gallery_node, 'field_show');
-
-      if (!empty($body_field)) {
-        $body_value = reset(reset($body_field));
+      if($current_gallery_node->status != NODE_PUBLISHED) {
+        continue;
       }
-
-      if (!empty($show_field)) {
-        $show_nid = reset(reset($show_field));
+      if(!empty($gallery_arg) && $gallery_arg != _usanetwork_microsite_get_suggested_gallery_url($current_gallery_node)) {
+        continue;
       }
-
-      $theme_variables['galleries'][] = array(
-        'title' => $current_gallery_node->title,
-        'description' => $body_value,
-        'rendered' => drupal_render($gallery_view),
-      );
+      $theme_variables['gallery'] = usanetwork_microsite_get_rendered_gallery($current_gallery_node);
+      break;
     }
 
-    $theme_variables['episodic_galleries'] = views_embed_view('usa_gallery', 'panel_pane_1', $show_nid);
+    if(empty($theme_variables['gallery'])) {
+      drupal_not_found();
+    }
+
+    $gallery_types = array('Episodic Gallery');
+    $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
     $gallery_types = array(
       'Character Gallery',
       'GIF Gallery',
@@ -532,6 +534,27 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
 
   return $theme_variables;
 }
+
+
+/**
+ * Get rendered gallery.
+ *
+ * @param $node
+ */
+function usanetwork_microsite_get_rendered_gallery($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $gallery_view = node_view($node, 'inline_content');
+  $body_value = NULL;
+  if (!empty($node->body)) {
+    $body_value = $node_wrapper->body->value();
+  }
+  return array(
+    'title' => $node->title,
+    'description' => $body_value,
+    'rendered' => drupal_render($gallery_view),
+  );
+}
+
 
 /**
  * Render gallery navigation and set theme variables.
@@ -551,6 +574,7 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
       $cover_img = $gallery_preview_image;
       $items[] = array(
         'url' => _usanetwork_microsite_get_suggested_gallery_url($node),
+        'gallery_nid' => $node->nid,
         'title' => $title,
         'cover_img' => $cover_img,
       );
@@ -629,9 +653,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
-      $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
-    }
+
+    $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
@@ -1561,6 +1584,19 @@ function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $secti
     if($section_wrapper->field_ms_section_type->value() == $section_type) {
       return $section_wrapper;
     }
+  }
+  return NULL;
+}
+
+/**
+ * Get argument for current content.
+ *
+ * @param $section_wrapper
+ * @return null
+ */
+function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
+  if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+    return (arg(4) !== NULL) ? arg(4) : NULL;
   }
   return NULL;
 }

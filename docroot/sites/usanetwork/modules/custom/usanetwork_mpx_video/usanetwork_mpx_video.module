@@ -1188,6 +1188,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
     }
   }
+  // Fill H1 tag.
+  $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
+  $h1 = _pub_mpx_get_default_mpx_values('field_seo_h1', $file, 0, 'value');
+  $vars['h1'] = !empty($h1) ? $h1 : $title;
 }
 
 /**

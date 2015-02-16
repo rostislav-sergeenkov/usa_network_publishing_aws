@@ -66,13 +66,15 @@
       <?php if (!empty($characters)): ?>
       <div class="characters-cast">
         <h2>Meet the Cast &amp; Crew</h2>
+        <div id="characters-cast-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
         <ul id="characters-cast-list" class="characters-cast-bxslider">
         <?php foreach ($characters as $character): ?>
           <?php if (!empty($character['title']) && !empty($character['image_url'])): ?>
-          <li><a href="/dig/characters/<?php print str_replace(' ', '-', strtolower($character['title'])); ?>"><img src="/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/dig/images/dig_crew_timkring.jpg" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
+          <li><a href="/dig/characters/<?php print str_replace(' ', '-', strtolower($character['title'])); ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>
+        <div id="characters-cast-next" class="next btns"><span class="screen-reader-text">Next</span></div>
       </div>
       <?php endif; ?>
 

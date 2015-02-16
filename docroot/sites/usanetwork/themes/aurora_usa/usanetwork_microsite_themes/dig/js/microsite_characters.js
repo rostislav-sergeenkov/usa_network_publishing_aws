@@ -114,8 +114,8 @@
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
 
-    micrositeSwitchCharacters: function switchCharacters(clickedId, refreshAdsNOmniture) {
-      refreshAdsNOmniture = refreshAdsNOmniture || 1;
+    micrositeSwitchCharacters: function switchCharacters(clickedId) {
+usa_debug('******************\nmicrositeSwitchCharacters(' + clickedId + ')');
       var nextItem = $('#' + clickedId);
       if (nextItem.hasClass('active') || $('#characters .character-nav li').hasClass('disabled')) {
         // do nothing
@@ -135,7 +135,9 @@
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
-            oppositeSign = (direction == 'next') ? '' : '-';
+            oppositeSign = (direction == 'next') ? '' : '-',
+            activeSection = $('#microsite #sections > .active').attr('id');
+usa_debug('*****************\nactiveSection: ' + activeSection);
 
         if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
@@ -158,8 +160,12 @@
 
               Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
               Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-              if (refreshAdsNOmniture) {
-                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
+              if (activeSection != 'characters') {
+                Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+              }
+              else {
+usa_debug('**********************\nswitching characters, and setting omniture and ads');
+                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
                 Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
               }
 
@@ -189,7 +195,11 @@
 
                 Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
                 Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-                if (refreshAdsNOmniture) {
+                if (activeSection != 'characters') {
+                  Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+                }
+                else {
+usa_debug('**********************\nswitching characters, and setting omniture and ads');
                   Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
                   Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
                 }

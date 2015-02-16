@@ -34,8 +34,12 @@ body{
 
 /* HOME PEOPLE CAROUSEL */
 #microsite #home .characters-cast {
-  width: 615px;
+  width: 100%;
   margin: 0 auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 1245px;
 }
 #microsite #home .characters-cast h2 {
   color: #FFF;
@@ -52,17 +56,95 @@ body{
 #microsite #home .characters-cast .bx-wrapper .bx-pager.bx-default-pager a.active {
   background-color: #FFF;
 }
+#microsite #home #characters-cast-list {
+  opacity: 0;
+}
 #microsite #home .characters-cast li {
   background-color: #1F1F1F;
 }
-#microsite #home .characters-cast li a .person-title,
-#microsite #home .characters-cast li .person-title {
-  height: 60px;
+#microsite #home .characters-cast li a .person-title {
+  font-size: 1.17em;
+  height: 65px;
+  letter-spacing: 0.05em;
+  line-height: 22.5px;
   padding: 5px;
   color: #FFF;
   text-align: center;
   line-height: 1.2em;
 }
+#microsite #home .characters-cast .btns {
+  display: inline-block; /* Fix for clickability issue in WebKit */
+  position: absolute;
+  top: 40%;
+}
+#microsite #home .characters-cast .btns.prev {
+  left: -31px;
+}
+#microsite #home .characters-cast .btns.next {
+  right: -22px;
+}
+#microsite #home .characters-cast .btns a {
+  color: #FFF;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 35px;
+  height: 80px;
+  font-size: 28px;
+  line-height: 80px;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-align: center;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 96;
+}
+#microsite #home .characters-cast .btns a:hover {
+  color: #FFF;
+}
+#microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+#microsite #home .characters-cast .btns .screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+@media (max-width: 1580px) {
+#microsite #home .characters-cast {
+  width: 930px;
+}
+}
+@media (max-width: 1200px) {
+#microsite #home .characters-cast {
+  width: 615px;
+}
+#microsite #home .characters-cast li a .person-title {
+  height: 86px;
+}
+}
+@media (max-width: 640px) {
+#microsite #home .characters-cast {
+  width: 300px;
+}
+#microsite #home .characters-cast h2 {
+  font-size: 1.6em;
+  margin: 1.1em 0 0.27em;
+}
+}
+
+
 
 /* CHARACTERS SECTION */
 #microsite #characters {

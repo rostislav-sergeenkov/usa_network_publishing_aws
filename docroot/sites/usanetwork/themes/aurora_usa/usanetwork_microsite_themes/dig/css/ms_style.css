@@ -1923,6 +1923,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 }
 @media (max-width: 480px) {
+#microsite #home-content,
 #microsite #about-content,
 #microsite #galleries-content,
 #microsite #games-content,

@@ -25,7 +25,6 @@
       }
       charactersNav.find('ul').width(charNavListWidth).height(navHeight);
       charactersNav.width(charNavWidth).height(navHeight).animate({'opacity': 1}, 600);
-//usa_debug('**************************** micrositeSetCharNavWidthHeight() -> \ncharNavWidth: ' + charNavWidth + '\nmaxCharNavWidth: ' + maxCharNavWidth + '\nnavElemWidth: ' + navElemWidth + '\nnavElemHeight: ' + navElemHeight + '\nnavHeight: ' + navHeight);
     },
 
     micrositeSetNavNextPrevState: function setNavNextPreState() {
@@ -114,7 +113,8 @@
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
 
-    micrositeSwitchCharacters: function switchCharacters(clickedId) {
+    micrositeSwitchCharacters: function switchCharacters(clickedId, animationSpeed) {
+      animationSpeed = animationSpeed || 600;
       var nextItem = $('#' + clickedId);
       if (nextItem.hasClass('active') || $('#characters .character-nav li').hasClass('disabled')) {
         // do nothing
@@ -134,22 +134,20 @@
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
-            oppositeSign = (direction == 'next') ? '' : '-';
+            oppositeSign = (direction == 'next') ? '' : '-',
+            activeSection = $('#microsite #sections > .active').attr('id');
 
         if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
         // prepare next or previous background and character-info
         $('#microsite #characters .' + nextCharacterId).addClass(direction);
 
-        // refresh ads
-        Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
-
         if ($(window).width() < 875) {
           $('#character-info li.' + direction).css('top', '0');
           // animate active character-info
-          $('#character-info li.active').animate({'top': '0', 'opacity': 0}, 600, 'jswing', function(){
+          $('#character-info li.active').animate({'top': '0', 'opacity': 0}, animationSpeed, 'jswing', function(){
             // animate next character-info
-            $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
+            $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
               // update classes
               $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
               $('#microsite #characters .' + currentCharacterId).removeClass('active ');
@@ -159,8 +157,14 @@
               nextItem.addClass('active');
 
               Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-              Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
               Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+              if (activeSection != 'characters') {
+                Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+              }
+              else {
+                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+              }
 
               // remove disabled
               navItems.find('li.disabled').removeClass('disabled');
@@ -171,12 +175,12 @@
         else {
           $('#character-info li.' + direction).css('top', '-40px');
           // animate active character-info
-          $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, 600, 'jswing', function(){
+          $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, animationSpeed, 'jswing', function(){
             // animate backgrounds
-            $('#character-background li.active').animate({'left': sign + '100%'}, 800, 'jswing');
-            $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, 800, 'jswing', function(){
+            $('#character-background li.active').animate({'left': sign + '100%'}, (animationSpeed + 200), 'jswing');
+            $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, (animationSpeed + 200), 'jswing', function(){
               // animate next character-info
-              $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, 600, 'jswing', function(){
+              $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
 
                 // update classes
                 $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
@@ -187,8 +191,14 @@
                 nextItem.addClass('active');
 
                 Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' h3').text());
                 Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+                if (activeSection != 'characters') {
+                  Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+                }
+                else {
+                  Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                  Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                }
 
                 // remove disabled
                 navItems.find('li.disabled').removeClass('disabled');

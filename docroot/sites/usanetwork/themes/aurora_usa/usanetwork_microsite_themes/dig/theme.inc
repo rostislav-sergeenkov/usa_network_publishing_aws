@@ -23,6 +23,13 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'variables' => array(
         'aspots' => array(),
         'featured' => array(),
+        'characters' => array(
+          0 => array(
+            'url' => NULL,
+            'title' => NULL,
+            'image_url' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_about' => array(
@@ -78,8 +85,22 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
       'variables' => array(
         'background_url' => NULL,
         'gallery' => array(),
-        'episodic_galleries' => NULL,
-        'character_galleries' => NULL,
+        'episodic_galleries' => array(
+          0 => array(
+            'url' => NULL,
+            'gallery_nid' => NULL,
+            'title' => NULL,
+            'cover_img' => NULL,
+          ),
+        ),
+        'character_galleries' => array(
+          0 => array(
+            'url' => NULL,
+            'gallery_nid' => NULL,
+            'title' => NULL,
+            'cover_img' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_games' => array(
@@ -139,15 +160,20 @@ function usanetwork_microsite_dig_get_theme_includes() {
 //      $theme_path . '/javascripts/video-dropdowns.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
 //      $theme_path . '/javascripts/jquery.carouFredSel.min.js',
+      $module_path . '/js/jquery.bxslider.min.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_flexslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_gallery_carousel.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_bxslider.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
       $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(
+      $module_path . '/css/jquery.bxslider.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_style.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/ms_characters_styles.css',
+      $theme_path . '/usanetwork_microsite_themes/dig/css/ms_galleries_styles.css',
       $theme_path . '/usanetwork_microsite_themes/dig/css/trivia.css'
     ),
   );

@@ -1,0 +1,84 @@
+#microsite #galleries .galleries-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#microsite #galleries .galleries-nav h3 {
+  margin: 0 0 8px;
+}
+#microsite #galleries .galleries-nav .bx-wrapper .bx-viewport {
+  background-color: #000;
+  border-color: #000;
+  -mox-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#microsite #galleries .galleries-nav .bx-wrapper .bx-pager.bx-default-pager a:hover,
+#microsite #galleries .galleries-nav .bx-wrapper .bx-pager.bx-default-pager a.active {
+  background-color: #FFF;
+}
+#microsite #galleries .galleries-bxslider {
+  opacity: 0;
+}
+#microsite #galleries .galleries-nav li {
+  background-color: #1F1F1F;
+}
+#microsite #galleries .galleries-nav li a .gallery-title {
+  font-size: 0.9em;
+  line-height: 1.3em;
+  height: 50px;
+  letter-spacing: 0.05em;
+  padding: 5px;
+  color: #FFF;
+  background-color: #000;
+  text-align: center;
+}
+#microsite #galleries .galleries-nav .btns {
+  display: inline-block; /* Fix for clickability issue in WebKit */
+  position: absolute;
+  top: 40%;
+}
+#microsite #galleries .galleries-nav .btns.prev {
+  left: -31px;
+}
+#microsite #galleries .galleries-nav .btns.next {
+  right: -22px;
+}
+#microsite #galleries .galleries-nav .btns a {
+  color: #FFF;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 35px;
+  height: 80px;
+  font-size: 28px;
+  line-height: 80px;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-align: center;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 96;
+}
+#microsite #galleries .galleries-nav .btns a:hover {
+  color: #FFF;
+}
+#microsite #galleries .galleries-nav .btns a.disabled {
+  display: none;
+}
+#microsite #galleries .galleries-nav .btns .screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}

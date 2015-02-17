@@ -1215,11 +1215,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   float: right;
 }
 
-#microsite .episodic-galleries,
-.character-galleries {
-  display: none;
-}
-
 .region-footer {
   clear: both;
 }
@@ -1841,11 +1836,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0;
   }
 
-  #microsite .episodic-galleries,
-  .character-galleries {
-    display: none;
-  }
-
   #microsite #galleries-content .full-pane {
     width: 300px;
     min-height: 210px;
@@ -1923,6 +1913,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 }
 @media (max-width: 480px) {
+#microsite #home-content,
 #microsite #about-content,
 #microsite #galleries-content,
 #microsite #games-content,

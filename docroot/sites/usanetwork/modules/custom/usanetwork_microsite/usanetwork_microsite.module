@@ -352,11 +352,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
       $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
     }
   }
-/*
-  if (!empty($show_nid)) {
-    $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
-  }
-*/
 
   return $theme_variables;
 }
@@ -459,7 +454,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
+        'url' => $character_url,
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -1174,7 +1169,7 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
 }
 
 /**
- * Renders all person of node field.
+ * Renders all person node fields.
  */
 function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
   $items = array();
@@ -1184,6 +1179,7 @@ function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_fiel
     $image_field = $field_wrapper->field_usa_character_thumb->value();
     $image_url = image_style_url('meet_the_cast_carousel', $image_field['uri']);
     $items[] = array(
+      'url' => _usanetwork_microsite_get_suggested_character_url($person_node),
       'title' => $person_title['person_title'],
       'image_url' => $image_url,
     );

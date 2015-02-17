@@ -177,7 +177,7 @@ body{
 }
 #microsite #characters #character-background li {
   display: none;
-  width: 100%;
+  width: calc(100% - 10px); /* Subtract scrollbar width from overall width so user can still grab and move scrollbar */
   margin: 0;
   padding: 0;
   position: fixed;

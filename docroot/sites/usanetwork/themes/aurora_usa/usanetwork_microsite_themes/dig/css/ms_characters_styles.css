@@ -326,6 +326,8 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   padding: 0;
   position: relative;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;

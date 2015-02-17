@@ -1215,11 +1215,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   float: right;
 }
 
-#microsite .episodic-galleries,
-.character-galleries {
-  display: none;
-}
-
 .region-footer {
   clear: both;
 }
@@ -1839,11 +1834,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
   #microsite section#galleries-content .flexslider {
     margin: 0;
-  }
-
-  #microsite .episodic-galleries,
-  .character-galleries {
-    display: none;
   }
 
   #microsite #galleries-content .full-pane {

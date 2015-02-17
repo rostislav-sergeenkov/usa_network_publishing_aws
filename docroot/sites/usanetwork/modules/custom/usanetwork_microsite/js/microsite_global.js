@@ -35,7 +35,6 @@
     // getUrlPath
     // url: (string) url to parse
     micrositeGetUrlPath: function getUrlPath(url) {
-usa_debug('micrositeGetUrlPath(' + url + ')');
       var pathArray = url.replace('http://', '').replace('https://', '');
       pathArray = pathArray.split('/');
       if (pathArray[0].indexOf(window.location.hostname) >= 0
@@ -140,8 +139,6 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
           currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
           direction = (anchorNum > currentSectionNum) ? '' : '-',
           otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
-//usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
-//usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
 
       // if this is IE9, reload the correct page
       if ($('html.ie9').length > 0) {
@@ -176,7 +173,6 @@ usa_debug('micrositeGetUrlPath(' + url + ')');
           Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
         }
 
-usa_debug('**********************\nsection scroll, and setting omniture and ads');
         Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 
@@ -340,9 +336,6 @@ usa_debug('**********************\nsection scroll, and setting omniture and ads'
     },
     //scroll to top
     micrositeScrollToTop: function scrollToTop() {
-//      var container = $('sections'),
-//        activeSection = container.find('.section.active');
-//      activeSection.mCustomScrollbar('scrollTo',['top',null]);
       $('.section.active').animate({
         scrollTop: 0
       }, 2000);

@@ -25,6 +25,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'featured' => array(),
         'characters' => array(
           0 => array(
+            'url' => NULL,
             'title' => NULL,
             'image_url' => NULL,
           ),

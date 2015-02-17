@@ -1115,7 +1115,7 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
 }
 
 /**
- * Renders all person of node field.
+ * Renders all person node fields.
  */
 function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
   $items = array();

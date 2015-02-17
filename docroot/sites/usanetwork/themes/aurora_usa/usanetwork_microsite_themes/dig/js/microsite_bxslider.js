@@ -31,15 +31,11 @@
 
 
       // set defaults
-      var siteName = Drupal.settings.microsites_settings.title,
-          basePath = Drupal.settings.microsites_settings.base_path,
-          basePageName = siteName + ' | USA Network',
-          activeItem = '',
-          wwidth = $(window).width(),
+      var wwidth = $(window).width(),
           transitionWidth = 640,
           numSlides = (wwidth > transitionWidth) ? 5 : 3,
           slideWidth = (wwidth > transitionWidth) ? 242 : 100,
-          slideMargin = 10;
+          slideMargin = 10,
           self = this;
 
 
@@ -76,20 +72,10 @@
           }
 
           anchor = anchorPathParts[1];
-          anchorSection = Drupal.behaviors.microsite_characters.micrositeToTitleCase(anchor);
           item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
-
           if (anchor == 'characters') {
-usa_debug('*****************************/ncharacters-cast click\nanchor: ' + anchor + '\nanchorSection: ' + anchorSection + '\nitem: ' + item);
-            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item);
-/*
-            var anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor;
-            setTimeout(function(){
-              Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-              Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, item);
-            }, 1000);
-*/
+            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10);
           }
         }
       });

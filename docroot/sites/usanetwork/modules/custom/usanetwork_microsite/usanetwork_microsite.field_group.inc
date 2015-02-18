@@ -185,5 +185,35 @@ function usanetwork_microsite_field_group_info() {
   );
   $export['group_ms_social|node|usanetwork_microsite|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|field_collection_item|field_ms_section|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'field_collection_item';
+  $field_group->bundle = 'field_ms_section';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_seo_h1',
+      1 => 'field_seo_page_title',
+      2 => 'field_usa_og_description',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'SEO',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-seo field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_seo|field_collection_item|field_ms_section|form'] = $field_group;
+
   return $export;
 }

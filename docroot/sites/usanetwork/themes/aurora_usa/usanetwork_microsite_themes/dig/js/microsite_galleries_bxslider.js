@@ -85,8 +85,7 @@
           // Make ajax call to '/ajax/get-gallery/' + nid
           var newGallery = $.ajax({
             url: '/ajax/get-gallery/' + nid,
-            type: 'GET',
-
+            type: 'GET'
           })
           .done(function(data, textStatus, jqXHR){
             usa_debug('*********************\najax done: ');

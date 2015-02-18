@@ -51,7 +51,7 @@
       <?php foreach ($episodic_galleries as $ep_gallery): ?>
         <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
         <?php /* @TODO: Dynamically create the /dig/characters part of the following url */ ?>
-        <li data_node_id="<?php print $ep_gallery['gallery_nid']; ?>"><a href="/dig/characters/<?php print $ep_gallery['url']; ?>"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>"><div class="gallery-title"><?php print $ep_gallery['title']; ?></div></a></li>
+        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>"><a href="/dig/characters/<?php print $ep_gallery['url']; ?>"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>"><div class="gallery-title"><?php print $ep_gallery['title']; ?></div></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
       </ul>
@@ -66,7 +66,7 @@
       <?php foreach ($character_galleries as $char_gallery): ?>
         <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
         <?php /* @TODO: Dynamically create the /dig/characters part of the following url */ ?>
-        <li data_node_id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/characters/<?php print $char_gallery['url']; ?>"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
+        <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/characters/<?php print $char_gallery['url']; ?>"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
         <?php endif; ?>
       <?php endforeach; ?>
       </ul>

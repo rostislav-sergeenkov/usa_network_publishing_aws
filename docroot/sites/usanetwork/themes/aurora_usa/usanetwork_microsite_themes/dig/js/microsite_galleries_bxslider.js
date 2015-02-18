@@ -81,6 +81,26 @@
         if (anchorPathParts[0] == 'dig') {
           e.preventDefault();
 
+          var nid = $(this).parent().attr('data-node-id');
+          // Make ajax call to '/ajax/get-gallery/' + nid
+          var newGallery = $.ajax({
+            url: '/ajax/get-gallery/' + nid,
+            type: 'GET',
+
+          })
+          .done(function(data, textStatus, jqXHR){
+            usa_debug('*********************\najax done: ');
+            usa_debug(data);
+          })
+          .fail(function(jqXHR, textStatus, errorThrown){
+            usa_debug('********************\najax fail: ');
+            usa_debug(errorThrown);
+          })
+          .always(function(){
+
+          });
+
+/*
           // if this is IE9, reload the correct page
           if ($('html.ie9').length > 0) {
             window.location.href = anchorFull;
@@ -90,7 +110,6 @@
           anchor = anchorPathParts[1];
           item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
-/*
           if (anchor == 'galleries') {
             if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10);
           }

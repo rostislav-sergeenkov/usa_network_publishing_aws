@@ -309,6 +309,9 @@
           pageName = sectionTitle + ' | ' + pageName;
           s.pageName += ' : ' + sectionTitle;
         }
+		if ((anchor == 'home') || (anchor == 'about')) {
+		  pageName = 'Dig Deeper | '  + pageName;
+		}
         if (itemTitle != '') {
           pageName = itemTitle + ' | ' + pageName;
           s.pageName += ' : ' + itemTitle;

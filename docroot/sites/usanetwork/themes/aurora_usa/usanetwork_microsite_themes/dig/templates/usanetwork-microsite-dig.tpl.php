@@ -100,4 +100,7 @@
       </div>
     </div>
   </div>
+  <?php if (!empty($facebook_tracking_html)): ?>
+    <?php print $facebook_tracking_html; ?>
+  <?php endif; ?>
 </div>

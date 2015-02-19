@@ -566,6 +566,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
     $body_value = $node_wrapper->body->value();
   }
   return array(
+    'gallery_nid' => $node->nid,
     'title' => $node->title,
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),

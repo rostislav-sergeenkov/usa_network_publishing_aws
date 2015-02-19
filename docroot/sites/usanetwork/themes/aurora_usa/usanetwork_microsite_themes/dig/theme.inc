@@ -15,6 +15,7 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'sections' => array(),
         'tune_in' => NULL,
         'sections_navlinks' => array(),
+        'facebook_tracking_html' => NULL,
       ),
     ),
     'usanetwork_microsite_dig_page_home' => array(

@@ -1267,7 +1267,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   switch ($path) {
     case '':
     case 'home':
-      $head_title = t($title . ' | USA Network');
+      // @TODO: Use Page Title field for that when it will be done
+      $head_title = t('Dig Deeper | ' . $title . ' | USA Network');
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
@@ -1341,7 +1342,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'about':
-      $head_title = t('About | ' . $title . ' | USA Network');
+      // @TODO: Use Page Title field for that when it will be done
+      $head_title = t('Dig Deeper | About | ' . $title . ' | USA Network');
       break;
     case 'games':
       $head_title = t('Games | ' . $title . ' | USA Network');

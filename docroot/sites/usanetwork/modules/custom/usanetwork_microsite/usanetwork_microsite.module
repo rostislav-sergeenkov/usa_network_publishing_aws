@@ -1245,7 +1245,12 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   switch ($path) {
     case '':
     case 'home':
-      $head_title = t($title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
+      _usanetwork_microsite_set_meta_description($section_wrapper);
+      $head_title = $section_wrapper->field_seo_page_title->value();
+      if(empty($head_title)) {
+        $head_title = t($title . ' | USA Network');
+      }
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
@@ -1257,12 +1262,15 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
-
+        $page_title = $videos_section_wrapper->field_seo_page_title->value();
+        if(!empty($page_title)) {
+          $head_title = $page_title;
+          break;
+        }
         if (!empty($videos_section_wrapper)) {
           $videos_section_object = $videos_section_wrapper->value();
 
           if (!empty($videos_section_object->field_ms_videos)) {
-
 
             $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
 
@@ -1277,6 +1285,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $head_title = t('Characters | ' . $title . ' | USA Network');
       if (isset($args[4])) {
         $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
+        _usanetwork_microsite_set_meta_description($node);
         if(!empty($character_node)) {
           $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
           $head_title = $person_names['person_title'] . ' | ' . $head_title;
@@ -1284,14 +1293,19 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       else {
         $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
-
+        $page_title = $characters_section_wrapper->field_seo_page_title->value();
+        if(!empty($page_title)) {
+          $head_title = $page_title;
+        }
         if (!empty($characters_section_wrapper)) {
           $characters_section_object = $characters_section_wrapper->value();
-
           if (!empty($characters_section_object->field_ms_person)) {
             $characters_nodes = $characters_section_wrapper->field_ms_person->value();
             $person_names = _usanetwork_microsite_get_person_title_and_role_name($characters_nodes[0]);
-            $head_title = $person_names['person_title'] . ' | ' . $head_title;
+            _usanetwork_microsite_set_meta_description($characters_nodes[0]);
+            if(empty($page_title)) {
+              $head_title = $person_names['person_title'] . ' | ' . $head_title;
+            }
           }
         }
       }
@@ -1304,14 +1318,17 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
-
+        $page_title = $galleries_section_wrapper->field_seo_page_title->value();
+        if(!empty($page_title)) {
+          $head_title = $page_title;
+        }
         if (!empty($galleries_section_wrapper)) {
           $galleries_section_object = $galleries_section_wrapper->value();
 
           if (!empty($galleries_section_object->field_media_gallery)) {
             $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
-
-            if (!empty($attached_gallery)) {
+            _usanetwork_microsite_set_meta_description($attached_gallery);
+            if (!empty($attached_gallery) && empty($page_title)) {
               $head_title = $attached_gallery->title . ' | ' . $head_title;
             }
           }
@@ -1319,10 +1336,18 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'about':
-      $head_title = t('About | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'about');
+      $head_title = $section_wrapper->field_seo_page_title->value();
+      if(empty($head_title)) {
+        $head_title = t('About | ' . $title . ' | USA Network');
+      }
       break;
     case 'games':
-      $head_title = t('Games | ' . $title . ' | USA Network');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');
+      $head_title = $section_wrapper->field_seo_page_title->value();
+      if(empty($head_title)) {
+        $head_title = t('Games | ' . $title . ' | USA Network');
+      }
       break;
     default:
       $head_title = t($title . ' | USA Network');
@@ -1595,6 +1620,69 @@ function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
     return (arg(4) !== NULL) ? arg(4) : NULL;
   }
   return NULL;
+}
+
+
+/**
+ * @param $object.
+ *  Object can be field collection or node.
+ *
+ * Add meta description for object.
+ */
+function _usanetwork_microsite_set_meta_description($object) {
+  if($object == 'field_collection_item') {
+    _usanetwork_microsite_set_meta_description_for_node($object);
+  }
+  else {
+    _usanetwork_microsite_set_meta_description_for_field_collection($object);
+  }
+}
+
+function _usanetwork_microsite_set_meta_description_for_node($node) {
+  $description = '';
+
+  $node_wrapper = entity_metadata_wrapper('node', $node);;
+  $metatags = metatag_metatags_load('node', $node->nid);
+  $desc_metatag = metatag_get_info('tags', 'description');
+  if(!empty($node->field_usa_og_description)) {
+    $description = $node_wrapper->field_usa_og_description->value();
+  }
+  if(empty($description)) {
+    //$description = $desc_metatag['description'];
+  }
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
+function _usanetwork_microsite_set_meta_description_for_field_collection($section_wrapper) {
+  $description = '';
+  $section_object = $section_wrapper->value();
+  if(!empty($section_object->field_usa_og_description)) {
+    $description = $section_wrapper->field_usa_og_description->value();
+  }
+  if(empty($description)) {
+    $desc_metatag = metatag_get_info('tags', 'description');
+    $description = $desc_metatag['description'];
+  }
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
+/**
+ * Add meta description.
+ */
+function _usanetwork_microsite_set_meta_description_text($desc) {
+  $page_description = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'description',
+      'content' => $desc,
+    )
+  );
+  drupal_add_html_head($page_description, 'meta_description');
 }
 
 /**

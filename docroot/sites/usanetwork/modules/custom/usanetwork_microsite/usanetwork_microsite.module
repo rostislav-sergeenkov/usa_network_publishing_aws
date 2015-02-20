@@ -209,6 +209,28 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         $output = metatag_metatags_view($instance, $metatags, $options);
         metatag_page_set_metatags($instance, $output);
       }
+
+      // Add facebook tracking data.
+      if (!empty($node->field_show)) {
+        $microsite_wrapper = entity_metadata_wrapper('node', $node);
+        $tracking_enabled = _usanetwork_facebook_tracking_enabled($microsite_wrapper->field_show->value(), 'node');
+        $tracking_html = _usanetwork_microsite_get_facebook_tracking_html();
+
+        if ($tracking_enabled && $tracking_html) {
+          drupal_add_js(array(
+            'data' => array(
+              'usanetwork_facebook_tracking' => array(
+                'id' => USANETWORK_FACEBOOK_TRACKING_ID,
+              )
+            )
+          ));
+
+          drupal_add_js(drupal_get_path('module', 'usanetwork_facebook_tracking') . '/js/usanetwork_facebook_tracking.js');
+
+          $theme_variables['facebook_tracking_html'] = $tracking_html;
+        }
+      }
+
       return theme($theme_registry_name, $theme_variables);
     }
   }
@@ -544,6 +566,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
     $body_value = $node_wrapper->body->value();
   }
   return array(
+    'gallery_nid' => $node->nid,
     'title' => $node->title,
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),
@@ -1245,7 +1268,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   switch ($path) {
     case '':
     case 'home':
-      $head_title = t($title . ' | USA Network');
+      // @TODO: Use Page Title field for that when it will be done
+      $head_title = t('Dig Deeper | ' . $title . ' | USA Network');
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
@@ -1319,7 +1343,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'about':
-      $head_title = t('About | ' . $title . ' | USA Network');
+      // @TODO: Use Page Title field for that when it will be done
+      $head_title = t('Dig Deeper | About | ' . $title . ' | USA Network');
       break;
     case 'games':
       $head_title = t('Games | ' . $title . ' | USA Network');
@@ -1647,4 +1672,15 @@ function usanetwork_microsite_page_build(&$page) {
       }
     }
   }
+}
+
+/**
+ * Returns HTML script tag for tracking facebook.
+ */
+function _usanetwork_microsite_get_facebook_tracking_html() {
+  if (!module_exists('usanetwork_facebook_tracking')) {
+    return NULL;
+  }
+
+  return _usanetwork_facebook_tracking_post_render('', array());
 }

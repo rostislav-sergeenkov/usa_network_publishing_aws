@@ -895,3 +895,14 @@ function usanetwork_core_update_7152() {
   );
   module_enable($modules_en);
 }
+
+/**
+ * Disable WatchWith modules
+ */
+function usanetwork_core_update_7154() {
+  $modules_dis = array(
+    'usanetwork_watchwith',
+    'tve_watchwith',
+  );
+  module_disable($modules_dis);
+}

@@ -42,8 +42,10 @@ body{
   max-width: 1245px;
 }
 #microsite #home .characters-cast h2 {
-  color: #FFF;
-  font-size: 1.8em;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  color: #e5ce96;
+  font-size: 1.6em;
+  margin: 1.4em 0 0.83em;
 }
 #microsite #home .characters-cast .bx-wrapper .bx-viewport {
   background-color: #000;
@@ -61,6 +63,8 @@ body{
 }
 #microsite #home .characters-cast li {
   background-color: #1F1F1F;
+  max-width: 145px;
+  min-width: 90px;
 }
 #microsite #home .characters-cast li a .person-title {
   font-size: 1.17em;
@@ -71,6 +75,14 @@ body{
   color: #FFF;
   text-align: center;
   line-height: 1.2em;
+  background-color: rgba(0, 0, 0, 0.85);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, black));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, black 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#000000',GradientType=0 );
 }
 #microsite #home .characters-cast .btns {
   display: inline-block; /* Fix for clickability issue in WebKit */
@@ -141,6 +153,10 @@ body{
 #microsite #home .characters-cast h2 {
   font-size: 1.6em;
   margin: 1.1em 0 0.27em;
+}
+#microsite #home .characters-cast li a .person-title {
+  font-size: 0.75em;
+  height: 52px;
 }
 }
 

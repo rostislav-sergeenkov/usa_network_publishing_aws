@@ -2,29 +2,92 @@
 (function ($) {
   Drupal.behaviors.micrositeGalleriesBxSliders = {
 
+    showHidePager: function($slider) {
+      var numGalleries = $slider.find('li').length;
+      if (numGalleries <= 2) {
+        $slider.parents('.bx-wrapper').find('.bx-controls').hide();
+      }
+    },
 
-    micrositeReloadBxSlider: function() {
-      if ($('#microsite #galleries .galleries-bxslider').length) $('#microsite #galleries #characters-galleries-list').css({ 'opacity': 0 });
-      var wwidth = $(window).width(),
-          transitionWidth = 640,
-          numSlides = (wwidth > transitionWidth) ? 5 : 3,
-          slideWidth = (wwidth > transitionWidth) ? 242 : 100,
-          slideMargin = 10;
-      Drupal.behaviors.micrositeBxSliders.charactersCastBxSlider.reloadSlider({
-        slideWidth: slideWidth,
-        minSlides: numSlides,
-        maxSlides: numSlides,
-        slideMargin: slideMargin,
-        nextSelector: '#characters-cast-next',
-        prevSelector: '#characters-cast-prev',
-        nextText: 'Next',
-        prevText: 'Previous',
-        infiniteLoop: false,
-        hideControlOnEnd: true,
-        onSliderLoad: function(){
-          $('#microsite #home #characters-cast-list').animate({ 'opacity': 1 }, 1000, 'jswing');
-        }
+    initCarousel: function() {
+      $slideSelector = $('.microsite-gallery .flexslider');
+      $touch = true;
+      if ($slideSelector.find('li').length <= 1) {
+        $touch = false;
+      }
+      $slideSelector
+        .parent().append('<div class="description-block"></div>');
+      $slideSelector
+        .flexslider({
+          animation: "slide",
+          useCSS: true,
+          touch: $touch,
+          smoothHeight: false,
+          slideshow: false,
+          controlNav: true,
+          directionNav: true,
+          start: function() {
+            var $slider = $slideSelector;
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            var current_gallery = $slider.closest('.microsite-gallery');
+            var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
+            if (current_description) {
+              current_gallery.find('.description-block').html(current_description);
+            }
+            $slider.append('<div class="counter"></div>');
+            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+          },
+          after: function() {
+            var $slider = $slideSelector;
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
+            Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
+            Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
+          }
+        });
+    },
+
+    showHideLoader: function() {
+      var activeGallery = $('#galleries .microsite-gallery'),
+          gLoader = $('#galleries #gallery-loader'),
+          gHeight = activeGallery.height();
+      gLoader.height(gHeight);
+      if (gLoader.css('opacity') == 0) {
+        // show spinner
+        gLoader.show().animate({'opacity': 1}, 1000);
+      }
+      else {
+        // hide spinner
+        gLoader.animate({'opacity': 0}, 1000).delay(1000).hide();
+      }
+    },
+
+    switchGallery: function(nid) {
+      Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+
+      // Make ajax call to '/ajax/get-gallery/' + nid
+      var newGallery = $.ajax({
+        url: '/ajax/get-gallery/' + nid,
+        type: 'GET',
+        dataType: 'json'
       })
+      .done(function(data, textStatus, jqXHR){
+        var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
+            activeGallery = $('#galleries .microsite-gallery');
+        activeGallery.animate({'opacity': 0}, 1000, function(){
+          activeGalleryMeta.find('h2').text(data.title);
+          activeGallery.find('.center-wrapper').html(data.rendered);
+          Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
+          activeGallery.animate({'opacity': 1}, 1000, function(){
+            Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
+          });
+        });
+      })
+      .fail(function(jqXHR, textStatus, errorThrown){
+        //usa_debug('********************\najax fail: ');
+        //usa_debug(errorThrown);
+      })
+
     },
 
     attach: function (context, settings) {
@@ -51,7 +114,8 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #galleries #ep-galleries .galleries-bxslider').animate({ 'opacity': 1 }, 1000, 'jswing');
+          self.showHidePager($('#microsite #galleries #ep-galleries .galleries-bxslider'));
+          $('#microsite #galleries #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       });
 
@@ -67,7 +131,8 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #galleries #character-galleries .galleries-bxslider').animate({ 'opacity': 1 }, 1000, 'jswing');
+          self.showHidePager($('#microsite #galleries #character-galleries .galleries-bxslider'));
+          $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       });
 
@@ -87,21 +152,11 @@
             return false;
           }
 
-          anchor = anchorPathParts[1];
-          item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
-
-/*
-          if (anchor == 'galleries') {
-            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10);
-          }
-*/
+          var nid = $(this).parent().attr('data-node-id');
+          self.switchGallery(nid);
+          history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
       });
-
-      $(window).bind('resize', function () {
-        self.micrositeReloadBxSlider();
-      });
-      window.addEventListener('orientationchange', self.micrositeReloadBxSlider);
 
 
     }

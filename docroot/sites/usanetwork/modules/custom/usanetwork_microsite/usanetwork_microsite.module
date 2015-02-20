@@ -209,6 +209,28 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         $output = metatag_metatags_view($instance, $metatags, $options);
         metatag_page_set_metatags($instance, $output);
       }
+
+      // Add facebook tracking data.
+      if (!empty($node->field_show)) {
+        $microsite_wrapper = entity_metadata_wrapper('node', $node);
+        $tracking_enabled = _usanetwork_facebook_tracking_enabled($microsite_wrapper->field_show->value(), 'node');
+        $tracking_html = _usanetwork_microsite_get_facebook_tracking_html();
+
+        if ($tracking_enabled && $tracking_html) {
+          drupal_add_js(array(
+            'data' => array(
+              'usanetwork_facebook_tracking' => array(
+                'id' => USANETWORK_FACEBOOK_TRACKING_ID,
+              )
+            )
+          ));
+
+          drupal_add_js(drupal_get_path('module', 'usanetwork_facebook_tracking') . '/js/usanetwork_facebook_tracking.js');
+
+          $theme_variables['facebook_tracking_html'] = $tracking_html;
+        }
+      }
+
       return theme($theme_registry_name, $theme_variables);
     }
   }
@@ -544,6 +566,7 @@ function usanetwork_microsite_get_rendered_gallery($node) {
     $body_value = $node_wrapper->body->value();
   }
   return array(
+    'gallery_nid' => $node->nid,
     'title' => $node->title,
     'description' => $body_value,
     'rendered' => drupal_render($gallery_view),
@@ -763,6 +786,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   elseif($type == 'characters') {
     return $section_wrapper->field_ms_person->value();
   }
+  elseif($type == 'galleries') {
+    return $section_wrapper->field_ms_media_gallery->value();
+  }
   return NULL;
 }
 
@@ -798,6 +824,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
  * Get person node by url parameter.
  *
  * @param $node
+ * @param $param
  * @return mixed
  */
 function _usanetwork_microsite_get_person_by_url($node, $param) {
@@ -805,6 +832,25 @@ function _usanetwork_microsite_get_person_by_url($node, $param) {
   $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
   foreach($characters as $node) {
     if ($param == _usanetwork_microsite_get_suggested_character_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get gallery node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_gallery_by_url($node, $param) {
+  //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
+  $galleries = _usanetwork_microsite_get_related_content_from_node($node, 'galleries');
+  foreach($galleries as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_gallery_url($node)) {
       return $node;
     }
   }
@@ -1249,7 +1295,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       _usanetwork_microsite_set_meta_description($section_wrapper);
       $head_title = $section_wrapper->field_seo_page_title->value();
       if(empty($head_title)) {
-        $head_title = t($title . ' | USA Network');
+        $head_title = t('Dig Deeper | ' . $title . ' | USA Network');
       }
       break;
     case 'videos':
@@ -1313,8 +1359,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
-        // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+        $gallery_node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+        if(!empty($gallery_node)) {
+          $head_title = $gallery_node->title . ' | ' . $head_title;
+        }
       }
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
@@ -1339,7 +1387,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'about');
       $head_title = $section_wrapper->field_seo_page_title->value();
       if(empty($head_title)) {
-        $head_title = t('About | ' . $title . ' | USA Network');
+        $head_title = t('Dig Deeper | About | ' . $title . ' | USA Network');
       }
       break;
     case 'games':
@@ -1464,11 +1512,13 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'galleries':
           $omniture_prop3 = 'Gallery';
-//          if(isset($args[4])) {
-            // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
-            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
-//          }
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = t($entity->title . ' : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : ' . $node->title);
+            }
+          }
           break;
         case 'about':
           $omniture_prop3 = 'About';
@@ -1735,4 +1785,15 @@ function usanetwork_microsite_page_build(&$page) {
       }
     }
   }
+}
+
+/**
+ * Returns HTML script tag for tracking facebook.
+ */
+function _usanetwork_microsite_get_facebook_tracking_html() {
+  if (!module_exists('usanetwork_facebook_tracking')) {
+    return NULL;
+  }
+
+  return _usanetwork_facebook_tracking_post_render('', array());
 }

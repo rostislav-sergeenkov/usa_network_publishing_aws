@@ -1,0 +1,7 @@
+name = USA Network Umbel
+description = Functionality for Umbel Tracking
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_umbel
+dependencies[] = usanetwork_ads

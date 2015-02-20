@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network Umbel Tracking.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_umbel_menu() {
+  // admin area
+  $items['admin/usanetwork/umbel'] = array(
+    'title' => 'Umbel Tracking settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_umbel_tracking_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_umbel.admin.inc',
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_umbel_init() {
+  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer', 'every_page' => TRUE, 'preprocess' => FALSE));
+}

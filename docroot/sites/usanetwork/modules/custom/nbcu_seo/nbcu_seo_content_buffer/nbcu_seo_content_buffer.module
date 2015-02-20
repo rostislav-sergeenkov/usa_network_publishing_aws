@@ -101,7 +101,7 @@ function _nbcu_seo_content_buffer_fetch_links() {
     db_or()
       ->condition('mv.expiration_date', REQUEST_TIME, '<')
       ->condition('mv.expiration_date', 0)
-      ->isNull('mv.expiration_date')
+      ->condition('mv.expiration_date', NULL)
   );
   $query->range(0, $max_buffer_length);
   $query->orderBy('x.lastmod', 'DESC');

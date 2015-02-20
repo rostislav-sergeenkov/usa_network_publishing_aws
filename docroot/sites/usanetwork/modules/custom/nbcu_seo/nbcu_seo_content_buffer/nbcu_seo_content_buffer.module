@@ -97,12 +97,12 @@ function _nbcu_seo_content_buffer_fetch_links() {
   $query->condition('x.status', 1);
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
   $query->leftJoin('mpx_video', 'mv', "x.id = mv.fid AND x.type = 'file'");
-  $query->condition(
-    db_or()
-      ->condition('mv.expiration_date', REQUEST_TIME, '<')
-      ->condition('mv.expiration_date', 0)
-      ->condition('mv.expiration_date', NULL)
-  );
+  //$query->condition(
+  //  db_or()
+  //    ->condition('mv.expiration_date', REQUEST_TIME, '<')
+  //    ->condition('mv.expiration_date', 0)
+  //    ->condition('mv.expiration_date', NULL)
+  //);
   $query->range(0, $max_buffer_length);
   $query->orderBy('x.lastmod', 'DESC');
 

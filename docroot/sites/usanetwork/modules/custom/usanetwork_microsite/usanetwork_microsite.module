@@ -5,6 +5,7 @@ define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
+define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_vod_endcard');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -26,14 +27,6 @@ function usanetwork_microsite_menu() {
   $items['ajax/get-video-in-player/%node'] = array(
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
-    'access arguments' => array('access content'),
-    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['ajax/get-video-in-player/%node/%'] = array(
-    'page callback' => 'usanetwork_microsite_get_video_in_player',
-    'page arguments' => array(2, 3),
     'access arguments' => array('access content'),
     'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
     'type' => MENU_CALLBACK,
@@ -692,6 +685,18 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $auth_episode = _usanetwork_microsite_define_auth($current_video_file);
+      
+      if ($full_episode) {
+        if ($auth_episode) {
+          $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
+        } else {
+          $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
+        }
+      } else {
+        $player_id = USANETWORK_MICROSITE_USA_PLAYER;
+      }
+      
       $is_full_episode = 'false';
       if($full_episode) {
         $is_full_episode = 'true';
@@ -703,7 +708,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
           'account_id' => $account_id,
           'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+          'player_id' => $player_id,
           'is_full_episode' => $is_full_episode,
           'state' => $state,
         );
@@ -1574,6 +1579,18 @@ function _usanetwork_microsite_define_full_episode($file) {
   $file_wrapper = entity_metadata_wrapper('file', $file);
   $full_episode = $file_wrapper->field_mpx_full_episode->value();
   if($full_episode == 1) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Define auth episode or not.
+ */
+function _usanetwork_microsite_define_auth($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $auth_episode = $file_wrapper->field_mpx_entitlement->value();
+  if($auth_episode == 'auth') {
     return TRUE;
   }
   return FALSE;

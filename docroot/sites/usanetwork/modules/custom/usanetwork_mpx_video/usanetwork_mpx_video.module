@@ -1944,5 +1944,5 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   });
 
   // Splicing first $limit elements
-  $alter_result = array_splice($alter_result, $limit);
+  $alter_result = array_splice($alter_result, 0, $limit);
 }

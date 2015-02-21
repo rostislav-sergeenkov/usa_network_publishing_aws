@@ -18,7 +18,7 @@
     setActiveGalleryNav: function() {
       var activeGalleryNid = $('.microsite-gallery').attr('data-node-id');
       $('#galleries .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
-usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + activeGalleryNid);
+//usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + activeGalleryNid);
     },
 
     initCarousel: function() {
@@ -108,15 +108,14 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
       var wwidth = $(window).width(),
           transitionWidth = 640,
           episodesNumSlides = (wwidth > transitionWidth) ? 10 : 2,
-          charsNumSlides = (wwidth > transitionWidth) ? 2 : 2,
+          charsNumSlides = (wwidth > transitionWidth) ? 6 : 2,
           slideWidth = (wwidth > transitionWidth) ? 250 : 140,
-          slideMargin = 10,
-          self = this;
+          slideMargin = 10;
 
       if (typeof Drupal.behaviors.micrositeGalleriesBxSliders.epGalleryBxSlider == 'object') {
         Drupal.behaviors.micrositeGalleriesBxSliders.epGalleryBxSlider.reloadSlider({
           slideWidth: slideWidth,
-          minSlides: episodesNumSlides,
+          minSlides: 2,
           maxSlides: episodesNumSlides,
           slideMargin: slideMargin,
           nextSelector: '#ep-galleries-next',
@@ -126,8 +125,8 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
           infiniteLoop: false,
           hideControlOnEnd: true,
           onSliderLoad: function(){
-            self.showHidePager($('#microsite #galleries #ep-galleries'), episodesNumSlides);
-            self.setActiveGalleryNav();
+            Drupal.behaviors.micrositeGalleriesBxSliders.showHidePager($('#microsite #galleries #ep-galleries'), episodesNumSlides);
+            Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryNav();
             $('#microsite #galleries #ep-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });
@@ -136,7 +135,7 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
       if (typeof Drupal.behaviors.micrositeGalleriesBxSliders.characterGalleryBxSlider == 'object') {
         Drupal.behaviors.micrositeGalleriesBxSliders.characterGalleryBxSlider.reloadSlider({
           slideWidth: slideWidth,
-          minSlides: charsNumSlides,
+          minSlides: 2,
           maxSlides: charsNumSlides,
           slideMargin: slideMargin,
           nextSelector: '#character-galleries-next',
@@ -146,7 +145,8 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
           infiniteLoop: false,
           hideControlOnEnd: true,
           onSliderLoad: function(){
-            self.showHidePager($('#microsite #galleries #character-galleries'), charsNumSlides);
+            Drupal.behaviors.micrositeGalleriesBxSliders.showHidePager($('#microsite #galleries #character-galleries'), charsNumSlides);
+            Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryNav();
             $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });
@@ -168,7 +168,7 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
       if ($('#microsite #galleries #ep-galleries').length > 0) {
         self.epGalleryBxSlider = $('#microsite #galleries #ep-galleries .galleries-bxslider').bxSlider({
           slideWidth: slideWidth,
-          minSlides: episodesNumSlides,
+          minSlides: 2,
           maxSlides: episodesNumSlides,
           slideMargin: slideMargin,
           nextSelector: '#ep-galleries-next',
@@ -188,7 +188,7 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
       if ($('#microsite #galleries #character-galleries').length > 0) {
         self.characterGalleryBxSlider = $('#microsite #galleries #character-galleries .galleries-bxslider').bxSlider({
           slideWidth: slideWidth,
-          minSlides: charsNumSlides,
+          minSlides: 2,
           maxSlides: charsNumSlides,
           slideMargin: slideMargin,
           nextSelector: '#character-galleries-next',
@@ -199,6 +199,7 @@ usa_debug('*******************\nsetActiveGalleryNav => activeGalleryNid: ' + act
           hideControlOnEnd: true,
           onSliderLoad: function(){
             self.showHidePager($('#microsite #galleries #character-galleries'), charsNumSlides);
+            self.setActiveGalleryNav();
             $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
           }
         });

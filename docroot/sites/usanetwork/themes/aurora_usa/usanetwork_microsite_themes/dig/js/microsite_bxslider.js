@@ -4,18 +4,18 @@
 
 
     micrositeReloadBxSlider: function() {
-      if ($('#microsite #home #characters-cast-list').length) $('#microsite #home #characters-cast-list').css({ 'opacity': 0 });
+      if ($('#microsite #home .characters-cast').length) $('#microsite #home .characters-cast').css({ 'opacity': 0 });
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          numSlides = (wwidth > transitionWidth) ? 8 : 3,
-          slideWidth = (wwidth > transitionWidth) ? 145 : 100,
+          numSlides = (wwidth > transitionWidth) ? 6 : 3,
+          slideWidth = (wwidth > transitionWidth) ? 240 : 100,
           slideMargin = 10;
 //usa_debug('*******************/nmicrositeReloadBxSlider\nnumSlides: ' + numSlides + '\nslideWidth: ' + slideWidth);
       Drupal.behaviors.micrositeBxSliders.charactersCastBxSlider.reloadSlider({
         slideWidth: slideWidth,
-        minSlides: 3,
+        minSlides: numSlides,
         maxSlides: numSlides,
-        useCSS: true,
+//        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -24,7 +24,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #home #characters-cast-list').animate({ 'opacity': 1 }, 1000, 'jswing');
+          $('#microsite #home .characters-cast').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       })
     },
@@ -35,17 +35,17 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          numSlides = (wwidth > transitionWidth) ? 8 : 3,
-          slideWidth = (wwidth > transitionWidth) ? 145 : 100,
+          numSlides = (wwidth > transitionWidth) ? 6 : 3,
+          slideWidth = (wwidth > transitionWidth) ? 240 : 100,
           slideMargin = 10,
           self = this;
 
 
-      self.charactersCastBxSlider = $('.characters-cast-bxslider').bxSlider({
+      self.charactersCastBxSlider = $('#microsite #home .characters-cast-bxslider').bxSlider({
         slideWidth: slideWidth,
-        minSlides: 3,
+        minSlides: numSlides,
         maxSlides: numSlides,
-        useCSS: true,
+//        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -54,7 +54,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #home #characters-cast-list').animate({ 'opacity': 1 }, 1000, 'jswing');
+          $('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       });
 
@@ -87,7 +87,6 @@
         self.micrositeReloadBxSlider();
       });
       window.addEventListener('orientationchange', self.micrositeReloadBxSlider);
-
 
     }
   }

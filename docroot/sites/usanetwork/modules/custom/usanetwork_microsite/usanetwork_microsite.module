@@ -786,6 +786,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   elseif($type == 'characters') {
     return $section_wrapper->field_ms_person->value();
   }
+  elseif($type == 'galleries') {
+    return $section_wrapper->field_ms_media_gallery->value();
+  }
   return NULL;
 }
 
@@ -821,6 +824,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
  * Get person node by url parameter.
  *
  * @param $node
+ * @param $param
  * @return mixed
  */
 function _usanetwork_microsite_get_person_by_url($node, $param) {
@@ -828,6 +832,25 @@ function _usanetwork_microsite_get_person_by_url($node, $param) {
   $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
   foreach($characters as $node) {
     if ($param == _usanetwork_microsite_get_suggested_character_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get gallery node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_gallery_by_url($node, $param) {
+  //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
+  $galleries = _usanetwork_microsite_get_related_content_from_node($node, 'galleries');
+  foreach($galleries as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_gallery_url($node)) {
       return $node;
     }
   }
@@ -1323,8 +1346,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
-        // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+        $gallery_node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+        if(!empty($gallery_node)) {
+          $head_title = $gallery_node->title . ' | ' . $head_title;
+        }
       }
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
@@ -1464,11 +1489,13 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'galleries':
           $omniture_prop3 = 'Gallery';
-//          if(isset($args[4])) {
-            // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
-            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
-//          }
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = t($entity->title . ' : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : ' . $node->title);
+            }
+          }
           break;
         case 'about':
           $omniture_prop3 = 'About';

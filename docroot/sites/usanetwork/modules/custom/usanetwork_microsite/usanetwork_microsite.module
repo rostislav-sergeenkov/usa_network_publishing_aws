@@ -711,10 +711,17 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
+    $menu_items = _usa_auth_prepare_menu_items();
+    $links = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
+
     $theme_variables['in_player'] = array(
-      'url' => !empty($file->filename)
-        ? _usanetwork_microsite_get_suggested_video_url($file)
-        : NULL,
+      'links' => $links
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
     $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
@@ -783,14 +790,15 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
   $player_id = _usanetwork_microsite_define_videoplayer($file);
   $video = theme('pub_mpx_video', array(
     'file' => $file,
-    'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html'),
-    'player_id' => $player_id,    
+    'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->id),
+    'player_id' => $player_id,
   ));
   
   //set image for not loggined user
   $auth_episode = _usanetwork_microsite_define_auth($file);
   if ($auth_episode) {
     $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+    $renderable_image = drupal_render($image);
   }
   
   //set video descriprion
@@ -799,7 +807,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
   
   $result = array(
-     'default_image' => isset($image) ? $image : '',
+     'default_image' => isset($renderable_image) ? $renderable_image : '',
      'player' => $video,
      'description_template' => theme($theme_registry_name, array('in_player' => $video_desc)),
   );

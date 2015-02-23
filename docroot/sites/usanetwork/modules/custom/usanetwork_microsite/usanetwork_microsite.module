@@ -1689,6 +1689,11 @@ function _usanetwork_microsite_set_meta_description($object) {
   }
 }
 
+/**
+ * Set description for current content.
+ *
+ * @param $node
+ */
 function _usanetwork_microsite_set_meta_description_for_node($node) {
   $description = '';
   $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -1706,6 +1711,11 @@ function _usanetwork_microsite_set_meta_description_for_node($node) {
   }
 }
 
+/**
+ * Set description for current section.
+ *
+ * @param $section_wrapper
+ */
 function _usanetwork_microsite_set_meta_description_for_field_collection($section_wrapper) {
   $description = '';
   $section_object = $section_wrapper->value();
@@ -1734,6 +1744,58 @@ function _usanetwork_microsite_set_meta_description_text($desc) {
     )
   );
   drupal_add_html_head($page_description, 'meta_description');
+}
+
+function _usanetwork_microsite_get_h1_tag($object) {
+//  $sections_with_h1 = array('home', 'about');
+//  $section_type = $section_wrapper->field_ms_section_type->value();
+//  if($static_sections) {
+//    _usanetwork_microsite_get_h1_for_field_collection($object);
+//  }
+//  else {
+//    _usanetwork_microsite_get_h1_for_for_node($object);
+//  }
+}
+
+/**
+ * Get h1 text for current section.
+ *
+ * @param $section_wrapper
+ * @return string
+ */
+function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
+  $h1 = '';
+  $section_type = $section_wrapper->field_ms_section_type->value();
+  if($section_type == 'home') {
+    $section_object = $section_wrapper->value();
+    if(!empty($section_object->field_seo_h1)) {
+      $h1 = $section_wrapper->field_seo_h1->value();
+    }
+    else {
+      $node = menu_get_object();
+      $h1 = $node->title;
+    }
+  }
+  elseif($section_type == 'about') {
+    $section_object = $section_wrapper->value();
+    if(!empty($section_object->field_seo_h1)) {
+      $h1 = $section_wrapper->field_seo_h1->value();
+    }
+    else {
+      $node = menu_get_object();
+      $h1 = 'About ' . $node->title;
+    }
+  }
+  return $h1;
+}
+
+/**
+ * Get h1 text for current content.
+ *
+ * @param $node
+ */
+function _usanetwork_microsite_get_h1_for_for_node($node) {
+
 }
 
 /**

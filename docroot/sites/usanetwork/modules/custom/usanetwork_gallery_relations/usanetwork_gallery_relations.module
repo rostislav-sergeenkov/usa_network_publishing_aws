@@ -163,6 +163,7 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
   }
   // Add a form validator.
   $form['#validate'][] = 'usanetwork_gallery_relations_gallery_form_validate';
+  $form['#submit'][] = 'usanetwork_gallery_relations_gallery_form_submit';
 
   $form_state['rebuild'] = TRUE;
 }
@@ -192,18 +193,20 @@ function usanetwork_gallery_relations_episode_option_populate_js($form, $form_st
  * Form validation for the episode node form.
  */
 function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state) {
-  $selected_episode = $form_state['values']['field_episode'][LANGUAGE_NONE][0]['target_id'];
-  $selected_season = $form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'];
-  $selected_show = $form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'];
+  $language = !empty($form_state['values']['language']) ? $form_state['values']['language'] : LANGUAGE_NONE;
+
+  $selected_episode = $form_state['values']['field_episode'][$language][0]['target_id'];
+  $selected_season = $form_state['values']['field_season'][$language][0]['target_id'];
+  $selected_show = $form_state['values']['field_show'][$language][0]['target_id'];
 
   if ($selected_season) {
     $season_node = node_load($selected_season);
-    if ($season_node->field_show[LANGUAGE_NONE][0]['target_id'] !== $selected_show) {
+    if ($season_node->field_show[$language][0]['target_id'] !== $selected_show) {
       form_set_error('field_season', t('The season you selected belongs to a different show than the show you selected on this form.'));
       // Hide the seasons field until the user has selected a show.
-      $form['field_season'][LANGUAGE_NONE]['#states'] = array(
+      $form['field_season'][$language]['#states'] = array(
         'disabled' => array(
-          ':input[name="field_show[' . LANGUAGE_NONE . ']"]' => array(
+          ':input[name="field_show[' . $language . ']"]' => array(
             'value' => '_none',
           ),
         ),
@@ -212,16 +215,27 @@ function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state)
   }
   if ($selected_episode) {
     $episode_node = node_load($selected_episode);
-    if ($episode_node->field_season[LANGUAGE_NONE][0]['target_id'] !== $selected_season) {
+    if ($episode_node->field_season[$language][0]['target_id'] !== $selected_season) {
       form_set_error('field_episode', t('The episode you selected belongs to a different season than the one you selected on this form.'));
       // Hide the episode field until the user has selected a season.
-      $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
+      $form['field_episode'][$language]['#states'] = array(
         'disabled' => array(
-          ':input[name="field_season[' . LANGUAGE_NONE . ']"]' => array(
+          ':input[name="field_season[' . $language . ']"]' => array(
             'value' => '_none',
           ),
         ),
       );
     }
+  }
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function usanetwork_gallery_relations_gallery_form_submit(&$form, &$form_state) {
+  $language = $form_state['language'];
+
+  if ($form_state['values']['field_season'][$language][0]['target_id'] != $form_state['input']['field_season'][$language]) {
+    $form_state['values']['field_season'][$language][0]['target_id'] = $form_state['input']['field_season'][$language];
   }
 }

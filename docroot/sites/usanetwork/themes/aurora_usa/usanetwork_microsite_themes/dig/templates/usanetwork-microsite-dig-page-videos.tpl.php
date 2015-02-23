@@ -10,7 +10,6 @@
 <div class="full-pane">
   <div id="video-container">
     <div class="video-container-ajaxed" data-tve-player>
-      <div id="custom-play"></div>
       <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
         <div class="tve-help">
           <div class="tve-msg">By signing in with your TV provider you get access to full<br/>episodes the day after they
@@ -43,7 +42,7 @@
           <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
 <!--            <iframe class="base-iframe"></iframe>-->
           </div>
-<!--          <div id="custom-play"></div>-->
+          <div id="custom-play"></div>
         </div>
         <div class="tve-help-link signIn">
           <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN">
@@ -60,7 +59,7 @@
           <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
            <iframe class="base-iframe"></iframe>
           </div>
-<!--          <div id="custom-play"></div>-->
+          <div id="custom-play"></div>
         </div>
       </div>
       <div class="video-player-desc">

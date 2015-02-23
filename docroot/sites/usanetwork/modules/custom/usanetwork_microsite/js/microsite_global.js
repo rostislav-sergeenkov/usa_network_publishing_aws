@@ -164,7 +164,8 @@
         $(nextSection).addClass('active').removeClass('transition');
 
         if ($(nextSection).attr('id') == 'videos') {
-          if((!$('video-no-auth-player-wrapper').hasClass('active')) && (!$('video-auth-player-wrapper').hasClass('active'))){
+          if(!$('#video-container').hasClass('active')){
+            $('#video-container').addClass('active');
             Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
           }
         }
@@ -282,12 +283,12 @@
             description = data.description_template,
             player = data.player;
 
-          if(playerAuth.hasClass('active')){
+          if(playerAuth.hasClass('active-player')){
             playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
             playerAuth.find('#player .loginButton').html(image);
             playerAuth.find(playerWrap).html(player);
           }
-          if(playerNoAuth.hasClass('active')){
+          if(playerNoAuth.hasClass('active-player')){
             playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
             playerNoAuth.find(playerWrap).html(player);
           }
@@ -331,11 +332,11 @@
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
       if(dataPlayerId == 'microsite_vod_endcard'){
-        videoContainer.find('.video-no-auth-player-wrapper').removeClass('active').hide();
-        videoContainer.find('.video-auth-player-wrapper').addClass('active').show();
+        videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
+        videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       }else{
-        videoContainer.find('.video-auth-player-wrapper').removeClass('active').hide();
-        videoContainer.find('.video-no-auth-player-wrapper').addClass('active').show();
+        videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
+        videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
 
       Drupal.behaviors.microsite_scroll.micrositeGetVideo(url);
@@ -350,8 +351,8 @@
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
         if (videoContainer.attr('data-ad-start') == 'true'){
-          videoContainer.find('#custom-play').show();
-          videoContainer.find('#custom-play').addClass('active');
+          videoContainer.find('.active-player #custom-play').show();
+          videoContainer.find('.active-player #custom-play').addClass('active');
         }
       }
     },
@@ -493,7 +494,7 @@
       });
 
       // Custom Play Button
-      $('#custom-play.active').click(function() {
+      $('#video-container .active-player #custom-play').click(function() {
         $pdk.controller.clickPlayButton(true);
         $pdk.controller.pause(false);
         $('#custom-play.active').hide();
@@ -521,77 +522,6 @@
       }
 
       Drupal.behaviors.microsite_scroll.micrositeParseUrl();
-
-
-
-      //=========== Init one page scroll for microsite ===============//
-//      function sectionScroll(anchor, item, itemTitle) {
-//        item = item || '';
-//        itemTitle = itemTitle || '';
-//        var anchorItem = $('#nav-' + anchor),
-//          anchorNum = anchorItem.find('a').attr('data-menuitem'),
-//          anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
-//          nextSection = '#' + anchor,
-//          sectionHeight = window.innerHeight,
-//          currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
-//          direction = (anchorNum > currentSectionNum) ? '' : '-',
-//          otherDirection = (anchorNum > currentSectionNum) ? '-' : '';
-////usa_debug('sectionScroll(' + elemId + ')\nanchorItem: ', anchorItem);
-////usa_debug('anchor: ' + anchor + '\nanchorNum: ' + anchorNum + '\nanchorFull: ' + anchorFull + '\nnextSection: ' + nextSection + '\nsectionHeight: ' + sectionHeight + '\ncurrentSectionNum: ' + currentSectionNum + '\ndirection: ' + direction + '\notherDirection: ' + otherDirection);
-//
-//        // if this is IE9, reload the correct page
-//        if ($('html.ie9').length > 0) {
-//          window.location.href = anchorFull.replace('/home', '');
-//          return false;
-//        }
-//
-//        if (anchorNum == 1) {
-//          logoAnim(false);
-//        }
-//        else {
-//          logoAnim(true);
-//        }
-//        // prep character section background for move
-//        if ($('#microsite #characters #character-background li').length > 0) {
-//          $('#microsite #characters #character-background li').css('position', 'absolute');
-//        }
-//        $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
-//          $('.section-info').removeClass('active');
-//          $(nextSection).addClass('active').removeClass('transition');
-//
-//          if ($(nextSection).attr('id') == 'videos') {
-//            if ($('#video-container .video-player-wrapper iframe').length == 0) {
-//              Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(false);
-//            }
-//          }
-//          if ($(nextSection).attr('id') != 'videos') {
-//            Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
-//          }
-//
-//          Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
-//          setOmnitureData(anchor, itemTitle);
-//
-//          // set active menu item
-//          $('#left-nav-links-list li').removeClass('active');
-//          $('#tv-show-menu .internal').removeClass('active');
-//          $('#nav-' + anchor).addClass('active');
-//          $('#tv-show-menu .internal[data-menuanchor=' + anchor + ']').addClass('active');
-//
-//          // return character section background to fixed
-//          if ($('#microsite #characters #character-background li').length > 0) {
-//            $('#microsite #characters #character-background li').css('position', 'fixed');
-//          }
-//
-//        });
-//        $('.section-info.active').animate({'top': otherDirection + Math.ceil(sectionHeight / 2) + 'px'}, 1000, 'jswing', function () {
-//          $('.section-info').css({'top': '0'});
-//          $('#left-nav').removeClass('stop');
-//          $(this).animate({
-//            scrollTop: 0
-//          }, 0);
-//        });
-//
-//      };
 
       // init change url address
       function changeUrl(anchor, anchorFull) {
@@ -818,6 +748,7 @@
         Drupal.behaviors.microsite_carousel.initCarousel();
 
         if ($('#videos').hasClass('active')) {
+          $('#video-container').addClass('active');
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(false);
         }
       });

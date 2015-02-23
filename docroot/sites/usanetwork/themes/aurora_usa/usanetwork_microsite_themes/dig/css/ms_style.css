@@ -1233,10 +1233,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   z-index: 51;
 }
 /* custom play button */
-#microsite #video-container {
+#microsite #video-container .video-player-wrapper {
   position: relative;
 }
-#microsite #video-container #custom-play {
+#microsite #video-container .video-player-wrapper #custom-play {
   background-image: url("../images/icons/playOverlay.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;

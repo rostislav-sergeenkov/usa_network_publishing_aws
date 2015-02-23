@@ -1340,9 +1340,6 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       else {
         $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
         $page_title = $characters_section_wrapper->field_seo_page_title->value();
-        if(!empty($page_title)) {
-          $head_title = $page_title;
-        }
         if (!empty($characters_section_wrapper)) {
           $characters_section_object = $characters_section_wrapper->value();
           if (!empty($characters_section_object->field_ms_person)) {
@@ -1352,6 +1349,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             if(empty($page_title)) {
               $head_title = $person_names['person_title'] . ' | ' . $head_title;
             }
+            else {
+              $head_title = $page_title;
+            }
           }
         }
       }
@@ -1360,6 +1360,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         $gallery_node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+        _usanetwork_microsite_set_meta_description($gallery_node);
         if(!empty($gallery_node)) {
           $head_title = $gallery_node->title . ' | ' . $head_title;
         }
@@ -1367,17 +1368,17 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
         $page_title = $galleries_section_wrapper->field_seo_page_title->value();
-        if(!empty($page_title)) {
-          $head_title = $page_title;
-        }
         if (!empty($galleries_section_wrapper)) {
           $galleries_section_object = $galleries_section_wrapper->value();
 
-          if (!empty($galleries_section_object->field_media_gallery)) {
-            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
+          if (!empty($galleries_section_object->field_ms_media_gallery)) {
+            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
             _usanetwork_microsite_set_meta_description($attached_gallery);
             if (!empty($attached_gallery) && empty($page_title)) {
               $head_title = $attached_gallery->title . ' | ' . $head_title;
+            }
+            else {
+              $head_title = $page_title;
             }
           }
         }
@@ -1680,25 +1681,25 @@ function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
  * Add meta description for object.
  */
 function _usanetwork_microsite_set_meta_description($object) {
-  if($object == 'field_collection_item') {
-    _usanetwork_microsite_set_meta_description_for_node($object);
+  if(is_object($object) && get_class($object) == 'EntityDrupalWrapper') {
+    _usanetwork_microsite_set_meta_description_for_field_collection($object);
   }
   else {
-    _usanetwork_microsite_set_meta_description_for_field_collection($object);
+    _usanetwork_microsite_set_meta_description_for_node($object);
   }
 }
 
 function _usanetwork_microsite_set_meta_description_for_node($node) {
   $description = '';
-
-  $node_wrapper = entity_metadata_wrapper('node', $node);;
-  $metatags = metatag_metatags_load('node', $node->nid);
-  $desc_metatag = metatag_get_info('tags', 'description');
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $metatags = usanetwork_microsite_get_metategs($node, 'node');
   if(!empty($node->field_usa_og_description)) {
     $description = $node_wrapper->field_usa_og_description->value();
   }
   if(empty($description)) {
-    //$description = $desc_metatag['description'];
+    $description = $metatags['description']['#attached']['drupal_add_html_head'];
+    $description = current($description);
+    $description = $description[0]['#value'];
   }
   if(!empty($description)) {
     _usanetwork_microsite_set_meta_description_text($description);
@@ -1796,4 +1797,49 @@ function _usanetwork_microsite_get_facebook_tracking_html() {
   }
 
   return _usanetwork_facebook_tracking_post_render('', array());
+}
+
+function usanetwork_microsite_get_metategs($entity, $entity_type) {
+  list($entity_id, $revision_id, $bundle) = entity_extract_ids($entity_type, $entity);
+  $instance = "{$entity_type}:{$bundle}";
+  $metatags = isset($entity->metatags) ? $entity->metatags : array();
+
+  $entity_language = metatag_entity_get_language($entity_type, $entity);
+
+  if ($entity_language == LANGUAGE_NONE) {
+    $langcode = LANGUAGE_NONE;
+  }
+  else {
+    $enabled_languages = field_content_languages();
+    foreach (field_language($entity_type, $entity) as $field => $lang) {
+      // Only accept actual language values that are properly enabled.
+      if ($lang != LANGUAGE_NONE && in_array($lang, $enabled_languages)) {
+        $langcode = $lang;
+      }
+    }
+  }
+
+  // Build options for meta tag rendering.
+  $options = array(
+    'entity' => $entity,
+    'entity_type' => $entity_type,
+    'view_mode' => 'full',
+  );
+
+  // Ensure we actually pass a language object rather than language code.
+  $languages = language_list();
+  if (isset($languages[$langcode])) {
+    $options['language'] = $languages[$langcode];
+  }
+
+  // Reload the entity object from cache as it may have been altered.
+  $token_type = token_get_entity_mapping('entity', $entity_type);
+  $entities = entity_load($entity_type, array($entity_id));
+  $options['token data'][$token_type] = $entities[$entity_id];
+  $options['entity'] = $entities[$entity_id];
+
+  // Render the metatags and save to the cache.
+  $output = metatag_metatags_view($instance, $metatags, $options);
+
+  return $output;
 }

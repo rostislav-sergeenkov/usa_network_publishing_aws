@@ -115,7 +115,9 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
   // If a value for season has already been provided, reset the form accordingly.
   if (!empty($selected_season)) {
-    // Get the list of seasons based on the user-entered show value.
+    $form['field_season'][LANGUAGE_NONE]['#default_value'] = $selected_season;
+
+      // Get the list of seasons based on the user-entered show value.
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', array('tv_episode'));
@@ -161,6 +163,8 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
   }
   // Add a form validator.
   $form['#validate'][] = 'usanetwork_gallery_relations_gallery_form_validate';
+
+  $form_state['rebuild'] = TRUE;
 }
 
 

@@ -273,9 +273,10 @@
       $.ajax({
         type: 'GET',
         url: url,
-        dataType: 'html',
+        dataType: 'json',
         success: function (data) {
-          $('#video-container .video-player-desc').html(data);
+          console.info(data);
+          //$('#video-container .video-player-desc').html(data);
         }
       });
     },

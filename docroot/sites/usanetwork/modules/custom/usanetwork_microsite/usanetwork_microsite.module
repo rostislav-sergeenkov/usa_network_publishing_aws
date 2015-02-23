@@ -99,7 +99,7 @@ function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-    unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
+    //unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
   }
 }
 

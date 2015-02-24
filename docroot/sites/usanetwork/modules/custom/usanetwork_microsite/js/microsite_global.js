@@ -285,8 +285,6 @@
         dataType: 'json',
         success: function (data) {
 
-          console.info(data);
-
           var image = data.default_image,
             description = data.description_template,
             player = data.player;

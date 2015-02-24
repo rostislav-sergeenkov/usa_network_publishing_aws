@@ -76,7 +76,7 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', array('tv_season'));
     $query->fieldCondition('field_show', 'target_id', $selected_show);
-    $result = $query->execute();
+    $show_result = $query->execute();
 
     // If the first element of the options aray is "- Select -" (et. al.) then
     // add it to the beginning of our new options array.
@@ -90,8 +90,8 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
     // Add each season that belongs to the user-selected show to the options
     // array.
-    if (isset($result['node'])) {
-      $season_nids = array_keys($result['node']);
+    if (isset($show_result['node'])) {
+      $season_nids = array_keys($show_result['node']);
       $nodes = entity_load('node', $season_nids);
       foreach ($nodes as $node) {
         $stat = check_plain($node->status) ? 'published' : 'unpublished';
@@ -115,13 +115,14 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
   // If a value for season has already been provided, reset the form accordingly.
   if (!empty($selected_season)) {
-    // Get the list of seasons based on the user-entered show value.
+
+      // Get the list of seasons based on the user-entered show value.
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', array('tv_episode'));
     $query->fieldCondition('field_show', 'target_id', $selected_show);
     $query->fieldCondition('field_season', 'target_id', $selected_season);
-    $result = $query->execute();
+    $season_result = $query->execute();
 
     // If the first element of the options aray is "- Select -" (et. al.) then
     // add it to the beginning of our new options array.
@@ -135,8 +136,8 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
     // Add each episode that belongs to the user-selected show and season to the options
     // array.
-    if (isset($result['node'])) {
-      $episode_nids = array_keys($result['node']);
+    if (isset($season_result['node'])) {
+      $episode_nids = array_keys($season_result['node']);
       $nodes = entity_load('node', $episode_nids);
       foreach ($nodes as $node) {
       $stat = check_plain($node->status) ? 'published' : 'unpublished';
@@ -151,12 +152,18 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
   // If a user re-selects "- Select a value -" on the node add form, or if the
   // slected show has no seasons, make sure the season field is re-disabled.
-  if ((isset($form_state['values']['field_show']) && is_null($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) || (!empty($selected_show) && !isset($result['node']))) {
+  if (
+    (isset($form_state['values']['field_show']) && is_null($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) ||
+    (!empty($selected_show) && !isset($show_result['node']))
+  ) {
     $form['field_season'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
   // If a user re-selects "- Select a value -" on the node add form, or if the
   // slected season has no episodes, make sure the season field is re-disabled.
-  if ((isset($form_state['values']['field_season']) && is_null($form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'])) || (!empty($selected_season) && !isset($result['node']))) {
+  if (
+    (isset($form_state['values']['field_season']) && is_null($form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'])) ||
+    (!empty($selected_season) && !isset($season_result['node']))
+  ) {
     $form['field_episode'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
   // Add a form validator.
@@ -188,18 +195,20 @@ function usanetwork_gallery_relations_episode_option_populate_js($form, $form_st
  * Form validation for the episode node form.
  */
 function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state) {
-  $selected_episode = $form_state['values']['field_episode'][LANGUAGE_NONE][0]['target_id'];
-  $selected_season = $form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'];
-  $selected_show = $form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'];
+  $language = !empty($form_state['values']['language']) ? $form_state['values']['language'] : LANGUAGE_NONE;
+
+  $selected_episode = $form_state['values']['field_episode'][$language][0]['target_id'];
+  $selected_season = $form_state['values']['field_season'][$language][0]['target_id'];
+  $selected_show = $form_state['values']['field_show'][$language][0]['target_id'];
 
   if ($selected_season) {
     $season_node = node_load($selected_season);
-    if ($season_node->field_show[LANGUAGE_NONE][0]['target_id'] !== $selected_show) {
+    if ($season_node->field_show[$language][0]['target_id'] !== $selected_show) {
       form_set_error('field_season', t('The season you selected belongs to a different show than the show you selected on this form.'));
       // Hide the seasons field until the user has selected a show.
-      $form['field_season'][LANGUAGE_NONE]['#states'] = array(
+      $form['field_season'][$language]['#states'] = array(
         'disabled' => array(
-          ':input[name="field_show[' . LANGUAGE_NONE . ']"]' => array(
+          ':input[name="field_show[' . $language . ']"]' => array(
             'value' => '_none',
           ),
         ),
@@ -208,12 +217,12 @@ function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state)
   }
   if ($selected_episode) {
     $episode_node = node_load($selected_episode);
-    if ($episode_node->field_season[LANGUAGE_NONE][0]['target_id'] !== $selected_season) {
+    if ($episode_node->field_season[$language][0]['target_id'] !== $selected_season) {
       form_set_error('field_episode', t('The episode you selected belongs to a different season than the one you selected on this form.'));
       // Hide the episode field until the user has selected a season.
-      $form['field_episode'][LANGUAGE_NONE]['#states'] = array(
+      $form['field_episode'][$language]['#states'] = array(
         'disabled' => array(
-          ':input[name="field_season[' . LANGUAGE_NONE . ']"]' => array(
+          ':input[name="field_season[' . $language . ']"]' => array(
             'value' => '_none',
           ),
         ),

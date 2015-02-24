@@ -798,7 +798,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
   $auth_episode = _usanetwork_microsite_define_auth($file);
   if ($auth_episode) {
     $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-    $renderable_image = drupal_render($image);
+    $renderable_image = theme('image', array('path' =>$image['#path']));
   }
   
   //set video descriprion

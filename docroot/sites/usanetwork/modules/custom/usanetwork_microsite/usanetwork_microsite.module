@@ -5,6 +5,7 @@ define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
+define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_vod_endcard');
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -27,15 +28,7 @@ function usanetwork_microsite_menu() {
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
-    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['ajax/get-video-in-player/%node/%'] = array(
-    'page callback' => 'usanetwork_microsite_get_video_in_player',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
+//    'delivery callback' => 'usanetwork_microsite_get_video_in_player_ajax_callback',
     'type' => MENU_CALLBACK,
   );
 
@@ -106,7 +99,7 @@ function usanetwork_microsite_js_alter(&$javascript) {
   $node = menu_get_object();
   if(!empty($node) || $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
     unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-    unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
+    //unset($javascript['http://pdk.theplatform.com/pdk/tpPdkController.js']);
   }
 }
 
@@ -692,6 +685,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $player_id = _usanetwork_microsite_define_videoplayer($current_video_file);
+      
       $is_full_episode = 'false';
       if($full_episode) {
         $is_full_episode = 'true';
@@ -703,7 +698,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
           'account_id' => $account_id,
           'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+          'player_id' => $player_id,
           'is_full_episode' => $is_full_episode,
           'state' => $state,
         );
@@ -716,15 +711,42 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
     $microsite_theme_name = _usanetwork_microsite_get_current_theme_name();
 
+    $menu_items = _usa_auth_prepare_menu_items();
+    $links = array(
+      '#theme' => 'item_list',
+      '#items' => $menu_items,
+      '#attributes' => array('class' => array('tve-header-links', 'inline')),
+      '#prefix' => '<div class="links-wrapper">',
+      '#suffix' => '</div>',
+    );
+
     $theme_variables['in_player'] = array(
-      'url' => !empty($file->filename)
-        ? _usanetwork_microsite_get_suggested_video_url($file)
-        : NULL,
+      'links' => $links
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
     $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
   }
   return $theme_variables;
+}
+
+/*
+ * Heplper function for define correct video player
+ */
+function _usanetwork_microsite_define_videoplayer($file) {
+  $full_episode = _usanetwork_microsite_define_full_episode($file);
+  $auth_episode = _usanetwork_microsite_define_auth($file);
+
+  if ($full_episode) {
+    if ($auth_episode) {
+      $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
+    } else {
+      $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
+    }
+  } else {
+    $player_id = USANETWORK_MICROSITE_USA_PLAYER;
+  }
+      
+  return $player_id;
 }
 
 /**
@@ -763,11 +785,35 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
     $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
     $file = reset($video_files);
   }
+ 
+  //set video player
+  $player_id = _usanetwork_microsite_define_videoplayer($file);
+  $video = theme('pub_mpx_video', array(
+    'file' => $file,
+    'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->id),
+    'player_id' => $player_id,
+  ));
+  
+  //set image for not loggined user
+  $auth_episode = _usanetwork_microsite_define_auth($file);
+  if ($auth_episode) {
+    $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+    $renderable_image = drupal_render($image);
+  }
+  
+  //set video descriprion
   $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
-
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-  return theme($theme_registry_name, array('in_player' => $video_desc));;
+  
+  $result = array(
+     'default_image' => isset($renderable_image) ? $renderable_image : '',
+     'player' => $video,
+     'description_template' => theme($theme_registry_name, array('in_player' => $video_desc)),
+  );
+  drupal_json_output($result);
+  exit();
+//  return theme($theme_registry_name, array('in_player' => $video_desc));
 }
 
 /**
@@ -1574,6 +1620,18 @@ function _usanetwork_microsite_define_full_episode($file) {
   $file_wrapper = entity_metadata_wrapper('file', $file);
   $full_episode = $file_wrapper->field_mpx_full_episode->value();
   if($full_episode == 1) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Define auth episode or not.
+ */
+function _usanetwork_microsite_define_auth($file) {
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  $auth_episode = $file_wrapper->field_mpx_entitlement->value();
+  if($auth_episode == 'auth') {
     return TRUE;
   }
   return FALSE;

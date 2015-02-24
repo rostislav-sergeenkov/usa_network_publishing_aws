@@ -25,8 +25,7 @@
 							scope.isMobile = helper.device.isMobile;
 
 							//setTimeout(function() {
-							//	var iframeId = 'pdk-player';
-							//	_bindPlayerEvents(iframeId);
+							//	_bindPlayerEvents();
 							//}, 0);
 							/**
 							 * Bind Player Events
@@ -34,13 +33,9 @@
 							 */
 							window.$pdk.bindPlayerEvents = _bindPlayerEvents;
 
-							function _bindPlayerEvents(iframeId) {
+							function _bindPlayerEvents() {
 								//rebind $pdk each time directive is loaded
-								if(iframeId == 'pdk-player'){
-									$pdk.bind(tveConfig.PLAYER_ID);
-								}else{
-									$pdk.bind(iframeId);
-								}
+								$pdk.bind(tveConfig.PLAYER_ID);
 
 
 								$pdk.controller.addEventListener('auth_token_failed', _authzFailure);

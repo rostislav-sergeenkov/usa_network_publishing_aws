@@ -790,7 +790,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL) {
   $player_id = _usanetwork_microsite_define_videoplayer($file);
   $video = theme('pub_mpx_video', array(
     'file' => $file,
-    'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->id),
+    'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'form' => 'html', 'nid' => $node->nid),
     'player_id' => $player_id,
   ));
   

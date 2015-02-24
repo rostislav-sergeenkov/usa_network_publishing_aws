@@ -182,6 +182,7 @@ body{
 #microsite #characters section {
   overflow-x: hidden !important;
 }
+#microsite #about .microsite-section-container,
 #microsite #characters .microsite-section-container {
   width: 100%;
   margin: 0;
@@ -189,6 +190,7 @@ body{
   max-width: 100%;
   overflow: hidden;
 }
+#microsite #about #about-inner-container,
 #microsite #characters #character-inner-container {
   width: calc(100% - 190px);
   position: relative;
@@ -220,6 +222,7 @@ body{
   left: -100%;
   display: block;
 }
+#microsite #about #right-pane-bg,
 #microsite #characters #right-pane-bg {
   position: absolute;
   top: 0;
@@ -229,7 +232,11 @@ body{
   background: rgb(0, 0, 0) transparent;
   background-color: rgba(0, 0, 0, 0.75);
   width: 45%;
-  margin-left: 55%; /* calc(((100% - 190px) * 0.55) + 190px); */
+  margin-left: 55%;
+}
+#microsite #about section .microsite-section-container .right-pane {
+  width: 45%;
+  position: relative;
 }
 #microsite #characters .right-pane-content {
   width: 45%;
@@ -464,6 +471,30 @@ body{
 
 
 /* CHARACTERS SECTION MEDIA QUERY START */
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  #microsite #about #right-pane-bg,
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
+}
+
 @media (min-width: 875px) {
   #microsite #characters .character-nav li .tooltip {
     display: block;
@@ -521,6 +552,7 @@ body{
 }
 
 @media (max-width: 874px) {
+  #microsite #about #about-inner-container,
   #microsite #characters #character-inner-container {
     width: 100%;
     margin: 0 auto;
@@ -528,6 +560,7 @@ body{
   #microsite #characters #right-pane-bg {
     background-color: transparent;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 75%;
     margin: 0 auto;
@@ -565,6 +598,7 @@ body{
 }
 
 @media (max-width: 542px) {
+  #microsite #about #about-inner-container,
   #microsite #characters #character-inner-container {
     width: 100%;
     margin: 0 auto;
@@ -572,9 +606,25 @@ body{
   #microsite #characters #right-pane-bg {
     background-color: transparent;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 90%;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #microsite #about section {
+    background-position: top left;
+  }
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
+  #microsite #about #right-pane-bg {
+    background-color: transparent;
   }
 }
 
@@ -589,11 +639,16 @@ and (max-device-width : 568px) {
   #microsite #about section .microsite-section-container .right-pane {
     width: 98%;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 98%;
   }
   #microsite #characters #character-info li {
     position: relative;
+  }
+  #microsite #characters .character-nav #nav-prev,
+  #microsite #characters .character-nav #nav-next {
+    top: 40%;
   }
   #microsite #characters .character-bio-tabs {
     font-size: 0.84em;

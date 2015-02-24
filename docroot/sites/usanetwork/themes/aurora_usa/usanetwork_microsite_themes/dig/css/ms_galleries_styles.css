@@ -104,11 +104,6 @@
 }
 
 /* right pane content */
-#microsite .right-pane > div,
-#microsite .right-pane > h3 {
-  width: 100%;
-  margin: 0;
-}
 #microsite #galleries .galleries-nav {
   position: relative;
   top: 0;

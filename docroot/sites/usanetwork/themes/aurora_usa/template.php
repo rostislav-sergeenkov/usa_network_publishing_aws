@@ -995,6 +995,8 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/picturefill.js', 'file');
   $output = '';
   $filepath = $vars['items'][0]['#item']['uri'];
+  $item = current($vars['items']);
+  $alt = !empty($item['#item']['alt']) ? $item['#item']['alt'] : '';
   if ((!isset($vars['element']['#object']->field_usa_aspot_tablet_portrait)) || (empty($vars['element']['#object']->field_usa_aspot_tablet_portrait))) {
     $output .= '<div data-src="' . image_style_url('615x350', $filepath) . '" data-media="(min-width: 645px)"></div>';
     $output .= '<div data-src="' . image_style_url('1245x709', $filepath) . '" data-media="(min-width: 645px) and (min-device-pixel-ratio: 2.0)"></div>';
@@ -1006,7 +1008,7 @@ function aurora_usa_field__field_usa_aspot_desktop($vars) {
   $output .= '<![endif]-->';
 
   $output .= '<noscript>';
-  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => '', 'title' => ''));
+  $output .= theme('image_style', array('style_name' => '1245x709', 'path' => $filepath, 'alt' => $alt, 'title' => ''));
   $output .= '</noscript>';
 
   return $output;

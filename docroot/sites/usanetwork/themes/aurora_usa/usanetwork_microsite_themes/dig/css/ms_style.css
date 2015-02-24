@@ -783,11 +783,13 @@ you can use the generic selector below, but it's slower:
   margin-bottom: 15px;
   outline: none;
 }
+.page-node-microsite #left-nav #left-nav-links a br {
+  line-height: 1em;
+}
 
 .page-node-microsite #left-nav #left-nav-links ul ul a {
   line-height: 1.2em;
 }
-
 .page-node-microsite #left-nav #left-nav-links li.active a {
   color: #e5ce96;
 }

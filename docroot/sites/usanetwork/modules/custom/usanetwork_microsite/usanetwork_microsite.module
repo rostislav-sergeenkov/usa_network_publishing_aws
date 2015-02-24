@@ -5,7 +5,7 @@ define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
-
+define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
 
@@ -417,6 +417,16 @@ function _usanetwork_microsite_render_page_about($section_wrapper) {
     $theme_variables['about_quotations'] = _usanetwork_microsite_get_quotations($section_wrapper->field_quotation);
   }
 
+  $h1 = _usanetwork_microsite_get_h1_tag($section_wrapper);
+  $theme_variables['h1'] = '';
+  $theme_variables['status'] = '';
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+    $theme_variables['status'] = 'active';
+  }
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
+
   return $theme_variables;
 }
 
@@ -466,10 +476,12 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $character_url = _usanetwork_microsite_get_suggested_character_url($current_person_node);
       $status = '';
       if (empty($current_character) && $character_count == 0) {
+        $current_person = $current_person_node;
         $status = 'active';
         $is_active_slide = TRUE;
       }
       elseif (!empty($current_character) && $current_character == $character_url) {
+        $current_person = $current_person_node;
         $status = 'active';
         $is_active_slide = TRUE;
       }
@@ -497,6 +509,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     drupal_not_found();
   }
 
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_staus_and_h1_to_variable($current_person, $section_wrapper));
+
   if (!empty($theme_variables['characters_navigation'])) {
     $theme_variables['characters_navigation'] = implode('', $theme_variables['characters_navigation']);
   }
@@ -523,6 +537,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       $gallery_nodes = array($gallery_nodes);
     }
 
+    //@todo comment this logic.
     $gallery_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($gallery_nodes as $current_gallery_node) {
       if($current_gallery_node->status != NODE_PUBLISHED) {
@@ -539,12 +554,14 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       drupal_not_found();
     }
 
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_staus_and_h1_to_variable($current_gallery_node, $section_wrapper));
+
     $gallery_types = array('Episodic Gallery');
     $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
     $gallery_types = array(
       'Character Gallery',
       'GIF Gallery',
-      0,
+      '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
   }
@@ -587,7 +604,7 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
     $gallery_type = $node_wrapper->field_gallery_type->value();
     $image_field = $node_wrapper->field_cover_item->value();
     $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
-    if($node->status == 1 && in_array($gallery_type, $gallery_types)) {
+    if($node->status == 1 && in_array($gallery_type, $gallery_types, true) !== false) {
       $title = $node->title;
       $cover_img = $gallery_preview_image;
       $items[] = array(
@@ -967,10 +984,17 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $last_section_key = key($theme_variables['sections']);
     $theme_variables['footer'] = _usanetwork_microsite_get_footer();
     $theme_variables['sections'][$last_section_key]['is_last'] = TRUE;
-    $theme_variables['current_section'] = (arg(3) != '') ? arg(3) : 'home';
+    $theme_variables['current_section'] = _usanetwork_microsite_get_current_section_type();
   }
 
   $theme_variables['sections_navlinks'] = $navigation_links;
+
+  $theme_variables['h1'] = '';
+  $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
+  $h1 = _usanetwork_microsite_get_h1_tag($section_wrapper);
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
 
   return $theme_variables;
 }
@@ -1305,6 +1329,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         if(isset($video_file) && !empty($video_file->filename)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
+
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
@@ -1667,7 +1692,7 @@ function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $secti
  * @return null
  */
 function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
-  if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
     return (arg(4) !== NULL) ? arg(4) : NULL;
   }
   return NULL;
@@ -1747,14 +1772,16 @@ function _usanetwork_microsite_set_meta_description_text($desc) {
 }
 
 function _usanetwork_microsite_get_h1_tag($object) {
-//  $sections_with_h1 = array('home', 'about');
-//  $section_type = $section_wrapper->field_ms_section_type->value();
-//  if($static_sections) {
-//    _usanetwork_microsite_get_h1_for_field_collection($object);
-//  }
-//  else {
-//    _usanetwork_microsite_get_h1_for_for_node($object);
-//  }
+  $h1 = '';
+  if(!empty($object) && is_object($object)) {
+    if (get_class($object) == 'EntityDrupalWrapper' && $object->getBundle() == 'field_ms_section') {
+      $h1 = _usanetwork_microsite_get_h1_for_field_collection($object);
+    }
+    else {
+      $h1 = _usanetwork_microsite_get_h1_for_for_node($object);
+    }
+  }
+  return $h1;
 }
 
 /**
@@ -1795,7 +1822,20 @@ function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
  * @param $node
  */
 function _usanetwork_microsite_get_h1_for_for_node($node) {
-
+  $h1 = '';
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  if (!empty($node->field_seo_h1)) {
+    $h1 = $node_wrapper->field_seo_h1->value();
+  }
+  // Exception for person node type.
+  if (empty($h1) && $node->type == USANETWORK_MICROSITE_PERSON_NODE_TYPE) {
+    $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+    $h1 = $person_names['person_title'];
+  }
+  elseif (empty($h1)) {
+    $h1 = $node->title;
+  }
+  return $h1;
 }
 
 /**
@@ -1904,4 +1944,28 @@ function usanetwork_microsite_get_metategs($entity, $entity_type) {
   $output = metatag_metatags_view($instance, $metatags, $options);
 
   return $output;
+}
+
+/**
+ * Get current section type.
+ *
+ * @return string
+ */
+function _usanetwork_microsite_get_current_section_type() {
+  return (arg(3) != '') ? arg(3) : 'home';
+}
+
+function _usanetwork_microsite_set_staus_and_h1_to_variable($node, $section_wrapper) {
+  $theme_variables = array(
+    'h1' => '',
+    'status' => '',
+  );
+  $h1 = _usanetwork_microsite_get_h1_tag($node);
+  if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
+    $theme_variables['status'] = 'active';
+  }
+  if(!empty($h1)) {
+    $theme_variables['h1'] = $h1;
+  }
+ return $theme_variables;
 }

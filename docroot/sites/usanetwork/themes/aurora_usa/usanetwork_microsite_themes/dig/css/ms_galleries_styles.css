@@ -44,9 +44,6 @@
 #microsite .node-media-gallery.view-mode-inline_content {
   max-width: 100%;
 }
-#microsite #galleries-content .flexslider .field-name-field-caption {
-  display: none;
-}
 #microsite #galleries-content .microsite-gallery .description-block {
   padding: 0;
   text-align: left;
@@ -77,12 +74,19 @@
 
 /* flexslider */
 #microsite #galleries-content .flexslider {
-  width: 100%;
+  max-width: 1400px;
+}
+#microsite #galleries-content .flexslider .slides > li img {
+  max-height: 100%;
+  width: auto;
 }
 #microsite #galleries-content .flexslider .counter {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+#microsite #galleries-content .flexslider .field-name-field-caption {
+  display: none;
 }
 
 /* gigya */
@@ -114,6 +118,10 @@
 }
 #microsite #galleries .galleries-nav.narrow {
   width: calc(100% - 340px);
+}
+#microsite #galleries .galleries-nav .bxslider-container {
+  position: relative;
+  margin: 0;
 }
 #microsite #galleries .galleries-nav h3 {
   margin: 0 0 8px;
@@ -181,6 +189,7 @@
 #microsite #galleries .galleries-nav li {
   background-color: #1F1F1F;
   border: 1px solid #000;
+  width: 250px;
 }
 #microsite #galleries .galleries-nav li.active {
   border: 1px solid #FFF;
@@ -264,6 +273,18 @@
   }
 }
 
+@media (max-width: 1268px) {
+  #microsite #galleries .galleries-nav.narrow {
+    width: 100%;
+  }
+  #microsite #galleries .bx-wrapper {
+    margin-bottom: 30px;
+  }
+  #microsite #galleries-content .right-pane .ad300x250 {
+    float: left;
+  }
+}
+
 @media (max-width: 1120px) {
   #microsite #galleries-content .microsite-gallery h2 {
     width: 100%;
@@ -292,6 +313,12 @@
 }
 
 @media (max-width: 640px) {
+  #microsite #galleries .galleries-nav {
+    float: none;
+  }
+  #microsite #galleries .galleries-nav .bxslider-container {
+    margin: 0 auto;
+  }
   #microsite section#galleries-content .flexslider {
     margin: 0;
   }
@@ -319,6 +346,23 @@
     float: left;
     margin-left: 0;
     clear: left;
+  }
+  #microsite #galleries .galleries-nav .bx-wrapper .bx-viewport {
+    height: 144px !important;
+  }
+  #microsite #galleries .galleries-nav .bx-wrapper .gallery-nav-img {
+    width: 131px;
+    height: 78px;
+  }
+  #microsite #galleries .galleries-nav li a .gallery-title {
+    font-size: 0.84em;
+    letter-spacing: 0.02em;
+    padding: 10px 5px;
+    height: 54px;
+  }
+  #microsite #galleries-content .right-pane .ad300x250 {
+    float: none;
+    margin: 0 auto 30px;
   }
 }
 

@@ -784,6 +784,10 @@ body.page-node-microsite {
   height: 250px;
   margin: 0px 15px 15px 0px;
   width: 300px;
+  border: 1px solid transparent;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item.active {
+  border: 1px solid #FFF;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
@@ -797,6 +801,9 @@ body.page-node-microsite {
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;
   background-color: #000;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
+  height: 77px;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
   color: #e5ce96;

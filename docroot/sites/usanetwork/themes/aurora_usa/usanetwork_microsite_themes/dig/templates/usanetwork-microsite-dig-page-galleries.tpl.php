@@ -47,40 +47,44 @@
   <div class="right-pane">
     <?php if (!empty($episodic_galleries)): ?>
     <div id="ep-galleries" class="galleries-nav narrow">
-      <h3>Episodic</h3>
-      <div class="galleries-page-controls">
-        <div id="ep-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
-        <div id="ep-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>
-        <div id="ep-galleries-next" class="next btns"><span class="screen-reader-text">Next</span></div>
+      <div id="ep-galleries-bxslider-container" class="bxslider-container">
+        <h3>Episodic</h3>
+        <div class="galleries-page-controls">
+          <div id="ep-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
+          <div id="ep-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>
+          <div id="ep-galleries-next" class="next btns"><span class="screen-reader-text">Next</span></div>
+        </div>
+        <ul id="ep-galleries-list" class="galleries-bxslider">
+        <?php foreach ($episodic_galleries as $ep_gallery): ?>
+          <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
+          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
+          <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $ep_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>"></div><div class="gallery-title"><?php print $ep_gallery['title']; ?></div></a></li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
       </div>
-      <ul id="ep-galleries-list" class="galleries-bxslider">
-      <?php foreach ($episodic_galleries as $ep_gallery): ?>
-        <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
-        <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
-        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $ep_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>"></div><div class="gallery-title"><?php print $ep_gallery['title']; ?></div></a></li>
-        <?php endif; ?>
-      <?php endforeach; ?>
-      </ul>
     </div>
     <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div>
     <?php endif; ?>
 
     <?php if (!empty($character_galleries)): ?>
     <div id="character-galleries" class="galleries-nav<?php if (empty($episodic_galleries)): ?> narrow<?php endif; ?>">
-      <h3>Cast, Crew & Set</h3>
-      <div class="galleries-page-controls">
-        <div id="character-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
-        <div id="character-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>
-        <div id="character-galleries-next" class="next btns"><span class="screen-reader-text">Next</span></div>
+      <div id="ep-galleries-bxslider-container" class="bxslider-container">
+        <h3>Cast, Crew & Set</h3>
+        <div class="galleries-page-controls">
+          <div id="character-galleries-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
+          <div id="character-galleries-pagers" class="gallery-pagers bx-controls bx-has-pager"></div>
+          <div id="character-galleries-next" class="next btns"><span class="screen-reader-text">Next</span></div>
+        </div>
+        <ul id="character-galleries-list" class="galleries-bxslider">
+        <?php foreach ($character_galleries as $char_gallery): ?>
+          <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
+          <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
+          <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $char_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"></div><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
       </div>
-      <ul id="character-galleries-list" class="galleries-bxslider">
-      <?php foreach ($character_galleries as $char_gallery): ?>
-        <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
-        <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
-        <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $char_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"></div><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
-        <?php endif; ?>
-      <?php endforeach; ?>
-      </ul>
     </div>
     <?php endif; ?>
     <?php if (empty($episodic_galleries)): ?><div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_galleries"></div><?php endif; ?>

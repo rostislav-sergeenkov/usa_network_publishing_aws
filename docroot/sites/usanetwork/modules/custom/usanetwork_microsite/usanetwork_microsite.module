@@ -537,7 +537,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
     $gallery_types = array(
       'Character Gallery',
       'GIF Gallery',
-      0,
+      '0',
     );
     $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
   }
@@ -580,7 +580,7 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
     $gallery_type = $node_wrapper->field_gallery_type->value();
     $image_field = $node_wrapper->field_cover_item->value();
     $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
-    if($node->status == 1 && in_array($gallery_type, $gallery_types)) {
+    if($node->status == 1 && in_array($gallery_type, $gallery_types, true) !== false) {
       $title = $node->title;
       $cover_img = $gallery_preview_image;
       $items[] = array(

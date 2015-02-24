@@ -201,14 +201,12 @@
 #microsite {
   background-color: #000;
 }
-
 #microsite a:link,
 #microsite a:visited,
 #microsite a:hover,
 #microsite a:active {
   outline: none;
 }
-
 #microsite li {
   list-style: none;
 }
@@ -257,16 +255,13 @@ you can use the generic selector below, but it's slower:
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
-
 .usa-wrap {
   background-color: #000;
   padding-top: 0;
 }
-
 #main {
   width: 100%;
 }
-
 #microsite {
   width: 100%;
   height: calc(100% - 65px); /* 65px is height of bottom nav */
@@ -277,14 +272,12 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 0;
 }
-
 #microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
   text-align: left;
   font-size: 2.4em;
 }
-
 #microsite .section {
   opacity: 0;
   display: block;
@@ -296,22 +289,18 @@ you can use the generic selector below, but it's slower:
   min-height: 100%;
   overflow-y: auto;
 }
-
 #microsite .mcs-scroll {
   height: 100%;
 }
-
 #microsite .section.active {
   opacity: 1;
   display: block;
   z-index: 5;
 }
-
 #microsite .section.transition {
   z-index: 10;
   opacity: 1;
 }
-
 #microsite section {
   background-image: none;
   background-position: top left; /* please don't change this! */
@@ -326,7 +315,6 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 5px 0 0;
 }
-
 #microsite #home-content .ad-mobile {
   background: #808080;
   display: none;
@@ -334,7 +322,6 @@ you can use the generic selector below, but it's slower:
   margin: 15px 0;
   width: 300px;
 }
-
 #microsite .pane-title {
   text-transform: uppercase;
   font-size: 2em;
@@ -351,7 +338,6 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   padding: 0;
 }
-
 #microsite .scroll div {
   text-align: center;
   line-height: 1.25em;
@@ -362,72 +348,58 @@ you can use the generic selector below, but it's slower:
   box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
   text-shadow: 2px 2px 2px #000;
 }
-
 #microsite .scroll img {
   width: 14px;
   height: 29px;
   margin: 0 auto;
 }
-
 #microsite .left-pane {
   width: 55%;
   float: left;
 }
-
 #microsite .left-pane .caption {
   text-transform: uppercase;
   text-align: center;
 }
-
 #microsite .left-pane .caption li {
   display: none;
 }
-
 #microsite .left-pane .caption li.active {
   display: block;
 }
-
 #microsite .left-pane .caption .quote-source {
   color: #e5ce96;
   font-size: 0.6em;
 }
-
 #microsite section .microsite-section-container .right-pane {
   width: 50%;
   margin-left: auto;
 }
-
 #microsite #about section .microsite-section-container .right-pane {
   width: 48%;
 }
-
 #microsite .right-pane h2 {
   text-align: center;
   margin-top: 0;
 }
-
 #microsite .right-pane > div,
 #microsite .right-pane > h3 {
   width: 80%;
   margin: 0 auto;
 }
-
 #microsite .right-pane h3 {
   clear: left;
   text-transform: uppercase;
   font-size: 1.2em;
   margin-top: 30px;
 }
-
 #microsite .right-pane .underline {
   border-bottom: 1px solid #FFF;
 }
-
 #microsite .right-pane .text {
   font-size: 1em;
   line-height: 1.5em;
 }
-
 #microsite .ad-leaderboard {
   min-height: 90px;
   margin: 0 auto 34px;
@@ -435,146 +407,47 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   position: relative;
 }
-
 #microsite .ad-leaderboard iframe {
   max-width: 728px;
   width: 100%;
 }
-
 /* add some padding to prevent the next button from sitting on top of content */
 #microsite .ad-leaderboard + div {
   padding-bottom: 95px;
 }
-
 #microsite .ad300x250,
 #microsite .right-pane .ad300x250 {
   width: 300px;
   height: 250px;
 }
-
 #microsite .right-pane .ad300x250 {
   margin-bottom: 30px;
 }
-
 #microsite #about .caption {
   margin-top: 3em;
 }
-
-/*
-#microsite #galleries h3 {
-  margin-bottom: 12px;
-}
-#microsite #galleries .left-pane {
-  padding-left: 200px;
-  width: 70%;
-}
-#microsite #galleries .left-pane .flexslider .slides > li {
-  height: 479px;
-}
-#microsite #galleries .right-pane {
-  width: calc(30% - 130px);
-  margin-right: 100px;
-  margin-left: 30px;
-}
-#microsite #galleries .right-pane .gallery-list {
-  width: 100%;
-}
-#microsite #galleries .right-pane .gallery-list .outer {
-  width: 100%;
-  height: 126px;
-  background-color: #002525;
-}
-#microsite #galleries .right-pane .gallery-list .outer .viewport {
-  float: left;
-  width: calc(100% - 28px);
-  overflow: hidden;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-#microsite #galleries .right-pane .gallery-list .outer .viewport ul {
-  width: 2000%;
-  position: relative;
-  top: 0;
-  left: 0;
-  /* -100% per 2 line items */
-/*}
-#microsite #galleries .right-pane .gallery-list .outer .viewport li {
-  float: left;
-  margin: 0 2px;
-  width: calc(2.5% - 4px);
-  position: relative;
-  top: 4px;
-  left: 2px;
-}
-#microsite #galleries .right-pane .gallery-list .outer .viewport li .meta {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  font-size: 0.8em;
-  line-height: 1em;
-}
-#microsite #galleries .right-pane .gallery-list .outer .viewport li .meta .season-episode {
-  display: none;
-}
-#microsite #galleries .right-pane .gallery-list .outer #prev,
-#microsite #galleries .right-pane .gallery-list .outer #next {
-  float: left;
-  width: 10px;
-  margin: 0 2px;
-  line-height: 126px;
-}
-#microsite #galleries .right-pane .gallery-list .ad300x250 {
-  float: left;
-  margin-left: 0;
-}*/
 #microsite .carousel {
   position: relative;
 }
-
-@media (min-width: 330px) {
-  #microsite .carousel {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
 #microsite .carousel .carousel-item-wrapper {
   position: relative;
 }
-
 #microsite .carousel .item-list {
   height: 188px;
   overflow: hidden;
 }
-
 #microsite .carousel li {
   padding: 0;
   margin: 0 15px 0 0;
 }
-
 #microsite #cast-carousel {
   background-color: #002525;
   padding: 5px;
 }
-
 #microsite #cast-carousel .view-content {
   width: 300px;
   height: 184px;
 }
-
-@media (min-width: 330px) {
-  #microsite #cast-carousel .view-content {
-    width: auto;
-    height: auto;
-  }
-}
-
 #microsite .view-usa-cast {
   background: none;
   border: none;
@@ -585,11 +458,9 @@ you can use the generic selector below, but it's slower:
   position: relative;
   padding: 0;
 }
-
 #microsite .view-usa-cast .active.carousel-item {
   border-color: white;
 }
-
 #microsite .view-usa-cast .carousel-item {
   border: 2px solid #2d2d2d;
   width: 221px;
@@ -599,22 +470,18 @@ you can use the generic selector below, but it's slower:
   display: block;
   overflow: hidden;
 }
-
 #microsite .view-usa-cast .carousel-item a.article-link {
   display: block;
   height: 184px;
 }
-
 #microsite .view-usa-cast .carousel-item h4 {
   margin: 0;
   font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
-
 #microsite .view-usa-cast .carousel-item img {
   display: block;
 }
-
 #microsite .view-usa-cast .carousel-item .item-content {
   position: absolute;
   width: 100%;
@@ -636,19 +503,16 @@ you can use the generic selector below, but it's slower:
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, #000000 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#000000', GradientType=0);
 }
-
 #microsite .view-usa-cast .carousel-item .item-content > div {
   overflow: hidden;
   white-space: nowrap;
   line-height: 1.5em;
   font-size: 12px;
 }
-
 #microsite .item-list ul li {
   margin: 0 0 0.25em 1.5em;
   padding: 0;
 }
-
 #microsite [id='person-content'] h4 {
   text-transform: none;
   margin: 5px 30px 5px 0;
@@ -656,13 +520,6 @@ you can use the generic selector below, but it's slower:
   font-family: "Proxima N W01 Reg", Arial, sans-serif;
   font-size: 14px;
 }
-
-@media (min-width: 768px) {
-  #microsite [id='person-content'] h4 {
-    font-size: 18px;
-  }
-}
-
 .page-node-microsite #left-nav {
   position: fixed;
   top: 134px;
@@ -676,13 +533,11 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   z-index: 20;
 }
-
 .page-node-microsite #left-nav #left-nav-inner.hide {
   position: relative;
   top: -130px;
   padding-left: 17px;
 }
-
 .page-node-microsite #left-nav #left-nav-inner {
   position: relative;
   top: auto;
@@ -692,15 +547,12 @@ you can use the generic selector below, but it's slower:
   -o-transition: top 0.8s ease-out 0s;
   transition: top 0.8s ease-out 0s;
 }
-
 .page-node-microsite #left-nav #left-nav-inner #nav-home > a {
   display: block;
 }
-
 .page-node-microsite #left-nav #left-nav-inner #nav-home > a:hover {
   color: #FFF;
 }
-
 .page-node-microsite #left-nav #left-nav-inner #left-nav-logo {
   width: 130px;
   height: 82px;
@@ -708,7 +560,6 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   opacity: 0;
 }
-
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   width: 130px;
   height: 30px;
@@ -717,29 +568,15 @@ you can use the generic selector below, but it's slower:
   opacity: 0;
   margin-top: 7px;
 }
-
-/*
-.page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
-  opacity: 0;
-  line-height: 22px;
-  width: 130px;
-  text-align: center;
-  letter-spacing: 2.7px;
-  padding-top: 5px;
-  white-space: nowrap;
-}
-*/
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {
   letter-spacing: 13px;
 }
-
 .page-node-microsite #left-nav #left-nav-social {
   position: relative;
   top: 0;
   left: 0;
   height: 58px;
 }
-
 .page-node-microsite #left-nav #left-nav-social a {
   float: left;
   display: block;
@@ -748,33 +585,26 @@ you can use the generic selector below, but it's slower:
   height: 26px;
   outline: none;
 }
-
 .page-node-microsite #left-nav #left-nav-social a.instagram {
   background-image: url("../images/icons/icon_instagram.png");
 }
-
 .page-node-microsite #left-nav #left-nav-social a.twitter {
   background-image: url("../images/icons/icon_twitter.png");
 }
-
 .page-node-microsite #left-nav #left-nav-social a.facebook {
   background-image: url("../images/icons/icon_fb.png");
 }
-
 .page-node-microsite #left-nav #left-nav-social a:hover {
   opacity: 0.7;
 }
-
 .page-node-microsite #left-nav #left-nav-links ul {
   padding: 0;
   margin: 0 0 0 17px;
 }
-
 .page-node-microsite #left-nav #left-nav-links li {
   list-style: none;
   cursor: pointer;
 }
-
 .page-node-microsite #left-nav #left-nav-links li,
 .page-node-microsite #left-nav #left-nav-links a {
   color: #FFF;
@@ -783,40 +613,32 @@ you can use the generic selector below, but it's slower:
   margin-bottom: 15px;
   outline: none;
 }
-
 .page-node-microsite #left-nav #left-nav-links ul ul a {
   line-height: 1.2em;
 }
-
 .page-node-microsite #left-nav #left-nav-links li.active a {
   color: #e5ce96;
 }
-
 .page-node-microsite #left-nav #left-nav-links li.external,
 .page-node-microsite #left-nav #left-nav-links .external a {
   color: #CCC;
 }
-
 .page-node-microsite #left-nav #left-nav-links li a:hover,
 .page-node-microsite #left-nav #left-nav-links li:hover {
   color: #e5ce96;
 }
-
 .page-node-microsite #left-nav #left-nav-links li:after {
   clear: both;
   content: '';
   display: table;
 }
-
 .page-node-microsite #left-nav #left-nav-links > ul > li.active {
   list-style: square url("../images/nav_selector.png");
   color: #e5ce96;
 }
-
 .page-node-microsite #left-nav #left-nav-links > ul > li#nav-home.active {
   list-style: none;
 }
-
 .page-node-microsite #left-nav #left-nav-links .separator {
   cursor: default;
   background-image: url("../images/divider.png");
@@ -830,22 +652,18 @@ you can use the generic selector below, but it's slower:
   display: none;
   margin-left: 16px;
 }
-
 .page-node-microsite #left-nav #left-nav-links ul ul li {
   font-size: 0.8em;
   width: 200px;
   color: #FFF;
 }
-
 .page-node-microsite #left-nav #left-nav-links ul ul li:first-child {
   padding-top: 20px;
 }
-
 .page-node-microsite #left-nav #left-nav-links li.hover ul,
 .page-node-microsite #left-nav #left-nav-links li.active ul {
   display: block;
 }
-
 .page-node-microsite #left-nav #left-nav-links li.active li.active {
   color: #e5ce96;
   list-style: none;
@@ -856,12 +674,10 @@ you can use the generic selector below, but it's slower:
 body.page-node-microsite {
   overflow: hidden;
 }
-
 .page-node-microsite .usa-wrap {
   background-color: #000;
   padding-top: 0;
 }
-
 #microsite ul {
   margin: 0;
   padding: 0;
@@ -872,30 +688,24 @@ body.page-node-microsite {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-
 #microsite .video-container {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
-
 #microsite .video-container iframe {
   display: block;
   margin: 0 auto;
   max-width: 1000px;
 }
-
 #microsite .video-title {
   font-size: 2em;
 }
-
 #microsite .video-description {
   font-size: 1.2em;
 }
-
 #microsite .video-info {
   font-size: 1.2em;
   color: #e5ce96;
 }
-
 #microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
   background-image: none;
 }
@@ -905,36 +715,29 @@ body.page-node-microsite {
   margin: 0 17px 0 265px;
   max-width: 1500px;
 }
-
 #microsite #about section .microsite-section-container {
   max-width: 100%;
 }
-
 #microsite section .microsite-section-container:after {
   clear: both;
   content: '';
   display: table;
 }
-
 #microsite section .microsite-section-container > div {
   width: 100%;
 }
-
 #microsite section .microsite-section-container div.scroll {
   margin: 0 0 0 calc(-50% - 2em + 124px);
 }
-
 #microsite .a-spot-panel #show-main-slider {
   overflow: hidden;
   margin-bottom: 0px;
   max-height: 506px;
   width: 1245px;
 }
-
 #microsite .a-spot-panel img {
   width: 100%;
 }
-
 #microsite .a-spot-panel.tiles .flex-control-paging {
   bottom: 30px;
   left: 50%;
@@ -942,77 +745,69 @@ body.page-node-microsite {
   position: absolute;
   top: auto;
 }
-
 #microsite .video-container.in-player {
   display: block;
 }
-
 #microsite .full-pane {
   margin: 0 auto;
   max-width: 1000px;
   width: 100%;
 }
-
 #microsite .full-pane #video-container {
   margin-bottom: 20px;
   position: relative;
 }
-
 #microsite .full-pane #video-container .video-title {
   font-size: 26px;
   margin: 7px 0;
   text-transform: uppercase;
 }
-
 #microsite .full-pane #video-container .video-description {
   font-size: 16px;
 }
-
 #microsite .full-pane #video-container .video-info {
   font-size: 14px;
   color: #e5ce96;
 }
-
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
   width: 945px;
 }
-
 #microsite .block-usanetwork-mpx-video:after {
   clear: both;
   content: '';
   display: table;
 }
-
 #microsite .block-usanetwork-mpx-video li.grid-item {
   clear: none;
   float: left;
   height: 250px;
   margin: 0px 15px 15px 0px;
   width: 300px;
+  border: 1px solid transparent;
 }
-
+#microsite .block-usanetwork-mpx-video li.grid-item.active {
+  border: 1px solid #FFF;
+}
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
 }
-
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
 }
-
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-overlay {
   background-color: #000;
 }
-
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
   height: 81px;
   background-color: #000;
 }
-
+#microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
+  height: 77px;
+}
 #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper .caption {
   color: #e5ce96;
 }
-
 #microsite .block-usanetwork-mpx-video li.grid-item img {
   height: 169px;
   width: 300px;
@@ -1023,7 +818,6 @@ body.page-node-microsite {
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
 }
-
 #microsite #main-slider {
   margin: 0 auto 20px;
   position: relative;
@@ -1046,30 +840,24 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 300px;
   height: 250px;
 }
-
 #microsite .usa-microsite-featured {
   margin: 0 auto;
   max-width: 1245px;
 }
-
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-viewport {
   margin: 15px 0px;
   height: auto;
 }
-
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.disabled {
   visibility: hidden;
 }
-
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns {
   left: -35px
 }
-
 #microsite .usa-microsite-featured .microsite-carousel-processed .carousel-btns .btns.next {
   left: auto;
   right: -35px
 }
-
 #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item,
 #microsite .usa-microsite-featured .microsite-carousel-processed li.carousel-item {
   float: left;
@@ -1077,17 +865,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 250px;
   width: 300px;
 }
-
 .usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img,
 .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img {
   width: auto;
   height: auto;
 }
-
 .usa-microsite-featured .carousel-item .view-mode-promo_teaser .asset-img-large, .usa-microsite-featured .carousel-item .view-mode-promo_teaser_large .asset-img-large {
   display: none;
 }
-
 #microsite #aspot-video-container {
   position: absolute;
   margin: 0px;
@@ -1095,143 +880,42 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 100%;
   top: 0px;
 }
-
 #microsite #aspot-video-container #aspot-video {
   height: 100%;
 }
-
 #microsite .slimScrollBar {
   background: #ffffff !important;
 }
-
 .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
   margin: 0 0px 2px;
 }
-
 .usa-microsite-featured .flex-direction-nav a.flex-next, .usa-microsite-featured .flex-direction-nav a.flex-prev {
   border: 0;
   display: block;
   outline: none;
   opacity: 1;
 }
-
 .usa-microsite-featured .flex-direction-nav a.flex-prev {
   left: -35px;
 }
-
 .usa-microsite-featured .flex-direction-nav a.flex-next {
   right: -35px;
 }
-
-/* GALLERIES */
-#microsite #galleries-content .flexslider .counter {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-#microsite #galleries-content .flexslider .field-name-field-caption {
-  display: none;
-}
-
-#microsite #galleries-content .microsite-gallery .description-block {
-  padding: 0;
-  text-align: left;
-}
-
-#microsite #galleries-content .microsite-gallery .description-block p {
-  margin: 0;
-}
-
-#microsite .field-type-gigya-sharebar {
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
-  right: -16px;
-}
-
-#microsite #gigya-share {
-  width: 196px;
-  float: left;
-  margin-left: 20px;
-  clear: none;
-}
-
-#microsite #galleries-content .full-pane {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  width: 1720px;
-  max-width: 1720px;
-  min-height: 830px;
-}
-
-#microsite #galleries-content .full-pane:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-#microsite #galleries-content .microsite-gallery-meta {
-  width: calc(100% - 320px);
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-#microsite #galleries-content .microsite-gallery-meta h2 {
-  float: left;
-  font-size: 1.7em;
-  line-height: 1.1em;
-  margin: 0 0 0.2em;
-  overflow: hidden;
-  width: calc(100% - 216px);
-}
-
-#microsite #galleries-content .left-pane {
-  position: relative;
-  width: calc(100% - 320px);
-}
-
-#microsite #galleries-content .flexslider {
-  width: 1400px;
-}
-
-#microsite #galleries .flexslider img {
-  max-width: 1400px;
-  max-height: 788px;
-}
-
-#microsite .photo-caption {
-  width: 100%;
-  font-size: 1em;
-  line-height: 0.8em;
-  clear: both;
-}
-
-#microsite section#galleries-content .right-pane {
-  width: 300px;
-  margin-left: 20px;
-  float: right;
-}
-
 .region-footer {
   clear: both;
 }
-
 #footer-microsite li, #footer-microsite ul {
   padding: 0;
   margin: 0;
 }
-
 #microsite .mCSB_inside > .mCSB_container {
   margin-right: 0px;
   min-height: 100%;
 }
-
 #microsite .mCSB_scrollTools .mCSB_draggerContainer {
   z-index: 51;
 }
+
 /* custom play button */
 #microsite #video-container .video-player-wrapper {
   position: relative;
@@ -1328,28 +1012,19 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 auto;
     max-width: 1500px;
   }
-
   #microsite #about section .microsite-section-container .right-pane {
     width: 43%;
   }
-
   #microsite section .microsite-section-container div.scroll {
     margin: 0 0 0 calc(-50% - 2em);
   }
-
-  #microsite #galleries-content .microsite-section-container {
-    max-width: 1720px;
-  }
-
   #microsite #videos-content .full-pane {
     width: 1000px;
   }
-
   #microsite #main-slider {
     height: 506px;
     width: 1245px;
   }
-
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
     width: 1000px !important;
     height: 559px !important;
@@ -1366,41 +1041,25 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video {
     width: 1050px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 50px;
   }
 }
 
-@media (max-width: 2200px) {
-  #microsite #galleries-content .full-pane {
-    width: 1370px;
-    min-height: 633px;
-  }
-
-  #microsite #galleries-content .flexslider {
-    width: 1050px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 1050px;
-    max-height: 591px;
+@media (min-width: 768px) {
+  #microsite [id='person-content'] h4 {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 1950px) {
-  #microsite #galleries-content .full-pane {
-    width: 1220px;
-    min-height: 548px;
+@media (min-width: 330px) {
+  #microsite .carousel {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
-
-  #microsite #galleries-content .flexslider {
-    width: 900px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 900px;
-    max-height: 506px;
+  #microsite #cast-carousel .view-content {
+    width: auto;
+    height: auto;
   }
 }
 
@@ -1408,7 +1067,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #videos-content .full-pane {
     width: 930px;
   }
-
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
     width: 930px;
     height: 523px;
@@ -1419,49 +1077,28 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #main-slider {
     width: 930px;
   }
-
   #microsite .a-spot-panel #show-main-slider {
     width: 930px;
     max-height: 378px;
   }
-
   #microsite .usa-microsite-featured {
     width: 930px;
   }
-
   .page-node-microsite #left-nav {
     left: 0px;
     width: 190px;
   }
-
   .page-node-microsite #left-nav #left-nav-inner {
     padding-left: 10px;
   }
-
   .page-node-microsite #left-nav #left-nav-links ul {
     margin: 0 0 0 10px;
   }
-
   #microsite section .microsite-section-container {
     margin: 0 17px 0 190px;
   }
-
   #microsite section .microsite-section-container div.scroll {
     margin: 0 0 0 calc(-50% - 2em + 86px);
-  }
-
-  #microsite #galleries-content .full-pane {
-    width: 920px;
-    min-height: 380px;
-  }
-
-  #microsite #galleries-content .flexslider {
-    width: 600px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 600px;
-    max-height: 338px;
   }
 }
 @media (min-width: 641px) {
@@ -1547,82 +1184,27 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media (max-width: 1200px) {
-  /*
-    #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(3n + 3) {
-      margin-right: 0px;
-    }
-  */
   #microsite #main-slider {
     width: 615px;
   }
-
   #microsite .usa-microsite-featured {
     width: 615px;
   }
-
   #microsite .a-spot-panel #show-main-slider {
     width: 615px;
     max-height: 350px;
   }
-
   #microsite .full-pane {
     max-width: 615px;
   }
-
   #microsite .block-usanetwork-mpx-video {
     width: 615px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item {
     margin-right: 15px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item:nth-of-type(2n + 2) {
     margin-right: 0px;
-  }
-
-  #microsite #galleries-content .full-pane {
-    width: 600px;
-    min-height: 380px;
-  }
-
-  #microsite #galleries-content .flexslider {
-    width: 600px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 600px;
-    max-height: 337px;
-  }
-
-  #microsite #galleries-content .left-pane {
-    width: 100%;
-  }
-
-  #microsite #galleries-content .microsite-gallery-meta {
-    width: 100%;
-  }
-
-  #microsite section#galleries-content .right-pane {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 30px;
-    float: left;
-  }
-
-  #microsite #galleries-content .ad300x250 {
-    float: left;
-  }
-}
-
-@media (max-width: 1120px) {
-  #microsite #galleries-content .microsite-gallery h2 {
-    width: 100%;
-  }
-
-  #microsite #gigya-share {
-    clear: left;
-    margin-left: 0;
   }
 }
 
@@ -1636,15 +1218,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link {
     color: #0ab6e8;
   }
-
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:visited {
     color: #0ab6e8;
   }
-
   body.page-node-microsite #mega-nav .usa-showmenu-active .mega-nav-link:hover {
     color: #ffffff;
   }
-
   #microsite section .microsite-section-container {
     min-height: 800px;
   }
@@ -1654,29 +1233,24 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite {
     height: calc(100% - 50px); /* 50px is height of bottom nav */
   }
-
   /* hide left nav when hamburger appears */
   #microsite #left-nav {
     display: none;
   }
-
   #microsite section .microsite-section-container {
     margin-left: 15px;
     margin-right: 15px;
   }
-
   #microsite section .microsite-section-container div.scroll {
     position: absolute;
     bottom: 0;
     left: calc(50% - 2em);
     margin: 0;
   }
-
   #microsite #about section .microsite-section-container .right-pane {
     width: 75%;
     margin: 0 auto;
   }
-
   .carousel-item {
     float: left;
     width: 45%;
@@ -1687,21 +1261,17 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   .page-node-microsite .mobi-menu-icon {
     display: inline;
   }
-
   .page-node-microsite #mega-nav .block {
     position: relative;
     z-index: 10;
   }
-
   .page-node-microsite .mega-menu-items {
     display: none;
   }
-
   .page-node-microsite #mega-nav {
     text-align: center;
     height: 50px;
   }
-
   .page-node-microsite #logo {
     border: none;
     float: none;
@@ -1717,22 +1287,18 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     zoom: 1;
     font-size: 28px;
   }
-
   .page-node-microsite #tv-show-menu h2,
   .page-node-microsite #menu-wrapper h2 {
     display: block;
   }
-
   .page-node-microsite #tv-show-menu h2 a:visited {
     color: #0ab6e8;
   }
-
   .page-node-microsite #tv-show-menu h2 a {
     font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
     font-size: 18px;
     line-height: 18px;
   }
-
   .page-node-microsite #tv-show-menu {
     box-shadow: none;
     display: block;
@@ -1744,15 +1310,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     padding-left: 0;
     white-space: nowrap;
   }
-
   .page-node-microsite #tv-show-menu ul {
     display: block;
   }
-
   .page-node-microsite #tv-show-menu li {
     display: block;
   }
-
   .page-node-microsite #tv-show-menu .item-list .slide-panel-link {
     background-color: #2d2d2d;
     border-color: #3d3d3d;
@@ -1768,11 +1331,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     position: relative;
     text-transform: lowercase;
   }
-
   .page-node-microsite #tv-show-menu .item-list .slide-panel-link:hover {
     color: #ffffff;
   }
-
   .page-node-microsite #tv-show-menu li.parent-item:hover > a:after {
     content: "";
     display: block;
@@ -1792,32 +1353,22 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  #microsite #galleries-content .flexslider .counter {
-    padding: 5px;
-  }
-}
-
 @media (min-width: 769px) {
   #microsite .region-footer.usa-showmenu-loaded {
     padding-bottom: 20px;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel {
     visibility: hidden;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel-processed .microsite-carousel {
     visibility: visible;
   }
-
 }
 
 @media (min-width: 641px) and (max-width: 768px) {
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
     margin: 15px 15px 0px 0;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
     margin-right: 0;
   }
@@ -1826,24 +1377,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 @media (max-width: 768px) {
   #microsite .usa-microsite-featured {
     margin: 0 auto;
-  }
-
-  #microsite #galleries-content .flexslider .counter {
-    padding: 0px;
-  }
-
-  #microsite #galleries-content .full-pane {
-    width: 600px;
-    min-height: 380px;
-  }
-
-  #microsite #galleries-content .flexslider {
-    width: 600px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 600px;
-    max-height: 338px;
   }
 }
 
@@ -1862,172 +1395,98 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 auto;
     width: 300px;
   }
-
   #microsite #about section .microsite-section-container {
     width: 100%;
   }
-
   #microsite #main-slider {
     width: 300px;
   }
-
   #microsite .a-spot-panel #show-main-slider {
     width: 300px;
     max-height: 250px;
   }
-
   #microsite .usa-microsite-featured {
     width: 300px;
   }
-
   #microsite .block-usanetwork-mpx-video {
     width: 310px;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item {
     margin: 0 2% 10px 0px;
     max-height: 123px;
     width: 49%;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item:nth-of-type(even) {
     margin-right: 0;
   }
-
   #microsite .usa-microsite-featured .microsite-carousel-collapsible-processed li.carousel-item img {
     max-height: 119px;
   }
-
   .usa-microsite-featured .caption-overlay .caption-fields-wrapper {
     height: 40px;
     width: 147px;
     padding: 5px 6px 5px;
     margin: 0;
   }
-
   .usa-microsite-featured .caption-overlay .caption-fields-wrapper h3 {
     line-height: 10.5px;
     font-size: 12px;
   }
-
   .usa-microsite-featured .caption-overlay .caption-fields-wrapper .caption, .promo-metadata h3, .upcoming-movie .meta h3 {
     font-size: 10px;
     line-height: 12px;
   }
-
   #microsite #home-content .ad-mobile {
     display: block;
   }
-
   #microsite #videos-content .full-pane {
     width: 300px;
   }
-
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
     width: 300px;
     height: 184px;
   }
-
   #microsite .full-pane #video-container .video-title {
     font-size: 20px;
     margin: 5px 0;
   }
-
   #microsite .full-pane #video-container {
     margin-bottom: 10px;
   }
-
   #microsite .full-pane #video-container .video-description, #microsite .full-pane #video-container .video-info {
     font-size: 12px;
     line-height: 16px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item {
     height: 121px;
     margin-bottom: 10px;
     margin-right: 10px !important;
     width: 145px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item.ad {
     display: none;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item img {
     height: 82px;
     width: 145px;
   }
-
   #microsite .block-usanetwork-mpx-video li.grid-item .caption-fields-wrapper {
     height: 39px;
     padding: 5px;
   }
-
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
     width: 29px;
   }
-
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .title,
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta ~ .caption {
     padding-left: 35px;
   }
-
   #microsite section .microsite-section-container .right-pane {
     width: 100%;
   }
-
-  #microsite section#galleries-content .flexslider {
-    margin: 0;
-  }
-
-  #microsite #galleries-content .full-pane {
-    width: 300px;
-    min-height: 210px;
-    margin-top: 0;
-  }
-
-  #microsite #galleries-content .flexslider {
-    width: 300px;
-  }
-
-  #microsite #galleries .flexslider img {
-    max-width: 300px;
-    max-height: 169px;
-  }
-
-  #microsite #galleries-content .microsite-gallery-meta {
-    white-space: normal;
-    position: relative;
-    bottom: auto;
-    max-height: none;
-    width: 100%;
-  }
-
-  #microsite #galleries-content .microsite-gallery-meta h2 {
-    float: left;
-    font-size: 1.4em;
-    line-height: 1.1em;
-    margin: 0 0 0.2em;
-    width: 100%;
-  }
-
-  #microsite .field-type-gigya-sharebar {
-    margin-bottom: 0;
-    position: relative;
-    bottom: 0;
-    right: 0;
-  }
-
-  #microsite #gigya-share {
-    float: left;
-    margin-left: 0;
-    clear: left;
-  }
-
   #microsite .ad-leaderboard {
     min-height: 50px;
   }
-
   #microsite .ad-leaderboard iframe {
     height: 50px;
     width: 300px;
@@ -2072,31 +1531,34 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 @media(min-width: 481px) {
-#microsite #home-content {
-  background-image: url("../images/dig_bg_home.jpg");
+  #microsite #home-content {
+    background-image: url("../images/dig_bg_home.jpg");
+  }
+  #microsite #about-content {
+    background-image: url("../images/dig_bg_about.jpg");
+  }
+  #microsite #galleries-content {
+    background-image: url("../images/dig_bg_gallery.jpg");
+  }
+  #microsite #games-content {
+    background-image: url("../images/dig_bg_games.jpg");
+  }
+  #microsite #videos-content {
+    background-image: url("../images/dig_bg_videos.jpg");
+  }
 }
-#microsite #about-content {
-  background-image: url("../images/dig_bg_about.jpg");
-}
-#microsite #galleries-content {
-  background-image: url("../images/dig_bg_gallery.jpg");
-}
-#microsite #games-content {
-  background-image: url("../images/dig_bg_games.jpg");
-}
-#microsite #videos-content {
-  background-image: url("../images/dig_bg_videos.jpg");
-}
-}
+
 @media (max-width: 480px) {
-#microsite #home-content,
-#microsite #about-content,
-#microsite #galleries-content,
-#microsite #games-content,
-#microsite #videos-content {
-  background-image: url("../images/dig_mobile_bg.jpg");
+  #microsite #home-content,
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
 }
 }
+
 /* height media queries */
 @media (max-height: 850px) {
   #microsite #left-nav {
@@ -2116,46 +1578,28 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 /* BEGIN MOBILE SPECIFIC DEVICES */
 /* ========== BEGIN TABLET (iPad Retina) =========== */
-@media only screen (orientation: landscape
-
-) and
-
-(max-device-width:
-
-1024px
-
-),
-(orientation: portrait
-
-) and
-
-(max-device-width:
-
-768px
-
-) {
+@media only screen (orientation: landscape) and (max-device-width: 1024px),
+(orientation: portrait) and (max-device-width: 768px) {
 
 }
 
 
-  /* ========== BEGIN SMARTPHONES =========== */
-  @media only screen
-  and (min-device-width: 200px)
-  and (max-device-width: 568px) {
+/* ========== BEGIN SMARTPHONES =========== */
+@media only screen
+and (min-device-width: 200px)
+and (max-device-width: 568px) {
 
-    #microsite .ad-leaderboard {
-      width: 300px;
-      min-height: 50px;
-    }
-
-    #microsite .ad300x250,
-    #microsite .right-pane .ad300x250 {
-      width: 0;
-      height: 0;
-      margin: 0;
-    }
+  #microsite .ad-leaderboard {
+    width: 300px;
+    min-height: 50px;
   }
-
+  #microsite .ad300x250,
+  #microsite .right-pane .ad300x250 {
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+}
 /*_________________*/
 
 

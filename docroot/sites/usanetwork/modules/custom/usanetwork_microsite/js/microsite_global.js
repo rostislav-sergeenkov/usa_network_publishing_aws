@@ -263,7 +263,13 @@
 
       return {'section': activeSection, 'item': activeItem};
     },
-
+    //player init bind
+    micrositePlayerBind: function(){
+      for (key in $pdk.controller.listeners) {
+        delete $pdk.controller.listeners[key];
+      }
+      $pdk.bindPlayerEvents();
+    },
     //ajax request
     micrositeGetVideo: function (url) {
 
@@ -295,12 +301,8 @@
 
           playerDesc.html(description);
 
-        },
-        complete: function(){
-          for (key in $pdk.controller.listeners) {
-            delete $pdk.controller.listeners[key];
-          }
-          $pdk.bindPlayerEvents();
+          Drupal.behaviors.microsite_scroll.micrositePlayerBind();
+
         },
         error: function () {
           alert('error');
@@ -310,11 +312,6 @@
     },
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector) {
-      //if ($('#video-container').hasClass('disabled')){
-      //  return false;
-      //} else {
-      //  $('#video-container').addClass('disabled');
-      //}
       var autoplay = autoplay || false,
         selector = selector || '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active',
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid,
@@ -341,7 +338,6 @@
       }
 
       Drupal.behaviors.microsite_scroll.micrositeGetVideo(url);
-
     },
     // SetPausePlayer
     micrositeSetPausePlayer: function () {

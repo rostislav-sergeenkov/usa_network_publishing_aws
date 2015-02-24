@@ -948,6 +948,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 .video-auth-player-wrapper.featured-asset .tve-help-link{
   color: #ffffff;
 }
+.video-auth-player-wrapper.featured-asset .loginButton img{
+  width: 100%;
+}
 .video-auth-player-wrapper.featured-asset .tve-help-link.signOut{
   position: static;
 }

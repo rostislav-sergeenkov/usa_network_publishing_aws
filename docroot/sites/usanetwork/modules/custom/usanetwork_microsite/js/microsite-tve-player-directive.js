@@ -139,7 +139,6 @@
 							 * Media Start event callback so that we can show the metadata section
 							 */
 							function _onMediaStart(pdkEvent) {
-
 								var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
 								if (!baseClip.isAd && resuming) {

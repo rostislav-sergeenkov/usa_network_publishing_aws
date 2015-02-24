@@ -268,7 +268,7 @@
     micrositeGetVideo: function (url) {
 
       var videoContainer = $('#video-container'),
-        playerWrap = videoContainer.find('.video-player-wrapper .file-video-mpx'),
+        playerWrap = videoContainer.find('.video-player .file-video-mpx'),
         playerDesc = videoContainer.find('.video-player-desc'),
         playerAuth = videoContainer.find('.video-auth-player-wrapper'),
         playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
@@ -295,11 +295,12 @@
 
           playerDesc.html(description);
 
+        },
+        complete: function(){
           for (key in $pdk.controller.listeners) {
             delete $pdk.controller.listeners[key];
           }
           $pdk.bindPlayerEvents();
-
         },
         error: function () {
           alert('error');
@@ -350,10 +351,6 @@
         videoContainer.removeClass('play pause').addClass('pause');
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
-        //if (videoContainer.attr('data-ad-start') == 'true'){
-        //  videoContainer.find('.active-player #custom-play').show();
-        //  videoContainer.find('.active-player #custom-play').addClass('active');
-        //}
       }
     },
     //scroll to top
@@ -492,18 +489,6 @@
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
-
-      //// Custom Play Button
-      //$('#custom-play').each(function(){
-      //  $(this).click(function() {
-      //    alert(12324);
-      //    $pdk.controller.clickPlayButton(true);
-      //    $pdk.controller.pause(false);
-      //    $('#custom-play.active').hide();
-      //    $('#custom-play.active').removeClass('active');
-      //  });
-      //})
-
 
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,
@@ -667,6 +652,7 @@
         Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
         Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
         Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+        Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true);
         if (refreshAdsOmniture) {
           Drupal.behaviors.microsite_scroll.create728x90Ad();

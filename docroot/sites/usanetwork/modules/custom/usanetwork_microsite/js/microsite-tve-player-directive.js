@@ -24,16 +24,16 @@
 							scope.openLoginWindow = tveModal.openLoginModal;
 							scope.isMobile = helper.device.isMobile;
 
-							setTimeout(function() {
-								_bindPlayerEvents();
-							}, 0);
+							//setTimeout(function() {
+							//	_bindPlayerEvents();
+							//}, 0);
 							/**
 							 * Bind Player Events
 							 * @private
 							 */
 							window.$pdk.bindPlayerEvents = _bindPlayerEvents;
 
-							function _bindPlayerEvents(iframeId) {
+							function _bindPlayerEvents() {
 								//rebind $pdk each time directive is loaded
 								$pdk.bind(tveConfig.PLAYER_ID);
 

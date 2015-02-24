@@ -1252,6 +1252,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 
 /* corrected player style */
+.video-auth-player-wrapper{
+  display: none;
+}
 .video-auth-player-wrapper.featured-asset{
   width: 100%;
 }

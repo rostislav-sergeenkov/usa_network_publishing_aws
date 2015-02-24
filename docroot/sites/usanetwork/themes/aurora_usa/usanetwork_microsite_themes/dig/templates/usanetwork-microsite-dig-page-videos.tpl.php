@@ -38,11 +38,9 @@
             </a>
           </div>
         </div>
-        <div class="video-player-wrapper" data-ng-show="global.isAuthN">
+        <div class="video-player video-player-wrapper" data-ng-show="global.isAuthN">
           <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
-<!--            <iframe class="base-iframe"></iframe>-->
           </div>
-          <div id="custom-play"></div>
         </div>
         <div class="tve-help-link signIn">
           <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN">
@@ -55,11 +53,10 @@
         </div>
       </div>
       <div class="video-no-auth-player-wrapper">
-        <div class="video-player-wrapper no-auth">
+        <div class="video-player no-auth">
           <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
            <iframe class="base-iframe"></iframe>
           </div>
-          <div id="custom-play"></div>
         </div>
       </div>
       <div class="video-player-desc">

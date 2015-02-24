@@ -350,10 +350,10 @@
         videoContainer.removeClass('play pause').addClass('pause');
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
-        if (videoContainer.attr('data-ad-start') == 'true'){
-          videoContainer.find('.active-player #custom-play').show();
-          videoContainer.find('.active-player #custom-play').addClass('active');
-        }
+        //if (videoContainer.attr('data-ad-start') == 'true'){
+        //  videoContainer.find('.active-player #custom-play').show();
+        //  videoContainer.find('.active-player #custom-play').addClass('active');
+        //}
       }
     },
     //scroll to top
@@ -493,13 +493,17 @@
         $('.featured-asset').removeClass('tve-overlay');
       });
 
-      // Custom Play Button
-      $('#video-container .active-player #custom-play').click(function() {
-        $pdk.controller.clickPlayButton(true);
-        $pdk.controller.pause(false);
-        $('#custom-play.active').hide();
-        $('#custom-play.active').removeClass('active');
-      });
+      //// Custom Play Button
+      //$('#custom-play').each(function(){
+      //  $(this).click(function() {
+      //    alert(12324);
+      //    $pdk.controller.clickPlayButton(true);
+      //    $pdk.controller.pause(false);
+      //    $('#custom-play.active').hide();
+      //    $('#custom-play.active').removeClass('active');
+      //  });
+      //})
+
 
       // set defaults
       var siteName = Drupal.settings.microsites_settings.title,

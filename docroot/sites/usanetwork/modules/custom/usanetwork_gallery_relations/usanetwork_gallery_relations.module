@@ -145,6 +145,7 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
       }
     }
     else {
+      $form['field_episode'][LANGUAGE_NONE]['#default_value'] = NULL;
       $form['field_episode'][LANGUAGE_NONE]['#description'] = t('There are no episodes associated with the show you selected. You can !url', array('!url' => l(t('create an episode here'), 'node/add/tv-episode')));
     }
     $form['field_episode'][LANGUAGE_NONE]['#options'] = $options;

@@ -351,18 +351,13 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   padding: 0;
 }
-
 #microsite .scroll div {
   text-align: center;
   line-height: 1.25em;
-  border: 1px solid white;
   padding-top: 3px;
-  -webkit-box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
-  -moz-box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
-  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.24);
-  text-shadow: 2px 2px 2px #000;
+  background-color: #fff;
+  color: #000;
 }
-
 #microsite .scroll img {
   width: 14px;
   height: 29px;
@@ -395,10 +390,6 @@ you can use the generic selector below, but it's slower:
 #microsite section .microsite-section-container .right-pane {
   width: 50%;
   margin-left: auto;
-}
-
-#microsite #about section .microsite-section-container .right-pane {
-  width: 48%;
 }
 
 #microsite .right-pane h2 {
@@ -1889,7 +1880,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   background-image: url("../images/dig_bg_home.jpg");
 }
 #microsite #about-content {
-  background-image: url("../images/dig_bg_about.jpg");
+  background-image: url("../images/dig_bg_about_new.jpg");
 }
 #microsite #galleries-content {
   background-image: url("../images/dig_bg_gallery.jpg");
@@ -1902,12 +1893,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 }
 @media (max-width: 480px) {
-#microsite #about-content,
-#microsite #galleries-content,
-#microsite #games-content,
-#microsite #videos-content {
-  background-image: url("../images/dig_mobile_bg.jpg");
-}
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
 }
 
 /* height media queries */

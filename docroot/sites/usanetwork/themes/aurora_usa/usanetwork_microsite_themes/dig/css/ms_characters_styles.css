@@ -376,6 +376,12 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 
 
 /* BEGIN BREAKPOINTS */
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 0;
+  }
+}
+
 @media (max-width: 1020px) {
   #microsite #about #right-pane-bg,
   #microsite #characters #right-pane-bg {
@@ -457,6 +463,9 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
 }
 
 @media (max-width: 480px) {
+  #microsite #about section {
+    background-position: top left;
+  }
   #microsite #about-content,
   #microsite #galleries-content,
   #microsite #games-content,
@@ -465,12 +474,6 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   }
   #microsite #about #right-pane-bg {
     background-color: transparent;
-  }
-}
-
-@media (max-width: 1180px) {
-  #microsite #about section {
-    background-position: -150px 0;
   }
 }
 

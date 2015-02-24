@@ -468,6 +468,12 @@ html.ie10 #microsite #characters .character-nav li:hover + .tooltip {
   }
 }
 
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 0;
+  }
+}
+
 /* Smartphone */
 @media only screen
 and (min-device-width : 200px)

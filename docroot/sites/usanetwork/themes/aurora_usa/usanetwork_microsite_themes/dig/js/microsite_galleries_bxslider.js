@@ -105,7 +105,7 @@
           activeGallery.height(activeGalleryHeight).find('.center-wrapper').html(data.rendered);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');
-          $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"').addClass('active');
+          $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');
           Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
           activeGallery.animate({'opacity': 1}, 1000, function(){
             Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();

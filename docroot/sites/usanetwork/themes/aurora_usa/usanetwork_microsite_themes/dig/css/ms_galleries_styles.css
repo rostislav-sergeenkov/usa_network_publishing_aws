@@ -185,15 +185,16 @@
   background-color: #1F1F1F;
   width: 250px;
 }
-#microsite #galleries .galleries-nav li a,
-#microsite #galleries .galleries-nav li.active a {
+#microsite #galleries .galleries-nav li a {
   width: 100%;
   height: 100%;
   display: block;
-  border: 1px solid #FFF;
 }
 #microsite #galleries .galleries-nav li a {
   border: 1px solid #000;
+}
+#microsite #galleries .galleries-nav li.active a {
+  border: 1px solid #FFF;
 }
 #microsite #galleries .galleries-nav li a .gallery-title {
   font-size: 1em;

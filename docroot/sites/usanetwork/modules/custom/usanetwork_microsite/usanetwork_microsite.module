@@ -1480,7 +1480,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
-          $omniture_prop4 = 'Profile Page';
+          $omniture_prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {

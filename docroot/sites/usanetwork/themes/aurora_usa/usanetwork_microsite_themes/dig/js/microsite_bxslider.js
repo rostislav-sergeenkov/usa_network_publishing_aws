@@ -15,7 +15,7 @@
         slideWidth: slideWidth,
         minSlides: numSlides,
         maxSlides: numSlides,
-//        useCSS: true,
+        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -45,7 +45,7 @@
         slideWidth: slideWidth,
         minSlides: numSlides,
         maxSlides: numSlides,
-//        useCSS: true,
+        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -75,16 +75,30 @@
           }
 
           anchor = anchorPathParts[1];
-          item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
+          var item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
           if (anchor == 'characters') {
             if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10);
           }
         }
       });
+      var waitForFinalEvent = (function () {
+        var timers = {};
+        return function (callback, ms, uniqueId) {
+          if (!uniqueId) {
+            uniqueId = "Don't call this twice without a uniqueId";
+          }
+          if (timers[uniqueId]) {
+            clearTimeout (timers[uniqueId]);
+          }
+          timers[uniqueId] = setTimeout(callback, ms);
+        };
+      })();
 
       $(window).bind('resize', function () {
-        self.micrositeReloadBxSlider();
+        waitForFinalEvent(function(){
+          self.micrositeReloadBxSlider();
+        }, 500, "home Cast & Crew gallery");
       });
       window.addEventListener('orientationchange', self.micrositeReloadBxSlider);
 

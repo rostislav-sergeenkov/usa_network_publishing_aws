@@ -40,9 +40,9 @@ body{
   top: 0;
   left: 0;
   max-width: 1245px;
-  /*opacity: 0;*/
+  opacity: 0;
   max-height: 370px;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 #microsite #home .characters-cast h2 {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
@@ -131,21 +131,7 @@ body{
   top: -9999px;
   left: -9999px;
 }
-/* for ie 9*/
-html.ie9 #microsite #home .characters-cast .btns a.bx-prev{
-  display: block;
-  background-image: url('../images/icons/arrow-prev.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 18px 30px;
-}
-html.ie9 #microsite #home .characters-cast .btns a.bx-next{
-  display: block;
-  background-image: url('../images/icons/arrow-next.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 18px 30px;
-}
+
 /* HOME SECTION MEDIA QUERY START */
 @media (max-width: 1580px) {
   #microsite #home .characters-cast {

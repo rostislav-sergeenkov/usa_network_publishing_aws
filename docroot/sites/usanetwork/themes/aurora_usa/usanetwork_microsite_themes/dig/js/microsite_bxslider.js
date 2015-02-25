@@ -15,7 +15,7 @@
         slideWidth: slideWidth,
         minSlides: numSlides,
         maxSlides: numSlides,
-//        useCSS: true,
+        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -24,7 +24,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          //$('#microsite #home .characters-cast').animate({ 'opacity': 1 }, 1000, 'jswing');
+          $('#microsite #home .characters-cast').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       })
     },
@@ -45,7 +45,7 @@
         slideWidth: slideWidth,
         minSlides: numSlides,
         maxSlides: numSlides,
-//        useCSS: true,
+        useCSS: true,
         slideMargin: slideMargin,
         nextSelector: '#characters-cast-next',
         prevSelector: '#characters-cast-prev',
@@ -54,7 +54,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          //$('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
+          $('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       });
 

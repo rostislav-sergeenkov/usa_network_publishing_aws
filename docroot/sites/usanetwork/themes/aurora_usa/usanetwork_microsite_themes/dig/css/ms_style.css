@@ -552,14 +552,14 @@ you can use the generic selector below, but it's slower:
   height: 82px;
   background-image: url("../images/dig_logo.png");
   cursor: pointer;
-  opacity: 0;
+  /*opacity: 0;*/
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   width: 130px;
   height: 30px;
   background-image: url("../images/dig_tunein.png");
   cursor: pointer;
-  opacity: 0;
+  /*opacity: 0;*/
   margin-top: 7px;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein #line2 {

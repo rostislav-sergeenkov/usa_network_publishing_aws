@@ -155,6 +155,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  height: 18px;
 }
 #microsite #galleries .galleries-nav .galleries-page-controls > div {
   float: left;
@@ -225,7 +226,21 @@
 }
 */
 #microsite #galleries .galleries-nav .gallery-pagers {
-  margin-top: 4px;
+  position: relative;
+  margin: 0;
+  height: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#microsite #galleries .bx-pager.bx-default-pager {
+  height: 10px;
+  line-height: 10px;
+}
+#microsite #galleries .galleries-nav .btns.prev,
+#microsite #galleries .galleries-nav .btns.next {
+  line-height: 18px;
 }
 #microsite #galleries .galleries-nav .btns.prev {
   margin-right: 4px;

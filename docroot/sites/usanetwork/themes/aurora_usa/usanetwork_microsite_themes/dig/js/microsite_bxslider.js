@@ -24,7 +24,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #home .characters-cast').animate({ 'opacity': 1 }, 1000, 'jswing');
+          //$('#microsite #home .characters-cast').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       })
     },
@@ -54,7 +54,7 @@
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-          $('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
+          //$('#microsite #home .characters-cast').css('overflow', 'visible').animate({ 'opacity': 1 }, 1000, 'jswing');
         }
       });
 

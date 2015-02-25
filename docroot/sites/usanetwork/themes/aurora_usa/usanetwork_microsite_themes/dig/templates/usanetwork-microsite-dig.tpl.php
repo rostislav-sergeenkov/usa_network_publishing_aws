@@ -50,7 +50,7 @@
     <?php endif; ?>
   </div>
   <div id="left-nav">
-    <div id="left-nav-inner" class="hide">
+    <div id="left-nav-inner">
       <div id="left-nav-links">
         <ul id="left-nav-links-list">
           <?php if ($current_section == 'home'): ?>

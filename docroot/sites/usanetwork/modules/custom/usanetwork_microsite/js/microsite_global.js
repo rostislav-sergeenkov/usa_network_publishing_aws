@@ -311,15 +311,22 @@
 
     },
     // set video player on click thumbnail
-    micrositeSetVideoPlayer: function (autoplay, selector) {
+    micrositeSetVideoPlayer: function (autoplay, selector, data) {
       var autoplay = autoplay || false,
         selector = selector || '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active',
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid,
         videoContainer = $('#video-container'),
         dataFid = $(selector).attr('data-fid'),
         dataPlayerId = $(selector).attr('data-player-id'),
-        url = defaultUrl + '/' + dataFid + '/' + autoplay,
-        activeVideoThumb = $(selector);
+        activeVideoThumb = $(selector),
+        url;
+
+      if (data) {
+        dataPlayerId = data.player_id;
+        dataFid = data.fid;
+      }
+
+      url = defaultUrl + '/' + dataFid + '/' + autoplay;
 
       if (activeVideoThumb.attr('data-full-episode') == 'true') {
         $('#ad_300x60_1').show();

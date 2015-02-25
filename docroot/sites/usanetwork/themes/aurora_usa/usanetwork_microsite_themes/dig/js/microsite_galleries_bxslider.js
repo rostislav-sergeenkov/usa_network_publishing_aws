@@ -2,6 +2,57 @@
 (function ($) {
   Drupal.behaviors.micrositeGalleriesBxSliders = {
 
+    getNumSlidesToDisplay: function(navCategory) {
+      var wwidth = $(window).width(),
+          episodesNumSlides = 4,
+          charsNumSlides = 5,
+          episodesPresent = ($('#microsite #galleries #ep-galleries').length > 0) ? true : false;
+
+      if (1860 > wwidth && wwidth >= 1550) {
+        episodesNumSlides = 3;
+        charsNumSlides = (episodesPresent) ? 4 : 3;
+      }
+      else if (1550 > wwidth && wwidth >= 1270) {
+        episodesNumSlides = 2;
+        charsNumSlides = (episodesPresent) ? 3 : 2;
+      }
+      else if (1270 > wwidth && wwidth >= 1160) {
+        episodesNumSlides = 2;
+        charsNumSlides = (episodesPresent) ? 3 : 2;
+      }
+      else if (1160 > wwidth && wwidth >= 890) {
+        episodesNumSlides = 2;
+        charsNumSlides = 2;
+      }
+      else if (890 > wwidth && wwidth >= 874) {
+        episodesNumSlides = 2;
+        charsNumSlides = 2;
+      }
+      else if (874 > wwidth && wwidth >= 866) {
+        episodesNumSlides = 3;
+        charsNumSlides = 3;
+      }
+      else if (866 > wwidth && wwidth >= 640) {
+        episodesNumSlides = 2;
+        charsNumSlides = 2;
+      }
+      else if (640 > wwidth && wwidth >= 505) {
+        episodesNumSlides = 3;
+        charsNumSlides = 3;
+      }
+      else if (505 > wwidth) {
+        episodesNumSlides = 2;
+        charsNumSlides = 2;
+      }
+
+      if (navCategory == 'episodes') {
+        return episodesNumSlides;
+      }
+      else if (navCategory == 'other') {
+        return charsNumSlides;
+      }
+    },
+
     showHidePager: function(galleryId, numGalleriesShown) {
       // set gallery nav container width
       var $galleryNavContainer = $('#microsite #galleries ' + galleryId),
@@ -124,46 +175,10 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          episodesNumSlides = 4,
-          charsNumSlides = 5,
+          episodesNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('episodes'),
+          charsNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('other'),
           slideWidth = (wwidth > transitionWidth) ? 250 : 140,
           slideMargin = 10;
-      if (1860 > wwidth && wwidth >= 1550) {
-        episodesNumSlides = 3;
-        charsNumSlides = 4;
-      }
-      else if (1550 > wwidth && wwidth >= 1270) {
-        episodesNumSlides = 2;
-        charsNumSlides = 3;
-      }
-      else if (1270 > wwidth && wwidth >= 1160) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (1160 > wwidth && wwidth >= 890) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (890 > wwidth && wwidth >= 874) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (874 > wwidth && wwidth >= 866) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (866 > wwidth && wwidth >= 640) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (640 > wwidth && wwidth >= 505) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (505 > wwidth) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
 
       Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
 
@@ -214,47 +229,11 @@
       // set defaults
       var wwidth = $(window).width(),
           transitionWidth = 640,
-          episodesNumSlides = 4,
-          charsNumSlides = 5,
+          episodesNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('episodes'),
+          charsNumSlides = Drupal.behaviors.micrositeGalleriesBxSliders.getNumSlidesToDisplay('other'),
           slideWidth = (wwidth > transitionWidth) ? 250 : 140,
           slideMargin = 10,
           self = this;
-      if (1860 > wwidth && wwidth >= 1550) {
-        episodesNumSlides = 3;
-        charsNumSlides = 4;
-      }
-      else if (1550 > wwidth && wwidth >= 1270) {
-        episodesNumSlides = 2;
-        charsNumSlides = 3;
-      }
-      else if (1270 > wwidth && wwidth >= 1160) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (1160 > wwidth && wwidth >= 890) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (890 > wwidth && wwidth >= 874) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (874 > wwidth && wwidth >= 866) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (866 > wwidth && wwidth >= 640) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
-      else if (640 > wwidth && wwidth >= 505) {
-        episodesNumSlides = 3;
-        charsNumSlides = 3;
-      }
-      else if (505 > wwidth) {
-        episodesNumSlides = 2;
-        charsNumSlides = 2;
-      }
 
       self.setActiveGalleryHeight();
 

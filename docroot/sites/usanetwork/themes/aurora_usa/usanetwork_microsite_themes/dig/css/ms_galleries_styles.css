@@ -40,6 +40,7 @@
   line-height: 1.1em;
   margin: 0 0 0.2em;
   overflow: hidden;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite .node-media-gallery.view-mode-inline_content {
   max-width: 100%;
@@ -47,6 +48,7 @@
 #microsite #galleries-content .microsite-gallery .description-block {
   padding: 0;
   text-align: left;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite #galleries-content .microsite-gallery .description-block p {
   margin: 0;
@@ -75,6 +77,10 @@
 /* flexslider */
 #microsite #galleries-content .flexslider {
   max-width: 1400px;
+  overflow: hidden;
+}
+#microsite #galleries-content .flexslider li {
+  background-color: #000;
 }
 #microsite #galleries-content .flexslider .slides > li img {
   max-height: 100%;
@@ -120,6 +126,7 @@
 }
 #microsite #galleries .galleries-nav h3 {
   margin: 0 0 8px;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite #galleries .bx-wrapper {
   margin: 0 0 60px;

@@ -55,8 +55,8 @@
         $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
         $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
       }
-      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container').height((sectionHeight - 5));
-      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
+      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container, #microsite #about #about-inner-container').height((sectionHeight - 5));
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg, #microsite #about #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {

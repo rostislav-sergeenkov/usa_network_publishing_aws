@@ -21,16 +21,16 @@
     },
 
     // Animation for logo in left nav.
-    micrositeLogoAnim: function logoAnim(show_logo) {
-      if (show_logo) {
-        $('#left-nav-inner').animate({'top': '0'}, 400);
-        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-      }
-      else {
-        $('#left-nav-inner').animate({'top': '-130px'}, 400);
-        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-      }
-    },
+    //micrositeLogoAnim: function logoAnim(show_logo) {
+    //  if (show_logo) {
+    //    $('#left-nav-inner').animate({'top': '0'}, 400);
+    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
+    //  }
+    //  else {
+    //    $('#left-nav-inner').animate({'top': '-130px'}, 400);
+    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
+    //  }
+    //},
 
     // getUrlPath
     // url: (string) url to parse
@@ -149,12 +149,12 @@
         return false;
       }
 
-      if (anchorNum == 1) {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-      }
-      else {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-      }
+      //if (anchorNum == 1) {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //}
+      //else {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //}
       // prep character section background for move
       if ($('#microsite #characters #character-background li').length > 0) {
         $('#microsite #characters #character-background li').css('position', 'absolute');
@@ -484,12 +484,12 @@
         Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
       });
 
-      if ($('#sections .section').eq(0).hasClass('active')) {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-      }
-      else {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-      }
+      //if ($('#sections .section').eq(0).hasClass('active')) {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //}
+      //else {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //}
 
       // initialize left nav hover to display subnav
       $('#left-nav-links-list li').hover(function () {
@@ -697,18 +697,18 @@
         }
       });
 
-      $('.section').on("scroll", function () {
-        if ($(this).attr('id') == 'home') {
-          if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
-            if ($(this).scrollTop() > scrollTopForLogoAnim) {
-              Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-            }
-            else {
-              Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-            }
-          }
-        }
-      });
+      //$('.section').on("scroll", function () {
+      //  if ($(this).attr('id') == 'home') {
+      //    if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
+      //      if ($(this).scrollTop() > scrollTopForLogoAnim) {
+      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //      }
+      //      else {
+      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //      }
+      //    }
+      //  }
+      //});
 
       $(window).load(function () {
         // Turn off the popstate/hashchange tve-core.js event listeners

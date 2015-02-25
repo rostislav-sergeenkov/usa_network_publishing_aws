@@ -1326,27 +1326,29 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $head_title = t('Videos | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
-        if(isset($video_file) && !empty($video_file->filename)) {
+        _usanetwork_microsite_set_meta_description($video_file);
+        $video_file_wrapper = entity_metadata_wrapper('file', $video_file);
+        $page_title = $video_file_wrapper->field_seo_page_title->value();
+        if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
-
       }
       else {
         $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
-        $page_title = $videos_section_wrapper->field_seo_page_title->value();
-        if(!empty($page_title)) {
-          $head_title = $page_title;
-          break;
-        }
         if (!empty($videos_section_wrapper)) {
           $videos_section_object = $videos_section_wrapper->value();
-
           if (!empty($videos_section_object->field_ms_videos)) {
-
             $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
-
             if (!empty($attached_video)) {
-              $head_title = $attached_video->filename . ' | ' . $head_title;
+              $video_file_wrapper = entity_metadata_wrapper('file', $attached_video);
+              $page_title = $video_file_wrapper->field_seo_page_title->value();
+              _usanetwork_microsite_set_meta_description($attached_video);
+              if (empty($page_title)) {
+                $head_title = $attached_video->filename . ' | ' . $head_title;
+              }
+              else {
+                $head_title = $page_title;
+              }
             }
           }
         }
@@ -1726,8 +1728,11 @@ function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
  * Add meta description for object.
  */
 function _usanetwork_microsite_set_meta_description($object) {
-  if(is_object($object) && get_class($object) == 'EntityDrupalWrapper') {
+  if (is_object($object) && get_class($object) == 'EntityDrupalWrapper') {
     _usanetwork_microsite_set_meta_description_for_field_collection($object);
+  }
+  elseif (isset($object->fid)) {
+    _usanetwork_microsite_set_meta_description_for_file($object);
   }
   else {
     _usanetwork_microsite_set_meta_description_for_node($object);
@@ -1755,6 +1760,24 @@ function _usanetwork_microsite_set_meta_description_for_node($node) {
     _usanetwork_microsite_set_meta_description_text($description);
   }
 }
+
+/**
+ * Set description for current file.
+ *
+ * @param $file
+ */
+function _usanetwork_microsite_set_meta_description_for_file($file) {
+  $metatags = usanetwork_microsite_get_metategs($file, 'file');
+
+  $description = $metatags['description']['#attached']['drupal_add_html_head'];
+  $description = reset($description);
+  $description = $description[0]['#value'];
+
+  if(!empty($description)) {
+    _usanetwork_microsite_set_meta_description_text($description);
+  }
+}
+
 
 /**
  * Set description for current section.

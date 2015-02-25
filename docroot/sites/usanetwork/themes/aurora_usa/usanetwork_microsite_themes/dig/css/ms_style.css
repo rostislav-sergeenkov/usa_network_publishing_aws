@@ -917,10 +917,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 
 /* custom play button */
-#microsite #video-container .video-player-wrapper {
+#microsite #video-container .video-player {
   position: relative;
 }
-#microsite #video-container .video-player-wrapper #custom-play {
+#video-container .active-player .custom-play {
   background-image: url("../images/icons/playOverlay.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;

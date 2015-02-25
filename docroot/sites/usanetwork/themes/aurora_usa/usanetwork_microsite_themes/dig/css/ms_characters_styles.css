@@ -93,6 +93,32 @@ body{
 #microsite #home .characters-cast .btns.next {
   right: -22px;
 }
+/* for ie 9*/
+html.ie9 #microsite #home .characters-cast .btns a{
+  display: block;
+}
+html.ie9 #microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-prev{
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-next{
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+/*end*/
+#microsite #home .characters-cast .bx-wrapper {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background: none;
+}
 #microsite #home .characters-cast .btns a {
   color: #FFF;
   color: rgba(255, 255, 255, 0.5);
@@ -131,7 +157,6 @@ body{
   top: -9999px;
   left: -9999px;
 }
-
 /* HOME SECTION MEDIA QUERY START */
 @media (max-width: 1580px) {
   #microsite #home .characters-cast {

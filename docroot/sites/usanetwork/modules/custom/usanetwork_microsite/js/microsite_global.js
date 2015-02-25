@@ -347,6 +347,14 @@
         videoContainer.removeClass('play pause').addClass('pause');
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
+        if(videoContainer.attr('data-ad-start') == 'true'){
+          videoContainer.find('.active-player .custom-play').addClass('active').show();
+          videoContainer.find('.active-player .custom-play').click(function(){
+            $pdk.controller.clickPlayButton(true);
+            $pdk.controller.pause(false);
+            $('.active-player .custom-play').removeClass('active').hide();
+          });
+        }
       }
     },
     //scroll to top
@@ -737,6 +745,7 @@
           $('#video-container').addClass('active');
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(false);
         }
+
       });
 
       $('.section').on("scroll", function () {

@@ -739,7 +739,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         : NULL,
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-    $theme_variables['video_desc'] = theme($theme_registry_name, array('in_player' => $video_desc));
+    $video_desc = array_merge($video_desc, _usanetwork_microsite_set_staus_and_h1_to_variable($file, $section_wrapper));
+    $theme_variables['video_desc'] = theme($theme_registry_name, $video_desc);
   }
   return $theme_variables;
 }
@@ -1820,6 +1821,9 @@ function _usanetwork_microsite_get_h1_tag($object) {
     if (get_class($object) == 'EntityDrupalWrapper' && $object->getBundle() == 'field_ms_section') {
       $h1 = _usanetwork_microsite_get_h1_for_field_collection($object);
     }
+    elseif (isset($object->fid)) {
+      $h1 = _usanetwork_microsite_get_h1_for_file($object);
+    }
     else {
       $h1 = _usanetwork_microsite_get_h1_for_for_node($object);
     }
@@ -1863,6 +1867,7 @@ function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
  * Get h1 text for current content.
  *
  * @param $node
+ * @return string
  */
 function _usanetwork_microsite_get_h1_for_for_node($node) {
   $h1 = '';
@@ -1877,6 +1882,21 @@ function _usanetwork_microsite_get_h1_for_for_node($node) {
   }
   elseif (empty($h1)) {
     $h1 = $node->title;
+  }
+  return $h1;
+}
+
+/**
+ * Get h1 text for current file.
+ *
+ * @param $file
+ * @return string
+ */
+function _usanetwork_microsite_get_h1_for_file($file) {
+  $h1 = $file->filename;
+  $file_wrapper = entity_metadata_wrapper('file', $file);
+  if (!empty($file->field_seo_h1)) {
+    $h1 = $file_wrapper->field_seo_h1->value();
   }
   return $h1;
 }
@@ -1998,12 +2018,12 @@ function _usanetwork_microsite_get_current_section_type() {
   return (arg(3) != '') ? arg(3) : 'home';
 }
 
-function _usanetwork_microsite_set_staus_and_h1_to_variable($node, $section_wrapper) {
+function _usanetwork_microsite_set_staus_and_h1_to_variable($object, $section_wrapper) {
   $theme_variables = array(
     'h1' => '',
     'status' => '',
   );
-  $h1 = _usanetwork_microsite_get_h1_tag($node);
+  $h1 = _usanetwork_microsite_get_h1_tag($object);
   if(_usanetwork_microsite_get_current_section_type() == $section_wrapper->field_ms_section_type->value()) {
     $theme_variables['status'] = 'active';
   }

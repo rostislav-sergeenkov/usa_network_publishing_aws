@@ -149,14 +149,13 @@
       .done(function(data, textStatus, jqXHR){
         var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             activeGallery = $('#galleries .microsite-gallery'),
-            activeGalleryHeight = activeGallery.height(),
             galleryNavItems = $('#galleries .galleries-bxslider li');
 
         callback();
 
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
           activeGalleryMeta.find('h2').text(data.title);
-          activeGallery.height(activeGalleryHeight).find('.center-wrapper').html(data.rendered);
+          activeGallery.find('.center-wrapper').html(data.rendered);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');
           $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');

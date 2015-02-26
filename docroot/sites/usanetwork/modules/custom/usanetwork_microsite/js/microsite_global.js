@@ -294,6 +294,12 @@
           dataPlayerId = activeVideoThumb.attr('data-player-id'),
           dataVideoUrl = activeVideoThumb.attr('data-video-url'),
           dataVideoId = activeVideoThumb.attr('data-video-id'),
+          dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
+          ad_728x90 = $('#videos .companionContainer .ad_728x90'),
+          ad_728x90_1 = $('#videos .companionContainer .ad_728x90_1'),
+          ad_300x60_1 = $('#videos #ad_300x60_1'),
+          ad_300x250 = $('#videos #ad_300x250'),
+          ad_300x250_1 = $('#videos #ad_300x250_1'),
           autoplay,
           src;
 
@@ -308,10 +314,32 @@
         autoplay = 'true';
       }
 
-      if (activeVideoThumb.attr('data-full-episode') == 'true') {
-        $('#ad_300x60_1').show();
+      if (dataFullEpisode == 'true') {
+        if(ad_300x250_1){
+          ad_300x250_1.closest('li.ad').hide();
+          ad_300x250_1.attr('id', 'ad_300x250').empty();
+        }
+        if(ad_728x90.attr('id') != 'ad_728x90_1'){
+          ad_728x90.attr('data-class', ad_728x90.attr('class')).attr('class', '').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+        }
+
+        videoContainer.find('.video-player-desc').addClass('full-desc');
+        ad_300x60_1.show();
+
       } else {
-        $('#ad_300x60_1').hide();
+        videoContainer.find('.video-player-desc').removeClass('full-desc');
+        ad_300x60_1.hide();
+
+        if(ad_728x90.attr('id') == 'ad_728x90_1'){
+          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
+        }
+        if($('#videos').find(ad_300x250)){
+          ad_300x250.closest('li.ad').show();
+          ad_300x250.attr('id', 'ad_300x250_1');
+        }
+        if(dataFullEpisode == 'false'){
+          Drupal.behaviors.microsite_scroll.create728x90Ad();
+        }
       }
 
       src = '//player.theplatform.com/p/' + dataAccountId + '/' + dataPlayerId + '/select/' + dataVideoId + '?autoPlay=' + autoplay + '&form=html&nid=' + Drupal.settings.microsites_settings.nid + '&mbr=true#playerurl=' + window.location.href;
@@ -602,7 +630,9 @@
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
         Drupal.behaviors.microsite_scroll.micrositeGetVideoDesc(url);
         if (refreshAdsOmniture) {
-          Drupal.behaviors.microsite_scroll.create728x90Ad();
+          //if(dataFullEpisode == 'false'){
+          //  Drupal.behaviors.microsite_scroll.create728x90Ad();
+          //}
           Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
         }
       });

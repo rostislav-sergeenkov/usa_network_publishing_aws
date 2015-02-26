@@ -2,7 +2,6 @@
 #microsite #galleries-content .microsite-section-container {
   max-width: 1400px;
 }
-
 /* panes */
 #microsite #galleries-content .full-pane {
   width: 100%;
@@ -124,7 +123,7 @@
 #microsite #galleries .bx-wrapper {
   margin: 0 0 60px;
 }
-#microsite #galleries .galleries-nav .bx-wrapper .bx-viewport {
+#microsite #galleries .galleries-nav .bx-wrapper {
   background-color: #000;
   border-color: #000;
   -mox-box-shadow: none;

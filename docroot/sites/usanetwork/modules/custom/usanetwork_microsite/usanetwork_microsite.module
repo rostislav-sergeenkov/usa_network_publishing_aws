@@ -23,14 +23,6 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/get-microsite-page/%node/%'] = array(
-    'title' => t('USA Network microsite page'),
-    'page callback' => 'usanetwork_microsite_page_ajax_callback',
-    'page arguments' => array(2, 3),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
   $items['ajax/get-video-in-player/%node'] = array(
     'page callback' => 'usanetwork_microsite_get_video_in_player',
     'page arguments' => array(2),
@@ -51,6 +43,14 @@ function usanetwork_microsite_menu() {
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
     'page arguments' => array(4, 5),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/get-gallery/%node'] = array(
+    'page callback' => 'usanetwork_microsite_get_rendered_gallery',
+    'page arguments' => array(2, 3),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -209,40 +209,33 @@ function usanetwork_microsite_page_callback($entity_type, $node) {
         $output = metatag_metatags_view($instance, $metatags, $options);
         metatag_page_set_metatags($instance, $output);
       }
+
+      // Add facebook tracking data.
+      if (!empty($node->field_show)) {
+        $microsite_wrapper = entity_metadata_wrapper('node', $node);
+        $tracking_enabled = _usanetwork_facebook_tracking_enabled($microsite_wrapper->field_show->value(), 'node');
+        $tracking_html = _usanetwork_microsite_get_facebook_tracking_html();
+
+        if ($tracking_enabled && $tracking_html) {
+          drupal_add_js(array(
+            'data' => array(
+              'usanetwork_facebook_tracking' => array(
+                'id' => USANETWORK_FACEBOOK_TRACKING_ID,
+              )
+            )
+          ));
+
+          drupal_add_js(drupal_get_path('module', 'usanetwork_facebook_tracking') . '/js/usanetwork_facebook_tracking.js');
+
+          $theme_variables['facebook_tracking_html'] = $tracking_html;
+        }
+      }
+
       return theme($theme_registry_name, $theme_variables);
     }
   }
 
   return drupal_not_found();
-}
-
-/**
- * @todo I think this function and relate callback can delete.
- *
- * Microsite page rendering ajax callback.
- */
-function usanetwork_microsite_page_ajax_callback($microsite_node, $page_name) {
-  if ($microsite_node && $microsite_node->type == USANETWORK_MICROSITE_NODE_TYPE && !empty($microsite_node->field_ms_section)) {
-    $microsite_node_wrapper = entity_metadata_wrapper('node', $microsite_node);
-
-    foreach ($microsite_node_wrapper->field_ms_section as $section_wrapper) {
-      $section_object = $section_wrapper->value();
-
-      if (!empty($section_object->field_ms_section_type)) {
-        if ($page_name == $section_wrapper->field_ms_section_type->value()) {
-          $theme_name = $microsite_node_wrapper->field_ms_theme->value();
-
-          return drupal_json_output(
-            array(
-              'html' => _usanetwork_microsite_render_page($theme_name, $section_wrapper),
-            )
-          );
-        }
-      }
-    }
-  }
-
-  return drupal_json_output(array(NULL));
 }
 
 /**
@@ -381,11 +374,6 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
       $theme_variables['characters'] = _usanetwork_microsite_theme_render_person_node_items($characters_section_wrapper->field_ms_person);
     }
   }
-/*
-  if (!empty($show_nid)) {
-    $theme_variables['characters_cast'] = views_embed_view('usa_cast', 'block_1', $show_nid);
-  }
-*/
 
   return $theme_variables;
 }
@@ -451,9 +439,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     if (!is_array($person_nodes)) {
       $person_nodes = array($person_nodes);
     }
-    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
-      $current_character = (arg(4) !== NULL) ? arg(4) : NULL;
-    }
+
+    $current_character = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     $character_count = 0;
     $is_active_slide = FALSE;
     foreach ($person_nodes as $person_node_key => $current_person_node) {
@@ -462,7 +449,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       }
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_names = _usanetwork_microsite_get_person_title_and_role_name($current_person_node);
-      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_names['person_title'])));
+      // @TODO: Replace the following person_id str_replace code with code that gets the person id from the Drupal url path info for that person. Would it be correct to use _usanetwork_microsite_get_suggested_character_url for this?
+      $person_id = strtolower(str_replace(array('  ', ' ', '.'), array(' ', '-', ''), trim($person_names['person_title'])));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
@@ -489,7 +477,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $theme_variables['people'][] = array(
         'id' => $person_id,
         'title' => $person_names['person_title'],
-        'url' => _usanetwork_microsite_get_suggested_character_url($current_person_node), // @todo we can use $character_url instead _usanetwork_microsite_get_suggested_character_url function
+        'url' => $character_url,
         'description' => !empty($current_person_node->body)
           ? $current_person_node->body[$current_person_node->language][0]['value']
           : NULL,
@@ -510,9 +498,11 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     drupal_not_found();
   }
 
+/*
   if (!empty($theme_variables['characters_navigation'])) {
     $theme_variables['characters_navigation'] = implode('', $theme_variables['characters_navigation']);
   }
+*/
 
   $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
   return $theme_variables;
@@ -536,33 +526,82 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       $gallery_nodes = array($gallery_nodes);
     }
 
+    $gallery_arg = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($gallery_nodes as $current_gallery_node) {
-      $gallery_view = node_view($current_gallery_node, 'inline_content');
-      $body_value = NULL;
-      $body_field = field_get_items('node', $current_gallery_node, 'body');
-      $show_nid = NULL;
-      $show_field = field_get_items('node', $current_gallery_node, 'field_show');
-
-      if (!empty($body_field)) {
-        $body_value = reset(reset($body_field));
+      if($current_gallery_node->status != NODE_PUBLISHED) {
+        continue;
       }
-
-      if (!empty($show_field)) {
-        $show_nid = reset(reset($show_field));
+      if(!empty($gallery_arg) && $gallery_arg != _usanetwork_microsite_get_suggested_gallery_url($current_gallery_node)) {
+        continue;
       }
-
-      $theme_variables['galleries'][] = array(
-        'title' => $current_gallery_node->title,
-        'description' => $body_value,
-        'rendered' => drupal_render($gallery_view),
-      );
+      $theme_variables['gallery'] = usanetwork_microsite_get_rendered_gallery($current_gallery_node);
+      break;
     }
 
-    $theme_variables['episodic_galleries'] = views_embed_view('usa_gallery', 'panel_pane_1', $show_nid);
-    $theme_variables['character_galleries'] = views_embed_view('usa_gallery', 'panel_pane_3', $show_nid);
+    if(empty($theme_variables['gallery'])) {
+      drupal_not_found();
+    }
+
+    $gallery_types = array('Episodic Gallery');
+    $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
+    $gallery_types = array(
+      'Character Gallery',
+      'GIF Gallery',
+      '0',
+    );
+    $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
   }
 
   return $theme_variables;
+}
+
+
+/**
+ * Get rendered gallery.
+ *
+ * @param $node
+ */
+function usanetwork_microsite_get_rendered_gallery($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $gallery_view = node_view($node, 'inline_content');
+  $body_value = NULL;
+  if (!empty($node->body)) {
+    $body_value = $node_wrapper->body->value();
+  }
+  return array(
+    'gallery_nid' => $node->nid,
+    'title' => $node->title,
+    'description' => $body_value,
+    'rendered' => drupal_render($gallery_view),
+  );
+}
+
+
+/**
+ * Render gallery navigation and set theme variables.
+ *
+ * @param $gallery_nodes
+ * @param array $gallery_types
+ */
+function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types = array()) {
+  $items = array();
+  foreach($gallery_nodes as $node) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $gallery_type = $node_wrapper->field_gallery_type->value();
+    $image_field = $node_wrapper->field_cover_item->value();
+    $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
+    if($node->status == 1 && in_array($gallery_type, $gallery_types, true) !== false) {
+      $title = $node->title;
+      $cover_img = $gallery_preview_image;
+      $items[] = array(
+        'url' => _usanetwork_microsite_get_suggested_gallery_url($node),
+        'gallery_nid' => $node->nid,
+        'title' => $title,
+        'cover_img' => $cover_img,
+      );
+    }
+  }
+  return $items;
 }
 
 /**
@@ -635,9 +674,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-    if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
-      $video_for_player = (arg(4) !== NULL) ? arg(4) : NULL; // gets name of video from url, if present
-    }
+
+    $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     foreach ($video_files as $v_key => $current_video_file) {
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
@@ -751,6 +789,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   elseif($type == 'characters') {
     return $section_wrapper->field_ms_person->value();
   }
+  elseif($type == 'galleries') {
+    return $section_wrapper->field_ms_media_gallery->value();
+  }
   return NULL;
 }
 
@@ -786,6 +827,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
  * Get person node by url parameter.
  *
  * @param $node
+ * @param $param
  * @return mixed
  */
 function _usanetwork_microsite_get_person_by_url($node, $param) {
@@ -793,6 +835,25 @@ function _usanetwork_microsite_get_person_by_url($node, $param) {
   $characters = _usanetwork_microsite_get_related_content_from_node($node, 'characters');
   foreach($characters as $node) {
     if ($param == _usanetwork_microsite_get_suggested_character_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get gallery node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_gallery_by_url($node, $param) {
+  //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
+  $galleries = _usanetwork_microsite_get_related_content_from_node($node, 'galleries');
+  foreach($galleries as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_gallery_url($node)) {
       return $node;
     }
   }
@@ -1157,7 +1218,7 @@ function _usanetwork_microsite_theme_render_videos_node_items($node_wrapper_fiel
 }
 
 /**
- * Renders all person of node field.
+ * Renders all person node fields.
  */
 function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_field) {
   $items = array();
@@ -1167,6 +1228,7 @@ function _usanetwork_microsite_theme_render_person_node_items($node_wrapper_fiel
     $image_field = $field_wrapper->field_usa_character_thumb->value();
     $image_url = image_style_url('meet_the_cast_carousel', $image_field['uri']);
     $items[] = array(
+      'url' => _usanetwork_microsite_get_suggested_character_url($person_node),
       'title' => $person_title['person_title'],
       'image_url' => $image_url,
     );
@@ -1250,13 +1312,11 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $videos_section_object = $videos_section_wrapper->value();
 
           if (!empty($videos_section_object->field_ms_videos)) {
-            $attached_video = $videos_section_wrapper->field_ms_videos->value();
+
+
+            $attached_video = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
 
             if (!empty($attached_video)) {
-              if (is_array($attached_video)) {
-                $attached_video = reset($attached_video);
-              }
-
               $head_title = $attached_video->filename . ' | ' . $head_title;
             }
           }
@@ -1289,8 +1349,10 @@ function usanetwork_microsite_preprocess_html(&$vars) {
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
       if(isset($args[4])) {
-        // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-        $head_title = t('Dig: A First Look | Gallery | ' . $title . ' | USA Network');
+        $gallery_node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+        if(!empty($gallery_node)) {
+          $head_title = $gallery_node->title . ' | ' . $head_title;
+        }
       }
       else {
         $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
@@ -1299,13 +1361,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           $galleries_section_object = $galleries_section_wrapper->value();
 
           if (!empty($galleries_section_object->field_media_gallery)) {
-            $attached_gallery = $galleries_section_wrapper->field_media_gallery->value();
+            $attached_gallery = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_media_gallery);
 
             if (!empty($attached_gallery)) {
-              if (is_array($attached_gallery)) {
-                $attached_gallery = reset($attached_gallery);
-              }
-
               $head_title = $attached_gallery->title . ' | ' . $head_title;
             }
           }
@@ -1328,6 +1386,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+/**
+ * Returns a first published item from field with multiple data
+ *
+ * @param $entity_wrapper - EntityMetadataWrapper object of target field.
+ */
+function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
+  if (empty($entity_wrapper)) {
+    return NULL;
+  }
+
+  $entity = $entity_wrapper->value();
+
+  if (!is_array($entity) && $entity->status == NODE_PUBLISHED) {
+    return $entity;
+  }
+  else {
+    foreach ($entity as $entity_object) {
+      if ($entity_object->status == NODE_PUBLISHED) {
+        return $entity_object;
+      }
+    }
+  }
+
+  return NULL;
 }
 
 /**
@@ -1396,7 +1480,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
-          $omniture_prop4 = 'Profile Page';
+          $omniture_prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {
@@ -1408,11 +1492,13 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'galleries':
           $omniture_prop3 = 'Gallery';
-//          if(isset($args[4])) {
-            // @TODO: Get gallery name based on the url and replace "Dig: A First Look" with it below
-            $omniture_prop5 = t($entity->title . ' : Gallery : Dig: A First Look');
-            $omniture_pagename = t($entity->title . ' : Gallery : Dig: A First Look : Photo 1');
-//          }
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = t($entity->title . ' : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : ' . $node->title);
+            }
+          }
           break;
         case 'about':
           $omniture_prop3 = 'About';
@@ -1496,10 +1582,27 @@ function _usanetwork_microsite_define_full_episode($file) {
   return FALSE;
 }
 
+/**
+ * Get url part for characters.
+ *
+ * @param $person_node
+ * @return mixed|string
+ */
 function _usanetwork_microsite_get_suggested_character_url($person_node) {
   module_load_include('inc', 'pathauto', 'pathauto');
   $person_names = _usanetwork_microsite_get_person_title_and_role_name($person_node);
   return pathauto_cleanstring($person_names['person_title']);
+}
+
+/**
+ * Get url part for gallery.
+ *
+ * @param $gallery_node
+ * @return mixed|string
+ */
+function _usanetwork_microsite_get_suggested_gallery_url($gallery_node) {
+  module_load_include('inc', 'pathauto', 'pathauto');
+  return pathauto_cleanstring($gallery_node->title);
 }
 
 /**
@@ -1532,6 +1635,19 @@ function _usanetwork_microsite_get_section_wrapper_by_section_type($node, $secti
     if($section_wrapper->field_ms_section_type->value() == $section_type) {
       return $section_wrapper;
     }
+  }
+  return NULL;
+}
+
+/**
+ * Get argument for current content.
+ *
+ * @param $section_wrapper
+ * @return null
+ */
+function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
+  if(arg(3) == $section_wrapper->field_ms_section_type->value()) {
+    return (arg(4) !== NULL) ? arg(4) : NULL;
   }
   return NULL;
 }
@@ -1586,4 +1702,15 @@ function usanetwork_microsite_page_build(&$page) {
       }
     }
   }
+}
+
+/**
+ * Returns HTML script tag for tracking facebook.
+ */
+function _usanetwork_microsite_get_facebook_tracking_html() {
+  if (!module_exists('usanetwork_facebook_tracking')) {
+    return NULL;
+  }
+
+  return _usanetwork_facebook_tracking_post_render('', array());
 }

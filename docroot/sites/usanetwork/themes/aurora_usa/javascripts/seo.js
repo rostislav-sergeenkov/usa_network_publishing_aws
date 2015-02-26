@@ -3,6 +3,7 @@
     attach: function(context){
       var formId = $("input[name=form_id]").val();
 
+      setAnnonation(this, formId);
       // Trigger on pageload once, to display default values
       $(".node-form").once('nodeform', function() {
         if ($("#edit-field-seo-h1").length > 0 || $("#edit-field-seo-page-title").length > 0)
@@ -19,6 +20,9 @@
                     " #edit-field-person-suffix input, #edit-field-usa-actor-name input," + 
                     " #edit-field-show select, #edit-field-role select");
 
+      if (formId == 'file_entity_edit') {
+        $annotationcontrols = $("#edit-filename");
+      }
       $annotationcontrols.on("change", function() {
         setAnnonation(this, formId);
       });
@@ -44,7 +48,7 @@
                       : '';
         var path = $("#edit-path-alias").val();
 
-        if ($("#edit-title").length > 0 || formId == 'person_node_form') {
+        if ($("#edit-title").length > 0 || formId == 'person_node_form' || formId == 'file_entity_edit') {
 
           $readonlywrapper = $("#edit-field-seo-h1");
           if (formId == 'catchall_page_node_form') {
@@ -100,34 +104,38 @@
             var personTitle = personPrefix + personFirstName + personMiddleName + personLastName + personSuffix + personPlayedby;
           }
 
-          title = title.trim();
+          if (title) {
+            title = title.trim();
+          }          
 
           /* TITLE LABEL */
-          $("#display_readonly_title .readonly_title").html('');
-          if ($('#display_readonly_title').length == 0) {
-            $readonlywrapper.prepend('<div class="form-item" id="display_readonly_title">' + 
-                                              '<label>' + Drupal.t('Title') + '</label><div class="readonly_title">' + 
-                                              title + 
-                                              '</div></div>');
-          }
-          else {
-            $("#display_readonly_title .readonly_title").html(title);
-          }
-
-          /* H1 ANNOTATION */
-          $("#edit-field-seo-h1 .description").html('');
-          if (title != '') {
-            if ($('#edit-field-seo-h1 .description').length == 0) {
-              $("#edit-field-seo-h1 input").after('<div class="description">' + 
-                                                  defaultString + ': ' +
-                                                  title +
-                                                  '</div>');
+          if (formId != 'file_entity_edit') {
+            $("#display_readonly_title .readonly_title").html('');
+            if ($('#display_readonly_title').length == 0) {
+              $readonlywrapper.prepend('<div class="form-item" id="display_readonly_title">' +
+                                                '<label>' + Drupal.t('Title') + '</label><div class="readonly_title">' +
+                                                title +
+                                                '</div></div>');
             }
             else {
-              $("#edit-field-seo-h1 .description").html(defaultString + ': ' + title);
+              $("#display_readonly_title .readonly_title").html(title);
             }
-          }
 
+            /* H1 ANNOTATION */
+            $("#edit-field-seo-h1 .description").html('');
+            if (title != '') {
+              if ($('#edit-field-seo-h1 .description').length == 0) {
+                $("#edit-field-seo-h1 input").after('<div class="description">' +
+                                                    defaultString + ': ' +
+                                                    title +
+                                                    '</div>');
+              }
+              else {
+                $("#edit-field-seo-h1 .description").html(defaultString + ': ' + title);
+              }
+            }
+
+          }
           /* PAGE TITLE ANNOTATION */
           var inputDefaultValue = '';
           if (title != '' || season != '' || show != '') {
@@ -164,7 +172,14 @@
                        ? ' ' + show + ' |'
                        : '';              
                 inputDefaultValue = personTitle.trim() + ' | ' +  Drupal.t('Characters & Crew') + ' |' + show + ' ' + titleSuffix;
-                break;                
+                break;
+              case 'file_entity_edit':
+                var display_title = $("#edit-filename").val();
+                show = (show != '')
+                  ? ' ' + show + ' |'
+                  : '';
+                inputDefaultValue = display_title + ' | ' + Drupal.t('Videos') + ' | ' + show + ' ' + titleSuffix;
+                break;
             }
           }
           $("#edit-field-seo-page-title .description").html('');

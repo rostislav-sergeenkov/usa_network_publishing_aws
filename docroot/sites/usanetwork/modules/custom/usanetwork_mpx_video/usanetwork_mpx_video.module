@@ -1188,6 +1188,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
     }
   }
+  // Fill H1 tag.
+  $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
+  $h1 = _pub_mpx_get_default_mpx_values('field_seo_h1', $file, 0, 'value');
+  $vars['h1'] = !empty($h1) ? $h1 : $title;
 }
 
 /**
@@ -1913,7 +1917,11 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   $query->fields('xlt', array('link_type'));
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
-  $query->condition('xlt.link_type', 'video', '<>');
+  $query->condition(
+    db_or()
+      ->condition('xlt.link_type', 'video', '<>')
+      ->condition('xlt.link_type', NULL)
+  );
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
   $query->range(0, $limit);
   $query->orderBy('x.lastmod', 'DESC');
@@ -1940,5 +1948,5 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   });
 
   // Splicing first $limit elements
-  $alter_result = array_splice($alter_result, $limit);
+  $alter_result = array_splice($alter_result, 0, $limit);
 }

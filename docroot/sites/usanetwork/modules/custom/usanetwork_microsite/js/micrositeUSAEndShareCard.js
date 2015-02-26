@@ -143,9 +143,15 @@ if (typeof NBCUEndShareCard !== 'undefined') {
     }
     if (NBCUEndShareCard.currentCountdown == 0) {
       clearInterval(NBCUEndShareCard.countdownTimer);
-      var next_url = $('.ymalitemnext').attr('href');
-      if (next_url) {
-        tpController.dispatchEvent("OnEndcardCountdownEnd", next_url);
+      var video_data = {};
+
+      video_data.next_url = $('.ymalitemnext').attr('href');
+      video_data.account_id = $('.ymalitemnext').attr('data-account-id');
+      video_data.video_id = $('.ymalitemnext').attr('data-video-id');
+      video_data.player_id = $('.ymalitemnext').attr('data-player-id');
+
+      if (video_data) {
+        tpController.dispatchEvent("OnEndcardCountdownEnd", video_data);
       }
     }
   }
@@ -200,7 +206,11 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         // Show the first one.
         var nr = '';
         nr += '<div class="ymalitemwrapnext">';
-        nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid + '" data-guid="' + selectedItems[startingIndex].guid + '">';
+        nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid +
+        '" data-guid="' + selectedItems[startingIndex].guid +
+        '" data-account-id="' + selectedItems[startingIndex].account_id +
+        '" data-video-id="' + selectedItems[startingIndex].video_id +
+        '" data-player-id="' + selectedItems[startingIndex].player_id + '">';
         nr += '<img class="ymalthumbnext" src="' + NBCUEndShareCard.GetDefaultThumbnail(selectedItems[startingIndex]) + '" alt="" /><span class="ymalplay"></span>';
         nr += '</a>';
         nr += '<a class="ymaltitlenext" target="_parent" href="' + selectedItems[startingIndex].url + '" data-guid="' + selectedItems[startingIndex].guid + '">' + selectedItems[startingIndex].title + '</a>';

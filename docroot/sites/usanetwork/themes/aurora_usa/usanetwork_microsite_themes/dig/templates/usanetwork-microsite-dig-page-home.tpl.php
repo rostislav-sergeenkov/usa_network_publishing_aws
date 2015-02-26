@@ -7,6 +7,9 @@
  * - $bspots - pre-rendered B-Spot element
  * - $cspots - pre-rendered C-Spot element
  * - $characters - characters variables
+ * -    $characters[n]['url'] - machine-readable part of url for person
+ * -    $characters[n]['title'] - name of person
+ * -    $characters[n]['image_url'] - url for profile image
  * - $promo_carousel - array of pre-rendered promo-carousel items
  * - $background_url - the URL of page background
  */
@@ -63,12 +66,23 @@
       </div>
       <?php endif; ?>
 
-      <?php if (!empty($characters_cast)): ?>
+      <?php if (!empty($characters)): ?>
       <div class="characters-cast">
-        <?php print $characters_cast; ?>
+        <h2>Meet the Cast &amp; Crew</h2>
+        <div id="characters-cast-prev" class="prev btns"><span class="screen-reader-text">Previous</span></div>
+        <ul id="characters-cast-list" class="characters-cast-bxslider">
+        <?php foreach ($characters as $character): ?>
+          <?php if (!empty($character['url']) && !empty($character['title']) && !empty($character['image_url'])): ?>
+          <?php /* @TODO: Dynamically create the /dig/characters part of the following url */ ?>
+          <li><a href="/dig/characters/<?php print $character['url']; ?>"><img src="<?php print $character['image_url']; ?>" alt="<?php print $character['title']; ?>"><div class="person-title"><?php print $character['title']; ?></div></a></li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+        <div id="characters-cast-next" class="next btns"><span class="screen-reader-text">Next</span></div>
       </div>
       <?php endif; ?>
 
+      <?php /* @TODO: DO WE STILL NEED THIS? ?>
       <?php if (!empty($promo_carousel)): ?>
       <ul>
         <?php foreach ($promo_carousel as $carousel_item): ?>
@@ -78,6 +92,7 @@
         <?php endforeach; ?>
       </ul>
       <?php endif; ?>
+      <?php */ ?>
     </div>
   </div>
 </div>

@@ -394,7 +394,7 @@ you can use the generic selector below, but it's slower:
   font-size: 1em;
   line-height: 1.5em;
 }
-#microsite .companionContainer .ad-leaderboard,
+#microsite .ad-leaderboard,
 #microsite .companionContainer .ad_728x90{
   min-height: 90px;
   margin: 0 auto 34px;

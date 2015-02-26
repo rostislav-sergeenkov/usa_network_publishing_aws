@@ -137,7 +137,7 @@
       }
     },
 
-    switchGallery: function(nid) {
+    switchGallery: function(nid, callback) {
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
 
       // Make ajax call to '/ajax/get-gallery/' + nid
@@ -151,6 +151,9 @@
             activeGallery = $('#galleries .microsite-gallery'),
             activeGalleryHeight = activeGallery.height(),
             galleryNavItems = $('#galleries .galleries-bxslider li');
+
+        callback();
+
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
           activeGalleryMeta.find('h2').text(data.title);
           activeGallery.height(activeGalleryHeight).find('.center-wrapper').html(data.rendered);
@@ -279,10 +282,12 @@
 
       self.setActiveGalleryNav();
 
-      $('#microsite #galleries .galleries-bxslider li a').click(function(e){
+      var changeGalleryHandler = function(e){
         var anchorFull = this.href,
-            anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
+          anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
 
+        // Unbind click while selected gallery loading
+        $('#microsite #galleries .galleries-bxslider li a').unbind('click');
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct microsite item without a page reload
@@ -296,10 +301,14 @@
           }
 
           var nid = $(this).parent().attr('data-node-id');
-          self.switchGallery(nid);
+          self.switchGallery(nid, function() {
+            $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
+          });
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
-      });
+      };
+
+      $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
 
       $(window).bind('resize', function () {
         self.micrositeReloadSliders();

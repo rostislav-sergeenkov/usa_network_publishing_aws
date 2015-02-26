@@ -6,7 +6,10 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
+<!--<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>-->
+<div class="companionContainer">
+  <div class="ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
+</div>
 <div class="full-pane" data-tve-player>
   <div id="video-container">
     <div class="video-player-wrapper">

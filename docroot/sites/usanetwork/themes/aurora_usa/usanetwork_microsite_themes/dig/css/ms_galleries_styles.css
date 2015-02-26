@@ -40,6 +40,7 @@
   line-height: 1.1em;
   margin: 0 0 0.2em;
   overflow: hidden;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite .node-media-gallery.view-mode-inline_content {
   max-width: 100%;
@@ -47,6 +48,11 @@
 #microsite #galleries-content .microsite-gallery .description-block {
   padding: 0;
   text-align: left;
+  text-shadow: 1px 1px 3px #000;
+  line-height: 1.3em;
+  height: 60px;
+  display: block;
+  overflow-y: auto;
 }
 #microsite #galleries-content .microsite-gallery .description-block p {
   margin: 0;
@@ -75,6 +81,10 @@
 /* flexslider */
 #microsite #galleries-content .flexslider {
   max-width: 1400px;
+  overflow: hidden;
+}
+#microsite #galleries-content .flexslider li {
+  background-color: #000;
 }
 #microsite #galleries-content .flexslider .slides > li img {
   max-height: 100%;
@@ -120,6 +130,7 @@
 }
 #microsite #galleries .galleries-nav h3 {
   margin: 0 0 8px;
+  text-shadow: 1px 1px 3px #000;
 }
 #microsite #galleries .bx-wrapper {
   margin: 0 0 60px;
@@ -144,6 +155,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  height: 18px;
 }
 #microsite #galleries .galleries-nav .galleries-page-controls > div {
   float: left;
@@ -185,15 +197,16 @@
   background-color: #1F1F1F;
   width: 250px;
 }
-#microsite #galleries .galleries-nav li a,
-#microsite #galleries .galleries-nav li.active a {
+#microsite #galleries .galleries-nav li a {
   width: 100%;
   height: 100%;
   display: block;
-  border: 1px solid #FFF;
 }
 #microsite #galleries .galleries-nav li a {
   border: 1px solid #000;
+}
+#microsite #galleries .galleries-nav li.active a {
+  border: 1px solid #FFF;
 }
 #microsite #galleries .galleries-nav li a .gallery-title {
   font-size: 1em;
@@ -213,7 +226,21 @@
 }
 */
 #microsite #galleries .galleries-nav .gallery-pagers {
-  margin-top: 4px;
+  position: relative;
+  margin: 0;
+  height: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#microsite #galleries .bx-pager.bx-default-pager {
+  height: 10px;
+  line-height: 10px;
+}
+#microsite #galleries .galleries-nav .btns.prev,
+#microsite #galleries .galleries-nav .btns.next {
+  line-height: 18px;
 }
 #microsite #galleries .galleries-nav .btns.prev {
   margin-right: 4px;

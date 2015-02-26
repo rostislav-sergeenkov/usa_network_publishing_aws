@@ -6,22 +6,23 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
+<div class="ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
 <div class="full-pane" data-tve-player>
   <div id="video-container">
     <div class="video-player-wrapper">
       <div class="video-player" data-video-url="<?php print $in_player['url']; ?>">
         <div class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
           <iframe src="" frameborder="0" allowfullscreen="" id="base-frame" >Your browser does not support iframes.</iframe>
+          <div id="custom-play"></div>
         </div>
       </div>
     </div>
+    <div id="ad_300x60_1"></div>
     <div class="video-player-desc">
       <?php if (!empty($video_desc)): ?>
         <?php print $video_desc; ?>
       <?php endif; ?>
     </div>
-    <div id="ad_300x60_1"></div>
   </div>
   <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">

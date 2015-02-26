@@ -754,16 +754,49 @@ function aurora_usa_preprocess_flexslider_file_entity(&$vars) {
 function append_cover_to_media(&$vars) {
   $node = $vars['element']['#object'];
   $language = $node->language;
-  array_unshift($vars['items'], $vars['items'][0]);
   $cover = $node->field_cover_item[$language][0];
-  $vars['items'][0]['#file'] = file_load($cover['fid']);
-  $vars['items'][0]['file']['#path'] = $cover['uri'];
-  $vars['items'][0]['file']['#width'] = $cover['image_dimensions']['width'];
-  $vars['items'][0]['file']['#height'] = $cover['image_dimensions']['height'];
-  $vars['items'][0]['file']['#alt'] = $cover['field_file_image_alt_text'][$language][0]['safe_value'];
-  $vars['items'][0]['file']['#title'] = $cover['field_file_image_title_text'];
-  $vars['items'][0]['field_caption']['#items'] = $cover['field_caption'][$language];
-  $vars['items'][0]['field_caption'][0]['#markup'] = $cover['field_caption'][$language][0]['value'];
+
+  $cover_attributes = array(
+    'file' => array(
+      '#theme' => 'image_style',
+      '#style_name' => '1400_wide',
+      '#path' => $cover['uri'],
+      '#width' => $cover['image_dimensions']['width'],
+      '#height' => $cover['image_dimensions']['height'],
+      '#alt' => $cover['field_file_image_alt_text'][$language][0]['safe_value'],
+      '#title' => $cover['field_file_image_title_text'],
+    ),
+    'field_caption' => array(
+      '#theme' => 'field',
+      '#weight' => 1,
+      '#title' => '',
+      '#access' => 1,
+      '#label_display' => 'hidden',
+      '#view_mode' => 'gallery_flexslider',
+      '#language' => $language,
+      '#field_name' => 'field_caption',
+      '#field_type' => 'text_with_summary',
+      '#field_translatable' => 0,
+      '#entity_type' => 'file',
+      '#bundle' => 'image',
+      '#object' => file_load($cover['fid']),
+      '#formatter' => 'text_default',
+      '#items' => array(
+        0 => array(
+          'value' => '',
+          'summary' => '',
+          'format' => 'wysiwyg_mini',
+          'safe_value' => '',
+          'safe_summary' => '',
+        ),
+      ),
+      0 => array(
+        '#markup' => $cover['field_caption'][$language][0]['value'],
+      ),
+    ),
+  );
+
+  array_unshift($vars['items'], $cover_attributes);
 
   // REMOVED in favor of node titles
   // $new_caption = '<div class="caption-body">' . $node->body[$language][0]['safe_value'] . '</div>';

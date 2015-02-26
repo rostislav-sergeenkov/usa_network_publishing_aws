@@ -76,11 +76,17 @@
 								if(videoContainer.hasClass('pause')){
 									videoContainer.removeClass('pause');
 								}
+								if(videoContainer.attr('data-ad-start') == 'true'){
+									$('#custom-play').hide();
+								}
 								videoContainer.addClass('play');
 							}
 							function _onMediaPause(){
 								if(videoContainer.hasClass('play')){
 									videoContainer.removeClass('play');
+								}
+								if(videoContainer.attr('data-ad-start') == 'true'){
+									$('#custom-play').show();
 								}
 								videoContainer.addClass('pause');
 							}

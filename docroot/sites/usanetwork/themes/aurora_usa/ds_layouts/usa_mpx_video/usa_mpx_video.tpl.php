@@ -16,8 +16,8 @@
         </div>
       <?php else: ?>
         <?php if ($show && $show != "&nbsp;"): ?><h2 class="show-name"><?php print $show; ?></h2><?php endif; ?>
-        <?php if ($video_title && $video_title != "&nbsp;"): ?><h1
-          class="episode-title"><?php print strip_tags($video_title); ?></h1><?php endif; ?>
+        <?php if (!empty($h1) && $h1 != "&nbsp;"): ?><h1
+          class="episode-title"><?php print strip_tags($h1); ?></h1><?php endif; ?>
         <div class="details">
           <?php if ($season && $season != "&nbsp;"): ?><span
             class="season-info"><?php print $season; ?></span><?php endif; ?>

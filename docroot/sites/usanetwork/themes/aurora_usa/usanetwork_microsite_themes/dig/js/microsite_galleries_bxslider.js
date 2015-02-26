@@ -74,7 +74,7 @@
       var activeGallery = $('#microsite #galleries-content .flexslider'),
           activeGalleryWidth = activeGallery.width(),
           newHeight = Math.ceil(activeGalleryWidth * 9/16);
-      $('#microsite #galleries-content .flexslider').css('max-height', newHeight + 'px');
+      $('#microsite #galleries-content .flexslider').height(newHeight);
     },
 
     setActiveGalleryNav: function() {
@@ -156,7 +156,8 @@
 
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
           activeGalleryMeta.find('h2').text(data.title);
-          activeGallery.height(activeGalleryHeight).find('.center-wrapper').html(data.rendered);
+          activeGallery.find('.center-wrapper').html(data.rendered);
+          activeGallery.find('.flexslider').height(activeGalleryHeight);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');
           $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');

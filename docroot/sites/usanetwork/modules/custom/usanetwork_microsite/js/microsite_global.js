@@ -295,8 +295,8 @@
           dataVideoUrl = activeVideoThumb.attr('data-video-url'),
           dataVideoId = activeVideoThumb.attr('data-video-id'),
           dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
-          ad_728x90 = $('#videos .companionContainer .ad_728x90'),
-          ad_728x90_1 = $('#videos .companionContainer .ad_728x90_1'),
+          ad_728x90 = $('#videos .ad_728x90'),
+          ad_728x90_1 = $('#videos .ad_728x90_1'),
           ad_300x60_1 = $('#videos #ad_300x60_1'),
           ad_300x250 = $('#videos #ad_300x250'),
           ad_300x250_1 = $('#videos #ad_300x250_1'),
@@ -320,7 +320,7 @@
           ad_300x250_1.attr('id', 'ad_300x250').empty();
         }
         if(ad_728x90.attr('id') != 'ad_728x90_1'){
-          ad_728x90.attr('data-class', ad_728x90.attr('class')).attr('class', '').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
         }
 
         videoContainer.find('.video-player-desc').addClass('full-desc');

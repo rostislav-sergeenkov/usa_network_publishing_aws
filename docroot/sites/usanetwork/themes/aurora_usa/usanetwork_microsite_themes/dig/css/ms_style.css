@@ -751,6 +751,11 @@ body.page-node-microsite {
   margin-bottom: 20px;
   position: relative;
 }
+#microsite .full-pane #video-container:after {
+  content: '';
+  clear: both;
+  display: table;
+}
 #microsite .full-pane #video-container .video-title {
   font-size: 26px;
   margin: 7px 0;
@@ -929,6 +934,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 100px;
 }
 
+#microsite #ad_300x60_1 {
+  float: right;
+  margin-left: 10px;
+}
+
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {
   #microsite section .microsite-section-container {
@@ -1026,6 +1036,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .block-usanetwork-mpx-video {
     width: 630px;
+  }
+  #microsite #ad_300x60_1 {
+    bottom: 0;
+    margin-left: 0;
+    position: absolute;
+  }
+  #microsite #ad_300x60_1 ~ .video-player-desc {
+    margin-bottom: 70px;
   }
 }
 

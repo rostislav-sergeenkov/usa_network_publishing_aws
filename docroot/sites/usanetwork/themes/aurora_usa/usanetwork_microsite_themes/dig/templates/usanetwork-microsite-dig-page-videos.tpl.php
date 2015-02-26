@@ -17,12 +17,12 @@
         </div>
       </div>
     </div>
+    <div id="ad_300x60_1"></div>
     <div class="video-player-desc">
       <?php if (!empty($video_desc)): ?>
         <?php print $video_desc; ?>
       <?php endif; ?>
     </div>
-    <div id="ad_300x60_1"></div>
   </div>
   <?php if (!empty($videos)): ?>
     <div id="block-usanetwork-mpx-video-usa-mpx-video-views" class="block block-usanetwork-mpx-video">

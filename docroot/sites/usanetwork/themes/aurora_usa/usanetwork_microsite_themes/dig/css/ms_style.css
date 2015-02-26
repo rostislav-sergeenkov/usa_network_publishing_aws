@@ -402,7 +402,7 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   position: relative;
 }
-#microsite .companionContainer #ad_728x90_1 {
+#microsite #ad_728x90_1 {
   text-align: center;
 }
 #microsite .ad-leaderboard iframe {
@@ -1046,8 +1046,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 0;
     position: absolute;
   }
-  #microsite #video-container.start .video-player-desc.full-desc{
+  #microsite #videos{
     margin-bottom: 70px;
+  }
+  #microsite #videos .full-desc .video-player-desc{
+    margin-bottom: 70px;
+  }
+  #microsite #videos .full-desc{
+    margin-bottom: 90px;
   }
 }
 @media (max-width: 1200px) {

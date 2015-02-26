@@ -78,10 +78,11 @@
           var item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
           if (anchor == 'characters') {
-            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10);
+            if (item != '') Drupal.behaviors.microsite_characters.micrositeSwitchCharacters('nav-' + item, 10, 1);
           }
         }
       });
+
       var waitForFinalEvent = (function () {
         var timers = {};
         return function (callback, ms, uniqueId) {

@@ -115,7 +115,7 @@
           break;
         case 'characters':
           s.prop3 = 'Bio';
-          s.prop4 = siteName + ' : Bio';
+          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;

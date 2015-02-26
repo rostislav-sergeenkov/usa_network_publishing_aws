@@ -449,7 +449,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       }
       $person_node_wrapper = entity_metadata_wrapper('node', $current_person_node);
       $person_names = _usanetwork_microsite_get_person_title_and_role_name($current_person_node);
-      $person_id = strtolower(str_replace(array(' ', '.'), array('-', ''), trim($person_names['person_title'])));
+      // @TODO: Replace the following person_id str_replace code with code that gets the person id from the Drupal url path info for that person. Would it be correct to use _usanetwork_microsite_get_suggested_character_url for this?
+      $person_id = strtolower(str_replace(array('  ', ' ', '.'), array(' ', '-', ''), trim($person_names['person_title'])));
 
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
@@ -497,9 +498,11 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     drupal_not_found();
   }
 
+/*
   if (!empty($theme_variables['characters_navigation'])) {
     $theme_variables['characters_navigation'] = implode('', $theme_variables['characters_navigation']);
   }
+*/
 
   $theme_variables['section_title'] = $section_wrapper->field_ms_section_title->value();
   return $theme_variables;
@@ -1477,7 +1480,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
-          $omniture_prop4 = 'Profile Page';
+          $omniture_prop4 = 'Profile Page'; // This is intentional per Loretta!
           if (isset($args[4])) {
             $node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
             if(!empty($node)) {

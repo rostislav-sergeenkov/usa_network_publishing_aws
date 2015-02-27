@@ -306,7 +306,7 @@ you can use the generic selector below, but it's slower:
   background-position: top left; /* please don't change this! */
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: transparent;
+  background-color: #000;
   width: 100%;
   position: relative;
   top: 0;

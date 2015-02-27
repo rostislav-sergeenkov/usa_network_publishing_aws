@@ -700,8 +700,8 @@ body.page-node-microsite {
   margin: 0 auto;
   max-width: 1000px;
 }
-#microsite .video-title,
-#microsite h1.video-title {
+
+#microsite .video-title {
   font-size: 2em;
 }
 #microsite .video-description {
@@ -769,6 +769,15 @@ body.page-node-microsite {
 }
 #microsite .full-pane #video-container .video-title {
   font-size: 26px;
+  margin: 7px 0;
+  text-transform: uppercase;
+}
+#microsite .full-pane #video-container .video-title h1 {
+  color: #ffffff;
+  line-height: 24px;
+  font-family: 'Proxima N W01 Reg', Arial, sans-serif;;
+  font-size: 26px;
+  font-weight: normal;
   margin: 7px 0;
   text-transform: uppercase;
 }

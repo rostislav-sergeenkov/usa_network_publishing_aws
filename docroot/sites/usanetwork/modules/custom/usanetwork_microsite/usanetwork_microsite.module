@@ -828,7 +828,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   }
   else {
     $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
-    $file = reset($video_files);
+    $file = reset($video_files); //@todo get first published video
   }
  
   //set video player
@@ -854,7 +854,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   $result = array(
      'default_image' => isset($renderable_image) ? $renderable_image : '',
      'player' => $video,
-     'description_template' => theme($theme_registry_name, array('in_player' => $video_desc)),
+     'description_template' => theme($theme_registry_name, $video_desc),
   );
   drupal_json_output($result);
   exit();

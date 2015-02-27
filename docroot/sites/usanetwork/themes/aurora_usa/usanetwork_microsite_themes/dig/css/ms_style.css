@@ -1030,7 +1030,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 #microsite #ad_300x60_1 {
   float: right;
+  margin-top: 10px;
   margin-left: 10px;
+}
+#microsite #videos .full-desc{
+  margin-bottom: 90px;
 }
 
 /* BEGIN MEDIA BREAKPOINTS */
@@ -1211,14 +1215,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite #ad_300x60_1 {
     bottom: 0;
+    margin-top: 0;
     margin-left: 0;
     position: absolute;
   }
   #microsite #videos .full-desc .video-player-desc{
     margin-bottom: 70px;
-  }
-  #microsite #videos .full-desc{
-    margin-bottom: 90px;
   }
 }
 @media (max-width: 1200px) {

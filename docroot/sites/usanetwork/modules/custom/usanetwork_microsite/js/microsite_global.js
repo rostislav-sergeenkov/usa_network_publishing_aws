@@ -322,7 +322,7 @@
     },
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector, data) {
-      var autoplay = autoplay || false,
+      var autoplay = autoplay || true,
         selector = selector || '#block-usanetwork-mpx-video-usa-mpx-video-views .item-list ul li.active',
         defaultUrl = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid,
         videoContainer = $('#video-container'),

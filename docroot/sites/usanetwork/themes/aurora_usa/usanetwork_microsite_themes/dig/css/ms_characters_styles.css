@@ -50,7 +50,7 @@ body{
   font-size: 1.6em;
   margin: 1.4em 0 0.83em;
 }
-#microsite #home .characters-cast .bx-wrapper .bx-viewport {
+#microsite #home .characters-cast .bx-wrapper{
   background-color: #000;
   border-color: #000;
   -mox-box-shadow: none;
@@ -88,11 +88,31 @@ body{
   top: 40%;
 }
 #microsite #home .characters-cast .btns.prev {
-  left: -31px;
+  left: -35px;
 }
 #microsite #home .characters-cast .btns.next {
-  right: -22px;
+  right: -35px;
 }
+/* for ie 9*/
+html.ie9 #microsite #home .characters-cast .btns a{
+  display: block;
+}
+html.ie9 #microsite #home .characters-cast .btns a.disabled {
+  display: none;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-prev{
+  background-image: url('../images/icons/arrow-prev.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+html.ie9 #microsite #home .characters-cast .btns a.bx-next{
+  background-image: url('../images/icons/arrow-next.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 18px 30px;
+}
+/*end*/
 #microsite #home .characters-cast .btns a {
   color: #FFF;
   color: rgba(255, 255, 255, 0.5);
@@ -131,7 +151,6 @@ body{
   top: -9999px;
   left: -9999px;
 }
-
 /* HOME SECTION MEDIA QUERY START */
 @media (max-width: 1580px) {
   #microsite #home .characters-cast {
@@ -182,6 +201,7 @@ body{
 #microsite #characters section {
   overflow-x: hidden !important;
 }
+#microsite #about .microsite-section-container,
 #microsite #characters .microsite-section-container {
   width: 100%;
   margin: 0;
@@ -189,6 +209,7 @@ body{
   max-width: 100%;
   overflow: hidden;
 }
+#microsite #about #about-inner-container,
 #microsite #characters #character-inner-container {
   width: calc(100% - 190px);
   position: relative;
@@ -220,6 +241,7 @@ body{
   left: -100%;
   display: block;
 }
+#microsite #about #right-pane-bg,
 #microsite #characters #right-pane-bg {
   position: absolute;
   top: 0;
@@ -229,7 +251,11 @@ body{
   background: rgb(0, 0, 0) transparent;
   background-color: rgba(0, 0, 0, 0.75);
   width: 45%;
-  margin-left: 55%; /* calc(((100% - 190px) * 0.55) + 190px); */
+  margin-left: 55%;
+}
+#microsite #about section .microsite-section-container .right-pane {
+  width: 45%;
+  position: relative;
 }
 #microsite #characters .right-pane-content {
   width: 45%;
@@ -365,7 +391,9 @@ body{
   opacity: 0;
   top: -40px;
 }
+#microsite #characters h1,
 #microsite #characters h3 {
+  color: #ffffff;
   display: inline-block;
   margin: 0 15px 0 0;
   font-size: 1.4em;
@@ -464,6 +492,30 @@ body{
 
 
 /* CHARACTERS SECTION MEDIA QUERY START */
+@media (max-width: 1180px) {
+  #microsite #about section {
+    background-position: -150px 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  #microsite #about #right-pane-bg,
+  #microsite #characters #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about section .microsite-section-container .right-pane,
+  #microsite #characters .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #about .right-pane > div,
+  #microsite #about .right-pane > h3,
+  #microsite #characters .content {
+    width: 86%;
+  }
+}
+
 @media (min-width: 875px) {
   #microsite #characters .character-nav li .tooltip {
     display: block;
@@ -521,6 +573,7 @@ body{
 }
 
 @media (max-width: 874px) {
+  #microsite #about #about-inner-container,
   #microsite #characters #character-inner-container {
     width: 100%;
     margin: 0 auto;
@@ -528,6 +581,7 @@ body{
   #microsite #characters #right-pane-bg {
     background-color: transparent;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 75%;
     margin: 0 auto;
@@ -565,6 +619,7 @@ body{
 }
 
 @media (max-width: 542px) {
+  #microsite #about #about-inner-container,
   #microsite #characters #character-inner-container {
     width: 100%;
     margin: 0 auto;
@@ -572,9 +627,25 @@ body{
   #microsite #characters #right-pane-bg {
     background-color: transparent;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 90%;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #microsite #about section {
+    background-position: top left;
+  }
+  #microsite #about-content,
+  #microsite #galleries-content,
+  #microsite #games-content,
+  #microsite #videos-content {
+    background-image: url("../images/dig_mobile_bg.jpg");
+  }
+  #microsite #about #right-pane-bg {
+    background-color: transparent;
   }
 }
 
@@ -582,18 +653,26 @@ body{
 @media only screen
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
-  #microsite #home .characters-cast .btns.prev,
+  #microsite #home .characters-cast .btns.prev {
+    left: -2px;
+    z-index: 30;
+  }
   #microsite #home .characters-cast .btns.next {
-    display: none;
+    right: 8px;
   }
   #microsite #about section .microsite-section-container .right-pane {
     width: 98%;
   }
+  #microsite #about section .microsite-section-container .right-pane,
   #microsite #characters .right-pane-content {
     width: 98%;
   }
   #microsite #characters #character-info li {
     position: relative;
+  }
+  #microsite #characters .character-nav #nav-prev,
+  #microsite #characters .character-nav #nav-next {
+    top: 40%;
   }
   #microsite #characters .character-bio-tabs {
     font-size: 0.84em;

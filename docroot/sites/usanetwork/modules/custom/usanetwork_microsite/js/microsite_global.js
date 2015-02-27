@@ -21,16 +21,16 @@
     },
 
     // Animation for logo in left nav.
-    micrositeLogoAnim: function logoAnim(show_logo) {
-      if (show_logo) {
-        $('#left-nav-inner').animate({'top': '0'}, 400);
-        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-      }
-      else {
-        $('#left-nav-inner').animate({'top': '-130px'}, 400);
-        $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-      }
-    },
+    //micrositeLogoAnim: function logoAnim(show_logo) {
+    //  if (show_logo) {
+    //    $('#left-nav-inner').animate({'top': '0'}, 400);
+    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
+    //  }
+    //  else {
+    //    $('#left-nav-inner').animate({'top': '-130px'}, 400);
+    //    $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
+    //  }
+    //},
 
     // getUrlPath
     // url: (string) url to parse
@@ -115,7 +115,7 @@
           break;
         case 'characters':
           s.prop3 = 'Bio';
-          s.prop4 = siteName + ' : Bio';
+          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;
@@ -149,12 +149,12 @@
         return false;
       }
 
-      if (anchorNum == 1) {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-      }
-      else {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-      }
+      //if (anchorNum == 1) {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //}
+      //else {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //}
       // prep character section background for move
       if ($('#microsite #characters #character-background li').length > 0) {
         $('#microsite #characters #character-background li').css('position', 'absolute');
@@ -325,13 +325,56 @@
         dataPlayerId = data.player_id;
         dataFid = data.fid;
       }
+      var videoContainer = $('#video-container'),
+          videoPlayer = $('#video-container .video-player'),
+          Player = $('#video-container .video-player iframe'),
+          currentId = Player.attr('id'),
+          activeVideoThumb = $(selector),
+          dataAccountId = activeVideoThumb.attr('data-account-id'),
+          dataPlayerId = activeVideoThumb.attr('data-player-id'),
+          dataVideoUrl = activeVideoThumb.attr('data-video-url'),
+          dataVideoId = activeVideoThumb.attr('data-video-id'),
+          dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
+          ad_728x90 = $('#videos .ad_728x90'),
+          ad_728x90_1 = $('#videos .ad_728x90_1'),
+          ad_300x60_1 = $('#videos #ad_300x60_1'),
+          ad_300x250 = $('#videos #ad_300x250'),
+          ad_300x250_1 = $('#videos #ad_300x250_1'),
+          autoplay,
+          src;
+
+      if (videoPlayer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
+        videoPlayer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
+      }
 
       url = defaultUrl + '/' + dataFid + '/' + autoplay;
 
-      if (activeVideoThumb.attr('data-full-episode') == 'true') {
-        $('#ad_300x60_1').show();
+      if (dataFullEpisode == 'true') {
+        if(ad_300x250_1){
+          ad_300x250_1.closest('li.ad').hide();
+          ad_300x250_1.attr('id', 'ad_300x250').empty();
+        }
+        if(ad_728x90.attr('id') != 'ad_728x90_1'){
+          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
+        }
+
+        $('#videos .full-pane').addClass('full-desc');
+        ad_300x60_1.show();
+
       } else {
-        $('#ad_300x60_1').hide();
+        $('#videos .full-pane').removeClass('full-desc');
+        ad_300x60_1.hide();
+
+        if(ad_728x90.attr('id') == 'ad_728x90_1'){
+          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
+        }
+        if($('#videos').find(ad_300x250)){
+          ad_300x250.closest('li.ad').show();
+          ad_300x250.attr('id', 'ad_300x250_1');
+        }
+        if(dataFullEpisode == 'false'){
+          Drupal.behaviors.microsite_scroll.create728x90Ad();
+        }
       }
 
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
@@ -556,12 +599,12 @@
         Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor);
       });
 
-      if ($('#sections .section').eq(0).hasClass('active')) {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-      }
-      else {
-        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-      }
+      //if ($('#sections .section').eq(0).hasClass('active')) {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //}
+      //else {
+      //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //}
 
       // initialize left nav hover to display subnav
       $('#left-nav-links-list li').hover(function () {
@@ -666,7 +709,9 @@
         Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
         Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true);
         if (refreshAdsOmniture) {
-          Drupal.behaviors.microsite_scroll.create728x90Ad();
+          //if(dataFullEpisode == 'false'){
+          //  Drupal.behaviors.microsite_scroll.create728x90Ad();
+          //}
           Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
         }
       });
@@ -755,18 +800,18 @@
 
       });
 
-      $('.section').on("scroll", function () {
-        if ($(this).attr('id') == 'home') {
-          if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
-            if ($(this).scrollTop() > scrollTopForLogoAnim) {
-              Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-            }
-            else {
-              Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-            }
-          }
-        }
-      });
+      //$('.section').on("scroll", function () {
+      //  if ($(this).attr('id') == 'home') {
+      //    if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
+      //      if ($(this).scrollTop() > scrollTopForLogoAnim) {
+      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
+      //      }
+      //      else {
+      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
+      //      }
+      //    }
+      //  }
+      //});
 
       $(window).load(function () {
         // Turn off the popstate/hashchange tve-core.js event listeners

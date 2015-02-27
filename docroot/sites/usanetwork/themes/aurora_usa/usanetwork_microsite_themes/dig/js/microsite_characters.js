@@ -55,8 +55,8 @@
         $('#microsite #characters .character-bios-container').css('min-height', (characterTextHeight + 50) + 'px');
         $('#microsite #characters .ad300x250').css('margin-top', (characterTextHeight + 20) + 'px');
       }
-      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container').height((sectionHeight - 5));
-      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg').height(sectionHeight);
+      if ($(window).height() > 1200) $('#microsite #characters #character-inner-container, #microsite #about #about-inner-container').height((sectionHeight - 5));
+      $('#microsite #characters #character-background li, #microsite #characters #right-pane-bg, #microsite #about #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveCharacter: function getActiveCharacter() {
@@ -113,99 +113,125 @@
       history.pushState({"state": anchorFull}, anchorFull, anchorFull);
     },
 
-    micrositeSwitchCharacters: function switchCharacters(clickedId, animationSpeed) {
+    micrositeSwitchCharacters: function switchCharacters(clickedId, animationSpeed, overrideActive) {
+      overrideActive = overrideActive || false;
       animationSpeed = animationSpeed || 600;
       var nextItem = $('#' + clickedId);
-      if (nextItem.hasClass('active') || $('#characters .character-nav li').hasClass('disabled')) {
+      if (!overrideActive && (nextItem.hasClass('active') || $('#characters .character-nav li').hasClass('disabled'))) {
         // do nothing
       }
       else {
         $('#characters-content').css('overflow', 'hidden');
         nextItem.addClass('disabled');
         var navItems = $('#characters .character-nav'),
-            currentItem = navItems.find('li.active'),
+            currentItem = (navItems.find('li.active')) ? navItems.find('li.active') : navItems.find('li').eq(0),
             currentItemId = currentItem.attr('id'),
             currentItemNum = currentItem.index(),
-            currentCharacterId = currentItemId.replace('nav-', '');
+            currentCharacterId = (currentItemId != null) ? currentItemId.replace('nav-', '') : null;
             characterInfoHeight = currentItem.height(),
             nextItemId = nextItem.attr('id'),
             nextItemNum = nextItem.index(),
-            nextCharacterId = nextItemId.replace('nav-', ''),
+            nextCharacterId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
             oppositeSign = (direction == 'next') ? '' : '-',
             activeSection = $('#microsite #sections > .active').attr('id');
 
-        if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
+        if (nextCharacterId && currentCharacterId) {
+          if (nextCharacterId == currentCharacterId) {
+            $('#microsite #characters .' + nextCharacterId).addClass('active');
 
-        // prepare next or previous background and character-info
-        $('#microsite #characters .' + nextCharacterId).addClass(direction);
+            Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
+            Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+            if (activeSection != 'characters') {
+              Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+            }
+            else {
+              Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+              Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+            }
 
-        if ($(window).width() < 875) {
-          $('#character-info li.' + direction).css('top', '0');
-          // animate active character-info
-          $('#character-info li.active').animate({'top': '0', 'opacity': 0}, animationSpeed, 'jswing', function(){
-            // animate next character-info
-            $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
-              // update classes
-              $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
-              $('#microsite #characters .' + currentCharacterId).removeClass('active ');
+            // remove disabled
+            navItems.find('li.disabled').removeClass('disabled');
+            $('#characters-content').css('overflow-y', 'auto');
+          }
+          else {
+            if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
-              // update active nav item
-              navItems.find('li.active').removeClass('active');
-              nextItem.addClass('active');
+            // prepare next or previous background and character-info
+            $('#microsite #characters .' + nextCharacterId).addClass(direction);
 
-              Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-              Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-              if (activeSection != 'characters') {
-                Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
-              }
-              else {
-                Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
-                Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
-              }
+            if ($(window).width() < 875) {
+              $('#character-info li.' + direction).css('top', '0');
+              // animate active character-info
+              $('#character-info li.active').animate({'top': '0', 'opacity': 0}, animationSpeed, 'jswing', function(){
+                // animate next character-info
+                $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
+                  // update classes
+                  $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
+                  $('#microsite #characters .' + currentCharacterId).removeClass('active ');
 
-              // remove disabled
-              navItems.find('li.disabled').removeClass('disabled');
-              $('#characters-content').css('overflow-y', 'auto');
-            });
-          });
+                  // update active nav item
+                  navItems.find('li.active').removeClass('active');
+                  nextItem.addClass('active');
+
+                  Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
+                  Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+                  if (activeSection != 'characters') {
+                    Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+                  }
+                  else {
+                    Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                    Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                  }
+
+                  // remove disabled
+                  navItems.find('li.disabled').removeClass('disabled');
+                  $('#characters-content').css('overflow-y', 'auto');
+                });
+              });
+            }
+            else {
+              $('#character-info li.' + direction).css('top', '-40px');
+              // animate active character-info
+              $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, animationSpeed, 'jswing', function(){
+                // animate backgrounds
+                $('#character-background li.active').animate({'left': sign + '100%'}, (animationSpeed + 200), 'jswing');
+                $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, (animationSpeed + 200), 'jswing', function(){
+                  // animate next character-info
+                  $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
+
+                    // update classes
+                    $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
+                    $('#microsite #characters .' + currentCharacterId).removeClass('active ');
+
+                    // update active nav item
+                    navItems.find('li.active').removeClass('active');
+                    nextItem.addClass('active');
+
+                    Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
+                    Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
+                    if (activeSection != 'characters') {
+                      Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
+                    }
+                    else {
+                      Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
+                      Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                    }
+
+                    // remove disabled
+                    navItems.find('li.disabled').removeClass('disabled');
+                    $('#characters-content').css('overflow-y', 'auto');
+                  });
+                });
+              });
+            }
+          }
         }
         else {
-          $('#character-info li.' + direction).css('top', '-40px');
-          // animate active character-info
-          $('#character-info li.active').animate({'top': '-40px', 'opacity': 0}, animationSpeed, 'jswing', function(){
-            // animate backgrounds
-            $('#character-background li.active').animate({'left': sign + '100%'}, (animationSpeed + 200), 'jswing');
-            $('#character-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, (animationSpeed + 200), 'jswing', function(){
-              // animate next character-info
-              $('#character-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
-
-                // update classes
-                $('#microsite #characters .' + direction).addClass('active').removeClass(direction);
-                $('#microsite #characters .' + currentCharacterId).removeClass('active ');
-
-                // update active nav item
-                navItems.find('li.active').removeClass('active');
-                nextItem.addClass('active');
-
-                Drupal.behaviors.microsite_characters.micrositeSetPath(nextCharacterId);
-                Drupal.behaviors.microsite_characters.micrositeSetNavNextPrevState();
-                if (activeSection != 'characters') {
-                  Drupal.behaviors.microsite_scroll.micrositeSectionScroll('characters', nextItemId);
-                }
-                else {
-                  Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
-                  Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
-                }
-
-                // remove disabled
-                navItems.find('li.disabled').removeClass('disabled');
-                $('#characters-content').css('overflow-y', 'auto');
-              });
-            });
-          });
+          // current or next character id was not set
+          // @TODO: Should we do something here?
         }
       }
     },

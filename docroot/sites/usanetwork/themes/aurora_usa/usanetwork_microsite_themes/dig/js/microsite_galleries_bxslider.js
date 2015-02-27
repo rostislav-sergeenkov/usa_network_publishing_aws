@@ -2,6 +2,8 @@
 (function ($) {
   Drupal.behaviors.micrositeGalleriesBxSliders = {
 
+    activeGalleryNavItem: null,
+
     getNumSlidesToDisplay: function(navCategory) {
       var wwidth = $(window).width(),
           episodesNumSlides = 4,
@@ -225,7 +227,8 @@
           }
         });
       }
-      Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryNav();
+
+      $('#galleries .galleries-bxslider li[data-node-id="' + Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem + '"]').addClass('active');
     },
 
     attach: function (context, settings) {
@@ -302,6 +305,7 @@
           }
 
           var nid = $(this).parent().attr('data-node-id');
+          Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
           self.switchGallery(nid, function() {
             $('#microsite #galleries .galleries-bxslider li > div').bind('click', changeGalleryHandler);
           });

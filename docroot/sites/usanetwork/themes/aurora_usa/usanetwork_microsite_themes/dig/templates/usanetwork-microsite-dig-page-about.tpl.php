@@ -40,8 +40,14 @@
   <?php endif; ?>
   <?php if (!empty($title) || !empty($description)): ?>
   <div class="right-pane">
-    <?php if (!empty($title)): ?>
-      <h2><?php print $title; ?></h2>
+    <?php if (!empty($h1) && $status == 'active'): ?>
+      <h1><?php print $h1; ?></h1>
+    <?php elseif (!empty($h1)): ?>
+      <h2><?php print $h1; ?></h2>
+    <?php else: ?>
+      <?php if (!empty($title)): ?>
+        <h2><?php print $title; ?></h2>
+      <?php endif; ?>
     <?php endif; ?>
     <div class="underline"></div>
     <div class="text">

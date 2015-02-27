@@ -323,11 +323,11 @@
           ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
         }
 
-        videoContainer.find('.video-player-desc').addClass('full-desc');
+        $('#videos .full-pane').addClass('full-desc');
         ad_300x60_1.show();
 
       } else {
-        videoContainer.find('.video-player-desc').removeClass('full-desc');
+        $('#videos .full-pane').removeClass('full-desc');
         ad_300x60_1.hide();
 
         if(ad_728x90.attr('id') == 'ad_728x90_1'){

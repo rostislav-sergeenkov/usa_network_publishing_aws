@@ -391,7 +391,9 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
   opacity: 0;
   top: -40px;
 }
+#microsite #characters h1,
 #microsite #characters h3 {
+  color: #ffffff;
   display: inline-block;
   margin: 0 15px 0 0;
   font-size: 1.4em;

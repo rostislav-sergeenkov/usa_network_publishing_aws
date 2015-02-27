@@ -60,7 +60,7 @@
           <?php endif; ?>
             <a class="scroll-link" href="#section-home" data-menuitem="1">
               <?php if ($current_section == 'home' && !empty($h1)): ?>
-                <h1 id="left-nav-logo" style="opacity: 0;"><span><?php print $h1; ?></span></h1>
+                <h1 id="left-nav-logo"><span><?php print $h1; ?></span></h1>
               <?php elseif (!empty($h1)): ?>
                 <div id="left-nav-logo"></div>
               <?php else: ?>

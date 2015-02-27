@@ -272,6 +272,7 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 0;
 }
+#microsite h1,
 #microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
@@ -372,6 +373,7 @@ you can use the generic selector below, but it's slower:
   width: 50%;
   margin-left: auto;
 }
+#microsite .right-pane h1,
 #microsite .right-pane h2 {
   text-align: center;
   margin-top: 0;
@@ -402,7 +404,7 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   position: relative;
 }
-#microsite .companionContainer #ad_728x90_1 {
+#microsite #ad_728x90_1 {
   text-align: center;
 }
 #microsite .ad-leaderboard iframe {
@@ -558,6 +560,10 @@ you can use the generic selector below, but it's slower:
   cursor: pointer;
   /*opacity: 0;*/
 }
+.page-node-microsite #left-nav #left-nav-inner h1#left-nav-logo span {
+  font-size: 0;
+  line-height: 0;
+}
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   width: 130px;
   height: 30px;
@@ -694,7 +700,8 @@ body.page-node-microsite {
   margin: 0 auto;
   max-width: 1000px;
 }
-#microsite .video-title {
+#microsite .video-title,
+#microsite h1.video-title {
   font-size: 2em;
 }
 #microsite .video-description {
@@ -1046,8 +1053,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 0;
     position: absolute;
   }
-  #microsite #video-container.start .video-player-desc.full-desc{
+  #microsite #videos .full-desc .video-player-desc{
     margin-bottom: 70px;
+  }
+  #microsite #videos .full-desc{
+    margin-bottom: 90px;
   }
 }
 @media (max-width: 1200px) {

@@ -144,7 +144,6 @@ function usanetwork_microsite_form_node_form_alter(&$form, &$form_state, $form_i
       }
     }
   }
-  print '';
 }
 
 /**

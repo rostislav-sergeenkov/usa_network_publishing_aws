@@ -1457,7 +1457,8 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'about':
-      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'about');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
+      _usanetwork_microsite_set_meta_description($section_wrapper);
       $head_title = $section_wrapper->field_seo_page_title->value();
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);

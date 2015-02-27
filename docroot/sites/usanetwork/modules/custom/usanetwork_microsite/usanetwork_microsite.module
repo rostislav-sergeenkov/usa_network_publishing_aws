@@ -904,7 +904,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
     } else {
       $prefix = '';
     }
-    if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file)) {
+    if ($param == _usanetwork_microsite_get_suggested_video_url($file)) {
       return $file;
     }
   }
@@ -2007,8 +2007,9 @@ function _usanetwork_microsite_get_h1_for_for_node($node) {
 function _usanetwork_microsite_get_h1_for_file($file) {
   $h1 = $file->filename;
   $file_wrapper = entity_metadata_wrapper('file', $file);
-  if (!empty($file->field_seo_h1)) {
-    $h1 = $file_wrapper->field_seo_h1->value();
+  $field_seo_h1 = $file_wrapper->field_seo_h1->value();
+  if (!empty($field_seo_h1)) {
+    $h1 = $field_seo_h1;
   }
   return $h1;
 }
@@ -2142,5 +2143,5 @@ function _usanetwork_microsite_set_staus_and_h1_to_variable($object, $section_wr
   if(!empty($h1)) {
     $theme_variables['h1'] = $h1;
   }
- return $theme_variables;
+  return $theme_variables;
 }

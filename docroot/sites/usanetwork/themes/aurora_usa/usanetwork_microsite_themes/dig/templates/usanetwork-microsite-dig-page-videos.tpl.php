@@ -62,13 +62,7 @@
         </div>
       </div>
       <div id="ad_300x60_1"></div>
-      <div class="video-player-desc">
-      </div>
-      <div class="video-player-description">
-        <?php if (!empty($video_desc)): ?>
-          <?php print $video_desc; ?>
-        <?php endif; ?>
-      </div>
+      <div class="video-player-desc"></div>
     </div>
   </div>
   <?php if (!empty($videos)): ?>

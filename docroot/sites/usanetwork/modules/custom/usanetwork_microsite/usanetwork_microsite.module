@@ -125,6 +125,29 @@ function usanetwork_microsite_library_alter(&$libraries, $module) {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function usanetwork_microsite_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'usanetwork_microsite_node_form') {
+    // Section types for setting default title title.
+    $section_types = array('home', 'about');
+    $langcode = $form['field_ms_section']['#language'];
+    $field_ms_section_items = &$form['field_ms_section'][$langcode];
+    $node = $form['#node'];
+    foreach($field_ms_section_items as $key => $section_item) {
+      if(isset($section_item['#entity_type']) && $section_item['#entity_type'] == 'field_collection_item') {
+        $type = reset($section_item['field_ms_section_type'][$langcode]['#default_value']);
+        if (in_array($type, $section_types)) {
+          $field_ms_section_items[$key]['field_seo_page_title'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . usanetwork_microsite_get_default_title($node, $type);
+          $field_ms_section_items[$key]['field_seo_h1'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . _usanetwork_microsite_get_default_h1($node, $type);
+        }
+      }
+    }
+  }
+  print '';
+}
+
+/**
  * Microsite node rendering callback.
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {
@@ -1315,15 +1338,14 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   }
   $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
   $args = arg();
-  $path = isset($args[3]) ? $args[3] : '';
-  switch ($path) {
-    case '':
+  $section_type = _usanetwork_microsite_get_current_section_type();
+  switch ($section_type) {
     case 'home':
-      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'home');
+      $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, $section_type);
       _usanetwork_microsite_set_meta_description($section_wrapper);
       $head_title = $section_wrapper->field_seo_page_title->value();
       if(empty($head_title)) {
-        $head_title = t('Dig Deeper | ' . $title . ' | USA Network');
+        $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
       break;
     case 'videos':
@@ -1439,7 +1461,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'about');
       $head_title = $section_wrapper->field_seo_page_title->value();
       if(empty($head_title)) {
-        $head_title = t('Dig Deeper | About | ' . $title . ' | USA Network');
+        $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
       break;
     case 'games':
@@ -1458,6 +1480,17 @@ function usanetwork_microsite_preprocess_html(&$vars) {
   if (!empty($head_title)) {
     $vars['head_title'] = $head_title;
   }
+}
+
+function usanetwork_microsite_get_default_title($node, $section_type) {
+  $title = !empty($node->title) ? $node->title : 'USA Network Microsite';
+  if ($section_type == 'home') {
+   $head_title = $title . ' | USA Network';
+  }
+  elseif ($section_type == 'about') {
+    $head_title = 'About | ' . $title . ' | USA Network';
+  }
+  return $head_title;
 }
 
 /**
@@ -1850,7 +1883,7 @@ function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
     }
     else {
       $node = menu_get_object();
-      $h1 = $node->title;
+      $h1 = _usanetwork_microsite_get_default_h1($node, $section_type);
     }
   }
   elseif($section_type == 'about') {
@@ -1860,12 +1893,29 @@ function _usanetwork_microsite_get_h1_for_field_collection($section_wrapper) {
     }
     else {
       $node = menu_get_object();
-      $h1 = 'About ' . $node->title;
+      $h1 = _usanetwork_microsite_get_default_h1($node, $section_type);
     }
   }
   return $h1;
 }
 
+/**
+ * Get default h1 text.
+ *
+ * @param $node
+ * @param $section_type
+ * @return string
+ */
+function _usanetwork_microsite_get_default_h1($node, $section_type) {
+  $h1 = '';
+  if ($section_type == 'home') {
+    $h1 = $node->title;
+  }
+  elseif ($section_type == 'about') {
+    $h1 = 'About ' . $node->title;
+  }
+  return $h1;
+}
 /**
  * Get h1 text for current content.
  *

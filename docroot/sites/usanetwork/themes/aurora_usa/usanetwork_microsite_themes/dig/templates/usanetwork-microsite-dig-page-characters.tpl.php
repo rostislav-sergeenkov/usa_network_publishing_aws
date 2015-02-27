@@ -107,8 +107,14 @@
             <?php if (!empty($person['preview_image_url'])): ?>
             <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>">
             <?php endif; ?>
-            <?php if (!empty($person['title'])): ?>
-              <h3><?php print $person['title']; ?></h3>
+            <?php if (!empty($h1) && $status == 'active'): ?>
+              <h1><?php print $h1; ?></h1>
+            <?php elseif (!empty($h1)): ?>
+              <h3><?php print $h1; ?></h3>
+            <?php else: ?>
+              <?php if (!empty($person['title'])): ?>
+                <h3><?php print $person['title']; ?></h3>
+              <?php endif; ?>
             <?php endif; ?>
             <?php if (!empty($person['social'])): ?>
               <div class="character-social">

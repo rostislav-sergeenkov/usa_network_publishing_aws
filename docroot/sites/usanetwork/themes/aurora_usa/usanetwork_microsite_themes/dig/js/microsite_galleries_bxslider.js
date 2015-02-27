@@ -284,7 +284,7 @@
       self.setActiveGalleryNav();
 
       var changeGalleryHandler = function(e){
-        var anchorFull = this.href,
+        var anchorFull = this.attr('data-url'),
           anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
 
         // Unbind click while selected gallery loading

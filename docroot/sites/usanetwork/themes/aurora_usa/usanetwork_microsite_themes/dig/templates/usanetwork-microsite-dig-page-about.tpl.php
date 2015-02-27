@@ -12,6 +12,7 @@
  * - $ad300x250 - the code to render the 300 x 250 ad
  */
 ?>
+
 <div id="about-inner-container">
   <div id="right-pane-bg"></div>
 
@@ -28,7 +29,7 @@
                 <div class="quote"><?php print $about_quotation['quote']; ?></div>
               <?php endif; ?>
               <?php if (!empty($about_quotation['source'])): ?>
-                <div class="quote-source"><?php $about_quotation['source']; ?></div>
+                <div class="quote-source"><?php print $about_quotation['source']; ?></div>
               <?php endif; ?>
             </li>
           <?php endif; ?>

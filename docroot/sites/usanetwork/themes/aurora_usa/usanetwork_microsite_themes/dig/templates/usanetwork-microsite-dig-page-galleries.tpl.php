@@ -86,7 +86,7 @@
         <?php foreach ($character_galleries as $char_gallery): ?>
           <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
           <?php /* @TODO: Dynamically create the /dig/galleries part of the following url */ ?>
-          <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><a href="/dig/galleries/<?php print $char_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"></div><div class="gallery-title"><?php print $char_gallery['title']; ?></div></a></li>
+          <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>"><div data-url="/dig/galleries/<?php print $char_gallery['url']; ?>"><div class="gallery-nav-img"><img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>"></div><div class="gallery-title"><?php print $char_gallery['title']; ?></div></div></li>
           <?php endif; ?>
         <?php endforeach; ?>
         </ul>

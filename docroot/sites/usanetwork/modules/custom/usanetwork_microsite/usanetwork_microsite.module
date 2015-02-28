@@ -532,7 +532,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
     drupal_not_found();
   }
 
-  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_staus_and_h1_to_variable($current_person, $section_wrapper));
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_person, $section_wrapper));
 
 /*
   if (!empty($theme_variables['characters_navigation'])) {
@@ -579,7 +579,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper) {
       drupal_not_found();
     }
 
-    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_staus_and_h1_to_variable($current_gallery_node, $section_wrapper));
+    $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_gallery_node, $section_wrapper));
 
     $gallery_types = array('Episodic Gallery');
     $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
@@ -764,7 +764,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         : NULL,
     );
     $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-    $video_desc = array_merge($video_desc, _usanetwork_microsite_set_staus_and_h1_to_variable($file, $section_wrapper));
+    $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
     $theme_variables['video_desc'] = theme($theme_registry_name, $video_desc);
   }
   return $theme_variables;
@@ -2072,7 +2072,7 @@ function _usanetwork_microsite_get_current_section_type() {
   return (arg(3) != '') ? arg(3) : 'home';
 }
 
-function _usanetwork_microsite_set_staus_and_h1_to_variable($object, $section_wrapper) {
+function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wrapper) {
   $theme_variables = array(
     'h1' => '',
     'status' => '',

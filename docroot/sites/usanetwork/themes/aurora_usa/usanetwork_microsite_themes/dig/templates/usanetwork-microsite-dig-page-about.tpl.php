@@ -18,18 +18,19 @@
 
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_about"></div>
 
+<?php /* @TODO: Finish quotes code ?>
   <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
   <div class="left-pane">
-    <div class="caption">
+    <div class="quotes active">
       <ul>
         <?php foreach ($about_quotations as $about_quotation_key => $about_quotation): ?>
           <?php if (!empty($about_quotation['quote']) && !empty($about_quotation['source'])): ?>
-            <li<?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
+            <li id="quote<?php print $about_quotation_key; ?>" <?php if ($about_quotation_key == 0): print ' class="active"'; endif; ?>>
               <?php if (!empty($about_quotation['quote'])): ?>
                 <div class="quote"><?php print $about_quotation['quote']; ?></div>
               <?php endif; ?>
               <?php if (!empty($about_quotation['source'])): ?>
-                <div class="quote-source"><?php print $about_quotation['source']; ?></div>
+                <div class="quote-source"><?php print '-' . $about_quotation['source']; ?></div>
               <?php endif; ?>
             </li>
           <?php endif; ?>
@@ -38,6 +39,8 @@
     </div>
   </div>
   <?php endif; ?>
+<?php */ ?>
+
   <?php if (!empty($title) || !empty($description)): ?>
   <div class="right-pane">
     <?php if (!empty($h1) && $status == 'active'): ?>

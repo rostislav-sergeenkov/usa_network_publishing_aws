@@ -12,6 +12,36 @@
   Drupal.behaviors.microsite_scroll = {
 
 
+    quotationAnimation: function(listId) {
+      var fadeDuration = 1000,
+          tweenDuration = 10000,
+          list = $('#microsite ' + listId),
+          numQuotes = list.find('li').length;
+      if (numQuotes > 0) {
+        var j = 0,
+            jmax = numQuotes - 1;
+
+        function cycleThru() {
+          $(listId + ' li:eq(' + j + ')')
+            .animate({'opacity' : '1'} , fadeDuration)
+            .delay(tweenDuration)
+            .animate({'opacity' : '0'}, fadeDuration, function(){
+              (j == jmax) ? j=0 : j++;
+//usa_debug('*****************\nquotationAnimation\nstop: ' + Drupal.behaviors.microsite_scroll.quotationAnimationStop + ', listId: ' + listId + ', j: ' + j);
+              if (!Drupal.behaviors.microsite_scroll.quotationAnimationStop) cycleThru();
+            });
+        };
+
+        if (Drupal.behaviors.microsite_scroll.quotationAnimationStop) {
+          $(listId).fadeOut(fadeDuration);
+        }
+        else {
+          $(listId).fadeIn(fadeDuration);
+          cycleThru();
+        }
+      }
+    },
+
     // URL HANDLING
     // toTitleCase
     micrositeToTitleCase: function toTitleCase(str) {
@@ -138,6 +168,7 @@
           anchorNum = anchorItem.find('a').attr('data-menuitem'),
           anchorFull = (item != '') ? basePath + '/' + anchor + '/' + item : basePath + '/' + anchor,
           nextSection = '#' + anchor,
+          nextSectionId = $(nextSection).attr('id'),
           sectionHeight = window.innerHeight,
           currentSectionNum = $('#left-nav-links-list li.active a').attr('data-menuitem'),
           direction = (anchorNum > currentSectionNum) ? '' : '-',
@@ -155,6 +186,10 @@
       //else {
       //  Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
       //}
+
+      // stop quotation animations
+      Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
+
       // prep character section background for move
       if ($('#microsite #characters #character-background li').length > 0) {
         $('#microsite #characters #character-background li').css('position', 'absolute');
@@ -163,7 +198,7 @@
         $('.section-info').removeClass('active');
         $(nextSection).addClass('active').removeClass('transition');
 
-        if ($(nextSection).attr('id') == 'videos') {
+        if (nextSectionId == 'videos') {
           var Player = $('#video-container .video-player iframe');
           if (Player.attr('id') == 'base-frame') {
             Player.once(function () {
@@ -172,8 +207,14 @@
             })
           }
         }
-        if ($(nextSection).attr('id') != 'videos') {
+        if (nextSectionId != 'videos') {
           Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
+        }
+
+        // start quotation animations
+        if (nextSectionId == 'about' || nextSectionId == 'characters') {
+          Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
+//          Drupal.behaviors.microsite_scroll.quotationAnimation('#' + nextSectionId + ' .quotes.active');
         }
 
         Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -493,7 +534,11 @@
         }
       }
 
-      Drupal.behaviors.microsite_scroll.micrositeParseUrl();
+      var urlItem = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
+      Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
+      if (urlItem.section == 'about' || urlItem.section == 'characters') {
+//        Drupal.behaviors.microsite_scroll.quotationAnimation('#' + urlItem.section + ' .quotes.active');
+      }
 
       // initialize left nav clicks
       $('.internal a.scroll-link').click(function (e) {

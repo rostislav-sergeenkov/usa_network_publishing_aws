@@ -31,19 +31,26 @@
   <li id="bg-<?php if (!empty($person['id'])) print $person['id']; ?>" class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($person['status'] != '') print ' ' . $person['status']; ?>" data-bg-url="<?php if (isset($person['background_url'])) print $person['background_url']; ?>">&nbsp;</li>
   <?php endforeach; ?>
 </ul>
+<?php endif; ?>
 <!-- end backgounds -->
 
 <div id="character-inner-container">
-<?php /* @TODO: COMMENTING QUOTES FOR NOW ?>
+  <!-- right pane -->
+  <div id="right-pane-bg"></div>
+
+  <!-- 728x90 ad -->
+  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+
+<?php /* @TODO: FINISH QUOTES CODE ?>
   <!-- quotes -->
-  <ul id="quotes">
+  <?php if (!empty($people)): ?>
     <?php foreach ($people as $person_key => $person): ?>
     <?php if (!empty($person['quotes'])): ?>
-    <div class="caption">
+    <div class="<?php if (!empty($person['id'])) print $person['id'] . ' '; ?><?php if(!empty($person['status'])) print $person['status'] . ' '; ?>quotes">
       <ul>
         <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
           <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-            <li class="<?php if (!empty($person['id'])) print $person['id']; ?><?php if ($quotation_key == 0) print ' active'; ?>">
+            <li class="<?php if ($quotation_key == 0) print ' active'; ?>">
               <?php if (!empty($quotation['quote'])): ?>
                 <div class="quote">
                   <?php print $quotation['quote']; ?>
@@ -61,16 +68,9 @@
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
-  </ul>
-<?php */ ?>
   <?php endif; ?>
   <!-- end quotes -->
-
-  <!-- right pane -->
-  <div id="right-pane-bg"></div>
-
-  <!-- 728x90 ad -->
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+<?php */ ?>
 
   <!-- characters title and navigation -->
   <div class="right-pane-content">
@@ -107,10 +107,8 @@
             <?php if (!empty($person['preview_image_url'])): ?>
             <img class="photo-<?php if (!empty($person['title'])) print $person['title']; ?> mobile" src="<?php print $person['preview_image_url']; ?>">
             <?php endif; ?>
-            <?php if (!empty($h1) && $status == 'active'): ?>
+            <?php if ($person['status'] == 'active' && !empty($h1) && $status == 'active'): ?>
               <h1><?php print $h1; ?></h1>
-            <?php elseif (!empty($h1)): ?>
-              <h3><?php print $h1; ?></h3>
             <?php else: ?>
               <?php if (!empty($person['title'])): ?>
                 <h3><?php print $person['title']; ?></h3>

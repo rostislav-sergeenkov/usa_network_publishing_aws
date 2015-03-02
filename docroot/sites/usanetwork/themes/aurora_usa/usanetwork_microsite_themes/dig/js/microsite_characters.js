@@ -123,6 +123,7 @@
       else {
         $('#characters-content').css('overflow', 'hidden');
         nextItem.addClass('disabled');
+
         var navItems = $('#characters .character-nav'),
             currentItem = (navItems.find('li.active')) ? navItems.find('li.active') : navItems.find('li').eq(0),
             currentItemId = currentItem.attr('id'),
@@ -132,6 +133,7 @@
             nextItemId = nextItem.attr('id'),
             nextItemNum = nextItem.index(),
             nextCharacterId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
+            nextCharacterClass = (nextItemId != null) ? nextItemId.replace('#', '') : null,
             nextCharacterInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
@@ -159,6 +161,10 @@
           else {
             if ($('#bg-' + nextCharacterId).css('background-image') == 'none') Drupal.behaviors.microsite_characters.micrositeSetCharBackground(nextCharacterId);
 
+            // stop quotation animations and hide quotes
+            Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
+            $('#microsite #characters .quotes').fadeOut(1000);
+
             // prepare next or previous background and character-info
             $('#microsite #characters .' + nextCharacterId).addClass(direction);
 
@@ -185,6 +191,12 @@
                     Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
                     Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
                   }
+
+                  // start quotation animations and show quotes
+                  Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
+                  $('#microsite #characters .quotes').removeClass('active');
+                  $('#microsite #characters .quotes.' + nextCharacterClass).addClass('active').fadeIn(1000);
+//                  Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                   // remove disabled
                   navItems.find('li.disabled').removeClass('disabled');
@@ -219,6 +231,12 @@
                       Drupal.behaviors.microsite_characters.micrositeSetOmnitureData($('#' + nextCharacterId + ' > h3').text());
                       Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
                     }
+
+                    // start quotation animations and show quotes
+                    Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
+                    $('#microsite #characters .quotes').removeClass('active');
+                    $('#microsite #characters .quotes.' + nextCharacterClass).addClass('active').fadeIn(1000);
+//                    Drupal.behaviors.microsite_scroll.quotationAnimation('#characters .quotes.active');
 
                     // remove disabled
                     navItems.find('li.disabled').removeClass('disabled');

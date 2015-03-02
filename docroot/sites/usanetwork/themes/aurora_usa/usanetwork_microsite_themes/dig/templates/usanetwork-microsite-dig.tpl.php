@@ -59,7 +59,13 @@
           <li id="nav-home" class="internal" data-menuanchor="home">
           <?php endif; ?>
             <a class="scroll-link" href="#section-home" data-menuitem="1">
-              <div id="left-nav-logo"></div>
+              <?php if ($current_section == 'home' && !empty($h1)): ?>
+                <h1 id="left-nav-logo"><span><?php print $h1; ?></span></h1>
+              <?php elseif (!empty($h1)): ?>
+                <div id="left-nav-logo"></div>
+              <?php else: ?>
+                <div id="left-nav-logo"></div>
+              <?php endif; ?>
               <?php /* if (!empty($tune_in)): ?>
                 <div id="left-nav-tunein"><?php print $tune_in; ?></div>
               <?php endif; */ ?>

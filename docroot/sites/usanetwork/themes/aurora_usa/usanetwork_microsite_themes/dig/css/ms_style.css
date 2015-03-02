@@ -1630,6 +1630,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 39px;
     padding: 5px;
   }
+  #microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
+    height: 37px;
+    padding: 5px;
+  }
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
     width: 29px;
   }

@@ -125,28 +125,6 @@ function usanetwork_microsite_library_alter(&$libraries, $module) {
 }
 
 /**
- * Implements hook_form_alter().
- */
-function usanetwork_microsite_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'usanetwork_microsite_node_form') {
-    // Section types for setting default title title.
-    $section_types = array('home', 'about');
-    $langcode = $form['field_ms_section']['#language'];
-    $field_ms_section_items = &$form['field_ms_section'][$langcode];
-    $node = $form['#node'];
-    foreach($field_ms_section_items as $key => $section_item) {
-      if(isset($section_item['#entity_type']) && $section_item['#entity_type'] == 'field_collection_item') {
-        $type = reset($section_item['field_ms_section_type'][$langcode]['#default_value']);
-        if (in_array($type, $section_types)) {
-          $field_ms_section_items[$key]['field_seo_page_title'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . usanetwork_microsite_get_default_title($node, $type);
-          $field_ms_section_items[$key]['field_seo_h1'][$langcode][0]['value']['#description'] = 'DEFAULT: ' . _usanetwork_microsite_get_default_h1($node, $type);
-        }
-      }
-    }
-  }
-}
-
-/**
  * Microsite node rendering callback.
  */
 function usanetwork_microsite_page_callback($entity_type, $node) {

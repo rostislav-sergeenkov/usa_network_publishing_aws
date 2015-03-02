@@ -272,6 +272,7 @@ you can use the generic selector below, but it's slower:
   margin: 0;
   padding: 0;
 }
+#microsite h1,
 #microsite h2 {
   text-transform: uppercase;
   color: #e5ce96;
@@ -354,24 +355,51 @@ you can use the generic selector below, but it's slower:
   width: 55%;
   float: left;
 }
-#microsite .left-pane .caption {
+#microsite #characters .quotes,
+#microsite .left-pane .quotes {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  width: 100%;
+  font-size: 1.3em;
+  line-height: 1.3em;
   text-transform: uppercase;
+  text-shadow: 1px 1px 3px #000;
   text-align: center;
 }
-#microsite .left-pane .caption li {
-  display: none;
+#microsite #about .quotes {
+  margin-top: 580px;
 }
-#microsite .left-pane .caption li.active {
-  display: block;
+#microsite #characters .quotes {
+  width: 55%;
+  position: fixed;
+  margin-left: 190px;
+  margin-top: 600px;
 }
-#microsite .left-pane .caption .quote-source {
+#microsite #characters .quotes li,
+#microsite .left-pane .quotes li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 88%;
+}
+#microsite #characters .quotes li.active,
+#microsite .left-pane .quotes li.active {
+  opacity: 1;
+}
+#microsite #characters .quotes .quote-source,
+#microsite .left-pane .quotes .quote-source {
   color: #e5ce96;
   font-size: 0.6em;
+  line-height: 1.3em;
 }
 #microsite section .microsite-section-container .right-pane {
   width: 50%;
   margin-left: auto;
 }
+#microsite .right-pane h1,
 #microsite .right-pane h2 {
   text-align: center;
   margin-top: 0;
@@ -402,7 +430,7 @@ you can use the generic selector below, but it's slower:
   overflow: hidden;
   position: relative;
 }
-#microsite .companionContainer #ad_728x90_1 {
+#microsite #ad_728x90_1 {
   text-align: center;
 }
 #microsite .ad-leaderboard iframe {
@@ -420,9 +448,6 @@ you can use the generic selector below, but it's slower:
 }
 #microsite .right-pane .ad300x250 {
   margin-bottom: 30px;
-}
-#microsite #about .caption {
-  margin-top: 3em;
 }
 #microsite .carousel {
   position: relative;
@@ -557,6 +582,10 @@ you can use the generic selector below, but it's slower:
   background-image: url("../images/dig_logo.png");
   cursor: pointer;
   /*opacity: 0;*/
+}
+.page-node-microsite #left-nav #left-nav-inner h1#left-nav-logo span {
+  font-size: 0;
+  line-height: 0;
 }
 .page-node-microsite #left-nav #left-nav-inner #left-nav-tunein {
   width: 130px;
@@ -694,6 +723,7 @@ body.page-node-microsite {
   margin: 0 auto;
   max-width: 1000px;
 }
+
 #microsite .video-title {
   font-size: 2em;
 }
@@ -762,6 +792,15 @@ body.page-node-microsite {
 }
 #microsite .full-pane #video-container .video-title {
   font-size: 26px;
+  margin: 7px 0;
+  text-transform: uppercase;
+}
+#microsite .full-pane #video-container .video-title h1 {
+  color: #ffffff;
+  line-height: 24px;
+  font-family: 'Proxima N W01 Reg', Arial, sans-serif;;
+  font-size: 26px;
+  font-weight: normal;
   margin: 7px 0;
   text-transform: uppercase;
 }
@@ -1046,8 +1085,11 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin-left: 0;
     position: absolute;
   }
-  #microsite #video-container.start .video-player-desc.full-desc{
+  #microsite #videos .full-desc .video-player-desc{
     margin-bottom: 70px;
+  }
+  #microsite #videos .full-desc{
+    margin-bottom: 90px;
   }
 }
 @media (max-width: 1200px) {

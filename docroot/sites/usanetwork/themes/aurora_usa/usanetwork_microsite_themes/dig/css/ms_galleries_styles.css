@@ -33,6 +33,7 @@
   top: 0;
   left: 0;
 }
+#microsite #galleries-content .microsite-gallery-meta h1,
 #microsite #galleries-content .microsite-gallery-meta h2 {
   float: left;
   font-size: 1.7em;

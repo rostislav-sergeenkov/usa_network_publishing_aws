@@ -1,0 +1,424 @@
+/* episodes SECTION */
+#microsite #episodes li {
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #episodes section {
+  overflow-x: hidden !important;
+}
+#microsite #episodes .microsite-section-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+#microsite #about #about-inner-container,
+#microsite #episodes #episode-inner-container {
+  width: calc(100% - 190px);
+  position: relative;
+  margin: 0 0 0 190px;
+  max-width: none;
+}
+#microsite #episodes #episode-background li {
+  display: none;
+  width: calc(100% - 10px); /* Subtract scrollbar width from overall width so user can still grab and move scrollbar */
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: none;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+#microsite #episodes #episode-background li.active {
+  display: block;
+}
+#microsite #episodes #episode-background li.next {
+  left: 100%;
+  display: block;
+}
+#microsite #episodes #episode-background li.prev {
+  left: -100%;
+  display: block;
+}
+#microsite #episodes #right-pane-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-height: 100%;
+  background: rgb(0, 0, 0) transparent;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 45%;
+  margin-left: 55%;
+}
+#microsite #episodes .right-pane-content {
+  width: 45%;
+  margin-left: 55%;
+}
+#microsite #episodes .ad-leaderboard {
+  position: relative;
+}
+#microsite #episodes h2 {
+  line-height: 0.9em;
+  position: relative;
+  text-align: center;
+}
+#microsite #episodes .content {
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  width: 82%;
+}
+#microsite #episodes .underline {
+  border-bottom: 1px solid #FFF;
+  margin-top: 12px;
+  margin-bottom: 28px;
+}
+#microsite #episodes .episode-nav {
+  width: 220px;
+  height: 24px;
+  margin: 30px auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  color: #FFF;
+  opacity: 0;
+}
+#microsite #episodes .episode-nav ul {
+  float: left;
+  width: 180px;
+}
+#microsite #episodes .episode-nav li {
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin: 0 10px 6px;
+  overflow: visible;
+  position: relative;
+  top: 5px;
+  left: 0;
+}
+#microsite #episodes .episode-nav li .episode-nav-link {
+  width: 12px;
+  height: 12px;
+  background: #FFF;
+  cursor: pointer;
+}
+#microsite #episodes .episode-nav li .episode-nav-link:hover,
+#microsite #episodes .episode-nav li.active .episode-nav-link {
+  background: #e5ce96;
+}
+#microsite #episodes .episode-nav li .tooltip {
+  display: none;
+}
+#microsite #episodes .btns {
+  color: #FFF;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 96;
+}
+#microsite #episodes .episode-nav #nav-prev,
+#microsite #episodes .episode-nav #nav-next {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  font-family: 'usanetwork';
+  speak: none;
+  -webkit-font-feature-settings: "liga","dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -moz-font-feature-settings: "liga","dlig";
+  -ms-font-feature-settings: "liga","dlig";
+  -o-font-feature-settings: "liga","dlig";
+  font-feature-settings: "liga","dlig";
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+#microsite #episodes .episode-nav #nav-prev {
+  float: left;
+}
+#microsite #episodes .episode-nav #nav-next {
+  float: right;
+}
+#microsite #episodes .episode-nav #nav-prev.disabled,
+#microsite #episodes .episode-nav #nav-next.disabled {
+  color: #333;
+}
+#microsite #episodes .episode-nav #nav-prev:hover,
+#microsite #episodes .episode-nav #nav-next:hover {
+  color: #e5ce96;
+}
+#microsite #episodes .episode-nav #nav-prev.disabled:hover,
+#microsite #episodes .episode-nav #nav-next.disabled:hover {
+  color: #333;
+}
+#microsite #episodes #episode-info-container {
+  position: relative;
+  min-height: 200px;
+}
+#microsite #episodes #episode-info li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+}
+#microsite #episodes #episode-info li.active {
+  display: block;
+  opacity: 1;
+}
+#microsite #episodes #episode-info li.next,
+#microsite #episodes #episode-info li.prev {
+  display: block;
+  height: 0;
+  opacity: 0;
+  top: -40px;
+}
+#microsite #episodes h1,
+#microsite #episodes h3 {
+  color: #ffffff;
+  display: inline-block;
+  margin: 0 15px 0 0;
+  font-size: 1.4em;
+  letter-spacing: .05em;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+/**/
+#microsite #episodes .episode-role {
+  color: #e5ce96;
+  font-style: italic;
+  margin-top: 0.1em;
+  margin-bottom: 1em;
+}
+#microsite #episodes .episode-bio-tabs {
+  clear: left;
+  height: 28px;
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+#microsite #episodes .episode-bio-tabs div {
+  float: left;
+  display: block;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #FFF;
+  text-transform: uppercase;
+  padding: 6px 8px 4px;
+  line-height: 1em;
+  cursor: pointer;
+}
+#microsite #episodes .episode-bio-tabs div:first-child {
+  margin-right: 20px;
+}
+#microsite #episodes .episode-bio-tabs div:hover,
+#microsite #episodes .episode-bio-tabs div.active {
+  background-color: #FFF;
+  color: #000;
+}
+#microsite .episode-bios-container {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+#microsite #episodes .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding-right: 10px;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+  z-index: 10;
+}
+#microsite #episodes .text.active {
+  opacity: 1;
+  z-index: 20;
+}
+#microsite #episodes .ad300x250 {
+  height: 250px;
+}
+#microsite #episodes .mobile {
+  display: none;
+}
+
+
+/* CHARACTERS SECTION MEDIA QUERY START */
+
+@media (max-width: 1020px) {
+  #microsite #episodes #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #episodes .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #episodes .content {
+    width: 86%;
+  }
+}
+
+@media (min-width: 875px) {
+  #microsite #episodes .episode-nav li .tooltip {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    bottom: 21px;
+    left: -148px;
+    width: 300px;
+    height: 80px;
+    text-align: center;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+  }
+  #microsite #episodes .episode-nav li .episode-nav-link:hover + .tooltip {
+    opacity: 1;
+  }
+  html.ie9 #microsite #episodes .episode-nav li .tooltip,
+  html.ie10 #microsite #episodes .episode-nav li .tooltip {
+    display: none;
+    opacity: 1;
+  }
+  html.ie9 #microsite #episodes .episode-nav li .episode-nav-link:hover + .tooltip,
+  html.ie10 #microsite #episodes .episode-nav li:hover + .tooltip {
+    display: block;
+  }
+  #microsite #episodes .episode-nav li .tooltip div {
+    line-height: 1em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  #microsite #episodes .episode-nav li .tooltip img {
+    border: 2px solid #FFF;
+    width: 59px;
+    height: 60px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1020px) {
+  #microsite #episodes #right-pane-bg {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #episodes .right-pane-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  #microsite #episodes .content {
+    width: 86%;
+  }
+}
+
+@media (max-width: 874px) {
+  #microsite #episodes #episode-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #episodes #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #episodes .right-pane-content {
+    width: 75%;
+    margin: 0 auto;
+  }
+  #microsite #episodes .episode-nav li:hover .tooltip {
+    display: none;
+  }
+  #microsite #episodes .mobile {
+    display: block;
+    width: 25%;
+    float: left;
+    margin-right: 12px;
+  }
+  #microsite #episodes h3 {
+    margin: 0;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #episodes .episode-social {
+    line-height: 0.6em;
+    float: left;
+    width: calc(75% - 12px);
+  }
+  #microsite #episodes .episode-role {
+    margin-top: 0.1em;
+    margin-bottom: 1em;
+    clear: left;
+  }
+}
+
+@media (max-width: 542px) {
+  #microsite #episodes #episode-inner-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #microsite #episodes #right-pane-bg {
+    background-color: transparent;
+  }
+  #microsite #episodes .right-pane-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Smartphone */
+@media only screen
+and (min-device-width : 200px)
+and (max-device-width : 568px) {
+  #microsite #episodes .right-pane-content {
+    width: 98%;
+  }
+  #microsite #episodes #episode-info li {
+    position: relative;
+  }
+  #microsite #episodes .episode-nav #nav-prev,
+  #microsite #episodes .episode-nav #nav-next {
+    top: 40%;
+  }
+  #microsite #episodes .episode-bio-tabs {
+    font-size: 0.84em;
+  }
+  #microsite #episodes .text {
+    overflow: visible;
+    max-height: unset;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+    float: left;
+  }
+  #microsite #episodes .text.active {
+    display: block;
+  }
+  #microsite #episodes .ad300x250 {
+    height: 0;
+  }
+}

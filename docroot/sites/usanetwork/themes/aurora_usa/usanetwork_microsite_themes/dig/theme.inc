@@ -139,6 +139,25 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         ),
       ),
     ),
+    'usanetwork_microsite_dig_page_episodes' => array(
+      'template' => 'usanetwork-microsite-dig-page-episodes',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'episodes' => array(
+          0 => array(
+            'id' => NULL,
+            'content_url' => NULL,
+            'title' => NULL,
+            'optional_h1' => NULL,
+            'description' => NULL,
+            'background_url' => NULL,
+            'preview_image_url' => NULL,
+            'status' => NULL,
+          ),
+        ),
+        'section_title' => NULL,
+      ),
+    ),
   );
 }
 

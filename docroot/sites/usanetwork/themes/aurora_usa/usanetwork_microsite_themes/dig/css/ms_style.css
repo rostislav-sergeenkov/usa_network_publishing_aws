@@ -1040,6 +1040,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 /* video-filter */
 #videos .filter-wrapper{
+  margin-bottom: 20px;
   max-width: 615px;
 }
 #videos #video-filter{
@@ -1094,7 +1095,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 0;
   border: 10px solid transparent;
   border-top: 10px solid #13242a;
-  top: 6px;
+  margin-top: -8px;
+  top: 50%;
   right: -40px;
   z-index: 6;
 }
@@ -1106,11 +1108,12 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   height: 0;
   border: 10px solid transparent;
   border-top: 10px solid #a7a7a7;
-  top: 10px;
+  margin-top: -4px;
+  top: 50%;
   right: -40px;
   z-index: 5;
 }
-#videos #video-filter .filter-label.close span:before{
+#videos #video-filter .filter-label span:before{
   position: absolute;
   content: "";
   display: block;
@@ -1123,7 +1126,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   right: -40px;
   z-index: 6;
 }
-#videos #video-filter .filter-label.close span:after{
+#videos #video-filter .filter-label span:after{
   position: absolute;
   content: "";
   display: block;
@@ -1138,6 +1141,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #videos #video-filter .filter-menu{
   background-color: #000000;
+  display: none;
   padding: 20px 0;
   position: absolute;
   width: 100%;

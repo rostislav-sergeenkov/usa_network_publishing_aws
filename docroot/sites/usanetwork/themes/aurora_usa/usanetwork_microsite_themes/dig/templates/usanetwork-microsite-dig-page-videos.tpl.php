@@ -75,7 +75,7 @@
         <div class="ajax-content">
           <div class="filter-wrapper">
             <div id="video-filter">
-              <div class="filter-label close">
+              <div class="filter-label">
                 <span>all videos</span>
               </div>
               <ul class="filter-menu">

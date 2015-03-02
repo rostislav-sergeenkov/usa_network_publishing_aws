@@ -287,11 +287,11 @@
       self.setActiveGalleryNav();
 
       var changeGalleryHandler = function(e){
-        var anchorFull = this.attr('data-url'),
+        var anchorFull = this.href,
           anchorPathParts = Drupal.behaviors.microsite_scroll.micrositeGetUrlPath(anchorFull);
 
         // Unbind click while selected gallery loading
-        $('#microsite #galleries .galleries-bxslider li > div').unbind('click');
+        $('#microsite #galleries .galleries-bxslider li a').unbind('click');
         // if this is an internal microsite url
         // prevent the default action
         // and show the correct microsite item without a page reload
@@ -307,13 +307,13 @@
           var nid = $(this).parent().attr('data-node-id');
           Drupal.behaviors.micrositeGalleriesBxSliders.activeGalleryNavItem = nid;
           self.switchGallery(nid, function() {
-            $('#microsite #galleries .galleries-bxslider li > div').bind('click', changeGalleryHandler);
+            $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
           });
           history.pushState({"state": anchorFull}, anchorFull, anchorFull);
         }
       };
 
-      $('#microsite #galleries .galleries-bxslider li > div').bind('click', changeGalleryHandler);
+      $('#microsite #galleries .galleries-bxslider li a').bind('click', changeGalleryHandler);
 
       $(window).bind('resize', function () {
         self.micrositeReloadSliders();

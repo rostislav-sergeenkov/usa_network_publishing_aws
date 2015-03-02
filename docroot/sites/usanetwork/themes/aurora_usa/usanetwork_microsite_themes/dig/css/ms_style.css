@@ -810,6 +810,7 @@ body.page-node-microsite {
 }
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
+  position: relative;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
@@ -1035,6 +1036,126 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #microsite #videos .full-desc{
   margin-bottom: 90px;
+}
+
+/* video-filter */
+#videos .filter-wrapper{
+  max-width: 615px;
+}
+#videos #video-filter{
+  background-color: #000000;
+  position: relative;
+  width: 300px;
+}
+#videos #video-filter .filter-label{
+  background-color: #13242a;
+  cursor: pointer;
+  width: 100%;
+}
+#videos #video-filter .filter-label span{
+  color: #ffffff;
+  font-family: 'Proxima N W01 Reg', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 52px;
+  padding-left: 15px;
+  position: relative;
+  text-transform: uppercase;
+}
+#videos #video-filter .filter-label span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-top: 14px solid #13242a;
+  top: 6px;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-top: 14px solid #a7a7a7;
+  top: 10px;
+  right: -40px;
+  z-index: 5;
+}
+#videos #video-filter .filter-label.open span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #13242a;
+  top: 6px;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label.open span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #a7a7a7;
+  top: 10px;
+  right: -40px;
+  z-index: 5;
+}
+#videos #video-filter .filter-label.close span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid #13242a;
+  margin-top: -10px;
+  top: 50%;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label.close span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid #a7a7a7;
+  margin-top: -10px;
+  top: 50%;
+  right: -44px;
+  z-index: 5;
+}
+#videos #video-filter .filter-menu{
+  background-color: #000000;
+  padding: 20px 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+#videos #video-filter .filter-item{
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+#videos #video-filter .filter-item:last-child{
+  margin-bottom: 0;
+}
+#videos #video-filter .filter-item:hover,
+#videos #video-filter .filter-item.active{
+  color: #e5ce96;
 }
 
 /* BEGIN MEDIA BREAKPOINTS */

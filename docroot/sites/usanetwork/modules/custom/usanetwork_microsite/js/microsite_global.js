@@ -510,10 +510,31 @@
     },
     attach: function (context, settings) {
 
-      // tve help messaging
+      //filters toggles
+      $('#video-filter .filter-label').click(function(){
+        $('#video-filter .filter-label').toggleClass('open');
+        $('#video-filter .filter-menu').toggle();
+      });
+      $('#video-filter .filter-item').click(function(){
+        if($(this).hasClass('active')){
+          $('#video-filter .filter-label').removeClass('open');
+          $('#video-filter .filter-label').addClass('close');
+          $('#video-filter .filter-menu').toggle();
+          return false;
+        }else{
+          $('#video-filter .filter-item').removeClass('active');
+          $(this).addClass('active');
+          $('#video-filter .filter-label span').text($(this).text());
+          $('#video-filter .filter-label').removeClass('open');
+          $('#video-filter .filter-label').addClass('close');
+          $('#video-filter .filter-menu').toggle();
+        }
 
+      });
+
+      // tve help messaging
       $tve_toggler = $('.tve-help-link');
-//    $('.tve-help-link').click(function() {
+      // $('.tve-help-link').click(function() {
       $tve_toggler.click(function() {
         if($('.tve-help-link').hasClass('selected')) {
           $('.tve-help-link').removeClass('selected');

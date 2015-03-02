@@ -708,29 +708,14 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-
-    $args = arg();
-    // Parse url, get prefix from video name.
-    if(!empty($args[4])) {
-      $link_items = explode('-', $args[4]);
-      if (!empty($link_items[0])) {
-        switch ($link_items[0]) {
-          case 'clip':
-            $video_type_filter = 'Clips';
-            break;
-          case 'behind':
-            $video_type_filter = 'Behind The Scenes';
-            break;
-          case 'full':
-            $video_type_filter = 'full';
-            break;
-          default:
-            $video_type_filter = NULL;
-            break;
-        }
+    $all_videos_string = 'All videos';
+    $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    if (!empty($video_for_player)) {
+      if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
+          $video_type_filter = _usanetwork_microsite_get_video_category($video_file);
       }
     }
-    $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    $video_types[$all_videos_string] = $all_videos_string;
     foreach ($video_files as $v_key => $current_video_file) {
       // Get terms list for video.
       foreach ($current_video_file->field_usa_video_terms[LANGUAGE_NONE] as $tids) {
@@ -739,13 +724,11 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       }
       // Filter by terms from url.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $current_video_type = _usanetwork_microsite_get_video_category($current_video_file);
+      $video_types[$current_video_type] = $current_video_type;
       if (!empty($video_type_filter)) {
-        if ($video_type_filter == 'full' && !$full_episode) {
+        if ($current_video_type !== $video_type_filter)
           continue;
-        }
-        elseif (empty($terms[$v_key]) || !in_array($video_type_filter, $terms[$v_key])) {
-          continue;
-        }
       }
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
@@ -783,7 +766,21 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         );
       }
     }
-
+    // Create filter menu.
+    if (!empty($video_types) && is_array($video_types)) {
+      foreach ($video_types as $key => $type) {
+        $items[] = array('data' => $type, 'class' => array('filter-item'));
+      }
+      if (!empty($video_type_filter)) {
+        $items[$video_type_filter]['class'][] = 'active';
+        $theme_variables['filter_list_active'] = $video_type_filter;
+      }
+      else {
+        $items[$all_videos_string]['class'][] = 'active';
+        $theme_variables['filter_list_active'] = $all_videos_string;
+      }
+      $theme_variables['filter_list'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('filter-menu'))));
+    }
     // Get video file.
     $file = $video_files[$show_in_player];
     // Get player variables.
@@ -2185,4 +2182,17 @@ function _usanetwork_microsite_set_staus_and_h1_to_variable($object, $section_wr
     $theme_variables['h1'] = $h1;
   }
   return $theme_variables;
+}
+
+function _usanetwork_microsite_get_video_category($video_file) {
+  if (_usanetwork_microsite_define_full_episode($video_file)) {
+    return 'Full videos';
+  }
+  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][2])) {
+    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][2]['target_id']);
+    return $term->name;
+  }
+  else {
+    return FALSE;
+  }
 }

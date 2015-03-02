@@ -76,12 +76,9 @@
           <div class="filter-wrapper">
             <div id="video-filter">
               <div class="filter-label">
-                <span>all videos</span>
+                <span><?php print $filter_list_active; ?></span>
               </div>
-              <ul class="filter-menu">
-                <li class="filter-item">full episodes</li>
-                <li class="filter-item">clips</li>
-              </ul>
+              <?php print $filter_list; ?>
             </div>
           </div>
           <div class="view view-usa-mpx-video view-id-usa_mpx_video view-display-id-category_mpx_videos expandable-container view-dom-id-be381e47058d0c21dac9092cb8220a69 jquery-once-2-processed">

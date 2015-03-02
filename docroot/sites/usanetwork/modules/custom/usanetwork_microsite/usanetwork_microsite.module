@@ -710,7 +710,23 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $first_output_id = NULL;
 
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
+    if (!empty($video_for_player)) {
+      if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
+          $video_type_filter = _usanetwork_microsite_get_video_category($video_file);
+      }
+    }
+    // Add default menu item.
+    $all_videos_string = 'All videos';
+    $video_types[$all_videos_string] = $all_videos_string;
     foreach ($video_files as $v_key => $current_video_file) {
+      // Filter by first video category.
+      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
+      $current_video_type = _usanetwork_microsite_get_video_category($current_video_file);
+      $video_types[$current_video_type] = $current_video_type;
+      if (!empty($video_type_filter)) {
+        if ($current_video_type !== $video_type_filter)
+          continue;
+      }
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
       if ($first_output_id === NULL && $published) {
         $first_output_id = $v_key;
@@ -728,7 +744,6 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       }
       $video_account = _media_theplatform_mpx_get_account_data($current_video_file->mpx_video_data['parent_account']);
       $account_id = $video_account->account_pid;
-      $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
       $player_id = _usanetwork_microsite_define_videoplayer($current_video_file);
       
       $is_full_episode = 'false';
@@ -748,7 +763,21 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         );
       }
     }
-
+    // Create filter menu.
+    if (!empty($video_types) && is_array($video_types)) {
+      foreach ($video_types as $key => $type) {
+        $items[] = array('data' => $type, 'class' => array('filter-item'));
+      }
+      if (!empty($video_type_filter)) {
+        $items[$video_type_filter]['class'][] = 'active';
+        $theme_variables['filter_list_active'] = $video_type_filter;
+      }
+      else {
+        $items[$all_videos_string]['class'][] = 'active';
+        $theme_variables['filter_list_active'] = $all_videos_string;
+      }
+      $theme_variables['filter_list'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('filter-menu'))));
+    }
     // Get video file.
     $file = $video_files[$show_in_player];
     // Get player variables.
@@ -1403,7 +1432,9 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
         _usanetwork_microsite_set_meta_description($video_file);
         $video_file_wrapper = entity_metadata_wrapper('file', $video_file);
-        $page_title = $video_file_wrapper->field_seo_page_title->value();
+        if (!empty($video_file_wrapper->field_seo_page_title)) {
+          $page_title = $video_file_wrapper->field_seo_page_title->value();
+        }
         if(isset($video_file) && !empty($video_file->filename) && empty($page_title)) {
           $head_title = $video_file->filename . ' | ' . $head_title;
         }
@@ -1827,14 +1858,16 @@ function _usanetwork_microsite_get_arg_for_current_content($section_wrapper) {
  * Add meta description for object.
  */
 function _usanetwork_microsite_set_meta_description($object) {
-  if (is_object($object) && get_class($object) == 'EntityDrupalWrapper') {
-    _usanetwork_microsite_set_meta_description_for_field_collection($object);
-  }
-  elseif (isset($object->fid)) {
-    _usanetwork_microsite_set_meta_description_for_file($object);
-  }
-  else {
-    _usanetwork_microsite_set_meta_description_for_node($object);
+  if (is_object($object)) {
+    if (get_class($object) == 'EntityDrupalWrapper') {
+      _usanetwork_microsite_set_meta_description_for_field_collection($object);
+    }
+    elseif (isset($object->fid)) {
+      _usanetwork_microsite_set_meta_description_for_file($object);
+    }
+    else {
+      _usanetwork_microsite_set_meta_description_for_node($object);
+    }
   }
 }
 
@@ -2148,4 +2181,17 @@ function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wra
     $theme_variables['h1'] = $h1;
   }
   return $theme_variables;
+}
+
+function _usanetwork_microsite_get_video_category($video_file) {
+  if (_usanetwork_microsite_define_full_episode($video_file)) {
+    return 'Full videos';
+  }
+  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][2])) {
+    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][2]['target_id']);
+    return $term->name;
+  }
+  else {
+    return FALSE;
+  }
 }

@@ -518,7 +518,6 @@
       $('#video-filter .filter-item').click(function(){
         if($(this).hasClass('active')){
           $('#video-filter .filter-label').removeClass('open');
-          $('#video-filter .filter-label').addClass('close');
           $('#video-filter .filter-menu').toggle();
           return false;
         }else{
@@ -526,7 +525,6 @@
           $(this).addClass('active');
           $('#video-filter .filter-label span').text($(this).text());
           $('#video-filter .filter-label').removeClass('open');
-          $('#video-filter .filter-label').addClass('close');
           $('#video-filter .filter-menu').toggle();
         }
 

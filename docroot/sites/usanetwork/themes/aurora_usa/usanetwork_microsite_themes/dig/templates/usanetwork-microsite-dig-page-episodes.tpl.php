@@ -41,37 +41,6 @@
   <!-- 728x90 ad -->
   <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_episodes"></div>
 
-<?php /* @TODO: FINISH QUOTES CODE ?>
-  <!-- quotes -->
-  <?php if (!empty($people)): ?>
-    <?php foreach ($people as $person_key => $person): ?>
-    <?php if (!empty($person['quotes'])): ?>
-    <div class="<?php if (!empty($person['id'])) print $person['id'] . ' '; ?><?php if(!empty($person['status'])) print $person['status'] . ' '; ?>quotes">
-      <ul>
-        <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
-          <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>
-            <li class="<?php if ($quotation_key == 0) print ' active'; ?>">
-              <?php if (!empty($quotation['quote'])): ?>
-                <div class="quote">
-                  <?php print $quotation['quote']; ?>
-                </div>
-              <?php endif; ?>
-              <?php if (!empty($quotation['source'])): ?>
-                <div class="quote-source">
-                  <?php print $quotation['source']; ?>
-                </div>
-              <?php endif; ?>
-            </li>
-          <?php endif; ?>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
-  <?php endif; ?>
-  <!-- end quotes -->
-<?php */ ?>
-
   <!-- episodes title and navigation -->
   <div class="right-pane-content">
     <?php if (!empty($section_title)): ?>

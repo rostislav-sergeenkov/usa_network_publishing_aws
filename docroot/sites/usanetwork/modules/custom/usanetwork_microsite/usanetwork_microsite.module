@@ -708,21 +708,18 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 
     $show_in_player = 0;
     $first_output_id = NULL;
-    $all_videos_string = 'All videos';
+
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     if (!empty($video_for_player)) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
           $video_type_filter = _usanetwork_microsite_get_video_category($video_file);
       }
     }
+    // Add default menu item.
+    $all_videos_string = 'All videos';
     $video_types[$all_videos_string] = $all_videos_string;
     foreach ($video_files as $v_key => $current_video_file) {
-      // Get terms list for video.
-      foreach ($current_video_file->field_usa_video_terms[LANGUAGE_NONE] as $tids) {
-        $term = taxonomy_term_load($tids['target_id']);
-        $terms[$v_key][] = $term->name;
-      }
-      // Filter by terms from url.
+      // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
       $current_video_type = _usanetwork_microsite_get_video_category($current_video_file);
       $video_types[$current_video_type] = $current_video_type;

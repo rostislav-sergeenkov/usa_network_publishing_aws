@@ -283,7 +283,7 @@
             }
             else {
             var clickedId = $(this).attr('id'),
-                navItems = $('#characters .character-nav'),
+                navItems = $('#episodes .episode-nav'),
                 numNavItems = navItems.find('li').length,
                 currentItem = navItems.find('li.active'),
                 currentItemNum = currentItem.index(),

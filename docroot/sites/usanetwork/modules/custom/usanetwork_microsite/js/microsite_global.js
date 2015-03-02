@@ -551,23 +551,23 @@
     attach: function (context, settings) {
 
       //filters toggles
-      //$('#video-filter .filter-label').click(function(){
-      //  $('#video-filter .filter-label').toggleClass('open');
-      //  $('#video-filter .filter-menu').toggle();
-      //});
-      //$('#video-filter .filter-item').click(function(){
-      //  if($(this).hasClass('active')){
-      //    $('#video-filter .filter-label').removeClass('open');
-      //    $('#video-filter .filter-menu').toggle();
-      //    return false;
-      //  }else{
-      //    $('#video-filter .filter-item').removeClass('active');
-      //    $(this).addClass('active');
-      //    $('#video-filter .filter-label span').text($(this).text());
-      //    $('#video-filter .filter-label').removeClass('open');
-      //    $('#video-filter .filter-menu').toggle();
-      //  }
-      //});
+      $('#video-filter .filter-label').click(function(){
+        $('#video-filter .filter-label').toggleClass('open');
+        $('#video-filter .filter-menu').toggle();
+      });
+      $('#video-filter .filter-item').click(function(){
+        if($(this).hasClass('active')){
+          $('#video-filter .filter-label').removeClass('open');
+          $('#video-filter .filter-menu').toggle();
+          return false;
+        }else{
+          $('#video-filter .filter-item').removeClass('active');
+          $(this).addClass('active');
+          $('#video-filter .filter-label span').text($(this).text());
+          $('#video-filter .filter-label').removeClass('open');
+          $('#video-filter .filter-menu').toggle();
+        }
+      });
 
       // tve help messaging
       $tve_toggler = $('.tve-help-link');

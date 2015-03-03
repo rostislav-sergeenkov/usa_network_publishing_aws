@@ -621,6 +621,9 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social a.facebook {
   background-image: url("../images/icons/icon_fb.png");
 }
+.page-node-microsite #left-nav #left-nav-social a.youtube {
+  background-image: url("../images/icons/icon_youtube.png");
+}
 .page-node-microsite #left-nav #left-nav-social a:hover {
   opacity: 0.7;
 }

@@ -429,7 +429,7 @@
 
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
-      if(dataPlayerId == 'microsite_vod_endcard'){
+      if(dataPlayerId == 'microsite_usa_vod'){
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       }else{

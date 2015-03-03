@@ -372,8 +372,8 @@
         url;
 
       if (data) {
-        dataPlayerId = data.player_id;
-        dataFid = data.fid;
+        dataPlayerId = data.data.player_id;
+        dataFid = data.data.fid;
       }
       var videoContainer = $('#video-container'),
           videoPlayer = $('#video-container .video-player'),

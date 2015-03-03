@@ -369,32 +369,32 @@
         dataFid = $(selector).attr('data-fid'),
         dataPlayerId = $(selector).attr('data-player-id'),
         activeVideoThumb = $(selector),
-        url;
+        url,
+        videoContainer = $('#video-container'),
+        videoPlayer = $('#video-container .video-player'),
+        Player = $('#video-container .video-player iframe'),
+        currentId = Player.attr('id'),
+        activeVideoThumb = $(selector),
+        dataAccountId = activeVideoThumb.attr('data-account-id'),
+        dataPlayerId = activeVideoThumb.attr('data-player-id'),
+        dataVideoUrl = activeVideoThumb.attr('data-video-url'),
+        dataVideoId = activeVideoThumb.attr('data-video-id'),
+        dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
+        ad_728x90 = $('#videos .ad_728x90'),
+        ad_728x90_1 = $('#videos .ad_728x90_1'),
+        ad_300x60_1 = $('#videos #ad_300x60_1'),
+        ad_300x250 = $('#videos #ad_300x250'),
+        ad_300x250_1 = $('#videos #ad_300x250_1'),
+        autoplay,
+        src;
+
+      if (videoPlayer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
+        videoPlayer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
+      }
 
       if (data) {
         dataPlayerId = data.player_id;
         dataFid = data.fid;
-      }
-      var videoContainer = $('#video-container'),
-          videoPlayer = $('#video-container .video-player'),
-          Player = $('#video-container .video-player iframe'),
-          currentId = Player.attr('id'),
-          activeVideoThumb = $(selector),
-          dataAccountId = activeVideoThumb.attr('data-account-id'),
-          dataPlayerId = activeVideoThumb.attr('data-player-id'),
-          dataVideoUrl = activeVideoThumb.attr('data-video-url'),
-          dataVideoId = activeVideoThumb.attr('data-video-id'),
-          dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
-          ad_728x90 = $('#videos .ad_728x90'),
-          ad_728x90_1 = $('#videos .ad_728x90_1'),
-          ad_300x60_1 = $('#videos #ad_300x60_1'),
-          ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1'),
-          autoplay,
-          src;
-
-      if (videoPlayer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
-        videoPlayer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
       }
 
       url = defaultUrl + '/' + dataFid + '/' + autoplay;

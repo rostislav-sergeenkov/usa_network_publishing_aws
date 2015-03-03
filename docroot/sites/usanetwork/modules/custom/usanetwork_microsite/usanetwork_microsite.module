@@ -553,7 +553,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
         (empty($current_episode) && $episode_count == 0) ||
         (!empty($current_episode) && $current_episode == $episode_id)
       ) {
-        $current_episode = $episode_node;
+        $current_episode_node = $episode_node;
         $is_active_slide = $is_active_slide_found = TRUE;
         $status = 'active';
       }
@@ -589,7 +589,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
     drupal_not_found();
   }
 
-  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_episode, $section_wrapper));
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_episode_node, $section_wrapper));
 
   return $theme_variables;
 }

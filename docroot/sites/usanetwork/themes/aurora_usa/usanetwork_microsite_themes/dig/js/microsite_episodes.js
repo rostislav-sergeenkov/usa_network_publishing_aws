@@ -163,14 +163,14 @@
             Drupal.behaviors.microsite_scroll.quotationAnimationStop = true;
             $('#microsite #episodes .quotes').fadeOut(1000);
 
-            // prepare next or previous background and character-info
+            // prepare next or previous background and episode-info
             $('#microsite #episodes .' + nextEpisodeId).addClass(direction);
 
             if ($(window).width() < 875) {
               $('#episode-info li.' + direction).css('top', '0');
-              // animate active character-info
+              // animate active episode-info
               $('#episode-info li.active').animate({'top': '0', 'opacity': 0}, animationSpeed, 'jswing', function(){
-                // animate next character-info
+                // animate next episode-info
                 $('#episode-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
                   // update classes
                   $('#microsite #episodes .' + direction).addClass('active').removeClass(direction);
@@ -204,12 +204,12 @@
             }
             else {
               $('#episode-info li.' + direction).css('top', '-40px');
-              // animate active character-info
+              // animate active episode-info
               $('#episode-info li.active').animate({'top': '-40px', 'opacity': 0}, animationSpeed, 'jswing', function(){
                 // animate backgrounds
                 $('#episode-background li.active').animate({'left': sign + '100%'}, (animationSpeed + 200), 'jswing');
                 $('#episode-background li.' + direction).css('left', oppositeSign + '100%').animate({'left': '0'}, (animationSpeed + 200), 'jswing', function(){
-                  // animate next character-info
+                  // animate next episode-info
                   $('#episode-info li.' + direction).animate({'top': '0', 'opacity': 1}, animationSpeed, 'jswing', function(){
 
                     // update classes
@@ -260,10 +260,10 @@
         Drupal.behaviors.microsite_episodes.micrositeSetEpisBackground(activeEpisode);
         Drupal.behaviors.microsite_episodes.micrositeSetNavNextPrevState();
 
-        // init active character nav item
+        // init active episode nav item
         $('#nav-' + activeEpisode).addClass('active');
 
-        // init character-nav clicks
+        // init episode-nav clicks
         $('#microsite #episodes .episode-nav li').on('click', function(){
           var nextItemId = $(this).attr('id');
           Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(nextItemId);
@@ -273,7 +273,7 @@
           $('#microsite #episode-background').addClass('mobile');
         }
 
-        // init next / prev character nav clicks
+        // init next / prev episode nav clicks
         $('#microsite #episodes .episode-nav #nav-next, #microsite #episodes .episode-nav #nav-prev').on('click', function(){
             if ($(this).hasClass('disabled')) {
               // do nothing
@@ -311,7 +311,7 @@
             }
             else {
               if ($('#microsite #episode-background').hasClass('mobile')){
-                $('#characters #episode-background li').each(function() {
+                $('#episodes #episode-background li').each(function() {
                   var bgUrl = $(this).attr('data-bg-url');
                   $(this).css('background-image', 'url("' + bgUrl + '")');
                 });
@@ -321,7 +321,7 @@
           }, 500);
         });
 
-        // character image pre-loading on desktop only
+        // episode image pre-loading on desktop only
         if ($(window).width() >= 875) {
           $(window).bind("load", function() {
             var preload = new Array();

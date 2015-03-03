@@ -86,7 +86,9 @@
             <?php endif; ?>
             <?php if (!empty($episode['description'])): ?>
               <div class="episode-description clearfix">
-                <?php print $episode['description']; ?>
+                <div class="text active clearfix">
+                  <?php print $episode['description']; ?>
+                </div>
               </div>
             <?php endif; ?>
         </li>

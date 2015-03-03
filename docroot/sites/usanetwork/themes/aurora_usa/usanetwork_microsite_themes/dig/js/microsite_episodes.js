@@ -51,13 +51,12 @@
 
       // if not smartphone
       if (!usa_deviceInfo.smartphone) {
-        $('#microsite #episodes .episode-bios-container .text').css('max-height', episodeTextHeight + 'px');
-        $('#microsite #episodes .episode-bios-container').css('min-height', (episodeTextHeight + 50) + 'px');
-        $('#microsite #episodes .ad300x250').css('margin-top', (episodeTextHeight + 20) + 'px');
+        $('#microsite #episodes .episode-description .text').css('max-height', episodeTextHeight + 'px');
+        $('#microsite #episodes .episode-description').css('min-height', (episodeTextHeight + 50) + 'px');
+        $('#microsite #episodes .ad300x250').css('margin-top', episodeTextHeight + 'px');
       }
-      /*???*/
-      /*if ($(window).height() > 1200) $('#microsite #characters #character-inner-container, #microsite #episodes #episode-inner-container').height((sectionHeight - 5));
-      $('#microsite #episodes #character-background li, #microsite #characters #right-pane-bg, #microsite #characters #right-pane-bg').height(sectionHeight);*/
+      if ($(window).height() > 1200) $('#microsite #episodes #episode-inner-container').height((sectionHeight - 5));
+      $('#microsite #episodes #episode-background li, #microsite #episodes #right-pane-bg').height(sectionHeight);
     },
 
     micrositeGetActiveEpisode: function getActiveEpisode() {
@@ -81,17 +80,15 @@
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     },
 
-    // setOmnitureData ?????
+    // setOmnitureData
     micrositeSetOmnitureData: function setOmnitureData(itemTitle){
-      /*var anchor = 'characters',
-          itemTitle = itemTitle || '',
+      var itemTitle = itemTitle || '',
           siteName = Drupal.behaviors.microsite_episodes.siteName,
           pageName = Drupal.behaviors.microsite_episodes.basePageName,
-          sectionTitle = 'Bio',
+          sectionTitle = 'Episodes',
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
-      s.prop4 = 'Profile Page';
       s.prop5 = siteName + ' : ' + sectionTitle;
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
@@ -101,7 +98,7 @@
 
       if (typeof s_gi != 'undefined') {
         void(s.t()); // omniture page call
-      }*/
+      }
     },
 
     micrositeSetPath : function setPath(nextItemId) {
@@ -249,7 +246,7 @@
           }
         }
         else {
-          // current or next character id was not set
+          // current or next episode id was not set
           // @TODO: Should we do something here?
         }
       }
@@ -295,14 +292,6 @@
             Drupal.behaviors.microsite_episodes.micrositeSwitchEpisodes(nextItemId);
           }
         });
-        /*?????*/
-        // init bio tab clicks
-        /*$('#microsite #characters .character-bio-tabs div').on('click', function(){
-          var clickedItem = ($(this).hasClass('character')) ? '.character' : '.actor',
-              characterId = $(this).parent().parent().attr('id');
-          $('#characters #character-info li#' + characterId).find('.actor, .character').removeClass('active');
-          $('#characters #character-info li#' + characterId + ' ' + clickedItem).addClass('active');
-        });*/
 
         setTimeout(Drupal.behaviors.microsite_episodes.micrositeSetHeights, 500);
 

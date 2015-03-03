@@ -209,32 +209,8 @@
   margin-top: 0.1em;
   margin-bottom: 1em;
 }
-#microsite #episodes .episode-bio-tabs {
-  clear: left;
-  height: 28px;
-  margin-bottom: 15px;
-  font-size: 1em;
-}
-#microsite #episodes .episode-bio-tabs div {
-  float: left;
-  display: block;
-  background-color: #000;
-  color: #FFF;
-  border: 1px solid #FFF;
-  text-transform: uppercase;
-  padding: 6px 8px 4px;
-  line-height: 1em;
-  cursor: pointer;
-}
-#microsite #episodes .episode-bio-tabs div:first-child {
-  margin-right: 20px;
-}
-#microsite #episodes .episode-bio-tabs div:hover,
-#microsite #episodes .episode-bio-tabs div.active {
-  background-color: #FFF;
-  color: #000;
-}
-#microsite .episode-bios-container {
+
+#microsite .episode-description {
   position: relative;
   display: block;
   width: 100%;
@@ -360,8 +336,6 @@
     margin: 0;
     font-size: 1.2em;
     letter-spacing: 3px;
-    float: left;
-    width: calc(75% - 12px);
   }
   #microsite #episodes .episode-social {
     line-height: 0.6em;
@@ -402,9 +376,6 @@ and (max-device-width : 568px) {
   #microsite #episodes .episode-nav #nav-prev,
   #microsite #episodes .episode-nav #nav-next {
     top: 40%;
-  }
-  #microsite #episodes .episode-bio-tabs {
-    font-size: 0.84em;
   }
   #microsite #episodes .text {
     overflow: visible;

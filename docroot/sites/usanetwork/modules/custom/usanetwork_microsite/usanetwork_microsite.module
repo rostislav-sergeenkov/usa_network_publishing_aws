@@ -944,7 +944,7 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
  * @param $node
  * @return mixed
  */
-function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = TRUE) {
+function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = FALSE) {
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   foreach($files as $file) {

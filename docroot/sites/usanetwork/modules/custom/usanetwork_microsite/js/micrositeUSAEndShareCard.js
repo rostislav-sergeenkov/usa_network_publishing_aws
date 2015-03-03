@@ -149,6 +149,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
       video_data.account_id = $('.ymalitemnext').attr('data-account-id');
       video_data.video_id = $('.ymalitemnext').attr('data-video-id');
       video_data.player_id = $('.ymalitemnext').attr('data-player-id');
+      video_data.fid = $('.ymalitemnext').attr('data-fid');
 
       if (video_data) {
         tpController.dispatchEvent("OnEndcardCountdownEnd", video_data);
@@ -208,6 +209,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         nr += '<div class="ymalitemwrapnext">';
         nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid +
         '" data-guid="' + selectedItems[startingIndex].guid +
+        '" data-fid="' + selectedItems[startingIndex].fid +
         '" data-account-id="' + selectedItems[startingIndex].account_id +
         '" data-video-id="' + selectedItems[startingIndex].video_id +
         '" data-player-id="' + selectedItems[startingIndex].player_id + '">';

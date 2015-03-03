@@ -1,8 +1,7 @@
 (function ($) {
   Drupal.usanetwork_video_endcard = {
-    'OnCountdownEnd': function(e) {
-      var url = e.data;
-      window.location.href = url;
+    'OnCountdownEnd': function(data) {
+      Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, null, data);
     }
   };
 

@@ -621,6 +621,9 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social a.facebook {
   background-image: url("../images/icons/icon_fb.png");
 }
+.page-node-microsite #left-nav #left-nav-social a.youtube {
+  background-image: url("../images/icons/icon_youtube.png");
+}
 .page-node-microsite #left-nav #left-nav-social a:hover {
   opacity: 0.7;
 }
@@ -833,6 +836,7 @@ body.page-node-microsite {
 }
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
+  position: relative;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
@@ -962,7 +966,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #microsite #video-container .video-player {
   position: relative;
 }
-#microsite #video-container .video-player #custom-play {
+#video-container .active-player .custom-play {
   background-image: url("../images/icons/playOverlay.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -977,9 +981,211 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   width: 100px;
 }
 
+/* corrected player style */
+.video-auth-player-wrapper{
+  display: none;
+}
+.video-auth-player-wrapper.featured-asset{
+  width: 100%;
+}
+.video-auth-player-wrapper.featured-asset .tve-help{
+  margin: 0;
+}
+.video-auth-player-wrapper.featured-asset .tve-help-link{
+  color: #ffffff;
+}
+.video-auth-player-wrapper.featured-asset .loginButton img{
+  width: 100%;
+}
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut{
+  position: static;
+}
+#microsite .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .tve-header-links > li{
+  margin: 0;
+}
+#microsite .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 0 0 12px;
+  border-left: 1px solid #ffffff;
+  line-height: 10px;
+}
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a{
+  color: #ffffff;
+}
+.video-auth-player-wrapper.featured-asset .tve-close{
+  cursor: pointer;
+}
+.video-auth-player-wrapper.featured-asset .tve-help:before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-bottom: 14px solid #1f1f1f;
+  border-right: 14px solid transparent;
+  bottom: 0;
+  top: auto;
+  left: 16%;
+  right: auto;
+  z-index: 106!important;
+}
+.video-auth-player-wrapper.featured-asset .tve-help:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-bottom: 14px solid #4b4b4b;
+  border-right: 14px solid transparent;
+  bottom: 0;
+  top: auto;
+  left: 16%;
+  right: auto;
+  z-index: 105!important;
+}
+#video-container .file-video-mpx{
+  line-height: 0;
+}
+.video-auth-player-wrapper.featured-asset .video-player-wrapper{
+  float: none;
+  margin: 0 0 15px 0;
+}
+/* end */
+
 #microsite #ad_300x60_1 {
   float: right;
+  margin-top: 10px;
   margin-left: 10px;
+}
+#microsite #videos .full-desc{
+  margin-bottom: 90px;
+}
+
+/* video-filter */
+#videos .filter-wrapper{
+  margin-bottom: 20px;
+  max-width: 615px;
+}
+#videos #video-filter{
+  background-color: #000000;
+  position: relative;
+  width: 300px;
+}
+#videos #video-filter .filter-label{
+  background-color: #13242a;
+  cursor: pointer;
+  width: 100%;
+}
+#videos #video-filter .filter-label span{
+  color: #ffffff;
+  font-family: 'Proxima N W01 Reg', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 52px;
+  padding-left: 15px;
+  position: relative;
+  text-transform: uppercase;
+}
+#videos #video-filter .filter-label span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-top: 14px solid #13242a;
+  top: 6px;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 14px solid transparent;
+  border-top: 14px solid #a7a7a7;
+  top: 10px;
+  right: -40px;
+  z-index: 5;
+}
+#videos #video-filter .filter-label.open span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #13242a;
+  margin-top: -8px;
+  top: 50%;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label.open span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #a7a7a7;
+  margin-top: -4px;
+  top: 50%;
+  right: -40px;
+  z-index: 5;
+}
+#videos #video-filter .filter-label span:before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid #13242a;
+  margin-top: -10px;
+  top: 50%;
+  right: -40px;
+  z-index: 6;
+}
+#videos #video-filter .filter-label span:after{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid #a7a7a7;
+  margin-top: -10px;
+  top: 50%;
+  right: -44px;
+  z-index: 5;
+}
+#videos #video-filter .filter-menu{
+  background-color: #000000;
+  display: none;
+  padding: 20px 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+#videos #video-filter .filter-item{
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+#videos #video-filter .filter-item:last-child{
+  margin-bottom: 0;
+}
+#videos #video-filter .filter-item:hover,
+#videos #video-filter .filter-item.active{
+  color: #e5ce96;
 }
 
 /* BEGIN MEDIA BREAKPOINTS */
@@ -1005,6 +1211,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 1000px !important;
     height: 559px !important;
   }
+  #video-container .featured-asset .video-player-wrapper {
+    width: 1000px;
+    height: 559px;
+  }
+  #video-container .featured-asset .tve-help {
+    width: 1000px;
+    height: 559px;
+  }
+
   #microsite .block-usanetwork-mpx-video {
     width: 1050px;
   }
@@ -1068,7 +1283,53 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 0 0 calc(-50% - 2em + 86px);
   }
 }
-
+@media (min-width: 641px) {
+  #video-container .featured-asset .tve-help {
+    font-size: 16px;
+    line-height: 24px;
+    left: 0;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg {
+    top: 120px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg .first-line {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1280px){
+  #video-container .featured-asset .video-player-wrapper {
+    height: 523px;
+  }
+  #video-container .featured-asset .tve-help {
+    font-size: 20px;
+    line-height: 30px;
+    height: 523px;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset .tve-help .tve-close {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg{
+    left: 0;
+    width: 100%;
+  }
+}
 @media (max-width: 1280px) {
   #microsite #videos-content .full-pane {
     width: 615px;
@@ -1080,16 +1341,37 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite .block-usanetwork-mpx-video {
     width: 630px;
   }
+  #video-container .featured-asset .video-player-wrapper {
+    width: 100%;
+    height: 346px;
+  }
+  #video-container .featured-asset .tve-help .tve-close{
+    top: 112px;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    top: 52px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    top: 82px;
+  }
+  #video-container .featured-asset .tve-help .tve-download-link {
+    left: 0;
+    top: 100px;
+  }
+  #video-container .featured-asset .tve-help {
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    height: 346px;
+  }
   #microsite #ad_300x60_1 {
     bottom: 0;
+    margin-top: 0;
     margin-left: 0;
     position: absolute;
   }
   #microsite #videos .full-desc .video-player-desc{
     margin-bottom: 70px;
-  }
-  #microsite #videos .full-desc{
-    margin-bottom: 90px;
   }
 }
 @media (max-width: 1200px) {
@@ -1280,6 +1562,16 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
 }
 
+@media (max-width: 709px) {
+  #microsite #galleries-content .microsite-gallery-meta h2 {
+    width: calc(100% - 178px);
+  }
+
+  #microsite #gigya-share {
+    width: 158px;
+    margin-left: 20px;
+  }
+}
 @media (max-width: 640px) {
   #microsite section .microsite-section-container {
     margin: 0 auto;
@@ -1364,6 +1656,10 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     height: 39px;
     padding: 5px;
   }
+  #microsite .block-usanetwork-mpx-video li.grid-item.active .caption-fields-wrapper {
+    height: 37px;
+    padding: 5px;
+  }
   #microsite .node-usanetwork-promo .caption-overlay .promo-cta {
     width: 29px;
   }
@@ -1379,6 +1675,38 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite .ad-leaderboard iframe {
     height: 50px;
+    width: 300px;
+  }
+  #video-container .featured-asset .tve-help {
+    font-size: 11px;
+    line-height: 16px;
+    float: none;
+    left: 0;
+    height: 186px;
+    width: 300px;
+  }
+  #video-container .featured-asset .tve-help:before,
+  #video-container .featured-asset .tve-help:after {
+    left: 50%;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    top: 14px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    top: -6px;
+  }
+  #video-container .featured-asset .tve-help .tve-download-link {
+    left: 0;
+    top: -3px;
+  }
+  #video-container .featured-asset .tve-help .tve-close {
+    font-size: 16px;
+    line-height: 24px;
+    top: 3px;
+  }
+  #video-container .featured-asset .video-player-wrapper {
+    float: none;
+    height: 184px;
     width: 300px;
   }
 }
@@ -1414,6 +1742,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   #microsite #videos-content {
     background-image: url("../images/dig_mobile_bg.jpg");
   }
+}
 }
 
 /* height media queries */

@@ -9,6 +9,7 @@ define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_vod_endcard');
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
 define("USANETWORK_MICROSITE_FULL_VIDEO", "Full videos");
+define("USANETWORK_MICROSITE_VIDEOS_LIMIT", "12");
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -39,6 +40,14 @@ function usanetwork_microsite_menu() {
     'title' => 'Related items',
     'page callback' => 'usanetwork_microsite_endcard_related_items',
     'page arguments' => array(4, 5),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+  $items['ajax/microcite/get/videos/%node/%/%'] = array(
+    'title' => 'Videos',
+    'page callback' => '_usanetwork_microsite_get_videos',
+    'page arguments' => array(4, 5, 6),
     'access arguments' => array('access content'),
     'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
@@ -1644,6 +1653,58 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
   }
   return $items;
 }
+
+/**
+ * Menu ajax callback for microsite videos.
+ *
+ */
+function  _usanetwork_microsite_get_videos($node, $category, $offset) {
+  $data = array();
+  $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+  if ($files) {
+    $position = 0;
+    $count = 0;
+    foreach ($files as $file) {
+      $published = !empty($file->mpx_video_data['status']) ? $file->mpx_video_data['status'] : NULL;
+      if ($published) {
+        if ($category && $category !== _usanetwork_microsite_get_video_category($file)) {
+          continue;
+        }
+        if ($offset <= $position && $count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $full_episode = _usanetwork_microsite_define_full_episode($file);
+          $video_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+          $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($file);
+          $account_id = $video_account->account_pid;
+          $is_full_episode = ($full_episode) ? 'true' : 'false';
+          $items[] = array(
+            'data' => drupal_render(file_view($file, 'vid_teaser_show_general')),
+            'class' =>
+              array(
+                'views-row',
+                'grid-item',
+              ),
+            'data-video-url' => $suggested_video_url,
+            'data-fid' => $file->fid,
+            'data-account-id' => $account_id,
+            'data-player-id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+            'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
+            'data-full-episode' => $is_full_episode,
+          );
+          $count++;
+        }
+        elseif ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          break;
+        }
+        $position++;
+      }
+    }
+    if (!empty($items)) {
+      $data['videos'] = theme('item_list', array('items' => $items));
+    }
+  }
+  return $data;
+}
+
 
 /**
  * Alter sitecatalyst variables variables.

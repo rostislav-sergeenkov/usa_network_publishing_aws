@@ -393,8 +393,8 @@
       }
 
       if (data) {
-        dataPlayerId = data.player_id;
-        dataFid = data.fid;
+        dataPlayerId = data.data.player_id;
+        dataFid = data.data.fid;
       }
 
       url = defaultUrl + '/' + dataFid + '/' + autoplay;

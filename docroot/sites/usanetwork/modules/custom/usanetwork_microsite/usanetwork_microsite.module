@@ -7,6 +7,8 @@ define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
 define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_vod_endcard');
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
+define("USANETWORK_MICROSITE_ALL_VIDEOS", "All videos");
+define("USANETWORK_MICROSITE_FULL_VIDEO", "Full videos");
 
 include_once 'usanetwork_microsite.features.inc';
 include_once 'usanetwork_microsite.admin.inc';
@@ -709,26 +711,28 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     $show_in_player = 0;
     $first_output_id = NULL;
 
+    $active_filter = USANETWORK_MICROSITE_ALL_VIDEOS;
+    $video_types[$active_filter] = $active_filter;
     $video_for_player = _usanetwork_microsite_get_arg_for_current_content($section_wrapper);
     if (!empty($video_for_player)) {
       if ($video_file = _usanetwork_microsite_get_video_file_by_url($node, $video_for_player)) {
-          $video_type_filter = _usanetwork_microsite_get_video_category($video_file);
+        $active_filter = _usanetwork_microsite_get_video_category($video_file);
       }
     }
     // Add default menu item.
-    $all_videos_string = 'All videos';
-    $video_types[$all_videos_string] = $all_videos_string;
+
     foreach ($video_files as $v_key => $current_video_file) {
       // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
-      if ($current_video_type = _usanetwork_microsite_get_video_category($current_video_file)) {
-        $video_types[$current_video_type] = $current_video_type;
-      }
-      if (!empty($video_type_filter)) {
-        if ($current_video_type !== $video_type_filter)
-          continue;
-      }
       $published = !empty($current_video_file->mpx_video_data['status']) ? $current_video_file->mpx_video_data['status'] : NULL;
+      if ($published) {
+        if ($current_video_type = _usanetwork_microsite_get_video_category($current_video_file)) {
+          $video_types[$current_video_type] = $current_video_type;
+        }
+        if ($active_filter != USANETWORK_MICROSITE_ALL_VIDEOS && $active_filter !== $current_video_type) {
+          continue;
+        }
+      }
       if ($first_output_id === NULL && $published) {
         $first_output_id = $v_key;
       }
@@ -766,17 +770,21 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     }
     // Create filter menu.
     if (!empty($video_types) && is_array($video_types)) {
+      $id = 0;
       foreach ($video_types as $type) {
-        $items[$type] = array('data' => $type, 'class' => array('filter-item'));
+        $items[$id] = array('data' => $type, 'class' => array('filter-item'));
+        if ($type == $active_filter) {
+          $items[$id]['class'][] = 'active';
+        }
+        // Set Full video criteria to position two.
+        if ($type == USANETWORK_MICROSITE_FULL_VIDEO && $id > 1) {
+          $buffer = $items[1];
+          $items[1] = $items[$id];
+          $items[$id] = $buffer;
+        }
+        $id++;
       }
-      if (!empty($video_type_filter)) {
-        $items[$video_type_filter]['class'][] = 'active';
-        $theme_variables['filter_list_active'] = $video_type_filter;
-      }
-      else {
-        $items[$all_videos_string]['class'][] = 'active';
-        $theme_variables['filter_list_active'] = $all_videos_string;
-      }
+      $theme_variables['filter_list_active'] = $active_filter;
       $theme_variables['filter_list'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => array('filter-menu'))));
     }
     // Get video file.
@@ -2186,10 +2194,10 @@ function _usanetwork_microsite_set_status_and_h1_variables($object, $section_wra
 
 function _usanetwork_microsite_get_video_category($video_file) {
   if (_usanetwork_microsite_define_full_episode($video_file)) {
-    return 'Full videos';
+    return USANETWORK_MICROSITE_FULL_VIDEO;
   }
-  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1])) {
-    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][2]['target_id']);
+  elseif (!empty($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id'])) {
+    $term = taxonomy_term_load($video_file->field_usa_video_terms[LANGUAGE_NONE][count($video_file->field_usa_video_terms[LANGUAGE_NONE]) - 1]['target_id']);
     return $term->name;
   }
   else {

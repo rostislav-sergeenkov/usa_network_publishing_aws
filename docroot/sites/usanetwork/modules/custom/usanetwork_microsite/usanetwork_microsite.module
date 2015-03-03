@@ -823,6 +823,7 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
 }
 
 function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'fasle') {
+  global $base_url;
   if(!empty($fid)) {
     $file = file_load($fid);
   }
@@ -837,6 +838,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
     'file' => $file,
     'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'form' => 'html', 'nid' => $node->nid),
     'player_id' => $player_id,
+    'pub_mpx_player_url' => $base_url . '/dig/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
   ));
   
   //set image for not loggined user

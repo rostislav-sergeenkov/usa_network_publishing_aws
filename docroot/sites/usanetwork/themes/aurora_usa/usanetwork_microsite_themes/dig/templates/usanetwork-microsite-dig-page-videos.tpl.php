@@ -64,8 +64,8 @@
       <div id="ad_300x60_1"></div>
       <div class="video-player-desc">
         <?php if (!empty($video_desc)): ?>
-          <?php print $video_desc; ?>
-        <?php endif; ?>
+					<?php print $video_desc; ?>
+				<?php endif; ?>
       </div>
     </div>
   </div>
@@ -101,16 +101,16 @@
                   <?php endforeach; ?>
                 </ul>
               </div>
-							<div class="expandable-toggle-wrap">
-								<div class="expandable-toggle">
-									<div class="item-list">
-										<ul class="pager pager-load-more">
-											<li class="pager-next first last more">more</li>
-										</ul>
-									</div>
+            </div>
+						<div class="expandable-toggle-wrap">
+							<div class="expandable-toggle">
+								<div class="item-list">
+									<ul class="pager pager-load-more">
+										<li class="pager-next first last more">more</li>
+									</ul>
 								</div>
 							</div>
-            </div>
+						</div>
           </div>
         </div>
       </div>

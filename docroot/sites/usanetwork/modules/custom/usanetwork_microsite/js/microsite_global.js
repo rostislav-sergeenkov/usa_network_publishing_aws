@@ -330,7 +330,7 @@
 				playerAuth = videoContainer.find('.video-auth-player-wrapper'),
 				playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
 
-				$.ajax({
+			$.ajax({
 				type: 'GET',
 				url: url,
 				dataType: 'json',
@@ -537,6 +537,28 @@
 				Drupal.behaviors.microsite_scroll.create300x250Ad(section);
 			}
 		},
+		//Get Thumbnail List
+		micrositeGetThumbnailList: function (url, offset) {
+			console.info(url);
+			$.ajax({
+				type: 'GET',
+				url: url,
+				dataType: 'json',
+				success: function (data) {
+					console.info(data);
+					var videoList = data.videos;
+					if(offset === 0){
+						$('#thumbnail-list .view-content').html(videoList);
+					}else{
+						$('#thumbnail-list .view-content .item-list').last().after(videoList);
+					}
+					Drupal.attachBehaviors();
+				},
+				error: function () {
+					console.info('ajax error');
+				}
+			});
+		},
 		attach: function (context, settings) {
 
 			//filters toggles
@@ -545,48 +567,58 @@
 				$('#video-filter .filter-menu').toggle();
 			});
 			$('#video-filter .filter-item').click(function () {
+
+				var filterLabel = $('#video-filter .filter-label'),
+				 filterItem = $('#video-filter .filter-item'),
+				 filterMenu = $('#video-filter .filter-menu');
+
 				if ($(this).hasClass('active')) {
-					$('#video-filter .filter-label').removeClass('open');
-					$('#video-filter .filter-menu').toggle();
+					filterLabel.removeClass('open');
+					filterMenu.toggle();
 					return false;
 				} else {
-					$('#video-filter .filter-item').removeClass('active');
+					filterItem.removeClass('active');
 					$(this).addClass('active');
-					$('#video-filter .filter-label span').text($(this).text());
-					$('#video-filter .filter-label').removeClass('open');
-					$('#video-filter .filter-menu').toggle();
+					filterLabel.find('span').text($(this).text()).removeClass('open');
+					filterMenu.toggle();
+
+					var categoryName = $('#video-filter .filter-item.active').text(),
+						offset = 0,
+						url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid  + '/' + categoryName + '/' + offset;
+
+					Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, offset);
 				}
 			});
 
 			// video items toggler
 			var thumbnailList = $('#thumbnail-list');
-			thumbnailList.each(function() {
+			thumbnailList.each(function () {
 				var $self = $(this);
 				var $container = $self.find('.view-content');
 				var $toggler = $self.find('.expandable-toggle li');
 
 				var i = 0;
 
-				if($toggler.text() != 'more') {
+				if ($toggler.text() != 'more') {
 					$toggler.addClass('less').text('close');
 					$self.addClass('expanded');
 					i = 1;
 				}
 
-				$toggler.click(function() {
-					if($toggler.text() == 'close') {
+				$toggler.click(function () {
+					if ($toggler.text() == 'close') {
 						i = 1;
 						$container.find('.item-list').hide();
-						$container.find('.item-list:first-child').css('display','block');
+						$container.find('.item-list:first-child').css('display', 'block');
 						$toggler.text('more');
 						$toggler.removeClass('less').addClass('more');
 						$self.removeClass('expanded');
 					} else if ($toggler.text() == 'more') {
 						$toggler.removeClass('less').addClass('more');
-						$container.find('.item-list:first-child').css('display','block');
+						$container.find('.item-list:first-child').css('display', 'block');
 						$count = $container.find('.item-list').length - 1;
-						$container.find('.item-list:eq('+ i + ')').show();
-						if($count == i) {
+						$container.find('.item-list:eq(' + i + ')').show();
+						if ($count == i) {
 							$toggler.text('close');
 							$toggler.addClass('less').removeClass('more');
 							$self.addClass('expanded');

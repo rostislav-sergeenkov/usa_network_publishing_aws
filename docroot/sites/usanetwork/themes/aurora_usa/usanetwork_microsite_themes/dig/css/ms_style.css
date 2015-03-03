@@ -1045,10 +1045,18 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 #video-container .file-video-mpx{
   line-height: 0;
+	position: relative;
 }
 .video-auth-player-wrapper.featured-asset .video-player-wrapper{
   float: none;
   margin: 0 0 15px 0;
+}
+#video-container .error-message {
+	display: none;
+	line-height: 16px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
 }
 /* end */
 
@@ -1079,7 +1087,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #videos #video-filter .filter-label span{
   color: #ffffff;
   font-family: 'Proxima N W01 Reg', Arial, sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 52px;
   padding-left: 15px;
@@ -1184,6 +1192,15 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 #videos #video-filter .filter-item.active{
   color: #e5ce96;
 }
+/* button more / close */
+#microsite #videos .expandable-toggle-wrap {
+	display: block;
+	margin-bottom: 60px;
+	margin-left: 0;
+}
+#microsite #videos .expandable-toggle-wrap ul li{
+	margin: 0;
+}
 
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {
@@ -1198,6 +1215,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 0 0 0 calc(-50% - 2em);
   }
   #microsite #videos-content .full-pane {
+    width: 1000px;
+  }
+	#microsite #videos .expandable-toggle-wrap {
     width: 1000px;
   }
   #microsite #main-slider {
@@ -1244,6 +1264,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 
 @media (max-width: 1779px) {
   #microsite #videos-content .full-pane {
+    width: 930px;
+  }
+  #microsite #videos .expandable-toggle-wrap {
     width: 930px;
   }
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
@@ -1329,6 +1352,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 }
 @media (max-width: 1280px) {
   #microsite #videos-content .full-pane {
+    width: 615px;
+  }
+	#microsite #videos .expandable-toggle-wrap {
     width: 615px;
   }
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {
@@ -1619,6 +1645,9 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     display: block;
   }
   #microsite #videos-content .full-pane {
+    width: 300px;
+  }
+	#microsite #videos .expandable-toggle-wrap {
     width: 300px;
   }
   #microsite #videos-content .file-video-mpx.view-mode-inline_content iframe {

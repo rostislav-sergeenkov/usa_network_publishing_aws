@@ -765,6 +765,8 @@ function append_cover_to_media(&$vars) {
       '#height' => $cover['image_dimensions']['height'],
       '#alt' => $cover['field_file_image_alt_text'][$language][0]['safe_value'],
       '#title' => $cover['field_file_image_title_text'],
+      '#prefix' => '<div class="content">',
+      '#suffix' => '</div>',
     ),
     'field_caption' => array(
       '#theme' => 'field',

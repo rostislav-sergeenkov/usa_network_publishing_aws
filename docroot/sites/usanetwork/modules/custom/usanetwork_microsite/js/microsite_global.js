@@ -205,7 +205,7 @@
             Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
           }
         }
-        if (nextSectionId != 'videos') {
+        if ($(nextSection).attr('id') != 'videos') {
           Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
           if(videoContainer.attr('data-ad-start') == 'true'){
             videoContainer.find('.active-player .custom-play').addClass('active').show();
@@ -218,7 +218,7 @@
         }
 
         // start quotation animations
-        if (nextSectionId == 'about' || nextSectionId == 'characters') {
+        if ($(nextSection).attr('id') == 'about' || $(nextSection).attr('id') == 'characters') {
           Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
 //          Drupal.behaviors.microsite_scroll.quotationAnimation('#' + nextSectionId + ' .quotes.active');
         }

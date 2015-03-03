@@ -553,6 +553,7 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
         (empty($current_episode) && $episode_count == 0) ||
         (!empty($current_episode) && $current_episode == $episode_id)
       ) {
+        $current_episode = $episode_node;
         $is_active_slide = $is_active_slide_found = TRUE;
         $status = 'active';
       }
@@ -587,6 +588,8 @@ function _usanetwork_microsite_render_page_episodes($section_wrapper, $node) {
   if (!$episode_count || !$is_active_slide_found) {
     drupal_not_found();
   }
+
+  $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_episode, $section_wrapper));
 
   return $theme_variables;
 }
@@ -879,6 +882,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   elseif($type == 'galleries') {
     return $section_wrapper->field_ms_media_gallery->value();
   }
+  elseif($type == 'episodes') {
+    return $section_wrapper->field_ms_episode->value();
+  }
   return NULL;
 }
 
@@ -941,6 +947,25 @@ function _usanetwork_microsite_get_gallery_by_url($node, $param) {
   $galleries = _usanetwork_microsite_get_related_content_from_node($node, 'galleries');
   foreach($galleries as $node) {
     if ($param == _usanetwork_microsite_get_suggested_gallery_url($node)) {
+      return $node;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Get episode node by url parameter.
+ *
+ * @param $node
+ * @param $param
+ *
+ * @return mixed
+ */
+function _usanetwork_microsite_get_episode_by_url($node, $param) {
+  //@todo may be it can make in one function with _usanetwork_microsite_get_person_by_url
+  $episodes = _usanetwork_microsite_get_related_content_from_node($node, 'episodes');
+  foreach($episodes as $node) {
+    if ($param == _usanetwork_microsite_get_suggested_url($node)) {
       return $node;
     }
   }
@@ -1626,6 +1651,7 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
  * Alter sitecatalyst variables variables.
  */
 function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context) {
+  // @todo I think we shouldn't use t() for string for omniture. If need, we shouldn't do it twice.
   if ($context['entity']){
     $entity = $context['entity'];
     if ($entity->type == 'usanetwork_microsite') {
@@ -1669,6 +1695,16 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = t($entity->title . ' : ' . $node->title);
               $omniture_pagename = t($entity->title . ' : ' . $node->title);
+            }
+          }
+          break;
+        case 'episodes':
+          $omniture_prop3 = 'Episode';
+          if(isset($args[4])) {
+            $node = _usanetwork_microsite_get_episode_by_url($node, $args[4]);
+            if(!empty($node)) {
+              $omniture_prop5 = $entity->title . ' : Episode : ' .  $node->titl;
+              $omniture_pagename = $entity->title . ' : Episode : ' . $node->title;
             }
           }
           break;

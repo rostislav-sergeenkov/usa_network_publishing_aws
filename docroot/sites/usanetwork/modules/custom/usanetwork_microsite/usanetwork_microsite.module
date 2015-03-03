@@ -780,7 +780,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
       $account_id = $video_account->account_pid;
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
       $player_id = _usanetwork_microsite_define_videoplayer($current_video_file);
-      
+
       $is_full_episode = 'false';
       if($full_episode) {
         $is_full_episode = 'true';
@@ -840,7 +840,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   } else {
     $player_id = USANETWORK_MICROSITE_USA_PLAYER;
   }
-      
+
   return $player_id;
 }
 
@@ -890,19 +890,19 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
     'player_id' => $player_id,
     'pub_mpx_player_url' => $base_url . '/dig/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
   ));
-  
+
   //set image for not loggined user
   $auth_episode = _usanetwork_microsite_define_auth($file);
   if ($auth_episode) {
     $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
     $renderable_image = theme('image', array('path' =>$image['#path']));
   }
-  
+
   //set video descriprion
   $video_desc = _usanetwork_microsite_set_variables_for_video_description($file);
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
-  
+
   $result = array(
      'default_image' => isset($renderable_image) ? $renderable_image : '',
      'player' => $video,
@@ -944,7 +944,7 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
  * @param $node
  * @return mixed
  */
-function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = TRUE) {
+function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url = FALSE) {
   //@todo Sections name to constant or other way that would hold it.
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   foreach($files as $file) {
@@ -959,7 +959,7 @@ function _usanetwork_microsite_get_video_file_by_url($node, $param, $clean_url =
     } else {
       $prefix = '';
     }
-    if ($param == _usanetwork_microsite_get_suggested_video_url($file)) {
+    if ($prefix . $param == _usanetwork_microsite_get_suggested_video_url($file)) {
       return $file;
     }
   }
@@ -1474,7 +1474,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
       if(isset($args[4])) {
-        $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4]);
+        $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
         _usanetwork_microsite_set_meta_description($video_file);
         $video_file_wrapper = entity_metadata_wrapper('file', $video_file);
         $page_title = $video_file_wrapper->field_seo_page_title->value();

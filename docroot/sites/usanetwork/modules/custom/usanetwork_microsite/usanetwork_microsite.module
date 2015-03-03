@@ -4,8 +4,8 @@ define('USANETWORK_MICROSITE_NODE_TYPE', 'usanetwork_microsite');
 define('USANETWORK_MICROSITE_VIDEO_PREFIX', 'clip-');
 define('USANETWORK_MICROSITE_FULL_VIDEO_PREFIX', 'full-');
 define('USANETWORK_MICROSITE_USA_PLAYER', 'microsites_usa_player_endcard');
-define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_vod_noauth_endcard');
-define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_vod_endcard');
+define('USANETWORK_MICROSITE_NOAUTH_PLAYER', 'microsite_usa_vod_noauth');
+define('USANETWORK_MICROSITE_AUTH_PLAYER', 'microsite_usa_vod');
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 
 include_once 'usanetwork_microsite.features.inc';

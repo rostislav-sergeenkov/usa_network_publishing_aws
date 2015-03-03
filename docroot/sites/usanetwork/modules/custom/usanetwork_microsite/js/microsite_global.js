@@ -330,9 +330,7 @@
 				playerAuth = videoContainer.find('.video-auth-player-wrapper'),
 				playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
 
-			console.info(url);
-
-			$.ajax({
+				$.ajax({
 				type: 'GET',
 				url: url,
 				dataType: 'json',
@@ -358,18 +356,17 @@
 
 				},
 				error: function () {
-					alert('error');
+					console.info('This content is not available');
 				}
 			});
-
 		},
 		// set video player on click thumbnail
 		micrositeSetVideoPlayer: function (autoplay, selector, data) {
 
 			var autoplay = autoplay || true,
-				selector = selector || '#thumbnail-list .item-list ul li.active',
-				videoContainer = $('#video-container'),
+				selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
 				activeVideoThumb = $(selector),
+				videoContainer = $('#video-container'),
 				videoPlayer = $('#video-container .video-player'),
 				dataPlayerId = activeVideoThumb.attr('data-player-id'),
 				dataFid = activeVideoThumb.attr('data-fid'),
@@ -561,6 +558,45 @@
 				}
 			});
 
+			// video items toggler
+			var thumbnailList = $('#thumbnail-list');
+			thumbnailList.each(function() {
+				var $self = $(this);
+				var $container = $self.find('.view-content');
+				var $toggler = $self.find('.expandable-toggle li');
+
+				var i = 0;
+
+				if($toggler.text() != 'more') {
+					$toggler.addClass('less').text('close');
+					$self.addClass('expanded');
+					i = 1;
+				}
+
+				$toggler.click(function() {
+					if($toggler.text() == 'close') {
+						i = 1;
+						$container.find('.item-list').hide();
+						$container.find('.item-list:first-child').css('display','block');
+						$toggler.text('more');
+						$toggler.removeClass('less').addClass('more');
+						$self.removeClass('expanded');
+					} else if ($toggler.text() == 'more') {
+						$toggler.removeClass('less').addClass('more');
+						$container.find('.item-list:first-child').css('display','block');
+						$count = $container.find('.item-list').length - 1;
+						$container.find('.item-list:eq('+ i + ')').show();
+						if($count == i) {
+							$toggler.text('close');
+							$toggler.addClass('less').removeClass('more');
+							$self.addClass('expanded');
+							i = 1;
+						}
+						i++;
+					}
+				});
+			});
+
 			// tve help messaging
 			$tve_toggler = $('.tve-help-link');
 			// $('.tve-help-link').click(function() {
@@ -723,7 +759,7 @@
 			// setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 			setSectionHeight();
 
-			var previewItem = $('#thumbnail-list .item-list ul li');
+			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
 
 			//change video on click to preview elements
 			previewItem.click(function (e) {
@@ -744,7 +780,7 @@
 					return false;
 				}
 
-				var activeVideoThumb = $('#thumbnail-list .item-list ul li.active'),
+				var activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
 					dataVideoUrl = activeVideoThumb.attr('data-video-url'),
 					anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
 					anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
@@ -796,7 +832,7 @@
 					item = (typeof anchorPathParts[2] != 'undefined') ? anchorPathParts[2] : '';
 
 					if (anchor == 'videos') {
-						var currentThumb = $('#thumbnail-list .item-list ul li[data-video-url="' + anchorPathParts[2] + '"]');
+						var currentThumb = $('#thumbnail-list .item-list ul li.thumbnail[data-video-url="' + anchorPathParts[2] + '"]');
 						var withInit = true;
 						if (currentThumb.hasClass('active') && $('#video-container').hasClass('start')) {
 							withInit = false;
@@ -809,7 +845,7 @@
 							$('#video-container .video-player iframe').attr('id', 'aspot-frame');
 						}
 
-						var activeVideoThumb = $('#thumbnail-list .item-list ul li.active'),
+						var activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
 							dataVideoUrl = activeVideoThumb.attr('data-video-url'),
 							itemTitle = activeVideoThumb.find('.title').text(),
 							anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;

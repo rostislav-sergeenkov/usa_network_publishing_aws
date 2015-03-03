@@ -87,7 +87,7 @@
                 <ul>
                   <?php foreach ($videos as $v_key => $video): ?>
                     <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
-                      <li class="views-row grid-item <?php print $video['state']; ?>"
+                      <li class="thumbnail views-row grid-item <?php print $video['state']; ?>"
                           data-video-url="<?php print $video['url']; ?>"
                           data-fid="<?php print $video['fid']; ?>"
                           data-account-id="<?php print $video['account_id']; ?>"
@@ -97,10 +97,19 @@
                         <?php print $video['rendered']; ?>
                       </li>
                     <?php endif; ?>
-                    <?php if ($v_key == 1): ?><li class="views-row grid-item ad"><div id="ad_300x250_1"></div></li><?php endif; ?>
+                    <?php if ($v_key == 1): ?><li class="thumbnail views-row grid-item ad"><div id="ad_300x250_1"></div></li><?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               </div>
+							<div class="expandable-toggle-wrap">
+								<div class="expandable-toggle">
+									<div class="item-list">
+										<ul class="pager pager-load-more">
+											<li class="pager-next first last more">more</li>
+										</ul>
+									</div>
+								</div>
+							</div>
             </div>
           </div>
         </div>

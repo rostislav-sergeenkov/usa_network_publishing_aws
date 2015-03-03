@@ -1455,7 +1455,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       $head_title = t('Characters | ' . $title . ' | USA Network');
       if (isset($args[4])) {
         $character_node = _usanetwork_microsite_get_person_by_url($node, $args[4]);
-        _usanetwork_microsite_set_meta_description($node);
+        _usanetwork_microsite_set_meta_description($character_node);
         if(!empty($character_node)) {
           $character_node_wrapper = entity_metadata_wrapper('node', $character_node);
           $page_title = $character_node_wrapper->field_seo_page_title->value();
@@ -1959,6 +1959,7 @@ function _usanetwork_microsite_set_meta_description_text($desc) {
     '#tag' => 'meta',
     '#attributes' => array(
       'name' => 'description',
+      'property' => 'og:description',
       'content' => $desc,
     )
   );

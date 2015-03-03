@@ -728,8 +728,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $active_filter = _usanetwork_microsite_get_video_category($video_file);
       }
     }
-    // Add default menu item.
-
+    // Counting added video files.
+    $count = 0;
     foreach ($video_files as $v_key => $current_video_file) {
       // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
@@ -765,6 +765,10 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $is_full_episode = 'true';
       }
       if ($published) {
+        if ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $theme_variables['more_videos'] = TRUE;
+          break;
+        }
         $theme_variables['videos'][] = array(
           'fid' => $current_video_file->fid,
           'url' => $suggested_video_url,
@@ -775,6 +779,7 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
           'is_full_episode' => $is_full_episode,
           'state' => $state,
         );
+        $count++;
       }
     }
     // Create filter menu.
@@ -1660,6 +1665,8 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
  */
 function  _usanetwork_microsite_get_videos($node, $category, $offset) {
   $data = array();
+  // No more videos as default.
+  $data['info']['more'] = FALSE;
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
   if ($files) {
     $position = 0;
@@ -1667,7 +1674,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
     foreach ($files as $file) {
       $published = !empty($file->mpx_video_data['status']) ? $file->mpx_video_data['status'] : NULL;
       if ($published) {
-        if ($category && $category !== _usanetwork_microsite_get_video_category($file)) {
+        if ($category && $category != USANETWORK_MICROSITE_ALL_VIDEOS  && $category != _usanetwork_microsite_get_video_category($file)) {
           continue;
         }
         if ($offset <= $position && $count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
@@ -1682,6 +1689,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
               array(
                 'views-row',
                 'grid-item',
+                'thumbnail'
               ),
             'data-video-url' => $suggested_video_url,
             'data-fid' => $file->fid,
@@ -1693,6 +1701,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
           $count++;
         }
         elseif ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $data['info']['more'] = TRUE;
           break;
         }
         $position++;

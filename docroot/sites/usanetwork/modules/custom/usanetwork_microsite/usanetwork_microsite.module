@@ -830,7 +830,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
     $video_files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
     $file = reset($video_files); //@todo get first published video
   }
- 
+
   //set video player
   $player_id = _usanetwork_microsite_define_videoplayer($file);
   $video = theme('pub_mpx_video', array(
@@ -1576,33 +1576,60 @@ function _usanetwork_microsite_get_first_published_item($entity_wrapper) {
 function  usanetwork_microsite_endcard_related_items($node, $guid) {
   $items = array();
   $files = _usanetwork_microsite_get_related_content_from_node($node, 'videos');
+
   if ($files) {
+    $current_processed_index = 0;
+    $current_position_index = -1;
+    $current_episode = NULL;
+
     foreach ($files as $related_file) {
-      if($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
+      if ($related_file->mpx_video_data['guid'] != $guid && !empty($related_file->published)) {
         $video_account = _media_theplatform_mpx_get_account_data($related_file->mpx_video_data['parent_account']);
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);
         $url_param = _usanetwork_microsite_get_suggested_video_url($related_file);
-        $item = array(
-          'fid' => $related_file->fid,
-          'account_id' => $account_id,
-          'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
-          'guid' => $related_file->mpx_video_data['guid'],
-          'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
-          'title' => $related_file->filename,
-          'url_param' => $url_param,
-          'media$thumbnails' => array(
-            array(
-              'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
-            ),
-          ),
-        );
-        $items[] = $item;
+        $item = _usanetwork_microsite_endcard_prepare_related_item($node->nid, $related_file, $account_id, $url_param, $full_episode);
+        $items[$current_processed_index] = $item;
+        $current_processed_index++;
+      }
+      else {
+        if ($related_file->mpx_video_data['guid'] == $guid) {
+          $current_position_index = $current_processed_index;
+          $current_episode = _usanetwork_microsite_endcard_prepare_related_item($node->nid, $related_file, $account_id, $url_param, $full_episode);
+        }
       }
     }
   }
+
+  if ($current_position_index > 0) {
+    $episodes_to_go = array_slice($items, $current_position_index);
+    $old_episodes = array_slice($items, 0, $current_position_index);
+
+    $items = array_merge($episodes_to_go, $old_episodes, array($current_episode));
+  }
+
   return $items;
+}
+
+/**
+ * Wraps data array for endcard.
+ */
+function _usanetwork_microsite_endcard_prepare_related_item($node_nid, $related_file, $account_id, $url_param, $full_episode) {
+  return array(
+    'fid' => $related_file->fid,
+    'account_id' => $account_id,
+    'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
+    'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+    'guid' => $related_file->mpx_video_data['guid'],
+    'url' => url('node/' . $node_nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
+    'title' => $related_file->filename,
+    'url_param' => $url_param,
+    'media$thumbnails' => array(
+      array(
+        'plfile$url' => $related_file->mpx_video_data['thumbnail_url'],
+      ),
+    ),
+  );
 }
 
 /**

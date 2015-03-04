@@ -853,6 +853,8 @@ function _usanetwork_microsite_define_videoplayer($file) {
 function _usanetwork_microsite_set_variables_for_video_description($file) {
   $file_wrapper = entity_metadata_wrapper('file', $file);
 
+  $is_full = _usanetwork_microsite_define_full_episode($file);
+  
   return array(
     'title' => !empty($file->field_mpx_title)
       ? $file_wrapper->field_mpx_title->value()
@@ -866,8 +868,10 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
     'episode_number' => !empty($file->field_mpx_episode_number)
       ? $file_wrapper->field_mpx_episode_number->value()
       : NULL,
-    'duration' => !empty($file->field_mpx_duration)
-      ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
+    'duration' => (!$is_full) 
+      ? ( !empty($file->field_mpx_duration)
+        ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
+        : NULL ) 
       : NULL,
   );
 }

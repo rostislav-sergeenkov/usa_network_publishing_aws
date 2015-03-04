@@ -545,7 +545,7 @@ you can use the generic selector below, but it's slower:
 }
 .page-node-microsite #left-nav {
   position: fixed;
-  top: 134px;
+  top: 20px;
   left: 15px;
   width: 250px;
   color: white;
@@ -580,6 +580,7 @@ you can use the generic selector below, but it's slower:
   width: 130px;
   height: 82px;
   background-image: url("../images/dig_logo.png");
+  margin: 0 0 0.3em;
   cursor: pointer;
   /*opacity: 0;*/
 }
@@ -785,7 +786,7 @@ body.page-node-microsite {
   width: 100%;
 }
 #microsite .full-pane #video-container {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   position: relative;
 }
 #microsite .full-pane #video-container:after {
@@ -1633,7 +1634,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     margin: 5px 0;
   }
   #microsite .full-pane #video-container {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   #microsite .full-pane #video-container .video-description, #microsite .full-pane #video-container .video-info {
     font-size: 12px;
@@ -1731,6 +1732,7 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   #microsite #videos-content {
     background-image: url("../images/dig_bg_videos.jpg");
+    background-size: contain;
   }
 }
 

@@ -193,6 +193,10 @@
       if ($('#microsite #characters #character-background li').length > 0) {
         $('#microsite #characters #character-background li').css('position', 'absolute');
       }
+      // prep episode section background for move
+      if ($('#microsite #episodes #episode-background li').length > 0) {
+        $('#microsite #episodes #episode-background li').css('position', 'absolute');
+      }
       $(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
         $('.section-info').removeClass('active');
         $(nextSection).addClass('active').removeClass('transition');
@@ -235,6 +239,10 @@
         // return character section background to fixed
         if ($('#microsite #characters #character-background li').length > 0) {
           $('#microsite #characters #character-background li').css('position', 'fixed');
+        }
+        // return episode section background to fixed
+        if ($('#microsite #episodes #episode-background li').length > 0) {
+          $('#microsite #episodes #episode-background li').css('position', 'fixed');
         }
 
       });
@@ -319,6 +327,7 @@
         delete $pdk.controller.listeners[key];
       }
       $pdk.bindPlayerEvents();
+      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
     },
     //ajax request
     micrositeGetVideo: function (url) {

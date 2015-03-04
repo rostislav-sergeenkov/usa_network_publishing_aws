@@ -16,7 +16,6 @@
   max-width: 100%;
   overflow: hidden;
 }
-#microsite #about #about-inner-container,
 #microsite #episodes #episode-inner-container {
   width: calc(100% - 190px);
   position: relative;
@@ -127,13 +126,10 @@
 }
 #microsite #episodes .episode-nav #nav-prev,
 #microsite #episodes .episode-nav #nav-next {
-  margin: 0;
+  margin: -9px 0 0;
   padding: 0;
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;

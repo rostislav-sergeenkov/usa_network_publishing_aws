@@ -1746,7 +1746,7 @@ function _usanetwork_microsite_endcard_prepare_related_item($node_nid, $related_
     'fid' => $related_file->fid,
     'account_id' => $account_id,
     'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
-    'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+    'player_id' => _usanetwork_microsite_define_videoplayer($related_file),
     'guid' => $related_file->mpx_video_data['guid'],
     'url' => url('node/' . $node_nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
     'title' => $related_file->filename,

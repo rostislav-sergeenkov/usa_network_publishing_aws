@@ -50,6 +50,15 @@ function usanetwork_microsite_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/get-quiz/%node'] = array(
+    'page callback' => 'usanetwork_microsite_get_quiz',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'delivery callback' => 'drupal_json_output',
+    'type' => MENU_CALLBACK,
+  );
+
+
   return $items;
 }
 
@@ -692,37 +701,54 @@ function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $galler
  * Renders games page.
  */
 function _usanetwork_microsite_render_page_games($section_wrapper) {
-  $section_object = $section_wrapper->value();
+  //$section_object = $section_wrapper->value();
 
   $theme_variables = array(
-    'pages' => array(),
+    'page' => array(),
   );
 
-  if (!empty($section_object->field_ms_catchall_page)) {
-    foreach ($section_wrapper->field_ms_catchall_page as $game_page_wrapper) {
-      $game_page_object = $game_page_wrapper->value();
+  $quiz_node = _usanetwork_microsite_get_first_published_item($section_wrapper->field_ms_quiz);
 
-      if (!empty($game_page_object->field_usa_css)) {
-        drupal_add_css($game_page_wrapper->field_usa_css->value(), array('type' => 'inline'));
-      }
-
-      if (!empty($game_page_object->field_usa_catchall_js)) {
-        drupal_add_css($game_page_wrapper->field_usa_catchall_js->value(), array('type' => 'inline'));
-      }
-
-      $theme_variables['pages'][] = array(
-        'html' => !empty($game_page_object->field_usa_catchall_html)
-          ? $game_page_wrapper->field_usa_catchall_html->value()
-          : NULL,
-      );
-
-      // Temporary return only first game!
-      $theme_variables['pages'] = reset($theme_variables['pages']);
-      break;
-    }
+  if(!empty($quiz_node)) {
+    $theme_variables['page'] = usanetwork_microsite_get_quiz($quiz_node);
   }
 
+//  if (!empty($section_object->field_ms_catchall_page)) {
+//    foreach ($section_wrapper->field_ms_catchall_page as $game_page_wrapper) {
+//      $game_page_object = $game_page_wrapper->value();
+//
+//      if (!empty($game_page_object->field_usa_css)) {
+//        drupal_add_css($game_page_wrapper->field_usa_css->value(), array('type' => 'inline'));
+//      }
+//
+//      if (!empty($game_page_object->field_usa_catchall_js)) {
+//        drupal_add_css($game_page_wrapper->field_usa_catchall_js->value(), array('type' => 'inline'));
+//      }
+//
+//      $theme_variables['pages'][] = array(
+//        'html' => !empty($game_page_object->field_usa_catchall_html)
+//          ? $game_page_wrapper->field_usa_catchall_html->value()
+//          : NULL,
+//      );
+//
+//      // Temporary return only first game!
+//      $theme_variables['pages'] = reset($theme_variables['pages']);
+//      break;
+//    }
+//  }
+
   return $theme_variables;
+}
+
+function _usanetwork_microsite_get_rendered_quiz($node) {
+  $quiz_node_view = node_view($node);
+  return drupal_render($quiz_node_view);
+}
+
+function usanetwork_microsite_get_quiz($node) {
+  return array(
+    'quiz_html' => _usanetwork_microsite_get_rendered_quiz($node),
+  );
 }
 
 /**
@@ -938,6 +964,9 @@ function _usanetwork_microsite_get_related_content_from_node($node, $type) {
   }
   elseif($type == 'episodes') {
     return $section_wrapper->field_ms_episode->value();
+  }
+  elseif($type == 'games') {
+    return array_merge($section_wrapper->field_ms_quiz->value(), $section_wrapper->field_ms_catchall_page->value());
   }
   return NULL;
 }

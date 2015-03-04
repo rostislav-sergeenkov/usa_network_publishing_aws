@@ -730,6 +730,8 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
     }
     // Counting added video files.
     $count = 0;
+    // How many videos remain.
+    $theme_variables['more_videos'] = 0;
     foreach ($video_files as $v_key => $current_video_file) {
       // Filter by first video category.
       $full_episode = _usanetwork_microsite_define_full_episode($current_video_file);
@@ -765,21 +767,22 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
         $is_full_episode = 'true';
       }
       if ($published) {
-        if ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
-          $theme_variables['more_videos'] = TRUE;
-          break;
+        if ($count < USANETWORK_MICROSITE_VIDEOS_LIMIT) {
+          $theme_variables['videos'][] = array(
+            'fid' => $current_video_file->fid,
+            'url' => $suggested_video_url,
+            'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
+            'account_id' => $account_id,
+            'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
+            'player_id' => $player_id,
+            'is_full_episode' => $is_full_episode,
+            'state' => $state,
+          );
+          $count++;
         }
-        $theme_variables['videos'][] = array(
-          'fid' => $current_video_file->fid,
-          'url' => $suggested_video_url,
-          'rendered' => drupal_render(file_view($current_video_file, 'vid_teaser_show_general')),
-          'account_id' => $account_id,
-          'video_id' => $current_video_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => $player_id,
-          'is_full_episode' => $is_full_episode,
-          'state' => $state,
-        );
-        $count++;
+        else {
+          $theme_variables['more_videos']++;
+        }
       }
     }
     // Create filter menu.
@@ -1671,6 +1674,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
   if ($files) {
     $position = 0;
     $count = 0;
+    $items = '';
     foreach ($files as $file) {
       $published = !empty($file->mpx_video_data['status']) ? $file->mpx_video_data['status'] : NULL;
       if ($published) {
@@ -1683,21 +1687,27 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
           $suggested_video_url = _usanetwork_microsite_get_suggested_video_url($file);
           $account_id = $video_account->account_pid;
           $is_full_episode = ($full_episode) ? 'true' : 'false';
-          $items[] = array(
-            'data' => drupal_render(file_view($file, 'vid_teaser_show_general')),
-            'class' =>
-              array(
-                'views-row',
-                'grid-item',
-                'thumbnail'
+          $player_id = _usanetwork_microsite_define_videoplayer($file);
+          $items .= theme('html_tag', array(
+            'element' => array(
+              '#tag' => 'li',
+              '#attributes' => array(
+                'class' =>
+                  array(
+                    'views-row',
+                    'grid-item',
+                    'thumbnail'
+                  ),
+                'data-video-url' => $suggested_video_url,
+                'data-fid' => $file->fid,
+                'data-account-id' => $account_id,
+                'data-player-id' => $player_id,
+                'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
+                'data-full-episode' => $is_full_episode,
               ),
-            'data-video-url' => $suggested_video_url,
-            'data-fid' => $file->fid,
-            'data-account-id' => $account_id,
-            'data-player-id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
-            'data-video-id' => $file->mpx_video_data['default_released_file_pid'],
-            'data-full-episode' => $is_full_episode,
-          );
+              '#value' => drupal_render(file_view($file, 'vid_teaser_show_general')),
+            ),
+          ));
           $count++;
         }
         elseif ($count >= USANETWORK_MICROSITE_VIDEOS_LIMIT) {
@@ -1708,7 +1718,7 @@ function  _usanetwork_microsite_get_videos($node, $category, $offset) {
       }
     }
     if (!empty($items)) {
-      $data['videos'] = theme('item_list', array('items' => $items));
+      $data['videos'] = $items;
     }
   }
   return $data;

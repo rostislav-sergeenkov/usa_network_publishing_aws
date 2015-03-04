@@ -85,7 +85,9 @@
             <div class="view-content">
               <div class="item-list">
                 <ul>
-                  <?php foreach ($videos as $v_key => $video): ?>
+                  <?php
+                      $video_count = count($videos);
+                      foreach ($videos as $v_key => $video): ?>
                     <?php if (!empty($video['url']) && !empty($video['rendered'])): ?>
                       <li class="thumbnail views-row grid-item <?php print $video['state']; ?>"
                           data-video-url="<?php print $video['url']; ?>"
@@ -97,7 +99,7 @@
                         <?php print $video['rendered']; ?>
                       </li>
                     <?php endif; ?>
-                    <?php if ($v_key == 1): ?><li class="thumbnail views-row grid-item ad"><div id="ad_300x250_1"></div></li><?php endif; ?>
+                    <?php if ($v_key == 1 || $video_count == 1): ?><li class="thumbnail views-row grid-item ad"><div id="ad_300x250_1"></div></li><?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               </div>

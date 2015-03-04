@@ -2,6 +2,9 @@
   Drupal.usanetwork_video_endcard = {
     'OnCountdownEnd': function(data) {
       Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, null, data);
+    },
+    'OnYmalitemnewClick': function(data) {
+      Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, null, data);
     }
   };
 

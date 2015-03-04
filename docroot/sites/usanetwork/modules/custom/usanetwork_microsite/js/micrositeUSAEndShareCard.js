@@ -132,8 +132,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
 
   NBCUEndShareCard.ReplayVideo = function(sender){
     NBCUEndShareCard.Debug("[ReplayVideo]");
-    tpController.setReleaseURL(sender.baseURI, true);
-    //tpController.clickPlayButton();
+    tpController.clickPlayButton();
     NBCUEndShareCard.HideEndCard("RP");
   };
 

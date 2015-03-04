@@ -269,11 +269,11 @@ if (typeof NBCUEndShareCard !== 'undefined') {
 
       e.preventDefault();
 
-      video_data.next_url = this.attr('href');
-      video_data.account_id = this.attr('data-account-id');
-      video_data.video_id = this.attr('data-video-id');
-      video_data.player_id = this.attr('data-player-id');
-      video_data.fid = this.attr('data-fid');
+      video_data.next_url = $(this).attr('href');
+      video_data.account_id = $(this).attr('data-account-id');
+      video_data.video_id = $(this).attr('data-video-id');
+      video_data.player_id = $(this).attr('data-player-id');
+      video_data.fid = $(this).attr('data-fid');
 
       tpController.dispatchEvent('OnYmalitemnewClick', video_data);
 

@@ -16,7 +16,6 @@
   max-width: 100%;
   overflow: hidden;
 }
-#microsite #about #about-inner-container,
 #microsite #episodes #episode-inner-container {
   width: calc(100% - 190px);
   position: relative;

@@ -580,6 +580,7 @@ you can use the generic selector below, but it's slower:
   width: 130px;
   height: 82px;
   background-image: url("../images/dig_logo.png");
+  margin: 0.67em 0 0.3em;
   cursor: pointer;
   /*opacity: 0;*/
 }
@@ -607,7 +608,7 @@ you can use the generic selector below, but it's slower:
 .page-node-microsite #left-nav #left-nav-social a {
   float: left;
   display: block;
-  margin-right: 8px;
+  margin-right: 6px;
   width: 26px;
   height: 26px;
   outline: none;

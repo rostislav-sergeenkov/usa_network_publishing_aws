@@ -11,7 +11,6 @@
 
 	Drupal.behaviors.microsite_scroll = {
 
-
 		quotationAnimation: function (listId) {
 			var fadeDuration = 1000,
 				tweenDuration = 10000,
@@ -367,7 +366,6 @@
 				selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
 				activeVideoThumb = $(selector),
 				videoContainer = $('#video-container'),
-				videoPlayer = $('#video-container .video-player'),
 				dataPlayerId = activeVideoThumb.attr('data-player-id'),
 				dataFid = activeVideoThumb.attr('data-fid'),
 				dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
@@ -382,11 +380,11 @@
 				dataFid = data.fid;
 			}
 
-			if (videoPlayer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
-				videoPlayer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
-			}
-
 			var url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
+
+			if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
+				videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
+			}
 
 			if (dataFullEpisode == 'true') {
 				if (ad_300x250_1) {
@@ -537,6 +535,46 @@
 				Drupal.behaviors.microsite_scroll.create300x250Ad(section);
 			}
 		},
+		//click Thumbnail
+		micrositeClickThumbnail : function(elem){
+			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail'),
+				refreshAdsOmniture = 0,
+				videoContainer = $('#video-container');
+			if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
+				previewItem.removeClass('active');
+				elem.addClass('active');
+				refreshAdsOmniture = 1;
+			} else {
+				if(!elem.hasClass('active')){
+					elem.addClass('active');
+				}
+				Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+				return false;
+			}
+			var siteName = Drupal.settings.microsites_settings.title,
+				basePath = Drupal.settings.microsites_settings.base_path,
+				basePageName = siteName + ' | USA Network',
+			 	dataVideoUrl = elem.attr('data-video-url'),
+				itemTitle = elem.find('.title').text(),
+				anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
+				anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
+				anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
+
+			// if this is IE9, reload the correct page
+			if ($('html.ie9').length > 0) {
+				window.location.href = anchorFull;
+				return false;
+			}
+
+			Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+			Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
+			Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
+			Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true, elem);
+			Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
+			if (refreshAdsOmniture) {
+				Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
+			}
+		},
 		//Get Thumbnail List
 		micrositeGetThumbnailList: function (url, offset) {
 			console.info(url);
@@ -545,14 +583,24 @@
 				url: url,
 				dataType: 'json',
 				success: function (data) {
-					console.info(data);
-					var videoList = data.videos;
+					var videoList = data.videos,
+						infoMore = data.info.more;
 					if(offset === 0){
 						$('#thumbnail-list .view-content').html(videoList);
 					}else{
 						$('#thumbnail-list .view-content .item-list').last().after(videoList);
 					}
-					Drupal.attachBehaviors();
+					if(infoMore != 'true'){
+						$('#thumbnail-list .pager-load-more').removeClass('active')
+					}
+
+					$('#thumbnail-list .thumbnail').unbind('click');
+					$('#thumbnail-list .thumbnail').bind('click', function(e){
+						e.preventDefault();
+						var elem = $(this);
+						tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+						Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
+					});
 				},
 				error: function () {
 					console.info('ajax error');
@@ -560,6 +608,14 @@
 			});
 		},
 		attach: function (context, settings) {
+
+			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
+			//change video on click to preview elements
+			previewItem.click(function (e) {
+				e.preventDefault();
+				var elem = $(this);
+				Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
+			});
 
 			//filters toggles
 			$('#video-filter .filter-label').click(function () {
@@ -593,9 +649,11 @@
 			// video items toggler
 			var thumbnailList = $('#thumbnail-list');
 			thumbnailList.each(function () {
-				var $self = $(this);
-				var $container = $self.find('.view-content');
-				var $toggler = $self.find('.expandable-toggle li');
+				var $self = $(this),
+				 $container = $self.find('.view-content'),
+				 pagerLoadMore = $self.find('.expandable-toggle .pager-load-more'),
+				 $toggler = $self.find('.expandable-toggle li'),
+				 categoryName = $('#video-filter .filter-item.active').text();
 
 				var i = 0;
 
@@ -606,26 +664,37 @@
 				}
 
 				$toggler.click(function () {
-					if ($toggler.text() == 'close') {
-						i = 1;
-						$container.find('.item-list').hide();
-						$container.find('.item-list:first-child').css('display', 'block');
-						$toggler.text('more');
-						$toggler.removeClass('less').addClass('more');
-						$self.removeClass('expanded');
-					} else if ($toggler.text() == 'more') {
-						$toggler.removeClass('less').addClass('more');
-						$container.find('.item-list:first-child').css('display', 'block');
-						$count = $container.find('.item-list').length - 1;
-						$container.find('.item-list:eq(' + i + ')').show();
-						if ($count == i) {
-							$toggler.text('close');
-							$toggler.addClass('less').removeClass('more');
-							$self.addClass('expanded');
-							i = 1;
-						}
-						i++;
+					var itemList = $self.find('.view-content .thumbnail').length - 1;
+
+					if(pagerLoadMore.hasClass('active')){
+
+					}else{
+						var	url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid  + '/' + categoryName + '/' + itemList;
+						Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList);
 					}
+
+
+
+					//if ($toggler.text() == 'close') {
+					//	i = 1;
+					//	$container.find('.item-list').hide();
+					//	$container.find('.item-list:first-child').css('display', 'block');
+					//	$toggler.text('more');
+					//	$toggler.removeClass('less').addClass('more');
+					//	$self.removeClass('expanded');
+					//} else if ($toggler.text() == 'more') {
+					//	$toggler.removeClass('less').addClass('more');
+					//	$container.find('.item-list:first-child').css('display', 'block');
+					//	$count = $container.find('.item-list').length - 1;
+					//	$container.find('.item-list:eq(' + i + ')').show();
+					//	if ($count == i) {
+					//		$toggler.text('close');
+					//		$toggler.addClass('less').removeClass('more');
+					//		$self.addClass('expanded');
+					//		i = 1;
+					//	}
+					//	i++;
+					//}
 				});
 			});
 
@@ -787,57 +856,8 @@
 
 				});
 			}
-
 			// setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 			setSectionHeight();
-
-			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail');
-
-			//change video on click to preview elements
-			previewItem.click(function (e) {
-				e.preventDefault();
-				var refreshAdsOmniture = 0,
-					videoContainer = $('#video-container');
-
-				if (!$(this).hasClass('active')) {
-					previewItem.removeClass('active');
-					$(this).addClass('active');
-					refreshAdsOmniture = 1;
-				} else {
-					Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
-					if (videoContainer.hasClass('pause')) {
-						$pdk.controller.clickPlayButton(true);
-						$pdk.controller.pause(false);
-					}
-					return false;
-				}
-
-				var activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
-					dataVideoUrl = activeVideoThumb.attr('data-video-url'),
-					anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
-					anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
-					itemTitle = activeVideoThumb.find('.title').text(),
-					anchorFull = basePath + '/' + anchor + '/' + dataVideoUrl;
-
-				// if this is IE9, reload the correct page
-				if ($('html.ie9').length > 0) {
-					window.location.href = anchorFull;
-					return false;
-				}
-
-				//history.pushState({"state": anchorFull}, anchorFull, anchorFull);
-				Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-				Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
-				Drupal.behaviors.microsite_scroll.micrositeChangeTitle(itemTitle, anchorSection, basePageName);
-				Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
-				Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer(true);
-				if (refreshAdsOmniture) {
-					//if(dataFullEpisode == 'false'){
-					//  Drupal.behaviors.microsite_scroll.create728x90Ad();
-					//}
-					Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
-				}
-			});
 
 			// A-SPOT AND PROMO CLICKS - DON'T REMOVE THIS!!!!
 			// @TODO: AFTER LAUNCH, RE-WRITE THE FOLLOWING

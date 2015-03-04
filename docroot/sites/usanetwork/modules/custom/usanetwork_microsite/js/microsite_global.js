@@ -328,6 +328,7 @@
       }
       $pdk.bindPlayerEvents();
       $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
     //ajax request
     micrositeGetVideo: function (url) {

@@ -371,25 +371,24 @@ you can use the generic selector below, but it's slower:
 #microsite #about .quotes {
   margin-top: 580px;
 }
-#microsite #characters .quotes {
-  width: 55%;
+#microsite #characters #character-quotes {
+  width: calc((100% - 190px) * 0.55);
   position: fixed;
-  margin-left: 190px;
   margin-top: 600px;
 }
-#microsite #characters .quotes li,
+#microsite #characters #character-quotes .quotes li,
 #microsite .left-pane .quotes li {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 6%;
   opacity: 0;
   width: 88%;
 }
-#microsite #characters .quotes li.active,
+#microsite #characters #character-quotes .quotes.active li.active,
 #microsite .left-pane .quotes li.active {
   opacity: 1;
 }
-#microsite #characters .quotes .quote-source,
+#microsite #characters #character-quotes .quotes .quote-source,
 #microsite .left-pane .quotes .quote-source {
   color: #e5ce96;
   font-size: 0.6em;

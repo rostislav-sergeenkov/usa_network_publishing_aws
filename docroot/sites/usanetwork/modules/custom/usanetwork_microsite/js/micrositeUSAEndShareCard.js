@@ -240,7 +240,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
             var rh = '';
             rh += '<div class="ymalitemwrapnew">';
             rh += '<a class="ymalitemnew" target="_parent" href="' + selectedItems[i].url + '" id="ymal-' + selectedItems[i].guid +
-            '" data-guid="' + selectedItems[i].guid + '">' +
+            '" data-guid="' + selectedItems[i].guid +
             '" data-fid="' + selectedItems[startingIndex].fid +
             '" data-account-id="' + selectedItems[startingIndex].account_id +
             '" data-video-id="' + selectedItems[startingIndex].video_id +

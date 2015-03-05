@@ -365,7 +365,7 @@
 
         },
         error: function () {
-          alert('error');
+          console.info('error');
         }
       });
 

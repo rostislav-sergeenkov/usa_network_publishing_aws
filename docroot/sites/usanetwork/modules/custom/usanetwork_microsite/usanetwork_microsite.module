@@ -1522,6 +1522,16 @@ function usanetwork_microsite_preprocess_html(&$vars) {
          ),
       );
       drupal_add_html_head($tag_card, 'microsite_video:image');
+      
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $file_video->filename,
+         ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_video:title');
       break;
     case 'characters':
       $head_title = t('Characters | ' . $title . ' | USA Network');

@@ -149,6 +149,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
       video_data.account_id = $('.ymalitemnext').attr('data-account-id');
       video_data.video_id = $('.ymalitemnext').attr('data-video-id');
       video_data.player_id = $('.ymalitemnext').attr('data-player-id');
+      video_data.fid = $('.ymalitemnext').attr('data-fid');
 
       if (video_data) {
         tpController.dispatchEvent("OnEndcardCountdownEnd", video_data);
@@ -208,6 +209,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         nr += '<div class="ymalitemwrapnext">';
         nr += '<a class="ymalitemnext" target="_parent" href="' + selectedItems[startingIndex].url + '" id="ymal-' + selectedItems[startingIndex].guid +
         '" data-guid="' + selectedItems[startingIndex].guid +
+        '" data-fid="' + selectedItems[startingIndex].fid +
         '" data-account-id="' + selectedItems[startingIndex].account_id +
         '" data-video-id="' + selectedItems[startingIndex].video_id +
         '" data-player-id="' + selectedItems[startingIndex].player_id + '">';
@@ -237,7 +239,12 @@ if (typeof NBCUEndShareCard !== 'undefined') {
             var release;
             var rh = '';
             rh += '<div class="ymalitemwrapnew">';
-            rh += '<a class="ymalitemnew" target="_parent" href="' + selectedItems[i].url + '" id="ymal-' + selectedItems[i].guid + '" data-guid="' + selectedItems[i].guid + '">';
+            rh += '<a class="ymalitemnew" target="_parent" href="' + selectedItems[i].url + '" id="ymal-' + selectedItems[i].guid +
+            '" data-guid="' + selectedItems[i].guid +
+            '" data-fid="' + selectedItems[i].fid +
+            '" data-account-id="' + selectedItems[i].account_id +
+            '" data-video-id="' + selectedItems[i].video_id +
+            '" data-player-id="' + selectedItems[i].player_id + '">';
             rh += '<img class="ymalthumbnew" src="' + NBCUEndShareCard.GetDefaultThumbnail(selectedItems[i]) + '" alt="" /><span class="ymalplay"></span>';
             rh += selectedItems[i].title;
             rh += '</a>';
@@ -256,6 +263,21 @@ if (typeof NBCUEndShareCard !== 'undefined') {
         $(".endcardymalheading").hide();
       }
     }
+
+    $('a.ymalitemnew, a.ymalitemnext').click(function(e) {
+      var video_data = {};
+
+      e.preventDefault();
+
+      video_data.next_url = $(this).attr('href');
+      video_data.account_id = $(this).attr('data-account-id');
+      video_data.video_id = $(this).attr('data-video-id');
+      video_data.player_id = $(this).attr('data-player-id');
+      video_data.fid = $(this).attr('data-fid');
+
+      tpController.dispatchEvent('OnYmalitemnewClick', video_data);
+
+    });
   };
 
   // Choose maximum three items based on show or person.

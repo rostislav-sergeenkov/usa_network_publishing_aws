@@ -1776,8 +1776,19 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_gallery_by_url($node, $args[4]);
             if(!empty($node)) {
-              $omniture_prop5 = t($entity->title . ' : ' . $node->title);
-              $omniture_pagename = t($entity->title . ' : ' . $node->title);
+              $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
+              $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+            }
+          }
+          else {
+            $galleries_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'galleries');
+            if (!empty($galleries_section_wrapper)) {
+              $galleries_section_object = $galleries_section_wrapper->value();
+              if (!empty($galleries_section_object->field_ms_media_gallery)) {
+                $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
+                $omniture_prop5 = t($entity->title . ' : Gallery : ' . $node->title);
+                $omniture_pagename = t($entity->title . ' : Gallery : ' . $node->title . ' : Photo 1');
+              }
             }
           }
           break;

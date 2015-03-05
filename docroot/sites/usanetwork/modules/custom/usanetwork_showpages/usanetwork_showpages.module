@@ -761,6 +761,10 @@ function usanetwork_showpages_preprocess_html(&$vars) {
     } else {
       $head_title = t("@video | Videos | USA Network", array('@video' => $file->filename));
     }
+    $overriden_title = field_get_items('file', $file, 'field_seo_page_title');
+    if (!empty($overriden_title[0]['value'])) {
+      $head_title = $overriden_title[0]['value'];
+    }
   }
 
   // If there are head titles print the new ones

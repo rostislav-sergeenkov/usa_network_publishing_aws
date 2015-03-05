@@ -8,6 +8,7 @@
         var $sharebar = $slider.parents('.microsite-section-container').find('.field-name-field-gigya-share-bar > div');
         if ($sharebar.length > 0) {
           var $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h2').text();
+          if ($title == '') $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h1').text();
           var $currentImage = $slider.find('.flex-active-slide .file-image img');
           var $currentCaption = $slider.find('.flex-active-slide .field-name-field-caption p').text();
 
@@ -89,6 +90,15 @@
           Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
           Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
         });
+      });
+      $(window).bind('resize', function () {
+        setTimeout(function() {
+          if ($(".gig-simpleShareUI").length > 0) {
+            var current_offset = $(".microsite-gallery").offset()['left'] + $(".microsite-gallery").width() - $(".gig-simpleShareUI").width();
+            $(".gig-simpleShareUI").css('left', current_offset);
+          }
+        }, 50);
+
       });
     }
   };

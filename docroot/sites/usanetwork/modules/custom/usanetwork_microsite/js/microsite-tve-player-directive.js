@@ -25,8 +25,7 @@
 							scope.isMobile = helper.device.isMobile;
 
 							//setTimeout(function() {
-							//	var iframeId = 'pdk-player';
-							//	_bindPlayerEvents(iframeId);
+							//	_bindPlayerEvents();
 							//}, 0);
 							/**
 							 * Bind Player Events
@@ -34,19 +33,14 @@
 							 */
 							window.$pdk.bindPlayerEvents = _bindPlayerEvents;
 
-							function _bindPlayerEvents(iframeId) {
+							function _bindPlayerEvents() {
 								//rebind $pdk each time directive is loaded
-								if(iframeId == 'pdk-player'){
-									$pdk.bind(tveConfig.PLAYER_ID);
-								}else{
-									$pdk.bind(iframeId);
-								}
+								$pdk.bind(tveConfig.PLAYER_ID);
 
 
 								$pdk.controller.addEventListener('auth_token_failed', _authzFailure);
 								$pdk.controller.addEventListener('auth_success', _authSuccess);
 								$pdk.controller.addEventListener('companion_ad', _companionAd);
-
 								$pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
 								$pdk.controller.addEventListener("OnShowProviderPicker", _showPicker);
 								$pdk.controller.addEventListener('OnMediaEnd', function(e) {
@@ -56,7 +50,12 @@
 										lastSave = null;
 									}
 								});
+
 								$pdk.controller.addEventListener('OnMediaPlaying', _onMediaPlaying);
+								$pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
+								$pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+								$pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
+
 								$pdk.controller.addEventListener('OnLoadReleaseUrl', _init);
 								//$pdk.controller.addEventListener('OnMediaError', function(e) {});
 
@@ -64,6 +63,39 @@
 								$pdk.controller.addEventListener('OnLoadRelease', function() {
 									$pdk.controller.clickPlayButton(true);
 								});
+							}
+
+							var videoContainer = $('#video-container');
+
+							function _onMediaUnpause(){
+								if(videoContainer.hasClass('pause')){
+									videoContainer.removeClass('pause');
+								}
+								if(videoContainer.attr('data-ad-start') == 'true'){
+									$('#custom-play').hide();
+								}
+								videoContainer.addClass('play');
+							}
+							function _onMediaPause(){
+								if(videoContainer.hasClass('play')){
+									videoContainer.removeClass('play');
+								}
+								if(videoContainer.attr('data-ad-start') == 'true'){
+									$('#custom-play').show();
+								}
+								videoContainer.addClass('pause');
+							}
+							function _onReleaseStart(){
+
+								videoContainer.removeClass('play pause');
+
+								if(!$('#videos').hasClass('active')){
+									$pdk.controller.clickPlayButton(false);
+									$pdk.controller.pause(true);
+									videoContainer.addClass('start pause');
+								}else{
+									videoContainer.addClass('start play');
+								}
 							}
 
 							function _showPicker() {
@@ -107,21 +139,7 @@
 							 * Media Start event callback so that we can show the metadata section
 							 */
 							function _onMediaStart(pdkEvent) {
-
 								var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
-
-								if(!$('#videos').hasClass('active')){
-									if(!$pdk.controller.clickPlayButton(false)){
-										$pdk.controller.clickPlayButton(false);
-									}else{
-										$pdk.controller.clickPlayButton(false);
-									}
-									if(!$pdk.controller.pause(true)){
-										$pdk.controller.pause(true);
-									}else{
-										$pdk.controller.pause(true);
-									}
-								}
 
 								if (!baseClip.isAd && resuming) {
 									resuming = false;
@@ -130,10 +148,10 @@
 
 								if (baseClip && pdkEvent.data.baseClip.isAd) {
 									// Functionality for ad playing event
-									$('#video-container .video-player iframe').attr('data-ad-start', 'true');
+									videoContainer.attr('data-ad-start', 'true');
 								}
 								else {
-									$('#video-container .video-player iframe').removeAttr('data-ad-start');
+									videoContainer.removeAttr('data-ad-start');
 									if($('.dart-tag').length) {
 										scope.$apply(function() {
 											scope.isFreeWheelReq = true;

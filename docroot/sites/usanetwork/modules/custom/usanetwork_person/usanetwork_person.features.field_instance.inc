@@ -1486,7 +1486,7 @@ function usanetwork_person_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 34,
+        'weight' => 35,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1520,8 +1520,8 @@ function usanetwork_person_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => 'microsite/backgrounds',
-      'file_extensions' => 'png gif jpg jpeg',
+      'file_directory' => 'person/microsite/background',
+      'file_extensions' => 'jpg jpeg png gif',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -1532,7 +1532,7 @@ function usanetwork_person_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 42,
+      'weight' => 13,
     ),
   );
 
@@ -1554,7 +1554,7 @@ function usanetwork_person_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 37,
+        'weight' => 34,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1587,8 +1587,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Character bio',
     'required' => 0,
     'settings' => array(
-      'display_summary' => 1,
-      'text_processing' => 0,
+      'display_summary' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1602,7 +1602,7 @@ function usanetwork_person_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 41,
+      'weight' => 12,
     ),
   );
 
@@ -1820,7 +1820,7 @@ function usanetwork_person_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 43,
+      'weight' => 14,
     ),
   );
 

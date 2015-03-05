@@ -833,7 +833,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'R2DIIDSpNciYjilRE5XN7LpXl9xtLzSs',
+      'guid' => '3LNQL1y4puoNX_iIGQCWiQ8OoIlXh5pG',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -841,7 +841,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'qpQU8VgA_BBWKghqU0Y1A_7_BLJfjp1d',
+      'guid' => 'fNnIQoWWBOLtNrvBtA68WgJ8TRRKY_eN',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -859,7 +859,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'ZhGWsYhW5nZnPwKcXmGLMNgfvz6_6Jg_',
+      'guid' => 'nfl5M6JKYJ32agIHRv7Noi6OQ4Gbxnkr',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -867,7 +867,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'dryylPZYUMm4uRswcEGDzk_E7SkX9V2J',
+      'guid' => '_2uEaPwwHxrR0FmUAAX83lRs4C4Y_pU6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1188,6 +1188,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
     }
   }
+  // Fill H1 tag.
+  $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
+  $h1 = _pub_mpx_get_default_mpx_values('field_seo_h1', $file, 0, 'value');
+  $vars['h1'] = !empty($h1) ? $h1 : $title;
 }
 
 /**
@@ -1913,7 +1917,11 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   $query->fields('xlt', array('link_type'));
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
-  $query->condition('xlt.link_type', 'video', '<>');
+  $query->condition(
+    db_or()
+      ->condition('xlt.link_type', 'video', '<>')
+      ->condition('xlt.link_type', NULL)
+  );
   $query->leftJoin('xmlsitemap_link_type', 'xlt', 'x.id = xlt.id AND x.type = xlt.type');
   $query->range(0, $limit);
   $query->orderBy('x.lastmod', 'DESC');
@@ -1940,5 +1948,5 @@ function usanetwork_mpx_video_nbcu_seo_xmlsitemap_filter_video_request_alter(&$a
   });
 
   // Splicing first $limit elements
-  $alter_result = array_splice($alter_result, $limit);
+  $alter_result = array_splice($alter_result, 0, $limit);
 }

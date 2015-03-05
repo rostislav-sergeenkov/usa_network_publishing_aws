@@ -148,9 +148,19 @@
           s.prop3 = 'Bio';
           s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
           if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h1').text();
           s.prop5 = siteName + ' : Bio : ' + itemTitle;
           s.pageName = s.prop5;
           pageName = itemTitle + ' | Bio | ' + pageName;
+          break;
+        case 'episodes':
+          s.prop3 = 'Episode Guide';
+          s.prop4 = siteName + ' : Episode Guide';
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h3').text();
+          if (itemTitle == '') itemTitle = $('#microsite #episodes-content #episode-info li.active > h1').text();
+          s.prop5 = siteName + ' : Episode Guide : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Episode Guide | ' + pageName;
           break;
       }
       $('title').text(pageName);

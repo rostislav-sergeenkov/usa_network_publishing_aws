@@ -1640,11 +1640,12 @@ function  usanetwork_microsite_endcard_related_items($node, $guid) {
         $account_id = $video_account->account_pid;
         $full_episode = _usanetwork_microsite_define_full_episode($related_file);
         $url_param = _usanetwork_microsite_get_suggested_video_url($related_file);
+				$player_id = _usanetwork_microsite_define_videoplayer($related_file);
         $item = array(
           'fid' => $related_file->fid,
           'account_id' => $account_id,
           'video_id' => $related_file->mpx_video_data['default_released_file_pid'],
-          'player_id' => ($full_episode) ? USANETWORK_MICROSITE_NOAUTH_PLAYER : USANETWORK_MICROSITE_USA_PLAYER,
+          'player_id' => $player_id,
           'guid' => $related_file->mpx_video_data['guid'],
           'url' => url('node/' . $node->nid . '/microsite/videos/' . $url_param, array('absolute' => TRUE)),
           'title' => $related_file->filename,

@@ -1059,7 +1059,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
 	left: 20px;
 }
 /* end */
-
 #microsite #ad_300x60_1 {
   float: right;
   margin-top: 10px;
@@ -1193,7 +1192,14 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   color: #e5ce96;
 }
 /* button more / close */
-#microsite #videos .expandable-toggle-wrap {
+#thumbnail-list .thumbnail.hidden {
+	display: none;
+}
+#microsite #videos .expandable-toggle-wrap{
+	display: none;
+}
+#microsite #videos .expandable-toggle-wrap.active,
+#microsite #videos .expandable-toggle-wrap.spoiler{
 	display: block;
 	margin-bottom: 60px;
 	margin-left: 0;

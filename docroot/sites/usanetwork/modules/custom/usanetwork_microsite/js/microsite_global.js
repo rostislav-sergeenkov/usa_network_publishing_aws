@@ -409,6 +409,9 @@
 					ad_300x250.closest('li.ad').show();
 					ad_300x250.attr('id', 'ad_300x250_1');
 				}
+				if ($('#videos').find(ad_300x250_1)) {
+					ad_300x250_1.closest('li.ad').show();
+				}
 				if (dataFullEpisode == 'false') {
 					Drupal.behaviors.microsite_scroll.create728x90Ad();
 				}
@@ -536,7 +539,7 @@
 			}
 		},
 		//click Thumbnail
-		micrositeClickThumbnail : function(elem){
+		micrositeClickThumbnail: function (elem) {
 			var previewItem = $('#thumbnail-list .item-list ul li.thumbnail'),
 				refreshAdsOmniture = 0,
 				videoContainer = $('#video-container');
@@ -545,7 +548,7 @@
 				elem.addClass('active');
 				refreshAdsOmniture = 1;
 			} else {
-				if(!elem.hasClass('active')){
+				if (!elem.hasClass('active')) {
 					elem.addClass('active');
 				}
 				Drupal.behaviors.microsite_scroll.micrositeScrollToTop();
@@ -554,7 +557,7 @@
 			var siteName = Drupal.settings.microsites_settings.title,
 				basePath = Drupal.settings.microsites_settings.base_path,
 				basePageName = siteName + ' | USA Network',
-			 	dataVideoUrl = elem.attr('data-video-url'),
+				dataVideoUrl = elem.attr('data-video-url'),
 				itemTitle = elem.find('.title').text(),
 				anchor = $('#left-nav-links-list li.internal.active').attr('data-menuanchor'),
 				anchorSection = $('#left-nav-links-list li.internal.active').find('.scroll-link').text(),
@@ -575,6 +578,12 @@
 				Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 			}
 		},
+		//AD 300x250 with class ADDED
+		micrositeAdAdded : function () {
+			if(($('#videos .video-no-auth-player-wrapper').hasClass('active-player')) && ($('#thumbnail-list .thumbnail.ad').hasClass('added'))){
+				$('#thumbnail-list .thumbnail.ad').removeClass('added').show();
+			}
+		},
 		//Get Thumbnail List
 		micrositeGetThumbnailList: function (url, offset) {
 			console.info(url);
@@ -583,19 +592,45 @@
 				url: url,
 				dataType: 'json',
 				success: function (data) {
+
 					var videoList = data.videos,
-						infoMore = data.info.more;
-					if(offset === 0){
-						$('#thumbnail-list .view-content').html(videoList);
-					}else{
-						$('#thumbnail-list .view-content .item-list').last().after(videoList);
-					}
-					if(infoMore != 'true'){
-						$('#thumbnail-list .pager-load-more').removeClass('active')
+						infoMore = data.info.more,
+						adBlock = $('#thumbnail-list .thumbnail.ad');
+
+					if (offset === 0) {
+						$('#thumbnail-list .view-content .item-list ul').html(videoList);
+					} else {
+						$('#thumbnail-list .thumbnail').last().after(videoList);
 					}
 
-					$('#thumbnail-list .thumbnail').unbind('click');
-					$('#thumbnail-list .thumbnail').bind('click', function(e){
+					var thumbnail = $('#thumbnail-list .thumbnail');
+
+					if(!thumbnail.hasClass('ad')){
+						if (thumbnail.eq(1)){
+							thumbnail.eq(1).after(adBlock);
+						}else {
+							thumbnail.last().after(adBlock);
+						}
+						adBlock.addClass('added').hide();
+					}
+
+					if (infoMore.toString() === 'false') {
+						if(thumbnail.length < 11){
+							$('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
+							$('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
+						}else{
+							$('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
+							$('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
+							$('#thumbnail-list').addClass('expanded');
+						}
+
+					} else {
+						$('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
+						$('#thumbnail-list').removeClass('expanded');
+					}
+
+					thumbnail.unbind('click');
+					thumbnail.bind('click', function (e) {
 						e.preventDefault();
 						var elem = $(this);
 						tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
@@ -603,7 +638,7 @@
 					});
 				},
 				error: function () {
-					console.info('ajax error');
+					console.info('ajax request error');
 				}
 			});
 		},
@@ -625,8 +660,8 @@
 			$('#video-filter .filter-item').click(function () {
 
 				var filterLabel = $('#video-filter .filter-label'),
-				 filterItem = $('#video-filter .filter-item'),
-				 filterMenu = $('#video-filter .filter-menu');
+					filterItem = $('#video-filter .filter-item'),
+					filterMenu = $('#video-filter .filter-menu');
 
 				if ($(this).hasClass('active')) {
 					filterLabel.removeClass('open');
@@ -640,7 +675,11 @@
 
 					var categoryName = $('#video-filter .filter-item.active').text(),
 						offset = 0,
-						url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid  + '/' + categoryName + '/' + offset;
+						url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
+
+					$('#thumbnail-list .expandable-toggle li').text('more');
+					$('#thumbnail-list .expandable-toggle li').removeClass('less').addClass('more');
+					$('#thumbnail-list').removeClass('expanded');
 
 					Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, offset);
 				}
@@ -650,51 +689,45 @@
 			var thumbnailList = $('#thumbnail-list');
 			thumbnailList.each(function () {
 				var $self = $(this),
-				 $container = $self.find('.view-content'),
-				 pagerLoadMore = $self.find('.expandable-toggle .pager-load-more'),
-				 $toggler = $self.find('.expandable-toggle li'),
-				 categoryName = $('#video-filter .filter-item.active').text();
-
-				var i = 0;
-
-				if ($toggler.text() != 'more') {
-					$toggler.addClass('less').text('close');
-					$self.addClass('expanded');
-					i = 1;
-				}
+					expandableToggle = $self.find('.expandable-toggle-wrap'),
+					$toggler = $self.find('.expandable-toggle li');
 
 				$toggler.click(function () {
-					var itemList = $self.find('.view-content .thumbnail').length - 1;
 
-					if(pagerLoadMore.hasClass('active')){
+					var itemList = $self.find('.view-content .thumbnail').length - 1,
+						categoryName = $('#video-filter .filter-item.active').text();
 
-					}else{
-						var	url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid  + '/' + categoryName + '/' + itemList;
+					if (expandableToggle.hasClass('active')) {
+
+						var url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + itemList;
 						Drupal.behaviors.microsite_scroll.micrositeGetThumbnailList(url, itemList);
+
+					} else if (expandableToggle.hasClass('spoiler')) {
+
+						if ($toggler.text() == 'close') {
+
+							var index = $('#thumbnail-list .thumbnail.hidden').index() + 11;
+
+							$('#thumbnail-list .thumbnail:gt(11)').addClass('hidden');
+							$('#thumbnail-list .thumbnail:lt(' + index + ')').removeClass('hidden');
+							$toggler.text('more');
+							$toggler.removeClass('less').addClass('more');
+							$self.removeClass('expanded');
+
+						} else if ($toggler.text() == 'more') {
+
+							var index = $('#thumbnail-list .thumbnail.hidden').index() + 12;
+
+							$('#thumbnail-list .thumbnail:lt(' + index + ')').removeClass('hidden');
+							index = $('#thumbnail-list .thumbnail.hidden').index();
+
+							if (index == -1) {
+								$toggler.text('close');
+								$toggler.removeClass('more').addClass('less');
+								$self.removeClass('expanded');
+							}
+						}
 					}
-
-
-
-					//if ($toggler.text() == 'close') {
-					//	i = 1;
-					//	$container.find('.item-list').hide();
-					//	$container.find('.item-list:first-child').css('display', 'block');
-					//	$toggler.text('more');
-					//	$toggler.removeClass('less').addClass('more');
-					//	$self.removeClass('expanded');
-					//} else if ($toggler.text() == 'more') {
-					//	$toggler.removeClass('less').addClass('more');
-					//	$container.find('.item-list:first-child').css('display', 'block');
-					//	$count = $container.find('.item-list').length - 1;
-					//	$container.find('.item-list:eq(' + i + ')').show();
-					//	if ($count == i) {
-					//		$toggler.text('close');
-					//		$toggler.addClass('less').removeClass('more');
-					//		$self.addClass('expanded');
-					//		i = 1;
-					//	}
-					//	i++;
-					//}
 				});
 			});
 
@@ -856,6 +889,7 @@
 
 				});
 			}
+
 			// setTimeout(setSectionHeight, 2000); // @TODO: do we need a timeout here to allow some content like carousels to render?
 			setSectionHeight();
 

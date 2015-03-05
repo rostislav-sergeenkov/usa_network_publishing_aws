@@ -104,10 +104,10 @@
                 </ul>
               </div>
             </div>
-						<div class="expandable-toggle-wrap">
+						<div class="expandable-toggle-wrap <?php if (!empty($more_videos)): ?>active<?php endif; ?>">
 							<div class="expandable-toggle">
 								<div class="item-list">
-									<ul class="pager pager-load-more<?php if (!empty($more_videos)): ?> active<?php endif; ?>">
+									<ul class="pager pager-load-more">
 										<li class="pager-next first last more">more</li>
 									</ul>
 								</div>

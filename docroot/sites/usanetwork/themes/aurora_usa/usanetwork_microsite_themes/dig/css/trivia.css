@@ -266,7 +266,7 @@
   position: absolute;
   right: 10px;
   top: 10px;
-  color: #000;
+  color: #FFF;
 }
 @media (max-width: 1245px) {
   #games #trivia-nav {

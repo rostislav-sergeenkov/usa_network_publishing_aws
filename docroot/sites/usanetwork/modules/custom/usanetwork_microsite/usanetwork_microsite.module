@@ -1161,6 +1161,20 @@ function _usanetwork_microsite_get_theme_variables($node) {
     $theme_variables['sections'] = $pages;
     $theme_variables['games'] = $games;
 
+    // @TODO: get quiz info dynamically!!
+    $theme_variables['quizzes'] = array(
+      0 => array(
+        'nid' => '51506',
+        'title' => 'Suits Quiz - Trivia Questions Season 3 | USA Network',
+        'url' => 'suits-quiz---trivia-questions-season-3-|-usa-network',
+      ),
+      1 => array(
+        'nid' => '51811',
+        'title' => 'Suits Which Character Are You?',
+        'url' => 'suits-which-character-are-you',
+      ),
+    );
+
     end($theme_variables['sections']);
     $last_section_key = key($theme_variables['sections']);
     $theme_variables['footer'] = _usanetwork_microsite_get_footer();

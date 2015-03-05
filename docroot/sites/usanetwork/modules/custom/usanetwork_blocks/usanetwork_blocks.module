@@ -69,6 +69,11 @@ function usanetwork_blocks_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['usa_footer_promos'] = array(
+    'info' => t('Usanetwork Footer: Promo links'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
   return $blocks;
 }
 
@@ -142,6 +147,11 @@ function usanetwork_blocks_block_view($delta) {
         ),
       );
       break;
+
+    case 'usa_footer_promos':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_blocks_usa_footer_promos_block_content();
+      break;
   }
   return $block;
 }
@@ -176,7 +186,147 @@ function usanetwork_blocks_theme($existing, $type, $theme, $path) {
       'path' => $path . '/theme',
       'template' => 'usa-detect-ieversion',
     ),
+    'usa_footer_promos' => array(
+      'variables' => array(
+        'links' => array(
+          0 => array(
+            'image_url' => NULL,  // URL of image
+            'url' => NULL,        // URL of link
+            'title' => NULL,      // Title of link
+            'class' => NULL,      // Additional classes of link
+            'column' => NULL,     // Number of column of link wrapper
+            'target' => NULL,     // Value of "target" attribute of link
+          ),
+        ),
+        'columns' => NULL,
+      ),
+      'path' => $path . '/theme',
+      'template' => 'usa-footer-promos',
+    ),
   );
+}
+
+/**
+ *  Implements hook_image_default_styles().
+ */
+function usanetwork_blocks_image_default_styles() {
+  $styles = array();
+
+  $styles['usa_footer_promos_link_image'] = array(
+    'label' => t('Usanetwork footer: promo link image'),
+    'effects' => array(
+      0 => array(
+        'label' => 'Scale and crop',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 48,
+          'height' => 48,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_blocks_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $footer_promo_links = variable_get('usa_footer_promos_links', array());
+
+  // Determinate default number of fields
+  if (empty($form_state['links_number'])) {
+    $form_state['links_number'] = 1;
+  }
+
+  $form['footer']['promo_links'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Promo links'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#prefix' => '<div id="usanetwork-footer-promo-links-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  // Increment the number with links that already saved
+  if (!empty($footer_promo_links)) {
+    $form_state['links_number'] += count($footer_promo_links);
+  }
+
+  // Add new form elements with saved links
+  for ($i = 0; $i < $form_state['links_number']; $i++) {
+    $array_element = _usanetwork_blocks_usa_footer_links_get_empty_fieldset_item($i, $footer_promo_links);
+
+    array_push($form['footer']['promo_links'], $array_element);
+  }
+
+  // Add "Add more" button
+  $form['footer']['promo_links']['add_more'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add more'),
+    '#submit' => array('ajax_usanetwork_blocks_usa_footer_links_add_more'),
+    '#ajax' => array(
+      'callback' => 'ajax_usanetwork_blocks_usa_footer_links_callback',
+      'wrapper' => 'usanetwork-footer-promo-links-wrapper',
+    ),
+  );
+
+  // Add "Remove last" button
+  if ($form_state['links_number'] > 1) {
+    $form['footer']['promo_links']['remove_item'] = array(
+      '#type' => 'submit',
+      '#value' => t('Remove last'),
+      '#submit' => array('ajax_usanetwork_blocks_usa_footer_links_remove'),
+      '#ajax' => array(
+        'callback' => 'ajax_usanetwork_blocks_usa_footer_links_callback',
+        'wrapper' => 'usanetwork-footer-promo-links-wrapper',
+      ),
+    );
+  }
+
+  $form['#submit'][] = 'usanetwork_blocks_form_usanetwork_settings_form_submit';
+}
+
+/**
+ * Implements hook_form_submit() for usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function usanetwork_blocks_form_usanetwork_settings_form_submit(&$form, &$form_state) {
+  global $user;
+
+  if (!empty($form_state['values'])) {
+    $footer_promo_links = array();
+
+    foreach ($form_state['values'] as $value_name => $value) {
+      $matches = array();
+
+      if (preg_match("/^usa_promo_links_link_(\d+)_(.+)$/", $value_name, $matches)) {
+        if ($matches[2] == 'image' && !empty($value)) {
+          $file = file_load($value);
+          $file->status = FILE_STATUS_PERMANENT;
+          file_save($file);
+          file_usage_add($file, 'user', 'user', $user->uid);
+        }
+
+        $footer_promo_links[$matches[1]][$matches[2]] = $value;
+      }
+    }
+  }
+
+  // Remove empty items
+  foreach ($footer_promo_links as $index => $footer_promo_link) {
+    if (empty($footer_promo_link['title']) || $footer_promo_link['image'] == 0) {
+      unset($footer_promo_links[$index]);
+    }
+  }
+
+  variable_set('usa_footer_promos_links', $footer_promo_links);
 }
 
 /**
@@ -457,4 +607,177 @@ function usanetwork_blocks_usa_follow_block() {
   $output .= '</div>';
 
   return $output;
+}
+
+/**
+ * Returns content for usa_footer_promos block.
+ */
+function _usanetwork_blocks_usa_footer_promos_block_content() {
+  if (arg(0) == 'admin') {
+    return '';
+  }
+
+  $theme_variables = array();
+  $footer_promo_links = variable_get('usa_footer_promos_links', array());
+
+  // Sort according weight
+  if (!empty($footer_promo_links)) {
+    $column_index = 0;
+
+    usort($footer_promo_links, function($a, $b) {
+      if (!isset($a['weight'])) {
+        $a['weight'] = 0;
+      }
+      if (!isset($b['weight'])) {
+        $b['weight'] = 0;
+      }
+
+      if ($a['weight'] > $b['weight']) {
+        return 1;
+      }
+      elseif ($a['weight'] < $b['weight']) {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    foreach ($footer_promo_links as $footer_promo_link) {
+      $image_file = NULL;
+
+      if (!empty($footer_promo_link['image'])) {
+        $image_file = file_load($footer_promo_link['image']);
+      }
+
+      $theme_variables['links'][] = array(
+        'image_url' => !empty($image_file)
+          ? image_style_url('usa_footer_promos_link_image', $image_file->uri)
+          : NULL,
+        'target_url' => !empty($footer_promo_link['url'])
+          ? $footer_promo_link['url']
+          : NULL,
+        'title' => !empty($footer_promo_link['title'])
+          ? $footer_promo_link['title']
+          : NULL,
+        'class' => !empty($footer_promo_link['class'])
+          ? $footer_promo_link['class']
+          : NULL,
+        'target' => !empty($footer_promo_link['target'])
+          ? $footer_promo_link['target']
+          : '_tab',
+        'column' => $column_index++,
+      );
+    }
+  }
+
+  $theme_variables['columns'] = count($footer_promo_links);
+
+  return theme('usa_footer_promos', $theme_variables);
+}
+
+/**
+ * Returns an empty form element for adding a new footer promo link in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function _usanetwork_blocks_usa_footer_links_get_empty_fieldset_item($i, $footer_promo_links) {
+  $data = array(
+    'link_' . $i => array(
+      '#type' => 'fieldset',
+      'usa_promo_links_link_' . $i . '_title' => array(
+        '#type' => 'textfield',
+        '#title' => t('Title'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['title'])
+          ? $footer_promo_links[$i]['title']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_url' => array(
+        '#type' => 'textfield',
+        '#title' => t('URL'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['url'])
+          ? $footer_promo_links[$i]['url']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_target' => array(
+        '#type' => 'select',
+        '#title' => t('Target'),
+        '#description' => t('Value of "target" attribute of link'),
+        '#options' => array(
+          '_blank' => t('New window'),
+          '_tab' => t('New tab'),
+          '_self' => t('Current window'),
+        ),
+        '#required' => FALSE,
+        '#default_value' =>!empty($footer_promo_links[$i]['target'])
+          ? $footer_promo_links[$i]['target']
+          : '_tab',
+      ),
+      'usa_promo_links_link_' . $i . '_image' => array(
+        '#type' => 'managed_file',
+        '#title' => t('Image'),
+        '#progress_message' => t('Please wait...'),
+        '#progress_indicator' => 'bar',
+        '#required' => FALSE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array(
+            'jpeg jpg png gif'
+          ),
+        ),
+        '#upload_location' => 'public://footer_promo_links/',
+        '#default_value' => !empty($footer_promo_links[$i]['image'])
+          ? $footer_promo_links[$i]['image']
+          : NULL,
+      ),
+      'usa_promo_links_link_' . $i . '_class' => array(
+        '#type' => 'textfield',
+        '#title' => t('Classes'),
+        '#description' => t('Enumerate classes that should be added to link'),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['class'])
+          ? $footer_promo_links[$i]['class']
+          : '',
+      ),
+      'usa_promo_links_link_' . $i . '_weight' => array(
+        '#type' => 'select',
+        '#title' => t('Weight'),
+        '#description' => t('Link with lesser number displays first'),
+        '#options' => array(),
+        '#required' => FALSE,
+        '#default_value' => !empty($footer_promo_links[$i]['weight'])
+          ? $footer_promo_links[$i]['weight']
+          : 0,
+      ),
+    ),
+  );
+
+  for ($weight = -10; $weight <= 10; $weight++) {
+    $data['link_' . $i]['usa_promo_links_link_' . $i . '_weight']['#options'][$weight] = $weight;
+  }
+
+  return $data;
+}
+
+/**
+ * Increments the number of footer promo links in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_add_more($form, &$form_state) {
+  $form_state['links_number']++;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Decrements the number of footer promo links in usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_remove($form, &$form_state) {
+  if ($form_state['links_number'] > 1) {
+    $form_state['links_number']--;
+  }
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Footer promo links ajax-callback of usanetwork_blocks_form_usanetwork_settings_form_alter().
+ */
+function ajax_usanetwork_blocks_usa_footer_links_callback($form, $form_state) {
+  return $form['footer']['promo_links'];
 }

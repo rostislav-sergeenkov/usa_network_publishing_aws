@@ -96,63 +96,63 @@
 			return '';
 		},
 
-		// OMNITURE
-		// setOmnitureData
-		micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
-			var anchor = anchor || null,
-				itemTitle = itemTitle || '',
-				siteName = Drupal.settings.microsites_settings.title,
-				basePageName = siteName + ' | USA Network';
-			if (!anchor) {
-				var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
-				anchor = sectionData['section'];
-				if (sectionData['item'] != '') itemTitle = Drupal.behaviors.microsite_scroll.micrositeGetItemTitle(sectionData['item']);
-			}
-			var sectionTitle = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor),
-				pageName = basePageName;
-			s.pageName = siteName;
-			s.prop3 = sectionTitle;
-			s.prop4 = siteName + ' : ' + sectionTitle;
-			s.prop5 = s.prop4;
-			if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
-				pageName = sectionTitle + ' | ' + pageName;
-				s.pageName += ' : ' + sectionTitle;
-			}
-			if ((anchor == 'home') || (anchor == 'about')) {
-				pageName = 'Dig Deeper | '  + pageName;
-			}
-			if (itemTitle != '') {
-				pageName = itemTitle + ' | ' + pageName;
-				s.pageName += ' : ' + itemTitle;
-			}
-			switch (anchor) {
-				case 'videos':
-					s.prop3 = 'Video';
-					s.prop4 = siteName + ' : Video';
-					if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
-					s.prop5 = siteName + ' : Video : ' + itemTitle;
-					s.pageName = s.prop5;
-					pageName = itemTitle + ' | Video | ' + pageName;
-					break;
-				case 'galleries':
-					s.prop3 = 'Gallery';
-					s.prop4 = siteName + ' : Gallery';
-					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
-					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
-					s.prop5 = siteName + ' : Gallery : ' + itemTitle;
-					s.pageName = s.prop5 + ' : Photo 1';
-					pageName = itemTitle + ' | Gallery | ' + pageName;
-					break;
-				case 'characters':
-					s.prop3 = 'Bio';
-					s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
-					if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
-					s.prop5 = siteName + ' : Bio : ' + itemTitle;
-					s.pageName = s.prop5;
-					pageName = itemTitle + ' | Bio | ' + pageName;
-					break;
-			}
-			$('title').text(pageName);
+    // OMNITURE
+    // setOmnitureData
+    micrositeSetOmnitureData: function setOmnitureData(anchor, itemTitle) {
+      var anchor = anchor || null,
+        itemTitle = itemTitle || '',
+        siteName = Drupal.settings.microsites_settings.title,
+        basePageName = siteName + ' | USA Network';
+      if (!anchor) {
+        var sectionData = Drupal.behaviors.microsite_scroll.micrositeParseUrl();
+        anchor = sectionData['section'];
+        if (sectionData['item'] != '') itemTitle = Drupal.behaviors.microsite_scroll.micrositeGetItemTitle(sectionData['item']);
+      }
+      var sectionTitle = Drupal.behaviors.microsite_scroll.micrositeToTitleCase(anchor),
+        pageName = basePageName;
+      s.pageName = siteName;
+      s.prop3 = sectionTitle;
+      s.prop4 = siteName + ' : ' + sectionTitle;
+      s.prop5 = s.prop4;
+      if ((anchor != 'home') && (anchor != 'characters') && (anchor != 'videos') && (anchor != 'galleries')) {
+        pageName = sectionTitle + ' | ' + pageName;
+        s.pageName += ' : ' + sectionTitle;
+      }
+      if ((anchor == 'home') || (anchor == 'about')) {
+        pageName = 'Dig Deeper | '  + pageName;
+      }
+      if (itemTitle != '') {
+        pageName = itemTitle + ' | ' + pageName;
+        s.pageName += ' : ' + itemTitle;
+      }
+      switch (anchor) {
+        case 'videos':
+          s.prop3 = 'Video';
+          s.prop4 = siteName + ' : Video';
+          if (itemTitle == '') itemTitle = $('#microsite #videos-content .video-title').text();
+          s.prop5 = siteName + ' : Video : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Video | ' + pageName;
+          break;
+        case 'galleries':
+          s.prop3 = 'Gallery';
+          s.prop4 = siteName + ' : Gallery';
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
+          s.prop5 = siteName + ' : Gallery : ' + itemTitle;
+          s.pageName = s.prop5 + ' : Photo 1';
+          pageName = itemTitle + ' | Gallery | ' + pageName;
+          break;
+        case 'characters':
+          s.prop3 = 'Bio';
+          s.prop4 = siteName + ' : Profile Page'; // This is intentional per Loretta!
+          if (itemTitle == '') itemTitle = $('#microsite #characters-content #character-info li.active > h3').text();
+          s.prop5 = siteName + ' : Bio : ' + itemTitle;
+          s.pageName = s.prop5;
+          pageName = itemTitle + ' | Bio | ' + pageName;
+          break;
+      }
+      $('title').text(pageName);
 
 			if (typeof s_gi != 'undefined') {
 				void(s.t()); // omniture page call

@@ -85,7 +85,7 @@
       var itemTitle = itemTitle || '',
           siteName = Drupal.behaviors.microsite_episodes.siteName,
           pageName = Drupal.behaviors.microsite_episodes.basePageName,
-          sectionTitle = 'Episodes',
+          sectionTitle = 'Episode Guide',
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;
@@ -93,6 +93,7 @@
       if (itemTitle != '') {
         pageName = itemTitle + ' | ' + pageName;
         s.pageName += ' : ' + itemTitle;
+        s.prop5 += ' : ' + itemTitle;
       }
       $('title').text(pageName);
 
@@ -132,11 +133,13 @@
             nextItemNum = nextItem.index(),
             nextEpisodeId = (nextItemId != null) ? nextItemId.replace('nav-', '') : null,
             nextEpisodeClass = (nextItemId != null) ? nextItemId.replace('#', '') : null,
+            nextEpisodeTitle = $('#' + nextEpisodeId + ' > h3').text(),
             nextEpisodeInfoHeight = nextItem.height(),
             direction = (nextItemNum > currentItemNum) ? 'next' : 'prev',
             sign = (direction == 'next') ? '-' : '',
             oppositeSign = (direction == 'next') ? '' : '-',
             activeSection = $('#microsite #sections > .active').attr('id');
+        if (nextEpisodeTitle == '') nextEpisodeTitle = $('#' + nextEpisodeId + ' > h1').text();
 
         if (nextEpisodeId && currentEpisodeId) {
           if (nextEpisodeId == currentEpisodeId) {
@@ -148,7 +151,7 @@
               Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
             }
             else {
-              Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+              Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
               Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
             }
 
@@ -186,7 +189,7 @@
                     Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
                   }
                   else {
-                    Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+                    Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                     Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                   }
 
@@ -226,7 +229,7 @@
                       Drupal.behaviors.microsite_scroll.micrositeSectionScroll('episodes', nextItemId);
                     }
                     else {
-                      Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData($('#' + nextEpisodeId + ' > h3').text());
+                      Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
                       Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
                     }
 

@@ -854,7 +854,7 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
   $file_wrapper = entity_metadata_wrapper('file', $file);
 
   $is_full = _usanetwork_microsite_define_full_episode($file);
-  
+
   return array(
     'title' => !empty($file->field_mpx_title)
       ? $file_wrapper->field_mpx_title->value()
@@ -868,10 +868,10 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
     'episode_number' => !empty($file->field_mpx_episode_number)
       ? $file_wrapper->field_mpx_episode_number->value()
       : NULL,
-    'duration' => (!$is_full) 
+    'duration' => (!$is_full)
       ? ( !empty($file->field_mpx_duration)
         ? gmdate("H:i:s", $file_wrapper->field_mpx_duration->value())
-        : NULL ) 
+        : NULL )
       : NULL,
   );
 }
@@ -1565,7 +1565,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       }
       break;
     case 'episodes':
-      $head_title = t('Episodes | ' . $title . ' | USA Network');
+      $head_title = t('Episode Guide | ' . $title . ' | USA Network');
       if(isset($args[4])) {
         $episode_node = _usanetwork_microsite_get_episode_by_url($node, $args[4]);
         $head_title = _usanetwork_microsite_set_title_and_description($episode_node, $head_title);
@@ -1782,12 +1782,12 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           }
           break;
         case 'episodes':
-          $omniture_prop3 = 'Episode';
+          $omniture_prop3 = 'Episode Guide';
           if(isset($args[4])) {
             $node = _usanetwork_microsite_get_episode_by_url($node, $args[4]);
             if(!empty($node)) {
-              $omniture_prop5 = $entity->title . ' : Episode : ' .  $node->title;
-              $omniture_pagename = $entity->title . ' : Episode : ' . $node->title;
+              $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
+              $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
             }
           }
           break;

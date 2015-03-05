@@ -264,7 +264,7 @@ if (typeof NBCUEndShareCard !== 'undefined') {
       }
     }
 
-    $('a.ymalitemnew').click(function(e) {
+    $('a.ymalitemnew, a.ymalitemnext').click(function(e) {
       var video_data = {};
 
       e.preventDefault();

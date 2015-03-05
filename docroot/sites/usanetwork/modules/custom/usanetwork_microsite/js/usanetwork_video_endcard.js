@@ -2,8 +2,9 @@
   Drupal.usanetwork_video_endcard = {
     'GetAnchors': function(data) {
       var next_url_splited = data.data.next_url.split('/'),
-          anchor = next_url_splited[next_url_splited.length];
-          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor;
+          anchor = next_url_splited[next_url_splited.length - 2],
+          dataVideoUrl = next_url_splited[next_url_splited.length - 1],
+          anchorFull = Drupal.settings.microsites_settings.base_path + '/' + anchor + '/' + dataVideoUrl;
 
       return [anchor, anchorFull];
     },

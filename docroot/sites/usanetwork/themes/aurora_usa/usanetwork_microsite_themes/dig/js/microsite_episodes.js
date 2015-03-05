@@ -85,7 +85,7 @@
       var itemTitle = itemTitle || '',
           siteName = Drupal.behaviors.microsite_episodes.siteName,
           pageName = Drupal.behaviors.microsite_episodes.basePageName,
-          sectionTitle = 'Episodes',
+          sectionTitle = 'Episode Guide',
           pageName = sectionTitle + ' | ' + pageName;
       s.pageName = siteName + ' : ' + sectionTitle;
       s.prop3 = sectionTitle;

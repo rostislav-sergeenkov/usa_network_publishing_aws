@@ -157,7 +157,11 @@
         callback();
 
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
-          activeGalleryMeta.find('h2').text(data.title);
+          if (activeGalleryMeta.find('h2').length > 0) {
+            activeGalleryMeta.find('h2').text(data.title);
+          } else {
+            activeGalleryMeta.find('h1').text(data.title);
+          }
           activeGallery.find('.center-wrapper').html(data.rendered);
           activeGallery.find('.flexslider').height(activeGalleryHeight);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();

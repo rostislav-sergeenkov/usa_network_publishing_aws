@@ -11,7 +11,7 @@
 
 	Drupal.behaviors.microsite_scroll = {
 
-		quotationAnimation: function (listId) {
+		quotationAnimation: function(listId) {
 			var fadeDuration = 1000,
 				tweenDuration = 10000,
 				list = $('#microsite ' + listId),
@@ -22,10 +22,10 @@
 
 				function cycleThru() {
 					$(listId + ' li:eq(' + j + ')')
-						.animate({'opacity': '1'}, fadeDuration)
+						.animate({'opacity' : '1'} , fadeDuration)
 						.delay(tweenDuration)
-						.animate({'opacity': '0'}, fadeDuration, function () {
-							(j == jmax) ? j = 0 : j++;
+						.animate({'opacity' : '0'}, fadeDuration, function(){
+							(j == jmax) ? j=0 : j++;
 //usa_debug('*****************\nquotationAnimation\nstop: ' + Drupal.behaviors.microsite_scroll.quotationAnimationStop + ', listId: ' + listId + ', j: ' + j);
 							if (!Drupal.behaviors.microsite_scroll.quotationAnimationStop) cycleThru();
 						});
@@ -73,7 +73,6 @@
 
 		// change url address
 		micrositeChangeUrl: function changeUrl(anchor, anchorFull) {
-
 			var basePath = Drupal.settings.microsites_settings.base_path;
 
 			// if this is IE9, reload the correct page
@@ -120,7 +119,7 @@
 				s.pageName += ' : ' + sectionTitle;
 			}
 			if ((anchor == 'home') || (anchor == 'about')) {
-				pageName = 'Dig Deeper | ' + pageName;
+				pageName = 'Dig Deeper | '  + pageName;
 			}
 			if (itemTitle != '') {
 				pageName = itemTitle + ' | ' + pageName;
@@ -139,6 +138,7 @@
 					s.prop3 = 'Gallery';
 					s.prop4 = siteName + ' : Gallery';
 					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+					if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
 					s.prop5 = siteName + ' : Gallery : ' + itemTitle;
 					s.pageName = s.prop5 + ' : Photo 1';
 					pageName = itemTitle + ' | Gallery | ' + pageName;
@@ -193,6 +193,10 @@
 			if ($('#microsite #characters #character-background li').length > 0) {
 				$('#microsite #characters #character-background li').css('position', 'absolute');
 			}
+			// prep episode section background for move
+			if ($('#microsite #episodes #episode-background li').length > 0) {
+				$('#microsite #episodes #episode-background li').css('position', 'absolute');
+			}
 			$(nextSection).addClass('transition').css({'top': direction + sectionHeight + 'px'}).show().animate({'top': '0'}, 1000, 'jswing', function () {
 				$('.section-info').removeClass('active');
 				$(nextSection).addClass('active').removeClass('transition');
@@ -200,16 +204,16 @@
 				var videoContainer = $('#video-container');
 
 				if ($(nextSection).attr('id') == 'videos') {
-					if (!videoContainer.hasClass('active')) {
+					if(!videoContainer.hasClass('active')){
 						videoContainer.addClass('active');
 						Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer();
 					}
 				}
 				if ($(nextSection).attr('id') != 'videos') {
 					Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
-					if (videoContainer.attr('data-ad-start') == 'true') {
+					if(videoContainer.attr('data-ad-start') == 'true'){
 						videoContainer.find('.active-player .custom-play').addClass('active').show();
-						videoContainer.find('.active-player .custom-play').click(function () {
+						videoContainer.find('.active-player .custom-play').click(function(){
 							$pdk.controller.clickPlayButton(true);
 							$pdk.controller.pause(false);
 							$('.active-player .custom-play').removeClass('active').hide();
@@ -220,7 +224,7 @@
 				// start quotation animations
 				if ($(nextSection).attr('id') == 'about' || $(nextSection).attr('id') == 'characters') {
 					Drupal.behaviors.microsite_scroll.quotationAnimationStop = false;
-//          Drupal.behaviors.microsite_scroll.quotationAnimation('#' + $(nextSection).attr('id') + ' .quotes.active');
+//          Drupal.behaviors.microsite_scroll.quotationAnimation('#' + nextSectionId + ' .quotes.active');
 				}
 
 				Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
@@ -235,6 +239,10 @@
 				// return character section background to fixed
 				if ($('#microsite #characters #character-background li').length > 0) {
 					$('#microsite #characters #character-background li').css('position', 'fixed');
+				}
+				// return episode section background to fixed
+				if ($('#microsite #episodes #episode-background li').length > 0) {
+					$('#microsite #episodes #episode-background li').css('position', 'fixed');
 				}
 
 			});
@@ -314,11 +322,13 @@
 			return {'section': activeSection, 'item': activeItem};
 		},
 		//player init bind
-		micrositePlayerBind: function () {
+		micrositePlayerBind: function(){
 			for (key in $pdk.controller.listeners) {
 				delete $pdk.controller.listeners[key];
 			}
 			$pdk.bindPlayerEvents();
+			$pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+			tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
 		},
 		//ajax request
 		micrositeGetVideo: function (url) {
@@ -339,12 +349,12 @@
 						description = data.description_template,
 						player = data.player;
 
-					if (playerAuth.hasClass('active-player')) {
+					if(playerAuth.hasClass('active-player')){
 						playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerAuth.find('#player .loginButton').html(image);
 						playerAuth.find(playerWrap).html(player);
 					}
-					if (playerNoAuth.hasClass('active-player')) {
+					if(playerNoAuth.hasClass('active-player')){
 						playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
 						playerNoAuth.find(playerWrap).html(player);
 					}
@@ -376,8 +386,8 @@
 				ad_300x250_1 = $('#videos #ad_300x250_1');
 
 			if (data) {
-				dataPlayerId = data.player_id;
-				dataFid = data.fid;
+				dataPlayerId = data.data.player_id;
+				dataFid = data.data.fid;
 			}
 
 			var url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
@@ -387,11 +397,11 @@
 			}
 
 			if (dataFullEpisode == 'true') {
-				if (ad_300x250_1) {
+				if(ad_300x250_1){
 					ad_300x250_1.closest('li.ad').hide();
 					ad_300x250_1.attr('id', 'ad_300x250').empty();
 				}
-				if (ad_728x90.attr('id') != 'ad_728x90_1') {
+				if(ad_728x90.attr('id') != 'ad_728x90_1'){
 					ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
 				}
 
@@ -402,27 +412,27 @@
 				$('#videos .full-pane').removeClass('full-desc');
 				ad_300x60_1.hide();
 
-				if (ad_728x90.attr('id') == 'ad_728x90_1') {
+				if(ad_728x90.attr('id') == 'ad_728x90_1'){
 					ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
 				}
-				if ($('#videos').find(ad_300x250)) {
+				if($('#videos').find(ad_300x250)){
 					ad_300x250.closest('li.ad').show();
 					ad_300x250.attr('id', 'ad_300x250_1');
 				}
 				if ($('#videos').find(ad_300x250_1)) {
 					ad_300x250_1.closest('li.ad').show();
 				}
-				if (dataFullEpisode == 'false') {
+				if(dataFullEpisode == 'false'){
 					Drupal.behaviors.microsite_scroll.create728x90Ad();
 				}
 			}
 
 			Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
-			if (dataPlayerId == 'microsite_vod_endcard') {
+			if(dataPlayerId == 'microsite_usa_vod'){
 				videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
 				videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
-			} else {
+			}else{
 				videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
 				videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
 			}
@@ -528,8 +538,8 @@
 				}
 			}
 			// add styles for iframe
-			$('#' + section + ' .ad-leaderboard iframe').load(function () {
-				$('#' + section + ' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
+			$('#'+ section +' .ad-leaderboard iframe').load(function (){
+				$('#'+ section +' .ad-leaderboard iframe').contents().find('head').append("<style type='text/css'>img {max-width: 100%; }object {max-width: 100%; height: 90px;}object * {max-width: 100%; max-height: 90px;}@media (max-width: 300px){img {max-height: 50px;}object {max-width: 300px; max-height: 50px;}object * {max-width: 300px; max-height: 50px;}}</style>");
 			});
 
 			// if home section, make sure the flexslider carousel has been
@@ -638,7 +648,7 @@
 					});
 				},
 				error: function () {
-					console.info('ajax request error');
+					console.info('Thumbnail: This content is not available');
 				}
 			});
 		},
@@ -734,8 +744,8 @@
 			// tve help messaging
 			$tve_toggler = $('.tve-help-link');
 			// $('.tve-help-link').click(function() {
-			$tve_toggler.click(function () {
-				if ($('.tve-help-link').hasClass('selected')) {
+			$tve_toggler.click(function() {
+				if($('.tve-help-link').hasClass('selected')) {
 					$('.tve-help-link').removeClass('selected');
 					$('.tve-help').hide();
 					$('.video-auth-player-wrapper .video-player-wrapper #player').find('div').removeAttr('style');
@@ -755,7 +765,7 @@
 				}
 			});
 
-			$('.tve-close').click(function () {
+			$('.tve-close').click(function() {
 				$('.tve-help-link').removeClass('selected');
 				$('.tve-help').hide();
 				$('.video-player-wrapper #player').find('div').removeAttr('style');
@@ -927,7 +937,7 @@
 							currentThumb.addClass('active');
 						}
 
-						if ($('#video-container .video-player iframe').attr('id') == 'base-frame') {
+						if ($('#video-container .video-player iframe').attr('id') == 'base-frame'){
 							$('#video-container .video-player iframe').attr('id', 'aspot-frame');
 						}
 

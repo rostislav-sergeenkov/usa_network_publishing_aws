@@ -325,13 +325,10 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 }
 #microsite #characters .character-nav #nav-prev,
 #microsite #characters .character-nav #nav-next {
-  margin: 0;
+  margin: -9px 0 0;
   padding: 0;
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 20px;
   font-size: 1.5em;
   cursor: pointer;

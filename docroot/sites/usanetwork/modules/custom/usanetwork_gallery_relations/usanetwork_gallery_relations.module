@@ -165,6 +165,7 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     (isset($form_state['values']['field_season']) && is_null($form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'])) ||
     (!empty($selected_season) && !isset($season_result['node']))
   ) {
+    $form['field_episode'][LANGUAGE_NONE]['#default_value'] = NULL;
     $form['field_episode'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
   // Add a form validator.
@@ -201,6 +202,10 @@ function usanetwork_gallery_relations_gallery_form_validate($form, &$form_state)
   $selected_episode = $form_state['values']['field_episode'][$language][0]['target_id'];
   $selected_season = $form_state['values']['field_season'][$language][0]['target_id'];
   $selected_show = $form_state['values']['field_show'][$language][0]['target_id'];
+
+  if (!$selected_season && $selected_episode) {
+    $selected_episode = $form_state['values']['field_episode'][$language][0]['target_id'] = NULL;
+  }
 
   if ($selected_season) {
     $season_node = node_load($selected_season);

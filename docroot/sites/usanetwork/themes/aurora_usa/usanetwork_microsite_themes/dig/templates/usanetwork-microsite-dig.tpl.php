@@ -75,6 +75,7 @@
               <a class="facebook" href="https://www.facebook.com/DIGonUSA" target="_blank"></a>
               <a class="twitter" href="https://twitter.com/DIGonUSA" target="_blank"></a>
               <a class="instagram" href="http://instagram.com/digonusa" target="_blank"></a>
+              <a class="youtube" href="https://www.youtube.com/user/DIGonUSA" target="_blank"></a>
             </div>
           </li>
           <?php if (!empty($sections)): ?>

@@ -16,6 +16,13 @@ function usanetwork_microsite_dig_get_theme_registry_variables() {
         'tune_in' => NULL,
         'sections_navlinks' => array(),
         'facebook_tracking_html' => NULL,
+        'quizzes' => array(
+          0 => array(
+            'nid' => NULL,
+            'title' => NULL,
+            'url' => NULL,
+          ),
+        ),
       ),
     ),
     'usanetwork_microsite_dig_page_home' => array(
@@ -187,6 +194,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_episodes.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_characters_bxslider.js',
       $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_galleries_bxslider.js',
+      $theme_path . '/usanetwork_microsite_themes/dig/js/microsite_quizzes.js',
       $module_path . '/js/usanetwork_video_endcard.js',
     ),
     'css' => array(

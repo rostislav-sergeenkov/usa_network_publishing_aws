@@ -1529,8 +1529,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
         if (!empty($characters_section_wrapper)) {
           $characters_section_object = $characters_section_wrapper->value();
           if (!empty($characters_section_object->field_ms_person)) {
-            $characters_nodes = $characters_section_wrapper->field_ms_person->value();
-            $character_node = current($characters_nodes);
+            $character_node = _usanetwork_microsite_get_first_published_item($characters_section_wrapper->field_ms_person);
             if(!empty($character_node)) {
               $character_node_wrapper = entity_metadata_wrapper('node', $character_node);
               $page_title = $character_node_wrapper->field_seo_page_title->value();
@@ -1758,6 +1757,19 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $omniture_pagename = $omniture_prop5;
             }
           }
+          else {
+            $videos_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'videos');
+            if (!empty($videos_section_wrapper)) {
+              $videos_section_object = $videos_section_wrapper->value();
+              if (!empty($videos_section_object->field_ms_videos)) {
+                $video_file = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
+                if (!empty($video_file)) {
+                  $omniture_prop5 = t('!entity_title : Video : !filename', array('!entity_title' => $entity->title, '!filename' => $video_file->filename));
+                  $omniture_pagename = $omniture_prop5;
+                }
+              }
+            }
+          }
           break;
         case 'characters':
           $omniture_prop3 = 'Bio';
@@ -1768,6 +1780,20 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
               $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
               $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+            }
+          }
+          else {
+            $characters_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'characters');
+            if (!empty($characters_section_wrapper)) {
+              $characters_section_object = $characters_section_wrapper->value();
+              if (!empty($characters_section_object->field_ms_person)) {
+                $node = _usanetwork_microsite_get_first_published_item($characters_section_wrapper->field_ms_person);
+                if (!empty($node)) {
+                  $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
+                  $omniture_prop5 = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                  $omniture_pagename = t($entity->title . ' : Bio : ' . $person_names['person_title']);
+                }
+              }
             }
           }
           break;
@@ -1799,6 +1825,19 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
               $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+            }
+          }
+          else {
+            $episodes_section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'episodes');
+            if (!empty($episodes_section_wrapper)) {
+              $episodes_section_object = $episodes_section_wrapper->value();
+              if (!empty($episodes_section_object->field_ms_episode)) {
+                $node = _usanetwork_microsite_get_first_published_item($episodes_section_wrapper->field_ms_episode);
+                if (!empty($node)) {
+                  $omniture_prop5 = $entity->title . ' : Episode Guide : ' .  $node->title;
+                  $omniture_pagename = $entity->title . ' : Episode Guide : ' . $node->title;
+                }
+              }
             }
           }
           break;

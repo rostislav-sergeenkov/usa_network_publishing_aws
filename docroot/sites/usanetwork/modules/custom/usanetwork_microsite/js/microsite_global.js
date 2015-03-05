@@ -139,6 +139,7 @@
           s.prop3 = 'Gallery';
           s.prop4 = siteName + ' : Gallery';
           if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h2').text();
+          if (itemTitle == '') itemTitle = $('#microsite #galleries-content .microsite-gallery-meta h1').text();
           s.prop5 = siteName + ' : Gallery : ' + itemTitle;
           s.pageName = s.prop5 + ' : Photo 1';
           pageName = itemTitle + ' | Gallery | ' + pageName;

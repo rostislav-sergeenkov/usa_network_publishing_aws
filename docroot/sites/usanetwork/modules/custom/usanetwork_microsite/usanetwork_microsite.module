@@ -1572,6 +1572,38 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
+
+      if (!empty($character_node->field_person_cover_photo)) {
+        $photo_url = $character_node_wrapper->field_person_cover_photo->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $photo_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_character:image');
+      }
+
+      if (empty($person_names)) {
+        $person_names = _usanetwork_microsite_get_person_title_and_role_name($character_node);
+      }
+
+      if (!empty($person_names)) {
+        $person_name = $person_names['person_title'];
+
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $person_name,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_character:title');
+      }
       break;
     case 'galleries':
       $head_title = t('Gallery | ' . $title . ' | USA Network');
@@ -1605,6 +1637,32 @@ function usanetwork_microsite_preprocess_html(&$vars) {
             $head_title = _usanetwork_microsite_set_title_and_description($episode_node, $head_title);
           }
         }
+      }
+
+      if (!empty($episode_node->field_tv_cover_media)) {
+        $episode_wrapper = entity_metadata_wrapper('node', $episode_node);
+        $image_url = $episode_wrapper->field_tv_cover_media->file->url->value();
+
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => $image_url,
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_episode:image');
+
+        $episode_title = $episode_wrapper->title->value();
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $episode_title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_episode:title');
       }
       break;
     case 'about':

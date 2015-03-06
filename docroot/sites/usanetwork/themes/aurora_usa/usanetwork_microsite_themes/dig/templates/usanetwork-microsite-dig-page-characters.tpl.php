@@ -47,7 +47,7 @@
       <ul>
       <?php foreach ($people as $person_key => $person): ?>
       <?php if (!empty($person['quotes'])): ?>
-        <li class="<?php if (!empty($person['id'])) print $person['id'] . ' '; ?><?php if(!empty($person['status'])) print $person['status'] . ' '; ?>quotes">
+        <li id="quotes-<?php if (!empty($person['id'])) print $person['id']; ?>" class="quotes<?php if (!empty($person['id'])) print ' ' . $person['id']; ?><?php if(!empty($person['status'])) print ' ' . $person['status']; ?>">
           <ul>
           <?php foreach ($person['quotes'] as $quotation_key => $quotation): ?>
           <?php if (!empty($quotation['quote']) && !empty($quotation['source'])): ?>

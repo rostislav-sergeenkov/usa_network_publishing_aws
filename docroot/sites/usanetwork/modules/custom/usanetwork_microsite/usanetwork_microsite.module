@@ -1477,6 +1477,19 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
+      $aspot = reset($section_wrapper->field_usa_tv_a_spot->value());
+      if (!empty($aspot)) {
+        $aspot_desctop = reset(field_get_items('node', $aspot, 'field_usa_aspot_desktop'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' =>  file_create_url($aspot_desctop['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_home:image');
+      }
       break;
     case 'videos':
       $head_title = t('Videos | ' . $title . ' | USA Network');
@@ -1621,6 +1634,27 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           }
         }
       }
+      if (!empty($gallery_node)) {
+        $cover_item = reset(field_get_items('node', $gallery_node, 'field_cover_item'));
+        $tag_card = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:image',
+            'content' => file_create_url($cover_item['uri']),
+          ),
+        );
+        drupal_add_html_head($tag_card, 'microsite_galleries:image');
+        $tag_title = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'property' => 'og:title',
+            'content' => $gallery_node->title,
+          ),
+        );
+        drupal_add_html_head($tag_title, 'microsite_galleries:title');
+      }
       break;
     case 'episodes':
       $head_title = t('Episode Guide | ' . $title . ' | USA Network');
@@ -1672,6 +1706,25 @@ function usanetwork_microsite_preprocess_html(&$vars) {
       if(empty($head_title)) {
         $head_title = usanetwork_microsite_get_default_title($node, $section_type);
       }
+      $background_image = _usanetwork_microsite_get_section_background_image($section_wrapper, '600x500');
+      $tag_card = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image',
+          'content' => $background_image,
+        ),
+      );
+      drupal_add_html_head($tag_card, 'microsite_about:image');
+      $tag_title = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:title',
+          'content' => $section_wrapper->field_ms_section_title->value(),
+        ),
+      );
+      drupal_add_html_head($tag_title, 'microsite_about:title');
       break;
     case 'games':
       $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_section_type($node, 'games');

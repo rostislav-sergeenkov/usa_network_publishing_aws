@@ -1494,7 +1494,7 @@ function usanetwork_microsite_preprocess_html(&$vars) {
           '#tag' => 'meta',
           '#attributes' => array(
             'property' => 'og:title',
-            'content' => $aspot->title,
+            'content' => $section_wrapper->field_ms_section_title->value(),
           ),
         );
         drupal_add_html_head($tag_title, 'microsite_home:title');

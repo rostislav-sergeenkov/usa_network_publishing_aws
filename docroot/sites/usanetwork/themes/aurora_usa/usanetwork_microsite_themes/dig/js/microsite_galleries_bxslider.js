@@ -159,6 +159,8 @@
         activeGallery.animate({'opacity': 0, 'scrollTop': 0}, 1000, function(){
           if (activeGalleryMeta.find('h2').length > 0) {
             activeGalleryMeta.find('h2').text(data.title);
+          } else {
+            $('<h2></h2>').before('#gigya-share_gig_containerParent').text(data.title);
           }
           if (activeGalleryMeta.find('h1').length > 0) {
             activeGalleryMeta.find('h1').text(data.h1);

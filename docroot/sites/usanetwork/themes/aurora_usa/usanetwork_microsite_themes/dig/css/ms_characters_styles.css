@@ -651,11 +651,11 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
 and (min-device-width : 200px)
 and (max-device-width : 568px) {
   #microsite #home .characters-cast .btns.prev {
-    left: -2px;
+    left: 0px;
     z-index: 30;
   }
   #microsite #home .characters-cast .btns.next {
-    right: 8px;
+    right: 0px;
   }
   #microsite #about section .microsite-section-container .right-pane {
     width: 98%;

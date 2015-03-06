@@ -31,6 +31,10 @@
       <?php if (!empty($gallery['title'])): ?>
         <h2><?php print $gallery['title']; ?></h2>
       <?php endif; ?>
+    <?php elseif (empty($h1) && $status == 'active'): ?>
+      <?php if (!empty($gallery['title'])): ?>
+        <h1><?php print $gallery['title']; ?></h1>
+      <?php endif; ?>
     <?php else: ?>
       <?php if (!empty($gallery['title'])): ?>
         <h2><?php print $gallery['title']; ?></h2>
